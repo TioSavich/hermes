@@ -71,6 +71,26 @@ TOY_TRANSCRIPT = (
     "Lee: I got 2/4 by splitting each half into two pieces.\n"
 )
 
+# The workflow CLIs and /api/media_transcribe read these at request time; a
+# staged tree without them fails on first use, not at startup — which is how
+# the gap stayed quiet until a colleague hit it.
+SYSTEM_PROMPTS = [
+    "content_consolidate.md", "content_per_file.md", "draft.md",
+    "grade.md", "parse.md", "profile.md", "score.md",
+    "transcribe.md", "transcribe_timed.md",
+]
+
+
+def prompts_check(tree: Path, report: Report) -> None:
+    missing = [name for name in SYSTEM_PROMPTS
+               if not (tree / "hermes/app/system_prompts" / name).is_file()]
+    if missing:
+        report.add("FAIL", "workflow system prompts staged",
+                   "missing: " + ", ".join(missing))
+    else:
+        report.add("PASS",
+                   f"workflow system prompts staged ({len(SYSTEM_PROMPTS)} files)")
+
 
 class Report:
     def __init__(self) -> None:
@@ -321,6 +341,18 @@ def live_probes(tree: Path, python: str, swipl: str | None,
         probe("POST /api/transcript_report (no key)", "/api/transcript_report",
               {"text": TOY_TRANSCRIPT}, want=range(503, 504),
               check=lambda b: b.get("error_type") == "no_key")
+
+        # Workflow CLI route: it may refuse (absent input, no key) but must
+        # answer from its shipped files — a system_prompts miss is a
+        # packaging bug, and it surfaces in the subprocess stderr the route
+        # echoes back.
+        def no_prompt_miss(b: object) -> bool:
+            text = json.dumps(b) if not isinstance(b, (str, bytes)) else str(b)
+            return ("system_prompts" not in text
+                    and "FileNotFoundError" not in text)
+        probe("POST /api/parse (shipped files only)", "/api/parse",
+              {"input": "smoke_absent.txt"}, want=range(200, 504),
+              timeout=120.0, check=no_prompt_miss)
     finally:
         server.terminate()
         try:
@@ -404,6 +436,7 @@ def main() -> int:
 
     print("— static audit —")
     static_audit(tree, report)
+    prompts_check(tree, report)
     if not args.static_only:
         print("— report chain —")
         chain_check(tree, args.python, report)

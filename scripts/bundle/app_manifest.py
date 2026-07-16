@@ -98,13 +98,17 @@ KEEP_FILES = [
 ]
 
 # Markdown is documentation, not runtime — with the exceptions the running
-# app reads: the quickstart the server serves through /api/quickstart, and
-# the two pass prompts /api/transcript_report sends as system messages.
+# app reads: the quickstart the server serves through /api/quickstart, the
+# two pass prompts /api/transcript_report sends as system messages, and the
+# per-command system prompts the workflow CLIs and /api/media_transcribe
+# read at request time (kept by prefix so a newly added prompt cannot be
+# silently dropped the way the first nine were).
 KEEP_MD = {
     "hermes/app/QUICKSTART_N103.md",
     "docs/research/2026-07-01-talkmoves-pass1-math-prompt.md",
     "docs/research/2026-07-01-talkmoves-pass2-posture-prompt.md",
 }
+KEEP_MD_PREFIXES = ("hermes/app/system_prompts/",)
 
 # Excluded from the kept trees. Substring "/tests/" prunes every test suite;
 # the named directories are research material that no runtime path reads.
@@ -146,7 +150,8 @@ def keep(path: str, with_figures: bool) -> bool:
         return False
     if any(path.startswith(p) for p in EXCLUDE_PREFIXES):
         return False
-    if path.endswith(".md") and path not in KEEP_MD:
+    if path.endswith(".md") and path not in KEEP_MD \
+            and not path.startswith(KEEP_MD_PREFIXES):
         return False
     return True
 

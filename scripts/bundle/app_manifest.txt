@@ -164,6 +164,15 @@ hermes/app/scripts/export_parametric_partition.py
 hermes/app/scripts/export_real_transplants.py
 hermes/app/scripts/verify_monitoring_visuals.py
 hermes/app/server.py
+hermes/app/system_prompts/content_consolidate.md
+hermes/app/system_prompts/content_per_file.md
+hermes/app/system_prompts/draft.md
+hermes/app/system_prompts/grade.md
+hermes/app/system_prompts/parse.md
+hermes/app/system_prompts/profile.md
+hermes/app/system_prompts/score.md
+hermes/app/system_prompts/transcribe.md
+hermes/app/system_prompts/transcribe_timed.md
 hermes/app/web/about.html
 hermes/app/web/breaks.html
 hermes/app/web/console.html
