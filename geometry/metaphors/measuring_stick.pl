@@ -8,7 +8,7 @@
 % Charter: 2026-05-03 overnight Hermes geometry push, Wave 2 (L&N digger).
 % The arithmetic side of the Measuring Stick metaphor is already documented
 % in LK_RB_Synthesis_Project/Metaphor_Knowledge_Base.md §3 and in
-% September_UMEDCA/HC_Tex_Files/lakoff_Brandom_CGI_Synthesis.{tex,pdf}.
+% HC_Tex_Files/lakoff_Brandom_CGI_Synthesis.{tex,pdf}.
 % This file extends to GEOMETRIC measurement.
 %
 % Container vs. Measuring Stick distinction (Wave 1 audit flag): preserve.
