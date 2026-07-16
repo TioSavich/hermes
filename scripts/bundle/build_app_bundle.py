@@ -13,11 +13,20 @@ point at. Both are Apple Silicon builds — the bundle targets arm64 Macs and
 says so in its README; on other machines the launcher falls back to whatever
 `python3`/`swipl` the host has.
 
-Usage:
+Usage — this command pastes into a shell as written; it vendors SWI-Prolog
+from /Applications, relies on the host python3, smokes the result, and zips:
+
   python3 scripts/bundle/build_app_bundle.py \
-      --out build/bundles/hermes-app \
-      --python-dist /path/to/cpython-3.12-macos-aarch64 \
-      [--swipl-app /Applications/SWI-Prolog.app] [--no-figures] [--zip OUT.zip]
+      --out build/bundles/hermes-app --zip build/bundles/hermes-app.zip
+
+To vendor a relocatable Python, add --python-dist pointing at ONE
+python-build-standalone distribution — the directory that directly contains
+bin/python3, not a folder of several distributions:
+
+  --python-dist ~/Downloads/cpython-3.12.13-macos-aarch64-none
+
+Other flags: --swipl-app APP for a different SWI-Prolog.app, --no-figures to
+drop the ~190 MB gallery images, --skip-smoke to skip the end-to-end check.
 """
 
 from __future__ import annotations
@@ -320,6 +329,30 @@ def main() -> int:
                     help="skip the end-to-end smoke of the built bundle")
     args = ap.parse_args()
 
+    # Validate the runtime arguments before the multi-thousand-file copy, so
+    # a wrong path fails in a second instead of after the copy.
+    swipl_app = args.swipl_app if args.swipl_app.is_dir() else None
+    if swipl_app is None:
+        print(f"note: {args.swipl_app} not found; bundle will rely on host swipl")
+    python_dist = args.python_dist
+    if python_dist is not None:
+        # An explicit --python-dist that cannot vendor is an error, not a
+        # silent host-python fallback: the caller asked for a vendored
+        # runtime and would ship a bundle without one.
+        if not python_dist.is_dir():
+            sys.exit(f"--python-dist {python_dist} is not a directory")
+        if not (python_dist / "bin/python3").exists():
+            children = ", ".join(sorted(p.name for p in python_dist.iterdir())[:6])
+            sys.exit(
+                f"--python-dist {python_dist} has no bin/python3.\n"
+                f"It contains: {children}\n"
+                "Point at the single distribution directory that directly "
+                "contains bin/python3 (e.g. one cpython-*-none folder), not "
+                "a folder of distributions."
+            )
+    else:
+        print("note: no --python-dist; bundle will rely on host python3")
+
     out: Path = args.out
     if out.exists():
         shutil.rmtree(out)
@@ -336,12 +369,6 @@ def main() -> int:
         check=True,
     )
 
-    swipl_app = args.swipl_app if args.swipl_app.is_dir() else None
-    if swipl_app is None:
-        print(f"note: {args.swipl_app} not found; bundle will rely on host swipl")
-    python_dist = args.python_dist if args.python_dist and args.python_dist.is_dir() else None
-    if python_dist is None:
-        print("note: no --python-dist; bundle will rely on host python3")
     vendor_runtimes(out, swipl_app, python_dist)
 
     launcher = out / "START_HERMES.command"

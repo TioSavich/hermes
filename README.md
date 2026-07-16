@@ -86,3 +86,11 @@ education. This repository carries the runtime: the console, the symbolic
 knowledge base, and the distribution tooling. The research instruments and
 their history live in the source project and are not part of this
 repository.
+
+## License
+
+CC BY-NC 4.0 (Attribution-NonCommercial) — see [LICENSE](LICENSE). Use it,
+adapt it, and share it with attribution, for noncommercial purposes.
+Third-party content in the knowledge base (Illustrative Mathematics, CCSS,
+and the cited research literature) carries its own terms, named in
+[NOTICE.md](NOTICE.md).
