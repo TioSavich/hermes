@@ -1,6 +1,11 @@
-# Third-party content notices
+# Copyright and third-party content notices
 
-Hermes as a whole is licensed under CC BY-NC 4.0 (see LICENSE). The
+Hermes — a teaching console with its symbolic knowledge base.
+Copyright (c) 2026 Tio Savich.
+
+Hermes as a whole is licensed under the Creative Commons
+Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0); the
+LICENSE file carries the full legal code. The
 knowledge base incorporates material from third parties whose own terms
 apply to that material and are more permissive than, or independent of,
 this repository's license:
