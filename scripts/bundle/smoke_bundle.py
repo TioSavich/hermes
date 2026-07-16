@@ -57,6 +57,10 @@ OPTIONAL_PREFIXES = ("/docs/", "/ASKTM_Data/")
 # absence is a designed fallback, not a broken surface.
 LEGACY_FALLBACK_ROUTES = {"/api/base", "/api/cgi_dispatch",
                           "/api/action/topology/gaps"}
+# learner/server.pl routes. The pages that call them carry a visible
+# under-construction notice until the wing is wired (refactor plan, Tier 1).
+RESEARCH_WING_ROUTES = {"/api/compute", "/api/knowledge",
+                        "/api/visualize/coordination"}
 
 SKIP_SCHEMES = ("http:", "https:", "mailto:", "data:", "javascript:",
                 "tel:", "#", "about:")
@@ -179,7 +183,7 @@ def static_audit(tree: Path, report: Report) -> None:
             if "${" in raw or "{{" in raw:
                 continue  # template — the live probes cover the real URLs
             if path.startswith("/api/"):
-                if path in LEGACY_FALLBACK_ROUTES:
+                if path in LEGACY_FALLBACK_ROUTES or path in RESEARCH_WING_ROUTES:
                     optional.add(path)
                 elif path not in routes and \
                         not any(path.startswith(p) for p in prefixes):

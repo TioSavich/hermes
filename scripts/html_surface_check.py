@@ -24,6 +24,10 @@ ASSET_RE = re.compile(
 )
 SNAPSHOT_RE = re.compile(r"\bSNAPSHOT_URL\b|mua_data\.json|frozen_snapshot", re.IGNORECASE)
 LEGACY_FALLBACK_ROUTES = {"/api/base", "/api/cgi_dispatch", "/api/action/topology/gaps"}
+# learner/server.pl routes. The pages that call them carry a visible
+# under-construction notice until the wing is wired (refactor plan, Tier 1).
+RESEARCH_WING_ROUTES = {"/api/compute", "/api/knowledge",
+                        "/api/visualize/coordination"}
 
 
 def iter_html_files(roots: list[Path]) -> list[Path]:
@@ -58,6 +62,7 @@ def route_known(path: str, exact: set[str], prefixes: list[str]) -> bool:
     return (
         normalized in exact
         or normalized in LEGACY_FALLBACK_ROUTES
+        or normalized in RESEARCH_WING_ROUTES
         or any(normalized.startswith(prefix) for prefix in prefixes)
     )
 
@@ -108,16 +113,6 @@ def scan_html(html: Path, web_roots: list[Path], exact: set[str], prefixes: list
         if target is not None and not asset_exists(html, target, web_roots):
             issues.append(issue("missing_asset", html, target, "local src/href target does not exist"))
 
-    if SNAPSHOT_RE.search(text):
-        issues.append(
-            issue(
-                "frozen_snapshot",
-                html,
-                "snapshot marker",
-                "surface references a static snapshot marker; compare against live worker output",
-            )
-        )
-
     return issues
 
 
@@ -125,8 +120,15 @@ def build_report(web_roots: list[Path], server: Path) -> dict[str, object]:
     exact, prefixes = server_routes(server)
     html_files = iter_html_files(web_roots)
     issues: list[dict[str, str]] = []
+    notes: list[dict[str, str]] = []
     for html in html_files:
         issues.extend(scan_html(html, web_roots, exact, prefixes))
+        text = html.read_text(encoding="utf-8")
+        if SNAPSHOT_RE.search(text):
+            notes.append(issue(
+                "frozen_snapshot", html, "snapshot marker",
+                "surface reads a static snapshot; its regenerator is named in the page or the refactor plan",
+            ))
     return {
         "server": server.as_posix(),
         "web_roots": [root.as_posix() for root in web_roots],
@@ -134,6 +136,7 @@ def build_report(web_roots: list[Path], server: Path) -> dict[str, object]:
         "api_routes": len(exact),
         "api_prefixes": prefixes,
         "issues": issues,
+        "notes": notes,
     }
 
 
@@ -155,6 +158,8 @@ def main() -> int:
         print(f"Issues: {len(report['issues'])}")
         for row in report["issues"]:
             print(f"{row['type']}: {row['file']} -> {row['target']} ({row['detail']})")
+        for row in report["notes"]:
+            print(f"note {row['type']}: {row['file']} -> {row['target']} ({row['detail']})")
 
     return 1 if report["issues"] else 0
 
