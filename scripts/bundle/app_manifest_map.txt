@@ -1,4 +1,4 @@
-hermes/	1399
+hermes/	1381
 more-zeeman/	152
 strategies/	102
 learner/	49
@@ -7,8 +7,8 @@ misconceptions/	42
 standards/	32
 geometry/	31
 lessons/	28
-pml/	24
 formalization/	20
+pml/	20
 arche-trace/	15
 tools/	8
 scripts/	7

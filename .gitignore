@@ -17,3 +17,12 @@ __pycache__/
 
 # Bundle build output
 build/
+
+# LaTeX build byproducts (the appendix source ships; its build residue does not)
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.synctex.gz
+.pytest_cache/
