@@ -1,0 +1,4 @@
+{
+  "_comment": "Maps run prompt_id values to fully hand-encoded IM lesson codes for the Prolog monitoring-chart seam. Add only prompts whose source text explicitly names the IM anchor.",
+  "im_g1_u3_l17_make_ten_async": "IM-G1-U3-L17"
+}

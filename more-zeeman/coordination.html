@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>The Unit Coordinator &amp; Fractalizer (Unified Canvas)</title>
+  <link rel="stylesheet" href="hermes-tokens-dark.css">
+  <script defer src="render/hermes-shell.js" data-root="./"></script>
+  <style>
+    :root {
+      --bg: #07060b;
+      --surface: #100f1d;
+      --surface-raised: #16152a;
+      --border: #211e3f;
+      --border-highlight: #3b3773;
+      --text: #e2e8f0;
+      --muted: #7d7c93;
+      --accent: #f43f5e;
+      --amber: #f59e0b;
+      --emerald: #10b981;
+      --blue: #3b82f6;
+      --sans: system-ui, -apple-system, sans-serif;
+      --mono: "SF Mono", "Fira Code", monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1300px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      flex-grow: 1;
+    }
+
+    header {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .title-area h1 {
+      font-size: 1.3rem;
+      font-weight: 850;
+      letter-spacing: 0.05em;
+      color: #fff;
+    }
+
+    .title-area p {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .back-link {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .back-link:hover {
+      color: var(--text);
+    }
+
+    /* Equation control panel */
+    .controls-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .control-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: flex-end;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+
+    input, select, button {
+      background: #050409;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.45rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--blue);
+    }
+
+    button {
+      background: var(--blue);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+    }
+    button:hover {
+      filter: brightness(1.15);
+    }
+    button:active {
+      transform: scale(0.98);
+    }
+    button.btn-accent {
+      background: var(--accent);
+    }
+    button.btn-success {
+      background: var(--emerald);
+    }
+    button.btn-secondary {
+      background: var(--surface-raised);
+      border-color: var(--border);
+      color: var(--text);
+    }
+    button.btn-secondary:hover {
+      background: var(--border-highlight);
+    }
+
+    .base-button-group {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .btn-base {
+      padding: 0.4rem 0.8rem;
+      font-family: var(--mono);
+      font-weight: 700;
+    }
+
+    .btn-base.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+    }
+
+    /* Single Unified Canvas Container */
+    .canvas-container {
+      width: 100%;
+      aspect-ratio: 12 / 5.2;
+      background: #030206;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 4px 25px rgba(0,0,0,0.95);
+    }
+
+    #unifiedCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hud-overlay {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      pointer-events: none;
+      background: rgba(16, 15, 29, 0.85);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      backdrop-filter: blur(4px);
+      display: flex;
+      gap: 1rem;
+    }
+
+    /* Steps and Replay Controls Panel */
+    .replay-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 768px) {
+      .replay-panel {
+        grid-template-columns: 240px 1fr;
+      }
+    }
+
+    .replay-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      justify-content: center;
+      border-right: none;
+      padding-right: 0;
+    }
+    @media (min-width: 768px) {
+      .replay-controls {
+        border-right: 1px solid var(--border);
+        padding-right: 1rem;
+      }
+    }
+
+    .playback-row {
+      display: flex;
+      gap: 0.4rem;
+      width: 100%;
+    }
+
+    .playback-row button {
+      flex: 1;
+      padding: 0.5rem;
+    }
+
+    .steps-list-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      height: 110px;
+      overflow-y: auto;
+      padding-right: 0.25rem;
+      position: relative;
+    }
+
+    .steps-list::-webkit-scrollbar {
+      width: 4px;
+    }
+    .steps-list::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 2px;
+    }
+
+    .step-item {
+      padding: 0.35rem 0.6rem;
+      border-radius: 6px;
+      background: var(--surface-raised);
+      border-left: 3px solid transparent;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      transition: all 0.15s ease;
+    }
+    .step-item.active {
+      background: rgba(59, 130, 246, 0.12);
+      border-left-color: var(--blue);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* Dynamic SVG Visualization Card */
+    .prolog-svg-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .prolog-svg-display {
+      background: #030206;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      height: 220px;
+      max-height: 220px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      overflow: hidden;
+    }
+
+    .prolog-svg-display svg {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .explanation-card {
+      background: #110f22;
+      border-left: 4px solid var(--amber);
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.85rem;
+      color: #9ca3af;
+    }
+
+    .explanation-card h3 {
+      color: var(--amber);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title-area">
+        <h1>THE UNIT COORDINATOR &amp; FRACTALIZER</h1>
+        <p>Synchronized v3 CGI strategies showing the structural identity between whole numbers and fractions</p>
+      </div>
+      <div>
+        <a class="back-link" href="landing.html">&larr; Back to Landing</a>
+      </div>
+    </header>
+
+    <!-- Toolbar controls -->
+    <div class="controls-panel">
+      <div class="control-row">
+        <!-- Base selector -->
+        <div class="control-group">
+          <label>Operative CGI Base (B)</label>
+          <div class="base-button-group">
+            <button id="btnBase5" class="btn-base btn-secondary">5</button>
+            <button id="btnBase7" class="btn-base btn-secondary">7</button>
+            <button id="btnBase10" class="btn-base btn-secondary active">10</button>
+            <button id="btnBase12" class="btn-base btn-secondary">12</button>
+          </div>
+        </div>
+
+        <!-- Addends selection -->
+        <div class="control-group" style="width: 75px;">
+          <label for="eqA">Addend A</label>
+          <input type="number" id="eqA" value="7" min="1" max="15">
+        </div>
+        <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2px;">+</div>
+        <div class="control-group" style="width: 75px;">
+          <label for="eqB">Addend B</label>
+          <input type="number" id="eqB" value="8" min="1" max="15">
+        </div>
+
+        <!-- Denominator selection -->
+        <div class="control-group" style="width: 75px; margin-left: 1rem; border-left: 1px solid var(--border); padding-left: 1rem;">
+          <label for="eqD">Denominator (D)</label>
+          <input type="number" id="eqD" value="10" min="2" max="25">
+        </div>
+
+        <button id="btnAnimate" class="btn-accent" style="padding: 0.5rem 1.25rem;">Animate Equation</button>
+      </div>
+    </div>
+
+    <!-- Single Unified Canvas -->
+    <div class="canvas-container">
+      <div class="hud-overlay">
+        <span>CGI Strategy: <strong id="hudStrategyName" style="color: var(--amber);">make_ten_split_leftover</strong></span>
+        <span>Operative Base: <strong id="hudBaseVal" style="color: var(--blue);">10</strong></span>
+        <span id="backendStatus" style="color: var(--emerald);">&#9679; Connected</span>
+      </div>
+      <canvas id="unifiedCanvas"></canvas>
+    </div>
+
+    <!-- Replay panel -->
+    <div class="replay-panel">
+      <div class="replay-controls">
+        <div style="font-size: 0.65rem; font-weight: 700; color: var(--muted); text-transform: uppercase;">Playback</div>
+        <div class="playback-row">
+          <button id="btnPrev" class="btn-secondary">&larr; Step</button>
+          <button id="btnPlay" class="btn-success" style="min-width: 70px;">Play</button>
+          <button id="btnNext" class="btn-secondary">Step &rarr;</button>
+        </div>
+        <div style="font-size: 0.75rem; font-family: var(--mono); color: var(--amber); text-align: center;" id="progressDisplay">Step 0/0</div>
+      </div>
+
+      <div class="steps-list-wrapper">
+        <label>Execution Steps (Synchronized Trace)</label>
+        <div class="steps-list" id="stepsList">
+          <div class="step-item">Click "Animate Equation" to load strategy.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dynamic Prolog SVG card -->
+    <div class="prolog-svg-card">
+      <h2>PROLOG-GENERATED REPRESENTATION</h2>
+      <div class="prolog-svg-display" id="prologSvgDisplay">
+        <div style="color: var(--muted); font-size: 0.8rem; text-align: center;">
+          Prolog authoritative representation will load here.
+        </div>
+      </div>
+    </div>
+
+    <!-- Narrative -->
+    <div class="explanation-card">
+      <h3>The Spatial Synapse: Coordinating &amp; Fractalizing</h3>
+      <p>
+        This unified canvas demonstrates the exact **structural identity** between base arithmetic and fractions.
+        When you run `7 + 8` alongside `7/10 + 8/10`, you can see the **make-base** move fire simultaneously across both dimensions. 
+        On the left (Ace of Base), units are grouped into a solid Rod of size $B$. On the right (Fraction Bars), fraction partitions of size $1/D$ flow to complete a Whole unit bar ($1.0$).
+        Varying the base to 12 demonstrates how the exact same CGI strategy shape governs the regrouping move, with only the numeral base target changing.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    'use strict';
+
+    // Global parameters
+    let activeBase = 10;
+    let isConnected = false;
+
+    // Elements
+    const backendStatus = document.getElementById('backendStatus');
+    const eqA = document.getElementById('eqA');
+    const eqB = document.getElementById('eqB');
+    const eqD = document.getElementById('eqD');
+    const btnAnimate = document.getElementById('btnAnimate');
+    
+    const canvas = document.getElementById('unifiedCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Set fixed logical coordinate space: 1200 x 520
+    const LOGICAL_WIDTH = 1200;
+    const LOGICAL_HEIGHT = 520;
+
+    // Use a fixed high-resolution backing store (2400 x 1040)
+    // and rely on browser CSS layout scaling to fit.
+    // This gives perfect High-DPI rendering without resetting/flickering on resize.
+    canvas.width = LOGICAL_WIDTH * 2;
+    canvas.height = LOGICAL_HEIGHT * 2;
+    ctx.resetTransform();
+    ctx.scale(2, 2);
+
+    // Sync backend base
+    function checkBackendConnection() {
+      fetch('/api/base')
+        .then(res => res.json())
+        .then(data => {
+          activeBase = data.base;
+          updateBaseButtons();
+          isConnected = true;
+          backendStatus.innerHTML = '&#9679; Connected to Prolog';
+          backendStatus.style.color = 'var(--emerald)';
+        })
+        .catch(err => {
+          console.warn("Prolog server offline, using local simulation mode.");
+          isConnected = false;
+          backendStatus.innerHTML = '&#9679; Offline Mode';
+          backendStatus.style.color = 'var(--amber)';
+        });
+    }
+
+    function setBase(baseVal) {
+      activeBase = baseVal;
+      updateBaseButtons();
+      document.getElementById('hudBaseVal').textContent = activeBase;
+      if (isConnected) {
+        fetch('/api/base', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ base: baseVal })
+        }).catch(e => console.error("Error setting base", e));
+      }
+    }
+
+    const baseButtons = {
+      5: document.getElementById('btnBase5'),
+      7: document.getElementById('btnBase7'),
+      10: document.getElementById('btnBase10'),
+      12: document.getElementById('btnBase12')
+    };
+
+    function updateBaseButtons() {
+      Object.keys(baseButtons).forEach(b => {
+        if (parseInt(b) === activeBase) {
+          baseButtons[b].classList.add('active');
+        } else {
+          baseButtons[b].classList.remove('active');
+        }
+      });
+    }
+
+    Object.keys(baseButtons).forEach(b => {
+      baseButtons[b].addEventListener('click', () => setBase(parseInt(b)));
+    });
+
+    // -------------------------------------------------------------------
+    // ANIMATION ENTITIES (Fixed positioning, smooth easing, no jumpiness)
+    // -------------------------------------------------------------------
+    class AnimUnit {
+      constructor(id, startX, startY, color, group) {
+        this.id = id;
+        this.x = startX;
+        this.y = startY;
+        this.tx = startX;
+        this.ty = startY;
+        this.color = color;
+        this.group = group; // 'A' or 'B'
+        this.size = 20;
+        
+        this.subgroup = ''; // 'needed' or 'leftover'
+        this.opacity = 1;
+        this.to = 1;
+        this.glowing = false;
+      }
+      update() {
+        const ease = 0.08; // smooth slow ease
+        this.x += (this.tx - this.x) * ease;
+        this.y += (this.ty - this.y) * ease;
+        this.opacity += (this.to - this.opacity) * ease;
+        if (Math.abs(this.x - this.tx) < 0.1) this.x = this.tx;
+        if (Math.abs(this.y - this.ty) < 0.1) this.y = this.ty;
+        if (Math.abs(this.opacity - this.to) < 0.01) this.opacity = this.to;
+      }
+      draw(ctx) {
+        if (this.opacity <= 0.01) return;
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        ctx.fillStyle = this.color;
+        ctx.fillRect(this.x, this.y, this.size, this.size);
+        
+        ctx.strokeStyle = this.glowing ? '#fff' : 'rgba(0,0,0,0.5)';
+        ctx.lineWidth = this.glowing ? 2.5 : 1;
+        ctx.strokeRect(this.x, this.y, this.size, this.size);
+        ctx.restore();
+      }
+    }
+
+    class AnimRod {
+      constructor(x, y, baseVal, size) {
+        this.x = x - 100; // slide in
+        this.y = y;
+        this.tx = x;
+        this.ty = y;
+        this.baseVal = baseVal;
+        this.size = size;
+        this.w = size * baseVal;
+        this.h = size;
+        this.opacity = 0;
+        this.to = 1;
+      }
+      update() {
+        const ease = 0.08;
+        this.x += (this.tx - this.x) * ease;
+        this.y += (this.ty - this.y) * ease;
+        this.opacity += (this.to - this.opacity) * ease;
+        if (Math.abs(this.x - this.tx) < 0.1) this.x = this.tx;
+        if (Math.abs(this.y - this.ty) < 0.1) this.y = this.ty;
+        if (Math.abs(this.opacity - this.to) < 0.01) this.opacity = this.to;
+      }
+      draw(ctx) {
+        if (this.opacity <= 0.01) return;
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        
+        // Rod fill (emerald green)
+        ctx.fillStyle = '#10b981';
+        ctx.fillRect(this.x, this.y, this.w, this.h);
+        
+        // Outer border
+        ctx.strokeStyle = '#047857';
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(this.x, this.y, this.w, this.h);
+
+        // Dividers
+        ctx.strokeStyle = 'rgba(4, 120, 87, 0.4)';
+        ctx.lineWidth = 1;
+        for (let i = 1; i < this.baseVal; i++) {
+          const gx = this.x + i * this.size;
+          ctx.beginPath();
+          ctx.moveTo(gx, this.y);
+          ctx.lineTo(gx, this.y + this.h);
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+    }
+
+    class AnimFracSeg {
+      constructor(id, startX, startY, w, h, color) {
+        this.id = id;
+        this.x = startX;
+        this.y = startY;
+        this.tx = startX;
+        this.ty = startY;
+        this.w = w;
+        this.h = h;
+        this.color = color;
+        this.opacity = 1;
+        this.to = 1;
+        this.flying = false;
+      }
+      update() {
+        const ease = 0.08;
+        this.x += (this.tx - this.x) * ease;
+        this.y += (this.ty - this.y) * ease;
+        this.opacity += (this.to - this.opacity) * ease;
+        if (Math.abs(this.x - this.tx) < 0.1) this.x = this.tx;
+        if (Math.abs(this.y - this.ty) < 0.1) this.y = this.ty;
+        if (Math.abs(this.opacity - this.to) < 0.01) this.opacity = this.to;
+      }
+      draw(ctx) {
+        if (this.opacity <= 0.01) return;
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        ctx.fillStyle = this.color;
+        ctx.fillRect(this.x, this.y, this.w, this.h);
+        
+        ctx.strokeStyle = 'rgba(0,0,0,0.5)';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(this.x, this.y, this.w, this.h);
+        ctx.restore();
+      }
+    }
+
+    // -------------------------------------------------------------------
+    // UNIFIED SYNCHRONIZED REPLAY CONTROLLER
+    // -------------------------------------------------------------------
+    class UnifiedReplay {
+      constructor() {
+        this.steps = [];
+        this.currentStepIndex = 0;
+        this.isPlaying = false;
+        this.timer = null;
+        this.strategyName = 'make_ten_split_leftover';
+
+        // Operands
+        this.a = 7;
+        this.b = 8;
+        this.d = 10;
+        this.baseVal = 10;
+
+        // Visual Entities
+        this.units = [];
+        this.rods = [];
+        this.fracBar1Segs = [];
+        this.fracBar2Segs = [];
+        this.bar1Completed = false;
+        this.glowingFracBars = false;
+        this.stepChangeTime = Date.now();
+      }
+
+      init(a, b, d, baseVal) {
+        this.a = a;
+        this.b = b;
+        this.d = d;
+        this.baseVal = baseVal;
+        
+        this.units = [];
+        this.rods = [];
+        this.fracBar1Segs = [];
+        this.fracBar2Segs = [];
+        this.bar1Completed = false;
+        this.glowingFracBars = false;
+        this.stepChangeTime = Date.now();
+      }
+
+      setSteps(steps, strategyName) {
+        this.steps = steps;
+        this.strategyName = strategyName;
+        this.currentStepIndex = 0;
+        
+        this.pause();
+        
+        // Populate steps UI
+        const listEl = document.getElementById('stepsList');
+        listEl.innerHTML = '';
+
+        // Add 0-step
+        const startDiv = document.createElement('div');
+        startDiv.className = 'step-item active';
+        startDiv.style.cursor = 'pointer';
+        startDiv.textContent = `0. Init: ${this.a} + ${this.b} | ${this.a}/${this.d} + ${this.b}/${this.d}`;
+        startDiv.addEventListener('click', () => {
+          this.currentStepIndex = 0;
+          this.updateHUD();
+          this.pause();
+        });
+        listEl.appendChild(startDiv);
+
+        this.steps.forEach((step, idx) => {
+          const div = document.createElement('div');
+          div.className = 'step-item';
+          div.style.cursor = 'pointer';
+          div.textContent = `${idx + 1}. ${this.formatStepName(step)}`;
+          div.addEventListener('click', () => {
+            this.currentStepIndex = idx + 1;
+            this.updateHUD();
+            this.pause();
+          });
+          listEl.appendChild(div);
+        });
+
+        document.getElementById('hudStrategyName').textContent = strategyName;
+        this.updateHUD();
+      }
+
+      formatStepName(step) {
+        if (typeof step === 'string') return step;
+        if (step.string) return step.string;
+        if (step.functor) {
+          const args = step.args.map(a => typeof a === 'object' ? JSON.stringify(a) : a).join(', ');
+          return `${step.functor}(${args})`;
+        }
+        return JSON.stringify(step);
+      }
+
+      updateHUD() {
+        document.getElementById('progressDisplay').textContent = `Step ${this.currentStepIndex}/${this.steps.length}`;
+        const items = document.getElementById('stepsList').querySelectorAll('.step-item');
+        items.forEach((item, idx) => {
+          if (idx === this.currentStepIndex) {
+            item.classList.add('active');
+            
+            // Scroll the list container vertically without scrolling the entire browser window
+            const listEl = document.getElementById('stepsList');
+            const containerHeight = listEl.clientHeight;
+            const itemTop = item.offsetTop;
+            const itemHeight = item.clientHeight;
+            if (itemTop < listEl.scrollTop) {
+              listEl.scrollTop = itemTop;
+            } else if (itemTop + itemHeight > listEl.scrollTop + containerHeight) {
+              listEl.scrollTop = itemTop + itemHeight - containerHeight;
+            }
+          } else {
+            item.classList.remove('active');
+          }
+        });
+
+        this.stepChangeTime = Date.now();
+      }
+
+      getDescriptorsForStep(stepIdx) {
+        const descriptors = [];
+        
+        // Initial state properties
+        const a = this.a;
+        const b = this.b;
+        const d = this.d;
+        const baseVal = this.baseVal;
+        const sum = a + b;
+        
+        // Setup initial simulation variables
+        let units = [];
+        let rods = [];
+        const barX = 720;
+        const barW = 420;
+        const segW = barW / d;
+        const barH = 34;
+        
+        // Group A: Left side
+        for (let i = 0; i < a; i++) {
+          const col = i % 5;
+          const row = Math.floor(i / 5);
+          units.push({
+            id: 'A_' + i,
+            group: 'A',
+            subgroup: '',
+            tx: 60 + col * 26,
+            ty: 220 + row * 26,
+            to: 1,
+            color: '#3b82f6',
+            glowing: false
+          });
+        }
+        
+        // Group B: Right side
+        for (let i = 0; i < b; i++) {
+          const col = i % 5;
+          const row = Math.floor(i / 5);
+          units.push({
+            id: 'B_' + i,
+            group: 'B',
+            subgroup: '',
+            tx: 340 + col * 26,
+            ty: 220 + row * 26,
+            to: 1,
+            color: '#facc15',
+            glowing: false
+          });
+        }
+        
+        const fracBar1Segs = [];
+        for (let i = 0; i < d; i++) {
+          fracBar1Segs.push({
+            id: 'F1_' + i,
+            x: barX + i * segW,
+            y: 200,
+            w: segW,
+            h: barH,
+            colored: i < a,
+            color: '#3b82f6'
+          });
+        }
+        
+        let fracBar2Segs = [];
+        for (let i = 0; i < b; i++) {
+          fracBar2Segs.push({
+            id: 'F2_' + i,
+            tx: barX + i * segW,
+            ty: 310,
+            w: segW,
+            h: barH,
+            color: '#facc15',
+            to: 1,
+            flying: false
+          });
+        }
+        
+        let glowingFracBars = false;
+        let bar1Completed = false;
+        
+        let makeBaseStepHappened = false;
+        let makeBaseStepIndex = -1;
+        let addLeftoverStepHappened = false;
+        let countOnIncrementCount = 0;
+        const countOnIncrementStepIndices = {};
+        
+        // Simulate step transitions up to stepIdx
+        for (let k = 1; k <= stepIdx; k++) {
+          const step = this.steps[k - 1];
+          if (!step) continue;
+          let stepName = typeof step === 'string' ? step : (step.functor || step.string || '');
+          
+          if (stepName.includes('choose_addend_near_base') || stepName.includes('confirm_same_denominator')) {
+            glowingFracBars = true;
+            units.forEach(u => {
+              if (u.group === 'B') u.glowing = true;
+            });
+          }
+          
+          else if (stepName.includes('split_other_addend') || stepName.includes('dispatch_to_cgi')) {
+            glowingFracBars = false;
+            units.forEach(u => u.glowing = false);
+            
+            // split Group A
+            let needed = baseVal - b;
+            if (needed < 0 || needed > a) needed = 1;
+            
+            let count = 0;
+            units.forEach(u => {
+              if (u.group === 'A') {
+                if (count < needed) {
+                  u.tx = 160 + (count % 2) * 26;
+                  u.ty = 220 + Math.floor(count / 2) * 26;
+                  u.subgroup = 'needed';
+                } else {
+                  const leftoverIdx = count - needed;
+                  u.tx = 60 + (leftoverIdx % 5) * 26;
+                  u.ty = 320 + Math.floor(leftoverIdx / 5) * 26;
+                  u.subgroup = 'leftover';
+                }
+                count++;
+              }
+            });
+          }
+          
+          else if (stepName.includes('make_base') || stepName.includes('make_ten_split_leftover')) {
+            makeBaseStepHappened = true;
+            makeBaseStepIndex = k;
+            
+            let needed = baseVal - b;
+            if (needed < 0 || needed > a) needed = 1;
+            
+            // Fly needed Group A blocks to B
+            let neededCount = 0;
+            units.forEach(u => {
+              if (u.subgroup === 'needed') {
+                const targetIdx = b + neededCount;
+                const col = targetIdx % 5;
+                const row = Math.floor(targetIdx / 5);
+                u.tx = 340 + col * 26;
+                u.ty = 220 + row * 26;
+                neededCount++;
+              }
+            });
+            
+            // Fly needed fraction segments
+            const neededFrac = d - a;
+            let countFracFlown = 0;
+            fracBar2Segs.forEach((part, idx) => {
+              if (idx < b) {
+                if (countFracFlown < neededFrac) {
+                  const targetIdx = a + countFracFlown;
+                  part.flying = true;
+                  part.tx = barX + targetIdx * segW;
+                  part.ty = 200;
+                  part.color = '#f43f5e';
+                } else {
+                  const leftIdx = countFracFlown - neededFrac;
+                  part.tx = barX + leftIdx * segW;
+                  part.ty = 310;
+                }
+                countFracFlown++;
+              }
+            });
+          }
+          
+          else if (stepName.includes('add_leftover_after_base') || stepName.includes('preserve_total_by_using_both_split_parts')) {
+            addLeftoverStepHappened = true;
+            glowingFracBars = false;
+          }
+          
+          else if (stepName.includes('count_on_increment')) {
+            countOnIncrementCount++;
+            glowingFracBars = false;
+            countOnIncrementStepIndices[countOnIncrementCount] = k;
+          }
+        }
+        
+        // Post-simulation state resolution
+        if (addLeftoverStepHappened) {
+          // Remove needed/Group B units, keep leftover units
+          const leftovers = units.filter(u => u.subgroup === 'leftover');
+          // Slide leftover units next to Rod
+          leftovers.forEach((u, idx) => {
+            u.tx = 100 + (baseVal * 20) + 15 + idx * 26;
+            u.ty = 220;
+          });
+          units = leftovers;
+          
+          // Rod exists at x=100
+          rods.push({
+            id: 'Rod_0',
+            type: 'rod',
+            tx: 100,
+            ty: 220,
+            to: 1,
+            baseVal: baseVal,
+            w: 20 * baseVal,
+            h: 20
+          });
+          
+          // Bar 1 is completed green
+          fracBar1Segs.forEach(s => {
+            s.colored = true;
+            s.color = '#10b981';
+          });
+          bar1Completed = true;
+          
+          // Remove flying segments from Bar 2, keep leftovers shifting left
+          const neededFrac = d - a;
+          const leftoversFrac = fracBar2Segs.filter((part, idx) => idx >= neededFrac);
+          leftoversFrac.forEach((part, idx) => {
+            part.tx = barX + idx * segW;
+            part.ty = 310;
+          });
+          fracBar2Segs = leftoversFrac;
+        }
+        
+        else if (makeBaseStepHappened) {
+          const stepTimeElapsed = Date.now() - this.stepChangeTime;
+          if (stepIdx === makeBaseStepIndex && stepTimeElapsed > 1000) {
+            // Morph!
+            const leftovers = units.filter(u => u.subgroup === 'leftover');
+            leftovers.forEach((u, idx) => {
+              u.tx = 60 + (idx % 5) * 26;
+              u.ty = 320 + Math.floor(idx / 5) * 26;
+            });
+            units = leftovers;
+            
+            rods.push({
+              id: 'Rod_0',
+              type: 'rod',
+              tx: 340,
+              ty: 220,
+              to: 1,
+              baseVal: baseVal,
+              w: 20 * baseVal,
+              h: 20
+            });
+            
+            fracBar1Segs.forEach(s => {
+              s.colored = true;
+              s.color = '#10b981';
+            });
+            bar1Completed = true;
+            
+            fracBar2Segs = fracBar2Segs.filter(part => !part.flying);
+            fracBar2Segs.forEach((part, idx) => {
+              part.tx = barX + idx * segW;
+              part.ty = 310;
+            });
+          }
+        }
+        
+        else if (countOnIncrementCount > 0) {
+          for (let m = 1; m <= countOnIncrementCount; m++) {
+            const uIdx = a - m;
+            const unit = units.find(u => u.id === 'A_' + uIdx);
+            if (unit) {
+              const targetSlot = b + m - 1;
+              const col = targetSlot % 5;
+              const row = Math.floor(targetSlot / 5);
+              unit.tx = 340 + col * 26;
+              unit.ty = 220 + row * 26;
+              unit.color = '#f43f5e';
+            }
+            
+            const fIdx = b - m;
+            const seg = fracBar2Segs.find(f => f.id === 'F2_' + fIdx);
+            if (seg) {
+              const targetIdx = a + m - 1;
+              const stepTimeElapsed = Date.now() - this.stepChangeTime;
+              const isCurrentIncrement = (stepIdx === countOnIncrementStepIndices[m]);
+              
+              if (isCurrentIncrement && stepTimeElapsed < 1000) {
+                seg.flying = true;
+                seg.tx = barX + targetIdx * segW;
+                seg.ty = 200;
+                seg.color = '#f43f5e';
+              } else {
+                seg.to = 0; // fade out
+                if (targetIdx < fracBar1Segs.length) {
+                  fracBar1Segs[targetIdx].colored = true;
+                  fracBar1Segs[targetIdx].color = '#10b981';
+                } else {
+                  fracBar1Segs.push({
+                    id: 'F1_' + targetIdx,
+                    x: barX + targetIdx * segW,
+                    y: 200,
+                    w: segW,
+                    h: barH,
+                    colored: true,
+                    color: '#10b981'
+                  });
+                }
+              }
+            }
+          }
+        }
+        
+        // Convert to output descriptors
+        units.forEach(u => {
+          descriptors.push({
+            id: u.id,
+            type: 'unit',
+            group: u.group,
+            subgroup: u.subgroup,
+            tx: u.tx,
+            ty: u.ty,
+            to: u.to,
+            color: u.color,
+            glowing: u.glowing
+          });
+        });
+        
+        rods.forEach(r => {
+          descriptors.push({
+            id: r.id,
+            type: 'rod',
+            tx: r.tx,
+            ty: r.ty,
+            to: r.to,
+            baseVal: r.baseVal,
+            w: r.w,
+            h: r.h
+          });
+        });
+        
+        fracBar2Segs.forEach(part => {
+          descriptors.push({
+            id: part.id,
+            type: 'frac2',
+            tx: part.tx,
+            ty: part.ty,
+            w: part.w,
+            h: part.h,
+            color: part.color,
+            to: part.to,
+            flying: part.flying
+          });
+        });
+        
+        return {
+          descriptors,
+          fracBar1Segs,
+          bar1Completed,
+          glowingFracBars
+        };
+      }
+
+      reconcileEntities(targetDescriptors) {
+        const unusedIds = new Set();
+        const allActive = [...this.units, ...this.rods, ...this.fracBar2Segs];
+        allActive.forEach(e => unusedIds.add(e.id));
+        
+        const nextUnits = [];
+        const nextRods = [];
+        const nextFracBar2Segs = [];
+        
+        targetDescriptors.forEach(desc => {
+          let existing = allActive.find(e => e.id === desc.id);
+          
+          if (existing) {
+            existing.tx = desc.tx;
+            existing.ty = desc.ty;
+            existing.to = desc.to;
+            existing.color = desc.color;
+            existing.glowing = desc.glowing;
+            existing.flying = desc.flying;
+            if (desc.type === 'rod') {
+              existing.w = desc.w;
+              existing.h = desc.h;
+              existing.baseVal = desc.baseVal;
+            }
+            unusedIds.delete(existing.id);
+            
+            if (desc.type === 'unit') nextUnits.push(existing);
+            else if (desc.type === 'rod') nextRods.push(existing);
+            else if (desc.type === 'frac2') nextFracBar2Segs.push(existing);
+          } else {
+            if (desc.type === 'unit') {
+              const u = new AnimUnit(desc.id, desc.tx, desc.ty, desc.color, desc.group);
+              u.tx = desc.tx;
+              u.ty = desc.ty;
+              u.opacity = 0;
+              u.to = desc.to;
+              u.glowing = desc.glowing;
+              u.subgroup = desc.subgroup;
+              nextUnits.push(u);
+            } else if (desc.type === 'rod') {
+              const r = new AnimRod(desc.tx, desc.ty, desc.baseVal, 20);
+              r.x = desc.tx === 100 ? 340 : desc.tx - 30; // slide in from composition grid to left
+              r.y = desc.ty;
+              r.opacity = 0;
+              r.to = desc.to;
+              nextRods.push(r);
+            } else if (desc.type === 'frac2') {
+              const f = new AnimFracSeg(desc.id, desc.tx, desc.ty, desc.w, desc.h, desc.color);
+              f.opacity = 0;
+              f.to = desc.to;
+              f.flying = desc.flying;
+              nextFracBar2Segs.push(f);
+            }
+          }
+        });
+        
+        allActive.forEach(e => {
+          if (unusedIds.has(e.id)) {
+            e.to = 0;
+            if (e.opacity > 0.01) {
+              if (e instanceof AnimUnit) nextUnits.push(e);
+              else if (e instanceof AnimRod) nextRods.push(e);
+              else if (e instanceof AnimFracSeg) nextFracBar2Segs.push(e);
+            }
+          }
+        });
+        
+        this.units = nextUnits;
+        this.rods = nextRods;
+        this.fracBar2Segs = nextFracBar2Segs;
+      }
+
+      update() {
+        const state = this.getDescriptorsForStep(this.currentStepIndex);
+        this.reconcileEntities(state.descriptors);
+        
+        this.fracBar1Segs = state.fracBar1Segs;
+        this.bar1Completed = state.bar1Completed;
+        this.glowingFracBars = state.glowingFracBars;
+        
+        this.units.forEach(u => u.update());
+        this.rods.forEach(r => r.update());
+        this.fracBar2Segs.forEach(p => p.update());
+      }
+
+      draw(ctx) {
+        // Draw compartments backgrounds
+        ctx.fillStyle = '#0a0914';
+        
+        // Ace of Base backing
+        ctx.fillRect(40, 80, 520, 390);
+        ctx.strokeStyle = '#1b1836';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(40, 80, 520, 390);
+
+        // Fraction Bars backing
+        ctx.fillRect(680, 80, 500, 390);
+        ctx.strokeRect(680, 80, 500, 390);
+
+        // Subtitles/Labels
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 9.5pt system-ui, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText("ACE OF BASE: UNIT COORDINATING", 300, 115);
+        ctx.fillText("FRACTION BARS: UNIT PARTITIONING", 930, 115);
+
+        ctx.fillStyle = 'rgba(255,255,255,0.2)';
+        ctx.font = '7.5pt monospace';
+        ctx.fillText(`Addend A: ${this.a} | Addend B: ${this.b}`, 300, 135);
+        ctx.fillText(`Fraction A: ${this.a}/${this.d} | Fraction B: ${this.b}/${this.d}`, 930, 135);
+
+        // 1. Draw Ace of Base elements
+        ctx.strokeStyle = 'rgba(255,255,255,0.02)';
+        ctx.strokeRect(55, 210, 140, 160);
+        ctx.strokeRect(335, 210, 140, 160);
+
+        this.rods.forEach(r => r.draw(ctx));
+        this.units.forEach(u => u.draw(ctx));
+
+        // 2. Draw Fraction Bars elements
+        const barW = 420;
+        const barH = 34;
+
+        // Bar 1 Background
+        ctx.fillStyle = '#100f20';
+        ctx.fillRect(720, 200, barW, barH);
+        
+        // Bar 1 Segments
+        this.fracBar1Segs.forEach(p => {
+          if (p.colored) {
+            ctx.fillStyle = p.color;
+            ctx.fillRect(p.x, p.y, p.w, p.h);
+          }
+          ctx.strokeStyle = 'rgba(0,0,0,0.5)';
+          ctx.lineWidth = 1;
+          ctx.strokeRect(p.x, p.y, p.w, p.h);
+        });
+
+        // Bar 1 container outline
+        ctx.strokeStyle = this.bar1Completed ? '#10b981' : (this.glowingFracBars ? '#fff' : '#232042');
+        ctx.lineWidth = this.bar1Completed ? 2.5 : 1.5;
+        ctx.strokeRect(720, 200, barW, barH);
+
+        // Bar 2 Background
+        ctx.fillStyle = '#100f20';
+        ctx.fillRect(720, 310, barW, barH);
+
+        // Bar 2 static partition grid
+        const segW = barW / this.d;
+        for (let i = 0; i < this.d; i++) {
+          ctx.strokeStyle = 'rgba(255,255,255,0.03)';
+          ctx.strokeRect(720 + i * segW, 310, segW, barH);
+        }
+
+        // Bar 2 Flying Segments
+        this.fracBar2Segs.forEach(part => part.draw(ctx));
+
+        // Bar 2 container outline
+        ctx.strokeStyle = this.glowingFracBars ? '#fff' : '#232042';
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(720, 310, barW, barH);
+
+        // Whole boundary line (1.0)
+        ctx.strokeStyle = '#ef4444';
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        ctx.moveTo(720 + barW, 160);
+        ctx.lineTo(720 + barW, 380);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.fillStyle = '#ef4444';
+        ctx.font = 'bold 7pt monospace';
+        ctx.textAlign = 'right';
+        ctx.fillText('1.0 WHOLE UNIT BAR BOUNDARY', 720 + barW - 6, 175);
+      }
+
+      play() {
+        if (this.currentStepIndex >= this.steps.length) {
+          this.currentStepIndex = 0;
+          this.updateHUD();
+        }
+        this.isPlaying = true;
+        document.getElementById('btnPlay').textContent = 'Pause';
+        this.timer = setInterval(() => {
+          this.next();
+        }, 2200);
+      }
+
+      pause() {
+        this.isPlaying = false;
+        document.getElementById('btnPlay').textContent = 'Play';
+        if (this.timer) {
+          clearInterval(this.timer);
+          this.timer = null;
+        }
+      }
+
+      togglePlay() {
+        if (this.isPlaying) this.pause();
+        else this.play();
+      }
+
+      next() {
+        if (this.currentStepIndex < this.steps.length) {
+          this.currentStepIndex++;
+          this.updateHUD();
+        } else {
+          this.pause();
+        }
+      }
+
+      prev() {
+        if (this.currentStepIndex > 0) {
+          this.currentStepIndex--;
+          this.updateHUD();
+        }
+      }
+    }
+
+    const replay = new UnifiedReplay();
+
+    // -------------------------------------------------------------------
+    // EQUATION LIFECYCLE (API trigger)
+    // -------------------------------------------------------------------
+    btnAnimate.addEventListener('click', () => {
+      const a = parseInt(eqA.value) || 7;
+      const b = parseInt(eqB.value) || 8;
+      const d = parseInt(eqD.value) || 10;
+
+      replay.pause();
+      replay.init(a, b, d, activeBase);
+
+      const strategyName = (a + b < activeBase) ? 'count_on_from_larger' : (activeBase === 10 ? 'make_ten_split_leftover' : 'make_base_transfer');
+
+      if (isConnected) {
+        // Dispatch to CGI and fetch steps trace
+        fetch('/api/cgi_dispatch', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            operation: 'fraction',
+            kind: strategyName,
+            a: a,
+            b: b,
+            d: d
+          })
+        })
+        .then(res => {
+          if (!res.ok) throw new Error("HTTP error " + res.status);
+          return res.json();
+        })
+        .then(data => {
+          if (data.success) {
+            replay.setSteps(data.trace, data.outcome.functor);
+            replay.play();
+            updatePrologSvg(a, b, d);
+          } else {
+            runLocalSimulation(a, b, d);
+          }
+        })
+        .catch(err => {
+          console.warn("API error, falling back to local simulation.", err);
+          runLocalSimulation(a, b, d);
+        });
+      } else {
+        runLocalSimulation(a, b, d);
+      }
+    });
+
+    function runLocalSimulation(a, b, d) {
+      let trace = [];
+      const sum = a + b;
+      const strategyName = (sum < activeBase) ? 'co_denominator_count_on_from_larger' : 'co_denominator_make_ten_split_leftover';
+
+      trace.push(`confirm_same_denominator(${d})`);
+      trace.push(`hold_referent_whole_at(fraction(${d}, ${d}))`);
+      
+      if (sum < activeBase) {
+        trace.push(`dispatch_to_cgi(count_on_from_larger, numerators(${a}, ${b}))`);
+        trace.push(`choose_addend_near_base(${Math.max(a, b)}, ${activeBase}, ${activeBase})`);
+        for (let i = 1; i <= Math.min(a, b); i++) {
+          trace.push(`count_on_increment(${b + i}/${d})`);
+        }
+      } else {
+        const needed = activeBase - b;
+        const leftover = a - needed;
+        trace.push(`dispatch_to_cgi(make_base, numerators(${a}, ${b}))`);
+        trace.push(`choose_addend_near_base(${b}, ${activeBase}, ${activeBase})`);
+        trace.push(`split_other_addend(${a}, needed_part(${needed}), leftover(${leftover}))`);
+        trace.push(`make_base(${activeBase})`);
+        trace.push(`add_leftover_after_base(${leftover}/${d}, ${sum}/${d})`);
+      }
+
+      replay.setSteps(trace, strategyName);
+      replay.play();
+    }
+
+    // Dynamic Prolog SVG renderer loading
+    const svgDisplay = document.getElementById('prologSvgDisplay');
+
+    function updatePrologSvg(a, b, d) {
+      if (!isConnected) return;
+      const sum = a + b;
+      const fracSumStr = `${sum}/${d}`;
+      const url = `/api/visualize/coordination?base=${activeBase}&val_up=${sum}&val_down=${fracSumStr}`;
+      
+      fetch(url)
+        .then(res => res.text())
+        .then(svgText => {
+          svgDisplay.innerHTML = svgText;
+        })
+        .catch(err => console.error("Error fetching Prolog SVG:", err));
+    }
+
+    // Playback events
+    document.getElementById('btnPlay').addEventListener('click', () => replay.togglePlay());
+    document.getElementById('btnPrev').addEventListener('click', () => {
+      replay.pause();
+      replay.prev();
+    });
+    document.getElementById('btnNext').addEventListener('click', () => {
+      replay.pause();
+      replay.next();
+    });
+
+    // -------------------------------------------------------------------
+    // ANIMATION ENGINE LOOP
+    // -------------------------------------------------------------------
+    function loop() {
+      replay.update();
+      ctx.clearRect(0, 0, LOGICAL_WIDTH, LOGICAL_HEIGHT);
+      replay.draw(ctx);
+      requestAnimationFrame(loop);
+    }
+
+    // Initial triggers
+    checkBackendConnection();
+    replay.init(7, 8, 10, 10);
+    requestAnimationFrame(loop);
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+{
+  "canvas": {
+    "height": 420,
+    "width": 760
+  },
+  "family": "transplant_deformation",
+  "foreignPrimitive": "circle_radial_partition",
+  "frames": [
+    {
+      "caption": "Choose a collection as one fractional set host.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "count": 3,
+            "kind": "set-host",
+            "label": "set host",
+            "r": 34,
+            "role": "whole",
+            "x": 160,
+            "y": 132
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 1,
+      "verb": "host_shape(fractional_set_model)"
+    },
+    {
+      "caption": "The radial partition is licensed inside the circle-region vocabulary.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "cx": 260,
+            "cy": 181,
+            "kind": "home-circle",
+            "label": "circle home",
+            "r": 94,
+            "role": "whole"
+          },
+          {
+            "cx": 260,
+            "cy": 181,
+            "host": "circle",
+            "kind": "radial-partition",
+            "label": "licensed radial partition",
+            "r": 94,
+            "role": "iterated",
+            "segments": 6
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 2,
+      "verb": "licensed_home(circle_radial_partition,circle_region)"
+    },
+    {
+      "caption": "Transplant the circle's radial partition rule onto each element of the set host.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "count": 3,
+            "kind": "set-host",
+            "label": "set host",
+            "r": 34,
+            "role": "whole",
+            "x": 160,
+            "y": 132
+          },
+          {
+            "count": 3,
+            "host": "set",
+            "kind": "radial-partition",
+            "label": "radial partition on set",
+            "r": 34,
+            "role": "deformation",
+            "segments": 3,
+            "shade": [
+              1,
+              2
+            ],
+            "x": 160,
+            "y": 132
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 3,
+      "verb": "transplant(circle_radial_partition,fractional_set_model)"
+    },
+    {
+      "caption": "The result is a hybridized model: a foreign primitive on an illicit host.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "count": 3,
+            "kind": "set-host",
+            "label": "set host",
+            "r": 34,
+            "role": "whole",
+            "x": 160,
+            "y": 132
+          },
+          {
+            "count": 3,
+            "host": "set",
+            "kind": "radial-partition",
+            "label": "radial partition on set",
+            "r": 34,
+            "role": "deformation",
+            "segments": 3,
+            "shade": [
+              1,
+              2
+            ],
+            "x": 160,
+            "y": 132
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 4,
+      "verb": "hybrid_result(radial_partition_on_set)"
+    }
+  ],
+  "illicitHost": "fractional_set_model",
+  "kind": "radial_partition_on_set",
+  "licensedHome": "circle_region",
+  "request": {
+    "spec": "radial_partition_on_set"
+  },
+  "result": "misconception",
+  "tuple": "hybridization(foreign_primitive, licensed_home, illicit_host)",
+  "violation": "object_language_binding_violation"
+}

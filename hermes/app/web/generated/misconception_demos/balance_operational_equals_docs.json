@@ -1,0 +1,132 @@
+{
+  "DEMO-balance-operational-equals": {
+    "visuals": [
+      {
+        "expression": "2x + 3 = 11",
+        "family": "balance_preservation_vs_operational_equals_subtract_one_side",
+        "correct": {
+          "description": "Productive balance move: subtract 3 from both pans, so the beam stays level.",
+          "doc": {
+            "kind": "balance_preserving_subtract_both_pans",
+            "request": {
+              "a": 2,
+              "b": 3,
+              "c": 11,
+              "form": "A*x + B = C"
+            },
+            "result": "x = 4",
+            "canvas": {
+              "height": 360,
+              "width": 700
+            },
+            "frames": [
+              {
+                "caption": "Take 3 units off BOTH pans. Left 2x, right 8; still level.",
+                "scene": {
+                  "beam": {
+                    "tilt": "level"
+                  },
+                  "format": "balance-scale",
+                  "pan_role": "pan",
+                  "pans": {
+                    "left": [
+                      {
+                        "count": 2,
+                        "kind": "x",
+                        "role": "x-box"
+                      }
+                    ],
+                    "right": [
+                      {
+                        "count": 8,
+                        "kind": "unit",
+                        "role": "unit-weight"
+                      }
+                    ]
+                  },
+                  "totals": {
+                    "left": 8,
+                    "right": 8
+                  },
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "subtract_units_from_both_pans"
+              }
+            ]
+          }
+        },
+        "incorrect": {
+          "description": "Misconception/deformation: subtract 3 from only the left pan; the untouched right pan is marked as deformation and the beam tips.",
+          "doc": {
+            "kind": "operational_equals_subtract_left_only",
+            "request": {
+              "a": 2,
+              "b": 3,
+              "c": 11,
+              "form": "A*x + B = C"
+            },
+            "result": "x = 4",
+            "canvas": {
+              "height": 360,
+              "width": 700
+            },
+            "frames": [
+              {
+                "caption": "Taking 3 off the LEFT pan only leaves 2x against 11: the beam tips. The same move was not done to both sides.",
+                "scene": {
+                  "beam": {
+                    "tilt": "right_down"
+                  },
+                  "format": "balance-scale",
+                  "pan_role": "pan",
+                  "pans": {
+                    "left": [
+                      {
+                        "count": 2,
+                        "kind": "x",
+                        "role": "x-box"
+                      }
+                    ],
+                    "right": [
+                      {
+                        "count": 11,
+                        "kind": "unit",
+                        "role": "deformation"
+                      }
+                    ]
+                  },
+                  "totals": {
+                    "left": 8,
+                    "right": 11
+                  },
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "subtract_from_left_pan_only"
+              }
+            ]
+          }
+        },
+        "grammar": {
+          "deformation": {
+            "correct_answer": "solution(4)",
+            "correct_task": "equation(linear(2,3,11))",
+            "misconception": "operational_equals_subtract_from_one_side",
+            "mode": "misconception",
+            "representation": "balance_scale",
+            "unsupported_answer": "fraction(11,2)",
+            "unsupported_equation": "equation(linear(2,0,11))",
+            "violation": "reason(balance_not_preserved)"
+          },
+          "preserves": false,
+          "representation": "balance_scale",
+          "spec": "balance_compare(2,3,11)",
+          "target_task": "equation(linear(2,3,11))"
+        }
+      }
+    ]
+  }
+}

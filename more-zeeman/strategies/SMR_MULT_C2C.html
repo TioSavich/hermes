@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>C2C — Coordinating Two Counts</title>
+<link rel="stylesheet" href="strategy_shell.css">
+</head>
+<body>
+<div class="container">
+  <p class="back"><a href="index.html">← All strategies</a></p>
+  <h1>C2C: Coordinating Two Counts</h1>
+  <p class="meta">Computed by <code>strategies/math/smr_mult_c2c.pl</code>. The most embodied multiplication strategy: count every item in every group. The number line shows the running Total ticking up by 1 per item.</p>
+
+  <div class="inputs">
+    <label>Groups N: <input type="number" id="a1" value="4"></label>
+    <label>Group size S: <input type="number" id="a2" value="3"></label>
+    <button id="go">Calculate and Visualize</button>
+  </div>
+
+  <h2>Result</h2>
+  <div id="out"></div>
+
+  <h2>Number-line Diagram (running Total)</h2>
+  <svg id="diagram" width="700" height="280"></svg>
+
+  <h2>Step Trace (from Prolog)</h2>
+  <ol id="steps" class="step-list"></ol>
+</div>
+<script src="strategy_viz.js"></script>
+<script>
+  wireStrategyPage({
+    strategy: 'C2C', op: '*',
+    a1Id: 'a1', a2Id: 'a2', btnId: 'go',
+    outId: 'out', svgId: 'diagram', stepListId: 'steps'
+  });
+</script>
+</body>
+</html>

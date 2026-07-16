@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img"
+     aria-label="The numeral entombs its counting-history. is_recollection builds the full count from zero, the grounding rule asks for it only to throw it away.">
+  <rect x="0" y="0" width="720" height="440" fill="#f8f1df"/>
+
+  <!-- title -->
+  <text x="360" y="28" text-anchor="middle" font-family="Georgia,'Times New Roman',serif"
+        font-size="20" font-weight="700" fill="#1b1810">The numeral entombs its counting-history</text>
+  <text x="360" y="48" text-anchor="middle" font-family="system-ui,sans-serif"
+        font-size="12" fill="#5a5446">formalization/axioms_robinson.pl  ·  proves_impl(_ =&gt; [o(eq(5,5))], _)</text>
+
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1b1810"/>
+    </marker>
+    <marker id="ahR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7c2727"/>
+    </marker>
+  </defs>
+
+  <!-- ===================== NODE 1: is_recollection (left) ===================== -->
+  <g transform="translate(24,86)">
+    <rect x="0" y="0" width="186" height="98" rx="8" fill="#cabf9f" stroke="#0d0c08" stroke-width="1.6"/>
+    <text x="93" y="22" text-anchor="middle" font-family="system-ui,sans-serif"
+          font-size="13" font-weight="700" fill="#1b1810">is_recollection(5, History)</text>
+    <text x="93" y="38" text-anchor="middle" font-family="monospace"
+          font-size="9.5" fill="#5a5446">:46-50  via history_for_… :28-33</text>
+    <text x="93" y="58" text-anchor="middle" font-family="monospace"
+          font-size="9.5" fill="#2c5e2c">builds the WHOLE count</text>
+    <text x="93" y="74" text-anchor="middle" font-family="monospace"
+          font-size="9" fill="#2c5e2c">[succ(4),succ(3),succ(2),</text>
+    <text x="93" y="88" text-anchor="middle" font-family="monospace"
+          font-size="9" fill="#2c5e2c">succ(1),succ(0),axiom(zero)]</text>
+  </g>
+
+  <!-- ===================== NODE 2: recollection_history (center-top) ===================== -->
+  <g transform="translate(268,86)">
+    <rect x="0" y="0" width="184" height="98" rx="8" fill="#efe4c4" stroke="#0d0c08" stroke-width="1.6"/>
+    <text x="92" y="24" text-anchor="middle" font-family="system-ui,sans-serif"
+          font-size="13" font-weight="700" fill="#1b1810">recollection_history/2</text>
+    <text x="92" y="42" text-anchor="middle" font-family="monospace"
+          font-size="9.5" fill="#5a5446">:114-115</text>
+    <text x="92" y="62" text-anchor="middle" font-family="monospace"
+          font-size="10" fill="#1b1810">once(is_recollection(N, History))</text>
+    <text x="92" y="82" text-anchor="middle" font-family="system-ui,sans-serif"
+          font-size="10.5" fill="#5a5446">the predicate BUILT to carry History</text>
+  </g>
+
+  <!-- arrow 1 -> 2 -->
+  <path d="M 210 122 C 235 122, 245 122, 266 122" fill="none" stroke="#1b1810" stroke-width="2" marker-end="url(#ah)"/>
+
+  <!-- ===================== NODE 3: the grounding rule = VANISHING POINT (right) ===================== -->
+  <g transform="translate(508,76)">
+    <rect x="0" y="0" width="192" height="120" rx="8" fill="#1b1810" stroke="#7c2727" stroke-width="2.6"/>
+    <text x="96" y="22" text-anchor="middle" font-family="system-ui,sans-serif"
+          font-size="10.5" font-weight="700" fill="#f8f1df">proves_impl(_ =&gt; [o(eq(A,B))], _)</text>
+    <text x="96" y="38" text-anchor="middle" font-family="monospace"
+          font-size="9.5" fill="#e7c98a">:310-314  (grounding rule)</text>
+    <text x="96" y="60" text-anchor="middle" font-family="monospace"
+          font-size="11.5" fill="#e07a7a">once(is_recollection(A, _))</text>
+    <text x="96" y="80" text-anchor="middle" font-family="system-ui,sans-serif"
+          font-size="10.5" fill="#f0e6cd">History is the anonymous _ :</text>
+    <text x="96" y="96" text-anchor="middle" font-family="system-ui,sans-serif"
+          font-size="10.5" fill="#f0e6cd">the count is asked for, then dropped</text>
+    <text x="96" y="113" text-anchor="middle" font-family="system-ui,sans-serif"
+          font-size="9.5" font-style="italic" fill="#c9a14a">the numeral eats its own tail</text>
+  </g>
+
+  <!-- arrow 2 -> 3 -->
+  <path d="M 452 122 C 478 122, 488 130, 506 134" fill="none" stroke="#1b1810" stroke-width="2" marker-end="url(#ah)"/>
+
+  <text x="604" y="212" text-anchor="middle" font-family="system-ui,sans-serif"
+        font-size="11" font-weight="700" fill="#7c2727">vanishing point: the History slot is _</text>
+
+  <!-- ===================== THE NUMERAL (the surviving residue, center-low) ===================== -->
+  <g transform="translate(300,236)">
+    <rect x="0" y="0" width="120" height="56" rx="8" fill="#efe4c4" stroke="#0d0c08" stroke-width="1.6"/>
+    <text x="60" y="34" text-anchor="middle" font-family="Georgia,serif"
+          font-size="26" font-weight="700" fill="#1b1810">5</text>
+  </g>
+  <text x="360" y="306" text-anchor="middle" font-family="system-ui,sans-serif"
+        font-size="11" fill="#5a5446">o(eq(5,5)) holds — the numeral stands, its counting-history gone</text>
+
+  <!-- arrow from vanishing point down to surviving numeral -->
+  <path d="M 604 196 C 604 236, 470 250, 422 258" fill="none" stroke="#7c2727" stroke-width="1.8" marker-end="url(#ahR)"/>
+
+  <!-- ===================== THE LOOP-BACK (numeral -> is_recollection) ===================== -->
+  <path d="M 300 264 C 170 264, 120 232, 117 186" fill="none" stroke="#7c2727" stroke-width="1.8"
+        stroke-dasharray="6 4" marker-end="url(#ahR)"/>
+  <text x="150" y="232" text-anchor="middle" font-family="system-ui,sans-serif"
+        font-size="10" font-style="italic" fill="#7c2727">re-count on demand: the numeral is</text>
+  <text x="150" y="246" text-anchor="middle" font-family="system-ui,sans-serif"
+        font-size="10" font-style="italic" fill="#7c2727">licensed by the very history it threw away</text>
+
+  <!-- ===================== CAPTURED OUTPUT BLOCK ===================== -->
+  <g transform="translate(20,316)">
+    <rect x="0" y="0" width="680" height="112" rx="6" fill="#2b2820" stroke="#0d0c08" stroke-width="1.2"/>
+    <text x="10" y="18" font-family="monospace" font-size="10" fill="#9fd29f">?- enable_axiom_pack(robinson).</text>
+    <text x="10" y="34" font-family="monospace" font-size="10" fill="#f0e6cd">?- is_recollection(5, History).</text>
+    <text x="10" y="48" font-family="monospace" font-size="10" fill="#e7c98a">   History = [succ(4),succ(3),succ(2),succ(1),succ(0),axiom(zero)].   % the full count exists</text>
+    <text x="10" y="66" font-family="monospace" font-size="10" fill="#f0e6cd">?- proves_impl(_ =&gt; [o(eq(5,5))], Proof).</text>
+    <text x="10" y="80" font-family="monospace" font-size="10" fill="#e7c98a">   true.   % rule succeeds via  once(is_recollection(5, _))  — History = _ , discarded</text>
+    <text x="10" y="96" font-family="monospace" font-size="10" fill="#e07a7a">   Proof = _6300.   % proof object is UNBOUND (var) -> the proof is thrown away</text>
+    <text x="10" y="108" font-family="monospace" font-size="8.5" fill="#8a8470">verified live: swipl -l paths.pl -l arche-trace/sequent_engine.pl  (sequent_engine module)</text>
+  </g>
+</svg>

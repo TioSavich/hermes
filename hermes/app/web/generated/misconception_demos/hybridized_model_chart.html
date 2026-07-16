@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chart of Hybridized Models</title>
+  <style>
+    body { margin: 0; background: #f8f1df; color: #1b1810; font-family: system-ui, sans-serif; }
+    main { max-width: 1280px; margin: 0 auto; padding: 28px; }
+    h1 { font-family: Georgia, "Times New Roman", serif; font-size: 32px; margin: 0 0 8px; }
+    .residue { margin: 0 0 22px; max-width: 820px; color: #4d4638; }
+    table { width: 100%; border-collapse: collapse; background: #fffaf0; border: 1px solid #cabf9f; }
+    th, td { border: 1px solid #cabf9f; padding: 12px; vertical-align: top; }
+    thead th { background: #efe3c8; font-size: 14px; text-align: left; }
+    tbody th { width: 190px; text-align: left; }
+    code { display: inline-block; margin-top: 6px; font-size: 12px; color: #4d4638; }
+    img { display: block; width: 220px; max-width: 100%; background: #f8f1df; border: 1px solid #cabf9f; }
+    .frame-img { margin-bottom: 8px; }
+    a { display: inline-block; margin-top: 8px; color: #365f6b; }
+    .step { font-size: 12px; font-weight: 700; color: #6d5b31; }
+    .verb { margin-top: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+    p { margin: 6px 0 0; line-height: 1.35; }
+    .case-title { display: block; font-weight: 700; }
+    .missing { color: #8b1e16; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Chart of Hybridized Models</h1>
+  <p class="residue"><strong>human_endorsement_required:</strong> Hermes checks the transplant grammar and render contract; it does not certify a student-work reading.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Case</th>
+        <th>One unit</th>
+        <th>Licensed home</th>
+        <th>Transplant</th>
+        <th>Hybrid model</th>
+        <th>Grammar proof</th>
+      </tr>
+    </thead>
+    <tbody>
+<tr data-hybridization-case="circle_partition_on_rectangle" data-family="transplant_deformation" data-foreign-primitive="circle_radial_partition" data-licensed-home="circle_region" data-illicit-host="rectangle_area_model" data-proof-status="object_language_binding_violation"><th scope="row"><span class="case-title">circle partition on rectangle</span><code>circle_partition_on_rectangle</code></th><td><img class="frame-img" src="DEMO-hybridization-circle-partition-on-rectangle-frame-1.svg" alt="circle partition on rectangle frame 1"><div class="step">Step 1</div><div class="verb">host_shape(rectangle_area_model)</div><p>Choose a rectangle as the area-model host.</p></td><td><img class="frame-img" src="DEMO-hybridization-circle-partition-on-rectangle-frame-2.svg" alt="circle partition on rectangle frame 2"><div class="step">Step 2</div><div class="verb">licensed_home(circle_radial_partition,circle_region)</div><p>The radial partition is licensed inside the circle-region vocabulary.</p></td><td><img class="frame-img" src="DEMO-hybridization-circle-partition-on-rectangle-frame-3.svg" alt="circle partition on rectangle frame 3"><div class="step">Step 3</div><div class="verb">transplant(circle_radial_partition,rectangle_area_model)</div><p>Transplant the circle partition rule onto the rectangle host.</p></td><td><img src="DEMO-hybridization-circle-partition-on-rectangle-incorrect.svg" alt="circle partition on rectangle hybrid result"><a href="DEMO-hybridization-circle-partition-on-rectangle-filmstrip.svg">Temporal filmstrip</a></td><td><code>circle_radial_partition</code><br><span>licensed in</span> <code>circle_region</code><br><span>placed on</span> <code>rectangle_area_model</code><br><strong>object_language_binding_violation</strong></td></tr>
+<tr data-hybridization-case="vertical_partition_on_circle" data-family="transplant_deformation" data-foreign-primitive="rectangle_vertical_partition" data-licensed-home="rectangle_area_model" data-illicit-host="circle_region" data-proof-status="object_language_binding_violation"><th scope="row"><span class="case-title">vertical partition on circle</span><code>vertical_partition_on_circle</code></th><td><img class="frame-img" src="DEMO-hybridization-vertical-partition-on-circle-frame-1.svg" alt="vertical partition on circle frame 1"><div class="step">Step 1</div><div class="verb">host_shape(circle_region)</div><p>Choose a circle as the region host.</p></td><td><img class="frame-img" src="DEMO-hybridization-vertical-partition-on-circle-frame-2.svg" alt="vertical partition on circle frame 2"><div class="step">Step 2</div><div class="verb">licensed_home(rectangle_vertical_partition,rectangle_area_model)</div><p>The vertical partition is licensed inside the rectangle area-model vocabulary.</p></td><td><img class="frame-img" src="DEMO-hybridization-vertical-partition-on-circle-frame-3.svg" alt="vertical partition on circle frame 3"><div class="step">Step 3</div><div class="verb">transplant(rectangle_vertical_partition,circle_region)</div><p>Transplant the rectangle&#x27;s vertical partition rule onto the circular host.</p></td><td><img src="DEMO-hybridization-vertical-partition-on-circle-incorrect.svg" alt="vertical partition on circle hybrid result"><a href="DEMO-hybridization-vertical-partition-on-circle-filmstrip.svg">Temporal filmstrip</a></td><td><code>rectangle_vertical_partition</code><br><span>licensed in</span> <code>rectangle_area_model</code><br><span>placed on</span> <code>circle_region</code><br><strong>object_language_binding_violation</strong></td></tr>
+<tr data-hybridization-case="radial_partition_on_set" data-family="transplant_deformation" data-foreign-primitive="circle_radial_partition" data-licensed-home="circle_region" data-illicit-host="fractional_set_model" data-proof-status="object_language_binding_violation"><th scope="row"><span class="case-title">radial partition on set</span><code>radial_partition_on_set</code></th><td><img class="frame-img" src="DEMO-hybridization-radial-partition-on-set-frame-1.svg" alt="radial partition on set frame 1"><div class="step">Step 1</div><div class="verb">host_shape(fractional_set_model)</div><p>Choose a collection as one fractional set host.</p></td><td><img class="frame-img" src="DEMO-hybridization-radial-partition-on-set-frame-2.svg" alt="radial partition on set frame 2"><div class="step">Step 2</div><div class="verb">licensed_home(circle_radial_partition,circle_region)</div><p>The radial partition is licensed inside the circle-region vocabulary.</p></td><td><img class="frame-img" src="DEMO-hybridization-radial-partition-on-set-frame-3.svg" alt="radial partition on set frame 3"><div class="step">Step 3</div><div class="verb">transplant(circle_radial_partition,fractional_set_model)</div><p>Transplant the circle&#x27;s radial partition rule onto each element of the set host.</p></td><td><img src="DEMO-hybridization-radial-partition-on-set-incorrect.svg" alt="radial partition on set hybrid result"><a href="DEMO-hybridization-radial-partition-on-set-filmstrip.svg">Temporal filmstrip</a></td><td><code>circle_radial_partition</code><br><span>licensed in</span> <code>circle_region</code><br><span>placed on</span> <code>fractional_set_model</code><br><strong>object_language_binding_violation</strong></td></tr>
+<tr data-hybridization-case="parallel_partition_on_triangle" data-family="transplant_deformation" data-foreign-primitive="rectangle_parallel_partition" data-licensed-home="rectangle_area_model" data-illicit-host="triangle_region" data-proof-status="object_language_binding_violation"><th scope="row"><span class="case-title">parallel partition on triangle</span><code>parallel_partition_on_triangle</code></th><td><img class="frame-img" src="DEMO-hybridization-parallel-partition-on-triangle-frame-1.svg" alt="parallel partition on triangle frame 1"><div class="step">Step 1</div><div class="verb">host_shape(triangle_region)</div><p>Choose a triangle as the region host.</p></td><td><img class="frame-img" src="DEMO-hybridization-parallel-partition-on-triangle-frame-2.svg" alt="parallel partition on triangle frame 2"><div class="step">Step 2</div><div class="verb">licensed_home(rectangle_parallel_partition,rectangle_area_model)</div><p>The parallel band partition is licensed inside the rectangle area-model vocabulary.</p></td><td><img class="frame-img" src="DEMO-hybridization-parallel-partition-on-triangle-frame-3.svg" alt="parallel partition on triangle frame 3"><div class="step">Step 3</div><div class="verb">transplant(rectangle_parallel_partition,triangle_region)</div><p>Transplant the rectangle&#x27;s parallel partition rule onto the triangular host.</p></td><td><img src="DEMO-hybridization-parallel-partition-on-triangle-incorrect.svg" alt="parallel partition on triangle hybrid result"><a href="DEMO-hybridization-parallel-partition-on-triangle-filmstrip.svg">Temporal filmstrip</a></td><td><code>rectangle_parallel_partition</code><br><span>licensed in</span> <code>rectangle_area_model</code><br><span>placed on</span> <code>triangle_region</code><br><strong>object_language_binding_violation</strong></td></tr>
+    </tbody>
+  </table>
+  <script type="application/json" id="hybridized-model-chart-proof">
+{
+  "kind": "hermes_hybridized_model_chart_proof",
+  "source": "hybridization_scene_case_registry",
+  "cases": [
+    {
+      "kind": "circle_partition_on_rectangle",
+      "code": "DEMO-hybridization-circle-partition-on-rectangle",
+      "family": "transplant_deformation",
+      "foreign_primitive": "circle_radial_partition",
+      "licensed_home": "circle_region",
+      "illicit_host": "rectangle_area_model",
+      "violation": "object_language_binding_violation",
+      "frame_count": 4
+    },
+    {
+      "kind": "vertical_partition_on_circle",
+      "code": "DEMO-hybridization-vertical-partition-on-circle",
+      "family": "transplant_deformation",
+      "foreign_primitive": "rectangle_vertical_partition",
+      "licensed_home": "rectangle_area_model",
+      "illicit_host": "circle_region",
+      "violation": "object_language_binding_violation",
+      "frame_count": 4
+    },
+    {
+      "kind": "radial_partition_on_set",
+      "code": "DEMO-hybridization-radial-partition-on-set",
+      "family": "transplant_deformation",
+      "foreign_primitive": "circle_radial_partition",
+      "licensed_home": "circle_region",
+      "illicit_host": "fractional_set_model",
+      "violation": "object_language_binding_violation",
+      "frame_count": 4
+    },
+    {
+      "kind": "parallel_partition_on_triangle",
+      "code": "DEMO-hybridization-parallel-partition-on-triangle",
+      "family": "transplant_deformation",
+      "foreign_primitive": "rectangle_parallel_partition",
+      "licensed_home": "rectangle_area_model",
+      "illicit_host": "triangle_region",
+      "violation": "object_language_binding_violation",
+      "frame_count": 4
+    }
+  ],
+  "interpretive_residue": {
+    "status": "human_endorsement_required",
+    "claim": "Hermes checks the transplant grammar and render contract; it does not certify a student-work reading."
+  }
+}
+  </script>
+</main>
+</body>
+</html>

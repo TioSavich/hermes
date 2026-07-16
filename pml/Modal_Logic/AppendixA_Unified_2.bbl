@@ -1,0 +1,1573 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global/global}
+    \entry{agamben_language_2006}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=8c74b403c34f5bada1d8b1bd87b56556}{%
+           family={Agamben},
+           familyi={A\bibinitperiod},
+           given={Giorgio},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{translator}{2}{}{%
+        {{hash=f73b3cb2ed57868165bfa590e7041236}{%
+           family={Pinkus},
+           familyi={P\bibinitperiod},
+           given={Karen},
+           giveni={K\bibinitperiod}}}%
+        {{hash=b7bb34dd7c2c243429b9bdc9f32b38a8}{%
+           family={Hardt},
+           familyi={H\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \list{location}{1}{%
+        {Minneapolis London}%
+      }
+      \list{publisher}{1}{%
+        {University Of Minnesota Press}%
+      }
+      \strng{namehash}{8c74b403c34f5bada1d8b1bd87b56556}
+      \strng{fullhash}{8c74b403c34f5bada1d8b1bd87b56556}
+      \strng{fullhashraw}{8c74b403c34f5bada1d8b1bd87b56556}
+      \strng{bibnamehash}{8c74b403c34f5bada1d8b1bd87b56556}
+      \strng{authorbibnamehash}{8c74b403c34f5bada1d8b1bd87b56556}
+      \strng{authornamehash}{8c74b403c34f5bada1d8b1bd87b56556}
+      \strng{authorfullhash}{8c74b403c34f5bada1d8b1bd87b56556}
+      \strng{authorfullhashraw}{8c74b403c34f5bada1d8b1bd87b56556}
+      \strng{translatorbibnamehash}{82692973f552b1ccb985ff8972810216}
+      \strng{translatornamehash}{82692973f552b1ccb985ff8972810216}
+      \strng{translatorfullhash}{82692973f552b1ccb985ff8972810216}
+      \strng{translatorfullhashraw}{82692973f552b1ccb985ff8972810216}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{A formidable and influential work, Language and Death sheds a highly original light on issues central to Continental philosophy, literary theory, deconstruction, hermeneutics, and speech-act theory. Focusing especially on the incompatible philosophical systems of Hegel and Heidegger within the space of negativity, Giorgio Agamben offers a rigorous reading of numerous philosophical and poetic works to examine how these issues have been traditionally explored. Agamben argues that the human being is not just “speaking” and “mortal” but irreducibly “social” and “ethical.”Giorgio Agamben teaches philosophy at the Collège International de Philosophie in Paris and at the University of Macerata in Italy. He is the author of Means without End (2000), Stanzas (1993), and The Coming Community (1993), all published by the University of Minnesota Press. Karen E. Pinkus is professor of French and Italian at the University of Southern California. Michael Hardt is professor of literature and romance studies at Duke University.}
+      \field{edition}{First Edition}
+      \field{isbn}{9780816649235}
+      \field{month}{9}
+      \field{shorttitle}{Language and {Death}}
+      \field{title}{Language and {Death}: {The} {Place} of {Negativity}}
+      \field{year}{2006}
+    \endentry
+    \entry{brandom1994making}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=33d7548a608f1df40958c2d92734ff3f}{%
+           family={Brandom},
+           familyi={B\bibinitperiod},
+           given={Robert\bibnamedelima B.},
+           giveni={R\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Harvard University Press}%
+      }
+      \strng{namehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{bibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorbibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authornamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \field{extraname}{1}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Making it explicit: Reasoning, representing, and discursive commitment}
+      \field{year}{1994}
+    \endentry
+    \entry{Brandom2000}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=33d7548a608f1df40958c2d92734ff3f}{%
+           family={Brandom},
+           familyi={B\bibinitperiod},
+           given={Robert\bibnamedelima B.},
+           giveni={R\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Cambridge, MA}%
+      }
+      \list{publisher}{1}{%
+        {Harvard University Press}%
+      }
+      \strng{namehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{bibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorbibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authornamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \field{extraname}{2}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Articulating Reasons: An Introduction to Inferentialism}
+      \field{year}{2000}
+    \endentry
+    \entry{Brandom2008}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=33d7548a608f1df40958c2d92734ff3f}{%
+           family={Brandom},
+           familyi={B\bibinitperiod},
+           given={Robert\bibnamedelima B.},
+           giveni={R\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Oxford, UK}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{bibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorbibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authornamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \field{extraname}{3}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Between Saying and Doing: Towards an Analytic Pragmatism}
+      \field{year}{2008}
+    \endentry
+    \entry{brandom_reason_2013}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=33d7548a608f1df40958c2d92734ff3f}{%
+           family={Brandom},
+           familyi={B\bibinitperiod},
+           given={Robert\bibnamedelima B.},
+           giveni={R\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Cambridge, Mass.}%
+      }
+      \list{publisher}{1}{%
+        {Belknap Press}%
+      }
+      \strng{namehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{bibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorbibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authornamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \field{extraname}{4}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Transcendentalism never came to an end in America. It just went underground for a stretch, but is back in full force in Robert Brandom's new book. Brandom takes up Kant and Hegel and explores their contemporary significance as if little time had expired since intellectuals gathered around Emerson in Concord to discuss reason and idealism, selves, freedom, and community. Brandom's discussion belongs to a venerable tradition that distinguishes us as rational animals, and philosophy by its concern to understand, articulate, and explain the notion of reason that is thereby cast in that crucial demarcating role.An emphasis on our capacity to reason, rather than merely to represent, has been growing in philosophy over the last thirty years, and Robert Brandom has been at the center of this development. Reason in Philosophy is the first book that gives a succinct overview of his understanding of the role of reason as the structure at once of our minds and our meanings―what constitutes us as free, responsible agents. The job of philosophy is to introduce concepts and develop expressive tools for expanding our self-consciousness as sapients: explicit awareness of our discursive activity of thinking and acting, in the sciences, politics, and the arts. This is a paradigmatic work of contemporary philosophy.}
+      \field{isbn}{978-0-674-72583-6}
+      \field{pagetotal}{248}
+      \field{shorttitle}{Reason in Philosophy}
+      \field{title}{Reason in Philosophy: Animating Ideas}
+      \field{year}{2013}
+      \field{dateera}{ce}
+    \endentry
+    \entry{Brandom:2019aa}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=33d7548a608f1df40958c2d92734ff3f}{%
+           family={Brandom},
+           familyi={B\bibinitperiod},
+           given={Robert\bibnamedelima B.},
+           giveni={R\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Cambridge, Massachusetts \& London, England}%
+      }
+      \list{publisher}{1}{%
+        {The Belknap Press of Harvard University Press}%
+      }
+      \strng{namehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{bibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorbibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authornamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \field{extraname}{5}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A Spirit of Trust: A Reading of \uppercase{H}egel's Phenomenology}
+      \field{year}{2019}
+    \endentry
+    \entry{Carspecken1995aa}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=28f64558d846dca0f0183f0a1ec8abbf}{%
+           family={Carspecken},
+           familyi={C\bibinitperiod},
+           given={Phil\bibnamedelima Francis},
+           giveni={P\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Routledge}%
+      }
+      \strng{namehash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{fullhash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{fullhashraw}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{bibnamehash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{authorbibnamehash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{authornamehash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{authorfullhash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{authorfullhashraw}{28f64558d846dca0f0183f0a1ec8abbf}
+      \field{extraname}{1}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{1315021269}
+      \field{title}{Critical ethnography in educational research: A theoretical and practical guide}
+      \field{year}{1995}
+    \endentry
+    \entry{Carspecken1999}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=28f64558d846dca0f0183f0a1ec8abbf}{%
+           family={Carspecken},
+           familyi={C\bibinitperiod},
+           given={Phil\bibnamedelima Francis},
+           giveni={P\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Peter Lang Inc., International Academic Publishers}%
+      }
+      \strng{namehash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{fullhash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{fullhashraw}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{bibnamehash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{authorbibnamehash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{authornamehash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{authorfullhash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{authorfullhashraw}{28f64558d846dca0f0183f0a1ec8abbf}
+      \field{extraname}{2}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{What is the nature of meaningful action and its relationship to power, truth, desire, and the self? How are meaning and truth related to the phenomenological body? Where do postmodern insights coherently intersect with the perspective of critical theory, and where are postmodernists and criticalists in fundamental disagreement? Carspecken explores these and other questions within the four essays of this book. His investigations are timely and relevant to all who have an interest in the philosophy of critical theory, social theory, cultural studies, and methodologies for social research.}
+      \field{edition}{New edition}
+      \field{isbn}{9780820439679}
+      \field{pagetotal}{298}
+      \field{title}{Four Scenes for Posing the Question of Meaning and Other Essays in Critical Philosophy and Critical Methodology}
+      \field{year}{1999}
+      \field{dateera}{ce}
+    \endentry
+    \entry{Derrida:1973}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=242846d1ccb2b57cf3de51fc5c3411d5}{%
+           family={Derrida},
+           familyi={D\bibinitperiod},
+           given={Jacques},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Northwestern University Press}%
+      }
+      \strng{namehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{fullhash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{fullhashraw}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{bibnamehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authorbibnamehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authornamehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authorfullhash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authorfullhashraw}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \field{extraname}{1}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Speech and phenomena, and other essays on Husserl's theory of signs}
+      \field{year}{1973}
+    \endentry
+    \entry{Derrida1997}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=242846d1ccb2b57cf3de51fc5c3411d5}{%
+           family={Derrida},
+           familyi={D\bibinitperiod},
+           given={Jacques},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{translator}{1}{}{%
+        {{hash=053fabfcdcb724903dfd06610ec479bf}{%
+           family={Spivak},
+           familyi={S\bibinitperiod},
+           given={Gayatri\bibnamedelima Chakravorty},
+           giveni={G\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Baltimore}%
+      }
+      \list{publisher}{1}{%
+        {The Johns Hopkins University Press}%
+      }
+      \strng{namehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{fullhash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{fullhashraw}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{bibnamehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authorbibnamehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authornamehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authorfullhash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authorfullhashraw}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{translatorbibnamehash}{053fabfcdcb724903dfd06610ec479bf}
+      \strng{translatornamehash}{053fabfcdcb724903dfd06610ec479bf}
+      \strng{translatorfullhash}{053fabfcdcb724903dfd06610ec479bf}
+      \strng{translatorfullhashraw}{053fabfcdcb724903dfd06610ec479bf}
+      \field{extraname}{2}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Corrected}
+      \field{title}{Of Grammatology}
+      \field{year}{1997}
+    \endentry
+    \entry{Derrida2011}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=242846d1ccb2b57cf3de51fc5c3411d5}{%
+           family={Derrida},
+           familyi={D\bibinitperiod},
+           given={Jacques},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{translator}{1}{}{%
+        {{hash=ee29604daf9b961d0d59edb5fdc6bb5e}{%
+           family={Lawlor},
+           familyi={L\bibinitperiod},
+           given={Leonard},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Evanston, Illinois}%
+      }
+      \list{publisher}{1}{%
+        {Northwestern University Press}%
+      }
+      \strng{namehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{fullhash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{fullhashraw}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{bibnamehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authorbibnamehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authornamehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authorfullhash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authorfullhashraw}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{translatorbibnamehash}{ee29604daf9b961d0d59edb5fdc6bb5e}
+      \strng{translatornamehash}{ee29604daf9b961d0d59edb5fdc6bb5e}
+      \strng{translatorfullhash}{ee29604daf9b961d0d59edb5fdc6bb5e}
+      \strng{translatorfullhashraw}{ee29604daf9b961d0d59edb5fdc6bb5e}
+      \field{extraname}{3}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0-8101-2765-4}
+      \field{note}{Originally published in French under the title \textit{La voix et le phénomène} by Presses Universitaires de France, 1967.}
+      \field{series}{Northwestern University studies in phenomenology and existential philosophy}
+      \field{title}{Voice and Phenomenon: Introduction to the Problem of the Sign in Husserl's Phenomenology}
+      \field{year}{2011}
+    \endentry
+    \entry{Hegel1830Logic}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=657f840dc3818e7a56523e4e2d17a0ca}{%
+           family={Hegel},
+           familyi={H\bibinitperiod},
+           given={Georg\bibnamedelimb Wilhelm\bibnamedelima Friedrich},
+           giveni={G\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{translator}{1}{}{%
+        {{hash=4c560cb4e12a73354158355235af238c}{%
+           family={Wallace},
+           familyi={W\bibinitperiod},
+           given={William},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Oxford}%
+      }
+      \list{publisher}{1}{%
+        {Clarendon Press}%
+      }
+      \strng{namehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{fullhash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{fullhashraw}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{bibnamehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authorbibnamehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authornamehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authorfullhash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authorfullhashraw}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{translatorbibnamehash}{4c560cb4e12a73354158355235af238c}
+      \strng{translatornamehash}{4c560cb4e12a73354158355235af238c}
+      \strng{translatorfullhash}{4c560cb4e12a73354158355235af238c}
+      \strng{translatorfullhashraw}{4c560cb4e12a73354158355235af238c}
+      \field{extraname}{1}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{This work is also known as the "Shorter Logic" or "Encyclopaedia Logic." The online version is a reproduction of the second edition of the Wallace translation (1892).}
+      \field{subtitle}{Translated from The Encyclopaedia of the Philosophical Sciences}
+      \field{title}{The Logic of Hegel}
+      \field{urlday}{17}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{1830}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.marxists.org/reference/archive/hegel/works/hl/hl-index.htm
+      \endverb
+      \verb{url}
+      \verb https://www.marxists.org/reference/archive/hegel/works/hl/hl-index.htm
+      \endverb
+    \endentry
+    \entry{hegel1977phenomenology}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=657f840dc3818e7a56523e4e2d17a0ca}{%
+           family={Hegel},
+           familyi={H\bibinitperiod},
+           given={Georg\bibnamedelimb Wilhelm\bibnamedelima Friedrich},
+           giveni={G\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{translator}{1}{}{%
+        {{hash=45940117708319435810916caa5e5560}{%
+           family={Miller},
+           familyi={M\bibinitperiod},
+           given={Arnold\bibnamedelima V},
+           giveni={A\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{fullhash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{fullhashraw}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{bibnamehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authorbibnamehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authornamehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authorfullhash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authorfullhashraw}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{translatorbibnamehash}{45940117708319435810916caa5e5560}
+      \strng{translatornamehash}{45940117708319435810916caa5e5560}
+      \strng{translatorfullhash}{45940117708319435810916caa5e5560}
+      \strng{translatorfullhashraw}{45940117708319435810916caa5e5560}
+      \field{extraname}{2}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Phenomenology of spirit}
+      \field{volume}{632}
+      \field{year}{1977}
+    \endentry
+    \entry{Hegel:2014aa}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=657f840dc3818e7a56523e4e2d17a0ca}{%
+           family={Hegel},
+           familyi={H\bibinitperiod},
+           given={Georg\bibnamedelimb Wilhelm\bibnamedelima Friedrich},
+           giveni={G\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=44e2b57078236d5d7ce926af4c7fd9af}{%
+           family={Giovanni},
+           familyi={G\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod},
+           prefix={di},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \name{translator}{1}{}{%
+        {{hash=44e2b57078236d5d7ce926af4c7fd9af}{%
+           family={Giovanni},
+           familyi={G\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod},
+           prefix={di},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cambridge}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{fullhash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{fullhashraw}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{bibnamehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authorbibnamehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authornamehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authorfullhash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authorfullhashraw}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{editorbibnamehash}{44e2b57078236d5d7ce926af4c7fd9af}
+      \strng{editornamehash}{44e2b57078236d5d7ce926af4c7fd9af}
+      \strng{editorfullhash}{44e2b57078236d5d7ce926af4c7fd9af}
+      \strng{editorfullhashraw}{44e2b57078236d5d7ce926af4c7fd9af}
+      \strng{translatorbibnamehash}{44e2b57078236d5d7ce926af4c7fd9af}
+      \strng{translatornamehash}{44e2b57078236d5d7ce926af4c7fd9af}
+      \strng{translatorfullhash}{44e2b57078236d5d7ce926af4c7fd9af}
+      \strng{translatorfullhashraw}{44e2b57078236d5d7ce926af4c7fd9af}
+      \field{extraname}{3}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0-521-83255-7}
+      \field{title}{The Science of Logic}
+      \field{year}{2010}
+    \endentry
+    \entry{inwood1992hegel}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=4036a64001eb1be4d277cd7c26b11cd5}{%
+           family={Inwood},
+           familyi={I\bibinitperiod},
+           given={Michael\bibnamedelima James},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Blackwell Oxford}%
+      }
+      \strng{namehash}{4036a64001eb1be4d277cd7c26b11cd5}
+      \strng{fullhash}{4036a64001eb1be4d277cd7c26b11cd5}
+      \strng{fullhashraw}{4036a64001eb1be4d277cd7c26b11cd5}
+      \strng{bibnamehash}{4036a64001eb1be4d277cd7c26b11cd5}
+      \strng{authorbibnamehash}{4036a64001eb1be4d277cd7c26b11cd5}
+      \strng{authornamehash}{4036a64001eb1be4d277cd7c26b11cd5}
+      \strng{authorfullhash}{4036a64001eb1be4d277cd7c26b11cd5}
+      \strng{authorfullhashraw}{4036a64001eb1be4d277cd7c26b11cd5}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A Hegel dictionary}
+      \field{year}{1992}
+    \endentry
+    \entry{Kant1781}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e1e09a59acd7633f469747be85d5edc0}{%
+           family={Kant},
+           familyi={K\bibinitperiod},
+           given={Immanuel},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Cambridge, UK}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{e1e09a59acd7633f469747be85d5edc0}
+      \strng{fullhash}{e1e09a59acd7633f469747be85d5edc0}
+      \strng{fullhashraw}{e1e09a59acd7633f469747be85d5edc0}
+      \strng{bibnamehash}{e1e09a59acd7633f469747be85d5edc0}
+      \strng{authorbibnamehash}{e1e09a59acd7633f469747be85d5edc0}
+      \strng{authornamehash}{e1e09a59acd7633f469747be85d5edc0}
+      \strng{authorfullhash}{e1e09a59acd7633f469747be85d5edc0}
+      \strng{authorfullhashraw}{e1e09a59acd7633f469747be85d5edc0}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Original work published 1781/1787, Guyer and Wood, Trans.}
+      \field{title}{Critique of Pure Reason}
+      \field{year}{1998}
+    \endentry
+    \entry{Negarestani2018}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=028797bdf9d0b0523c0b2fe209a9e8ce}{%
+           family={Negarestani},
+           familyi={N\bibinitperiod},
+           given={Reza},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Urbanomic/Sequence Press}%
+      }
+      \strng{namehash}{028797bdf9d0b0523c0b2fe209a9e8ce}
+      \strng{fullhash}{028797bdf9d0b0523c0b2fe209a9e8ce}
+      \strng{fullhashraw}{028797bdf9d0b0523c0b2fe209a9e8ce}
+      \strng{bibnamehash}{028797bdf9d0b0523c0b2fe209a9e8ce}
+      \strng{authorbibnamehash}{028797bdf9d0b0523c0b2fe209a9e8ce}
+      \strng{authornamehash}{028797bdf9d0b0523c0b2fe209a9e8ce}
+      \strng{authorfullhash}{028797bdf9d0b0523c0b2fe209a9e8ce}
+      \strng{authorfullhashraw}{028797bdf9d0b0523c0b2fe209a9e8ce}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Intelligence and {Spirit}}
+      \field{year}{2018}
+    \endentry
+    \entry{Pippin:2019aa}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c93748b2be56a8091a970b3b3753f9d0}{%
+           family={Pippin},
+           familyi={P\bibinitperiod},
+           given={Robert\bibnamedelima B},
+           giveni={R\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {University of Chicago Press}%
+      }
+      \strng{namehash}{c93748b2be56a8091a970b3b3753f9d0}
+      \strng{fullhash}{c93748b2be56a8091a970b3b3753f9d0}
+      \strng{fullhashraw}{c93748b2be56a8091a970b3b3753f9d0}
+      \strng{bibnamehash}{c93748b2be56a8091a970b3b3753f9d0}
+      \strng{authorbibnamehash}{c93748b2be56a8091a970b3b3753f9d0}
+      \strng{authornamehash}{c93748b2be56a8091a970b3b3753f9d0}
+      \strng{authorfullhash}{c93748b2be56a8091a970b3b3753f9d0}
+      \strng{authorfullhashraw}{c93748b2be56a8091a970b3b3753f9d0}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{022658884X}
+      \field{title}{Hegel's Realm of Shadows: Logic as Metaphysics in ``The Science of Logic''}
+      \field{year}{2019}
+    \endentry
+    \entry{Rodl:2007aa}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=bb4a2dcd47405af2a707e82aad071879}{%
+           family={Rödl},
+           familyi={R\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Harvard University Press}%
+      }
+      \strng{namehash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{fullhash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{fullhashraw}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{bibnamehash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{authorbibnamehash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{authornamehash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{authorfullhash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{authorfullhashraw}{bb4a2dcd47405af2a707e82aad071879}
+      \field{extraname}{1}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Self-consciousness}
+      \field{year}{2007}
+    \endentry
+    \entry{Rodl:2018aa}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=bb4a2dcd47405af2a707e82aad071879}{%
+           family={Rödl},
+           familyi={R\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Harvard University Press}%
+      }
+      \strng{namehash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{fullhash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{fullhashraw}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{bibnamehash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{authorbibnamehash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{authornamehash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{authorfullhash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{authorfullhashraw}{bb4a2dcd47405af2a707e82aad071879}
+      \field{extraname}{2}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Self-consciousness and objectivity}
+      \field{year}{2018}
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global/global}
+    \entry{agamben_language_2006}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=8c74b403c34f5bada1d8b1bd87b56556}{%
+           family={Agamben},
+           familyi={A\bibinitperiod},
+           given={Giorgio},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{translator}{2}{}{%
+        {{hash=f73b3cb2ed57868165bfa590e7041236}{%
+           family={Pinkus},
+           familyi={P\bibinitperiod},
+           given={Karen},
+           giveni={K\bibinitperiod}}}%
+        {{hash=b7bb34dd7c2c243429b9bdc9f32b38a8}{%
+           family={Hardt},
+           familyi={H\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \list{location}{1}{%
+        {Minneapolis London}%
+      }
+      \list{publisher}{1}{%
+        {University Of Minnesota Press}%
+      }
+      \strng{namehash}{8c74b403c34f5bada1d8b1bd87b56556}
+      \strng{fullhash}{8c74b403c34f5bada1d8b1bd87b56556}
+      \strng{fullhashraw}{8c74b403c34f5bada1d8b1bd87b56556}
+      \strng{bibnamehash}{8c74b403c34f5bada1d8b1bd87b56556}
+      \strng{authorbibnamehash}{8c74b403c34f5bada1d8b1bd87b56556}
+      \strng{authornamehash}{8c74b403c34f5bada1d8b1bd87b56556}
+      \strng{authorfullhash}{8c74b403c34f5bada1d8b1bd87b56556}
+      \strng{authorfullhashraw}{8c74b403c34f5bada1d8b1bd87b56556}
+      \strng{translatorbibnamehash}{82692973f552b1ccb985ff8972810216}
+      \strng{translatornamehash}{82692973f552b1ccb985ff8972810216}
+      \strng{translatorfullhash}{82692973f552b1ccb985ff8972810216}
+      \strng{translatorfullhashraw}{82692973f552b1ccb985ff8972810216}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{A formidable and influential work, Language and Death sheds a highly original light on issues central to Continental philosophy, literary theory, deconstruction, hermeneutics, and speech-act theory. Focusing especially on the incompatible philosophical systems of Hegel and Heidegger within the space of negativity, Giorgio Agamben offers a rigorous reading of numerous philosophical and poetic works to examine how these issues have been traditionally explored. Agamben argues that the human being is not just “speaking” and “mortal” but irreducibly “social” and “ethical.”Giorgio Agamben teaches philosophy at the Collège International de Philosophie in Paris and at the University of Macerata in Italy. He is the author of Means without End (2000), Stanzas (1993), and The Coming Community (1993), all published by the University of Minnesota Press. Karen E. Pinkus is professor of French and Italian at the University of Southern California. Michael Hardt is professor of literature and romance studies at Duke University.}
+      \field{edition}{First Edition}
+      \field{isbn}{9780816649235}
+      \field{month}{9}
+      \field{shorttitle}{Language and {Death}}
+      \field{title}{Language and {Death}: {The} {Place} of {Negativity}}
+      \field{year}{2006}
+    \endentry
+    \entry{brandom1994making}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=33d7548a608f1df40958c2d92734ff3f}{%
+           family={Brandom},
+           familyi={B\bibinitperiod},
+           given={Robert\bibnamedelima B.},
+           giveni={R\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Harvard University Press}%
+      }
+      \strng{namehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{bibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorbibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authornamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \field{extraname}{1}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Making it explicit: Reasoning, representing, and discursive commitment}
+      \field{year}{1994}
+    \endentry
+    \entry{Brandom2000}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=33d7548a608f1df40958c2d92734ff3f}{%
+           family={Brandom},
+           familyi={B\bibinitperiod},
+           given={Robert\bibnamedelima B.},
+           giveni={R\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Cambridge, MA}%
+      }
+      \list{publisher}{1}{%
+        {Harvard University Press}%
+      }
+      \strng{namehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{bibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorbibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authornamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \field{extraname}{2}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Articulating Reasons: An Introduction to Inferentialism}
+      \field{year}{2000}
+    \endentry
+    \entry{Brandom2008}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=33d7548a608f1df40958c2d92734ff3f}{%
+           family={Brandom},
+           familyi={B\bibinitperiod},
+           given={Robert\bibnamedelima B.},
+           giveni={R\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Oxford, UK}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{bibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorbibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authornamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \field{extraname}{3}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Between Saying and Doing: Towards an Analytic Pragmatism}
+      \field{year}{2008}
+    \endentry
+    \entry{brandom_reason_2013}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=33d7548a608f1df40958c2d92734ff3f}{%
+           family={Brandom},
+           familyi={B\bibinitperiod},
+           given={Robert\bibnamedelima B.},
+           giveni={R\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Cambridge, Mass.}%
+      }
+      \list{publisher}{1}{%
+        {Belknap Press}%
+      }
+      \strng{namehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{bibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorbibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authornamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \field{extraname}{4}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Transcendentalism never came to an end in America. It just went underground for a stretch, but is back in full force in Robert Brandom's new book. Brandom takes up Kant and Hegel and explores their contemporary significance as if little time had expired since intellectuals gathered around Emerson in Concord to discuss reason and idealism, selves, freedom, and community. Brandom's discussion belongs to a venerable tradition that distinguishes us as rational animals, and philosophy by its concern to understand, articulate, and explain the notion of reason that is thereby cast in that crucial demarcating role.An emphasis on our capacity to reason, rather than merely to represent, has been growing in philosophy over the last thirty years, and Robert Brandom has been at the center of this development. Reason in Philosophy is the first book that gives a succinct overview of his understanding of the role of reason as the structure at once of our minds and our meanings―what constitutes us as free, responsible agents. The job of philosophy is to introduce concepts and develop expressive tools for expanding our self-consciousness as sapients: explicit awareness of our discursive activity of thinking and acting, in the sciences, politics, and the arts. This is a paradigmatic work of contemporary philosophy.}
+      \field{isbn}{978-0-674-72583-6}
+      \field{pagetotal}{248}
+      \field{shorttitle}{Reason in Philosophy}
+      \field{title}{Reason in Philosophy: Animating Ideas}
+      \field{year}{2013}
+      \field{dateera}{ce}
+    \endentry
+    \entry{Brandom:2019aa}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=33d7548a608f1df40958c2d92734ff3f}{%
+           family={Brandom},
+           familyi={B\bibinitperiod},
+           given={Robert\bibnamedelima B.},
+           giveni={R\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Cambridge, Massachusetts \& London, England}%
+      }
+      \list{publisher}{1}{%
+        {The Belknap Press of Harvard University Press}%
+      }
+      \strng{namehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{fullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{bibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorbibnamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authornamehash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhash}{33d7548a608f1df40958c2d92734ff3f}
+      \strng{authorfullhashraw}{33d7548a608f1df40958c2d92734ff3f}
+      \field{extraname}{5}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A Spirit of Trust: A Reading of \uppercase{H}egel's Phenomenology}
+      \field{year}{2019}
+    \endentry
+    \entry{Carspecken1995aa}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=28f64558d846dca0f0183f0a1ec8abbf}{%
+           family={Carspecken},
+           familyi={C\bibinitperiod},
+           given={Phil\bibnamedelima Francis},
+           giveni={P\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Routledge}%
+      }
+      \strng{namehash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{fullhash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{fullhashraw}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{bibnamehash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{authorbibnamehash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{authornamehash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{authorfullhash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{authorfullhashraw}{28f64558d846dca0f0183f0a1ec8abbf}
+      \field{extraname}{1}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{1315021269}
+      \field{title}{Critical ethnography in educational research: A theoretical and practical guide}
+      \field{year}{1995}
+    \endentry
+    \entry{Carspecken1999}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=28f64558d846dca0f0183f0a1ec8abbf}{%
+           family={Carspecken},
+           familyi={C\bibinitperiod},
+           given={Phil\bibnamedelima Francis},
+           giveni={P\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Peter Lang Inc., International Academic Publishers}%
+      }
+      \strng{namehash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{fullhash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{fullhashraw}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{bibnamehash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{authorbibnamehash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{authornamehash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{authorfullhash}{28f64558d846dca0f0183f0a1ec8abbf}
+      \strng{authorfullhashraw}{28f64558d846dca0f0183f0a1ec8abbf}
+      \field{extraname}{2}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{What is the nature of meaningful action and its relationship to power, truth, desire, and the self? How are meaning and truth related to the phenomenological body? Where do postmodern insights coherently intersect with the perspective of critical theory, and where are postmodernists and criticalists in fundamental disagreement? Carspecken explores these and other questions within the four essays of this book. His investigations are timely and relevant to all who have an interest in the philosophy of critical theory, social theory, cultural studies, and methodologies for social research.}
+      \field{edition}{New edition}
+      \field{isbn}{9780820439679}
+      \field{pagetotal}{298}
+      \field{title}{Four Scenes for Posing the Question of Meaning and Other Essays in Critical Philosophy and Critical Methodology}
+      \field{year}{1999}
+      \field{dateera}{ce}
+    \endentry
+    \entry{Derrida:1973}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=242846d1ccb2b57cf3de51fc5c3411d5}{%
+           family={Derrida},
+           familyi={D\bibinitperiod},
+           given={Jacques},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Northwestern University Press}%
+      }
+      \strng{namehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{fullhash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{fullhashraw}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{bibnamehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authorbibnamehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authornamehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authorfullhash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authorfullhashraw}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \field{extraname}{1}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Speech and phenomena, and other essays on Husserl's theory of signs}
+      \field{year}{1973}
+    \endentry
+    \entry{Derrida1997}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=242846d1ccb2b57cf3de51fc5c3411d5}{%
+           family={Derrida},
+           familyi={D\bibinitperiod},
+           given={Jacques},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{translator}{1}{}{%
+        {{hash=053fabfcdcb724903dfd06610ec479bf}{%
+           family={Spivak},
+           familyi={S\bibinitperiod},
+           given={Gayatri\bibnamedelima Chakravorty},
+           giveni={G\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Baltimore}%
+      }
+      \list{publisher}{1}{%
+        {The Johns Hopkins University Press}%
+      }
+      \strng{namehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{fullhash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{fullhashraw}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{bibnamehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authorbibnamehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authornamehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authorfullhash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authorfullhashraw}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{translatorbibnamehash}{053fabfcdcb724903dfd06610ec479bf}
+      \strng{translatornamehash}{053fabfcdcb724903dfd06610ec479bf}
+      \strng{translatorfullhash}{053fabfcdcb724903dfd06610ec479bf}
+      \strng{translatorfullhashraw}{053fabfcdcb724903dfd06610ec479bf}
+      \field{extraname}{2}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Corrected}
+      \field{title}{Of Grammatology}
+      \field{year}{1997}
+    \endentry
+    \entry{Derrida2011}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=242846d1ccb2b57cf3de51fc5c3411d5}{%
+           family={Derrida},
+           familyi={D\bibinitperiod},
+           given={Jacques},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{translator}{1}{}{%
+        {{hash=ee29604daf9b961d0d59edb5fdc6bb5e}{%
+           family={Lawlor},
+           familyi={L\bibinitperiod},
+           given={Leonard},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Evanston, Illinois}%
+      }
+      \list{publisher}{1}{%
+        {Northwestern University Press}%
+      }
+      \strng{namehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{fullhash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{fullhashraw}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{bibnamehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authorbibnamehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authornamehash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authorfullhash}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{authorfullhashraw}{242846d1ccb2b57cf3de51fc5c3411d5}
+      \strng{translatorbibnamehash}{ee29604daf9b961d0d59edb5fdc6bb5e}
+      \strng{translatornamehash}{ee29604daf9b961d0d59edb5fdc6bb5e}
+      \strng{translatorfullhash}{ee29604daf9b961d0d59edb5fdc6bb5e}
+      \strng{translatorfullhashraw}{ee29604daf9b961d0d59edb5fdc6bb5e}
+      \field{extraname}{3}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0-8101-2765-4}
+      \field{note}{Originally published in French under the title \textit{La voix et le phénomène} by Presses Universitaires de France, 1967.}
+      \field{series}{Northwestern University studies in phenomenology and existential philosophy}
+      \field{title}{Voice and Phenomenon: Introduction to the Problem of the Sign in Husserl's Phenomenology}
+      \field{year}{2011}
+    \endentry
+    \entry{Hegel1830Logic}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=657f840dc3818e7a56523e4e2d17a0ca}{%
+           family={Hegel},
+           familyi={H\bibinitperiod},
+           given={Georg\bibnamedelimb Wilhelm\bibnamedelima Friedrich},
+           giveni={G\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{translator}{1}{}{%
+        {{hash=4c560cb4e12a73354158355235af238c}{%
+           family={Wallace},
+           familyi={W\bibinitperiod},
+           given={William},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Oxford}%
+      }
+      \list{publisher}{1}{%
+        {Clarendon Press}%
+      }
+      \strng{namehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{fullhash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{fullhashraw}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{bibnamehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authorbibnamehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authornamehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authorfullhash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authorfullhashraw}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{translatorbibnamehash}{4c560cb4e12a73354158355235af238c}
+      \strng{translatornamehash}{4c560cb4e12a73354158355235af238c}
+      \strng{translatorfullhash}{4c560cb4e12a73354158355235af238c}
+      \strng{translatorfullhashraw}{4c560cb4e12a73354158355235af238c}
+      \field{extraname}{1}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{This work is also known as the "Shorter Logic" or "Encyclopaedia Logic." The online version is a reproduction of the second edition of the Wallace translation (1892).}
+      \field{subtitle}{Translated from The Encyclopaedia of the Philosophical Sciences}
+      \field{title}{The Logic of Hegel}
+      \field{urlday}{17}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{1830}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.marxists.org/reference/archive/hegel/works/hl/hl-index.htm
+      \endverb
+      \verb{url}
+      \verb https://www.marxists.org/reference/archive/hegel/works/hl/hl-index.htm
+      \endverb
+    \endentry
+    \entry{hegel1977phenomenology}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=657f840dc3818e7a56523e4e2d17a0ca}{%
+           family={Hegel},
+           familyi={H\bibinitperiod},
+           given={Georg\bibnamedelimb Wilhelm\bibnamedelima Friedrich},
+           giveni={G\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{translator}{1}{}{%
+        {{hash=45940117708319435810916caa5e5560}{%
+           family={Miller},
+           familyi={M\bibinitperiod},
+           given={Arnold\bibnamedelima V},
+           giveni={A\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{fullhash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{fullhashraw}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{bibnamehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authorbibnamehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authornamehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authorfullhash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authorfullhashraw}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{translatorbibnamehash}{45940117708319435810916caa5e5560}
+      \strng{translatornamehash}{45940117708319435810916caa5e5560}
+      \strng{translatorfullhash}{45940117708319435810916caa5e5560}
+      \strng{translatorfullhashraw}{45940117708319435810916caa5e5560}
+      \field{extraname}{2}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Phenomenology of spirit}
+      \field{volume}{632}
+      \field{year}{1977}
+    \endentry
+    \entry{Hegel:2014aa}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=657f840dc3818e7a56523e4e2d17a0ca}{%
+           family={Hegel},
+           familyi={H\bibinitperiod},
+           given={Georg\bibnamedelimb Wilhelm\bibnamedelima Friedrich},
+           giveni={G\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=44e2b57078236d5d7ce926af4c7fd9af}{%
+           family={Giovanni},
+           familyi={G\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod},
+           prefix={di},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \name{translator}{1}{}{%
+        {{hash=44e2b57078236d5d7ce926af4c7fd9af}{%
+           family={Giovanni},
+           familyi={G\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod},
+           prefix={di},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cambridge}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{fullhash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{fullhashraw}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{bibnamehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authorbibnamehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authornamehash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authorfullhash}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{authorfullhashraw}{657f840dc3818e7a56523e4e2d17a0ca}
+      \strng{editorbibnamehash}{44e2b57078236d5d7ce926af4c7fd9af}
+      \strng{editornamehash}{44e2b57078236d5d7ce926af4c7fd9af}
+      \strng{editorfullhash}{44e2b57078236d5d7ce926af4c7fd9af}
+      \strng{editorfullhashraw}{44e2b57078236d5d7ce926af4c7fd9af}
+      \strng{translatorbibnamehash}{44e2b57078236d5d7ce926af4c7fd9af}
+      \strng{translatornamehash}{44e2b57078236d5d7ce926af4c7fd9af}
+      \strng{translatorfullhash}{44e2b57078236d5d7ce926af4c7fd9af}
+      \strng{translatorfullhashraw}{44e2b57078236d5d7ce926af4c7fd9af}
+      \field{extraname}{3}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0-521-83255-7}
+      \field{title}{The Science of Logic}
+      \field{year}{2010}
+    \endentry
+    \entry{inwood1992hegel}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=4036a64001eb1be4d277cd7c26b11cd5}{%
+           family={Inwood},
+           familyi={I\bibinitperiod},
+           given={Michael\bibnamedelima James},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Blackwell Oxford}%
+      }
+      \strng{namehash}{4036a64001eb1be4d277cd7c26b11cd5}
+      \strng{fullhash}{4036a64001eb1be4d277cd7c26b11cd5}
+      \strng{fullhashraw}{4036a64001eb1be4d277cd7c26b11cd5}
+      \strng{bibnamehash}{4036a64001eb1be4d277cd7c26b11cd5}
+      \strng{authorbibnamehash}{4036a64001eb1be4d277cd7c26b11cd5}
+      \strng{authornamehash}{4036a64001eb1be4d277cd7c26b11cd5}
+      \strng{authorfullhash}{4036a64001eb1be4d277cd7c26b11cd5}
+      \strng{authorfullhashraw}{4036a64001eb1be4d277cd7c26b11cd5}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A Hegel dictionary}
+      \field{year}{1992}
+    \endentry
+    \entry{Kant1781}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e1e09a59acd7633f469747be85d5edc0}{%
+           family={Kant},
+           familyi={K\bibinitperiod},
+           given={Immanuel},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Cambridge, UK}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{e1e09a59acd7633f469747be85d5edc0}
+      \strng{fullhash}{e1e09a59acd7633f469747be85d5edc0}
+      \strng{fullhashraw}{e1e09a59acd7633f469747be85d5edc0}
+      \strng{bibnamehash}{e1e09a59acd7633f469747be85d5edc0}
+      \strng{authorbibnamehash}{e1e09a59acd7633f469747be85d5edc0}
+      \strng{authornamehash}{e1e09a59acd7633f469747be85d5edc0}
+      \strng{authorfullhash}{e1e09a59acd7633f469747be85d5edc0}
+      \strng{authorfullhashraw}{e1e09a59acd7633f469747be85d5edc0}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Original work published 1781/1787, Guyer and Wood, Trans.}
+      \field{title}{Critique of Pure Reason}
+      \field{year}{1998}
+    \endentry
+    \entry{Negarestani2018}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=028797bdf9d0b0523c0b2fe209a9e8ce}{%
+           family={Negarestani},
+           familyi={N\bibinitperiod},
+           given={Reza},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Urbanomic/Sequence Press}%
+      }
+      \strng{namehash}{028797bdf9d0b0523c0b2fe209a9e8ce}
+      \strng{fullhash}{028797bdf9d0b0523c0b2fe209a9e8ce}
+      \strng{fullhashraw}{028797bdf9d0b0523c0b2fe209a9e8ce}
+      \strng{bibnamehash}{028797bdf9d0b0523c0b2fe209a9e8ce}
+      \strng{authorbibnamehash}{028797bdf9d0b0523c0b2fe209a9e8ce}
+      \strng{authornamehash}{028797bdf9d0b0523c0b2fe209a9e8ce}
+      \strng{authorfullhash}{028797bdf9d0b0523c0b2fe209a9e8ce}
+      \strng{authorfullhashraw}{028797bdf9d0b0523c0b2fe209a9e8ce}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Intelligence and {Spirit}}
+      \field{year}{2018}
+    \endentry
+    \entry{Pippin:2019aa}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c93748b2be56a8091a970b3b3753f9d0}{%
+           family={Pippin},
+           familyi={P\bibinitperiod},
+           given={Robert\bibnamedelima B},
+           giveni={R\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {University of Chicago Press}%
+      }
+      \strng{namehash}{c93748b2be56a8091a970b3b3753f9d0}
+      \strng{fullhash}{c93748b2be56a8091a970b3b3753f9d0}
+      \strng{fullhashraw}{c93748b2be56a8091a970b3b3753f9d0}
+      \strng{bibnamehash}{c93748b2be56a8091a970b3b3753f9d0}
+      \strng{authorbibnamehash}{c93748b2be56a8091a970b3b3753f9d0}
+      \strng{authornamehash}{c93748b2be56a8091a970b3b3753f9d0}
+      \strng{authorfullhash}{c93748b2be56a8091a970b3b3753f9d0}
+      \strng{authorfullhashraw}{c93748b2be56a8091a970b3b3753f9d0}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{022658884X}
+      \field{title}{Hegel's Realm of Shadows: Logic as Metaphysics in ``The Science of Logic''}
+      \field{year}{2019}
+    \endentry
+    \entry{Rodl:2007aa}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=bb4a2dcd47405af2a707e82aad071879}{%
+           family={Rödl},
+           familyi={R\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Harvard University Press}%
+      }
+      \strng{namehash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{fullhash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{fullhashraw}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{bibnamehash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{authorbibnamehash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{authornamehash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{authorfullhash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{authorfullhashraw}{bb4a2dcd47405af2a707e82aad071879}
+      \field{extraname}{1}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Self-consciousness}
+      \field{year}{2007}
+    \endentry
+    \entry{Rodl:2018aa}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=bb4a2dcd47405af2a707e82aad071879}{%
+           family={Rödl},
+           familyi={R\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Harvard University Press}%
+      }
+      \strng{namehash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{fullhash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{fullhashraw}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{bibnamehash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{authorbibnamehash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{authornamehash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{authorfullhash}{bb4a2dcd47405af2a707e82aad071879}
+      \strng{authorfullhashraw}{bb4a2dcd47405af2a707e82aad071879}
+      \field{extraname}{2}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Self-consciousness and objectivity}
+      \field{year}{2018}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

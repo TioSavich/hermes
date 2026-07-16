@@ -1,0 +1,435 @@
+{
+ "attribution": "Transcript data: TalkMoves dataset (SumnerLab / Suresh et al.), CC BY-NC-SA 4.0, speaker-blinded before any model call.",
+ "caveats": [
+  "Held-out check: chosen fresh from the dataset after the pipeline was built, with fraction content the calculator can reach.",
+  "The calculator checks a claim only when it can ground it; 'not checked' means outside its current coverage, not wrong.",
+  "Reading a speaker's move is interpretive. The model proposes the reading; only the claim verdicts are computed.",
+  "One automated read of one transcript \u2014 a starting point for your own reading, not a verdict on the discussion."
+ ],
+ "claims": [
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "A quarter is four parts",
+   "speaker": "S03",
+   "utterance": "u0010"
+  },
+  {
+   "finding": "not checked",
+   "how": "outside what the calculator can currently check",
+   "said": "One half is bigger than one quarter",
+   "speaker": "S03",
+   "utterance": "u0020"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "One half is bigger than one quarter by one quarter",
+   "speaker": "S03",
+   "utterance": "u0020"
+  }
+ ],
+ "headline": "3 mathematical claims heard; 2 checked by the calculator, 0 did not check out.",
+ "machine": {
+  "extractions": [
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "SWI arithmetic schema 1/N = 1/N",
+     "claim": "division_by_n_is_unit_fraction",
+     "status": "domain_checked",
+     "trace": [
+      "1 divided by 4 is the unit fraction 1/4"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "n": 4
+    },
+    "confidence": "high",
+    "id": "c1",
+    "shape": "division_by_n_is_unit_fraction",
+    "surface": "A quarter is four parts",
+    "term": "division_by_n_is_unit_fraction(4)",
+    "utterance_id": "u0010",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "not_in_registered_domain",
+     "claim": "whole_number_comparison",
+     "reason": "unrecognized relation or non-integer operands",
+     "status": "not_covered",
+     "verdict": "not_checked"
+    },
+    "args": {
+     "left": {
+      "den": 2,
+      "num": 1
+     },
+     "rel": "greater",
+     "right": {
+      "den": 4,
+      "num": 1
+     }
+    },
+    "confidence": "high",
+    "id": "c2",
+    "shape": "comparison",
+    "surface": "One half is bigger than one quarter",
+    "term": "comparison(fraction(1,2),greater,fraction(1,4))",
+    "utterance_id": "u0020",
+    "verdict": "not_checked"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:add_grounded+multiply_grounded",
+     "claim": "fraction_sum",
+     "status": "domain_checked",
+     "trace": [
+      "grounded: 1/4 + 1/4 co-measured against claimed 1/2"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 4,
+      "num": 1
+     },
+     "b": {
+      "den": 4,
+      "num": 1
+     },
+     "result": {
+      "den": 2,
+      "num": 1
+     }
+    },
+    "confidence": "high",
+    "id": "c3",
+    "shape": "fraction_sum",
+    "surface": "One half is bigger than one quarter by one quarter",
+    "term": "fraction_sum(fraction(1,4),fraction(1,4),fraction(1,2))",
+    "utterance_id": "u0020",
+    "verdict": "holds"
+   }
+  ],
+  "readings": [
+   {
+    "claim_refs": [
+     "C1"
+    ],
+    "id": "a1",
+    "pml": {
+     "content": "C1",
+     "force": "assert",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "S03",
+     "subject_position_read": "asserting a structural property of the materials"
+    },
+    "raw_text": "[C1 division_by_n_is_unit_fraction: holds]",
+    "utterance_ids": [
+     "u0010"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C1"
+    ],
+    "id": "a2",
+    "pml": {
+     "content": "C1 (denied)",
+     "force": "assert",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "S02",
+     "subject_position_read": "challenging the previous speaker's property claim"
+    },
+    "raw_text": "Actually you can\u2019t make it into a quarter",
+    "uptake": {
+     "fate": "contested",
+     "ids": [
+      "u0015",
+      "u0016"
+     ]
+    },
+    "utterance_ids": [
+     "u0014"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C1"
+    ],
+    "id": "a3",
+    "pml": {
+     "content": "doubt regarding C1 logic",
+     "force": "avow",
+     "grammatical_person": "first",
+     "mode": "subjective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "S02",
+     "subject_position_read": "narrowing own stance before revising"
+    },
+    "raw_text": "I don\u2019t think you can",
+    "utterance_ids": [
+     "u0016"
+    ],
+    "wraps": "a4"
+   },
+   {
+    "claim_refs": [
+     "C1"
+    ],
+    "id": "a4",
+    "pml": {
+     "content": "C1 possibility",
+     "force": "assert",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "exp_poss",
+     "polarity": "expansive",
+     "position": "S02",
+     "subject_position_read": "opening a new path for the model"
+    },
+    "raw_text": "well, actually you can",
+    "utterance_ids": [
+     "u0016"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C3"
+    ],
+    "id": "a5",
+    "pml": {
+     "content": "C3",
+     "force": "assert",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "S03",
+     "subject_position_read": "closing the problem with a model-based result"
+    },
+    "raw_text": "[C3 fraction_sum: holds]",
+    "uptake": {
+     "fate": "taken_up",
+     "ids": [
+      "u0021"
+     ]
+    },
+    "utterance_ids": [
+     "u0020"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a6",
+    "pml": {
+     "content": "plurality of solutions",
+     "force": "assert",
+     "grammatical_person": "first",
+     "mode": "objective",
+     "operator": "exp_poss",
+     "polarity": "expansive",
+     "position": "S01",
+     "subject_position_read": "acknowledging evidence of multiple paths"
+    },
+    "raw_text": "I see two different solutions possibly",
+    "utterance_ids": [
+     "u0033"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a7",
+    "pml": {
+     "content": "requirement to justify models",
+     "force": "question",
+     "grammatical_person": "first",
+     "mode": "normative",
+     "operator": "exp_poss",
+     "polarity": "expansive",
+     "position": "S01",
+     "subject_position_read": "opening the demand for formal proof"
+    },
+    "raw_text": "I wonder if you can argue your models.",
+    "utterance_ids": [
+     "u0053"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C1"
+    ],
+    "id": "a8",
+    "pml": {
+     "content": "C1 possibility",
+     "force": "question",
+     "grammatical_person": "first",
+     "mode": "objective",
+     "operator": "exp_poss",
+     "polarity": "expansive",
+     "position": "S02",
+     "subject_position_read": "exploring the boundaries of the rod properties"
+    },
+    "raw_text": "I wonder if you can quarter this.",
+    "utterance_ids": [
+     "u0056"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C1"
+    ],
+    "id": "a9",
+    "pml": {
+     "content": "C1 impossibility",
+     "force": "assert",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "S03",
+     "subject_position_read": "asserting a hard constraint on the object"
+    },
+    "raw_text": "Dark green can\u2019t be quartered, no it can\u2019t",
+    "utterance_ids": [
+     "u0061"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C1"
+    ],
+    "id": "a10",
+    "pml": {
+     "content": "C1 impossibility",
+     "force": "assert",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "S03",
+     "subject_position_read": "enforcing a property constraint to correct a peer"
+    },
+    "raw_text": "You can\u2019t quarter the yellow. That\u2019s just the point you can\u2019t",
+    "uptake": {
+     "fate": "taken_up",
+     "ids": [
+      "u0084"
+     ]
+    },
+    "utterance_ids": [
+     "u0081",
+     "u0082"
+    ]
+   }
+  ]
+ },
+ "postures": [
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S03",
+   "utterances": [
+    "u0010"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "the class pushed back",
+   "speaker": "S02",
+   "utterances": [
+    "u0014"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "speaking for themselves",
+   "response": "no response recorded",
+   "speaker": "S02",
+   "utterances": [
+    "u0016"
+   ]
+  },
+  {
+   "move": "opens an alternative",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S02",
+   "utterances": [
+    "u0016"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "the class took it up",
+   "speaker": "S03",
+   "utterances": [
+    "u0020"
+   ]
+  },
+  {
+   "move": "opens an alternative",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0033"
+   ]
+  },
+  {
+   "move": "opens an alternative",
+   "register": "about what the class may or must do",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0053"
+   ]
+  },
+  {
+   "move": "opens an alternative",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S02",
+   "utterances": [
+    "u0056"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S03",
+   "utterances": [
+    "u0061"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "the class took it up",
+   "speaker": "S03",
+   "utterances": [
+    "u0081",
+    "u0082"
+   ]
+  }
+ ],
+ "repair_arcs": [],
+ "tensions": [],
+ "transcript": "# tm_0112\n\nU0001 S01: Ok, let\u2019s try this one, which is bigger, one half or one quarter and by  how much?\nU0002 S01: Which is bigger one half or one quarter?\nU0003 S01: And whichever  is bigger by how much?\nU0004 S01: Do you understand the problem?\nU0005 S01: Work with  your partner, and build a model and see if you can solve it.\nU0006 S02: One half or one quarter?\nU0007 S03: Now I get that the quarter is.\nU0008 S03: Look, here\u2019s a quarter.\nU0009 S03: You can\u2019t make  this into quarters [dark green rod].\nU0010 S03: A quarter is four parts.\nU0011 S03: But you  could make this [orange and red train] into a quarter.\nU0012 S02: Ah hah\nU0013 S03: By taking\nU0014 S02: Actually you can\u2019t make it into a quarter\nU0015 S03: What?\nU0016 S02: I don\u2019t think you can, well, actually you can, these, these will  probably [takes light green]\nU0017 S03: Oh yeah yeah yeah yeah\nU0018 S02: two three four\nU0019 S03: Now we eliminate that [moves aside red and white rods].\nU0020 S03: One half is  bigger than one quarter by one quarter.\nU0021 S02: Exactly!\nU0022 S02: [laughs] That was easy!\nU0023 S03: Hey, now I quartered it, so I can put these [red rods] back on.\nU0024 S02: There we go!\nU0025 S02: That\u2019s yours, where\u2019s mine.\nU0026 S02: There it is!\nU0027 S03: There we go!\nU0028 S03: A whole model and only sized that [holds a green rod]\nU0029 S01: How many of you think you have a solution?\nU0030 S01: How many of you  think you now the answer to that problem and you can prove your  answer?\nU0031 S01: Raise your hand if you think you have a solution and you  can prove your answer.\nU0032 S01: And you know you have a solution.\nU0033 S01: Ok, I see  two different solutions possibly, or two different arguments you have  to convince us they\u2019re correct.\nU0034 S01: So if you\u2019re done and you\u2019re waiting  you might want to think about a second one.\nU0035 S01: Ok.\nU0036 S01: So have many do you have David, how many arguments can you  make, how many models can you build?\nU0037 S01: Okay David said he could  build two or three.\nU0038 S01: I see Jessica has two and Andrew has two some  of you are building a few models\nU0039 S01: Ok, I see one model up there and there\u2019s another one maybe Amy  and, uh, James you could build your model when their finished?\nU0040 S03: Hey, there\u2019s another thing you can quarter!\nU0041 S03: Look!\nU0042 S03: There\u2019s two ways  [two orange rods and four yellow rods]\nU0043 S02: Oh!\nU0044 S03: You can quarter a train of orange rods\nU0045 S01: Ok, um, I really, I saw a new one, Gregory has one I haven\u2019t seen  yet.\nU0046 S01: Um so I see three of them so far.\nU0047 S01: I see four of them so far Alan  has another one I didn\u2019t seen.\nU0048 S01: Four different models.\nU0049 S01: I am seeing if I  can see another one that I haven\u2019t seen.\nU0050 S01: I see four different models I  see five different models!\nU0051 S01: Andrew has one I haven\u2019t seen and  Jessica.\nU0052 S01: Five different models!\nU0053 S01: I wonder if you can argue your  models.\nU0054 S01: Five of them.\nU0055 S01: Let\u2019s see if you can find one that I haven\u2019t  seen yet.\nU0056 S02: I wonder if you can quarter this.\nU0057 S02: [As T1 speaks] I got another  one!\nU0058 S02: [whispering] All you have to do is keep going down by two.\nU0059 S02: Brown, you minus two, take that rod, and you can quarter that one.\nU0060 S02: Brown, black then dark green!\nU0061 S03: Dark green can\u2019t be quartered, no it can\u2019t\nU0062 S02: Two dark greens\nU0063 S03: We got it!\nU0064 S03: We have an answer!\nU0065 S03: [to T1] We have four different  models\nU0066 S01: Four?\nU0067 S01: So you\u2019re going to explain how you got your different models,  Alan?\nU0068 S03: We\u2019re subtracting by two.\nU0069 S03: Two down from the orange would be the  brown.\nU0070 S01: Could you explain that to Dr. Davis back there?\nU0071 S01: Whisper that to him.\nU0072 S01: Tell him what you\u2019re doing to get your models.\nU0073 S01: [To Dr. Davis] I  want you to hear this.\nU0074 S02: [coming back to their seats] -four already.\nU0075 S02: So two from the brown  would be yellow\nU0076 S03: Two from the brown would be two yellows\nU0077 S02: Yellows- reds\nU0078 S03: What, no.\nU0079 S02: Yeah.\nU0080 S03: No.\nU0081 S03: You can\u2019t quarter the yellow.\nU0082 S03: That\u2019s just the point you can\u2019t\nU0083 S02: Hold on.\nU0084 S02: Oh yeah, you\u2019re right.\nU0085 S02: Purple!\nU0086 S03: Purple, purple.\nU0087 S03: That\u2019s it, that\u2019s it.\nU0088 S02: Purple\u2019s reds, then.\nU0089 S03: Yeah, purple.\nU0090 S03: Two reds for a purple.\nU0091 S03: Definitely, definitely.\nU0092 S02: Two minus purple would be red!\nU0093 S02: Red\nU0094 S03: Here\u2019s what we\u2019ll do.\nU0095 S03: We\u2019ll put all our fractions in this box top so  they won\u2019t break.\nU0096 S02: We\u2019ll just put it on the table.\nU0097 S02: We\u2019re ready, oh no we\u2019re not.\nU0098 S03: Yes we are.\nU0099 S01: Ok, ok, I think we\u2019re almost ready.\n",
+ "transcript_id": "tm_0112"
+}

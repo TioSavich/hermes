@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saying No — Critical Mathematics</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400;1,700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #110f08;
+      --surface: #1a1710;
+      --surface-raised: #242014;
+      --border: #3a3428;
+      --text: #d4cfc0;
+      --muted: #8a8470;
+      --tension: #d4634a;
+      --release: #5b9eae;
+      --accent: #e8a84c;
+      --title-font: 'IBM Plex Serif', Georgia, serif;
+      --body-font: 'IBM Plex Serif', Georgia, serif;
+      --mono: 'IBM Plex Mono', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--bg); color: var(--text); font-family: var(--body-font); font-size: 17px; line-height: 1.72; -webkit-font-smoothing: antialiased; }
+    body { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .brand { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; margin-bottom: 2.5rem; }
+    .brand b { color: var(--accent); font-weight: 500; }
+    h1 { font-family: var(--title-font); font-style: italic; font-size: 2.4rem; color: var(--accent); margin-bottom: 1.4rem; line-height: 1.15; }
+    h2 { font-family: var(--title-font); font-size: 1.25rem; color: var(--text); margin: 2.6rem 0 0.9rem; }
+    p { margin-bottom: 1.05rem; }
+    .muted { color: var(--muted); }
+    .worked { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--tension); padding: 1.1rem 1.3rem; margin: 1.4rem 0; }
+    .worked .math { font-family: var(--mono); font-size: 1.05rem; color: var(--text); }
+    .triple { display: grid; gap: 0.45rem; margin: 1rem 0 0.4rem; font-size: 0.95rem; }
+    .triple .row { display: grid; grid-template-columns: 11.5rem 1fr; gap: 0.8rem; }
+    .triple .k { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding-top: 0.2rem; }
+    .triple .valid { color: var(--release); }
+    .triple .collide { color: var(--tension); }
+    .searchbar { display: flex; gap: 0.6rem; margin: 1.2rem 0 1rem; }
+    .searchbar input { flex: 1; background: var(--surface); border: 1px solid var(--border); color: var(--text); font-family: var(--body-font); font-size: 0.95rem; padding: 0.6rem 0.8rem; border-radius: 4px; }
+    .searchbar button { background: var(--surface-raised); border: 1px solid var(--accent); color: var(--accent); font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.08em; padding: 0.6rem 1.1rem; border-radius: 4px; cursor: pointer; }
+    .searchbar button:hover { background: var(--accent); color: var(--bg); }
+    .corpus-line { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); margin-bottom: 1.1rem; }
+    .case { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1rem 1.2rem; margin-bottom: 0.9rem; }
+    .case .rule { font-family: var(--mono); font-size: 0.92rem; color: var(--accent); margin-bottom: 0.5rem; }
+    .case .line { font-size: 0.92rem; margin-bottom: 0.25rem; }
+    .case .line .k { color: var(--muted); }
+    .case .valid { color: var(--release); }
+    .case .collide { color: var(--tension); }
+    .case .cite { font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; font-style: italic; }
+    .offline { background: var(--surface); border: 1px dashed var(--border); padding: 1rem 1.2rem; color: var(--muted); font-size: 0.92rem; }
+    .footnote { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+    code { font-family: var(--mono); font-size: 0.85em; color: var(--release); }
+  </style>
+  <script defer src="../more-zeeman/render/hermes-shell.js" data-root="../more-zeeman/" data-app="./" data-active="no"></script>
+</head>
+<body data-hshell-doc="1">
+  <div class="brand">critical <b>mathematics</b> · saying no</div>
+
+  <h1>Two ways to say no</h1>
+
+  <p>A fourth grader adds two fractions and writes
+    <span class="worked math" style="display:inline; border:none; background:none; padding:0;">1/2&thinsp;+&thinsp;1/3&thinsp;=&thinsp;2/5</span>.
+    A teacher has two kinds of <em>no</em> available.</p>
+
+  <p>The first kind says: <em>that's not right.</em> It marks an absence — the
+    correct answer did not appear. It gives the student nothing to stand on and
+    the teacher nothing to work with.</p>
+
+  <p>The second kind says: <em>you added the tops and added the bottoms — and
+    there are places in mathematics where exactly that move is correct.</em>
+    Combining game records works this way: 2 hits in 5 at-bats plus 1 hit in 3
+    at-bats really is 3 hits in 8 at-bats. The move has a home. What it
+    collides with is what fraction <em>addition</em> demands: a common unit
+    before any counting starts. You cannot add halves to thirds any more than
+    you can add apples to weekdays.</p>
+
+  <p>The second no has parts: the rule the student is actually following,
+    the place where that rule works, and the specific commitment it
+    collides with here. Researchers have been documenting errors at this level
+    of detail for four decades. This system encodes that structure directly:</p>
+
+  <div class="worked">
+    <div class="math">1/2 + 1/3 = 2/5</div>
+    <div class="triple">
+      <div class="row"><span class="k">rule followed</span><span>add numerators and add denominators, componentwise</span></div>
+      <div class="row"><span class="k">where it is valid</span><span class="valid">ratio combination — pooling at-bats, mixing paint, merging tallies</span></div>
+      <div class="row"><span class="k">what it collides with</span><span class="collide">fraction addition requires a common unit before adding numerators</span></div>
+    </div>
+  </div>
+
+  <h2>Why the engine has no built-in "not"</h2>
+
+  <p>The reasoning engine under this site is written in Prolog, a language with
+    no native logical negation. Its only built-in refusal means "no derivation
+    found" — absence again, the first kind of no. We treat that limit as the
+    design. Because the language supplies no <em>not</em>, every no the system
+    can say had to be written down as content: a rule, its home domain, and the
+    commitment it collides with, each tied to the study that documented it.
+    The second kind of no — the kind with parts — is the only kind the system
+    has.</p>
+
+  <p>The philosophical wager (after Hegel, by way of Robert Brandom): this is
+    the right order of explanation. Incompatibility between commitments comes
+    first; the tidy logical operator is an abbreviation for it. A no with
+    parts can be repaired, and repair — not correctness — is where
+    mathematical understanding grows.</p>
+
+  <h2>Ask the literature</h2>
+
+  <p class="muted">The cards below are live queries against the encoded
+    research corpus, not canned examples. Describe something a student does.</p>
+
+  <div class="searchbar">
+    <input id="q" type="text" value="add numerators and denominators when adding fractions"
+           aria-label="Describe a student move">
+    <button id="go">ask</button>
+  </div>
+  <div id="corpus" class="corpus-line"></div>
+  <div id="results"></div>
+
+  <div class="footnote">
+    Each card is one error instance from the mathematics-education literature,
+    analyzed into the rule/valid-domain/collision triple and mapped where
+    possible to a canonical commitment the scorekeeping engine can adjudicate.
+    The technical argument lives in the repository at
+    <code>docs/negation-and-incompatibility.md</code>.
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const human = (s) => String(s || "").replace(/_/g, " ");
+
+    function caseCard(c) {
+      const div = document.createElement("div");
+      div.className = "case";
+      const valid = (c.valid_domain && c.valid_domain !== "none")
+        ? `<span class="valid">${human(c.valid_domain)}</span>`
+        : `<span class="muted">none found — a genuine slip</span>`;
+      div.innerHTML = `
+        <div class="rule">${human(c.student_rule)}</div>
+        <div class="line"><span class="k">where it is valid · </span>${valid}</div>
+        <div class="line"><span class="k">collides with · </span><span class="collide">${human(c.incompatible_with)}</span></div>
+        ${c.commitment_label ? `<div class="line"><span class="k">canonical commitment · </span>${c.commitment_label}</div>` : ""}
+        <div class="cite">${c.citation || "uncited"} · confidence: ${c.confidence}</div>`;
+      return div;
+    }
+
+    async function ask() {
+      const q = $("q").value.trim();
+      if (!q) return;
+      $("results").textContent = "asking…";
+      try {
+        const resp = await fetch("/api/literature", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query: q }),
+        });
+        const data = await resp.json();
+        if (!data.ok) throw new Error(data.error || "query failed");
+        const r = data.result;
+        $("corpus").textContent =
+          `corpus: ${r.corpus.total} analyses derived from the literature · ` +
+          `${r.corpus.mapped} mapped to ${"canonical commitments"} · ` +
+          `${r.corpus.adjudicated} adjudicated by the scorekeeper · ` +
+          `showing ${r.count} match${r.count === 1 ? "" : "es"}`;
+        const out = $("results");
+        out.textContent = "";
+        if (!r.cases.length) {
+          out.innerHTML = `<div class="offline">No encoded analysis matches that
+            description. The corpus is large but finite — absence here means
+            "not encoded," nothing more.</div>`;
+          return;
+        }
+        r.cases.forEach((c) => out.appendChild(caseCard(c)));
+      } catch (err) {
+        $("corpus").textContent = "";
+        $("results").innerHTML = `<div class="offline">The knowledge base is not
+          reachable from this page (it queries <code>/api/literature</code> on the
+          local Hermes server, port 8765). Launch it with
+          <code>bash hermes/app/launch.sh</code> and reload. The worked example
+          above is real either way — it is the corpus's paradigm case.</div>`;
+      }
+    }
+
+    $("go").addEventListener("click", ask);
+    $("q").addEventListener("keydown", (e) => { if (e.key === "Enter") ask(); });
+    ask();
+  </script>
+</body>
+</html>

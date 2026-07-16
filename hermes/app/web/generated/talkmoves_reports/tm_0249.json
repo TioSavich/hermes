@@ -1,0 +1,413 @@
+{
+ "attribution": "Transcript data: TalkMoves dataset (SumnerLab / Suresh et al.), CC BY-NC-SA 4.0, speaker-blinded before any model call.",
+ "caveats": [
+  "Held-out check: this transcript was chosen fresh from the dataset after the pipeline was built. Its lesson topic sits outside the calculator's current coverage, so the claim table is empty by honest abstention; the move readings still apply.",
+  "The calculator checks a claim only when it can ground it; 'not checked' means outside its current coverage, not wrong.",
+  "Reading a speaker's move is interpretive. The model proposes the reading; only the claim verdicts are computed.",
+  "One automated read of one transcript \u2014 a starting point for your own reading, not a verdict on the discussion."
+ ],
+ "claims": [],
+ "headline": "0 mathematical claims heard; 0 checked by the calculator, 0 did not check out.",
+ "machine": {
+  "extractions": [],
+  "readings": [
+   {
+    "claim_refs": [],
+    "id": "a1",
+    "pml": {
+     "content": "the target formula must be independent of the triangle value",
+     "force": "assert",
+     "grammatical_person": "first_plural",
+     "mode": "normative",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "external",
+     "subject_position_read": "setting the success criteria"
+    },
+    "raw_text": "we\u2019re particularly looking for formulas like this where you don\u2019t need to know the number in the triangle",
+    "utterance_ids": [
+     "u0001"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a2",
+    "pml": {
+     "content": "the values follow an additive arithmetic sequence",
+     "force": "assert",
+     "grammatical_person": "third_person",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "internal",
+     "subject_position_read": "observing a property of the object"
+    },
+    "raw_text": "like here it\u2019s zero and then it goes plus two then plus four then plus six",
+    "utterance_ids": [
+     "u0009",
+     "u0010"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a3",
+    "pml": {
+     "content": "the additive pattern is valid for this specific instance",
+     "force": "assert",
+     "grammatical_person": "third_person",
+     "mode": "objective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "internal",
+     "subject_position_read": "claiming local validity",
+     "uptake": {
+      "fate": "taken_up",
+      "ids": [
+       "u0014"
+      ]
+     }
+    },
+    "raw_text": "It works for this one.",
+    "utterance_ids": [
+     "u0013"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a4",
+    "pml": {
+     "content": "the additive pattern is worth considering",
+     "force": "avow",
+     "grammatical_person": "third_person",
+     "mode": "subjective",
+     "operator": "comp_poss",
+     "polarity": "expansive",
+     "position": "external",
+     "subject_position_read": "entertaining a candidate"
+    },
+    "raw_text": "But it might be an interesting idea.",
+    "utterance_ids": [
+     "u0014"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a5",
+    "pml": {
+     "content": "double zeros imply a subtraction formula",
+     "force": "assert",
+     "grammatical_person": "third_person",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "internal",
+     "subject_position_read": "proposing a general rule",
+     "uptake": {
+      "fate": "elaborated",
+      "ids": [
+       "u0030"
+      ]
+     }
+    },
+    "raw_text": "if it\u2019s there\u2019s two zeros starting out it\u2019s going to be box times box minus a number equals triangle",
+    "utterance_ids": [
+     "u0025"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a6",
+    "pml": {
+     "content": "lack of certain proof for the subtraction formula",
+     "force": "avow",
+     "grammatical_person": "first_plural",
+     "mode": "subjective",
+     "operator": "exp_poss",
+     "polarity": "expansive",
+     "position": "internal",
+     "subject_position_read": "acknowledging epistemic openness",
+     "wraps": "a7"
+    },
+    "raw_text": "We don\u2019t really know",
+    "utterance_ids": [
+     "u0026"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a7",
+    "pml": {
+     "content": "the subtraction formula is empirically consistent",
+     "force": "assert",
+     "grammatical_person": "third_person",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "internal",
+     "subject_position_read": "grounding the claim in observation"
+    },
+    "raw_text": "we tried different numbers and it works out every time",
+    "utterance_ids": [
+     "u0026"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a8",
+    "pml": {
+     "content": "subtraction is the required operation for double zeros",
+     "force": "assert",
+     "grammatical_person": "second_person",
+     "mode": "normative",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "external",
+     "subject_position_read": "insisting on a rule"
+    },
+    "raw_text": "if there\u2019s double zeros on the thing, you minus",
+    "utterance_ids": [
+     "u0027"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a9",
+    "pml": {
+     "content": "division is a method to find the triangle",
+     "force": "assert",
+     "grammatical_person": "second_person",
+     "mode": "objective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "external",
+     "subject_position_read": "offering a candidate method",
+     "uptake": {
+      "fate": "narrowed",
+      "ids": [
+       "u0050"
+      ]
+     }
+    },
+    "raw_text": "you just divide basically to get the answer",
+    "utterance_ids": [
+     "u0042"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a10",
+    "pml": {
+     "content": "correct terminology for division",
+     "force": "assert",
+     "grammatical_person": "second_person",
+     "mode": "normative",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "external",
+     "subject_position_read": "correcting the linguistic expression"
+    },
+    "raw_text": "I think you mean divide six by three",
+    "utterance_ids": [
+     "u0046"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a11",
+    "pml": {
+     "content": "the result of the operation is the triangle value",
+     "force": "assert",
+     "grammatical_person": "third_person",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "internal",
+     "subject_position_read": "claiming a necessary property of the result"
+    },
+    "raw_text": "This number should always be in the triangle at the end",
+    "utterance_ids": [
+     "u0049"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a12",
+    "pml": {
+     "content": "doubt regarding the clarity of the explanation",
+     "force": "avow",
+     "grammatical_person": "first_person",
+     "mode": "subjective",
+     "operator": "exp_poss",
+     "polarity": "expansive",
+     "position": "external",
+     "subject_position_read": "expressing uncertainty",
+     "wraps": "a13"
+    },
+    "raw_text": "I\u2019m not sure that everybody could follow that",
+    "utterance_ids": [
+     "u0050"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a13",
+    "pml": {
+     "content": "the division method fails the definition of the goal formula",
+     "force": "assert",
+     "grammatical_person": "third_person",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "external",
+     "subject_position_read": "rejecting a candidate based on criteria"
+    },
+    "raw_text": "it\u2019s not quite this formula",
+    "utterance_ids": [
+     "u0050"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a14",
+    "pml": {
+     "content": "a valid formula must derive the triangle from the box alone",
+     "force": "assert",
+     "grammatical_person": "second_person",
+     "mode": "normative",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "external",
+     "subject_position_read": "reiterating the normative constraint"
+    },
+    "raw_text": "when you really want a formula you want something where if you didn\u2019t know the number in the triangle, you could do something with the number in the box to get it",
+    "utterance_ids": [
+     "u0051"
+    ]
+   }
+  ]
+ },
+ "postures": [
+  {
+   "move": "treats the question as settled",
+   "register": "about what the class may or must do",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0001"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S02",
+   "utterances": [
+    "u0009",
+    "u0010"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S02",
+   "utterances": [
+    "u0013"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S04",
+   "utterances": [
+    "u0025"
+   ]
+  },
+  {
+   "move": "opens an alternative",
+   "register": "speaking for themselves",
+   "response": "no response recorded",
+   "speaker": "S04",
+   "utterances": [
+    "u0026"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S04",
+   "utterances": [
+    "u0026"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about what the class may or must do",
+   "response": "no response recorded",
+   "speaker": "S04",
+   "utterances": [
+    "u0027"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S06",
+   "utterances": [
+    "u0042"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about what the class may or must do",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0046"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S06",
+   "utterances": [
+    "u0049"
+   ]
+  },
+  {
+   "move": "opens an alternative",
+   "register": "speaking for themselves",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0050"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0050"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about what the class may or must do",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0051"
+   ]
+  }
+ ],
+ "repair_arcs": [],
+ "tensions": [],
+ "transcript": "# tm_0249\n\nU0001 S01: So we\u2019re particularly looking for formulas like this where you don\u2019t need to know the\nnumber in the triangle, all you need is to put the number in the box and\nthat will tell you the number in the triangle.\nU0002 S01: OK, um, I think we really have come close to being out of time would anybody like to say anything\nabout this?\nU0003 S02: We\u2019ve got a secret about the whole thing.\nU0004 S01: You\u2019ve got a secret about the whole thing, OK, well we got time to do a couple more things.\nU0005 S01: You want to say it to the camera or to everybody?\nU0006 S02: It\u2019s just for number eight.\nU0007 S01: Who\u2019s talking?\nU0008 S03: He can.\nU0009 S02: Well, like here it\u2019s zero and then it goes plus two then plus four then plus six then plus eight then plus ten.\nU0010 S02: Then more, plus twelve then plus fourteen\nU0011 S01: You wouldn\u2019t be willing to tell that to everybody.\nU0012 S02: Yeah, why not?\nU0013 S02: It works for this one.\nU0014 S01: But it might be an interesting idea.\nU0015 S01: Let me write the table to show this.\nU0016 S01: OK, they have an interesting idea that maybe you\u2019ve all thought of, but it\u2019s worth making sure you know it.\nU0017 S01: Would you explain it to everybody?\nU0018 S03: It starts at...you explain it I\u2019m not good at explaining it.\nU0019 S02: Here it\u2019s zero and then this is two then four, then six, eight, then ten and if you keep going down it would be twelve, fourteen if it went on.\nU0020 S01: OK, I think that\u2019s worth thinking about, Jeffery did you have something to show?\nU0021 S04: Should I show everyone?\nU0022 S01: It\u2019s up to you are you ready to show everyone?\nU0023 S01: OK, anybody else coming to help, or are you doing it by yourself?\nU0024 S04: I\u2019ll do it by myself.\nU0025 S04: Basically when you start with two zeros you\u2019re going to subtract, you know how when it\u2019s like box times box plus one equals triangle, but if it\u2019s there\u2019s two zeros starting out it\u2019s going to be box times box minus a number equals triangle.\nU0026 S04: We don\u2019t really know, but we tried different numbers and it works out every time.\nU0027 S04: Yes you do, if there\u2019s double zeros on the thing, you minus.\nU0028 S04: Yeah we did we subtracted on eight and subtracted on nine too.\nU0029 S04: No I\u2019m not going to show you my paper.\nU0030 S01: OK, how many people got this, some people have the formula for this and I think Jeff actually had the formula for this.\nU0031 S01: Does anyone else have the formula for this?\nU0032 S01: Jeff, yeah, you\u2019re working with Stephanie, and Michelle, and Mike is that right?\nU0033 S01: Matt too, so the four of you.\nU0034 S01: OK, but they\u2019re carefully not showing you their formula, but they did tell you one interesting thing to think about.\nU0035 S05: We\u2019re ready to explain what we got.\nU0036 S01: Okay\nU0037 S06: OK, everybody goes up.\nU0038 S06: Should I write I don\u2019t think I should write?\nU0039 S06: I don\u2019t know what to write.\nU0040 S06: Should I just this out.\nU0041 S06: Well, see, don\u2019t erase the whole thing.\nU0042 S06: OK, you just divide basically to get the answer.\nU0043 S06: Like, divide two into two and you get one, if you multiply two times one plus zero you get two and that\u2019s what you\u2019re supposed to get because two\u2019s in the triangle.\nU0044 S06: And the triangle\u2019s supposed to be at the end.\nU0045 S06: Divide six times three and you get two.\nU0046 S01: I think you mean divide six by three and you get two.\nU0047 S06: You do.\nU0048 S06: Awesome, and that\u2019s one and then you take the one and the two out of there and the two times one, I have to move down, and then you just plus zero cause that\u2019s the number you have up there to start with and then it equals that two.\nU0049 S06: This number should always be in the triangle at the end.\nU0050 S01: OK, I\u2019m not sure that everybody could follow that or not it\u2019s a nice idea, but it\u2019s not quite this formula.\nU0051 S01: What did they, they depend on using the number in the triangle right, and when you really want a formula you want something where if you didn\u2019t know the number in the triangle, you could do something with the number in the box to get it.\nU0052 S01: This is a nifty idea, and you could use it, but it does something different.\nU0053 S01: OK.\nU0054 S01: I\u2019d show you one last problem.\nU0055 S01: Now, we wouldn\u2019t solve it today it\u2019s a very hard problem,\n",
+ "transcript_id": "tm_0249"
+}

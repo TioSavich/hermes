@@ -1,0 +1,640 @@
+{
+  "DEMO-hybridization-circle-partition-on-rectangle": {
+    "visuals": [
+      {
+        "expression": "circle partition on rectangle",
+        "family": "transplant_deformation",
+        "correct": {
+          "description": "No productive hybrid is shown here; the point is the labeled transplant violation.",
+          "doc": {
+            "frames": []
+          }
+        },
+        "incorrect": {
+          "description": "Hybridized model: the circle's radial partition rule is transplanted onto a rectangle host.",
+          "doc": {
+            "canvas": {
+              "height": 420,
+              "width": 760
+            },
+            "family": "transplant_deformation",
+            "foreignPrimitive": "circle_radial_partition",
+            "frames": [
+              {
+                "caption": "Choose a rectangle as the area-model host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "rectangle host",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "host_shape(rectangle_area_model)"
+              },
+              {
+                "caption": "The radial partition is licensed inside the circle-region vocabulary.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "home-circle",
+                      "label": "circle home",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "radial-partition",
+                      "label": "licensed radial partition",
+                      "r": 94,
+                      "role": "iterated",
+                      "segments": 6
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "licensed_home(circle_radial_partition,circle_region)"
+              },
+              {
+                "caption": "Transplant the circle partition rule onto the rectangle host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "rectangle host",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "rectangle",
+                      "hostH": 190,
+                      "hostW": 300,
+                      "hostX": 110,
+                      "hostY": 86,
+                      "kind": "radial-partition",
+                      "label": "radial partition on rectangle",
+                      "r": 110,
+                      "role": "deformation",
+                      "segments": 6
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "transplant(circle_radial_partition,rectangle_area_model)"
+              },
+              {
+                "caption": "The result is a hybridized model: a foreign primitive on an illicit host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "rectangle host",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "rectangle",
+                      "hostH": 190,
+                      "hostW": 300,
+                      "hostX": 110,
+                      "hostY": 86,
+                      "kind": "radial-partition",
+                      "label": "radial partition on rectangle",
+                      "r": 110,
+                      "role": "deformation",
+                      "segments": 6
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 4,
+                "verb": "hybrid_result(circle_partition_on_rectangle)"
+              }
+            ],
+            "illicitHost": "rectangle_area_model",
+            "kind": "circle_partition_on_rectangle",
+            "licensedHome": "circle_region",
+            "request": {
+              "spec": "circle_partition_on_rectangle"
+            },
+            "result": "misconception",
+            "tuple": "hybridization(foreign_primitive, licensed_home, illicit_host)",
+            "violation": "object_language_binding_violation"
+          }
+        }
+      }
+    ]
+  },
+  "DEMO-hybridization-vertical-partition-on-circle": {
+    "visuals": [
+      {
+        "expression": "vertical partition on circle",
+        "family": "transplant_deformation",
+        "correct": {
+          "description": "No productive hybrid is shown here; the point is the labeled transplant violation.",
+          "doc": {
+            "frames": []
+          }
+        },
+        "incorrect": {
+          "description": "Hybridized model: the rectangle's vertical partition rule is transplanted onto a circular host.",
+          "doc": {
+            "canvas": {
+              "height": 420,
+              "width": 760
+            },
+            "family": "transplant_deformation",
+            "foreignPrimitive": "rectangle_vertical_partition",
+            "frames": [
+              {
+                "caption": "Choose a circle as the region host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "circle host",
+                      "r": 94,
+                      "role": "whole"
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "host_shape(circle_region)"
+              },
+              {
+                "caption": "The vertical partition is licensed inside the rectangle area-model vocabulary.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "home-rect",
+                      "label": "rectangle home",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "columns": 3,
+                      "h": 190,
+                      "host": "rectangle",
+                      "kind": "vertical-partition",
+                      "label": "licensed vertical partition",
+                      "role": "iterated",
+                      "shade": [
+                        2
+                      ],
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "licensed_home(rectangle_vertical_partition,rectangle_area_model)"
+              },
+              {
+                "caption": "Transplant the rectangle's vertical partition rule onto the circular host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "circle host",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "columns": 3,
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "vertical-partition",
+                      "label": "vertical partition on circle",
+                      "r": 94,
+                      "role": "deformation",
+                      "shade": [
+                        2
+                      ]
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "transplant(rectangle_vertical_partition,circle_region)"
+              },
+              {
+                "caption": "The result is a hybridized model: a foreign primitive on an illicit host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "circle host",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "columns": 3,
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "vertical-partition",
+                      "label": "vertical partition on circle",
+                      "r": 94,
+                      "role": "deformation",
+                      "shade": [
+                        2
+                      ]
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 4,
+                "verb": "hybrid_result(vertical_partition_on_circle)"
+              }
+            ],
+            "illicitHost": "circle_region",
+            "kind": "vertical_partition_on_circle",
+            "licensedHome": "rectangle_area_model",
+            "request": {
+              "spec": "vertical_partition_on_circle"
+            },
+            "result": "misconception",
+            "tuple": "hybridization(foreign_primitive, licensed_home, illicit_host)",
+            "violation": "object_language_binding_violation"
+          }
+        }
+      }
+    ]
+  },
+  "DEMO-hybridization-radial-partition-on-set": {
+    "visuals": [
+      {
+        "expression": "radial partition on set",
+        "family": "transplant_deformation",
+        "correct": {
+          "description": "No productive hybrid is shown here; the point is the labeled transplant violation.",
+          "doc": {
+            "frames": []
+          }
+        },
+        "incorrect": {
+          "description": "Hybridized model: the circle's radial partition rule is transplanted onto elements of a fractional set host.",
+          "doc": {
+            "canvas": {
+              "height": 420,
+              "width": 760
+            },
+            "family": "transplant_deformation",
+            "foreignPrimitive": "circle_radial_partition",
+            "frames": [
+              {
+                "caption": "Choose a collection as one fractional set host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "count": 3,
+                      "kind": "set-host",
+                      "label": "set host",
+                      "r": 34,
+                      "role": "whole",
+                      "x": 160,
+                      "y": 132
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "host_shape(fractional_set_model)"
+              },
+              {
+                "caption": "The radial partition is licensed inside the circle-region vocabulary.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "home-circle",
+                      "label": "circle home",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "radial-partition",
+                      "label": "licensed radial partition",
+                      "r": 94,
+                      "role": "iterated",
+                      "segments": 6
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "licensed_home(circle_radial_partition,circle_region)"
+              },
+              {
+                "caption": "Transplant the circle's radial partition rule onto each element of the set host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "count": 3,
+                      "kind": "set-host",
+                      "label": "set host",
+                      "r": 34,
+                      "role": "whole",
+                      "x": 160,
+                      "y": 132
+                    },
+                    {
+                      "count": 3,
+                      "host": "set",
+                      "kind": "radial-partition",
+                      "label": "radial partition on set",
+                      "r": 34,
+                      "role": "deformation",
+                      "segments": 3,
+                      "shade": [
+                        1,
+                        2
+                      ],
+                      "x": 160,
+                      "y": 132
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "transplant(circle_radial_partition,fractional_set_model)"
+              },
+              {
+                "caption": "The result is a hybridized model: a foreign primitive on an illicit host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "count": 3,
+                      "kind": "set-host",
+                      "label": "set host",
+                      "r": 34,
+                      "role": "whole",
+                      "x": 160,
+                      "y": 132
+                    },
+                    {
+                      "count": 3,
+                      "host": "set",
+                      "kind": "radial-partition",
+                      "label": "radial partition on set",
+                      "r": 34,
+                      "role": "deformation",
+                      "segments": 3,
+                      "shade": [
+                        1,
+                        2
+                      ],
+                      "x": 160,
+                      "y": 132
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 4,
+                "verb": "hybrid_result(radial_partition_on_set)"
+              }
+            ],
+            "illicitHost": "fractional_set_model",
+            "kind": "radial_partition_on_set",
+            "licensedHome": "circle_region",
+            "request": {
+              "spec": "radial_partition_on_set"
+            },
+            "result": "misconception",
+            "tuple": "hybridization(foreign_primitive, licensed_home, illicit_host)",
+            "violation": "object_language_binding_violation"
+          }
+        }
+      }
+    ]
+  },
+  "DEMO-hybridization-parallel-partition-on-triangle": {
+    "visuals": [
+      {
+        "expression": "parallel partition on triangle",
+        "family": "transplant_deformation",
+        "correct": {
+          "description": "No productive hybrid is shown here; the point is the labeled transplant violation.",
+          "doc": {
+            "frames": []
+          }
+        },
+        "incorrect": {
+          "description": "Hybridized model: the rectangle's parallel partition rule is transplanted onto a triangular region host.",
+          "doc": {
+            "canvas": {
+              "height": 420,
+              "width": 760
+            },
+            "family": "transplant_deformation",
+            "foreignPrimitive": "rectangle_parallel_partition",
+            "frames": [
+              {
+                "caption": "Choose a triangle as the region host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 188,
+                      "kind": "triangle-host",
+                      "label": "triangle host",
+                      "role": "whole",
+                      "w": 210,
+                      "x": 160,
+                      "y": 76
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "host_shape(triangle_region)"
+              },
+              {
+                "caption": "The parallel band partition is licensed inside the rectangle area-model vocabulary.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "home-rect",
+                      "label": "rectangle home",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "bands": 3,
+                      "h": 190,
+                      "host": "rectangle",
+                      "kind": "parallel-partition",
+                      "label": "licensed parallel partition",
+                      "role": "iterated",
+                      "shade": [
+                        2,
+                        3
+                      ],
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "licensed_home(rectangle_parallel_partition,rectangle_area_model)"
+              },
+              {
+                "caption": "Transplant the rectangle's parallel partition rule onto the triangular host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 188,
+                      "kind": "triangle-host",
+                      "label": "triangle host",
+                      "role": "whole",
+                      "w": 210,
+                      "x": 160,
+                      "y": 76
+                    },
+                    {
+                      "bands": 3,
+                      "h": 188,
+                      "host": "triangle",
+                      "kind": "parallel-partition",
+                      "label": "parallel bands on triangle",
+                      "role": "deformation",
+                      "shade": [
+                        2,
+                        3
+                      ],
+                      "w": 210,
+                      "x": 160,
+                      "y": 76
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "transplant(rectangle_parallel_partition,triangle_region)"
+              },
+              {
+                "caption": "The result is a hybridized model: a foreign primitive on an illicit host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 188,
+                      "kind": "triangle-host",
+                      "label": "triangle host",
+                      "role": "whole",
+                      "w": 210,
+                      "x": 160,
+                      "y": 76
+                    },
+                    {
+                      "bands": 3,
+                      "h": 188,
+                      "host": "triangle",
+                      "kind": "parallel-partition",
+                      "label": "parallel bands on triangle",
+                      "role": "deformation",
+                      "shade": [
+                        2,
+                        3
+                      ],
+                      "w": 210,
+                      "x": 160,
+                      "y": 76
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 4,
+                "verb": "hybrid_result(parallel_partition_on_triangle)"
+              }
+            ],
+            "illicitHost": "triangle_region",
+            "kind": "parallel_partition_on_triangle",
+            "licensedHome": "rectangle_area_model",
+            "request": {
+              "spec": "parallel_partition_on_triangle"
+            },
+            "result": "misconception",
+            "tuple": "hybridization(foreign_primitive, licensed_home, illicit_host)",
+            "violation": "object_language_binding_violation"
+          }
+        }
+      }
+    ]
+  }
+}

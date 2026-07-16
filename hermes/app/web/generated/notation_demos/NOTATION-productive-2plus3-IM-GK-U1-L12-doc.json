@@ -1,0 +1,76 @@
+{
+  "canvas": {
+    "height": 120,
+    "width": 760
+  },
+  "frames": [
+    {
+      "caption": "Write 2 + 3 = 5.",
+      "scene": {
+        "baseline": 40,
+        "format": "notation",
+        "glyphPitch": 24,
+        "glyphs": [
+          {
+            "ch": "2",
+            "flip": "none",
+            "ghost": "none",
+            "role": "digit",
+            "size": 20,
+            "x": 0,
+            "y": 40
+          },
+          {
+            "ch": "+",
+            "flip": "none",
+            "ghost": "none",
+            "role": "operator",
+            "size": 20,
+            "x": 24,
+            "y": 40
+          },
+          {
+            "ch": "3",
+            "flip": "none",
+            "ghost": "none",
+            "role": "digit",
+            "size": 20,
+            "x": 48,
+            "y": 40
+          },
+          {
+            "ch": "=",
+            "flip": "none",
+            "ghost": "none",
+            "role": "equals",
+            "size": 20,
+            "x": 72,
+            "y": 40
+          },
+          {
+            "ch": "5",
+            "flip": "none",
+            "ghost": "none",
+            "role": "digit",
+            "size": 20,
+            "x": 96,
+            "y": 40
+          }
+        ],
+        "marks": [],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 1,
+      "verb": "write_equation(2,+,3,5)"
+    }
+  ],
+  "kind": "write_equation",
+  "request": {
+    "a": 2,
+    "b": 3,
+    "op": "+",
+    "r": 5
+  },
+  "result": "5"
+}

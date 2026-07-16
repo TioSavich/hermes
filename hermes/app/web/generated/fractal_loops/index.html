@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fractal loops: where the code bites its own tail</title>
+<style>
+  :root {
+    --ink: #1d1d1f;
+    --paper: #faf8f4;
+    --panel: #ffffff;
+    --rule: #d8d2c6;
+    --soft: #6b6256;
+    --green: #2d5a2d;
+    --rust: #8a4b1a;
+    --code-bg: #1f1d1a;
+    --code-fg: #e8e2d6;
+    --accent: #7a2e2e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.6;
+    font-size: 17px;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 48px 24px 96px; }
+  header.masthead { border-bottom: 2px solid var(--ink); padding-bottom: 22px; margin-bottom: 8px; }
+  h1 { font-size: 2.0rem; line-height: 1.15; margin: 0 0 10px; letter-spacing: -0.01em; }
+  .standfirst { font-size: 1.05rem; color: var(--soft); margin: 0; }
+  h2.section { font-size: 1.45rem; margin: 44px 0 4px; padding-top: 18px; border-top: 1px solid var(--rule); }
+  h3 { font-size: 1.2rem; margin: 0 0 2px; }
+  .apparatus { background: #f3efe6; border: 1px solid var(--rule); border-radius: 6px; padding: 20px 24px; margin: 28px 0; }
+  .apparatus p:first-child { margin-top: 0; }
+  .apparatus p:last-child { margin-bottom: 0; }
+  .note { font-size: 0.92rem; color: var(--soft); font-style: italic; }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 26px 28px 30px;
+    margin: 30px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .panel .eyebrow { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 0 0 6px; font-family: ui-monospace, Menlo, monospace; }
+  .panel .fileline { font-family: ui-monospace, Menlo, monospace; font-size: 0.82rem; color: var(--soft); margin: 8px 0 16px; word-break: break-word; }
+  .svgframe { text-align: center; margin: 14px 0 18px; }
+  .svgframe img { max-width: 100%; height: auto; background: #fff; border: 1px solid var(--rule); border-radius: 6px; padding: 6px; }
+  .caption { margin: 4px 0 18px; }
+  details.seefor {
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    background: #f7f4ee;
+    margin-top: 14px;
+  }
+  details.seefor > summary {
+    cursor: pointer;
+    padding: 10px 16px;
+    font-weight: bold;
+    font-size: 0.92rem;
+    font-family: ui-monospace, Menlo, monospace;
+    list-style: none;
+    color: var(--accent);
+  }
+  details.seefor > summary::-webkit-details-marker { display: none; }
+  details.seefor > summary::before { content: "▸ "; }
+  details.seefor[open] > summary::before { content: "▾ "; }
+  .seefor .body { padding: 0 16px 16px; }
+  .lbl { font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); margin: 12px 0 4px; font-family: ui-monospace, Menlo, monospace; }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    padding: 14px 16px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    margin: 0;
+    white-space: pre;
+  }
+  pre.query { background: #2a2620; }
+  .deconstructs { font-size: 0.95rem; color: #43403a; background: #f0ece2; border-left: 3px solid var(--accent); padding: 12px 16px; margin-top: 18px; border-radius: 0 4px 4px 0; }
+  .deconstructs .lbl { margin-top: 0; }
+  a { color: var(--accent); }
+  .twoup { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; margin: 12px 0 6px; }
+  .twoup img { max-width: 200px; border: 1px solid var(--rule); border-radius: 6px; padding: 6px; background: #fff; }
+  .livelink { display: inline-block; margin: 8px 0 4px; font-size: 0.95rem; }
+  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--rule); color: var(--soft); font-size: 0.88rem; }
+  .toc { font-size: 0.95rem; columns: 2; column-gap: 28px; margin: 8px 0 0; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <h1>Fractal loops: where the code bites its own tail</h1>
+  <p class="standfirst">Seven places in the codebase where a procedure loops back onto itself and, at one point, cannot swallow its own tail. A walkthrough for reading without reading the Prolog.</p>
+</header>
+
+<div class="apparatus">
+  <p><strong>What a fixed point is, in plain words.</strong> A fixed point here is a spot where the code turns around and runs over itself: a prover that consults its own rulebook, a counter that counts itself, a grid that grows by reading its own diagonal. Most of the time the loop just goes around again and everything is fine. The interesting thing happens at the one point where the loop tries to swallow the last bite of its own tail and can&rsquo;t. At that spot the machine still finishes, but it hands back a result that has thrown away how it was made: the proof comes back empty, the variable hits a wall, the counting-history is dropped, the numeral keeps the name and loses the story. That is what these panels show, one loop at a time.</p>
+  <p>The recurring phrase below is <em>the numeral effaces the trace</em>: a finished result (a number, a proof, a cut piece of pie) discards the steps that produced it. The vanishing point is the extreme case &mdash; the place the result returns nothing at all.</p>
+</div>
+
+<p><strong>Why &ldquo;fractal.&rdquo;</strong> The same shape shows up at every scale. The empty proof (the erasure) sits inside the prover that reads its own rulebook; the self-starving interpreter sits inside the learner that goes into crisis; the felt <span style="font-variant: small-caps;">I</span> that can never be pinned down sits underneath all of them. It is the one move &mdash; <em>loop back, then fail to close at the last bite</em> &mdash; recognized small and recognized large. <span class="note">&ldquo;Fractal&rdquo; here means self-similar in structure, the same shape nested at different sizes. It does not mean you can zoom in forever; there are seven named places, not an infinite regress.</span></p>
+
+<p class="note">Hard rule for this page: no claim without its file:line and a query you can run yourself. Every &ldquo;captured output&rdquo; box below is the verbatim result of actually running that query. Nothing is decorative.</p>
+
+<nav class="toc">
+  <a href="#juncture">1. The juncture &mdash; one outcome, two histories (the seed)</a>
+  <a href="#erasure">2. The erasure &mdash; the proof that returns nothing</a>
+  <a href="#the-I">3. The {I} that can&rsquo;t be in the picture</a>
+  <a href="#prover-self-read">4. The prover reads its own rulebook</a>
+  <a href="#meta-interpreter">5. The interpreter that hollows itself</a>
+  <a href="#recollection-numeral">6. The numeral entombs its counting-history</a>
+  <a href="#more-machine">7. The More Machine &mdash; growth by reading its own diagonal</a>
+</nav>
+
+<!-- ===================== 1. JUNCTURE (the seed) ===================== -->
+<h2 class="section" id="juncture">1. The seed: one outcome, two histories</h2>
+<p>Start with the smallest version of the shape. Everything after this is a more elaborate case of it.</p>
+
+<div class="panel">
+  <p class="eyebrow">the juncture</p>
+  <h3>One outcome, two histories</h3>
+  <p class="fileline">arche-trace/differance_juncture.pl:74&ndash;76 (effaced_trace/2, the vanishing point); seed at :50&ndash;53, :85&ndash;87, :102&ndash;103, :109&ndash;116</p>
+
+  <div class="svgframe">
+    <img src="juncture.svg" alt="The juncture: one outcome, equal_parts(2), reached by a licensed radial cut and an unlicensed vertical cut; the numeral one-half keeps the identity and loses which cut made it.">
+  </div>
+
+  <p class="caption">This is the snake that catches one outcome with two different bites and can no longer tell which bite was allowed. A circle cut down the middle the licensed way (a radial cut) and a circle cut the unlicensed way (a straight vertical line) both land on the exact same picture: two equal pieces, one-half. The loop is in how the code asks about that picture &mdash; to list the histories that produced the outcome it runs <code>setof</code>, and that very query (the <code>Name^L^</code> part at lines 74&ndash;76) quietly drops the tag that said which cut was permitted. So the loop bites its own tail at <code>effaced_trace</code>: it succeeds, it hands back both cutting-histories, but the one thing it was built to keep &mdash; which one was the right way &mdash; has vanished into the numeral 1/2. The numeral keeps the identity and loses the history; the trace is effaced, and (only because vertical and radial agree at two pieces but split apart at three or more) it matters.</p>
+
+  <p>The two cutting-histories, both landing on one-half. At two pieces they coincide &mdash; which is exactly why the outcome term can no longer tell them apart:</p>
+  <div class="twoup">
+    <img src="half-radial.svg" alt="A circle cut radially into two equal halves, the licensed cut.">
+    <img src="half-vertical.svg" alt="A circle cut by a straight vertical line into two equal halves, the unlicensed cut, same picture at two parts.">
+  </div>
+
+  <details class="seefor">
+    <summary>See for yourself</summary>
+    <div class="body">
+      <div class="lbl">query</div>
+      <pre class="query">swipl -q -l paths.pl -l arche-trace/differance_juncture.pl \
+  -g 'differance_juncture:show_juncture(half)' -t 'halt'</pre>
+      <div class="lbl">captured output (verbatim)</div>
+      <pre>juncture: half
+  outcome(equal_parts(2))  via partition(circle,radial,2)  [licensed]
+  outcome(equal_parts(2))  via partition(circle,vertical,2)  [unlicensed]
+  -> différance fixed point: one outcome, licensed AND unlicensed; trace effaced
+  -> the compressed divergence reappears at n_geq(3)
+
+(also verified, same load:)
+fixed_point_half_TRUE
+effaced_trace(outcome(equal_parts(2))) = [partition(circle,radial,2),partition(circle,vertical,2)]</pre>
+    </div>
+  </details>
+
+  <div class="deconstructs">
+    <div class="lbl">where it eats its own tail</div>
+    <code>effaced_trace/2</code> at arche-trace/differance_juncture.pl:74&ndash;76 &mdash; <code>setof(Path, Name^L^derivation(Name, Outcome, Path, L), Paths)</code>. The existential quantifier <code>Name^L^</code> throws away the very license tag <code>L</code> that the rest of the file labors to assert. The predicate built to <em>name</em> the effaced trace performs the effacement in its own quantifier: both the radial [licensed] and vertical [unlicensed] paths come back collapsed into one list, with no record of which was licensed.
+  </div>
+</div>
+
+<!-- ===================== 2. ERASURE ===================== -->
+<h2 class="section" id="erasure">2. The proof points: where the formalism goes silent</h2>
+<p>The same shape, now at the grain of proof. Nested inside the next loop (the prover reading its own rulebook), this is the bite that comes back empty.</p>
+
+<div class="panel">
+  <p class="eyebrow">the erasure</p>
+  <h3>The proof that returns nothing</h3>
+  <p class="fileline">arche-trace/embodied_prover.pl:113&ndash;120 (construct_proof/4; erasure written at 117), 123&ndash;135 (proof_witness/2); arche-trace/automata.pl:56&ndash;57 (generate_trace/1), 62&ndash;74 (attr_unify_hook/2, bare fail at 73), 78&ndash;81 (contains_trace/1)</p>
+
+  <div class="svgframe">
+    <img src="erasure.svg" alt="The prover trying to write a proof of a sentence carrying the Trace; contains_trace returns yes and the proof object is written as erasure, holding nothing.">
+  </div>
+
+  <p class="caption">This is the prover trying to write down a proof of something that carries the Trace &mdash; the mark the system puts on the one thing it refuses to pin down (the elusive &ldquo;I&rdquo;). <code>generate_trace</code> stains a variable; <code>construct_proof</code> takes the sentence built from it and asks <code>contains_trace</code>, &ldquo;is the Trace in here?&rdquo; The answer comes back yes, and at that exact point the prover stops: instead of a real proof object it writes <code>erasure(my_rule)</code> &mdash; a result that keeps the rule&rsquo;s name but holds nothing inside, which <code>proof_witness</code> then reads back as an &ldquo;erased_proof&rdquo; with nothing in it. The loop eats its own tail because the reason it cannot fill the proof is the same refusal that defined the Trace in the first place: unification (Prolog&rsquo;s way of saying &ldquo;this thing IS that thing&rdquo;) is rigged to fail the instant you try to make the Trace equal any concrete term. A clean sentence with no Trace, <code>[s(a)]=&gt;[s(a)]</code>, proves fine and returns a full <code>proof(...)</code> &mdash; so the emptiness is not a crash; it is the formalism honestly going silent at the one spot where it cannot speak, the place the manuscript says human judgment has to take over.</p>
+
+  <details class="seefor">
+    <summary>See for yourself</summary>
+    <div class="body">
+      <div class="lbl">query</div>
+      <pre class="query">swipl -q -l paths.pl -g "use_module('arche-trace/automata'), \
+  use_module('arche-trace/embodied_prover'), automata:generate_trace(T), \
+  ( automata:contains_trace([s(T)]=>[s(T)]) -> C=yes ; C=no ), \
+  construct_proof(my_rule,([s(T)]=>[s(T)]),[],P1), \
+  construct_proof(my_rule,([s(a)]=>[s(a)]),[],P2), \
+  format('contains_trace([s(T)]=>[s(T)]) = ~w~n',[C]), \
+  format('TRACED:  ~q~n',[P1]), format('CLEAN:   ~q~n',[P2]), halt" -t 'halt(1)'</pre>
+      <div class="lbl">captured output (verbatim)</div>
+      <pre>contains_trace([s(T)]=>[s(T)]) = yes
+TRACED:  erasure(my_rule)
+CLEAN:   proof(my_rule,([s(a)]=>[s(a)]),[])</pre>
+    </div>
+  </details>
+
+  <div class="deconstructs">
+    <div class="lbl">where it eats its own tail</div>
+    embodied_prover.pl:117 &mdash; the clause <code>( contains_trace(Sequent) -&gt; Proof = erasure(RuleName) ; Proof = proof(RuleName, Sequent, SubProofs) )</code>. <code>contains_trace</code> SUCCEEDS (the Trace is detectable) while the traced variable cannot be bound to any concrete term (automata.pl:73, the bare <code>fail</code> in attr_unify_hook). So <code>construct_proof</code> succeeds structurally yet writes a content-free term: it registers that the trace is present but is barred from saying what it is. The derivation that resisted representation is effaced into <code>erasure(my_rule)</code> &mdash; the result keeps the rule name and discards the Sequent and SubProofs (the null/empty object in proof-space).
+  </div>
+</div>
+
+<!-- ===================== 3. THE {I} ===================== -->
+<div class="panel">
+  <p class="eyebrow">the {I}</p>
+  <h3>The {I} that can&rsquo;t be in the picture</h3>
+  <p class="fileline">arche-trace/automata.pl:56&ndash;74 (generate_trace + attr_unify_hook; the bare fail at :73) and pml/pragmatic_axioms.pl:44&ndash;45 (i_feeling/1), :50&ndash;51 (identity_claim/1), :106&ndash;127 (pragmatic_incoherence_witness &rarr; is_incoherent of n(represents(C_Id, I_f)))</p>
+
+  <div class="svgframe">
+    <img src="the-I.svg" alt="The I-Feeling, a traced variable that defers against another variable but fails against any concrete term.">
+  </div>
+
+  <p class="caption">This is the loop of the {I} &mdash; the felt &ldquo;I&rdquo; that can never appear inside the picture it is looking at. The code makes a special variable and marks it with the Trace (<code>i_feeling</code> calls <code>generate_trace</code>), and from then on a watcher (<code>attr_unify_hook</code>) fires every time anything tries to make that variable equal to something. When the {I} is matched against another open, unknown variable, the watcher just passes the mark along and lets it through &mdash; the {I} keeps sliding forward against the unknown, and the loop goes round again (the green path back to the top). But when something tries to pin the {I} to a concrete, named thing &mdash; &ldquo;I_f = hello&rdquo; &mdash; the watcher runs the one line it can&rsquo;t get past: a bare <code>fail</code>. That is the snake reaching the one bite it can&rsquo;t swallow: the match is refused, nothing comes back, the trace is effaced at exactly the point it was asked to become a fixed self. The captured run shows both halves verbatim: SUCCEEDS against another variable, FAILS against a concrete term, and trying to say a finite identity &ldquo;represents&rdquo; the {I} is flagged not just empty but incoherent.</p>
+
+  <details class="seefor">
+    <summary>See for yourself</summary>
+    <div class="body">
+      <div class="lbl">query</div>
+      <pre class="query">swipl -l paths.pl -l arche-trace/automata.pl -l pml/pragmatic_axioms.pl
+% i_feeling(I_f), contains_trace(I_f)
+% generate_trace(V), I_f = V          (var-var, defers)
+% generate_trace(J), J = hello        (var-concrete, wall)
+% generate_trace(K), identity_claim(K)
+% pragmatic_incoherence_witness([n(represents(me, I_f))], W)</pre>
+      <div class="lbl">captured output (verbatim)</div>
+      <pre>contains_trace(I_f)    = YES
+I_f = AnotherVar       : SUCCEEDS  (defers; loop continues)
+I_f = hello (concrete) : FAILS     (hits the wall)
+identity_claim(I_f)    : FAILS     (cannot objectify)
+represents(C_Id, I_f)  : is_incoherent (unsatisfiable_desire)</pre>
+    </div>
+  </details>
+
+  <div class="deconstructs">
+    <div class="lbl">where it eats its own tail</div>
+    arche-trace/automata.pl:73 &mdash; the bare <code>fail</code> in the nonvar branch of attr_unify_hook/2. Unification (the operation that says &ldquo;this term IS that term&rdquo;) is made to refuse precisely when a concrete term is offered to stabilize the traced {I}. The trace effaces: the I-Feeling defers indefinitely against other variables but returns nothing the instant anything tries to pin it to a representation. Reinforced at pml/pragmatic_axioms.pl:126&ndash;127, where representing the I-Feeling with a finite identity claim is declared <code>is_incoherent</code> rather than just empty.
+  </div>
+</div>
+
+<!-- ===================== 4. PROVER SELF-READ ===================== -->
+<div class="panel">
+  <p class="eyebrow">the prover</p>
+  <h3>The prover reads its own rulebook</h3>
+  <p class="fileline">arche-trace/sequent_engine.pl:296&ndash;304</p>
+
+  <div class="svgframe">
+    <img src="prover-self-read.svg" alt="The proves_impl rule reaching into its own clause database, which contains itself, and copy_term renaming the stored clause apart before it can be used.">
+  </div>
+
+  <p class="caption">This is the snake that has to bite its own tail to move. The rule named <code>proves_impl</code> is the engine&rsquo;s general law of inference: &ldquo;given a premise and a stored if-then, conclude the then.&rdquo; To do that, it reaches into its own rulebook and pulls out one of the stored if-thens (line 298). But that rulebook is the very same shelf the rule itself sits on &mdash; there are 41 entries and <code>proves_impl</code> is one of them &mdash; so the rule is reading over itself. The loop closes at line 304, where after drawing a conclusion it calls <code>proves_impl</code> again, which once more reads the whole shelf, itself included. The one point where it eats its own tail is line 299, <code>copy_term</code> (marked red): before the stored rule can be used, it must be copied into a renamed-apart twin, so the rule it acts with is never quite the rule on the shelf &mdash; to act on itself it first has to become not-itself. The captured run proves it lives: 41 stored clauses, and a real theorem (from &ldquo;successor of 0 equals successor of 0&rdquo; derive &ldquo;0 equals 0&rdquo;) that goes through only because the rule read that axiom out of its own database.</p>
+
+  <details class="seefor">
+    <summary>See for yourself</summary>
+    <div class="body">
+      <div class="lbl">query</div>
+      <pre class="query">swipl -l paths.pl
+?- use_module('arche-trace/sequent_engine').
+?- aggregate_all(count, clause(sequent_engine:proves_impl(_,_),_), N).
+?- sequent_engine:proves(([o(eq(succ(0),succ(0)))] => [o(eq(0,0))])).</pre>
+      <div class="lbl">captured output (verbatim)</div>
+      <pre>?- aggregate_all(count, clause(sequent_engine:proves_impl(_,_),_), N).
+N = 41.
+
+?- sequent_engine:proves(([o(eq(succ(0),succ(0)))] => [o(eq(0,0))])).
+true.</pre>
+    </div>
+  </details>
+
+  <div class="deconstructs">
+    <div class="lbl">where it eats its own tail</div>
+    sequent_engine.pl:299 <code>copy_term((A_clause, C_clause, B_clause), (Antecedents, Consequent, Body))</code>. This is where the trace effaces: to become an applicable rule, the stored clause must first be made to differ from itself. <code>copy_term</code> produces a renamed-apart twin, so the proves_impl-as-datum (read by clause/2 at 298) and the proves_impl-as-goal (called at 302) are non-identical terms. The rule&rsquo;s identity with itself is purchased by non-coincidence &mdash; what is called at 302 is never the stored clause, only its renamed ghost. The rule that ranges over the clauses is itself one of the clauses ranged over, and the only way it can act on itself is to first cease to be itself.
+  </div>
+</div>
+
+<!-- ===================== 5. META-INTERPRETER ===================== -->
+<h2 class="section" id="meta-interpreter">3. The arithmetic points: the numeral that loses its history</h2>
+<p>Same shape again, now where numbers are built. The interpreter is nested inside the learner&rsquo;s crisis cycle; the recollection numeral sits at the grounding site of arithmetic.</p>
+
+<div class="panel">
+  <p class="eyebrow">the interpreter</p>
+  <h3>The interpreter that hollows itself</h3>
+  <p class="fileline">learner/meta_interpreter.pl:204, 209, 219, 259</p>
+
+  <div class="svgframe">
+    <img src="meta-interpreter.svg" alt="solve re-reading add's own clause, re-running every counting step, accruing cost until the budget hits zero and a resource-exhaustion crisis is thrown instead of returning the sum.">
+  </div>
+
+  <p class="caption">This is the snake that eats its own tail by being too honest. The interpreter, <code>solve</code>, does not just trust that adding 8 and 5 gives 13 &mdash; it insists on re-doing the addition by reading <code>add</code>&rsquo;s own rulebook entry and re-running every single counting step it finds there. Each counting step costs one unit of a small fixed budget, and the loop closes because each step it re-reads forces it to read and re-run the next step in turn. The one place it eats its own tail is where the budget hits zero: instead of returning the answer, the result is thrown away into a frozen trace term and the machine throws a Resource Exhaustion crisis. The answer <code>Sum</code> is never filled in &mdash; the faithful re-counting is exactly what starves the machine before it can finish, so the numeral 13 never appears and what comes back is the crisis, not the sum.</p>
+
+  <details class="seefor">
+    <summary>See for yourself</summary>
+    <div class="body">
+      <div class="lbl">query</div>
+      <pre class="query">swipl -q -l paths.pl -g "use_module(learner/meta_interpreter), \
+  P8 = s(s(s(s(s(s(s(s(0)))))))), P5 = s(s(s(s(s(0))))), \
+  catch(solve(object_level:add(P8,P5,_), 6, _, _), Crisis, true), \
+  format('CAUGHT: ~q~n',[Crisis]), halt" -t 'halt(1)'
+# 8 and 5 are Peano s(...) towers; budget I_In = 6 (too small to count that high)</pre>
+      <div class="lbl">captured output (verbatim)</div>
+      <pre>      [DEBUG] Calling run_learned_strategy A=s(s(s(s(s(s(s(s(0)))))))) B=s(s(s(s(s(0)))))
+      [Strategy Selection] No learned strategy applicable, using primordial object_level:add(s(s(s(s(s(s(s(s(0)))))))),s(s(s(s(s(0))))),_110)
+      [CRISIS] Resource Exhaustion! I=0 < Cost=1
+CAUGHT: perturbation(resource_exhaustion)</pre>
+    </div>
+  </details>
+
+  <div class="deconstructs">
+    <div class="lbl">where it eats its own tail</div>
+    learner/meta_interpreter.pl:209 (the clause head) read together with the cost/modal gap at :214&ndash;218 and the throw at :259. The head of solve/6 claims to be solving <code>Goal</code>, yet its sixth argument is not the solution but a static trace term <code>[clause(object_level:(Goal:-Body)), trace(Body, BodyTrace)]</code> &mdash; the answer <code>Sum</code> is effaced into a trace at the very point the interpreter is most faithfully re-executing its own clause. The faithful re-execution (the :219 clause-read + :220 re-descent) is exactly what accrues the cost at :214&ndash;218 that drives the budget to zero, so check_viability at :256 throws <code>perturbation(resource_exhaustion)</code> at :259. The interpreter hollows out its own result at the point it is most faithful.
+  </div>
+</div>
+
+<!-- ===================== 6. RECOLLECTION NUMERAL ===================== -->
+<div class="panel">
+  <p class="eyebrow">the numeral</p>
+  <h3>The numeral entombs its counting-history</h3>
+  <p class="fileline">formalization/axioms_robinson.pl:114&ndash;115 (recollection_history/2); grounding rules at :310&ndash;314, :322&ndash;326, :339&ndash;343 calling once(is_recollection(_, _)); is_recollection/2 at :46&ndash;50 via history_for_nonnegative_integer/2 at :28&ndash;33</p>
+
+  <div class="svgframe">
+    <img src="recollection-numeral.svg" alt="is_recollection building the full count from 5 back to axiom(zero), while the grounding rule calls it with the history slot blanked to an underscore and hands back an empty proof.">
+  </div>
+
+  <p class="caption">This is the snake that builds a tail only to bite it off. When you ask the machine whether 5 is a real number, it first counts all the way up from zero and writes down the whole trip: <code>succ(4), succ(3), succ(2), succ(1), succ(0)</code>, back to <code>axiom(zero)</code>. That counting-history is the numeral&rsquo;s birth certificate, and the predicate is literally named &ldquo;is_recollection&rdquo; &mdash; its one job is to remember. But the rule that actually grounds arithmetic (<code>proves_impl</code>, where 5 = 5 gets licensed) calls that same recollection with the history-slot set to a blank underscore: it demands that a history EXIST, then refuses to keep it, and hands back an empty proof. The loop closes right there &mdash; the numeral 5 survives, licensed by a derivation it is built to discard, and the only way to get the history back is to start counting from zero all over again. The tail is eaten at line 312, the anonymous &ldquo;_&rdquo; where the count is asked for and dropped in the same breath.</p>
+
+  <details class="seefor">
+    <summary>See for yourself</summary>
+    <div class="body">
+      <div class="lbl">query</div>
+      <pre class="query">swipl -l paths.pl -l arche-trace/sequent_engine.pl -g "sequent_engine:enable_axiom_pack(robinson), \
+  (sequent_engine:is_recollection(5,H) -> format('History = ~q~n',[H]) ; true), \
+  (sequent_engine:proves_impl(_ => [o(eq(5,5))], P) -> \
+     (var(P) -> writeln('proves_impl SUCCEEDS; Proof object is UNBOUND (var) -> discarded') \
+     ; format('Proof = ~q~n',[P])) ; writeln('failed'))" -t halt</pre>
+      <div class="lbl">captured output (verbatim)</div>
+      <pre>is_recollection(5, History):
+  History = [succ(4),succ(3),succ(2),succ(1),succ(0),axiom(zero)]
+
+recollection_history(5, H2):
+  H2 = [succ(4),succ(3),succ(2),succ(1),succ(0),axiom(zero)]
+
+proves_impl(_ => [o(eq(5,5))], Proof) SUCCEEDS
+  the History argument passed to is_recollection was '_' (discarded)
+  Proof object = _6300  (unbound: the proof is thrown away)
+
+-- confirmation run --
+Proof object is UNBOUND (var) -> the proof is discarded</pre>
+    </div>
+  </details>
+
+  <div class="deconstructs">
+    <div class="lbl">where it eats its own tail</div>
+    formalization/axioms_robinson.pl:312 &mdash; the second argument of <code>once(is_recollection(A, _))</code> inside the proves_impl grounding rule. The predicate is named is_recollection and its whole reason to exist is to bind and exhibit History; the grounding caller invokes it only to throw the recollected history away (anonymous <code>_</code>), and the proves_impl head discards the proof object as <code>_</code> too. The origin (the count from zero) is effaced at the very instant it would be recollected. This is a vanishing point (effaced trace), not a Diagonal Sandwich.
+  </div>
+</div>
+
+<!-- ===================== 7. MORE MACHINE ===================== -->
+<h2 class="section" id="more-machine">4. The running engine: the loop that performs the move live</h2>
+<p>The same shape, but this one actually runs the loop in a browser, growing a grid by reading its own diagonal. It is the one place you can watch the move happen and watch where it cheats.</p>
+
+<div class="panel">
+  <p class="eyebrow">the More Machine</p>
+  <h3>The matrix grows by reading its own diagonal</h3>
+  <p class="fileline">more-zeeman/matrix.html:359&ndash;366 (addSnap); diagonal at :307, flip at :306, seed identity D1 at :312, corner vanishing point at :365&ndash;366. Mirrored in more-zeeman/more-machine.js:113&ndash;131, with maxSize sliding-window truncation at :116&ndash;120.</p>
+
+  <div class="svgframe">
+    <img src="more-machine.svg" alt="The matrix reading its diagonal, flipping every cell, writing the flipped strip down a new row and column; the new row provably differs from each older one, but the corner cell is filled by an alternating metronome tick.">
+  </div>
+
+  <p class="caption">This is the snake that grows by eating a copy of its own tail. The matrix starts as a little identity grid with W running down the diagonal &mdash; each row&rsquo;s way of saying &ldquo;I am myself.&rdquo; To add a row, the machine reads that whole diagonal, flips every cell (W becomes M), and writes the flipped strip down a fresh column and across a fresh row. In <code>matrix.html</code>, the new row is guaranteed to differ from every existing row at that row&rsquo;s own diagonal index, and the enlarged grid is read again on the next snap. In the mirrored <code>more-machine.js</code> component, the same local diagonal move runs only within a bounded sliding window after <code>maxSize</code> is reached. The one place it eats its own tail is the single corner cell where the new row meets the new column: there the code stops diagonalizing and just writes a metronome tick (M, then W, then M&hellip;) that flips no matter what the diagonal said. At exactly the cell that is supposed to be the freshest act, the act is a clock, not a decision &mdash; the finished grid keeps the symbol but loses the trace of whether that corner was forced into being or merely ticked.</p>
+
+  <p><a class="livelink" href="https://tiosavich.github.io/umedcta-formalization/more-zeeman/matrix.html" target="_blank" rel="noopener">&rarr; Watch it run live (matrix.html)</a> &mdash; click <strong>Snap</strong> / <strong>Auto-snap</strong>. Source: <code>more-zeeman/matrix.html</code>.</p>
+
+  <details class="seefor">
+    <summary>See for yourself</summary>
+    <div class="body">
+      <div class="lbl">query</div>
+      <pre class="query"># This loop runs in the browser. Open the live page and click to add snapshots:
+open more-zeeman/matrix.html
+# The seedMatrix / diagonal / flip / addSnap functions are at matrix.html:299-366
+# The mirrored more-machine.js component uses the same local move, but after
+# maxSize it first drops the oldest row/column and diagonalizes the visible
+# sliding window.</pre>
+      <div class="lbl">captured output (verbatim)</div>
+      <pre>seed (D1, identity, before any snap):
+            W M M
+            M W M
+            M M W
+
+after snap 1  (diagonal flipped -> new row provably differs from each prior row at its own index):
+            W M M M
+            M W M M
+            M M W M
+            M M M M
+
+after snap 2:
+            W M M M M
+            M W M M M
+            M M W M M
+            M M M M W
+            M M M W W
+
+corner cells written so far (nextSymbol stream, the metronome at m[n][n]):
+  snap1 corner = 0 (M),  snap2 corner = 1 (W)  -- alternates regardless of diagonal content</pre>
+    </div>
+  </details>
+
+  <div class="deconstructs">
+    <div class="lbl">where it eats its own tail</div>
+    more-zeeman/matrix.html:365&ndash;366 &mdash; the corner cell <code>m[n][n]</code>, filled by <code>nextSymbol</code> then <code>nextSymbol = flip(nextSymbol)</code>. The diagonal part of the new row is Cantor-forced and provably novel inside the current matrix, but the corner is an external alternating tick independent of any diagonal content; at the one cell asserting the new act&rsquo;s freshness the engine substitutes a metronome, and the stored symbol effaces whether it was forced or ticked. The mirrored <code>more-machine.js</code> version preserves that local structure but bounds it with a sliding window. (Page-level second grain: :294 comment &ldquo;The matrix is recollection&rdquo; is retracted by :280 prose &ldquo;The matrix records. It does not recollect.&rdquo;)
+  </div>
+</div>
+
+<footer>
+  <p>Factual source: <code>docs/research/2026-06-25-fixed-points-in-the-code.md</code> (researcher&rsquo;s notebook, recognition record only). Every file:line above was read in source; every captured-output box is the verbatim result of running the query beside it through <code>swipl -l paths.pl</code> (or <code>node</code> for the browser engine). The code <em>holds</em> these places; it does not implement différance, and nothing here claims it does.</p>
+  <p class="note">&ldquo;Built to break&rdquo; is the project&rsquo;s motto and a load-bearing claim. These seven loops are where the break is structural &mdash; the point each one goes silent is the same point a human reader has to take over.</p>
+</footer>
+
+</div>
+</body>
+</html>

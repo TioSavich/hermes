@@ -1,0 +1,77 @@
+/*
+ * hermes-tokens.css
+ * The one canonical token sheet for every Hermes render host page and the
+ * console. Warm paper / gold identity (the console's palette). This file is the
+ * single source of figure color and page color: a compiler emits a `role` atom
+ * per fill (frozen contract §3), and the drawer resolves it to `--fig-<role>`
+ * defined here.
+ *
+ * Consolidates the earlier hermes-tokens-dark.css and hermes-tokens-light.css.
+ * Gate E owns these values (the role->hex mapping); the .pl compilers never
+ * carry a hex string.
+ *
+ * Naming is exact and frozen (contract §4): one `--fig-<role>` variable per
+ * role in §3, with the role atom's hyphens preserved.
+ */
+
+:root {
+  /* === Page tokens (the console's warm paper / gold identity) === */
+  --ink:         #0d0c08;
+  --ink-soft:    #1b1810;
+  --paper:       #f4ead6;
+  --paper-warm:  #ebdfc5;
+  --paper-cool:  #ede4cf;
+  --gold:        #d4a747;
+  --gold-deep:   #a97c24;
+  --gold-pale:   #f0d68a;
+  --rust:        #b95238;
+  --teal:        #3f7f89;
+  --teal-deep:   #2c5e66;
+  --line:        rgba(13, 12, 8, 0.14);
+  --muted:       #665f4f;
+  --serif:       Georgia, "Times New Roman", serif;
+  --mono:        ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --ok:          #3f7f89;
+  --thin:        #b08a3a;
+
+  /* === Figure surround (the drawing-area chrome) === */
+  --paper-bg:    #f4ead6;   /* the figure's paper background */
+  --fig-stroke:  #0d0c08;   /* the outline color for every primitive */
+  --fig-label:   #1b1810;   /* figure label / annotation typography */
+
+  /* === Figure color roles (frozen contract §3 -> §4) === */
+
+  /* --- shared roles (any format) --- */
+  --fig-whole:        #ebdfc5;   /* the whole / unit bar / background fill */
+  --fig-highlight:    #d4a747;   /* the selected unit-fraction part / known part */
+  --fig-iterated:     #a97c24;   /* iterated copies / the adjustment segment */
+  --fig-inner:        #3f7f89;   /* inner (recursive) part / a partial-product rect */
+  --fig-deformation:  #b95238;   /* the mislabeled / non-grounded fill (misconception) */
+  --fig-neutral:      #cabf9f;   /* uncolored, inert, or cancelled (zero-pair) fill */
+
+  /* --- number-line roles (P1) --- */
+  --fig-jump-add:     #3f7f89;   /* a forward (addition) arc jump */
+  --fig-jump-sub:     #b95238;   /* a backward (subtraction) arc jump */
+  --fig-scale-break:  #a97c24;   /* the scale-break glyph / broken-axis segment */
+
+  /* --- base-ten roles (P4) --- */
+  --fig-unit:         #f0d68a;   /* a ones-place block */
+  --fig-rod:          #d4a747;   /* a base^1 block (a rod) */
+  --fig-flat:         #a97c24;   /* a base^2 block (a flat) */
+  --fig-cube:         #6e4f15;   /* a base^3 block (a cube) */
+
+  /* --- balance roles (PB) --- */
+  --fig-pan:          #cabf9f;   /* a pan / beam surface */
+  --fig-unit-weight:  #3f7f89;   /* a unit weight in a pan */
+  --fig-x-box:        #b95238;   /* the unknown (x) box in a pan */
+
+  /* --- spatial-family roles --- */
+  --fig-point:        #4c6b8a;   /* a plotted ordered pair on the coordinate plane */
+  --fig-pre-image:    #8a6f4c;   /* the figure before a rigid motion */
+  --fig-image:        #5d8b6e;   /* the congruent image after the motion */
+  --fig-piece:        #6e8b5d;   /* a placed polyomino / unit cell in a lattice tiling */
+  --fig-sector:      #6e8b5d;   /* filled central-angle sector: a Degrees/360 slice of the circle */
+  --fig-bar:          #6e8b5d;   /* a data-display bar / bin / stacked-dot extent */
+  --fig-face:         #6e8b5d;   /* a solid's net/isometric face */
+  --fig-peg:          #4c6b8a;   /* a geoboard lattice peg */
+}

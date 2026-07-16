@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" data-page-id="muds">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meaning-Use Diagrams — UMEDCTA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="hermes-tokens-dark.css">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--bg);color:var(--text);font-family:'IBM Plex Serif',Georgia,serif;font-size:17px;line-height:1.72;-webkit-font-smoothing:antialiased}
+  body{max-width:880px;margin:0 auto;padding:1.5rem 1.5rem 5rem}
+
+  /* Title block */
+  header.masthead{padding:1rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:1.5rem;position:relative}
+  header.masthead .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.2em;color:var(--snap);text-transform:uppercase;margin-bottom:.9rem}
+  header.masthead h1{font-family:'Source Serif 4','IBM Plex Serif',serif;font-weight:700;font-size:clamp(2rem,5vw,2.8rem);line-height:1.1;letter-spacing:-.015em;text-wrap:balance;margin-bottom:1rem}
+  header.masthead .sub{font-family:'Source Serif 4',serif;font-style:italic;font-size:1.1rem;color:var(--muted);max-width:680px;line-height:1.5}
+  header.masthead .meta{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--muted);margin-top:1.25rem;letter-spacing:.08em}
+  header.masthead .meta span+span::before{content:' · ';color:var(--border);margin:0 .3rem}
+  header.masthead .subnav{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:1.2rem;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;padding-top:1.1rem;border-top:1px dotted var(--border)}
+  header.masthead .subnav a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:3px;transition:color .2s,border-color .2s}
+  header.masthead .subnav a:hover{color:var(--snap);border-bottom-color:var(--snap)}
+  header.masthead .subnav a.active{color:var(--snap);border-bottom-color:var(--snap)}
+
+  /* Section marks */
+  .mk{display:flex;align-items:center;gap:.9rem;margin:3rem 0 1rem;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;font-size:.72rem;letter-spacing:.2em;color:var(--muted)}
+  .mk::before,.mk::after{content:'';flex:1;height:1px;background:var(--border)}
+  .mk .n{color:var(--snap);opacity:.8}
+
+  h2.head{font-family:'Source Serif 4',serif;font-size:1.55rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;text-wrap:balance}
+  h2.head .q{color:var(--snap);font-style:italic;font-weight:400}
+  h3.sub{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--snap);text-transform:uppercase;letter-spacing:.15em;margin:2rem 0 .8rem;font-weight:500}
+
+  p{margin-bottom:1.1em;text-wrap:pretty}
+  p.lead{font-family:'Source Serif 4',serif;font-style:italic;font-size:1.1rem;line-height:1.55;color:var(--text);margin-bottom:1.4em}
+  em{font-style:italic;color:var(--text)}
+  strong{font-weight:600;color:var(--text)}
+  code{font-family:'IBM Plex Mono',monospace;font-size:.85em;color:var(--snap);background:var(--surface);padding:.05em .35em;border:1px solid var(--border);border-radius:2px}
+  a{color:var(--release);text-decoration:none;border-bottom:1px solid rgba(91,158,174,.3)}
+  a:hover{color:var(--snap);border-bottom-color:var(--snap)}
+
+  /* Discursive-level toggle (page-local; separate from shared.js discourse buttons) */
+  .registers{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.25rem 0 .4rem;font-family:'IBM Plex Mono',monospace}
+  .reg-btn{background:var(--surface);color:var(--muted);border:1px solid var(--border);padding:.4rem .9rem;font-family:inherit;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:border-color .2s,color .2s;border-radius:2px}
+  .reg-btn:hover{color:var(--text);border-color:var(--muted)}
+  .reg-btn.active{color:var(--snap);border-color:var(--snap);background:rgba(232,168,76,.08)}
+  .reg-note{font-family:'IBM Plex Mono',monospace;font-size:.66rem;color:var(--muted);letter-spacing:.08em;margin-top:.3rem;opacity:.75}
+
+  /* Prose stub for unwritten registers */
+  .stub{border:1px dashed var(--border);background:var(--surface);padding:1.2rem;margin:1rem 0;font-family:'Source Serif 4',serif;font-style:italic;font-size:.95rem;color:var(--muted)}
+  .stub b{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--snap);display:block;margin-bottom:.4rem}
+
+  /* MUD frame */
+  .mud-frame{border:1px solid var(--border);background:var(--surface);margin:1.25rem 0 1rem;position:relative;overflow:hidden;border-radius:2px}
+  .mud-frame::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--snap)}
+  .mud-frame header{padding:.7rem 1rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+  .mud-frame header .tag{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+  .mud-frame header .tag b{color:var(--snap);font-weight:500}
+  .mud-frame .canvas-wrap{padding:.5rem;background:#0c0a05}
+  .mud-frame svg{display:block;width:100%;height:auto;max-height:520px}
+  .mud-frame .caption{padding:.95rem 1.2rem;font-size:.92rem;line-height:1.6;color:#b8b0a0;border-top:1px solid var(--border)}
+  .mud-frame .caption code{color:var(--snap);background:transparent;border:none;padding:0;font-size:.88em}
+
+  /* SVG nodes & arrows */
+  .nd-p-fill{fill:var(--surface-raised)}
+  .nd-p-stroke{stroke:var(--p-stroke);stroke-width:1.4;fill:none}
+  .nd-p-stroke.focus{stroke:var(--snap);stroke-width:2}
+  .nd-p-stroke.ghost{stroke:var(--muted);stroke-width:1.2;stroke-dasharray:4 3;opacity:.7}
+  .nd-v-fill{fill:var(--surface-raised)}
+  .nd-v-stroke{stroke:var(--v-stroke);stroke-width:1.4;fill:none}
+  .nd-v-stroke.focus{stroke:var(--snap);stroke-width:2}
+  .nd-kind{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.16em;text-anchor:middle;dominant-baseline:middle}
+  .nd-kind.p{fill:var(--p-stroke);opacity:.7}
+  .nd-kind.v{fill:var(--v-stroke);opacity:.85}
+  .nd-label{font-family:'Source Serif 4',serif;font-size:12.5px;font-weight:600;fill:var(--text);text-anchor:middle;dominant-baseline:middle}
+  .nd-label.small{font-size:11.5px;font-weight:500}
+
+  .arrow{stroke:var(--muted);stroke-width:1.6;fill:none}
+  .arrow.dashed{stroke-dasharray:6 4}
+  .arrow.lx{stroke:var(--lx);stroke-width:2.2;stroke-dasharray:7 4}
+  .arrow.lx-shadow{stroke:var(--lx);stroke-width:6;opacity:.18;stroke-dasharray:none}
+  .arrow.ghost{stroke:var(--muted);stroke-width:1.2;stroke-dasharray:3 3;opacity:.55}
+
+  .arr-num-bg{fill:#0c0a05;stroke:var(--muted);stroke-width:1.1}
+  .arr-num-bg.lx{stroke:var(--lx);stroke-width:1.4}
+  .arr-num{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;fill:var(--muted);text-anchor:middle;dominant-baseline:central}
+  .arr-num.lx{fill:var(--lx)}
+  .arr-type{font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:500;fill:var(--muted);letter-spacing:.06em;text-anchor:middle;dominant-baseline:middle}
+  .arr-type.lx{fill:var(--lx);font-weight:600}
+  .arr-mech{font-family:'IBM Plex Serif',serif;font-style:italic;font-size:10.5px;fill:#b8b0a0;text-anchor:middle;dominant-baseline:middle}
+
+  .label-bg{fill:#0c0a05;opacity:.95}
+
+  /* Practice picker */
+  .picker{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:.5rem 0;font-family:'IBM Plex Mono',monospace;font-size:.78rem}
+  .picker label{color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-size:.7rem}
+  .picker select{background:var(--surface);color:var(--text);border:1px solid var(--border);font-family:inherit;font-size:.78rem;padding:.4rem .55rem;min-width:300px;max-width:100%;border-radius:2px}
+  .picker select:focus{border-color:var(--snap);outline:none}
+  .picker .hint{color:var(--muted);font-style:italic;font-family:'Source Serif 4',serif;font-size:.85rem}
+  .picker .group{display:flex;gap:.4rem;flex-wrap:wrap;margin-left:auto}
+  .quick-btn{background:transparent;color:var(--muted);border:1px solid var(--border);font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;padding:.35rem .65rem;cursor:pointer;border-radius:2px}
+  .quick-btn:hover{color:var(--snap);border-color:var(--snap)}
+
+  /* Legend */
+  .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.55rem 1.4rem;margin:.6rem 0 .9rem;padding:.85rem 1rem;border:1px solid var(--border);background:var(--surface);font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--muted);border-radius:2px}
+  .legend .ent{display:flex;align-items:center;gap:.55rem}
+  .legend .sw{flex-shrink:0}
+  .legend .lbl{flex:1}
+  .legend .lbl b{color:var(--text);font-weight:500}
+
+  /* Grounding metaphors panel */
+  .gm-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0 1.5rem}
+  .gm-card{border:1px solid var(--border);background:var(--surface);position:relative;overflow:hidden;display:flex;flex-direction:column;border-radius:2px}
+  .gm-card.basic{border-left:3px solid var(--release)}
+  .gm-card.repair{border-left:3px solid var(--snap)}
+  .gm-card .illus{height:110px;background:#0c0a05;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;padding:.7rem}
+  .gm-card.basic .illus{background:linear-gradient(135deg,#0c0a05 0%,#0e1316 100%)}
+  .gm-card.repair .illus{background:linear-gradient(135deg,#0c0a05 0%,#151008 100%)}
+  .gm-card .illus svg{max-height:100%;width:auto;display:block}
+  .gm-card .body{padding:1rem 1.1rem 1.1rem;flex:1;display:flex;flex-direction:column}
+  .gm-card h4{font-family:'Source Serif 4',serif;font-size:1.05rem;font-weight:600;margin-bottom:.15rem;color:var(--text);text-wrap:balance}
+  .gm-card .kind{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.55rem}
+  .gm-card.basic .kind{color:var(--release)}
+  .gm-card.repair .kind{color:var(--snap)}
+  .gm-card .src{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--muted);margin-bottom:.65rem;letter-spacing:.04em;line-height:1.5}
+  .gm-card .src .arr{color:var(--muted);opacity:.6;margin:0 .25em}
+  .gm-card .desc{font-size:.86rem;line-height:1.55;color:#b8b0a0;margin-bottom:.7rem}
+  .gm-card .section{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.5rem;margin-bottom:.3rem;border-top:1px dotted var(--border);padding-top:.55rem}
+  .gm-card ul{list-style:none;padding:0;margin:0}
+  .gm-card li{font-size:.82rem;line-height:1.5;color:var(--text);margin-bottom:.5rem;padding-left:1rem;position:relative}
+  .gm-card li::before{content:'';position:absolute;left:0;top:.55em;width:7px;height:1px;background:var(--muted)}
+  .gm-card li.brk::before{background:var(--tension);width:9px}
+  .gm-card li.rep::before{background:var(--snap);width:9px;height:2px;top:.5em}
+  .gm-card li .why{display:block;font-size:.74rem;color:var(--muted);font-style:italic;margin-top:.15rem;line-height:1.45}
+  @media(max-width:680px){.gm-grid{grid-template-columns:1fr}}
+
+  /* Footer */
+  footer{margin-top:3.5rem;padding-top:2rem;border-top:1px solid var(--border)}
+  footer h3{font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;color:var(--snap);margin-bottom:1rem}
+  footer p{font-size:.9rem;color:#b8b0a0;line-height:1.65}
+  footer .note{margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--border);font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--muted);line-height:1.6;letter-spacing:.04em}
+
+  @media(max-width:640px){
+    body{padding:1rem 1rem 4rem}
+    .mud-frame .canvas-wrap{padding:.3rem}
+    .picker select{min-width:0;width:100%}
+    .picker .group{margin-left:0;width:100%}
+  }
+</style>
+  <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="muds"></script>
+  <style>.top-bar,#journey-progress-bar{display:none!important}
+  /* muds now takes its framing from the shell's top-bar toggle */
+  #intro .registers,#intro .reg-note{display:none!important}</style>
+</head>
+<body data-hshell-doc="1">
+
+<header class="masthead">
+  <div class="eyebrow">Philosopher's view · May 2026</div>
+  <h1>Meaning-Use Diagrams</h1>
+  <p class="sub">Brandom's MUR framework applied to the action-automata registry: PP-sufficiency, PV-sufficiency, VP-sufficiency, and the LX resultant that makes implicit inferential commitments explicit.</p>
+  <div class="meta">
+    <span>From <code>pml/mua_relations.pl</code></span>
+    <span>28 practices · 19 vocabularies · 11 LX edges</span>
+  </div>
+</header>
+
+<!-- ══ INTRO ══ -->
+<section id="intro">
+  <div class="mk"><span class="n">I.</span><span>What this page is</span><span class="n">⋆</span></div>
+
+  <div class="registers" role="group" aria-label="Discursive register" hidden style="display:none !important">
+    <button class="reg-btn" data-reg="freshman">student</button>
+    <button class="reg-btn" data-reg="math-ed">teacher</button>
+    <button class="reg-btn active" data-reg="philosopher" aria-pressed="true">researcher</button>
+  </div>
+
+  <div id="prose-area">
+    <h2 class="head">Brandom's <span class="q">MUR</span> applied to a registry of strategies</h2>
+    <p class="lead">In <em>Between Saying and Doing</em>, Brandom names a small set of Meaning-Use Relations between practices-or-abilities (P) and vocabularies (V). The atomic ones are PV-sufficiency (deploying a practice suffices to deploy a vocabulary), VP-sufficiency (a vocabulary suffices to specify a practice), and PP-sufficiency (one practice suffices to algorithmically elaborate another). Stacked together, these give the <em>resultant</em> LX relation: V<sub>meta</sub> is elaborated-explicating for V<sub>base</sub> when the practices of V<sub>meta</sub> elaborate the practices of V<sub>base</sub> and make explicit, as expressible content, what those practices carry implicitly.</p>
+    <p>The page renders the corresponding facts in <code>pml/mua_relations.pl</code> as Meaning-Use Diagrams. The dataset is a hand-curated seed informed by the action-automata registry and by the <code>strategy_metadata</code> work in LK_RB_Synthesis; it is not an exhaustive map of arithmetic practice. The LX relation is the project's specifically-interesting one: the registry distinguishes a productive cross-multiplication practice from its deformation precisely because the productive version deploys an additional vocabulary that makes a kernel justification explicit, and the deformation does not. The diagram below opens on that neighborhood.</p>
+  </div>
+</section>
+
+<!-- ══ MUD CANVAS ══ -->
+<section id="mud">
+  <div class="mk"><span class="n">II.</span><span>The Diagram</span><span class="n">⋆</span></div>
+
+  <p>The canonical Brandomian MUD is a square: two practices (P, boxes) on one side, two vocabularies (V, ovals) on the other. The atomic arrows are <em>numbered</em>; the resultant — the relation that is composed out of the atoms — is drawn as a <strong style="color:var(--snap)">dashed accent line</strong> labeled <code>Res</code>, with the recipe of atoms it composes. LX is one such resultant.</p>
+
+  <div class="legend">
+    <span class="ent">
+      <svg class="sw" width="34" height="20" viewBox="0 0 34 20"><rect x="2" y="3" width="30" height="14" class="nd-p-fill"/><rect x="2" y="3" width="30" height="14" class="nd-p-stroke"/></svg>
+      <span class="lbl"><b>P</b> — practice or ability</span>
+    </span>
+    <span class="ent">
+      <svg class="sw" width="34" height="20" viewBox="0 0 34 20"><ellipse cx="17" cy="10" rx="15" ry="8" class="nd-v-fill"/><ellipse cx="17" cy="10" rx="15" ry="8" class="nd-v-stroke"/></svg>
+      <span class="lbl"><b>V</b> — vocabulary</span>
+    </span>
+    <span class="ent">
+      <svg class="sw" width="40" height="16" viewBox="0 0 40 16"><line x1="2" y1="8" x2="34" y2="8" class="arrow"/><polygon points="34,4 40,8 34,12" fill="var(--muted)"/></svg>
+      <span class="lbl">solid — <b>atomic</b> MUR (PV/VP/PP)</span>
+    </span>
+    <span class="ent">
+      <svg class="sw" width="40" height="16" viewBox="0 0 40 16"><line x1="2" y1="8" x2="34" y2="8" class="arrow lx"/><polygon points="34,3 40,8 34,13" fill="var(--lx)"/></svg>
+      <span class="lbl">dashed accent — <b>resultant</b> (LX, VV)</span>
+    </span>
+  </div>
+
+  <div class="picker">
+    <label for="practice-select">Focus practice</label>
+    <select id="practice-select"></select>
+    <div class="group">
+      <button class="quick-btn" data-quick="p_cross_multiplication_rule_from_pattern">cross-mult</button>
+      <button class="quick-btn" data-quick="p_column_addition_with_carrying">column add</button>
+      <button class="quick-btn" data-quick="p_decimal_multiplication_rule">decimal mult</button>
+      <button class="quick-btn" data-quick="p_factor_cancel_substitute">factor-cancel</button>
+    </div>
+  </div>
+
+  <div class="mud-frame">
+    <header>
+      <span class="tag">MUD · <b id="mud-title">cross-multiplication LX neighborhood</b></span>
+      <span class="tag" id="mud-mode">LX SQUARE</span>
+    </header>
+    <div class="canvas-wrap">
+      <svg id="mud-svg" viewBox="0 0 820 480" xmlns="http://www.w3.org/2000/svg" aria-label="Meaning-Use Diagram">
+        <defs>
+          <marker id="arr-end" viewBox="0 -6 12 12" refX="11" refY="0" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+            <path d="M0,-6L12,0L0,6" fill="var(--muted)"/>
+          </marker>
+          <marker id="arr-end-lx" viewBox="0 -6 12 12" refX="11" refY="0" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+            <path d="M0,-6L12,0L0,6" fill="var(--lx)"/>
+          </marker>
+          <marker id="arr-end-ghost" viewBox="0 -6 12 12" refX="11" refY="0" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+            <path d="M0,-6L12,0L0,6" fill="var(--muted)" opacity="0.55"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+    <div class="caption" id="mud-caption"></div>
+  </div>
+
+  <p style="font-size:.88rem;color:#b8b0a0;line-height:1.6;margin-top:.5rem;">
+    A point worth pausing on: the <em>deformation</em> <code>p_cross_multiplication_rule_without_ground</code> is not pictured as part of the LX square by accident. It deploys <code>v_cross_multiplication_rule</code> (the PV-1 arrow holds) but it does <em>not</em> stand in the PP-2 elaboration relation to <code>p_area_model_part_of_part</code> — the algorithm has been severed from its kernel. So the resultant LX arrow does not pass through it. The rule is procedurally identical; the inferential geometry is not.
+  </p>
+</section>
+
+<!-- ══ GROUNDING METAPHORS ══ -->
+<section id="metaphors">
+  <div class="mk"><span class="n">III.</span><span>Grounding metaphors</span><span class="n">⋆</span></div>
+  <h2 class="head">Where each metaphor <span class="q">breaks</span></h2>
+  <p>Lakoff and Núñez identify four grounding metaphors for arithmetic and several repair metaphors introduced to preserve target-domain closure where the basic four fail. The break points are kept as first-class queryable facts in <code>formalization/grounding_metaphors.pl</code> rather than as commentary; each card below lists what the metaphor cannot ground and which repair metaphor (if any) covers the inference instead. The little illustration at the top of each card is the metaphor's <em>source-domain image</em> — the physical situation the metaphor is asking you to think with.</p>
+  <h3 class="sub">Basic four · Object Collection / Construction / Measuring Stick / Motion</h3>
+  <div class="gm-grid" id="gm-basic"></div>
+  <h3 class="sub">Repair metaphors · rotation by 180°, Zero Collection, Zero Object</h3>
+  <div class="gm-grid" id="gm-repair"></div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <h3>What this page does not do</h3>
+  <p>The freshman and math-ed registers are stubbed. The toggle buttons exist and the routing works; the prose for those audiences has not been written. Selecting either button replaces the philosopher prose with a short note saying so. The diagram and the metaphor cards are register-independent because the underlying facts are.</p>
+  <p>The dataset is a seed, not an exhaustive map. The 28 practices, 19 vocabularies, and 11 LX edges visible here were curated against the action-automata registry and against LK_RB_Synthesis's <code>strategy_metadata</code>; they are not a comprehensive registry of arithmetic practice. Adding new <code>practice/2</code>, <code>vocabulary/2</code>, and <code>lx_for/3</code> facts in <code>pml/mua_relations.pl</code> and rerunning <code>research_corpus/scripts/export_mua_for_mud.py</code> regenerates the JSON the page reads.</p>
+  <p>The page is a static rendering, not a live query into Prolog. It reads <code>mua_data.json</code>, which is produced from the live registry by the export script. When the registry changes and the export script is rerun, the page updates; until then, the page shows the snapshot. The harness's <code>--check</code> flag verifies the JSON matches the current Prolog state.</p>
+  <p class="note">From <code>pml/mua_relations.pl</code> + <code>formalization/grounding_metaphors.pl</code> via <code>research_corpus/scripts/export_mua_for_mud.py</code>. Part of <a href="https://github.com/TioSavich/umedcta-formalization">umedcta-formalization</a>.</p>
+</footer>
+
+<script src="mud-render.js"></script>
+<script src="metaphor-art.js"></script>
+<script src="spine.js"></script>
+<script src="muds-main.js"></script>
+<script src="shared.js"></script>
+<script>
+/* Single control: the shell's top-bar student/teacher/researcher toggle
+   (shared.js discourse) drives muds' page-local register framing. */
+(function () {
+  var MAP = { freshman: 'freshman', mathEd: 'math-ed', philosophy: 'philosopher' };
+  function apply(level) {
+    var btn = document.querySelector('.reg-btn[data-reg="' + (MAP[level] || 'philosopher') + '"]');
+    if (btn) btn.click();
+  }
+  window.addEventListener('discourse-change', function (e) { apply(e.detail && e.detail.level); });
+  window.addEventListener('load', function () {
+    apply(typeof Discourse !== 'undefined' && Discourse.current ? Discourse.current() : 'philosophy');
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en" data-page-id="playground">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>The Playground — Coupled Zeeman Machines</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hermes-tokens-dark.css">
+  <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="playground"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Serif', Georgia, serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    body {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 4rem;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .back-link {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .back-link:hover { color: var(--text); }
+
+    .page-title {
+      font-family: 'IBM Plex Serif', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--snap);
+    }
+
+    .status-area {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .canvas-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-height: calc(100vh - 140px);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      cursor: grab;
+    }
+    canvas:active { cursor: grabbing; }
+
+    /* HUD overlays — outside viewport transform */
+    .hud {
+      position: absolute;
+      pointer-events: none;
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--muted);
+    }
+
+    .hud-zoom {
+      top: 12px;
+      right: 12px;
+      font-size: 10px;
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      pointer-events: auto;
+    }
+
+    .hud-zoom .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 1px solid var(--muted);
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .hud-zoom .dot.active { background: var(--muted); }
+    .hud-zoom .dot:hover { border-color: var(--text); }
+
+    .hud-zoom .label {
+      margin-left: 6px;
+      font-size: 9px;
+    }
+
+    .hud-breadcrumb {
+      top: 12px;
+      left: 12px;
+      font-size: 10px;
+      pointer-events: auto;
+    }
+    .hud-breadcrumb span {
+      cursor: pointer;
+      opacity: 0.6;
+    }
+    .hud-breadcrumb span:hover { opacity: 1; }
+    .hud-breadcrumb .sep { opacity: 0.3; cursor: default; }
+
+    .hud-counter {
+      bottom: 12px;
+      left: 12px;
+      font-size: 9px;
+    }
+
+    .hud-hint {
+      bottom: 50%;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      font-size: 12px;
+      opacity: 0.4;
+      transition: opacity 1s;
+    }
+    .hud-hint.hidden { opacity: 0; }
+  </style>
+</head>
+<body data-hshell-doc="1">
+  <div class="top-bar">
+    <div class="status-area">
+      <span id="zoomReadout">zoom: 1.00x</span>
+    </div>
+  </div>
+
+  <div style="max-width:640px;margin:0 auto 1rem;text-align:center;">
+    <div data-discourse="freshman" style="font-size:0.92rem;line-height:1.65;color:#b8b0a0;">
+      <p class="story-recap"><em>Previously: You saw how strategies nest — each one calling the one inside it.</em></p>
+      <p>You have seen the nesting. Now feel it. Each node in these rings is itself a
+         little catastrophe machine &mdash; it can snap, just like the More Machine on
+         page 2. When you drag a node's control point, you are building tension in
+         that one machine. But the machines are connected by springs. Tension propagates.
+         One snap can trigger another.</p>
+      <p>And when enough snaps accumulate &mdash; crisis &mdash; a new ring appears. This is how
+         a new strategy emerges: not by being told, but by accumulating enough tension
+         that the old structure has to expand.</p>
+    </div>
+    <div data-discourse="mathEd" style="font-size:0.92rem;line-height:1.65;color:#b8b0a0;">
+      <p>This couples the catastrophe physics with the strategy automata. Each node's snap represents a local perturbation (Steffe, 1992). The spring network models how perturbation in one part of a strategy propagates to connected parts. The fractal growth (new rings materializing from accumulated snaps) models the developmental sequence: enough local crises trigger global reorganization.</p>
+    </div>
+    <div data-discourse="philosophy" style="font-size:0.92rem;line-height:1.65;color:#b8b0a0;">
+      <p>Two-layer physics: node-local Zeeman gradient descent (the catastrophe) and network-global Verlet spring integration (tension propagation). The separation is critical — the snap is sudden (gradient descent finds the other basin), the jiggle is smooth (Verlet with damping). This mirrors the distinction between determinate negation (the specific snap) and the continuous tension that precedes it.</p>
+    </div>
+  </div>
+
+  <div class="canvas-container">
+    <canvas id="playground"></canvas>
+
+    <div class="hud hud-breadcrumb" id="breadcrumb">
+      <span data-level="0">mandala</span>
+    </div>
+
+    <div class="hud hud-zoom" id="zoomDots">
+      <div class="dot active" data-level="0" title="Mandala view"></div>
+      <div class="dot" data-level="1" title="Ring view"></div>
+      <div class="dot" data-level="2" title="Node view"></div>
+      <span class="label">Mandala</span>
+    </div>
+
+    <div class="hud hud-counter" id="snapCounter"></div>
+    <div class="hud hud-hint" id="dragHint">grab a node</div>
+  </div>
+
+  <div style="max-width:640px;margin:1.5rem auto 0;padding:0 0.5rem;">
+    <div data-discourse="freshman" style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);font-style:italic;color:var(--muted);font-size:0.92rem;line-height:1.65;">
+      <p>The snaps and the tension and the nested rings &mdash; that is the geometry
+         of learning. But so far you have been driving it by hand. What happens
+         when a Prolog program drives it instead &mdash; when the tension comes from
+         actual computation hitting its limits?</p>
+    </div>
+    <div data-discourse="mathEd" style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);font-style:italic;color:var(--muted);font-size:0.92rem;line-height:1.65;">
+      <p>The coupled catastrophe physics models perturbation propagation through
+         the developmental hierarchy. But these are synthetic perturbations driven
+         by hand. What does it look like when the perturbation comes from an
+         actual computation &mdash; from the ORR cycle running against an inference limit?</p>
+    </div>
+    <div data-discourse="philosophy" style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);font-style:italic;color:var(--muted);font-size:0.92rem;line-height:1.65;">
+      <p>The two-layer physics &mdash; node-local gradient descent and network-global
+         Verlet integration &mdash; separates determinate negation from the continuous
+         tension that precedes it. But what connects this geometry to the actual
+         formal system? That connection is the bridge.</p>
+    </div>
+  </div>
+
+<script>
+'use strict';
+
+// =======================================================================
+// STRATEGY DEFINITIONS (from fractal.html)
+// =======================================================================
+const STRATEGY_DEFS = {
+  counting: {
+    label: 'Counting PDA',
+    radius: 90,
+    color: '#5b9eae',
+    states: ['q_idle', 'q_inc_tens', 'q_inc_hundreds', 'q_halt'],
+    startAccept: 'q_idle',
+    transitions: [
+      { from: 'q_idle', to: 'q_idle', label: 'tick' },
+      { from: 'q_idle', to: 'q_inc_tens', label: 'carry' },
+      { from: 'q_inc_tens', to: 'q_idle', label: 'reset' },
+      { from: 'q_inc_tens', to: 'q_inc_hundreds', label: 'carry' },
+      { from: 'q_inc_hundreds', to: 'q_idle', label: 'reset' },
+      { from: 'q_idle', to: 'q_halt', label: 'done' },
+    ]
+  },
+  cobo: {
+    label: 'COBO (Bases then Ones)',
+    radius: 160,
+    color: '#e8a84c',
+    states: ['q_initialize', 'q_add_bases', 'q_add_ones', 'q_accept'],
+    startAccept: 'q_initialize',
+    transitions: [
+      { from: 'q_initialize', to: 'q_add_bases', label: 'decompose' },
+      { from: 'q_add_bases', to: 'q_add_bases', label: '+base' },
+      { from: 'q_add_bases', to: 'q_add_ones', label: 'bases done' },
+      { from: 'q_add_ones', to: 'q_add_ones', label: '+one' },
+      { from: 'q_add_ones', to: 'q_accept', label: 'ones done' },
+    ],
+    invokesCore: { target: 'counting', fromState: 'q_add_ones', toState: 'q_idle' }
+  },
+  rmb: {
+    label: 'Rearrange to Make Bases',
+    radius: 230,
+    color: '#9b6b9e',
+    states: ['q_init', 'q_calc_K', 'q_decompose_B', 'q_recombine', 'q_accept'],
+    startAccept: 'q_init',
+    transitions: [
+      { from: 'q_init', to: 'q_calc_K', label: 'analyze gap' },
+      { from: 'q_calc_K', to: 'q_decompose_B', label: 'K found' },
+      { from: 'q_decompose_B', to: 'q_recombine', label: 'split' },
+      { from: 'q_recombine', to: 'q_accept', label: 'combine' },
+    ],
+    invokesCore: { target: 'cobo', fromState: 'q_recombine', toState: 'q_initialize' }
+  },
+  chunking: {
+    label: 'Chunking',
+    radius: 300,
+    color: '#6b9e8c',
+    states: ['q_partition', 'q_iterate', 'q_accumulate', 'q_accept'],
+    startAccept: 'q_partition',
+    transitions: [
+      { from: 'q_partition', to: 'q_iterate', label: 'split' },
+      { from: 'q_iterate', to: 'q_accumulate', label: 'add chunk' },
+      { from: 'q_accumulate', to: 'q_iterate', label: 'more chunks' },
+      { from: 'q_accumulate', to: 'q_accept', label: 'done' },
+    ],
+    invokesCore: { target: 'cobo', fromState: 'q_iterate', toState: 'q_initialize' }
+  }
+};
+
+const RING_ORDER = ['counting', 'cobo', 'rmb', 'chunking'];
+
+const CONFIG = {
+  crisisThreshold: { counting: 3, cobo: 3, rmb: 4, chunking: 5 },
+  nodeRadius: 16,
+  controlPointRadius: 12,
+  hitRadiusMouse: 14,
+  hitRadiusTouch: 22,
+  springK: 2.0,
+  L0Factor: 0.6,        // L0 = ringRadius * L0Factor
+  attachmentRadius: 10,  // disc radius for Zeeman physics
+  snapThreshold: 0.6,
+  gradientIters: 250,
+  damping: 0.92,
+  homeStiffness: 0.1,
+  transitionStiffness: 0.8,
+  crossRingStiffness: 0.4,
+};
+
+// =======================================================================
+// VIEWPORT
+// =======================================================================
+class Viewport {
+  constructor(canvas) {
+    this.canvas = canvas;
+    this.scale = 1.0;
+    this.panX = 0;
+    this.panY = 0;
+    this.targetScale = 1.0;
+    this.targetPanX = 0;
+    this.targetPanY = 0;
+    this.minScale = 0.25;
+    this.maxScale = 4.0;
+    this.focusedRing = null;
+    this.zoomLevel = 0; // 0=mandala, 1=ring, 2=node
+  }
+
+  worldToScreen(wx, wy) {
+    const hw = this.canvas.width / (2 * devicePixelRatio);
+    const hh = this.canvas.height / (2 * devicePixelRatio);
+    return {
+      x: (wx - this.panX) * this.scale + hw,
+      y: (wy - this.panY) * this.scale + hh
+    };
+  }
+
+  screenToWorld(sx, sy) {
+    const hw = this.canvas.width / (2 * devicePixelRatio);
+    const hh = this.canvas.height / (2 * devicePixelRatio);
+    return {
+      x: (sx - hw) / this.scale + this.panX,
+      y: (sy - hh) / this.scale + this.panY
+    };
+  }
+
+  applyTransform(ctx) {
+    const dpr = devicePixelRatio;
+    const hw = this.canvas.width / (2 * dpr);
+    const hh = this.canvas.height / (2 * dpr);
+    ctx.setTransform(
+      this.scale * dpr, 0,
+      0, this.scale * dpr,
+      (hw - this.panX * this.scale) * dpr,
+      (hh - this.panY * this.scale) * dpr
+    );
+  }
+
+  resetTransform(ctx) {
+    const dpr = devicePixelRatio;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  zoomToward(screenX, screenY, factor) {
+    const before = this.screenToWorld(screenX, screenY);
+    this.targetScale = Math.max(this.minScale, Math.min(this.maxScale, this.targetScale * factor));
+    // Adjust pan so the world point under the cursor stays there
+    const hw = this.canvas.width / (2 * devicePixelRatio);
+    const hh = this.canvas.height / (2 * devicePixelRatio);
+    this.targetPanX = before.x - (screenX - hw) / this.targetScale;
+    this.targetPanY = before.y - (screenY - hh) / this.targetScale;
+  }
+
+  focusOnRing(ringKey, rings) {
+    const ring = rings.find(r => r.key === ringKey);
+    if (!ring) return;
+    const hw = this.canvas.width / (2 * devicePixelRatio);
+    const viewSize = Math.min(hw * 2, this.canvas.height / devicePixelRatio);
+    this.targetScale = (viewSize * 0.6) / (ring.ringRadius * 2);
+    this.targetPanX = 0;
+    this.targetPanY = 0;
+    this.focusedRing = ringKey;
+    this.zoomLevel = 1;
+  }
+
+  focusOnNode(node) {
+    const hw = this.canvas.width / (2 * devicePixelRatio);
+    const viewSize = Math.min(hw * 2, this.canvas.height / devicePixelRatio);
+    this.targetScale = viewSize / 120; // fill viewport with ~60px radius area
+    this.targetPanX = node.x;
+    this.targetPanY = node.y;
+    this.focusedRing = node.ringKey;
+    this.zoomLevel = 2;
+  }
+
+  resetView() {
+    this.targetScale = 1.0;
+    this.targetPanX = 0;
+    this.targetPanY = 0;
+    this.focusedRing = null;
+    this.zoomLevel = 0;
+  }
+
+  update(dt) {
+    const lerp = 0.08;
+    this.scale += (this.targetScale - this.scale) * lerp;
+    this.panX += (this.targetPanX - this.panX) * lerp;
+    this.panY += (this.targetPanY - this.panY) * lerp;
+  }
+
+  getZoomLevelName() {
+    if (this.zoomLevel === 2) return 'Node';
+    if (this.zoomLevel === 1) return 'Ring: ' + (this.focusedRing || '');
+    return 'Mandala';
+  }
+}
+
+// =======================================================================
+// NODE MACHINE (Zeeman physics per node)
+// =======================================================================
+class NodeMachine {
+  constructor(id, worldX, worldY, ringKey, stateKey, color, ringRadius) {
+    this.id = id;
+    this.x = worldX;
+    this.y = worldY;
+    this.restX = worldX;
+    this.restY = worldY;
+    this.vx = 0;
+    this.vy = 0;
+    this.ringKey = ringKey;
+    this.stateKey = stateKey;
+    this.color = color;
+
+    // Zeeman disc physics — modeled after more-machine.js
+    this.wheelCenter = { x: 0, y: 0 }; // local coords (0,0)
+    this.attachmentRadius = CONFIG.attachmentRadius;
+    this.springK = CONFIG.springK;
+    this.L0 = 12;
+    // Fixed anchor and control point must NOT be collinear to create
+    // a genuine catastrophe surface with two basins. The fixed anchor
+    // is toward ring center, the control point is outward + offset.
+    this.fixedAnchor = { x: 0, y: 0 }; // set by RingLayer
+    this.controlPointWorld = { x: worldX, y: worldY }; // set by RingLayer
+    this.angle = 0; // set after anchors are positioned
+    this.startupFrames = 60; // ignore snaps during initial settling
+    this.currentStability = 1.0;
+    this.snapCount = 0;
+    this.lastSnapTime = 0;
+    this.isBeingDragged = false;
+    this.settledFrames = 0;
+  }
+
+  getAttachmentPoint(a) {
+    return {
+      x: this.wheelCenter.x + this.attachmentRadius * Math.cos(a),
+      y: this.wheelCenter.y + this.attachmentRadius * Math.sin(a)
+    };
+  }
+
+  calculateGradient(a) {
+    const R = this.attachmentRadius;
+    const Fx = this.fixedAnchor.x - this.wheelCenter.x;
+    const Fy = this.fixedAnchor.y - this.wheelCenter.y;
+    // Map world control point to local
+    const Cx = this.controlPointWorld.x - this.x;
+    const Cy = this.controlPointWorld.y - this.y;
+    const Px = R * Math.cos(a), Py = R * Math.sin(a);
+    const L1 = Math.hypot(Px - Fx, Py - Fy);
+    const L2 = Math.hypot(Px - Cx, Py - Cy);
+    let T1 = 0, T2 = 0;
+    if (L1 > this.L0 && L1 > 0.001)
+      T1 = this.springK * (1 - this.L0 / L1) * (Fx * Math.sin(a) - Fy * Math.cos(a));
+    if (L2 > this.L0 && L2 > 0.001)
+      T2 = this.springK * (1 - this.L0 / L2) * (Cx * Math.sin(a) - Cy * Math.cos(a));
+    return R * (T1 + T2);
+  }
+
+  estimateStability(a) {
+    const d = 0.01;
+    return (this.calculateGradient(a + d) - this.calculateGradient(a - d)) / (2 * d);
+  }
+
+  updatePhysics(dt) {
+    // Gradient descent to find equilibrium disc angle
+    const iters = (this.settledFrames > 10 && !this.isBeingDragged)
+      ? 50 : CONFIG.gradientIters;
+    let a = this.angle;
+    let stab = 0;
+    for (let i = 0; i < iters; i++) {
+      const g = this.calculateGradient(a);
+      if (Math.abs(g) < 0.05) {
+        stab = this.estimateStability(a);
+        if (stab > 0) break;
+      }
+      a -= Math.max(-0.1, Math.min(0.1, 0.001 * g));
+      a = ((a % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+    }
+    if (stab <= 0) stab = this.estimateStability(a);
+
+    let diff = a - this.angle;
+    while (diff > Math.PI) diff -= 2 * Math.PI;
+    while (diff < -Math.PI) diff += 2 * Math.PI;
+    const snapped = Math.abs(diff) > CONFIG.snapThreshold;
+
+    this.angle = a;
+    this.currentStability = Math.max(0, Math.min(1, stab / 5000));
+
+    if (this.currentStability > 0.8 && !this.isBeingDragged) {
+      this.settledFrames++;
+    } else {
+      this.settledFrames = 0;
+    }
+
+    if (this.startupFrames > 0) {
+      this.startupFrames--;
+      return { snapped: false, angleDelta: diff }; // ignore startup snaps
+    }
+
+    if (snapped) {
+      this.snapCount++;
+      this.lastSnapTime = performance.now();
+    }
+
+    return { snapped, angleDelta: diff };
+  }
+
+  applyPositionForce(fx, fy) {
+    this.vx += fx;
+    this.vy += fy;
+  }
+
+  updatePosition(dt) {
+    if (this.isBeingDragged) return;
+    // Home spring
+    const dx = this.restX - this.x;
+    const dy = this.restY - this.y;
+    this.vx += dx * CONFIG.homeStiffness;
+    this.vy += dy * CONFIG.homeStiffness;
+    // Integrate
+    this.x += this.vx * dt;
+    this.y += this.vy * dt;
+    this.vx *= CONFIG.damping;
+    this.vy *= CONFIG.damping;
+    // Keep control point relative
+    if (!this.isBeingDragged) {
+      // Control point offset maintained relative to node
+      // (it will be driven by drag when dragging)
+    }
+  }
+
+  containsControlPoint(worldX, worldY, isTouch) {
+    const r = isTouch ? CONFIG.hitRadiusTouch : CONFIG.hitRadiusMouse;
+    return Math.hypot(worldX - this.controlPointWorld.x, worldY - this.controlPointWorld.y) < r;
+  }
+
+  draw(ctx, viewport, now) {
+    const nodeR = CONFIG.nodeRadius;
+    const cpR = CONFIG.controlPointRadius;
+
+    // --- Disc (the node circle) ---
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, nodeR, 0, 2 * Math.PI);
+    ctx.fillStyle = hexAlpha(this.color, 0.15);
+    ctx.fill();
+    ctx.strokeStyle = hexAlpha(this.color, 0.7);
+    ctx.lineWidth = 2 / viewport.scale;
+    ctx.stroke();
+
+    // Pre-snap pulse (stability < 0.3)
+    if (this.currentStability < 0.3) {
+      const pulse = nodeR + 4 + 2 * Math.sin(now / 100);
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, pulse, 0, 2 * Math.PI);
+      ctx.strokeStyle = hexAlpha(this.color, (1 - this.currentStability) * 0.5);
+      ctx.lineWidth = 1.5 / viewport.scale;
+      ctx.stroke();
+    }
+
+    // Snap flash
+    const timeSinceSnap = now - this.lastSnapTime;
+    if (timeSinceSnap < 300 && this.lastSnapTime > 0) {
+      const alpha = (1 - timeSinceSnap / 300) * 0.4;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, nodeR + 15, 0, 2 * Math.PI);
+      const grad = ctx.createRadialGradient(this.x, this.y, nodeR, this.x, this.y, nodeR + 15);
+      grad.addColorStop(0, hexAlpha('#e8a84c', alpha));
+      grad.addColorStop(1, hexAlpha('#e8a84c', 0));
+      ctx.fillStyle = grad;
+      ctx.fill();
+    }
+
+    // --- Bands (fixed anchor to attachment, control to attachment) ---
+    const P = this.getAttachmentPoint(this.angle);
+    const px = this.x + P.x;
+    const py = this.y + P.y;
+    const fx = this.x + this.fixedAnchor.x;
+    const fy = this.y + this.fixedAnchor.y;
+
+    // Band to fixed anchor
+    const L1 = Math.hypot(px - fx, py - fy);
+    ctx.beginPath();
+    ctx.moveTo(fx, fy);
+    ctx.lineTo(px, py);
+    if (L1 <= this.L0) {
+      ctx.setLineDash([4 / viewport.scale, 4 / viewport.scale]);
+      ctx.strokeStyle = '#3a3428';
+    } else {
+      ctx.setLineDash([]);
+      const s = Math.min(1, (L1 - this.L0) / 15);
+      ctx.strokeStyle = `rgba(212,99,74,${0.3 + s * 0.7})`;
+    }
+    ctx.lineWidth = (2.5 + Math.min(1, Math.max(0, (L1 - this.L0) / 15)) * 1.5) / viewport.scale;
+    ctx.stroke();
+
+    // Band to control point
+    const L2 = Math.hypot(px - this.controlPointWorld.x, py - this.controlPointWorld.y);
+    ctx.beginPath();
+    ctx.moveTo(this.controlPointWorld.x, this.controlPointWorld.y);
+    ctx.lineTo(px, py);
+    if (L2 <= this.L0) {
+      ctx.setLineDash([4 / viewport.scale, 4 / viewport.scale]);
+      ctx.strokeStyle = '#3a3428';
+    } else {
+      ctx.setLineDash([]);
+      const s = Math.min(1, (L2 - this.L0) / 15);
+      ctx.strokeStyle = `rgba(107,140,206,${0.3 + s * 0.7})`;
+    }
+    ctx.lineWidth = (2.5 + Math.min(1, Math.max(0, (L2 - this.L0) / 15)) * 1.5) / viewport.scale;
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Attachment point
+    ctx.beginPath();
+    ctx.arc(px, py, 3 / viewport.scale, 0, 2 * Math.PI);
+    ctx.fillStyle = '#d4cfc0';
+    ctx.fill();
+
+    // Fixed anchor dot
+    ctx.beginPath();
+    ctx.arc(fx, fy, 4 / viewport.scale, 0, 2 * Math.PI);
+    ctx.fillStyle = '#d4634a';
+    ctx.fill();
+
+    // --- State label ---
+    if (viewport.scale > 0.6) {
+      const fs = Math.max(7, 9 / viewport.scale);
+      ctx.font = `500 ${fs}px 'IBM Plex Mono', monospace`;
+      ctx.fillStyle = hexAlpha(this.color, 0.8);
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      // Blur label if unstable
+      if (this.currentStability < 0.3) {
+        ctx.save();
+        ctx.filter = `blur(${(1 - this.currentStability) * 4}px)`;
+        ctx.fillText(this.stateKey, this.x, this.y + nodeR + 4);
+        ctx.restore();
+      } else {
+        ctx.fillText(this.stateKey, this.x, this.y + nodeR + 4);
+      }
+    }
+
+    // --- Control point ---
+    ctx.beginPath();
+    ctx.arc(this.controlPointWorld.x, this.controlPointWorld.y, cpR / viewport.scale, 0, 2 * Math.PI);
+    ctx.fillStyle = '#5b9eae';
+    ctx.fill();
+    ctx.strokeStyle = this.isBeingDragged ? '#d4cfc0' : '#3a3428';
+    ctx.lineWidth = 2 / viewport.scale;
+    ctx.stroke();
+  }
+}
+
+// =======================================================================
+// INTER-NODE SPRING
+// =======================================================================
+class InterNodeSpring {
+  constructor(nodeA, nodeB, restLength, stiffness, damping, role) {
+    this.nodeA = nodeA;
+    this.nodeB = nodeB;
+    this.restLength = restLength;
+    this.stiffness = stiffness;
+    this.damping = damping;
+    this.role = role; // 'transition' | 'invokesCore'
+    this.currentLength = restLength;
+    this.tension = 0;
+  }
+
+  applyForces() {
+    const dx = this.nodeB.x - this.nodeA.x;
+    const dy = this.nodeB.y - this.nodeA.y;
+    const dist = Math.hypot(dx, dy);
+    if (dist < 0.001) return;
+
+    this.currentLength = dist;
+    const stretch = dist - this.restLength;
+    this.tension = Math.min(1, Math.max(0, Math.abs(stretch) / this.restLength));
+
+    const force = this.stiffness * stretch / dist;
+    const fx = force * dx;
+    const fy = force * dy;
+
+    this.nodeA.applyPositionForce(fx, fy);
+    this.nodeB.applyPositionForce(-fx, -fy);
+  }
+
+  draw(ctx, viewport) {
+    if (this.role === 'invokesCore') {
+      this.drawBezier(ctx, viewport);
+    } else {
+      this.drawStraight(ctx, viewport);
+    }
+  }
+
+  drawStraight(ctx, viewport) {
+    const t = this.tension;
+    const alpha = 0.3 + t * 0.7;
+    const width = (1 + t * 3) / viewport.scale;
+
+    ctx.beginPath();
+    ctx.moveTo(this.nodeA.x, this.nodeA.y);
+    ctx.lineTo(this.nodeB.x, this.nodeB.y);
+
+    if (t < 0.1) {
+      ctx.setLineDash([5 / viewport.scale, 5 / viewport.scale]);
+      ctx.strokeStyle = hexAlpha('#3a3428', 0.3);
+    } else if (t < 0.5) {
+      ctx.setLineDash([]);
+      ctx.strokeStyle = hexAlpha(this.nodeA.color, alpha * 0.6);
+    } else {
+      ctx.setLineDash([]);
+      ctx.strokeStyle = hexAlpha('#d4634a', alpha);
+    }
+    ctx.lineWidth = width;
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  drawBezier(ctx, viewport) {
+    const ax = this.nodeA.x, ay = this.nodeA.y;
+    const bx = this.nodeB.x, by = this.nodeB.y;
+    const mx = (ax + bx) / 2, my = (ay + by) / 2;
+    // Pull bezier control points toward center (0,0)
+    const cx1 = ax * 0.5 + mx * 0.2;
+    const cy1 = ay * 0.5 + my * 0.2;
+    const cx2 = bx * 0.5 + mx * 0.2;
+    const cy2 = by * 0.5 + my * 0.2;
+
+    const t = this.tension;
+    const alpha = 0.3 + t * 0.4;
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(ax, ay);
+    ctx.bezierCurveTo(cx1, cy1, cx2, cy2, bx, by);
+    ctx.strokeStyle = hexAlpha('#3a3428', alpha);
+    ctx.lineWidth = (1.5 + t * 2) / viewport.scale;
+    ctx.setLineDash([5 / viewport.scale, 4 / viewport.scale]);
+    ctx.stroke();
+    ctx.restore();
+
+    // Diamond at midpoint
+    const mt = 0.5;
+    const dmx = cubicBezier(ax, cx1, cx2, bx, mt);
+    const dmy = cubicBezier(ay, cy1, cy2, by, mt);
+    const s = 4 / viewport.scale;
+    ctx.beginPath();
+    ctx.moveTo(dmx, dmy - s);
+    ctx.lineTo(dmx + s, dmy);
+    ctx.lineTo(dmx, dmy + s);
+    ctx.lineTo(dmx - s, dmy);
+    ctx.closePath();
+    ctx.fillStyle = hexAlpha('#3a3428', 0.6);
+    ctx.fill();
+  }
+}
+
+// =======================================================================
+// RING LAYER
+// =======================================================================
+class RingLayer {
+  constructor(strategyKey, centerX, centerY) {
+    this.key = strategyKey;
+    const def = STRATEGY_DEFS[strategyKey];
+    this.label = def.label;
+    this.ringRadius = def.radius;
+    this.color = def.color;
+    this.phase = 'hidden'; // hidden | materializing | visible | crisis
+    this.materializeProgress = 0;
+    this.breathScale = 1.0;
+
+    // Create nodes
+    this.nodes = [];
+    const n = def.states.length;
+    for (let i = 0; i < n; i++) {
+      const angle = -Math.PI / 2 + (2 * Math.PI * i) / n;
+      const wx = centerX + this.ringRadius * Math.cos(angle);
+      const wy = centerY + this.ringRadius * Math.sin(angle);
+      const node = new NodeMachine(
+        `${strategyKey}_${def.states[i]}`,
+        wx, wy,
+        strategyKey, def.states[i],
+        def.color, this.ringRadius
+      );
+      // Anchor geometry: fixed anchor toward center, control point outward
+      // with a lateral offset to create a 2-basin catastrophe surface
+      const outDir = Math.atan2(wy - centerY, wx - centerX);
+      const perpDir = outDir + Math.PI / 2;
+      // Fixed anchor: toward ring center (local coords)
+      node.fixedAnchor = {
+        x: -18 * Math.cos(outDir) + 5 * Math.cos(perpDir),
+        y: -18 * Math.sin(outDir) + 5 * Math.sin(perpDir)
+      };
+      // Control point: outward from node, slightly offset
+      node.controlPointWorld = {
+        x: wx + 28 * Math.cos(outDir) - 5 * Math.cos(perpDir),
+        y: wy + 28 * Math.sin(outDir) - 5 * Math.sin(perpDir)
+      };
+      // Initial angle: pointing toward control point (stable basin)
+      node.angle = outDir;
+      this.nodes.push(node);
+    }
+
+    // Create transition springs between adjacent nodes
+    this.transitionSprings = [];
+    for (let i = 0; i < n; i++) {
+      const j = (i + 1) % n;
+      const dist = Math.hypot(
+        this.nodes[j].x - this.nodes[i].x,
+        this.nodes[j].y - this.nodes[i].y
+      );
+      this.transitionSprings.push(new InterNodeSpring(
+        this.nodes[i], this.nodes[j],
+        dist, CONFIG.transitionStiffness, CONFIG.damping, 'transition'
+      ));
+    }
+  }
+
+  getNode(stateKey) {
+    return this.nodes.find(n => n.stateKey === stateKey);
+  }
+
+  update(dt, now) {
+    if (this.phase === 'hidden') return;
+    if (this.phase === 'materializing') {
+      this.materializeProgress = Math.min(1, this.materializeProgress + dt / 0.8);
+      if (this.materializeProgress >= 1) this.phase = 'visible';
+    }
+    // Update spring forces
+    for (const spring of this.transitionSprings) {
+      spring.applyForces();
+    }
+    // Update nodes
+    for (const node of this.nodes) {
+      node.updatePhysics(dt);
+      node.updatePosition(dt);
+    }
+    // Breathing
+    this.breathScale = 1.0 + 0.02 * Math.sin(now / 2000 + RING_ORDER.indexOf(this.key) * 0.7);
+  }
+
+  draw(ctx, viewport, now) {
+    if (this.phase === 'hidden') return;
+    const alpha = this.phase === 'materializing' ? this.materializeProgress : 1;
+
+    ctx.save();
+    ctx.globalAlpha = alpha;
+
+    // Ring guide circle
+    ctx.beginPath();
+    ctx.arc(0, 0, this.ringRadius * this.breathScale, 0, 2 * Math.PI);
+    ctx.strokeStyle = hexAlpha(this.color, 0.12);
+    ctx.lineWidth = 1 / viewport.scale;
+    ctx.stroke();
+
+    // Ring label
+    if (viewport.scale < 2.5) {
+      const fs = Math.max(8, 10 / viewport.scale);
+      ctx.font = `600 ${fs}px 'IBM Plex Mono', monospace`;
+      ctx.fillStyle = hexAlpha(this.color, 0.35);
+      ctx.textAlign = 'center';
+      ctx.fillText(this.label, 0, -this.ringRadius - 8);
+    }
+
+    // Transition springs
+    for (const spring of this.transitionSprings) {
+      spring.draw(ctx, viewport);
+    }
+
+    // Nodes
+    for (const node of this.nodes) {
+      node.draw(ctx, viewport, now);
+    }
+
+    ctx.restore();
+  }
+
+  checkForSnaps() {
+    const snaps = [];
+    for (const node of this.nodes) {
+      if (node.lastSnapTime > 0 && performance.now() - node.lastSnapTime < 20) {
+        snaps.push(node);
+      }
+    }
+    return snaps;
+  }
+}
+
+// =======================================================================
+// SNAP EVENT BUS
+// =======================================================================
+class SnapEventBus {
+  constructor() {
+    this.listeners = {};
+  }
+  on(event, fn) {
+    (this.listeners[event] = this.listeners[event] || []).push(fn);
+  }
+  emit(event, data) {
+    for (const fn of this.listeners[event] || []) fn(data);
+  }
+}
+
+// =======================================================================
+// FRACTAL GROWTH MANAGER
+// =======================================================================
+class FractalGrowthManager {
+  constructor(rings, eventBus) {
+    this.rings = rings;
+    this.eventBus = eventBus;
+    this.snapCounts = {};
+    for (const key of RING_ORDER) this.snapCounts[key] = 0;
+    this.visibleCount = 1;
+    // Show counting ring immediately
+    rings[0].phase = 'visible';
+  }
+
+  onSnap(ringKey) {
+    this.snapCounts[ringKey]++;
+    this.maybeUnlockNextRing();
+  }
+
+  maybeUnlockNextRing() {
+    if (this.visibleCount >= RING_ORDER.length) return;
+    const currentKey = RING_ORDER[this.visibleCount - 1];
+    const threshold = CONFIG.crisisThreshold[currentKey];
+    if (this.snapCounts[currentKey] >= threshold) {
+      const nextRing = this.rings[this.visibleCount];
+      nextRing.phase = 'materializing';
+      nextRing.materializeProgress = 0;
+      this.visibleCount++;
+      this.eventBus.emit('crisis', { ringKey: currentKey });
+      this.eventBus.emit('ringMaterialize', { ringKey: nextRing.key });
+    }
+  }
+
+  reset() {
+    for (const key of RING_ORDER) this.snapCounts[key] = 0;
+    this.visibleCount = 1;
+    this.rings[0].phase = 'visible';
+    for (let i = 1; i < this.rings.length; i++) {
+      this.rings[i].phase = 'hidden';
+      this.rings[i].materializeProgress = 0;
+    }
+  }
+
+  getCounterText() {
+    if (this.visibleCount >= RING_ORDER.length) return '';
+    const key = RING_ORDER[this.visibleCount - 1];
+    const count = this.snapCounts[key];
+    const threshold = CONFIG.crisisThreshold[key];
+    return `${key}: ${count}/${threshold} snaps`;
+  }
+}
+
+// =======================================================================
+// DRAG CONTROLLER
+// =======================================================================
+class DragController {
+  constructor(canvas, viewport, rings) {
+    this.canvas = canvas;
+    this.viewport = viewport;
+    this.rings = rings;
+    this.activeNode = null;
+    this.isPanning = false;
+    this.panStartScreen = null;
+    this.panStartWorld = null;
+    this.interacted = false;
+
+    canvas.addEventListener('mousedown', e => this.onPointerDown(e, false));
+    canvas.addEventListener('mousemove', e => this.onPointerMove(e, false));
+    canvas.addEventListener('mouseup', e => this.onPointerUp(e));
+    canvas.addEventListener('touchstart', e => this.onTouchStart(e), { passive: false });
+    canvas.addEventListener('touchmove', e => this.onTouchMove(e), { passive: false });
+    canvas.addEventListener('touchend', e => this.onPointerUp(e));
+    canvas.addEventListener('wheel', e => this.onWheel(e), { passive: false });
+    canvas.addEventListener('dblclick', e => this.onDblClick(e));
+  }
+
+  getScreenPos(e) {
+    const rect = this.canvas.getBoundingClientRect();
+    if (e.touches && e.touches.length > 0) {
+      return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+    }
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+  }
+
+  onPointerDown(e, isTouch) {
+    const screen = this.getScreenPos(e);
+    const world = this.viewport.screenToWorld(screen.x, screen.y);
+
+    // Check if we hit a control point
+    for (const ring of this.rings) {
+      if (ring.phase === 'hidden') continue;
+      for (const node of ring.nodes) {
+        if (node.containsControlPoint(world.x, world.y, isTouch)) {
+          this.activeNode = node;
+          node.isBeingDragged = true;
+          this.interacted = true;
+          this.canvas.style.cursor = 'grabbing';
+          return;
+        }
+      }
+    }
+
+    // Otherwise: start pan
+    this.isPanning = true;
+    this.panStartScreen = screen;
+    this.panStartWorld = { x: this.viewport.panX, y: this.viewport.panY };
+  }
+
+  onPointerMove(e, isTouch) {
+    const screen = this.getScreenPos(e);
+    const world = this.viewport.screenToWorld(screen.x, screen.y);
+
+    if (this.activeNode) {
+      this.activeNode.controlPointWorld.x = world.x;
+      this.activeNode.controlPointWorld.y = world.y;
+      return;
+    }
+
+    if (this.isPanning && this.panStartScreen) {
+      const dx = (screen.x - this.panStartScreen.x) / this.viewport.scale;
+      const dy = (screen.y - this.panStartScreen.y) / this.viewport.scale;
+      this.viewport.targetPanX = this.panStartWorld.x - dx;
+      this.viewport.targetPanY = this.panStartWorld.y - dy;
+      this.viewport.panX = this.viewport.targetPanX;
+      this.viewport.panY = this.viewport.targetPanY;
+      return;
+    }
+
+    // Cursor hint
+    let overNode = false;
+    for (const ring of this.rings) {
+      if (ring.phase === 'hidden') continue;
+      for (const node of ring.nodes) {
+        if (node.containsControlPoint(world.x, world.y, isTouch)) {
+          overNode = true;
+          break;
+        }
+      }
+      if (overNode) break;
+    }
+    this.canvas.style.cursor = overNode ? 'pointer' : 'grab';
+  }
+
+  onPointerUp(e) {
+    if (this.activeNode) {
+      this.activeNode.isBeingDragged = false;
+      this.activeNode = null;
+    }
+    this.isPanning = false;
+    this.panStartScreen = null;
+    this.canvas.style.cursor = 'grab';
+  }
+
+  onTouchStart(e) {
+    e.preventDefault();
+    if (e.touches.length === 1) {
+      this.onPointerDown(e, true);
+    }
+  }
+
+  onTouchMove(e) {
+    e.preventDefault();
+    if (e.touches.length === 1) {
+      this.onPointerMove(e, true);
+    }
+  }
+
+  onWheel(e) {
+    e.preventDefault();
+    const screen = this.getScreenPos(e);
+    const factor = e.deltaY > 0 ? 0.9 : 1.1;
+    this.viewport.zoomToward(screen.x, screen.y, factor);
+    this.interacted = true;
+  }
+
+  onDblClick(e) {
+    const screen = this.getScreenPos(e);
+    const world = this.viewport.screenToWorld(screen.x, screen.y);
+
+    // Check if double-clicked a node
+    for (const ring of this.rings) {
+      if (ring.phase === 'hidden') continue;
+      for (const node of ring.nodes) {
+        if (Math.hypot(world.x - node.x, world.y - node.y) < CONFIG.nodeRadius * 2) {
+          if (this.viewport.zoomLevel === 2) {
+            this.viewport.resetView();
+          } else {
+            this.viewport.focusOnNode(node);
+          }
+          return;
+        }
+      }
+    }
+
+    // Check if double-clicked near a ring
+    const distFromCenter = Math.hypot(world.x, world.y);
+    for (const ring of this.rings) {
+      if (ring.phase === 'hidden') continue;
+      if (Math.abs(distFromCenter - ring.ringRadius) < 30) {
+        if (this.viewport.zoomLevel === 1 && this.viewport.focusedRing === ring.key) {
+          this.viewport.resetView();
+        } else {
+          this.viewport.focusOnRing(ring.key, this.rings);
+        }
+        return;
+      }
+    }
+
+    // Double-click empty space: reset
+    this.viewport.resetView();
+  }
+}
+
+// =======================================================================
+// UTILITIES
+// =======================================================================
+function hexAlpha(hex, alpha) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+function cubicBezier(p0, p1, p2, p3, t) {
+  const mt = 1 - t;
+  return mt * mt * mt * p0 + 3 * mt * mt * t * p1 + 3 * mt * t * t * p2 + t * t * t * p3;
+}
+
+// =======================================================================
+// MAIN
+// =======================================================================
+const canvas = document.getElementById('playground');
+const ctx = canvas.getContext('2d');
+const zoomReadout = document.getElementById('zoomReadout');
+const snapCounterEl = document.getElementById('snapCounter');
+const breadcrumbEl = document.getElementById('breadcrumb');
+const dragHintEl = document.getElementById('dragHint');
+const zoomDotsEl = document.getElementById('zoomDots');
+
+function resizeCanvas() {
+  const rect = canvas.parentElement.getBoundingClientRect();
+  const w = Math.round(rect.width * devicePixelRatio);
+  const h = Math.round(rect.height * devicePixelRatio);
+  if (canvas.width !== w || canvas.height !== h) {
+    canvas.width = w;
+    canvas.height = h;
+  }
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+const viewport = new Viewport(canvas);
+
+// Compute default scale so outermost ring fits with margin
+const maxRingRadius = STRATEGY_DEFS.chunking.radius;
+const canvasLogicalSize = Math.min(canvas.width, canvas.height) / devicePixelRatio;
+viewport.scale = (canvasLogicalSize * 0.4) / maxRingRadius;
+viewport.targetScale = viewport.scale;
+
+// Create rings
+const rings = RING_ORDER.map(key => new RingLayer(key, 0, 0));
+
+// Create cross-ring springs
+const crossRingSprings = [];
+for (const key of RING_ORDER) {
+  const def = STRATEGY_DEFS[key];
+  if (!def.invokesCore) continue;
+  const outerRing = rings.find(r => r.key === key);
+  const innerRing = rings.find(r => r.key === def.invokesCore.target);
+  const fromNode = outerRing.getNode(def.invokesCore.fromState);
+  const toNode = innerRing.getNode(def.invokesCore.toState);
+  if (fromNode && toNode) {
+    const dist = Math.hypot(fromNode.x - toNode.x, fromNode.y - toNode.y);
+    crossRingSprings.push(new InterNodeSpring(
+      fromNode, toNode,
+      dist, CONFIG.crossRingStiffness, CONFIG.damping, 'invokesCore'
+    ));
+  }
+}
+
+// Managers
+const eventBus = new SnapEventBus();
+const growthMgr = new FractalGrowthManager(rings, eventBus);
+const dragCtrl = new DragController(canvas, viewport, rings);
+
+// Keyboard shortcuts
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') viewport.resetView();
+  if (e.key === 'r' || e.key === 'R') {
+    growthMgr.reset();
+    for (const ring of rings) {
+      for (const node of ring.nodes) {
+        node.snapCount = 0;
+        node.x = node.restX;
+        node.y = node.restY;
+        node.vx = 0;
+        node.vy = 0;
+      }
+    }
+  }
+});
+
+// Zoom dot clicks
+zoomDotsEl.addEventListener('click', e => {
+  const dot = e.target.closest('.dot');
+  if (!dot) return;
+  const level = parseInt(dot.dataset.level);
+  if (level === 0) viewport.resetView();
+  else if (level === 1 && rings.length > 0) {
+    const visibleRing = rings.find(r => r.phase !== 'hidden');
+    if (visibleRing) viewport.focusOnRing(visibleRing.key, rings);
+  }
+});
+
+// HUD update
+function updateHUD() {
+  zoomReadout.textContent = `zoom: ${viewport.scale.toFixed(2)}x`;
+  snapCounterEl.textContent = growthMgr.getCounterText();
+
+  // Zoom dots
+  const dots = zoomDotsEl.querySelectorAll('.dot');
+  dots.forEach(d => d.classList.toggle('active', parseInt(d.dataset.level) === viewport.zoomLevel));
+  zoomDotsEl.querySelector('.label').textContent = viewport.getZoomLevelName();
+
+  // Breadcrumb
+  let bc = '<span data-level="0">mandala</span>';
+  if (viewport.zoomLevel >= 1 && viewport.focusedRing) {
+    bc += ' <span class="sep">&gt;</span> <span data-level="1">' + viewport.focusedRing + '</span>';
+  }
+  breadcrumbEl.innerHTML = bc;
+
+  // Drag hint
+  if (dragCtrl.interacted) {
+    dragHintEl.classList.add('hidden');
+  }
+}
+
+// Snap events are routed directly in the frame loop (no event bus listener
+// to avoid recursive emit — the frame loop calls growthMgr.onSnap directly).
+
+// =======================================================================
+// RENDER LOOP
+// =======================================================================
+let lastTime = performance.now();
+
+function frame(now) {
+  try {
+  const dt = Math.min(0.05, (now - lastTime) / 1000); // cap at 50ms
+  lastTime = now;
+
+  resizeCanvas();
+
+  // Update
+  viewport.update(dt);
+
+  for (const spring of crossRingSprings) {
+    // Only apply forces if both rings are visible
+    const ringA = rings.find(r => r.key === spring.nodeA.ringKey);
+    const ringB = rings.find(r => r.key === spring.nodeB.ringKey);
+    if (ringA && ringA.phase !== 'hidden' && ringB && ringB.phase !== 'hidden') {
+      spring.applyForces();
+    }
+  }
+
+  for (const ring of rings) {
+    ring.update(dt, now);
+  }
+
+  // Check snaps and notify growth manager
+  for (const ring of rings) {
+    if (ring.phase === 'hidden') continue;
+    const snaps = ring.checkForSnaps();
+    for (const node of snaps) {
+      growthMgr.onSnap(ring.key);
+    }
+  }
+
+  // Draw
+  const dpr = devicePixelRatio;
+  const cw = canvas.width / dpr;
+  const ch = canvas.height / dpr;
+
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Background
+  ctx.fillStyle = '#110f08';
+  ctx.fillRect(0, 0, cw, ch);
+
+  // Apply world-space transform
+  viewport.applyTransform(ctx);
+
+  // Ghost rings (hidden)
+  for (const ring of rings) {
+    if (ring.phase !== 'hidden') continue;
+    ctx.beginPath();
+    ctx.arc(0, 0, ring.ringRadius, 0, 2 * Math.PI);
+    ctx.strokeStyle = 'rgba(58, 52, 40, 0.08)';
+    ctx.lineWidth = 0.5 / viewport.scale;
+    ctx.stroke();
+  }
+
+  // Cross-ring springs
+  for (const spring of crossRingSprings) {
+    const ringA = rings.find(r => r.key === spring.nodeA.ringKey);
+    const ringB = rings.find(r => r.key === spring.nodeB.ringKey);
+    if (ringA && ringA.phase !== 'hidden' && ringB && ringB.phase !== 'hidden') {
+      spring.draw(ctx, viewport);
+    }
+  }
+
+  // Rings
+  for (const ring of rings) {
+    ring.draw(ctx, viewport, now);
+  }
+
+  // HUD (screen space)
+  viewport.resetTransform(ctx);
+  updateHUD();
+
+  } catch (e) {
+    console.error('Frame error:', e);
+  }
+  requestAnimationFrame(frame);
+}
+
+requestAnimationFrame(frame);
+</script>
+<script src="shared.js"></script>
+</body>
+</html>

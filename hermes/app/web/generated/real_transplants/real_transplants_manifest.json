@@ -1,0 +1,53 @@
+[
+  {
+    "code": "REAL-transplant-cadez-2018-p14",
+    "bibkey": "ESM_Cadez_2018",
+    "page": "p14_2",
+    "literature_label": "Cadez & Kolar (2018), p.14",
+    "scene_kind": "vertical_partition_on_circle",
+    "foreign_primitive": "rectangular_grid_partition",
+    "illicit_host": "circle",
+    "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/ESM_Cadez_2018_How/p14_2.png",
+    "filmstrip_file": "hermes/app/web/generated/real_transplants/REAL-transplant-cadez-2018-p14-filmstrip.svg",
+    "frame_files": [
+      "hermes/app/web/generated/real_transplants/REAL-transplant-cadez-2018-p14-frame-1.svg",
+      "hermes/app/web/generated/real_transplants/REAL-transplant-cadez-2018-p14-frame-2.svg",
+      "hermes/app/web/generated/real_transplants/REAL-transplant-cadez-2018-p14-frame-3.svg",
+      "hermes/app/web/generated/real_transplants/REAL-transplant-cadez-2018-p14-frame-4.svg"
+    ]
+  },
+  {
+    "code": "REAL-transplant-zhang-2015-p18",
+    "bibkey": "MERJ_Zhang_2015",
+    "page": "p18_1",
+    "literature_label": "Zhang, Clements & Ellerton (2015), p.18",
+    "scene_kind": "circle_partition_on_rectangle",
+    "foreign_primitive": "radial_partition",
+    "illicit_host": "rectangle",
+    "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/MERJ_Zhang_2015_Enriching/p18_1.png",
+    "filmstrip_file": "hermes/app/web/generated/real_transplants/REAL-transplant-zhang-2015-p18-filmstrip.svg",
+    "frame_files": [
+      "hermes/app/web/generated/real_transplants/REAL-transplant-zhang-2015-p18-frame-1.svg",
+      "hermes/app/web/generated/real_transplants/REAL-transplant-zhang-2015-p18-frame-2.svg",
+      "hermes/app/web/generated/real_transplants/REAL-transplant-zhang-2015-p18-frame-3.svg",
+      "hermes/app/web/generated/real_transplants/REAL-transplant-zhang-2015-p18-frame-4.svg"
+    ]
+  },
+  {
+    "code": "REAL-transplant-garderen-2014-p9",
+    "bibkey": "ZDM_Garderen_2014",
+    "page": "p9_1",
+    "literature_label": "van Garderen, Scheuermann & Jackson (2014), p.9",
+    "scene_kind": "circle_partition_on_rectangle",
+    "foreign_primitive": "circle radial partition",
+    "illicit_host": "submarine sandwich",
+    "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/ZDM_Garderen_2014_Challenges/p9_1.png",
+    "filmstrip_file": "hermes/app/web/generated/real_transplants/REAL-transplant-garderen-2014-p9-filmstrip.svg",
+    "frame_files": [
+      "hermes/app/web/generated/real_transplants/REAL-transplant-garderen-2014-p9-frame-1.svg",
+      "hermes/app/web/generated/real_transplants/REAL-transplant-garderen-2014-p9-frame-2.svg",
+      "hermes/app/web/generated/real_transplants/REAL-transplant-garderen-2014-p9-frame-3.svg",
+      "hermes/app/web/generated/real_transplants/REAL-transplant-garderen-2014-p9-frame-4.svg"
+    ]
+  }
+]

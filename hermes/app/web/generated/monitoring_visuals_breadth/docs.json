@@ -1,0 +1,1628 @@
+{
+  "FRACTION-DEMO": {
+    "lesson_code": "FRACTION-DEMO",
+    "visuals": [
+      {
+        "expression": "1/3 + 1/4",
+        "family": "fraction_bars_addition",
+        "source": "generated_from_teacher_guide_and_monitoring_chart",
+        "correct": {
+          "label": "Correct strategy",
+          "description": "Measure both fractions in a shared unit before combining.",
+          "request": {
+            "op": "fraction_render",
+            "kind": "arith",
+            "operation": "add",
+            "na": 1,
+            "da": 3,
+            "nb": 1,
+            "db": 4
+          },
+          "doc": {
+            "a": {
+              "den": 3,
+              "num": 1
+            },
+            "b": {
+              "den": 4,
+              "num": 1
+            },
+            "canvas": {
+              "height": 320,
+              "width": 700
+            },
+            "frames": [
+              {
+                "caption": "1/3 + 1/4. The parts are different sizes.",
+                "scene": {
+                  "bars": [
+                    {
+                      "color": "#dfe7ef",
+                      "fraction": "1/3",
+                      "h": 48,
+                      "isUnitBar": false,
+                      "label": "1/3",
+                      "size": 420,
+                      "splits": [
+                        {
+                          "color": "#7fb2e6",
+                          "h": 48,
+                          "w": 140,
+                          "x": 0,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 140,
+                          "x": 140,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 140,
+                          "x": 280,
+                          "y": 0
+                        }
+                      ],
+                      "type": "bar",
+                      "w": 420,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "color": "#dfe7ef",
+                      "fraction": "1/4",
+                      "h": 48,
+                      "isUnitBar": false,
+                      "label": "1/4",
+                      "size": 420,
+                      "splits": [
+                        {
+                          "color": "#9ccf9c",
+                          "h": 48,
+                          "w": 105,
+                          "x": 0,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 105,
+                          "x": 105,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 105,
+                          "x": 210,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 105,
+                          "x": 315,
+                          "y": 0
+                        }
+                      ],
+                      "type": "bar",
+                      "w": 420,
+                      "x": 40,
+                      "y": 112
+                    }
+                  ],
+                  "format": "fraction-bars",
+                  "mats": [],
+                  "unitBarIndex": null,
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "show_addends"
+              },
+              {
+                "caption": "Measure both in 12ths: 1/3 = 4/12 and 1/4 = 3/12.",
+                "scene": {
+                  "bars": [
+                    {
+                      "color": "#dfe7ef",
+                      "fraction": "4/12",
+                      "h": 48,
+                      "isUnitBar": false,
+                      "label": "4/12",
+                      "size": 420,
+                      "splits": [
+                        {
+                          "color": "#7fb2e6",
+                          "h": 48,
+                          "w": 35,
+                          "x": 0,
+                          "y": 0
+                        },
+                        {
+                          "color": "#7fb2e6",
+                          "h": 48,
+                          "w": 35,
+                          "x": 35,
+                          "y": 0
+                        },
+                        {
+                          "color": "#7fb2e6",
+                          "h": 48,
+                          "w": 35,
+                          "x": 70,
+                          "y": 0
+                        },
+                        {
+                          "color": "#7fb2e6",
+                          "h": 48,
+                          "w": 35,
+                          "x": 105,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 140,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 175,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 210,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 245,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 280,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 315,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 350,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 385,
+                          "y": 0
+                        }
+                      ],
+                      "type": "bar",
+                      "w": 420,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "color": "#dfe7ef",
+                      "fraction": "3/12",
+                      "h": 48,
+                      "isUnitBar": false,
+                      "label": "3/12",
+                      "size": 420,
+                      "splits": [
+                        {
+                          "color": "#9ccf9c",
+                          "h": 48,
+                          "w": 35,
+                          "x": 0,
+                          "y": 0
+                        },
+                        {
+                          "color": "#9ccf9c",
+                          "h": 48,
+                          "w": 35,
+                          "x": 35,
+                          "y": 0
+                        },
+                        {
+                          "color": "#9ccf9c",
+                          "h": 48,
+                          "w": 35,
+                          "x": 70,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 105,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 140,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 175,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 210,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 245,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 280,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 315,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 350,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 385,
+                          "y": 0
+                        }
+                      ],
+                      "type": "bar",
+                      "w": 420,
+                      "x": 40,
+                      "y": 112
+                    }
+                  ],
+                  "format": "fraction-bars",
+                  "mats": [],
+                  "unitBarIndex": null,
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "co_measure_in_shared_unit"
+              },
+              {
+                "caption": "Join the shaded parts: 4/12 + 3/12 = 7/12.",
+                "scene": {
+                  "bars": [
+                    {
+                      "color": "#dfe7ef",
+                      "fraction": "7/12",
+                      "h": 48,
+                      "isUnitBar": false,
+                      "label": "7/12",
+                      "size": 420,
+                      "splits": [
+                        {
+                          "color": "#7fb2e6",
+                          "h": 48,
+                          "w": 35,
+                          "x": 0,
+                          "y": 0
+                        },
+                        {
+                          "color": "#7fb2e6",
+                          "h": 48,
+                          "w": 35,
+                          "x": 35,
+                          "y": 0
+                        },
+                        {
+                          "color": "#7fb2e6",
+                          "h": 48,
+                          "w": 35,
+                          "x": 70,
+                          "y": 0
+                        },
+                        {
+                          "color": "#7fb2e6",
+                          "h": 48,
+                          "w": 35,
+                          "x": 105,
+                          "y": 0
+                        },
+                        {
+                          "color": "#9ccf9c",
+                          "h": 48,
+                          "w": 35,
+                          "x": 140,
+                          "y": 0
+                        },
+                        {
+                          "color": "#9ccf9c",
+                          "h": 48,
+                          "w": 35,
+                          "x": 175,
+                          "y": 0
+                        },
+                        {
+                          "color": "#9ccf9c",
+                          "h": 48,
+                          "w": 35,
+                          "x": 210,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 245,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 280,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 315,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 350,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 35,
+                          "x": 385,
+                          "y": 0
+                        }
+                      ],
+                      "type": "bar",
+                      "w": 420,
+                      "x": 40,
+                      "y": 40
+                    }
+                  ],
+                  "format": "fraction-bars",
+                  "mats": [],
+                  "unitBarIndex": null,
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "combine_shared_ticks"
+              }
+            ],
+            "op": "add",
+            "result": "7/12"
+          }
+        },
+        "incorrect": {
+          "label": "Incorrect strategy",
+          "description": "Add the visible numerator and denominator components as if they were independent counts.",
+          "request": {
+            "op": "fraction_render",
+            "kind": "add_numerators_and_denominators",
+            "na": 1,
+            "da": 3,
+            "nb": 1,
+            "db": 4
+          },
+          "doc": {
+            "canvas": {
+              "height": 320,
+              "width": 700
+            },
+            "correct": {
+              "den": 12,
+              "num": 7
+            },
+            "frames": [
+              {
+                "caption": "1/3 + 1/4. The parts are not the same size.",
+                "scene": {
+                  "bars": [
+                    {
+                      "color": "#dfe7ef",
+                      "fraction": "1/3",
+                      "h": 48,
+                      "isUnitBar": false,
+                      "label": "1/3",
+                      "size": 420,
+                      "splits": [
+                        {
+                          "color": "#7fb2e6",
+                          "h": 48,
+                          "w": 140,
+                          "x": 0,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 140,
+                          "x": 140,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 140,
+                          "x": 280,
+                          "y": 0
+                        }
+                      ],
+                      "type": "bar",
+                      "w": 420,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "color": "#dfe7ef",
+                      "fraction": "1/4",
+                      "h": 48,
+                      "isUnitBar": false,
+                      "label": "1/4",
+                      "size": 420,
+                      "splits": [
+                        {
+                          "color": "#9ccf9c",
+                          "h": 48,
+                          "w": 105,
+                          "x": 0,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 105,
+                          "x": 105,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 105,
+                          "x": 210,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 105,
+                          "x": 315,
+                          "y": 0
+                        }
+                      ],
+                      "type": "bar",
+                      "w": 420,
+                      "x": 40,
+                      "y": 112
+                    }
+                  ],
+                  "format": "fraction-bars",
+                  "mats": [],
+                  "unitBarIndex": null,
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "show_addends"
+              },
+              {
+                "caption": "Add numerator to numerator and denominator to denominator: 2/7. This ignores the shared unit; co-measurement gives 7/12.",
+                "scene": {
+                  "bars": [
+                    {
+                      "color": "#dfe7ef",
+                      "fraction": "2/7",
+                      "h": 48,
+                      "isUnitBar": false,
+                      "label": "2/7",
+                      "size": 420,
+                      "splits": [
+                        {
+                          "color": "#e69191",
+                          "h": 48,
+                          "w": 60,
+                          "x": 0,
+                          "y": 0
+                        },
+                        {
+                          "color": "#e69191",
+                          "h": 48,
+                          "w": 60,
+                          "x": 60,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 60,
+                          "x": 120,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 60,
+                          "x": 180,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 60,
+                          "x": 240,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 60,
+                          "x": 300,
+                          "y": 0
+                        },
+                        {
+                          "color": "#dfe7ef",
+                          "h": 48,
+                          "w": 60,
+                          "x": 360,
+                          "y": 0
+                        }
+                      ],
+                      "type": "bar",
+                      "w": 420,
+                      "x": 40,
+                      "y": 40
+                    }
+                  ],
+                  "format": "fraction-bars",
+                  "mats": [],
+                  "unitBarIndex": null,
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "combine_numerators_and_denominators"
+              }
+            ],
+            "kind": "add_numerators_and_denominators",
+            "misconception": "add_numerators_and_denominators",
+            "result": "2/7 (correct: 7/12)",
+            "wrong": {
+              "den": 7,
+              "num": 2
+            }
+          }
+        },
+        "proof": {
+          "source": "representation_grammar_and_render_contract",
+          "correct": {
+            "status": "productive_preserves_denoted_task",
+            "request": {
+              "op": "representation_spec_check",
+              "representation": "fraction_bars",
+              "kind": "arith",
+              "operation": "add",
+              "na": 1,
+              "da": 3,
+              "nb": 1,
+              "db": 4
+            },
+            "grammar": {
+              "denoted_task": "fraction_addition(fraction(1,3),fraction(1,4))",
+              "preserves": true,
+              "representation": "fraction_bars",
+              "spec": "fraction_arith(add,1,3,1,4)"
+            },
+            "frame_count": 3,
+            "temporal": true,
+            "frame_sequence": [
+              {
+                "step": 1,
+                "verb": "show_addends",
+                "caption": "1/3 + 1/4. The parts are different sizes."
+              },
+              {
+                "step": 2,
+                "verb": "co_measure_in_shared_unit",
+                "caption": "Measure both in 12ths: 1/3 = 4/12 and 1/4 = 3/12."
+              },
+              {
+                "step": 3,
+                "verb": "combine_shared_ticks",
+                "caption": "Join the shaded parts: 4/12 + 3/12 = 7/12."
+              }
+            ]
+          },
+          "incorrect": {
+            "status": "misconception_deformation",
+            "request": {
+              "op": "representation_spec_check",
+              "representation": "fraction_bars",
+              "kind": "add_numerators_and_denominators",
+              "na": 1,
+              "da": 3,
+              "nb": 1,
+              "db": 4,
+              "task": "fraction_addition"
+            },
+            "grammar": {
+              "deformation": {
+                "correct_answer": "fraction(7,12)",
+                "correct_task": "fraction_addition(fraction(1,3),fraction(1,4))",
+                "misconception": "add_numerators_and_denominators",
+                "mode": "misconception",
+                "representation": "fraction_bars",
+                "violation": "reason(common_unit_not_preserved)",
+                "wrong_answer": "fraction(2,7)"
+              },
+              "preserves": false,
+              "representation": "fraction_bars",
+              "spec": "fraction_arith_componentwise(add,1,3,1,4)",
+              "target_task": "fraction_addition(fraction(1,3),fraction(1,4))"
+            },
+            "frame_count": 2,
+            "temporal": true,
+            "frame_sequence": [
+              {
+                "step": 1,
+                "verb": "show_addends",
+                "caption": "1/3 + 1/4. The parts are not the same size."
+              },
+              {
+                "step": 2,
+                "verb": "combine_numerators_and_denominators",
+                "caption": "Add numerator to numerator and denominator to denominator: 2/7. This ignores the shared unit; co-measurement gives 7/12."
+              }
+            ]
+          },
+          "interpretive_residue": {
+            "status": "human_endorsement_required",
+            "claim": "Hermes checks representation grammar, denotation, deformation evidence, refusal, and render frames; it does not certify that this generated visual is a faithful reading of any particular student's work.",
+            "machine_certifies": [
+              "render spec denotation or named deformation evidence",
+              "representation refusal when a vocabulary cannot productively denote the task",
+              "temporal frame count and scene-contract shape"
+            ],
+            "human_must_endorse": [
+              "the fit between extracted teacher-guide numbers and the lesson activity",
+              "the projective reading from an actual student work sample to this labeled misconception"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "HYBRID-DEMO": {
+    "lesson_code": "HYBRID-DEMO",
+    "visuals": [
+      {
+        "expression": "circle partition transplanted onto a rectangle",
+        "family": "hybridization_transplant",
+        "source": "generated_from_teacher_guide_and_monitoring_chart",
+        "correct": {
+          "label": "Correct strategy",
+          "description": "Partition the rectangular area model by its own part-of-part vocabulary.",
+          "request": {
+            "op": "area_render",
+            "kind": "area_model_fraction",
+            "na": 1,
+            "da": 2,
+            "nb": 1,
+            "db": 3
+          },
+          "doc": {
+            "canvas": {
+              "height": 520,
+              "width": 700
+            },
+            "frames": [
+              {
+                "caption": "Split the unit square into 2 columns; select 1 (1/2 one way).",
+                "scene": {
+                  "cols": 2,
+                  "format": "area-model",
+                  "gridlines": {
+                    "h": [
+                      40,
+                      460
+                    ],
+                    "v": [
+                      40,
+                      250,
+                      460
+                    ]
+                  },
+                  "rects": [
+                    {
+                      "cellH": 420,
+                      "cellW": 420,
+                      "cols": 1,
+                      "h": 420,
+                      "kind": "square",
+                      "label": "",
+                      "role": "whole",
+                      "rows": 1,
+                      "w": 420,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "cellH": 420,
+                      "cellW": 210,
+                      "cols": 1,
+                      "h": 420,
+                      "kind": "band",
+                      "label": "",
+                      "role": "highlight",
+                      "rows": 1,
+                      "w": 210,
+                      "x": 40,
+                      "y": 40
+                    }
+                  ],
+                  "rows": 1,
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "area_model_fraction(1,2,1,3)"
+              },
+              {
+                "caption": "Split the other way into 3 rows; select 1 (1/3 the other way).",
+                "scene": {
+                  "cols": 2,
+                  "format": "area-model",
+                  "gridlines": {
+                    "h": [
+                      40,
+                      180,
+                      320,
+                      460
+                    ],
+                    "v": [
+                      40,
+                      250,
+                      460
+                    ]
+                  },
+                  "rects": [
+                    {
+                      "cellH": 420,
+                      "cellW": 420,
+                      "cols": 1,
+                      "h": 420,
+                      "kind": "square",
+                      "label": "",
+                      "role": "whole",
+                      "rows": 1,
+                      "w": 420,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "cellH": 420,
+                      "cellW": 210,
+                      "cols": 1,
+                      "h": 420,
+                      "kind": "band",
+                      "label": "",
+                      "role": "highlight",
+                      "rows": 1,
+                      "w": 210,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "cellH": 140,
+                      "cellW": 420,
+                      "cols": 1,
+                      "h": 140,
+                      "kind": "band",
+                      "label": "",
+                      "role": "iterated",
+                      "rows": 1,
+                      "w": 420,
+                      "x": 40,
+                      "y": 40
+                    }
+                  ],
+                  "rows": 3,
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "area_model_fraction(1,2,1,3)"
+              },
+              {
+                "caption": "The overlap is 1 of 6 small rectangles: 1/2 x 1/3 = fraction(1,6).",
+                "scene": {
+                  "cols": 2,
+                  "format": "area-model",
+                  "gridlines": {
+                    "h": [
+                      40,
+                      180,
+                      320,
+                      460
+                    ],
+                    "v": [
+                      40,
+                      250,
+                      460
+                    ]
+                  },
+                  "rects": [
+                    {
+                      "cellH": 420,
+                      "cellW": 420,
+                      "cols": 1,
+                      "h": 420,
+                      "kind": "square",
+                      "label": "",
+                      "role": "whole",
+                      "rows": 1,
+                      "w": 420,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "cellH": 140,
+                      "cellW": 210,
+                      "cols": 1,
+                      "h": 140,
+                      "kind": "overlap",
+                      "label": "1",
+                      "role": "inner",
+                      "rows": 1,
+                      "w": 210,
+                      "x": 40,
+                      "y": 40
+                    }
+                  ],
+                  "rows": 3,
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "area_model_fraction(1,2,1,3)"
+              }
+            ],
+            "grounding": {
+              "metaphor_gloss": "Object Construction \u2014 numbers as wholes built from parts",
+              "metaphor_label": "object_construction",
+              "practice": "p_area_model_part_of_part",
+              "primitive": "P2",
+              "role": "primary"
+            },
+            "kind": "area_model_fraction",
+            "request": {
+              "denA": 2,
+              "denB": 3,
+              "numA": 1,
+              "numB": 1
+            },
+            "result": "fraction(1,6)",
+            "teacher": {
+              "breaks_at": [
+                {
+                  "inference": "zero as an object",
+                  "reason": "Zero requires the ad-hoc Zero Object Metaphor; lack-of-object is not itself a constructible object."
+                },
+                {
+                  "inference": "zero as a number",
+                  "reason": "No source-domain referent for 'an object that is the absence of an object'; requires the ad-hoc Zero Object Metaphor."
+                },
+                {
+                  "inference": "irrational numbers",
+                  "reason": "Irrationals are not constructible by finite assembly of unit parts."
+                }
+              ],
+              "embodied": "Fit equal parts together into a whole object.",
+              "repair": "Switch to Zero Object.",
+              "standard": "fraction strand: area model part of part",
+              "witness": {
+                "channels": {
+                  "breaks_at": "present",
+                  "embodied": "present",
+                  "incompatibility_penumbra": "thin",
+                  "standard": "present"
+                },
+                "kind": "teacher_layer",
+                "metaphor_id": "arithmetic_is_object_construction",
+                "practice": "p_area_model_part_of_part",
+                "source": "teacher_layer_composition_over_existing_witnesses"
+              }
+            },
+            "tuple": "area_model_part_of_part(1/2, 1/3)"
+          }
+        },
+        "incorrect": {
+          "label": "Incorrect strategy",
+          "description": "Move the circle's radial partition rule onto the rectangle host.",
+          "request": {
+            "op": "hybridization_render",
+            "kind": "circle_partition_on_rectangle"
+          },
+          "doc": {
+            "canvas": {
+              "height": 420,
+              "width": 760
+            },
+            "family": "transplant_deformation",
+            "foreignPrimitive": "circle_radial_partition",
+            "frames": [
+              {
+                "caption": "Choose a rectangle as the area-model host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "rectangle host",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "host_shape(rectangle_area_model)"
+              },
+              {
+                "caption": "The radial partition is licensed inside the circle-region vocabulary.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "home-circle",
+                      "label": "circle home",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "radial-partition",
+                      "label": "licensed radial partition",
+                      "r": 94,
+                      "role": "iterated",
+                      "segments": 6
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "licensed_home(circle_radial_partition,circle_region)"
+              },
+              {
+                "caption": "Transplant the circle partition rule onto the rectangle host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "rectangle host",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "rectangle",
+                      "hostH": 190,
+                      "hostW": 300,
+                      "hostX": 110,
+                      "hostY": 86,
+                      "kind": "radial-partition",
+                      "label": "radial partition on rectangle",
+                      "r": 110,
+                      "role": "deformation",
+                      "segments": 6
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "transplant(circle_radial_partition,rectangle_area_model)"
+              },
+              {
+                "caption": "The result is a hybridized model: a foreign primitive on an illicit host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "rectangle host",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "rectangle",
+                      "hostH": 190,
+                      "hostW": 300,
+                      "hostX": 110,
+                      "hostY": 86,
+                      "kind": "radial-partition",
+                      "label": "radial partition on rectangle",
+                      "r": 110,
+                      "role": "deformation",
+                      "segments": 6
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 4,
+                "verb": "hybrid_result(circle_partition_on_rectangle)"
+              }
+            ],
+            "illicitHost": "rectangle_area_model",
+            "kind": "circle_partition_on_rectangle",
+            "licensedHome": "circle_region",
+            "request": {
+              "spec": "circle_partition_on_rectangle"
+            },
+            "result": "misconception",
+            "tuple": "hybridization(foreign_primitive, licensed_home, illicit_host)",
+            "violation": "object_language_binding_violation"
+          }
+        },
+        "proof": {
+          "source": "representation_grammar_and_render_contract",
+          "correct": {
+            "status": "productive_preserves_denoted_task",
+            "request": {
+              "op": "representation_spec_check",
+              "representation": "area_model",
+              "kind": "area_model_fraction",
+              "na": 1,
+              "da": 2,
+              "nb": 1,
+              "db": 3
+            },
+            "grammar": {
+              "denoted_task": "fraction_product(1,2,1,3)",
+              "preserves": true,
+              "representation": "area_model",
+              "spec": "area_model_fraction(1,2,1,3)"
+            },
+            "frame_count": 3,
+            "temporal": true,
+            "frame_sequence": [
+              {
+                "step": 1,
+                "verb": "area_model_fraction(1,2,1,3)",
+                "caption": "Split the unit square into 2 columns; select 1 (1/2 one way)."
+              },
+              {
+                "step": 2,
+                "verb": "area_model_fraction(1,2,1,3)",
+                "caption": "Split the other way into 3 rows; select 1 (1/3 the other way)."
+              },
+              {
+                "step": 3,
+                "verb": "area_model_fraction(1,2,1,3)",
+                "caption": "The overlap is 1 of 6 small rectangles: 1/2 x 1/3 = fraction(1,6)."
+              }
+            ]
+          },
+          "incorrect": {
+            "status": "misconception_deformation",
+            "request": {
+              "op": "representation_spec_check",
+              "representation": "hybridization",
+              "kind": "circle_partition_on_rectangle"
+            },
+            "grammar": {
+              "deformation": {
+                "correct_task": "hybridization_case(circle_radial_partition,rectangle_area_model)",
+                "family": "transplant_deformation",
+                "foreign_primitive": "circle_radial_partition",
+                "illicit_host": "rectangle_area_model",
+                "licensed_home": "circle_region",
+                "misconception": "hybridized_model",
+                "mode": "misconception",
+                "representation": "hybridization",
+                "violation": "reason(object_language_binding_violation)",
+                "wrong_denotation": "undetermined_fraction_region"
+              },
+              "preserves": false,
+              "representation": "hybridization",
+              "spec": "circle_partition_on_rectangle",
+              "target_task": "hybridization_case(circle_radial_partition,rectangle_area_model)"
+            },
+            "frame_count": 4,
+            "temporal": true,
+            "frame_sequence": [
+              {
+                "step": 1,
+                "verb": "host_shape(rectangle_area_model)",
+                "caption": "Choose a rectangle as the area-model host."
+              },
+              {
+                "step": 2,
+                "verb": "licensed_home(circle_radial_partition,circle_region)",
+                "caption": "The radial partition is licensed inside the circle-region vocabulary."
+              },
+              {
+                "step": 3,
+                "verb": "transplant(circle_radial_partition,rectangle_area_model)",
+                "caption": "Transplant the circle partition rule onto the rectangle host."
+              },
+              {
+                "step": 4,
+                "verb": "hybrid_result(circle_partition_on_rectangle)",
+                "caption": "The result is a hybridized model: a foreign primitive on an illicit host."
+              }
+            ]
+          },
+          "interpretive_residue": {
+            "status": "human_endorsement_required",
+            "claim": "Hermes checks representation grammar, denotation, deformation evidence, refusal, and render frames; it does not certify that this generated visual is a faithful reading of any particular student's work.",
+            "machine_certifies": [
+              "render spec denotation or named deformation evidence",
+              "representation refusal when a vocabulary cannot productively denote the task",
+              "temporal frame count and scene-contract shape"
+            ],
+            "human_must_endorse": [
+              "the fit between extracted teacher-guide numbers and the lesson activity",
+              "the projective reading from an actual student work sample to this labeled misconception"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "BALANCE-DEMO": {
+    "lesson_code": "BALANCE-DEMO",
+    "visuals": [
+      {
+        "expression": "2x + 3 = 11",
+        "family": "balance_scale_equation",
+        "source": "generated_from_teacher_guide_and_monitoring_chart",
+        "correct": {
+          "label": "Correct strategy",
+          "description": "Preserve equality by making the same move on both pans.",
+          "request": {
+            "op": "balance_render",
+            "a": 2,
+            "b": 3,
+            "c": 11
+          },
+          "doc": {
+            "canvas": {
+              "height": 360,
+              "width": 700
+            },
+            "frames": [
+              {
+                "caption": "2x + 3 = 11. The two sides name the same weight, so the beam is level.",
+                "scene": {
+                  "beam": {
+                    "tilt": "level"
+                  },
+                  "format": "balance-scale",
+                  "pan_role": "pan",
+                  "pans": {
+                    "left": [
+                      {
+                        "count": 2,
+                        "kind": "x",
+                        "role": "x-box"
+                      },
+                      {
+                        "count": 3,
+                        "kind": "unit",
+                        "role": "unit-weight"
+                      }
+                    ],
+                    "right": [
+                      {
+                        "count": 11,
+                        "kind": "unit",
+                        "role": "unit-weight"
+                      }
+                    ]
+                  },
+                  "totals": {
+                    "left": 11,
+                    "right": 11
+                  },
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "show_equation_as_balance"
+              },
+              {
+                "caption": "Take 3 units off BOTH pans. Left 2x, right 8; still level.",
+                "scene": {
+                  "beam": {
+                    "tilt": "level"
+                  },
+                  "format": "balance-scale",
+                  "pan_role": "pan",
+                  "pans": {
+                    "left": [
+                      {
+                        "count": 2,
+                        "kind": "x",
+                        "role": "x-box"
+                      }
+                    ],
+                    "right": [
+                      {
+                        "count": 8,
+                        "kind": "unit",
+                        "role": "unit-weight"
+                      }
+                    ]
+                  },
+                  "totals": {
+                    "left": 8,
+                    "right": 8
+                  },
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "subtract_units_from_both_pans"
+              },
+              {
+                "caption": "Split each pan into 2 equal groups: one x-box balances 8 / 2 = 4 units.",
+                "scene": {
+                  "beam": {
+                    "tilt": "level"
+                  },
+                  "format": "balance-scale",
+                  "pan_role": "pan",
+                  "pans": {
+                    "left": [
+                      {
+                        "count": 2,
+                        "kind": "x",
+                        "role": "x-box"
+                      }
+                    ],
+                    "right": [
+                      {
+                        "count": 8,
+                        "kind": "unit",
+                        "role": "unit-weight"
+                      }
+                    ]
+                  },
+                  "totals": {
+                    "left": 8,
+                    "right": 8
+                  },
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "split_each_side_into_equal_groups"
+              },
+              {
+                "caption": "x = 4. One x-box balances 4 units; the beam stays level.",
+                "scene": {
+                  "beam": {
+                    "tilt": "level"
+                  },
+                  "format": "balance-scale",
+                  "pan_role": "pan",
+                  "pans": {
+                    "left": [
+                      {
+                        "count": 1,
+                        "kind": "x",
+                        "role": "x-box"
+                      }
+                    ],
+                    "right": [
+                      {
+                        "count": 4,
+                        "kind": "unit",
+                        "role": "unit-weight"
+                      }
+                    ]
+                  },
+                  "totals": {
+                    "left": 4,
+                    "right": 4
+                  },
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 4,
+                "verb": "isolate_the_unknown"
+              }
+            ],
+            "kind": "solve_linear",
+            "request": {
+              "a": 2,
+              "b": 3,
+              "c": 11,
+              "form": "A*x + B = C"
+            },
+            "result": "x = 4",
+            "tuple": "solve_linear(2,3,11)"
+          }
+        },
+        "incorrect": {
+          "label": "Incorrect strategy",
+          "description": "Treat the equals sign as a command and change only one side.",
+          "request": {
+            "op": "balance_compare",
+            "a": 2,
+            "b": 3,
+            "c": 11
+          },
+          "doc": {
+            "canvas": {
+              "height": 360,
+              "width": 700
+            },
+            "deformation": "subtract_from_left_pan_only",
+            "frames": [
+              {
+                "caption": "2x + 3 = 11. The two sides name the same weight, so the beam is level.",
+                "scene": {
+                  "beam": {
+                    "tilt": "level"
+                  },
+                  "format": "balance-scale",
+                  "pan_role": "pan",
+                  "pans": {
+                    "left": [
+                      {
+                        "count": 2,
+                        "kind": "x",
+                        "role": "x-box"
+                      },
+                      {
+                        "count": 3,
+                        "kind": "unit",
+                        "role": "unit-weight"
+                      }
+                    ],
+                    "right": [
+                      {
+                        "count": 11,
+                        "kind": "unit",
+                        "role": "unit-weight"
+                      }
+                    ]
+                  },
+                  "totals": {
+                    "left": 11,
+                    "right": 11
+                  },
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "show_equation_as_balance"
+              },
+              {
+                "caption": "Taking 3 off the LEFT pan only leaves 2x against 11: the beam tips. The same move was not done to both sides.",
+                "scene": {
+                  "beam": {
+                    "tilt": "right_down"
+                  },
+                  "format": "balance-scale",
+                  "pan_role": "pan",
+                  "pans": {
+                    "left": [
+                      {
+                        "count": 2,
+                        "kind": "x",
+                        "role": "x-box"
+                      }
+                    ],
+                    "right": [
+                      {
+                        "count": 11,
+                        "kind": "unit",
+                        "role": "deformation"
+                      }
+                    ]
+                  },
+                  "totals": {
+                    "left": 8,
+                    "right": 11
+                  },
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "subtract_from_left_pan_only"
+              }
+            ],
+            "kind": "balance_compare",
+            "note": "Solving keeps the beam level by doing the same move to both pans; computing one side tips it.",
+            "productive": "subtract_same_units_from_both_pans",
+            "request": {
+              "a": 2,
+              "b": 3,
+              "c": 11,
+              "form": "A*x + B = C"
+            },
+            "result": "x = 4",
+            "tuple": "solve_linear(2,3,11)"
+          }
+        },
+        "proof": {
+          "source": "representation_grammar_and_render_contract",
+          "correct": {
+            "status": "productive_preserves_denoted_task",
+            "request": {
+              "op": "representation_spec_check",
+              "representation": "balance_scale",
+              "a": 2,
+              "b": 3,
+              "c": 11
+            },
+            "grammar": {
+              "denoted_task": "equation(linear(2,3,11))",
+              "preserves": true,
+              "representation": "balance_scale",
+              "spec": "solve_linear(2,3,11)"
+            },
+            "frame_count": 4,
+            "temporal": true,
+            "frame_sequence": [
+              {
+                "step": 1,
+                "verb": "show_equation_as_balance",
+                "caption": "2x + 3 = 11. The two sides name the same weight, so the beam is level."
+              },
+              {
+                "step": 2,
+                "verb": "subtract_units_from_both_pans",
+                "caption": "Take 3 units off BOTH pans. Left 2x, right 8; still level."
+              },
+              {
+                "step": 3,
+                "verb": "split_each_side_into_equal_groups",
+                "caption": "Split each pan into 2 equal groups: one x-box balances 8 / 2 = 4 units."
+              },
+              {
+                "step": 4,
+                "verb": "isolate_the_unknown",
+                "caption": "x = 4. One x-box balances 4 units; the beam stays level."
+              }
+            ]
+          },
+          "incorrect": {
+            "status": "misconception_deformation",
+            "request": {
+              "op": "representation_spec_check",
+              "representation": "balance_scale",
+              "a": 2,
+              "b": 3,
+              "c": 11,
+              "kind": "balance_compare",
+              "task": "equation_linear"
+            },
+            "grammar": {
+              "deformation": {
+                "correct_answer": "solution(4)",
+                "correct_task": "equation(linear(2,3,11))",
+                "misconception": "operational_equals_subtract_from_one_side",
+                "mode": "misconception",
+                "representation": "balance_scale",
+                "unsupported_answer": "fraction(11,2)",
+                "unsupported_equation": "equation(linear(2,0,11))",
+                "violation": "reason(balance_not_preserved)"
+              },
+              "preserves": false,
+              "representation": "balance_scale",
+              "spec": "balance_compare(2,3,11)",
+              "target_task": "equation(linear(2,3,11))"
+            },
+            "frame_count": 2,
+            "temporal": true,
+            "frame_sequence": [
+              {
+                "step": 1,
+                "verb": "show_equation_as_balance",
+                "caption": "2x + 3 = 11. The two sides name the same weight, so the beam is level."
+              },
+              {
+                "step": 2,
+                "verb": "subtract_from_left_pan_only",
+                "caption": "Taking 3 off the LEFT pan only leaves 2x against 11: the beam tips. The same move was not done to both sides."
+              }
+            ]
+          },
+          "interpretive_residue": {
+            "status": "human_endorsement_required",
+            "claim": "Hermes checks representation grammar, denotation, deformation evidence, refusal, and render frames; it does not certify that this generated visual is a faithful reading of any particular student's work.",
+            "machine_certifies": [
+              "render spec denotation or named deformation evidence",
+              "representation refusal when a vocabulary cannot productively denote the task",
+              "temporal frame count and scene-contract shape"
+            ],
+            "human_must_endorse": [
+              "the fit between extracted teacher-guide numbers and the lesson activity",
+              "the projective reading from an actual student work sample to this labeled misconception"
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

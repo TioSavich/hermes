@@ -1,0 +1,900 @@
+{
+ "attribution": "Transcript data: TalkMoves dataset (SumnerLab / Suresh et al.), CC BY-NC-SA 4.0, speaker-blinded before any model call.",
+ "caveats": [
+  "The calculator checks a claim only when it can ground it; 'not checked' means outside its current coverage, not wrong.",
+  "Reading a speaker's move is interpretive. The model proposes the reading; only the claim verdicts are computed.",
+  "One automated read of one transcript \u2014 a starting point for your own reading, not a verdict on the discussion."
+ ],
+ "claims": [
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "one half plus one half equals a whole",
+   "speaker": "S02",
+   "utterance": "u0004"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "two fourths plus two fourths equals a whole",
+   "speaker": "S02",
+   "utterance": "u0004"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "one half plus one half equals one whole",
+   "speaker": "S03",
+   "utterance": "u0009"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "two fourths plus two fourths equals four fourths",
+   "speaker": "S03",
+   "utterance": "u0009"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "four fourths which is one whole",
+   "speaker": "S03",
+   "utterance": "u0009"
+  },
+  {
+   "finding": "does not check out",
+   "how": "the calculator worked the claim through and it fails",
+   "said": "four fourths equals one half",
+   "speaker": "S05",
+   "utterance": "u0023"
+  },
+  {
+   "finding": "does not check out",
+   "how": "the calculator worked the claim through and it fails",
+   "said": "one half which equals two halves",
+   "speaker": "S05",
+   "utterance": "u0023"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "four fourths is equal to one whole",
+   "speaker": "S03",
+   "utterance": "u0030"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "four fourths equals one whole",
+   "speaker": "S01",
+   "utterance": "u0033"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "two fourths is equal to one half",
+   "speaker": "S05",
+   "utterance": "u0034"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "one whole divided by two you would need would get like one half",
+   "speaker": "S12",
+   "utterance": "u0098"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "two fourths and one half are the same",
+   "speaker": "S12",
+   "utterance": "u0098"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "one half was the same as two fourths",
+   "speaker": "S01",
+   "utterance": "u0117"
+  }
+ ],
+ "headline": "13 mathematical claims heard; 13 checked by the calculator, 2 did not check out; 4 cross-speaker conflicts surfaced. Every failed claim was later repaired in discussion.",
+ "machine": {
+  "extractions": [
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:add_grounded+multiply_grounded",
+     "claim": "fraction_sum",
+     "status": "domain_checked",
+     "trace": [
+      "grounded: 1/2 + 1/2 co-measured against claimed 1 whole"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 2,
+      "num": 1
+     },
+     "b": {
+      "den": 2,
+      "num": 1
+     },
+     "result": 1
+    },
+    "confidence": "high",
+    "id": "c1",
+    "shape": "fraction_sum",
+    "surface": "one half plus one half equals a whole",
+    "term": "fraction_sum(fraction(1,2),fraction(1,2),whole(1))",
+    "utterance_id": "u0004",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:add_grounded+multiply_grounded",
+     "claim": "fraction_sum",
+     "status": "domain_checked",
+     "trace": [
+      "grounded: 2/4 + 2/4 co-measured against claimed 1 whole"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 4,
+      "num": 2
+     },
+     "b": {
+      "den": 4,
+      "num": 2
+     },
+     "result": 1
+    },
+    "confidence": "high",
+    "id": "c2",
+    "shape": "fraction_sum",
+    "surface": "two fourths plus two fourths equals a whole",
+    "term": "fraction_sum(fraction(2,4),fraction(2,4),whole(1))",
+    "utterance_id": "u0004",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:add_grounded+multiply_grounded",
+     "claim": "fraction_sum",
+     "status": "domain_checked",
+     "trace": [
+      "grounded: 1/2 + 1/2 co-measured against claimed 1 whole"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 2,
+      "num": 1
+     },
+     "b": {
+      "den": 2,
+      "num": 1
+     },
+     "result": 1
+    },
+    "confidence": "high",
+    "id": "c3",
+    "shape": "fraction_sum",
+    "surface": "one half plus one half equals one whole",
+    "term": "fraction_sum(fraction(1,2),fraction(1,2),whole(1))",
+    "utterance_id": "u0009",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:add_grounded+multiply_grounded",
+     "claim": "fraction_sum",
+     "status": "domain_checked",
+     "trace": [
+      "grounded: 2/4 + 2/4 co-measured against claimed 4/4"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 4,
+      "num": 2
+     },
+     "b": {
+      "den": 4,
+      "num": 2
+     },
+     "result": {
+      "den": 4,
+      "num": 4
+     }
+    },
+    "confidence": "high",
+    "id": "c4",
+    "shape": "fraction_sum",
+    "surface": "two fourths plus two fourths equals four fourths",
+    "term": "fraction_sum(fraction(2,4),fraction(2,4),fraction(4,4))",
+    "utterance_id": "u0009",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:equal_to",
+     "claim": "n_over_n_is_one",
+     "status": "domain_checked",
+     "trace": [
+      "completion: numerator 4 vs denominator 4"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 4,
+      "num": 4
+     }
+    },
+    "confidence": "high",
+    "id": "c5",
+    "shape": "n_over_n_is_one",
+    "surface": "four fourths which is one whole",
+    "term": "n_over_n_is_one(fraction(4,4))",
+    "utterance_id": "u0009",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "refuted",
+     "checker": "divaded_fractional_units:co_measure_fractions",
+     "claim": "fraction_equivalence",
+     "left": "4/4",
+     "right": "1/2",
+     "status": "domain_checked",
+     "trace": [
+      "in shared base 4: 4/4 vs 2/4",
+      "find_shared_completion(recollection([tally,tally,tally,tally]),recollection([tally,tally]),recollection([tally,tally,tally,tally]),[try(recollection([tally,tally,tally,tally]),shared)])",
+      "measure_first_unit_with_shared_ticks(recollection([tally,tally,tally,tally]),recollection([tally,tally,tally,tally]),recollection([tally]),[group(recollection([tally,tally,tally,tally]),recollection([tally]))])",
+      "measure_second_unit_with_shared_ticks(recollection([tally,tally]),recollection([tally,tally,tally,tally]),recollection([tally,tally]),[group(recollection([tally,tally]),recollection([tally])),group(recollection([tally,tally]),recollection([tally,tally]))])",
+      "scale_first_measurement_by_count(recollection([tally,tally,tally,tally]),recollection([tally,tally,tally,tally]),[insert(recollection([tally]),recollection([tally])),insert(recollection([tally]),recollection([tally,tally])),insert(recollection([tally]),recollection([tally,tally,tally])),insert(recollection([tally]),recollection([tally,tally,tally,tally]))])",
+      "scale_second_measurement_by_count(recollection([tally]),recollection([tally,tally]),[insert(recollection([tally,tally]),recollection([tally,tally]))])",
+      "construct_shared_anaphoric_it(shared_measurement_chain(recollection([tally,tally,tally,tally])))"
+     ],
+     "verdict": "refuted"
+    },
+    "args": {
+     "left": {
+      "den": 4,
+      "num": 4
+     },
+     "right": {
+      "den": 2,
+      "num": 1
+     }
+    },
+    "confidence": "high",
+    "id": "c6",
+    "shape": "equivalence",
+    "surface": "four fourths equals one half",
+    "term": "equivalence(fraction(4,4),fraction(1,2))",
+    "utterance_id": "u0023",
+    "verdict": "refuted"
+   },
+   {
+    "adjudication": {
+     "adjudication": "refuted",
+     "checker": "divaded_fractional_units:co_measure_fractions",
+     "claim": "fraction_equivalence",
+     "left": "1/2",
+     "right": "2/2",
+     "status": "domain_checked",
+     "trace": [
+      "in shared base 2: 1/2 vs 2/2",
+      "find_shared_completion(recollection([tally,tally]),recollection([tally,tally]),recollection([tally,tally]),[try(recollection([tally,tally]),shared)])",
+      "measure_first_unit_with_shared_ticks(recollection([tally,tally]),recollection([tally,tally]),recollection([tally]),[group(recollection([tally,tally]),recollection([tally]))])",
+      "measure_second_unit_with_shared_ticks(recollection([tally,tally]),recollection([tally,tally]),recollection([tally]),[group(recollection([tally,tally]),recollection([tally]))])",
+      "scale_first_measurement_by_count(recollection([tally]),recollection([tally]),[insert(recollection([tally]),recollection([tally]))])",
+      "scale_second_measurement_by_count(recollection([tally,tally]),recollection([tally,tally]),[insert(recollection([tally]),recollection([tally])),insert(recollection([tally]),recollection([tally,tally]))])",
+      "construct_shared_anaphoric_it(shared_measurement_chain(recollection([tally,tally])))"
+     ],
+     "verdict": "refuted"
+    },
+    "args": {
+     "left": {
+      "den": 2,
+      "num": 1
+     },
+     "right": {
+      "den": 2,
+      "num": 2
+     }
+    },
+    "confidence": "medium",
+    "id": "c7",
+    "shape": "equivalence",
+    "surface": "one half which equals two halves",
+    "term": "equivalence(fraction(1,2),fraction(2,2))",
+    "utterance_id": "u0023",
+    "verdict": "refuted"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:equal_to",
+     "claim": "n_over_n_is_one",
+     "status": "domain_checked",
+     "trace": [
+      "completion: numerator 4 vs denominator 4"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 4,
+      "num": 4
+     }
+    },
+    "confidence": "high",
+    "id": "c8",
+    "shape": "n_over_n_is_one",
+    "surface": "four fourths is equal to one whole",
+    "term": "n_over_n_is_one(fraction(4,4))",
+    "utterance_id": "u0030",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:equal_to",
+     "claim": "n_over_n_is_one",
+     "status": "domain_checked",
+     "trace": [
+      "completion: numerator 4 vs denominator 4"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 4,
+      "num": 4
+     }
+    },
+    "confidence": "high",
+    "id": "c9",
+    "shape": "n_over_n_is_one",
+    "surface": "four fourths equals one whole",
+    "term": "n_over_n_is_one(fraction(4,4))",
+    "utterance_id": "u0033",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "divaded_fractional_units:co_measure_fractions",
+     "claim": "fraction_equivalence",
+     "left": "2/4",
+     "right": "1/2",
+     "status": "domain_checked",
+     "trace": [
+      "in shared base 4: 2/4 vs 2/4",
+      "find_shared_completion(recollection([tally,tally,tally,tally]),recollection([tally,tally]),recollection([tally,tally,tally,tally]),[try(recollection([tally,tally,tally,tally]),shared)])",
+      "measure_first_unit_with_shared_ticks(recollection([tally,tally,tally,tally]),recollection([tally,tally,tally,tally]),recollection([tally]),[group(recollection([tally,tally,tally,tally]),recollection([tally]))])",
+      "measure_second_unit_with_shared_ticks(recollection([tally,tally]),recollection([tally,tally,tally,tally]),recollection([tally,tally]),[group(recollection([tally,tally]),recollection([tally])),group(recollection([tally,tally]),recollection([tally,tally]))])",
+      "scale_first_measurement_by_count(recollection([tally,tally]),recollection([tally,tally]),[insert(recollection([tally]),recollection([tally])),insert(recollection([tally]),recollection([tally,tally]))])",
+      "scale_second_measurement_by_count(recollection([tally]),recollection([tally,tally]),[insert(recollection([tally,tally]),recollection([tally,tally]))])",
+      "construct_shared_anaphoric_it(shared_measurement_chain(recollection([tally,tally,tally,tally])))"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "left": {
+      "den": 4,
+      "num": 2
+     },
+     "right": {
+      "den": 2,
+      "num": 1
+     }
+    },
+    "confidence": "high",
+    "id": "c10",
+    "shape": "equivalence",
+    "surface": "two fourths is equal to one half",
+    "term": "equivalence(fraction(2,4),fraction(1,2))",
+    "utterance_id": "u0034",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "SWI arithmetic schema 1/N = 1/N",
+     "claim": "division_by_n_is_unit_fraction",
+     "status": "domain_checked",
+     "trace": [
+      "1 divided by 2 is the unit fraction 1/2"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "n": 2
+    },
+    "confidence": "high",
+    "id": "c11",
+    "shape": "division_by_n_is_unit_fraction",
+    "surface": "one whole divided by two you would need would get like one half",
+    "term": "division_by_n_is_unit_fraction(2)",
+    "utterance_id": "u0098",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "divaded_fractional_units:co_measure_fractions",
+     "claim": "fraction_equivalence",
+     "left": "2/4",
+     "right": "1/2",
+     "status": "domain_checked",
+     "trace": [
+      "in shared base 4: 2/4 vs 2/4",
+      "find_shared_completion(recollection([tally,tally,tally,tally]),recollection([tally,tally]),recollection([tally,tally,tally,tally]),[try(recollection([tally,tally,tally,tally]),shared)])",
+      "measure_first_unit_with_shared_ticks(recollection([tally,tally,tally,tally]),recollection([tally,tally,tally,tally]),recollection([tally]),[group(recollection([tally,tally,tally,tally]),recollection([tally]))])",
+      "measure_second_unit_with_shared_ticks(recollection([tally,tally]),recollection([tally,tally,tally,tally]),recollection([tally,tally]),[group(recollection([tally,tally]),recollection([tally])),group(recollection([tally,tally]),recollection([tally,tally]))])",
+      "scale_first_measurement_by_count(recollection([tally,tally]),recollection([tally,tally]),[insert(recollection([tally]),recollection([tally])),insert(recollection([tally]),recollection([tally,tally]))])",
+      "scale_second_measurement_by_count(recollection([tally]),recollection([tally,tally]),[insert(recollection([tally,tally]),recollection([tally,tally]))])",
+      "construct_shared_anaphoric_it(shared_measurement_chain(recollection([tally,tally,tally,tally])))"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "left": {
+      "den": 4,
+      "num": 2
+     },
+     "right": {
+      "den": 2,
+      "num": 1
+     }
+    },
+    "confidence": "high",
+    "id": "c12",
+    "shape": "equivalence",
+    "surface": "two fourths and one half are the same",
+    "term": "equivalence(fraction(2,4),fraction(1,2))",
+    "utterance_id": "u0098",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "divaded_fractional_units:co_measure_fractions",
+     "claim": "fraction_equivalence",
+     "left": "1/2",
+     "right": "2/4",
+     "status": "domain_checked",
+     "trace": [
+      "in shared base 4: 2/4 vs 2/4",
+      "find_shared_completion(recollection([tally,tally]),recollection([tally,tally,tally,tally]),recollection([tally,tally,tally,tally]),[try(recollection([tally,tally]),not_shared),try(recollection([tally,tally,tally,tally]),shared)])",
+      "measure_first_unit_with_shared_ticks(recollection([tally,tally]),recollection([tally,tally,tally,tally]),recollection([tally,tally]),[group(recollection([tally,tally]),recollection([tally])),group(recollection([tally,tally]),recollection([tally,tally]))])",
+      "measure_second_unit_with_shared_ticks(recollection([tally,tally,tally,tally]),recollection([tally,tally,tally,tally]),recollection([tally]),[group(recollection([tally,tally,tally,tally]),recollection([tally]))])",
+      "scale_first_measurement_by_count(recollection([tally]),recollection([tally,tally]),[insert(recollection([tally,tally]),recollection([tally,tally]))])",
+      "scale_second_measurement_by_count(recollection([tally,tally]),recollection([tally,tally]),[insert(recollection([tally]),recollection([tally])),insert(recollection([tally]),recollection([tally,tally]))])",
+      "construct_shared_anaphoric_it(shared_measurement_chain(recollection([tally,tally,tally,tally])))"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "left": {
+      "den": 2,
+      "num": 1
+     },
+     "right": {
+      "den": 4,
+      "num": 2
+     }
+    },
+    "confidence": "high",
+    "id": "c13",
+    "shape": "equivalence",
+    "surface": "one half was the same as two fourths",
+    "term": "equivalence(fraction(1,2),fraction(2,4))",
+    "utterance_id": "u0117",
+    "verdict": "holds"
+   }
+  ],
+  "readings": [
+   {
+    "claim_refs": [
+     "C1",
+     "C2"
+    ],
+    "id": "a1",
+    "pml": {
+     "content": "C1 and C2",
+     "force": "assert",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "external",
+     "subject_position_read": "stating mathematical facts as the basis for an argument"
+    },
+    "raw_text": "[C1 fraction_sum: holds], and [C2 fraction_sum: holds].",
+    "utterance_ids": [
+     "u0004"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a2",
+    "pml": {
+     "content": "doubt of S02's argument",
+     "force": "avow",
+     "grammatical_person": "first",
+     "mode": "subjective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "internal",
+     "subject_position_read": "tentative personal stance"
+    },
+    "raw_text": "Uh I think they're kind of off.",
+    "utterance_ids": [
+     "u0007"
+    ],
+    "wraps": "a3"
+   },
+   {
+    "claim_refs": [
+     "C3",
+     "C4"
+    ],
+    "id": "a3",
+    "pml": {
+     "content": "C3 and C4",
+     "force": "assert",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "external",
+     "subject_position_read": "correcting the logic of the prior claim"
+    },
+    "raw_text": "It's true that [C3 fraction_sum: holds], but [C4 fraction_sum: holds] which is one whole.",
+    "utterance_ids": [
+     "u0009"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C7"
+    ],
+    "id": "a4",
+    "pml": {
+     "content": "C7",
+     "force": "assert",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "external",
+     "subject_position_read": "proposing a candidate equality"
+    },
+    "raw_text": "four fourths equals [C7 equivalence: refuted]... four fourths should be equals one half",
+    "uptake": {
+     "fate": "contested",
+     "ids": [
+      "u0026",
+      "u0030"
+     ]
+    },
+    "utterance_ids": [
+     "u0023",
+     "u0025"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C8"
+    ],
+    "id": "a5",
+    "pml": {
+     "content": "C8",
+     "force": "assert",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "external",
+     "subject_position_read": "binding the field with a known rule"
+    },
+    "raw_text": "[C8 n_over_n_is_one: holds]",
+    "utterance_ids": [
+     "u0030"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C9"
+    ],
+    "id": "a6",
+    "pml": {
+     "content": "C9",
+     "force": "assert",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "external",
+     "subject_position_read": "teacher verification of the rule"
+    },
+    "raw_text": "[C9 n_over_n_is_one: holds]",
+    "utterance_ids": [
+     "u0033"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C10"
+    ],
+    "id": "a7",
+    "pml": {
+     "content": "C10",
+     "force": "assert",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "external",
+     "subject_position_read": "re-establishing a claim after a correction"
+    },
+    "raw_text": "Yeah um and [C10 equivalence: holds]",
+    "utterance_ids": [
+     "u0034"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C11",
+     "C12"
+    ],
+    "id": "a8",
+    "pml": {
+     "content": "C11 leading to C12",
+     "force": "assert",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "exp_poss",
+     "polarity": "expansive",
+     "position": "external",
+     "subject_position_read": "offering a new conceptual path to a proof"
+    },
+    "raw_text": "if you um do like [C11 division_by_n_is_unit_fraction: holds]... that would prove that [C12 equivalence: holds].",
+    "utterance_ids": [
+     "u0098"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a9",
+    "pml": {
+     "content": "acceptance of C12's proof",
+     "force": "avow",
+     "grammatical_person": "first",
+     "mode": "subjective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "internal",
+     "subject_position_read": "teacher's personal validation"
+    },
+    "raw_text": "I think that would prove it to me",
+    "utterance_ids": [
+     "u0100"
+    ],
+    "wraps": "a10"
+   },
+   {
+    "claim_refs": [
+     "C12"
+    ],
+    "id": "a10",
+    "pml": {
+     "content": "C12",
+     "force": "assert",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "external",
+     "subject_position_read": "the claim as proved by the suggested method"
+    },
+    "raw_text": "that would prove it",
+    "utterance_ids": [
+     "u0100"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C13"
+    ],
+    "id": "a11",
+    "pml": {
+     "content": "C13",
+     "force": "attribute",
+     "grammatical_person": "first",
+     "mode": "objective",
+     "operator": "exp_poss",
+     "polarity": "expansive",
+     "position": "internal",
+     "subject_position_read": "framing the student's work as an alternative justification"
+    },
+    "raw_text": "We had another way of trying to justify that [C13 equivalence: holds].",
+    "utterance_ids": [
+     "u0117"
+    ]
+   }
+  ]
+ },
+ "postures": [
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S02",
+   "utterances": [
+    "u0004"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "speaking for themselves",
+   "response": "no response recorded",
+   "speaker": "S03",
+   "utterances": [
+    "u0007"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S03",
+   "utterances": [
+    "u0009"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "about the shared math",
+   "response": "the class pushed back",
+   "speaker": "S05",
+   "utterances": [
+    "u0023",
+    "u0025"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S03",
+   "utterances": [
+    "u0030"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0033"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S05",
+   "utterances": [
+    "u0034"
+   ]
+  },
+  {
+   "move": "opens an alternative",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S12",
+   "utterances": [
+    "u0098"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "speaking for themselves",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0100"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0100"
+   ]
+  },
+  {
+   "move": "opens an alternative",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0117"
+   ]
+  }
+ ],
+ "repair_arcs": [
+  {
+   "anchors": [
+    "u0023",
+    "c8",
+    "c9",
+    "c10",
+    "c12",
+    "c13"
+   ],
+   "sentence": "S05's claim at u0023 does not check out, and the discussion returned to the same content later and landed on a version that does."
+  },
+  {
+   "anchors": [
+    "u0023",
+    "c10",
+    "c12",
+    "c13"
+   ],
+   "sentence": "S05's claim at u0023 does not check out, and the discussion returned to the same content later and landed on a version that does."
+  }
+ ],
+ "tensions": [
+  {
+   "anchors": [
+    "u0023",
+    "u0004"
+   ],
+   "sentence": "S05 (at u0023) and S02 (at u0004) have made claims about the same fractions that cannot both stand; the calculator backs S02's."
+  },
+  {
+   "anchors": [
+    "u0023",
+    "u0009",
+    "u0030"
+   ],
+   "sentence": "S05 (at u0023) and S03 (at u0009) have made claims about the same fractions that cannot both stand; the calculator backs S03's."
+  },
+  {
+   "anchors": [
+    "u0023",
+    "u0033",
+    "u0117"
+   ],
+   "sentence": "S05 (at u0023) and S01 (at u0033) have made claims about the same fractions that cannot both stand; the calculator backs S01's."
+  },
+  {
+   "anchors": [
+    "u0023",
+    "u0098"
+   ],
+   "sentence": "S05 (at u0023) and S12 (at u0098) have made claims about the same fractions that cannot both stand; the calculator backs S12's."
+  }
+ ],
+ "transcript": "# tm_0083\n\nU0001 S01: Ok. Graham and Kelly had something very interesting to say  about why um\u2026one half should go in the same, is another  name for two fourths and should go in the same place.\nU0002 S01: Graham do you want uh to tell us?\nU0003 S01: Graham told me.\nU0004 S02: Well, one half plus one half equals a whole, and two fourths  plus two fourths equals a whole.\nU0005 S01: Well that's an interesting argument one half plus one half  equals a whole, and two fourths plus two fourths equals a  whole.\nU0006 S01: Does that make sense?\nU0007 S03: Uh I think they're kind of off.\nU0008 S03: It's true, but they're kind of  off.\nU0009 S03: It's true that one half plus one half equals one whole, but  two fourths plus two fourths equals four fourths which is one  whole.\nU0010 S01: [Writing on the chalk board] OK, so we have one half plus  one half equals one whole, two fourths plus two fourths  equals one whole, or two fourths plus two fourths equals  four fourths equals one whole.\nU0011 S01: How many of you agree with that?\nU0012 S01: Does that make sense?\nU0013 S01: That's very neat.\nU0014 S01: I hope you notice, Mrs. Phillips, that  they're adding fractions.\nU0015 S04: Yes, I noticed.\nU0016 S01: That's very neat.\nU0017 S01: That's very neat.\nU0018 S01: Ok.\nU0019 S01: That's very neat.\nU0020 S01: David?\nU0021 S01: Hold on let's hear what David has to say for a  moment?\nU0022 S05: Well I was thinking.\nU0023 S05: That uh that like four fourths equals  one half which equals two halves.\nU0024 S01: Say that one more time David\nU0025 S05: Uh, four fourths should be equals one half [T writes on  the board]\nU0026 S03: four fourths equals one half ?\nU0027 S03: four fourths?\nU0028 S03: Two fourths.\nU0029 S05: two fourths\u2026.oh wait one whole\nU0030 S03: four fourths is equal to one whole\nU0031 S05: Yeah that's what I mean.\nU0032 S01: You want me to change this?\nU0033 S01: four fourths equals one whole\nU0034 S05: Yeah um and two fourths is equal to one half\nU0035 S01: Why?\nU0036 S05: Because um\u2026.two fourths uh would be equal to right up  right next to is like in the middle of like one whole and um\nU0037 S01: In the middle between numbers?\nU0038 S05: zero and one.\nU0039 S01: Between zero and one.\nU0040 S01: Ok.\nU0041 S05: and um so then one half of it would be in the same place.\nU0042 S01: Ok\nU0043 S05: So the half would have to be in the same place\nU0044 S01: Ok\nU0045 S05: because if you put them right next to each other the one half  would be in the same place as both of them because would  one half would be equals on both sides\nU0046 S04: What might be helpful is that David drew a picture here  which I found very helpful to me in understanding his  argument and I think it might be hard for everyone out there  to understand what David says.\nU0047 S01: Would you sketch it up here David?\nU0048 S04: Would you please David?\nU0049 S04: I think that might help.\nU0050 S04: Want to take you picture with you?\nU0051 S05: [Sketching using rods on board]\u2026I just drew it like that  because\u2026\nU0052 S05: that's the one whole, um these are the one fourth, and that's  the one half, and this would be zero and that would be one.\nU0053 S01: Let me ask you to do something here that might help me.\nU0054 S01: I  want these to be here.\nU0055 S01: Can you place your numbers here  now.\nU0056 S01: [T draws in lines to turn the rods into a number  line.]\nU0057 S05: You mean like one half .\nU0058 S01: Where zero go underneath, no underneath like the number  line.\nU0059 S01: [David draws in zero,1/4,two fourths, three fourths,  one, one half on the number line.]\nU0060 S01: Ok so what I'm imagining when you do that David, I'm  imagining the rods and I'm also imagining the number line.\nU0061 S01: That's very helpful to me.\nU0062 S01: Is that helpful to you what he's  done?\nU0063 S01: [SS murmurs \u2018yes'] How many of you understand  what David has done?\nU0064 S01: Raise you hand if you understand it.\nU0065 S01: If not, if you have a question David.\nU0066 S01: I'm sure will be happy  to answer it.\nU0067 S01: Does anyone have a question for David?\nU0068 S01: Now what David is  suggesting which um I think helps me a lot, I don't know if  it helps you, that if you went to place numbers between zero  and one imagining the rods, right?\nU0069 S01: It helps you to place those  numbers.\nU0070 S06: Yes\nU0071 S01: Now once you place the numbers and then once you imagine  the rods it seems to be when the rods would end.\nU0072 S01: Right,  where the one half rod ends, is where you would place one  half where it ended here he placed a one.\nU0073 S01: Right?\nU0074 S01: That's a  very very nice notation.\nU0075 S01: I like that a lot.\nU0076 S01: What do the rest of  you think of that?\nU0077 S07: I like it.\nU0078 S01: [To Alan]  What do you think?\nU0079 S01: Thank you very much David\nU0080 S08: I agree with him.\nU0081 S01: Isn't that nice.\nU0082 S01: That's very nice.\nU0083 S01: How many of you like that?\nU0084 S01: Yeah, I like that a lot.\nU0085 S01: Maybe we can adapt that as an  interesting notation.\nU0086 S01: If we were inventing our own notation  that would be a very useful one.\nU0087 S01: Jakki?\nU0088 S09: It's sort of like the Cuisenaire Rods.\nU0089 S01: Yeah that helps me a lot doesn't it?\nU0090 S10: It's supposed to be the purple rod, one fourth would be the  white and the half is like the red, or the purple I think.\nU0091 S01: Jessica?\nU0092 S11: Well, I think it is sort of a new way to make a number line.\nU0093 S01: It's a way to build it isn't it?\nU0094 S11: Yeah.\nU0095 S01: That's a neat idea.\nU0096 S01: Yeah, I think so, too.\nU0097 S01: Michael?\nU0098 S12: Uhm, I, when I was working at home trying to make a  number line I um found out that if you um do like one whole  divided by two you would need would get like one half  because you would take one plus\u2026.like that\u2026.and then or  you could get two fourths if you divided it by two so that  would prove that two fourths and one half are the same.\nU0099 S01: That's very nice.\nU0100 S01: I think that would prove it to me, would it  prove it to the rest of you?\nU0101 S01: James?\nU0102 S13: Uhm, I have another way to do it.\nU0103 S13: I also drew a picture.\nU0104 S01: You did?\nU0105 S01: Ok, do you like to share it with us?\nU0106 S13: Ok\nU0107 S01: Ok.\nU0108 S01: Sure.\nU0109 S01: Would you like to do it on this side?\nU0110 S13: Ok.\nU0111 S13: This is one half [refers to right circle] and this is two  fourths [referring to left circle], two fourths I made a circle  and divided it into 4ths and colored in two fourths and it  shows it equals one half.\nU0112 S13: One side of this and two sides of  this both are one half.\nU0113 S01: What do you think of that?\nU0114 S07: s I agree.\nU0115 S01: What do you think of that?\nU0116 S01: How many of you understand  what James did here?\nU0117 S01: We had another way of trying to  justify that one half was the same as two fourths.\nU0118 S01: And that  would therefore enable you to put them in the same place on  the number line?\nU0119 S13: Yes\nU0120 S01: Thank you very much James.\nU0121 S01: Uh hah!\nU0122 S01: Interesting.\nU0123 S01: Jakki.\n",
+ "transcript_id": "tm_0083"
+}

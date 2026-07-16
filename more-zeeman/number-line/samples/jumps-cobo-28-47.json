@@ -1,0 +1,1011 @@
+{
+ "canvas": {
+  "height": 320,
+  "width": 720
+ },
+ "frames": [
+  {
+   "caption": "Jump from 28 by +10 to 38.",
+   "scene": {
+    "axis": {
+     "max": 75,
+     "min": 28,
+     "scaleBreak": true,
+     "ticks": [
+      28,
+      38,
+      48,
+      58,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75
+     ]
+    },
+    "format": "number-line",
+    "jumps": [
+     {
+      "by": 10,
+      "from": 28,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 38
+     }
+    ],
+    "marks": [
+     {
+      "at": 28,
+      "label": "28"
+     },
+     {
+      "at": 75,
+      "label": "75"
+     },
+     {
+      "at": 38,
+      "label": "38"
+     }
+    ],
+    "mode": "jumps",
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 1,
+   "verb": "+10"
+  },
+  {
+   "caption": "Jump from 38 by +10 to 48.",
+   "scene": {
+    "axis": {
+     "max": 75,
+     "min": 28,
+     "scaleBreak": true,
+     "ticks": [
+      28,
+      38,
+      48,
+      58,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75
+     ]
+    },
+    "format": "number-line",
+    "jumps": [
+     {
+      "by": 10,
+      "from": 28,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 38
+     },
+     {
+      "by": 10,
+      "from": 38,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 48
+     }
+    ],
+    "marks": [
+     {
+      "at": 28,
+      "label": "28"
+     },
+     {
+      "at": 75,
+      "label": "75"
+     },
+     {
+      "at": 48,
+      "label": "48"
+     }
+    ],
+    "mode": "jumps",
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 2,
+   "verb": "+10"
+  },
+  {
+   "caption": "Jump from 48 by +10 to 58.",
+   "scene": {
+    "axis": {
+     "max": 75,
+     "min": 28,
+     "scaleBreak": true,
+     "ticks": [
+      28,
+      38,
+      48,
+      58,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75
+     ]
+    },
+    "format": "number-line",
+    "jumps": [
+     {
+      "by": 10,
+      "from": 28,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 38
+     },
+     {
+      "by": 10,
+      "from": 38,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 48
+     },
+     {
+      "by": 10,
+      "from": 48,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 58
+     }
+    ],
+    "marks": [
+     {
+      "at": 28,
+      "label": "28"
+     },
+     {
+      "at": 75,
+      "label": "75"
+     },
+     {
+      "at": 58,
+      "label": "58"
+     }
+    ],
+    "mode": "jumps",
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 3,
+   "verb": "+10"
+  },
+  {
+   "caption": "Jump from 58 by +10 to 68.",
+   "scene": {
+    "axis": {
+     "max": 75,
+     "min": 28,
+     "scaleBreak": true,
+     "ticks": [
+      28,
+      38,
+      48,
+      58,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75
+     ]
+    },
+    "format": "number-line",
+    "jumps": [
+     {
+      "by": 10,
+      "from": 28,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 38
+     },
+     {
+      "by": 10,
+      "from": 38,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 48
+     },
+     {
+      "by": 10,
+      "from": 48,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 58
+     },
+     {
+      "by": 10,
+      "from": 58,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 68
+     }
+    ],
+    "marks": [
+     {
+      "at": 28,
+      "label": "28"
+     },
+     {
+      "at": 75,
+      "label": "75"
+     },
+     {
+      "at": 68,
+      "label": "68"
+     }
+    ],
+    "mode": "jumps",
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 4,
+   "verb": "+10"
+  },
+  {
+   "caption": "Jump from 68 by +1 to 69.",
+   "scene": {
+    "axis": {
+     "max": 75,
+     "min": 28,
+     "scaleBreak": true,
+     "ticks": [
+      28,
+      38,
+      48,
+      58,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75
+     ]
+    },
+    "format": "number-line",
+    "jumps": [
+     {
+      "by": 10,
+      "from": 28,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 38
+     },
+     {
+      "by": 10,
+      "from": 38,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 48
+     },
+     {
+      "by": 10,
+      "from": 48,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 58
+     },
+     {
+      "by": 10,
+      "from": 58,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 68
+     },
+     {
+      "by": 1,
+      "from": 68,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 69
+     }
+    ],
+    "marks": [
+     {
+      "at": 28,
+      "label": "28"
+     },
+     {
+      "at": 75,
+      "label": "75"
+     },
+     {
+      "at": 69,
+      "label": "69"
+     }
+    ],
+    "mode": "jumps",
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 5,
+   "verb": "+1"
+  },
+  {
+   "caption": "Jump from 69 by +1 to 70.",
+   "scene": {
+    "axis": {
+     "max": 75,
+     "min": 28,
+     "scaleBreak": true,
+     "ticks": [
+      28,
+      38,
+      48,
+      58,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75
+     ]
+    },
+    "format": "number-line",
+    "jumps": [
+     {
+      "by": 10,
+      "from": 28,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 38
+     },
+     {
+      "by": 10,
+      "from": 38,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 48
+     },
+     {
+      "by": 10,
+      "from": 48,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 58
+     },
+     {
+      "by": 10,
+      "from": 58,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 68
+     },
+     {
+      "by": 1,
+      "from": 68,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 69
+     },
+     {
+      "by": 1,
+      "from": 69,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 70
+     }
+    ],
+    "marks": [
+     {
+      "at": 28,
+      "label": "28"
+     },
+     {
+      "at": 75,
+      "label": "75"
+     },
+     {
+      "at": 70,
+      "label": "70"
+     }
+    ],
+    "mode": "jumps",
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 6,
+   "verb": "+1"
+  },
+  {
+   "caption": "Jump from 70 by +1 to 71.",
+   "scene": {
+    "axis": {
+     "max": 75,
+     "min": 28,
+     "scaleBreak": true,
+     "ticks": [
+      28,
+      38,
+      48,
+      58,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75
+     ]
+    },
+    "format": "number-line",
+    "jumps": [
+     {
+      "by": 10,
+      "from": 28,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 38
+     },
+     {
+      "by": 10,
+      "from": 38,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 48
+     },
+     {
+      "by": 10,
+      "from": 48,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 58
+     },
+     {
+      "by": 10,
+      "from": 58,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 68
+     },
+     {
+      "by": 1,
+      "from": 68,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 69
+     },
+     {
+      "by": 1,
+      "from": 69,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 70
+     },
+     {
+      "by": 1,
+      "from": 70,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 71
+     }
+    ],
+    "marks": [
+     {
+      "at": 28,
+      "label": "28"
+     },
+     {
+      "at": 75,
+      "label": "75"
+     },
+     {
+      "at": 71,
+      "label": "71"
+     }
+    ],
+    "mode": "jumps",
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 7,
+   "verb": "+1"
+  },
+  {
+   "caption": "Jump from 71 by +1 to 72.",
+   "scene": {
+    "axis": {
+     "max": 75,
+     "min": 28,
+     "scaleBreak": true,
+     "ticks": [
+      28,
+      38,
+      48,
+      58,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75
+     ]
+    },
+    "format": "number-line",
+    "jumps": [
+     {
+      "by": 10,
+      "from": 28,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 38
+     },
+     {
+      "by": 10,
+      "from": 38,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 48
+     },
+     {
+      "by": 10,
+      "from": 48,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 58
+     },
+     {
+      "by": 10,
+      "from": 58,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 68
+     },
+     {
+      "by": 1,
+      "from": 68,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 69
+     },
+     {
+      "by": 1,
+      "from": 69,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 70
+     },
+     {
+      "by": 1,
+      "from": 70,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 71
+     },
+     {
+      "by": 1,
+      "from": 71,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 72
+     }
+    ],
+    "marks": [
+     {
+      "at": 28,
+      "label": "28"
+     },
+     {
+      "at": 75,
+      "label": "75"
+     },
+     {
+      "at": 72,
+      "label": "72"
+     }
+    ],
+    "mode": "jumps",
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 8,
+   "verb": "+1"
+  },
+  {
+   "caption": "Jump from 72 by +1 to 73.",
+   "scene": {
+    "axis": {
+     "max": 75,
+     "min": 28,
+     "scaleBreak": true,
+     "ticks": [
+      28,
+      38,
+      48,
+      58,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75
+     ]
+    },
+    "format": "number-line",
+    "jumps": [
+     {
+      "by": 10,
+      "from": 28,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 38
+     },
+     {
+      "by": 10,
+      "from": 38,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 48
+     },
+     {
+      "by": 10,
+      "from": 48,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 58
+     },
+     {
+      "by": 10,
+      "from": 58,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 68
+     },
+     {
+      "by": 1,
+      "from": 68,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 69
+     },
+     {
+      "by": 1,
+      "from": 69,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 70
+     },
+     {
+      "by": 1,
+      "from": 70,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 71
+     },
+     {
+      "by": 1,
+      "from": 71,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 72
+     },
+     {
+      "by": 1,
+      "from": 72,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 73
+     }
+    ],
+    "marks": [
+     {
+      "at": 28,
+      "label": "28"
+     },
+     {
+      "at": 75,
+      "label": "75"
+     },
+     {
+      "at": 73,
+      "label": "73"
+     }
+    ],
+    "mode": "jumps",
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 9,
+   "verb": "+1"
+  },
+  {
+   "caption": "Jump from 73 by +1 to 74.",
+   "scene": {
+    "axis": {
+     "max": 75,
+     "min": 28,
+     "scaleBreak": true,
+     "ticks": [
+      28,
+      38,
+      48,
+      58,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75
+     ]
+    },
+    "format": "number-line",
+    "jumps": [
+     {
+      "by": 10,
+      "from": 28,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 38
+     },
+     {
+      "by": 10,
+      "from": 38,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 48
+     },
+     {
+      "by": 10,
+      "from": 48,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 58
+     },
+     {
+      "by": 10,
+      "from": 58,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 68
+     },
+     {
+      "by": 1,
+      "from": 68,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 69
+     },
+     {
+      "by": 1,
+      "from": 69,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 70
+     },
+     {
+      "by": 1,
+      "from": 70,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 71
+     },
+     {
+      "by": 1,
+      "from": 71,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 72
+     },
+     {
+      "by": 1,
+      "from": 72,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 73
+     },
+     {
+      "by": 1,
+      "from": 73,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 74
+     }
+    ],
+    "marks": [
+     {
+      "at": 28,
+      "label": "28"
+     },
+     {
+      "at": 75,
+      "label": "75"
+     },
+     {
+      "at": 74,
+      "label": "74"
+     }
+    ],
+    "mode": "jumps",
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 10,
+   "verb": "+1"
+  },
+  {
+   "caption": "Jump from 74 by +1 to 75.",
+   "scene": {
+    "axis": {
+     "max": 75,
+     "min": 28,
+     "scaleBreak": true,
+     "ticks": [
+      28,
+      38,
+      48,
+      58,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75
+     ]
+    },
+    "format": "number-line",
+    "jumps": [
+     {
+      "by": 10,
+      "from": 28,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 38
+     },
+     {
+      "by": 10,
+      "from": 38,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 48
+     },
+     {
+      "by": 10,
+      "from": 48,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 58
+     },
+     {
+      "by": 10,
+      "from": 58,
+      "role": "jump-add",
+      "tier": "base",
+      "to": 68
+     },
+     {
+      "by": 1,
+      "from": 68,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 69
+     },
+     {
+      "by": 1,
+      "from": 69,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 70
+     },
+     {
+      "by": 1,
+      "from": 70,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 71
+     },
+     {
+      "by": 1,
+      "from": 71,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 72
+     },
+     {
+      "by": 1,
+      "from": 72,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 73
+     },
+     {
+      "by": 1,
+      "from": 73,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 74
+     },
+     {
+      "by": 1,
+      "from": 74,
+      "role": "jump-add",
+      "tier": "unit",
+      "to": 75
+     }
+    ],
+    "marks": [
+     {
+      "at": 28,
+      "label": "28"
+     },
+     {
+      "at": 75,
+      "label": "75"
+     }
+    ],
+    "mode": "jumps",
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 11,
+   "verb": "+1"
+  }
+ ],
+ "grounding": {
+  "metaphor_gloss": "Motion Along a Path \u2014 numbers as point-locations reached by moving",
+  "metaphor_label": "motion_along_path",
+  "practice": "p_count_on_from_larger",
+  "primitive": "'P1'",
+  "role": "primary"
+ },
+ "kind": "COBO",
+ "request": {
+  "a": 28,
+  "b": 47,
+  "strategy": "COBO"
+ },
+ "result": "75",
+ "teacher": {
+  "breaks_at": [
+   {
+    "inference": "product_of_two_negatives",
+    "reason": "In the source domain of motion, doing something a negative number of times makes no sense; the iterated-motion grounding of multiplication cannot be extended to negative multipliers."
+   }
+  ],
+  "embodied": "Move along a path, away from or back toward a starting point.",
+  "incompatibility_penumbra": "Rules out the count all when count on available deformation: the representation will not sustain it.",
+  "repair": "Switch to Multiplication by -1 is Rotation by 180 degrees.",
+  "standard": "addition strand: count_on_from_larger",
+  "witness": {
+   "channels": {
+    "breaks_at": "present",
+    "embodied": "present",
+    "incompatibility_penumbra": "present",
+    "standard": "present"
+   },
+   "kind": "teacher_layer",
+   "metaphor_id": "arithmetic_is_motion_along_a_path",
+   "practice": "p_count_on_from_larger",
+   "source": "teacher_layer_composition_over_existing_witnesses"
+  }
+ },
+ "tuple": "jumps('COBO',28,47)"
+}

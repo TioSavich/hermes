@@ -1,0 +1,465 @@
+{
+  "DEMO-fraction-3-5-proper": {
+    "frames": [
+      {
+        "step": 1,
+        "caption": "Partition the whole into 5 equal parts.",
+        "sceneChanged": true,
+        "scene": {
+          "format": "fraction-bars",
+          "version": 1,
+          "bars": [
+            {
+              "x": 30,
+              "y": 40,
+              "w": 300,
+              "h": 70,
+              "label": "1 whole / 5",
+              "splits": []
+            }
+          ]
+        }
+      },
+      {
+        "step": 2,
+        "caption": "Iterate the unit fraction 3 times, within the whole.",
+        "sceneChanged": true,
+        "scene": {
+          "format": "fraction-bars",
+          "version": 1,
+          "bars": [
+            {
+              "x": 30,
+              "y": 40,
+              "w": 300,
+              "h": 70,
+              "label": "3/5",
+              "splits": [
+                {
+                  "x": 0.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 60.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 120.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "step": 3,
+        "caption": "Chain intact: the referent whole is preserved.",
+        "sceneChanged": true,
+        "scene": {
+          "format": "fraction-bars",
+          "version": 1,
+          "bars": [
+            {
+              "x": 30,
+              "y": 40,
+              "w": 300,
+              "h": 70,
+              "label": "3/5 \u2713",
+              "splits": [
+                {
+                  "x": 0.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 60.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 120.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "machine_verdict": "v(4,[divade(5),iterate,iterate,iterate],-1)"
+  },
+  "DEMO-fraction-7-5-mc2-chain-loss": {
+    "frames": [
+      {
+        "step": 1,
+        "caption": "Partition the whole into 5; reach 5/5 = 1 whole.",
+        "sceneChanged": true,
+        "scene": {
+          "format": "fraction-bars",
+          "version": 1,
+          "bars": [
+            {
+              "x": 30,
+              "y": 40,
+              "w": 300,
+              "h": 70,
+              "label": "5/5 = 1",
+              "splits": [
+                {
+                  "x": 0.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 60.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 120.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 180.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 240.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "step": 2,
+        "caption": "To say 7-something, re-partition the SAME whole into 7.",
+        "sceneChanged": true,
+        "scene": {
+          "format": "fraction-bars",
+          "version": 1,
+          "bars": [
+            {
+              "x": 30,
+              "y": 40,
+              "w": 300,
+              "h": 70,
+              "label": "7 parts?",
+              "splits": [
+                {
+                  "x": 0.0,
+                  "y": 0,
+                  "w": 42.857142857142854,
+                  "h": 70
+                },
+                {
+                  "x": 42.857142857142854,
+                  "y": 0,
+                  "w": 42.857142857142854,
+                  "h": 70
+                },
+                {
+                  "x": 85.71428571428571,
+                  "y": 0,
+                  "w": 42.857142857142854,
+                  "h": 70
+                },
+                {
+                  "x": 128.57142857142856,
+                  "y": 0,
+                  "w": 42.857142857142854,
+                  "h": 70
+                },
+                {
+                  "x": 171.42857142857142,
+                  "y": 0,
+                  "w": 42.857142857142854,
+                  "h": 70
+                },
+                {
+                  "x": 214.28571428571428,
+                  "y": 0,
+                  "w": 42.857142857142854,
+                  "h": 70
+                },
+                {
+                  "x": 257.1428571428571,
+                  "y": 0,
+                  "w": 42.857142857142854,
+                  "h": 70
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "step": 3,
+        "caption": "Whole now read as 7/7: the original 1/5 chain is lost.",
+        "sceneChanged": true,
+        "scene": {
+          "format": "fraction-bars",
+          "version": 1,
+          "bars": [
+            {
+              "x": 30,
+              "y": 40,
+              "w": 300,
+              "h": 70,
+              "label": "7/7 \u2717 chain lost",
+              "splits": [
+                {
+                  "x": 0.0,
+                  "y": 0,
+                  "w": 42.857142857142854,
+                  "h": 70
+                },
+                {
+                  "x": 42.857142857142854,
+                  "y": 0,
+                  "w": 42.857142857142854,
+                  "h": 70
+                },
+                {
+                  "x": 85.71428571428571,
+                  "y": 0,
+                  "w": 42.857142857142854,
+                  "h": 70
+                },
+                {
+                  "x": 128.57142857142856,
+                  "y": 0,
+                  "w": 42.857142857142854,
+                  "h": 70
+                },
+                {
+                  "x": 171.42857142857142,
+                  "y": 0,
+                  "w": 42.857142857142854,
+                  "h": 70
+                },
+                {
+                  "x": 214.28571428571428,
+                  "y": 0,
+                  "w": 42.857142857142854,
+                  "h": 70
+                },
+                {
+                  "x": 257.1428571428571,
+                  "y": 0,
+                  "w": 42.857142857142854,
+                  "h": 70
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "machine_verdict": "v(-1,[],8)"
+  },
+  "DEMO-fraction-7-5-mc3-freed-intact": {
+    "frames": [
+      {
+        "step": 1,
+        "caption": "Partition the whole into 5; iterate to 5/5 = 1 whole.",
+        "sceneChanged": true,
+        "scene": {
+          "format": "fraction-bars",
+          "version": 1,
+          "bars": [
+            {
+              "x": 30,
+              "y": 40,
+              "w": 300,
+              "h": 70,
+              "label": "5/5 = 1",
+              "splits": [
+                {
+                  "x": 0.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 60.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 120.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 180.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 240.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "step": 2,
+        "caption": "Free the unit fraction so it can iterate past the whole.",
+        "sceneChanged": true,
+        "scene": {
+          "format": "fraction-bars",
+          "version": 1,
+          "bars": [
+            {
+              "x": 30,
+              "y": 40,
+              "w": 300,
+              "h": 70,
+              "label": "5/5",
+              "splits": [
+                {
+                  "x": 0.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 60.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 120.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 180.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 240.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                }
+              ]
+            },
+            {
+              "x": 370,
+              "y": 40,
+              "w": 300,
+              "h": 70,
+              "label": "freed 1/5",
+              "splits": []
+            }
+          ]
+        }
+      },
+      {
+        "step": 3,
+        "caption": "Iterate 2 more 1/5-units beyond: 7/5, chain intact.",
+        "sceneChanged": true,
+        "scene": {
+          "format": "fraction-bars",
+          "version": 1,
+          "bars": [
+            {
+              "x": 30,
+              "y": 40,
+              "w": 300,
+              "h": 70,
+              "label": "5/5",
+              "splits": [
+                {
+                  "x": 0.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 60.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 120.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 180.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 240.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                }
+              ]
+            },
+            {
+              "x": 370,
+              "y": 40,
+              "w": 300,
+              "h": 70,
+              "label": "+2/5 \u2192 7/5 \u2713",
+              "splits": [
+                {
+                  "x": 0.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                },
+                {
+                  "x": 60.0,
+                  "y": 0,
+                  "w": 60.0,
+                  "h": 70
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "machine_verdict": "v(9,[divade(5),iterate,iterate,iterate,iterate,iterate,free_unit,iterate_beyond_freed,iterate_beyond_freed],8)"
+  }
+}

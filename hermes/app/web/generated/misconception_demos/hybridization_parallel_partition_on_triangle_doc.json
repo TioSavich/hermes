@@ -1,0 +1,148 @@
+{
+  "canvas": {
+    "height": 420,
+    "width": 760
+  },
+  "family": "transplant_deformation",
+  "foreignPrimitive": "rectangle_parallel_partition",
+  "frames": [
+    {
+      "caption": "Choose a triangle as the region host.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "h": 188,
+            "kind": "triangle-host",
+            "label": "triangle host",
+            "role": "whole",
+            "w": 210,
+            "x": 160,
+            "y": 76
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 1,
+      "verb": "host_shape(triangle_region)"
+    },
+    {
+      "caption": "The parallel band partition is licensed inside the rectangle area-model vocabulary.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "h": 190,
+            "kind": "home-rect",
+            "label": "rectangle home",
+            "role": "whole",
+            "w": 300,
+            "x": 110,
+            "y": 86
+          },
+          {
+            "bands": 3,
+            "h": 190,
+            "host": "rectangle",
+            "kind": "parallel-partition",
+            "label": "licensed parallel partition",
+            "role": "iterated",
+            "shade": [
+              2,
+              3
+            ],
+            "w": 300,
+            "x": 110,
+            "y": 86
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 2,
+      "verb": "licensed_home(rectangle_parallel_partition,rectangle_area_model)"
+    },
+    {
+      "caption": "Transplant the rectangle's parallel partition rule onto the triangular host.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "h": 188,
+            "kind": "triangle-host",
+            "label": "triangle host",
+            "role": "whole",
+            "w": 210,
+            "x": 160,
+            "y": 76
+          },
+          {
+            "bands": 3,
+            "h": 188,
+            "host": "triangle",
+            "kind": "parallel-partition",
+            "label": "parallel bands on triangle",
+            "role": "deformation",
+            "shade": [
+              2,
+              3
+            ],
+            "w": 210,
+            "x": 160,
+            "y": 76
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 3,
+      "verb": "transplant(rectangle_parallel_partition,triangle_region)"
+    },
+    {
+      "caption": "The result is a hybridized model: a foreign primitive on an illicit host.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "h": 188,
+            "kind": "triangle-host",
+            "label": "triangle host",
+            "role": "whole",
+            "w": 210,
+            "x": 160,
+            "y": 76
+          },
+          {
+            "bands": 3,
+            "h": 188,
+            "host": "triangle",
+            "kind": "parallel-partition",
+            "label": "parallel bands on triangle",
+            "role": "deformation",
+            "shade": [
+              2,
+              3
+            ],
+            "w": 210,
+            "x": 160,
+            "y": 76
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 4,
+      "verb": "hybrid_result(parallel_partition_on_triangle)"
+    }
+  ],
+  "illicitHost": "triangle_region",
+  "kind": "parallel_partition_on_triangle",
+  "licensedHome": "rectangle_area_model",
+  "request": {
+    "spec": "parallel_partition_on_triangle"
+  },
+  "result": "misconception",
+  "tuple": "hybridization(foreign_primitive, licensed_home, illicit_host)",
+  "violation": "object_language_binding_violation"
+}

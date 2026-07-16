@@ -1,0 +1,144 @@
+{
+  "canvas": {
+    "height": 420,
+    "width": 760
+  },
+  "denominator": 4,
+  "family": "transplant_deformation",
+  "foreignPrimitive": "circle_radial_partition",
+  "foreignRule": "radial",
+  "frames": [
+    {
+      "caption": "Choose a set as the host.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "count": 3,
+            "kind": "set-host",
+            "label": "one whole (a set)",
+            "r": 34,
+            "role": "whole",
+            "x": 160,
+            "y": 132
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 1,
+      "verb": "establish_whole(set)"
+    },
+    {
+      "caption": "The radial partition rule is licensed inside the circle's own vocabulary.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "cx": 260,
+            "cy": 181,
+            "kind": "host-circle",
+            "label": "one whole",
+            "r": 94,
+            "role": "whole"
+          },
+          {
+            "cx": 260,
+            "cy": 181,
+            "host": "circle",
+            "kind": "radial-partition",
+            "label": "",
+            "r": 94,
+            "role": "iterated",
+            "segments": 4
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 2,
+      "verb": "licensed_home(radial,circle)"
+    },
+    {
+      "caption": "Transplant the radial partition rule onto the set, cut into 4: the pieces are unequal.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "count": 3,
+            "kind": "set-host",
+            "label": "one whole (a set)",
+            "r": 34,
+            "role": "whole",
+            "x": 160,
+            "y": 132
+          },
+          {
+            "count": 3,
+            "host": "set",
+            "kind": "radial-partition",
+            "label": "",
+            "r": 34,
+            "role": "deformation",
+            "segments": 4,
+            "shade": [
+              1
+            ],
+            "x": 160,
+            "y": 132
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 3,
+      "verb": "apply_foreign_partition(radial,set,4)"
+    },
+    {
+      "caption": "Hybridized model of 1/4: a foreign partition rule on an illicit host.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "count": 3,
+            "kind": "set-host",
+            "label": "one whole (a set)",
+            "r": 34,
+            "role": "whole",
+            "x": 160,
+            "y": 132
+          },
+          {
+            "count": 3,
+            "host": "set",
+            "kind": "radial-partition",
+            "label": "",
+            "r": 34,
+            "role": "deformation",
+            "segments": 4,
+            "shade": [
+              1
+            ],
+            "x": 160,
+            "y": 132
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 4,
+      "verb": "hybrid_result(transplant(radial,set),4)"
+    }
+  ],
+  "host": "set",
+  "illicitHost": "fractional_set_model",
+  "kind": "transplant_radial_on_set_1_over_4",
+  "licensedHome": "circle_region",
+  "mode": "misconception",
+  "request": {
+    "spec": "transplant_radial_on_set_1_over_4"
+  },
+  "result": "misconception",
+  "tuple": "hybridization(circle_radial_partition, circle_region, fractional_set_model) at unit_fraction(1,4)",
+  "violation": "object_language_binding_violation"
+}

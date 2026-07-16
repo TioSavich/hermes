@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Generated Monitoring Visuals</title>
+<style>
+body { margin: 24px; font: 16px system-ui, sans-serif; background: #f8f1df; color: #1b1810; }
+main { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+figure { margin: 0; padding: 12px; border: 1px solid #cabf9f; background: #fffaf0; }
+figcaption { font-size: 0.9rem; margin-bottom: 8px; }
+figcaption span, p { color: #665f4f; }
+img { width: 100%; height: 220px; object-fit: contain; background: #f8f1df; border: 1px solid #cabf9f; }
+.note { min-height: 220px; display: grid; place-items: center; padding: 12px; background: #fff4e8; border: 1px solid #cabf9f; color: #665f4f; text-align: center; }
+p { margin: 8px 0 0; font-size: 0.9rem; }
+.proof { margin: 10px 0 0; display: grid; grid-template-columns: max-content 1fr; gap: 4px 10px; font-size: 0.78rem; color: #4d4638; }
+.proof dt { font-weight: 700; }
+.proof dd { margin: 0; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<h1>Generated Monitoring Visuals</h1>
+<main>
+<figure>
+  <figcaption><b>IM-G1-U3-L17</b> correct<br><span>6 + 8 make_ten</span></figcaption>
+  <img src="IM-G1-U3-L17-correct-filmstrip.svg" alt="IM-G1-U3-L17 correct 6 + 8">
+  <p>Make a ten, then preserve the leftover.</p>
+  <dl class="proof">
+  <dt>Proof</dt><dd>productive_preserves_denoted_task</dd>
+  <dt>Frames</dt><dd>3 (temporal)</dd>
+  <dt>Frame sequence</dt><dd>1. make_ten(8,6)<br>2. make_ten(8,6)<br>3. make_ten(8,6)</dd>
+  <dt>Residue</dt><dd>human_endorsement_required</dd>
+  <dt>Claim</dt><dd>Hermes checks representation grammar, denotation, deformation evidence, refusal, and render frames; it does not certify that this generated visual is a faithful reading of any particular student&#x27;s work.</dd>
+</dl>
+</figure>
+<figure>
+  <figcaption><b>IM-G1-U3-L17</b> incorrect<br><span>6 + 8 make_ten</span></figcaption>
+  <img src="IM-G1-U3-L17-incorrect-filmstrip.svg" alt="IM-G1-U3-L17 incorrect 6 + 8">
+  <p>Make a ten, then drop the leftover.</p>
+  <dl class="proof">
+  <dt>Proof</dt><dd>misconception_deformation</dd>
+  <dt>Frames</dt><dd>3 (temporal)</dd>
+  <dt>Frame sequence</dt><dd>1. make_ten_drop_leftover(8,6)<br>2. make_ten_drop_leftover(8,6)<br>3. make_ten_drop_leftover(8,6)</dd>
+  <dt>Residue</dt><dd>human_endorsement_required</dd>
+  <dt>Claim</dt><dd>Hermes checks representation grammar, denotation, deformation evidence, refusal, and render frames; it does not certify that this generated visual is a faithful reading of any particular student&#x27;s work.</dd>
+</dl>
+</figure>
+<figure>
+  <figcaption><b>IM-G2-U2-L7</b> correct<br><span>62 - 43 base_ten_subtraction_borrow</span></figcaption>
+  <img src="IM-G2-U2-L7-correct-filmstrip.svg" alt="IM-G2-U2-L7 correct 62 - 43">
+  <p>Decompose one ten and reduce the tens place.</p>
+  <dl class="proof">
+  <dt>Proof</dt><dd>productive_preserves_denoted_task</dd>
+  <dt>Frames</dt><dd>4 (temporal)</dd>
+  <dt>Frame sequence</dt><dd>1. show_minuend(62)<br>2. borrow_place(0)<br>3. borrow_place(1)<br>4. difference(19)</dd>
+  <dt>Residue</dt><dd>human_endorsement_required</dd>
+  <dt>Claim</dt><dd>Hermes checks representation grammar, denotation, deformation evidence, refusal, and render frames; it does not certify that this generated visual is a faithful reading of any particular student&#x27;s work.</dd>
+</dl>
+</figure>
+<figure>
+  <figcaption><b>IM-G2-U2-L7</b> incorrect<br><span>62 - 43 base_ten_subtraction_borrow</span></figcaption>
+  <img src="IM-G2-U2-L7-incorrect-filmstrip.svg" alt="IM-G2-U2-L7 incorrect 62 - 43">
+  <p>Add ten ones but leave the tens place unchanged.</p>
+  <dl class="proof">
+  <dt>Proof</dt><dd>misconception_deformation</dd>
+  <dt>Frames</dt><dd>4 (temporal)</dd>
+  <dt>Frame sequence</dt><dd>1. show_minuend(62)<br>2. borrow_without_reducing_place(0)<br>3. borrow_without_reducing_place(1)<br>4. deformed_difference(29)</dd>
+  <dt>Residue</dt><dd>human_endorsement_required</dd>
+  <dt>Claim</dt><dd>Hermes checks representation grammar, denotation, deformation evidence, refusal, and render frames; it does not certify that this generated visual is a faithful reading of any particular student&#x27;s work.</dd>
+</dl>
+</figure>
+<figure>
+  <figcaption><b>IM-G4-U4-L20</b> correct<br><span>204,500 + 695 base_ten_addition_carry_refused_large_number</span></figcaption>
+  <img src="IM-G4-U4-L20-correct-filmstrip.svg" alt="IM-G4-U4-L20 correct 204,500 + 695">
+  <p>Use a scalable number-line measure model for the large magnitude.</p>
+  <dl class="proof">
+  <dt>Proof</dt><dd>productive_preserves_denoted_task</dd>
+  <dt>Frames</dt><dd>3 (temporal)</dd>
+  <dt>Frame sequence</dt><dd>1. locate_start<br>2. append_addend<br>3. read_sum</dd>
+  <dt>Residue</dt><dd>human_endorsement_required</dd>
+  <dt>Claim</dt><dd>Hermes checks representation grammar, denotation, deformation evidence, refusal, and render frames; it does not certify that this generated visual is a faithful reading of any particular student&#x27;s work.</dd>
+</dl>
+</figure>
+<figure>
+  <figcaption><b>IM-G4-U4-L20</b> incorrect<br><span>204,500 + 695 base_ten_addition_carry_refused_large_number</span></figcaption>
+  <div class="note">Representation grammar refused this base-ten picture: reason(no_physical_block_for_required_place_value(204500))</div>
+  <p>Base-ten blocks stop being a productive physical vocabulary here; a collapsed-cube picture would be a labeled misconception, not a calculator answer.</p>
+  <dl class="proof">
+  <dt>Proof</dt><dd>refused_by_representation_grammar</dd>
+  <dt>Frames</dt><dd>0 (single-frame)</dd>
+  <dt>Frame sequence</dt><dd>none</dd>
+  <dt>Residue</dt><dd>human_endorsement_required</dd>
+  <dt>Claim</dt><dd>Hermes checks representation grammar, denotation, deformation evidence, refusal, and render frames; it does not certify that this generated visual is a faithful reading of any particular student&#x27;s work.</dd>
+</dl>
+</figure>
+</main>
+</body>
+</html>

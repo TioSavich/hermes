@@ -1,0 +1,13 @@
+Header: 3_3_2_inclusive_definitions
+Is a square a rectangle? Explain using the properties, not just the picture.
+Maria Rivera: A square is a rectangle because it has four right angles and opposite sides parallel — it just also happens to have all sides equal.
+David Chen: At first glance a square looks like its own thing, but Maria's point about the right angles convinces me they share the defining property.
+Ada Okafor: Building on David, the definition of a rectangle (four right angles) says nothing about side lengths, so a square satisfies it.
+Liam Bauer: So every square is a rectangle but not every rectangle is a square. The inclusive definition is what makes the hierarchy work.
+
+Header: 5_1_2_area_of_rectangle
+How do you find the area of a rectangle, and why does the formula work?
+Maria Rivera: Length times width, because you can tile the rectangle into unit squares — it is rows times columns.
+David Chen: Ada mentioned tiling earlier, and I think the array model is exactly why multiplication gives the area.
+Ada Okafor: Right — each row has "width" unit squares and there are "length" rows, so you multiply.
+Liam Bauer: I came back to my first idea: area is counting the square units inside, and the formula just counts them efficiently.

@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="420" viewBox="0 0 700 420" font-family="Georgia, 'Times New Roman', serif">
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7.5" refY="3.2" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7.5,3.2 L0,6.4 z" fill="#3a3a44"/>
+    </marker>
+    <marker id="arrowred" markerWidth="9" markerHeight="9" refX="7.5" refY="3.2" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7.5,3.2 L0,6.4 z" fill="#a4243b"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="700" height="420" fill="#faf8f3"/>
+
+  <!-- title -->
+  <text x="24" y="32" font-size="17" fill="#1c1c22" font-weight="bold">The erasure: the proof that returns nothing</text>
+  <text x="24" y="51" font-size="11.5" fill="#555" font-style="italic">arche-trace/embodied_prover.pl + automata.pl — a derivation that resists representation is effaced into its own result</text>
+
+  <!-- ===================== NODES ===================== -->
+
+  <!-- A: generate_trace -->
+  <g>
+    <rect x="34" y="86" width="186" height="56" rx="8" fill="#eef1f6" stroke="#3a3a44" stroke-width="1.4"/>
+    <text x="127" y="108" font-size="13" fill="#1c1c22" text-anchor="middle" font-weight="bold">generate_trace/1</text>
+    <text x="127" y="125" font-size="10" fill="#555" text-anchor="middle">automata.pl:56-57</text>
+    <text x="127" y="137" font-size="9.5" fill="#777" text-anchor="middle">marks a variable with the Trace</text>
+  </g>
+
+  <!-- B: construct_proof -->
+  <g>
+    <rect x="270" y="86" width="200" height="56" rx="8" fill="#eef1f6" stroke="#3a3a44" stroke-width="1.4"/>
+    <text x="370" y="108" font-size="13" fill="#1c1c22" text-anchor="middle" font-weight="bold">construct_proof/4</text>
+    <text x="370" y="125" font-size="10" fill="#555" text-anchor="middle">embodied_prover.pl:113-120</text>
+    <text x="370" y="137" font-size="9.5" fill="#777" text-anchor="middle">tries to build the proof object</text>
+  </g>
+
+  <!-- C: contains_trace -->
+  <g>
+    <rect x="498" y="86" width="180" height="56" rx="8" fill="#eef1f6" stroke="#3a3a44" stroke-width="1.4"/>
+    <text x="588" y="108" font-size="13" fill="#1c1c22" text-anchor="middle" font-weight="bold">contains_trace/1</text>
+    <text x="588" y="125" font-size="10" fill="#555" text-anchor="middle">automata.pl:78-81</text>
+    <text x="588" y="137" font-size="9.5" fill="#777" text-anchor="middle">"is the Trace in here?" — yes</text>
+  </g>
+
+  <!-- D: THE VANISHING POINT — erasure written at line 117 -->
+  <g>
+    <rect x="468" y="210" width="210" height="70" rx="8" fill="#fbe9ec" stroke="#a4243b" stroke-width="2.4"/>
+    <text x="573" y="232" font-size="13" fill="#a4243b" text-anchor="middle" font-weight="bold">Proof = erasure(RuleName)</text>
+    <text x="573" y="249" font-size="10" fill="#7a1b2c" text-anchor="middle">embodied_prover.pl:117</text>
+    <text x="573" y="263" font-size="9.5" fill="#7a1b2c" text-anchor="middle" font-style="italic">VANISHING POINT — the trace effaced;</text>
+    <text x="573" y="275" font-size="9.5" fill="#7a1b2c" text-anchor="middle" font-style="italic">the result keeps the name, drops the content</text>
+  </g>
+
+  <!-- E: attr_unify_hook fail — the tail eaten -->
+  <g>
+    <rect x="34" y="210" width="200" height="70" rx="8" fill="#f3efe6" stroke="#8a6d2f" stroke-width="1.6" stroke-dasharray="5 3"/>
+    <text x="134" y="232" font-size="12.5" fill="#5a4a20" text-anchor="middle" font-weight="bold">attr_unify_hook/2 → fail</text>
+    <text x="134" y="249" font-size="10" fill="#6a5524" text-anchor="middle">automata.pl:62-74 (the bare fail at 73)</text>
+    <text x="134" y="263" font-size="9.3" fill="#6a5524" text-anchor="middle">unification refuses to bind the Trace</text>
+    <text x="134" y="275" font-size="9.3" fill="#6a5524" text-anchor="middle">to any concrete term — so no proof can fill it</text>
+  </g>
+
+  <!-- F: proof_witness reads back the empty term -->
+  <g>
+    <rect x="270" y="210" width="170" height="70" rx="8" fill="#eef1f6" stroke="#3a3a44" stroke-width="1.4"/>
+    <text x="355" y="232" font-size="12.5" fill="#1c1c22" text-anchor="middle" font-weight="bold">proof_witness/2</text>
+    <text x="355" y="249" font-size="10" fill="#555" text-anchor="middle">embodied_prover.pl:132-135</text>
+    <text x="355" y="263" font-size="9.3" fill="#777" text-anchor="middle">reads the result back:</text>
+    <text x="355" y="275" font-size="9.3" fill="#777" text-anchor="middle">kind = erased_proof (nothing inside)</text>
+  </g>
+
+  <!-- ===================== EDGES ===================== -->
+  <!-- A -> B : the traced sequent is handed to construct_proof -->
+  <line x1="220" y1="114" x2="268" y2="114" stroke="#3a3a44" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="244" y="106" font-size="9" fill="#3a3a44" text-anchor="middle">[s(T)]=>[s(T)]</text>
+
+  <!-- B -> C : construct_proof calls contains_trace at line 117 -->
+  <line x1="470" y1="114" x2="496" y2="114" stroke="#3a3a44" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="483" y="106" font-size="9" fill="#3a3a44" text-anchor="middle">calls</text>
+
+  <!-- C -> D : trace detected (yes) -> write erasure -->
+  <path d="M 588 142 C 588 175, 580 188, 575 208" fill="none" stroke="#a4243b" stroke-width="2" marker-end="url(#arrowred)"/>
+  <text x="624" y="178" font-size="9" fill="#a4243b" text-anchor="middle">yes →</text>
+
+  <!-- D -> F : the erasure term flows to the witness -->
+  <line x1="468" y1="245" x2="442" y2="245" stroke="#3a3a44" stroke-width="1.6" marker-end="url(#arrow)"/>
+
+  <!-- F -> E : witness confirms emptiness; tail meets the hook -->
+  <line x1="270" y1="245" x2="236" y2="245" stroke="#3a3a44" stroke-width="1.6" marker-end="url(#arrow)"/>
+
+  <!-- E -> A : the hook's refusal is WHY generate_trace's mark can never stabilize — loop closes -->
+  <path d="M 60 210 C 40 180, 40 150, 70 142" fill="none" stroke="#8a6d2f" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#arrow)"/>
+  <text x="22" y="178" font-size="8.6" fill="#6a5524" text-anchor="start" transform="rotate(0)">the same</text>
+  <text x="22" y="189" font-size="8.6" fill="#6a5524" text-anchor="start">Trace</text>
+
+  <!-- the self-bite annotation -->
+  <text x="350" y="318" font-size="10.5" fill="#a4243b" text-anchor="middle" font-style="italic">The snake reaches the one bite it cannot swallow: the proof succeeds in shape, but its content is the empty object.</text>
+
+  <!-- ===================== CAPTURED OUTPUT ===================== -->
+  <rect x="34" y="330" width="632" height="78" rx="6" fill="#1c1c22"/>
+  <text x="44" y="346" font-size="9" fill="#8fbf8f" font-family="'Courier New', monospace">$ swipl -l paths.pl -l run_erasure.pl -g run   (verbatim)</text>
+  <text x="44" y="360" font-size="8.8" fill="#e6e6e6" font-family="'Courier New', monospace">contains_trace([s(T)]=>[s(T)]) = yes</text>
+  <text x="44" y="372" font-size="8.8" fill="#f0a0a8" font-family="'Courier New', monospace">TRACED:    construct_proof(my_rule, [s(T)]=>[s(T)], [], P) => erasure(my_rule)</text>
+  <text x="44" y="384" font-size="8.8" fill="#a8d8a8" font-family="'Courier New', monospace">CLEAN:     construct_proof(my_rule, [s(a)]=>[s(a)], [], P) => proof(my_rule,([s(a)]=>[s(a)]),[])</text>
+  <text x="44" y="396" font-size="8.8" fill="#f0a0a8" font-family="'Courier New', monospace">PROPAGATE: construct_proof(r_conj, clean, [erasure(inner)], P) => erasure(propagation)</text>
+  <text x="44" y="406" font-size="8.8" fill="#e6e6e6" font-family="'Courier New', monospace">WITNESS:   proof_witness(erasure(my_rule)) => kind=erased_proof reason=my_rule</text>
+</svg>

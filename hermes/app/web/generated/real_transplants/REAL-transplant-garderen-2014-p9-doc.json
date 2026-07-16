@@ -1,0 +1,149 @@
+{
+  "canvas": {
+    "height": 420,
+    "width": 760
+  },
+  "family": "transplant_deformation",
+  "foreignPrimitive": "circle_radial_partition",
+  "frames": [
+    {
+      "caption": "Choose a rectangle as the area-model host.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "h": 190,
+            "kind": "host-rect",
+            "label": "rectangle host",
+            "role": "whole",
+            "w": 300,
+            "x": 110,
+            "y": 86
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 1,
+      "verb": "host_shape(rectangle_area_model)"
+    },
+    {
+      "caption": "The radial partition is licensed inside the circle-region vocabulary.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "cx": 260,
+            "cy": 181,
+            "kind": "home-circle",
+            "label": "circle home",
+            "r": 94,
+            "role": "whole"
+          },
+          {
+            "cx": 260,
+            "cy": 181,
+            "host": "circle",
+            "kind": "radial-partition",
+            "label": "licensed radial partition",
+            "r": 94,
+            "role": "iterated",
+            "segments": 6
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 2,
+      "verb": "licensed_home(circle_radial_partition,circle_region)"
+    },
+    {
+      "caption": "Transplant the circle partition rule onto the rectangle host.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "h": 190,
+            "kind": "host-rect",
+            "label": "rectangle host",
+            "role": "whole",
+            "w": 300,
+            "x": 110,
+            "y": 86
+          },
+          {
+            "cx": 260,
+            "cy": 181,
+            "host": "rectangle",
+            "hostH": 190,
+            "hostW": 300,
+            "hostX": 110,
+            "hostY": 86,
+            "kind": "radial-partition",
+            "label": "radial partition on rectangle",
+            "r": 110,
+            "role": "deformation",
+            "segments": 6
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 3,
+      "verb": "transplant(circle_radial_partition,rectangle_area_model)"
+    },
+    {
+      "caption": "The result is a hybridized model: a foreign primitive on an illicit host.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "h": 190,
+            "kind": "host-rect",
+            "label": "rectangle host",
+            "role": "whole",
+            "w": 300,
+            "x": 110,
+            "y": 86
+          },
+          {
+            "cx": 260,
+            "cy": 181,
+            "host": "rectangle",
+            "hostH": 190,
+            "hostW": 300,
+            "hostX": 110,
+            "hostY": 86,
+            "kind": "radial-partition",
+            "label": "radial partition on rectangle",
+            "r": 110,
+            "role": "deformation",
+            "segments": 6
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 4,
+      "verb": "hybrid_result(circle_partition_on_rectangle)"
+    }
+  ],
+  "illicitHost": "rectangle_area_model",
+  "kind": "circle_partition_on_rectangle",
+  "licensedHome": "circle_region",
+  "request": {
+    "spec": "circle_partition_on_rectangle"
+  },
+  "result": "misconception",
+  "tuple": "hybridization(foreign_primitive, licensed_home, illicit_host)",
+  "violation": "object_language_binding_violation",
+  "literature_label": "van Garderen, Scheuermann & Jackson (2014), p.9",
+  "bibkey": "ZDM_Garderen_2014",
+  "page": "p9_1",
+  "reallms_hybrid_details": {
+    "foreign_primitive": "circle radial partition",
+    "illicit_host": "submarine sandwich"
+  },
+  "representation_language": "fraction_bars",
+  "student_strategy_description": "The student uses a circle (pizza) as a proxy to estimate 3/4 of a submarine sandwich and performs subtraction for calculations."
+}

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="200" viewBox="0 0 180 200" font-family="Georgia, serif" role="img" aria-label="A circle cut radially into two equal halves. The licensed cut.">
+  <text x="90" y="20" text-anchor="middle" font-size="13" fill="#2d5a2d">partition(circle, radial, 2)</text>
+  <text x="90" y="36" text-anchor="middle" font-size="11" fill="#2d5a2d" font-style="italic">[licensed]</text>
+  <circle cx="90" cy="110" r="62" fill="#eef6ee" stroke="#2d5a2d" stroke-width="2"/>
+  <!-- radial cut: a diameter through the centre -->
+  <line x1="90" y1="48" x2="90" y2="172" stroke="#2d5a2d" stroke-width="2.5"/>
+  <circle cx="90" cy="110" r="3" fill="#2d5a2d"/>
+  <text x="62" y="115" text-anchor="middle" font-size="20" fill="#2d5a2d">&#189;</text>
+  <text x="118" y="115" text-anchor="middle" font-size="20" fill="#2d5a2d">&#189;</text>
+  <text x="90" y="195" text-anchor="middle" font-size="11" fill="#555">two equal parts</text>
+</svg>

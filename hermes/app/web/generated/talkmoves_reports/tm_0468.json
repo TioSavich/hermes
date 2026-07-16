@@ -1,0 +1,429 @@
+{
+ "attribution": "Transcript data: TalkMoves dataset (SumnerLab / Suresh et al.), CC BY-NC-SA 4.0, speaker-blinded before any model call.",
+ "caveats": [
+  "Held-out check: this transcript was chosen fresh from the dataset after the pipeline was built. Its lesson topic sits outside the calculator's current coverage, so the claim table is empty by honest abstention; the move readings still apply.",
+  "The calculator checks a claim only when it can ground it; 'not checked' means outside its current coverage, not wrong.",
+  "Reading a speaker's move is interpretive. The model proposes the reading; only the claim verdicts are computed.",
+  "One automated read of one transcript \u2014 a starting point for your own reading, not a verdict on the discussion."
+ ],
+ "claims": [],
+ "headline": "0 mathematical claims heard; 0 checked by the calculator, 0 did not check out.",
+ "machine": {
+  "extractions": [],
+  "readings": [
+   {
+    "claim_refs": [],
+    "id": "a1",
+    "pml": {
+     "content": "uncertainty regarding 3D definition",
+     "force": "avow",
+     "grammatical_person": "1st",
+     "mode": "subjective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "S02",
+     "subject_position_read": "hesitant"
+    },
+    "raw_text": "I guess",
+    "utterance_ids": [
+     "u0008"
+    ],
+    "wraps": "a2"
+   },
+   {
+    "claim_refs": [],
+    "id": "a2",
+    "pml": {
+     "content": "3D objects are containers",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "object",
+     "subject_position_read": "candidate definition"
+    },
+    "raw_text": "An object that you can get stuff inside of it",
+    "uptake": {
+     "fate": "repaired",
+     "ids": [
+      "u0009"
+     ]
+    },
+    "utterance_ids": [
+     "u0008"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a3",
+    "pml": {
+     "content": "surface area is the outer boundary",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "object",
+     "subject_position_read": "candidate definition"
+    },
+    "raw_text": "It's the area around like the outside of it.",
+    "uptake": {
+     "fate": "taken_up",
+     "ids": [
+      "u0021"
+     ]
+    },
+    "utterance_ids": [
+     "u0020"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a4",
+    "pml": {
+     "content": "face is the front",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "object",
+     "subject_position_read": "narrow reading"
+    },
+    "raw_text": "A front of a shape.",
+    "uptake": {
+     "fate": "elaborated",
+     "ids": [
+      "u0031"
+     ]
+    },
+    "utterance_ids": [
+     "u0030"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a5",
+    "pml": {
+     "content": "face definition as flat surface",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "object",
+     "subject_position_read": "formal definition"
+    },
+    "raw_text": "A face is the flat surface of a polyhedron.",
+    "uptake": {
+     "fate": "taken_up",
+     "ids": [
+      "u0035"
+     ]
+    },
+    "utterance_ids": [
+     "u0034"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a6",
+    "pml": {
+     "content": "existence of 1D shapes",
+     "force": "question",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "exp_poss",
+     "polarity": "expansive",
+     "position": "object",
+     "subject_position_read": "exploratory"
+    },
+    "raw_text": "Is there such a thing as one dimensional?",
+    "uptake": {
+     "fate": "contested",
+     "ids": [
+      "u0045"
+     ]
+    },
+    "utterance_ids": [
+     "u0044"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a7",
+    "pml": {
+     "content": "edge as line intersection",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "object",
+     "subject_position_read": "candidate definition"
+    },
+    "raw_text": "Where two lines intersect.",
+    "uptake": {
+     "fate": "repaired",
+     "ids": [
+      "u0051"
+     ]
+    },
+    "utterance_ids": [
+     "u0050"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a8",
+    "pml": {
+     "content": "vertex definition",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "object",
+     "subject_position_read": "precise definition"
+    },
+    "raw_text": "Where three or more edges meet.",
+    "uptake": {
+     "fate": "taken_up",
+     "ids": [
+      "u0059"
+     ]
+    },
+    "utterance_ids": [
+     "u0058"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a9",
+    "pml": {
+     "content": "prism property",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "object",
+     "subject_position_read": "textual authority"
+    },
+    "raw_text": "identical bilateral faces of the lateral parts.",
+    "utterance_ids": [
+     "u0077"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a10",
+    "pml": {
+     "content": "pyramid definition",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "object",
+     "subject_position_read": "textual authority"
+    },
+    "raw_text": "polyhedron that has one base for lateral faces.",
+    "utterance_ids": [
+     "u0085"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a11",
+    "pml": {
+     "content": "identifying specific model as pyramid",
+     "force": "question",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "object",
+     "subject_position_read": "checking candidate"
+    },
+    "raw_text": "A pyramid is that one?",
+    "uptake": {
+     "fate": "taken_up",
+     "ids": [
+      "u0091"
+     ]
+    },
+    "utterance_ids": [
+     "u0090"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a12",
+    "pml": {
+     "content": "distinction between prism and pyramid",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "object",
+     "subject_position_read": "conceptual synthesis"
+    },
+    "raw_text": "the prism only has the triangles for the bases, and then it's like a parallelogram, and then the pyramid is all triangles",
+    "uptake": {
+     "fate": "narrowed",
+     "ids": [
+      "u0125",
+      "u0131"
+     ]
+    },
+    "utterance_ids": [
+     "u0123"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a13",
+    "pml": {
+     "content": "algorithmic steps for solving surface area",
+     "force": "demand",
+     "grammatical_person": "2nd",
+     "mode": "normative",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "student",
+     "subject_position_read": "prescriptive"
+    },
+    "raw_text": "You need to then identify the dimensions you need, write the correct formula or equation, substitute your dimensions in, and then solve it algebraically.",
+    "utterance_ids": [
+     "u0152"
+    ]
+   }
+  ]
+ },
+ "postures": [
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "speaking for themselves",
+   "response": "no response recorded",
+   "speaker": "S02",
+   "utterances": [
+    "u0008"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "about the shared math",
+   "response": "the class returned and repaired it",
+   "speaker": "S02",
+   "utterances": [
+    "u0008"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "about the shared math",
+   "response": "the class took it up",
+   "speaker": "S03",
+   "utterances": [
+    "u0020"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "about the shared math",
+   "response": "the class built on it",
+   "speaker": "S02",
+   "utterances": [
+    "u0030"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "the class took it up",
+   "speaker": "S03",
+   "utterances": [
+    "u0034"
+   ]
+  },
+  {
+   "move": "opens an alternative",
+   "register": "about the shared math",
+   "response": "the class pushed back",
+   "speaker": "S04",
+   "utterances": [
+    "u0044"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "about the shared math",
+   "response": "the class returned and repaired it",
+   "speaker": "S05",
+   "utterances": [
+    "u0050"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "the class took it up",
+   "speaker": "S07",
+   "utterances": [
+    "u0058"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S08",
+   "utterances": [
+    "u0077"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S09",
+   "utterances": [
+    "u0085"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "about the shared math",
+   "response": "the class took it up",
+   "speaker": "S10",
+   "utterances": [
+    "u0090"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "about the shared math",
+   "response": "the class narrowed it",
+   "speaker": "S13",
+   "utterances": [
+    "u0123"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about what the class may or must do",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0152"
+   ]
+  }
+ ],
+ "repair_arcs": [],
+ "tensions": [],
+ "transcript": "# tm_0468\n\nU0001 S01: Seven, six, five, four, three, two, one, zero.\nU0002 S01: We are going to move one to surface area.\nU0003 S01: Surface area is very similar to the area of composite figures because what we are going to be finding the area of is made up of multiple parts.\nU0004 S01: When do we find surface area?\nU0005 S01: We find surface area of three-dimensional objects.\nU0006 S01: What is a three-dimensional object?\nU0007 S01: Toby.\nU0008 S02: An object that you can get stuff inside of it, I guess.\nU0009 S01: Three dimensional is not flat.\nU0010 S02: Not flat.\nU0011 S01: Okay?\nU0012 S01: Two dimensional is a flat shape, three dimensional is a not flat shape.\nU0013 S01: So, this is a three-dimensional shape.\nU0014 S01: What's happening?\nU0015 S01: If I'm finding this surface area, what do you think I'm finding on this shape?\nU0016 S01: Talk to your group, what am I finding?\nU0017 S01: Three, two, one.\nU0018 S01: What do you guys think I'm trying to find, if I'm finding this surface area?\nU0019 S01: Guy.\nU0020 S03: It's the area around like the outside of it.\nU0021 S01: The area of each of the surfaces, surface area.\nU0022 S01: So, on this Kleenex box, I will be finding the area of the bottom and the top, the front and the back, and the two sides.\nU0023 S01: On this shape here, it'd be the same thing.\nU0024 S01: We're working on three-dimensional shapes.\nU0025 S01: Now, when we do this, this needs to-- First of all, understand if your shape is a prism or a pyramid.\nU0026 S01: On your desks, I've passed out a little sheet of paper, and on this little sheet of paper, and it's really small, it says that in solid  three-dimensional figure that encloses its face.\nU0027 S01: A polyhedron is a solid whose faces are all polygons, so a polygon is a closed shape with three or more sides.\nU0028 S01: What is the face of a shape?\nU0029 S01: What is a face?\nU0030 S02: A front of a shape.\nU0031 S01: It could be the front, not necessarily just the front though, right?\nU0032 S03: Its surface?\nU0033 S01: Its surface.\nU0034 S03: A face is the flat surface of a polyhedron.\nU0035 S01: The flat surface, so it's not just necessarily the front.\nU0036 S01: I'm looking at this right now, this is a face but so is this and so is this and so is this and so is this and so is this.\nU0037 S01: There are multiple faces on there.\nU0038 S01: Also, these are faces.\nU0039 S01: Any flat surface on it is a face, and I can open it up, and this is called a net.\nU0040 S01: There's this shape, this is a net.\nU0041 S01: When I fold it up, it's three dimensional, when I unfold it, it becomes two dimensional, and it's a net, so you can see all of these surfaces.\nU0042 S01: You guys are supposed to be able to find the surface area of a net, and if it is three dimensional, but those are kind of the same thing.\nU0043 S01: Dexter.\nU0044 S04: Is there such a thing as one dimensional?\nU0045 S01: No.\nU0046 S04: Oh, okay.\nU0047 S01: What is an edge of a three-dimensional shape?\nU0048 S01: You guys learned this like in third grade, second grade.\nU0049 S01: An edge, Walker?\nU0050 S05: Where two lines intersect.\nU0051 S01: It's where two faces intersect.\nU0052 S01: So, the edge, like this is the edge, edge, so where there are two flat surfaces come together, that is your edge.\nU0053 S01: On a Kleenex box, this side and this side meet right there to create this edge.\nU0054 S01: This meets with the top to create this edge.\nU0055 S01: What is a vertex?\nU0056 S06: Oh, I know.\nU0057 S01: What is the vertex, Cody?\nU0058 S07: Where three or more edges meet.\nU0059 S01: Where three or more edges meet.\nU0060 S01: You could also call it the what?\nU0061 S01: Corner.\nU0062 S01: Your vertex.\nU0063 S01: If I look at this, this edge, this edge, and this edge all meet to create that corner.\nU0064 S01: So we have the vertex.\nU0065 S01: Now, the really important piece is what's next.\nU0066 S01: It's on the bottom of this.\nU0067 S01: There are two different types of three-dimensional figures.\nU0068 S01: There are prisms, and there are pyramids, and there is a difference.\nU0069 S06: Oh, oh.\nU0070 S06: Oh, oh.\nU0071 S01: You guys are going to have to be able to identify whether you're finding a pyramid or a prism.\nU0072 S01: Who wants to read the definition of a prism?\nU0073 S01: Prism, Tom?\nU0074 S08: Oh, a prism is a poly-\nU0075 S01: Polyhedron?\nU0076 S08: Yes.\nU0077 S08: identical bilateral faces of the lateral parts.\nU0078 S01: A prism has two faces.\nU0079 S01: I would get a highlighter out there and highlight prism, and highlight, that has two parallel identical bases.\nU0080 S01: It is not dependent upon the shape of the base, it depends on how many bases it has.\nU0081 S01: Okay, read for me the definition of a pyramid.\nU0082 S01: Grace.\nU0083 S09: A pyramid is a poly-\nU0084 S01: Polyhedron.\nU0085 S09: -polyhedron that has one base for lateral faces.\nU0086 S01: A pyramid has one base, and all of the faces of a pyramid are triangles, and they create a point, an apex at the top.\nU0087 S01: Here I have two shapes, two three dimensional shapes in my hand.\nU0088 S01: They both have a base that is a hexagon, which one's a pyramid and which one is a prism?\nU0089 S01: Matteo.\nU0090 S10: A pyramid is that one?\nU0091 S01: This one is the pyramid, and this one is the--?\nU0092 S11: The prism.\nU0093 S01: The prism.\nU0094 S01: The prism has the base which my hand is on, plus, do you see the base?\nU0095 S12: Yes.\nU0096 S01: Yes.\nU0097 S01: It is a prism.\nU0098 S01: Look at the faces of it, they're all rectangles and they all connect to the two faces.\nU0099 S01: This guy is a pyramid, it's on it's one base right here.\nU0100 S01: If I go like this, can I put it in my hand?\nU0101 S12: No.\nU0102 S01: No.\nU0103 S01: It only has one base.\nU0104 S01: This is the apex, this is the top.\nU0105 S01: Look at all the faces of this one, what are the faces?\nU0106 S06: Triangles.\nU0107 S01: They're all triangles, so that is the difference.\nU0108 S01: If I pulled up this one, the base is a pentagon, the base of this is a pentagon, but do you see the difference?\nU0109 S01: Prism, pyramid.\nU0110 S01: Prism, pyramid.\nU0111 S01: Prism, pyramid, right?\nU0112 S01: Ancient Egyptians?\nU0113 S01: So we think about the Egyptians and the ancient pyramids that they created.\nU0114 S01: A prism has two bases, a pyramid only has one.\nU0115 S01: I'm trying to see, so this one, what is this one?\nU0116 S12: Pyramid\nU0117 S01: This looks like ancient Egyptians.\nU0118 S01: This one is a?\nU0119 S12: Prism.\nU0120 S01: Prism, which is a square, because this one has the base is like this.\nU0121 S01: Pyramid, prism.\nU0122 S01: Tucker, yes.\nU0123 S13: and if you look at it, this pyramid and the prism are different because the prism only has the triangles for the bases, and then it's like a parallelogram, and then the pyramid is all triangles because that's short for\nU0124 S01: Right.\nU0125 S01: Look at it, and this one could be tricky because some kids might say, \"Oh, well, this one, this looks like a prism because that looks like just the one base.\"\nU0126 S01: No, this looks like a tent.\nU0127 S01: Sometimes you have to think about the sides of it.\nU0128 S01: Your bases are actually here, and here, your bases are parallel to each other.\nU0129 S06: They're like a little longer and the side and the base are not parallel, like they're a little-\nU0130 S01: Longer?\nU0131 S01: Yes, your lateral faces like on this one, they're not parallel, because they're touching at the top, at the apex.\nU0132 S01: All right, so we're going to find the surface area first of these three-dimensional shapes, and then, in a couple of days, we're going to work on finding the volume.\nU0133 S12: Wow.\nU0134 S01: So exciting.\nU0135 S01: Everybody gets some of these.\nU0136 S01: Yes, you may .\nU0137 S01: In your toolkit, you guys have the success criteria for surface area and volume, you glued it in on the page like something, I don't know, 20-ish, 18.\nU0138 S01: You can glue this in with it.\nU0139 S01: Is it glued in?\nU0140 S01: Did I not give it to you?\nU0141 S12: No.\nU0142 S01: I will give it to you now, so you can glue this in and their surface area.\nU0143 S06: Wait, so we put three-dimensional spaces?\nU0144 S01: Or you can put surface area and volume,\nU0145 S01: You can use the  criteria.\nU0146 S01: Surface area and volume, they both really look weird, they're on the same sheet, and you can write surface area and volume on there.\nU0147 S01: All right, so each one of you, you're going to .\nU0148 S01: Let me just start the  criteria.\nU0149 S01: These are the steps you're going to follow, this will help you be successful when finding the surface area and the volume of prisms, and the number one if you're ever going to identify the shape.\nU0150 S01: When you're identifying, I want you to think about, is that the pyramid or prism, and we're determining that you're covering surface area, which is covering it, or if you're finding the volume, or filling it.\nU0151 S01: Right now we're just going to be doing surface area, in a couple of days, we're going to move to that.\nU0152 S01: You need to then identify the dimensions you need, write the correct formula or equation, substitute your dimensions in, and then solve it algebraically.\nU0153 S01: Then the final thing is to label your answer with the correct names.\nU0154 S01: [unintelligible 00:17:33] It is time now.\nU0155 S01: This is a rectangular prism.\nU0156 S01: Why we can't have nice things like this.\n",
+ "transcript_id": "tm_0468"
+}

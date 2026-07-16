@@ -1,0 +1,608 @@
+{
+ "attribution": "Transcript data: TalkMoves dataset (SumnerLab / Suresh et al.), CC BY-NC-SA 4.0, speaker-blinded before any model call.",
+ "caveats": [
+  "The calculator checks a claim only when it can ground it; 'not checked' means outside its current coverage, not wrong.",
+  "Reading a speaker's move is interpretive. The model proposes the reading; only the claim verdicts are computed.",
+  "One automated read of one transcript \u2014 a starting point for your own reading, not a verdict on the discussion."
+ ],
+ "claims": [
+  {
+   "finding": "not checked",
+   "how": "outside what the calculator can currently check",
+   "said": "three fourths is bigger",
+   "speaker": "S07",
+   "utterance": "u0053"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "three fourths is bigger by one twelfth",
+   "speaker": "S07",
+   "utterance": "u0053"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "twelve whites equal up to this",
+   "speaker": "S07",
+   "utterance": "u0057"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "three purples",
+   "speaker": "S03",
+   "utterance": "u0097"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "four greens",
+   "speaker": "S03",
+   "utterance": "u0097"
+  }
+ ],
+ "headline": "5 mathematical claims heard; 4 checked by the calculator, 0 did not check out.",
+ "machine": {
+  "extractions": [
+   {
+    "adjudication": {
+     "adjudication": "not_in_registered_domain",
+     "claim": "whole_number_comparison",
+     "reason": "unrecognized relation or non-integer operands",
+     "status": "not_covered",
+     "verdict": "not_checked"
+    },
+    "args": {
+     "left": {
+      "den": 4,
+      "num": 3
+     },
+     "rel": "greater",
+     "right": {
+      "den": 3,
+      "num": 2
+     }
+    },
+    "confidence": "high",
+    "id": "c1",
+    "shape": "comparison",
+    "surface": "three fourths is bigger",
+    "term": "comparison(fraction(3,4),greater,fraction(2,3))",
+    "utterance_id": "u0053",
+    "verdict": "not_checked"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:add_grounded+multiply_grounded",
+     "claim": "fraction_sum",
+     "status": "domain_checked",
+     "trace": [
+      "grounded: 2/3 + 1/12 co-measured against claimed 3/4"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 3,
+      "num": 2
+     },
+     "b": {
+      "den": 12,
+      "num": 1
+     },
+     "result": {
+      "den": 4,
+      "num": 3
+     }
+    },
+    "confidence": "medium",
+    "id": "c2",
+    "shape": "fraction_sum",
+    "surface": "three fourths is bigger by one twelfth",
+    "term": "fraction_sum(fraction(2,3),fraction(1,12),fraction(3,4))",
+    "utterance_id": "u0053",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "fraction_iterating:partition_iterate_inverse",
+     "claim": "iterate_to_whole",
+     "status": "domain_checked",
+     "trace": [
+      "partition(D) o iterate(D) = identity on the whole (splitting inverse confirmed)",
+      "12 copies of 1/12 span 12/12; whole is 12/12"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 12,
+      "num": 1
+     },
+     "times": 12
+    },
+    "confidence": "high",
+    "id": "c3",
+    "shape": "iterate_to_whole",
+    "surface": "twelve whites equal up to this",
+    "term": "iterate_to_whole(fraction(1,12),times(12))",
+    "utterance_id": "u0057",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "fraction_iterating:partition_iterate_inverse",
+     "claim": "iterate_to_whole",
+     "status": "domain_checked",
+     "trace": [
+      "partition(D) o iterate(D) = identity on the whole (splitting inverse confirmed)",
+      "3 copies of 1/3 span 3/3; whole is 3/3"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 3,
+      "num": 1
+     },
+     "times": 3
+    },
+    "confidence": "high",
+    "id": "c4",
+    "shape": "iterate_to_whole",
+    "surface": "three purples",
+    "term": "iterate_to_whole(fraction(1,3),times(3))",
+    "utterance_id": "u0097",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "fraction_iterating:partition_iterate_inverse",
+     "claim": "iterate_to_whole",
+     "status": "domain_checked",
+     "trace": [
+      "partition(D) o iterate(D) = identity on the whole (splitting inverse confirmed)",
+      "4 copies of 1/4 span 4/4; whole is 4/4"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 4,
+      "num": 1
+     },
+     "times": 4
+    },
+    "confidence": "high",
+    "id": "c5",
+    "shape": "iterate_to_whole",
+    "surface": "four greens",
+    "term": "iterate_to_whole(fraction(1,4),times(4))",
+    "utterance_id": "u0097",
+    "verdict": "holds"
+   }
+  ],
+  "readings": [
+   {
+    "claim_refs": [],
+    "id": "a1",
+    "pml": {
+     "content": "possibility of building many models",
+     "force": "assert",
+     "grammatical_person": "second",
+     "mode": "subjective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "subjective",
+     "subject_position_read": "speculative"
+    },
+    "raw_text": "you could probably build one for every single rod.",
+    "utterance_ids": [
+     "u0013"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a2",
+    "pml": {
+     "content": "modifying rods to create new models",
+     "force": "assert",
+     "grammatical_person": "second",
+     "mode": "objective",
+     "operator": "exp_poss",
+     "polarity": "expansive",
+     "position": "objective",
+     "subject_position_read": "exploratory"
+    },
+    "raw_text": "maybe if you, say you had a white rod, and you divided the white rod, maybe you could make more models that way",
+    "utterance_ids": [
+     "u0032"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C2"
+    ],
+    "id": "a3",
+    "pml": {
+     "content": "belief in the result of C2",
+     "force": "avow",
+     "grammatical_person": "first_plural",
+     "mode": "subjective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "subjective",
+     "subject_position_read": "tentative_agreement"
+    },
+    "raw_text": "we think that [C2 fraction_sum: holds].",
+    "utterance_ids": [
+     "u0053"
+    ],
+    "wraps": "a4"
+   },
+   {
+    "claim_refs": [
+     "C2"
+    ],
+    "id": "a4",
+    "pml": {
+     "content": "the mathematical truth of C2",
+     "force": "assert",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "objective",
+     "subject_position_read": "factual"
+    },
+    "raw_text": "[C2 fraction_sum: holds]",
+    "utterance_ids": [
+     "u0053"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C3"
+    ],
+    "id": "a5",
+    "pml": {
+     "content": "justification of the model via C3",
+     "force": "assert",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "objective",
+     "subject_position_read": "explanatory"
+    },
+    "raw_text": "Because, um, [C3 iterate_to_whole: holds].",
+    "utterance_ids": [
+     "u0057"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a6",
+    "pml": {
+     "content": "denial of the model's minimality",
+     "force": "assert",
+     "grammatical_person": "first",
+     "mode": "subjective",
+     "operator": "exp_poss",
+     "polarity": "expansive",
+     "position": "subjective",
+     "subject_position_read": "skeptical"
+    },
+    "raw_text": "But I don't think that's the smallest one.",
+    "uptake": {
+     "fate": "elaborated",
+     "ids": [
+      "u0087",
+      "u0118"
+     ]
+    },
+    "utterance_ids": [
+     "u0063"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a7",
+    "pml": {
+     "content": "possibility of a smaller length train",
+     "force": "question",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "exp_poss",
+     "polarity": "expansive",
+     "position": "objective",
+     "subject_position_read": "probing"
+    },
+    "raw_text": "Is it possible to build a model... with a train that has lengths smaller than that",
+    "utterance_ids": [
+     "u0087"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C4",
+     "C5"
+    ],
+    "id": "a8",
+    "pml": {
+     "content": "minimality based on C4 and C5",
+     "force": "assert",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "objective",
+     "subject_position_read": "binding"
+    },
+    "raw_text": "you can't get a smaller one because every one you use equals up to an orange and a red, and the secret is that every one has [C4 iterate_to_whole: holds] and [C5 iterate_to_whole: holds].",
+    "uptake": {
+     "fate": "taken_up",
+     "ids": [
+      "u0118",
+      "u0121"
+     ]
+    },
+    "utterance_ids": [
+     "u0097"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a9",
+    "pml": {
+     "content": "impossibility of creating a smaller model",
+     "force": "assert",
+     "grammatical_person": "second",
+     "mode": "normative",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "normative",
+     "subject_position_read": "restrictive"
+    },
+    "raw_text": "And so you can't possibly make one smaller because you won't be able to fit, it won't work",
+    "utterance_ids": [
+     "u0098"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a10",
+    "pml": {
+     "content": "refusal to close the field on minimality",
+     "force": "avow",
+     "grammatical_person": "first",
+     "mode": "subjective",
+     "operator": "exp_poss",
+     "polarity": "expansive",
+     "position": "subjective",
+     "subject_position_read": "open"
+    },
+    "raw_text": "I'm still not convinced that there's not one smaller.",
+    "utterance_ids": [
+     "u0118"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a11",
+    "pml": {
+     "content": "acceptance of minimality",
+     "force": "acknowledge",
+     "grammatical_person": "first",
+     "mode": "subjective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "subjective",
+     "subject_position_read": "convinced"
+    },
+    "raw_text": "I agree that... there's no other smaller.",
+    "utterance_ids": [
+     "u0121"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a12",
+    "pml": {
+     "content": "reasoning for minimality",
+     "force": "avow",
+     "grammatical_person": "first",
+     "mode": "subjective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "subjective",
+     "subject_position_read": "reasoning"
+    },
+    "raw_text": "I think, because at their model... there's no rod smaller than the white rod.",
+    "utterance_ids": [
+     "u0122"
+    ],
+    "wraps": "a13"
+   },
+   {
+    "claim_refs": [],
+    "id": "a13",
+    "pml": {
+     "content": "the white rod as the atomic unit",
+     "force": "assert",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "objective",
+     "subject_position_read": "factual"
+    },
+    "raw_text": "there's no rod smaller than the white rod",
+    "uptake": {
+     "fate": "taken_up",
+     "ids": [
+      "u0133"
+     ]
+    },
+    "utterance_ids": [
+     "u0122"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a14",
+    "pml": {
+     "content": "twelfths as the minimum possible unit",
+     "force": "assert",
+     "grammatical_person": "third",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "objective",
+     "subject_position_read": "definitive"
+    },
+    "raw_text": "Because the twelfths right here are the smallest rod possible.",
+    "utterance_ids": [
+     "u0127"
+    ]
+   }
+  ]
+ },
+ "postures": [
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "speaking for themselves",
+   "response": "no response recorded",
+   "speaker": "S02",
+   "utterances": [
+    "u0013"
+   ]
+  },
+  {
+   "move": "opens an alternative",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S05",
+   "utterances": [
+    "u0032"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "speaking for themselves",
+   "response": "no response recorded",
+   "speaker": "S07",
+   "utterances": [
+    "u0053"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S07",
+   "utterances": [
+    "u0053"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S07",
+   "utterances": [
+    "u0057"
+   ]
+  },
+  {
+   "move": "opens an alternative",
+   "register": "speaking for themselves",
+   "response": "the class built on it",
+   "speaker": "S04",
+   "utterances": [
+    "u0063"
+   ]
+  },
+  {
+   "move": "opens an alternative",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0087"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "the class took it up",
+   "speaker": "S03",
+   "utterances": [
+    "u0097"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about what the class may or must do",
+   "response": "no response recorded",
+   "speaker": "S03",
+   "utterances": [
+    "u0098"
+   ]
+  },
+  {
+   "move": "opens an alternative",
+   "register": "speaking for themselves",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0118"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "speaking for themselves",
+   "response": "no response recorded",
+   "speaker": "S08",
+   "utterances": [
+    "u0121"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "speaking for themselves",
+   "response": "no response recorded",
+   "speaker": "S08",
+   "utterances": [
+    "u0122"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "the class took it up",
+   "speaker": "S08",
+   "utterances": [
+    "u0122"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S08",
+   "utterances": [
+    "u0127"
+   ]
+  }
+ ],
+ "repair_arcs": [],
+ "tensions": [],
+ "transcript": "# tm_0077\n\nU0001 S01: Um, do you remember the problem that, uh, I think everybody in  this class has now spent a bit of time working on the problem,  which is larger, three quarters or two thirds, and, if you decide  which one is larger you were asked, by how much.\nU0002 S01: Do you  remember, how- Everybody here has worked on it, isn't that true?\nU0003 S01: Raise your hand if you've worked on that problem?\nU0004 S01: I believe  everybody, yeah.\nU0005 S01: Some of you started a new one, but everybody  has worked on that.\nU0006 S01: Ok, the question, how many of you have built  two models for that problem?\nU0007 S01: For that problem, which is larger,  three quarters or two thirds, how many of you built two models?\nU0008 S01: [Some students raise hands] Ok, how many of you have built more  than two models?\nU0009 S01: So we have some,  you know, really differences here and some time to share, and  Gregory you built more than two also and Danielle, you've got two  models.\nU0010 S01: Um, how many you think there are?\nU0011 S01: How many models do  you think you can build?\nU0012 S01: Michael.\nU0013 S02: Um, if you know what you're doing and you know what strategy,  you could probably build, you could probably build one for every  single rod.\nU0014 S01: What do you mean, one for every single rod, tell me what you  mean by that.\nU0015 S02: You could, you could build a thing, you could build fractions of  every single rod if you know what you're doing and you have a  strategy or a secret that, that you know will work.\nU0016 S01: What can be such a secret?\nU0017 S02: That's what I was trying to figure out.\nU0018 S01: That's what you were trying to figure out?\nU0019 S01: Does anybody else have  any ideas about that?\nU0020 S01: Those of you who built three models, do you  think that's all?\nU0021 S01: Can you build more?\nU0022 S01: This table here, Jackie and  James, Amy, you think there can be more?\nU0023 S01: [mmm hmm] How  many do you think?\nU0024 S03: Well, we got six\nU0025 S01: You think that's it?\nU0026 S04: [Shake heads] No.\nU0027 S01: No?\nU0028 S01: Anybody else?\nU0029 S01: Any thoughts?\nU0030 S01: [Meredith raises her hand]  Meredith?\nU0031 S01: What do you think?\nU0032 S05: Well, maybe if you, say you had a white rod, and you divided the  white rod, maybe you could make more models that way, if you  divided the white rods.\nU0033 S01: So you're thinking if you had more, different size rods?\nU0034 S05: Yeah, yeah.\nU0035 S01: Like if you took the white rod and designed one smaller than the  white rod?\nU0036 S01: [mmm hmm] Ok.\nU0037 S01: Anybody else, what do you think?\nU0038 S01: There was a theory, I know David's looking at what we built here,  David you had a theory that you were testing about uh building  some models.\nU0039 S01: There were some models that everyone here built,  maybe we should put two of them on the overhead, if you can help  me do that, to compare which is bigger three quarters or two thirds.\nU0040 S01: Um, to decide with the rods you have, what was the smallest model  you can build?\nU0041 S01: With the rods you had available, not able to cut  them or make them different.\nU0042 S01: Did you find- is there a smallest  model, when you compared three quarters or two thirds?\nU0043 S01: Kelly, you think you have something, you want to come and help?\nU0044 S01: Graham, you can come and help.\nU0045 S06: I don't have fourths in my one that I made\nU0046 S01: You don't have fourths?\nU0047 S01: How about here?\nU0048 S01: Amy?\nU0049 S01: James?\nU0050 S01: Jackie?\nU0051 S01: [Amy James and Jackie come to OHP] Oh we're starting to get  think- we're starting thinking now.\nU0052 S01: Ok, you want to tell the class about  what you have there?\nU0053 S07: Ok, um, well um, we had this model and we uh this is two thirds  and three fourths and we think that three fourths is bigger by one  twelfth.\nU0054 S07: [He separates two purple rods and three light green rods  from the original model to show the comparison].\nU0055 S01: Questions, anybody?\nU0056 S01: What's one twelfth?\nU0057 S07: Because, um, twelve whites equal up to this.\nU0058 S07: Let me show, here.\nU0059 S07: [He puts two white rods on his model]\nU0060 S01: Are you all convinced?\nU0061 S04: But didn't you say to make a smaller one?\nU0062 S01: Well I said you make the smallest one you can make?\nU0063 S04: But I don't think that's the smallest one.\nU0064 S01: Can you make a smaller one?\nU0065 S01: It's an interesting question.\nU0066 S01: If you  don't think there's a smaller one you should be able to show it, or at  least-.\nU0067 S01: What do you think?\nU0068 S07: [Figure O-15-38] Well, we just put twelve whites on there and it  takes one white to equal the two pinks, to the three, oh yeah, purple  to the three greens.\nU0069 S07: So that's why we think it's one twelfth.\nU0070 S01: How many of you agree with that?\nU0071 S01: How many of you agree with  that model?\nU0072 S01: How many of you found that same model when you  worked it out?\nU0073 S01: Raise your hand if you found the same model.\nU0074 S01: [All  students visible raise hands] Ok, it looks as if everyone did.\nU0075 S01: I have  a question that Jessica is raising, I'm listening to Jessica next to me.\nU0076 S01: Jessica says she thinks there's a model that you can build that's  smaller, now, when I use the word smaller, you use the word  smaller, what do you think we mean?\nU0077 S01: What do you think, Erik?\nU0078 S08: Smaller in size-wise?\nU0079 S08: Like size for the thirds, the fourths, and, and  the whole.\nU0080 S08: Smaller by size.\nU0081 S01: Ok, so what what we called one in this problem was what, what  did we call one?\nU0082 S01: Brian?\nU0083 S09: Well, um, the orange and the red.\nU0084 S01: Yeah that train we called one, right?\nU0085 S01: And I guess the question is,  that train has a particular length, right?\nU0086 S01: You can see the length of  that train?\nU0087 S01: Is it possible to build a model to show the comparison of  three quarters and two thirds with a train that has lengths smaller  than that, now if you think it isn't, you've gotta convince me with  some argument.\nU0088 S01: (Oh I know) Oh, Erik thinks he has an argument to  convince me there's not a smaller one because Jessica doesn't  believe it.\nU0089 S01: Right, Jessica?\nU0090 S01: Jessica seems to think there's one that can  be made with a train that has length shorter than the one up there.\nU0091 S01: So if you think you have an argument, Erik thinks he does, raise  your hand.\nU0092 S01: I want you to think about this.\nU0093 S01: You might want to talk  to your partner about your argument and see if your partner buys it.\nU0094 S01: You don\u2019t have to talk to your partner.\nU0095 S01: Ok, we'll let you guys go  first and Erik is listening to see if he agrees.\nU0096 S01: Ok.\nU0097 S03: We say that there was no more, that you can't get a smaller one  because every one you use equals up to an orange and a red, and  the secret is that every one has three purples and four greens.\nU0098 S03: And  so you can't possibly make one smaller because you won't be able  to fit, it won't work because every one you make equals up, equals  up to the orange and red.\nU0099 S01: So you're telling me the six models that you made\nU0100 S03: Were the same length.\nU0101 S01: Were all the same length.\nU0102 S01: In all of your cases, the, the, what you  called one had the same length as the orange and red.\nU0103 S01: That's very  interesting.\nU0104 S07: Well, well, we could make another model to show that.\nU0105 S01: We believe you.\nU0106 S01: Does anybody need to have that shown, what they  would've done?\nU0107 S01: How many of you did that too?\nU0108 S01: You found  different ways to show one, that had the same length as orange and  red,\nU0109 S10: Yeah, Sarah just built another model that uses the exact same  length as the other one.\nU0110 S01: And what did, what was, how did she make her train?\nU0111 S04: Yeah, that's what I was going to do.\nU0112 S10: Blue, light green, and then the half is dark green, and the third is  purple and the fourths were the dark greens- were the light greens.\nU0113 S04: See, that's what I did, I was gonna make one that was the same  exact size.\nU0114 S01: Ok, so many of the models you made were really models where  your, what you called one, that train, really had the same length as  the orange and red.\nU0115 S01: Is that all you can make?\nU0116 S01: How do you know  that, that, that there's not one smaller?\nU0117 S01: Erik?\nU0118 S01: I'm still not convinced  that there's not one smaller.\nU0119 S01: They didn't convince me.\nU0120 S01: How would  you convince me?\nU0121 S08: Well, see, I agree that, that, I agree with them just at the part that  there's no, there's no other smaller.\nU0122 S08: I think, because at their model,  they use the twelfth as the white ones, and there's no rod smaller  than the white rod.\nU0123 S08: So, therefore, if you make it a rod smaller than  it, they can't, you can't divide it into twelfths.\nU0124 S01: Ok.\nU0125 S01: Did you hear what he said?\nU0126 S01: Yeah!\nU0127 S08: Because the twelfths right here are the smallest rod possible.\nU0128 S01: Ok, so\nU0129 S08: Unless you made a new rod.\nU0130 S01: So unless we use Meredith's idea of creating new rods that had,  that were smaller than the white rods, then you could make a  smaller model, Erik?\nU0131 S08: Yeah.\nU0132 S01: The rest of you agree with that?\nU0133 S01: So, so then, ok, I'll buy that, how  many of you buy that argument?\nU0134 S01: That seems reasonable.\nU0135 S01: So you've  made the smallest one already.\nU0136 S01: Jessica, is that reasonable to you?\n",
+ "transcript_id": "tm_0077"
+}

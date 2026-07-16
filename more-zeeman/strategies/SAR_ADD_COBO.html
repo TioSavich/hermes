@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>COBO: Counting On by Bases and Ones (Prolog-driven)</title>
+<link rel="stylesheet" href="strategy_shell.css">
+</head>
+<body>
+<div class="container">
+  <p class="back"><a href="index.html">← All strategies</a></p>
+  <h1>COBO: Counting On by Bases and Ones</h1>
+  <p class="meta">Computed by <code>strategies/math/sar_add_cobo.pl</code> via <code>POST /api/strategy/run</code>. Each tens-jump is +10 (one base); each ones-jump is +1.</p>
+
+  <div class="inputs">
+    <label>Addend 1: <input type="number" id="a1" value="46"></label>
+    <label>Addend 2: <input type="number" id="a2" value="37"></label>
+    <button id="go">Calculate and Visualize</button>
+  </div>
+
+  <h2>Result</h2>
+  <div id="out"></div>
+
+  <h2>Number-line Diagram</h2>
+  <svg id="diagram" width="700" height="280"></svg>
+
+  <h2>Step Trace (from Prolog)</h2>
+  <ol id="steps" class="step-list"></ol>
+</div>
+<script src="strategy_viz.js"></script>
+<script>
+  wireStrategyPage({
+    strategy: 'COBO', op: '+',
+    a1Id: 'a1', a2Id: 'a2', btnId: 'go',
+    outId: 'out', svgId: 'diagram', stepListId: 'steps'
+  });
+</script>
+</body>
+</html>

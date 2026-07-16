@@ -1,0 +1,14 @@
+{
+  "HYBRID-DEMO": {
+    "anticipated_strategies": [
+      {
+        "kind": "area_model_part_of_part"
+      }
+    ],
+    "teacher_misconceptions": [
+      {
+        "kind": "hybridized_model"
+      }
+    ]
+  }
+}

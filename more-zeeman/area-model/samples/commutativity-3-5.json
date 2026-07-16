@@ -1,0 +1,60 @@
+{
+  "canvas": {"height":520, "width":700},
+  "frames": [
+    {
+      "caption":"3 rows x 5 columns = 15 cells.",
+      "scene": {
+	"format":"area-model",
+	"gridlines": [],
+	"rects": [
+	  {
+	    "cellH":48,
+	    "cellW":64,
+	    "color":"#7fb2e6",
+	    "cols":5,
+	    "h":144,
+	    "kind":"grid",
+	    "label":"",
+	    "rows":3,
+	    "w":320,
+	    "x":40,
+	    "y":40
+	  }
+	],
+	"version":1
+      },
+      "sceneChanged":true,
+      "step":1,
+      "verb":"commutativity_by_transpose(3,5)"
+    },
+    {
+      "caption":"Transposed: 5 rows x 3 columns = 15 cells. The cell count is unchanged.",
+      "scene": {
+	"format":"area-model",
+	"gridlines": [],
+	"rects": [
+	  {
+	    "cellH":48,
+	    "cellW":64,
+	    "color":"#9ccf9c",
+	    "cols":3,
+	    "h":240,
+	    "kind":"grid",
+	    "label":"",
+	    "rows":5,
+	    "w":192,
+	    "x":40,
+	    "y":40
+	  }
+	],
+	"version":1
+      },
+      "sceneChanged":true,
+      "step":2,
+      "verb":"commutativity_by_transpose(3,5)"
+    }
+  ],
+  "kind":"commutativity_by_transpose",
+  "request": {"cols":5, "rows":3},
+  "result":"15"
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Place-value chart &mdash; Hermes filmstrip</title>
+  <link rel="stylesheet" href="../hermes-tokens.css">
+  <link rel="stylesheet" href="../render/host.css">
+  <script defer src="../render/hermes-shell.js" data-root="../" data-app="/"></script>
+</head>
+<body class="view-freshman" data-hshell-fit="1">
+  <div class="wrap">
+    <header class="host-head">
+      <div>
+        <h1>Place-value chart</h1>
+        <p class="subhead">Column addition as a place-value table. The worker sends columns, rows, and carries; the drawer renders only the frozen chart format.</p>
+      </div>
+      <nav class="view-toggle" aria-label="audience">
+        <button data-view="freshman" class="active">student</button>
+        <button data-view="teacher">teacher</button>
+        <button data-view="philosopher">researcher</button>
+      </nav>
+    </header>
+
+    <div id="stage" class="stage"></div>
+
+    <div class="rail">
+    <div class="meta-line">
+      <span id="context"></span>
+      <span id="result"></span>
+    </div>
+
+    <div class="controls">
+      <button id="prev">&larr; Prev</button>
+      <input id="seek" type="range" min="0" max="0" value="0">
+      <button id="next">Next &rarr;</button>
+      <button id="play">Play</button>
+      <span id="counter" class="counter"></span>
+      <span id="annotation-flag" class="annot">annotation only</span>
+      <button id="download">SVG</button>
+    </div>
+
+    <p id="caption" class="caption only-freshman"></p>
+
+    <section class="panel only-philosopher">
+      <h2>Formal signature</h2>
+      <code id="tuple" class="tuple"></code>
+      <div id="verbs" class="verbs"></div>
+      <h3>Grounding</h3>
+      <div id="grounding" class="band"></div>
+    </section>
+
+    <section class="panel only-teacher">
+      <h2>Teacher layer</h2>
+      <div id="teacher" class="band"></div>
+    </section>
+
+    <section class="calc-bar">
+      <label>kind
+        <select data-arg="kind">
+          <option value="add_with_carry" selected>add with carry</option>
+        </select>
+      </label>
+      <label>a <input data-arg="a" type="number" value="28"></label>
+      <label>b <input data-arg="b" type="number" value="47"></label>
+      <label>base <input data-arg="base" type="number" value="10" min="2"></label>
+      <button id="calculate">Calculate</button>
+      <span class="calc-note">POSTs to the worker; renders the returned witness frames.</span>
+    </section>
+    </div><!-- .rail -->
+  </div>
+
+  <script type="application/json" id="frames">
+{
+  "canvas": {"height": 320, "width": 700},
+  "frames": [
+    {
+      "step": 1,
+      "verb": "combine_place(0)",
+      "caption": "8 + 7 makes 15 ones: write 5 ones and carry 1 ten.",
+      "sceneChanged": true,
+      "scene": {
+        "format": "place-value-chart",
+        "version": 1,
+        "base": 10,
+        "columns": [
+          {"place": 2, "label": "hundreds", "value": 100},
+          {"place": 1, "label": "tens", "value": 10},
+          {"place": 0, "label": "ones", "value": 1}
+        ],
+        "rows": [
+          {"role": "addend", "label": "28", "digits": [0, 2, 8]},
+          {"role": "addend", "label": "47", "digits": [0, 4, 7]},
+          {"role": "sum", "label": "75", "digits": [0, 7, 5]}
+        ],
+        "carries": [
+          {"fromPlace": 0, "toPlace": 1, "amount": 1, "label": "+1 ten"}
+        ]
+      }
+    }
+  ],
+  "kind": "add_with_carry",
+  "request": {"a": 28, "b": 47, "base": 10},
+  "result": "75",
+  "tuple": "add_with_carry(28,47,10)"
+}
+  </script>
+  <script src="../render/drawer.js"></script>
+  <script>
+    HermesDrawer.create({ op: 'place_value_chart_render', endpoint: '/api/render', defaultView: 'freshman' });
+  </script>
+</body>
+</html>

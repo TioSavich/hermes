@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" data-page-id="matrix">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matrix — Space From Time</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hermes-tokens-dark.css">
+  <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="matrix"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--bg); color: var(--text); font-family: 'IBM Plex Serif', Georgia, serif; font-size: 16px; line-height: 1.7; }
+    body { max-width: 680px; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
+    .narrative { margin-top: 1.5rem; }
+    .narrative p { margin-bottom: 1.2rem; }
+    .interactive-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center;
+    }
+    .try-it {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+      color: var(--snap); cursor: pointer; background: none;
+      border: 1px solid var(--snap); padding: 0.4rem 1rem;
+      border-radius: 3px; margin: 0.25rem;
+    }
+    .try-it:hover { background: var(--snap); color: var(--bg); }
+    .interactive-label {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem;
+      color: var(--muted); margin-top: 0.5rem;
+    }
+    .closing-reflection {
+      margin-top: 2rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-style: italic; color: var(--muted);
+    }
+    .closing-question {
+      margin-top: 2rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .margin-note {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+      color: var(--muted); border-left: 2px solid var(--border);
+      padding-left: 0.75rem; margin: 1rem 0;
+    }
+    code { font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; color: var(--snap); }
+    .matrix-container {
+      margin: 1rem 0; overflow: hidden;
+    }
+    .matrix-grid {
+      display: inline-grid; gap: 2px;
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+    }
+    .matrix-cell {
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 2px; transition: background-color 0.4s, color 0.4s;
+      background: var(--surface-raised); color: var(--muted);
+    }
+    .matrix-cell.diagonal {
+      background: var(--snap); color: var(--bg); font-weight: 600;
+    }
+    .matrix-cell.new-row {
+      animation: row-appear 0.5s ease-out;
+    }
+    @keyframes row-appear {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .snap-counter {
+      font-family: 'IBM Plex Mono', monospace; font-size: 1.2rem;
+      color: var(--release); margin: 0.5rem 0;
+      transition: color 0.3s;
+    }
+    .snap-flash {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--snap); opacity: 0; pointer-events: none;
+      transition: opacity 0.1s; z-index: 9999;
+    }
+    .snap-flash.active { opacity: 0.15; }
+    .row-label {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+      color: var(--muted); text-align: right; padding-right: 0.5rem;
+      display: flex; align-items: center; justify-content: flex-end;
+    }
+  </style>
+</head>
+<body data-hshell-doc="1">
+<div class="snap-flash" id="flash"></div>
+
+<div class="narrative">
+
+  <!-- === FRESHMAN === -->
+  <div data-discourse="freshman">
+    <p class="story-recap"><em>Previously: You reached the edge — fractions are where the current system stops.</em></p>
+    <p>Every time the More Machine snaps, a new row appears in the matrix.
+       Each row is a record of what happened — the trace of a crisis.</p>
+
+    <p>Here's the key: each new row is guaranteed to be different from all
+       previous rows. Not randomly different — <em>diagonally</em> different.
+       Look at the highlighted cell in each row. It's always the opposite of
+       what the previous row had in that position.</p>
+
+    <p>That's Cantor's diagonal. It's a way of making sure every new thing
+       is genuinely new — not a repeat, not a rearrangement, but something
+       that could not have appeared before.</p>
+
+    <div class="interactive-box">
+      <p>Each snap adds a row. Watch the diagonal grow.</p>
+      <div class="snap-counter" id="snap-counter">0 snaps</div>
+      <div class="matrix-container">
+        <div class="matrix-grid" id="matrix-grid"></div>
+      </div>
+      <div style="margin-top: 1rem;">
+        <button class="try-it" onclick="addSnap()">Snap</button>
+        <button class="try-it" onclick="autoSnap()">Auto-snap</button>
+      </div>
+      <p class="interactive-label">The highlighted diagonal: each cell differs from the row before it.</p>
+    </div>
+
+    <p>Watch it grow. That growing grid is space. It emerged from the
+       snaps — from time. Each crisis leaves a trace. The traces accumulate
+       into structure. Time made space.</p>
+  </div>
+
+  <!-- === MATH ED === -->
+  <div data-discourse="mathEd">
+    <p>The diagonal construction (Cantor, 1891) ensures each new entry is
+       genuinely novel. This page runs the construction faithfully: each snap
+       takes the matrix's diagonal, flips it (M&nbsp;&rarr;&nbsp;W), and writes
+       that flipped vector down the new column and across the new row. Because
+       the flipped vector differs from every prior row in at least one place,
+       the new structure could not have appeared before. Nothing is random, and
+       no existing cell is overwritten — the matrix is recollection. At ten
+       tallies the loose ones are grouped into one structural unit (a "ten"),
+       which is exactly the carry the counting automaton reads.</p>
+
+    <div class="margin-note">
+      Cantor, G. (1891). Ueber eine elementare Frage der Mannigfaltigkeitslehre.
+      <em>Jahresbericht der Deutschen Mathematiker-Vereinigung, 1</em>, 75-78.
+      The diagonal argument proves that the reals are uncountable by constructing
+      a number that differs from every listed number in at least one digit.
+    </div>
+
+    <div class="interactive-box">
+      <p>Cantor's diagonal: each crisis produces a genuinely novel structure</p>
+      <div class="snap-counter" id="snap-counter">0 crisis-resolution pairs</div>
+      <div class="matrix-container">
+        <div class="matrix-grid" id="matrix-grid"></div>
+      </div>
+      <div style="margin-top: 1rem;">
+        <button class="try-it" onclick="addSnap()">New crisis</button>
+        <button class="try-it" onclick="autoSnap()">Developmental sequence</button>
+      </div>
+      <p class="interactive-label">Each row = one crisis-and-resolution. Diagonal = what makes each resolution genuinely new.</p>
+    </div>
+
+    <p>In developmental terms, each crisis-and-resolution produces a structure
+       that could not have been predicted from the prior repertoire. This
+       connects to Steffe's "radical constructivism" — knowledge is
+       constructed, not discovered, and each construction is genuinely new.
+       The diagonal is the formal guarantee of this novelty.</p>
+
+    <div class="margin-note">
+      von Glasersfeld, E. (1995). <em>Radical Constructivism: A Way of Knowing
+      and Learning.</em> Falmer Press. Construction does not mean the learner
+      "finds" structures that were already there. It means the structures come
+      into existence through the act of resolving perturbation. Von Glasersfeld's
+      scheme theory (recognition template, activity, expected result) predicts
+      exactly this: each crisis-resolution pair is a new scheme, constructed in
+      the act of accommodation. The diagonal formalizes the novelty guarantee.
+    </div>
+
+    <div class="margin-note">
+      Ulrich, C. (2015). Stages in constructing and coordinating units additively
+      and multiplicatively (Part 1). <em>For the Learning of Mathematics,
+      35</em>(3), 2-7. Ulrich synthesizes decades of Steffe's work into a
+      four-stage framework: "seemingly unrelated difficulties dealing with
+      fractions, negative numbers, algebraic notation, and combinatorial
+      reasoning can all be related back to the students' counting schemes
+      with whole numbers." Each row of the matrix is one of those counting
+      schemes &mdash; the matrix is the developmental history made spatial.
+    </div>
+
+    <p>The matrix grows one row at a time. Each row adds a new dimension to
+       the structure — not arbitrarily, but in response to a specific crisis.
+       The spatial structure of the matrix is the developmental history of the
+       learner, laid out as a grid.</p>
+  </div>
+
+  <!-- === PHILOSOPHER === -->
+  <div data-discourse="philosophy">
+    <p>The electromagnetic induction metaphor: temporal compression induces
+       spatial predication. The More Machine's breathing — the oscillation
+       between compressive and expansive phases — is a temporal process. When
+       compression reaches its limit and snaps, the snap leaves a residue.
+       That residue is spatial. The matrix IS the spatial residue of temporal
+       breathing.</p>
+
+    <div class="interactive-box">
+      <p>Temporal snaps induce spatial structure: the matrix grows</p>
+      <div class="snap-counter" id="snap-counter">0 compressions</div>
+      <div class="matrix-container">
+        <div class="matrix-grid" id="matrix-grid"></div>
+      </div>
+      <div style="margin-top: 1rem;">
+        <button class="try-it" onclick="addSnap()">Compress (snap)</button>
+        <button class="try-it" onclick="autoSnap()">Breathing cycle</button>
+      </div>
+      <p class="interactive-label">Each snap = temporal compression. Each row = spatial residue. The diagonal = Cantor's guarantee of novelty.</p>
+    </div>
+
+    <div class="margin-note">
+      The acoustic visualizer (in the portfolio) is the decompression half.
+      The matrix is what compression leaves behind. Static spatial forms
+      cannot induce temporal histories — only the dynamic act of compression
+      or decompression creates the mutual relationship. This is why
+      picture-thinking (Vorstellung) fails.
+    </div>
+
+    <p>The counting PDA's carry operation — ten ones becoming one ten — is
+       the first moment of spatial emergence from temporal counting. The
+       carry is a compression: ten discrete temporal acts (counting) produce
+       one spatial unit (a ten). With a different base (7 instead of 10),
+       the spatial structure would be different. That's where fractions
+       might live: in the freedom to choose the base.</p>
+
+    <p>Negarestani's Chomsky hierarchy maps onto this. The counting PDA
+       (regular/context-free) produces space from time at a fixed base. To
+       produce space at a variable base — which fractions require — you need
+       a context-sensitive machine that can set its own base before counting.
+       The matrix shows what that machine would produce: each row at
+       potentially a different base, each diagonal cell the proof that the
+       new base generated something the old base could not.</p>
+
+    <div class="margin-note">
+      The double negation: the matrix cannot show itself being built. It can
+      only show the result of having been built. The temporal act that produces
+      each row is not in the matrix — only its trace is. This is the skeleton
+      boundary again: the formal structure records the outcome of a process it
+      cannot represent.
+    </div>
+
+    <div class="margin-note">
+      Brandom, R. (2019). <em>A Spirit of Trust.</em> Harvard University Press.
+      The third phase of <em>Erfahrung</em> (the experience of error) is
+      <strong>recollection</strong> (<em>Erinnerung</em>): "retrospective
+      rational reconstruction of the course of experience that led up to the
+      commitments resulting from the reparative phase. Recollection rationalizes
+      a course of experience by retrospectively redescribing it so as to exhibit
+      it as expressively progressive." The matrix is trying to be Erinnerung
+      &mdash; the spatial record of temporal crises, laid out so the progression
+      is visible. But Brandom's recollection is <em>rational reconstruction</em>,
+      not mere recording. The code has no recollection phase. The matrix records
+      outcomes but cannot reconstruct the reasoning that produced them.
+    </div>
+
+    <p>The matrix grows. Each row is an accommodation the system made to a
+       crisis it could not otherwise resolve. The diagonal guarantees that
+       each accommodation is novel — not a repetition, not a recombination,
+       but something structurally new. The spatial grid you see is time's
+       footprint.</p>
+  </div>
+
+  <p class="closing-reflection">
+    The system stops here. Not because it can't go further — but because going
+    further requires something this formalization can't provide: a genuine
+    encounter with another mind. That encounter is what the manuscript is about.
+  </p>
+
+  <div class="closing-question" style="font-style: normal;">
+    <p style="color: var(--snap); font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; margin-bottom: 0.75rem;">Known limitations</p>
+    <p style="font-size: 0.9rem; font-style: normal; color: var(--muted);">
+      Three things this system cannot do:
+    </p>
+    <ul style="font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; padding-left: 1.5rem; font-style: normal;">
+      <li style="margin-bottom: 0.5rem;">The synthesis engine wraps oracle calls rather than constructing genuine FSMs. A learner who "synthesizes" a strategy is memorizing a phone number, not discovering a method.</li>
+      <li style="margin-bottom: 0.5rem;">Fractions require three-level unit coordination. The current system handles two levels. This is a "not yet" — but the gap is real.</li>
+      <li>Brandom's third phase — recollection, the retrospective rational reconstruction that exhibits the course of experience as expressively progressive — has no computational model. The matrix records. It does not recollect.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+// Finitized Cantorian diagonalization (NOT random).
+//   - The matrix is the inference field: the "manifold of possible speech."
+//   - Each ZCM snap writes one symbol M (0) or W (1) — the act.
+//   - On reflection the n x n field grows to (n+1) x (n+1): take the DIAGONAL,
+//     flip it (m -> w), and write that flipped vector down the new column AND
+//     across the new row. The flipped vector differs from every prior row in at
+//     least one place: necessary novelty (determinate negation of the whole
+//     history). The fresh act sits in the new corner.
+//   - Existing cells are NEVER overwritten. The matrix is recollection: the
+//     space of reasons as a temporal compression of experience.
+//   - At the internal limit of ten tallies the loose ones are negated and
+//     grouped into one structural unit (a "ten"), bootstrapping the base the
+//     counting automaton reads. Zero marks the now-empty place.
+const LIMIT = 10;            // internal limit of ten tallies -> one ten
+let rows = [];               // the inference matrix, entries 0 (M) or 1 (W)
+let nextSymbol = 1;          // the act the machine is about to write; it alternates
+let baseFormed = false;
+let autoInterval = null;
+
+function glyph(v) { return v === 1 ? 'W' : 'M'; }
+function flip(v) { return 1 - v; }
+function diagonal() { return rows.map((r, i) => r[i]); }
+
+function seedMatrix() {
+  // A small self-consistent field: three assertions, each identical with itself
+  // (diagonal W) and otherwise open (M). The diagonal is what gets reflected.
+  rows = [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+  nextSymbol = 0;
+  baseFormed = false;
+}
+
+function renderMatrix() {
+  const grid = document.getElementById('matrix-grid');
+  if (!grid) return;
+  const n = rows.length;
+  if (n === 0) { grid.innerHTML = ''; return; }
+  grid.style.gridTemplateColumns = `auto repeat(${n}, 28px)`;
+  let html = '';
+  rows.forEach((row, r) => {
+    html += `<div class="row-label">${r + 1}</div>`;
+    row.forEach((val, c) => {
+      const classes = ['matrix-cell'];
+      if (c === r) classes.push('diagonal');
+      // the freshly written flipped vector: the new row and the new column
+      if (r === n - 1 || c === n - 1) classes.push('new-row');
+      html += `<div class="${classes.join(' ')}">${glyph(val)}</div>`;
+    });
+  });
+  grid.innerHTML = html;
+}
+
+function updateCounter() {
+  const counter = document.getElementById('snap-counter');
+  if (!counter) return;
+  const n = rows.length;
+  const level = (typeof Discourse !== 'undefined') ? Discourse.current() : 'freshman';
+  if (baseFormed) {
+    counter.textContent = (level === 'philosophy')
+      ? 'ten tallies sublated into one ten — a base is born (0 loose ones)'
+      : (level === 'mathEd')
+        ? 'internal limit reached: 10 ones grouped into 1 ten, 0 loose ones'
+        : '10 marks become one ten — now the counting machine can read it';
+  } else if (level === 'philosophy') {
+    counter.textContent = n + ' recollected acts — diagonal reflected, novelty forced';
+  } else if (level === 'mathEd') {
+    counter.textContent = n + ' tallies (each new row = the flipped diagonal)';
+  } else {
+    counter.textContent = n + ' marks written';
+  }
+  const t = Math.min(n / LIMIT, 1);
+  counter.style.color = `rgb(${Math.round(91 + t * 141)},${Math.round(158 + t * 10)},${Math.round(174 - t * 98)})`;
+}
+
+function addSnap() {
+  if (baseFormed) return;
+
+  const n = rows.length;
+  const dPrime = diagonal().map(flip);     // the necessary novelty
+  for (let i = 0; i < n; i++) rows[i].push(dPrime[i]);  // new column = flipped diagonal
+  rows.push(dPrime.concat([nextSymbol]));  // new row = flipped diagonal + the fresh act
+  nextSymbol = flip(nextSymbol);           // the machine's incessant alternation
+
+  const flash = document.getElementById('flash');
+  if (flash) { flash.classList.add('active'); setTimeout(() => flash.classList.remove('active'), 150); }
+
+  if (rows.length >= LIMIT) {
+    // The many loose ones are negated and uplifted into one structural unit.
+    baseFormed = true;
+    if (autoInterval) { clearInterval(autoInterval); autoInterval = null; }
+  }
+
+  renderMatrix();
+  updateCounter();
+}
+
+function autoSnap() {
+  if (autoInterval) {
+    clearInterval(autoInterval);
+    autoInterval = null;
+    return;
+  }
+  autoInterval = setInterval(() => {
+    if (baseFormed) {
+      clearInterval(autoInterval);
+      autoInterval = null;
+      return;
+    }
+    addSnap();
+  }, 800);
+}
+
+function resetMatrix() {
+  if (autoInterval) { clearInterval(autoInterval); autoInterval = null; }
+  seedMatrix();
+  renderMatrix();
+  updateCounter();
+}
+
+// Re-label (and reset the run) when the discourse register changes.
+window.addEventListener('discourse-change', resetMatrix);
+
+// Seed and render on load.
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', resetMatrix);
+} else {
+  resetMatrix();
+}
+</script>
+<script src="shared.js"></script>
+</body>
+</html>

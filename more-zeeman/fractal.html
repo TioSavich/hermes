@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en" data-page-id="fractal">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Fractal — machines that call machines</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hermes-tokens-dark.css">
+  <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="fractal"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--bg); color: var(--text); font-family: 'IBM Plex Serif', Georgia, serif; font-size: 16px; line-height: 1.7; }
+    body { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
+
+    .page-head { text-align: center; margin-bottom: 1.1rem; }
+    .page-head h1 { font-size: 1.5rem; font-weight: 600; color: var(--snap); }
+    .page-head .sub { font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+
+    .intro { max-width: 640px; margin: 0 auto 1.5rem; }
+    .intro p { font-size: 0.94rem; color: #b8b0a0; margin-bottom: 0.8rem; }
+    .story-recap { font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: var(--muted); font-style: italic; }
+    .margin-note {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+      color: var(--muted); border-left: 2px solid var(--border);
+      padding-left: 0.75rem; margin: 1rem 0; line-height: 1.6;
+    }
+    code { font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; color: var(--snap); }
+
+    /* --- controls row --- */
+    .run-bar {
+      display: flex; align-items: flex-end; justify-content: center; gap: 0.9rem; flex-wrap: wrap;
+      margin: 0 auto 1rem;
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem;
+    }
+    .run-bar .field { display: flex; flex-direction: column; gap: 0.25rem; }
+    .run-bar label { font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .run-bar input, .run-bar select {
+      background: var(--surface); color: var(--text); border: 1px solid var(--border);
+      border-radius: 4px; padding: 0.4rem 0.5rem; font: inherit;
+    }
+    .run-bar input[type=number] { width: 4.2rem; }
+    .run-bar button.go {
+      background: var(--surface-raised); color: var(--snap); border: 1px solid var(--snap);
+      border-radius: 4px; padding: 0.45rem 1.1rem; font: inherit; letter-spacing: 0.06em; cursor: pointer;
+    }
+    .run-bar button.go:hover { background: var(--snap); color: var(--bg); }
+
+    /* --- main layout: canvas + rail --- */
+    .main-layout { display: grid; grid-template-columns: 1fr 318px; gap: 1rem; margin-bottom: 1rem; }
+    @media (max-width: 900px) { .main-layout { grid-template-columns: 1fr; } }
+
+    .canvas-wrap { position: relative; width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .canvas-wrap canvas { display: block; width: 100%; }
+
+    /* playback strip under canvas, inside the wrap */
+    .playback {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 0.7rem; border-top: 1px solid var(--border);
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--muted);
+    }
+    .playback button {
+      background: var(--surface-raised); color: var(--text); border: 1px solid var(--border);
+      border-radius: 4px; padding: 0.25rem 0.6rem; font: inherit; cursor: pointer;
+    }
+    .playback button:hover { border-color: var(--snap); color: var(--snap); }
+    .playback input[type=range] { flex: 1; accent-color: var(--snap); min-width: 60px; }
+    .playback select { background: var(--surface-raised); color: var(--text); border: 1px solid var(--border); border-radius: 4px; font: inherit; padding: 0.2rem 0.3rem; }
+
+    /* --- right rail panels --- */
+    .rail { display: flex; flex-direction: column; gap: 0.8rem; min-width: 0; }
+    .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem 0.95rem; }
+    .panel .label {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.64rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 0.55rem;
+    }
+
+    /* the stack */
+    .stack-list { display: flex; flex-direction: column-reverse; gap: 0.35rem; min-height: 5.4rem; }
+    .stack-frame {
+      border: 1px solid var(--border); border-left: 3px solid var(--muted);
+      border-radius: 0 4px 4px 0; padding: 0.32rem 0.55rem;
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--muted);
+      background: var(--surface-raised);
+    }
+    .stack-frame.top { border-left-color: var(--snap); color: var(--text); }
+    .stack-frame .fname { color: var(--snap); font-weight: 600; }
+    .stack-frame.top .fnote { color: #b8b0a0; }
+    .stack-empty { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--muted); font-style: italic; }
+
+    /* the ledger */
+    .ledger-row { display: flex; justify-content: space-between; align-items: baseline; font-family: 'IBM Plex Mono', monospace; font-size: 0.74rem; color: var(--muted); padding: 0.18rem 0; }
+    .ledger-row b { color: var(--text); font-size: 0.95rem; font-weight: 600; }
+    .ledger-row.sublate b { color: var(--snap); }
+    .ledger-note { font-size: 0.78rem; color: var(--muted); font-style: italic; margin-top: 0.45rem; line-height: 1.5; }
+
+    /* the trace */
+    .trace-list { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; line-height: 1.65; color: var(--muted); min-height: 7.2em; overflow: hidden; }
+    .trace-list .t-new { color: var(--text); }
+    .trace-list .t-count { color: var(--release); }
+    .trace-list .t-call { color: var(--snap); }
+
+    .after { max-width: 640px; margin: 1.5rem auto 0; padding: 0 0.5rem; }
+    .after p { font-size: 0.92rem; color: #b8b0a0; line-height: 1.65; margin-bottom: 0.8rem; }
+    .after .q { font-style: italic; color: var(--muted); border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 1.2rem; }
+    .footnote { max-width: 640px; margin: 1.6rem auto 0; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--border); padding-top: 1rem; line-height: 1.6; }
+  </style>
+</head>
+<body data-hshell-doc="1">
+
+  <div class="page-head">
+    <h1>The Fractal</h1>
+    <p class="sub">machines that call machines · elaboration runs outward</p>
+  </div>
+
+  <div class="intro">
+    <p>Four arithmetic strategies, and the core they all stand on. Counting lives at the
+       right — the primitive act. Every circle to its left is a strategy that does not
+       replace counting but <em>calls</em> it: COBO reaches into counting for its ones
+       phase; Rearrange-to-Make-Bases and Chunking reach into COBO. Type a sum, pick a
+       strategy, and watch the delegation happen: the token stops at a calling state, a
+       pulse runs down the call line, the inner machine does the labor, and the result
+       travels back as a single value the outer machine simply <em>uses</em>.</p>
+  </div>
+
+  <div class="intro" style="margin-bottom:1.2rem;">
+    <div data-discourse="freshman">
+      <p class="story-recap"><em>Previously: You discovered shortcuts — counting-on, COBO, RMB. Each one faster than the last.</em></p>
+      <p>Each strategy is a machine. But here is the thing &mdash; each machine uses the
+         one before it. COBO does not just "know" addition. It calls the counting machine
+         to do the adding. RMB calls COBO. Chunking calls COBO. Watch the little pulse:
+         that is one machine asking another for help, and the number that rides back is
+         the help arriving.</p>
+      <p>Notice what the outer machine's single step <em>costs</em> on the inside. The
+         ledger keeps the honest count.</p>
+    </div>
+    <div data-discourse="mathEd">
+      <p>This architecture models the developmental prerequisite structure documented in CGI (Carpenter et al., 1999). Counting-on cannot exist without counting-all. COBO (bases-then-ones) cannot exist without counting-on. Each strategy is an FSM that invokes inner strategies as subroutines — the computational analogue of what Steffe calls "scheme coordination." One outer transition stands for many inner ones: the child who chunks is still counting, but the counting has been folded into structure.</p>
+      <div class="margin-note">
+        Norton, A. (2008). Josh's operational conjectures. <em>JRME, 39</em>(4),
+        401-430. Steffe (1991). Norton and Steffe describe <strong>metamorphic
+        accommodation</strong> as the most profound type of crisis-driven
+        reorganization: driven by a "recursive and persistent perturbation" that
+        projects operations from a lower plane of knowledge to a completely new,
+        higher plane. The outward elaboration visible here is the geometric analogue
+        &mdash; each new circle is a higher plane that presupposes the ones it calls.
+        When the nesting exceeds what flat FSMs can represent, metamorphic
+        accommodation is required: not just adding another circle, but changing what
+        a circle <em>is</em>.
+      </div>
+    </div>
+    <div data-discourse="philosophy">
+      <p>Each circle is a strategy automaton; each dashed line is an <code>invokesCore</code>
+         relation — the outer machine's state transition delegates to the inner machine.
+         This is the fractal architecture from Chapter 9 of the manuscript, and it is a
+         picture of mediated action: the outer act does not discard the inner acts, it
+         <em>contains</em> them — preserved, cancelled, and lifted into a single step
+         (the ledger shows the exchange rate). The nesting follows the Chomsky hierarchy:
+         counting is regular; COBO/RMB/Chunking are context-free — they need a call stack,
+         and the stack panel on the right is exactly that stack, made public. The fraction
+         crisis occurs at the context-sensitive boundary, where this kind of nesting breaks.</p>
+      <div class="margin-note">
+        Negarestani, R. (2018). <em>Intelligence and Spirit.</em> Urbanomic/Sequence
+        Press. Following Brandom's "laughing Santa" example, Negarestani describes
+        finite-state machines as "automatic laughing bags" that recognize and produce
+        regular languages. But "higher levels of syntactic and semantic complexity
+        require more powerful abstract automata (context-free, context-sensitive,
+        recursively enumerable)." The call structure shows this hierarchy in motion:
+        each outer circle requires stack depth the inner circle does not. What the
+        visualization cannot show is the boundary where nesting itself breaks
+        &mdash; where the system would need to modify its own transition table.
+        That is the context-sensitive boundary, and it is where fractions live.
+      </div>
+    </div>
+  </div>
+
+  <div class="run-bar">
+    <div class="field"><label>a</label><input type="number" id="inp-a" value="46" min="1" max="89"></div>
+    <div class="field"><label>b</label><input type="number" id="inp-b" value="37" min="1" max="89"></div>
+    <div class="field"><label>strategy</label>
+      <select id="inp-strategy">
+        <option value="count">Counting alone (the core)</option>
+        <option value="cobo">COBO — calls Counting</option>
+        <option value="rmb">RMB — calls COBO</option>
+        <option value="chunk" selected>Chunking — calls COBO</option>
+      </select>
+    </div>
+    <button class="go" id="btn-run">Run</button>
+  </div>
+
+  <div class="main-layout">
+    <div class="canvas-wrap">
+      <canvas id="fractal-canvas"></canvas>
+      <div class="playback">
+        <button id="pb-prev">&larr;</button>
+        <button id="pb-play">Pause</button>
+        <button id="pb-next">&rarr;</button>
+        <input type="range" id="pb-seek" min="0" max="0" value="0" step="1">
+        <span id="pb-counter">0 / 0</span>
+        <select id="pb-speed">
+          <option value="0.5">0.5&times;</option>
+          <option value="1" selected>1&times;</option>
+          <option value="2">2&times;</option>
+          <option value="4">4&times;</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="rail">
+      <div class="panel">
+        <p class="label">The stack — who is acting for whom</p>
+        <div class="stack-list" id="stack-list"><span class="stack-empty">idle</span></div>
+      </div>
+      <div class="panel">
+        <p class="label">The ledger — what one act contains</p>
+        <div class="ledger-row"><span>surface acts (top machine)</span><b id="led-acts">0</b></div>
+        <div class="ledger-row"><span>delegations (calls)</span><b id="led-calls">0</b></div>
+        <div class="ledger-row sublate"><span>raw counts inside</span><b id="led-counts">0</b></div>
+        <p class="ledger-note" id="led-note">Run a sum to see the exchange rate.</p>
+      </div>
+      <div class="panel">
+        <p class="label">Trace</p>
+        <div class="trace-list" id="trace-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="after">
+    <div data-discourse="freshman">
+      <p>Run the same sum four ways. Counting alone touches every single number — watch
+         the ledger. Chunking touches three. The counting did not disappear: it moved
+         <em>inside</em>. That is what a shortcut is — labor folded into structure.</p>
+      <p class="q">You can see the calling. But can you feel it? What happens when you grab
+         one of these machines and pull? The playground is next.</p>
+    </div>
+    <div data-discourse="mathEd">
+      <p>Diagnostic use: a student who "has" chunking but stalls mid-problem is often
+         stalling <em>inside a call</em> — the outer scheme is intact and an inner scheme
+         failed to return. The stack panel is the picture to hold in mind: ask which frame
+         the student is in, not which strategy the student "is on."</p>
+    </div>
+    <div data-discourse="philosophy">
+      <p>The picture generalizes past arithmetic: an act is individuated by the acts it has
+         internalized — the pulse and the returned value are the mediation, and the ledger
+         is the sublation made quantitative. Where the boundary page picks this up: what
+         happens when no finite stack of these circles suffices, and the system must take
+         its own transition table as an object.</p>
+    </div>
+  </div>
+
+  <div class="footnote">
+    This page is a self-contained illustration: the machines and their
+    <code>invokesCore</code> call structure mirror the action-automata registry
+    (COBO&rarr;Counting, RMB&rarr;COBO, Chunking&rarr;COBO), and the run is simulated
+    in the page — no server, no model. The registry itself, with every strategy's
+    states and break points, is browsable under <b>Tools &rarr; Strategies</b>.
+  </div>
+
+<script>
+(function () {
+  'use strict';
+
+  // ============================================================
+  // The machines: circular automata with a call structure.
+  // Layout: the core (COUNT) sits right; elaboration runs outward, leftward.
+  // ============================================================
+  var W = 960, H = 600;
+
+  var MACH = {
+    count: { name: 'COUNT', sub: 'by ones', x: 745, y: 335, r: 78,
+             states: ['','','','','','','','','',''], tickRing: true },
+    cobo:  { name: 'COBO', sub: 'bases, then ones', x: 470, y: 290, r: 112,
+             states: ['start', '+ base', 'to ones', 'call COUNT', 'done'], callAt: 3, calls: 'count' },
+    rmb:   { name: 'RMB', sub: 'rearrange to make bases', x: 185, y: 160, r: 96,
+             states: ['start', 'see gap', 'move k', 'call COBO', 'done'], callAt: 3, calls: 'cobo' },
+    chunk: { name: 'CHUNK', sub: 'add by chunks', x: 190, y: 468, r: 96,
+             states: ['start', 'split b', 'call COBO', 'more?', 'done'], callAt: 2, calls: 'cobo' }
+  };
+
+  function stateAngle(m, i) {
+    var n = MACH[m].states.length;
+    return -Math.PI / 2 + (i / n) * Math.PI * 2;
+  }
+  function statePos(m, i, rad) {
+    var M0 = MACH[m], a = stateAngle(m, i);
+    var r = rad === undefined ? M0.r : rad;
+    return { x: M0.x + Math.cos(a) * r, y: M0.y + Math.sin(a) * r, a: a };
+  }
+  // call ports: from caller's call-state to callee's entry (state 0)
+  function callEdge(from, to) {
+    var A = statePos(from, MACH[from].callAt);
+    var B = statePos(to, 0);
+    var mx = (A.x + B.x) / 2, my = (A.y + B.y) / 2;
+    // bow the curve away from the straight line
+    var dx = B.x - A.x, dy = B.y - A.y, L = Math.hypot(dx, dy) || 1;
+    var cx = mx - dy / L * 46, cy = my + dx / L * 46;
+    return { ax: A.x, ay: A.y, bx: B.x, by: B.y, cx: cx, cy: cy };
+  }
+  function bez(e, t) {
+    var u = 1 - t;
+    return { x: u * u * e.ax + 2 * u * t * e.cx + t * t * e.bx,
+             y: u * u * e.ay + 2 * u * t * e.cy + t * t * e.by };
+  }
+
+  // ============================================================
+  // The interpreter: precompute the whole run as a filmstrip of events.
+  // Each event: { m, s, vals, stack, trace, traceKind, pulse, ledger }
+  // ============================================================
+  var events = [], LED_TOTAL = null;
+
+  function build(a, b, strategy) {
+    events = [];
+    var stack = [];           // [{m, note}]
+    var vals = {};            // machine center values
+    var led = { acts: 0, calls: 0, counts: 0 };
+
+    function snapshot(o) {
+      events.push({
+        m: o.m, s: o.s || 0,
+        vals: JSON.parse(JSON.stringify(vals)),
+        stack: stack.map(function (f) { return { m: f.m, note: f.note }; }),
+        trace: o.trace || null, traceKind: o.kind || 'plain',
+        pulse: o.pulse || null,
+        ledger: { acts: led.acts, calls: led.calls, counts: led.counts }
+      });
+    }
+    function ev(m, s, trace, kind, pulse) {
+      if (stack.length && stack[0].m === m && stack.length === 1) led.acts++;
+      snapshot({ m: m, s: s, trace: trace, kind: kind, pulse: pulse });
+    }
+
+    function runCount(from, n) {
+      stack.push({ m: 'count', note: 'count ' + n + ' from ' + from });
+      for (var i = 1; i <= n; i++) {
+        vals.count = from + i;
+        led.counts++;
+        if (stack.length === 1) led.acts++;
+        snapshot({ m: 'count', s: (i - 1) % 10,
+                   trace: String(from + i), kind: 'count' });
+      }
+      stack.pop();
+      return from + n;
+    }
+
+    function runCobo(a0, b0) {
+      var bases = Math.floor(b0 / 10), ones = b0 % 10, t = a0;
+      stack.push({ m: 'cobo', note: a0 + ' + ' + b0 });
+      vals.cobo = t;
+      ev('cobo', 0, 'COBO: ' + a0 + ' + ' + b0 + ' — ' + bases + ' base' + (bases === 1 ? '' : 's') + ', then ' + ones + ' one' + (ones === 1 ? '' : 's'));
+      for (var i = 0; i < bases; i++) {
+        t += 10; vals.cobo = t;
+        ev('cobo', 1, '+10 → ' + t);
+      }
+      if (ones > 0) {
+        ev('cobo', 2, 'ones phase: hand ' + ones + ' to the core', 'call');
+        ev('cobo', 3, 'COBO calls COUNT(' + t + ', ' + ones + ')', 'call',
+           { from: 'cobo', to: 'count', dir: 1 });
+        led.calls++;
+        t = runCount(t, ones);
+        vals.cobo = t;
+        ev('cobo', 3, 'COUNT returns ' + t, 'call',
+           { from: 'cobo', to: 'count', dir: -1, chip: t });
+      }
+      ev('cobo', 4, 'COBO answers ' + t);
+      stack.pop();
+      return t;
+    }
+
+    function runRmb(a0, b0) {
+      var k = (10 - (a0 % 10)) % 10;
+      if (k > b0) k = 0;
+      var a2 = a0 + k, b2 = b0 - k;
+      stack.push({ m: 'rmb', note: a0 + ' + ' + b0 });
+      vals.rmb = a0;
+      ev('rmb', 0, 'RMB: ' + a0 + ' + ' + b0);
+      ev('rmb', 1, a0 + ' wants ' + k + ' to make ' + a2);
+      vals.rmb = a2;
+      ev('rmb', 2, 'move ' + k + ': ' + a2 + ' + ' + b2);
+      ev('rmb', 3, 'RMB calls COBO(' + a2 + ', ' + b2 + ')', 'call',
+         { from: 'rmb', to: 'cobo', dir: 1 });
+      led.calls++;
+      var t = runCobo(a2, b2);
+      vals.rmb = t;
+      ev('rmb', 3, 'COBO returns ' + t, 'call',
+         { from: 'rmb', to: 'cobo', dir: -1, chip: t });
+      ev('rmb', 4, 'RMB answers ' + t);
+      stack.pop();
+      return t;
+    }
+
+    function runChunk(a0, b0) {
+      var chunks = [];
+      if (Math.floor(b0 / 10) > 0) chunks.push(Math.floor(b0 / 10) * 10);
+      if (b0 % 10 > 0) chunks.push(b0 % 10);
+      var t = a0;
+      stack.push({ m: 'chunk', note: a0 + ' + ' + b0 });
+      vals.chunk = t;
+      ev('chunk', 0, 'CHUNK: ' + a0 + ' + ' + b0);
+      ev('chunk', 1, b0 + ' = ' + chunks.join(' + '));
+      for (var i = 0; i < chunks.length; i++) {
+        ev('chunk', 2, 'CHUNK calls COBO(' + t + ', ' + chunks[i] + ')', 'call',
+           { from: 'chunk', to: 'cobo', dir: 1 });
+        led.calls++;
+        t = runCobo(t, chunks[i]);
+        vals.chunk = t;
+        ev('chunk', 2, 'COBO returns ' + t, 'call',
+           { from: 'chunk', to: 'cobo', dir: -1, chip: t });
+        if (i < chunks.length - 1) ev('chunk', 3, 'more chunks remain');
+      }
+      ev('chunk', 4, 'CHUNK answers ' + t);
+      stack.pop();
+      return t;
+    }
+
+    vals = { count: a, cobo: null, rmb: null, chunk: null };
+    var result;
+    if (strategy === 'count') result = runCount(a, b);
+    else if (strategy === 'cobo') result = runCobo(a, b);
+    else if (strategy === 'rmb') result = runRmb(a, b);
+    else result = runChunk(a, b);
+
+    LED_TOTAL = { acts: led.acts, calls: led.calls, counts: led.counts, result: result, a: a, b: b, strategy: strategy };
+    return events;
+  }
+
+  // ============================================================
+  // Rendering
+  // ============================================================
+  var canvas = document.getElementById('fractal-canvas');
+  var ctx = canvas.getContext('2d');
+  var css = getComputedStyle(document.documentElement);
+  function tok(n, fb) { var v = css.getPropertyValue(n).trim(); return v || fb; }
+  var C = {
+    border: tok('--border', '#3a3428'), text: tok('--text', '#d4cfc0'),
+    muted: tok('--muted', '#8a8470'), snap: tok('--snap', '#e8a84c'),
+    release: tok('--release', '#5b9eae'), tension: tok('--tension', '#d4634a'),
+    surfaceR: tok('--surface-raised', '#242014'), bg: tok('--surface', '#1a1710')
+  };
+
+  function sizeCanvas() {
+    var w = canvas.parentElement.clientWidth;
+    var h = Math.round(w * H / W);
+    var dpr = window.devicePixelRatio || 1;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr * w / W, 0, 0, dpr * w / W, 0, 0);
+  }
+
+  var frame = 0;          // float index into events
+  var playing = true;
+  var speed = 1;
+  var STRAT = 'chunk';
+
+  function activeSet(evn) {
+    var s = {};
+    evn.stack.forEach(function (f) { s[f.m] = true; });
+    return s;
+  }
+
+  function drawMachine(id, evn, tSub) {
+    var M0 = MACH[id];
+    var act = activeSet(evn);
+    var isTop = evn.m === id;
+    var onStack = act[id];
+    var inStrategy = { count: true,
+      cobo: STRAT !== 'count',
+      rmb: STRAT === 'rmb',
+      chunk: STRAT === 'chunk' }[id];
+
+    var ring = isTop ? C.snap : onStack ? C.muted : inStrategy ? C.border : 'rgba(58,52,40,0.45)';
+    ctx.save();
+    if (isTop) { ctx.shadowColor = C.snap; ctx.shadowBlur = 16; }
+    ctx.strokeStyle = ring;
+    ctx.lineWidth = isTop ? 2 : 1.3;
+    ctx.beginPath(); ctx.arc(M0.x, M0.y, M0.r, 0, Math.PI * 2); ctx.stroke();
+    ctx.restore();
+
+    // states
+    var n = M0.states.length;
+    for (var i = 0; i < n; i++) {
+      var p = statePos(id, i);
+      var here = isTop && i === evn.s;
+      ctx.fillStyle = here ? C.snap : onStack ? C.muted : 'rgba(138,132,112,0.5)';
+      ctx.beginPath(); ctx.arc(p.x, p.y, M0.tickRing ? 2.4 : (here ? 5 : 3.4), 0, Math.PI * 2); ctx.fill();
+      if (!M0.tickRing && M0.states[i]) {
+        var lp = statePos(id, i, M0.r + 15);
+        ctx.font = '10px "IBM Plex Mono", monospace';
+        ctx.fillStyle = here ? C.snap : (onStack || inStrategy) ? C.muted : 'rgba(138,132,112,0.4)';
+        ctx.textAlign = lp.x < M0.x - 8 ? 'right' : lp.x > M0.x + 8 ? 'left' : 'center';
+        ctx.textBaseline = lp.y < M0.y - 8 ? 'bottom' : lp.y > M0.y + 8 ? 'top' : 'middle';
+        ctx.fillText(M0.states[i], lp.x, lp.y);
+      }
+    }
+
+    // token: orbit the active machine, easing toward the current state
+    if (isTop) {
+      var a0 = stateAngle(id, evn.s);
+      var nx = events[Math.min(events.length - 1, Math.floor(frame) + 1)];
+      var a1 = (nx && nx.m === id) ? stateAngle(id, nx.s) : a0;
+      if (a1 < a0) a1 += Math.PI * 2;
+      var a = a0 + (a1 - a0) * tSub;
+      ctx.save();
+      ctx.shadowColor = C.snap; ctx.shadowBlur = 12;
+      ctx.fillStyle = C.snap;
+      ctx.beginPath();
+      ctx.arc(M0.x + Math.cos(a) * M0.r, M0.y + Math.sin(a) * M0.r, 6, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    // center: name, sub, value
+    ctx.textAlign = 'center';
+    ctx.font = '600 13px "IBM Plex Mono", monospace';
+    ctx.fillStyle = isTop ? C.text : (onStack || inStrategy) ? C.muted : 'rgba(138,132,112,0.45)';
+    ctx.textBaseline = 'alphabetic';
+    ctx.fillText(M0.name, M0.x, M0.y - 10);
+    ctx.font = '9px "IBM Plex Mono", monospace';
+    ctx.fillText(M0.sub, M0.x, M0.y + 4);
+    var v = evn.vals[id];
+    if (v !== null && v !== undefined) {
+      ctx.font = '600 22px "IBM Plex Mono", monospace';
+      ctx.fillStyle = isTop ? C.snap : C.muted;
+      ctx.fillText(String(v), M0.x, M0.y + 30);
+    }
+  }
+
+  function drawEdge(from, to, evn, tSub) {
+    var e = callEdge(from, to);
+    var onCall = evn.pulse && evn.pulse.from === from && evn.pulse.to === to;
+    var stackPair = false;
+    for (var i = 0; i < evn.stack.length - 1; i++) {
+      if (evn.stack[i].m === from && evn.stack[i + 1].m === to) stackPair = true;
+    }
+    ctx.save();
+    ctx.setLineDash([5, 5]);
+    ctx.strokeStyle = onCall ? C.snap : stackPair ? C.muted : 'rgba(58,52,40,0.8)';
+    ctx.lineWidth = onCall ? 1.6 : 1;
+    ctx.beginPath();
+    ctx.moveTo(e.ax, e.ay);
+    ctx.quadraticCurveTo(e.cx, e.cy, e.bx, e.by);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    // edge label
+    var mid = bez(e, 0.5);
+    ctx.font = 'italic 9px "IBM Plex Mono", monospace';
+    ctx.fillStyle = onCall ? C.snap : 'rgba(138,132,112,0.65)';
+    ctx.textAlign = 'center';
+    ctx.fillText('calls', mid.x, mid.y - 6);
+
+    // travelling pulse / returning chip
+    if (onCall) {
+      var t = evn.pulse.dir === 1 ? tSub : 1 - tSub;
+      var p = bez(e, t);
+      if (evn.pulse.dir === 1) {
+        ctx.shadowColor = C.snap; ctx.shadowBlur = 10;
+        ctx.fillStyle = C.snap;
+        ctx.beginPath(); ctx.arc(p.x, p.y, 5, 0, Math.PI * 2); ctx.fill();
+        ctx.shadowBlur = 0;
+      } else {
+        var label = String(evn.pulse.chip);
+        ctx.font = '600 12px "IBM Plex Mono", monospace';
+        var w2 = ctx.measureText(label).width / 2 + 7;
+        ctx.fillStyle = C.surfaceR;
+        ctx.strokeStyle = C.release; ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.roundRect(p.x - w2, p.y - 10, w2 * 2, 20, 5);
+        ctx.fill(); ctx.stroke();
+        ctx.fillStyle = C.release; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText(label, p.x, p.y + 1);
+        ctx.textBaseline = 'alphabetic';
+      }
+    }
+    ctx.restore();
+  }
+
+  function render() {
+    var idx = Math.min(events.length - 1, Math.floor(frame));
+    var evn = events[idx];
+    var tSub = Math.min(1, frame - idx);
+    ctx.clearRect(0, 0, W, H);
+
+    // caption of orientation
+    ctx.font = 'italic 10px "IBM Plex Mono", monospace';
+    ctx.fillStyle = 'rgba(138,132,112,0.75)';
+    ctx.textAlign = 'left';
+    ctx.fillText('\u2190 elaboration runs outward', 18, 24);
+    ctx.textAlign = 'right';
+    ctx.fillText('the core \u2192', W - 18, 24);
+
+    drawEdge('cobo', 'count', evn, tSub);
+    drawEdge('rmb', 'cobo', evn, tSub);
+    drawEdge('chunk', 'cobo', evn, tSub);
+    Object.keys(MACH).forEach(function (id) { drawMachine(id, evn, tSub); });
+
+    // final result banner on last event
+    if (idx === events.length - 1 && LED_TOTAL) {
+      ctx.font = '600 15px "IBM Plex Mono", monospace';
+      ctx.fillStyle = C.snap; ctx.textAlign = 'center';
+      ctx.fillText(LED_TOTAL.a + ' + ' + LED_TOTAL.b + ' = ' + LED_TOTAL.result, W / 2, H - 24);
+    }
+    updatePanels(idx, evn);
+  }
+
+  // ============================================================
+  // Panels
+  // ============================================================
+  var lastPanelIdx = -1;
+  function updatePanels(idx, evn) {
+    if (idx === lastPanelIdx) return;
+    lastPanelIdx = idx;
+
+    // stack
+    var sl = document.getElementById('stack-list');
+    if (!evn.stack.length) sl.innerHTML = '<span class="stack-empty">idle</span>';
+    else sl.innerHTML = evn.stack.map(function (f, i) {
+      var top = i === evn.stack.length - 1;
+      return '<div class="stack-frame' + (top ? ' top' : '') + '">' +
+        '<span class="fname">' + MACH[f.m].name + '</span> ' +
+        '<span class="fnote">· ' + f.note + (top ? '' : ' · waiting') + '</span></div>';
+    }).join('');
+
+    // ledger
+    document.getElementById('led-acts').textContent = evn.ledger.acts;
+    document.getElementById('led-calls').textContent = evn.ledger.calls;
+    document.getElementById('led-counts').textContent = evn.ledger.counts;
+    if (LED_TOTAL && idx === events.length - 1) {
+      var n = document.getElementById('led-note');
+      if (LED_TOTAL.strategy === 'count') {
+        n.innerHTML = 'Counting alone: every one of the <b>' + LED_TOTAL.counts +
+          '</b> counts is done at the surface. Nothing is folded in yet.';
+      } else {
+        n.innerHTML = '<b>' + LED_TOTAL.counts + '</b> raw counts and every base-jump now live <em>inside</em> <b>' +
+          LED_TOTAL.acts + '</b> surface acts. The labor is not gone — it is sublated into structure.';
+      }
+    }
+
+    // trace
+    var tl = document.getElementById('trace-list');
+    var lines = [];
+    for (var i = Math.max(0, idx - 6); i <= idx; i++) {
+      if (events[i].trace) {
+        var cls = i === idx ? 't-new' : events[i].traceKind === 'count' ? 't-count' :
+                  events[i].traceKind === 'call' ? 't-call' : '';
+        lines.push('<div class="' + cls + '">' + events[i].trace + '</div>');
+      }
+    }
+    tl.innerHTML = lines.join('');
+
+    // counter + seek
+    document.getElementById('pb-counter').textContent = (idx + 1) + ' / ' + events.length;
+    var seek = document.getElementById('pb-seek');
+    if (Number(seek.value) !== idx) seek.value = idx;
+  }
+
+  // ============================================================
+  // Playback loop + controls
+  // ============================================================
+  var lastT = null;
+  function loop(t) {
+    if (lastT === null) lastT = t;
+    var dt = (t - lastT) / 1000; lastT = t;
+    if (playing && events.length) {
+      frame += dt * 2.2 * speed;               // ~2.2 events / s at 1x
+      if (frame >= events.length - 1) { frame = events.length - 1; setPlaying(false); }
+    }
+    render();
+    requestAnimationFrame(loop);
+  }
+
+  function setPlaying(p) {
+    playing = p;
+    document.getElementById('pb-play').textContent = p ? 'Pause' : 'Play';
+  }
+
+  function rebuild() {
+    var a = Math.max(1, Math.min(89, Number(document.getElementById('inp-a').value) || 46));
+    var b = Math.max(1, Math.min(89, Number(document.getElementById('inp-b').value) || 37));
+    STRAT = document.getElementById('inp-strategy').value;
+    build(a, b, STRAT);
+    frame = 0; lastPanelIdx = -1;
+    var seek = document.getElementById('pb-seek');
+    seek.max = events.length - 1; seek.value = 0;
+    setPlaying(true);
+  }
+
+  document.getElementById('btn-run').addEventListener('click', rebuild);
+  document.getElementById('inp-strategy').addEventListener('change', rebuild);
+  document.getElementById('pb-play').addEventListener('click', function () {
+    if (!playing && frame >= events.length - 1) frame = 0;
+    setPlaying(!playing);
+  });
+  document.getElementById('pb-prev').addEventListener('click', function () {
+    setPlaying(false); frame = Math.max(0, Math.floor(frame) - 1); lastPanelIdx = -1;
+  });
+  document.getElementById('pb-next').addEventListener('click', function () {
+    setPlaying(false); frame = Math.min(events.length - 1, Math.floor(frame) + 1); lastPanelIdx = -1;
+  });
+  document.getElementById('pb-seek').addEventListener('input', function () {
+    setPlaying(false); frame = Number(this.value); lastPanelIdx = -1;
+  });
+  document.getElementById('pb-speed').addEventListener('change', function () {
+    speed = Number(this.value);
+  });
+
+  window.addEventListener('resize', sizeCanvas);
+
+  // roundRect fallback
+  if (!ctx.roundRect) {
+    CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+      this.moveTo(x + r, y); this.arcTo(x + w, y, x + w, y + h, r);
+      this.arcTo(x + w, y + h, x, y + h, r); this.arcTo(x, y + h, x, y, r);
+      this.arcTo(x, y, x + w, y, r); this.closePath(); return this;
+    };
+  }
+
+  sizeCanvas();
+  rebuild();
+  requestAnimationFrame(loop);
+})();
+</script>
+<script src="shared.js"></script>
+</body>
+</html>

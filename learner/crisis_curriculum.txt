@@ -1,0 +1,79 @@
+# Cognitive Crisis Induction Curriculum (Pragmatic Version)
+#
+# PURPOSE: Pragmatic escalation sequence — pushes the system beyond inference
+# thresholds to trigger strategy acquisition. Less philosophical grounding
+# than crisis_curriculum_primordial.txt; useful for quick testing.
+#
+# PEDAGOGICAL NOTE: The numerical choices here matter. Counting to 200 before
+# attempting add(8,5) ensures the counting automaton is well-established.
+# The escalation from counting → addition → multiplication → subtraction
+# mirrors how teachers sequence number tasks to force specific crises.
+#
+# Tasks designed to push the system beyond current inference thresholds
+# to trigger reorganization and strategy bootstrapping
+
+# Start with manageable counts
+count(1)
+count(2)
+count(3)
+count(4)
+count(5)
+
+# Now push towards inference threshold
+count(10)
+count(15)
+count(20)
+count(25)
+count(30)
+
+# Push well beyond typical threshold to induce crisis
+count(50)
+count(75)
+count(100)
+count(150)
+count(200)
+
+# After hitting limits, try operations that might trigger reorganization
+add(50,50)
+add(100,50)
+add(75,75)
+
+# Try multiplication that would create very large tallies
+multiply(25,4)
+multiply(20,5)
+multiply(30,3)
+multiply(50,2)
+
+# Operations that should trigger need for more efficient strategies
+multiply(100,2)
+multiply(50,4)
+multiply(25,8)
+
+# Complex operations requiring strategic thinking
+add(multiply(25,4),multiply(20,5))
+multiply(add(50,50),2)
+
+# Subtraction from large numbers (might trigger decomposition)
+subtract(200,150)
+subtract(150,75)
+subtract(100,25)
+
+# Division of large numbers (should require new strategies)
+divide(200,4)
+divide(150,3)
+divide(100,5)
+
+# Fractional operations on large quantities
+fraction_of(1,2,count(100))
+fraction_of(1,4,count(200))
+fraction_of(3,4,count(150))
+
+# Operations that combine multiple complex steps
+multi_step_large(count(100),divide,4,multiply,3)
+multi_step_large(add(75,75),subtract,50,fraction,2)
+
+# Tasks that should definitely exceed reasonable tally limits
+extreme_count(500)
+extreme_count(1000)
+extreme_multiply(100,10)
+extreme_multiply(50,20)

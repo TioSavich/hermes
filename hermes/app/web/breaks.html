@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Where It Breaks — Critical Mathematics</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400;1,700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #110f08; --surface: #1a1710; --surface-raised: #242014;
+      --border: #3a3428; --text: #d4cfc0; --muted: #8a8470;
+      --tension: #d4634a; --release: #5b9eae; --accent: #e8a84c;
+      --title-font: 'IBM Plex Serif', Georgia, serif;
+      --mono: 'IBM Plex Mono', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--bg); color: var(--text); font-family: var(--title-font); font-size: 17px; line-height: 1.72; -webkit-font-smoothing: antialiased; }
+    body { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .brand { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; margin-bottom: 2.5rem; }
+    .brand b { color: var(--accent); font-weight: 500; }
+    .brand a { color: var(--muted); text-decoration: none; }
+    .brand a:hover { color: var(--accent); }
+    h1 { font-style: italic; font-size: 2.4rem; color: var(--accent); margin-bottom: 1.4rem; line-height: 1.15; }
+    h2 { font-size: 1.25rem; margin: 2.6rem 0 0.9rem; }
+    p { margin-bottom: 1.05rem; }
+    .muted { color: var(--muted); }
+    .metaphor { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1.2rem 1.4rem; margin-bottom: 1.2rem; }
+    .metaphor h3 { font-size: 1.1rem; color: var(--accent); margin-bottom: 0.2rem; }
+    .domains { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase; margin-bottom: 0.7rem; }
+    .domains .arrow { color: var(--release); }
+    .metaphor .desc { font-size: 0.95rem; margin-bottom: 0.8rem; }
+    .break { border-left: 3px solid var(--tension); padding: 0.5rem 0.9rem; margin: 0.6rem 0; background: var(--surface-raised); }
+    .break .inf { font-family: var(--mono); font-size: 0.85rem; color: var(--tension); }
+    .break .why { font-size: 0.88rem; color: var(--text); margin-top: 0.15rem; }
+    .repair { border-left: 3px solid var(--release); padding: 0.5rem 0.9rem; margin: 0.6rem 0; }
+    .repair .name { font-family: var(--mono); font-size: 0.85rem; color: var(--release); }
+    .repair .mech { font-size: 0.88rem; margin-top: 0.15rem; }
+    .k { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: block; margin-top: 0.9rem; }
+    .others { margin-top: 1rem; }
+    .others summary { cursor: pointer; font-family: var(--mono); font-size: 0.8rem; color: var(--muted); }
+    .other-row { display: grid; grid-template-columns: 1fr 2fr; gap: 0.8rem; padding: 0.45rem 0.2rem; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+    .other-row .nm { font-family: var(--mono); font-size: 0.8rem; color: var(--text); }
+    .offline { background: var(--surface); border: 1px dashed var(--border); padding: 1rem 1.2rem; color: var(--muted); font-size: 0.92rem; }
+    .footnote { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+    code { font-family: var(--mono); font-size: 0.85em; color: var(--release); }
+    .operable { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1.3rem 1.4rem; margin-bottom: 1.2rem; }
+    .operable h3 { font-size: 1.1rem; color: var(--accent); margin-bottom: 0.2rem; }
+    .operable .desc { font-size: 0.94rem; margin: 0.6rem 0 1rem; }
+    .opbtn { font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.03em; color: var(--text); background: var(--surface-raised); border: 1px solid var(--border); border-radius: 3px; padding: 0.5rem 0.85rem; margin: 0 0.4rem 0.5rem 0; cursor: pointer; }
+    .opbtn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+    .opbtn:disabled { opacity: 0.38; cursor: default; }
+    .board { margin-top: 0.5rem; }
+    .row { display: flex; gap: 0.6rem; align-items: baseline; padding: 0.32rem 0; border-bottom: 1px solid var(--border); }
+    .row .lab { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); min-width: 8.5rem; }
+    .chip { font-family: var(--mono); font-size: 0.78rem; background: var(--surface-raised); border: 1px solid var(--border); border-radius: 3px; padding: 0.08rem 0.45rem; }
+    .chip.tension { color: var(--tension); border-color: var(--tension); }
+    .chip.release { color: var(--release); border-color: var(--release); }
+    .verdict { font-family: var(--mono); font-size: 0.82rem; margin-top: 0.7rem; padding: 0.45rem 0.75rem; border-left: 3px solid var(--border); color: var(--muted); }
+    .verdict.tension { border-color: var(--tension); color: var(--tension); }
+    .verdict.release { border-color: var(--release); color: var(--release); }
+    .seqin { font-family: var(--mono); font-size: 0.82rem; background: var(--surface-raised); color: var(--text); border: 1px solid var(--border); border-radius: 3px; padding: 0.45rem 0.6rem; width: 100%; margin-bottom: 0.5rem; }
+    select.seqsrc { font-family: var(--mono); font-size: 0.76rem; background: var(--surface-raised); color: var(--text); border: 1px solid var(--border); border-radius: 3px; padding: 0.4rem 0.5rem; margin-right: 0.4rem; }
+  </style>
+  <script defer src="../more-zeeman/render/hermes-shell.js" data-root="../more-zeeman/" data-app="./" data-active="breaks"></script>
+</head>
+<body data-hshell-doc="1">
+  <div class="brand">critical <b>mathematics</b> · where it breaks</div>
+
+  <h1>Built to break</h1>
+
+  <p>Where does arithmetic come from, for a child? Lakoff and Núñez's answer:
+    from the body. Collecting objects into piles. Putting things into
+    containers and taking them out. Walking along a path. Building towers and
+    taking them apart. Each of these activities becomes a <em>grounding
+    metaphor</em> — a systematic mapping from something a body knows how to do
+    onto something arithmetic means.</p>
+
+  <p>Every one of these metaphors breaks. Object collection grounds 3&thinsp;+&thinsp;4
+    beautifully and then meets 3&thinsp;−&thinsp;7, and there is no pile of
+    negative four stones. The break is not a defect in the child. It is a
+    structural fact about the metaphor, and it sits exactly where the hardest
+    teaching lives. Mathematics history answered each break with a named
+    repair — a new metaphor patched over the hole — and children must make the
+    same repairs, usually without anyone telling them that the ground has
+    shifted.</p>
+
+  <p>The cards below are read live from the knowledge base: each metaphor's
+    mapping, the inferences where it breaks and why, and the repair
+    metaphors that restore closure.</p>
+
+  <div id="cards"><span class="muted">reading the knowledge base…</span></div>
+
+  <h2 id="operable">The break, made operable</h2>
+
+  <p>The metaphor breaks above are read as facts. The two below you run yourself.
+    Each posts to the live Hermes server and reads back what the formalism records,
+    including the point where it records a gap in place of a result.</p>
+
+  <div class="operable" id="deontic">
+    <h3>Commitment without entitlement</h3>
+    <div class="domains">deontic scorekeeping · <code>learner/deontic_scorekeeper.pl</code></div>
+    <p class="desc">Cross-multiplication returns the right number. A learner who runs it on
+      &frac34; of &frac25; has <em>undertaken a commitment</em> to the result 6/20 without
+      being <em>entitled</em> to it: the move deploys none of the area-model account that
+      would say why that arithmetic answers the question. Undertake the commitment and the
+      scorekeeper records the gap: the answer is right and its justification is absent.
+      Deposit the area-model account and the gap clears. The seed table is small; what it
+      records is the Brandomian distinction, not a general theory of justification.</p>
+    <button class="opbtn" id="ds-commit">Undertake the cross-multiplication commitment</button>
+    <button class="opbtn" id="ds-repair" disabled>Deposit the area-model account</button>
+    <button class="opbtn" id="ds-reset" disabled>Reset</button>
+    <div id="ds-out" class="board"></div>
+  </div>
+
+  <div class="operable" id="sequent">
+    <h3>The sequent witness</h3>
+    <div class="domains">proof boundary · <code>crosswalk/families/cw_sequent_proof.pl</code></div>
+    <p class="desc">The witness reports which loaded prover layer accepts a sequent, and on
+      what rule. The reflexive identity goes through on every layer. Change the right-hand
+      side so no loaded prover derives it, and the witness says so rather than inventing a
+      derivation. A deeper boundary belongs to the embodied prover: when a derivation
+      touches the arche-trace, it returns <code>erasure</code> in place of a proof,
+      recording that its justification gives out there. The preset below sends a sequent
+      whose derivation draws the trace in through the pragmatic axiom pack
+      (<code>pml/pragmatic_axioms.pl</code>); the prover answers
+      <code>erasure(propagation)</code>, and the card renders that answer in place of a
+      derivation. A worker loaded without that pack answers that no loaded layer derives
+      the same sequent, and the card renders that instead.</p>
+    <input class="seqin" id="seq-in" value="[s(a)] =&gt; [s(a)]" spellcheck="false">
+    <div>
+      <select class="seqsrc" id="seq-src">
+        <option value="sequent">sequent · default prover</option>
+        <option value="sequent_safe">sequent_safe · time-limited</option>
+        <option value="embodied">embodied · resource-tracked</option>
+        <option value="deontic_bridge">deontic_bridge</option>
+      </select>
+      <button class="opbtn" id="seq-go">Ask for a witness</button>
+      <button class="opbtn" id="seq-erasure">Send the trace-marked sequent</button>
+    </div>
+    <div id="seq-out" class="board"></div>
+  </div>
+
+  <div class="footnote">
+    Source: Lakoff &amp; Núñez, <em>Where Mathematics Comes From</em> (2000),
+    encoded as Prolog facts in <code>formalization/grounding_metaphors.pl</code>
+    (<code>metaphor_breaks_at/3</code>, <code>metaphor_repair/4</code>) and the
+    geometry-era extensions. A break listed here is queryable by the same
+    engine that scores strategies and misconceptions — the point of encoding
+    the breaks is that the system can be asked where its own ground gives way.
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const human = (s) => String(s || "").replace(/_/g, " ");
+
+    function card(m) {
+      const div = document.createElement("div");
+      div.className = "metaphor";
+      const breaks = m.breaks.map(b =>
+        `<div class="break"><div class="inf">breaks at · ${human(b.inference)}</div>
+         <div class="why">${b.reason}</div></div>`).join("");
+      const repairs = m.repairs.map(r =>
+        `<div class="repair"><div class="name">repair · ${human(r.repair_metaphor)} (for ${human(r.broken_inference)})</div>
+         <div class="mech">${r.mechanism}</div></div>`).join("");
+      div.innerHTML = `
+        <h3>${m.short_name}</h3>
+        <div class="domains">${human(m.source_domain)} <span class="arrow">→</span> ${human(m.target_domain)}</div>
+        <div class="desc">${m.description}</div>
+        ${breaks ? `<span class="k">where it breaks</span>${breaks}` : ""}
+        ${repairs ? `<span class="k">named repairs</span>${repairs}` : ""}`;
+      return div;
+    }
+
+    async function post(path, body) {
+      const resp = await fetch(path, {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      return resp.json();
+    }
+
+    function offlineNote() {
+      return `<div class="verdict">the local Hermes server (port 8765) is not reachable.
+        Launch it with <code>bash hermes/app/launch.sh</code> and try again.</div>`;
+    }
+
+    // --- the deontic break: commitment without entitlement --------------------
+    const DEONTIC_COMMIT = "result_of(cross_multiply, 3, 4, 2, 5, fraction(6,20))";
+    const AREA_MODEL = "area_model_part_of_part(3, 4, 2, 5)";
+
+    function chips(xs, cls) {
+      return (xs && xs.length)
+        ? xs.map(x => `<span class="chip ${cls || ""}">${x}</span>`).join(" ")
+        : `<span class="muted">none</span>`;
+    }
+
+    function renderScorecard(card, repaired) {
+      const inc = card.incoherences || [];
+      const broken = inc.some(s => String(s).indexOf("commitment_without_entitlement") === 0);
+      let verdict = "";
+      if (broken) {
+        verdict = `<div class="verdict tension">committed, not entitled: the move is
+          procedurally in order and the vocabulary that would justify it was never deployed.</div>`;
+      } else if (repaired) {
+        verdict = `<div class="verdict release">entitlement restored: the area-model account
+          discharges the commitment, and no incoherence remains.</div>`;
+      }
+      return `
+        <div class="row"><span class="lab">commitments</span><span>${chips(card.commitments)}</span></div>
+        <div class="row"><span class="lab">entitlements</span><span>${chips(card.entitlements)}</span></div>
+        <div class="row"><span class="lab">incoherences</span><span>${chips(inc, broken ? "tension" : "release")}</span></div>
+        ${verdict}`;
+    }
+
+    function wireDeontic() {
+      const out = $("ds-out"), bCommit = $("ds-commit"), bRepair = $("ds-repair"), bReset = $("ds-reset");
+      async function run(commitments, repaired) {
+        try {
+          const data = await post("/api/deontic_scorecard", { commitments, entitlements: [] });
+          if (!data.ok) { out.innerHTML = `<div class="verdict tension">${data.error || "scorecard failed"}</div>`; return; }
+          out.innerHTML = renderScorecard(data.result, repaired);
+        } catch (err) { out.innerHTML = offlineNote(); }
+      }
+      bCommit.onclick = () => { bCommit.disabled = true; bRepair.disabled = false; bReset.disabled = false; run([DEONTIC_COMMIT], false); };
+      bRepair.onclick = () => { bRepair.disabled = true; run([AREA_MODEL, DEONTIC_COMMIT], true); };
+      bReset.onclick = () => { out.innerHTML = ""; bCommit.disabled = false; bRepair.disabled = true; bReset.disabled = true; };
+    }
+
+    // --- the sequent witness: where a proof goes through, and where it stops ---
+    // Trace-marked preset: with pml/pragmatic_axioms.pl loaded, the elusive-subject
+    // axiom marks the shared variable with the arche-trace during the derivation
+    // and the embodied prover returns erasure(propagation) in place of a proof.
+    const TRACE_SEQUENT = "[s(comp_nec(X))] => [o(exp_nec(X))]";
+
+    function erasedProofWitness(w) {
+      const sw = w.source_witness || {};
+      const pw = sw.proof_witness || {};
+      return pw.kind === "erased_proof" ? pw : null;
+    }
+
+    function wireSequent() {
+      const out = $("seq-out");
+      async function ask() {
+        const sequent = $("seq-in").value.trim();
+        const source = $("seq-src").value;
+        if (!sequent) return;
+        out.innerHTML = `<span class="muted">asking the prover…</span>`;
+        let data;
+        try { data = await post("/api/sequent_proof", { sequent, source }); }
+        catch (err) { out.innerHTML = offlineNote(); return; }
+        if (data.ok) {
+          const w = data.result, sw = w.source_witness || {};
+          const erased = erasedProofWitness(w);
+          if (erased) {
+            const spent = (sw.resources_spent != null)
+              ? `<div class="row"><span class="lab">resources spent</span><span>${sw.resources_spent}</span></div>` : "";
+            out.innerHTML = `
+              <div class="row"><span class="lab">answered by</span><span class="chip">${w.source}</span></div>
+              <div class="row"><span class="lab">proof</span><span class="chip tension">erasure(${erased.reason || ""})</span></div>
+              ${spent}
+              <div class="verdict tension">erasure in place of a proof: the derivation touched
+                the arche-trace, and the prover records the point where its justification
+                stops. What to make of that point is handed to the reader, not computed.</div>`;
+          } else {
+            out.innerHTML = `
+              <div class="row"><span class="lab">accepted by</span><span class="chip release">${w.source}</span></div>
+              <div class="row"><span class="lab">legacy functor</span><span>${w.legacy_functor || ""}</span></div>
+              <div class="row"><span class="lab">rule</span><span>${sw.rule || sw.kind || "—"}</span></div>
+              <div class="verdict release">a loaded prover layer derives this sequent.</div>`;
+          }
+        } else {
+          out.innerHTML = `<div class="verdict tension">${data.error || "no witness"}: no loaded
+            prover layer derives this sequent on the chosen source.</div>`;
+        }
+      }
+      $("seq-go").onclick = ask;
+      $("seq-erasure").onclick = () => {
+        $("seq-in").value = TRACE_SEQUENT;
+        $("seq-src").value = "embodied";
+        ask();
+      };
+    }
+
+    async function init() {
+      try {
+        const resp = await fetch("/api/grounding", {
+          method: "POST", headers: { "Content-Type": "application/json" }, body: "{}",
+        });
+        const data = await resp.json();
+        if (!data.ok) throw new Error(data.error || "query failed");
+        const ms = data.result.metaphors.slice()
+          .sort((a, b) => (b.breaks.length + b.repairs.length) - (a.breaks.length + a.repairs.length));
+        const withBreaks = ms.filter(m => m.breaks.length || m.repairs.length);
+        const rest = ms.filter(m => !m.breaks.length && !m.repairs.length);
+        const box = $("cards");
+        box.innerHTML = "";
+        withBreaks.forEach(m => box.appendChild(card(m)));
+        if (rest.length) {
+          const det = document.createElement("details");
+          det.className = "others";
+          det.innerHTML = `<summary>${rest.length} further metaphors in the knowledge base
+            (no break-points encoded — coverage gaps, not claims of unbreakability)</summary>` +
+            rest.map(m => `<div class="other-row"><span class="nm">${m.short_name}</span>
+              <span>${m.description}</span></div>`).join("");
+          box.appendChild(det);
+        }
+      } catch (err) {
+        $("cards").innerHTML = `<div class="offline">The knowledge base is not reachable
+          (this page queries the local Hermes server, port 8765). Launch it with
+          <code>bash hermes/app/launch.sh</code> and reload.</div>`;
+      }
+    }
+    init();
+    wireDeontic();
+    wireSequent();
+  </script>
+</body>
+</html>

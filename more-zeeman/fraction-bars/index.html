@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fraction bars — Hermes filmstrip</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Crect%20width='16'%20height='16'%20fill='%23f4ead6'/%3E%3Crect%20x='1'%20y='4'%20width='14'%20height='3.5'%20fill='%23dfe7ef'%20stroke='%230d0c08'%20stroke-width='0.6'/%3E%3Crect%20x='1'%20y='9'%20width='3.5'%20height='3.5'%20fill='%237fb2e6'%20stroke='%230d0c08'%20stroke-width='0.6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../hermes-tokens.css">
+  <link rel="stylesheet" href="../render/host.css">
+  <script defer src="../render/hermes-shell.js" data-root="../" data-app="/" data-active="fraction-bars"></script>
+</head>
+<body class="view-freshman" data-hshell-fit="1">
+  <div class="wrap">
+    <header class="host-head">
+      <div>
+        <h1>Fraction bars</h1>
+        <p class="subhead">A fraction automaton drawn as bars: partition the whole, disembed the unit fraction, iterate it. But note what licenses this trace — not re-seeing one whole as <i>n</i> parts, <i>n</i> times, but coordinating <b>three levels of units</b> at once (panel at right). Driven from the render witness.</p>
+      </div>
+      <nav class="view-toggle" aria-label="audience">
+        <button data-view="freshman" class="active">student</button>
+        <button data-view="teacher">teacher</button>
+        <button data-view="philosopher">researcher</button>
+      </nav>
+    </header>
+
+    <div id="stage" class="stage"></div>
+
+    <div class="rail">
+    <div class="meta-line">
+      <span id="context"></span>
+      <span id="result"></span>
+    </div>
+
+    <div class="controls">
+      <button id="prev">&larr; Prev</button>
+      <input id="seek" type="range" min="0" max="0" value="0">
+      <button id="next">Next &rarr;</button>
+      <button id="play">Play</button>
+      <span id="counter" class="counter"></span>
+      <span id="annotation-flag" class="annot">annotation only</span>
+      <button id="download">SVG</button>
+    </div>
+
+    <p id="caption" class="caption only-freshman"></p>
+
+    <section class="panel units-panel">
+      <h2>Three levels of units — what splitting requires</h2>
+      <p style="font-size:12.5px;color:var(--muted,#665f4f);margin:0 0 10px;line-height:1.5">
+        Recovering the whole from 1/4, four times, only takes two levels — and two levels
+        stop at the whole's edge. The <b>splitting operation</b> — partitioning and iterating
+        held together as one act — requires all three at once
+        (Steffe &amp; Olive, 2010; Hackenberg, 2010):
+      </p>
+      <svg viewBox="0 0 288 150" style="display:block;width:100%;height:auto" role="img" aria-label="Three levels of units">
+        <!-- L1: the whole as one thing -->
+        <text x="8" y="22" font-family="ui-monospace,monospace" font-size="9" fill="var(--gold-deep,#a97c24)" font-weight="600">1</text>
+        <rect x="22" y="10" width="150" height="17" fill="var(--fig-whole,#ebdfc5)" stroke="var(--fig-stroke,#0d0c08)" stroke-width="1.1"/>
+        <text x="180" y="22" font-family="ui-monospace,monospace" font-size="8.5" fill="var(--muted,#665f4f)">the whole — one thing</text>
+        <!-- L2: the whole as a unit of 5 units -->
+        <text x="8" y="58" font-family="ui-monospace,monospace" font-size="9" fill="var(--gold-deep,#a97c24)" font-weight="600">2</text>
+        <rect x="22" y="46" width="150" height="17" fill="var(--fig-whole,#ebdfc5)" stroke="var(--fig-stroke,#0d0c08)" stroke-width="1.1"/>
+        <g stroke="var(--fig-stroke,#0d0c08)" stroke-width="0.9">
+          <line x1="52" y1="46" x2="52" y2="63"/><line x1="82" y1="46" x2="82" y2="63"/>
+          <line x1="112" y1="46" x2="112" y2="63"/><line x1="142" y1="46" x2="142" y2="63"/>
+        </g>
+        <text x="180" y="58" font-family="ui-monospace,monospace" font-size="8.5" fill="var(--muted,#665f4f)">a unit of 5 units</text>
+        <!-- L3: the unit fraction, itself a unit, iterated past the whole -->
+        <text x="8" y="94" font-family="ui-monospace,monospace" font-size="9" fill="var(--gold-deep,#a97c24)" font-weight="600">3</text>
+        <g>
+          <rect x="22" y="82" width="30" height="17" fill="var(--fig-highlight,#d4a747)" stroke="var(--fig-stroke,#0d0c08)" stroke-width="1"/>
+          <rect x="52" y="82" width="30" height="17" fill="var(--fig-highlight,#d4a747)" stroke="var(--fig-stroke,#0d0c08)" stroke-width="1"/>
+          <rect x="82" y="82" width="30" height="17" fill="var(--fig-highlight,#d4a747)" stroke="var(--fig-stroke,#0d0c08)" stroke-width="1"/>
+          <rect x="112" y="82" width="30" height="17" fill="var(--fig-highlight,#d4a747)" stroke="var(--fig-stroke,#0d0c08)" stroke-width="1"/>
+          <rect x="142" y="82" width="30" height="17" fill="var(--fig-highlight,#d4a747)" stroke="var(--fig-stroke,#0d0c08)" stroke-width="1"/>
+          <rect x="172" y="82" width="30" height="17" fill="var(--fig-iterated,#a97c24)" stroke="var(--fig-stroke,#0d0c08)" stroke-width="1"/>
+          <rect x="202" y="82" width="30" height="17" fill="var(--fig-iterated,#a97c24)" stroke="var(--fig-stroke,#0d0c08)" stroke-width="1"/>
+        </g>
+        <!-- the whole's boundary, kept in view -->
+        <rect x="22" y="78" width="150" height="25" fill="none" stroke="var(--teal-deep,#2c5e66)" stroke-width="1.1" stroke-dasharray="3 3"/>
+        <text x="22" y="117" font-family="ui-monospace,monospace" font-size="8.5" fill="var(--teal-deep,#2c5e66)">5/5 — the whole, still in view</text>
+        <text x="236" y="94" font-family="ui-monospace,monospace" font-size="8.5" fill="var(--gold-deep,#a97c24)">&#8594; 7/5</text>
+        <text x="22" y="140" font-family="ui-monospace,monospace" font-size="8.5" fill="var(--muted,#665f4f)">1/5 — a unit in its own right, iterable past the whole</text>
+      </svg>
+      <p style="font-size:12.5px;color:var(--ink-soft,#1b1810);margin:10px 0 0;line-height:1.5">
+        With two levels a child can exhaust the whole and name 4/4 — but 7/5 has no home:
+        iterating past the whole destroys the whole being tracked. With the third level,
+        7/5 is unproblematic: seven iterations of a unit whose meaning stays anchored to a
+        whole of five. That coordination — not repetition — is the splitting operation.
+      </p>
+    </section>
+
+    <section class="panel only-philosopher">
+      <h2>Formal signature</h2>
+      <code id="tuple" class="tuple"></code>
+      <div id="verbs" class="verbs"></div>
+      <h3>Grounding (Lakoff &amp; N&uacute;&ntilde;ez)</h3>
+      <div id="grounding" class="band"></div>
+    </section>
+
+    <section class="panel only-teacher">
+      <h2>Teacher layer</h2>
+      <div id="teacher" class="band"></div>
+    </section>
+
+    <section class="calc-bar">
+      <label>kind
+        <select data-arg="kind">
+          <option value="splitting" selected>splitting</option>
+          <option value="unit_fraction_partition">unit fraction partition</option>
+          <option value="unit_fraction_iteration">unit fraction iteration</option>
+        </select>
+      </label>
+      <label>n <input data-arg="n" type="number" value="1" min="1"></label>
+      <label>d <input data-arg="d" type="number" value="4" min="1"></label>
+      <button id="calculate">Calculate</button>
+      <span class="calc-note">POSTs to the worker; renders the returned witness frames.</span>
+    </section>
+    </div><!-- .rail -->
+  </div>
+
+  <!--
+    Embedded sample so the page draws offline (file:// with no server). This is a
+    worker round-trip of fraction_render(kind=splitting, n=1, d=4) — the
+    splitting trace (partition 1/4, disembed, iterate back to the whole). The
+    Calculate button replaces it with a live render.
+  -->
+  <script type="application/json" id="frames">{"canvas":{"height":320,"width":700},"frames":[{"caption":"Partition the whole into 4 equal parts.","scene":{"bars":[{"color":"#dfe7ef","fraction":"1/1","h":48,"isUnitBar":true,"label":"","size":420,"splits":[{"color":"#dfe7ef","h":48,"w":105,"x":0,"y":0},{"color":"#dfe7ef","h":48,"w":105,"x":105,"y":0},{"color":"#dfe7ef","h":48,"w":105,"x":210,"y":0},{"color":"#dfe7ef","h":48,"w":105,"x":315,"y":0}],"type":"bar","w":420,"x":40,"y":40}],"format":"fraction-bars","mats":[],"unitBarIndex":0,"version":2},"sceneChanged":true,"step":1,"verb":"partition_whole_into_equal_units(4)"},{"caption":"Disembed the unit fraction 1/4.","scene":{"bars":[{"color":"#dfe7ef","fraction":"1/1","h":48,"isUnitBar":true,"label":"","size":420,"splits":[{"color":"#dfe7ef","h":48,"w":105,"x":0,"y":0},{"color":"#dfe7ef","h":48,"w":105,"x":105,"y":0},{"color":"#dfe7ef","h":48,"w":105,"x":210,"y":0},{"color":"#dfe7ef","h":48,"w":105,"x":315,"y":0}],"type":"bar","w":420,"x":40,"y":40},{"color":"#7fb2e6","fraction":"1/4","h":48,"isUnitBar":false,"label":"1/4","size":105,"splits":[{"color":"#7fb2e6","h":48,"w":105,"x":0,"y":0}],"type":"bar","w":105,"x":40,"y":112}],"format":"fraction-bars","mats":[],"unitBarIndex":0,"version":2},"sceneChanged":true,"step":2,"verb":"disembed_unit_fraction(fraction(1,4))"},{"caption":"Iterate 1/4 back 4 times to recover the whole.","scene":{"bars":[{"color":"#dfe7ef","fraction":"1/1","h":48,"isUnitBar":true,"label":"","size":420,"splits":[{"color":"#dfe7ef","h":48,"w":105,"x":0,"y":0},{"color":"#dfe7ef","h":48,"w":105,"x":105,"y":0},{"color":"#dfe7ef","h":48,"w":105,"x":210,"y":0},{"color":"#dfe7ef","h":48,"w":105,"x":315,"y":0}],"type":"bar","w":420,"x":40,"y":40},{"color":"#7fb2e6","fraction":"1/4","h":48,"isUnitBar":false,"label":"1/4","size":105,"splits":[{"color":"#7fb2e6","h":48,"w":105,"x":0,"y":0}],"type":"bar","w":105,"x":40,"y":112},{"color":"#9ccf9c","fraction":"4/4","h":48,"isUnitBar":false,"label":"4/4","size":420,"splits":[{"color":"#9ccf9c","h":48,"w":105,"x":0,"y":0},{"color":"#9ccf9c","h":48,"w":105,"x":105,"y":0},{"color":"#9ccf9c","h":48,"w":105,"x":210,"y":0},{"color":"#9ccf9c","h":48,"w":105,"x":315,"y":0}],"type":"bar","w":420,"x":40,"y":184}],"format":"fraction-bars","mats":[],"unitBarIndex":0,"version":2},"sceneChanged":true,"step":3,"verb":"iterate_unit_fraction_back_to_whole(4,fraction(1,4))"},{"caption":"Partition and iteration are inverses: 1/4 x 4 = 1.","scene":{"bars":[{"color":"#dfe7ef","fraction":"1/1","h":48,"isUnitBar":true,"label":"","size":420,"splits":[{"color":"#dfe7ef","h":48,"w":105,"x":0,"y":0},{"color":"#dfe7ef","h":48,"w":105,"x":105,"y":0},{"color":"#dfe7ef","h":48,"w":105,"x":210,"y":0},{"color":"#dfe7ef","h":48,"w":105,"x":315,"y":0}],"type":"bar","w":420,"x":40,"y":40},{"color":"#7fb2e6","fraction":"1/4","h":48,"isUnitBar":false,"label":"1/4","size":105,"splits":[{"color":"#7fb2e6","h":48,"w":105,"x":0,"y":0}],"type":"bar","w":105,"x":40,"y":112},{"color":"#9ccf9c","fraction":"4/4","h":48,"isUnitBar":false,"label":"4/4","size":420,"splits":[{"color":"#9ccf9c","h":48,"w":105,"x":0,"y":0},{"color":"#9ccf9c","h":48,"w":105,"x":105,"y":0},{"color":"#9ccf9c","h":48,"w":105,"x":210,"y":0},{"color":"#9ccf9c","h":48,"w":105,"x":315,"y":0}],"type":"bar","w":420,"x":40,"y":184}],"format":"fraction-bars","mats":[],"unitBarIndex":0,"version":2},"sceneChanged":false,"step":4,"verb":"recognize_partition_iterate_as_mutual_inverse(fraction(1,4),4)"},{"caption":"The whole is recovered.","scene":{"bars":[{"color":"#dfe7ef","fraction":"1/1","h":48,"isUnitBar":true,"label":"","size":420,"splits":[{"color":"#dfe7ef","h":48,"w":105,"x":0,"y":0},{"color":"#dfe7ef","h":48,"w":105,"x":105,"y":0},{"color":"#dfe7ef","h":48,"w":105,"x":210,"y":0},{"color":"#dfe7ef","h":48,"w":105,"x":315,"y":0}],"type":"bar","w":420,"x":40,"y":40},{"color":"#7fb2e6","fraction":"1/4","h":48,"isUnitBar":false,"label":"1/4","size":105,"splits":[{"color":"#7fb2e6","h":48,"w":105,"x":0,"y":0}],"type":"bar","w":105,"x":40,"y":112},{"color":"#9ccf9c","fraction":"4/4","h":48,"isUnitBar":false,"label":"4/4","size":420,"splits":[{"color":"#9ccf9c","h":48,"w":105,"x":0,"y":0},{"color":"#9ccf9c","h":48,"w":105,"x":105,"y":0},{"color":"#9ccf9c","h":48,"w":105,"x":210,"y":0},{"color":"#9ccf9c","h":48,"w":105,"x":315,"y":0}],"type":"bar","w":420,"x":40,"y":184}],"format":"fraction-bars","mats":[],"unitBarIndex":0,"version":2},"sceneChanged":false,"step":5,"verb":"recover_whole(whole_recovered)"},{"caption":"The improper-fraction domain is now open.","scene":{"bars":[{"color":"#dfe7ef","fraction":"1/1","h":48,"isUnitBar":true,"label":"","size":420,"splits":[{"color":"#dfe7ef","h":48,"w":105,"x":0,"y":0},{"color":"#dfe7ef","h":48,"w":105,"x":105,"y":0},{"color":"#dfe7ef","h":48,"w":105,"x":210,"y":0},{"color":"#dfe7ef","h":48,"w":105,"x":315,"y":0}],"type":"bar","w":420,"x":40,"y":40},{"color":"#7fb2e6","fraction":"1/4","h":48,"isUnitBar":false,"label":"1/4","size":105,"splits":[{"color":"#7fb2e6","h":48,"w":105,"x":0,"y":0}],"type":"bar","w":105,"x":40,"y":112},{"color":"#9ccf9c","fraction":"4/4","h":48,"isUnitBar":false,"label":"4/4","size":420,"splits":[{"color":"#9ccf9c","h":48,"w":105,"x":0,"y":0},{"color":"#9ccf9c","h":48,"w":105,"x":105,"y":0},{"color":"#9ccf9c","h":48,"w":105,"x":210,"y":0},{"color":"#9ccf9c","h":48,"w":105,"x":315,"y":0}],"type":"bar","w":420,"x":40,"y":184}],"format":"fraction-bars","mats":[],"unitBarIndex":0,"version":2},"sceneChanged":false,"step":6,"verb":"open_improper_fraction_domain"}],"kind":"splitting","request":{"base":4,"count":1,"kind":"splitting"},"result":"whole_recovered(unit(whole))"}</script>
+  <script src="../render/drawer.js"></script>
+  <script>
+    HermesDrawer.create({ op: 'fraction_render', endpoint: '/api/render', defaultView: 'freshman' });
+  </script>
+</body>
+</html>

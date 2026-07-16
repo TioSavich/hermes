@@ -1,0 +1,30 @@
+<!doctype html><meta charset=utf-8>
+<title>Parametric deformations: the same error, across inputs</title>
+<body style='font-family:system-ui;background:#f8f1df;color:#1b1810;max-width:1100px;margin:0 auto;padding:28px'>
+<h1 style="font-family:Georgia,'Times New Roman',serif">Parametric deformations</h1>
+<p style='max-width:760px;line-height:1.45'>A documented student-work error is not a single botched figure: it is a <em>rule</em> that reproduces. The deformations here are functions of the fraction. The same vertical-strip rule transplanted onto a circle botches the model of 1/4, 1/5, 1/6, and 1/8 the same way, differing only in the denominator. Logic in Prolog (<code>strategies/render/parametric_partition_deformation.pl</code>, <code>parametric_fraction_errors.pl</code>); render projected through <code>more-zeeman/render/drawer.js</code>.</p>
+<h2>The headline: one deformation, four denominators</h2>
+<p><small>Replication check: 1/4 drew 3 interior cuts (expected 3), 1/5 drew 4 interior cuts (expected 4), 1/6 drew 5 interior cuts (expected 5), 1/8 drew 7 interior cuts (expected 7). The frame specs differ only by N; the pixels confirm it.</small></p>
+<img src='HEADLINE-vertical-on-circle-replication.svg' style='max-width:100%;border:1px solid #cabf9f;background:#f8f1df'>
+<h2>Productive vs deformed (1/5), per host</h2>
+<p style='max-width:760px'>The licensed model in the host's own partition rule (solid, correct) beside the transplant (dashed, a labeled misconception). A deformation is only ever a labeled misconception, never an unlabeled productive diagram.</p>
+<h3>circle</h3>
+<img src='PAIR-circle-1-5.svg' style='max-width:100%;border:1px solid #cabf9f'>
+<details><summary>B/M/E filmstrips</summary><img src='PRODUCTIVE-circle-1-5-filmstrip.svg' style='max-width:100%;border:1px solid #cabf9f'><img src='DEFORMED-circle-1-5-filmstrip.svg' style='max-width:100%;border:1px solid #cabf9f'></details>
+<h3>rectangle</h3>
+<img src='PAIR-rectangle-1-5.svg' style='max-width:100%;border:1px solid #cabf9f'>
+<details><summary>B/M/E filmstrips</summary><img src='PRODUCTIVE-rectangle-1-5-filmstrip.svg' style='max-width:100%;border:1px solid #cabf9f'><img src='DEFORMED-rectangle-1-5-filmstrip.svg' style='max-width:100%;border:1px solid #cabf9f'></details>
+<h3>set</h3>
+<img src='PAIR-set-1-5.svg' style='max-width:100%;border:1px solid #cabf9f'>
+<details><summary>B/M/E filmstrips</summary><img src='PRODUCTIVE-set-1-5-filmstrip.svg' style='max-width:100%;border:1px solid #cabf9f'><img src='DEFORMED-set-1-5-filmstrip.svg' style='max-width:100%;border:1px solid #cabf9f'></details>
+<h2>Equipartition failures (1/5, 1/6)</h2>
+<p style='max-width:760px'>The host keeps its own primitive but applies it wrongly: pieces unequal, or the count off by one. Distinct from the transplant family, and also parametric over the fraction.</p>
+<h3>unequal partition of 1/5 (bar)</h3>
+<img src='EQUIPARTITION-bar-unequal_partition-1-5-filmstrip.svg' style='max-width:100%;border:1px solid #cabf9f'>
+<h3>unequal partition of 1/6 (bar)</h3>
+<img src='EQUIPARTITION-bar-unequal_partition-1-6-filmstrip.svg' style='max-width:100%;border:1px solid #cabf9f'>
+<h3>miscount partition of 1/5 (circle)</h3>
+<img src='EQUIPARTITION-circle-miscount_partition-1-5-filmstrip.svg' style='max-width:100%;border:1px solid #cabf9f'>
+<h3>miscount partition of 1/6 (circle)</h3>
+<img src='EQUIPARTITION-circle-miscount_partition-1-6-filmstrip.svg' style='max-width:100%;border:1px solid #cabf9f'>
+</body>

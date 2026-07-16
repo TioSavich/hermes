@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Hermes teaching console</title>
+  <desc id="desc">A simple square app icon with an H, a conversation mark, and a small proof grid.</desc>
+  <rect x="16" y="16" width="224" height="224" rx="36" fill="#f8f1df" stroke="#1b1810" stroke-width="10"/>
+  <rect x="50" y="50" width="156" height="116" rx="14" fill="#ffffff" stroke="#1b1810" stroke-width="8"/>
+  <path d="M78 82v52M78 108h48M126 82v52" fill="none" stroke="#1b1810" stroke-width="12" stroke-linecap="round"/>
+  <path d="M156 88h26M156 112h34M156 136h22" fill="none" stroke="#b95238" stroke-width="9" stroke-linecap="round"/>
+  <path d="M82 166l-18 30 42-20" fill="#ffffff" stroke="#1b1810" stroke-width="8" stroke-linejoin="round"/>
+  <g transform="translate(142 172)" fill="#9ccf9c" stroke="#1b1810" stroke-width="5">
+    <rect x="0" y="0" width="22" height="22"/>
+    <rect x="26" y="0" width="22" height="22"/>
+    <rect x="52" y="0" width="22" height="22"/>
+    <rect x="0" y="26" width="22" height="22"/>
+    <rect x="26" y="26" width="22" height="22"/>
+    <rect x="52" y="26" width="22" height="22"/>
+  </g>
+</svg>

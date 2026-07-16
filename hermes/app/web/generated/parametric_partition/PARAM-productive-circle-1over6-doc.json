@@ -1,0 +1,98 @@
+{
+  "canvas": {
+    "height": 420,
+    "width": 760
+  },
+  "denominator": 6,
+  "frames": [
+    {
+      "caption": "Establish one whole as a circle.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "cx": 260,
+            "cy": 181,
+            "kind": "host-circle",
+            "label": "one whole",
+            "r": 94,
+            "role": "whole"
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 1,
+      "verb": "establish_whole(circle)"
+    },
+    {
+      "caption": "Apply the circle's own radial partition rule into 6 equal parts.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "cx": 260,
+            "cy": 181,
+            "kind": "host-circle",
+            "label": "one whole",
+            "r": 94,
+            "role": "whole"
+          },
+          {
+            "cx": 260,
+            "cy": 181,
+            "host": "circle",
+            "kind": "radial-partition",
+            "label": "",
+            "r": 94,
+            "role": "iterated",
+            "segments": 6
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 2,
+      "verb": "apply_partition(radial,6)"
+    },
+    {
+      "caption": "Shade one part: this is 1/6.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "cx": 260,
+            "cy": 181,
+            "kind": "host-circle",
+            "label": "one whole",
+            "r": 94,
+            "role": "whole"
+          },
+          {
+            "cx": 260,
+            "cy": 181,
+            "host": "circle",
+            "kind": "radial-partition",
+            "label": "",
+            "r": 94,
+            "role": "iterated",
+            "segments": 6
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 3,
+      "verb": "shade_unit_part(6)"
+    }
+  ],
+  "host": "circle",
+  "kind": "productive_circle_1_over_6",
+  "mode": "productive",
+  "request": {
+    "spec": "productive_circle_1_over_6"
+  },
+  "result": "productive",
+  "rule": "radial",
+  "tuple": "productive_partition(circle, unit_fraction(1,6))"
+}

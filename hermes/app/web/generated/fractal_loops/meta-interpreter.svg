@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="420" viewBox="0 0 700 420" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b21f2d"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="700" height="420" fill="#fbfbf8"/>
+
+  <!-- Title -->
+  <text x="20" y="28" font-size="16" font-weight="bold" fill="#1a1a1a">The interpreter that hollows itself</text>
+  <text x="20" y="46" font-size="11" fill="#555">learner/meta_interpreter.pl : solve/6  (lines 204, 209, 219; crisis at 259)</text>
+
+  <!-- ===== The loop nodes ===== -->
+
+  <!-- D1: fetch own clause body -->
+  <rect x="40" y="78" width="270" height="58" rx="8" fill="#eaf2fb" stroke="#2b6cb0" stroke-width="1.5"/>
+  <text x="175" y="100" font-size="12" font-weight="bold" text-anchor="middle" fill="#1a3a5c">D1 &#183; fetch the goal's own body</text>
+  <text x="175" y="116" font-size="10.5" text-anchor="middle" fill="#1a3a5c" font-family="monospace">clause(object_level:add(A,B,R),</text>
+  <text x="175" y="129" font-size="10.5" text-anchor="middle" fill="#1a3a5c" font-family="monospace">Body)   :204  (then :219)</text>
+
+  <!-- N: cost / modal gap = vanishing point -->
+  <rect x="390" y="78" width="270" height="58" rx="8" fill="#fdeaea" stroke="#b21f2d" stroke-width="2.5"/>
+  <text x="525" y="98" font-size="12" font-weight="bold" text-anchor="middle" fill="#7a1019">N &#183; charge cost, not call/1</text>
+  <text x="525" y="115" font-size="10.5" text-anchor="middle" fill="#7a1019" font-family="monospace">accumulate_tension; check_viability;</text>
+  <text x="525" y="128" font-size="10.5" text-anchor="middle" fill="#7a1019" font-family="monospace">I_Mid is I_In - Cost   :214&#8211;218</text>
+
+  <!-- the throw -->
+  <rect x="390" y="186" width="270" height="50" rx="8" fill="#f0f0ea" stroke="#555" stroke-width="1.5"/>
+  <text x="525" y="206" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#333">budget hits zero &#8594; throw</text>
+  <text x="525" y="223" font-size="10.5" text-anchor="middle" fill="#333" font-family="monospace">throw(perturbation(</text>
+
+  <!-- D2: re-descend into own body -->
+  <rect x="40" y="186" width="270" height="50" rx="8" fill="#eaf6ec" stroke="#2f855a" stroke-width="1.5"/>
+  <text x="175" y="206" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#22543d">D2 &#183; solve its own body again</text>
+  <text x="175" y="223" font-size="10.5" text-anchor="middle" fill="#22543d" font-family="monospace">solve(Body, ...)   :205 / :220</text>
+
+  <!-- ===== Loop arrows ===== -->
+  <!-- D1 -> N -->
+  <line x1="310" y1="107" x2="390" y2="107" stroke="#333" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <!-- N -> D2 (re-descend) -->
+  <line x1="390" y1="120" x2="310" y2="200" stroke="#2f855a" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <!-- D2 -> back up to D1 (closes the loop: each sub-goal fetches its own body) -->
+  <line x1="175" y1="186" x2="175" y2="136" stroke="#333" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <!-- N -> throw (the tail finally eaten) -->
+  <line x1="525" y1="136" x2="525" y2="186" stroke="#b21f2d" stroke-width="1.8" marker-end="url(#arrowRed)"/>
+
+  <!-- loop label -->
+  <text x="350" y="162" font-size="10.5" text-anchor="middle" fill="#888" font-style="italic">faithful re-execution is exactly what accrues the cost</text>
+
+  <!-- vanishing-point flag -->
+  <text x="525" y="62" font-size="10" text-anchor="middle" fill="#b21f2d" font-weight="bold">&#9660; where the tail is eaten &#183; result effaced</text>
+
+  <!-- head note: the static trace term -->
+  <text x="175" y="62" font-size="9.5" text-anchor="middle" fill="#7a5c00" font-style="italic">head &#9633; arg6 = [clause(...), trace(Body,_)]  :209</text>
+
+  <!-- ===== Captured output ===== -->
+  <rect x="40" y="262" width="620" height="130" rx="6" fill="#1d1f21" stroke="#444" stroke-width="1"/>
+  <text x="52" y="280" font-size="10" fill="#9fd3a0" font-family="monospace">$ swipl -l paths.pl  (use_module(learner(meta_interpreter)))</text>
+  <text x="52" y="298" font-size="10" fill="#d6d6d6" font-family="monospace">?- solve(object_level:add(8,5,Sum), 6, I_Out, _Trace).</text>
+  <text x="52" y="316" font-size="9.5" fill="#d6d6d6" font-family="monospace">  [Strategy Selection] No learned strategy applicable, using primordial</text>
+  <text x="62" y="328" font-size="9.5" fill="#d6d6d6" font-family="monospace">object_level:add(s(s(s(s(s(s(s(s(0)))))))),s(s(s(s(s(0))))),_20310)</text>
+  <text x="52" y="344" font-size="9.5" fill="#f0c674" font-family="monospace">  [CRISIS] Resource Exhaustion! I=0 &lt; Cost=1</text>
+  <text x="52" y="358" font-size="9.5" fill="#f0c674" font-family="monospace">CAUGHT CRISIS: perturbation(resource_exhaustion)</text>
+  <text x="52" y="378" font-size="9" fill="#8a8a8a" font-family="monospace">Sum is never bound: re-interpreting add's own clause drained the budget to 0;</text>
+  <text x="52" y="388" font-size="9" fill="#8a8a8a" font-family="monospace">the answer is effaced into the trace term and the crisis is thrown at :259.</text>
+</svg>

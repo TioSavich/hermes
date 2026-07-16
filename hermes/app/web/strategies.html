@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategies, Running — Critical Mathematics</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400;1,700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #110f08; --surface: #1a1710; --surface-raised: #242014;
+      --border: #3a3428; --text: #d4cfc0; --muted: #8a8470;
+      --tension: #d4634a; --release: #5b9eae; --accent: #e8a84c;
+      --title-font: 'IBM Plex Serif', Georgia, serif;
+      --mono: 'IBM Plex Mono', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--bg); color: var(--text); font-family: var(--title-font); font-size: 17px; line-height: 1.72; -webkit-font-smoothing: antialiased; }
+    body { max-width: 860px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .brand { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; margin-bottom: 2.5rem; }
+    .brand b { color: var(--accent); font-weight: 500; }
+    .brand a { color: var(--muted); text-decoration: none; }
+    .brand a:hover { color: var(--accent); }
+    h1 { font-style: italic; font-size: 2.4rem; color: var(--accent); margin-bottom: 1.4rem; line-height: 1.15; }
+    p { margin-bottom: 1.05rem; }
+    .muted { color: var(--muted); }
+    .ops { margin: 1.6rem 0 0.4rem; }
+    .op-label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0.9rem 0 0.4rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .chip { background: var(--surface); border: 1px solid var(--border); color: var(--text); font-family: var(--mono); font-size: 0.78rem; padding: 0.35rem 0.7rem; border-radius: 999px; cursor: pointer; }
+    .chip:hover { border-color: var(--accent); }
+    .chip.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+    .runbar { display: flex; align-items: center; gap: 0.6rem; margin: 1.4rem 0 0.8rem; font-family: var(--mono); }
+    .runbar input { width: 5.2rem; background: var(--surface); border: 1px solid var(--border); color: var(--text); font-family: var(--mono); font-size: 1rem; padding: 0.45rem 0.6rem; border-radius: 4px; text-align: center; }
+    .runbar .sym { color: var(--accent); font-size: 1.2rem; }
+    .runbar button { background: var(--surface-raised); border: 1px solid var(--accent); color: var(--accent); font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.08em; padding: 0.55rem 1.2rem; border-radius: 4px; cursor: pointer; }
+    .runbar button:hover { background: var(--accent); color: var(--bg); }
+    .result-line { font-family: var(--mono); font-size: 1rem; margin: 0.6rem 0 0.8rem; min-height: 1.5rem; }
+    .result-line b { color: var(--accent); }
+    #numberline { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; width: 100%; }
+    .steps { margin-top: 1.2rem; }
+    .step { display: grid; grid-template-columns: 2rem 11rem 1fr; gap: 0.7rem; padding: 0.4rem 0.2rem; border-bottom: 1px solid var(--border); font-size: 0.9rem; opacity: 0.25; transition: opacity 0.4s; }
+    .step.lit { opacity: 1; }
+    .step .n { font-family: var(--mono); color: var(--muted); }
+    .step .lab { font-family: var(--mono); color: var(--release); font-size: 0.8rem; padding-top: 0.1rem; }
+    .note { font-size: 0.85rem; color: var(--muted); font-style: italic; margin-top: 0.8rem; }
+    .offline { background: var(--surface); border: 1px dashed var(--border); padding: 1rem 1.2rem; color: var(--muted); font-size: 0.92rem; margin-top: 1rem; }
+    .footnote { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+    code { font-family: var(--mono); font-size: 0.85em; color: var(--release); }
+  </style>
+</head>
+<body>
+  <div class="brand">critical <b>mathematics</b> · strategies · <a href="/no.html">saying no</a> · <a href="/breaks.html">where it breaks</a></div>
+
+  <h1>Strategies, running</h1>
+
+  <p>Children do not compute the way calculators do. A child finding
+    38&thinsp;+&thinsp;27 might count on by tens and then by ones, or chunk the
+    27 apart, or rearrange to make a friendly base first. Researchers in the
+    Cognitively Guided Instruction tradition spent decades documenting these
+    strategies; this system encodes each one as a small machine — a
+    finite-state automaton whose every step is inspectable.</p>
+
+  <p>What you run below is not an animation written for this page. The page
+    sends your numbers to the actual machine, and the machine sends back its
+    execution history — each state it passed through, and the number-line
+    jumps it took. Pick a strategy, change the numbers, watch how
+    differently each machine moves.</p>
+
+  <div id="picker" class="ops"><span class="muted">loading strategies…</span></div>
+
+  <div class="runbar" id="runbar" style="display:none">
+    <input id="a" type="number" value="38" aria-label="first number">
+    <span class="sym" id="opsym">+</span>
+    <input id="b" type="number" value="27" aria-label="second number">
+    <button id="run">run the machine</button>
+  </div>
+
+  <div class="result-line" id="resultline"></div>
+  <svg id="numberline" viewBox="0 0 860 170" height="170" style="display:none"></svg>
+  <div class="steps" id="steps"></div>
+  <div class="note" id="note"></div>
+  <div id="offline"></div>
+
+  <div class="footnote">
+    Strategy attributions follow Carpenter &amp; Fennema's Cognitively Guided
+    Instruction taxonomy via Hackenberg. Each machine's definition is plain
+    Prolog in <code>strategies/math/</code>; the trace shown is its execution
+    history as returned by the <code>strategy_trace</code> operation.
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    let current = null;
+
+    async function api(path, body) {
+      const resp = await fetch(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+      const data = await resp.json();
+      if (!data.ok) throw new Error(data.error || "request failed");
+      return data.result;
+    }
+
+    function drawNumberline(jumps) {
+      const svg = $("numberline");
+      if (!jumps.length) { svg.style.display = "none"; return; }
+      svg.style.display = "block";
+      const vals = jumps.flatMap(j => [j.from, j.to]);
+      const lo = Math.min(...vals), hi = Math.max(...vals);
+      const pad = Math.max(2, Math.round((hi - lo) * 0.06));
+      const min = lo - pad, max = hi + pad;
+      const X = (v) => 30 + (v - min) / (max - min) * 800;
+      const AXIS = 130;
+      let s = `<line x1="20" y1="${AXIS}" x2="850" y2="${AXIS}" stroke="#3a3428" stroke-width="1.5"/>`;
+      const span = max - min;
+      const tick = span <= 30 ? 1 : span <= 80 ? 5 : 10;
+      for (let v = Math.ceil(min / tick) * tick; v <= max; v += tick) {
+        s += `<line x1="${X(v)}" y1="${AXIS - 4}" x2="${X(v)}" y2="${AXIS + 4}" stroke="#3a3428"/>` +
+             `<text x="${X(v)}" y="${AXIS + 20}" fill="#8a8470" font-size="11" font-family="IBM Plex Mono" text-anchor="middle">${v}</text>`;
+      }
+      const landed = new Set(jumps.map(j => j.to)); landed.add(jumps[0].from);
+      landed.forEach(v => {
+        s += `<circle cx="${X(v)}" cy="${AXIS}" r="3" fill="#e8a84c"/>`;
+      });
+      jumps.forEach((j, i) => {
+        const x1 = X(j.from), x2 = X(j.to);
+        const h = Math.min(85, 18 + Math.abs(x2 - x1) * 0.35);
+        const mid = (x1 + x2) / 2;
+        s += `<g class="jump" style="opacity:0; transition: opacity 0.45s ${i * 0.5}s">` +
+             `<path d="M ${x1} ${AXIS - 5} Q ${mid} ${AXIS - 5 - h} ${x2} ${AXIS - 5}" fill="none" stroke="#5b9eae" stroke-width="1.6"/>` +
+             `<text x="${mid}" y="${AXIS - 10 - h / 2}" fill="#5b9eae" font-size="11" font-family="IBM Plex Mono" text-anchor="middle">${j.label || ""}</text>` +
+             `<circle cx="${x2}" cy="${AXIS - 5}" r="2.5" fill="#5b9eae"/></g>`;
+      });
+      svg.innerHTML = s;
+      requestAnimationFrame(() => requestAnimationFrame(() =>
+        svg.querySelectorAll(".jump").forEach(g => { g.style.opacity = 1; })));
+    }
+
+    function showSteps(steps) {
+      const box = $("steps");
+      box.innerHTML = "";
+      steps.forEach((st, i) => {
+        const div = document.createElement("div");
+        div.className = "step";
+        div.innerHTML = `<span class="n">${st.n}</span><span class="lab">${st.label}</span><span>${st.value}</span>`;
+        box.appendChild(div);
+        setTimeout(() => div.classList.add("lit"), 350 * i);
+      });
+    }
+
+    async function run() {
+      if (!current) return;
+      $("resultline").textContent = "running…";
+      try {
+        const r = await api("/api/strategy_trace", {
+          strategy: current.name,
+          input: { a: Number($("a").value), b: Number($("b").value) },
+        });
+        if (!r.ok) {
+          $("resultline").textContent = "";
+          $("note").textContent = r.note;
+          $("steps").innerHTML = ""; drawNumberline([]);
+          return;
+        }
+        $("resultline").innerHTML =
+          `${current.name}: ${$("a").value} ${current.op_symbol} ${$("b").value} = <b>${r.result}</b>`;
+        drawNumberline(r.jumps);
+        showSteps(r.steps);
+        $("note").textContent = r.jumps.length ? "" : r.note;
+      } catch (err) {
+        $("offline").innerHTML = `<div class="offline">The knowledge base is not reachable
+          (this page queries the local Hermes server, port 8765). Launch it with
+          <code>bash hermes/app/launch.sh</code> and reload.</div>`;
+        $("resultline").textContent = "";
+      }
+    }
+
+    function select(entry, chip) {
+      current = entry;
+      document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+      chip.classList.add("active");
+      $("opsym").textContent = entry.op_symbol;
+      $("a").value = entry.a; $("b").value = entry.b;
+      $("runbar").style.display = "flex";
+      run();
+    }
+
+    async function init() {
+      try {
+        const r = await api("/api/strategies", {});
+        const byOp = {};
+        (r.runnable || []).forEach(e => { (byOp[e.operation] = byOp[e.operation] || []).push(e); });
+        const picker = $("picker");
+        picker.innerHTML = "";
+        Object.entries(byOp).forEach(([op, entries]) => {
+          const lab = document.createElement("div");
+          lab.className = "op-label"; lab.textContent = op;
+          picker.appendChild(lab);
+          const chips = document.createElement("div");
+          chips.className = "chips";
+          entries.forEach(e => {
+            const chip = document.createElement("button");
+            chip.className = "chip"; chip.textContent = e.name;
+            chip.addEventListener("click", () => select(e, chip));
+            chips.appendChild(chip);
+          });
+          picker.appendChild(chips);
+        });
+        const first = picker.querySelector(".chip");
+        if (first) {
+          const op0 = Object.keys(byOp)[0];
+          select(byOp[op0][0], first);
+        }
+      } catch (err) {
+        $("picker").innerHTML = "";
+        $("offline").innerHTML = `<div class="offline">The knowledge base is not reachable
+          (this page queries the local Hermes server, port 8765). Launch it with
+          <code>bash hermes/app/launch.sh</code> and reload.</div>`;
+      }
+    }
+    init();
+  </script>
+</body>
+</html>

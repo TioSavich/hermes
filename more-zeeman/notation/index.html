@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notation &mdash; Hermes filmstrip</title>
+  <link rel="stylesheet" href="../hermes-tokens.css">
+  <link rel="stylesheet" href="../render/host.css">
+  <script defer src="../render/hermes-shell.js" data-root="../" data-active="notation"></script>
+</head>
+<body class="view-freshman">
+  <div class="wrap">
+    <header class="host-head">
+      <div>
+        <h1>Notation</h1>
+        <p class="subhead">Glyph-level equation scenes. Productive writing keeps each symbol in its role; deformation cases can mirror a digit or mark a written expression without changing the drawer contract.</p>
+      </div>
+      <nav class="view-toggle" aria-label="audience">
+        <button data-view="freshman" class="active">student</button>
+        <button data-view="teacher">teacher</button>
+        <button data-view="philosopher">researcher</button>
+      </nav>
+    </header>
+
+    <div class="meta-line">
+      <span id="context"></span>
+      <span id="result"></span>
+    </div>
+
+    <div id="stage" class="stage"></div>
+
+    <div class="controls">
+      <button id="prev">&larr; Prev</button>
+      <input id="seek" type="range" min="0" max="0" value="0">
+      <button id="next">Next &rarr;</button>
+      <button id="play">Play</button>
+      <span id="counter" class="counter"></span>
+      <span id="annotation-flag" class="annot">annotation only</span>
+      <button id="download">SVG</button>
+    </div>
+
+    <p id="caption" class="caption only-freshman"></p>
+
+    <section class="panel only-philosopher">
+      <h2>Formal signature</h2>
+      <code id="tuple" class="tuple"></code>
+      <div id="verbs" class="verbs"></div>
+      <h3>Grounding</h3>
+      <div id="grounding" class="band"></div>
+    </section>
+
+    <section class="panel only-teacher">
+      <h2>Teacher layer</h2>
+      <div id="teacher" class="band"></div>
+    </section>
+
+    <section class="calc-bar">
+      <label>kind
+        <select data-arg="kind">
+          <option value="write_equation" selected>write equation</option>
+          <option value="mirror_written">mirror written digit</option>
+        </select>
+      </label>
+      <label>a <input data-arg="a" type="number" value="2"></label>
+      <label>op
+        <select data-arg="operator">
+          <option value="+" selected>+</option>
+          <option value="-">-</option>
+        </select>
+      </label>
+      <label>b <input data-arg="b" type="number" value="3"></label>
+      <label>r <input data-arg="r" type="number" value="5"></label>
+      <label>mirror <input data-arg="digit" type="number" value="3"></label>
+      <button id="calculate">Calculate</button>
+      <span class="calc-note">POSTs to the worker; renders the returned witness frames.</span>
+    </section>
+  </div>
+
+  <script type="application/json" id="frames">
+{
+  "canvas": {"height": 150, "width": 520},
+  "frames": [
+    {
+      "step": 1,
+      "verb": "write_equation(2,+,3,5)",
+      "caption": "Write 2 + 3 = 5 as an equation.",
+      "sceneChanged": true,
+      "scene": {
+        "format": "notation",
+        "version": 1,
+        "baseline": 80,
+        "glyphs": [
+          {"ch": "2", "x": 170, "y": 80, "size": 32},
+          {"ch": "+", "x": 212, "y": 80, "size": 30},
+          {"ch": "3", "x": 254, "y": 80, "size": 32},
+          {"ch": "=", "x": 296, "y": 80, "size": 30},
+          {"ch": "5", "x": 338, "y": 80, "size": 32}
+        ],
+        "marks": []
+      }
+    }
+  ],
+  "kind": "write_equation",
+  "request": {"a": 2, "operator": "+", "b": 3, "r": 5},
+  "result": "2 + 3 = 5",
+  "tuple": "write_equation(2,+,3,5)"
+}
+  </script>
+  <script src="../render/drawer.js"></script>
+  <script>
+    HermesDrawer.create({ op: 'notation_render', endpoint: '/api/render', defaultView: 'freshman' });
+  </script>
+</body>
+</html>

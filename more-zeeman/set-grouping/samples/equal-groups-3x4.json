@@ -1,0 +1,123 @@
+{
+  "canvas": {"height":360,"width":700},
+  "frames": [
+    {
+      "caption":"3 groups of 4: 3 x 4 = 12.",
+      "scene": {
+	"bins": [
+	  {"h":152,"label":"group 1","w":152,"x":40,"y":40},
+	  {"h":152,"label":"group 2","w":152,"x":220,"y":40},
+	  {"h":152,"label":"group 3","w":152,"x":400,"y":40}
+	],
+	"dots": [
+	  {
+	    "color":"#9ccf9c",
+	    "group":0,
+	    "r":20,
+	    "tag":"in_group",
+	    "x":84,
+	    "y":84
+	  },
+	  {
+	    "color":"#9ccf9c",
+	    "group":0,
+	    "r":20,
+	    "tag":"in_group",
+	    "x":148,
+	    "y":84
+	  },
+	  {
+	    "color":"#9ccf9c",
+	    "group":0,
+	    "r":20,
+	    "tag":"in_group",
+	    "x":84,
+	    "y":148
+	  },
+	  {
+	    "color":"#9ccf9c",
+	    "group":0,
+	    "r":20,
+	    "tag":"in_group",
+	    "x":148,
+	    "y":148
+	  },
+	  {
+	    "color":"#9ccf9c",
+	    "group":1,
+	    "r":20,
+	    "tag":"in_group",
+	    "x":264,
+	    "y":84
+	  },
+	  {
+	    "color":"#9ccf9c",
+	    "group":1,
+	    "r":20,
+	    "tag":"in_group",
+	    "x":328,
+	    "y":84
+	  },
+	  {
+	    "color":"#9ccf9c",
+	    "group":1,
+	    "r":20,
+	    "tag":"in_group",
+	    "x":264,
+	    "y":148
+	  },
+	  {
+	    "color":"#9ccf9c",
+	    "group":1,
+	    "r":20,
+	    "tag":"in_group",
+	    "x":328,
+	    "y":148
+	  },
+	  {
+	    "color":"#9ccf9c",
+	    "group":2,
+	    "r":20,
+	    "tag":"in_group",
+	    "x":444,
+	    "y":84
+	  },
+	  {
+	    "color":"#9ccf9c",
+	    "group":2,
+	    "r":20,
+	    "tag":"in_group",
+	    "x":508,
+	    "y":84
+	  },
+	  {
+	    "color":"#9ccf9c",
+	    "group":2,
+	    "r":20,
+	    "tag":"in_group",
+	    "x":444,
+	    "y":148
+	  },
+	  {
+	    "color":"#9ccf9c",
+	    "group":2,
+	    "r":20,
+	    "tag":"in_group",
+	    "x":508,
+	    "y":148
+	  }
+	],
+	"format":"set-grouping",
+	"frames10": [],
+	"pairLines": [],
+	"version":1
+      },
+      "sceneChanged":true,
+      "step":1,
+      "verb":"equal_groups(3,4)"
+    }
+  ],
+  "kind":"equal_groups",
+  "request": {"groups":3,"size":4},
+  "result":"12"
+}

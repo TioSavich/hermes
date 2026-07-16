@@ -1,0 +1,19 @@
+[0] Config.pm:328> INFO - This is Biber 2.21
+[0] Config.pm:331> INFO - Logfile is 'AppendixA_Unified_2.blg'
+[29] biber-darwin:342> INFO - === Sat May 23, 2026, 17:30:27
+[36] Biber.pm:421> INFO - Reading 'AppendixA_Unified_2.bcf'
+[79] Biber.pm:1002> INFO - Found 20 citekeys in bib section 0
+[88] Biber.pm:4487> INFO - Processing section 0
+[94] Biber.pm:4678> INFO - Looking for bibtex file '/Users/tio/Documents/GitHub/September_UMEDCA/references.bib' for section 0
+[97] bibtex.pm:1713> INFO - LaTeX decoding ...
+[191] bibtex.pm:1519> INFO - Found BibTeX data source '/Users/tio/Documents/GitHub/September_UMEDCA/references.bib'
+[267] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[267] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[267] Biber.pm:4307> INFO - Sorting list 'apa/apasortcite//global/global/global' of type 'entry' with template 'apa' and locale 'en-US'
+[267] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[286] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[286] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[286] Biber.pm:4307> INFO - Sorting list 'apa/global//global/global/global' of type 'entry' with template 'apa' and locale 'en-US'
+[286] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[296] bbl.pm:676> INFO - Writing 'AppendixA_Unified_2.bbl' with encoding 'UTF-8'
+[304] bbl.pm:779> INFO - Output to AppendixA_Unified_2.bbl

@@ -1,0 +1,64 @@
+{
+  "headline_replication": {
+    "file": "HEADLINE-vertical-on-circle-replication.svg",
+    "denominators": [
+      4,
+      5,
+      6,
+      8
+    ],
+    "expected_interior_dashed_lines": [
+      3,
+      4,
+      5,
+      7
+    ],
+    "note": "vertical-on-circle deformation draws N-1 dashed interior cuts; the strip differs across N only by that count."
+  },
+  "productive_vs_deformed_pairs": [
+    {
+      "host": "circle",
+      "transplant_rule": "vertical",
+      "file": "PAIR-circle-1-5.svg",
+      "productive_dashed_lines": 0
+    },
+    {
+      "host": "rectangle",
+      "transplant_rule": "radial",
+      "file": "PAIR-rectangle-1-5.svg",
+      "productive_dashed_lines": 0
+    },
+    {
+      "host": "set",
+      "transplant_rule": "radial",
+      "file": "PAIR-set-1-5.svg",
+      "productive_dashed_lines": 10
+    }
+  ],
+  "equipartition_failures": [
+    {
+      "host": "bar",
+      "fraction": "1/5",
+      "error": "unequal_partition",
+      "file": "EQUIPARTITION-bar-unequal_partition-1-5-filmstrip.svg"
+    },
+    {
+      "host": "bar",
+      "fraction": "1/6",
+      "error": "unequal_partition",
+      "file": "EQUIPARTITION-bar-unequal_partition-1-6-filmstrip.svg"
+    },
+    {
+      "host": "circle",
+      "fraction": "1/5",
+      "error": "miscount_partition",
+      "file": "EQUIPARTITION-circle-miscount_partition-1-5-filmstrip.svg"
+    },
+    {
+      "host": "circle",
+      "fraction": "1/6",
+      "error": "miscount_partition",
+      "file": "EQUIPARTITION-circle-miscount_partition-1-6-filmstrip.svg"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+# Crisis-Driven Developmental Curriculum
+# 
+# PHILOSOPHICAL GROUNDING:
+# This curriculum implements the finite/infinite dialectic. Each task represents
+# a demand from the "infinite" (the endless space of possible arithmetic problems)
+# that tests the "finite" (the machine's current bounded capabilities).
+#
+# A "crisis" occurs when a task cannot be contained within the machine's finite
+# capacity (max_inferences=10). The machine must then transcend its current
+# finite self through bootstrapping, expanding its finitude to a new, more
+# capable state.
+#
+# This is computational Hegelian sublation (Aufhebung): the old strategy is
+# preserved as history, negated by its failure, and uplifted into a new form.
+#
+# FORMAT: Each line is a Prolog goal to be executed by the primordial machine.
+# Use Peano numbers: 0, s(0), s(s(0)), etc.
+
+# ═══════════════════════════════════════════════════════════════════════
+# STAGE 1: SENSE-CERTAINTY (Succeeds with Counting All)
+# ═══════════════════════════════════════════════════════════════════════
+# These problems are solvable within 10 inference steps using the primitive
+# enumerate-based add/3. The machine experiences its first successes.
+
+add(s(0), s(0), R1).
+add(s(s(0)), s(0), R2).
+add(s(0), s(s(0)), R3).
+add(s(s(0)), s(s(0)), R4).
+add(s(s(s(0))), s(0), R5).
+
+# ═══════════════════════════════════════════════════════════════════════
+# STAGE 2: FIRST CRISIS (Counting All Fails - Resource Exhaustion)
+# ═══════════════════════════════════════════════════════════════════════
+# add(8,5) requires enumerating 8 tallies + 5 tallies, then adding.
+# This exceeds the 10-step limit and triggers resource_exhaustion.
+# This is the computational refutation of "Sense-Certainty."
+
+add(s(s(s(s(s(s(s(s(0)))))))), s(s(s(s(s(0))))), R_CRISIS_1).
+
+# ═══════════════════════════════════════════════════════════════════════
+# STAGE 3: TESTING GENERALIZATION (After First Learning)
+# ═══════════════════════════════════════════════════════════════════════
+# After learning from add(8,5), test if the new strategy generalizes.
+# This tests commutativity: can the machine handle add(3,8)?
+
+add(s(s(s(0))), s(s(s(s(s(s(s(s(0)))))))), R_TEST_1).
+add(s(s(s(s(s(0))))), s(s(s(s(s(s(s(s(0)))))))), R_TEST_2).
+
+# ═══════════════════════════════════════════════════════════════════════
+# STAGE 4: PUSHING BOUNDARIES (Larger Numbers)
+# ═══════════════════════════════════════════════════════════════════════
+# Test the limits of the newly learned strategy.
+
+add(s(s(s(s(s(s(s(s(s(s(0)))))))))), s(s(s(s(s(0))))), R_TEST_3).
+add(s(s(s(s(s(s(s(s(s(s(0)))))))))), s(s(s(s(s(s(s(s(s(s(0)))))))))), R_TEST_4).
+
+# ═══════════════════════════════════════════════════════════════════════
+# STAGE 5: SECOND CRISIS TYPE (Missing Predicate - Expressive Failure)
+# ═══════════════════════════════════════════════════════════════════════
+# The machine has no subtract/3 predicate. This is a NEW kind of crisis:
+# not resource exhaustion, but failure of expressive power.
+# This requires a different learning response - synthesizing a new operation.
+
+# Note: This will fail because subtract/3 doesn't exist in primordial state
+# subtract(s(s(s(s(s(0))))), s(s(0)), R_CRISIS_2).
+
+# ═══════════════════════════════════════════════════════════════════════
+# STAGE 6: CONTINUED ADDITION LEARNING
+# ═══════════════════════════════════════════════════════════════════════
+# More addition problems to reinforce and expand learned strategies.
+
+add(s(s(s(s(s(s(s(0))))))), s(s(s(s(s(s(s(0))))))), R_TEST_5).
+add(s(s(s(s(s(s(s(s(s(0))))))))), s(s(s(s(s(s(s(s(s(0))))))))), R_TEST_6).
+
+# ═══════════════════════════════════════════════════════════════════════
+# STAGE 7: EXPLORING EDGE CASES
+# ═══════════════════════════════════════════════════════════════════════
+# Addition with zero, adding to itself (doubling)
+
+add(0, s(s(s(s(s(0))))), R_ZERO_1).
+add(s(s(s(s(s(0))))), 0, R_ZERO_2).
+add(s(s(s(s(s(s(0)))))), s(s(s(s(s(s(0)))))), R_DOUBLE_1).
+
+# ═══════════════════════════════════════════════════════════════════════
+# END OF PRIMORDIAL CURRICULUM
+# ═══════════════════════════════════════════════════════════════════════
+# This curriculum focuses solely on addition, forcing the machine to
+# bootstrap progressively more efficient addition strategies.
+#
+# Future stages (after oracle implementation) will introduce:
+# - Multiplication (as repeated addition)
+# - Subtraction (as inverse of addition)
+# - Division (as repeated subtraction)
+# - Fraction operations
+#
+# Each will trigger its own crisis and require its own bootstrapping cycle.
+# ═══════════════════════════════════════════════════════════════════════

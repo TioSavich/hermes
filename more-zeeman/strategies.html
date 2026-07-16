@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" data-page-id="strategies">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategies — Shortcuts After the Snap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hermes-tokens-dark.css">
+  <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="strategies"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--bg); color: var(--text); font-family: 'IBM Plex Serif', Georgia, serif; font-size: 16px; line-height: 1.7; }
+    body { max-width: 680px; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
+    .narrative { margin-top: 1.5rem; }
+    .narrative p { margin-bottom: 1.2rem; }
+    .interactive-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center;
+    }
+    .try-it {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+      color: var(--snap); cursor: pointer; background: none;
+      border: 1px solid var(--snap); padding: 0.4rem 1rem;
+      border-radius: 3px; margin: 0.25rem;
+    }
+    .try-it:hover { background: var(--snap); color: var(--bg); }
+    .try-it.active-strategy { background: var(--snap); color: var(--bg); }
+    .interactive-label {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem;
+      color: var(--muted); margin-top: 0.5rem;
+    }
+    .closing-question {
+      margin-top: 2rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-style: italic; color: var(--muted);
+    }
+    .margin-note {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+      color: var(--muted); border-left: 2px solid var(--border);
+      padding-left: 0.75rem; margin: 1rem 0;
+    }
+    code { font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; color: var(--snap); }
+    .bar-chart {
+      display: flex; align-items: flex-end; justify-content: center;
+      gap: 1.5rem; height: 180px; margin: 1.5rem 0 1rem;
+    }
+    .bar-column {
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+    }
+    .bar {
+      width: 60px; border-radius: 3px 3px 0 0;
+      transition: height 0.8s ease-out, background-color 0.3s;
+      min-height: 2px;
+    }
+    .bar-value {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+      color: var(--text); transition: color 0.3s;
+    }
+    .bar-name {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+      color: var(--muted); text-align: center; max-width: 70px;
+    }
+    .step-display {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+      color: var(--muted); min-height: 2.5rem; margin: 1rem 0;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body data-hshell-doc="1">
+
+<div class="narrative">
+
+  <!-- === FRESHMAN === -->
+  <div data-discourse="freshman">
+    <p class="story-recap"><em>Previously: Counting got too expensive and something had to give. You felt the snap.</em></p>
+    <p>After the crisis, the child discovers shortcuts. Not because someone
+       told them to — because counting all 93 marks was too much.</p>
+
+    <p>First shortcut: instead of counting all from the beginning, start from
+       the bigger number. 38 + 55? Start at 55. Count on: 56, 57, 58...
+       That's 38 steps instead of 93.</p>
+
+    <p>Better shortcut: 38 is close to 40. Move 2 from the 55 to make
+       40 + 53. Now you're working with a round number — rearranging to
+       make a base. That costs about 5 steps.</p>
+
+    <p>Even better: what about 6 x 14? Break 14 into chunks: 6x10 + 6x4.
+       That's chunking — splitting a hard problem into easy ones.</p>
+
+    <div class="interactive-box">
+      <p>The problem: 38 + 55. Pick a strategy and watch the cost.</p>
+      <div>
+        <button class="try-it" onclick="showStrategy('counting-all')">counting-all</button>
+        <button class="try-it" onclick="showStrategy('counting-on')">counting-on</button>
+        <button class="try-it" onclick="showStrategy('cobo')">COBO</button>
+        <button class="try-it" onclick="showStrategy('rmb')">RMB</button>
+      </div>
+      <div class="step-display" id="step-display"></div>
+      <div class="bar-chart" id="bar-chart">
+        <div class="bar-column">
+          <div class="bar-value" id="val-0">93</div>
+          <div class="bar" id="bar-0"></div>
+          <div class="bar-name">counting-all</div>
+        </div>
+        <div class="bar-column">
+          <div class="bar-value" id="val-1">38</div>
+          <div class="bar" id="bar-1"></div>
+          <div class="bar-name">counting-on</div>
+        </div>
+        <div class="bar-column">
+          <div class="bar-value" id="val-2">~10</div>
+          <div class="bar" id="bar-2"></div>
+          <div class="bar-name">COBO</div>
+        </div>
+        <div class="bar-column">
+          <div class="bar-value" id="val-3">~5</div>
+          <div class="bar" id="bar-3"></div>
+          <div class="bar-name">RMB</div>
+        </div>
+      </div>
+      <p class="interactive-label">Each strategy does the same job. The cost drops by an order of magnitude.</p>
+    </div>
+
+    <p>Each shortcut is cheaper than the last. But notice: each one is also
+       more clever. Counting-all is mechanical. RMB requires you to see that
+       38 is near 40 — that's a judgment, not a procedure.</p>
+  </div>
+
+  <!-- === MATH ED === -->
+  <div data-discourse="mathEd">
+    <p>The CGI research program (Carpenter, Fennema, Franke, Levi, & Empson,
+       1999) documents a developmental sequence of strategies for whole-number
+       arithmetic. Each strategy is more efficient but also more abstract:</p>
+
+    <p><strong>Counting-all</strong> = Direct Modeling. The child physically or
+       mentally represents every unit. Cost: O(A + B).</p>
+
+    <p><strong>Counting-on</strong> = Counting strategy. The child holds the larger
+       addend as a cardinal value and counts forward. Cost: O(min(A, B)).</p>
+
+    <p><strong>COBO</strong> = bases-then-ones (a Derived Fact strategy). Decompose
+       into tens and ones, add each place separately: 30+50=80, 8+5=13,
+       80+13=93. Cost: O(1) for each decomposition step.</p>
+
+    <p><strong>RMB</strong> = rearrange to make a base-10 number. Compensate:
+       38+55 = 40+53 = 93. Requires recognizing proximity to a round number.
+       Cost: O(1) for the compensation.</p>
+
+    <div class="margin-note">
+      Carpenter, T. P., Fennema, E., Franke, M. L., Levi, L., & Empson, S. B. (1999).
+      <em>Children's Mathematics: Cognitively Guided Instruction.</em> The developmental
+      trajectory is not a prescription — children move through these strategies at
+      different rates and sometimes use multiple strategies simultaneously.
+    </div>
+
+    <div class="margin-note">
+      Wachsmuth, I., &amp; Becker, J. (1986). The Lakos Project (University of
+      Osnabruck): a cognitive model implemented in Prolog, based on clinical
+      interviews, that modeled individual children's mathematical knowledge as
+      logical propositions in indexed memory nodes &mdash; including misconceptions
+      and cognitive conflicts. The closest precedent to what this system does.
+    </div>
+
+    <div class="margin-note">
+      Brown, J. S., &amp; VanLehn, K. (1982). Towards a generative theory of
+      "bugs." In Carpenter et al. (Eds.), <em>Addition and Subtraction: A
+      Cognitive Perspective.</em> Erlbaum. Children's systematic subtraction errors
+      as "buggy algorithms": errors arise when children repair a procedure by
+      relaxing mathematical constraints. The UMEDCTA model inverts this &mdash;
+      the repair process itself is productive, not merely error-generating.
+    </div>
+
+    <div class="interactive-box">
+      <p>Strategy comparison for 38 + 55: cost and method</p>
+      <div>
+        <button class="try-it" onclick="showStrategy('counting-all')">Direct Modeling</button>
+        <button class="try-it" onclick="showStrategy('counting-on')">Counting</button>
+        <button class="try-it" onclick="showStrategy('cobo')">Derived Fact (COBO)</button>
+        <button class="try-it" onclick="showStrategy('rmb')">Compensation (RMB)</button>
+      </div>
+      <div class="step-display" id="step-display"></div>
+      <div class="bar-chart" id="bar-chart">
+        <div class="bar-column">
+          <div class="bar-value" id="val-0">93</div>
+          <div class="bar" id="bar-0"></div>
+          <div class="bar-name">Direct Modeling</div>
+        </div>
+        <div class="bar-column">
+          <div class="bar-value" id="val-1">38</div>
+          <div class="bar" id="bar-1"></div>
+          <div class="bar-name">Counting</div>
+        </div>
+        <div class="bar-column">
+          <div class="bar-value" id="val-2">~10</div>
+          <div class="bar" id="bar-2"></div>
+          <div class="bar-name">Derived Fact</div>
+        </div>
+        <div class="bar-column">
+          <div class="bar-value" id="val-3">~5</div>
+          <div class="bar" id="bar-3"></div>
+          <div class="bar-name">Compensation</div>
+        </div>
+      </div>
+      <p class="interactive-label">Each strategy invokes the one below it as a subroutine — COBO uses counting for its ones phase.</p>
+    </div>
+
+    <div class="margin-note">
+      Note: COBO is "bases-then-ones" — not "counting on by ones." The child works
+      with tens and ones as separate units, combining them at the end. This is a
+      derived fact strategy, not a counting strategy. Hackenberg (via Steffe)
+      distinguishes these carefully.
+    </div>
+
+    <div class="margin-note">
+      Biddlecomb, B. D. (1994). Theory-based development of computer microworlds.
+      <em>Journal of Research in Childhood Education, 8</em>(2), 87-98. Steffe &amp;
+      Olive (1996). Symbolizing as a constructive activity in a computer microworld.
+      <em>Journal of Educational Computing Research, 14</em>(2), 113-138. These
+      researchers connected Steffe's constructivist schemes directly to software
+      architecture &mdash; the line of work this system continues.
+    </div>
+
+    <p>The key observation: each strategy invokes the one below it as a
+       subroutine. COBO decomposes into place-value components, then uses
+       counting (or direct knowledge) to add the ones. RMB compensates,
+       then adds the adjusted values — which may itself use COBO. Strategies
+       nest inside strategies.</p>
+  </div>
+
+  <!-- === PHILOSOPHER === -->
+  <div data-discourse="philosophy">
+    <p>Each strategy in the Prolog formalization is a finite-state machine.
+       A genuine synthesis engine would construct these machines from ENS
+       primitives — partition, disembed, iterate. The synthesis attempt was
+       archived in Phase 1 (it wrapped oracle calls rather than synthesizing);
+       <code>fsm_synthesis_engine.pl</code> is now only a utility shim. Genuine
+       FSM synthesis from primitives remains an open research direction.</p>
+
+    <p>The distinction matters philosophically: an oracle-backed strategy is
+       a phone number the learner memorized. A genuinely synthesized strategy
+       is a method the learner built. The system currently cannot tell the
+       difference from the inside — both look like working FSMs. Only the
+       provenance differs.</p>
+
+    <div class="interactive-box">
+      <p>Strategy automata for <code>solve(add(38,55), ...)</code></p>
+      <div>
+        <button class="try-it" onclick="showStrategy('counting-all')">counting_all.pl</button>
+        <button class="try-it" onclick="showStrategy('counting-on')">counting_on.pl</button>
+        <button class="try-it" onclick="showStrategy('cobo')">sar_add_cobo.pl</button>
+        <button class="try-it" onclick="showStrategy('rmb')">sar_add_rmb.pl</button>
+      </div>
+      <div class="step-display" id="step-display"></div>
+      <div class="bar-chart" id="bar-chart">
+        <div class="bar-column">
+          <div class="bar-value" id="val-0">93</div>
+          <div class="bar" id="bar-0"></div>
+          <div class="bar-name">counting-all</div>
+        </div>
+        <div class="bar-column">
+          <div class="bar-value" id="val-1">38</div>
+          <div class="bar" id="bar-1"></div>
+          <div class="bar-name">counting-on</div>
+        </div>
+        <div class="bar-column">
+          <div class="bar-value" id="val-2">~10</div>
+          <div class="bar" id="bar-2"></div>
+          <div class="bar-name">COBO</div>
+        </div>
+        <div class="bar-column">
+          <div class="bar-value" id="val-3">~5</div>
+          <div class="bar" id="bar-3"></div>
+          <div class="bar-name">RMB</div>
+        </div>
+      </div>
+      <p class="interactive-label">Each automaton invokes inner automata. This is the fractal architecture.</p>
+    </div>
+
+    <div class="margin-note">
+      Negarestani, R. (2018). <em>Intelligence and Spirit.</em> Urbanomic/Sequence
+      Press. Negarestani distinguishes two kinds of navigation: (1) physical/causal
+      navigation (the automaton's protosemantic encounter with items in space) and
+      (2) cognitive navigation of logical space ("navigating the coherentist network
+      or logical space of truth-candidates"). The meta-interpreter's strategy
+      selection is the beginning of cognitive navigation: choosing among strategies
+      based on their cost structure, not just executing the first one found.
+    </div>
+
+    <div class="margin-note">
+      Negarestani on the Chomsky hierarchy: a strategy that calls a sub-strategy
+      is a pushdown automaton &mdash; it needs a stack to track where it came from.
+      The nesting of strategies is not just a convenience; it is a move from
+      regular to context-free. "True intelligence transcends merely navigating
+      physical space via causal inputs; it involves a cognitive navigation of
+      the 'coherentist network or logical space.'"
+    </div>
+
+    <p>The fractal architecture: each circular automaton (the counting PDA,
+       the COBO machine, the RMB compensator) can invoke any machine below
+       it as a subroutine. COBO calls counting for its ones phase. RMB calls
+       COBO after compensating. This is strategies nesting inside strategies —
+       the same structure the fractal visualization depicts as concentric
+       rings.</p>
+
+    <p>But each machine is still flat. It has a fixed number of states, a
+       fixed transition table, a stack of fixed depth. What happens when the
+       nesting goes deeper — when you need a strategy that dynamically
+       composes strategies that themselves compose strategies? That requires
+       something the current FSM architecture cannot provide.</p>
+  </div>
+
+  <p class="closing-question">
+    But these strategies are flat machines. What happens when you need a
+    strategy that calls a strategy that calls a strategy?
+  </p>
+</div>
+
+<script>
+const strategies = {
+  'counting-all': {
+    steps: 93,
+    description: 'Count out 38 marks. Count out 55 more. Count all from the beginning: 1, 2, 3 ... 93.',
+    descMathEd: 'Direct Modeling: represent all units, then enumerate. O(A+B) = O(38+55) = 93 steps.',
+    descPhil: 'counting_all PDA: q_idle -> q_counting (93 ticks) -> q_halt. Each tick = one inference in solve/6.'
+  },
+  'counting-on': {
+    steps: 38,
+    description: 'Start at 55 (the bigger number). Count on 38 more: 56, 57, 58 ... 93. That\'s 38 steps.',
+    descMathEd: 'Counting strategy: hold the cardinal value of the larger addend, count forward min(A,B) times. O(38) steps.',
+    descPhil: 'counting_on PDA: q_idle -> q_hold(55) -> q_counting (38 ticks) -> q_halt. The first addend is internalized as a starting point, not re-counted.'
+  },
+  'cobo': {
+    steps: 10,
+    description: 'Split into tens and ones: 30+50=80, 8+5=13, then 80+13=93. About 10 steps.',
+    descMathEd: 'Derived Fact (COBO): decompose by place value, add tens and ones separately, recompose. ~10 operations, each O(1).',
+    descPhil: 'sar_add_cobo: q_decompose -> q_add_bases(30+50=80) -> q_add_ones(8+5=13) -> q_recompose(80+13=93). Calls counting sub-automaton for the ones phase.'
+  },
+  'rmb': {
+    steps: 5,
+    description: '38 is close to 40. Move 2 from 55: 40+53=93. About 5 steps.',
+    descMathEd: 'Compensation (RMB): recognize proximity to base-10 number, adjust both addends, add the rounded pair. ~5 operations.',
+    descPhil: 'sar_add_rmb: q_detect_proximity(38~40) -> q_compensate(+2,-2) -> q_add(40+53) -> q_halt. The proximity detection is a judgment — not derivable from the FSM transition table alone.'
+  }
+};
+
+let activeStrategy = null;
+
+function showStrategy(key) {
+  activeStrategy = key;
+  const s = strategies[key];
+  const maxSteps = 93;
+  const level = (typeof Discourse !== 'undefined') ? Discourse.current() : 'freshman';
+
+  // Update step display
+  const display = document.getElementById('step-display');
+  if (level === 'philosophy') {
+    display.textContent = s.descPhil;
+  } else if (level === 'mathEd') {
+    display.textContent = s.descMathEd;
+  } else {
+    display.textContent = s.description;
+  }
+
+  // Update button states
+  document.querySelectorAll('.try-it').forEach(btn => btn.classList.remove('active-strategy'));
+  event.target.classList.add('active-strategy');
+
+  // Animate bars
+  const allStrategies = ['counting-all', 'counting-on', 'cobo', 'rmb'];
+  allStrategies.forEach((sk, i) => {
+    const bar = document.getElementById('bar-' + i);
+    const val = document.getElementById('val-' + i);
+    const data = strategies[sk];
+    const height = (data.steps / maxSteps) * 160;
+
+    bar.style.height = height + 'px';
+
+    if (sk === key) {
+      bar.style.backgroundColor = 'var(--snap)';
+      val.style.color = 'var(--snap)';
+    } else {
+      bar.style.backgroundColor = 'var(--border)';
+      val.style.color = 'var(--muted)';
+    }
+  });
+}
+
+// Re-render description when discourse level changes
+window.addEventListener('discourse-change', () => {
+  if (activeStrategy) showStrategy(activeStrategy);
+});
+
+// Initialize bars to zero height
+document.addEventListener('DOMContentLoaded', () => {
+  for (let i = 0; i < 4; i++) {
+    const bar = document.getElementById('bar-' + i);
+    if (bar) bar.style.height = '0px';
+  }
+});
+</script>
+<script src="shared.js"></script>
+</body>
+</html>

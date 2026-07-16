@@ -1,0 +1,38 @@
+{
+  "FRACTION-DEMO": {
+    "anticipated_strategies": [
+      {
+        "kind": "fraction_addition_co_measurement"
+      }
+    ],
+    "teacher_misconceptions": [
+      {
+        "kind": "add_numerators_and_denominators"
+      }
+    ]
+  },
+  "HYBRID-DEMO": {
+    "anticipated_strategies": [
+      {
+        "kind": "area_model_part_of_part"
+      }
+    ],
+    "teacher_misconceptions": [
+      {
+        "kind": "hybridized_model"
+      }
+    ]
+  },
+  "BALANCE-DEMO": {
+    "anticipated_strategies": [
+      {
+        "kind": "balance_solve_equation"
+      }
+    ],
+    "teacher_misconceptions": [
+      {
+        "kind": "operational_equals_subtract_from_one_side"
+      }
+    ]
+  }
+}

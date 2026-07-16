@@ -1,0 +1,184 @@
+# Mathematical Curriculum (Progressive Pedagogical Version)
+#
+# PURPOSE: Gentle cumulative sequence — builds from 1+1 to 5+5, then subtraction.
+# Models the pedagogical approach of a careful teacher who never presents a
+# problem the learner isn't ready for. Contrasts with crisis_curriculum_primordial.txt
+# which deliberately provokes crises through escalation.
+#
+# PEDAGOGICAL NOTE: A teacher who only uses this curriculum never forces a crisis.
+# The learner develops incrementally but never encounters the finite/infinite
+# dialectic. Comparing outcomes from different curricula is one way to test the
+# manuscript's claim that crises are productive.
+#
+# Each line represents a mathematical task that builds upon previous learning
+# The system should progressively develop capabilities through accumulation
+
+# COUNTING AND ENUMERATION
+count(1)
+count(2)
+count(3)
+count(4)
+count(5)
+count(6)
+count(7)
+count(8)
+count(9)
+count(10)
+
+# BASIC ADDITION (building number facts)
+add(1,1)
+add(1,2)
+add(2,1)
+add(2,2)
+add(1,3)
+add(3,1)
+add(2,3)
+add(3,2)
+add(3,3)
+add(4,1)
+add(1,4)
+add(4,2)
+add(2,4)
+add(4,3)
+add(3,4)
+add(4,4)
+add(5,1)
+add(5,2)
+add(5,3)
+add(5,4)
+add(5,5)
+
+# BASIC SUBTRACTION (building inverse relationships)
+subtract(2,1)
+subtract(3,1)
+subtract(3,2)
+subtract(4,1)
+subtract(4,2)
+subtract(4,3)
+subtract(5,1)
+subtract(5,2)
+subtract(5,3)
+subtract(5,4)
+subtract(6,1)
+subtract(6,2)
+subtract(6,3)
+subtract(6,4)
+subtract(6,5)
+
+# MULTIPLICATION (repeated addition patterns)
+multiply(2,1)
+multiply(1,2)
+multiply(2,2)
+multiply(3,1)
+multiply(1,3)
+multiply(3,2)
+multiply(2,3)
+multiply(3,3)
+multiply(4,1)
+multiply(1,4)
+multiply(4,2)
+multiply(2,4)
+multiply(4,3)
+multiply(3,4)
+multiply(4,4)
+multiply(5,2)
+multiply(2,5)
+multiply(5,3)
+multiply(3,5)
+multiply(5,4)
+multiply(4,5)
+multiply(5,5)
+multiply(6,2)
+multiply(6,3)
+multiply(6,4)
+multiply(7,2)
+multiply(7,3)
+multiply(8,2)
+multiply(9,2)
+
+# DIVISION (initially impossible without multiplication facts)
+divide(4,2)
+divide(6,2)
+divide(6,3)
+divide(8,2)
+divide(8,4)
+divide(9,3)
+divide(10,2)
+divide(10,5)
+divide(12,3)
+divide(12,4)
+divide(15,3)
+divide(15,5)
+divide(16,4)
+divide(18,6)
+divide(20,4)
+
+# FRACTIONAL OPERATIONS (building on unit partitioning)
+fraction(1,2)
+fraction(1,3)
+fraction(1,4)
+fraction(2,3)
+fraction(3,4)
+fraction(2,5)
+fraction(3,5)
+fraction(4,5)
+fraction(5,6)
+fraction(2,7)
+
+# FRACTIONAL ARITHMETIC (of wholes)
+fraction_of(1,2,whole)
+fraction_of(1,3,whole)
+fraction_of(2,3,whole)
+fraction_of(3,4,whole)
+fraction_of(1,4,whole)
+
+# FRACTIONAL ARITHMETIC (of multiple wholes)
+fraction_of(1,2,wholes(2))
+fraction_of(1,3,wholes(3))
+fraction_of(2,3,wholes(3))
+fraction_of(1,4,wholes(4))
+fraction_of(3,4,wholes(4))
+
+# NESTED FRACTIONS (fraction of fractions)
+fraction_of_fraction(1,2,1,3)
+fraction_of_fraction(1,3,1,2)
+fraction_of_fraction(2,3,1,4)
+fraction_of_fraction(1,4,3,4)
+
+# EQUIVALENCE RELATIONSHIPS
+equivalent_fractions(1,2,2,4)
+equivalent_fractions(1,3,2,6)
+equivalent_fractions(2,4,1,2)
+equivalent_fractions(3,6,1,2)
+
+# COMPLEX COMPOSITIONS
+composition(add(3,4),multiply(2,3))
+composition(multiply(3,3),subtract(10,1))
+composition(divide(8,2),add(2,2))
+
+# MIXED ARITHMETIC WITH FRACTIONS
+mixed_operation(add,fraction(1,2),fraction(1,3))
+mixed_operation(add,fraction(2,3),fraction(1,4))
+mixed_operation(subtract,fraction(3,4),fraction(1,4))
+
+# ADVANCED DIVISION REQUIRING LEARNED FACTS
+divide_complex(24,6)
+divide_complex(35,7)
+divide_complex(42,6)
+divide_complex(48,8)
+
+# MULTI-STEP PROBLEMS
+multi_step(multiply(6,4),divide,result,6)
+multi_step(add(7,8),subtract,3,result)
+multi_step(fraction(2,3),multiply,9,result)
+
+# STRATEGIC REASONING TASKS
+strategy_task(decomposition,24,6)
+strategy_task(chunking,17,5)
+strategy_task(rounding,23,7)
+strategy_task(sliding,19,6)
+
+# FINAL INTEGRATION TASKS
+integration_task(complex_fraction_division,divide(fraction(3,4),fraction(1,2)))
+integration_task(nested_composition,fraction_of_fraction_of_whole(1,2,1,3,wholes(6)))
+integration_task(strategic_equivalence,prove_equivalent(multiply(4,fraction(1,4)),whole))

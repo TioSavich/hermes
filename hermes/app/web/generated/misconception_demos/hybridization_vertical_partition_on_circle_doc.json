@@ -1,0 +1,140 @@
+{
+  "canvas": {
+    "height": 420,
+    "width": 760
+  },
+  "family": "transplant_deformation",
+  "foreignPrimitive": "rectangle_vertical_partition",
+  "frames": [
+    {
+      "caption": "Choose a circle as the region host.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "cx": 260,
+            "cy": 181,
+            "kind": "host-circle",
+            "label": "circle host",
+            "r": 94,
+            "role": "whole"
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 1,
+      "verb": "host_shape(circle_region)"
+    },
+    {
+      "caption": "The vertical partition is licensed inside the rectangle area-model vocabulary.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "h": 190,
+            "kind": "home-rect",
+            "label": "rectangle home",
+            "role": "whole",
+            "w": 300,
+            "x": 110,
+            "y": 86
+          },
+          {
+            "columns": 3,
+            "h": 190,
+            "host": "rectangle",
+            "kind": "vertical-partition",
+            "label": "licensed vertical partition",
+            "role": "iterated",
+            "shade": [
+              2
+            ],
+            "w": 300,
+            "x": 110,
+            "y": 86
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 2,
+      "verb": "licensed_home(rectangle_vertical_partition,rectangle_area_model)"
+    },
+    {
+      "caption": "Transplant the rectangle's vertical partition rule onto the circular host.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "cx": 260,
+            "cy": 181,
+            "kind": "host-circle",
+            "label": "circle host",
+            "r": 94,
+            "role": "whole"
+          },
+          {
+            "columns": 3,
+            "cx": 260,
+            "cy": 181,
+            "host": "circle",
+            "kind": "vertical-partition",
+            "label": "vertical partition on circle",
+            "r": 94,
+            "role": "deformation",
+            "shade": [
+              2
+            ]
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 3,
+      "verb": "transplant(rectangle_vertical_partition,circle_region)"
+    },
+    {
+      "caption": "The result is a hybridized model: a foreign primitive on an illicit host.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "cx": 260,
+            "cy": 181,
+            "kind": "host-circle",
+            "label": "circle host",
+            "r": 94,
+            "role": "whole"
+          },
+          {
+            "columns": 3,
+            "cx": 260,
+            "cy": 181,
+            "host": "circle",
+            "kind": "vertical-partition",
+            "label": "vertical partition on circle",
+            "r": 94,
+            "role": "deformation",
+            "shade": [
+              2
+            ]
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 4,
+      "verb": "hybrid_result(vertical_partition_on_circle)"
+    }
+  ],
+  "illicitHost": "circle_region",
+  "kind": "vertical_partition_on_circle",
+  "licensedHome": "rectangle_area_model",
+  "request": {
+    "spec": "vertical_partition_on_circle"
+  },
+  "result": "misconception",
+  "tuple": "hybridization(foreign_primitive, licensed_home, illicit_host)",
+  "violation": "object_language_binding_violation"
+}

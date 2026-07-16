@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Generated Monitoring Visuals</title>
+<style>
+body { margin: 24px; font: 16px system-ui, sans-serif; background: #f8f1df; color: #1b1810; }
+main { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+figure { margin: 0; padding: 12px; border: 1px solid #cabf9f; background: #fffaf0; }
+figcaption { font-size: 0.9rem; margin-bottom: 8px; }
+figcaption span, p { color: #665f4f; }
+img { width: 100%; height: 220px; object-fit: contain; background: #f8f1df; border: 1px solid #cabf9f; }
+.note { min-height: 220px; display: grid; place-items: center; padding: 12px; background: #fff4e8; border: 1px solid #cabf9f; color: #665f4f; text-align: center; }
+p { margin: 8px 0 0; font-size: 0.9rem; }
+.proof { margin: 10px 0 0; display: grid; grid-template-columns: max-content 1fr; gap: 4px 10px; font-size: 0.78rem; color: #4d4638; }
+.proof dt { font-weight: 700; }
+.proof dd { margin: 0; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<h1>Generated Monitoring Visuals</h1>
+<main>
+<figure>
+  <figcaption><b>FRACTION-DEMO</b> correct<br><span>1/3 + 1/4 fraction_bars_addition</span></figcaption>
+  <img src="FRACTION-DEMO-correct-filmstrip.svg" alt="FRACTION-DEMO correct 1/3 + 1/4">
+  <p>Measure both fractions in a shared unit before combining.</p>
+  <dl class="proof">
+  <dt>Proof</dt><dd>productive_preserves_denoted_task</dd>
+  <dt>Frames</dt><dd>3 (temporal)</dd>
+  <dt>Frame sequence</dt><dd>1. show_addends<br>2. co_measure_in_shared_unit<br>3. combine_shared_ticks</dd>
+  <dt>Residue</dt><dd>human_endorsement_required</dd>
+  <dt>Claim</dt><dd>Hermes checks representation grammar, denotation, deformation evidence, refusal, and render frames; it does not certify that this generated visual is a faithful reading of any particular student&#x27;s work.</dd>
+</dl>
+</figure>
+<figure>
+  <figcaption><b>FRACTION-DEMO</b> incorrect<br><span>1/3 + 1/4 fraction_bars_addition</span></figcaption>
+  <img src="FRACTION-DEMO-incorrect-filmstrip.svg" alt="FRACTION-DEMO incorrect 1/3 + 1/4">
+  <p>Add the visible numerator and denominator components as if they were independent counts.</p>
+  <dl class="proof">
+  <dt>Proof</dt><dd>misconception_deformation</dd>
+  <dt>Frames</dt><dd>2 (temporal)</dd>
+  <dt>Frame sequence</dt><dd>1. show_addends<br>2. combine_numerators_and_denominators</dd>
+  <dt>Residue</dt><dd>human_endorsement_required</dd>
+  <dt>Claim</dt><dd>Hermes checks representation grammar, denotation, deformation evidence, refusal, and render frames; it does not certify that this generated visual is a faithful reading of any particular student&#x27;s work.</dd>
+</dl>
+</figure>
+<figure>
+  <figcaption><b>HYBRID-DEMO</b> correct<br><span>circle partition transplanted onto a rectangle hybridization_transplant</span></figcaption>
+  <img src="HYBRID-DEMO-correct-filmstrip.svg" alt="HYBRID-DEMO correct circle partition transplanted onto a rectangle">
+  <p>Partition the rectangular area model by its own part-of-part vocabulary.</p>
+  <dl class="proof">
+  <dt>Proof</dt><dd>productive_preserves_denoted_task</dd>
+  <dt>Frames</dt><dd>3 (temporal)</dd>
+  <dt>Frame sequence</dt><dd>1. area_model_fraction(1,2,1,3)<br>2. area_model_fraction(1,2,1,3)<br>3. area_model_fraction(1,2,1,3)</dd>
+  <dt>Residue</dt><dd>human_endorsement_required</dd>
+  <dt>Claim</dt><dd>Hermes checks representation grammar, denotation, deformation evidence, refusal, and render frames; it does not certify that this generated visual is a faithful reading of any particular student&#x27;s work.</dd>
+</dl>
+</figure>
+<figure>
+  <figcaption><b>HYBRID-DEMO</b> incorrect<br><span>circle partition transplanted onto a rectangle hybridization_transplant</span></figcaption>
+  <img src="HYBRID-DEMO-incorrect-filmstrip.svg" alt="HYBRID-DEMO incorrect circle partition transplanted onto a rectangle">
+  <p>Move the circle&#x27;s radial partition rule onto the rectangle host.</p>
+  <dl class="proof">
+  <dt>Proof</dt><dd>misconception_deformation</dd>
+  <dt>Frames</dt><dd>4 (temporal)</dd>
+  <dt>Frame sequence</dt><dd>1. host_shape(rectangle_area_model)<br>2. licensed_home(circle_radial_partition,circle_region)<br>3. transplant(circle_radial_partition,rectangle_area_model)<br>4. hybrid_result(circle_partition_on_rectangle)</dd>
+  <dt>Residue</dt><dd>human_endorsement_required</dd>
+  <dt>Claim</dt><dd>Hermes checks representation grammar, denotation, deformation evidence, refusal, and render frames; it does not certify that this generated visual is a faithful reading of any particular student&#x27;s work.</dd>
+</dl>
+</figure>
+<figure>
+  <figcaption><b>BALANCE-DEMO</b> correct<br><span>2x + 3 = 11 balance_scale_equation</span></figcaption>
+  <img src="BALANCE-DEMO-correct-filmstrip.svg" alt="BALANCE-DEMO correct 2x + 3 = 11">
+  <p>Preserve equality by making the same move on both pans.</p>
+  <dl class="proof">
+  <dt>Proof</dt><dd>productive_preserves_denoted_task</dd>
+  <dt>Frames</dt><dd>4 (temporal)</dd>
+  <dt>Frame sequence</dt><dd>1. show_equation_as_balance<br>2. subtract_units_from_both_pans<br>3. split_each_side_into_equal_groups<br>4. isolate_the_unknown</dd>
+  <dt>Residue</dt><dd>human_endorsement_required</dd>
+  <dt>Claim</dt><dd>Hermes checks representation grammar, denotation, deformation evidence, refusal, and render frames; it does not certify that this generated visual is a faithful reading of any particular student&#x27;s work.</dd>
+</dl>
+</figure>
+<figure>
+  <figcaption><b>BALANCE-DEMO</b> incorrect<br><span>2x + 3 = 11 balance_scale_equation</span></figcaption>
+  <img src="BALANCE-DEMO-incorrect-filmstrip.svg" alt="BALANCE-DEMO incorrect 2x + 3 = 11">
+  <p>Treat the equals sign as a command and change only one side.</p>
+  <dl class="proof">
+  <dt>Proof</dt><dd>misconception_deformation</dd>
+  <dt>Frames</dt><dd>2 (temporal)</dd>
+  <dt>Frame sequence</dt><dd>1. show_equation_as_balance<br>2. subtract_from_left_pan_only</dd>
+  <dt>Residue</dt><dd>human_endorsement_required</dd>
+  <dt>Claim</dt><dd>Hermes checks representation grammar, denotation, deformation evidence, refusal, and render frames; it does not certify that this generated visual is a faithful reading of any particular student&#x27;s work.</dd>
+</dl>
+</figure>
+</main>
+</body>
+</html>

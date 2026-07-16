@@ -1,0 +1,144 @@
+{
+  "canvas": {
+    "height": 420,
+    "width": 760
+  },
+  "denominator": 4,
+  "family": "transplant_deformation",
+  "foreignPrimitive": "rectangle_grid_partition",
+  "foreignRule": "grid",
+  "frames": [
+    {
+      "caption": "Choose a circle as the host.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "cx": 260,
+            "cy": 181,
+            "kind": "host-circle",
+            "label": "one whole",
+            "r": 94,
+            "role": "whole"
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 1,
+      "verb": "establish_whole(circle)"
+    },
+    {
+      "caption": "The rectangular grid partition rule is licensed inside the area's own vocabulary.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "h": 190,
+            "kind": "host-rect",
+            "label": "one whole",
+            "role": "whole",
+            "w": 300,
+            "x": 110,
+            "y": 86
+          },
+          {
+            "columns": 4,
+            "h": 190,
+            "host": "rectangle",
+            "kind": "vertical-partition",
+            "label": "",
+            "role": "iterated",
+            "shade": [
+              1
+            ],
+            "w": 300,
+            "x": 110,
+            "y": 86
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 2,
+      "verb": "licensed_home(grid,area)"
+    },
+    {
+      "caption": "Transplant the rectangular grid partition rule onto the circle, cut into 4: the pieces are unequal.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "cx": 260,
+            "cy": 181,
+            "kind": "host-circle",
+            "label": "one whole",
+            "r": 94,
+            "role": "whole"
+          },
+          {
+            "columns": 4,
+            "cx": 260,
+            "cy": 181,
+            "host": "circle",
+            "kind": "vertical-partition",
+            "label": "",
+            "r": 94,
+            "role": "deformation",
+            "shade": [
+              1
+            ]
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 3,
+      "verb": "apply_foreign_partition(grid,circle,4)"
+    },
+    {
+      "caption": "Hybridized model of 1/4: a foreign partition rule on an illicit host.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "cx": 260,
+            "cy": 181,
+            "kind": "host-circle",
+            "label": "one whole",
+            "r": 94,
+            "role": "whole"
+          },
+          {
+            "columns": 4,
+            "cx": 260,
+            "cy": 181,
+            "host": "circle",
+            "kind": "vertical-partition",
+            "label": "",
+            "r": 94,
+            "role": "deformation",
+            "shade": [
+              1
+            ]
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 4,
+      "verb": "hybrid_result(transplant(grid,circle),4)"
+    }
+  ],
+  "host": "circle",
+  "illicitHost": "circle_region",
+  "kind": "transplant_grid_on_circle_1_over_4",
+  "licensedHome": "rectangle_area_model",
+  "mode": "misconception",
+  "request": {
+    "spec": "transplant_grid_on_circle_1_over_4"
+  },
+  "result": "misconception",
+  "tuple": "hybridization(rectangle_grid_partition, rectangle_area_model, circle_region) at unit_fraction(1,4)",
+  "violation": "object_language_binding_violation"
+}

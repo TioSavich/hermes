@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img"
+     aria-label="The juncture: one outcome, two histories. The numeral 1/2 keeps the identity and loses which cut made it.">
+  <rect x="0" y="0" width="720" height="440" fill="#f8f1df"/>
+
+  <!-- title -->
+  <text x="360" y="30" text-anchor="middle" font-family="Georgia,'Times New Roman',serif"
+        font-size="20" font-weight="700" fill="#1b1810">The juncture: one outcome, two histories</text>
+  <text x="360" y="50" text-anchor="middle" font-family="system-ui,sans-serif"
+        font-size="12" fill="#5a5446">arche-trace/differance_juncture.pl  ·  show_juncture(half)</text>
+
+  <!-- ===================== TWO HISTORIES (left) ===================== -->
+
+  <!-- licensed: radial cut -->
+  <g transform="translate(70,108)">
+    <circle cx="40" cy="40" r="38" fill="#cabf9f" stroke="#0d0c08" stroke-width="1.5"/>
+    <line x1="40" y1="2" x2="40" y2="78" stroke="#3b7a3b" stroke-width="2.4"/>
+    <text x="40" y="100" text-anchor="middle" font-family="system-ui,sans-serif"
+          font-size="12" font-weight="700" fill="#2c5e2c">radial cut</text>
+    <text x="40" y="116" text-anchor="middle" font-family="monospace"
+          font-size="10.5" fill="#2c5e2c">[licensed]</text>
+    <text x="40" y="132" text-anchor="middle" font-family="monospace"
+          font-size="9.5" fill="#5a5446">derivation/4  :50-51</text>
+  </g>
+
+  <!-- unlicensed: vertical cut -->
+  <g transform="translate(70,250)">
+    <circle cx="40" cy="40" r="38" fill="#cabf9f" stroke="#0d0c08" stroke-width="1.5"/>
+    <line x1="40" y1="2" x2="40" y2="78" stroke="#a23b3b" stroke-width="2.4"/>
+    <text x="40" y="100" text-anchor="middle" font-family="system-ui,sans-serif"
+          font-size="12" font-weight="700" fill="#7c2727">vertical cut</text>
+    <text x="40" y="116" text-anchor="middle" font-family="monospace"
+          font-size="10.5" fill="#7c2727">[unlicensed]</text>
+    <text x="40" y="132" text-anchor="middle" font-family="monospace"
+          font-size="9.5" fill="#5a5446">derivation/4  :52-53</text>
+  </g>
+
+  <!-- arrows from both cuts converging on the outcome -->
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1b1810"/>
+    </marker>
+  </defs>
+  <path d="M 150 148 C 230 160, 250 195, 290 205" fill="none" stroke="#3b7a3b" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M 150 290 C 230 280, 250 245, 290 235" fill="none" stroke="#a23b3b" stroke-width="2" marker-end="url(#ah)"/>
+
+  <!-- ===================== ONE OUTCOME (center) ===================== -->
+  <g transform="translate(300,180)">
+    <rect x="0" y="0" width="120" height="80" rx="8" fill="#efe4c4" stroke="#0d0c08" stroke-width="1.6"/>
+    <text x="60" y="30" text-anchor="middle" font-family="Georgia,serif"
+          font-size="22" font-weight="700" fill="#1b1810">1/2</text>
+    <text x="60" y="50" text-anchor="middle" font-family="monospace"
+          font-size="10" fill="#1b1810">equal_parts(2)</text>
+    <text x="60" y="68" text-anchor="middle" font-family="system-ui,sans-serif"
+          font-size="10.5" fill="#5a5446">one outcome</text>
+  </g>
+  <text x="360" y="285" text-anchor="middle" font-family="system-ui,sans-serif"
+        font-size="11" fill="#5a5446">juncture/4 :102  reads both derivations</text>
+
+  <!-- ===================== THE VANISHING POINT (right) ===================== -->
+  <path d="M 420 220 C 470 220, 480 220, 510 220" fill="none" stroke="#1b1810" stroke-width="2" marker-end="url(#ah)"/>
+
+  <g transform="translate(512,160)">
+    <rect x="0" y="0" width="180" height="120" rx="8" fill="#1b1810" stroke="#7c2727" stroke-width="2.4"/>
+    <text x="90" y="26" text-anchor="middle" font-family="system-ui,sans-serif"
+          font-size="12.5" font-weight="700" fill="#f8f1df">effaced_trace/2</text>
+    <text x="90" y="44" text-anchor="middle" font-family="monospace"
+          font-size="10" fill="#e7c98a">:74-76</text>
+    <text x="90" y="66" text-anchor="middle" font-family="monospace"
+          font-size="11" fill="#e07a7a">Name^L^ ...</text>
+    <text x="90" y="84" text-anchor="middle" font-family="system-ui,sans-serif"
+          font-size="10.5" fill="#f0e6cd">the license tag L is</text>
+    <text x="90" y="100" text-anchor="middle" font-family="system-ui,sans-serif"
+          font-size="10.5" fill="#f0e6cd">quantified away</text>
+    <text x="90" y="116" text-anchor="middle" font-family="system-ui,sans-serif"
+          font-size="9.5" font-style="italic" fill="#c9a14a">the numeral eats its own tail</text>
+  </g>
+  <text x="602" y="296" text-anchor="middle" font-family="system-ui,sans-serif"
+        font-size="11" font-weight="700" fill="#7c2727">vanishing point: which history is lost</text>
+
+  <!-- the loop-back arrow: effaced_trace returns to the same derivation/4 clauses -->
+  <path d="M 602 160 C 602 95, 360 88, 110 100"
+        fill="none" stroke="#7c2727" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#ah)"/>
+  <text x="360" y="80" text-anchor="middle" font-family="system-ui,sans-serif"
+        font-size="10.5" font-style="italic" fill="#7c2727">setof reads derivation/4 again — both histories collapse to one Path-list</text>
+
+  <!-- ===================== CAPTURED OUTPUT BLOCK ===================== -->
+  <g transform="translate(20,312)">
+    <rect x="0" y="0" width="680" height="118" rx="6" fill="#2b2820" stroke="#0d0c08" stroke-width="1.2"/>
+    <text x="10" y="18" font-family="monospace" font-size="10.5" fill="#9fd29f">?- show_juncture(half).</text>
+    <text x="10" y="36" font-family="monospace" font-size="10.5" fill="#f0e6cd">juncture: half</text>
+    <text x="10" y="52" font-family="monospace" font-size="10.5" fill="#f0e6cd">  outcome(equal_parts(2))  via partition(circle,radial,2)  [licensed]</text>
+    <text x="10" y="68" font-family="monospace" font-size="10.5" fill="#f0e6cd">  outcome(equal_parts(2))  via partition(circle,vertical,2)  [unlicensed]</text>
+    <text x="10" y="84" font-family="monospace" font-size="10.5" fill="#e7c98a">  -&gt; differance fixed point: one outcome, licensed AND unlicensed; trace effaced</text>
+    <text x="10" y="100" font-family="monospace" font-size="10.5" fill="#e7c98a">  -&gt; the compressed divergence reappears at n_geq(3)</text>
+    <text x="10" y="114" font-family="monospace" font-size="9" fill="#8a8470">effaced_trace(outcome(equal_parts(2))) = [partition(circle,radial,2),partition(circle,vertical,2)]   (license L gone)</text>
+  </g>
+</svg>

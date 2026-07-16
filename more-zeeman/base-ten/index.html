@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ace of Base — place value in any base</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Crect%20width='16'%20height='16'%20fill='%23f4ead6'/%3E%3Crect%20x='1.5'%20y='3'%20width='13'%20height='10'%20fill='none'%20stroke='%230d0c08'%20stroke-width='0.8'/%3E%3Crect%20x='4'%20y='3'%20width='0.8'%20height='10'%20fill='%230d0c08'/%3E%3Crect%20x='11.2'%20y='3'%20width='0.8'%20height='10'%20fill='%230d0c08'/%3E%3Crect%20x='6.5'%20y='6'%20width='3'%20height='4'%20fill='%23d4a747'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../hermes-tokens.css">
+  <link rel="stylesheet" href="../render/host.css">
+  <script defer src="../render/hermes-shell.js" data-root="../" data-app="/" data-active="base-ten"></script>
+</head>
+<body class="view-freshman" data-hshell-fit="1">
+  <div class="wrap">
+    <header class="host-head">
+      <div>
+        <h1>Ace of Base</h1>
+        <p class="subhead">Place value for the operative base you pick. Units, then groups of the base (rod), the base squared (flat), the base cubed (cube). Pick base 5, 7, 10, or 12 and the bundling and the carry follow that base, step by step, from the place-value witness.</p>
+      </div>
+      <nav class="view-toggle" aria-label="audience">
+        <button data-view="freshman" class="active">student</button>
+        <button data-view="teacher">teacher</button>
+        <button data-view="philosopher">researcher</button>
+      </nav>
+    </header>
+
+    <div id="stage" class="stage"></div>
+
+    <div class="rail">
+    <div class="meta-line">
+      <span id="context"></span>
+      <span id="result"></span>
+    </div>
+
+    <div class="controls">
+      <button id="prev">&larr; Prev</button>
+      <input id="seek" type="range" min="0" max="0" value="0">
+      <button id="next">Next &rarr;</button>
+      <button id="play">Play</button>
+      <span id="counter" class="counter"></span>
+      <span id="annotation-flag" class="annot">annotation only</span>
+      <button id="download">SVG</button>
+    </div>
+
+    <p id="caption" class="caption only-freshman"></p>
+
+    <section class="panel only-philosopher">
+      <h2>Formal signature</h2>
+      <code id="tuple" class="tuple"></code>
+      <div id="verbs" class="verbs"></div>
+      <h3>Grounding (Lakoff &amp; N&uacute;&ntilde;ez)</h3>
+      <div id="grounding" class="band"></div>
+    </section>
+
+    <section class="panel only-teacher">
+      <h2>Teacher layer</h2>
+      <div id="teacher" class="band"></div>
+    </section>
+
+    <section class="calc-bar">
+      <label>move
+        <select data-arg="kind">
+          <option value="add_with_carry" selected>add (carry)</option>
+          <option value="subtract_with_borrow">subtract (borrow)</option>
+          <option value="represent">represent</option>
+          <option value="base_decomposition">decompose</option>
+        </select>
+      </label>
+      <label>a <input id="arg-a" data-arg="a" type="number" value="27"></label>
+      <label>b <input data-arg="b" type="number" value="15"></label>
+      <!-- represent/decompose read `n`; mirror the `a` box into it so one number
+           box drives the single-number moves too. -->
+      <input id="arg-n" data-arg="n" type="number" value="27" hidden>
+      <label>base
+        <select data-arg="base">
+          <option value="5">5</option>
+          <option value="7">7</option>
+          <option value="10" selected>10</option>
+          <option value="12">12</option>
+        </select>
+      </label>
+      <button id="calculate">Calculate</button>
+      <span class="calc-note">The base you pick flows through the worker; the same a and b regroup differently at base 5, 7, 10, and 12.</span>
+    </section>
+    </div><!-- .rail -->
+  </div>
+
+  <script type="application/json" id="frames">{"canvas": {"height": 380, "width": 720}, "frames": [{"caption": "Show 27 in place-value columns.", "scene": {"base": 10, "carries": [], "columns": [{"base": 10, "count": 2, "place": 1, "role": "rod"}, {"base": 10, "count": 7, "place": 0, "role": "unit"}], "format": "base-ten-columns", "version": 2}, "sceneChanged": true, "step": 1, "verb": "show_addend(27)"}, {"caption": "Line 15 up under 27 by place.", "scene": {"base": 10, "carries": [], "columns": [{"base": 10, "count": 3, "place": 1, "role": "rod"}, {"base": 10, "count": 12, "place": 0, "role": "unit"}], "format": "base-ten-columns", "version": 2}, "sceneChanged": true, "step": 2, "verb": "show_addend(15)"}, {"caption": "7 + 5 in the ones place makes 12; bundle 1 into the tens, leave 2, carry 1.", "scene": {"base": 10, "carries": [{"amount": 1, "fromPlace": 0, "toPlace": 1}], "columns": [{"base": 10, "count": 3, "place": 1, "role": "rod"}, {"base": 10, "count": 2, "place": 0, "role": "unit"}], "format": "base-ten-columns", "version": 2}, "sceneChanged": true, "step": 3, "verb": "combine_place(0)"}, {"caption": "2 + 1 + 1 carried in in the tens place makes 4; under 10, no carry.", "scene": {"base": 10, "carries": [], "columns": [{"base": 10, "count": 4, "place": 1, "role": "rod"}, {"base": 10, "count": 2, "place": 0, "role": "unit"}], "format": "base-ten-columns", "version": 2}, "sceneChanged": true, "step": 4, "verb": "combine_place(1)"}, {"caption": "The sum is 42.", "scene": {"base": 10, "carries": [], "columns": [{"base": 10, "count": 4, "place": 1, "role": "rod"}, {"base": 10, "count": 2, "place": 0, "role": "unit"}], "format": "base-ten-columns", "version": 2}, "sceneChanged": true, "step": 5, "verb": "sum(42)"}], "grounding": {"metaphor_gloss": "Object Construction \u2014 numbers as wholes built from parts", "metaphor_label": "object_construction", "practice": "p_column_addition_with_carrying", "primitive": "P4", "role": "primary"}, "kind": "add_with_carry", "request": {"a": 27, "b": 15, "base": 10}, "result": "42", "teacher": {"breaks_at": [{"inference": "zero_as_an_object", "reason": "Zero requires the ad-hoc Zero Object Metaphor; lack-of-object is not itself a constructible object."}, {"inference": "zero_as_a_number", "reason": "No source-domain referent for 'an object that is the absence of an object'; requires the ad-hoc Zero Object Metaphor."}, {"inference": "irrational_numbers", "reason": "Irrationals are not constructible by finite assembly of unit parts."}], "embodied": "Fit equal parts together into a whole object.", "incompatibility_penumbra": "Rules out the drop carry to next column deformation (omitted carry to next column): the representation will not sustain it.", "repair": "Switch to Zero Object.", "standard": "addition strand: column_addition_with_carrying", "witness": {"channels": {"breaks_at": "present", "embodied": "present", "incompatibility_penumbra": "present", "standard": "present"}, "kind": "teacher_layer", "metaphor_id": "arithmetic_is_object_construction", "practice": "p_column_addition_with_carrying", "source": "teacher_layer_composition_over_existing_witnesses"}}, "tuple": "add_with_carry(27,15,10)"}</script>
+  <script src="../render/drawer.js"></script>
+  <script>
+    // Mirror the `a` box into the hidden `n` arg so the represent / decompose
+    // moves (which read `n`) honor the same number box as add / subtract.
+    (function () {
+      var a = document.getElementById('arg-a');
+      var n = document.getElementById('arg-n');
+      if (a && n) { a.addEventListener('input', function () { n.value = a.value; }); }
+    })();
+    HermesDrawer.create({ op: 'base_ten_render', endpoint: '/api/render', defaultView: 'freshman' });
+  </script>
+</body>
+</html>

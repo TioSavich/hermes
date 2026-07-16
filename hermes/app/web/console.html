@@ -1,0 +1,2320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hermes — teaching console</title>
+<link rel="icon" type="image/svg+xml" href="hermes_logo.svg" />
+<!-- The one shared token sheet (Gate E). The warm paper/gold page identity and the
+     figure roles both live in more-zeeman/hermes-tokens.css, which the server serves
+     at /more-zeeman/. The console reads its palette from there rather than an inline
+     :root block, so the console and every render host page draw from one token set. -->
+<link rel="stylesheet" href="../more-zeeman/hermes-tokens.css" />
+<script defer src="../more-zeeman/render/hermes-shell.js" data-root="../more-zeeman/" data-app="./" data-active="console"></script>
+<style>
+/* the app shell owns the outer frame; the console fills its cell */
+html.hshell-ready .shell { height: 100%; }
+</style>
+<style>
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; color: var(--ink);
+  background:
+    radial-gradient(900px 600px at 92% -8%, rgba(212,167,71,0.18), transparent 70%),
+    radial-gradient(740px 520px at -10% 104%, rgba(63,127,137,0.12), transparent 68%),
+    var(--paper);
+  font: 16px/1.5 var(--serif); overflow: hidden;
+}
+body::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; opacity: 0.36; z-index: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.05 0 0 0 0 0.04 0 0 0 0 0.03 0 0 0 0.04 0'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>");
+}
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+
+.shell { position: relative; z-index: 1; display: grid; grid-template-rows: auto auto 1fr; height: 100vh; }
+
+/* ---- topbar ---- */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 0.7rem 1.3rem; border-bottom: 1px solid var(--line);
+  background: rgba(244,234,214,0.82); backdrop-filter: blur(10px);
+}
+.brand { display: flex; align-items: center; gap: 0.75rem; min-width: 0; }
+.brand img { width: 42px; height: 42px; border-radius: 50%; flex: 0 0 auto; box-shadow: 0 2px 8px rgba(13,12,8,0.18); }
+.brand h1 { margin: 0; font-size: 1.22rem; font-weight: 600; letter-spacing: 0.01em; }
+.brand .sub { display: block; margin-top: 0.05rem; font: 0.62rem/1.2 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.top-controls { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.pill { font: 0.64rem/1 var(--mono); letter-spacing: 0.07em; text-transform: uppercase; padding: 0.34rem 0.55rem; border: 1px solid var(--line); border-radius: 999px; background: var(--paper-cool); white-space: nowrap; }
+.pill.ok { border-color: var(--teal); color: var(--teal); }
+.pill.warn { border-color: var(--rust); color: var(--rust); }
+.pill.gate-off { border-color: var(--gold-deep); color: var(--gold-deep); }
+.btn { border: 1px solid var(--gold-deep); background: var(--gold); color: var(--ink); border-radius: 7px; padding: 0.42rem 0.75rem; font-size: 0.9rem; transition: transform 0.08s ease, box-shadow 0.12s ease; }
+.btn:hover { box-shadow: 0 2px 10px rgba(169,124,36,0.3); transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn.ghost { background: transparent; border-color: var(--line); }
+.btn.ghost:hover { box-shadow: none; background: var(--paper-cool); }
+.btn.primary { background: var(--teal); border-color: var(--teal-deep); color: #fff; }
+.btn.primary:hover { box-shadow: 0 3px 12px rgba(44,94,102,0.35); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+.btn.small { padding: 0.28rem 0.5rem; font-size: 0.8rem; }
+
+/* ---- tab nav ---- */
+.tabnav { display: flex; align-items: center; gap: 0.4rem; padding: 0 1.3rem; border-bottom: 1px solid var(--line); background: rgba(237,228,207,0.6); }
+.tab { position: relative; appearance: none; border: 0; background: transparent; padding: 0.7rem 0.95rem 0.62rem; font-size: 0.98rem; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.tab:hover { color: var(--ink); }
+.tab.active { color: var(--ink); font-weight: 600; border-bottom-color: var(--gold-deep); }
+.tab .glyph { font: 0.7rem var(--mono); opacity: 0.7; margin-right: 0.35rem; }
+.tabnav .spacer { flex: 1; }
+.gate-toggle { display: flex; align-items: center; gap: 0.4rem; font: 0.72rem var(--mono); color: var(--muted); }
+
+/* ---- audience-view toggle (matches the drawer's body-class contract: §5) ---- */
+.view-toggle { display: flex; align-items: center; gap: 0.3rem; }
+.view-toggle .vt-label { font: 0.64rem/1 var(--mono); letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); margin-right: 0.15rem; }
+.view-toggle button { appearance: none; border: 1px solid var(--line); background: var(--paper); color: var(--muted); border-radius: 999px; padding: 0.26rem 0.6rem; font: 0.74rem var(--mono); }
+.view-toggle button:hover { color: var(--ink); border-color: var(--gold-deep); }
+.view-toggle button.active { background: var(--gold-pale); border-color: var(--gold-deep); color: var(--ink); font-weight: 600; }
+/* Audience panels show per the body class the toggle sets (view-freshman default). */
+.only-freshman, .only-teacher, .only-philosopher { display: none; }
+body.view-freshman .only-freshman { display: block; }
+body.view-teacher .only-teacher { display: block; }
+body.view-philosopher .only-philosopher { display: block; }
+
+/* ---- advanced / research surface ---- */
+/* Research features (PML scoring, the workflow pipeline A–E, the encyclopedia,
+   monitoring, Ask) carry the .adv class and stay out of the default teacher view.
+   They remain in the document and become reachable when the toggle adds
+   body.show-advanced — nothing is removed, only deferred. */
+.adv { display: none; }
+body.show-advanced .adv { display: revert; }
+body.show-advanced .tab.adv { display: inline-flex; }
+body.show-advanced .card.adv { display: block; }
+.adv-toggle { display: flex; align-items: center; gap: 0.4rem; font: 0.72rem var(--mono); color: var(--muted); white-space: nowrap; }
+.adv-toggle input { accent-color: var(--gold-deep); }
+.adv-note { color: var(--muted); font-size: 0.82rem; font-style: italic; margin: 0.2rem 0 1rem; }
+
+/* ---- panels ---- */
+.surfaces { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; padding: 0.5rem 1.5rem; border-bottom: 1px solid var(--line); background: var(--paper-cool); }
+.surfaces-label { font: 0.64rem/1 var(--mono); letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); margin-right: 0.3rem; }
+.viz-menu { position: relative; }
+.viz-menu summary { list-style: none; cursor: pointer; }
+.viz-menu summary::-webkit-details-marker { display: none; }
+.viz-menu summary::after { content: " ▾"; font-size: 0.7em; color: var(--muted); }
+.viz-menu[open] summary { background: var(--gold-pale); border-color: var(--gold-deep); }
+.viz-panel { position: absolute; top: calc(100% + 4px); left: 0; z-index: 40; min-width: 13rem;
+  display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line);
+  border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.08); padding: 0.3rem; }
+.viz-panel a { padding: 0.35rem 0.6rem; border-radius: 6px; color: var(--ink); text-decoration: none; font-size: 0.82rem; }
+.viz-panel a:hover { background: var(--gold-pale); }
+/* Formal artifacts (raw JSON, Prolog term chips) stay behind the formal view;
+   the student and teacher views read in English. */
+body:not(.view-philosopher) .fc-raw { display: none; }
+body:not(.view-philosopher) code.formal { display: none; }
+.panels { overflow: auto; min-height: 0; }
+.panel { display: none; max-width: 1080px; margin: 0 auto; padding: 1.4rem 1.5rem 3rem; }
+.panel.active { display: block; animation: rise 0.34s ease both; }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.panel-lede { color: var(--muted); margin: 0.1rem 0 1.4rem; font-size: 0.98rem; max-width: 60ch; }
+
+/* section cards */
+.card { border: 1px solid var(--line); border-radius: 12px; background: rgba(255,253,247,0.55); padding: 1.05rem 1.15rem; margin-bottom: 1.1rem; box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset; }
+.card > h2 { margin: 0 0 0.15rem; font-size: 1.12rem; }
+.card > h2 .num { display: inline-grid; place-items: center; width: 1.4rem; height: 1.4rem; margin-right: 0.5rem; border-radius: 50%; background: var(--gold); color: var(--ink); font: 0.78rem var(--mono); vertical-align: 0.05rem; }
+.card > .hint { color: var(--muted); font-size: 0.86rem; margin: 0 0 0.7rem; }
+
+/* data zone */
+.dropzone { border: 1.5px dashed var(--line); border-radius: 10px; transition: border-color 0.15s, background 0.15s; padding: 0.5rem; }
+.dropzone.dragover { border-color: var(--gold-deep); background: rgba(212,167,71,0.1); }
+textarea.data-input { width: 100%; min-height: 150px; resize: vertical; padding: 0.7rem 0.8rem; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); font: 0.94rem/1.5 var(--serif); }
+.data-actions { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin-top: 0.6rem; }
+.understood { margin-top: 0.7rem; font: 0.82rem var(--mono); color: var(--teal-deep); }
+.understood::before { content: "✓ "; font-weight: 700; }
+.understood.warn { color: var(--rust); }
+.understood.warn::before { content: "⚠ "; }
+.muted-inline { color: var(--muted); font-size: 0.82rem; }
+.input-picker { border: 1px solid var(--line); background: transparent; border-radius: 7px; padding: 0.28rem 0.5rem; font-size: 0.8rem; color: var(--ink); }
+.out-head { font: 0.82rem var(--mono); }
+.out-log { margin-top: 0.4rem; }
+.out-log summary { cursor: pointer; font: 0.7rem var(--mono); opacity: 0.7; }
+.out-log pre { white-space: pre-wrap; margin: 0.3rem 0 0; font: 0.76rem/1.4 var(--mono); }
+
+/* rendered result */
+.result { margin-top: 0.9rem; }
+.analysis-summary { font-weight: 600; margin-bottom: 0.15rem; }
+.provenance { display: inline-block; font: 0.7rem var(--mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--teal-deep); border: 1px solid var(--teal); border-radius: 999px; padding: 0.15rem 0.5rem; margin: 0.3rem 0; }
+.dyadlist { list-style: none; padding: 0; margin: 0.6rem 0 0; }
+.dyadlist li { padding: 0.5rem 0; border-bottom: 1px solid var(--line); }
+.dyad-pair { font: 0.96rem var(--serif); font-weight: 600; }
+.dyad-pair .arrow { color: var(--gold-deep); margin: 0 0.3rem; }
+.dyad-score { font: 0.68rem var(--mono); color: var(--muted); font-weight: 400; margin-left: 0.4rem; }
+.dyad-why { font-size: 0.86rem; color: var(--ink-soft); margin-top: 0.15rem; }
+.analysis-note { color: var(--muted); font-size: 0.8rem; margin-top: 0.7rem; font-style: italic; max-width: 64ch; }
+.pair-graph { margin: 0.85rem 0; border: 1px solid var(--line); border-radius: 10px; background: #f8f0df; padding: 0.65rem; }
+.pair-graph h4 { margin: 0 0 0.35rem; font-size: 0.82rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+.pair-graph svg { display: block; width: 100%; height: auto; }
+.graph-link { stroke: #8a7b5f; stroke-width: 2; opacity: 0.65; }
+.graph-node { fill: #fffaf0; stroke: var(--ink); stroke-width: 1.5; }
+.graph-label { font: 11px/1 var(--mono); fill: var(--ink); text-anchor: middle; dominant-baseline: central; }
+details.raw { margin-top: 0.7rem; }
+details.raw summary { cursor: pointer; font: 0.7rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); background: var(--ink); color: var(--paper); padding: 0.7rem 0.8rem; border-radius: 8px; overflow: auto; max-height: 320px; }
+
+/* pipeline stepper */
+.pipeline { display: grid; gap: 0.55rem; }
+.step { border: 1px solid var(--line); border-radius: 10px; background: var(--paper); overflow: hidden; }
+.step-head { display: flex; align-items: center; gap: 0.7rem; padding: 0.7rem 0.85rem; cursor: pointer; }
+.step-num { display: inline-grid; place-items: center; width: 1.55rem; height: 1.55rem; border-radius: 50%; background: var(--paper-warm); border: 1px solid var(--line); font: 0.8rem var(--mono); flex: 0 0 auto; }
+.step-title { font-weight: 600; }
+.step-title small { display: block; font: 0.78rem var(--serif); font-weight: 400; color: var(--muted); }
+.step-status { margin-left: auto; font: 0.66rem var(--mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.step-chevron { color: var(--muted); transition: transform 0.15s ease; }
+.step.open .step-chevron { transform: rotate(90deg); }
+.step-body { display: none; padding: 0 0.85rem 0.85rem; border-top: 1px solid var(--line); }
+.step.open .step-body { display: block; animation: rise 0.2s ease both; }
+.field { display: block; margin: 0.6rem 0; }
+.field label { display: block; font: 0.7rem/1.4 var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.2rem; }
+.field input[type=text], .field select { width: 100%; padding: 0.45rem 0.55rem; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); }
+.checkrow { display: flex; gap: 1rem; align-items: center; font-size: 0.88rem; margin: 0.4rem 0; flex-wrap: wrap; }
+.row { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+.out { white-space: pre-wrap; font: 0.78rem/1.45 var(--mono); background: var(--ink); color: var(--paper); padding: 0.7rem 0.8rem; border-radius: 8px; margin-top: 0.7rem; max-height: 300px; overflow: auto; }
+.out.locked { background: #3a1e16; color: #ffd9cd; }
+.out[hidden] { display: none; }
+
+/* explore: catalog */
+.catalog-head { display: flex; align-items: baseline; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+.catalog-stats { font: 0.8rem var(--mono); color: var(--muted); }
+.catalog-stats b { color: var(--ink); }
+.search { flex: 1; min-width: 200px; }
+.search input { width: 100%; padding: 0.5rem 0.7rem; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); font-size: 0.95rem; }
+.catalog-section h3 { margin: 0.4rem 0 0.5rem; font-size: 0.95rem; }
+.catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.6rem; }
+.lesson-card { text-align: left; border: 1px solid var(--line); border-radius: 9px; background: var(--paper); padding: 0.6rem 0.7rem; transition: transform 0.08s ease, box-shadow 0.12s ease, border-color 0.12s; }
+.lesson-card:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(13,12,8,0.14); border-color: var(--gold-deep); }
+.lesson-card .code { font: 0.82rem var(--mono); font-weight: 600; }
+.lesson-card .ttl { display: block; font-size: 0.82rem; color: var(--muted); margin-top: 0.15rem; line-height: 1.3; }
+.badge { display: inline-block; margin-top: 0.4rem; font: 0.64rem var(--mono); text-transform: uppercase; letter-spacing: 0.05em; padding: 0.1rem 0.4rem; border-radius: 999px; border: 1px solid; }
+.badge.ready { color: var(--ok); border-color: var(--ok); }
+.badge.thin { color: var(--thin); border-color: var(--thin); }
+.lesson-detail { margin-top: 1rem; }
+.statgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.55rem; margin: 0.6rem 0; }
+.stat { border: 1px solid var(--line); border-radius: 9px; background: var(--paper); padding: 0.6rem 0.7rem; }
+.stat b { display: block; font: 1.5rem/1.1 var(--serif); }
+.stat span { display: block; margin-top: 0.2rem; font: 0.64rem var(--mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+
+/* field-context render */
+.fc { display: grid; gap: 0.8rem; }
+.fc-head h3 { margin: 0; font-size: 1.1rem; }
+.fc-meta { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.4rem; }
+.chip { display: inline-block; font: 0.66rem var(--mono); padding: 0.12rem 0.42rem; border-radius: 999px; border: 1px solid var(--line); background: var(--paper-cool); }
+.fc-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.8rem; }
+.fc-sec { border-top: 1px solid var(--line); padding-top: 0.5rem; min-width: 0; }
+.fc-sec h4 { margin: 0 0 0.35rem; font-size: 0.92rem; }
+.fc-list { margin: 0; padding-left: 1.05rem; }
+.fc-list li { margin-bottom: 0.22rem; overflow-wrap: anywhere; font-size: 0.88rem; }
+.fc-raw summary { cursor: pointer; font: 0.7rem var(--mono); text-transform: uppercase; color: var(--muted); }
+.fc-raw pre { white-space: pre-wrap; font: 0.72rem/1.4 var(--mono); }
+
+/* chat */
+.chat-answer { white-space: pre-wrap; font: 0.96rem/1.55 var(--serif); background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 0.85rem 1rem; margin-top: 0.85rem; }
+.chat-answer.locked { background: #3a1e16; color: #ffd9cd; }
+
+/* quickstart modal */
+.modal { position: fixed; inset: 0; z-index: 50; background: rgba(13,12,8,0.55); display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+.modal[hidden] { display: none; }
+.modal-card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; max-width: 800px; width: 100%; max-height: 86vh; display: flex; flex-direction: column; box-shadow: 0 12px 40px rgba(13,12,8,0.3); }
+.modal-head { display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 1.1rem; border-bottom: 1px solid var(--line); }
+.modal-head h2 { margin: 0; font-size: 1.15rem; }
+.modal-body { padding: 1rem 1.3rem; overflow: auto; }
+.modal-body h2 { font-size: 1.1rem; margin: 0.9rem 0 0.3rem; }
+.modal-body h3 { font-size: 0.98rem; margin: 0.8rem 0 0.2rem; }
+.modal-body h4 { font-size: 0.9rem; margin: 0.6rem 0 0.2rem; color: var(--gold-deep); }
+.modal-body p { margin: 0.4rem 0; }
+.modal-body code { font: 0.85em var(--mono); background: var(--paper-cool); padding: 0 0.2em; border-radius: 3px; }
+.modal-body pre.md-pre { white-space: pre-wrap; font: 0.8rem/1.45 var(--mono); background: var(--ink); color: var(--paper); padding: 0.6rem 0.8rem; border-radius: 7px; overflow: auto; }
+.modal-body hr { border: 0; border-top: 1px solid var(--line); margin: 0.9rem 0; }
+
+/* results */
+.rtable { border-collapse: collapse; font: 0.82rem var(--mono); width: 100%; }
+.rtable th, .rtable td { border: 1px solid var(--line); padding: 0.25rem 0.5rem; text-align: left; }
+.rtable th { background: var(--paper-warm); }
+.results-grid { display: grid; grid-template-columns: 240px 1fr; gap: 0.9rem; margin-top: 0.6rem; align-items: start; }
+.results-list { border: 1px solid var(--line); border-radius: 8px; padding: 0.4rem; max-height: 56vh; overflow: auto; background: var(--paper-cool); }
+.rsec { font: 0.64rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 0.5rem 0.3rem 0.2rem; }
+.rfile { display: block; width: 100%; text-align: left; border: 0; background: transparent; padding: 0.32rem 0.4rem; border-radius: 5px; font-size: 0.84rem; cursor: pointer; }
+.rfile:hover { background: var(--paper-warm); }
+.rfile.active { background: var(--gold-pale); font-weight: 600; }
+.results-view { border: 1px solid var(--line); border-radius: 8px; padding: 1rem 1.15rem; max-height: 56vh; overflow: auto; background: var(--paper); }
+.results-view h2 { font-size: 1.1rem; margin: 0.6rem 0 0.3rem; }
+.results-view h3 { font-size: 0.98rem; margin: 0.7rem 0 0.2rem; }
+.results-view h4 { font-size: 0.9rem; margin: 0.6rem 0 0.2rem; color: var(--gold-deep); }
+.results-view iframe { width: 100%; height: 52vh; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+.rpre { white-space: pre-wrap; font: 0.78rem/1.45 var(--mono); margin: 0; }
+
+/* ---- encyclopedia ---- */
+.enc-nav { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+.enc-tab { border: 1px solid var(--line); background: var(--paper); border-radius: 999px; padding: 0.32rem 0.8rem; font-size: 0.85rem; color: var(--muted); }
+.enc-tab:hover { color: var(--ink); border-color: var(--gold-deep); }
+.enc-tab.active { background: var(--gold-pale); border-color: var(--gold-deep); color: var(--ink); font-weight: 600; }
+.enc-bar { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.7rem; flex-wrap: wrap; }
+.enc-body { display: grid; grid-template-columns: 320px 1fr; gap: 0.9rem; align-items: start; }
+.enc-list { border: 1px solid var(--line); border-radius: 10px; background: var(--paper-cool); padding: 0.4rem; max-height: 64vh; overflow: auto; }
+.enc-detail { border: 1px solid var(--line); border-radius: 10px; background: var(--paper); padding: 1rem 1.15rem; max-height: 64vh; overflow: auto; }
+.enc-item { display: block; width: 100%; text-align: left; border: 0; border-bottom: 1px solid var(--line); background: transparent; padding: 0.5rem 0.5rem; cursor: pointer; border-radius: 6px; }
+.enc-item:hover { background: var(--paper-warm); }
+.enc-item.active { background: var(--gold-pale); }
+.enc-item .ti { font-weight: 600; font-size: 0.92rem; }
+.enc-item .sub { display: block; font: 0.72rem var(--mono); color: var(--muted); margin-top: 0.12rem; }
+.enc-group { font: 0.64rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 0.6rem 0.4rem 0.25rem; }
+.enc-detail h3 { margin: 0 0 0.25rem; font-size: 1.18rem; }
+.enc-detail h4 { margin: 0.9rem 0 0.3rem; font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold-deep); }
+.kv { display: grid; grid-template-columns: max-content 1fr; gap: 0.2rem 0.7rem; font-size: 0.88rem; margin: 0.4rem 0; }
+.kv dt { font: 0.72rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.kv dd { margin: 0; }
+.badge.basic { color: var(--teal-deep); border-color: var(--teal); }
+.badge.repair { color: var(--rust); border-color: var(--rust); }
+.badge.diag { color: var(--ok); border-color: var(--ok); }
+.badge.nodiag { color: var(--muted); border-color: var(--line); }
+.badge.fsm { color: var(--gold-deep); border-color: var(--gold-deep); }
+
+/* break-points / incompatibility relations — the load-bearing "built to break" content */
+.breaks { list-style: none; padding: 0; margin: 0.3rem 0; }
+.breaks li { border-left: 3px solid var(--rust); background: rgba(185,82,56,0.06); padding: 0.4rem 0.6rem; margin-bottom: 0.4rem; border-radius: 0 7px 7px 0; }
+.breaks .inf { font-weight: 600; font-size: 0.9rem; }
+.breaks .why { font-size: 0.84rem; color: var(--ink-soft); margin-top: 0.1rem; }
+.breaks .repair { font-size: 0.8rem; color: var(--teal-deep); margin-top: 0.2rem; }
+.maplist { list-style: none; padding: 0; margin: 0.3rem 0; font-size: 0.86rem; }
+.maplist li { padding: 0.25rem 0; border-bottom: 1px dotted var(--line); }
+.maplist .ar { color: var(--gold-deep); margin: 0 0.3rem; }
+.maplist .nt { display: block; font-size: 0.78rem; color: var(--muted); }
+
+.misc-card { border: 1px solid var(--line); border-radius: 9px; background: var(--paper); padding: 0.6rem 0.75rem; margin-bottom: 0.6rem; }
+.misc-card .mn { font-weight: 600; }
+.incompat { font: 0.84rem var(--mono); background: rgba(185,82,56,0.07); border: 1px solid rgba(185,82,56,0.25); border-radius: 6px; padding: 0.3rem 0.5rem; margin-top: 0.35rem; }
+.incompat .perp { color: var(--rust); font-weight: 700; margin: 0 0.3rem; }
+.ce-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.3rem; font-size: 0.82rem; }
+.ce { flex: 1; min-width: 140px; border-radius: 6px; padding: 0.3rem 0.5rem; }
+.ce.commit { background: rgba(63,127,137,0.1); border: 1px solid rgba(63,127,137,0.3); }
+.ce.entitle { background: rgba(212,167,71,0.12); border: 1px solid rgba(169,124,36,0.3); }
+.ce b { display: block; font: 0.64rem var(--mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.reanchor { font-size: 0.82rem; color: var(--teal-deep); margin-top: 0.3rem; font-style: italic; }
+.exp-line { font-size: 0.9rem; margin: 0.3rem 0; }
+.formal { display: inline-block; font: 0.74rem var(--mono); color: var(--muted); background: var(--paper-cool); border: 1px solid var(--line); border-radius: 4px; padding: 0 0.3rem; margin-left: 0.35rem; }
+
+/* strategy trace number-line visualization */
+.trace-viz { border: 1px solid var(--line); border-radius: 9px; background: var(--paper); padding: 0.6rem; margin: 0.5rem 0; overflow-x: auto; }
+.trace-viz svg { display: block; }
+.trace-steps { list-style: none; padding: 0; margin: 0.4rem 0; counter-reset: step; }
+.trace-steps li { display: flex; gap: 0.6rem; align-items: baseline; padding: 0.28rem 0; border-bottom: 1px dotted var(--line); font-size: 0.86rem; }
+.trace-steps .sn { font: 0.7rem var(--mono); color: var(--gold-deep); min-width: 1.5rem; }
+.trace-steps .sv { font: 0.78rem var(--mono); color: var(--teal-deep); margin-left: auto; }
+.trace-input { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin: 0.4rem 0; font-size: 0.85rem; }
+.trace-input input { width: 5rem; padding: 0.3rem 0.4rem; border: 1px solid var(--line); border-radius: 6px; background: var(--paper-cool); font: 0.85rem var(--mono); }
+.stance-chip { display: inline-flex; gap: 0.3rem; align-items: center; font: 0.66rem var(--mono); border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.45rem; margin: 0.15rem 0.25rem 0 0; }
+.stance-chip.comp { border-color: var(--rust); color: var(--rust); }
+.stance-chip.exp { border-color: var(--teal); color: var(--teal-deep); }
+
+/* grounded-chat: the symbolic facts the answer was grounded in */
+.grounded { border: 1px solid var(--teal); border-left: 3px solid var(--teal); background: rgba(63,127,137,0.07); border-radius: 8px; padding: 0.55rem 0.7rem; margin-bottom: 0.7rem; }
+.grounded .g-head { font: 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--teal-deep); margin-bottom: 0.3rem; }
+.grounded .g-row { display: flex; align-items: baseline; gap: 0.3rem; flex-wrap: wrap; margin: 0.15rem 0; }
+.grounded .g-lab { font: 0.64rem var(--mono); color: var(--muted); min-width: 6.5rem; text-transform: uppercase; }
+.ask-prose { white-space: pre-wrap; }
+
+/* misconception worked example — the symbolic error made concrete */
+.worked { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; font: 1.05rem var(--mono); background: var(--paper); border: 1px solid var(--line); border-radius: 9px; padding: 0.7rem 0.85rem; margin: 0.4rem 0; }
+.worked .we-in { font-weight: 600; }
+.worked .we-arrow { color: var(--gold-deep); }
+.worked .we-wrong { color: var(--rust); font-weight: 700; }
+.worked .we-correct { font: 0.78rem var(--mono); color: var(--teal-deep); margin-left: auto; }
+/* productive-vs-deformation fraction bars, drawn by the render automata via the embedded viewer */
+.bars-compare { width: 100%; height: 560px; border: 1px solid var(--line); border-radius: 9px; background: var(--paper); margin: 0.4rem 0; }
+
+@media (max-width: 760px) {
+  .fc-grid { grid-template-columns: 1fr; }
+  .results-grid { grid-template-columns: 1fr; }
+  .enc-body { grid-template-columns: 1fr; }
+}
+
+/* ---- monitoring / anticipation chart ---- */
+.mc-bar { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+.mc-bar input { flex: 1; min-width: 9rem; padding: 0.42rem 0.6rem; border: 1px solid var(--line); border-radius: 7px; background: var(--paper-cool); font: 0.9rem var(--mono); }
+.chart { border: 1px solid var(--line); border-radius: 10px; background: var(--paper); padding: 1rem 1.1rem; margin-top: 0.85rem; }
+.chart-head h3 { margin: 0; font-size: 1.15rem; }
+.chart-head .chip { margin-top: 0.4rem; }
+.chart-core { border-left: 3px solid var(--gold-deep); padding: 0.4rem 0 0.4rem 0.7rem; margin: 0.7rem 0 0.9rem; font: 0.95rem/1.45 var(--serif); }
+.coverage-signal { border: 1px solid var(--line); background: var(--paper-cool); padding: 0.55rem 0.7rem; margin: 0.65rem 0 0.85rem; font: 0.84rem/1.4 var(--sans); }
+.coverage-signal.scope { border-left: 3px solid var(--rust); }
+.coverage-signal .coverage-label { display: block; font: 0.68rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.25rem; }
+.band { border-top: 1px solid var(--line); padding-top: 0.6rem; margin-top: 0.8rem; }
+.band > h4 { margin: 0 0 0.5rem; font-size: 0.95rem; }
+.band .band-note { font: 0.74rem var(--mono); color: var(--muted); margin: 0 0 0.55rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.astrat { display: grid; grid-template-columns: 1fr auto; gap: 0.3rem 0.8rem; padding: 0.4rem 0; border-bottom: 1px dashed var(--line); }
+.astrat:last-child { border-bottom: 0; }
+.astrat b { font: 0.92rem var(--mono); }
+.astrat .where { grid-column: 1 / -1; font: 0.74rem var(--mono); color: var(--muted); }
+.chart-visual { grid-column: 1 / -1; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,253,247,0.58); padding: 0.55rem 0.65rem; margin-top: 0.25rem; }
+.chart-visual .visual-kicker { font: 0.64rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--teal-deep); margin-bottom: 0.35rem; }
+.chart-visual .visual-note { font-size: 0.78rem; color: var(--muted); margin-top: 0.35rem; }
+.chart-visual-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.55rem; }
+.chart-visual figure { margin: 0; min-width: 0; }
+.chart-visual figcaption { font: 0.72rem var(--mono); color: var(--muted); margin-bottom: 0.25rem; }
+.chart-visual svg { display: block; width: 100%; height: 220px; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); }
+.chart-visual .monitoring-filmstrip { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.42rem; }
+.chart-visual .monitoring-filmstrip-panel { min-width: 0; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); padding: 0.35rem; }
+.chart-visual .monitoring-filmstrip-panel svg { height: 140px; border: 0; border-radius: 5px; background: var(--paper); }
+.chart-visual .monitoring-filmstrip-step { margin-top: 0.28rem; font: 0.68rem var(--mono); color: var(--ink); overflow-wrap: anywhere; }
+.chart-visual .monitoring-filmstrip-caption { margin-top: 0.18rem; font-size: 0.7rem; color: var(--muted); overflow-wrap: anywhere; }
+.chart-visual .frame-caption { margin: 0.25rem 0 0; font-size: 0.78rem; color: var(--ink-soft); }
+.chart-visual .visual-proof { margin-top: 0.55rem; border-top: 1px dashed var(--line); padding-top: 0.45rem; font: 0.74rem/1.35 var(--mono); color: var(--ink-soft); }
+.chart-visual .visual-proof b { color: var(--ink); }
+.chart-visual .visual-proof .proof-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.35rem 0.65rem; margin-top: 0.3rem; }
+.chart-visual .visual-proof .proof-residue { grid-column: 1 / -1; color: var(--muted); }
+.chart-visual .mv-whole { fill: rgba(212,167,71,0.25); }
+.chart-visual .mv-iterated { fill: rgba(63,127,137,0.34); }
+.chart-visual .mv-deformation { fill: rgba(185,82,56,0.34); }
+.chart-visual .mv-neutral { fill: rgba(102,95,79,0.16); }
+.chart-visual .mv-label { font: 12px var(--mono); fill: var(--ink); }
+.chart-visual .mv-axis { stroke: var(--line); stroke-width: 2; }
+.chart-visual.loading { color: var(--muted); font-size: 0.82rem; }
+@media (max-width: 760px) {
+  .chart-visual-grid { grid-template-columns: 1fr; }
+}
+.student-work-picture { grid-column: 1 / -1; margin-top: 0.85rem; }
+.student-work-picture .visual-kicker { color: var(--rust); }
+.amis { border: 1px solid var(--line); border-radius: 8px; padding: 0.6rem 0.75rem; margin-bottom: 0.6rem; background: var(--paper-cool); }
+.amis .amis-name { font: 0.96rem var(--mono); font-weight: 700; }
+.amis .gap { font: 0.84rem/1.4 var(--mono); margin: 0.35rem 0; }
+.amis .gap .lbl { color: var(--muted); text-transform: uppercase; font-size: 0.66rem; letter-spacing: 0.05em; display: block; }
+.amis .incompat { border-left: 3px solid var(--rust); padding: 0.35rem 0 0.35rem 0.6rem; margin: 0.5rem 0; font: 0.86rem/1.4 var(--mono); }
+.amis .incompat .lbl { display: block; color: var(--rust); text-transform: uppercase; font-size: 0.66rem; letter-spacing: 0.05em; margin-bottom: 0.15rem; }
+.amis .reanchor { font: 0.86rem/1.4 var(--serif); margin-top: 0.4rem; }
+.amis .src { font: 0.7rem var(--mono); color: var(--muted); margin-top: 0.35rem; overflow-wrap: anywhere; }
+.amis .cite { font: 0.74rem/1.4 var(--serif); color: var(--muted); margin-top: 0.3rem; }
+
+@media print {
+  .topbar, .tabnav, #quickstart-modal, .panel-lede, .mc-bar, .mc-actions { display: none !important; }
+  body, .panel, .panel.active { background: #fff !important; color: #000 !important; }
+  .card { border: 0 !important; box-shadow: none !important; padding: 0 !important; }
+  .card > h2, .card > .hint { display: none; }
+  .chart { border: 0; padding: 0; page-break-after: always; }
+  .chart:last-child { page-break-after: auto; }
+  .amis, .astrat, .band { page-break-inside: avoid; }
+  .chart-core { border-left: 3px solid #000; }
+  .amis { background: #fff; border: 1px solid #000; }
+  .amis .incompat { border-left: 3px solid #000; }
+  .amis .incompat .lbl { color: #000; }
+}
+.deontic-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-top: 0.6rem; }
+.deontic-col h4 { font: 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.3rem; }
+.deontic-list { list-style: none; padding: 0; margin: 0; }
+.deontic-list li { font: 0.82rem var(--mono); padding: 0.25rem 0; border-top: 1px solid var(--line, rgba(127,127,127,.18)); }
+.deontic-list li:first-child { border-top: none; }
+.deontic-list.incoherent li { color: var(--tension, #d4634a); }
+.out-head.locked { color: var(--tension, #d4634a); }
+.deontic-extra { margin-top: 0.9rem; padding-top: 0.7rem; border-top: 1px solid var(--line, rgba(127,127,127,.18)); }
+.deontic-extra h4 { font: 0.72rem var(--mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.3rem; }
+.deontic-list.conseq li { white-space: normal; }
+.conseq-turn { color: var(--muted); font-style: italic; }
+.conseq-rule { color: var(--muted); font-size: 0.72rem; }
+.uplevel-move { margin-top: 0.5rem; font: 0.84rem/1.45 var(--sans, inherit); }
+.uplevel-erasure { color: var(--tension, #d4634a); font-size: 0.78rem; margin-top: 0.3rem; }
+@media (max-width: 640px) { .deontic-cols { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="view-freshman" data-hshell-fit="1">
+<div class="shell">
+
+  <div class="topbar">
+    <div class="brand">
+      <div>
+        <h1>Teaching console</h1>
+        <span class="sub">running locally · on your machine</span>
+      </div>
+    </div>
+    <div class="top-controls">
+      <span id="gate-pill" class="pill" hidden>gate</span>
+      <span id="model-pill" class="pill">model …</span>
+      <span id="key-pill" class="pill">key …</span>
+      <button class="btn ghost" id="quickstart-btn">Quickstart</button>
+      <button class="btn ghost" id="set-key-btn">Set key</button>
+      <label class="adv-toggle" title="Show the research features: PML scoring, the Gemma workflow pipeline, the encyclopedia, monitoring, and Ask Hermes.">
+        <input type="checkbox" id="adv-check" /> Advanced / research
+      </label>
+    </div>
+  </div>
+
+  <nav class="tabnav" id="tabnav">
+    <button class="tab active" data-tab="workspace"><span class="glyph">01</span>Workspace</button>
+    <button class="tab" data-tab="explore"><span class="glyph">02</span>Explore lessons</button>
+    <button class="tab adv" data-tab="encyclopedia"><span class="glyph">03</span>Encyclopedia</button>
+    <button class="tab adv" data-tab="ask"><span class="glyph">04</span>Ask Hermes</button>
+    <span class="spacer"></span>
+    <label class="gate-toggle" id="gate-toggle" hidden>
+      <input type="checkbox" id="mode-check" /> campus mode (unlock student data)
+    </label>
+  </nav>
+
+  <nav class="view-toggle" id="view-toggle" aria-label="audience view" hidden>
+    <button type="button" data-view="freshman" class="active">student</button>
+    <button type="button" data-view="teacher">teacher</button>
+    <button type="button" data-view="philosopher">researcher</button>
+  </nav>
+  <script>
+  /* One nav, one place: the audience toggle rides in the app shell's top bar. */
+  window.addEventListener('load', function () {
+    var vt = document.getElementById('view-toggle');
+    var slot = document.getElementById('hshell-slot');
+    if (vt && slot) slot.appendChild(vt);
+    if (vt) vt.hidden = false;
+  });
+  </script>
+
+  <div class="panels">
+
+    <!-- ============ WORKSPACE ============ -->
+    <section class="panel active" data-tab="workspace">
+      <p class="panel-lede">Bring a discussion, read what Hermes makes of it, and open a visualizer. The research features (PML scoring and the Gemma class workflow) wait under <em>Advanced / research</em> in the top bar.</p>
+
+      <div class="card">
+        <h2><span class="num">1</span>Your discussion</h2>
+        <p class="hint">Paste a Canvas discussion (or any <code>Speaker: text</code> transcript / table with Speaker &amp; text columns), drop a file, or load the synthetic sample. Hermes detects the format for you. For the claim-checked report of a transcript, use <a href="discussions.html">Discussions</a> in the sidebar.</p>
+        <div id="data-drop" class="dropzone">
+          <textarea id="data-input" class="data-input" placeholder="Maria Rivera: A square is a rectangle because…&#10;David Chen: At first glance…&#10;&#10;…or drop a .txt / .md / .csv file here"></textarea>
+        </div>
+        <div class="data-actions">
+          <button class="btn ghost small" id="use-sample">Use sample</button>
+          <select id="input-picker" class="input-picker"><option value="">From a saved file…</option></select>
+          <label class="btn ghost small" for="data-file">📎 Attach file</label>
+          <input type="file" id="data-file" accept=".txt,.md,.csv,.json,.text" hidden />
+          <span id="data-attached" class="muted-inline"></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">2</span>Analyze &amp; pair</h2>
+        <p class="hint">Reads the discussion locally (no cloud, no key) and proposes student pairs with a plain reason for each.</p>
+        <div class="row">
+          <button class="btn primary" id="analyze-btn">Analyze &amp; pair</button>
+          <button class="btn ghost" id="to-report-btn" title="Carry this discussion to the Discussions page and build the claim-checked report there (needs the campus connection).">Claim-checked report &rarr;</button>
+          <label class="muted-inline">domain model:
+            <select id="force-mode"><option value="">auto</option><option value="general">off (discourse only)</option></select>
+          </label>
+          <span id="analyze-understood" class="understood" hidden></span>
+        </div>
+        <div class="result" id="analyze-result" hidden></div>
+      </div>
+
+      <div class="card adv">
+        <h2><span class="num">3</span>Score a text with PML</h2>
+        <p class="hint">The neuro-symbolic loop: Gemma reads your text and emits its modal posture as Prolog <code>reader_axiom/4</code> facts; SWI-Prolog validates them against the 12 PML operators (3 modes × necessity/possibility × compression/expansion) and scores the result. Gemma proposes the symbolic claims; swipl is the judge. <em>The text is sent to Gemma.</em></p>
+        <textarea id="pml-input" class="data-input" style="min-height:88px">A square is definitely a rectangle. But maybe it looks more like a diamond to me.</textarea>
+        <div class="data-actions">
+          <button class="btn primary" id="pml-run">Encode &amp; score with PML</button>
+          <span class="muted-inline">one sentence, a student utterance, or a short passage</span>
+        </div>
+        <div id="pml-out" class="result" hidden></div>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">+</span>Quick calculator</h2>
+        <p class="hint">Type a whole-number operation and read its step-by-step proof. The symbolic strategy engine works it as a child's strategy would — counting on by bases, a missing addend, and so on — and returns the decoded result with a number-line trace. Operators: <code>+</code> <code>−</code> <code>×</code> <code>÷</code> (ascii <code>- * /</code> accepted).</p>
+        <div class="data-actions">
+          <input type="text" id="calc-input" class="num" style="flex:1;min-width:8rem;padding:0.42rem 0.6rem;border:1px solid var(--line);border-radius:7px;background:var(--paper-cool)" placeholder="e.g. 7 + 5" value="7 + 5" />
+          <label class="muted-inline" style="display:flex;flex-direction:column;gap:.25rem;min-width:14rem">strategy
+            <select id="calc-strategy" disabled></select>
+          </label>
+          <button class="btn primary" id="calc-run">Compute &amp; trace</button>
+        </div>
+        <div id="calc-strategy-status" class="muted-inline">loading runnable strategies…</div>
+        <div id="calc-out" class="result" hidden></div>
+      </div>
+
+      <div class="card adv">
+        <h2><span class="num">4</span>The class workflow</h2>
+        <p class="hint">The Gemma-assisted steps, in order. Each needs your roster in <code>runtime/roster.csv</code> and a REALLMS key. Run them top to bottom.</p>
+        <div class="pipeline" id="pipeline">
+
+          <div class="step" data-step>
+            <div class="step-head"><span class="step-num">A</span><span class="step-title">Parse<small>Turn a Canvas paste in runtime/input/ into structured data</small></span><span class="step-status"></span><span class="step-chevron">▸</span></div>
+            <div class="step-body">
+              <div class="field"><label>Paste path under runtime/</label><input type="text" id="parse-input" value="input/All_Discussions.txt" /></div>
+              <div class="checkrow"><label><input type="checkbox" id="parse-force" /> force re-parse</label></div>
+              <div class="row">
+                <button class="btn" data-cmd="parse" data-out="parse-out">Parse</button>
+                <button class="btn ghost" data-cmd="score" data-out="parse-out" title="Drafts a rubric score via the Gemma LLM — this is an LLM judgment, not the symbolic PML engine.">LLM rubric score</button>
+                <button class="btn ghost" data-cmd="metrics" data-out="parse-out" data-graph>Metrics</button>
+              </div>
+              <div class="out" id="parse-out" hidden></div>
+            </div>
+          </div>
+
+          <div class="step" data-step>
+            <div class="step-head"><span class="step-num">B</span><span class="step-title">Profiles<small>One warm profile per student from how they participated</small></span><span class="step-status"></span><span class="step-chevron">▸</span></div>
+            <div class="step-body">
+              <div class="checkrow"><label><input type="checkbox" id="profile-force" /> overwrite existing</label></div>
+              <div class="field"><label>Only (file slug, optional)</label><input type="text" id="profile-only" placeholder="Doe_Jane" /></div>
+              <div class="row"><button class="btn" data-cmd="profile" data-out="profile-out">Write profiles</button></div>
+              <div class="out" id="profile-out" hidden></div>
+            </div>
+          </div>
+
+          <div class="step" data-step>
+            <div class="step-head"><span class="step-num">C</span><span class="step-title">Pairing page<small>A paste-ready Canvas page with your named students paired</small></span><span class="step-status"></span><span class="step-chevron">▸</span></div>
+            <div class="step-body">
+              <p class="muted-inline">For the local, model-free dyad recommendations, use <b>Analyze &amp; pair</b> above. This step asks Gemma to build the named Canvas page.</p>
+              <div class="field"><label>Unit id</label><input type="text" id="draft-unit" placeholder="3_3_6" /></div>
+              <div class="checkrow"><label><input type="checkbox" id="draft-force" /> overwrite</label></div>
+              <div class="row">
+                <button class="btn" data-cmd="draft" data-out="draft-out">Draft + pair</button>
+                <button class="btn ghost" id="draft-list">List units</button>
+              </div>
+              <div class="out" id="draft-out" hidden></div>
+            </div>
+          </div>
+
+          <div class="step" data-step>
+            <div class="step-head"><span class="step-num">D</span><span class="step-title">Grades<small>Draft 10-point grades + feedback from the parsed discussion</small></span><span class="step-status"></span><span class="step-chevron">▸</span></div>
+            <div class="step-body">
+              <div class="checkrow">
+                <label><input type="checkbox" id="grade-offline" /> offline heuristic</label>
+                <label><input type="checkbox" id="grade-force" /> re-grade</label>
+              </div>
+              <div class="field"><label>Only (prompt_id, optional)</label><input type="text" id="grade-only" /></div>
+              <div class="row"><button class="btn" data-cmd="grade" data-out="grade-out">Grade</button></div>
+              <div class="out" id="grade-out" hidden></div>
+            </div>
+          </div>
+
+          <div class="step" data-step>
+            <div class="step-head"><span class="step-num">E</span><span class="step-title">Results<small>Read everything the steps above produced</small></span><span class="step-status"></span><span class="step-chevron">▸</span></div>
+            <div class="step-body">
+              <div class="row"><button class="btn" id="results-refresh">Refresh</button></div>
+              <div class="results-grid">
+                <div class="results-list" id="results-list"><em class="muted-inline">Click Refresh to list outputs…</em></div>
+                <div class="results-view" id="results-view"><em class="muted-inline">Select a file to read it here.</em></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPLORE ============ -->
+    <section class="panel" data-tab="explore">
+      <p class="panel-lede">What the system actually knows. Browse the encoded lessons, see which are fully connected, and open one to read its standards, strategies, misconceptions, and literature — no student data, works anywhere.</p>
+
+      <div class="card adv">
+        <h2><span class="num">▤</span>Monitoring chart</h2>
+        <p class="hint">Enter an Illustrative Mathematics lesson code or standard code to build an anticipation chart for monitoring a class: the lesson's productive core, the strategies to anticipate, and the misconceptions to watch for. For each misconception the chart names what the student's commitment is <em>incompatible with</em> — derived by querying the misconception registry, not asserted. Use <b>Print / Save as PDF</b> for a classroom copy.</p>
+        <div class="mc-bar">
+          <input type="text" id="lesson-code" placeholder="IM lesson code" value="" />
+          <div class="mc-actions">
+            <button class="btn primary" id="mc-load">Load chart</button>
+            <button class="btn ghost" id="mc-print" hidden>Print / Save as PDF</button>
+          </div>
+        </div>
+        <div id="mc-out"></div>
+      </div>
+
+      <div class="card adv">
+        <h2><span class="num">⚖</span>Deontic scorecard</h2>
+        <p class="hint">Brandom's scorekeeping, run live against the Prolog engine — no language model is called. Give a speaker's <em>commitments</em> (one Prolog term per line) and any <em>entitlements</em> they have earned; the engine returns the board and any incoherences. The one to watch is <code>commitment_without_entitlement</code>: a move that is procedurally correct but inferentially hollow. The preloaded <code>result_of(cross_multiply, …)</code> is committed to with no area-model reasoning behind it, so the board flags it; the button deposits the missing vocabulary and the flag clears. The board also reads back what those commitments <em>materially commit you to</em> (consequences, each with the rule that licenses it; try <code>committed_to(area_model_part_of_part(3,4,2,5))</code>), and, when an incoherence will not discharge within its level, the <em>up-level</em> move that names the gap as a new object of discourse. The up-level is a detector: it marks the break and the move past it; it changes no score and supplies no missing vocabulary itself. The break is not an error to hide — it is the thing made legible.</p>
+        <div class="mc-bar">
+          <label class="muted-inline" style="flex:1;display:flex;flex-direction:column;gap:.3rem;align-items:stretch">commitments — one term per line
+            <textarea id="deontic-commitments" class="data-input" style="min-height:64px">result_of(cross_multiply,3,4,2,5,15)</textarea>
+          </label>
+          <label class="muted-inline" style="flex:1;display:flex;flex-direction:column;gap:.3rem;align-items:stretch">entitlements (optional)
+            <textarea id="deontic-entitlements" class="data-input" style="min-height:64px"></textarea>
+          </label>
+        </div>
+        <div class="data-actions">
+          <button class="btn primary" id="deontic-run">Score the commitments</button>
+          <button class="btn ghost" id="deontic-discharge">Deposit area-model vocabulary &rarr; discharge it</button>
+        </div>
+        <div id="deontic-out" class="result" hidden></div>
+      </div>
+
+      <div class="catalog-head">
+        <div class="catalog-stats" id="catalog-stats">loading the lesson catalog…</div>
+        <div class="search"><input type="text" id="catalog-search" placeholder="Search lessons by code or title (e.g. G1-U3, area, ten)…" /></div>
+      </div>
+      <div id="catalog"></div>
+      <div class="lesson-detail" id="lesson-detail"></div>
+
+      <div class="card">
+        <h2><span class="num">◔</span>Which misconceptions draw</h2>
+        <p class="hint">Every misconception topic in the registry, sorted into four lanes: it draws live on a representation, a parametric deformation clause computes its wrong answers, corpus figures document it, or nothing covers it yet. Counts reflect the data loaded in this installation; the local misconception CSV corpus enlarges the registry.</p>
+        <div id="render-coverage"><em class="muted-inline">The report loads with this tab.</em></div>
+      </div>
+    </section>
+
+    <!-- ============ ENCYCLOPEDIA ============ -->
+    <section class="panel" data-tab="encyclopedia">
+      <p class="panel-lede">The symbolic knowledge base itself, browsable. Strategy automata you can run and watch, misconceptions you can diagnose, the standards they answer to, and the Lakoff &amp; Núñez grounding metaphors — including the inferences where each one breaks. No student data; works anywhere.</p>
+      <div class="enc-nav" id="enc-nav">
+        <button class="enc-tab active" data-enc="strategies">Strategies</button>
+        <button class="enc-tab" data-enc="misconceptions">Misconceptions</button>
+        <button class="enc-tab" data-enc="standards">Standards</button>
+        <button class="enc-tab" data-enc="grounding">Grounding metaphors</button>
+        <button class="enc-tab" data-enc="benny">Benny demo</button>
+      </div>
+      <div class="enc-bar">
+        <div class="search"><input type="text" id="enc-search" placeholder="Filter…" /></div>
+        <span id="enc-stats" class="catalog-stats"></span>
+      </div>
+      <div class="enc-body">
+        <div id="enc-list" class="enc-list"><em class="muted-inline">loading…</em></div>
+        <div id="enc-detail" class="enc-detail"><em class="muted-inline">Select an item to inspect it here.</em></div>
+      </div>
+      <div class="card adv">
+        <h2><span class="num">⌁</span>Canonical vocabulary</h2>
+        <p class="hint">Load the worker's canonical contract, or check candidate Prolog terms against it.</p>
+        <div class="data-actions">
+          <button class="btn ghost small" id="canonical-contract-btn">Load canonical_contract</button>
+          <button class="btn primary small" id="canonical-check-btn">Run canonical_check</button>
+        </div>
+        <textarea id="canonical-terms" class="data-input" style="min-height:70px">committed_to(area_model_part_of_part(3,4,2,5))
+legacy_functor(example)
+unknown_candidate(foo)</textarea>
+        <div id="canonical-out" class="result" hidden></div>
+      </div>
+    </section>
+
+    <!-- ============ ASK ============ -->
+    <section class="panel" data-tab="ask">
+      <p class="panel-lede">Ask a plain question. Hermes first searches its symbolic knowledge base — strategies, misconceptions, standards, grounding metaphors — and grounds Gemma's answer in what it finds (shown above each reply). It never sees student work unless you paste it. For discussion analysis use the Workspace.</p>
+      <div class="card">
+        <div id="ask-drop" class="dropzone">
+          <textarea id="ask-input" class="data-input" placeholder="Ask Hermes a question about the course, a strategy, a lesson…"></textarea>
+        </div>
+        <div class="data-actions">
+          <button class="btn primary" id="ask-send">Send</button>
+          <span class="muted-inline">Multi-speaker transcripts are sent to the Workspace analyzer instead of the cloud.</span>
+        </div>
+        <div id="ask-answer" class="chat-answer" hidden></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<div id="quickstart-modal" class="modal" hidden>
+  <div class="modal-card">
+    <div class="modal-head">
+      <h2>Hermes Quickstart (N103)</h2>
+      <button class="btn ghost" id="quickstart-close">Close</button>
+    </div>
+    <div class="modal-body" id="quickstart-body">loading…</div>
+  </div>
+</div>
+
+<script src="../../../more-zeeman/render/drawer.js"></script>
+<script>
+const API = window.location.protocol === "file:" ? "http://127.0.0.1:8765" : "";
+const api = p => `${API}${p}`;
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const escAttr = s => esc(s).replace(/"/g, "&quot;");
+document.querySelectorAll("[data-api-href]").forEach(a => { a.href = api(a.dataset.apiHref || a.getAttribute("href")); });
+
+async function _json(r) { try { return await r.json(); } catch (e) { return {}; } }
+async function getJSON(path) { const r = await fetch(api(path)); return { status: r.status, data: await _json(r) }; }
+async function postJSON(path, body) {
+  const r = await fetch(api(path), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body || {}) });
+  return { status: r.status, data: await _json(r) };
+}
+
+let MODE = { mode: "home", verified: false, gate_enabled: true };
+
+/* ---------- tabs ---------- */
+function selectTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.dataset.tab === name));
+  if (name === 'explore') { if (!catalogLoaded) loadCatalog(); loadRenderCoverage(); }
+  if (name === 'encyclopedia' && !encLoaded) loadEncyclopedia('strategies');
+}
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => selectTab(t.dataset.tab)));
+
+/* ---------- mode / models / gate ---------- */
+async function refreshMode() {
+  const { data } = await getJSON('/api/mode'); MODE = data;
+  const gateOff = data.gate_enabled === false;
+  $("#gate-pill").hidden = false;
+  $("#gate-pill").textContent = gateOff ? "FERPA gate: off" : (data.mode === "campus" && data.verified ? "campus · unlocked" : "student data locked");
+  $("#gate-pill").className = "pill " + (gateOff ? "gate-off" : (data.mode === "campus" && data.verified ? "ok" : "warn"));
+  $("#gate-toggle").hidden = gateOff;            // toggle only matters when the gate is on
+  $("#mode-check").checked = (data.mode === "campus");
+}
+async function refreshModels() {
+  const { data } = await getJSON('/api/models');
+  $("#model-pill").textContent = data.model || data.default_model || "model";
+  $("#key-pill").textContent = data.key_configured ? "key set" : "no key";
+  $("#key-pill").className = "pill " + (data.key_configured ? "ok" : "warn");
+}
+$("#mode-check").addEventListener('change', async e => {
+  const { data } = await postJSON('/api/mode', { mode: e.target.checked ? "campus" : "home" });
+  MODE = data; refreshMode();
+});
+
+/* ---------- data zone ---------- */
+function loadTextIntoData(text, name) {
+  $("#data-input").value = text;
+  if (name) $("#data-attached").textContent = `loaded ${name} (${text.length.toLocaleString()} chars)`;
+}
+$("#use-sample").addEventListener('click', async () => {
+  $("#data-attached").textContent = "loading sample…";
+  const { status, data } = await getJSON('/api/sample');
+  if (status === 200 && data.text) loadTextIntoData(data.text, data.name);
+  else $("#data-attached").textContent = "couldn't load the sample.";
+});
+async function populateInputPicker() {
+  const { status, data } = await getJSON('/api/inputs');
+  if (status !== 200 || !data.files) return;
+  const sel = $("#input-picker");
+  for (const f of data.files) {
+    const o = document.createElement('option'); o.value = f.key; o.textContent = f.label; sel.appendChild(o);
+  }
+}
+$("#input-picker").addEventListener('change', async e => {
+  const key = e.target.value; if (!key) return;
+  $("#data-attached").textContent = "loading…";
+  const { status, data } = await postJSON('/api/input', { key });
+  if (status === 200 && data.text != null) loadTextIntoData(data.text, key.split('/').pop());
+  else $("#data-attached").textContent = data.error || "couldn't load that file.";
+  e.target.value = "";
+});
+function readFileInto(file) {
+  const name = (file.name || '').toLowerCase();
+  if (!/\.(txt|md|csv|json|text)$/.test(name) && !(file.type || '').startsWith('text')) {
+    $("#data-attached").textContent = `"${file.name}" isn't a text file — paste it or use a .txt/.csv.`; return;
+  }
+  const reader = new FileReader();
+  reader.onload = () => loadTextIntoData(String(reader.result || ''), file.name);
+  reader.readAsText(file);
+}
+$("#data-file").addEventListener('change', e => { if (e.target.files[0]) readFileInto(e.target.files[0]); });
+const dataDrop = $("#data-drop");
+["dragenter", "dragover"].forEach(ev => dataDrop.addEventListener(ev, e => { e.preventDefault(); dataDrop.classList.add('dragover'); }));
+dataDrop.addEventListener('dragleave', e => { if (!dataDrop.contains(e.relatedTarget)) dataDrop.classList.remove('dragover'); });
+dataDrop.addEventListener('drop', e => { e.preventDefault(); dataDrop.classList.remove('dragover'); const f = e.dataTransfer.files[0]; if (f) readFileInto(f); });
+
+/* ---------- analyze & pair ---------- */
+function provenanceLabel(p) {
+  if (p === 'grounded') return 'grounded — curriculum signals detected for this domain';
+  if (p === 'grounded-prolog') return 'grounded — Prolog model for this domain';
+  if (p === 'gemma-advisory') return 'advisory — Gemma, no formal grounding';
+  return 'discourse-only — observable structure, no domain model';
+}
+function pairReasonGloss(reason) {
+  const s = String(reason); let m;
+  if (s === 'discourse_polarity_contrast' || s === 'pml_polarity_contrast') return 'one tends to close the idea down, the other to open it up (a discourse-marker contrast, not a verdict from the symbolic engine)';
+  if (s === 'repair_affordance') return 'one raised a misconception that looks repairable; a possible way in for the other';
+  if (s === 'recognition_balance') return 'one is more exposed than the other when speaking up, a lower-risk pairing';
+  if (s === 'direct_interaction(name_mention)') return 'they referred to each other in the discussion';
+  if (s === 'direct_interaction(adjacency)') return 'they spoke back-to-back in the thread';
+  if (s === 'participation_complement') return 'one talked a lot, the other less — a balanced pairing';
+  if ((m = /^shared_grounded_topic\((.+)\)$/.exec(s))) return `both engaged the modelled topic: ${m[1].replace(/_/g, ' ')}`;
+  if ((m = /^grounded_repair_affordance\((.+)\)$/.exec(s))) return `a misconception was raised on ${m[1].replace(/_/g, ' ')} — concrete to repair together`;
+  if ((m = /^shared_domain\((.+)\)$/.exec(s))) return `both working in ${m[1].replace(/_/g, ' ')}`;
+  if ((m = /^shared_topic\((.+)\)$/.exec(s))) return m[1] === 'unknown' ? 'same discussion thread' : `same topic: ${m[1].replace(/_/g, ' ')}`;
+  return s.replace(/_/g, ' ');
+}
+function renderPairGraph(graph) {
+  const nodes = (graph && graph.nodes) || [];
+  const edges = (graph && graph.edges) || [];
+  if (!nodes.length) return '';
+  const W = 640, H = 300, cx = W / 2, cy = H / 2, r = Math.min(230, 70 + nodes.length * 18);
+  const pos = new Map();
+  nodes.forEach((node, i) => {
+    const angle = -Math.PI / 2 + (2 * Math.PI * i / Math.max(nodes.length, 1));
+    pos.set(String(node.id), { x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r, node });
+  });
+  const edgeSvg = edges.map(edge => {
+    const a = pos.get(String(edge.source)), b = pos.get(String(edge.target));
+    if (!a || !b) return '';
+    const weight = Math.max(1.4, Math.min(5, Number(edge.weight || 1)));
+    return `<line class="graph-link" x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}" style="stroke-width:${weight.toFixed(1)}"><title>${escAttr(edge.id || '')}</title></line>`;
+  }).join('');
+  const nodeSvg = nodes.map(node => {
+    const p = pos.get(String(node.id));
+    const label = node.label || node.role || node.id;
+    return `<g><circle class="graph-node" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="18"><title>${escAttr(node.id || '')}</title></circle><text class="graph-label" x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}">${esc(label)}</text></g>`;
+  }).join('');
+  return `<section class="pair-graph"><h4>Pair graph</h4><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="pair graph">${edgeSvg}${nodeSvg}</svg></section>`;
+}
+function renderAnalysis(data) {
+  const out = $("#analyze-result"); out.hidden = false;
+  if (data.error) { out.innerHTML = `<div class="chat-answer locked">⚠ ${esc(data.error)}</div>`; return; }
+  const students = data.students || [], pairs = data.pairs || [];
+  let html = `<div class="analysis-summary">${esc(data.summary || (students.length + ' students'))}</div>`;
+  html += `<span class="provenance">${esc(provenanceLabel(data.provenance))}</span>`;
+  if (data.warning) html += `<div class="analysis-note">⚠ ${esc(data.warning)}</div>`;
+  if (pairs.length) {
+    html += '<ul class="dyadlist">';
+    for (const p of pairs) {
+      const why = (p.reasons || []).map(pairReasonGloss).join('; ');
+      html += `<li><div class="dyad-pair">${esc(p.a)}<span class="arrow">↔</span>${esc(p.b)}<span class="dyad-score">score ${esc(String(p.score ?? ''))}</span></div><div class="dyad-why">${esc(why || '—')}</div></li>`;
+    }
+    html += '</ul>';
+  } else html += '<div class="muted-inline">No candidate pairs found in this text.</div>';
+  html += renderPairGraph(data.graph);
+  html += stanceProfileHtml(students.filter(s => s.role === 'student'));
+  html += `<div class="analysis-note">Candidate question-routing rationales from observable discourse — not proof of shared validity or mutual recognition. Stance below is the project's PML <em>discourse-marker proxy</em> (categorical→compressive, hedging→expansive; first-person→S, content→O, norm-language→N), not a verdict from the symbolic PML engine.</div>`;
+  html += `<details class="raw"><summary>raw data</summary><pre>${esc(JSON.stringify(data, null, 2))}</pre></details>`;
+  out.innerHTML = html;
+}
+async function runAnalyze() {
+  const text = $("#data-input").value.trim();
+  const u = $("#analyze-understood"); const out = $("#analyze-result");
+  if (!text) { u.hidden = false; u.classList.add('warn'); u.textContent = "Paste or load a discussion first."; out.hidden = true; return; }
+  u.hidden = false; u.classList.remove('warn'); u.textContent = "reading locally…"; out.hidden = true;
+  const fm = $("#force-mode").value;
+  const { data } = await postJSON('/api/analyze', { transcript: text, top_n: 10, force_mode: fm || undefined });
+  if (data.error) { u.classList.add('warn'); u.textContent = data.error; renderAnalysis(data); return; }
+  const fmt = (data.ingest && data.ingest.format) || 'text';
+  const routing = data.routing || {};
+  const topics = Object.keys(routing.topics || {});
+  const groundNote = routing.mode === 'grounded' ? ` · grounded: ${topics.slice(0, 3).map(t => t.replace(/_/g, ' ')).join(', ') || 'curriculum signal'}` : '';
+  u.textContent = `understood: ${(data.students || []).length} students · ${data.event_count || 0} turns · ${fmt} format${groundNote}`;
+  renderAnalysis(data);
+}
+$("#analyze-btn").addEventListener('click', runAnalyze);
+
+/* Carry the current discussion to the Discussions page, which owns the
+   claim-checked report pipeline (blind -> extract -> adjudicate -> read). */
+$("#to-report-btn").addEventListener('click', () => {
+  const text = $("#data-input").value.trim();
+  const u = $("#analyze-understood");
+  if (!text) {
+    u.hidden = false; u.classList.add('warn');
+    u.textContent = 'Paste or attach a discussion first, then carry it to the report.';
+    return;
+  }
+  try { sessionStorage.setItem('hermes-transcript-handoff', text); } catch (_) {}
+  location.href = 'discussions.html';
+});
+
+/* ---------- score a text with PML (Gemma emits axioms, swipl judges) ---------- */
+function pmlOpName(op) { return ({ comp_nec: 'binding closure', exp_nec: 'binding openness', comp_poss: 'possible narrowing', exp_poss: 'possible opening' })[op] || op; }
+function pmlModeLetter(m) { return ({ subjective: 'S', objective: 'O', normative: 'N' })[m] || '?'; }
+function renderPmlScore(data) {
+  const out = $("#pml-out"); out.hidden = false;
+  if (data.error) { out.innerHTML = `<div class="chat-answer locked">⚠ ${esc(data.error)}</div>`; return; }
+  const r = data.result || {}, p = r.profile || {}, axioms = r.axioms || [], rejected = r.rejected || [], pm = (r.passage_modes || [])[0];
+  const rawBlock = data.raw ? `<details class="raw"><summary>raw Prolog axioms (Gemma's output)</summary><pre>${esc(data.raw)}</pre></details>` : '';
+  if (!axioms.length) {
+    out.innerHTML = `<div class="analysis-note">Gemma did not emit any valid PML axioms for this text${rejected.length ? ` (${rejected.length} clause(s) rejected)` : ''}.</div>${rawBlock}`;
+    return;
+  }
+  const m = p.mode || {}, pol = p.polarity || {}, mod = p.modality || {};
+  let html = `<div class="analysis-summary">${axioms.length} PML axiom${axioms.length === 1 ? '' : 's'} — dominant posture: <b>${esc(p.dominant_mode || '—')} · ${esc(p.dominant_polarity || '—')}</b></div>`;
+  html += `<span class="provenance">Gemma emitted the Prolog axioms · swipl validated them against the 12 PML operators</span>`;
+  html += `<div style="margin:.45rem 0">
+    <span class="stance-chip">S ${m.subjective || 0}</span><span class="stance-chip">O ${m.objective || 0}</span><span class="stance-chip">N ${m.normative || 0}</span>
+    &nbsp; <span class="stance-chip comp">compressive ${pol.compressive || 0}</span><span class="stance-chip exp">expansive ${pol.expansive || 0}</span>
+    &nbsp; <span class="stance-chip">necessity ${mod.necessity || 0}</span><span class="stance-chip">possibility ${mod.possibility || 0}</span></div>`;
+  if (p.incoherent_axioms > 0) html += `<div class="muted-inline" style="color:var(--rust)">⚠ ${p.incoherent_axioms} axiom(s) state a polarity that disagrees with their operator — swipl flagged the encoding as incoherent there.</div>`;
+  html += '<ul class="dyadlist">';
+  for (const a of axioms) {
+    const cls = a.polarity === 'compressive' ? 'comp' : 'exp';
+    html += `<li><div class="dyad-pair"><span class="stance-chip ${cls}">${esc(pmlModeLetter(a.mode))} · ${esc(pmlOpName(a.operator))}</span> ${esc(glossAtom(a.content))}${a.coherent ? '' : ' <span style="color:var(--rust)">⚠ incoherent</span>'}</div><div class="dyad-why"><code class="formal">${esc(a.formal)}</code></div></li>`;
+  }
+  html += '</ul>';
+  if (pm) html += `<div class="analysis-note">Passage reading: <b>${esc(glossAtom(pm.mode))}</b> — ${esc(pm.reading)}</div>`;
+  if (rejected.length) html += `<details class="raw"><summary>${rejected.length} rejected clause(s) (parsed, never executed)</summary><pre>${esc(rejected.map(x => `${x.clause}\n  → ${x.reason}`).join('\n\n'))}</pre></details>`;
+  out.innerHTML = html + rawBlock;
+}
+async function runPmlScore() {
+  const text = $("#pml-input").value.trim(); if (!text) return;
+  const out = $("#pml-out"); out.hidden = false; out.innerHTML = "<em class='muted-inline'>Gemma is encoding the modal posture, swipl is scoring…</em>";
+  const { status, data } = await postJSON('/api/pml_score', { text });
+  if ((data.error || data.error_type) && status >= 400) { out.innerHTML = `<div class="chat-answer locked">⚠ ${esc(data.error || 'error')}</div>`; return; }
+  renderPmlScore(data);
+}
+$("#pml-run").addEventListener('click', runPmlScore);
+
+/* ---------- deontic scorecard: the break, made operable ---------- */
+function _deonticLines(id) { return $("#" + id).value.split("\n").map(s => s.trim()).filter(Boolean); }
+function _deonticBoardHtml(data) {
+  const card = (data && data.result) || {};
+  const incoh = card.incoherences || [];
+  const col = (title, arr, cls) => `<section class="deontic-col"><h4>${title}</h4>` +
+    (arr && arr.length
+      ? `<ul class="deontic-list ${cls}">${arr.map(t => `<li>${esc(glossTerm(t))}</li>`).join("")}</ul>`
+      : `<p class="muted-inline">none</p>`) + `</section>`;
+  const head = incoh.length
+    ? `<div class="out-head locked">⚠ ${incoh.length} incoherence — a commitment with no entitlement to back it</div>`
+    : `<div class="out-head">✓ coherent — every commitment is entitled</div>`;
+  return head +
+    `<div class="deontic-cols">` +
+      col("Commitments", card.commitments, "commit") +
+      col("Entitlements", card.entitlements, "entitle") +
+      col("Incoherences", incoh, "incoherent") +
+    `</div>` +
+    `<details class="out-log"><summary>raw scorecard</summary><pre>${esc(JSON.stringify(card, null, 2))}</pre></details>`;
+}
+function _deonticConsequencesHtml(data) {
+  const cons = (data && data.result && data.result.consequences) || [];
+  if (!cons.length) return "";  // no material consequence to read back
+  const rows = cons.map(c => {
+    const rule = (c.witness && (c.witness.rule || c.witness.mechanism)) || "material inference";
+    return `<li><span class="conseq-prem">${esc(glossTerm(c.premise))}</span>` +
+      ` <span class="conseq-turn">commits you to</span> ` +
+      `<span class="conseq-concl">${esc(glossTerm(c.conclusion))}</span>` +
+      ` <span class="conseq-rule">via ${esc(glossTerm(rule))}</span></li>`;
+  }).join("");
+  return `<div class="deontic-extra"><h4>What it commits you to</h4>` +
+    `<ul class="deontic-list conseq">${rows}</ul></div>`;
+}
+function _deonticUpLevelHtml(data) {
+  const ups = (data && data.result && data.result.up_levels) || [];
+  if (!ups.length) return "";  // coherent or within-level-dischargeable: no up-level move
+  const blocks = ups.map(w => {
+    const obj = w.new_object_of_discourse || w.objectivated || "";
+    const erasure = w.erasure ? `<p class="uplevel-erasure">erasure (not supplied by the formalism): <code>${esc(w.erasure)}</code></p>` : "";
+    const caveat = w.caveat ? `<details class="out-log"><summary>caveat</summary><p class="muted-inline">${esc(w.caveat)}</p></details>` : "";
+    return `<div class="uplevel-move">` +
+      `<p>The gap <code>${esc(glossTerm(w.objectivated || ""))}</code> will not discharge within its level. ` +
+      `The move is <b>objectivation</b>: name it as a new object of discourse ` +
+      `(<code>${esc(glossTerm(obj))}</code>) one level up.</p>` +
+      erasure + caveat + `</div>`;
+  }).join("");
+  return `<div class="deontic-extra"><h4>When it stays incoherent: up a level</h4>` +
+    `<p class="muted-inline">A detector, not a repair. It marks the break and the move past it, and changes no score.</p>` +
+    blocks + `</div>`;
+}
+async function runDeonticScorecard() {
+  const out = $("#deontic-out"); out.hidden = false;
+  out.innerHTML = "<em class='muted-inline'>swipl is keeping score…</em>";
+  const commitments = _deonticLines('deontic-commitments');
+  const entitlements = _deonticLines('deontic-entitlements');
+  const board = await postJSON('/api/deontic_scorecard', { commitments, entitlements });
+  if ((board.data.error || board.data.error_type) && board.status >= 400) {
+    out.innerHTML = `<div class="chat-answer locked">⚠ ${esc(board.data.error || 'error')}</div>`; return;
+  }
+  // The scorecard is the headline; consequences and the up-level move complete
+  // the board. Each is its own route; a failure of one must not blank the rest.
+  const [conseq, uplevel] = await Promise.all([
+    postJSON('/api/deontic_consequences', { commitments }).catch(() => ({ data: {} })),
+    postJSON('/api/deontic_up_level', { commitments }).catch(() => ({ data: {} })),
+  ]);
+  out.innerHTML = _deonticBoardHtml(board.data)
+    + _deonticConsequencesHtml(conseq.data)
+    + _deonticUpLevelHtml(uplevel.data);
+}
+$("#deontic-run").addEventListener('click', runDeonticScorecard);
+$("#deontic-discharge").addEventListener('click', () => {
+  const ta = $("#deontic-commitments");
+  if (!/deployed_vocabulary\(\s*v_area_model\s*\)/.test(ta.value))
+    ta.value = (ta.value.trim() + "\ndeployed_vocabulary(v_area_model)").trim();
+  runDeonticScorecard();
+});
+
+/* ---------- pipeline steps ---------- */
+document.querySelectorAll('.step .step-head').forEach(h => h.addEventListener('click', () => {
+  h.closest('.step').classList.toggle('open');
+}));
+function showOut(id, res) {
+  const el = $("#" + id); el.hidden = false; el.classList.remove('locked');
+  if (res.status === 423) { el.classList.add('locked'); el.textContent = "LOCKED: " + (res.data.error || ""); return; }
+  const d = res.data;
+  const hint = d.hint || (d.error_type ? d.error : "");
+  const ok = d.ok === true && !hint;
+  el.classList.toggle('locked', !!hint);
+  const head = hint ? `⚠ ${hint}` : (ok ? `✓ ${d.command || 'done'} — completed` : (d.command ? `${d.command} — exit ${d.returncode}` : 'done'));
+  const log = d.stdout != null ? `${d.stdout}${d.stderr ? "\n--- stderr ---\n" + d.stderr : ""}` : JSON.stringify(d, null, 2);
+  el.innerHTML = `<div class="out-head">${esc(head)}</div><details class="out-log"${hint ? ' open' : ''}><summary>log</summary><pre>${esc(log)}</pre></details>`;
+  const status = (d.ok === false || hint) ? "needs attention" : (ok ? "done" : "");
+  const step = el.closest('.step'); if (step) step.querySelector('.step-status').textContent = status;
+}
+document.querySelectorAll('button[data-cmd]').forEach(b => b.addEventListener('click', async () => {
+  const cmd = b.dataset.cmd, outId = b.dataset.out, body = {};
+  if (cmd === "parse") { body.input = $("#parse-input").value; body.force = $("#parse-force").checked; }
+  if (cmd === "metrics") body.graph = b.hasAttribute('data-graph');
+  if (cmd === "profile") { body.force = $("#profile-force").checked; if ($("#profile-only").value) body.only = $("#profile-only").value; }
+  if (cmd === "draft") { body.unit = $("#draft-unit").value; body.force = $("#draft-force").checked; }
+  if (cmd === "grade") { body.offline = $("#grade-offline").checked; body.force = $("#grade-force").checked; if ($("#grade-only").value) body.only = $("#grade-only").value; }
+  $("#" + outId).hidden = false; $("#" + outId).textContent = "running " + cmd + "…";
+  showOut(outId, await postJSON('/api/' + cmd, body));
+}));
+$("#draft-list").addEventListener('click', async () => showOut('draft-out', await postJSON('/api/draft', { list: true })));
+
+/* ---------- results browser ---------- */
+function csvToTable(text) {
+  const rows = text.trim().split("\n").map(r => r.split(","));
+  let html = '<table class="rtable">';
+  rows.forEach((r, i) => { html += "<tr>" + r.map(c => i === 0 ? `<th>${esc(c)}</th>` : `<td>${esc(c)}</td>`).join("") + "</tr>"; });
+  return html + "</table>";
+}
+function inlineMd(s) { return s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>").replace(/(^|[^*])\*([^*]+)\*/g, "$1<em>$2</em>").replace(/`([^`]+)`/g, "<code>$1</code>"); }
+function mdToHtml(md) {
+  const lines = esc(md).split("\n"); let html = ""; let inList = false; let inCode = false;
+  for (const line of lines) {
+    if (/^```/.test(line)) { if (inCode) { html += "</pre>"; inCode = false; } else { if (inList) { html += "</ul>"; inList = false; } html += "<pre class='md-pre'>"; inCode = true; } continue; }
+    if (inCode) { html += line + "\n"; continue; }
+    let m;
+    if ((m = /^#### (.*)/.exec(line))) { if (inList) { html += "</ul>"; inList = false; } html += `<h4>${inlineMd(m[1])}</h4>`; continue; }
+    if ((m = /^### (.*)/.exec(line))) { if (inList) { html += "</ul>"; inList = false; } html += `<h4>${inlineMd(m[1])}</h4>`; continue; }
+    if ((m = /^## (.*)/.exec(line))) { if (inList) { html += "</ul>"; inList = false; } html += `<h3>${inlineMd(m[1])}</h3>`; continue; }
+    if ((m = /^# (.*)/.exec(line))) { if (inList) { html += "</ul>"; inList = false; } html += `<h2>${inlineMd(m[1])}</h2>`; continue; }
+    if ((m = /^[-*] (.*)/.exec(line))) { if (!inList) { html += "<ul>"; inList = true; } html += `<li>${inlineMd(m[1])}</li>`; continue; }
+    if (/^---+\s*$/.test(line)) { if (inList) { html += "</ul>"; inList = false; } html += "<hr/>"; continue; }
+    if (inList) { html += "</ul>"; inList = false; }
+    if (line.trim() === "") continue;
+    html += `<p>${inlineMd(line)}</p>`;
+  }
+  if (inCode) html += "</pre>"; if (inList) html += "</ul>";
+  return html;
+}
+async function loadResults() {
+  const list = $("#results-list");
+  let status, data;
+  try { ({ status, data } = await postJSON('/api/results/list', {})); }
+  catch (e) { list.innerHTML = "<em class='muted-inline'>Couldn't reach the server.</em>"; return; }
+  if (status === 423) { list.innerHTML = "<em class='muted-inline'>Locked — open the gate to view results.</em>"; return; }
+  if (status !== 200 || !data || !data.sections) { list.innerHTML = `<em class='muted-inline'>Couldn't load results (status ${status}).</em>`; return; }
+  const labels = Object.fromEntries(data.sections);
+  let html = "";
+  for (const [sub, files] of Object.entries(data.files || {})) {
+    html += `<div class="rsec">${esc(labels[sub] || sub)}</div>`;
+    for (const f of files) html += `<button class="rfile" data-path="${escAttr(f)}">${esc(f.split("/").slice(1).join("/") || f)}</button>`;
+  }
+  list.innerHTML = html || "<em class='muted-inline'>No outputs yet. Run Parse / Profiles first.</em>";
+  list.querySelectorAll(".rfile").forEach(b => b.addEventListener("click", () => {
+    list.querySelectorAll(".rfile").forEach(x => x.classList.remove("active"));
+    b.classList.add("active"); viewResult(b.dataset.path);
+  }));
+}
+async function viewResult(path) {
+  const view = $("#results-view"); view.innerHTML = "<em class='muted-inline'>loading…</em>";
+  const { status, data } = await postJSON('/api/results/get', { path });
+  if (status >= 400) { view.textContent = data.error || "error"; return; }
+  if (data.kind === "markdown") view.innerHTML = mdToHtml(data.content);
+  else if (data.kind === "csv") view.innerHTML = csvToTable(data.content);
+  else if (data.kind === "html") { const f = document.createElement("iframe"); f.srcdoc = data.content; view.innerHTML = ""; view.appendChild(f); }
+  else { const pre = document.createElement("pre"); pre.className = "rpre"; pre.textContent = data.content; view.innerHTML = ""; view.appendChild(pre); }
+}
+$("#results-refresh").addEventListener('click', loadResults);
+
+/* ---------- explore: lesson catalog ---------- */
+let catalogLoaded = false, ALL_LESSONS = [], READY_LESSONS = [];
+let CATALOG_DEFAULT = { rows: [], label: "Ready exemplars" };
+function lessonSubstance(row) {
+  const c = (row && row.counts) || {};
+  return (c.strategies || 0) + (c.misconceptions || 0);
+}
+function lessonCard(row) {
+  const code = row.lesson_code || '';
+  const ready = (row.status === 'fully_connected');
+  const usable = (row.coverage_status === 'usable');
+  const badge = ready ? '✓ ready' : (usable ? '◐ usable' : '◐ thin');
+  const title = row.title ? `<span class="ttl">${esc(row.title)}</span>` : '';
+  return `<button class="lesson-card" data-lesson="${escAttr(code)}"><span class="code">${esc(code)}</span>${title}<span class="badge ${ready ? 'ready' : 'thin'}">${badge}</span></button>`;
+}
+function renderCatalog(rows, heading) {
+  return `<div class="catalog-section"><h3>${esc(heading)}</h3><div class="catalog-grid">${rows.map(lessonCard).join('') || '<span class="muted-inline">none</span>'}</div></div>`;
+}
+function wireCatalogClicks() {
+  document.querySelectorAll('.lesson-card').forEach(c => c.addEventListener('click', () => openLesson(c.dataset.lesson)));
+}
+async function loadCatalog() {
+  catalogLoaded = true;
+  $("#catalog").innerHTML = "<span class='muted-inline'>loading the lesson catalog…</span>";
+  const { data } = await postJSON('/api/field_connectivity_audit', {});
+  const r = data.result || {};
+  const s = r.summary || {};
+  ALL_LESSONS = r.lessons || [];
+  READY_LESSONS = (r.connected_examples || []);
+  if (READY_LESSONS.length) {
+    CATALOG_DEFAULT = { rows: READY_LESSONS.slice(0, 24), label: "Ready exemplars" };
+  } else {
+    // No lesson clears the full-connectivity bar in this installation (the
+    // literature dimensions ride on the local corpus). Fall back to the
+    // lessons the audit marks usable — strategy or misconception rows
+    // attached — strongest first. Same payload, no second request.
+    const usable = ALL_LESSONS
+      .filter(l => l.coverage_status === 'usable')
+      .sort((a, b) => lessonSubstance(b) - lessonSubstance(a));
+    CATALOG_DEFAULT = { rows: usable.slice(0, 24), label: "Usable exemplars" };
+  }
+  $("#catalog-stats").innerHTML = `<b>${s.total_lessons || 0}</b> lessons encoded · <b>${s.fully_connected_lessons || 0}</b> ready to explore · <b>${s.usable_lessons || 0}</b> usable · ${s.review_lessons || 0} need work`;
+  $("#catalog").innerHTML = renderCatalog(CATALOG_DEFAULT.rows, CATALOG_DEFAULT.label);
+  wireCatalogClicks();
+}
+$("#catalog-search").addEventListener('input', e => {
+  const q = e.target.value.trim().toLowerCase();
+  if (!q) { $("#catalog").innerHTML = renderCatalog(CATALOG_DEFAULT.rows, CATALOG_DEFAULT.label); wireCatalogClicks(); return; }
+  const hits = ALL_LESSONS.filter(l =>
+    String(l.lesson_code || '').toLowerCase().includes(q) ||
+    String(l.title || '').toLowerCase().includes(q)
+  ).slice(0, 48);
+  $("#catalog").innerHTML = renderCatalog(hits, `${hits.length} match${hits.length === 1 ? '' : 'es'} for “${q}”`);
+  wireCatalogClicks();
+});
+/* ---------- explore: which misconceptions draw ---------- */
+let renderCoverageLoaded = false;
+const COVERAGE_LANE_LABELS = {
+  renders_live: "draws live",
+  parametric_deformation: "parametric deformation",
+  evidence_pointer: "corpus evidence pointer",
+  not_covered: "not covered",
+};
+/* English readings for the common why terms; anything unmatched shows as-is. */
+function coverageWhy(why) {
+  const s = String(why || '');
+  let m = /^renders_live\((.*)\)$/.exec(s);
+  if (m) {
+    const args = _splitTop(m[1]);
+    return `draws ${glossTerm(args[1] || '')} on ${glossAtom(args[0] || '')}`;
+  }
+  m = /^parametric_deformation\((.*)\)$/.exec(s);
+  if (m) {
+    const args = _splitTop(m[1]);
+    return `a clause computes the “${glossAtom(args[0] || '')}” deformation live (${args[1] || ''})`;
+  }
+  m = /^evidence_pointer\((.*)\)$/.exec(s);
+  if (m) {
+    const args = _splitTop(m[1]);
+    const lang = args[0] === 'none' ? 'no diagram' : glossAtom(args[0] || '');
+    return `${args[2] || '?'} corpus figure(s) document “${glossAtom(args[1] || '')}” (${lang})`;
+  }
+  if (s === 'no_render_family_mapping') return 'no row in any coverage table yet';
+  m = /^bridge_task_rejected\((.*)\)$/.exec(s);
+  if (m) return `a bridge row exists but the grammar refuses its exemplar (${m[1]})`;
+  return s;
+}
+function renderCoverageReport(r) {
+  const s = (r && r.summary) || {};
+  const lanes = s.lanes || {};
+  const stats = ['renders_live', 'parametric_deformation', 'evidence_pointer', 'not_covered'].map(k =>
+    `<div class="stat"><b>${esc(String(lanes[k] ?? 0))}</b><span>${esc(COVERAGE_LANE_LABELS[k])}</span></div>`).join('');
+  const rows = (r.rows || []).map(row =>
+    `<tr><td>${esc(glossAtom(row.op || ''))}</td><td>${esc(COVERAGE_LANE_LABELS[row.lane] || row.lane || '')}</td><td>${esc(coverageWhy(row.why))}</td></tr>`).join('');
+  return `<div class="statgrid">${stats}</div>
+    <div style="max-height:320px;overflow:auto;border:1px solid var(--line);border-radius:8px"><table class="rtable"><thead><tr><th>topic</th><th>lane</th><th>why</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <p class="analysis-note">${esc(String(s.total_ops ?? 0))} misconception topics in this installation's registry, computed live. The local misconception CSV corpus enlarges the registry where it is present.</p>`;
+}
+async function loadRenderCoverage() {
+  if (renderCoverageLoaded) return;
+  renderCoverageLoaded = true;
+  const el = $("#render-coverage");
+  el.innerHTML = "<em class='muted-inline'>computing coverage from the registry…</em>";
+  try {
+    const { status, data } = await postJSON('/api/render_coverage', {});
+    if (status >= 400 || !data || !data.result) throw new Error((data && data.error) || 'no report');
+    el.innerHTML = renderCoverageReport(data.result);
+  } catch (e) {
+    renderCoverageLoaded = false;
+    el.innerHTML = `<em class="muted-inline">Couldn't load the coverage report: ${esc(e && e.message ? e.message : e)}</em>`;
+  }
+}
+
+function fcList(items, limit = 8) {
+  const rows = (Array.isArray(items) ? items : []).filter(Boolean).map(String);
+  if (!rows.length) return '<span class="chip">none</span>';
+  const vis = rows.slice(0, limit), extra = rows.length - vis.length;
+  return `<ul class="fc-list">${vis.map(x => `<li>${esc(x)}</li>`).join('')}${extra > 0 ? `<li>${extra} more</li>` : ''}</ul>`;
+}
+/* Suggestions when an opened lesson is thin: the strongest lessons in the same
+   grade+unit, read from the already-fetched audit rows. No extra request; if the
+   audit cache is not loaded, the answer is simply empty. */
+function nearbyStrongLessons(code) {
+  const m = /^(IM-G(?:K|\d+)-U\d+-)L\d+$/.exec(String(code || ''));
+  if (!m || !ALL_LESSONS.length) return [];
+  const prefix = m[1];
+  const rank = row => (row.status === 'fully_connected' ? 2 : (row.coverage_status === 'usable' ? 1 : 0));
+  return ALL_LESSONS
+    .filter(l => String(l.lesson_code || '').startsWith(prefix) && l.lesson_code !== code && rank(l) > 0)
+    .sort((a, b) => (rank(b) - rank(a)) || (lessonSubstance(b) - lessonSubstance(a)))
+    .slice(0, 3);
+}
+async function openLesson(code) {
+  const detail = $("#lesson-detail");
+  detail.innerHTML = "<span class='muted-inline'>loading lesson context…</span>";
+  detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  const { data } = await postJSON('/api/field_context', { lesson_code: code });
+  const r = data.result;
+  if (!r) { detail.innerHTML = `<div class="chat-answer locked">⚠ ${esc((data.error) || ('no context for ' + code))}</div>`; return; }
+  const lesson = r.lesson || {};
+  const power = r.expressive_power || {};
+  const standards = (r.standards || []).filter(x => x.framework !== 'im_lesson').map(x => `${x.framework} ${x.code}`);
+  const strategies = (r.strategies || []).map(x => `${x.operation || ''}:${x.kind || ''} [${x.evidence_level || '—'}]`);
+  const clusters = (r.monitoring_clusters || []).map(x => `${x.source || ''}:${x.id || ''}`);
+  const misconceptions = r.misconceptions || [];
+  const perOp = power.per_operation || [];
+  const pathsLine = perOp.length
+    ? perOp.map(o => `${esc(o.operation)} <b>${esc(String(o.proof_paths))}</b>`).join(' · ')
+    : `<b>${esc(String(power.proof_paths ?? 0))}</b>`;
+  // Field brief: only when the response carries it.
+  const brief = r.field_brief || {};
+  const briefLine = brief.primary_action
+    ? `<div class="exp-line"><b>Suggested next step:</b> ${esc(brief.primary_action)}</div>` : '';
+  // A thin lesson still offers a substantive next click: the strongest
+  // lessons in this grade+unit, from the cached audit rows.
+  const cov = r.coverage_status || 'unknown';
+  const nearby = (cov !== 'usable' && cov !== 'fully_connected') ? nearbyStrongLessons(code) : [];
+  const nearbyLine = nearby.length
+    ? `<div class="exp-line"><b>Strongest nearby:</b> ${nearby.map(n =>
+        `<a href="#" class="nearby-lesson" data-lesson="${escAttr(n.lesson_code)}">${esc(n.lesson_code)}</a>`).join(' · ')}</div>`
+    : '';
+  detail.innerHTML = `<div class="card"><div class="fc">
+    <div class="fc-head"><h3>${esc(lesson.title || code)}</h3>
+      <div class="fc-meta"><span class="chip">${esc(code)}</span><span class="chip">coverage: ${esc(r.coverage_status || 'unknown')}</span><span class="chip">grade ${esc(String(lesson.grade ?? '—'))}</span></div>
+      ${briefLine}${nearbyLine}
+      <div class="ce-row">
+        <a class="stance-chip" href="../more-zeeman/monitoring_chart.html" target="_blank" rel="noopener">Monitoring chart — enter this lesson code</a>
+        <a class="stance-chip" href="generated/notation_lesson_charts/index.html" target="_blank" rel="noopener">Notation charts gallery</a>
+        <a class="stance-chip" href="generated/lesson_deformation_charts/index.html" target="_blank" rel="noopener">Deformation charts gallery</a>
+      </div>
+    </div>
+    <div class="fc-grid">
+      <section class="fc-sec"><h4>Standards (CCSS + Indiana)</h4>${fcList(standards)}</section>
+      <section class="fc-sec"><h4>Strategies</h4>${fcList(strategies)}</section>
+      <section class="fc-sec"><h4>Monitoring clusters</h4>${fcList(clusters)}</section>
+    </div>
+    <div class="fc-sec"><h4>Inferential strength</h4>
+      <div class="exp-line">Derivation paths (operation-level): ${pathsLine}
+        <span class="muted-inline">— the strategic room each operation opens in the grounded layer. This is a property of the operation, so every lesson teaching it shows the same count; it is not a per-lesson fingerprint.</span></div>
+      <div class="exp-line">Incompatibilities in this lesson: <b>${esc(String(power.strategy_incompatibilities ?? 0))}</b> strategy · <b>${esc(String(power.misconception_incompatibilities ?? 0))}</b> misconception <span class="muted-inline">(upper bound — ${esc(power.incompatibility_note || 'includes set wrappers')})</span></div>
+    </div>
+    <div class="fc-sec"><h4>Incompatibility graph — what conflicts with what</h4>${incompatGraphSvg(misconceptions)}</div>
+    <div class="fc-sec"><h4>Misconceptions &amp; incompatibilities</h4><p class="muted-inline">These readings are fixed facts from the misconception registry, not a live scoring run. The deontic vocabulary (commits to, lacks entitlement to, incompatible with) describes each misconception's structure. The <b>Deontic scorecard</b> (advanced view) is the separate surface that runs the scorekeeper engine live against a speaker's commitments.</p>${miscCardsHtml(misconceptions)}</div>
+    <div class="fc-sec" id="lesson-grounding"><h4>Grounding (Lakoff &amp; Núñez) — where the metaphor breaks</h4><span class="muted-inline">loading grounding…</span></div>
+    <details class="fc-raw"><summary>raw context</summary><pre>${esc(JSON.stringify(r, null, 2))}</pre></details>
+  </div></div>`;
+  detail.querySelectorAll('.nearby-lesson').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault(); openLesson(a.dataset.lesson);
+  }));
+  // Grounding metaphors for the lesson's distinct operations (real L&N module).
+  const ops = [...new Set((r.strategies || []).map(x => x.operation).filter(Boolean))];
+  renderLessonGrounding(ops);
+}
+
+function miscCardsHtml(misconceptions) {
+  if (!misconceptions.length) return '<span class="chip">none attached</span>';
+  return misconceptions.map(m => {
+    const commit = m.commitment_made ? `<div class="ce commit"><b>commits to</b>${esc(glossTerm(m.commitment_made))}</div>` : '';
+    const entitle = m.entitlement_lacked ? `<div class="ce entitle"><b>but lacks entitlement to</b>${esc(glossTerm(m.entitlement_lacked))}</div>` : '';
+    const ce = (commit || entitle) ? `<div class="ce-row">${commit}${entitle}</div>` : '';
+    const incompat = m.incompatibility ? `<div class="incompat">incompatible with <span class="perp">⊥</span> ${glossPair(m.incompatibility)}</div>` : '';
+    const sets = (m.discovered_incompatibility_sets || []).length
+      ? `<div class="incompat">discovered set: ${m.discovered_incompatibility_sets.map(s => esc(glossTerm(s))).join(' · ')}</div>` : '';
+    const reanchor = m.entitlement_lacked ? `<div class="reanchor">↳ re-anchor toward ${esc(glossTerm(m.entitlement_lacked))}</div>` : '';
+    const cite = m.citation ? `<div class="muted-inline">${esc(m.citation)}</div>` : '';
+    const lit = (m.literature_links || []).length
+      ? `<div class="muted-inline">${m.literature_links.length} literature link(s): ${m.literature_links.slice(0,3).map(l => esc(l.canonical_commitment_label || l.id || '')).join('; ')}</div>` : '';
+    return `<div class="misc-card"><span class="mn">${esc(m.name || '')}</span> <span class="dyad-score">${esc(m.operation || '')} · ${esc(m.evidence_level || '—')}</span>${ce}${incompat}${sets}${reanchor}${lit}${cite}</div>`;
+  }).join('');
+}
+
+async function renderLessonGrounding(ops) {
+  const el = $("#lesson-grounding");
+  if (!el) return;
+  if (!ops.length) { el.innerHTML = `<h4>Grounding (Lakoff &amp; Núñez) — where the metaphor breaks</h4><span class="muted-inline">No strategy operations to ground.</span>`; return; }
+  const seen = new Set(), metaphors = [];
+  for (const op of ops) {
+    const { data } = await postJSON('/api/grounding', { operation: op });
+    const ms = (data.result && data.result.metaphors) || [];
+    for (const m of ms) { if (!seen.has(m.id)) { seen.add(m.id); metaphors.push(m); } }
+  }
+  el.innerHTML = `<h4>Grounding (Lakoff &amp; Núñez) — where the metaphor breaks</h4>` +
+    (metaphors.length ? metaphors.map(metaphorCardHtml).join('')
+      : `<span class="muted-inline">No L&N grounding metaphor maps to these operations — absence is meaningful (the source domain does not ground them).</span>`);
+}
+
+/* ---------- ask ---------- */
+const NON_SPEAKER = ["answer", "answers", "note", "prompt", "question", "response", "state", "trace"];
+function looksLikeTranscript(text) {
+  const labels = new Set();
+  for (const line of text.split("\n")) {
+    const m = /^\s*([A-Za-z][A-Za-z .'\-]{0,40}|S\d+|student\s*\d+)\s*:\s+\S/i.exec(line);
+    if (m) { const l = m[1].trim().toLowerCase(); if (!NON_SPEAKER.includes(l)) labels.add(l); }
+  }
+  return labels.size >= 2;
+}
+async function sendAsk() {
+  const msg = $("#ask-input").value.trim(); if (!msg) return;
+  const ans = $("#ask-answer"); ans.hidden = false; ans.classList.remove('locked');
+  if (looksLikeTranscript(msg)) {
+    loadTextIntoData(msg, "from Ask"); selectTab('workspace'); runAnalyze();
+    ans.textContent = "That looked like a discussion transcript — moved it to the Workspace analyzer (kept local, off the cloud).";
+    return;
+  }
+  ans.textContent = "retrieving symbolic facts, then thinking…";
+  const { status, data } = await postJSON('/api/chat', { message: msg });
+  if (data.error_type === 'chat_transcript_safety') { loadTextIntoData(msg, "from Ask"); selectTab('workspace'); runAnalyze(); ans.textContent = "Moved to the Workspace analyzer (kept local)."; return; }
+  ans.classList.toggle('locked', status >= 400);
+  const body = data.answer || data.error || JSON.stringify(data, null, 2);
+  const scene = data.scene && data.scene.url
+    ? `<div class="grounded"><div class="g-row"><span class="g-lab">scene</span><a class="stance-chip" href="${escAttr(api(data.scene.url))}" target="_blank" rel="noopener">${esc(data.scene.kind || 'fraction compare')}</a></div></div>`
+    : '';
+  ans.innerHTML = scene + groundedHtml(data.grounded) + `<div class="ask-prose">${esc(body)}</div>`;
+}
+function groundedHtml(g) {
+  if (!g || !g.total) return '';
+  const row = (label, arr, cls) => (arr && arr.length)
+    ? `<div class="g-row"><span class="g-lab">${label}</span>${arr.slice(0, 6).map(x => `<span class="stance-chip ${cls || ''}">${esc(x)}</span>`).join('')}</div>` : '';
+  return `<div class="grounded"><div class="g-head">⛓ grounded in ${g.total} symbolic fact${g.total === 1 ? '' : 's'} Hermes retrieved</div>
+    ${row('strategies', g.strategies)}${row('misconceptions', g.misconceptions, 'comp')}${row('standards', g.standards)}${row('metaphors', g.metaphors, 'exp')}</div>`;
+}
+$("#ask-send").addEventListener('click', sendAsk);
+const askDrop = $("#ask-drop");
+["dragenter", "dragover"].forEach(ev => askDrop.addEventListener(ev, e => { e.preventDefault(); askDrop.classList.add('dragover'); }));
+askDrop.addEventListener('dragleave', e => { if (!askDrop.contains(e.relatedTarget)) askDrop.classList.remove('dragover'); });
+askDrop.addEventListener('drop', e => { e.preventDefault(); askDrop.classList.remove('dragover'); const f = e.dataTransfer.files[0]; if (f) { const rd = new FileReader(); rd.onload = () => { $("#ask-input").value = String(rd.result || ''); }; rd.readAsText(f); } });
+
+/* ---------- set key + quickstart ---------- */
+$("#set-key-btn").addEventListener('click', async () => {
+  const key = prompt("Paste your REALLMS API key (stored in runtime/.env, never committed):");
+  if (!key) return;
+  await postJSON('/api/set_key', { api_key: key.trim() });
+  refreshModels();
+});
+$("#quickstart-btn").addEventListener('click', async () => {
+  $("#quickstart-modal").hidden = false;
+  const body = $("#quickstart-body"); body.innerHTML = "loading…";
+  const { status, data } = await getJSON('/api/quickstart');
+  body.innerHTML = (status === 200 && data.content) ? mdToHtml(data.content) : "Open <code>hermes/app/QUICKSTART_N103.md</code> in your editor.";
+});
+$("#quickstart-close").addEventListener('click', () => { $("#quickstart-modal").hidden = true; });
+$("#quickstart-modal").addEventListener('click', e => { if (e.target.id === 'quickstart-modal') $("#quickstart-modal").hidden = true; });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') $("#quickstart-modal").hidden = true; });
+
+/* ---------- shared renderers (lesson grounding + encyclopedia) ---------- */
+function metaphorCardHtml(m) {
+  const kind = (m.kind === 'repair') ? 'repair' : 'basic';
+  const maps = (m.mappings || []).map(x =>
+    `<li>${esc(x.source)}<span class="ar">→</span>${esc(x.target)}${x.notes ? `<span class="nt">${esc(x.notes)}</span>` : ''}</li>`).join('');
+  const breaks = (m.breaks || []).map(b =>
+    `<li><div class="inf">breaks at: ${esc(b.inference)}</div><div class="why">${esc(b.reason)}</div></li>`).join('');
+  const repairs = (m.repairs || []).map(r =>
+    `<div class="reanchor">↳ repair for “${esc(r.broken_inference)}”: ${esc(r.repair_metaphor)} — ${esc(r.mechanism)}</div>`).join('');
+  return `<div class="misc-card">
+    <span class="mn">${esc(m.short_name || m.id)}</span> <span class="badge ${kind}">${esc(kind)}</span>
+    <div class="muted-inline">${esc(m.description || '')}</div>
+    ${maps ? `<details><summary class="muted-inline" style="cursor:pointer">source → target mappings (${(m.mappings || []).length})</summary><ul class="maplist">${maps}</ul></details>` : ''}
+    ${breaks ? `<ul class="breaks">${breaks}</ul>` : '<div class="muted-inline">no break-points recorded</div>'}
+    ${repairs}
+  </div>`;
+}
+
+function stanceProfileHtml(students) {
+  if (!students.length) return '';
+  const chips = students.map(s => {
+    const st = s.stance || {};
+    const pol = st.polarity || 'unknown';
+    const cls = pol === 'compressive' ? 'comp' : (pol === 'expansive' ? 'exp' : '');
+    const modeLetter = (st.mode && st.mode !== 'unknown') ? st.mode[0].toUpperCase() : '·';
+    const markers = (st.markers || []).slice(0, 5).join(', ');
+    return `<span class="stance-chip ${cls}" title="markers: ${escAttr(markers || 'none matched')}">${esc(s.id)}: ${modeLetter}-mode / ${esc(pol)}</span>`;
+  }).join('');
+  return `<div style="margin-top:.7rem"><div class="out-head">Discourse-marker profile · PML proxy</div><div>${chips}</div></div>`;
+}
+
+/* ---------- strategy trace visualization (SVG number line) ---------- */
+function traceSvg(jumps) {
+  const js = (jumps || []).filter(j => !isNaN(Number(j.from)) && !isNaN(Number(j.to)));
+  if (!js.length) return '';
+  const vals = js.flatMap(j => [Number(j.from), Number(j.to)]);
+  const min = Math.min(...vals), max = Math.max(...vals), span = (max - min) || 1;
+  const W = 580, padX = 34, rows = Math.min(3, js.length), baseY = 34 + rows * 18;
+  const H = baseY + 28;
+  const X = v => padX + (v - min) / span * (W - 2 * padX);
+  let svg = `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="strategy number-line trace">`;
+  svg += `<defs><marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#3f7f89"/></marker></defs>`;
+  svg += `<line x1="${padX}" y1="${baseY}" x2="${W - padX}" y2="${baseY}" stroke="#a97c24" stroke-width="2"/>`;
+  [min, max].forEach(v => {
+    svg += `<line x1="${X(v).toFixed(1)}" y1="${baseY - 5}" x2="${X(v).toFixed(1)}" y2="${baseY + 5}" stroke="#665f4f"/>`;
+    svg += `<text x="${X(v).toFixed(1)}" y="${baseY + 18}" font-size="10" text-anchor="middle" font-family="monospace">${esc(String(v))}</text>`;
+  });
+  js.forEach((j, i) => {
+    const x1 = X(Number(j.from)), x2 = X(Number(j.to)), midx = (x1 + x2) / 2, h = 22 + (i % rows) * 16;
+    svg += `<path d="M ${x1.toFixed(1)} ${baseY} Q ${midx.toFixed(1)} ${(baseY - h).toFixed(1)} ${x2.toFixed(1)} ${baseY}" fill="none" stroke="#3f7f89" stroke-width="2" marker-end="url(#ah)"/>`;
+    svg += `<text x="${midx.toFixed(1)}" y="${(baseY - h - 3).toFixed(1)}" font-size="10" text-anchor="middle" fill="#2c5e66" font-family="monospace">${esc(j.label || '')}</text>`;
+    svg += `<circle cx="${x1.toFixed(1)}" cy="${baseY}" r="3" fill="#b95238"/><circle cx="${x2.toFixed(1)}" cy="${baseY}" r="3" fill="#b95238"/>`;
+  });
+  svg += `</svg>`;
+  return `<div class="trace-viz">${svg}</div>`;
+}
+
+/* ---------- Prolog term glossing: English first, formal after ---------- */
+function _splitTop(s) {
+  const out = []; let depth = 0, cur = "";
+  for (const ch of String(s)) {
+    if (ch === "(" || ch === "[") depth++;
+    else if (ch === ")" || ch === "]") depth--;
+    if (ch === "," && depth === 0) { out.push(cur); cur = ""; }
+    else cur += ch;
+  }
+  if (cur.trim() !== "") out.push(cur);
+  return out.map(x => x.trim());
+}
+function glossAtom(a) { return String(a).replace(/_/g, " ").trim(); }
+function glossTerm(s) {
+  s = String(s == null ? "" : s).trim();
+  if (!s) return "";
+  let m = /^([a-z][a-zA-Z0-9_]*)\((.*)\)$/.exec(s);
+  if (m) {
+    const fn = m[1], args = _splitTop(m[2]);
+    if (fn === "result_of" && args.length === 3) {
+      // Drop db_row provenance from the sentence: the citation is shown
+      // separately, and a corpus row number tells a reader nothing.
+      if (/^db_row\(/.test(args[1])) return `the “${glossAtom(args[0])}” rule yields ${args[2]}`;
+      return `the “${glossAtom(args[0])}” rule on ${glossTerm(args[1])} yields ${args[2]}`;
+    }
+    if (fn === "strategy" && args.length === 2) return `the “${glossAtom(args[1])}” strategy (${glossAtom(args[0])})`;
+    if (fn === "misconception" && args.length === 1) return `the “${glossAtom(args[0])}” misconception`;
+    // deformed_action(Productive, Deformation, Family): the commitment a student
+    // makes when a productive strategy is deformed. This is the term that flows
+    // into commitment_made in a monitoring chart, so glossing it reaches both the
+    // card and the band renderer (misconception_registry.pl:76).
+    if (fn === "deformed_action" && args.length === 3) {
+      const base = `the “${glossAtom(args[0])}” strategy deformed into “${glossAtom(args[1])}”`;
+      return args[2] && args[2] !== args[1] ? `${base} (${glossAtom(args[2])})` : base;
+    }
+    if (fn === "db_row" && args.length === 1) return `a documented case`;
+    if (fn === "commitment_to" && args.length >= 1) return `a commitment to ${args.map(glossTerm).join(", ")}`;
+    return `${glossAtom(fn)}(${args.map(glossTerm).join(", ")})`;
+  }
+  if (/^\[.*\]$/.test(s)) return _splitTop(s.slice(1, -1)).map(glossTerm).join(" ⊥ ");
+  if (/^-?\d+$/.test(s)) return s;
+  return glossAtom(s);
+}
+// A compact node label (no articles) for the graph.
+function termShort(s) {
+  s = String(s || "").trim();
+  const m = /^([a-z][a-zA-Z0-9_]*)\((.*)\)$/.exec(s);
+  if (m) {
+    const fn = m[1], args = _splitTop(m[2]);
+    if (fn === "strategy" && args.length === 2) return glossAtom(args[1]);
+    if (fn === "result_of") return glossAtom(args[0]);
+    if (fn === "misconception") return glossAtom(args[0]);
+    return glossAtom(fn);
+  }
+  return glossAtom(s);
+}
+// English-then-formal: "<gloss> — <code>formal</code>"
+function glossPair(s) {
+  if (!s) return "";
+  return `${esc(glossTerm(s))} <code class="formal">${esc(String(s))}</code>`;
+}
+
+/* ---------- incompatibility graph (lesson-specific A ⊥ B relations) ---------- */
+function incompatGraphSvg(misconceptions) {
+  const edges = [], miscSet = [], tgtSet = [];
+  (misconceptions || []).forEach(m => {
+    if (m.incompatibility) {
+      edges.push([m.name, m.incompatibility]);
+      if (!miscSet.includes(m.name)) miscSet.push(m.name);
+      if (!tgtSet.includes(m.incompatibility)) tgtSet.push(m.incompatibility);
+    }
+  });
+  if (!edges.length) return '<span class="muted-inline">No incompatibility relations attached to this lesson.</span>';
+  const W = 580, rowH = 50, padY = 26, lx = 175, rx = W - 175;
+  const H = padY * 2 + Math.max(miscSet.length, tgtSet.length) * rowH;
+  const yOf = (arr, i) => padY + i * rowH + rowH / 2;
+  const li = {}, ri = {};
+  miscSet.forEach((n, i) => li[n] = yOf(miscSet, i));
+  tgtSet.forEach((n, i) => ri[n] = yOf(tgtSet, i));
+  let svg = `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="incompatibility graph">`;
+  edges.forEach(([a, b]) => {
+    const y1 = li[a], y2 = ri[b], mx = (lx + rx) / 2, my = (y1 + y2) / 2;
+    svg += `<line x1="${lx}" y1="${y1}" x2="${rx}" y2="${y2}" stroke="#b95238" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+    svg += `<text x="${mx}" y="${my - 3}" font-size="12" text-anchor="middle" fill="#b95238">⊥</text>`;
+  });
+  const node = (x, y, full, kind, anchor) => {
+    const fill = kind === 'misc' ? '#fbeae6' : '#e6f0f1', stroke = kind === 'misc' ? '#b95238' : '#3f7f89';
+    const tx = anchor === 'end' ? x - 9 : x + 9;
+    return `<circle cx="${x}" cy="${y}" r="6" fill="${fill}" stroke="${stroke}" stroke-width="2"><title>${escAttr(glossTerm(full))}</title></circle>`
+      + `<text x="${tx}" y="${y + 4}" font-size="11.5" text-anchor="${anchor}" font-family="Georgia, serif">${esc(termShort(full))}</text>`;
+  };
+  miscSet.forEach(n => svg += node(lx, li[n], n, 'misc', 'end'));
+  tgtSet.forEach(n => svg += node(rx, ri[n], n, 'tgt', 'start'));
+  svg += `</svg>`;
+  return `<div class="trace-viz">${svg}<div class="muted-inline" style="margin-top:.3rem"><span style="color:#b95238">●</span> misconception &nbsp; <span style="color:#3f7f89">●</span> productive strategy / grounded result &nbsp; · &nbsp; dashed ⊥ = materially incompatible (hover a node for the English reading)</div></div>`;
+}
+
+/* ---------- encyclopedia browser ---------- */
+let encLoaded = false, ENC_SECTION = 'strategies', ENC_DATA = {}, ENC_SEL = null;
+const ENC_PATHS = { strategies: '/api/strategies', misconceptions: '/api/misconceptions', standards: '/api/standards', grounding: '/api/grounding', benny: '/api/benny_demo' };
+
+function selectEnc(section) {
+  ENC_SECTION = section; ENC_SEL = null;
+  document.querySelectorAll('.enc-tab').forEach(t => t.classList.toggle('active', t.dataset.enc === section));
+  $("#enc-search").value = '';
+  $("#enc-search").placeholder = section === 'standards' ? 'Filter by code or statement…'
+    : section === 'grounding' ? 'Filter metaphors…' : `Filter ${section}…`;
+  loadEncyclopedia(section);
+}
+document.querySelectorAll('.enc-tab').forEach(t => t.addEventListener('click', () => selectEnc(t.dataset.enc)));
+
+async function loadEncyclopedia(section) {
+  encLoaded = true; ENC_SECTION = section;
+  $("#enc-list").innerHTML = "<em class='muted-inline'>loading the knowledge base…</em>";
+  $("#enc-detail").innerHTML = "<em class='muted-inline'>Select an item to inspect it here.</em>";
+  let r;
+  try { const { data } = await postJSON(ENC_PATHS[section], {}); r = (data && data.result) || {}; }
+  catch (e) { $("#enc-list").innerHTML = "<em class='muted-inline'>Couldn't reach the worker.</em>"; return; }
+  ENC_DATA[section] = r;
+  renderEncStats(section, r);
+  renderEncList(section);
+}
+
+function renderEncStats(section, r) {
+  const el = $("#enc-stats");
+  if (section === 'strategies') el.innerHTML = `<b>${r.count || 0}</b> strategy automata across <b>${(r.operations || []).length}</b> operations`;
+  else if (section === 'misconceptions') { const d = (r.misconceptions || []).filter(m => m.diagnosable).length; el.innerHTML = `<b>${r.count || 0}</b> misconceptions · <b>${d}</b> runnable/diagnosable`; }
+  else if (section === 'standards') el.innerHTML = `<b>${r.count || 0}</b> standards across <b>${(r.frameworks || []).join(', ') || '—'}</b>`;
+  else if (section === 'grounding') el.innerHTML = `<b>${r.count || 0}</b> grounding metaphors (basic + repair)`;
+  else if (section === 'benny') el.innerHTML = `<b>${(r.comparisons || []).length}</b> side-by-side comparisons (Benny's deformed rules vs their correct counterparts)`;
+}
+
+function encFilter() {
+  const q = $("#enc-search").value.trim().toLowerCase();
+  renderEncList(ENC_SECTION, q);
+}
+$("#enc-search").addEventListener('input', encFilter);
+
+function canonicalRows(value) {
+  if (Array.isArray(value)) return value;
+  if (value && typeof value === 'object') {
+    for (const key of ['terms', 'checks', 'predicates', 'contract', 'rows']) {
+      if (Array.isArray(value[key])) return value[key];
+    }
+  }
+  return [];
+}
+
+function renderCanonicalResult(payload) {
+  const rows = canonicalRows(payload);
+  if (rows.length) {
+    const head = Object.keys(rows[0] || {}).slice(0, 5);
+    const table = `<table class="rtable"><thead><tr>${head.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>` +
+      rows.slice(0, 80).map(row => `<tr>${head.map(h => `<td>${esc(typeof row[h] === 'object' ? JSON.stringify(row[h]) : row[h])}</td>`).join('')}</tr>`).join('') +
+      `</tbody></table>`;
+    return table + (rows.length > 80 ? `<div class="muted-inline">showing 80 of ${rows.length}</div>` : '');
+  }
+  return `<pre>${esc(JSON.stringify(payload, null, 2))}</pre>`;
+}
+
+async function loadCanonicalContract() {
+  const out = $("#canonical-out");
+  out.hidden = false;
+  out.innerHTML = "<em class='muted-inline'>loading canonical_contract…</em>";
+  const { data } = await postJSON('/api/canonical_contract', {});
+  out.innerHTML = data && data.ok ? renderCanonicalResult(data.result) : `<span class="muted-inline">${esc((data && data.error) || 'canonical_contract failed')}</span>`;
+}
+
+async function runCanonicalCheck() {
+  const out = $("#canonical-out");
+  const terms = $("#canonical-terms").value.split(/\n+/).map(s => s.trim()).filter(Boolean);
+  out.hidden = false;
+  out.innerHTML = "<em class='muted-inline'>running canonical_check…</em>";
+  const { data } = await postJSON('/api/canonical_check', { terms });
+  out.innerHTML = data && data.ok ? renderCanonicalResult(data.result) : `<span class="muted-inline">${esc((data && data.error) || 'canonical_check failed')}</span>`;
+}
+$("#canonical-contract-btn").addEventListener('click', loadCanonicalContract);
+$("#canonical-check-btn").addEventListener('click', runCanonicalCheck);
+
+function encItemBtn(key, title, sub, active) {
+  return `<button class="enc-item${active ? ' active' : ''}" data-key="${escAttr(key)}"><span class="ti">${esc(title)}</span><span class="sub">${esc(sub)}</span></button>`;
+}
+
+function renderEncList(section, q = '') {
+  const r = ENC_DATA[section] || {};
+  const list = $("#enc-list");
+  let html = '';
+  if (section === 'strategies') {
+    const runnable = (r.runnable || []).filter(x => !q || (`${x.name} ${x.operation} ${x.expression}`).toLowerCase().includes(q));
+    if (runnable.length) {
+      html += `<div class="enc-group">▶ runnable automata · click to watch it compute</div>`;
+      html += runnable.map(x => encItemBtn(`run::${x.name}::${x.operation}::${x.a}::${x.b}`, x.name, `${x.operation} · ${x.expression}`)).join('');
+    }
+    const rows = (r.strategies || []).filter(s => !q || (`${s.operation} ${s.kind} ${s.cluster}`).toLowerCase().includes(q));
+    const byOp = {};
+    rows.forEach(s => { (byOp[s.operation] = byOp[s.operation] || []).push(s); });
+    const ops = Object.keys(byOp).sort();
+    if (ops.length) html += `<div class="enc-group" style="margin-top:.7rem">all encoded strategies · reference</div>`;
+    for (const op of ops) {
+      html += `<div class="enc-group">${esc(op)} (${byOp[op].length})</div>`;
+      html += byOp[op].map(s => encItemBtn(`${op}::${s.kind}`, s.kind, `${s.representation}${s.has_fsm ? ' · runnable fsm' : ''}`)).join('');
+    }
+  } else if (section === 'misconceptions') {
+    const rows = (r.misconceptions || []).filter(m => !q || (`${m.domain} ${m.name} ${m.rule}`).toLowerCase().includes(q)).slice(0, 400);
+    html = rows.map(m => encItemBtn(`m::${m.domain}::${m.name}`, m.name, `${m.domain} · ${m.diagnosable ? 'diagnosable' : 'placeholder'}`)).join('');
+    if ((r.misconceptions || []).length > rows.length) html += `<div class="enc-group">showing ${rows.length} of ${(r.misconceptions || []).length} — filter to narrow</div>`;
+  } else if (section === 'standards') {
+    const rows = (r.standards || []).filter(s => !q || (`${s.framework} ${s.code} ${s.statement}`).toLowerCase().includes(q));
+    const byFw = {};
+    rows.forEach(s => { (byFw[s.framework] = byFw[s.framework] || []).push(s); });
+    for (const fw of Object.keys(byFw).sort()) {
+      html += `<div class="enc-group">${esc(fw)} (${byFw[fw].length})</div>`;
+      html += byFw[fw].map(s => encItemBtn(`st::${s.framework}::${s.code}`, s.code, `grade ${s.grade} · ${s.lesson_count} lesson(s)`)).join('');
+    }
+  } else if (section === 'grounding') {
+    const rows = (r.metaphors || []).filter(m => !q || (`${m.short_name} ${m.id} ${m.description}`).toLowerCase().includes(q));
+    html = rows.map(m => encItemBtn(`g::${m.id}`, m.short_name || m.id, `${m.kind} · ${(m.breaks || []).length} break-point(s)`)).join('');
+  } else if (section === 'benny') {
+    const rows = (r.comparisons || []).map((c, i) => [c, i])
+      .filter(([c]) => !q || (`${c.title} ${c.kind} ${c.classification}`).toLowerCase().includes(q));
+    html = rows.map(([c, i]) => encItemBtn(`b::${i}`, c.title, `${c.kind} · ${c.classification}`)).join('');
+  }
+  list.innerHTML = html || "<em class='muted-inline'>no matches</em>";
+  list.querySelectorAll('.enc-item').forEach(b => b.addEventListener('click', () => {
+    list.querySelectorAll('.enc-item').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    openEncItem(section, b.dataset.key);
+  }));
+}
+
+function kvHtml(pairs) {
+  return `<dl class="kv">${pairs.filter(([, v]) => v != null && v !== '').map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(String(v))}</dd>`).join('')}</dl>`;
+}
+
+function openEncItem(section, key) {
+  const r = ENC_DATA[section] || {};
+  const detail = $("#enc-detail");
+  if (section === 'strategies') {
+    if (key.startsWith('run::')) {
+      const [, name, op, a, b] = key.split('::');
+      renderRunnableStrategy(name, op, a, b);
+      return;
+    }
+    const [op, kind] = key.split('::');
+    const s = (r.strategies || []).find(x => x.operation === op && x.kind === kind) || {};
+    if (s.has_fsm && s.trace_name) {
+      renderRunnableStrategy(s.trace_name, s.operation, s.default_a ?? 8, s.default_b ?? 5, s);
+      return;
+    }
+    // Flat action-pair: a real encoded strategy, but not an individually runnable
+    // automaton. Show what it IS rather than a Run button that would just error.
+    detail.innerHTML = `<h3>${esc(s.kind || kind)}</h3>
+      ${kvHtml([['operation', s.operation], ['cluster', s.cluster], ['provenance', s.provenance], ['vocabulary', s.source]])}
+      <div class="badge nodiag">reference · flat action-pair</div>
+      <p class="muted-inline" style="margin-top:.6rem">This is an encoded action-pair — its operation, cluster, and vocabulary are modelled, but it is not a standalone runnable automaton. The runnable automata (which you can watch compute on a number line) are listed under <b>▶ runnable automata</b> at the top.</p>`;
+  } else if (section === 'misconceptions') {
+    const [, domain, name] = key.split('::');
+    const m = (r.misconceptions || []).find(x => x.domain === domain && x.name === name) || {};
+    const ex = m.example || {};
+    const worked = ex.wrong
+      ? `<h4>What this looks like</h4>
+         <div class="worked">
+           <span class="we-in">${esc(ex.input)}</span><span class="we-arrow">→</span><span class="we-wrong">${esc(ex.wrong)}</span>
+           <span class="we-correct">✓ correct: ${esc(ex.correct)}</span>
+         </div>
+         <p class="muted-inline">Hermes runs this misconception's rule symbolically to produce the wrong answer — that is the error pattern it recognizes, not a guess.</p>`
+      : `<p class="muted-inline">A documented misconception that does not yet have a runnable arithmetic rule, so Hermes cannot reproduce it as a worked example.</p>`;
+    const barsCase = fractionBarsCase(name);
+    const bars = barsCase
+      ? `<h4>Productive scheme vs this deformation, laid out as bars</h4>
+         <p class="muted-inline" style="margin-bottom:.4rem">A misconception is a deformation of a scheme — the same machine with one wire moved. The left column draws the productive fraction-bar run; the right draws where this deformation loses the unit-fraction referent. The bars are drawn by the productive and deformation automata in <code>fraction_action_pairs</code>.</p>
+         <iframe class="bars-compare" src="${escAttr(api('/more-zeeman/fraction-bars/compare.html'))}?case=${encodeURIComponent(barsCase)}" title="productive vs deformation fraction bars" loading="lazy"></iframe>`
+      : '';
+    const diag = diagnoseFormHtml(m, ex);
+    detail.innerHTML = `<h3>${esc(m.name || name)}</h3>
+      <div class="badge ${m.diagnosable ? 'diag' : 'nodiag'}">${m.diagnosable ? 'runnable rule · reproduces the error' : 'documented · not yet runnable'}</div>
+      ${kvHtml([['domain', m.domain], ['rule', m.rule], ['citation', m.citation]])}
+      ${worked}
+      ${bars}
+      ${diag}`;
+    if (diag) wireDiagnoseForm(m.domain);
+  } else if (section === 'standards') {
+    const [, fw, code] = key.split('::');
+    const s = (r.standards || []).find(x => x.framework === fw && x.code === code) || {};
+    detail.innerHTML = `<h3>${esc(s.code || code)}</h3>
+      ${kvHtml([['framework', s.framework], ['grade', s.grade], ['lessons', s.lesson_count]])}
+      <p>${esc(s.statement || '')}</p>
+      ${(s.example_lessons || []).length ? `<h4>Example lessons</h4>${fcList(s.example_lessons)}` : ''}`;
+  } else if (section === 'grounding') {
+    const id = key.slice(3);
+    const m = (r.metaphors || []).find(x => x.id === id) || {};
+    detail.innerHTML = `${kvHtml([['source domain', m.source_domain], ['target domain', m.target_domain]])}${metaphorCardHtml(m)}`;
+  } else if (section === 'benny') {
+    const c = (r.comparisons || [])[parseInt(key.slice(3), 10)] || {};
+    const cor = c.correct || {}, ben = c.benny || {};
+    detail.innerHTML = `<h3>${esc(c.title || '')}</h3>
+      <div class="badge ${c.classification === 'wrong_answer' ? 'nodiag' : 'diag'}">${esc(c.classification || '')}</div>
+      ${kvHtml([['kind', c.kind], ['expression', c.expression]])}
+      <h4>Correct (coordinated automaton)</h4>
+      ${kvHtml([['result', cor.result], ['remainder', cor.remainder], ['transitions', cor.transitions], ['states', (cor.states || []).length || null], ['cross products', cor.cross_products]])}
+      <h4>Benny (${esc(ben.rule || '')})</h4>
+      ${kvHtml([['output', ben.output], ['result', ben.result], ['sums', ben.sums]])}
+      ${(ben.pml_tags || []).length ? `<h4>PML tags (unlicensed moves)</h4><ul class="benny-tags">${ben.pml_tags.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
+      ${c.contrast ? `<p class="muted-inline">${esc(c.contrast)}</p>` : ''}`;
+  }
+}
+
+function opSymbol(op) { return ({ addition: '+', subtraction: '−', multiplication: '×', division: '÷' })[op] || '+'; }
+
+// Three fraction misconception families are drawn as a one-dimensional bar
+// divergence (productive vs deformation) by the render automata. The misconception
+// registry carries no family metadata, so this maps the registry names whose
+// rule IS one of those deformations to the compare-viewer case. Names not listed
+// keep the text worked-example only — the registry has far more misconceptions
+// than the renderer draws, and faking a picture for the rest would be dishonest.
+const FRACTION_BARS_CASE = {
+  // improper_fraction_reset — iterate past the whole, then rename to a new whole.
+  loss_of_whole: 'improper', improper_must_be_smaller: 'improper',
+  invert_improper_to_proper: 'improper', shift_whole_on_iterate: 'improper',
+  // whole_number_grab — name the count of unit fractions as a whole number.
+  name_ignores_whole_value: 'grab', iteration_count_as_numerator: 'grab',
+  numerator_as_piece_count: 'grab', iteration_count_as_magnitude: 'grab',
+  // referent_to_inner_whole_not_original — part-of-a-part loses the original whole.
+  wrong_referent_unit: 'partofpart', ignore_referent_whole_size: 'partofpart',
+  referent_whole_shift: 'partofpart', mc1_add_by_part_count: 'partofpart'
+};
+function fractionBarsCase(name) { return FRACTION_BARS_CASE[name] || null; }
+
+// A live diagnosis: type a problem and the answer a student GOT, and Hermes runs
+// every registered rule to name the misconception that reproduces that exact
+// error — or reports that none does. Only shown for diagnosable rows carrying a
+// runnable term-form example: the pretty "1/7 − 1/7" display strings are not
+// Prolog-parseable, but input_term/got_term (from encyclopedia.pl) are what the
+// worker parses back. server.py already routes /api/diagnose_error.
+function diagnoseFormHtml(m, ex) {
+  if (!m.diagnosable || !ex || !ex.input_term) return '';
+  return `<h4>Diagnose a student answer</h4>
+    <p class="muted-inline" style="margin-bottom:.4rem">Enter the problem and the answer a student <b>got</b>, in term form (e.g. <code>frac(1,7)-frac(1,7)</code>). Hermes runs every registered rule and names the misconception that reproduces that exact error.</p>
+    <div class="trace-input">
+      <input type="text" id="diag-input" value="${escAttr(ex.input_term)}" />
+      <b style="font-size:1rem">got</b>
+      <input type="text" id="diag-got" value="${escAttr(ex.got_term || '')}" />
+      <button class="btn small primary" id="diag-run">Diagnose</button>
+    </div>
+    <div id="diag-out"><em class="muted-inline">edit the answer and press Diagnose</em></div>`;
+}
+function wireDiagnoseForm(domain) {
+  const run = () => runDiagnose(domain, $("#diag-input").value, $("#diag-got").value);
+  $("#diag-run").addEventListener('click', run);
+  $("#diag-got").addEventListener('keydown', e => { if (e.key === 'Enter') run(); });
+}
+async function runDiagnose(domain, input, got) {
+  const out = $("#diag-out"); out.innerHTML = "<em class='muted-inline'>diagnosing…</em>";
+  let data;
+  try { ({ data } = await postJSON('/api/diagnose_error', { domain, input, got })); }
+  catch (e) { out.innerHTML = `<div class="chat-answer locked">⚠ couldn't reach the engine.</div>`; return; }
+  const matches = (data && data.result) || [];
+  if (!Array.isArray(matches) || !matches.length) {
+    out.innerHTML = `<p class="muted-inline">No registered misconception reproduces <code>${esc(got)}</code> for that input — either the answer is correct, or that error pattern isn't modelled.</p>`;
+    return;
+  }
+  out.innerHTML = matches.map(mm => `<div class="out-head">⟶ <b>${esc(mm.description || mm.source || 'misconception')}</b>
+      <span class="muted-inline">(${esc(mm.classification || mm.type || '')})</span></div>
+    ${kvHtml([['domain', mm.domain], ['rule', mm.rule], ['expected (correct)', mm.expected], ['source', mm.source]])}`).join('');
+}
+function renderRunnableStrategy(name, op, a, b, meta) {
+  const detail = $("#enc-detail");
+  const sym = opSymbol(op);
+  const metaKv = meta ? kvHtml([['operation', meta.operation], ['cluster', meta.cluster], ['vocabulary', meta.source]]) : kvHtml([['operation', op]]);
+  detail.innerHTML = `<h3>${esc(name)}</h3>
+    <div class="badge fsm">runnable automaton</div>
+    ${metaKv}
+    <p class="muted-inline" style="margin-top:.5rem">A child's strategy as a finite-state automaton. Watch it step through the computation on a number line; edit the operands and re-run.</p>
+    <div class="trace-input">
+      <input type="text" id="trace-a" value="${escAttr(String(a))}" /> <b style="font-size:1.1rem">${esc(sym)}</b>
+      <input type="text" id="trace-b" value="${escAttr(String(b))}" />
+      <button class="btn small primary" id="trace-run">▶ Run automaton</button>
+      <input type="hidden" id="trace-name" value="${escAttr(name)}" />
+    </div>
+    <div id="trace-out"><em class="muted-inline">running…</em></div>`;
+  $("#trace-run").addEventListener('click', () => runTrace(name, $("#trace-a").value, $("#trace-b").value));
+  runTrace(name, a, b);
+}
+
+async function runTrace(name, a, b) {
+  const out = $("#trace-out"); out.innerHTML = "<em class='muted-inline'>running…</em>";
+  const input = {}; if (a !== '' && !isNaN(Number(a))) input.a = Number(a); if (b !== '' && !isNaN(Number(b))) input.b = Number(b);
+  const { data } = await postJSON('/api/strategy_trace', { strategy: name, input });
+  const t = (data && data.result) || {};
+  if (!t.ok) { out.innerHTML = `<div class="chat-answer locked">⚠ ${esc(t.note || 'could not run this strategy')}</div>`; return; }
+  const steps = (t.steps || []).map(s => `<li><span class="sn">${esc(String(s.n))}</span><span>${esc(s.label || '')}</span><span class="sv">${esc(s.value || '')}</span></li>`).join('');
+  out.innerHTML = `<div class="out-head">${esc(name)} → <b>${esc(String(t.result ?? ''))}</b> <span class="muted-inline">(${esc(t.representation || '')})</span></div>
+    ${traceSvg(t.jumps)}
+    ${steps ? `<ol class="trace-steps">${steps}</ol>` : `<div class="muted-inline">${esc(t.note || 'ran to a result; no number-line step-shape for this strategy.')}</div>`}`;
+}
+
+/* ---------- Quick calculator: typed operation → decoded result + proof ---------- */
+let CALC_RUNNABLE = [];
+// Normalize unicode operators to their ascii key.
+function calcNormalizeOp(op) {
+  return ({ '+': '+', '−': '-', '-': '-', '×': '*', '*': '*', '÷': '/', '/': '/' })[op] || null;
+}
+function calcOperationName(op) {
+  return ({ '+': 'addition', '-': 'subtraction', '*': 'multiplication', '/': 'division' })[op] || '';
+}
+function parseCalcExpr(raw) {
+  const m = /^\s*(-?\d+)\s*([+−\-×*÷\/])\s*(-?\d+)\s*$/.exec(String(raw || ''));
+  if (!m) return null;
+  const op = calcNormalizeOp(m[2]);
+  if (!op) return null;
+  return { a: Number(m[1]), b: Number(m[3]), op };
+}
+function calcStrategiesForOperation(op) {
+  const operation = calcOperationName(op);
+  return CALC_RUNNABLE.filter(s => s.operation === operation);
+}
+function syncCalcStrategyPicker(parsed) {
+  const select = $("#calc-strategy");
+  const status = $("#calc-strategy-status");
+  if (!select || !status) return;
+  const previous = select.value;
+  const choices = parsed ? calcStrategiesForOperation(parsed.op) : CALC_RUNNABLE;
+  select.innerHTML = choices.map(s =>
+    `<option value="${escAttr(s.name)}" data-operation="${escAttr(s.operation || '')}" data-symbol="${escAttr(s.op_symbol || '')}">${esc(s.name)} · ${esc(s.expression || s.operation || '')}</option>`
+  ).join('');
+  if (choices.some(s => s.name === previous)) select.value = previous;
+  select.disabled = choices.length === 0;
+  const operation = parsed ? calcOperationName(parsed.op) : 'operation';
+  status.textContent = choices.length
+    ? `${choices.length} runnable ${operation} strateg${choices.length === 1 ? 'y' : 'ies'} available`
+    : (CALC_RUNNABLE.length ? `No runnable ${operation} strategy is cataloged.` : 'Runnable strategies are still loading.');
+}
+function calcStrategyForOperation(op) {
+  syncCalcStrategyPicker({ op });
+  const select = $("#calc-strategy");
+  const choices = calcStrategiesForOperation(op);
+  return choices.find(s => select && s.name === select.value) || choices[0] || null;
+}
+async function loadCalcStrategies() {
+  const status = $("#calc-strategy-status");
+  try {
+    const { data } = await postJSON('/api/strategies', {});
+    const runnable = data && data.result && Array.isArray(data.result.runnable) ? data.result.runnable : [];
+    CALC_RUNNABLE = runnable
+      .filter(s => s && s.name && s.operation)
+      .sort((a, b) => String(a.operation).localeCompare(String(b.operation)) || String(a.name).localeCompare(String(b.name)));
+  } catch (e) {
+    CALC_RUNNABLE = [];
+    if (status) status.textContent = 'Could not load runnable strategies.';
+    return;
+  }
+  syncCalcStrategyPicker(parseCalcExpr($("#calc-input").value));
+}
+async function runCalc() {
+  const out = $("#calc-out");
+  const parsed = parseCalcExpr($("#calc-input").value);
+  syncCalcStrategyPicker(parsed);
+  if (!parsed) {
+    out.hidden = false;
+    out.innerHTML = `<p class="hint">Type a whole-number operation as <code>a op b</code> — for example <code>7 + 5</code> or <code>12 − 5</code>. Operators: + − × ÷.</p>`;
+    return;
+  }
+  const selected = calcStrategyForOperation(parsed.op);
+  if (!selected) {
+    out.hidden = false;
+    out.innerHTML = `<p class="hint">That operator does not have a runnable strategy in the catalog.</p>`;
+    return;
+  }
+  out.hidden = false;
+  out.innerHTML = "<em class='muted-inline'>working it as a strategy…</em>";
+  let data;
+  try { ({ data } = await postJSON('/api/strategy_trace', { strategy: selected.name, input: { a: parsed.a, b: parsed.b } })); }
+  catch (e) { out.innerHTML = `<p class="hint">Couldn't reach the engine.</p>`; return; }
+  const t = (data && data.result) || {};
+  if (!t.ok) {
+    out.innerHTML = `<p class="hint">${esc(t.note || 'This operation is not yet available as a runnable strategy.')}</p>`;
+    return;
+  }
+  const steps = (t.steps || []).map(s =>
+    `<li><span class="sn">${esc(String(s.n))}</span><span>${esc(s.label || '')}</span><span class="sv">${esc(s.value || '')}</span></li>`).join('');
+  out.innerHTML = `<div class="out-head" style="font-size:1.15rem">${esc(String(parsed.a))} ${esc(selected.op_symbol || opSymbol(calcOperationName(parsed.op)))} ${esc(String(parsed.b))} = <b>${esc(String(t.result ?? ''))}</b></div>
+    <div class="muted-inline">strategy: ${esc(selected.name)} · ${esc(t.representation || 'fsm')}</div>
+    ${traceSvg(t.jumps)}
+    ${steps ? `<ol class="trace-steps">${steps}</ol>` : `<div class="muted-inline">${esc(t.note || 'Ran to a result; no number-line step-shape for this strategy.')}</div>`}`;
+}
+$("#calc-run").addEventListener('click', runCalc);
+$("#calc-input").addEventListener('keydown', e => { if (e.key === 'Enter') runCalc(); });
+$("#calc-input").addEventListener('input', () => syncCalcStrategyPicker(parseCalcExpr($("#calc-input").value)));
+loadCalcStrategies();
+
+/* ---------- Monitoring chart: lesson code → anticipation chart ---------- */
+function renderMonitoringStudentWorkPictures(code) {
+  if (!code) return "";
+  return `<div class="band student-work-picture" data-monitoring-visuals="${escAttr(code)}">
+    <h4>Student-work pictures</h4>
+    <p class="band-note">generated from the monitoring chart, lesson numerals, and reusable renderers</p>
+    <div class="chart-visual loading">
+      <div class="visual-kicker">generated render docs</div>
+      <div>Loading generated pictures...</div>
+    </div>
+  </div>`;
+}
+
+async function hydrateMonitoringStudentWorkPictures(root, code) {
+  const holder = root.querySelector('.student-work-picture .chart-visual');
+  if (!holder || !code) return;
+  try {
+    const { status, data } = await postJSON('/api/monitoring_visuals', { lesson_code: code });
+    if (status >= 400 || !data || !data.ok) throw new Error((data && data.error) || "visual generation failed");
+    const visuals = (data.result && data.result.visuals) || [];
+    holder.classList.remove('loading');
+    holder.innerHTML = visuals.length
+      ? visuals.map(renderMonitoringVisualCard).join('')
+      : `<div class="visual-kicker">generated render docs</div><div class="visual-note">No drawable strategy/misconception pair was found for this chart yet.</div>`;
+  } catch (e) {
+    holder.classList.remove('loading');
+    holder.innerHTML = `<div class="visual-kicker">generated render docs</div>
+      <div class="visual-note">Could not draw the monitoring pictures: ${esc(e && e.message ? e.message : e)}</div>`;
+  }
+}
+
+function renderMonitoringVisualCard(v) {
+  const correct = v.correct || {};
+  const incorrect = v.incorrect || {};
+  const proof = v.proof || {};
+  return `<div class="visual-kicker">${esc(v.expression || "generated picture")} · ${esc(v.source || "generated")}</div>
+    <div class="chart-visual-grid">
+      ${renderMonitoringVisualFigure(correct, proof.correct || {})}
+      ${renderMonitoringVisualFigure(incorrect, proof.incorrect || {})}
+    </div>
+    ${renderMonitoringProofSummary(proof)}`;
+}
+
+function renderMonitoringVisualFigure(side, proof) {
+  const label = side.label || "Strategy";
+  const desc = side.description || "";
+  return `<figure>
+    <figcaption>${esc(label)}</figcaption>
+    ${renderMonitoringVisualDoc(side.doc || {}, proof || {})}
+    <p class="frame-caption">${esc(desc)}</p>
+  </figure>`;
+}
+
+function renderMonitoringFrameSvg(frame, bounds, label) {
+  const svg = HermesDrawer._internal.buildSvg(frame, bounds);
+  svg.setAttribute("role", "img");
+  svg.setAttribute("aria-label", label || "monitoring visual frame");
+  return svg.outerHTML;
+}
+
+function renderMonitoringFilmstripDoc(doc, proof) {
+  const frames = Array.isArray(doc.frames) ? doc.frames : [];
+  const bounds = HermesDrawer._internal.documentBounds(frames, doc.canvas || {});
+  const sequence = Array.isArray(proof.frame_sequence) ? proof.frame_sequence : [];
+  const panels = frames.map((frame, index) => {
+    const proofFrame = sequence[index] || {};
+    const step = proofFrame.step != null ? proofFrame.step : (frame.step != null ? frame.step : index + 1);
+    const verb = proofFrame.verb || frame.verb || "frame";
+    const caption = proofFrame.caption || frame.caption || "";
+    return `<div class="monitoring-filmstrip-panel" data-frame-index="${escAttr(String(index))}">
+      ${renderMonitoringFrameSvg(frame, bounds, `step ${step}: ${verb}`)}
+      <div class="monitoring-filmstrip-step">Step ${esc(String(step))}: ${esc(String(verb))}</div>
+      ${caption ? `<div class="monitoring-filmstrip-caption">${esc(String(caption))}</div>` : ""}
+    </div>`;
+  }).join("");
+  return `<div class="monitoring-filmstrip" data-temporal="true">${panels}</div>`;
+}
+
+function renderMonitoringVisualDoc(doc, proof = {}) {
+  const frames = Array.isArray(doc.frames) ? doc.frames : [];
+  if (!frames.length) {
+    return `<div class="visual-note">${esc((doc && doc.error) || "No drawable frames returned.")}</div>`;
+  }
+  if (!window.HermesDrawer || !HermesDrawer._internal || !HermesDrawer._internal.buildSvg) {
+    return `<div class="visual-note">The shared drawer did not load.</div>`;
+  }
+  const bounds = HermesDrawer._internal.documentBounds(frames, doc.canvas || {});
+  if (frames.length > 1 && proof.temporal !== false) {
+    return renderMonitoringFilmstripDoc(doc, proof);
+  }
+  return renderMonitoringFrameSvg(frames[frames.length - 1], bounds, "monitoring visual final frame");
+}
+
+function renderMonitoringProofSummary(proof) {
+  const correct = proof.correct || {};
+  const incorrect = proof.incorrect || {};
+  const residue = proof.interpretive_residue || { status: "human_endorsement_required" };
+  const source = proof.source || "representation_grammar_and_render_contract";
+  return `<div class="visual-proof">
+    <b>Proof status</b> · ${esc(source)}
+    <div class="proof-grid">
+      ${renderMonitoringProofSide("Correct", correct)}
+      ${renderMonitoringProofSide("Misconception", incorrect)}
+      <div class="proof-residue"><b>Residue</b>: ${esc(residue.status || "human_endorsement_required")} — ${esc(residue.claim || "Human endorsement is required for the projective reading from a student work sample to this generated visual.")}</div>
+    </div>
+  </div>`;
+}
+
+function renderMonitoringProofSide(label, proof) {
+  const status = proof.status || "proof_unavailable";
+  const frames = proof.frame_count == null ? "?" : String(proof.frame_count);
+  const temporal = proof.temporal ? "temporal" : "single-frame";
+  return `<div><b>${esc(label)}</b>: ${esc(status)} · ${esc(frames)} frames · ${esc(temporal)}
+    ${renderMonitoringFrameSequence(proof.frame_sequence || [])}
+  </div>`;
+}
+
+function renderMonitoringFrameSequence(sequence) {
+  if (!Array.isArray(sequence) || !sequence.length) return `<div><b>Frame sequence</b>: none</div>`;
+  const steps = sequence.map(frame => {
+    const step = frame && frame.step != null ? String(frame.step) : "?";
+    const verb = frame && frame.verb ? String(frame.verb) : "unnamed_step";
+    return `${esc(step)}. ${esc(verb)}`;
+  }).join(" → ");
+  return `<div><b>Frame sequence</b>: ${steps}</div>`;
+}
+
+function monitoringStrategyVisualSpec(s) {
+  const kind = String(s.kind || s.name || "");
+  const operation = String(s.operation || "");
+  if (kind === "round_then_adjust" && operation === "addition") {
+    return {
+      visualKind: "number-line-compare",
+      operation: "addition",
+      a: 8,
+      b: 7,
+      productive: "round_then_adjust",
+      deformation: "round_without_adjusting"
+    };
+  }
+  return null;
+}
+
+function monitoringVisualPlaceholder(spec) {
+  return `<div class="chart-visual loading" data-visual-kind="number-line-compare" data-operation="${escAttr(spec.operation)}" data-a="${escAttr(String(spec.a))}" data-b="${escAttr(String(spec.b))}" data-productive="${escAttr(spec.productive)}" data-deformation="${escAttr(spec.deformation)}">
+    <div class="visual-kicker">schematic trace, not student work</div>
+    <div>Loading number-line picture for ${esc(spec.productive)} vs ${esc(spec.deformation)}...</div>
+  </div>`;
+}
+
+function lastMonitoringFrame(frames) {
+  return Array.isArray(frames) && frames.length ? frames[frames.length - 1] : null;
+}
+
+function monitoringRoleClass(role) {
+  if (role === "whole") return "mv-whole";
+  if (role === "iterated") return "mv-iterated";
+  if (role === "deformation") return "mv-deformation";
+  return "mv-neutral";
+}
+
+function renderMonitoringLengthFrameSvg(frame) {
+  const scene = (frame && frame.scene) || {};
+  const bars = Array.isArray(scene.bars) ? scene.bars : [];
+  if (!bars.length) return `<div class="muted-inline">No drawable bars returned.</div>`;
+
+  const extents = bars.reduce((acc, b) => {
+    const x = Number(b.x) || 0;
+    const y = Number(b.y) || 0;
+    const w = Number(b.w) || 0;
+    const h = Number(b.h) || 0;
+    acc.minX = Math.min(acc.minX, x);
+    acc.maxX = Math.max(acc.maxX, x + w);
+    acc.minY = Math.min(acc.minY, y);
+    acc.maxY = Math.max(acc.maxY, y + h);
+    return acc;
+  }, { minX: Infinity, maxX: -Infinity, minY: Infinity, maxY: -Infinity });
+
+  const padX = 18;
+  const padY = 18;
+  const minX = extents.minX - padX;
+  const minY = extents.minY - padY;
+  const viewW = Math.max(240, extents.maxX - extents.minX + padX * 2);
+  const viewH = Math.max(118, extents.maxY - extents.minY + padY * 2 + 16);
+  const axisY = extents.maxY + 12;
+
+  const rects = bars.map(b => {
+    const x = Number(b.x) || 0;
+    const y = Number(b.y) || 0;
+    const w = Math.max(1, Number(b.w) || 0);
+    const h = Math.max(1, Number(b.h) || 0);
+    const label = b.label ? String(b.label) : "";
+    const role = b.role ? String(b.role) : "";
+    const textX = x + Math.min(w / 2, Math.max(28, w - 6));
+    const textY = y + h / 2 + 4;
+    return `<g>
+      <rect class="${monitoringRoleClass(role)}" x="${x}" y="${y}" width="${w}" height="${h}" rx="4"><title>${esc(label || role)}</title></rect>
+      ${label ? `<text class="mv-label" x="${textX}" y="${textY}" text-anchor="middle">${esc(label)}</text>` : ''}
+    </g>`;
+  }).join('');
+
+  return `<svg viewBox="${minX} ${minY} ${viewW} ${viewH}" role="img" aria-label="number-line length diagram">
+    <line class="mv-axis" x1="${extents.minX}" y1="${axisY}" x2="${extents.maxX}" y2="${axisY}"></line>
+    ${rects}
+  </svg>`;
+}
+
+function renderMonitoringComparePreview(doc) {
+  const productiveFrame = lastMonitoringFrame(doc && doc.productive && doc.productive.frames);
+  const deformationFrame = lastMonitoringFrame(doc && doc.deformation && doc.deformation.frames);
+  if (!productiveFrame || !deformationFrame) {
+    return `<div class="visual-kicker">schematic trace, not student work</div>
+      <div class="visual-note">${esc((doc && doc.error) || "No drawable comparison returned.")}</div>`;
+  }
+
+  const grounded = doc.grounded_result == null ? "?" : String(doc.grounded_result);
+  const deformed = doc.deformed_result == null ? "?" : String(doc.deformed_result);
+  const omitted = doc.omitted_adjustment == null ? "?" : String(doc.omitted_adjustment);
+  return `<div class="visual-kicker">schematic trace, not student work</div>
+    <div class="chart-visual-grid">
+      <figure>
+        <figcaption>${esc(doc.productiveKind || "productive strategy")}</figcaption>
+        ${renderMonitoringLengthFrameSvg(productiveFrame)}
+        <p class="frame-caption">${esc(productiveFrame.caption || "")}</p>
+      </figure>
+      <figure>
+        <figcaption>${esc(doc.deformationKind || "deformation")}</figcaption>
+        ${renderMonitoringLengthFrameSvg(deformationFrame)}
+        <p class="frame-caption">${esc(deformationFrame.caption || "")}</p>
+      </figure>
+    </div>
+    <div class="visual-note">Grounded result ${esc(grounded)}; deformed result ${esc(deformed)}; omitted adjustment ${esc(omitted)}.</div>`;
+}
+
+async function hydrateMonitoringVisuals(root) {
+  root.querySelectorAll('[data-visual-kind="number-line-compare"]').forEach(async box => {
+    const operation = box.dataset.operation || "addition";
+    const a = Number(box.dataset.a || 8);
+    const b = Number(box.dataset.b || 7);
+    const payload = {"op":"number_line_compare", operation, a, b};
+    try {
+      const { status, data } = await postJSON('/api/render', payload);
+      if (status >= 400 || !data || data.ok === false) throw new Error((data && data.error) || "render failed");
+      box.classList.remove('loading');
+      box.innerHTML = renderMonitoringComparePreview(data);
+    } catch (e) {
+      box.classList.remove('loading');
+      box.innerHTML = `<div class="visual-kicker">schematic trace, not student work</div>
+        <div class="visual-note">Could not draw this number-line compare: ${esc(e && e.message ? e.message : e)}</div>`;
+    }
+  });
+}
+
+function renderMonitoringChart(r) {
+  const code = r.lesson_code || '';
+  const strats = r.anticipated_strategies || [];
+  const mis = r.teacher_misconceptions || [];
+  const studentWorkPictures = renderMonitoringStudentWorkPictures(code);
+
+  const stratRows = strats.map(s => {
+    const where = s.where_to_spot ? `<span class="where">where to spot: ${esc(String(s.where_to_spot))}</span>` : '';
+    const spec = monitoringStrategyVisualSpec(s);
+    const visual = spec ? monitoringVisualPlaceholder(spec) : '';
+    // Gloss then escape, matching the gap-card path: strategy names and
+    // operation atoms arrive as Prolog terms and read as English here.
+    return `<div class="astrat"><b>${esc(glossTerm(s.name || s.kind || ''))}</b><span class="chip">${esc(glossTerm(s.operation || ''))}</span>${where}${visual}</div>`;
+  }).join('') || `<div class="muted-inline">No anticipated strategies encoded for this code.</div>`;
+
+  const misRows = mis.map(m => {
+    const witnessSrc = (m.incompatibility_witness && m.incompatibility_witness.source) || '';
+    const cite = m.citation ? `<div class="cite">${esc(m.citation)}</div>` : '';
+    const src = witnessSrc ? `<div class="src">incompatibility derived by ${esc(witnessSrc)}</div>` : '';
+    return `<div class="amis">
+      <div class="amis-name">${esc(glossTerm(m.name || ''))} <span class="chip">${esc(glossTerm(m.operation || ''))}</span></div>
+      <div class="gap"><span class="lbl">commitment made</span>${m.commitment_made ? esc(glossTerm(m.commitment_made)) : ''}</div>
+      <div class="gap"><span class="lbl">entitlement lacked</span>${m.entitlement_lacked ? esc(glossTerm(m.entitlement_lacked)) : ''}</div>
+      <div class="incompat"><span class="lbl">what this commitment is incompatible with</span>${m.incompatibility ? glossPair(m.incompatibility) : '(none derived)'}</div>
+      ${m.re_anchoring_move ? `<div class="reanchor">${esc(m.re_anchoring_move)}</div>` : ''}
+      ${src}${cite}
+    </div>`;
+  }).join('') || `<div class="muted-inline">No anticipated misconceptions encoded for this code.</div>`;
+
+  const gaps = r.licensed_but_unanticipated || [];
+  const gapRows = gaps.map(g => {
+    const kinds = (g.unanticipated || []).map(k => `<span class="chip">${esc(glossTerm(String(k)))}</span>`).join(' ')
+      || `<span class="muted-inline">none; this chart anticipates every licensed move for this operation</span>`;
+    return `<div class="agap">
+      <div class="agap-head"><b>${esc(glossTerm(g.operation || ''))}</b>
+        <span class="where">${g.unanticipated_count} of ${g.licensed_count} licensed kinds not anticipated (chart anticipates ${g.anticipated_count})</span>
+      </div>
+      <div class="agap-kinds">${kinds}</div>
+    </div>`;
+  }).join('');
+  const gapBand = gaps.length ? `<div class="band">
+      <h4>Licensed but unanticipated</h4>
+      <p class="band-note">moves the practice licenses for these operations that this chart does not anticipate; a student can still make any of them. The gap is the registry's licensed kinds minus the anticipated set, and the incompleteness limit means it never reduces to nothing.</p>
+      ${gapRows}
+    </div>` : '';
+  const coverageSignal = monitoringCoverageSignal(r);
+
+  return `<div class="chart">
+    <div class="chart-head"><h3>Anticipation chart — ${esc(code)}</h3><span class="chip">monitoring chart</span></div>
+    ${coverageSignal}
+    ${r.productive_core ? `<div class="chart-core"><b>Productive core.</b> ${esc(r.productive_core)}</div>` : ''}
+    ${studentWorkPictures}
+    <div class="band">
+      <h4>Anticipated strategies</h4>
+      <p class="band-note">what students are likely to bring; listen for these</p>
+      ${stratRows}
+    </div>
+    <div class="band">
+      <h4>Anticipated misconceptions</h4>
+      <p class="band-note">each carries the commitment / entitlement gap and the computed incompatibility</p>
+      ${misRows}
+    </div>
+    ${gapBand}
+  </div>`;
+}
+
+function monitoringCoverageSignal(r) {
+  const facts = r.pml_facts || [];
+  const coverage = facts.find(f => f && f.id === 'coverage');
+  const conclusion = coverage ? String(coverage.conclusion || '') : '';
+  if (!conclusion) return '';
+  if (conclusion === 'scope_sequence_only') {
+    return `<div class="coverage-signal scope" data-coverage="scope_sequence_only">
+      <span class="coverage-label">coverage: scope sequence only</span>
+      No authored strategy or misconception rows are attached yet. This code is present in the IM scope sequence, so the chart is a boundary marker rather than a full anticipation chart.
+    </div>`;
+  }
+  if (conclusion.startsWith('under_attached')) {
+    return `<div class="coverage-signal scope" data-coverage="under_attached">
+      <span class="coverage-label">coverage: under attached</span>
+      ${esc(conclusion)}
+    </div>`;
+  }
+  return `<div class="coverage-signal" data-coverage="${escAttr(conclusion)}">
+    <span class="coverage-label">coverage: ${esc(conclusion)}</span>
+  </div>`;
+}
+
+async function loadMonitoringChart() {
+  const out = $("#mc-out");
+  const printBtn = $("#mc-print");
+  const code = ($("#lesson-code").value || '').trim();
+  if (!code) { out.innerHTML = `<p class="hint">Enter a lesson or standard code.</p>`; return; }
+  out.innerHTML = "<em class='muted-inline'>building the chart…</em>";
+  printBtn.hidden = true;
+  let res;
+  try { res = await postJSON('/api/monitoring_chart_export', { lesson_code: code }); }
+  catch (e) { out.innerHTML = `<p class="hint">Couldn't reach the engine.</p>`; return; }
+  if (res.status >= 400 || !res.data || !res.data.ok) {
+    out.innerHTML = `<p class="hint">${esc((res.data && res.data.error) || 'No chart for that code.')}</p>`;
+    return;
+  }
+  out.innerHTML = renderMonitoringChart(res.data.result || {});
+  hydrateMonitoringStudentWorkPictures(out, code);
+  hydrateMonitoringVisuals(out);
+  printBtn.hidden = false;
+}
+$("#mc-load").addEventListener('click', loadMonitoringChart);
+$("#lesson-code").addEventListener('keydown', e => { if (e.key === 'Enter') loadMonitoringChart(); });
+$("#mc-print").addEventListener('click', () => window.print());
+
+/* ---------- audience-view toggle (body class, matching the drawer §5 contract) ---------- */
+function setView(view) {
+  document.body.className = document.body.className.replace(/\bview-\w+\b/g, '').trim() + ' view-' + view;
+  document.querySelectorAll('#view-toggle [data-view]').forEach(b =>
+    b.classList.toggle('active', b.getAttribute('data-view') === view));
+}
+document.querySelectorAll('#view-toggle [data-view]').forEach(b =>
+  b.addEventListener('click', () => setView(b.getAttribute('data-view'))));
+
+/* ---------- advanced / research toggle (body class; default off) ---------- */
+/* The research features stay in the document and become reachable when this is on.
+   Turning it off while on a research-only tab returns the teacher to the Workspace. */
+function setAdvanced(on) {
+  document.body.classList.toggle('show-advanced', on);
+  if (!on) {
+    const active = document.querySelector('.tab.active');
+    if (active && active.classList.contains('adv')) selectTab('workspace');
+  }
+}
+$("#adv-check").addEventListener('change', e => setAdvanced(e.target.checked));
+
+refreshMode(); refreshModels(); populateInputPicker();
+</script>
+</body>
+</html>

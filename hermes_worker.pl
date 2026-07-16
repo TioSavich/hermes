@@ -1,0 +1,5446 @@
+% hermes_worker.pl — local JSONL worker for Hermes.
+%
+% Protocol:
+%   {"id":"req_1","op":"health"}
+%   {"id":"req_2","op":"event_score","event":{...}}
+%   {"id":"req_3","op":"batch_event_score","events":[...]}
+%   {"id":"req_4","op":"pair_score","events":[...]}
+%   {"id":"req_5","op":"pair_graph","events":[...]}
+%   {"id":"req_6","op":"pair_candidate_witness","event_a":{...},"event_b":{...}}
+%   {"id":"req_7","op":"diagnose_error","domain":"fraction","input":...,"got":...}
+%   {"id":"req_8","op":"query_misconception","domain":"fraction","description":...}
+%   {"id":"req_9","op":"discourse_features","utterances":[...],"context":{...}}
+%   {"id":"req_10","op":"discourse_pragmatics","utterances":[...],"context":{...}}
+%   {"id":"req_11","op":"trace_adjudication","utterances":[...],"context":{...},"ledger":{...}}
+%   {"id":"req_12","op":"media_alignment","segments":[...],"source":"..."}
+%   {"id":"req_13","op":"gesture_alignment","utterances":[...],"context":{...},"observations":[...]}
+%
+% One JSON object in, one JSON object out. Human-readable diagnostics go to
+% stderr only.
+
+:- use_module(library(http/json)).
+:- use_module(library(readutil)).
+
+:- op(500, fx, comp_nec).
+:- op(500, fx, exp_nec).
+:- op(500, fx, exp_poss).
+:- op(500, fx, comp_poss).
+:- op(500, fx, neg).
+
+:- dynamic worker_root/1.
+:- prolog_load_context(directory, Dir),
+   asserta(worker_root(Dir)).
+
+worker_main :-
+    catch(with_output_to(user_error, load_runtime), E, worker_fatal(E)),
+    worker_loop.
+
+load_runtime :-
+    (   worker_root(Root)
+    ->  true
+    ;   Root = '.'
+    ),
+    directory_file_path(Root, 'paths.pl', PathsFile),
+    (   exists_file(PathsFile)
+    ->  consult(PathsFile)
+    ;   % Fallback to UMEDCTA_ROOT environment variable if loaded from elsewhere
+        (   getenv('UMEDCTA_ROOT', Root0)
+        ->  atom_string(RootEnv, Root0),
+            directory_file_path(RootEnv, 'paths.pl', RootPathsFile),
+            consult(RootPathsFile)
+        ;   throw(error(missing_paths_file(PathsFile), load_runtime/0))
+        )
+    ),
+    use_module(hermes(event_scoring)),
+    use_module(hermes(pair_scoring)),
+    load_geometry_runtime(Root),
+    use_module(im_lessons(lesson_monitoring)),
+    use_module(im_lessons(lesson_monitoring_selector), []),
+    use_module(im_lessons(field_context)),
+    use_module(strategies(expressive_power)),
+    use_module(strategies(visualization), []),
+    use_module(render(fraction_bars_scene)),
+    use_module(render(balance_scale_scene)),
+    use_module(render(misconception_render_coverage), []),
+    use_module(formalization(grounded_arithmetic),
+               [ integer_to_recollection/2,
+                 recollection_to_integer/2 ]),
+    use_module(misconceptions(test_harness)),
+    use_module(misconceptions(misconception_registry)),
+    use_module(learner(deontic_scorekeeper)),
+    use_module(learner(up_leveling)),
+    use_module(formalization(grounding_metaphors)),
+    use_module(pml(semantic_axioms)),
+    use_module(pml(intersubjective_praxis)),
+    use_module(pml(mua_relations)),
+    use_module(pml(media_alignment), []),
+    use_module(pml(gesture_alignment), []),
+    use_module(pml(discourse_features), []),
+    use_module(pml(discourse_pragmatics), []),
+    use_module(pml(trace_adjudication), []),
+    use_module(hermes(encyclopedia)),
+    use_module(hermes(commitment_matcher), []),
+    use_module(arche_trace(embodied_prover)),
+    use_module(arche_trace(sequent_engine), []),
+    use_module(arche_trace(critique)),
+    use_module(arche_trace(defeasible_inference)),
+    use_module(arche_trace(incompatibility_discovery)),
+    use_module(arche_trace(incompatibility_sets)),
+    % The Brandomian incompatibility bridge. Selective import: only the union
+    % incoherence front end and the backstop audit, to avoid the
+    % incompatibility_entails/2 and => operator clashes the full module carries.
+    % Loading it HERE is the opt-in the bridge's design asks for: the sequent
+    % engine's own default behavior is unchanged, and the union incoherence plus
+    % the canonical incompatibility_entails/2 are consulted at this app boundary
+    % only (the brandomian_check op), never inside the engine.
+    use_module(arche_trace(sequent_brandom_bridge),
+               [ brandom_backstop/1, brandom_backstop_ok/0,
+                 b_proves/1, b_incoherent/1 ]),
+    load_axiom_pack_audit(Root),
+    use_module(crosswalk('families/cw_viability')),
+    use_module(crosswalk('families/cw_axiom_pack'), []),
+    use_module(crosswalk('families/cw_modal_context')),
+    use_module(crosswalk('families/cw_grounded_arith'), []),
+    use_module(crosswalk('families/cw_material_inference')),
+    use_module(crosswalk('families/cw_normative_crisis')),
+    use_module(crosswalk('families/cw_metaphor_break')),
+    use_module(crosswalk('families/cw_grounding_metaphor')),
+    use_module(crosswalk('families/cw_sequent_proof'), []),
+    use_module(crosswalk('families/cw_mua_coherence'), []),
+    use_module(crosswalk('families/cw_unit_coordination'), []),
+    use_module(crosswalk('families/cw_godel_primes'), []),
+    use_module(crosswalk('families/cw_fsm_engine'), []),
+    use_module(crosswalk('families/cw_action_cluster'), []),
+    use_module(crosswalk('families/cw_practice_vocabulary'), []),
+    use_module(crosswalk('families/cw_accommodation'), []),
+    use_module(crosswalk('families/cw_domain_context'), []),
+    use_module(crosswalk('families/cw_orr_entry'), []),
+    use_module(crosswalk('families/cw_executable_practice'), []),
+    use_module(crosswalk('families/cw_misconception_hook'), []),
+    use_module(crosswalk('families/cw_algebra_claim'), []),
+    use_module(crosswalk('families/cw_integer_signed_claim'), []),
+    use_module(crosswalk('families/cw_arithmetic_property_claim'), []),
+    use_module(crosswalk('families/cw_calculus_claim'), []),
+    use_module(crosswalk('families/cw_counting_claim'), []),
+    use_module(crosswalk('families/cw_whole_number_addsub_claim'), []),
+    use_module(crosswalk('families/cw_ratio_proportion_claim'), []),
+    use_module(crosswalk('families/cw_magnitude_equivalence_claim'), []),
+    use_module(crosswalk('families/cw_multiplication_division_claim'), []),
+    use_module(crosswalk('families/cw_decimal_claim'), []),
+    use_module(crosswalk('families/cw_place_value_number_claim'), []),
+    use_module(crosswalk('families/cw_whole_number_claim'), []),
+    use_module(crosswalk('families/cw_fraction_extra_claim'), []),
+    use_module(crosswalk('families/cw_fraction_claim'), []),
+    use_module(crosswalk('families/cw_productive_deformation'), []),
+    % T0 representation spine: concept -> visual surface routing + manifest assets.
+    use_module(crosswalk(representation_spine), []),
+    use_module(math(unit_coordination_viz), []),
+    use_module(standards(indiana/standard_k_ca_1_3), []),
+    use_module(standards(indiana/standard_k_ns_1), []),
+    use_module(standards(indiana/standard_k_ns_2), []),
+    use_module(standards(indiana/standard_k_ns_3), []),
+    use_module(standards(indiana/standard_k_ns_4), []),
+    use_module(standards(indiana/standard_k_ns_5_6), []),
+    use_module(standards(indiana/standard_k_ns_7), []),
+    use_module(standards(indiana/standard_1_ns_1), []),
+    use_module(standards(indiana/standard_1_ns_2), []),
+    use_module(standards(indiana/standard_1_ca_1), []),
+    use_module(standards(indiana/standard_1_ca_3), []),
+    use_module(standards(indiana/standard_2_ca_2), []),
+    use_module(standards(indiana/standard_2_ns_1), []),
+    use_module(standards(indiana/standard_2_ns_2_4), []),
+    use_module(standards(indiana/standard_2_ns_3), []),
+    use_module(standards(indiana/standard_2_ns_5), []),
+    use_module(standards(indiana/standard_3_ca_3_4), []),
+    use_module(standards(indiana/standard_3_ca_5), []),
+    use_module(standards(indiana/standard_3_ns_2), []),
+    use_module(standards(indiana/standard_3_ns_5), []),
+    % Canonical vocabulary layer (the legal-vocabulary contract for this loop).
+    % Best-effort: a load failure must never take the worker down.
+    catch(use_module(crosswalk(canonical_all)), CanonErr,
+          ( print_message(warning, CanonErr), true )),
+    % Render scene compilers for the visualization ops (Goal H). Loaded last and
+    % import-free ([]): every dispatch clause calls them by explicit
+    % module:pred qualification, so nothing is imported into `user`, and loading
+    % after the base vocabulary layer avoids re-importing predicates the cw
+    % families already settled.
+    use_module(render(area_model_scene), []),
+    use_module(render(base_ten_scene), []),
+    use_module(render(set_grouping_scene), []),
+    use_module(render(number_line_scene), []),
+    use_module(render(unit_echo_scene), []),
+    use_module(render(place_value_chart_scene), []),
+    use_module(render(hybridization_scene), []),
+    use_module(render(representation_grammar), []),
+    % The corpus-attested grammar layer: which grammar objects/uses the student
+    % corpus actually witnesses, and where the grammar runs ahead of the corpus.
+    % Import-free; the dispatch clause qualifies calls by module:pred.
+    use_module(render(corpus_attested_grammar), []),
+    use_module(render(grounding_to_primitive), []),
+    use_module(render(teacher_layer), []),
+    % Notation glyph-level scenes, fraction->CGI numerator dispatch, the
+    % parametric deformation chart, and the carving proof surface. Loaded
+    % import-free ([]): every dispatch clause below qualifies them by
+    % explicit module:pred, so nothing is imported into `user` and the
+    % lesson_deformation_chart monitoring_chart/2 export cannot collide with
+    % the lesson_monitoring monitoring_chart/2 already imported above.
+    use_module(render(notation_scene), []),
+    use_module(math(fraction_cgi_dispatch), []),
+    use_module(im_lessons(lesson_deformation_chart), []),
+    % The notation monitoring chart (183 K/G1 lessons). Import-free for the same
+    % reason as lesson_deformation_chart: its monitoring_chart_*/N predicates
+    % must not collide with the lesson_monitoring exports imported above.
+    use_module(im_lessons(lesson_notation_chart), []),
+    % The elaboration-graph analyzer: elaborates/7 over the strategy automata,
+    % surfaced through all_elaborations/1. Import-free; the dispatch clause runs
+    % analyze_all/0 on demand and qualifies calls by module:pred.
+    use_module(strategies(meta/automaton_analyzer), []),
+    use_module(carving(query), []),
+    % Gate-G ops (brandomian_check / hyperedges / axiom_toggle /
+    % unanticipated_strategies). Import-free ([]) and loaded last, per the
+    % same convention as the render layer above: every dispatch clause
+    % qualifies calls by module:pred, so nothing lands in `user`.
+    %
+    % brandomian_incompatibility is the canonical hyperedge relation; it must
+    % stay module-qualified because incompatibility_sets exports a different,
+    % profile-based incompatibility_entails/2 under the same name.
+    use_module(arche_trace(brandomian_incompatibility), []),
+    % The emergence criterion (size >= 3, jointly incoherent, every
+    % one-element removal coherent), reused from the search tool rather than
+    % reimplemented: the hyperedges op calls verified_emergent/1 on cached
+    % discovery rows.
+    use_module(arche_trace('tools/find_emergent_hyperedges'), []),
+    % Lesson-vs-registry gap surface (flat Operation-Kind pairs) backing the
+    % monitoring chart export's unanticipated_strategies key.
+    use_module(lessons(lesson_gap), []).
+    % NOT loaded here: tools/axiom_toggle.pl (the axiom_toggle op). Its
+    % consult-time directive pulls arche_trace(load) into user, and that
+    % chain's full re-imports collide with import bindings this loader has
+    % already settled (a stream of harmless but alarming "No permission to
+    % import" refusals on stderr). The op lazy-loads it on first use instead:
+    % see ensure_axiom_toggle_loaded/0.
+
+load_axiom_pack_audit(Root) :-
+    directory_file_path(Root, 'tools/axiom_pack_audit.pl', AxiomAudit),
+    ensure_loaded(AxiomAudit).
+
+load_geometry_runtime(Root) :-
+    directory_file_path(Root, 'geometry/schema.pl', Schema),
+    consult(Schema),
+    load_geometry_files(Root, 'geometry/concepts/*.pl'),
+    load_geometry_files(Root, 'geometry/metaphors/*.pl'),
+    load_geometry_files(Root, 'geometry/van_hiele/*.pl'),
+    load_geometry_files(Root, 'geometry/bootstrap/*.pl'),
+    load_geometry_files(Root, 'standards/ccss/*.pl'),
+    load_geometry_files(Root, 'standards/indiana/geometry.pl'),
+    load_geometry_files(Root, 'standards/im/*.pl'),
+    load_geometry_files(Root, 'geometry/pck/*.pl'),
+    directory_file_path(Root, 'geometry/query.pl', Query),
+    consult(Query).
+
+load_geometry_files(Root, Pattern) :-
+    directory_file_path(Root, Pattern, AbsolutePattern),
+    expand_file_name(AbsolutePattern, Files),
+    maplist(consult, Files).
+
+worker_loop :-
+    read_line_to_string(user_input, Line),
+    (   Line == end_of_file
+    ->  true
+    ;   handle_line(Line),
+        worker_loop
+    ).
+
+handle_line(Line) :-
+    catch(
+        ( atom_json_dict(Line, Request, []),
+          handle_request(Request, Response)
+        ),
+        E,
+        error_response("unknown", malformed_request, E, Response)
+    ),
+    json_write_dict(current_output, Response, [width(0)]),
+    nl,
+    flush_output(current_output).
+
+handle_request(Request, Response) :-
+    request_id(Request, Id),
+    (   get_dict(op, Request, Op0)
+    ->  atom_string(Op, Op0),
+        (   catch(dispatch_request(Op, Id, Request, R), E, op_error(Id, Op, E, R))
+        ->  Response = R
+        ;   % A known op whose handler simply failed (no solution). Report it
+            % honestly rather than letting it masquerade as an unknown op.
+            format(string(FailMsg), "Operation '~w' is known but produced no result", [Op]),
+            error_response(Id, op_failed, FailMsg, Response)
+        )
+    ;   error_response(Id, missing_op, "request has no op", Response)
+    ).
+
+%!  known_op(?Op) is nondet.
+%
+%   The ops with a dedicated handler. Used to keep the unknown_op catch-all
+%   from swallowing a known op whose body failed (see handle_request/2).
+known_op(health).
+known_op(event_score).
+known_op(batch_event_score).
+known_op(discourse_features).
+known_op(discourse_pragmatics).
+known_op(trace_adjudication).
+known_op(media_alignment).
+known_op(gesture_alignment).
+known_op(pair_score).
+known_op(pair_graph).
+known_op(pair_candidate_witness).
+known_op(critique_bad_infinite).
+known_op(defeasible_classify).
+known_op(deontic_requires_entitlement).
+known_op(deontic_scorecard).
+known_op(deontic_crisis).
+known_op(deontic_consequences).
+known_op(deontic_up_level).
+known_op(axiom_hierarchy_witness).
+known_op(axiom_pack_witness).
+known_op(robinson_axiom_witness).
+known_op(semantic_material_witness).
+known_op(incoherent_witness).
+known_op(eml_transition_witness).
+known_op(number_theory_self_defeat_witness).
+known_op(embodied_proof_witness).
+known_op(viability_witness).
+known_op(modal_context_witness).
+known_op(grounded_arith_witness).
+known_op(material_inference_witness).
+known_op(normative_crisis_witness).
+known_op(metaphor_break_witness).
+known_op(grounding_metaphor_witness).
+known_op(sequent_proof_witness).
+known_op(unit_coordination_witness).
+known_op(unit_coordination_svg).
+known_op(godel_primes_witness).
+known_op(fsm_engine_witness).
+known_op(action_cluster_witness).
+known_op(practice_vocabulary_witness).
+known_op(accommodation_witness).
+known_op(domain_context_witness).
+known_op(orr_entry_witness).
+known_op(executable_practice_witness).
+known_op(misconception_hook_witness).
+known_op(algebra_claim_witness).
+known_op(integer_signed_claim_witness).
+known_op(arithmetic_property_witness).
+known_op(calculus_claim_witness).
+known_op(counting_claim_witness).
+known_op(standard_k_ca_1_3_complement_witness).
+known_op(standard_k_ns_1_count_by_ones_witness).
+known_op(standard_k_ns_2_represent_count_witness).
+known_op(standard_k_ns_3_order_independence_witness).
+known_op(standard_k_ns_4_verify_subitizing_witness).
+known_op(standard_k_ns_5_6_compare_groups_witness).
+known_op(standard_k_ns_7_place_value_witness).
+known_op(standard_1_ns_1_count_by_fives_witness).
+known_op(standard_1_ns_2_place_value_witness).
+known_op(standard_1_ca_1_making_ten_witness).
+known_op(standard_1_ca_3_add_by_place_value_witness).
+known_op(standard_2_ca_2_add_three_digit_witness).
+known_op(standard_2_ns_1_count_by_twos_witness).
+known_op(standard_2_ns_2_4_place_value_witness).
+known_op(standard_2_ns_3_parity_witness).
+known_op(standard_2_ns_5_place_value_comparison_witness).
+known_op(standard_3_ca_3_4_fact_family_witness).
+known_op(standard_3_ca_5_mult_skip_count_witness).
+known_op(standard_3_ns_2_unit_fraction_witness).
+known_op(standard_3_ns_5_fraction_comparison_witness).
+known_op(misconception_jumps_witness).
+known_op(balance_solve_witness).
+known_op(whole_number_addsub_claim_witness).
+known_op(ratio_proportion_claim_witness).
+known_op(magnitude_equivalence_claim_witness).
+known_op(multiplication_division_claim_witness).
+known_op(decimal_claim_witness).
+known_op(place_value_number_claim_witness).
+known_op(whole_number_claim_witness).
+known_op(fraction_extra_claim_witness).
+known_op(fraction_claim_witness).
+known_op(productive_deformation_witness).
+known_op(representation_spine_witness).
+known_op(geometry_entailment_witness).
+known_op(incompatibility_discovery_witness).
+known_op(incompatibility_entailment_witness).
+known_op(misconception_incompatibility_witness).
+known_op(intersubjective_material_witness).
+known_op(mua_kind_coherence_witness).
+known_op(mua_coherence_witness).
+known_op(grounding_inference_witness).
+known_op(target_expressive_power_witness).
+known_op(lesson_misconception_incompatibility_witness).
+known_op(geometry_material_profile_witness).
+known_op(geometry_quadrilateral_entailment_witness).
+known_op(geometry_strength_lift_coverage_witness).
+known_op(geometry_van_hiele_material_witness).
+known_op(geometry_van_hiele_marker_witness).
+known_op(geometry_cross_link_witness).
+known_op(geometry_developmental_arc_witness).
+known_op(geometry_attribute_material_witness).
+known_op(geometry_similarity_material_witness).
+known_op(geometry_pythagorean_material_witness).
+known_op(geometry_van_hiele_level_material_witness).
+known_op(geometry_measurement_misconception_witness).
+known_op(geometry_n103_bootstrap_witness).
+known_op(geometry_van_de_walle_bootstrap_witness).
+known_op(geometry_shape_recognition_material_witness).
+known_op(geometry_coordinate_material_witness).
+known_op(geometry_angle_material_witness).
+known_op(geometry_area_perimeter_material_witness).
+known_op(geometry_volume_surface_area_material_witness).
+known_op(geometry_transformation_material_witness).
+known_op(geometry_classification_material_witness).
+known_op(geometry_pck_classification_witness).
+known_op(geometry_measuring_stick_metaphor_witness).
+known_op(geometry_lakoff_nunez_metaphor_witness).
+known_op(geometry_synthesizer_anchor_material_witness).
+known_op(geometry_synthesizer_triangulation_witness).
+known_op(geometry_ccss_standard_witness).
+known_op(geometry_indiana_standard_witness).
+known_op(geometry_im_grade8_lesson_standard_witness).
+known_op(geometry_im_grade7_lesson_standard_witness).
+known_op(geometry_im_grade6_lesson_standard_witness).
+known_op(geometry_im_grade5_standard_anchor_witness).
+known_op(geometry).
+known_op(diagnose_error).
+known_op(query_misconception).
+known_op(monitoring_chart_export).
+known_op(ranked_figures).
+known_op(field_context).
+known_op(field_connectivity_audit).
+known_op(render_coverage).
+known_op(expressive_power).
+known_op(list_strategies).
+known_op(strategy_trace).
+known_op(fraction_render).
+known_op(fraction_compare).
+known_op(area_render).
+known_op(base_ten_render).
+known_op(ace_of_bases_render).
+known_op(unit_echo_render).
+known_op(set_grouping_render).
+known_op(balance_render).
+known_op(number_line_render).
+known_op(place_value_chart_render).
+known_op(hybridization_render).
+known_op(area_compare).
+known_op(base_ten_compare).
+known_op(set_grouping_compare).
+known_op(balance_compare).
+known_op(number_line_compare).
+known_op(representation_check).
+known_op(representation_candidates).
+known_op(representation_spec_check).
+known_op(teacher_layer).
+known_op(primitive_for_practice).
+known_op(image_schema).
+known_op(set_base).
+known_op(get_base).
+known_op(multiply_array_witness).
+known_op(mult_div_family_witness).
+known_op(list_misconceptions).
+known_op(list_standards).
+known_op(grounding_metaphors).
+known_op(grounding_for).
+known_op(ground).
+known_op(lit_search).
+known_op(pml_score).
+known_op(validate_reader_axioms).
+known_op(canonical_contract).
+known_op(canonical_check).
+known_op(notation_render).
+known_op(fraction_cgi_addition).
+known_op(lesson_deformation_chart).
+known_op(notation_monitoring_chart).
+known_op(brandom_backstop).
+known_op(brandomian_check).
+known_op(hyperedges).
+known_op(axiom_toggle).
+known_op(commitment_match).
+known_op(corpus_grammar_summary).
+known_op(elaborations).
+known_op(carving_strategy_proof).
+known_op(carving_operation_summary).
+known_op(benny_demo).
+
+op_error(Id, Op, Error, Response) :-
+    message_string(Error, Detail),
+    format(string(Message), "Operation '~w' raised: ~w", [Op, Detail]),
+    error_response(Id, op_exception, Message, Response).
+
+dispatch_request(health, Id, _Request, Response) :-
+    ok_response(Id, _{
+        worker: "hermes_swi",
+        loaded: ["event_scoring", "pair_scoring", "critique", "defeasible_inference", "incompatibility_sets", "sequent_brandom_bridge", "brandomian_incompatibility", "find_emergent_hyperedges", "lesson_gap", "corpus_attested_grammar", "lesson_notation_chart", "lesson_monitoring_selector", "automaton_analyzer", "semantic_axioms", "intersubjective_praxis", "mua_relations", "media_alignment", "gesture_alignment", "discourse_features", "discourse_pragmatics", "trace_adjudication", "embodied_prover", "sequent_engine", "deontic_scorekeeper", "axiom_pack_audit", "geometry", "misconception_registry", "misconceptions", "misconception_render_coverage", "lesson_monitoring", "field_context", "field_connectivity_audit", "grounding_metaphors", "encyclopedia", "visualization", "fraction_bars_scene", "balance_scale_scene", "cw_viability", "cw_axiom_pack", "cw_modal_context", "cw_grounded_arith", "cw_material_inference", "cw_normative_crisis", "cw_metaphor_break", "cw_grounding_metaphor", "cw_sequent_proof", "cw_mua_coherence", "cw_unit_coordination", "cw_godel_primes", "cw_fsm_engine", "cw_action_cluster", "cw_practice_vocabulary", "cw_accommodation", "cw_domain_context", "cw_orr_entry", "cw_executable_practice", "cw_misconception_hook", "cw_algebra_claim", "cw_integer_signed_claim", "cw_arithmetic_property_claim", "cw_calculus_claim", "cw_counting_claim", "cw_whole_number_addsub_claim", "cw_ratio_proportion_claim", "cw_magnitude_equivalence_claim", "cw_multiplication_division_claim", "cw_decimal_claim", "cw_place_value_number_claim", "cw_whole_number_claim", "cw_fraction_extra_claim", "cw_fraction_claim", "cw_productive_deformation", "standard_k_ca_1_3", "standard_k_ns_1", "standard_k_ns_2", "standard_k_ns_3", "standard_k_ns_4", "standard_k_ns_5_6", "standard_k_ns_7", "standard_1_ns_1", "standard_1_ns_2", "standard_1_ca_1", "standard_1_ca_3", "standard_2_ca_2", "standard_2_ns_1", "standard_2_ns_2_4", "standard_2_ns_3", "standard_2_ns_5", "standard_3_ca_3_4", "standard_3_ca_5", "standard_3_ns_2", "standard_3_ns_5", "canonical_vocabulary", "representation_spine"],
+        ops: ["health", "event_score", "batch_event_score", "media_alignment", "gesture_alignment", "discourse_features", "discourse_pragmatics", "trace_adjudication", "pair_score", "pair_graph", "pair_candidate_witness", "critique_bad_infinite", "defeasible_classify", "deontic_requires_entitlement", "deontic_scorecard", "deontic_crisis", "deontic_consequences", "deontic_up_level", "axiom_hierarchy_witness", "axiom_pack_witness", "robinson_axiom_witness", "semantic_material_witness", "incoherent_witness", "eml_transition_witness", "number_theory_self_defeat_witness", "embodied_proof_witness", "viability_witness", "modal_context_witness", "grounded_arith_witness", "material_inference_witness", "normative_crisis_witness", "metaphor_break_witness", "grounding_metaphor_witness", "sequent_proof_witness", "unit_coordination_witness", "godel_primes_witness", "fsm_engine_witness", "action_cluster_witness", "practice_vocabulary_witness", "accommodation_witness", "domain_context_witness", "orr_entry_witness", "executable_practice_witness", "misconception_hook_witness", "algebra_claim_witness", "integer_signed_claim_witness", "arithmetic_property_witness", "calculus_claim_witness", "counting_claim_witness", "standard_k_ca_1_3_complement_witness", "standard_k_ns_1_count_by_ones_witness", "standard_k_ns_2_represent_count_witness", "standard_k_ns_3_order_independence_witness", "standard_k_ns_4_verify_subitizing_witness", "standard_k_ns_5_6_compare_groups_witness", "standard_k_ns_7_place_value_witness", "standard_1_ns_1_count_by_fives_witness", "standard_1_ns_2_place_value_witness", "standard_1_ca_1_making_ten_witness", "standard_1_ca_3_add_by_place_value_witness", "standard_2_ca_2_add_three_digit_witness", "standard_2_ns_1_count_by_twos_witness", "standard_2_ns_2_4_place_value_witness", "standard_2_ns_3_parity_witness", "standard_2_ns_5_place_value_comparison_witness", "standard_3_ca_3_4_fact_family_witness", "standard_3_ca_5_mult_skip_count_witness", "standard_3_ns_2_unit_fraction_witness", "standard_3_ns_5_fraction_comparison_witness", "misconception_jumps_witness", "balance_solve_witness", "whole_number_addsub_claim_witness", "ratio_proportion_claim_witness", "magnitude_equivalence_claim_witness", "multiplication_division_claim_witness", "decimal_claim_witness", "place_value_number_claim_witness", "whole_number_claim_witness", "fraction_extra_claim_witness", "fraction_claim_witness", "productive_deformation_witness", "geometry_entailment_witness", "incompatibility_discovery_witness", "incompatibility_entailment_witness", "misconception_incompatibility_witness", "intersubjective_material_witness", "mua_kind_coherence_witness", "mua_coherence_witness", "grounding_inference_witness", "target_expressive_power_witness", "lesson_misconception_incompatibility_witness", "geometry_material_profile_witness", "geometry_quadrilateral_entailment_witness", "geometry_strength_lift_coverage_witness", "geometry_van_hiele_material_witness", "geometry_van_hiele_marker_witness", "geometry_cross_link_witness", "geometry_developmental_arc_witness", "geometry_attribute_material_witness", "geometry_similarity_material_witness", "geometry_pythagorean_material_witness", "geometry_van_hiele_level_material_witness", "geometry_measurement_misconception_witness", "geometry_n103_bootstrap_witness", "geometry_van_de_walle_bootstrap_witness", "geometry_shape_recognition_material_witness", "geometry_coordinate_material_witness", "geometry_angle_material_witness", "geometry_area_perimeter_material_witness", "geometry_volume_surface_area_material_witness", "geometry_transformation_material_witness", "geometry_classification_material_witness", "geometry_pck_classification_witness", "geometry_measuring_stick_metaphor_witness", "geometry_lakoff_nunez_metaphor_witness", "geometry_synthesizer_anchor_material_witness", "geometry_synthesizer_triangulation_witness", "geometry_ccss_standard_witness", "geometry_indiana_standard_witness", "geometry_im_grade8_lesson_standard_witness", "geometry_im_grade7_lesson_standard_witness", "geometry_im_grade6_lesson_standard_witness", "geometry_im_grade5_standard_anchor_witness", "geometry", "diagnose_error", "query_misconception", "monitoring_chart_export", "field_context", "field_connectivity_audit", "render_coverage", "expressive_power", "list_strategies", "strategy_trace", "fraction_render", "fraction_compare", "area_render", "base_ten_render", "set_grouping_render", "balance_render", "number_line_render", "area_compare", "base_ten_compare", "set_grouping_compare", "balance_compare", "number_line_compare", "teacher_layer", "primitive_for_practice", "image_schema", "multiply_array_witness", "mult_div_family_witness", "list_misconceptions", "list_standards", "grounding_metaphors", "grounding_for", "ground", "lit_search", "canonical_contract", "canonical_check", "notation_render", "fraction_cgi_addition", "lesson_deformation_chart", "notation_monitoring_chart", "brandom_backstop", "brandomian_check", "hyperedges", "axiom_toggle", "corpus_grammar_summary", "elaborations", "carving_strategy_proof", "carving_operation_summary", "representation_spine_witness"],
+        mode: "persistent"
+    }, Response).
+
+dispatch_request(event_score, Id, Request, Response) :-
+    (   get_dict(event, Request, Event)
+    ->  hermes_event_scoring:score_event(Event, Score),
+        json_safe(Score, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, missing_event, "event_score requires event", Response)
+    ).
+
+dispatch_request(batch_event_score, Id, Request, Response) :-
+    (   get_dict(events, Request, Events),
+        is_list(Events)
+    ->  maplist(hermes_event_scoring:score_event, Events, Scores),
+        json_safe(Scores, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, missing_events, "batch_event_score requires events list", Response)
+    ).
+
+dispatch_request(media_alignment, Id, Request, Response) :-
+    (   get_dict(segments, Request, Segments),
+        get_dict(source, Request, Source),
+        media_alignment:analyze_media_alignment(Segments, Source, Bundle)
+    ->  json_safe(Bundle, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(
+            Id,
+            malformed_media_alignment,
+            "media_alignment requires an ordered segments list of strict {speaker, text, start_ms, end_ms} objects and an attributed source",
+            Response)
+    ).
+
+dispatch_request(gesture_alignment, Id, Request, Response) :-
+    (   get_dict(utterances, Request, JSONUtterances),
+        request_utterances(JSONUtterances, Utterances)
+    ->  (   request_discourse_context(Request, Utterances, ContextEvidence)
+        ->  (   get_dict(observations, Request, Observations),
+                gesture_alignment:align_gesture_observations(
+                    Utterances, ContextEvidence, Observations, Bundle)
+            ->  json_safe(Bundle, Safe),
+                ok_response(Id, Safe, Response)
+            ;   error_response(
+                    Id,
+                    malformed_gesture_observations,
+                    "gesture_alignment requires strict attributed gesture intervals with valid targets and timing",
+                    Response)
+            )
+        ;   error_response(
+                Id,
+                malformed_discourse_context,
+                "gesture_alignment context metadata is malformed or refers to undeclared IDs or targets",
+                Response)
+        )
+    ;   error_response(
+            Id,
+            malformed_utterances,
+            "gesture_alignment requires an utterances list of unique {id, speaker, text} objects",
+            Response)
+    ).
+
+dispatch_request(discourse_features, Id, Request, Response) :-
+    (   get_dict(utterances, Request, JSONUtterances),
+        request_utterances(JSONUtterances, Utterances)
+    ->  (   request_discourse_context(Request, Utterances, ContextEvidence)
+        ->  discourse_features:analyze_transcript(
+                Utterances, ContextEvidence, Analysis),
+            json_safe(Analysis, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(
+                Id,
+                malformed_discourse_context,
+                "discourse_features context metadata is malformed or refers to undeclared IDs or targets",
+                Response)
+        )
+    ;   error_response(
+            Id,
+            malformed_utterances,
+            "discourse_features requires an utterances list of unique {id, speaker, text} objects",
+            Response)
+    ).
+
+dispatch_request(discourse_pragmatics, Id, Request, Response) :-
+    (   get_dict(utterances, Request, JSONUtterances),
+        request_utterances(JSONUtterances, Utterances)
+    ->  (   request_discourse_context(Request, Utterances, ContextEvidence)
+        ->  discourse_pragmatics:analyze_pragmatics(
+                Utterances, ContextEvidence, Analysis),
+            json_safe(Analysis, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(
+                Id,
+                malformed_discourse_context,
+                "discourse_pragmatics context metadata is malformed or refers to undeclared IDs or targets",
+                Response)
+        )
+    ;   error_response(
+            Id,
+            malformed_utterances,
+            "discourse_pragmatics requires an utterances list of unique {id, speaker, text} objects",
+            Response)
+    ).
+
+dispatch_request(trace_adjudication, Id, Request, Response) :-
+    (   get_dict(utterances, Request, JSONUtterances),
+        request_utterances(JSONUtterances, Utterances)
+    ->  (   request_discourse_context(Request, Utterances, ContextEvidence)
+        ->  (   get_dict(ledger, Request, LedgerDict),
+                trace_adjudication:adjudication_dict_terms(
+                    LedgerDict, Proposals, Ledger)
+            ->  discourse_pragmatics:pragmatic_evidence_candidates(
+                    Utterances, ContextEvidence, Candidates),
+                (   trace_adjudication:adjudication_summary(
+                        Utterances, Candidates, Proposals, Ledger, Summary)
+                ->  json_safe(Summary, Safe),
+                    ok_response(Id, Safe, Response)
+                ;   error_response(
+                        Id,
+                        invalid_trace_adjudication,
+                        "trace_adjudication proposals or reviews do not match the current evidence candidates and utterance spans",
+                        Response)
+                )
+            ;   error_response(
+                    Id,
+                    malformed_trace_ledger,
+                    "trace_adjudication requires a strict ledger object with proposals and adjudications arrays",
+                    Response)
+            )
+        ;   error_response(
+                Id,
+                malformed_discourse_context,
+                "trace_adjudication context metadata is malformed or refers to undeclared IDs or targets",
+                Response)
+        )
+    ;   error_response(
+            Id,
+            malformed_utterances,
+            "trace_adjudication requires an utterances list of unique {id, speaker, text} objects",
+            Response)
+    ).
+
+dispatch_request(pair_score, Id, Request, Response) :-
+    (   get_dict(events, Request, Events),
+        is_list(Events)
+    ->  hermes_pair_scoring:score_pair_candidates(Events, Pairs),
+        json_safe(Pairs, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, missing_events, "pair_score requires events list", Response)
+    ).
+
+dispatch_request(pair_graph, Id, Request, Response) :-
+    (   get_dict(events, Request, Events),
+        is_list(Events)
+    ->  hermes_pair_scoring:score_pair_candidates(Events, Pairs),
+        hermes_pair_scoring:pair_graph(Pairs, Graph),
+        json_safe(Graph, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, missing_events, "pair_graph requires events list", Response)
+    ).
+
+dispatch_request(pair_candidate_witness, Id, Request, Response) :-
+    (   get_dict(event_a, Request, EventA),
+        get_dict(event_b, Request, EventB)
+    ->  (   hermes_pair_scoring:pair_candidate_witness(EventA, EventB, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_pair_candidate_witness,
+                "pair_candidate_witness found no witness for event_a/event_b",
+                Response)
+        )
+    ;   error_response(Id, malformed_pair_candidate_request,
+            "pair_candidate_witness requires event_a and event_b", Response)
+    ).
+
+dispatch_request(critique_bad_infinite, Id, Request, Response) :-
+    (   get_dict(proof, Request, JSONProof)
+    ->  json_to_term(JSONProof, Proof),
+        (   critique:bad_infinite_witness(Proof, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_bad_infinite_witness,
+                "critique_bad_infinite found no bad-infinite witness for proof",
+                Response)
+        )
+    ;   error_response(Id, missing_proof,
+            "critique_bad_infinite requires proof", Response)
+    ).
+
+dispatch_request(defeasible_classify, Id, Request, Response) :-
+    (   get_dict(inference_id, Request, JSONInferenceId),
+        get_dict(defeater_set, Request, JSONDefeaterSet),
+        is_list(JSONDefeaterSet)
+    ->  json_to_term(JSONInferenceId, InferenceId),
+        json_to_term(JSONDefeaterSet, DefeaterSet),
+        defeasible_inference:classify_defeat_witness(
+            InferenceId,
+            DefeaterSet,
+            Outcome,
+            Witness
+        ),
+        json_safe(_{outcome: Outcome, witness: Witness}, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, malformed_defeasible_classify_request,
+            "defeasible_classify requires inference_id and defeater_set list",
+            Response)
+    ).
+
+dispatch_request(deontic_requires_entitlement, Id, Request, Response) :-
+    (   get_dict(proposition, Request, JSONProposition)
+    ->  json_to_term(JSONProposition, Proposition),
+        (   deontic_scorekeeper:requires_entitlement_witness(Proposition, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_deontic_entitlement_witness,
+                "deontic_requires_entitlement found no entitlement witness for proposition",
+                Response)
+        )
+    ;   error_response(Id, missing_proposition,
+            "deontic_requires_entitlement requires proposition", Response)
+    ).
+
+%% deontic_scorecard: the full deontic board for one agent.
+%%
+%% Unlike deontic_requires_entitlement (a single-proposition lookup), this op
+%% seeds an ephemeral agent from the request's `commitments` and `entitlements`
+%% (each a list of Prolog term strings), then returns scorekeeper:scorecard/2 --
+%% the agent's commitments, entitlements, and incoherences. The signature
+%% incoherence a reviewer is looking for is
+%% `commitment_without_entitlement(area_model_justification_missing)`: a
+%% cross-multiplication commitment that deployed no area-model vocabulary and so
+%% is procedurally correct but inferentially hollow. Depositing
+%% `deployed_vocabulary(v_area_model)` as a commitment clears it.
+%%
+%% The op is deterministic across requests: it resets the agent before seeding
+%% and again after reading the card, so the persistent worker carries no state
+%% between scorecard requests. Entitlement grants that the scorekeeper refuses
+%% (it requires a prior commitment) are skipped rather than failing the request.
+dispatch_request(deontic_scorecard, Id, Request, Response) :-
+    (   get_dict_opt(agent, Request, JSONAgent),
+        json_to_term(JSONAgent, Agent0),
+        ( atom(Agent0) -> Agent = Agent0 ; term_to_atom(Agent0, Agent) )
+    ->  true
+    ;   Agent = scoreboard
+    ),
+    ( get_dict_opt(commitments, Request, CJSON), is_list(CJSON) -> true ; CJSON = [] ),
+    ( get_dict_opt(entitlements, Request, EJSON), is_list(EJSON) -> true ; EJSON = [] ),
+    json_to_term(CJSON, Commitments),
+    json_to_term(EJSON, Entitlements),
+    (   catch(
+            ( deontic_scorekeeper:reset_scorekeeper(Agent),
+              forall(member(C, Commitments),
+                     deontic_scorekeeper:undertake_commitment(Agent, C)),
+              forall(member(E, Entitlements),
+                     ignore(deontic_scorekeeper:grant_entitlement(Agent, E))),
+              deontic_scorekeeper:scorecard(Agent, Card),
+              deontic_scorekeeper:reset_scorekeeper(Agent)
+            ),
+            _Err,
+            fail)
+    ->  json_safe(Card, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, deontic_scorecard_failed,
+            "deontic_scorecard could not compute a scorecard for the request",
+            Response)
+    ).
+
+%% deontic_crisis: name incoherence as a crisis descriptor.
+%%
+%% Seeds the same ephemeral deontic board as deontic_scorecard/3, then maps each
+%% incoherence through crisis_from_deontic_incoherence/3 and reports the
+%% commitments that can be withdrawn to repair that incoherence.
+dispatch_request(deontic_crisis, Id, Request, Response) :-
+    (   get_dict_opt(agent, Request, JSONAgent),
+        json_to_term(JSONAgent, Agent0),
+        ( atom(Agent0) -> Agent = Agent0 ; term_to_atom(Agent0, Agent) )
+    ->  true
+    ;   Agent = scoreboard
+    ),
+    ( get_dict_opt(commitments, Request, CJSON), is_list(CJSON) -> true ; CJSON = [] ),
+    ( get_dict_opt(entitlements, Request, EJSON), is_list(EJSON) -> true ; EJSON = [] ),
+    json_to_term(CJSON, Commitments),
+    json_to_term(EJSON, Entitlements),
+    (   catch(
+            ( deontic_scorekeeper:reset_scorekeeper(Agent),
+              forall(member(C, Commitments),
+                     deontic_scorekeeper:undertake_commitment(Agent, C)),
+              forall(member(E, Entitlements),
+                     ignore(deontic_scorekeeper:grant_entitlement(Agent, E))),
+              findall(Reason,
+                      deontic_scorekeeper:deontic_incoherent(Agent, Reason),
+                      Reasons0),
+              sort(Reasons0, Reasons),
+              findall(Crisis,
+                      ( member(Reason, Reasons),
+                        deontic_scorekeeper:crisis_from_deontic_incoherence(Agent, Reason, Crisis) ),
+                      Crises),
+              findall(Commitment,
+                      ( member(Reason, Reasons),
+                        deontic_scorekeeper:deontic_incoherence_commitments(Agent, Reason, CommitmentsForReason),
+                        member(Commitment, CommitmentsForReason) ),
+                      Withdrawable0),
+              sort(Withdrawable0, Withdrawable),
+              ( Reasons == [] -> Coherent = true ; Coherent = false ),
+              Result = _{agent: Agent,
+                         coherent: Coherent,
+                         incoherences: Reasons,
+                         crises: Crises,
+                         withdrawable_commitments: Withdrawable},
+              deontic_scorekeeper:reset_scorekeeper(Agent)
+            ),
+            _Err,
+            fail)
+    ->  json_safe(Result, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, deontic_crisis_failed,
+            "deontic_crisis could not compute crises for the request",
+            Response)
+    ).
+
+%% deontic_consequences: what an agent's commitments materially commit them to.
+%%
+%% Exposes deontic_scorekeeper:commitment_consequence_witness/4 over the seeded
+%% commitments. undertake_commitment/2 propagates consequences as further
+%% commitments, so the result is the one-step consequence of every commitment in
+%% the closure -- each with the witness recording WHICH rule or MUA PP-sufficient
+%% mechanism justified it (local material inference, mastery elaboration, or
+%% committed_to elaboration). Same reset-before/after discipline as
+%% deontic_scorecard, so the persistent worker carries no state between requests.
+dispatch_request(deontic_consequences, Id, Request, Response) :-
+    (   get_dict_opt(agent, Request, JSONAgent),
+        json_to_term(JSONAgent, Agent0),
+        ( atom(Agent0) -> Agent = Agent0 ; term_to_atom(Agent0, Agent) )
+    ->  true
+    ;   Agent = scoreboard
+    ),
+    ( get_dict_opt(commitments, Request, CJSON), is_list(CJSON) -> true ; CJSON = [] ),
+    json_to_term(CJSON, Commitments),
+    (   catch(
+            ( deontic_scorekeeper:reset_scorekeeper(Agent),
+              forall(member(C, Commitments),
+                     deontic_scorekeeper:undertake_commitment(Agent, C)),
+              findall(_{premise: P, conclusion: Q, witness: W},
+                      ( deontic_scorekeeper:commitment(Agent, P),
+                        deontic_scorekeeper:commitment_consequence_witness(Agent, P, Q, W) ),
+                      Consequences0),
+              sort(Consequences0, Consequences),
+              deontic_scorekeeper:reset_scorekeeper(Agent)
+            ),
+            _Err,
+            fail)
+    ->  json_safe(_{agent: Agent, consequences: Consequences}, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, deontic_consequences_failed,
+            "deontic_consequences could not compute consequences for the request",
+            Response)
+    ).
+
+%% deontic_up_level: the objectivation move for gaps the within-level layer
+%% cannot close (REPRESENTATIONAL -- see learner/up_leveling.pl).
+%%
+%% Seeds an agent from the request's commitments, then returns the up-level
+%% witnesses: for each commitment_without_entitlement(_) that survived the full
+%% commitment-consequence closure, the witness lifts the gap into a new object
+%% of discourse one level up ("talking about talking"), in Zhang & Carspecken's
+%% objectivation/up-leveling vocabulary, mapped onto the diagonal-sandwich form.
+%% The witness's `erasure` field marks what the formalism does NOT supply (which
+%% pragmatic metavocabulary resolves the new topic). A coherent or
+%% within-level-dischargeable board returns an empty list. Same reset-before/
+%% after discipline as the other deontic ops.
+dispatch_request(deontic_up_level, Id, Request, Response) :-
+    (   get_dict_opt(agent, Request, JSONAgent),
+        json_to_term(JSONAgent, Agent0),
+        ( atom(Agent0) -> Agent = Agent0 ; term_to_atom(Agent0, Agent) )
+    ->  true
+    ;   Agent = scoreboard
+    ),
+    ( get_dict_opt(commitments, Request, CJSON), is_list(CJSON) -> true ; CJSON = [] ),
+    json_to_term(CJSON, Commitments),
+    (   catch(
+            ( deontic_scorekeeper:reset_scorekeeper(Agent),
+              forall(member(C, Commitments),
+                     deontic_scorekeeper:undertake_commitment(Agent, C)),
+              up_leveling:up_level_scorecard(Agent, Witnesses),
+              deontic_scorekeeper:reset_scorekeeper(Agent)
+            ),
+            _Err,
+            fail)
+    ->  json_safe(_{agent: Agent, up_levels: Witnesses}, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, deontic_up_level_failed,
+            "deontic_up_level could not compute up-level moves for the request",
+            Response)
+    ).
+
+dispatch_request(axiom_hierarchy_witness, Id, Request, Response) :-
+    (   get_dict(kind, Request, JSONKind)
+    ->  json_to_term(JSONKind, Kind),
+        (   hierarchy_proof_witness(Kind, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_axiom_hierarchy_witness,
+                "axiom_hierarchy_witness found no hierarchy proof witness for kind",
+                Response)
+        )
+    ;   error_response(Id, missing_kind,
+            "axiom_hierarchy_witness requires kind", Response)
+    ).
+
+dispatch_request(axiom_pack_witness, Id, Request, Response) :-
+    (   get_dict(pack, Request, JSONPack),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONPack, Pack0),
+        json_to_term(JSONSource, Source0),
+        string_or_atom_to_atom(Pack0, Pack),
+        string_or_atom_to_atom(Source0, Source),
+        (   cw_axiom_pack:axiom_pack_witness(Pack, Source, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_axiom_pack_witness,
+                "axiom_pack_witness found no enabled-pack witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_axiom_pack_request,
+            "axiom_pack_witness requires pack and source", Response)
+    ).
+
+dispatch_request(robinson_axiom_witness, Id, Request, Response) :-
+    (   get_dict(axiom, Request, JSONAxiom),
+        get_dict(claim, Request, JSONClaim)
+    ->  json_to_term(JSONAxiom, Axiom),
+        json_to_term(JSONClaim, Claim),
+        (   sequent_engine:robinson_axiom_witness(Axiom, Claim, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_robinson_axiom_witness,
+                "robinson_axiom_witness found no witness for axiom/claim",
+                Response)
+        )
+    ;   error_response(Id, malformed_robinson_axiom_request,
+            "robinson_axiom_witness requires axiom and claim", Response)
+    ).
+
+dispatch_request(semantic_material_witness, Id, Request, Response) :-
+    (   get_dict(from, Request, JSONFrom),
+        get_dict(to, Request, JSONTo)
+    ->  json_to_term(JSONFrom, From),
+        json_to_term(JSONTo, To),
+        (   semantic_axioms:semantic_material_witness(From, To, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_semantic_material_witness,
+                "semantic_material_witness found no material witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_semantic_material_request,
+            "semantic_material_witness requires from and to", Response)
+    ).
+
+dispatch_request(incoherent_witness, Id, Request, Response) :-
+    (   get_dict(context, Request, JSONContext)
+    ->  json_to_term(JSONContext, Context),
+        (   sequent_engine:incoherent_witness(Context, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_incoherent_witness,
+                "incoherent_witness found no witness for context",
+                Response)
+        )
+    ;   error_response(Id, missing_context,
+            "incoherent_witness requires context", Response)
+    ).
+
+dispatch_request(eml_transition_witness, Id, Request, Response) :-
+    (   get_dict(from, Request, JSONFrom),
+        get_dict(to, Request, JSONTo)
+    ->  json_to_term(JSONFrom, From),
+        json_to_term(JSONTo, To),
+        (   sequent_engine:eml_transition_witness(From, To, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_eml_transition_witness,
+                "eml_transition_witness found no transition witness for from/to",
+                Response)
+        )
+    ;   error_response(Id, malformed_eml_transition_request,
+            "eml_transition_witness requires from and to", Response)
+    ).
+
+dispatch_request(number_theory_self_defeat_witness, Id, Request, Response) :-
+    (   get_dict(list, Request, JSONList),
+        is_list(JSONList)
+    ->  json_to_term(JSONList, List),
+        (   sequent_engine:number_theory_self_defeat_witness(List, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_number_theory_self_defeat_witness,
+                "number_theory_self_defeat_witness found no Euclid witness for list",
+                Response)
+        )
+    ;   error_response(Id, malformed_number_theory_request,
+            "number_theory_self_defeat_witness requires list", Response)
+    ).
+
+dispatch_request(embodied_proof_witness, Id, Request, Response) :-
+    (   get_dict(sequent, Request, JSONSequent),
+        get_dict(resources, Request, ResourcesIn)
+    ->  json_to_term(JSONSequent, Sequent),
+        (   embodied_prover:proves_witness(Sequent,
+                                            ResourcesIn,
+                                            _ResourcesOut,
+                                            _Proof,
+                                            Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_embodied_proof_witness,
+                "embodied_proof_witness found no proof witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_embodied_proof_request,
+            "embodied_proof_witness requires sequent and resources",
+            Response)
+    ).
+
+dispatch_request(viability_witness, Id, Request, Response) :-
+    (   get_dict(resources, Request, Resources),
+        get_dict(cost, Request, Cost),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONSource, Source),
+        (   cw_viability:viability_witness(Resources, Cost, Source, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_viability_witness,
+                "viability_witness found no sufficient resource witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_viability_request,
+            "viability_witness requires resources, cost, and source",
+            Response)
+    ).
+
+dispatch_request(modal_context_witness, Id, Request, Response) :-
+    (   get_dict(term, Request, JSONTerm),
+        get_dict(context, Request, JSONContext),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONTerm, Term),
+        json_to_term(JSONContext, Context),
+        json_to_term(JSONSource, Source),
+        (   cw_modal_context:modal_context_witness(Term, Context, Source, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_modal_context_witness,
+                "modal_context_witness found no modal-context witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_modal_context_request,
+            "modal_context_witness requires term, context, and source",
+            Response)
+    ).
+
+dispatch_request(grounded_arith_witness, Id, Request, Response) :-
+    (   get_dict(operation, Request, JSONOperation),
+        get_dict(inputs, Request, JSONInputs),
+        get_dict(output, Request, JSONOutput),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONOperation, Operation0),
+        json_to_term(JSONInputs, Inputs),
+        json_to_term(JSONOutput, Output),
+        json_to_term(JSONSource, Source0),
+        string_or_atom_to_atom(Operation0, Operation),
+        string_or_atom_to_atom(Source0, Source),
+        (   cw_grounded_arith:grounded_arith_witness(
+                Operation,
+                Inputs,
+                Output,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_grounded_arith_witness,
+                "grounded_arith_witness found no owner-verified grounded arithmetic operation",
+                Response)
+        )
+    ;   error_response(Id, malformed_grounded_arith_request,
+            "grounded_arith_witness requires operation, inputs, output, and source",
+            Response)
+    ).
+
+dispatch_request(material_inference_witness, Id, Request, Response) :-
+    (   get_dict(inference_id, Request, JSONInferenceId),
+        get_dict(premises, Request, JSONPremises),
+        get_dict(conclusion, Request, JSONConclusion),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONInferenceId, InferenceId),
+        json_to_term(JSONPremises, Premises),
+        json_to_term(JSONConclusion, Conclusion),
+        json_to_term(JSONSource, Source),
+        (   cw_material_inference:material_inference_witness(
+                InferenceId,
+                Premises,
+                Conclusion,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_material_inference_witness,
+                "material_inference_witness found no material-inference witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_material_inference_request,
+            "material_inference_witness requires inference_id, premises, conclusion, and source",
+            Response)
+    ).
+
+% representation_spine_witness: the T0 representation spine as a live surface.
+% With a `concept` string it returns that concept's render routes (renders_on/3)
+% plus a capped sample of manifest-backed assets (asset_for/3) and the total
+% asset count; with no concept it lists every renders_on route. This is the
+% crosswalk consumer the spine lacked — renders_on/3 and asset_for/3 are now
+% queryable at runtime, not only in the module's test.
+dispatch_request(representation_spine_witness, Id, Request, Response) :-
+    (   get_dict(concept, Request, JSONConcept),
+        string(JSONConcept), JSONConcept \== ""
+    ->  atom_string(Concept, JSONConcept)
+    ;   true
+    ),
+    findall(_{concept: Concept, surface: Surface, data_shape: Shape},
+            representation_spine:renders_on(Concept, Surface, Shape),
+            Routes),
+    (   nonvar(Concept)
+    ->  findall(_{asset: Asset, provenance: Prov},
+                representation_spine:asset_for(Concept, Asset, Prov), Assets0),
+        length(Assets0, AssetCount),
+        (   length(Capped, 20), append(Capped, _, Assets0)
+        ->  Assets = Capped
+        ;   Assets = Assets0
+        )
+    ;   Assets = [], AssetCount = 0
+    ),
+    (   Routes == [], Assets == []
+    ->  error_response(Id, no_representation_spine_witness,
+            "representation_spine_witness found no renders_on route or asset for that concept",
+            Response)
+    ;   json_safe(_{renders_on: Routes, assets: Assets, asset_count: AssetCount}, Safe),
+        ok_response(Id, Safe, Response)
+    ).
+
+dispatch_request(normative_crisis_witness, Id, Request, Response) :-
+    (   get_dict(context, Request, JSONContext),
+        get_dict(goal, Request, JSONGoal),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONContext, Context),
+        json_to_term(JSONGoal, Goal),
+        json_to_term(JSONSource, Source),
+        (   cw_normative_crisis:normative_crisis_witness(
+                Context,
+                Goal,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_normative_crisis_witness,
+                "normative_crisis_witness found no normative-crisis witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_normative_crisis_request,
+            "normative_crisis_witness requires context, goal, and source",
+            Response)
+    ).
+
+dispatch_request(metaphor_break_witness, Id, Request, Response) :-
+    (   get_dict(metaphor, Request, JSONMetaphor),
+        get_dict(inference, Request, JSONInference),
+        get_dict(detail, Request, JSONDetail),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONMetaphor, Metaphor),
+        json_to_term(JSONInference, Inference),
+        json_to_term(JSONDetail, Detail),
+        json_to_term(JSONSource, Source),
+        (   cw_metaphor_break:metaphor_break_witness(
+                Metaphor,
+                Inference,
+                Detail,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_metaphor_break_witness,
+                "metaphor_break_witness found no metaphor-break witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_metaphor_break_request,
+            "metaphor_break_witness requires metaphor, inference, detail, and source",
+            Response)
+    ).
+
+dispatch_request(grounding_metaphor_witness, Id, Request, Response) :-
+    (   get_dict(metaphor, Request, JSONMetaphor),
+        get_dict(anchor, Request, JSONAnchor),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONMetaphor, Metaphor),
+        json_to_term(JSONAnchor, Anchor),
+        json_to_term(JSONSource, Source),
+        (   cw_grounding_metaphor:grounding_metaphor_witness(
+                Metaphor,
+                Anchor,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_grounding_metaphor_witness,
+                "grounding_metaphor_witness found no grounding-metaphor witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_grounding_metaphor_request,
+            "grounding_metaphor_witness requires metaphor, anchor, and source",
+            Response)
+    ).
+
+dispatch_request(sequent_proof_witness, Id, Request, Response) :-
+    (   get_dict(sequent, Request, JSONSequent),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONSequent, Sequent),
+        json_to_term(JSONSource, Source),
+        (   cw_sequent_proof:sequent_proof_witness(Sequent, Source, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_sequent_proof_witness,
+                "sequent_proof_witness found no sequent proof witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_sequent_proof_request,
+            "sequent_proof_witness requires sequent and source",
+            Response)
+    ).
+
+dispatch_request(unit_coordination_witness, Id, Request, Response) :-
+    (   get_dict(key, Request, JSONKey),
+        get_dict(detail, Request, JSONDetail),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONKey, Key),
+        json_to_term(JSONDetail, Detail),
+        json_to_term(JSONSource, Source),
+        (   cw_unit_coordination:unit_coordination_witness(
+                Key,
+                Detail,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_unit_coordination_witness,
+                "unit_coordination_witness found no unit-coordination witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_unit_coordination_request,
+            "unit_coordination_witness requires key, detail, and source",
+            Response)
+    ).
+
+dispatch_request(unit_coordination_svg, Id, Request, Response) :-
+    request_integer(Request, base, 10, Base),
+    request_integer(Request, value_up, 1234, ValueUp),
+    request_integer(Request, numerator, 1, Numerator),
+    request_integer(Request, denominator, Base, Denominator),
+    (   unit_coordination_viz:generate_coordination_svg(
+            Base,
+            ValueUp,
+            fraction(Numerator, Denominator),
+            Svg
+        )
+    ->  Dict = _{ kind: "unit_coordination_svg",
+                  content_type: "image/svg+xml",
+                  request: _{ base: Base,
+                              value_up: ValueUp,
+                              numerator: Numerator,
+                              denominator: Denominator },
+                  svg: Svg },
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, invalid_unit_coordination_svg_request,
+            "unit_coordination_svg requires base 2..15, non-negative value_up, and denominator > 0",
+            Response)
+    ).
+
+dispatch_request(godel_primes_witness, Id, Request, Response) :-
+    (   get_dict(query, Request, JSONQuery),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONQuery, Query),
+        json_to_term(JSONSource, Source),
+        (   cw_godel_primes:godel_primes_witness(
+                Query,
+                _Result,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_godel_primes_witness,
+                "godel_primes_witness found no prime-utility witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_godel_primes_request,
+            "godel_primes_witness requires query and source",
+            Response)
+    ).
+
+dispatch_request(fsm_engine_witness, Id, Request, Response) :-
+    (   get_dict(descriptor, Request, JSONDescriptor),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONDescriptor, Descriptor),
+        json_to_term(JSONSource, Source),
+        (   cw_fsm_engine:fsm_engine_witness(
+                Descriptor,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_fsm_engine_witness,
+                "fsm_engine_witness found no loaded FSM executor registry witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_fsm_engine_request,
+            "fsm_engine_witness requires descriptor and source",
+            Response)
+    ).
+
+dispatch_request(action_cluster_witness, Id, Request, Response) :-
+    (   get_dict(operation, Request, JSONOperation),
+        get_dict(kind, Request, JSONKind),
+        get_dict(cluster, Request, JSONCluster),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONOperation, Operation),
+        json_to_term(JSONKind, Kind),
+        json_to_term(JSONCluster, Cluster),
+        json_to_term(JSONSource, Source),
+        (   cw_action_cluster:action_cluster_witness(
+                Operation,
+                Kind,
+                Cluster,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_action_cluster_witness,
+                "action_cluster_witness found no action-cluster witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_action_cluster_request,
+            "action_cluster_witness requires operation, kind, cluster, and source",
+            Response)
+    ).
+
+dispatch_request(practice_vocabulary_witness, Id, Request, Response) :-
+    (   get_dict(key, Request, JSONKey),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONKey, Key),
+        json_to_term(JSONSource, Source),
+        (   cw_practice_vocabulary:practice_vocabulary_witness(
+                Key,
+                _Vocabulary,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_practice_vocabulary_witness,
+                "practice_vocabulary_witness found no practice-vocabulary witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_practice_vocabulary_request,
+            "practice_vocabulary_witness requires key and source",
+            Response)
+    ).
+
+dispatch_request(accommodation_witness, Id, Request, Response) :-
+    (   get_dict(target, Request, JSONTarget),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONTarget, Target),
+        json_to_term(JSONSource, Source),
+        (   cw_accommodation:accommodation_witness(
+                Target,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_accommodation_witness,
+                "accommodation_witness found no accommodation registry witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_accommodation_request,
+            "accommodation_witness requires target and source",
+            Response)
+    ).
+
+dispatch_request(domain_context_witness, Id, Request, Response) :-
+    (   get_dict(domain, Request, JSONDomain),
+        get_dict(context, Request, JSONContext),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONDomain, Domain),
+        json_to_term(JSONContext, Context),
+        json_to_term(JSONSource, Source),
+        (   cw_domain_context:domain_context_witness(
+                Domain,
+                Context,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_domain_context_witness,
+                "domain_context_witness found no domain-context witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_domain_context_request,
+            "domain_context_witness requires domain, context, and source",
+            Response)
+    ).
+
+dispatch_request(orr_entry_witness, Id, Request, Response) :-
+    (   get_dict(variant, Request, JSONVariant),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONVariant, Variant),
+        json_to_term(JSONSource, Source),
+        (   cw_orr_entry:orr_entry_witness(
+                Variant,
+                _PredIndicator,
+                _Role,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_orr_entry_witness,
+                "orr_entry_witness found no ORR-entry registry witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_orr_entry_request,
+            "orr_entry_witness requires variant and source",
+            Response)
+    ).
+
+dispatch_request(executable_practice_witness, Id, Request, Response) :-
+    (   get_dict(variant, Request, JSONVariant),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONVariant, Variant),
+        json_to_term(JSONSource, Source),
+        (   cw_executable_practice:executable_practice_witness(
+                Variant,
+                _PredIndicator,
+                _Kind,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_executable_practice_witness,
+                "executable_practice_witness found no executable-practice registry witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_executable_practice_request,
+            "executable_practice_witness requires variant and source",
+            Response)
+    ).
+
+dispatch_request(misconception_hook_witness, Id, Request, Response) :-
+    (   get_dict(operation, Request, JSONOperation),
+        get_dict(outcome, Request, JSONOutcome),
+        get_dict(family, Request, JSONFamily),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONOperation, Operation),
+        json_to_term(JSONOutcome, Outcome),
+        json_to_term(JSONFamily, Family),
+        json_to_term(JSONSource, Source),
+        (   cw_misconception_hook:misconception_hook_witness(
+                Operation,
+                Outcome,
+                Family,
+                _Hook,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_misconception_hook_witness,
+                "misconception_hook_witness found no misconception-hook witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_misconception_hook_request,
+            "misconception_hook_witness requires operation, outcome, family, and source",
+            Response)
+    ).
+
+dispatch_request(algebra_claim_witness, Id, Request, Response) :-
+    (   get_dict(canonical, Request, JSONCanonical),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONCanonical, Canonical0),
+        json_to_term(JSONSource, Source0),
+        string_or_atom_to_atom(Canonical0, Canonical),
+        string_or_atom_to_atom(Source0, Source),
+        (   cw_algebra_claim:algebra_claim_witness(
+                Canonical,
+                _Detail,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_algebra_claim_witness,
+                "algebra_claim_witness found no owner-verified algebra-claim edge",
+                Response)
+        )
+    ;   error_response(Id, malformed_algebra_claim_request,
+            "algebra_claim_witness requires canonical and source",
+            Response)
+    ).
+
+dispatch_request(integer_signed_claim_witness, Id, Request, Response) :-
+    (   get_dict(canonical, Request, JSONCanonical),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONCanonical, Canonical0),
+        json_to_term(JSONSource, Source0),
+        string_or_atom_to_atom(Canonical0, Canonical),
+        string_or_atom_to_atom(Source0, Source),
+        (   cw_integer_signed_claim:integer_signed_claim_witness(
+                Canonical,
+                _Detail,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_integer_signed_claim_witness,
+                "integer_signed_claim_witness found no owner-verified integer-signed claim edge",
+                Response)
+        )
+    ;   error_response(Id, malformed_integer_signed_claim_request,
+            "integer_signed_claim_witness requires canonical and source",
+            Response)
+    ).
+
+dispatch_request(arithmetic_property_witness, Id, Request, Response) :-
+    (   get_dict(canonical, Request, JSONCanonical),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONCanonical, Canonical0),
+        json_to_term(JSONSource, Source0),
+        string_or_atom_to_atom(Canonical0, Canonical),
+        string_or_atom_to_atom(Source0, Source),
+        (   cw_arithmetic_property_claim:arithmetic_property_witness(
+                Canonical,
+                _Detail,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_arithmetic_property_witness,
+                "arithmetic_property_witness found no owner-verified arithmetic-property edge",
+                Response)
+        )
+    ;   error_response(Id, malformed_arithmetic_property_request,
+            "arithmetic_property_witness requires canonical and source",
+            Response)
+    ).
+
+dispatch_request(calculus_claim_witness, Id, Request, Response) :-
+    (   get_dict(canonical, Request, JSONCanonical),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONCanonical, Canonical0),
+        json_to_term(JSONSource, Source0),
+        string_or_atom_to_atom(Canonical0, Canonical),
+        string_or_atom_to_atom(Source0, Source),
+        (   cw_calculus_claim:calculus_claim_witness(
+                Canonical,
+                _Detail,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_calculus_claim_witness,
+                "calculus_claim_witness found no owner-verified calculus claim edge",
+                Response)
+        )
+    ;   error_response(Id, malformed_calculus_claim_request,
+            "calculus_claim_witness requires canonical and source",
+            Response)
+    ).
+
+dispatch_request(counting_claim_witness, Id, Request, Response) :-
+    (   get_dict(canonical, Request, JSONCanonical),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONCanonical, Canonical0),
+        json_to_term(JSONSource, Source0),
+        string_or_atom_to_atom(Canonical0, Canonical),
+        string_or_atom_to_atom(Source0, Source),
+        (   cw_counting_claim:counting_claim_witness(
+                Canonical,
+                _Detail,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_counting_claim_witness,
+                "counting_claim_witness found no owner-verified counting claim edge",
+                Response)
+        )
+    ;   error_response(Id, malformed_counting_claim_request,
+            "counting_claim_witness requires canonical and source",
+            Response)
+    ).
+
+dispatch_request(standard_k_ns_1_count_by_ones_witness, Id, Request, Response) :-
+    request_recollection(Request, from, 1, From),
+    request_recollection(Request, to, 10, To),
+    (   standard_k_ns_1:count_by_ones_witness(From, To, _Trace, Witness)
+    ->  json_safe(Witness, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_standard_k_ns_1_count_by_ones_witness,
+            "standard_k_ns_1_count_by_ones_witness found no finite counting trace",
+            Response)
+    ).
+
+dispatch_request(standard_k_ns_2_represent_count_witness, Id, Request, Response) :-
+    request_integer(Request, object_count, 4, Count),
+    (   Count >= 0,
+        Count =< 20,
+        length(Objects, Count),
+        standard_k_ns_2:teach_numerals_to_witness(20, _TeachWitness),
+        standard_k_ns_2:represent_count_witness(Objects, _Recollection, _Name, Witness)
+    ->  json_safe(Witness, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_standard_k_ns_2_represent_count_witness,
+            "standard_k_ns_2_represent_count_witness requires object_count between 0 and 20",
+            Response)
+    ).
+
+dispatch_request(standard_1_ns_1_count_by_fives_witness, Id, Request, Response) :-
+    request_recollection(Request, from, 5, From),
+    request_recollection(Request, to, 20, To),
+    (   standard_1_ns_1:count_by_fives_witness(From, To, _Trace, Witness)
+    ->  json_safe(Witness, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_standard_1_ns_1_count_by_fives_witness,
+            "standard_1_ns_1_count_by_fives_witness found no finite count-by-fives trace",
+            Response)
+    ).
+
+dispatch_request(standard_2_ns_1_count_by_twos_witness, Id, Request, Response) :-
+    request_recollection(Request, from, 2, From),
+    request_recollection(Request, to, 10, To),
+    (   standard_2_ns_1:count_by_twos_witness(From, To, _Trace, Witness)
+    ->  json_safe(Witness, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_standard_2_ns_1_count_by_twos_witness,
+            "standard_2_ns_1_count_by_twos_witness found no finite count-by-twos trace",
+            Response)
+    ).
+
+dispatch_request(standard_2_ns_2_4_place_value_witness, Id, Request, Response) :-
+    request_recollection(Request, number, 347, Number),
+    (   standard_2_ns_2_4:describe_three_digit_witness(Number, _Description, Witness)
+    ->  json_safe(Witness, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_standard_2_ns_2_4_place_value_witness,
+            "standard_2_ns_2_4_place_value_witness found no finite three-digit place-value proof",
+            Response)
+    ).
+
+dispatch_request(standard_2_ns_5_place_value_comparison_witness, Id, Request, Response) :-
+    request_recollection(Request, left, 347, Left),
+    request_recollection(Request, right, 329, Right),
+    (   standard_2_ns_5:compare_by_place_value_witness(Left, Right, _Result, Witness)
+    ->  json_safe(Witness, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_standard_2_ns_5_place_value_comparison_witness,
+            "standard_2_ns_5_place_value_comparison_witness found no finite place-value comparison proof",
+            Response)
+    ).
+
+dispatch_request(standard_3_ca_5_mult_skip_count_witness, Id, Request, Response) :-
+    request_recollection(Request, factor, 7, Factor),
+    request_recollection(Request, times, 8, Times),
+    (   standard_3_ca_5:mult_skip_count(Factor, Times, Product)
+    ->  recollection_to_integer(Factor, FactorCount),
+        recollection_to_integer(Times, TimesCount),
+        recollection_to_integer(Product, ProductCount),
+        json_safe(_{
+            kind: standard_3_ca_5_mult_skip_count,
+            scope: closed_world_finite_standard_3_ca_5_multiplication_within_100,
+            standard: in_3_ca_5,
+            source_predicate: mult_skip_count/3,
+            factor: Factor,
+            times: Times,
+            product: Product,
+            factor_count: FactorCount,
+            times_count: TimesCount,
+            product_count: ProductCount,
+            derivation: repeated_grounded_addition_by_skip_counting,
+            boundary: supplied_recollection_inputs_and_existing_standard_3_ca_5_predicate
+        }, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_standard_3_ca_5_mult_skip_count_witness,
+            "standard_3_ca_5_mult_skip_count_witness found no finite skip-count multiplication result",
+            Response)
+    ).
+
+dispatch_request(standard_2_ns_3_parity_witness, Id, Request, Response) :-
+    (   get_dict(number, Request, JSONNumber)
+    ->  json_to_term(JSONNumber, Number),
+        (   get_dict_opt(result, Request, JSONResult)
+        ->  json_to_term(JSONResult, Result)
+        ;   true
+        ),
+        (   standard_2_ns_3:parity_witness(Number, Result, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_standard_2_ns_3_parity_witness,
+                "standard_2_ns_3_parity_witness found no finite parity proof",
+                Response)
+        )
+    ;   error_response(Id, malformed_standard_2_ns_3_parity_request,
+            "standard_2_ns_3_parity_witness requires number",
+            Response)
+    ).
+
+dispatch_request(standard_k_ns_3_order_independence_witness, Id, Request, Response) :-
+    (   get_dict(objects, Request, JSONObjects)
+    ->  json_to_term(JSONObjects, Objects),
+        (   standard_k_ns_3:verify_order_independence_witness(Objects, _Result, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_standard_k_ns_3_order_independence_witness,
+                "standard_k_ns_3_order_independence_witness found no finite order-independence proof",
+                Response)
+        )
+    ;   error_response(Id, malformed_standard_k_ns_3_order_independence_request,
+            "standard_k_ns_3_order_independence_witness requires objects",
+            Response)
+    ).
+
+dispatch_request(standard_k_ns_4_verify_subitizing_witness, Id, Request, Response) :-
+    (   get_dict(pattern, Request, JSONPattern)
+    ->  json_to_term(JSONPattern, Pattern),
+        (   standard_k_ns_4:verify_subitizing_witness(Pattern, _Result, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_standard_k_ns_4_verify_subitizing_witness,
+                "standard_k_ns_4_verify_subitizing_witness found no finite recognition-count agreement proof",
+                Response)
+        )
+    ;   error_response(Id, malformed_standard_k_ns_4_verify_subitizing_request,
+            "standard_k_ns_4_verify_subitizing_witness requires pattern",
+            Response)
+    ).
+
+dispatch_request(standard_k_ns_5_6_compare_groups_witness, Id, Request, Response) :-
+    (   get_dict(group_a, Request, JSONGroupA),
+        get_dict(group_b, Request, JSONGroupB)
+    ->  json_to_term(JSONGroupA, GroupA),
+        json_to_term(JSONGroupB, GroupB),
+        (   standard_k_ns_5_6:compare_groups_witness(GroupA, GroupB, _Result, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_standard_k_ns_5_6_compare_groups_witness,
+                "standard_k_ns_5_6_compare_groups_witness found no finite group-comparison proof",
+                Response)
+        )
+    ;   error_response(Id, malformed_standard_k_ns_5_6_compare_groups_request,
+            "standard_k_ns_5_6_compare_groups_witness requires group_a and group_b",
+            Response)
+    ).
+
+dispatch_request(standard_k_ns_7_place_value_witness, Id, Request, Response) :-
+    (   get_dict(number, Request, JSONNumber)
+    ->  json_to_term(JSONNumber, Number),
+        (   standard_k_ns_7:describe_place_value_witness(Number, _Description, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_standard_k_ns_7_place_value_witness,
+                "standard_k_ns_7_place_value_witness found no finite one-ten-group proof",
+                Response)
+        )
+    ;   error_response(Id, malformed_standard_k_ns_7_place_value_request,
+            "standard_k_ns_7_place_value_witness requires number",
+            Response)
+    ).
+
+dispatch_request(standard_k_ca_1_3_complement_witness, Id, Request, Response) :-
+    (   get_dict(given, Request, JSONGiven)
+    ->  json_to_term(JSONGiven, Given),
+        (   standard_k_ca_1_3:find_complement_to_ten_witness(Given, _Complement, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_standard_k_ca_1_3_complement_witness,
+                "standard_k_ca_1_3_complement_witness found no finite complement-to-ten proof",
+                Response)
+        )
+    ;   error_response(Id, malformed_standard_k_ca_1_3_complement_request,
+            "standard_k_ca_1_3_complement_witness requires given",
+            Response)
+    ).
+
+dispatch_request(standard_1_ns_2_place_value_witness, Id, Request, Response) :-
+    (   get_dict(number, Request, JSONNumber)
+    ->  json_to_term(JSONNumber, Number),
+        (   standard_1_ns_2:describe_two_digit_witness(Number, _Description, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_standard_1_ns_2_place_value_witness,
+                "standard_1_ns_2_place_value_witness found no finite two-digit place-value proof",
+                Response)
+        )
+    ;   error_response(Id, malformed_standard_1_ns_2_place_value_request,
+            "standard_1_ns_2_place_value_witness requires number",
+            Response)
+    ).
+
+dispatch_request(standard_1_ca_1_making_ten_witness, Id, Request, Response) :-
+    (   get_dict(a, Request, JSONA),
+        get_dict(b, Request, JSONB)
+    ->  json_to_term(JSONA, A),
+        json_to_term(JSONB, B),
+        (   standard_1_ca_1:add_making_ten_witness(A, B, _Sum, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_standard_1_ca_1_making_ten_witness,
+                "standard_1_ca_1_making_ten_witness found no finite making-ten proof",
+                Response)
+        )
+    ;   error_response(Id, malformed_standard_1_ca_1_making_ten_request,
+            "standard_1_ca_1_making_ten_witness requires a and b",
+            Response)
+    ).
+
+dispatch_request(standard_1_ca_3_add_by_place_value_witness, Id, Request, Response) :-
+    (   get_dict(a, Request, JSONA),
+        get_dict(b, Request, JSONB)
+    ->  json_to_term(JSONA, A),
+        json_to_term(JSONB, B),
+        (   standard_1_ca_3:add_by_place_value_witness(A, B, _Sum, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_standard_1_ca_3_add_by_place_value_witness,
+                "standard_1_ca_3_add_by_place_value_witness found no finite place-value addition proof",
+                Response)
+        )
+    ;   error_response(Id, malformed_standard_1_ca_3_addition_request,
+            "standard_1_ca_3_add_by_place_value_witness requires a and b",
+            Response)
+    ).
+
+dispatch_request(standard_2_ca_2_add_three_digit_witness, Id, Request, Response) :-
+    (   get_dict(a, Request, JSONA),
+        get_dict(b, Request, JSONB)
+    ->  json_to_term(JSONA, A),
+        json_to_term(JSONB, B),
+        (   standard_2_ca_2:add_three_digit_witness(A, B, _Sum, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_standard_2_ca_2_add_three_digit_witness,
+                "standard_2_ca_2_add_three_digit_witness found no finite three-digit addition proof",
+                Response)
+        )
+    ;   error_response(Id, malformed_standard_2_ca_2_addition_request,
+            "standard_2_ca_2_add_three_digit_witness requires a and b",
+            Response)
+    ).
+
+dispatch_request(standard_3_ca_3_4_fact_family_witness, Id, Request, Response) :-
+    (   get_dict(a, Request, JSONA),
+        get_dict(b, Request, JSONB)
+    ->  json_to_term(JSONA, A),
+        json_to_term(JSONB, B),
+        (   standard_3_ca_3_4:mult_div_family_witness(A, B, _Product, _Facts, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_standard_3_ca_3_4_fact_family_witness,
+                "standard_3_ca_3_4_fact_family_witness found no finite multiplication/division family proof",
+                Response)
+        )
+    ;   error_response(Id, malformed_standard_3_ca_3_4_family_request,
+            "standard_3_ca_3_4_fact_family_witness requires a and b",
+            Response)
+    ).
+
+dispatch_request(standard_3_ns_2_unit_fraction_witness, Id, Request, Response) :-
+    (   get_dict(denominator, Request, JSONDenominator)
+    ->  json_to_term(JSONDenominator, Denominator),
+        (   standard_3_ns_2:make_unit_fraction_witness(Denominator, _Fraction, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_standard_3_ns_2_unit_fraction_witness,
+                "standard_3_ns_2_unit_fraction_witness found no finite unit-fraction proof",
+                Response)
+        )
+    ;   error_response(Id, malformed_standard_3_ns_2_unit_fraction_request,
+            "standard_3_ns_2_unit_fraction_witness requires denominator",
+            Response)
+    ).
+
+dispatch_request(standard_3_ns_5_fraction_comparison_witness, Id, Request, Response) :-
+    (   get_dict(left, Request, JSONLeft),
+        get_dict(right, Request, JSONRight)
+    ->  json_to_term(JSONLeft, Left),
+        json_to_term(JSONRight, Right),
+        (   get_dict_opt(result, Request, JSONResult)
+        ->  json_to_term(JSONResult, Result)
+        ;   true
+        ),
+        (   standard_3_ns_5:compare_fractions_witness(Left, Right, Result, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_standard_3_ns_5_fraction_comparison_witness,
+                "standard_3_ns_5_fraction_comparison_witness found no finite comparison proof",
+                Response)
+        )
+    ;   error_response(Id, malformed_standard_3_ns_5_fraction_request,
+            "standard_3_ns_5_fraction_comparison_witness requires left and right",
+            Response)
+    ).
+
+dispatch_request(whole_number_addsub_claim_witness, Id, Request, Response) :-
+    (   get_dict(canonical, Request, JSONCanonical),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONCanonical, Canonical0),
+        json_to_term(JSONSource, Source0),
+        string_or_atom_to_atom(Canonical0, Canonical),
+        string_or_atom_to_atom(Source0, Source),
+        (   cw_whole_number_addsub_claim:whole_number_addsub_claim_witness(
+                Canonical,
+                _Detail,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_whole_number_addsub_claim_witness,
+                "whole_number_addsub_claim_witness found no owner-verified addition/subtraction claim edge",
+                Response)
+        )
+    ;   error_response(Id, malformed_whole_number_addsub_claim_request,
+            "whole_number_addsub_claim_witness requires canonical and source",
+            Response)
+    ).
+
+dispatch_request(ratio_proportion_claim_witness, Id, Request, Response) :-
+    (   get_dict(canonical, Request, JSONCanonical),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONCanonical, Canonical0),
+        json_to_term(JSONSource, Source0),
+        string_or_atom_to_atom(Canonical0, Canonical),
+        string_or_atom_to_atom(Source0, Source),
+        (   cw_ratio_proportion_claim:ratio_proportion_claim_witness(
+                Canonical,
+                _Detail,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_ratio_proportion_claim_witness,
+                "ratio_proportion_claim_witness found no owner-verified ratio/proportion claim edge",
+                Response)
+        )
+    ;   error_response(Id, malformed_ratio_proportion_claim_request,
+            "ratio_proportion_claim_witness requires canonical and source",
+            Response)
+    ).
+
+dispatch_request(magnitude_equivalence_claim_witness, Id, Request, Response) :-
+    (   get_dict(canonical, Request, JSONCanonical),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONCanonical, Canonical0),
+        json_to_term(JSONSource, Source0),
+        string_or_atom_to_atom(Canonical0, Canonical),
+        string_or_atom_to_atom(Source0, Source),
+        (   cw_magnitude_equivalence_claim:magnitude_equivalence_claim_witness(
+                Canonical,
+                _Detail,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_magnitude_equivalence_claim_witness,
+                "magnitude_equivalence_claim_witness found no owner-verified magnitude-equivalence claim edge",
+                Response)
+        )
+    ;   error_response(Id, malformed_magnitude_equivalence_claim_request,
+            "magnitude_equivalence_claim_witness requires canonical and source",
+            Response)
+    ).
+
+dispatch_request(multiplication_division_claim_witness, Id, Request, Response) :-
+    (   get_dict(canonical, Request, JSONCanonical),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONCanonical, Canonical0),
+        json_to_term(JSONSource, Source0),
+        string_or_atom_to_atom(Canonical0, Canonical),
+        string_or_atom_to_atom(Source0, Source),
+        (   cw_multiplication_division_claim:multiplication_division_claim_witness(
+                Canonical,
+                _Detail,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_multiplication_division_claim_witness,
+                "multiplication_division_claim_witness found no owner-verified multiplication/division claim edge",
+                Response)
+        )
+    ;   error_response(Id, malformed_multiplication_division_claim_request,
+            "multiplication_division_claim_witness requires canonical and source",
+            Response)
+    ).
+
+dispatch_request(decimal_claim_witness, Id, Request, Response) :-
+    (   get_dict(canonical, Request, JSONCanonical),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONCanonical, Canonical0),
+        json_to_term(JSONSource, Source0),
+        string_or_atom_to_atom(Canonical0, Canonical),
+        string_or_atom_to_atom(Source0, Source),
+        (   cw_decimal_claim:decimal_claim_witness(
+                Canonical,
+                _Detail,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_decimal_claim_witness,
+                "decimal_claim_witness found no owner-verified decimal claim edge",
+                Response)
+        )
+    ;   error_response(Id, malformed_decimal_claim_request,
+            "decimal_claim_witness requires canonical and source",
+            Response)
+    ).
+
+dispatch_request(place_value_number_claim_witness, Id, Request, Response) :-
+    (   get_dict(canonical, Request, JSONCanonical),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONCanonical, Canonical0),
+        json_to_term(JSONSource, Source0),
+        string_or_atom_to_atom(Canonical0, Canonical),
+        string_or_atom_to_atom(Source0, Source),
+        (   cw_place_value_number_claim:place_value_number_claim_witness(
+                Canonical,
+                _Detail,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_place_value_number_claim_witness,
+                "place_value_number_claim_witness found no owner-verified place-value claim edge",
+                Response)
+        )
+    ;   error_response(Id, malformed_place_value_number_claim_request,
+            "place_value_number_claim_witness requires canonical and source",
+            Response)
+    ).
+
+dispatch_request(whole_number_claim_witness, Id, Request, Response) :-
+    (   get_dict(canonical, Request, JSONCanonical),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONCanonical, Canonical0),
+        json_to_term(JSONSource, Source0),
+        string_or_atom_to_atom(Canonical0, Canonical),
+        string_or_atom_to_atom(Source0, Source),
+        (   cw_whole_number_claim:whole_number_claim_witness(
+                Canonical,
+                _Detail,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_whole_number_claim_witness,
+                "whole_number_claim_witness found no owner-verified zero claim edge",
+                Response)
+        )
+    ;   error_response(Id, malformed_whole_number_claim_request,
+            "whole_number_claim_witness requires canonical and source",
+            Response)
+    ).
+
+dispatch_request(fraction_extra_claim_witness, Id, Request, Response) :-
+    (   get_dict(canonical, Request, JSONCanonical),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONCanonical, Canonical0),
+        json_to_term(JSONSource, Source0),
+        string_or_atom_to_atom(Canonical0, Canonical),
+        string_or_atom_to_atom(Source0, Source),
+        (   cw_fraction_extra_claim:fraction_extra_claim_witness(
+                Canonical,
+                _Detail,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_fraction_extra_claim_witness,
+                "fraction_extra_claim_witness found no owner-verified fraction-extra claim edge",
+                Response)
+        )
+    ;   error_response(Id, malformed_fraction_extra_claim_request,
+            "fraction_extra_claim_witness requires canonical and source",
+            Response)
+    ).
+
+dispatch_request(fraction_claim_witness, Id, Request, Response) :-
+    (   get_dict(canonical, Request, JSONCanonical),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONCanonical, Canonical0),
+        json_to_term(JSONSource, Source0),
+        string_or_atom_to_atom(Canonical0, Canonical),
+        string_or_atom_to_atom(Source0, Source),
+        (   cw_fraction_claim:fraction_claim_witness(
+                Canonical,
+                _Detail,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_fraction_claim_witness,
+                "fraction_claim_witness found no owner-verified fraction claim edge",
+                Response)
+        )
+    ;   error_response(Id, malformed_fraction_claim_request,
+            "fraction_claim_witness requires canonical and source",
+            Response)
+    ).
+
+dispatch_request(productive_deformation_witness, Id, Request, Response) :-
+    (   get_dict(operation, Request, JSONOperation),
+        get_dict(productive, Request, JSONProductive),
+        get_dict(deformation, Request, JSONDeformation),
+        get_dict(family, Request, JSONFamily),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONOperation, Operation0),
+        json_to_term(JSONProductive, Productive0),
+        json_to_term(JSONDeformation, Deformation0),
+        json_to_term(JSONFamily, Family0),
+        json_to_term(JSONSource, Source0),
+        string_or_atom_to_atom(Operation0, Operation),
+        string_or_atom_to_atom(Productive0, Productive),
+        string_or_atom_to_atom(Deformation0, Deformation),
+        string_or_atom_to_atom(Family0, Family),
+        string_or_atom_to_atom(Source0, Source),
+        (   cw_productive_deformation:productive_deformation_witness(
+                Operation,
+                Productive,
+                Deformation,
+                Family,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_productive_deformation_witness,
+                "productive_deformation_witness found no owner-verified pair",
+                Response)
+        )
+    ;   error_response(Id, malformed_productive_deformation_request,
+            "productive_deformation_witness requires operation, productive, deformation, family, and source",
+            Response)
+    ).
+
+dispatch_request(geometry_entailment_witness, Id, Request, Response) :-
+    (   get_dict(entailer, Request, JSONEntailer),
+        get_dict(entailed, Request, JSONEntailed)
+    ->  json_to_term(JSONEntailer, Entailer),
+        json_to_term(JSONEntailed, Entailed),
+        (   sequent_engine:entails_via_incompatibility_witness(
+                Entailer,
+                Entailed,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_entailment_witness,
+                "geometry_entailment_witness found no entailment witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_geometry_entailment_request,
+            "geometry_entailment_witness requires entailer and entailed",
+            Response)
+    ).
+
+dispatch_request(incompatibility_entailment_witness, Id, Request, Response) :-
+    (   get_dict(replacement, Request, JSONReplacement),
+        get_dict(replaced, Request, JSONReplaced)
+    ->  json_to_term(JSONReplacement, Replacement),
+        json_to_term(JSONReplaced, Replaced),
+        (   incompatibility_sets:incompatibility_entailment_witness(
+                Replacement,
+                Replaced,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_incompatibility_entailment_witness,
+                "incompatibility_entailment_witness found no entailment witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_incompatibility_entailment_request,
+            "incompatibility_entailment_witness requires replacement and replaced",
+            Response)
+    ).
+
+dispatch_request(incompatibility_discovery_witness, Id, Request, Response) :-
+    (   get_dict(context, Request, JSONContext),
+        get_dict(set, Request, JSONSet)
+    ->  json_to_term(JSONContext, Context),
+        json_to_term(JSONSet, Set),
+        incompatibility_discovery:classify_candidate_set_witness(
+            Context,
+            Set,
+            _Outcome,
+            Witness
+        ),
+        json_safe(Witness, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, malformed_incompatibility_discovery_request,
+            "incompatibility_discovery_witness requires context and set",
+            Response)
+    ).
+
+dispatch_request(misconception_incompatibility_witness, Id, Request, Response) :-
+    (   get_dict(move, Request, JSONMove),
+        get_dict(conflict, Request, JSONConflict)
+    ->  json_to_term(JSONMove, Move),
+        json_to_term(JSONConflict, Conflict),
+        (   misconception_registry:incompatibility_with_witness(Move, Conflict, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_misconception_incompatibility_witness,
+                "misconception_incompatibility_witness found no registry witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_misconception_incompatibility_request,
+            "misconception_incompatibility_witness requires move and conflict",
+            Response)
+    ).
+
+dispatch_request(intersubjective_material_witness, Id, Request, Response) :-
+    (   get_dict(from, Request, JSONFrom),
+        get_dict(to, Request, JSONTo)
+    ->  json_to_term(JSONFrom, From),
+        json_to_term(JSONTo, To),
+        (   intersubjective_praxis:intersubjective_material_witness(
+                From,
+                To,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_intersubjective_material_witness,
+                "intersubjective_material_witness found no material witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_intersubjective_material_request,
+            "intersubjective_material_witness requires from and to", Response)
+    ).
+
+dispatch_request(mua_kind_coherence_witness, Id, Request, Response) :-
+    (   get_dict(kind, Request, JSONKind),
+        get_dict(row_text, Request, RowText)
+    ->  json_to_term(JSONKind, Kind),
+        (   mua_relations:kind_mua_coherence_witness(
+                Kind,
+                RowText,
+                _Score,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_mua_kind_coherence_witness,
+                "mua_kind_coherence_witness found no scoring witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_mua_kind_coherence_request,
+            "mua_kind_coherence_witness requires kind and row_text", Response)
+    ).
+
+dispatch_request(mua_coherence_witness, Id, Request, Response) :-
+    (   get_dict(subject, Request, JSONSubject),
+        get_dict(input, Request, JSONInput),
+        get_dict(source, Request, JSONSource)
+    ->  json_to_term(JSONSubject, Subject),
+        json_to_term(JSONSource, Source),
+        (   cw_mua_coherence:mua_coherence_witness(
+                Subject,
+                JSONInput,
+                _Score,
+                Source,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_mua_coherence_witness,
+                "mua_coherence_witness found no coherence scoring witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_mua_coherence_request,
+            "mua_coherence_witness requires subject, input, and source", Response)
+    ).
+
+dispatch_request(grounding_inference_witness, Id, Request, Response) :-
+    (   get_dict(metaphor, Request, JSONMetaphor),
+        get_dict(inference, Request, JSONInference)
+    ->  json_to_term(JSONMetaphor, Metaphor),
+        json_to_term(JSONInference, Inference),
+        (   grounding_metaphors:grounds_inference_witness(
+                Metaphor,
+                Inference,
+                _GroundingPath,
+                Witness
+            )
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_grounding_inference_witness,
+                "grounding_inference_witness found no grounding witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_grounding_inference_request,
+            "grounding_inference_witness requires metaphor and inference",
+            Response)
+    ).
+
+dispatch_request(target_expressive_power_witness, Id, Request, Response) :-
+    (   get_dict(target, Request, JSONTarget)
+    ->  json_to_term(JSONTarget, Target),
+        (   target_expressive_power_witness(Target, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_target_expressive_power_witness,
+                "target_expressive_power_witness found no witness for target",
+                Response)
+        )
+    ;   error_response(Id, missing_target,
+            "target_expressive_power_witness requires target", Response)
+    ).
+
+dispatch_request(lesson_misconception_incompatibility_witness, Id, Request, Response) :-
+    (   get_dict(lesson_code, Request, LessonCode),
+        get_dict(name, Request, JSONName)
+    ->  json_to_term(JSONName, Name),
+        (   get_dict(operation, Request, JSONOperation)
+        ->  json_to_term(JSONOperation, Operation)
+        ;   true
+        ),
+        (   lesson_misconception_incompatibility_witness(LessonCode,
+                                                         Operation,
+                                                         Name,
+                                                         Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_lesson_misconception_incompatibility_witness,
+                "lesson_misconception_incompatibility_witness found no lesson witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_lesson_misconception_incompatibility_request,
+            "lesson_misconception_incompatibility_witness requires lesson_code and name",
+            Response)
+    ).
+
+dispatch_request(geometry_material_profile_witness, Id, Request, Response) :-
+    (   get_dict(concept, Request, JSONConcept)
+    ->  json_to_term(JSONConcept, Concept),
+        (   material_inference_profile_witness(Concept, Profile, Witness)
+        ->  json_safe(_{profile: Profile, witness: Witness}, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_material_profile_witness,
+                "geometry_material_profile_witness found no profile witness for concept",
+                Response)
+        )
+    ;   error_response(Id, missing_concept,
+            "geometry_material_profile_witness requires concept", Response)
+    ).
+
+dispatch_request(geometry_quadrilateral_entailment_witness, Id, Request, Response) :-
+    (   get_dict(entailer, Request, JSONEntailer),
+        get_dict(entailed, Request, JSONEntailed)
+    ->  json_to_term(JSONEntailer, Entailer),
+        json_to_term(JSONEntailed, Entailed),
+        (   quad_entails_witness(Entailer, Entailed, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_quadrilateral_entailment_witness,
+                "geometry_quadrilateral_entailment_witness found no entailment witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_geometry_quadrilateral_entailment_request,
+            "geometry_quadrilateral_entailment_witness requires entailer and entailed",
+            Response)
+    ).
+
+dispatch_request(geometry_strength_lift_coverage_witness, Id, _Request, Response) :-
+    (   strength_lift_coverage_witness(Coverage, Witness)
+    ->  json_safe(_{coverage: Coverage, witness: Witness}, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_geometry_strength_lift_coverage_witness,
+            "geometry_strength_lift_coverage_witness found no coverage witness",
+            Response)
+    ).
+
+dispatch_request(geometry_van_hiele_material_witness, Id, Request, Response) :-
+    (   get_dict(claim_id, Request, JSONClaimId)
+    ->  json_to_term(JSONClaimId, ClaimId),
+        (   van_hiele_material_inference_by_id_witness(ClaimId, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_van_hiele_material_witness,
+                "geometry_van_hiele_material_witness found no material witness for claim_id",
+                Response)
+        )
+    ;   error_response(Id, missing_claim_id,
+            "geometry_van_hiele_material_witness requires claim_id", Response)
+    ).
+
+dispatch_request(geometry_van_hiele_marker_witness, Id, Request, Response) :-
+    (   get_dict(concept, Request, JSONConcept),
+        get_dict(level, Request, Level)
+    ->  json_to_term(JSONConcept, Concept),
+        (   van_hiele_marker_witness(Concept, Level, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_van_hiele_marker_witness,
+                "geometry_van_hiele_marker_witness found no marker witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_geometry_van_hiele_marker_request,
+            "geometry_van_hiele_marker_witness requires concept and level",
+            Response)
+    ).
+
+dispatch_request(geometry_cross_link_witness, Id, Request, Response) :-
+    (   get_dict(source, Request, JSONSource),
+        get_dict(relation, Request, JSONRelation),
+        get_dict(target, Request, JSONTarget)
+    ->  json_to_term(JSONSource, Source),
+        json_to_term(JSONRelation, Relation),
+        json_to_term(JSONTarget, Target),
+        (   get_dict(status, Request, JSONStatus)
+        ->  json_to_term(JSONStatus, Status)
+        ;   Status = entitled
+        ),
+        (   cross_link_witness(Source, Relation, Target, Status, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_cross_link_witness,
+                "geometry_cross_link_witness found no cross-link witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_geometry_cross_link_request,
+            "geometry_cross_link_witness requires source, relation, and target",
+            Response)
+    ).
+
+dispatch_request(geometry_developmental_arc_witness, Id, Request, Response) :-
+    (   get_dict(arc_id, Request, JSONArcId)
+    ->  json_to_term(JSONArcId, ArcId),
+        (   developmental_arc_witness(ArcId, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_developmental_arc_witness,
+                "geometry_developmental_arc_witness found no arc witness",
+                Response)
+        )
+    ;   error_response(Id, missing_arc_id,
+            "geometry_developmental_arc_witness requires arc_id", Response)
+    ).
+
+dispatch_request(geometry_attribute_material_witness, Id, Request, Response) :-
+    (   get_dict(claim_id, Request, JSONClaimId)
+    ->  json_to_term(JSONClaimId, ClaimId),
+        (   attribute_material_claim_witness(ClaimId, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_attribute_material_witness,
+                "geometry_attribute_material_witness found no material witness",
+                Response)
+        )
+    ;   error_response(Id, missing_claim_id,
+            "geometry_attribute_material_witness requires claim_id", Response)
+    ).
+
+dispatch_request(geometry_similarity_material_witness, Id, Request, Response) :-
+    (   get_dict(claim_id, Request, JSONClaimId)
+    ->  json_to_term(JSONClaimId, ClaimId),
+        (   similarity_material_claim_witness(ClaimId, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_similarity_material_witness,
+                "geometry_similarity_material_witness found no material witness",
+                Response)
+        )
+    ;   error_response(Id, missing_claim_id,
+            "geometry_similarity_material_witness requires claim_id", Response)
+    ).
+
+dispatch_request(geometry_pythagorean_material_witness, Id, Request, Response) :-
+    (   get_dict(claim_id, Request, JSONClaimId)
+    ->  json_to_term(JSONClaimId, ClaimId),
+        (   pythagorean_material_claim_witness(ClaimId, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_pythagorean_material_witness,
+                "geometry_pythagorean_material_witness found no material witness",
+                Response)
+        )
+    ;   error_response(Id, missing_claim_id,
+            "geometry_pythagorean_material_witness requires claim_id", Response)
+    ).
+
+dispatch_request(geometry_van_hiele_level_material_witness, Id, Request, Response) :-
+    (   get_dict(claim_id, Request, JSONClaimId)
+    ->  json_to_term(JSONClaimId, ClaimId),
+        (   van_hiele_level_material_claim_witness(ClaimId, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_van_hiele_level_material_witness,
+                "geometry_van_hiele_level_material_witness found no material witness",
+                Response)
+        )
+    ;   error_response(Id, missing_claim_id,
+            "geometry_van_hiele_level_material_witness requires claim_id",
+            Response)
+    ).
+
+dispatch_request(geometry_measurement_misconception_witness, Id, Request, Response) :-
+    (   get_dict(id_value, Request, JSONMisconceptionId)
+    ->  json_to_term(JSONMisconceptionId, MisconceptionId),
+        (   measurement_misconception_witness(MisconceptionId, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_measurement_misconception_witness,
+                "geometry_measurement_misconception_witness found no misconception witness",
+                Response)
+        )
+    ;   error_response(Id, missing_id_value,
+            "geometry_measurement_misconception_witness requires id_value",
+            Response)
+    ).
+
+dispatch_request(geometry_n103_bootstrap_witness, Id, Request, Response) :-
+    (   get_dict(bootstrap_id, Request, JSONBootstrapId)
+    ->  json_to_term(JSONBootstrapId, BootstrapId),
+        (   n103_bootstrap_witness(BootstrapId, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_n103_bootstrap_witness,
+                "geometry_n103_bootstrap_witness found no bootstrap witness",
+                Response)
+        )
+    ;   error_response(Id, missing_bootstrap_id,
+            "geometry_n103_bootstrap_witness requires bootstrap_id",
+            Response)
+    ).
+
+dispatch_request(geometry_van_de_walle_bootstrap_witness, Id, Request, Response) :-
+    (   get_dict(bootstrap_id, Request, JSONBootstrapId)
+    ->  json_to_term(JSONBootstrapId, BootstrapId),
+        (   van_de_walle_bootstrap_witness(BootstrapId, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_van_de_walle_bootstrap_witness,
+                "geometry_van_de_walle_bootstrap_witness found no bootstrap witness",
+                Response)
+        )
+    ;   error_response(Id, missing_bootstrap_id,
+            "geometry_van_de_walle_bootstrap_witness requires bootstrap_id",
+            Response)
+    ).
+
+dispatch_request(geometry_shape_recognition_material_witness, Id, Request, Response) :-
+    (   get_dict(claim_id, Request, JSONClaimId)
+    ->  json_to_term(JSONClaimId, ClaimId),
+        (   shape_recognition_material_claim_witness(ClaimId, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_shape_recognition_material_witness,
+                "geometry_shape_recognition_material_witness found no material witness",
+                Response)
+        )
+    ;   error_response(Id, missing_claim_id,
+            "geometry_shape_recognition_material_witness requires claim_id",
+            Response)
+    ).
+
+dispatch_request(geometry_coordinate_material_witness, Id, Request, Response) :-
+    (   get_dict(claim_id, Request, JSONClaimId)
+    ->  json_to_term(JSONClaimId, ClaimId),
+        (   coordinate_geometry_material_claim_witness(ClaimId, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_coordinate_material_witness,
+                "geometry_coordinate_material_witness found no material witness",
+                Response)
+        )
+    ;   error_response(Id, missing_claim_id,
+            "geometry_coordinate_material_witness requires claim_id",
+            Response)
+    ).
+
+dispatch_request(geometry_angle_material_witness, Id, Request, Response) :-
+    (   get_dict(claim_id, Request, JSONClaimId)
+    ->  json_to_term(JSONClaimId, ClaimId),
+        (   angle_material_claim_witness(ClaimId, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_angle_material_witness,
+                "geometry_angle_material_witness found no material witness",
+                Response)
+        )
+    ;   error_response(Id, missing_claim_id,
+            "geometry_angle_material_witness requires claim_id",
+            Response)
+    ).
+
+dispatch_request(geometry_area_perimeter_material_witness, Id, Request, Response) :-
+    (   get_dict(claim_id, Request, JSONClaimId)
+    ->  json_to_term(JSONClaimId, ClaimId),
+        (   area_perimeter_material_claim_witness(ClaimId, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_area_perimeter_material_witness,
+                "geometry_area_perimeter_material_witness found no material witness",
+                Response)
+        )
+    ;   error_response(Id, missing_claim_id,
+            "geometry_area_perimeter_material_witness requires claim_id",
+            Response)
+    ).
+
+dispatch_request(geometry_volume_surface_area_material_witness, Id, Request, Response) :-
+    (   get_dict(claim_id, Request, JSONClaimId)
+    ->  json_to_term(JSONClaimId, ClaimId),
+        (   volume_surface_area_material_claim_witness(ClaimId, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_volume_surface_area_material_witness,
+                "geometry_volume_surface_area_material_witness found no material witness",
+                Response)
+        )
+    ;   error_response(Id, missing_claim_id,
+            "geometry_volume_surface_area_material_witness requires claim_id",
+            Response)
+    ).
+
+dispatch_request(geometry_transformation_material_witness, Id, Request, Response) :-
+    (   get_dict(claim_id, Request, JSONClaimId)
+    ->  json_to_term(JSONClaimId, ClaimId),
+        (   transformation_material_claim_witness(ClaimId, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_transformation_material_witness,
+                "geometry_transformation_material_witness found no material witness",
+                Response)
+        )
+    ;   error_response(Id, missing_claim_id,
+            "geometry_transformation_material_witness requires claim_id",
+            Response)
+    ).
+
+dispatch_request(geometry_classification_material_witness, Id, Request, Response) :-
+    (   get_dict(claim_id, Request, JSONClaimId)
+    ->  json_to_term(JSONClaimId, ClaimId),
+        (   classification_material_claim_witness(ClaimId, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_classification_material_witness,
+                "geometry_classification_material_witness found no material witness",
+                Response)
+        )
+    ;   error_response(Id, missing_claim_id,
+            "geometry_classification_material_witness requires claim_id",
+            Response)
+    ).
+
+dispatch_request(geometry_pck_classification_witness, Id, Request, Response) :-
+    (   get_dict(concept, Request, JSONConcept)
+    ->  json_to_term(JSONConcept, Concept),
+        (   pck_synthesis_witness(Concept, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_pck_classification_witness,
+                "geometry_pck_classification_witness found no synthesis witness",
+                Response)
+        )
+    ;   error_response(Id, missing_concept,
+            "geometry_pck_classification_witness requires concept",
+            Response)
+    ).
+
+dispatch_request(geometry_measuring_stick_metaphor_witness, Id, Request, Response) :-
+    (   get_dict(concept, Request, JSONConcept),
+        get_dict(metaphor, Request, JSONMetaphor)
+    ->  json_to_term(JSONConcept, Concept),
+        json_to_term(JSONMetaphor, Metaphor),
+        (   measuring_stick_metaphor_witness(Concept, Metaphor, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_measuring_stick_metaphor_witness,
+                "geometry_measuring_stick_metaphor_witness found no metaphor witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_measuring_stick_metaphor_request,
+            "geometry_measuring_stick_metaphor_witness requires concept and metaphor",
+            Response)
+    ).
+
+dispatch_request(geometry_lakoff_nunez_metaphor_witness, Id, Request, Response) :-
+    (   get_dict(concept, Request, JSONConcept),
+        get_dict(metaphor, Request, JSONMetaphor)
+    ->  json_to_term(JSONConcept, Concept),
+        json_to_term(JSONMetaphor, Metaphor),
+        (   lakoff_nunez_metaphor_witness(Concept, Metaphor, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_lakoff_nunez_metaphor_witness,
+                "geometry_lakoff_nunez_metaphor_witness found no metaphor witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_lakoff_nunez_metaphor_request,
+            "geometry_lakoff_nunez_metaphor_witness requires concept and metaphor",
+            Response)
+    ).
+
+dispatch_request(geometry_synthesizer_anchor_material_witness, Id, Request, Response) :-
+    (   get_dict(claim_id, Request, JSONClaimId)
+    ->  json_to_term(JSONClaimId, ClaimId),
+        (   synthesizer_anchor_material_witness(ClaimId, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_synthesizer_anchor_material_witness,
+                "geometry_synthesizer_anchor_material_witness found no material witness",
+                Response)
+        )
+    ;   error_response(Id, missing_claim_id,
+            "geometry_synthesizer_anchor_material_witness requires claim_id",
+            Response)
+    ).
+
+dispatch_request(geometry_synthesizer_triangulation_witness, Id, Request, Response) :-
+    (   get_dict(concept, Request, JSONConcept)
+    ->  json_to_term(JSONConcept, Concept),
+        (   synthesizer_concept_triangulation_witness(Concept, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_synthesizer_triangulation_witness,
+                "geometry_synthesizer_triangulation_witness found no concept witness",
+                Response)
+        )
+    ;   error_response(Id, missing_concept,
+            "geometry_synthesizer_triangulation_witness requires concept",
+            Response)
+    ).
+
+dispatch_request(geometry_ccss_standard_witness, Id, Request, Response) :-
+    (   get_dict(concept, Request, JSONConcept),
+        get_dict(code, Request, Code)
+    ->  json_to_term(JSONConcept, Concept),
+        (   ccss_geometry_standard_witness(Concept, Code, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_ccss_standard_witness,
+                "geometry_ccss_standard_witness found no standard witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_geometry_ccss_standard_request,
+            "geometry_ccss_standard_witness requires concept and code",
+            Response)
+    ).
+
+dispatch_request(geometry_indiana_standard_witness, Id, Request, Response) :-
+    (   get_dict(concept, Request, JSONConcept),
+        get_dict(code, Request, Code)
+    ->  json_to_term(JSONConcept, Concept),
+        (   indiana_geometry_standard_witness(Concept, Code, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_indiana_standard_witness,
+                "geometry_indiana_standard_witness found no standard witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_geometry_indiana_standard_request,
+            "geometry_indiana_standard_witness requires concept and code",
+            Response)
+    ).
+
+dispatch_request(geometry_im_grade8_lesson_standard_witness, Id, Request, Response) :-
+    (   get_dict(concept, Request, JSONConcept),
+        get_dict(code, Request, Code)
+    ->  json_to_term(JSONConcept, Concept),
+        (   im_grade8_lesson_standard_witness(Concept, Code, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_im_grade8_lesson_standard_witness,
+                "geometry_im_grade8_lesson_standard_witness found no lesson witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_geometry_im_grade8_lesson_standard_request,
+            "geometry_im_grade8_lesson_standard_witness requires concept and code",
+            Response)
+    ).
+
+dispatch_request(geometry_im_grade7_lesson_standard_witness, Id, Request, Response) :-
+    (   get_dict(concept, Request, JSONConcept),
+        get_dict(code, Request, Code)
+    ->  json_to_term(JSONConcept, Concept),
+        (   im_grade7_lesson_standard_witness(Concept, Code, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_im_grade7_lesson_standard_witness,
+                "geometry_im_grade7_lesson_standard_witness found no lesson witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_geometry_im_grade7_lesson_standard_request,
+            "geometry_im_grade7_lesson_standard_witness requires concept and code",
+            Response)
+    ).
+
+dispatch_request(geometry_im_grade6_lesson_standard_witness, Id, Request, Response) :-
+    (   get_dict(concept, Request, JSONConcept),
+        get_dict(code, Request, Code)
+    ->  json_to_term(JSONConcept, Concept),
+        (   im_grade6_lesson_standard_witness(Concept, Code, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_im_grade6_lesson_standard_witness,
+                "geometry_im_grade6_lesson_standard_witness found no lesson witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_geometry_im_grade6_lesson_standard_request,
+            "geometry_im_grade6_lesson_standard_witness requires concept and code",
+            Response)
+    ).
+
+dispatch_request(geometry_im_grade5_standard_anchor_witness, Id, Request, Response) :-
+    (   get_dict(concept, Request, JSONConcept),
+        get_dict(framework, Request, JSONFramework),
+        get_dict(code, Request, Code)
+    ->  json_to_term(JSONConcept, Concept),
+        json_to_term(JSONFramework, Framework),
+        (   im_grade5_standard_anchor_witness(Concept, Framework, Code, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_geometry_im_grade5_standard_anchor_witness,
+                "geometry_im_grade5_standard_anchor_witness found no standard witness",
+                Response)
+        )
+    ;   error_response(Id, malformed_geometry_im_grade5_standard_anchor_request,
+            "geometry_im_grade5_standard_anchor_witness requires concept, framework, and code",
+            Response)
+    ).
+
+dispatch_request(geometry, Id, Request, Response) :-
+    (   get_dict(predicate, Request, Predicate0),
+        get_dict(args, Request, Args)
+    ->  atom_string(Predicate, Predicate0),
+        dispatch_geometry(Predicate, Args, Id, Response)
+    ;   error_response(Id, malformed_geometry_request,
+            "geometry requires predicate and args", Response)
+    ).
+
+dispatch_request(diagnose_error, Id, Request, Response) :-
+    (   get_dict(domain, Request, DomainStr),
+        get_dict(input, Request, JSONInput),
+        get_dict(got, Request, JSONGot)
+    ->  atom_string(Domain, DomainStr),
+        json_to_term(JSONInput, Input),
+        json_to_term(JSONGot, Got),
+        findall(Match, diagnose_and_format(Domain, Input, Got, Match), Matches),
+        ok_response(Id, Matches, Response)
+    ;   error_response(Id, malformed_diagnose_request,
+            "diagnose_error requires domain, input, and got", Response)
+    ).
+
+dispatch_request(query_misconception, Id, Request, Response) :-
+    (   get_dict_opt(domain, Request, DomainVal) -> json_to_term(DomainVal, Domain) ; true ),
+    (   get_dict_opt(description, Request, DescVal) -> json_to_term(DescVal, Description) ; true ),
+    (   get_dict_opt(source, Request, SrcVal) -> json_to_term(SrcVal, Source) ; true ),
+    findall(Match, query_and_format(Domain, Description, Source, Match), Matches),
+    ok_response(Id, Matches, Response).
+
+dispatch_request(monitoring_chart_export, Id, Request, Response) :-
+    (   get_dict(lesson_code, Request, LessonCode0)
+    ->  atom_string(LessonCode, LessonCode0),
+        (   monitoring_chart_export_dict(LessonCode, Result)
+        ->  ok_response(Id, Result, Response)
+        ;   error_response(Id, unknown_lesson_code,
+                "monitoring_chart_export found no chart for lesson_code", Response)
+        )
+    ;   error_response(Id, missing_lesson_code,
+            "monitoring_chart_export requires lesson_code", Response)
+    ).
+
+dispatch_request(ranked_figures, Id, Request, Response) :-
+    (   get_dict(lesson_code, Request, LessonCode0)
+    ->  atom_string(LessonCode, LessonCode0),
+        (   monitoring_chart_figure_export(LessonCode, Result)
+        ->  ok_response(Id, Result, Response)
+        ;   error_response(Id, unknown_lesson_code,
+                "ranked_figures found no selector candidates for lesson_code", Response)
+        )
+    ;   error_response(Id, missing_lesson_code,
+            "ranked_figures requires lesson_code", Response)
+    ).
+
+dispatch_request(field_context, Id, Request, Response) :-
+    (   get_dict(lesson_code, Request, LessonCode0)
+    ->  atom_string(LessonCode, LessonCode0),
+        (   field_context:field_context_dict(LessonCode, Result)
+        ->  ok_response(Id, Result, Response)
+        ;   error_response(Id, unknown_lesson_code,
+                "field_context found no context for lesson_code", Response)
+        )
+    ;   error_response(Id, missing_lesson_code,
+            "field_context requires lesson_code", Response)
+    ).
+
+dispatch_request(field_connectivity_audit, Id, _Request, Response) :-
+    field_context:field_connectivity_audit_dict(Result),
+    ok_response(Id, Result, Response).
+
+%% render_coverage: the four-lane misconception render-coverage report.
+%% Stateless read over the registry and the render lanes; counts are computed
+%% live in this process, so an installation carrying the local misconception
+%% CSV corpus reports its larger registry through the same op.
+dispatch_request(render_coverage, Id, _Request, Response) :-
+    misconception_render_coverage:render_coverage_report_dict(Result),
+    ok_response(Id, Result, Response).
+
+dispatch_request(expressive_power, Id, Request, Response) :-
+    (   get_dict(lesson, Request, Lesson0)
+    ->  atom_string(Code, Lesson0),
+        (   lesson_expressive_power_for(Code, Report)
+        ->  Resolved = true
+        ;   Report = none, Resolved = false
+        ),
+        expressive_power_export_dict(Report, Dict),
+        atom_string(Code, CodeString),
+        ok_response(Id, _{lesson: CodeString, resolved: Resolved, expressive_power: Dict}, Response)
+    ;   error_response(Id, missing_lesson,
+            "expressive_power requires lesson", Response)
+    ).
+
+dispatch_request(list_strategies, Id, _Request, Response) :-
+    hermes_encyclopedia:strategy_catalog_dict(Dict),
+    ok_response(Id, Dict, Response).
+
+dispatch_request(strategy_trace, Id, Request, Response) :-
+    (   get_dict(strategy, Request, Strategy0)
+    ->  atom_string(Strategy, Strategy0),
+        (   get_dict(input, Request, Input0), is_dict(Input0)
+        ->  Input = Input0
+        ;   Input = _{}
+        ),
+        hermes_encyclopedia:strategy_trace_dict(Strategy, Input, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, missing_strategy,
+            "strategy_trace requires strategy", Response)
+    ).
+
+dispatch_request(misconception_jumps_witness, Id, Request, Response) :-
+    (   get_dict(operation, Request, JSONOperation),
+        get_dict(deformation, Request, JSONDeformation),
+        get_dict(a, Request, _),
+        get_dict(b, Request, _)
+    ->  json_to_term(JSONOperation, Operation0),
+        json_to_term(JSONDeformation, Deformation0),
+        string_or_atom_to_atom(Operation0, Operation),
+        string_or_atom_to_atom(Deformation0, Deformation),
+        request_integer(Request, a, 0, A),
+        request_integer(Request, b, 0, B),
+        (   visualization:misconception_jumps_witness(Operation, Deformation, A, B, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_misconception_jumps_witness,
+                "misconception_jumps_witness found no drawable number-line deformation trace",
+                Response)
+        )
+    ;   error_response(Id, malformed_misconception_jumps_request,
+            "misconception_jumps_witness requires operation, deformation, a, and b",
+            Response)
+    ).
+
+dispatch_request(balance_solve_witness, Id, Request, Response) :-
+    (   get_dict(a, Request, _),
+        get_dict(b, Request, _),
+        get_dict(c, Request, _)
+    ->  request_integer(Request, a, 0, A),
+        request_integer(Request, b, 0, B),
+        request_integer(Request, c, 0, C),
+        (   balance_scale_scene:balance_solve_witness(A, B, C, Witness)
+        ->  json_safe(Witness, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_balance_solve_witness,
+                "balance_solve_witness found no non-negative integer one-unknown solution",
+                Response)
+        )
+    ;   error_response(Id, malformed_balance_solve_request,
+            "balance_solve_witness requires a, b, and c",
+            Response)
+    ).
+
+dispatch_request(representation_check, Id, Request, Response) :-
+    request_op_atom(Request, representation, base_ten_blocks, Representation),
+    request_op_atom(Request, mode, productive, Mode),
+    (   representation_task(Request, Task)
+    ->  representation_check_dict(Mode, Representation, Task, Dict0),
+        json_safe(Dict0, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, malformed_representation_check_request,
+            "representation_check requires a supported task plus its numeric fields",
+            Response)
+    ).
+
+dispatch_request(representation_candidates, Id, Request, Response) :-
+    request_lesson_context(Request, LessonContext),
+    request_lesson_selector(Request, SelectorSource),
+    request_string_atom(Request, strategy, unknown_strategy, Strategy),
+    request_string_atom(Request, misconception, none, Misconception),
+    (   representation_task(Request, Task)
+    ->  representation_candidates_dict(
+            SelectorSource,
+            LessonContext,
+            Task,
+            Strategy,
+            Misconception,
+            Dict0
+        ),
+        json_safe(Dict0, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, malformed_representation_candidates_request,
+            "representation_candidates requires a supported task plus its numeric fields",
+            Response)
+    ).
+
+dispatch_request(representation_spec_check, Id, Request, Response) :-
+    request_op_atom(Request, representation, number_line, Representation),
+    (   representation_render_spec(Request, Representation, Spec)
+    ->  (   representation_spec_check_dict(Request, Representation, Spec, Dict0)
+        ->  json_safe(Dict0, Dict),
+            ok_response(Id, Dict, Response)
+        ;   error_response(Id, no_representation_spec_denotation,
+                "representation_spec_check could not infer a denotation or deformation evidence",
+                Response)
+        )
+    ;   error_response(Id, malformed_representation_spec_request,
+            "representation_spec_check requires a supported representation and render spec fields",
+            Response)
+    ).
+
+% Lay out one fraction automaton as bars (v2 frames). Mirrors the viewer's
+% live contract: kind selects the automaton, n/d feed the count/base.
+dispatch_request(fraction_render, Id, Request, Response) :-
+    (   get_dict(kind, Request, Kind0)
+    ->  string_or_atom_to_atom(Kind0, Kind),
+        fraction_render_dispatch(Kind, Id, Request, Response)
+    ;   error_response(Id, missing_kind,
+            "fraction_render requires kind", Response)
+    ).
+
+fraction_render_dispatch(arith, Id, Request, Response) :-
+    !,
+    request_op_atom(Request, operation, add, Op),
+    request_integer(Request, na, 1, NA),
+    request_integer(Request, da, 3, DA),
+    request_integer(Request, nb, 1, NB),
+    request_integer(Request, db, 4, DB),
+    fraction_bars_scene:fraction_arith_json(Op, NA, DA, NB, DB, Dict),
+    ok_response(Id, Dict, Response).
+fraction_render_dispatch(add_numerators_and_denominators, Id, Request, Response) :-
+    !,
+    request_integer(Request, na, 1, NA),
+    request_integer(Request, da, 3, DA),
+    request_integer(Request, nb, 1, NB),
+    request_integer(Request, db, 4, DB),
+    fraction_bars_scene:fraction_componentwise_add_json(NA, DA, NB, DB, Dict),
+    ok_response(Id, Dict, Response).
+fraction_render_dispatch(Kind, Id, Request, Response) :-
+    request_integer(Request, n, 5, N),
+    request_integer(Request, d, 3, D),
+    fraction_bars_scene:fraction_render_json(Kind, N, D, Dict),
+    ok_response(Id, Dict, Response).
+
+% Lay out the productive vs deformation comparison for a fraction scheme.
+dispatch_request(fraction_compare, Id, Request, Response) :-
+    (   get_dict(kind, Request, Kind0)
+    ->  atom_string(Kind, Kind0),
+        request_integer(Request, a, 5, A),
+        request_integer(Request, b, 3, B),
+        fraction_bars_scene:fraction_compare_json(Kind, A, B, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, missing_kind,
+            "fraction_compare requires kind", Response)
+    ).
+
+% =============================================================================
+% Visualization render ops (Goal H / Gate E seam).
+%
+% Each op is a thin pass-through to a witness-walking scene compiler in the
+% render/ directory, mirroring fraction_render. The compiler owns the geometry;
+% the worker parses the request into the compiler's Spec, calls *_render_json/2,
+% then threads the three additive document fields the frozen render contract
+% names (doc.grounding §1.4a, doc.tuple §1.4b, doc.teacher §1.4c) onto the
+% returned document via enrich_render_doc/3 — except where the compiler already
+% emitted that field, in which case the existing value is kept (a compiler that
+% sources a field itself is authoritative; the worker only fills gaps).
+%
+% The practice atom that selects the L&N metaphor footer and the teacher layer
+% is derived per (op, spec) by render_practice/3, the worker-side counterpart of
+% each compiler's own spec_practice mapping. A spec that maps to no practice
+% (the inferentially hollow deformation) carries no grounding/teacher object —
+% its absence is the claim, per the contract.
+% =============================================================================
+
+dispatch_request(area_render, Id, Request, Response) :-
+    area_spec(Request, Spec),
+    area_model_scene:area_render_json(Spec, Dict0),
+    enrich_render_doc(area_render, Spec, Dict0, Dict),
+    ok_response(Id, Dict, Response).
+
+dispatch_request(area_compare, Id, Request, Response) :-
+    request_integer(Request, na, 1, NA),
+    request_integer(Request, da, 2, DA),
+    request_integer(Request, nb, 1, NB),
+    request_integer(Request, db, 3, DB),
+    Spec = area_compare(NA, DA, NB, DB),
+    area_model_scene:area_compare_json(Spec, Dict0),
+    enrich_render_doc(area_compare, Spec, Dict0, Dict),
+    ok_response(Id, Dict, Response).
+
+dispatch_request(base_ten_render, Id, Request, Response) :-
+    base_ten_spec(Request, Spec),
+    base_ten_scene:base_ten_render_json(Spec, Dict0),
+    enrich_render_doc(base_ten_render, Spec, Dict0, Dict),
+    ok_response(Id, Dict, Response).
+
+dispatch_request(ace_of_bases_render, Id, Request, Response) :-
+    base_ten_spec(Request, Spec),
+    base_ten_scene:base_ten_render_json(Spec, Dict0),
+    enrich_render_doc(ace_of_bases_render, Spec, Dict0, Dict),
+    ok_response(Id, Dict, Response).
+
+dispatch_request(unit_echo_render, Id, Request, Response) :-
+    request_integer(Request, base, 7, Base),
+    request_integer(Request, iterations, Base, Iterations),
+    (   unit_echo_scene:unit_echo_render_json(Base, Iterations, Dict0)
+    ->  Spec = unit_echo(Base, Iterations),
+        enrich_render_doc(unit_echo_render, Spec, Dict0, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, invalid_unit_echo,
+            "unit_echo_render requires base >= 2 and iterations >= 1", Response)
+    ).
+
+% The base-ten deformation path (dropped carry) is a render of the deformation
+% spec; it maps to no practice (hollow), so no grounding/teacher footer.
+dispatch_request(base_ten_compare, Id, Request, Response) :-
+    request_integer(Request, a, 28, A),
+    request_integer(Request, b, 47, B),
+    request_integer(Request, base, 10, Base),
+    Spec = add_with_dropped_carry(A, B, Base),
+    base_ten_scene:base_ten_render_json(Spec, Dict0),
+    enrich_render_doc(base_ten_compare, Spec, Dict0, Dict),
+    ok_response(Id, Dict, Response).
+
+dispatch_request(set_grouping_render, Id, Request, Response) :-
+    set_grouping_spec(Request, Spec),
+    set_grouping_scene:set_grouping_render_json(Spec, Dict0),
+    enrich_render_doc(set_grouping_render, Spec, Dict0, Dict),
+    ok_response(Id, Dict, Response).
+
+dispatch_request(set_grouping_compare, Id, Request, Response) :-
+    request_integer(Request, a, 5, A),
+    request_integer(Request, b, 3, B),
+    Spec = unfair_compare(A, B),
+    set_grouping_scene:set_grouping_render_json(Spec, Dict0),
+    enrich_render_doc(set_grouping_compare, Spec, Dict0, Dict),
+    ok_response(Id, Dict, Response).
+
+dispatch_request(balance_render, Id, Request, Response) :-
+    request_integer(Request, a, 2, A),
+    request_integer(Request, b, 3, B),
+    request_integer(Request, c, 11, C),
+    Spec = solve_linear(A, B, C),
+    balance_scale_scene:balance_render_json(Spec, Dict0),
+    enrich_render_doc(balance_render, Spec, Dict0, Dict),
+    ok_response(Id, Dict, Response).
+
+dispatch_request(balance_compare, Id, Request, Response) :-
+    request_integer(Request, a, 2, A),
+    request_integer(Request, b, 3, B),
+    request_integer(Request, c, 11, C),
+    Spec = solve_linear(A, B, C),
+    balance_scale_scene:balance_compare_json(Spec, Dict0),
+    enrich_render_doc(balance_compare, Spec, Dict0, Dict),
+    ok_response(Id, Dict, Response).
+
+dispatch_request(number_line_render, Id, Request, Response) :-
+    number_line_spec(Request, Spec),
+    number_line_scene:number_line_render_json(Spec, Dict0),
+    enrich_render_doc(number_line_render, Spec, Dict0, Dict),
+    ok_response(Id, Dict, Response).
+
+dispatch_request(place_value_chart_render, Id, Request, Response) :-
+    place_value_chart_spec(Request, Spec),
+    place_value_chart_scene:place_value_chart_render_json(Spec, Dict0),
+    enrich_render_doc(place_value_chart_render, Spec, Dict0, Dict),
+    ok_response(Id, Dict, Response).
+
+dispatch_request(hybridization_render, Id, Request, Response) :-
+    hybridization_spec(Request, Spec),
+    hybridization_scene:hybridization_render_json(Spec, Dict0),
+    enrich_render_doc(hybridization_render, Spec, Dict0, Dict),
+    ok_response(Id, Dict, Response).
+
+dispatch_request(number_line_compare, Id, Request, Response) :-
+    request_op_atom(Request, operation, addition, Op),
+    request_integer(Request, a, 28, A),
+    request_integer(Request, b, 47, B),
+    Spec = rounding_compare(Op, A, B),
+    number_line_scene:number_line_compare_json(Spec, Dict0),
+    enrich_render_doc(number_line_compare, Spec, Dict0, Dict),
+    ok_response(Id, Dict, Response).
+
+% --- set_base / get_base: shift the operative base (Ace-of-Base base-invariance) ---
+% cgi_base:set_cgi_base/1 (strategies/math/cgi_base.pl) is the single source of
+% truth for the operative base; these ops surface base-shifting so the base-ten
+% visualizer can show the same make-base move at base 10 and base 12 (the
+% base-invariance the synthesis branch proved). The operative base is NOT a
+% fraction denominator (cgi_base.pl header makes the distinction).
+dispatch_request(set_base, Id, Request, Response) :-
+    request_integer(Request, base, 10, Base),
+    (   integer(Base), Base >= 2
+    ->  cgi_base:set_cgi_base(Base),
+        cgi_base:current_cgi_base(Now),
+        ok_response(Id, _{operative_base: Now}, Response)
+    ;   error_response(Id, invalid_base,
+            "set_base requires an integer base >= 2", Response)
+    ).
+dispatch_request(get_base, Id, _Request, Response) :-
+    cgi_base:current_cgi_base(Base),
+    ok_response(Id, _{operative_base: Base}, Response).
+
+% --- teacher_layer (H8): the teacher panel for a named practice ------------
+% Composes the standard, embodied source-practice gloss, incompatibility
+% penumbra, and break/repair channels over witnesses that already exist.
+dispatch_request(teacher_layer, Id, Request, Response) :-
+    (   request_practice(Request, Practice)
+    ->  (   teacher_layer:teacher_layer(Practice, Dict0)
+        ->  % The witness is internal provenance (which channels populated, the
+            % practice atom). It is not teacher-facing copy and the drawer never
+            % reads it; drop it so the public surface carries only the humanized
+            % display fields, not raw functor handles.
+            ( del_dict(witness, Dict0, _, Dict1) -> true ; Dict1 = Dict0 ),
+            json_safe(Dict1, Dict),
+            ok_response(Id, Dict, Response)
+        ;   error_response(Id, no_teacher_layer,
+                "teacher_layer found no metaphor-grounded teacher channels for this practice",
+                Response)
+        )
+    ;   error_response(Id, missing_practice,
+            "teacher_layer requires practice (a practice atom string)", Response)
+    ).
+
+% --- primitive_for_practice (H3): grounding -> visual primitive routing -----
+% Returns the visual primitive and grounding-metaphor label a practice's L&N
+% grounding selects. A practice with no L&N grounding (the hollow deformation)
+% returns no_metaphor_grounding rather than a faked primitive.
+dispatch_request(primitive_for_practice, Id, Request, Response) :-
+    (   request_practice(Request, Practice)
+    ->  (   grounding_to_primitive:primitive_for_practice_witness(Practice,
+                                                                  Primitive, Role,
+                                                                  Witness)
+        ->  json_safe(Witness, SafeWitness),
+            atom_string(Practice, PracticeStr),
+            atom_string(Primitive, PrimStr),
+            atom_string(Role, RoleStr),
+            ( get_dict(grounding_metaphor_label, Witness, Label0)
+            -> atom_string(Label0, LabelStr)
+            ;  LabelStr = null ),
+            Dict = _{ practice: PracticeStr,
+                      visual_primitive: PrimStr,
+                      grounding_metaphor_label: LabelStr,
+                      role: RoleStr,
+                      witness: SafeWitness },
+            ok_response(Id, Dict, Response)
+        ;   atom_string(Practice, PracticeStr),
+            Dict = _{ practice: PracticeStr,
+                      visual_primitive: null,
+                      grounding_metaphor_label: null,
+                      note: "no_metaphor_grounding" },
+            ok_response(Id, Dict, Response)
+        )
+    ;   error_response(Id, missing_practice,
+            "primitive_for_practice requires practice (a practice atom string)", Response)
+    ).
+
+% --- image_schema (H2): the underlying image schema for an arithmetic practice
+dispatch_request(image_schema, Id, Request, Response) :-
+    (   request_practice(Request, Practice)
+    ->  (   grounding_to_primitive:image_schema_for_practice(Practice, Schema)
+        ->  atom_string(Practice, PracticeStr),
+            atom_string(Schema, SchemaStr),
+            Dict = _{ practice: PracticeStr, image_schema: SchemaStr },
+            ok_response(Id, Dict, Response)
+        ;   atom_string(Practice, PracticeStr),
+            Dict = _{ practice: PracticeStr, image_schema: null,
+                      note: "no_image_schema_grounding" },
+            ok_response(Id, Dict, Response)
+        )
+    ;   error_response(Id, missing_practice,
+            "image_schema requires practice (a practice atom string)", Response)
+    ).
+
+% --- multiply_array_witness: the array model's own witness, exposed ----------
+% Inputs are integers; the witness takes grounded recollections, so the
+% boundary converts them (mirroring the scene compilers' to_rec boundary).
+dispatch_request(multiply_array_witness, Id, Request, Response) :-
+    request_integer(Request, rows, 3, R),
+    request_integer(Request, cols, 4, C),
+    integer_to_recollection(R, RowsRec),
+    integer_to_recollection(C, ColsRec),
+    (   standard_3_ca_3_4:multiply_array_witness(RowsRec, ColsRec, _Product, Witness)
+    ->  json_safe(Witness, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_multiply_array_witness,
+            "multiply_array_witness found no array model for the given rows/cols",
+            Response)
+    ).
+
+dispatch_request(mult_div_family_witness, Id, Request, Response) :-
+    request_integer(Request, a, 3, A),
+    request_integer(Request, b, 4, B),
+    integer_to_recollection(A, ARec),
+    integer_to_recollection(B, BRec),
+    (   standard_3_ca_3_4:mult_div_family_witness(ARec, BRec, _Product, _Facts, Witness)
+    ->  json_safe(Witness, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_mult_div_family_witness,
+            "mult_div_family_witness found no fact family for the given a/b",
+            Response)
+    ).
+
+dispatch_request(list_misconceptions, Id, Request, Response) :-
+    request_filter(Request, domain, Filter),
+    hermes_encyclopedia:misconception_catalog_dict(Filter, Dict),
+    ok_response(Id, Dict, Response).
+
+dispatch_request(list_standards, Id, Request, Response) :-
+    request_filter(Request, framework, Filter),
+    hermes_encyclopedia:standards_catalog_dict(Filter, Dict),
+    ok_response(Id, Dict, Response).
+
+dispatch_request(grounding_metaphors, Id, _Request, Response) :-
+    hermes_encyclopedia:grounding_catalog_dict(Dict),
+    ok_response(Id, Dict, Response).
+
+dispatch_request(grounding_for, Id, Request, Response) :-
+    (   get_dict(operation, Request, Operation0)
+    ->  atom_string(Operation, Operation0),
+        hermes_encyclopedia:grounding_for_operation_dict(Operation, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, missing_operation,
+            "grounding_for requires operation", Response)
+    ).
+
+dispatch_request(ground, Id, Request, Response) :-
+    (   get_dict(query, Request, Query)
+    ->  hermes_encyclopedia:ground_query_dict(Query, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, missing_query,
+            "ground requires query", Response)
+    ).
+
+dispatch_request(lit_search, Id, Request, Response) :-
+    (   get_dict(query, Request, Query)
+    ->  hermes_encyclopedia:literature_search_dict(Query, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, missing_query,
+            "lit_search requires query", Response)
+    ).
+
+dispatch_request(pml_score, Id, Request, Response) :-
+    (   get_dict(clauses, Request, Clauses),
+        is_list(Clauses)
+    ->  hermes_encyclopedia:pml_score_dict(Clauses, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, missing_clauses,
+            "pml_score requires clauses (a list of strings)", Response)
+    ).
+
+% validate_reader_axioms: SEAM 2. Compare model-emitted reader_axiom/4 facts
+% against the modal postures the named lesson's text licenses, so the Prolog
+% layer audits a PML reading rather than only re-emitting it.
+dispatch_request(validate_reader_axioms, Id, Request, Response) :-
+    (   get_dict(clauses, Request, Clauses),
+        is_list(Clauses),
+        get_dict(lesson_code, Request, LessonCode0)
+    ->  ( atom(LessonCode0) -> LessonCode = LessonCode0
+        ; atom_string(LessonCode, LessonCode0) ),
+        hermes_encyclopedia:validate_reader_axioms_dict(LessonCode, Clauses, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, missing_arguments,
+            "validate_reader_axioms requires lesson_code and clauses (a list of strings)", Response)
+    ).
+
+% --- Canonical vocabulary ops (the legal-vocabulary contract for the loop) ---
+
+% canonical_contract: the legal vocabulary — each canonical query predicate and
+% the scattered legacy functors it subsumes. The LLM-facing side reads this to
+% know which terms are legal; swipl owns the mapping.
+dispatch_request(canonical_contract, Id, _Request, Response) :-
+    (   current_predicate(canonical_all:contract/3)
+    ->  findall(_{canonical: CS, module: MS, legacy: LS},
+                ( canonical_all:contract(C, M, L),
+                  term_string(C, CS), term_string(M, MS),
+                  maplist(term_string, L, LS) ),
+                Entries),
+        length(Entries, N),
+        ok_response(Id, _{vocabulary: Entries, count: N}, Response)
+    ;   error_response(Id, canonical_unavailable,
+            "canonical vocabulary layer is not loaded", Response)
+    ).
+
+% canonical_check: judge a list of functor-name strings (as the LLM might emit)
+% against the legal vocabulary. Each is classified canonical | legacy | unknown,
+% with the canonical term it maps to. Module prefixes on legacy functors are
+% matched flexibly (bare functor/arity also matches).
+dispatch_request(canonical_check, Id, Request, Response) :-
+    (   get_dict(terms, Request, Terms), is_list(Terms)
+    ->  maplist(classify_canonical_term, Terms, Results),
+        ok_response(Id, _{results: Results}, Response)
+    ;   error_response(Id, missing_terms,
+            "canonical_check requires terms (a list of functor-name strings)", Response)
+    ).
+
+% Glyph-level notation scene. kind selects the productive write_equation lane
+% or the mirror_written deformation lane; operator is the symbol (+, -, =).
+dispatch_request(notation_render, Id, Request, Response) :-
+    (   get_dict(kind, Request, Kind0)
+    ->  string_or_atom_to_atom(Kind0, Kind),
+        notation_render_dispatch(Kind, Id, Request, Response)
+    ;   error_response(Id, missing_kind,
+            "notation_render requires kind (write_equation or mirror_written)",
+            Response)
+    ).
+
+notation_render_dispatch(write_equation, Id, Request, Response) :-
+    !,
+    request_integer(Request, a, 2, A),
+    request_integer(Request, b, 3, B),
+    request_integer(Request, r, 5, R),
+    request_op_atom(Request, operator, +, Op),
+    (   notation_scene:notation_render_json(write_equation(A, Op, B, R), Dict0)
+    ->  json_safe(Dict0, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, no_notation_scene,
+            "notation_render found no productive write_equation scene for the given fields",
+            Response)
+    ).
+notation_render_dispatch(mirror_written, Id, Request, Response) :-
+    !,
+    request_integer(Request, digit, 3, Digit),
+    request_integer(Request, a, 2, A),
+    request_integer(Request, b, 3, B),
+    request_integer(Request, r, 5, R),
+    request_op_atom(Request, operator, +, Op),
+    (   notation_scene:notation_render_json(mirror_written(Digit, A, Op, B, R), Dict0)
+    ->  json_safe(Dict0, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, no_notation_scene,
+            "notation_render found no mirror_written deformation scene for the given fields",
+            Response)
+    ).
+notation_render_dispatch(Kind, Id, _Request, Response) :-
+    format(string(Msg),
+        "notation_render kind '~w' is not supported (use write_equation or mirror_written)",
+        [Kind]),
+    error_response(Id, unsupported_notation_kind, Msg, Response).
+
+% Same-denominator fraction addition routed to a CGI additive automaton at the
+% numerator level. kind names the automaton (e.g. count_on_from_larger).
+dispatch_request(fraction_cgi_addition, Id, Request, Response) :-
+    (   get_dict(kind, Request, Kind0)
+    ->  string_or_atom_to_atom(Kind0, Kind),
+        request_integer(Request, na, 7, NA),
+        request_integer(Request, nb, 8, NB),
+        request_integer(Request, d, 10, D),
+        (   fraction_cgi_dispatch:fraction_cgi_addition(
+                Kind, fraction(NA, D), fraction(NB, D), Outcome, Annotation)
+        ->  json_safe(_{kind: Kind, outcome: Outcome, annotation: Annotation}, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_fraction_cgi_addition,
+                "fraction_cgi_addition found no CGI route for that kind and same-denominator pair",
+                Response)
+        )
+    ;   error_response(Id, missing_kind,
+            "fraction_cgi_addition requires kind (a CGI addition automaton name)",
+            Response)
+    ).
+
+% Parametric deformation chart for one IM lesson (covered: the three grade-3
+% fraction lessons IM-G3-U5-L1/L2/L15). A code outside coverage fails the
+% handler, which surfaces honestly as op_failed.
+dispatch_request(lesson_deformation_chart, Id, Request, Response) :-
+    (   get_dict(code, Request, Code0)
+    ->  atom_string(Code, Code0),
+        (   lesson_deformation_chart:monitoring_chart(Code, Chart)
+        ->  json_safe(Chart, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_deformation_chart,
+                "lesson_deformation_chart covers only the grade-3 fraction lessons; no chart for that code",
+                Response)
+        )
+    ;   error_response(Id, missing_code,
+            "lesson_deformation_chart requires code (an IM lesson code)", Response)
+    ).
+
+% The notation monitoring chart for one lesson code (183 K/G1 lessons). Mirrors
+% lesson_deformation_chart: a missing chart for the code is a clear coverage
+% error rather than a silent failure.
+dispatch_request(notation_monitoring_chart, Id, Request, Response) :-
+    (   get_dict(code, Request, Code0)
+    ->  atom_string(Code, Code0),
+        (   lesson_notation_chart:notation_monitoring_chart(Code, Chart)
+        ->  json_safe(Chart, Safe),
+            ok_response(Id, Safe, Response)
+        ;   error_response(Id, no_notation_chart,
+                "lesson_notation_chart found no notation chart for that code",
+                Response)
+        )
+    ;   error_response(Id, missing_code,
+            "notation_monitoring_chart requires code (an IM lesson code)", Response)
+    ).
+
+% The Brandomian backstop audit: the per-check report plus the all-pass flag.
+% This is how a skeptic queries that the data-driven incompatibility relation is
+% non-explosive (and never weaker than the classical floor) through Hermes.
+% The deterministic commitment matcher (implicit-commitment stage 1): free
+% reading content -> typed canonical commitment terms with witnesses, or an
+% honest abstention. The scoreboard layer calls this per event so scorecards
+% run on terms the deontic rules actually cover.
+dispatch_request(commitment_match, Id, Request, Response) :-
+    (   get_dict_opt(content, Request, Content0),
+        text_value(Content0, Content),
+        Content \== ""
+    ->  findall(_{ term: TermText,
+                   source: SourceText,
+                   matched_tokens: TokenTexts },
+                ( commitment_matcher:match_commitment_witness(Content, Term, W),
+                  term_to_text(Term, TermText),
+                  get_dict(source, W, Source),
+                  term_to_text(Source, SourceText),
+                  get_dict(matched_tokens, W, Tokens),
+                  maplist(term_to_text, Tokens, TokenTexts)
+                ),
+                Matches0),
+        sort(Matches0, Matches1),
+        ( Matches1 == [] -> Abstained = true ; Abstained = false ),
+        json_safe(_{matches: Matches1, abstained: Abstained}, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, missing_content,
+            "commitment_match requires non-empty content", Response)
+    ).
+
+dispatch_request(brandom_backstop, Id, _Request, Response) :-
+    sequent_brandom_bridge:brandom_backstop(Report),
+    (   sequent_brandom_bridge:brandom_backstop_ok
+    ->  Ok = true
+    ;   Ok = false
+    ),
+    json_safe(_{ok: Ok, checks: Report}, Safe),
+    ok_response(Id, Safe, Response).
+
+% The Brandomian check for one commitment set: the bridge's union incoherence
+% (declared hyperedges first, classical neg-pair floor second), the canonical
+% incompatibility-entailment pairs that hold inside the set, and the classical
+% backstop verdict, in one response. The entailment relation consulted is
+% brandomian_incompatibility:incompatibility_entails/2 (quantification over
+% DECLARED incompatible sets), not the profile-based relation
+% incompatibility_sets exports under the same name; the response carries the
+% finite-approximation scope so a caller cannot mistake it for classical
+% consequence.
+dispatch_request(brandomian_check, Id, Request, Response) :-
+    (   get_dict(commitments, Request, CJSON),
+        is_list(CJSON),
+        CJSON \== []
+    ->  json_to_term(CJSON, Commitments0),
+        sort(Commitments0, Commitments),
+        maplist(term_to_text, Commitments, CommitmentTexts),
+        (   sequent_brandom_bridge:b_incoherent(Commitments)
+        ->  Incoherent = true,
+            brandomian_incoherence_source(Commitments, Source, WitnessEdge)
+        ;   Incoherent = false,
+            Source = null,
+            WitnessEdge = null
+        ),
+        pairwise_incompatibility_entailments(Commitments, Entailments, Checked),
+        queried_entailment(Request, Queried),
+        sequent_brandom_bridge:brandom_backstop(BackstopReport),
+        (   sequent_brandom_bridge:brandom_backstop_ok
+        ->  BackstopOk = true
+        ;   BackstopOk = false
+        ),
+        json_safe(_{ commitments: CommitmentTexts,
+                     b_incoherent: Incoherent,
+                     incoherence_source: Source,
+                     witness_hyperedge: WitnessEdge,
+                     entailments: Entailments,
+                     entailments_checked: Checked,
+                     entailment_scope: "declared incompatible sets only: a finite approximation, complete exactly to the extent the incompatibility data is",
+                     queried_entailment: Queried,
+                     backstop: _{ok: BackstopOk, checks: BackstopReport}
+                   },
+                  Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, missing_commitments,
+            "brandomian_check requires a non-empty commitments list of term strings",
+            Response)
+    ).
+
+% Discovered incompatibility hyperedges, surfaced for the console. Rows come
+% from the Big Red iteration7 discovery cache (every discovered_set_kind/3
+% row, cached kind and file provenance attached) plus the size >= 3
+% hyperedges declared in the canonical relation (kind "declared" — where the
+% catalogue-attested incommensurability triple lives). Emergence, meaning
+% jointly incoherent with NO incoherent proper subset, is COMPUTED per row
+% against a runnable relation rather than read off the cache: defeasible rows
+% re-run verified_emergent/1 over the combined premise+defeater content set,
+% scratch-context rows re-run the bounded discovery classifier on every
+% one-element removal, and declared rows check minimality in the canonical
+% relation. Optional "kind" filter (emergent / defeated / incoherent /
+% nonterminating / declared); default all.
+dispatch_request(hyperedges, Id, Request, Response) :-
+    request_filter(Request, kind, KindFilter),
+    findall(Row, hyperedge_row(KindFilter, Row), Rows),
+    length(Rows, RowCount),
+    aggregate_all(count,
+                  ( member(R, Rows), get_dict(emergent, R, true) ),
+                  EmergentCount),
+    term_to_text(KindFilter, KindFilterText),
+    json_safe(_{ criterion: "size >= 3, jointly incoherent under a runnable relation, every one-element removal coherent",
+                 kind_filter: KindFilterText,
+                 row_count: RowCount,
+                 emergent_count: EmergentCount,
+                 hyperedges: Rows },
+              Safe),
+    ok_response(Id, Safe, Response).
+
+% Runtime axiom toggling over tools/axiom_toggle.pl. Only list/enable/disable
+% are exposed: every disable made through the persistent worker stays
+% inspectable (list) and reversible (enable) from the same surface. The
+% scoped with_axioms_disabled/2 variant stays CLI-only by design; a scoped
+% toggle on a persistent worker would be indistinguishable from a leak.
+dispatch_request(axiom_toggle, Id, Request, Response) :-
+    ensure_axiom_toggle_loaded,
+    request_op_atom(Request, action, list, Action),
+    axiom_toggle_action(Action, Id, Request, Response).
+
+% The corpus-attested grammar summary: gap counts rolling up which grammar
+% objects the student corpus witnesses and where the grammar runs unattested.
+dispatch_request(corpus_grammar_summary, Id, _Request, Response) :-
+    (   corpus_attested_grammar:corpus_grammar_summary(Summary)
+    ->  json_safe(Summary, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_corpus_grammar_summary,
+            "corpus_grammar_summary produced no summary", Response)
+    ).
+
+% The strategy elaboration graph: the elaborates/7 facts the analyzer derives
+% over the automata. analyze_all/0 is run on demand the first time, when the
+% dynamic relation is still empty.
+dispatch_request(elaborations, Id, _Request, Response) :-
+    (   automaton_analyzer:elaborates(_, _, _, _, _, _, _)
+    ->  true
+    ;   automaton_analyzer:analyze_all
+    ),
+    automaton_analyzer:all_elaborations(Elaborations),
+    json_safe(Elaborations, Safe),
+    ok_response(Id, Safe, Response).
+
+% On-demand proof entitlement for an arithmetic fact via the carving surface.
+% operation is add/sub/mult/div/frac; x, y, z are the fact arguments.
+dispatch_request(carving_strategy_proof, Id, Request, Response) :-
+    (   get_dict(x, Request, _), get_dict(y, Request, _), get_dict(z, Request, _)
+    ->  request_op_atom(Request, operation, add, Op),
+        request_integer(Request, x, 0, X),
+        request_integer(Request, y, 0, Y),
+        request_integer(Request, z, 0, Z),
+        findall(P,
+                carving_query:carving_strategy_proof(Op, X, Y, Z, P),
+                Proofs),
+        (   Proofs == []
+        ->  error_response(Id, no_carving_proof,
+                "carving_strategy_proof found no productive proof for that fact",
+                Response)
+        ;   json_safe(_{operation: Op, x: X, y: Y, z: Z, proofs: Proofs}, Safe),
+            ok_response(Id, Safe, Response)
+        )
+    ;   error_response(Id, missing_fact_args,
+            "carving_strategy_proof requires operation, x, y, and z", Response)
+    ).
+
+% Bounded carving summary for one operation: carved-fact count and residue.
+dispatch_request(carving_operation_summary, Id, Request, Response) :-
+    request_op_atom(Request, operation, add, Op),
+    (   carving_query:carving_operation_summary(Op, Summary)
+    ->  json_safe(Summary, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_carving_summary,
+            "carving_operation_summary found no bounded experiment for that operation",
+            Response)
+    ).
+
+% Benny's deformed rules side by side with their correct coordinated
+% counterparts on shared inputs. Public encyclopedia surface; no student data.
+dispatch_request(benny_demo, Id, _Request, Response) :-
+    (   misconceptions_benny_demo:benny_demo_dict(Dict0)
+    ->  json_safe(Dict0, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, no_benny_demo,
+            "benny_demo produced no comparison data",
+            Response)
+    ).
+
+classify_canonical_term(T, _{term: T, status: Status, canonical: Canon}) :-
+    atom_string(A, T),
+    canonical_base_name(A, Base),
+    (   canonical_label_for(Base, C)
+    ->  Status = "canonical", term_string(C, Canon)
+    ;   canonical_legacy_match(A, C)
+    ->  Status = "legacy", term_string(C, Canon)
+    ;   Status = "unknown", Canon = null
+    ).
+
+% Strip a trailing /Arity if present.
+canonical_base_name(A, Base) :-
+    (   atomic_list_concat([B, _Arity], '/', A) -> Base = B ; Base = A ).
+
+% A base name is canonical if it is a contract label, OR that label + '_unified'
+% (the family query predicates are <concept>_unified; wave 1 uses the bare name).
+canonical_label_for(Base, C) :-
+    current_predicate(canonical_all:contract/3),
+    canonical_all:contract(C, _, _),
+    ( C == Base ; atom_concat(C, '_unified', Base) ),
+    !.
+
+canonical_legacy_match(A, Canon) :-
+    current_predicate(canonical_all:legacy_term/2),
+    canonical_all:legacy_term(Legacy, Canon),
+    (   Legacy == A
+    ;   atomic_list_concat(Parts, ':', Legacy), last(Parts, Bare), Bare == A
+    ),
+    !.
+
+% Catch-all: only genuinely unknown ops reach here. The \+ known_op/1 guard
+% stops a KNOWN op whose body failed from backtracking into this clause; that
+% case falls through to op_failed in handle_request/2, so the worker no longer
+% mislabels a failed handler as "unknown_op".
+dispatch_request(Op, Id, _Request, Response) :-
+    \+ known_op(Op),
+    format(string(Message), "Unsupported op: ~w", [Op]),
+    error_response(Id, unknown_op, Message, Response).
+
+%!  request_filter(+Request, +Key, -Filter) is det.
+%
+%   An optional string filter under Key, normalised to a lowercase atom, or
+%   the atom `all` when absent/null/empty.
+request_filter(Request, Key, Filter) :-
+    (   get_dict_opt(Key, Request, Value),
+        Value \== "",
+        atom_string(Atom, Value)
+    ->  downcase_atom(Atom, Filter)
+    ;   Filter = all
+    ).
+
+%!  request_integer(+Request, +Key, +Default, -N) is det.
+%
+%   An optional integer under Key. Accepts a JSON number or a numeric string
+%   (the viewer passes query-string values as strings); falls back to Default
+%   when absent or unparseable.
+request_integer(Request, Key, Default, N) :-
+    (   get_dict_opt(Key, Request, Value)
+    ->  ( integer(Value)
+        -> N = Value
+        ;  ( string(Value) ; atom(Value) ),
+           atom_number(Value, Num), integer(Num)
+        -> N = Num
+        ;  N = Default
+        )
+    ;   N = Default
+    ).
+
+%!  request_recollection(+Request, +Key, +DefaultInt, -Recollection) is det.
+%
+%   Public worker callers should not have to spell grounded recollections for
+%   the elementary-standard witnesses; accept the integer boundary and convert
+%   it at the Prolog edge.
+request_recollection(Request, Key, Default, Recollection) :-
+    request_integer(Request, Key, Default, N),
+    integer_to_recollection(N, Recollection).
+
+% =============================================================================
+% Render-op support: request -> compiler Spec, and the additive-field threading
+% (doc.grounding, doc.tuple, doc.teacher) the frozen render contract names.
+% =============================================================================
+
+%!  request_op_atom(+Request, +Key, +Default, -Atom) is det.
+%   An optional string/atom under Key, normalised to a lowercase atom.
+request_op_atom(Request, Key, Default, Atom) :-
+    (   get_dict_opt(Key, Request, Value), Value \== ""
+    ->  string_or_atom_to_atom(Value, A0), downcase_atom(A0, Atom)
+    ;   Atom = Default
+    ).
+
+%!  request_string_atom(+Request, +Key, +Default, -Atom) is det.
+%   An optional string/atom under Key, normalised to an atom (case preserved —
+%   strategy ids and practice atoms are case-significant).
+request_string_atom(Request, Key, Default, Atom) :-
+    (   get_dict_opt(Key, Request, Value), Value \== ""
+    ->  string_or_atom_to_atom(Value, Atom)
+    ;   Atom = Default
+    ).
+
+%!  request_practice(+Request, -Practice) is semidet.
+%   The practice atom for the H3/teacher ops. Read from the `practice` field.
+request_practice(Request, Practice) :-
+    get_dict_opt(practice, Request, Value),
+    Value \== "",
+    string_or_atom_to_atom(Value, Practice).
+
+%!  request_lesson_context(+Request, -LessonContext) is det.
+%   The compact lesson context that representation_grammar:visual_candidate/5
+%   consumes: grade plus standards. This is deliberately not a full lesson
+%   object; the grammar owns the selection judgment.
+request_lesson_context(Request, lesson_context(Grade, Standards)) :-
+    (   get_dict_opt(lesson_code, Request, LessonCode0),
+        string_or_atom_to_atom(LessonCode0, LessonCode),
+        lesson_context_for_code(LessonCode, lesson_context(Grade, Standards))
+    ->  true
+    ;   request_string_atom(Request, grade, unknown_grade, Grade),
+        request_standards(Request, Standards)
+    ).
+
+request_lesson_selector(Request, lesson_code(LessonCode)) :-
+    get_dict_opt(lesson_code, Request, LessonCode0),
+    string_or_atom_to_atom(LessonCode0, LessonCode),
+    !.
+request_lesson_selector(_, none).
+
+request_standards(Request, Standards) :-
+    (   get_dict_opt(standards, Request, Values),
+        is_list(Values)
+    ->  maplist(string_or_atom_to_atom, Values, Standards)
+    ;   Standards = []
+    ).
+
+lesson_context_for_code(Code, lesson_context(GradeContext, StandardAliases)) :-
+    lesson_monitoring:monitoring_chart(
+        Code,
+        monitoring_chart(Code, Lesson, Standards, _Strategies, _Misconceptions, _PMLFacts)
+    ),
+    lesson_grade_context(Lesson, GradeContext),
+    lesson_standard_aliases(Standards, StandardAliases).
+
+lesson_grade_context(lesson(_ConceptId, _Title, Grade, _Unit, _LessonNumber), GradeContext) :-
+    grade_term_context(Grade, GradeContext).
+
+grade_term_context(grade(N), GradeContext) :-
+    integer(N),
+    !,
+    format(atom(GradeContext), 'grade_~w', [N]).
+grade_term_context(grade(k), kindergarten) :- !.
+grade_term_context(grade('K'), kindergarten) :- !.
+grade_term_context(kindergarten, kindergarten) :- !.
+grade_term_context(Grade, GradeContext) :-
+    string_or_atom_to_atom(Grade, GradeContext).
+
+lesson_standard_aliases(Standards, Aliases) :-
+    findall(Alias,
+            ( member(Standard, Standards),
+              chart_standard_alias(Standard, Alias)
+            ),
+            Aliases0),
+    sort(Aliases0, Aliases).
+
+chart_standard_alias(standard(_Framework, Code, _Statement), Alias) :-
+    standard_code_alias(Code, Alias).
+
+standard_code_alias(Code0, Alias) :-
+    string_or_atom_to_atom(Code0, CodeAtom0),
+    downcase_atom(CodeAtom0, CodeAtom),
+    atomic_list_concat(Parts, '.', CodeAtom),
+    atomic_list_concat(Parts, '_', Alias).
+
+%!  representation_task(+Request, -Task) is semidet.
+%   Parse the public representation_check task vocabulary into the Prolog term
+%   the representation grammar reasons over.
+representation_task(Request, Task) :-
+    request_op_atom(Request, task, whole_number, TaskKind),
+    representation_task_for(TaskKind, Request, Task).
+
+representation_task_for(whole_number, Request, whole_number(N)) :- !,
+    request_integer(Request, n, 0, N).
+representation_task_for(whole_number_addition, Request, whole_number_addition(A, B)) :- !,
+    request_integer(Request, a, 0, A),
+    request_integer(Request, b, 0, B).
+representation_task_for(whole_number_subtraction, Request, whole_number_subtraction(A, B)) :- !,
+    request_integer(Request, a, 0, A),
+    request_integer(Request, b, 0, B).
+representation_task_for(kindergarten_counting_collection, Request, kindergarten_counting_collection(N)) :- !,
+    request_integer(Request, n, 0, N).
+representation_task_for(fraction, Request, fraction(N, D)) :- !,
+    request_integer(Request, n, 1, N),
+    request_integer(Request, d, 2, D).
+representation_task_for(fraction_addition, Request,
+        fraction_addition(fraction(NA, DA), fraction(NB, DB))) :- !,
+    request_integer(Request, na, 1, NA),
+    request_integer(Request, da, 3, DA),
+    request_integer(Request, nb, 1, NB),
+    request_integer(Request, db, 4, DB).
+representation_task_for(array, Request, array(Rows, Cols)) :- !,
+    request_integer(Request, rows, 3, Rows),
+    request_integer(Request, cols, 4, Cols).
+representation_task_for(multiplication, Request, multiplication(A, B)) :- !,
+    request_integer(Request, a, 3, A),
+    request_integer(Request, b, 4, B).
+representation_task_for(fraction_product, Request, fraction_product(NA, DA, NB, DB)) :- !,
+    request_integer(Request, na, 1, NA),
+    request_integer(Request, da, 2, DA),
+    request_integer(Request, nb, 1, NB),
+    request_integer(Request, db, 3, DB).
+representation_task_for(equation_linear, Request, equation(linear(A, B, C))) :- !,
+    request_integer(Request, a, 2, A),
+    request_integer(Request, b, 3, B),
+    request_integer(Request, c, 11, C).
+
+representation_check_dict(calculator, Representation, Task, Dict) :- !,
+    (   representation_grammar:calculator_refusal(Task, Representation, Reason)
+    ->  representation_rejection_dict(calculator, Representation, Task, Reason, Dict)
+    ;   representation_grammar:calculator_visual(
+            Task,
+            Representation,
+            scene(Representation, Task),
+            Answer
+        )
+    ->  representation_acceptance_dict(calculator, Representation, Task, Dict0),
+        term_to_text(Answer, AnswerText),
+        Dict = Dict0.put(answer, AnswerText)
+    ;   Reason = reason(no_productive_grammar_for_task(Representation, Task)),
+        representation_rejection_dict(calculator, Representation, Task, Reason, Dict)
+    ).
+representation_check_dict(productive, Representation, Task, Dict) :- !,
+    (   representation_grammar:representation_refusal(Representation, Task, Reason)
+    ->  representation_rejection_dict(productive, Representation, Task, Reason, Dict)
+    ;   representation_grammar:productive_visual(
+            Task,
+            Representation,
+            scene(Representation, Task)
+        )
+    ->  representation_acceptance_dict(productive, Representation, Task, Dict)
+    ;   Reason = reason(no_productive_grammar_for_task(Representation, Task)),
+        representation_rejection_dict(productive, Representation, Task, Reason, Dict)
+    ).
+representation_check_dict(Mode, Representation, Task, Dict) :-
+    Reason = reason(unsupported_representation_check_mode(Mode)),
+    representation_rejection_dict(Mode, Representation, Task, Reason, Dict).
+
+representation_acceptance_dict(Mode, Representation, Task, Dict) :-
+    atom_string(Mode, ModeText),
+    atom_string(Representation, RepresentationText),
+    term_to_text(Task, TaskText),
+    representation_grounding_text(Representation, GroundingText),
+    Dict = _{
+        mode: ModeText,
+        representation: RepresentationText,
+        task: TaskText,
+        allowed: true,
+        grounding: GroundingText
+    }.
+
+representation_rejection_dict(Mode, Representation, Task, Reason, Dict) :-
+    atom_string(Mode, ModeText),
+    atom_string(Representation, RepresentationText),
+    term_to_text(Task, TaskText),
+    term_to_text(Reason, ReasonText),
+    representation_preference_dict(Task, Preferred),
+    Dict = _{
+        mode: ModeText,
+        representation: RepresentationText,
+        task: TaskText,
+        allowed: false,
+        refusal: ReasonText,
+        preferred: Preferred
+    }.
+
+representation_preference_dict(Task, Preferred) :-
+    (   representation_grammar:preferred_representation(Task, Rep, Reason)
+    ->  atom_string(Rep, RepText),
+        term_to_text(Reason, ReasonText),
+        Preferred = _{representation: RepText, reason: ReasonText}
+    ;   Preferred = _{}
+    ).
+
+representation_grounding_text(Representation, GroundingText) :-
+    (   representation_grammar:representation_grounding(Representation, Grounding)
+    ->  term_to_text(Grounding, GroundingText)
+    ;   GroundingText = ""
+    ).
+
+representation_candidates_dict(SelectorSource, LessonContext, Task, Strategy, Misconception, Dict) :-
+    findall(Candidate,
+            representation_candidate_dict(
+                LessonContext,
+                Task,
+                Strategy,
+                Misconception,
+                Candidate
+            ),
+            Candidates0),
+    sort(Candidates0, Candidates),
+    findall(Refusal,
+            representation_refusal_dict(
+                LessonContext,
+                Task,
+                Strategy,
+                Misconception,
+                Refusal
+            ),
+            Refusals0),
+    sort(Refusals0, Refusals),
+    LessonContext = lesson_context(Grade, Standards),
+    atom_string(Grade, GradeText),
+    maplist(atom_to_string_value, Standards, StandardTexts),
+    term_to_text(Task, TaskText),
+    atom_string(Strategy, StrategyText),
+    atom_string(Misconception, MisconceptionText),
+    representation_selector_figures(SelectorSource, Figures),
+    Dict = _{
+        grade: GradeText,
+        standards: StandardTexts,
+        task: TaskText,
+        strategy: StrategyText,
+        misconception: MisconceptionText,
+        figures: Figures,
+        candidates: Candidates,
+        refusals: Refusals
+    }.
+
+representation_selector_figures(lesson_code(LessonCode), Figures) :-
+    monitoring_chart_figure_export(LessonCode, Figures),
+    !.
+representation_selector_figures(_, _{}).
+
+representation_candidate_dict(LessonContext, Task, Strategy, Misconception, Dict) :-
+    representation_grammar:visual_candidate_evidence(
+        LessonContext,
+        Task,
+        Strategy,
+        Misconception,
+        Representation,
+        Evidence
+    ),
+    atom_string(Representation, RepresentationText),
+    maplist(term_to_text, Evidence, EvidenceTexts),
+    candidate_render_status_text(Evidence, RenderStatusText),
+    Dict = _{
+        representation: RepresentationText,
+        render_status: RenderStatusText,
+        evidence: EvidenceTexts
+    }.
+
+candidate_render_status_text(Evidence, RenderStatusText) :-
+    member(render_status(Status), Evidence),
+    !,
+    term_to_text(Status, RenderStatusText).
+candidate_render_status_text(_, "").
+
+representation_refusal_dict(LessonContext, Task, Strategy, Misconception, Dict) :-
+    representation_grammar:representation_language(Representation),
+    representation_grammar:visual_refusal(
+        LessonContext,
+        Task,
+        Strategy,
+        Misconception,
+        Representation,
+        Reason
+    ),
+    atom_string(Representation, RepresentationText),
+    term_to_text(Reason, ReasonText),
+    Dict = _{
+        representation: RepresentationText,
+        reason: ReasonText
+    }.
+
+representation_render_spec(Request, set_grouping, Spec) :-
+    set_grouping_spec(Request, Spec).
+representation_render_spec(Request, base_ten_blocks, Spec) :-
+    request_string_atom(Request, kind, add_with_carry, Kind),
+    request_integer(Request, base, 10, Base),
+    base_ten_render_spec_for_check(Kind, Base, Request, Spec).
+representation_render_spec(Request, number_line, Spec) :-
+    number_line_spec(Request, Spec).
+representation_render_spec(Request, place_value_chart, Spec) :-
+    place_value_chart_spec(Request, Spec).
+representation_render_spec(Request, area_model, Spec) :-
+    area_spec(Request, Spec).
+representation_render_spec(Request, fraction_bars, Spec) :-
+    fraction_bars_spec(Request, Spec).
+representation_render_spec(Request, balance_scale, Spec) :-
+    balance_spec(Request, Spec).
+representation_render_spec(Request, hybridization, Spec) :-
+    hybridization_spec(Request, Spec).
+
+fraction_bars_spec(Request, Spec) :-
+    request_string_atom(Request, kind, unit_fraction_partition, Kind),
+    fraction_bars_spec_for(Kind, Request, Spec).
+
+fraction_bars_spec_for(arith, Request, fraction_arith(Op, NA, DA, NB, DB)) :-
+    !,
+    request_op_atom(Request, operation, add, Op),
+    request_integer(Request, na, 1, NA),
+    request_integer(Request, da, 3, DA),
+    request_integer(Request, nb, 1, NB),
+    request_integer(Request, db, 4, DB).
+fraction_bars_spec_for(add_numerators_and_denominators, Request,
+        fraction_arith_componentwise(add, NA, DA, NB, DB)) :-
+    !,
+    request_integer(Request, na, 1, NA),
+    request_integer(Request, da, 3, DA),
+    request_integer(Request, nb, 1, NB),
+    request_integer(Request, db, 4, DB).
+fraction_bars_spec_for(Kind, Request, fraction_render(Kind, N, D)) :-
+    request_integer(Request, n, 1, N),
+    request_integer(Request, d, 3, D).
+
+base_ten_render_spec_for_check(add_with_dropped_carry, Base, Request, add_with_dropped_carry(A, B, Base)) :-
+    !,
+    request_integer(Request, a, 28, A),
+    request_integer(Request, b, 47, B).
+base_ten_render_spec_for_check(Kind, Base, Request, Spec) :-
+    base_ten_spec_for(Kind, Base, Request, Spec).
+
+representation_spec_check_dict(Request, Representation, Spec, Dict) :-
+    (   representation_grammar:render_spec_denotes(Representation, Spec, DenotedTask)
+    ->  representation_spec_denotation_dict(Representation, Spec, DenotedTask, Dict)
+    ;   representation_target_task_for_spec(Representation, Spec, TargetTask)
+    ->  representation_spec_deformation_dict_if_supported(Representation, Spec, TargetTask, Dict)
+    ;   representation_task(Request, TargetTask),
+        representation_spec_deformation_dict_if_supported(Representation, Spec, TargetTask, Dict)
+    ).
+
+representation_spec_deformation_dict_if_supported(Representation, Spec, TargetTask, Dict) :-
+        representation_grammar:deformation_spec_evidence(
+            Representation,
+            Spec,
+            TargetTask,
+            Evidence
+        ),
+    representation_spec_deformation_dict(Representation, Spec, TargetTask, Evidence, Dict).
+
+representation_target_task_for_spec(
+        hybridization,
+        circle_partition_on_rectangle,
+        hybridization_case(circle_radial_partition, rectangle_area_model)).
+representation_target_task_for_spec(
+        hybridization,
+        vertical_partition_on_circle,
+        hybridization_case(rectangle_vertical_partition, circle_region)).
+representation_target_task_for_spec(
+        hybridization,
+        radial_partition_on_set,
+        hybridization_case(circle_radial_partition, fractional_set_model)).
+representation_target_task_for_spec(
+        hybridization,
+        parallel_partition_on_triangle,
+        hybridization_case(rectangle_parallel_partition, triangle_region)).
+
+representation_spec_denotation_dict(Representation, Spec, DenotedTask, Dict) :-
+    atom_string(Representation, RepresentationText),
+    term_to_text(Spec, SpecText),
+    term_to_text(DenotedTask, TaskText),
+    (   representation_grammar:render_spec_preserves_task(Representation, Spec, DenotedTask)
+    ->  Preserves = true
+    ;   Preserves = false
+    ),
+    Dict = _{
+        representation: RepresentationText,
+        spec: SpecText,
+        denoted_task: TaskText,
+        preserves: Preserves
+    }.
+
+representation_spec_deformation_dict(Representation, Spec, TargetTask, Evidence, Dict) :-
+    atom_string(Representation, RepresentationText),
+    term_to_text(Spec, SpecText),
+    term_to_text(TargetTask, TargetTaskText),
+    Dict = _{
+        representation: RepresentationText,
+        spec: SpecText,
+        target_task: TargetTaskText,
+        preserves: false,
+        deformation: Evidence
+    }.
+
+% --- request -> Spec, one per render op --------------------------------------
+% Each parses the request's fields into the term the compiler dispatches on.
+% A `kind`/`spec` field selects the generator; integer fields feed the operands.
+
+%!  area_spec(+Request, -Spec) is det.
+area_spec(Request, Spec) :-
+    request_string_atom(Request, kind, array_multiplication, Kind),
+    request_integer(Request, a, 3, A),
+    request_integer(Request, b, 4, B),
+    area_spec_for(Kind, A, B, Request, Spec).
+
+area_spec_for(array_multiplication, A, B, _, array_multiplication(A, B)) :- !.
+area_spec_for(commutativity_by_transpose, A, B, _, commutativity_by_transpose(A, B)) :- !.
+area_spec_for(partial_products, A, B, _, partial_products(A, B)) :- !.
+area_spec_for(area_model_fraction, _, _, Request, area_model_fraction(NA, DA, NB, DB)) :-
+    !,
+    request_integer(Request, na, 1, NA),
+    request_integer(Request, da, 2, DA),
+    request_integer(Request, nb, 1, NB),
+    request_integer(Request, db, 3, DB).
+area_spec_for(area_compare, _, _, Request, area_compare(NA, DA, NB, DB)) :-
+    !,
+    request_integer(Request, na, 1, NA),
+    request_integer(Request, da, 2, DA),
+    request_integer(Request, nb, 1, NB),
+    request_integer(Request, db, 3, DB).
+area_spec_for(_Other, A, B, _, array_multiplication(A, B)).
+
+%!  balance_spec(+Request, -Spec) is det.
+balance_spec(Request, Spec) :-
+    request_string_atom(Request, kind, solve_linear, Kind),
+    request_integer(Request, a, 2, A),
+    request_integer(Request, b, 3, B),
+    request_integer(Request, c, 11, C),
+    balance_spec_for(Kind, A, B, C, Spec).
+
+balance_spec_for(balance_compare, A, B, C, balance_compare(A, B, C)) :- !.
+balance_spec_for(solve_linear, A, B, C, solve_linear(A, B, C)) :- !.
+balance_spec_for(_Other, A, B, C, solve_linear(A, B, C)).
+
+%!  hybridization_spec(+Request, -Spec) is det.
+hybridization_spec(Request, Spec) :-
+    request_string_atom(Request, kind, circle_partition_on_rectangle, Spec).
+
+%!  base_ten_spec(+Request, -Spec) is det.
+base_ten_spec(Request, Spec) :-
+    request_string_atom(Request, kind, add_with_carry, Kind),
+    request_integer(Request, base, 10, Base),
+    base_ten_spec_for(Kind, Base, Request, Spec).
+
+base_ten_spec_for(represent, Base, Request, represent(N, Base)) :- !,
+    request_integer(Request, n, 28, N).
+base_ten_spec_for(place_value_teen, _Base, Request, place_value_teen(N)) :- !,
+    request_integer(Request, n, 14, N).
+base_ten_spec_for(add_with_carry, Base, Request, add_with_carry(A, B, Base)) :- !,
+    request_integer(Request, a, 28, A), request_integer(Request, b, 47, B).
+base_ten_spec_for(subtract_with_borrow, Base, Request, subtract_with_borrow(A, B, Base)) :- !,
+    request_integer(Request, a, 52, A), request_integer(Request, b, 27, B).
+base_ten_spec_for(subtract_without_reducing_borrow, Base, Request, subtract_without_reducing_borrow(A, B, Base)) :- !,
+    request_integer(Request, a, 52, A), request_integer(Request, b, 27, B).
+base_ten_spec_for(base_decomposition, Base, Request, base_decomposition(N, Base)) :- !,
+    request_integer(Request, n, 234, N).
+base_ten_spec_for(decimal_place_value, _Base, Request, decimal_place_value(I, F)) :- !,
+    request_integer(Request, intPart, 3, I), request_integer(Request, fracDigits, 14, F).
+base_ten_spec_for(_Other, Base, Request, add_with_carry(A, B, Base)) :-
+    request_integer(Request, a, 28, A), request_integer(Request, b, 47, B).
+
+%!  set_grouping_spec(+Request, -Spec) is det.
+set_grouping_spec(Request, Spec) :-
+    request_string_atom(Request, kind, make_ten, Kind),
+    set_grouping_spec_for(Kind, Request, Spec).
+
+set_grouping_spec_for(ten_frame, Request, ten_frame(N)) :- !,
+    request_integer(Request, n, 7, N).
+set_grouping_spec_for(subitize, Request, subitize(Pattern, N)) :- !,
+    request_string_atom(Request, pattern, auto, Pattern),
+    request_integer(Request, n, 5, N).
+set_grouping_spec_for(make_ten, Request, make_ten(A, B)) :- !,
+    request_integer(Request, a, 7, A), request_integer(Request, b, 8, B).
+set_grouping_spec_for(make_ten_drop_leftover, Request, make_ten_drop_leftover(A, B)) :- !,
+    request_integer(Request, a, 7, A), request_integer(Request, b, 8, B).
+set_grouping_spec_for(parity, Request, parity(N)) :- !,
+    request_integer(Request, n, 7, N).
+set_grouping_spec_for(compare, Request, compare(A, B)) :- !,
+    request_integer(Request, a, 5, A), request_integer(Request, b, 3, B).
+set_grouping_spec_for(equal_groups, Request, equal_groups(G, S)) :- !,
+    request_integer(Request, g, 3, G), request_integer(Request, s, 4, S).
+set_grouping_spec_for(fair_share, Request, fair_share(Total, Groups)) :- !,
+    request_integer(Request, total, 12, Total), request_integer(Request, groups, 3, Groups).
+set_grouping_spec_for(signed_chips, Request, signed_chips(A, B)) :- !,
+    request_integer(Request, a, 3, A), request_integer(Request, b, -5, B).
+set_grouping_spec_for(_Other, Request, make_ten(A, B)) :-
+    request_integer(Request, a, 7, A), request_integer(Request, b, 8, B).
+
+%!  number_line_spec(+Request, -Spec) is det.
+%   `mode:"jumps"` (default) reads a strategy id + a/b; `mode:"length"` (or
+%   "rounding") reads an operation + a/b for the Measuring-Stick length form.
+number_line_spec(Request, Spec) :-
+    request_op_atom(Request, mode, jumps, Mode),
+    number_line_spec_for(Mode, Request, Spec).
+
+number_line_spec_for(length, Request, rounding_length(Op, A, B)) :- !,
+    request_op_atom(Request, operation, addition, Op),
+    request_integer(Request, a, 28, A), request_integer(Request, b, 47, B).
+number_line_spec_for(rounding, Request, Spec) :- !,
+    number_line_spec_for(length, Request, Spec).
+number_line_spec_for(magnitude, Request, magnitude_addition(A, B)) :- !,
+    request_integer(Request, a, 28, A),
+    request_integer(Request, b, 47, B).
+number_line_spec_for(magnitude_addition, Request, Spec) :- !,
+    number_line_spec_for(magnitude, Request, Spec).
+number_line_spec_for(fraction, Request, fraction_iteration(N, D)) :- !,
+    request_integer(Request, numerator, 7, N),
+    request_integer(Request, denominator, 5, D).
+number_line_spec_for(fraction_iteration, Request, Spec) :- !,
+    number_line_spec_for(fraction, Request, Spec).
+number_line_spec_for(_Jumps, Request, jumps(Strategy, A, B)) :-
+    request_string_atom(Request, strategy, 'COBO', Strategy),
+    request_integer(Request, a, 28, A), request_integer(Request, b, 47, B).
+
+%!  place_value_chart_spec(+Request, -Spec) is det.
+place_value_chart_spec(Request, Spec) :-
+    request_string_atom(Request, kind, add_with_carry, Kind),
+    request_integer(Request, base, 10, Base),
+    place_value_chart_spec_for(Kind, Base, Request, Spec).
+
+place_value_chart_spec_for(add_with_carry, Base, Request, add_with_carry(A, B, Base)) :- !,
+    request_integer(Request, a, 28, A),
+    request_integer(Request, b, 47, B).
+place_value_chart_spec_for(_Other, Base, Request, add_with_carry(A, B, Base)) :-
+    request_integer(Request, a, 28, A),
+    request_integer(Request, b, 47, B).
+
+% --- enrich_render_doc/3: thread the three additive document fields ----------
+%!  enrich_render_doc(+Op, +Spec, +Dict0, -Dict) is det.
+%   Adds doc.grounding (§1.4a), doc.tuple (§1.4b), and doc.teacher (§1.4c) to a
+%   render document, each only when the compiler did not already emit it. The
+%   practice atom is derived from (Op, Spec) by render_practice/3; a spec that
+%   maps to no practice (a hollow deformation) gets no grounding/teacher object,
+%   which is the contract's claim of inferential hollowness.
+enrich_render_doc(Op, Spec, Dict0, Dict) :-
+    ( render_practice(Op, Spec, Practice) -> true ; Practice = none ),
+    add_grounding_field(Practice, Dict0, Dict1),
+    add_tuple_field(Spec, Dict1, Dict2),
+    add_teacher_field(Practice, Dict2, Dict3),
+    % Defensive: a scene compiler may emit a document carrying a non-ground
+    % term (e.g. a sub-dict with an unbound tag on some trace paths). json_safe
+    % re-tags and stringifies such terms so a partially-instantiated compiler
+    % document can never crash the worker mid-write — the same guard the witness
+    % ops apply. Ground documents pass through unchanged.
+    json_safe(Dict3, Dict).
+
+add_grounding_field(none, Dict, Dict) :- !.
+add_grounding_field(_Practice, Dict, Dict) :-
+    get_dict(grounding, Dict, _), !.            % compiler already supplied it
+add_grounding_field(Practice, Dict0, Dict) :-
+    (   grounding_to_primitive:primitive_for_practice_witness(Practice, Primitive,
+                                                              Role, Witness),
+        get_dict(grounding_metaphor_label, Witness, Label),
+        get_dict(metaphor_gloss, Witness, Gloss)
+    ->  atom_string(Practice, PracticeStr),
+        atom_string(Label, LabelStr),
+        atom_string(Primitive, PrimStr),
+        atom_string(Role, RoleStr),
+        Grounding = _{ practice: PracticeStr,
+                       metaphor_label: LabelStr,
+                       metaphor_gloss: Gloss,
+                       primitive: PrimStr,
+                       role: RoleStr },
+        Dict = Dict0.put(grounding, Grounding)
+    ;   Dict = Dict0                            % no L&N grounding -> no footer
+    ).
+
+add_tuple_field(_Spec, Dict, Dict) :-
+    get_dict(tuple, Dict, _), !.                % compiler already supplied it
+add_tuple_field(Spec, Dict0, Dict) :-
+    term_string(Spec, TupleStr),
+    Dict = Dict0.put(tuple, TupleStr).
+
+add_teacher_field(none, Dict, Dict) :- !.
+add_teacher_field(_Practice, Dict, Dict) :-
+    get_dict(teacher, Dict, _), !.              % compiler already supplied it
+add_teacher_field(Practice, Dict0, Dict) :-
+    (   teacher_layer:teacher_layer(Practice, Teacher0)
+    ->  json_safe(Teacher0, Teacher),
+        Dict = Dict0.put(teacher, Teacher)
+    ;   Dict = Dict0                            % no teacher channels -> no panel
+    ).
+
+% --- render_practice/3: the (Op, Spec) -> practice atom selector -------------
+%   The worker-side counterpart of each compiler's spec_practice mapping. A spec
+%   with no entry maps to no practice (fails) — the deformation/hollow case.
+render_practice(area_render, array_multiplication(_, _), p_rigorous_counting_procedure) :- !.
+render_practice(area_render, commutativity_by_transpose(_, _), p_rigorous_counting_procedure) :- !.
+render_practice(area_render, partial_products(_, _), p_column_addition_with_carrying) :- !.
+render_practice(area_render, area_model_fraction(_, _, _, _), p_area_model_part_of_part) :- !.
+render_practice(area_compare, area_compare(_, _, _, _), p_area_model_part_of_part) :- !.
+
+render_practice(base_ten_render, add_with_carry(_, _, _), p_column_addition_with_carrying) :- !.
+render_practice(base_ten_render, subtract_with_borrow(_, _, _), p_decompose_base_for_ones) :- !.
+render_practice(base_ten_render, base_decomposition(_, _), p_decompose_base_for_ones) :- !.
+render_practice(base_ten_render, represent(_, _), p_make_base_transfer) :- !.
+render_practice(base_ten_render, place_value_teen(_), p_make_base_transfer) :- !.
+render_practice(base_ten_render, decimal_place_value(_, _), p_make_base_transfer) :- !.
+render_practice(ace_of_bases_render, add_with_carry(_, _, _), p_column_addition_with_carrying) :- !.
+render_practice(ace_of_bases_render, subtract_with_borrow(_, _, _), p_decompose_base_for_ones) :- !.
+render_practice(ace_of_bases_render, base_decomposition(_, _), p_decompose_base_for_ones) :- !.
+render_practice(ace_of_bases_render, represent(_, _), p_make_base_transfer) :- !.
+render_practice(ace_of_bases_render, place_value_teen(_), p_make_base_transfer) :- !.
+render_practice(ace_of_bases_render, decimal_place_value(_, _), p_make_base_transfer) :- !.
+render_practice(unit_echo_render, unit_echo(_, _), p_unit_fraction_iteration) :- !.
+% base_ten_compare: add_with_dropped_carry is the hollow deformation — no practice.
+
+render_practice(place_value_chart_render, add_with_carry(_, _, _), p_column_addition_with_carrying) :- !.
+
+render_practice(set_grouping_render, make_ten(_, _), p_make_ten_split_leftover) :- !.
+render_practice(set_grouping_render, ten_frame(_), p_make_ten_split_leftover) :- !.
+render_practice(set_grouping_render, signed_chips(_, _), p_signed_addition_with_sign_relation) :- !.
+% other set-grouping specs (parity, compare, equal_groups, fair_share) carry no
+% L&N arithmetic grounding metaphor; they get no footer rather than a faked one.
+% set_grouping_compare: unfair_compare is the deformation — no practice.
+
+render_practice(number_line_render, jumps(_, _, _), p_count_on_from_larger) :- !.
+render_practice(number_line_render, rounding_length(_, _, _), p_round_then_adjust) :- !.
+render_practice(number_line_render, magnitude_addition(_, _), p_count_on_from_larger) :- !.
+render_practice(number_line_render, fraction_iteration(_, _), p_unit_fraction_iteration) :- !.
+% number_line_compare: rounding_compare's deformation half is hollow — no practice.
+
+render_practice(balance_render, solve_linear(_, _, _), p_relational_equals_balance_preservation) :- !.
+render_practice(balance_compare, solve_linear(_, _, _), p_relational_equals_balance_preservation) :- !.
+
+lesson_misconception_incompatibility_witness(Code, Operation, Name, Witness) :-
+    lesson_monitoring:monitoring_chart(
+        Code,
+        monitoring_chart(Code,
+                         _Lesson,
+                         _Standards,
+                         _Strategies,
+                         Misconceptions,
+                         _PMLFacts)
+    ),
+    member(misconception(Operation, Name, Info), Misconceptions),
+    member(incompatibility_witness(Witness), Info),
+    !.
+
+monitoring_chart_export_dict(Code, Dict) :-
+    lesson_monitoring:monitoring_chart_export(
+        Code,
+        monitoring_chart_export(Code,
+                                _Lesson,
+                                _Standards,
+                                Strategies,
+                                Misconceptions,
+                                PMLFacts,
+                                Clusters)
+    ),
+    productive_core(Clusters, ProductiveCore),
+    maplist(strategy_export_dict, Strategies, StrategyDicts),
+    maplist(misconception_export_dict, Misconceptions, MisconceptionDicts),
+    lesson_expressive_power_for(Code, ExpressivePowerReport),
+    expressive_power_export_dict(ExpressivePowerReport, ExpressivePowerDict),
+    findall(PMLDict,
+            ( member(PMLFact, PMLFacts),
+              pml_fact_export_dict(PMLFact, PMLDict)
+            ),
+            PMLDicts),
+    monitoring_chart_figure_export(Code, FigureDict),
+    (   lesson_monitoring:licensed_but_unanticipated(Code, OperationGaps)
+    ->  true
+    ;   OperationGaps = []
+    ),
+    maplist(operation_gap_export_dict, OperationGaps, OperationGapDicts),
+    % Flat Operation-Kind pairs from lessons/lesson_gap.pl: the registry-covered
+    % moves this chart does not anticipate — the opening the chart structurally
+    % leaves. Delegates to the same licensed_but_unanticipated/2 computation
+    % behind the per-operation key above, so the two surfaces cannot drift.
+    (   lesson_gap:unanticipated_strategies(Code, GapMoves)
+    ->  true
+    ;   GapMoves = []
+    ),
+    maplist(gap_move_export_dict, GapMoves, GapMoveDicts),
+    deformation_chart_scope_export(Code, DeformationChartDict),
+    atom_string(Code, CodeString),
+    Dict = _{
+        lesson_code: CodeString,
+        productive_core: ProductiveCore,
+        anticipated_strategies: StrategyDicts,
+        teacher_misconceptions: MisconceptionDicts,
+        licensed_but_unanticipated: OperationGapDicts,
+        unanticipated_strategies: GapMoveDicts,
+        figures: FigureDict,
+        deformation_chart: DeformationChartDict,
+        expressive_power: ExpressivePowerDict,
+        pml_facts: PMLDicts
+    }.
+
+deformation_chart_scope_export(Code, Dict) :-
+    findall(CoveredCode,
+            lesson_deformation_chart:lesson_chart_lesson(CoveredCode, _, _, _, _),
+            Codes0),
+    sort(Codes0, Codes),
+    maplist(atom_string, Codes, CodeStrings),
+    atom_string(Code, CodeString),
+    (   memberchk(Code, Codes)
+    ->  Dict = _{
+            available: true,
+            coverage: "covered",
+            scope: "grade_3_fraction_lessons",
+            lesson_code: CodeString,
+            request_op: "lesson_deformation_chart",
+            covered_lesson_codes: CodeStrings
+        }
+    ;   Dict = _{
+            available: false,
+            coverage: "scope_limited",
+            scope: "grade_3_fraction_lessons",
+            lesson_code: CodeString,
+            request_op: "lesson_deformation_chart",
+            covered_lesson_codes: CodeStrings,
+            note: "Deformation charts are currently authored only for the covered grade-3 fraction lessons."
+        }
+    ).
+
+% One flat gap pair. "Licensed" here means registry coverage (moves the
+% action automata can run), not normative entitlement; an empty list on a
+% lesson whose operations have no registry source marks an absent source,
+% not a completed anticipation (lesson_gap's module header carries the full
+% register note).
+gap_move_export_dict(Operation-Kind, _{operation: OperationText, kind: KindText}) :-
+    term_to_text(Operation, OperationText),
+    term_to_text(Kind, KindText).
+
+monitoring_chart_figure_export(Code, Dict) :-
+    findall(figure_rank(NegScore, Status, CandidateId, Evidence, Refusals, RenderPlan),
+            ( lesson_monitoring_selector:selected_figure(
+                  Code, CandidateId, Status, Score, Evidence, Refusals, RenderPlan),
+              NegScore is -Score ),
+            Rows0),
+    sort(Rows0, RankedRows),
+    length(RankedRows, CandidateCount),
+    take_n(6, RankedRows, TopRows),
+    maplist(figure_rank_export_dict, TopRows, CandidateDicts),
+    (   CandidateDicts = [Selected | _]
+    ->  true
+    ;   Selected = _{}
+    ),
+    Dict = _{
+        candidate_count: CandidateCount,
+        selected: Selected,
+        candidates: CandidateDicts
+    }.
+
+take_n(0, _, []) :- !.
+take_n(_, [], []) :- !.
+take_n(N, [H | T], [H | Rest]) :-
+    N > 0,
+    N1 is N - 1,
+    take_n(N1, T, Rest).
+
+figure_rank_export_dict(
+        figure_rank(NegScore, Status, CandidateId, Evidence, Refusals, RenderPlan),
+        Dict) :-
+    Score is -NegScore,
+    term_to_text(Status, StatusText),
+    term_to_text(Evidence.representation_language, RepText),
+    text_value(Evidence.bibkey, BibKeyText),
+    text_value(Evidence.grade_bucket, GradeBucketText),
+    figure_source_label(Evidence, RenderPlan, SourceLabel),
+    score_components_export(Evidence.score_components, ComponentDicts),
+    maplist(json_safe, Refusals, SafeRefusals),
+    json_safe(RenderPlan, SafeRenderPlan),
+    Dict = _{
+        image_path: CandidateId,
+        status: StatusText,
+        score: Score,
+        source_label: SourceLabel,
+        bibkey: BibKeyText,
+        grade_bucket: GradeBucketText,
+        representation_language: RepText,
+        domains: Evidence.domains,
+        evidence: _{
+            score_components: ComponentDicts,
+            is_hybridized_transplant: Evidence.is_hybridized_transplant
+        },
+        refusals: SafeRefusals,
+        render_plan: SafeRenderPlan
+    }.
+
+figure_source_label(Evidence, RenderPlan, SourceLabel) :-
+    text_value(Evidence.bibkey, BibKeyText),
+    text_value(Evidence.grade_bucket, GradeBucketText),
+    term_to_text(Evidence.representation_language, RepText),
+    term_to_text(RenderPlan.source, SourceText),
+    format(string(SourceLabel), "~s - ~s - ~s - ~s",
+           [BibKeyText, GradeBucketText, RepText, SourceText]).
+
+score_components_export([], []).
+score_components_export([component(Name, Weight) | Rest], [Dict | Dicts]) :-
+    term_to_text(Name, NameText),
+    Dict = _{name: NameText, weight: Weight},
+    score_components_export(Rest, Dicts).
+
+operation_gap_export_dict(
+        operation_gap(Operation, LicensedCount, AnticipatedCount, Unanticipated),
+        Dict) :-
+    term_to_text(Operation, OperationText),
+    maplist(term_to_text, Unanticipated, UnanticipatedTexts),
+    length(Unanticipated, UnanticipatedCount),
+    Dict = _{
+        operation: OperationText,
+        licensed_count: LicensedCount,
+        anticipated_count: AnticipatedCount,
+        unanticipated_count: UnanticipatedCount,
+        unanticipated: UnanticipatedTexts
+    }.
+
+expressive_power_export_dict(
+        report(paths(ProofPaths),
+               strategy_incompatibility(StrategyIncompatibilities),
+               misconception_incompatibility(MisconceptionIncompatibilities),
+               per_operation(OpPowers),
+               _PerStrategy,
+               _PerMisconception),
+        Dict) :-
+    maplist(operation_power_export_dict, OpPowers, OperationDicts),
+    Dict = _{
+        proof_paths: ProofPaths,
+        strategy_incompatibilities: StrategyIncompatibilities,
+        misconception_incompatibilities: MisconceptionIncompatibilities,
+        per_operation: OperationDicts
+    }.
+expressive_power_export_dict(_, _{
+    proof_paths: 0,
+    strategy_incompatibilities: 0,
+    misconception_incompatibilities: 0,
+    per_operation: []
+}).
+
+operation_power_export_dict(Operation-region_paths(ProofPaths, Cells, SumDistinctCosts),
+                            Dict) :-
+    term_to_text(Operation, OperationText),
+    Dict = _{
+        operation: OperationText,
+        proof_paths: ProofPaths,
+        cells: Cells,
+        distinct_costs: SumDistinctCosts
+    }.
+
+productive_core(Clusters, ProductiveCore) :-
+    member(chart_cluster(_, _, Info), Clusters),
+    member(productive_core(ProductiveCore), Info),
+    ProductiveCore \== unknown,
+    !.
+productive_core(_, "").
+
+strategy_export_dict(strategy(Operation, Kind, Info), Dict) :-
+    term_to_text(Operation, OperationText),
+    term_to_text(Kind, KindText),
+    source_text(Info, SourceText),
+    info_term_text(Info, provenance(_), ProvenanceText),
+    info_term_text(Info, vocabulary(_), WhereToSpot),
+    Dict = _{
+        name: KindText,
+        operation: OperationText,
+        kind: KindText,
+        provenance: ProvenanceText,
+        source: SourceText,
+        productive: true,
+        where_to_spot: WhereToSpot
+    }.
+
+misconception_export_dict(misconception(Operation, Name, Info), Dict) :-
+    term_to_text(Operation, OperationText),
+    term_to_text(Name, NameText),
+    citation_text(Info, CitationText),
+    info_term_text(Info, provenance(_), ProvenanceText),
+    info_term_text(Info, commitment_made(_), CommitmentText),
+    info_term_text(Info, entitlement_lacked(_), EntitlementText),
+    info_term_text(Info, incompatibility(_), IncompatibilityText),
+    info_term_json_safe(Info, incompatibility_witness(_), IncompatibilityWitness),
+    info_term_json_safe(Info, incompatibility_set_witness(_), IncompatibilitySetWitness),
+    discovered_incompatibility_set_texts(Info, DiscoveredSetTexts),
+    re_anchoring_text(EntitlementText, ReAnchoringText),
+    info_term_gloss(Info, commitment_made(_), CommitmentGloss),
+    info_term_gloss(Info, entitlement_lacked(_), EntitlementGloss),
+    info_term_gloss(Info, incompatibility(_), IncompatibilityGloss),
+    Dict = _{
+        name: NameText,
+        operation: OperationText,
+        provenance: ProvenanceText,
+        commitment_made: CommitmentText,
+        commitment_made_gloss: CommitmentGloss,
+        entitlement_lacked: EntitlementText,
+        entitlement_lacked_gloss: EntitlementGloss,
+        incompatibility: IncompatibilityText,
+        incompatibility_gloss: IncompatibilityGloss,
+        incompatibility_witness: IncompatibilityWitness,
+        incompatibility_set_witness: IncompatibilitySetWitness,
+        discovered_incompatibility_sets: DiscoveredSetTexts,
+        citation: CitationText,
+        re_anchoring_move: ReAnchoringText
+    }.
+
+%% English glosses for the deontic terms the export carries, so markdown and
+%% scoreboard surfaces read in teacher language at the source. Mirrors the
+%% console's client-side glossTerm; db_row provenance stays out of the
+%% sentence (the citation field carries the source). The raw term text stays
+%% in the un-suffixed field for formal-view consumers.
+info_term_gloss(Info, Pattern, Gloss) :-
+    (   member(Pattern, Info),
+        arg(1, Pattern, Term)
+    ->  deontic_term_gloss(Term, Gloss)
+    ;   Gloss = ""
+    ).
+
+deontic_term_gloss(Term, Gloss) :-
+    var(Term),
+    !,
+    Gloss = "".
+deontic_term_gloss(strategy(Op, Kind), Gloss) :-
+    !,
+    atom_spaces(Kind, K),
+    atom_spaces(Op, O),
+    format(string(Gloss), "the '~w' strategy (~w)", [K, O]).
+deontic_term_gloss(misconception(Name), Gloss) :-
+    !,
+    atom_spaces(Name, N),
+    format(string(Gloss), "the '~w' misconception", [N]).
+deontic_term_gloss(result_of(Name, db_row(_), Val), Gloss) :-
+    !,
+    atom_spaces(Name, N),
+    format(string(Gloss), "the '~w' rule yields ~w", [N, Val]).
+deontic_term_gloss(result_of(Name, Source, Val), Gloss) :-
+    !,
+    atom_spaces(Name, N),
+    term_to_text(Source, S),
+    format(string(Gloss), "the '~w' rule on ~w yields ~w", [N, S, Val]).
+deontic_term_gloss(deformed_action(Prod, Def, _Family), Gloss) :-
+    !,
+    atom_spaces(Prod, P),
+    atom_spaces(Def, D),
+    format(string(Gloss), "the '~w' strategy deformed into '~w'", [P, D]).
+% The batch-corpus deontic terms (misconception_registry.pl). As with
+% result_of above, db_row provenance stays out of the sentence — the citation
+% field carries the source. Mirrors gloss_commitment/2 in
+% lessons/im/field_context.pl, which glosses db_row(Id) as "corpus row Id".
+deontic_term_gloss(documented_batch_misconception(Name, _Source, _Detail, _Rule), Gloss) :-
+    !,
+    atom_spaces(Name, N),
+    format(string(Gloss), "the '~w' misconception documented in the literature", [N]).
+deontic_term_gloss(expected_mathematical_control(_Name, _Source, Operation), Gloss) :-
+    !,
+    atom_spaces(Operation, O),
+    format(string(Gloss), "the expected mathematical control of ~w", [O]).
+deontic_term_gloss(expected_result(Name, _Source, Expected), Gloss) :-
+    !,
+    atom_spaces(Name, N),
+    term_to_text(Expected, E),
+    format(string(Gloss), "the expected result ~w from the '~w' rule", [E, N]).
+deontic_term_gloss(db_row(Id), Gloss) :-
+    !,
+    term_to_text(Id, IdText),
+    format(string(Gloss), "corpus row ~w", [IdText]).
+deontic_term_gloss(Term, Gloss) :-
+    atom(Term),
+    !,
+    atom_spaces(Term, Gloss0),
+    format(string(Gloss), "~w", [Gloss0]).
+deontic_term_gloss(Term, Gloss) :-
+    term_to_text(Term, Gloss).
+
+atom_spaces(Atom, Spaced) :-
+    atom(Atom),
+    !,
+    atomic_list_concat(Parts, '_', Atom),
+    atomic_list_concat(Parts, ' ', Spaced).
+atom_spaces(Other, Text) :-
+    term_to_text(Other, Text).
+
+pml_fact_export_dict(reader_axiom(Id, Premises, Conclusion, Polarity), Dict) :-
+    term_to_text(Id, IdText),
+    maplist(term_to_text, Premises, PremiseTexts),
+    term_to_text(Conclusion, ConclusionText),
+    term_to_text(Polarity, PolarityText),
+    Dict = _{
+        id: IdText,
+        premises: PremiseTexts,
+        conclusion: ConclusionText,
+        polarity: PolarityText
+    }.
+pml_fact_export_dict(passage_mode(Id, Mode, Reading), Dict) :-
+    term_to_text(Id, IdText),
+    term_to_text(Mode, ModeText),
+    text_value(Reading, ReadingText),
+    Dict = _{
+        id: IdText,
+        premises: [],
+        conclusion: ReadingText,
+        polarity: ModeText
+    }.
+pml_fact_export_dict(coverage(Coverage), Dict) :-
+    term_to_text(Coverage, CoverageText),
+    Dict = _{
+        id: "coverage",
+        premises: [],
+        conclusion: CoverageText,
+        polarity: "coverage"
+    }.
+
+source_text(Info, SourceText) :-
+    member(source(Source), Info),
+    !,
+    term_to_text(Source, SourceText).
+source_text(_, "explicit").
+
+citation_text(Info, CitationText) :-
+    member(citation(Key, Note), Info),
+    !,
+    text_value(Key, KeyText),
+    text_value(Note, NoteText),
+    format(string(CitationText), "~s: ~s", [KeyText, NoteText]).
+citation_text(Info, CitationText) :-
+    member(citation(Citation), Info),
+    !,
+    term_to_text(Citation, CitationText).
+citation_text(_, "").
+
+info_term_text(Info, Template, Text) :-
+    functor(Template, Functor, 1),
+    member(Term, Info),
+    functor(Term, Functor, 1),
+    !,
+    arg(1, Term, Value),
+    term_to_text(Value, Text).
+info_term_text(_, _, "").
+
+info_term_json_safe(Info, Template, Safe) :-
+    functor(Template, Functor, 1),
+    member(Term, Info),
+    functor(Term, Functor, 1),
+    !,
+    arg(1, Term, Value),
+    json_safe(Value, Safe).
+info_term_json_safe(_, _, _{}).
+
+discovered_incompatibility_set_texts(Info, Texts) :-
+    findall(Text,
+            ( member(incompatibility_set(discovered, Set), Info),
+              term_to_text(Set, Text)
+            ),
+            Texts).
+
+re_anchoring_text("", "") :- !.
+re_anchoring_text(EntitlementText, ReAnchoringText) :-
+    format(string(ReAnchoringText), "Re-anchor toward ~s.", [EntitlementText]).
+
+text_value(Value, Text) :-
+    string(Value),
+    !,
+    Text = Value.
+text_value(Value, Text) :-
+    atom(Value),
+    !,
+    atom_string(Value, Text).
+text_value(Value, Text) :-
+    term_to_text(Value, Text).
+
+term_to_text(Value, Text) :-
+    string(Value),
+    !,
+    Text = Value.
+term_to_text(Value, Text) :-
+    atom(Value),
+    !,
+    atom_string(Value, Text).
+term_to_text(Value, Text) :-
+    term_string(Value, Text, [quoted(false), numbervars(true)]).
+
+dispatch_geometry(matching_concepts, [Tokens, GradeBand], Id, Response) :-
+    !,
+    norm_grade_band(GradeBand, GB),
+    matching_concepts(Tokens, GB, Concepts),
+    maplist(concept_dict, Concepts, Dicts),
+    ok_response(Id, Dicts, Response).
+
+dispatch_geometry(concepts_in_neighborhood, [ConceptIds, Depth], Id, Response) :-
+    !,
+    norm_concept_ids(ConceptIds, CIds),
+    concepts_in_neighborhood(CIds, Depth, Neighborhood),
+    maplist(atom_to_string_value, Neighborhood, Strings),
+    ok_response(Id, Strings, Response).
+
+dispatch_geometry(applicable_misconceptions, [UserText, ConceptIds], Id, Response) :-
+    !,
+    norm_concept_ids(ConceptIds, CIds),
+    applicable_misconceptions(UserText, CIds, Misconceptions),
+    json_safe(Misconceptions, Safe),
+    ok_response(Id, Safe, Response).
+
+dispatch_geometry(linked_misconceptions, [ConceptIds, MaxTier], Id, Response) :-
+    !,
+    norm_concept_ids(ConceptIds, CIds),
+    linked_misconceptions(CIds, MaxTier, Misconceptions),
+    json_safe(Misconceptions, Safe),
+    ok_response(Id, Safe, Response).
+
+dispatch_geometry(vh_markers_for, [ConceptId0, LevelOpt0], Id, Response) :-
+    !,
+    string_or_atom_to_atom(ConceptId0, ConceptId),
+    norm_geometry_atom(LevelOpt0, LevelOpt),
+    vh_markers_for(ConceptId, LevelOpt, Markers),
+    json_safe(Markers, Safe),
+    ok_response(Id, Safe, Response).
+
+dispatch_geometry(bootstraps_for, [ConceptId0, Transition0, Kind0], Id, Response) :-
+    !,
+    string_or_atom_to_atom(ConceptId0, ConceptId),
+    norm_geometry_atom(Transition0, Transition),
+    norm_geometry_atom(Kind0, Kind),
+    bootstraps_for(ConceptId, Transition, Kind, Bootstraps),
+    json_safe(Bootstraps, Safe),
+    ok_response(Id, Safe, Response).
+
+dispatch_geometry(developmental_arc_for, [ConceptOrArcId0], Id, Response) :-
+    !,
+    string_or_atom_to_atom(ConceptOrArcId0, ConceptOrArcId),
+    developmental_arc_for(ConceptOrArcId, Arc),
+    json_safe(Arc, Raw),
+    Safe = _{kind: "developmental_arc", raw: Raw},
+    ok_response(Id, Safe, Response).
+
+dispatch_geometry(pck_synthesis_for, [ConceptId0], Id, Response) :-
+    !,
+    string_or_atom_to_atom(ConceptId0, ConceptId),
+    pck_synthesis_for(ConceptId, Pck),
+    json_safe(Pck, Raw),
+    Safe = _{kind: "pck_synthesis", raw: Raw},
+    ok_response(Id, Safe, Response).
+
+dispatch_geometry(standards_bundle_for, [Framework0, Code0], Id, Response) :-
+    !,
+    string_or_atom_to_atom(Framework0, Framework),
+    geometry_code_value(Code0, Code),
+    standards_bundle_for(Framework, Code, Bundle),
+    json_safe(Bundle, Raw),
+    Safe = _{kind: "standards_bundle", raw: Raw},
+    ok_response(Id, Safe, Response).
+
+dispatch_geometry(concept_monitoring_bundle, [ConceptId0], Id, Response) :-
+    !,
+    string_or_atom_to_atom(ConceptId0, ConceptId),
+    (   concept_monitoring_bundle(ConceptId, Bundle)
+    ->  json_safe(Bundle, Raw),
+        Safe = _{kind: "concept_monitoring_bundle", raw: Raw},
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_geometry_monitoring_bundle,
+            "concept_monitoring_bundle found no bundle for concept", Response)
+    ).
+
+dispatch_geometry(applicable_misconceptions, _, Id, Response) :- !,
+    error_response(Id, malformed_geometry_request,
+        "applicable_misconceptions requires args [user_text, concept_ids]",
+        Response).
+dispatch_geometry(linked_misconceptions, _, Id, Response) :- !,
+    error_response(Id, malformed_geometry_request,
+        "linked_misconceptions requires args [concept_ids, max_tier]",
+        Response).
+dispatch_geometry(vh_markers_for, _, Id, Response) :- !,
+    error_response(Id, malformed_geometry_request,
+        "vh_markers_for requires args [concept_id, level_or_any]",
+        Response).
+dispatch_geometry(bootstraps_for, _, Id, Response) :- !,
+    error_response(Id, malformed_geometry_request,
+        "bootstraps_for requires args [concept_id, transition_or_any, kind_or_any]",
+        Response).
+dispatch_geometry(developmental_arc_for, _, Id, Response) :- !,
+    error_response(Id, malformed_geometry_request,
+        "developmental_arc_for requires args [concept_or_arc_id]",
+        Response).
+dispatch_geometry(pck_synthesis_for, _, Id, Response) :- !,
+    error_response(Id, malformed_geometry_request,
+        "pck_synthesis_for requires args [concept_id]",
+        Response).
+dispatch_geometry(standards_bundle_for, _, Id, Response) :- !,
+    error_response(Id, malformed_geometry_request,
+        "standards_bundle_for requires args [framework, code]",
+        Response).
+dispatch_geometry(concept_monitoring_bundle, _, Id, Response) :- !,
+    error_response(Id, malformed_geometry_request,
+        "concept_monitoring_bundle requires args [concept_id]",
+        Response).
+
+dispatch_geometry(Predicate, _Args, Id, Response) :-
+    format(string(Message), "Unsupported geometry predicate: ~w", [Predicate]),
+    error_response(Id, unknown_geometry_predicate, Message, Response).
+
+request_id(Request, Id) :-
+    (   get_dict(id, Request, Id)
+    ->  true
+    ;   Id = "unknown"
+    ).
+
+request_utterances(JSONUtterances, Utterances) :-
+    is_list(JSONUtterances),
+    maplist(request_utterance, JSONUtterances, Utterances),
+    findall(Id, member(utterance(Id, _Speaker, _Text), Utterances), Ids),
+    sort(Ids, UniqueIds),
+    same_length(Ids, UniqueIds).
+
+request_utterance(Dict, utterance(Id, Speaker, Text)) :-
+    is_dict(Dict),
+    get_dict(id, Dict, Id),
+    atomic(Id),
+    get_dict(speaker, Dict, Speaker),
+    transcript_text_value(Speaker),
+    get_dict(text, Dict, Text),
+    transcript_text_value(Text).
+
+transcript_text_value(Value) :-
+    string(Value),
+    !.
+transcript_text_value(Value) :-
+    atom(Value).
+
+request_discourse_context(Request, Utterances, ContextEvidence) :-
+    (   get_dict(context, Request, JSONContext),
+        JSONContext \== null
+    ->  discourse_features:context_dict_evidence(
+            Utterances, JSONContext, ContextEvidence)
+    ;   ContextEvidence = []
+    ).
+
+ok_response(Id, Result, _{id: Id, ok: true, result: Result}).
+
+error_response(Id, Type, Error, _{id: Id, ok: false, error: _{type: TypeString, message: Message}}) :-
+    atom_string(Type, TypeString),
+    message_string(Error, Message).
+
+message_string(Error, Message) :-
+    (   string(Error)
+    ->  Message = Error
+    ;   atom(Error)
+    ->  atom_string(Error, Message)
+    ;   message_to_string(Error, Message)
+    ).
+
+norm_grade_band(any, any) :- !.
+norm_grade_band([], any) :- !.
+norm_grade_band(L, L) :- is_list(L), !.
+norm_grade_band(_, any).
+
+norm_concept_ids(any, any) :- !.
+norm_concept_ids(L, AtomIds) :-
+    is_list(L),
+    !,
+    maplist(string_or_atom_to_atom, L, AtomIds).
+norm_concept_ids(_, any).
+
+norm_geometry_atom("any", any) :- !.
+norm_geometry_atom(any, any) :- !.
+norm_geometry_atom(Value, Atom) :-
+    string_or_atom_to_atom(Value, Atom).
+
+geometry_code_value(Value, Value) :-
+    string(Value),
+    !.
+geometry_code_value(Value, String) :-
+    atom(Value),
+    !,
+    atom_string(Value, String).
+geometry_code_value(Value, String) :-
+    term_string(Value, String).
+
+string_or_atom_to_atom(Value, Atom) :-
+    (   atom(Value)
+    ->  Atom = Value
+    ;   string(Value)
+    ->  atom_string(Atom, Value)
+    ;   term_string(Value, String),
+        atom_string(Atom, String)
+    ).
+
+atom_to_string_value(Atom, String) :-
+    atom_string(Atom, String).
+
+concept_dict(concept(Id, Name, Topic, Score), _{
+    kind: "concept",
+    id: IdString,
+    name: NameString,
+    topic: TopicString,
+    score: ScoreValue
+}) :-
+    atom_to_string_value(Id, IdString),
+    atom_to_string_value(Name, NameString),
+    atom_to_string_value(Topic, TopicString),
+    score_value(Score, ScoreValue).
+
+score_value(score(Value), Value) :- !.
+score_value(Value, Value).
+
+worker_fatal(Error) :-
+    message_string(Error, Message),
+    format(user_error, "hermes_worker fatal: ~s~n", [Message]),
+    halt(2).
+
+json_safe(Value, Safe) :-
+    is_dict(Value),
+    !,
+    dict_pairs(Value, Tag, Pairs),
+    maplist(json_safe_pair, Pairs, SafePairs),
+    dict_pairs(Safe, Tag, SafePairs).
+json_safe(Value, Safe) :-
+    is_list(Value),
+    !,
+    maplist(json_safe, Value, Safe).
+json_safe(Value, Safe) :-
+    safe_reason_term(Value, Safe),
+    !.
+json_safe(Value, Value) :-
+    atomic(Value),
+    !.
+json_safe(Value, Safe) :-
+    term_string(Value, Safe).
+
+json_safe_pair(Key-Value, Key-Safe) :-
+    json_safe(Value, Safe).
+
+safe_reason_term(shared_domain(Value), Safe) :-
+    reason_value_string(Value, String),
+    format(string(Safe), "shared_domain(~s)", [String]).
+safe_reason_term(shared_topic(Value), Safe) :-
+    reason_value_string(Value, String),
+    format(string(Safe), "shared_topic(~s)", [String]).
+safe_reason_term(shared_validity_register(Value), Safe) :-
+    reason_value_string(Value, String),
+    format(string(Safe), "shared_validity_register(~s)", [String]).
+
+reason_value_string(Value, String) :-
+    (   string(Value)
+    ->  String = Value
+    ;   atom(Value)
+    ->  atom_string(Value, String)
+    ;   term_string(Value, String)
+    ).
+
+% --- Misconceptions JSON Helper predicates ---
+
+json_to_term(JSON, Term) :-
+    string(JSON),
+    !,
+    catch(term_string(Term, JSON), _, Term = JSON).
+json_to_term(JSON, Term) :-
+    is_list(JSON),
+    !,
+    maplist(json_to_term, JSON, Term).
+json_to_term(JSON, Term) :-
+    is_dict(JSON),
+    !,
+    dict_pairs(JSON, Tag, Pairs),
+    maplist(json_to_term_pair, Pairs, TermPairs),
+    dict_pairs(Term, Tag, TermPairs).
+json_to_term(JSON, JSON).
+
+json_to_term_pair(Key-Value, Key-Term) :-
+    json_to_term(Value, Term).
+
+get_dict_opt(Key, Dict, Val) :-
+    get_dict(Key, Dict, Val0),
+    Val0 \== null,
+    Val = Val0.
+
+diagnose_and_format(Domain, Input, Got, SafeMatch) :-
+    test_harness:diagnose_error(Domain, Input, Got, Match),
+    json_safe(Match, SafeMatch).
+
+query_and_format(Domain, Description, Source, SafeMatch) :-
+    test_harness:query_misconception(Domain, Description, Source, Match),
+    json_safe(Match, SafeMatch).
+
+% =============================================================================
+% Gate-G op support: brandomian_check, hyperedges, axiom_toggle helpers.
+% =============================================================================
+
+%!  brandomian_incoherence_source(+Set, -Source, -WitnessEdge) is det.
+%
+%   Which side of the union verdict fired, mirroring b_incoherent/1's own
+%   order: a declared hyperedge contained in Set (that edge is the witness),
+%   else the classical neg-pair floor (the clashing pair is the witness). The
+%   final clause covers any other incoherent_base/1 case without a pair-shaped
+%   witness.
+brandomian_incoherence_source(Set, "brandomian_hyperedge", EdgeTexts) :-
+    findall(Bad,
+            ( brandomian_incompatibility:incompatible_set(Bad),
+              bc_subset_eq(Bad, Set)
+            ),
+            [Edge|_]),
+    !,
+    maplist(term_to_text, Edge, EdgeTexts).
+brandomian_incoherence_source(Set, "classical_negation_pair", PairTexts) :-
+    member(P, Set),
+    bc_member_eq(neg(P), Set),
+    !,
+    maplist(term_to_text, [P, neg(P)], PairTexts).
+brandomian_incoherence_source(_, "classical_incoherence_base", null).
+
+bc_subset_eq([], _).
+bc_subset_eq([X|Xs], Set) :-
+    bc_member_eq(X, Set),
+    bc_subset_eq(Xs, Set).
+
+bc_member_eq(X, [Y|_]) :- X == Y, !.
+bc_member_eq(X, [_|Ys]) :- bc_member_eq(X, Ys).
+
+%!  pairwise_incompatibility_entailments(+Commitments, -Entailments, -Checked) is det.
+%
+%   Every ordered pair inside the commitment set is checked against the
+%   canonical relation; only the pairs where the entailment HOLDS are
+%   returned (each is a positive finding), with the total checked count
+%   alongside so an empty list is legible as "checked, none hold".
+pairwise_incompatibility_entailments(Commitments, Entailments, Checked) :-
+    findall(A-B,
+            ( member(A, Commitments),
+              member(B, Commitments),
+              A \== B
+            ),
+            Pairs),
+    length(Pairs, Checked),
+    findall(_{from: FromText, to: ToText, holds: true},
+            ( member(A-B, Pairs),
+              brandomian_incompatibility:incompatibility_entails(A, B),
+              term_to_text(A, FromText),
+              term_to_text(B, ToText)
+            ),
+            Entailments).
+
+%!  queried_entailment(+Request, -Result) is det.
+%
+%   Optional single entailment query: `entails: {from: TermString, to:
+%   TermString}` checks one candidate pair whether or not both terms sit in
+%   the commitment set. Absent request -> null.
+queried_entailment(Request, Result) :-
+    (   get_dict_opt(entails, Request, EJSON),
+        is_dict(EJSON),
+        get_dict_opt(from, EJSON, FromJSON),
+        get_dict_opt(to, EJSON, ToJSON)
+    ->  json_to_term(FromJSON, From),
+        json_to_term(ToJSON, To),
+        (   brandomian_incompatibility:incompatibility_entails(From, To)
+        ->  Holds = true
+        ;   Holds = false
+        ),
+        term_to_text(From, FromText),
+        term_to_text(To, ToText),
+        Result = _{from: FromText, to: ToText, holds: Holds}
+    ;   Result = null
+    ).
+
+hyperedge_row(KindFilter, Row) :-
+    incompatibility_sets:discovered_set_kind(Context, Set, Kind0),
+    hyperedge_kind_atom(Kind0, Kind),
+    (   KindFilter == all
+    ->  true
+    ;   Kind == KindFilter
+    ),
+    cached_row_emergence(Context, Set, Emergent, Check, ContentTexts, Break),
+    maplist(term_to_text, Set, SetTexts),
+    term_to_text(Context, ContextText),
+    term_to_text(Kind, KindText),
+    Row = _{ source: "bigred_iteration7_cache",
+             provenance: "arche-trace/data/incompatibility_sets_discovered.pl (Big Red iteration7 bounded discovery; regeneration: docs/bigred-incompatibility-RUNBOOK.md)",
+             context: ContextText,
+             set: SetTexts,
+             kind: KindText,
+             emergent: Emergent,
+             emergence_check: Check,
+             content_set: ContentTexts,
+             catalogue_break: Break }.
+hyperedge_row(KindFilter, Row) :-
+    (   KindFilter == all
+    ->  true
+    ;   KindFilter == declared
+    ),
+    brandomian_incompatibility:incompatible_set(Set),
+    length(Set, Len),
+    Len >= 3,
+    (   brandomian_incompatibility:minimal_incompatible_set(Set)
+    ->  Emergent = true,
+        Check = "minimal_in_canonical_relation_no_declared_proper_subset"
+    ;   Emergent = false,
+        Check = "canonical_relation_declares_an_incoherent_proper_subset"
+    ),
+    catalogue_break_for(Set, Break),
+    maplist(term_to_text, Set, SetTexts),
+    Row = _{ source: "canonical_relation",
+             provenance: "arche-trace/brandomian_incompatibility.pl declared hyperedges (size >= 3 only; the seed pair edges are reachable through brandomian_check)",
+             context: "brandomian_engine",
+             set: SetTexts,
+             kind: "declared",
+             emergent: Emergent,
+             emergence_check: Check,
+             content_set: SetTexts,
+             catalogue_break: Break }.
+
+hyperedge_kind_atom(Kind, Kind) :-
+    atom(Kind),
+    !.
+hyperedge_kind_atom(Kind, Name) :-
+    functor(Kind, Name, _).
+
+% Defeasible rows are cached as [inference(Id)|Defeaters]; the emergence
+% criterion runs over the combined premise+defeater CONTENT set, the same
+% way the search tool verified the 4 cached emergent rows.
+cached_row_emergence(defeasible_inference, [inference(InfId)|Defeaters],
+                     Emergent, Check, ContentTexts, Break) :-
+    !,
+    (   defeasible_inference:material_inference(InfId, Premises, _)
+    ->  append(Premises, Defeaters, Content0),
+        sort(Content0, ContentSet),
+        (   find_emergent_hyperedges:verified_emergent(ContentSet)
+        ->  Emergent = true,
+            Check = "live_verified_no_incoherent_proper_subset"
+        ;   Emergent = false,
+            Check = "fails_live_emergence_criterion"
+        ),
+        maplist(term_to_text, ContentSet, ContentTexts),
+        catalogue_break_for(ContentSet, Break)
+    ;   Emergent = false,
+        Check = "inference_id_no_longer_defined",
+        ContentTexts = [],
+        Break = null
+    ).
+cached_row_emergence(Context, Set, Emergent, Check, ContentTexts, Break) :-
+    maplist(term_to_text, Set, ContentTexts),
+    catalogue_break_for(Set, Break),
+    length(Set, Len),
+    (   Len < 3
+    ->  Emergent = false,
+        Check = "size_below_3"
+    ;   classifier_emergent(Context, Set)
+    ->  Emergent = true,
+        Check = "classifier_verified_no_incoherent_proper_subset"
+    ;   Emergent = false,
+        Check = "fails_classifier_emergence_criterion"
+    ).
+
+% Re-run the bounded discovery classifier on the full set and on every
+% one-element removal (incoherence persists under superset, so one-element
+% removals cover all proper subsets). A classifier throw counts against
+% emergence, never for it.
+classifier_emergent(Context, Set) :-
+    catch(incompatibility_discovery:classify_candidate_set_witness(
+              Context, Set, FullOutcome, _),
+          _,
+          fail),
+    incoherent_outcome(FullOutcome),
+    forall(select(_, Set, Smaller),
+           ( catch(incompatibility_discovery:classify_candidate_set_witness(
+                       Context, Smaller, SmallOutcome, _),
+                   _,
+                   fail),
+             \+ incoherent_outcome(SmallOutcome)
+           )).
+
+incoherent_outcome(incoherent) :- !.
+incoherent_outcome(incoherent(_)).
+
+% The Lakoff & Nunez catalogue row a content set compiles from, when one
+% matches exactly; null otherwise. Computed, not hand-tagged, so the
+% catalogue attestation travels only with the sets that earn it.
+catalogue_break_for(ContentSet, Break) :-
+    (   defeasible_inference:compiled_break(BreakId, Conds),
+        sort(Conds, ContentSet)
+    ->  term_to_text(BreakId, Break)
+    ;   Break = null
+    ).
+
+%!  ensure_axiom_toggle_loaded is det.
+%
+%   Lazy load for tools/axiom_toggle.pl (see the load_runtime note on why it
+%   is not a boot-time load). with_output_to(user_error, ...) matters: the
+%   module's arche_trace(load) chain prints a banner to stdout at
+%   initialization, and an unprotected load would corrupt the JSONL protocol
+%   mid-session. A load failure surfaces as an op_exception through
+%   handle_request/2's catch.
+ensure_axiom_toggle_loaded :-
+    (   current_predicate(axiom_toggle:list_toggles/1)
+    ->  true
+    ;   with_output_to(user_error, use_module(tools(axiom_toggle), []))
+    ).
+
+axiom_toggle_action(list, Id, _Request, Response) :-
+    !,
+    axiom_toggle:list_toggles(Toggles),
+    maplist(toggle_export_dict, Toggles, Dicts),
+    json_safe(_{action: "list", toggles: Dicts}, Safe),
+    ok_response(Id, Safe, Response).
+axiom_toggle_action(Action, Id, Request, Response) :-
+    memberchk(Action, [enable, disable]),
+    !,
+    (   get_dict_opt(axiom, Request, AxiomJSON),
+        text_value(AxiomJSON, AxiomText),
+        AxiomText \== "",
+        catch(term_string(Pattern, AxiomText), _, fail),
+        nonvar(Pattern)
+    ->  (   catch(apply_axiom_toggle(Action, Pattern),
+                  error(domain_error(axiom_toggle, _), _),
+                  fail)
+        ->  matched_toggle_dicts(Pattern, Matched),
+            term_to_text(Action, ActionText),
+            json_safe(_{action: ActionText, axiom: AxiomText, toggles: Matched},
+                      Safe),
+            ok_response(Id, Safe, Response)
+        ;   format(string(Msg),
+                   "no known axiom toggle matches ~w (enumerate them with action=list)",
+                   [AxiomText]),
+            error_response(Id, unknown_axiom_toggle, Msg, Response)
+        )
+    ;   error_response(Id, missing_axiom,
+            "axiom_toggle enable/disable requires axiom (a toggle term string such as pack(eml))",
+            Response)
+    ).
+axiom_toggle_action(Action, Id, _Request, Response) :-
+    format(string(Msg),
+           "axiom_toggle action must be list, enable, or disable (got ~w)",
+           [Action]),
+    error_response(Id, unknown_axiom_toggle_action, Msg, Response).
+
+apply_axiom_toggle(enable, Pattern) :-
+    axiom_toggle:enable_axiom(Pattern).
+apply_axiom_toggle(disable, Pattern) :-
+    axiom_toggle:disable_axiom(Pattern).
+
+matched_toggle_dicts(Pattern, Dicts) :-
+    axiom_toggle:list_toggles(Toggles),
+    findall(Dict,
+            ( member(toggle(ToggleId, Status), Toggles),
+              \+ ToggleId \= Pattern,
+              toggle_export_dict(toggle(ToggleId, Status), Dict)
+            ),
+            Dicts).
+
+toggle_export_dict(toggle(ToggleId, Status), _{axiom: IdText, status: StatusText}) :-
+    term_to_text(ToggleId, IdText),
+    term_to_text(Status, StatusText).

@@ -1,0 +1,19 @@
+# Hermes runtime zone — keys, rosters, and anything pasted or dropped stay
+# on your machine. Never commit this directory.
+hermes/app/runtime/
+hermes/app/.env
+.env
+hermes/app/roster.csv
+
+# Python
+__pycache__/
+*.pyc
+
+# Prolog compiled state
+*.qlf
+
+# macOS
+.DS_Store
+
+# Bundle build output
+build/

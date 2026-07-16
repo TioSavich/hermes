@@ -1,0 +1,158 @@
+{
+ "canvas": {
+  "height": 360,
+  "width": 700
+ },
+ "frames": [
+  {
+   "caption": "2x + 3 = 11. The two sides name the same weight, so the beam is level.",
+   "scene": {
+    "beam": {
+     "tilt": "level"
+    },
+    "format": "balance-scale",
+    "pan_role": "pan",
+    "pans": {
+     "left": [
+      {
+       "count": 2,
+       "kind": "x",
+       "role": "x-box"
+      },
+      {
+       "count": 3,
+       "kind": "unit",
+       "role": "unit-weight"
+      }
+     ],
+     "right": [
+      {
+       "count": 11,
+       "kind": "unit",
+       "role": "unit-weight"
+      }
+     ]
+    },
+    "totals": {
+     "left": 11,
+     "right": 11
+    },
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 1,
+   "verb": "show_equation_as_balance"
+  },
+  {
+   "caption": "Take 3 units off BOTH pans. Left 2x, right 8; still level.",
+   "scene": {
+    "beam": {
+     "tilt": "level"
+    },
+    "format": "balance-scale",
+    "pan_role": "pan",
+    "pans": {
+     "left": [
+      {
+       "count": 2,
+       "kind": "x",
+       "role": "x-box"
+      }
+     ],
+     "right": [
+      {
+       "count": 8,
+       "kind": "unit",
+       "role": "unit-weight"
+      }
+     ]
+    },
+    "totals": {
+     "left": 8,
+     "right": 8
+    },
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 2,
+   "verb": "subtract_units_from_both_pans"
+  },
+  {
+   "caption": "Split each pan into 2 equal groups: one x-box balances 8 / 2 = 4 units.",
+   "scene": {
+    "beam": {
+     "tilt": "level"
+    },
+    "format": "balance-scale",
+    "pan_role": "pan",
+    "pans": {
+     "left": [
+      {
+       "count": 2,
+       "kind": "x",
+       "role": "x-box"
+      }
+     ],
+     "right": [
+      {
+       "count": 8,
+       "kind": "unit",
+       "role": "unit-weight"
+      }
+     ]
+    },
+    "totals": {
+     "left": 8,
+     "right": 8
+    },
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 3,
+   "verb": "split_each_side_into_equal_groups"
+  },
+  {
+   "caption": "x = 4. One x-box balances 4 units; the beam stays level.",
+   "scene": {
+    "beam": {
+     "tilt": "level"
+    },
+    "format": "balance-scale",
+    "pan_role": "pan",
+    "pans": {
+     "left": [
+      {
+       "count": 1,
+       "kind": "x",
+       "role": "x-box"
+      }
+     ],
+     "right": [
+      {
+       "count": 4,
+       "kind": "unit",
+       "role": "unit-weight"
+      }
+     ]
+    },
+    "totals": {
+     "left": 4,
+     "right": 4
+    },
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 4,
+   "verb": "isolate_the_unknown"
+  }
+ ],
+ "kind": "solve_linear",
+ "request": {
+  "a": 2,
+  "b": 3,
+  "c": 11,
+  "form": "A*x + B = C"
+ },
+ "result": "x = 4",
+ "tuple": "solve_linear(2,3,11)"
+}

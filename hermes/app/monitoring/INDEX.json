@@ -1,0 +1,31 @@
+{
+  "_comment": "Maps a prompt_id (used by parse.py and score.py) to a monitoring chart relative to the pack root. null means no chart is known to apply. Edit by hand; this is a best-effort starting point. score.py reads this file and, when a chart is mapped, attaches its 'Anticipated preservice/inservice teacher misconceptions' section as PCK context for scoring.",
+
+  "01_maddy_square_or_diamond": "monitoring/unit3/3-1-1_checking-properties-of-quadrilaterals-using.md",
+  "02_share_good_definitions": "monitoring/unit3/3-3-2_inclusive-and-exclusive-definitions-of.md",
+  "03_2_parallelogram": "monitoring/unit3/3-3-1_special-cases-of-quadrilaterals.md",
+  "03_whats_your_angle_on_angle": "monitoring/unit1/1-2-2_making-a-paper-protractor-and-measuring-angles.md",
+  "04_3_kite_proof_trust": "monitoring/unit3/3-3-3_equivalent-definitions-of-quadrilaterals.md",
+  "05_4_disagreement_resolution": null,
+  "06_5_two_kite_definitions": "monitoring/unit3/3-3-3_equivalent-definitions-of-quadrilaterals.md",
+
+  "2_2_5_read_and_discuss_grade_k_geometry": "monitoring/unit-overviews/unit2.md",
+
+  "3_1_4_folding_tests_quad_properties_async": "monitoring/unit3/3-1-3_marking-quadrilateral-properties.md",
+  "3_2_3_watch_what_you_say_async": "monitoring/unit-overviews/unit3.md",
+  "3_3_6_grade_1_geometry_lessons_async": null,
+  "3_4_3_share_quadrilateral_properties_async": "monitoring/unit3/3-4-4_contribute-to-the-table-of-quadrilateral.md",
+  "3_4_4_contribute_to_table_of_quadrilateral_properties_async": "monitoring/unit3/3-4-4_contribute-to-the-table-of-quadrilateral.md",
+  "4_1_4_trapezoid_definitions_async": "monitoring/unit3/3-3-2_inclusive-and-exclusive-definitions-of.md",
+  "4_2_4_constructions_first_try_async": "monitoring/unit4/4-2-3_introduction-to-geometric-constructions.md",
+  "4_3_2_constructions_continued_async": "monitoring/unit4/4-3-1_geometric-constructions-continued.md",
+  "4_4_3_grade_2_geometry_lessons_async": null,
+  "5_1_1_hierarchy_of_quadrilaterals_async": "monitoring/unit3/3-3-1_special-cases-of-quadrilaterals.md",
+  "5_3_6_grade_3_geometry_lessons_async": null,
+  "6_1_6_grade_4_geometry_lessons_async": null,
+  "6_2_2_pythagorean_proof_trust_async": "monitoring/unit5/5-4-1_making-sense-of-the-pythagorean-theorem.md",
+  "7_2_4_van_hiele_teaching_evidence_async": "monitoring/unit-overviews/unit3.md",
+  "7_3_6_grade_5_geometry_lessons_async": null,
+  "8_1_2_transformations_first_try_async": null,
+  "8_1_6_grade_5_to_6_geometry_async": "monitoring/unit-overviews/unit8.md"
+}

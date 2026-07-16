@@ -1,0 +1,1033 @@
+{
+ "attribution": "Transcript data: TalkMoves dataset (SumnerLab / Suresh et al.), CC BY-NC-SA 4.0, speaker-blinded before any model call.",
+ "caveats": [
+  "The calculator checks a claim only when it can ground it; 'not checked' means outside its current coverage, not wrong.",
+  "Reading a speaker's move is interpretive. The model proposes the reading; only the claim verdicts are computed.",
+  "One automated read of one transcript \u2014 a starting point for your own reading, not a verdict on the discussion."
+ ],
+ "claims": [
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "three thirds would be equal to one",
+   "speaker": "S04",
+   "utterance": "u0034"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "Four fourths is the same as saying one",
+   "speaker": "S04",
+   "utterance": "u0036"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "A hundred hundredths is the same thing as saying one",
+   "speaker": "S04",
+   "utterance": "u0037"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "zero to the one third mark is one third",
+   "speaker": "S06",
+   "utterance": "u0047"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "zero to the two thirds mark is two thirds",
+   "speaker": "S06",
+   "utterance": "u0048"
+  },
+  {
+   "finding": "does not check out",
+   "how": "the calculator worked the claim through and it fails",
+   "said": "Zero to the three thirds mark is three thirds",
+   "speaker": "S06",
+   "utterance": "u0049"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "zero to the one third mark\u2014anything from zero to one third\u2014is the one third",
+   "speaker": "S06",
+   "utterance": "u0079"
+  },
+  {
+   "finding": "not checked",
+   "how": "outside what the calculator can currently check",
+   "said": "one third is higher than zero",
+   "speaker": "S07",
+   "utterance": "u0081"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "three thirds would equal one",
+   "speaker": "S04",
+   "utterance": "u0099"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "one third would go here",
+   "speaker": "S08",
+   "utterance": "u0114"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "two thirds would go here",
+   "speaker": "S08",
+   "utterance": "u0114"
+  },
+  {
+   "finding": "does not check out",
+   "how": "the calculator worked the claim through and it fails",
+   "said": "three thirds would go here",
+   "speaker": "S08",
+   "utterance": "u0114"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "three thirds would go under one",
+   "speaker": "S01",
+   "utterance": "u0138"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "one half and one half makes a whole",
+   "speaker": "S11",
+   "utterance": "u0149"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "four\u2014fourths would make a whole",
+   "speaker": "S11",
+   "utterance": "u0149"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "three thirds would make a whole",
+   "speaker": "S11",
+   "utterance": "u0149"
+  }
+ ],
+ "headline": "16 mathematical claims heard; 15 checked by the calculator, 2 did not check out; 6 cross-speaker conflicts surfaced. Every failed claim was later repaired in discussion.",
+ "machine": {
+  "extractions": [
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:equal_to",
+     "claim": "n_over_n_is_one",
+     "status": "domain_checked",
+     "trace": [
+      "completion: numerator 3 vs denominator 3"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 3,
+      "num": 3
+     }
+    },
+    "confidence": "high",
+    "id": "c1",
+    "shape": "n_over_n_is_one",
+    "surface": "three thirds would be equal to one",
+    "term": "n_over_n_is_one(fraction(3,3))",
+    "utterance_id": "u0034",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:equal_to",
+     "claim": "n_over_n_is_one",
+     "status": "domain_checked",
+     "trace": [
+      "completion: numerator 4 vs denominator 4"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 4,
+      "num": 4
+     }
+    },
+    "confidence": "high",
+    "id": "c2",
+    "shape": "n_over_n_is_one",
+    "surface": "Four fourths is the same as saying one",
+    "term": "n_over_n_is_one(fraction(4,4))",
+    "utterance_id": "u0036",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:equal_to",
+     "claim": "n_over_n_is_one",
+     "status": "domain_checked",
+     "trace": [
+      "completion: numerator 100 vs denominator 100"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 100,
+      "num": 100
+     }
+    },
+    "confidence": "high",
+    "id": "c3",
+    "shape": "n_over_n_is_one",
+    "surface": "A hundred hundredths is the same thing as saying one",
+    "term": "n_over_n_is_one(fraction(100,100))",
+    "utterance_id": "u0037",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:smaller_than",
+     "claim": "number_line_position",
+     "status": "domain_checked",
+     "trace": [
+      "within unit interval: 0 < 1/3 < 1"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 3,
+      "num": 1
+     }
+    },
+    "confidence": "high",
+    "id": "c4",
+    "shape": "number_line_position",
+    "surface": "zero to the one third mark is one third",
+    "term": "number_line_position(fraction(1,3),between(0,1))",
+    "utterance_id": "u0047",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:smaller_than",
+     "claim": "number_line_position",
+     "status": "domain_checked",
+     "trace": [
+      "within unit interval: 0 < 2/3 < 1"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 3,
+      "num": 2
+     }
+    },
+    "confidence": "high",
+    "id": "c5",
+    "shape": "number_line_position",
+    "surface": "zero to the two thirds mark is two thirds",
+    "term": "number_line_position(fraction(2,3),between(0,1))",
+    "utterance_id": "u0048",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "refuted",
+     "checker": "grounded_arithmetic:smaller_than",
+     "claim": "number_line_position",
+     "status": "domain_checked",
+     "trace": [
+      "within unit interval: 0 < 3/3 < 1"
+     ],
+     "verdict": "refuted"
+    },
+    "args": {
+     "frac": {
+      "den": 3,
+      "num": 3
+     }
+    },
+    "confidence": "high",
+    "id": "c6",
+    "shape": "number_line_position",
+    "surface": "Zero to the three thirds mark is three thirds",
+    "term": "number_line_position(fraction(3,3),between(0,1))",
+    "utterance_id": "u0049",
+    "verdict": "refuted"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:smaller_than",
+     "claim": "number_line_position",
+     "status": "domain_checked",
+     "trace": [
+      "within unit interval: 0 < 1/3 < 1"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 3,
+      "num": 1
+     }
+    },
+    "confidence": "high",
+    "id": "c7",
+    "shape": "number_line_position",
+    "surface": "zero to the one third mark\u2014anything from zero to one third\u2014is the one third",
+    "term": "number_line_position(fraction(1,3),between(0,1))",
+    "utterance_id": "u0079",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "not_in_registered_domain",
+     "claim": "whole_number_comparison",
+     "reason": "unrecognized relation or non-integer operands",
+     "status": "not_covered",
+     "verdict": "not_checked"
+    },
+    "args": {
+     "left": {
+      "den": 3,
+      "num": 1
+     },
+     "rel": "greater",
+     "right": {
+      "den": 1,
+      "num": 0
+     }
+    },
+    "confidence": "high",
+    "id": "c8",
+    "shape": "comparison",
+    "surface": "one third is higher than zero",
+    "term": "comparison(fraction(1,3),greater,fraction(0,1))",
+    "utterance_id": "u0081",
+    "verdict": "not_checked"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:equal_to",
+     "claim": "n_over_n_is_one",
+     "status": "domain_checked",
+     "trace": [
+      "completion: numerator 3 vs denominator 3"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 3,
+      "num": 3
+     }
+    },
+    "confidence": "high",
+    "id": "c9",
+    "shape": "n_over_n_is_one",
+    "surface": "three thirds would equal one",
+    "term": "n_over_n_is_one(fraction(3,3))",
+    "utterance_id": "u0099",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:smaller_than",
+     "claim": "number_line_position",
+     "status": "domain_checked",
+     "trace": [
+      "within unit interval: 0 < 1/3 < 1"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 3,
+      "num": 1
+     }
+    },
+    "confidence": "high",
+    "id": "c10",
+    "shape": "number_line_position",
+    "surface": "one third would go here",
+    "term": "number_line_position(fraction(1,3),between(0,1))",
+    "utterance_id": "u0114",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:smaller_than",
+     "claim": "number_line_position",
+     "status": "domain_checked",
+     "trace": [
+      "within unit interval: 0 < 2/3 < 1"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 3,
+      "num": 2
+     }
+    },
+    "confidence": "high",
+    "id": "c11",
+    "shape": "number_line_position",
+    "surface": "two thirds would go here",
+    "term": "number_line_position(fraction(2,3),between(0,1))",
+    "utterance_id": "u0114",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "refuted",
+     "checker": "grounded_arithmetic:smaller_than",
+     "claim": "number_line_position",
+     "status": "domain_checked",
+     "trace": [
+      "within unit interval: 0 < 3/3 < 1"
+     ],
+     "verdict": "refuted"
+    },
+    "args": {
+     "frac": {
+      "den": 3,
+      "num": 3
+     }
+    },
+    "confidence": "high",
+    "id": "c12",
+    "shape": "number_line_position",
+    "surface": "three thirds would go here",
+    "term": "number_line_position(fraction(3,3),between(0,1))",
+    "utterance_id": "u0114",
+    "verdict": "refuted"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:equal_to",
+     "claim": "n_over_n_is_one",
+     "status": "domain_checked",
+     "trace": [
+      "completion: numerator 3 vs denominator 3"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 3,
+      "num": 3
+     }
+    },
+    "confidence": "high",
+    "id": "c13",
+    "shape": "n_over_n_is_one",
+    "surface": "three thirds would go under one",
+    "term": "n_over_n_is_one(fraction(3,3))",
+    "utterance_id": "u0138",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:add_grounded+multiply_grounded",
+     "claim": "fraction_sum",
+     "status": "domain_checked",
+     "trace": [
+      "grounded: 1/2 + 1/2 co-measured against claimed 1 whole"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 2,
+      "num": 1
+     },
+     "b": {
+      "den": 2,
+      "num": 1
+     },
+     "result": 1
+    },
+    "confidence": "high",
+    "id": "c14",
+    "shape": "fraction_sum",
+    "surface": "one half and one half makes a whole",
+    "term": "fraction_sum(fraction(1,2),fraction(1,2),whole(1))",
+    "utterance_id": "u0149",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:equal_to",
+     "claim": "n_over_n_is_one",
+     "status": "domain_checked",
+     "trace": [
+      "completion: numerator 4 vs denominator 4"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 4,
+      "num": 4
+     }
+    },
+    "confidence": "high",
+    "id": "c15",
+    "shape": "n_over_n_is_one",
+    "surface": "four\u2014fourths would make a whole",
+    "term": "n_over_n_is_one(fraction(4,4))",
+    "utterance_id": "u0149",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:equal_to",
+     "claim": "n_over_n_is_one",
+     "status": "domain_checked",
+     "trace": [
+      "completion: numerator 3 vs denominator 3"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 3,
+      "num": 3
+     }
+    },
+    "confidence": "high",
+    "id": "c16",
+    "shape": "n_over_n_is_one",
+    "surface": "three thirds would make a whole",
+    "term": "n_over_n_is_one(fraction(3,3))",
+    "utterance_id": "u0149",
+    "verdict": "holds"
+   }
+  ],
+  "readings": [
+   {
+    "claim_refs": [],
+    "id": "a1",
+    "pml": {
+     "content": "avowal of claim C1",
+     "force": "avow",
+     "grammatical_person": "1st",
+     "mode": "subjective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "subjective",
+     "subject_position_read": "tentative opening"
+    },
+    "raw_text": "I think if you have thirds...",
+    "utterance_ids": [
+     "u0034"
+    ],
+    "wraps": "a2"
+   },
+   {
+    "claim_refs": [
+     "C1"
+    ],
+    "id": "a2",
+    "pml": {
+     "content": "C1",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "objective",
+     "subject_position_read": "candidate property of thirds"
+    },
+    "raw_text": "[C1 n_over_n_is_one: holds]",
+    "uptake": {
+     "fate": "taken_up",
+     "ids": [
+      "u0040"
+     ]
+    },
+    "utterance_ids": [
+     "u0034"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a3",
+    "pml": {
+     "content": "avowal of general rule",
+     "force": "avow",
+     "grammatical_person": "1st",
+     "mode": "subjective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "subjective",
+     "subject_position_read": "claiming insight"
+    },
+    "raw_text": "I think that if you have a number...",
+    "utterance_ids": [
+     "u0040"
+    ],
+    "wraps": "a4"
+   },
+   {
+    "claim_refs": [
+     "C2",
+     "C3"
+    ],
+    "id": "a4",
+    "pml": {
+     "content": "generalization of n_over_n_is_one",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "objective",
+     "subject_position_read": "universal property"
+    },
+    "raw_text": "it is always going to be equal to the number named one.",
+    "utterance_ids": [
+     "u0040"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C4",
+     "C5"
+    ],
+    "id": "a5",
+    "pml": {
+     "content": "C4 and C5",
+     "force": "assert",
+     "grammatical_person": "1st",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "objective",
+     "subject_position_read": "referring to established internal model"
+    },
+    "raw_text": "what I was saying before... [C4 number_line_position: holds]. [C5 number_line_position: holds].",
+    "utterance_ids": [
+     "u0047",
+     "u0048"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C6"
+    ],
+    "id": "a6",
+    "pml": {
+     "content": "C6",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "objective",
+     "subject_position_read": "bounding the interval"
+    },
+    "raw_text": "[C6 number_line_position: refuted]",
+    "utterance_ids": [
+     "u0049"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a7",
+    "pml": {
+     "content": "possibility of 4/3 outside interval",
+     "force": "question",
+     "grammatical_person": "1st",
+     "mode": "subjective",
+     "operator": "exp_poss",
+     "polarity": "expansive",
+     "position": "subjective",
+     "subject_position_read": "opening the field"
+    },
+    "raw_text": "I wonder if we could have four thirds if we went further?",
+    "utterance_ids": [
+     "u0057"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C7"
+    ],
+    "id": "a8",
+    "pml": {
+     "content": "C7",
+     "force": "assert",
+     "grammatical_person": "1st",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "objective",
+     "subject_position_read": "insisting on model"
+    },
+    "raw_text": "What I am saying is that [C7 number_line_position: holds].",
+    "utterance_ids": [
+     "u0079"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C8"
+    ],
+    "id": "a9",
+    "pml": {
+     "content": "C8",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "objective",
+     "subject_position_read": "offering a candidate reading"
+    },
+    "raw_text": "See, [C8 comparison: not_checked] ...",
+    "utterance_ids": [
+     "u0081"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C9"
+    ],
+    "id": "a10",
+    "pml": {
+     "content": "C9",
+     "force": "assert",
+     "grammatical_person": "1st",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "objective",
+     "subject_position_read": "reporting a specific action"
+    },
+    "raw_text": "Well, I put one third, two thirds, and then [C9 n_over_n_is_one: holds].",
+    "utterance_ids": [
+     "u0099"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C10",
+     "C11",
+     "C12"
+    ],
+    "id": "a11",
+    "pml": {
+     "content": "C10, C11, C12",
+     "force": "assert",
+     "grammatical_person": "1st",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "objective",
+     "subject_position_read": "external tool (ruler) as authority"
+    },
+    "raw_text": "...[C10 number_line_position: holds], [C11 number_line_position: holds], [C12 number_line_position: refuted]...",
+    "uptake": {
+     "fate": "repaired",
+     "ids": [
+      "u0115",
+      "u0134"
+     ]
+    },
+    "utterance_ids": [
+     "u0114"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C13"
+    ],
+    "id": "a12",
+    "pml": {
+     "content": "C13 as group consensus",
+     "force": "assert",
+     "grammatical_person": "2nd",
+     "mode": "normative",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "normative",
+     "subject_position_read": "binding the group to a norm"
+    },
+    "raw_text": "...you all agree that [C13 n_over_n_is_one: holds].",
+    "uptake": {
+     "fate": "taken_up",
+     "ids": [
+      "u0149"
+     ]
+    },
+    "utterance_ids": [
+     "u0138"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a13",
+    "pml": {
+     "content": "avowal of final synthesis",
+     "force": "avow",
+     "grammatical_person": "1st",
+     "mode": "subjective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "subjective",
+     "subject_position_read": "contributing to consensus"
+    },
+    "raw_text": "I think [C14 fraction_sum: holds]...",
+    "utterance_ids": [
+     "u0149"
+    ],
+    "wraps": "a14"
+   },
+   {
+    "claim_refs": [
+     "C14",
+     "C15",
+     "C16"
+    ],
+    "id": "a14",
+    "pml": {
+     "content": "C14, C15, C16",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "objective",
+     "subject_position_read": "final synthesis of the rule"
+    },
+    "raw_text": "[C14 fraction_sum: holds] and [C15 n_over_n_is_one: holds] and [C16 n_over_n_is_one: holds]",
+    "utterance_ids": [
+     "u0149"
+    ]
+   }
+  ]
+ },
+ "postures": [
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "speaking for themselves",
+   "response": "no response recorded",
+   "speaker": "S04",
+   "utterances": [
+    "u0034"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "about the shared math",
+   "response": "the class took it up",
+   "speaker": "S04",
+   "utterances": [
+    "u0034"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "speaking for themselves",
+   "response": "no response recorded",
+   "speaker": "S03",
+   "utterances": [
+    "u0040"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S03",
+   "utterances": [
+    "u0040"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S06",
+   "utterances": [
+    "u0047",
+    "u0048"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S06",
+   "utterances": [
+    "u0049"
+   ]
+  },
+  {
+   "move": "opens an alternative",
+   "register": "speaking for themselves",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0057"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S06",
+   "utterances": [
+    "u0079"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S07",
+   "utterances": [
+    "u0081"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S04",
+   "utterances": [
+    "u0099"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "the class returned and repaired it",
+   "speaker": "S08",
+   "utterances": [
+    "u0114"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about what the class may or must do",
+   "response": "the class took it up",
+   "speaker": "S01",
+   "utterances": [
+    "u0138"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "speaking for themselves",
+   "response": "no response recorded",
+   "speaker": "S11",
+   "utterances": [
+    "u0149"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S11",
+   "utterances": [
+    "u0149"
+   ]
+  }
+ ],
+ "repair_arcs": [
+  {
+   "anchors": [
+    "u0049",
+    "c9",
+    "c13",
+    "c16"
+   ],
+   "sentence": "S06's claim at u0049 does not check out, and the discussion returned to the same content later and landed on a version that does."
+  },
+  {
+   "anchors": [
+    "u0114",
+    "c13",
+    "c16"
+   ],
+   "sentence": "S08's claim at u0114 does not check out, and the discussion returned to the same content later and landed on a version that does."
+  }
+ ],
+ "tensions": [
+  {
+   "anchors": [
+    "u0049",
+    "u0034",
+    "u0099"
+   ],
+   "sentence": "S06 (at u0049) and S04 (at u0034) have made claims about the same fractions that cannot both stand; the calculator backs S04's."
+  },
+  {
+   "anchors": [
+    "u0049",
+    "u0138"
+   ],
+   "sentence": "S06 (at u0049) and S01 (at u0138) have made claims about the same fractions that cannot both stand; the calculator backs S01's."
+  },
+  {
+   "anchors": [
+    "u0049",
+    "u0149"
+   ],
+   "sentence": "S06 (at u0049) and S11 (at u0149) have made claims about the same fractions that cannot both stand; the calculator backs S11's."
+  },
+  {
+   "anchors": [
+    "u0114",
+    "u0034",
+    "u0099"
+   ],
+   "sentence": "S08 (at u0114) and S04 (at u0034) have made claims about the same fractions that cannot both stand; the calculator backs S04's."
+  },
+  {
+   "anchors": [
+    "u0114",
+    "u0138"
+   ],
+   "sentence": "S08 (at u0114) and S01 (at u0138) have made claims about the same fractions that cannot both stand; the calculator backs S01's."
+  },
+  {
+   "anchors": [
+    "u0114",
+    "u0149"
+   ],
+   "sentence": "S08 (at u0114) and S11 (at u0149) have made claims about the same fractions that cannot both stand; the calculator backs S11's."
+  }
+ ],
+ "transcript": "# tm_0079\n\nU0001 S01: I would like someone to tell me where you would place one.\nU0002 S01: You can talk to  your partner if you want too but, I would like you all to think about where you  would place one.\nU0003 S01: On the one Alan made.\nU0004 S01: On Alan's line.\nU0005 S01: Some of you think we need to make the number line longer.\nU0006 S01: Some of you do not  think we need to make the number line longer.\nU0007 S01: Okay.\nU0008 S01: Also, what reasons you have for why your think so or why not.\nU0009 S01: By the way \u2026 if you have worked that one out, I am curious where you would  put four-fourths.\nU0010 S02: [T walks over to Gregory and Danielle] You have a very interesting concept.\nU0011 S02: Why don't you share that\u2014go ahead.\nU0012 S01: Why don't you go talk to Alan or Meredith?\nU0013 S01: See what they  have to say \u2026  [Students walk over to Meredith.]\nU0014 S01: Where would you put four-fourths Erik and Michael?\nU0015 S01: Where would you put five- fifths?\nU0016 S01: Seven-sevenths?\nU0017 S01: A million-millionths?\nU0018 S01: Are you prepared to argue that  position?\nU0019 S01: Michael, why?\nU0020 S03: Because \u2026.\nU0021 S01: Okay, so you are telling me that that is just another name for one?\nU0022 S01: You want to  put those number on the bottom.\nU0023 S01: Remember we agreed you must put the  numbers on the bottom.\nU0024 S01: Erik so forcefully told us that people will be confused.\nU0025 S01: Alan had a very nice method.\nU0026 S01: Ok.  Are we ready to come back and share our ideas?\nU0027 S01: I would like all of us to listen to some.\nU0028 S01: We have at least two different  positions, here.\nU0029 S01: I think I will give Meredith the first crack at an argument  because it was her number line that raised the question to me.\nU0030 S01: And, this is  something I am, of course, going to want you to write about\u2014about your  arguments and why you think so to see if we can come up with some common  understanding of where to place some of these numbers.\nU0031 S01: Are you ready?\nU0032 S01: Ok.  Meredith, go ahead.\nU0033 S04: You asked me where to place one.\nU0034 S04: I think if you have thirds\u2014one third, two  thirds, three thirds\u2014three thirds would be equal to one.\nU0035 S04: See because one third,  two thirds,  and three thirds   \u2014three thirds is the same as saying one.\nU0036 S04: Four fourths is the same as saying one.\nU0037 S04: A hundred hundredths is the same thing as saying one.\nU0038 S01: What do you think?\nU0039 S01: Michael?\nU0040 S03: I think that if you have a number with the same number on top as in the bottom,  then it is always going to be equal to the number named one.\nU0041 S01: Who disagree with that?\nU0042 S01: Who disagrees with that idea?\nU0043 S01: Who has a question about that idea?\nU0044 S01: Jessica you are making a face, are you confused?\nU0045 S05: I think, yeah, I agree with her.\nU0046 S01: Alan, do you have a comment?\nU0047 S06: No, what I was saying before when I was talking is that zero to the  one third  mark is one third.\nU0048 S06: zero to the two thirds mark is two thirds.\nU0049 S06: Zero to the three  thirds mark is three thirds.\nU0050 S06: Now, three thirds you cannot have any more thirds or  you would have four thirds.\nU0051 S06: Then you have to make the thirds bigger or not have  another.\nU0052 S06: You can only have three thirds.\nU0053 S01: Okay.\nU0054 S01: Let us hold that question about what would happen if we had  four thirds.\nU0055 S04: You only have four thirds, if you are going to have that you could only have four  fourths not four thirds, you can have four thirds.\nU0056 S01: You cannot have four thirds not in that interval.\nU0057 S01: I wonder if we could have four  thirds if we went further?\nU0058 S04: Then we would have to have six thirds.\nU0059 S01: Then, we would have to have six thirds.\nU0060 S01: Ok.\nU0061 S01: Hold on.\nU0062 S01: Meredith just said\u2014I  want to make sure you are all able to hear what she just said\u2014I believe she said  that you cannot have four thirds in this interval, but I asked the question \u2026 if you  extend the interval, could have four thirds?\nU0063 S04: If you made it to two, you would have six thirds, and then you could place four  thirds.\nU0064 S01: If you made it to two, you would have six thirds, and then you could place four  thirds.\nU0065 S01: That is a very interesting idea.\nU0066 S01: Bryan, what did you have to say?\nU0067 S07: Alan thinks that I am placing four thirds and I am not.\nU0068 S07: Because you see, I think  that you would start on the negative side.\nU0069 S07: Like umm \u2026 [stands up and walks to  overhead]  For example, you would probably start on the one third and right  between the one third   and the two thirds would be one third, right   between the two thirds and the three thirds   would be two thirds and, you see, he thinks that when I add that there, he thinks  that zero to one third is a fraction, it is not.\nU0070 S07: Because zero is a separate number  and it is not a fraction, and so I would think that if you start on the one third and  anything pass that if you keep going up you would hit two thirds and anything  between there would be one third.\nU0071 S07: But if you start at zero and you go across and  you hit the one third, zero is not a fraction, so if you add one more, zero between  one third is not a fraction, so it would be four thirds.\nU0072 S01: Some people have written zero as zero thirds.\nU0073 S06: Okay.\nU0074 S06: What I was saying before is this \u2026\nU0075 S01: Let us see what Meredith is doing here.\nU0076 S01: Well, that is very   interesting.\nU0077 S01: Very interesting what Meredith is doing up there.\nU0078 S06: Okay.\nU0079 S06: What I am saying is that zero to the one third mark\u2014anything from zero to  one third\u2014is the one third.\nU0080 S06: Now, anything pass the one third mark we would be  calling one third, zero.\nU0081 S07: See, one third is higher than zero \u2026\nU0082 S06: Right.\nU0083 S07: \u2026 So, you would not count zero to one third as one third.\nU0084 S01: Okay.\nU0085 S01: Maybe let us stop for a moment.\nU0086 S01: I know this is very interesting and I  know we want to continue this.\nU0087 S01: You want to say something else, Alan?\nU0088 S06: What I am saying is.\nU0089 S06: Here is a model of using thirds.\nU0090 S06: Suppose that end is zero and that end is one.\nU0091 S06: You are saying from there to there\u2014this piece\u2014really has no fraction value in  the one third.\nU0092 S07: There is no fraction value.\nU0093 S06: You cannot put that over there, look, is has extra room.\nU0094 S06: You only have three  spaces\u2014one, two, three\u2014you have one third from zero to one third, two thirds  from one third to two thirds, and three thirds area from two thirds to three thirds.\nU0095 S01: Okay.\nU0096 S01: Let us just hear from Meredith and then I want to do something else.\nU0097 S01: We  have lot of good ideas that we need to think about.\nU0098 S01: Meredith, what is your  comment?\nU0099 S04: Well, I put one third, two thirds, and then three thirds would equal one.\nU0100 S04: And,  then, I went from zero to two it would be one and one third , two and   two thirds , and, then, one and three thirds.\nU0101 S01: One and two thirds, right?\nU0102 S07: There is no fraction value between zero and one third, because\u2026\nU0103 S06: If you have no value between zero and one third, then look, you   eliminate that how many spaces would you have?\nU0104 S06: Two.\nU0105 S07: What I would think would be that if you start on the lower number  and then keep going up and until you hit that.\nU0106 S07: Anything between there would be the one third and the two thirds right   there.\nU0107 S07: And, if you keep going up to there you will hit that and,   that will be two thirds   and if you put a bar right there it would count as one,   two thirds between 1 would be three thirds.\nU0108 S07: Because, like I was saying, if you started there at zero,    then zero does not have value \u2026\nU0109 S01: Okay.\nU0110 S01: We need to sit down.\nU0111 S01: Obviously, we have not convinced Bryan.\nU0112 S01: Alan and Meredith have tried and not convinced Bryan.\nU0113 S01: I wanted to give Sarah and Beth  and Audra a chance to share their idea and if everyone listen a bit more, we  will  see what we are thinking in a few minutes.\nU0114 S08: We thought that we did not have to put anything else on the number line, because  if we put this from zero to 1 and you would mark one third here because if you  used a ruler here to measure it or something  one third would go here,  two thirds would go here,  three thirds would go here,because the length will be the same as Cuisenaire rods  or something.\nU0115 S01: What I am not clear about when I am looking up there, I am not sure, you wrote a  number on top, and I thought we all agreed that we would write our number line  with the numbers in the bottom.\nU0116 S01: Where would you place the three-thirds?\nU0117 S08: We would place it here\nU0118 S01: Could you write it underneath the number line and tell us why you would place it  there.\nU0119 S01: Because, I think some of us are interested in where you would place it.\nU0120 S01: [Groups workstogether on placing the three thirds on the bottom of the line.]\nU0121 S01: And, you are telling me you would place it with 1 to the right of three-thirds?\nU0122 S01: [No verbal response from group.]\nU0123 S01: So this clearly defines where we have  differences of opinions, right?\nU0124 S01: Is that true?\nU0125 S01: So, how many of you are agreeing  that we should place 1 to the right of three thirds?\nU0126 S01: How many of you believe  that?\nU0127 S01: Oh.\nU0128 S01: How many of you believe that it should go to the left of three-thirds?\nU0129 S01: How many of you believe it should go right on top of the one?\nU0130 S08: That's what we meant.\nU0131 S08: We just could not get it right on top to fit.\nU0132 S01: You meant to put it on top?\nU0133 S09: You just put it under it.\nU0134 S01: Oh, I see, you just could not fit it in.\nU0135 S01: So, Jessica, how could they do it to put it by  the one?\nU0136 S01: You want to go show them how to do it?\nU0137 S01: They meant the same thing, Okay.\nU0138 S01: So,  I am hearing that we have some agreement here then; you all agree that three  thirds would go under one.\nU0139 S01: It would go in the same spot.\nU0140 S01: How many agree with  that?\nU0141 S01: [Six students on camera raise their hands]  And, I would like to hear again  why that would work, could you tell me Erin?\nU0142 S01: Why you would put it there and  not to the right or to the left?\nU0143 S01: Any idea?\nU0144 S01: Want to think about it?\nU0145 S01: J.\nU0146 S10: I want to think about it a little more.\nU0147 S01: Okay.\nU0148 S01: James?\nU0149 S11: I think one half and one half makes a whole and four\u2014fourths would make a  whole and three thirds would make a whole also, so it will be right on top of the  one.\nU0150 S01: Okay.\nU0151 S01: Are you agreeing with that Jakki?\nU0152 S12: Yes.\nU0153 S01: Some of you are nodding your heads.\nU0154 S01: Okay.\nU0155 S01: So, I am hearing some agreement  on that and that is where you would place it\n",
+ "transcript_id": "tm_0079"
+}

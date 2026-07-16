@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hermes — visualizations</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Crect%20width='16'%20height='16'%20fill='%23f4ead6'/%3E%3Crect%20x='1.5'%20y='3'%20width='13'%20height='10'%20fill='none'%20stroke='%230d0c08'%20stroke-width='0.8'/%3E%3Crect%20x='4'%20y='3'%20width='0.8'%20height='10'%20fill='%230d0c08'/%3E%3Crect%20x='11.2'%20y='3'%20width='0.8'%20height='10'%20fill='%230d0c08'/%3E%3Crect%20x='6.5'%20y='6'%20width='3'%20height='4'%20fill='%23d4a747'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="hermes-tokens.css">
+  <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="visualizations"></script>
+  <style>
+    body { margin: 0; background: var(--paper, #f4ead6); color: var(--ink, #0d0c08);
+           font: 16px/1.5 var(--serif, Georgia, serif); }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 2.2rem 1.4rem 4rem; }
+    h1 { font-size: 1.7rem; margin: 0 0 .3rem; }
+    .lede { color: var(--muted, #665f4f); max-width: 60ch; margin: 0 0 1.4rem; }
+    .how { border: 1px solid var(--line, rgba(13,12,8,.14)); border-radius: 10px;
+           background: var(--paper-cool, #ede4cf); padding: .8rem 1rem; margin-bottom: 1.6rem;
+           font-size: .92rem; }
+    .how code { font: .85em var(--mono, ui-monospace, Menlo, monospace);
+                background: rgba(0,0,0,.06); padding: .05em .35em; border-radius: 4px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .9rem; }
+    a.card { display: block; text-decoration: none; color: inherit;
+             border: 1px solid var(--line, rgba(13,12,8,.14)); border-radius: 12px;
+             background: rgba(255,253,247,.6); padding: 1rem 1.1rem;
+             transition: transform .08s ease, box-shadow .12s ease, border-color .12s; }
+    a.card:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(13,12,8,.14);
+                   border-color: var(--gold-deep, #a97c24); }
+    a.card h2 { margin: 0 0 .25rem; font-size: 1.08rem; }
+    a.card p { margin: 0; font-size: .88rem; color: var(--ink-soft, #1b1810); }
+    a.card .ln { display: block; margin-top: .5rem; font: .72rem var(--mono, ui-monospace, monospace);
+                 color: var(--gold-deep, #a97c24); }
+    footer { margin-top: 2rem; font-size: .84rem; color: var(--muted, #665f4f); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Hermes — visualizations</h1>
+    <p class="lede">Each page draws a K-5 arithmetic claim, plus the seeded
+      relational-equals balance route, in the representation its grounding selects.
+      6-8 coverage remains aspirational except the balance-scale PB route. Use the
+      <b>student / teacher / formal</b> toggle at the top of each page to read it
+      three ways.</p>
+
+    <div class="how">
+      <b>Just looking?</b> Open any page below — it draws a worked example with no setup.
+      <br><b>Want to type your own numbers?</b> Run <code>bash hermes/app/launch.sh</code>,
+      then open this page at <code>http://127.0.0.1:8765/more-zeeman/visualizations.html</code>
+      and use the <b>Calculate</b> box on each page.
+    </div>
+
+    <div class="grid">
+      <a class="card" href="number-line/index.html">
+        <h2>Number line</h2>
+        <p>Add/subtract and unit-fraction iteration as jumps on a path; rounding shown as length, with the
+           missing compensation when it goes wrong. (Motion Along a Path)</p>
+        <span class="ln">jumps · fractions · rounding · misconception</span>
+      </a>
+      <a class="card" href="fraction-bars/index.html">
+        <h2>Fraction bars</h2>
+        <p>A unit partitioned into equal parts; addition by co-measurement; the productive
+           strategy beside its deformation. (Object Construction)</p>
+        <span class="ln">partition · iterate · compare</span>
+      </a>
+      <a class="card" href="unit-echo/index.html">
+        <h2>Unit echo</h2>
+        <p>A base regrouping witness beside fraction iteration at the same arity, with the
+           fraction plan reconstructed and checked from bar geometry.</p>
+        <span class="ln">regroup · partition · spatial round trip</span>
+      </a>
+      <a class="card" href="area-model/index.html">
+        <h2>Area / array model</h2>
+        <p>Multiplication as a grid; commutativity by transpose; partial products; fraction
+           multiplication as overlap. (Object Collection / Construction)</p>
+        <span class="ln">array · partial products</span>
+      </a>
+      <a class="card" href="base-ten/index.html">
+        <h2>Base ten (Ace of Base)</h2>
+        <p>Place-value columns with rods, flats, and cubes; carry and borrow across a
+           boundary; the same bundling move at base 10 and base 12. (Object Construction)</p>
+        <span class="ln">rod · flat · carry · base shift</span>
+      </a>
+      <a class="card" href="set-grouping/index.html">
+        <h2>Set &amp; grouping</h2>
+        <p>Discrete counters: ten-frames, make-ten, parity by pairing, equal groups, fair
+           share, signed chips with zero-pair cancellation. (Object Collection)</p>
+        <span class="ln">ten-frame · parity · groups</span>
+      </a>
+      <a class="card" href="balance-scale/index.html">
+        <h2>Balance scale</h2>
+        <p>An equation as a two-pan beam; solving keeps it level by the same move on both
+           sides; the operational-equals error tips it. (Balance preservation)</p>
+        <span class="ln">solve · relational equals</span>
+      </a>
+    </div>
+
+    <h2 style="margin:2.2rem 0 .25rem">Misconception compare</h2>
+    <p class="lede">A misconception is a deformation of a productive scheme — the same machine with one
+      wire moved. Each page steps the productive strategy beside its deformation on one shared step
+      index, to where they diverge. The strips are drawn by the same scene compilers as the
+      visualizers above; on a static page the embedded worked example draws and <b>Calculate</b>
+      needs a running worker.</p>
+
+    <div class="grid">
+      <a class="card" href="fraction-bars/compare.html">
+        <h2>Fraction misconceptions</h2>
+        <p>Unit-fraction iteration beside the whole-number grab; step to where the deformation
+           names the bare count and drops the unit-fraction referent.</p>
+        <span class="ln">productive · deformation · compare</span>
+      </a>
+      <a class="card" href="number-line/compare.html">
+        <h2>Number-line misconceptions</h2>
+        <p>Round-then-adjust beside round-without-adjusting; the omitted compensation jump is the
+           whole divergence.</p>
+        <span class="ln">round · adjust · compare</span>
+      </a>
+      <a class="card" href="area-model/compare.html">
+        <h2>Area-model misconceptions</h2>
+        <p>Part-of-part overlap beside the cross-multiplication rule that names the same number
+           with no area figure of its own.</p>
+        <span class="ln">overlap · rule · compare</span>
+      </a>
+      <a class="card" href="base-ten/compare.html">
+        <h2>Base-ten misconceptions</h2>
+        <p>Column addition with carrying beside the dropped-carry deformation; the missing
+           base-group is visible as the wrong place-value total.</p>
+        <span class="ln">carry · place value · compare</span>
+      </a>
+      <a class="card" href="set-grouping/compare.html">
+        <h2>Set-grouping misconceptions</h2>
+        <p>One-to-one comparison beside unfair matching; surplus chips show the unsupported
+           claim that unequal groups are the same size.</p>
+        <span class="ln">match · surplus · compare</span>
+      </a>
+    </div>
+
+    <h2 style="margin:2.2rem 0 .25rem">Charts &amp; calculators</h2>
+    <p class="lede">Render surfaces that live off the six visualizers: the fraction calculator,
+      and the chart indexes Hermes generates per lesson (these two need the running server).</p>
+
+    <div class="grid">
+      <a class="card" href="fraction-bars/calculator.html">
+        <h2>Fraction calculator</h2>
+        <p>Type a fraction operation; the automaton draws the bar trace that licenses it,
+           step by step.</p>
+        <span class="ln">partition · disembed · iterate</span>
+      </a>
+      <a class="card" href="../generated/notation_lesson_charts/index.html">
+        <h2>Notation charts</h2>
+        <p>Symbol-level monitoring charts for K/G1 lessons — reversed numerals, cancellations,
+           carries, running equals — keyed on the equation.</p>
+        <span class="ln">per lesson · generated · needs the server</span>
+      </a>
+      <a class="card" href="../generated/lesson_deformation_charts/index.html">
+        <h2>Deformation charts</h2>
+        <p>Per-lesson monitoring charts of productive strategies beside their documented
+           deformations, parametric over the fraction.</p>
+        <span class="ln">per lesson · generated · needs the server</span>
+      </a>
+      <a class="card" href="../generated/notation_demos/index.html">
+        <h2>Notation demos</h2>
+        <p>Symbol-level demos of how written notation carries or drops the strategy —
+           the marks themselves as a representation language.</p>
+        <span class="ln">generated · needs the server</span>
+      </a>
+      <a class="card" href="../strategies.html">
+        <h2>Strategies, running</h2>
+        <p>The strategy automata executed live against the worker; each run returns the
+           trace the strategy is accountable to.</p>
+        <span class="ln">live runs · needs the server</span>
+      </a>
+    </div>
+
+    <footer>
+      The teacher panel on each page names the relevant standard, how the representation
+      relates to the body, the incompatibilities that make it cohere, and where it breaks
+      down — when to set it aside.
+    </footer>
+  </div>
+</body>
+</html>

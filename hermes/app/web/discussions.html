@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discussions — Hermes</title>
+<link rel="icon" type="image/svg+xml" href="../more-zeeman/hermes_logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../more-zeeman/hermes-tokens.css">
+<script defer src="../more-zeeman/render/hermes-shell.js" data-root="../more-zeeman/" data-app="./" data-active="discussions"></script>
+<script defer src="../more-zeeman/render/drawer.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: var(--serif, Georgia, serif); background: var(--paper, #f4ead6);
+         color: var(--ink, #0d0c08); }
+  a { color: var(--gold-deep, #a97c24); }
+  main { max-width: 960px; margin: 0 auto; padding: 24px 26px 72px; }
+
+  .lede { font-size: 1.28rem; font-weight: 600; letter-spacing: .01em; margin: 0 0 .3rem; }
+  .sub { color: var(--muted, #665f4f); max-width: 66ch; margin: 0 0 1.4rem; font-size: .96rem; }
+
+  .intro { background: rgba(255,253,247,.55); border: 1px solid var(--line, rgba(13,12,8,.14));
+           border-radius: 12px; padding: 14px 18px; font-size: .9rem; line-height: 1.5; margin-bottom: 26px; }
+  .intro p { margin: .4em 0; }
+  .intro b { color: var(--ink, #0d0c08); }
+
+  h2.sec { font-size: 1.05rem; margin: 28px 0 4px; display: flex; align-items: baseline; gap: .6rem; }
+  h2.sec .num { display: inline-grid; place-items: center; width: 1.5rem; height: 1.5rem; flex: 0 0 auto;
+     border-radius: 50%; background: var(--gold, #d4a747); color: var(--ink); font: .8rem var(--mono, monospace); }
+  .sec-hint { color: var(--muted, #665f4f); font-size: .86rem; margin: .1rem 0 .9rem 2.1rem; }
+
+  /* Your discussions: paste + sample */
+  .composer { border: 1px solid var(--line, rgba(13,12,8,.14)); border-radius: 12px;
+              background: rgba(255,253,247,.55); padding: 16px 18px; }
+  textarea { width: 100%; min-height: 150px; font-family: var(--mono, ui-monospace, monospace);
+             font-size: .84rem; line-height: 1.5; border: 1px solid var(--line, rgba(13,12,8,.2));
+             border-radius: 8px; padding: 10px 12px; background: var(--paper, #f4ead6); color: var(--ink); resize: vertical; }
+  .composer-actions { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+  .btn { font: inherit; font-size: .88rem; border-radius: 7px; padding: .5rem .95rem; cursor: pointer;
+         border: 1px solid var(--gold-deep, #a97c24); background: var(--gold, #d4a747); color: var(--ink); font-weight: 600;
+         transition: transform .08s, box-shadow .12s; }
+  .btn:hover { box-shadow: 0 2px 10px rgba(169,124,36,.3); transform: translateY(-1px); }
+  .btn:disabled { opacity: .5; cursor: wait; transform: none; box-shadow: none; }
+  .btn.ghost { background: transparent; border-color: var(--line, rgba(13,12,8,.2)); color: var(--ink); font-weight: 400; }
+  .btn.ghost:hover { border-color: var(--gold-deep, #a97c24); box-shadow: none; }
+  .status { font-size: .85rem; color: var(--muted, #665f4f); }
+  .status.err { color: var(--rust, #b95238); }
+  .fmt-note { font-size: .8rem; color: var(--muted, #665f4f); margin: .5rem 0 0; }
+  .fmt-note code { font: .85em var(--mono, monospace); background: rgba(0,0,0,.06); padding: .05em .35em; border-radius: 4px; }
+
+  /* sample cards */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(268px, 1fr)); gap: 10px; margin-top: 4px; }
+  .card { text-align: left; border: 1px solid var(--line, rgba(13,12,8,.16)); border-radius: 10px;
+          background: var(--paper, #f4ead6); padding: 12px 14px; cursor: pointer; display: flex; flex-direction: column;
+          transition: transform .08s, box-shadow .12s, border-color .12s; }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(13,12,8,.13); border-color: var(--gold-deep, #a97c24); }
+  .card .kicker { font: .64rem var(--mono, monospace); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-deep, #a97c24); margin-bottom: 5px; }
+  .card b { font-size: .95rem; }
+  .card .desc { font-size: .82rem; color: var(--muted, #665f4f); margin-top: 3px; line-height: 1.4; }
+  .card .go { margin-top: auto; padding-top: 9px; font: .72rem var(--mono, monospace); color: var(--gold-deep, #a97c24); }
+  .card.prepared { background: var(--paper-cool, #ede4cf); }
+  .card.prepared .kicker { color: var(--teal-deep, #2c5e66); }
+  .card.prepared .go { color: var(--teal-deep, #2c5e66); }
+
+  /* report */
+  .report { background: rgba(255,253,247,.7); border: 1px solid var(--line, rgba(13,12,8,.16));
+            border-radius: 12px; padding: 18px 22px; margin-top: 22px; }
+  .headline { font-size: 1.05rem; font-weight: 600; margin-bottom: 10px; }
+  .report h3 { font-size: .82rem; margin: 18px 0 6px; color: var(--muted, #665f4f);
+     font-family: var(--mono, monospace); text-transform: uppercase; letter-spacing: .06em; }
+  table { border-collapse: collapse; width: 100%; font-size: .86rem; }
+  td, th { border-bottom: 1px solid var(--line, rgba(13,12,8,.14)); padding: 6px 8px; text-align: left; vertical-align: top; }
+  th { color: var(--muted, #665f4f); font-weight: 600; }
+  .ok { color: var(--teal-deep, #2c5e66); font-weight: 600; }
+  .bad { color: var(--rust, #b95238); font-weight: 600; }
+  .na { color: var(--muted, #7a7466); }
+  ul { margin: 4px 0; padding-left: 20px; font-size: .88rem; line-height: 1.45; }
+  .caveats { font-size: .82rem; color: var(--muted, #665f4f); border-top: 1px dashed var(--line, rgba(13,12,8,.2));
+             margin-top: 16px; padding-top: 10px; }
+  details { margin-top: 10px; font-size: .82rem; }
+  details summary { cursor: pointer; color: var(--muted, #665f4f); font-family: var(--mono, monospace); }
+  details pre { background: var(--paper-cool, #ede4cf); padding: 10px; overflow-x: auto; max-height: 300px;
+                border-radius: 6px; font-size: .76rem; }
+  .anchor { color: var(--muted, #7a7466); font-size: .78rem; }
+  .claim-pic { min-width: 150px; }
+  .claim-pic svg { display: block; width: 170px; height: auto; }
+  .claim-pic .pic-note { font-size: .72rem; color: var(--muted, #7a7466); }
+</style>
+</head>
+<body>
+<main>
+  <p class="lede">Discussions</p>
+  <p class="sub">Give Hermes a classroom math discussion — pasted text, a photo of written work,
+     a PDF or DOCX, or an audio recording — and it returns a plain-language report:
+     every claim checked by the calculator, the conflicts between speakers, and where the class
+     repaired a wrong turn. Pasted text is blinded to S01, S02… on this machine before any model call.
+     A photo, document, or recording is first transcribed by the campus model (REALLMS), which reads
+     the file itself; the transcript comes back here for your review, and the report passes blind it
+     the same way.</p>
+
+  <div class="intro">
+    <p><b>How to read a report.</b> Two layers. Every mathematical claim is checked from the ground up
+       and comes back <em>checks out</em>, <em>does not check out</em>, or <em>not checked</em> (outside
+       current coverage — not the same as wrong). Then each notable move is described — settle a question,
+       float a candidate, open an alternative, ask for an explanation — and how the class responded. The
+       verdicts are computed; the readings of moves are interpretive.</p>
+    <p><b>What to look for.</b> Conflicts (two speakers whose claims can't both stand) and repairs (a failed
+       claim the discussion later returned to and got right).</p>
+  </div>
+
+  <!-- ============ YOUR DISCUSSIONS ============ -->
+  <h2 class="sec"><span class="num">1</span>Your discussions</h2>
+  <p class="sec-hint">Paste a transcript and build a report — or start from a sample below with <b>Use sample</b>.</p>
+
+  <div class="composer">
+    <textarea id="paste" placeholder="Teacher: What do we think about one half and two fourths?&#10;Student A: They go in the same place because…"></textarea>
+    <div class="composer-actions">
+      <button class="btn" id="run">Build the report</button>
+      <label class="btn ghost" for="file-input">&#128206; Attach file</label>
+      <input type="file" id="file-input"
+             accept=".csv,.tsv,.txt,.md,.text,.pdf,.docx,image/*,audio/*" hidden />
+      <button class="btn ghost" id="use-sample">Use sample</button>
+      <span class="status" id="status"></span>
+    </div>
+    <p class="fmt-note">Lines like <code>Teacher: What do we think?</code>, or a CSV/TSV export —
+       one column naming the speaker, one holding what they said; most header names are recognized.
+       Text files load into the box here, on this machine. Photos of written work, PDF/DOCX, and
+       audio recordings are sent to the campus model to be transcribed into the box first —
+       check the transcript against the original before building the report. Both the
+       transcription and a live run need the campus connection.</p>
+  </div>
+
+  <!-- ============ SAMPLE DISCUSSIONS ============ -->
+  <h2 class="sec"><span class="num">2</span>Sample discussions</h2>
+  <p class="sec-hint">Ready-made transcripts. Click one to load it into the box above, then <b>Build the report</b>.
+     The two on the left ship with the app and work offline; the prepared set streams live from the server.</p>
+  <div class="cards" id="sample-cards"></div>
+
+  <h3 style="font: .72rem var(--mono, monospace); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 22px 0 8px;">Prepared transcripts &middot; live rerun</h3>
+  <div class="cards" id="prepared-cards"><span class="status">Looking for the prepared set on the server…</span></div>
+
+  <div id="report"></div>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+function esc(s){ return String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+/* -------- baked sample discussions (work offline) -------- */
+const SAMPLES = [
+  {
+    id: "square_rectangle",
+    kicker: "Grade 4 · definitions",
+    title: "Is a square a rectangle?",
+    desc: "Four students build an inclusive definition from the right-angle property.",
+    text:
+`Teacher: Is a square a rectangle? Explain using the properties, not just the picture.
+Maria Rivera: A square is a rectangle because it has four right angles and opposite sides parallel — it just also happens to have all sides equal.
+David Chen: At first glance a square looks like its own thing, but Maria's point about the right angles convinces me they share the defining property.
+Ada Okafor: Building on David, the definition of a rectangle (four right angles) says nothing about side lengths, so a square satisfies it.
+Liam Bauer: So every square is a rectangle but not every rectangle is a square. The inclusive definition is what makes the hierarchy work.`
+  },
+  {
+    id: "area_of_rectangle",
+    kicker: "Grade 5 · area",
+    title: "Why does length × width work?",
+    desc: "The class grounds the area formula in tiling a rectangle with unit squares.",
+    text:
+`Teacher: How do you find the area of a rectangle, and why does the formula work?
+Maria Rivera: Length times width, because you can tile the rectangle into unit squares — it is rows times columns.
+David Chen: Ada mentioned tiling earlier, and I think the array model is exactly why multiplication gives the area.
+Ada Okafor: Right — each row has "width" unit squares and there are "length" rows, so you multiply.
+Liam Bauer: I came back to my first idea: area is counting the square units inside, and the formula just counts them efficiently.`
+  }
+];
+
+function renderSampleCards(){
+  $("sample-cards").innerHTML = SAMPLES.map(s =>
+    `<button class="card" data-sample="${esc(s.id)}">
+       <span class="kicker">${esc(s.kicker)}</span>
+       <b>${esc(s.title)}</b>
+       <span class="desc">${esc(s.desc)}</span>
+       <span class="go">Load into the box &rarr;</span>
+     </button>`).join("");
+  document.querySelectorAll("[data-sample]").forEach(btn => {
+    btn.onclick = () => loadSample(btn.dataset.sample);
+  });
+}
+
+function loadSample(id){
+  const s = SAMPLES.find(x => x.id === id);
+  if (!s) return;
+  $("paste").value = s.text;
+  $("status").textContent = "Loaded “" + s.title + "”. Press Build the report.";
+  $("status").className = "status";
+  $("paste").scrollIntoView({ block: "center" });
+  $("paste").focus();
+}
+
+/* "Use sample" loads the first offline sample */
+$("use-sample").onclick = () => loadSample(SAMPLES[0].id);
+
+/* Attach a file. Two routes, told apart by type:
+   - text (txt/md/csv/tsv): read into the box on this machine — nothing
+     uploads until "Build the report" sends the (locally blinded) text.
+   - media (image/audio/pdf/docx): the file itself goes to the campus model
+     for a transcription pass; the proposed transcript lands in the box for
+     review before any report runs. */
+const MEDIA_EXT = /\.(png|jpe?g|gif|webp|bmp|tiff?|heic|heif|mp3|wav|m4a|aac|ogg|oga|opus|flac|webm|amr|pdf|docx)$/i;
+
+function isMediaFile(f){
+  return MEDIA_EXT.test(f.name) || /^(image|audio)\//.test(f.type) ||
+         f.type === "application/pdf" ||
+         f.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+}
+
+async function transcribeMedia(f){
+  $("status").textContent = "Transcribing “" + f.name + "” on the campus model… (this can take a minute)";
+  $("status").className = "status";
+  const dataUrl = await new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(String(r.result || ""));
+    r.onerror = () => reject(new Error("could not read the file"));
+    r.readAsDataURL(f);
+  });
+  let res, data;
+  try {
+    res = await fetch("/api/media_transcribe", {
+      method: "POST", headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({ name: f.name, mime: f.type, data_b64: dataUrl })});
+    data = await res.json();
+  } catch(e){
+    throw new Error("Nothing answered at this address. Transcription runs on the local Hermes server — start it and try again.");
+  }
+  if (!res.ok || data.error) throw new Error(data.error || ("HTTP " + res.status));
+  return data;
+}
+
+$("file-input").onchange = () => {
+  const f = $("file-input").files[0];
+  $("file-input").value = "";
+  if (!f) return;
+  if (isMediaFile(f)) {
+    transcribeMedia(f).then(data => {
+      $("paste").value = data.transcript || "";
+      $("status").textContent = "Transcribed “" + f.name + "” — the model proposed this transcript. " +
+        "Check it against the original (names included), then press Build the report.";
+      $("status").className = "status";
+      $("paste").focus();
+    }).catch(e => {
+      $("status").textContent = "Could not transcribe “" + f.name + "”: " + e.message;
+      $("status").className = "status err";
+    });
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = () => {
+    $("paste").value = String(reader.result || "");
+    $("status").textContent = "Loaded “" + f.name + "”. Press Build the report.";
+    $("status").className = "status";
+    $("paste").focus();
+  };
+  reader.onerror = () => {
+    $("status").textContent = "Could not read “" + f.name + "”.";
+    $("status").className = "status err";
+  };
+  reader.readAsText(f);
+};
+
+/* A transcript handed over from the console workspace */
+(function acceptHandoff(){
+  let handed = null;
+  try { handed = sessionStorage.getItem("hermes-transcript-handoff"); } catch (_) {}
+  if (!handed) return;
+  try { sessionStorage.removeItem("hermes-transcript-handoff"); } catch (_) {}
+  $("paste").value = handed;
+  $("status").textContent = "Brought over from the console. Press Build the report.";
+  $("status").className = "status";
+})();
+
+/* -------- prepared transcripts (server) -------- */
+async function loadPrepared(){
+  try {
+    const idx = await (await fetch("/generated/talkmoves_reports/index.json")).json();
+    $("prepared-cards").innerHTML = idx.map(e =>
+      `<button class="card prepared" data-report="${esc(e.id)}">
+         <span class="kicker">prepared · rerun live</span>
+         <b>${esc(e.id)}</b>
+         <span class="desc">${esc(e.headline)}</span>
+         <span class="go">Open the report &rarr;</span>
+       </button>`).join("");
+    document.querySelectorAll("[data-report]").forEach(btn => {
+      btn.onclick = () => openReport(btn.dataset.report);
+    });
+  } catch (e) {
+    $("prepared-cards").innerHTML =
+      `<span class="status">The prepared set lives on the campus server. Launch it with ` +
+      `<code style="font-family:var(--mono,monospace)">bash hermes/app/launch.sh</code> and reload — ` +
+      `the two samples above work without it.</span>`;
+  }
+}
+
+/* -------- report rendering -------- */
+function findingClass(f){ if (f==="checks out") return "ok"; if (f==="does not check out") return "bad"; return "na"; }
+
+function renderReport(r, note){
+  const anyPics = (r.claims||[]).some(c => c.render);
+  const claims = (r.claims||[]).map((c, i) =>
+    `<tr><td>${esc(c.speaker)} <span class="anchor">${esc(c.utterance)}</span></td>
+     <td>&ldquo;${esc(c.said)}&rdquo;</td>
+     <td class="${findingClass(c.finding)}">${esc(c.finding)}</td>
+     ${anyPics ? `<td class="claim-pic" data-claim-index="${i}"></td>` : ""}</tr>`).join("");
+  const tensions = (r.tensions||[]).map(t => `<li>${esc(t.sentence)}</li>`).join("") || "<li>none surfaced</li>";
+  const arcs = (r.repair_arcs||[]).map(a => `<li>${esc(a.sentence)}</li>`).join("") || "<li>no failed claims, so nothing to repair</li>";
+  const moves = (r.postures||[]).map(p =>
+    `<li><b>${esc(p.speaker)}</b> <span class="anchor">${esc((p.utterances||[]).join(", "))}</span>
+     &mdash; ${esc(p.move)} (${esc(p.register)}); ${esc(p.response)}.</li>`).join("") || "<li>no move readings returned</li>";
+  const caveats = (r.caveats||[]).map(c => `<li>${esc(c)}</li>`).join("");
+  $("report").innerHTML = `
+    <div class="report">
+      ${note ? `<p class="status">${esc(note)}</p>` : ""}
+      <div class="headline">${esc(r.headline)}</div>
+      <h3>Claims, checked</h3>
+      <table><tr><th>Who</th><th>Said</th><th>Finding</th>${anyPics ? "<th>Picture</th>" : ""}</tr>${claims}</table>
+      <h3>Conflicts between speakers</h3><ul>${tensions}</ul>
+      <h3>Repairs</h3><ul>${arcs}</ul>
+      <h3>Notable moves and how the class responded</h3><ul>${moves}</ul>
+      <div class="caveats"><ul>${caveats}</ul><p>${esc(r.attribution || "")}</p></div>
+      ${r.transcript ? `<details><summary>The blinded transcript</summary><pre>${esc(r.transcript)}</pre></details>` : ""}
+      <details><summary>Machine detail (for auditing)</summary><pre>${esc(JSON.stringify(r.machine || {}, null, 1))}</pre></details>
+      ${r.transcript ? `<button class="btn ghost" onclick="rerun()">Run this transcript again</button>` : ""}
+    </div>`;
+  window._current = r;
+  drawClaimPictures(r);
+  $("report").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+/* Claim pictures: each claim row may carry a ready /api/render request
+   (fraction bars for sums — a componentwise wrong answer draws as the
+   add-across deformation itself — and the count-on number line for
+   whole-number sums). The scene is computed by the same Prolog compilers
+   behind the visualizer pages; this page only draws the returned frames.
+   Offline, or when the drawer fails to load, the column stays empty. */
+async function drawClaimPictures(r){
+  if (!window.HermesDrawer || !HermesDrawer._internal) return;
+  const cells = document.querySelectorAll(".claim-pic[data-claim-index]");
+  for (const cell of cells) {
+    const c = (r.claims||[])[Number(cell.dataset.claimIndex)];
+    if (!c || !c.render) continue;
+    try {
+      const res = await fetch("/api/render", {
+        method: "POST", headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(c.render)});
+      const doc = await res.json();
+      const frames = Array.isArray(doc.frames) ? doc.frames : [];
+      if (!res.ok || !frames.length) continue;
+      const bounds = HermesDrawer._internal.documentBounds(frames, doc.canvas || {});
+      const last = frames[frames.length - 1];
+      const svg = HermesDrawer._internal.buildSvg(last, bounds);
+      svg.setAttribute("role", "img");
+      svg.setAttribute("aria-label", "picture of the checked claim");
+      cell.appendChild(svg);
+      const note = document.createElement("div");
+      note.className = "pic-note";
+      note.textContent = c.render.kind === "add_numerators_and_denominators"
+        ? "the add-across move the words describe"
+        : (last.caption || doc.result || "");
+      cell.appendChild(note);
+    } catch (e) { /* no picture beats a broken row */ }
+  }
+}
+
+async function openReport(id){
+  try {
+    const r = await (await fetch(`/generated/talkmoves_reports/${id}.json`)).json();
+    renderReport(r, "");
+  } catch(e){ $("status").textContent = "Could not open that prepared report — is the server running?"; $("status").className = "status err"; }
+}
+
+async function post(text, id, note){
+  $("status").textContent = "Running: extracting claims, checking each one, reading the moves… (a minute or two)";
+  $("status").className = "status";
+  $("run").disabled = true;
+  let res = null;
+  try {
+    res = await fetch("/api/transcript_report", {
+      method: "POST", headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({text, transcript_id: id})});
+  } catch(e){
+    $("status").className = "status err";
+    $("status").textContent = "Nothing answered at this address. The report pipeline runs on the local Hermes server — start it (START_HERMES.command in the bundle, or bash hermes/app/launch.sh in the repository) and try again.";
+    $("run").disabled = false;
+    return;
+  }
+  try {
+    let data = null;
+    try { data = await res.json(); } catch(e){
+      $("status").className = "status err";
+      $("status").textContent = "The server answered but hit an internal error (HTTP " + res.status + "). The Terminal window that launched Hermes has the detail.";
+      return;
+    }
+    if (!res.ok || data.error){ $("status").textContent = "Could not build the report: " + (data.error || res.status); $("status").className = "status err"; return; }
+    $("status").textContent = "";
+    renderReport(data.report, note);
+  } finally { $("run").disabled = false; }
+}
+
+function rerun(){
+  const r = window._current;
+  if (!r || !r.transcript) return;
+  const plain = r.transcript.replace(/^U\d{4}\s+/gm, "");
+  post(plain, (r.transcript_id || "report") + "_rerun",
+    "Fresh run of the same transcript. Claim verdicts should match; move readings may differ — they are interpretive.");
+}
+
+$("run").onclick = () => { const t = $("paste").value.trim(); if (t) post(t, "pasted", ""); else { $("status").textContent = "Paste a transcript or load a sample first."; } };
+
+renderSampleCards();
+loadPrepared();
+</script>
+</body>
+</html>

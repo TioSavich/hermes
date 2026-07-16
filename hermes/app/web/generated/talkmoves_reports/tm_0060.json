@@ -1,0 +1,963 @@
+{
+ "attribution": "Transcript data: TalkMoves dataset (SumnerLab / Suresh et al.), CC BY-NC-SA 4.0, speaker-blinded before any model call.",
+ "caveats": [
+  "The calculator checks a claim only when it can ground it; 'not checked' means outside its current coverage, not wrong.",
+  "Reading a speaker's move is interpretive. The model proposes the reading; only the claim verdicts are computed.",
+  "One automated read of one transcript \u2014 a starting point for your own reading, not a verdict on the discussion."
+ ],
+ "claims": [
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "Three",
+   "speaker": "S02",
+   "utterance": "u0029"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "Five times six 30",
+   "speaker": "S02",
+   "utterance": "u0042"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "three times five equals 15",
+   "speaker": "S03",
+   "utterance": "u0057"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "five times three equals 15",
+   "speaker": "S01",
+   "utterance": "u0061"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "dividing something by five is the same as taking one fifth of something",
+   "speaker": "S01",
+   "utterance": "u0079"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "Fifth is four",
+   "speaker": "S01",
+   "utterance": "u0132"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "Six",
+   "speaker": "S03",
+   "utterance": "u0146"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "Sixty",
+   "speaker": "S01",
+   "utterance": "u0149"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "nine, which equals three-fifths of 15",
+   "speaker": "S01",
+   "utterance": "u0171"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "one fifth is three",
+   "speaker": "S01",
+   "utterance": "u0172"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "three-fifths is nine",
+   "speaker": "S01",
+   "utterance": "u0172"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "26 thirds",
+   "speaker": "S01",
+   "utterance": "u0258"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "13 times two is 26",
+   "speaker": "S01",
+   "utterance": "u0270"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "three times one is three",
+   "speaker": "S01",
+   "utterance": "u0270"
+  }
+ ],
+ "headline": "14 mathematical claims heard; 14 checked by the calculator, 0 did not check out.",
+ "machine": {
+  "extractions": [
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:multiply_grounded",
+     "claim": "fraction_of_quantity",
+     "status": "domain_checked",
+     "trace": [
+      "15 splits into 5 shares of 3; 1 shares make 3; claimed 3"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 5,
+      "num": 1
+     },
+     "n": 15,
+     "result": 3
+    },
+    "confidence": "high",
+    "id": "c1",
+    "shape": "fraction_of",
+    "surface": "Three",
+    "term": "fraction_of(15,fraction(1,5),3)",
+    "utterance_id": "u0029",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:multiply_grounded",
+     "claim": "fraction_multiplication",
+     "status": "domain_checked",
+     "trace": [
+      "numerator product 5*6=30; denominator product 1*1=1; claimed 30/1"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 1,
+      "num": 5
+     },
+     "b": {
+      "den": 1,
+      "num": 6
+     },
+     "product": {
+      "den": 1,
+      "num": 30
+     }
+    },
+    "confidence": "high",
+    "id": "c2",
+    "shape": "multiplication",
+    "surface": "Five times six 30",
+    "term": "multiplication(fraction(5,1),fraction(6,1),fraction(30,1))",
+    "utterance_id": "u0042",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:multiply_grounded",
+     "claim": "fraction_multiplication",
+     "status": "domain_checked",
+     "trace": [
+      "numerator product 3*5=15; denominator product 1*1=1; claimed 15/1"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 1,
+      "num": 3
+     },
+     "b": {
+      "den": 1,
+      "num": 5
+     },
+     "product": {
+      "den": 1,
+      "num": 15
+     }
+    },
+    "confidence": "high",
+    "id": "c3",
+    "shape": "multiplication",
+    "surface": "three times five equals 15",
+    "term": "multiplication(fraction(3,1),fraction(5,1),fraction(15,1))",
+    "utterance_id": "u0057",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:multiply_grounded",
+     "claim": "fraction_multiplication",
+     "status": "domain_checked",
+     "trace": [
+      "numerator product 5*3=15; denominator product 1*1=1; claimed 15/1"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 1,
+      "num": 5
+     },
+     "b": {
+      "den": 1,
+      "num": 3
+     },
+     "product": {
+      "den": 1,
+      "num": 15
+     }
+    },
+    "confidence": "high",
+    "id": "c4",
+    "shape": "multiplication",
+    "surface": "five times three equals 15",
+    "term": "multiplication(fraction(5,1),fraction(3,1),fraction(15,1))",
+    "utterance_id": "u0061",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "SWI arithmetic schema 1/N = 1/N",
+     "claim": "division_by_n_is_unit_fraction",
+     "status": "domain_checked",
+     "trace": [
+      "1 divided by 5 is the unit fraction 1/5"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "n": 5
+    },
+    "confidence": "high",
+    "id": "c5",
+    "shape": "division_by_n_is_unit_fraction",
+    "surface": "dividing something by five is the same as taking one fifth of something",
+    "term": "division_by_n_is_unit_fraction(5)",
+    "utterance_id": "u0079",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:multiply_grounded",
+     "claim": "fraction_of_quantity",
+     "status": "domain_checked",
+     "trace": [
+      "20 splits into 5 shares of 4; 1 shares make 4; claimed 4"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 5,
+      "num": 1
+     },
+     "n": 20,
+     "result": 4
+    },
+    "confidence": "high",
+    "id": "c6",
+    "shape": "fraction_of",
+    "surface": "Fifth is four",
+    "term": "fraction_of(20,fraction(1,5),4)",
+    "utterance_id": "u0132",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:multiply_grounded",
+     "claim": "fraction_multiplication",
+     "status": "domain_checked",
+     "trace": [
+      "numerator product 2*3=6; denominator product 1*1=1; claimed 6/1"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 1,
+      "num": 2
+     },
+     "b": {
+      "den": 1,
+      "num": 3
+     },
+     "product": {
+      "den": 1,
+      "num": 6
+     }
+    },
+    "confidence": "high",
+    "id": "c7",
+    "shape": "multiplication",
+    "surface": "Six",
+    "term": "multiplication(fraction(2,1),fraction(3,1),fraction(6,1))",
+    "utterance_id": "u0146",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:multiply_grounded",
+     "claim": "fraction_multiplication",
+     "status": "domain_checked",
+     "trace": [
+      "numerator product 20*3=60; denominator product 1*1=1; claimed 60/1"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 1,
+      "num": 20
+     },
+     "b": {
+      "den": 1,
+      "num": 3
+     },
+     "product": {
+      "den": 1,
+      "num": 60
+     }
+    },
+    "confidence": "high",
+    "id": "c8",
+    "shape": "multiplication",
+    "surface": "Sixty",
+    "term": "multiplication(fraction(20,1),fraction(3,1),fraction(60,1))",
+    "utterance_id": "u0149",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:multiply_grounded",
+     "claim": "fraction_of_quantity",
+     "status": "domain_checked",
+     "trace": [
+      "15 splits into 5 shares of 3; 3 shares make 9; claimed 9"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 5,
+      "num": 3
+     },
+     "n": 15,
+     "result": 9
+    },
+    "confidence": "high",
+    "id": "c9",
+    "shape": "fraction_of",
+    "surface": "nine, which equals three-fifths of 15",
+    "term": "fraction_of(15,fraction(3,5),9)",
+    "utterance_id": "u0171",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:multiply_grounded",
+     "claim": "fraction_of_quantity",
+     "status": "domain_checked",
+     "trace": [
+      "15 splits into 5 shares of 3; 1 shares make 3; claimed 3"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 5,
+      "num": 1
+     },
+     "n": 15,
+     "result": 3
+    },
+    "confidence": "high",
+    "id": "c10",
+    "shape": "fraction_of",
+    "surface": "one fifth is three",
+    "term": "fraction_of(15,fraction(1,5),3)",
+    "utterance_id": "u0172",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:multiply_grounded",
+     "claim": "fraction_of_quantity",
+     "status": "domain_checked",
+     "trace": [
+      "15 splits into 5 shares of 3; 3 shares make 9; claimed 9"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 5,
+      "num": 3
+     },
+     "n": 15,
+     "result": 9
+    },
+    "confidence": "high",
+    "id": "c11",
+    "shape": "fraction_of",
+    "surface": "three-fifths is nine",
+    "term": "fraction_of(15,fraction(3,5),9)",
+    "utterance_id": "u0172",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:greater_than",
+     "claim": "improper_fraction",
+     "status": "domain_checked",
+     "trace": [
+      "beyond-whole: numerator 26 vs denominator 3"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 3,
+      "num": 26
+     }
+    },
+    "confidence": "high",
+    "id": "c12",
+    "shape": "improper",
+    "surface": "26 thirds",
+    "term": "improper(fraction(26,3))",
+    "utterance_id": "u0258",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:multiply_grounded",
+     "claim": "fraction_multiplication",
+     "status": "domain_checked",
+     "trace": [
+      "numerator product 13*2=26; denominator product 1*1=1; claimed 26/1"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 1,
+      "num": 13
+     },
+     "b": {
+      "den": 1,
+      "num": 2
+     },
+     "product": {
+      "den": 1,
+      "num": 26
+     }
+    },
+    "confidence": "high",
+    "id": "c13",
+    "shape": "multiplication",
+    "surface": "13 times two is 26",
+    "term": "multiplication(fraction(13,1),fraction(2,1),fraction(26,1))",
+    "utterance_id": "u0270",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:multiply_grounded",
+     "claim": "fraction_multiplication",
+     "status": "domain_checked",
+     "trace": [
+      "numerator product 3*1=3; denominator product 1*1=1; claimed 3/1"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 1,
+      "num": 3
+     },
+     "b": {
+      "den": 1,
+      "num": 1
+     },
+     "product": {
+      "den": 1,
+      "num": 3
+     }
+    },
+    "confidence": "high",
+    "id": "c14",
+    "shape": "multiplication",
+    "surface": "three times one is three",
+    "term": "multiplication(fraction(3,1),fraction(1,1),fraction(3,1))",
+    "utterance_id": "u0270",
+    "verdict": "holds"
+   },
+   {
+    "arguments": {
+     "a": {
+      "den": 1,
+      "num": 15
+     },
+     "b": {
+      "den": 5,
+      "num": 1
+     }
+    },
+    "confidence": "high",
+    "id": "a1",
+    "kind": "action",
+    "shape": "action",
+    "surface": "Fifteen times one fifth",
+    "utterance_id": "u0020"
+   },
+   {
+    "arguments": {
+     "frac": {
+      "den": 5,
+      "num": 1
+     },
+     "n": 15
+    },
+    "confidence": "high",
+    "id": "a2",
+    "kind": "action",
+    "shape": "action",
+    "surface": "one fifth of 15",
+    "utterance_id": "u0028"
+   },
+   {
+    "arguments": {
+     "a": {
+      "den": 1,
+      "num": 5
+     },
+     "b": {
+      "den": 1,
+      "num": 6
+     }
+    },
+    "confidence": "high",
+    "id": "a3",
+    "kind": "action",
+    "shape": "action",
+    "surface": "Five times six",
+    "utterance_id": "u0042"
+   },
+   {
+    "arguments": {
+     "a": {
+      "den": 1,
+      "num": 5
+     },
+     "b": {
+      "den": 1,
+      "num": 15
+     }
+    },
+    "confidence": "high",
+    "id": "a4",
+    "kind": "action",
+    "shape": "action",
+    "surface": "five times fifteen",
+    "utterance_id": "u0051"
+   },
+   {
+    "arguments": {
+     "a": {
+      "den": 1,
+      "num": 3
+     },
+     "b": {
+      "den": 1,
+      "num": 3
+     }
+    },
+    "confidence": "high",
+    "id": "a5",
+    "kind": "action",
+    "shape": "action",
+    "surface": "three times three",
+    "utterance_id": "u0126"
+   },
+   {
+    "arguments": {
+     "a": {
+      "den": 1,
+      "num": 4
+     },
+     "b": {
+      "den": 1,
+      "num": 3
+     }
+    },
+    "confidence": "high",
+    "id": "a6",
+    "kind": "action",
+    "shape": "action",
+    "surface": "Four times three",
+    "utterance_id": "u0134"
+   },
+   {
+    "arguments": {
+     "a": {
+      "den": 1,
+      "num": 20
+     },
+     "b": {
+      "den": 1,
+      "num": 3
+     }
+    },
+    "confidence": "high",
+    "id": "a7",
+    "kind": "action",
+    "shape": "action",
+    "surface": "Twenty times three",
+    "utterance_id": "u0144"
+   },
+   {
+    "arguments": {
+     "a": {
+      "den": 1,
+      "num": 2
+     },
+     "b": {
+      "den": 1,
+      "num": 13
+     }
+    },
+    "confidence": "high",
+    "id": "a8",
+    "kind": "action",
+    "shape": "action",
+    "surface": "two times 13",
+    "utterance_id": "u0251"
+   }
+  ],
+  "readings": [
+   {
+    "claim_refs": [
+     "C1"
+    ],
+    "id": "a1",
+    "pml": {
+     "content": "C1",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "student_providing_answer",
+     "subject_position_read": "Direct assertion of a calculated value."
+    },
+    "raw_text": "[C1 fraction_of: holds]",
+    "utterance_ids": [
+     "u0029"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a2_wrap",
+    "pml": {
+     "content": "knowledge of C3",
+     "force": "avow",
+     "grammatical_person": "1st",
+     "mode": "subjective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "student_avowal",
+     "subject_position_read": "The speaker clenches their own certainty regarding the math."
+    },
+    "raw_text": "and I know",
+    "utterance_ids": [
+     "u0057"
+    ],
+    "wraps": "a2_claim"
+   },
+   {
+    "claim_refs": [
+     "C3"
+    ],
+    "id": "a2_claim",
+    "pml": {
+     "content": "C3",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "mathematical_fact",
+     "subject_position_read": "The embedded mathematical truth."
+    },
+    "raw_text": "[C3 multiplication: holds]",
+    "utterance_ids": [
+     "u0057"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C5"
+    ],
+    "id": "a3",
+    "pml": {
+     "content": "C5",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "teacher_synthesizing",
+     "subject_position_read": "Teacher formalizes a student's observation into a general rule."
+    },
+    "raw_text": "So [C5 division_by_n_is_unit_fraction: holds]",
+    "utterance_ids": [
+     "u0079"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a4",
+    "pml": {
+     "content": "reasoning for C5",
+     "force": "question",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "exp_nec",
+     "polarity": "expansive",
+     "position": "teacher_probing",
+     "subject_position_read": "Teacher requires the opening of the conceptual field to move from 'what' to 'why'."
+    },
+    "raw_text": "Why is that true? Anybody having an idea of why that might be true?",
+    "utterance_ids": [
+     "u0082",
+     "u0083"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C6"
+    ],
+    "id": "a5",
+    "pml": {
+     "content": "C6",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "teacher_calculating",
+     "subject_position_read": "Teacher asserts a value to move the demonstration forward."
+    },
+    "raw_text": "[C6 fraction_of: holds]",
+    "utterance_ids": [
+     "u0132"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C8"
+    ],
+    "id": "a6",
+    "pml": {
+     "content": "C8",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "teacher_calculating",
+     "subject_position_read": "Closing a step in the multiplication process."
+    },
+    "raw_text": "[C8 multiplication: holds]",
+    "utterance_ids": [
+     "u0149"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C10",
+     "C11"
+    ],
+    "id": "a7",
+    "pml": {
+     "content": "C10 and C11",
+     "force": "question",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_poss",
+     "polarity": "expansive",
+     "position": "teacher_checking",
+     "subject_position_read": "A candidate logical step offered for student confirmation."
+    },
+    "raw_text": "So if [C10 fraction_of: holds], three [C11 fraction_of: holds], right?",
+    "uptake": {
+     "fate": "taken_up",
+     "ids": [
+      "u0173"
+     ]
+    },
+    "utterance_ids": [
+     "u0172"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C12"
+    ],
+    "id": "a8",
+    "pml": {
+     "content": "C12",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "teacher_calculating",
+     "subject_position_read": "Asserting the resulting improper fraction."
+    },
+    "raw_text": "or [C12 improper: holds] three",
+    "utterance_ids": [
+     "u0258"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C13",
+     "C14"
+    ],
+    "id": "a9",
+    "pml": {
+     "content": "C13 and C14",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "teacher_instucting",
+     "subject_position_read": "Asserting the mechanics of the algorithm as a fixed rule."
+    },
+    "raw_text": "multiply straight across [C13 multiplication: holds] and [C14 multiplication: holds]",
+    "utterance_ids": [
+     "u0270"
+    ]
+   }
+  ]
+ },
+ "postures": [
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S02",
+   "utterances": [
+    "u0029"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "speaking for themselves",
+   "response": "no response recorded",
+   "speaker": "S03",
+   "utterances": [
+    "u0057"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S03",
+   "utterances": [
+    "u0057"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0079"
+   ]
+  },
+  {
+   "move": "asks for openness: an explanation or a return to the idea is required",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0082",
+    "u0083"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0132"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0149"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0258"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0270"
+   ]
+  }
+ ],
+ "repair_arcs": [],
+ "tensions": [],
+ "transcript": "# tm_0060\n\nU0001 S01: I don't know if it recorded my, your math classes.\nU0002 S01: Yeah.\nU0003 S01: Okay.\nU0004 S01: So problems one and two page one 69.\nU0005 S01: Look carefully at your answers.\nU0006 S01: Talk to a partner about what you noticed.\nU0007 S01: Page one 69, one one and two.\nU0008 S01: So it's kind of the same as yesterday.\nU0009 S01: The chart that you see.\nU0010 S01: What do you notice about those two things?\nU0011 S01: Those two charts?\nU0012 S01: So this is one fifth of this number.\nU0013 S01: Does that make sense?\nU0014 S01: A fifth of that?\nU0015 S02: I thought that you find one fifth and then multiply it by.\nU0016 S01: Okay.\nU0017 S01: So think about what you're doing.\nU0018 S01: Is it gonna be more or less than what you start with?\nU0019 S03: So it's saying (inaudible).\nU0020 S01: Fifteen times one fifth.\nU0021 S03: Oh, okay.\nU0022 S01: You guys, we did one one fifth of whole numbers yesterday, right?\nU0023 S01: We did fractions of whole numbers yesterday.\nU0024 S01: Three, four, five, six, seven, eight, nine, 10, 13, 14, 15.\nU0025 S01: Should look familiar if you're finding, I want one fifth of this.\nU0026 S01: One fifth is times, it's the same as times 15, right?\nU0027 S01: So one, two, three, four, five, two one two three four five one two three, four, five.\nU0028 S01: So what is one fifth of 15?\nU0029 S02: Three.\nU0030 S03: Three.\nU0031 S01: Three\nU0032 S01: That's what we did all day yesterday.\nU0033 S01: When you're doing your partner are done, I want you to talk about what do you notice?\nU0034 S01: I want you to talk with your shoulder partner today.\nU0035 S02: So all the answers aren't the same because.\nU0036 S03: So do the fractions.\nU0037 S02: The fraction's like the dividing part.\nU0038 S02: Yeah, you would divide the number by five and then multiply it by one.\nU0039 S02: I multiply.\nU0040 S03: I don't even look at the one.\nU0041 S01: Stand up when you're done.\nU0042 S02: Five times six 30, seven 30.\nU0043 S02: Oh, wait, no, you're right.\nU0044 S01: Can you tell us what your strategy was for solving problem one?\nU0045 S01: Oh, so she took that number and divided it by five for the first one.\nU0046 S01: So she took all the ends and divided them by five to get the house.\nU0047 S01: Okay.\nU0048 S01: Did anybody do anything differently?\nU0049 S01: Any other strategies?\nU0050 S01: Maddie?\nU0051 S02: I did five times fifteen.\nU0052 S01: Yeah.\nU0053 S01: So you, you thought about it in terms of multiplication.\nU0054 S01: So five times, what equals the N number?\nU0055 S01: What'd you do?\nU0056 S02: (Inaudible) fraction of 15.\nU0057 S03: So, and that was three times five, and I know three times five equals 15.\nU0058 S01: Okay.\nU0059 S01: So quiet.\nU0060 S01: You thought about five as a factor of 15 and what that factor partner would be.\nU0061 S01: So, so five and five times three equals 15.\nU0062 S01: Bryson?\nU0063 S02: Oh, well, I, I realize On the first problem that it's multiplied by one.\nU0064 S03: So, and if you multiply a like one times two, that's still just two.\nU0065 S03: So I thought of it more as a division problem.\nU0066 S01: So you divided the invite?\nU0067 S03: Yeah.\nU0068 S01: Okay.\nU0069 S01: Can you get the answer often?\nU0070 S01: So I have people thinking about multiplication and division.\nU0071 S01: That's awesome.\nU0072 S01: People thinking about factors.\nU0073 S01: So all these things about multiplication and division, I drew a picture for you, lots of different ways of figuring out what one fifth of a whole number is.\nU0074 S01: So, so when you answered the second one, how was how's that different than the second?\nU0075 S01: Why do you think?\nU0076 S01: What, what did you notice about the two without the answers to one or two?\nU0077 S01: Anna?\nU0078 S02: I noticed that dividing by five is the same as.\nU0079 S01: So dividing something by five is the same as taking one fifth of something.\nU0080 S01: Brilliant.\nU0081 S01: Sorry.\nU0082 S01: Why is that true?\nU0083 S01: Anybody having an idea of why that might be true?\nU0084 S01: Sorry.\nU0085 S01: How would that be true?\nU0086 S01: Bridger?\nU0087 S02: In order to do division, you need to do multiplication.\nU0088 S03: It's kind of hard to explain.\nU0089 S01: It is very hard to explain.\nU0090 S01: Thank you for doing that.\nU0091 S01: 5, 10, 15.\nU0092 S01: Okay.\nU0093 S01: So when we took, when we thought of a fifth of 15, we needed to, in order for us to have a denominator of five, we needed to have five groups for that 15.\nU0094 S01: Right.\nU0095 S01: And in order to have a 15, we, each of the groups needed to be, and there needed to be three in each group in order for there to be five, five groups.\nU0096 S01: Right.\nU0097 S01: Because the denominator's five.\nU0098 S01: So, so dividing 15 by five is the same thing because we're dividing 15 into five groups.\nU0099 S01: Do you guys see that?\nU0100 S01: So one fifth in order for the denominator to be five, you need to have five equal parts, right?\nU0101 S01: So we divided into five equal parts and then 15 divided by five is dividing 15 into five parts.\nU0102 S01: And it happens to go evenly.\nU0103 S01: Zach?\nU0104 S02: The way I think of the division, basically all the time is like how many times can five fit in 35.\nU0105 S01: Yeah.\nU0106 S03: And I think it would just be seven, so that's how I did it.\nU0107 S01: Okay.\nU0108 S01: Good.\nU0109 S01: All right.\nU0110 S01: So, so now go ahead and do\nU0111 S01: That number is three and four.\nU0112 S01: Go ahead and work on three and four.\nU0113 S01: What do you, and then we'll think about, I want you to think about how you yesterday took one unit and figured out what the fraction of that was using the unit, and then think about whether it's going to be the same for number four.\nU0114 S01: Okay.\nU0115 S01: Are you guys are most of you?\nU0116 S01: So you're taking, you're starting on the second one.\nU0117 S01: You're starting with your end number and then you're multiplying it by three and dividing by five on this one.\nU0118 S01: You're finding you have to first find one, right?\nU0119 S01: This is what we did yesterday.\nU0120 S01: And then you're multiplying it by this number.\nU0121 S01: Okay.\nU0122 S01: So, so what we did was we first found what would one for 15?\nU0123 S01: So we know that one fifth is free and because there are three, five and 15.\nU0124 S01: So if one, fifth is three, then how many are three?\nU0125 S02: Total three.\nU0126 S01: No, it will be three times three, right?\nU0127 S01: Yeah, because it would be three plus three plus three, right.\nU0128 S01: Or three times.\nU0129 S01: Okay.\nU0130 S01: Start with 20 divided by the one.\nU0131 S03: Four.\nU0132 S01: Fifth is four.\nU0133 S01: And then you multiply that by three to get?\nU0134 S01: Four times three.\nU0135 S01: If you wanted to use the workup here, you've already done one fifth.\nU0136 S01: So what would three fifths be?\nU0137 S01: Oh, no.\nU0138 S01: This one we're multiplying it by five.\nU0139 S01: So times 45.\nU0140 S01: And then you're going to divide that by five, which is 45 divided by five.\nU0141 S01: So you're taking this number times three, then divided like that.\nU0142 S02: They're gonna all be the same.\nU0143 S01: They're not the same because now you're starting with 20 multiply 20 by three.\nU0144 S01: Twenty times three is?\nU0145 S01: Two times three is?\nU0146 S03: Six.\nU0147 S01: So 20 times three is?\nU0148 S03: Six.\nU0149 S01: Sixty.\nU0150 S01: Divided by five is?\nU0151 S01: Okay.\nU0152 S01: So what did you find out?\nU0153 S01: Talk to your partner.\nU0154 S01: Did you, did you find anything out about how three and four are related?\nU0155 S01: Oh, so, so let's, let's just talk about those rules before you talk to your partner.\nU0156 S01: Okay.\nU0157 S01: So, so in the first one, you're just finding three-fifths of a number right?\nU0158 S01: Yesterday our strategy for finding three fifths was to first find one fifth and then multiply it by three, right?\nU0159 S01: So it's one fifth.\nU0160 S01: You guys stay with me.\nU0161 S01: If one fifth of 15 equals three or times 15 would be three, which is one fifth times three.\nU0162 S01: Right?\nU0163 S01: Does that make sense?\nU0164 S01: Do you remember that?\nU0165 S01: First we find one fifth.\nU0166 S01: Then, then however many you need in the numerator.\nU0167 S01: In this case, you need three of them.\nU0168 S01: That's what you multiply by.\nU0169 S01: So you take this number, multiply it by that, because this is one fifth, I need three fifths.\nU0170 S01: So five plus five plus five or five times three is going to be I'm sorry.\nU0171 S01: Three plus three plus three is going to be nine, which equals three-fifths of 15.\nU0172 S01: So if one fifth is three, three three-fifths is nine, right?\nU0173 S01: You guys get that?\nU0174 S01: Okay.\nU0175 S01: So, okay.\nU0176 S01: And we just talked about how a lot of you guys were thinking about finding one fifth of 15 as just taking 15 and dividing it by five.\nU0177 S01: Right?\nU0178 S01: We thought about the division.\nU0179 S01: So to find one fifth, we divide by five, right?\nU0180 S01: And then we multiplied by three.\nU0181 S01: So, so what if, so here they have times three divided by five and with multiplication and division, you can do them in either order.\nU0182 S01: It doesn't matter.\nU0183 S01: So, so\nU0184 S01: Here we took, we thought about 15 divided by five equals three.\nU0185 S01: So we divided by five and then we multiply by three to get the answer.\nU0186 S01: And that's what they're telling you to do in number four.\nU0187 S01: Do you see that?\nU0188 S01: So you should have the same answer.\nU0189 S01: All the same answers in numbers, three and four, because you're going through the same algorithm.\nU0190 S01: What's up guys?\nU0191 S01: Okay.\nU0192 S01: So the relationship between finding three fifths of a number would be that you are first multiplying.\nU0193 S01: Well, two ways to think about it.\nU0194 S01: We thought about the division and the multiplication and they just put it in an inbox.\nU0195 S01: So the second inbox on number, the inbox on number four, the rule, I'm sorry, on number four was basically that you multiply by the numerator and divide by the denominator.\nU0196 S01: Aaron.\nU0197 S01: And why does that work?\nU0198 S01: I'm not going to figure this out for you.\nU0199 S01: You guys need to, you guys need to be engaged in this and you need to think.\nU0200 S01: Why does that work?\nU0201 S01: To multiply by three, which is the numerator and then divide by the denominator.\nU0202 S01: Why does that give you three fifths of, of the number?\nU0203 S02: Because dividing three by five, like when we learn gives them a fraction.\nU0204 S03: So, so it's basically the rule for number three, but just kind of put in whole number for them.\nU0205 S01: Yeah.\nU0206 S01: It's an algorithm.\nU0207 S01: It's a way it's, it's a, that's a really nice way to put it.\nU0208 S01: So it's, it's putting, instead of multiplying it by a fraction or multiplying it by decimals, you're thinking about, we're going to take, we're going to take this number 15 and we're first going to, we're going to first multiply it by three and then divided by five gives you the same result as multiplying it by three-fifths because multiplying by three and dividing by five, three over five is three-fifths.\nU0209 S01: Does that make sense?\nU0210 S01: So they're just breaking it down for you.\nU0211 S01: Okay.\nU0212 S01: So if we go to 117, okay.\nU0213 S01: So this is your place to practice.\nU0214 S01: This is three and four.\nU0215 S01: Okay.\nU0216 S01: So here we're multiplying whole numbers by fractions and this time solve the problem by thinking about two thirds of 13.\nU0217 S01: So, so if you were thinking about two thirds of 13, you could think about it as what are some different ways you can think about that?\nU0218 S01: What have we talked about?\nU0219 S02: So, okay.\nU0220 S03: So 13 divided by three times two.\nU0221 S03: So a third, a fifth and times two.\nU0222 S01: So thirteen divided by three times two.\nU0223 S01: Is that what you said?\nU0224 S01: Okay.\nU0225 S01: What's another way you can think about it?\nU0226 S02: This is what I do.\nU0227 S03: I do.\nU0228 S03: I put 13 as a fraction, 13 over one, and add eight times two thirds.\nU0229 S01: Okay.\nU0230 S01: So you could just use an algorithm to do it.\nU0231 S01: I really want to, I know I love that you have an algorithm that you can hang on to and use for this stuff.\nU0232 S01: But I also want you to think about conceptually what we're doing.\nU0233 S01: So conceptually 13 times two thirds means 13, two thirds, right?\nU0234 S01: So it would, it could be two thirds plus two thirds.\nU0235 S01: How many more?\nU0236 S01: Plus two thirds, how many, two thirds do I need here?\nU0237 S02: Two.\nU0238 S01: 13 of them, right?\nU0239 S01: We're asking for 13 out of two thirds, right?\nU0240 S01: So we could add up two thirds, 13 times, right?\nU0241 S01: And then if you ended up with that plus two plus two.\nU0242 S01: Oh my gosh.\nU0243 S01: Plus two.\nU0244 S01: Why is this not working for me?\nU0245 S02: Are you clicking the button on the top?\nU0246 S01: Yeah.\nU0247 S01: I'm not touching the top,\nU0248 S01: But thank you.\nU0249 S01: Plus two thirds.\nU0250 S01: Okay.\nU0251 S01: So if we did that 13 times, we're going to have two times 13, right?\nU0252 S01: As our numerator.\nU0253 S01: So dot.dot equals two times 13.\nU0254 S01: And what's our denominator?\nU0255 S02: Three.\nU0256 S01: Three, it looks just like this.\nU0257 S01: So two thirds as two divided by three, we are multiplying the numerator times 13 and then dividing it by three.\nU0258 S01: So then we'd have 26 divided by three or 26 thirds three.\nU0259 S01: Three does not go into 26.\nU0260 S01: So that is our number.\nU0261 S01: Then solve the problem by thinking about two-thirds of 13, show your work and then solve the problem by thinking about two thirds as two divided by three.\nU0262 S01: So if, if we solved it by as two divided by three, then we would take 13 by three.\nU0263 S01: So same answer, different, slightly different ways to think about it, right?\nU0264 S01: So for problems, two through five, you can use whatever strategy you like.\nU0265 S01: You can use your strategy.\nU0266 S01: So Chase and Hannah liked to put the, let me change the color to make 13, which is a whole number into a fraction.\nU0267 S01: And when you multiply it, when you multiply fractions, you just multiply straight across.\nU0268 S01: So we could do 30 to make 13 into a fraction, which is the 13 over one.\nU0269 S01: And then multiply it by two over three.\nU0270 S01: And then you just multiply straight across 13 times two is 26 and three times one is three and then 26 divided by three would be what would 26 divided by three beats?\nU0271 S01: How many threes are in 26?\nU0272 S01: Alec?\nU0273 S02: Eight.\nU0274 S01: So there would be eight.\nU0275 S01: And then how many leftover?\nU0276 S03: Two.\nU0277 S01: Two.\nU0278 S01: And what do I do with that two?\nU0279 S01: John?\nU0280 S01: I want to make it into a fraction.\nU0281 S02: Yeah.\nU0282 S01: And what would that practically be?\nU0283 S01: Two over what's the denominator?\nU0284 S03: Three.\nU0285 S01: Two over three.\nU0286 S01: Okay.\nU0287 S01: So that is our answer for this.\nU0288 S01: So several different ways for you to do it, just find a strategy that works makes sense for you.\nU0289 S01: And you can remember, and go ahead and finish up those problems on that page.\nU0290 S01: There also is, there is a review of how to use, so recording ordered Paris and how to use a graph.\nU0291 S01: So the next page is really fun.\nU0292 S01: So go ahead and finish up five point page 170 and then 171 is a review of ordered pairs\nU0293 S01: Questions?\nU0294 S02: We're working in partnerships or on our own?\nU0295 S01: You can work in a partnership or on your own,\nU0296 S01: Whatever works best for you and the other person always works to do your work.\nU0297 S01: Let's just do that.\nU0298 S01: Do your own work, then compare answers.\nU0299 S01: Okay.\nU0300 S01: And if you don't agree, then work it out.\nU0301 S01: Figure out, figure out what the difference is.\n",
+ "transcript_id": "tm_0060"
+}

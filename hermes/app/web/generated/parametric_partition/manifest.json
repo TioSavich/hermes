@@ -1,0 +1,228 @@
+{
+  "deformations": [
+    {
+      "host": "circle",
+      "rule": "vertical",
+      "n": 4,
+      "code": "PARAM-transplant-vertical-on-circle-1over4",
+      "frame_count": 4,
+      "foreign_primitive": "rectangle_vertical_partition",
+      "illicit_host": "circle_region",
+      "violation": "object_language_binding_violation",
+      "frames": [
+        "PARAM-transplant-vertical-on-circle-1over4-frame-1.svg",
+        "PARAM-transplant-vertical-on-circle-1over4-frame-2.svg",
+        "PARAM-transplant-vertical-on-circle-1over4-frame-3.svg",
+        "PARAM-transplant-vertical-on-circle-1over4-frame-4.svg"
+      ]
+    },
+    {
+      "host": "circle",
+      "rule": "vertical",
+      "n": 5,
+      "code": "PARAM-transplant-vertical-on-circle-1over5",
+      "frame_count": 4,
+      "foreign_primitive": "rectangle_vertical_partition",
+      "illicit_host": "circle_region",
+      "violation": "object_language_binding_violation",
+      "frames": [
+        "PARAM-transplant-vertical-on-circle-1over5-frame-1.svg",
+        "PARAM-transplant-vertical-on-circle-1over5-frame-2.svg",
+        "PARAM-transplant-vertical-on-circle-1over5-frame-3.svg",
+        "PARAM-transplant-vertical-on-circle-1over5-frame-4.svg"
+      ]
+    },
+    {
+      "host": "circle",
+      "rule": "vertical",
+      "n": 6,
+      "code": "PARAM-transplant-vertical-on-circle-1over6",
+      "frame_count": 4,
+      "foreign_primitive": "rectangle_vertical_partition",
+      "illicit_host": "circle_region",
+      "violation": "object_language_binding_violation",
+      "frames": [
+        "PARAM-transplant-vertical-on-circle-1over6-frame-1.svg",
+        "PARAM-transplant-vertical-on-circle-1over6-frame-2.svg",
+        "PARAM-transplant-vertical-on-circle-1over6-frame-3.svg",
+        "PARAM-transplant-vertical-on-circle-1over6-frame-4.svg"
+      ]
+    },
+    {
+      "host": "circle",
+      "rule": "vertical",
+      "n": 8,
+      "code": "PARAM-transplant-vertical-on-circle-1over8",
+      "frame_count": 4,
+      "foreign_primitive": "rectangle_vertical_partition",
+      "illicit_host": "circle_region",
+      "violation": "object_language_binding_violation",
+      "frames": [
+        "PARAM-transplant-vertical-on-circle-1over8-frame-1.svg",
+        "PARAM-transplant-vertical-on-circle-1over8-frame-2.svg",
+        "PARAM-transplant-vertical-on-circle-1over8-frame-3.svg",
+        "PARAM-transplant-vertical-on-circle-1over8-frame-4.svg"
+      ]
+    },
+    {
+      "host": "rectangle",
+      "rule": "radial",
+      "n": 4,
+      "code": "PARAM-transplant-radial-on-rectangle-1over4",
+      "frame_count": 4,
+      "foreign_primitive": "circle_radial_partition",
+      "illicit_host": "rectangle_area_model",
+      "violation": "object_language_binding_violation",
+      "frames": [
+        "PARAM-transplant-radial-on-rectangle-1over4-frame-1.svg",
+        "PARAM-transplant-radial-on-rectangle-1over4-frame-2.svg",
+        "PARAM-transplant-radial-on-rectangle-1over4-frame-3.svg",
+        "PARAM-transplant-radial-on-rectangle-1over4-frame-4.svg"
+      ]
+    },
+    {
+      "host": "rectangle",
+      "rule": "radial",
+      "n": 6,
+      "code": "PARAM-transplant-radial-on-rectangle-1over6",
+      "frame_count": 4,
+      "foreign_primitive": "circle_radial_partition",
+      "illicit_host": "rectangle_area_model",
+      "violation": "object_language_binding_violation",
+      "frames": [
+        "PARAM-transplant-radial-on-rectangle-1over6-frame-1.svg",
+        "PARAM-transplant-radial-on-rectangle-1over6-frame-2.svg",
+        "PARAM-transplant-radial-on-rectangle-1over6-frame-3.svg",
+        "PARAM-transplant-radial-on-rectangle-1over6-frame-4.svg"
+      ]
+    },
+    {
+      "host": "circle",
+      "rule": "grid",
+      "n": 4,
+      "code": "PARAM-transplant-grid-on-circle-1over4",
+      "frame_count": 4,
+      "foreign_primitive": "rectangle_grid_partition",
+      "illicit_host": "circle_region",
+      "violation": "object_language_binding_violation",
+      "frames": [
+        "PARAM-transplant-grid-on-circle-1over4-frame-1.svg",
+        "PARAM-transplant-grid-on-circle-1over4-frame-2.svg",
+        "PARAM-transplant-grid-on-circle-1over4-frame-3.svg",
+        "PARAM-transplant-grid-on-circle-1over4-frame-4.svg"
+      ]
+    },
+    {
+      "host": "circle",
+      "rule": "grid",
+      "n": 6,
+      "code": "PARAM-transplant-grid-on-circle-1over6",
+      "frame_count": 4,
+      "foreign_primitive": "rectangle_grid_partition",
+      "illicit_host": "circle_region",
+      "violation": "object_language_binding_violation",
+      "frames": [
+        "PARAM-transplant-grid-on-circle-1over6-frame-1.svg",
+        "PARAM-transplant-grid-on-circle-1over6-frame-2.svg",
+        "PARAM-transplant-grid-on-circle-1over6-frame-3.svg",
+        "PARAM-transplant-grid-on-circle-1over6-frame-4.svg"
+      ]
+    },
+    {
+      "host": "set",
+      "rule": "radial",
+      "n": 3,
+      "code": "PARAM-transplant-radial-on-set-1over3",
+      "frame_count": 4,
+      "foreign_primitive": "circle_radial_partition",
+      "illicit_host": "fractional_set_model",
+      "violation": "object_language_binding_violation",
+      "frames": [
+        "PARAM-transplant-radial-on-set-1over3-frame-1.svg",
+        "PARAM-transplant-radial-on-set-1over3-frame-2.svg",
+        "PARAM-transplant-radial-on-set-1over3-frame-3.svg",
+        "PARAM-transplant-radial-on-set-1over3-frame-4.svg"
+      ]
+    },
+    {
+      "host": "set",
+      "rule": "radial",
+      "n": 4,
+      "code": "PARAM-transplant-radial-on-set-1over4",
+      "frame_count": 4,
+      "foreign_primitive": "circle_radial_partition",
+      "illicit_host": "fractional_set_model",
+      "violation": "object_language_binding_violation",
+      "frames": [
+        "PARAM-transplant-radial-on-set-1over4-frame-1.svg",
+        "PARAM-transplant-radial-on-set-1over4-frame-2.svg",
+        "PARAM-transplant-radial-on-set-1over4-frame-3.svg",
+        "PARAM-transplant-radial-on-set-1over4-frame-4.svg"
+      ]
+    }
+  ],
+  "productive": [
+    {
+      "host": "circle",
+      "n": 4,
+      "code": "PARAM-productive-circle-1over4",
+      "frame_count": 3,
+      "frames": [
+        "PARAM-productive-circle-1over4-frame-1.svg",
+        "PARAM-productive-circle-1over4-frame-2.svg",
+        "PARAM-productive-circle-1over4-frame-3.svg"
+      ]
+    },
+    {
+      "host": "circle",
+      "n": 6,
+      "code": "PARAM-productive-circle-1over6",
+      "frame_count": 3,
+      "frames": [
+        "PARAM-productive-circle-1over6-frame-1.svg",
+        "PARAM-productive-circle-1over6-frame-2.svg",
+        "PARAM-productive-circle-1over6-frame-3.svg"
+      ]
+    }
+  ],
+  "replication_strips": [
+    {
+      "host": "circle",
+      "rule": "vertical",
+      "denominators": [
+        4,
+        5,
+        6,
+        8
+      ],
+      "file": "PARAM-replication-vertical-on-circle.svg"
+    },
+    {
+      "host": "rectangle",
+      "rule": "radial",
+      "denominators": [
+        4,
+        6
+      ],
+      "file": "PARAM-replication-radial-on-rectangle.svg"
+    },
+    {
+      "host": "circle",
+      "rule": "grid",
+      "denominators": [
+        4,
+        6
+      ],
+      "file": "PARAM-replication-grid-on-circle.svg"
+    },
+    {
+      "host": "set",
+      "rule": "radial",
+      "denominators": [
+        3,
+        4
+      ],
+      "file": "PARAM-replication-radial-on-set.svg"
+    }
+  ]
+}

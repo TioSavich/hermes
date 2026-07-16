@@ -1,0 +1,538 @@
+{
+ "canvas": {
+  "height": 360,
+  "width": 700
+ },
+ "frames": [
+  {
+   "caption": "Start with 7 in the ten-frame.",
+   "scene": {
+    "bins": [],
+    "dots": [
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 72,
+      "y": 72
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 136,
+      "y": 72
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 200,
+      "y": 72
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 264,
+      "y": 72
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 328,
+      "y": 72
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 72,
+      "y": 136
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 136,
+      "y": 136
+     }
+    ],
+    "format": "set-grouping",
+    "frames10": [
+     {
+      "h": 64,
+      "w": 64,
+      "x": 40,
+      "y": 40
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 104,
+      "y": 40
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 168,
+      "y": 40
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 232,
+      "y": 40
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 296,
+      "y": 40
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 40,
+      "y": 104
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 104,
+      "y": 104
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 168,
+      "y": 104
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 232,
+      "y": 104
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 296,
+      "y": 104
+     }
+    ],
+    "pairLines": [],
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 1,
+   "verb": "make_ten(7,8)"
+  },
+  {
+   "caption": "Add 3 to make ten: 7 needs 3 more, and 8 has it to give.",
+   "scene": {
+    "bins": [],
+    "dots": [
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 72,
+      "y": 72
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 136,
+      "y": 72
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 200,
+      "y": 72
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 264,
+      "y": 72
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 328,
+      "y": 72
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 72,
+      "y": 136
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 136,
+      "y": 136
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "highlight",
+      "tag": "filled",
+      "x": 200,
+      "y": 136
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "highlight",
+      "tag": "filled",
+      "x": 264,
+      "y": 136
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "highlight",
+      "tag": "filled",
+      "x": 328,
+      "y": 136
+     }
+    ],
+    "format": "set-grouping",
+    "frames10": [
+     {
+      "h": 64,
+      "w": 64,
+      "x": 40,
+      "y": 40
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 104,
+      "y": 40
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 168,
+      "y": 40
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 232,
+      "y": 40
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 296,
+      "y": 40
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 40,
+      "y": 104
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 104,
+      "y": 104
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 168,
+      "y": 104
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 232,
+      "y": 104
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 296,
+      "y": 104
+     }
+    ],
+    "pairLines": [],
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 2,
+   "verb": "make_ten(7,8)"
+  },
+  {
+   "caption": "7 + 8 = 15: split 8 into 3 and 5, make ten, then 5 left.",
+   "scene": {
+    "bins": [],
+    "dots": [
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 72,
+      "y": 72
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 136,
+      "y": 72
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 200,
+      "y": 72
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 264,
+      "y": 72
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 328,
+      "y": 72
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 72,
+      "y": 136
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "unit",
+      "tag": "filled",
+      "x": 136,
+      "y": 136
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "highlight",
+      "tag": "filled",
+      "x": 200,
+      "y": 136
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "highlight",
+      "tag": "filled",
+      "x": 264,
+      "y": 136
+     },
+     {
+      "group": 0,
+      "r": 20,
+      "role": "highlight",
+      "tag": "filled",
+      "x": 328,
+      "y": 136
+     },
+     {
+      "group": 1,
+      "r": 20,
+      "role": "iterated",
+      "tag": "overflow",
+      "x": 72,
+      "y": 200
+     },
+     {
+      "group": 1,
+      "r": 20,
+      "role": "iterated",
+      "tag": "overflow",
+      "x": 136,
+      "y": 200
+     },
+     {
+      "group": 1,
+      "r": 20,
+      "role": "iterated",
+      "tag": "overflow",
+      "x": 200,
+      "y": 200
+     },
+     {
+      "group": 1,
+      "r": 20,
+      "role": "iterated",
+      "tag": "overflow",
+      "x": 264,
+      "y": 200
+     },
+     {
+      "group": 1,
+      "r": 20,
+      "role": "iterated",
+      "tag": "overflow",
+      "x": 328,
+      "y": 200
+     }
+    ],
+    "format": "set-grouping",
+    "frames10": [
+     {
+      "h": 64,
+      "w": 64,
+      "x": 40,
+      "y": 40
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 104,
+      "y": 40
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 168,
+      "y": 40
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 232,
+      "y": 40
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 296,
+      "y": 40
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 40,
+      "y": 104
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 104,
+      "y": 104
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 168,
+      "y": 104
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 232,
+      "y": 104
+     },
+     {
+      "h": 64,
+      "w": 64,
+      "x": 296,
+      "y": 104
+     }
+    ],
+    "pairLines": [],
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 3,
+   "verb": "make_ten(7,8)"
+  }
+ ],
+ "grounding": {
+  "metaphor_gloss": "Object Construction \u2014 numbers as wholes built from parts",
+  "metaphor_label": "object_construction",
+  "practice": "p_make_ten_split_leftover",
+  "primitive": "'P2'",
+  "role": "primary"
+ },
+ "kind": "make_ten",
+ "request": {
+  "a": 7,
+  "b": 8
+ },
+ "result": "15",
+ "teacher": {
+  "breaks_at": [
+   {
+    "inference": "zero_as_an_object",
+    "reason": "Zero requires the ad-hoc Zero Object Metaphor; lack-of-object is not itself a constructible object."
+   },
+   {
+    "inference": "zero_as_a_number",
+    "reason": "No source-domain referent for 'an object that is the absence of an object'; requires the ad-hoc Zero Object Metaphor."
+   },
+   {
+    "inference": "irrational_numbers",
+    "reason": "Irrationals are not constructible by finite assembly of unit parts."
+   }
+  ],
+  "embodied": "Fit equal parts together into a whole object.",
+  "incompatibility_penumbra": "Rules out the make ten drop leftover deformation (dropped leftover after make ten): the representation will not sustain it.",
+  "repair": "Switch to Zero Object.",
+  "standard": "addition strand: make_ten_split_leftover",
+  "witness": {
+   "channels": {
+    "breaks_at": "present",
+    "embodied": "present",
+    "incompatibility_penumbra": "present",
+    "standard": "present"
+   },
+   "kind": "teacher_layer",
+   "metaphor_id": "arithmetic_is_object_construction",
+   "practice": "p_make_ten_split_leftover",
+   "source": "teacher_layer_composition_over_existing_witnesses"
+  }
+ },
+ "tuple": "make_ten(7,8)"
+}

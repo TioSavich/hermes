@@ -1,0 +1,576 @@
+{
+ "attribution": "Transcript data: TalkMoves dataset (SumnerLab / Suresh et al.), CC BY-NC-SA 4.0, speaker-blinded before any model call.",
+ "caveats": [
+  "The calculator checks a claim only when it can ground it; 'not checked' means outside its current coverage, not wrong.",
+  "Reading a speaker's move is interpretive. The model proposes the reading; only the claim verdicts are computed.",
+  "One automated read of one transcript \u2014 a starting point for your own reading, not a verdict on the discussion."
+ ],
+ "claims": [
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "a fourth is half of a half",
+   "speaker": "S01",
+   "utterance": "u0074"
+  },
+  {
+   "finding": "not checked",
+   "how": "outside what the calculator can currently check",
+   "said": "a third is a little bit less than that",
+   "speaker": "S01",
+   "utterance": "u0078"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "six twelfths",
+   "speaker": "S01",
+   "utterance": "u0111"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "three fifteenths",
+   "speaker": "S01",
+   "utterance": "u0158"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "five sixths times two fifths is 10 30ths",
+   "speaker": "S01",
+   "utterance": "u0262"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "eight fifteenths",
+   "speaker": "S01",
+   "utterance": "u0295"
+  }
+ ],
+ "headline": "6 mathematical claims heard; 5 checked by the calculator, 0 did not check out.",
+ "machine": {
+  "extractions": [
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:multiply_grounded",
+     "claim": "fraction_multiplication",
+     "status": "domain_checked",
+     "trace": [
+      "numerator product 1*1=1; denominator product 2*2=4; claimed 1/4"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 2,
+      "num": 1
+     },
+     "b": {
+      "den": 2,
+      "num": 1
+     },
+     "product": {
+      "den": 4,
+      "num": 1
+     }
+    },
+    "confidence": "high",
+    "id": "c1",
+    "shape": "multiplication",
+    "surface": "a fourth is half of a half",
+    "term": "multiplication(fraction(1,2),fraction(1,2),fraction(1,4))",
+    "utterance_id": "u0074",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "reason": "shape_not_mapped"
+    },
+    "args": {
+     "left": {
+      "den": 3,
+      "num": 1
+     },
+     "rel": "less",
+     "right": {
+      "den": 2,
+      "num": 1
+     }
+    },
+    "confidence": "high",
+    "id": "c2",
+    "shape": "comparison",
+    "surface": "a third is a little bit less than that",
+    "term": null,
+    "utterance_id": "u0078",
+    "verdict": "unchecked"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:multiply_grounded",
+     "claim": "fraction_multiplication",
+     "status": "domain_checked",
+     "trace": [
+      "numerator product 3*2=6; denominator product 4*3=12; claimed 6/12"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 4,
+      "num": 3
+     },
+     "b": {
+      "den": 3,
+      "num": 2
+     },
+     "product": {
+      "den": 12,
+      "num": 6
+     }
+    },
+    "confidence": "high",
+    "id": "c3",
+    "shape": "multiplication",
+    "surface": "six twelfths",
+    "term": "multiplication(fraction(3,4),fraction(2,3),fraction(6,12))",
+    "utterance_id": "u0111",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:multiply_grounded",
+     "claim": "fraction_multiplication",
+     "status": "domain_checked",
+     "trace": [
+      "numerator product 1*3=3; denominator product 3*5=15; claimed 3/15"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 3,
+      "num": 1
+     },
+     "b": {
+      "den": 5,
+      "num": 3
+     },
+     "product": {
+      "den": 15,
+      "num": 3
+     }
+    },
+    "confidence": "high",
+    "id": "c4",
+    "shape": "multiplication",
+    "surface": "three fifteenths",
+    "term": "multiplication(fraction(1,3),fraction(3,5),fraction(3,15))",
+    "utterance_id": "u0158",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:multiply_grounded",
+     "claim": "fraction_multiplication",
+     "status": "domain_checked",
+     "trace": [
+      "numerator product 5*2=10; denominator product 6*5=30; claimed 10/30"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 6,
+      "num": 5
+     },
+     "b": {
+      "den": 5,
+      "num": 2
+     },
+     "product": {
+      "den": 30,
+      "num": 10
+     }
+    },
+    "confidence": "high",
+    "id": "c5",
+    "shape": "multiplication",
+    "surface": "five sixths times two fifths is 10 30ths",
+    "term": "multiplication(fraction(5,6),fraction(2,5),fraction(10,30))",
+    "utterance_id": "u0262",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:multiply_grounded",
+     "claim": "fraction_multiplication",
+     "status": "domain_checked",
+     "trace": [
+      "numerator product 4*2=8; denominator product 5*3=15; claimed 8/15"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 5,
+      "num": 4
+     },
+     "b": {
+      "den": 3,
+      "num": 2
+     },
+     "product": {
+      "den": 15,
+      "num": 8
+     }
+    },
+    "confidence": "high",
+    "id": "c6",
+    "shape": "multiplication",
+    "surface": "eight fifteenths",
+    "term": "multiplication(fraction(4,5),fraction(2,3),fraction(8,15))",
+    "utterance_id": "u0295",
+    "verdict": "holds"
+   }
+  ],
+  "readings": [
+   {
+    "claim_refs": [],
+    "id": "a1",
+    "pml": {
+     "content": "collective certainty regarding C1",
+     "force": "avow",
+     "grammatical_person": "first_plural",
+     "mode": "subjective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "speaker",
+     "subject_position_read": "teacher binding the group to a shared fact"
+    },
+    "raw_text": "we know that",
+    "utterance_ids": [
+     "u0074"
+    ],
+    "wraps": "a2"
+   },
+   {
+    "claim_refs": [
+     "C1"
+    ],
+    "id": "a2",
+    "pml": {
+     "content": "C1",
+     "force": "assert",
+     "grammatical_person": "third_person",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "object",
+     "subject_position_read": "the mathematical fact as a stable anchor"
+    },
+    "raw_text": "[C1 multiplication: holds]",
+    "utterance_ids": [
+     "u0074"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a3",
+    "pml": {
+     "content": "personal certainty regarding C2",
+     "force": "avow",
+     "grammatical_person": "first_singular",
+     "mode": "subjective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "speaker",
+     "subject_position_read": "teacher providing an authoritative lead"
+    },
+    "raw_text": "I know that",
+    "utterance_ids": [
+     "u0078"
+    ],
+    "wraps": "a4"
+   },
+   {
+    "claim_refs": [
+     "C2"
+    ],
+    "id": "a4",
+    "pml": {
+     "content": "C2",
+     "force": "assert",
+     "grammatical_person": "third_person",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "object",
+     "subject_position_read": "the comparison as a necessary step for construction"
+    },
+    "raw_text": "[C2 comparison: unchecked]",
+    "utterance_ids": [
+     "u0078"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C3"
+    ],
+    "id": "a5",
+    "pml": {
+     "content": "C3",
+     "force": "assert",
+     "grammatical_person": "third_person",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "object",
+     "subject_position_read": "closing the result based on student observation"
+    },
+    "raw_text": "So it's [C3 multiplication: holds].",
+    "utterance_ids": [
+     "u0111"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C4"
+    ],
+    "id": "a6",
+    "pml": {
+     "content": "C4",
+     "force": "assert",
+     "grammatical_person": "third_person",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "object",
+     "subject_position_read": "confirming the product as an objective result"
+    },
+    "raw_text": "So the answer is [C4 multiplication: holds].",
+    "utterance_ids": [
+     "u0158"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a7",
+    "pml": {
+     "content": "prediction of model appearance",
+     "force": "question",
+     "grammatical_person": "second_person",
+     "mode": "subjective",
+     "operator": "exp_poss",
+     "polarity": "expansive",
+     "position": "interlocutor",
+     "subject_position_read": "opening the field for student conjecture"
+    },
+    "raw_text": "what do you think it's going to look like?",
+    "uptake": {
+     "fate": "taken_up",
+     "ids": [
+      "u0206"
+     ]
+    },
+    "utterance_ids": [
+     "u0202"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a8",
+    "pml": {
+     "content": "denominator value",
+     "force": "question",
+     "grammatical_person": "third_person",
+     "mode": "objective",
+     "operator": "exp_poss",
+     "polarity": "expansive",
+     "position": "object",
+     "subject_position_read": "soliciting a candidate value from the object"
+    },
+    "raw_text": "So what is the denominator going to be?",
+    "uptake": {
+     "fate": "taken_up",
+     "ids": [
+      "u0206"
+     ]
+    },
+    "utterance_ids": [
+     "u0204"
+    ]
+   },
+   {
+    "claim_refs": [],
+    "id": "a9",
+    "pml": {
+     "content": "the process of explanation",
+     "force": "question",
+     "grammatical_person": "second_person",
+     "mode": "normative",
+     "operator": "exp_nec",
+     "polarity": "expansive",
+     "position": "interlocutor",
+     "subject_position_read": "requiring the expansion of reasoning"
+    },
+    "raw_text": "How would you come up with the explanation that the numerator is going to be 10?",
+    "utterance_ids": [
+     "u0236"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C5"
+    ],
+    "id": "a10",
+    "pml": {
+     "content": "proof of C5",
+     "force": "demand",
+     "grammatical_person": "second_person",
+     "mode": "normative",
+     "operator": "exp_nec",
+     "polarity": "expansive",
+     "position": "interlocutor",
+     "subject_position_read": "binding the student to the requirement of open proof"
+    },
+    "raw_text": "I want you to be able to prove that [C5 multiplication: holds].",
+    "utterance_ids": [
+     "u0262"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C6"
+    ],
+    "id": "a11",
+    "pml": {
+     "content": "C6",
+     "force": "assert",
+     "grammatical_person": "third_person",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "object",
+     "subject_position_read": "establishing the algorithmic result as definitive"
+    },
+    "raw_text": "Equals [C6 multiplication: holds].",
+    "utterance_ids": [
+     "u0295"
+    ]
+   }
+  ]
+ },
+ "postures": [
+  {
+   "move": "treats the question as settled",
+   "register": "speaking for themselves",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0074"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0074"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "speaking for themselves",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0078"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0078"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0111"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0158"
+   ]
+  },
+  {
+   "move": "opens an alternative",
+   "register": "speaking for themselves",
+   "response": "the class took it up",
+   "speaker": "S01",
+   "utterances": [
+    "u0202"
+   ]
+  },
+  {
+   "move": "opens an alternative",
+   "register": "about the shared math",
+   "response": "the class took it up",
+   "speaker": "S01",
+   "utterances": [
+    "u0204"
+   ]
+  },
+  {
+   "move": "asks for openness: an explanation or a return to the idea is required",
+   "register": "about what the class may or must do",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0236"
+   ]
+  },
+  {
+   "move": "asks for openness: an explanation or a return to the idea is required",
+   "register": "about what the class may or must do",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0262"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S01",
+   "utterances": [
+    "u0295"
+   ]
+  }
+ ],
+ "repair_arcs": [],
+ "tensions": [],
+ "transcript": "# tm_0098\n\nU0001 S01: All right.\nU0002 S01: Show me.\nU0003 S01: Yeah!\nU0004 S01: So we're rounding to the nearest tenth, so we look at the eight.\nU0005 S01: It is a five or above, so that means the nine has to be rounded up.\nU0006 S01: The next tenth up would be zero, and it's going to round this one up.\nU0007 S01: So the answer is 40.\nU0008 S01: So sometimes, if what you're rounding to, is very close to the next number, you're going to have to round up a couple of numbers, right?\nU0009 S01: All right.\nU0010 S01: And the last one.\nU0011 S01: Round down to the nearest hundredth, notice that there's a -th on the end.\nU0012 S01: Show me.\nU0013 S01: All of these other numbers stay the same.\nU0014 S01: So if we're rounding to the nearest hundredth, we look at this number.\nU0015 S01: It's a five or above, so we're going to round the eight to the nine.\nU0016 S01: So that'll become a nine, and these all remain the same.\nU0017 S01: Okay?\nU0018 S01: All right.\nU0019 S01: Good job.\nU0020 S01: Oops!\nU0021 S01: Rounding is super important.\nU0022 S01: All right, and for your math classes today...\nU0023 S02: Thank you!\nU0024 S01: You're welcome.\nU0025 S03: Thank you!\nU0026 S01: You're welcome.\nU0027 S01: Is George with us?\nU0028 S01: I call those high gravity days.\nU0029 S01: All right, you guys.\nU0030 S01: For your math message.\nU0031 S01: So I gave you a packet of TA30.\nU0032 S01: And you can work with a partner to draw an area model for three fourths times two thirds.\nU0033 S01: You can look at journal page 177 to help you.\nU0034 S01: So I want you to work with your shoulder partner.\nU0035 S01: I'm going to move you guys up here.\nU0036 S01: Yeah, go to the bathroom\nU0037 S01: Three fourths times two thirds.\nU0038 S01: Draw an area model.\nU0039 S01: Just pick one of the squares and do it.\nU0040 S01: So can you label the parts?\nU0041 S01: Oh, you've got the labeling.\nU0042 S01: Nice.\nU0043 S01: Okay.\nU0044 S01: So draw an area model.\nU0045 S01: So go ahead and show what the answer would be.\nU0046 S01: You're just multiplying.\nU0047 S01: Hey, take off when you're done.\nU0048 S01: And you agree with your partner.\nU0049 S01: Right there, and guys, you can move closer together.\nU0050 S01: All right.\nU0051 S01: Draw your lines all...\nU0052 S01: Wait.\nU0053 S01: Is that a third?\nU0054 S01: All right.\nU0055 S01: Stand up when you're done.\nU0056 S01: Hey, you guys, if you're going to work on the whiteboard, can you put this so they can hear what you're saying?\nU0057 S04: Yeah.\nU0058 S05: Yes!\nU0059 S01: All right.\nU0060 S01: Good enough.\nU0061 S01: So here's what you should have done.\nU0062 S01: And I'm going to just show you how to make it a little bit easier.\nU0063 S01: So on the horizontal axis, everybody say horizontal axis.\nU0064 S06: Horizontal axis!\nU0065 S01: You guys can sit down.\nU0066 S01: So along the horizontal axis, I am two things.\nU0067 S01: I'm going to put three fourths times two thirds is my number model that I'm showing with the area model.\nU0068 S01: And so I'm going to choose three fourths first.\nU0069 S01: So I'm going to just make tick marks.\nU0070 S01: First for half, because half is really easy to show.\nU0071 S01: You guys, this is how...\nU0072 S01: Sometimes it's hard to get the proportions correct.\nU0073 S01: Okay.\nU0074 S01: So there's half, and we know that a fourth is half of a half, so I'm going to make those tick marks there.\nU0075 S01: And then I'm going to label that.\nU0076 S01: This is one fourth, two, fourths, and this is three fourths.\nU0077 S01: And then for thirds.\nU0078 S01: Thirds a little bit harder, but I know if I know this is a half, I know that a third is a little bit less than that.\nU0079 S01: So I'm trying to make three equal parts.\nU0080 S01: So I'm going to just throw in some tick marks there.\nU0081 S01: So one third, two thirds, and then this will be three thirds, right?\nU0082 S01: Okay.\nU0083 S01: So if I do my line straight across, there is two thirds, there is one third.\nU0084 S01: Here is one half here is three fourths.\nU0085 S01: Here's one fourth.\nU0086 S01: Okay.\nU0087 S01: So now I have my grid and I'm going to shade pink and orange.\nU0088 S01: So three fourths, one way.\nU0089 S01: So here's three fourths.\nU0090 S01: My three fourths goes all the way to the top.\nU0091 S01: And then let's see, I'll do green actually.\nU0092 S01: And I'm going to do two thirds in the other direction.\nU0093 S01: So here's my two thirds.\nU0094 S01: And I'm going to shade all of that in, in the other direction.\nU0095 S01: Okay.\nU0096 S01: And then I'm going to take my purple marker, and I'm going to make a square around the parts that are shaded both ways.\nU0097 S01: Oh, I guess this is fuchsia.\nU0098 S01: And that is my answer.\nU0099 S01: So what is the answer to this problem?\nU0100 S01: Anna?\nU0101 S07: Six twelfths.\nU0102 S01: Equals six.\nU0103 S01: So there are six in the numerator.\nU0104 S01: That is what is double shaded.\nU0105 S01: And, the denominator is what did you say?\nU0106 S07: 12\nU0107 S01: 12\nU0108 S01: Why is it 12?\nU0109 S07: Because there's 12 sections.\nU0110 S01: There are 12 equal parts.\nU0111 S01: So it's six twelfths.\nU0112 S01: Okay.\nU0113 S01: All right.\nU0114 S01: Pretty simple.\nU0115 S01: This is what we've been doing all week.\nU0116 S01: So anybody have questions about that?\nU0117 S01: All right.\nU0118 S01: Let's see, so let's go on to another one.\nU0119 S01: Let's try another one.\nU0120 S01: This time, I want you to represent one third times three fifths.\nU0121 S01: One third times three fifths.\nU0122 S01: I'm going to write that down over here.\nU0123 S01: Again, you can check with your neighbor when... One third times... did I say three fifths?\nU0124 S01: Check with your neighbor to see if yours looks right, right here.\nU0125 S01: Go.\nU0126 S01: Nice!\nU0127 S01: Those are some good thirds, Eric!\nU0128 S01: Go on to a new way.\nU0129 S01: We're doing one third times three fifths.\nU0130 S01: All right, I see some good stuff.\nU0131 S01: Good job.\nU0132 S01: Okay, so make sure that you record the number model underneath and check with your neighbor to see if you guys come up with the same answer.\nU0133 S01: I'm going to move you guys a little closer so you can hear each other.\nU0134 S01: Even though you guys are both so loud, like the loudest people in the class.\nU0135 S01: Good, so now you shade one.\nU0136 S01: So, what is it?\nU0137 S01: One third.\nU0138 S01: So you're going to shade one third in one direction.\nU0139 S01: What'd you get?\nU0140 S01: Did your grandma make that  for you?\nU0141 S08: Mm-hmm\nU0142 S01: So cool.\nU0143 S01: You got what?\nU0144 S04: Three fifteenths.\nU0145 S01: Okay.\nU0146 S01: Write your number sentence underneath that.\nU0147 S01: All right.\nU0148 S01: And with your partner, I want you to talk about, what does the numerator represent?\nU0149 S01: Tell what the numerator represents.\nU0150 S01: The numerator\nU0151 S01: Okay.\nU0152 S01: And then I want you to discuss with your partner, what the denominator means\nU0153 S01: Okay.\nU0154 S01: Matt, what's the answer to this problem?\nU0155 S09: Three fifteenths.\nU0156 S01: Three fifteenths.\nU0157 S01: Okay.\nU0158 S01: So the answer is three fifteenths.\nU0159 S01: And what does the three represent?\nU0160 S01: What does the numerator represent?\nU0161 S01: Joey?\nU0162 S10: The blocks that are shaded.\nU0163 S01: Okay, so the shaded...\nU0164 S10: Double shaded.\nU0165 S01: Okay, double shaded.\nU0166 S01: Okay.\nU0167 S01: But what does that mean?\nU0168 S01: Cooper?\nU0169 S11: If you do three fifths and then one third across, then three of those fifths would equal three, I guess.\nU0170 S11: So you double shade a third, but also, you're shading a part where three fifths were shaded.\nU0171 S01: Okay.\nU0172 S01: So the three is the part that's double shaded.\nU0173 S01: That is truly the answer, right?\nU0174 S01: Three is the answer.\nU0175 S01: And the 15 represents what?\nU0176 S01: Isaac?\nU0177 S12: It represents the\nU0178 S01: I'm sorry.\nU0179 S01: I couldn't hear.\nU0180 S12: It represents the  It represents the bottom.\nU0181 S12: How many squares are on the bottom\nU0182 S01: How many...\nU0183 S12: Parts?\nU0184 S01: Parts it takes to, what?\nU0185 S01: Finish that sentence for me.\nU0186 S01: How many parts it takes to...\nU0187 S12: Fill the square.\nU0188 S01: Still waiting.\nU0189 S13: Well, it is the area.\nU0190 S13: There is 15 squares inside the one square.\nU0191 S01: Inside the one square.\nU0192 S01: You're getting closer!\nU0193 S01: So you said there's 15 scores inside the one square.\nU0194 S01: So what does the 15 represent?\nU0195 S10: The 15 represents how many squares there are to make a whole.\nU0196 S01: Yes!\nU0197 S01: How many parts it takes to make a whole.\nU0198 S01: Okay.\nU0199 S01: All right.\nU0200 S01: So I'm going to give you another problem, and I want you, without... Let's see.\nU0201 S01: Five sixths times two fifths.\nU0202 S01: And before you draw your area model, what do you think it's going to look like?\nU0203 S01: How many parts are there going to be?\nU0204 S01: So what is the denominator going to be?\nU0205 S01: Anna?\nU0206 S07: 30\nU0207 S01: 30!\nU0208 S01: How do you know?\nU0209 S07: Six times five.\nU0210 S01: Six times five is 30?\nU0211 S01: Think about the area model.\nU0212 S01: You're absolutely right.\nU0213 S01: Can somebody describe it in terms of the area model?\nU0214 S01: How do we know that there are going to be 30 squares?\nU0215 S01: Joey.\nU0216 S10: Because five times six is 30.\nU0217 S01: Okay.\nU0218 S01: Because five times six is 30.\nU0219 S10: With the area, when you draw six lines and five lines, that's basically five times six.\nU0220 S01: Okay.\nU0221 S01: So he said five by six.\nU0222 S01: So we have an array, right?\nU0223 S01: It's a five by six array that we're making, because we have fifths and sixths.\nU0224 S01: So without doing anything, without drawing the area model, we know what it's going to look like.\nU0225 S01: We know that the denominator is going to be 30, because if we were to draw the area model, we know that we would put a five across one and six down the other way.\nU0226 S01: Right?\nU0227 S01: And five times six is thirty.\nU0228 S01: Okay.\nU0229 S01: And then how would you know, what the numerator would be?\nU0230 S01: Talk to your neighbor about what you think the numerator would be, and how to explain it based on the area model.\nU0231 S01: Talk about the area model.\nU0232 S01: You can draw it if you want.\nU0233 S05: It's so hard to explain.\nU0234 S01: You're still going to have to explain it, but you can draw it if it'll help you come to the... All right.\nU0235 S01: Any explanation based on the area model?\nU0236 S01: How would you come up with the explanation that the numerator is going to be 10?\nU0237 S01: We know it's going to be 10, but how?\nU0238 S01: Landon.\nU0239 S01: Really loudly.\nU0240 S14: The reason why is because, basically, showing it on an area model, if you count up the parts, there's 30, obviously.\nU0241 S14: And then, you will only shade in 10.\nU0242 S14: And then you can prove it on an area model.\nU0243 S14: Even though we know it's going to be 10, we can find it on an area model by shading in...\nU0244 S01: The five sixths one way and the two fifths the other way?\nU0245 S14: Mm-hmm\nU0246 S01: Anybody has anything to add to that?\nU0247 S01: It's hard to explain.\nU0248 S01: Cooper, you're pretty good.\nU0249 S01: You want to try it?\nU0250 S11: Kind of explain what the answer of the five sixths?\nU0251 S01: Why 10 would be the numerator.\nU0252 S11: Because you're kind of... Basically what you're doing is you're just multiplying the denominator by the denominator, and the numerator by the numerator.\nU0253 S11: And you also know that because, let's say you shade five sixths on the square thing, and then five halves?\nU0254 S01: Two fifths.\nU0255 S11: Two fifths, I mean.\nU0256 S11: Then you'll just have 30 as your answer.\nU0257 S11: And the remainder... Not the remainder.\nU0258 S01: No, you'd have 30 total squares, but...\nU0259 S11: There'd be 10 squares total in the whole entire rectangle.\nU0260 S01: So the 10 would be shaded if you did the area model, and that's really all it is.\nU0261 S11: So you're just basically multiplying.\nU0262 S01: I want you to be able to prove that five sixths times two fifths is 10 30ths.\nU0263 S01: You could prove it with your area model now.\nU0264 S01: You have a good understanding of what the 10 represents.\nU0265 S01: The 10 represents the double shaded, right?\nU0266 S01: Okay.\nU0267 S01: And let's see.\nU0268 S01: I really think that that's all.\nU0269 S01: So let's do four fifths times two thirds.\nU0270 S01: Four fifths times two thirds.\nU0271 S01: So what would the answer to that be?\nU0272 S01: You don't need to draw an area model if you don't need it.\nU0273 S01: Just checking.\nU0274 S01: Tell your partner what you think the answer would be and how you know.\nU0275 S01: All right.\nU0276 S01: So what is the denominator going to be on this?\nU0277 S01: Aiden?\nU0278 S05: Fifteenths.\nU0279 S01: 15\nU0280 S01: I can draw a five.\nU0281 S01: Okay.\nU0282 S01: And then what's the numerator?\nU0283 S05: Eight.\nU0284 S01: Eight.\nU0285 S01: And how do you know?\nU0286 S05: Because four times two is eight.\nU0287 S01: Four times two is eight.\nU0288 S01: So basically we have... Now you guys have been doing this forever, right?\nU0289 S01: You've been multiplying the numerator times the numerator and the denominator times the denominator, but now you guys have a way to prove it, right?\nU0290 S01: We've spent the last three days giving you a way to conceptually show multiplication of fractions.\nU0291 S01: Right?\nU0292 S01: So now today, I'm going to set you free.\nU0293 S01: And what I'm looking for is the actual multiplication of fractions in this way.\nU0294 S01: So you would just do four fifths times two thirds, equals four times two over five times three.\nU0295 S01: Equals eight fifteenths.\nU0296 S01: Okay?\nU0297 S01: All right.\nU0298 S01: So you have a journal page, 179, and a journal page, 180.\nU0299 S01: 179 you'll practice using the algorithm and multiply fractions.\nU0300 S01: Still check.\nU0301 S01: If you check with a neighbor and you guys disagree, I want you to prove your answer using one of the physical models.\nU0302 S01: So either paper folding or the area model to prove which answer is correct.\nU0303 S01: Okay?\nU0304 S01: All right.\nU0305 S01: So what I'd like you to do is do the problems independently.\nU0306 S01: You could do the first one.\nU0307 S01: You guys just work.\nU0308 S01: Aiden and Caleb are going to do it on their own.\nU0309 S01: The first problem.\nU0310 S01: When they're done, they're going to see what each other got for the answer, and then they're going to work it out.\nU0311 S01: Okay?\nU0312 S01: Any questions?\nU0313 S01: So pages 179, 180 and 181.\nU0314 S01: Yes.\nU0315 S01: So pages 179, 180, and 181.\n",
+ "transcript_id": "tm_0098"
+}

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" data-page-id="scoreboard">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deontic Scoreboard — Monitoring Chart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hermes-tokens-dark.css">
+  <script defer src="render/hermes-shell.js" data-root="./"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--bg); color: var(--text);
+           font-family: 'IBM Plex Serif', Georgia, serif; font-size: 16px; line-height: 1.65; }
+    body { max-width: 960px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+    h1 { font-size: 1.7rem; font-weight: 600; letter-spacing: -0.01em; }
+    h2 { font-size: 1.05rem; font-weight: 600; margin: 2.2rem 0 0.8rem;
+         text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+    .sub { color: var(--muted); font-size: 0.95rem; margin-top: 0.3rem; }
+    .mono { font-family: 'IBM Plex Mono', monospace; }
+    .provenance { margin-top: 1rem; padding: 0.6rem 0.9rem; border: 1px solid var(--border);
+                  border-radius: 6px; background: var(--surface); color: var(--muted);
+                  font-size: 0.82rem; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+            padding: 1rem 1.1rem; margin-bottom: 0.7rem; }
+    .card-raised { background: var(--surface-raised); }
+    .name { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 0.98rem; }
+    .row { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; margin-top: 0.45rem;
+           font-size: 0.86rem; color: var(--muted); }
+    .row b { color: var(--text); font-weight: 500; }
+    .power-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.7rem; margin-top: 0.3rem; }
+    .metric { background: var(--surface-raised); border: 1px solid var(--border);
+              border-radius: 8px; padding: 1rem 1.1rem; }
+    .metric .n { font-family: 'IBM Plex Mono', monospace; font-size: 2rem; font-weight: 600;
+                 color: var(--text); line-height: 1; }
+    .metric .lbl { font-size: 0.82rem; color: var(--muted); margin-top: 0.4rem; }
+    .metric.paths .n { color: var(--release); }
+    .metric.incompat .n { color: var(--tension); }
+    .tag { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 0.74rem;
+           padding: 0.1rem 0.45rem; border-radius: 4px; border: 1px solid var(--border); }
+    .tag.derived { color: var(--tension); border-color: var(--tension); }
+    .tag.comp { color: var(--m-mode); }
+    .tag.exp { color: var(--release); }
+    .incompat-line { margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px dashed var(--border); }
+    .cite { font-style: italic; color: var(--muted); font-size: 0.82rem; }
+    .note { color: var(--muted); font-size: 0.85rem; }
+    code { font-family: 'IBM Plex Mono', monospace; color: var(--text); }
+    a { color: var(--lx); }
+    .controls { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;
+                margin-top: 1rem; }
+    .controls label { font-size: 0.82rem; color: var(--muted); }
+    .controls input { font-family: 'IBM Plex Mono', monospace; font-size: 0.86rem;
+                      background: var(--surface); color: var(--text);
+                      border: 1px solid var(--border); border-radius: 6px;
+                      padding: 0.35rem 0.5rem; }
+    .controls input.lesson { width: 14rem; }
+    .controls input.base { width: 17rem; }
+    .controls button { font-family: 'IBM Plex Mono', monospace; font-size: 0.82rem;
+                       background: var(--surface-raised); color: var(--text);
+                       border: 1px solid var(--border); border-radius: 6px;
+                       padding: 0.35rem 0.8rem; cursor: pointer; }
+    .controls button:hover { border-color: var(--lx); }
+    .source-line { margin-top: 0.5rem; font-size: 0.82rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <h1>Deontic Scoreboard</h1>
+  <p class="sub" id="lesson-line">Loading monitoring chart…</p>
+
+  <p class="provenance">
+    This page renders the <b>actual JSON</b> emitted by the Prolog monitoring chart
+    (<code>hermes_worker.pl</code>, op <code>monitoring_chart_export</code>). It is a
+    saved snapshot under <code>data/</code>, not a mock and not a live call — regenerate
+    it by piping a <code>monitoring_chart_export</code> request through the worker.
+    The two figures it foregrounds — <b>derived incompatibility</b> and
+    <b>expressive power</b> — are the project's load-bearing claims, shown here as the
+    chart computes them, not as decoration. Enter a lesson code below to ask the live
+    Hermes worker for a fresh chart; when the worker is unreachable the page falls back
+    to the saved snapshot.
+  </p>
+
+  <div class="controls">
+    <label>lesson <input class="lesson mono" id="lesson-input" value="IM-G1-U3-L17"></label>
+    <label>Hermes <input class="base mono" id="base-input" value="http://127.0.0.1:8765"></label>
+    <button id="load-btn" type="button">load chart</button>
+  </div>
+  <p class="source-line" id="source-line"></p>
+
+  <section id="power"></section>
+  <section id="core"></section>
+  <section id="strategies"></section>
+  <section id="misconceptions"></section>
+  <section id="pml"></section>
+
+  <script src="spine.js"></script>
+  <script>
+    'use strict';
+
+    // Saved snapshot used as the offline fallback when the worker is unreachable.
+    const SNAPSHOT_URL = 'data/monitoring_IM-G1-U3-L17.json';
+
+    function el(tag, cls, html) {
+      const e = document.createElement(tag);
+      if (cls) e.className = cls;
+      if (html !== undefined) e.innerHTML = html;
+      return e;
+    }
+    function esc(s) {
+      return String(s == null ? '' : s)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+    // Collapse exact-duplicate PML facts (the text interpreter can emit an
+    // explicit fact and a coinciding generic fallback).
+    function dedupeFacts(facts) {
+      const seen = new Set(), out = [];
+      for (const f of facts) {
+        const key = [f.id, f.conclusion, f.polarity].join('||');
+        if (seen.has(key)) continue;
+        seen.add(key); out.push(f);
+      }
+      return out;
+    }
+
+    function renderPower(ep) {
+      const sec = document.getElementById('power');
+      if (!ep) return;
+      sec.appendChild(el('h2', null, 'Expressive power this lesson puts in play'));
+      sec.appendChild(el('p', 'note',
+        'Two finite measures, kept deliberately distinct: proof-paths (how many strategic ' +
+        'routes through the action space) and incompatibilities (how many commitments the ' +
+        'vocabulary excludes — the cheese-grater holes).'));
+      const grid = el('div', 'power-grid');
+      const paths = el('div', 'metric paths');
+      paths.appendChild(el('div', 'n', esc(ep.proof_paths ?? '—')));
+      paths.appendChild(el('div', 'lbl', 'proof-paths (strategic routes)'));
+      grid.appendChild(paths);
+      const inc = el('div', 'metric incompat');
+      const total = (ep.strategy_incompatibilities ?? 0) + (ep.misconception_incompatibilities ?? 0);
+      inc.appendChild(el('div', 'n', esc(total)));
+      inc.appendChild(el('div', 'lbl',
+        `incompatibilities (${esc(ep.strategy_incompatibilities ?? 0)} strategy · ` +
+        `${esc(ep.misconception_incompatibilities ?? 0)} misconception)`));
+      grid.appendChild(inc);
+      sec.appendChild(grid);
+      (ep.per_operation || []).forEach(op => {
+        sec.appendChild(el('p', 'note',
+          `<code>${esc(op.operation)}</code>: ${esc(op.proof_paths)} paths across ` +
+          `${esc(op.cells)} action-space cells, ${esc(op.distinct_costs)} distinct efficiency tiers.`));
+      });
+    }
+
+    function renderCore(core) {
+      if (!core) return;
+      const sec = document.getElementById('core');
+      sec.appendChild(el('h2', null, 'Productive core — what to want'));
+      sec.appendChild(el('div', 'card', esc(core)));
+    }
+
+    function renderStrategies(list) {
+      const sec = document.getElementById('strategies');
+      sec.appendChild(el('h2', null, `Anticipated student strategies (${(list || []).length})`));
+      (list || []).forEach(s => {
+        const c = el('div', 'card');
+        c.appendChild(el('div', 'name', esc(s.name || s.kind)));
+        c.appendChild(el('div', 'row',
+          `<span>operation: <b>${esc(s.operation)}</b></span>` +
+          `<span>provenance: <b>${esc(s.provenance || '')}</b></span>` +
+          `<span>source: <b>${esc(s.source)}</b></span>` +
+          (s.where_to_spot ? `<span>spot: <b>${esc(s.where_to_spot)}</b></span>` : '')));
+        sec.appendChild(c);
+      });
+    }
+
+    function renderMisconceptions(list) {
+      const sec = document.getElementById('misconceptions');
+      sec.appendChild(el('h2', null, `Anticipated misconceptions (${(list || []).length})`));
+      (list || []).forEach(m => {
+        const c = el('div', 'card card-raised');
+        c.appendChild(el('div', 'name', esc(m.name)));
+        c.appendChild(el('div', 'row',
+          `<span>operation: <b>${esc(m.operation)}</b></span>` +
+          `<span>provenance: <b>${esc(m.provenance || '')}</b></span>` +
+          (m.commitment_made ? `<span>commits: <code>${esc(m.commitment_made)}</code></span>` : '')));
+        const inc = el('div', 'incompat-line');
+        if (m.incompatibility) {
+          inc.innerHTML =
+            `<span class="tag derived">derived incompatibility</span> ` +
+            `<code>${esc(m.incompatibility)}</code>`;
+        } else {
+          inc.innerHTML = `<span class="note">no registered incompatibility (commitment-entitlement gap)</span>`;
+        }
+        c.appendChild(inc);
+        if (m.re_anchoring_move) c.appendChild(el('div', 'row', `<span>re-anchor: <b>${esc(m.re_anchoring_move)}</b></span>`));
+        if (m.citation) c.appendChild(el('div', 'cite', esc(m.citation)));
+        sec.appendChild(c);
+      });
+    }
+
+    function renderPml(list) {
+      const facts = dedupeFacts(list || []);
+      const sec = document.getElementById('pml');
+      sec.appendChild(el('h2', null, `PML facts — modal posture of the lesson text (${facts.length})`));
+      facts.forEach(f => {
+        const c = el('div', 'card');
+        const pol = String(f.polarity || '');
+        const tagCls = pol.startsWith('comp') ? 'comp' : (pol.startsWith('exp') ? 'exp' : '');
+        c.appendChild(el('div', 'name',
+          `${esc(f.id)} <span class="tag ${tagCls}">${esc(pol)}</span>`));
+        if (f.conclusion) c.appendChild(el('div', 'row', `<span>${esc(f.conclusion)}</span>`));
+        sec.appendChild(c);
+      });
+    }
+
+    function renderChart(d) {
+      ['power', 'core', 'strategies', 'misconceptions', 'pml'].forEach(id => {
+        document.getElementById(id).innerHTML = '';
+      });
+      document.getElementById('lesson-line').textContent =
+        'Lesson ' + (d.lesson_code || '(unknown)');
+      renderPower(d.expressive_power);
+      renderCore(d.productive_core);
+      renderStrategies(d.anticipated_strategies);
+      renderMisconceptions(d.teacher_misconceptions);
+      renderPml(d.pml_facts);
+    }
+
+    // Ask the live Hermes worker for a fresh chart. The route returns
+    // {ok:true, result:{...}}; the saved snapshot is the bare chart object,
+    // so unwrap result here to keep both paths feeding renderChart the same shape.
+    function fetchLive(baseUrl, lessonCode) {
+      const url = baseUrl.replace(/\/+$/, '') + '/api/monitoring_chart_export';
+      return fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ lesson_code: lessonCode })
+      }).then(r => {
+        if (!r.ok) throw new Error('worker responded ' + r.status);
+        return r.json();
+      }).then(j => {
+        if (j && j.error) throw new Error(j.error);
+        const chart = j && j.result ? j.result : j;
+        if (!chart || typeof chart !== 'object') throw new Error('empty chart payload');
+        return chart;
+      });
+    }
+
+    function fetchSnapshot() {
+      return Spine.loadJson(SNAPSHOT_URL, { root: '' });
+    }
+
+    function setSource(html) {
+      document.getElementById('source-line').innerHTML = html;
+    }
+
+    function load() {
+      const lessonCode = (document.getElementById('lesson-input').value || '').trim();
+      const baseUrl = (document.getElementById('base-input').value || '').trim();
+      document.getElementById('lesson-line').textContent = 'Loading monitoring chart…';
+      setSource('Asking the Hermes worker at <code>' + esc(baseUrl) + '</code>…');
+      const live = (baseUrl && lessonCode)
+        ? fetchLive(baseUrl, lessonCode)
+        : Promise.reject(new Error('lesson code and Hermes URL are both required'));
+      live
+        .then(chart => {
+          renderChart(chart);
+          setSource('Live chart from the Hermes worker at <code>' + esc(baseUrl) + '</code>.');
+        })
+        .catch(liveErr => {
+          // Worker unreachable or refused — fall back to the saved snapshot.
+          return fetchSnapshot()
+            .then(d => {
+              renderChart(d);
+              setSource('Worker unreachable (' + esc(liveErr.message) +
+                '); showing the saved snapshot <code>' + esc(SNAPSHOT_URL) + '</code>.');
+            })
+            .catch(snapErr => {
+              document.getElementById('lesson-line').textContent =
+                'Could not load a monitoring chart. Worker: ' + liveErr.message +
+                '. Snapshot: ' + snapErr.message + '.';
+              setSource('');
+            });
+        });
+    }
+
+    document.getElementById('load-btn').addEventListener('click', load);
+    document.getElementById('lesson-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') load();
+    });
+    load();
+  </script>
+</body>
+</html>

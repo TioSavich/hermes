@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Dealing by Ones</title>
+<link rel="stylesheet" href="strategy_shell.css">
+</head>
+<body>
+<div class="container">
+  <p class="back"><a href="index.html">← All strategies</a></p>
+  <h1>Dealing by Ones</h1>
+  <p class="meta">Computed by <code>strategies/math/smr_div_dealing_by_ones.pl</code>. Round-robin distribute T items into N groups, one item per group at a time. The number line shows the largest group size growing as items are dealt.</p>
+
+  <div class="inputs">
+    <label>Total T: <input type="number" id="a1" value="12"></label>
+    <label>Groups N: <input type="number" id="a2" value="3"></label>
+    <button id="go">Calculate and Visualize</button>
+  </div>
+
+  <h2>Result</h2>
+  <div id="out"></div>
+
+  <h2>Number-line Diagram (largest group size growing)</h2>
+  <svg id="diagram" width="700" height="280"></svg>
+
+  <h2>Step Trace (from Prolog)</h2>
+  <ol id="steps" class="step-list"></ol>
+</div>
+<script src="strategy_viz.js"></script>
+<script>
+  wireStrategyPage({
+    strategy: 'Dealing by Ones', op: '/',
+    a1Id: 'a1', a2Id: 'a2', btnId: 'go',
+    outId: 'out', svgId: 'diagram', stepListId: 'steps'
+  });
+</script>
+</body>
+</html>

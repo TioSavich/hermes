@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" data-page-id="boundary">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boundary — Where Counting Stops</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hermes-tokens-dark.css">
+  <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="boundary"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--bg); color: var(--text); font-family: 'IBM Plex Serif', Georgia, serif; font-size: 16px; line-height: 1.7; }
+    body { max-width: 680px; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
+    .narrative { margin-top: 1.5rem; }
+    .narrative p { margin-bottom: 1.2rem; }
+    .interactive-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center;
+    }
+    .try-it {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+      color: var(--snap); cursor: pointer; background: none;
+      border: 1px solid var(--snap); padding: 0.4rem 1rem;
+      border-radius: 3px; margin: 0.25rem;
+    }
+    .try-it:hover { background: var(--snap); color: var(--bg); }
+    .interactive-label {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem;
+      color: var(--muted); margin-top: 0.5rem;
+    }
+    .closing-question {
+      margin-top: 2rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-style: italic; color: var(--muted);
+    }
+    .margin-note {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+      color: var(--muted); border-left: 2px solid var(--border);
+      padding-left: 0.75rem; margin: 1rem 0;
+    }
+    code { font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; color: var(--snap); }
+    .tally-zone {
+      display: flex; justify-content: center; align-items: flex-end;
+      gap: 0.5rem; min-height: 120px; margin: 1rem 0;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .tally-group {
+      display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+    }
+    .tally-marks {
+      font-size: 1.4rem; color: var(--muted); letter-spacing: 2px;
+      transition: color 0.5s, opacity 0.5s;
+    }
+    .tally-marks.confused { color: var(--tension); }
+    .tally-marks.grouped { color: var(--snap); }
+    .tally-label {
+      font-size: 0.7rem; color: var(--muted);
+    }
+    .question-mark {
+      font-size: 3rem; color: var(--tension); opacity: 0;
+      transition: opacity 0.8s; margin: 0.5rem 0;
+    }
+    .question-mark.visible { opacity: 1; }
+    .hint-zone {
+      margin-top: 1.5rem; padding-top: 1rem;
+      border-top: 1px dashed var(--border);
+      opacity: 0; transition: opacity 0.8s;
+    }
+    .hint-zone.visible { opacity: 1; }
+    .base-group {
+      display: inline-flex; gap: 2px; padding: 0.3rem 0.5rem;
+      border: 1px solid var(--snap); border-radius: 3px;
+      margin: 0.2rem;
+    }
+    .status-text {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+      color: var(--muted); min-height: 1.5rem; margin: 0.5rem 0;
+      transition: color 0.3s;
+    }
+  </style>
+</head>
+<body data-hshell-doc="1">
+
+<div class="narrative">
+
+  <!-- === FRESHMAN === -->
+  <div data-discourse="freshman">
+    <p class="story-recap"><em>Previously: You watched the Prolog system's crisis drive the catastrophe geometry.</em></p>
+    <p>Whole-number counting works through the crisis cycle. Seven plus five.
+       Thirty-eight plus fifty-five. Ninety-nine plus ninety-nine. The counting
+       PDA handles all of these — expensively, but correctly.</p>
+
+    <p>What about one-third?</p>
+
+    <p>This page used to say "the system cannot represent fractions." That was
+       honest at the time. It is now out of date. The registry holds an
+       <em>area-model</em> automaton for fraction multiplication: take one part
+       of a part, the way you'd shade a sixth of a rectangle by shading half
+       of a third. The registry also holds two cross-multiplication rules
+       that produce the same numeric answer — one with a justification
+       (the area model) and one without (a procedure remembered from
+       schooling). Same answer, different inferential standing.</p>
+
+    <p>What does not yet work is the negotiation. The crisis cycle that
+       drives the catastrophe machine still runs on whole-number counting.
+       It cannot yet take a fraction outcome and treat it as something the
+       learner has lived through enough to remember. The action is there;
+       the acquisition is not.</p>
+
+    <div class="interactive-box">
+      <p>Where the metaphor breaks</p>
+      <div class="tally-zone" id="tally-zone">
+        <div class="tally-group">
+          <div class="tally-marks" id="tallies-main">| | |</div>
+          <div class="tally-label">three ones</div>
+        </div>
+      </div>
+      <div class="question-mark" id="question-mark">?</div>
+      <div class="status-text" id="status">"Arithmetic is object collection" — works for adding apples, breaks at 1/3.</div>
+      <button class="try-it" id="try-btn" onclick="tryFraction()">Probe the break</button>
+      <div class="hint-zone" id="hint-zone">
+        <p style="font-size: 0.9rem; color: var(--muted);">The repair: switch to the area-model metaphor. A rectangle, partitioned and re-partitioned.</p>
+        <div class="tally-zone">
+          <div class="tally-group">
+            <div class="base-group">
+              <span class="tally-marks grouped">|</span>
+              <span class="tally-marks grouped">|</span>
+              <span class="tally-marks grouped">|</span>
+            </div>
+            <div class="tally-label">a whole, partitioned in three</div>
+          </div>
+          <div class="tally-group" style="margin-left: 1rem;">
+            <div class="tally-marks grouped" style="font-size: 1.8rem;">|</div>
+            <div class="tally-label">one part of that partition</div>
+          </div>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--snap); margin-top: 0.5rem;">
+          The Prolog registry exposes this as a queryable feature:
+          <code>metaphor_breaks_at/3</code> names the break-points, and
+          <code>metaphor_repair/4</code> names the moves that cover them.
+        </p>
+      </div>
+      <p class="interactive-label">Breaks are features the registry queries.</p>
+    </div>
+
+    <p>The word "not yet" still matters, but in a more precise place than
+       before. It used to mark the whole topic. Now it marks the wiring
+       between fraction actions and the crisis cycle — and the harder
+       open problem of metamorphic accommodation, where a strategy would
+       have to call other strategies that modify themselves.</p>
+  </div>
+
+  <!-- === MATH ED === -->
+  <div data-discourse="mathEd">
+    <p>The current account distinguishes <em>action-level</em> fraction work from
+       <em>ORR-cycle-level</em> fraction acquisition. At the action level, the
+       registry holds <code>fraction:area_model_part_of_part</code> — a productive
+       action automaton for fraction multiplication via the part-of-part area
+       model. Alongside it sits a paired productive/deformation rule for
+       cross-multiplication: <code>cross_multiplication_rule_from_pattern</code>
+       carries an area-model justification in its trace;
+       <code>cross_multiplication_rule_without_ground</code> produces the same
+       numeric answer with no justification. This is Van de Walle's "rules without
+       reason" distinction, made structural rather than rhetorical.</p>
+
+    <p>At the ORR-cycle level, things are still open. The meta-interpreter does
+       not yet route fraction outcomes through Observe/React/Reorganize as
+       recollection-compatible values, so a fraction action does not yet drive
+       the crisis dynamics. Hackenberg's (2010) three-level unit coordination
+       (the unit fraction, the composite, the referent whole) is named in the
+       research literature but not yet a general ORR-negotiable scheme in the
+       code. The earlier framing — that <code>fraction/2</code> is
+       structurally incompatible with <code>recollection/1</code> — was honest at
+       the time and still describes one piece of what is open: it points to the
+       wiring the meta-interpreter does not yet do, not to a representational
+       impossibility.</p>
+
+    <div class="margin-note">
+      Hackenberg, A. J. (2010). Students' reasoning with reversible multiplicative
+      relationships. <em>Cognition and Instruction, 28</em>(4), 383-432. Also:
+      Hackenberg (2007), <em>JMB, 26</em>(1), 27-47. Three levels of units
+      coordination: (1) the unit fraction (e.g., 1/11), (2) the composite unit
+      (e.g., 12/11 as twelve iterations of the unit fraction), (3) the referent
+      whole (e.g., 11/11 that defines the size of the unit fraction). Hackenberg's
+      key finding: construction of improper fractions requires having
+      <em>interiorized</em> three levels of units &mdash; splitting alone is not
+      sufficient.
+    </div>
+
+    <div class="margin-note">
+      Steffe, L. P., &amp; Olive, J. (2010). <em>Children's Fractional
+      Knowledge.</em> Springer. The <strong>reorganization hypothesis</strong>:
+      children construct fractional knowledge through reorganization of their
+      existing number sequences, not by learning a new kind of number from
+      scratch. Olive (1999) documents how the explicitly nested number sequence
+      (ENS) gets reorganized into a connected number sequence (CNS) when applied
+      to continuous quantities. The CNS is the bridge between counting and fractions.
+    </div>
+
+    <div class="margin-note">
+      Vamvakoussi, X., &amp; Vosniadou, S. (2004). Understanding the structure of
+      the set of rational numbers: A conceptual change approach. <em>Learning and
+      Instruction, 14</em>(5), 453-467. The framework theory approach describes
+      fraction learning as a "slow, gradual process" constrained by the
+      presupposition of discreteness. Children generate <strong>synthetic
+      concepts</strong> &mdash; intermediate states bridging whole-number and
+      rational-number perspectives. These misconceptions are not failures but
+      visible traces of the reorganization process.
+    </div>
+
+    <div class="interactive-box">
+      <p>Two registers: action level (works) and ORR-cycle level (open)</p>
+      <div class="tally-zone" id="tally-zone">
+        <div class="tally-group">
+          <div class="tally-marks" id="tallies-main">| | |</div>
+          <div class="tally-label">three ones — two levels coordinated</div>
+        </div>
+      </div>
+      <div class="question-mark" id="question-mark">?</div>
+      <div class="status-text" id="status">Action automaton: area_model_part_of_part — registered and productive</div>
+      <button class="try-it" id="try-btn" onclick="tryFraction()">Inspect the action / ORR boundary</button>
+      <div class="hint-zone" id="hint-zone">
+        <p style="font-size: 0.9rem; color: var(--muted);">Three levels of units (Hackenberg): unit fraction, composite, referent whole</p>
+        <div class="tally-zone">
+          <div class="tally-group">
+            <div class="base-group">
+              <span class="tally-marks grouped">|</span>
+              <span class="tally-marks grouped">|</span>
+              <span class="tally-marks grouped">|</span>
+            </div>
+            <div class="tally-label">Level 3: the whole (3 parts)</div>
+          </div>
+          <div class="tally-group" style="margin-left: 1rem;">
+            <div class="tally-marks grouped" style="font-size: 1.8rem;">|</div>
+            <div class="tally-label">Level 2: one part (1/3)</div>
+          </div>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--snap); margin-top: 0.5rem;">
+          Steffe's reorganization hypothesis: fractions build on whole-number
+          schemes through iterative partitioning. The current code registers the
+          action; the ORR cycle does not yet negotiate the acquisition. That is
+          where the work continues.
+        </p>
+      </div>
+      <p class="interactive-label">The boundary is not "cannot represent" — it is "action level works, ORR negotiation is open."</p>
+    </div>
+
+    <div class="margin-note">
+      Steffe, L. P. (2002). A new hypothesis concerning children's fractional knowledge.
+      <em>Journal of Mathematical Behavior, 20</em>(3), 267-307. Fractions are not a
+      separate domain — they emerge from the coordination of whole-number operations,
+      specifically through recursive partitioning and iterating.
+    </div>
+
+    <p>Steffe's learning trajectory suggests continuity — fractions build
+       on whole-number schemes through iterative partitioning. The current
+       code matches that continuity at the action level (the area-model
+       automaton invokes whole-number partitioning underneath) and leaves
+       the developmental wiring through the ORR cycle as the next concrete
+       piece of work, rather than as an in-principle limit.</p>
+  </div>
+
+  <!-- === PHILOSOPHER === -->
+  <div data-discourse="philosophy">
+    <p>The Chomsky-hierarchy framing still applies, but to a more precise
+       claim than before. Flat action automata — the counting PDA, the COBO
+       decomposer, the RMB compensator, and now the fraction-multiplication
+       area-model automaton and the cross-multiplication rule pair — operate
+       at the regular and context-free tiers. What such a machine can do at
+       the action level is one thing. What the synthesis path can compose
+       <em>recursively</em>, so that a strategy modifies its own transition
+       table to acquire a new kind of unit, is another. The first is in the
+       registry. The second is the open problem.</p>
+
+    <div class="interactive-box">
+      <p>What flat action automata can and cannot synthesise</p>
+      <div class="tally-zone" id="tally-zone">
+        <div class="tally-group">
+          <div class="tally-marks" id="tallies-main">| | |</div>
+          <div class="tally-label">action level: registered</div>
+        </div>
+      </div>
+      <div class="question-mark" id="question-mark">?</div>
+      <div class="status-text" id="status">Synthesis path: metamorphic accommodation is not implemented</div>
+      <button class="try-it" id="try-btn" onclick="tryFraction()">Inspect the synthesis gap</button>
+      <div class="hint-zone" id="hint-zone">
+        <p style="font-size: 0.9rem; color: var(--muted);">The MUA layer carries LX-relations that distinguish "rule from pattern" (with area-model justification) from "rule without ground" (procedurally correct, inferentially hollow).</p>
+        <div class="tally-zone">
+          <div class="tally-group">
+            <div class="base-group">
+              <span class="tally-marks grouped">|</span>
+              <span class="tally-marks grouped">|</span>
+              <span class="tally-marks grouped">|</span>
+            </div>
+            <div class="tally-label">productive: rule_from_pattern</div>
+          </div>
+          <div class="tally-group" style="margin-left: 1rem;">
+            <div class="tally-marks grouped" style="font-size: 1.8rem;">|</div>
+            <div class="tally-label">deformation: rule_without_ground</div>
+          </div>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--snap); margin-top: 0.5rem;">
+          The deontic scorekeeper marks the deformation
+          <code>commitment_without_entitlement(area_model_justification_missing)</code>:
+          same numeric answer, different inferential standing.
+        </p>
+      </div>
+      <p class="interactive-label">The registry exposes breaks and repairs as queryable features.</p>
+    </div>
+
+    <div class="margin-note">
+      Negarestani, R. (2018). <em>Intelligence and Spirit.</em> Urbanomic/Sequence
+      Press. The Chomsky hierarchy is not just a classification of formal
+      languages &mdash; it is a ladder of computational capacities. Each rung
+      requires resources the one below cannot provide. The "picturing regress"
+      is exactly what happens when the system tries to handle fractions with flat
+      automata: each new denominator demands a new mapping, and resources run out.
+    </div>
+
+    <div class="margin-note">
+      The continuity argument (Steffe/Olive, Siegler, Boyce &amp; Norton): three
+      converging lines of research support that fractions emerge from whole-number
+      crisis through reorganization, not categorical leap. Boyce &amp; Norton
+      (2016, <em>JMB</em>) confirm that the number of levels of units coordination
+      students achieve in whole-number contexts predicts their fraction scheme
+      construction. The transition is real but continuous: the learner's counting
+      scheme cannot partition the unit, and it needs to reorganize so it can.
+    </div>
+
+    <div class="margin-note">
+      The "automaton IS the denominator" framing: a counting PDA parameterized by
+      base-7 would treat 1/7 as its first tick, 3/7 as three ticks. The automaton
+      itself <em>is</em> the denominator, understood as a recollected process.
+      Common denominators then require synthesizing a meta-automaton that subsumes
+      both base-7 and base-5 counting &mdash; the LCM as dialectical synthesis.
+      Whether this is tractable as FSM synthesis or requires genuinely recursive
+      strategy composition is the open question (FRACTION_CRISIS_ASSESSMENT.md, Gap 3).
+    </div>
+
+    <p>Three open pieces, each more specific than the earlier framing:</p>
+
+    <p><strong>Variable base, at the synthesis layer.</strong> The counting PDA
+       is hardcoded for base-10, and a fraction action like the area model
+       carries denominator information explicitly in its trace rather than in
+       the transition table. The open question is whether base can become a
+       parameter that flat-FSM synthesis can vary — or whether varying it
+       requires the recursive composition that flat synthesis cannot do.</p>
+
+    <p><strong>ORR-cycle wiring for fraction outcomes.</strong> The
+       meta-interpreter does not yet route fraction outcomes through the crisis
+       cycle as recollection-compatible values. This is not a representational
+       limit on the action automata; it is a missing piece of the
+       Observe/React/Reorganize loop. It is a concrete piece of work.</p>
+
+    <p><strong>Metamorphic accommodation.</strong> The harder open problem
+       (Norton/Steffe): a strategy that calls other strategies that modify
+       themselves, the way a child reorganises a counting scheme into a
+       partitioning scheme. Flat-FSM synthesis cannot do this. Whether the
+       MUA-relations layer plus the deontic scorekeeper provide enough
+       scaffolding for a different kind of synthesis is an open research
+       question, not a settled limit.</p>
+
+    <p>The honesty of the page is not "the formalism stops here." It is
+       "here is what the formalism does at the action level
+       (<code>fraction:area_model_part_of_part</code>, the productive /
+       deformation pair, the deontic <code>commitment_without_entitlement</code>
+       trace), and here is what it does not yet do at the ORR-cycle level
+       (route fraction outcomes through crisis-and-recovery, synthesise
+       metamorphic accommodation)." The breaks the registry exposes via
+       <code>metaphor_breaks_at/3</code> and <code>metaphor_repair/4</code>
+       are features queryable from outside the system, not embarrassments
+       to hide.</p>
+  </div>
+
+  <p class="closing-question">
+    If the matrix builds space from time, and fractions need space...
+    what does the matrix know?
+  </p>
+</div>
+
+<script>
+let fractionState = 0;
+
+function tryFraction() {
+  const tallies = document.getElementById('tallies-main');
+  const question = document.getElementById('question-mark');
+  const status = document.getElementById('status');
+  const hint = document.getElementById('hint-zone');
+  const btn = document.getElementById('try-btn');
+
+  if (fractionState === 0) {
+    // Phase 1: tallies try to subdivide, fail
+    tallies.classList.add('confused');
+    tallies.textContent = '| | |';
+
+    let flicker = 0;
+    const flickerInterval = setInterval(() => {
+      flicker++;
+      if (flicker % 2 === 0) {
+        tallies.textContent = '| . | . | . |';
+      } else {
+        tallies.textContent = '|  ?  |  ?  |';
+      }
+      if (flicker >= 6) {
+        clearInterval(flickerInterval);
+        tallies.textContent = '| | |';
+        question.classList.add('visible');
+
+        const level = (typeof Discourse !== 'undefined') ? Discourse.current() : 'freshman';
+        if (level === 'philosophy') {
+          status.textContent = 'Action level: registered. Synthesis path: metamorphic accommodation is not implemented.';
+        } else if (level === 'mathEd') {
+          status.textContent = 'Action level works; ORR-cycle wiring for fraction outcomes is open.';
+        } else {
+          status.textContent = 'The metaphor stretches and tears. The registry names where, and the move that covers it.';
+        }
+        status.style.color = 'var(--tension)';
+
+        btn.textContent = 'Show the repair';
+        fractionState = 1;
+      }
+    }, 300);
+
+  } else if (fractionState === 1) {
+    // Phase 2: show the hint — variable base
+    hint.classList.add('visible');
+    question.classList.remove('visible');
+    tallies.classList.remove('confused');
+    tallies.classList.add('grouped');
+    tallies.textContent = '| | |';
+    status.textContent = 'Switch metaphors. The area model carries the part-of-part as a productive action, with a justification in its trace.';
+    status.style.color = 'var(--snap)';
+    btn.style.display = 'none';
+    fractionState = 2;
+  }
+}
+
+// Reset on discourse change
+window.addEventListener('discourse-change', () => {
+  fractionState = 0;
+  const tallies = document.getElementById('tallies-main');
+  const question = document.getElementById('question-mark');
+  const status = document.getElementById('status');
+  const hint = document.getElementById('hint-zone');
+  const btn = document.getElementById('try-btn');
+
+  if (tallies) {
+    tallies.classList.remove('confused', 'grouped');
+    tallies.textContent = '| | |';
+  }
+  if (question) question.classList.remove('visible');
+  if (hint) hint.classList.remove('visible');
+  if (btn) {
+    btn.style.display = '';
+    const level = (typeof Discourse !== 'undefined') ? Discourse.current() : 'freshman';
+    if (level === 'philosophy') {
+      btn.textContent = 'Inspect the synthesis gap';
+    } else if (level === 'mathEd') {
+      btn.textContent = 'Inspect the action / ORR boundary';
+    } else {
+      btn.textContent = 'Probe the break';
+    }
+  }
+  if (status) {
+    const level = (typeof Discourse !== 'undefined') ? Discourse.current() : 'freshman';
+    if (level === 'philosophy') {
+      status.textContent = 'Synthesis path: metamorphic accommodation is not implemented';
+    } else if (level === 'mathEd') {
+      status.textContent = 'Action automaton: area_model_part_of_part — registered and productive';
+    } else {
+      status.textContent = '"Arithmetic is object collection" — works for adding apples, breaks at 1/3.';
+    }
+    status.style.color = 'var(--muted)';
+  }
+});
+</script>
+<script src="shared.js"></script>
+</body>
+</html>

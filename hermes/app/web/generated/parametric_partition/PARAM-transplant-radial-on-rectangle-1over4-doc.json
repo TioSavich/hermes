@@ -1,0 +1,144 @@
+{
+  "canvas": {
+    "height": 420,
+    "width": 760
+  },
+  "denominator": 4,
+  "family": "transplant_deformation",
+  "foreignPrimitive": "circle_radial_partition",
+  "foreignRule": "radial",
+  "frames": [
+    {
+      "caption": "Choose a rectangle as the host.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "h": 190,
+            "kind": "host-rect",
+            "label": "one whole",
+            "role": "whole",
+            "w": 300,
+            "x": 110,
+            "y": 86
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 1,
+      "verb": "establish_whole(rectangle)"
+    },
+    {
+      "caption": "The radial partition rule is licensed inside the circle's own vocabulary.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "cx": 260,
+            "cy": 181,
+            "kind": "host-circle",
+            "label": "one whole",
+            "r": 94,
+            "role": "whole"
+          },
+          {
+            "cx": 260,
+            "cy": 181,
+            "host": "circle",
+            "kind": "radial-partition",
+            "label": "",
+            "r": 94,
+            "role": "iterated",
+            "segments": 4
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 2,
+      "verb": "licensed_home(radial,circle)"
+    },
+    {
+      "caption": "Transplant the radial partition rule onto the rectangle, cut into 4: the pieces are unequal.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "h": 190,
+            "kind": "host-rect",
+            "label": "one whole",
+            "role": "whole",
+            "w": 300,
+            "x": 110,
+            "y": 86
+          },
+          {
+            "cx": 260,
+            "cy": 181,
+            "host": "rectangle",
+            "hostH": 190,
+            "hostW": 300,
+            "hostX": 110,
+            "hostY": 86,
+            "kind": "radial-partition",
+            "label": "",
+            "r": 110,
+            "role": "deformation",
+            "segments": 4
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 3,
+      "verb": "apply_foreign_partition(radial,rectangle,4)"
+    },
+    {
+      "caption": "Hybridized model of 1/4: a foreign partition rule on an illicit host.",
+      "scene": {
+        "format": "hybridization-model",
+        "primitives": [
+          {
+            "h": 190,
+            "kind": "host-rect",
+            "label": "one whole",
+            "role": "whole",
+            "w": 300,
+            "x": 110,
+            "y": 86
+          },
+          {
+            "cx": 260,
+            "cy": 181,
+            "host": "rectangle",
+            "hostH": 190,
+            "hostW": 300,
+            "hostX": 110,
+            "hostY": 86,
+            "kind": "radial-partition",
+            "label": "",
+            "r": 110,
+            "role": "deformation",
+            "segments": 4
+          }
+        ],
+        "version": 1
+      },
+      "sceneChanged": true,
+      "step": 4,
+      "verb": "hybrid_result(transplant(radial,rectangle),4)"
+    }
+  ],
+  "host": "rectangle",
+  "illicitHost": "rectangle_area_model",
+  "kind": "transplant_radial_on_rectangle_1_over_4",
+  "licensedHome": "circle_region",
+  "mode": "misconception",
+  "request": {
+    "spec": "transplant_radial_on_rectangle_1_over_4"
+  },
+  "result": "misconception",
+  "tuple": "hybridization(circle_radial_partition, circle_region, rectangle_area_model) at unit_fraction(1,4)",
+  "violation": "object_language_binding_violation"
+}

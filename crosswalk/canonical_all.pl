@@ -1,0 +1,113 @@
+/** <module> canonical_all — loads + re-exports every canonical vocabulary query.
+ *
+ *  Auto-generated loader (parsed from each module's real export list).
+ *  Re-exports every *_unified / registry predicate; canonical_concept/2 and
+ *  vocabulary_source/2 stay module-local (query them module-qualified).
+ */
+:- module(canonical_all,
+          [ contract/3,        % contract(?Canonical, ?Module, ?LegacyFunctors)
+            legal_term/1,      % legal_term(?CanonicalName)  — a legal canonical vocabulary term
+            legacy_term/2      % legacy_term(?LegacyFunctor, ?Canonical)
+          ]).
+
+:- reexport(crosswalk(canonical_vocabulary), [incompatible/3, incoherent/2]).
+:- reexport(crosswalk('families/cw_accommodation'), [accommodation_unified/2]).
+:- reexport(crosswalk('families/cw_action_cluster'), [action_cluster_unified/4]).
+:- reexport(crosswalk('families/cw_algebra_claim'), [algebra_claim_unified/3]).
+:- reexport(crosswalk('families/cw_arithmetic_property_claim'), [arithmetic_property_unified/3]).
+:- reexport(crosswalk('families/cw_axiom_pack'), [axiom_pack_unified/2, axiom_pack_control/4]).
+:- reexport(crosswalk('families/cw_calculus_claim'), [calculus_claim_unified/3]).
+:- reexport(crosswalk('families/cw_counting_claim'), [counting_claim_unified/3]).
+:- reexport(crosswalk('families/cw_decimal_claim'), [decimal_claim_unified/3]).
+:- reexport(crosswalk('families/cw_deontic_incoherence'), [deontic_incoherence_unified/3]).
+:- reexport(crosswalk('families/cw_domain_context'), [domain_context_unified/3]).
+:- reexport(crosswalk('families/cw_executable_practice'), [executable_practice_unified/4]).
+:- reexport(crosswalk('families/cw_fraction_claim'), [fraction_claim_unified/3]).
+:- reexport(crosswalk('families/cw_fraction_extra_claim'), [fraction_extra_claim_unified/3]).
+:- reexport(crosswalk('families/cw_fsm_engine'), [fsm_engine_unified/2]).
+:- reexport(crosswalk('families/cw_godel_primes'), [godel_primes_unified/3]).
+:- reexport(crosswalk('families/cw_grounded_arith'), [grounded_arith_unified/4]).
+:- reexport(crosswalk('families/cw_grounding_metaphor'), [grounding_metaphor_unified/3]).
+:- reexport(crosswalk('families/cw_integer_signed_claim'), [integer_signed_claim_unified/3]).
+:- reexport(crosswalk('families/cw_magnitude_equivalence_claim'), [magnitude_equivalence_claim_unified/3]).
+:- reexport(crosswalk('families/cw_material_inference'), [material_inference_unified/4]).
+:- reexport(crosswalk('families/cw_metaphor_break'), [metaphor_break_unified/4]).
+:- reexport(crosswalk('families/cw_misconception_hook'), [misconception_hook_unified/5]).
+:- reexport(crosswalk('families/cw_modal_context'), [modal_context_unified/3]).
+:- reexport(crosswalk('families/cw_mua_coherence'), [mua_coherence_unified/4]).
+:- reexport(crosswalk('families/cw_multiplication_division_claim'), [multiplication_division_claim_unified/3]).
+:- reexport(crosswalk('families/cw_normative_crisis'), [normative_crisis_unified/3, normative_crisis_variant/2]).
+:- reexport(crosswalk('families/cw_orr_entry'), [orr_entry_unified/4]).
+% cw_place_value_number_claim exports whole_number_claim_unified/3 (same name as
+% cw_whole_number_claim). Reexported here under an alias to avoid an import clash;
+% the canonical surface (legal_term/legacy_term) reaches it module-qualified via
+% the crosswalk_module(cw_place_value_number_claim) fact below regardless of name.
+:- reexport(crosswalk('families/cw_place_value_number_claim'),
+            [whole_number_claim_unified/3 as place_value_number_claim_unified]).
+:- reexport(crosswalk('families/cw_practice_vocabulary'), [practice_vocabulary_unified/3]).
+:- reexport(crosswalk('families/cw_productive_deformation'), [productive_deformation_unified/5]).
+:- reexport(crosswalk('families/cw_ratio_proportion_claim'), [ratio_proportion_claim_unified/3]).
+:- reexport(crosswalk('families/cw_sequent_proof'), [sequent_proof_unified/2]).
+:- reexport(crosswalk('families/cw_strategy_action_kind'), [strategy_action_kind_unified/3]).
+:- reexport(crosswalk('families/cw_stress_map'), [stress_map_unified/3]).
+:- reexport(crosswalk('families/cw_unit_coordination'), [unit_coordination_unified/3]).
+:- reexport(crosswalk('families/cw_viability'), [viability_unified/3]).
+:- reexport(crosswalk('families/cw_whole_number_addsub_claim'), [whole_number_addsub_claim_unified/3]).
+:- reexport(crosswalk('families/cw_whole_number_claim'), [whole_number_claim_unified/3]).
+
+% --- Contract aggregator (the legal-vocabulary surface for the neuro-symbolic loop) ---
+% Each family module keeps vocabulary_source/2 module-local; we range over them.
+
+crosswalk_module(canonical_vocabulary).
+crosswalk_module(cw_accommodation).
+crosswalk_module(cw_action_cluster).
+crosswalk_module(cw_algebra_claim).
+crosswalk_module(cw_arithmetic_property_claim).
+crosswalk_module(cw_axiom_pack).
+crosswalk_module(cw_calculus_claim).
+crosswalk_module(cw_counting_claim).
+crosswalk_module(cw_decimal_claim).
+crosswalk_module(cw_deontic_incoherence).
+crosswalk_module(cw_domain_context).
+crosswalk_module(cw_executable_practice).
+crosswalk_module(cw_fraction_claim).
+crosswalk_module(cw_fraction_extra_claim).
+crosswalk_module(cw_fsm_engine).
+crosswalk_module(cw_godel_primes).
+crosswalk_module(cw_grounded_arith).
+crosswalk_module(cw_grounding_metaphor).
+crosswalk_module(cw_integer_signed_claim).
+crosswalk_module(cw_magnitude_equivalence_claim).
+crosswalk_module(cw_material_inference).
+crosswalk_module(cw_metaphor_break).
+crosswalk_module(cw_misconception_hook).
+crosswalk_module(cw_modal_context).
+crosswalk_module(cw_mua_coherence).
+crosswalk_module(cw_multiplication_division_claim).
+crosswalk_module(cw_normative_crisis).
+crosswalk_module(cw_orr_entry).
+crosswalk_module(cw_place_value_number_claim).
+crosswalk_module(cw_practice_vocabulary).
+crosswalk_module(cw_productive_deformation).
+crosswalk_module(cw_ratio_proportion_claim).
+crosswalk_module(cw_sequent_proof).
+crosswalk_module(cw_strategy_action_kind).
+crosswalk_module(cw_stress_map).
+crosswalk_module(cw_unit_coordination).
+crosswalk_module(cw_viability).
+crosswalk_module(cw_whole_number_addsub_claim).
+crosswalk_module(cw_whole_number_claim).
+
+%! contract(?Canonical, ?Module, ?LegacyFunctors) is nondet.
+contract(Canonical, Module, Legacy) :-
+    crosswalk_module(Module),
+    catch(Module:vocabulary_source(Canonical, Legacy), _, fail).
+
+%! legal_term(?Canonical) is nondet.  True when Canonical is a canonical vocabulary term.
+legal_term(Canonical) :- contract(Canonical, _, _).
+
+%! legacy_term(?Legacy, ?Canonical) is nondet.  Maps a scattered legacy functor to its canonical term.
+legacy_term(Legacy, Canonical) :-
+    contract(Canonical, _, Legacies),
+    member(Legacy, Legacies).
+

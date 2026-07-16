@@ -1,0 +1,1840 @@
+{
+  "kind": "notation_lesson_charts",
+  "host_note": "The IM Kindergarten / Grade-1 corpus has no number-writing lessons: the K/G1 lessons are counting and addition lessons, not lessons whose object is the written numeral. A notation deformation is therefore hosted on an addition lesson and rendered over a representative equation drawn from that lesson's operation. The chart is a parametric render over that equation, not a count of corpus instances of the deformation in the lesson.",
+  "lesson_count": 183,
+  "k_count": 71,
+  "g1_count": 112,
+  "skipped": [],
+  "lessons": [
+    {
+      "code": "IM-G1-U1-L1",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U1-L10",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U1-L13",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U1-L14",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U1-L2",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U1-L3",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U1-L4",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U1-L5",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U1-L6",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U1-L9",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U2-L1",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U2-L10",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U2-L11",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U2-L12",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U2-L13",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U2-L14",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U2-L15",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U2-L16",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U2-L18",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U2-L19",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U2-L2",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U2-L20",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U2-L21",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U2-L3",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U2-L4",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U2-L6",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U2-L7",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U2-L8",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U2-L9",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L1",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L11",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L12",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L13",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L15",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L16",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L17",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L18",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L19",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L2",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L20",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L21",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L22",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L23",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L24",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L25",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L26",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L27",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L3",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L4",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L6",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L7",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L8",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U3-L9",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L1",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L10",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L11",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L12",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L13",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L14",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L15",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L16",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L17",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L18",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L19",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L2",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L20",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L21",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L22",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L3",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L4",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L5",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L6",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L7",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L8",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U4-L9",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U5-L1",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U5-L10",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U5-L11",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U5-L12",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U5-L13",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U5-L14",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U5-L2",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U5-L3",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U5-L5",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U5-L6",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U5-L7",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U5-L8",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U5-L9",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U6-L10",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U6-L11",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U6-L12",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U6-L13",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U6-L16",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U6-L2",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U6-L4",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U6-L8",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U6-L9",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U7-L1",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U7-L11",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U7-L14",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U7-L15",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U7-L16",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U7-L6",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U7-L8",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U8-L1",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U8-L10",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U8-L3",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U8-L4",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U8-L5",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U8-L7",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U8-L8",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U8-L9",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U1-L12",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U1-L13",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U1-L14",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U1-L15",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U1-L16",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U1-L3",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U1-L6",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U1-L7",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U2-L1",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U2-L11",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U2-L12",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U2-L13",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U2-L19",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U2-L2",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U2-L21",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U2-L3",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U2-L4",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U2-L5",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U2-L7",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U2-L9",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U4-L1",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U4-L10",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U4-L12",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U4-L13",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U4-L14",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U4-L17",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U4-L18",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U4-L2",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U4-L3",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U4-L4",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U4-L5",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U4-L6",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U4-L8",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U5-L10",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U5-L11",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U5-L12",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U5-L13",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U5-L14",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U5-L4",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U5-L9",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U6-L1",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U6-L10",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U6-L11",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U6-L12",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U6-L2",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U6-L4",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U6-L5",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U6-L6",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U6-L7",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U6-L8",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U6-L9",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U7-L1",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U7-L10",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U7-L3",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U7-L5",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U7-L6",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U8-L10",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U8-L12",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U8-L13",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U8-L14",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U8-L16",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U8-L17",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U8-L18",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U8-L19",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U8-L2",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U8-L20",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U8-L21",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U8-L3",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U8-L4",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U8-L5",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-GK-U8-L6",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    }
+  ]
+}

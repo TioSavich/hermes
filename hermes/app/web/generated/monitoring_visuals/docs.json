@@ -1,0 +1,2096 @@
+{
+  "IM-G1-U3-L17": {
+    "lesson_code": "IM-G1-U3-L17",
+    "visuals": [
+      {
+        "expression": "6 + 8",
+        "family": "make_ten",
+        "source": "generated_from_teacher_guide_and_monitoring_chart",
+        "correct": {
+          "label": "Correct strategy",
+          "description": "Make a ten, then preserve the leftover.",
+          "request": {
+            "op": "set_grouping_render",
+            "kind": "make_ten",
+            "a": 8,
+            "b": 6
+          },
+          "doc": {
+            "canvas": {
+              "height": 360,
+              "width": 700
+            },
+            "frames": [
+              {
+                "caption": "Start with 8 in the ten-frame.",
+                "scene": {
+                  "bins": [],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 72,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 136,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 200,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 264,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 328,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 72,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 136,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 200,
+                      "y": 136
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 104,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 168,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 232,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 296,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 40,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 104,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 168,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 232,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 296,
+                      "y": 104
+                    }
+                  ],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "make_ten(8,6)"
+              },
+              {
+                "caption": "Add 2 to make ten: 8 needs 2 more, and 6 has it to give.",
+                "scene": {
+                  "bins": [],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 72,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 136,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 200,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 264,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 328,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 72,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 136,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 200,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "highlight",
+                      "tag": "filled",
+                      "x": 264,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "highlight",
+                      "tag": "filled",
+                      "x": 328,
+                      "y": 136
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 104,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 168,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 232,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 296,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 40,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 104,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 168,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 232,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 296,
+                      "y": 104
+                    }
+                  ],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "make_ten(8,6)"
+              },
+              {
+                "caption": "8 + 6 = 14: split 6 into 2 and 4, make ten, then 4 left.",
+                "scene": {
+                  "bins": [],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 72,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 136,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 200,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 264,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 328,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 72,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 136,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 200,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "highlight",
+                      "tag": "filled",
+                      "x": 264,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "highlight",
+                      "tag": "filled",
+                      "x": 328,
+                      "y": 136
+                    },
+                    {
+                      "group": 1,
+                      "r": 20,
+                      "role": "iterated",
+                      "tag": "overflow",
+                      "x": 72,
+                      "y": 200
+                    },
+                    {
+                      "group": 1,
+                      "r": 20,
+                      "role": "iterated",
+                      "tag": "overflow",
+                      "x": 136,
+                      "y": 200
+                    },
+                    {
+                      "group": 1,
+                      "r": 20,
+                      "role": "iterated",
+                      "tag": "overflow",
+                      "x": 200,
+                      "y": 200
+                    },
+                    {
+                      "group": 1,
+                      "r": 20,
+                      "role": "iterated",
+                      "tag": "overflow",
+                      "x": 264,
+                      "y": 200
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 104,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 168,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 232,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 296,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 40,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 104,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 168,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 232,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 296,
+                      "y": 104
+                    }
+                  ],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "make_ten(8,6)"
+              }
+            ],
+            "grounding": {
+              "metaphor_gloss": "Object Construction \u2014 numbers as wholes built from parts",
+              "metaphor_label": "object_construction",
+              "practice": "p_make_ten_split_leftover",
+              "primitive": "P2",
+              "role": "primary"
+            },
+            "kind": "make_ten",
+            "request": {
+              "a": 8,
+              "b": 6
+            },
+            "result": "14",
+            "teacher": {
+              "breaks_at": [
+                {
+                  "inference": "zero as an object",
+                  "reason": "Zero requires the ad-hoc Zero Object Metaphor; lack-of-object is not itself a constructible object."
+                },
+                {
+                  "inference": "zero as a number",
+                  "reason": "No source-domain referent for 'an object that is the absence of an object'; requires the ad-hoc Zero Object Metaphor."
+                },
+                {
+                  "inference": "irrational numbers",
+                  "reason": "Irrationals are not constructible by finite assembly of unit parts."
+                }
+              ],
+              "embodied": "Fit equal parts together into a whole object.",
+              "incompatibility_penumbra": "Rules out the make ten drop leftover deformation (dropped leftover after make ten): the representation will not sustain it.",
+              "repair": "Switch to Zero Object.",
+              "standard": "addition strand: make ten split leftover",
+              "witness": {
+                "channels": {
+                  "breaks_at": "present",
+                  "embodied": "present",
+                  "incompatibility_penumbra": "present",
+                  "standard": "present"
+                },
+                "kind": "teacher_layer",
+                "metaphor_id": "arithmetic_is_object_construction",
+                "practice": "p_make_ten_split_leftover",
+                "source": "teacher_layer_composition_over_existing_witnesses"
+              }
+            },
+            "tuple": "make_ten(8,6)"
+          }
+        },
+        "incorrect": {
+          "label": "Incorrect strategy",
+          "description": "Make a ten, then drop the leftover.",
+          "request": {
+            "op": "set_grouping_render",
+            "kind": "make_ten_drop_leftover",
+            "a": 8,
+            "b": 6
+          },
+          "doc": {
+            "canvas": {
+              "height": 360,
+              "width": 700
+            },
+            "frames": [
+              {
+                "caption": "Start with 8 in the ten-frame.",
+                "scene": {
+                  "bins": [],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 72,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 136,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 200,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 264,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 328,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 72,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 136,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 200,
+                      "y": 136
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 104,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 168,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 232,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 296,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 40,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 104,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 168,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 232,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 296,
+                      "y": 104
+                    }
+                  ],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "make_ten_drop_leftover(8,6)"
+              },
+              {
+                "caption": "Add 2 to make ten: 8 needs 2 more, and 6 has it to give.",
+                "scene": {
+                  "bins": [],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 72,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 136,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 200,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 264,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 328,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 72,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 136,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 200,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "highlight",
+                      "tag": "filled",
+                      "x": 264,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "highlight",
+                      "tag": "filled",
+                      "x": 328,
+                      "y": 136
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 104,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 168,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 232,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 296,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 40,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 104,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 168,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 232,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 296,
+                      "y": 104
+                    }
+                  ],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "make_ten_drop_leftover(8,6)"
+              },
+              {
+                "caption": "The ten is full, but the leftover 4 from 6 is dropped. The student keeps 10 instead of preserving the full sum 14.",
+                "scene": {
+                  "bins": [],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 72,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 136,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 200,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 264,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 328,
+                      "y": 72
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 72,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 136,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "unit",
+                      "tag": "filled",
+                      "x": 200,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "highlight",
+                      "tag": "filled",
+                      "x": 264,
+                      "y": 136
+                    },
+                    {
+                      "group": 0,
+                      "r": 20,
+                      "role": "highlight",
+                      "tag": "filled",
+                      "x": 328,
+                      "y": 136
+                    },
+                    {
+                      "group": 1,
+                      "r": 20,
+                      "role": "deformation",
+                      "tag": "overflow",
+                      "x": 72,
+                      "y": 200
+                    },
+                    {
+                      "group": 1,
+                      "r": 20,
+                      "role": "deformation",
+                      "tag": "overflow",
+                      "x": 136,
+                      "y": 200
+                    },
+                    {
+                      "group": 1,
+                      "r": 20,
+                      "role": "deformation",
+                      "tag": "overflow",
+                      "x": 200,
+                      "y": 200
+                    },
+                    {
+                      "group": 1,
+                      "r": 20,
+                      "role": "deformation",
+                      "tag": "overflow",
+                      "x": 264,
+                      "y": 200
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 104,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 168,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 232,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 296,
+                      "y": 40
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 40,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 104,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 168,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 232,
+                      "y": 104
+                    },
+                    {
+                      "h": 64,
+                      "w": 64,
+                      "x": 296,
+                      "y": 104
+                    }
+                  ],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "make_ten_drop_leftover(8,6)"
+              }
+            ],
+            "kind": "make_ten_drop_leftover",
+            "request": {
+              "a": 8,
+              "b": 6
+            },
+            "result": "10 (leftover 4 dropped; correct sum 14)",
+            "tuple": "make_ten_drop_leftover(8,6)"
+          }
+        },
+        "proof": {
+          "source": "representation_grammar_and_render_contract",
+          "correct": {
+            "status": "productive_preserves_denoted_task",
+            "request": {
+              "op": "representation_spec_check",
+              "representation": "set_grouping",
+              "kind": "make_ten",
+              "a": 8,
+              "b": 6
+            },
+            "grammar": {
+              "denoted_task": "whole_number_addition(8,6)",
+              "preserves": true,
+              "representation": "set_grouping",
+              "spec": "make_ten(8,6)"
+            },
+            "frame_count": 3,
+            "temporal": true,
+            "frame_sequence": [
+              {
+                "step": 1,
+                "verb": "make_ten(8,6)",
+                "caption": "Start with 8 in the ten-frame."
+              },
+              {
+                "step": 2,
+                "verb": "make_ten(8,6)",
+                "caption": "Add 2 to make ten: 8 needs 2 more, and 6 has it to give."
+              },
+              {
+                "step": 3,
+                "verb": "make_ten(8,6)",
+                "caption": "8 + 6 = 14: split 6 into 2 and 4, make ten, then 4 left."
+              }
+            ]
+          },
+          "incorrect": {
+            "status": "misconception_deformation",
+            "request": {
+              "op": "representation_spec_check",
+              "representation": "set_grouping",
+              "kind": "make_ten_drop_leftover",
+              "a": 8,
+              "b": 6,
+              "task": "whole_number_addition"
+            },
+            "grammar": {
+              "deformation": {
+                "correct_answer": 14,
+                "correct_task": "whole_number_addition(8,6)",
+                "misconception": "make_ten_drop_leftover",
+                "mode": "misconception",
+                "representation": "set_grouping",
+                "violation": "reason(leftover_not_preserved)",
+                "wrong_answer": 10
+              },
+              "preserves": false,
+              "representation": "set_grouping",
+              "spec": "make_ten_drop_leftover(8,6)",
+              "target_task": "whole_number_addition(8,6)"
+            },
+            "frame_count": 3,
+            "temporal": true,
+            "frame_sequence": [
+              {
+                "step": 1,
+                "verb": "make_ten_drop_leftover(8,6)",
+                "caption": "Start with 8 in the ten-frame."
+              },
+              {
+                "step": 2,
+                "verb": "make_ten_drop_leftover(8,6)",
+                "caption": "Add 2 to make ten: 8 needs 2 more, and 6 has it to give."
+              },
+              {
+                "step": 3,
+                "verb": "make_ten_drop_leftover(8,6)",
+                "caption": "The ten is full, but the leftover 4 from 6 is dropped. The student keeps 10 instead of preserving the full sum 14."
+              }
+            ]
+          },
+          "interpretive_residue": {
+            "status": "human_endorsement_required",
+            "claim": "Hermes checks representation grammar, denotation, deformation evidence, refusal, and render frames; it does not certify that this generated visual is a faithful reading of any particular student's work.",
+            "machine_certifies": [
+              "render spec denotation or named deformation evidence",
+              "representation refusal when a vocabulary cannot productively denote the task",
+              "temporal frame count and scene-contract shape"
+            ],
+            "human_must_endorse": [
+              "the fit between extracted teacher-guide numbers and the lesson activity",
+              "the projective reading from an actual student work sample to this labeled misconception"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "IM-G2-U2-L7": {
+    "lesson_code": "IM-G2-U2-L7",
+    "visuals": [
+      {
+        "expression": "62 - 43",
+        "family": "base_ten_subtraction_borrow",
+        "source": "generated_from_teacher_guide_and_monitoring_chart",
+        "correct": {
+          "label": "Correct strategy",
+          "description": "Decompose one ten and reduce the tens place.",
+          "request": {
+            "op": "base_ten_render",
+            "kind": "subtract_with_borrow",
+            "a": 62,
+            "b": 43,
+            "base": 10
+          },
+          "doc": {
+            "canvas": {
+              "height": 380,
+              "width": 720
+            },
+            "frames": [
+              {
+                "caption": "Show 62. Subtract 43 place by place.",
+                "scene": {
+                  "base": 10,
+                  "carries": [],
+                  "columns": [
+                    {
+                      "base": 10,
+                      "count": 6,
+                      "place": 1,
+                      "role": "rod"
+                    },
+                    {
+                      "base": 10,
+                      "count": 2,
+                      "place": 0,
+                      "role": "unit"
+                    }
+                  ],
+                  "format": "base-ten-columns",
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "show_minuend(62)"
+              },
+              {
+                "caption": "The ones place has 2 but needs 3; borrow one base-group from the tens place (now 12 here), then 12 - 3 = 9.",
+                "scene": {
+                  "base": 10,
+                  "carries": [
+                    {
+                      "amount": 1,
+                      "fromPlace": 1,
+                      "toPlace": 0
+                    }
+                  ],
+                  "columns": [
+                    {
+                      "base": 10,
+                      "count": 5,
+                      "place": 1,
+                      "role": "rod"
+                    },
+                    {
+                      "base": 10,
+                      "count": 9,
+                      "place": 0,
+                      "role": "unit"
+                    }
+                  ],
+                  "format": "base-ten-columns",
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "borrow_place(0)"
+              },
+              {
+                "caption": "The tens place: 5 - 4 = 1, no borrow.",
+                "scene": {
+                  "base": 10,
+                  "carries": [],
+                  "columns": [
+                    {
+                      "base": 10,
+                      "count": 1,
+                      "place": 1,
+                      "role": "rod"
+                    },
+                    {
+                      "base": 10,
+                      "count": 2,
+                      "place": 0,
+                      "role": "unit"
+                    }
+                  ],
+                  "format": "base-ten-columns",
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "borrow_place(1)"
+              },
+              {
+                "caption": "The difference is 19.",
+                "scene": {
+                  "base": 10,
+                  "carries": [],
+                  "columns": [
+                    {
+                      "base": 10,
+                      "count": 1,
+                      "place": 1,
+                      "role": "rod"
+                    },
+                    {
+                      "base": 10,
+                      "count": 9,
+                      "place": 0,
+                      "role": "unit"
+                    }
+                  ],
+                  "format": "base-ten-columns",
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 4,
+                "verb": "difference(19)"
+              }
+            ],
+            "grounding": {
+              "metaphor_gloss": "Object Construction \u2014 numbers as wholes built from parts",
+              "metaphor_label": "object_construction",
+              "practice": "p_decompose_base_for_ones",
+              "primitive": "P4",
+              "role": "primary"
+            },
+            "kind": "subtract_with_borrow",
+            "request": {
+              "a": 62,
+              "b": 43,
+              "base": 10
+            },
+            "result": "19",
+            "teacher": {
+              "breaks_at": [
+                {
+                  "inference": "zero as an object",
+                  "reason": "Zero requires the ad-hoc Zero Object Metaphor; lack-of-object is not itself a constructible object."
+                },
+                {
+                  "inference": "zero as a number",
+                  "reason": "No source-domain referent for 'an object that is the absence of an object'; requires the ad-hoc Zero Object Metaphor."
+                },
+                {
+                  "inference": "irrational numbers",
+                  "reason": "Irrationals are not constructible by finite assembly of unit parts."
+                }
+              ],
+              "embodied": "Fit equal parts together into a whole object.",
+              "incompatibility_penumbra": "Rules out the borrow without reducing bases deformation (unbalanced decomposition exchange): the representation will not sustain it.",
+              "repair": "Switch to Zero Object.",
+              "standard": "subtraction strand: decompose base for ones",
+              "witness": {
+                "channels": {
+                  "breaks_at": "present",
+                  "embodied": "present",
+                  "incompatibility_penumbra": "present",
+                  "standard": "present"
+                },
+                "kind": "teacher_layer",
+                "metaphor_id": "arithmetic_is_object_construction",
+                "practice": "p_decompose_base_for_ones",
+                "source": "teacher_layer_composition_over_existing_witnesses"
+              }
+            },
+            "tuple": "subtract_with_borrow(62,43,10)"
+          }
+        },
+        "incorrect": {
+          "label": "Incorrect strategy",
+          "description": "Add ten ones but leave the tens place unchanged.",
+          "request": {
+            "op": "base_ten_render",
+            "kind": "subtract_without_reducing_borrow",
+            "a": 62,
+            "b": 43,
+            "base": 10
+          },
+          "doc": {
+            "canvas": {
+              "height": 380,
+              "width": 720
+            },
+            "frames": [
+              {
+                "caption": "Show 62. Subtract 43 place by place.",
+                "scene": {
+                  "base": 10,
+                  "carries": [],
+                  "columns": [
+                    {
+                      "base": 10,
+                      "count": 6,
+                      "place": 1,
+                      "role": "rod"
+                    },
+                    {
+                      "base": 10,
+                      "count": 2,
+                      "place": 0,
+                      "role": "unit"
+                    }
+                  ],
+                  "format": "base-ten-columns",
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "show_minuend(62)"
+              },
+              {
+                "caption": "The ones place has 2 but needs 3; make 12 here without reducing the next place (tens). Then 12 - 3 = 9.",
+                "scene": {
+                  "base": 10,
+                  "carries": [],
+                  "columns": [
+                    {
+                      "base": 10,
+                      "count": 6,
+                      "place": 1,
+                      "role": "rod"
+                    },
+                    {
+                      "base": 10,
+                      "count": 9,
+                      "place": 0,
+                      "role": "unit"
+                    }
+                  ],
+                  "format": "base-ten-columns",
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "borrow_without_reducing_place(0)"
+              },
+              {
+                "caption": "The tens place: 6 - 4 = 2, no borrow.",
+                "scene": {
+                  "base": 10,
+                  "carries": [],
+                  "columns": [
+                    {
+                      "base": 10,
+                      "count": 2,
+                      "place": 1,
+                      "role": "rod"
+                    },
+                    {
+                      "base": 10,
+                      "count": 2,
+                      "place": 0,
+                      "role": "unit"
+                    }
+                  ],
+                  "format": "base-ten-columns",
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "borrow_without_reducing_place(1)"
+              },
+              {
+                "caption": "Borrowing without reducing the next place gives 29, not 19.",
+                "scene": {
+                  "base": 10,
+                  "carries": [],
+                  "columns": [
+                    {
+                      "base": 10,
+                      "count": 2,
+                      "place": 1,
+                      "role": "rod"
+                    },
+                    {
+                      "base": 10,
+                      "count": 9,
+                      "place": 0,
+                      "role": "unit"
+                    }
+                  ],
+                  "format": "base-ten-columns",
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 4,
+                "verb": "deformed_difference(29)"
+              }
+            ],
+            "kind": "subtract_without_reducing_borrow",
+            "request": {
+              "a": 62,
+              "b": 43,
+              "base": 10
+            },
+            "result": "29 (correct: 19)",
+            "tuple": "subtract_without_reducing_borrow(62,43,10)"
+          }
+        },
+        "proof": {
+          "source": "representation_grammar_and_render_contract",
+          "correct": {
+            "status": "productive_preserves_denoted_task",
+            "request": {
+              "op": "representation_spec_check",
+              "representation": "base_ten_blocks",
+              "kind": "subtract_with_borrow",
+              "a": 62,
+              "b": 43,
+              "base": 10
+            },
+            "grammar": {
+              "denoted_task": "whole_number_subtraction(62,43)",
+              "preserves": true,
+              "representation": "base_ten_blocks",
+              "spec": "subtract_with_borrow(62,43,10)"
+            },
+            "frame_count": 4,
+            "temporal": true,
+            "frame_sequence": [
+              {
+                "step": 1,
+                "verb": "show_minuend(62)",
+                "caption": "Show 62. Subtract 43 place by place."
+              },
+              {
+                "step": 2,
+                "verb": "borrow_place(0)",
+                "caption": "The ones place has 2 but needs 3; borrow one base-group from the tens place (now 12 here), then 12 - 3 = 9."
+              },
+              {
+                "step": 3,
+                "verb": "borrow_place(1)",
+                "caption": "The tens place: 5 - 4 = 1, no borrow."
+              },
+              {
+                "step": 4,
+                "verb": "difference(19)",
+                "caption": "The difference is 19."
+              }
+            ]
+          },
+          "incorrect": {
+            "status": "misconception_deformation",
+            "request": {
+              "op": "representation_spec_check",
+              "representation": "base_ten_blocks",
+              "kind": "subtract_without_reducing_borrow",
+              "a": 62,
+              "b": 43,
+              "base": 10,
+              "task": "whole_number_subtraction"
+            },
+            "grammar": {
+              "deformation": {
+                "correct_answer": 19,
+                "correct_task": "whole_number_subtraction(62,43)",
+                "misconception": "borrow_without_reducing_bases",
+                "mode": "misconception",
+                "representation": "base_ten_blocks",
+                "violation": "reason(next_place_not_reduced_after_borrow)",
+                "wrong_answer": 29
+              },
+              "preserves": false,
+              "representation": "base_ten_blocks",
+              "spec": "subtract_without_reducing_borrow(62,43,10)",
+              "target_task": "whole_number_subtraction(62,43)"
+            },
+            "frame_count": 4,
+            "temporal": true,
+            "frame_sequence": [
+              {
+                "step": 1,
+                "verb": "show_minuend(62)",
+                "caption": "Show 62. Subtract 43 place by place."
+              },
+              {
+                "step": 2,
+                "verb": "borrow_without_reducing_place(0)",
+                "caption": "The ones place has 2 but needs 3; make 12 here without reducing the next place (tens). Then 12 - 3 = 9."
+              },
+              {
+                "step": 3,
+                "verb": "borrow_without_reducing_place(1)",
+                "caption": "The tens place: 6 - 4 = 2, no borrow."
+              },
+              {
+                "step": 4,
+                "verb": "deformed_difference(29)",
+                "caption": "Borrowing without reducing the next place gives 29, not 19."
+              }
+            ]
+          },
+          "interpretive_residue": {
+            "status": "human_endorsement_required",
+            "claim": "Hermes checks representation grammar, denotation, deformation evidence, refusal, and render frames; it does not certify that this generated visual is a faithful reading of any particular student's work.",
+            "machine_certifies": [
+              "render spec denotation or named deformation evidence",
+              "representation refusal when a vocabulary cannot productively denote the task",
+              "temporal frame count and scene-contract shape"
+            ],
+            "human_must_endorse": [
+              "the fit between extracted teacher-guide numbers and the lesson activity",
+              "the projective reading from an actual student work sample to this labeled misconception"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "IM-G4-U4-L20": {
+    "lesson_code": "IM-G4-U4-L20",
+    "visuals": [
+      {
+        "expression": "204,500 + 695",
+        "family": "base_ten_addition_carry_refused_large_number",
+        "source": "generated_from_teacher_guide_and_monitoring_chart",
+        "status": "refused_by_representation_grammar",
+        "grammar": {
+          "candidates": [
+            {
+              "evidence": [
+                "standard(4_nbt_b_4,multi_digit_place_value_algorithm)",
+                "method(van_de_walle,scalable_magnitude_and_jump_reasoning)",
+                "grounding(blend(writing_system,place_value_grouping))",
+                "render_status(renderable(place_value_chart_render))",
+                "strategy(column_addition_with_carrying)",
+                "misconception(add_with_dropped_carry)"
+              ],
+              "render_status": "renderable(place_value_chart_render)",
+              "representation": "place_value_chart"
+            },
+            {
+              "evidence": [
+                "standard(4_nbt_b_4,large_multi_digit_addition)",
+                "method(van_de_walle,scalable_magnitude_and_jump_reasoning)",
+                "grounding(blend(measuring_stick,source_path_goal))",
+                "render_status(renderable(number_line_render))",
+                "strategy(column_addition_with_carrying)",
+                "misconception(add_with_dropped_carry)"
+              ],
+              "render_status": "renderable(number_line_render)",
+              "representation": "number_line"
+            }
+          ],
+          "grade": "grade_4",
+          "misconception": "add_with_dropped_carry",
+          "refusals": [
+            {
+              "reason": "reason(object_collection_blend_loses_physical_place_value_objects_above_thousands)",
+              "representation": "base_ten_blocks"
+            },
+            {
+              "reason": "reason(object_collection_blend_loses_physical_place_value_objects_above_thousands)",
+              "representation": "base_ten_blocks"
+            },
+            {
+              "reason": "reason(large_multi_digit_operands_exceed_physical_block_vocabulary)",
+              "representation": "base_ten_blocks"
+            },
+            {
+              "reason": "reason(no_physical_block_for_required_place_value(205195))",
+              "representation": "base_ten_blocks"
+            },
+            {
+              "reason": "reason(no_physical_block_for_required_place_value(204500))",
+              "representation": "base_ten_blocks"
+            },
+            {
+              "reason": "reason(exceeds_set_grouping_scope(205195))",
+              "representation": "set_grouping"
+            },
+            {
+              "reason": "reason(exceeds_set_grouping_scope(695))",
+              "representation": "set_grouping"
+            },
+            {
+              "reason": "reason(exceeds_set_grouping_scope(204500))",
+              "representation": "set_grouping"
+            }
+          ],
+          "standards": [
+            "4_nbt_b_4",
+            "im-g4-u4-l20"
+          ],
+          "strategy": "column_addition_with_carrying",
+          "task": "whole_number_addition(204500,695)",
+          "allowed": false,
+          "refusal": "reason(no_physical_block_for_required_place_value(204500))",
+          "alternative_search": {
+            "failed": {
+              "representation": "base_ten_blocks",
+              "reason": "reason(no_physical_block_for_required_place_value(204500))"
+            },
+            "attempts": [
+              {
+                "representation": "number_line",
+                "status": "selected",
+                "render_status": "renderable(number_line_render)",
+                "evidence": [
+                  "standard(4_nbt_b_4,large_multi_digit_addition)",
+                  "method(van_de_walle,scalable_magnitude_and_jump_reasoning)",
+                  "grounding(blend(measuring_stick,source_path_goal))",
+                  "render_status(renderable(number_line_render))",
+                  "strategy(column_addition_with_carrying)",
+                  "misconception(add_with_dropped_carry)"
+                ]
+              },
+              {
+                "representation": "fraction_bars",
+                "status": "unavailable",
+                "reason": "no lesson-licensed drawable candidate returned"
+              },
+              {
+                "representation": "place_value_chart",
+                "status": "available",
+                "render_status": "renderable(place_value_chart_render)",
+                "evidence": [
+                  "standard(4_nbt_b_4,multi_digit_place_value_algorithm)",
+                  "method(van_de_walle,scalable_magnitude_and_jump_reasoning)",
+                  "grounding(blend(writing_system,place_value_grouping))",
+                  "render_status(renderable(place_value_chart_render))",
+                  "strategy(column_addition_with_carrying)",
+                  "misconception(add_with_dropped_carry)"
+                ]
+              }
+            ],
+            "selected": {
+              "representation": "number_line",
+              "status": "selected",
+              "render_status": "renderable(number_line_render)",
+              "evidence": [
+                "standard(4_nbt_b_4,large_multi_digit_addition)",
+                "method(van_de_walle,scalable_magnitude_and_jump_reasoning)",
+                "grounding(blend(measuring_stick,source_path_goal))",
+                "render_status(renderable(number_line_render))",
+                "strategy(column_addition_with_carrying)",
+                "misconception(add_with_dropped_carry)"
+              ]
+            }
+          },
+          "preferred": {
+            "representation": "number_line",
+            "reason": "alternative_representation_search"
+          }
+        },
+        "correct": {
+          "label": "Correct strategy",
+          "description": "Use a scalable number-line measure model for the large magnitude.",
+          "request": {
+            "op": "number_line_render",
+            "mode": "magnitude",
+            "operation": "addition",
+            "a": 204500,
+            "b": 695
+          },
+          "doc": {
+            "canvas": {
+              "height": 320,
+              "width": 720
+            },
+            "frames": [
+              {
+                "caption": "Start at 204,500 on a scale-broken number line.",
+                "scene": {
+                  "axis": {
+                    "max": 205195,
+                    "min": 204500,
+                    "scaleBreak": true,
+                    "ticks": [
+                      204500,
+                      205195
+                    ]
+                  },
+                  "format": "number-line",
+                  "jumps": [],
+                  "marks": [
+                    {
+                      "at": 204500,
+                      "label": "204,500"
+                    }
+                  ],
+                  "mode": "magnitude-addition",
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "locate_start"
+              },
+              {
+                "caption": "Append one jump of +695 to land at 205,195.",
+                "scene": {
+                  "axis": {
+                    "max": 205195,
+                    "min": 204500,
+                    "scaleBreak": true,
+                    "ticks": [
+                      204500,
+                      205195
+                    ]
+                  },
+                  "format": "number-line",
+                  "jumps": [
+                    {
+                      "by": 695,
+                      "from": 204500,
+                      "role": "jump-add",
+                      "tier": "magnitude",
+                      "to": 205195
+                    }
+                  ],
+                  "marks": [
+                    {
+                      "at": 204500,
+                      "label": "204,500"
+                    },
+                    {
+                      "at": 205195,
+                      "label": "205,195"
+                    }
+                  ],
+                  "mode": "magnitude-addition",
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "append_addend"
+              },
+              {
+                "caption": "204,500 + 695 = 205,195.",
+                "scene": {
+                  "axis": {
+                    "max": 205195,
+                    "min": 204500,
+                    "scaleBreak": true,
+                    "ticks": [
+                      204500,
+                      205195
+                    ]
+                  },
+                  "format": "number-line",
+                  "jumps": [
+                    {
+                      "by": 695,
+                      "from": 204500,
+                      "role": "jump-add",
+                      "tier": "magnitude",
+                      "to": 205195
+                    }
+                  ],
+                  "marks": [
+                    {
+                      "at": 204500,
+                      "label": "204,500"
+                    },
+                    {
+                      "at": 205195,
+                      "label": "205,195"
+                    }
+                  ],
+                  "mode": "magnitude-addition",
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "read_sum"
+              }
+            ],
+            "grounding": {
+              "metaphor_gloss": "Motion Along a Path \u2014 numbers as point-locations reached by moving",
+              "metaphor_label": "motion_along_path",
+              "practice": "p_count_on_from_larger",
+              "primitive": "P1",
+              "role": "primary"
+            },
+            "kind": "magnitude_addition",
+            "note": "A bounded number-line length model: the second addend is appended to the first without unrolling unit jumps.",
+            "request": {
+              "a": 204500,
+              "b": 695,
+              "op": "addition"
+            },
+            "result": "205195",
+            "teacher": {
+              "breaks_at": [
+                {
+                  "inference": "product of two negatives",
+                  "reason": "In the source domain of motion, doing something a negative number of times makes no sense; the iterated-motion grounding of multiplication cannot be extended to negative multipliers."
+                }
+              ],
+              "embodied": "Move along a path, away from or back toward a starting point.",
+              "incompatibility_penumbra": "Rules out the count all when count on available deformation: the representation will not sustain it.",
+              "repair": "Switch to Multiplication by -1 is Rotation by 180 degrees.",
+              "standard": "addition strand: count on from larger",
+              "witness": {
+                "channels": {
+                  "breaks_at": "present",
+                  "embodied": "present",
+                  "incompatibility_penumbra": "present",
+                  "standard": "present"
+                },
+                "kind": "teacher_layer",
+                "metaphor_id": "arithmetic_is_motion_along_a_path",
+                "practice": "p_count_on_from_larger",
+                "source": "teacher_layer_composition_over_existing_witnesses"
+              }
+            },
+            "tuple": "magnitude_addition(204500,695)"
+          }
+        },
+        "incorrect": {
+          "label": "Misconception visual refused",
+          "description": "Base-ten blocks stop being a productive physical vocabulary here; a collapsed-cube picture would be a labeled misconception, not a calculator answer.",
+          "request": {
+            "op": "representation_check",
+            "mode": "productive",
+            "representation": "base_ten_blocks",
+            "task": "whole_number_addition",
+            "a": 204500,
+            "b": 695
+          },
+          "doc": {
+            "error": "Representation grammar refused this base-ten picture: reason(no_physical_block_for_required_place_value(204500))",
+            "frames": []
+          }
+        },
+        "proof": {
+          "source": "representation_grammar_and_render_contract",
+          "correct": {
+            "status": "productive_preserves_denoted_task",
+            "request": {
+              "op": "representation_spec_check",
+              "representation": "number_line",
+              "mode": "magnitude",
+              "operation": "addition",
+              "a": 204500,
+              "b": 695
+            },
+            "grammar": {
+              "denoted_task": "whole_number_addition(204500,695)",
+              "preserves": true,
+              "representation": "number_line",
+              "spec": "magnitude_addition(204500,695)"
+            },
+            "frame_count": 3,
+            "temporal": true,
+            "frame_sequence": [
+              {
+                "step": 1,
+                "verb": "locate_start",
+                "caption": "Start at 204,500 on a scale-broken number line."
+              },
+              {
+                "step": 2,
+                "verb": "append_addend",
+                "caption": "Append one jump of +695 to land at 205,195."
+              },
+              {
+                "step": 3,
+                "verb": "read_sum",
+                "caption": "204,500 + 695 = 205,195."
+              }
+            ]
+          },
+          "incorrect": {
+            "status": "refused_by_representation_grammar",
+            "refusal": "reason(no_physical_block_for_required_place_value(204500))",
+            "grammar": {
+              "candidates": [
+                {
+                  "evidence": [
+                    "standard(4_nbt_b_4,multi_digit_place_value_algorithm)",
+                    "method(van_de_walle,scalable_magnitude_and_jump_reasoning)",
+                    "grounding(blend(writing_system,place_value_grouping))",
+                    "render_status(renderable(place_value_chart_render))",
+                    "strategy(column_addition_with_carrying)",
+                    "misconception(add_with_dropped_carry)"
+                  ],
+                  "render_status": "renderable(place_value_chart_render)",
+                  "representation": "place_value_chart"
+                },
+                {
+                  "evidence": [
+                    "standard(4_nbt_b_4,large_multi_digit_addition)",
+                    "method(van_de_walle,scalable_magnitude_and_jump_reasoning)",
+                    "grounding(blend(measuring_stick,source_path_goal))",
+                    "render_status(renderable(number_line_render))",
+                    "strategy(column_addition_with_carrying)",
+                    "misconception(add_with_dropped_carry)"
+                  ],
+                  "render_status": "renderable(number_line_render)",
+                  "representation": "number_line"
+                }
+              ],
+              "grade": "grade_4",
+              "misconception": "add_with_dropped_carry",
+              "refusals": [
+                {
+                  "reason": "reason(object_collection_blend_loses_physical_place_value_objects_above_thousands)",
+                  "representation": "base_ten_blocks"
+                },
+                {
+                  "reason": "reason(object_collection_blend_loses_physical_place_value_objects_above_thousands)",
+                  "representation": "base_ten_blocks"
+                },
+                {
+                  "reason": "reason(large_multi_digit_operands_exceed_physical_block_vocabulary)",
+                  "representation": "base_ten_blocks"
+                },
+                {
+                  "reason": "reason(no_physical_block_for_required_place_value(205195))",
+                  "representation": "base_ten_blocks"
+                },
+                {
+                  "reason": "reason(no_physical_block_for_required_place_value(204500))",
+                  "representation": "base_ten_blocks"
+                },
+                {
+                  "reason": "reason(exceeds_set_grouping_scope(205195))",
+                  "representation": "set_grouping"
+                },
+                {
+                  "reason": "reason(exceeds_set_grouping_scope(695))",
+                  "representation": "set_grouping"
+                },
+                {
+                  "reason": "reason(exceeds_set_grouping_scope(204500))",
+                  "representation": "set_grouping"
+                }
+              ],
+              "standards": [
+                "4_nbt_b_4",
+                "im-g4-u4-l20"
+              ],
+              "strategy": "column_addition_with_carrying",
+              "task": "whole_number_addition(204500,695)",
+              "allowed": false,
+              "refusal": "reason(no_physical_block_for_required_place_value(204500))",
+              "alternative_search": {
+                "failed": {
+                  "representation": "base_ten_blocks",
+                  "reason": "reason(no_physical_block_for_required_place_value(204500))"
+                },
+                "attempts": [
+                  {
+                    "representation": "number_line",
+                    "status": "selected",
+                    "render_status": "renderable(number_line_render)",
+                    "evidence": [
+                      "standard(4_nbt_b_4,large_multi_digit_addition)",
+                      "method(van_de_walle,scalable_magnitude_and_jump_reasoning)",
+                      "grounding(blend(measuring_stick,source_path_goal))",
+                      "render_status(renderable(number_line_render))",
+                      "strategy(column_addition_with_carrying)",
+                      "misconception(add_with_dropped_carry)"
+                    ]
+                  },
+                  {
+                    "representation": "fraction_bars",
+                    "status": "unavailable",
+                    "reason": "no lesson-licensed drawable candidate returned"
+                  },
+                  {
+                    "representation": "place_value_chart",
+                    "status": "available",
+                    "render_status": "renderable(place_value_chart_render)",
+                    "evidence": [
+                      "standard(4_nbt_b_4,multi_digit_place_value_algorithm)",
+                      "method(van_de_walle,scalable_magnitude_and_jump_reasoning)",
+                      "grounding(blend(writing_system,place_value_grouping))",
+                      "render_status(renderable(place_value_chart_render))",
+                      "strategy(column_addition_with_carrying)",
+                      "misconception(add_with_dropped_carry)"
+                    ]
+                  }
+                ],
+                "selected": {
+                  "representation": "number_line",
+                  "status": "selected",
+                  "render_status": "renderable(number_line_render)",
+                  "evidence": [
+                    "standard(4_nbt_b_4,large_multi_digit_addition)",
+                    "method(van_de_walle,scalable_magnitude_and_jump_reasoning)",
+                    "grounding(blend(measuring_stick,source_path_goal))",
+                    "render_status(renderable(number_line_render))",
+                    "strategy(column_addition_with_carrying)",
+                    "misconception(add_with_dropped_carry)"
+                  ]
+                }
+              },
+              "preferred": {
+                "representation": "number_line",
+                "reason": "alternative_representation_search"
+              }
+            },
+            "frame_count": 0,
+            "temporal": false,
+            "frame_sequence": []
+          },
+          "interpretive_residue": {
+            "status": "human_endorsement_required",
+            "claim": "Hermes checks representation grammar, denotation, deformation evidence, refusal, and render frames; it does not certify that this generated visual is a faithful reading of any particular student's work.",
+            "machine_certifies": [
+              "render spec denotation or named deformation evidence",
+              "representation refusal when a vocabulary cannot productively denote the task",
+              "temporal frame count and scene-contract shape"
+            ],
+            "human_must_endorse": [
+              "the fit between extracted teacher-guide numbers and the lesson activity",
+              "the projective reading from an actual student work sample to this labeled misconception"
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

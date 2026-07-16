@@ -1,0 +1,222 @@
+/*
+ * host.css — shared chrome for every Hermes render host page.
+ *
+ * v2 layout: the page fills its box and never makes you scroll to reach the
+ * controls. Two panes side by side — a bounded figure box on the left that
+ * scales the SVG to fit (no matter how tall the scene), and a scrolling
+ * control rail on the right whose FIRST card is the number input (the thing
+ * you came to touch), then playback, caption, and the audience panels.
+ *
+ * Structure the host page provides (only one addition vs. v1 — the .rail):
+ *   .wrap
+ *     header.host-head           title + student/teacher/formal toggle
+ *     #stage.stage               the figure box (fills, SVG fits inside)
+ *     .rail                       <-- wrap the controls in this
+ *       section.calc-bar          the number inputs   (shown first)
+ *       .controls                 playback (prev/next/seek/play/svg)
+ *       .meta-line                context + result
+ *       #caption.caption          the plain-language read
+ *       section.panel …           teacher / formal detail (scrolls)
+ *
+ * Figure colors still come from hermes-tokens.css (--fig-<role>). The body
+ * class view-freshman|view-teacher|view-philosopher decides which panels show.
+ * When wrapped by hermes-shell.js the page sits in a viewport-height cell, so
+ * .wrap fills 100%; standalone it falls back to min-height:100vh.
+ */
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--paper, #f4ead6);
+  color: var(--ink, #0d0c08);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/* --- the app-fit frame --- */
+/* Pages that have not adopted the .rail structure (the compare pages,
+   notation/, hybridization/) keep the v1 single-column reading flow. */
+.wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 20px 56px;
+}
+.wrap:has(> .rail) {
+  height: 100%;
+  min-height: 100vh;            /* standalone fallback */
+  max-width: none;
+  margin: 0;
+  padding: 14px 20px 12px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(288px, 31%, 384px);
+  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-areas: "head head" "stage rail";
+  column-gap: 22px;
+  row-gap: 8px;
+}
+/* Inside the shell's viewport-height cell, drop the 100vh floor so it fits. */
+.hshell-main .wrap:has(> .rail) { min-height: 0; }
+
+/* --- header --- */
+.host-head {
+  grid-area: head;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 16px;
+  border-bottom: 1px solid var(--line, rgba(13, 12, 8, 0.14));
+  padding-bottom: 9px;
+}
+h1 { font-size: 19px; font-weight: 600; margin: 0 0 3px; }
+.subhead { font-size: 12.5px; color: var(--muted, #665f4f); margin: 0; max-width: 74ch; line-height: 1.45; }
+
+.view-toggle { display: flex; gap: 6px; flex-shrink: 0; }
+.view-toggle button {
+  font-size: 12px; font-family: var(--mono, monospace);
+  background: var(--paper-warm, #ebdfc5); color: var(--ink, #0d0c08);
+  border: 1px solid var(--line, rgba(13, 12, 8, 0.2));
+  border-radius: 4px; padding: 5px 10px; cursor: pointer;
+}
+.view-toggle button.active {
+  background: var(--gold, #d4a747); border-color: var(--gold-deep, #a97c24); font-weight: 600;
+}
+
+/* --- the figure box: bounded, SVG scales to fit --- */
+.stage {
+  grid-area: stage;
+  min-width: 0; min-height: 0;
+  background: var(--paper-bg, #f4ead6);
+  border: 1px solid var(--line, rgba(13, 12, 8, 0.2));
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 12px; overflow: hidden;
+}
+/* v1-flow pages: the stage is not a grid cell, so give it its own floor. */
+.wrap:not(:has(> .rail)) .stage { min-height: 240px; overflow: visible; }
+.stage svg {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+.stage svg .bt-block { cursor: grab; touch-action: none; }
+.stage svg .bt-block:hover { filter: brightness(1.05); }
+.stage svg .bt-grabbed { cursor: grabbing; }
+
+.stage .error {
+  color: var(--rust, #b95238); font-family: var(--mono, monospace); font-size: 13px;
+  max-width: 52ch; margin: 0; padding: 12px 16px;
+  background: var(--paper-warm, #ebdfc5);
+  border: 1px solid var(--rust, #b95238); border-left-width: 3px; border-radius: 4px;
+}
+.stage .empty-state { color: var(--muted, #665f4f); font-size: 14px; margin: 0; text-align: center; }
+.stage .loading { color: var(--gold-deep, #a97c24); font-size: 14px; margin: 0; text-align: center; }
+.stage .loading::before {
+  content: ""; display: inline-block; width: 12px; height: 12px; margin-right: 8px; vertical-align: -1px;
+  border: 2px solid var(--gold-deep, #a97c24); border-top-color: transparent; border-radius: 50%;
+  animation: hermes-spin 0.8s linear infinite;
+}
+@keyframes hermes-spin { to { transform: rotate(360deg); } }
+
+/* --- the control rail: scrolls on its own; inputs first --- */
+.rail {
+  grid-area: rail;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex; flex-direction: column;
+  gap: 10px;
+  padding: 2px 4px 8px 0;
+  scrollbar-width: thin;
+}
+/* Promote the number input to the top of the rail; playback right under it. */
+.rail .calc-bar  { order: 0; }
+.rail .controls  { order: 1; }
+.rail .meta-line { order: 2; }
+.rail .caption   { order: 3; }
+.rail .panel     { order: 4; }
+
+/* number input, now a card at the top of the rail (not a page footer) */
+.calc-bar {
+  margin: 0; padding: 12px 13px;
+  border: 1px solid var(--line, rgba(13, 12, 8, 0.2));
+  border-radius: 8px;
+  background: var(--paper-warm, #ebdfc5);
+  display: flex; align-items: center; gap: 9px; flex-wrap: wrap; font-size: 13px;
+}
+.calc-bar label { display: inline-flex; align-items: center; gap: 4px; }
+.calc-bar input[type="number"] { width: 62px; padding: 3px 5px; }
+.calc-bar input[type="text"] { padding: 2px 4px; }
+.calc-bar select { padding: 3px 5px; }
+.calc-bar button {
+  background: var(--gold, #d4a747); border: 1px solid var(--gold-deep, #a97c24);
+  border-radius: 5px; padding: 6px 15px; font-weight: 600; cursor: pointer;
+}
+.calc-bar button:hover { box-shadow: 0 2px 8px rgba(169,124,36,.28); }
+.calc-note { flex-basis: 100%; font-size: 11px; color: var(--muted, #665f4f); line-height: 1.4; }
+#calculate:disabled { opacity: 0.5; cursor: progress; }
+
+/* playback controls */
+.controls { display: flex; align-items: center; gap: 8px; margin: 0; flex-wrap: wrap; }
+.controls button {
+  font-size: 13px; background: var(--paper-warm, #ebdfc5);
+  border: 1px solid var(--line, rgba(13, 12, 8, 0.2)); border-radius: 4px;
+  padding: 5px 11px; cursor: pointer;
+}
+.controls button:disabled { opacity: 0.4; cursor: default; }
+.controls input[type="range"] { flex: 1; min-width: 90px; }
+.counter { font-size: 12px; color: var(--muted, #665f4f); font-family: var(--mono, monospace); }
+.annot { font-size: 11px; color: var(--gold-deep, #a97c24); font-family: var(--mono, monospace); visibility: hidden; }
+
+.meta-line {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 12.5px; color: var(--muted, #665f4f); margin: 0;
+}
+#context { font-weight: 600; color: var(--ink, #0d0c08); }
+#result { font-family: var(--mono, monospace); font-size: 12px; }
+
+.caption {
+  font-size: 14px; margin: 0; padding: 10px 13px;
+  background: var(--paper-cool, #ede4cf);
+  border-left: 3px solid var(--gold, #d4a747); border-radius: 0 6px 6px 0;
+}
+
+.panel {
+  margin: 0; border: 1px solid var(--line, rgba(13, 12, 8, 0.18));
+  border-radius: 6px; padding: 12px 14px; background: var(--surface, #fffef9);
+}
+.panel h2 { font-size: 14px; margin: 0 0 8px; }
+.panel h3 { font-size: 12.5px; margin: 12px 0 6px; color: var(--muted, #665f4f); }
+.tuple {
+  display: block; font-family: var(--mono, monospace); font-size: 12.5px;
+  background: var(--paper-cool, #ede4cf); padding: 8px 10px; border-radius: 4px; word-break: break-all;
+}
+.verbs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.verb-step {
+  font-family: var(--mono, monospace); font-size: 11px;
+  background: var(--paper-warm, #ebdfc5); padding: 3px 7px; border-radius: 3px; color: var(--muted, #665f4f);
+}
+.verb-current { background: var(--gold-pale, #f0d68a); color: var(--ink, #0d0c08); font-weight: 600; }
+.band { display: flex; flex-direction: column; gap: 4px; }
+.kv { display: flex; gap: 8px; font-size: 13px; }
+.kv-key { flex: 0 0 120px; color: var(--muted, #665f4f); font-family: var(--mono, monospace); font-size: 12px; }
+.kv-val { flex: 1; }
+.teacher-empty { font-size: 13px; color: var(--muted, #665f4f); font-style: italic; }
+
+/* --- audience visibility --- */
+.only-freshman, .only-teacher, .only-philosopher { display: none; }
+body.view-freshman .only-freshman { display: block; }
+body.view-teacher .only-teacher { display: block; }
+body.view-philosopher .only-philosopher { display: block; }
+
+/* --- narrow / standalone: stack the panes, let the page scroll --- */
+@media (max-width: 820px) {
+  .wrap:has(> .rail) {
+    height: auto; min-height: 100vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: "head" "stage" "rail";
+  }
+  .wrap:has(> .rail) .stage { min-height: 44vh; }
+  .rail { overflow: visible; max-height: none; }
+}

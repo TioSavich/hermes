@@ -1,0 +1,673 @@
+{
+ "attribution": "Transcript data: TalkMoves dataset (SumnerLab / Suresh et al.), CC BY-NC-SA 4.0, speaker-blinded before any model call.",
+ "caveats": [
+  "The calculator checks a claim only when it can ground it; 'not checked' means outside its current coverage, not wrong.",
+  "Reading a speaker's move is interpretive. The model proposes the reading; only the claim verdicts are computed.",
+  "One automated read of one transcript \u2014 a starting point for your own reading, not a verdict on the discussion."
+ ],
+ "claims": [
+  {
+   "finding": "does not check out",
+   "how": "the calculator worked the claim through and it fails",
+   "said": "two thirds was the half",
+   "speaker": "S03",
+   "utterance": "u0015"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "both those segments like the segment here to here, that would be two thirds",
+   "speaker": "S02",
+   "utterance": "u0029"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "both of those would be two thirds",
+   "speaker": "S05",
+   "utterance": "u0041"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "three of those would be three thirds",
+   "speaker": "S05",
+   "utterance": "u0041"
+  },
+  {
+   "finding": "does not check out",
+   "how": "the calculator worked the claim through and it fails",
+   "said": "three thirds is right here",
+   "speaker": "S02",
+   "utterance": "u0048"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "together they make two-thirds",
+   "speaker": "S02",
+   "utterance": "u0065"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "Three thirds would be the entire thing",
+   "speaker": "S02",
+   "utterance": "u0068"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "when you put them together they are two thirds",
+   "speaker": "S02",
+   "utterance": "u0070"
+  },
+  {
+   "finding": "checks out",
+   "how": "the calculator worked the claim through and it holds",
+   "said": "one third would be between the one third and two thirds",
+   "speaker": "S07",
+   "utterance": "u0074"
+  }
+ ],
+ "headline": "9 mathematical claims heard; 9 checked by the calculator, 2 did not check out; 2 cross-speaker conflicts surfaced. Every failed claim was later repaired in discussion.",
+ "machine": {
+  "extractions": [
+   {
+    "adjudication": {
+     "adjudication": "refuted",
+     "checker": "divaded_fractional_units:co_measure_fractions",
+     "claim": "fraction_equivalence",
+     "left": "2/3",
+     "right": "1/2",
+     "status": "domain_checked",
+     "trace": [
+      "in shared base 6: 4/6 vs 3/6",
+      "find_shared_completion(recollection([tally,tally,tally]),recollection([tally,tally]),recollection([tally,tally,tally,tally,tally,tally]),[try(recollection([tally,tally,tally]),not_shared),try(recollection([tally,tally,tally,tally,tally,tally]),shared)])",
+      "measure_first_unit_with_shared_ticks(recollection([tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally]),recollection([tally,tally]),[group(recollection([tally,tally,tally]),recollection([tally])),group(recollection([tally,tally,tally]),recollection([tally,tally]))])",
+      "measure_second_unit_with_shared_ticks(recollection([tally,tally]),recollection([tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally]),[group(recollection([tally,tally]),recollection([tally])),group(recollection([tally,tally]),recollection([tally,tally])),group(recollection([tally,tally]),recollection([tally,tally,tally]))])",
+      "scale_first_measurement_by_count(recollection([tally,tally]),recollection([tally,tally,tally,tally]),[insert(recollection([tally,tally]),recollection([tally,tally])),insert(recollection([tally,tally]),recollection([tally,tally,tally,tally]))])",
+      "scale_second_measurement_by_count(recollection([tally]),recollection([tally,tally,tally]),[insert(recollection([tally,tally,tally]),recollection([tally,tally,tally]))])",
+      "construct_shared_anaphoric_it(shared_measurement_chain(recollection([tally,tally,tally,tally,tally,tally])))"
+     ],
+     "verdict": "refuted"
+    },
+    "args": {
+     "left": {
+      "den": 3,
+      "num": 2
+     },
+     "right": {
+      "den": 2,
+      "num": 1
+     }
+    },
+    "confidence": "high",
+    "id": "c1",
+    "shape": "equivalence",
+    "surface": "two thirds was the half",
+    "term": "equivalence(fraction(2,3),fraction(1,2))",
+    "utterance_id": "u0015",
+    "verdict": "refuted"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:add_grounded+multiply_grounded",
+     "claim": "fraction_sum",
+     "status": "domain_checked",
+     "trace": [
+      "grounded: 1/3 + 1/3 co-measured against claimed 2/3"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 3,
+      "num": 1
+     },
+     "b": {
+      "den": 3,
+      "num": 1
+     },
+     "result": {
+      "den": 3,
+      "num": 2
+     }
+    },
+    "confidence": "high",
+    "id": "c2",
+    "shape": "fraction_sum",
+    "surface": "both those segments like the segment here to here, that would be two thirds",
+    "term": "fraction_sum(fraction(1,3),fraction(1,3),fraction(2,3))",
+    "utterance_id": "u0029",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:add_grounded+multiply_grounded",
+     "claim": "fraction_sum",
+     "status": "domain_checked",
+     "trace": [
+      "grounded: 1/3 + 1/3 co-measured against claimed 2/3"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 3,
+      "num": 1
+     },
+     "b": {
+      "den": 3,
+      "num": 1
+     },
+     "result": {
+      "den": 3,
+      "num": 2
+     }
+    },
+    "confidence": "high",
+    "id": "c3",
+    "shape": "fraction_sum",
+    "surface": "both of those would be two thirds",
+    "term": "fraction_sum(fraction(1,3),fraction(1,3),fraction(2,3))",
+    "utterance_id": "u0041",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "fraction_iterating:partition_iterate_inverse",
+     "claim": "iterate_to_whole",
+     "status": "domain_checked",
+     "trace": [
+      "partition(D) o iterate(D) = identity on the whole (splitting inverse confirmed)",
+      "3 copies of 1/3 span 3/3; whole is 3/3"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 3,
+      "num": 1
+     },
+     "times": 3
+    },
+    "confidence": "high",
+    "id": "c4",
+    "shape": "iterate_to_whole",
+    "surface": "three of those would be three thirds",
+    "term": "iterate_to_whole(fraction(1,3),times(3))",
+    "utterance_id": "u0041",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "refuted",
+     "checker": "grounded_arithmetic:smaller_than",
+     "claim": "number_line_position",
+     "status": "domain_checked",
+     "trace": [
+      "within unit interval: 0 < 3/3 < 1"
+     ],
+     "verdict": "refuted"
+    },
+    "args": {
+     "frac": {
+      "den": 3,
+      "num": 3
+     }
+    },
+    "confidence": "high",
+    "id": "c5",
+    "shape": "number_line_position",
+    "surface": "three thirds is right here",
+    "term": "number_line_position(fraction(3,3),between(0,1))",
+    "utterance_id": "u0048",
+    "verdict": "refuted"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:add_grounded+multiply_grounded",
+     "claim": "fraction_sum",
+     "status": "domain_checked",
+     "trace": [
+      "grounded: 1/3 + 1/3 co-measured against claimed 2/3"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 3,
+      "num": 1
+     },
+     "b": {
+      "den": 3,
+      "num": 1
+     },
+     "result": {
+      "den": 3,
+      "num": 2
+     }
+    },
+    "confidence": "high",
+    "id": "c6",
+    "shape": "fraction_sum",
+    "surface": "together they make two-thirds",
+    "term": "fraction_sum(fraction(1,3),fraction(1,3),fraction(2,3))",
+    "utterance_id": "u0065",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:equal_to",
+     "claim": "n_over_n_is_one",
+     "status": "domain_checked",
+     "trace": [
+      "completion: numerator 3 vs denominator 3"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 3,
+      "num": 3
+     }
+    },
+    "confidence": "medium",
+    "id": "c7",
+    "shape": "n_over_n_is_one",
+    "surface": "Three thirds would be the entire thing",
+    "term": "n_over_n_is_one(fraction(3,3))",
+    "utterance_id": "u0068",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:add_grounded+multiply_grounded",
+     "claim": "fraction_sum",
+     "status": "domain_checked",
+     "trace": [
+      "grounded: 1/3 + 1/3 co-measured against claimed 2/3"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "a": {
+      "den": 3,
+      "num": 1
+     },
+     "b": {
+      "den": 3,
+      "num": 1
+     },
+     "result": {
+      "den": 3,
+      "num": 2
+     }
+    },
+    "confidence": "high",
+    "id": "c8",
+    "shape": "fraction_sum",
+    "surface": "when you put them together they are two thirds",
+    "term": "fraction_sum(fraction(1,3),fraction(1,3),fraction(2,3))",
+    "utterance_id": "u0070",
+    "verdict": "holds"
+   },
+   {
+    "adjudication": {
+     "adjudication": "holds",
+     "checker": "grounded_arithmetic:smaller_than",
+     "claim": "number_line_position",
+     "status": "domain_checked",
+     "trace": [
+      "within unit interval: 0 < 1/3 < 1"
+     ],
+     "verdict": "holds"
+    },
+    "args": {
+     "frac": {
+      "den": 3,
+      "num": 1
+     }
+    },
+    "confidence": "medium",
+    "id": "c9",
+    "shape": "number_line_position",
+    "surface": "one third would be between the one third and two thirds",
+    "term": "number_line_position(fraction(1,3),between(0,1))",
+    "utterance_id": "u0074",
+    "verdict": "holds"
+   }
+  ],
+  "readings": [
+   {
+    "claim_refs": [],
+    "id": "a1",
+    "pml": {
+     "content": "interpretation of Erik's intent",
+     "force": "avow",
+     "grammatical_person": "1st",
+     "mode": "subjective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "speaker",
+     "subject_position_read": "inferring peer meaning"
+    },
+    "raw_text": "I think what Erik means is",
+    "utterance_ids": [
+     "u0015"
+    ],
+    "wraps": "a2"
+   },
+   {
+    "claim_refs": [
+     "C1"
+    ],
+    "id": "a2",
+    "pml": {
+     "content": "C1",
+     "force": "attribute",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "attributed",
+     "subject_position_read": "candidate reading of author's logic"
+    },
+    "raw_text": "she thought [C1 equivalence: refuted]",
+    "uptake": {
+     "fate": "taken_up",
+     "ids": [
+      "u0016",
+      "u0017"
+     ]
+    },
+    "utterance_ids": [
+     "u0015"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C2"
+    ],
+    "id": "a3",
+    "pml": {
+     "content": "C2",
+     "force": "assert",
+     "grammatical_person": "2nd",
+     "mode": "normative",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "shared",
+     "subject_position_read": "invoking mathematical rule as a constraint"
+    },
+    "raw_text": "Well, if you use [C2 fraction_sum: holds]",
+    "utterance_ids": [
+     "u0029"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C3",
+     "C4"
+    ],
+    "id": "a4",
+    "pml": {
+     "content": "C3 and C4",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "object",
+     "subject_position_read": "binding the object to a specific additive logic"
+    },
+    "raw_text": "this would be representing one third, [C3 fraction_sum: holds] and [C4 iterate_to_whole: holds]",
+    "utterance_ids": [
+     "u0041"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C5"
+    ],
+    "id": "a5",
+    "pml": {
+     "content": "C5",
+     "force": "attribute",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_poss",
+     "polarity": "compressive",
+     "position": "attributed",
+     "subject_position_read": "proposing a reading of the author's intent"
+    },
+    "raw_text": "Meredith is saying right here that [C5 number_line_position: refuted]",
+    "uptake": {
+     "fate": "contested",
+     "ids": [
+      "u0049",
+      "u0050"
+     ]
+    },
+    "utterance_ids": [
+     "u0048"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C6"
+    ],
+    "id": "a6",
+    "pml": {
+     "content": "C6",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "object",
+     "subject_position_read": "using a mathematical fact to pivot the argument"
+    },
+    "raw_text": "But, [C6 fraction_sum: holds]",
+    "utterance_ids": [
+     "u0065"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C7"
+    ],
+    "id": "a7",
+    "pml": {
+     "content": "C7",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "object",
+     "subject_position_read": "deriving position from mathematical identity"
+    },
+    "raw_text": "[C7 n_over_n_is_one: holds], it would go right here",
+    "utterance_ids": [
+     "u0068"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C8"
+    ],
+    "id": "a8",
+    "pml": {
+     "content": "C8",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "comp_nec",
+     "polarity": "compressive",
+     "position": "object",
+     "subject_position_read": "asserting structural additive property"
+    },
+    "raw_text": "they are separate, [C8 fraction_sum: holds]",
+    "utterance_ids": [
+     "u0070"
+    ]
+   },
+   {
+    "claim_refs": [
+     "C9"
+    ],
+    "id": "a9",
+    "pml": {
+     "content": "C9",
+     "force": "assert",
+     "grammatical_person": "3rd",
+     "mode": "objective",
+     "operator": "exp_poss",
+     "polarity": "expansive",
+     "position": "hypothetical",
+     "subject_position_read": "opening the field to possible misconceptions"
+    },
+    "raw_text": "they would probably think that the [C9 number_line_position: holds]",
+    "uptake": {
+     "fate": "taken_up",
+     "ids": [
+      "u0081"
+     ]
+    },
+    "utterance_ids": [
+     "u0074"
+    ]
+   }
+  ]
+ },
+ "postures": [
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "speaking for themselves",
+   "response": "no response recorded",
+   "speaker": "S03",
+   "utterances": [
+    "u0015"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "about the shared math",
+   "response": "the class took it up",
+   "speaker": "S03",
+   "utterances": [
+    "u0015"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about what the class may or must do",
+   "response": "no response recorded",
+   "speaker": "S02",
+   "utterances": [
+    "u0029"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S05",
+   "utterances": [
+    "u0041"
+   ]
+  },
+  {
+   "move": "floats a candidate answer without settling it",
+   "register": "about the shared math",
+   "response": "the class pushed back",
+   "speaker": "S02",
+   "utterances": [
+    "u0048"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S02",
+   "utterances": [
+    "u0065"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S02",
+   "utterances": [
+    "u0068"
+   ]
+  },
+  {
+   "move": "treats the question as settled",
+   "register": "about the shared math",
+   "response": "no response recorded",
+   "speaker": "S02",
+   "utterances": [
+    "u0070"
+   ]
+  },
+  {
+   "move": "opens an alternative",
+   "register": "about the shared math",
+   "response": "the class took it up",
+   "speaker": "S07",
+   "utterances": [
+    "u0074"
+   ]
+  }
+ ],
+ "repair_arcs": [
+  {
+   "anchors": [
+    "u0015",
+    "c2",
+    "c3",
+    "c6",
+    "c8"
+   ],
+   "sentence": "S03's claim at u0015 does not check out, and the discussion returned to the same content later and landed on a version that does."
+  },
+  {
+   "anchors": [
+    "u0048",
+    "c7"
+   ],
+   "sentence": "S02's claim at u0048 does not check out, and the discussion returned to the same content later and landed on a version that does."
+  }
+ ],
+ "tensions": [
+  {
+   "anchors": [
+    "u0015",
+    "u0029",
+    "u0065",
+    "u0070"
+   ],
+   "sentence": "S03 (at u0015) and S02 (at u0029) have made claims about the same fractions that cannot both stand; the calculator backs S02's."
+  },
+  {
+   "anchors": [
+    "u0015",
+    "u0041"
+   ],
+   "sentence": "S03 (at u0015) and S05 (at u0041) have made claims about the same fractions that cannot both stand; the calculator backs S05's."
+  }
+ ],
+ "transcript": "# tm_0082\n\nU0001 S01: I thought that it was kind of a neat way to do it.\nU0002 S01: It was different from what  anybody else did.\nU0003 S01: But, I still had a question.\nU0004 S01: You sort of got at my question a  little bit, but I am not quite sure.\nU0005 S01: Erik, you were going to say something?\nU0006 S02: Well, see, if someone was to look at this for the first time, on the third number  line, for the first time, I know when I did I got confused because I thought that in  the middle of the section where she put the one third, two thirds and three thirds.\nU0007 S02: I thought that, that, is where they would be.\nU0008 S02: So that's why.\nU0009 S02: I think that is what  Michael did, too.\nU0010 S02: So, that is why he asked the question.\nU0011 S01: How many of you thought that?\nU0012 S01: How many of you did not think that?\nU0013 S01: So, we all looked at it differently.\nU0014 S01: Jessica?\nU0015 S03: I think what Erik means is that he thought Meredith was making a whole new  number line; like, she thought two thirds was the half.\nU0016 S02: Yeah.\nU0017 S02: It looks confusing.\nU0018 S01: But that was not what she was doing, was she?\nU0019 S04: No.\nU0020 S01: No.\nU0021 S01: Alan what were you going to say?\nU0022 S05: The way I thought, when you divide it up into fractions then you have a line  going to the fraction, but Meredith just put the fractions above the number line  without the line, so that meant she was labeling the area.\nU0023 S01: Okay, now in the particular region over here, she has two thirds in this region, see  where I am pointing?\nU0024 S04: Yes.\nU0025 S01: Between the one third and the two thirds, in that region represent two thirds of the  line?\nU0026 S02: It represent one third.\nU0027 S01: OK, it represents one third; How do you know that?\nU0028 S02: Because the way you said that one segment.\nU0029 S02: Well, if you use  both those segments like the segment here to here, that would be two thirds, but  you said the segment here.\nU0030 S02: It would be the two thirds the segment, but it would  be only one segment.\nU0031 S01: Could you show me what represents two thirds, what part of that line represents  two thirds?\nU0032 S02: Right to there.\nU0033 S02: That would represent two thirds.\nU0034 S01: What do you think?\nU0035 S04: That is true.\nU0036 S01: How many of you agree with that?\nU0037 S05: Right, but what I think   Meredith was trying  to do was, you see how it had one third and the one third being here.\nU0038 S05: She was  saying that she was labeling this to be the second third of   the line and labeling this to be the third, third of the line.\nU0039 S05: Al.g\nU0040 S01: Okay, so where would you put three over three, where would you write that  number if you were to write it on the number line?\nU0041 S05: You are doing it the way Erik's talking about it, you would   put one third over that area and you would put two thirds in   that area and three thirds in that area, because this would be  representing one third,   both of those would be two thirds and   three of those would be three thirds.\nU0042 S01: Ok, so if you were to put the number three thirds on the line?\nU0043 S01: I see over here the  numbers zero,  one third, two thirds, and one..  Where would you put three thirds?\nU0044 S05: If you put three thirds, you would put it just in that big area because it would be...\nU0045 S02: No, you wouldn't.\nU0046 S02: It would be right,  there.\nU0047 S05: Right, that would be the mark of the three third,  but all three of those are the  three thirds.\nU0048 S02: Meredith is saying right here that three thirds is right here, she says that is one,  three thirds in her perspective would be right here\nU0049 S06: No.\nU0050 S01: No.\nU0051 S01: Let us hear what Meredith has to say.\nU0052 S02: But \u2026\nU0053 S01: Let us hear what Meredith has to say.\nU0054 S06: As I did over here, I am saying this area here is three thirds.\nU0055 S02: I know; but, if someone were to look at this for the one time, they would think  that would be one whole and that would be three thirds, because you did not  label.\nU0056 S02: You should label one whole and under it put three thirds.\nU0057 S01: But, I did hear Meredith say that this piece is three thirds, did you mean that Meredith?\nU0058 S06: Yeah, this whole entire piece right here\nU0059 S01: You mean that?\nU0060 S06: Yeah.\nU0061 S02: And another thing Alan said \u2026\nU0062 S05: Well, that is why I said \u2026\nU0063 S02: I agree that would be the first piece.\nU0064 S02: That is the second piece.\nU0065 S02: But, together they make two-thirds.\nU0066 S01: And what makes three thirds?\nU0067 S05: Entire thing \u2026\nU0068 S02: Three thirds would be the entire thing, it would go right  here, if this is the third one third segment.\nU0069 S05: Right, that is just representing the three-thirds.\nU0070 S02: That's what I was talking about Alan, I am talking about, one section is one third,  one section is two thirds like what Meredith said, they are separate, when you put  them together they are two thirds.\nU0071 S01: Ok.  Ok, let's hear from what other people are thinking.\nU0072 S01: Brian?\nU0073 S07: I know what Meredith is trying to say.\nU0074 S07: She is trying to say\u2014to label\u2014between  it, because if someone said\u2014if someone looks at it\u2014and they did not know a  thing about a number line, they would probably think that the one third would be  between the one third and two thirds, that is why she labeled it also in the middle,  because if someone saw it and did not know what a number line was, they would  probably think one third is between the one third mark and the two third mark, so  she is just labeling it in the middle to make it less confusing.\nU0075 S01: Ok, Amy and Jakki, you were going to say something?\nU0076 S08: and  Jakki\nU0077 S01: Not going to say any more?\nU0078 S01: Ok.  Any one else have a comment?\nU0079 S01: Ok, let me ask  you \u2026.\nU0080 S01: You have a comment, yes, Mark?\nU0081 S09: I agree with Bryan because if no one ever saw a  number line, they would think that this was one third  and this was two thirds.\nU0082 S01: Ok, mathematicians conventionally, what they do so that people are not confused  they kind of agree to a way to mark those numbers on the line, they have a  common way to agree.\nU0083 S01: And, the common way to agree, you can see here that we  have a big number line, we take it apart in a minute, but you see where we put our  numbers, we place them where Meredith placed them.\nU0084 S01: That is the way  Mathematicians do it, and if you want to know where those numbers go you  usually look on the bottom of the line, ok, and that sort of helps us understand the  why we have the notation.\nU0085 S01: Alan?\nU0086 S05: We could do that so that we could represent one half, two thirds, and   three thirds in pieces.\nU0087 S05: Here is one way to  do it.\nU0088 S05: Now, here would be one mark, two marks.\nU0089 S05: Now, you could  could take out one of those pieces and say it is one third.\nU0090 S01: What do you think, you like that?\nU0091 S01: How many of you like that?\nU0092 S01: How many had questions about?\nU0093 S01: Okay.\nU0094 S01: Thank you.\nU0095 S01: Alan, stay there, let me ask you another question.\nU0096 S01: On the first  number line you wrote up there, could you place the fractions zero,  one third,  two thirds, and three thirds?\nU0097 S01: What about zero?\nU0098 S05: Zero would be put here.\n",
+ "transcript_id": "tm_0082"
+}

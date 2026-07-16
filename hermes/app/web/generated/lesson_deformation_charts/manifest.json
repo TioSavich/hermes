@@ -1,0 +1,83 @@
+{
+  "kind": "lesson_deformation_charts",
+  "lessons": [
+    {
+      "code": "IM-G3-U5-L1",
+      "title": "Name the Parts",
+      "standards": [
+        "3.G.A.2",
+        "3.NF.A.1"
+      ],
+      "hosts": [
+        "rectangle",
+        "circle"
+      ],
+      "fractions": [
+        "1/2",
+        "1/3",
+        "1/4",
+        "1/6",
+        "1/8"
+      ],
+      "cell_count": 10,
+      "deformations_per_cell": [
+        "equipartition_failure(miscount_partition)",
+        "equipartition_failure(unequal_partition)",
+        "transplant(grid)",
+        "transplant(radial)",
+        "transplant(vertical)"
+      ]
+    },
+    {
+      "code": "IM-G3-U5-L2",
+      "title": "Name Parts as Fractions",
+      "standards": [
+        "3.G.A.2",
+        "3.NF.A.1"
+      ],
+      "hosts": [
+        "rectangle",
+        "circle",
+        "bar"
+      ],
+      "fractions": [
+        "1/2",
+        "1/3",
+        "1/4",
+        "1/6",
+        "1/8"
+      ],
+      "cell_count": 15,
+      "deformations_per_cell": [
+        "equipartition_failure(miscount_partition)",
+        "equipartition_failure(unequal_partition)",
+        "transplant(grid)",
+        "transplant(radial)",
+        "transplant(vertical)"
+      ]
+    },
+    {
+      "code": "IM-G3-U5-L15",
+      "title": "Compare Fractions with the Same Denominator",
+      "standards": [
+        "3.NF.A.3.d"
+      ],
+      "hosts": [
+        "bar",
+        "circle"
+      ],
+      "fractions": [
+        "1/4",
+        "1/6"
+      ],
+      "cell_count": 4,
+      "deformations_per_cell": [
+        "equipartition_failure(miscount_partition)",
+        "equipartition_failure(unequal_partition)",
+        "transplant(grid)",
+        "transplant(radial)",
+        "transplant(vertical)"
+      ]
+    }
+  ]
+}
