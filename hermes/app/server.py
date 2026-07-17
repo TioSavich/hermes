@@ -1496,7 +1496,7 @@ class HermesHandler(BaseHTTPRequestHandler):
         try:
             result = worker_request("compute", **request)
         except worker.PersistentPrologError as exc:
-            self._send_json({"error": str(exc)}, status=400)
+            self._send_json({"error": str(exc)}, status=500)
             return
         self._send_json(result)
 
@@ -1504,7 +1504,7 @@ class HermesHandler(BaseHTTPRequestHandler):
         try:
             result = worker_request("knowledge")
         except worker.PersistentPrologError as exc:
-            self._send_json({"error": str(exc)}, status=400)
+            self._send_json({"error": str(exc)}, status=500)
             return
         self._send_json(result)
 
@@ -1549,7 +1549,7 @@ class HermesHandler(BaseHTTPRequestHandler):
                 val_down=val_down,
             )
         except worker.PersistentPrologError as exc:
-            self._send_json({"error": str(exc)}, status=400)
+            self._send_json({"error": str(exc)}, status=500)
             return
         self._send_utf8(result["svg"], "image/svg+xml; charset=utf-8")
 
@@ -1577,7 +1577,7 @@ class HermesHandler(BaseHTTPRequestHandler):
             result = worker_request("reorganize", **request)
         except worker.PersistentPrologError as exc:
             self._send_json(
-                {"error": True, "message": str(exc), "domain": domain}, status=400
+                {"error": True, "message": str(exc), "domain": domain}, status=500
             )
             return
         self._send_json(result)
@@ -1589,7 +1589,7 @@ class HermesHandler(BaseHTTPRequestHandler):
         try:
             result = worker_request("learner_reset")
         except worker.PersistentPrologError as exc:
-            self._send_json({"error": str(exc)}, status=400)
+            self._send_json({"error": str(exc)}, status=500)
             return
         self._send_json(result)
 

@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-SnwxsRSwZJdxNGqVuoqmjCEQwjSinwmgGWDQG/w5+wI='; style-src 'sha256-LPyueneOow8BQAqZ9Hi5qcZZoE6cFYXxZgmLVc2MCQQ='; img-src data: blob:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-KdnVR4hGVT4cZWI5XXsRjM2CdyNdg4vf/7DKj5BbBqU='; style-src 'sha256-LPyueneOow8BQAqZ9Hi5qcZZoE6cFYXxZgmLVc2MCQQ='; img-src data: blob:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Fraction Bars</title>
 <style>/* FB_Summer_2026/src/styles/app.css
  *
@@ -1429,12 +1429,6 @@ FB.Utilities.createFraction = function(numerator, denominator) {
   else{
   	return Math.abs(n) + "/" + Math.abs(d) ;
   }
-};
-
-FB.Utilities.log = function(msg) {
-	if( window.console ) {
-		console.log( msg ) ;
-	}
 };
 
 FB.Utilities.colorLuminance = function(hex, lum) {

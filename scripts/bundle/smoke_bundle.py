@@ -412,7 +412,9 @@ def live_probes(tree: Path, python: str, swipl: str | None,
                     and "FileNotFoundError" not in text)
         probe("POST /api/parse (shipped files only)", "/api/parse",
               {"input": "smoke_absent.txt"}, want=range(200, 504),
-              timeout=120.0, check=no_prompt_miss)
+              timeout=120.0,
+              check=lambda b: no_prompt_miss(b)
+              and "traceback" not in json.dumps(b).lower())
         workflow_payloads = {
             "content": {"activity": "smoke_absent"},
             "profile": {},

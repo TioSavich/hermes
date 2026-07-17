@@ -24,7 +24,7 @@ A single Markdown document, 250–400 words, with this exact structure:
 **What they submitted.** One or two sentences. How many files, what kinds,
 what work they show.
 
-**What I see.** Three to five sentences. The specific moves the student
+**What I notice.** Three to five sentences. The specific moves the student
 made across files: what they defined and how, what they sketched, what
 they computed, what they wrote in margins. Use their own words sparingly.
 Cite a specific file when a move is unusual or surprising.

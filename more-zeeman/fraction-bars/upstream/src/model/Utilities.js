@@ -92,12 +92,6 @@ FB.Utilities.createFraction = function(numerator, denominator) {
   }
 };
 
-FB.Utilities.log = function(msg) {
-	if( window.console ) {
-		console.log( msg ) ;
-	}
-};
-
 FB.Utilities.colorLuminance = function(hex, lum) {
 
   // validate hex string

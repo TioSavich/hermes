@@ -5540,7 +5540,9 @@ learner_run_compute(direct, Op, A, B, _Limit, Success) :-
     Problem =.. [Op, A, B],
     event_log:emit(computation_start,
                    _{operation: Op, a: A, b: B, mode: direct}),
-    (   catch(arithmetic_machine:solve_arithmetic(Problem, Result, Report),
+    (   catch(
+            with_output_to(string(_),
+                arithmetic_machine:solve_arithmetic(Problem, Result, Report)),
               Error,
               ( event_log:emit(computation_failed,
                                _{problem: Problem, error: Error}),
