@@ -66,6 +66,9 @@ SKIP_SCHEMES = ("http:", "https:", "mailto:", "data:", "javascript:",
 TARGET_RE = re.compile(
     r"""(?:fetch\(\s*|(?<=\bsrc=)|(?<=\bhref=))["'`]([^"'`\s]+)["'`]"""
 )
+API_LITERAL_RE = re.compile(
+    r"""["'`](/api/[A-Za-z0-9_./:-]+(?:\?[^"'`]*)?)["'`]"""
+)
 
 TOY_TRANSCRIPT = (
     "Ms. R: Who can say why one half equals two fourths?\n"
@@ -92,6 +95,19 @@ def prompts_check(tree: Path, report: Report) -> None:
     else:
         report.add("PASS",
                    f"workflow system prompts staged ({len(SYSTEM_PROMPTS)} files)")
+
+
+def muds_chain_check(tree: Path, report: Report) -> None:
+    required = [
+        "more-zeeman/mua_data.json",
+        "scripts/research/export_mua_for_mud.py",
+    ]
+    missing = [rel for rel in required if not (tree / rel).is_file()]
+    if missing:
+        report.add("FAIL", "MUDs data chain staged",
+                   "missing: " + ", ".join(missing))
+    else:
+        report.add("PASS", "MUDs data chain staged (snapshot + regenerator)")
 
 
 class Report:
@@ -195,6 +211,16 @@ def static_audit(tree: Path, report: Report) -> None:
                 continue
             if not url_to_file(tree, path).is_file():
                 dead.append(f"{rel}: {raw} -> {path}")
+            checked += 1
+        for raw in sorted(set(API_LITERAL_RE.findall(text))):
+            if "${" in raw or "{{" in raw:
+                continue  # template — the live probes cover the real URLs
+            path = urllib.parse.urlparse(raw).path
+            if path in LEGACY_FALLBACK_ROUTES or path in RESEARCH_WING_ROUTES:
+                optional.add(path)
+            elif path not in routes and \
+                    not any(path.startswith(p) for p in prefixes):
+                dead.append(f"{rel}: {raw} (no such route)")
             checked += 1
     if dead:
         report.add("FAIL", f"static targets ({checked} checked)",
@@ -337,6 +363,18 @@ def live_probes(tree: Path, python: str, swipl: str | None,
               check=lambda b: isinstance(b, dict) and "question" in b
               and "result" in b)
 
+        probe("POST /api/monitoring_visuals", "/api/monitoring_visuals",
+              {"lesson_code": "IM-G1-U3-L17"}, timeout=300.0,
+              check=lambda b: isinstance(b, dict) and b.get("ok") is True
+              and isinstance(b.get("result"), dict)
+              and bool(b["result"].get("visuals"))
+              and len(json.dumps(b["result"])) > 200)
+        probe(
+            "GET shipped ASKTM PNG",
+            "/ASKTM_Data/Grade%204_Fine-Grained%20Coding_Second%20Pass/"
+            "converted/G4Q1_media/media/image1.png",
+        )
+
         # the worker-backed offline path (starts the Prolog worker; slow once)
         probe("POST /api/pml_score (offline clauses)", "/api/pml_score",
               {"clauses": ["reader_axiom(smoke, subjective, compression, 1)"]},
@@ -375,6 +413,20 @@ def live_probes(tree: Path, python: str, swipl: str | None,
         probe("POST /api/parse (shipped files only)", "/api/parse",
               {"input": "smoke_absent.txt"}, want=range(200, 504),
               timeout=120.0, check=no_prompt_miss)
+        workflow_payloads = {
+            "content": {"activity": "smoke_absent"},
+            "profile": {},
+            "draft": {"unit": "smoke_absent"},
+            "grade": {},
+            "score": {},
+            "metrics": {},
+        }
+        for command, payload in workflow_payloads.items():
+            probe(f"POST /api/{command} (shipped files only)",
+                  f"/api/{command}", payload, want=range(200, 504),
+                  timeout=120.0,
+                  check=lambda b: no_prompt_miss(b)
+                  and "traceback" not in json.dumps(b).lower())
     finally:
         server.terminate()
         try:
@@ -459,6 +511,7 @@ def main() -> int:
     print("— static audit —")
     static_audit(tree, report)
     prompts_check(tree, report)
+    muds_chain_check(tree, report)
     if not args.static_only:
         print("— report chain —")
         chain_check(tree, args.python, report)
