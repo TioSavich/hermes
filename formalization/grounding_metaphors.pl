@@ -708,16 +708,14 @@ mua_label_to_metaphor_id(balance_preservation_schema, balance_preservation_schem
 %   Derivation: a metaphor is a `repair` if and only if it appears as
 %   the third argument of any `metaphor_repair/4` fact AND is not the
 %   sentinel `none_in_this_metaphor`. Otherwise it is `basic`.
+metaphor_kind(balance_preservation_schema, schema).
 metaphor_kind(MetaphorId, Kind) :-
-    MetaphorId == balance_preservation_schema,
-    !,
-    Kind = schema.
-metaphor_kind(MetaphorId, Kind) :-
-    ln_metaphor_kind(MetaphorId, Kind),
-    !.
+    ln_metaphor_kind(MetaphorId, Kind).
 metaphor_kind(MetaphorId, Kind) :-
     grounding_metaphor_definition(MetaphorId, _, _, _),
     MetaphorId \== none_in_this_metaphor,
+    MetaphorId \== balance_preservation_schema,
+    \+ ln_metaphor_kind(MetaphorId, _),
     ( metaphor_repair(_, _, MetaphorId, _)
     -> Kind = repair
     ;  Kind = basic

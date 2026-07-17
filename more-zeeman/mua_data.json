@@ -706,7 +706,7 @@
     {
       "description": "Specialization of the general AE metaphor: maps the commutative group with three elements onto addition modulo 3 \u2014 abstract elements {I,A,B} to numbers {0,1,2}, abstract * to +, abstract identity I to arithmetic identity 0, abstract laws to arithmetic laws.",
       "id": "addition_mod_3_as_commutative_group",
-      "kind": "basic",
+      "kind": "algebraic_essence",
       "short_name": "addition mod 3 as commutative group",
       "source": "algebra_groups",
       "source_practices": [],
@@ -779,7 +779,7 @@
     {
       "description": "Project-local relational-equals schema: two expressions name equal quantities, and applying the same operation to both sides preserves that equality.",
       "id": "balance_preservation_schema",
-      "kind": "basic",
+      "kind": "schema",
       "short_name": "Balance Preservation",
       "source": "two_pan_balance",
       "source_practices": [],
@@ -789,7 +789,7 @@
     {
       "description": "Master metaphor for actual infinity: an iterative process without end is conceptualized in terms of a completed iterative process by metaphorically adding a 'final resultant state' to the unending process; the final resultant state is unique and follows every nonfinal state.",
       "id": "basic_metaphor_of_infinity",
-      "kind": "basic",
+      "kind": "specialization_substrate",
       "short_name": "basic metaphor of infinity",
       "source": "completed_iterative_processes",
       "source_practices": [],
@@ -856,7 +856,7 @@
     {
       "description": "Greek philosophical metaphor adopted by algebra: an object's essence is its form. Underwrites algebra as the study of abstract structure.",
       "id": "essence_is_form",
-      "kind": "basic",
+      "kind": "philosophical_substrate",
       "short_name": "essence is form",
       "source": "form_of_object",
       "source_practices": [],
@@ -866,7 +866,7 @@
     {
       "description": "Master AE metaphor: the essence of a mathematical system in any domain D outside algebra is an abstract algebraic structure (group, ring, field). Licenses 'addition modulo 3 is a commutative group with three elements'.",
       "id": "essence_of_mathematical_system_is_algebraic_structure",
-      "kind": "basic",
+      "kind": "algebraic_essence",
       "short_name": "essence of mathematical system is algebraic structure",
       "source": "algebraic_structure",
       "source_practices": [],
@@ -886,7 +886,7 @@
     {
       "description": "Weierstrass-era metaphor that replaced Descartes's curve-grounding: a function IS its set of input-output pairs. Two conceptually different rules that determine the same set of ordered pairs are 'the same function'.",
       "id": "functions_are_sets_of_ordered_pairs",
-      "kind": "basic",
+      "kind": "repair",
       "short_name": "functions are sets of ordered pairs",
       "source": "sets_of_ordered_pairs_of_numbers",
       "source_practices": [],
@@ -923,7 +923,7 @@
     {
       "description": "Repair metaphor: multiplication by -1 IS rotation by 180 degrees. Introduced specifically to preserve arithmetic closure for the product of two negatives, which Motion Along a Path cannot ground.",
       "id": "multiplication_by_minus_one_is_rotation_by_180_degrees",
-      "kind": "basic",
+      "kind": "repair",
       "short_name": "Multiplication by -1 is Rotation by 180 degrees",
       "source": "rotation_in_the_plane",
       "source_practices": [
@@ -958,7 +958,7 @@
     {
       "description": "Aczel-Barwise-Moss metaphor: a set is an accessible pointed graph (APG); membership is an arrow; nodes-that-are-tails are sets; decorations on nodes-that-are-heads are members. Eliminates the Container reading; supports the Anti-Foundation axiom and sets that contain themselves.",
       "id": "sets_are_graphs",
-      "kind": "basic",
+      "kind": "repair",
       "short_name": "sets are graphs",
       "source": "accessible_pointed_graphs",
       "source_practices": [],
@@ -978,7 +978,7 @@
     {
       "description": "Conceptual blend of Spaces Are Sets of Points with naturally continuous space: a line is at once a set of points and a continuous geometric object; a circle is at once a subset of the point-set and a geometric curve. Dedekind's continuity-as-gaplessness lives inside this blend.",
       "id": "space_set_blend",
-      "kind": "basic",
+      "kind": "blend",
       "short_name": "space set blend",
       "source": "naturally_continuous_space_blended_with_set_of_elements",
       "source_practices": [],
@@ -1008,7 +1008,7 @@
     {
       "description": "Static-arithmetic reconceptualization of continuity: a function preserves closeness if, for every epsilon-neighborhood in the range, there is a corresponding delta-neighborhood in the domain. Eliminates motion and naturally continuous space; produces the epsilon-delta definition.",
       "id": "weierstrass_continuity_metaphor",
-      "kind": "basic",
+      "kind": "repair",
       "short_name": "weierstrass continuity metaphor",
       "source": "preservation_of_numerical_closeness",
       "source_practices": [],
@@ -1021,7 +1021,7 @@
     {
       "description": "Repair metaphor: an empty collection IS zero. Introduced to give Object Collection an additive identity (A + 0 = A) that 'no collection at all' would otherwise leave undefined.",
       "id": "zero_collection_metaphor",
-      "kind": "basic",
+      "kind": "repair",
       "short_name": "Zero Collection",
       "source": "absence_of_objects",
       "source_practices": [],
@@ -1031,7 +1031,7 @@
     {
       "description": "Repair metaphor: the absence of an object IS zero. Introduced to give Object Construction an additive identity that 'no object at all' would otherwise leave undefined.",
       "id": "zero_object_metaphor",
-      "kind": "basic",
+      "kind": "repair",
       "short_name": "Zero Object",
       "source": "absence_of_an_object",
       "source_practices": [],
