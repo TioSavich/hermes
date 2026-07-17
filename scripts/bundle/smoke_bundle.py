@@ -190,6 +190,7 @@ def static_audit(tree: Path, report: Report) -> None:
         "more-zeeman/atlas.html",
         "more-zeeman/crosswalk.html",
         "more-zeeman/geometry.html",
+        "more-zeeman/standards-witnesses.html",
         "hermes/capability_registry.pl",
         "scripts/extract_capability_registry.py",
     )
@@ -518,6 +519,12 @@ def live_probes(tree: Path, python: str, swipl: str | None,
               timeout=120.0,
               check=lambda b: b.get("ok") is True
               and b.get("result", {}).get("kind") == "geometry_van_hiele_marker")
+        probe("POST /api/witness/standards", "/api/witness/standards",
+              {"op": "standard_k_ns_1_count_by_ones_witness",
+               "from": 1, "to": 10},
+              timeout=120.0,
+              check=lambda b: b.get("ok") is True
+              and b.get("result", {}).get("kind") == "standard_k_ns_1_counting_trace")
         probe("POST /api/geometry", "/api/geometry",
               {"predicate": "pck_synthesis_for", "args": ["quadrilateral_hierarchy"]},
               timeout=120.0,

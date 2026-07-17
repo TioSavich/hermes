@@ -132,9 +132,9 @@ capability('modal_context_witness', 'cw_modal_context', 'unclassified', ['contex
 capability('monitoring_chart_export', 'hermes_worker', 'monitoring', ['lesson_code'], routed_paged).
 capability('mua_coherence_witness', 'cw_mua_coherence', 'unclassified', ['input', 'source', 'subject'], routed_paged).
 capability('mua_kind_coherence_witness', 'mua_relations', 'unclassified', ['kind', 'row_text'], unrouted).
-capability('mult_div_family_witness', 'standard_3_ca_3_4', 'unclassified', ['a', 'b'], unrouted).
+capability('mult_div_family_witness', 'standard_3_ca_3_4', 'unclassified', ['a', 'b'], routed_paged).
 capability('multiplication_division_claim_witness', 'cw_multiplication_division_claim', 'unclassified', ['canonical', 'source'], routed_paged).
-capability('multiply_array_witness', 'standard_3_ca_3_4', 'unclassified', ['cols', 'rows'], unrouted).
+capability('multiply_array_witness', 'standard_3_ca_3_4', 'unclassified', ['cols', 'rows'], routed_paged).
 capability('normative_crisis_witness', 'cw_normative_crisis', 'unclassified', ['context', 'goal', 'source'], routed_paged).
 capability('notation_monitoring_chart', 'lesson_notation_chart', 'render', ['code'], routed_paged).
 capability('notation_render', 'hermes_worker', 'render', ['kind'], routed_paged).
@@ -166,26 +166,26 @@ capability('sequent_proof_witness', 'cw_sequent_proof', 'arche_trace', ['sequent
 capability('set_base', 'cgi_base', 'infrastructure', ['base'], unrouted).
 capability('set_grouping_compare', 'set_grouping_scene', 'render', ['a', 'b'], routed_paged).
 capability('set_grouping_render', 'set_grouping_scene', 'render', [], routed_paged).
-capability('standard_1_ca_1_making_ten_witness', 'standard_1_ca_1', 'standards', ['a', 'b'], unrouted).
-capability('standard_1_ca_3_add_by_place_value_witness', 'standard_1_ca_3', 'standards', ['a', 'b'], unrouted).
-capability('standard_1_ns_1_count_by_fives_witness', 'standard_1_ns_1', 'standards', ['from', 'to'], unrouted).
-capability('standard_1_ns_2_place_value_witness', 'standard_1_ns_2', 'standards', ['number'], unrouted).
-capability('standard_2_ca_2_add_three_digit_witness', 'standard_2_ca_2', 'standards', ['a', 'b'], unrouted).
-capability('standard_2_ns_1_count_by_twos_witness', 'standard_2_ns_1', 'standards', ['from', 'to'], unrouted).
-capability('standard_2_ns_2_4_place_value_witness', 'standard_2_ns_2_4', 'standards', ['number'], unrouted).
-capability('standard_2_ns_3_parity_witness', 'standard_2_ns_3', 'standards', ['number', 'result'], unrouted).
-capability('standard_2_ns_5_place_value_comparison_witness', 'standard_2_ns_5', 'standards', ['left', 'right'], unrouted).
-capability('standard_3_ca_3_4_fact_family_witness', 'standard_3_ca_3_4', 'standards', ['a', 'b'], unrouted).
-capability('standard_3_ca_5_mult_skip_count_witness', 'standard_3_ca_5', 'standards', ['factor', 'times'], unrouted).
-capability('standard_3_ns_2_unit_fraction_witness', 'standard_3_ns_2', 'standards', ['denominator'], unrouted).
-capability('standard_3_ns_5_fraction_comparison_witness', 'standard_3_ns_5', 'standards', ['left', 'result', 'right'], unrouted).
-capability('standard_k_ca_1_3_complement_witness', 'standard_k_ca_1_3', 'standards', ['given'], unrouted).
-capability('standard_k_ns_1_count_by_ones_witness', 'standard_k_ns_1', 'standards', ['from', 'to'], unrouted).
-capability('standard_k_ns_2_represent_count_witness', 'standard_k_ns_2', 'standards', ['object_count'], unrouted).
-capability('standard_k_ns_3_order_independence_witness', 'standard_k_ns_3', 'standards', ['objects'], unrouted).
-capability('standard_k_ns_4_verify_subitizing_witness', 'standard_k_ns_4', 'standards', ['pattern'], unrouted).
-capability('standard_k_ns_5_6_compare_groups_witness', 'standard_k_ns_5_6', 'standards', ['group_a', 'group_b'], unrouted).
-capability('standard_k_ns_7_place_value_witness', 'standard_k_ns_7', 'standards', ['number'], unrouted).
+capability('standard_1_ca_1_making_ten_witness', 'standard_1_ca_1', 'standards', ['a', 'b'], routed_paged).
+capability('standard_1_ca_3_add_by_place_value_witness', 'standard_1_ca_3', 'standards', ['a', 'b'], routed_paged).
+capability('standard_1_ns_1_count_by_fives_witness', 'standard_1_ns_1', 'standards', ['from', 'to'], routed_paged).
+capability('standard_1_ns_2_place_value_witness', 'standard_1_ns_2', 'standards', ['number'], routed_paged).
+capability('standard_2_ca_2_add_three_digit_witness', 'standard_2_ca_2', 'standards', ['a', 'b'], routed_paged).
+capability('standard_2_ns_1_count_by_twos_witness', 'standard_2_ns_1', 'standards', ['from', 'to'], routed_paged).
+capability('standard_2_ns_2_4_place_value_witness', 'standard_2_ns_2_4', 'standards', ['number'], routed_paged).
+capability('standard_2_ns_3_parity_witness', 'standard_2_ns_3', 'standards', ['number', 'result'], routed_paged).
+capability('standard_2_ns_5_place_value_comparison_witness', 'standard_2_ns_5', 'standards', ['left', 'right'], routed_paged).
+capability('standard_3_ca_3_4_fact_family_witness', 'standard_3_ca_3_4', 'standards', ['a', 'b'], routed_paged).
+capability('standard_3_ca_5_mult_skip_count_witness', 'standard_3_ca_5', 'standards', ['factor', 'times'], routed_paged).
+capability('standard_3_ns_2_unit_fraction_witness', 'standard_3_ns_2', 'standards', ['denominator'], routed_paged).
+capability('standard_3_ns_5_fraction_comparison_witness', 'standard_3_ns_5', 'standards', ['left', 'result', 'right'], routed_paged).
+capability('standard_k_ca_1_3_complement_witness', 'standard_k_ca_1_3', 'standards', ['given'], routed_paged).
+capability('standard_k_ns_1_count_by_ones_witness', 'standard_k_ns_1', 'standards', ['from', 'to'], routed_paged).
+capability('standard_k_ns_2_represent_count_witness', 'standard_k_ns_2', 'standards', ['object_count'], routed_paged).
+capability('standard_k_ns_3_order_independence_witness', 'standard_k_ns_3', 'standards', ['objects'], routed_paged).
+capability('standard_k_ns_4_verify_subitizing_witness', 'standard_k_ns_4', 'standards', ['pattern'], routed_paged).
+capability('standard_k_ns_5_6_compare_groups_witness', 'standard_k_ns_5_6', 'standards', ['group_a', 'group_b'], routed_paged).
+capability('standard_k_ns_7_place_value_witness', 'standard_k_ns_7', 'standards', ['number'], routed_paged).
 capability('strategy_trace', 'hermes_encyclopedia', 'unclassified', ['input', 'strategy'], routed_paged).
 capability('target_expressive_power_witness', 'hermes_worker', 'unclassified', ['target'], unrouted).
 capability('teacher_layer', 'teacher_layer', 'render', [], routed_paged).
@@ -372,7 +372,9 @@ capability_route('modal_context_witness', 'POST', '/api/witness/crosswalk_claim'
 capability_route('monitoring_chart_export', 'POST', '/api/monitoring_chart_export').
 capability_route('monitoring_chart_export', 'POST', '/api/monitoring_visuals').
 capability_route('mua_coherence_witness', 'POST', '/api/witness/crosswalk_claim').
+capability_route('mult_div_family_witness', 'POST', '/api/witness/standards').
 capability_route('multiplication_division_claim_witness', 'POST', '/api/witness/crosswalk_claim').
+capability_route('multiply_array_witness', 'POST', '/api/witness/standards').
 capability_route('normative_crisis_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('notation_monitoring_chart', 'POST', '/api/notation_monitoring_chart').
 capability_route('notation_render', 'POST', '/api/notation_render').
@@ -401,6 +403,26 @@ capability_route('set_grouping_compare', 'POST', '/api/render').
 capability_route('set_grouping_render', 'POST', '/api/chat').
 capability_route('set_grouping_render', 'POST', '/api/monitoring_visuals').
 capability_route('set_grouping_render', 'POST', '/api/render').
+capability_route('standard_1_ca_1_making_ten_witness', 'POST', '/api/witness/standards').
+capability_route('standard_1_ca_3_add_by_place_value_witness', 'POST', '/api/witness/standards').
+capability_route('standard_1_ns_1_count_by_fives_witness', 'POST', '/api/witness/standards').
+capability_route('standard_1_ns_2_place_value_witness', 'POST', '/api/witness/standards').
+capability_route('standard_2_ca_2_add_three_digit_witness', 'POST', '/api/witness/standards').
+capability_route('standard_2_ns_1_count_by_twos_witness', 'POST', '/api/witness/standards').
+capability_route('standard_2_ns_2_4_place_value_witness', 'POST', '/api/witness/standards').
+capability_route('standard_2_ns_3_parity_witness', 'POST', '/api/witness/standards').
+capability_route('standard_2_ns_5_place_value_comparison_witness', 'POST', '/api/witness/standards').
+capability_route('standard_3_ca_3_4_fact_family_witness', 'POST', '/api/witness/standards').
+capability_route('standard_3_ca_5_mult_skip_count_witness', 'POST', '/api/witness/standards').
+capability_route('standard_3_ns_2_unit_fraction_witness', 'POST', '/api/witness/standards').
+capability_route('standard_3_ns_5_fraction_comparison_witness', 'POST', '/api/witness/standards').
+capability_route('standard_k_ca_1_3_complement_witness', 'POST', '/api/witness/standards').
+capability_route('standard_k_ns_1_count_by_ones_witness', 'POST', '/api/witness/standards').
+capability_route('standard_k_ns_2_represent_count_witness', 'POST', '/api/witness/standards').
+capability_route('standard_k_ns_3_order_independence_witness', 'POST', '/api/witness/standards').
+capability_route('standard_k_ns_4_verify_subitizing_witness', 'POST', '/api/witness/standards').
+capability_route('standard_k_ns_5_6_compare_groups_witness', 'POST', '/api/witness/standards').
+capability_route('standard_k_ns_7_place_value_witness', 'POST', '/api/witness/standards').
 capability_route('strategy_trace', 'POST', '/api/render').
 capability_route('strategy_trace', 'POST', '/api/strategy_trace').
 capability_route('teacher_layer', 'POST', '/api/render').
@@ -526,6 +548,7 @@ capability_page('canonical_contract', '/hermes/app/web/console.html').
 capability_page('capability_atlas', '/more-zeeman/atlas.html').
 capability_page('capability_atlas', '/more-zeeman/crosswalk.html').
 capability_page('capability_atlas', '/more-zeeman/geometry.html').
+capability_page('capability_atlas', '/more-zeeman/standards-witnesses.html').
 capability_page('carving_operation_summary', '/more-zeeman/strategies.html').
 capability_page('carving_strategy_proof', '/more-zeeman/strategies.html').
 capability_page('compute', '/more-zeeman/bridge.html').
@@ -654,7 +677,9 @@ capability_page('monitoring_chart_export', '/hermes/app/web/console.html').
 capability_page('monitoring_chart_export', '/more-zeeman/monitoring_chart.html').
 capability_page('monitoring_chart_export', '/more-zeeman/scoreboard.html').
 capability_page('mua_coherence_witness', '/more-zeeman/crosswalk.html').
+capability_page('mult_div_family_witness', '/more-zeeman/standards-witnesses.html').
 capability_page('multiplication_division_claim_witness', '/more-zeeman/crosswalk.html').
+capability_page('multiply_array_witness', '/more-zeeman/standards-witnesses.html').
 capability_page('normative_crisis_witness', '/more-zeeman/crosswalk.html').
 capability_page('notation_monitoring_chart', '/more-zeeman/notation/index.html').
 capability_page('notation_render', '/more-zeeman/notation/index.html').
@@ -744,6 +769,26 @@ capability_page('set_grouping_render', '/more-zeeman/number-line/index.html').
 capability_page('set_grouping_render', '/more-zeeman/place-value-chart/index.html').
 capability_page('set_grouping_render', '/more-zeeman/set-grouping/index.html').
 capability_page('set_grouping_render', '/more-zeeman/unit-echo/index.html').
+capability_page('standard_1_ca_1_making_ten_witness', '/more-zeeman/standards-witnesses.html').
+capability_page('standard_1_ca_3_add_by_place_value_witness', '/more-zeeman/standards-witnesses.html').
+capability_page('standard_1_ns_1_count_by_fives_witness', '/more-zeeman/standards-witnesses.html').
+capability_page('standard_1_ns_2_place_value_witness', '/more-zeeman/standards-witnesses.html').
+capability_page('standard_2_ca_2_add_three_digit_witness', '/more-zeeman/standards-witnesses.html').
+capability_page('standard_2_ns_1_count_by_twos_witness', '/more-zeeman/standards-witnesses.html').
+capability_page('standard_2_ns_2_4_place_value_witness', '/more-zeeman/standards-witnesses.html').
+capability_page('standard_2_ns_3_parity_witness', '/more-zeeman/standards-witnesses.html').
+capability_page('standard_2_ns_5_place_value_comparison_witness', '/more-zeeman/standards-witnesses.html').
+capability_page('standard_3_ca_3_4_fact_family_witness', '/more-zeeman/standards-witnesses.html').
+capability_page('standard_3_ca_5_mult_skip_count_witness', '/more-zeeman/standards-witnesses.html').
+capability_page('standard_3_ns_2_unit_fraction_witness', '/more-zeeman/standards-witnesses.html').
+capability_page('standard_3_ns_5_fraction_comparison_witness', '/more-zeeman/standards-witnesses.html').
+capability_page('standard_k_ca_1_3_complement_witness', '/more-zeeman/standards-witnesses.html').
+capability_page('standard_k_ns_1_count_by_ones_witness', '/more-zeeman/standards-witnesses.html').
+capability_page('standard_k_ns_2_represent_count_witness', '/more-zeeman/standards-witnesses.html').
+capability_page('standard_k_ns_3_order_independence_witness', '/more-zeeman/standards-witnesses.html').
+capability_page('standard_k_ns_4_verify_subitizing_witness', '/more-zeeman/standards-witnesses.html').
+capability_page('standard_k_ns_5_6_compare_groups_witness', '/more-zeeman/standards-witnesses.html').
+capability_page('standard_k_ns_7_place_value_witness', '/more-zeeman/standards-witnesses.html').
 capability_page('strategy_trace', '/hermes/app/web/console.html').
 capability_page('strategy_trace', '/hermes/app/web/discussions.html').
 capability_page('strategy_trace', '/hermes/app/web/strategies.html').

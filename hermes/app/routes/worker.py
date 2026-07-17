@@ -65,6 +65,7 @@ _HANDLERS = (
 _WITNESS_HANDLERS = (
     ("/api/witness/crosswalk_claim", "crosswalk_claim"),
     ("/api/witness/geometry", "geometry"),
+    ("/api/witness/standards", "standards"),
 )
 
 

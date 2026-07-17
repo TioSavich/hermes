@@ -66,6 +66,7 @@
       ["atlas",       "Capability Atlas", mz("atlas.html")],
       ["crosswalk",   "Crosswalk claims", mz("crosswalk.html")],
       ["geometry",    "Geometry witnesses", mz("geometry.html")],
+      ["standards-witnesses", "Standards witnesses", mz("standards-witnesses.html")],
     ]},
     { title: "Tools", kind: "tools", items: [
       ["visualizations", "All visualizers", mz("visualizations.html")],
@@ -117,6 +118,7 @@
       "discussions.html": "discussions", "console.html": "console",
       "monitoring_chart.html": "monitoring", "visualizations.html": "visualizations",
       "atlas.html": "atlas", "crosswalk.html": "crosswalk", "geometry.html": "geometry",
+      "standards-witnesses.html": "standards-witnesses",
       "gallery.html": "gallery", "audience-index.html": "audience",
       "landing.html": "landing", "index.html": "snap", "counting.html": "counting",
       "crisis.html": "crisis", "strategies.html": "strategies",

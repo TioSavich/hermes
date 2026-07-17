@@ -94,6 +94,30 @@ WITNESS_OPS: dict[str, frozenset[str]] = {
         "geometry_van_hiele_material_witness",
         "geometry_volume_surface_area_material_witness",
     }),
+    "standards": frozenset({
+        "mult_div_family_witness",
+        "multiply_array_witness",
+        "standard_1_ca_1_making_ten_witness",
+        "standard_1_ca_3_add_by_place_value_witness",
+        "standard_1_ns_1_count_by_fives_witness",
+        "standard_1_ns_2_place_value_witness",
+        "standard_2_ca_2_add_three_digit_witness",
+        "standard_2_ns_1_count_by_twos_witness",
+        "standard_2_ns_2_4_place_value_witness",
+        "standard_2_ns_3_parity_witness",
+        "standard_2_ns_5_place_value_comparison_witness",
+        "standard_3_ca_3_4_fact_family_witness",
+        "standard_3_ca_5_mult_skip_count_witness",
+        "standard_3_ns_2_unit_fraction_witness",
+        "standard_3_ns_5_fraction_comparison_witness",
+        "standard_k_ca_1_3_complement_witness",
+        "standard_k_ns_1_count_by_ones_witness",
+        "standard_k_ns_2_represent_count_witness",
+        "standard_k_ns_3_order_independence_witness",
+        "standard_k_ns_4_verify_subitizing_witness",
+        "standard_k_ns_5_6_compare_groups_witness",
+        "standard_k_ns_7_place_value_witness",
+    }),
 }
 
 SWIPL_HINT = (
@@ -1090,6 +1114,8 @@ class RouteLogic:
         try:
             result = self.ctx.worker_request(op, **kwargs)
         except Exception as exc:  # noqa: BLE001
+            # A worker-side op error (ok:false) or a transport failure. Return a
+            # stable JSON shape so the witness control can report what happened.
             self._send_json({"ok": False, "error": str(exc)}, status=400)
             return
         self._send_json({"ok": True, "op": op, "result": result})
