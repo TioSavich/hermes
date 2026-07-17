@@ -67,11 +67,16 @@
       };
       var root = document.getElementById("domains");
       var status = document.getElementById("status");
-      var listFields = {inputs: true, premises: true, resources: true};
+      var listFields = {inputs: true, premises: true};
+      // viability_witness compares numeric budgets; its dispatch clause reads
+      // both fields without conversion, so the page must send JSON numbers.
+      var numberFields = {resources: true, cost: true};
 
       function field(name) {
         var label = document.createElement("label");
-        label.textContent = listFields[name] ? name + " (comma-separated list)" : name;
+        label.textContent = listFields[name] ? name + " (comma-separated list)"
+          : numberFields[name] ? name + " (number)"
+          : name;
         var input = document.createElement("input");
         input.name = name;
         input.required = true;
@@ -103,6 +108,8 @@
             var value = form.elements.namedItem(name).value;
             payload[name] = listFields[name]
               ? value.split(",").map(function (part) { return part.trim(); }).filter(Boolean)
+              : numberFields[name]
+              ? Number(value)
               : value;
           });
           fetch("/api/witness/crosswalk_claim", {
