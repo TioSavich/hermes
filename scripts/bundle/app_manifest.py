@@ -24,6 +24,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -194,6 +195,14 @@ def build_manifest(with_figures: bool) -> list[str]:
     return sorted(p for p in candidates if keep(p, with_figures))
 
 
+# A closure far below this is not a smaller knowledge base — it is a broken
+# probe. load_runtime pulls ~338 files; a symlinked checkout path (macOS
+# /var/folders vs /private/var/folders) once made the prefix filter drop every
+# line, and an empty closure passes the subset check vacuously while the
+# registry extractor reads it as "everything is an orphan."
+_CLOSURE_FLOOR = 200
+
+
 def worker_closure() -> list[str]:
     """Ask SWI-Prolog which files the worker's load_runtime/0 actually loads."""
     goal = "load_runtime, forall(source_file(F), (write(F), nl)), halt."
@@ -204,12 +213,22 @@ def worker_closure() -> list[str]:
     )
     if out.returncode != 0:
         sys.exit(f"app_manifest --verify: swipl closure run failed:\n{out.stderr}")
-    root = str(REPO) + "/"
-    return sorted(
-        line[len(root):]
+    root = os.path.realpath(REPO) + os.sep
+    closure = sorted(
+        real[len(root):]
         for line in out.stdout.splitlines()
-        if line.startswith(root)
+        if line.startswith(os.sep)
+        for real in (os.path.realpath(line),)
+        if real.startswith(root)
     )
+    if len(closure) < _CLOSURE_FLOOR:
+        sample = "\n".join(out.stdout.splitlines()[:5])
+        sys.exit(
+            f"app_manifest worker_closure: only {len(closure)} closure files "
+            f"resolved under {root} — the probe is broken, not the KB small. "
+            f"First reported lines:\n{sample}"
+        )
+    return closure
 
 
 def manifest_map(manifest: list[str]) -> str:
