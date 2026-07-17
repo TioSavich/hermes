@@ -68,6 +68,7 @@ load_runtime :-
                  recollection_to_integer/2 ]),
     use_module(misconceptions(test_harness)),
     use_module(misconceptions(misconception_registry)),
+    use_module(misconceptions(pml_wire), []),
     use_module(learner(deontic_scorekeeper)),
     use_module(learner(up_leveling)),
     use_module(formalization(grounding_metaphors)),
@@ -301,6 +302,7 @@ known_op(standard_3_ca_5_mult_skip_count_witness).
 known_op(standard_3_ns_2_unit_fraction_witness).
 known_op(standard_3_ns_5_fraction_comparison_witness).
 known_op(misconception_jumps_witness).
+known_op(misconception_pml_map).
 known_op(balance_solve_witness).
 known_op(whole_number_addsub_claim_witness).
 known_op(ratio_proportion_claim_witness).
@@ -3200,6 +3202,31 @@ dispatch_request(set_base, Id, Request, Response) :-
 dispatch_request(get_base, Id, _Request, Response) :-
     cgi_base:current_cgi_base(Base),
     ok_response(Id, _{operative_base: Base}, Response).
+
+% --- misconception_pml_map: recorded CONNECTS-TO annotations -------------
+dispatch_request(misconception_pml_map, Id, Request, Response) :-
+    (   get_dict_opt(misconception, Request, Value),
+        Value \== ""
+    ->  text_value(Value, Filter)
+    ;   Filter = ""
+    ),
+    findall(_{source_tag: SourceText,
+              misconception: NameText,
+              operator: OperatorText},
+            ( pml_wire:misconception_pml(Source, Operator),
+              sub_term(unlicensed(Name), Operator),
+              term_to_text(Name, NameText),
+              ( Filter == "" ; Filter == NameText ),
+              term_to_text(Source, SourceText),
+              term_to_text(Operator, OperatorText)
+            ),
+            Pairs),
+    length(Pairs, Count),
+    ok_response(Id, _{
+        count: Count,
+        pairs: Pairs,
+        provenance: "generated from CONNECTS-TO annotations in the misconception registry"
+    }, Response).
 
 % --- teacher_layer (H8): the teacher panel for a named practice ------------
 % Composes the standard, embodied source-practice gloss, incompatibility

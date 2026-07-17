@@ -30,6 +30,7 @@ def _post_witness(family: str) -> Callable[[Any], None]:
 
 
 _HANDLERS = (
+    ("/api/base", "_handle_set_base"),
     ("/api/render", "_handle_render"),
     ("/api/expressive_power", "_handle_expressive_power"),
     ("/api/strategies", "_handle_strategies"),
@@ -85,8 +86,13 @@ def capabilities(ctx: Any) -> None:
     RouteLogic(ctx)._handle_capabilities()
 
 
+def base(ctx: Any) -> None:
+    RouteLogic(ctx)._handle_get_base()
+
+
 ROUTES = (
     Route("GET", "/api/capabilities", capabilities),
+    Route("GET", "/api/base", base),
     *(Route("POST", path, _post(method)) for path, method in _HANDLERS),
     # Discourse ops are declared student-data in gate.py: transcripts carry
     # utterance text, and client-side speaker blinding cannot strip names

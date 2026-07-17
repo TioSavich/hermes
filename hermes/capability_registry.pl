@@ -97,7 +97,7 @@ capability('geometry_van_hiele_marker_witness', 'hermes_worker', 'geometry_witne
 capability('geometry_van_hiele_material_witness', 'hermes_worker', 'geometry_witness', ['claim_id'], routed_paged).
 capability('geometry_volume_surface_area_material_witness', 'hermes_worker', 'geometry_witness', ['claim_id'], routed_paged).
 capability('gesture_alignment', 'gesture_alignment', 'unclassified', ['observations', 'utterances'], routed_paged).
-capability('get_base', 'cgi_base', 'infrastructure', [], unrouted).
+capability('get_base', 'cgi_base', 'infrastructure', [], routed_paged).
 capability('godel_primes_witness', 'cw_godel_primes', 'unclassified', ['query', 'source'], routed_paged).
 capability('ground', 'hermes_encyclopedia', 'unclassified', ['query'], routed_paged).
 capability('grounded_arith_witness', 'cw_grounded_arith', 'unclassified', ['inputs', 'operation', 'output', 'source'], routed_paged).
@@ -129,6 +129,7 @@ capability('metaphor_break_witness', 'cw_metaphor_break', 'unclassified', ['deta
 capability('misconception_hook_witness', 'cw_misconception_hook', 'misconceptions', ['family', 'operation', 'outcome', 'source'], routed_paged).
 capability('misconception_incompatibility_witness', 'misconception_registry', 'misconceptions', ['conflict', 'move'], routed_paged).
 capability('misconception_jumps_witness', 'visualization', 'misconceptions', ['a', 'b', 'deformation', 'operation'], routed_paged).
+capability('misconception_pml_map', 'pml_wire', 'misconceptions', ['misconception'], routed_paged).
 capability('modal_context_witness', 'cw_modal_context', 'unclassified', ['context', 'source', 'term'], routed_paged).
 capability('monitoring_chart_export', 'hermes_worker', 'monitoring', ['lesson_code'], routed_paged).
 capability('mua_coherence_witness', 'cw_mua_coherence', 'unclassified', ['input', 'source', 'subject'], routed_paged).
@@ -164,7 +165,7 @@ capability('representation_spine_witness', 'representation_spine', 'crosswalk', 
 capability('robinson_axiom_witness', 'sequent_engine', 'unclassified', ['axiom', 'claim'], routed_paged).
 capability('semantic_material_witness', 'semantic_axioms', 'unclassified', ['from', 'to'], routed_paged).
 capability('sequent_proof_witness', 'cw_sequent_proof', 'arche_trace', ['sequent', 'source'], routed_paged).
-capability('set_base', 'cgi_base', 'infrastructure', ['base'], unrouted).
+capability('set_base', 'cgi_base', 'infrastructure', ['base'], routed_paged).
 capability('set_grouping_compare', 'set_grouping_scene', 'render', ['a', 'b'], routed_paged).
 capability('set_grouping_render', 'set_grouping_scene', 'render', [], routed_paged).
 capability('standard_1_ca_1_making_ten_witness', 'standard_1_ca_1', 'standards', ['a', 'b'], routed_paged).
@@ -238,7 +239,6 @@ capability('lessons/im/generated/vision_lesson_digest.pl', 'vision_lesson_digest
 capability('lessons/im/im_glossary.pl', 'im_glossary', 'workflow', [], orphan_module).
 capability('lessons/im_harness.pl', 'im_harness', 'workflow', [], orphan_module).
 capability('misconceptions/literature_canonical_mappings.pl', 'literature_canonical_mappings', 'misconceptions', [], orphan_module).
-capability('misconceptions/pml_wire.pl', 'pml_wire', 'misconceptions', [], orphan_module).
 capability('more-zeeman/prolog/zeeman_bifurcation.pl', 'zeeman_bifurcation', 'zeeman', [], orphan_module).
 capability('more-zeeman/prolog/zeeman_machine.pl', 'zeeman_machine', 'zeeman', [], orphan_module).
 capability('more-zeeman/prolog/zeeman_pml_bridge.pl', 'zeeman_pml_bridge', 'zeeman', [], orphan_module).
@@ -359,6 +359,7 @@ capability_route('geometry_van_hiele_marker_witness', 'POST', '/api/witness/geom
 capability_route('geometry_van_hiele_material_witness', 'POST', '/api/witness/geometry').
 capability_route('geometry_volume_surface_area_material_witness', 'POST', '/api/witness/geometry').
 capability_route('gesture_alignment', 'POST', '/api/gesture_alignment').
+capability_route('get_base', 'GET', '/api/base').
 capability_route('godel_primes_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('ground', 'POST', '/api/chat').
 capability_route('grounded_arith_witness', 'POST', '/api/witness/crosswalk_claim').
@@ -391,6 +392,7 @@ capability_route('metaphor_break_witness', 'POST', '/api/witness/crosswalk_claim
 capability_route('misconception_hook_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('misconception_incompatibility_witness', 'POST', '/api/witness/misconception').
 capability_route('misconception_jumps_witness', 'POST', '/api/witness/misconception').
+capability_route('misconception_pml_map', 'POST', '/api/witness/misconception').
 capability_route('modal_context_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('monitoring_chart_export', 'POST', '/api/monitoring_chart_export').
 capability_route('monitoring_chart_export', 'POST', '/api/monitoring_visuals').
@@ -429,6 +431,7 @@ capability_route('representation_spine_witness', 'POST', '/api/witness/grounding
 capability_route('robinson_axiom_witness', 'POST', '/api/witness/formal').
 capability_route('semantic_material_witness', 'POST', '/api/witness/pml').
 capability_route('sequent_proof_witness', 'POST', '/api/sequent_proof').
+capability_route('set_base', 'POST', '/api/base').
 capability_route('set_grouping_compare', 'POST', '/api/render').
 capability_route('set_grouping_render', 'POST', '/api/chat').
 capability_route('set_grouping_render', 'POST', '/api/monitoring_visuals').
@@ -705,6 +708,7 @@ capability_page('geometry_van_hiele_marker_witness', '/more-zeeman/geometry.html
 capability_page('geometry_van_hiele_material_witness', '/more-zeeman/geometry.html').
 capability_page('geometry_volume_surface_area_material_witness', '/more-zeeman/geometry.html').
 capability_page('gesture_alignment', '/hermes/app/web/discussions.html').
+capability_page('get_base', '/more-zeeman/coordination.html').
 capability_page('godel_primes_witness', '/more-zeeman/crosswalk.html').
 capability_page('ground', '/hermes/app/web/console.html').
 capability_page('grounded_arith_witness', '/more-zeeman/crosswalk.html').
@@ -760,6 +764,7 @@ capability_page('metaphor_break_witness', '/more-zeeman/crosswalk.html').
 capability_page('misconception_hook_witness', '/more-zeeman/crosswalk.html').
 capability_page('misconception_incompatibility_witness', '/hermes/app/web/console.html').
 capability_page('misconception_jumps_witness', '/hermes/app/web/console.html').
+capability_page('misconception_pml_map', '/hermes/app/web/console.html').
 capability_page('modal_context_witness', '/more-zeeman/crosswalk.html').
 capability_page('monitoring_chart_export', '/hermes/app/web/console.html').
 capability_page('monitoring_chart_export', '/more-zeeman/monitoring_chart.html').
@@ -839,6 +844,7 @@ capability_page('representation_spine_witness', '/more-zeeman/grounding.html').
 capability_page('robinson_axiom_witness', '/hermes/app/web/breaks.html').
 capability_page('semantic_material_witness', '/more-zeeman/pml-witnesses.html').
 capability_page('sequent_proof_witness', '/hermes/app/web/breaks.html').
+capability_page('set_base', '/more-zeeman/coordination.html').
 capability_page('set_grouping_compare', '/hermes/app/web/console.html').
 capability_page('set_grouping_compare', '/hermes/app/web/discussions.html').
 capability_page('set_grouping_compare', '/more-zeeman/area-model/index.html').
@@ -985,8 +991,6 @@ capability_page('lessons/im/generated/vision_lesson_digest.pl', '/more-zeeman/mo
 capability_page('lessons/im/im_glossary.pl', '/more-zeeman/monitoring_chart.html').
 capability_page('lessons/im_harness.pl', '/more-zeeman/monitoring_chart.html').
 capability_page('misconceptions/literature_canonical_mappings.pl', '/hermes/app/web/no.html').
-capability_page('misconceptions/pml_wire.pl', '/more-zeeman/pml-witnesses.html').
-capability_page('misconceptions/pml_wire.pl', '/more-zeeman/translation-chain.html').
 capability_page('more-zeeman/prolog/zeeman_bifurcation.pl', '/more-zeeman/index.html').
 capability_page('more-zeeman/prolog/zeeman_machine.pl', '/more-zeeman/index.html').
 capability_page('more-zeeman/prolog/zeeman_pml_bridge.pl', '/more-zeeman/index.html').

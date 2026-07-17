@@ -49,6 +49,8 @@ POST /api/monitoring_visuals public monitoring
 POST /api/field_connectivity_audit public monitoring
 POST /api/render_coverage public monitoring
 GET /api/capabilities public worker
+GET /api/base public worker
+POST /api/base public worker
 POST /api/render public worker
 POST /api/expressive_power public worker
 POST /api/strategies public worker

@@ -377,6 +377,7 @@
             <button id="btnBase10" class="btn-base btn-secondary active">10</button>
             <button id="btnBase12" class="btn-base btn-secondary">12</button>
           </div>
+          <p style="max-width:48rem;color:var(--muted);font-size:.72rem;margin-top:.35rem">This sets the worker's operative base register for every base-sensitive surface until you change it.</p>
         </div>
 
         <!-- Addends selection -->
@@ -495,7 +496,7 @@
       fetch('/api/base')
         .then(res => res.json())
         .then(data => {
-          activeBase = data.base;
+          activeBase = data.operative_base;
           updateBaseButtons();
           isConnected = true;
           backendStatus.innerHTML = '&#9679; Connected to Prolog';
@@ -518,6 +519,13 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ base: baseVal })
+        }).then(res => {
+          if (!res.ok) throw new Error("base request rejected");
+          return res.json();
+        }).then(data => {
+          activeBase = data.result.operative_base;
+          updateBaseButtons();
+          document.getElementById('hudBaseVal').textContent = activeBase;
         }).catch(e => console.error("Error setting base", e));
       }
     }

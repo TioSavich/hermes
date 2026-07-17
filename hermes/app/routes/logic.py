@@ -55,6 +55,7 @@ WITNESS_OPS: dict[str, frozenset[str]] = {
         "lesson_misconception_incompatibility_witness",
         "misconception_incompatibility_witness",
         "misconception_jumps_witness",
+        "misconception_pml_map",
     }),
     "crosswalk_claim": frozenset({
         "accommodation_witness",
@@ -1092,6 +1093,12 @@ class RouteLogic:
 
     def _handle_discourse_features(self, payload: dict) -> None:
         self._forward_op("discourse_features", payload)
+
+    def _handle_get_base(self) -> None:
+        self._send_json(self.ctx.worker_request("get_base"))
+
+    def _handle_set_base(self, payload: dict) -> None:
+        self._forward_op("set_base", payload)
 
     def _handle_discourse_pragmatics(self, payload: dict) -> None:
         self._forward_op("discourse_pragmatics", payload)

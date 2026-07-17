@@ -148,9 +148,12 @@
 
   <section class="event-tools">
     <h2 class="sec"><span class="num">3</span>Discourse evidence</h2>
-    <p class="sec-hint">These four deterministic routes use the transcript above. Speaker labels
-      are replaced with S01, S02… in this page before the request is sent. Features and pragmatic
-      candidates do not assign commitments, PML modes, or interactional outcomes.</p>
+    <p class="sec-hint">These four deterministic routes use the transcript above. Features and
+      pragmatic candidates do not assign commitments, PML modes, or interactional outcomes.</p>
+    <label class="fmt-note"><input type="checkbox" id="blind-discourse-speakers">
+      Replace speaker names with S01, S02… before sending</label>
+    <p class="fmt-note">Unchecked sends the labels to the worker on this machine; checked replaces
+      them when you would rather not keep names in the local run record or you are on a gated deployment.</p>
     <div class="event-actions">
       <button class="btn ghost" data-discourse-route="/api/discourse_features">Surface features</button>
       <button class="btn ghost" data-discourse-route="/api/discourse_pragmatics">Pragmatic candidates</button>
@@ -208,16 +211,17 @@ async function runEventRoute(path){
   output.textContent = JSON.stringify(data, null, 2) || "The route returned an empty reply.";
 }
 
-function blindedUtterances(){
+function discourseUtterances(){
   const lines = $("paste").value.split(/\r?\n/).filter(line => line.trim());
   const speakers = new Map();
   const utterances = [];
+  const replaceNames = $("blind-discourse-speakers").checked;
   lines.forEach(function(line){
     const match = /^\s*([^:]{1,60}):\s*(.+)$/.exec(line);
     if (!match) return;
     const speaker = match[1].trim();
-    if (!speakers.has(speaker)) speakers.set(speaker, "S" + String(speakers.size + 1).padStart(2, "0"));
-    utterances.push({id:"u" + String(utterances.length + 1), speaker:speakers.get(speaker), text:match[2].trim()});
+    if (replaceNames && !speakers.has(speaker)) speakers.set(speaker, "S" + String(speakers.size + 1).padStart(2, "0"));
+    utterances.push({id:"u" + String(utterances.length + 1), speaker:replaceNames ? speakers.get(speaker) : speaker, text:match[2].trim()});
   });
   if (!utterances.length) throw new Error("Use speaker-labelled lines such as S01: text.");
   return utterances;
@@ -227,7 +231,7 @@ async function runDiscourseRoute(path){
   const status=$("discourse-status"), output=$("discourse-output");
   let payload;
   try {
-    payload={utterances:blindedUtterances()};
+    payload={utterances:discourseUtterances()};
     if(path==="/api/gesture_alignment") payload.observations=[];
     if(path==="/api/trace_adjudication") payload.ledger={proposals:[],adjudications:[]};
   } catch(e) {status.textContent=e.message;status.className="status err";return;}

@@ -559,6 +559,42 @@ def live_probes(tree: Path, python: str, swipl: str | None,
         )
 
         # the worker-backed offline path (starts the Prolog worker; slow once)
+        probe("GET /api/base", "/api/base", timeout=120.0,
+              check=lambda b: isinstance(b, dict)
+              and isinstance(b.get("operative_base"), int))
+        base_set_status = None
+        base_set_body = None
+        base_reset_status = None
+        base_reset_body = None
+        base_error = None
+        try:
+            base_set_status, base_set_body = call(
+                base, "/api/base", {"base": 12}, timeout=120.0
+            )
+        except Exception as exc:
+            base_error = f"set failed: {exc}"
+        finally:
+            try:
+                base_reset_status, base_reset_body = call(
+                    base, "/api/base", {"base": 10}, timeout=120.0
+                )
+            except Exception as exc:
+                base_error = f"{base_error + '; ' if base_error else ''}reset failed: {exc}"
+        base_set_value = (base_set_body or {}).get("result", {}).get("operative_base") \
+            if isinstance(base_set_body, dict) else None
+        base_reset_value = (base_reset_body or {}).get("result", {}).get("operative_base") \
+            if isinstance(base_reset_body, dict) else None
+        if (base_error or base_set_status != 200 or base_set_value != 12
+                or base_reset_status != 200 or base_reset_value != 10):
+            report.add(
+                "FAIL", "POST /api/base set 12 then reset 10",
+                base_error or (
+                    f"set=HTTP {base_set_status}, value={base_set_value}; "
+                    f"reset=HTTP {base_reset_status}, value={base_reset_value}"
+                ),
+            )
+        else:
+            report.add("PASS", "POST /api/base set 12 then reset 10")
         probe("POST /api/pml_score (offline clauses)", "/api/pml_score",
               {"clauses": ["reader_axiom(smoke, subjective, compression, 1)"]},
               timeout=300.0)
@@ -598,6 +634,15 @@ def live_probes(tree: Path, python: str, swipl: str | None,
                "move": "misconception(count_all_when_count_on_available)",
                "conflict": "strategy(addition,count_on_from_larger)"},
               timeout=120.0, check=lambda b: b.get("ok") is True)
+        probe("POST /api/witness/misconception (PML map)",
+              "/api/witness/misconception",
+              {"op": "misconception_pml_map",
+               "misconception": "addition_must_make_larger"},
+              timeout=120.0,
+              check=lambda b: b.get("ok") is True
+              and b.get("result", {}).get("count") == 1
+              and b.get("result", {}).get("pairs", [{}])[0].get("source_tag")
+              == "db_row(193)")
         probe("POST /api/balance_solve", "/api/balance_solve",
               {"a": 2, "b": 3, "c": 11}, timeout=120.0,
               check=lambda b: b.get("ok") is True

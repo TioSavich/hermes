@@ -718,6 +718,18 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
         <div id="misconception-witness-out" class="result" hidden></div>
       </div>
       <div class="card adv">
+        <h2><span class="num">N</span>Recorded misconception-to-PML connections</h2>
+        <p class="hint">These are RECORDED connections generated from CONNECTS-TO annotations in
+          the misconception registry. They are not inferred by the system.</p>
+        <div class="mc-bar">
+          <label class="muted-inline" style="flex:1">misconception name (optional)
+            <input id="misconception-pml-name" class="data-input" placeholder="addition_must_make_larger">
+          </label>
+          <button class="btn primary small" id="misconception-pml-btn">Load recorded connections</button>
+        </div>
+        <div id="misconception-pml-out" class="result" hidden></div>
+      </div>
+      <div class="card adv">
         <h2><span class="num">⌁</span>Canonical vocabulary</h2>
         <p class="hint">Load the worker's canonical contract, or check candidate Prolog terms against it.</p>
         <div class="data-actions">
@@ -1701,6 +1713,22 @@ $("#misconception-witness-btn").addEventListener("click", async function(){
   payload.op=$("#misconception-witness-op").value; out.hidden=false; out.textContent="requesting…";
   try { const response=await postJSON("/api/witness/misconception",payload); out.textContent=JSON.stringify(response.data,null,2)||"The route returned an empty reply."; }
   catch(error) { out.textContent="The request failed: the Hermes server did not answer, or answered with something other than JSON."; }
+});
+$("#misconception-pml-btn").addEventListener("click", async function(){
+  const out=$("#misconception-pml-out");
+  const misconception=$("#misconception-pml-name").value.trim();
+  const payload={op:"misconception_pml_map"};
+  if(misconception) payload.misconception=misconception;
+  out.hidden=false;
+  out.innerHTML="<em class='muted-inline'>loading recorded connections…</em>";
+  try {
+    const response=await postJSON("/api/witness/misconception",payload);
+    const result=response.data&&response.data.result;
+    if(!result){ out.textContent=(response.data&&response.data.error)||"The route returned no recorded connections."; return; }
+    const rows=(result.pairs||[]).map(pair=>`<tr><td><code>${esc(pair.source_tag)}</code></td><td>${esc(pair.misconception)}</td><td><code>${esc(pair.operator)}</code></td></tr>`).join("");
+    out.innerHTML=`<p class="analysis-note"><b>${esc(result.count)}</b> RECORDED connection${result.count===1?"":"s"}. ${esc(result.provenance)}.</p>`+
+      (rows?`<table class="rtable"><thead><tr><th>source tag</th><th>misconception</th><th>PML operator</th></tr></thead><tbody>${rows}</tbody></table>`:"<p class='muted-inline'>No recorded connection matches that name.</p>");
+  } catch(error) { out.textContent="The request failed: the Hermes server did not answer, or answered with something other than JSON."; }
 });
 $("#canonical-contract-btn").addEventListener('click', loadCanonicalContract);
 $("#canonical-check-btn").addEventListener('click', runCanonicalCheck);
