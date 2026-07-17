@@ -39,7 +39,7 @@
                                      recollection_to_integer/2,
                                      add_grounded/3,
                                      successor/2]).
-:- use_module(arche_trace(sequent_engine), [s/1, comp_nec/1, exp_poss/1]).
+:- use_module(pml(pml_operators), [s/1, 'comp_nec'/1, 'exp_poss'/1]).
 :- use_module(math(cgi_base), [current_cgi_base/1]).
 
 %!      run_c2c(+N:integer, +S:integer, -FinalTotal:integer, -History:list) is det.

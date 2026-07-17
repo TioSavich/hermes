@@ -26,7 +26,7 @@
 :- use_module(library(lists)).
 :- use_module(formalization(grounded_arithmetic)).
 :- use_module(formalization(grounded_utils)).
-:- use_module(arche_trace(sequent_engine), [s/1, comp_nec/1, exp_poss/1]).
+:- use_module(pml(pml_operators), [s/1, 'comp_nec'/1, 'exp_poss'/1]).
 
 %!      run_cobo(+A:integer, +B:integer, -FinalSum:integer, -History:list) is det.
 %

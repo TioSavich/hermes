@@ -263,6 +263,26 @@ def call(base: str, path: str, payload: dict | None = None,
     return status, (json.loads(body) if ctype_json else body)
 
 
+def strict_prolog_preflight(tree: Path, swipl: str | None,
+                            report: Report) -> bool:
+    if not swipl:
+        report.add("FAIL", "Prolog runtime loads strictly", "swipl not found")
+        return False
+    env = dict(os.environ)
+    env["UMEDCTA_ROOT"] = str(tree)
+    proc = subprocess.run(
+        [swipl, "--on-error=status", "--on-warning=status", "-q",
+         "-l", "hermes_worker.pl", "-g", "load_runtime, halt."],
+        cwd=tree, env=env, capture_output=True, text=True, timeout=600,
+    )
+    if proc.returncode != 0:
+        diagnostics = "".join((proc.stdout, proc.stderr)).rstrip()
+        report.add("FAIL", "Prolog runtime loads strictly", diagnostics)
+        return False
+    report.add("PASS", "Prolog runtime loads strictly")
+    return True
+
+
 def live_probes(tree: Path, python: str, swipl: str | None,
                 report: Report) -> None:
     env = dict(os.environ)
@@ -517,8 +537,10 @@ def main() -> int:
     if not args.static_only:
         print("— report chain —")
         chain_check(tree, args.python, report)
-        print("— live probes —")
-        live_probes(tree, args.python, args.swipl, report)
+        print("— Prolog preflight —")
+        if strict_prolog_preflight(tree, args.swipl, report):
+            print("— live probes —")
+            live_probes(tree, args.python, args.swipl, report)
 
     if tmp and args.keep:
         print(f"kept staging dir: {tree}")

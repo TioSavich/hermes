@@ -28,6 +28,7 @@
 :- op(500, fx, neg).
 
 :- dynamic worker_root/1.
+:- discontiguous dispatch_request/4.
 :- prolog_load_context(directory, Dir),
    asserta(worker_root(Dir)).
 
@@ -80,12 +81,12 @@ load_runtime :-
     use_module(pml(trace_adjudication), []),
     use_module(hermes(encyclopedia)),
     use_module(hermes(commitment_matcher), []),
-    use_module(arche_trace(embodied_prover)),
+    use_module(arche_trace(embodied_prover), []),
     use_module(arche_trace(sequent_engine), []),
     use_module(arche_trace(critique)),
-    use_module(arche_trace(defeasible_inference)),
+    use_module(arche_trace(defeasible_inference), []),
     use_module(arche_trace(incompatibility_discovery)),
-    use_module(arche_trace(incompatibility_sets)),
+    use_module(arche_trace(incompatibility_sets), []),
     % The Brandomian incompatibility bridge. Selective import: only the union
     % incoherence front end and the backstop audit, to avoid the
     % incompatibility_entails/2 and => operator clashes the full module carries.
@@ -97,41 +98,7 @@ load_runtime :-
                [ brandom_backstop/1, brandom_backstop_ok/0,
                  b_proves/1, b_incoherent/1 ]),
     load_axiom_pack_audit(Root),
-    use_module(crosswalk('families/cw_viability')),
-    use_module(crosswalk('families/cw_axiom_pack'), []),
-    use_module(crosswalk('families/cw_modal_context')),
-    use_module(crosswalk('families/cw_grounded_arith'), []),
-    use_module(crosswalk('families/cw_material_inference')),
-    use_module(crosswalk('families/cw_normative_crisis')),
-    use_module(crosswalk('families/cw_metaphor_break')),
-    use_module(crosswalk('families/cw_grounding_metaphor')),
-    use_module(crosswalk('families/cw_sequent_proof'), []),
-    use_module(crosswalk('families/cw_mua_coherence'), []),
-    use_module(crosswalk('families/cw_unit_coordination'), []),
-    use_module(crosswalk('families/cw_godel_primes'), []),
-    use_module(crosswalk('families/cw_fsm_engine'), []),
-    use_module(crosswalk('families/cw_action_cluster'), []),
-    use_module(crosswalk('families/cw_practice_vocabulary'), []),
-    use_module(crosswalk('families/cw_accommodation'), []),
-    use_module(crosswalk('families/cw_domain_context'), []),
-    use_module(crosswalk('families/cw_orr_entry'), []),
-    use_module(crosswalk('families/cw_executable_practice'), []),
-    use_module(crosswalk('families/cw_misconception_hook'), []),
-    use_module(crosswalk('families/cw_algebra_claim'), []),
-    use_module(crosswalk('families/cw_integer_signed_claim'), []),
-    use_module(crosswalk('families/cw_arithmetic_property_claim'), []),
-    use_module(crosswalk('families/cw_calculus_claim'), []),
-    use_module(crosswalk('families/cw_counting_claim'), []),
-    use_module(crosswalk('families/cw_whole_number_addsub_claim'), []),
-    use_module(crosswalk('families/cw_ratio_proportion_claim'), []),
-    use_module(crosswalk('families/cw_magnitude_equivalence_claim'), []),
-    use_module(crosswalk('families/cw_multiplication_division_claim'), []),
-    use_module(crosswalk('families/cw_decimal_claim'), []),
-    use_module(crosswalk('families/cw_place_value_number_claim'), []),
-    use_module(crosswalk('families/cw_whole_number_claim'), []),
-    use_module(crosswalk('families/cw_fraction_extra_claim'), []),
-    use_module(crosswalk('families/cw_fraction_claim'), []),
-    use_module(crosswalk('families/cw_productive_deformation'), []),
+    use_module(crosswalk(canonical_all), []),
     % T0 representation spine: concept -> visual surface routing + manifest assets.
     use_module(crosswalk(representation_spine), []),
     use_module(standards(indiana/standard_k_ca_1_3), []),
@@ -154,10 +121,6 @@ load_runtime :-
     use_module(standards(indiana/standard_3_ca_5), []),
     use_module(standards(indiana/standard_3_ns_2), []),
     use_module(standards(indiana/standard_3_ns_5), []),
-    % Canonical vocabulary layer (the legal-vocabulary contract for this loop).
-    % Best-effort: a load failure must never take the worker down.
-    catch(use_module(crosswalk(canonical_all)), CanonErr,
-          ( print_message(warning, CanonErr), true )),
     % Render scene compilers for the visualization ops (Goal H). Loaded last and
     % import-free ([]): every dispatch clause calls them by explicit
     % module:pred qualification, so nothing is imported into `user`, and loading
@@ -479,6 +442,7 @@ op_error(Id, Op, Error, Response) :-
 
 dispatch_request(health, Id, _Request, Response) :-
     ok_response(Id, _{
+        crosswalk_family_count: 38,
         worker: "hermes_swi",
         loaded: ["event_scoring", "pair_scoring", "critique", "defeasible_inference", "incompatibility_sets", "sequent_brandom_bridge", "brandomian_incompatibility", "find_emergent_hyperedges", "lesson_gap", "corpus_attested_grammar", "lesson_notation_chart", "lesson_monitoring_selector", "automaton_analyzer", "semantic_axioms", "intersubjective_praxis", "mua_relations", "media_alignment", "gesture_alignment", "discourse_features", "discourse_pragmatics", "trace_adjudication", "embodied_prover", "sequent_engine", "deontic_scorekeeper", "axiom_pack_audit", "geometry", "misconception_registry", "misconceptions", "misconception_render_coverage", "lesson_monitoring", "field_context", "field_connectivity_audit", "grounding_metaphors", "encyclopedia", "visualization", "fraction_bars_scene", "balance_scale_scene", "cw_viability", "cw_axiom_pack", "cw_modal_context", "cw_grounded_arith", "cw_material_inference", "cw_normative_crisis", "cw_metaphor_break", "cw_grounding_metaphor", "cw_sequent_proof", "cw_mua_coherence", "cw_unit_coordination", "cw_godel_primes", "cw_fsm_engine", "cw_action_cluster", "cw_practice_vocabulary", "cw_accommodation", "cw_domain_context", "cw_orr_entry", "cw_executable_practice", "cw_misconception_hook", "cw_algebra_claim", "cw_integer_signed_claim", "cw_arithmetic_property_claim", "cw_calculus_claim", "cw_counting_claim", "cw_whole_number_addsub_claim", "cw_ratio_proportion_claim", "cw_magnitude_equivalence_claim", "cw_multiplication_division_claim", "cw_decimal_claim", "cw_place_value_number_claim", "cw_whole_number_claim", "cw_fraction_extra_claim", "cw_fraction_claim", "cw_productive_deformation", "standard_k_ca_1_3", "standard_k_ns_1", "standard_k_ns_2", "standard_k_ns_3", "standard_k_ns_4", "standard_k_ns_5_6", "standard_k_ns_7", "standard_1_ns_1", "standard_1_ns_2", "standard_1_ca_1", "standard_1_ca_3", "standard_2_ca_2", "standard_2_ns_1", "standard_2_ns_2_4", "standard_2_ns_3", "standard_2_ns_5", "standard_3_ca_3_4", "standard_3_ca_5", "standard_3_ns_2", "standard_3_ns_5", "canonical_vocabulary", "representation_spine"],
         ops: ["health", "event_score", "batch_event_score", "media_alignment", "gesture_alignment", "discourse_features", "discourse_pragmatics", "trace_adjudication", "pair_score", "pair_graph", "pair_candidate_witness", "critique_bad_infinite", "defeasible_classify", "deontic_requires_entitlement", "deontic_scorecard", "deontic_crisis", "deontic_consequences", "deontic_up_level", "axiom_hierarchy_witness", "axiom_pack_witness", "robinson_axiom_witness", "semantic_material_witness", "incoherent_witness", "eml_transition_witness", "number_theory_self_defeat_witness", "embodied_proof_witness", "viability_witness", "modal_context_witness", "grounded_arith_witness", "material_inference_witness", "normative_crisis_witness", "metaphor_break_witness", "grounding_metaphor_witness", "sequent_proof_witness", "unit_coordination_witness", "godel_primes_witness", "fsm_engine_witness", "action_cluster_witness", "practice_vocabulary_witness", "accommodation_witness", "domain_context_witness", "orr_entry_witness", "executable_practice_witness", "misconception_hook_witness", "algebra_claim_witness", "integer_signed_claim_witness", "arithmetic_property_witness", "calculus_claim_witness", "counting_claim_witness", "standard_k_ca_1_3_complement_witness", "standard_k_ns_1_count_by_ones_witness", "standard_k_ns_2_represent_count_witness", "standard_k_ns_3_order_independence_witness", "standard_k_ns_4_verify_subitizing_witness", "standard_k_ns_5_6_compare_groups_witness", "standard_k_ns_7_place_value_witness", "standard_1_ns_1_count_by_fives_witness", "standard_1_ns_2_place_value_witness", "standard_1_ca_1_making_ten_witness", "standard_1_ca_3_add_by_place_value_witness", "standard_2_ca_2_add_three_digit_witness", "standard_2_ns_1_count_by_twos_witness", "standard_2_ns_2_4_place_value_witness", "standard_2_ns_3_parity_witness", "standard_2_ns_5_place_value_comparison_witness", "standard_3_ca_3_4_fact_family_witness", "standard_3_ca_5_mult_skip_count_witness", "standard_3_ns_2_unit_fraction_witness", "standard_3_ns_5_fraction_comparison_witness", "misconception_jumps_witness", "balance_solve_witness", "whole_number_addsub_claim_witness", "ratio_proportion_claim_witness", "magnitude_equivalence_claim_witness", "multiplication_division_claim_witness", "decimal_claim_witness", "place_value_number_claim_witness", "whole_number_claim_witness", "fraction_extra_claim_witness", "fraction_claim_witness", "productive_deformation_witness", "geometry_entailment_witness", "incompatibility_discovery_witness", "incompatibility_entailment_witness", "misconception_incompatibility_witness", "intersubjective_material_witness", "mua_kind_coherence_witness", "mua_coherence_witness", "grounding_inference_witness", "target_expressive_power_witness", "lesson_misconception_incompatibility_witness", "geometry_material_profile_witness", "geometry_quadrilateral_entailment_witness", "geometry_strength_lift_coverage_witness", "geometry_van_hiele_material_witness", "geometry_van_hiele_marker_witness", "geometry_cross_link_witness", "geometry_developmental_arc_witness", "geometry_attribute_material_witness", "geometry_similarity_material_witness", "geometry_pythagorean_material_witness", "geometry_van_hiele_level_material_witness", "geometry_measurement_misconception_witness", "geometry_n103_bootstrap_witness", "geometry_van_de_walle_bootstrap_witness", "geometry_shape_recognition_material_witness", "geometry_coordinate_material_witness", "geometry_angle_material_witness", "geometry_area_perimeter_material_witness", "geometry_volume_surface_area_material_witness", "geometry_transformation_material_witness", "geometry_classification_material_witness", "geometry_pck_classification_witness", "geometry_measuring_stick_metaphor_witness", "geometry_lakoff_nunez_metaphor_witness", "geometry_synthesizer_anchor_material_witness", "geometry_synthesizer_triangulation_witness", "geometry_ccss_standard_witness", "geometry_indiana_standard_witness", "geometry_im_grade8_lesson_standard_witness", "geometry_im_grade7_lesson_standard_witness", "geometry_im_grade6_lesson_standard_witness", "geometry_im_grade5_standard_anchor_witness", "geometry", "diagnose_error", "query_misconception", "monitoring_chart_export", "field_context", "field_connectivity_audit", "render_coverage", "expressive_power", "list_strategies", "strategy_trace", "fraction_render", "fraction_compare", "area_render", "base_ten_render", "set_grouping_render", "balance_render", "number_line_render", "area_compare", "base_ten_compare", "set_grouping_compare", "balance_compare", "number_line_compare", "teacher_layer", "primitive_for_practice", "image_schema", "multiply_array_witness", "mult_div_family_witness", "list_misconceptions", "list_standards", "grounding_metaphors", "grounding_for", "ground", "lit_search", "canonical_contract", "canonical_check", "notation_render", "fraction_cgi_addition", "lesson_deformation_chart", "notation_monitoring_chart", "brandom_backstop", "brandomian_check", "hyperedges", "axiom_toggle", "corpus_grammar_summary", "elaborations", "carving_strategy_proof", "carving_operation_summary", "representation_spine_witness"],
@@ -3412,17 +3376,13 @@ dispatch_request(validate_reader_axioms, Id, Request, Response) :-
 % the scattered legacy functors it subsumes. The LLM-facing side reads this to
 % know which terms are legal; swipl owns the mapping.
 dispatch_request(canonical_contract, Id, _Request, Response) :-
-    (   current_predicate(canonical_all:contract/3)
-    ->  findall(_{canonical: CS, module: MS, legacy: LS},
-                ( canonical_all:contract(C, M, L),
-                  term_string(C, CS), term_string(M, MS),
-                  maplist(term_string, L, LS) ),
-                Entries),
-        length(Entries, N),
-        ok_response(Id, _{vocabulary: Entries, count: N}, Response)
-    ;   error_response(Id, canonical_unavailable,
-            "canonical vocabulary layer is not loaded", Response)
-    ).
+    findall(_{canonical: CS, module: MS, legacy: LS},
+            ( canonical_all:contract(C, M, L),
+              term_string(C, CS), term_string(M, MS),
+              maplist(term_string, L, LS) ),
+            Entries),
+    length(Entries, N),
+    ok_response(Id, _{vocabulary: Entries, count: N}, Response).
 
 % canonical_check: judge a list of functor-name strings (as the LLM might emit)
 % against the legal vocabulary. Each is classified canonical | legacy | unknown,
@@ -3802,13 +3762,11 @@ canonical_base_name(A, Base) :-
 % A base name is canonical if it is a contract label, OR that label + '_unified'
 % (the family query predicates are <concept>_unified; wave 1 uses the bare name).
 canonical_label_for(Base, C) :-
-    current_predicate(canonical_all:contract/3),
     canonical_all:contract(C, _, _),
     ( C == Base ; atom_concat(C, '_unified', Base) ),
     !.
 
 canonical_legacy_match(A, Canon) :-
-    current_predicate(canonical_all:legacy_term/2),
     canonical_all:legacy_term(Legacy, Canon),
     (   Legacy == A
     ;   atomic_list_concat(Parts, ':', Legacy), last(Parts, Bare), Bare == A

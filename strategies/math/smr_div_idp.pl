@@ -45,7 +45,7 @@
                                     subtract_grounded/3, smaller_than/2,
                                     greater_than/2]).
 :- use_module(formalization(grounded_utils), [is_zero_grounded/1, is_positive_grounded/1]).
-:- use_module(arche_trace(sequent_engine), [s/1, comp_nec/1, exp_poss/1]).
+:- use_module(pml(pml_operators), [s/1, 'comp_nec'/1, 'exp_poss'/1]).
 :- use_module(learner(more_machine_learner), [run_learned_strategy/5]).
 :- use_module(learner(fsm_synthesis_engine), [int_to_peano/2, peano_to_int/2]).
 :- use_module(math(cgi_base), [current_cgi_base/1]).

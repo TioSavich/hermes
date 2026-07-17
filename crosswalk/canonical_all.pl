@@ -7,7 +7,10 @@
 :- module(canonical_all,
           [ contract/3,        % contract(?Canonical, ?Module, ?LegacyFunctors)
             legal_term/1,      % legal_term(?CanonicalName)  — a legal canonical vocabulary term
-            legacy_term/2      % legacy_term(?LegacyFunctor, ?Canonical)
+            legacy_term/2,     % legacy_term(?LegacyFunctor, ?Canonical)
+            crosswalk_family/1,
+            crosswalk_family_count/1,
+            validate_crosswalk_families/0
           ]).
 
 :- reexport(crosswalk(canonical_vocabulary), [incompatible/3, incoherent/2]).
@@ -55,48 +58,64 @@
 :- reexport(crosswalk('families/cw_whole_number_addsub_claim'), [whole_number_addsub_claim_unified/3]).
 :- reexport(crosswalk('families/cw_whole_number_claim'), [whole_number_claim_unified/3]).
 
-% --- Contract aggregator (the legal-vocabulary surface for the neuro-symbolic loop) ---
-% Each family module keeps vocabulary_source/2 module-local; we range over them.
+% --- Expected family registry and contract aggregator ---
 
+crosswalk_family(cw_accommodation).
+crosswalk_family(cw_action_cluster).
+crosswalk_family(cw_algebra_claim).
+crosswalk_family(cw_arithmetic_property_claim).
+crosswalk_family(cw_axiom_pack).
+crosswalk_family(cw_calculus_claim).
+crosswalk_family(cw_counting_claim).
+crosswalk_family(cw_decimal_claim).
+crosswalk_family(cw_deontic_incoherence).
+crosswalk_family(cw_domain_context).
+crosswalk_family(cw_executable_practice).
+crosswalk_family(cw_fraction_claim).
+crosswalk_family(cw_fraction_extra_claim).
+crosswalk_family(cw_fsm_engine).
+crosswalk_family(cw_godel_primes).
+crosswalk_family(cw_grounded_arith).
+crosswalk_family(cw_grounding_metaphor).
+crosswalk_family(cw_integer_signed_claim).
+crosswalk_family(cw_magnitude_equivalence_claim).
+crosswalk_family(cw_material_inference).
+crosswalk_family(cw_metaphor_break).
+crosswalk_family(cw_misconception_hook).
+crosswalk_family(cw_modal_context).
+crosswalk_family(cw_mua_coherence).
+crosswalk_family(cw_multiplication_division_claim).
+crosswalk_family(cw_normative_crisis).
+crosswalk_family(cw_orr_entry).
+crosswalk_family(cw_place_value_number_claim).
+crosswalk_family(cw_practice_vocabulary).
+crosswalk_family(cw_productive_deformation).
+crosswalk_family(cw_ratio_proportion_claim).
+crosswalk_family(cw_sequent_proof).
+crosswalk_family(cw_strategy_action_kind).
+crosswalk_family(cw_stress_map).
+crosswalk_family(cw_unit_coordination).
+crosswalk_family(cw_viability).
+crosswalk_family(cw_whole_number_addsub_claim).
+crosswalk_family(cw_whole_number_claim).
+
+crosswalk_family_count(Count) :-
+    aggregate_all(count, crosswalk_family(_), Count).
+
+validate_crosswalk_families :-
+    (   crosswalk_family(Family),
+        \+ current_module(Family)
+    ->  throw(error(existence_error(crosswalk_family, Family),
+                    canonical_all:validate_crosswalk_families/0))
+    ;   true
+    ).
+
+:- initialization(validate_crosswalk_families, after_load).
+
+% Each family module keeps vocabulary_source/2 module-local; range over the
+% explicit registry so validation and contract aggregation cannot drift apart.
 crosswalk_module(canonical_vocabulary).
-crosswalk_module(cw_accommodation).
-crosswalk_module(cw_action_cluster).
-crosswalk_module(cw_algebra_claim).
-crosswalk_module(cw_arithmetic_property_claim).
-crosswalk_module(cw_axiom_pack).
-crosswalk_module(cw_calculus_claim).
-crosswalk_module(cw_counting_claim).
-crosswalk_module(cw_decimal_claim).
-crosswalk_module(cw_deontic_incoherence).
-crosswalk_module(cw_domain_context).
-crosswalk_module(cw_executable_practice).
-crosswalk_module(cw_fraction_claim).
-crosswalk_module(cw_fraction_extra_claim).
-crosswalk_module(cw_fsm_engine).
-crosswalk_module(cw_godel_primes).
-crosswalk_module(cw_grounded_arith).
-crosswalk_module(cw_grounding_metaphor).
-crosswalk_module(cw_integer_signed_claim).
-crosswalk_module(cw_magnitude_equivalence_claim).
-crosswalk_module(cw_material_inference).
-crosswalk_module(cw_metaphor_break).
-crosswalk_module(cw_misconception_hook).
-crosswalk_module(cw_modal_context).
-crosswalk_module(cw_mua_coherence).
-crosswalk_module(cw_multiplication_division_claim).
-crosswalk_module(cw_normative_crisis).
-crosswalk_module(cw_orr_entry).
-crosswalk_module(cw_place_value_number_claim).
-crosswalk_module(cw_practice_vocabulary).
-crosswalk_module(cw_productive_deformation).
-crosswalk_module(cw_ratio_proportion_claim).
-crosswalk_module(cw_sequent_proof).
-crosswalk_module(cw_strategy_action_kind).
-crosswalk_module(cw_stress_map).
-crosswalk_module(cw_unit_coordination).
-crosswalk_module(cw_viability).
-crosswalk_module(cw_whole_number_addsub_claim).
-crosswalk_module(cw_whole_number_claim).
+crosswalk_module(Module) :- crosswalk_family(Module).
 
 %! contract(?Canonical, ?Module, ?LegacyFunctors) is nondet.
 contract(Canonical, Module, Legacy) :-
@@ -110,4 +129,3 @@ legal_term(Canonical) :- contract(Canonical, _, _).
 legacy_term(Legacy, Canonical) :-
     contract(Canonical, _, Legacies),
     member(Legacy, Legacies).
-

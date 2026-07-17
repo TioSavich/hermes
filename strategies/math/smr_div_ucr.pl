@@ -23,7 +23,7 @@
 :- use_module(formalization(grounded_arithmetic), [incur_cost/1, integer_to_recollection/2,
                                     recollection_to_integer/2, add_grounded/3,
                                     successor/2, smaller_than/2, greater_than/2]).
-:- use_module(arche_trace(sequent_engine), [s/1, comp_nec/1, exp_poss/1]).
+:- use_module(pml(pml_operators), [s/1, 'comp_nec'/1, 'exp_poss'/1]).
 
 %!      run_ucr(+E:integer, +G:integer, -FinalQuotient:integer, -History:list) is det.
 %

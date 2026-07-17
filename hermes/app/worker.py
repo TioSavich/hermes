@@ -120,7 +120,8 @@ class PersistentPrologWorker:
         env["UMEDCTA_ROOT"] = str(self.umedcta_root)
         worker_pl = self.umedcta_root / "hermes_worker.pl"
         self._proc = subprocess.Popen(
-            [self.swipl, "-q", "-s", str(worker_pl), "-g", "worker_main"],
+            [self.swipl, "--on-error=status", "-q", "-s", str(worker_pl),
+             "-g", "worker_main"],
             cwd=str(self.umedcta_root),
             env=env,
             stdin=subprocess.PIPE,

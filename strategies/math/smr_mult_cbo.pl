@@ -33,7 +33,7 @@
                                   integer_to_recollection/2, recollection_to_integer/2,
                                   add_grounded/3, subtract_grounded/3, successor/2,
                                   zero/1, incur_cost/1]).
-:- use_module(arche_trace(sequent_engine), [s/1, comp_nec/1, exp_poss/1]).
+:- use_module(pml(pml_operators), [s/1, 'comp_nec'/1, 'exp_poss'/1]).
 
 %!      run_cbo_mult(+N:integer, +S:integer, +Base:integer, -FinalTotal:integer, -History:list) is det.
 %

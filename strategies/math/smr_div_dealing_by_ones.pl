@@ -24,7 +24,7 @@
                                      recollection_to_integer/2, successor/2,
                                      predecessor/2, greater_than/2, smaller_than/2]).
 :- use_module(formalization(grounded_utils), [base_decompose_grounded/4, is_positive_grounded/1]).
-:- use_module(arche_trace(sequent_engine), [s/1, comp_nec/1, exp_poss/1]).
+:- use_module(pml(pml_operators), [s/1, 'comp_nec'/1, 'exp_poss'/1]).
 
 %! run_dealing_by_ones(+T:int, +N:int, -FinalQuotient:int, -History:list) is det.
 

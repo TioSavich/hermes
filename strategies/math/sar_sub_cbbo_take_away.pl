@@ -41,7 +41,7 @@
                                   incur_cost/1]).
 :- use_module(formalization(grounded_utils), [base_decompose_grounded/4, base_recompose_grounded/4,
                              is_zero_grounded/1, is_positive_grounded/1]).
-:- use_module(arche_trace(sequent_engine), [s/1, comp_nec/1, exp_poss/1]).
+:- use_module(pml(pml_operators), [s/1, 'comp_nec'/1, 'exp_poss'/1]).
 :- use_module(math(cgi_base), [current_cgi_base/1]).
 
 %!      run_cbbo_ta(+M:integer, +S:integer, -FinalResult:integer, -History:list) is det.

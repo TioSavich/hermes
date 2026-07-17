@@ -192,7 +192,8 @@ def worker_closure() -> list[str]:
     """Ask SWI-Prolog which files the worker's load_runtime/0 actually loads."""
     goal = "load_runtime, forall(source_file(F), (write(F), nl)), halt."
     out = subprocess.run(
-        ["swipl", "-q", "-l", "hermes_worker.pl", "-g", goal],
+        ["swipl", "--on-error=status", "--on-warning=status",
+         "-q", "-l", "hermes_worker.pl", "-g", goal],
         cwd=REPO, capture_output=True, text=True, timeout=600,
     )
     if out.returncode != 0:

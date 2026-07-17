@@ -49,9 +49,3 @@
 % load.pl is the documented full arche-trace stack entry point.
 :- use_module(brandomian_incompatibility).
 :- use_module(sequent_brandom_bridge).
-
-% =================================================================
-% Initialization
-% =================================================================
-
-:- initialization(writeln('PML Core Framework Loaded.')).

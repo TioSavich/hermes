@@ -23,7 +23,7 @@
                                      integer_to_recollection/2,
                                      recollection_to_integer/2]).
 :- use_module(formalization(grounded_utils), [is_zero_grounded/1]).
-:- use_module(arche_trace(sequent_engine), [s/1, comp_nec/1, exp_poss/1]).
+:- use_module(pml(pml_operators), [s/1, 'comp_nec'/1, 'exp_poss'/1]).
 
 %!      run_counting_back(+M:integer, +S:integer, -FinalResult:integer, -History:list) is det.
 %

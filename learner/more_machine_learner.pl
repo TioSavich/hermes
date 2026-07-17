@@ -54,11 +54,8 @@ knowledge_file('learned_knowledge.pl').
 load_knowledge :-
     knowledge_file(File),
     (   exists_file(File)
-    ->  consult(File),
-        findall(_, clause(run_learned_strategy(_,_,_,_,_), _), Clauses),
-        length(Clauses, Count),
-        format('~N[Learner Init] Successfully loaded ~w learned strategies.~n', [Count])
-    ;   format('~N[Learner Init] Knowledge file not found. Starting fresh.~n')
+    ->  consult(File)
+    ;   true
     ).
 
 % Ensure initialization runs after the predicate is defined
