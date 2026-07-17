@@ -86,6 +86,10 @@
   .claim-pic { min-width: 150px; }
   .claim-pic svg { display: block; width: 170px; height: auto; }
   .claim-pic .pic-note { font-size: .72rem; color: var(--muted, #7a7466); }
+  .event-tools { margin-top: 28px; padding: 18px 22px; border: 1px solid var(--line, rgba(13,12,8,.16)); border-radius: 12px; background: rgba(255,253,247,.7); }
+  .event-tools textarea { width: 100%; min-height: 9rem; resize: vertical; font: .78rem/1.45 var(--mono, monospace); padding: 10px; border: 1px solid var(--line, rgba(13,12,8,.16)); border-radius: 6px; background: var(--paper, #f4ead6); color: var(--ink, #0d0c08); }
+  .event-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
+  .event-tools pre { white-space: pre-wrap; overflow-wrap: anywhere; font: .76rem/1.45 var(--mono, monospace); color: var(--muted, #665f4f); }
 </style>
 </head>
 <body>
@@ -141,11 +145,45 @@
   <div class="cards" id="prepared-cards"><span class="status">Looking for the prepared set on the server…</span></div>
 
   <div id="report"></div>
+
+  <section class="event-tools">
+    <h2 class="sec"><span class="num">3</span>Blinded event scoring</h2>
+    <p class="sec-hint">Paste a pseudonymized canonical event object or an array of events.
+      Do not put student work in this field. Pair graph requests require the verified gate;
+      unsafe fields and locked requests are reported without a substitute result.</p>
+    <textarea id="event-json">[
+  {"event_id":"ev_0001","source":{"source_type":"n103_discussion","metadata":{"domain":"geometry","topic":"unknown"}},"actor":{"role":"student","pseudonym":"S01"},"substrate":{"utterance_type":"assertion","observed_markers":["unknown"],"candidate_terms":[],"confidence":0.35},"symbolic":{"commitments":["low_information_geometry_claim"],"entitlements":[],"missing_requirements":[],"incompatibilities":[],"material_inferences":[{"handle":"unknown_material_inference","frame":"inference_transition_frame","polarity":"expansive"}],"literature_handles":[],"residuals":["no_geometry_signal_detected"]},"pml":{"mode":"objective","polarity":"expansive","force":"binding","operator":"exp_poss","validity_focus":["objective_truth"],"pragmatic_horizon_level":"background","status":"candidate","confidence":0.35},"carspecken":{"action_impetus":"surface_unknown_validity_claim","identity_claim":null,"identity_cost":0.25,"recognition_risk":"low","proprioceptive_delta":"expansion","internalized_audience":"n103_geometry_discussion_norm","infinite_seed":false,"apophatic_guardrail":"Do not diagnose the learner or quote student work."},"question_candidates":[],"status":"pml_annotated"},
+  {"event_id":"ev_0002","source":{"source_type":"n103_discussion","metadata":{"domain":"geometry","topic":"inclusive_shape_hierarchy"}},"actor":{"role":"student","pseudonym":"S02"},"substrate":{"utterance_type":"assertion","observed_markers":["inclusive_shape_hierarchy","misconception"],"candidate_terms":["square_not_rectangle"],"confidence":0.69},"symbolic":{"commitments":["square_not_rectangle"],"entitlements":[],"missing_requirements":["inclusive_shape_hierarchy_defining_attribute_warrant"],"incompatibilities":["square_not_rectangle"],"material_inferences":[{"handle":"class_inclusion_by_defining_attributes","frame":"category_membership_frame","polarity":"expansive"}],"literature_handles":["square_not_rectangle"],"residuals":[]},"pml":{"mode":"objective","polarity":"expansive","force":"binding","operator":"exp_poss","validity_focus":["objective_truth"],"pragmatic_horizon_level":"foreground","status":"candidate","confidence":0.69},"carspecken":{"action_impetus":"repair_inclusive_shape_hierarchy_classification","identity_claim":null,"identity_cost":0.65,"recognition_risk":"medium","proprioceptive_delta":"expansion","internalized_audience":"n103_geometry_discussion_norm","infinite_seed":false,"apophatic_guardrail":"Do not diagnose the learner or quote student work."},"question_candidates":[],"status":"pml_annotated"}
+]</textarea>
+    <div class="event-actions">
+      <button class="btn ghost" id="event-score">Score event or batch</button>
+      <button class="btn ghost" id="pair-graph">Build pair graph</button>
+      <span class="status" id="event-status"></span>
+    </div>
+    <pre id="event-output"></pre>
+  </section>
 </main>
 
 <script>
 const $ = (id) => document.getElementById(id);
 function esc(s){ return String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+async function runEventRoute(path){
+  const status = $("event-status"), output = $("event-output");
+  let parsed;
+  try { parsed = JSON.parse($("event-json").value); }
+  catch (e) { status.textContent = "The event text is not valid JSON."; status.className = "status err"; output.textContent = ""; return; }
+  const body = Array.isArray(parsed) ? {events: parsed} : {event: parsed};
+  status.textContent = "Requesting…"; status.className = "status"; output.textContent = "";
+  let response, data;
+  try {
+    response = await fetch(path, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(path === "/api/pair_graph" ? {events: Array.isArray(parsed) ? parsed : [parsed]} : body)});
+    data = await response.json();
+  } catch (e) { status.textContent = "The Hermes server did not return JSON for this request."; status.className = "status err"; return; }
+  status.textContent = response.ok ? "Request completed." : "Request rejected with HTTP " + response.status + ".";
+  status.className = response.ok ? "status" : "status err";
+  output.textContent = JSON.stringify(data, null, 2) || "The route returned an empty reply.";
+}
 
 /* -------- baked sample discussions (work offline) -------- */
 const SAMPLES = [
@@ -415,6 +453,8 @@ function rerun(){
 }
 
 $("run").onclick = () => { const t = $("paste").value.trim(); if (t) post(t, "pasted", ""); else { $("status").textContent = "Paste a transcript or load a sample first."; } };
+$("event-score").onclick = () => runEventRoute("/api/event_score");
+$("pair-graph").onclick = () => runEventRoute("/api/pair_graph");
 
 renderSampleCards();
 loadPrepared();

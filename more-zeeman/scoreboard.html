@@ -61,6 +61,8 @@
                        padding: 0.35rem 0.8rem; cursor: pointer; }
     .controls button:hover { border-color: var(--lx); }
     .source-line { margin-top: 0.5rem; font-size: 0.82rem; color: var(--muted); }
+    .route-output { white-space: pre-wrap; overflow-wrap: anywhere; margin-top: 0.6rem;
+                    font: 0.76rem/1.45 'IBM Plex Mono', monospace; color: var(--muted); }
   </style>
 </head>
 <body>
@@ -83,8 +85,10 @@
     <label>lesson <input class="lesson mono" id="lesson-input" value="IM-G1-U3-L17"></label>
     <label>Hermes <input class="base mono" id="base-input" value="http://127.0.0.1:8765"></label>
     <button id="load-btn" type="button">load chart</button>
+    <button id="rank-btn" type="button">rank figures</button>
   </div>
   <p class="source-line" id="source-line"></p>
+  <pre class="route-output" id="rank-output"></pre>
 
   <section id="power"></section>
   <section id="core"></section>
@@ -283,6 +287,22 @@
     }
 
     document.getElementById('load-btn').addEventListener('click', load);
+    document.getElementById('rank-btn').addEventListener('click', function () {
+      const lessonCode = (document.getElementById('lesson-input').value || '').trim();
+      const baseUrl = (document.getElementById('base-input').value || '').trim();
+      const out = document.getElementById('rank-output');
+      if (!lessonCode || !baseUrl) { out.textContent = 'A lesson code and Hermes URL are required.'; return; }
+      out.textContent = 'Requesting ranked figures…';
+      fetch(baseUrl.replace(/\/+$/, '') + '/api/ranked_figures', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({lesson_code: lessonCode})
+      }).then(async response => {
+        let data;
+        try { data = await response.json(); }
+        catch (e) { throw new Error('the server reply was not JSON (HTTP ' + response.status + ')'); }
+        out.textContent = JSON.stringify(data, null, 2) || 'The route returned an empty reply.';
+      }).catch(err => { out.textContent = 'Could not rank figures: ' + err.message + '.'; });
+    });
     document.getElementById('lesson-input').addEventListener('keydown', e => {
       if (e.key === 'Enter') load();
     });

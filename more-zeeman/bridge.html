@@ -794,6 +794,18 @@
     <div class="replay-bar"><div class="replay-fill" id="replay-fill"></div></div>
   </div>
 
+  <div class="controls phase-0" id="reorganize-panel">
+    <div class="controls-row">
+      <div class="field"><label>Reorganization domain</label><select id="reorg-domain"><option value="fraction_splitting">fraction splitting</option><option value="fraction_improper">improper fraction</option><option value="fraction_of_fraction">fraction of a fraction</option><option value="fraction_algebra">fraction algebra</option></select></div>
+      <div class="field"><label>A</label><input type="number" id="reorg-a" value="3"></div>
+      <div class="field"><label>B</label><input type="number" id="reorg-b" value="8"></div>
+      <div class="field"><label>C</label><input type="number" id="reorg-c" value="4"></div>
+      <div class="field"><label>D</label><input type="number" id="reorg-d" value="5"></div>
+      <button class="secondary" id="reorg-run" type="button">Run reorganization</button>
+    </div>
+    <pre id="reorg-output" style="white-space:pre-wrap;overflow-wrap:anywhere;color:var(--muted);font:0.75rem/1.45 'IBM Plex Mono',monospace;margin-top:.7rem;"></pre>
+  </div>
+
   <!-- ====== BAKED REPLAY CTA (visible when server offline) ====== -->
   <div class="replay-cta" id="replay-cta">
     <p>The Prolog server is offline. You can still see what a computation looks like.</p>
@@ -1681,6 +1693,23 @@ function stopReplay() {
 // API
 // =======================================================================
 const API = '';
+
+document.getElementById('reorg-run').addEventListener('click', async function () {
+  const output = document.getElementById('reorg-output');
+  const params = new URLSearchParams({
+    domain:document.getElementById('reorg-domain').value,
+    a:document.getElementById('reorg-a').value,
+    b:document.getElementById('reorg-b').value,
+    c:document.getElementById('reorg-c').value,
+    d:document.getElementById('reorg-d').value
+  });
+  output.textContent = 'Requesting…';
+  try {
+    const response = await fetch(API + '/api/reorganize?' + params.toString());
+    const data = await response.json();
+    output.textContent = JSON.stringify(data, null, 2) || 'The route returned an empty reply.';
+  } catch (e) { output.textContent = 'The Hermes server did not return JSON for this request.'; }
+});
 
 async function checkServer() {
   const el = document.getElementById('server-status');

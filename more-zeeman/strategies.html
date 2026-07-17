@@ -66,6 +66,9 @@
       color: var(--muted); min-height: 2.5rem; margin: 1rem 0;
       line-height: 1.5;
     }
+    .carving-controls { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.5rem; margin:.8rem 0; }
+    .carving-controls input,.carving-controls select { width:100%; padding:.35rem; font-family:'IBM Plex Mono',monospace; background:var(--bg); color:var(--text); border:1px solid var(--border); }
+    .carving-output { white-space:pre-wrap; overflow-wrap:anywhere; text-align:left; font:0.75rem/1.45 'IBM Plex Mono',monospace; color:var(--muted); }
   </style>
 </head>
 <body data-hshell-doc="1">
@@ -315,6 +318,20 @@
     But these strategies are flat machines. What happens when you need a
     strategy that calls a strategy that calls a strategy?
   </p>
+  <div class="interactive-box">
+    <p>Carving registry</p>
+    <p class="interactive-label">The summary reports coverage for one operation. The proof
+      request asks whether one arithmetic fact has a carving entitlement.</p>
+    <div class="carving-controls">
+      <label>operation<select id="carve-op"><option value="addition">addition</option><option value="subtraction">subtraction</option><option value="multiplication">multiplication</option><option value="division">division</option></select></label>
+      <label>x<input id="carve-x" type="number" value="3"></label>
+      <label>y<input id="carve-y" type="number" value="4"></label>
+      <label>z<input id="carve-z" type="number" value="7"></label>
+    </div>
+    <button class="try-it" id="carve-summary">Operation summary</button>
+    <button class="try-it" id="carve-proof">Fact proof</button>
+    <pre class="carving-output" id="carving-output"></pre>
+  </div>
 </div>
 
 <script>
@@ -399,6 +416,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (bar) bar.style.height = '0px';
   }
 });
+
+async function runCarving(path) {
+  const output = document.getElementById('carving-output');
+  const body = {operation:document.getElementById('carve-op').value};
+  if (path === '/api/carving_strategy_proof') {
+    ['x','y','z'].forEach(k => { body[k] = Number(document.getElementById('carve-' + k).value); });
+  }
+  output.textContent = 'Requesting…';
+  try {
+    const response = await fetch(path, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    const data = await response.json();
+    output.textContent = JSON.stringify(data, null, 2) || 'The route returned an empty reply.';
+  } catch (e) { output.textContent = 'The Hermes server did not return JSON for this request.'; }
+}
+document.getElementById('carve-summary').onclick = () => runCarving('/api/carving_operation_summary');
+document.getElementById('carve-proof').onclick = () => runCarving('/api/carving_strategy_proof');
 </script>
 <script src="shared.js"></script>
 </body>

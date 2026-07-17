@@ -669,6 +669,35 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
         <div id="enc-detail" class="enc-detail"><em class="muted-inline">Select an item to inspect it here.</em></div>
       </div>
       <div class="card adv">
+        <h2><span class="num">?</span>Registry queries</h2>
+        <p class="hint">The misconception query filters the loaded registry. The geometry
+          dispatcher calls one named geometry predicate with a JSON argument list. Empty matches
+          and rejected arguments are returned without an inferred replacement.</p>
+        <div class="mc-bar">
+          <label class="muted-inline" style="flex:1">misconception domain
+            <input id="misconception-domain" class="data-input" value="fraction">
+          </label>
+          <label class="muted-inline" style="flex:2">description contains
+            <input id="misconception-description" class="data-input" placeholder="optional text">
+          </label>
+          <button class="btn primary small" id="misconception-query-btn">Query misconceptions</button>
+        </div>
+        <div class="mc-bar">
+          <label class="muted-inline" style="flex:1">geometry predicate
+            <select id="geometry-predicate" class="data-input">
+              <option value="matching_concepts">matching_concepts</option>
+              <option value="concepts_in_neighborhood">concepts_in_neighborhood</option>
+              <option value="concept_monitoring_bundle">concept_monitoring_bundle</option>
+            </select>
+          </label>
+          <label class="muted-inline" style="flex:2">JSON args
+            <input id="geometry-args" class="data-input" value='[["triangle"], "grades_3_5"]'>
+          </label>
+          <button class="btn primary small" id="geometry-query-btn">Run geometry query</button>
+        </div>
+        <div id="registry-query-out" class="result" hidden></div>
+      </div>
+      <div class="card adv">
         <h2><span class="num">⌁</span>Canonical vocabulary</h2>
         <p class="hint">Load the worker's canonical contract, or check candidate Prolog terms against it.</p>
         <div class="data-actions">
@@ -1615,6 +1644,28 @@ async function runCanonicalCheck() {
   const { data } = await postJSON('/api/canonical_check', { terms });
   out.innerHTML = data && data.ok ? renderCanonicalResult(data.result) : `<span class="muted-inline">${esc((data && data.error) || 'canonical_check failed')}</span>`;
 }
+
+async function runRegistryQuery(path, body) {
+  const out = $("#registry-query-out");
+  out.hidden = false;
+  out.textContent = "requesting…";
+  try {
+    const response = await postJSON(path, body);
+    out.textContent = JSON.stringify(response.data, null, 2) || "The route returned an empty reply.";
+  } catch (e) { out.textContent = "The Hermes server did not return JSON for this request."; }
+}
+$("#misconception-query-btn").addEventListener('click', () => runRegistryQuery('/api/query_misconception', {
+  domain: $("#misconception-domain").value.trim(),
+  description: $("#misconception-description").value.trim()
+}));
+$("#geometry-query-btn").addEventListener('click', () => {
+  const out = $("#registry-query-out");
+  let args;
+  try { args = JSON.parse($("#geometry-args").value); }
+  catch (e) { out.hidden = false; out.textContent = "Geometry args must be a JSON list."; return; }
+  if (!Array.isArray(args)) { out.hidden = false; out.textContent = "Geometry args must be a JSON list."; return; }
+  runRegistryQuery('/api/geometry', {predicate: $("#geometry-predicate").value, args});
+});
 $("#canonical-contract-btn").addEventListener('click', loadCanonicalContract);
 $("#canonical-check-btn").addEventListener('click', runCanonicalCheck);
 

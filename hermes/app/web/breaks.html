@@ -60,6 +60,12 @@
     .verdict.release { border-color: var(--release); color: var(--release); }
     .seqin { font-family: var(--mono); font-size: 0.82rem; background: var(--surface-raised); color: var(--text); border: 1px solid var(--border); border-radius: 3px; padding: 0.45rem 0.6rem; width: 100%; margin-bottom: 0.5rem; }
     select.seqsrc { font-family: var(--mono); font-size: 0.76rem; background: var(--surface-raised); color: var(--text); border: 1px solid var(--border); border-radius: 3px; padding: 0.4rem 0.5rem; margin-right: 0.4rem; }
+    .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 0.8rem; }
+    .tool { border: 1px solid var(--border); background: var(--surface-raised); padding: 0.8rem; }
+    .tool h4 { color: var(--release); font-size: 0.92rem; margin-bottom: 0.45rem; }
+    .tool input, .tool textarea, .tool select { width: 100%; font-family: var(--mono); font-size: 0.74rem; background: var(--bg); color: var(--text); border: 1px solid var(--border); padding: 0.4rem; margin-bottom: 0.45rem; }
+    .tool textarea { min-height: 4.5rem; resize: vertical; }
+    .tool pre { white-space: pre-wrap; overflow-wrap: anywhere; color: var(--muted); font: 0.72rem/1.45 var(--mono); margin-top: 0.5rem; }
   </style>
   <script defer src="../more-zeeman/render/hermes-shell.js" data-root="../more-zeeman/" data-app="./" data-active="breaks"></script>
 </head>
@@ -138,6 +144,47 @@
       <button class="opbtn" id="seq-erasure">Send the trace-marked sequent</button>
     </div>
     <div id="seq-out" class="board"></div>
+  </div>
+
+  <div class="operable" id="formal-tools">
+    <h3>Formal registry queries</h3>
+    <div class="domains">loaded relations · live worker replies</div>
+    <p class="desc">Each control asks one existing relation on its own terms. Empty results
+      mean that relation returned no entries for the request. Errors are printed as returned.</p>
+    <div class="tool-grid">
+      <div class="tool">
+        <h4>Deontic crisis</h4>
+        <textarea id="crisis-commitments">result_of(cross_multiply,3,4,2,5,15)</textarea>
+        <textarea id="crisis-entitlements" placeholder="one entitlement term per line"></textarea>
+        <button class="opbtn" data-formal="crisis">Run crisis query</button><pre id="crisis-out"></pre>
+      </div>
+      <div class="tool">
+        <h4>Required entitlement</h4>
+        <input id="entitlement-proposition" value="result_of(cross_multiply,3,4,2,5,15)">
+        <button class="opbtn" data-formal="entitlement">Check proposition</button><pre id="entitlement-out"></pre>
+      </div>
+      <div class="tool">
+        <h4>Brandomian backstop</h4>
+        <button class="opbtn" data-formal="backstop">Run audit</button><pre id="backstop-out"></pre>
+      </div>
+      <div class="tool">
+        <h4>Commitment check</h4>
+        <textarea id="brandom-commitments">p
+neg(p)</textarea>
+        <button class="opbtn" data-formal="brandom">Check commitments</button><pre id="brandom-out"></pre>
+      </div>
+      <div class="tool">
+        <h4>Incompatibility hyperedges</h4>
+        <select id="hyperedge-kind"><option value="">all kinds</option><option value="emergent">emergent</option><option value="defeated">defeated</option><option value="declared">declared</option></select>
+        <button class="opbtn" data-formal="hyperedges">Query hyperedges</button><pre id="hyperedges-out"></pre>
+      </div>
+      <div class="tool">
+        <h4>Axiom toggles</h4>
+        <select id="toggle-action"><option value="list">list</option><option value="enable">enable</option><option value="disable">disable</option></select>
+        <input id="toggle-axiom" placeholder="axiom term for enable or disable">
+        <button class="opbtn" data-formal="toggle">Submit action</button><pre id="toggle-out"></pre>
+      </div>
+    </div>
   </div>
 
   <div class="footnote">
@@ -281,6 +328,35 @@
       };
     }
 
+    function lines(id) {
+      return $(id).value.split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+    }
+
+    function wireFormalTools() {
+      const requests = {
+        crisis: () => ["/api/crisis", { commitments: lines("crisis-commitments"), entitlements: lines("crisis-entitlements") }],
+        entitlement: () => ["/api/deontic_requires_entitlement", { proposition: $("entitlement-proposition").value.trim() }],
+        backstop: () => ["/api/brandom_backstop", {}],
+        brandom: () => ["/api/brandomian_check", { commitments: lines("brandom-commitments") }],
+        hyperedges: () => ["/api/hyperedges", { kind: $("hyperedge-kind").value }],
+        toggle: () => ["/api/axiom_toggle", { action: $("toggle-action").value, axiom: $("toggle-axiom").value.trim() }],
+      };
+      document.querySelectorAll("[data-formal]").forEach(button => {
+        button.onclick = async () => {
+          const key = button.dataset.formal;
+          const out = $(key + "-out");
+          out.textContent = "Requesting…";
+          const [path, body] = requests[key]();
+          try {
+            const data = await post(path, body);
+            out.textContent = JSON.stringify(data, null, 2) || "The route returned an empty reply.";
+          } catch (err) {
+            out.textContent = "The Hermes server did not return JSON for this request.";
+          }
+        };
+      });
+    }
+
     async function init() {
       try {
         const resp = await fetch("/api/grounding", {
@@ -313,6 +389,7 @@
     init();
     wireDeontic();
     wireSequent();
+    wireFormalTools();
   </script>
 </body>
 </html>

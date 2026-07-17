@@ -74,6 +74,19 @@
       <button id="calculate">Calculate</button>
       <span class="calc-note">POSTs to the worker; renders the returned witness frames.</span>
     </section>
+
+    <section class="panel">
+      <h2>Notation worker controls</h2>
+      <p class="subhead">These calls return the worker payload directly. A rejected lesson or
+        notation kind remains a reported error.</p>
+      <div class="calc-bar">
+        <label>lesson <input id="notation-lesson" value="IM-G1-U3-L17"></label>
+        <button type="button" data-notation-route="/api/notation_render">notation reply</button>
+        <button type="button" data-notation-route="/api/notation_monitoring_chart">notation chart</button>
+        <button type="button" data-notation-route="/api/fraction_cgi_addition">fraction CGI addition</button>
+      </div>
+      <pre id="notation-worker-output" class="tuple"></pre>
+    </section>
   </div>
 
   <script type="application/json" id="frames">
@@ -109,6 +122,24 @@
   <script src="../render/drawer.js"></script>
   <script>
     HermesDrawer.create({ op: 'notation_render', endpoint: '/api/render', defaultView: 'freshman' });
+    document.querySelectorAll('[data-notation-route]').forEach(function (button) {
+      button.addEventListener('click', async function () {
+        const path = button.getAttribute('data-notation-route');
+        const lesson = document.getElementById('notation-lesson').value.trim();
+        const out = document.getElementById('notation-worker-output');
+        const body = path === '/api/notation_render'
+          ? {kind:'write_equation', a:2, b:3, r:5, operator:'+'}
+          : path === '/api/fraction_cgi_addition'
+            ? {kind:'count_on_from_larger', na:1, nb:2, d:5}
+            : {lesson_code:lesson};
+        out.textContent = 'Requesting…';
+        try {
+          const response = await fetch(path, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
+          const data = await response.json();
+          out.textContent = JSON.stringify(data, null, 2) || 'The route returned an empty reply.';
+        } catch (e) { out.textContent = 'The Hermes server did not return JSON for this request.'; }
+      });
+    });
   </script>
 </body>
 </html>
