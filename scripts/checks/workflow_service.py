@@ -7,11 +7,14 @@ schema, truncation, and timing requirements.
 """
 from __future__ import annotations
 
+import io
 import json
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
+import threading
 import time
 from pathlib import Path
 from types import SimpleNamespace
@@ -154,6 +157,102 @@ def test_workflow_uses_shared_worker() -> None:
         run_subprocess.assert_not_called()
 
 
+def test_workflow_geometry_fallback_uses_shared_worker() -> None:
+    """prolog_fallback_pck's geometry fallback (lib/monitoring.py's
+    _geometry_concept_matches) must dispatch through the shared worker
+    callback via the `geometry` op's `workflow_monitoring_matches`
+    predicate — not launch a fresh SWI-Prolog subprocess — and the request
+    it sends must carry the [tokens, grade_band] arg shape
+    hermes_worker.pl's dispatch_geometry(workflow_monitoring_matches, ...)
+    clause expects."""
+    calls: list[tuple[str, dict[str, Any]]] = []
+
+    def counting_worker(op: str, **payload: Any) -> Any:
+        calls.append((op, payload))
+        if op == "geometry" and payload.get("predicate") == "workflow_monitoring_matches":
+            return {"concepts": [{
+                "id": "fixture_concept", "name": "fixture concept name",
+                "topic": "fixture", "score": 1, "pck": "none",
+                "standards": [], "misconceptions": [], "metaphors": [],
+                "markers": [], "arcs": [],
+            }]}
+        return None
+
+    with tempfile.TemporaryDirectory(prefix="workflow_geometry_") as tmp:
+        root = Path(tmp)
+        prompts_dir = root / "prompts"
+        prompts_dir.mkdir()
+        prompt_id = "geometry_fixture"
+        (prompts_dir / f"{prompt_id}.html").write_text(
+            "<p>quadrilateral trapezoid parallelogram inclusive exclusive definition</p>",
+            encoding="utf-8",
+        )
+        with mock.patch("subprocess.run") as run_subprocess:
+            block = monitoring.prolog_fallback_pck(
+                root, prompt_id, worker_request=counting_worker
+            )
+        run_subprocess.assert_not_called()
+
+    assert "fixture concept name" in block, block
+    geometry_calls = [c for c in calls if c[0] == "geometry"]
+    assert geometry_calls, f"expected a geometry op call, got {calls}"
+    _, payload = geometry_calls[0]
+    assert payload.get("predicate") == "workflow_monitoring_matches", payload
+    args = payload.get("args")
+    assert isinstance(args, list) and len(args) == 2, args
+    tokens, grade_band = args
+    assert isinstance(tokens, list) and tokens and all(isinstance(t, str) for t in tokens), tokens
+    assert grade_band == "any", grade_band
+
+
+def test_capture_thread_isolation() -> None:
+    """The bug this fixes: redirect_stdout/redirect_stderr swap sys.stdout/
+    sys.stderr process-wide, so a concurrent thread's stderr write could
+    land in another thread's in-flight workflow capture. service.py now
+    routes stdout/stderr through a ContextVar-backed proxy installed once at
+    import; a spawned thread starts with a fresh Context (no inherited
+    capture), so its write must reach the real stream, never the buffer
+    the main thread is capturing into."""
+    marker = "hermes-thread-isolation-marker-3fae21"
+    assert isinstance(sys.stderr, service._ContextRoutedStream), (
+        "sys.stderr is not routed through the capture proxy; "
+        "_install_capture_routing() did not run"
+    )
+    stand_in = io.StringIO()
+    real_original = sys.stderr._original
+    sys.stderr._original = stand_in
+    try:
+        def entrypoint(_argv: list[str] | None) -> int:
+            started = threading.Event()
+
+            def other_thread_writes() -> None:
+                started.set()
+                print(marker, file=sys.stderr)
+
+            other = threading.Thread(target=other_thread_writes)
+            other.start()
+            started.wait(timeout=5)
+            other.join(timeout=5)
+            assert not other.is_alive(), "concurrent writer thread did not finish"
+            return 0
+
+        context = service.WorkflowContext(
+            Path("."), CHECK_LLM, lambda _op, **_payload: None, lambda _text: None
+        )
+        result = service.run_command("metrics", {}, context, entrypoint)
+    finally:
+        sys.stderr._original = real_original
+
+    assert marker not in result.stderr, (
+        "concurrent thread's stderr write leaked into the capture buffer: "
+        f"{result.stderr!r}"
+    )
+    assert marker not in result.stdout
+    assert marker in stand_in.getvalue(), (
+        "concurrent thread's stderr write never reached the passthrough stream"
+    )
+
+
 def test_workflow_context_isolation() -> None:
     with tempfile.TemporaryDirectory(prefix="workflow_a_") as a_tmp, \
          tempfile.TemporaryDirectory(prefix="workflow_b_") as b_tmp:
@@ -230,10 +329,47 @@ def timing_measurement() -> tuple[float, float]:
     return cli_ms, service_ms
 
 
+def test_geometry_dispatch_swipl_strict() -> None:
+    """[swipl] Drive hermes_worker.pl's geometry dispatch clause for real.
+
+    The Python-level check above only proves the call *shape* Python sends;
+    it mocks the worker, so it cannot catch the Prolog clause going missing
+    or its argument pattern drifting. This runs one strict swipl one-shot
+    against the live `dispatch_request(geometry, ...)` -> `dispatch_geometry
+    (workflow_monitoring_matches, [Tokens, GradeBand], ...)` clause pair with
+    a minimal request built the same way lib/monitoring.py's
+    _geometry_concept_matches sends one. A few seconds — it loads the full
+    Prolog runtime.
+    """
+    swipl = os.environ.get("HERMES_SWIPL") or shutil.which("swipl") or "/usr/local/bin/swipl"
+    goal = (
+        "load_runtime, "
+        "Request = _{predicate: workflow_monitoring_matches, "
+        "args: [[quadrilateral, trapezoid, parallelogram], any]}, "
+        "dispatch_request(geometry, 1, Request, R), "
+        "( get_dict(ok, R, true) "
+        "-> halt(0) "
+        "; ( format(user_error, "
+        "'workflow_monitoring_matches dispatch did not return ok: ~q~n', [R]), "
+        "halt(1) ) )."
+    )
+    proc = subprocess.run(
+        [swipl, "--on-error=status", "--on-warning=status", "-q",
+         "-l", "hermes_worker.pl", "-g", goal],
+        cwd=ROOT, capture_output=True, text=True, timeout=120,
+    )
+    assert proc.returncode == 0, (
+        "[swipl] workflow_monitoring_matches dispatch check failed "
+        f"(exit {proc.returncode})\nstdout:\n{proc.stdout}\nstderr:\n{proc.stderr}"
+    )
+
+
 def main() -> int:
     tests = (
         test_workflow_cli_service_parity,
         test_workflow_uses_shared_worker,
+        test_workflow_geometry_fallback_uses_shared_worker,
+        test_capture_thread_isolation,
         test_workflow_context_isolation,
         test_workflow_route_response_compatibility,
     )
@@ -242,6 +378,9 @@ def main() -> int:
         print(f"PASS {test.__name__}")
     cli_ms, service_ms = timing_measurement()
     print(f"metrics timing: CLI --help {cli_ms:.2f} ms; in-process service {service_ms:.2f} ms")
+    print("running [swipl] strict geometry dispatch sub-check (a few seconds)...")
+    test_geometry_dispatch_swipl_strict()
+    print(f"PASS {test_geometry_dispatch_swipl_strict.__name__}")
     return 0
 
 

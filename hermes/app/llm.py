@@ -220,12 +220,16 @@ def make_client(pack_root: Path) -> dict:
     }
 
 
-def build_secure_ssl_context() -> ssl.SSLContext:
+def build_secure_ssl_context(*, warn_on_error: bool = False) -> ssl.SSLContext:
     """A CA-verified context that ignores REALLMS_INSECURE.
 
     Used by the campus/home gate: a successful secure connection is the proof
     that the machine is on the IU network, so the preflight must never relax
     verification regardless of how the renderer is configured.
+
+    `warn_on_error` mirrors `build_ssl_context`'s stderr warning on a CA-bundle
+    `OSError`; it defaults off to keep the gate preflight's frequent mode
+    switches quiet. The workflow LLM client passes `warn_on_error=True`.
     """
     ctx = ssl.create_default_context()
     ctx.check_hostname = True
@@ -233,8 +237,9 @@ def build_secure_ssl_context() -> ssl.SSLContext:
     for cafile in _candidate_ca_files():
         try:
             ctx.load_verify_locations(cafile=str(cafile))
-        except OSError:
-            pass
+        except OSError as e:
+            if warn_on_error:
+                sys.stderr.write(f"warning: could not load CA bundle {cafile}: {e}\n")
     return ctx
 
 

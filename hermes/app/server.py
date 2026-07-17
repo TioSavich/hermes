@@ -231,22 +231,39 @@ class HermesHandler(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self) -> None:
-        self.router.dispatch(self._context("GET"))
+        self._dispatch_guarded(self._context("GET"))
 
     def do_POST(self) -> None:
         context = self._context("POST")
         try:
             context.payload = self._read_json()
+        except Exception as exc:
+            self._send_backend_error(context, exc)
+            return
+        self._dispatch_guarded(context)
+
+    def _dispatch_guarded(self, context: RequestContext) -> None:
+        """Dispatch a route, turning an uncaught exception into a JSON 500.
+
+        Without this, BaseHTTPRequestHandler's default handle_error() prints
+        the traceback to whatever sys.stderr currently resolves to — under
+        the workflow capture proxy, that can be another thread's in-flight
+        capture buffer — and drops the connection instead of answering it.
+        """
+        try:
             self.router.dispatch(context)
         except Exception as exc:
-            message, error_type = RouteLogic(context)._friendly_backend_error(str(exc))
-            if message:
-                self._send_json(
-                    {"error": message, "error_type": error_type, "detail": str(exc)},
-                    status=500,
-                )
-            else:
-                self._send_json({"error": str(exc)}, status=500)
+            self._send_backend_error(context, exc)
+
+    def _send_backend_error(self, context: RequestContext, exc: Exception) -> None:
+        message, error_type = RouteLogic(context)._friendly_backend_error(str(exc))
+        if message:
+            self._send_json(
+                {"error": message, "error_type": error_type, "detail": str(exc)},
+                status=500,
+            )
+        else:
+            self._send_json({"error": str(exc)}, status=500)
 
     def log_message(self, fmt: str, *args: Any) -> None:
         return

@@ -7,7 +7,6 @@ import os
 import ssl
 import sys
 import threading
-from contextlib import redirect_stderr, redirect_stdout
 from contextvars import ContextVar, Token
 from dataclasses import dataclass
 from pathlib import Path
@@ -97,7 +96,7 @@ class WorkflowLLMClient:
             ssl_ctx.check_hostname = False
             ssl_ctx.verify_mode = ssl.CERT_NONE
         else:
-            ssl_ctx = self.module.build_secure_ssl_context()
+            ssl_ctx = self.module.build_secure_ssl_context(warn_on_error=True)
         return {
             "api_key": api_key,
             "api_url": api_url,
@@ -117,6 +116,63 @@ _ACTIVE_CONTEXT: ContextVar[WorkflowContext | None] = ContextVar(
     "hermes_workflow_context", default=None
 )
 _WORKFLOW_LOCK = threading.RLock()
+
+_STDOUT_CAPTURE: ContextVar[io.StringIO | None] = ContextVar(
+    "hermes_workflow_stdout_capture", default=None
+)
+_STDERR_CAPTURE: ContextVar[io.StringIO | None] = ContextVar(
+    "hermes_workflow_stderr_capture", default=None
+)
+
+
+class _ContextRoutedStream:
+    """A process-global stream that routes each write through a ContextVar.
+
+    `redirect_stdout`/`redirect_stderr` swap `sys.stdout`/`sys.stderr`
+    themselves, so every thread sees the swap for as long as it lasts — a
+    concurrent thread's traceback can land in an unrelated in-flight
+    workflow's captured buffer. This proxy is installed once, process-wide,
+    and never swapped again; each write instead consults a ContextVar that is
+    per-thread by default (contextvars.Context is thread-local unless
+    explicitly propagated), so one thread setting a capture buffer leaves
+    every other thread's writes passing through to the real stream untouched.
+    """
+
+    def __init__(self, capture_var: ContextVar[io.StringIO | None], original: Any) -> None:
+        self._capture_var = capture_var
+        self._original = original
+
+    def _target(self) -> Any:
+        buffer = self._capture_var.get()
+        return self._original if buffer is None else buffer
+
+    def write(self, text: str) -> int:
+        return self._target().write(text)
+
+    def flush(self) -> None:
+        target = self._target()
+        flush = getattr(target, "flush", None)
+        if flush is not None:
+            flush()
+
+    def __getattr__(self, name: str) -> Any:
+        # Transparent for everything else (isatty, encoding, buffer, ...) so
+        # unrelated code that pokes at sys.stdout/sys.stderr keeps working.
+        return getattr(self._original, name)
+
+
+def _install_capture_routing() -> None:
+    """Install the routed-stream proxies on sys.stdout/sys.stderr once.
+
+    Idempotent: re-running (e.g. a stray re-import) will not double-wrap.
+    """
+    if not isinstance(sys.stdout, _ContextRoutedStream):
+        sys.stdout = _ContextRoutedStream(_STDOUT_CAPTURE, sys.stdout)
+    if not isinstance(sys.stderr, _ContextRoutedStream):
+        sys.stderr = _ContextRoutedStream(_STDERR_CAPTURE, sys.stderr)
+
+
+_install_capture_routing()
 
 
 def current_context() -> WorkflowContext:
@@ -165,8 +221,10 @@ def run_command(
     returncode = 0
     # All current commands write shared runtime outputs. Metrics stays under the
     # same lock until a race-free output proof permits a narrower policy.
-    with _WORKFLOW_LOCK, redirect_stdout(stdout), redirect_stderr(stderr):
-        token = _activate(context)
+    with _WORKFLOW_LOCK:
+        context_token = _activate(context)
+        stdout_token = _STDOUT_CAPTURE.set(stdout)
+        stderr_token = _STDERR_CAPTURE.set(stderr)
         try:
             try:
                 value = entrypoint(build_argv(command, payload))
@@ -185,7 +243,9 @@ def run_command(
                 returncode = 1
                 print(str(exc), file=stderr)
         finally:
-            _deactivate(token)
+            _STDERR_CAPTURE.reset(stderr_token)
+            _STDOUT_CAPTURE.reset(stdout_token)
+            _deactivate(context_token)
     out = stdout.getvalue()
     err = stderr.getvalue()
     if out:

@@ -17,9 +17,12 @@ def build_argv(command: str, payload: dict) -> list[str]:
     ]
 
 
-def run(command: str, payload: dict, pack_root: Path, timeout: int = 1800) -> dict:
-    """Execute in process while preserving the legacy result dictionary."""
-    del timeout  # command-specific model/worker timeouts remain authoritative
+def run(command: str, payload: dict, pack_root: Path) -> dict:
+    """Execute in process while preserving the legacy result dictionary.
+
+    Command-specific model/worker timeouts are authoritative; this wrapper
+    takes no timeout of its own.
+    """
     local_worker = service.LocalWorker()
     context = service.WorkflowContext(
         Path(pack_root).resolve(), llm, local_worker.request, lambda _text: None

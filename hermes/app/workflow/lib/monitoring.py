@@ -16,6 +16,7 @@ from __future__ import annotations
 import html as html_lib
 import json
 import re
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, Callable
 
@@ -150,6 +151,36 @@ def fallback_tokens_for(pack_root: Path, prompt_id: str) -> tuple[list[str], obj
     return tokens[:80], hint.get("grade_band", "any")
 
 
+def _hashable_grade_band(grade_band: object) -> object:
+    """Coerce a grade-band value to something lru_cache can key on.
+
+    `grade_band` is either the atom "any" or a list of grade integers (see
+    `norm_grade_band/2` in geometry/query.pl); lists are not hashable, so the
+    cache key uses a tuple in that case.
+    """
+    if isinstance(grade_band, list):
+        return tuple(grade_band)
+    return grade_band
+
+
+@lru_cache(maxsize=64)
+def _geometry_concept_matches_cached(
+    worker_request: WorkerRequest,
+    tokens: tuple[str, ...],
+    grade_band: object,
+) -> dict | None:
+    band = list(grade_band) if isinstance(grade_band, tuple) else grade_band
+    try:
+        result = worker_request(
+            "geometry",
+            predicate="workflow_monitoring_matches",
+            args=[list(tokens), band],
+        )
+    except Exception:
+        return None
+    return result if isinstance(result, dict) else None
+
+
 def _geometry_concept_matches(
     worker_request: WorkerRequest,
     tokens: list[str],
@@ -157,15 +188,13 @@ def _geometry_concept_matches(
 ) -> dict | None:
     if not tokens:
         return None
-    try:
-        result = worker_request(
-            "geometry",
-            predicate="workflow_monitoring_matches",
-            args=[tokens, grade_band],
-        )
-    except Exception:
-        return None
-    return result if isinstance(result, dict) else None
+    # worker_request is a bound method (or comparable callable) that hashes
+    # and compares by identity/underlying-function, so the cache still hits
+    # across requests served by the same persistent worker; tokens and
+    # grade_band are coerced to hashable forms so lru_cache can key on them.
+    return _geometry_concept_matches_cached(
+        worker_request, tuple(tokens), _hashable_grade_band(grade_band)
+    )
 
 
 def _append_term_lines(lines: list[str], label: str, values: list[str]) -> None:
