@@ -134,6 +134,7 @@ load_runtime :-
     use_module(render(unit_echo_scene), []),
     use_module(render(place_value_chart_scene), []),
     use_module(render(hybridization_scene), []),
+    use_module(render(rigid_motion_scene), []),
     use_module(render(representation_grammar), []),
     % The corpus-attested grammar layer: which grammar objects/uses the student
     % corpus actually witnesses, and where the grammar runs ahead of the corpus.
@@ -430,7 +431,8 @@ op_error(Id, Op, Error, Response) :-
 dispatch_request(health, Id, _Request, Response) :-
     findall(Name,
         ( capability_registry:capability(Name, _, _, _, Status),
-          Status \= orphan_module
+          Status \= orphan_module,
+          Status \= lazy_reachable
         ),
         Ops),
     ok_response(Id, _{
@@ -3743,12 +3745,14 @@ dispatch_request(capability_atlas, Id, _Request, Response) :-
     capability_status_count(routed_paged, RoutedPaged),
     capability_status_count(routed_only, RoutedOnly),
     capability_status_count(unrouted, Unrouted),
+    capability_status_count(lazy_reachable, LazyReachable),
     capability_status_count(orphan_module, OrphanModules),
     ok_response(Id,
         _{ capabilities: Rows,
            counts: _{ routed_paged: RoutedPaged,
                       routed_only: RoutedOnly,
                       unrouted: Unrouted,
+                      lazy_reachable: LazyReachable,
                       orphan_module: OrphanModules
                     }
          },
@@ -3761,7 +3765,8 @@ capability_atlas_row(_{
     inputs: InputTexts,
     surface_status: StatusText,
     route: Routes,
-    pages: PageTexts
+    pages: PageTexts,
+    lazy_via: LazyViaTexts
 }) :-
     capability_registry:capability(Name, Module, Role, Inputs, Status),
     atom_string(Name, NameText),
@@ -3779,7 +3784,12 @@ capability_atlas_row(_{
             ( capability_registry:capability_page(Name, Page),
               atom_string(Page, PageText)
             ),
-            PageTexts).
+            PageTexts),
+    findall(OpText,
+            ( capability_registry:capability_lazy_via(Name, Op),
+              atom_string(Op, OpText)
+            ),
+            LazyViaTexts).
 
 capability_status_count(Status, Count) :-
     aggregate_all(count,
@@ -5031,6 +5041,13 @@ dispatch_geometry(concept_monitoring_bundle, [ConceptId0], Id, Response) :-
             "concept_monitoring_bundle found no bundle for concept", Response)
     ).
 
+dispatch_geometry(rigid_motion_render, [Spec0], Id, Response) :-
+    !,
+    json_to_term(Spec0, Spec),
+    rigid_motion_scene:rigid_motion_render_json(Spec, Dict),
+    json_safe(Dict, Safe),
+    ok_response(Id, Safe, Response).
+
 dispatch_geometry(applicable_misconceptions, _, Id, Response) :- !,
     error_response(Id, malformed_geometry_request,
         "applicable_misconceptions requires args [user_text, concept_ids]",
@@ -5062,6 +5079,10 @@ dispatch_geometry(standards_bundle_for, _, Id, Response) :- !,
 dispatch_geometry(concept_monitoring_bundle, _, Id, Response) :- !,
     error_response(Id, malformed_geometry_request,
         "concept_monitoring_bundle requires args [concept_id]",
+        Response).
+dispatch_geometry(rigid_motion_render, _, Id, Response) :- !,
+    error_response(Id, malformed_geometry_request,
+        "rigid_motion_render requires args [spec]",
         Response).
 
 dispatch_geometry(Predicate, _Args, Id, Response) :-

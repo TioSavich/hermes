@@ -350,6 +350,9 @@
      research interfaces. -->
 <div style="margin:0 0 1.5rem 0;padding:0.9rem 1.2rem;border:1px solid #b8860b;border-radius:6px;background:rgba(184,134,11,0.08);font-size:0.95rem;line-height:1.5;">
   <strong>Research wing — live, in progress.</strong> This page drives the learner engine through the Hermes worker. Contracts may shift and rough edges remain. Colleagues are welcome to take part in its unfolding: the source lives under <code>learner/</code>.
+  <p><code>strategies/math/unit_coordination_viz.pl</code> generates the SVG used
+    here. The worker loads it on demand for <code>visualize_coordination</code> and
+    <code>unit_coordination_svg</code>; it is not part of the startup closure.</p>
 </div>
   <div class="container">
     <header>

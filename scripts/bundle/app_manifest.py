@@ -129,6 +129,7 @@ KEEP_MD = {
     "hermes/app/QUICKSTART_N103.md",
     "docs/research/2026-07-01-talkmoves-pass1-math-prompt.md",
     "docs/research/2026-07-01-talkmoves-pass2-posture-prompt.md",
+    "docs/research/2026-06-25-the-juncture-and-differance.md",
     "ASKTM_Data/survey_questions.md",
     "geometry/corpus/ATTRIBUTION.md",
 }

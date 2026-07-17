@@ -80,7 +80,7 @@
     collides with here. Researchers have been documenting errors at this level
     of detail for four decades. This system encodes that structure directly:</p>
 
-  <div class="worked">
+  <div class="worked" style="border-color:#b8860b;background:rgba(184,134,11,.08)">
     <div class="math">1/2 + 1/3 = 2/5</div>
     <div class="triple">
       <div class="row"><span class="k">rule followed</span><span>add numerators and add denominators, componentwise</span></div>
@@ -118,6 +118,14 @@
   </div>
   <div id="corpus" class="corpus-line"></div>
   <div id="results"></div>
+
+  <div class="worked">
+    <strong>Research wing — live, in progress.</strong>
+    <p><code>misconceptions/literature_canonical_mappings.pl</code> contains the canonical
+      commitments used by this literature surface. It is textually included by
+      <code>misconceptions/literature_vocabulary.pl</code>, so it is active even though it is not
+      a separately loaded module. Loading it again would duplicate those definitions.</p>
+  </div>
 
   <div class="footnote">
     Each card is one error instance from the mathematics-education literature,

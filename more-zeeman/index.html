@@ -562,6 +562,25 @@
     </div>
   </div>
 
+  <section class="missing" style="margin-top:2rem;border-color:#b8860b;background:rgba(184,134,11,.08)">
+    <h2>Prolog and Python bifurcation comparison</h2>
+    <p><code>more-zeeman/prolog/zeeman_machine.pl</code> is the shared potential-energy,
+      equilibrium, and inertial physics core. <code>more-zeeman/prolog/zeeman_bifurcation.pl</code>
+      counts stable equilibria over control positions. <code>more-zeeman/prolog/zeeman_tape.pl</code>
+      records quasi-static and dynamic event tapes. <code>more-zeeman/prolog/zeeman_pml_bridge.pl</code>
+      offers explicitly non-committal PML candidates for selected tape and trace events. These
+      Prolog modules remain offline research tools rather than worker operations.</p>
+    <p>The deterministic 7 by 7 comparison against <code>more-zeeman/bifurcation_verify.py</code>
+      reports the following result plainly:</p>
+    <pre style="white-space:pre-wrap;overflow-wrap:anywhere">ZEEMAN_BIFURCATION_VERDICT divergence
+sample_points=49 python_counts={1:46,2:2,3:1} prolog_counts={1:48,2:1} mismatches=3
+mismatch control=point(0.0,4.8) python=3 prolog=2
+mismatch control=point(1.6,4.8) python=2 prolog=1
+mismatch control=point(3.2,4.8) python=2 prolog=1</pre>
+    <p>The mismatch is concentrated on the upper edge of the pinned grid. The comparison records
+      that divergence; it does not convert it into agreement.</p>
+  </section>
+
   <script src="more-machine.js"></script>
   <script src="shared.js"></script>
 </body>

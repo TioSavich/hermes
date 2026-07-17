@@ -81,11 +81,14 @@ def test_render_contract_v2() -> None:
 
 
 class Context:
-    def __init__(self) -> None:
+    def __init__(self, result: object = 17) -> None:
         self.responses: list[tuple[dict, int]] = []
+        self.result = result
+        self.requests: list[tuple[str, dict[str, object]]] = []
 
-    def worker_request(self, _op: str, **_kwargs: object) -> int:
-        return 17
+    def worker_request(self, op: str, **kwargs: object) -> object:
+        self.requests.append((op, kwargs))
+        return self.result
 
     def _send_json(self, payload: dict, *, status: int = 200) -> None:
         self.responses.append((payload, status))
@@ -107,8 +110,32 @@ def test_render_endpoint_rejects_scalar() -> None:
         assert payload["error"] == f"unknown render op: {op}"
 
 
+def test_render_endpoint_accepts_rigid_motion_through_geometry() -> None:
+    document = {
+        "kind": "rigid_motion",
+        "request": {},
+        "result": {},
+        "frames": [scene()],
+    }
+    context = Context(document)
+    RouteLogic(context)._handle_render({
+        "op": "geometry",
+        "predicate": "rigid_motion_render",
+        "args": ["translate([0-0,2-0,1-1],1,2)"],
+    })
+    payload, status = context.responses[-1]
+    assert status == 200
+    assert payload is document
+    assert context.requests == [("geometry", {
+        "predicate": "rigid_motion_render",
+        "args": ["translate([0-0,2-0,1-1],1,2)"],
+    })]
+
+
 if __name__ == "__main__":
     test_render_contract_v2()
     test_render_endpoint_rejects_scalar()
+    test_render_endpoint_accepts_rigid_motion_through_geometry()
     print("test_render_contract_v2: ok")
     print("test_render_endpoint_rejects_scalar: ok")
+    print("test_render_endpoint_accepts_rigid_motion_through_geometry: ok")

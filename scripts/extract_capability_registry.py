@@ -35,6 +35,32 @@ MODULE_CALL_RE = re.compile(r"\b([a-z][A-Za-z0-9_]*)\s*:\s*[a-z][A-Za-z0-9_]*\s*
 MODULE_DIRECTIVE_RE = re.compile(
     r":-\s*module\(\s*(['\"]?)([^,'\"\s()]+)\1\s*,", re.MULTILINE
 )
+ENSURE_RE = re.compile(r"(?m)^(ensure_[a-z][A-Za-z0-9_]*)\s*:-")
+LOAD_CALL_RE = re.compile(
+    r"\b(?:consult|use_module|ensure_loaded|load_files)\(\s*"
+    r"(?:(?P<alias>[a-z][A-Za-z0-9_]*)\(\s*(?P<target>'[^']+'|\"[^\"]+\"|[a-zA-Z0-9_./-]+)\s*\)"
+    r"|(?P<plain>'[^']+'|\"[^\"]+\"|[a-z][A-Za-z0-9_./-]*))"
+)
+
+PROLOG_PATHS = {
+    "arche_trace": Path("arche-trace"),
+    "carving": Path("tools/carving"),
+    "crosswalk": Path("crosswalk"),
+    "formalization": Path("formalization"),
+    "geometry": Path("geometry"),
+    "hermes": Path("hermes"),
+    "im_lessons": Path("lessons/im"),
+    "learner": Path("learner"),
+    "lessons": Path("lessons"),
+    "math": Path("strategies/math"),
+    "misconceptions": Path("misconceptions"),
+    "pml": Path("pml"),
+    "render": Path("strategies/render"),
+    "standards": Path("standards"),
+    "strategies": Path("strategies"),
+    "tools": Path("tools"),
+    "zeeman": Path("more-zeeman/prolog"),
+}
 
 
 @dataclass(frozen=True)
@@ -48,6 +74,8 @@ class Operation:
 ROLE_PREFIXES: tuple[tuple[str, str], ...] = (
     ("geometry", "geometry_witness"),
     ("standard_", "standards"),
+    ("multiply_array_witness", "standards"),
+    ("mult_div_family_witness", "standards"),
     ("monitoring_", "monitoring"),
     ("field_", "monitoring"),
     ("ranked_", "monitoring"),
@@ -416,6 +444,107 @@ def module_name(path: Path) -> str:
     return match.group(2) if match else path.stem
 
 
+def _unquote(value: str) -> str:
+    if len(value) >= 2 and value[0] == value[-1] and value[0] in {"'", '"'}:
+        return value[1:-1]
+    return value
+
+
+def resolve_prolog_spec(alias: str | None, value: str, base: Path) -> Path | None:
+    """Resolve one literal Prolog load spec to a repository-relative file."""
+    target = Path(_unquote(value))
+    if alias:
+        prefix = PROLOG_PATHS.get(alias)
+        if prefix is None:
+            return None
+        candidate = ROOT / prefix / target
+    else:
+        candidate = (base / target) if not target.is_absolute() else target
+    if not candidate.suffix:
+        candidate = candidate.with_suffix(".pl")
+    try:
+        resolved = candidate.resolve()
+        rel = resolved.relative_to(ROOT.resolve())
+    except (OSError, ValueError):
+        return None
+    return rel if resolved.is_file() else None
+
+
+def literal_loads(text: str, base: Path) -> set[Path]:
+    paths: set[Path] = set()
+    for match in LOAD_CALL_RE.finditer(code_without_comments(text)):
+        value = match.group("target") or match.group("plain")
+        resolved = resolve_prolog_spec(match.group("alias"), value, base)
+        if resolved is not None:
+            paths.add(resolved)
+    return paths
+
+
+def lazy_module_ops(worker_text: str) -> dict[str, set[str]]:
+    """Map op-time-loaded module paths to the dispatch ops that reach them.
+
+    The worker scan follows ensure_* calls, resolves literal load directives,
+    and follows one import hop from each directly loaded file. This reaches the
+    fraction-band modules through fraction_band_ladder.pl without treating
+    unrelated shipped files as live.
+    """
+    ensure_bodies: dict[str, str] = {}
+    for match in ENSURE_RE.finditer(worker_text):
+        ensure_bodies[match.group(1)] = code_without_comments(
+            dispatch_body(worker_text, match.end())
+        )
+
+    direct: dict[str, set[Path]] = {}
+    ensure_calls: dict[str, set[str]] = {}
+    for name, body in ensure_bodies.items():
+        direct[name] = literal_loads(body, ROOT)
+        ensure_calls[name] = {
+            called for called in ensure_bodies
+            if called != name and re.search(rf"\b{re.escape(called)}\b", body)
+        }
+
+    def files_for(name: str, seen: set[str] | None = None) -> set[Path]:
+        seen = set() if seen is None else set(seen)
+        if name in seen:
+            return set()
+        seen.add(name)
+        files = set(direct.get(name, set()))
+        for called in ensure_calls.get(name, set()):
+            files |= files_for(called, seen)
+        return files
+
+    ensure_ops: dict[str, set[str]] = defaultdict(set)
+    for match in DISPATCH_RE.finditer(worker_text):
+        body = code_without_comments(dispatch_body(worker_text, match.end()))
+        for name in ensure_bodies:
+            if re.search(rf"\b{re.escape(name)}\b", body):
+                ensure_ops[name].add(match.group(1))
+
+    result: dict[str, set[str]] = defaultdict(set)
+    for ensure_name, ops in ensure_ops.items():
+        loaded = files_for(ensure_name)
+        one_hop = set(loaded)
+        for rel in loaded:
+            source = ROOT / rel
+            one_hop |= literal_loads(
+                source.read_text(encoding="utf-8", errors="replace"), source.parent
+            )
+        for rel in one_hop:
+            result[rel.as_posix()].update(ops)
+    return result
+
+
+def module_page_map(module_paths: set[str]) -> dict[str, set[str]]:
+    pages_by_module: dict[str, set[str]] = defaultdict(set)
+    for page in iter_html_files([Path(root) for root in DEFAULT_WEB_ROOTS]):
+        source = page.read_text(encoding="utf-8", errors="replace")
+        page_name = "/" + page.relative_to(ROOT).as_posix()
+        for module_path in module_paths:
+            if module_path in source:
+                pages_by_module[module_path].add(page_name)
+    return pages_by_module
+
+
 def orphan_modules() -> list[tuple[str, str, str]]:
     closure = set(worker_closure())
     shipped = (rel for rel in build_manifest(with_figures=False) if rel.endswith(".pl"))
@@ -428,16 +557,21 @@ def orphan_modules() -> list[tuple[str, str, str]]:
 
 
 def render_registry() -> str:
-    operations = extract_operations(WORKER.read_text(encoding="utf-8"))
+    worker_text = WORKER.read_text(encoding="utf-8")
+    operations = extract_operations(worker_text)
     routes = route_map()
     pages_by_route = page_map()
+    outside_closure = orphan_modules()
+    lazy_via = lazy_module_ops(worker_text)
+    module_pages = module_page_map({rel for rel, _module, _role in outside_closure})
     lines = [
         "% Generated by scripts/extract_capability_registry.py.",
         "% Regenerate: python3 scripts/extract_capability_registry.py",
         ":- module(capability_registry,",
         "          [ capability/5,",
         "            capability_route/3,",
-        "            capability_page/2",
+        "            capability_page/2,",
+        "            capability_lazy_via/2",
         "          ]).",
         "",
     ]
@@ -452,10 +586,11 @@ def render_registry() -> str:
             f"capability({prolog_atom(op.name)}, {prolog_atom(op.module)}, "
             f"{prolog_atom(op.role)}, {inputs}, {status})."
         )
-    for rel, module, role in orphan_modules():
+    for rel, module, role in outside_closure:
+        status = "lazy_reachable" if rel in lazy_via else "orphan_module"
         lines.append(
             f"capability({prolog_atom(rel)}, {prolog_atom(module)}, "
-            f"{prolog_atom(role)}, [], orphan_module)."
+            f"{prolog_atom(role)}, [], {status})."
         )
     lines.append("")
     for op in operations:
@@ -472,6 +607,17 @@ def render_registry() -> str:
         }
         for page in sorted(op_pages):
             lines.append(f"capability_page({prolog_atom(op.name)}, {prolog_atom(page)}).")
+    for rel, _module, _role in outside_closure:
+        for page in sorted(module_pages.get(rel, set())):
+            lines.append(f"capability_page({prolog_atom(rel)}, {prolog_atom(page)}).")
+    lines.append("")
+    outside_paths = {rel for rel, _module, _role in outside_closure}
+    for rel in sorted(lazy_via):
+        if rel in outside_paths:
+            for op in sorted(lazy_via[rel]):
+                lines.append(
+                    f"capability_lazy_via({prolog_atom(rel)}, {prolog_atom(op)})."
+                )
     return "\n".join(lines) + "\n"
 
 

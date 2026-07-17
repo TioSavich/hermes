@@ -32,6 +32,8 @@
              overflow-wrap: anywhere; font: .8rem/1.4 var(--mono, ui-monospace, Menlo, monospace); }
     .error { color: #842d24; }
     .general { max-width: 720px; }
+    .research-wing { margin: 1.4rem 0; padding: .9rem 1.1rem; border: 1px solid #b8860b;
+                     border-radius: 6px; background: rgba(184,134,11,.08); }
   </style>
 </head>
 <body>
@@ -41,6 +43,23 @@
       A returned witness reports the record and its stated boundary. It is not a general claim
       about a learner or about geometry outside the loaded tables.</p>
     <p id="status" class="lede" role="status" aria-live="polite">Loading controls from the local worker…</p>
+
+    <section class="research-wing">
+      <strong>Research wing — live, in progress.</strong>
+      <p><code>geometry/geometry_bridge.pl</code> is the standalone loader used to compare the
+        geometry closure with the worker closure. It stays outside the worker by design.</p>
+      <p><code>strategies/render/rigid_motion_scene.pl</code> compiles translation, reflection,
+        and rotation specifications into the shared render contract. The worker loads it
+        import-free; this page reaches it through the existing <code>geometry</code> operation.</p>
+      <form id="rigid-motion" class="general">
+        <h3>Rigid-motion scene</h3>
+        <label>spec (Prolog term text)
+          <input name="spec" required value="translate([0-0,2-0,1-1],1,2)">
+        </label>
+        <button type="submit">Compile rigid-motion scene</button>
+        <output aria-live="polite"></output>
+      </form>
+    </section>
     <div id="families"></div>
 
     <section>
@@ -194,6 +213,16 @@
           output.textContent = "Request failed: " + error.message;
         });
       }
+
+      document.getElementById("rigid-motion").addEventListener("submit", function (event) {
+        event.preventDefault();
+        var form = event.currentTarget;
+        request(form, form.querySelector("output"), "/api/render", {
+          op: "geometry",
+          predicate: "rigid_motion_render",
+          args: [form.elements.namedItem("spec").value]
+        });
+      });
 
       function control(item) {
         var op = item.name;

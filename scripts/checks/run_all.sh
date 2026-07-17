@@ -24,6 +24,7 @@ run geometry_load.sh        bash "$CHECKS_DIR/geometry_load.sh"
 run strict_gate_failures.py python3 "$CHECKS_DIR/strict_gate_failures.py"
 run workflow_service.py     python3 "$CHECKS_DIR/workflow_service.py"
 run drawer_parity.sh        bash "$CHECKS_DIR/drawer_parity.sh"
+run zeeman_bifurcation.sh   bash "$CHECKS_DIR/zeeman_bifurcation.sh"
 run route_behavior.py       python3 "$CHECKS_DIR/route_behavior.py"
 
 echo "all checks passed"

@@ -197,6 +197,50 @@ neg(p)</textarea>
     <div class="tool-grid" id="formal-witness-grid"></div>
   </div>
 
+  <div class="operable" id="formal-research-register" style="border-color:#b8860b;background:rgba(184,134,11,.08)">
+    <h3>Research wing — live, in progress</h3>
+    <p class="desc">These files are described here without loading them into the console worker.</p>
+    <div class="tool-grid">
+      <div class="tool"><h4>Base-invariance demonstrations</h4><p>
+        <code>formalization/synthesis/run_add.pl</code> runs the make-base addition demonstration;
+        <code>formalization/synthesis/run_lazy.pl</code> runs the cost-bounded subtraction demonstration;
+        <code>formalization/synthesis/run_synth.pl</code> runs every declared synthesis target.
+        Each harness executes only when invoked as a command-line main, so none is eager-loaded.
+        <code>formalization/synthesis/synth.pl</code> is the bounded program synthesizer library, and
+        <code>formalization/synthesis/synth_lazy.pl</code> is its cost-bounded, base-parameterized library.
+      </p></div>
+      <div class="tool"><h4>Lazy axiom control</h4><p>
+        <code>tools/axiom_toggle.pl</code> provides reversible runtime toggles. The
+        <code>axiom_toggle</code> operation loads it on demand because its full loader would create
+        import collisions during worker startup.
+      </p></div>
+      <div class="tool"><h4>Open axiom-pack questions</h4><p>
+        <code>formalization/axioms_geometry.pl</code> is the finite quadrilateral incompatibility pack.
+        <code>formalization/axioms_number_theory.pl</code> is the Euclid self-defeat pack.
+        <code>formalization/axioms_robinson.pl</code> is the Robinson Q and grounded-arithmetic pack.
+        All three are already textually included by <code>arche-trace/sequent_engine.pl</code>,
+        although the capability registry cannot credit an included source as a separately loaded
+        module. Whether they should remain include-active or become separately managed packs is an
+        open question for the author; the slice's one-shot reload comparisons provide evidence
+        without deciding it.
+      </p></div>
+      <div class="tool"><h4>Registry-scale incompatibility</h4><p>
+        <code>arche-trace/registry_incompatibility_adapter.pl</code> can reversibly add registry pairs
+        to the Brandomian hyperedge relation. Exposing that state change as a console toggle, or
+        retaining it as a test-only lever, is an open question for the author.</p></div>
+    </div>
+  </div>
+
+  <div class="operable" id="differance-seed" style="border-color:#b8860b;background:rgba(184,134,11,.08)">
+    <h3>The juncture seed</h3>
+    <div class="domains"><code>arche-trace/differance_juncture.pl</code></div>
+    <blockquote class="desc">“SEED. This is the first kindling of the ‘breath to kindling’ direction
+      (<a href="../../../docs/research/2026-06-25-the-juncture-and-differance.md">docs/research/2026-06-25-the-juncture-and-differance.md</a>),
+      not a finished account. Register: the code ENCODES and MAKES QUERYABLE a structural fact;
+      it does not ‘implement’ différance. The philosophy is Tio’s; the Prolog only holds the place
+      where it can be asked.”</blockquote>
+  </div>
+
   <div class="footnote">
     Source: Lakoff &amp; Núñez, <em>Where Mathematics Comes From</em> (2000),
     encoded as Prolog facts in <code>formalization/grounding_metaphors.pl</code>

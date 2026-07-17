@@ -16,12 +16,25 @@
     input,textarea{width:100%;margin-top:.2rem;padding:.5rem;border:1px solid var(--line,#b8aa8b);border-radius:5px;background:#fffdf7;font:inherit}
     textarea{min-height:5.5rem;font-family:var(--mono,monospace)}button{margin-top:.75rem;padding:.5rem .8rem;background:var(--gold-deep,#8b641c);color:white;border:0;border-radius:5px}
     output{display:block;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:.7rem;font:.8rem/1.4 var(--mono,monospace)}.error{color:#842d24}
+    .research-wing{margin:1.4rem 0;padding:.9rem 1.1rem;border:1px solid #b8860b;border-radius:6px;background:rgba(184,134,11,.08)}
   </style>
 </head>
 <body><main>
   <h1>PML witnesses</h1>
   <p class="lede">These controls query four finite PML and material-inference relations. They report what the loaded clauses attest and do not extend a result beyond those clauses.</p>
   <p id="status" class="status" role="status">Loading controls from the local worker…</p>
+  <section class="research-wing">
+    <strong>Research wing — live, in progress.</strong>
+    <p><code>pml/talkmoves_adapter.pl</code> prepares attributed TalkMoves packets for review.
+      <code>pml/audit_connectors.pl</code> audits declared MUA connectors against executable practices.
+      <code>pml/mua_health.pl</code> reports which MUA relations have runnable demonstrations.
+      <code>pml/axioms_eml.pl</code> records the toggle-gated embodied-modal transition axioms.
+      <code>pml/mua_conjectures.pl</code> is the intentionally empty register for relations not yet demonstrated.
+      These modules remain outside the startup closure.</p>
+    <p><code>misconceptions/pml_wire.pl</code> maps generated misconception source tags to PML
+      operators. Whether it should become a misconception-to-PML product surface or remain a
+      staging artifact is an open question for the author.</p>
+  </section>
   <div id="controls" class="controls"></div>
 </main><script>
 (function(){"use strict";

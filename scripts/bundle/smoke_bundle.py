@@ -203,8 +203,40 @@ def static_audit(tree: Path, report: Report) -> None:
     else:
         report.add("PASS", "capability registry files staged")
     page_assertions = {
+        "more-zeeman/atlas.html": (
+            "lazy_reachable", "Loaded on demand by", "Described on:",
+        ),
+        "more-zeeman/geometry.html": (
+            "strategies/render/rigid_motion_scene.pl", "geometry/geometry_bridge.pl",
+            "rigid_motion_render",
+        ),
+        "more-zeeman/bridge.html": (
+            "learner/activity_contract.pl", "learner/reorg_domains/fraction.pl",
+            "strategies/math_benchmark.pl",
+        ),
+        "more-zeeman/coordination.html": (
+            "strategies/math/unit_coordination_viz.pl",
+        ),
+        "more-zeeman/crosswalk.html": ("crosswalk/merge_evidence.pl",),
         "more-zeeman/pml-witnesses.html": (
             "/api/witness/pml", "semantic_material_witness", "validate_reader_axioms",
+            "pml/mua_conjectures.pl", "misconceptions/pml_wire.pl",
+        ),
+        "more-zeeman/index.html": (
+            "ZEEMAN_BIFURCATION_VERDICT divergence", "more-zeeman/prolog/zeeman_machine.pl",
+        ),
+        "more-zeeman/monitoring_chart.html": (
+            "lessons/im/im_glossary.pl", "lessons/im_harness.pl",
+        ),
+        "more-zeeman/notation/index.html": (
+            "lessons/im/generated/compiled_task_instances.pl",
+        ),
+        "hermes/app/web/breaks.html": (
+            "arche-trace/differance_juncture.pl", "formalization/axioms_robinson.pl",
+            "arche-trace/registry_incompatibility_adapter.pl",
+        ),
+        "hermes/app/web/no.html": (
+            "misconceptions/literature_canonical_mappings.pl",
         ),
         "more-zeeman/grounding.html": (
             "/api/witness/grounding", "image_schema", "target_expressive_power_witness",
@@ -432,7 +464,9 @@ def live_probes(tree: Path, python: str, swipl: str | None,
                 report.add(
                     "NOTE", "capability dead ends",
                     f"unrouted={counts.get('unrouted', 0)}, "
-                    f"orphan_modules={counts.get('orphan_module', 0)}",
+                    f"lazy_reachable={counts.get('lazy_reachable', 0)}, "
+                    "undescribed_orphans="
+                    f"{sum(1 for entry in entries if entry.get('surface_status') == 'orphan_module' and not entry.get('pages'))}",
                 )
                 try:
                     live_routes = staged_route_table(tree, python)

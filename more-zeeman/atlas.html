@@ -33,7 +33,8 @@
   <main class="wrap">
     <h1>Capability Atlas</h1>
     <p class="lede">This registry is generated from the worker dispatch table, public routes,
-      and shipped pages. Entries marked “not yet surfaced” remain queued for routing work.</p>
+      shipped pages, and bounded op-time load chains. Cordoned modules remain outside the startup
+      closure even when a page describes them.</p>
     <div id="counts" class="counts">Loading the capability registry…</div>
     <div id="health" class="status">Loading worker health…</div>
     <div id="status" class="status" aria-live="polite"></div>
@@ -60,18 +61,19 @@
       }
 
       function renderSurface(item, box) {
+        if (item.surface_status === "lazy_reachable") {
+          var via = (item.lazy_via || []).join(", ") || "an attributed worker operation";
+          box.appendChild(text("div", "Loaded on demand by " + via + ".", "surface"));
+          renderDescriptionPages(item, box);
+          return;
+        }
+        if (item.surface_status === "orphan_module" && (item.pages || []).length) {
+          box.appendChild(text("div", "Described on:", "surface"));
+          renderDescriptionPages(item, box);
+          return;
+        }
         if (item.surface_status === "routed_paged") {
-          var list = document.createElement("ul");
-          list.className = "pages";
-          (item.pages || []).forEach(function (page) {
-            var row = document.createElement("li");
-            var link = document.createElement("a");
-            link.href = pageHref(page);
-            link.textContent = page;
-            row.appendChild(link);
-            list.appendChild(row);
-          });
-          box.appendChild(list);
+          renderDescriptionPages(item, box);
           return;
         }
         if (item.surface_status === "routed_only") {
@@ -85,6 +87,20 @@
         box.appendChild(text("div", "Not yet surfaced", "surface marker"));
       }
 
+      function renderDescriptionPages(item, box) {
+        var list = document.createElement("ul");
+        list.className = "pages";
+        (item.pages || []).forEach(function (page) {
+          var row = document.createElement("li");
+          var link = document.createElement("a");
+          link.href = pageHref(page);
+          link.textContent = page;
+          row.appendChild(link);
+          list.appendChild(row);
+        });
+        box.appendChild(list);
+      }
+
       function render(data) {
         var items = Array.isArray(data.capabilities) ? data.capabilities : [];
         var counts = data.counts || {};
@@ -94,12 +110,14 @@
           + "; " + (Array.isArray(modules) ? modules.length : Number(health.loaded_module_count || 0))
           + " loaded modules.";
         var orphans = counts.orphan_module || 0;
-        var ops = items.length - orphans;
+        var lazy = counts.lazy_reachable || 0;
+        var ops = items.length - orphans - lazy;
         countsNode.textContent = ops + " capabilities: "
           + (counts.routed_paged || 0) + " reachable from a page, "
           + (counts.routed_only || 0) + " routed without a page, "
-          + (counts.unrouted || 0) + " unrouted — plus "
-          + orphans + " shipped modules outside the load closure.";
+          + (counts.unrouted || 0) + " unrouted; "
+          + lazy + " modules loaded on demand; "
+          + orphans + " described or queued modules outside the load closure.";
         if (!items.length) {
           statusNode.textContent = "The worker returned no capability entries.";
           statusNode.className = "status error";

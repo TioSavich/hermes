@@ -3,7 +3,8 @@
 :- module(capability_registry,
           [ capability/5,
             capability_route/3,
-            capability_page/2
+            capability_page/2,
+            capability_lazy_via/2
           ]).
 
 capability('accommodation_witness', 'cw_accommodation', 'unclassified', ['source', 'target'], routed_paged).
@@ -132,9 +133,9 @@ capability('modal_context_witness', 'cw_modal_context', 'unclassified', ['contex
 capability('monitoring_chart_export', 'hermes_worker', 'monitoring', ['lesson_code'], routed_paged).
 capability('mua_coherence_witness', 'cw_mua_coherence', 'unclassified', ['input', 'source', 'subject'], routed_paged).
 capability('mua_kind_coherence_witness', 'mua_relations', 'unclassified', ['kind', 'row_text'], routed_paged).
-capability('mult_div_family_witness', 'standard_3_ca_3_4', 'unclassified', ['a', 'b'], routed_paged).
+capability('mult_div_family_witness', 'standard_3_ca_3_4', 'standards', ['a', 'b'], routed_paged).
 capability('multiplication_division_claim_witness', 'cw_multiplication_division_claim', 'unclassified', ['canonical', 'source'], routed_paged).
-capability('multiply_array_witness', 'standard_3_ca_3_4', 'unclassified', ['cols', 'rows'], routed_paged).
+capability('multiply_array_witness', 'standard_3_ca_3_4', 'standards', ['cols', 'rows'], routed_paged).
 capability('normative_crisis_witness', 'cw_normative_crisis', 'unclassified', ['context', 'goal', 'source'], routed_paged).
 capability('notation_monitoring_chart', 'lesson_notation_chart', 'render', ['code'], routed_paged).
 capability('notation_render', 'hermes_worker', 'render', ['kind'], routed_paged).
@@ -211,13 +212,13 @@ capability('formalization/synthesis/synth.pl', 'synth', 'synthesis', [], orphan_
 capability('formalization/synthesis/synth_lazy.pl', 'synth_lazy', 'synthesis', [], orphan_module).
 capability('geometry/geometry_bridge.pl', 'geometry_bridge', 'geometry_witness', [], orphan_module).
 capability('learner/activity_contract.pl', 'activity_contract', 'learner', [], orphan_module).
-capability('learner/arithmetic_machine.pl', 'arithmetic_machine', 'learner', [], orphan_module).
+capability('learner/arithmetic_machine.pl', 'arithmetic_machine', 'learner', [], lazy_reachable).
 capability('learner/atlas/basis_transitions.pl', 'basis_transitions', 'learner', [], orphan_module).
 capability('learner/atlas/task_quotient.pl', 'task_quotient', 'learner', [], orphan_module).
 capability('learner/axioms_domains.pl', 'axioms_domains', 'learner', [], orphan_module).
 capability('learner/crisis_processor.pl', 'crisis_processor', 'learner', [], orphan_module).
 capability('learner/curriculum_processor.pl', 'curriculum_processor', 'learner', [], orphan_module).
-capability('learner/fraction_band_ladder.pl', 'fraction_band_ladder', 'learner', [], orphan_module).
+capability('learner/fraction_band_ladder.pl', 'fraction_band_ladder', 'learner', [], lazy_reachable).
 capability('learner/interactive_ui.pl', 'interactive_ui', 'learner', [], orphan_module).
 capability('learner/knowledge_manager.pl', 'knowledge_manager', 'learner', [], orphan_module).
 capability('learner/learned_knowledge_v2.pl', 'learned_knowledge_v2', 'learner', [], orphan_module).
@@ -225,10 +226,10 @@ capability('learner/main.pl', 'main', 'learner', [], orphan_module).
 capability('learner/primordial_start.pl', 'primordial_start', 'learner', [], orphan_module).
 capability('learner/reorg_demo_server.pl', 'reorg_demo_server', 'learner', [], orphan_module).
 capability('learner/reorg_domains/fraction.pl', 'reorg_fraction', 'learner', [], orphan_module).
-capability('learner/reorg_domains/fraction_algebra.pl', 'reorg_fraction_algebra', 'learner', [], orphan_module).
-capability('learner/reorg_domains/fraction_improper.pl', 'reorg_fraction_improper', 'learner', [], orphan_module).
-capability('learner/reorg_domains/fraction_of_fraction.pl', 'reorg_fraction_of_fraction', 'learner', [], orphan_module).
-capability('learner/reorg_domains/fraction_splitting.pl', 'reorg_fraction_splitting', 'learner', [], orphan_module).
+capability('learner/reorg_domains/fraction_algebra.pl', 'reorg_fraction_algebra', 'learner', [], lazy_reachable).
+capability('learner/reorg_domains/fraction_improper.pl', 'reorg_fraction_improper', 'learner', [], lazy_reachable).
+capability('learner/reorg_domains/fraction_of_fraction.pl', 'reorg_fraction_of_fraction', 'learner', [], lazy_reachable).
+capability('learner/reorg_domains/fraction_splitting.pl', 'reorg_fraction_splitting', 'learner', [], lazy_reachable).
 capability('learner/server.pl', 'server', 'learner', [], orphan_module).
 capability('learner/server_visualization.pl', 'server_visualization', 'learner', [], orphan_module).
 capability('learner/task_transition.pl', 'task_transition', 'learner', [], orphan_module).
@@ -247,10 +248,9 @@ capability('pml/axioms_eml.pl', 'axioms_eml', 'pml', [], orphan_module).
 capability('pml/mua_conjectures.pl', 'mua_conjectures', 'pml', [], orphan_module).
 capability('pml/mua_health.pl', 'mua_health', 'pml', [], orphan_module).
 capability('pml/talkmoves_adapter.pl', 'talkmoves_adapter', 'pml', [], orphan_module).
-capability('strategies/math/unit_coordination_viz.pl', 'unit_coordination_viz', 'synthesis', [], orphan_module).
+capability('strategies/math/unit_coordination_viz.pl', 'unit_coordination_viz', 'synthesis', [], lazy_reachable).
 capability('strategies/math_benchmark.pl', 'math_benchmark', 'synthesis', [], orphan_module).
-capability('strategies/render/rigid_motion_scene.pl', 'rigid_motion_scene', 'synthesis', [], orphan_module).
-capability('tools/axiom_toggle.pl', 'axiom_toggle', 'infrastructure', [], orphan_module).
+capability('tools/axiom_toggle.pl', 'axiom_toggle', 'infrastructure', [], lazy_reachable).
 
 capability_route('accommodation_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('ace_of_bases_render', 'POST', '/api/monitoring_visuals').
@@ -324,6 +324,7 @@ capability_route('fraction_render', 'POST', '/api/monitoring_visuals').
 capability_route('fraction_render', 'POST', '/api/render').
 capability_route('fsm_engine_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('geometry', 'POST', '/api/geometry').
+capability_route('geometry', 'POST', '/api/render').
 capability_route('geometry_angle_material_witness', 'POST', '/api/witness/geometry').
 capability_route('geometry_area_perimeter_material_witness', 'POST', '/api/witness/geometry').
 capability_route('geometry_attribute_material_witness', 'POST', '/api/witness/geometry').
@@ -475,6 +476,7 @@ capability_page('ace_of_bases_render', '/more-zeeman/balance-scale/index.html').
 capability_page('ace_of_bases_render', '/more-zeeman/base-ten/index.html').
 capability_page('ace_of_bases_render', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('ace_of_bases_render', '/more-zeeman/fraction-bars/index.html').
+capability_page('ace_of_bases_render', '/more-zeeman/geometry.html').
 capability_page('ace_of_bases_render', '/more-zeeman/hybridization/index.html').
 capability_page('ace_of_bases_render', '/more-zeeman/monitoring_chart.html').
 capability_page('ace_of_bases_render', '/more-zeeman/notation/index.html').
@@ -491,6 +493,7 @@ capability_page('area_compare', '/more-zeeman/balance-scale/index.html').
 capability_page('area_compare', '/more-zeeman/base-ten/index.html').
 capability_page('area_compare', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('area_compare', '/more-zeeman/fraction-bars/index.html').
+capability_page('area_compare', '/more-zeeman/geometry.html').
 capability_page('area_compare', '/more-zeeman/hybridization/index.html').
 capability_page('area_compare', '/more-zeeman/monitoring_chart.html').
 capability_page('area_compare', '/more-zeeman/notation/index.html').
@@ -505,6 +508,7 @@ capability_page('area_render', '/more-zeeman/balance-scale/index.html').
 capability_page('area_render', '/more-zeeman/base-ten/index.html').
 capability_page('area_render', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('area_render', '/more-zeeman/fraction-bars/index.html').
+capability_page('area_render', '/more-zeeman/geometry.html').
 capability_page('area_render', '/more-zeeman/hybridization/index.html').
 capability_page('area_render', '/more-zeeman/monitoring_chart.html').
 capability_page('area_render', '/more-zeeman/notation/index.html').
@@ -523,6 +527,7 @@ capability_page('balance_compare', '/more-zeeman/balance-scale/index.html').
 capability_page('balance_compare', '/more-zeeman/base-ten/index.html').
 capability_page('balance_compare', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('balance_compare', '/more-zeeman/fraction-bars/index.html').
+capability_page('balance_compare', '/more-zeeman/geometry.html').
 capability_page('balance_compare', '/more-zeeman/hybridization/index.html').
 capability_page('balance_compare', '/more-zeeman/monitoring_chart.html').
 capability_page('balance_compare', '/more-zeeman/notation/index.html').
@@ -537,6 +542,7 @@ capability_page('balance_render', '/more-zeeman/balance-scale/index.html').
 capability_page('balance_render', '/more-zeeman/base-ten/index.html').
 capability_page('balance_render', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('balance_render', '/more-zeeman/fraction-bars/index.html').
+capability_page('balance_render', '/more-zeeman/geometry.html').
 capability_page('balance_render', '/more-zeeman/hybridization/index.html').
 capability_page('balance_render', '/more-zeeman/monitoring_chart.html').
 capability_page('balance_render', '/more-zeeman/notation/index.html').
@@ -552,6 +558,7 @@ capability_page('base_ten_compare', '/more-zeeman/balance-scale/index.html').
 capability_page('base_ten_compare', '/more-zeeman/base-ten/index.html').
 capability_page('base_ten_compare', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('base_ten_compare', '/more-zeeman/fraction-bars/index.html').
+capability_page('base_ten_compare', '/more-zeeman/geometry.html').
 capability_page('base_ten_compare', '/more-zeeman/hybridization/index.html').
 capability_page('base_ten_compare', '/more-zeeman/monitoring_chart.html').
 capability_page('base_ten_compare', '/more-zeeman/notation/index.html').
@@ -566,6 +573,7 @@ capability_page('base_ten_render', '/more-zeeman/balance-scale/index.html').
 capability_page('base_ten_render', '/more-zeeman/base-ten/index.html').
 capability_page('base_ten_render', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('base_ten_render', '/more-zeeman/fraction-bars/index.html').
+capability_page('base_ten_render', '/more-zeeman/geometry.html').
 capability_page('base_ten_render', '/more-zeeman/hybridization/index.html').
 capability_page('base_ten_render', '/more-zeeman/monitoring_chart.html').
 capability_page('base_ten_render', '/more-zeeman/notation/index.html').
@@ -623,6 +631,7 @@ capability_page('fraction_compare', '/more-zeeman/balance-scale/index.html').
 capability_page('fraction_compare', '/more-zeeman/base-ten/index.html').
 capability_page('fraction_compare', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('fraction_compare', '/more-zeeman/fraction-bars/index.html').
+capability_page('fraction_compare', '/more-zeeman/geometry.html').
 capability_page('fraction_compare', '/more-zeeman/hybridization/index.html').
 capability_page('fraction_compare', '/more-zeeman/monitoring_chart.html').
 capability_page('fraction_compare', '/more-zeeman/notation/index.html').
@@ -638,6 +647,7 @@ capability_page('fraction_render', '/more-zeeman/balance-scale/index.html').
 capability_page('fraction_render', '/more-zeeman/base-ten/index.html').
 capability_page('fraction_render', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('fraction_render', '/more-zeeman/fraction-bars/index.html').
+capability_page('fraction_render', '/more-zeeman/geometry.html').
 capability_page('fraction_render', '/more-zeeman/hybridization/index.html').
 capability_page('fraction_render', '/more-zeeman/monitoring_chart.html').
 capability_page('fraction_render', '/more-zeeman/notation/index.html').
@@ -647,7 +657,20 @@ capability_page('fraction_render', '/more-zeeman/set-grouping/index.html').
 capability_page('fraction_render', '/more-zeeman/unit-echo/index.html').
 capability_page('fsm_engine_witness', '/more-zeeman/crosswalk.html').
 capability_page('geometry', '/hermes/app/web/console.html').
+capability_page('geometry', '/hermes/app/web/discussions.html').
+capability_page('geometry', '/more-zeeman/area-model/index.html').
+capability_page('geometry', '/more-zeeman/balance-scale/index.html').
+capability_page('geometry', '/more-zeeman/base-ten/index.html').
+capability_page('geometry', '/more-zeeman/fraction-bars/calculator.html').
+capability_page('geometry', '/more-zeeman/fraction-bars/index.html').
 capability_page('geometry', '/more-zeeman/geometry.html').
+capability_page('geometry', '/more-zeeman/hybridization/index.html').
+capability_page('geometry', '/more-zeeman/monitoring_chart.html').
+capability_page('geometry', '/more-zeeman/notation/index.html').
+capability_page('geometry', '/more-zeeman/number-line/index.html').
+capability_page('geometry', '/more-zeeman/place-value-chart/index.html').
+capability_page('geometry', '/more-zeeman/set-grouping/index.html').
+capability_page('geometry', '/more-zeeman/unit-echo/index.html').
 capability_page('geometry_angle_material_witness', '/more-zeeman/geometry.html').
 capability_page('geometry_area_perimeter_material_witness', '/more-zeeman/geometry.html').
 capability_page('geometry_attribute_material_witness', '/more-zeeman/geometry.html').
@@ -705,6 +728,7 @@ capability_page('hybridization_render', '/more-zeeman/balance-scale/index.html')
 capability_page('hybridization_render', '/more-zeeman/base-ten/index.html').
 capability_page('hybridization_render', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('hybridization_render', '/more-zeeman/fraction-bars/index.html').
+capability_page('hybridization_render', '/more-zeeman/geometry.html').
 capability_page('hybridization_render', '/more-zeeman/hybridization/index.html').
 capability_page('hybridization_render', '/more-zeeman/monitoring_chart.html').
 capability_page('hybridization_render', '/more-zeeman/notation/index.html').
@@ -755,6 +779,7 @@ capability_page('number_line_compare', '/more-zeeman/balance-scale/index.html').
 capability_page('number_line_compare', '/more-zeeman/base-ten/index.html').
 capability_page('number_line_compare', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('number_line_compare', '/more-zeeman/fraction-bars/index.html').
+capability_page('number_line_compare', '/more-zeeman/geometry.html').
 capability_page('number_line_compare', '/more-zeeman/hybridization/index.html').
 capability_page('number_line_compare', '/more-zeeman/monitoring_chart.html').
 capability_page('number_line_compare', '/more-zeeman/notation/index.html').
@@ -769,6 +794,7 @@ capability_page('number_line_render', '/more-zeeman/balance-scale/index.html').
 capability_page('number_line_render', '/more-zeeman/base-ten/index.html').
 capability_page('number_line_render', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('number_line_render', '/more-zeeman/fraction-bars/index.html').
+capability_page('number_line_render', '/more-zeeman/geometry.html').
 capability_page('number_line_render', '/more-zeeman/hybridization/index.html').
 capability_page('number_line_render', '/more-zeeman/monitoring_chart.html').
 capability_page('number_line_render', '/more-zeeman/notation/index.html').
@@ -788,6 +814,7 @@ capability_page('place_value_chart_render', '/more-zeeman/balance-scale/index.ht
 capability_page('place_value_chart_render', '/more-zeeman/base-ten/index.html').
 capability_page('place_value_chart_render', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('place_value_chart_render', '/more-zeeman/fraction-bars/index.html').
+capability_page('place_value_chart_render', '/more-zeeman/geometry.html').
 capability_page('place_value_chart_render', '/more-zeeman/hybridization/index.html').
 capability_page('place_value_chart_render', '/more-zeeman/monitoring_chart.html').
 capability_page('place_value_chart_render', '/more-zeeman/notation/index.html').
@@ -819,6 +846,7 @@ capability_page('set_grouping_compare', '/more-zeeman/balance-scale/index.html')
 capability_page('set_grouping_compare', '/more-zeeman/base-ten/index.html').
 capability_page('set_grouping_compare', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('set_grouping_compare', '/more-zeeman/fraction-bars/index.html').
+capability_page('set_grouping_compare', '/more-zeeman/geometry.html').
 capability_page('set_grouping_compare', '/more-zeeman/hybridization/index.html').
 capability_page('set_grouping_compare', '/more-zeeman/monitoring_chart.html').
 capability_page('set_grouping_compare', '/more-zeeman/notation/index.html').
@@ -833,6 +861,7 @@ capability_page('set_grouping_render', '/more-zeeman/balance-scale/index.html').
 capability_page('set_grouping_render', '/more-zeeman/base-ten/index.html').
 capability_page('set_grouping_render', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('set_grouping_render', '/more-zeeman/fraction-bars/index.html').
+capability_page('set_grouping_render', '/more-zeeman/geometry.html').
 capability_page('set_grouping_render', '/more-zeeman/hybridization/index.html').
 capability_page('set_grouping_render', '/more-zeeman/monitoring_chart.html').
 capability_page('set_grouping_render', '/more-zeeman/notation/index.html').
@@ -868,6 +897,7 @@ capability_page('strategy_trace', '/more-zeeman/balance-scale/index.html').
 capability_page('strategy_trace', '/more-zeeman/base-ten/index.html').
 capability_page('strategy_trace', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('strategy_trace', '/more-zeeman/fraction-bars/index.html').
+capability_page('strategy_trace', '/more-zeeman/geometry.html').
 capability_page('strategy_trace', '/more-zeeman/hybridization/index.html').
 capability_page('strategy_trace', '/more-zeeman/monitoring_chart.html').
 capability_page('strategy_trace', '/more-zeeman/notation/index.html').
@@ -883,6 +913,7 @@ capability_page('teacher_layer', '/more-zeeman/balance-scale/index.html').
 capability_page('teacher_layer', '/more-zeeman/base-ten/index.html').
 capability_page('teacher_layer', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('teacher_layer', '/more-zeeman/fraction-bars/index.html').
+capability_page('teacher_layer', '/more-zeeman/geometry.html').
 capability_page('teacher_layer', '/more-zeeman/hybridization/index.html').
 capability_page('teacher_layer', '/more-zeeman/monitoring_chart.html').
 capability_page('teacher_layer', '/more-zeeman/notation/index.html').
@@ -900,6 +931,7 @@ capability_page('unit_echo_render', '/more-zeeman/balance-scale/index.html').
 capability_page('unit_echo_render', '/more-zeeman/base-ten/index.html').
 capability_page('unit_echo_render', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('unit_echo_render', '/more-zeeman/fraction-bars/index.html').
+capability_page('unit_echo_render', '/more-zeeman/geometry.html').
 capability_page('unit_echo_render', '/more-zeeman/hybridization/index.html').
 capability_page('unit_echo_render', '/more-zeeman/monitoring_chart.html').
 capability_page('unit_echo_render', '/more-zeeman/notation/index.html').
@@ -912,3 +944,69 @@ capability_page('viability_witness', '/more-zeeman/crosswalk.html').
 capability_page('visualize_coordination', '/more-zeeman/coordination.html').
 capability_page('whole_number_addsub_claim_witness', '/more-zeeman/crosswalk.html').
 capability_page('whole_number_claim_witness', '/more-zeeman/crosswalk.html').
+capability_page('arche-trace/differance_juncture.pl', '/hermes/app/web/breaks.html').
+capability_page('arche-trace/differance_juncture.pl', '/hermes/app/web/generated/fractal_loops/index.html').
+capability_page('arche-trace/registry_incompatibility_adapter.pl', '/hermes/app/web/breaks.html').
+capability_page('crosswalk/merge_evidence.pl', '/more-zeeman/crosswalk.html').
+capability_page('formalization/axioms_geometry.pl', '/hermes/app/web/breaks.html').
+capability_page('formalization/axioms_number_theory.pl', '/hermes/app/web/breaks.html').
+capability_page('formalization/axioms_robinson.pl', '/hermes/app/web/breaks.html').
+capability_page('formalization/axioms_robinson.pl', '/hermes/app/web/generated/fractal_loops/index.html').
+capability_page('formalization/synthesis/run_add.pl', '/hermes/app/web/breaks.html').
+capability_page('formalization/synthesis/run_lazy.pl', '/hermes/app/web/breaks.html').
+capability_page('formalization/synthesis/run_synth.pl', '/hermes/app/web/breaks.html').
+capability_page('formalization/synthesis/synth.pl', '/hermes/app/web/breaks.html').
+capability_page('formalization/synthesis/synth_lazy.pl', '/hermes/app/web/breaks.html').
+capability_page('geometry/geometry_bridge.pl', '/more-zeeman/geometry.html').
+capability_page('learner/activity_contract.pl', '/more-zeeman/bridge.html').
+capability_page('learner/arithmetic_machine.pl', '/more-zeeman/bridge.html').
+capability_page('learner/atlas/basis_transitions.pl', '/more-zeeman/bridge.html').
+capability_page('learner/atlas/task_quotient.pl', '/more-zeeman/bridge.html').
+capability_page('learner/axioms_domains.pl', '/more-zeeman/bridge.html').
+capability_page('learner/crisis_processor.pl', '/more-zeeman/bridge.html').
+capability_page('learner/curriculum_processor.pl', '/more-zeeman/bridge.html').
+capability_page('learner/fraction_band_ladder.pl', '/more-zeeman/bridge.html').
+capability_page('learner/interactive_ui.pl', '/more-zeeman/bridge.html').
+capability_page('learner/knowledge_manager.pl', '/more-zeeman/bridge.html').
+capability_page('learner/learned_knowledge_v2.pl', '/more-zeeman/bridge.html').
+capability_page('learner/main.pl', '/more-zeeman/bridge.html').
+capability_page('learner/primordial_start.pl', '/more-zeeman/bridge.html').
+capability_page('learner/reorg_demo_server.pl', '/more-zeeman/bridge.html').
+capability_page('learner/reorg_domains/fraction.pl', '/more-zeeman/bridge.html').
+capability_page('learner/reorg_domains/fraction_algebra.pl', '/more-zeeman/bridge.html').
+capability_page('learner/reorg_domains/fraction_improper.pl', '/more-zeeman/bridge.html').
+capability_page('learner/reorg_domains/fraction_of_fraction.pl', '/more-zeeman/bridge.html').
+capability_page('learner/reorg_domains/fraction_splitting.pl', '/more-zeeman/bridge.html').
+capability_page('learner/server.pl', '/more-zeeman/bridge.html').
+capability_page('learner/server_visualization.pl', '/more-zeeman/bridge.html').
+capability_page('learner/task_transition.pl', '/more-zeeman/bridge.html').
+capability_page('lessons/im/generated/compiled_task_instances.pl', '/more-zeeman/notation/index.html').
+capability_page('lessons/im/generated/vision_lesson_digest.pl', '/more-zeeman/monitoring_chart.html').
+capability_page('lessons/im/im_glossary.pl', '/more-zeeman/monitoring_chart.html').
+capability_page('lessons/im_harness.pl', '/more-zeeman/monitoring_chart.html').
+capability_page('misconceptions/literature_canonical_mappings.pl', '/hermes/app/web/no.html').
+capability_page('misconceptions/pml_wire.pl', '/more-zeeman/pml-witnesses.html').
+capability_page('misconceptions/pml_wire.pl', '/more-zeeman/translation-chain.html').
+capability_page('more-zeeman/prolog/zeeman_bifurcation.pl', '/more-zeeman/index.html').
+capability_page('more-zeeman/prolog/zeeman_machine.pl', '/more-zeeman/index.html').
+capability_page('more-zeeman/prolog/zeeman_pml_bridge.pl', '/more-zeeman/index.html').
+capability_page('more-zeeman/prolog/zeeman_tape.pl', '/more-zeeman/index.html').
+capability_page('pml/audit_connectors.pl', '/more-zeeman/pml-witnesses.html').
+capability_page('pml/axioms_eml.pl', '/more-zeeman/pml-witnesses.html').
+capability_page('pml/mua_conjectures.pl', '/more-zeeman/pml-witnesses.html').
+capability_page('pml/mua_health.pl', '/more-zeeman/pml-witnesses.html').
+capability_page('pml/talkmoves_adapter.pl', '/more-zeeman/pml-witnesses.html').
+capability_page('strategies/math/unit_coordination_viz.pl', '/more-zeeman/coordination.html').
+capability_page('strategies/math_benchmark.pl', '/more-zeeman/bridge.html').
+capability_page('tools/axiom_toggle.pl', '/hermes/app/web/breaks.html').
+
+capability_lazy_via('learner/arithmetic_machine.pl', 'compute').
+capability_lazy_via('learner/arithmetic_machine.pl', 'learner_reset').
+capability_lazy_via('learner/fraction_band_ladder.pl', 'reorganize').
+capability_lazy_via('learner/reorg_domains/fraction_algebra.pl', 'reorganize').
+capability_lazy_via('learner/reorg_domains/fraction_improper.pl', 'reorganize').
+capability_lazy_via('learner/reorg_domains/fraction_of_fraction.pl', 'reorganize').
+capability_lazy_via('learner/reorg_domains/fraction_splitting.pl', 'reorganize').
+capability_lazy_via('strategies/math/unit_coordination_viz.pl', 'unit_coordination_svg').
+capability_lazy_via('strategies/math/unit_coordination_viz.pl', 'visualize_coordination').
+capability_lazy_via('tools/axiom_toggle.pl', 'axiom_toggle').

@@ -1166,7 +1166,7 @@ class RouteLogic:
             "set_grouping_compare", "number_line_render", "number_line_compare",
             "place_value_chart_render", "hybridization_render",
             "balance_render", "balance_compare", "teacher_layer",
-            "strategy_trace",
+            "strategy_trace", "geometry",
         }
         op = str(payload.get("op") or "").strip()
         if op not in allowed:
