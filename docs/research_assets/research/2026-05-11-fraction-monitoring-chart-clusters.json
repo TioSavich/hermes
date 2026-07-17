@@ -1,0 +1,1896 @@
+{
+  "generated_at": "2026-07-07T08:41:51",
+  "db_path": "research_corpus/research.db",
+  "strategy_rows": 651,
+  "misconception_rows": 739,
+  "method": "transparent keyword scoring over fraction strategy_instances and error_instances",
+  "clusters": [
+    {
+      "id": "equal_partitioning",
+      "title": "Equal Partitioning And Unit-Fraction Naming",
+      "automaton_states": [
+        "equalized_part",
+        "bounded_completion_tick"
+      ],
+      "productive_core": "A whole is partitioned into equal parts; one part is named as a unit fraction of that referent whole.",
+      "deformation": "Unequal pieces are counted as if equal, or the denominator is treated as a visible piece count detached from the whole.",
+      "assessing_questions": [
+        "How do you know the parts are equal?",
+        "What is the whole in your drawing?",
+        "What does one part of this whole get called?"
+      ],
+      "advancing_questions": [
+        "Can you adjust the drawing so each part has the same area or length?",
+        "If this one part is 1/b, how many copies rebuild the whole?"
+      ],
+      "standards": [
+        "Indiana 3.G.3",
+        "Indiana 3.NS.2",
+        "CCSS 3.G.A.2",
+        "CCSS 3.NF.A.1"
+      ],
+      "im_anchors": [
+        "IM-G3-U5-L1",
+        "IM-G3-U5-L2",
+        "IM-G3-U5-L3",
+        "IM-G3-U8-L1"
+      ],
+      "strategy_count": 195,
+      "misconception_count": 87,
+      "strategy_samples": [
+        {
+          "id": 23,
+          "bibtex_key": "JMB_Hackenberg_2007_Units",
+          "year": 2007,
+          "description": "splitting_a_given_bar",
+          "topic": "splitting operation",
+          "subtopic": "simultaneous partitioning and iterating",
+          "page_refs": "29, 32, 45",
+          "pdf": "pdfs/JMB/JMB_Hackenberg_2007_Units.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 24,
+          "bibtex_key": "JMB_Hackenberg_2007_Units",
+          "year": 2007,
+          "description": "splitting_composite_units",
+          "topic": "splitting composite units",
+          "subtopic": "reversible partitioning of a number",
+          "page_refs": "29, 30, 32, 39, 45",
+          "pdf": "pdfs/JMB/JMB_Hackenberg_2007_Units.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 26,
+          "bibtex_key": "JMB_Hackenberg_2007_Units",
+          "year": 2007,
+          "description": "iterating_unit_fraction_to_make_proper_fraction",
+          "topic": "iterating a unit fraction",
+          "subtopic": "non-unit fraction production",
+          "page_refs": "33, 34",
+          "pdf": "pdfs/JMB/JMB_Hackenberg_2007_Units.pdf",
+          "cluster_score": 6.0
+        },
+        {
+          "id": 29,
+          "bibtex_key": "JMB_Hackenberg_2007_Units",
+          "year": 2007,
+          "description": "coordinating_two_fractions_via_partitioning_partitions",
+          "topic": "coordinating two fractions in one bar",
+          "subtopic": "units within units",
+          "page_refs": "35, 36, 37",
+          "pdf": "pdfs/JMB/JMB_Hackenberg_2007_Units.pdf",
+          "cluster_score": 5.0
+        },
+        {
+          "id": 30,
+          "bibtex_key": "JMB_Hackenberg_2007_Units",
+          "year": 2007,
+          "description": "partitioning_thirds_into_eighths",
+          "topic": "common partition of two fractions",
+          "subtopic": "least-common partition by anticipation",
+          "page_refs": "37, 38",
+          "pdf": "pdfs/JMB/JMB_Hackenberg_2007_Units.pdf",
+          "cluster_score": 7.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44001,
+          "bibtex_key": "MTL_Steffe_2004_Construction",
+          "year": 2004,
+          "description": "A student interprets a fraction of a partitioned whole purely by counting parts and pieces without being able to recognize the commensurate unit fraction due to a lack of recursive partitioning operations.",
+          "topic": "commensurate fractions",
+          "subtopic": "recursive partitioning",
+          "page_refs": "149",
+          "pdf": "pdfs/MTL/MTL_Steffe_2004_Construction.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 44020,
+          "bibtex_key": "JRME_Hackenberg_2010_Mathematical",
+          "year": 2010,
+          "description": "The student lacks a general scheme to partition a composite fractional bar into a specific number of equal parts without relying on visual estimation.",
+          "topic": "reversible multiplicative relationships",
+          "subtopic": "partitioning composite units",
+          "page_refs": "260",
+          "pdf": "pdfs/JRME/JRME_Hackenberg_2010_Mathematical.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44082,
+          "bibtex_key": "JRME_Pothier_1983_Partitioning",
+          "year": 1983,
+          "description": "Children use terms like 'half' to refer to the action of breaking or to any resulting piece, without understanding the numerical characteristics of equality or 'one of two parts.'",
+          "topic": "partitioning",
+          "subtopic": "halves",
+          "page_refs": "311",
+          "pdf": "pdfs/JRME/JRME_Pothier_1983_Partitioning.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44083,
+          "bibtex_key": "JRME_Pothier_1983_Partitioning",
+          "year": 1983,
+          "description": "Children indiscriminately apply a systematic strategy of repeated halving to partition shapes, ignoring equality, even when tasked with creating an odd number of parts.",
+          "topic": "partitioning",
+          "subtopic": "algorithmic halving",
+          "page_refs": "311, 312",
+          "pdf": "pdfs/JRME/JRME_Pothier_1983_Partitioning.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 44084,
+          "bibtex_key": "JRME_Pothier_1983_Partitioning",
+          "year": 1983,
+          "description": "Because of a rigid reliance on always making a median cut first, children conclude that partitioning a shape into an odd number of equal parts is impossible.",
+          "topic": "partitioning",
+          "subtopic": "odd number of parts",
+          "page_refs": "314, 315",
+          "pdf": "pdfs/JRME/JRME_Pothier_1983_Partitioning.pdf",
+          "cluster_score": 4.5
+        }
+      ]
+    },
+    {
+      "id": "unit_iteration_nonunit",
+      "title": "Unit Iteration And Non-Unit Fractions",
+      "automaton_states": [
+        "bounded_partitive",
+        "freed_iterative"
+      ],
+      "productive_core": "A non-unit fraction is built by iterating a unit fraction while preserving the denominator as the completion norm for the whole.",
+      "deformation": "The numerator becomes a whole-number count with no unit, or the iterated result becomes a new whole and loses its original referent.",
+      "assessing_questions": [
+        "What unit fraction are you counting?",
+        "How many of that unit have you counted?",
+        "How many would make one whole?"
+      ],
+      "advancing_questions": [
+        "Show 3/b as three copies of 1/b.",
+        "Can the same unit keep going past one whole? How do you know it is still 1/b?"
+      ],
+      "standards": [
+        "Indiana 3.NS.2",
+        "CCSS 3.NF.A.1",
+        "CCSS 3.NF.A.2"
+      ],
+      "im_anchors": [
+        "IM-G3-U5-L3",
+        "IM-G3-U5-L4",
+        "IM-G3-U5-L7",
+        "IM-G3-U8-L3"
+      ],
+      "strategy_count": 32,
+      "misconception_count": 34,
+      "strategy_samples": [
+        {
+          "id": 222,
+          "bibtex_key": "JMB_Clements_2000_From",
+          "year": 2000,
+          "description": "fraction_via_clock_analogy",
+          "topic": "fraction representation",
+          "subtopic": "fraction by analogy across media",
+          "page_refs": "33, 34",
+          "pdf": "pdfs/JMB/JMB_Clements_2000_From.pdf",
+          "cluster_score": 2.5
+        },
+        {
+          "id": 256,
+          "bibtex_key": "JMB_Olive_2002_Construction",
+          "year": 2002,
+          "description": "iterate_unit_stick_to_find_unit_fraction",
+          "topic": "unit fraction of a connected number",
+          "subtopic": "iteration of a composite unit to identify the unit fraction",
+          "page_refs": "418, 419",
+          "pdf": "pdfs/JMB/JMB_Olive_2002_Construction.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 257,
+          "bibtex_key": "JMB_Olive_2002_Construction",
+          "year": 2002,
+          "description": "estimate_partition_via_iterated_estimate",
+          "topic": "unit fraction of an unmarked stick",
+          "subtopic": "mental partitioning via iteration",
+          "page_refs": "420, 421",
+          "pdf": "pdfs/JMB/JMB_Olive_2002_Construction.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 278,
+          "bibtex_key": "JMB_Steffe_2002_New",
+          "year": 2002,
+          "description": "estimate_and_verify_by_iteration",
+          "topic": "fractional estimation",
+          "subtopic": "drawing one-tenth via estimation and iterative verification",
+          "page_refs": "284",
+          "pdf": "pdfs/JMB/JMB_Steffe_2002_New.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 291,
+          "bibtex_key": "JRME_Norton_2008_Zpc",
+          "year": 2008,
+          "description": "partitive_unit_fractional_scheme",
+          "topic": "unit fraction iteration",
+          "subtopic": "iterating a unit part to reproduce the whole",
+          "page_refs": "227",
+          "pdf": "pdfs/JRME/JRME_Norton_2008_Zpc.pdf",
+          "cluster_score": 5.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44002,
+          "bibtex_key": "MTL_Steffe_2004_Construction",
+          "year": 2004,
+          "description": "A student experiences perturbation when a measuring tool labels a partitioned fraction with its commensurate unit fraction, which conflicts with their part-whole counting scheme.",
+          "topic": "commensurate fractions",
+          "subtopic": null,
+          "page_refs": "143, 144, 148, 149",
+          "pdf": "pdfs/MTL/MTL_Steffe_2004_Construction.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44037,
+          "bibtex_key": "JRME_Lamon_1996_Development",
+          "year": 1996,
+          "description": "Students fail to conceptualize a composite unit as a single entity, requiring perceptual support by drawing and counting individual constituent items to assure equal sharing.",
+          "topic": "unitizing",
+          "subtopic": "composite units",
+          "page_refs": "184",
+          "pdf": "pdfs/JRME/JRME_Lamon_1996_Development.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 44081,
+          "bibtex_key": "JRME_Maher_1990_Chapter",
+          "year": 1990,
+          "description": "When modeling a fraction problem by drawing physical pieces, a student incorrectly names the resulting fraction by using the total number of drawn pieces as both the numerator and the denominator.",
+          "topic": "fractional representation",
+          "subtopic": "naming fractions",
+          "page_refs": "80",
+          "pdf": "pdfs/JRME/JRME_Maher_1990_Chapter.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 44321,
+          "bibtex_key": "JRME_Hunting_1983_Alan",
+          "year": 1983,
+          "description": "A student misapplies whole-number partitioning strategies to find fractions of a set, grouping objects according to the numerator rather than first determining the fractional unit size based on the denominator.",
+          "topic": "fractions of a set",
+          "subtopic": "partitioning",
+          "page_refs": "192, 193",
+          "pdf": "pdfs/JRME/JRME_Hunting_1983_Alan.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 44331,
+          "bibtex_key": "JRME_Norton_2008_Zpc",
+          "year": 2008,
+          "description": "The student invents procedural schemes that confuse the unique roles of the numerator and denominator.",
+          "topic": "improper fractions",
+          "subtopic": "numerator and denominator roles",
+          "page_refs": "235, 236",
+          "pdf": "pdfs/JRME/JRME_Norton_2008_Zpc.pdf",
+          "cluster_score": 7.5
+        }
+      ]
+    },
+    {
+      "id": "number_line_unit_interval",
+      "title": "Number-Line Unit Interval Control",
+      "automaton_states": [
+        "referent_indexed_fraction",
+        "unit_interval_partition"
+      ],
+      "productive_core": "The interval from 0 to 1 is the whole; fractional ticks partition that interval and can be iterated to locate fractions and whole numbers.",
+      "deformation": "The entire displayed line is partitioned, tick marks are counted instead of spaces, or the location of 1 is inferred from labels without reconstructing the unit interval.",
+      "assessing_questions": [
+        "Where is 0? Where is 1?",
+        "Which interval did you partition?",
+        "Are you counting tick marks or spaces?"
+      ],
+      "advancing_questions": [
+        "Use the given fraction to recover the size of one unit fraction.",
+        "Partition only the interval from 0 to 1, then keep iterating the same part."
+      ],
+      "standards": [
+        "CCSS 3.NF.A.2",
+        "CCSS 3.NF.A.2.a",
+        "CCSS 3.NF.A.2.b"
+      ],
+      "im_anchors": [
+        "IM-G3-U5-L5",
+        "IM-G3-U5-L6",
+        "IM-G3-U5-L7",
+        "IM-G3-U5-L8",
+        "IM-G3-U5-L9",
+        "IM-G3-U8-L2"
+      ],
+      "strategy_count": 13,
+      "misconception_count": 40,
+      "strategy_samples": [
+        {
+          "id": 140,
+          "bibtex_key": "MTL_Fernandez_2005_Lesson",
+          "year": 2005,
+          "description": "name_share_as_fraction_of_whole",
+          "topic": "fraction notation",
+          "subtopic": "naming a share as one-of-n",
+          "page_refs": "276, 277",
+          "pdf": "pdfs/MTL/MTL_Fernandez_2005_Lesson.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 288,
+          "bibtex_key": "JRME_Izsak_2008_Teaching",
+          "year": 2008,
+          "description": "three_step_number_line_addition",
+          "topic": "fraction addition",
+          "subtopic": "fraction addition on number lines",
+          "page_refs": "42, 43, 44",
+          "pdf": "pdfs/JRME/JRME_Izsak_2008_Teaching.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 289,
+          "bibtex_key": "JRME_Izsak_2008_Teaching",
+          "year": 2008,
+          "description": "recursive_partitioning_for_sum",
+          "topic": "fraction addition",
+          "subtopic": "recursive partitioning of subintervals",
+          "page_refs": "49, 50, 58",
+          "pdf": "pdfs/JRME/JRME_Izsak_2008_Teaching.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 526,
+          "bibtex_key": "ESM_Keijzer_2001_Audreys",
+          "year": 2001,
+          "description": "double_indexed_number_line",
+          "topic": "fraction of a quantity",
+          "subtopic": "double indexed number line",
+          "page_refs": "60, 61",
+          "pdf": "pdfs/ESM/ESM_Keijzer_2001_Audreys.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 888,
+          "bibtex_key": "IJSME_Patahuddin_2018_Affordances",
+          "year": 2018,
+          "description": "area_interpretation_of_fractions",
+          "topic": "fraction representation",
+          "subtopic": "midpoint on a number line",
+          "page_refs": "917, 918",
+          "pdf": "pdfs/IJSME/IJSME_Patahuddin_2018_Affordances.pdf",
+          "cluster_score": 6.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44015,
+          "bibtex_key": "JRME_Izsak_2008_Teaching",
+          "year": 2008,
+          "description": "Students treat whole number benchmarks as estimated locations and then iterate subintervals to find the actual location of the whole, resulting in the whole number and its equivalent fraction appearing at two different locations.",
+          "topic": "number line representation",
+          "subtopic": "benchmarks and iteration",
+          "page_refs": "55, 56, 57",
+          "pdf": "pdfs/JRME/JRME_Izsak_2008_Teaching.pdf",
+          "cluster_score": 9.5
+        },
+        {
+          "id": 44129,
+          "bibtex_key": "JRME_Bright_1988_Identifying",
+          "year": 1988,
+          "description": "Students are unable to mentally remove partition marks to recognize lower-term equivalent fractions on a number line.",
+          "topic": "number line representation",
+          "subtopic": "unpartitioning",
+          "page_refs": "217, 225, 227, 228, 229",
+          "pdf": "pdfs/JRME/JRME_Bright_1988_Identifying.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 44130,
+          "bibtex_key": "JRME_Bright_1988_Identifying",
+          "year": 1988,
+          "description": "Students incorrectly use the entire visible number line segment, rather than the intended segment from 0 to 1, as the reference unit.",
+          "topic": "number line representation",
+          "subtopic": "unit identification",
+          "page_refs": "221, 225",
+          "pdf": "pdfs/JRME/JRME_Bright_1988_Identifying.pdf",
+          "cluster_score": 9.5
+        },
+        {
+          "id": 44131,
+          "bibtex_key": "JRME_Bright_1988_Identifying",
+          "year": 1988,
+          "description": "Students incorrectly apply additive or isolated multiplicative rules, creating syntactic errors, rather than proportionally coordinating equivalent fractions on a number line.",
+          "topic": "equivalent fractions",
+          "subtopic": "symbolic algorithms",
+          "page_refs": "219, 223",
+          "pdf": "pdfs/JRME/JRME_Bright_1988_Identifying.pdf",
+          "cluster_score": 5.0
+        },
+        {
+          "id": 44132,
+          "bibtex_key": "JRME_Bright_1988_Identifying",
+          "year": 1988,
+          "description": "Students count the tick marks on a number line rather than counting the continuous intervals between the marks.",
+          "topic": "number line representation",
+          "subtopic": "intervals vs. marks",
+          "page_refs": "221",
+          "pdf": "pdfs/JRME/JRME_Bright_1988_Identifying.pdf",
+          "cluster_score": 8.5
+        }
+      ]
+    },
+    {
+      "id": "beyond_one_and_whole_equivalence",
+      "title": "Fractions Greater Than One And Whole-Number Equivalence",
+      "automaton_states": [
+        "freed_iterative",
+        "whole_fraction_equivalence"
+      ],
+      "productive_core": "A unit fraction can be iterated beyond the original whole, and whole numbers can be named as n/n, 2n/n, and so on when the referent unit remains active.",
+      "deformation": "Fractions are locked inside one whole, so improper fractions are rejected, inverted, or redrawn as smaller proper fractions.",
+      "assessing_questions": [
+        "Can this fraction be more than one whole?",
+        "How many fourths are in 1? How many fourths are in 2?",
+        "What stays the same when you go past 1?"
+      ],
+      "advancing_questions": [
+        "Keep the same unit fraction and count past 1.",
+        "Name the same point as a whole number and as a fraction."
+      ],
+      "standards": [
+        "CCSS 3.NF.A.3.c",
+        "CCSS 3.NF.A.2.b"
+      ],
+      "im_anchors": [
+        "IM-G3-U5-L7",
+        "IM-G3-U5-L8",
+        "IM-G3-U5-L9",
+        "IM-G3-U5-L13"
+      ],
+      "strategy_count": 55,
+      "misconception_count": 88,
+      "strategy_samples": [
+        {
+          "id": 28,
+          "bibtex_key": "JMB_Hackenberg_2007_Units",
+          "year": 2007,
+          "description": "magic_cake_iteration_beyond_whole",
+          "topic": "fraction greater than one",
+          "subtopic": "iterating a unit fraction past the whole",
+          "page_refs": "35, 40",
+          "pdf": "pdfs/JMB/JMB_Hackenberg_2007_Units.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 236,
+          "bibtex_key": "JMB_Hackenberg_2009_Students'",
+          "year": 2009,
+          "description": "deborah_distributive_three_halves_of_sevenths",
+          "topic": "fraction composition",
+          "subtopic": "improper fraction of a fraction with color/distribution",
+          "page_refs": "13",
+          "pdf": "pdfs/JMB/JMB_Hackenberg_2009_Students'.pdf",
+          "cluster_score": 2.5
+        },
+        {
+          "id": 258,
+          "bibtex_key": "JMB_Olive_2002_Construction",
+          "year": 2002,
+          "description": "iterate_unit_fraction_beyond_whole",
+          "topic": "improper fraction",
+          "subtopic": "splitting operation generating fractions greater than the whole",
+          "page_refs": "422, 423",
+          "pdf": "pdfs/JMB/JMB_Olive_2002_Construction.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 263,
+          "bibtex_key": "JMB_Olive_2002_Construction",
+          "year": 2002,
+          "description": "iterate_two_eleventh_bar_eight_times",
+          "topic": "iteration of a composite unit fraction",
+          "subtopic": "fractional connected number sequence",
+          "page_refs": "433, 434",
+          "pdf": "pdfs/JMB/JMB_Olive_2002_Construction.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 282,
+          "bibtex_key": "JMB_Steffe_2002_New",
+          "year": 2002,
+          "description": "creative_production_of_improper_fractional_language",
+          "topic": "improper fractions",
+          "subtopic": "iterating to produce fractions greater than the whole",
+          "page_refs": "297, 298, 299, 300",
+          "pdf": "pdfs/JMB/JMB_Steffe_2002_New.pdf",
+          "cluster_score": 5.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 43997,
+          "bibtex_key": "JMB_Steffe_2002_New",
+          "year": 2002,
+          "description": "Children named a fractional part based on the number of iterations of the stick used rather than its multiplicative relationship to the whole.",
+          "topic": "representation",
+          "subtopic": "part-whole comparison",
+          "page_refs": "280-283",
+          "pdf": "pdfs/JMB/JMB_Steffe_2002_New.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44000,
+          "bibtex_key": "JMB_Steffe_2002_New",
+          "year": 2002,
+          "description": "A student inverted the part-whole relationship when attempting to construct an improper fraction, creating a proper fraction instead.",
+          "topic": "representation",
+          "subtopic": "improper fractions",
+          "page_refs": "299-300",
+          "pdf": "pdfs/JMB/JMB_Steffe_2002_New.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44004,
+          "bibtex_key": "JMB_Hackenberg_2007_Units",
+          "year": 2007,
+          "description": "The student drew a fraction greater than one by partitioning the given rectangle and adding pieces, interpreting the resulting total pieces as the new denominator rather than maintaining the original unit.",
+          "topic": "representation",
+          "subtopic": "improper fractions",
+          "page_refs": "33",
+          "pdf": "pdfs/JMB/JMB_Hackenberg_2007_Units.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44005,
+          "bibtex_key": "JMB_Hackenberg_2007_Units",
+          "year": 2007,
+          "description": "The student partitioned the unit bar into the largest number stated in the improper fraction, effectively creating a proper fraction instead.",
+          "topic": "representation",
+          "subtopic": "improper fractions",
+          "page_refs": "39-40",
+          "pdf": "pdfs/JMB/JMB_Hackenberg_2007_Units.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 44006,
+          "bibtex_key": "JMB_Hackenberg_2007_Units",
+          "year": 2007,
+          "description": "The student made the reciprocal of an intended improper fraction to avoid the problem of not having enough material to extend beyond the given whole.",
+          "topic": "representation",
+          "subtopic": "improper fractions",
+          "page_refs": "40-42",
+          "pdf": "pdfs/JMB/JMB_Hackenberg_2007_Units.pdf",
+          "cluster_score": 6.5
+        }
+      ]
+    },
+    {
+      "id": "equivalence_repartitioning",
+      "title": "Equivalence By Repartitioning, Grouping, And Location",
+      "automaton_states": [
+        "repartitioned_whole",
+        "grouped_fractional_units"
+      ],
+      "productive_core": "Equivalent fractions name the same amount of the same whole, either by repartitioning into smaller equal parts, grouping smaller parts into larger parts, or sharing a number-line location.",
+      "deformation": "Equivalent-fraction procedures are reduced to doubling, numerator-only scaling, or same-symbol manipulation without preserving the same amount of the same whole.",
+      "assessing_questions": [
+        "How can the same shaded amount have two names?",
+        "What changed in the partition? What stayed the same?",
+        "Do these fractions land at the same location?"
+      ],
+      "advancing_questions": [
+        "Show the equivalence by adding partition marks.",
+        "Show the equivalence by grouping smaller parts into larger parts.",
+        "Use one number line to show both names."
+      ],
+      "standards": [
+        "CCSS 3.NF.A.3.a",
+        "CCSS 3.NF.A.3.b"
+      ],
+      "im_anchors": [
+        "IM-G3-U5-L10",
+        "IM-G3-U5-L11",
+        "IM-G3-U5-L12",
+        "IM-G3-U8-L2"
+      ],
+      "strategy_count": 32,
+      "misconception_count": 58,
+      "strategy_samples": [
+        {
+          "id": 174,
+          "bibtex_key": "ESM_Manouchehri_2000_Implementing",
+          "year": 2000,
+          "description": "improper_fraction_product_counterexample",
+          "topic": "fraction multiplication",
+          "subtopic": "size of a fraction product relative to its factors",
+          "page_refs": "15, 16",
+          "pdf": "pdfs/ESM/ESM_Manouchehri_2000_Implementing.pdf",
+          "cluster_score": 2.5
+        },
+        {
+          "id": 221,
+          "bibtex_key": "JMB_Clements_2000_From",
+          "year": 2000,
+          "description": "fractions_put_on_anything",
+          "topic": "fraction representation",
+          "subtopic": "fraction as imposable on diverse referents",
+          "page_refs": "32, 33",
+          "pdf": "pdfs/JMB/JMB_Clements_2000_From.pdf",
+          "cluster_score": 1.5
+        },
+        {
+          "id": 325,
+          "bibtex_key": "MTL_Steffe_2004_Construction",
+          "year": 2004,
+          "description": "fractions_commensurate_with_one_half_via_units_coordination",
+          "topic": "commensurate_fractions",
+          "subtopic": "generating_a_class_of_fractions_equivalent_to_one_half",
+          "page_refs": "151, 152, 153, 154, 160",
+          "pdf": "pdfs/MTL/MTL_Steffe_2004_Construction.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 486,
+          "bibtex_key": "ESM_Harkness_2009_Social",
+          "year": 2009,
+          "description": "fraction_strip_equivalence",
+          "topic": "fraction equivalence",
+          "subtopic": "fraction strips",
+          "page_refs": "251, 252",
+          "pdf": "pdfs/ESM/ESM_Harkness_2009_Social.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 534,
+          "bibtex_key": "ESM_Keijzer_2001_Audreys",
+          "year": 2001,
+          "description": "halving_parts",
+          "topic": "equivalent fractions",
+          "subtopic": "complements to one",
+          "page_refs": "65",
+          "pdf": "pdfs/ESM/ESM_Keijzer_2001_Audreys.pdf",
+          "cluster_score": 3.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44008,
+          "bibtex_key": "JMB_Hackenberg_2007_Units",
+          "year": 2007,
+          "description": "The student proposed partitioning parts into an arbitrary number of smaller parts without anticipating whether the resulting total number of parts would allow him to produce the target fraction.",
+          "topic": "equivalence",
+          "subtopic": "coordinating two fractions in the same bar",
+          "page_refs": "43-44",
+          "pdf": "pdfs/JMB/JMB_Hackenberg_2007_Units.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 44164,
+          "bibtex_key": "JRME_Johanning_2008_Learning",
+          "year": 2008,
+          "description": "Students use a rounded decimal approximation for a fraction in calculations and are perturbed when the result is not exact, sparking a debate on when it is appropriate to use fractions versus decimals.",
+          "topic": "fraction representations",
+          "subtopic": "repeating decimals",
+          "page_refs": "292, 293",
+          "pdf": "pdfs/JRME/JRME_Johanning_2008_Learning.pdf",
+          "cluster_score": 1.5
+        },
+        {
+          "id": 44228,
+          "bibtex_key": "JRME_Post_1985_Order",
+          "year": 1985,
+          "description": "Students' perception of partition lines in a fraction embodiment dominates their perception of area equivalence, preventing them from recognizing equivalent fractions in a single display.",
+          "topic": "equivalent fractions",
+          "subtopic": "embodiment transformations",
+          "page_refs": "26, 27",
+          "pdf": "pdfs/JRME/JRME_Post_1985_Order.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 44237,
+          "bibtex_key": "JRME_Mack_2001_Building",
+          "year": 2001,
+          "description": "When finding a fraction of a fraction, students rely strictly on the number of parts (e.g., 2/3 is simply '2 out of 3 pieces') and ignore remainder pieces if the grouping doesn't come out evenly, failing to repartition the unit.",
+          "topic": "multiplication",
+          "subtopic": "grouping pieces",
+          "page_refs": "288, 289",
+          "pdf": "pdfs/JRME/JRME_Mack_2001_Building.pdf",
+          "cluster_score": 3.5
+        },
+        {
+          "id": 44305,
+          "bibtex_key": "JRME_Philipp_2007_Effects_a",
+          "year": 2007,
+          "description": "A child struggles to solve a fraction subtraction problem when presented symbolically, but correctly solves the exact same mathematical problem when it is situated in a relevant real-world context.",
+          "topic": "subtraction",
+          "subtopic": "context versus symbolic representation",
+          "page_refs": "460",
+          "pdf": "pdfs/JRME/JRME_Philipp_2007_Effects_a.pdf",
+          "cluster_score": 3.0
+        }
+      ]
+    },
+    {
+      "id": "comparison_same_denominator_numerator",
+      "title": "Comparison With Same Denominators Or Same Numerators",
+      "automaton_states": [
+        "same_unit_count_comparison",
+        "inverse_unit_size_comparison"
+      ],
+      "productive_core": "Same denominators can be compared by counting equal-sized units; same numerators require comparing unit size inversely by denominator.",
+      "deformation": "Whole-number order is applied directly to denominators, or residual/gap rules are used without checking the referent and comparison type.",
+      "assessing_questions": [
+        "Are the pieces the same size?",
+        "Are you comparing the number of pieces or the size of each piece?",
+        "Which denominator makes smaller unit fractions?"
+      ],
+      "advancing_questions": [
+        "Draw both fractions on the same-size whole.",
+        "Compare one unit fraction first, then count the same numerator."
+      ],
+      "standards": [
+        "Indiana 3.NS.5",
+        "CCSS 3.NF.A.3.d"
+      ],
+      "im_anchors": [
+        "IM-G3-U5-L14",
+        "IM-G3-U5-L15",
+        "IM-G3-U5-L16",
+        "IM-G3-U5-L17"
+      ],
+      "strategy_count": 96,
+      "misconception_count": 100,
+      "strategy_samples": [
+        {
+          "id": 5,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "benchmark_to_one",
+          "topic": "fraction comparison",
+          "subtopic": "benchmarking with 1",
+          "page_refs": "1082",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 3.5
+        },
+        {
+          "id": 6,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "benchmark_to_one_half",
+          "topic": "fraction comparison",
+          "subtopic": "benchmarking with 1/2",
+          "page_refs": "1082",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 7,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "missing_piece_size_comparison",
+          "topic": "fraction comparison",
+          "subtopic": "comparing complements when same number of unit pieces missing",
+          "page_refs": "1087",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 8,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "area_model_shading_comparison",
+          "topic": "fraction comparison",
+          "subtopic": "area model with unshaded complement",
+          "page_refs": "1087, 1088",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 10,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "benchmark_half_for_fraction_sum",
+          "topic": "fraction addition estimation",
+          "subtopic": "benchmarking sum to 1/2",
+          "page_refs": "1090",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 5.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 43998,
+          "bibtex_key": "JMB_Steffe_2002_New",
+          "year": 2002,
+          "description": "A student interpreted a multiplicative comparison additively, seeing 'five times longer' as 'five more'.",
+          "topic": "comparison",
+          "subtopic": "multiplicative comparison",
+          "page_refs": "287",
+          "pdf": "pdfs/JMB/JMB_Steffe_2002_New.pdf",
+          "cluster_score": 2.5
+        },
+        {
+          "id": 44049,
+          "bibtex_key": "JRME_Vinner_1981_Some",
+          "year": 1981,
+          "description": "Students correctly apply the idea of finding a common denominator but incorrectly generate equivalent fractions, such as by adding the same number to the numerator and denominator instead of multiplying.",
+          "topic": "fraction addition",
+          "subtopic": "equivalent fractions",
+          "page_refs": "74",
+          "pdf": "pdfs/JRME/JRME_Vinner_1981_Some.pdf",
+          "cluster_score": 6.0
+        },
+        {
+          "id": 44070,
+          "bibtex_key": "JRME_Mack_1990_Learning",
+          "year": 1990,
+          "description": "Students inappropriately apply rules for whole numbers to fraction symbols, mistakenly concluding that a larger denominator indicates a larger fractional quantity.",
+          "topic": "fraction symbols",
+          "subtopic": "comparing fractions",
+          "page_refs": "21, 22",
+          "pdf": "pdfs/JRME/JRME_Mack_1990_Learning.pdf",
+          "cluster_score": 6.0
+        },
+        {
+          "id": 44073,
+          "bibtex_key": "JRME_Hunting_1996_Engaging",
+          "year": 1996,
+          "description": "When comparing fractions using an operator context, students focus on the additive difference between inputs and outputs rather than the multiplicative relationship.",
+          "topic": "fraction comparison",
+          "subtopic": "operator construct",
+          "page_refs": "364",
+          "pdf": "pdfs/JRME/JRME_Hunting_1996_Engaging.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44074,
+          "bibtex_key": "JRME_Hunting_1996_Engaging",
+          "year": 1996,
+          "description": "Students using an Equal Outputs scheme to compare fractions forget the inverse relationship between the required input and fraction size, incorrectly concluding that the fraction requiring a larger input is the larger fraction.",
+          "topic": "fraction comparison",
+          "subtopic": "inverse relationship",
+          "page_refs": "366, 367",
+          "pdf": "pdfs/JRME/JRME_Hunting_1996_Engaging.pdf",
+          "cluster_score": 5.5
+        }
+      ]
+    },
+    {
+      "id": "referent_control",
+      "title": "Referent Whole Control Across Representations",
+      "automaton_states": [
+        "referent_indexed_fraction",
+        "distributed_referent_mapping"
+      ],
+      "productive_core": "A fraction name is always indexed to a whole; the same amount can receive different fraction names under different referent wholes.",
+      "deformation": "The second fraction is taken of the wrong whole, discrete quantities are treated as unstructured counts, or a drawing is named without specifying what counts as 1.",
+      "assessing_questions": [
+        "One whole is what in this problem?",
+        "Is this fraction of one bar, two bars, or the whole collection?",
+        "Could the same amount have another fraction name if the whole changed?"
+      ],
+      "advancing_questions": [
+        "Relabel the same drawing with a different referent whole.",
+        "Use color or brackets to show what each fraction is of."
+      ],
+      "standards": [
+        "Indiana 3.NS.2",
+        "CCSS 3.NF.A.1",
+        "CCSS 3.NF.A.3"
+      ],
+      "im_anchors": [
+        "IM-G3-U5-L1",
+        "IM-G3-U5-L10",
+        "IM-G4-U2",
+        "IM-G5-U2"
+      ],
+      "strategy_count": 72,
+      "misconception_count": 130,
+      "strategy_samples": [
+        {
+          "id": 25,
+          "bibtex_key": "JMB_Hackenberg_2007_Units",
+          "year": 2007,
+          "description": "partitive_fractional_scheme",
+          "topic": "unit fraction production",
+          "subtopic": "partitive fraction of a continuous whole",
+          "page_refs": "30, 32",
+          "pdf": "pdfs/JMB/JMB_Hackenberg_2007_Units.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 27,
+          "bibtex_key": "JMB_Hackenberg_2007_Units",
+          "year": 2007,
+          "description": "iterative_fractional_scheme_beyond_whole",
+          "topic": "improper fraction production",
+          "subtopic": "iterating a unit fraction beyond the unit whole",
+          "page_refs": "34, 35",
+          "pdf": "pdfs/JMB/JMB_Hackenberg_2007_Units.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 89,
+          "bibtex_key": "JMTE_Orrill_2012_Making",
+          "year": 2012,
+          "description": "substitution_with_partitioned_circle",
+          "topic": "fraction substitution",
+          "subtopic": "composed unit reasoning",
+          "page_refs": "390, 391",
+          "pdf": "pdfs/JMTE/JMTE_Orrill_2012_Making.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 104,
+          "bibtex_key": "JRME_Hackenberg_2010_Mathematical",
+          "year": 2010,
+          "description": "recursive_partitioning_with_unit_fraction_known",
+          "topic": "reversible multiplicative relationship",
+          "subtopic": "RMR with unit-fraction known quantity",
+          "page_refs": "258, 259, 260",
+          "pdf": "pdfs/JRME/JRME_Hackenberg_2010_Mathematical.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 260,
+          "bibtex_key": "JMB_Olive_2002_Construction",
+          "year": 2002,
+          "description": "split_of_a_split_for_recursive_partition",
+          "topic": "recursive partitioning",
+          "subtopic": "split of a split for composite-unit fractions",
+          "page_refs": "424, 425",
+          "pdf": "pdfs/JMB/JMB_Olive_2002_Construction.pdf",
+          "cluster_score": 4.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 43995,
+          "bibtex_key": "JMB_Olive_2002_Construction",
+          "year": 2002,
+          "description": "The student experienced a severe perturbation when asked to conceptualize an improper fraction, struggling with the part-whole limitation that a fraction cannot be larger than its referent whole.",
+          "topic": "representation",
+          "subtopic": "improper fractions",
+          "page_refs": "425-428",
+          "pdf": "pdfs/JMB/JMB_Olive_2002_Construction.pdf",
+          "cluster_score": 8.0
+        },
+        {
+          "id": 43996,
+          "bibtex_key": "JMB_Olive_2002_Construction",
+          "year": 2002,
+          "description": "The student named a unit fraction based on the numerosity (length) of the stick being used, rather than its multiplicative relationship to the whole.",
+          "topic": "representation",
+          "subtopic": "unit fractions",
+          "page_refs": "419",
+          "pdf": "pdfs/JMB/JMB_Olive_2002_Construction.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 43999,
+          "bibtex_key": "JMB_Steffe_2002_New",
+          "year": 2002,
+          "description": "Students lacked the operations necessary to establish a commensurate unit fraction for a composite fraction.",
+          "topic": "equivalence",
+          "subtopic": "composite unit fractions",
+          "page_refs": "294-295",
+          "pdf": "pdfs/JMB/JMB_Steffe_2002_New.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 44003,
+          "bibtex_key": "MTL_Steffe_2004_Construction",
+          "year": 2004,
+          "description": "A student incorrectly names a fraction of a fraction by guessing the total number of parts in the whole based on a prior unrelated problem, rather than mentally partitioning the whole.",
+          "topic": "fraction of a fraction",
+          "subtopic": "recursive partitioning",
+          "page_refs": "136, 137",
+          "pdf": "pdfs/MTL/MTL_Steffe_2004_Construction.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 44010,
+          "bibtex_key": "JMB_Hackenberg_2009_Students'",
+          "year": 2009,
+          "description": "The student determined the size of a fraction of a fraction by repeatedly copying the resulting piece to recreate the whole, rather than using a recursive partitioning operation.",
+          "topic": "fraction composition",
+          "subtopic": "unit fraction of a unit fraction",
+          "page_refs": "7-9",
+          "pdf": "pdfs/JMB/JMB_Hackenberg_2009_Students'.pdf",
+          "cluster_score": 5.5
+        }
+      ]
+    },
+    {
+      "id": "fraction_composition",
+      "title": "Fraction Of Fraction And Nested Completion",
+      "automaton_states": [
+        "nested_completion_tick",
+        "distributed_fraction_of_fraction",
+        "compressed_algorithm_trace"
+      ],
+      "productive_core": "A fraction-of-fraction operation nests one completion cycle inside another and, for non-unit targets, distributes the operation across visible unit fractions.",
+      "deformation": "Students erase internal marks, multiply numerators and denominators as isolated slots, or build an amount but cannot name it back to the original whole.",
+      "assessing_questions": [
+        "What is the whole for the first fraction? What is the whole for the second?",
+        "What does one small part represent in relation to the original whole?",
+        "Did you keep or erase the marks that show the target fraction's unit parts?"
+      ],
+      "advancing_questions": [
+        "Find 1/b of 1/d first, then count or distribute the generated small parts.",
+        "Show the operation on each unit part of the target fraction."
+      ],
+      "standards": [
+        "CCSS 5.NF.B.4",
+        "CCSS 5.NF.B.4.a",
+        "CCSS 5.NF.B.4.b"
+      ],
+      "im_anchors": [
+        "IM-G5-U3-L1",
+        "IM-G5-U3-L2",
+        "IM-G5-U3-L3",
+        "IM-G5-U3-L4",
+        "IM-G5-U3-L5",
+        "IM-G5-U3-L6",
+        "IM-G5-U3-L7"
+      ],
+      "strategy_count": 14,
+      "misconception_count": 37,
+      "strategy_samples": [
+        {
+          "id": 99,
+          "bibtex_key": "JMTE_Sowder_1998_Educating",
+          "year": 1998,
+          "description": "fraction_of_fraction_via_referent_units",
+          "topic": "multiplication of fractions",
+          "subtopic": "tracking the referent unit",
+          "page_refs": "147",
+          "pdf": "pdfs/JMTE/JMTE_Sowder_1998_Educating.pdf",
+          "cluster_score": 3.5
+        },
+        {
+          "id": 271,
+          "bibtex_key": "JMB_Schorr_2000_Impact",
+          "year": 2000,
+          "description": "orange_split_for_fourths",
+          "topic": "fraction modeling",
+          "subtopic": "partitioning a unit into fourths",
+          "page_refs": "224-226",
+          "pdf": "pdfs/JMB/JMB_Schorr_2000_Impact.pdf",
+          "cluster_score": 3.5
+        },
+        {
+          "id": 445,
+          "bibtex_key": "ESM_Glade_2017_Students'",
+          "year": 2017,
+          "description": "denominator_side_lengths",
+          "topic": "fraction multiplication",
+          "subtopic": "economical rectangle construction",
+          "page_refs": "190, 194",
+          "pdf": "pdfs/ESM/ESM_Glade_2017_Students'.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 447,
+          "bibtex_key": "ESM_Glade_2017_Students'",
+          "year": 2017,
+          "description": "area_multiplication",
+          "topic": "fraction multiplication",
+          "subtopic": "area-model read-off",
+          "page_refs": "194, 197, 198",
+          "pdf": "pdfs/ESM/ESM_Glade_2017_Students'.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 448,
+          "bibtex_key": "ESM_Glade_2017_Students'",
+          "year": 2017,
+          "description": "mental_rectangle",
+          "topic": "fraction multiplication",
+          "subtopic": "mental visual model",
+          "page_refs": "195, 197",
+          "pdf": "pdfs/ESM/ESM_Glade_2017_Students'.pdf",
+          "cluster_score": 4.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44012,
+          "bibtex_key": "JMB_Hackenberg_2009_Students'",
+          "year": 2009,
+          "description": "The student relied on the standard computational algorithm for fraction multiplication, which acted as a hindrance to using quantitative reasoning to produce the composition of two fractions.",
+          "topic": "fraction composition",
+          "subtopic": "proper fraction of a proper fraction",
+          "page_refs": "12, 15",
+          "pdf": "pdfs/JMB/JMB_Hackenberg_2009_Students'.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 44019,
+          "bibtex_key": "JRME_Hackenberg_2010_Mathematical",
+          "year": 2010,
+          "description": "The student relies on figurative material to solve fraction problems and struggles to operate mentally without physical or drawn models.",
+          "topic": "reversible multiplicative relationships",
+          "subtopic": "interiorization of operations",
+          "page_refs": "257, 258, 259",
+          "pdf": "pdfs/JRME/JRME_Hackenberg_2010_Mathematical.pdf",
+          "cluster_score": 1.5
+        },
+        {
+          "id": 44046,
+          "bibtex_key": "JRME_Vinner_1981_Some",
+          "year": 1981,
+          "description": "Students misplace addition and multiplication operations when attempting to reconstruct the fraction addition algorithm, such as multiplying the numerators and adding the denominators.",
+          "topic": "fraction addition",
+          "subtopic": "algorithm execution",
+          "page_refs": "71, 72",
+          "pdf": "pdfs/JRME/JRME_Vinner_1981_Some.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 44068,
+          "bibtex_key": "JRME_Ball_1990_Prospective",
+          "year": 1990,
+          "description": "Prospective teachers possess a narrow understanding of division restricted to the partitive model, which hinders their ability to conceptualize division by a fraction.",
+          "topic": "division",
+          "subtopic": "models of division",
+          "page_refs": "140",
+          "pdf": "pdfs/JRME/JRME_Ball_1990_Prospective.pdf",
+          "cluster_score": 2.5
+        },
+        {
+          "id": 44201,
+          "bibtex_key": "JRME_Hanson_2000_Computational",
+          "year": 2000,
+          "description": "Students inappropriately apply memorized procedural rules from one fractional operation to another, such as taking the reciprocal when multiplying instead of dividing.",
+          "topic": "multiplication",
+          "subtopic": "algorithms",
+          "page_refs": "494",
+          "pdf": "pdfs/JRME/JRME_Hanson_2000_Computational.pdf",
+          "cluster_score": 2.5
+        }
+      ]
+    },
+    {
+      "id": "co_measurement_add_subtract",
+      "title": "Co-Measurement For Addition And Subtraction",
+      "automaton_states": [
+        "co_measurement_tick",
+        "shared_completion"
+      ],
+      "productive_core": "Unlike-denominator addition and subtraction require constructing a shared fractional unit that measures both addends before counting or removing units.",
+      "deformation": "Common denominator work becomes an LCM procedure with no shared-unit meaning, or students add/subtract numerator and denominator components separately.",
+      "assessing_questions": [
+        "What unit are both fractions being measured in?",
+        "How many of that shared unit are in each addend?",
+        "What quantity is being joined or removed?"
+      ],
+      "advancing_questions": [
+        "Partition both fractions into a common-sized unit before adding.",
+        "Explain where the denominator of the answer came from as a unit size."
+      ],
+      "standards": [
+        "CCSS 4.NF.B.3",
+        "CCSS 5.NF.A.1",
+        "CCSS 5.NF.A.2"
+      ],
+      "im_anchors": [
+        "IM-G4-U3",
+        "IM-G5-U6-L8",
+        "IM-G5-U6-L9",
+        "IM-G5-U6-L10",
+        "IM-G5-U6-L13"
+      ],
+      "strategy_count": 89,
+      "misconception_count": 86,
+      "strategy_samples": [
+        {
+          "id": 11,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "decompose_half_into_quarters",
+          "topic": "fraction addition estimation",
+          "subtopic": "decomposition of 1/2 into 1/4 + 1/4",
+          "page_refs": "1090",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 3.5
+        },
+        {
+          "id": 12,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "convert_to_common_form_for_sum",
+          "topic": "fraction addition estimation",
+          "subtopic": "common-form conversion (common denom, decimals, or percents)",
+          "page_refs": "1090",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 35,
+          "bibtex_key": "JMTE_Dyson_2013_Prospective",
+          "year": 2013,
+          "description": "common_denominator_fraction_comparison",
+          "topic": "fraction comparison",
+          "subtopic": "common-denominator procedure",
+          "page_refs": "62, 69, 77",
+          "pdf": "pdfs/JMTE/JMTE_Dyson_2013_Prospective.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 90,
+          "bibtex_key": "JMTE_Orrill_2012_Making",
+          "year": 2012,
+          "description": "substitution_addition_for_unit_value",
+          "topic": "fraction substitution",
+          "subtopic": "iterating units by addition",
+          "page_refs": "389, 390",
+          "pdf": "pdfs/JMTE/JMTE_Orrill_2012_Making.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 173,
+          "bibtex_key": "ESM_Manouchehri_2000_Implementing",
+          "year": 2000,
+          "description": "relative_size_estimation_fraction_sum",
+          "topic": "fraction addition",
+          "subtopic": "estimating the magnitude of a fraction sum without common denominators",
+          "page_refs": "15",
+          "pdf": "pdfs/ESM/ESM_Manouchehri_2000_Implementing.pdf",
+          "cluster_score": 4.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 43994,
+          "bibtex_key": "JMB_Olive_2002_Construction",
+          "year": 2002,
+          "description": "The student applied whole-number additive arithmetic to fraction situations by adding the denominators when combining two unit fractions.",
+          "topic": "addition",
+          "subtopic": "addition of unit fractions",
+          "page_refs": "420",
+          "pdf": "pdfs/JMB/JMB_Olive_2002_Construction.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 44013,
+          "bibtex_key": "JRME_Izsak_2008_Teaching",
+          "year": 2008,
+          "description": "Students incorrectly add fractions by adding numerators together and denominators together.",
+          "topic": "fraction addition",
+          "subtopic": "addition algorithm",
+          "page_refs": "41, 44",
+          "pdf": "pdfs/JRME/JRME_Izsak_2008_Teaching.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44047,
+          "bibtex_key": "JRME_Vinner_1981_Some",
+          "year": 1981,
+          "description": "Students apply the multiplication algorithm to an addition problem, or naturally assume that they should add numerators to numerators and denominators to denominators based on the plus sign.",
+          "topic": "fraction addition",
+          "subtopic": "algorithm execution",
+          "page_refs": "71, 72",
+          "pdf": "pdfs/JRME/JRME_Vinner_1981_Some.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44048,
+          "bibtex_key": "JRME_Vinner_1981_Some",
+          "year": 1981,
+          "description": "Students substitute the formal representation of a common fraction line in place of actually finding a common denominator, simply writing the sum of the numerators over the sum of the denominators.",
+          "topic": "fraction addition",
+          "subtopic": "common denominator",
+          "page_refs": "73",
+          "pdf": "pdfs/JRME/JRME_Vinner_1981_Some.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 44072,
+          "bibtex_key": "JRME_Mack_1990_Learning",
+          "year": 1990,
+          "description": "Students rely on previously learned, faulty algorithmic procedures rather than drawing on their informal reasoning, leading them to trust incorrect arithmetic calculations over sensible, context-based answers.",
+          "topic": "addition",
+          "subtopic": "rote procedures",
+          "page_refs": "27, 28",
+          "pdf": "pdfs/JRME/JRME_Mack_1990_Learning.pdf",
+          "cluster_score": 2.5
+        }
+      ]
+    },
+    {
+      "id": "measurement_division_reversible_generator",
+      "title": "Measurement Division And Reversible Generator Recovery",
+      "automaton_states": [
+        "measurement_division_unit",
+        "reversible_generator",
+        "denominator_partition_error"
+      ],
+      "productive_core": "Division by a fraction asks how many divisor-sized groups fit; when the divisor is non-unit, the student can recover its unit-fraction generator and measure on that scale.",
+      "deformation": "Division is interpreted as taking a fraction of the total, dividing by the denominator, or partitioning a non-unit fraction by its denominator instead of its numerator.",
+      "assessing_questions": [
+        "What size group are we measuring with?",
+        "How many of those groups fit in the total?",
+        "If the divisor is n/d, how can you recover 1/d?"
+      ],
+      "advancing_questions": [
+        "Partition the divisor by its numerator to recover the generating unit fraction.",
+        "Measure both the total and group size in the same recovered unit."
+      ],
+      "standards": [
+        "CCSS 5.NF.B.3",
+        "CCSS 6.NS.A.1"
+      ],
+      "im_anchors": [
+        "IM-G5-U3-L13",
+        "IM-G5-U3-L14",
+        "IM-G5-U3-L15",
+        "IM-G5-U3-L16",
+        "IM-G6-U4"
+      ],
+      "strategy_count": 31,
+      "misconception_count": 53,
+      "strategy_samples": [
+        {
+          "id": 78,
+          "bibtex_key": "IJSME_Yang_2003_Teaching",
+          "year": 2003,
+          "description": "pictorial_partition_for_sharing",
+          "topic": "fraction as quotient",
+          "subtopic": "pictorial_representation",
+          "page_refs": "125",
+          "pdf": "pdfs/IJSME/IJSME_Yang_2003_Teaching.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 87,
+          "bibtex_key": "JMTE_Charalambous_2011_Prospective",
+          "year": 2011,
+          "description": "soda_serving_word_problem_with_two_unit_representations",
+          "topic": "fraction division",
+          "subtopic": "measurement interpretation, distinguishing dividend-units from divisor-units",
+          "page_refs": "455, 456, 457",
+          "pdf": "pdfs/JMTE/JMTE_Charalambous_2011_Prospective.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 100,
+          "bibtex_key": "JMTE_Sowder_1998_Educating",
+          "year": 1998,
+          "description": "diagram_for_fraction_division_referent",
+          "topic": "division of fractions",
+          "subtopic": "quotitive division and referent of quotient",
+          "page_refs": "147",
+          "pdf": "pdfs/JMTE/JMTE_Sowder_1998_Educating.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 899,
+          "bibtex_key": "IJSME_Shahbari_2017_Modelling",
+          "year": 2017,
+          "description": "quotient_fraction_conversion",
+          "topic": "fraction representation",
+          "subtopic": "quotient_subconstruct",
+          "page_refs": "384",
+          "pdf": "pdfs/IJSME/IJSME_Shahbari_2017_Modelling.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 1016,
+          "bibtex_key": "JMB_Brousseau_2009_Rationals",
+          "year": 2009,
+          "description": "common_eighths_equivalence",
+          "topic": "division by a fraction",
+          "subtopic": "common fractional unit",
+          "page_refs": "90",
+          "pdf": "pdfs/JMB/JMB_Brousseau_2009_Rationals.pdf",
+          "cluster_score": 5.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44066,
+          "bibtex_key": "JRME_Ball_1990_Prospective",
+          "year": 1990,
+          "description": "When attempting to generate a real-world story problem for division by one-half, prospective teachers incorrectly construct stories that represent division by two.",
+          "topic": "division",
+          "subtopic": "division by fractions",
+          "page_refs": "135",
+          "pdf": "pdfs/JRME/JRME_Ball_1990_Prospective.pdf",
+          "cluster_score": 3.5
+        },
+        {
+          "id": 44107,
+          "bibtex_key": "JRME_Tirosh_2000_Enhancing",
+          "year": 2000,
+          "description": "Students inappropriately alter the standard division-of-fractions algorithm by inverting the dividend instead of the divisor, or by inverting both.",
+          "topic": "division",
+          "subtopic": "algorithms",
+          "page_refs": "7, 9",
+          "pdf": "pdfs/JRME/JRME_Tirosh_2000_Enhancing.pdf",
+          "cluster_score": 3.5
+        },
+        {
+          "id": 44109,
+          "bibtex_key": "JRME_Tirosh_2000_Enhancing",
+          "year": 2000,
+          "description": "Students misapply formal knowledge by assuming that the operation of division is commutative.",
+          "topic": "division",
+          "subtopic": "properties of operations",
+          "page_refs": "7",
+          "pdf": "pdfs/JRME/JRME_Tirosh_2000_Enhancing.pdf",
+          "cluster_score": 2.5
+        },
+        {
+          "id": 44369,
+          "bibtex_key": "JRME_Hunting_1988_Fraction",
+          "year": 1988,
+          "description": "Children lack anticipatory and spontaneous checking strategies for creating equal regions, often initiating subdivisions without preliminary reflection on task requirements or equality.",
+          "topic": "partitioning",
+          "subtopic": "equality of regions",
+          "page_refs": "177, 178",
+          "pdf": "pdfs/JRME/JRME_Hunting_1988_Fraction.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 44408,
+          "bibtex_key": "JRME_SaenzLudlow_1994_Michael's",
+          "year": 1994,
+          "description": "When dividing a smaller unit fraction by a larger unit fraction, the student inappropriately applies a natural-number division strategy, concluding the answer is zero because the larger segmenting unit cannot fit into the smaller unit.",
+          "topic": "division",
+          "subtopic": "division of fractions",
+          "page_refs": "80, 81",
+          "pdf": "pdfs/JRME/JRME_SaenzLudlow_1994_Michael's.pdf",
+          "cluster_score": 3.5
+        }
+      ]
+    },
+    {
+      "id": "procedural_compression",
+      "title": "Procedural Compression Without Losing Units",
+      "automaton_states": [
+        "compressed_algorithm_trace",
+        "opaque_rule_following"
+      ],
+      "productive_core": "Algorithms are compressed records of prior unit operations: grouping, distribution, co-measurement, or recovered-generator measurement.",
+      "deformation": "The notation takes over as independent numerator and denominator slots, producing componentwise operations, cross-method procedural jumble, or rule fragments.",
+      "assessing_questions": [
+        "What unit action does this shortcut summarize?",
+        "Can you show the same result with a diagram or number line?",
+        "What would make this procedure invalid in a different operation?"
+      ],
+      "advancing_questions": [
+        "Trace each number in the algorithm back to the unit construction that produced it.",
+        "Compare the shortcut to a drawing before deciding whether it applies."
+      ],
+      "standards": [
+        "Cross-cutting: CCSS 3.NF through 6.NS"
+      ],
+      "im_anchors": [
+        "IM-G3-U5",
+        "IM-G4-U2",
+        "IM-G4-U3",
+        "IM-G5-U3",
+        "IM-G5-U6",
+        "IM-G6-U4"
+      ],
+      "strategy_count": 22,
+      "misconception_count": 26,
+      "strategy_samples": [
+        {
+          "id": 37,
+          "bibtex_key": "JMTE_Dyson_2013_Prospective",
+          "year": 2013,
+          "description": "multiply_then_simplify_fraction_algorithm",
+          "topic": "fraction multiplication",
+          "subtopic": "standard algorithm with simplification",
+          "page_refs": "62, 77",
+          "pdf": "pdfs/JMTE/JMTE_Dyson_2013_Prospective.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 84,
+          "bibtex_key": "JMB_Mack_2000_Long-term",
+          "year": 2000,
+          "description": "traditional_algorithm_with_canceling_and_reducing",
+          "topic": "multiplication of fractions",
+          "subtopic": "computational algorithm: multiply numerators, multiply denominators",
+          "page_refs": "323, 324, 325",
+          "pdf": "pdfs/JMB/JMB_Mack_2000_Long-term.pdf",
+          "cluster_score": 8.5
+        },
+        {
+          "id": 172,
+          "bibtex_key": "ESM_Manouchehri_2000_Implementing",
+          "year": 2000,
+          "description": "common_denominator_fraction_division",
+          "topic": "fraction division",
+          "subtopic": "common-denominator algorithm for division of fractions",
+          "page_refs": "17, 18",
+          "pdf": "pdfs/ESM/ESM_Manouchehri_2000_Implementing.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 449,
+          "bibtex_key": "ESM_Glade_2017_Students'",
+          "year": 2017,
+          "description": "denominator_multiplication",
+          "topic": "fraction multiplication",
+          "subtopic": "unit-fraction rule",
+          "page_refs": "195, 200",
+          "pdf": "pdfs/ESM/ESM_Glade_2017_Students'.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 450,
+          "bibtex_key": "ESM_Glade_2017_Students'",
+          "year": 2017,
+          "description": "number_pattern_rule",
+          "topic": "fraction multiplication",
+          "subtopic": "pattern-based rule discovery",
+          "page_refs": "197, 200, 202",
+          "pdf": "pdfs/ESM/ESM_Glade_2017_Students'.pdf",
+          "cluster_score": 5.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44102,
+          "bibtex_key": "JRME_Noddings_1990_Chapter",
+          "year": 1990,
+          "description": "A student constructs systematic but mathematically incorrect procedural rules to convert fractions to decimals, without being troubled by the contradictions these rules create.",
+          "topic": "converting fractions to decimals",
+          "subtopic": "invented algorithms",
+          "page_refs": "13",
+          "pdf": "pdfs/JRME/JRME_Noddings_1990_Chapter.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 44218,
+          "bibtex_key": "JRME_Davis_1990_Chapter",
+          "year": 1990,
+          "description": "A student misapplies an algorithmic procedure to a word problem, generating an incorrect answer that contradicts her own correct concrete representation, and struggles to reconcile the two.",
+          "topic": "multiplication and division",
+          "subtopic": "algorithmic solution procedure",
+          "page_refs": "75, 76",
+          "pdf": "pdfs/JRME/JRME_Davis_1990_Chapter.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 44319,
+          "bibtex_key": "JRME_Hunting_1983_Alan",
+          "year": 1983,
+          "description": "A student attempts to solve equivalent fraction problems using superficial numerical patterns or inappropriate visual algorithms rather than operational partitioning schemes.",
+          "topic": "equivalent fractions",
+          "subtopic": "symbolic algorithms",
+          "page_refs": "193, 194",
+          "pdf": "pdfs/JRME/JRME_Hunting_1983_Alan.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 44358,
+          "bibtex_key": "JRME_Borko_1992_Learning",
+          "year": 1992,
+          "description": "Preservice teachers hold the unrealistic expectation that concrete or semiconcrete visual representations and real-world stories can be used to directly derive or explain the invert-and-multiply algorithm, rather than just verifying its solutions.",
+          "topic": "division of fractions",
+          "subtopic": "invert-and-multiply algorithm",
+          "page_refs": "209, 214, 215",
+          "pdf": "pdfs/JRME/JRME_Borko_1992_Learning.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44438,
+          "bibtex_key": "JRME_Mack_1995_Confounding",
+          "year": 1995,
+          "description": "Students overgeneralize whole-number concepts to proper fractions, mistakenly interpreting the numerator as the number of wholes and the denominator as the number of parts in each whole.",
+          "topic": "fraction symbols",
+          "subtopic": "meaning of numerator and denominator",
+          "page_refs": "430, 431, 432",
+          "pdf": "pdfs/JRME/JRME_Mack_1995_Confounding.pdf",
+          "cluster_score": 6.5
+        }
+      ]
+    }
+  ],
+  "lesson_seeds": [
+    {
+      "anchor": "IM-G3-U5-L1",
+      "title": "Name the Parts",
+      "standards": [
+        "3.G.A.2",
+        "3.NF.A.1"
+      ],
+      "clusters": [
+        "equal_partitioning",
+        "referent_control"
+      ],
+      "monitor_for": "Parts named before equality or the whole is established."
+    },
+    {
+      "anchor": "IM-G3-U5-L2",
+      "title": "Name Parts as Fractions",
+      "standards": [
+        "3.G.A.2",
+        "3.NF.A.1"
+      ],
+      "clusters": [
+        "equal_partitioning",
+        "referent_control"
+      ],
+      "monitor_for": "Denominator read as a visible count rather than equal parts of one whole."
+    },
+    {
+      "anchor": "IM-G3-U5-L3",
+      "title": "Non-unit Fractions",
+      "standards": [
+        "3.NF.A.1"
+      ],
+      "clusters": [
+        "unit_iteration_nonunit",
+        "equal_partitioning"
+      ],
+      "monitor_for": "Numerator treated as count without preserving the unit fraction."
+    },
+    {
+      "anchor": "IM-G3-U5-L4",
+      "title": "Build Fractions from Unit Fractions",
+      "standards": [
+        "3.NF.A.1"
+      ],
+      "clusters": [
+        "unit_iteration_nonunit",
+        "beyond_one_and_whole_equivalence"
+      ],
+      "monitor_for": "Students repeat notation or shaded pieces without naming the iterated unit."
+    },
+    {
+      "anchor": "IM-G3-U5-L5",
+      "title": "To the Number Line",
+      "standards": [
+        "3.NF.A.2"
+      ],
+      "clusters": [
+        "number_line_unit_interval",
+        "referent_control"
+      ],
+      "monitor_for": "The whole number-line drawing is used as the whole instead of the 0-to-1 interval."
+    },
+    {
+      "anchor": "IM-G3-U5-L6",
+      "title": "Locate Unit Fractions on the Number Line",
+      "standards": [
+        "3.NF.A.2",
+        "3.NF.A.2.a"
+      ],
+      "clusters": [
+        "number_line_unit_interval",
+        "equal_partitioning"
+      ],
+      "monitor_for": "Tick marks are counted instead of spaces between marks."
+    },
+    {
+      "anchor": "IM-G3-U5-L7",
+      "title": "Non-unit Fractions on the Number Line",
+      "standards": [
+        "3.NF.A.2.b"
+      ],
+      "clusters": [
+        "number_line_unit_interval",
+        "unit_iteration_nonunit",
+        "beyond_one_and_whole_equivalence"
+      ],
+      "monitor_for": "Students partition 0 to 2, or the whole visible line, instead of iterating a unit interval."
+    },
+    {
+      "anchor": "IM-G3-U5-L8",
+      "title": "Fractions and Whole Numbers",
+      "standards": [
+        "3.NF.A.2",
+        "3.NF.A.3.c"
+      ],
+      "clusters": [
+        "beyond_one_and_whole_equivalence",
+        "number_line_unit_interval"
+      ],
+      "monitor_for": "Whole numbers are not recognized as endpoints of completed fractional cycles."
+    },
+    {
+      "anchor": "IM-G3-U5-L9",
+      "title": "All Kinds of Numbers on the Number Line",
+      "standards": [
+        "3.NF.A.2"
+      ],
+      "clusters": [
+        "number_line_unit_interval",
+        "beyond_one_and_whole_equivalence",
+        "referent_control"
+      ],
+      "monitor_for": "Students cannot recover 1 from a given non-unit fraction."
+    },
+    {
+      "anchor": "IM-G3-U5-L10",
+      "title": "Equivalent Fractions",
+      "standards": [
+        "3.NF.A.3.a",
+        "3.NF.A.3.b"
+      ],
+      "clusters": [
+        "equivalence_repartitioning",
+        "referent_control"
+      ],
+      "monitor_for": "Equivalent means same-looking partition rather than same amount of the same whole."
+    },
+    {
+      "anchor": "IM-G3-U5-L11",
+      "title": "Generate Equivalent Fractions",
+      "standards": [
+        "3.NF.A.3.a",
+        "3.NF.A.3.b"
+      ],
+      "clusters": [
+        "equivalence_repartitioning",
+        "procedural_compression"
+      ],
+      "monitor_for": "Doubling numerator and denominator becomes the only available equivalence move."
+    },
+    {
+      "anchor": "IM-G3-U5-L12",
+      "title": "Equivalent Fractions on a Number Line",
+      "standards": [
+        "3.NF.A.3.a",
+        "3.NF.A.3.b"
+      ],
+      "clusters": [
+        "equivalence_repartitioning",
+        "number_line_unit_interval"
+      ],
+      "monitor_for": "Students see two partitions but not the shared location."
+    },
+    {
+      "anchor": "IM-G3-U5-L13",
+      "title": "Whole Numbers and Fractions",
+      "standards": [
+        "3.NF.A.3.c"
+      ],
+      "clusters": [
+        "beyond_one_and_whole_equivalence",
+        "unit_iteration_nonunit"
+      ],
+      "monitor_for": "A whole number is not named as completed iterations of a unit fraction."
+    },
+    {
+      "anchor": "IM-G3-U5-L14",
+      "title": "How Do You Compare Fractions?",
+      "standards": [
+        "3.NF.A.3",
+        "3.NF.A.3.c",
+        "3.NF.A.3.d"
+      ],
+      "clusters": [
+        "comparison_same_denominator_numerator",
+        "referent_control"
+      ],
+      "monitor_for": "Comparison strategy changes without attending to same whole, same numerator, or same denominator."
+    },
+    {
+      "anchor": "IM-G3-U5-L15",
+      "title": "Compare Fractions with the Same Denominator",
+      "standards": [
+        "3.NF.A.3.d"
+      ],
+      "clusters": [
+        "comparison_same_denominator_numerator",
+        "unit_iteration_nonunit"
+      ],
+      "monitor_for": "Students compare numerators without saying the unit parts are the same size."
+    },
+    {
+      "anchor": "IM-G3-U5-L16",
+      "title": "Compare Fractions with the Same Numerator",
+      "standards": [
+        "3.NF.A.3.d"
+      ],
+      "clusters": [
+        "comparison_same_denominator_numerator",
+        "equal_partitioning"
+      ],
+      "monitor_for": "Larger denominator is read as larger amount instead of smaller unit size."
+    },
+    {
+      "anchor": "IM-G3-U5-L17",
+      "title": "Compare Fractions",
+      "standards": [
+        "3.NF.A.2",
+        "3.NF.A.3",
+        "3.NF.A.3.d"
+      ],
+      "clusters": [
+        "comparison_same_denominator_numerator",
+        "referent_control"
+      ],
+      "monitor_for": "A valid special-case comparison rule is overgeneralized to a different comparison type."
+    },
+    {
+      "anchor": "IM-G3-U5-L18",
+      "title": "Plan a Fun Run",
+      "standards": [
+        "3.NF.A.2"
+      ],
+      "clusters": [
+        "number_line_unit_interval",
+        "referent_control",
+        "unit_iteration_nonunit"
+      ],
+      "monitor_for": "Real-context distances are labeled without stabilizing the route as the referent whole."
+    },
+    {
+      "anchor": "IM-G3-U8-L1",
+      "title": "Estimation Explorations with Fractions",
+      "standards": [
+        "3.NF.A.1",
+        "3.NF.A.2"
+      ],
+      "clusters": [
+        "equal_partitioning",
+        "number_line_unit_interval"
+      ],
+      "monitor_for": "Visual estimates are not checked against equal parts or unit interval structure."
+    },
+    {
+      "anchor": "IM-G3-U8-L2",
+      "title": "Create Your Own Number Line",
+      "standards": [
+        "3.NF.A.2",
+        "3.NF.A.3"
+      ],
+      "clusters": [
+        "number_line_unit_interval",
+        "equivalence_repartitioning"
+      ],
+      "monitor_for": "The scale changes across the number line, so equivalent locations no longer mean same number."
+    },
+    {
+      "anchor": "IM-G3-U8-L3",
+      "title": "Fractions Round Table",
+      "standards": [
+        "3.NF.A.1",
+        "3.NF.A.2",
+        "3.NF.A.3"
+      ],
+      "clusters": [
+        "equal_partitioning",
+        "unit_iteration_nonunit",
+        "number_line_unit_interval",
+        "comparison_same_denominator_numerator"
+      ],
+      "monitor_for": "Students switch representations without preserving whole, unit, or location."
+    }
+  ]
+}

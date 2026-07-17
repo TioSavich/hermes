@@ -17,6 +17,11 @@ this repository's license:
   (CC BY 4.0). IM® and Illustrative Mathematics® are registered trademarks
   of Illustrative Mathematics; their use here does not imply endorsement.
 
+- **Illustrative Mathematics K–5 Math teacher guides.** The teacher-guide
+  material in `geometry/corpus/im_teacher_guides/` is © Illustrative
+  Mathematics, licensed under CC BY-NC 4.0, and adapted by markdown extraction
+  as monitoring-chart inputs.
+
 - **Common Core State Standards.** Standard codes and statements in
   `standards/` are © Copyright 2010 National Governors Association Center
   for Best Practices and Council of Chief State School Officers. All rights

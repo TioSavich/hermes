@@ -77,6 +77,16 @@ KEEP_FILES = [
     "scripts/bundle/smoke_bundle.py",  # staged-tree gate ships with its subject
     "scripts/html_surface_check.py",   # loopable checker for shipped HTML surfaces
     "scripts/research/export_mua_for_mud.py",  # regenerate the MUD data snapshot
+    # Coded derivative data tables the worker consults at op time (cluster
+    # maps, annotations, classifications). They ship; the student-work
+    # figure images beside them are article excerpts and stay optional.
+    "docs/research_assets/research/2026-05-11-action-automata-corpus-bindings.csv",
+    "docs/research_assets/research/2026-05-11-fraction-monitoring-chart-clusters.json",
+    "docs/research_assets/research/2026-05-11-geometry-monitoring-chart-clusters.json",
+    "docs/research_assets/research/2026-05-11-k8-operations-monitoring-chart-clusters.json",
+    "docs/research_assets/research/2026-05-21-action-semantic-pragmatic-annotations.json",
+    "docs/research_assets/research/2026-05-21-action-topology-calculator-context.json",
+    "docs/research_assets/research/docling_classifications.json",
     "learner/peano_utils.pl",          # shared Peano conversion utility
     "learner/teacher_local_prolog.pl", # teacher-bound strategy provider
     "lessons/im/generated/compiled_action_mappings.pl",  # lesson monitoring runtime cache
@@ -105,20 +115,30 @@ KEEP_FILES = [
 # two pass prompts /api/transcript_report sends as system messages, the
 # per-command system prompts the workflow CLIs and /api/media_transcribe
 # read at request time (kept by prefix so a newly added prompt cannot be
-# silently dropped the way the first nine were), and the ASKTM survey text.
+# silently dropped the way the first nine were), the ASKTM survey text, and
+# the teacher-guide inputs used to generate monitoring visuals.
 KEEP_MD = {
     "hermes/app/QUICKSTART_N103.md",
     "docs/research/2026-07-01-talkmoves-pass1-math-prompt.md",
     "docs/research/2026-07-01-talkmoves-pass2-posture-prompt.md",
     "ASKTM_Data/survey_questions.md",
+    "geometry/corpus/ATTRIBUTION.md",
 }
-KEEP_MD_PREFIXES = ("hermes/app/system_prompts/",)
+KEEP_MD_PREFIXES = (
+    "hermes/app/system_prompts/",
+    "geometry/corpus/im_teacher_guides/",
+    "geometry/corpus/im_scope_and_sequence/",  # lesson_monitoring.pl consults grades 6-8
+)
 
 # Excluded from the kept trees. Substring "/tests/" prunes every test suite;
 # the named directories are research material that no runtime path reads.
 EXCLUDE_DIR_PARTS = ["/tests/"]
 EXCLUDE_PREFIXES = [
-    "geometry/corpus/",                    # 879 teacher-guide markdowns (research)
+    "geometry/corpus/lakoff_nunez_existing_audit.md",
+    "geometry/corpus/misconception_harvest_log.md",
+    "geometry/corpus/n103_chapter_extracts.md",
+    "geometry/corpus/van_de_walle_excerpts.md",
+    "geometry/corpus/van_hiele_dissertation_excerpts.md",
     "misconceptions/literature_derivation/",  # per-article derivation shards;
     "misconceptions/round_2/",                # the compiled facts modules ship
     "misconceptions/scripts/",

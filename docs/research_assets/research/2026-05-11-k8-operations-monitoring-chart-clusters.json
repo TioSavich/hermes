@@ -1,0 +1,2769 @@
+{
+  "generated_at": "2026-07-07T08:41:53",
+  "title": "K-8 Operations Monitoring-Chart Clusters",
+  "db_path": "research_corpus/research.db",
+  "strategy_rows": 2097,
+  "misconception_rows": 3031,
+  "method": "transparent keyword scoring over local strategy_instances and error_instances; domain-consistent rows are preferred and cross-domain rows require a strong textual match",
+  "clusters": [
+    {
+      "id": "count_sequence_cardinality",
+      "title": "Counting Sequence, One-to-One Correspondence, And Cardinality",
+      "domains": [
+        "whole_number"
+      ],
+      "automaton_states": [
+        "stable_order_count",
+        "one_to_one_tagging",
+        "cardinal_closure"
+      ],
+      "productive_core": "Counting coordinates a stable verbal sequence with one-to-one tagging, then treats the last number word as the cardinality of the counted collection.",
+      "deformation": "Students recite without tagging, tag without stable order, recount moved objects, or treat the last word as only the last object named.",
+      "assessing_questions": [
+        "What did you count as one object?",
+        "How do you know you counted each object once?",
+        "What does the last number tell us?"
+      ],
+      "advancing_questions": [
+        "Move or mark each object as you count it.",
+        "Count the same collection a different way and check whether the total stays the same."
+      ],
+      "standards": [
+        "Indiana K.NS.1-4",
+        "CCSS K.CC.A",
+        "CCSS K.CC.B"
+      ],
+      "im_anchors": [
+        "IM-K-U1",
+        "IM-K-U2",
+        "IM-K-U3",
+        "IM-K-U8"
+      ],
+      "strategy_count": 45,
+      "misconception_count": 67,
+      "strategy_samples": [
+        {
+          "id": 47,
+          "bibtex_key": "JRME_Baroody_1990_Chapter",
+          "year": 1990,
+          "description": "informal_counting_up_subtraction",
+          "domain": "whole_number",
+          "topic": "subtraction",
+          "subtopic": "counting_up_to_decade_century",
+          "page_refs": "58, 59",
+          "pdf": "pdfs/JRME/JRME_Baroody_1990_Chapter.pdf",
+          "cluster_score": 8.5
+        },
+        {
+          "id": 61,
+          "bibtex_key": "ESM_Ekenstam_1983_Some",
+          "year": 1983,
+          "description": "two_step_meatball_unit_pricing",
+          "domain": "whole_number",
+          "topic": "two_step_word_problem",
+          "subtopic": "find_unit_price_after_finding_unit_count",
+          "page_refs": "374, 378, 379",
+          "pdf": "pdfs/ESM/ESM_Ekenstam_1983_Some.pdf",
+          "cluster_score": 8.5
+        },
+        {
+          "id": 102,
+          "bibtex_key": "JRME_Eisenhart_1993_Conceptual",
+          "year": 1993,
+          "description": "layer_by_layer_volume_count",
+          "domain": "measurement",
+          "topic": "volume of rectangular prism",
+          "subtopic": "deriving L x W x H formula from cubic units",
+          "page_refs": "21, 22",
+          "pdf": "pdfs/JRME/JRME_Eisenhart_1993_Conceptual.pdf",
+          "cluster_score": 5.0
+        },
+        {
+          "id": 177,
+          "bibtex_key": "ESM_Markovits_1997_Relative",
+          "year": 1997,
+          "description": "counting_strategy",
+          "domain": "whole_number",
+          "topic": "visual estimation of discrete quantities",
+          "subtopic": "counting with extrapolation",
+          "page_refs": "36, 37, 38",
+          "pdf": "pdfs/ESM/ESM_Markovits_1997_Relative.pdf",
+          "cluster_score": 8.5
+        },
+        {
+          "id": 203,
+          "bibtex_key": "JMB_Brousseau_2002_Experiment",
+          "year": 2002,
+          "description": "count_blacks_and_whites",
+          "domain": "statistics",
+          "topic": "frequency counting",
+          "subtopic": "tallying outcomes",
+          "page_refs": "366, 368",
+          "pdf": "pdfs/JMB/JMB_Brousseau_2002_Experiment.pdf",
+          "cluster_score": 5.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 153,
+          "bibtex_key": null,
+          "year": 2011,
+          "description": "Students progress through counting schemes from prenumerical to numerical (integrating or taking away units). Those who develop part-to-whole operations construct invented algorithms (counting with tens and ones), avoiding error-prone carrying/borrowing. Students at lower conceptual levels apply immature counting strategies (counting by ones) for tasks beyond their developmental range.",
+          "domain": "whole_number",
+          "topic": "arithmetic_counting_schemes",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 5.5
+        },
+        {
+          "id": 154,
+          "bibtex_key": "ISI:000375851800005",
+          "year": 2015,
+          "description": "Students who cannot coordinate multiple levels of units fall back on repeated addition or skip-counting instead of flexible multiplicative reasoning. Progress from Initial Number Sequence (counting by ones) to double-counting to distributing composite units (e.g., 35 as five units of seven). Constraints at each stage are developmental rather than deficient.",
+          "domain": "whole_number",
+          "topic": "multiplication_units_coordination",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 7.0
+        },
+        {
+          "id": 173,
+          "bibtex_key": null,
+          "year": 1999,
+          "description": "Low achievers rely on procedural counting strategies using perceptual objects or mental analogues (finger counting) overloading short-term memory; high achievers compress counting into known procepts and derive facts flexibly",
+          "domain": "whole_number",
+          "topic": "arithmetic_general",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 4.0
+        },
+        {
+          "id": 200,
+          "bibtex_key": null,
+          "year": 1994,
+          "description": "Blindly applying arithmetic to absurd problems without checking reasonableness",
+          "domain": "whole_number",
+          "topic": "word_problems",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 6.5
+        },
+        {
+          "id": 242,
+          "bibtex_key": null,
+          "year": 1999,
+          "description": "Detachment from indicated operation: students misgroup terms in numerical expressions (e.g., evaluating 50-10+10+10 as 50-30=20 by mentally bracketing addends with the subtraction sign); jumping off with posterior operation: students jump to subtraction signs out of order when grouping like terms (e.g., in 217+175-217+175+67)",
+          "domain": "whole_number",
+          "topic": "order_of_operations",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 6.5
+        }
+      ]
+    },
+    {
+      "id": "quantity_comparison_difference",
+      "title": "Quantity Comparison And Difference",
+      "domains": [
+        "whole_number"
+      ],
+      "automaton_states": [
+        "matching_comparison",
+        "count_compare",
+        "difference_as_distance"
+      ],
+      "productive_core": "Quantities can be compared by matching, counting both sets, or finding the difference as the amount between two quantities.",
+      "deformation": "Students compare by perceptual spread, ignore unit size, or answer only which is bigger when the task asks how many more or fewer.",
+      "assessing_questions": [
+        "Are the objects matched one for one?",
+        "Which set has more? How many more?",
+        "What does the extra part represent?"
+      ],
+      "advancing_questions": [
+        "Line the sets up or draw matching marks.",
+        "Count up from the smaller number to the larger number to find the difference."
+      ],
+      "standards": [
+        "Indiana K.NS.5-6",
+        "CCSS K.CC.C",
+        "CCSS 1.OA.A.1"
+      ],
+      "im_anchors": [
+        "IM-K-U4",
+        "IM-K-U5",
+        "IM-G1-U1",
+        "IM-G1-U2"
+      ],
+      "strategy_count": 8,
+      "misconception_count": 0,
+      "strategy_samples": [
+        {
+          "id": 179,
+          "bibtex_key": "ESM_Markovits_1997_Relative",
+          "year": 1997,
+          "description": "comparison_strategy",
+          "domain": "whole_number",
+          "topic": "visual estimation of discrete quantities",
+          "subtopic": "external-reference comparison",
+          "page_refs": "37, 38",
+          "pdf": "pdfs/ESM/ESM_Markovits_1997_Relative.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 1385,
+          "bibtex_key": "JMTE_Baxter_2010_Social",
+          "year": 2010,
+          "description": "surface_area_dimension_pattern",
+          "domain": "geometric",
+          "topic": "surface area comparison",
+          "subtopic": "fixed-volume rectangular solids",
+          "page_refs": "16",
+          "pdf": "pdfs/JMTE/JMTE_Baxter_2010_Social.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 1454,
+          "bibtex_key": "JRME_Armstrong_1995_Students'",
+          "year": 1995,
+          "description": "direct_comparison_combination",
+          "domain": "measurement",
+          "topic": "area comparison",
+          "subtopic": "combined physical-feature comparison",
+          "page_refs": "11, 12, 13, 14",
+          "pdf": "pdfs/JRME/JRME_Armstrong_1995_Students'.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 1915,
+          "bibtex_key": "MERJ_Kaminski_1997_Teacher",
+          "year": 1997,
+          "description": "one_more_one_less",
+          "domain": "whole_number",
+          "topic": "expression comparison",
+          "subtopic": "compensation around a central value",
+          "page_refs": "231",
+          "pdf": "pdfs/MERJ/MERJ_Kaminski_1997_Teacher.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 1988,
+          "bibtex_key": "MTL_Bonotto_2005_How",
+          "year": 2005,
+          "description": "compare_factor_to_one",
+          "domain": "decimal",
+          "topic": "multiplication comparison",
+          "subtopic": "factor relative to one",
+          "page_refs": "335, 336",
+          "pdf": "pdfs/MTL/MTL_Bonotto_2005_How.pdf",
+          "cluster_score": 5.5
+        }
+      ],
+      "misconception_samples": []
+    },
+    {
+      "id": "base_ten_bundling_place_value",
+      "title": "Base-Ten Bundling And Place Value",
+      "domains": [
+        "whole_number",
+        "decimal"
+      ],
+      "automaton_states": [
+        "ten_as_composite_unit",
+        "place_value_decomposition",
+        "renaming_exchange"
+      ],
+      "productive_core": "A ten is a unit composed of ten ones; multi-digit notation records nested units that can be decomposed, recomposed, and exchanged.",
+      "deformation": "Digits are read as independent numbers, zeros are ignored, or regrouping is performed as a symbol routine without preserving unit value.",
+      "assessing_questions": [
+        "What does this digit represent here?",
+        "How many tens and ones are in the number?",
+        "What trade or exchange keeps the amount the same?"
+      ],
+      "advancing_questions": [
+        "Build the number with tens and ones, then write it.",
+        "Rename the same amount in two different ways before calculating."
+      ],
+      "standards": [
+        "Indiana K.NS.7",
+        "Indiana 1.NS.2",
+        "Indiana 2.NS.2-5",
+        "CCSS K.NBT.A",
+        "CCSS 1.NBT",
+        "CCSS 2.NBT"
+      ],
+      "im_anchors": [
+        "IM-K-U6",
+        "IM-G1-U4",
+        "IM-G2-U1",
+        "IM-G2-U4",
+        "IM-G5-U4"
+      ],
+      "strategy_count": 38,
+      "misconception_count": 83,
+      "strategy_samples": [
+        {
+          "id": 65,
+          "bibtex_key": "ESM_Khoury_1994_Fractions",
+          "year": 1994,
+          "description": "column_chart_strategy_for_invariance",
+          "domain": "fraction",
+          "topic": "invariance of fractions across bases",
+          "subtopic": "place-value chart placement of one-half",
+          "page_refs": "197, 198",
+          "pdf": "pdfs/ESM/ESM_Khoury_1994_Fractions.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 191,
+          "bibtex_key": "JMB_BoultonLewis_1998_Children's",
+          "year": 1998,
+          "description": "place_value_explanations_verbally",
+          "domain": "whole_number",
+          "topic": "subtraction",
+          "subtopic": "mental place value strategy",
+          "page_refs": "226, 228",
+          "pdf": "pdfs/JMB/JMB_BoultonLewis_1998_Children's.pdf",
+          "cluster_score": 9.5
+        },
+        {
+          "id": 192,
+          "bibtex_key": "JMB_BoultonLewis_1998_Children's",
+          "year": 1998,
+          "description": "decomposition_explanations",
+          "domain": "whole_number",
+          "topic": "subtraction",
+          "subtopic": "decomposition (trading/borrowing)",
+          "page_refs": "228, 230",
+          "pdf": "pdfs/JMB/JMB_BoultonLewis_1998_Children's.pdf",
+          "cluster_score": 9.0
+        },
+        {
+          "id": 199,
+          "bibtex_key": "JMB_BoultonLewis_1998_Children's",
+          "year": 1998,
+          "description": "place_value_with_analogs",
+          "domain": "whole_number",
+          "topic": "addition",
+          "subtopic": "place value with concrete materials",
+          "page_refs": "231",
+          "pdf": "pdfs/JMB/JMB_BoultonLewis_1998_Children's.pdf",
+          "cluster_score": 8.5
+        },
+        {
+          "id": 200,
+          "bibtex_key": "JMB_BoultonLewis_1998_Children's",
+          "year": 1998,
+          "description": "place_value_without_analogs",
+          "domain": "whole_number",
+          "topic": "addition",
+          "subtopic": "mental place value strategy",
+          "page_refs": "231, 232, 233",
+          "pdf": "pdfs/JMB/JMB_BoultonLewis_1998_Children's.pdf",
+          "cluster_score": 9.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 149,
+          "bibtex_key": null,
+          "year": 2000,
+          "description": "Children develop buggy algorithms such as smaller-from-larger (always subtracting the smaller digit from the larger regardless of position). Procedural rules for carrying and borrowing are not linked to conceptual knowledge of base-ten place-value system.",
+          "domain": "whole_number",
+          "topic": "addition_subtraction_algorithms",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 8.0
+        },
+        {
+          "id": 152,
+          "bibtex_key": null,
+          "year": 2005,
+          "description": "Student (Chanelle) consistently misapplied standard addition algorithm (e.g., writing 414 for 19+35) due to lack of place value understanding. Over-reliance on counting by ones on fingers and rote algorithmic procedures constrained ability to understand tens-structure of number system. Trusted erroneous algorithmic answer over correct counting answer.",
+          "domain": "whole_number",
+          "topic": "multidigit_addition_subtraction_multiplication",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 7.5
+        },
+        {
+          "id": 164,
+          "bibtex_key": null,
+          "year": 1984,
+          "description": "Weak understanding of written symbolism and place-value notation despite powerful informal arithmetic; confusion about standard algorithms such as not understanding why numbers in column addition must be lined up from the right",
+          "domain": "whole_number",
+          "topic": "place_value",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 6.5
+        },
+        {
+          "id": 169,
+          "bibtex_key": null,
+          "year": 2015,
+          "description": "Buggy error of treating multi-digit numbers as single digits placed adjacent; contrasts column value understanding for standard algorithms with quantity value for mental arithmetic; advocates non-standard decompositions (e.g., 56=4x10+16)",
+          "domain": "whole_number",
+          "topic": "place_value",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 8.5
+        },
+        {
+          "id": 172,
+          "bibtex_key": "ISI:000292151900007",
+          "year": 2011,
+          "description": "Child can count discrete objects but fails to grasp positional value of digits, treating 10 as ten individual units rather than one unit of ten (e.g., writing 10+6=16 but categorizing as 10 tens and 6 units)",
+          "domain": "whole_number",
+          "topic": "place_value",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 7.5
+        }
+      ]
+    },
+    {
+      "id": "additive_situation_structures",
+      "title": "Additive Situation Structures",
+      "domains": [
+        "whole_number",
+        "integer",
+        "decimal",
+        "fraction"
+      ],
+      "automaton_states": [
+        "join_change",
+        "separate_change",
+        "part_part_whole",
+        "compare_additive"
+      ],
+      "productive_core": "Addition and subtraction model join, separate, part-part-whole, and comparison situations; unknowns can appear in any position.",
+      "deformation": "Students choose an operation from keywords or the order of numbers, losing the relation between start, change, result, whole, part, and difference.",
+      "assessing_questions": [
+        "What quantities are being joined, removed, or compared?",
+        "Which quantity is unknown?",
+        "Does the answer name a total, a part, a change, or a difference?"
+      ],
+      "advancing_questions": [
+        "Draw a situation diagram before writing an equation.",
+        "Write the same situation as a missing-addend equation."
+      ],
+      "standards": [
+        "CCSS K.OA",
+        "CCSS 1.OA.A-B",
+        "CCSS 2.OA.A",
+        "CCSS 6.NS.C"
+      ],
+      "im_anchors": [
+        "IM-K-U7",
+        "IM-G1-U1",
+        "IM-G1-U2",
+        "IM-G2-U2",
+        "IM-G3-U3"
+      ],
+      "strategy_count": 216,
+      "misconception_count": 295,
+      "strategy_samples": [
+        {
+          "id": 23,
+          "bibtex_key": "JMB_Hackenberg_2007_Units",
+          "year": 2007,
+          "description": "splitting_a_given_bar",
+          "domain": "fraction",
+          "topic": "splitting operation",
+          "subtopic": "simultaneous partitioning and iterating",
+          "page_refs": "29, 32, 45",
+          "pdf": "pdfs/JMB/JMB_Hackenberg_2007_Units.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 31,
+          "bibtex_key": "JMB_Hackenberg_2007_Units",
+          "year": 2007,
+          "description": "comparing_improper_fractions_by_iteration",
+          "domain": "fraction",
+          "topic": "improper fraction comparison",
+          "subtopic": "iterating a unit fraction past the whole",
+          "page_refs": "39, 40",
+          "pdf": "pdfs/JMB/JMB_Hackenberg_2007_Units.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 41,
+          "bibtex_key": "JRME_Baroody_1990_Chapter",
+          "year": 1990,
+          "description": "repeated_addition_for_multiplication",
+          "domain": "whole_number",
+          "topic": "multiplication",
+          "subtopic": "repeated_addition_decomposition",
+          "page_refs": "53",
+          "pdf": "pdfs/JRME/JRME_Baroody_1990_Chapter.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 42,
+          "bibtex_key": "JRME_Baroody_1990_Chapter",
+          "year": 1990,
+          "description": "counted_all_with_fingers",
+          "domain": "whole_number",
+          "topic": "addition",
+          "subtopic": "counting_all",
+          "page_refs": "53, 54",
+          "pdf": "pdfs/JRME/JRME_Baroody_1990_Chapter.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 43,
+          "bibtex_key": "JRME_Baroody_1990_Chapter",
+          "year": 1990,
+          "description": "finger_pattern_recognition_no_count",
+          "domain": "whole_number",
+          "topic": "addition",
+          "subtopic": "subitized_finger_patterns",
+          "page_refs": "54",
+          "pdf": "pdfs/JRME/JRME_Baroody_1990_Chapter.pdf",
+          "cluster_score": 6.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 148,
+          "bibtex_key": null,
+          "year": 1998,
+          "description": "Children produce buggy procedures when cognitive load of using manipulatives simultaneously with standard written algorithms overwhelms them; they fall back on simple forward/backward counting instead of base-ten decomposition. Predictable errors with teen numbers (12, 16) in place value.",
+          "domain": "whole_number",
+          "topic": "place_value_addition_subtraction",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 7.5
+        },
+        {
+          "id": 151,
+          "bibtex_key": null,
+          "year": 2003,
+          "description": "Preschool children in transitional phases use finger symbol sets and emerging counting schemes to track transformations in dynamic addition/subtraction tasks. Counting utterances may initially be rote without cardinal meaning, but children develop coordination of motor movement and verbal counting as productive developmental steps.",
+          "domain": "whole_number",
+          "topic": "part_whole_counting",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 7.5
+        },
+        {
+          "id": 157,
+          "bibtex_key": "ISI:000381836300001",
+          "year": 2016,
+          "description": "Sixth grader (Adam) uses tacitly nested number sequence for subtraction/addition (e.g., solving 17-8 by counting up from 8). Lacks iterable unit of 1 and cannot disembed subsequences, causing high cognitive load. Surprisingly sophisticated operations within TNS constraints but cannot reorganize into explicitly nested number sequence.",
+          "domain": "whole_number",
+          "topic": "subtraction_addition_number_sequences",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 6.5
+        },
+        {
+          "id": 159,
+          "bibtex_key": null,
+          "year": 1978,
+          "description": "Pupil used tally marks to represent chickens and days in a word problem involving proportions and multiplication, demonstrating a primitive but effective counting and addition-based strategy",
+          "domain": "whole_number",
+          "topic": "multiplication",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 6.0
+        },
+        {
+          "id": 161,
+          "bibtex_key": null,
+          "year": 1982,
+          "description": "Children struggle to conceptualize numbers as wholes, seeing a ten as ten individual units; difficulties with borrowing in subtraction interpreted procedurally without linking to place-value exchange",
+          "domain": "whole_number",
+          "topic": "subtraction",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 6.5
+        }
+      ]
+    },
+    {
+      "id": "additive_strategy_fluency",
+      "title": "Additive Strategy Fluency And Compensation",
+      "domains": [
+        "whole_number",
+        "decimal",
+        "integer"
+      ],
+      "automaton_states": [
+        "count_on",
+        "make_ten",
+        "decompose_recompose",
+        "compensation"
+      ],
+      "productive_core": "Efficient addition and subtraction strategies use known facts, making ten, decomposing, compensating, counting on/back, and the relation between operations.",
+      "deformation": "Students count all when count-on is available, compensate on one number without undoing the change, or apply fact patterns outside their valid range.",
+      "assessing_questions": [
+        "What fact or friendly number can help?",
+        "What did you change, and how will you compensate?",
+        "How can addition check the subtraction?"
+      ],
+      "advancing_questions": [
+        "Make a ten or hundred first, then add the leftover.",
+        "Solve the same problem with counting up and with decomposing; compare the methods."
+      ],
+      "standards": [
+        "CCSS 1.OA.C",
+        "CCSS 2.OA.B",
+        "CCSS 2.NBT.B",
+        "CCSS 3.NBT.A.2"
+      ],
+      "im_anchors": [
+        "IM-G1-U3",
+        "IM-G2-U3",
+        "IM-G2-U5",
+        "IM-G3-U3"
+      ],
+      "strategy_count": 129,
+      "misconception_count": 123,
+      "strategy_samples": [
+        {
+          "id": 17,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "eliminate_common_factors_then_recompose",
+          "domain": "whole_number",
+          "topic": "multiplication comparison",
+          "subtopic": "factor cancellation and recomposition",
+          "page_refs": "1093",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 40,
+          "bibtex_key": "JRME_Baroody_1990_Chapter",
+          "year": 1990,
+          "description": "invented_counting_two_more",
+          "domain": "whole_number",
+          "topic": "addition",
+          "subtopic": "counting_on_by_two",
+          "page_refs": "51, 52",
+          "pdf": "pdfs/JRME/JRME_Baroody_1990_Chapter.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 46,
+          "bibtex_key": "JRME_Baroody_1990_Chapter",
+          "year": 1990,
+          "description": "direct_modeling_with_fingers",
+          "domain": "whole_number",
+          "topic": "addition",
+          "subtopic": "direct_modeling_word_problem",
+          "page_refs": "55",
+          "pdf": "pdfs/JRME/JRME_Baroody_1990_Chapter.pdf",
+          "cluster_score": 8.5
+        },
+        {
+          "id": 48,
+          "bibtex_key": "JRME_Baroody_1990_Chapter",
+          "year": 1990,
+          "description": "skip_count_known_multiplication_facts",
+          "domain": "whole_number",
+          "topic": "multiplication",
+          "subtopic": "skip_counting_combinations",
+          "page_refs": "60",
+          "pdf": "pdfs/JRME/JRME_Baroody_1990_Chapter.pdf",
+          "cluster_score": 9.5
+        },
+        {
+          "id": 58,
+          "bibtex_key": "RME_Rowland_2015_Triggers",
+          "year": 2015,
+          "description": "spontaneous_odd_even_alternation_observation",
+          "domain": "whole_number",
+          "topic": "parity",
+          "subtopic": "odd_even_pattern_in_counting",
+          "page_refs": "80",
+          "pdf": "pdfs/RME/RME_Rowland_2015_Triggers.pdf",
+          "cluster_score": 6.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 150,
+          "bibtex_key": null,
+          "year": 2002,
+          "description": "Children's internal representations evolve from unstructured iconic tally marks (counting by ones) to organized formal notations in rows of ten. Early representations lack base-ten structure but are developmentally productive as they reflect emerging internal representational systems.",
+          "domain": "whole_number",
+          "topic": "counting_numeration",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 5.5
+        },
+        {
+          "id": 160,
+          "bibtex_key": null,
+          "year": 2009,
+          "description": "Over-reliance on counting by ones as inefficient strategy leading to calculation errors in multiplication; children used simple counting, distributive, rearranging, and completing strategies with arrays",
+          "domain": "whole_number",
+          "topic": "multiplication",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 5.5
+        },
+        {
+          "id": 168,
+          "bibtex_key": null,
+          "year": 2006,
+          "description": "Progression from count-all to counting-on to counting-on-from-larger to derived facts like make-ten bridging strategy; multi-digit subtraction algorithms (Equal Addition and Decomposition) as creative rule-governed procedures",
+          "domain": "whole_number",
+          "topic": "addition_subtraction",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 11.5
+        },
+        {
+          "id": 182,
+          "bibtex_key": null,
+          "year": 2007,
+          "description": "Count-all to count-on flexibility; child switches strategies based on difficulty",
+          "domain": "whole_number",
+          "topic": "addition",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 8.5
+        },
+        {
+          "id": 185,
+          "bibtex_key": null,
+          "year": 1994,
+          "description": "Below-average locked into count-all; above-average use derived facts",
+          "domain": "whole_number",
+          "topic": "addition",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 8.5
+        }
+      ]
+    },
+    {
+      "id": "multidigit_add_sub_algorithms",
+      "title": "Multi-Digit Addition And Subtraction Algorithms",
+      "domains": [
+        "whole_number",
+        "decimal"
+      ],
+      "automaton_states": [
+        "column_alignment",
+        "unit_exchange",
+        "algorithm_as_place_value_trace"
+      ],
+      "productive_core": "Written algorithms compress place-value reasoning: like units are aligned, composed, decomposed, and exchanged.",
+      "deformation": "Columns are manipulated syntactically, borrowing/carrying is treated as moving digits, or decimals are misaligned because place value is not kept active.",
+      "assessing_questions": [
+        "Which units are in this column?",
+        "Why can these digits be added or subtracted together?",
+        "What did the regrouping exchange mean?"
+      ],
+      "advancing_questions": [
+        "Represent one regrouping step with base-ten blocks or expanded form.",
+        "Estimate before calculating to catch unit-alignment errors."
+      ],
+      "standards": [
+        "CCSS 2.NBT.B",
+        "CCSS 3.NBT.A.2",
+        "CCSS 4.NBT.B",
+        "CCSS 5.NBT.B"
+      ],
+      "im_anchors": [
+        "IM-G2-U5",
+        "IM-G3-U3",
+        "IM-G4-U4",
+        "IM-G5-U4"
+      ],
+      "strategy_count": 6,
+      "misconception_count": 16,
+      "strategy_samples": [
+        {
+          "id": 118,
+          "bibtex_key": "MERJ_Hativa_1992_Good",
+          "year": 1992,
+          "description": "generalizing_principles_and_rules",
+          "domain": "whole_number",
+          "topic": "divisibility rules",
+          "subtopic": "divisibility by powers of 10; rounding decimals",
+          "page_refs": "69",
+          "pdf": "pdfs/MERJ/MERJ_Hativa_1992_Good.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 193,
+          "bibtex_key": "JMB_BoultonLewis_1998_Children's",
+          "year": 1998,
+          "description": "written_algorithm_with_analogs",
+          "domain": "whole_number",
+          "topic": "subtraction",
+          "subtopic": "standard written algorithm",
+          "page_refs": "226, 227",
+          "pdf": "pdfs/JMB/JMB_BoultonLewis_1998_Children's.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 201,
+          "bibtex_key": "JMB_BoultonLewis_1998_Children's",
+          "year": 1998,
+          "description": "written_algorithm_without_analogs_addition",
+          "domain": "whole_number",
+          "topic": "addition",
+          "subtopic": "standard written addition algorithm",
+          "page_refs": "230, 232",
+          "pdf": "pdfs/JMB/JMB_BoultonLewis_1998_Children's.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 1744,
+          "bibtex_key": "JRME_Thanheiser_2009_Preservice",
+          "year": 2009,
+          "description": "standard_algorithm_execution",
+          "domain": "whole_number",
+          "topic": "multidigit addition and subtraction",
+          "subtopic": "standard algorithms with regrouping",
+          "page_refs": "258, 271",
+          "pdf": "pdfs/JRME/JRME_Thanheiser_2009_Preservice.pdf",
+          "cluster_score": 9.5
+        },
+        {
+          "id": 2021,
+          "bibtex_key": "MTL_Izsak_2004_Teaching",
+          "year": 2004,
+          "description": "traditional_us_method",
+          "domain": "whole_number",
+          "topic": "two-digit multiplication",
+          "subtopic": "standard algorithm",
+          "page_refs": "74",
+          "pdf": "pdfs/MTL/MTL_Izsak_2004_Teaching.pdf",
+          "cluster_score": 5.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 170,
+          "bibtex_key": null,
+          "year": 2005,
+          "description": "Borrowing mistakes especially across zero, numerical facts errors, psychological oversights (adding instead of subtracting, subtracting imaginary digits); compares standard borrowing algorithm with Austrian/equal addition algorithm",
+          "domain": "whole_number",
+          "topic": "subtraction",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 7.5
+        },
+        {
+          "id": 178,
+          "bibtex_key": null,
+          "year": 1989,
+          "description": "Children's invented strategies: partitioning into tens and units, counting on, rounding, successive addition/subtraction via decimal regrouping, using known number facts (e.g., 98-29 via 98-10=88, 88-10=78, 78-9=69)",
+          "domain": "whole_number",
+          "topic": "addition_subtraction",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 7.5
+        },
+        {
+          "id": 215,
+          "bibtex_key": null,
+          "year": 2012,
+          "description": "502-6: skip zero and borrow from 5; 0-N=N bug",
+          "domain": "whole_number",
+          "topic": "subtraction",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 7.5
+        },
+        {
+          "id": 44214,
+          "bibtex_key": "JRME_Sowder_1989_Development",
+          "year": 1989,
+          "description": "Students apply school-taught rounding rules inflexibly and algorithmically, rejecting valid approximations that deviate from standard rounding rules.",
+          "domain": "whole_number",
+          "topic": "rounding",
+          "subtopic": "algorithmic rules",
+          "page_refs": "144, 145",
+          "pdf": "pdfs/JRME/JRME_Sowder_1989_Development.pdf",
+          "cluster_score": 3.5
+        },
+        {
+          "id": 44252,
+          "bibtex_key": "JRME_Carraher_1987_Written",
+          "year": 1987,
+          "description": "Children are confused by the explicit representation of zeroes in written subtraction algorithms, often failing to borrow correctly and questioning the mathematical value of the zero digit itself.",
+          "domain": "whole_number",
+          "topic": "subtraction",
+          "subtopic": "zeroes",
+          "page_refs": "94",
+          "pdf": "pdfs/JRME/JRME_Carraher_1987_Written.pdf",
+          "cluster_score": 9.5
+        }
+      ]
+    },
+    {
+      "id": "multiplication_equal_groups_arrays",
+      "title": "Multiplication As Equal Groups, Arrays, And Area",
+      "domains": [
+        "whole_number",
+        "measurement",
+        "geometric",
+        "fraction"
+      ],
+      "automaton_states": [
+        "equal_group_iteration",
+        "array_coordination",
+        "area_product_structure"
+      ],
+      "productive_core": "Multiplication coordinates equal-size groups, rows and columns, or length-by-width area units; one factor can count groups and the other count units per group.",
+      "deformation": "Students count individual items without group structure, swap factors without preserving what each factor means, or treat area multiplication as a bare formula.",
+      "assessing_questions": [
+        "What is one group? How many groups are there?",
+        "What do the rows and columns each count?",
+        "Where is the product visible in the diagram?"
+      ],
+      "advancing_questions": [
+        "Draw an array and label both factors in context.",
+        "Decompose one factor and show the partial products."
+      ],
+      "standards": [
+        "CCSS 3.OA.A",
+        "CCSS 3.OA.B",
+        "CCSS 3.MD.C",
+        "CCSS 4.NBT.B.5"
+      ],
+      "im_anchors": [
+        "IM-G3-U1",
+        "IM-G3-U2",
+        "IM-G3-U4",
+        "IM-G4-U6",
+        "IM-G5-U2"
+      ],
+      "strategy_count": 166,
+      "misconception_count": 185,
+      "strategy_samples": [
+        {
+          "id": 14,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "decompose_to_share_factor",
+          "domain": "whole_number",
+          "topic": "multiplication estimation",
+          "subtopic": "decomposition exposing common factor",
+          "page_refs": "1083",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 18,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "associative_double_halve_pairing",
+          "domain": "whole_number",
+          "topic": "multiplication comparison",
+          "subtopic": "doubling/halving via associativity",
+          "page_refs": "1093, 1094",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 59,
+          "bibtex_key": "RME_Rowland_2015_Triggers",
+          "year": 2015,
+          "description": "rounding_estimate_for_multiplication",
+          "domain": "whole_number",
+          "topic": "multiplication",
+          "subtopic": "estimation_by_rounding_a_factor",
+          "page_refs": "83",
+          "pdf": "pdfs/RME/RME_Rowland_2015_Triggers.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 150,
+          "bibtex_key": "MTL_Lesh_2003_Problem",
+          "year": 2003,
+          "description": "scale_one_piece_then_derive_others_by_part_part",
+          "domain": "geometric",
+          "topic": "scaling with part-part geometric relations",
+          "subtopic": "shared-component scaling",
+          "page_refs": "171-172",
+          "pdf": "pdfs/MTL/MTL_Lesh_2003_Problem.pdf",
+          "cluster_score": 3.0
+        },
+        {
+          "id": 174,
+          "bibtex_key": "ESM_Manouchehri_2000_Implementing",
+          "year": 2000,
+          "description": "improper_fraction_product_counterexample",
+          "domain": "fraction",
+          "topic": "fraction multiplication",
+          "subtopic": "size of a fraction product relative to its factors",
+          "page_refs": "15, 16",
+          "pdf": "pdfs/ESM/ESM_Manouchehri_2000_Implementing.pdf",
+          "cluster_score": 7.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 155,
+          "bibtex_key": "ISI:000375851800005",
+          "year": 2015,
+          "description": "Sixth grader (Cody) relied on repeated addition and skip-counting for multiplication because he could not assimilate multiple levels of units. Built two-level structures as segmented number lines rather than two-dimensional arrays. Knew multiplication facts but could not leverage multiplicative relationships. Progressed from coordinating two levels to three levels of units through instructional intervention.",
+          "domain": "whole_number",
+          "topic": "multiplication_units_coordination",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 6.5
+        },
+        {
+          "id": 158,
+          "bibtex_key": "ISI:000416631000001",
+          "year": 2017,
+          "description": "Students who rigidly conceptualize multiplication as repeated addition or equal groups can use distributivity for multi-digit whole numbers but this same conceptualization constrains commutativity use and sense-making with decimal multiplication. Robust conceptualization both enables and constrains across number domains.",
+          "domain": "whole_number",
+          "topic": "multiplication_multidigit_decimal",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 8.5
+        },
+        {
+          "id": 196,
+          "bibtex_key": null,
+          "year": 1997,
+          "description": "Direct counting → repeated addition → multiplicative operation",
+          "domain": "whole_number",
+          "topic": "multiplication",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 6.5
+        },
+        {
+          "id": 197,
+          "bibtex_key": null,
+          "year": 1985,
+          "description": "Multiplication as repeated addition constrains word problem interpretation",
+          "domain": "whole_number",
+          "topic": "multiplication",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 6.5
+        },
+        {
+          "id": 224,
+          "bibtex_key": null,
+          "year": 2004,
+          "description": "Students struggle to coordinate magnitudes of factors and partial products in two-digit multiplication (e.g., 28x34). Difficulty connecting expanded forms of numbers with the distributive property; confusion about which representational features to use for which computational goal.",
+          "domain": "whole_number",
+          "topic": "two-digit multiplication and distributive property",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 6.5
+        }
+      ]
+    },
+    {
+      "id": "division_sharing_measurement",
+      "title": "Division As Sharing, Measurement, And Unknown Factor",
+      "domains": [
+        "whole_number",
+        "fraction",
+        "decimal",
+        "rational"
+      ],
+      "automaton_states": [
+        "partitive_division",
+        "measurement_division",
+        "unknown_factor"
+      ],
+      "productive_core": "Division can ask for group size, number of groups, or an unknown factor; remainders must be interpreted in the situation.",
+      "deformation": "Students conflate sharing and measurement, reverse divisor and dividend, ignore the unit of the remainder, or force a whole-number answer.",
+      "assessing_questions": [
+        "Are we finding how many groups or how many in each group?",
+        "What does the divisor name?",
+        "What does the remainder mean here?"
+      ],
+      "advancing_questions": [
+        "Write a multiplication equation with an unknown factor.",
+        "Model the same division as equal sharing and as repeated measuring when possible."
+      ],
+      "standards": [
+        "CCSS 3.OA.A.2",
+        "CCSS 3.OA.B.6",
+        "CCSS 4.NBT.B.6",
+        "CCSS 5.NBT.B.6",
+        "CCSS 6.NS.B"
+      ],
+      "im_anchors": [
+        "IM-G3-U4",
+        "IM-G4-U7",
+        "IM-G5-U4",
+        "IM-G5-U8",
+        "IM-G6-U4"
+      ],
+      "strategy_count": 117,
+      "misconception_count": 123,
+      "strategy_samples": [
+        {
+          "id": 50,
+          "bibtex_key": "JRME_Empson_2003_Low-performing",
+          "year": 2003,
+          "description": "repeated_halving_with_residual_partition",
+          "domain": "fraction",
+          "topic": "equal sharing",
+          "subtopic": "repeated halving beyond powers of two",
+          "page_refs": "315, 316",
+          "pdf": "pdfs/JRME/JRME_Empson_2003_Low-performing.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 78,
+          "bibtex_key": "IJSME_Yang_2003_Teaching",
+          "year": 2003,
+          "description": "pictorial_partition_for_sharing",
+          "domain": "fraction",
+          "topic": "fraction as quotient",
+          "subtopic": "pictorial_representation",
+          "page_refs": "125",
+          "pdf": "pdfs/IJSME/IJSME_Yang_2003_Teaching.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 87,
+          "bibtex_key": "JMTE_Charalambous_2011_Prospective",
+          "year": 2011,
+          "description": "soda_serving_word_problem_with_two_unit_representations",
+          "domain": "fraction",
+          "topic": "fraction division",
+          "subtopic": "measurement interpretation, distinguishing dividend-units from divisor-units",
+          "page_refs": "455, 456, 457",
+          "pdf": "pdfs/JMTE/JMTE_Charalambous_2011_Prospective.pdf",
+          "cluster_score": 8.5
+        },
+        {
+          "id": 100,
+          "bibtex_key": "JMTE_Sowder_1998_Educating",
+          "year": 1998,
+          "description": "diagram_for_fraction_division_referent",
+          "domain": "fraction",
+          "topic": "division of fractions",
+          "subtopic": "quotitive division and referent of quotient",
+          "page_refs": "147",
+          "pdf": "pdfs/JMTE/JMTE_Sowder_1998_Educating.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 139,
+          "bibtex_key": "MTL_Fernandez_2005_Lesson",
+          "year": 2005,
+          "description": "measure_with_ruler_then_divide",
+          "domain": "fraction",
+          "topic": "equal sharing",
+          "subtopic": "partitioning a length",
+          "page_refs": "276, 277",
+          "pdf": "pdfs/MTL/MTL_Fernandez_2005_Lesson.pdf",
+          "cluster_score": 5.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 181,
+          "bibtex_key": null,
+          "year": 2010,
+          "description": "Errors in division with remainders (e.g., 491/6): subtracting remainder from quotient, treating remainder as decimal, incorrectly remaining at integer level; useful strategies include skip counting, repeated addition/subtraction, chunks, derived facts",
+          "domain": "whole_number",
+          "topic": "division",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 7.5
+        },
+        {
+          "id": 198,
+          "bibtex_key": null,
+          "year": 1993,
+          "description": "1128 soldiers / 36 per bus: can compute but cant interpret remainder",
+          "domain": "whole_number",
+          "topic": "division",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 6.5
+        },
+        {
+          "id": 201,
+          "bibtex_key": "ISI:000072651300004",
+          "year": 1998,
+          "description": "Dealing/sharing as proto-division; counting and one-to-one correspondence",
+          "domain": "whole_number",
+          "topic": "division",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 5.5
+        },
+        {
+          "id": 249,
+          "bibtex_key": null,
+          "year": 1998,
+          "description": "Some U.S. students rely on alternative invented procedures such as repeated addition and repeated subtraction rather than standard division algorithms for division-with-remainder problems",
+          "domain": "whole_number",
+          "topic": "division_with_remainder",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 6.5
+        },
+        {
+          "id": 286,
+          "bibtex_key": null,
+          "year": 2014,
+          "description": "Children (ages 8-10) draw mathematics classrooms showing students engaged in rote elementary division tasks where divisor and dividend are the same (e.g., 24/24 or 4/4), raising questions about the level of mathematics actually being taught",
+          "domain": "whole_number",
+          "topic": "division",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 6.5
+        }
+      ]
+    },
+    {
+      "id": "multiplicative_comparison_scaling",
+      "title": "Multiplicative Comparison And Scaling",
+      "domains": [
+        "whole_number",
+        "fraction",
+        "proportional",
+        "rational",
+        "percent"
+      ],
+      "automaton_states": [
+        "times_as_many",
+        "scale_factor",
+        "composed_unit_ratio"
+      ],
+      "productive_core": "Multiplicative comparison relates quantities by scale factor, not additive difference; the compared unit remains visible through the comparison.",
+      "deformation": "Students use additive difference where a scale factor is required, or treat 'times as many' as a command to add or concatenate numbers.",
+      "assessing_questions": [
+        "How many times as large is one quantity as the other?",
+        "What is the unit being scaled?",
+        "Would adding the same amount preserve this relationship?"
+      ],
+      "advancing_questions": [
+        "Make a table of scaled copies and compare both columns.",
+        "Use a double number line to show the factor relationship."
+      ],
+      "standards": [
+        "CCSS 4.OA.A",
+        "CCSS 5.NF.B.5",
+        "CCSS 6.RP.A",
+        "CCSS 7.RP.A"
+      ],
+      "im_anchors": [
+        "IM-G4-U5",
+        "IM-G5-U6",
+        "IM-G6-U2",
+        "IM-G6-U3",
+        "IM-G7-U2"
+      ],
+      "strategy_count": 143,
+      "misconception_count": 201,
+      "strategy_samples": [
+        {
+          "id": 62,
+          "bibtex_key": "ESM_Ekenstam_1983_Some",
+          "year": 1983,
+          "description": "iterated_halving_ratio_for_onions",
+          "domain": "proportional",
+          "topic": "ratio_and_proportion",
+          "subtopic": "scale_down_then_scale_up_a_ratio",
+          "page_refs": "380",
+          "pdf": "pdfs/ESM/ESM_Ekenstam_1983_Some.pdf",
+          "cluster_score": 8.5
+        },
+        {
+          "id": 88,
+          "bibtex_key": "JMTE_Orrill_2012_Making",
+          "year": 2012,
+          "description": "cross_multiplication_on_double_scaled_number_line",
+          "domain": "proportional",
+          "topic": "proportional reasoning",
+          "subtopic": "cans and containers task",
+          "page_refs": "389, 390",
+          "pdf": "pdfs/JMTE/JMTE_Orrill_2012_Making.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 94,
+          "bibtex_key": "JMTE_Orrill_2012_Making",
+          "year": 2012,
+          "description": "drop_down_strategy_to_find_corresponding_quantity",
+          "domain": "proportional",
+          "topic": "double number line reasoning",
+          "subtopic": "vertical correspondence on DNL",
+          "page_refs": "396",
+          "pdf": "pdfs/JMTE/JMTE_Orrill_2012_Making.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 95,
+          "bibtex_key": "JMTE_Orrill_2012_Making",
+          "year": 2012,
+          "description": "common_denominator_partitioning_for_compatibility",
+          "domain": "proportional",
+          "topic": "double number line reasoning",
+          "subtopic": "common-denominator partitioning",
+          "page_refs": "398",
+          "pdf": "pdfs/JMTE/JMTE_Orrill_2012_Making.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 96,
+          "bibtex_key": "JMTE_Sowder_1998_Educating",
+          "year": 1998,
+          "description": "quantitative_reasoning_about_catch_up_distance",
+          "domain": "proportional",
+          "topic": "rate and distance reasoning",
+          "subtopic": "catch-up problem via relative speed",
+          "page_refs": "131, 132",
+          "pdf": "pdfs/JMTE/JMTE_Sowder_1998_Educating.pdf",
+          "cluster_score": 6.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 156,
+          "bibtex_key": "ISI:000397101800002",
+          "year": 2016,
+          "description": "4th grader with learning disability (Tia) transitioning from additive to multiplicative reasoning. Initially added rather than multiplied (e.g., 6 bags x 3 marbles = 9). Progressed through multiplicative double counting, same-unit coordination, unit differentiation and selection, to mixed-unit coordination schemes via constructivist scaffolding.",
+          "domain": "whole_number",
+          "topic": "multiplication_multiplicative_reasoning",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 6.5
+        },
+        {
+          "id": 234,
+          "bibtex_key": "ISI:000309228500004",
+          "year": 2012,
+          "description": "Additive reasoning instead of multiplicative; sign of immaturity",
+          "domain": "whole_number",
+          "topic": "multiplication",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 5.0
+        },
+        {
+          "id": 291,
+          "bibtex_key": null,
+          "year": 2018,
+          "description": "Students rely on rigid standard algorithms rather than flexible number sense. For 2347+1875=1873+? they add fully then subtract instead of recognizing relational structure. Struggle with mental composition/decomposition (e.g. 28=4x7 to solve 28x25).",
+          "domain": "whole_number",
+          "topic": "arithmetic_strategies",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 6.5
+        },
+        {
+          "id": 43997,
+          "bibtex_key": "JMB_Steffe_2002_New",
+          "year": 2002,
+          "description": "Children named a fractional part based on the number of iterations of the stick used rather than its multiplicative relationship to the whole.",
+          "domain": "fraction",
+          "topic": "representation",
+          "subtopic": "part-whole comparison",
+          "page_refs": "280-283",
+          "pdf": "pdfs/JMB/JMB_Steffe_2002_New.pdf",
+          "cluster_score": 8.5
+        },
+        {
+          "id": 43998,
+          "bibtex_key": "JMB_Steffe_2002_New",
+          "year": 2002,
+          "description": "A student interpreted a multiplicative comparison additively, seeing 'five times longer' as 'five more'.",
+          "domain": "fraction",
+          "topic": "comparison",
+          "subtopic": "multiplicative comparison",
+          "page_refs": "287",
+          "pdf": "pdfs/JMB/JMB_Steffe_2002_New.pdf",
+          "cluster_score": 9.5
+        }
+      ]
+    },
+    {
+      "id": "fraction_unit_referent_operations",
+      "title": "Fraction Units, Referents, And Operations",
+      "domains": [
+        "fraction",
+        "rational"
+      ],
+      "automaton_states": [
+        "fraction_referent_unit",
+        "co_measurement",
+        "nested_fraction_unit"
+      ],
+      "productive_core": "Fractions are built from unit fractions tied to a referent whole; operations preserve or transform those units through iteration, equivalence, co-measurement, and nesting.",
+      "deformation": "Fractions become two independent whole-number slots, so componentwise operations or opaque rules replace unit reasoning.",
+      "assessing_questions": [
+        "What is the whole?",
+        "What unit fraction are you counting or operating on?",
+        "How did the operation change the unit?"
+      ],
+      "advancing_questions": [
+        "Show the operation on a diagram or number line before writing the algorithm.",
+        "Explain where each numerator and denominator in the answer came from."
+      ],
+      "standards": [
+        "CCSS 3.NF",
+        "CCSS 4.NF",
+        "CCSS 5.NF",
+        "CCSS 6.NS.A.1"
+      ],
+      "im_anchors": [
+        "IM-G3-U5",
+        "IM-G4-U2",
+        "IM-G4-U3",
+        "IM-G5-U2",
+        "IM-G5-U3",
+        "IM-G6-U4"
+      ],
+      "strategy_count": 553,
+      "misconception_count": 601,
+      "strategy_samples": [
+        {
+          "id": 5,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "benchmark_to_one",
+          "domain": "fraction",
+          "topic": "fraction comparison",
+          "subtopic": "benchmarking with 1",
+          "page_refs": "1082",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 6,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "benchmark_to_one_half",
+          "domain": "fraction",
+          "topic": "fraction comparison",
+          "subtopic": "benchmarking with 1/2",
+          "page_refs": "1082",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 7,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "missing_piece_size_comparison",
+          "domain": "fraction",
+          "topic": "fraction comparison",
+          "subtopic": "comparing complements when same number of unit pieces missing",
+          "page_refs": "1087",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 8,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "area_model_shading_comparison",
+          "domain": "fraction",
+          "topic": "fraction comparison",
+          "subtopic": "area model with unshaded complement",
+          "page_refs": "1087, 1088",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 10,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "benchmark_half_for_fraction_sum",
+          "domain": "fraction",
+          "topic": "fraction addition estimation",
+          "subtopic": "benchmarking sum to 1/2",
+          "page_refs": "1090",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 5.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 43994,
+          "bibtex_key": "JMB_Olive_2002_Construction",
+          "year": 2002,
+          "description": "The student applied whole-number additive arithmetic to fraction situations by adding the denominators when combining two unit fractions.",
+          "domain": "fraction",
+          "topic": "addition",
+          "subtopic": "addition of unit fractions",
+          "page_refs": "420",
+          "pdf": "pdfs/JMB/JMB_Olive_2002_Construction.pdf",
+          "cluster_score": 9.5
+        },
+        {
+          "id": 43995,
+          "bibtex_key": "JMB_Olive_2002_Construction",
+          "year": 2002,
+          "description": "The student experienced a severe perturbation when asked to conceptualize an improper fraction, struggling with the part-whole limitation that a fraction cannot be larger than its referent whole.",
+          "domain": "fraction",
+          "topic": "representation",
+          "subtopic": "improper fractions",
+          "page_refs": "425-428",
+          "pdf": "pdfs/JMB/JMB_Olive_2002_Construction.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 43996,
+          "bibtex_key": "JMB_Olive_2002_Construction",
+          "year": 2002,
+          "description": "The student named a unit fraction based on the numerosity (length) of the stick being used, rather than its multiplicative relationship to the whole.",
+          "domain": "fraction",
+          "topic": "representation",
+          "subtopic": "unit fractions",
+          "page_refs": "419",
+          "pdf": "pdfs/JMB/JMB_Olive_2002_Construction.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 43999,
+          "bibtex_key": "JMB_Steffe_2002_New",
+          "year": 2002,
+          "description": "Students lacked the operations necessary to establish a commensurate unit fraction for a composite fraction.",
+          "domain": "fraction",
+          "topic": "equivalence",
+          "subtopic": "composite unit fractions",
+          "page_refs": "294-295",
+          "pdf": "pdfs/JMB/JMB_Steffe_2002_New.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 44000,
+          "bibtex_key": "JMB_Steffe_2002_New",
+          "year": 2002,
+          "description": "A student inverted the part-whole relationship when attempting to construct an improper fraction, creating a proper fraction instead.",
+          "domain": "fraction",
+          "topic": "representation",
+          "subtopic": "improper fractions",
+          "page_refs": "299-300",
+          "pdf": "pdfs/JMB/JMB_Steffe_2002_New.pdf",
+          "cluster_score": 6.5
+        }
+      ]
+    },
+    {
+      "id": "decimal_place_value_operations",
+      "title": "Decimal Place Value And Operations",
+      "domains": [
+        "decimal",
+        "rational",
+        "fraction"
+      ],
+      "automaton_states": [
+        "decimal_unit_extension",
+        "base_ten_fractional_unit",
+        "decimal_algorithm_alignment"
+      ],
+      "productive_core": "Decimals extend base-ten units to tenths, hundredths, and thousandths; operations align like place-value units and can be related to fractions.",
+      "deformation": "Decimal strings are treated as whole numbers, longer means larger, or decimal points are lined up procedurally without unit meaning.",
+      "assessing_questions": [
+        "What unit does this digit represent?",
+        "Which decimal is closer to one whole?",
+        "How can this decimal be written as a fraction?"
+      ],
+      "advancing_questions": [
+        "Use a place-value chart to align like units.",
+        "Compare decimals by naming tenths, hundredths, and thousandths, not by string length."
+      ],
+      "standards": [
+        "CCSS 4.NF.C",
+        "CCSS 5.NBT.A-B",
+        "CCSS 6.NS.B.3"
+      ],
+      "im_anchors": [
+        "IM-G4-U4",
+        "IM-G5-U4",
+        "IM-G5-U5",
+        "IM-G6-U5"
+      ],
+      "strategy_count": 106,
+      "misconception_count": 261,
+      "strategy_samples": [
+        {
+          "id": 4,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "decimal_equivalence_density",
+          "domain": "decimal",
+          "topic": "decimal density",
+          "subtopic": "infinitely many decimals between two decimals",
+          "page_refs": "1080, 1081",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 9,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "reasonableness_check_decimal_placement",
+          "domain": "decimal",
+          "topic": "decimal multiplication",
+          "subtopic": "estimation and reasonableness for decimal placement",
+          "page_refs": "1089",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 12,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "convert_to_common_form_for_sum",
+          "domain": "fraction",
+          "topic": "fraction addition estimation",
+          "subtopic": "common-form conversion (common denom, decimals, or percents)",
+          "page_refs": "1090",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 15,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "smaller_divisor_larger_quotient",
+          "domain": "decimal",
+          "topic": "decimal division comparison",
+          "subtopic": "relative effect of divisor on quotient",
+          "page_refs": "1092, 1093",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 38,
+          "bibtex_key": "JMTE_Dyson_2013_Prospective",
+          "year": 2013,
+          "description": "rebundling_decimal_subtraction",
+          "domain": "decimal",
+          "topic": "decimal subtraction",
+          "subtopic": "place-value rebundling for subtraction with regrouping",
+          "page_refs": "62, 77",
+          "pdf": "pdfs/JMTE/JMTE_Dyson_2013_Prospective.pdf",
+          "cluster_score": 10.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 167,
+          "bibtex_key": null,
+          "year": 1986,
+          "description": "Place-value misconception in addition with regrouping: 12-year-old adds 889+499=1388, explaining carried 1 next to 8 represents tenths, completely misunderstanding base-ten regrouping",
+          "domain": "whole_number",
+          "topic": "addition",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 6.5
+        },
+        {
+          "id": 44043,
+          "bibtex_key": "JRME_Fischbein_1985_Role",
+          "year": 1985,
+          "description": "Students assume the operator in a multiplication problem must be a whole number, leading to errors when the operator is a decimal because it violates the tacit repeated addition model.",
+          "domain": "decimal",
+          "topic": "multiplication",
+          "subtopic": "decimal operators",
+          "page_refs": "6, 10, 11, 14",
+          "pdf": "pdfs/JRME/JRME_Fischbein_1985_Role.pdf",
+          "cluster_score": 8.5
+        },
+        {
+          "id": 44045,
+          "bibtex_key": "JRME_Fischbein_1985_Role",
+          "year": 1985,
+          "description": "Students fail to identify division as the appropriate operation in partitive contexts when the divisor is a decimal, as it violates the intuitive rule that the divisor must be a whole number.",
+          "domain": "decimal",
+          "topic": "division",
+          "subtopic": "decimal divisors",
+          "page_refs": "7, 12, 13",
+          "pdf": "pdfs/JRME/JRME_Fischbein_1985_Role.pdf",
+          "cluster_score": 8.5
+        },
+        {
+          "id": 44061,
+          "bibtex_key": "JRME_Reys_1998_Relationship",
+          "year": 1998,
+          "description": "Students consider fractions and decimals as separate, unrelated entities when ordering them, failing to establish meaningful connections between the representations.",
+          "domain": "rational",
+          "topic": "ordering",
+          "subtopic": "comparing fractions and decimals",
+          "page_refs": "233, 235, 236",
+          "pdf": "pdfs/JRME/JRME_Reys_1998_Relationship.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 44062,
+          "bibtex_key": "JRME_Reys_1998_Relationship",
+          "year": 1998,
+          "description": "Students incorrectly assume that multiplication always results in a larger product, regardless of whether the multiplier is a decimal less than one.",
+          "domain": "decimal",
+          "topic": "multiplication",
+          "subtopic": "relative effects of operations",
+          "page_refs": "233",
+          "pdf": "pdfs/JRME/JRME_Reys_1998_Relationship.pdf",
+          "cluster_score": 7.0
+        }
+      ]
+    },
+    {
+      "id": "ratio_rate_percent_proportionality",
+      "title": "Ratio, Rate, Percent, And Proportionality",
+      "domains": [
+        "proportional",
+        "ratio",
+        "percent",
+        "rational",
+        "measurement"
+      ],
+      "automaton_states": [
+        "composed_ratio_unit",
+        "unit_rate",
+        "constant_of_proportionality",
+        "percent_per_hundred"
+      ],
+      "productive_core": "Ratios compose two quantities into a new unit; rates compare unlike units; percentages measure by a per-hundred unit; proportional situations preserve a constant multiplier.",
+      "deformation": "Students reason additively, swap part-part and part-whole ratios, or use cross products as an opaque procedure.",
+      "assessing_questions": [
+        "What two quantities are being compared?",
+        "Is this a part-part or part-whole comparison?",
+        "What does one unit of this rate mean?"
+      ],
+      "advancing_questions": [
+        "Build a ratio table and identify the multiplier.",
+        "Represent the same relationship on a double number line and with an equation."
+      ],
+      "standards": [
+        "CCSS 6.RP.A",
+        "CCSS 7.RP.A",
+        "CCSS 7.EE.B.3"
+      ],
+      "im_anchors": [
+        "IM-G6-U2",
+        "IM-G6-U3",
+        "IM-G7-U2",
+        "IM-G7-U4"
+      ],
+      "strategy_count": 101,
+      "misconception_count": 108,
+      "strategy_samples": [
+        {
+          "id": 13,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "benchmark_fifty_percent_of_three_hundred",
+          "domain": "percent",
+          "topic": "percent estimation",
+          "subtopic": "benchmarking 48% to 50%",
+          "page_refs": "1090",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 91,
+          "bibtex_key": "JMTE_Orrill_2012_Making",
+          "year": 2012,
+          "description": "partition_bottom_line_into_fifths",
+          "domain": "proportional",
+          "topic": "double number line reasoning",
+          "subtopic": "partitioning to find unit rate",
+          "page_refs": "393, 394",
+          "pdf": "pdfs/JMTE/JMTE_Orrill_2012_Making.pdf",
+          "cluster_score": 8.5
+        },
+        {
+          "id": 92,
+          "bibtex_key": "JMTE_Orrill_2012_Making",
+          "year": 2012,
+          "description": "partition_each_batch_into_sixths",
+          "domain": "proportional",
+          "topic": "double number line reasoning",
+          "subtopic": "partitioning batches for composed units",
+          "page_refs": "396, 397",
+          "pdf": "pdfs/JMTE/JMTE_Orrill_2012_Making.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 93,
+          "bibtex_key": "JMTE_Orrill_2012_Making",
+          "year": 2012,
+          "description": "coordinated_dnl_subdividing_each_batch",
+          "domain": "proportional",
+          "topic": "double number line reasoning",
+          "subtopic": "visual coordination of composed units",
+          "page_refs": "395, 396",
+          "pdf": "pdfs/JMTE/JMTE_Orrill_2012_Making.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 113,
+          "bibtex_key": "JRME_Izsak_2017_Preservice",
+          "year": 2017,
+          "description": "equal_share_decomposition_for_inverse_proportion",
+          "domain": "proportional",
+          "topic": "inverse_proportion",
+          "subtopic": "partitive_division_with_equal_rate_groups",
+          "page_refs": "331, 332",
+          "pdf": "pdfs/JRME/JRME_Izsak_2017_Preservice.pdf",
+          "cluster_score": 7.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44026,
+          "bibtex_key": "JRME_Izsak_2017_Preservice",
+          "year": 2017,
+          "description": "Preservice teachers assume a ratio of two quantities will be constant simply because the elements that define their additive relationship remain constant.",
+          "domain": "proportional",
+          "topic": "distinguishing proportional from nonproportional relationships",
+          "subtopic": "constant difference relationships",
+          "page_refs": "324, 325, 326",
+          "pdf": "pdfs/JRME/JRME_Izsak_2017_Preservice.pdf",
+          "cluster_score": 11.5
+        },
+        {
+          "id": 44041,
+          "bibtex_key": "JRME_Tomaz_2015_How",
+          "year": 2015,
+          "description": "Students struggle to set up the standard rule of three algorithm when a situated problem presents multiple ambiguous magnitudes, intermediate results, and units to choose from.",
+          "domain": "proportional",
+          "topic": "rule of three",
+          "subtopic": "identifying magnitudes and units",
+          "page_refs": "474, 476, 477",
+          "pdf": "pdfs/JRME/JRME_Tomaz_2015_How.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 44187,
+          "bibtex_key": "JRME_Lo_1997_Developing",
+          "year": 1997,
+          "description": "When asked to cover a rectangular area with smaller rectangular units, the student focuses inappropriately on linear perimeter measurements and outlines, failing to correctly model 2D spatial area.",
+          "domain": "measurement",
+          "topic": "area",
+          "subtopic": "covering with units",
+          "page_refs": "231, 232",
+          "pdf": "pdfs/JRME/JRME_Lo_1997_Developing.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 44207,
+          "bibtex_key": "JRME_Harel_1994_Invariance",
+          "year": 1994,
+          "description": "Children incorrectly believe that the relative strength of the taste of two samples from the same mixture depends on the relative volumes of the samples, reasoning that different sizes leave different amounts of room for ingredients.",
+          "domain": "ratio",
+          "topic": "intensive quantities",
+          "subtopic": "constancy of taste",
+          "page_refs": "333, 334, 335, 336",
+          "pdf": "pdfs/JRME/JRME_Harel_1994_Invariance.pdf",
+          "cluster_score": 3.0
+        },
+        {
+          "id": 44208,
+          "bibtex_key": "JRME_Harel_1994_Invariance",
+          "year": 1994,
+          "description": "Children believe that constancy of taste applies only to 'ingredients free' homogeneous liquids like water or Coke, and that liquids composed of multiple mixed ingredients will vary in taste depending on the sample volume.",
+          "domain": "ratio",
+          "topic": "intensive quantities",
+          "subtopic": "uniformity of liquids",
+          "page_refs": "337, 338, 341",
+          "pdf": "pdfs/JRME/JRME_Harel_1994_Invariance.pdf",
+          "cluster_score": 3.0
+        }
+      ]
+    },
+    {
+      "id": "signed_number_operations",
+      "title": "Signed Number Magnitude And Operations",
+      "domains": [
+        "integer",
+        "rational",
+        "algebraic"
+      ],
+      "automaton_states": [
+        "directed_magnitude",
+        "opposite_as_inverse",
+        "signed_operation_trace"
+      ],
+      "productive_core": "Signed numbers combine magnitude with direction relative to zero; operations can be interpreted as movement, change, distance, or additive inverse structure.",
+      "deformation": "Students treat the minus sign only as subtraction, compare by absolute value, or memorize sign rules without quantities or direction.",
+      "assessing_questions": [
+        "Where is zero in your representation?",
+        "Is the sign showing direction, an operation, or an opposite?",
+        "Does this answer make sense as a change or position?"
+      ],
+      "advancing_questions": [
+        "Use a number line or context to distinguish position from change.",
+        "Explain a sign rule with opposites or repeated addition before using it."
+      ],
+      "standards": [
+        "CCSS 6.NS.C",
+        "CCSS 7.NS.A"
+      ],
+      "im_anchors": [
+        "IM-G6-U7",
+        "IM-G7-U5"
+      ],
+      "strategy_count": 75,
+      "misconception_count": 143,
+      "strategy_samples": [
+        {
+          "id": 19,
+          "bibtex_key": "JMB_Even_1998_Factors",
+          "year": 1998,
+          "description": "switch_to_graphic_representation",
+          "domain": "algebraic",
+          "topic": "quadratic equations",
+          "subtopic": "number of real solutions",
+          "page_refs": "106, 107, 108",
+          "pdf": "pdfs/JMB/JMB_Even_1998_Factors.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 21,
+          "bibtex_key": "JMB_Even_1998_Factors",
+          "year": 1998,
+          "description": "pointwise_use_of_y_intercept",
+          "domain": "algebraic",
+          "topic": "quadratic functions",
+          "subtopic": "sign of parameter c from graph",
+          "page_refs": "112, 113, 114",
+          "pdf": "pdfs/JMB/JMB_Even_1998_Factors.pdf",
+          "cluster_score": 6.0
+        },
+        {
+          "id": 76,
+          "bibtex_key": "IJMEST_Olteanu_2012_Differences",
+          "year": 2012,
+          "description": "minus_sign_as_negative_arithmetic",
+          "domain": "integer",
+          "topic": "signed-number arithmetic",
+          "subtopic": "interpreting the minus sign",
+          "page_refs": "578",
+          "pdf": "pdfs/IJMEST/IJMEST_Olteanu_2012_Differences.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 116,
+          "bibtex_key": "MERJ_Hativa_1992_Good",
+          "year": 1992,
+          "description": "transferring_sequence_pattern_to_new_notation",
+          "domain": "integer",
+          "topic": "number sequence completion",
+          "subtopic": "negative-number arithmetic sequence",
+          "page_refs": "67",
+          "pdf": "pdfs/MERJ/MERJ_Hativa_1992_Good.pdf",
+          "cluster_score": 8.5
+        },
+        {
+          "id": 119,
+          "bibtex_key": "MERJ_Hativa_1992_Good",
+          "year": 1992,
+          "description": "means_end_analysis",
+          "domain": "algebraic",
+          "topic": "rules of equality",
+          "subtopic": "solving simple linear equations via test-each-option",
+          "page_refs": "70, 71",
+          "pdf": "pdfs/MERJ/MERJ_Hativa_1992_Good.pdf",
+          "cluster_score": 6.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 290,
+          "bibtex_key": null,
+          "year": 1997,
+          "description": "Poor math learners passively encode new concepts by assimilating into unextended whole-number schemas. Misapply whole-numbers rule to decimals (1.65>1.4 because 65>4) and signed numbers.",
+          "domain": "whole_number",
+          "topic": "number_comparison",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44086,
+          "bibtex_key": "JRME_Cai_1995_Cognitive",
+          "year": 1995,
+          "description": "Students incorrectly interpret a relational proposition in a word problem as an assignment proposition, resulting in a reversed algebraic relationship.",
+          "domain": "algebraic",
+          "topic": "word problem translation",
+          "subtopic": "relational propositions",
+          "page_refs": "61, 62",
+          "pdf": "pdfs/JRME/JRME_Cai_1995_Cognitive.pdf",
+          "cluster_score": 3.0
+        },
+        {
+          "id": 44112,
+          "bibtex_key": "JRME_Zaslavsky_1996_Inhibiting",
+          "year": 1996,
+          "description": "When checking the commutative property, subjects confuse the operation sign with the number sign when changing the order of the elements.",
+          "domain": "algebraic",
+          "topic": "binary operations",
+          "subtopic": "commutativity",
+          "page_refs": "73",
+          "pdf": "pdfs/JRME/JRME_Zaslavsky_1996_Inhibiting.pdf",
+          "cluster_score": 5.0
+        },
+        {
+          "id": 44113,
+          "bibtex_key": "JRME_Zaslavsky_1996_Inhibiting",
+          "year": 1996,
+          "description": "Subjects incorrectly verify that a defined operation is commutative by checking only one special instance where the property holds.",
+          "domain": "algebraic",
+          "topic": "binary operations",
+          "subtopic": "logical inferences",
+          "page_refs": "73",
+          "pdf": "pdfs/JRME/JRME_Zaslavsky_1996_Inhibiting.pdf",
+          "cluster_score": 3.0
+        },
+        {
+          "id": 44118,
+          "bibtex_key": "JRME_Pirie_1997_Chapter",
+          "year": 1997,
+          "description": "When solving linear equations, students may misapply the balancing rule by incorrectly subtracting a constant from both sides to eliminate a negative term.",
+          "domain": "algebraic",
+          "topic": "linear equations",
+          "subtopic": "balancing equations",
+          "page_refs": "91, 92",
+          "pdf": "pdfs/JRME/JRME_Pirie_1997_Chapter.pdf",
+          "cluster_score": 7.5
+        }
+      ]
+    },
+    {
+      "id": "expressions_equations_balance",
+      "title": "Expressions, Equations, And Balance",
+      "domains": [
+        "algebraic",
+        "whole_number",
+        "rational"
+      ],
+      "automaton_states": [
+        "equal_sign_relation",
+        "unknown_quantity",
+        "equation_balance_transform"
+      ],
+      "productive_core": "Expressions describe quantities and operations; equations assert equality between two expressions and can be transformed by preserving balance.",
+      "deformation": "The equal sign is read as 'write the answer,' variables are labels or prompts, and equation moves become symbol manipulation detached from quantity.",
+      "assessing_questions": [
+        "What quantity does the variable represent?",
+        "What does the equal sign mean here?",
+        "How does this move preserve equality?"
+      ],
+      "advancing_questions": [
+        "Describe each side of the equation in words or a diagram.",
+        "Check a proposed solution by substituting it into the original situation."
+      ],
+      "standards": [
+        "CCSS 6.EE",
+        "CCSS 7.EE",
+        "CCSS 8.EE"
+      ],
+      "im_anchors": [
+        "IM-G6-U6",
+        "IM-G7-U6",
+        "IM-G8-U4"
+      ],
+      "strategy_count": 85,
+      "misconception_count": 279,
+      "strategy_samples": [
+        {
+          "id": 2,
+          "bibtex_key": "ESM_Sajka_2003_Secondary",
+          "year": 2003,
+          "description": "zero_function_via_graph_overlap",
+          "domain": "algebraic",
+          "topic": "functional equation",
+          "subtopic": "constant zero function as solution",
+          "page_refs": "234, 252",
+          "pdf": "pdfs/ESM/ESM_Sajka_2003_Secondary.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 71,
+          "bibtex_key": "IJMEST_Olteanu_2012_Differences",
+          "year": 2012,
+          "description": "solve_via_pq_formula_direct",
+          "domain": "algebraic",
+          "topic": "second-degree equations",
+          "subtopic": "p-q formula application",
+          "page_refs": "578, 579",
+          "pdf": "pdfs/IJMEST/IJMEST_Olteanu_2012_Differences.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 72,
+          "bibtex_key": "IJMEST_Olteanu_2012_Differences",
+          "year": 2012,
+          "description": "rewrite_then_apply_pq_formula",
+          "domain": "algebraic",
+          "topic": "second-degree equations",
+          "subtopic": "equivalent equation rewriting",
+          "page_refs": "578, 579, 580",
+          "pdf": "pdfs/IJMEST/IJMEST_Olteanu_2012_Differences.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 73,
+          "bibtex_key": "IJMEST_Olteanu_2012_Differences",
+          "year": 2012,
+          "description": "regroup_constants_then_rewrite",
+          "domain": "algebraic",
+          "topic": "second-degree equations",
+          "subtopic": "constant-on-both-sides rewriting",
+          "page_refs": "579, 580, 581",
+          "pdf": "pdfs/IJMEST/IJMEST_Olteanu_2012_Differences.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 74,
+          "bibtex_key": "IJMEST_Olteanu_2012_Differences",
+          "year": 2012,
+          "description": "completing_the_square",
+          "domain": "algebraic",
+          "topic": "second-degree equations",
+          "subtopic": "completing the square",
+          "page_refs": "581, 582",
+          "pdf": "pdfs/IJMEST/IJMEST_Olteanu_2012_Differences.pdf",
+          "cluster_score": 4.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44115,
+          "bibtex_key": "JRME_Zaslavsky_1996_Inhibiting",
+          "year": 1996,
+          "description": "Subjects construct an ill-defined or inappropriate operation, such as a unary operation, when asked to generate a binary operation.",
+          "domain": "algebraic",
+          "topic": "binary operations",
+          "subtopic": "unary versus binary operations",
+          "page_refs": "73",
+          "pdf": "pdfs/JRME/JRME_Zaslavsky_1996_Inhibiting.pdf",
+          "cluster_score": 3.0
+        },
+        {
+          "id": 44161,
+          "bibtex_key": "JRME_Toom_1993_Russian",
+          "year": 1993,
+          "description": "Students inappropriately treat algebraic variables as direct labels or names for people rather than as representations of quantitative parameters like time or rate.",
+          "domain": "algebraic",
+          "topic": "variables",
+          "subtopic": "word problem translation",
+          "page_refs": "134",
+          "pdf": "pdfs/JRME/JRME_Toom_1993_Russian.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44206,
+          "bibtex_key": "JRME_Brenner_1999_Cross-national",
+          "year": 1999,
+          "description": "Students may broadly reject algebraic notation, such as the use of variables or parentheses, as an appropriate way to represent arithmetic word problems.",
+          "domain": "algebraic",
+          "topic": "algebraic notation",
+          "subtopic": "variables and parentheses",
+          "page_refs": null,
+          "pdf": "pdfs/JRME/JRME_Brenner_1999_Cross-national.pdf",
+          "cluster_score": 3.5
+        },
+        {
+          "id": 44244,
+          "bibtex_key": "JRME_Yerushalmy_2006_Slower",
+          "year": 2006,
+          "description": "Students make errors in symbolic manipulation when attempting to solve a linear equation with fractions, incorrectly adding a term instead of subtracting it.",
+          "domain": "algebraic",
+          "topic": "linear equations",
+          "subtopic": "symbolic manipulation",
+          "page_refs": "371, 372, 373",
+          "pdf": "pdfs/JRME/JRME_Yerushalmy_2006_Slower.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 44246,
+          "bibtex_key": "JRME_Yerushalmy_2006_Slower",
+          "year": 2006,
+          "description": "Students struggle to formulate and manipulate algebraic inequalities or equations to model the relationship between two changing quantities, often relying on poorly remembered rules of thumb.",
+          "domain": "algebraic",
+          "topic": "formulating equations",
+          "subtopic": "word problems",
+          "page_refs": "373, 374, 383, 385",
+          "pdf": "pdfs/JRME/JRME_Yerushalmy_2006_Slower.pdf",
+          "cluster_score": 5.5
+        }
+      ]
+    },
+    {
+      "id": "patterns_functions_linear_relationships",
+      "title": "Patterns, Functions, And Linear Relationships",
+      "domains": [
+        "algebraic",
+        "proportional",
+        "statistics"
+      ],
+      "automaton_states": [
+        "recursive_pattern",
+        "covariation",
+        "function_rule",
+        "linear_rate_of_change"
+      ],
+      "productive_core": "Functional reasoning coordinates changing quantities, distinguishes recursive from explicit structure, and represents constant rate of change across tables, graphs, rules, and contexts.",
+      "deformation": "Students extend visual patterns additively when multiplicative structure is needed, treat graphs as pictures, or confuse input-output rules with recursive next-step rules.",
+      "assessing_questions": [
+        "What changes? What stays constant?",
+        "How can you predict a far-away term without building every step?",
+        "Where is the rate of change in the table, graph, rule, and story?"
+      ],
+      "advancing_questions": [
+        "Make a table and look for equal changes.",
+        "Write both a recursive rule and an explicit rule, then compare what each can answer."
+      ],
+      "standards": [
+        "CCSS 4.OA.C.5",
+        "CCSS 5.OA.B",
+        "CCSS 6.EE.C",
+        "CCSS 7.RP.A.2",
+        "CCSS 8.F"
+      ],
+      "im_anchors": [
+        "IM-G4-U8",
+        "IM-G5-U7",
+        "IM-G6-U6",
+        "IM-G7-U2",
+        "IM-G8-U3",
+        "IM-G8-U5"
+      ],
+      "strategy_count": 123,
+      "misconception_count": 210,
+      "strategy_samples": [
+        {
+          "id": 1,
+          "bibtex_key": "ESM_Sajka_2003_Secondary",
+          "year": 2003,
+          "description": "examining_examples_of_linear_functions",
+          "domain": "algebraic",
+          "topic": "functional equation",
+          "subtopic": "Cauchy additive functional equation",
+          "page_refs": "234",
+          "pdf": "pdfs/ESM/ESM_Sajka_2003_Secondary.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 3,
+          "bibtex_key": "ESM_Sajka_2003_Secondary",
+          "year": 2003,
+          "description": "evaluate_function_as_computational_process",
+          "domain": "algebraic",
+          "topic": "function evaluation",
+          "subtopic": "function as computational process",
+          "page_refs": "244, 245, 251, 252",
+          "pdf": "pdfs/ESM/ESM_Sajka_2003_Secondary.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 20,
+          "bibtex_key": "JMB_Even_1998_Factors",
+          "year": 1998,
+          "description": "global_analysis_of_graph_transformation",
+          "domain": "algebraic",
+          "topic": "function transformations",
+          "subtopic": "from graphic to symbolic representation of trigonometric functions",
+          "page_refs": "109, 110, 111",
+          "pdf": "pdfs/JMB/JMB_Even_1998_Factors.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 22,
+          "bibtex_key": "JMB_Even_1998_Factors",
+          "year": 1998,
+          "description": "pointwise_plot_to_translate_graph",
+          "domain": "algebraic",
+          "topic": "trigonometric function transformation",
+          "subtopic": "horizontal translation of sin x to sin(x+1)",
+          "page_refs": "114, 115",
+          "pdf": "pdfs/JMB/JMB_Even_1998_Factors.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 122,
+          "bibtex_key": "MERJ_Hativa_1992_Good",
+          "year": 1992,
+          "description": "using_heuristics_to_shortcut_search",
+          "domain": "algebraic",
+          "topic": "exponent rules",
+          "subtopic": "subtracting exponents in division",
+          "page_refs": "73, 74",
+          "pdf": "pdfs/MERJ/MERJ_Hativa_1992_Good.pdf",
+          "cluster_score": 3.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44022,
+          "bibtex_key": "JMB_Tillema_2013_Power",
+          "year": 2013,
+          "description": "Students have a tendency to over-rely on linear meanings of multiplication in situations where a power meaning is warranted due to the prevalence of linear problems in curricula.",
+          "domain": "algebraic",
+          "topic": "polynomials",
+          "subtopic": "squaring",
+          "page_refs": "331-332",
+          "pdf": "pdfs/JMB/JMB_Tillema_2013_Power.pdf",
+          "cluster_score": 3.0
+        },
+        {
+          "id": 44120,
+          "bibtex_key": "JRME_Thompson_1996_Talking",
+          "year": 1996,
+          "description": "The student imagines motion as entailing distance traveled but not simultaneously entailing an amount of time, viewing time as something to be determined only after the fact.",
+          "domain": "proportional",
+          "topic": "speed and motion",
+          "subtopic": "covariation of distance and time",
+          "page_refs": "5, 7, 8",
+          "pdf": "pdfs/JRME/JRME_Thompson_1996_Talking.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 44123,
+          "bibtex_key": "JRME_Confrey_1995_Splitting",
+          "year": 1995,
+          "description": "Traditional curriculum approaches that immediately introduce the base 'e' for continuous exponential situations obscure the underlying multiplicative unit, causing students to rely on rote algorithmic manipulation rather than conceptual understanding.",
+          "domain": "algebraic",
+          "topic": "exponential functions",
+          "subtopic": "continuous growth and decay",
+          "page_refs": "83",
+          "pdf": "pdfs/JRME/JRME_Confrey_1995_Splitting.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 44124,
+          "bibtex_key": "JRME_Confrey_1995_Splitting",
+          "year": 1995,
+          "description": "Students experience a direct confrontation between concepts of rate in exponential functions, often confusing a constant multiplicative rate with a varying, increasing additive rate when observing data.",
+          "domain": "algebraic",
+          "topic": "exponential functions",
+          "subtopic": "rate of change",
+          "page_refs": "78",
+          "pdf": "pdfs/JRME/JRME_Confrey_1995_Splitting.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 44181,
+          "bibtex_key": "JRME_Yerushalmy_1997_Designing",
+          "year": 1997,
+          "description": "Students expect the rate of change in a two-variable linear function to be constant regardless of the combination of inputs, experiencing conflict when uncoordinated changes in the independent variables produce varying differences in the dependent variable.",
+          "domain": "algebraic",
+          "topic": "multivariable functions",
+          "subtopic": "rate of change",
+          "page_refs": null,
+          "pdf": "pdfs/JRME/JRME_Yerushalmy_1997_Designing.pdf",
+          "cluster_score": 10.5
+        }
+      ]
+    },
+    {
+      "id": "data_statistics_probability",
+      "title": "Data, Statistics, And Probability",
+      "domains": [
+        "statistics",
+        "probability",
+        "measurement",
+        "whole_number"
+      ],
+      "automaton_states": [
+        "data_as_distribution",
+        "measure_variability",
+        "sample_inference",
+        "probability_long_run"
+      ],
+      "productive_core": "Data work shifts from individual values to distributions, variability, sample inference, and probability as a measure of long-run chance.",
+      "deformation": "Students read graphs as pictures, ignore scale, average without attending to distribution, or treat probability as short-run certainty.",
+      "assessing_questions": [
+        "What does one mark or bar represent?",
+        "What does the distribution show that a single value does not?",
+        "How likely is the event, and what evidence supports that?"
+      ],
+      "advancing_questions": [
+        "Compare two displays using center and variability.",
+        "Run or imagine repeated trials and connect the result to a probability."
+      ],
+      "standards": [
+        "CCSS 2.MD.D",
+        "CCSS 3.MD.B",
+        "CCSS 6.SP",
+        "CCSS 7.SP"
+      ],
+      "im_anchors": [
+        "IM-G2-U1",
+        "IM-G3-U1",
+        "IM-G6-U8",
+        "IM-G7-U8"
+      ],
+      "strategy_count": 71,
+      "misconception_count": 199,
+      "strategy_samples": [
+        {
+          "id": 67,
+          "bibtex_key": "ESM_Konold_2015_Data",
+          "year": 2015,
+          "description": "aggregate_perspective_summary",
+          "domain": "statistics",
+          "topic": "distribution interpretation",
+          "subtopic": "bivariate trend with variability",
+          "page_refs": "319",
+          "pdf": "pdfs/ESM/ESM_Konold_2015_Data.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 68,
+          "bibtex_key": "ESM_Konold_2015_Data",
+          "year": 2015,
+          "description": "modal_clump_aggregate_summary",
+          "domain": "statistics",
+          "topic": "describing a distribution",
+          "subtopic": "modal clump as proportion of whole",
+          "page_refs": "320",
+          "pdf": "pdfs/ESM/ESM_Konold_2015_Data.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 69,
+          "bibtex_key": "ESM_Konold_2015_Data",
+          "year": 2015,
+          "description": "case_value_extreme_identification",
+          "domain": "statistics",
+          "topic": "summarizing data",
+          "subtopic": "extreme-value identification on an ordered plot",
+          "page_refs": "311, 312",
+          "pdf": "pdfs/ESM/ESM_Konold_2015_Data.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 70,
+          "bibtex_key": "ESM_Konold_2015_Data",
+          "year": 2015,
+          "description": "classifier_frequency_table_summary",
+          "domain": "statistics",
+          "topic": "categorical data summary",
+          "subtopic": "frequency table reporting",
+          "page_refs": "315, 316",
+          "pdf": "pdfs/ESM/ESM_Konold_2015_Data.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 202,
+          "bibtex_key": "JMB_Brousseau_2002_Experiment",
+          "year": 2002,
+          "description": "list_drawings_on_board",
+          "domain": "probability",
+          "topic": "sampling",
+          "subtopic": "recording draws",
+          "page_refs": "366",
+          "pdf": "pdfs/JMB/JMB_Brousseau_2002_Experiment.pdf",
+          "cluster_score": 3.0
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44053,
+          "bibtex_key": "JRME_Strauss_1988_Development",
+          "year": 1988,
+          "description": "Children incorrectly believe that the average of a set of values can be greater than the maximum value in the set, reasoning that pooling the individual amounts creates a large total that can be distributed to yield a higher amount for everyone.",
+          "domain": "statistics",
+          "topic": "arithmetic average",
+          "subtopic": "location between extremes",
+          "page_refs": "33, 40",
+          "pdf": "pdfs/JRME/JRME_Strauss_1988_Development.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44054,
+          "bibtex_key": "JRME_Strauss_1988_Development",
+          "year": 1988,
+          "description": "Children interpret the representative value (average) of a distribution as a categorical label for the group, often selecting the largest value in the set for social reasons rather than mathematical representativeness.",
+          "domain": "statistics",
+          "topic": "arithmetic average",
+          "subtopic": "representativeness",
+          "page_refs": "44, 45",
+          "pdf": "pdfs/JRME/JRME_Strauss_1988_Development.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 44091,
+          "bibtex_key": "JRME_Cai_1995_Cognitive",
+          "year": 1995,
+          "description": "Students misapply the average concept or formula by improperly incorporating the target average into the sum, or dividing by an incorrect number of terms.",
+          "domain": "statistics",
+          "topic": "average",
+          "subtopic": "missing value problems",
+          "page_refs": "85, 86",
+          "pdf": "pdfs/JRME/JRME_Cai_1995_Cognitive.pdf",
+          "cluster_score": 8.5
+        },
+        {
+          "id": 44092,
+          "bibtex_key": "JRME_Cai_1995_Cognitive",
+          "year": 1995,
+          "description": "Students employing a trial-and-error strategy prematurely halt their trials without successfully meeting the stated constraints, violating the stopping rule.",
+          "domain": "statistics",
+          "topic": "average",
+          "subtopic": "trial and error",
+          "page_refs": "85, 86",
+          "pdf": "pdfs/JRME/JRME_Cai_1995_Cognitive.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44093,
+          "bibtex_key": "JRME_English_2016_Development",
+          "year": 2016,
+          "description": "Students assume that tossing two coins results in three equally likely outcomes (two heads, two tails, or one of each) and incorrectly assign a probability of 1/3 or equal chance to each.",
+          "domain": "probability",
+          "topic": "theoretical probability",
+          "subtopic": "sample space for two coins",
+          "page_refs": "32, 35, 41, 48, 49",
+          "pdf": "pdfs/JRME/JRME_English_2016_Development.pdf",
+          "cluster_score": 9.5
+        }
+      ]
+    }
+  ],
+  "seeds": [
+    {
+      "band": "K",
+      "focus": "Counting, cardinality, comparison, early addition/subtraction",
+      "clusters": [
+        "count_sequence_cardinality",
+        "quantity_comparison_difference",
+        "additive_situation_structures"
+      ],
+      "standards": [
+        "K.CC",
+        "K.OA",
+        "K.NBT"
+      ],
+      "im": [
+        "IM-K-U1",
+        "IM-K-U4",
+        "IM-K-U7"
+      ],
+      "monitor_for": "Counting words, objects, and totals not yet coordinated."
+    },
+    {
+      "band": "1",
+      "focus": "Add/subtract situations, fact strategies, two-digit place value",
+      "clusters": [
+        "additive_situation_structures",
+        "additive_strategy_fluency",
+        "base_ten_bundling_place_value"
+      ],
+      "standards": [
+        "1.OA",
+        "1.NBT"
+      ],
+      "im": [
+        "IM-G1-U1",
+        "IM-G1-U3",
+        "IM-G1-U4"
+      ],
+      "monitor_for": "Operation choice from keywords rather than situation structure."
+    },
+    {
+      "band": "2",
+      "focus": "Fluency within 20, add/subtract within 1,000, measurement and data",
+      "clusters": [
+        "additive_strategy_fluency",
+        "multidigit_add_sub_algorithms",
+        "data_statistics_probability"
+      ],
+      "standards": [
+        "2.OA",
+        "2.NBT",
+        "2.MD"
+      ],
+      "im": [
+        "IM-G2-U1",
+        "IM-G2-U3",
+        "IM-G2-U5"
+      ],
+      "monitor_for": "Regrouping as digit motion rather than unit exchange."
+    },
+    {
+      "band": "3",
+      "focus": "Multiplication/division, area, fractions as numbers",
+      "clusters": [
+        "multiplication_equal_groups_arrays",
+        "division_sharing_measurement",
+        "fraction_unit_referent_operations"
+      ],
+      "standards": [
+        "3.OA",
+        "3.MD",
+        "3.NF"
+      ],
+      "im": [
+        "IM-G3-U1",
+        "IM-G3-U2",
+        "IM-G3-U4",
+        "IM-G3-U5"
+      ],
+      "monitor_for": "Equal groups, arrays, and fractional units not held as units."
+    },
+    {
+      "band": "4",
+      "focus": "Multi-digit operations, factors, fraction equivalence and operations",
+      "clusters": [
+        "multidigit_add_sub_algorithms",
+        "multiplication_equal_groups_arrays",
+        "multiplicative_comparison_scaling",
+        "fraction_unit_referent_operations"
+      ],
+      "standards": [
+        "4.OA",
+        "4.NBT",
+        "4.NF"
+      ],
+      "im": [
+        "IM-G4-U2",
+        "IM-G4-U3",
+        "IM-G4-U4",
+        "IM-G4-U5",
+        "IM-G4-U6"
+      ],
+      "monitor_for": "Algorithms compressed before place-value or unit-fraction meaning is stable."
+    },
+    {
+      "band": "5",
+      "focus": "Decimal operations, fraction multiplication/division beginnings, volume, coordinate grid",
+      "clusters": [
+        "decimal_place_value_operations",
+        "fraction_unit_referent_operations",
+        "division_sharing_measurement",
+        "patterns_functions_linear_relationships"
+      ],
+      "standards": [
+        "5.NBT",
+        "5.NF",
+        "5.MD",
+        "5.G"
+      ],
+      "im": [
+        "IM-G5-U1",
+        "IM-G5-U2",
+        "IM-G5-U3",
+        "IM-G5-U4",
+        "IM-G5-U7"
+      ],
+      "monitor_for": "Students use whole-number expectations for decimals and fractions."
+    },
+    {
+      "band": "6",
+      "focus": "Ratios, unit rates, division by fractions, expressions/equations, integers, statistics",
+      "clusters": [
+        "ratio_rate_percent_proportionality",
+        "division_sharing_measurement",
+        "expressions_equations_balance",
+        "signed_number_operations",
+        "data_statistics_probability"
+      ],
+      "standards": [
+        "6.RP",
+        "6.NS",
+        "6.EE",
+        "6.SP"
+      ],
+      "im": [
+        "IM-G6-U2",
+        "IM-G6-U3",
+        "IM-G6-U4",
+        "IM-G6-U6",
+        "IM-G6-U7",
+        "IM-G6-U8"
+      ],
+      "monitor_for": "Additive reasoning persists where composed ratio units are needed."
+    },
+    {
+      "band": "7",
+      "focus": "Scale, proportional relationships, rational arithmetic, equations, probability",
+      "clusters": [
+        "ratio_rate_percent_proportionality",
+        "signed_number_operations",
+        "expressions_equations_balance",
+        "data_statistics_probability"
+      ],
+      "standards": [
+        "7.RP",
+        "7.NS",
+        "7.EE",
+        "7.SP"
+      ],
+      "im": [
+        "IM-G7-U1",
+        "IM-G7-U2",
+        "IM-G7-U4",
+        "IM-G7-U5",
+        "IM-G7-U8"
+      ],
+      "monitor_for": "Students mix signed-number, proportional, and equation rules without quantity checks."
+    },
+    {
+      "band": "8",
+      "focus": "Linear relationships, functions, exponents, systems, Pythagorean theorem",
+      "clusters": [
+        "patterns_functions_linear_relationships",
+        "expressions_equations_balance",
+        "signed_number_operations",
+        "multiplicative_comparison_scaling"
+      ],
+      "standards": [
+        "8.EE",
+        "8.F",
+        "8.G",
+        "8.SP"
+      ],
+      "im": [
+        "IM-G8-U3",
+        "IM-G8-U4",
+        "IM-G8-U5",
+        "IM-G8-U6",
+        "IM-G8-U8"
+      ],
+      "monitor_for": "Graphs, rules, and equations are not coordinated as representations of one relationship."
+    }
+  ]
+}

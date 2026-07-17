@@ -1,0 +1,2409 @@
+{
+  "generated_at": "2026-07-07T08:41:54",
+  "title": "Geometry Monitoring-Chart Clusters",
+  "db_path": "research_corpus/research.db",
+  "strategy_rows": 1784,
+  "misconception_rows": 2378,
+  "method": "transparent keyword scoring over local strategy_instances and error_instances; domain-consistent rows are preferred and cross-domain rows require a strong textual match",
+  "clusters": [
+    {
+      "id": "shape_attributes_informal",
+      "title": "Shape Recognition And Informal Attributes",
+      "domains": [
+        "geometric"
+      ],
+      "automaton_states": [
+        "perceptual_shape_match",
+        "attribute_noticing"
+      ],
+      "productive_core": "Young students recognize, name, compare, and describe shapes through visible attributes before those attributes are fully formalized.",
+      "deformation": "Prototype images dominate: a square is not a square when tilted, or a long thin rectangle is rejected because it does not match the familiar prototype.",
+      "assessing_questions": [
+        "What do you notice about the sides, corners, or faces?",
+        "Would this still be the same shape if we turned it?",
+        "Which attributes matter for the name?"
+      ],
+      "advancing_questions": [
+        "Sort examples and non-examples, then name the sorting rule.",
+        "Draw a different-looking example of the same shape."
+      ],
+      "standards": [
+        "Indiana K.G.1",
+        "CCSS K.G.A"
+      ],
+      "im_anchors": [
+        "IM-K-U2",
+        "IM-K-U3",
+        "IM-K-U7"
+      ],
+      "strategy_count": 7,
+      "misconception_count": 6,
+      "strategy_samples": [
+        {
+          "id": 154,
+          "bibtex_key": "MTL_Lesh_2003_Problem",
+          "year": 2003,
+          "description": "tinker_to_make_corner_square_then_fix_remaining_sides",
+          "domain": "geometric",
+          "topic": "projective geometry",
+          "subtopic": "iterative shadow adjustment",
+          "page_refs": "182-184",
+          "pdf": "pdfs/MTL/MTL_Lesh_2003_Problem.pdf",
+          "cluster_score": 6.0
+        },
+        {
+          "id": 218,
+          "bibtex_key": "JMB_Clements_2000_From",
+          "year": 2000,
+          "description": "running_procedure_in_head",
+          "domain": "geometric",
+          "topic": "shape classification",
+          "subtopic": "rectangle definition via Logo procedure",
+          "page_refs": "20, 21",
+          "pdf": "pdfs/JMB/JMB_Clements_2000_From.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 693,
+          "bibtex_key": "ESM_Schalkwijk_2000_Learning",
+          "year": 2000,
+          "description": "ternary_membership_test",
+          "domain": "geometric",
+          "topic": "Cantor set membership",
+          "subtopic": "ternary addresses",
+          "page_refs": "306, 307",
+          "pdf": "pdfs/ESM/ESM_Schalkwijk_2000_Learning.pdf",
+          "cluster_score": 4.0
+        },
+        {
+          "id": 779,
+          "bibtex_key": "ESM_Tsamir_2007_When",
+          "year": 2007,
+          "description": "what_if_not_reversal",
+          "domain": "geometric",
+          "topic": "polygon side-angle relations",
+          "subtopic": "equilateral triangle converse",
+          "page_refs": "260",
+          "pdf": "pdfs/ESM/ESM_Tsamir_2007_When.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 780,
+          "bibtex_key": "ESM_Tsamir_2007_When",
+          "year": 2007,
+          "description": "what_if_not_scope_change",
+          "domain": "geometric",
+          "topic": "triangle congruence",
+          "subtopic": "side-side-side comparison",
+          "page_refs": "260",
+          "pdf": "pdfs/ESM/ESM_Tsamir_2007_When.pdf",
+          "cluster_score": 5.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44565,
+          "bibtex_key": "ZDM_Duval_2014_Commentary",
+          "year": 2014,
+          "description": "There is a widespread, misleading assumption that geometric understanding naturally grows from concrete perceptual experiences, masking the fact that true mathematical visualization requires dimensional deconstruction which often contradicts immediate perception.",
+          "domain": "geometric",
+          "topic": "Visualization",
+          "subtopic": "Dimensional deconstruction",
+          "page_refs": "165, 166, 167",
+          "pdf": "pdfs/ZDM/ZDM_Duval_2014_Commentary.pdf",
+          "cluster_score": 5.0
+        },
+        {
+          "id": 44886,
+          "bibtex_key": "JMB_Clements_2000_From",
+          "year": 2000,
+          "description": "A student incorrectly believed he could not draw a parallelogram using a generalized rectangle procedure because the shape's lines were \"slanted,\" failing to conceptually link the visual slant to the intrinsic geometric properties and angles defined in the Logo code.",
+          "domain": "geometric",
+          "topic": "quadrilaterals",
+          "subtopic": "rectangles and parallelograms",
+          "page_refs": "19-20",
+          "pdf": "pdfs/JMB/JMB_Clements_2000_From.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 45007,
+          "bibtex_key": "JMB_Walcott_2009_Making",
+          "year": 2009,
+          "description": "Students incorrectly believed that a parallelogram is a type of rectangle, incorrectly manipulating the angles of their dynamic figural concept of a rectangle to produce a parallelogram rather than recognizing class inclusion in the other direction.",
+          "domain": "geometric",
+          "topic": "shape classification",
+          "subtopic": "rectangles and parallelograms",
+          "page_refs": "38",
+          "pdf": "pdfs/JMB/JMB_Walcott_2009_Making.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 45008,
+          "bibtex_key": "JMB_Walcott_2009_Making",
+          "year": 2009,
+          "description": "Students held inflexible visual prototypes that prevented them from understanding class inclusion, viewing rectangles and parallelograms as entirely separate and disjoint classes rather than recognizing a rectangle as a special parallelogram.",
+          "domain": "geometric",
+          "topic": "shape classification",
+          "subtopic": "class inclusion",
+          "page_refs": "37-38",
+          "pdf": "pdfs/JMB/JMB_Walcott_2009_Making.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 46484,
+          "bibtex_key": "IJMEST_Horzum_2018_Prospective",
+          "year": 2018,
+          "description": "Prospective teachers display a 'figure-dependent base' image, interpreting the base as any structure (corner, edge, side, or face) that holds the geometric figure up or keeps it balanced.",
+          "domain": "geometric",
+          "topic": "geometric solids and figures",
+          "subtopic": "base concept",
+          "page_refs": null,
+          "pdf": "pdfs/IJMEST/IJMEST_Horzum_2018_Prospective.pdf",
+          "cluster_score": 6.0
+        }
+      ]
+    },
+    {
+      "id": "defining_attributes_classification",
+      "title": "Defining Attributes And Classification",
+      "domains": [
+        "geometric"
+      ],
+      "automaton_states": [
+        "attribute_filter",
+        "class_inclusion",
+        "definition_check"
+      ],
+      "productive_core": "Shapes are classified by defining attributes, and categories can include subcategories when the defining attributes are preserved.",
+      "deformation": "Students use non-defining features like size, orientation, or color, or treat categories as mutually exclusive when one class is included in another.",
+      "assessing_questions": [
+        "Which attributes are required for this category?",
+        "Which features can change while the shape stays in the category?",
+        "Can a shape belong to more than one category?"
+      ],
+      "advancing_questions": [
+        "Use a definition to test borderline examples.",
+        "Make a hierarchy diagram showing which categories include others."
+      ],
+      "standards": [
+        "Indiana 1.G.1",
+        "Indiana 3.G.1",
+        "CCSS 1.G.A.1",
+        "CCSS 3.G.A.1"
+      ],
+      "im_anchors": [
+        "IM-G1-U7",
+        "IM-G3-U7",
+        "IM-G5-U7"
+      ],
+      "strategy_count": 3,
+      "misconception_count": 11,
+      "strategy_samples": [
+        {
+          "id": 784,
+          "bibtex_key": "ESM_Tsamir_2007_When",
+          "year": 2007,
+          "description": "rectangle_isosceles_refutations",
+          "domain": "geometric",
+          "topic": "polygon counterexamples",
+          "subtopic": "rectangle with isosceles triangles",
+          "page_refs": "269",
+          "pdf": "pdfs/ESM/ESM_Tsamir_2007_When.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 807,
+          "bibtex_key": "IJMEST_Guven_2010_Characterizing",
+          "year": 2010,
+          "description": "spherical_drawability_classification",
+          "domain": "geometric",
+          "topic": "spherical quadrilaterals",
+          "subtopic": "drawability of plane figures",
+          "page_refs": "1001, 1004",
+          "pdf": "pdfs/IJMEST/IJMEST_Guven_2010_Characterizing.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 1365,
+          "bibtex_key": "JMB_Yanik_2009_Understanding",
+          "year": 2009,
+          "description": "represent_composite_translation",
+          "domain": "geometric",
+          "topic": "translation",
+          "subtopic": "function notation for composite translations",
+          "page_refs": "54",
+          "pdf": "pdfs/JMB/JMB_Yanik_2009_Understanding.pdf",
+          "cluster_score": 3.0
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44314,
+          "bibtex_key": "JRME_Mayberry_1983_Van",
+          "year": 1983,
+          "description": "Students fail to recognize geometric figures such as squares when they are presented in a nonstandard orientation.",
+          "domain": "geometric",
+          "topic": "squares",
+          "subtopic": "figure recognition",
+          "page_refs": "64, 65",
+          "pdf": "pdfs/JRME/JRME_Mayberry_1983_Van.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 44600,
+          "bibtex_key": "ZDM_Ng_2012_Using",
+          "year": 2012,
+          "description": "Teachers hold an exclusive, partitional concept image of quadrilaterals rather than an inclusive, hierarchical one, preventing them from recognizing subset relationships among shapes.",
+          "domain": "geometric",
+          "topic": "Quadrilaterals",
+          "subtopic": "Classification and definitions",
+          "page_refs": "406, 409",
+          "pdf": "pdfs/ZDM/ZDM_Ng_2012_Using.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 45658,
+          "bibtex_key": "ESM_DHondt_1978_Quelques",
+          "year": 1978,
+          "description": "Students confuse the definitions and visual properties of parallelograms and trapezoids.",
+          "domain": "geometric",
+          "topic": "Quadrilaterals",
+          "subtopic": "Parallelograms and trapezoids",
+          "page_refs": "444",
+          "pdf": "pdfs/ESM/ESM_DHondt_1978_Quelques.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 45667,
+          "bibtex_key": "ESM_Fischbein_1999_Intuitions",
+          "year": 1999,
+          "description": "Students reject rectangles, squares, or rhombuses as parallelograms because their visual structure differs from the prototypical oblique parallelogram shape.",
+          "domain": "geometric",
+          "topic": "Quadrilaterals",
+          "subtopic": "Parallelograms",
+          "page_refs": "25",
+          "pdf": "pdfs/ESM/ESM_Fischbein_1999_Intuitions.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 46434,
+          "bibtex_key": "IJMEST_Prieto_2014_Designing",
+          "year": 2014,
+          "description": "Students over-generalize or omit necessary conditions when defining squares, often assuming orientation properties like horizontal or vertical lines while forgetting to specify equal side lengths.",
+          "domain": "geometric",
+          "topic": "Quadrilaterals",
+          "subtopic": "Squares",
+          "page_refs": "404, 409",
+          "pdf": "pdfs/IJMEST/IJMEST_Prieto_2014_Designing.pdf",
+          "cluster_score": 6.5
+        }
+      ]
+    },
+    {
+      "id": "compose_decompose_shapes",
+      "title": "Compose And Decompose Shapes",
+      "domains": [
+        "geometric",
+        "measurement"
+      ],
+      "automaton_states": [
+        "shape_composition",
+        "part_whole_spatial_recomposition"
+      ],
+      "productive_core": "Shapes can be composed into larger shapes and decomposed into smaller shapes while preserving spatial relations and area.",
+      "deformation": "Students see pieces as separate objects only, lose track of the whole, or assume only congruent pieces can compose a target shape.",
+      "assessing_questions": [
+        "What larger shape do these pieces make?",
+        "Where do the pieces meet without gaps or overlaps?",
+        "What stays the same when the shape is decomposed?"
+      ],
+      "advancing_questions": [
+        "Recompose the same pieces into a different shape.",
+        "Trace the boundary of the whole after placing the parts."
+      ],
+      "standards": [
+        "Indiana 1.G.2",
+        "Indiana 2.G.2",
+        "CCSS 1.G.A.2",
+        "CCSS 2.G.A.1"
+      ],
+      "im_anchors": [
+        "IM-G1-U7",
+        "IM-G2-U8",
+        "IM-G3-U2"
+      ],
+      "strategy_count": 21,
+      "misconception_count": 10,
+      "strategy_samples": [
+        {
+          "id": 150,
+          "bibtex_key": "MTL_Lesh_2003_Problem",
+          "year": 2003,
+          "description": "scale_one_piece_then_derive_others_by_part_part",
+          "domain": "geometric",
+          "topic": "scaling with part-part geometric relations",
+          "subtopic": "shared-component scaling",
+          "page_refs": "171-172",
+          "pdf": "pdfs/MTL/MTL_Lesh_2003_Problem.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 152,
+          "bibtex_key": "MTL_Lesh_2003_Problem",
+          "year": 2003,
+          "description": "two_stage_paper_folding_from_big_square",
+          "domain": "geometric",
+          "topic": "scaling via paper folding",
+          "subtopic": "symmetry-based decomposition of a whole",
+          "page_refs": "172-174",
+          "pdf": "pdfs/MTL/MTL_Lesh_2003_Problem.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 351,
+          "bibtex_key": "ESM_Baturo_1996_Student",
+          "year": 1996,
+          "description": "t_shape_partitioning",
+          "domain": "measurement",
+          "topic": "area comparison",
+          "subtopic": "partitioning composite shapes",
+          "page_refs": "246, 247, 251, 252",
+          "pdf": "pdfs/ESM/ESM_Baturo_1996_Student.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 499,
+          "bibtex_key": "ESM_HeydMetzuyanim_2013_Co-construction",
+          "year": 2013,
+          "description": "supporter_counting",
+          "domain": "geometric",
+          "topic": "pattern counting",
+          "subtopic": "matchstick ladders",
+          "page_refs": "354, 355, 357",
+          "pdf": "pdfs/ESM/ESM_HeydMetzuyanim_2013_Co-construction.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 952,
+          "bibtex_key": "JMB_Boyce_2017_Dylans",
+          "year": 2017,
+          "description": "copy_halve_recombine_strip",
+          "domain": "measurement",
+          "topic": "linear measurement composition",
+          "subtopic": "making seven inches from four inches",
+          "page_refs": "128",
+          "pdf": "pdfs/JMB/JMB_Boyce_2017_Dylans.pdf",
+          "cluster_score": 4.0
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44342,
+          "bibtex_key": "JRME_Verschaffel_1997_Teaching",
+          "year": 1997,
+          "description": "Students blindly perform straightforward arithmetic operations with the numbers given in word problems, suspending real-world knowledge and failing to consider realistic constraints.",
+          "domain": "measurement",
+          "topic": "word problems",
+          "subtopic": "realistic mathematical modeling",
+          "page_refs": "578, 579, 581, 586",
+          "pdf": "pdfs/JRME/JRME_Verschaffel_1997_Teaching.pdf",
+          "cluster_score": 3.0
+        },
+        {
+          "id": 44516,
+          "bibtex_key": "ZDM_Confrey_2015_Design",
+          "year": 2015,
+          "description": "Students believe that a circle cannot be fairly partitioned for an odd number of people, struggling to conceptualize radial cuts.",
+          "domain": "geometric",
+          "topic": "Equipartitioning single wholes",
+          "subtopic": "Sharing circles for odd numbers",
+          "page_refs": "926",
+          "pdf": "pdfs/ZDM/ZDM_Confrey_2015_Design.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44894,
+          "bibtex_key": "JMB_Tzur_2000_Integrated",
+          "year": 2000,
+          "description": "Students using a partitive fraction scheme may be unable to conceptualize non-unit fractions larger than the whole, because their thinking is constrained by viewing the partitioned whole strictly as a specific, bounded collection of parts.",
+          "domain": "fraction",
+          "topic": "improper fractions",
+          "subtopic": "partitive fraction scheme",
+          "page_refs": "137, 138, 140, 141",
+          "pdf": "pdfs/JMB/JMB_Tzur_2000_Integrated.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 45133,
+          "bibtex_key": "JMB_Hackenberg_2013_Fractional",
+          "year": 2013,
+          "description": "Students lack a disembedding operation, meaning they do not view a fractional part as both embedded within and separate from the whole. When a part is identified, it is mentally cut off, destroying the original whole.",
+          "domain": "fraction",
+          "topic": "part-whole relations",
+          "subtopic": "disembedding",
+          "page_refs": "550",
+          "pdf": "pdfs/JMB/JMB_Hackenberg_2013_Fractional.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 45402,
+          "bibtex_key": "ESM_Cadez_2018_How",
+          "year": 2018,
+          "description": "Pupils struggle to iterate a given fractional unit to reconstruct the whole, particularly when they must first reverse a proper fraction like 2/5 to find the unit fraction 1/5 before iterating.",
+          "domain": "fraction",
+          "topic": "Reconstructing the whole",
+          "subtopic": "Iterative and partitive schemes",
+          "page_refs": "347, 348",
+          "pdf": "pdfs/ESM/ESM_Cadez_2018_How.pdf",
+          "cluster_score": 5.5
+        }
+      ]
+    },
+    {
+      "id": "equal_shares_fraction_geometry",
+      "title": "Equal Shares, Area, And Fractional Partitions",
+      "domains": [
+        "geometric",
+        "fraction",
+        "measurement"
+      ],
+      "automaton_states": [
+        "equal_area_partition",
+        "unit_fraction_area"
+      ],
+      "productive_core": "A shape can be partitioned into equal shares; each share can be named as a fraction of the area of the whole.",
+      "deformation": "Students count pieces without checking equal area, require congruent shapes when equal area is enough, or lose the whole that the fraction names.",
+      "assessing_questions": [
+        "Are the parts equal in area?",
+        "What whole is each part a fraction of?",
+        "Can parts be different shapes and still equal shares?"
+      ],
+      "advancing_questions": [
+        "Use area comparison to justify the shares, not just appearance.",
+        "Create a non-congruent equal-share partition and explain why it works."
+      ],
+      "standards": [
+        "Indiana 1.G.3",
+        "Indiana 2.G.4",
+        "Indiana 3.G.3",
+        "CCSS 1.G.A.3",
+        "CCSS 2.G.A.3",
+        "CCSS 3.G.A.2"
+      ],
+      "im_anchors": [
+        "IM-G1-U7",
+        "IM-G2-U8",
+        "IM-G3-U5"
+      ],
+      "strategy_count": 680,
+      "misconception_count": 753,
+      "strategy_samples": [
+        {
+          "id": 5,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "benchmark_to_one",
+          "domain": "fraction",
+          "topic": "fraction comparison",
+          "subtopic": "benchmarking with 1",
+          "page_refs": "1082",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 6,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "benchmark_to_one_half",
+          "domain": "fraction",
+          "topic": "fraction comparison",
+          "subtopic": "benchmarking with 1/2",
+          "page_refs": "1082",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 7,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "missing_piece_size_comparison",
+          "domain": "fraction",
+          "topic": "fraction comparison",
+          "subtopic": "comparing complements when same number of unit pieces missing",
+          "page_refs": "1087",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 8,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "area_model_shading_comparison",
+          "domain": "fraction",
+          "topic": "fraction comparison",
+          "subtopic": "area model with unshaded complement",
+          "page_refs": "1087, 1088",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 10,
+          "bibtex_key": "IJSME_Alsawaie_2012_Number",
+          "year": 2012,
+          "description": "benchmark_half_for_fraction_sum",
+          "domain": "fraction",
+          "topic": "fraction addition estimation",
+          "subtopic": "benchmarking sum to 1/2",
+          "page_refs": "1090",
+          "pdf": "pdfs/IJSME/IJSME_Alsawaie_2012_Number.pdf",
+          "cluster_score": 5.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 43994,
+          "bibtex_key": "JMB_Olive_2002_Construction",
+          "year": 2002,
+          "description": "The student applied whole-number additive arithmetic to fraction situations by adding the denominators when combining two unit fractions.",
+          "domain": "fraction",
+          "topic": "addition",
+          "subtopic": "addition of unit fractions",
+          "page_refs": "420",
+          "pdf": "pdfs/JMB/JMB_Olive_2002_Construction.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 43995,
+          "bibtex_key": "JMB_Olive_2002_Construction",
+          "year": 2002,
+          "description": "The student experienced a severe perturbation when asked to conceptualize an improper fraction, struggling with the part-whole limitation that a fraction cannot be larger than its referent whole.",
+          "domain": "fraction",
+          "topic": "representation",
+          "subtopic": "improper fractions",
+          "page_refs": "425-428",
+          "pdf": "pdfs/JMB/JMB_Olive_2002_Construction.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 43996,
+          "bibtex_key": "JMB_Olive_2002_Construction",
+          "year": 2002,
+          "description": "The student named a unit fraction based on the numerosity (length) of the stick being used, rather than its multiplicative relationship to the whole.",
+          "domain": "fraction",
+          "topic": "representation",
+          "subtopic": "unit fractions",
+          "page_refs": "419",
+          "pdf": "pdfs/JMB/JMB_Olive_2002_Construction.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 43997,
+          "bibtex_key": "JMB_Steffe_2002_New",
+          "year": 2002,
+          "description": "Children named a fractional part based on the number of iterations of the stick used rather than its multiplicative relationship to the whole.",
+          "domain": "fraction",
+          "topic": "representation",
+          "subtopic": "part-whole comparison",
+          "page_refs": "280-283",
+          "pdf": "pdfs/JMB/JMB_Steffe_2002_New.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 43998,
+          "bibtex_key": "JMB_Steffe_2002_New",
+          "year": 2002,
+          "description": "A student interpreted a multiplicative comparison additively, seeing 'five times longer' as 'five more'.",
+          "domain": "fraction",
+          "topic": "comparison",
+          "subtopic": "multiplicative comparison",
+          "page_refs": "287",
+          "pdf": "pdfs/JMB/JMB_Steffe_2002_New.pdf",
+          "cluster_score": 3.0
+        }
+      ]
+    },
+    {
+      "id": "area_tiling_unit_iteration",
+      "title": "Area As Tiling And Unit Iteration",
+      "domains": [
+        "measurement",
+        "geometric",
+        "whole_number"
+      ],
+      "automaton_states": [
+        "area_unit_tile",
+        "array_area_iteration",
+        "gap_overlap_check"
+      ],
+      "productive_core": "Area measures how many square units cover a region with no gaps or overlaps; arrays compress tiling into rows, columns, and multiplication.",
+      "deformation": "Students count boundary marks, confuse length with area, leave gaps/overlaps, or use length times width before square units are meaningful.",
+      "assessing_questions": [
+        "What unit is covering the region?",
+        "Are there gaps or overlaps?",
+        "How do rows and columns count the square units?"
+      ],
+      "advancing_questions": [
+        "Tile the region first, then organize the tiles into rows and columns.",
+        "Explain the formula using the tiled rectangle."
+      ],
+      "standards": [
+        "CCSS 3.MD.C",
+        "Indiana 2.G.3"
+      ],
+      "im_anchors": [
+        "IM-G2-U8",
+        "IM-G3-U2",
+        "IM-G3-U4"
+      ],
+      "strategy_count": 172,
+      "misconception_count": 146,
+      "strategy_samples": [
+        {
+          "id": 60,
+          "bibtex_key": "ESM_Ekenstam_1983_Some",
+          "year": 1983,
+          "description": "repeated_addition_for_whole_number_cheese",
+          "domain": "whole_number",
+          "topic": "multiplication",
+          "subtopic": "price_per_unit_with_whole_number_quantity",
+          "page_refs": "376, 377",
+          "pdf": "pdfs/ESM/ESM_Ekenstam_1983_Some.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 61,
+          "bibtex_key": "ESM_Ekenstam_1983_Some",
+          "year": 1983,
+          "description": "two_step_meatball_unit_pricing",
+          "domain": "whole_number",
+          "topic": "two_step_word_problem",
+          "subtopic": "find_unit_price_after_finding_unit_count",
+          "page_refs": "374, 378, 379",
+          "pdf": "pdfs/ESM/ESM_Ekenstam_1983_Some.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 125,
+          "bibtex_key": "MERJ_Hativa_1992_Good",
+          "year": 1992,
+          "description": "using_trial_and_error",
+          "domain": "whole_number",
+          "topic": "trial-and-error algorithm discovery",
+          "subtopic": "powers of ten and reverse fraction equivalence",
+          "page_refs": "75, 76, 77",
+          "pdf": "pdfs/MERJ/MERJ_Hativa_1992_Good.pdf",
+          "cluster_score": 3.5
+        },
+        {
+          "id": 149,
+          "bibtex_key": "MTL_Lesh_2003_Problem",
+          "year": 2003,
+          "description": "scaling_via_unit_correspondence_between_picture_and_quilt",
+          "domain": "measurement",
+          "topic": "scaling and units",
+          "subtopic": "unit-to-unit map across two similar situations",
+          "page_refs": "170-171",
+          "pdf": "pdfs/MTL/MTL_Lesh_2003_Problem.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 180,
+          "bibtex_key": "ESM_Markovits_1997_Relative",
+          "year": 1997,
+          "description": "global_perception_strategy",
+          "domain": "whole_number",
+          "topic": "visual estimation of discrete quantities",
+          "subtopic": "internalized perceptual estimation",
+          "page_refs": "37, 38",
+          "pdf": "pdfs/ESM/ESM_Markovits_1997_Relative.pdf",
+          "cluster_score": 3.0
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 150,
+          "bibtex_key": null,
+          "year": 2002,
+          "description": "Children's internal representations evolve from unstructured iconic tally marks (counting by ones) to organized formal notations in rows of ten. Early representations lack base-ten structure but are developmentally productive as they reflect emerging internal representational systems.",
+          "domain": "whole_number",
+          "topic": "counting_numeration",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 3.0
+        },
+        {
+          "id": 154,
+          "bibtex_key": "ISI:000375851800005",
+          "year": 2015,
+          "description": "Students who cannot coordinate multiple levels of units fall back on repeated addition or skip-counting instead of flexible multiplicative reasoning. Progress from Initial Number Sequence (counting by ones) to double-counting to distributing composite units (e.g., 35 as five units of seven). Constraints at each stage are developmental rather than deficient.",
+          "domain": "whole_number",
+          "topic": "multiplication_units_coordination",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 3.5
+        },
+        {
+          "id": 155,
+          "bibtex_key": "ISI:000375851800005",
+          "year": 2015,
+          "description": "Sixth grader (Cody) relied on repeated addition and skip-counting for multiplication because he could not assimilate multiple levels of units. Built two-level structures as segmented number lines rather than two-dimensional arrays. Knew multiplication facts but could not leverage multiplicative relationships. Progressed from coordinating two levels to three levels of units through instructional intervention.",
+          "domain": "whole_number",
+          "topic": "multiplication_units_coordination",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 3.5
+        },
+        {
+          "id": 156,
+          "bibtex_key": "ISI:000397101800002",
+          "year": 2016,
+          "description": "4th grader with learning disability (Tia) transitioning from additive to multiplicative reasoning. Initially added rather than multiplied (e.g., 6 bags x 3 marbles = 9). Progressed through multiplicative double counting, same-unit coordination, unit differentiation and selection, to mixed-unit coordination schemes via constructivist scaffolding.",
+          "domain": "whole_number",
+          "topic": "multiplication_multiplicative_reasoning",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 3.0
+        },
+        {
+          "id": 157,
+          "bibtex_key": "ISI:000381836300001",
+          "year": 2016,
+          "description": "Sixth grader (Adam) uses tacitly nested number sequence for subtraction/addition (e.g., solving 17-8 by counting up from 8). Lacks iterable unit of 1 and cannot disembed subsequences, causing high cognitive load. Surprisingly sophisticated operations within TNS constraints but cannot reorganize into explicitly nested number sequence.",
+          "domain": "whole_number",
+          "topic": "subtraction_addition_number_sequences",
+          "subtopic": null,
+          "page_refs": null,
+          "pdf": null,
+          "cluster_score": 3.0
+        }
+      ]
+    },
+    {
+      "id": "perimeter_distance_around",
+      "title": "Perimeter As Distance Around",
+      "domains": [
+        "measurement",
+        "geometric"
+      ],
+      "automaton_states": [
+        "boundary_length_iteration",
+        "side_length_sum"
+      ],
+      "productive_core": "Perimeter measures the distance around a figure by iterating or summing linear units along the boundary.",
+      "deformation": "Perimeter is confused with area, side lengths are double-counted or omitted, or formulas are used without tracing the boundary.",
+      "assessing_questions": [
+        "What path are you measuring?",
+        "Which side lengths have been counted?",
+        "How is this different from covering the inside?"
+      ],
+      "advancing_questions": [
+        "Trace the boundary and mark each measured side.",
+        "Compare two rectangles with the same area but different perimeter."
+      ],
+      "standards": [
+        "CCSS 3.MD.D.8",
+        "Indiana 3.G / measurement connections"
+      ],
+      "im_anchors": [
+        "IM-G3-U7",
+        "IM-G4-U8",
+        "IM-G5-U7"
+      ],
+      "strategy_count": 16,
+      "misconception_count": 40,
+      "strategy_samples": [
+        {
+          "id": 57,
+          "bibtex_key": "RME_Rowland_2015_Triggers",
+          "year": 2015,
+          "description": "compensation_for_half_perimeter",
+          "domain": "whole_number",
+          "topic": "perimeter",
+          "subtopic": "compensation_via_equalising_addends",
+          "page_refs": "81",
+          "pdf": "pdfs/RME/RME_Rowland_2015_Triggers.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 347,
+          "bibtex_key": "ESM_Baturo_1996_Student",
+          "year": 1996,
+          "description": "closed_shape_selection",
+          "domain": "measurement",
+          "topic": "area recognition",
+          "subtopic": "static perspective of area",
+          "page_refs": "245, 250, 251, 257",
+          "pdf": "pdfs/ESM/ESM_Baturo_1996_Student.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 793,
+          "bibtex_key": "ESM_Vinner_1997_Pseudo-conceptual",
+          "year": 1997,
+          "description": "multiply_two_given_numbers",
+          "domain": "measurement",
+          "topic": "rectangle area",
+          "subtopic": "routine area problem",
+          "page_refs": "113, 114, 115",
+          "pdf": "pdfs/ESM/ESM_Vinner_1997_Pseudo-conceptual.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 907,
+          "bibtex_key": "IJSME_Wilhelm_2013_Investigating",
+          "year": 2013,
+          "description": "lighter_farther_heavier_closer",
+          "domain": "measurement",
+          "topic": "beam balance",
+          "subtopic": "weight-distance compensation",
+          "page_refs": "1219, 1220, 1225",
+          "pdf": "pdfs/IJSME/IJSME_Wilhelm_2013_Investigating.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 1099,
+          "bibtex_key": "JMB_Kim_2013_Multiple",
+          "year": 2013,
+          "description": "closest_to_target",
+          "domain": "measurement",
+          "topic": "distance comparison",
+          "subtopic": "paper airplane target accuracy",
+          "page_refs": "386, 389, 390, 391",
+          "pdf": "pdfs/JMB/JMB_Kim_2013_Multiple.pdf",
+          "cluster_score": 4.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44088,
+          "bibtex_key": "JRME_Cai_1995_Cognitive",
+          "year": 1995,
+          "description": "Students attempt to estimate the area of an irregular shape by counting the number of units around the boundary of the shape, confusing area with perimeter.",
+          "domain": "measurement",
+          "topic": "area",
+          "subtopic": "area vs perimeter",
+          "page_refs": "71",
+          "pdf": "pdfs/JRME/JRME_Cai_1995_Cognitive.pdf",
+          "cluster_score": 10.5
+        },
+        {
+          "id": 44125,
+          "bibtex_key": "JRME_Pesek_2000_Interference",
+          "year": 2000,
+          "description": "Students inappropriately define area strictly as the 'inside' and perimeter as the 'outside' of an object, leading to confusion when applying these concepts to surfaces like walls.",
+          "domain": "measurement",
+          "topic": "area and perimeter",
+          "subtopic": "definitions and applications",
+          "page_refs": "535, 538",
+          "pdf": "pdfs/JRME/JRME_Pesek_2000_Interference.pdf",
+          "cluster_score": 10.5
+        },
+        {
+          "id": 44126,
+          "bibtex_key": "JRME_Pesek_2000_Interference",
+          "year": 2000,
+          "description": "Students apply the concept of two-dimensional area to one-dimensional or three-dimensional real-world contexts.",
+          "domain": "measurement",
+          "topic": "area",
+          "subtopic": "dimensionality",
+          "page_refs": "536",
+          "pdf": "pdfs/JRME/JRME_Pesek_2000_Interference.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 44127,
+          "bibtex_key": "JRME_Pesek_2000_Interference",
+          "year": 2000,
+          "description": "Students attempt to calculate area and perimeter by haphazardly guessing operations (adding or multiplying) to apply to the given numbers, rather than grounding their calculations in the spatial properties of the figure.",
+          "domain": "measurement",
+          "topic": "area and perimeter",
+          "subtopic": "calculation strategies",
+          "page_refs": "536",
+          "pdf": "pdfs/JRME/JRME_Pesek_2000_Interference.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 44187,
+          "bibtex_key": "JRME_Lo_1997_Developing",
+          "year": 1997,
+          "description": "When asked to cover a rectangular area with smaller rectangular units, the student focuses inappropriately on linear perimeter measurements and outlines, failing to correctly model 2D spatial area.",
+          "domain": "measurement",
+          "topic": "area",
+          "subtopic": "covering with units",
+          "page_refs": "231, 232",
+          "pdf": "pdfs/JRME/JRME_Lo_1997_Developing.pdf",
+          "cluster_score": 9.5
+        }
+      ]
+    },
+    {
+      "id": "lines_angles_precision",
+      "title": "Lines, Segments, Rays, And Angle Measure",
+      "domains": [
+        "geometric",
+        "measurement"
+      ],
+      "automaton_states": [
+        "geometric_object_attribute",
+        "angle_as_turn",
+        "angle_measure_unit"
+      ],
+      "productive_core": "Geometric objects such as points, lines, segments, rays, and angles are named by their relations; angle measure quantifies turn or opening by iterating angle units.",
+      "deformation": "Students treat drawings as finite visual marks only, confuse side length with angle size, or use a protractor as a procedure without aligning the vertex and baseline.",
+      "assessing_questions": [
+        "What object is being named: point, line, segment, ray, or angle?",
+        "Where is the vertex?",
+        "What does the angle measure quantify?"
+      ],
+      "advancing_questions": [
+        "Mark the vertex and rays before measuring.",
+        "Compare two angles with different side lengths to separate length from opening."
+      ],
+      "standards": [
+        "Indiana 3.G.2",
+        "CCSS 4.MD.C",
+        "CCSS 4.G.A.1"
+      ],
+      "im_anchors": [
+        "IM-G4-U7",
+        "IM-G5-U7"
+      ],
+      "strategy_count": 39,
+      "misconception_count": 55,
+      "strategy_samples": [
+        {
+          "id": 220,
+          "bibtex_key": "JMB_Clements_2000_From",
+          "year": 2000,
+          "description": "rotate_rectangle_to_circle",
+          "domain": "geometric",
+          "topic": "rotation and angle",
+          "subtopic": "full rotation as 360 degrees",
+          "page_refs": "40, 41",
+          "pdf": "pdfs/JMB/JMB_Clements_2000_From.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 224,
+          "bibtex_key": "JMB_Granados_2000_Constructing",
+          "year": 2000,
+          "description": "alternating_forward_turn_for_square",
+          "domain": "geometric",
+          "topic": "turtle geometry procedure",
+          "subtopic": "square construction by forward/turn alternation",
+          "page_refs": "513, 516, 517, 518, 519",
+          "pdf": "pdfs/JMB/JMB_Granados_2000_Constructing.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 225,
+          "bibtex_key": "JMB_Granados_2000_Constructing",
+          "year": 2000,
+          "description": "supplementary_angle_for_triangle_turn",
+          "domain": "geometric",
+          "topic": "turtle geometry procedure",
+          "subtopic": "exterior angle for equilateral triangle",
+          "page_refs": "524, 525, 526, 527",
+          "pdf": "pdfs/JMB/JMB_Granados_2000_Constructing.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 226,
+          "bibtex_key": "JMB_Granados_2000_Constructing",
+          "year": 2000,
+          "description": "divide_180_by_3_for_equilateral_angle",
+          "domain": "geometric",
+          "topic": "interior angle of equilateral triangle",
+          "subtopic": "angle sum divided by number of sides",
+          "page_refs": "524",
+          "pdf": "pdfs/JMB/JMB_Granados_2000_Constructing.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 334,
+          "bibtex_key": "ZDM_Antonini_2008_Indirect",
+          "year": 2008,
+          "description": "case_exhaustion_indirect_argumentation",
+          "domain": "geometric",
+          "topic": "reciprocal position of two lines",
+          "subtopic": "indirect argumentation in Euclidean geometry",
+          "page_refs": "408, 409",
+          "pdf": "pdfs/ZDM/ZDM_Antonini_2008_Indirect.pdf",
+          "cluster_score": 5.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44130,
+          "bibtex_key": "JRME_Bright_1988_Identifying",
+          "year": 1988,
+          "description": "Students incorrectly use the entire visible number line segment, rather than the intended segment from 0 to 1, as the reference unit.",
+          "domain": "fraction",
+          "topic": "number line representation",
+          "subtopic": "unit identification",
+          "page_refs": "221, 225",
+          "pdf": "pdfs/JRME/JRME_Bright_1988_Identifying.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44171,
+          "bibtex_key": "JRME_Gregg_1995_Tensions",
+          "year": 1995,
+          "description": "Students struggle to accept the formalized, abstract definitions of geometric objects, instead attempting to interpret them using physical, real-world properties like size and thickness.",
+          "domain": "geometric",
+          "topic": "points and lines",
+          "subtopic": "abstract definitions vs physical representations",
+          "page_refs": "449",
+          "pdf": "pdfs/JRME/JRME_Gregg_1995_Tensions.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 44210,
+          "bibtex_key": "JRME_Civil_2002_Chapter",
+          "year": 2002,
+          "description": "When determining the measure of interior angles of a regular hexagon, students inappropriately rely on a previous visual decomposition into six equilateral triangles, incorrectly summing all triangle angles (6 x 180 = 1080) without subtracting the 360 degrees at the central vertex.",
+          "domain": "geometric",
+          "topic": "angles",
+          "subtopic": "interior angles of polygons",
+          "page_refs": "56, 57, 58",
+          "pdf": "pdfs/JRME/JRME_Civil_2002_Chapter.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 44257,
+          "bibtex_key": "JRME_Henningsen_1997_Mathematical",
+          "year": 1997,
+          "description": "Students are unable to distinguish between basic angle types, which hinders their ability to systematically compare, record, and discover geometric properties.",
+          "domain": "geometric",
+          "topic": "angles",
+          "subtopic": "comparing and classifying",
+          "page_refs": "545",
+          "pdf": "pdfs/JRME/JRME_Henningsen_1997_Mathematical.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44290,
+          "bibtex_key": "JRME_Borasi_1994_Capitalizing",
+          "year": 1994,
+          "description": "When finding the equation of a circle passing through three given points, a student inappropriately sets up an analytic system using only two of the points, resulting in an unresolvable equation in two variables.",
+          "domain": "geometric",
+          "topic": "analytic geometry",
+          "subtopic": "circle through points",
+          "page_refs": "178, 179",
+          "pdf": "pdfs/JRME/JRME_Borasi_1994_Capitalizing.pdf",
+          "cluster_score": 5.5
+        }
+      ]
+    },
+    {
+      "id": "coordinate_grid_location",
+      "title": "Coordinate Grid Location And Ordered Pairs",
+      "domains": [
+        "geometric",
+        "algebraic"
+      ],
+      "automaton_states": [
+        "axis_reference_frame",
+        "ordered_pair_location",
+        "coordinate_covariation"
+      ],
+      "productive_core": "Coordinates locate points by ordered distances from perpendicular axes and can represent relationships between varying quantities.",
+      "deformation": "Students reverse coordinates, count grid lines inconsistently, or treat the coordinate plane as a picture without axes, scale, and origin.",
+      "assessing_questions": [
+        "Where is the origin?",
+        "Which coordinate is horizontal and which is vertical?",
+        "What unit does each grid step represent?"
+      ],
+      "advancing_questions": [
+        "Move from the origin along the x-axis, then vertically.",
+        "Plot several ordered pairs from a table and describe the pattern."
+      ],
+      "standards": [
+        "CCSS 5.G.A",
+        "CCSS 6.NS.C.6",
+        "CCSS 8.F"
+      ],
+      "im_anchors": [
+        "IM-G5-U7",
+        "IM-G6-U7",
+        "IM-G8-U3"
+      ],
+      "strategy_count": 190,
+      "misconception_count": 383,
+      "strategy_samples": [
+        {
+          "id": 1,
+          "bibtex_key": "ESM_Sajka_2003_Secondary",
+          "year": 2003,
+          "description": "examining_examples_of_linear_functions",
+          "domain": "algebraic",
+          "topic": "functional equation",
+          "subtopic": "Cauchy additive functional equation",
+          "page_refs": "234",
+          "pdf": "pdfs/ESM/ESM_Sajka_2003_Secondary.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 2,
+          "bibtex_key": "ESM_Sajka_2003_Secondary",
+          "year": 2003,
+          "description": "zero_function_via_graph_overlap",
+          "domain": "algebraic",
+          "topic": "functional equation",
+          "subtopic": "constant zero function as solution",
+          "page_refs": "234, 252",
+          "pdf": "pdfs/ESM/ESM_Sajka_2003_Secondary.pdf",
+          "cluster_score": 7.0
+        },
+        {
+          "id": 3,
+          "bibtex_key": "ESM_Sajka_2003_Secondary",
+          "year": 2003,
+          "description": "evaluate_function_as_computational_process",
+          "domain": "algebraic",
+          "topic": "function evaluation",
+          "subtopic": "function as computational process",
+          "page_refs": "244, 245, 251, 252",
+          "pdf": "pdfs/ESM/ESM_Sajka_2003_Secondary.pdf",
+          "cluster_score": 4.0
+        },
+        {
+          "id": 19,
+          "bibtex_key": "JMB_Even_1998_Factors",
+          "year": 1998,
+          "description": "switch_to_graphic_representation",
+          "domain": "algebraic",
+          "topic": "quadratic equations",
+          "subtopic": "number of real solutions",
+          "page_refs": "106, 107, 108",
+          "pdf": "pdfs/JMB/JMB_Even_1998_Factors.pdf",
+          "cluster_score": 6.0
+        },
+        {
+          "id": 20,
+          "bibtex_key": "JMB_Even_1998_Factors",
+          "year": 1998,
+          "description": "global_analysis_of_graph_transformation",
+          "domain": "algebraic",
+          "topic": "function transformations",
+          "subtopic": "from graphic to symbolic representation of trigonometric functions",
+          "page_refs": "109, 110, 111",
+          "pdf": "pdfs/JMB/JMB_Even_1998_Factors.pdf",
+          "cluster_score": 7.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44022,
+          "bibtex_key": "JMB_Tillema_2013_Power",
+          "year": 2013,
+          "description": "Students have a tendency to over-rely on linear meanings of multiplication in situations where a power meaning is warranted due to the prevalence of linear problems in curricula.",
+          "domain": "algebraic",
+          "topic": "polynomials",
+          "subtopic": "squaring",
+          "page_refs": "331-332",
+          "pdf": "pdfs/JMB/JMB_Tillema_2013_Power.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44110,
+          "bibtex_key": "JRME_Zaslavsky_1996_Inhibiting",
+          "year": 1996,
+          "description": "Teachers and student teachers incorrectly translate the formal definition of associativity to the specific operation defined.",
+          "domain": "algebraic",
+          "topic": "binary operations",
+          "subtopic": "associativity",
+          "page_refs": "73",
+          "pdf": "pdfs/JRME/JRME_Zaslavsky_1996_Inhibiting.pdf",
+          "cluster_score": 3.5
+        },
+        {
+          "id": 44111,
+          "bibtex_key": "JRME_Zaslavsky_1996_Inhibiting",
+          "year": 1996,
+          "description": "Teachers and student teachers incorrectly overgeneralize the associative property to hold for two distinct operations.",
+          "domain": "algebraic",
+          "topic": "binary operations",
+          "subtopic": "associativity",
+          "page_refs": "73",
+          "pdf": "pdfs/JRME/JRME_Zaslavsky_1996_Inhibiting.pdf",
+          "cluster_score": 3.5
+        },
+        {
+          "id": 44112,
+          "bibtex_key": "JRME_Zaslavsky_1996_Inhibiting",
+          "year": 1996,
+          "description": "When checking the commutative property, subjects confuse the operation sign with the number sign when changing the order of the elements.",
+          "domain": "algebraic",
+          "topic": "binary operations",
+          "subtopic": "commutativity",
+          "page_refs": "73",
+          "pdf": "pdfs/JRME/JRME_Zaslavsky_1996_Inhibiting.pdf",
+          "cluster_score": 3.5
+        },
+        {
+          "id": 44113,
+          "bibtex_key": "JRME_Zaslavsky_1996_Inhibiting",
+          "year": 1996,
+          "description": "Subjects incorrectly verify that a defined operation is commutative by checking only one special instance where the property holds.",
+          "domain": "algebraic",
+          "topic": "binary operations",
+          "subtopic": "logical inferences",
+          "page_refs": "73",
+          "pdf": "pdfs/JRME/JRME_Zaslavsky_1996_Inhibiting.pdf",
+          "cluster_score": 3.5
+        }
+      ]
+    },
+    {
+      "id": "transformations_congruence_similarity",
+      "title": "Transformations, Congruence, And Similarity",
+      "domains": [
+        "geometric",
+        "proportional"
+      ],
+      "automaton_states": [
+        "rigid_motion",
+        "dilation_scale",
+        "corresponding_parts"
+      ],
+      "productive_core": "Transformations act on figures; rigid motions preserve distance and angle, while dilations preserve shape through scale and create similarity.",
+      "deformation": "Students compare figures by appearance alone, lose corresponding parts, or treat scale factor as additive growth.",
+      "assessing_questions": [
+        "What transformation maps one figure to the other?",
+        "Which parts correspond?",
+        "What is preserved: length, angle, shape, or orientation?"
+      ],
+      "advancing_questions": [
+        "Mark corresponding vertices before comparing.",
+        "Describe the transformation sequence, then justify congruence or similarity."
+      ],
+      "standards": [
+        "CCSS 8.G.A",
+        "CCSS 7.G.A.1",
+        "High School Geometry transformations"
+      ],
+      "im_anchors": [
+        "IM-G7-U1",
+        "IM-G8-U1",
+        "IM-G8-U2",
+        "IM-Geo-U1"
+      ],
+      "strategy_count": 9,
+      "misconception_count": 15,
+      "strategy_samples": [
+        {
+          "id": 176,
+          "bibtex_key": "ESM_Manouchehri_2000_Implementing",
+          "year": 2000,
+          "description": "proportional_check_for_similarity",
+          "domain": "geometric",
+          "topic": "geometric similarity",
+          "subtopic": "proportional scaling of corresponding parts",
+          "page_refs": "23, 24, 25, 26",
+          "pdf": "pdfs/ESM/ESM_Manouchehri_2000_Implementing.pdf",
+          "cluster_score": 8.5
+        },
+        {
+          "id": 302,
+          "bibtex_key": "JRME_Pape_2004_Middle",
+          "year": 2004,
+          "description": "direct_translation_approach_proficient",
+          "domain": "proportional",
+          "topic": "compare word problems",
+          "subtopic": "inconsistent language multiplicative compare",
+          "page_refs": "199, 201, 202, 203, 209, 210, 217, 218",
+          "pdf": "pdfs/JRME/JRME_Pape_2004_Middle.pdf",
+          "cluster_score": 4.0
+        },
+        {
+          "id": 704,
+          "bibtex_key": "ESM_Sensevy_1996_Fabrication",
+          "year": 1996,
+          "description": "simplification_fractionnaire",
+          "domain": "proportional",
+          "topic": "ratio as fraction",
+          "subtopic": "transformation problem construction",
+          "page_refs": "279, 280",
+          "pdf": "pdfs/ESM/ESM_Sensevy_1996_Fabrication.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 705,
+          "bibtex_key": "ESM_Sensevy_1996_Fabrication",
+          "year": 1996,
+          "description": "division_puis_fraction",
+          "domain": "proportional",
+          "topic": "ratio as fraction",
+          "subtopic": "decimal quotient to fraction",
+          "page_refs": "280",
+          "pdf": "pdfs/ESM/ESM_Sensevy_1996_Fabrication.pdf",
+          "cluster_score": 4.0
+        },
+        {
+          "id": 1345,
+          "bibtex_key": "JMB_Weinberg_2016_Students",
+          "year": 2016,
+          "description": "transforming_one_quantity",
+          "domain": "proportional",
+          "topic": "multiplicative comparison",
+          "subtopic": "computational transformation between units",
+          "page_refs": "77, 78",
+          "pdf": "pdfs/JMB/JMB_Weinberg_2016_Students.pdf",
+          "cluster_score": 5.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44121,
+          "bibtex_key": "JRME_Thompson_1996_Talking",
+          "year": 1996,
+          "description": "The teacher encapsulates his deep understandings of rate within the language of numbers and operations, making his instruction calculational and insensitive to the student's conceptual difficulties.",
+          "domain": "proportional",
+          "topic": "rate and proportionality",
+          "subtopic": "calculational orientation",
+          "page_refs": "5, 15, 18, 20",
+          "pdf": "pdfs/JRME/JRME_Thompson_1996_Talking.pdf",
+          "cluster_score": 5.0
+        },
+        {
+          "id": 44309,
+          "bibtex_key": "JRME_Heller_1990_Qualitative",
+          "year": 1990,
+          "description": "Students view context-free fraction exercises and proportion-related word problems as distinct tasks requiring different reasoning processes, failing to apply known rational number skills to structurally identical word problems.",
+          "domain": "proportional",
+          "topic": "problem solving",
+          "subtopic": "structural similarity",
+          "page_refs": "400",
+          "pdf": "pdfs/JRME/JRME_Heller_1990_Qualitative.pdf",
+          "cluster_score": 3.5
+        },
+        {
+          "id": 44524,
+          "bibtex_key": "ZDM_Abrahamson_2014_Coordinating",
+          "year": 2014,
+          "description": "Students naively apply additive forms of reasoning to multiplicative or proportional systems, struggling to see that fractions with different internal additive differences can represent equivalent quantities.",
+          "domain": "proportional",
+          "topic": "Rational numbers and proportion",
+          "subtopic": "Equivalent fractions",
+          "page_refs": "81",
+          "pdf": "pdfs/ZDM/ZDM_Abrahamson_2014_Coordinating.pdf",
+          "cluster_score": 4.0
+        },
+        {
+          "id": 44947,
+          "bibtex_key": "JMB_Yanik_2009_Understanding",
+          "year": 2009,
+          "description": "The student believed there was a static relationship between the endpoints of the vector and the vertices of the pre-image and image, assuming that if the vector's tail moved, the pre-image would move with it.",
+          "domain": "geometric",
+          "topic": "geometric transformations",
+          "subtopic": "vectors",
+          "page_refs": "49-50",
+          "pdf": "pdfs/JMB/JMB_Yanik_2009_Understanding.pdf",
+          "cluster_score": 3.5
+        },
+        {
+          "id": 44948,
+          "bibtex_key": "JMB_Yanik_2009_Understanding",
+          "year": 2009,
+          "description": "The student conceived the domain of a translation as a single object rather than all points in the plane, believing that objects sit on the plane independently and moving one object does not imply the rest of the plane moves.",
+          "domain": "geometric",
+          "topic": "geometric transformations",
+          "subtopic": "domain and mapping",
+          "page_refs": "52-53",
+          "pdf": "pdfs/JMB/JMB_Yanik_2009_Understanding.pdf",
+          "cluster_score": 4.5
+        }
+      ]
+    },
+    {
+      "id": "scale_drawings_geometric_proportionality",
+      "title": "Scale Drawings And Geometric Proportionality",
+      "domains": [
+        "geometric",
+        "proportional",
+        "measurement"
+      ],
+      "automaton_states": [
+        "scale_factor_preservation",
+        "proportional_length_mapping"
+      ],
+      "productive_core": "Scale drawings preserve multiplicative relationships among corresponding lengths; scale factor links drawing units and actual units.",
+      "deformation": "Students add a constant to every side, mix units, or apply one scale factor to some but not all corresponding lengths.",
+      "assessing_questions": [
+        "What is the scale factor?",
+        "Which lengths correspond?",
+        "Are all lengths multiplied by the same factor?"
+      ],
+      "advancing_questions": [
+        "Use a table of drawing length and actual length.",
+        "Check two pairs of corresponding lengths to verify the same scale."
+      ],
+      "standards": [
+        "Indiana 7.GM.1",
+        "CCSS 7.G.A.1"
+      ],
+      "im_anchors": [
+        "IM-G7-U1",
+        "IM-G7-U2"
+      ],
+      "strategy_count": 182,
+      "misconception_count": 173,
+      "strategy_samples": [
+        {
+          "id": 62,
+          "bibtex_key": "ESM_Ekenstam_1983_Some",
+          "year": 1983,
+          "description": "iterated_halving_ratio_for_onions",
+          "domain": "proportional",
+          "topic": "ratio_and_proportion",
+          "subtopic": "scale_down_then_scale_up_a_ratio",
+          "page_refs": "380",
+          "pdf": "pdfs/ESM/ESM_Ekenstam_1983_Some.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 88,
+          "bibtex_key": "JMTE_Orrill_2012_Making",
+          "year": 2012,
+          "description": "cross_multiplication_on_double_scaled_number_line",
+          "domain": "proportional",
+          "topic": "proportional reasoning",
+          "subtopic": "cans and containers task",
+          "page_refs": "389, 390",
+          "pdf": "pdfs/JMTE/JMTE_Orrill_2012_Making.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 91,
+          "bibtex_key": "JMTE_Orrill_2012_Making",
+          "year": 2012,
+          "description": "partition_bottom_line_into_fifths",
+          "domain": "proportional",
+          "topic": "double number line reasoning",
+          "subtopic": "partitioning to find unit rate",
+          "page_refs": "393, 394",
+          "pdf": "pdfs/JMTE/JMTE_Orrill_2012_Making.pdf",
+          "cluster_score": 3.0
+        },
+        {
+          "id": 93,
+          "bibtex_key": "JMTE_Orrill_2012_Making",
+          "year": 2012,
+          "description": "coordinated_dnl_subdividing_each_batch",
+          "domain": "proportional",
+          "topic": "double number line reasoning",
+          "subtopic": "visual coordination of composed units",
+          "page_refs": "395, 396",
+          "pdf": "pdfs/JMTE/JMTE_Orrill_2012_Making.pdf",
+          "cluster_score": 3.0
+        },
+        {
+          "id": 94,
+          "bibtex_key": "JMTE_Orrill_2012_Making",
+          "year": 2012,
+          "description": "drop_down_strategy_to_find_corresponding_quantity",
+          "domain": "proportional",
+          "topic": "double number line reasoning",
+          "subtopic": "vertical correspondence on DNL",
+          "page_refs": "396",
+          "pdf": "pdfs/JMTE/JMTE_Orrill_2012_Making.pdf",
+          "cluster_score": 3.0
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44024,
+          "bibtex_key": "JRME_Izsak_2017_Preservice",
+          "year": 2017,
+          "description": "Preservice teachers infer that a constant difference relationship is a directly proportional relationship based on linguistic associations with the phrase 'same rate' and a cluster of related resources.",
+          "domain": "proportional",
+          "topic": "distinguishing proportional from nonproportional relationships",
+          "subtopic": "constant difference relationships",
+          "page_refs": "317, 318, 319",
+          "pdf": "pdfs/JRME/JRME_Izsak_2017_Preservice.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44025,
+          "bibtex_key": "JRME_Izsak_2017_Preservice",
+          "year": 2017,
+          "description": "Preservice teachers apply direct proportion algorithms to situations describing an inversely proportional relationship.",
+          "domain": "proportional",
+          "topic": "inversely proportional relationships",
+          "subtopic": "constant product relationships",
+          "page_refs": "319, 320, 321",
+          "pdf": "pdfs/JRME/JRME_Izsak_2017_Preservice.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44026,
+          "bibtex_key": "JRME_Izsak_2017_Preservice",
+          "year": 2017,
+          "description": "Preservice teachers assume a ratio of two quantities will be constant simply because the elements that define their additive relationship remain constant.",
+          "domain": "proportional",
+          "topic": "distinguishing proportional from nonproportional relationships",
+          "subtopic": "constant difference relationships",
+          "page_refs": "324, 325, 326",
+          "pdf": "pdfs/JRME/JRME_Izsak_2017_Preservice.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 44027,
+          "bibtex_key": "JRME_Izsak_2017_Preservice",
+          "year": 2017,
+          "description": "Preservice teachers struggle to consistently apply multiplicative relationships when analyzing inverse proportions, instead coordinating additive changes in one quantity with multiplicative changes in another.",
+          "domain": "proportional",
+          "topic": "inversely proportional relationships",
+          "subtopic": "multiplicative comparisons",
+          "page_refs": "327, 328",
+          "pdf": "pdfs/JRME/JRME_Izsak_2017_Preservice.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 44028,
+          "bibtex_key": "IJSME_Jacobson_2018_Middle",
+          "year": 2018,
+          "description": "Teachers inaccurately evaluated a student's erroneous additive step as correct because they lacked quantitative meaning for the scalar factor, interpreting it instead as an amount of a physical quantity.",
+          "domain": "proportional",
+          "topic": "proportional reasoning",
+          "subtopic": "multiplicative comparison",
+          "page_refs": "1552, 1553, 1554",
+          "pdf": "pdfs/IJSME/IJSME_Jacobson_2018_Middle.pdf",
+          "cluster_score": 6.5
+        }
+      ]
+    },
+    {
+      "id": "surface_area_nets",
+      "title": "Surface Area And Nets",
+      "domains": [
+        "geometric",
+        "measurement"
+      ],
+      "automaton_states": [
+        "net_decomposition",
+        "face_area_sum"
+      ],
+      "productive_core": "Surface area decomposes a three-dimensional object into faces, measures each face's area, and sums those areas.",
+      "deformation": "Students count visible faces only, confuse surface area with volume, or use a net that does not fold into the solid.",
+      "assessing_questions": [
+        "Which faces cover the surface?",
+        "Does this net fold into the solid?",
+        "Are you measuring covering or filling?"
+      ],
+      "advancing_questions": [
+        "Color matching faces on the solid and the net.",
+        "Compute one face area at a time and label its unit."
+      ],
+      "standards": [
+        "CCSS 6.G.A.4",
+        "CCSS 7.G.B.6"
+      ],
+      "im_anchors": [
+        "IM-G6-U1",
+        "IM-G7-U7"
+      ],
+      "strategy_count": 1,
+      "misconception_count": 4,
+      "strategy_samples": [
+        {
+          "id": 1822,
+          "bibtex_key": "MERJ_Borden_2013_What's",
+          "year": 2013,
+          "description": "it_can_sit_still",
+          "domain": "geometric",
+          "topic": "three-dimensional shape properties",
+          "subtopic": "flat faces",
+          "page_refs": "18",
+          "pdf": "pdfs/MERJ/MERJ_Borden_2013_What's.pdf",
+          "cluster_score": 6.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 45563,
+          "bibtex_key": "ESM_Douady_1989_Un",
+          "year": 1989,
+          "description": "Students erroneously extend area formulas to situations where they are invalid, such as multiplying all the dimensions of a shape together.",
+          "domain": "measurement",
+          "topic": "Area formulas",
+          "subtopic": "Triangles and parallelograms",
+          "page_refs": "395, 409, 410, 411",
+          "pdf": "pdfs/ESM/ESM_Douady_1989_Un.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 46483,
+          "bibtex_key": "IJMEST_Horzum_2018_Prospective",
+          "year": 2018,
+          "description": "Prospective teachers possess a 'position-dependent base' image, believing the base is strictly the part, section, or surface of the object that touches the ground or is at the bottom, disregarding its actual geometric properties.",
+          "domain": "geometric",
+          "topic": "geometric solids",
+          "subtopic": "base concept",
+          "page_refs": null,
+          "pdf": "pdfs/IJMEST/IJMEST_Horzum_2018_Prospective.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 46487,
+          "bibtex_key": "IJMEST_Horzum_2018_Prospective",
+          "year": 2018,
+          "description": "Prospective teachers hold a 'naming-dependent base' image, where they do not define the base geometrically but rather rely solely on rote recall that the base is the part that gives the prism its name.",
+          "domain": "geometric",
+          "topic": "prisms",
+          "subtopic": "naming conventions",
+          "page_refs": null,
+          "pdf": "pdfs/IJMEST/IJMEST_Horzum_2018_Prospective.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 46571,
+          "bibtex_key": "IJMEST_Jankvist_2019_Upper",
+          "year": 2019,
+          "description": "Students mathematically model a three-dimensional solid based on one- or two-dimensional conceptions, focusing incorrectly on the scaling of edges or faces rather than the scaling of volume.",
+          "domain": "geometric",
+          "topic": "volume and scaling",
+          "subtopic": "three-dimensional solids",
+          "page_refs": null,
+          "pdf": "pdfs/IJMEST/IJMEST_Jankvist_2019_Upper.pdf",
+          "cluster_score": 6.5
+        }
+      ]
+    },
+    {
+      "id": "volume_packing_layers",
+      "title": "Volume As Packing, Layers, And Cubic Units",
+      "domains": [
+        "measurement",
+        "geometric"
+      ],
+      "automaton_states": [
+        "cubic_unit_packing",
+        "layer_iteration",
+        "volume_formula_trace"
+      ],
+      "productive_core": "Volume measures filling by cubic units; rectangular-prism formulas compress counting cubes in layers.",
+      "deformation": "Students treat volume as surface area, multiply arbitrary visible dimensions, or lose the unit cube when edge lengths are fractional.",
+      "assessing_questions": [
+        "What unit fills the space?",
+        "How many cubes are in one layer? How many layers?",
+        "What does each factor in the formula count?"
+      ],
+      "advancing_questions": [
+        "Build or sketch one layer, then iterate layers.",
+        "For fractional edges, choose the unit cube that fits the edge unit."
+      ],
+      "standards": [
+        "CCSS 5.MD.C",
+        "Indiana 6.GM.4",
+        "CCSS 6.G.A.2"
+      ],
+      "im_anchors": [
+        "IM-G5-U1",
+        "IM-G5-U8",
+        "IM-G6-U1",
+        "IM-G6-U4"
+      ],
+      "strategy_count": 12,
+      "misconception_count": 17,
+      "strategy_samples": [
+        {
+          "id": 102,
+          "bibtex_key": "JRME_Eisenhart_1993_Conceptual",
+          "year": 1993,
+          "description": "layer_by_layer_volume_count",
+          "domain": "measurement",
+          "topic": "volume of rectangular prism",
+          "subtopic": "deriving L x W x H formula from cubic units",
+          "page_refs": "21, 22",
+          "pdf": "pdfs/JRME/JRME_Eisenhart_1993_Conceptual.pdf",
+          "cluster_score": 8.5
+        },
+        {
+          "id": 400,
+          "bibtex_key": "ESM_Campbell_1995_Visual",
+          "year": 1995,
+          "description": "subtract_painted_cubes",
+          "domain": "geometric",
+          "topic": "painted cube enumeration",
+          "subtopic": "unpainted_center_cube",
+          "page_refs": "184",
+          "pdf": "pdfs/ESM/ESM_Campbell_1995_Visual.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 401,
+          "bibtex_key": "ESM_Campbell_1995_Visual",
+          "year": 1995,
+          "description": "center_cube_visualization",
+          "domain": "geometric",
+          "topic": "painted cube enumeration",
+          "subtopic": "spatial_visualization_of_interior",
+          "page_refs": "184",
+          "pdf": "pdfs/ESM/ESM_Campbell_1995_Visual.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 402,
+          "bibtex_key": "ESM_Campbell_1995_Visual",
+          "year": 1995,
+          "description": "mental_cube_counting",
+          "domain": "geometric",
+          "topic": "painted cube enumeration",
+          "subtopic": "mental_image_counting",
+          "page_refs": "185",
+          "pdf": "pdfs/ESM/ESM_Campbell_1995_Visual.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 403,
+          "bibtex_key": "ESM_Campbell_1995_Visual",
+          "year": 1995,
+          "description": "subdivided_cube_diagram",
+          "domain": "geometric",
+          "topic": "painted cube enumeration",
+          "subtopic": "three_dimensional_diagram",
+          "page_refs": "185, 186",
+          "pdf": "pdfs/ESM/ESM_Campbell_1995_Visual.pdf",
+          "cluster_score": 4.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44594,
+          "bibtex_key": "ZDM_Barrett_2011_Children's",
+          "year": 2011,
+          "description": "Students mistakenly use additive operations instead of multiplicative ratios when comparing the measures of two objects, failing to interpret measurement as a ratio between a unit quantity and the object being measured.",
+          "domain": "measurement",
+          "topic": "Volume and area comparison",
+          "subtopic": "Multiplicative versus additive reasoning",
+          "page_refs": "645, 648",
+          "pdf": "pdfs/ZDM/ZDM_Barrett_2011_Children's.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 44901,
+          "bibtex_key": "JMB_Lobato_2002_Quantitative",
+          "year": 2002,
+          "description": "Students conflated steepness with height, treating length as merely an implicit consequence of changing the height rather than an independent covarying quantity.",
+          "domain": "geometric",
+          "topic": "slope",
+          "subtopic": "covariation of height and length",
+          "page_refs": "96-99",
+          "pdf": "pdfs/JMB/JMB_Lobato_2002_Quantitative.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 45329,
+          "bibtex_key": "ESM_Hazzan_2005_Reducing",
+          "year": 2005,
+          "description": "When converting abstract area units, students randomly assign specific dimensions (length and width) to the area to convert each one-dimensional length separately.",
+          "domain": "measurement",
+          "topic": "Area",
+          "subtopic": "Unit conversion",
+          "page_refs": "115",
+          "pdf": "pdfs/ESM/ESM_Hazzan_2005_Reducing.pdf",
+          "cluster_score": 8.5
+        },
+        {
+          "id": 45455,
+          "bibtex_key": "ESM_Campbell_1995_Visual",
+          "year": 1995,
+          "description": "When unable to generate an appropriate visual schema or conceptualize the spatial mathematical structure, students resort to superficial and inappropriate calculations combining the isolated numbers present in the problem text.",
+          "domain": "geometric",
+          "topic": "3D geometry",
+          "subtopic": "Painted cube problem",
+          "page_refs": "185",
+          "pdf": "pdfs/ESM/ESM_Campbell_1995_Visual.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 45525,
+          "bibtex_key": "ESM_Stacey_2001_Effect",
+          "year": 2001,
+          "description": "Students struggle to correctly enumerate the volume of multibase blocks, often simply counting visible faces rather than comprehending the 3D volume relationships that represent base ten values.",
+          "domain": "measurement",
+          "topic": "Volume enumeration",
+          "subtopic": "Base ten blocks",
+          "page_refs": "208, 215",
+          "pdf": "pdfs/ESM/ESM_Stacey_2001_Effect.pdf",
+          "cluster_score": 6.5
+        }
+      ]
+    },
+    {
+      "id": "circle_measurement",
+      "title": "Circle Measurement",
+      "domains": [
+        "geometric",
+        "measurement"
+      ],
+      "automaton_states": [
+        "radius_diameter_relation",
+        "circumference_iteration",
+        "area_circle_decomposition"
+      ],
+      "productive_core": "Circle measurement coordinates radius, diameter, circumference, and area through invariant relationships and units.",
+      "deformation": "Students confuse radius and diameter, use linear units for area, or treat formulas as unrelated mnemonics.",
+      "assessing_questions": [
+        "What is the radius? What is the diameter?",
+        "Are you measuring around the circle or covering it?",
+        "What unit should the answer use?"
+      ],
+      "advancing_questions": [
+        "Mark radius and diameter on the same circle and compare them.",
+        "Estimate before using a formula to catch unit or radius-diameter errors."
+      ],
+      "standards": [
+        "Indiana 5.G.1",
+        "Indiana 7.GM.2",
+        "CCSS 7.G.B.4"
+      ],
+      "im_anchors": [
+        "IM-G7-U3",
+        "IM-Geo circle units"
+      ],
+      "strategy_count": 25,
+      "misconception_count": 27,
+      "strategy_samples": [
+        {
+          "id": 384,
+          "bibtex_key": "ESM_Brenner_1998_Meaning",
+          "year": 1998,
+          "description": "division_of_labor",
+          "domain": "measurement",
+          "topic": "money calculation",
+          "subtopic": "collaborative shopping computation",
+          "page_refs": "138, 139",
+          "pdf": "pdfs/ESM/ESM_Brenner_1998_Meaning.pdf",
+          "cluster_score": 3.5
+        },
+        {
+          "id": 410,
+          "bibtex_key": "ESM_Chassapis_1999_Mediation",
+          "year": 1999,
+          "description": "circle_template_tracing",
+          "domain": "geometric",
+          "topic": "circle construction",
+          "subtopic": "template tracing",
+          "page_refs": "286, 287, 288, 289, 292",
+          "pdf": "pdfs/ESM/ESM_Chassapis_1999_Mediation.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 411,
+          "bibtex_key": "ESM_Chassapis_1999_Mediation",
+          "year": 1999,
+          "description": "compass_circle_drawing",
+          "domain": "geometric",
+          "topic": "circle construction",
+          "subtopic": "compass construction",
+          "page_refs": "290, 291, 292",
+          "pdf": "pdfs/ESM/ESM_Chassapis_1999_Mediation.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 611,
+          "bibtex_key": "ESM_Moore_2013_Making",
+          "year": 2013,
+          "description": "unit_matched_proportion",
+          "domain": "geometric",
+          "topic": "angle measure",
+          "subtopic": "degree measure from arc length",
+          "page_refs": "231, 232",
+          "pdf": "pdfs/ESM/ESM_Moore_2013_Making.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 614,
+          "bibtex_key": "ESM_Moore_2013_Making",
+          "year": 2013,
+          "description": "circumference_fraction_comparison",
+          "domain": "geometric",
+          "topic": "angle measure",
+          "subtopic": "fraction of circumference",
+          "page_refs": "234, 235",
+          "pdf": "pdfs/ESM/ESM_Moore_2013_Making.pdf",
+          "cluster_score": 6.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44105,
+          "bibtex_key": "JRME_Thanheiser_2009_Preservice",
+          "year": 2009,
+          "description": "PSTs overgeneralize the standard base-ten subtraction algorithm to calculate elapsed time, failing to recognize that an hour must be regrouped as 60 minutes rather than 100.",
+          "domain": "measurement",
+          "topic": "elapsed time",
+          "subtopic": "regrouping",
+          "page_refs": "259, 272, 273",
+          "pdf": "pdfs/JRME/JRME_Thanheiser_2009_Preservice.pdf",
+          "cluster_score": 3.5
+        },
+        {
+          "id": 44289,
+          "bibtex_key": "JRME_Borasi_1994_Capitalizing",
+          "year": 1994,
+          "description": "Students create overly restrictive, overly broad, or procedurally focused descriptions when attempting to mathematically define geometric concepts, lacking an understanding of essentiality and precision.",
+          "domain": "geometric",
+          "topic": "definitions",
+          "subtopic": "circle",
+          "page_refs": "175, 176, 177, 178",
+          "pdf": "pdfs/JRME/JRME_Borasi_1994_Capitalizing.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 44310,
+          "bibtex_key": "JRME_Eisenhart_1993_Conceptual",
+          "year": 1993,
+          "description": "The prospective teacher lacks conceptual knowledge of geometric formulas, such as the derivation of pi, and instead relies on rote memory aids and arbitrary rules to teach students.",
+          "domain": "geometric",
+          "topic": "area and circumference of circles",
+          "subtopic": "pi",
+          "page_refs": "18",
+          "pdf": "pdfs/JRME/JRME_Eisenhart_1993_Conceptual.pdf",
+          "cluster_score": 9.5
+        },
+        {
+          "id": 44448,
+          "bibtex_key": "JRME_WilliamsPierce_2017_What",
+          "year": 2017,
+          "description": "Students confuse similar-sounding mathematical terms, incorrectly believing an intercepted arc refers to lines crossing or hitting each other.",
+          "domain": "geometric",
+          "topic": "circles and angles",
+          "subtopic": "intercepted arcs",
+          "page_refs": "249, 250",
+          "pdf": "pdfs/JRME/JRME_WilliamsPierce_2017_What.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 44560,
+          "bibtex_key": "ZDM_Diezmann_2009_Role",
+          "year": 2009,
+          "description": "Students struggle to recognize a sector as a specific proportion of a circle, such as a quarter, if it is presented in an atypical orientation rather than with standard horizontal and vertical radii.",
+          "domain": "geometric",
+          "topic": "Circles and sectors",
+          "subtopic": "Orientation",
+          "page_refs": "659",
+          "pdf": "pdfs/ZDM/ZDM_Diezmann_2009_Role.pdf",
+          "cluster_score": 5.5
+        }
+      ]
+    },
+    {
+      "id": "pythagorean_distance",
+      "title": "Pythagorean Theorem And Distance",
+      "domains": [
+        "geometric",
+        "measurement",
+        "algebraic"
+      ],
+      "automaton_states": [
+        "right_triangle_square_relation",
+        "coordinate_distance"
+      ],
+      "productive_core": "The Pythagorean theorem relates squares on the sides of a right triangle and extends to distance problems in the coordinate plane and three dimensions.",
+      "deformation": "Students apply the theorem to non-right triangles, add side lengths instead of squared areas, or lose which side is the hypotenuse.",
+      "assessing_questions": [
+        "Where is the right angle?",
+        "Which side is the hypotenuse?",
+        "Are you relating lengths or areas of squares on lengths?"
+      ],
+      "advancing_questions": [
+        "Draw the right triangle and label the legs and hypotenuse.",
+        "Check whether the largest side should be the result."
+      ],
+      "standards": [
+        "Indiana 8.GM.3",
+        "CCSS 8.G.B"
+      ],
+      "im_anchors": [
+        "IM-G8-U8",
+        "IM-Geo-U2"
+      ],
+      "strategy_count": 19,
+      "misconception_count": 78,
+      "strategy_samples": [
+        {
+          "id": 74,
+          "bibtex_key": "IJMEST_Olteanu_2012_Differences",
+          "year": 2012,
+          "description": "completing_the_square",
+          "domain": "algebraic",
+          "topic": "second-degree equations",
+          "subtopic": "completing the square",
+          "page_refs": "581, 582",
+          "pdf": "pdfs/IJMEST/IJMEST_Olteanu_2012_Differences.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 151,
+          "bibtex_key": "MTL_Lesh_2003_Problem",
+          "year": 2003,
+          "description": "coordinate_part_part_and_part_whole_with_angles",
+          "domain": "geometric",
+          "topic": "coordinated quantitative relations in scaling",
+          "subtopic": "angles and lengths together",
+          "page_refs": "172",
+          "pdf": "pdfs/MTL/MTL_Lesh_2003_Problem.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 335,
+          "bibtex_key": "ZDM_Antonini_2008_Indirect",
+          "year": 2008,
+          "description": "figure_deformation_indirect_argumentation",
+          "domain": "geometric",
+          "topic": "angle between angle bisectors of a triangle",
+          "subtopic": "indirect argumentation via figure transformation",
+          "page_refs": "409, 410",
+          "pdf": "pdfs/ZDM/ZDM_Antonini_2008_Indirect.pdf",
+          "cluster_score": 6.5
+        },
+        {
+          "id": 381,
+          "bibtex_key": "ESM_Brenner_1998_Meaning",
+          "year": 1998,
+          "description": "storekeeper_picks_amount",
+          "domain": "measurement",
+          "topic": "money payment",
+          "subtopic": "delegating exact coin selection",
+          "page_refs": "138",
+          "pdf": "pdfs/ESM/ESM_Brenner_1998_Meaning.pdf",
+          "cluster_score": 3.5
+        },
+        {
+          "id": 396,
+          "bibtex_key": "ESM_Caglayan_2010_Eighth",
+          "year": 2010,
+          "description": "plus_negative_notation",
+          "domain": "algebraic",
+          "topic": "linear equations",
+          "subtopic": "translating_cups_and_tiles",
+          "page_refs": "151, 152, 159, 160",
+          "pdf": "pdfs/ESM/ESM_Caglayan_2010_Eighth.pdf",
+          "cluster_score": 3.0
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44206,
+          "bibtex_key": "JRME_Brenner_1999_Cross-national",
+          "year": 1999,
+          "description": "Students may broadly reject algebraic notation, such as the use of variables or parentheses, as an appropriate way to represent arithmetic word problems.",
+          "domain": "algebraic",
+          "topic": "algebraic notation",
+          "subtopic": "variables and parentheses",
+          "page_refs": null,
+          "pdf": "pdfs/JRME/JRME_Brenner_1999_Cross-national.pdf",
+          "cluster_score": 3.0
+        },
+        {
+          "id": 44315,
+          "bibtex_key": "JRME_Mayberry_1983_Van",
+          "year": 1983,
+          "description": "Students draw a figure but fail to recognize its necessary properties, such as assuming a right triangle does not have to have a longest side or a largest angle.",
+          "domain": "geometric",
+          "topic": "right triangles",
+          "subtopic": "properties",
+          "page_refs": "65",
+          "pdf": "pdfs/JRME/JRME_Mayberry_1983_Van.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 44336,
+          "bibtex_key": "JRME_Leatham_2015_Conceptualizing",
+          "year": 2015,
+          "description": "Students incorrectly attempt to isolate a variable in an equation involving subtraction by subtracting the constant from both sides, rather than adding its additive inverse.",
+          "domain": "algebraic",
+          "topic": "linear equations",
+          "subtopic": "inverse operations",
+          "page_refs": "110, 115",
+          "pdf": "pdfs/JRME/JRME_Leatham_2015_Conceptualizing.pdf",
+          "cluster_score": 4.0
+        },
+        {
+          "id": 44484,
+          "bibtex_key": "ZDM_Cooper_2008_Effect",
+          "year": 2008,
+          "description": "When solving linear equations, students confuse the inverse principle used to isolate the unknown with the balance principle used to maintain equality across the equation, mistakenly applying opposite operations to both sides.",
+          "domain": "algebraic",
+          "topic": "Linear equations",
+          "subtopic": "Balance and inverse principles",
+          "page_refs": "32, 33",
+          "pdf": "pdfs/ZDM/ZDM_Cooper_2008_Effect.pdf",
+          "cluster_score": 5.0
+        },
+        {
+          "id": 44486,
+          "bibtex_key": "ZDM_Cooper_2008_Effect",
+          "year": 2008,
+          "description": "When writing equations to represent the inverse change (backtracking) of a function, students struggle to write the reverse equation left-to-right and fail to apply the correct order of operations.",
+          "domain": "algebraic",
+          "topic": "Functions and change",
+          "subtopic": "Inverse equations",
+          "page_refs": "30",
+          "pdf": "pdfs/ZDM/ZDM_Cooper_2008_Effect.pdf",
+          "cluster_score": 4.0
+        }
+      ]
+    },
+    {
+      "id": "geometric_proof_construction",
+      "title": "Geometric Proof, Construction, And Theorem Use",
+      "domains": [
+        "geometric",
+        "algebraic"
+      ],
+      "automaton_states": [
+        "construction_invariant",
+        "deductive_chain",
+        "theorem_condition_check"
+      ],
+      "productive_core": "Geometric proof and construction depend on preserving invariants, checking theorem conditions, and linking claims through reasons.",
+      "deformation": "Students infer from diagrams alone, use theorems without checking hypotheses, or treat construction steps as drawing rather than constraint preservation.",
+      "assessing_questions": [
+        "What is given? What must be proven?",
+        "Which theorem applies, and are its conditions met?",
+        "What invariant does this construction preserve?"
+      ],
+      "advancing_questions": [
+        "Write a claim-reason chain before formal proof.",
+        "Test the construction by dragging or varying the diagram and naming what stays invariant."
+      ],
+      "standards": [
+        "High School Geometry congruence, similarity, circles, proof"
+      ],
+      "im_anchors": [
+        "IM-Geo-U1",
+        "IM-Geo-U2",
+        "IM-Geo-U3",
+        "IM-Geo-U5"
+      ],
+      "strategy_count": 26,
+      "misconception_count": 76,
+      "strategy_samples": [
+        {
+          "id": 153,
+          "bibtex_key": "MTL_Lesh_2003_Problem",
+          "year": 2003,
+          "description": "decompose_quadrilateral_into_kite_pieces_for_square_shadow",
+          "domain": "geometric",
+          "topic": "projective geometry",
+          "subtopic": "shadow transformation via auxiliary kite construction",
+          "page_refs": "184-185",
+          "pdf": "pdfs/MTL/MTL_Lesh_2003_Problem.pdf",
+          "cluster_score": 5.5
+        },
+        {
+          "id": 406,
+          "bibtex_key": "ESM_Carlsen_2010_Appropriating",
+          "year": 2010,
+          "description": "establishing_general_term",
+          "domain": "algebraic",
+          "topic": "geometric sequence",
+          "subtopic": "general term formula",
+          "page_refs": "102,103,104,105",
+          "pdf": "pdfs/ESM/ESM_Carlsen_2010_Appropriating.pdf",
+          "cluster_score": 3.0
+        },
+        {
+          "id": 408,
+          "bibtex_key": "ESM_Carlsen_2010_Appropriating",
+          "year": 2010,
+          "description": "deciding_on_convergence",
+          "domain": "algebraic",
+          "topic": "geometric series",
+          "subtopic": "convergence criterion",
+          "page_refs": "109,110,111,112,113",
+          "pdf": "pdfs/ESM/ESM_Carlsen_2010_Appropriating.pdf",
+          "cluster_score": 3.0
+        },
+        {
+          "id": 432,
+          "bibtex_key": "ESM_English_1996_Analogical",
+          "year": 1996,
+          "description": "linear_relational_grouping",
+          "domain": "algebraic",
+          "topic": "equation classification",
+          "subtopic": "linear equation structure",
+          "page_refs": "147, 148",
+          "pdf": "pdfs/ESM/ESM_English_1996_Analogical.pdf",
+          "cluster_score": 3.0
+        },
+        {
+          "id": 692,
+          "bibtex_key": "ESM_Schalkwijk_2000_Learning",
+          "year": 2000,
+          "description": "ternary_dilation_proof",
+          "domain": "geometric",
+          "topic": "Cantor set similarity",
+          "subtopic": "ternary dilation",
+          "page_refs": "304, 305, 306, 307",
+          "pdf": "pdfs/ESM/ESM_Schalkwijk_2000_Learning.pdf",
+          "cluster_score": 5.5
+        }
+      ],
+      "misconception_samples": [
+        {
+          "id": 44161,
+          "bibtex_key": "JRME_Toom_1993_Russian",
+          "year": 1993,
+          "description": "Students inappropriately treat algebraic variables as direct labels or names for people rather than as representations of quantitative parameters like time or rate.",
+          "domain": "algebraic",
+          "topic": "variables",
+          "subtopic": "word problem translation",
+          "page_refs": "134",
+          "pdf": "pdfs/JRME/JRME_Toom_1993_Russian.pdf",
+          "cluster_score": 3.0
+        },
+        {
+          "id": 44172,
+          "bibtex_key": "JRME_Gregg_1995_Tensions",
+          "year": 1995,
+          "description": "Students and teachers interactively reduce the complex mathematical practices of explaining and justifying in proofs to simply naming a formal rule, procedure, or theorem.",
+          "domain": "geometric",
+          "topic": "proof",
+          "subtopic": "justifying steps",
+          "page_refs": "451",
+          "pdf": "pdfs/JRME/JRME_Gregg_1995_Tensions.pdf",
+          "cluster_score": 7.5
+        },
+        {
+          "id": 44284,
+          "bibtex_key": "JRME_Knuth_2002_Secondary",
+          "year": 2002,
+          "description": "Teachers accept empirical evidence, such as testing a few specific cases or using a visual demonstration, as a mathematically valid formal proof.",
+          "domain": "geometric",
+          "topic": "proof and justification",
+          "subtopic": "empirical evidence",
+          "page_refs": "391, 392",
+          "pdf": "pdfs/JRME/JRME_Knuth_2002_Secondary.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 44285,
+          "bibtex_key": "JRME_Knuth_2002_Secondary",
+          "year": 2002,
+          "description": "Teachers evaluate an algebraic argument as a valid proof based solely on the correctness of the symbolic manipulations, failing to recognize that the argument illogically proves the converse.",
+          "domain": "algebraic",
+          "topic": "proof and justification",
+          "subtopic": "proving the converse",
+          "page_refs": "392, 393",
+          "pdf": "pdfs/JRME/JRME_Knuth_2002_Secondary.pdf",
+          "cluster_score": 4.5
+        },
+        {
+          "id": 44317,
+          "bibtex_key": "JRME_Mayberry_1983_Van",
+          "year": 1983,
+          "description": "Students answer generalized class inclusion and relationship questions by drawing specific figures and deriving answers from the visual appearance of their own drawings.",
+          "domain": "geometric",
+          "topic": "similarity and congruence",
+          "subtopic": "class inclusions",
+          "page_refs": "65",
+          "pdf": "pdfs/JRME/JRME_Mayberry_1983_Van.pdf",
+          "cluster_score": 8.5
+        }
+      ]
+    }
+  ],
+  "seeds": [
+    {
+      "band": "K-2",
+      "focus": "Informal shape recognition, attributes, composition, equal shares",
+      "clusters": [
+        "shape_attributes_informal",
+        "defining_attributes_classification",
+        "compose_decompose_shapes",
+        "equal_shares_fraction_geometry"
+      ],
+      "standards": [
+        "K.G",
+        "1.G",
+        "2.G"
+      ],
+      "im": [
+        "IM-K-U2",
+        "IM-G1-U7",
+        "IM-G2-U8"
+      ],
+      "monitor_for": "Prototype matching instead of attribute-based classification."
+    },
+    {
+      "band": "3-5",
+      "focus": "Area, perimeter, quadrilaterals, coordinate grids, volume",
+      "clusters": [
+        "area_tiling_unit_iteration",
+        "perimeter_distance_around",
+        "defining_attributes_classification",
+        "coordinate_grid_location",
+        "volume_packing_layers"
+      ],
+      "standards": [
+        "3.G",
+        "3.MD",
+        "4.G",
+        "5.G",
+        "5.MD"
+      ],
+      "im": [
+        "IM-G3-U2",
+        "IM-G3-U7",
+        "IM-G4-U7",
+        "IM-G5-U1",
+        "IM-G5-U7"
+      ],
+      "monitor_for": "Measurement formulas used before units and attributes are coordinated."
+    },
+    {
+      "band": "6-8",
+      "focus": "Surface area, volume, scale drawings, transformations, Pythagorean theorem",
+      "clusters": [
+        "surface_area_nets",
+        "volume_packing_layers",
+        "scale_drawings_geometric_proportionality",
+        "transformations_congruence_similarity",
+        "pythagorean_distance"
+      ],
+      "standards": [
+        "6.G",
+        "7.G",
+        "8.G"
+      ],
+      "im": [
+        "IM-G6-U1",
+        "IM-G7-U1",
+        "IM-G7-U7",
+        "IM-G8-U1",
+        "IM-G8-U8"
+      ],
+      "monitor_for": "Students use procedures without preserving corresponding parts, units, or conditions."
+    },
+    {
+      "band": "Geometry",
+      "focus": "Constructions, transformations, congruence, similarity, circles, proof",
+      "clusters": [
+        "transformations_congruence_similarity",
+        "circle_measurement",
+        "pythagorean_distance",
+        "geometric_proof_construction"
+      ],
+      "standards": [
+        "High School Geometry"
+      ],
+      "im": [
+        "IM-Geo-U1",
+        "IM-Geo-U2",
+        "IM-Geo-U3",
+        "IM-Geo-U5"
+      ],
+      "monitor_for": "Diagram-based inference without theorem conditions or invariant control."
+    }
+  ]
+}
