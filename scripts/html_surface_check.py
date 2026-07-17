@@ -45,9 +45,21 @@ def server_routes(server: Path) -> tuple[set[str], list[str]]:
     prefixes = re.findall(
         r"""(?:self\.path|raw_path)\.startswith\(["'](/api/[^"']+)["']\)""", text
     )
+    route_dir = server.parent / "routes"
+    if route_dir.is_dir():
+        route_text = "\n".join(
+            path.read_text(encoding="utf-8") for path in route_dir.glob("*.py")
+        )
+        declared = set(re.findall(
+            r'''Route\(\s*["'](?:GET|POST)["']\s*,\s*["'](/api/[^"']+)["']''',
+            route_text,
+        ))
+        declared |= set(re.findall(r'''["'](/api/[^"']+)["']\s*[,|:]''', route_text))
+        exact |= {path for path in declared if "{" not in path}
     workflow_dir = server.parent / "workflow"
     if workflow_dir.exists():
-        exact |= {f"/api/{path.stem}" for path in workflow_dir.glob("*.py")}
+        exact |= {f"/api/{path.stem}" for path in workflow_dir.glob("*.py")
+                  if path.stem != "__init__"}
     return exact, prefixes
 
 

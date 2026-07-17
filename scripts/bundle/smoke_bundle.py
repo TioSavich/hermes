@@ -80,6 +80,7 @@ TOY_TRANSCRIPT = (
 # staged tree without them fails on first use, not at startup — which is how
 # the gap stayed quiet until a colleague hit it.
 SYSTEM_PROMPTS = [
+    "chat.md", "pml_reader.md",
     "content_consolidate.md", "content_per_file.md", "draft.md",
     "grade.md", "parse.md", "profile.md", "score.md",
     "transcribe.md", "transcribe_timed.md",
@@ -143,6 +144,16 @@ def api_routes(tree: Path) -> set[str]:
     text = (tree / "hermes/app/server.py").read_text(encoding="utf-8")
     routes = set(re.findall(r'(?:self\.path|parsed\.path) == "(/api/[^"]+)"', text))
     routes |= set(re.findall(r'raw_path[^"\n]*"(/api/[^"]+)"', text))
+    route_dir = tree / "hermes/app/routes"
+    if route_dir.is_dir():
+        route_text = "\n".join(
+            path.read_text(encoding="utf-8") for path in route_dir.glob("*.py")
+        )
+        declared = set(re.findall(
+            r'Route\(\s*"(?:GET|POST)"\s*,\s*"(/api/[^"]+)"', route_text
+        ))
+        declared |= set(re.findall(r'"(/api/[^"]+)"\s*[,|:]', route_text))
+        routes |= {path for path in declared if "{" not in path}
     workflow = tree / "hermes/app/workflow"
     if workflow.is_dir():
         routes |= {f"/api/{p.stem}" for p in workflow.glob("*.py")
