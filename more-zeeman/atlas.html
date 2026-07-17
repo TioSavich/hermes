@@ -86,12 +86,13 @@
       function render(data) {
         var items = Array.isArray(data.capabilities) ? data.capabilities : [];
         var counts = data.counts || {};
-        var total = items.length;
-        countsNode.textContent = total + " capabilities: "
+        var orphans = counts.orphan_module || 0;
+        var ops = items.length - orphans;
+        countsNode.textContent = ops + " capabilities: "
           + (counts.routed_paged || 0) + " reachable from a page, "
           + (counts.routed_only || 0) + " routed without a page, "
-          + (counts.unrouted || 0) + " unrouted, "
-          + (counts.orphan_module || 0) + " orphan modules.";
+          + (counts.unrouted || 0) + " unrouted — plus "
+          + orphans + " shipped modules outside the load closure.";
         if (!items.length) {
           statusNode.textContent = "The worker returned no capability entries.";
           statusNode.className = "status error";

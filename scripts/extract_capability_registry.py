@@ -223,20 +223,38 @@ def function_worker_ops(node: ast.AST) -> set[str]:
 
 def logic_methods() -> tuple[dict[str, set[str]], set[str]]:
     tree = ast.parse(LOGIC.read_text(encoding="utf-8"), filename=str(LOGIC))
-    methods: dict[str, set[str]] = {}
-    render_ops: set[str] = set()
+    nodes: dict[str, ast.FunctionDef | ast.AsyncFunctionDef] = {}
     for node in ast.walk(tree):
         if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
-            methods[node.name] = function_worker_ops(node)
-            if node.name == "_handle_render":
-                for child in ast.walk(node):
-                    if isinstance(child, ast.Set):
-                        values = {
-                            item.value for item in child.elts
-                            if isinstance(item, ast.Constant) and isinstance(item.value, str)
-                        }
-                        if "fraction_render" in values:
-                            render_ops |= values
+            nodes[node.name] = node
+    direct = {name: function_worker_ops(node) for name, node in nodes.items()}
+    # A handler may reach the worker through one intra-class helper hop
+    # (_handle_chat -> _ground_message); union each helper's direct ops in.
+    methods: dict[str, set[str]] = {}
+    for name, node in nodes.items():
+        ops = set(direct[name])
+        for call in (child for child in ast.walk(node) if isinstance(child, ast.Call)):
+            func = call.func
+            if (
+                isinstance(func, ast.Attribute)
+                and isinstance(func.value, ast.Name)
+                and func.value.id == "self"
+                and not func.attr.startswith("_handle_")
+                and func.attr in direct
+            ):
+                ops |= direct[func.attr]
+        methods[name] = ops
+    render_ops: set[str] = set()
+    render_node = nodes.get("_handle_render")
+    if render_node is not None:
+        for child in ast.walk(render_node):
+            if isinstance(child, ast.Set):
+                values = {
+                    item.value for item in child.elts
+                    if isinstance(item, ast.Constant) and isinstance(item.value, str)
+                }
+                if "fraction_render" in values:
+                    render_ops |= values
     methods.setdefault("_handle_render", set()).update(render_ops)
     # Chat can forward the finite scene op vocabulary returned by these helpers.
     for helper in ("_chat_render_scene_request", "_fraction_compare_scene_request"):

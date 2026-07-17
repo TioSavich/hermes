@@ -98,7 +98,7 @@ capability('geometry_volume_surface_area_material_witness', 'hermes_worker', 'ge
 capability('gesture_alignment', 'gesture_alignment', 'unclassified', ['observations', 'utterances'], unrouted).
 capability('get_base', 'cgi_base', 'infrastructure', [], unrouted).
 capability('godel_primes_witness', 'cw_godel_primes', 'unclassified', ['query', 'source'], unrouted).
-capability('ground', 'hermes_encyclopedia', 'unclassified', ['query'], unrouted).
+capability('ground', 'hermes_encyclopedia', 'unclassified', ['query'], routed_paged).
 capability('grounded_arith_witness', 'cw_grounded_arith', 'unclassified', ['inputs', 'operation', 'output', 'source'], unrouted).
 capability('grounding_for', 'hermes_encyclopedia', 'unclassified', ['operation'], routed_paged).
 capability('grounding_inference_witness', 'grounding_metaphors', 'unclassified', ['inference', 'metaphor'], unrouted).
@@ -300,6 +300,7 @@ capability_route('fraction_render', 'GET', '/api/fraction/render').
 capability_route('fraction_render', 'POST', '/api/monitoring_visuals').
 capability_route('fraction_render', 'POST', '/api/render').
 capability_route('geometry', 'POST', '/api/geometry').
+capability_route('ground', 'POST', '/api/chat').
 capability_route('grounding_for', 'POST', '/api/grounding').
 capability_route('grounding_metaphors', 'POST', '/api/grounding').
 capability_route('hybridization_render', 'POST', '/api/monitoring_visuals').
@@ -483,6 +484,7 @@ capability_page('fraction_render', '/more-zeeman/number-line/index.html').
 capability_page('fraction_render', '/more-zeeman/place-value-chart/index.html').
 capability_page('fraction_render', '/more-zeeman/set-grouping/index.html').
 capability_page('fraction_render', '/more-zeeman/unit-echo/index.html').
+capability_page('ground', '/hermes/app/web/console.html').
 capability_page('grounding_for', '/hermes/app/web/breaks.html').
 capability_page('grounding_for', '/hermes/app/web/console.html').
 capability_page('grounding_metaphors', '/hermes/app/web/breaks.html').
