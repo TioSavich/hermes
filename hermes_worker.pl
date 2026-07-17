@@ -4893,6 +4893,14 @@ dispatch_geometry(matching_concepts, [Tokens, GradeBand], Id, Response) :-
     maplist(concept_dict, Concepts, Dicts),
     ok_response(Id, Dicts, Response).
 
+dispatch_geometry(workflow_monitoring_matches, [Tokens, GradeBand], Id, Response) :-
+    !,
+    norm_grade_band(GradeBand, GB),
+    matching_concepts(Tokens, GB, Concepts0),
+    take_n(3, Concepts0, Concepts),
+    maplist(workflow_monitoring_concept_dict, Concepts, Dicts),
+    ok_response(Id, _{concepts: Dicts}, Response).
+
 dispatch_geometry(concepts_in_neighborhood, [ConceptIds, Depth], Id, Response) :-
     !,
     norm_concept_ids(ConceptIds, CIds),
@@ -5003,6 +5011,39 @@ dispatch_geometry(concept_monitoring_bundle, _, Id, Response) :- !,
 dispatch_geometry(Predicate, _Args, Id, Response) :-
     format(string(Message), "Unsupported geometry predicate: ~w", [Predicate]),
     error_response(Id, unknown_geometry_predicate, Message, Response).
+
+workflow_monitoring_concept_dict(concept(Id, Name, Topic, Score), Dict) :-
+    (   concept_monitoring_bundle(Id,
+            geometry_monitoring_bundle(_, _, Related, Standards,
+                                       Misconceptions, Metaphors, Markers, Arcs))
+    ->  true
+    ;   Related = [], Standards = [], Misconceptions = [],
+        Metaphors = [], Markers = [], Arcs = []
+    ),
+    take_n(4, Related, Related0),
+    take_n(4, Standards, Standards0),
+    take_n(4, Misconceptions, Misconceptions0),
+    take_n(4, Metaphors, Metaphors0),
+    take_n(4, Markers, Markers0),
+    take_n(3, Arcs, Arcs0),
+    maplist(term_to_text, Related0, RelatedTexts),
+    maplist(term_to_text, Standards0, StandardTexts),
+    maplist(term_to_text, Misconceptions0, MisconceptionTexts),
+    maplist(term_to_text, Metaphors0, MetaphorTexts),
+    maplist(term_to_text, Markers0, MarkerTexts),
+    maplist(term_to_text, Arcs0, ArcTexts),
+    pck_synthesis_for(Id, Pck),
+    term_to_text(Pck, PckText),
+    concept_dict(concept(Id, Name, Topic, Score), Base),
+    Dict = Base.put(_{
+        related: RelatedTexts,
+        standards: StandardTexts,
+        misconceptions: MisconceptionTexts,
+        metaphors: MetaphorTexts,
+        markers: MarkerTexts,
+        arcs: ArcTexts,
+        pck: PckText
+    }).
 
 request_id(Request, Id) :-
     (   get_dict(id, Request, Id)

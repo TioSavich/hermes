@@ -13,15 +13,13 @@ functions below provide:
 
 from __future__ import annotations
 
-from functools import lru_cache
 import html as html_lib
 import json
-import os
 import re
-import subprocess
 from pathlib import Path
+from typing import Any, Callable
 
-from hermes.app.root import HermesRootError, resolve_hermes_root
+WorkerRequest = Callable[..., Any]
 
 
 FALLBACK_HINTS: dict[str, dict[str, object]] = {
@@ -152,104 +150,22 @@ def fallback_tokens_for(pack_root: Path, prompt_id: str) -> tuple[list[str], obj
     return tokens[:80], hint.get("grade_band", "any")
 
 
-def _prolog_atom_list(tokens: list[str]) -> str:
-    return "[" + ",".join(f"'{token}'" for token in tokens if re.fullmatch(r"[a-z0-9_]+", token)) + "]"
-
-
-def _prolog_grade_band(value: object) -> str:
-    if isinstance(value, list) and all(isinstance(v, int) for v in value):
-        return "[" + ",".join(str(v) for v in value) + "]"
-    return "any"
-
-
-@lru_cache(maxsize=64)
-def _geometry_concept_matches(root: str, tokens_key: tuple[str, ...], grade_band_key: str, timeout: int) -> dict | None:
-    tokens = _prolog_atom_list(list(tokens_key))
-    if tokens == "[]":
+def _geometry_concept_matches(
+    worker_request: WorkerRequest,
+    tokens: list[str],
+    grade_band: object,
+) -> dict | None:
+    if not tokens:
         return None
-    script = f"""
-:- use_module(library(http/json)).
-:- consult('geometry/geometry_bridge.pl').
-
-take_n(_, [], []) :- !.
-take_n(0, _, []) :- !.
-take_n(N, [H|T], [H|R]) :-
-    N > 0,
-    N1 is N - 1,
-    take_n(N1, T, R).
-
-term_strings(Terms, Strings) :-
-    maplist(term_string, Terms, Strings).
-
-concept_dict(concept(Id, Name, Topic, Score), Dict) :-
-    (   concept_monitoring_bundle(Id,
-            geometry_monitoring_bundle(_, _, Related, Standards,
-                                       Misconceptions, Metaphors, Markers, Arcs))
-    ->  true
-    ;   Related = [], Standards = [], Misconceptions = [],
-        Metaphors = [], Markers = [], Arcs = []
-    ),
-    take_n(4, Related, Related0),
-    take_n(4, Standards, Standards0),
-    take_n(4, Misconceptions, Misconceptions0),
-    take_n(4, Metaphors, Metaphors0),
-    take_n(4, Markers, Markers0),
-    take_n(3, Arcs, Arcs0),
-    term_strings(Related0, RelatedS),
-    term_strings(Standards0, StandardsS),
-    term_strings(Misconceptions0, MisconceptionsS),
-    term_strings(Metaphors0, MetaphorsS),
-    term_strings(Markers0, MarkersS),
-    term_strings(Arcs0, ArcsS),
-    pck_synthesis_for(Id, Pck),
-    term_string(Pck, PckS),
-    Dict = _{{id:Id, name:Name, topic:Topic, score:Score,
-              related:RelatedS, standards:StandardsS,
-              misconceptions:MisconceptionsS, metaphors:MetaphorsS,
-              markers:MarkersS, arcs:ArcsS, pck:PckS}}.
-
-main :-
-    Tokens = {tokens},
-    GradeBand = {grade_band_key},
-    matching_concepts(Tokens, GradeBand, 3, Concepts0),
-    take_n(3, Concepts0, Concepts),
-    maplist(concept_dict, Concepts, Dicts),
-    json_write_dict(current_output, _{{concepts:Dicts}}, [width(0)]),
-    nl.
-
-:- initialization(main, main).
-"""
     try:
-        proc = subprocess.run(
-            [
-                "swipl",
-                "--on-error=status",
-                "--on-warning=status",
-                "-q",
-                "-s",
-                "/dev/stdin",
-            ],
-            cwd=root,
-            input=script,
-            text=True,
-            capture_output=True,
-            timeout=timeout,
-            check=False,
+        result = worker_request(
+            "geometry",
+            predicate="workflow_monitoring_matches",
+            args=[tokens, grade_band],
         )
-    except (OSError, subprocess.TimeoutExpired):
+    except Exception:
         return None
-    if proc.returncode != 0:
-        return None
-    for line in reversed(proc.stdout.splitlines()):
-        stripped = line.strip()
-        if not stripped.startswith("{"):
-            continue
-        try:
-            data = json.loads(stripped)
-        except json.JSONDecodeError:
-            continue
-        return data if isinstance(data, dict) else None
-    return None
+    return result if isinstance(result, dict) else None
 
 
 def _append_term_lines(lines: list[str], label: str, values: list[str]) -> None:
@@ -293,70 +209,32 @@ def format_geometry_fallback(prompt_id: str, data: dict, tokens: list[str]) -> s
     return "\n".join(lines)
 
 
-def prolog_fallback_pck(pack_root: Path, prompt_id: str, *, timeout: int = 45) -> str:
-    try:
-        root = resolve_hermes_root()
-    except HermesRootError:
-        return ""
+def prolog_fallback_pck(
+    pack_root: Path,
+    prompt_id: str,
+    *,
+    worker_request: WorkerRequest,
+    timeout: int = 45,
+) -> str:
     tokens, grade_band = fallback_tokens_for(pack_root, prompt_id)
-    grade_band_term = _prolog_grade_band(grade_band)
-    data = _geometry_concept_matches(str(root), tuple(tokens), grade_band_term, timeout)
+    data = _geometry_concept_matches(worker_request, tokens, grade_band)
     if not data:
         return ""
     return format_geometry_fallback(prompt_id, data, tokens)
 
 
-def monitoring_chart_export(pack_root: Path, lesson_code: str, *, timeout: int = 45) -> dict | None:
+def monitoring_chart_export(
+    pack_root: Path,
+    lesson_code: str,
+    *,
+    worker_request: WorkerRequest,
+    timeout: int = 45,
+) -> dict | None:
     try:
-        root = resolve_hermes_root()
-    except HermesRootError:
+        result = worker_request("monitoring_chart_export", lesson_code=lesson_code)
+    except Exception:
         return None
-
-    worker = root / "hermes_worker.pl"
-    request = {
-        "id": f"monitoring_{lesson_code}",
-        "op": "monitoring_chart_export",
-        "lesson_code": lesson_code,
-    }
-    env = os.environ.copy()
-    env["UMEDCTA_ROOT"] = str(root)
-
-    try:
-        proc = subprocess.run(
-            [
-                "swipl",
-                "--on-error=status",
-                "--on-warning=status",
-                "-q",
-                "-s",
-                str(worker),
-                "-g",
-                "worker_main",
-            ],
-            input=json.dumps(request, ensure_ascii=True) + "\n",
-            text=True,
-            capture_output=True,
-            timeout=timeout,
-            env=env,
-            check=False,
-        )
-    except (OSError, subprocess.TimeoutExpired):
-        return None
-
-    if proc.returncode != 0:
-        return None
-
-    for raw_line in proc.stdout.splitlines():
-        line = raw_line.strip()
-        if not line.startswith("{"):
-            continue
-        try:
-            response = json.loads(line)
-        except json.JSONDecodeError:
-            continue
-        if response.get("ok") is True and isinstance(response.get("result"), dict):
-            return response["result"]
-    return None
+    return result if isinstance(result, dict) else None
 
 
 def _fmt_field(label: str, value: object) -> str:
@@ -469,11 +347,18 @@ def format_prolog_chart(result: dict) -> str:
     return "\n".join(lines).strip()
 
 
-def prolog_pck_block(pack_root: Path, prompt_id: str) -> str:
+def prolog_pck_block(
+    pack_root: Path,
+    prompt_id: str,
+    *,
+    worker_request: WorkerRequest,
+) -> str:
     lesson_code = im_code_for(pack_root, prompt_id)
     if not lesson_code:
         return ""
-    result = monitoring_chart_export(pack_root, lesson_code)
+    result = monitoring_chart_export(
+        pack_root, lesson_code, worker_request=worker_request
+    )
     if not result:
         return ""
     excerpt = format_prolog_chart(result)

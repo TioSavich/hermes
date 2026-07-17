@@ -33,13 +33,12 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
-import os as _os
-HERE = Path(_os.environ.get("HERMES_PACK_ROOT", HERE.parent))
-DATA = HERE / "runtime"
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 
-from lib import roster as rosterlib  # noqa: E402
+from hermes.app.workflow import service  # noqa: E402
+from hermes.app.workflow.lib import roster as rosterlib  # noqa: E402
+from hermes.app.workflow.runtime import DATA, HERE  # noqa: E402
 
 PARSED_DIR = DATA / "output" / "parsed"
 METRICS_DIR = DATA / "output" / "metrics"
@@ -308,11 +307,11 @@ def write_comparison_csv(all_metrics: list[dict], path: Path) -> None:
             })
 
 
-def main() -> None:
+def _main(argv: list[str] | None = None) -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--only", help="Only compute metrics for one prompt_id.")
     ap.add_argument("--graph", action="store_true", help="Emit Graphviz .dot and standalone .html per prompt.")
-    args = ap.parse_args()
+    args = ap.parse_args(argv)
 
     if not PARSED_DIR.exists() or not any(PARSED_DIR.glob("*.json")):
         sys.exit("no parsed files in output/parsed/. Run parse.py first.")
@@ -342,5 +341,13 @@ def main() -> None:
         print(f"done. {METRICS_DIR.relative_to(HERE)}/")
 
 
+def run(payload: dict, context: service.WorkflowContext) -> service.WorkflowResult:
+    return service.run_command("metrics", payload, context, _main)
+
+
+def main(argv: list[str] | None = None) -> int:
+    return service.run_cli("metrics", argv, _main)
+
+
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

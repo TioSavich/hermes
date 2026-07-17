@@ -24,13 +24,12 @@ import json
 import sys
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
-import os as _os
-HERE = Path(_os.environ.get("HERMES_PACK_ROOT", HERE.parent))
-DATA = HERE / "runtime"
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 
-from lib import api, monitoring as monlib, roster as rosterlib  # noqa: E402
+from hermes.app.workflow import service  # noqa: E402
+from hermes.app.workflow.lib import api, monitoring as monlib, roster as rosterlib  # noqa: E402
+from hermes.app.workflow.runtime import DATA, HERE  # noqa: E402
 
 PARSED_DIR = DATA / "output" / "parsed"
 PROFILES_DIR = DATA / "output" / "profiles"
@@ -38,16 +37,17 @@ CONTENT_DIR = DATA / "output" / "content"
 
 
 def pck_block(prompt_id: str) -> str:
-    prolog_block = monlib.prolog_pck_block(HERE, prompt_id)
+    worker_request = service.current_context().worker_request
+    prolog_block = monlib.prolog_pck_block(HERE, prompt_id, worker_request=worker_request)
     if prolog_block:
         return prolog_block
 
     chart = monlib.chart_path_for(HERE, prompt_id)
     if not chart:
-        return monlib.prolog_fallback_pck(HERE, prompt_id)
+        return monlib.prolog_fallback_pck(HERE, prompt_id, worker_request=worker_request)
     excerpt = monlib.pck_section(chart)
     if not excerpt:
-        return monlib.prolog_fallback_pck(HERE, prompt_id)
+        return monlib.prolog_fallback_pck(HERE, prompt_id, worker_request=worker_request)
     return (
         "----- PCK CONTEXT (from monitoring chart; use for profile grounding only) -----\n"
         f"Chart: {chart.relative_to(HERE)}\n\n"
@@ -134,11 +134,11 @@ def format_posts_for_gemma(
     return "\n".join(pieces).strip() + "\n"
 
 
-def main() -> None:
+def _main(argv: list[str] | None = None) -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--force", action="store_true", help="Re-write profiles that already exist.")
     ap.add_argument("--only", help="Generate only the profile whose file slug matches (e.g., Doe_Jane).")
-    args = ap.parse_args()
+    args = ap.parse_args(argv)
 
     students = rosterlib.read_roster(DATA / "roster.csv")
     if not students:
@@ -190,5 +190,13 @@ def main() -> None:
     print(f"  profiles: {PROFILES_DIR.relative_to(HERE)}/")
 
 
+def run(payload: dict, context: service.WorkflowContext) -> service.WorkflowResult:
+    return service.run_command("profile", payload, context, _main)
+
+
+def main(argv: list[str] | None = None) -> int:
+    return service.run_cli("profile", argv, _main)
+
+
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

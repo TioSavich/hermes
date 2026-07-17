@@ -9095,7 +9095,9 @@ hermes/app/workflow/lib/roster.py
 hermes/app/workflow/metrics.py
 hermes/app/workflow/parse.py
 hermes/app/workflow/profile.py
+hermes/app/workflow/runtime.py
 hermes/app/workflow/score.py
+hermes/app/workflow/service.py
 hermes/app/workflow_api.py
 hermes/commitment_matcher.pl
 hermes/encyclopedia.pl

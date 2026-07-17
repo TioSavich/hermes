@@ -25,13 +25,12 @@ from collections import Counter
 from itertools import combinations
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
-import os as _os
-HERE = Path(_os.environ.get("HERMES_PACK_ROOT", HERE.parent))
-DATA = HERE / "runtime"
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 
-from lib import api, monitoring as monlib  # noqa: E402
+from hermes.app.workflow import service  # noqa: E402
+from hermes.app.workflow.lib import api, monitoring as monlib  # noqa: E402
+from hermes.app.workflow.runtime import DATA, HERE  # noqa: E402
 
 PROMPTS_DIR = HERE / "prompts"
 PROFILES_DIR = DATA / "output" / "profiles"
@@ -222,12 +221,12 @@ def monitoring_context_for(unit_id: str) -> str:
     )
 
 
-def main() -> None:
+def _main(argv: list[str] | None = None) -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("unit", nargs="?", help="Unit id (e.g., 3_3_6 or 3_3_6_grade_1_geometry_lessons).")
     ap.add_argument("--list", action="store_true", help="List available unit ids and exit.")
     ap.add_argument("--force", action="store_true", help="Overwrite an existing output HTML.")
-    args = ap.parse_args()
+    args = ap.parse_args(argv)
 
     if args.list:
         for u in list_units():
@@ -300,5 +299,13 @@ def main() -> None:
     print(f"done. {out_path.relative_to(HERE)}")
 
 
+def run(payload: dict, context: service.WorkflowContext) -> service.WorkflowResult:
+    return service.run_command("draft", payload, context, _main)
+
+
+def main(argv: list[str] | None = None) -> int:
+    return service.run_cli("draft", argv, _main)
+
+
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

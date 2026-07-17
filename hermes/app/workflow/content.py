@@ -52,14 +52,13 @@ import tempfile
 from collections import defaultdict
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
-import os as _os
-HERE = Path(_os.environ.get("HERMES_PACK_ROOT", HERE.parent))
-DATA = HERE / "runtime"
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 
-from lib import api, roster as rosterlib  # noqa: E402
-from lib import content as contentlib  # noqa: E402
+from hermes.app.workflow import service  # noqa: E402
+from hermes.app.workflow.lib import api, roster as rosterlib  # noqa: E402
+from hermes.app.workflow.lib import content as contentlib  # noqa: E402
+from hermes.app.workflow.runtime import DATA, HERE  # noqa: E402
 
 CONTENT_INPUT = DATA / "input" / "content"
 CONTENT_OUTPUT = DATA / "output" / "content"
@@ -466,14 +465,14 @@ def walk_files(activity_dir: Path) -> list[Path]:
     return out
 
 
-def main() -> None:
+def _main(argv: list[str] | None = None) -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("activity", help="Activity id (matches folder name in input/content/).")
     ap.add_argument("--force", action="store_true", help="Re-run files that already have per-file JSON; re-consolidate every student.")
     ap.add_argument("--only", help="Consolidate only this student (file_slug or id substring).")
     ap.add_argument("--no-consolidate", action="store_true", help="Per-file pass only.")
     ap.add_argument("--no-per-file", action="store_true", help="Skip per-file pass; consolidate from existing JSON.")
-    args = ap.parse_args()
+    args = ap.parse_args(argv)
 
     activity_id = args.activity.strip().strip("/")
     activity_dir = CONTENT_INPUT / activity_id
@@ -661,5 +660,13 @@ def main() -> None:
     print(f"  per-file notes: {len(parsed_objs)}  matched: {matched}  unmatched: {len(parsed_objs) - matched}")
 
 
+def run(payload: dict, context: service.WorkflowContext) -> service.WorkflowResult:
+    return service.run_command("content", payload, context, _main)
+
+
+def main(argv: list[str] | None = None) -> int:
+    return service.run_cli("content", argv, _main)
+
+
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

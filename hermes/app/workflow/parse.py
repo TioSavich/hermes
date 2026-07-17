@@ -22,23 +22,22 @@ import json
 import sys
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
-import os as _os
-HERE = Path(_os.environ.get("HERMES_PACK_ROOT", HERE.parent))
-DATA = HERE / "runtime"
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 
-from lib import api, parser as parselib, roster as rosterlib  # noqa: E402
+from hermes.app.workflow import service  # noqa: E402
+from hermes.app.workflow.lib import api, parser as parselib, roster as rosterlib  # noqa: E402
+from hermes.app.workflow.runtime import DATA, HERE  # noqa: E402
 
 PARSED_DIR = DATA / "output" / "parsed"
 
 
-def main() -> None:
+def _main(argv: list[str] | None = None) -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("input", help="Path to the All_Discussions paste file.")
     ap.add_argument("--force", action="store_true", help="Re-parse sections even if their JSON already exists.")
     ap.add_argument("--only", help="Only parse sections whose prompt_id matches this slug.")
-    args = ap.parse_args()
+    args = ap.parse_args(argv)
 
     input_path = Path(args.input)
     if not input_path.is_absolute():
@@ -107,5 +106,13 @@ def main() -> None:
     print("done.")
 
 
+def run(payload: dict, context: service.WorkflowContext) -> service.WorkflowResult:
+    return service.run_command("parse", payload, context, _main)
+
+
+def main(argv: list[str] | None = None) -> int:
+    return service.run_cli("parse", argv, _main)
+
+
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

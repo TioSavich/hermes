@@ -37,13 +37,12 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
-HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
-import os as _os
-HERE = Path(_os.environ.get("HERMES_PACK_ROOT", HERE.parent))
-DATA = HERE / "runtime"
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 
-from lib import api, monitoring as monlib, parser as parselib, roster as rosterlib  # noqa: E402
+from hermes.app.workflow import service  # noqa: E402
+from hermes.app.workflow.lib import api, monitoring as monlib, parser as parselib, roster as rosterlib  # noqa: E402
+from hermes.app.workflow.runtime import DATA, HERE  # noqa: E402
 
 PARSED_DIR = DATA / "output" / "parsed"
 GRADES_DIR = DATA / "output" / "grades"
@@ -116,16 +115,17 @@ def display_for_sid(
 
 
 def pck_block(prompt_id: str) -> str:
-    prolog_block = monlib.prolog_pck_block(HERE, prompt_id)
+    worker_request = service.current_context().worker_request
+    prolog_block = monlib.prolog_pck_block(HERE, prompt_id, worker_request=worker_request)
     if prolog_block:
         return prolog_block
 
     chart = monlib.chart_path_for(HERE, prompt_id)
     if not chart:
-        return monlib.prolog_fallback_pck(HERE, prompt_id)
+        return monlib.prolog_fallback_pck(HERE, prompt_id, worker_request=worker_request)
     excerpt = monlib.pck_section(chart)
     if not excerpt:
-        return monlib.prolog_fallback_pck(HERE, prompt_id)
+        return monlib.prolog_fallback_pck(HERE, prompt_id, worker_request=worker_request)
     return (
         "----- PCK CONTEXT (from monitoring chart; use for grading feedback grounding only) -----\n"
         f"Chart: {chart.relative_to(HERE)}\n\n"
@@ -558,7 +558,7 @@ def write_csv(records: list[dict], path: Path) -> None:
             w.writerow(flatten_row(record))
 
 
-def main() -> None:
+def _main(argv: list[str] | None = None) -> None:
     ap = argparse.ArgumentParser(
         description=__doc__,
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -570,7 +570,7 @@ def main() -> None:
                     help="Include roster students with no parsed posts as 0-point rows (default when roster.csv exists).")
     ap.add_argument("--no-absent", dest="include_absent", action="store_false",
                     help="Only write rows for students who have parsed posts.")
-    args = ap.parse_args()
+    args = ap.parse_args(argv)
 
     if not PARSED_DIR.exists() or not any(PARSED_DIR.glob("*.json")):
         api.fail("no parsed files in output/parsed/. Run parse.py first.")
@@ -712,5 +712,13 @@ def main() -> None:
         print("no matching parsed prompts.")
 
 
+def run(payload: dict, context: service.WorkflowContext) -> service.WorkflowResult:
+    return service.run_command("grade", payload, context, _main)
+
+
+def main(argv: list[str] | None = None) -> int:
+    return service.run_cli("grade", argv, _main)
+
+
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

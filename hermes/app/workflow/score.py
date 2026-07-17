@@ -31,13 +31,12 @@ import json
 import sys
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
-import os as _os
-HERE = Path(_os.environ.get("HERMES_PACK_ROOT", HERE.parent))
-DATA = HERE / "runtime"
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 
-from lib import api, monitoring as monlib, parser as parselib  # noqa: E402
+from hermes.app.workflow import service  # noqa: E402
+from hermes.app.workflow.lib import api, monitoring as monlib, parser as parselib  # noqa: E402
+from hermes.app.workflow.runtime import DATA, HERE  # noqa: E402
 
 PARSED_DIR = DATA / "output" / "parsed"
 SCORES_DIR = DATA / "output" / "scores"
@@ -99,16 +98,17 @@ def load_score_inputs(pack_root: Path, only: str | None) -> list[tuple[str, dict
 
 
 def pck_block(prompt_id: str) -> str:
-    prolog_block = monlib.prolog_pck_block(HERE, prompt_id)
+    worker_request = service.current_context().worker_request
+    prolog_block = monlib.prolog_pck_block(HERE, prompt_id, worker_request=worker_request)
     if prolog_block:
         return prolog_block
 
     chart = monlib.chart_path_for(HERE, prompt_id)
     if not chart:
-        return monlib.prolog_fallback_pck(HERE, prompt_id)
+        return monlib.prolog_fallback_pck(HERE, prompt_id, worker_request=worker_request)
     excerpt = monlib.pck_section(chart)
     if not excerpt:
-        return monlib.prolog_fallback_pck(HERE, prompt_id)
+        return monlib.prolog_fallback_pck(HERE, prompt_id, worker_request=worker_request)
     return (
         "----- PCK CONTEXT (from monitoring chart; use for PCK Grounding scoring only) -----\n"
         f"Chart: {chart.relative_to(HERE)}\n\n"
@@ -181,12 +181,12 @@ def write_summary(scores_dir: Path) -> None:
         w.writerows(rows)
 
 
-def main() -> None:
+def _main(argv: list[str] | None = None) -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--only", help="Only score one prompt_id.")
     ap.add_argument("--force", action="store_true", help="Re-score even if outputs already exist.")
     ap.add_argument("--skip-prompts", action="store_true", help="Skip scoring the prompts themselves; only score threads.")
-    args = ap.parse_args()
+    args = ap.parse_args(argv)
 
     score_inputs = load_score_inputs(DATA, args.only)
     if not score_inputs:
@@ -286,5 +286,13 @@ def main() -> None:
     print(f"done. {SCORES_DIR.relative_to(HERE)}/")
 
 
+def run(payload: dict, context: service.WorkflowContext) -> service.WorkflowResult:
+    return service.run_command("score", payload, context, _main)
+
+
+def main(argv: list[str] | None = None) -> int:
+    return service.run_cli("score", argv, _main)
+
+
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
