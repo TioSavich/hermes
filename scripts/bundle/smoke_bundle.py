@@ -8,7 +8,7 @@ things:
 
 1. Static audit: every fetch/src/href target written into the shipped web
    pages must resolve — to a shipped file, to a known API route, or to a
-   mount (docs/, ASKTM_Data/) that is allowed to be absent and degrades
+   mount (docs/) that is allowed to be absent and degrades
    with a message rather than a broken surface.
 2. Live probes: start the server from the staged tree and call the routes
    the console and its pages call — including the LLM-backed ones, which
@@ -49,7 +49,7 @@ from app_manifest import build_manifest  # noqa: E402
 MOUNTS = {"more-zeeman", "representation", "ASKTM_Data", "docs"}
 # Research-data mounts the app degrades without (each surface names the
 # absence); a missing target there is a note, not a failure.
-OPTIONAL_PREFIXES = ("/docs/", "/ASKTM_Data/")
+OPTIONAL_PREFIXES = ("/docs/",)
 
 # Routes from an older standalone server that shipped pages still probe
 # inside a try/catch, falling back to local behavior (coordination.html runs

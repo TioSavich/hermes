@@ -192,11 +192,11 @@ function el(tag, attrs = {}, ...kids) {
 let DATA = { asktm: [], literature: [] };
 let tab = 'literature';
 
-// The manifest is tracked, but the ASKTM images it points at live under
-// ASKTM_Data/, a local research corpus that is not distributed with the
-// repository. Probe one manifest path once; when the file is missing, the
-// ASKTM tab explains itself instead of laying out broken thumbnails. The
-// literature figures are tracked, so that tab is unaffected.
+// The manifest and the ASKTM images it points at ship under ASKTM_Data/;
+// the fine-grained coding Word documents stay in the source project. Probe
+// one manifest path once; if a copy is incomplete, the ASKTM tab explains
+// itself instead of laying out broken thumbnails. The literature figures
+// are tracked, so that tab is unaffected.
 let asktmImages = 'checking';   // 'checking' | 'present' | 'absent'
 function probeAsktmImages() {
   if (DATA.asktm.length === 0) { asktmImages = 'present'; return; }
@@ -323,10 +323,11 @@ function render() {
       ? el('p', { class: 'empty' }, 'Checking for the local image corpus…')
       : el('div', { class: 'corpus-note' },
           el('p', {}, 'The ' + DATA.asktm.length + ' ASKTM student-work images '
-            + 'come from a local research corpus (ASKTM_Data/) that is not '
-            + 'distributed with this repository, so this copy cannot serve them.'),
+            + 'ship in the research corpus under ASKTM_Data/, but this copy '
+            + 'cannot serve them.'),
           el('p', { style: 'margin-top:.6rem' },
-            'The coded metadata for these clips is still in the manifest, and '
+            'The fine-grained coding Word documents stay in the source project. '
+            + 'The coded metadata for these clips is still in the manifest, and '
             + 'the literature tab’s figures are tracked in the repository '
             + 'and load normally.')));
     return;
