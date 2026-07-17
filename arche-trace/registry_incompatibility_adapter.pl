@@ -1,11 +1,12 @@
 /** <module> Registry-to-Brandomian incompatibility adapter
  *
  * The Brandomian engine (`arche-trace/brandomian_incompatibility.pl`) ships
- * with four seed hyperedges; the misconception registry holds ~2,900 real
- * incompatibility_with/2 pairs. This adapter loads the registry pairs into
- * `incompatible_set/1` as 2-element hyperedges, so the formally vetted
- * relation (persistence, vacuous-entailment guard, minimality) can run over
- * the actual corpus instead of the fruit demo.
+ * with four seed hyperedges; the misconception registry's
+ * incompatibility_with/2 yields 342 distinct non-degenerate pairs (1,111
+ * raw solutions before symmetry and self-pair reduction). This adapter
+ * loads those pairs into `incompatible_set/1` as 2-element hyperedges, so
+ * the formally vetted relation (persistence, vacuous-entailment guard,
+ * minimality) can run over the actual corpus instead of the fruit demo.
  *
  * Loading is EXPLICIT and reversible, not a side effect of use_module. Two
  * reasons. First, mutating the global hyperedge table changes what
