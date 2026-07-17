@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """Numerical bistability artifact and Prolog cross-verifier for the More Machine.
 
-The numerical core is the vectorized gradient-descent calculation used to
-produce ``bifurcation_diagram.png``. ``--cross-check`` compares a fixed 7 by 7
-control grid with ``more-zeeman/prolog/zeeman_bifurcation.pl`` and reports the
-result without treating agreement as a foregone conclusion.
+Provenance: the numerical core (canvas constants, ``gradient_vec``, the
+equilibrium search and dedup) is carried over from the source project's
+``bifurcation_verify.py``, which generated ``bifurcation_diagram.png`` with
+matplotlib. This adaptation strips the figure generation and adds the
+``--cross-check`` harness, which compares a fixed 7 by 7 control grid with
+``more-zeeman/prolog/zeeman_bifurcation.pl`` and reports the result without
+treating agreement as a foregone conclusion.
 """
 from __future__ import annotations
 
