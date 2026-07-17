@@ -81,6 +81,7 @@ load_runtime :-
     use_module(pml(trace_adjudication), []),
     use_module(hermes(encyclopedia)),
     use_module(hermes(commitment_matcher), []),
+    use_module(hermes(capability_registry), []),
     use_module(arche_trace(embodied_prover), []),
     use_module(arche_trace(sequent_engine), []),
     use_module(arche_trace(critique)),
@@ -419,6 +420,7 @@ known_op(knowledge).
 known_op(visualize_coordination).
 known_op(reorganize).
 known_op(learner_reset).
+known_op(capability_atlas).
 
 op_error(Id, Op, Error, Response) :-
     message_string(Error, Detail),
@@ -3729,6 +3731,55 @@ dispatch_request(benny_demo, Id, _Request, Response) :-
             "benny_demo produced no comparison data",
             Response)
     ).
+
+% Machine-readable inventory of dispatch operations and shipped Prolog modules.
+dispatch_request(capability_atlas, Id, _Request, Response) :-
+    findall(Row, capability_atlas_row(Row), Rows),
+    capability_status_count(routed_paged, RoutedPaged),
+    capability_status_count(routed_only, RoutedOnly),
+    capability_status_count(unrouted, Unrouted),
+    capability_status_count(orphan_module, OrphanModules),
+    ok_response(Id,
+        _{ capabilities: Rows,
+           counts: _{ routed_paged: RoutedPaged,
+                      routed_only: RoutedOnly,
+                      unrouted: Unrouted,
+                      orphan_module: OrphanModules
+                    }
+         },
+        Response).
+
+capability_atlas_row(_{
+    name: NameText,
+    module: ModuleText,
+    role: RoleText,
+    inputs: InputTexts,
+    surface_status: StatusText,
+    route: Routes,
+    pages: PageTexts
+}) :-
+    capability_registry:capability(Name, Module, Role, Inputs, Status),
+    atom_string(Name, NameText),
+    atom_string(Module, ModuleText),
+    atom_string(Role, RoleText),
+    maplist(atom_string, Inputs, InputTexts),
+    atom_string(Status, StatusText),
+    findall(_{method: MethodText, path: PathText},
+            ( capability_registry:capability_route(Name, Method, Path),
+              atom_string(Method, MethodText),
+              atom_string(Path, PathText)
+            ),
+            Routes),
+    findall(PageText,
+            ( capability_registry:capability_page(Name, Page),
+              atom_string(Page, PageText)
+            ),
+            PageTexts).
+
+capability_status_count(Status, Count) :-
+    aggregate_all(count,
+                  capability_registry:capability(_, _, _, _, Status),
+                  Count).
 
 classify_canonical_term(T, _{term: T, status: Status, canonical: Canon}) :-
     atom_string(A, T),

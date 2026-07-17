@@ -186,6 +186,17 @@ def page_url_for(rel: str) -> str | None:
 
 
 def static_audit(tree: Path, report: Report) -> None:
+    required = (
+        "more-zeeman/atlas.html",
+        "hermes/capability_registry.pl",
+        "scripts/extract_capability_registry.py",
+    )
+    missing_required = [rel for rel in required if not (tree / rel).is_file()]
+    if missing_required:
+        report.add("FAIL", "capability registry files staged",
+                   "missing: " + ", ".join(missing_required))
+    else:
+        report.add("PASS", "capability registry files staged")
     routes = api_routes(tree)
     prefixes = api_prefixes(tree)
     pages = [p for p in tree.rglob("*.html")
@@ -294,6 +305,25 @@ def strict_prolog_preflight(tree: Path, swipl: str | None,
     return True
 
 
+def staged_route_table(tree: Path, python: str) -> set[tuple[str, str]]:
+    snippet = (
+        "import json; "
+        "from hermes.app.routes.registry import build_router; "
+        "print(json.dumps([[r.method, r.path] for r in build_router().routes]))"
+    )
+    env = dict(os.environ)
+    env.update(UMEDCTA_ROOT=str(tree), PYTHONPATH=str(tree))
+    proc = subprocess.run(
+        [python, "-c", snippet], cwd=tree, env=env,
+        capture_output=True, text=True, timeout=30, check=True,
+    )
+    return {tuple(row) for row in json.loads(proc.stdout)}
+
+
+def capability_page_file(tree: Path, page: str) -> Path:
+    return tree / page.lstrip("/")
+
+
 def live_probes(tree: Path, python: str, swipl: str | None,
                 report: Report) -> None:
     env = dict(os.environ)
@@ -355,6 +385,67 @@ def live_probes(tree: Path, python: str, swipl: str | None,
         probe("GET /api/quickstart", "/api/quickstart")
         probe("GET /api/sample", "/api/sample")
         probe("GET /api/inputs", "/api/inputs")
+
+        try:
+            capability_status, capability_body = call(
+                base, "/api/capabilities", timeout=120.0
+            )
+        except Exception as exc:
+            report.add("FAIL", "GET /api/capabilities", f"connection failed: {exc}")
+        else:
+            capability_text = json.dumps(capability_body).lower()
+            entries = capability_body.get("capabilities", []) \
+                if isinstance(capability_body, dict) else []
+            if (capability_status != 200 or not isinstance(capability_body, dict)
+                    or len(entries) <= 150 or "traceback" in capability_text):
+                report.add(
+                    "FAIL", "GET /api/capabilities",
+                    f"HTTP {capability_status}, entries={len(entries)}: {capability_text[:160]}",
+                )
+            else:
+                report.add("PASS", "GET /api/capabilities",
+                           f"{len(entries)} capability entries")
+                counts = capability_body.get("counts") or {}
+                report.add(
+                    "NOTE", "capability dead ends",
+                    f"unrouted={counts.get('unrouted', 0)}, "
+                    f"orphan_modules={counts.get('orphan_module', 0)}",
+                )
+                try:
+                    live_routes = staged_route_table(tree, python)
+                    sampled = [entry for entry in entries
+                               if entry.get("surface_status") == "routed_paged"][:10]
+                    claim_errors: list[str] = []
+                    for entry in sampled:
+                        claimed_routes = {
+                            (route.get("method"), route.get("path"))
+                            for route in (entry.get("route") or [])
+                            if isinstance(route, dict)
+                        }
+                        absent_routes = claimed_routes - live_routes
+                        if absent_routes:
+                            claim_errors.append(
+                                f"{entry.get('name')}: absent routes {sorted(absent_routes)}"
+                            )
+                        route_paths = {path for _method, path in claimed_routes}
+                        for page in entry.get("pages") or []:
+                            page_file = capability_page_file(tree, page)
+                            if not page_file.is_file():
+                                claim_errors.append(f"{entry.get('name')}: absent page {page}")
+                                continue
+                            page_text = page_file.read_text(encoding="utf-8", errors="replace")
+                            if not any(path in page_text for path in route_paths):
+                                claim_errors.append(
+                                    f"{entry.get('name')}: {page} names none of {sorted(route_paths)}"
+                                )
+                    if claim_errors:
+                        report.add("FAIL", "capability claims match staged routes and pages",
+                                   "; ".join(claim_errors[:10]))
+                    else:
+                        report.add("PASS", "capability claims match staged routes and pages",
+                                   f"{len(sampled)} routed_paged entries sampled")
+                except Exception as exc:  # audit setup failure is itself a smoke failure
+                    report.add("FAIL", "capability claims match staged routes and pages", str(exc))
 
         status, idx = call(base, "/generated/talkmoves_reports/index.json")
         if status != 200 or not isinstance(idx, list) or not idx:

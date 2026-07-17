@@ -56,6 +56,7 @@ KEEP_TREES = [tree for tree, _ in KEEP_TREES_RATIONALE]
 KEEP_FILES = [
     "paths.pl",                        # the loader; nothing resolves without it
     "hermes_worker.pl",                # the worker entry point
+    "hermes/capability_registry.pl",   # generated worker capability inventory
     "hermes/app/Hermes.command",       # double-click local app launcher
     "hermes/app/Hermes.svg",           # launcher icon asset
     "crosswalk/representation_spine.pl",
@@ -67,6 +68,7 @@ KEEP_FILES = [
     "more-zeeman/contact-sheets/goal-e-monitoring-chart.png",
     "more-zeeman/contact-sheets/goal-e-scoreboard.png",
     "more-zeeman/contact-sheets/goal-e-visualizations.png",
+    "more-zeeman/atlas.html",          # generated capability inventory surface
     "scripts/talkmoves_two_pass.py",   # imported by server.py for masking
     # /api/transcript_report chain: talkmoves_two_pass._load_scorer()
     # path-loads the blind-corpus scorer for transcript numbering.
@@ -76,6 +78,7 @@ KEEP_FILES = [
     "scripts/bundle/prebake.py",       # manifest prune runs inside the image
     "scripts/bundle/smoke_bundle.py",  # staged-tree gate ships with its subject
     "scripts/html_surface_check.py",   # loopable checker for shipped HTML surfaces
+    "scripts/extract_capability_registry.py",  # regenerate the shipped capability inventory
     "scripts/research/export_mua_for_mud.py",  # regenerate the MUD data snapshot
     # Coded derivative data tables the worker consults at op time (cluster
     # maps, annotations, classifications). They ship; the student-work
@@ -101,7 +104,7 @@ KEEP_FILES = [
     "strategies/render/signed_number_line_scene.pl",  # signed order and inequality rays
     "pml/mua_conjectures.pl",          # empty register for non-demonstrated MUA candidates
     "tools/axiom_pack_audit.pl",       # loaded by the worker's audit op
-    "tools/axiom_toggle.pl",           # lazy-loaded by the axiom_toggle op; absent since the port
+    "tools/axiom_toggle.pl",           # lazy-loaded by the axiom_toggle op
     "tools/carving/groups_machine.pl",
     "tools/carving/primitives.pl",     # strategy_machine substrate (worker load)
     "tools/carving/query.pl",

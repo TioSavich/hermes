@@ -46,6 +46,7 @@ POST /api/ranked_figures public monitoring
 POST /api/monitoring_visuals public monitoring
 POST /api/field_connectivity_audit public monitoring
 POST /api/render_coverage public monitoring
+GET /api/capabilities public worker
 POST /api/render public worker
 POST /api/expressive_power public worker
 POST /api/strategies public worker
@@ -111,4 +112,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

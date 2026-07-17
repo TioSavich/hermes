@@ -56,4 +56,12 @@ _HANDLERS = (
     ("/api/benny_demo", "_handle_benny_demo"),
 )
 
-ROUTES = tuple(Route("POST", path, _post(method)) for path, method in _HANDLERS)
+
+def capabilities(ctx: Any) -> None:
+    RouteLogic(ctx)._handle_capabilities()
+
+
+ROUTES = (
+    Route("GET", "/api/capabilities", capabilities),
+    *(Route("POST", path, _post(method)) for path, method in _HANDLERS),
+)

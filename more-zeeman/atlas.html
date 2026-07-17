@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hermes: Capability Atlas</title>
+  <link rel="stylesheet" href="hermes-tokens.css">
+  <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="atlas"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper, #f4ead6); color: var(--ink, #0d0c08);
+           font: 16px/1.5 var(--serif, Georgia, serif); }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 2.2rem 1.4rem 4rem; }
+    h1 { font-size: 1.7rem; margin: 0 0 .3rem; }
+    .lede { color: var(--muted, #665f4f); max-width: 66ch; margin: 0 0 1rem; }
+    .counts { padding: .8rem 1rem; border: 1px solid var(--line, rgba(13,12,8,.14));
+              border-radius: 10px; background: var(--paper-cool, #ede4cf); }
+    .status { margin: 1.2rem 0; color: var(--muted, #665f4f); }
+    .error { color: #842d24; border-left: 4px solid #842d24; padding-left: .8rem; }
+    section { margin-top: 2rem; }
+    section h2 { margin: 0 0 .7rem; font-size: 1.2rem; }
+    .capability { padding: .8rem 0; border-top: 1px solid var(--line, rgba(13,12,8,.14)); }
+    .capability:first-of-type { border-top: 0; }
+    .name { font: 600 .9rem/1.4 var(--mono, ui-monospace, Menlo, monospace); }
+    .module, .inputs, .surface { margin-top: .2rem; font-size: .86rem; color: var(--muted, #665f4f); }
+    .module code, .inputs code, .route { font-family: var(--mono, ui-monospace, Menlo, monospace); }
+    .pages { margin: .25rem 0 0; padding-left: 1.2rem; font-size: .86rem; }
+    a { color: var(--gold-deep, #8b641c); }
+    .marker { font-weight: 600; color: #842d24; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Capability Atlas</h1>
+    <p class="lede">This registry is generated from the worker dispatch table, public routes,
+      and shipped pages. Entries marked “not yet surfaced” remain queued for routing work.</p>
+    <div id="counts" class="counts">Loading the capability registry…</div>
+    <div id="status" class="status" aria-live="polite"></div>
+    <div id="groups"></div>
+  </main>
+  <script>
+    (function () {
+      "use strict";
+      var countsNode = document.getElementById("counts");
+      var statusNode = document.getElementById("status");
+      var groupsNode = document.getElementById("groups");
+
+      function text(tag, value, className) {
+        var node = document.createElement(tag);
+        node.textContent = value;
+        if (className) node.className = className;
+        return node;
+      }
+
+      function pageHref(path) {
+        var prefix = "/hermes/app/web/";
+        return path.indexOf(prefix) === 0 ? "/" + path.slice(prefix.length) : path;
+      }
+
+      function renderSurface(item, box) {
+        if (item.surface_status === "routed_paged") {
+          var list = document.createElement("ul");
+          list.className = "pages";
+          (item.pages || []).forEach(function (page) {
+            var row = document.createElement("li");
+            var link = document.createElement("a");
+            link.href = pageHref(page);
+            link.textContent = page;
+            row.appendChild(link);
+            list.appendChild(row);
+          });
+          box.appendChild(list);
+          return;
+        }
+        if (item.surface_status === "routed_only") {
+          var routes = (item.route || []).map(function (route) {
+            return route.method + " " + route.path;
+          }).join(", ");
+          var routed = text("div", routes + ". No page reaches this route yet.", "surface");
+          box.appendChild(routed);
+          return;
+        }
+        box.appendChild(text("div", "Not yet surfaced", "surface marker"));
+      }
+
+      function render(data) {
+        var items = Array.isArray(data.capabilities) ? data.capabilities : [];
+        var counts = data.counts || {};
+        var total = items.length;
+        countsNode.textContent = total + " capabilities: "
+          + (counts.routed_paged || 0) + " reachable from a page, "
+          + (counts.routed_only || 0) + " routed without a page, "
+          + (counts.unrouted || 0) + " unrouted, "
+          + (counts.orphan_module || 0) + " orphan modules.";
+        if (!items.length) {
+          statusNode.textContent = "The worker returned no capability entries.";
+          statusNode.className = "status error";
+          return;
+        }
+        var grouped = {};
+        items.forEach(function (item) {
+          (grouped[item.role] = grouped[item.role] || []).push(item);
+        });
+        Object.keys(grouped).sort().forEach(function (role) {
+          var section = document.createElement("section");
+          section.appendChild(text("h2", role.replace(/_/g, " ")));
+          grouped[role].sort(function (a, b) { return a.name.localeCompare(b.name); })
+            .forEach(function (item) {
+              var box = document.createElement("article");
+              box.className = "capability";
+              box.appendChild(text("div", item.name, "name"));
+              var moduleLine = document.createElement("div");
+              moduleLine.className = "module";
+              moduleLine.appendChild(document.createTextNode("module "));
+              moduleLine.appendChild(text("code", item.module));
+              box.appendChild(moduleLine);
+              var inputLine = document.createElement("div");
+              inputLine.className = "inputs";
+              inputLine.appendChild(document.createTextNode("inputs "));
+              inputLine.appendChild(text("code", JSON.stringify(item.inputs || [])));
+              box.appendChild(inputLine);
+              renderSurface(item, box);
+              section.appendChild(box);
+            });
+          groupsNode.appendChild(section);
+        });
+        statusNode.textContent = "Registry loaded from the local worker.";
+      }
+
+      fetch("/api/capabilities")
+        .then(function (response) {
+          if (!response.ok) throw new Error("HTTP " + response.status);
+          return response.json();
+        })
+        .then(render)
+        .catch(function (error) {
+          countsNode.textContent = "Capability counts are unavailable.";
+          statusNode.textContent = "The capability registry requires a running Hermes worker. "
+            + "The request failed: " + error.message;
+          statusNode.className = "status error";
+        });
+    }());
+  </script>
+</body>
+</html>

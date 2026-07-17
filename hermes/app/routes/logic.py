@@ -1250,3 +1250,6 @@ class RouteLogic:
         # coordinated counterparts on the same inputs. No student data, no FERPA
         # gate (like the rest of the encyclopedia surfaces).
         self._send_json({"ok": True, "result": self.ctx.worker_request("benny_demo")})
+
+    def _handle_capabilities(self) -> None:
+        self._send_json(self.ctx.worker_request("capability_atlas"))
