@@ -8885,6 +8885,7 @@ hermes/app/web/generated/parametric_partition/PARAM-transplant-vertical-on-circl
 hermes/app/web/generated/parametric_partition/PARAM-transplant-vertical-on-circle-1over8-frame-2.svg
 hermes/app/web/generated/parametric_partition/PARAM-transplant-vertical-on-circle-1over8-frame-3.svg
 hermes/app/web/generated/parametric_partition/PARAM-transplant-vertical-on-circle-1over8-frame-4.svg
+hermes/app/web/generated/parametric_partition/index.html
 hermes/app/web/generated/parametric_partition/manifest.json
 hermes/app/web/generated/real_transplants/REAL-transplant-cadez-2018-p14-doc.json
 hermes/app/web/generated/real_transplants/REAL-transplant-cadez-2018-p14-filmstrip.svg
