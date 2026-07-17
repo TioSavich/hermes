@@ -204,8 +204,8 @@ async function run() {
   const out = document.getElementById('out');
   out.innerHTML = '<div class="panel muted">Running the engine…</div>';
   let data;
-  try { data = await (await fetch('api/reorganize?'+p.toString())).json(); }
-  catch(e) { out.innerHTML = '<div class="panel err">Could not reach the engine. Is the server running? <span class="muted">swipl -l paths.pl -l learner/reorg_demo_server.pl -g start_demo</span></div>'; return; }
+  try { data = await (await fetch('/api/reorganize?'+p.toString())).json(); }
+  catch(e) { out.innerHTML = '<div class="panel err">Could not reach the engine. Start Hermes with <span class="muted">bash hermes/app/launch.sh</span>. Alternate standalone entry point: <span class="muted">swipl -l paths.pl -l learner/reorg_demo_server.pl -g start_demo</span></div>'; return; }
   if (data.error) { out.innerHTML = `<div class="panel err">${data.message}</div>`; qEl.textContent=''; return; }
   qEl.textContent = data.question;
   out.innerHTML = render(data);

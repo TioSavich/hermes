@@ -134,7 +134,6 @@ load_runtime :-
     use_module(crosswalk('families/cw_productive_deformation'), []),
     % T0 representation spine: concept -> visual surface routing + manifest assets.
     use_module(crosswalk(representation_spine), []),
-    use_module(math(unit_coordination_viz), []),
     use_module(standards(indiana/standard_k_ca_1_3), []),
     use_module(standards(indiana/standard_k_ns_1), []),
     use_module(standards(indiana/standard_k_ns_2), []),
@@ -467,6 +466,11 @@ known_op(elaborations).
 known_op(carving_strategy_proof).
 known_op(carving_operation_summary).
 known_op(benny_demo).
+known_op(compute).
+known_op(knowledge).
+known_op(visualize_coordination).
+known_op(reorganize).
+known_op(learner_reset).
 
 op_error(Id, Op, Error, Response) :-
     message_string(Error, Detail),
@@ -1243,6 +1247,7 @@ dispatch_request(unit_coordination_witness, Id, Request, Response) :-
     ).
 
 dispatch_request(unit_coordination_svg, Id, Request, Response) :-
+    ensure_coordination_viz_loaded,
     request_integer(Request, base, 10, Base),
     request_integer(Request, value_up, 1234, ValueUp),
     request_integer(Request, numerator, 1, Numerator),
@@ -3654,6 +3659,66 @@ dispatch_request(axiom_toggle, Id, Request, Response) :-
     request_op_atom(Request, action, list, Action),
     axiom_toggle_action(Action, Id, Request, Response).
 
+% =============================================================================
+%% Research wing ops (learner)
+% =============================================================================
+
+dispatch_request(compute, Id, Request, Response) :-
+    ensure_learner_compute_loaded,
+    (   learner_compute_request(Request, Op, A, B, Limit, Mode)
+    ->  event_log:reset_events,
+        learner_run_compute(Mode, Op, A, B, Limit, Success),
+        learner_compute_result(Success, Mode, Op, A, B, Limit, Result),
+        json_safe(Result, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, malformed_compute_request,
+            "compute requires operation add|subtract|multiply|divide, integer a and b, positive integer limit, and mode direct|developmental",
+            Response)
+    ).
+
+dispatch_request(knowledge, Id, _Request, Response) :-
+    ensure_learner_knowledge_loaded,
+    learner_knowledge_rows(Knowledge),
+    json_safe(Knowledge, Safe),
+    ok_response(Id, Safe, Response).
+
+dispatch_request(visualize_coordination, Id, Request, Response) :-
+    ensure_coordination_viz_loaded,
+    (   learner_coordination_request(Request, Base, ValUp, ValDown)
+    ->  (   unit_coordination_viz:generate_coordination_svg(
+                Base, ValUp, ValDown, SVG)
+        ->  ok_response(Id,
+                _{content_type: "image/svg+xml", svg: SVG}, Response)
+        ;   error_response(Id, invalid_visualize_coordination_request,
+                "visualize_coordination requires base 2..15, non-negative val_up, and a non-zero denominator",
+                Response)
+        )
+    ;   error_response(Id, malformed_visualize_coordination_request,
+            "visualize_coordination requires integer base, non-negative integer val_up, and val_down as a number or fraction string",
+            Response)
+    ).
+
+dispatch_request(reorganize, Id, Request, Response) :-
+    ensure_fraction_band_ladder_loaded,
+    (   learner_reorganize_request(Request, DomainAtom, A, B, C, D),
+        learner_reorganize_problem(DomainAtom, A, B, C, D, Domain, Problem),
+        fraction_band_ladder:story_for(Domain, Problem, Story)
+    ->  json_safe(Story, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, invalid_reorganize_request,
+            "Could not run that problem; check the domain and integer inputs (improper fractions require the top number to exceed the bottom).",
+            Response)
+    ).
+
+dispatch_request(learner_reset, Id, _Request, Response) :-
+    ensure_learner_reset_loaded,
+    retractall(more_machine_learner:run_learned_strategy(_, _, _, _, _)),
+    strategy_synthesis:reset_synthesized_strategies,
+    reflective_monitor:reset_success_reflection,
+    event_log:reset_events,
+    tension_dynamics:reset_tension,
+    ok_response(Id, _{status: "reset"}, Response).
+
 % The corpus-attested grammar summary: gap counts rolling up which grammar
 % objects the student corpus witnesses and where the grammar runs unattested.
 dispatch_request(corpus_grammar_summary, Id, _Request, Response) :-
@@ -5375,6 +5440,265 @@ catalogue_break_for(ContentSet, Break) :-
     ->  term_to_text(BreakId, Break)
     ;   Break = null
     ).
+
+%!  ensure_learner_compute_loaded is det.
+%
+%   Import-free lazy load for the learner computation surface. Some of this
+%   chain prints initialization text, so every first load is redirected away
+%   from the worker's JSONL stdout.
+ensure_learner_compute_loaded :-
+    (   current_predicate(event_log:reset_events/0),
+        current_predicate(arithmetic_machine:solve_arithmetic/3),
+        current_predicate(teacher:available_strategies/2),
+        current_predicate(more_machine_learner:run_learned_strategy/5),
+        current_predicate(strategy_synthesis:synthesized_strategy/7),
+        current_predicate(tension_dynamics:get_tension_state/1),
+        current_predicate(execution_handler:run_computation/2),
+        current_predicate(peano_utils:int_to_peano/2)
+    ->  true
+    ;   with_output_to(user_error,
+            ( use_module(learner(event_log), []),
+              use_module(learner(arithmetic_machine), []),
+              use_module(learner(teacher), []),
+              use_module(learner(more_machine_learner), []),
+              use_module(learner(strategy_synthesis), []),
+              use_module(learner(tension_dynamics), []),
+              use_module(learner(execution_handler), []),
+              use_module(learner(peano_utils), [])
+            ))
+    ).
+
+%!  ensure_learner_knowledge_loaded is det.
+ensure_learner_knowledge_loaded :-
+    (   current_predicate(teacher:available_strategies/2),
+        current_predicate(more_machine_learner:run_learned_strategy/5),
+        current_predicate(strategy_synthesis:synthesized_strategy/7)
+    ->  true
+    ;   with_output_to(user_error,
+            ( use_module(learner(teacher), []),
+              use_module(learner(more_machine_learner), []),
+              use_module(learner(strategy_synthesis), [])
+            ))
+    ).
+
+%!  ensure_coordination_viz_loaded is det.
+ensure_coordination_viz_loaded :-
+    (   current_predicate(unit_coordination_viz:generate_coordination_svg/4)
+    ->  true
+    ;   with_output_to(user_error,
+            use_module(math(unit_coordination_viz), []))
+    ).
+
+%!  ensure_fraction_band_ladder_loaded is det.
+ensure_fraction_band_ladder_loaded :-
+    (   current_predicate(fraction_band_ladder:story_for/3)
+    ->  true
+    ;   with_output_to(user_error,
+            use_module(learner(fraction_band_ladder), []))
+    ).
+
+%!  ensure_learner_reset_loaded is det.
+ensure_learner_reset_loaded :-
+    ensure_learner_compute_loaded,
+    (   current_predicate(reflective_monitor:reset_success_reflection/0)
+    ->  true
+    ;   with_output_to(user_error,
+            use_module(learner(reflective_monitor), []))
+    ).
+
+learner_compute_request(Request, Op, A, B, Limit, Mode) :-
+    get_dict(operation, Request, OpValue),
+    learner_request_atom(OpValue, Op),
+    memberchk(Op, [add, subtract, multiply, divide]),
+    get_dict(a, Request, A),
+    integer(A),
+    get_dict(b, Request, B),
+    integer(B),
+    learner_optional_integer(Request, limit, 20, Limit),
+    Limit > 0,
+    (   get_dict_opt(mode, Request, ModeValue)
+    ->  learner_request_atom(ModeValue, Mode)
+    ;   Mode = direct
+    ),
+    memberchk(Mode, [direct, developmental]).
+
+learner_run_compute(developmental, Op, A, B, Limit, Success) :-
+    !,
+    learner_developmental_goal(Op, A, B, Goal),
+    (   catch(
+            with_output_to(string(_),
+                execution_handler:run_computation(Goal, Limit)),
+            Error,
+            ( event_log:emit(computation_failed,
+                             _{goal: Goal, error: Error}),
+              fail
+            ))
+    ->  Success = true
+    ;   Success = false
+    ).
+learner_run_compute(direct, Op, A, B, _Limit, Success) :-
+    Problem =.. [Op, A, B],
+    event_log:emit(computation_start,
+                   _{operation: Op, a: A, b: B, mode: direct}),
+    (   catch(arithmetic_machine:solve_arithmetic(Problem, Result, Report),
+              Error,
+              ( event_log:emit(computation_failed,
+                               _{problem: Problem, error: Error}),
+                fail
+              ))
+    ->  event_log:emit(computation_success,
+            _{ result: Result,
+               inferences_used: 0,
+               strategy: Report.strategy,
+               interpretation: Report.interpretation,
+               teacher: Report.teacher,
+               mode: direct }),
+        Success = true
+    ;   event_log:emit(computation_failed,
+                       _{problem: Problem, error: 'no direct strategy'}),
+        Success = false
+    ).
+
+learner_compute_result(Success, Mode, Op, A, B, Limit, Result) :-
+    event_log:get_events(Events),
+    maplist(learner_event_to_dict, Events, EventDicts),
+    learner_knowledge_rows(Knowledge),
+    tension_dynamics:get_tension_state(Tension),
+    tension_dynamics:get_tension_history(TensionHistory),
+    Result = _{ success: Success,
+                mode: Mode,
+                problem: _{operation: Op, a: A, b: B},
+                budget: Limit,
+                events: EventDicts,
+                knowledge: Knowledge,
+                tension: Tension,
+                tension_history: TensionHistory }.
+
+learner_developmental_goal(add, A, B, object_level:add(PA, PB, _)) :-
+    peano_utils:int_to_peano(A, PA), peano_utils:int_to_peano(B, PB).
+learner_developmental_goal(subtract, A, B, object_level:subtract(PA, PB, _)) :-
+    peano_utils:int_to_peano(A, PA), peano_utils:int_to_peano(B, PB).
+learner_developmental_goal(multiply, A, B, object_level:multiply(PA, PB, _)) :-
+    peano_utils:int_to_peano(A, PA), peano_utils:int_to_peano(B, PB).
+learner_developmental_goal(divide, A, B, object_level:divide(PA, PB, _)) :-
+    peano_utils:int_to_peano(A, PA), peano_utils:int_to_peano(B, PB).
+
+learner_event_to_dict(Event, SafeDict) :-
+    dict_pairs(Event, Tag, Pairs),
+    maplist(learner_event_pair, Pairs, SafePairs),
+    dict_pairs(SafeDict, Tag, SafePairs).
+
+learner_event_pair(Key-Value, Key-Safe) :-
+    learner_event_value(Value, Safe).
+
+learner_event_value(Value, Value) :- number(Value), !.
+learner_event_value(Value, Value) :- atom(Value), !.
+learner_event_value(Value, Value) :- string(Value), !.
+learner_event_value(Value, Safe) :-
+    is_dict(Value), !, learner_event_to_dict(Value, Safe).
+learner_event_value(Value, Safe) :-
+    is_list(Value), !, maplist(learner_event_value, Value, Safe).
+learner_event_value(Value, Safe) :-
+    peano_utils:peano_to_int(Value, Safe), !.
+learner_event_value(Value, Safe) :-
+    term_to_text(Value, Safe).
+
+learner_knowledge_rows(Knowledge) :-
+    findall(
+        _{operation: Op, learned: Learned},
+        ( member(Op, [add, subtract, multiply, divide]),
+          teacher:available_strategies(Op, Available),
+          findall(Label,
+              ( member(Strategy, Available),
+                clause(more_machine_learner:run_learned_strategy(
+                           _, _, _, Strategy, _), _),
+                term_string(Strategy, Label)
+              ),
+              TeacherBacked),
+          findall(Label,
+              ( strategy_synthesis:synthesized_strategy(
+                    Op, _, _, _, Name, _, _),
+                term_string(Name, Label)
+              ),
+              Synthesized),
+          append(TeacherBacked, Synthesized, Learned0),
+          sort(Learned0, Learned)
+        ),
+        Knowledge).
+
+learner_coordination_request(Request, Base, ValUp, ValDown) :-
+    learner_optional_integer(Request, base, 10, Base),
+    between(2, 15, Base),
+    learner_optional_integer(Request, val_up, 0, ValUp),
+    ValUp >= 0,
+    (   get_dict_opt(val_down, Request, ValDownValue)
+    ->  learner_val_down(ValDownValue, ValDown)
+    ;   ValDown = 1
+    ),
+    ValDown \= fraction(_, 0).
+
+learner_val_down(Value, Value) :-
+    number(Value),
+    !.
+learner_val_down(Value, fraction(Num, Den)) :-
+    learner_request_string(Value, String),
+    sub_string(String, Before, _, _, "/"),
+    !,
+    sub_string(String, 0, Before, _, NumString),
+    After is Before + 1,
+    sub_string(String, After, _, 0, DenString),
+    number_string(Num, NumString),
+    number_string(Den, DenString),
+    integer(Num),
+    integer(Den).
+learner_val_down(Value, Number) :-
+    learner_request_string(Value, String),
+    catch(number_string(Number, String), _, fail),
+    !.
+learner_val_down(Value, String) :-
+    learner_request_string(Value, String).
+
+learner_reorganize_request(Request, Domain, A, B, C, D) :-
+    (   get_dict_opt(domain, Request, DomainValue)
+    ->  learner_request_atom(DomainValue, Domain)
+    ;   Domain = fraction_splitting
+    ),
+    memberchk(Domain, [fraction_splitting, fraction_improper,
+                       fraction_of_fraction, fraction_algebra]),
+    learner_optional_integer(Request, a, 3, A),
+    learner_optional_integer(Request, b, 8, B),
+    learner_optional_integer(Request, c, 4, C),
+    learner_optional_integer(Request, d, 5, D).
+
+learner_reorganize_problem(fraction_splitting, A, B, _, _,
+                           fraction_splitting, reverse(A, B)).
+learner_reorganize_problem(fraction_improper, A, B, _, _,
+                           fraction_improper, make_improper(A, B)).
+learner_reorganize_problem(fraction_of_fraction, A, B, C, D,
+                           fraction_of_fraction, ff(A, B, C, D)).
+learner_reorganize_problem(fraction_algebra, A, B, _, _,
+                           fraction_algebra, relate(A, B)).
+
+learner_optional_integer(Request, Key, Default, Integer) :-
+    (   get_dict_opt(Key, Request, Value)
+    ->  learner_integer(Value, Integer)
+    ;   Integer = Default
+    ).
+
+learner_integer(Value, Value) :- integer(Value), !.
+learner_integer(Value, Integer) :-
+    learner_request_string(Value, String),
+    catch(number_string(Number, String), _, fail),
+    integer(Number),
+    Integer = Number.
+
+learner_request_atom(Value, Atom) :-
+    learner_request_string(Value, String),
+    atom_string(Atom0, String),
+    downcase_atom(Atom0, Atom).
+
+learner_request_string(Value, String) :- string(Value), !, String = Value.
+learner_request_string(Value, String) :- atom(Value), !, atom_string(Value, String).
 
 %!  ensure_axiom_toggle_loaded is det.
 %

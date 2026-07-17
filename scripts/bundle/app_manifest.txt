@@ -9385,6 +9385,7 @@ strategies/render/unit_echo_scene.pl
 strategies/strategies.pl
 strategies/visualization.pl
 tools/axiom_pack_audit.pl
+tools/axiom_toggle.pl
 tools/carving/groups_machine.pl
 tools/carving/primitives.pl
 tools/carving/query.pl

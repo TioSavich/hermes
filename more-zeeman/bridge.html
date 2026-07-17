@@ -638,16 +638,10 @@
   </style>
 </head>
 <body data-hshell-doc="1">
-<!-- Research-wing cordon: these controls call learner/server.pl, which this
-     build does not start. Remove when the wing is wired (see refactor plan,
-     Tier 1). -->
+<!-- Research-wing notice: retain this posture while the contracts are live
+     research interfaces. -->
 <div style="margin:0 0 1.5rem 0;padding:0.9rem 1.2rem;border:1px solid #b8860b;border-radius:6px;background:rgba(184,134,11,0.08);font-size:0.95rem;line-height:1.5;">
-  <strong>Research wing — under construction.</strong>
-  The interactive parts of this page ask a second engine (the learner
-  server) that this build does not yet start, so live controls will not
-  answer. The learner ships with Hermes as research in progress, and
-  colleagues are welcome to take part in its unfolding: the source lives
-  under <code>learner/</code>.
+  <strong>Research wing — live, in progress.</strong> This page drives the learner engine through the Hermes worker. Contracts may shift and rough edges remain. Colleagues are welcome to take part in its unfolding: the source lives under <code>learner/</code>.
 </div>
 
   <div class="top-bar">
@@ -682,8 +676,8 @@
          the catastrophe geometry you have been feeling. When the Prolog system hits
          crisis, the disc snaps. When it finds a new strategy, the tension relaxes.
          You are watching the same thing from two sides.</p>
-      <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">This page works best with the Prolog server running
-         (<code style="font-size:0.85em;color:var(--snap);">swipl prolog/server.pl</code>).
+      <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">This page works best with Hermes running
+         (<code style="font-size:0.85em;color:var(--snap);">bash hermes/app/launch.sh</code>).
          Without it, here is what you would see: the system tries add(38, 55) with
          counting. After about 90 steps the tension turns red. Crisis. The system
          consults for a new strategy. COBO arrives. The tension drops. The disc settles.
@@ -706,7 +700,7 @@
         Interactive diagnostic assessment systems (IDAS) for visualizing student
         thinking — a direct precedent for this bridge visualization.
       </div>
-      <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">Requires Prolog server (<code style="font-size:0.85em;color:var(--snap);">swipl prolog/server.pl</code>) for live data. A static example: the Kindergarten preset (3 + 2, limit 50) produces a smooth computation with no crisis. The Grade 1 preset (8 + 5, limit 12) produces tension buildup, an efficiency crisis at step 12, and a snap to counting-on.</p>
+      <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">Requires Hermes (<code style="font-size:0.85em;color:var(--snap);">bash hermes/app/launch.sh</code>) for live data. A static example: the Kindergarten preset (3 + 2, limit 50) produces a smooth computation with no crisis. The Grade 1 preset (8 + 5, limit 12) produces tension buildup, an efficiency crisis at step 12, and a snap to counting-on.</p>
     </div>
     <div data-discourse="philosophy">
       <p>The tension chart is the continuous energy surface. The disc angle is the system state. The timeline is the event log from <code style="font-size:0.85em;color:var(--snap);">event_log.pl</code>. Together they show the same phenomenon from three representations: continuous (tension), geometric (disc), and discrete (events). The bridge's value is making the meta-interpreter's internal dynamics visible — what is usually hidden inside <code style="font-size:0.85em;color:var(--snap);">solve/6</code> becomes observable.</p>
@@ -728,7 +722,7 @@
         produce contradictions. The bridge's tension-to-snap cycle is a computational
         model of this pedagogical technique.
       </div>
-      <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">Requires Prolog server (<code style="font-size:0.85em;color:var(--snap);">swipl prolog/server.pl</code>) for live data. Without the server, the disc and tension chart respond to the preset narratives but do not run actual computations.</p>
+      <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">Requires Hermes (<code style="font-size:0.85em;color:var(--snap);">bash hermes/app/launch.sh</code>) for live data. Without Hermes, the disc and tension chart respond to the preset narratives but do not run actual computations.</p>
     </div>
   </div>
 
@@ -1686,7 +1680,7 @@ function stopReplay() {
 // =======================================================================
 // API
 // =======================================================================
-const API = 'http://localhost:8080';
+const API = '';
 
 async function checkServer() {
   const el = document.getElementById('server-status');
@@ -1721,7 +1715,7 @@ async function runComputation() {
     // Show helpful message and offer baked replay
     const div = document.createElement('div');
     div.classList.add('event-entry');
-    div.innerHTML = `<span class="step">--</span><span class="ctx" style="color:${C.tension}">offline</span><span class="vals">server not running — <a href="#" onclick="runBakedReplay();return false;" style="color:${C.release};text-decoration:underline;cursor:pointer;">watch a demo</a> or start: swipl prolog/server.pl</span>`;
+    div.innerHTML = `<span class="step">--</span><span class="ctx" style="color:${C.tension}">offline</span><span class="vals">Hermes not running — <a href="#" onclick="runBakedReplay();return false;" style="color:${C.release};text-decoration:underline;cursor:pointer;">watch a demo</a> or start: bash hermes/app/launch.sh</span>`;
     eventLogEl.appendChild(div);
     // Scroll the replay CTA into view
     const cta = document.getElementById('replay-cta');
@@ -1813,9 +1807,9 @@ async function resetAll() {
     cue.classList.remove('still');
   }
 
-  // Reset Prolog server
+  // Reset learner state in the Hermes worker
   try {
-    await fetch(API + '/api/reset', { method: 'POST' });
+    await fetch(API + '/api/learner/reset', { method: 'POST' });
   } catch (e) {}
 
   // Re-check server to update offline/online UI

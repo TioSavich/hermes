@@ -101,6 +101,7 @@ KEEP_FILES = [
     "strategies/render/signed_number_line_scene.pl",  # signed order and inequality rays
     "pml/mua_conjectures.pl",          # empty register for non-demonstrated MUA candidates
     "tools/axiom_pack_audit.pl",       # loaded by the worker's audit op
+    "tools/axiom_toggle.pl",           # lazy-loaded by the axiom_toggle op; absent since the port
     "tools/carving/groups_machine.pl",
     "tools/carving/primitives.pl",     # strategy_machine substrate (worker load)
     "tools/carving/query.pl",

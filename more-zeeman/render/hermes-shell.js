@@ -87,10 +87,14 @@
       ["strategies", "Strategies",  mz("strategies.html")],
       ["fractal",    "The Fractal", mz("fractal.html")],
       ["playground", "Playground",  mz("playground.html")],
-      ["bridge",     "The Bridge",  mz("bridge.html")],
       ["boundary",   "Boundary",    mz("boundary.html")],
       ["matrix",     "The Matrix",  mz("matrix.html")],
       ["muds",       "Meaning-Use Diagrams", mz("muds.html")],
+    ]},
+    { title: "Research wing", kind: "research", items: [
+      ["bridge",       "The Bridge",       mz("bridge.html")],
+      ["coordination", "Unit coordination", mz("coordination.html")],
+      ["reorganization", "Reorganization", "/learner/reorg_demo.html"],
     ]},
   ];
 
@@ -113,6 +117,7 @@
       "landing.html": "landing", "index.html": "snap", "counting.html": "counting",
       "crisis.html": "crisis", "strategies.html": "strategies",
       "playground.html": "playground", "bridge.html": "bridge",
+      "coordination.html": "coordination", "reorg_demo.html": "reorganization",
       "fractal.html": "fractal", "boundary.html": "boundary", "matrix.html": "matrix",
       "no.html": "no", "breaks.html": "breaks", "muds.html": "muds",
       "about.html": "about",

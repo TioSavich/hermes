@@ -46,7 +46,7 @@ REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "scripts" / "bundle"))
 from app_manifest import build_manifest  # noqa: E402
 
-MOUNTS = {"more-zeeman", "representation", "ASKTM_Data", "docs"}
+MOUNTS = {"more-zeeman", "learner", "representation", "ASKTM_Data", "docs"}
 # Research-data mounts the app degrades without (each surface names the
 # absence); a missing target there is a note, not a failure.
 OPTIONAL_PREFIXES = ("/docs/",)
@@ -57,10 +57,8 @@ OPTIONAL_PREFIXES = ("/docs/",)
 # absence is a designed fallback, not a broken surface.
 LEGACY_FALLBACK_ROUTES = {"/api/base", "/api/cgi_dispatch",
                           "/api/action/topology/gaps"}
-# learner/server.pl routes. The pages that call them carry a visible
-# under-construction notice until the wing is wired (refactor plan, Tier 1).
-RESEARCH_WING_ROUTES = {"/api/compute", "/api/knowledge",
-                        "/api/visualize/coordination"}
+# Routes intentionally cordoned from the main server may be listed here.
+RESEARCH_WING_ROUTES: set[str] = set()
 
 SKIP_SCHEMES = ("http:", "https:", "mailto:", "data:", "javascript:",
                 "tel:", "#", "about:")
@@ -127,7 +125,7 @@ def stage_tree(dest: Path) -> None:
 
 def api_routes(tree: Path) -> set[str]:
     text = (tree / "hermes/app/server.py").read_text(encoding="utf-8")
-    routes = set(re.findall(r'self\.path == "(/api/[^"]+)"', text))
+    routes = set(re.findall(r'(?:self\.path|parsed\.path) == "(/api/[^"]+)"', text))
     routes |= set(re.findall(r'raw_path[^"\n]*"(/api/[^"]+)"', text))
     workflow = tree / "hermes/app/workflow"
     if workflow.is_dir():
@@ -276,7 +274,7 @@ def live_probes(tree: Path, python: str, swipl: str | None,
 
         def probe(name: str, path: str, payload: dict | None = None,
                   want: range = range(200, 300), timeout: float = 30.0,
-                  check=None) -> None:
+                  check=None, allow_raw_api: bool = False) -> None:
             try:
                 status, body = call(base, path, payload, timeout=timeout)
             except Exception as exc:  # connection drop = the bug we hunt
@@ -285,7 +283,8 @@ def live_probes(tree: Path, python: str, swipl: str | None,
             if status not in want:
                 report.add("FAIL", name, f"HTTP {status}: {str(body)[:160]}")
                 return
-            if isinstance(body, bytes) and path.startswith("/api/"):
+            if (isinstance(body, bytes) and path.startswith("/api/")
+                    and not allow_raw_api):
                 report.add("FAIL", name, "non-JSON API reply")
                 return
             if check and not check(body):
@@ -318,6 +317,25 @@ def live_probes(tree: Path, python: str, swipl: str | None,
         for page in sorted((tree / "more-zeeman").glob("*.html")):
             probe(f"GET /more-zeeman/{page.name}",
                   f"/more-zeeman/{page.name}")
+
+        probe("POST /api/compute", "/api/compute",
+              {"operation": "add", "a": 3, "b": 2, "limit": 20,
+               "mode": "direct"}, timeout=120.0,
+              check=lambda b: isinstance(b, dict) and b.get("success") is True
+              and "tension_history" in b)
+        probe("GET /api/knowledge", "/api/knowledge", timeout=120.0,
+              check=lambda b: isinstance(b, list) and len(b) == 4)
+        probe("GET /api/visualize/coordination",
+              "/api/visualize/coordination?base=10&val_up=5&val_down=7%2F5",
+              timeout=120.0, allow_raw_api=True,
+              check=lambda b: isinstance(b, bytes) and b.lstrip().startswith(b"<svg"))
+        probe("GET /learner/reorg_demo.html", "/learner/reorg_demo.html",
+              check=lambda b: isinstance(b, bytes) and b"reorganiz" in b.lower())
+        probe("GET /api/reorganize",
+              "/api/reorganize?domain=fraction_splitting&a=3&b=8&c=4&d=5",
+              timeout=120.0,
+              check=lambda b: isinstance(b, dict) and "question" in b
+              and "result" in b)
 
         # the worker-backed offline path (starts the Prolog worker; slow once)
         probe("POST /api/pml_score (offline clauses)", "/api/pml_score",

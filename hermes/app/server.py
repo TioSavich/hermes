@@ -42,6 +42,7 @@ RUNTIME = APP_DIR / "runtime"
 REPO_ROOT = APP_DIR.parents[1]
 STATIC_MOUNTS = {
     "more-zeeman": REPO_ROOT / "more-zeeman",
+    "learner": REPO_ROOT / "learner",
     "representation": REPO_ROOT / "representation",
     "ASKTM_Data": REPO_ROOT / "ASKTM_Data",
     "docs": REPO_ROOT / "docs",
@@ -1093,8 +1094,20 @@ class HermesHandler(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self) -> None:
-        if self.path == "/":
+        parsed = urllib.parse.urlsplit(self.path)
+        if parsed.path == "/":
             self._send_file(WEB_ROOT / "console.html")
+            return
+        # Learner research-wing routes operate on public model/demo data and
+        # remain outside the student-data gate.
+        if parsed.path == "/api/knowledge":
+            self._handle_learner_knowledge()
+            return
+        if parsed.path == "/api/visualize/coordination":
+            self._handle_visualize_coordination(parsed.query)
+            return
+        if parsed.path == "/api/reorganize":
+            self._handle_learner_reorganize(parsed.query)
             return
         if self.path == "/api/mode":
             self._send_json(_mode_payload())
@@ -1144,16 +1157,16 @@ class HermesHandler(BaseHTTPRequestHandler):
         # in its live mode; serving it here lets an embedded viewer draw against
         # this same origin. /api/fraction/compare lays out the productive-vs-
         # deformation pair for a fraction scheme. Public KB, no student data.
-        if self.path.split("?", 1)[0] in ("/api/fraction/render", "/api/fraction/compare"):
+        if parsed.path in ("/api/fraction/render", "/api/fraction/compare"):
             self._handle_fraction_frames(self.path)
             return
-        path = WEB_ROOT / self.path.lstrip("/")
+        path = WEB_ROOT / parsed.path.lstrip("/")
         if path.is_file() and path.resolve().is_relative_to(WEB_ROOT.resolve()):
             self._send_file(path)
             return
         # Repo-root surfaces (more-zeeman/, representation/, ASKTM_Data/, docs/)
         # the console links to — served only via the whitelisted mounts above.
-        static = _resolve_static_mount(self.path.split("?", 1)[0])
+        static = _resolve_static_mount(parsed.path)
         if static is not None:
             self._send_file(static)
             return
@@ -1163,6 +1176,16 @@ class HermesHandler(BaseHTTPRequestHandler):
         global STATE_GATE
         try:
             payload = self._read_json()
+
+            # Learner research-wing routes operate on public model/demo data
+            # and remain outside the student-data gate.
+            if self.path == "/api/compute":
+                self._handle_learner_compute(payload)
+                return
+
+            if self.path == "/api/learner/reset":
+                self._handle_learner_reset(payload)
+                return
 
             if self.path == "/api/render":
                 self._handle_render(payload)
@@ -1439,6 +1462,147 @@ class HermesHandler(BaseHTTPRequestHandler):
         return
 
     # ---- handlers ----------------------------------------------------------
+    def _handle_learner_compute(self, payload: object) -> None:
+        if not isinstance(payload, dict):
+            self._send_json({"error": "request body must be a JSON object"}, status=400)
+            return
+        operation = payload.get("operation")
+        if operation not in {"add", "subtract", "multiply", "divide"}:
+            self._send_json(
+                {"error": "operation must be add, subtract, multiply, or divide"},
+                status=400,
+            )
+            return
+        if type(payload.get("a")) is not int or type(payload.get("b")) is not int:
+            self._send_json({"error": "a and b must be integers"}, status=400)
+            return
+        limit = payload.get("limit", 20)
+        if type(limit) is not int or limit <= 0:
+            self._send_json({"error": "limit must be a positive integer"}, status=400)
+            return
+        mode = payload.get("mode", "direct")
+        if mode not in {"direct", "developmental"}:
+            self._send_json(
+                {"error": "mode must be direct or developmental"}, status=400
+            )
+            return
+        request = {
+            "operation": operation,
+            "a": payload["a"],
+            "b": payload["b"],
+            "limit": limit,
+            "mode": mode,
+        }
+        try:
+            result = worker_request("compute", **request)
+        except worker.PersistentPrologError as exc:
+            self._send_json({"error": str(exc)}, status=400)
+            return
+        self._send_json(result)
+
+    def _handle_learner_knowledge(self) -> None:
+        try:
+            result = worker_request("knowledge")
+        except worker.PersistentPrologError as exc:
+            self._send_json({"error": str(exc)}, status=400)
+            return
+        self._send_json(result)
+
+    def _handle_visualize_coordination(self, query: str) -> None:
+        params = urllib.parse.parse_qs(query, keep_blank_values=True)
+        try:
+            base = self._query_integer(params, "base", 10)
+            val_up = self._query_integer(params, "val_up", 0)
+        except ValueError as exc:
+            self._send_json({"error": str(exc)}, status=400)
+            return
+        if not 2 <= base <= 15:
+            self._send_json({"error": "base must be between 2 and 15"}, status=400)
+            return
+        if val_up < 0:
+            self._send_json({"error": "val_up must be non-negative"}, status=400)
+            return
+        val_down = params.get("val_down", ["1"])[-1]
+        if "/" in val_down:
+            pieces = val_down.split("/")
+            try:
+                if len(pieces) != 2:
+                    raise ValueError
+                int(pieces[0])
+                denominator = int(pieces[1])
+            except ValueError:
+                self._send_json(
+                    {"error": "val_down fractions must have integer numerator and denominator"},
+                    status=400,
+                )
+                return
+            if denominator == 0:
+                self._send_json(
+                    {"error": "val_down denominator must be non-zero"}, status=400
+                )
+                return
+        try:
+            result = worker_request(
+                "visualize_coordination",
+                base=base,
+                val_up=val_up,
+                val_down=val_down,
+            )
+        except worker.PersistentPrologError as exc:
+            self._send_json({"error": str(exc)}, status=400)
+            return
+        self._send_utf8(result["svg"], "image/svg+xml; charset=utf-8")
+
+    def _handle_learner_reorganize(self, query: str) -> None:
+        params = urllib.parse.parse_qs(query, keep_blank_values=True)
+        domain = params.get("domain", ["fraction_splitting"])[-1]
+        if domain not in {
+            "fraction_splitting", "fraction_improper",
+            "fraction_of_fraction", "fraction_algebra",
+        }:
+            self._send_json({"error": "unknown reorganization domain"}, status=400)
+            return
+        try:
+            request = {
+                "domain": domain,
+                "a": self._query_integer(params, "a", 3),
+                "b": self._query_integer(params, "b", 8),
+                "c": self._query_integer(params, "c", 4),
+                "d": self._query_integer(params, "d", 5),
+            }
+        except ValueError as exc:
+            self._send_json({"error": str(exc)}, status=400)
+            return
+        try:
+            result = worker_request("reorganize", **request)
+        except worker.PersistentPrologError as exc:
+            self._send_json(
+                {"error": True, "message": str(exc), "domain": domain}, status=400
+            )
+            return
+        self._send_json(result)
+
+    def _handle_learner_reset(self, payload: object) -> None:
+        if not isinstance(payload, dict):
+            self._send_json({"error": "request body must be a JSON object"}, status=400)
+            return
+        try:
+            result = worker_request("learner_reset")
+        except worker.PersistentPrologError as exc:
+            self._send_json({"error": str(exc)}, status=400)
+            return
+        self._send_json(result)
+
+    @staticmethod
+    def _query_integer(params: dict[str, list[str]], key: str, default: int) -> int:
+        values = params.get(key)
+        if not values:
+            return default
+        try:
+            return int(values[-1])
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f"{key} must be an integer") from exc
+
     def _handle_analyze(self, payload: dict) -> None:
         """Ingest -> domain-general discourse layer -> signal-gated router ->
         student-level, capped, provenance-labelled pairing. Local and model-free."""
@@ -2395,12 +2559,22 @@ class HermesHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(data)
 
+    def _send_utf8(self, payload: str, content_type: str, *, status: int = 200) -> None:
+        data = payload.encode("utf-8")
+        self.send_response(status)
+        self.send_header("Content-Type", content_type)
+        self._send_cors_headers()
+        self.send_header("Cache-Control", "no-store, max-age=0")
+        self.send_header("Content-Length", str(len(data)))
+        self.end_headers()
+        self.wfile.write(data)
+
     def _send_cors_headers(self) -> None:
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
 
-    def _send_json(self, payload: dict, *, status: int = 200) -> None:
+    def _send_json(self, payload: Any, *, status: int = 200) -> None:
         data = json.dumps(payload).encode("utf-8")
         self.send_response(status)
         self.send_header("Content-Type", "application/json")

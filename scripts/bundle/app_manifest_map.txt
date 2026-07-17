@@ -12,8 +12,8 @@ formalization/	20
 pml/	20
 arche-trace/	15
 docs/	9
+tools/	9
 scripts/	8
-tools/	8
 representation/	5
 (root)	2
 research/	2

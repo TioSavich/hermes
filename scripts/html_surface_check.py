@@ -24,10 +24,8 @@ ASSET_RE = re.compile(
 )
 SNAPSHOT_RE = re.compile(r"\bSNAPSHOT_URL\b|mua_data\.json|frozen_snapshot", re.IGNORECASE)
 LEGACY_FALLBACK_ROUTES = {"/api/base", "/api/cgi_dispatch", "/api/action/topology/gaps"}
-# learner/server.pl routes. The pages that call them carry a visible
-# under-construction notice until the wing is wired (refactor plan, Tier 1).
-RESEARCH_WING_ROUTES = {"/api/compute", "/api/knowledge",
-                        "/api/visualize/coordination"}
+# Routes intentionally cordoned from the main server may be listed here.
+RESEARCH_WING_ROUTES: set[str] = set()
 
 
 def iter_html_files(roots: list[Path]) -> list[Path]:
@@ -42,7 +40,7 @@ def iter_html_files(roots: list[Path]) -> list[Path]:
 
 def server_routes(server: Path) -> tuple[set[str], list[str]]:
     text = server.read_text(encoding="utf-8")
-    exact = set(re.findall(r"""(?:self\.path|raw_path)\s*==\s*["'](/api/[^"']+)["']""", text))
+    exact = set(re.findall(r"""(?:self\.path|raw_path|parsed\.path)\s*==\s*["'](/api/[^"']+)["']""", text))
     exact |= set(re.findall(r"""route\s*==\s*["'](/api/[^"']+)["']""", text))
     prefixes = re.findall(
         r"""(?:self\.path|raw_path)\.startswith\(["'](/api/[^"']+)["']\)""", text
