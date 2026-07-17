@@ -698,6 +698,26 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
         <div id="registry-query-out" class="result" hidden></div>
       </div>
       <div class="card adv">
+        <h2><span class="num">⊥</span>Misconception incompatibility witnesses</h2>
+        <p class="hint">These witnesses attest incompatibility structure over the loaded registry.
+          They do not diagnose a learner or make a clinical claim.</p>
+        <div class="mc-bar">
+          <label class="muted-inline" style="flex:1">witness
+            <select id="misconception-witness-op" class="data-input">
+              <option value="misconception_incompatibility_witness">registry incompatibility</option>
+              <option value="lesson_misconception_incompatibility_witness">lesson incompatibility</option>
+              <option value="misconception_jumps_witness">number-line deformation trace</option>
+            </select>
+          </label>
+          <button class="btn primary small" id="misconception-witness-btn">Request witness</button>
+        </div>
+        <textarea id="misconception-witness-payload" class="data-input" style="min-height:100px">{
+  "move": "misconception(count_all_when_count_on_available)",
+  "conflict": "strategy(addition,count_on_from_larger)"
+}</textarea>
+        <div id="misconception-witness-out" class="result" hidden></div>
+      </div>
+      <div class="card adv">
         <h2><span class="num">⌁</span>Canonical vocabulary</h2>
         <p class="hint">Load the worker's canonical contract, or check candidate Prolog terms against it.</p>
         <div class="data-actions">
@@ -1665,6 +1685,22 @@ $("#geometry-query-btn").addEventListener('click', () => {
   catch (e) { out.hidden = false; out.textContent = "Geometry args must be a JSON list."; return; }
   if (!Array.isArray(args)) { out.hidden = false; out.textContent = "Geometry args must be a JSON list."; return; }
   runRegistryQuery('/api/geometry', {predicate: $("#geometry-predicate").value, args});
+});
+const MISCONCEPTION_WITNESS_DEFAULTS = {
+  misconception_incompatibility_witness: {move:"misconception(count_all_when_count_on_available)", conflict:"strategy(addition,count_on_from_larger)"},
+  lesson_misconception_incompatibility_witness: {lesson_code:"IM-G6-U2-L3", name:"additive_extension_of_ratio", operation:"ratio"},
+  misconception_jumps_witness: {operation:"addition", deformation:"round_without_adjusting", a:28, b:47}
+};
+$("#misconception-witness-op").addEventListener("change", function(){
+  $("#misconception-witness-payload").value=JSON.stringify(MISCONCEPTION_WITNESS_DEFAULTS[this.value],null,2);
+});
+$("#misconception-witness-btn").addEventListener("click", async function(){
+  const out=$("#misconception-witness-out"); let payload;
+  try { payload=JSON.parse($("#misconception-witness-payload").value); }
+  catch(error) { out.hidden=false; out.textContent="The witness payload is not valid JSON: "+error.message; return; }
+  payload.op=$("#misconception-witness-op").value; out.hidden=false; out.textContent="requesting…";
+  try { const response=await postJSON("/api/witness/misconception",payload); out.textContent=JSON.stringify(response.data,null,2)||"The route returned an empty reply."; }
+  catch(error) { out.textContent="The request failed: the Hermes server did not answer, or answered with something other than JSON."; }
 });
 $("#canonical-contract-btn").addEventListener('click', loadCanonicalContract);
 $("#canonical-check-btn").addEventListener('click', runCanonicalCheck);

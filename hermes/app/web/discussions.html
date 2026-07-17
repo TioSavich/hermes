@@ -147,7 +147,22 @@
   <div id="report"></div>
 
   <section class="event-tools">
-    <h2 class="sec"><span class="num">3</span>Blinded event scoring</h2>
+    <h2 class="sec"><span class="num">3</span>Discourse evidence</h2>
+    <p class="sec-hint">These four deterministic routes use the transcript above. Speaker labels
+      are replaced with S01, S02… in this page before the request is sent. Features and pragmatic
+      candidates do not assign commitments, PML modes, or interactional outcomes.</p>
+    <div class="event-actions">
+      <button class="btn ghost" data-discourse-route="/api/discourse_features">Surface features</button>
+      <button class="btn ghost" data-discourse-route="/api/discourse_pragmatics">Pragmatic candidates</button>
+      <button class="btn ghost" data-discourse-route="/api/gesture_alignment">Gesture alignment</button>
+      <button class="btn ghost" data-discourse-route="/api/trace_adjudication">Trace adjudication</button>
+      <span class="status" id="discourse-status"></span>
+    </div>
+    <pre id="discourse-output"></pre>
+  </section>
+
+  <section class="event-tools">
+    <h2 class="sec"><span class="num">4</span>Blinded event scoring</h2>
     <p class="sec-hint">Paste a pseudonymized canonical event object or an array of events.
       Do not put student work in this field. Pair graph requests require the verified gate;
       unsafe fields and locked requests are reported without a substitute result.</p>
@@ -158,6 +173,7 @@
     <div class="event-actions">
       <button class="btn ghost" id="event-score">Score event or batch</button>
       <button class="btn ghost" id="pair-graph">Build pair graph</button>
+      <button class="btn ghost" id="pair-candidate">Attest pair candidate</button>
       <span class="status" id="event-status"></span>
     </div>
     <pre id="event-output"></pre>
@@ -177,12 +193,47 @@ async function runEventRoute(path){
   status.textContent = "Requesting…"; status.className = "status"; output.textContent = "";
   let response, data;
   try {
-    response = await fetch(path, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(path === "/api/pair_graph" ? {events: Array.isArray(parsed) ? parsed : [parsed]} : body)});
+    let requestBody = body;
+    if (path === "/api/pair_graph") requestBody = {events: Array.isArray(parsed) ? parsed : [parsed]};
+    if (path === "/api/pair_candidate") {
+      const events = Array.isArray(parsed) ? parsed : [parsed];
+      if (events.length < 2) throw new Error("pair_candidate requires two pseudonymized canonical events");
+      requestBody = {event_a: events[0], event_b: events[1]};
+    }
+    response = await fetch(path, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(requestBody)});
     data = await response.json();
   } catch (e) { status.textContent = "The request failed: the Hermes server did not answer, or answered with something other than JSON."; status.className = "status err"; return; }
   status.textContent = response.ok ? "Request completed." : "Request rejected with HTTP " + response.status + ".";
   status.className = response.ok ? "status" : "status err";
   output.textContent = JSON.stringify(data, null, 2) || "The route returned an empty reply.";
+}
+
+function blindedUtterances(){
+  const lines = $("paste").value.split(/\r?\n/).filter(line => line.trim());
+  const speakers = new Map();
+  const utterances = [];
+  lines.forEach(function(line){
+    const match = /^\s*([^:]{1,60}):\s*(.+)$/.exec(line);
+    if (!match) return;
+    const speaker = match[1].trim();
+    if (!speakers.has(speaker)) speakers.set(speaker, "S" + String(speakers.size + 1).padStart(2, "0"));
+    utterances.push({id:"u" + String(utterances.length + 1), speaker:speakers.get(speaker), text:match[2].trim()});
+  });
+  if (!utterances.length) throw new Error("Use speaker-labelled lines such as S01: text.");
+  return utterances;
+}
+
+async function runDiscourseRoute(path){
+  const status=$("discourse-status"), output=$("discourse-output");
+  let payload;
+  try {
+    payload={utterances:blindedUtterances()};
+    if(path==="/api/gesture_alignment") payload.observations=[];
+    if(path==="/api/trace_adjudication") payload.ledger={proposals:[],adjudications:[]};
+  } catch(e) {status.textContent=e.message;status.className="status err";return;}
+  status.textContent="Requesting…";status.className="status";output.textContent="";
+  try {const response=await fetch(path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});const data=await response.json();status.textContent=response.ok?"Request completed.":"Request rejected with HTTP "+response.status+".";status.className=response.ok?"status":"status err";output.textContent=JSON.stringify(data.result||data,null,2)}
+  catch(e){status.textContent="The discourse request failed: "+e.message;status.className="status err";}
 }
 
 /* -------- baked sample discussions (work offline) -------- */
@@ -455,6 +506,8 @@ function rerun(){
 $("run").onclick = () => { const t = $("paste").value.trim(); if (t) post(t, "pasted", ""); else { $("status").textContent = "Paste a transcript or load a sample first."; } };
 $("event-score").onclick = () => runEventRoute("/api/event_score");
 $("pair-graph").onclick = () => runEventRoute("/api/pair_graph");
+$("pair-candidate").onclick = () => runEventRoute("/api/pair_candidate");
+document.querySelectorAll("[data-discourse-route]").forEach(function(button){button.onclick=function(){runDiscourseRoute(button.dataset.discourseRoute)}});
 
 renderSampleCards();
 loadPrepared();

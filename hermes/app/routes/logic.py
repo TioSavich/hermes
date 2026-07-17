@@ -23,6 +23,39 @@ NON_SPEAKER_LABELS = frozenset({"answer", "answers", "note", "prompt", "question
 FRACTION_RE = re.compile(r"\b(?P<a>\d{1,3})\s*/\s*(?P<b>\d{1,3})\b")
 
 WITNESS_OPS: dict[str, frozenset[str]] = {
+    "formal": frozenset({
+        "axiom_hierarchy_witness",
+        "critique_bad_infinite",
+        "defeasible_classify",
+        "embodied_proof_witness",
+        "eml_transition_witness",
+        "incoherent_witness",
+        "incompatibility_discovery_witness",
+        "incompatibility_entailment_witness",
+        "number_theory_self_defeat_witness",
+        "robinson_axiom_witness",
+    }),
+    "pml": frozenset({
+        "intersubjective_material_witness",
+        "mua_kind_coherence_witness",
+        "semantic_material_witness",
+        "validate_reader_axioms",
+    }),
+    "grounding": frozenset({
+        "commitment_match",
+        "corpus_grammar_summary",
+        "elaborations",
+        "grounding_inference_witness",
+        "image_schema",
+        "primitive_for_practice",
+        "representation_spine_witness",
+        "target_expressive_power_witness",
+    }),
+    "misconception": frozenset({
+        "lesson_misconception_incompatibility_witness",
+        "misconception_incompatibility_witness",
+        "misconception_jumps_witness",
+    }),
     "crosswalk_claim": frozenset({
         "accommodation_witness",
         "action_cluster_witness",
@@ -1026,6 +1059,73 @@ class RouteLogic:
             "graph": self.ctx.worker_request("pair_graph", events=events),
         })
 
+    def _handle_pair_candidate(self, payload: dict) -> None:
+        from hermes.app.analysis import event_importer
+
+        event_a = payload.get("event_a")
+        event_b = payload.get("event_b")
+        if not isinstance(event_a, dict) or not isinstance(event_b, dict):
+            self._send_json({"error": "event_a and event_b objects are required"}, status=400)
+            return
+        try:
+            event_importer.assert_pair_graph_safe([event_a, event_b])
+        except ValueError as exc:
+            self._send_json(
+                {"error": str(exc), "error_type": "unsafe_event_payload"},
+                status=400,
+            )
+            return
+        self._send_json({
+            "ok": True,
+            "result": self.ctx.worker_request(
+                "pair_candidate_witness", event_a=event_a, event_b=event_b,
+            ),
+        })
+
+    def _handle_discourse_features(self, payload: dict) -> None:
+        self._send_json({"ok": True, "result": self.ctx.worker_request(
+            "discourse_features", **payload,
+        )})
+
+    def _handle_discourse_pragmatics(self, payload: dict) -> None:
+        self._send_json({"ok": True, "result": self.ctx.worker_request(
+            "discourse_pragmatics", **payload,
+        )})
+
+    def _handle_gesture_alignment(self, payload: dict) -> None:
+        self._send_json({"ok": True, "result": self.ctx.worker_request(
+            "gesture_alignment", **payload,
+        )})
+
+    def _handle_trace_adjudication(self, payload: dict) -> None:
+        self._send_json({"ok": True, "result": self.ctx.worker_request(
+            "trace_adjudication", **payload,
+        )})
+
+    def _handle_unit_coordination_svg(self, query: str) -> None:
+        params = urllib.parse.parse_qs(query, keep_blank_values=True)
+        try:
+            request = {
+                "base": self._query_integer(params, "base", 10),
+                "value_up": self._query_integer(params, "value_up", 5),
+                "numerator": self._query_integer(params, "numerator", 7),
+                "denominator": self._query_integer(params, "denominator", 5),
+            }
+        except ValueError as exc:
+            self._send_json({"error": str(exc)}, status=400)
+            return
+        if not 2 <= request["base"] <= 15:
+            self._send_json({"error": "base must be between 2 and 15"}, status=400)
+            return
+        if request["value_up"] < 0 or request["denominator"] <= 0:
+            self._send_json(
+                {"error": "value_up must be non-negative and denominator must be positive"},
+                status=400,
+            )
+            return
+        result = self.ctx.worker_request("unit_coordination_svg", **request)
+        self._send_utf8(result["svg"], "image/svg+xml; charset=utf-8")
+
     def _handle_strategies(self, _payload: dict) -> None:
         self._send_json({"ok": True, "result": self.ctx.worker_request("list_strategies")})
 
@@ -1363,6 +1463,19 @@ class RouteLogic:
             "carving_operation_summary", operation=operation,
         )})
 
+    def _handle_balance_solve(self, payload: dict) -> None:
+        # One-unknown balance solve: a, b, c are non-negative integers and the
+        # worker returns the solve steps with the deformation step named. The
+        # response is a plain JSON witness, not a drawable render document, so
+        # it lives on its own route rather than in the render allowlist.
+        if any(payload.get(k) is None for k in ("a", "b", "c")):
+            self._send_json({"error": "a, b, and c are required"}, status=400)
+            return
+        self._send_json({"ok": True, "result": self.ctx.worker_request(
+            "balance_solve_witness",
+            a=payload["a"], b=payload["b"], c=payload["c"],
+        )})
+
     def _handle_benny_demo(self, _payload: dict) -> None:
         # Public: Benny's rule deformations run side by side with their correct
         # coordinated counterparts on the same inputs. No student data, no FERPA
@@ -1370,4 +1483,6 @@ class RouteLogic:
         self._send_json({"ok": True, "result": self.ctx.worker_request("benny_demo")})
 
     def _handle_capabilities(self) -> None:
-        self._send_json(self.ctx.worker_request("capability_atlas"))
+        atlas = self.ctx.worker_request("capability_atlas")
+        atlas["health"] = self.ctx.worker_request("health")
+        self._send_json(atlas)

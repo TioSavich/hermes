@@ -76,6 +76,12 @@ def main() -> int:
                 "error": "results are student data — unlock the gate (campus + verified, or testing override)",
                 "error_type": "locked",
             }),
+            ("pair_candidate_gate_locked", "POST", "/api/pair_candidate", {
+                "event_a": {}, "event_b": {},
+            }, 423, {
+                "error": "student data is locked in home mode; switch to campus mode on the IU network",
+                "error_type": "locked",
+            }),
             ("no_key", "POST", "/api/pml_score", {"text": "A square is a rectangle."}, 503, {
                 "error": "No REALLMS API key is set. Click “Set key” (top-right) and paste your key, or add it to hermes/app/runtime/.env. See QUICKSTART_N103.md, step 2.",
                 "error_type": "no_key",

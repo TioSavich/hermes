@@ -25,7 +25,7 @@ _STUDENT_DATA_FILES = ("roster.csv",)
 # Server endpoints / worker ops that touch student data when the gate is on.
 STUDENT_DATA_OPS = frozenset({
     "parse", "content", "profile", "draft", "grade", "score", "metrics",
-    "n103_pipeline", "pair_graph", "pair_score", "event_score", "batch_event_score",
+    "n103_pipeline", "pair_graph", "pair_score", "pair_candidate", "event_score", "batch_event_score",
     "media_alignment", "gesture_alignment", "discourse_features", "discourse_pragmatics",
     "trace_adjudication",
 })

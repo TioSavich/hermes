@@ -21,6 +21,10 @@ def coordination(ctx: Any) -> None:
     RouteLogic(ctx)._handle_visualize_coordination(ctx.parsed.query)
 
 
+def unit_coordination(ctx: Any) -> None:
+    RouteLogic(ctx)._handle_unit_coordination_svg(ctx.parsed.query)
+
+
 def reorganize(ctx: Any) -> None:
     RouteLogic(ctx)._handle_learner_reorganize(ctx.parsed.query)
 
@@ -30,15 +34,17 @@ learner_reset = _post("_handle_learner_reset")
 analyze = _post("_handle_analyze")
 event_score = _post("_handle_event_score")
 pair_graph = _post("_handle_pair_graph")
+pair_candidate = _post("_handle_pair_candidate")
 
 ROUTES = (
     Route("GET", "/api/knowledge", knowledge),
     Route("GET", "/api/visualize/coordination", coordination),
+    Route("GET", "/api/unit_coordination.svg", unit_coordination),
     Route("GET", "/api/reorganize", reorganize),
     Route("POST", "/api/compute", compute),
     Route("POST", "/api/learner/reset", learner_reset),
     Route("POST", "/api/analyze", analyze, access="unlocked"),
     Route("POST", "/api/event_score", event_score),
     Route("POST", "/api/pair_graph", pair_graph, access="verified"),
+    Route("POST", "/api/pair_candidate", pair_candidate, access="verified"),
 )
-

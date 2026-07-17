@@ -35,6 +35,7 @@
     <p class="lede">This registry is generated from the worker dispatch table, public routes,
       and shipped pages. Entries marked “not yet surfaced” remain queued for routing work.</p>
     <div id="counts" class="counts">Loading the capability registry…</div>
+    <div id="health" class="status">Loading worker health…</div>
     <div id="status" class="status" aria-live="polite"></div>
     <div id="groups"></div>
   </main>
@@ -44,6 +45,7 @@
       var countsNode = document.getElementById("counts");
       var statusNode = document.getElementById("status");
       var groupsNode = document.getElementById("groups");
+      var healthNode = document.getElementById("health");
 
       function text(tag, value, className) {
         var node = document.createElement(tag);
@@ -86,6 +88,11 @@
       function render(data) {
         var items = Array.isArray(data.capabilities) ? data.capabilities : [];
         var counts = data.counts || {};
+        var health = data.health || {};
+        var modules = health.loaded || health.loaded_modules || health.modules || [];
+        healthNode.textContent = "Worker status: " + String(health.status || health.mode || "unknown")
+          + "; " + (Array.isArray(modules) ? modules.length : Number(health.loaded_module_count || 0))
+          + " loaded modules.";
         var orphans = counts.orphan_module || 0;
         var ops = items.length - orphans;
         countsNode.textContent = ops + " capabilities: "

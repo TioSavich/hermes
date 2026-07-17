@@ -63,6 +63,15 @@
       <button id="calculate">Calculate</button>
       <span class="calc-note">POSTs to the worker; renders the returned witness frames.</span>
     </section>
+
+    <section class="panel">
+      <h2>Solve witness</h2>
+      <p class="calc-note">The same a, b, c through <code>/api/balance_solve</code>:
+        the worker's step record with the deformation step named, as plain JSON
+        rather than drawn frames.</p>
+      <button id="solve-witness">Request solve witness</button>
+      <pre id="solve-witness-out" class="tuple" style="white-space:pre-wrap"></pre>
+    </section>
     </div><!-- .rail -->
   </div>
 
@@ -70,6 +79,29 @@
   <script src="../render/drawer.js"></script>
   <script>
     HermesDrawer.create({ op: 'balance_render', endpoint: '/api/render', defaultView: 'freshman' });
+    (function () {
+      "use strict";
+      var button = document.getElementById("solve-witness");
+      var out = document.getElementById("solve-witness-out");
+      button.addEventListener("click", function () {
+        var payload = {};
+        ["a", "b", "c"].forEach(function (key) {
+          payload[key] = Number(document.querySelector('[data-arg="' + key + '"]').value);
+        });
+        out.textContent = "Requesting solve witness…";
+        fetch("/api/balance_solve", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(payload)
+        }).then(function (response) {
+          return response.json();
+        }).then(function (body) {
+          out.textContent = JSON.stringify(body.ok ? body.result : body, null, 2);
+        }).catch(function () {
+          out.textContent = "The request failed: the Hermes server did not answer, or answered with something other than JSON.";
+        });
+      });
+    }());
   </script>
 </body>
 </html>

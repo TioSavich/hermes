@@ -59,6 +59,7 @@ _HANDLERS = (
     ("/api/axiom_toggle", "_handle_axiom_toggle"),
     ("/api/carving_strategy_proof", "_handle_carving_strategy_proof"),
     ("/api/carving_operation_summary", "_handle_carving_operation_summary"),
+    ("/api/balance_solve", "_handle_balance_solve"),
     ("/api/benny_demo", "_handle_benny_demo"),
 )
 
@@ -66,6 +67,17 @@ _WITNESS_HANDLERS = (
     ("/api/witness/crosswalk_claim", "crosswalk_claim"),
     ("/api/witness/geometry", "geometry"),
     ("/api/witness/standards", "standards"),
+    ("/api/witness/formal", "formal"),
+    ("/api/witness/pml", "pml"),
+    ("/api/witness/grounding", "grounding"),
+    ("/api/witness/misconception", "misconception"),
+)
+
+_DISCOURSE_HANDLERS = (
+    ("/api/discourse_features", "_handle_discourse_features"),
+    ("/api/discourse_pragmatics", "_handle_discourse_pragmatics"),
+    ("/api/gesture_alignment", "_handle_gesture_alignment"),
+    ("/api/trace_adjudication", "_handle_trace_adjudication"),
 )
 
 
@@ -76,5 +88,6 @@ def capabilities(ctx: Any) -> None:
 ROUTES = (
     Route("GET", "/api/capabilities", capabilities),
     *(Route("POST", path, _post(method)) for path, method in _HANDLERS),
+    *(Route("POST", path, _post(method)) for path, method in _DISCOURSE_HANDLERS),
     *(Route("POST", path, _post_witness(family)) for path, family in _WITNESS_HANDLERS),
 )

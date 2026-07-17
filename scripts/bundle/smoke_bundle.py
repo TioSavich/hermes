@@ -191,6 +191,8 @@ def static_audit(tree: Path, report: Report) -> None:
         "more-zeeman/crosswalk.html",
         "more-zeeman/geometry.html",
         "more-zeeman/standards-witnesses.html",
+        "more-zeeman/pml-witnesses.html",
+        "more-zeeman/grounding.html",
         "hermes/capability_registry.pl",
         "scripts/extract_capability_registry.py",
     )
@@ -200,6 +202,22 @@ def static_audit(tree: Path, report: Report) -> None:
                    "missing: " + ", ".join(missing_required))
     else:
         report.add("PASS", "capability registry files staged")
+    page_assertions = {
+        "more-zeeman/pml-witnesses.html": (
+            "/api/witness/pml", "semantic_material_witness", "validate_reader_axioms",
+        ),
+        "more-zeeman/grounding.html": (
+            "/api/witness/grounding", "image_schema", "target_expressive_power_witness",
+        ),
+    }
+    for rel, markers in page_assertions.items():
+        source = (tree / rel).read_text(encoding="utf-8", errors="replace")
+        missing = [marker for marker in markers if marker not in source]
+        if missing:
+            report.add("FAIL", f"static witness page {rel}",
+                       "missing: " + ", ".join(missing))
+        else:
+            report.add("PASS", f"static witness page {rel}")
     routes = api_routes(tree)
     prefixes = api_prefixes(tree)
     pages = [p for p in tree.rglob("*.html")
@@ -400,7 +418,9 @@ def live_probes(tree: Path, python: str, swipl: str | None,
             entries = capability_body.get("capabilities", []) \
                 if isinstance(capability_body, dict) else []
             if (capability_status != 200 or not isinstance(capability_body, dict)
-                    or len(entries) <= 150 or "traceback" in capability_text):
+                    or len(entries) <= 150
+                    or not isinstance(capability_body.get("health"), dict)
+                    or "traceback" in capability_text):
                 report.add(
                     "FAIL", "GET /api/capabilities",
                     f"HTTP {capability_status}, entries={len(entries)}: {capability_text[:160]}",
@@ -480,6 +500,10 @@ def live_probes(tree: Path, python: str, swipl: str | None,
               "/api/visualize/coordination?base=10&val_up=5&val_down=7%2F5",
               timeout=120.0, allow_raw_api=True,
               check=lambda b: isinstance(b, bytes) and b.lstrip().startswith(b"<svg"))
+        probe("GET /api/unit_coordination.svg",
+              "/api/unit_coordination.svg?base=10&value_up=5&numerator=7&denominator=5",
+              timeout=120.0, allow_raw_api=True,
+              check=lambda b: isinstance(b, bytes) and b.lstrip().startswith(b"<svg"))
         probe("GET /learner/reorg_demo.html", "/learner/reorg_demo.html",
               check=lambda b: isinstance(b, bytes) and b"reorganiz" in b.lower())
         probe("GET /api/reorganize",
@@ -525,6 +549,32 @@ def live_probes(tree: Path, python: str, swipl: str | None,
               timeout=120.0,
               check=lambda b: b.get("ok") is True
               and b.get("result", {}).get("kind") == "standard_k_ns_1_counting_trace")
+        probe("POST /api/witness/formal", "/api/witness/formal",
+              {"op": "axiom_hierarchy_witness", "kind": "domain_expansion(n_to_z)"},
+              timeout=120.0, check=lambda b: b.get("ok") is True)
+        probe("POST /api/witness/pml", "/api/witness/pml",
+              {"op": "semantic_material_witness", "from": "[s(comp_nec(p))]",
+               "to": "o(comp_nec(p))"}, timeout=120.0,
+              check=lambda b: b.get("ok") is True)
+        probe("POST /api/witness/grounding", "/api/witness/grounding",
+              {"op": "image_schema", "practice": "p_count_on_from_larger"},
+              timeout=120.0, check=lambda b: b.get("ok") is True)
+        probe("POST /api/witness/misconception", "/api/witness/misconception",
+              {"op": "misconception_incompatibility_witness",
+               "move": "misconception(count_all_when_count_on_available)",
+               "conflict": "strategy(addition,count_on_from_larger)"},
+              timeout=120.0, check=lambda b: b.get("ok") is True)
+        probe("POST /api/balance_solve", "/api/balance_solve",
+              {"a": 2, "b": 3, "c": 11}, timeout=120.0,
+              check=lambda b: b.get("ok") is True
+              and "deformation_step" in json.dumps(b.get("result", {})))
+        discourse_utterances = [
+            {"id": "u1", "speaker": "S01", "text": "A square has four right angles."},
+            {"id": "u2", "speaker": "S02", "text": "So it is a rectangle."},
+        ]
+        probe("POST /api/discourse_features", "/api/discourse_features",
+              {"utterances": discourse_utterances}, timeout=120.0,
+              check=lambda b: b.get("ok") is True)
         probe("POST /api/geometry", "/api/geometry",
               {"predicate": "pck_synthesis_for", "args": ["quadrilateral_hierarchy"]},
               timeout=120.0,

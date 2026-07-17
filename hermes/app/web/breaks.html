@@ -187,6 +187,16 @@ neg(p)</textarea>
     </div>
   </div>
 
+  <div class="operable" id="formal-witnesses">
+    <h3>Formal witnesses</h3>
+    <div class="domains">finite proof and incompatibility relations · live worker replies</div>
+    <p class="desc">These controls ask the loaded clauses for a witness. An
+      <code>erasure(...)</code> reply records the boundary reached by that derivation; it is a
+      returned witness, not a failed request.</p>
+    <p id="formal-witness-status" class="muted">Loading controls from the capability registry…</p>
+    <div class="tool-grid" id="formal-witness-grid"></div>
+  </div>
+
   <div class="footnote">
     Source: Lakoff &amp; Núñez, <em>Where Mathematics Comes From</em> (2000),
     encoded as Prolog facts in <code>formalization/grounding_metaphors.pl</code>
@@ -199,6 +209,43 @@ neg(p)</textarea>
   <script>
     const $ = (id) => document.getElementById(id);
     const human = (s) => String(s || "").replace(/_/g, " ");
+
+    const FORMAL_DEFAULTS = {
+      axiom_hierarchy_witness: {kind: "domain_expansion(n_to_z)"},
+      critique_bad_infinite: {proof: "proof(pml_rhythm((s(a)=>s(comp_nec(a)))),([s(a)]=>[s(comp_nec(a))]),[proof(pml_rhythm((s(a)=>s(comp_nec(a)))),([s(a)]=>[s(comp_nec(a))]),[])])"},
+      defeasible_classify: {inference_id: "commit_p_entitles_q", defeater_set: []},
+      embodied_proof_witness: {sequent: "[s(a)]=>[s(a)]", resources: 10},
+      eml_transition_witness: {from: "s(u)", to: "s(a)"},
+      incoherent_witness: {context: ["p", "neg(p)"]},
+      incompatibility_discovery_witness: {context: "formal_registry", set: ["p", "neg(p)"]},
+      incompatibility_entailment_witness: {replacement: "square", replaced: "rectangle"},
+      number_theory_self_defeat_witness: {list: [2, 3, 5]},
+      robinson_axiom_witness: {axiom: "q4_add_zero", claim: "o(eq(plus(2,0),2))"}
+    };
+
+    function formalWitnessControl(item) {
+      const form = document.createElement("form"); form.className = "tool";
+      const heading = document.createElement("h4"); heading.textContent = item.name; form.appendChild(heading);
+      Object.keys(FORMAL_DEFAULTS[item.name]).forEach(name => {
+        const value = FORMAL_DEFAULTS[item.name][name]; const label = document.createElement("label");
+        label.textContent = name + (Array.isArray(value) ? " (JSON list)" : typeof value === "number" ? " (number)" : " (Prolog term text)");
+        const input = document.createElement("textarea"); input.name = name; input.required = true;
+        input.value = Array.isArray(value) ? JSON.stringify(value) : value; label.appendChild(input); form.appendChild(label);
+      });
+      const button = document.createElement("button"); button.className = "opbtn"; button.textContent = "Request witness"; form.appendChild(button);
+      const output = document.createElement("pre"); form.appendChild(output);
+      form.onsubmit = async event => { event.preventDefault(); const payload = {op:item.name};
+        Object.keys(FORMAL_DEFAULTS[item.name]).forEach(name => { const original=FORMAL_DEFAULTS[item.name][name], value=form.elements.namedItem(name).value; payload[name]=Array.isArray(original)?JSON.parse(value):typeof original==="number"?Number(value):value; });
+        output.textContent="Requesting…"; try { const response=await fetch("/api/witness/formal",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}); const body=await response.json(); output.textContent=JSON.stringify(body.result||body.error||body,null,2); } catch(error) { output.textContent="Request failed: "+error.message; }
+      }; return form;
+    }
+
+    fetch("/api/capabilities").then(response => response.json()).then(data => {
+      const registry={}; (data.capabilities||[]).forEach(item => { if(FORMAL_DEFAULTS[item.name]) registry[item.name]=item; });
+      const missing=Object.keys(FORMAL_DEFAULTS).filter(name => !registry[name]); if(missing.length) throw new Error("registry is missing: "+missing.join(", "));
+      Object.keys(FORMAL_DEFAULTS).forEach(name => $("formal-witness-grid").appendChild(formalWitnessControl(registry[name])));
+      $("formal-witness-status").textContent="Controls built from the local capability registry.";
+    }).catch(error => { $("formal-witness-status").textContent="Controls unavailable: "+error.message; });
 
     function card(m) {
       const div = document.createElement("div");
