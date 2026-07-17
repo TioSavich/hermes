@@ -70,11 +70,15 @@ vendored SWI-Prolog and Python (Apple Silicon Macs).
 ## Verify a checkout
 
 ```sh
-python3 scripts/checks/render_contract.py
-bash scripts/checks/drawer_parity.sh
+bash scripts/checks/run_all.sh          # the full check suite (~10 min)
 python3 scripts/render/check_prebaked.py
 python3 scripts/bundle/smoke_bundle.py
 ```
+
+`scripts/checks/` holds twelve focused checks — strict Prolog loads,
+route registry and behavior fixtures, render contract and adapter
+round-trips, workflow service parity — each runnable on its own; the
+runner stops at the first failure and names it.
 
 The smoke gate stages the runtime manifest and exercises it the way a
 browser will: every static target in the shipped pages must resolve, the

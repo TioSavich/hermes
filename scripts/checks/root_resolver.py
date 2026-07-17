@@ -77,9 +77,14 @@ def check_root_resolution() -> None:
         print("PASS roots missing hermes_worker.pl or paths.pl are rejected clearly")
 
         with umedcta_root(str(environment)):
-            assert worker.resolve_hermes_root() == monitoring.resolve_hermes_root()
+            assert worker.resolve_hermes_root() == environment
             assert worker.PersistentPrologWorker().umedcta_root == environment
-        print("PASS worker and monitoring resolve the same validated root")
+        # monitoring.py no longer resolves a root of its own: it consults the
+        # injected shared-worker callback, so the single resolver lives in
+        # hermes/app/root.py and worker.py is its one runtime consumer.
+        assert not hasattr(monitoring, "resolve_hermes_root")
+        assert not hasattr(monitoring, "resolve_umedcta_root")
+        print("PASS one resolver: worker resolves it; monitoring carries none")
 
     with umedcta_root(None):
         assert root_module.resolve_hermes_root() == REPO

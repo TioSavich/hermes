@@ -144,8 +144,8 @@ class PersistentPrologWorker:
         --on-error=status on the worker process only changes the exit status
         of an eventual `halt` -- a load error SWI prints without raising
         still lets worker_main fall through into worker_loop, so a defective
-        checkout would serve requests silently (the 22-file defect class
-        Task 13 fixed). This one-shot run adds --on-warning=status and
+        checkout would serve requests silently (malformed use_module
+        directives once hid this way). This one-shot run adds --on-warning=status and
         refuses to spawn the worker on any diagnostic; the worker process
         below is only started once this returns.
         """
