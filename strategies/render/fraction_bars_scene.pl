@@ -17,7 +17,7 @@
  * does not map are emitted annotation-only (`sceneChanged:false`, scene
  * unchanged) so the filmstrip narrates without throwing.
  *
- * Design spec: docs/research_assets/specs/2026-06-22-fraction-bars-render-design.md
+ * Render contract: docs/render-contract-v2.md
  */
 
 :- module(fraction_bars_scene,

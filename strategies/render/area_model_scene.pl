@@ -1,8 +1,8 @@
 /** <module> Area/array-model scene compiler (P3) — witness-walked
  *
  * Compiles an array / area-model claim into a sequence of scene frames in the
- * frozen "area-model" v2 schema (docs/research_assets/specs/2026-06-23-render-
- * contract-frozen.md, §2 P3). The direction is Prolog -> picture, and the
+ * "area-model" v2 schema (docs/render-contract-v2.md). The direction is
+ * Prolog -> picture, and the
  * counts that drive the picture come from witnesses, not from a re-multiply of
  * the integer inputs:
  *

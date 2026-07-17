@@ -13,9 +13,10 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO_ROOT))
 
 from hermes.app.scripts import export_monitoring_visuals
+from hermes.app import rendering
 
 
-DEFAULT_OUT = REPO_ROOT / "hermes" / "app" / "web" / "generated" / "misconception_demos"
+DEFAULT_OUT = rendering.gallery_output(REPO_ROOT / "hermes" / "app" / "web" / "generated" / "misconception_demos")
 HYBRIDIZATION_CASES = {
     "circle_partition_on_rectangle": {
         "code": "DEMO-hybridization-circle-partition-on-rectangle",
@@ -51,249 +52,6 @@ HYBRIDIZATION_CASES = {
     },
 }
 
-FILMSTRIP_EXPORTER = r"""
-const fs = require('fs');
-const vm = require('vm');
-const path = require('path');
-
-const input = JSON.parse(fs.readFileSync(0, 'utf8'));
-const repoRoot = input.repoRoot;
-const outFile = input.outFile;
-const doc = JSON.parse(fs.readFileSync(input.docPath, 'utf8'));
-
-function escapeXml(s) {
-  return String(s)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
-
-class Element {
-  constructor(name) {
-    this.name = name;
-    this.attrs = {};
-    this.children = [];
-    this._text = '';
-    this.style = {};
-    this.classList = { add: (...names) => {
-      const current = new Set(String(this.attrs.class || '').split(/\s+/).filter(Boolean));
-      for (const name of names) current.add(name);
-      if (current.size) this.attrs.class = Array.from(current).join(' ');
-    }};
-  }
-  setAttribute(k, v) { this.attrs[k] = String(v); }
-  getAttribute(k) { return this.attrs[k]; }
-  appendChild(child) { this.children.push(child); return child; }
-  addEventListener() {}
-  querySelectorAll() { return []; }
-  getScreenCTM() { return null; }
-  createSVGPoint() { return { x: 0, y: 0, matrixTransform() { return this; } }; }
-  set textContent(v) { this._text = String(v); }
-  get textContent() { return this._text; }
-  get outerHTML() {
-    const attrs = Object.entries(this.attrs)
-      .map(([k, v]) => ` ${k}="${escapeXml(v)}"`).join('');
-    const body = escapeXml(this._text) + this.children.map(c => c.outerHTML || escapeXml(String(c))).join('');
-    return `<${this.name}${attrs}>${body}</${this.name}>`;
-  }
-}
-
-const document = {
-  documentElement: {},
-  createElementNS(_ns, name) { return new Element(name); },
-  createElement(name) { return new Element(name); },
-  getElementById() { return null; },
-  querySelectorAll() { return []; },
-  addEventListener() {}
-};
-const colorVars = {
-  '--fig-unit': '#3f7f89',
-  '--fig-iterated': '#d4a747',
-  '--fig-highlight': '#d4a747',
-  '--fig-deformation': '#b95238',
-  '--fig-assembled': '#5d9c6d',
-  '--fig-comparison': '#7a6fb0',
-  '--fig-neutral': '#cabf9f',
-  '--fig-whole': '#cabf9f',
-  '--fig-stroke': '#0d0c08',
-  '--paper-bg': '#f8f1df',
-  '--fig-label': '#1b1810'
-};
-const window = {};
-const context = {
-  window,
-  document,
-  console,
-  getComputedStyle() { return { getPropertyValue: name => colorVars[name] || '' }; },
-  setTimeout,
-  clearTimeout
-};
-context.global = context;
-window.document = document;
-window.getComputedStyle = context.getComputedStyle;
-vm.createContext(context);
-vm.runInContext(
-  fs.readFileSync(path.join(repoRoot, 'more-zeeman/render/drawer.js'), 'utf8'),
-  context,
-  { filename: 'drawer.js' }
-);
-const drawer = context.window.HermesDrawer._internal;
-const frames = Array.isArray(doc.frames) ? doc.frames : [];
-const bounds = drawer.documentBounds(frames, doc.canvas || {});
-const labels = ['Host', 'Licensed home', 'Transplant', 'Hybrid result'];
-const panelW = 258;
-const panelH = 220;
-const gap = 16;
-const pad = 22;
-const rootW = pad * 2 + frames.length * panelW + Math.max(0, frames.length - 1) * gap;
-const rootH = 328;
-let body = `<rect x="0" y="0" width="${rootW}" height="${rootH}" fill="#f8f1df"/>`;
-for (let i = 0; i < frames.length; i += 1) {
-  const x = pad + i * (panelW + gap);
-  const svg = drawer.buildSvg(frames[i], bounds);
-  const vb = String(svg.getAttribute('viewBox') || '0 0 1 1').split(/\s+/).map(Number);
-  const scale = Math.min(panelW / vb[2], panelH / vb[3]);
-  const tx = x + (panelW - vb[2] * scale) / 2 - vb[0] * scale;
-  const ty = 74 + (panelH - vb[3] * scale) / 2 - vb[1] * scale;
-  const children = svg.children.map(c => c.outerHTML || '').join('');
-  body += `<text x="${x + panelW / 2}" y="26" text-anchor="middle" font-family="system-ui, sans-serif" font-size="17" font-weight="700" fill="#1b1810">${escapeXml(labels[i] || `Frame ${i + 1}`)}</text>`;
-  body += `<g transform="translate(${tx} ${ty}) scale(${scale})">${children}</g>`;
-}
-const out = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${rootW} ${rootH}" role="img" aria-label="Canonical hybridization temporal filmstrip">${body}</svg>\n`
-  .replace(/font-family="Georgia, &quot;Times New Roman&quot;, serif"/g,
-           'font-family="Georgia, Times New Roman, serif"');
-fs.writeFileSync(outFile, out, 'utf8');
-process.stdout.write(outFile);
-"""
-
-FRAME_EXPORTER = r"""
-const fs = require('fs');
-const vm = require('vm');
-const path = require('path');
-
-const input = JSON.parse(fs.readFileSync(0, 'utf8'));
-const repoRoot = input.repoRoot;
-const outDir = input.outDir;
-const code = input.code;
-const doc = JSON.parse(fs.readFileSync(input.docPath, 'utf8'));
-
-function escapeXml(s) {
-  return String(s)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
-
-function escapeText(s) {
-  return String(s)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
-}
-
-class Element {
-  constructor(name) {
-    this.name = name;
-    this.attrs = {};
-    this.children = [];
-    this._text = '';
-    this.style = {};
-    this.classList = { add: (...names) => {
-      const current = new Set(String(this.attrs.class || '').split(/\s+/).filter(Boolean));
-      for (const name of names) current.add(name);
-      if (current.size) this.attrs.class = Array.from(current).join(' ');
-    }};
-  }
-  setAttribute(k, v) { this.attrs[k] = String(v); }
-  getAttribute(k) { return this.attrs[k]; }
-  appendChild(child) { this.children.push(child); return child; }
-  addEventListener() {}
-  querySelectorAll() { return []; }
-  getScreenCTM() { return null; }
-  createSVGPoint() { return { x: 0, y: 0, matrixTransform() { return this; } }; }
-  set textContent(v) { this._text = String(v); }
-  get textContent() { return this._text; }
-  get outerHTML() {
-    const attrs = Object.entries(this.attrs)
-      .map(([k, v]) => ` ${k}="${escapeXml(v)}"`).join('');
-    const body = escapeXml(this._text) + this.children.map(c => c.outerHTML || escapeXml(String(c))).join('');
-    return `<${this.name}${attrs}>${body}</${this.name}>`;
-  }
-}
-
-const document = {
-  documentElement: {},
-  createElementNS(_ns, name) { return new Element(name); },
-  createElement(name) { return new Element(name); },
-  getElementById() { return null; },
-  querySelectorAll() { return []; },
-  addEventListener() {}
-};
-const colorVars = {
-  '--fig-unit': '#3f7f89',
-  '--fig-iterated': '#d4a747',
-  '--fig-highlight': '#d4a747',
-  '--fig-deformation': '#b95238',
-  '--fig-assembled': '#5d9c6d',
-  '--fig-comparison': '#7a6fb0',
-  '--fig-neutral': '#cabf9f',
-  '--fig-whole': '#cabf9f',
-  '--fig-stroke': '#0d0c08',
-  '--paper-bg': '#f8f1df',
-  '--fig-label': '#1b1810'
-};
-const window = {};
-const context = {
-  window,
-  document,
-  console,
-  getComputedStyle() { return { getPropertyValue: name => colorVars[name] || '' }; },
-  setTimeout,
-  clearTimeout
-};
-context.global = context;
-window.document = document;
-window.getComputedStyle = context.getComputedStyle;
-vm.createContext(context);
-vm.runInContext(
-  fs.readFileSync(path.join(repoRoot, 'more-zeeman/render/drawer.js'), 'utf8'),
-  context,
-  { filename: 'drawer.js' }
-);
-const drawer = context.window.HermesDrawer._internal;
-const frames = Array.isArray(doc.frames) ? doc.frames : [];
-const bounds = drawer.documentBounds(frames, doc.canvas || {});
-const written = [];
-for (let i = 0; i < frames.length; i += 1) {
-  const frame = frames[i] || {};
-  const svg = drawer.buildSvg(frame, bounds);
-  svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-  svg.setAttribute('role', 'img');
-  svg.setAttribute('aria-label', `${code} frame ${i + 1} ${frame.verb || ''}`.trim());
-  const payload = {
-    kind: 'hermes_hybridization_frame_proof',
-    case_code: code,
-    document_kind: doc.kind || '',
-    frame_index: i,
-    step: frame.step == null ? i + 1 : frame.step,
-    verb: frame.verb || '',
-    caption: frame.caption || '',
-    source: 'hybridization_scene_frame'
-  };
-  const metadata = `<metadata data-hermes-kind="hybridization-frame-proof">${escapeText(JSON.stringify(payload))}</metadata>`;
-  const out = svg.outerHTML
-    .replace(/font-family="Georgia, &quot;Times New Roman&quot;, serif"/g,
-             'font-family="Georgia, Times New Roman, serif"')
-    .replace('</svg>', `${metadata}</svg>`);
-  const outFile = path.join(outDir, `${code}-frame-${i + 1}.svg`);
-  fs.writeFileSync(outFile, out + '\n', 'utf8');
-  written.push(outFile);
-}
-process.stdout.write(JSON.stringify(written));
-"""
-
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -311,14 +69,12 @@ def hybridization_doc(kind: str) -> dict:
     from hermes.app import server
 
     try:
-        doc = server.worker_request(
+        doc = server.SERVICES.worker.request(
             "hybridization_render",
             kind=kind,
         )
     finally:
-        worker = getattr(server, "_WORKER", None)
-        if worker is not None:
-            worker.close()
+        server.SERVICES.worker.close()
     if not isinstance(doc, dict):
         raise RuntimeError(f"hybridization_render returned {type(doc).__name__}")
     return doc
@@ -531,23 +287,7 @@ def merge_existing_docs(out_dir: Path, new_docs: dict) -> dict:
 def export_final_svgs(out_dir: Path, docs: dict) -> None:
     docs_path = out_dir / "docs.json"
     docs_path.write_text(json.dumps(docs, indent=2), encoding="utf-8")
-    proc = subprocess.run(
-        ["node", "-e", export_monitoring_visuals.NODE_EXPORTER],
-        input=json.dumps(
-            {
-                "repoRoot": str(REPO_ROOT),
-                "outDir": str(out_dir),
-                "docsPath": str(docs_path),
-            }
-        ),
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        cwd=REPO_ROOT,
-        check=False,
-    )
-    if proc.returncode != 0:
-        raise RuntimeError(proc.stderr)
+    rendering.render_monitoring_docs(docs, out_dir)
     export_monitoring_visuals.build_gallery(out_dir, docs)
 
 
@@ -556,23 +296,14 @@ def export_filmstrip(out_dir: Path, code: str, doc: dict) -> Path:
     doc_path = out_dir / f"hybridization_{kind}_doc.json"
     doc_path.write_text(json.dumps(doc, indent=2), encoding="utf-8")
     out_file = out_dir / f"{code}-filmstrip.svg"
-    proc = subprocess.run(
-        ["node", "-e", FILMSTRIP_EXPORTER],
-        input=json.dumps(
-            {
-                "repoRoot": str(REPO_ROOT),
-                "docPath": str(doc_path),
-                "outFile": str(out_file),
-            }
-        ),
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        cwd=REPO_ROOT,
-        check=False,
+    rendering.render_svg(
+        doc, "filmstrip", out_file,
+        labels=["Host", "Licensed home", "Transplant", "Hybrid result"],
+        panelWidth=258, panelHeight=220, gap=16, rootHeight=328,
+        fullPanelHeight=True, yOffset=74, labelOffset=26, labelSize=17,
+        labelFont="system-ui, sans-serif", omitCaptions=True, cleanFonts=True,
+        ariaLabel="Canonical hybridization temporal filmstrip",
     )
-    if proc.returncode != 0:
-        raise RuntimeError(proc.stderr)
     return out_file
 
 
@@ -580,26 +311,10 @@ def export_frame_svgs(out_dir: Path, code: str, doc: dict) -> list[Path]:
     kind = str(doc.get("kind", code)).replace("-", "_")
     doc_path = out_dir / f"hybridization_{kind}_doc.json"
     doc_path.write_text(json.dumps(doc, indent=2), encoding="utf-8")
-    proc = subprocess.run(
-        ["node", "-e", FRAME_EXPORTER],
-        input=json.dumps(
-            {
-                "repoRoot": str(REPO_ROOT),
-                "docPath": str(doc_path),
-                "outDir": str(out_dir),
-                "code": code,
-            }
-        ),
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        cwd=REPO_ROOT,
-        check=False,
+    return rendering.render_frames(
+        doc, out_dir, code, metadata_kind="hybridization-frame-proof",
+        metadata_payload_kind="hermes_hybridization_frame_proof",
     )
-    if proc.returncode != 0:
-        raise RuntimeError(proc.stderr)
-    written = json.loads(proc.stdout or "[]")
-    return [Path(p) for p in written]
 
 
 def main() -> int:
@@ -649,4 +364,8 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    if "--check" in sys.argv:
+        raise SystemExit(
+            rendering.check_exporter(Path(__file__), DEFAULT_OUT, seed_tracked=True)
+        )
     raise SystemExit(main())

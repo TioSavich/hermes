@@ -1,7 +1,7 @@
 /** <module> Angle / circular scene compiler (spatial family)
  *
  * Compiles a turning task into angle-circular scene frames on the frozen render
- * contract (docs/research_assets/specs/2026-06-23-render-contract-frozen.md,
+ * contract (docs/render-contract-v2.md,
  * §2 spatial family). This is a sibling of the coordinate-plane compiler: it
  * extends the catalog past the arithmetic/number region into the K-8 spatial
  * representations tallied in

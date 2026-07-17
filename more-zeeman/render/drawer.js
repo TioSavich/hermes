@@ -1,7 +1,6 @@
 /*
  * drawer.js — one unified render-only filmstrip drawer for every Hermes scene
- * format (the frozen render contract, docs/research_assets/specs/
- * 2026-06-23-render-contract-frozen.md). It dispatches on scene.format and walks
+ * format (docs/render-contract-v2.md). It dispatches on scene.format and walks
  * a {frames:[...]} document forward only; it never computes a result or edits a
  * scene. A scene compiler emits geometry as primitives plus a role atom per
  * fill; this drawer resolves each role to the CSS variable var(--fig-<role>)
@@ -19,7 +18,8 @@
  * show. The Calculate button POSTs numerals to the worker bridge and renders the
  * returned witness frames; it does not recompute anything in JS.
  *
- * No build step, no dependencies. Exposes window.HermesDrawer.
+ * Browser use has no build step or dependencies. Offline gallery regeneration
+ * uses the shared Node adapter. Exposes window.HermesDrawer.
  */
 
 (function (global) {

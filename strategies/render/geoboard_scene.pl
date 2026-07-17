@@ -1,7 +1,7 @@
 /** <module> Geoboard scene compiler (spatial family)
  *
  * Compiles a rubber-band-on-a-pegboard task into geoboard scene frames on the
- * frozen render contract (docs/research_assets/specs/2026-06-23-render-contract-frozen.md,
+ * render contract (docs/render-contract-v2.md,
  * §2 geoboard). The spatial family extends the catalog past the arithmetic/number
  * region into the K-8 spatial representations tallied in
  * docs/research/2026-07-08-hermes-spatial-representation-gap-tally.md.

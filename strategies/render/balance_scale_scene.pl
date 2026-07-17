@@ -21,8 +21,8 @@
  * only and the beam tips (`beam.tilt = right_down`), with the untouched pan
  * carrying the `deformation` color role.
  *
- * Scene shape: the frozen PB scene of the render contract (docs/research_assets/
- * specs/2026-06-23-render-contract-frozen.md §2): `format:"balance-scale"`,
+ * Scene shape: the PB scene in docs/render-contract-v2.md:
+ * `format:"balance-scale"`,
  * `version:2`, a `beam` carrying only its `tilt`, and `pans.{left,right}` as
  * arrays of aggregated `{kind, count, role}` rows. The compiler emits color
  * ROLES (`x-box`, `unit-weight`, `pan`, `deformation`; §3), never hex — the

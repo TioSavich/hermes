@@ -968,7 +968,6 @@ class RouteLogic:
             "set_grouping_compare", "number_line_render", "number_line_compare",
             "place_value_chart_render", "hybridization_render",
             "balance_render", "balance_compare", "teacher_layer",
-            "primitive_for_practice", "image_schema", "set_base", "get_base",
             "strategy_trace",
         }
         op = str(payload.get("op") or "").strip()
@@ -986,18 +985,19 @@ class RouteLogic:
             # shape the drawer can reason about rather than a bare 500 body.
             self._send_json({"ok": False, "error": str(exc)}, status=400)
             return
-        # The drawer expects a render document (an object with frames). Some
-        # whitelisted ops (set_base/get_base/image_schema/primitive_for_practice)
-        # return a scalar; wrap those so the drawer never receives a bare value
-        # it would crash on. A render document (a dict) passes through unchanged.
-        if not isinstance(result, dict):
+        from hermes.app.routes.worker import validate_render_response
+
+        validation_error = validate_render_response(result)
+        if validation_error is not None:
             self._send_json(
                 {
                     "ok": False,
-                    "error": f"the {op} op returned a value, not a drawable scene",
-                    "value": result,
+                    "error": (
+                        f"the {op} op returned a non-drawable render document: "
+                        f"{validation_error}"
+                    ),
                 },
-                status=200,
+                status=400,
             )
             return
         self._send_json(result)

@@ -1,7 +1,7 @@
 /** <module> Data-display scene compiler (spatial family)
  *
  * Compiles a statistical-display task into data-display scene frames on the
- * frozen render contract (docs/research_assets/specs/2026-06-23-render-contract-frozen.md,
+ * render contract (docs/render-contract-v2.md,
  * §2 spatial family). Data display is a small family of statistical pictures
  * under one language: picture/bar graphs and line plots (1.MD.4, 2.MD.9-10,
  * 3.MD.3-4), the dot plot / histogram / box plot (6.SP.4), the scatterplot

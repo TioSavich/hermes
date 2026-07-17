@@ -1,7 +1,7 @@
 /** <module> Number-line scene compiler (P1)
  *
  * Compiles a strategy's WITNESS trace into number-line scene frames on the
- * frozen render contract (docs/research_assets/specs/2026-06-23-render-contract-frozen.md,
+ * render contract (docs/render-contract-v2.md,
  * §2 P1). The direction is Prolog -> picture and, crucially, the picture is
  * driven by the worker's trace, NOT by re-deriving arithmetic from the raw
  * inputs:

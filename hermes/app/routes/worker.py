@@ -5,6 +5,16 @@ from typing import Any, Callable
 
 from hermes.app.routes.logic import RouteLogic
 from hermes.app.routes.registry import Route
+from hermes.app.rendering import RenderDocumentError, validate_render_document
+
+
+def validate_render_response(result: Any) -> str | None:
+    """Return a client-facing validation detail for non-drawable results."""
+    try:
+        validate_render_document(result)
+    except RenderDocumentError as exc:
+        return str(exc)
+    return None
 
 
 def _post(method: str) -> Callable[[Any], None]:

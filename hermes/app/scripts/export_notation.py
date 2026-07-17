@@ -10,9 +10,8 @@ strategies/render/parametric_notation_deformation.pl decide WHAT each scene is
 (which glyph reverses, which equals sign carries a chain tick, the literal glyph
 row) and emit drawer-compatible frame documents. This script is the projection
 step: it runs swipl through paths.pl to get the documents, then pipes each frame
-through the frozen render contract in more-zeeman/render/drawer.js (the
-'notation' format) via the same embedded node harness the parametric-partition
-demo uses, writing per-frame SVGs and a small index.
+through the shared rendering adapter and more-zeeman/render/drawer.js (the
+'notation' format), writing per-frame SVGs and a small index.
 
 It renders exactly the three bounded demos of spec §8:
 
@@ -35,8 +34,11 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(REPO_ROOT))
+from hermes.app import rendering
+
 DEFAULT_OUT = (
-    REPO_ROOT / "hermes" / "app" / "web" / "generated" / "notation_demos"
+    rendering.gallery_output(REPO_ROOT / "hermes" / "app" / "web" / "generated" / "notation_demos")
 )
 
 # The real K lesson the demos host on. IM-GK-U1-L12 ("count all when count on
@@ -132,134 +134,13 @@ def swipl_doc(goal: str) -> dict:
     return json.loads(out[brace:])
 
 
-# --- node harness: the SAME drawer.js render path the partition demo uses -----
-#
-# Copied verbatim from export_parametric_partition.py: a fake DOM whose Element
-# supports arbitrary setAttribute/appendChild and nested outerHTML, so a
-# <g transform=...> (the mirror flip) round-trips unchanged in static export.
-# colorVars supplies --fig-deformation (#b95238) for red error ink.
-
-NODE_HARNESS_HEAD = r"""
-const fs = require('fs');
-const vm = require('vm');
-const path = require('path');
-
-const input = JSON.parse(fs.readFileSync(0, 'utf8'));
-const repoRoot = input.repoRoot;
-
-function escapeXml(s) {
-  return String(s)
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
-class Element {
-  constructor(name) {
-    this.name = name; this.attrs = {}; this.children = []; this._text = '';
-    this.style = {};
-    this.classList = { add: (...names) => {
-      const cur = new Set(String(this.attrs.class || '').split(/\s+/).filter(Boolean));
-      for (const n of names) cur.add(n);
-      if (cur.size) this.attrs.class = Array.from(cur).join(' ');
-    }};
-  }
-  setAttribute(k, v) { this.attrs[k] = String(v); }
-  getAttribute(k) { return this.attrs[k]; }
-  appendChild(child) { this.children.push(child); return child; }
-  addEventListener() {} querySelectorAll() { return []; }
-  getScreenCTM() { return null; }
-  createSVGPoint() { return { x: 0, y: 0, matrixTransform() { return this; } }; }
-  set textContent(v) { this._text = String(v); }
-  get textContent() { return this._text; }
-  get outerHTML() {
-    const attrs = Object.entries(this.attrs)
-      .map(([k, v]) => ` ${k}="${escapeXml(v)}"`).join('');
-    const body = escapeXml(this._text) +
-      this.children.map(c => c.outerHTML || escapeXml(String(c))).join('');
-    return `<${this.name}${attrs}>${body}</${this.name}>`;
-  }
-}
-const document = {
-  documentElement: {},
-  createElementNS(_ns, name) { return new Element(name); },
-  createElement(name) { return new Element(name); },
-  getElementById() { return null; }, querySelectorAll() { return []; },
-  addEventListener() {}
-};
-const colorVars = {
-  '--fig-unit': '#3f7f89', '--fig-iterated': '#d4a747', '--fig-highlight': '#d4a747',
-  '--fig-deformation': '#b95238', '--fig-assembled': '#5d9c6d',
-  '--fig-comparison': '#7a6fb0', '--fig-neutral': '#cabf9f', '--fig-whole': '#cabf9f',
-  '--fig-stroke': '#0d0c08', '--paper-bg': '#f8f1df', '--fig-label': '#1b1810'
-};
-const window = {};
-const context = {
-  window, document, console,
-  getComputedStyle() { return { getPropertyValue: name => colorVars[name] || '' }; },
-  setTimeout, clearTimeout
-};
-context.global = context;
-window.document = document;
-window.getComputedStyle = context.getComputedStyle;
-vm.createContext(context);
-vm.runInContext(
-  fs.readFileSync(path.join(repoRoot, 'more-zeeman/render/drawer.js'), 'utf8'),
-  context, { filename: 'drawer.js' });
-const drawer = context.window.HermesDrawer._internal;
-"""
-
-# Per-frame exporter: writes one SVG per frame for one document.
-NODE_FRAMES = NODE_HARNESS_HEAD + r"""
-const doc = JSON.parse(fs.readFileSync(input.docPath, 'utf8'));
-const outDir = input.outDir;
-const code = input.code;
-const frames = Array.isArray(doc.frames) ? doc.frames : [];
-const bounds = drawer.documentBounds(frames, doc.canvas || {});
-const written = [];
-for (let i = 0; i < frames.length; i += 1) {
-  const frame = frames[i] || {};
-  const svg = drawer.buildSvg(frame, bounds);
-  svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-  svg.setAttribute('role', 'img');
-  svg.setAttribute('aria-label', `${code} frame ${i + 1} ${frame.verb || ''}`.trim());
-  const out = svg.outerHTML.replace(
-    /font-family="Georgia, &quot;Times New Roman&quot;, serif"/g,
-    'font-family="Georgia, Times New Roman, serif"');
-  const outFile = path.join(outDir, `${code}-frame-${i + 1}.svg`);
-  fs.writeFileSync(outFile, out + '\n', 'utf8');
-  written.push(outFile);
-}
-process.stdout.write(JSON.stringify(written));
-"""
-
-
-def run_node(script: str, payload: dict) -> str:
-    proc = subprocess.run(
-        ["node", "-e", script],
-        input=json.dumps(payload),
-        cwd=REPO_ROOT,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        check=False,
-    )
-    if proc.returncode != 0:
-        raise RuntimeError(proc.stderr)
-    return proc.stdout
+# --- shared drawer adapter ---------------------------------------------------
 
 
 def export_frames(out_dir: Path, code: str, doc: dict) -> list[Path]:
     doc_path = out_dir / f"{code}-doc.json"
     doc_path.write_text(json.dumps(doc, indent=2), encoding="utf-8")
-    out = run_node(
-        NODE_FRAMES,
-        {
-            "repoRoot": str(REPO_ROOT),
-            "docPath": str(doc_path),
-            "outDir": str(out_dir),
-            "code": code,
-        },
-    )
-    return [Path(p) for p in json.loads(out or "[]")]
+    return rendering.render_frames(doc, out_dir, code)
 
 
 # --- index.html (honesty cards, the fraction_cliff_demos pattern) ------------
@@ -359,4 +240,6 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    if "--check" in sys.argv:
+        raise SystemExit(rendering.check_exporter(Path(__file__), DEFAULT_OUT))
     raise SystemExit(main())

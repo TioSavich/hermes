@@ -1,7 +1,7 @@
 /** <module> Rigid-motion scene compiler (spatial family)
  *
  * Compiles a transformation task into rigid-motion scene frames on the frozen
- * render contract (docs/research_assets/specs/2026-06-23-render-contract-frozen.md,
+ * render contract (docs/render-contract-v2.md,
  * §2 spatial family). The rigid-motion format is the transformation actuator for
  * the K-8 spatial catalog: 4.G.3 line symmetry, and 8.G.1-4, where congruence and
  * similarity are defined through motions of the plane.

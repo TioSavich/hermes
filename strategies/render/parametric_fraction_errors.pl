@@ -25,8 +25,7 @@
  * the wrong count is shaded, or a different whole is used. No foreign primitive
  * is involved.
  *
- * Output contract (the frozen render contract,
- * docs/research_assets/specs/2026-06-23-render-contract-frozen.md): each scene is a
+ * Output contract (docs/render-contract-v2.md): each scene is a
  * {frames:[...]} document. Each frame is a dict carrying step, verb, caption,
  * and a scene the drawer (more-zeeman/render/drawer.js) can draw. Verbs are the
  * named B/M/E steps: establish_whole / apply_partition / shade_parts. The

@@ -9,7 +9,7 @@
  * narration are about the operative base, not base ten.
  *
  * The frames go out under the frozen render contract
- * (docs/research_assets/specs/2026-06-23-render-contract-frozen.md, §2 format P4).
+ * (docs/render-contract-v2.md).
  *
  * This is a THIN, WITNESS-FED compiler. It emits semantic primitives only:
  * each column is `{place, count, base, role}` and each regroup is a `carries`

@@ -7584,6 +7584,7 @@ hermes/app/llm.py
 hermes/app/monitoring/INDEX.json
 hermes/app/monitoring/im_codes.json
 hermes/app/monitoring/visuals.py
+hermes/app/rendering.py
 hermes/app/results.py
 hermes/app/root.py
 hermes/app/roster.csv.example
@@ -9191,6 +9192,7 @@ more-zeeman/render/compare.js
 more-zeeman/render/drawer.js
 more-zeeman/render/hermes-shell.js
 more-zeeman/render/host.css
+more-zeeman/render/node-adapter.js
 more-zeeman/render/shell.css
 more-zeeman/render/shell.js
 more-zeeman/scoreboard.html

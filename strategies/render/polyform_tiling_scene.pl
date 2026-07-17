@@ -1,7 +1,7 @@
 /** <module> Polyform-tiling scene compiler (spatial family)
  *
  * Compiles a tiling task into polyform-tiling scene frames on the frozen render
- * contract (docs/research_assets/specs/2026-06-23-render-contract-frozen.md,
+ * contract (docs/render-contract-v2.md,
  * spatial family). The polyform-tiling language fits rigid lattice pieces —
  * unit cells and free polyominoes (the pentominoes vocabulary) — into a bounded
  * lattice region, edge to edge. It denotes composed/decomposed shapes (K.G.6,

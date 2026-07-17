@@ -30,7 +30,7 @@
  * Frozen render contract. Each fill carries a semantic ROLE atom (unit /
  * highlight / iterated / deformation / neutral), never a hex string; Gate E's
  * token stylesheet maps role -> hex. See
- * docs/research_assets/specs/2026-06-23-render-contract-frozen.md (the scene format
+ * docs/render-contract-v2.md (the scene format
  * is "set-grouping", version 2).
  *
  * Worker wiring (left for a later integration pass; do not register here):

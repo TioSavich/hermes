@@ -5,9 +5,8 @@ The Prolog layer strategies/render/parametric_partition_deformation.pl decides
 WHAT each deformation is (a foreign partition rule on an illicit host, parametric
 over the fraction's denominator N) and emits drawer-compatible frame documents.
 This script is the projection step: it runs swipl through paths.pl to get the
-documents, then pipes each through the frozen render contract in
-more-zeeman/render/drawer.js via an embedded node harness (the same harness the
-hybridization demo uses), writing per-frame SVGs and a four-up filmstrip.
+documents, then passes each through the shared rendering adapter and
+more-zeeman/render/drawer.js, writing per-frame SVGs and a four-up filmstrip.
 
 The replication panel renders the SAME deformation for several denominators so
 the eye confirms what the skeleton-diff test asserts: only the cut count changes.
@@ -23,8 +22,11 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(REPO_ROOT))
+from hermes.app import rendering
+
 DEFAULT_OUT = (
-    REPO_ROOT / "hermes" / "app" / "web" / "generated" / "parametric_partition"
+    rendering.gallery_output(REPO_ROOT / "hermes" / "app" / "web" / "generated" / "parametric_partition")
 )
 
 # The cases to render. Each is (host, transplant_rule, [denominators]).
@@ -96,186 +98,36 @@ def productive_doc(host: str, n: int) -> dict:
     return swipl_doc(SWIPL_PRODUCTIVE.format(host=host, n=n))
 
 
-# --- node harness: the SAME drawer.js render path the hybridization demo uses -
-
-NODE_HARNESS_HEAD = r"""
-const fs = require('fs');
-const vm = require('vm');
-const path = require('path');
-
-const input = JSON.parse(fs.readFileSync(0, 'utf8'));
-const repoRoot = input.repoRoot;
-
-function escapeXml(s) {
-  return String(s)
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
-class Element {
-  constructor(name) {
-    this.name = name; this.attrs = {}; this.children = []; this._text = '';
-    this.style = {};
-    this.classList = { add: (...names) => {
-      const cur = new Set(String(this.attrs.class || '').split(/\s+/).filter(Boolean));
-      for (const n of names) cur.add(n);
-      if (cur.size) this.attrs.class = Array.from(cur).join(' ');
-    }};
-  }
-  setAttribute(k, v) { this.attrs[k] = String(v); }
-  getAttribute(k) { return this.attrs[k]; }
-  appendChild(child) { this.children.push(child); return child; }
-  addEventListener() {} querySelectorAll() { return []; }
-  getScreenCTM() { return null; }
-  createSVGPoint() { return { x: 0, y: 0, matrixTransform() { return this; } }; }
-  set textContent(v) { this._text = String(v); }
-  get textContent() { return this._text; }
-  get outerHTML() {
-    const attrs = Object.entries(this.attrs)
-      .map(([k, v]) => ` ${k}="${escapeXml(v)}"`).join('');
-    const body = escapeXml(this._text) +
-      this.children.map(c => c.outerHTML || escapeXml(String(c))).join('');
-    return `<${this.name}${attrs}>${body}</${this.name}>`;
-  }
-}
-const document = {
-  documentElement: {},
-  createElementNS(_ns, name) { return new Element(name); },
-  createElement(name) { return new Element(name); },
-  getElementById() { return null; }, querySelectorAll() { return []; },
-  addEventListener() {}
-};
-const colorVars = {
-  '--fig-unit': '#3f7f89', '--fig-iterated': '#d4a747', '--fig-highlight': '#d4a747',
-  '--fig-deformation': '#b95238', '--fig-assembled': '#5d9c6d',
-  '--fig-comparison': '#7a6fb0', '--fig-neutral': '#cabf9f', '--fig-whole': '#cabf9f',
-  '--fig-stroke': '#0d0c08', '--paper-bg': '#f8f1df', '--fig-label': '#1b1810'
-};
-const window = {};
-const context = {
-  window, document, console,
-  getComputedStyle() { return { getPropertyValue: name => colorVars[name] || '' }; },
-  setTimeout, clearTimeout
-};
-context.global = context;
-window.document = document;
-window.getComputedStyle = context.getComputedStyle;
-vm.createContext(context);
-vm.runInContext(
-  fs.readFileSync(path.join(repoRoot, 'more-zeeman/render/drawer.js'), 'utf8'),
-  context, { filename: 'drawer.js' });
-const drawer = context.window.HermesDrawer._internal;
-"""
-
-# Per-frame exporter: writes one SVG per frame for one document.
-NODE_FRAMES = NODE_HARNESS_HEAD + r"""
-const doc = JSON.parse(fs.readFileSync(input.docPath, 'utf8'));
-const outDir = input.outDir;
-const code = input.code;
-const frames = Array.isArray(doc.frames) ? doc.frames : [];
-const bounds = drawer.documentBounds(frames, doc.canvas || {});
-const written = [];
-for (let i = 0; i < frames.length; i += 1) {
-  const frame = frames[i] || {};
-  const svg = drawer.buildSvg(frame, bounds);
-  svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-  svg.setAttribute('role', 'img');
-  svg.setAttribute('aria-label', `${code} frame ${i + 1} ${frame.verb || ''}`.trim());
-  const out = svg.outerHTML.replace(
-    /font-family="Georgia, &quot;Times New Roman&quot;, serif"/g,
-    'font-family="Georgia, Times New Roman, serif"');
-  const outFile = path.join(outDir, `${code}-frame-${i + 1}.svg`);
-  fs.writeFileSync(outFile, out + '\n', 'utf8');
-  written.push(outFile);
-}
-process.stdout.write(JSON.stringify(written));
-"""
-
-# Replication-strip exporter: one panel per denominator, drawing the FINAL
-# (hybrid-result) frame of each document, so the strip shows the same
-# deformation at 1/4, 1/5, 1/6, 1/8 — only the cut count changes.
-NODE_REPLICATION = NODE_HARNESS_HEAD + r"""
-const docs = input.docs.map(d => ({ n: d.n, doc: JSON.parse(fs.readFileSync(d.docPath, 'utf8')) }));
-const outFile = input.outFile;
-const title = input.title;
-const panelW = 230, panelH = 220, gap = 16, pad = 22, headH = 84;
-const rootW = pad * 2 + docs.length * panelW + Math.max(0, docs.length - 1) * gap;
-const rootH = headH + panelH + 56;
-let body = `<rect x="0" y="0" width="${rootW}" height="${rootH}" fill="#f8f1df"/>`;
-body += `<text x="${rootW / 2}" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1b1810">${escapeXml(title)}</text>`;
-for (let i = 0; i < docs.length; i += 1) {
-  const { n, doc } = docs[i];
-  const frames = Array.isArray(doc.frames) ? doc.frames : [];
-  const bounds = drawer.documentBounds(frames, doc.canvas || {});
-  const last = frames[frames.length - 1];
-  const svg = drawer.buildSvg(last, bounds);
-  const vb = String(svg.getAttribute('viewBox') || '0 0 1 1').split(/\s+/).map(Number);
-  const scale = Math.min(panelW / vb[2], panelH / vb[3]);
-  const x = pad + i * (panelW + gap);
-  const tx = x + (panelW - vb[2] * scale) / 2 - vb[0] * scale;
-  const ty = headH + (panelH - vb[3] * scale) / 2 - vb[1] * scale;
-  const children = svg.children.map(c => c.outerHTML || '').join('');
-  body += `<text x="${x + panelW / 2}" y="${headH - 18}" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="700" fill="#1b1810">1/${n}</text>`;
-  body += `<g transform="translate(${tx} ${ty}) scale(${scale})">${children}</g>`;
-}
-const out = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${rootW} ${rootH}" role="img" aria-label="${escapeXml(title)}">${body}</svg>\n`
-  .replace(/font-family="Georgia, &quot;Times New Roman&quot;, serif"/g,
-           'font-family="Georgia, Times New Roman, serif"');
-fs.writeFileSync(outFile, out, 'utf8');
-process.stdout.write(outFile);
-"""
-
-
-def run_node(script: str, payload: dict) -> str:
-    proc = subprocess.run(
-        ["node", "-e", script],
-        input=json.dumps(payload),
-        cwd=REPO_ROOT,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        check=False,
-    )
-    if proc.returncode != 0:
-        raise RuntimeError(proc.stderr)
-    return proc.stdout
+# --- shared drawer adapter ---------------------------------------------------
 
 
 def export_frames(out_dir: Path, code: str, doc: dict) -> list[Path]:
     doc_path = out_dir / f"{code}-doc.json"
     doc_path.write_text(json.dumps(doc, indent=2), encoding="utf-8")
-    out = run_node(
-        NODE_FRAMES,
-        {
-            "repoRoot": str(REPO_ROOT),
-            "docPath": str(doc_path),
-            "outDir": str(out_dir),
-            "code": code,
-        },
-    )
-    return [Path(p) for p in json.loads(out or "[]")]
+    return rendering.render_frames(doc, out_dir, code)
 
 
 def export_replication_strip(
     out_dir: Path, host: str, rule: str, ns: list[int], docs: dict[int, dict]
 ) -> Path:
     out_file = out_dir / f"PARAM-replication-{rule}-on-{host}.svg"
-    items = []
+    frames = []
     for n in ns:
         doc_path = out_dir / f"{case_code(host, rule, n)}-doc.json"
         doc_path.write_text(json.dumps(docs[n], indent=2), encoding="utf-8")
-        items.append({"n": n, "docPath": str(doc_path)})
+        frames.append(docs[n]["frames"][-1])
     title = (
         f"Same {rule}-rule transplant on a {host}, parametric over the fraction "
         f"(only the cut count changes)"
     )
-    run_node(
-        NODE_REPLICATION,
-        {
-            "repoRoot": str(REPO_ROOT),
-            "docs": items,
-            "outFile": str(out_file),
-            "title": title,
-        },
+    rendering.render_svg(
+        {"frames": frames, "_bounds_documents": [docs[n] for n in ns]},
+        "filmstrip", out_file,
+        labels=[f"1/{n}" for n in ns], title=title,
+        panelWidth=230, panelHeight=220, gap=16, headHeight=84, rootHeight=360,
+        fullPanelHeight=True, yOffset=0, replicationLayout=True,
+        perFrameBounds=True, omitCaptions=True, cleanFonts=True,
+        ariaLabel=title,
     )
     return out_file
 
@@ -346,4 +198,6 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    if "--check" in sys.argv:
+        raise SystemExit(rendering.check_exporter(Path(__file__), DEFAULT_OUT))
     raise SystemExit(main())

@@ -1,7 +1,7 @@
 /** <module> Solid-net scene compiler (spatial family)
  *
  * Compiles a solids task into solid-net scene frames on the frozen render
- * contract (docs/research_assets/specs/2026-06-23-render-contract-frozen.md,
+ * contract (docs/render-contract-v2.md,
  * §2 solid-net). The spatial family extends the catalog past the
  * arithmetic/number region into the K-8 spatial representations tallied in
  * docs/research/2026-07-08-hermes-spatial-representation-gap-tally.md.

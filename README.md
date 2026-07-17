@@ -38,6 +38,10 @@ The console opens at `http://127.0.0.1:8765`.
 `hermes/app/QUICKSTART_N103.md` walks the setup one step at a time and
 assumes no Prolog or Python background.
 
+Node.js is a contributor-time dependency for regenerating and checking tracked
+SVG galleries. It is not required to run the server, the Docker image, or a
+flash-drive bundle with its galleries already present.
+
 **With Docker.**
 
 ```sh
@@ -66,6 +70,9 @@ vendored SWI-Prolog and Python (Apple Silicon Macs).
 ## Verify a checkout
 
 ```sh
+python3 scripts/checks/render_contract.py
+bash scripts/checks/drawer_parity.sh
+python3 scripts/render/check_prebaked.py
 python3 scripts/bundle/smoke_bundle.py
 ```
 
@@ -73,6 +80,10 @@ The smoke gate stages the runtime manifest and exercises it the way a
 browser will: every static target in the shipped pages must resolve, the
 live routes must answer (the LLM-backed ones with a clean no-key message),
 and the report chain runs end to end on a toy transcript.
+
+The first three checks validate the render contract, compare every drawer format
+through the browser and Node adapters, and report tracked-gallery drift. They
+require Node.js and do not start a server.
 
 `scripts/bundle/app_manifest.py` names the file set this repository
 carries and why (`KEEP_TREES_RATIONALE` in that file, one rationale per
