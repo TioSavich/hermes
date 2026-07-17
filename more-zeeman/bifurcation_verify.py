@@ -22,16 +22,20 @@ import numpy as np
 CANVAS = 600
 WHEEL_CX, WHEEL_CY = CANVAS / 2, CANVAS / 2
 FIXED_X, FIXED_Y = CANVAS / 2, CANVAS * 0.1
+# 0.083 is the source artifact's rim fraction; it normalizes to R = 0.996,
+# not the Prolog core's r = 1.0. The 0.4% offset changes no equilibrium
+# count on the pinned grid (checked at both radii) and is kept so this file
+# stays numerically faithful to the artifact it derives from.
 ATTACH_R = CANVAS * 0.083
 PROLOG_SCALE = 50.0
 SPRING_K = 2.0
 NAT_LEN = 100
 SAMPLE_COORDS = (60, 140, 220, 300, 380, 460, 540)
-EXPECTED_MISMATCHES = (
-    (0.0, 4.8, 3, 2),
-    (1.6, 4.8, 2, 1),
-    (3.2, 4.8, 2, 1),
-)
+# The two cores agree at every pinned grid point. An earlier release pinned a
+# three-point divergence at the upper control edge; that divergence was a
+# wraparound artifact in THIS file's dedup (a single equilibrium straddling
+# the theta = 0 seam counted once per side), not a Prolog undercount.
+EXPECTED_MISMATCHES = ()
 
 
 def gradient_vec(angles: np.ndarray, cx: float, cy: float) -> np.ndarray:
@@ -75,15 +79,14 @@ def find_equilibria_fast(cx: float, cy: float, n_starts: int = 36) -> np.ndarray
     if len(stable) == 0:
         return stable
     keep = np.concatenate([[True], np.diff(stable) > 0.15])
-    return stable[keep]
-
-
-def sample_points() -> list[tuple[float, float]]:
-    return [
-        ((cx - WHEEL_CX) / PROLOG_SCALE, (cy - WHEEL_CY) / PROLOG_SCALE)
-        for cx in SAMPLE_COORDS
-        for cy in SAMPLE_COORDS
-    ]
+    # The variable is an angle: merge across the 0 / 2*pi seam too, or a
+    # single equilibrium near theta = 0 is counted once per side of the seam.
+    # (The Prolog core closes this loop explicitly before scanning for sign
+    # changes; this dedup must match that circular topology.)
+    if len(stable) > 1 and (stable[0] + 2 * np.pi - stable[-1]) <= 0.15:
+        keep[0] = False
+    kept = stable[keep]
+    return kept if len(kept) else stable[:1]
 
 
 def python_counts() -> list[tuple[float, float, int]]:

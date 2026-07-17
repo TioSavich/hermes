@@ -572,13 +572,16 @@
       Prolog modules remain offline research tools rather than worker operations.</p>
     <p>The deterministic 7 by 7 comparison against <code>more-zeeman/bifurcation_verify.py</code>
       reports the following result plainly:</p>
-    <pre style="white-space:pre-wrap;overflow-wrap:anywhere">ZEEMAN_BIFURCATION_VERDICT divergence
-sample_points=49 python_counts={1:46,2:2,3:1} prolog_counts={1:48,2:1} mismatches=3
-mismatch control=point(0.0,4.8) python=3 prolog=2
-mismatch control=point(1.6,4.8) python=2 prolog=1
-mismatch control=point(3.2,4.8) python=2 prolog=1</pre>
-    <p>The mismatch is concentrated on the upper edge of the pinned grid. The comparison records
-      that divergence; it does not convert it into agreement.</p>
+    <pre style="white-space:pre-wrap;overflow-wrap:anywhere">ZEEMAN_BIFURCATION_VERDICT agreement
+sample_points=49 python_counts={1:48,2:1} prolog_counts={1:48,2:1} mismatches=0</pre>
+    <p>When this comparison first ran it reported a three-point divergence at the upper control
+      edge, with the Python side counting more equilibria than the Prolog side. Chasing that
+      divergence found the defect in the Python verifier, not the Prolog core: its
+      de-duplication treated the angle as a line rather than a circle, so a single equilibrium
+      straddling the zero seam was counted once per side. With the seam closed the two cores
+      agree at every pinned point, and (0.0, 4.8) stands as the one genuinely bistable control
+      position on the grid. The machine's real modeling boundary — quasi-static tracking versus
+      inertial dynamics — is a separate matter and stands as the module header states it.</p>
   </section>
 
   <script src="more-machine.js"></script>
