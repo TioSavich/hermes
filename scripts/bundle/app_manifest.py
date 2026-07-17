@@ -100,14 +100,15 @@ KEEP_FILES = [
 
 # Markdown is documentation, not runtime — with the exceptions the running
 # app reads: the quickstart the server serves through /api/quickstart, the
-# two pass prompts /api/transcript_report sends as system messages, and the
+# two pass prompts /api/transcript_report sends as system messages, the
 # per-command system prompts the workflow CLIs and /api/media_transcribe
 # read at request time (kept by prefix so a newly added prompt cannot be
-# silently dropped the way the first nine were).
+# silently dropped the way the first nine were), and the ASKTM survey text.
 KEEP_MD = {
     "hermes/app/QUICKSTART_N103.md",
     "docs/research/2026-07-01-talkmoves-pass1-math-prompt.md",
     "docs/research/2026-07-01-talkmoves-pass2-posture-prompt.md",
+    "ASKTM_Data/survey_questions.md",
 }
 KEEP_MD_PREFIXES = ("hermes/app/system_prompts/",)
 

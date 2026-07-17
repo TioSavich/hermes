@@ -6540,6 +6540,7 @@ ASKTM_Data/Survery questions for students_files/image009.png
 ASKTM_Data/Survery questions for students_files/image010.png
 ASKTM_Data/Survery questions for students_files/image011.png
 ASKTM_Data/Survery questions for students_files/image012.png
+ASKTM_Data/survey_questions.md
 arche-trace/automata.pl
 arche-trace/brandomian_incompatibility.pl
 arche-trace/critique.pl

@@ -8,10 +8,9 @@ entry pages reach. External URLs (http/https/data/mailto) are ignored.
 Root-absolute paths ("/api/...") are recorded as server routes, not files.
 
 Only git-tracked files are eligible for bundling. A referenced file that
-exists locally but is untracked (for example ASKTM student-work images) is
-reported as a named skip, never copied: untracked local data is not
-distributed. A referenced file that does not exist at all is reported as
-missing.
+exists locally but is untracked (for example runtime outputs or local research
+data) is reported as a named skip, never copied. A referenced file that does
+not exist at all is reported as missing.
 
 Usage:
   python3 scripts/bundle/walk_closure.py --entry more-zeeman/audience-index.html
@@ -199,10 +198,10 @@ def walk(repo_root, entries):
                 del missing[cand]
                 break
 
-    # A candidate under a gitignored root (ASKTM_Data, runtime outputs) is
-    # declared local data, not a broken reference: on the maintainer's machine
-    # it exists untracked, on a fresh clone it is absent, and in both cases the
-    # honest category is "local data, not distributed".
+    # A candidate under a gitignored root (runtime outputs and other local
+    # research data) is declared local data, not a broken reference: on the
+    # maintainer's machine it exists untracked, on a fresh clone it is absent,
+    # and in both cases the honest category is "local data, not distributed".
     ignored_tops = ignored_top_dirs(repo_root, missing)
     for cand in list(missing):
         rel = os.path.normpath(cand)
