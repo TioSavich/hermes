@@ -132,6 +132,61 @@ def export_replication_strip(
     return out_file
 
 
+def build_index(manifest: dict) -> str:
+    """Render index.html from the manifest this same run just wrote.
+
+    Mirrors the section grouping and prose of export_parametric_deformations.py's
+    build_index (the established pattern for this gallery family): replication
+    strips first, then productive partitions, then one section per (rule, host)
+    transplant family, sections and denominators sorted so the page order is
+    stable across runs rather than tied to CASES declaration order.
+    """
+    svg_count = (
+        sum(len(d["frames"]) for d in manifest["deformations"])
+        + sum(len(p["frames"]) for p in manifest["productive"])
+        + len(manifest["replication_strips"])
+    )
+
+    rows = []
+    rows.append("<!doctype html><meta charset=utf-8>")
+    rows.append("<title>Parametric partition gallery</title>")
+    rows.append("<body style='font-family:system-ui;background:#f8f1df;color:#1b1810;"
+                "max-width:1100px;margin:0 auto;padding:28px'>")
+    rows.append("<h1 style=\"font-family:Georgia,'Times New Roman',serif\">"
+                "Parametric partition gallery</h1>")
+    rows.append(f"<p style='max-width:760px;line-height:1.45'>These {svg_count} SVGs "
+                "record productive circle partitions, transplant deformations, and "
+                "denominator replication strips. Each caption names the rule, host, "
+                "fraction, and frame encoded in its filename.</p>")
+
+    rows.append("<h2>Replication strips</h2>")
+    for strip in sorted(manifest["replication_strips"], key=lambda s: (s["rule"], s["host"])):
+        label = f"{strip['rule'].title()} on {strip['host']}"
+        rows.append(f"<p><a href='{strip['file']}'>{label}</a> "
+                    "— replication across denominators</p>")
+
+    rows.append("<h2>Productive circle partitions</h2>")
+    for p in sorted(manifest["productive"], key=lambda p: p["n"]):
+        rows.append(f"<h3>{p['host'].title()}, 1/{p['n']}</h3>")
+        for i, frame in enumerate(p["frames"], 1):
+            rows.append(f"<p><a href='{frame}'>{p['host'].title()} 1/{p['n']}, "
+                        f"frame {i}</a></p>")
+
+    groups: dict[tuple[str, str], list[dict]] = {}
+    for d in manifest["deformations"]:
+        groups.setdefault((d["rule"], d["host"]), []).append(d)
+    for (rule, host), entries in sorted(groups.items()):
+        rows.append(f"<h2>{rule.title()} on {host} transplants</h2>")
+        for d in sorted(entries, key=lambda d: d["n"]):
+            rows.append(f"<h3>{host.title()}, 1/{d['n']}</h3>")
+            for i, frame in enumerate(d["frames"], 1):
+                rows.append(f"<p><a href='{frame}'>{rule.title()} on {host} "
+                            f"1/{d['n']}, frame {i}</a></p>")
+
+    rows.append("</body>")
+    return "\n".join(rows)
+
+
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--out", type=Path, default=DEFAULT_OUT)
@@ -191,7 +246,11 @@ def main() -> int:
         json.dumps(manifest, indent=2), encoding="utf-8"
     )
 
-    print(f"Wrote {len(written)} SVGs to {out_dir}")
+    index_path = out_dir / "index.html"
+    index_path.write_text(build_index(manifest), encoding="utf-8")
+    written.append(index_path)
+
+    print(f"Wrote {len(written)} files to {out_dir}")
     for path in written:
         print(path)
     return 0

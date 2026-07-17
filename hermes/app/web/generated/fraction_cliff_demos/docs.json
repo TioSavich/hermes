@@ -97,7 +97,7 @@
         }
       }
     ],
-    "machine_verdict": "v(4,[divade(5),iterate,iterate,iterate],-1)"
+    "machine_verdict": "v(-1,[],-1)"
   },
   "DEMO-fraction-7-5-mc2-chain-loss": {
     "frames": [
@@ -276,7 +276,7 @@
         }
       }
     ],
-    "machine_verdict": "v(-1,[],8)"
+    "machine_verdict": "v(-1,[],-1)"
   },
   "DEMO-fraction-7-5-mc3-freed-intact": {
     "frames": [
@@ -460,6 +460,6 @@
         }
       }
     ],
-    "machine_verdict": "v(9,[divade(5),iterate,iterate,iterate,iterate,iterate,free_unit,iterate_beyond_freed,iterate_beyond_freed],8)"
+    "machine_verdict": "v(-1,[],-1)"
   }
 }

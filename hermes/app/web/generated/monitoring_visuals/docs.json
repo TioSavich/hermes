@@ -1622,9 +1622,414 @@
               "representation": "number_line"
             }
           ],
+          "figures": {
+            "candidate_count": 1622,
+            "candidates": [
+              {
+                "bibkey": "MERJ_HeuvelPanhuizen_2008_Learning",
+                "domains": [
+                  "whole_number"
+                ],
+                "evidence": {
+                  "is_hybridized_transplant": false,
+                  "score_components": [
+                    {
+                      "name": "representation_language",
+                      "weight": 40
+                    },
+                    {
+                      "name": "spatial_elements",
+                      "weight": 5
+                    },
+                    {
+                      "name": "domain",
+                      "weight": 25
+                    },
+                    {
+                      "name": "grade_band",
+                      "weight": 20
+                    },
+                    {
+                      "name": "topics",
+                      "weight": 10
+                    },
+                    {
+                      "name": "transcribed_numerals",
+                      "weight": 0
+                    },
+                    {
+                      "name": "bibkey_provenance",
+                      "weight": 0
+                    }
+                  ]
+                },
+                "grade_bucket": "elementary (K\u20135)",
+                "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/MERJ_HeuvelPanhuizen_2008_Learning/p13_1.png",
+                "refusals": [],
+                "render_plan": {
+                  "kind": "productive_diagram",
+                  "note": "representation grammar accepts; lesson-exact analogue may be generated",
+                  "productive": true,
+                  "source": "svg_analogue"
+                },
+                "representation_language": "number_line",
+                "score": 100,
+                "source_label": "MERJ_HeuvelPanhuizen_2008_Learning - elementary (K\u20135) - number_line - svg_analogue",
+                "status": "productive_fit"
+              },
+              {
+                "bibkey": "MERJ_HeuvelPanhuizen_2008_Learning",
+                "domains": [
+                  "whole_number"
+                ],
+                "evidence": {
+                  "is_hybridized_transplant": false,
+                  "score_components": [
+                    {
+                      "name": "representation_language",
+                      "weight": 40
+                    },
+                    {
+                      "name": "spatial_elements",
+                      "weight": 5
+                    },
+                    {
+                      "name": "domain",
+                      "weight": 25
+                    },
+                    {
+                      "name": "grade_band",
+                      "weight": 20
+                    },
+                    {
+                      "name": "topics",
+                      "weight": 10
+                    },
+                    {
+                      "name": "transcribed_numerals",
+                      "weight": 0
+                    },
+                    {
+                      "name": "bibkey_provenance",
+                      "weight": 0
+                    }
+                  ]
+                },
+                "grade_bucket": "elementary (K\u20135)",
+                "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/MERJ_HeuvelPanhuizen_2008_Learning/p16_1.png",
+                "refusals": [],
+                "render_plan": {
+                  "kind": "productive_diagram",
+                  "note": "representation grammar accepts; lesson-exact analogue may be generated",
+                  "productive": true,
+                  "source": "svg_analogue"
+                },
+                "representation_language": "number_line",
+                "score": 100,
+                "source_label": "MERJ_HeuvelPanhuizen_2008_Learning - elementary (K\u20135) - number_line - svg_analogue",
+                "status": "productive_fit"
+              },
+              {
+                "bibkey": "MERJ_HeuvelPanhuizen_2008_Learning",
+                "domains": [
+                  "whole_number"
+                ],
+                "evidence": {
+                  "is_hybridized_transplant": false,
+                  "score_components": [
+                    {
+                      "name": "representation_language",
+                      "weight": 40
+                    },
+                    {
+                      "name": "spatial_elements",
+                      "weight": 5
+                    },
+                    {
+                      "name": "domain",
+                      "weight": 25
+                    },
+                    {
+                      "name": "grade_band",
+                      "weight": 20
+                    },
+                    {
+                      "name": "topics",
+                      "weight": 10
+                    },
+                    {
+                      "name": "transcribed_numerals",
+                      "weight": 0
+                    },
+                    {
+                      "name": "bibkey_provenance",
+                      "weight": 0
+                    }
+                  ]
+                },
+                "grade_bucket": "elementary (K\u20135)",
+                "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/MERJ_HeuvelPanhuizen_2008_Learning/p16_2.png",
+                "refusals": [],
+                "render_plan": {
+                  "kind": "productive_diagram",
+                  "note": "representation grammar accepts; lesson-exact analogue may be generated",
+                  "productive": true,
+                  "source": "svg_analogue"
+                },
+                "representation_language": "number_line",
+                "score": 100,
+                "source_label": "MERJ_HeuvelPanhuizen_2008_Learning - elementary (K\u20135) - number_line - svg_analogue",
+                "status": "productive_fit"
+              },
+              {
+                "bibkey": "ZDM_Gellert_2014_Students",
+                "domains": [
+                  "whole_number"
+                ],
+                "evidence": {
+                  "is_hybridized_transplant": false,
+                  "score_components": [
+                    {
+                      "name": "representation_language",
+                      "weight": 40
+                    },
+                    {
+                      "name": "spatial_elements",
+                      "weight": 5
+                    },
+                    {
+                      "name": "domain",
+                      "weight": 25
+                    },
+                    {
+                      "name": "grade_band",
+                      "weight": 20
+                    },
+                    {
+                      "name": "topics",
+                      "weight": 10
+                    },
+                    {
+                      "name": "transcribed_numerals",
+                      "weight": 0
+                    },
+                    {
+                      "name": "bibkey_provenance",
+                      "weight": 0
+                    }
+                  ]
+                },
+                "grade_bucket": "elementary (K\u20135)",
+                "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/ZDM_Gellert_2014_Students/p10_1.png",
+                "refusals": [],
+                "render_plan": {
+                  "kind": "productive_diagram",
+                  "note": "representation grammar accepts; lesson-exact analogue may be generated",
+                  "productive": true,
+                  "source": "svg_analogue"
+                },
+                "representation_language": "number_line",
+                "score": 100,
+                "source_label": "ZDM_Gellert_2014_Students - elementary (K\u20135) - number_line - svg_analogue",
+                "status": "productive_fit"
+              },
+              {
+                "bibkey": "ZDM_Gellert_2014_Students",
+                "domains": [
+                  "whole_number"
+                ],
+                "evidence": {
+                  "is_hybridized_transplant": false,
+                  "score_components": [
+                    {
+                      "name": "representation_language",
+                      "weight": 40
+                    },
+                    {
+                      "name": "spatial_elements",
+                      "weight": 5
+                    },
+                    {
+                      "name": "domain",
+                      "weight": 25
+                    },
+                    {
+                      "name": "grade_band",
+                      "weight": 20
+                    },
+                    {
+                      "name": "topics",
+                      "weight": 10
+                    },
+                    {
+                      "name": "transcribed_numerals",
+                      "weight": 0
+                    },
+                    {
+                      "name": "bibkey_provenance",
+                      "weight": 0
+                    }
+                  ]
+                },
+                "grade_bucket": "elementary (K\u20135)",
+                "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/ZDM_Gellert_2014_Students/p11_1.png",
+                "refusals": [],
+                "render_plan": {
+                  "kind": "productive_diagram",
+                  "note": "representation grammar accepts; lesson-exact analogue may be generated",
+                  "productive": true,
+                  "source": "svg_analogue"
+                },
+                "representation_language": "number_line",
+                "score": 100,
+                "source_label": "ZDM_Gellert_2014_Students - elementary (K\u20135) - number_line - svg_analogue",
+                "status": "productive_fit"
+              },
+              {
+                "bibkey": "ZDM_Gellert_2014_Students",
+                "domains": [
+                  "whole_number"
+                ],
+                "evidence": {
+                  "is_hybridized_transplant": false,
+                  "score_components": [
+                    {
+                      "name": "representation_language",
+                      "weight": 40
+                    },
+                    {
+                      "name": "spatial_elements",
+                      "weight": 5
+                    },
+                    {
+                      "name": "domain",
+                      "weight": 25
+                    },
+                    {
+                      "name": "grade_band",
+                      "weight": 20
+                    },
+                    {
+                      "name": "topics",
+                      "weight": 10
+                    },
+                    {
+                      "name": "transcribed_numerals",
+                      "weight": 0
+                    },
+                    {
+                      "name": "bibkey_provenance",
+                      "weight": 0
+                    }
+                  ]
+                },
+                "grade_bucket": "elementary (K\u20135)",
+                "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/ZDM_Gellert_2014_Students/p8_1.png",
+                "refusals": [],
+                "render_plan": {
+                  "kind": "productive_diagram",
+                  "note": "representation grammar accepts; lesson-exact analogue may be generated",
+                  "productive": true,
+                  "source": "svg_analogue"
+                },
+                "representation_language": "place_value_chart",
+                "score": 100,
+                "source_label": "ZDM_Gellert_2014_Students - elementary (K\u20135) - place_value_chart - svg_analogue",
+                "status": "productive_fit"
+              }
+            ],
+            "selected": {
+              "bibkey": "MERJ_HeuvelPanhuizen_2008_Learning",
+              "domains": [
+                "whole_number"
+              ],
+              "evidence": {
+                "is_hybridized_transplant": false,
+                "score_components": [
+                  {
+                    "name": "representation_language",
+                    "weight": 40
+                  },
+                  {
+                    "name": "spatial_elements",
+                    "weight": 5
+                  },
+                  {
+                    "name": "domain",
+                    "weight": 25
+                  },
+                  {
+                    "name": "grade_band",
+                    "weight": 20
+                  },
+                  {
+                    "name": "topics",
+                    "weight": 10
+                  },
+                  {
+                    "name": "transcribed_numerals",
+                    "weight": 0
+                  },
+                  {
+                    "name": "bibkey_provenance",
+                    "weight": 0
+                  }
+                ]
+              },
+              "grade_bucket": "elementary (K\u20135)",
+              "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/MERJ_HeuvelPanhuizen_2008_Learning/p13_1.png",
+              "refusals": [],
+              "render_plan": {
+                "kind": "productive_diagram",
+                "note": "representation grammar accepts; lesson-exact analogue may be generated",
+                "productive": true,
+                "source": "svg_analogue"
+              },
+              "representation_language": "number_line",
+              "score": 100,
+              "source_label": "MERJ_HeuvelPanhuizen_2008_Learning - elementary (K\u20135) - number_line - svg_analogue",
+              "status": "productive_fit"
+            }
+          },
           "grade": "grade_4",
           "misconception": "add_with_dropped_carry",
           "refusals": [
+            {
+              "reason": "reason(a_bare_magnitude_bounds_no_region)",
+              "representation": "geoboard"
+            },
+            {
+              "reason": "reason(a_bare_magnitude_bounds_no_region)",
+              "representation": "geoboard"
+            },
+            {
+              "reason": "reason(a_bare_magnitude_bounds_no_region)",
+              "representation": "geoboard"
+            },
+            {
+              "reason": "reason(bare_count_fixes_no_bounded_region)",
+              "representation": "polyform_tiling"
+            },
+            {
+              "reason": "reason(bare_count_fixes_no_bounded_region)",
+              "representation": "polyform_tiling"
+            },
+            {
+              "reason": "reason(bare_count_fixes_no_bounded_region)",
+              "representation": "polyform_tiling"
+            },
+            {
+              "reason": "reason(single_magnitude_has_no_second_coordinate)",
+              "representation": "coordinate_plane"
+            },
+            {
+              "reason": "reason(single_magnitude_has_no_second_coordinate)",
+              "representation": "coordinate_plane"
+            },
+            {
+              "reason": "reason(single_magnitude_has_no_second_coordinate)",
+              "representation": "coordinate_plane"
+            },
             {
               "reason": "reason(object_collection_blend_loses_physical_place_value_objects_above_thousands)",
               "representation": "base_ten_blocks"
@@ -1743,10 +2148,12 @@
                 "caption": "Start at 204,500 on a scale-broken number line.",
                 "scene": {
                   "axis": {
+                    "breakEnd": 204500,
                     "max": 205195,
-                    "min": 204500,
+                    "min": 0,
                     "scaleBreak": true,
                     "ticks": [
+                      0,
                       204500,
                       205195
                     ]
@@ -1770,10 +2177,12 @@
                 "caption": "Append one jump of +695 to land at 205,195.",
                 "scene": {
                   "axis": {
+                    "breakEnd": 204500,
                     "max": 205195,
-                    "min": 204500,
+                    "min": 0,
                     "scaleBreak": true,
                     "ticks": [
+                      0,
                       204500,
                       205195
                     ]
@@ -1809,10 +2218,12 @@
                 "caption": "204,500 + 695 = 205,195.",
                 "scene": {
                   "axis": {
+                    "breakEnd": 204500,
                     "max": 205195,
-                    "min": 204500,
+                    "min": 0,
                     "scaleBreak": true,
                     "ticks": [
+                      0,
                       204500,
                       205195
                     ]
@@ -1971,9 +2382,414 @@
                   "representation": "number_line"
                 }
               ],
+              "figures": {
+                "candidate_count": 1622,
+                "candidates": [
+                  {
+                    "bibkey": "MERJ_HeuvelPanhuizen_2008_Learning",
+                    "domains": [
+                      "whole_number"
+                    ],
+                    "evidence": {
+                      "is_hybridized_transplant": false,
+                      "score_components": [
+                        {
+                          "name": "representation_language",
+                          "weight": 40
+                        },
+                        {
+                          "name": "spatial_elements",
+                          "weight": 5
+                        },
+                        {
+                          "name": "domain",
+                          "weight": 25
+                        },
+                        {
+                          "name": "grade_band",
+                          "weight": 20
+                        },
+                        {
+                          "name": "topics",
+                          "weight": 10
+                        },
+                        {
+                          "name": "transcribed_numerals",
+                          "weight": 0
+                        },
+                        {
+                          "name": "bibkey_provenance",
+                          "weight": 0
+                        }
+                      ]
+                    },
+                    "grade_bucket": "elementary (K\u20135)",
+                    "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/MERJ_HeuvelPanhuizen_2008_Learning/p13_1.png",
+                    "refusals": [],
+                    "render_plan": {
+                      "kind": "productive_diagram",
+                      "note": "representation grammar accepts; lesson-exact analogue may be generated",
+                      "productive": true,
+                      "source": "svg_analogue"
+                    },
+                    "representation_language": "number_line",
+                    "score": 100,
+                    "source_label": "MERJ_HeuvelPanhuizen_2008_Learning - elementary (K\u20135) - number_line - svg_analogue",
+                    "status": "productive_fit"
+                  },
+                  {
+                    "bibkey": "MERJ_HeuvelPanhuizen_2008_Learning",
+                    "domains": [
+                      "whole_number"
+                    ],
+                    "evidence": {
+                      "is_hybridized_transplant": false,
+                      "score_components": [
+                        {
+                          "name": "representation_language",
+                          "weight": 40
+                        },
+                        {
+                          "name": "spatial_elements",
+                          "weight": 5
+                        },
+                        {
+                          "name": "domain",
+                          "weight": 25
+                        },
+                        {
+                          "name": "grade_band",
+                          "weight": 20
+                        },
+                        {
+                          "name": "topics",
+                          "weight": 10
+                        },
+                        {
+                          "name": "transcribed_numerals",
+                          "weight": 0
+                        },
+                        {
+                          "name": "bibkey_provenance",
+                          "weight": 0
+                        }
+                      ]
+                    },
+                    "grade_bucket": "elementary (K\u20135)",
+                    "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/MERJ_HeuvelPanhuizen_2008_Learning/p16_1.png",
+                    "refusals": [],
+                    "render_plan": {
+                      "kind": "productive_diagram",
+                      "note": "representation grammar accepts; lesson-exact analogue may be generated",
+                      "productive": true,
+                      "source": "svg_analogue"
+                    },
+                    "representation_language": "number_line",
+                    "score": 100,
+                    "source_label": "MERJ_HeuvelPanhuizen_2008_Learning - elementary (K\u20135) - number_line - svg_analogue",
+                    "status": "productive_fit"
+                  },
+                  {
+                    "bibkey": "MERJ_HeuvelPanhuizen_2008_Learning",
+                    "domains": [
+                      "whole_number"
+                    ],
+                    "evidence": {
+                      "is_hybridized_transplant": false,
+                      "score_components": [
+                        {
+                          "name": "representation_language",
+                          "weight": 40
+                        },
+                        {
+                          "name": "spatial_elements",
+                          "weight": 5
+                        },
+                        {
+                          "name": "domain",
+                          "weight": 25
+                        },
+                        {
+                          "name": "grade_band",
+                          "weight": 20
+                        },
+                        {
+                          "name": "topics",
+                          "weight": 10
+                        },
+                        {
+                          "name": "transcribed_numerals",
+                          "weight": 0
+                        },
+                        {
+                          "name": "bibkey_provenance",
+                          "weight": 0
+                        }
+                      ]
+                    },
+                    "grade_bucket": "elementary (K\u20135)",
+                    "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/MERJ_HeuvelPanhuizen_2008_Learning/p16_2.png",
+                    "refusals": [],
+                    "render_plan": {
+                      "kind": "productive_diagram",
+                      "note": "representation grammar accepts; lesson-exact analogue may be generated",
+                      "productive": true,
+                      "source": "svg_analogue"
+                    },
+                    "representation_language": "number_line",
+                    "score": 100,
+                    "source_label": "MERJ_HeuvelPanhuizen_2008_Learning - elementary (K\u20135) - number_line - svg_analogue",
+                    "status": "productive_fit"
+                  },
+                  {
+                    "bibkey": "ZDM_Gellert_2014_Students",
+                    "domains": [
+                      "whole_number"
+                    ],
+                    "evidence": {
+                      "is_hybridized_transplant": false,
+                      "score_components": [
+                        {
+                          "name": "representation_language",
+                          "weight": 40
+                        },
+                        {
+                          "name": "spatial_elements",
+                          "weight": 5
+                        },
+                        {
+                          "name": "domain",
+                          "weight": 25
+                        },
+                        {
+                          "name": "grade_band",
+                          "weight": 20
+                        },
+                        {
+                          "name": "topics",
+                          "weight": 10
+                        },
+                        {
+                          "name": "transcribed_numerals",
+                          "weight": 0
+                        },
+                        {
+                          "name": "bibkey_provenance",
+                          "weight": 0
+                        }
+                      ]
+                    },
+                    "grade_bucket": "elementary (K\u20135)",
+                    "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/ZDM_Gellert_2014_Students/p10_1.png",
+                    "refusals": [],
+                    "render_plan": {
+                      "kind": "productive_diagram",
+                      "note": "representation grammar accepts; lesson-exact analogue may be generated",
+                      "productive": true,
+                      "source": "svg_analogue"
+                    },
+                    "representation_language": "number_line",
+                    "score": 100,
+                    "source_label": "ZDM_Gellert_2014_Students - elementary (K\u20135) - number_line - svg_analogue",
+                    "status": "productive_fit"
+                  },
+                  {
+                    "bibkey": "ZDM_Gellert_2014_Students",
+                    "domains": [
+                      "whole_number"
+                    ],
+                    "evidence": {
+                      "is_hybridized_transplant": false,
+                      "score_components": [
+                        {
+                          "name": "representation_language",
+                          "weight": 40
+                        },
+                        {
+                          "name": "spatial_elements",
+                          "weight": 5
+                        },
+                        {
+                          "name": "domain",
+                          "weight": 25
+                        },
+                        {
+                          "name": "grade_band",
+                          "weight": 20
+                        },
+                        {
+                          "name": "topics",
+                          "weight": 10
+                        },
+                        {
+                          "name": "transcribed_numerals",
+                          "weight": 0
+                        },
+                        {
+                          "name": "bibkey_provenance",
+                          "weight": 0
+                        }
+                      ]
+                    },
+                    "grade_bucket": "elementary (K\u20135)",
+                    "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/ZDM_Gellert_2014_Students/p11_1.png",
+                    "refusals": [],
+                    "render_plan": {
+                      "kind": "productive_diagram",
+                      "note": "representation grammar accepts; lesson-exact analogue may be generated",
+                      "productive": true,
+                      "source": "svg_analogue"
+                    },
+                    "representation_language": "number_line",
+                    "score": 100,
+                    "source_label": "ZDM_Gellert_2014_Students - elementary (K\u20135) - number_line - svg_analogue",
+                    "status": "productive_fit"
+                  },
+                  {
+                    "bibkey": "ZDM_Gellert_2014_Students",
+                    "domains": [
+                      "whole_number"
+                    ],
+                    "evidence": {
+                      "is_hybridized_transplant": false,
+                      "score_components": [
+                        {
+                          "name": "representation_language",
+                          "weight": 40
+                        },
+                        {
+                          "name": "spatial_elements",
+                          "weight": 5
+                        },
+                        {
+                          "name": "domain",
+                          "weight": 25
+                        },
+                        {
+                          "name": "grade_band",
+                          "weight": 20
+                        },
+                        {
+                          "name": "topics",
+                          "weight": 10
+                        },
+                        {
+                          "name": "transcribed_numerals",
+                          "weight": 0
+                        },
+                        {
+                          "name": "bibkey_provenance",
+                          "weight": 0
+                        }
+                      ]
+                    },
+                    "grade_bucket": "elementary (K\u20135)",
+                    "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/ZDM_Gellert_2014_Students/p8_1.png",
+                    "refusals": [],
+                    "render_plan": {
+                      "kind": "productive_diagram",
+                      "note": "representation grammar accepts; lesson-exact analogue may be generated",
+                      "productive": true,
+                      "source": "svg_analogue"
+                    },
+                    "representation_language": "place_value_chart",
+                    "score": 100,
+                    "source_label": "ZDM_Gellert_2014_Students - elementary (K\u20135) - place_value_chart - svg_analogue",
+                    "status": "productive_fit"
+                  }
+                ],
+                "selected": {
+                  "bibkey": "MERJ_HeuvelPanhuizen_2008_Learning",
+                  "domains": [
+                    "whole_number"
+                  ],
+                  "evidence": {
+                    "is_hybridized_transplant": false,
+                    "score_components": [
+                      {
+                        "name": "representation_language",
+                        "weight": 40
+                      },
+                      {
+                        "name": "spatial_elements",
+                        "weight": 5
+                      },
+                      {
+                        "name": "domain",
+                        "weight": 25
+                      },
+                      {
+                        "name": "grade_band",
+                        "weight": 20
+                      },
+                      {
+                        "name": "topics",
+                        "weight": 10
+                      },
+                      {
+                        "name": "transcribed_numerals",
+                        "weight": 0
+                      },
+                      {
+                        "name": "bibkey_provenance",
+                        "weight": 0
+                      }
+                    ]
+                  },
+                  "grade_bucket": "elementary (K\u20135)",
+                  "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/MERJ_HeuvelPanhuizen_2008_Learning/p13_1.png",
+                  "refusals": [],
+                  "render_plan": {
+                    "kind": "productive_diagram",
+                    "note": "representation grammar accepts; lesson-exact analogue may be generated",
+                    "productive": true,
+                    "source": "svg_analogue"
+                  },
+                  "representation_language": "number_line",
+                  "score": 100,
+                  "source_label": "MERJ_HeuvelPanhuizen_2008_Learning - elementary (K\u20135) - number_line - svg_analogue",
+                  "status": "productive_fit"
+                }
+              },
               "grade": "grade_4",
               "misconception": "add_with_dropped_carry",
               "refusals": [
+                {
+                  "reason": "reason(a_bare_magnitude_bounds_no_region)",
+                  "representation": "geoboard"
+                },
+                {
+                  "reason": "reason(a_bare_magnitude_bounds_no_region)",
+                  "representation": "geoboard"
+                },
+                {
+                  "reason": "reason(a_bare_magnitude_bounds_no_region)",
+                  "representation": "geoboard"
+                },
+                {
+                  "reason": "reason(bare_count_fixes_no_bounded_region)",
+                  "representation": "polyform_tiling"
+                },
+                {
+                  "reason": "reason(bare_count_fixes_no_bounded_region)",
+                  "representation": "polyform_tiling"
+                },
+                {
+                  "reason": "reason(bare_count_fixes_no_bounded_region)",
+                  "representation": "polyform_tiling"
+                },
+                {
+                  "reason": "reason(single_magnitude_has_no_second_coordinate)",
+                  "representation": "coordinate_plane"
+                },
+                {
+                  "reason": "reason(single_magnitude_has_no_second_coordinate)",
+                  "representation": "coordinate_plane"
+                },
+                {
+                  "reason": "reason(single_magnitude_has_no_second_coordinate)",
+                  "representation": "coordinate_plane"
+                },
                 {
                   "reason": "reason(object_collection_blend_loses_physical_place_value_objects_above_thousands)",
                   "representation": "base_ten_blocks"
