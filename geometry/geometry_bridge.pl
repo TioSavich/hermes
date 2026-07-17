@@ -5,9 +5,8 @@
 % This file supersedes an earlier untracked loader of the same name that
 % lived outside this repository and pinned geometry_kb_root/1 to one
 % machine's absolute path. A fresh clone carries only this file. The
-% Hermes app does not load it: hermes_worker.pl's load_geometry_runtime/1
-% remains the app-path loader, and this file mirrors that predicate's
-% load order for standalone research and console use.
+% geometry/schema.pl owns the canonical load chain used here and by the
+% Hermes worker. This bridge adds only standalone root discovery and a banner.
 %
 % Load through paths.pl so the search-path aliases exist:
 %
@@ -48,9 +47,7 @@ geometry_repo_root(Root) :-
     file_directory_name(GeomDir, Root),
     !.
 
-% load_geometry_kb/0 — consult the KB in the same order as
-% hermes_worker.pl's load_geometry_runtime/1: schema first, then the
-% tagging-module subdirectories, then the standards anchors, then query.pl.
+% load_geometry_kb/0 — delegate once to the canonical schema.pl load chain.
 load_geometry_kb :-
     geometry_repo_root(Root),
     load_geometry_kb(Root).
@@ -58,22 +55,7 @@ load_geometry_kb :-
 load_geometry_kb(Root) :-
     directory_file_path(Root, 'geometry/schema.pl', Schema),
     consult(Schema),
-    bridge_load_glob(Root, 'geometry/concepts/*.pl'),
-    bridge_load_glob(Root, 'geometry/metaphors/*.pl'),
-    bridge_load_glob(Root, 'geometry/van_hiele/*.pl'),
-    bridge_load_glob(Root, 'geometry/bootstrap/*.pl'),
-    bridge_load_glob(Root, 'standards/ccss/*.pl'),
-    bridge_load_glob(Root, 'standards/indiana/geometry.pl'),
-    bridge_load_glob(Root, 'standards/im/*.pl'),
-    bridge_load_glob(Root, 'geometry/pck/*.pl'),
-    directory_file_path(Root, 'geometry/query.pl', Query),
-    consult(Query),
     geometry_bridge_banner.
-
-bridge_load_glob(Root, Pattern) :-
-    directory_file_path(Root, Pattern, AbsolutePattern),
-    expand_file_name(AbsolutePattern, Files),
-    maplist(consult, Files).
 
 % One line to stderr so a standalone load reports what it holds.
 geometry_bridge_banner :-

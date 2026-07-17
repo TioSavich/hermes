@@ -21,6 +21,8 @@ import re
 import subprocess
 from pathlib import Path
 
+from hermes.app.root import HermesRootError, resolve_hermes_root
+
 
 FALLBACK_HINTS: dict[str, dict[str, object]] = {
     "05_4_disagreement_resolution": {
@@ -111,22 +113,6 @@ def load_im_codes(pack_root: Path) -> dict[str, str]:
 
 def im_code_for(pack_root: Path, prompt_id: str) -> str | None:
     return load_im_codes(pack_root).get(prompt_id)
-
-
-def resolve_umedcta_root(pack_root: Path) -> Path | None:
-    env_root = os.environ.get("UMEDCTA_ROOT", "").strip()
-    if env_root:
-        root = Path(env_root).expanduser()
-        return root if (root / "hermes_worker.pl").exists() else None
-
-    candidates: list[Path] = []
-    for parent in (pack_root, *pack_root.parents):
-        candidates.append(parent)
-        candidates.append(parent / "umedcta-formalization")
-    for root in candidates:
-        if (root / "hermes_worker.pl").exists():
-            return root
-    return None
 
 
 def chart_path_for(pack_root: Path, prompt_id: str) -> Path | None:
@@ -235,7 +221,14 @@ main :-
 """
     try:
         proc = subprocess.run(
-            ["swipl", "-q", "-s", "/dev/stdin"],
+            [
+                "swipl",
+                "--on-error=status",
+                "--on-warning=status",
+                "-q",
+                "-s",
+                "/dev/stdin",
+            ],
             cwd=root,
             input=script,
             text=True,
@@ -301,8 +294,9 @@ def format_geometry_fallback(prompt_id: str, data: dict, tokens: list[str]) -> s
 
 
 def prolog_fallback_pck(pack_root: Path, prompt_id: str, *, timeout: int = 45) -> str:
-    root = resolve_umedcta_root(pack_root)
-    if root is None:
+    try:
+        root = resolve_hermes_root()
+    except HermesRootError:
         return ""
     tokens, grade_band = fallback_tokens_for(pack_root, prompt_id)
     grade_band_term = _prolog_grade_band(grade_band)
@@ -313,8 +307,9 @@ def prolog_fallback_pck(pack_root: Path, prompt_id: str, *, timeout: int = 45) -
 
 
 def monitoring_chart_export(pack_root: Path, lesson_code: str, *, timeout: int = 45) -> dict | None:
-    root = resolve_umedcta_root(pack_root)
-    if root is None:
+    try:
+        root = resolve_hermes_root()
+    except HermesRootError:
         return None
 
     worker = root / "hermes_worker.pl"
@@ -328,7 +323,16 @@ def monitoring_chart_export(pack_root: Path, lesson_code: str, *, timeout: int =
 
     try:
         proc = subprocess.run(
-            ["swipl", "-q", "-s", str(worker), "-g", "worker_main"],
+            [
+                "swipl",
+                "--on-error=status",
+                "--on-warning=status",
+                "-q",
+                "-s",
+                str(worker),
+                "-g",
+                "worker_main",
+            ],
             input=json.dumps(request, ensure_ascii=True) + "\n",
             text=True,
             capture_output=True,

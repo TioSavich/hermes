@@ -188,22 +188,7 @@ load_axiom_pack_audit(Root) :-
 
 load_geometry_runtime(Root) :-
     directory_file_path(Root, 'geometry/schema.pl', Schema),
-    consult(Schema),
-    load_geometry_files(Root, 'geometry/concepts/*.pl'),
-    load_geometry_files(Root, 'geometry/metaphors/*.pl'),
-    load_geometry_files(Root, 'geometry/van_hiele/*.pl'),
-    load_geometry_files(Root, 'geometry/bootstrap/*.pl'),
-    load_geometry_files(Root, 'standards/ccss/*.pl'),
-    load_geometry_files(Root, 'standards/indiana/geometry.pl'),
-    load_geometry_files(Root, 'standards/im/*.pl'),
-    load_geometry_files(Root, 'geometry/pck/*.pl'),
-    directory_file_path(Root, 'geometry/query.pl', Query),
-    consult(Query).
-
-load_geometry_files(Root, Pattern) :-
-    directory_file_path(Root, Pattern, AbsolutePattern),
-    expand_file_name(AbsolutePattern, Files),
-    maplist(consult, Files).
+    consult(Schema).
 
 worker_loop :-
     read_line_to_string(user_input, Line),

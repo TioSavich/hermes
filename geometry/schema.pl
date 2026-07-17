@@ -1,9 +1,9 @@
 % schema.pl — predicate declarations and validators for the geometry KB.
 %
-% Loaded first by geometry/geometry_bridge.pl for standalone checks and by
-% hermes_worker.pl's load_geometry_runtime/1 for the Hermes app. Other files in
-% concepts/, metaphors/, van_hiele/, bootstrap/, standards/ append clauses for
-% the predicates declared multifile/discontiguous below.
+% This is the one canonical geometry load chain for direct, standalone bridge,
+% and Hermes worker use. Its explicit manifest preserves the application's
+% broad geometry, CCSS, Indiana, IM, PCK, and query scope. Other files append
+% clauses for the predicates declared multifile/discontiguous below.
 %
 % See README.md and OPEN_QUESTIONS.md in this directory for current design
 % context and hand-authoring guidance.
@@ -44,6 +44,7 @@
 :- discontiguous pck_synthesis/5.
 :- discontiguous developmental_marker/4.
 
+% BEGIN CANONICAL GEOMETRY LOAD MANIFEST
 :- ensure_loaded('concepts/angles.pl').
 :- ensure_loaded('concepts/area_perimeter.pl').
 :- ensure_loaded('concepts/attributes.pl').
@@ -72,9 +73,20 @@
 :- ensure_loaded('bootstrap/n103_activities.pl').
 :- ensure_loaded('bootstrap/van_de_walle_activities.pl').
 :- ensure_loaded('../standards/ccss/geometry.pl').
-:- ensure_loaded('../standards/im/lesson_anchors.pl').
 :- ensure_loaded('../standards/indiana/geometry.pl').
+:- ensure_loaded('../standards/im/grade_1.pl').
+:- ensure_loaded('../standards/im/grade_2.pl').
+:- ensure_loaded('../standards/im/grade_3.pl').
+:- ensure_loaded('../standards/im/grade_4.pl').
+:- ensure_loaded('../standards/im/grade_5.pl').
+:- ensure_loaded('../standards/im/grade_6.pl').
+:- ensure_loaded('../standards/im/grade_7.pl').
+:- ensure_loaded('../standards/im/grade_8.pl').
+:- ensure_loaded('../standards/im/grade_k.pl').
+:- ensure_loaded('../standards/im/lesson_anchors.pl').
 :- ensure_loaded('pck/classification.pl').
+:- ensure_loaded('query.pl').
+% END CANONICAL GEOMETRY LOAD MANIFEST
 
 % ── slot definitions (descriptive; enforced by validators below) ────
 %

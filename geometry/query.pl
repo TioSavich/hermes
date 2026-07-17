@@ -1,9 +1,9 @@
 % query.pl — high-level query predicates over the geometry KB.
 %
-% Loaded last by the in-repo geometry/geometry_bridge.pl (standalone use) and
-% by hermes_worker.pl's load_geometry_runtime/1 (Hermes app path). Hermes
-% reaches these predicates through hermes_worker.pl dispatch_geometry/4 and
-% hermes/app/worker.py's persistent Prolog subprocess bridge.
+% Loaded last by the canonical geometry/schema.pl chain. Standalone bridge and
+% Hermes worker loads both delegate to that manifest. Hermes reaches these
+% predicates through hermes_worker.pl dispatch_geometry/4 and the persistent
+% Prolog subprocess bridge in hermes/app/worker.py.
 %
 % Design context: README.md and OPEN_QUESTIONS.md in this directory.
 % Schema: schema.pl

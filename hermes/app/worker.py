@@ -14,26 +14,17 @@ import subprocess
 import threading
 import time
 from collections import deque
-from pathlib import Path
 from typing import Any
 
-# hermes/app/worker.py -> repo root is three parents up.
-REPO_ROOT = Path(__file__).resolve().parents[2]
+from hermes.app.root import resolve_hermes_root
 
 
-def resolve_umedcta_root(_root: Path | str | None = None) -> Path:
-    env = os.environ.get("UMEDCTA_ROOT", "").strip()
-    return Path(env) if env else REPO_ROOT
-
-
-def resolve_swipl(swipl: str | None = None, *, root: Path | str | None = None) -> str:
+def resolve_swipl(
+    swipl: str | None = None,
+    *,
+    root: os.PathLike[str] | str | None = None,
+) -> str:
     return swipl or os.environ.get("HERMES_SWIPL") or "swipl"
-
-
-# The dispatch table `hermes_worker.pl` lives at the REPO ROOT (sibling of
-# paths.pl), not under hermes/app/; resolve_umedcta_root() returns that root.
-WORKER_PL = resolve_umedcta_root() / "hermes_worker.pl"
-ROOT = REPO_ROOT
 
 
 class PersistentPrologError(RuntimeError):
@@ -44,11 +35,11 @@ class PersistentPrologWorker:
     def __init__(
         self,
         *,
-        umedcta_root: Path | str | None = None,
+        umedcta_root: os.PathLike[str] | str | None = None,
         swipl: str | None = None,
         timeout: float = 20.0,
     ) -> None:
-        self.umedcta_root = Path(umedcta_root) if umedcta_root is not None else resolve_umedcta_root()
+        self.umedcta_root = resolve_hermes_root(umedcta_root)
         self.swipl = resolve_swipl(swipl)
         self.timeout = timeout
         self._seq = 0
