@@ -23,6 +23,12 @@ def _post(method: str) -> Callable[[Any], None]:
     return handle
 
 
+def _post_witness(family: str) -> Callable[[Any], None]:
+    def handle(ctx: Any) -> None:
+        RouteLogic(ctx)._handle_witness(family, ctx.payload)
+    return handle
+
+
 _HANDLERS = (
     ("/api/render", "_handle_render"),
     ("/api/expressive_power", "_handle_expressive_power"),
@@ -56,6 +62,10 @@ _HANDLERS = (
     ("/api/benny_demo", "_handle_benny_demo"),
 )
 
+_WITNESS_HANDLERS = (
+    ("/api/witness/crosswalk_claim", "crosswalk_claim"),
+)
+
 
 def capabilities(ctx: Any) -> None:
     RouteLogic(ctx)._handle_capabilities()
@@ -64,4 +74,5 @@ def capabilities(ctx: Any) -> None:
 ROUTES = (
     Route("GET", "/api/capabilities", capabilities),
     *(Route("POST", path, _post(method)) for path, method in _HANDLERS),
+    *(Route("POST", path, _post_witness(family)) for path, family in _WITNESS_HANDLERS),
 )

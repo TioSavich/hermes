@@ -64,6 +64,7 @@
       ["console",     "Console",          app("console.html")],
       ["monitoring",  "Monitoring chart", mz("monitoring_chart.html")],
       ["atlas",       "Capability Atlas", mz("atlas.html")],
+      ["crosswalk",   "Crosswalk claims", mz("crosswalk.html")],
     ]},
     { title: "Tools", kind: "tools", items: [
       ["visualizations", "All visualizers", mz("visualizations.html")],
@@ -114,7 +115,7 @@
     var byFile = {
       "discussions.html": "discussions", "console.html": "console",
       "monitoring_chart.html": "monitoring", "visualizations.html": "visualizations",
-      "atlas.html": "atlas",
+      "atlas.html": "atlas", "crosswalk.html": "crosswalk",
       "gallery.html": "gallery", "audience-index.html": "audience",
       "landing.html": "landing", "index.html": "snap", "counting.html": "counting",
       "crisis.html": "crisis", "strategies.html": "strategies",

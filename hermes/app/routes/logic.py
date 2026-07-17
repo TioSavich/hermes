@@ -22,6 +22,45 @@ TRANSCRIPT_SPEAKER_RE = re.compile(
 NON_SPEAKER_LABELS = frozenset({"answer", "answers", "note", "prompt", "question", "response", "state", "trace"})
 FRACTION_RE = re.compile(r"\b(?P<a>\d{1,3})\s*/\s*(?P<b>\d{1,3})\b")
 
+WITNESS_OPS: dict[str, frozenset[str]] = {
+    "crosswalk_claim": frozenset({
+        "accommodation_witness",
+        "action_cluster_witness",
+        "algebra_claim_witness",
+        "arithmetic_property_witness",
+        "axiom_pack_witness",
+        "calculus_claim_witness",
+        "counting_claim_witness",
+        "decimal_claim_witness",
+        "domain_context_witness",
+        "executable_practice_witness",
+        "fraction_claim_witness",
+        "fraction_extra_claim_witness",
+        "fsm_engine_witness",
+        "godel_primes_witness",
+        "grounded_arith_witness",
+        "grounding_metaphor_witness",
+        "integer_signed_claim_witness",
+        "magnitude_equivalence_claim_witness",
+        "material_inference_witness",
+        "metaphor_break_witness",
+        "misconception_hook_witness",
+        "modal_context_witness",
+        "mua_coherence_witness",
+        "multiplication_division_claim_witness",
+        "normative_crisis_witness",
+        "orr_entry_witness",
+        "place_value_number_claim_witness",
+        "practice_vocabulary_witness",
+        "productive_deformation_witness",
+        "ratio_proportion_claim_witness",
+        "unit_coordination_witness",
+        "viability_witness",
+        "whole_number_addsub_claim_witness",
+        "whole_number_claim_witness",
+    }),
+}
+
 SWIPL_HINT = (
     "SWI-Prolog (swipl) isn't installed, or it isn't on your PATH. Install it from "
     "https://www.swi-prolog.org/download/stable, then quit Hermes (Ctrl-C in the "
@@ -1001,6 +1040,24 @@ class RouteLogic:
             )
             return
         self._send_json(result)
+
+    def _handle_witness(self, family: str, payload: dict) -> None:
+        """Forward one allowlisted witness request to the symbolic worker."""
+        allowed = WITNESS_OPS.get(family, frozenset())
+        op = str(payload.get("op") or "").strip()
+        if op not in allowed:
+            self._send_json(
+                {"ok": False, "error": f"unknown {family} witness op: {op or '(none)'}"},
+                status=400,
+            )
+            return
+        kwargs = {key: value for key, value in payload.items() if key != "op"}
+        try:
+            result = self.ctx.worker_request(op, **kwargs)
+        except Exception as exc:  # noqa: BLE001
+            self._send_json({"ok": False, "error": str(exc)}, status=400)
+            return
+        self._send_json({"ok": True, "op": op, "result": result})
 
     def _handle_strategy_trace(self, payload: dict) -> None:
         strategy = str(payload.get("strategy") or "").strip()

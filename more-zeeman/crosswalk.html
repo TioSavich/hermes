@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hermes: Crosswalk claim witnesses</title>
+  <link rel="stylesheet" href="hermes-tokens.css">
+  <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="crosswalk"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper, #f4ead6); color: var(--ink, #0d0c08);
+           font: 16px/1.5 var(--serif, Georgia, serif); }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 2.2rem 1.4rem 4rem; }
+    h1 { margin: 0 0 .35rem; font-size: 1.7rem; }
+    .lede { max-width: 70ch; margin: 0; color: var(--muted, #665f4f); }
+    section { margin-top: 2rem; }
+    section h2 { margin: 0 0 .7rem; font-size: 1.2rem; text-transform: capitalize; }
+    .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: .8rem; }
+    form { padding: 1rem; border: 1px solid var(--line, rgba(13,12,8,.14)); border-radius: 10px;
+           background: var(--paper-cool, #ede4cf); }
+    form h3 { margin: 0 0 .65rem; font: 600 .88rem/1.35 var(--mono, ui-monospace, Menlo, monospace);
+              overflow-wrap: anywhere; }
+    label { display: block; margin-top: .5rem; font-size: .85rem; color: var(--muted, #665f4f); }
+    input { width: 100%; margin-top: .2rem; padding: .5rem; border: 1px solid var(--line, #b8aa8b);
+            border-radius: 5px; background: #fffdf7; color: inherit; font: inherit; }
+    button { margin-top: .75rem; padding: .48rem .8rem; border: 1px solid var(--gold-deep, #8b641c);
+             border-radius: 5px; background: var(--gold-deep, #8b641c); color: #fff; font: inherit; cursor: pointer; }
+    output { display: block; min-height: 1.5rem; margin-top: .7rem; white-space: pre-wrap;
+             overflow-wrap: anywhere; font: .8rem/1.4 var(--mono, ui-monospace, Menlo, monospace); }
+    .error { color: #842d24; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Crosswalk claim witnesses</h1>
+    <p class="lede">These records attest that an owner verified a crosswalk edge. They are not
+      proofs of the underlying claim. Enter the requested fields to ask for the recorded witness.</p>
+    <p id="status" class="lede" role="status" aria-live="polite">Loading controls from the local worker…</p>
+    <div id="domains"></div>
+  </main>
+  <script>
+    (function () {
+      "use strict";
+      var groups = {
+        "whole-number": [
+          "whole_number_claim_witness", "whole_number_addsub_claim_witness",
+          "multiplication_division_claim_witness", "place_value_number_claim_witness",
+          "arithmetic_property_witness"
+        ],
+        "fraction": ["fraction_claim_witness", "fraction_extra_claim_witness", "unit_coordination_witness"],
+        "ratio": ["ratio_proportion_claim_witness"],
+        "decimal": ["decimal_claim_witness"],
+        "integer": ["integer_signed_claim_witness"],
+        "algebra": ["algebra_claim_witness"],
+        "calculus": ["calculus_claim_witness"],
+        "counting": ["counting_claim_witness"],
+        "magnitude": ["magnitude_equivalence_claim_witness"],
+        "practice and coherence": [
+          "accommodation_witness", "action_cluster_witness", "axiom_pack_witness",
+          "domain_context_witness", "executable_practice_witness", "fsm_engine_witness",
+          "godel_primes_witness", "grounded_arith_witness", "grounding_metaphor_witness",
+          "material_inference_witness", "metaphor_break_witness", "misconception_hook_witness",
+          "modal_context_witness", "mua_coherence_witness", "normative_crisis_witness",
+          "orr_entry_witness", "practice_vocabulary_witness", "productive_deformation_witness",
+          "viability_witness"
+        ]
+      };
+      var root = document.getElementById("domains");
+      var status = document.getElementById("status");
+      var listFields = {inputs: true, premises: true, resources: true};
+
+      function field(name) {
+        var label = document.createElement("label");
+        label.textContent = listFields[name] ? name + " (comma-separated list)" : name;
+        var input = document.createElement("input");
+        input.name = name;
+        input.required = true;
+        input.autocomplete = "off";
+        label.appendChild(input);
+        return label;
+      }
+
+      function control(item) {
+        var op = item.name;
+        var form = document.createElement("form");
+        var heading = document.createElement("h3");
+        heading.textContent = op;
+        form.appendChild(heading);
+        item.inputs.forEach(function (name) { form.appendChild(field(name)); });
+        var button = document.createElement("button");
+        button.type = "submit";
+        button.textContent = "Request witness";
+        form.appendChild(button);
+        var output = document.createElement("output");
+        output.setAttribute("aria-live", "polite");
+        form.appendChild(output);
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          output.className = "";
+          output.textContent = "Requesting witness…";
+          var payload = {op: op};
+          item.inputs.forEach(function (name) {
+            var value = form.elements.namedItem(name).value;
+            payload[name] = listFields[name]
+              ? value.split(",").map(function (part) { return part.trim(); }).filter(Boolean)
+              : value;
+          });
+          fetch("/api/witness/crosswalk_claim", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(payload)
+          }).then(function (response) {
+            return response.json().then(function (body) {
+              return {ok: response.ok, body: body};
+            });
+          }).then(function (reply) {
+            if (reply.ok && reply.body.ok) {
+              output.textContent = JSON.stringify(reply.body.result, null, 2);
+              return;
+            }
+            var detail = String(reply.body.error || "The worker returned no detail.");
+            output.className = "error";
+            output.textContent = /no_[a-z_]*witness|no owner-verified/i.test(detail)
+              ? "No owner-verified edge for that pair."
+              : "Request failed: " + detail;
+          }).catch(function (error) {
+            output.className = "error";
+            output.textContent = "Request failed: " + error.message;
+          });
+        });
+        return form;
+      }
+
+      var allowed = {};
+      Object.keys(groups).forEach(function (domain) {
+        groups[domain].forEach(function (op) { allowed[op] = true; });
+      });
+
+      fetch("/api/capabilities").then(function (response) {
+        if (!response.ok) throw new Error("HTTP " + response.status);
+        return response.json();
+      }).then(function (data) {
+        var entries = Array.isArray(data.capabilities) ? data.capabilities : [];
+        var registry = {};
+        entries.forEach(function (item) {
+          if (allowed[item.name] && Array.isArray(item.inputs)) registry[item.name] = item;
+        });
+        var missing = Object.keys(allowed).filter(function (op) { return !registry[op]; });
+        if (missing.length) {
+          var registryError = new Error("the capability registry is missing: " + missing.join(", "));
+          registryError.name = "RegistryError";
+          throw registryError;
+        }
+        Object.keys(groups).forEach(function (domain) {
+          var section = document.createElement("section");
+          var heading = document.createElement("h2");
+          heading.textContent = domain;
+          section.appendChild(heading);
+          var controls = document.createElement("div");
+          controls.className = "controls";
+          groups[domain].forEach(function (op) { controls.appendChild(control(registry[op])); });
+          section.appendChild(controls);
+          root.appendChild(section);
+        });
+        status.textContent = "Controls built from the local capability registry.";
+      }).catch(function (error) {
+        status.className = "lede error";
+        status.textContent = error.name === "RegistryError"
+          ? "These controls cannot be built because " + error.message + "."
+          : "The worker is unavailable, so these controls cannot be built. "
+            + "The request failed: " + error.message;
+      });
+    }());
+  </script>
+</body>
+</html>

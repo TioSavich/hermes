@@ -69,6 +69,7 @@ KEEP_FILES = [
     "more-zeeman/contact-sheets/goal-e-scoreboard.png",
     "more-zeeman/contact-sheets/goal-e-visualizations.png",
     "more-zeeman/atlas.html",          # generated capability inventory surface
+    "more-zeeman/crosswalk.html",      # crosswalk claim witness controls
     "scripts/talkmoves_two_pass.py",   # imported by server.py for masking
     # /api/transcript_report chain: talkmoves_two_pass._load_scorer()
     # path-loads the blind-corpus scorer for transcript numbering.

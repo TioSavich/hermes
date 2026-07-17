@@ -256,6 +256,30 @@ def logic_methods() -> tuple[dict[str, set[str]], set[str]]:
                 if "fraction_render" in values:
                     render_ops |= values
     methods.setdefault("_handle_render", set()).update(render_ops)
+    witness_ops: dict[str, set[str]] = {}
+    for node in tree.body:
+        if not isinstance(node, (ast.Assign, ast.AnnAssign)):
+            continue
+        targets = node.targets if isinstance(node, ast.Assign) else [node.target]
+        if not any(isinstance(target, ast.Name) and target.id == "WITNESS_OPS" for target in targets):
+            continue
+        value = node.value
+        if not isinstance(value, ast.Dict):
+            continue
+        for key, family_value in zip(value.keys, value.values):
+            if not isinstance(key, ast.Constant) or not isinstance(key.value, str):
+                continue
+            if not isinstance(family_value, ast.Call) or not family_value.args:
+                continue
+            literal = family_value.args[0]
+            if not isinstance(literal, ast.Set):
+                continue
+            witness_ops[key.value] = {
+                item.value for item in literal.elts
+                if isinstance(item, ast.Constant) and isinstance(item.value, str)
+            }
+    for family, ops in witness_ops.items():
+        methods[f"_handle_witness_{family}"] = ops
     # Chat can forward the finite scene op vocabulary returned by these helpers.
     for helper in ("_chat_render_scene_request", "_fraction_compare_scene_request"):
         helper_node = next(
@@ -305,6 +329,12 @@ def route_map() -> dict[str, set[tuple[str, str]]]:
                 r"\(\s*[\"'](/api/[^\"']+)[\"']\s*,\s*[\"'](_handle_[^\"']+)[\"']\s*\)", text
             ):
                 for op in methods.get(match.group(2), set()):
+                    mapping[op].add(("POST", match.group(1)))
+            for match in re.finditer(
+                r"\(\s*[\"'](/api/witness/[^\"']+)[\"']\s*,\s*[\"']([^\"']+)[\"']\s*\)", text
+            ):
+                family = match.group(2)
+                for op in methods.get(f"_handle_witness_{family}", set()):
                     mapping[op].add(("POST", match.group(1)))
         for call in (node for node in ast.walk(tree) if isinstance(node, ast.Call)):
             if not isinstance(call.func, ast.Name) or call.func.id != "Route" or len(call.args) < 3:
