@@ -179,7 +179,7 @@ async function runEventRoute(path){
   try {
     response = await fetch(path, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(path === "/api/pair_graph" ? {events: Array.isArray(parsed) ? parsed : [parsed]} : body)});
     data = await response.json();
-  } catch (e) { status.textContent = "The Hermes server did not return JSON for this request."; status.className = "status err"; return; }
+  } catch (e) { status.textContent = "The request failed: the Hermes server did not answer, or answered with something other than JSON."; status.className = "status err"; return; }
   status.textContent = response.ok ? "Request completed." : "Request rejected with HTTP " + response.status + ".";
   status.className = response.ok ? "status" : "status err";
   output.textContent = JSON.stringify(data, null, 2) || "The route returned an empty reply.";

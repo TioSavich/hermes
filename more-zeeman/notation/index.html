@@ -137,7 +137,7 @@
           const response = await fetch(path, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
           const data = await response.json();
           out.textContent = JSON.stringify(data, null, 2) || 'The route returned an empty reply.';
-        } catch (e) { out.textContent = 'The Hermes server did not return JSON for this request.'; }
+        } catch (e) { out.textContent = 'The request failed: the Hermes server did not answer, or answered with something other than JSON.'; }
       });
     });
   </script>

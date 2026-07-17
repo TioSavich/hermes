@@ -351,7 +351,7 @@ neg(p)</textarea>
             const data = await post(path, body);
             out.textContent = JSON.stringify(data, null, 2) || "The route returned an empty reply.";
           } catch (err) {
-            out.textContent = "The Hermes server did not return JSON for this request.";
+            out.textContent = "The request failed: the Hermes server did not answer, or answered with something other than JSON.";
           }
         };
       });

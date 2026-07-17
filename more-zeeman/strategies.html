@@ -323,7 +323,7 @@
     <p class="interactive-label">The summary reports coverage for one operation. The proof
       request asks whether one arithmetic fact has a carving entitlement.</p>
     <div class="carving-controls">
-      <label>operation<select id="carve-op"><option value="addition">addition</option><option value="subtraction">subtraction</option><option value="multiplication">multiplication</option><option value="division">division</option></select></label>
+      <label>operation<select id="carve-op"><option value="add">add</option><option value="sub">sub</option><option value="mult">mult</option><option value="div">div</option><option value="frac">frac</option></select></label>
       <label>x<input id="carve-x" type="number" value="3"></label>
       <label>y<input id="carve-y" type="number" value="4"></label>
       <label>z<input id="carve-z" type="number" value="7"></label>
@@ -428,7 +428,7 @@ async function runCarving(path) {
     const response = await fetch(path, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
     const data = await response.json();
     output.textContent = JSON.stringify(data, null, 2) || 'The route returned an empty reply.';
-  } catch (e) { output.textContent = 'The Hermes server did not return JSON for this request.'; }
+  } catch (e) { output.textContent = 'The request failed: the Hermes server did not answer, or answered with something other than JSON.'; }
 }
 document.getElementById('carve-summary').onclick = () => runCarving('/api/carving_operation_summary');
 document.getElementById('carve-proof').onclick = () => runCarving('/api/carving_strategy_proof');

@@ -1652,7 +1652,7 @@ async function runRegistryQuery(path, body) {
   try {
     const response = await postJSON(path, body);
     out.textContent = JSON.stringify(response.data, null, 2) || "The route returned an empty reply.";
-  } catch (e) { out.textContent = "The Hermes server did not return JSON for this request."; }
+  } catch (e) { out.textContent = "The request failed: the Hermes server did not answer, or answered with something other than JSON."; }
 }
 $("#misconception-query-btn").addEventListener('click', () => runRegistryQuery('/api/query_misconception', {
   domain: $("#misconception-domain").value.trim(),

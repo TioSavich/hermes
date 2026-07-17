@@ -1708,7 +1708,7 @@ document.getElementById('reorg-run').addEventListener('click', async function ()
     const response = await fetch(API + '/api/reorganize?' + params.toString());
     const data = await response.json();
     output.textContent = JSON.stringify(data, null, 2) || 'The route returned an empty reply.';
-  } catch (e) { output.textContent = 'The Hermes server did not return JSON for this request.'; }
+  } catch (e) { output.textContent = 'The request failed: the Hermes server did not answer, or answered with something other than JSON.'; }
 });
 
 async function checkServer() {
