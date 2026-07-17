@@ -48,6 +48,7 @@ KEEP_TREES_RATIONALE = [
     ("formalization", "grounded arithmetic, grounding metaphors"),
     ("pml", "semantic axioms, MUA relations"),
     ("arche-trace", "provers, incompatibility engines"),
+    ("research", "derivative layer of the literature corpus (coded db + bibliography); the copyrighted articles stay in the source project"),
 ]
 KEEP_TREES = [tree for tree, _ in KEEP_TREES_RATIONALE]
 
@@ -75,6 +76,7 @@ KEEP_FILES = [
     "scripts/bundle/prebake.py",       # manifest prune runs inside the image
     "scripts/bundle/smoke_bundle.py",  # staged-tree gate ships with its subject
     "scripts/html_surface_check.py",   # loopable checker for shipped HTML surfaces
+    "scripts/research/export_mua_for_mud.py",  # regenerate the MUD data snapshot
     "learner/peano_utils.pl",          # shared Peano conversion utility
     "learner/teacher_local_prolog.pl", # teacher-bound strategy provider
     "lessons/im/generated/compiled_action_mappings.pl",  # lesson monitoring runtime cache

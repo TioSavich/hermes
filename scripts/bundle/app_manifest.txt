@@ -8331,11 +8331,14 @@ representation/build_asset_manifest.py
 representation/extract_figures_docling.py
 representation/extract_literature_figures.py
 representation/regenerate_docling_interpreted.py
+research/references.bib
+research/research_shared.db
 scripts/bundle/app_manifest.py
 scripts/bundle/app_manifest.txt
 scripts/bundle/prebake.py
 scripts/bundle/smoke_bundle.py
 scripts/html_surface_check.py
+scripts/research/export_mua_for_mud.py
 scripts/talkmoves_score_blind_corpus.py
 scripts/talkmoves_two_pass.py
 standards/ccss/geometry.pl
