@@ -79,8 +79,11 @@ class PersistentPrologWorker:
             proc.stdin.write(line + "\n")
             proc.stdin.flush()
         except BrokenPipeError:
+            stderr_tail = self._recent_stderr()
             self.restart()
-            raise PersistentPrologError("worker pipe closed while sending request")
+            raise PersistentPrologError(
+                f"worker pipe closed while sending request: {stderr_tail}"
+            )
         response_line = self._readline(proc)
         try:
             return json.loads(response_line)
@@ -115,10 +118,17 @@ class PersistentPrologWorker:
         assert self._proc is not None
         return self._proc
 
+    # A generous ceiling for the one-shot strict preflight: load_runtime
+    # pulls in the full symbolic layer (event scoring through the geometry
+    # and standards trees) and normally finishes in a few seconds, but a
+    # cold filesystem cache earns the headroom.
+    _PREFLIGHT_TIMEOUT_S = 120.0
+
     def _start(self) -> None:
         env = os.environ.copy()
         env["UMEDCTA_ROOT"] = str(self.umedcta_root)
         worker_pl = self.umedcta_root / "hermes_worker.pl"
+        self._preflight(worker_pl, env)
         self._proc = subprocess.Popen(
             [self.swipl, "--on-error=status", "-q", "-s", str(worker_pl),
              "-g", "worker_main"],
@@ -135,6 +145,39 @@ class PersistentPrologWorker:
             target=self._drain_stderr, args=(self._proc,), daemon=True
         )
         self._stderr_thread.start()
+
+    def _preflight(self, worker_pl: Path, env: dict[str, str]) -> None:
+        """Load hermes_worker.pl strictly, once, before the long-lived
+        worker is spawned.
+
+        --on-error=status on the worker process only changes the exit status
+        of an eventual `halt` -- a load error SWI prints without raising
+        still lets worker_main fall through into worker_loop, so a defective
+        checkout would serve requests silently (the 22-file defect class
+        Task 13 fixed). This one-shot run adds --on-warning=status and
+        refuses to spawn the worker on any diagnostic; the worker process
+        below is only started once this returns.
+        """
+        try:
+            proc = subprocess.run(
+                [self.swipl, "--on-error=status", "--on-warning=status", "-q",
+                 "-s", str(worker_pl), "-g", "load_runtime, halt."],
+                cwd=str(self.umedcta_root),
+                env=env,
+                capture_output=True,
+                text=True,
+                timeout=self._PREFLIGHT_TIMEOUT_S,
+            )
+        except subprocess.TimeoutExpired as exc:
+            raise PersistentPrologError(
+                "worker preflight timed out after "
+                f"{self._PREFLIGHT_TIMEOUT_S:.0f}s loading hermes_worker.pl"
+            ) from exc
+        if proc.returncode != 0:
+            tail = (proc.stderr or "")[-4000:]
+            raise PersistentPrologError(
+                f"worker preflight failed with status {proc.returncode}: {tail}"
+            )
 
     def _drain_stderr(self, proc: subprocess.Popen[str]) -> None:
         """Continuously empty the worker's stderr so the pipe never fills."""
