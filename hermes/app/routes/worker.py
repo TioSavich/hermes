@@ -88,6 +88,12 @@ def capabilities(ctx: Any) -> None:
 ROUTES = (
     Route("GET", "/api/capabilities", capabilities),
     *(Route("POST", path, _post(method)) for path, method in _HANDLERS),
-    *(Route("POST", path, _post(method)) for path, method in _DISCOURSE_HANDLERS),
+    # Discourse ops are declared student-data in gate.py: transcripts carry
+    # utterance text, and client-side speaker blinding cannot strip names
+    # spoken inside an utterance. The verified access class makes the FERPA
+    # gate the ops already claim actually fire on gated deployments; loopback
+    # launches (gate off by default) are unaffected.
+    *(Route("POST", path, _post(method), access="verified")
+      for path, method in _DISCOURSE_HANDLERS),
     *(Route("POST", path, _post_witness(family)) for path, family in _WITNESS_HANDLERS),
 )

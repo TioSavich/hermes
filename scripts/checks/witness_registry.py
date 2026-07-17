@@ -37,6 +37,26 @@ def main() -> int:
         print("witness ops without dispatch_request clauses: " + ", ".join(missing), file=sys.stderr)
         return 1
     print(f"witness registry: {len(owners)} ops have dispatch_request clauses: PASS")
+
+    # Every op-backed route must attribute at least one op in the generated
+    # registry. The registry regenerates self-consistently, so --check alone
+    # cannot notice when a refactor makes an op invisible to the extractor
+    # (a _forward_op-style helper once hid six routes this way): an op-backed
+    # route with zero capability_route facts is that failure, made loud.
+    worker_routes_text = (ROOT / "hermes/app/routes/worker.py").read_text(encoding="utf-8")
+    op_routes = set(re.findall(r'\(\s*"(/api/[^"]+)"\s*,\s*"[^"]+"\s*\)', worker_routes_text))
+    op_routes |= {"/api/pair_candidate", "/api/unit_coordination.svg"}  # analysis.py op routes
+    registry_text = (ROOT / "hermes/capability_registry.pl").read_text(encoding="utf-8")
+    attributed = set(re.findall(r"capability_route\('[^']+', '[A-Z]+', '([^']+)'\)", registry_text))
+    unattributed = sorted(op_routes - attributed)
+    if unattributed:
+        print(
+            "op-backed routes with no capability_route attribution "
+            "(extractor blind spot): " + ", ".join(unattributed),
+            file=sys.stderr,
+        )
+        return 1
+    print(f"witness registry: {len(op_routes)} op-backed routes all attributed: PASS")
     return 0
 
 

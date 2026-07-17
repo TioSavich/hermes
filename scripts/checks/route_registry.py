@@ -80,10 +80,10 @@ POST /api/carving_strategy_proof public worker
 POST /api/carving_operation_summary public worker
 POST /api/balance_solve public worker
 POST /api/benny_demo public worker
-POST /api/discourse_features public worker
-POST /api/discourse_pragmatics public worker
-POST /api/gesture_alignment public worker
-POST /api/trace_adjudication public worker
+POST /api/discourse_features verified worker
+POST /api/discourse_pragmatics verified worker
+POST /api/gesture_alignment verified worker
+POST /api/trace_adjudication verified worker
 POST /api/witness/crosswalk_claim public worker
 POST /api/witness/geometry public worker
 POST /api/witness/standards public worker

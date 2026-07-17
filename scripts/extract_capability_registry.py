@@ -228,6 +228,22 @@ def logic_methods() -> tuple[dict[str, set[str]], set[str]]:
         if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
             nodes[node.name] = node
     direct = {name: function_worker_ops(node) for name, node in nodes.items()}
+    # A helper "forwards" when it calls worker_request with a variable op: the
+    # op literal then lives at the helper's call sites (_forward_op idiom), and
+    # crediting the callee's empty set would hide those ops from the registry.
+    forwarders = {
+        name
+        for name, node in nodes.items()
+        if not direct[name]
+        and any(
+            isinstance(child, ast.Call)
+            and isinstance(child.func, ast.Attribute)
+            and child.func.attr in {"worker_request", "request"}
+            and child.args
+            and not isinstance(child.args[0], ast.Constant)
+            for child in ast.walk(node)
+        )
+    }
     # A handler may reach the worker through one intra-class helper hop
     # (_handle_chat -> _ground_message); union each helper's direct ops in.
     methods: dict[str, set[str]] = {}
@@ -243,6 +259,13 @@ def logic_methods() -> tuple[dict[str, set[str]], set[str]]:
                 and func.attr in direct
             ):
                 ops |= direct[func.attr]
+                if (
+                    func.attr in forwarders
+                    and call.args
+                    and isinstance(call.args[0], ast.Constant)
+                    and isinstance(call.args[0].value, str)
+                ):
+                    ops.add(call.args[0].value)
         methods[name] = ops
     render_ops: set[str] = set()
     render_node = nodes.get("_handle_render")

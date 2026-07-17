@@ -1075,32 +1075,32 @@ class RouteLogic:
                 status=400,
             )
             return
-        self._send_json({
-            "ok": True,
-            "result": self.ctx.worker_request(
-                "pair_candidate_witness", event_a=event_a, event_b=event_b,
-            ),
-        })
+        self._forward_op(
+            "pair_candidate_witness", {"event_a": event_a, "event_b": event_b},
+        )
+
+    def _forward_op(self, op: str, payload: dict) -> None:
+        # The clause validates its own payload and answers with a typed error;
+        # a worker-side rejection is the caller's mistake, so it comes back as
+        # 400 with the message, matching the witness-family idiom.
+        try:
+            result = self.ctx.worker_request(op, **payload)
+        except Exception as exc:  # noqa: BLE001
+            self._send_json({"ok": False, "error": str(exc)}, status=400)
+            return
+        self._send_json({"ok": True, "result": result})
 
     def _handle_discourse_features(self, payload: dict) -> None:
-        self._send_json({"ok": True, "result": self.ctx.worker_request(
-            "discourse_features", **payload,
-        )})
+        self._forward_op("discourse_features", payload)
 
     def _handle_discourse_pragmatics(self, payload: dict) -> None:
-        self._send_json({"ok": True, "result": self.ctx.worker_request(
-            "discourse_pragmatics", **payload,
-        )})
+        self._forward_op("discourse_pragmatics", payload)
 
     def _handle_gesture_alignment(self, payload: dict) -> None:
-        self._send_json({"ok": True, "result": self.ctx.worker_request(
-            "gesture_alignment", **payload,
-        )})
+        self._forward_op("gesture_alignment", payload)
 
     def _handle_trace_adjudication(self, payload: dict) -> None:
-        self._send_json({"ok": True, "result": self.ctx.worker_request(
-            "trace_adjudication", **payload,
-        )})
+        self._forward_op("trace_adjudication", payload)
 
     def _handle_unit_coordination_svg(self, query: str) -> None:
         params = urllib.parse.parse_qs(query, keep_blank_values=True)
@@ -1471,10 +1471,10 @@ class RouteLogic:
         if any(payload.get(k) is None for k in ("a", "b", "c")):
             self._send_json({"error": "a, b, and c are required"}, status=400)
             return
-        self._send_json({"ok": True, "result": self.ctx.worker_request(
+        self._forward_op(
             "balance_solve_witness",
-            a=payload["a"], b=payload["b"], c=payload["c"],
-        )})
+            {"a": payload["a"], "b": payload["b"], "c": payload["c"]},
+        )
 
     def _handle_benny_demo(self, _payload: dict) -> None:
         # Public: Benny's rule deformations run side by side with their correct
