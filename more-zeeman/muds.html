@@ -116,15 +116,18 @@
   .gm-card{border:1px solid var(--border);background:var(--surface);position:relative;overflow:hidden;display:flex;flex-direction:column;border-radius:2px}
   .gm-card.basic{border-left:3px solid var(--release)}
   .gm-card.repair{border-left:3px solid var(--snap)}
+  .gm-card.extended{border-left:3px solid var(--m-mode)}
   .gm-card .illus{height:110px;background:#0c0a05;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;padding:.7rem}
   .gm-card.basic .illus{background:linear-gradient(135deg,#0c0a05 0%,#0e1316 100%)}
   .gm-card.repair .illus{background:linear-gradient(135deg,#0c0a05 0%,#151008 100%)}
+  .gm-card.extended .illus{background:linear-gradient(135deg,#0c0a05 0%,#14101a 100%)}
   .gm-card .illus svg{max-height:100%;width:auto;display:block}
   .gm-card .body{padding:1rem 1.1rem 1.1rem;flex:1;display:flex;flex-direction:column}
   .gm-card h4{font-family:'Source Serif 4',serif;font-size:1.05rem;font-weight:600;margin-bottom:.15rem;color:var(--text);text-wrap:balance}
   .gm-card .kind{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.55rem}
   .gm-card.basic .kind{color:var(--release)}
   .gm-card.repair .kind{color:var(--snap)}
+  .gm-card.extended .kind{color:var(--m-mode)}
   .gm-card .src{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--muted);margin-bottom:.65rem;letter-spacing:.04em;line-height:1.5}
   .gm-card .src .arr{color:var(--muted);opacity:.6;margin:0 .25em}
   .gm-card .desc{font-size:.86rem;line-height:1.55;color:#b8b0a0;margin-bottom:.7rem}
@@ -253,10 +256,12 @@
   <div class="mk"><span class="n">III.</span><span>Grounding metaphors</span><span class="n">⋆</span></div>
   <h2 class="head">Where each metaphor <span class="q">breaks</span></h2>
   <p>Lakoff and Núñez identify four grounding metaphors for arithmetic and several repair metaphors introduced to preserve target-domain closure where the basic four fail. The break points are kept as first-class queryable facts in <code>formalization/grounding_metaphors.pl</code> rather than as commentary; each card below lists what the metaphor cannot ground and which repair metaphor (if any) covers the inference instead. The little illustration at the top of each card is the metaphor's <em>source-domain image</em> — the physical situation the metaphor is asking you to think with.</p>
-  <h3 class="sub">Basic four · Object Collection / Construction / Measuring Stick / Motion</h3>
+  <h3 class="sub">Basic metaphors (16) · anchored by Lakoff and Núñez's four: Object Collection, Construction, Measuring Stick, Motion</h3>
   <div class="gm-grid" id="gm-basic"></div>
   <h3 class="sub">Repair metaphors · rotation by 180°, Zero Collection, Zero Object</h3>
   <div class="gm-grid" id="gm-repair"></div>
+  <h3 class="sub">Extended registry (7) · algebraic-essence, schema, substrate, metonymy, and blend metaphors</h3>
+  <div class="gm-grid" id="gm-extended"></div>
 </section>
 
 <!-- ══ FOOTER ══ -->

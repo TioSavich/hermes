@@ -1,5 +1,5 @@
 <!--
-Converted 2026-07-11 from: /Users/tio/Desktop/E343_Cleanup/E343/Curriculum Materials/6th/Data_Stats/Grade6-8-Unit-teacher-guide.pdf
+Converted 2026-07-11
 Converter: pdftotext -layout (poppler). Math rendered as images in the PDF is
 NOT captured here; figure-carried operands live in
 scripts/curriculum/pdf_recovered_candidates.json.

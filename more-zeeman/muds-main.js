@@ -41,13 +41,24 @@
 
   // ────── Metaphor cards ──────
   //
-  // Both kind (basic|repair) and short-name come from the Prolog-emitted
-  // JSON (grounding_metaphors:metaphor_kind/2 and metaphor_short_name/2).
+  // Both kind and short-name come from the Prolog-emitted JSON
+  // (grounding_metaphors:metaphor_kind/2 and metaphor_short_name/2). Kind is
+  // not limited to basic|repair — the registry also carries
+  // algebraic_essence, schema, specialization_substrate,
+  // philosophical_substrate, metonymy, and blend. basic and repair route to
+  // their own grids; every other kind routes to the third, "extended" grid.
   // Adding a new metaphor only requires Prolog edits + a re-run of
-  // research_corpus/scripts/export_mua_for_mud.py; no JS changes here.
+  // research_corpus/scripts/export_mua_for_mud.py; no JS changes here as
+  // long as its kind is one of the three routed groups.
 
   function metaphorKind(m) {
     return m.kind || 'basic';
+  }
+
+  function metaphorGroup(m) {
+    const kind = metaphorKind(m);
+    if (kind === 'basic' || kind === 'repair') return kind;
+    return 'extended';
   }
 
   function metaphorTitle(id, byId) {
@@ -75,22 +86,31 @@
   function renderMetaphors(data) {
     const basicDiv = document.getElementById('gm-basic');
     const repairDiv = document.getElementById('gm-repair');
+    const extendedDiv = document.getElementById('gm-extended');
     basicDiv.innerHTML = '';
     repairDiv.innerHTML = '';
+    extendedDiv.innerHTML = '';
 
     // Group + order by the Prolog-emitted `kind` field. Within each
     // group we keep the natural order from the JSON (which sorts
-    // alphabetically by id); the four basic metaphors already read
-    // collection -> construction -> measuring stick -> motion under
-    // that order, so no additional rule is needed. New metaphors land
-    // in the correct group automatically once they have a
-    // `metaphor_kind/2` fact in Prolog.
+    // alphabetically by id); the four L&N grounding metaphors already
+    // read collection -> construction -> measuring stick -> motion
+    // under that order, so no additional rule is needed. New metaphors
+    // land in the correct group automatically once they have a
+    // `metaphor_kind/2` fact in Prolog: basic and repair get their own
+    // grid, every other kind lands in the extended grid.
     const byId = new Map(data.metaphors.map(m => [m.id, m]));
-    const basics = data.metaphors.filter(m => metaphorKind(m) === 'basic');
-    const repairs = data.metaphors.filter(m => metaphorKind(m) === 'repair');
+    const basics = data.metaphors.filter(m => metaphorGroup(m) === 'basic');
+    const repairs = data.metaphors.filter(m => metaphorGroup(m) === 'repair');
+    const extended = data.metaphors.filter(m => metaphorGroup(m) === 'extended');
+
+    const KIND_LABEL = {
+      basic: 'Basic grounding',
+      repair: 'Repair metaphor',
+    };
 
     function buildCard(m) {
-      const isBasic = metaphorKind(m) === 'basic';
+      const group = metaphorGroup(m);
       const mBreaks = data.metaphor_breaks.filter(r => r.metaphor === m.id);
       const mRepairs = data.metaphor_repairs.filter(r => r.broken === m.id);
       const repairsForBreak = [];
@@ -98,7 +118,9 @@
         if (mBreaks.some(b => b.inference === r.inference)) repairsForBreak.push(r);
       }
       const card = document.createElement('div');
-      card.className = 'gm-card ' + (isBasic ? 'basic' : 'repair');
+      card.className = 'gm-card ' + group;
+      const kindLabel = KIND_LABEL[group] ||
+        ('Extended registry · ' + metaphorKind(m).replace(/_/g, ' '));
 
       const breaksHtml = mBreaks.length
         ? `<div class="section">Breaks at</div>
@@ -124,7 +146,7 @@
         <div class="illus">${illustrationFor(m.id)}</div>
         <div class="body">
           <h4>${metaphorTitle(m.id, byId)}</h4>
-          <div class="kind">${isBasic ? 'Basic grounding' : 'Repair metaphor'}</div>
+          <div class="kind">${kindLabel}</div>
           <div class="src">source: ${m.source.replace(/_/g,' ')}
             <span class="arr">→</span> target: ${m.target.replace(/_/g,' ')}</div>
           <div class="desc">${m.description}</div>
@@ -136,6 +158,7 @@
 
     basics.forEach(m => basicDiv.appendChild(buildCard(m)));
     repairs.forEach(m => repairDiv.appendChild(buildCard(m)));
+    extended.forEach(m => extendedDiv.appendChild(buildCard(m)));
   }
 
   // ────── Picker ──────
