@@ -17,10 +17,20 @@ this repository's license:
   (CC BY 4.0). IM® and Illustrative Mathematics® are registered trademarks
   of Illustrative Mathematics; their use here does not imply endorsement.
 
-- **Illustrative Mathematics K–5 Math teacher guides.** The teacher-guide
-  material in `geometry/corpus/im_teacher_guides/` is © Illustrative
-  Mathematics, licensed under CC BY-NC 4.0, and adapted by markdown extraction
-  as monitoring-chart inputs.
+- **Illustrative Mathematics K–5 Math teacher guides.** The K–5 teacher-guide
+  material in `geometry/corpus/im_teacher_guides/` (kindergarten,
+  grade1–grade5) is © Illustrative Mathematics, licensed under CC BY-NC 4.0,
+  and adapted by markdown extraction as monitoring-chart inputs.
+
+- **IM 6–8 Math grade-6 teacher guides, via Open Up Resources.** The grade-6
+  material in `geometry/corpus/im_teacher_guides/grade6/` is © Open Up
+  Resources, adaptations © Illustrative Mathematics, licensed under CC BY 4.0,
+  and adapted by markdown extraction as monitoring-chart inputs.
+
+- **IM 6–8 Math scope and sequence, via Open Up Resources.** The grade
+  6–8 material in `geometry/corpus/im_scope_and_sequence/` is © Open Up
+  Resources, licensed under CC BY 4.0, and adapted by markdown extraction as
+  monitoring-chart inputs.
 
 - **Common Core State Standards.** Standard codes and statements in
   `standards/` are © Copyright 2010 National Governors Association Center

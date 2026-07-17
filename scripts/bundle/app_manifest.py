@@ -42,7 +42,7 @@ KEEP_TREES_RATIONALE = [
     ("misconceptions", "registry + compiled literature facts (runtime modules)"),
     ("crosswalk", "canonical vocabulary union"),
     ("standards", "CCSS / Indiana / IM anchors (worker glob-loads these)"),
-    ("geometry", "schema, concepts, metaphors, van Hiele (glob-loaded)"),
+    ("geometry", "schema, concepts, metaphors, van Hiele (glob-loaded); corpus/ holds attributed IM teacher-guide + scope-and-sequence inputs (see geometry/corpus/ATTRIBUTION.md)"),
     ("lessons", "IM lesson monitoring KB"),
     ("learner", "deontic scorekeeper, up-leveling"),
     ("formalization", "grounded arithmetic, grounding metaphors"),
@@ -127,7 +127,7 @@ KEEP_MD = {
 KEEP_MD_PREFIXES = (
     "hermes/app/system_prompts/",
     "geometry/corpus/im_teacher_guides/",
-    "geometry/corpus/im_scope_and_sequence/",  # lesson_monitoring.pl consults grades 6-8
+    "geometry/corpus/im_scope_and_sequence/",  # only grade6-8.md ship; lesson_monitoring.pl consults them
 )
 
 # Excluded from the kept trees. Substring "/tests/" prunes every test suite;
