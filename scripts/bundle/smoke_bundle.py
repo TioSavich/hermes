@@ -189,6 +189,7 @@ def static_audit(tree: Path, report: Report) -> None:
     required = (
         "more-zeeman/atlas.html",
         "more-zeeman/crosswalk.html",
+        "more-zeeman/geometry.html",
         "hermes/capability_registry.pl",
         "scripts/extract_capability_registry.py",
     )
@@ -511,6 +512,17 @@ def live_probes(tree: Path, python: str, swipl: str | None,
               {"op": "algebra_claim_witness", "canonical": "smoke_absent",
                "source": "smoke_bundle"},
               want=range(200, 401), timeout=120.0)
+        probe("POST /api/witness/geometry", "/api/witness/geometry",
+              {"op": "geometry_van_hiele_marker_witness",
+               "concept": "square_rectangle_classification", "level": 1},
+              timeout=120.0,
+              check=lambda b: b.get("ok") is True
+              and b.get("result", {}).get("kind") == "geometry_van_hiele_marker")
+        probe("POST /api/geometry", "/api/geometry",
+              {"predicate": "pck_synthesis_for", "args": ["quadrilateral_hierarchy"]},
+              timeout=120.0,
+              check=lambda b: b.get("ok") is True
+              and b.get("result", {}).get("kind") == "pck_synthesis")
         probe("POST /api/strategies", "/api/strategies", {},
               want=range(200, 500), timeout=120.0)
         # the per-strategy visualizer pages call this with display names

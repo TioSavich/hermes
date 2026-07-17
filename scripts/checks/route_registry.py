@@ -78,6 +78,7 @@ POST /api/carving_strategy_proof public worker
 POST /api/carving_operation_summary public worker
 POST /api/benny_demo public worker
 POST /api/witness/crosswalk_claim public worker
+POST /api/witness/geometry public worker
 POST /api/parse verified workflow
 POST /api/content verified workflow
 POST /api/profile verified workflow
