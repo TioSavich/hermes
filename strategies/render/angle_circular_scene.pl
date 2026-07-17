@@ -1,8 +1,7 @@
 /** <module> Angle / circular scene compiler (spatial family)
  *
- * Compiles a turning task into angle-circular scene frames on the frozen render
- * contract (docs/render-contract-v2.md,
- * §2 spatial family). This is a sibling of the coordinate-plane compiler: it
+ * Compiles a turning task into angle-circular scene frames on the render
+ * contract (docs/render-contract-v2.md). This is a sibling of the coordinate-plane compiler: it
  * extends the catalog past the arithmetic/number region into the K-8 spatial
  * representations tallied in
  * docs/research/2026-07-08-hermes-spatial-representation-gap-tally.md (section 6).
@@ -29,14 +28,14 @@
  * through angle_circular_compare_json/2 (the grammar's angle_as_ray_length lane);
  * no productive Spec draws over-long rays and calls the angle bigger.
  *
- * Semantic color ROLES only (contract §3): the filled central-angle sector
+ * Semantic color ROLES only (the render contract): the filled central-angle sector
  * carries role "sector"; the over-long rays of the break carry role
  * "deformation". Productive rays and the arc are figure stroke and carry no role.
  * This compiler never emits a hex string.
  *
  * Graceful degradation: a Spec with no drawable angle (a non-integer or
  * out-of-range degree measure) yields an explicit error document with frames:[]
- * rather than a faked picture (contract §2).
+ * rather than a faked picture (the render contract).
  */
 
 :- module(angle_circular_scene,
@@ -80,7 +79,7 @@ angle_circular_render_frames(Spec, Frames) :-
 %!  angle_circular_render_json(+Spec, -Dict) is det.
 %
 %   The full render document: kind / request / result / canvas / frames
-%   (contract §1.1). On an undrawable Spec, an explicit error string and frames:[].
+%   (the render contract). On an undrawable Spec, an explicit error string and frames:[].
 angle_circular_render_json(angle(Degrees), Dict) :-
     !,
     ( valid_angle(Degrees)

@@ -463,7 +463,7 @@ humanize_verb(Verb, Caption) :-
 %!  fraction_render_json(+Kind, +Count, +Base, -Dict) is det.
 %
 %   Assemble the full frame document: kind / request / result / canvas /
-%   frames per the frozen frame JSON contract.
+%   frames per the render contract.
 fraction_render_json(unit_fraction_iteration, Count, Base, Dict) :-
     !,
     ( recursive_unit_actions:fraction_unit_plan(Count, Base, Plan),

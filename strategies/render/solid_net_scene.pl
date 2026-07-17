@@ -1,10 +1,9 @@
 /** <module> Solid-net scene compiler (spatial family)
  *
- * Compiles a solids task into solid-net scene frames on the frozen render
- * contract (docs/render-contract-v2.md,
- * §2 solid-net). The spatial family extends the catalog past the
- * arithmetic/number region into the K-8 spatial representations tallied in
- * docs/research/2026-07-08-hermes-spatial-representation-gap-tally.md.
+ * Compiles a solids task into solid-net scene frames on the render
+ * contract (docs/render-contract-v2.md). The spatial family extends the catalog
+ * past the arithmetic/number region into the K-8 spatial representations tallied
+ * in docs/research/2026-07-08-hermes-spatial-representation-gap-tally.md.
  *
  * A solid unfolds to a planar net: an arrangement of its faces joined at fold
  * creases. Where the number-line compiler is driven by a strategy-trace witness,
@@ -34,13 +33,13 @@
  * through the compare form and only via the misconception lane; no productive
  * Spec emits an unfoldable arrangement.
  *
- * Semantic color ROLES only (contract §3): a net or solid face carries role
+ * Semantic color ROLES only (the render contract): a net or solid face carries role
  * "face"; the faces of an unfoldable arrangement carry role "deformation". Fold
  * creases and edges are stroke, not fill. This compiler never emits a hex string.
  *
  * Graceful degradation: a Spec with no net layout (an unsupported solid, a
  * non-positive dimension) yields an explicit error document with frames:[] rather
- * than a faked picture (contract §2).
+ * than a faked picture (the render contract).
  */
 
 :- module(solid_net_scene,
@@ -71,7 +70,7 @@ solid_net_render_frames(Spec, Frames) :-
 %!  solid_net_render_json(+Spec, -Dict) is det.
 %
 %   The full render document: kind / request / result / canvas / frames
-%   (contract §1.1). On an undrawable Spec, an explicit error string and frames:[].
+%   (the render contract). On an undrawable Spec, an explicit error string and frames:[].
 solid_net_render_json(net_of(Solid), Dict) :-
     !,
     solid_string(Solid, SolidStr),

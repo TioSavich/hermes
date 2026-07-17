@@ -27,7 +27,7 @@
  * The frame builders carry no local 10-A or N//2 arithmetic; the quantities
  * are read off the witness so the picture and the finite proof cannot drift.
  *
- * Frozen render contract. Each fill carries a semantic ROLE atom (unit /
+ * Render contract. Each fill carries a semantic ROLE atom (unit /
  * highlight / iterated / deformation / neutral), never a hex string; Gate E's
  * token stylesheet maps role -> hex. See
  * docs/render-contract-v2.md (the scene format
@@ -135,7 +135,7 @@ set_grouping_render_frames(Spec, Frames) :-
 
 %!  set_grouping_render_json(+Spec, -Dict) is det.
 %
-%   Assemble the full frame document per the frozen contract: kind / request /
+%   Assemble the full frame document per the render contract: kind / request /
 %   result / canvas / frames.
 set_grouping_render_json(Spec, Dict) :-
     set_grouping_render_frames(Spec, Frames),
@@ -887,7 +887,7 @@ signed_result_caption(A, B, Sum, Cap) :-
 % =============================================================================
 
 %!  scene_dict(+scene(Dots, Frames10, PairLines, Bins), -Dict) is det.
-%   Wrap the four primitive arrays in the frozen set-grouping scene (version 2).
+%   Wrap the four primitive arrays in the set-grouping scene (version 2).
 scene_dict(scene(Dots, Frames10, PairLines, Bins), Dict) :-
     Dict = _{ format: "set-grouping", version: 2,
               dots: Dots, frames10: Frames10,

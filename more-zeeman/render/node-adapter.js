@@ -230,15 +230,6 @@ function main() {
     process.stdout.write(JSON.stringify(Object.keys(drawer.DISPATCH)));
     return;
   }
-  if (input.mode === 'browser-frame') {
-    const doc = input.document, options = input.options || {}, frames = doc.frames || [];
-    const svg = drawer.buildSvg(frames[Number(options.index || 0)], drawer.documentBounds(frames, doc.canvas || {}));
-    svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-    svg.setAttribute('role', 'img');
-    if (options.ariaLabel) svg.setAttribute('aria-label', options.ariaLabel);
-    process.stdout.write(clean(svg));
-    return;
-  }
   if (input.mode === 'frame') process.stdout.write(frameSvg(drawer, input.document, input.options || {}));
   else if (input.mode === 'filmstrip') process.stdout.write(filmstripSvg(drawer, input.document, input.options || {}));
   else throw new Error(`unsupported adapter mode: ${input.mode}`);

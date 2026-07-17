@@ -1,8 +1,7 @@
 /** <module> Rigid-motion scene compiler (spatial family)
  *
- * Compiles a transformation task into rigid-motion scene frames on the frozen
- * render contract (docs/render-contract-v2.md,
- * §2 spatial family). The rigid-motion format is the transformation actuator for
+ * Compiles a transformation task into rigid-motion scene frames on the
+ * render contract (docs/render-contract-v2.md). The rigid-motion format is the transformation actuator for
  * the K-8 spatial catalog: 4.G.3 line symmetry, and 8.G.1-4, where congruence and
  * similarity are defined through motions of the plane.
  *
@@ -39,14 +38,14 @@
  * literature_only. (Secondary honest note carried in the grammar: a dilation
  * scales length and so is not an isometry.)
  *
- * Semantic slots only (contract §3): the pre-image polygon is drawn with role
+ * Semantic slots only (the render contract): the pre-image polygon is drawn with role
  * "pre-image", the image polygon with role "image", the deformation attempt with
  * role "deformation". This compiler never emits a hex string.
  *
  * Graceful degradation: a Spec with no drawable polygon (a non-list shape, a
  * shape under three vertices, a non-integer coordinate, a degree outside
  * {90,180,270}) yields an explicit error document with frames:[] rather than a
- * faked picture (contract §2).
+ * faked picture (the render contract).
  */
 
 :- module(rigid_motion_scene,
@@ -77,7 +76,7 @@ rigid_motion_render_frames(Spec, Frames) :-
 %!  rigid_motion_render_json(+Spec, -Dict) is det.
 %
 %   The full render document: kind / request / result / canvas / frames
-%   (contract §1.1). On an undrawable Spec, an explicit error string and frames:[].
+%   (the render contract). On an undrawable Spec, an explicit error string and frames:[].
 rigid_motion_render_json(translate(Shape, DX, DY), Dict) :-
     !,
     ( parse_shape(Shape, Verts), integer(DX), integer(DY)

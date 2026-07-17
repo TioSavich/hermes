@@ -1,8 +1,7 @@
 /** <module> Number-line scene compiler (P1)
  *
  * Compiles a strategy's WITNESS trace into number-line scene frames on the
- * render contract (docs/render-contract-v2.md,
- * §2 P1). The direction is Prolog -> picture and, crucially, the picture is
+ * render contract (docs/render-contract-v2.md). The direction is Prolog -> picture and, crucially, the picture is
  * driven by the worker's trace, NOT by re-deriving arithmetic from the raw
  * inputs:
  *
@@ -30,13 +29,13 @@
  *     deformation's omitted compensation is the adjustment segment drawn
  *     against the productive partner's grounded adjust-back step.
  *
- * Semantic color ROLES only (contract §3). This compiler never emits a hex
+ * Semantic color ROLES only (the render contract). This compiler never emits a hex
  * string; the token stylesheet (Gate E) maps role -> --fig-<role>.
  *
  * Graceful degradation: a strategy that cannot be run to a jump trace, or a
  * deformation with no drawable number-line trace, yields an explicit error
- * document with frames:[] rather than a faked picture (contract §2,
- * "Graceful degradation").
+ * document with frames:[] rather than a faked picture (the render contract's
+ * graceful-degradation rule).
  *
  * Scope / honest limits:
  *   - The jumps form covers exactly the strategies whose running-sum trace the
@@ -110,7 +109,7 @@ number_line_render_frames(Spec, Frames) :-
 %!  number_line_render_json(+Spec, -Dict) is det.
 %
 %   The full render document: kind / request / result / canvas / frames
-%   (contract §1.1). On a Spec whose witness trace is unavailable, an explicit
+%   (the render contract). On a Spec whose witness trace is unavailable, an explicit
 %   error string and frames:[].
 number_line_render_json(jumps(Strategy, A, B), Dict) :-
     !,

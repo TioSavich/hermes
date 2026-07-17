@@ -1,10 +1,9 @@
 /** <module> Coordinate-plane scene compiler (spatial family)
  *
- * Compiles a plotting task into coordinate-plane scene frames on the frozen
- * render contract (docs/render-contract-v2.md,
- * §2 coordinate-plane). The spatial family extends the catalog past the
- * arithmetic/number region into the K-8 spatial representations tallied in
- * docs/research/2026-07-08-hermes-spatial-representation-gap-tally.md.
+ * Compiles a plotting task into coordinate-plane scene frames on the
+ * render contract (docs/render-contract-v2.md). The spatial family extends the
+ * catalog past the arithmetic/number region into the K-8 spatial representations
+ * tallied in docs/research/2026-07-08-hermes-spatial-representation-gap-tally.md.
  *
  * Unlike the number-line compiler, whose picture is driven by a strategy-trace
  * witness, this compiler computes its geometry directly from the plotting task:
@@ -28,13 +27,13 @@
  * quadrant_sign_error/2 and only via the misconception lane; there is no
  * productive Spec that plots a sign-dropped point.
  *
- * Semantic color ROLES only (contract §3): a plotted pair carries role "point",
+ * Semantic color ROLES only (the render contract): a plotted pair carries role "point",
  * the sign-error pair carries role "deformation", the plotted line carries role
  * "iterated". This compiler never emits a hex string.
  *
  * Graceful degradation: a Spec with no drawable points (an empty list, a
  * non-integer coordinate) yields an explicit error document with frames:[]
- * rather than a faked picture (contract §2).
+ * rather than a faked picture (the render contract).
  */
 
 :- module(coordinate_plane_scene,
@@ -65,7 +64,7 @@ coordinate_plane_render_frames(Spec, Frames) :-
 %!  coordinate_plane_render_json(+Spec, -Dict) is det.
 %
 %   The full render document: kind / request / result / canvas / frames
-%   (contract §1.1). On an unplottable Spec, an explicit error string and frames:[].
+%   (the render contract). On an unplottable Spec, an explicit error string and frames:[].
 coordinate_plane_render_json(plot_points(Points), Dict) :-
     !,
     ( clean_points(Points, Clean), Clean \== []

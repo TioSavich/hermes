@@ -25,7 +25,7 @@
  * `format:"balance-scale"`,
  * `version:2`, a `beam` carrying only its `tilt`, and `pans.{left,right}` as
  * arrays of aggregated `{kind, count, role}` rows. The compiler emits color
- * ROLES (`x-box`, `unit-weight`, `pan`, `deformation`; §3), never hex — the
+ * ROLES (`x-box`, `unit-weight`, `pan`, `deformation`; the render contract), never hex — the
  * token stylesheet (Gate E) maps each role to `--fig-<role>`. The drawer owns
  * the per-block layout; this compiler emits no pixel geometry.
  *
@@ -74,7 +74,7 @@
 :- use_module(library(lists)).
 
 % -----------------------------------------------------------------------------
-% Canvas advisory size. The frozen PB scene (render-contract §2) carries no
+% Canvas advisory size. The PB scene (the render contract) carries no
 % per-cell geometry: the compiler emits aggregated `{kind, count, role}` pan
 % rows and the drawer owns the rod/x-box layout. Two pans hang from a beam whose
 % tilt the drawer reads from `beam.tilt`.
@@ -82,7 +82,7 @@
 canvas_w(700).
 canvas_h(360).
 
-% Item-kind and color-role atoms (render-contract §3 balance roles). A compiler
+% Item-kind and color-role atoms (the render contract's balance roles). A compiler
 % emits roles, never hex; Gate E maps each role to `--fig-<role>` in the token
 % sheet. `unit-weight` is a 1-weight block, `x-box` the unknown, `pan` the pan
 % surface, `deformation` the mislabelled fill that breaks balance.
@@ -162,7 +162,7 @@ relation_caption(L, R, right_down, Cap) :-
 
 
 % -----------------------------------------------------------------------------
-% Pan rows. The frozen PB scene carries aggregated `{kind, count, role}` rows;
+% Pan rows. The PB scene carries aggregated `{kind, count, role}` rows;
 % the drawer owns the per-block layout. A pan is a list of such rows: x-boxes
 % first (role `x-box`), then unit weights (role `unit-weight`). A row with
 % count 0 is dropped so an empty pan is the empty list.
@@ -195,7 +195,7 @@ maybe_row(Kind, Count, Role, [_{ kind: Kind, count: Count, role: Role }]) :-
 
 
 % -----------------------------------------------------------------------------
-% Scene assembly. The frozen PB scene (render-contract §2): a beam carrying only
+% Scene assembly. The PB scene (the render contract): a beam carrying only
 % its tilt, and a `pans` object with `left`/`right` arrays of `{kind, count,
 % role}` rows. No per-cell pixel geometry: the drawer owns the rod/x-box layout.
 % The `pan` role names the pan surface itself. The tilt is supplied by the

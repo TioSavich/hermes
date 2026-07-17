@@ -47,10 +47,18 @@ class RenderAdapterError(RuntimeError):
 def validate_render_document(document: Any) -> dict[str, Any]:
     """Return *document* after validating its drawable contract shape.
 
-    Scene version 1 remains accepted for the four shipped legacy compiler
-    families. New scene compilers use version 2, which is the documented
-    contract. This validator still rejects scalars, missing frame arrays,
-    unknown formats, and malformed frame metadata.
+    Scene version 1 remains accepted for the five shipped legacy sources: the
+    hybridization, place-value, parametric-deformation, and legacy notation
+    compilers, plus the fraction-cliff exporter (export_fraction_cliff.py,
+    which emits version-1 fraction-bars scenes from Python). New scene
+    compilers use version 2, which is the documented contract. This validator
+    still rejects scalars, missing frame arrays, unknown formats, and
+    malformed frame metadata. Comparison documents carry frames inside their
+    productive/deformation parts; a part validates whenever it is present,
+    and top-level frames validate whenever present, so a document is drawable
+    when it holds at least one of the two. An error document may carry no
+    frames or an annotation-only frame — the area-compare fallback never
+    fakes a picture, and a reachable error document still needs to draw.
     """
     if not isinstance(document, dict):
         raise RenderDocumentError("render result must be an object")
@@ -60,20 +68,25 @@ def validate_render_document(document: Any) -> dict[str, Any]:
         for name in ("productive", "deformation")
         if document.get(name) is not None
     ]
-    if frames is None and parts:
-        # Comparison documents carry frames inside their parts; the contract
-        # names productive/deformation as nested render document parts.
-        for name, part in parts:
-            if not isinstance(part, dict) or not isinstance(part.get("frames"), list):
-                raise RenderDocumentError(
-                    f"render document part {name} must hold a frames array")
-            _validate_frames(part["frames"], f"{name} ")
-        return document
-    if not isinstance(frames, list):
+    has_frames = isinstance(frames, list)
+    if frames is not None and not has_frames:
         raise RenderDocumentError("render document frames must be an array")
-    if document.get("error") is not None and frames:
-        raise RenderDocumentError("error render documents must have an empty frames array")
-    _validate_frames(frames, "")
+    validated_parts = 0
+    for name, part in parts:
+        if not isinstance(part, dict):
+            # balance_compare and kin carry productive/deformation as plain
+            # role-label strings beside top-level frames; only dict parts are
+            # nested render document parts.
+            continue
+        if not isinstance(part.get("frames"), list):
+            raise RenderDocumentError(
+                f"render document part {name} must hold a frames array")
+        _validate_frames(part["frames"], f"{name} ")
+        validated_parts += 1
+    if not has_frames and not validated_parts:
+        raise RenderDocumentError("render document frames must be an array")
+    if has_frames:
+        _validate_frames(frames, "")
     return document
 
 
@@ -85,7 +98,9 @@ def _validate_frames(frames: list, where: str) -> None:
         step = frame.get("step")
         if not isinstance(step, int) or isinstance(step, bool) or step < 1:
             raise RenderDocumentError(f"{label} step must be an integer greater than zero")
-        verb = frame.get("verb", frame.get("caption"))
+        verb = frame.get("verb")
+        if verb is None:
+            verb = frame.get("caption")
         if not isinstance(verb, str):
             raise RenderDocumentError(f"{label} verb must be a string")
         scene = frame.get("scene")

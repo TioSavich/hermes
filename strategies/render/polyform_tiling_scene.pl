@@ -1,6 +1,6 @@
 /** <module> Polyform-tiling scene compiler (spatial family)
  *
- * Compiles a tiling task into polyform-tiling scene frames on the frozen render
+ * Compiles a tiling task into polyform-tiling scene frames on the render
  * contract (docs/render-contract-v2.md,
  * spatial family). The polyform-tiling language fits rigid lattice pieces —
  * unit cells and free polyominoes (the pentominoes vocabulary) — into a bounded
@@ -41,7 +41,7 @@
  *       (erasure: true, a plain note); it does not compute or assert the parity
  *       proof. violation reason(coloring_parity_imbalance).
  *
- * Semantic color ROLES only (contract §3): a placed polyomino cell carries role
+ * Semantic color ROLES only (the render contract): a placed polyomino cell carries role
  * "piece"; an empty/hole cell is drawn from the "holes" array (neutral); a
  * deformation cell (rotation overhang, the removed corner, the stalled residue)
  * carries role "deformation". This compiler never emits a hex string.
@@ -79,7 +79,7 @@ polyform_tiling_render_frames(Spec, Frames) :-
 %!  polyform_tiling_render_json(+Spec, -Dict) is det.
 %
 %   The full render document: kind / request / result / canvas / frames
-%   (contract §1.1). On an untileable Spec, an explicit error string and frames:[].
+%   (the render contract). On an untileable Spec, an explicit error string and frames:[].
 polyform_tiling_render_json(tile_region(cols(C), rows(R), Pieces), Dict) :-
     !,
     ( integer(C), integer(R), C >= 1, R >= 1,

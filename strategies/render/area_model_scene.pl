@@ -520,8 +520,8 @@ product_grid_shape(NumProd, Rows, Cols) :-
 
 
 % =============================================================================
-% Semantic color roles. A compiler emits only the frozen role atoms (§3 of the
-% render contract); the drawer maps each to var(--fig-<role>).
+% Semantic color roles. A compiler emits only the role atoms the render
+% contract names; the drawer maps each to var(--fig-<role>).
 % =============================================================================
 
 %!  role_atom(+Role, -Atom) is det.
@@ -588,7 +588,7 @@ unknown_frame(Spec, Frame) :-
 
 %!  area_render_json(+Spec, -Dict) is det.
 %   Assemble the full render document: kind / request / result / canvas /
-%   frames per the frozen document contract, plus the optional `tuple` field.
+%   frames per the render contract, plus the optional `tuple` field.
 area_render_json(Spec, Dict) :-
     area_render_frames(Spec, Frames),
     spec_kind(Spec, KindStr),

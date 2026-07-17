@@ -1,8 +1,8 @@
 /** <module> Data-display scene compiler (spatial family)
  *
  * Compiles a statistical-display task into data-display scene frames on the
- * render contract (docs/render-contract-v2.md,
- * §2 spatial family). Data display is a small family of statistical pictures
+ * render contract (docs/render-contract-v2.md). Data display is a small family
+ * of statistical pictures
  * under one language: picture/bar graphs and line plots (1.MD.4, 2.MD.9-10,
  * 3.MD.3-4), the dot plot / histogram / box plot (6.SP.4), the scatterplot
  * (8.SP.1). This compiler lands the two the slice needs: the bar chart and the
@@ -33,13 +33,13 @@
  * continuous variable. It is reachable ONLY through bar_histogram_conflation/1
  * and only via the misconception lane; no productive Spec draws touching bars.
  *
- * Semantic color ROLES only (contract §3): a bar, bin, or stacked dot carries
+ * Semantic color ROLES only (the render contract): a bar, bin, or stacked dot carries
  * role "bar"; the conflated pseudo-histogram bars carry role "deformation". This
  * compiler never emits a hex string.
  *
  * Graceful degradation: a Spec with nothing to display (an empty list, a list
  * with no well-formed entry) yields an explicit error document with frames:[]
- * rather than a faked picture (contract §2).
+ * rather than a faked picture (the render contract).
  */
 
 :- module(data_display_scene,
@@ -89,7 +89,7 @@ data_display_render_frames(Spec, Frames) :-
 %!  data_display_render_json(+Spec, -Dict) is det.
 %
 %   The full render document: kind / request / result / canvas / frames
-%   (contract §1.1). On an undisplayable Spec, an explicit error string and frames:[].
+%   (the render contract). On an undisplayable Spec, an explicit error string and frames:[].
 data_display_render_json(bar_chart(Pairs), Dict) :-
     !,
     ( clean_pairs(Pairs, Clean), Clean \== []
@@ -264,7 +264,7 @@ bar_frames_([R|Rest], FreqMax, Labels, Step, Acc, [Frame|Frames]) :-
 %!  bar_rects(+Pairs, +FreqMax, +GapMode, +Role, -Rects) is det.
 %   Every bar as an integer-pixel rect. GapMode `spaced` leaves the categorical
 %   gap between bars; `touching` closes it (the conflation lane). Role is the
-%   §3 fill atom carried on each rect.
+%   render contract's fill-role atom carried on each rect.
 bar_rects(Pairs, FreqMax, GapMode, Role, Rects) :-
     dd_x0(X0), dd_bar_w(BarW), dd_bar_gap(Gap0),
     ( GapMode == touching -> Gap = 0 ; Gap = Gap0 ),
@@ -323,7 +323,7 @@ dot_frames_([V|Vs], [P|Ps], Labels, FreqMax, Step, Acc, [Frame|Frames]) :-
 %   One integer-pixel dot per value. A dot's column is its value's offset from the
 %   least value; its height is its stack index (how many equal values came before
 %   it), so equal values pile up into a frequency column. Every dot carries role
-%   "bar" (a stacked-dot fill, §3).
+%   "bar" (a stacked-dot fill, per the render contract).
 dot_points(Values, Points) :-
     dd_x0(X0), dd_col_w(ColW), dd_dot_r(R), dd_dot_step(Step), dd_baseline(Base),
     min_list(Values, MinV),
@@ -380,7 +380,7 @@ area reading that unequal bins would demand. (Bar-histogram-conflation family.)"
 
 %!  axes_dict(+Labels, +FreqMax, -Axes) is det.
 %   The shared axes dict: the category (or value tick) labels and the frequency
-%   ceiling. The same shape serves bar and dot modes (contract §2 data-display).
+%   ceiling. The same shape serves bar and dot modes (the render contract's data-display shape).
 axes_dict(Labels, FreqMax, _{ categoryLabels: Labels, freqMax: FreqMax }).
 
 %!  clean_pairs(+Raw, -Clean) is det.

@@ -1,9 +1,9 @@
 /** <module> Geoboard scene compiler (spatial family)
  *
  * Compiles a rubber-band-on-a-pegboard task into geoboard scene frames on the
- * render contract (docs/render-contract-v2.md,
- * §2 geoboard). The spatial family extends the catalog past the arithmetic/number
- * region into the K-8 spatial representations tallied in
+ * render contract (docs/render-contract-v2.md). The spatial family extends the
+ * catalog past the arithmetic/number region into the K-8 spatial representations
+ * tallied in
  * docs/research/2026-07-08-hermes-spatial-representation-gap-tally.md.
  *
  * A geoboard denotes a simple closed polygon on the integer lattice. Its geometry
@@ -28,14 +28,14 @@
  * through geoboard_pick_compare/1 and only via the misconception lane; there is no
  * productive Spec that miscounts a peg.
  *
- * Semantic color ROLES only (contract §3): a lattice peg carries role "peg", the
+ * Semantic color ROLES only (the render contract): a lattice peg carries role "peg", the
  * miscounted peg carries role "deformation", the enclosed region fills with the
  * shared role "whole", and the band is drawn in the figure stroke color. This
  * compiler never emits a hex string.
  *
  * Graceful degradation: a Spec with fewer than three integer lattice vertices
  * yields an explicit error document with frames:[] rather than a faked picture
- * (contract §2); an unknown Spec yields a single annotation-only frame.
+ * (the render contract); an unknown Spec yields a single annotation-only frame.
  */
 
 :- module(geoboard_scene,
@@ -66,7 +66,7 @@ geoboard_render_frames(Spec, Frames) :-
 %!  geoboard_render_json(+Spec, -Dict) is det.
 %
 %   The full render document: kind / request / result / canvas / frames
-%   (contract §1.1). On an unbuildable Spec, an explicit error string and frames:[].
+%   (the render contract). On an unbuildable Spec, an explicit error string and frames:[].
 geoboard_render_json(stretch_polygon(Vertices), Dict) :-
     !,
     ( geoboard_simple_closed(Vertices)

@@ -81,9 +81,13 @@ browser will: every static target in the shipped pages must resolve, the
 live routes must answer (the LLM-backed ones with a clean no-key message),
 and the report chain runs end to end on a toy transcript.
 
-The first three checks validate the render contract, compare every drawer format
-through the browser and Node adapters, and report tracked-gallery drift. They
-require Node.js and do not start a server.
+The first three checks validate the render contract, confirm every drawer
+format produces contract-valid SVG through the shared Node adapter, and
+report tracked-gallery drift. They require Node.js and do not start a
+server. The adapter check runs entirely in Node and Python on one machine,
+so it cannot catch a browser/Node divergence; to check that by hand, open
+the visualizer pages in a browser against the same worker documents and
+compare them with the exported SVGs.
 
 `scripts/bundle/app_manifest.py` names the file set this repository
 carries and why (`KEEP_TREES_RATIONALE` in that file, one rationale per

@@ -5,14 +5,14 @@
  * scene. A scene compiler emits geometry as primitives plus a role atom per
  * fill; this drawer resolves each role to the CSS variable var(--fig-<role>)
  * defined once in more-zeeman/hermes-tokens.css, keeping a bar.color fallback
- * during the hex->role migration (§6).
+ * during the hex->role migration.
  *
- * Formats handled (§2): fraction-bars, number-line (jumps + length), area-model,
+ * Formats handled: fraction-bars, number-line (jumps + length), area-model,
  * base-ten-columns (the ported Ace-of-Base rod/flat/cube shapes), set-grouping,
  * balance-scale, hybridization-model, notation, and the spatial family
  * (coordinate-plane).
  *
- * The audience host shell (§5) reads doc.tuple, the per-frame verbs, and
+ * The audience host shell reads doc.tuple, the per-frame verbs, and
  * doc.grounding (philosopher); scene + caption (freshman); doc.teacher (teacher).
  * A body class view-freshman|view-philosopher|view-teacher controls which panels
  * show. The Calculate button POSTs numerals to the worker bridge and renders the
@@ -29,7 +29,7 @@
 
   // --- Color roles -------------------------------------------------------
   // A fill resolves to var(--fig-<role>). During the hex->role migration a
-  // scene may still carry a literal color; that wins as a fallback (§6). For
+  // scene may still carry a literal color; that wins as a fallback. For
   // SVG attributes set in JS we read the computed CSS variable value.
 
   function cssVar(name, fallback) {
@@ -2022,7 +2022,7 @@
     this.renderVerbs();
   };
 
-  // --- Audience panels (§5) ---------------------------------------------
+  // --- Audience panels ---------------------------------------------------
 
   Drawer.prototype.renderPanels = function () {
     var doc = this.doc;

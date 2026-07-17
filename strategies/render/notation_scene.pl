@@ -3,8 +3,8 @@
  * Notation is the glyph-level representation language: a written equation as a
  * row of single inscribed characters, each at its own (x, y), each carrying an
  * optional per-glyph deformation transform. The compiler emits the scene dict
- * the drawer's "notation" format reads (spec §4,
- * docs/proposals/2026-06-25-notation-in-monitoring-charts.md). Layout x is
+ * the drawer's "notation" format reads (the render contract,
+ * docs/render-contract-v2.md). Layout x is
  * computed here in Prolog as Col * glyphPitch; the drawer does no arithmetic.
  *
  * Two lanes, mirroring the rest of the render suite:
@@ -55,7 +55,7 @@
                 numeral_deformation/4
               ]).
 
-% --- Layout constants (spec §4 worked example) ------------------------------
+% --- Layout constants (the render contract's notation format) --------------
 
 notation_baseline(40).      % glyph text baseline (y), integer
 notation_glyph_pitch(24).   % horizontal pitch between glyph slots

@@ -604,7 +604,7 @@ deformation_spec_evidence(
 % The full running chain (the literal 2+3=5+4=9 inscription). Same equals-as-makes
 % violation and same corpus-attested provenance as the single-step form: the
 % multi-= chain IS the corpus-attested inscription form (513 multi-= docling
-% transcriptions, spec §2a). Steps is a list of Acc-Op-B links; the first link's
+% transcriptions). Steps is a list of Acc-Op-B links; the first link's
 % Acc Op B must be a valid write task, which gates the whole chain through the
 % misconception lane exactly like the single-step clause.
 deformation_spec_evidence(
@@ -628,7 +628,7 @@ deformation_spec_evidence(
 % transposing the correct sum's digits, never supplied by the drawer. The
 % violation is positional order, distinct from the equals-as-makes chain and
 % from place_value_chart's column-alignment failure. Literature-only: no
-% instance in this corpus (see spec §2b).
+% instance in this corpus.
 deformation_spec_evidence(
         notation,
         digit_transposition(A, Op, B, R),
@@ -651,7 +651,7 @@ deformation_spec_evidence(
 % slot, strikes it, and rewrites another over it. This is CHARTED as a
 % misconception ONLY when the rewritten (corrected) value is STILL wrong: a clean
 % self-correction TO the right answer is a productive inscription and must never
-% enter the misconception lane (spec §2b — the one notation error type that needs
+% enter the misconception lane (the one notation error type that needs
 % a non-trivial correctness condition). The struck under-value and the over-value
 % are Prolog facts; the gate is Corrected =\= R. Struck =\= Corrected guards that
 % an overwrite actually changed the inscription. Literature-only: no instance in

@@ -1,6 +1,6 @@
 /** <module> Teacher-layer composition for a render document
  *
- * Composes the `doc.teacher` field of the frozen render contract
+ * Composes the `doc.teacher` field of the render contract
  * (docs/render-contract-v2.md) for a
  * single arithmetic practice (the practice a content claim enacts). The layer
  * reads four already-existing witness/data sources and reports them as plain

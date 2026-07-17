@@ -32,6 +32,10 @@ def test_render_contract_v2() -> None:
             "deformation": {"frames": [scene()]},
         },
         {"kind": "refusal", "error": "no licensed scene", "frames": []},
+        # An error document may carry an annotation-only frame instead of an
+        # empty array — the area_compare sourcing-failure fallback never
+        # fakes a picture, but it still draws one frame naming the refusal.
+        {"kind": "refusal", "error": "no licensed scene", "frames": [scene()]},
         {"kind": "empty", "request": {}, "result": {}, "frames": []},
     )
     for document in documents:
@@ -43,6 +47,37 @@ def test_render_contract_v2() -> None:
             pass
         else:
             raise AssertionError(f"accepted non-render value: {value!r}")
+
+    # A part validates whenever it is present, even alongside valid top-level
+    # frames: a malformed productive part must not slip through because the
+    # document also happens to carry a drawable top-level frames array.
+    malformed_part_document = {
+        "kind": "comparison",
+        "request": {},
+        "result": {},
+        "frames": [scene()],
+        "productive": {"frames": "not-a-list"},
+    }
+    try:
+        validate_render_document(malformed_part_document)
+    except RenderDocumentError:
+        pass
+    else:
+        raise AssertionError(
+            "accepted a document with valid top-level frames but a malformed "
+            "productive part"
+        )
+
+    # balance_compare ships productive/deformation as plain role-label
+    # strings beside top-level frames; string parts are sibling metadata,
+    # never rejected.
+    string_label_document = {
+        "kind": "comparison",
+        "frames": [scene()],
+        "productive": "balanced_moves",
+        "deformation": "subtract_from_lighter_side",
+    }
+    validate_render_document(string_label_document)
 
 
 class Context:

@@ -8,7 +8,7 @@
  * columns" (a contract constant the drawer reads), but the structure and the
  * narration are about the operative base, not base ten.
  *
- * The frames go out under the frozen render contract
+ * The frames go out under the render contract
  * (docs/render-contract-v2.md).
  *
  * This is a THIN, WITNESS-FED compiler. It emits semantic primitives only:
@@ -35,7 +35,7 @@
  * parameter property is the place-value side of the base-invariance idea in
  * docs/proposals/2026-06-23-visualizer-reuse-goal.md (Goal H, criterion 2).
  *
- * Roles. Each column carries a base-ten role (§3 of the contract):
+ * Roles. Each column carries a base-ten role (the render contract):
  *   unit (base^0), rod (base^1), flat (base^2), cube (base^>=3). The drawer maps
  *   role -> --fig-<role> CSS variable; the compiler never emits a hex string.
  *
@@ -108,7 +108,7 @@ base_ten_render_json(Spec, Dict) :-
                result: ResultStr,
                canvas: Canvas,
                frames: Frames },
-    % Additive L&N grounding footer (frozen contract §1.4a). A spec whose
+    % Additive L&N grounding footer (the render contract). A spec whose
     % practice has no L&N grounding (the dropped-carry deformation) carries no
     % grounding object -- its absence is the claim that the procedure is hollow.
     ( spec_grounding(Spec, Grounding)
@@ -694,7 +694,7 @@ numlist_down(High, Low, [High|Rest]) :-
     numlist_down(High1, Low, Rest).
 
 %!  place_role(+Exp, -Role) is det.
-%   Base-ten block role for a place exponent (§3 of the contract). Caps at cube
+%   Base-ten block role for a place exponent (the render contract). Caps at cube
 %   for exp >= 3. Sub-unit (negative) exponents have no base-ten block: neutral.
 place_role(0, unit) :- !.
 place_role(1, rod)  :- !.
@@ -767,7 +767,7 @@ make_frame(Step, Verb, Caption, Changed, Columns, Carries, Frame) :-
                scene: Scene }.
 
 %!  scene_dict(+Columns, +Carries, -Scene) is det.
-%   The frozen P4 scene: base-ten-columns, version 2, base, columns, carries.
+%   The P4 scene: base-ten-columns, version 2, base, columns, carries.
 %   The base is read from the first column (every column carries it); a column-
 %   less scene defaults to base 10.
 scene_dict(Columns, Carries, Scene) :-
@@ -803,7 +803,7 @@ spec_kind(Spec, KindStr) :-
     atom_string(Name, KindStr).
 
 %!  spec_grounding(+Spec, -Grounding) is semidet.
-%   The frozen §1.4a grounding footer for a spec, sourced from
+%   The render contract's grounding footer for a spec, sourced from
 %   grounding_to_primitive:primitive_for_practice_witness/4 on the spec's
 %   practice atom. Fails (no footer) when the spec maps to no practice or the
 %   practice carries no L&N grounding -- the deformation case.

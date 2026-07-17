@@ -1,4 +1,10 @@
 #!/bin/sh
+# Adapter round-trip validation: every format the drawer dispatches on
+# produces contract-valid SVG through the shared Node adapter (the same
+# buildSvg call the browser and the offline gallery exporter both use).
+# Node and Python both run in this one process on this one machine, so this
+# check cannot tell us whether a browser's DOM would draw a document the
+# same way; README.md names the manual procedure for that comparison.
 set -eu
 
 repo=$(CDPATH= cd -- "$(dirname -- "$0")/../.." && pwd)
@@ -68,22 +74,23 @@ if set(fixtures) != set(formats):
         f"missing={sorted(set(formats)-set(fixtures))} extra={sorted(set(fixtures)-set(formats))}"
     )
 
-def normalize(svg):
+def well_formed_svg(svg, scene_format):
+    # Confirms the shared adapter round-tripped the worker's document into a
+    # contract-valid SVG: well-formed XML, an <svg> root, and the role/xmlns
+    # attributes frameSvg always sets. This runs Node and Python in the same
+    # process on the same machine; it cannot tell us whether a browser's DOM
+    # would draw the same document the same way (see README).
     root = ET.fromstring(svg)
-    def visit(element):
-        element.attrib = dict(sorted(element.attrib.items()))
-        for child in element:
-            visit(child)
-    visit(root)
-    return ET.tostring(root, encoding="unicode")
+    if not root.tag.endswith("svg"):
+        raise SystemExit(f"adapter round trip did not yield an <svg> root: {scene_format}")
+    if root.attrib.get("role") != "img":
+        raise SystemExit(f"adapter round trip dropped role=img: {scene_format}")
 
 for scene_format in formats:
     document = fixtures[scene_format]
     base = {"repoRoot": str(repo), "document": document, "options": {"ariaLabel": scene_format}}
     node_svg = invoke({**base, "mode": "frame"})
-    browser_svg = invoke({**base, "mode": "browser-frame"})
-    if normalize(node_svg) != normalize(browser_svg):
-        raise SystemExit(f"parity mismatch: {scene_format}")
-    print(f"parity ok: {scene_format}")
-print(f"test_drawer_browser_node_parity: {len(formats)} formats")
+    well_formed_svg(node_svg, scene_format)
+    print(f"adapter round trip ok: {scene_format}")
+print(f"test_drawer_adapter_round_trip: {len(formats)} formats")
 PY

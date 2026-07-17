@@ -18,8 +18,10 @@ A render document is a JSON object with these fields:
 - `tuple`, `grounding`, and `teacher` are optional audience-specific metadata.
 
 An operation that cannot supply drawable output returns an error document with
-an `error` string and an empty `frames` array. Scalar worker operations do not
-use `/api/render`.
+an `error` string and either no frames or an annotation-only frame naming what
+went unsourced — the fallback never fakes a picture, so the document may still
+carry one frame the drawer can draw. Scalar worker operations do not use
+`/api/render`.
 
 ## Frame
 
@@ -38,8 +40,10 @@ The supported formats are `fraction-bars`, `number-line`, `area-model`,
 
 The drawer continues to accept version 1 documents from the shipped
 hybridization, place-value, parametric-deformation, and legacy notation
-compilers. New scene compiler output uses version 2. The HTTP boundary validates
-that both versions remain drawable and rejects scalar or malformed results.
+compilers, plus the fraction-cliff exporter (`export_fraction_cliff.py`,
+which emits version-1 fraction-bars scenes from Python). New scene compiler
+output uses version 2. The HTTP boundary validates that both versions remain
+drawable and rejects scalar or malformed results.
 
 ## Offline regeneration
 
