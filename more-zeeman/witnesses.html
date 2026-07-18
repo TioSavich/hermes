@@ -189,6 +189,45 @@
         query: "fraction", resources: 4, source: "literature_commitment", subject: "addition",
         target: "fraction_addition", term: "fraction(1,2)", variant: "direct"
       };
+      var crosswalkDefaults = {
+        whole_number_claim_witness: {canonical: "zero_as_a_number_status", source: "literature_commitment"},
+        whole_number_addsub_claim_witness: {canonical: "addition_closure_totality", source: "literature_commitment"},
+        multiplication_division_claim_witness: {canonical: "equal_groups_composite_unit", source: "literature_commitment"},
+        place_value_number_claim_witness: {canonical: "base_ten_composite_unit_arithmetic", source: "literature_commitment"},
+        arithmetic_property_witness: {canonical: "associativity_single_operation", source: "literature_commitment"},
+        fraction_claim_witness: {canonical: "fraction_equivalence", source: "literature_commitment"},
+        fraction_extra_claim_witness: {canonical: "fraction_of_quantity_as_part_of_part", source: "literature_commitment"},
+        unit_coordination_witness: {key: "compose(2,3)", detail: "composite(6)", source: "strategy_compose"},
+        ratio_proportion_claim_witness: {canonical: "multiplicative_proportional_scaling", source: "literature_commitment"},
+        decimal_claim_witness: {canonical: "decimal_place_value_alignment_in_column_arithmetic", source: "literature_commitment"},
+        integer_signed_claim_witness: {canonical: "directed_signed_quantity_operations", source: "literature_commitment"},
+        algebra_claim_witness: {canonical: "value_substitution_into_expression", source: "literature_commitment"},
+        calculus_claim_witness: {canonical: "limit_process_evaluation", source: "literature_commitment"},
+        counting_claim_witness: {canonical: "unit_coordination_cardinality", source: "literature_commitment"},
+        magnitude_equivalence_claim_witness: {canonical: "ratio_invariance_under_scaling", source: "literature_commitment"},
+        accommodation_witness: {target: "critique:accommodate/1", source: "arche_trace_critique"},
+        action_cluster_witness: {operation: "addition", kind: "count_on_from_larger", cluster: "additive_strategy_fluency", source: "addition_pairs"},
+        axiom_pack_witness: {pack: "robinson", source: "enabled_predicate"},
+        domain_context_witness: {domain: "n", context: "not_projected_by_source", source: "domain_atom"},
+        executable_practice_witness: {variant: "mml_run_learned_strategy", source: "more_machine_learner"},
+        fsm_engine_witness: {descriptor: "fsm_engine:run_fsm/4", source: "strategy_generic"},
+        godel_primes_witness: {query: "is_prime(2)", source: "automata"},
+        grounded_arith_witness: {operation: "add", inputs: ["recollection([])", "recollection([])"], output: "recollection([])", source: "grounded_arithmetic"},
+        grounding_metaphor_witness: {metaphor: "arithmetic_is_object_collection", anchor: "domains(physical_object_collections,arithmetic)", source: "definition"},
+        material_inference_witness: {inference_id: "commit_p_entitles_q", premises: ["o(p)"], conclusion: "o(q)", source: "defeasible"},
+        metaphor_break_witness: {metaphor: "arithmetic_is_object_collection", inference: "subtraction_of_larger_from_smaller", detail: "No source-domain referent for 'taking a larger collection from a smaller one'.", source: "grounding_catalogue"},
+        misconception_hook_witness: {operation: "addition", outcome: "misconception(count_all_when_count_on_available)", family: "addition", source: "literature_registry"},
+        modal_context_witness: {term: "comp_nec(p)", context: "compressive", source: "meta_interpreter"},
+        mua_coherence_witness: {subject: "objective", input: "The claim is treated as objectively binding.", source: "pml_vocabulary"},
+        normative_crisis_witness: {context: "classroom", goal: "sum", source: "prohibition"},
+        orr_entry_witness: {variant: "eh_run_computation", source: "learner_execution_handler"},
+        practice_vocabulary_witness: {key: "count_on_from_larger", source: "additive_action"},
+        productive_deformation_witness: {operation: "addition", productive: "count_on_from_larger", deformation: "count_all_when_count_on_available", family: "count_all_when_count_on_available", source: "registry"},
+        viability_witness: {resources: 4, cost: 2, source: "embodied_prover"}
+      };
+      var crosswalkBoundaryNotes = {
+        normative_crisis_witness: "This relation has no recorded instance in the startup configuration because the domains axiom pack is disabled."
+      };
 
       var geometryGroups = {
         "material profiles": [
@@ -384,7 +423,8 @@
 
       var families = [
         {id: "crosswalk", root: "crosswalk-groups", route: "/api/witness/crosswalk_claim",
-         groups: objectGroups(crosswalkGroups), defaults: {}, examples: crosswalkExamples,
+         groups: objectGroups(crosswalkGroups), defaults: crosswalkDefaults, examples: crosswalkExamples,
+         boundaryNotes: crosswalkBoundaryNotes,
          // viability_witness compares numeric budgets; its dispatch clause
          // reads both fields without conversion, so the page must send JSON
          // numbers.
@@ -539,6 +579,12 @@
           description.textContent = detail.description;
           form.appendChild(description);
         }
+        if (family.boundaryNotes && family.boundaryNotes[op]) {
+          var boundaryDescription = document.createElement("p");
+          boundaryDescription.className = "description";
+          boundaryDescription.textContent = family.boundaryNotes[op];
+          form.appendChild(boundaryDescription);
+        }
         if (family.id === "grounding" && op === "elaborations") {
           var note = document.createElement("p");
           note.className = "note";
@@ -586,7 +632,14 @@
           }
           var controls = document.createElement("div");
           controls.className = "controls";
-          group.ops.forEach(function (op) { controls.appendChild(control(family, registry[op])); });
+          group.ops.forEach(function (op) {
+            var item = registry[op];
+            var inputs = item.inputs.slice();
+            Object.keys(family.defaults[op] || {}).forEach(function (name) {
+              if (inputs.indexOf(name) === -1) inputs.push(name);
+            });
+            controls.appendChild(control(family, {name: item.name, inputs: inputs}));
+          });
           section.appendChild(controls);
           root.appendChild(section);
         });
