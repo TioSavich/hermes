@@ -448,23 +448,6 @@ dispatch_request(health, Id, _Request, Response) :-
         mode: "persistent"
     }, Response).
 
-dispatch_request(event_score, Id, Request, Response) :-
-    (   get_dict(event, Request, Event)
-    ->  hermes_event_scoring:score_event(Event, Score),
-        json_safe(Score, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, missing_event, "event_score requires event", Response)
-    ).
-
-dispatch_request(batch_event_score, Id, Request, Response) :-
-    (   get_dict(events, Request, Events),
-        is_list(Events)
-    ->  maplist(hermes_event_scoring:score_event, Events, Scores),
-        json_safe(Scores, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, missing_events, "batch_event_score requires events list", Response)
-    ).
-
 dispatch_request(media_alignment, Id, Request, Response) :-
     (   get_dict(segments, Request, Segments),
         get_dict(source, Request, Source),
@@ -584,25 +567,6 @@ dispatch_request(trace_adjudication, Id, Request, Response) :-
             malformed_utterances,
             "trace_adjudication requires an utterances list of unique {id, speaker, text} objects",
             Response)
-    ).
-
-dispatch_request(pair_score, Id, Request, Response) :-
-    (   get_dict(events, Request, Events),
-        is_list(Events)
-    ->  hermes_pair_scoring:score_pair_candidates(Events, Pairs),
-        json_safe(Pairs, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, missing_events, "pair_score requires events list", Response)
-    ).
-
-dispatch_request(pair_graph, Id, Request, Response) :-
-    (   get_dict(events, Request, Events),
-        is_list(Events)
-    ->  hermes_pair_scoring:score_pair_candidates(Events, Pairs),
-        hermes_pair_scoring:pair_graph(Pairs, Graph),
-        json_safe(Graph, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, missing_events, "pair_graph requires events list", Response)
     ).
 
 dispatch_request(pair_candidate_witness, Id, Request, Response) :-
@@ -921,85 +885,10 @@ dispatch_request(query_misconception, Id, Request, Response) :-
     findall(Match, query_and_format(Domain, Description, Source, Match), Matches),
     ok_response(Id, Matches, Response).
 
-dispatch_request(monitoring_chart_export, Id, Request, Response) :-
-    (   get_dict(lesson_code, Request, LessonCode0)
-    ->  atom_string(LessonCode, LessonCode0),
-        (   monitoring_chart_export_dict(LessonCode, Result)
-        ->  ok_response(Id, Result, Response)
-        ;   error_response(Id, unknown_lesson_code,
-                "monitoring_chart_export found no chart for lesson_code", Response)
-        )
-    ;   error_response(Id, missing_lesson_code,
-            "monitoring_chart_export requires lesson_code", Response)
-    ).
-
-dispatch_request(ranked_figures, Id, Request, Response) :-
-    (   get_dict(lesson_code, Request, LessonCode0)
-    ->  atom_string(LessonCode, LessonCode0),
-        (   monitoring_chart_figure_export(LessonCode, Result)
-        ->  ok_response(Id, Result, Response)
-        ;   error_response(Id, unknown_lesson_code,
-                "ranked_figures found no selector candidates for lesson_code", Response)
-        )
-    ;   error_response(Id, missing_lesson_code,
-            "ranked_figures requires lesson_code", Response)
-    ).
-
-dispatch_request(field_context, Id, Request, Response) :-
-    (   get_dict(lesson_code, Request, LessonCode0)
-    ->  atom_string(LessonCode, LessonCode0),
-        (   field_context:field_context_dict(LessonCode, Result)
-        ->  ok_response(Id, Result, Response)
-        ;   error_response(Id, unknown_lesson_code,
-                "field_context found no context for lesson_code", Response)
-        )
-    ;   error_response(Id, missing_lesson_code,
-            "field_context requires lesson_code", Response)
-    ).
-
-dispatch_request(field_connectivity_audit, Id, _Request, Response) :-
-    field_context:field_connectivity_audit_dict(Result),
-    ok_response(Id, Result, Response).
-
 %% render_coverage: the four-lane misconception render-coverage report.
 %% Stateless read over the registry and the render lanes; counts are computed
 %% live in this process, so an installation carrying the local misconception
 %% CSV corpus reports its larger registry through the same op.
-dispatch_request(render_coverage, Id, _Request, Response) :-
-    misconception_render_coverage:render_coverage_report_dict(Result),
-    ok_response(Id, Result, Response).
-
-dispatch_request(expressive_power, Id, Request, Response) :-
-    (   get_dict(lesson, Request, Lesson0)
-    ->  atom_string(Code, Lesson0),
-        (   lesson_expressive_power_for(Code, Report)
-        ->  Resolved = true
-        ;   Report = none, Resolved = false
-        ),
-        expressive_power_export_dict(Report, Dict),
-        atom_string(Code, CodeString),
-        ok_response(Id, _{lesson: CodeString, resolved: Resolved, expressive_power: Dict}, Response)
-    ;   error_response(Id, missing_lesson,
-            "expressive_power requires lesson", Response)
-    ).
-
-dispatch_request(list_strategies, Id, _Request, Response) :-
-    hermes_encyclopedia:strategy_catalog_dict(Dict),
-    ok_response(Id, Dict, Response).
-
-dispatch_request(strategy_trace, Id, Request, Response) :-
-    (   get_dict(strategy, Request, Strategy0)
-    ->  atom_string(Strategy, Strategy0),
-        (   get_dict(input, Request, Input0), is_dict(Input0)
-        ->  Input = Input0
-        ;   Input = _{}
-        ),
-        hermes_encyclopedia:strategy_trace_dict(Strategy, Input, Dict),
-        ok_response(Id, Dict, Response)
-    ;   error_response(Id, missing_strategy,
-            "strategy_trace requires strategy", Response)
-    ).
-
 dispatch_request(misconception_jumps_witness, Id, Request, Response) :-
     (   get_dict(operation, Request, JSONOperation),
         get_dict(deformation, Request, JSONDeformation),
@@ -1317,54 +1206,6 @@ dispatch_request(teacher_layer, Id, Request, Response) :-
 % boundary converts them (mirroring the scene compilers' to_rec boundary).
 
 
-dispatch_request(list_misconceptions, Id, Request, Response) :-
-    request_filter(Request, domain, Filter),
-    hermes_encyclopedia:misconception_catalog_dict(Filter, Dict),
-    ok_response(Id, Dict, Response).
-
-dispatch_request(list_standards, Id, Request, Response) :-
-    request_filter(Request, framework, Filter),
-    hermes_encyclopedia:standards_catalog_dict(Filter, Dict),
-    ok_response(Id, Dict, Response).
-
-dispatch_request(grounding_metaphors, Id, _Request, Response) :-
-    hermes_encyclopedia:grounding_catalog_dict(Dict),
-    ok_response(Id, Dict, Response).
-
-dispatch_request(grounding_for, Id, Request, Response) :-
-    (   get_dict(operation, Request, Operation0)
-    ->  atom_string(Operation, Operation0),
-        hermes_encyclopedia:grounding_for_operation_dict(Operation, Dict),
-        ok_response(Id, Dict, Response)
-    ;   error_response(Id, missing_operation,
-            "grounding_for requires operation", Response)
-    ).
-
-dispatch_request(ground, Id, Request, Response) :-
-    (   get_dict(query, Request, Query)
-    ->  hermes_encyclopedia:ground_query_dict(Query, Dict),
-        ok_response(Id, Dict, Response)
-    ;   error_response(Id, missing_query,
-            "ground requires query", Response)
-    ).
-
-dispatch_request(lit_search, Id, Request, Response) :-
-    (   get_dict(query, Request, Query)
-    ->  hermes_encyclopedia:literature_search_dict(Query, Dict),
-        ok_response(Id, Dict, Response)
-    ;   error_response(Id, missing_query,
-            "lit_search requires query", Response)
-    ).
-
-dispatch_request(pml_score, Id, Request, Response) :-
-    (   get_dict(clauses, Request, Clauses),
-        is_list(Clauses)
-    ->  hermes_encyclopedia:pml_score_dict(Clauses, Dict),
-        ok_response(Id, Dict, Response)
-    ;   error_response(Id, missing_clauses,
-            "pml_score requires clauses (a list of strings)", Response)
-    ).
-
 % validate_reader_axioms: SEAM 2. Compare model-emitted reader_axiom/4 facts
 % against the modal postures the named lesson's text licenses, so the Prolog
 % layer audits a PML reading rather than only re-emitting it.
@@ -1374,15 +1215,6 @@ dispatch_request(pml_score, Id, Request, Response) :-
 % canonical_contract: the legal vocabulary — each canonical query predicate and
 % the scattered legacy functors it subsumes. The LLM-facing side reads this to
 % know which terms are legal; swipl owns the mapping.
-dispatch_request(canonical_contract, Id, _Request, Response) :-
-    findall(_{canonical: CS, module: MS, legacy: LS},
-            ( canonical_all:contract(C, M, L),
-              term_string(C, CS), term_string(M, MS),
-              maplist(term_string, L, LS) ),
-            Entries),
-    length(Entries, N),
-    ok_response(Id, _{vocabulary: Entries, count: N}, Response).
-
 % canonical_check: judge a list of functor-name strings (as the LLM might emit)
 % against the legal vocabulary. Each is classified canonical | legacy | unknown,
 % with the canonical term it maps to. Module prefixes on legacy functors are
@@ -1501,15 +1333,6 @@ dispatch_request(notation_monitoring_chart, Id, Request, Response) :-
 % reading content -> typed canonical commitment terms with witnesses, or an
 % honest abstention. The scoreboard layer calls this per event so scorecards
 % run on terms the deontic rules actually cover.
-
-dispatch_request(brandom_backstop, Id, _Request, Response) :-
-    sequent_brandom_bridge:brandom_backstop(Report),
-    (   sequent_brandom_bridge:brandom_backstop_ok
-    ->  Ok = true
-    ;   Ok = false
-    ),
-    json_safe(_{ok: Ok, checks: Report}, Safe),
-    ok_response(Id, Safe, Response).
 
 % The Brandomian check for one commitment set: the bridge's union incoherence
 % (declared hyperedges first, classical neg-pair floor second), the canonical
@@ -1665,48 +1488,9 @@ dispatch_request(learner_reset, Id, _Request, Response) :-
 
 % On-demand proof entitlement for an arithmetic fact via the carving surface.
 % operation is add/sub/mult/div/frac; x, y, z are the fact arguments.
-dispatch_request(carving_strategy_proof, Id, Request, Response) :-
-    (   get_dict(x, Request, _), get_dict(y, Request, _), get_dict(z, Request, _)
-    ->  request_op_atom(Request, operation, add, Op),
-        request_integer(Request, x, 0, X),
-        request_integer(Request, y, 0, Y),
-        request_integer(Request, z, 0, Z),
-        findall(P,
-                carving_query:carving_strategy_proof(Op, X, Y, Z, P),
-                Proofs),
-        (   Proofs == []
-        ->  error_response(Id, no_carving_proof,
-                "carving_strategy_proof found no productive proof for that fact",
-                Response)
-        ;   json_safe(_{operation: Op, x: X, y: Y, z: Z, proofs: Proofs}, Safe),
-            ok_response(Id, Safe, Response)
-        )
-    ;   error_response(Id, missing_fact_args,
-            "carving_strategy_proof requires operation, x, y, and z", Response)
-    ).
-
 % Bounded carving summary for one operation: carved-fact count and residue.
-dispatch_request(carving_operation_summary, Id, Request, Response) :-
-    request_op_atom(Request, operation, add, Op),
-    (   carving_query:carving_operation_summary(Op, Summary)
-    ->  json_safe(Summary, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_carving_summary,
-            "carving_operation_summary found no bounded experiment for that operation",
-            Response)
-    ).
-
 % Benny's deformed rules side by side with their correct coordinated
 % counterparts on shared inputs. Public encyclopedia surface; no student data.
-dispatch_request(benny_demo, Id, _Request, Response) :-
-    (   misconceptions_benny_demo:benny_demo_dict(Dict0)
-    ->  json_safe(Dict0, Dict),
-        ok_response(Id, Dict, Response)
-    ;   error_response(Id, no_benny_demo,
-            "benny_demo produced no comparison data",
-            Response)
-    ).
-
 % Machine-readable inventory of dispatch operations and shipped Prolog modules.
 dispatch_request(capability_atlas, Id, _Request, Response) :-
     findall(Row, capability_atlas_row(Row), Rows),
@@ -1930,6 +1714,49 @@ misconception_pml_map_dispatch_dict(Value, Dict) :-
         provenance: "generated from CONNECTS-TO annotations in the misconception registry"
     }.
 
+batch_event_score_dispatch_dict(Events, Scores) :-
+    maplist(hermes_event_scoring:score_event, Events, Scores).
+
+pair_graph_dispatch_dict(Events, Graph) :-
+    hermes_pair_scoring:score_pair_candidates(Events, Pairs),
+    hermes_pair_scoring:pair_graph(Pairs, Graph).
+
+expressive_power_dispatch_dict(Code, Dict) :-
+    (   lesson_expressive_power_for(Code, Report)
+    ->  Resolved = true
+    ;   Report = none,
+        Resolved = false
+    ),
+    expressive_power_export_dict(Report, Power),
+    atom_string(Code, CodeString),
+    Dict = _{lesson: CodeString, resolved: Resolved, expressive_power: Power}.
+
+canonical_contract_dispatch_dict(Dict) :-
+    findall(_{canonical: CS, module: MS, legacy: LS},
+            ( canonical_all:contract(C, M, L),
+              term_string(C, CS),
+              term_string(M, MS),
+              maplist(term_string, L, LS)
+            ),
+            Entries),
+    length(Entries, N),
+    Dict = _{vocabulary: Entries, count: N}.
+
+brandom_backstop_dispatch_dict(Dict) :-
+    sequent_brandom_bridge:brandom_backstop(Report),
+    (   sequent_brandom_bridge:brandom_backstop_ok
+    ->  Ok = true
+    ;   Ok = false
+    ),
+    Dict = _{ok: Ok, checks: Report}.
+
+carving_strategy_proof_dispatch_dict(Op, X, Y, Z, Dict) :-
+    findall(P,
+            carving_query:carving_strategy_proof(Op, X, Y, Z, P),
+            Proofs),
+    Proofs \== [],
+    Dict = _{operation: Op, x: X, y: Y, z: Z, proofs: Proofs}.
+
 % A response hook preserves a legacy response shape when the generic call
 % frame itself would be observable. The geometry coverage witness contains
 % open Prolog variables whose historical term_string/2 names are part of the
@@ -1950,8 +1777,9 @@ dispatch_zero_input_geometry_coverage(Id, _Request, Response) :-
             Response)
     ).
 
-% Authored table dispatch. Bespoke clauses remain earlier in clause order while
-% families migrate; spec-backed operations commit here before the catch-all.
+% Authored table dispatch. The 26 render operations and 29 irregular operations
+% remain bespoke by design; spec-backed operations commit here before the
+% catch-all.
 dispatch_request(Op, Id, Request, Response) :-
     dispatch_spec(Op, Inputs, Call, Result),
     !,
@@ -1978,6 +1806,7 @@ validate_dispatch_spec :-
     ).
 
 dispatch_converter_name(default(Converter, _Default), Converter) :- !.
+dispatch_converter_name(fallback(Converter, _Default), Converter) :- !.
 dispatch_converter_name(Converter, Converter).
 
 known_dispatch_converter(term).
@@ -1987,6 +1816,8 @@ known_dispatch_converter(string).
 known_dispatch_converter(dict).
 known_dispatch_converter(json).
 known_dispatch_converter(json_list).
+known_dispatch_converter(filter).
+known_dispatch_converter(op_atom).
 known_dispatch_converter(nonempty_text).
 known_dispatch_converter(optional_code).
 known_dispatch_converter(practice).
@@ -2008,6 +1839,14 @@ read_dispatch_inputs([Key-default(Converter, Default)|Specs], Request,
     ;   dispatch_default_input(Converter, Default, Value)
     ),
     read_dispatch_inputs(Specs, Request, Bound).
+read_dispatch_inputs([Key-fallback(Converter, Default)|Specs], Request,
+        [Key-Value|Bound]) :-
+    get_dict(Key, Request, JSONValue),
+    (   convert_dispatch_input(Converter, JSONValue, Value)
+    ->  true
+    ;   dispatch_default_input(Converter, Default, Value)
+    ),
+    read_dispatch_inputs(Specs, Request, Bound).
 read_dispatch_inputs([Key-Converter|Specs], Request, [Key-Value|Bound]) :-
     get_dict(Key, Request, JSONValue),
     convert_dispatch_input(Converter, JSONValue, Value),
@@ -2025,6 +1864,15 @@ convert_dispatch_input(dict, Value, Value).
 convert_dispatch_input(json, Value, Value).
 convert_dispatch_input(json_list, Value, Value) :-
     is_list(Value).
+convert_dispatch_input(filter, Value, Filter) :-
+    Value \== "",
+    Value \== null,
+    atom_string(Atom, Value),
+    downcase_atom(Atom, Filter).
+convert_dispatch_input(op_atom, Value, Atom) :-
+    Value \== "",
+    string_or_atom_to_atom(Value, Atom0),
+    downcase_atom(Atom0, Atom).
 convert_dispatch_input(nonempty_text, Value, Text) :-
     Value \== null,
     text_value(Value, Text),
@@ -2195,10 +2043,30 @@ treat_dispatch_result(raw, _Op, Id, success(Outputs), Response) :-
 treat_dispatch_result(raw(_Malformed), _Op, Id, success(Outputs), Response) :-
     memberchk(dict-Dict, Outputs),
     ok_response(Id, Dict, Response).
+treat_dispatch_result(raw(_NoResult, _Malformed), _Op, Id,
+        success(Outputs), Response) :-
+    memberchk(dict-Dict, Outputs),
+    ok_response(Id, Dict, Response).
+treat_dispatch_result(raw(NoResult, _Malformed), Op, Id, failure, Response) :-
+    dispatch_message(Op, no_result, Message),
+    error_response(Id, NoResult, Message, Response).
+treat_dispatch_result(raw_safe, _Op, Id, success(Outputs), Response) :-
+    memberchk(dict-Dict, Outputs),
+    json_safe(Dict, Safe),
+    ok_response(Id, Safe, Response).
 treat_dispatch_result(raw_safe(_Malformed), _Op, Id, success(Outputs), Response) :-
     memberchk(dict-Dict, Outputs),
     json_safe(Dict, Safe),
     ok_response(Id, Safe, Response).
+treat_dispatch_result(raw_safe(_NoResult, _Malformed), _Op, Id,
+        success(Outputs), Response) :-
+    memberchk(dict-Dict, Outputs),
+    json_safe(Dict, Safe),
+    ok_response(Id, Safe, Response).
+treat_dispatch_result(raw_safe(NoResult, _Malformed), Op, Id,
+        failure, Response) :-
+    dispatch_message(Op, no_result, Message),
+    error_response(Id, NoResult, Message, Response).
 
 dispatch_wrap_fields([], _Outputs, _{}).
 dispatch_wrap_fields([Label-Slot|Fields], Outputs, Dict) :-
@@ -2226,6 +2094,8 @@ dispatch_result_malformed_code(witness_errorless(Code), Code).
 dispatch_result_malformed_code(witness_wrap_errorless(_, Code), Code).
 dispatch_result_malformed_code(raw(Code), Code).
 dispatch_result_malformed_code(raw_safe(Code), Code).
+dispatch_result_malformed_code(raw(_, Code), Code).
+dispatch_result_malformed_code(raw_safe(_, Code), Code).
 
 dispatch_input_failure_response(witness_input_errorless(_), _Op, _Id,
         _Response) :-

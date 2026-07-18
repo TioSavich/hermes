@@ -598,6 +598,132 @@ dispatch_spec(misconception_pml_map,
          [misconception, out(dict)]),
     raw).
 
+dispatch_spec(event_score,
+    [event-json],
+    call(hermes_event_scoring:score_event, [event, out(dict)]),
+    raw_safe(missing_event)).
+dispatch_spec(batch_event_score,
+    [events-json_list],
+    call(user:batch_event_score_dispatch_dict, [events, out(dict)]),
+    raw_safe(missing_events)).
+dispatch_spec(pair_score,
+    [events-json_list],
+    call(hermes_pair_scoring:score_pair_candidates, [events, out(dict)]),
+    raw_safe(missing_events)).
+dispatch_spec(pair_graph,
+    [events-json_list],
+    call(user:pair_graph_dispatch_dict, [events, out(dict)]),
+    raw_safe(missing_events)).
+dispatch_spec(monitoring_chart_export,
+    [lesson_code-code],
+    call(user:monitoring_chart_export_dict, [lesson_code, out(dict)]),
+    raw(unknown_lesson_code, missing_lesson_code)).
+dispatch_spec(ranked_figures,
+    [lesson_code-code],
+    call(user:monitoring_chart_figure_export, [lesson_code, out(dict)]),
+    raw(unknown_lesson_code, missing_lesson_code)).
+dispatch_spec(field_context,
+    [lesson_code-code],
+    call(field_context:field_context_dict, [lesson_code, out(dict)]),
+    raw(unknown_lesson_code, missing_lesson_code)).
+dispatch_spec(field_connectivity_audit,
+    [],
+    call(field_context:field_connectivity_audit_dict, [out(dict)]),
+    raw).
+dispatch_spec(render_coverage,
+    [],
+    call(misconception_render_coverage:render_coverage_report_dict,
+         [out(dict)]),
+    raw).
+dispatch_spec(expressive_power,
+    [lesson-code],
+    call(user:expressive_power_dispatch_dict, [lesson, out(dict)]),
+    raw(missing_lesson)).
+dispatch_spec(list_strategies,
+    [],
+    call(hermes_encyclopedia:strategy_catalog_dict, [out(dict)]),
+    raw).
+dispatch_spec(strategy_trace,
+    [strategy-code, input-default(dict, _{})],
+    call(hermes_encyclopedia:strategy_trace_dict,
+         [strategy, input, out(dict)]),
+    raw(missing_strategy)).
+dispatch_spec(list_misconceptions,
+    [domain-default(filter, all)],
+    call(hermes_encyclopedia:misconception_catalog_dict,
+         [domain, out(dict)]),
+    raw).
+dispatch_spec(list_standards,
+    [framework-default(filter, all)],
+    call(hermes_encyclopedia:standards_catalog_dict,
+         [framework, out(dict)]),
+    raw).
+dispatch_spec(grounding_metaphors,
+    [],
+    call(hermes_encyclopedia:grounding_catalog_dict, [out(dict)]),
+    raw).
+dispatch_spec(grounding_for,
+    [operation-code],
+    call(hermes_encyclopedia:grounding_for_operation_dict,
+         [operation, out(dict)]),
+    raw(missing_operation)).
+dispatch_spec(ground,
+    [query-json],
+    call(hermes_encyclopedia:ground_query_dict, [query, out(dict)]),
+    raw(missing_query)).
+dispatch_spec(lit_search,
+    [query-json],
+    call(hermes_encyclopedia:literature_search_dict, [query, out(dict)]),
+    raw(missing_query)).
+dispatch_spec(pml_score,
+    [clauses-json_list],
+    call(hermes_encyclopedia:pml_score_dict, [clauses, out(dict)]),
+    raw(missing_clauses)).
+dispatch_spec(canonical_contract,
+    [],
+    call(user:canonical_contract_dispatch_dict, [out(dict)]),
+    raw).
+dispatch_spec(brandom_backstop,
+    [],
+    call(user:brandom_backstop_dispatch_dict, [out(dict)]),
+    raw_safe).
+dispatch_spec(carving_strategy_proof,
+    [operation-default(op_atom, add),
+     x-fallback(int, 0), y-fallback(int, 0), z-fallback(int, 0)],
+    call(user:carving_strategy_proof_dispatch_dict,
+         [operation, x, y, z, out(dict)]),
+    raw_safe(no_carving_proof, missing_fact_args)).
+dispatch_spec(carving_operation_summary,
+    [operation-default(op_atom, add)],
+    call(carving_query:carving_operation_summary,
+         [operation, out(dict)]),
+    raw_safe(no_carving_summary, _)).
+dispatch_spec(benny_demo,
+    [],
+    call(misconceptions_benny_demo:benny_demo_dict, [out(dict)]),
+    raw_safe(no_benny_demo, _)).
+
+dispatch_message(event_score, malformed, "event_score requires event").
+dispatch_message(batch_event_score, malformed, "batch_event_score requires events list").
+dispatch_message(pair_score, malformed, "pair_score requires events list").
+dispatch_message(pair_graph, malformed, "pair_graph requires events list").
+dispatch_message(monitoring_chart_export, malformed, "monitoring_chart_export requires lesson_code").
+dispatch_message(monitoring_chart_export, no_result, "monitoring_chart_export found no chart for lesson_code").
+dispatch_message(ranked_figures, malformed, "ranked_figures requires lesson_code").
+dispatch_message(ranked_figures, no_result, "ranked_figures found no selector candidates for lesson_code").
+dispatch_message(field_context, malformed, "field_context requires lesson_code").
+dispatch_message(field_context, no_result, "field_context found no context for lesson_code").
+dispatch_message(expressive_power, malformed, "expressive_power requires lesson").
+dispatch_message(strategy_trace, malformed, "strategy_trace requires strategy").
+dispatch_message(grounding_for, malformed, "grounding_for requires operation").
+dispatch_message(ground, malformed, "ground requires query").
+dispatch_message(lit_search, malformed, "lit_search requires query").
+dispatch_message(pml_score, malformed, "pml_score requires clauses (a list of strings)").
+dispatch_message(carving_strategy_proof, malformed, "carving_strategy_proof requires operation, x, y, and z").
+dispatch_message(carving_strategy_proof, no_result, "carving_strategy_proof found no productive proof for that fact").
+dispatch_message(carving_operation_summary, no_result, "carving_operation_summary found no bounded experiment for that operation").
+dispatch_message(benny_demo, no_result, "benny_demo produced no comparison data").
+
 dispatch_message(axiom_pack_witness, no_witness, "axiom_pack_witness found no enabled-pack recorded example").
 dispatch_message(axiom_pack_witness, malformed, "axiom_pack_witness requires pack and source").
 dispatch_message(viability_witness, no_witness, "viability_witness found no sufficient resource recorded example").
