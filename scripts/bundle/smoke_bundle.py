@@ -188,11 +188,7 @@ def page_url_for(rel: str) -> str | None:
 def static_audit(tree: Path, report: Report) -> None:
     required = (
         "more-zeeman/atlas.html",
-        "more-zeeman/crosswalk.html",
-        "more-zeeman/geometry.html",
-        "more-zeeman/standards-witnesses.html",
-        "more-zeeman/pml-witnesses.html",
-        "more-zeeman/grounding.html",
+        "more-zeeman/witnesses.html",
         "hermes/capability_registry.pl",
         "scripts/extract_capability_registry.py",
     )
@@ -206,9 +202,12 @@ def static_audit(tree: Path, report: Report) -> None:
         "more-zeeman/atlas.html": (
             "lazy_reachable", "Loaded on demand by", "Described on:",
         ),
-        "more-zeeman/geometry.html": (
+        "more-zeeman/witnesses.html": (
             "strategies/render/rigid_motion_scene.pl", "geometry/geometry_bridge.pl",
-            "rigid_motion_render",
+            "rigid_motion_render", "crosswalk/merge_evidence.pl",
+            "/api/witness/pml", "semantic_material_witness", "validate_reader_axioms",
+            "pml/mua_conjectures.pl", "misconceptions/pml_wire.pl",
+            "/api/witness/grounding", "image_schema", "target_expressive_power_witness",
         ),
         "more-zeeman/bridge.html": (
             "learner/activity_contract.pl", "learner/reorg_domains/fraction.pl",
@@ -216,11 +215,6 @@ def static_audit(tree: Path, report: Report) -> None:
         ),
         "more-zeeman/coordination.html": (
             "strategies/math/unit_coordination_viz.pl",
-        ),
-        "more-zeeman/crosswalk.html": ("crosswalk/merge_evidence.pl",),
-        "more-zeeman/pml-witnesses.html": (
-            "/api/witness/pml", "semantic_material_witness", "validate_reader_axioms",
-            "pml/mua_conjectures.pl", "misconceptions/pml_wire.pl",
         ),
         "more-zeeman/index.html": (
             "ZEEMAN_BIFURCATION_VERDICT agreement", "more-zeeman/prolog/zeeman_machine.pl",
@@ -237,9 +231,6 @@ def static_audit(tree: Path, report: Report) -> None:
         ),
         "hermes/app/web/no.html": (
             "misconceptions/literature_canonical_mappings.pl",
-        ),
-        "more-zeeman/grounding.html": (
-            "/api/witness/grounding", "image_schema", "target_expressive_power_witness",
         ),
     }
     for rel, markers in page_assertions.items():

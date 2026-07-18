@@ -64,11 +64,7 @@
       ["console",     "Console",          app("console.html")],
       ["monitoring",  "Monitoring chart", mz("monitoring_chart.html")],
       ["atlas",       "Capability Atlas", mz("atlas.html")],
-      ["crosswalk",   "Crosswalk claims", mz("crosswalk.html")],
-      ["geometry",    "Geometry witnesses", mz("geometry.html")],
-      ["standards-witnesses", "Standards witnesses", mz("standards-witnesses.html")],
-      ["pml-witnesses", "PML witnesses", mz("pml-witnesses.html")],
-      ["grounding-witnesses", "Grounding witnesses", mz("grounding.html")],
+      ["witnesses",   "Witnesses",        mz("witnesses.html")],
     ]},
     { title: "Tools", kind: "tools", items: [
       ["visualizations", "All visualizers", mz("visualizations.html")],
@@ -119,9 +115,7 @@
     var byFile = {
       "discussions.html": "discussions", "console.html": "console",
       "monitoring_chart.html": "monitoring", "visualizations.html": "visualizations",
-      "atlas.html": "atlas", "crosswalk.html": "crosswalk", "geometry.html": "geometry",
-      "standards-witnesses.html": "standards-witnesses",
-      "pml-witnesses.html": "pml-witnesses", "grounding.html": "grounding-witnesses",
+      "atlas.html": "atlas", "witnesses.html": "witnesses",
       "gallery.html": "gallery", "audience-index.html": "audience",
       "landing.html": "landing", "index.html": "snap", "counting.html": "counting",
       "crisis.html": "crisis", "strategies.html": "strategies",
