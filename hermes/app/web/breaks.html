@@ -214,20 +214,19 @@ neg(p)</textarea>
         <code>axiom_toggle</code> operation loads it on demand because its full loader would create
         import collisions during worker startup.
       </p></div>
-      <div class="tool"><h4>Open axiom-pack questions</h4><p>
-        <code>formalization/axioms_geometry.pl</code> is the finite quadrilateral incompatibility pack.
-        <code>formalization/axioms_number_theory.pl</code> is the Euclid self-defeat pack.
-        <code>formalization/axioms_robinson.pl</code> is the Robinson Q and grounded-arithmetic pack.
-        All three are already textually included by <code>arche-trace/sequent_engine.pl</code>,
-        although the capability registry cannot credit an included source as a separately loaded
-        module. Whether they should remain include-active or become separately managed packs is an
-        open question for the author; the slice's one-shot reload comparisons provide evidence
-        without deciding it.
+      <div class="tool"><h4>Contextual axiom packs</h4><p>
+        These packs are in force where relevant and can be switched off where they are not.
+        <code>pack(geometry)</code> carries <code>formalization/axioms_geometry.pl</code>'s finite
+        quadrilateral incompatibilities; <code>pack(number_theory)</code> carries
+        <code>formalization/axioms_number_theory.pl</code>'s Euclid self-defeat argument; and
+        <code>pack(robinson)</code> carries <code>formalization/axioms_robinson.pl</code>'s Robinson Q
+        and grounded arithmetic.
       </p></div>
       <div class="tool"><h4>Registry-scale incompatibility</h4><p>
-        <code>arche-trace/registry_incompatibility_adapter.pl</code> can reversibly add registry pairs
-        to the Brandomian hyperedge relation. Exposing that state change as a console toggle, or
-        retaining it as a test-only lever, is an open question for the author.</p></div>
+        <code>pack(registry_incompatibility)</code> controls the reversible
+        <code>arche-trace/registry_incompatibility_adapter.pl</code>: loading 342 recorded
+        misconception incompatibility pairs enriches the relation and withdraws some entailments
+        the sparse seeds licensed.</p></div>
     </div>
   </div>
 

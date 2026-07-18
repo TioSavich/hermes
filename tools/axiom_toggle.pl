@@ -13,10 +13,12 @@
  * representation (list_toggles/1 shows all of them):
  *
  *   - `pack(Pack)` — one of the five sequent-engine axiom packs
- *     (robinson, geometry, number_theory, eml, domains). A pack is a family
- *     of `proves_impl/2` / `is_incoherent/1` clauses include-compiled into
+ *     (robinson, geometry, number_theory, eml, domains), or the opt-in
+ *     registry_incompatibility adapter. A sequent pack is a family of
+ *     `proves_impl/2` / `is_incoherent/1` clauses include-compiled into
  *     `arche-trace/sequent_engine.pl`, each clause gated by the dynamic fact
- *     `sequent_engine:axiom_pack_enabled/1`.
+ *     `sequent_engine:axiom_pack_enabled/1`. The adapter pack delegates to
+ *     its documented reversible load/unload interface.
  *   - `eml_transition(From, To)` — one row of the finite EML modal
  *     transition table compiled into the sequent engine from
  *     `pml/axioms_eml.pl` (for example the bad-infinite pair
@@ -111,6 +113,7 @@
 :- use_module(library(prolog_wrap), [wrap_predicate/4, unwrap_predicate/2]).
 :- use_module(library(lists), [member/2]).
 :- use_module(library(apply), [maplist/2, include/3]).
+:- use_module(arche_trace(registry_incompatibility_adapter), []).
 
 %!  disabled_axiom(?Id) is nondet.
 %
@@ -145,13 +148,17 @@ toggle_family(dialectical_transition, semantic_axioms, dialectical_transition/2)
 %   via `clause/2` (the same access path the engine's forward chainer uses;
 %   wrapping does not hide clauses from `clause/2`).
 known_toggle(pack(Pack)) :-
-    sequent_engine:default_axiom_pack(Pack).
+    known_pack(Pack).
 known_toggle(Id) :-
     toggle_family(Family, Module, Name/Arity),
     functor(Head, Name, Arity),
     clause(Module:Head, true),
     Head =.. [Name|Args],
     Id =.. [Family|Args].
+
+known_pack(Pack) :-
+    sequent_engine:default_axiom_pack(Pack).
+known_pack(registry_incompatibility).
 
 % =================================================================
 % Public surface
@@ -165,7 +172,7 @@ known_toggle(Id) :-
 %   live gate, so it stays honest even when other code flips packs directly.
 axiom_enabled(pack(Pack)) :-
     known_toggle(pack(Pack)),
-    sequent_engine:enabled_axiom_pack(Pack).
+    pack_enabled(Pack).
 axiom_enabled(Id) :-
     known_toggle(Id),
     Id \= pack(_),
@@ -256,7 +263,7 @@ resolve_toggles(Id, Toggles) :-
 
 disable_one(pack(Pack)) :-
     !,
-    sequent_engine:disable_axiom_pack(Pack).
+    disable_pack(Pack).
 disable_one(Id) :-
     (   disabled_axiom(Id)
     ->  true
@@ -267,11 +274,30 @@ disable_one(Id) :-
 
 enable_one(pack(Pack)) :-
     !,
-    sequent_engine:enable_axiom_pack(Pack).
+    enable_pack(Pack).
 enable_one(Id) :-
     retractall(disabled_axiom(Id)),
     functor(Id, Family, _),
     maybe_remove_guard(Family).
+
+pack_enabled(registry_incompatibility) :-
+    !,
+    registry_incompatibility_adapter:registry_hyperedge_count(Count),
+    Count > 0.
+pack_enabled(Pack) :-
+    sequent_engine:enabled_axiom_pack(Pack).
+
+disable_pack(registry_incompatibility) :-
+    !,
+    registry_incompatibility_adapter:unload_registry_hyperedges.
+disable_pack(Pack) :-
+    sequent_engine:disable_axiom_pack(Pack).
+
+enable_pack(registry_incompatibility) :-
+    !,
+    registry_incompatibility_adapter:load_registry_hyperedges.
+enable_pack(Pack) :-
+    sequent_engine:enable_axiom_pack(Pack).
 
 % =================================================================
 % Guard lifecycle (lazy install, eager removal)

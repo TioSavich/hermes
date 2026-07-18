@@ -873,7 +873,9 @@ dispatch_request(robinson_axiom_witness, Id, Request, Response) :-
         get_dict(claim, Request, JSONClaim)
     ->  json_to_term(JSONAxiom, Axiom),
         json_to_term(JSONClaim, Claim),
-        (   sequent_engine:robinson_axiom_witness(Axiom, Claim, Witness)
+        (   \+ sequent_engine:enabled_axiom_pack(robinson)
+        ->  axiom_pack_disabled_response(robinson, Id, Response)
+        ;   sequent_engine:robinson_axiom_witness(Axiom, Claim, Witness)
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_robinson_axiom_witness,
@@ -934,7 +936,9 @@ dispatch_request(number_theory_self_defeat_witness, Id, Request, Response) :-
     (   get_dict(list, Request, JSONList),
         is_list(JSONList)
     ->  json_to_term(JSONList, List),
-        (   sequent_engine:number_theory_self_defeat_witness(List, Witness)
+        (   \+ sequent_engine:enabled_axiom_pack(number_theory)
+        ->  axiom_pack_disabled_response(number_theory, Id, Response)
+        ;   sequent_engine:number_theory_self_defeat_witness(List, Witness)
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_number_theory_self_defeat_witness,
@@ -2128,7 +2132,9 @@ dispatch_request(geometry_entailment_witness, Id, Request, Response) :-
         get_dict(entailed, Request, JSONEntailed)
     ->  json_to_term(JSONEntailer, Entailer),
         json_to_term(JSONEntailed, Entailed),
-        (   sequent_engine:entails_via_incompatibility_witness(
+        (   \+ sequent_engine:enabled_axiom_pack(geometry)
+        ->  axiom_pack_disabled_response(geometry, Id, Response)
+        ;   sequent_engine:entails_via_incompatibility_witness(
                 Entailer,
                 Entailed,
                 Witness
@@ -5858,3 +5864,9 @@ matched_toggle_dicts(Pattern, Dicts) :-
 toggle_export_dict(toggle(ToggleId, Status), _{axiom: IdText, status: StatusText}) :-
     term_to_text(ToggleId, IdText),
     term_to_text(Status, StatusText).
+
+axiom_pack_disabled_response(Pack, Id, Response) :-
+    format(string(Message),
+           "axiom pack ~w is switched off; enable pack(~w) to query this witness",
+           [Pack, Pack]),
+    error_response(Id, axiom_pack_disabled, Message, Response).

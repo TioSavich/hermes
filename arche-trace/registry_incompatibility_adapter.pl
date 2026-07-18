@@ -2,7 +2,7 @@
  *
  * The Brandomian engine (`arche-trace/brandomian_incompatibility.pl`) ships
  * with four seed hyperedges; the misconception registry's
- * incompatibility_with/2 yields 342 distinct non-degenerate pairs (1,111
+ * incompatibility_with/2 yields 342 distinct non-degenerate core pairs (1,111
  * raw solutions before symmetry and self-pair reduction). This adapter
  * loads those pairs into `incompatible_set/1` as 2-element hyperedges, so
  * the formally vetted relation (persistence, vacuous-entailment guard,
@@ -19,9 +19,11 @@
  * `sequent_brandom_bridge:brandom_backstop_ok/0` afterwards; the test suite
  * pins that the backstop passes at full registry scale.
  *
- * Only pairs the adapter itself asserted are recorded in registry_hyperedge/1
- * and removed by unload; seed hyperedges and other contributors' sets are
- * left alone.
+ * The geometry registry extends incompatibility_with/2 when its concept files
+ * are loaded. Those geometry pairs are outside this adapter's recorded core
+ * set, so loading order does not change the 342-pair contract. Only pairs the
+ * adapter itself asserted are recorded in registry_hyperedge/1 and removed by
+ * unload; seed hyperedges and other contributors' sets are left alone.
  */
 :- module(registry_incompatibility_adapter,
           [ load_registry_hyperedges/0,
@@ -56,13 +58,20 @@
 %   would poison the relation by persistence.
 load_registry_hyperedges :-
     findall(Sorted,
-            ( incompatibility_with(A, B),
+            ( recorded_registry_pair(A, B),
               sort([A, B], Sorted),
               Sorted = [_, _|_]
             ),
             Sets0),
     sort(Sets0, Sets),
     forall(member(Set, Sets), load_one_hyperedge(Set)).
+
+recorded_registry_pair(A, B) :-
+    incompatibility_with(A, B),
+    \+ geometry_registry_pair(A, B).
+
+geometry_registry_pair(geometry_concept(_), geometry_misconception(_)).
+geometry_registry_pair(geometry_misconception(_), geometry_concept(_)).
 
 load_one_hyperedge(Set) :-
     (   registry_hyperedge(Set)

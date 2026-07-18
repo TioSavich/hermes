@@ -201,7 +201,7 @@ capability('visualize_coordination', 'unit_coordination_viz', 'learner', [], rou
 capability('whole_number_addsub_claim_witness', 'cw_whole_number_addsub_claim', 'unclassified', ['canonical', 'source'], routed_paged).
 capability('whole_number_claim_witness', 'cw_whole_number_claim', 'unclassified', ['canonical', 'source'], routed_paged).
 capability('arche-trace/differance_juncture.pl', 'differance_juncture', 'arche_trace', [], orphan_module).
-capability('arche-trace/registry_incompatibility_adapter.pl', 'registry_incompatibility_adapter', 'arche_trace', [], orphan_module).
+capability('arche-trace/registry_incompatibility_adapter.pl', 'registry_incompatibility_adapter', 'arche_trace', [], lazy_reachable).
 capability('crosswalk/merge_evidence.pl', 'merge_evidence', 'crosswalk', [], orphan_module).
 capability('formalization/axioms_geometry.pl', 'axioms_geometry', 'synthesis', [], orphan_module).
 capability('formalization/axioms_number_theory.pl', 'axioms_number_theory', 'synthesis', [], orphan_module).
@@ -1004,6 +1004,7 @@ capability_page('strategies/math/unit_coordination_viz.pl', '/more-zeeman/coordi
 capability_page('strategies/math_benchmark.pl', '/more-zeeman/bridge.html').
 capability_page('tools/axiom_toggle.pl', '/hermes/app/web/breaks.html').
 
+capability_lazy_via('arche-trace/registry_incompatibility_adapter.pl', 'axiom_toggle').
 capability_lazy_via('learner/arithmetic_machine.pl', 'compute').
 capability_lazy_via('learner/arithmetic_machine.pl', 'learner_reset').
 capability_lazy_via('learner/fraction_band_ladder.pl', 'reorganize').

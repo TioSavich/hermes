@@ -223,7 +223,7 @@ def static_audit(tree: Path, report: Report) -> None:
             "pml/mua_conjectures.pl", "misconceptions/pml_wire.pl",
         ),
         "more-zeeman/index.html": (
-            "ZEEMAN_BIFURCATION_VERDICT divergence", "more-zeeman/prolog/zeeman_machine.pl",
+            "ZEEMAN_BIFURCATION_VERDICT agreement", "more-zeeman/prolog/zeeman_machine.pl",
         ),
         "more-zeeman/monitoring_chart.html": (
             "lessons/im/im_glossary.pl", "lessons/im_harness.pl",
@@ -595,6 +595,75 @@ def live_probes(tree: Path, python: str, swipl: str | None,
             )
         else:
             report.add("PASS", "POST /api/base set 12 then reset 10")
+        expected_pack_states = {
+            "pack(robinson)": "enabled",
+            "pack(number_theory)": "enabled",
+            "pack(geometry)": "enabled",
+            "pack(registry_incompatibility)": "disabled",
+        }
+        try:
+            toggle_status, toggle_body = call(
+                base, "/api/axiom_toggle", {"action": "list"}, timeout=120.0
+            )
+            toggle_rows = toggle_body.get("result", {}).get("toggles", []) \
+                if isinstance(toggle_body, dict) else []
+            pack_states = {
+                row.get("axiom"): row.get("status")
+                for row in toggle_rows
+                if isinstance(row, dict) and row.get("axiom") in expected_pack_states
+            }
+        except Exception as exc:
+            report.add("FAIL", "POST /api/axiom_toggle lists managed packs", str(exc))
+        else:
+            if toggle_status != 200 or pack_states != expected_pack_states:
+                report.add(
+                    "FAIL", "POST /api/axiom_toggle lists managed packs",
+                    f"HTTP {toggle_status}, states={pack_states}",
+                )
+            else:
+                report.add("PASS", "POST /api/axiom_toggle lists managed packs")
+        toggle_disable_status = None
+        toggle_disable_body = None
+        toggle_enable_status = None
+        toggle_enable_body = None
+        toggle_round_trip_error = None
+        try:
+            toggle_disable_status, toggle_disable_body = call(
+                base, "/api/axiom_toggle",
+                {"action": "disable", "axiom": "pack(robinson)"},
+                timeout=120.0,
+            )
+        except Exception as exc:
+            toggle_round_trip_error = f"disable failed: {exc}"
+        finally:
+            try:
+                toggle_enable_status, toggle_enable_body = call(
+                    base, "/api/axiom_toggle",
+                    {"action": "enable", "axiom": "pack(robinson)"},
+                    timeout=120.0,
+                )
+            except Exception as exc:
+                toggle_round_trip_error = (
+                    f"{toggle_round_trip_error + '; ' if toggle_round_trip_error else ''}"
+                    f"restore failed: {exc}"
+                )
+        disabled_rows = toggle_disable_body.get("result", {}).get("toggles", []) \
+            if isinstance(toggle_disable_body, dict) else []
+        enabled_rows = toggle_enable_body.get("result", {}).get("toggles", []) \
+            if isinstance(toggle_enable_body, dict) else []
+        if (toggle_round_trip_error or toggle_disable_status != 200
+                or disabled_rows != [{"axiom": "pack(robinson)", "status": "disabled"}]
+                or toggle_enable_status != 200
+                or enabled_rows != [{"axiom": "pack(robinson)", "status": "enabled"}]):
+            report.add(
+                "FAIL", "axiom pack disable then restore",
+                toggle_round_trip_error or (
+                    f"disable=HTTP {toggle_disable_status}, rows={disabled_rows}; "
+                    f"restore=HTTP {toggle_enable_status}, rows={enabled_rows}"
+                ),
+            )
+        else:
+            report.add("PASS", "axiom pack disable then restore")
         probe("POST /api/pml_score (offline clauses)", "/api/pml_score",
               {"clauses": ["reader_axiom(smoke, subjective, compression, 1)"]},
               timeout=300.0)
