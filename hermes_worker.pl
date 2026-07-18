@@ -1284,29 +1284,6 @@ dispatch_request(standard_3_ns_5_fraction_comparison_witness, Id, Request, Respo
             Response)
     ).
 
-dispatch_request(geometry_entailment_witness, Id, Request, Response) :-
-    (   get_dict(entailer, Request, JSONEntailer),
-        get_dict(entailed, Request, JSONEntailed)
-    ->  json_to_term(JSONEntailer, Entailer),
-        json_to_term(JSONEntailed, Entailed),
-        (   \+ sequent_engine:enabled_axiom_pack(geometry)
-        ->  axiom_pack_disabled_response(geometry, Id, Response)
-        ;   sequent_engine:entails_via_incompatibility_witness(
-                Entailer,
-                Entailed,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_entailment_witness,
-                "geometry_entailment_witness found no entailment recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_geometry_entailment_request,
-            "geometry_entailment_witness requires entailer and entailed",
-            Response)
-    ).
-
 dispatch_request(incompatibility_entailment_witness, Id, Request, Response) :-
     (   get_dict(replacement, Request, JSONReplacement),
         get_dict(replaced, Request, JSONReplaced)
@@ -1459,497 +1436,6 @@ dispatch_request(lesson_misconception_incompatibility_witness, Id, Request, Resp
         )
     ;   error_response(Id, malformed_lesson_misconception_incompatibility_request,
             "lesson_misconception_incompatibility_witness requires lesson_code and name",
-            Response)
-    ).
-
-dispatch_request(geometry_material_profile_witness, Id, Request, Response) :-
-    (   get_dict(concept, Request, JSONConcept)
-    ->  json_to_term(JSONConcept, Concept),
-        (   material_inference_profile_witness(Concept, Profile, Witness)
-        ->  json_safe(_{profile: Profile, witness: Witness}, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_material_profile_witness,
-                "geometry_material_profile_witness found no profile recorded example for concept",
-                Response)
-        )
-    ;   error_response(Id, missing_concept,
-            "geometry_material_profile_witness requires concept", Response)
-    ).
-
-dispatch_request(geometry_quadrilateral_entailment_witness, Id, Request, Response) :-
-    (   get_dict(entailer, Request, JSONEntailer),
-        get_dict(entailed, Request, JSONEntailed)
-    ->  json_to_term(JSONEntailer, Entailer),
-        json_to_term(JSONEntailed, Entailed),
-        (   quad_entails_witness(Entailer, Entailed, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_quadrilateral_entailment_witness,
-                "geometry_quadrilateral_entailment_witness found no entailment recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_geometry_quadrilateral_entailment_request,
-            "geometry_quadrilateral_entailment_witness requires entailer and entailed",
-            Response)
-    ).
-
-dispatch_request(geometry_strength_lift_coverage_witness, Id, _Request, Response) :-
-    (   strength_lift_coverage_witness(Coverage, Witness)
-    ->  json_safe(_{coverage: Coverage, witness: Witness}, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_geometry_strength_lift_coverage_witness,
-            "geometry_strength_lift_coverage_witness found no coverage recorded example",
-            Response)
-    ).
-
-dispatch_request(geometry_van_hiele_material_witness, Id, Request, Response) :-
-    (   get_dict(claim_id, Request, JSONClaimId)
-    ->  json_to_term(JSONClaimId, ClaimId),
-        (   van_hiele_material_inference_by_id_witness(ClaimId, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_van_hiele_material_witness,
-                "geometry_van_hiele_material_witness found no material recorded example for claim_id",
-                Response)
-        )
-    ;   error_response(Id, missing_claim_id,
-            "geometry_van_hiele_material_witness requires claim_id", Response)
-    ).
-
-dispatch_request(geometry_van_hiele_marker_witness, Id, Request, Response) :-
-    (   get_dict(concept, Request, JSONConcept),
-        get_dict(level, Request, Level)
-    ->  json_to_term(JSONConcept, Concept),
-        (   van_hiele_marker_witness(Concept, Level, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_van_hiele_marker_witness,
-                "geometry_van_hiele_marker_witness found no marker recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_geometry_van_hiele_marker_request,
-            "geometry_van_hiele_marker_witness requires concept and level",
-            Response)
-    ).
-
-dispatch_request(geometry_cross_link_witness, Id, Request, Response) :-
-    (   get_dict(source, Request, JSONSource),
-        get_dict(relation, Request, JSONRelation),
-        get_dict(target, Request, JSONTarget)
-    ->  json_to_term(JSONSource, Source),
-        json_to_term(JSONRelation, Relation),
-        json_to_term(JSONTarget, Target),
-        (   get_dict(status, Request, JSONStatus)
-        ->  json_to_term(JSONStatus, Status)
-        ;   Status = entitled
-        ),
-        (   cross_link_witness(Source, Relation, Target, Status, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_cross_link_witness,
-                "geometry_cross_link_witness found no cross-link recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_geometry_cross_link_request,
-            "geometry_cross_link_witness requires source, relation, and target",
-            Response)
-    ).
-
-dispatch_request(geometry_developmental_arc_witness, Id, Request, Response) :-
-    (   get_dict(arc_id, Request, JSONArcId)
-    ->  json_to_term(JSONArcId, ArcId),
-        (   developmental_arc_witness(ArcId, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_developmental_arc_witness,
-                "geometry_developmental_arc_witness found no arc recorded example",
-                Response)
-        )
-    ;   error_response(Id, missing_arc_id,
-            "geometry_developmental_arc_witness requires arc_id", Response)
-    ).
-
-dispatch_request(geometry_attribute_material_witness, Id, Request, Response) :-
-    (   get_dict(claim_id, Request, JSONClaimId)
-    ->  json_to_term(JSONClaimId, ClaimId),
-        (   attribute_material_claim_witness(ClaimId, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_attribute_material_witness,
-                "geometry_attribute_material_witness found no material recorded example",
-                Response)
-        )
-    ;   error_response(Id, missing_claim_id,
-            "geometry_attribute_material_witness requires claim_id", Response)
-    ).
-
-dispatch_request(geometry_similarity_material_witness, Id, Request, Response) :-
-    (   get_dict(claim_id, Request, JSONClaimId)
-    ->  json_to_term(JSONClaimId, ClaimId),
-        (   similarity_material_claim_witness(ClaimId, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_similarity_material_witness,
-                "geometry_similarity_material_witness found no material recorded example",
-                Response)
-        )
-    ;   error_response(Id, missing_claim_id,
-            "geometry_similarity_material_witness requires claim_id", Response)
-    ).
-
-dispatch_request(geometry_pythagorean_material_witness, Id, Request, Response) :-
-    (   get_dict(claim_id, Request, JSONClaimId)
-    ->  json_to_term(JSONClaimId, ClaimId),
-        (   pythagorean_material_claim_witness(ClaimId, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_pythagorean_material_witness,
-                "geometry_pythagorean_material_witness found no material recorded example",
-                Response)
-        )
-    ;   error_response(Id, missing_claim_id,
-            "geometry_pythagorean_material_witness requires claim_id", Response)
-    ).
-
-dispatch_request(geometry_van_hiele_level_material_witness, Id, Request, Response) :-
-    (   get_dict(claim_id, Request, JSONClaimId)
-    ->  json_to_term(JSONClaimId, ClaimId),
-        (   van_hiele_level_material_claim_witness(ClaimId, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_van_hiele_level_material_witness,
-                "geometry_van_hiele_level_material_witness found no material recorded example",
-                Response)
-        )
-    ;   error_response(Id, missing_claim_id,
-            "geometry_van_hiele_level_material_witness requires claim_id",
-            Response)
-    ).
-
-dispatch_request(geometry_measurement_misconception_witness, Id, Request, Response) :-
-    (   get_dict(id_value, Request, JSONMisconceptionId)
-    ->  json_to_term(JSONMisconceptionId, MisconceptionId),
-        (   measurement_misconception_witness(MisconceptionId, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_measurement_misconception_witness,
-                "geometry_measurement_misconception_witness found no misconception recorded example",
-                Response)
-        )
-    ;   error_response(Id, missing_id_value,
-            "geometry_measurement_misconception_witness requires id_value",
-            Response)
-    ).
-
-dispatch_request(geometry_n103_bootstrap_witness, Id, Request, Response) :-
-    (   get_dict(bootstrap_id, Request, JSONBootstrapId)
-    ->  json_to_term(JSONBootstrapId, BootstrapId),
-        (   n103_bootstrap_witness(BootstrapId, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_n103_bootstrap_witness,
-                "geometry_n103_bootstrap_witness found no bootstrap recorded example",
-                Response)
-        )
-    ;   error_response(Id, missing_bootstrap_id,
-            "geometry_n103_bootstrap_witness requires bootstrap_id",
-            Response)
-    ).
-
-dispatch_request(geometry_van_de_walle_bootstrap_witness, Id, Request, Response) :-
-    (   get_dict(bootstrap_id, Request, JSONBootstrapId)
-    ->  json_to_term(JSONBootstrapId, BootstrapId),
-        (   van_de_walle_bootstrap_witness(BootstrapId, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_van_de_walle_bootstrap_witness,
-                "geometry_van_de_walle_bootstrap_witness found no bootstrap recorded example",
-                Response)
-        )
-    ;   error_response(Id, missing_bootstrap_id,
-            "geometry_van_de_walle_bootstrap_witness requires bootstrap_id",
-            Response)
-    ).
-
-dispatch_request(geometry_shape_recognition_material_witness, Id, Request, Response) :-
-    (   get_dict(claim_id, Request, JSONClaimId)
-    ->  json_to_term(JSONClaimId, ClaimId),
-        (   shape_recognition_material_claim_witness(ClaimId, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_shape_recognition_material_witness,
-                "geometry_shape_recognition_material_witness found no material recorded example",
-                Response)
-        )
-    ;   error_response(Id, missing_claim_id,
-            "geometry_shape_recognition_material_witness requires claim_id",
-            Response)
-    ).
-
-dispatch_request(geometry_coordinate_material_witness, Id, Request, Response) :-
-    (   get_dict(claim_id, Request, JSONClaimId)
-    ->  json_to_term(JSONClaimId, ClaimId),
-        (   coordinate_geometry_material_claim_witness(ClaimId, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_coordinate_material_witness,
-                "geometry_coordinate_material_witness found no material recorded example",
-                Response)
-        )
-    ;   error_response(Id, missing_claim_id,
-            "geometry_coordinate_material_witness requires claim_id",
-            Response)
-    ).
-
-dispatch_request(geometry_angle_material_witness, Id, Request, Response) :-
-    (   get_dict(claim_id, Request, JSONClaimId)
-    ->  json_to_term(JSONClaimId, ClaimId),
-        (   angle_material_claim_witness(ClaimId, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_angle_material_witness,
-                "geometry_angle_material_witness found no material recorded example",
-                Response)
-        )
-    ;   error_response(Id, missing_claim_id,
-            "geometry_angle_material_witness requires claim_id",
-            Response)
-    ).
-
-dispatch_request(geometry_area_perimeter_material_witness, Id, Request, Response) :-
-    (   get_dict(claim_id, Request, JSONClaimId)
-    ->  json_to_term(JSONClaimId, ClaimId),
-        (   area_perimeter_material_claim_witness(ClaimId, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_area_perimeter_material_witness,
-                "geometry_area_perimeter_material_witness found no material recorded example",
-                Response)
-        )
-    ;   error_response(Id, missing_claim_id,
-            "geometry_area_perimeter_material_witness requires claim_id",
-            Response)
-    ).
-
-dispatch_request(geometry_volume_surface_area_material_witness, Id, Request, Response) :-
-    (   get_dict(claim_id, Request, JSONClaimId)
-    ->  json_to_term(JSONClaimId, ClaimId),
-        (   volume_surface_area_material_claim_witness(ClaimId, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_volume_surface_area_material_witness,
-                "geometry_volume_surface_area_material_witness found no material recorded example",
-                Response)
-        )
-    ;   error_response(Id, missing_claim_id,
-            "geometry_volume_surface_area_material_witness requires claim_id",
-            Response)
-    ).
-
-dispatch_request(geometry_transformation_material_witness, Id, Request, Response) :-
-    (   get_dict(claim_id, Request, JSONClaimId)
-    ->  json_to_term(JSONClaimId, ClaimId),
-        (   transformation_material_claim_witness(ClaimId, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_transformation_material_witness,
-                "geometry_transformation_material_witness found no material recorded example",
-                Response)
-        )
-    ;   error_response(Id, missing_claim_id,
-            "geometry_transformation_material_witness requires claim_id",
-            Response)
-    ).
-
-dispatch_request(geometry_classification_material_witness, Id, Request, Response) :-
-    (   get_dict(claim_id, Request, JSONClaimId)
-    ->  json_to_term(JSONClaimId, ClaimId),
-        (   classification_material_claim_witness(ClaimId, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_classification_material_witness,
-                "geometry_classification_material_witness found no material recorded example",
-                Response)
-        )
-    ;   error_response(Id, missing_claim_id,
-            "geometry_classification_material_witness requires claim_id",
-            Response)
-    ).
-
-dispatch_request(geometry_pck_classification_witness, Id, Request, Response) :-
-    (   get_dict(concept, Request, JSONConcept)
-    ->  json_to_term(JSONConcept, Concept),
-        (   pck_synthesis_witness(Concept, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_pck_classification_witness,
-                "geometry_pck_classification_witness found no synthesis recorded example",
-                Response)
-        )
-    ;   error_response(Id, missing_concept,
-            "geometry_pck_classification_witness requires concept",
-            Response)
-    ).
-
-dispatch_request(geometry_measuring_stick_metaphor_witness, Id, Request, Response) :-
-    (   get_dict(concept, Request, JSONConcept),
-        get_dict(metaphor, Request, JSONMetaphor)
-    ->  json_to_term(JSONConcept, Concept),
-        json_to_term(JSONMetaphor, Metaphor),
-        (   measuring_stick_metaphor_witness(Concept, Metaphor, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_measuring_stick_metaphor_witness,
-                "geometry_measuring_stick_metaphor_witness found no metaphor recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_measuring_stick_metaphor_request,
-            "geometry_measuring_stick_metaphor_witness requires concept and metaphor",
-            Response)
-    ).
-
-dispatch_request(geometry_lakoff_nunez_metaphor_witness, Id, Request, Response) :-
-    (   get_dict(concept, Request, JSONConcept),
-        get_dict(metaphor, Request, JSONMetaphor)
-    ->  json_to_term(JSONConcept, Concept),
-        json_to_term(JSONMetaphor, Metaphor),
-        (   lakoff_nunez_metaphor_witness(Concept, Metaphor, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_lakoff_nunez_metaphor_witness,
-                "geometry_lakoff_nunez_metaphor_witness found no metaphor recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_lakoff_nunez_metaphor_request,
-            "geometry_lakoff_nunez_metaphor_witness requires concept and metaphor",
-            Response)
-    ).
-
-dispatch_request(geometry_synthesizer_anchor_material_witness, Id, Request, Response) :-
-    (   get_dict(claim_id, Request, JSONClaimId)
-    ->  json_to_term(JSONClaimId, ClaimId),
-        (   synthesizer_anchor_material_witness(ClaimId, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_synthesizer_anchor_material_witness,
-                "geometry_synthesizer_anchor_material_witness found no material recorded example",
-                Response)
-        )
-    ;   error_response(Id, missing_claim_id,
-            "geometry_synthesizer_anchor_material_witness requires claim_id",
-            Response)
-    ).
-
-dispatch_request(geometry_synthesizer_triangulation_witness, Id, Request, Response) :-
-    (   get_dict(concept, Request, JSONConcept)
-    ->  json_to_term(JSONConcept, Concept),
-        (   synthesizer_concept_triangulation_witness(Concept, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_synthesizer_triangulation_witness,
-                "geometry_synthesizer_triangulation_witness found no concept recorded example",
-                Response)
-        )
-    ;   error_response(Id, missing_concept,
-            "geometry_synthesizer_triangulation_witness requires concept",
-            Response)
-    ).
-
-dispatch_request(geometry_ccss_standard_witness, Id, Request, Response) :-
-    (   get_dict(concept, Request, JSONConcept),
-        get_dict(code, Request, Code)
-    ->  json_to_term(JSONConcept, Concept),
-        (   ccss_geometry_standard_witness(Concept, Code, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_ccss_standard_witness,
-                "geometry_ccss_standard_witness found no standard recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_geometry_ccss_standard_request,
-            "geometry_ccss_standard_witness requires concept and code",
-            Response)
-    ).
-
-dispatch_request(geometry_indiana_standard_witness, Id, Request, Response) :-
-    (   get_dict(concept, Request, JSONConcept),
-        get_dict(code, Request, Code)
-    ->  json_to_term(JSONConcept, Concept),
-        (   indiana_geometry_standard_witness(Concept, Code, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_indiana_standard_witness,
-                "geometry_indiana_standard_witness found no standard recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_geometry_indiana_standard_request,
-            "geometry_indiana_standard_witness requires concept and code",
-            Response)
-    ).
-
-dispatch_request(geometry_im_grade8_lesson_standard_witness, Id, Request, Response) :-
-    (   get_dict(concept, Request, JSONConcept),
-        get_dict(code, Request, Code)
-    ->  json_to_term(JSONConcept, Concept),
-        (   im_grade8_lesson_standard_witness(Concept, Code, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_im_grade8_lesson_standard_witness,
-                "geometry_im_grade8_lesson_standard_witness found no lesson recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_geometry_im_grade8_lesson_standard_request,
-            "geometry_im_grade8_lesson_standard_witness requires concept and code",
-            Response)
-    ).
-
-dispatch_request(geometry_im_grade7_lesson_standard_witness, Id, Request, Response) :-
-    (   get_dict(concept, Request, JSONConcept),
-        get_dict(code, Request, Code)
-    ->  json_to_term(JSONConcept, Concept),
-        (   im_grade7_lesson_standard_witness(Concept, Code, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_im_grade7_lesson_standard_witness,
-                "geometry_im_grade7_lesson_standard_witness found no lesson recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_geometry_im_grade7_lesson_standard_request,
-            "geometry_im_grade7_lesson_standard_witness requires concept and code",
-            Response)
-    ).
-
-dispatch_request(geometry_im_grade6_lesson_standard_witness, Id, Request, Response) :-
-    (   get_dict(concept, Request, JSONConcept),
-        get_dict(code, Request, Code)
-    ->  json_to_term(JSONConcept, Concept),
-        (   im_grade6_lesson_standard_witness(Concept, Code, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_im_grade6_lesson_standard_witness,
-                "geometry_im_grade6_lesson_standard_witness found no lesson recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_geometry_im_grade6_lesson_standard_request,
-            "geometry_im_grade6_lesson_standard_witness requires concept and code",
-            Response)
-    ).
-
-dispatch_request(geometry_im_grade5_standard_anchor_witness, Id, Request, Response) :-
-    (   get_dict(concept, Request, JSONConcept),
-        get_dict(framework, Request, JSONFramework),
-        get_dict(code, Request, Code)
-    ->  json_to_term(JSONConcept, Concept),
-        json_to_term(JSONFramework, Framework),
-        (   im_grade5_standard_anchor_witness(Concept, Framework, Code, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_geometry_im_grade5_standard_anchor_witness,
-                "geometry_im_grade5_standard_anchor_witness found no standard recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_geometry_im_grade5_standard_anchor_request,
-            "geometry_im_grade5_standard_anchor_witness requires concept, framework, and code",
             Response)
     ).
 
@@ -2991,6 +2477,26 @@ canonical_legacy_match(A, Canon) :-
     ),
     !.
 
+% A response hook preserves a legacy response shape when the generic call
+% frame itself would be observable. The geometry coverage witness contains
+% open Prolog variables whose historical term_string/2 names are part of the
+% worker's byte contract, so its spec row selects the exact zero-input frame.
+dispatch_request(Op, Id, Request, Response) :-
+    dispatch_spec(Op, [],
+        call(user:strength_lift_coverage_witness, [out(coverage), out(witness)]),
+        witness_wrap([coverage-coverage], no_geometry_strength_lift_coverage_witness)),
+    !,
+    dispatch_zero_input_geometry_coverage(Id, Request, Response).
+
+dispatch_zero_input_geometry_coverage(Id, _Request, Response) :-
+    (   strength_lift_coverage_witness(Coverage, Witness)
+    ->  json_safe(_{coverage: Coverage, witness: Witness}, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_geometry_strength_lift_coverage_witness,
+            "geometry_strength_lift_coverage_witness found no coverage recorded example",
+            Response)
+    ).
+
 % Authored table dispatch. Bespoke clauses remain earlier in clause order while
 % families migrate; spec-backed operations commit here before the catch-all.
 dispatch_request(Op, Id, Request, Response) :-
@@ -2999,7 +2505,7 @@ dispatch_request(Op, Id, Request, Response) :-
     (   read_dispatch_inputs(Inputs, Request, Bound)
     ->  run_dispatch_call(Call, Bound, Outcome),
         treat_dispatch_result(Result, Op, Id, Outcome, Response)
-    ;   dispatch_malformed_response(Op, Id, Response)
+    ;   dispatch_malformed_response(Result, Op, Id, Response)
     ).
 
 % Every converter named in the loaded spec must have a
@@ -3008,7 +2514,8 @@ dispatch_request(Op, Id, Request, Response) :-
 validate_dispatch_spec :-
     forall(
         ( dispatch_spec(SpecOp, Inputs, _, _), member(_Key-Conv, Inputs) ),
-        ( known_dispatch_converter(Conv)
+        ( dispatch_converter_name(Conv, Converter),
+          known_dispatch_converter(Converter)
         -> true
         ;  format(user_error,
                   "dispatch_spec ~w names unknown converter ~w~n",
@@ -3016,6 +2523,9 @@ validate_dispatch_spec :-
            throw(error(domain_error(dispatch_converter, Conv), SpecOp))
         )
     ).
+
+dispatch_converter_name(default(Converter, _Default), Converter) :- !.
+dispatch_converter_name(Converter, Converter).
 
 known_dispatch_converter(term).
 known_dispatch_converter(atom).
@@ -3030,6 +2540,14 @@ known_dispatch_converter(fraction).
 known_dispatch_converter(list).
 
 read_dispatch_inputs([], _Request, []).
+read_dispatch_inputs([Key-default(Converter, Default)|Specs], Request,
+        [Key-Value|Bound]) :-
+    !,
+    (   get_dict(Key, Request, JSONValue)
+    ->  convert_dispatch_input(Converter, JSONValue, Value)
+    ;   Value = Default
+    ),
+    read_dispatch_inputs(Specs, Request, Bound).
 read_dispatch_inputs([Key-Converter|Specs], Request, [Key-Value|Bound]) :-
     get_dict(Key, Request, JSONValue),
     convert_dispatch_input(Converter, JSONValue, Value),
@@ -3080,6 +2598,12 @@ run_dispatch_call(call(Module:Pred, ArgSpec), Bound, Outcome) :-
     ->  Outcome = success(Outputs)
     ;   Outcome = failure
     ).
+run_dispatch_call(call(Module:Pred, ArgSpec, [gate(axiom_pack(Pack))]),
+        Bound, Outcome) :-
+    (   sequent_engine:enabled_axiom_pack(Pack)
+    ->  run_dispatch_call(call(Module:Pred, ArgSpec), Bound, Outcome)
+    ;   Outcome = axiom_pack_disabled(Pack)
+    ).
 
 dispatch_call_args([], _Bound, [], []).
 dispatch_call_args([Spec|Specs], Bound, [Arg|Args], Outputs) :-
@@ -3091,12 +2615,24 @@ dispatch_call_arg(out(Name), _Bound, Arg, [Name-Arg|Outputs], Outputs) :- !.
 dispatch_call_arg(Key, Bound, Value, Outputs, Outputs) :-
     memberchk(Key-Value, Bound).
 
+treat_dispatch_result(_Result, _Op, Id, axiom_pack_disabled(Pack), Response) :-
+    axiom_pack_disabled_response(Pack, Id, Response),
+    !.
 treat_dispatch_result(witness(_NoWitness), _Op, Id, success(Outputs), Response) :-
     memberchk(witness-Witness, Outputs),
     json_safe(Witness, Safe),
     ok_response(Id, Safe, Response),
     !.
 treat_dispatch_result(witness(NoWitness), Op, Id, failure, Response) :-
+    dispatch_message(Op, no_witness, Message),
+    error_response(Id, NoWitness, Message, Response).
+treat_dispatch_result(witness(_NoWitness, _Malformed), _Op, Id,
+        success(Outputs), Response) :-
+    memberchk(witness-Witness, Outputs),
+    json_safe(Witness, Safe),
+    ok_response(Id, Safe, Response),
+    !.
+treat_dispatch_result(witness(NoWitness, _Malformed), Op, Id, failure, Response) :-
     dispatch_message(Op, no_witness, Message),
     error_response(Id, NoWitness, Message, Response).
 treat_dispatch_result(witness_wrap(Fields, _NoWitness), _Op, Id,
@@ -3110,6 +2646,18 @@ treat_dispatch_result(witness_wrap(Fields, _NoWitness), _Op, Id,
 treat_dispatch_result(witness_wrap(_Fields, NoWitness), Op, Id, failure, Response) :-
     dispatch_message(Op, no_witness, Message),
     error_response(Id, NoWitness, Message, Response).
+treat_dispatch_result(witness_wrap(Fields, _NoWitness, _Malformed), _Op, Id,
+        success(Outputs), Response) :-
+    memberchk(witness-Witness, Outputs),
+    dispatch_wrap_fields(Fields, Outputs, Wrapped0),
+    Wrapped = Wrapped0.put(witness, Witness),
+    json_safe(Wrapped, Safe),
+    ok_response(Id, Safe, Response),
+    !.
+treat_dispatch_result(witness_wrap(_Fields, NoWitness, _Malformed), Op, Id,
+        failure, Response) :-
+    dispatch_message(Op, no_witness, Message),
+    error_response(Id, NoWitness, Message, Response).
 treat_dispatch_result(raw, _Op, Id, success(Outputs), Response) :-
     memberchk(dict-Dict, Outputs),
     ok_response(Id, Dict, Response).
@@ -3120,14 +2668,22 @@ dispatch_wrap_fields([Label-Slot|Fields], Outputs, Dict) :-
     dispatch_wrap_fields(Fields, Outputs, Rest),
     Dict = Rest.put(Label, Value).
 
-dispatch_malformed_response(Op, Id, Response) :-
-    (   atom_concat(Base, '_witness', Op)
+dispatch_malformed_response(Result, Op, Id, Response) :-
+    (   dispatch_result_malformed_code(Result, Code)
+    ->  true
+    ;   atom_concat(Base, '_witness', Op)
     ->  true
     ;   Base = Op
     ),
-    atomic_list_concat([malformed, Base, request], '_', Code),
+    (   var(Code)
+    ->  atomic_list_concat([malformed, Base, request], '_', Code)
+    ;   true
+    ),
     dispatch_message(Op, malformed, Message),
     error_response(Id, Code, Message, Response).
+
+dispatch_result_malformed_code(witness(_, Code), Code).
+dispatch_result_malformed_code(witness_wrap(_, _, Code), Code).
 
 % Catch-all: only genuinely unknown ops reach here. The \+ known_op/1 guard
 % stops a KNOWN op whose body failed from backtracking into this clause; that

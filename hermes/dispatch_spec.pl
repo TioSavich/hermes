@@ -176,6 +176,173 @@ dispatch_spec(mua_coherence_witness,
          [subject, input, drop, source, out(witness)]),
     witness(no_mua_coherence_witness)).
 
+dispatch_spec(geometry_entailment_witness,
+    [entailer-term, entailed-term],
+    call(sequent_engine:entails_via_incompatibility_witness,
+         [entailer, entailed, out(witness)],
+         [gate(axiom_pack(geometry))]),
+    witness(no_geometry_entailment_witness,
+            malformed_geometry_entailment_request)).
+dispatch_spec(geometry_material_profile_witness,
+    [concept-term],
+    call(user:material_inference_profile_witness,
+         [concept, out(profile), out(witness)]),
+    witness_wrap([profile-profile], no_geometry_material_profile_witness,
+                 missing_concept)).
+dispatch_spec(geometry_quadrilateral_entailment_witness,
+    [entailer-term, entailed-term],
+    call(user:quad_entails_witness, [entailer, entailed, out(witness)]),
+    witness(no_geometry_quadrilateral_entailment_witness,
+            malformed_geometry_quadrilateral_entailment_request)).
+dispatch_spec(geometry_strength_lift_coverage_witness,
+    [],
+    call(user:strength_lift_coverage_witness,
+         [out(coverage), out(witness)]),
+    witness_wrap([coverage-coverage],
+                 no_geometry_strength_lift_coverage_witness)).
+dispatch_spec(geometry_van_hiele_material_witness,
+    [claim_id-term],
+    call(user:van_hiele_material_inference_by_id_witness,
+         [claim_id, out(witness)]),
+    witness(no_geometry_van_hiele_material_witness, missing_claim_id)).
+dispatch_spec(geometry_van_hiele_marker_witness,
+    [concept-term, level-number],
+    call(user:van_hiele_marker_witness, [concept, level, out(witness)]),
+    witness(no_geometry_van_hiele_marker_witness,
+            malformed_geometry_van_hiele_marker_request)).
+dispatch_spec(geometry_cross_link_witness,
+    [source-term, relation-term, target-term,
+     status-default(term, entitled)],
+    call(user:cross_link_witness,
+         [source, relation, target, status, out(witness)]),
+    witness(no_geometry_cross_link_witness,
+            malformed_geometry_cross_link_request)).
+dispatch_spec(geometry_developmental_arc_witness,
+    [arc_id-term],
+    call(user:developmental_arc_witness, [arc_id, out(witness)]),
+    witness(no_geometry_developmental_arc_witness, missing_arc_id)).
+dispatch_spec(geometry_attribute_material_witness,
+    [claim_id-term],
+    call(user:attribute_material_claim_witness, [claim_id, out(witness)]),
+    witness(no_geometry_attribute_material_witness, missing_claim_id)).
+dispatch_spec(geometry_similarity_material_witness,
+    [claim_id-term],
+    call(user:similarity_material_claim_witness, [claim_id, out(witness)]),
+    witness(no_geometry_similarity_material_witness, missing_claim_id)).
+dispatch_spec(geometry_pythagorean_material_witness,
+    [claim_id-term],
+    call(user:pythagorean_material_claim_witness, [claim_id, out(witness)]),
+    witness(no_geometry_pythagorean_material_witness, missing_claim_id)).
+dispatch_spec(geometry_van_hiele_level_material_witness,
+    [claim_id-term],
+    call(user:van_hiele_level_material_claim_witness,
+         [claim_id, out(witness)]),
+    witness(no_geometry_van_hiele_level_material_witness, missing_claim_id)).
+dispatch_spec(geometry_measurement_misconception_witness,
+    [id_value-term],
+    call(user:measurement_misconception_witness, [id_value, out(witness)]),
+    witness(no_geometry_measurement_misconception_witness, missing_id_value)).
+dispatch_spec(geometry_n103_bootstrap_witness,
+    [bootstrap_id-term],
+    call(user:n103_bootstrap_witness, [bootstrap_id, out(witness)]),
+    witness(no_geometry_n103_bootstrap_witness, missing_bootstrap_id)).
+dispatch_spec(geometry_van_de_walle_bootstrap_witness,
+    [bootstrap_id-term],
+    call(user:van_de_walle_bootstrap_witness, [bootstrap_id, out(witness)]),
+    witness(no_geometry_van_de_walle_bootstrap_witness, missing_bootstrap_id)).
+dispatch_spec(geometry_shape_recognition_material_witness,
+    [claim_id-term],
+    call(user:shape_recognition_material_claim_witness,
+         [claim_id, out(witness)]),
+    witness(no_geometry_shape_recognition_material_witness, missing_claim_id)).
+dispatch_spec(geometry_coordinate_material_witness,
+    [claim_id-term],
+    call(user:coordinate_geometry_material_claim_witness,
+         [claim_id, out(witness)]),
+    witness(no_geometry_coordinate_material_witness, missing_claim_id)).
+dispatch_spec(geometry_angle_material_witness,
+    [claim_id-term],
+    call(user:angle_material_claim_witness, [claim_id, out(witness)]),
+    witness(no_geometry_angle_material_witness, missing_claim_id)).
+dispatch_spec(geometry_area_perimeter_material_witness,
+    [claim_id-term],
+    call(user:area_perimeter_material_claim_witness,
+         [claim_id, out(witness)]),
+    witness(no_geometry_area_perimeter_material_witness, missing_claim_id)).
+dispatch_spec(geometry_volume_surface_area_material_witness,
+    [claim_id-term],
+    call(user:volume_surface_area_material_claim_witness,
+         [claim_id, out(witness)]),
+    witness(no_geometry_volume_surface_area_material_witness, missing_claim_id)).
+dispatch_spec(geometry_transformation_material_witness,
+    [claim_id-term],
+    call(user:transformation_material_claim_witness, [claim_id, out(witness)]),
+    witness(no_geometry_transformation_material_witness, missing_claim_id)).
+dispatch_spec(geometry_classification_material_witness,
+    [claim_id-term],
+    call(user:classification_material_claim_witness, [claim_id, out(witness)]),
+    witness(no_geometry_classification_material_witness, missing_claim_id)).
+dispatch_spec(geometry_pck_classification_witness,
+    [concept-term],
+    call(user:pck_synthesis_witness, [concept, out(witness)]),
+    witness(no_geometry_pck_classification_witness, missing_concept)).
+dispatch_spec(geometry_measuring_stick_metaphor_witness,
+    [concept-term, metaphor-term],
+    call(user:measuring_stick_metaphor_witness,
+         [concept, metaphor, out(witness)]),
+    witness(no_geometry_measuring_stick_metaphor_witness,
+            malformed_measuring_stick_metaphor_request)).
+dispatch_spec(geometry_lakoff_nunez_metaphor_witness,
+    [concept-term, metaphor-term],
+    call(user:lakoff_nunez_metaphor_witness,
+         [concept, metaphor, out(witness)]),
+    witness(no_geometry_lakoff_nunez_metaphor_witness,
+            malformed_lakoff_nunez_metaphor_request)).
+dispatch_spec(geometry_synthesizer_anchor_material_witness,
+    [claim_id-term],
+    call(user:synthesizer_anchor_material_witness,
+         [claim_id, out(witness)]),
+    witness(no_geometry_synthesizer_anchor_material_witness, missing_claim_id)).
+dispatch_spec(geometry_synthesizer_triangulation_witness,
+    [concept-term],
+    call(user:synthesizer_concept_triangulation_witness,
+         [concept, out(witness)]),
+    witness(no_geometry_synthesizer_triangulation_witness, missing_concept)).
+dispatch_spec(geometry_ccss_standard_witness,
+    [concept-term, code-string],
+    call(user:ccss_geometry_standard_witness, [concept, code, out(witness)]),
+    witness(no_geometry_ccss_standard_witness,
+            malformed_geometry_ccss_standard_request)).
+dispatch_spec(geometry_indiana_standard_witness,
+    [concept-term, code-string],
+    call(user:indiana_geometry_standard_witness, [concept, code, out(witness)]),
+    witness(no_geometry_indiana_standard_witness,
+            malformed_geometry_indiana_standard_request)).
+dispatch_spec(geometry_im_grade8_lesson_standard_witness,
+    [concept-term, code-string],
+    call(user:im_grade8_lesson_standard_witness,
+         [concept, code, out(witness)]),
+    witness(no_geometry_im_grade8_lesson_standard_witness,
+            malformed_geometry_im_grade8_lesson_standard_request)).
+dispatch_spec(geometry_im_grade7_lesson_standard_witness,
+    [concept-term, code-string],
+    call(user:im_grade7_lesson_standard_witness,
+         [concept, code, out(witness)]),
+    witness(no_geometry_im_grade7_lesson_standard_witness,
+            malformed_geometry_im_grade7_lesson_standard_request)).
+dispatch_spec(geometry_im_grade6_lesson_standard_witness,
+    [concept-term, code-string],
+    call(user:im_grade6_lesson_standard_witness,
+         [concept, code, out(witness)]),
+    witness(no_geometry_im_grade6_lesson_standard_witness,
+            malformed_geometry_im_grade6_lesson_standard_request)).
+dispatch_spec(geometry_im_grade5_standard_anchor_witness,
+    [concept-term, framework-term, code-string],
+    call(user:im_grade5_standard_anchor_witness,
+         [concept, framework, code, out(witness)]),
+    witness(no_geometry_im_grade5_standard_anchor_witness,
+            malformed_geometry_im_grade5_standard_anchor_request)).
+
 dispatch_message(axiom_pack_witness, no_witness, "axiom_pack_witness found no enabled-pack recorded example").
 dispatch_message(axiom_pack_witness, malformed, "axiom_pack_witness requires pack and source").
 dispatch_message(viability_witness, no_witness, "viability_witness found no sufficient resource recorded example").
@@ -244,3 +411,68 @@ dispatch_message(productive_deformation_witness, no_witness, "productive_deforma
 dispatch_message(productive_deformation_witness, malformed, "productive_deformation_witness requires operation, productive, deformation, family, and source").
 dispatch_message(mua_coherence_witness, no_witness, "mua_coherence_witness found no coherence scoring recorded example").
 dispatch_message(mua_coherence_witness, malformed, "mua_coherence_witness requires subject, input, and source").
+dispatch_message(geometry_entailment_witness, no_witness, "geometry_entailment_witness found no entailment recorded example").
+dispatch_message(geometry_entailment_witness, malformed, "geometry_entailment_witness requires entailer and entailed").
+dispatch_message(geometry_material_profile_witness, no_witness, "geometry_material_profile_witness found no profile recorded example for concept").
+dispatch_message(geometry_material_profile_witness, malformed, "geometry_material_profile_witness requires concept").
+dispatch_message(geometry_quadrilateral_entailment_witness, no_witness, "geometry_quadrilateral_entailment_witness found no entailment recorded example").
+dispatch_message(geometry_quadrilateral_entailment_witness, malformed, "geometry_quadrilateral_entailment_witness requires entailer and entailed").
+dispatch_message(geometry_strength_lift_coverage_witness, no_witness, "geometry_strength_lift_coverage_witness found no coverage recorded example").
+dispatch_message(geometry_van_hiele_material_witness, no_witness, "geometry_van_hiele_material_witness found no material recorded example for claim_id").
+dispatch_message(geometry_van_hiele_material_witness, malformed, "geometry_van_hiele_material_witness requires claim_id").
+dispatch_message(geometry_van_hiele_marker_witness, no_witness, "geometry_van_hiele_marker_witness found no marker recorded example").
+dispatch_message(geometry_van_hiele_marker_witness, malformed, "geometry_van_hiele_marker_witness requires concept and level").
+dispatch_message(geometry_cross_link_witness, no_witness, "geometry_cross_link_witness found no cross-link recorded example").
+dispatch_message(geometry_cross_link_witness, malformed, "geometry_cross_link_witness requires source, relation, and target").
+dispatch_message(geometry_developmental_arc_witness, no_witness, "geometry_developmental_arc_witness found no arc recorded example").
+dispatch_message(geometry_developmental_arc_witness, malformed, "geometry_developmental_arc_witness requires arc_id").
+dispatch_message(geometry_attribute_material_witness, no_witness, "geometry_attribute_material_witness found no material recorded example").
+dispatch_message(geometry_attribute_material_witness, malformed, "geometry_attribute_material_witness requires claim_id").
+dispatch_message(geometry_similarity_material_witness, no_witness, "geometry_similarity_material_witness found no material recorded example").
+dispatch_message(geometry_similarity_material_witness, malformed, "geometry_similarity_material_witness requires claim_id").
+dispatch_message(geometry_pythagorean_material_witness, no_witness, "geometry_pythagorean_material_witness found no material recorded example").
+dispatch_message(geometry_pythagorean_material_witness, malformed, "geometry_pythagorean_material_witness requires claim_id").
+dispatch_message(geometry_van_hiele_level_material_witness, no_witness, "geometry_van_hiele_level_material_witness found no material recorded example").
+dispatch_message(geometry_van_hiele_level_material_witness, malformed, "geometry_van_hiele_level_material_witness requires claim_id").
+dispatch_message(geometry_measurement_misconception_witness, no_witness, "geometry_measurement_misconception_witness found no misconception recorded example").
+dispatch_message(geometry_measurement_misconception_witness, malformed, "geometry_measurement_misconception_witness requires id_value").
+dispatch_message(geometry_n103_bootstrap_witness, no_witness, "geometry_n103_bootstrap_witness found no bootstrap recorded example").
+dispatch_message(geometry_n103_bootstrap_witness, malformed, "geometry_n103_bootstrap_witness requires bootstrap_id").
+dispatch_message(geometry_van_de_walle_bootstrap_witness, no_witness, "geometry_van_de_walle_bootstrap_witness found no bootstrap recorded example").
+dispatch_message(geometry_van_de_walle_bootstrap_witness, malformed, "geometry_van_de_walle_bootstrap_witness requires bootstrap_id").
+dispatch_message(geometry_shape_recognition_material_witness, no_witness, "geometry_shape_recognition_material_witness found no material recorded example").
+dispatch_message(geometry_shape_recognition_material_witness, malformed, "geometry_shape_recognition_material_witness requires claim_id").
+dispatch_message(geometry_coordinate_material_witness, no_witness, "geometry_coordinate_material_witness found no material recorded example").
+dispatch_message(geometry_coordinate_material_witness, malformed, "geometry_coordinate_material_witness requires claim_id").
+dispatch_message(geometry_angle_material_witness, no_witness, "geometry_angle_material_witness found no material recorded example").
+dispatch_message(geometry_angle_material_witness, malformed, "geometry_angle_material_witness requires claim_id").
+dispatch_message(geometry_area_perimeter_material_witness, no_witness, "geometry_area_perimeter_material_witness found no material recorded example").
+dispatch_message(geometry_area_perimeter_material_witness, malformed, "geometry_area_perimeter_material_witness requires claim_id").
+dispatch_message(geometry_volume_surface_area_material_witness, no_witness, "geometry_volume_surface_area_material_witness found no material recorded example").
+dispatch_message(geometry_volume_surface_area_material_witness, malformed, "geometry_volume_surface_area_material_witness requires claim_id").
+dispatch_message(geometry_transformation_material_witness, no_witness, "geometry_transformation_material_witness found no material recorded example").
+dispatch_message(geometry_transformation_material_witness, malformed, "geometry_transformation_material_witness requires claim_id").
+dispatch_message(geometry_classification_material_witness, no_witness, "geometry_classification_material_witness found no material recorded example").
+dispatch_message(geometry_classification_material_witness, malformed, "geometry_classification_material_witness requires claim_id").
+dispatch_message(geometry_pck_classification_witness, no_witness, "geometry_pck_classification_witness found no synthesis recorded example").
+dispatch_message(geometry_pck_classification_witness, malformed, "geometry_pck_classification_witness requires concept").
+dispatch_message(geometry_measuring_stick_metaphor_witness, no_witness, "geometry_measuring_stick_metaphor_witness found no metaphor recorded example").
+dispatch_message(geometry_measuring_stick_metaphor_witness, malformed, "geometry_measuring_stick_metaphor_witness requires concept and metaphor").
+dispatch_message(geometry_lakoff_nunez_metaphor_witness, no_witness, "geometry_lakoff_nunez_metaphor_witness found no metaphor recorded example").
+dispatch_message(geometry_lakoff_nunez_metaphor_witness, malformed, "geometry_lakoff_nunez_metaphor_witness requires concept and metaphor").
+dispatch_message(geometry_synthesizer_anchor_material_witness, no_witness, "geometry_synthesizer_anchor_material_witness found no material recorded example").
+dispatch_message(geometry_synthesizer_anchor_material_witness, malformed, "geometry_synthesizer_anchor_material_witness requires claim_id").
+dispatch_message(geometry_synthesizer_triangulation_witness, no_witness, "geometry_synthesizer_triangulation_witness found no concept recorded example").
+dispatch_message(geometry_synthesizer_triangulation_witness, malformed, "geometry_synthesizer_triangulation_witness requires concept").
+dispatch_message(geometry_ccss_standard_witness, no_witness, "geometry_ccss_standard_witness found no standard recorded example").
+dispatch_message(geometry_ccss_standard_witness, malformed, "geometry_ccss_standard_witness requires concept and code").
+dispatch_message(geometry_indiana_standard_witness, no_witness, "geometry_indiana_standard_witness found no standard recorded example").
+dispatch_message(geometry_indiana_standard_witness, malformed, "geometry_indiana_standard_witness requires concept and code").
+dispatch_message(geometry_im_grade8_lesson_standard_witness, no_witness, "geometry_im_grade8_lesson_standard_witness found no lesson recorded example").
+dispatch_message(geometry_im_grade8_lesson_standard_witness, malformed, "geometry_im_grade8_lesson_standard_witness requires concept and code").
+dispatch_message(geometry_im_grade7_lesson_standard_witness, no_witness, "geometry_im_grade7_lesson_standard_witness found no lesson recorded example").
+dispatch_message(geometry_im_grade7_lesson_standard_witness, malformed, "geometry_im_grade7_lesson_standard_witness requires concept and code").
+dispatch_message(geometry_im_grade6_lesson_standard_witness, no_witness, "geometry_im_grade6_lesson_standard_witness found no lesson recorded example").
+dispatch_message(geometry_im_grade6_lesson_standard_witness, malformed, "geometry_im_grade6_lesson_standard_witness requires concept and code").
+dispatch_message(geometry_im_grade5_standard_anchor_witness, no_witness, "geometry_im_grade5_standard_anchor_witness found no standard recorded example").
+dispatch_message(geometry_im_grade5_standard_anchor_witness, malformed, "geometry_im_grade5_standard_anchor_witness requires concept, framework, and code").

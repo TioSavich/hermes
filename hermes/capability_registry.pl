@@ -63,39 +63,39 @@ capability('fraction_extra_claim_witness', 'cw_fraction_extra_claim', 'render', 
 capability('fraction_render', 'hermes_worker', 'render', ['kind'], routed_paged).
 capability('fsm_engine_witness', 'cw_fsm_engine', 'unclassified', ['descriptor', 'source'], routed_paged).
 capability('geometry', 'hermes_worker', 'geometry_witness', ['args', 'predicate'], routed_paged).
-capability('geometry_angle_material_witness', 'hermes_worker', 'geometry_witness', ['claim_id'], routed_paged).
-capability('geometry_area_perimeter_material_witness', 'hermes_worker', 'geometry_witness', ['claim_id'], routed_paged).
-capability('geometry_attribute_material_witness', 'hermes_worker', 'geometry_witness', ['claim_id'], routed_paged).
-capability('geometry_ccss_standard_witness', 'hermes_worker', 'geometry_witness', ['code', 'concept'], routed_paged).
-capability('geometry_classification_material_witness', 'hermes_worker', 'geometry_witness', ['claim_id'], routed_paged).
-capability('geometry_coordinate_material_witness', 'hermes_worker', 'geometry_witness', ['claim_id'], routed_paged).
-capability('geometry_cross_link_witness', 'hermes_worker', 'geometry_witness', ['relation', 'source', 'status', 'target'], routed_paged).
-capability('geometry_developmental_arc_witness', 'hermes_worker', 'geometry_witness', ['arc_id'], routed_paged).
+capability('geometry_angle_material_witness', 'user', 'geometry_witness', ['claim_id'], routed_paged).
+capability('geometry_area_perimeter_material_witness', 'user', 'geometry_witness', ['claim_id'], routed_paged).
+capability('geometry_attribute_material_witness', 'user', 'geometry_witness', ['claim_id'], routed_paged).
+capability('geometry_ccss_standard_witness', 'user', 'geometry_witness', ['code', 'concept'], routed_paged).
+capability('geometry_classification_material_witness', 'user', 'geometry_witness', ['claim_id'], routed_paged).
+capability('geometry_coordinate_material_witness', 'user', 'geometry_witness', ['claim_id'], routed_paged).
+capability('geometry_cross_link_witness', 'user', 'geometry_witness', ['relation', 'source', 'status', 'target'], routed_paged).
+capability('geometry_developmental_arc_witness', 'user', 'geometry_witness', ['arc_id'], routed_paged).
 capability('geometry_entailment_witness', 'sequent_engine', 'geometry_witness', ['entailed', 'entailer'], routed_paged).
-capability('geometry_im_grade5_standard_anchor_witness', 'hermes_worker', 'geometry_witness', ['code', 'concept', 'framework'], routed_paged).
-capability('geometry_im_grade6_lesson_standard_witness', 'hermes_worker', 'geometry_witness', ['code', 'concept'], routed_paged).
-capability('geometry_im_grade7_lesson_standard_witness', 'hermes_worker', 'geometry_witness', ['code', 'concept'], routed_paged).
-capability('geometry_im_grade8_lesson_standard_witness', 'hermes_worker', 'geometry_witness', ['code', 'concept'], routed_paged).
-capability('geometry_indiana_standard_witness', 'hermes_worker', 'geometry_witness', ['code', 'concept'], routed_paged).
-capability('geometry_lakoff_nunez_metaphor_witness', 'hermes_worker', 'geometry_witness', ['concept', 'metaphor'], routed_paged).
-capability('geometry_material_profile_witness', 'hermes_worker', 'geometry_witness', ['concept'], routed_paged).
-capability('geometry_measurement_misconception_witness', 'hermes_worker', 'geometry_witness', ['id_value'], routed_paged).
-capability('geometry_measuring_stick_metaphor_witness', 'hermes_worker', 'geometry_witness', ['concept', 'metaphor'], routed_paged).
-capability('geometry_n103_bootstrap_witness', 'hermes_worker', 'geometry_witness', ['bootstrap_id'], routed_paged).
-capability('geometry_pck_classification_witness', 'hermes_worker', 'geometry_witness', ['concept'], routed_paged).
-capability('geometry_pythagorean_material_witness', 'hermes_worker', 'geometry_witness', ['claim_id'], routed_paged).
-capability('geometry_quadrilateral_entailment_witness', 'hermes_worker', 'geometry_witness', ['entailed', 'entailer'], routed_paged).
-capability('geometry_shape_recognition_material_witness', 'hermes_worker', 'geometry_witness', ['claim_id'], routed_paged).
-capability('geometry_similarity_material_witness', 'hermes_worker', 'geometry_witness', ['claim_id'], routed_paged).
-capability('geometry_strength_lift_coverage_witness', 'hermes_worker', 'geometry_witness', [], routed_paged).
-capability('geometry_synthesizer_anchor_material_witness', 'hermes_worker', 'geometry_witness', ['claim_id'], routed_paged).
-capability('geometry_synthesizer_triangulation_witness', 'hermes_worker', 'geometry_witness', ['concept'], routed_paged).
-capability('geometry_transformation_material_witness', 'hermes_worker', 'geometry_witness', ['claim_id'], routed_paged).
-capability('geometry_van_de_walle_bootstrap_witness', 'hermes_worker', 'geometry_witness', ['bootstrap_id'], routed_paged).
-capability('geometry_van_hiele_level_material_witness', 'hermes_worker', 'geometry_witness', ['claim_id'], routed_paged).
-capability('geometry_van_hiele_marker_witness', 'hermes_worker', 'geometry_witness', ['concept', 'level'], routed_paged).
-capability('geometry_van_hiele_material_witness', 'hermes_worker', 'geometry_witness', ['claim_id'], routed_paged).
-capability('geometry_volume_surface_area_material_witness', 'hermes_worker', 'geometry_witness', ['claim_id'], routed_paged).
+capability('geometry_im_grade5_standard_anchor_witness', 'user', 'geometry_witness', ['code', 'concept', 'framework'], routed_paged).
+capability('geometry_im_grade6_lesson_standard_witness', 'user', 'geometry_witness', ['code', 'concept'], routed_paged).
+capability('geometry_im_grade7_lesson_standard_witness', 'user', 'geometry_witness', ['code', 'concept'], routed_paged).
+capability('geometry_im_grade8_lesson_standard_witness', 'user', 'geometry_witness', ['code', 'concept'], routed_paged).
+capability('geometry_indiana_standard_witness', 'user', 'geometry_witness', ['code', 'concept'], routed_paged).
+capability('geometry_lakoff_nunez_metaphor_witness', 'user', 'geometry_witness', ['concept', 'metaphor'], routed_paged).
+capability('geometry_material_profile_witness', 'user', 'geometry_witness', ['concept'], routed_paged).
+capability('geometry_measurement_misconception_witness', 'user', 'geometry_witness', ['id_value'], routed_paged).
+capability('geometry_measuring_stick_metaphor_witness', 'user', 'geometry_witness', ['concept', 'metaphor'], routed_paged).
+capability('geometry_n103_bootstrap_witness', 'user', 'geometry_witness', ['bootstrap_id'], routed_paged).
+capability('geometry_pck_classification_witness', 'user', 'geometry_witness', ['concept'], routed_paged).
+capability('geometry_pythagorean_material_witness', 'user', 'geometry_witness', ['claim_id'], routed_paged).
+capability('geometry_quadrilateral_entailment_witness', 'user', 'geometry_witness', ['entailed', 'entailer'], routed_paged).
+capability('geometry_shape_recognition_material_witness', 'user', 'geometry_witness', ['claim_id'], routed_paged).
+capability('geometry_similarity_material_witness', 'user', 'geometry_witness', ['claim_id'], routed_paged).
+capability('geometry_strength_lift_coverage_witness', 'user', 'geometry_witness', [], routed_paged).
+capability('geometry_synthesizer_anchor_material_witness', 'user', 'geometry_witness', ['claim_id'], routed_paged).
+capability('geometry_synthesizer_triangulation_witness', 'user', 'geometry_witness', ['concept'], routed_paged).
+capability('geometry_transformation_material_witness', 'user', 'geometry_witness', ['claim_id'], routed_paged).
+capability('geometry_van_de_walle_bootstrap_witness', 'user', 'geometry_witness', ['bootstrap_id'], routed_paged).
+capability('geometry_van_hiele_level_material_witness', 'user', 'geometry_witness', ['claim_id'], routed_paged).
+capability('geometry_van_hiele_marker_witness', 'user', 'geometry_witness', ['concept', 'level'], routed_paged).
+capability('geometry_van_hiele_material_witness', 'user', 'geometry_witness', ['claim_id'], routed_paged).
+capability('geometry_volume_surface_area_material_witness', 'user', 'geometry_witness', ['claim_id'], routed_paged).
 capability('gesture_alignment', 'gesture_alignment', 'unclassified', ['observations', 'utterances'], routed_paged).
 capability('get_base', 'cgi_base', 'infrastructure', [], routed_paged).
 capability('godel_primes_witness', 'cw_godel_primes', 'unclassified', ['query', 'source'], routed_paged).
