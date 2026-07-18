@@ -7,7 +7,7 @@
  *           data-root="/more-zeeman/" data-app="/" data-active="base-ten"></script>
  *
  * It wraps the page's existing <body> content in an app frame: a grouped,
- * collapsible left sidebar (Workspace / Tools / Journey / Philosophy) and a
+ * collapsible left sidebar (Practice / Theory / Research wing) and a
  * slim top bar (collapse toggle, page title, a slot the host page can fill).
  * It reads its palette from whichever token sheet the page already loaded —
  * warm hermes-tokens.css for the console + tools, dark hermes-tokens-dark.css
@@ -57,21 +57,18 @@
   // ---- the app map -------------------------------------------------------
   // Each item: [id, label, href]. Sections group them.
   var NAV = [
-    { title: "Workspace", kind: "console", items: [
-      ["discussions", "Discussions",      app("discussions.html")],
+    { title: "Practice", kind: "practice", items: [
       ["console",     "Console",          app("console.html")],
-      ["monitoring",  "Monitoring chart", mz("monitoring_chart.html")],
-      ["atlas",       "Capability Atlas", mz("atlas.html")],
+      ["discussions", "Discussions",      app("discussions.html")],
+      ["visualizations", "Visualizers",   mz("visualizations.html")],
       ["witnesses",   "Witnesses",        mz("witnesses.html")],
+      ["monitoring",  "Monitoring chart", mz("monitoring_chart.html")],
+      ["gallery",     "Gallery",          mz("gallery.html")],
     ]},
-    { title: "Tools", kind: "tools", items: [
-      ["visualizations", "Visualizers", mz("visualizations.html")],
-      ["gallery",        "Gallery",         mz("gallery.html")],
-    ]},
-    { title: "Critical Mathematics", kind: "critical", items: [
+    { title: "Theory", kind: "theory", items: [
+      ["landing",    "The journey — overview", mz("landing.html")],
       ["no",         "Two ways to say no",   app("no.html")],
       ["breaks",     "Where it breaks",      app("breaks.html")],
-      ["landing",    "The journey — overview", mz("landing.html")],
       ["snap",       "The Snap",    mz("index.html")],
       ["counting",   "Counting",    mz("counting.html")],
       ["crisis",     "Crisis",      mz("crisis.html")],
@@ -82,6 +79,7 @@
       ["matrix",     "The Matrix",  mz("matrix.html")],
       ["muds",       "Meaning-Use Diagrams", mz("muds.html")],
       ["scoreboard", "Scoreboard",  mz("scoreboard.html")],
+      ["atlas",      "Capability Atlas", mz("atlas.html")],
     ]},
     { title: "Research wing", kind: "research", items: [
       ["bridge",       "The Bridge",       mz("bridge.html")],
@@ -253,9 +251,11 @@
   var MARK = ROOT + "hermes_logo.svg";
   var ICON_MENU = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>';
   var CHEV = '<svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
-  var SECTION_DOT = { console: "var(--rust,#b95238)", tools: "var(--gold-deep,var(--snap,#a97c24))",
-    critical: "var(--teal-deep,var(--release,#2c5e66))",
-    journey: "var(--teal-deep,var(--release,#2c5e66))", philosophy: "var(--muted,#6c6452)" };
+  var SECTION_DOT = {
+    practice: "var(--rust,#b95238)",
+    theory: "var(--teal-deep,var(--release,#2c5e66))",
+    research: "var(--muted,#6c6452)"
+  };
 
   // ---- build DOM ---------------------------------------------------------
   function h(tag, cls, html) {

@@ -14,6 +14,7 @@
     .hub-wrap h1 { font-size: 1.7rem; }
     .hub-wrap h2 { margin: 2rem 0 .35rem; }
     .lede { color: var(--muted, #665f4f); max-width: 68ch; margin: 0 0 1.4rem; }
+    .why-link { display: block; width: fit-content; margin: -.9rem 0 1.4rem; font: 12px/1.4 var(--mono, ui-monospace, monospace); color: var(--gold-deep, var(--release, #a97c24)); }
     .how { border: 1px solid var(--line, rgba(13,12,8,.14)); border-radius: 10px;
            background: var(--paper-cool, #ede4cf); padding: .8rem 1rem; margin-bottom: 1.6rem;
            font-size: .92rem; }
@@ -38,6 +39,7 @@
     <h1>Hermes visualizers</h1>
     <p class="lede">Choose a format by what it draws. Each format opens with a worked example;
       arithmetic formats can send changed inputs to a running Hermes worker.</p>
+    <a class="why-link" href="index.html#snap">Why this exists: the cost-to-snap argument behind these manipulatives.</a>
     <div class="how">
       <b>Just looking?</b> Open any format below. The embedded filmstrip draws without a server.
       <br><b>Want to change the inputs?</b> Run <code>bash hermes/app/launch.sh</code>, then use

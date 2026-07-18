@@ -14,6 +14,7 @@
     h1 { margin: 0 0 .35rem; font-size: 1.7rem; }
     .lede, .status, .section-note, .note { max-width: 76ch; color: var(--muted, #665f4f); }
     .lede { margin: 0; }
+    .why-link { display: block; width: fit-content; margin: .35rem 0 1rem; font: 12px/1.4 var(--mono, ui-monospace, monospace); color: var(--gold-deep, var(--release, #a97c24)); }
     .status { margin: .45rem 0 1.5rem; }
     details.family { margin: 1rem 0; border: 1px solid var(--line, rgba(13,12,8,.14));
                      border-radius: 10px; background: rgba(255,253,247,.35); }
@@ -52,6 +53,7 @@
     <h1>Witnesses</h1>
     <p class="lede">These controls query finite records in the loaded knowledge base. Each result
       stays within the named relation and its stated boundary.</p>
+    <a class="why-link" href="../no.html">Why this exists: two ways to say no.</a>
     <p id="status" class="status" role="status" aria-live="polite">Loading controls from the local worker…</p>
 
     <details class="family" id="crosswalk-claims" open>
