@@ -1662,21 +1662,16 @@ dispatch_request(standard_3_ca_5_mult_skip_count_witness, Id, Request, Response)
     ).
 
 dispatch_request(standard_2_ns_3_parity_witness, Id, Request, Response) :-
-    (   get_dict(number, Request, JSONNumber)
-    ->  json_to_term(JSONNumber, Number),
-        (   get_dict_opt(result, Request, JSONResult)
-        ->  json_to_term(JSONResult, Result)
-        ;   true
-        ),
-        (   standard_2_ns_3:parity_witness(Number, Result, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_standard_2_ns_3_parity_witness,
-                "standard_2_ns_3_parity_witness found no finite parity proof",
-                Response)
-        )
-    ;   error_response(Id, malformed_standard_2_ns_3_parity_request,
-            "standard_2_ns_3_parity_witness requires number",
+    request_recollection(Request, number, 4, Number),
+    (   get_dict_opt(result, Request, JSONResult)
+    ->  json_to_term(JSONResult, Result)
+    ;   true
+    ),
+    (   standard_2_ns_3:parity_witness(Number, Result, Witness)
+    ->  json_safe(Witness, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_standard_2_ns_3_parity_witness,
+            "standard_2_ns_3_parity_witness found no finite parity proof",
             Response)
     ).
 
@@ -1728,151 +1723,101 @@ dispatch_request(standard_k_ns_5_6_compare_groups_witness, Id, Request, Response
     ).
 
 dispatch_request(standard_k_ns_7_place_value_witness, Id, Request, Response) :-
-    (   get_dict(number, Request, JSONNumber)
-    ->  json_to_term(JSONNumber, Number),
-        (   standard_k_ns_7:describe_place_value_witness(Number, _Description, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_standard_k_ns_7_place_value_witness,
-                "standard_k_ns_7_place_value_witness found no finite one-ten-group proof",
-                Response)
-        )
-    ;   error_response(Id, malformed_standard_k_ns_7_place_value_request,
-            "standard_k_ns_7_place_value_witness requires number",
+    request_recollection(Request, number, 14, Number),
+    (   standard_k_ns_7:describe_place_value_witness(Number, _Description, Witness)
+    ->  json_safe(Witness, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_standard_k_ns_7_place_value_witness,
+            "standard_k_ns_7_place_value_witness found no finite one-ten-group proof",
             Response)
     ).
 
 dispatch_request(standard_k_ca_1_3_complement_witness, Id, Request, Response) :-
-    (   get_dict(given, Request, JSONGiven)
-    ->  json_to_term(JSONGiven, Given),
-        (   standard_k_ca_1_3:find_complement_to_ten_witness(Given, _Complement, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_standard_k_ca_1_3_complement_witness,
-                "standard_k_ca_1_3_complement_witness found no finite complement-to-ten proof",
-                Response)
-        )
-    ;   error_response(Id, malformed_standard_k_ca_1_3_complement_request,
-            "standard_k_ca_1_3_complement_witness requires given",
+    request_recollection(Request, given, 6, Given),
+    (   standard_k_ca_1_3:find_complement_to_ten_witness(Given, _Complement, Witness)
+    ->  json_safe(Witness, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_standard_k_ca_1_3_complement_witness,
+            "standard_k_ca_1_3_complement_witness found no finite complement-to-ten proof",
             Response)
     ).
 
 dispatch_request(standard_1_ns_2_place_value_witness, Id, Request, Response) :-
-    (   get_dict(number, Request, JSONNumber)
-    ->  json_to_term(JSONNumber, Number),
-        (   standard_1_ns_2:describe_two_digit_witness(Number, _Description, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_standard_1_ns_2_place_value_witness,
-                "standard_1_ns_2_place_value_witness found no finite two-digit place-value proof",
-                Response)
-        )
-    ;   error_response(Id, malformed_standard_1_ns_2_place_value_request,
-            "standard_1_ns_2_place_value_witness requires number",
+    request_recollection(Request, number, 47, Number),
+    (   standard_1_ns_2:describe_two_digit_witness(Number, _Description, Witness)
+    ->  json_safe(Witness, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_standard_1_ns_2_place_value_witness,
+            "standard_1_ns_2_place_value_witness found no finite two-digit place-value proof",
             Response)
     ).
 
 dispatch_request(standard_1_ca_1_making_ten_witness, Id, Request, Response) :-
-    (   get_dict(a, Request, JSONA),
-        get_dict(b, Request, JSONB)
-    ->  json_to_term(JSONA, A),
-        json_to_term(JSONB, B),
-        (   standard_1_ca_1:add_making_ten_witness(A, B, _Sum, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_standard_1_ca_1_making_ten_witness,
-                "standard_1_ca_1_making_ten_witness found no finite making-ten proof",
-                Response)
-        )
-    ;   error_response(Id, malformed_standard_1_ca_1_making_ten_request,
-            "standard_1_ca_1_making_ten_witness requires a and b",
+    request_recollection(Request, a, 8, A),
+    request_recollection(Request, b, 5, B),
+    (   standard_1_ca_1:add_making_ten_witness(A, B, _Sum, Witness)
+    ->  json_safe(Witness, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_standard_1_ca_1_making_ten_witness,
+            "standard_1_ca_1_making_ten_witness found no finite making-ten proof",
             Response)
     ).
 
 dispatch_request(standard_1_ca_3_add_by_place_value_witness, Id, Request, Response) :-
-    (   get_dict(a, Request, JSONA),
-        get_dict(b, Request, JSONB)
-    ->  json_to_term(JSONA, A),
-        json_to_term(JSONB, B),
-        (   standard_1_ca_3:add_by_place_value_witness(A, B, _Sum, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_standard_1_ca_3_add_by_place_value_witness,
-                "standard_1_ca_3_add_by_place_value_witness found no finite place-value addition proof",
-                Response)
-        )
-    ;   error_response(Id, malformed_standard_1_ca_3_addition_request,
-            "standard_1_ca_3_add_by_place_value_witness requires a and b",
+    request_recollection(Request, a, 27, A),
+    request_recollection(Request, b, 35, B),
+    (   standard_1_ca_3:add_by_place_value_witness(A, B, _Sum, Witness)
+    ->  json_safe(Witness, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_standard_1_ca_3_add_by_place_value_witness,
+            "standard_1_ca_3_add_by_place_value_witness found no finite place-value addition proof",
             Response)
     ).
 
 dispatch_request(standard_2_ca_2_add_three_digit_witness, Id, Request, Response) :-
-    (   get_dict(a, Request, JSONA),
-        get_dict(b, Request, JSONB)
-    ->  json_to_term(JSONA, A),
-        json_to_term(JSONB, B),
-        (   standard_2_ca_2:add_three_digit_witness(A, B, _Sum, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_standard_2_ca_2_add_three_digit_witness,
-                "standard_2_ca_2_add_three_digit_witness found no finite three-digit addition proof",
-                Response)
-        )
-    ;   error_response(Id, malformed_standard_2_ca_2_addition_request,
-            "standard_2_ca_2_add_three_digit_witness requires a and b",
+    request_recollection(Request, a, 347, A),
+    request_recollection(Request, b, 286, B),
+    (   standard_2_ca_2:add_three_digit_witness(A, B, _Sum, Witness)
+    ->  json_safe(Witness, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_standard_2_ca_2_add_three_digit_witness,
+            "standard_2_ca_2_add_three_digit_witness found no finite three-digit addition proof",
             Response)
     ).
 
 dispatch_request(standard_3_ca_3_4_fact_family_witness, Id, Request, Response) :-
-    (   get_dict(a, Request, JSONA),
-        get_dict(b, Request, JSONB)
-    ->  json_to_term(JSONA, A),
-        json_to_term(JSONB, B),
-        (   standard_3_ca_3_4:mult_div_family_witness(A, B, _Product, _Facts, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_standard_3_ca_3_4_fact_family_witness,
-                "standard_3_ca_3_4_fact_family_witness found no finite multiplication/division family proof",
-                Response)
-        )
-    ;   error_response(Id, malformed_standard_3_ca_3_4_family_request,
-            "standard_3_ca_3_4_fact_family_witness requires a and b",
+    request_recollection(Request, a, 3, A),
+    request_recollection(Request, b, 4, B),
+    (   standard_3_ca_3_4:mult_div_family_witness(A, B, _Product, _Facts, Witness)
+    ->  json_safe(Witness, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_standard_3_ca_3_4_fact_family_witness,
+            "standard_3_ca_3_4_fact_family_witness found no finite multiplication/division family proof",
             Response)
     ).
 
 dispatch_request(standard_3_ns_2_unit_fraction_witness, Id, Request, Response) :-
-    (   get_dict(denominator, Request, JSONDenominator)
-    ->  json_to_term(JSONDenominator, Denominator),
-        (   standard_3_ns_2:make_unit_fraction_witness(Denominator, _Fraction, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_standard_3_ns_2_unit_fraction_witness,
-                "standard_3_ns_2_unit_fraction_witness found no finite unit-fraction proof",
-                Response)
-        )
-    ;   error_response(Id, malformed_standard_3_ns_2_unit_fraction_request,
-            "standard_3_ns_2_unit_fraction_witness requires denominator",
+    request_recollection(Request, denominator, 4, Denominator),
+    (   standard_3_ns_2:make_unit_fraction_witness(Denominator, _Fraction, Witness)
+    ->  json_safe(Witness, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_standard_3_ns_2_unit_fraction_witness,
+            "standard_3_ns_2_unit_fraction_witness found no finite unit-fraction proof",
             Response)
     ).
 
 dispatch_request(standard_3_ns_5_fraction_comparison_witness, Id, Request, Response) :-
-    (   get_dict(left, Request, JSONLeft),
-        get_dict(right, Request, JSONRight)
-    ->  json_to_term(JSONLeft, Left),
-        json_to_term(JSONRight, Right),
-        (   get_dict_opt(result, Request, JSONResult)
-        ->  json_to_term(JSONResult, Result)
-        ;   true
-        ),
-        (   standard_3_ns_5:compare_fractions_witness(Left, Right, Result, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_standard_3_ns_5_fraction_comparison_witness,
-                "standard_3_ns_5_fraction_comparison_witness found no finite comparison proof",
-                Response)
-        )
-    ;   error_response(Id, malformed_standard_3_ns_5_fraction_request,
-            "standard_3_ns_5_fraction_comparison_witness requires left and right",
+    request_fraction(Request, left, _{n:1, d:4}, Left),
+    request_fraction(Request, right, _{n:3, d:4}, Right),
+    (   get_dict_opt(result, Request, JSONResult)
+    ->  json_to_term(JSONResult, Result)
+    ;   true
+    ),
+    (   standard_3_ns_5:compare_fractions_witness(Left, Right, Result, Witness)
+    ->  json_safe(Witness, Safe),
+        ok_response(Id, Safe, Response)
+    ;   error_response(Id, no_standard_3_ns_5_fraction_comparison_witness,
+            "standard_3_ns_5_fraction_comparison_witness found no finite comparison proof",
             Response)
     ).
 
@@ -3899,10 +3844,47 @@ request_integer(Request, Key, Default, N) :-
 %
 %   Public worker callers should not have to spell grounded recollections for
 %   the elementary-standard witnesses; accept the integer boundary and convert
-%   it at the Prolog edge.
+%   it at the Prolog edge. Legacy grounded-term strings remain accepted.
 request_recollection(Request, Key, Default, Recollection) :-
-    request_integer(Request, Key, Default, N),
-    integer_to_recollection(N, Recollection).
+    (   get_dict_opt(Key, Request, Value),
+        json_to_term(Value, Term),
+        Term = recollection(_)
+    ->  Recollection = Term
+    ;   request_integer(Request, Key, Default, N),
+        integer_to_recollection(N, Recollection)
+    ).
+
+%!  request_fraction(+Request, +Key, +Default, -Fraction) is det.
+%
+%   Accept an n/d string or a JSON {n,d} object and construct the grounded
+%   fraction at the Prolog edge. Legacy grounded-term strings remain accepted.
+request_fraction(Request, Key, Default, Fraction) :-
+    (   get_dict_opt(Key, Request, Value),
+        fraction_request_value(Value, Parsed)
+    ->  Fraction = Parsed
+    ;   fraction_request_value(Default, Fraction)
+    ).
+
+fraction_request_value(Value, Fraction) :-
+    json_to_term(Value, Term),
+    Term = fraction(_, _),
+    !,
+    Fraction = Term.
+fraction_request_value(Value, fraction(Numerator, Denominator)) :-
+    is_dict(Value),
+    request_integer(Value, n, 0, N),
+    request_integer(Value, d, 1, D),
+    integer_to_recollection(N, Numerator),
+    integer_to_recollection(D, Denominator).
+fraction_request_value(Value, fraction(Numerator, Denominator)) :-
+    ( string(Value) ; atom(Value) ),
+    split_string(Value, "/", " \t", [NString, DString]),
+    number_string(N, NString),
+    number_string(D, DString),
+    integer(N),
+    integer(D),
+    integer_to_recollection(N, Numerator),
+    integer_to_recollection(D, Denominator).
 
 % =============================================================================
 % Render-op support: request -> compiler Spec, and the additive-field threading

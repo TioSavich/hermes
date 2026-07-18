@@ -383,17 +383,15 @@
       };
       var standardNumberInputs = {
         standard_k_ns_1_count_by_ones_witness: ["from", "to"], standard_k_ns_2_represent_count_witness: ["object_count"],
-        standard_1_ns_1_count_by_fives_witness: ["from", "to"], standard_2_ns_1_count_by_twos_witness: ["from", "to"],
-        standard_2_ns_2_4_place_value_witness: ["number"], standard_2_ns_5_place_value_comparison_witness: ["left", "right"],
-        multiply_array_witness: ["cols", "rows"], mult_div_family_witness: ["a", "b"],
-        standard_3_ca_5_mult_skip_count_witness: ["factor", "times"]
-      };
-      var standardRecollectionInputs = {
         standard_k_ns_7_place_value_witness: ["number"], standard_k_ca_1_3_complement_witness: ["given"],
+        standard_1_ns_1_count_by_fives_witness: ["from", "to"], standard_2_ns_1_count_by_twos_witness: ["from", "to"],
         standard_1_ns_2_place_value_witness: ["number"], standard_1_ca_1_making_ten_witness: ["a", "b"],
         standard_1_ca_3_add_by_place_value_witness: ["a", "b"], standard_2_ns_3_parity_witness: ["number"],
+        standard_2_ns_2_4_place_value_witness: ["number"], standard_2_ns_5_place_value_comparison_witness: ["left", "right"],
         standard_2_ca_2_add_three_digit_witness: ["a", "b"], standard_3_ns_2_unit_fraction_witness: ["denominator"],
-        standard_3_ca_3_4_fact_family_witness: ["a", "b"]
+        standard_3_ca_3_4_fact_family_witness: ["a", "b"],
+        multiply_array_witness: ["cols", "rows"], mult_div_family_witness: ["a", "b"],
+        standard_3_ca_5_mult_skip_count_witness: ["factor", "times"]
       };
 
       var pmlOps = ["semantic_material_witness", "intersubjective_material_witness", "mua_kind_coherence_witness", "validate_reader_axioms"];
@@ -434,7 +432,7 @@
         {id: "standards", root: "standards-groups", route: "/api/witness/standards",
          groups: standardsGroups, defaults: standardsDefaults, details: standardsDetails,
          listInputs: {objects: true, group_a: true, group_b: true}, numberInputsByOp: standardNumberInputs,
-         recollectionInputsByOp: standardRecollectionInputs, autoOp: "standard_k_ns_1_count_by_ones_witness",
+         autoOp: "standard_k_ns_1_count_by_ones_witness",
          button: "Run trace", pending: "Running trace…", failure: "Trace failed: "},
         {id: "pml", root: "pml-groups", route: "/api/witness/pml",
          groups: [{name: "Modal-posture and material-inference relations", ops: pmlOps}], defaults: pmlDefaults,
@@ -446,20 +444,6 @@
 
       function inOpMap(map, op, name) {
         return Boolean(map && map[op] && map[op].indexOf(name) !== -1);
-      }
-
-      function recollectionTerm(value) {
-        var count = Number(value);
-        if (!Number.isInteger(count) || count < 0) throw new Error("counts must be nonnegative integers");
-        var tallies = [];
-        for (var index = 0; index < count; index += 1) tallies.push("tally");
-        return "recollection([" + tallies.join(",") + "])";
-      }
-
-      function fractionTerm(value) {
-        var match = /^\s*(\d+)\s*\/\s*(\d+)\s*$/.exec(value);
-        if (!match) throw new Error("fractions must use n/d notation");
-        return "fraction(" + recollectionTerm(match[1]) + "," + recollectionTerm(match[2]) + ")";
       }
 
       function valueFor(family, op, name) {
@@ -474,10 +458,6 @@
         if (family.listInputs && family.listInputs[name]) return name + " (comma-separated list)";
         if (family.numberInputs && family.numberInputs[name]) return name + " (number)";
         if (inOpMap(family.numberInputsByOp, op, name)) return name + " (number)";
-        if (inOpMap(family.recollectionInputsByOp, op, name)) return name + " (count; converted to a grounded recollection)";
-        if (family.id === "standards" && op === "standard_3_ns_5_fraction_comparison_witness" && (name === "left" || name === "right")) {
-          return name + " (fraction n/d; converted to grounded terms)";
-        }
         if (family.id === "pml") return name === "clauses"
           ? "clauses (JSON list of modal-posture records)" : name + " (Prolog term text)";
         if (family.id === "grounding") return name + (name === "practice"
@@ -506,7 +486,7 @@
         }
         input.name = name;
         input.required = true;
-        if (inOpMap(family.numberInputsByOp, op, name) || inOpMap(family.recollectionInputsByOp, op, name)) {
+        if (inOpMap(family.numberInputsByOp, op, name)) {
           input.type = "number";
           input.min = "0";
           input.step = "1";
@@ -522,10 +502,6 @@
         }
         if ((family.numberInputs && family.numberInputs[name]) || inOpMap(family.numberInputsByOp, op, name)
             || (family.id === "geometry" && name === "level")) return Number(value);
-        if (inOpMap(family.recollectionInputsByOp, op, name)) return recollectionTerm(value);
-        if (family.id === "standards" && op === "standard_3_ns_5_fraction_comparison_witness" && (name === "left" || name === "right")) {
-          return fractionTerm(value);
-        }
         if (family.id === "pml" && name === "clauses") return JSON.parse(value);
         return value;
       }

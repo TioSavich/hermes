@@ -35,7 +35,7 @@ vm.runInContext(script.slice(strict + '"use strict";'.length, stop), context, {
 });
 const fields = [
   "id", "groups", "defaults", "examples", "fieldHints", "details",
-  "listInputs", "numberInputs", "numberInputsByOp", "recollectionInputsByOp"
+  "listInputs", "numberInputs", "numberInputsByOp"
 ];
 const output = context.families.map((family) => {
   const row = {};
@@ -73,20 +73,6 @@ def in_op_map(mapping: dict[str, list[str]], op: str, name: str) -> bool:
     return name in mapping.get(op, [])
 
 
-def recollection_term(value: Any) -> str:
-    count = int(value)
-    if count < 0 or count != float(value):
-        raise ValueError("counts must be nonnegative integers")
-    return "recollection([" + ",".join(["tally"] * count) + "])"
-
-
-def fraction_term(value: Any) -> str:
-    match = re.fullmatch(r"\s*(\d+)\s*/\s*(\d+)\s*", str(value))
-    if not match:
-        raise ValueError("fractions must use n/d notation")
-    return f"fraction({recollection_term(int(match[1]))},{recollection_term(int(match[2]))})"
-
-
 def page_value(family: dict[str, Any], op: str, name: str) -> Any:
     defaults = family.get("defaults", {}).get(op, {})
     if name in defaults:
@@ -104,14 +90,6 @@ def page_value(family: dict[str, Any], op: str, name: str) -> Any:
         family.get("numberInputsByOp", {}), op, name
     ) or (family["id"] == "geometry" and name == "level"):
         return float(value) if "." in str(value) else int(value)
-    if in_op_map(family.get("recollectionInputsByOp", {}), op, name):
-        return recollection_term(value)
-    if (
-        family["id"] == "standards"
-        and op == "standard_3_ns_5_fraction_comparison_witness"
-        and name in {"left", "right"}
-    ):
-        return fraction_term(value)
     if family["id"] == "pml" and name == "clauses" and isinstance(value, str):
         return json.loads(value)
     return value
