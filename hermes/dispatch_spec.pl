@@ -343,6 +343,261 @@ dispatch_spec(geometry_im_grade5_standard_anchor_witness,
     witness(no_geometry_im_grade5_standard_anchor_witness,
             malformed_geometry_im_grade5_standard_anchor_request)).
 
+% Standards witnesses. Defaults are part of the public boundary: the generic
+% reader converts an authored default through the same converter as a supplied
+% value, matching request_integer/request_recollection/request_fraction.
+dispatch_spec(standard_k_ns_1_count_by_ones_witness,
+    [from-default(recollection, 1), to-default(recollection, 10)],
+    call(standard_k_ns_1:count_by_ones_witness,
+         [from, to, drop, out(witness)]),
+    witness(no_standard_k_ns_1_count_by_ones_witness)).
+dispatch_spec(standard_k_ns_2_represent_count_witness,
+    [object_count-default(int, 4)],
+    call(user:standard_k_ns_2_dispatch_witness,
+         [object_count, out(witness)]),
+    witness(no_standard_k_ns_2_represent_count_witness)).
+dispatch_spec(standard_1_ns_1_count_by_fives_witness,
+    [from-default(recollection, 5), to-default(recollection, 20)],
+    call(standard_1_ns_1:count_by_fives_witness,
+         [from, to, drop, out(witness)]),
+    witness(no_standard_1_ns_1_count_by_fives_witness)).
+dispatch_spec(standard_2_ns_1_count_by_twos_witness,
+    [from-default(recollection, 2), to-default(recollection, 10)],
+    call(standard_2_ns_1:count_by_twos_witness,
+         [from, to, drop, out(witness)]),
+    witness(no_standard_2_ns_1_count_by_twos_witness)).
+dispatch_spec(standard_2_ns_2_4_place_value_witness,
+    [number-default(recollection, 347)],
+    call(standard_2_ns_2_4:describe_three_digit_witness,
+         [number, drop, out(witness)]),
+    witness(no_standard_2_ns_2_4_place_value_witness)).
+dispatch_spec(standard_2_ns_5_place_value_comparison_witness,
+    [left-default(recollection, 347), right-default(recollection, 329)],
+    call(standard_2_ns_5:compare_by_place_value_witness,
+         [left, right, drop, out(witness)]),
+    witness(no_standard_2_ns_5_place_value_comparison_witness)).
+dispatch_spec(standard_3_ca_5_mult_skip_count_witness,
+    [factor-default(recollection, 7), times-default(recollection, 8)],
+    call(user:standard_3_ca_5_dispatch_witness,
+         [factor, times, out(witness)]),
+    witness(no_standard_3_ca_5_mult_skip_count_witness)).
+dispatch_spec(standard_2_ns_3_parity_witness,
+    [number-default(recollection, 4), result-default(term, _)],
+    call(standard_2_ns_3:parity_witness,
+         [number, result, out(witness)]),
+    witness(no_standard_2_ns_3_parity_witness)).
+dispatch_spec(standard_k_ns_3_order_independence_witness,
+    [objects-term],
+    call(standard_k_ns_3:verify_order_independence_witness,
+         [objects, drop, out(witness)]),
+    witness(no_standard_k_ns_3_order_independence_witness,
+            malformed_standard_k_ns_3_order_independence_request)).
+dispatch_spec(standard_k_ns_4_verify_subitizing_witness,
+    [pattern-term],
+    call(standard_k_ns_4:verify_subitizing_witness,
+         [pattern, drop, out(witness)]),
+    witness(no_standard_k_ns_4_verify_subitizing_witness,
+            malformed_standard_k_ns_4_verify_subitizing_request)).
+dispatch_spec(standard_k_ns_5_6_compare_groups_witness,
+    [group_a-term, group_b-term],
+    call(standard_k_ns_5_6:compare_groups_witness,
+         [group_a, group_b, drop, out(witness)]),
+    witness(no_standard_k_ns_5_6_compare_groups_witness,
+            malformed_standard_k_ns_5_6_compare_groups_request)).
+dispatch_spec(standard_k_ns_7_place_value_witness,
+    [number-default(recollection, 14)],
+    call(standard_k_ns_7:describe_place_value_witness,
+         [number, drop, out(witness)]),
+    witness(no_standard_k_ns_7_place_value_witness)).
+dispatch_spec(standard_k_ca_1_3_complement_witness,
+    [given-default(recollection, 6)],
+    call(standard_k_ca_1_3:find_complement_to_ten_witness,
+         [given, drop, out(witness)]),
+    witness(no_standard_k_ca_1_3_complement_witness)).
+dispatch_spec(standard_1_ns_2_place_value_witness,
+    [number-default(recollection, 47)],
+    call(standard_1_ns_2:describe_two_digit_witness,
+         [number, drop, out(witness)]),
+    witness(no_standard_1_ns_2_place_value_witness)).
+dispatch_spec(standard_1_ca_1_making_ten_witness,
+    [a-default(recollection, 8), b-default(recollection, 5)],
+    call(standard_1_ca_1:add_making_ten_witness,
+         [a, b, drop, out(witness)]),
+    witness(no_standard_1_ca_1_making_ten_witness)).
+dispatch_spec(standard_1_ca_3_add_by_place_value_witness,
+    [a-default(recollection, 27), b-default(recollection, 35)],
+    call(standard_1_ca_3:add_by_place_value_witness,
+         [a, b, drop, out(witness)]),
+    witness(no_standard_1_ca_3_add_by_place_value_witness)).
+dispatch_spec(standard_2_ca_2_add_three_digit_witness,
+    [a-default(recollection, 347), b-default(recollection, 286)],
+    call(standard_2_ca_2:add_three_digit_witness,
+         [a, b, drop, out(witness)]),
+    witness(no_standard_2_ca_2_add_three_digit_witness)).
+dispatch_spec(standard_3_ca_3_4_fact_family_witness,
+    [a-default(recollection, 3), b-default(recollection, 4)],
+    call(standard_3_ca_3_4:mult_div_family_witness,
+         [a, b, drop, drop, out(witness)]),
+    witness(no_standard_3_ca_3_4_fact_family_witness)).
+dispatch_spec(standard_3_ns_2_unit_fraction_witness,
+    [denominator-default(recollection, 4)],
+    call(standard_3_ns_2:make_unit_fraction_witness,
+         [denominator, drop, out(witness)]),
+    witness(no_standard_3_ns_2_unit_fraction_witness)).
+dispatch_spec(standard_3_ns_5_fraction_comparison_witness,
+    [left-default(fraction, _{n:1, d:4}),
+     right-default(fraction, _{n:3, d:4}),
+     result-default(term, _)],
+    call(standard_3_ns_5:compare_fractions_witness,
+         [left, right, result, out(witness)]),
+    witness(no_standard_3_ns_5_fraction_comparison_witness)).
+dispatch_spec(multiply_array_witness,
+    [rows-default(nonnegative_int, 3), cols-default(nonnegative_int, 4)],
+    call(user:multiply_array_dispatch_witness,
+         [rows, cols, out(witness)]),
+    witness_input_errorless(no_multiply_array_witness)).
+dispatch_spec(mult_div_family_witness,
+    [a-default(nonnegative_int, 3), b-default(nonnegative_int, 4)],
+    call(user:mult_div_family_dispatch_witness,
+         [a, b, out(witness)]),
+    witness_input_errorless(no_mult_div_family_witness)).
+
+% Formal and PML witnesses, including the two formal axiom-pack gates.
+dispatch_spec(axiom_hierarchy_witness,
+    [kind-term],
+    call(user:hierarchy_proof_witness, [kind, out(witness)]),
+    witness(no_axiom_hierarchy_witness, missing_kind)).
+dispatch_spec(critique_bad_infinite,
+    [proof-term],
+    call(critique:bad_infinite_witness, [proof, out(witness)]),
+    witness(no_bad_infinite_witness, missing_proof)).
+dispatch_spec(defeasible_classify,
+    [inference_id-term, defeater_set-list],
+    call(defeasible_inference:classify_defeat_witness,
+         [inference_id, defeater_set, out(outcome), out(witness)]),
+    witness_wrap_errorless([outcome-outcome],
+                           malformed_defeasible_classify_request)).
+dispatch_spec(embodied_proof_witness,
+    [sequent-term, resources-json],
+    call(embodied_prover:proves_witness,
+         [sequent, resources, drop, drop, out(witness)]),
+    witness(no_embodied_proof_witness,
+            malformed_embodied_proof_request)).
+dispatch_spec(eml_transition_witness,
+    [from-term, to-term],
+    call(sequent_engine:eml_transition_witness,
+         [from, to, out(witness)]),
+    witness(no_eml_transition_witness,
+            malformed_eml_transition_request)).
+dispatch_spec(incoherent_witness,
+    [context-term],
+    call(sequent_engine:incoherent_witness,
+         [context, out(witness)]),
+    witness(no_incoherent_witness, missing_context)).
+dispatch_spec(incompatibility_discovery_witness,
+    [context-term, set-term],
+    call(incompatibility_discovery:classify_candidate_set_witness,
+         [context, set, drop, out(witness)]),
+    witness_errorless(malformed_incompatibility_discovery_request)).
+dispatch_spec(incompatibility_entailment_witness,
+    [replacement-term, replaced-term],
+    call(incompatibility_sets:incompatibility_entailment_witness,
+         [replacement, replaced, out(witness)]),
+    witness(no_incompatibility_entailment_witness,
+            malformed_incompatibility_entailment_request)).
+dispatch_spec(number_theory_self_defeat_witness,
+    [list-list],
+    call(sequent_engine:number_theory_self_defeat_witness,
+         [list, out(witness)],
+         [gate(axiom_pack(number_theory))]),
+    witness(no_number_theory_self_defeat_witness,
+            malformed_number_theory_request)).
+dispatch_spec(robinson_axiom_witness,
+    [axiom-term, claim-term],
+    call(sequent_engine:robinson_axiom_witness,
+         [axiom, claim, out(witness)],
+         [gate(axiom_pack(robinson))]),
+    witness(no_robinson_axiom_witness,
+            malformed_robinson_axiom_request)).
+dispatch_spec(semantic_material_witness,
+    [from-term, to-term],
+    call(semantic_axioms:semantic_material_witness,
+         [from, to, out(witness)]),
+    witness(no_semantic_material_witness,
+            malformed_semantic_material_request)).
+dispatch_spec(intersubjective_material_witness,
+    [from-term, to-term],
+    call(intersubjective_praxis:intersubjective_material_witness,
+         [from, to, out(witness)]),
+    witness(no_intersubjective_material_witness,
+            malformed_intersubjective_material_request)).
+dispatch_spec(mua_kind_coherence_witness,
+    [kind-term, row_text-json],
+    call(mua_relations:kind_mua_coherence_witness,
+         [kind, row_text, drop, out(witness)]),
+    witness(no_mua_kind_coherence_witness,
+            malformed_mua_kind_coherence_request)).
+dispatch_spec(validate_reader_axioms,
+    [clauses-json_list, lesson_code-code],
+    call(hermes_encyclopedia:validate_reader_axioms_dict,
+         [lesson_code, clauses, out(dict)]),
+    raw(missing_arguments)).
+
+% Grounding and misconception operations use thin response adapters where the
+% historical result is an aggregate rather than a predicate-owned witness.
+dispatch_spec(commitment_match,
+    [content-nonempty_text],
+    call(user:commitment_match_dispatch_dict, [content, out(dict)]),
+    raw_safe(missing_content)).
+dispatch_spec(corpus_grammar_summary,
+    [],
+    call(corpus_attested_grammar:corpus_grammar_summary, [out(witness)]),
+    witness(no_corpus_grammar_summary)).
+dispatch_spec(elaborations,
+    [],
+    call(user:elaborations_dispatch_dict, [out(dict)]),
+    raw).
+dispatch_spec(grounding_inference_witness,
+    [metaphor-term, inference-term],
+    call(grounding_metaphors:grounds_inference_witness,
+         [metaphor, inference, drop, out(witness)]),
+    witness(no_grounding_inference_witness,
+            malformed_grounding_inference_request)).
+dispatch_spec(image_schema,
+    [practice-practice],
+    call(user:image_schema_dispatch_dict, [practice, out(dict)]),
+    raw(missing_practice)).
+dispatch_spec(primitive_for_practice,
+    [practice-practice],
+    call(user:primitive_for_practice_dispatch_dict, [practice, out(dict)]),
+    raw(missing_practice)).
+dispatch_spec(representation_spine_witness,
+    [concept-default(optional_code, _)],
+    call(user:representation_spine_dispatch_witness,
+         [concept, out(witness)]),
+    witness(no_representation_spine_witness)).
+dispatch_spec(target_expressive_power_witness,
+    [target-term],
+    call(user:target_expressive_power_witness, [target, out(witness)]),
+    witness(no_target_expressive_power_witness, missing_target)).
+dispatch_spec(misconception_incompatibility_witness,
+    [move-term, conflict-term],
+    call(misconception_registry:incompatibility_with_witness,
+         [move, conflict, out(witness)]),
+    witness(no_misconception_incompatibility_witness,
+            malformed_misconception_incompatibility_request)).
+dispatch_spec(lesson_misconception_incompatibility_witness,
+    [lesson_code-json, name-term, operation-default(term, _)],
+    call(user:lesson_misconception_incompatibility_witness,
+         [lesson_code, operation, name, out(witness)]),
+    witness(no_lesson_misconception_incompatibility_witness,
+            malformed_lesson_misconception_incompatibility_request)).
+dispatch_spec(misconception_pml_map,
+    [misconception-default(json, "")],
+    call(user:misconception_pml_map_dispatch_dict,
+         [misconception, out(dict)]),
+    raw).
+
 dispatch_message(axiom_pack_witness, no_witness, "axiom_pack_witness found no enabled-pack recorded example").
 dispatch_message(axiom_pack_witness, malformed, "axiom_pack_witness requires pack and source").
 dispatch_message(viability_witness, no_witness, "viability_witness found no sufficient resource recorded example").
@@ -476,3 +731,66 @@ dispatch_message(geometry_im_grade6_lesson_standard_witness, no_witness, "geomet
 dispatch_message(geometry_im_grade6_lesson_standard_witness, malformed, "geometry_im_grade6_lesson_standard_witness requires concept and code").
 dispatch_message(geometry_im_grade5_standard_anchor_witness, no_witness, "geometry_im_grade5_standard_anchor_witness found no standard recorded example").
 dispatch_message(geometry_im_grade5_standard_anchor_witness, malformed, "geometry_im_grade5_standard_anchor_witness requires concept, framework, and code").
+dispatch_message(standard_k_ns_1_count_by_ones_witness, no_witness, "standard_k_ns_1_count_by_ones_witness found no finite counting trace").
+dispatch_message(standard_k_ns_2_represent_count_witness, no_witness, "standard_k_ns_2_represent_count_witness requires object_count between 0 and 20").
+dispatch_message(standard_1_ns_1_count_by_fives_witness, no_witness, "standard_1_ns_1_count_by_fives_witness found no finite count-by-fives trace").
+dispatch_message(standard_2_ns_1_count_by_twos_witness, no_witness, "standard_2_ns_1_count_by_twos_witness found no finite count-by-twos trace").
+dispatch_message(standard_2_ns_2_4_place_value_witness, no_witness, "standard_2_ns_2_4_place_value_witness found no finite three-digit place-value proof").
+dispatch_message(standard_2_ns_5_place_value_comparison_witness, no_witness, "standard_2_ns_5_place_value_comparison_witness found no finite place-value comparison proof").
+dispatch_message(standard_3_ca_5_mult_skip_count_witness, no_witness, "standard_3_ca_5_mult_skip_count_witness found no finite skip-count multiplication result").
+dispatch_message(standard_2_ns_3_parity_witness, no_witness, "standard_2_ns_3_parity_witness found no finite parity proof").
+dispatch_message(standard_k_ns_3_order_independence_witness, no_witness, "standard_k_ns_3_order_independence_witness found no finite order-independence proof").
+dispatch_message(standard_k_ns_3_order_independence_witness, malformed, "standard_k_ns_3_order_independence_witness requires objects").
+dispatch_message(standard_k_ns_4_verify_subitizing_witness, no_witness, "standard_k_ns_4_verify_subitizing_witness found no finite recognition-count agreement proof").
+dispatch_message(standard_k_ns_4_verify_subitizing_witness, malformed, "standard_k_ns_4_verify_subitizing_witness requires pattern").
+dispatch_message(standard_k_ns_5_6_compare_groups_witness, no_witness, "standard_k_ns_5_6_compare_groups_witness found no finite group-comparison proof").
+dispatch_message(standard_k_ns_5_6_compare_groups_witness, malformed, "standard_k_ns_5_6_compare_groups_witness requires group_a and group_b").
+dispatch_message(standard_k_ns_7_place_value_witness, no_witness, "standard_k_ns_7_place_value_witness found no finite one-ten-group proof").
+dispatch_message(standard_k_ca_1_3_complement_witness, no_witness, "standard_k_ca_1_3_complement_witness found no finite complement-to-ten proof").
+dispatch_message(standard_1_ns_2_place_value_witness, no_witness, "standard_1_ns_2_place_value_witness found no finite two-digit place-value proof").
+dispatch_message(standard_1_ca_1_making_ten_witness, no_witness, "standard_1_ca_1_making_ten_witness found no finite making-ten proof").
+dispatch_message(standard_1_ca_3_add_by_place_value_witness, no_witness, "standard_1_ca_3_add_by_place_value_witness found no finite place-value addition proof").
+dispatch_message(standard_2_ca_2_add_three_digit_witness, no_witness, "standard_2_ca_2_add_three_digit_witness found no finite three-digit addition proof").
+dispatch_message(standard_3_ca_3_4_fact_family_witness, no_witness, "standard_3_ca_3_4_fact_family_witness found no finite multiplication/division family proof").
+dispatch_message(standard_3_ns_2_unit_fraction_witness, no_witness, "standard_3_ns_2_unit_fraction_witness found no finite unit-fraction proof").
+dispatch_message(standard_3_ns_5_fraction_comparison_witness, no_witness, "standard_3_ns_5_fraction_comparison_witness found no finite comparison proof").
+dispatch_message(multiply_array_witness, no_witness, "multiply_array_witness found no array model for the given rows/cols").
+dispatch_message(mult_div_family_witness, no_witness, "mult_div_family_witness found no fact family for the given a/b").
+dispatch_message(axiom_hierarchy_witness, no_witness, "axiom_hierarchy_witness found no hierarchy proof recorded example for kind").
+dispatch_message(axiom_hierarchy_witness, malformed, "axiom_hierarchy_witness requires kind").
+dispatch_message(critique_bad_infinite, no_witness, "critique_bad_infinite found no bad-infinite recorded example for proof").
+dispatch_message(critique_bad_infinite, malformed, "critique_bad_infinite requires proof").
+dispatch_message(defeasible_classify, malformed, "defeasible_classify requires inference_id and defeater_set list").
+dispatch_message(embodied_proof_witness, no_witness, "embodied_proof_witness found no proof recorded example").
+dispatch_message(embodied_proof_witness, malformed, "embodied_proof_witness requires sequent and resources").
+dispatch_message(eml_transition_witness, no_witness, "eml_transition_witness found no transition recorded example for from/to").
+dispatch_message(eml_transition_witness, malformed, "eml_transition_witness requires from and to").
+dispatch_message(incoherent_witness, no_witness, "incoherent_witness found no recorded example for context").
+dispatch_message(incoherent_witness, malformed, "incoherent_witness requires context").
+dispatch_message(incompatibility_discovery_witness, malformed, "incompatibility_discovery_witness requires context and set").
+dispatch_message(incompatibility_entailment_witness, no_witness, "incompatibility_entailment_witness found no entailment recorded example").
+dispatch_message(incompatibility_entailment_witness, malformed, "incompatibility_entailment_witness requires replacement and replaced").
+dispatch_message(number_theory_self_defeat_witness, no_witness, "number_theory_self_defeat_witness found no Euclid recorded example for list").
+dispatch_message(number_theory_self_defeat_witness, malformed, "number_theory_self_defeat_witness requires list").
+dispatch_message(robinson_axiom_witness, no_witness, "robinson_axiom_witness found no recorded example for axiom/claim").
+dispatch_message(robinson_axiom_witness, malformed, "robinson_axiom_witness requires axiom and claim").
+dispatch_message(semantic_material_witness, no_witness, "semantic_material_witness found no material recorded example").
+dispatch_message(semantic_material_witness, malformed, "semantic_material_witness requires from and to").
+dispatch_message(intersubjective_material_witness, no_witness, "intersubjective_material_witness found no material recorded example").
+dispatch_message(intersubjective_material_witness, malformed, "intersubjective_material_witness requires from and to").
+dispatch_message(mua_kind_coherence_witness, no_witness, "mua_kind_coherence_witness found no scoring recorded example").
+dispatch_message(mua_kind_coherence_witness, malformed, "mua_kind_coherence_witness requires kind and row_text").
+dispatch_message(validate_reader_axioms, malformed, "validate_reader_axioms requires lesson_code and clauses (a list of strings)").
+dispatch_message(commitment_match, malformed, "commitment_match requires non-empty content").
+dispatch_message(corpus_grammar_summary, no_witness, "corpus_grammar_summary produced no summary").
+dispatch_message(grounding_inference_witness, no_witness, "grounding_inference_witness found no grounding recorded example").
+dispatch_message(grounding_inference_witness, malformed, "grounding_inference_witness requires metaphor and inference").
+dispatch_message(image_schema, malformed, "image_schema requires practice (a practice atom string)").
+dispatch_message(primitive_for_practice, malformed, "primitive_for_practice requires practice (a practice atom string)").
+dispatch_message(representation_spine_witness, no_witness, "representation_spine_witness found no renders_on route or asset for that concept").
+dispatch_message(target_expressive_power_witness, no_witness, "target_expressive_power_witness found no recorded example for target").
+dispatch_message(target_expressive_power_witness, malformed, "target_expressive_power_witness requires target").
+dispatch_message(misconception_incompatibility_witness, no_witness, "misconception_incompatibility_witness found no registry recorded example").
+dispatch_message(misconception_incompatibility_witness, malformed, "misconception_incompatibility_witness requires move and conflict").
+dispatch_message(lesson_misconception_incompatibility_witness, no_witness, "lesson_misconception_incompatibility_witness found no lesson recorded example").
+dispatch_message(lesson_misconception_incompatibility_witness, malformed, "lesson_misconception_incompatibility_witness requires lesson_code and name").

@@ -619,38 +619,7 @@ dispatch_request(pair_candidate_witness, Id, Request, Response) :-
             "pair_candidate_witness requires event_a and event_b", Response)
     ).
 
-dispatch_request(critique_bad_infinite, Id, Request, Response) :-
-    (   get_dict(proof, Request, JSONProof)
-    ->  json_to_term(JSONProof, Proof),
-        (   critique:bad_infinite_witness(Proof, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_bad_infinite_witness,
-                "critique_bad_infinite found no bad-infinite recorded example for proof",
-                Response)
-        )
-    ;   error_response(Id, missing_proof,
-            "critique_bad_infinite requires proof", Response)
-    ).
 
-dispatch_request(defeasible_classify, Id, Request, Response) :-
-    (   get_dict(inference_id, Request, JSONInferenceId),
-        get_dict(defeater_set, Request, JSONDefeaterSet),
-        is_list(JSONDefeaterSet)
-    ->  json_to_term(JSONInferenceId, InferenceId),
-        json_to_term(JSONDefeaterSet, DefeaterSet),
-        defeasible_inference:classify_defeat_witness(
-            InferenceId,
-            DefeaterSet,
-            Outcome,
-            Witness
-        ),
-        json_safe(_{outcome: Outcome, witness: Witness}, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, malformed_defeasible_classify_request,
-            "defeasible_classify requires inference_id and defeater_set list",
-            Response)
-    ).
 
 dispatch_request(deontic_requires_entitlement, Id, Request, Response) :-
     (   get_dict(proposition, Request, JSONProposition)
@@ -839,120 +808,12 @@ dispatch_request(deontic_up_level, Id, Request, Response) :-
             Response)
     ).
 
-dispatch_request(axiom_hierarchy_witness, Id, Request, Response) :-
-    (   get_dict(kind, Request, JSONKind)
-    ->  json_to_term(JSONKind, Kind),
-        (   hierarchy_proof_witness(Kind, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_axiom_hierarchy_witness,
-                "axiom_hierarchy_witness found no hierarchy proof recorded example for kind",
-                Response)
-        )
-    ;   error_response(Id, missing_kind,
-            "axiom_hierarchy_witness requires kind", Response)
-    ).
 
-dispatch_request(robinson_axiom_witness, Id, Request, Response) :-
-    (   get_dict(axiom, Request, JSONAxiom),
-        get_dict(claim, Request, JSONClaim)
-    ->  json_to_term(JSONAxiom, Axiom),
-        json_to_term(JSONClaim, Claim),
-        (   \+ sequent_engine:enabled_axiom_pack(robinson)
-        ->  axiom_pack_disabled_response(robinson, Id, Response)
-        ;   sequent_engine:robinson_axiom_witness(Axiom, Claim, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_robinson_axiom_witness,
-                "robinson_axiom_witness found no recorded example for axiom/claim",
-                Response)
-        )
-    ;   error_response(Id, malformed_robinson_axiom_request,
-            "robinson_axiom_witness requires axiom and claim", Response)
-    ).
 
-dispatch_request(semantic_material_witness, Id, Request, Response) :-
-    (   get_dict(from, Request, JSONFrom),
-        get_dict(to, Request, JSONTo)
-    ->  json_to_term(JSONFrom, From),
-        json_to_term(JSONTo, To),
-        (   semantic_axioms:semantic_material_witness(From, To, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_semantic_material_witness,
-                "semantic_material_witness found no material recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_semantic_material_request,
-            "semantic_material_witness requires from and to", Response)
-    ).
 
-dispatch_request(incoherent_witness, Id, Request, Response) :-
-    (   get_dict(context, Request, JSONContext)
-    ->  json_to_term(JSONContext, Context),
-        (   sequent_engine:incoherent_witness(Context, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_incoherent_witness,
-                "incoherent_witness found no recorded example for context",
-                Response)
-        )
-    ;   error_response(Id, missing_context,
-            "incoherent_witness requires context", Response)
-    ).
 
-dispatch_request(eml_transition_witness, Id, Request, Response) :-
-    (   get_dict(from, Request, JSONFrom),
-        get_dict(to, Request, JSONTo)
-    ->  json_to_term(JSONFrom, From),
-        json_to_term(JSONTo, To),
-        (   sequent_engine:eml_transition_witness(From, To, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_eml_transition_witness,
-                "eml_transition_witness found no transition recorded example for from/to",
-                Response)
-        )
-    ;   error_response(Id, malformed_eml_transition_request,
-            "eml_transition_witness requires from and to", Response)
-    ).
 
-dispatch_request(number_theory_self_defeat_witness, Id, Request, Response) :-
-    (   get_dict(list, Request, JSONList),
-        is_list(JSONList)
-    ->  json_to_term(JSONList, List),
-        (   \+ sequent_engine:enabled_axiom_pack(number_theory)
-        ->  axiom_pack_disabled_response(number_theory, Id, Response)
-        ;   sequent_engine:number_theory_self_defeat_witness(List, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_number_theory_self_defeat_witness,
-                "number_theory_self_defeat_witness found no Euclid recorded example for list",
-                Response)
-        )
-    ;   error_response(Id, malformed_number_theory_request,
-            "number_theory_self_defeat_witness requires list", Response)
-    ).
 
-dispatch_request(embodied_proof_witness, Id, Request, Response) :-
-    (   get_dict(sequent, Request, JSONSequent),
-        get_dict(resources, Request, ResourcesIn)
-    ->  json_to_term(JSONSequent, Sequent),
-        (   embodied_prover:proves_witness(Sequent,
-                                            ResourcesIn,
-                                            _ResourcesOut,
-                                            _Proof,
-                                            Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_embodied_proof_witness,
-                "embodied_proof_witness found no proof recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_embodied_proof_request,
-            "embodied_proof_witness requires sequent and resources",
-            Response)
-    ).
 
 % representation_spine_witness: the T0 representation spine as a live surface.
 % With a `concept` string it returns that concept's render routes (renders_on/3)
@@ -960,32 +821,6 @@ dispatch_request(embodied_proof_witness, Id, Request, Response) :-
 % asset count; with no concept it lists every renders_on route. This is the
 % crosswalk consumer the spine lacked — renders_on/3 and asset_for/3 are now
 % queryable at runtime, not only in the module's test.
-dispatch_request(representation_spine_witness, Id, Request, Response) :-
-    (   get_dict(concept, Request, JSONConcept),
-        string(JSONConcept), JSONConcept \== ""
-    ->  atom_string(Concept, JSONConcept)
-    ;   true
-    ),
-    findall(_{concept: Concept, surface: Surface, data_shape: Shape},
-            representation_spine:renders_on(Concept, Surface, Shape),
-            Routes),
-    (   nonvar(Concept)
-    ->  findall(_{asset: Asset, provenance: Prov},
-                representation_spine:asset_for(Concept, Asset, Prov), Assets0),
-        length(Assets0, AssetCount),
-        (   length(Capped, 20), append(Capped, _, Assets0)
-        ->  Assets = Capped
-        ;   Assets = Assets0
-        )
-    ;   Assets = [], AssetCount = 0
-    ),
-    (   Routes == [], Assets == []
-    ->  error_response(Id, no_representation_spine_witness,
-            "representation_spine_witness found no renders_on route or asset for that concept",
-            Response)
-    ;   json_safe(_{renders_on: Routes, assets: Assets, asset_count: AssetCount}, Safe),
-        ok_response(Id, Safe, Response)
-    ).
 
 dispatch_request(sequent_proof_witness, Id, Request, Response) :-
     (   get_dict(sequent, Request, JSONSequent),
@@ -1029,415 +864,33 @@ dispatch_request(unit_coordination_svg, Id, Request, Response) :-
             Response)
     ).
 
-dispatch_request(standard_k_ns_1_count_by_ones_witness, Id, Request, Response) :-
-    request_recollection(Request, from, 1, From),
-    request_recollection(Request, to, 10, To),
-    (   standard_k_ns_1:count_by_ones_witness(From, To, _Trace, Witness)
-    ->  json_safe(Witness, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_standard_k_ns_1_count_by_ones_witness,
-            "standard_k_ns_1_count_by_ones_witness found no finite counting trace",
-            Response)
-    ).
 
-dispatch_request(standard_k_ns_2_represent_count_witness, Id, Request, Response) :-
-    request_integer(Request, object_count, 4, Count),
-    (   Count >= 0,
-        Count =< 20,
-        length(Objects, Count),
-        standard_k_ns_2:teach_numerals_to_witness(20, _TeachWitness),
-        standard_k_ns_2:represent_count_witness(Objects, _Recollection, _Name, Witness)
-    ->  json_safe(Witness, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_standard_k_ns_2_represent_count_witness,
-            "standard_k_ns_2_represent_count_witness requires object_count between 0 and 20",
-            Response)
-    ).
 
-dispatch_request(standard_1_ns_1_count_by_fives_witness, Id, Request, Response) :-
-    request_recollection(Request, from, 5, From),
-    request_recollection(Request, to, 20, To),
-    (   standard_1_ns_1:count_by_fives_witness(From, To, _Trace, Witness)
-    ->  json_safe(Witness, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_standard_1_ns_1_count_by_fives_witness,
-            "standard_1_ns_1_count_by_fives_witness found no finite count-by-fives trace",
-            Response)
-    ).
 
-dispatch_request(standard_2_ns_1_count_by_twos_witness, Id, Request, Response) :-
-    request_recollection(Request, from, 2, From),
-    request_recollection(Request, to, 10, To),
-    (   standard_2_ns_1:count_by_twos_witness(From, To, _Trace, Witness)
-    ->  json_safe(Witness, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_standard_2_ns_1_count_by_twos_witness,
-            "standard_2_ns_1_count_by_twos_witness found no finite count-by-twos trace",
-            Response)
-    ).
 
-dispatch_request(standard_2_ns_2_4_place_value_witness, Id, Request, Response) :-
-    request_recollection(Request, number, 347, Number),
-    (   standard_2_ns_2_4:describe_three_digit_witness(Number, _Description, Witness)
-    ->  json_safe(Witness, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_standard_2_ns_2_4_place_value_witness,
-            "standard_2_ns_2_4_place_value_witness found no finite three-digit place-value proof",
-            Response)
-    ).
 
-dispatch_request(standard_2_ns_5_place_value_comparison_witness, Id, Request, Response) :-
-    request_recollection(Request, left, 347, Left),
-    request_recollection(Request, right, 329, Right),
-    (   standard_2_ns_5:compare_by_place_value_witness(Left, Right, _Result, Witness)
-    ->  json_safe(Witness, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_standard_2_ns_5_place_value_comparison_witness,
-            "standard_2_ns_5_place_value_comparison_witness found no finite place-value comparison proof",
-            Response)
-    ).
 
-dispatch_request(standard_3_ca_5_mult_skip_count_witness, Id, Request, Response) :-
-    request_recollection(Request, factor, 7, Factor),
-    request_recollection(Request, times, 8, Times),
-    (   standard_3_ca_5:mult_skip_count(Factor, Times, Product)
-    ->  recollection_to_integer(Factor, FactorCount),
-        recollection_to_integer(Times, TimesCount),
-        recollection_to_integer(Product, ProductCount),
-        json_safe(_{
-            kind: standard_3_ca_5_mult_skip_count,
-            scope: closed_world_finite_standard_3_ca_5_multiplication_within_100,
-            standard: in_3_ca_5,
-            source_predicate: mult_skip_count/3,
-            factor: Factor,
-            times: Times,
-            product: Product,
-            factor_count: FactorCount,
-            times_count: TimesCount,
-            product_count: ProductCount,
-            derivation: repeated_grounded_addition_by_skip_counting,
-            boundary: supplied_recollection_inputs_and_existing_standard_3_ca_5_predicate
-        }, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_standard_3_ca_5_mult_skip_count_witness,
-            "standard_3_ca_5_mult_skip_count_witness found no finite skip-count multiplication result",
-            Response)
-    ).
 
-dispatch_request(standard_2_ns_3_parity_witness, Id, Request, Response) :-
-    request_recollection(Request, number, 4, Number),
-    (   get_dict_opt(result, Request, JSONResult)
-    ->  json_to_term(JSONResult, Result)
-    ;   true
-    ),
-    (   standard_2_ns_3:parity_witness(Number, Result, Witness)
-    ->  json_safe(Witness, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_standard_2_ns_3_parity_witness,
-            "standard_2_ns_3_parity_witness found no finite parity proof",
-            Response)
-    ).
 
-dispatch_request(standard_k_ns_3_order_independence_witness, Id, Request, Response) :-
-    (   get_dict(objects, Request, JSONObjects)
-    ->  json_to_term(JSONObjects, Objects),
-        (   standard_k_ns_3:verify_order_independence_witness(Objects, _Result, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_standard_k_ns_3_order_independence_witness,
-                "standard_k_ns_3_order_independence_witness found no finite order-independence proof",
-                Response)
-        )
-    ;   error_response(Id, malformed_standard_k_ns_3_order_independence_request,
-            "standard_k_ns_3_order_independence_witness requires objects",
-            Response)
-    ).
 
-dispatch_request(standard_k_ns_4_verify_subitizing_witness, Id, Request, Response) :-
-    (   get_dict(pattern, Request, JSONPattern)
-    ->  json_to_term(JSONPattern, Pattern),
-        (   standard_k_ns_4:verify_subitizing_witness(Pattern, _Result, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_standard_k_ns_4_verify_subitizing_witness,
-                "standard_k_ns_4_verify_subitizing_witness found no finite recognition-count agreement proof",
-                Response)
-        )
-    ;   error_response(Id, malformed_standard_k_ns_4_verify_subitizing_request,
-            "standard_k_ns_4_verify_subitizing_witness requires pattern",
-            Response)
-    ).
 
-dispatch_request(standard_k_ns_5_6_compare_groups_witness, Id, Request, Response) :-
-    (   get_dict(group_a, Request, JSONGroupA),
-        get_dict(group_b, Request, JSONGroupB)
-    ->  json_to_term(JSONGroupA, GroupA),
-        json_to_term(JSONGroupB, GroupB),
-        (   standard_k_ns_5_6:compare_groups_witness(GroupA, GroupB, _Result, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_standard_k_ns_5_6_compare_groups_witness,
-                "standard_k_ns_5_6_compare_groups_witness found no finite group-comparison proof",
-                Response)
-        )
-    ;   error_response(Id, malformed_standard_k_ns_5_6_compare_groups_request,
-            "standard_k_ns_5_6_compare_groups_witness requires group_a and group_b",
-            Response)
-    ).
 
-dispatch_request(standard_k_ns_7_place_value_witness, Id, Request, Response) :-
-    request_recollection(Request, number, 14, Number),
-    (   standard_k_ns_7:describe_place_value_witness(Number, _Description, Witness)
-    ->  json_safe(Witness, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_standard_k_ns_7_place_value_witness,
-            "standard_k_ns_7_place_value_witness found no finite one-ten-group proof",
-            Response)
-    ).
 
-dispatch_request(standard_k_ca_1_3_complement_witness, Id, Request, Response) :-
-    request_recollection(Request, given, 6, Given),
-    (   standard_k_ca_1_3:find_complement_to_ten_witness(Given, _Complement, Witness)
-    ->  json_safe(Witness, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_standard_k_ca_1_3_complement_witness,
-            "standard_k_ca_1_3_complement_witness found no finite complement-to-ten proof",
-            Response)
-    ).
 
-dispatch_request(standard_1_ns_2_place_value_witness, Id, Request, Response) :-
-    request_recollection(Request, number, 47, Number),
-    (   standard_1_ns_2:describe_two_digit_witness(Number, _Description, Witness)
-    ->  json_safe(Witness, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_standard_1_ns_2_place_value_witness,
-            "standard_1_ns_2_place_value_witness found no finite two-digit place-value proof",
-            Response)
-    ).
 
-dispatch_request(standard_1_ca_1_making_ten_witness, Id, Request, Response) :-
-    request_recollection(Request, a, 8, A),
-    request_recollection(Request, b, 5, B),
-    (   standard_1_ca_1:add_making_ten_witness(A, B, _Sum, Witness)
-    ->  json_safe(Witness, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_standard_1_ca_1_making_ten_witness,
-            "standard_1_ca_1_making_ten_witness found no finite making-ten proof",
-            Response)
-    ).
 
-dispatch_request(standard_1_ca_3_add_by_place_value_witness, Id, Request, Response) :-
-    request_recollection(Request, a, 27, A),
-    request_recollection(Request, b, 35, B),
-    (   standard_1_ca_3:add_by_place_value_witness(A, B, _Sum, Witness)
-    ->  json_safe(Witness, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_standard_1_ca_3_add_by_place_value_witness,
-            "standard_1_ca_3_add_by_place_value_witness found no finite place-value addition proof",
-            Response)
-    ).
 
-dispatch_request(standard_2_ca_2_add_three_digit_witness, Id, Request, Response) :-
-    request_recollection(Request, a, 347, A),
-    request_recollection(Request, b, 286, B),
-    (   standard_2_ca_2:add_three_digit_witness(A, B, _Sum, Witness)
-    ->  json_safe(Witness, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_standard_2_ca_2_add_three_digit_witness,
-            "standard_2_ca_2_add_three_digit_witness found no finite three-digit addition proof",
-            Response)
-    ).
 
-dispatch_request(standard_3_ca_3_4_fact_family_witness, Id, Request, Response) :-
-    request_recollection(Request, a, 3, A),
-    request_recollection(Request, b, 4, B),
-    (   standard_3_ca_3_4:mult_div_family_witness(A, B, _Product, _Facts, Witness)
-    ->  json_safe(Witness, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_standard_3_ca_3_4_fact_family_witness,
-            "standard_3_ca_3_4_fact_family_witness found no finite multiplication/division family proof",
-            Response)
-    ).
 
-dispatch_request(standard_3_ns_2_unit_fraction_witness, Id, Request, Response) :-
-    request_recollection(Request, denominator, 4, Denominator),
-    (   standard_3_ns_2:make_unit_fraction_witness(Denominator, _Fraction, Witness)
-    ->  json_safe(Witness, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_standard_3_ns_2_unit_fraction_witness,
-            "standard_3_ns_2_unit_fraction_witness found no finite unit-fraction proof",
-            Response)
-    ).
 
-dispatch_request(standard_3_ns_5_fraction_comparison_witness, Id, Request, Response) :-
-    request_fraction(Request, left, _{n:1, d:4}, Left),
-    request_fraction(Request, right, _{n:3, d:4}, Right),
-    (   get_dict_opt(result, Request, JSONResult)
-    ->  json_to_term(JSONResult, Result)
-    ;   true
-    ),
-    (   standard_3_ns_5:compare_fractions_witness(Left, Right, Result, Witness)
-    ->  json_safe(Witness, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_standard_3_ns_5_fraction_comparison_witness,
-            "standard_3_ns_5_fraction_comparison_witness found no finite comparison proof",
-            Response)
-    ).
 
-dispatch_request(incompatibility_entailment_witness, Id, Request, Response) :-
-    (   get_dict(replacement, Request, JSONReplacement),
-        get_dict(replaced, Request, JSONReplaced)
-    ->  json_to_term(JSONReplacement, Replacement),
-        json_to_term(JSONReplaced, Replaced),
-        (   incompatibility_sets:incompatibility_entailment_witness(
-                Replacement,
-                Replaced,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_incompatibility_entailment_witness,
-                "incompatibility_entailment_witness found no entailment recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_incompatibility_entailment_request,
-            "incompatibility_entailment_witness requires replacement and replaced",
-            Response)
-    ).
 
-dispatch_request(incompatibility_discovery_witness, Id, Request, Response) :-
-    (   get_dict(context, Request, JSONContext),
-        get_dict(set, Request, JSONSet)
-    ->  json_to_term(JSONContext, Context),
-        json_to_term(JSONSet, Set),
-        incompatibility_discovery:classify_candidate_set_witness(
-            Context,
-            Set,
-            _Outcome,
-            Witness
-        ),
-        json_safe(Witness, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, malformed_incompatibility_discovery_request,
-            "incompatibility_discovery_witness requires context and set",
-            Response)
-    ).
 
-dispatch_request(misconception_incompatibility_witness, Id, Request, Response) :-
-    (   get_dict(move, Request, JSONMove),
-        get_dict(conflict, Request, JSONConflict)
-    ->  json_to_term(JSONMove, Move),
-        json_to_term(JSONConflict, Conflict),
-        (   misconception_registry:incompatibility_with_witness(Move, Conflict, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_misconception_incompatibility_witness,
-                "misconception_incompatibility_witness found no registry recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_misconception_incompatibility_request,
-            "misconception_incompatibility_witness requires move and conflict",
-            Response)
-    ).
 
-dispatch_request(intersubjective_material_witness, Id, Request, Response) :-
-    (   get_dict(from, Request, JSONFrom),
-        get_dict(to, Request, JSONTo)
-    ->  json_to_term(JSONFrom, From),
-        json_to_term(JSONTo, To),
-        (   intersubjective_praxis:intersubjective_material_witness(
-                From,
-                To,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_intersubjective_material_witness,
-                "intersubjective_material_witness found no material recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_intersubjective_material_request,
-            "intersubjective_material_witness requires from and to", Response)
-    ).
 
-dispatch_request(mua_kind_coherence_witness, Id, Request, Response) :-
-    (   get_dict(kind, Request, JSONKind),
-        get_dict(row_text, Request, RowText)
-    ->  json_to_term(JSONKind, Kind),
-        (   mua_relations:kind_mua_coherence_witness(
-                Kind,
-                RowText,
-                _Score,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_mua_kind_coherence_witness,
-                "mua_kind_coherence_witness found no scoring recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_mua_kind_coherence_request,
-            "mua_kind_coherence_witness requires kind and row_text", Response)
-    ).
 
-dispatch_request(grounding_inference_witness, Id, Request, Response) :-
-    (   get_dict(metaphor, Request, JSONMetaphor),
-        get_dict(inference, Request, JSONInference)
-    ->  json_to_term(JSONMetaphor, Metaphor),
-        json_to_term(JSONInference, Inference),
-        (   grounding_metaphors:grounds_inference_witness(
-                Metaphor,
-                Inference,
-                _GroundingPath,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_grounding_inference_witness,
-                "grounding_inference_witness found no grounding recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_grounding_inference_request,
-            "grounding_inference_witness requires metaphor and inference",
-            Response)
-    ).
 
-dispatch_request(target_expressive_power_witness, Id, Request, Response) :-
-    (   get_dict(target, Request, JSONTarget)
-    ->  json_to_term(JSONTarget, Target),
-        (   target_expressive_power_witness(Target, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_target_expressive_power_witness,
-                "target_expressive_power_witness found no recorded example for target",
-                Response)
-        )
-    ;   error_response(Id, missing_target,
-            "target_expressive_power_witness requires target", Response)
-    ).
 
-dispatch_request(lesson_misconception_incompatibility_witness, Id, Request, Response) :-
-    (   get_dict(lesson_code, Request, LessonCode),
-        get_dict(name, Request, JSONName)
-    ->  json_to_term(JSONName, Name),
-        (   get_dict(operation, Request, JSONOperation)
-        ->  json_to_term(JSONOperation, Operation)
-        ;   true
-        ),
-        (   lesson_misconception_incompatibility_witness(LessonCode,
-                                                         Operation,
-                                                         Name,
-                                                         Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_lesson_misconception_incompatibility_witness,
-                "lesson_misconception_incompatibility_witness found no lesson recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_lesson_misconception_incompatibility_request,
-            "lesson_misconception_incompatibility_witness requires lesson_code and name",
-            Response)
-    ).
 
 dispatch_request(geometry, Id, Request, Response) :-
     (   get_dict(predicate, Request, Predicate0),
@@ -1830,29 +1283,6 @@ dispatch_request(get_base, Id, _Request, Response) :-
     ok_response(Id, _{operative_base: Base}, Response).
 
 % --- misconception_pml_map: recorded CONNECTS-TO annotations -------------
-dispatch_request(misconception_pml_map, Id, Request, Response) :-
-    (   get_dict_opt(misconception, Request, Value),
-        Value \== ""
-    ->  text_value(Value, Filter)
-    ;   Filter = ""
-    ),
-    findall(_{source_tag: SourceText,
-              misconception: NameText,
-              operator: OperatorText},
-            ( pml_wire:misconception_pml(Source, Operator),
-              sub_term(unlicensed(Name), Operator),
-              term_to_text(Name, NameText),
-              ( Filter == "" ; Filter == NameText ),
-              term_to_text(Source, SourceText),
-              term_to_text(Operator, OperatorText)
-            ),
-            Pairs),
-    length(Pairs, Count),
-    ok_response(Id, _{
-        count: Count,
-        pairs: Pairs,
-        provenance: "generated from CONNECTS-TO annotations in the misconception registry"
-    }, Response).
 
 % --- teacher_layer (H8): the teacher panel for a named practice ------------
 % Composes the standard, embodied source-practice gloss, incompatibility
@@ -1879,80 +1309,13 @@ dispatch_request(teacher_layer, Id, Request, Response) :-
 % Returns the visual primitive and grounding-metaphor label a practice's L&N
 % grounding selects. A practice with no L&N grounding (the hollow deformation)
 % returns no_metaphor_grounding rather than a faked primitive.
-dispatch_request(primitive_for_practice, Id, Request, Response) :-
-    (   request_practice(Request, Practice)
-    ->  (   grounding_to_primitive:primitive_for_practice_witness(Practice,
-                                                                  Primitive, Role,
-                                                                  Witness)
-        ->  json_safe(Witness, SafeWitness),
-            atom_string(Practice, PracticeStr),
-            atom_string(Primitive, PrimStr),
-            atom_string(Role, RoleStr),
-            ( get_dict(grounding_metaphor_label, Witness, Label0)
-            -> atom_string(Label0, LabelStr)
-            ;  LabelStr = null ),
-            Dict = _{ practice: PracticeStr,
-                      visual_primitive: PrimStr,
-                      grounding_metaphor_label: LabelStr,
-                      role: RoleStr,
-                      witness: SafeWitness },
-            ok_response(Id, Dict, Response)
-        ;   atom_string(Practice, PracticeStr),
-            Dict = _{ practice: PracticeStr,
-                      visual_primitive: null,
-                      grounding_metaphor_label: null,
-                      note: "no_metaphor_grounding" },
-            ok_response(Id, Dict, Response)
-        )
-    ;   error_response(Id, missing_practice,
-            "primitive_for_practice requires practice (a practice atom string)", Response)
-    ).
 
 % --- image_schema (H2): the underlying image schema for an arithmetic practice
-dispatch_request(image_schema, Id, Request, Response) :-
-    (   request_practice(Request, Practice)
-    ->  (   grounding_to_primitive:image_schema_for_practice(Practice, Schema)
-        ->  atom_string(Practice, PracticeStr),
-            atom_string(Schema, SchemaStr),
-            Dict = _{ practice: PracticeStr, image_schema: SchemaStr },
-            ok_response(Id, Dict, Response)
-        ;   atom_string(Practice, PracticeStr),
-            Dict = _{ practice: PracticeStr, image_schema: null,
-                      note: "no_image_schema_grounding" },
-            ok_response(Id, Dict, Response)
-        )
-    ;   error_response(Id, missing_practice,
-            "image_schema requires practice (a practice atom string)", Response)
-    ).
 
 % --- multiply_array_witness: the array model's own witness, exposed ----------
 % Inputs are integers; the witness takes grounded recollections, so the
 % boundary converts them (mirroring the scene compilers' to_rec boundary).
-dispatch_request(multiply_array_witness, Id, Request, Response) :-
-    request_integer(Request, rows, 3, R),
-    request_integer(Request, cols, 4, C),
-    integer_to_recollection(R, RowsRec),
-    integer_to_recollection(C, ColsRec),
-    (   standard_3_ca_3_4:multiply_array_witness(RowsRec, ColsRec, _Product, Witness)
-    ->  json_safe(Witness, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_multiply_array_witness,
-            "multiply_array_witness found no array model for the given rows/cols",
-            Response)
-    ).
 
-dispatch_request(mult_div_family_witness, Id, Request, Response) :-
-    request_integer(Request, a, 3, A),
-    request_integer(Request, b, 4, B),
-    integer_to_recollection(A, ARec),
-    integer_to_recollection(B, BRec),
-    (   standard_3_ca_3_4:mult_div_family_witness(ARec, BRec, _Product, _Facts, Witness)
-    ->  json_safe(Witness, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_mult_div_family_witness,
-            "mult_div_family_witness found no fact family for the given a/b",
-            Response)
-    ).
 
 dispatch_request(list_misconceptions, Id, Request, Response) :-
     request_filter(Request, domain, Filter),
@@ -2005,17 +1368,6 @@ dispatch_request(pml_score, Id, Request, Response) :-
 % validate_reader_axioms: SEAM 2. Compare model-emitted reader_axiom/4 facts
 % against the modal postures the named lesson's text licenses, so the Prolog
 % layer audits a PML reading rather than only re-emitting it.
-dispatch_request(validate_reader_axioms, Id, Request, Response) :-
-    (   get_dict(clauses, Request, Clauses),
-        is_list(Clauses),
-        get_dict(lesson_code, Request, LessonCode0)
-    ->  ( atom(LessonCode0) -> LessonCode = LessonCode0
-        ; atom_string(LessonCode, LessonCode0) ),
-        hermes_encyclopedia:validate_reader_axioms_dict(LessonCode, Clauses, Dict),
-        ok_response(Id, Dict, Response)
-    ;   error_response(Id, missing_arguments,
-            "validate_reader_axioms requires lesson_code and clauses (a list of strings)", Response)
-    ).
 
 % --- Canonical vocabulary ops (the legal-vocabulary contract for the loop) ---
 
@@ -2149,28 +1501,6 @@ dispatch_request(notation_monitoring_chart, Id, Request, Response) :-
 % reading content -> typed canonical commitment terms with witnesses, or an
 % honest abstention. The scoreboard layer calls this per event so scorecards
 % run on terms the deontic rules actually cover.
-dispatch_request(commitment_match, Id, Request, Response) :-
-    (   get_dict_opt(content, Request, Content0),
-        text_value(Content0, Content),
-        Content \== ""
-    ->  findall(_{ term: TermText,
-                   source: SourceText,
-                   matched_tokens: TokenTexts },
-                ( commitment_matcher:match_commitment_witness(Content, Term, W),
-                  term_to_text(Term, TermText),
-                  get_dict(source, W, Source),
-                  term_to_text(Source, SourceText),
-                  get_dict(matched_tokens, W, Tokens),
-                  maplist(term_to_text, Tokens, TokenTexts)
-                ),
-                Matches0),
-        sort(Matches0, Matches1),
-        ( Matches1 == [] -> Abstained = true ; Abstained = false ),
-        json_safe(_{matches: Matches1, abstained: Abstained}, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, missing_content,
-            "commitment_match requires non-empty content", Response)
-    ).
 
 dispatch_request(brandom_backstop, Id, _Request, Response) :-
     sequent_brandom_bridge:brandom_backstop(Report),
@@ -2328,25 +1658,10 @@ dispatch_request(learner_reset, Id, _Request, Response) :-
 
 % The corpus-attested grammar summary: gap counts rolling up which grammar
 % objects the student corpus witnesses and where the grammar runs unattested.
-dispatch_request(corpus_grammar_summary, Id, _Request, Response) :-
-    (   corpus_attested_grammar:corpus_grammar_summary(Summary)
-    ->  json_safe(Summary, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_corpus_grammar_summary,
-            "corpus_grammar_summary produced no summary", Response)
-    ).
 
 % The strategy elaboration graph: the elaborates/7 facts the analyzer derives
 % over the automata. analyze_all/0 is run on demand the first time, when the
 % dynamic relation is still empty.
-dispatch_request(elaborations, Id, _Request, Response) :-
-    (   automaton_analyzer:elaborates(_, _, _, _, _, _, _)
-    ->  true
-    ;   automaton_analyzer:analyze_all
-    ),
-    automaton_analyzer:all_elaborations(Elaborations),
-    json_safe(Elaborations, Safe),
-    ok_response(Id, Safe, Response).
 
 % On-demand proof entitlement for an arithmetic fact via the carving surface.
 % operation is add/sub/mult/div/frac; x, y, z are the fact arguments.
@@ -2477,6 +1792,144 @@ canonical_legacy_match(A, Canon) :-
     ),
     !.
 
+% Thin call/response adapters for spec rows whose historical clause did more
+% than expose a single predicate-owned witness. They do not read Request; all
+% boundary inputs remain explicit in dispatch_spec.pl.
+standard_k_ns_2_dispatch_witness(Count, Witness) :-
+    Count >= 0,
+    Count =< 20,
+    length(Objects, Count),
+    standard_k_ns_2:teach_numerals_to_witness(20, _TeachWitness),
+    standard_k_ns_2:represent_count_witness(
+        Objects, _Recollection, _Name, Witness).
+
+standard_3_ca_5_dispatch_witness(Factor, Times, Witness) :-
+    standard_3_ca_5:mult_skip_count(Factor, Times, Product),
+    recollection_to_integer(Factor, FactorCount),
+    recollection_to_integer(Times, TimesCount),
+    recollection_to_integer(Product, ProductCount),
+    Witness = _{
+        kind: standard_3_ca_5_mult_skip_count,
+        scope: closed_world_finite_standard_3_ca_5_multiplication_within_100,
+        standard: in_3_ca_5,
+        source_predicate: mult_skip_count/3,
+        factor: Factor,
+        times: Times,
+        product: Product,
+        factor_count: FactorCount,
+        times_count: TimesCount,
+        product_count: ProductCount,
+        derivation: repeated_grounded_addition_by_skip_counting,
+        boundary: supplied_recollection_inputs_and_existing_standard_3_ca_5_predicate
+    }.
+
+multiply_array_dispatch_witness(Rows, Cols, Witness) :-
+    integer_to_recollection(Rows, RowsRec),
+    integer_to_recollection(Cols, ColsRec),
+    standard_3_ca_3_4:multiply_array_witness(
+        RowsRec, ColsRec, _Product, Witness).
+
+mult_div_family_dispatch_witness(A, B, Witness) :-
+    integer_to_recollection(A, ARec),
+    integer_to_recollection(B, BRec),
+    standard_3_ca_3_4:mult_div_family_witness(
+        ARec, BRec, _Product, _Facts, Witness).
+
+commitment_match_dispatch_dict(Content, Dict) :-
+    findall(_{ term: TermText,
+               source: SourceText,
+               matched_tokens: TokenTexts },
+            ( commitment_matcher:match_commitment_witness(Content, Term, W),
+              term_to_text(Term, TermText),
+              get_dict(source, W, Source),
+              term_to_text(Source, SourceText),
+              get_dict(matched_tokens, W, Tokens),
+              maplist(term_to_text, Tokens, TokenTexts)
+            ),
+            Matches0),
+    sort(Matches0, Matches),
+    ( Matches == [] -> Abstained = true ; Abstained = false ),
+    Dict = _{matches: Matches, abstained: Abstained}.
+
+elaborations_dispatch_dict(Safe) :-
+    (   automaton_analyzer:elaborates(_, _, _, _, _, _, _)
+    ->  true
+    ;   automaton_analyzer:analyze_all
+    ),
+    automaton_analyzer:all_elaborations(Elaborations),
+    json_safe(Elaborations, Safe).
+
+image_schema_dispatch_dict(Practice, Dict) :-
+    atom_string(Practice, PracticeStr),
+    (   grounding_to_primitive:image_schema_for_practice(Practice, Schema)
+    ->  atom_string(Schema, SchemaStr),
+        Dict = _{practice: PracticeStr, image_schema: SchemaStr}
+    ;   Dict = _{ practice: PracticeStr,
+                  image_schema: null,
+                  note: "no_image_schema_grounding" }
+    ).
+
+primitive_for_practice_dispatch_dict(Practice, Dict) :-
+    atom_string(Practice, PracticeStr),
+    (   grounding_to_primitive:primitive_for_practice_witness(
+            Practice, Primitive, Role, Witness)
+    ->  json_safe(Witness, SafeWitness),
+        atom_string(Primitive, PrimStr),
+        atom_string(Role, RoleStr),
+        ( get_dict(grounding_metaphor_label, Witness, Label0)
+        -> atom_string(Label0, LabelStr)
+        ;  LabelStr = null ),
+        Dict = _{ practice: PracticeStr,
+                  visual_primitive: PrimStr,
+                  grounding_metaphor_label: LabelStr,
+                  role: RoleStr,
+                  witness: SafeWitness }
+    ;   Dict = _{ practice: PracticeStr,
+                  visual_primitive: null,
+                  grounding_metaphor_label: null,
+                  note: "no_metaphor_grounding" }
+    ).
+
+representation_spine_dispatch_witness(Concept, Witness) :-
+    findall(_{concept: Concept, surface: Surface, data_shape: Shape},
+            representation_spine:renders_on(Concept, Surface, Shape),
+            Routes),
+    (   nonvar(Concept)
+    ->  findall(_{asset: Asset, provenance: Prov},
+                representation_spine:asset_for(Concept, Asset, Prov), Assets0),
+        length(Assets0, AssetCount),
+        (   length(Capped, 20), append(Capped, _, Assets0)
+        ->  Assets = Capped
+        ;   Assets = Assets0
+        )
+    ;   Assets = [], AssetCount = 0
+    ),
+    ( Routes \== [] ; Assets \== [] ),
+    Witness = _{renders_on: Routes, assets: Assets, asset_count: AssetCount}.
+
+misconception_pml_map_dispatch_dict(Value, Dict) :-
+    (   Value == null
+    ->  Filter = ""
+    ;   text_value(Value, Filter)
+    ),
+    findall(_{source_tag: SourceText,
+              misconception: NameText,
+              operator: OperatorText},
+            ( pml_wire:misconception_pml(Source, Operator),
+              sub_term(unlicensed(Name), Operator),
+              term_to_text(Name, NameText),
+              ( Filter == "" ; Filter == NameText ),
+              term_to_text(Source, SourceText),
+              term_to_text(Operator, OperatorText)
+            ),
+            Pairs),
+    length(Pairs, Count),
+    Dict = _{
+        count: Count,
+        pairs: Pairs,
+        provenance: "generated from CONNECTS-TO annotations in the misconception registry"
+    }.
+
 % A response hook preserves a legacy response shape when the generic call
 % frame itself would be observable. The geometry coverage witness contains
 % open Prolog variables whose historical term_string/2 names are part of the
@@ -2505,7 +1958,7 @@ dispatch_request(Op, Id, Request, Response) :-
     (   read_dispatch_inputs(Inputs, Request, Bound)
     ->  run_dispatch_call(Call, Bound, Outcome),
         treat_dispatch_result(Result, Op, Id, Outcome, Response)
-    ;   dispatch_malformed_response(Result, Op, Id, Response)
+    ;   dispatch_input_failure_response(Result, Op, Id, Response)
     ).
 
 % Every converter named in the loaded spec must have a
@@ -2532,8 +1985,14 @@ known_dispatch_converter(atom).
 known_dispatch_converter(code).
 known_dispatch_converter(string).
 known_dispatch_converter(dict).
+known_dispatch_converter(json).
+known_dispatch_converter(json_list).
+known_dispatch_converter(nonempty_text).
+known_dispatch_converter(optional_code).
+known_dispatch_converter(practice).
 known_dispatch_converter(int).
 known_dispatch_converter(int(_, _)).
+known_dispatch_converter(nonnegative_int).
 known_dispatch_converter(number).
 known_dispatch_converter(recollection).
 known_dispatch_converter(fraction).
@@ -2544,8 +2003,9 @@ read_dispatch_inputs([Key-default(Converter, Default)|Specs], Request,
         [Key-Value|Bound]) :-
     !,
     (   get_dict(Key, Request, JSONValue)
-    ->  convert_dispatch_input(Converter, JSONValue, Value)
-    ;   Value = Default
+    ->  dispatch_supplied_default_input(
+            Converter, JSONValue, Default, Value)
+    ;   dispatch_default_input(Converter, Default, Value)
     ),
     read_dispatch_inputs(Specs, Request, Bound).
 read_dispatch_inputs([Key-Converter|Specs], Request, [Key-Value|Bound]) :-
@@ -2562,8 +2022,26 @@ convert_dispatch_input(code, JSON, Value) :-
     atom_string(Value, JSON).
 convert_dispatch_input(string, Value, Value).
 convert_dispatch_input(dict, Value, Value).
+convert_dispatch_input(json, Value, Value).
+convert_dispatch_input(json_list, Value, Value) :-
+    is_list(Value).
+convert_dispatch_input(nonempty_text, Value, Text) :-
+    Value \== null,
+    text_value(Value, Text),
+    Text \== "".
+convert_dispatch_input(optional_code, Value, Atom) :-
+    Value \== null,
+    Value \== "",
+    string_or_atom_to_atom(Value, Atom).
+convert_dispatch_input(practice, Value, Practice) :-
+    Value \== null,
+    Value \== "",
+    string_or_atom_to_atom(Value, Practice).
 convert_dispatch_input(int, JSON, Value) :-
     dispatch_integer(JSON, Value).
+convert_dispatch_input(nonnegative_int, JSON, Value) :-
+    dispatch_integer(JSON, Value),
+    Value >= 0.
 convert_dispatch_input(number, Value, Value) :-
     number(Value).
 convert_dispatch_input(int(Low, High), JSON, Value) :-
@@ -2581,6 +2059,29 @@ convert_dispatch_input(fraction, JSON, Fraction) :-
 convert_dispatch_input(list, JSON, List) :-
     json_to_term(JSON, List),
     is_list(List).
+
+dispatch_default_input(_Converter, Default, Default) :-
+    var(Default),
+    !.
+dispatch_default_input(Converter, Default, Value) :-
+    convert_dispatch_input(Converter, Default, Value).
+
+dispatch_supplied_default_input(recollection, JSON, Default, Value) :-
+    !,
+    (   json_to_term(JSON, Term), Term = recollection(_)
+    ->  Value = Term
+    ;   dispatch_integer(JSON, N)
+    ->  integer_to_recollection(N, Value)
+    ;   dispatch_default_input(recollection, Default, Value)
+    ).
+dispatch_supplied_default_input(nonnegative_int, JSON, _Default, Value) :-
+    !,
+    convert_dispatch_input(nonnegative_int, JSON, Value).
+dispatch_supplied_default_input(Converter, JSON, Default, Value) :-
+    (   convert_dispatch_input(Converter, JSON, Value)
+    ->  true
+    ;   dispatch_default_input(Converter, Default, Value)
+    ).
 
 dispatch_integer(Value, Value) :-
     integer(Value),
@@ -2658,9 +2159,46 @@ treat_dispatch_result(witness_wrap(_Fields, NoWitness, _Malformed), Op, Id,
         failure, Response) :-
     dispatch_message(Op, no_witness, Message),
     error_response(Id, NoWitness, Message, Response).
+treat_dispatch_result(witness_errorless(_Malformed), _Op, Id,
+        success(Outputs), Response) :-
+    memberchk(witness-Witness, Outputs),
+    json_safe(Witness, Safe),
+    ok_response(Id, Safe, Response),
+    !.
+treat_dispatch_result(witness_errorless(_Malformed), _Op, _Id,
+        failure, _Response) :-
+    fail.
+treat_dispatch_result(witness_input_errorless(_NoWitness), _Op, Id,
+        success(Outputs), Response) :-
+    memberchk(witness-Witness, Outputs),
+    json_safe(Witness, Safe),
+    ok_response(Id, Safe, Response),
+    !.
+treat_dispatch_result(witness_input_errorless(NoWitness), Op, Id,
+        failure, Response) :-
+    dispatch_message(Op, no_witness, Message),
+    error_response(Id, NoWitness, Message, Response).
+treat_dispatch_result(witness_wrap_errorless(Fields, _Malformed), _Op, Id,
+        success(Outputs), Response) :-
+    memberchk(witness-Witness, Outputs),
+    dispatch_wrap_fields(Fields, Outputs, Wrapped0),
+    Wrapped = Wrapped0.put(witness, Witness),
+    json_safe(Wrapped, Safe),
+    ok_response(Id, Safe, Response),
+    !.
+treat_dispatch_result(witness_wrap_errorless(_Fields, _Malformed), _Op, _Id,
+        failure, _Response) :-
+    fail.
 treat_dispatch_result(raw, _Op, Id, success(Outputs), Response) :-
     memberchk(dict-Dict, Outputs),
     ok_response(Id, Dict, Response).
+treat_dispatch_result(raw(_Malformed), _Op, Id, success(Outputs), Response) :-
+    memberchk(dict-Dict, Outputs),
+    ok_response(Id, Dict, Response).
+treat_dispatch_result(raw_safe(_Malformed), _Op, Id, success(Outputs), Response) :-
+    memberchk(dict-Dict, Outputs),
+    json_safe(Dict, Safe),
+    ok_response(Id, Safe, Response).
 
 dispatch_wrap_fields([], _Outputs, _{}).
 dispatch_wrap_fields([Label-Slot|Fields], Outputs, Dict) :-
@@ -2684,6 +2222,17 @@ dispatch_malformed_response(Result, Op, Id, Response) :-
 
 dispatch_result_malformed_code(witness(_, Code), Code).
 dispatch_result_malformed_code(witness_wrap(_, _, Code), Code).
+dispatch_result_malformed_code(witness_errorless(Code), Code).
+dispatch_result_malformed_code(witness_wrap_errorless(_, Code), Code).
+dispatch_result_malformed_code(raw(Code), Code).
+dispatch_result_malformed_code(raw_safe(Code), Code).
+
+dispatch_input_failure_response(witness_input_errorless(_), _Op, _Id,
+        _Response) :-
+    !,
+    fail.
+dispatch_input_failure_response(Result, Op, Id, Response) :-
+    dispatch_malformed_response(Result, Op, Id, Response).
 
 % Catch-all: only genuinely unknown ops reach here. The \+ known_op/1 guard
 % stops a KNOWN op whose body failed from backtracking into this clause; that
