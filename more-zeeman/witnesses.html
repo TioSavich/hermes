@@ -383,6 +383,9 @@
       var families = [
         {id: "crosswalk", root: "crosswalk-groups", route: "/api/witness/crosswalk_claim",
          groups: objectGroups(crosswalkGroups), defaults: {}, examples: crosswalkExamples,
+         // viability_witness compares numeric budgets; its dispatch clause
+         // reads both fields without conversion, so the page must send JSON
+         // numbers.
          listInputs: {inputs: true, premises: true}, numberInputs: {resources: true, cost: true},
          autoOp: "fraction_claim_witness"},
         {id: "geometry", root: "geometry-groups", route: "/api/witness/geometry",
@@ -499,8 +502,17 @@
             output.textContent = JSON.stringify(reply.body.result, null, 2);
             return;
           }
+          var detail = String(reply.body.error || "The worker returned no detail.");
+          // A typed no_*_witness reply is a boundary report, not a failure:
+          // the worker checked its finite relation and found no witness for
+          // that input. Present it plainly, without the failure prefix.
+          if (/no_[a-z_]*witness/i.test(detail)) {
+            output.className = "";
+            output.textContent = detail;
+            return;
+          }
           output.className = "error";
-          output.textContent = (failure || "Request failed: ") + String(reply.body.error || "The worker returned no detail.");
+          output.textContent = (failure || "Request failed: ") + detail;
         }).catch(function (error) {
           output.className = "error";
           output.textContent = (failure || "Request failed: ") + error.message;
