@@ -1,7 +1,8 @@
 ASKTM_Data/	6543
-hermes/	1544
+docs/	1613
+hermes/	1545
 geometry/	932
-more-zeeman/	141
+more-zeeman/	142
 strategies/	102
 learner/	49
 crosswalk/	43
@@ -11,7 +12,6 @@ lessons/	28
 formalization/	20
 pml/	20
 arche-trace/	15
-docs/	10
 scripts/	9
 tools/	9
 representation/	5

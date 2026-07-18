@@ -25,6 +25,7 @@ from html_surface_check import (  # noqa: E402
 )
 
 WORKER = ROOT / "hermes_worker.pl"
+DISPATCH_SPEC = ROOT / "hermes" / "dispatch_spec.pl"
 ROUTES_DIR = ROOT / "hermes" / "app" / "routes"
 LOGIC = ROUTES_DIR / "logic.py"
 OUTPUT = ROOT / "hermes" / "capability_registry.pl"
@@ -32,6 +33,10 @@ DISPATCH_RE = re.compile(
     r"(?m)^dispatch_request\(([a-z][A-Za-z0-9_]*),\s*Id,\s*(_?Request),\s*Response\)\s*:-"
 )
 MODULE_CALL_RE = re.compile(r"\b([a-z][A-Za-z0-9_]*)\s*:\s*[a-z][A-Za-z0-9_]*\s*\(")
+SPEC_RE = re.compile(
+    r"dispatch_spec\(\s*([a-z][A-Za-z0-9_]*)\s*,\s*\[(.*?)\]\s*,\s*"
+    r"call\(\s*([a-z][A-Za-z0-9_]*)\s*:", re.DOTALL
+)
 MODULE_DIRECTIVE_RE = re.compile(
     r":-\s*module\(\s*(['\"]?)([^,'\"\s()]+)\1\s*,", re.MULTILINE
 )
@@ -222,10 +227,27 @@ def code_without_comments(body: str) -> str:
     return re.sub(r"%[^\n]*", " ", body)
 
 
+def extract_spec_operations() -> dict[str, Operation]:
+    text = code_without_comments(DISPATCH_SPEC.read_text(encoding="utf-8"))
+    operations: dict[str, Operation] = {}
+    rows = SPEC_RE.findall(text)
+    if len(rows) != len(re.findall(r"(?m)^dispatch_spec\(", text)):
+        raise ValueError("unreadable dispatch_spec row")
+    for name, inputs_text, module in rows:
+        inputs = tuple(sorted(re.findall(r"\b([a-z][A-Za-z0-9_]*)\s*-", inputs_text)))
+        if name in operations:
+            raise ValueError(f"duplicate dispatch_spec row: {name}")
+        operations[name] = Operation(name, module, role_for_op(name), inputs)
+    return operations
+
+
 def extract_operations(text: str) -> list[Operation]:
+    spec_operations = extract_spec_operations()
     matches = list(DISPATCH_RE.finditer(text))
     operations: list[Operation] = []
     for match in matches:
+        if match.group(1) in spec_operations:
+            raise ValueError(f"spec-backed op still has bespoke dispatch clause: {match.group(1)}")
         body = code_without_comments(dispatch_body(text, match.end()))
         module_match = MODULE_CALL_RE.search(body)
         operations.append(Operation(
@@ -234,6 +256,7 @@ def extract_operations(text: str) -> list[Operation]:
             role=role_for_op(match.group(1)),
             inputs=input_keys(body, match.group(2)),
         ))
+    operations.extend(spec_operations.values())
     return sorted(operations, key=lambda op: op.name)
 
 

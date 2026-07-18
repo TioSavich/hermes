@@ -100,6 +100,8 @@ load_runtime :-
                [ brandom_backstop/1, brandom_backstop_ok/0,
                  b_proves/1, b_incoherent/1 ]),
     load_axiom_pack_audit(Root),
+    use_module(hermes(dispatch_spec),
+               [ dispatch_spec/4, dispatch_message/3 ]),
     use_module(crosswalk(canonical_all), []),
     % T0 representation spine: concept -> visual surface routing + manifest assets.
     use_module(crosswalk(representation_spine), []),
@@ -850,24 +852,6 @@ dispatch_request(axiom_hierarchy_witness, Id, Request, Response) :-
             "axiom_hierarchy_witness requires kind", Response)
     ).
 
-dispatch_request(axiom_pack_witness, Id, Request, Response) :-
-    (   get_dict(pack, Request, JSONPack),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONPack, Pack0),
-        json_to_term(JSONSource, Source0),
-        string_or_atom_to_atom(Pack0, Pack),
-        string_or_atom_to_atom(Source0, Source),
-        (   cw_axiom_pack:axiom_pack_witness(Pack, Source, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_axiom_pack_witness,
-                "axiom_pack_witness found no enabled-pack recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_axiom_pack_request,
-            "axiom_pack_witness requires pack and source", Response)
-    ).
-
 dispatch_request(robinson_axiom_witness, Id, Request, Response) :-
     (   get_dict(axiom, Request, JSONAxiom),
         get_dict(claim, Request, JSONClaim)
@@ -969,98 +953,6 @@ dispatch_request(embodied_proof_witness, Id, Request, Response) :-
             Response)
     ).
 
-dispatch_request(viability_witness, Id, Request, Response) :-
-    (   get_dict(resources, Request, Resources),
-        get_dict(cost, Request, Cost),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONSource, Source),
-        (   cw_viability:viability_witness(Resources, Cost, Source, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_viability_witness,
-                "viability_witness found no sufficient resource recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_viability_request,
-            "viability_witness requires resources, cost, and source",
-            Response)
-    ).
-
-dispatch_request(modal_context_witness, Id, Request, Response) :-
-    (   get_dict(term, Request, JSONTerm),
-        get_dict(context, Request, JSONContext),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONTerm, Term),
-        json_to_term(JSONContext, Context),
-        json_to_term(JSONSource, Source),
-        (   cw_modal_context:modal_context_witness(Term, Context, Source, Witness)
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_modal_context_witness,
-                "modal_context_witness found no modal-context recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_modal_context_request,
-            "modal_context_witness requires term, context, and source",
-            Response)
-    ).
-
-dispatch_request(grounded_arith_witness, Id, Request, Response) :-
-    (   get_dict(operation, Request, JSONOperation),
-        get_dict(inputs, Request, JSONInputs),
-        get_dict(output, Request, JSONOutput),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONOperation, Operation0),
-        json_to_term(JSONInputs, Inputs),
-        json_to_term(JSONOutput, Output),
-        json_to_term(JSONSource, Source0),
-        string_or_atom_to_atom(Operation0, Operation),
-        string_or_atom_to_atom(Source0, Source),
-        (   cw_grounded_arith:grounded_arith_witness(
-                Operation,
-                Inputs,
-                Output,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_grounded_arith_witness,
-                "grounded_arith_witness found no owner-verified grounded arithmetic operation",
-                Response)
-        )
-    ;   error_response(Id, malformed_grounded_arith_request,
-            "grounded_arith_witness requires operation, inputs, output, and source",
-            Response)
-    ).
-
-dispatch_request(material_inference_witness, Id, Request, Response) :-
-    (   get_dict(inference_id, Request, JSONInferenceId),
-        get_dict(premises, Request, JSONPremises),
-        get_dict(conclusion, Request, JSONConclusion),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONInferenceId, InferenceId),
-        json_to_term(JSONPremises, Premises),
-        json_to_term(JSONConclusion, Conclusion),
-        json_to_term(JSONSource, Source),
-        (   cw_material_inference:material_inference_witness(
-                InferenceId,
-                Premises,
-                Conclusion,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_material_inference_witness,
-                "material_inference_witness found no material-inference recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_material_inference_request,
-            "material_inference_witness requires inference_id, premises, conclusion, and source",
-            Response)
-    ).
-
 % representation_spine_witness: the T0 representation spine as a live surface.
 % With a `concept` string it returns that concept's render routes (renders_on/3)
 % plus a capped sample of manifest-backed assets (asset_for/3) and the total
@@ -1094,81 +986,6 @@ dispatch_request(representation_spine_witness, Id, Request, Response) :-
         ok_response(Id, Safe, Response)
     ).
 
-dispatch_request(normative_crisis_witness, Id, Request, Response) :-
-    (   get_dict(context, Request, JSONContext),
-        get_dict(goal, Request, JSONGoal),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONContext, Context),
-        json_to_term(JSONGoal, Goal),
-        json_to_term(JSONSource, Source),
-        (   cw_normative_crisis:normative_crisis_witness(
-                Context,
-                Goal,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_normative_crisis_witness,
-                "normative_crisis_witness found no normative-crisis recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_normative_crisis_request,
-            "normative_crisis_witness requires context, goal, and source",
-            Response)
-    ).
-
-dispatch_request(metaphor_break_witness, Id, Request, Response) :-
-    (   get_dict(metaphor, Request, JSONMetaphor),
-        get_dict(inference, Request, JSONInference),
-        get_dict(detail, Request, JSONDetail),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONMetaphor, Metaphor),
-        json_to_term(JSONInference, Inference),
-        json_to_term(JSONDetail, Detail),
-        json_to_term(JSONSource, Source),
-        (   cw_metaphor_break:metaphor_break_witness(
-                Metaphor,
-                Inference,
-                Detail,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_metaphor_break_witness,
-                "metaphor_break_witness found no metaphor-break recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_metaphor_break_request,
-            "metaphor_break_witness requires metaphor, inference, detail, and source",
-            Response)
-    ).
-
-dispatch_request(grounding_metaphor_witness, Id, Request, Response) :-
-    (   get_dict(metaphor, Request, JSONMetaphor),
-        get_dict(anchor, Request, JSONAnchor),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONMetaphor, Metaphor),
-        json_to_term(JSONAnchor, Anchor),
-        json_to_term(JSONSource, Source),
-        (   cw_grounding_metaphor:grounding_metaphor_witness(
-                Metaphor,
-                Anchor,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_grounding_metaphor_witness,
-                "grounding_metaphor_witness found no grounding-metaphor recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_grounding_metaphor_request,
-            "grounding_metaphor_witness requires metaphor, anchor, and source",
-            Response)
-    ).
-
 dispatch_request(sequent_proof_witness, Id, Request, Response) :-
     (   get_dict(sequent, Request, JSONSequent),
         get_dict(source, Request, JSONSource)
@@ -1183,30 +1000,6 @@ dispatch_request(sequent_proof_witness, Id, Request, Response) :-
         )
     ;   error_response(Id, malformed_sequent_proof_request,
             "sequent_proof_witness requires sequent and source",
-            Response)
-    ).
-
-dispatch_request(unit_coordination_witness, Id, Request, Response) :-
-    (   get_dict(key, Request, JSONKey),
-        get_dict(detail, Request, JSONDetail),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONKey, Key),
-        json_to_term(JSONDetail, Detail),
-        json_to_term(JSONSource, Source),
-        (   cw_unit_coordination:unit_coordination_witness(
-                Key,
-                Detail,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_unit_coordination_witness,
-                "unit_coordination_witness found no unit-coordination recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_unit_coordination_request,
-            "unit_coordination_witness requires key, detail, and source",
             Response)
     ).
 
@@ -1232,337 +1025,6 @@ dispatch_request(unit_coordination_svg, Id, Request, Response) :-
         ok_response(Id, Dict, Response)
     ;   error_response(Id, invalid_unit_coordination_svg_request,
             "unit_coordination_svg requires base 2..15, non-negative value_up, and denominator > 0",
-            Response)
-    ).
-
-dispatch_request(godel_primes_witness, Id, Request, Response) :-
-    (   get_dict(query, Request, JSONQuery),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONQuery, Query),
-        json_to_term(JSONSource, Source),
-        (   cw_godel_primes:godel_primes_witness(
-                Query,
-                _Result,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_godel_primes_witness,
-                "godel_primes_witness found no prime-utility recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_godel_primes_request,
-            "godel_primes_witness requires query and source",
-            Response)
-    ).
-
-dispatch_request(fsm_engine_witness, Id, Request, Response) :-
-    (   get_dict(descriptor, Request, JSONDescriptor),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONDescriptor, Descriptor),
-        json_to_term(JSONSource, Source),
-        (   cw_fsm_engine:fsm_engine_witness(
-                Descriptor,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_fsm_engine_witness,
-                "fsm_engine_witness found no loaded FSM executor registry recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_fsm_engine_request,
-            "fsm_engine_witness requires descriptor and source",
-            Response)
-    ).
-
-dispatch_request(action_cluster_witness, Id, Request, Response) :-
-    (   get_dict(operation, Request, JSONOperation),
-        get_dict(kind, Request, JSONKind),
-        get_dict(cluster, Request, JSONCluster),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONOperation, Operation),
-        json_to_term(JSONKind, Kind),
-        json_to_term(JSONCluster, Cluster),
-        json_to_term(JSONSource, Source),
-        (   cw_action_cluster:action_cluster_witness(
-                Operation,
-                Kind,
-                Cluster,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_action_cluster_witness,
-                "action_cluster_witness found no action-cluster recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_action_cluster_request,
-            "action_cluster_witness requires operation, kind, cluster, and source",
-            Response)
-    ).
-
-dispatch_request(practice_vocabulary_witness, Id, Request, Response) :-
-    (   get_dict(key, Request, JSONKey),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONKey, Key),
-        json_to_term(JSONSource, Source),
-        (   cw_practice_vocabulary:practice_vocabulary_witness(
-                Key,
-                _Vocabulary,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_practice_vocabulary_witness,
-                "practice_vocabulary_witness found no practice-vocabulary recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_practice_vocabulary_request,
-            "practice_vocabulary_witness requires key and source",
-            Response)
-    ).
-
-dispatch_request(accommodation_witness, Id, Request, Response) :-
-    (   get_dict(target, Request, JSONTarget),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONTarget, Target),
-        json_to_term(JSONSource, Source),
-        (   cw_accommodation:accommodation_witness(
-                Target,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_accommodation_witness,
-                "accommodation_witness found no accommodation registry recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_accommodation_request,
-            "accommodation_witness requires target and source",
-            Response)
-    ).
-
-dispatch_request(domain_context_witness, Id, Request, Response) :-
-    (   get_dict(domain, Request, JSONDomain),
-        get_dict(context, Request, JSONContext),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONDomain, Domain),
-        json_to_term(JSONContext, Context),
-        json_to_term(JSONSource, Source),
-        (   cw_domain_context:domain_context_witness(
-                Domain,
-                Context,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_domain_context_witness,
-                "domain_context_witness found no domain-context recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_domain_context_request,
-            "domain_context_witness requires domain, context, and source",
-            Response)
-    ).
-
-dispatch_request(orr_entry_witness, Id, Request, Response) :-
-    (   get_dict(variant, Request, JSONVariant),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONVariant, Variant),
-        json_to_term(JSONSource, Source),
-        (   cw_orr_entry:orr_entry_witness(
-                Variant,
-                _PredIndicator,
-                _Role,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_orr_entry_witness,
-                "orr_entry_witness found no Observe-React-Reorganize entry registry recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_orr_entry_request,
-            "orr_entry_witness requires variant and source",
-            Response)
-    ).
-
-dispatch_request(executable_practice_witness, Id, Request, Response) :-
-    (   get_dict(variant, Request, JSONVariant),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONVariant, Variant),
-        json_to_term(JSONSource, Source),
-        (   cw_executable_practice:executable_practice_witness(
-                Variant,
-                _PredIndicator,
-                _Kind,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_executable_practice_witness,
-                "executable_practice_witness found no executable-practice registry recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_executable_practice_request,
-            "executable_practice_witness requires variant and source",
-            Response)
-    ).
-
-dispatch_request(misconception_hook_witness, Id, Request, Response) :-
-    (   get_dict(operation, Request, JSONOperation),
-        get_dict(outcome, Request, JSONOutcome),
-        get_dict(family, Request, JSONFamily),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONOperation, Operation),
-        json_to_term(JSONOutcome, Outcome),
-        json_to_term(JSONFamily, Family),
-        json_to_term(JSONSource, Source),
-        (   cw_misconception_hook:misconception_hook_witness(
-                Operation,
-                Outcome,
-                Family,
-                _Hook,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_misconception_hook_witness,
-                "misconception_hook_witness found no misconception-hook recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_misconception_hook_request,
-            "misconception_hook_witness requires operation, outcome, family, and source",
-            Response)
-    ).
-
-dispatch_request(algebra_claim_witness, Id, Request, Response) :-
-    (   get_dict(canonical, Request, JSONCanonical),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONCanonical, Canonical0),
-        json_to_term(JSONSource, Source0),
-        string_or_atom_to_atom(Canonical0, Canonical),
-        string_or_atom_to_atom(Source0, Source),
-        (   cw_algebra_claim:algebra_claim_witness(
-                Canonical,
-                _Detail,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_algebra_claim_witness,
-                "algebra_claim_witness: no recorded crosswalk record connects the requested algebra claim and source",
-                Response)
-        )
-    ;   error_response(Id, malformed_algebra_claim_request,
-            "algebra_claim_witness requires canonical and source",
-            Response)
-    ).
-
-dispatch_request(integer_signed_claim_witness, Id, Request, Response) :-
-    (   get_dict(canonical, Request, JSONCanonical),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONCanonical, Canonical0),
-        json_to_term(JSONSource, Source0),
-        string_or_atom_to_atom(Canonical0, Canonical),
-        string_or_atom_to_atom(Source0, Source),
-        (   cw_integer_signed_claim:integer_signed_claim_witness(
-                Canonical,
-                _Detail,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_integer_signed_claim_witness,
-                "integer_signed_claim_witness: no recorded crosswalk record connects the requested signed-integer claim and source",
-                Response)
-        )
-    ;   error_response(Id, malformed_integer_signed_claim_request,
-            "integer_signed_claim_witness requires canonical and source",
-            Response)
-    ).
-
-dispatch_request(arithmetic_property_witness, Id, Request, Response) :-
-    (   get_dict(canonical, Request, JSONCanonical),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONCanonical, Canonical0),
-        json_to_term(JSONSource, Source0),
-        string_or_atom_to_atom(Canonical0, Canonical),
-        string_or_atom_to_atom(Source0, Source),
-        (   cw_arithmetic_property_claim:arithmetic_property_witness(
-                Canonical,
-                _Detail,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_arithmetic_property_witness,
-                "arithmetic_property_witness: no recorded crosswalk record connects the requested arithmetic-property claim and source",
-                Response)
-        )
-    ;   error_response(Id, malformed_arithmetic_property_request,
-            "arithmetic_property_witness requires canonical and source",
-            Response)
-    ).
-
-dispatch_request(calculus_claim_witness, Id, Request, Response) :-
-    (   get_dict(canonical, Request, JSONCanonical),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONCanonical, Canonical0),
-        json_to_term(JSONSource, Source0),
-        string_or_atom_to_atom(Canonical0, Canonical),
-        string_or_atom_to_atom(Source0, Source),
-        (   cw_calculus_claim:calculus_claim_witness(
-                Canonical,
-                _Detail,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_calculus_claim_witness,
-                "calculus_claim_witness: no recorded crosswalk record connects the requested calculus claim and source",
-                Response)
-        )
-    ;   error_response(Id, malformed_calculus_claim_request,
-            "calculus_claim_witness requires canonical and source",
-            Response)
-    ).
-
-dispatch_request(counting_claim_witness, Id, Request, Response) :-
-    (   get_dict(canonical, Request, JSONCanonical),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONCanonical, Canonical0),
-        json_to_term(JSONSource, Source0),
-        string_or_atom_to_atom(Canonical0, Canonical),
-        string_or_atom_to_atom(Source0, Source),
-        (   cw_counting_claim:counting_claim_witness(
-                Canonical,
-                _Detail,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_counting_claim_witness,
-                "counting_claim_witness: no recorded crosswalk record connects the requested counting claim and source",
-                Response)
-        )
-    ;   error_response(Id, malformed_counting_claim_request,
-            "counting_claim_witness requires canonical and source",
             Response)
     ).
 
@@ -1821,257 +1283,6 @@ dispatch_request(standard_3_ns_5_fraction_comparison_witness, Id, Request, Respo
             Response)
     ).
 
-dispatch_request(whole_number_addsub_claim_witness, Id, Request, Response) :-
-    (   get_dict(canonical, Request, JSONCanonical),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONCanonical, Canonical0),
-        json_to_term(JSONSource, Source0),
-        string_or_atom_to_atom(Canonical0, Canonical),
-        string_or_atom_to_atom(Source0, Source),
-        (   cw_whole_number_addsub_claim:whole_number_addsub_claim_witness(
-                Canonical,
-                _Detail,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_whole_number_addsub_claim_witness,
-                "whole_number_addsub_claim_witness: no recorded crosswalk record connects the requested addition/subtraction claim and source",
-                Response)
-        )
-    ;   error_response(Id, malformed_whole_number_addsub_claim_request,
-            "whole_number_addsub_claim_witness requires canonical and source",
-            Response)
-    ).
-
-dispatch_request(ratio_proportion_claim_witness, Id, Request, Response) :-
-    (   get_dict(canonical, Request, JSONCanonical),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONCanonical, Canonical0),
-        json_to_term(JSONSource, Source0),
-        string_or_atom_to_atom(Canonical0, Canonical),
-        string_or_atom_to_atom(Source0, Source),
-        (   cw_ratio_proportion_claim:ratio_proportion_claim_witness(
-                Canonical,
-                _Detail,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_ratio_proportion_claim_witness,
-                "ratio_proportion_claim_witness: no recorded crosswalk record connects the requested ratio/proportion claim and source",
-                Response)
-        )
-    ;   error_response(Id, malformed_ratio_proportion_claim_request,
-            "ratio_proportion_claim_witness requires canonical and source",
-            Response)
-    ).
-
-dispatch_request(magnitude_equivalence_claim_witness, Id, Request, Response) :-
-    (   get_dict(canonical, Request, JSONCanonical),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONCanonical, Canonical0),
-        json_to_term(JSONSource, Source0),
-        string_or_atom_to_atom(Canonical0, Canonical),
-        string_or_atom_to_atom(Source0, Source),
-        (   cw_magnitude_equivalence_claim:magnitude_equivalence_claim_witness(
-                Canonical,
-                _Detail,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_magnitude_equivalence_claim_witness,
-                "magnitude_equivalence_claim_witness: no recorded crosswalk record connects the requested magnitude-equivalence claim and source",
-                Response)
-        )
-    ;   error_response(Id, malformed_magnitude_equivalence_claim_request,
-            "magnitude_equivalence_claim_witness requires canonical and source",
-            Response)
-    ).
-
-dispatch_request(multiplication_division_claim_witness, Id, Request, Response) :-
-    (   get_dict(canonical, Request, JSONCanonical),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONCanonical, Canonical0),
-        json_to_term(JSONSource, Source0),
-        string_or_atom_to_atom(Canonical0, Canonical),
-        string_or_atom_to_atom(Source0, Source),
-        (   cw_multiplication_division_claim:multiplication_division_claim_witness(
-                Canonical,
-                _Detail,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_multiplication_division_claim_witness,
-                "multiplication_division_claim_witness: no recorded crosswalk record connects the requested multiplication/division claim and source",
-                Response)
-        )
-    ;   error_response(Id, malformed_multiplication_division_claim_request,
-            "multiplication_division_claim_witness requires canonical and source",
-            Response)
-    ).
-
-dispatch_request(decimal_claim_witness, Id, Request, Response) :-
-    (   get_dict(canonical, Request, JSONCanonical),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONCanonical, Canonical0),
-        json_to_term(JSONSource, Source0),
-        string_or_atom_to_atom(Canonical0, Canonical),
-        string_or_atom_to_atom(Source0, Source),
-        (   cw_decimal_claim:decimal_claim_witness(
-                Canonical,
-                _Detail,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_decimal_claim_witness,
-                "decimal_claim_witness: no recorded crosswalk record connects the requested decimal claim and source",
-                Response)
-        )
-    ;   error_response(Id, malformed_decimal_claim_request,
-            "decimal_claim_witness requires canonical and source",
-            Response)
-    ).
-
-dispatch_request(place_value_number_claim_witness, Id, Request, Response) :-
-    (   get_dict(canonical, Request, JSONCanonical),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONCanonical, Canonical0),
-        json_to_term(JSONSource, Source0),
-        string_or_atom_to_atom(Canonical0, Canonical),
-        string_or_atom_to_atom(Source0, Source),
-        (   cw_place_value_number_claim:place_value_number_claim_witness(
-                Canonical,
-                _Detail,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_place_value_number_claim_witness,
-                "place_value_number_claim_witness: no recorded crosswalk record connects the requested place-value claim and source",
-                Response)
-        )
-    ;   error_response(Id, malformed_place_value_number_claim_request,
-            "place_value_number_claim_witness requires canonical and source",
-            Response)
-    ).
-
-dispatch_request(whole_number_claim_witness, Id, Request, Response) :-
-    (   get_dict(canonical, Request, JSONCanonical),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONCanonical, Canonical0),
-        json_to_term(JSONSource, Source0),
-        string_or_atom_to_atom(Canonical0, Canonical),
-        string_or_atom_to_atom(Source0, Source),
-        (   cw_whole_number_claim:whole_number_claim_witness(
-                Canonical,
-                _Detail,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_whole_number_claim_witness,
-                "whole_number_claim_witness: no recorded crosswalk record connects the requested zero claim and source",
-                Response)
-        )
-    ;   error_response(Id, malformed_whole_number_claim_request,
-            "whole_number_claim_witness requires canonical and source",
-            Response)
-    ).
-
-dispatch_request(fraction_extra_claim_witness, Id, Request, Response) :-
-    (   get_dict(canonical, Request, JSONCanonical),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONCanonical, Canonical0),
-        json_to_term(JSONSource, Source0),
-        string_or_atom_to_atom(Canonical0, Canonical),
-        string_or_atom_to_atom(Source0, Source),
-        (   cw_fraction_extra_claim:fraction_extra_claim_witness(
-                Canonical,
-                _Detail,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_fraction_extra_claim_witness,
-                "fraction_extra_claim_witness: no recorded crosswalk record connects the requested additional-fraction claim and source",
-                Response)
-        )
-    ;   error_response(Id, malformed_fraction_extra_claim_request,
-            "fraction_extra_claim_witness requires canonical and source",
-            Response)
-    ).
-
-dispatch_request(fraction_claim_witness, Id, Request, Response) :-
-    (   get_dict(canonical, Request, JSONCanonical),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONCanonical, Canonical0),
-        json_to_term(JSONSource, Source0),
-        string_or_atom_to_atom(Canonical0, Canonical),
-        string_or_atom_to_atom(Source0, Source),
-        (   cw_fraction_claim:fraction_claim_witness(
-                Canonical,
-                _Detail,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_fraction_claim_witness,
-                "fraction_claim_witness: no recorded crosswalk record connects the requested fraction claim and source",
-                Response)
-        )
-    ;   error_response(Id, malformed_fraction_claim_request,
-            "fraction_claim_witness requires canonical and source",
-            Response)
-    ).
-
-dispatch_request(productive_deformation_witness, Id, Request, Response) :-
-    (   get_dict(operation, Request, JSONOperation),
-        get_dict(productive, Request, JSONProductive),
-        get_dict(deformation, Request, JSONDeformation),
-        get_dict(family, Request, JSONFamily),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONOperation, Operation0),
-        json_to_term(JSONProductive, Productive0),
-        json_to_term(JSONDeformation, Deformation0),
-        json_to_term(JSONFamily, Family0),
-        json_to_term(JSONSource, Source0),
-        string_or_atom_to_atom(Operation0, Operation),
-        string_or_atom_to_atom(Productive0, Productive),
-        string_or_atom_to_atom(Deformation0, Deformation),
-        string_or_atom_to_atom(Family0, Family),
-        string_or_atom_to_atom(Source0, Source),
-        (   cw_productive_deformation:productive_deformation_witness(
-                Operation,
-                Productive,
-                Deformation,
-                Family,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_productive_deformation_witness,
-                "productive_deformation_witness found no recorded productive and wrong-answer pair",
-                Response)
-        )
-    ;   error_response(Id, malformed_productive_deformation_request,
-            "productive_deformation_witness requires operation, productive, deformation, family, and source",
-            Response)
-    ).
-
 dispatch_request(geometry_entailment_witness, Id, Request, Response) :-
     (   get_dict(entailer, Request, JSONEntailer),
         get_dict(entailed, Request, JSONEntailed)
@@ -2189,29 +1400,6 @@ dispatch_request(mua_kind_coherence_witness, Id, Request, Response) :-
         )
     ;   error_response(Id, malformed_mua_kind_coherence_request,
             "mua_kind_coherence_witness requires kind and row_text", Response)
-    ).
-
-dispatch_request(mua_coherence_witness, Id, Request, Response) :-
-    (   get_dict(subject, Request, JSONSubject),
-        get_dict(input, Request, JSONInput),
-        get_dict(source, Request, JSONSource)
-    ->  json_to_term(JSONSubject, Subject),
-        json_to_term(JSONSource, Source),
-        (   cw_mua_coherence:mua_coherence_witness(
-                Subject,
-                JSONInput,
-                _Score,
-                Source,
-                Witness
-            )
-        ->  json_safe(Witness, Safe),
-            ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_mua_coherence_witness,
-                "mua_coherence_witness found no coherence scoring recorded example",
-                Response)
-        )
-    ;   error_response(Id, malformed_mua_coherence_request,
-            "mua_coherence_witness requires subject, input, and source", Response)
     ).
 
 dispatch_request(grounding_inference_witness, Id, Request, Response) :-
@@ -3801,6 +2989,112 @@ canonical_legacy_match(A, Canon) :-
     ;   atomic_list_concat(Parts, ':', Legacy), last(Parts, Bare), Bare == A
     ),
     !.
+
+% Authored table dispatch. Bespoke clauses remain earlier in clause order while
+% families migrate; spec-backed operations commit here before the catch-all.
+dispatch_request(Op, Id, Request, Response) :-
+    dispatch_spec(Op, Inputs, Call, Result),
+    !,
+    (   read_dispatch_inputs(Inputs, Request, Bound)
+    ->  run_dispatch_call(Call, Bound, Outcome),
+        treat_dispatch_result(Result, Op, Id, Outcome, Response)
+    ;   dispatch_malformed_response(Op, Id, Response)
+    ).
+
+read_dispatch_inputs([], _Request, []).
+read_dispatch_inputs([Key-Converter|Specs], Request, [Key-Value|Bound]) :-
+    get_dict(Key, Request, JSONValue),
+    convert_dispatch_input(Converter, JSONValue, Value),
+    read_dispatch_inputs(Specs, Request, Bound).
+
+convert_dispatch_input(term, JSON, Value) :-
+    json_to_term(JSON, Value).
+convert_dispatch_input(atom, JSON, Value) :-
+    json_to_term(JSON, Value0),
+    string_or_atom_to_atom(Value0, Value).
+convert_dispatch_input(code, JSON, Value) :-
+    atom_string(Value, JSON).
+convert_dispatch_input(string, Value, Value).
+convert_dispatch_input(dict, Value, Value).
+convert_dispatch_input(int, JSON, Value) :-
+    dispatch_integer(JSON, Value).
+convert_dispatch_input(int(Low, High), JSON, Value) :-
+    dispatch_integer(JSON, Value),
+    Value >= Low,
+    ( High == inf -> true ; Value =< High ).
+convert_dispatch_input(recollection, JSON, Recollection) :-
+    (   json_to_term(JSON, Term), Term = recollection(_)
+    ->  Recollection = Term
+    ;   dispatch_integer(JSON, N),
+        integer_to_recollection(N, Recollection)
+    ).
+convert_dispatch_input(fraction, JSON, Fraction) :-
+    fraction_request_value(JSON, Fraction).
+convert_dispatch_input(list, JSON, List) :-
+    json_to_term(JSON, List),
+    is_list(List).
+
+dispatch_integer(Value, Value) :-
+    integer(Value),
+    !.
+dispatch_integer(Value, Integer) :-
+    ( string(Value) ; atom(Value) ),
+    atom_number(Value, Number),
+    integer(Number),
+    Integer = Number.
+
+run_dispatch_call(call(Module:Pred, ArgSpec), Bound, Outcome) :-
+    dispatch_call_args(ArgSpec, Bound, Args, Outputs),
+    Goal =.. [Pred|Args],
+    (   call(Module:Goal)
+    ->  Outcome = success(Outputs)
+    ;   Outcome = failure
+    ).
+
+dispatch_call_args([], _Bound, [], []).
+dispatch_call_args([Spec|Specs], Bound, [Arg|Args], Outputs) :-
+    dispatch_call_arg(Spec, Bound, Arg, Outputs, Rest),
+    dispatch_call_args(Specs, Bound, Args, Rest).
+
+dispatch_call_arg(drop, _Bound, _Arg, Outputs, Outputs) :- !.
+dispatch_call_arg(out(Name), _Bound, Arg, [Name-Arg|Outputs], Outputs) :- !.
+dispatch_call_arg(Key, Bound, Value, Outputs, Outputs) :-
+    memberchk(Key-Value, Bound).
+
+treat_dispatch_result(witness(_NoWitness), _Op, Id, success(Outputs), Response) :-
+    memberchk(witness-Witness, Outputs),
+    json_safe(Witness, Safe),
+    ok_response(Id, Safe, Response),
+    !.
+treat_dispatch_result(witness(NoWitness), Op, Id, failure, Response) :-
+    dispatch_message(Op, no_witness, Message),
+    error_response(Id, NoWitness, Message, Response).
+treat_dispatch_result(witness_wrap(Fields, _NoWitness), _Op, Id,
+        success(Outputs), Response) :-
+    memberchk(witness-Witness, Outputs),
+    dispatch_wrap_fields(Fields, Outputs, Wrapped0),
+    Wrapped = Wrapped0.put(witness, Witness),
+    json_safe(Wrapped, Safe),
+    ok_response(Id, Safe, Response),
+    !.
+treat_dispatch_result(witness_wrap(_Fields, NoWitness), Op, Id, failure, Response) :-
+    dispatch_message(Op, no_witness, Message),
+    error_response(Id, NoWitness, Message, Response).
+treat_dispatch_result(raw, _Op, Id, success(Outputs), Response) :-
+    memberchk(dict-Dict, Outputs),
+    ok_response(Id, Dict, Response).
+
+dispatch_wrap_fields([], _Outputs, _{}).
+dispatch_wrap_fields([Label-Slot|Fields], Outputs, Dict) :-
+    memberchk(Slot-Value, Outputs),
+    dispatch_wrap_fields(Fields, Outputs, Rest),
+    Dict = Rest.put(Label, Value).
+
+dispatch_malformed_response(Op, Id, Response) :-
+    atom_concat(Base, '_witness', Op),
+    atomic_list_concat([malformed, Base, request], '_', Code),
+    dispatch_message(Op, malformed, Message),
+    error_response(Id, Code, Message, Response).
 
 % Catch-all: only genuinely unknown ops reach here. The \+ known_op/1 guard
 % stops a KNOWN op whose body failed from backtracking into this clause; that

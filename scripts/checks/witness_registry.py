@@ -14,6 +14,7 @@ from hermes.app.routes.logic import WITNESS_OPS  # noqa: E402
 DISPATCH_RE = re.compile(
     r"(?m)^dispatch_request\(([a-z][A-Za-z0-9_]*),\s*Id,\s*_?Request,\s*Response\)\s*:-"
 )
+SPEC_RE = re.compile(r"(?m)^dispatch_spec\(([a-z][A-Za-z0-9_]*),")
 
 
 def main() -> int:
@@ -32,6 +33,8 @@ def main() -> int:
 
     worker_text = (ROOT / "hermes_worker.pl").read_text(encoding="utf-8")
     dispatch_ops = set(DISPATCH_RE.findall(worker_text))
+    spec_text = (ROOT / "hermes/dispatch_spec.pl").read_text(encoding="utf-8")
+    dispatch_ops.update(SPEC_RE.findall(spec_text))
     missing = sorted(set(owners) - dispatch_ops)
     if missing:
         print("witness ops without dispatch_request clauses: " + ", ".join(missing), file=sys.stderr)

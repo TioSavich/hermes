@@ -60,6 +60,7 @@ KEEP_FILES = [
     "paths.pl",                        # the loader; nothing resolves without it
     "hermes_worker.pl",                # the worker entry point
     "hermes/capability_registry.pl",   # generated worker capability inventory
+    "hermes/dispatch_spec.pl",         # authored generic-dispatch identity + behavior
     "hermes/app/Hermes.command",       # double-click local app launcher
     "hermes/app/Hermes.svg",           # launcher icon asset
     "crosswalk/representation_spine.pl",
