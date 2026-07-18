@@ -9226,7 +9226,6 @@ misconceptions/misconceptions_whole_number_batch_5.pl
 misconceptions/pml_wire.pl
 misconceptions/test_harness.pl
 more-zeeman/area-model/compare.html
-more-zeeman/area-model/index.html
 more-zeeman/area-model/samples/array-3-4.json
 more-zeeman/area-model/samples/commutativity-3-5.json
 more-zeeman/area-model/samples/fraction-2-3-times-3-4.json
@@ -9234,10 +9233,8 @@ more-zeeman/area-model/samples/partial-13-14.json
 more-zeeman/area-model/samples/partial-products-13-14.json
 more-zeeman/area-model/samples/prime-7.json
 more-zeeman/audience-index.html
-more-zeeman/balance-scale/index.html
 more-zeeman/balance-scale/samples/solve-2x3-11.json
 more-zeeman/base-ten/compare.html
-more-zeeman/base-ten/index.html
 more-zeeman/base-ten/samples/add-27-15-base10.json
 more-zeeman/base-ten/samples/add-27-15-base12.json
 more-zeeman/bifurcation_diagram.png
@@ -9260,7 +9257,6 @@ more-zeeman/expressive-power-comparison.html
 more-zeeman/fractal.html
 more-zeeman/fraction-bars/calculator.html
 more-zeeman/fraction-bars/compare.html
-more-zeeman/fraction-bars/index.html
 more-zeeman/fraction-bars/samples/iteration-3-4.json
 more-zeeman/fraction-bars/samples/partition-1-3.json
 more-zeeman/fraction-bars/samples/splitting-1-4.json
@@ -9312,7 +9308,6 @@ more-zeeman/hermes-tokens-dark.css
 more-zeeman/hermes-tokens.css
 more-zeeman/hermes_logo.svg
 more-zeeman/home.html
-more-zeeman/hybridization/index.html
 more-zeeman/index.html
 more-zeeman/landing.html
 more-zeeman/matrix.html
@@ -9323,12 +9318,9 @@ more-zeeman/mua_data.json
 more-zeeman/mud-render.js
 more-zeeman/muds-main.js
 more-zeeman/muds.html
-more-zeeman/notation/index.html
 more-zeeman/number-line/compare.html
-more-zeeman/number-line/index.html
 more-zeeman/number-line/samples/jumps-cobo-28-47.json
 more-zeeman/number-line/samples/rounding-28-47.json
-more-zeeman/place-value-chart/index.html
 more-zeeman/playground.html
 more-zeeman/prolog/zeeman_bifurcation.pl
 more-zeeman/prolog/zeeman_machine.pl
@@ -9343,7 +9335,6 @@ more-zeeman/render/shell.css
 more-zeeman/render/shell.js
 more-zeeman/scoreboard.html
 more-zeeman/set-grouping/compare.html
-more-zeeman/set-grouping/index.html
 more-zeeman/set-grouping/samples/equal-groups-3x4.json
 more-zeeman/set-grouping/samples/make-ten-8-5.json
 more-zeeman/set-grouping/samples/ten-frame-7.json

@@ -67,16 +67,7 @@
       ["witnesses",   "Witnesses",        mz("witnesses.html")],
     ]},
     { title: "Tools", kind: "tools", items: [
-      ["visualizations", "All visualizers", mz("visualizations.html")],
-      ["number-line",    "Number line",     mz("number-line/index.html")],
-      ["fraction-bars",  "Fraction bars",   mz("fraction-bars/index.html")],
-      ["area-model",     "Area model",      mz("area-model/index.html")],
-      ["base-ten",       "Ace of Base",     mz("base-ten/index.html")],
-      ["set-grouping",   "Set & grouping",  mz("set-grouping/index.html")],
-      ["balance-scale",  "Balance scale",   mz("balance-scale/index.html")],
-      ["place-value-chart", "Place-value chart", mz("place-value-chart/index.html")],
-      ["notation",       "Notation",        mz("notation/index.html")],
-      ["hybridization",  "Hybridization",   mz("hybridization/index.html")],
+      ["visualizations", "Visualizers", mz("visualizations.html")],
       ["gallery",        "Gallery",         mz("gallery.html")],
     ]},
     { title: "Critical Mathematics", kind: "critical", items: [
@@ -105,13 +96,6 @@
     if (FORCED_ACTIVE) return FORCED_ACTIVE;
     var path = location.pathname;
     var file = (path.split("/").pop() || "index.html").toLowerCase();
-    // tools live one dir deep: match the folder name
-    var dirs = ["number-line", "fraction-bars", "area-model", "base-ten",
-                "set-grouping", "balance-scale", "place-value-chart",
-                "notation", "hybridization"];
-    for (var i = 0; i < dirs.length; i++) {
-      if (path.indexOf("/" + dirs[i] + "/") !== -1) return dirs[i];
-    }
     var byFile = {
       "discussions.html": "discussions", "console.html": "console",
       "monitoring_chart.html": "monitoring", "visualizations.html": "visualizations",

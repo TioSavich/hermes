@@ -222,7 +222,7 @@ def static_audit(tree: Path, report: Report) -> None:
         "more-zeeman/monitoring_chart.html": (
             "lessons/im/im_glossary.pl", "lessons/im_harness.pl",
         ),
-        "more-zeeman/notation/index.html": (
+        "more-zeeman/visualizations.html": (
             "lessons/im/generated/compiled_task_instances.pl",
         ),
         "hermes/app/web/breaks.html": (

@@ -211,22 +211,22 @@ class RouteLogic:
         text = message.lower()
         nums = [int(n) for n in re.findall(r"\d{1,4}", message)]
     
-        def scene(op: str, payload: dict, path: str) -> dict:
-            query = urllib.parse.urlencode(payload)
+        def scene(op: str, payload: dict, path: str, scene_format: str) -> dict:
+            query = urllib.parse.urlencode({"format": scene_format, **payload})
             return {"op": op, "payload": payload, "url": f"{path}?{query}"}
     
         if ("area" in text or "array" in text) and len(nums) >= 2:
             payload = {"kind": "array_multiplication", "a": nums[0], "b": nums[1]}
-            return scene("area_render", payload, "/more-zeeman/area-model/index.html")
+            return scene("area_render", payload, "/more-zeeman/visualizations.html", "area-model")
         if ("base-ten" in text or "base ten" in text or "blocks" in text) and len(nums) >= 2:
             payload = {"kind": "add_with_carry", "a": nums[0], "b": nums[1], "base": 10}
-            return scene("base_ten_render", payload, "/more-zeeman/base-ten/index.html")
+            return scene("base_ten_render", payload, "/more-zeeman/visualizations.html", "base-ten-columns")
         if ("set grouping" in text or "make ten" in text or "ten frame" in text) and len(nums) >= 2:
             payload = {"kind": "make_ten", "a": nums[0], "b": nums[1]}
-            return scene("set_grouping_render", payload, "/more-zeeman/set-grouping/index.html")
+            return scene("set_grouping_render", payload, "/more-zeeman/visualizations.html", "set-grouping")
         if "balance" in text and len(nums) >= 3:
             payload = {"a": nums[0], "b": nums[1], "c": nums[2]}
-            return scene("balance_render", payload, "/more-zeeman/balance-scale/index.html")
+            return scene("balance_render", payload, "/more-zeeman/visualizations.html", "balance-scale")
         return None
 
     def _grounding_facts_block(self, g: dict | None) -> str:
