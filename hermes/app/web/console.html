@@ -469,15 +469,8 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
   </div>
 
   <aside class="first-run" id="first-run" aria-label="First-run orientation">
-    <p>Hermes is a local workbench; enter through one theme, then change the worked defaults.</p>
-    <div class="first-run-chips">
-      <a class="entry-chip" style="--chip:var(--acc-objects)" href="/more-zeeman/visualizations.html?format=fraction-bars">Objects</a>
-      <a class="entry-chip" style="--chip:var(--acc-negation)" href="breaks.html#incompatibility-walkthrough">Incompatibility</a>
-      <a class="entry-chip" style="--chip:var(--acc-body)" href="/more-zeeman/index.html">The feeling body</a>
-      <a class="entry-chip" style="--chip:var(--acc-norms)" href="discussions.html">Norms &amp; curriculum</a>
-      <a class="entry-chip" style="--chip:var(--acc-learner)" href="/learner/reorg_demo.html">The learner</a>
-      <a class="entry-chip" style="--chip:var(--acc-recollection)" href="/more-zeeman/atlas.html">Recollection</a>
-    </div>
+    <p>A local workbench: paste a discussion, run a computation, or open a lesson. The colored
+      nav groups carry the theory behind each surface.</p>
     <button class="first-run-dismiss" id="first-run-dismiss" type="button">Dismiss</button>
   </aside>
 
@@ -511,7 +504,6 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
 
     <!-- ============ WORKSPACE ============ -->
     <section class="panel active" data-tab="workspace">
-      <div class="card worked-example" id="console-worked-example" aria-live="polite"></div>
       <p class="panel-lede">Bring a discussion, read what Hermes makes of it, and open a visualizer. The research features (PML scoring and the Gemma class workflow) wait under <em>Advanced / research</em> in the top bar.</p>
 
       <div class="card">
@@ -565,6 +557,7 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
           <button class="btn primary" id="calc-run">Compute &amp; trace</button>
         </div>
         <div id="calc-strategy-status" class="muted-inline">loading runnable strategies…</div>
+        <div class="worked-example" id="console-worked-example" aria-live="polite" style="margin-top:.7rem;padding:.7rem .85rem"></div>
         <div id="calc-out" class="result" hidden></div>
       </div>
 

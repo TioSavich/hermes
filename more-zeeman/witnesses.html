@@ -508,7 +508,7 @@
           // A typed no_*_witness reply is a boundary report, not a failure:
           // the worker checked its finite relation and found no witness for
           // that input. Present it plainly, without the failure prefix.
-          if (/no_[a-z_]*witness/i.test(detail)) {
+          if (/no_[a-z_]*witness|\bfound no\b|\bwitness found no\b/i.test(detail)) {
             output.className = "";
             output.textContent = detail;
             return;

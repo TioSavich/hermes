@@ -192,7 +192,7 @@ function el(tag, attrs = {}, ...kids) {
 }
 
 let DATA = { asktm: [], literature: [] };
-let tab = 'literature';
+let tab = 'asktm';
 
 // The manifest and the ASKTM images it points at ship under ASKTM_Data/;
 // the fine-grained coding Word documents stay in the source project. Probe
@@ -200,6 +200,16 @@ let tab = 'literature';
 // itself instead of laying out broken thumbnails. The literature figures
 // are tracked, so that tab is unaffected.
 let asktmImages = 'checking';   // 'checking' | 'present' | 'absent'
+let litImages = 'checking';     // the literature figures are article excerpts;
+                                // they stay in the source project, so this
+                                // repository normally has metadata only.
+function probeLitImages() {
+  if (DATA.literature.length === 0) { litImages = 'present'; return; }
+  const probe = new Image();
+  probe.onload = () => { litImages = 'present'; if (tab === 'literature') render(); };
+  probe.onerror = () => { litImages = 'absent'; if (tab === 'literature') render(); };
+  probe.src = srcOf(DATA.literature[0].image);
+}
 function probeAsktmImages() {
   if (DATA.asktm.length === 0) { asktmImages = 'present'; return; }
   const probe = new Image();
@@ -216,6 +226,7 @@ Spine.loadAssetManifest()
     initLiterature();
     initAsktm();
     probeAsktmImages();
+    probeLitImages();
     render();
   })
   .catch(e => {
@@ -329,9 +340,7 @@ function render() {
             + 'cannot serve them.'),
           el('p', { style: 'margin-top:.6rem' },
             'The fine-grained coding Word documents stay in the source project. '
-            + 'The coded metadata for these clips is still in the manifest, and '
-            + 'the literature tab’s figures are tracked in the repository '
-            + 'and load normally.')));
+            + 'The coded metadata for these clips is still in the manifest.')));
     return;
   }
   if (tab === 'asktm') document.getElementById('controls-asktm').hidden = false;
@@ -360,7 +369,7 @@ function litCard(a) {
   (a.prolog_concepts || []).slice(0, 2).forEach(c => chips.append(conceptChip(c)));
   const meta = [a.grade_bucket, a.population].filter(v => v && v !== 'unspecified').join(' · ');
   const card = el('div', { class: 'card' },
-    thumb(a.image),
+    litImages === 'present' ? thumb(a.image) : null,
     el('div', { class: 'card-body' },
       el('div', { class: 'card-title' },
         (a.journal_abbrev || '?') + ' ' + (a.year || '') + ' · p.' + a.page_ref),
@@ -388,7 +397,10 @@ function asktmCard(a) {
 // ---- lightbox ----
 const lb = document.getElementById('lb');
 function openLB(imgPath, metaNodes) {
-  document.getElementById('lb-img').src = srcOf(imgPath);
+  const show = tab !== 'literature' || litImages === 'present';
+  const lbImg = document.getElementById('lb-img');
+  lbImg.parentElement.style.display = show ? '' : 'none';
+  if (show) lbImg.src = srcOf(imgPath);
   const meta = document.getElementById('lb-meta');
   meta.innerHTML = '';
   metaNodes.forEach(n => meta.append(n));
@@ -427,7 +439,7 @@ function openLit(a) {
       ...a.auto_crops.map(c => el('img', { src: srcOf(c), alt: 'auto-crop', loading: 'lazy' })));
     nodes.push(row('auto-crops (rough — needs review)', crops));
   }
-  nodes.push(el('a', { class: 'open-raw', href: srcOf(a.image), target: '_blank' }, 'open full page ↗'));
+  if (litImages === 'present') nodes.push(el('a', { class: 'open-raw', href: srcOf(a.image), target: '_blank' }, 'open full page ↗'));
   openLB(a.image, nodes);
 }
 function openAsktm(a) {
