@@ -452,12 +452,12 @@ dispatch_spec(standard_3_ns_5_fraction_comparison_witness,
          [left, right, result, out(witness)]),
     witness(no_standard_3_ns_5_fraction_comparison_witness)).
 dispatch_spec(multiply_array_witness,
-    [rows-default(nonnegative_int, 3), cols-default(nonnegative_int, 4)],
+    [rows-default(int, 3), cols-default(int, 4)],
     call(user:multiply_array_dispatch_witness,
          [rows, cols, out(witness)]),
     witness_input_errorless(no_multiply_array_witness)).
 dispatch_spec(mult_div_family_witness,
-    [a-default(nonnegative_int, 3), b-default(nonnegative_int, 4)],
+    [a-default(int, 3), b-default(int, 4)],
     call(user:mult_div_family_dispatch_witness,
          [a, b, out(witness)]),
     witness_input_errorless(no_mult_div_family_witness)).

@@ -1759,24 +1759,6 @@ carving_strategy_proof_dispatch_dict(Op, X, Y, Z, Dict) :-
 
 % A response hook preserves a legacy response shape when the generic call
 % frame itself would be observable. The geometry coverage witness contains
-% open Prolog variables whose historical term_string/2 names are part of the
-% worker's byte contract, so its spec row selects the exact zero-input frame.
-dispatch_request(Op, Id, Request, Response) :-
-    dispatch_spec(Op, [],
-        call(user:strength_lift_coverage_witness, [out(coverage), out(witness)]),
-        witness_wrap([coverage-coverage], no_geometry_strength_lift_coverage_witness)),
-    !,
-    dispatch_zero_input_geometry_coverage(Id, Request, Response).
-
-dispatch_zero_input_geometry_coverage(Id, _Request, Response) :-
-    (   strength_lift_coverage_witness(Coverage, Witness)
-    ->  json_safe(_{coverage: Coverage, witness: Witness}, Safe),
-        ok_response(Id, Safe, Response)
-    ;   error_response(Id, no_geometry_strength_lift_coverage_witness,
-            "geometry_strength_lift_coverage_witness found no coverage recorded example",
-            Response)
-    ).
-
 % Authored table dispatch. The 26 render operations and 29 irregular operations
 % remain bespoke by design; spec-backed operations commit here before the
 % catch-all.
@@ -1823,7 +1805,6 @@ known_dispatch_converter(optional_code).
 known_dispatch_converter(practice).
 known_dispatch_converter(int).
 known_dispatch_converter(int(_, _)).
-known_dispatch_converter(nonnegative_int).
 known_dispatch_converter(number).
 known_dispatch_converter(recollection).
 known_dispatch_converter(fraction).
@@ -1887,9 +1868,6 @@ convert_dispatch_input(practice, Value, Practice) :-
     string_or_atom_to_atom(Value, Practice).
 convert_dispatch_input(int, JSON, Value) :-
     dispatch_integer(JSON, Value).
-convert_dispatch_input(nonnegative_int, JSON, Value) :-
-    dispatch_integer(JSON, Value),
-    Value >= 0.
 convert_dispatch_input(number, Value, Value) :-
     number(Value).
 convert_dispatch_input(int(Low, High), JSON, Value) :-
@@ -1922,9 +1900,6 @@ dispatch_supplied_default_input(recollection, JSON, Default, Value) :-
     ->  integer_to_recollection(N, Value)
     ;   dispatch_default_input(recollection, Default, Value)
     ).
-dispatch_supplied_default_input(nonnegative_int, JSON, _Default, Value) :-
-    !,
-    convert_dispatch_input(nonnegative_int, JSON, Value).
 dispatch_supplied_default_input(Converter, JSON, Default, Value) :-
     (   convert_dispatch_input(Converter, JSON, Value)
     ->  true
