@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Deontic Scoreboard and Expressive Power</title>
+  <title>Commitment Tracker and Expressive Power</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="hermes-tokens-dark.css">
@@ -383,22 +383,23 @@
   </style>
 </head>
 <body>
-  <nav class="view-nav" aria-label="Scoreboard views">
+  <nav class="view-nav" aria-label="Commitment tracker views">
     <a href="#this-lesson">This lesson</a>
     <a href="#im-vs-traditional">IM vs traditional</a>
   </nav>
   <section class="page-view lesson-view" id="this-lesson" aria-labelledby="lesson-view-title">
     <p class="pair-title">This lesson</p>
-  <h1 id="lesson-view-title">Deontic Scoreboard</h1>
-  <p class="sub" id="lesson-line">Loading monitoring chart…</p>
+  <h1 id="lesson-view-title">Commitment Tracker</h1>
+  <p class="sub" id="lesson-line">Loading lesson anticipation sheet…</p>
 
   <p class="provenance">
-    This page renders the <b>actual JSON</b> emitted by the Prolog monitoring chart
+    This page renders the <b>actual JSON</b> emitted by the Prolog lesson anticipation sheet
     (<code>hermes_worker.pl</code>, op <code>monitoring_chart_export</code>). It is a
     saved snapshot under <code>data/</code>, not a mock and not a live call — regenerate
     it by piping a <code>monitoring_chart_export</code> request through the worker.
     The two figures it foregrounds — <b>derived incompatibility</b> and
-    <b>expressive power</b> — are the project's load-bearing claims, shown here as the
+    <b>expressive power</b>, what each representation can and cannot say (Brandom,
+    <em>Between Saying and Doing</em>), is shown here as the
     chart computes them, not as decoration. Enter a lesson code below to ask the live
     Hermes worker for a fresh chart; when the worker is unreachable the page falls back
     to the saved snapshot.
@@ -455,7 +456,7 @@
       sec.appendChild(el('h2', null, 'Expressive power this lesson puts in play'));
       sec.appendChild(el('p', 'note',
         'Two finite measures, kept deliberately distinct: proof-paths (how many strategic ' +
-        'routes through the action space) and incompatibilities (how many commitments the ' +
+        'routes through the action space) and incompatibilities (how many commitments, moves made without earning the right to them (Brandom, Between Saying and Doing), the ' +
         'vocabulary excludes — the cheese-grater holes).'));
       const grid = el('div', 'power-grid');
       const paths = el('div', 'metric paths');
@@ -515,7 +516,7 @@
             `<span class="tag derived">derived incompatibility</span> ` +
             `<code>${esc(m.incompatibility)}</code>`;
         } else {
-          inc.innerHTML = `<span class="note">no registered incompatibility (commitment-entitlement gap)</span>`;
+          inc.innerHTML = `<span class="note">no registered incompatibility (commitment and entitlement gap)</span>`;
         }
         c.appendChild(inc);
         if (m.re_anchoring_move) c.appendChild(el('div', 'row', `<span>re-anchor: <b>${esc(m.re_anchoring_move)}</b></span>`));
@@ -527,7 +528,7 @@
     function renderPml(list) {
       const facts = dedupeFacts(list || []);
       const sec = document.getElementById('pml');
-      sec.appendChild(el('h2', null, `PML facts — modal posture of the lesson text (${facts.length})`));
+      sec.appendChild(el('h2', null, `Modal-posture records from the project's PML calculus (Savich, PML calculus) (${facts.length})`));
       facts.forEach(f => {
         const c = el('div', 'card');
         const pol = String(f.polarity || '');
@@ -583,7 +584,7 @@
     function load() {
       const lessonCode = (document.getElementById('lesson-input').value || '').trim();
       const baseUrl = (document.getElementById('base-input').value || '').trim();
-      document.getElementById('lesson-line').textContent = 'Loading monitoring chart…';
+      document.getElementById('lesson-line').textContent = 'Loading lesson anticipation sheet…';
       setSource('Asking the Hermes worker at <code>' + esc(baseUrl) + '</code>…');
       const live = (baseUrl && lessonCode)
         ? fetchLive(baseUrl, lessonCode)
@@ -603,7 +604,7 @@
             })
             .catch(snapErr => {
               document.getElementById('lesson-line').textContent =
-                'Could not load a monitoring chart. Worker: ' + liveErr.message +
+                'Could not load a lesson anticipation sheet. Worker: ' + liveErr.message +
                 '. Snapshot: ' + snapErr.message + '.';
               setSource('');
             });
@@ -824,7 +825,7 @@
           `<span class="standard">${esc(pair.standard.label)}</span>` +
           `<span class="lead">strategy ${esc(signed(pair.delta.strategy_incompatibilities))}</span>` +
           `<span class="lead">misconception ${esc(signed(pair.delta.misconception_incompatibilities))}</span>` +
-          `<span class="lead">hyperedge ${esc(signed(pair.delta.emergent_hyperedges))}</span>`;
+          `<span class="lead">incompatible claim groups ${esc(signed(pair.delta.emergent_hyperedges))}</span>`;
         summary.appendChild(row);
       });
     }
@@ -972,7 +973,7 @@
             setDataSource('<span class="badge live">live counts</span>' +
               'Per-lesson counts and the count deltas come from the Hermes worker ' +
               '(<code>/api/expressive_power</code>). Pairing, provenance, citations, ' +
-              'hyperedge deltas, and the wiring audit come from the saved comparison ' +
+              'incompatible-claim-group deltas and the wiring audit come from the saved comparison ' +
               'document <code>' + esc(DATA_URL) + '</code>.');
           })
           .catch(liveErr => {

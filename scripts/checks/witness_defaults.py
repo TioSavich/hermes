@@ -45,7 +45,11 @@ const output = context.families.map((family) => {
 process.stdout.write(JSON.stringify(output));
 """
 
-BOUNDARY_RE = re.compile(r"no_[a-z_]*witness|\bfound no\b|\bwitness found no\b", re.I)
+BOUNDARY_RE = re.compile(
+    r"no_[a-z_]*witness|\bfound no\b|\bno recorded crosswalk record\b|"
+    r"\bno [^\n]*recorded example\b",
+    re.I,
+)
 
 
 def extract_families() -> list[dict[str, Any]]:

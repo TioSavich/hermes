@@ -107,7 +107,7 @@
 
   <div class="intro">
     <p><b>How to read a report.</b> Two layers. Every mathematical claim is checked from the ground up
-       and comes back <em>checks out</em>, <em>does not check out</em>, or <em>not checked</em> (outside
+       and comes back <em>holds</em>, <em>refuted</em>, or <em>not covered</em> (outside
        current coverage — not the same as wrong). Then each notable move is described — settle a question,
        float a candidate, open an alternative, ask for an explanation — and how the class responded. The
        verdicts are computed; the readings of moves are interpretive.</p>
@@ -151,7 +151,10 @@
   <section class="event-tools">
     <h2 class="sec"><span class="num">3</span>Discourse evidence</h2>
     <p class="sec-hint">These four deterministic routes use the transcript above. Features and
-      pragmatic candidates do not assign commitments, PML modes, or interactional outcomes.</p>
+      pragmatic candidates do not assign commitments, modal postures from the project's PML calculus
+      (Savich, <em>PML calculus</em>), or interactional outcomes.
+      A commitment is a move made without yet earning the right to it (Brandom,
+      <em>Between Saying and Doing</em>).</p>
     <label class="fmt-note"><input type="checkbox" id="blind-discourse-speakers">
       Replace speaker names with S01, S02… before sending</label>
     <p class="fmt-note">Unchecked sends the labels to the worker on this machine; checked replaces
@@ -169,7 +172,7 @@
   <section class="event-tools">
     <h2 class="sec"><span class="num">4</span>Blinded event scoring</h2>
     <p class="sec-hint">Paste a pseudonymized canonical event object or an array of events.
-      Do not put student work in this field. Pair graph requests require the verified gate;
+      Do not put student work in this field. Speaker-connection requests require the verified gate;
       unsafe fields and locked requests are reported without a substitute result.</p>
     <textarea id="event-json">[
   {"event_id":"ev_0001","source":{"source_type":"n103_discussion","metadata":{"domain":"geometry","topic":"unknown"}},"actor":{"role":"student","pseudonym":"S01"},"substrate":{"utterance_type":"assertion","observed_markers":["unknown"],"candidate_terms":[],"confidence":0.35},"symbolic":{"commitments":["low_information_geometry_claim"],"entitlements":[],"missing_requirements":[],"incompatibilities":[],"material_inferences":[{"handle":"unknown_material_inference","frame":"inference_transition_frame","polarity":"expansive"}],"literature_handles":[],"residuals":["no_geometry_signal_detected"]},"pml":{"mode":"objective","polarity":"expansive","force":"binding","operator":"exp_poss","validity_focus":["objective_truth"],"pragmatic_horizon_level":"background","status":"candidate","confidence":0.35},"carspecken":{"action_impetus":"surface_unknown_validity_claim","identity_claim":null,"identity_cost":0.25,"recognition_risk":"low","proprioceptive_delta":"expansion","internalized_audience":"n103_geometry_discussion_norm","infinite_seed":false,"apophatic_guardrail":"Do not diagnose the learner or quote student work."},"question_candidates":[],"status":"pml_annotated"},
@@ -177,7 +180,7 @@
 ]</textarea>
     <div class="event-actions">
       <button class="btn ghost" id="event-score">Score event or batch</button>
-      <button class="btn ghost" id="pair-graph">Build pair graph</button>
+      <button class="btn ghost" id="pair-graph">Map speaker connections</button>
       <button class="btn ghost" id="pair-candidate">Attest pair candidate</button>
       <span class="status" id="event-status"></span>
     </div>
@@ -398,7 +401,7 @@ async function loadPrepared(){
 }
 
 /* -------- report rendering -------- */
-function findingClass(f){ if (f==="checks out") return "ok"; if (f==="does not check out") return "bad"; return "na"; }
+function findingClass(f){ if (f==="holds") return "ok"; if (f==="refuted") return "bad"; return "na"; }
 
 function renderReport(r, note){
   const anyPics = (r.claims||[]).some(c => c.render);

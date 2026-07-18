@@ -980,14 +980,14 @@ def claim_render_request(extraction: dict[str, Any]) -> dict[str, Any] | None:
 # ---------------------------------------------------------------------------
 
 VERDICT_FINDING = {
-    "holds": "checks out",
-    "refuted": "does not check out",
+    "holds": "holds",
+    "refuted": "refuted",
 }
 VERDICT_GLOSS = {
     "holds": "the calculator worked the claim through and it holds",
     "refuted": "the calculator worked the claim through and it fails",
 }
-_UNCHECKED_FINDING = "not checked"
+_UNCHECKED_FINDING = "not covered"
 _UNCHECKED_GLOSS = "outside what the calculator can currently check"
 
 MOVE_PHRASE = {
@@ -1087,7 +1087,7 @@ def teacher_report(transcript_id: str,
         mask_result = mask_transcript(numbered_markdown, extractions)
     claims = _claim_rows(extractions, speakers, _anchor_by_id(mask_result))
     checked = [c for c in claims if c["finding"] != _UNCHECKED_FINDING]
-    failed = [c for c in claims if c["finding"] == "does not check out"]
+    failed = [c for c in claims if c["finding"] == "refuted"]
 
     arcs = []
     for arc in verdict_arcs(extractions):
@@ -1095,10 +1095,9 @@ def teacher_report(transcript_id: str,
         speaker = speakers.get(utterance, "?")
         if arc["status"] == "revisited_holds":
             arcs.append({
-                "sentence": (f"{speaker}'s claim at {utterance} does not "
-                             "check out, and the discussion returned to the "
-                             "same content later and landed on a version "
-                             "that does."),
+                "sentence": (f"{speaker}'s claim at {utterance} was refuted, "
+                             "and the discussion returned to the same content "
+                             "later and landed on a version that holds."),
                 "anchors": [utterance] + arc["evidence"],
             })
         elif arc["status"] == "reasserted_refuted":
@@ -1152,7 +1151,7 @@ def teacher_report(transcript_id: str,
 
     headline = (f"{len(claims)} mathematical claims heard; "
                 f"{len(checked)} checked by the calculator, "
-                f"{len(failed)} did not check out"
+                f"{len(failed)} refuted"
                 + (f"; {len(tensions)} cross-speaker conflicts surfaced"
                    if tensions else "")
                 + (". Every failed claim was later repaired in discussion."
@@ -1170,7 +1169,7 @@ def teacher_report(transcript_id: str,
         "attribution": attribution_for(transcript_id),
         "caveats": [
             "The calculator checks a claim only when it can ground it; "
-            "'not checked' means outside its current coverage, not wrong.",
+            "'not covered' means outside its current coverage, not wrong.",
             "Reading a speaker's move is interpretive. The model proposes "
             "the reading; only the claim verdicts are computed.",
             "One automated read of one transcript — a starting point for "

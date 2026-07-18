@@ -463,7 +463,7 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
       <span id="app-request-status" class="pill pending" role="status" aria-live="polite">◌ Checking the app…</span>
       <button class="btn ghost" id="quickstart-btn">Quickstart</button>
       <button class="btn ghost" id="set-key-btn">Set key</button>
-      <label class="adv-toggle" title="Show the research features: PML scoring, the Gemma workflow pipeline, the encyclopedia, monitoring, and Ask Hermes.">
+      <label class="adv-toggle" title="Show the research features: modal-posture scoring, the Gemma workflow pipeline, the encyclopedia, monitoring, and Ask Hermes.">
         <input type="checkbox" id="adv-check" /> Advanced / research
       </label>
     </div>
@@ -505,11 +505,11 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
 
     <!-- ============ WORKSPACE ============ -->
     <section class="panel active" data-tab="workspace">
-      <p class="panel-lede">Bring a discussion, read what Hermes makes of it, and open a visualizer. The research features (PML scoring and the Gemma class workflow) wait under <em>Advanced / research</em> in the top bar.</p>
+      <p class="panel-lede">Bring a discussion, read what Hermes makes of it, and open a visualizer. The research features (modal-posture scoring and the Gemma class workflow) wait under <em>Advanced / research</em> in the top bar.</p>
 
       <div class="card">
         <h2><span class="num">1</span>Your discussion</h2>
-        <p class="hint">Paste a Canvas discussion (or any <code>Speaker: text</code> transcript / table with Speaker &amp; text columns), drop a file, or load the synthetic sample. Hermes detects the format for you. For the claim-checked report of a transcript, use <a href="discussions.html">Discussions</a> in the sidebar.</p>
+        <p class="hint">Paste a Canvas discussion (or any <code>Speaker: text</code> transcript / table with Speaker &amp; text columns), drop a file, or load the synthetic sample. Hermes detects the format for you. For the claim-check report of a transcript, use <a href="discussions.html">Discussions</a> in the sidebar.</p>
         <div id="data-drop" class="dropzone">
           <textarea id="data-input" class="data-input" placeholder="Maria Rivera: A square is a rectangle because…&#10;David Chen: At first glance…&#10;&#10;…or drop a .txt / .md / .csv file here"></textarea>
         </div>
@@ -527,7 +527,7 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
         <p class="hint">Reads the discussion locally (no cloud, no key) and proposes student pairs with a plain reason for each.</p>
         <div class="row">
           <button class="btn primary" id="analyze-btn">Analyze &amp; pair</button>
-          <button class="btn ghost" id="to-report-btn" title="Carry this discussion to the Discussions page and build the claim-checked report there (needs the campus connection).">Claim-checked report &rarr;</button>
+          <button class="btn ghost" id="to-report-btn" title="Carry this discussion to the Discussions page and build the claim-check report there (needs the campus connection).">Claim-check report &rarr;</button>
           <label class="muted-inline">domain model:
             <select id="force-mode"><option value="">auto</option><option value="general">off (discourse only)</option></select>
           </label>
@@ -537,11 +537,11 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
       </div>
 
       <div class="card adv">
-        <h2><span class="num">3</span>Score a text with PML</h2>
-        <p class="hint">The neuro-symbolic loop: Gemma reads your text and emits its modal posture as Prolog <code>reader_axiom/4</code> facts; SWI-Prolog validates them against the 12 PML operators (3 modes × necessity/possibility × compression/expansion) and scores the result. Gemma proposes the symbolic claims; swipl is the judge. <em>The text is sent to Gemma.</em></p>
+        <h2><span class="num">3</span>Score how a claim is held</h2>
+        <p class="hint">The project's PML calculus names a modal posture: whether a claim is held as a must or a might, and from whose standpoint (Savich, <em>PML calculus</em>). Gemma proposes the postures; SWI-Prolog validates and scores them. <em>The text is sent to Gemma.</em></p>
         <textarea id="pml-input" class="data-input" style="min-height:88px">A square is definitely a rectangle. But maybe it looks more like a diamond to me.</textarea>
         <div class="data-actions">
-          <button class="btn primary" id="pml-run">Encode &amp; score with PML</button>
+          <button class="btn primary" id="pml-run">Score modal posture</button>
           <span class="muted-inline">one sentence, a student utterance, or a short passage</span>
         </div>
         <div id="pml-out" class="result" hidden></div>
@@ -574,7 +574,7 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
               <div class="checkrow"><label><input type="checkbox" id="parse-force" /> force re-parse</label></div>
               <div class="row">
                 <button class="btn" data-cmd="parse" data-out="parse-out">Parse</button>
-                <button class="btn ghost" data-cmd="score" data-out="parse-out" title="Drafts a rubric score via the Gemma LLM — this is an LLM judgment, not the symbolic PML engine.">LLM rubric score</button>
+                <button class="btn ghost" data-cmd="score" data-out="parse-out" title="Drafts a rubric score via the Gemma LLM. This is an LLM judgment, not the symbolic modal-posture engine.">LLM rubric score</button>
                 <button class="btn ghost" data-cmd="metrics" data-out="parse-out" data-graph>Metrics</button>
               </div>
               <div class="out" id="parse-out" hidden></div>
@@ -648,7 +648,7 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
 
     <!-- ============ ENCYCLOPEDIA ============ -->
     <section class="panel" data-tab="encyclopedia">
-      <p class="panel-lede">The symbolic knowledge base itself, browsable. Strategy automata you can run and watch, misconceptions you can diagnose, the standards they answer to, and the Lakoff &amp; Núñez grounding metaphors — including the inferences where each one breaks. No student data; works anywhere.</p>
+      <p class="panel-lede">The symbolic knowledge base itself, browsable. Strategy automata you can run and watch, misconceptions you can diagnose, the standards they answer to, and grounding metaphors, systematic mappings from bodily activity to arithmetic (Lakoff and Núñez, <em>Where Mathematics Comes From</em>). No student data; works anywhere.</p>
       <div class="enc-nav" id="enc-nav">
         <button class="enc-tab active" data-enc="strategies">Strategies</button>
         <button class="enc-tab" data-enc="misconceptions">Misconceptions</button>
@@ -695,10 +695,10 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
         <h2 id="quickstart-boundaries-title">Before you use student work</h2>
         <p>The learner this console reasons about is a formal model built from research literature. It is not your student. When a panel places a piece of student work near a strategy or a misconception, it is offering a hypothesis for you to test in conversation with the child, along with the citations and the worked trace that motivated it.</p>
         <p class="quickstart-boundary">A misconception match is a reason to listen more closely. The console has no access to why a particular child wrote what they wrote, and it does not diagnose children.</p>
-        <p class="quickstart-boundary">Some questions come back <code>not covered</code>. That answer is deliberate. Where its formal ground runs out, the console stops rather than improvising, and it tells you where the boundary is.</p>
+        <p class="quickstart-boundary">Claim checks come back <code>holds</code>, <code>refuted</code>, or <code>not covered</code>. Where its formal ground runs out, the console stops and reports the boundary.</p>
         <h3>What stays on your machine</h3>
         <p class="quickstart-local">The calculator, encyclopedia, lesson lab, claim checks, and every visualizer run entirely on your machine. No account, no network, no key.</p>
-        <p>Four surfaces ask a language model (IU's REALLMS service) for prose: the Ask-Hermes chat, the PML reading of a passage, transcript reports, and grading suggestions. Each of these says so and stops when no key is configured — the chat still answers from the knowledge base without one. The discussions page states which routes analyze text locally and which send an uploaded file to the model service.</p>
+        <p>Four surfaces ask a language model (IU's REALLMS service) for prose: the Ask-Hermes chat, the modal-posture reading of a passage, transcript reports, and grading suggestions. Each of these says so and stops when no key is configured. The chat still answers from the knowledge base without one. The discussions page states which routes analyze text locally and which send an uploaded file to the model service.</p>
         <p>Keys, rosters, and anything you upload live in a runtime folder that version control never touches.</p>
       </section>
       <hr>
@@ -717,6 +717,21 @@ const api = p => `${API}${p}`;
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const escAttr = s => esc(s).replace(/"/g, "&quot;");
+const WORKER_REPLY_KEYS = {witness:"recorded example", witnesses:"recorded examples",
+  incompatibility_witness:"recorded incompatibility example",
+  incompatibility_penumbra:"what the representation rules out",
+  deformation:"wrong-answer pattern", parametric_deformation:"computed wrong-answer pattern",
+  pml:"modal posture", pml_tags:"modal-posture tags", scorecard:"commitment tracker",
+  up_level:"new question", up_levels:"new questions",
+  expressive_power:"what the representation can and cannot say",
+  hyperedge:"incompatible claim group", hyperedges:"incompatible claim groups"};
+function displayWorkerReply(value) {
+  if (Array.isArray(value)) return value.map(displayWorkerReply);
+  if (!value || typeof value !== "object") return value;
+  const shown = {};
+  Object.keys(value).forEach(key => { shown[WORKER_REPLY_KEYS[key] || key] = displayWorkerReply(value[key]); });
+  return shown;
+}
 document.querySelectorAll("[data-api-href]").forEach(a => { a.href = api(a.dataset.apiHref || a.getAttribute("href")); });
 
 function renderConsoleWorkedExample(example) {
@@ -890,7 +905,7 @@ function renderPairGraph(graph) {
     const label = node.label || node.role || node.id;
     return `<g><circle class="graph-node" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="18"><title>${escAttr(node.id || '')}</title></circle><text class="graph-label" x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}">${esc(label)}</text></g>`;
   }).join('');
-  return `<section class="pair-graph"><h4>Pair graph</h4><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="pair graph">${edgeSvg}${nodeSvg}</svg></section>`;
+  return `<section class="pair-graph"><h4>Speaker connections</h4><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="speaker connections">${edgeSvg}${nodeSvg}</svg></section>`;
 }
 function renderAnalysis(data) {
   const out = $("#analyze-result"); out.hidden = false;
@@ -909,7 +924,7 @@ function renderAnalysis(data) {
   } else html += '<div class="muted-inline">No candidate pairs found in this text.</div>';
   html += renderPairGraph(data.graph);
   html += stanceProfileHtml(students.filter(s => s.role === 'student'));
-  html += `<div class="analysis-note">Candidate question-routing rationales from observable discourse — not proof of shared validity or mutual recognition. Stance below is the project's PML <em>discourse-marker proxy</em> (categorical→compressive, hedging→expansive; first-person→S, content→O, norm-language→N), not a verdict from the symbolic PML engine.</div>`;
+  html += `<div class="analysis-note">Candidate question-routing rationales from observable discourse, not proof of shared validity or mutual recognition. The stance below is a discourse-marker proxy: categorical language tends to close, hedging tends to open, and standpoint is tracked separately. It is not a verdict from the symbolic engine.</div>`;
   html += `<details class="raw"><summary>raw data</summary><pre>${esc(JSON.stringify(data, null, 2))}</pre></details>`;
   out.innerHTML = html;
 }
@@ -953,12 +968,12 @@ function renderPmlScore(data) {
   const r = data.result || {}, p = r.profile || {}, axioms = r.axioms || [], rejected = r.rejected || [], pm = (r.passage_modes || [])[0];
   const rawBlock = data.raw ? `<details class="raw"><summary>raw Prolog axioms (Gemma's output)</summary><pre>${esc(data.raw)}</pre></details>` : '';
   if (!axioms.length) {
-    out.innerHTML = `<div class="analysis-note">Gemma did not emit any valid PML axioms for this text${rejected.length ? ` (${rejected.length} clause(s) rejected)` : ''}.</div>${rawBlock}`;
+    out.innerHTML = `<div class="analysis-note">Gemma did not emit any valid modal-posture records for this text${rejected.length ? ` (${rejected.length} clause(s) rejected)` : ''}.</div>${rawBlock}`;
     return;
   }
   const m = p.mode || {}, pol = p.polarity || {}, mod = p.modality || {};
-  let html = `<div class="analysis-summary">${axioms.length} PML axiom${axioms.length === 1 ? '' : 's'} — dominant posture: <b>${esc(p.dominant_mode || '—')} · ${esc(p.dominant_polarity || '—')}</b></div>`;
-  html += `<span class="provenance">Gemma emitted the Prolog axioms · swipl validated them against the 12 PML operators</span>`;
+  let html = `<div class="analysis-summary">${axioms.length} modal-posture record${axioms.length === 1 ? '' : 's'} · dominant posture: <b>${esc(p.dominant_mode || '—')} · ${esc(p.dominant_polarity || '—')}</b></div>`;
+  html += `<span class="provenance">Gemma proposed the records; SWI-Prolog validated them against the project's calculus</span>`;
   html += `<div style="margin:.45rem 0">
     <span class="stance-chip">S ${m.subjective || 0}</span><span class="stance-chip">O ${m.objective || 0}</span><span class="stance-chip">N ${m.normative || 0}</span>
     &nbsp; <span class="stance-chip comp">compressive ${pol.compressive || 0}</span><span class="stance-chip exp">expansive ${pol.expansive || 0}</span>
@@ -993,15 +1008,15 @@ function _deonticBoardHtml(data) {
       ? `<ul class="deontic-list ${cls}">${arr.map(t => `<li>${esc(glossTerm(t))}</li>`).join("")}</ul>`
       : `<p class="muted-inline">none</p>`) + `</section>`;
   const head = incoh.length
-    ? `<div class="out-head locked">⚠ ${incoh.length} incoherence — a commitment with no entitlement to back it</div>`
-    : `<div class="out-head">✓ coherent — every commitment is entitled</div>`;
+    ? `<div class="out-head locked">⚠ ${incoh.length} incoherence · a commitment, a move made without earning the right to it, has no entitlement to back it (Brandom, <em>Between Saying and Doing</em>)</div>`
+    : `<div class="out-head">✓ coherent · every commitment has an entitlement</div>`;
   return head +
     `<div class="deontic-cols">` +
       col("Commitments", card.commitments, "commit") +
       col("Entitlements", card.entitlements, "entitle") +
       col("Incoherences", incoh, "incoherent") +
     `</div>` +
-    `<details class="out-log"><summary>raw scorecard</summary><pre>${esc(JSON.stringify(card, null, 2))}</pre></details>`;
+    `<details class="out-log"><summary>raw commitment tracker</summary><pre>${esc(JSON.stringify(card, null, 2))}</pre></details>`;
 }
 function _deonticConsequencesHtml(data) {
   const cons = (data && data.result && data.result.consequences) || [];
@@ -1021,7 +1036,7 @@ function _deonticUpLevelHtml(data) {
   if (!ups.length) return "";  // coherent or within-level-dischargeable: no up-level move
   const blocks = ups.map(w => {
     const obj = w.new_object_of_discourse || w.objectivated || "";
-    const erasure = w.erasure ? `<p class="uplevel-erasure">erasure (not supplied by the formalism): <code>${esc(w.erasure)}</code></p>` : "";
+    const erasure = w.erasure ? `<p class="uplevel-erasure">erasure, the point where the proof returns a blank instead of a result (Derrida, <em>Of Grammatology</em>): <code>${esc(w.erasure)}</code></p>` : "";
     const caveat = w.caveat ? `<details class="out-log"><summary>caveat</summary><p class="muted-inline">${esc(w.caveat)}</p></details>` : "";
     return `<div class="uplevel-move">` +
       `<p>The gap <code>${esc(glossTerm(w.objectivated || ""))}</code> will not discharge within its level. ` +
@@ -1029,7 +1044,7 @@ function _deonticUpLevelHtml(data) {
       `(<code>${esc(glossTerm(obj))}</code>) one level up.</p>` +
       erasure + caveat + `</div>`;
   }).join("");
-  return `<div class="deontic-extra"><h4>When it stays incoherent: up a level</h4>` +
+  return `<div class="deontic-extra"><h4>When it stays incoherent: name the stuck point as its own new question</h4>` +
     `<p class="muted-inline">A detector, not a repair. It marks the break and the move past it, and changes no score.</p>` +
     blocks + `</div>`;
 }
@@ -1205,7 +1220,7 @@ $("#catalog-search").addEventListener('input', e => {
 let renderCoverageLoaded = false;
 const COVERAGE_LANE_LABELS = {
   renders_live: "draws live",
-  parametric_deformation: "parametric deformation",
+  parametric_deformation: "computed wrong-answer pattern",
   evidence_pointer: "corpus evidence pointer",
   not_covered: "not covered",
 };
@@ -1220,7 +1235,7 @@ function coverageWhy(why) {
   m = /^parametric_deformation\((.*)\)$/.exec(s);
   if (m) {
     const args = _splitTop(m[1]);
-    return `a clause computes the “${glossAtom(args[0] || '')}” deformation live (${args[1] || ''})`;
+    return `a clause computes the “${glossAtom(args[0] || '')}” wrong-answer pattern live (${args[1] || ''})`;
   }
   m = /^evidence_pointer\((.*)\)$/.exec(s);
   if (m) {
@@ -1312,9 +1327,9 @@ async function openLesson(code) {
       <div class="fc-meta"><span class="chip">${esc(code)}</span><span class="chip">coverage: ${esc(r.coverage_status || 'unknown')}</span><span class="chip">grade ${esc(String(lesson.grade ?? '—'))}</span></div>
       ${briefLine}${nearbyLine}
       <div class="ce-row">
-        <a class="stance-chip" href="../more-zeeman/monitoring_chart.html" target="_blank" rel="noopener">Monitoring chart — enter this lesson code</a>
+        <a class="stance-chip" href="../more-zeeman/monitoring_chart.html" target="_blank" rel="noopener">Lesson anticipation sheet — enter this lesson code</a>
         <a class="stance-chip" href="generated/notation_lesson_charts/index.html" target="_blank" rel="noopener">Notation charts gallery</a>
-        <a class="stance-chip" href="generated/lesson_deformation_charts/index.html" target="_blank" rel="noopener">Deformation charts gallery</a>
+        <a class="stance-chip" href="generated/lesson_deformation_charts/index.html" target="_blank" rel="noopener">Wrong-answer pattern charts</a>
       </div>
     </div>
     <div class="fc-grid">
@@ -1328,7 +1343,7 @@ async function openLesson(code) {
       <div class="exp-line">Incompatibilities in this lesson: <b>${esc(String(power.strategy_incompatibilities ?? 0))}</b> strategy · <b>${esc(String(power.misconception_incompatibilities ?? 0))}</b> misconception <span class="muted-inline">(upper bound — ${esc(power.incompatibility_note || 'includes set wrappers')})</span></div>
     </div>
     <div class="fc-sec"><h4>Incompatibility graph — what conflicts with what</h4>${incompatGraphSvg(misconceptions)}</div>
-    <div class="fc-sec"><h4>Misconceptions &amp; incompatibilities</h4><p class="muted-inline">These readings are fixed facts from the misconception registry, not a live scoring run. The deontic vocabulary (commits to, lacks entitlement to, incompatible with) describes each misconception's structure. The <b>Deontic scorecard</b> (advanced view) is the separate surface that runs the scorekeeper engine live against a speaker's commitments.</p>${miscCardsHtml(misconceptions)}</div>
+    <div class="fc-sec"><h4>Misconceptions &amp; incompatibilities</h4><p class="muted-inline">These readings are fixed facts from the misconception registry, not a live scoring run. The <b>commitment tracker</b> (advanced view) is the separate surface that runs the scorekeeper engine live against a speaker's commitments.</p>${miscCardsHtml(misconceptions)}</div>
     <div class="fc-sec" id="lesson-grounding"><h4>Grounding (Lakoff &amp; Núñez) — where the metaphor breaks</h4><span class="muted-inline">loading grounding…</span></div>
     <details class="fc-raw"><summary>raw context</summary><pre>${esc(JSON.stringify(r, null, 2))}</pre></details>
   </div></div>`;
@@ -1458,7 +1473,7 @@ function stanceProfileHtml(students) {
     const markers = (st.markers || []).slice(0, 5).join(', ');
     return `<span class="stance-chip ${cls}" title="markers: ${escAttr(markers || 'none matched')}">${esc(s.id)}: ${modeLetter}-mode / ${esc(pol)}</span>`;
   }).join('');
-  return `<div style="margin-top:.7rem"><div class="out-head">Discourse-marker profile · PML proxy</div><div>${chips}</div></div>`;
+  return `<div style="margin-top:.7rem"><div class="out-head">Discourse-marker profile · modal-posture proxy</div><div>${chips}</div></div>`;
 }
 
 /* ---------- strategy trace visualization (SVG number line) ---------- */
@@ -1696,9 +1711,9 @@ if ($("#misconception-witness-op")) $("#misconception-witness-op").addEventListe
 if ($("#misconception-witness-btn")) $("#misconception-witness-btn").addEventListener("click", async function(){
   const out=$("#misconception-witness-out"); let payload;
   try { payload=JSON.parse($("#misconception-witness-payload").value); }
-  catch(error) { out.hidden=false; out.textContent="The witness payload is not valid JSON: "+error.message; return; }
+  catch(error) { out.hidden=false; out.textContent="The recorded-example request is not valid JSON: "+error.message; return; }
   payload.op=$("#misconception-witness-op").value; out.hidden=false; out.textContent="requesting…";
-  try { const response=await postJSON("/api/witness/misconception",payload); out.textContent=JSON.stringify(response.data,null,2)||"The route returned an empty reply."; }
+  try { const response=await postJSON("/api/witness/misconception",payload); out.textContent=JSON.stringify(displayWorkerReply(response.data),null,2)||"The route returned an empty reply."; }
   catch(error) { out.textContent=error.message||"! The app returned a broken reply."; }
 });
 if ($("#misconception-pml-btn")) $("#misconception-pml-btn").addEventListener("click", async function(){
@@ -1714,7 +1729,7 @@ if ($("#misconception-pml-btn")) $("#misconception-pml-btn").addEventListener("c
     if(!result){ out.textContent=(response.data&&response.data.error)||"The route returned no recorded connections."; return; }
     const rows=(result.pairs||[]).map(pair=>`<tr><td><code>${esc(pair.source_tag)}</code></td><td>${esc(pair.misconception)}</td><td><code>${esc(pair.operator)}</code></td></tr>`).join("");
     out.innerHTML=`<p class="analysis-note"><b>${esc(result.count)}</b> RECORDED connection${result.count===1?"":"s"}. ${esc(result.provenance)}.</p>`+
-      (rows?`<table class="rtable"><thead><tr><th>source tag</th><th>misconception</th><th>PML operator</th></tr></thead><tbody>${rows}</tbody></table>`:"<p class='muted-inline'>No recorded connection matches that name.</p>");
+      (rows?`<table class="rtable"><thead><tr><th>source tag</th><th>misconception</th><th>modal posture</th></tr></thead><tbody>${rows}</tbody></table>`:"<p class='muted-inline'>No recorded connection matches that name.</p>");
   } catch(error) { out.textContent=error.message||"! The app returned a broken reply."; }
 });
 if ($("#canonical-contract-btn")) $("#canonical-contract-btn").addEventListener('click', loadCanonicalContract);
@@ -1810,9 +1825,9 @@ function openEncItem(section, key) {
       : `<p class="muted-inline">A documented misconception that does not yet have a runnable arithmetic rule, so Hermes cannot reproduce it as a worked example.</p>`;
     const barsCase = fractionBarsCase(name);
     const bars = barsCase
-      ? `<h4>Productive scheme vs this deformation, laid out as bars</h4>
-         <p class="muted-inline" style="margin-bottom:.4rem">A misconception is a deformation of a scheme — the same machine with one wire moved. The left column draws the productive fraction-bar run; the right draws where this deformation loses the unit-fraction referent. The bars are drawn by the productive and deformation automata in <code>fraction_action_pairs</code>.</p>
-         <iframe class="bars-compare" src="${escAttr(api('/more-zeeman/fraction-bars/compare.html'))}?case=${encodeURIComponent(barsCase)}" title="productive vs deformation fraction bars" loading="lazy"></iframe>`
+      ? `<h4>Productive scheme vs this wrong-answer pattern, laid out as bars</h4>
+         <p class="muted-inline" style="margin-bottom:.4rem">A misconception is a productive strategy with one step broken, the same machine with one wire moved. The left column draws the productive fraction-bar run; the right draws where the wrong-answer pattern loses the unit-fraction referent.</p>
+         <iframe class="bars-compare" src="${escAttr(api('/more-zeeman/fraction-bars/compare.html'))}?case=${encodeURIComponent(barsCase)}" title="productive vs wrong-answer pattern fraction bars" loading="lazy"></iframe>`
       : '';
     const diag = diagnoseFormHtml(m, ex);
     detail.innerHTML = `<h3>${esc(m.name || name)}</h3>
@@ -1843,7 +1858,7 @@ function openEncItem(section, key) {
       ${kvHtml([['result', cor.result], ['remainder', cor.remainder], ['transitions', cor.transitions], ['states', (cor.states || []).length || null], ['cross products', cor.cross_products]])}
       <h4>Benny (${esc(ben.rule || '')})</h4>
       ${kvHtml([['output', ben.output], ['result', ben.result], ['sums', ben.sums]])}
-      ${(ben.pml_tags || []).length ? `<h4>PML tags (unlicensed moves)</h4><ul class="benny-tags">${ben.pml_tags.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
+      ${(ben.pml_tags || []).length ? `<h4>Modal-posture tags (unlicensed moves)</h4><ul class="benny-tags">${ben.pml_tags.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
       ${c.contrast ? `<p class="muted-inline">${esc(c.contrast)}</p>` : ''}`;
   }
 }
@@ -2036,7 +2051,7 @@ function renderMonitoringStudentWorkPictures(code) {
   if (!code) return "";
   return `<div class="band student-work-picture" data-monitoring-visuals="${escAttr(code)}">
     <h4>Student-work pictures</h4>
-    <p class="band-note">generated from the monitoring chart, lesson numerals, and reusable renderers</p>
+    <p class="band-note">generated from the lesson anticipation sheet, lesson numerals, and reusable renderers</p>
     <div class="chart-visual loading">
       <div class="visual-kicker">generated render docs</div>
       <div>Loading generated pictures...</div>
@@ -2177,7 +2192,7 @@ function monitoringStrategyVisualSpec(s) {
 function monitoringVisualPlaceholder(spec) {
   return `<div class="chart-visual loading" data-visual-kind="number-line-compare" data-operation="${escAttr(spec.operation)}" data-a="${escAttr(String(spec.a))}" data-b="${escAttr(String(spec.b))}" data-productive="${escAttr(spec.productive)}" data-deformation="${escAttr(spec.deformation)}">
     <div class="visual-kicker">schematic trace, not student work</div>
-    <div>Loading number-line picture for ${esc(spec.productive)} vs ${esc(spec.deformation)}...</div>
+    <div>Loading number-line picture for ${esc(spec.productive)} vs its wrong-answer pattern...</div>
   </div>`;
 }
 
@@ -2257,7 +2272,7 @@ function renderMonitoringComparePreview(doc) {
         <p class="frame-caption">${esc(productiveFrame.caption || "")}</p>
       </figure>
       <figure>
-        <figcaption>${esc(doc.deformationKind || "deformation")}</figcaption>
+        <figcaption>${esc(doc.deformationKind || "wrong-answer pattern")}</figcaption>
         ${renderMonitoringLengthFrameSvg(deformationFrame)}
         <p class="frame-caption">${esc(deformationFrame.caption || "")}</p>
       </figure>
@@ -2332,7 +2347,7 @@ function renderMonitoringChart(r) {
   const coverageSignal = monitoringCoverageSignal(r);
 
   return `<div class="chart">
-    <div class="chart-head"><h3>Anticipation chart — ${esc(code)}</h3><span class="chip">monitoring chart</span></div>
+    <div class="chart-head"><h3>Anticipation chart — ${esc(code)}</h3><span class="chip">lesson anticipation sheet</span></div>
     ${coverageSignal}
     ${r.productive_core ? `<div class="chart-core"><b>Productive core.</b> ${esc(r.productive_core)}</div>` : ''}
     ${studentWorkPictures}

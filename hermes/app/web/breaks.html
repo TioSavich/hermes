@@ -81,7 +81,8 @@
 
   <h1>Built to break</h1>
 
-  <p>Where does arithmetic come from, for a child? Lakoff and Núñez's answer:
+  <p>Where does arithmetic come from, for a child? Lakoff and Núñez's answer in
+    <em>Where Mathematics Comes From</em>:
     from the body. Collecting objects into piles. Putting things into
     containers and taking them out. Walking along a path. Building towers and
     taking them apart. Each of these activities becomes a <em>grounding
@@ -111,11 +112,12 @@
 
   <div class="operable" id="deontic">
     <h3>Commitment without entitlement</h3>
-    <div class="domains">deontic scorekeeping · <code>learner/deontic_scorekeeper.pl</code></div>
+    <div class="domains">commitment tracking · <code>learner/deontic_scorekeeper.pl</code></div>
     <p class="desc">Cross-multiplication returns the right number. A learner who runs it on
       &frac34; of &frac25; has <em>undertaken a commitment</em> to the result 6/20 without
       being <em>entitled</em> to it: the move deploys none of the area-model account that
-      would say why that arithmetic answers the question. Undertake the commitment and the
+      would say why that arithmetic answers the question. A commitment here is a move made
+      without earning the right to it (Brandom, <em>Between Saying and Doing</em>). Undertake it and the
       scorekeeper records the gap: the answer is right and its justification is absent.
       Deposit the area-model account and the gap clears. The seed table is small; what it
       records is the Brandomian distinction, not a general theory of justification.</p>
@@ -126,15 +128,17 @@
   </div>
 
   <div class="operable" id="sequent">
-    <h3>The sequent witness</h3>
+    <h3>The recorded sequent example</h3>
     <div class="domains">proof boundary · <code>crosswalk/families/cw_sequent_proof.pl</code></div>
-    <p class="desc">The witness reports which loaded prover layer accepts a sequent, and on
+    <p class="desc">The recorded example reports which loaded prover layer accepts a sequent, and on
       what rule. The reflexive identity goes through on every layer. Change the right-hand
-      side so no loaded prover derives it, and the witness says so rather than inventing a
+      side so no loaded prover derives it, and the record says so rather than inventing a
       derivation. A deeper boundary belongs to the embodied prover: when a derivation
-      touches the arche-trace, it returns <code>erasure</code> in place of a proof,
+      touches the arche-trace, the point where the proof returns a blank instead of a result
+      (Derrida, <em>Of Grammatology</em>), it returns an <code>erasure</code> in place of a proof,
       recording that its justification gives out there. The preset below sends a sequent
-      whose derivation draws the trace in through the pragmatic axiom pack
+      whose derivation draws the trace in through the project's PML pragmatic axiom pack
+      (Savich, <em>PML calculus</em>)
       (<code>pml/pragmatic_axioms.pl</code>); the prover answers
       <code>erasure(propagation)</code>, and the card renders that answer in place of a
       derivation. A worker loaded without that pack answers that no loaded layer derives
@@ -147,7 +151,7 @@
         <option value="embodied">embodied · resource-tracked</option>
         <option value="deontic_bridge">deontic_bridge</option>
       </select>
-      <button class="opbtn" id="seq-go">Ask for a witness</button>
+      <button class="opbtn" id="seq-go">Ask for a recorded example</button>
       <button class="opbtn" id="seq-erasure">Send the trace-marked sequent</button>
     </div>
     <div id="seq-out" class="board"></div>
@@ -156,14 +160,14 @@
   <div class="operable" id="incompatibility-walkthrough">
     <h3>Entailments under a richer incompatibility relation</h3>
     <div class="domains">seed relation → registry pack → restored seed relation</div>
-    <p class="desc">Run the same entailment witness before and after loading the registry
+    <p class="desc">Run the same recorded entailment example before and after loading the registry
       incompatibility pack. The pack adds recorded incompatibilities. That richer relation can
       also withdraw entailments licensed by the sparse seed, so more data can subtract as well
       as add. The final step restores the default disabled state.</p>
     <ol class="walkthrough-steps">
       <li class="walkthrough-step">
         <h4>Run the seed relation</h4>
-        <button class="opbtn" id="inc-baseline">Run baseline witness</button>
+        <button class="opbtn" id="inc-baseline">Run baseline example</button>
         <div class="walkthrough-result" id="inc-baseline-out"></div>
       </li>
       <li class="walkthrough-step">
@@ -174,7 +178,7 @@
       </li>
       <li class="walkthrough-step">
         <h4>Ask again, compare, and restore</h4>
-        <button class="opbtn" id="inc-after" disabled>Re-run the same witness</button>
+        <button class="opbtn" id="inc-after" disabled>Re-run the same example</button>
         <div class="walkthrough-result" id="inc-after-out"></div>
       </li>
     </ol>
@@ -187,7 +191,7 @@
       mean that relation returned no entries for the request. Errors are printed as returned.</p>
     <div class="tool-grid">
       <div class="tool">
-        <h4>Deontic crisis</h4>
+        <h4>Commitment crisis</h4>
         <textarea id="crisis-commitments">result_of(cross_multiply,3,4,2,5,15)</textarea>
         <textarea id="crisis-entitlements" placeholder="one entitlement term per line"></textarea>
         <button class="opbtn" data-formal="crisis">Run crisis query</button><pre id="crisis-out"></pre>
@@ -208,9 +212,9 @@ neg(p)</textarea>
         <button class="opbtn" data-formal="brandom">Check commitments</button><pre id="brandom-out"></pre>
       </div>
       <div class="tool">
-        <h4>Incompatibility hyperedges</h4>
+        <h4>Groups of claims that cannot all stand</h4>
         <select id="hyperedge-kind"><option value="">all kinds</option><option value="emergent">emergent</option><option value="defeated">defeated</option><option value="declared">declared</option></select>
-        <button class="opbtn" data-formal="hyperedges">Query hyperedges</button><pre id="hyperedges-out"></pre>
+        <button class="opbtn" data-formal="hyperedges">Query claim groups</button><pre id="hyperedges-out"></pre>
       </div>
       <div class="tool">
         <h4>Axiom toggles</h4>
@@ -222,11 +226,11 @@ neg(p)</textarea>
   </div>
 
   <div class="operable" id="formal-witnesses">
-    <h3>Formal witnesses</h3>
+    <h3>Formal recorded examples</h3>
     <div class="domains">finite proof and incompatibility relations · live app replies</div>
-    <p class="desc">These controls ask the loaded clauses for a witness. An
+    <p class="desc">These controls ask the loaded clauses for a recorded example. An
       <code>erasure(...)</code> reply records the boundary reached by that derivation; it is a
-      returned witness, not a failed request.</p>
+      returned example, not a failed request.</p>
     <p id="formal-witness-status" class="muted">Loading controls from the capability registry…</p>
     <div class="tool-grid" id="formal-witness-grid"></div>
   </div>
@@ -273,7 +277,7 @@ neg(p)</textarea>
     <blockquote class="desc">“SEED. This is the first kindling of the ‘breath to kindling’ direction
       (<a href="../../../docs/research/2026-06-25-the-juncture-and-differance.md">docs/research/2026-06-25-the-juncture-and-differance.md</a>),
       not a finished account. Register: the code ENCODES and MAKES QUERYABLE a structural fact;
-      it does not ‘implement’ différance. The philosophy is Tio’s; the Prolog only holds the place
+      it does not “implement” différance (Derrida, <em>Of Grammatology</em>). The philosophy is Tio’s; the Prolog only holds the place
       where it can be asked.”</blockquote>
   </div>
 
@@ -289,6 +293,19 @@ neg(p)</textarea>
   <script>
     const $ = (id) => document.getElementById(id);
     const human = (s) => String(s || "").replace(/_/g, " ");
+    const REPLY_KEYS = {witness:"recorded example", witnesses:"recorded examples",
+      incompatibility_witness:"recorded incompatibility example",
+      incompatibility_penumbra:"what the representation rules out",
+      deformation:"wrong-answer pattern", pml:"modal posture",
+      scorecard:"commitment tracker", up_levels:"new questions",
+      hyperedges:"incompatible claim groups"};
+    function displayReply(value) {
+      if (Array.isArray(value)) return value.map(displayReply);
+      if (!value || typeof value !== "object") return value;
+      const shown = {};
+      Object.keys(value).forEach(key => { shown[REPLY_KEYS[key] || key] = displayReply(value[key]); });
+      return shown;
+    }
 
     const FORMAL_DEFAULTS = {
       axiom_hierarchy_witness: {kind: "domain_expansion(n_to_z)"},
@@ -316,11 +333,11 @@ neg(p)</textarea>
         const input = document.createElement("textarea"); input.name = name; input.required = true;
         input.value = Array.isArray(value) ? JSON.stringify(value) : value; label.appendChild(input); form.appendChild(label);
       });
-      const button = document.createElement("button"); button.className = "opbtn"; button.textContent = "Request witness"; form.appendChild(button);
+      const button = document.createElement("button"); button.className = "opbtn"; button.textContent = "Request recorded example"; form.appendChild(button);
       const output = document.createElement("pre"); form.appendChild(output);
       form.onsubmit = async event => { event.preventDefault(); const payload = {op:item.name};
         Object.keys(FORMAL_DEFAULTS[item.name]).forEach(name => { const original=FORMAL_DEFAULTS[item.name][name], value=form.elements.namedItem(name).value; payload[name]=Array.isArray(original)?JSON.parse(value):typeof original==="number"?Number(value):value; });
-        HermesFetch.setState(output,"pending","Requesting witness…"); try { const result=await HermesFetch.requestJSON("/api/witness/formal",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}); const body=HermesFetch.requireOK(result); output.className=""; output.textContent=JSON.stringify(body.result||body.error||body,null,2); } catch(error) { HermesFetch.setState(output,error.kind==="offline"||error.kind==="timeout"?"offline":"broken",error.message); }
+        HermesFetch.setState(output,"pending","Requesting recorded example…"); try { const result=await HermesFetch.requestJSON("/api/witness/formal",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}); const body=HermesFetch.requireOK(result); output.className=""; output.textContent=JSON.stringify(displayReply(body.result||body.error||body),null,2); } catch(error) { HermesFetch.setState(output,error.kind==="offline"||error.kind==="timeout"?"offline":"broken",error.message); }
       }; return form;
     }
 
@@ -395,7 +412,7 @@ neg(p)</textarea>
       async function run(commitments, repaired) {
         try {
           const data = await post("/api/deontic_scorecard", { commitments, entitlements: [] });
-          if (!data.ok) { out.innerHTML = `<div class="verdict tension">${data.error || "scorecard failed"}</div>`; return; }
+          if (!data.ok) { out.innerHTML = `<div class="verdict tension">${data.error || "commitment tracker failed"}</div>`; return; }
           out.innerHTML = renderScorecard(data.result, repaired);
         } catch (err) { out.innerHTML = offlineNote(); }
       }
@@ -447,7 +464,7 @@ neg(p)</textarea>
               <div class="verdict release">a loaded prover layer derives this sequent.</div>`;
           }
         } else {
-          out.innerHTML = `<div class="verdict tension">${data.error || "no witness"}: no loaded
+          out.innerHTML = `<div class="verdict tension">${data.error || "no recorded example"}: no loaded
             prover layer derives this sequent on the chosen source.</div>`;
         }
       }
@@ -475,7 +492,7 @@ neg(p)</textarea>
 
       baselineButton.onclick = async () => {
         baselineButton.disabled = true;
-        baselineOut.textContent = "Checking the pack state and requesting the seed witness…";
+        baselineOut.textContent = "Checking the pack state and requesting the seed example…";
         try {
           const state = await post("/api/axiom_toggle", {action: "list"});
           const stateText = JSON.stringify(state);
@@ -484,7 +501,7 @@ neg(p)</textarea>
           baseline = await post("/api/witness/formal", Object.assign({op: "incompatibility_entailment_witness"}, INCOMPATIBILITY_WALKTHROUGH_DEFAULT));
           baselineOut.textContent = baseline.ok
             ? "Baseline entailment returned; profiles checked: " + profileCount(baseline) + "."
-            : "The baseline returned: " + (baseline.error || "no witness") + ".";
+            : "The baseline returned: " + (baseline.error || "no recorded example") + ".";
           enableButton.disabled = !baseline.ok;
         } catch (error) {
           HermesFetch.setState(baselineOut, "offline", error.message || "The app isn't answering.");
@@ -525,7 +542,7 @@ neg(p)</textarea>
 
       afterButton.onclick = async () => {
         afterButton.disabled = true;
-        afterOut.textContent = "Requesting the enriched witness…";
+        afterOut.textContent = "Requesting the enriched example…";
         let after, discovery, restored;
         try {
           after = await post("/api/witness/formal", Object.assign({op: "incompatibility_entailment_witness"}, INCOMPATIBILITY_WALKTHROUGH_DEFAULT));
@@ -542,8 +559,8 @@ neg(p)</textarea>
         afterOut.classList.toggle("changed", changed);
         afterOut.textContent = (after.ok
           ? "Enriched entailment returned; profiles checked: " + afterCount + "."
-          : "The enriched relation withdrew this entailment: " + (after.error || "no witness") + ".") +
-          " Discovery witness: " + (discovery && discovery.ok ? "returned" : "not returned") + ". " +
+          : "The enriched relation withdrew this entailment: " + (after.error || "no recorded example") + ".") +
+          " Discovery record: " + (discovery && discovery.ok ? "returned" : "not returned") + ". " +
           (restored && restored.ok ? "The registry pack is disabled again." : "RESTORE FAILED: " + ((restored && restored.error) || "no detail"));
         baselineButton.disabled = false;
       };

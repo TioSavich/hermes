@@ -150,10 +150,12 @@
     <p>The runnable cross-multiplication and area-model version lives on
        <a href="/breaks.html"><em>Where it breaks</em></a>.</p>
 
-    <p>At the ORR-cycle level, things are still open. The meta-interpreter does
-       not yet route fraction outcomes through Observe/React/Reorganize as
+    <p>At the project's Observe–React–Reorganize (ORR) cycle level (Savich,
+       <em>ORR cycle</em>), things are still open. The meta-interpreter does
+       not yet route fraction outcomes through that cycle as
        recollection-compatible values, so a fraction action does not yet drive
-       the crisis dynamics. Hackenberg's (2010) three-level unit coordination
+       the crisis dynamics. Hackenberg's three-level unit coordination
+       (Hackenberg, “Students' reasoning with reversible multiplicative relationships”)
        (the unit fraction, the composite, the referent whole) is named in the
        research literature but not yet a general ORR-negotiable scheme in the
        code. The earlier framing — that <code>fraction/2</code> is
@@ -207,7 +209,7 @@
       <div class="status-text" id="status">Action automaton: area_model_part_of_part — registered and productive</div>
       <button class="try-it" id="try-btn" onclick="tryFraction()">Inspect the action / ORR boundary</button>
       <div class="hint-zone" id="hint-zone">
-        <p style="font-size: 0.9rem; color: var(--muted);">Three levels of units (Hackenberg): unit fraction, composite, referent whole</p>
+      <p style="font-size: 0.9rem; color: var(--muted);">Three levels of units: unit fraction, composite, referent whole (Hackenberg, “Students' reasoning with reversible multiplicative relationships”)</p>
         <div class="tally-zone">
           <div class="tally-group">
             <div class="base-group">
@@ -283,7 +285,7 @@
           </div>
           <div class="tally-group" style="margin-left: 1rem;">
             <div class="tally-marks grouped" style="font-size: 1.8rem;">|</div>
-            <div class="tally-label">deformation: rule_without_ground</div>
+            <div class="tally-label">wrong-answer pattern: rule_without_ground</div>
           </div>
         </div>
       </div>
@@ -332,21 +334,23 @@
        meta-interpreter does not yet route fraction outcomes through the crisis
        cycle as recollection-compatible values. This is not a representational
        limit on the action automata; it is a missing piece of the
-       Observe/React/Reorganize loop. It is a concrete piece of work.</p>
+       Observe–React–Reorganize loop. It is a concrete piece of work.</p>
 
     <p><strong>Metamorphic accommodation.</strong> The harder open problem
        (Norton/Steffe): a strategy that calls other strategies that modify
        themselves, the way a child reorganises a counting scheme into a
        partitioning scheme. Flat-FSM synthesis cannot do this. Whether the
-       MUA-relations layer plus the deontic scorekeeper provide enough
+       Meaning-Use Relations layer (Brandom, <em>Between Saying and Doing</em>) plus the commitment tracker provide enough
        scaffolding for a different kind of synthesis is an open research
        question, not a settled limit.</p>
 
     <p>The honesty of the page is not "the formalism stops here." It is
        "here is what the formalism does at the action level
-       (<code>fraction:area_model_part_of_part</code>, the productive /
-       deformation pair, the deontic <code>commitment_without_entitlement</code>
-       trace), and here is what it does not yet do at the ORR-cycle level
+       (<code>fraction:area_model_part_of_part</code>, the productive and
+       wrong-answer pair, a productive strategy with one step broken, and the commitment-without-entitlement
+       trace, where a commitment is a move made without earning the right to it
+       (Brandom, <em>Between Saying and Doing</em>),
+       and here is what it does not yet do at the ORR-cycle level
        (route fraction outcomes through crisis-and-recovery, synthesise
        metamorphic accommodation)." The breaks the registry exposes via
        <code>metaphor_breaks_at/3</code> and <code>metaphor_repair/4</code>

@@ -52,7 +52,7 @@
 <body>
   <main class="wrap">
     <h1>Witnesses</h1>
-    <p class="lede">These controls query finite records in the loaded knowledge base. Each result
+    <p class="lede">Here a witness means a recorded example returned by a finite relation. These controls query finite records in the loaded knowledge base. Each result
       stays within the named relation and its stated boundary.</p>
     <a class="why-link" href="../no.html">Why this exists &rarr;</a>
     <p id="status" class="status pending" role="status" aria-live="polite">◌ Loading controls from the app…</p>
@@ -69,13 +69,13 @@
           and rotation specifications into the shared render contract. The worker loads it
           import-free; this page reaches it through the existing <code>geometry</code> operation.</p>
         <p><code>pml/talkmoves_adapter.pl</code> prepares attributed TalkMoves packets for review.
-          <code>pml/audit_connectors.pl</code> audits declared MUA connectors against executable practices.
-          <code>pml/mua_health.pl</code> reports which MUA relations have runnable demonstrations.
+          <code>pml/audit_connectors.pl</code> audits declared Meaning-Use Relation connectors against executable practices.
+          <code>pml/mua_health.pl</code> reports which relations have runnable demonstrations.
           <code>pml/axioms_eml.pl</code> records the toggle-gated embodied-modal transition axioms.
           <code>pml/mua_conjectures.pl</code> is the intentionally empty register for relations not yet demonstrated.
           These modules remain outside the startup closure.</p>
         <p><code>misconceptions/pml_wire.pl</code> is wired into the worker and the console's
-          misconception area. It reports the recorded source-tag-to-PML connections generated from
+          misconception area. It reports the recorded source-tag-to-modal-posture connections generated from
           CONNECTS-TO annotations in the misconception registry.</p>
       </details>
     </section>
@@ -83,8 +83,8 @@
     <details class="family" id="crosswalk-claims" open>
       <summary><h2>Crosswalk claims</h2></summary>
       <div class="family-body">
-        <p class="family-intro">These records attest that an owner verified a crosswalk edge. They are not
-          proofs of the underlying claim. Enter the requested fields to ask for the recorded witness.</p>
+        <p class="family-intro">These records attest that an owner verified a crosswalk connection. They are not
+          proofs of the underlying claim. Enter the requested fields to ask what the records show.</p>
         <div id="crosswalk-groups"></div>
       </div>
     </details>
@@ -133,9 +133,9 @@
     </details>
 
     <details class="family" id="pml-witnesses" open>
-      <summary><h2>PML witnesses</h2></summary>
+      <summary><h2>Modal-posture witnesses</h2></summary>
       <div class="family-body">
-        <p class="family-intro">These controls query four finite PML and material-inference relations. They report what the loaded clauses attest and do not extend a result beyond those clauses.</p>
+        <p class="family-intro">These controls query four finite modal-posture and material-inference relations in the project's PML calculus (Savich, <em>PML calculus</em>). They report what the loaded clauses attest and do not extend a result beyond those clauses.</p>
         <div id="pml-groups"></div>
       </div>
     </details>
@@ -143,7 +143,7 @@
     <details class="family" id="grounding-witnesses" open>
       <summary><h2>Grounding witnesses</h2></summary>
       <div class="family-body">
-        <p class="family-intro">These controls query loaded grounding, representation, corpus, and commitment records. Each result stays within the named relation’s finite scope.</p>
+        <p class="family-intro">These controls query loaded grounding, representation, corpus, and commitment records. A commitment is a move made without yet earning the right to it (Brandom, <em>Between Saying and Doing</em>). Each result stays within the named relation’s finite scope.</p>
         <div id="grounding-groups"></div>
       </div>
     </details>
@@ -437,7 +437,7 @@
          recollectionInputsByOp: standardRecollectionInputs, autoOp: "standard_k_ns_1_count_by_ones_witness",
          button: "Run trace", pending: "Running trace…", failure: "Trace failed: "},
         {id: "pml", root: "pml-groups", route: "/api/witness/pml",
-         groups: [{name: "PML and material-inference relations", ops: pmlOps}], defaults: pmlDefaults,
+         groups: [{name: "Modal-posture and material-inference relations", ops: pmlOps}], defaults: pmlDefaults,
          autoOp: "semantic_material_witness"},
         {id: "grounding", root: "grounding-groups", route: "/api/witness/grounding",
          groups: [{name: "Grounding, representation, corpus, and commitment records", ops: groundingOps}],
@@ -479,7 +479,7 @@
           return name + " (fraction n/d; converted to grounded terms)";
         }
         if (family.id === "pml") return name === "clauses"
-          ? "clauses (JSON list of reader_axiom/4 strings)" : name + " (Prolog term text)";
+          ? "clauses (JSON list of modal-posture records)" : name + " (Prolog term text)";
         if (family.id === "grounding") return name + (name === "practice"
           ? " (loaded practice atom)" : " (term or text read by the clause)");
         return name;
@@ -530,6 +530,37 @@
         return value;
       }
 
+      var DISPLAY_KEYS = {
+        witness: "recorded example",
+        witnesses: "recorded examples",
+        incompatibility_witness: "recorded incompatibility example",
+        incompatibility_penumbra: "what the representation rules out",
+        deformation: "wrong-answer pattern",
+        deformation_kind: "wrong-answer pattern kind",
+        parametric_deformation: "computed wrong-answer pattern",
+        pml: "modal posture",
+        pml_tags: "modal-posture tags",
+        scorecard: "commitment tracker",
+        up_level: "new question",
+        up_levels: "new questions",
+        expressive_power: "what the representation can and cannot say",
+        hyperedge: "incompatible claim group",
+        hyperedges: "incompatible claim groups",
+        mua_kind: "Meaning-Use Relation kind",
+        canonical: "shared vocabulary term",
+        canonical_commitment: "shared commitment"
+      };
+
+      function displayReply(value) {
+        if (Array.isArray(value)) return value.map(displayReply);
+        if (!value || typeof value !== "object") return value;
+        var shown = {};
+        Object.keys(value).forEach(function (key) {
+          shown[DISPLAY_KEYS[key] || key] = displayReply(value[key]);
+        });
+        return shown;
+      }
+
       async function request(output, path, payload, pending, failure) {
         output.className = "";
         HermesFetch.setState(output, "pending", pending || "Requesting witness…");
@@ -538,7 +569,7 @@
         });
         if (result.kind === "ok" && result.data.ok) {
           output.className = "";
-          output.textContent = JSON.stringify(result.data.result, null, 2);
+          output.textContent = JSON.stringify(displayReply(result.data.result), null, 2);
           return;
         }
         if (result.kind === "ok" || result.kind === "http-error") {
@@ -546,7 +577,7 @@
           // A typed no_*_witness reply is a boundary report, not a failure:
           // the worker checked its finite relation and found no witness for
           // that input. Present it plainly, without the failure prefix.
-          if (/no_[a-z_]*witness|\bfound no\b|\bwitness found no\b/i.test(detail)) {
+          if (/no_[a-z_]*witness|\bfound no\b|\bno recorded crosswalk record\b|\bno [^\n]*recorded example\b/i.test(detail)) {
             output.className = "";
             output.textContent = detail;
             return;

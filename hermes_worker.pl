@@ -609,7 +609,7 @@ dispatch_request(pair_candidate_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_pair_candidate_witness,
-                "pair_candidate_witness found no witness for event_a/event_b",
+                "pair_candidate_witness found no recorded example for event_a/event_b",
                 Response)
         )
     ;   error_response(Id, malformed_pair_candidate_request,
@@ -623,7 +623,7 @@ dispatch_request(critique_bad_infinite, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_bad_infinite_witness,
-                "critique_bad_infinite found no bad-infinite witness for proof",
+                "critique_bad_infinite found no bad-infinite recorded example for proof",
                 Response)
         )
     ;   error_response(Id, missing_proof,
@@ -656,7 +656,7 @@ dispatch_request(deontic_requires_entitlement, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_deontic_entitlement_witness,
-                "deontic_requires_entitlement found no entitlement witness for proposition",
+                "deontic_requires_entitlement found no entitlement recorded example for proposition",
                 Response)
         )
     ;   error_response(Id, missing_proposition,
@@ -704,7 +704,7 @@ dispatch_request(deontic_scorecard, Id, Request, Response) :-
     ->  json_safe(Card, Safe),
         ok_response(Id, Safe, Response)
     ;   error_response(Id, deontic_scorecard_failed,
-            "deontic_scorecard could not compute a scorecard for the request",
+            "deontic_scorecard could not compute a commitment tracker for the request",
             Response)
     ).
 
@@ -832,7 +832,7 @@ dispatch_request(deontic_up_level, Id, Request, Response) :-
     ->  json_safe(_{agent: Agent, up_levels: Witnesses}, Safe),
         ok_response(Id, Safe, Response)
     ;   error_response(Id, deontic_up_level_failed,
-            "deontic_up_level could not compute up-level moves for the request",
+            "deontic_up_level could not name the stuck point as a new question for the request",
             Response)
     ).
 
@@ -843,7 +843,7 @@ dispatch_request(axiom_hierarchy_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_axiom_hierarchy_witness,
-                "axiom_hierarchy_witness found no hierarchy proof witness for kind",
+                "axiom_hierarchy_witness found no hierarchy proof recorded example for kind",
                 Response)
         )
     ;   error_response(Id, missing_kind,
@@ -861,7 +861,7 @@ dispatch_request(axiom_pack_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_axiom_pack_witness,
-                "axiom_pack_witness found no enabled-pack witness",
+                "axiom_pack_witness found no enabled-pack recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_axiom_pack_request,
@@ -879,7 +879,7 @@ dispatch_request(robinson_axiom_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_robinson_axiom_witness,
-                "robinson_axiom_witness found no witness for axiom/claim",
+                "robinson_axiom_witness found no recorded example for axiom/claim",
                 Response)
         )
     ;   error_response(Id, malformed_robinson_axiom_request,
@@ -895,7 +895,7 @@ dispatch_request(semantic_material_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_semantic_material_witness,
-                "semantic_material_witness found no material witness",
+                "semantic_material_witness found no material recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_semantic_material_request,
@@ -909,7 +909,7 @@ dispatch_request(incoherent_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_incoherent_witness,
-                "incoherent_witness found no witness for context",
+                "incoherent_witness found no recorded example for context",
                 Response)
         )
     ;   error_response(Id, missing_context,
@@ -925,7 +925,7 @@ dispatch_request(eml_transition_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_eml_transition_witness,
-                "eml_transition_witness found no transition witness for from/to",
+                "eml_transition_witness found no transition recorded example for from/to",
                 Response)
         )
     ;   error_response(Id, malformed_eml_transition_request,
@@ -942,7 +942,7 @@ dispatch_request(number_theory_self_defeat_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_number_theory_self_defeat_witness,
-                "number_theory_self_defeat_witness found no Euclid witness for list",
+                "number_theory_self_defeat_witness found no Euclid recorded example for list",
                 Response)
         )
     ;   error_response(Id, malformed_number_theory_request,
@@ -961,7 +961,7 @@ dispatch_request(embodied_proof_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_embodied_proof_witness,
-                "embodied_proof_witness found no proof witness",
+                "embodied_proof_witness found no proof recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_embodied_proof_request,
@@ -978,7 +978,7 @@ dispatch_request(viability_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_viability_witness,
-                "viability_witness found no sufficient resource witness",
+                "viability_witness found no sufficient resource recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_viability_request,
@@ -997,7 +997,7 @@ dispatch_request(modal_context_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_modal_context_witness,
-                "modal_context_witness found no modal-context witness",
+                "modal_context_witness found no modal-context recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_modal_context_request,
@@ -1053,7 +1053,7 @@ dispatch_request(material_inference_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_material_inference_witness,
-                "material_inference_witness found no material-inference witness",
+                "material_inference_witness found no material-inference recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_material_inference_request,
@@ -1110,7 +1110,7 @@ dispatch_request(normative_crisis_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_normative_crisis_witness,
-                "normative_crisis_witness found no normative-crisis witness",
+                "normative_crisis_witness found no normative-crisis recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_normative_crisis_request,
@@ -1137,7 +1137,7 @@ dispatch_request(metaphor_break_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_metaphor_break_witness,
-                "metaphor_break_witness found no metaphor-break witness",
+                "metaphor_break_witness found no metaphor-break recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_metaphor_break_request,
@@ -1161,7 +1161,7 @@ dispatch_request(grounding_metaphor_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_grounding_metaphor_witness,
-                "grounding_metaphor_witness found no grounding-metaphor witness",
+                "grounding_metaphor_witness found no grounding-metaphor recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_grounding_metaphor_request,
@@ -1178,7 +1178,7 @@ dispatch_request(sequent_proof_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_sequent_proof_witness,
-                "sequent_proof_witness found no sequent proof witness",
+                "sequent_proof_witness found no sequent proof recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_sequent_proof_request,
@@ -1202,7 +1202,7 @@ dispatch_request(unit_coordination_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_unit_coordination_witness,
-                "unit_coordination_witness found no unit-coordination witness",
+                "unit_coordination_witness found no unit-coordination recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_unit_coordination_request,
@@ -1249,7 +1249,7 @@ dispatch_request(godel_primes_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_godel_primes_witness,
-                "godel_primes_witness found no prime-utility witness",
+                "godel_primes_witness found no prime-utility recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_godel_primes_request,
@@ -1270,7 +1270,7 @@ dispatch_request(fsm_engine_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_fsm_engine_witness,
-                "fsm_engine_witness found no loaded FSM executor registry witness",
+                "fsm_engine_witness found no loaded FSM executor registry recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_fsm_engine_request,
@@ -1297,7 +1297,7 @@ dispatch_request(action_cluster_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_action_cluster_witness,
-                "action_cluster_witness found no action-cluster witness",
+                "action_cluster_witness found no action-cluster recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_action_cluster_request,
@@ -1319,7 +1319,7 @@ dispatch_request(practice_vocabulary_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_practice_vocabulary_witness,
-                "practice_vocabulary_witness found no practice-vocabulary witness",
+                "practice_vocabulary_witness found no practice-vocabulary recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_practice_vocabulary_request,
@@ -1340,7 +1340,7 @@ dispatch_request(accommodation_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_accommodation_witness,
-                "accommodation_witness found no accommodation registry witness",
+                "accommodation_witness found no accommodation registry recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_accommodation_request,
@@ -1364,7 +1364,7 @@ dispatch_request(domain_context_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_domain_context_witness,
-                "domain_context_witness found no domain-context witness",
+                "domain_context_witness found no domain-context recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_domain_context_request,
@@ -1387,7 +1387,7 @@ dispatch_request(orr_entry_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_orr_entry_witness,
-                "orr_entry_witness found no ORR-entry registry witness",
+                "orr_entry_witness found no Observe-React-Reorganize entry registry recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_orr_entry_request,
@@ -1410,7 +1410,7 @@ dispatch_request(executable_practice_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_executable_practice_witness,
-                "executable_practice_witness found no executable-practice registry witness",
+                "executable_practice_witness found no executable-practice registry recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_executable_practice_request,
@@ -1438,7 +1438,7 @@ dispatch_request(misconception_hook_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_misconception_hook_witness,
-                "misconception_hook_witness found no misconception-hook witness",
+                "misconception_hook_witness found no misconception-hook recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_misconception_hook_request,
@@ -1462,7 +1462,7 @@ dispatch_request(algebra_claim_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_algebra_claim_witness,
-                "algebra_claim_witness found no owner-verified algebra-claim edge",
+                "algebra_claim_witness: no recorded crosswalk record connects the requested algebra claim and source",
                 Response)
         )
     ;   error_response(Id, malformed_algebra_claim_request,
@@ -1486,7 +1486,7 @@ dispatch_request(integer_signed_claim_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_integer_signed_claim_witness,
-                "integer_signed_claim_witness found no owner-verified integer-signed claim edge",
+                "integer_signed_claim_witness: no recorded crosswalk record connects the requested signed-integer claim and source",
                 Response)
         )
     ;   error_response(Id, malformed_integer_signed_claim_request,
@@ -1510,7 +1510,7 @@ dispatch_request(arithmetic_property_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_arithmetic_property_witness,
-                "arithmetic_property_witness found no owner-verified arithmetic-property edge",
+                "arithmetic_property_witness: no recorded crosswalk record connects the requested arithmetic-property claim and source",
                 Response)
         )
     ;   error_response(Id, malformed_arithmetic_property_request,
@@ -1534,7 +1534,7 @@ dispatch_request(calculus_claim_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_calculus_claim_witness,
-                "calculus_claim_witness found no owner-verified calculus claim edge",
+                "calculus_claim_witness: no recorded crosswalk record connects the requested calculus claim and source",
                 Response)
         )
     ;   error_response(Id, malformed_calculus_claim_request,
@@ -1558,7 +1558,7 @@ dispatch_request(counting_claim_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_counting_claim_witness,
-                "counting_claim_witness found no owner-verified counting claim edge",
+                "counting_claim_witness: no recorded crosswalk record connects the requested counting claim and source",
                 Response)
         )
     ;   error_response(Id, malformed_counting_claim_request,
@@ -1892,7 +1892,7 @@ dispatch_request(whole_number_addsub_claim_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_whole_number_addsub_claim_witness,
-                "whole_number_addsub_claim_witness found no owner-verified addition/subtraction claim edge",
+                "whole_number_addsub_claim_witness: no recorded crosswalk record connects the requested addition/subtraction claim and source",
                 Response)
         )
     ;   error_response(Id, malformed_whole_number_addsub_claim_request,
@@ -1916,7 +1916,7 @@ dispatch_request(ratio_proportion_claim_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_ratio_proportion_claim_witness,
-                "ratio_proportion_claim_witness found no owner-verified ratio/proportion claim edge",
+                "ratio_proportion_claim_witness: no recorded crosswalk record connects the requested ratio/proportion claim and source",
                 Response)
         )
     ;   error_response(Id, malformed_ratio_proportion_claim_request,
@@ -1940,7 +1940,7 @@ dispatch_request(magnitude_equivalence_claim_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_magnitude_equivalence_claim_witness,
-                "magnitude_equivalence_claim_witness found no owner-verified magnitude-equivalence claim edge",
+                "magnitude_equivalence_claim_witness: no recorded crosswalk record connects the requested magnitude-equivalence claim and source",
                 Response)
         )
     ;   error_response(Id, malformed_magnitude_equivalence_claim_request,
@@ -1964,7 +1964,7 @@ dispatch_request(multiplication_division_claim_witness, Id, Request, Response) :
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_multiplication_division_claim_witness,
-                "multiplication_division_claim_witness found no owner-verified multiplication/division claim edge",
+                "multiplication_division_claim_witness: no recorded crosswalk record connects the requested multiplication/division claim and source",
                 Response)
         )
     ;   error_response(Id, malformed_multiplication_division_claim_request,
@@ -1988,7 +1988,7 @@ dispatch_request(decimal_claim_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_decimal_claim_witness,
-                "decimal_claim_witness found no owner-verified decimal claim edge",
+                "decimal_claim_witness: no recorded crosswalk record connects the requested decimal claim and source",
                 Response)
         )
     ;   error_response(Id, malformed_decimal_claim_request,
@@ -2012,7 +2012,7 @@ dispatch_request(place_value_number_claim_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_place_value_number_claim_witness,
-                "place_value_number_claim_witness found no owner-verified place-value claim edge",
+                "place_value_number_claim_witness: no recorded crosswalk record connects the requested place-value claim and source",
                 Response)
         )
     ;   error_response(Id, malformed_place_value_number_claim_request,
@@ -2036,7 +2036,7 @@ dispatch_request(whole_number_claim_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_whole_number_claim_witness,
-                "whole_number_claim_witness found no owner-verified zero claim edge",
+                "whole_number_claim_witness: no recorded crosswalk record connects the requested zero claim and source",
                 Response)
         )
     ;   error_response(Id, malformed_whole_number_claim_request,
@@ -2060,7 +2060,7 @@ dispatch_request(fraction_extra_claim_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_fraction_extra_claim_witness,
-                "fraction_extra_claim_witness found no owner-verified fraction-extra claim edge",
+                "fraction_extra_claim_witness: no recorded crosswalk record connects the requested additional-fraction claim and source",
                 Response)
         )
     ;   error_response(Id, malformed_fraction_extra_claim_request,
@@ -2084,7 +2084,7 @@ dispatch_request(fraction_claim_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_fraction_claim_witness,
-                "fraction_claim_witness found no owner-verified fraction claim edge",
+                "fraction_claim_witness: no recorded crosswalk record connects the requested fraction claim and source",
                 Response)
         )
     ;   error_response(Id, malformed_fraction_claim_request,
@@ -2119,7 +2119,7 @@ dispatch_request(productive_deformation_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_productive_deformation_witness,
-                "productive_deformation_witness found no owner-verified pair",
+                "productive_deformation_witness found no recorded productive and wrong-answer pair",
                 Response)
         )
     ;   error_response(Id, malformed_productive_deformation_request,
@@ -2142,7 +2142,7 @@ dispatch_request(geometry_entailment_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_entailment_witness,
-                "geometry_entailment_witness found no entailment witness",
+                "geometry_entailment_witness found no entailment recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_geometry_entailment_request,
@@ -2163,7 +2163,7 @@ dispatch_request(incompatibility_entailment_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_incompatibility_entailment_witness,
-                "incompatibility_entailment_witness found no entailment witness",
+                "incompatibility_entailment_witness found no entailment recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_incompatibility_entailment_request,
@@ -2198,7 +2198,7 @@ dispatch_request(misconception_incompatibility_witness, Id, Request, Response) :
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_misconception_incompatibility_witness,
-                "misconception_incompatibility_witness found no registry witness",
+                "misconception_incompatibility_witness found no registry recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_misconception_incompatibility_request,
@@ -2219,7 +2219,7 @@ dispatch_request(intersubjective_material_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_intersubjective_material_witness,
-                "intersubjective_material_witness found no material witness",
+                "intersubjective_material_witness found no material recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_intersubjective_material_request,
@@ -2239,7 +2239,7 @@ dispatch_request(mua_kind_coherence_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_mua_kind_coherence_witness,
-                "mua_kind_coherence_witness found no scoring witness",
+                "mua_kind_coherence_witness found no scoring recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_mua_kind_coherence_request,
@@ -2262,7 +2262,7 @@ dispatch_request(mua_coherence_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_mua_coherence_witness,
-                "mua_coherence_witness found no coherence scoring witness",
+                "mua_coherence_witness found no coherence scoring recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_mua_coherence_request,
@@ -2283,7 +2283,7 @@ dispatch_request(grounding_inference_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_grounding_inference_witness,
-                "grounding_inference_witness found no grounding witness",
+                "grounding_inference_witness found no grounding recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_grounding_inference_request,
@@ -2298,7 +2298,7 @@ dispatch_request(target_expressive_power_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_target_expressive_power_witness,
-                "target_expressive_power_witness found no witness for target",
+                "target_expressive_power_witness found no recorded example for target",
                 Response)
         )
     ;   error_response(Id, missing_target,
@@ -2320,7 +2320,7 @@ dispatch_request(lesson_misconception_incompatibility_witness, Id, Request, Resp
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_lesson_misconception_incompatibility_witness,
-                "lesson_misconception_incompatibility_witness found no lesson witness",
+                "lesson_misconception_incompatibility_witness found no lesson recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_lesson_misconception_incompatibility_request,
@@ -2335,7 +2335,7 @@ dispatch_request(geometry_material_profile_witness, Id, Request, Response) :-
         ->  json_safe(_{profile: Profile, witness: Witness}, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_material_profile_witness,
-                "geometry_material_profile_witness found no profile witness for concept",
+                "geometry_material_profile_witness found no profile recorded example for concept",
                 Response)
         )
     ;   error_response(Id, missing_concept,
@@ -2351,7 +2351,7 @@ dispatch_request(geometry_quadrilateral_entailment_witness, Id, Request, Respons
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_quadrilateral_entailment_witness,
-                "geometry_quadrilateral_entailment_witness found no entailment witness",
+                "geometry_quadrilateral_entailment_witness found no entailment recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_geometry_quadrilateral_entailment_request,
@@ -2364,7 +2364,7 @@ dispatch_request(geometry_strength_lift_coverage_witness, Id, _Request, Response
     ->  json_safe(_{coverage: Coverage, witness: Witness}, Safe),
         ok_response(Id, Safe, Response)
     ;   error_response(Id, no_geometry_strength_lift_coverage_witness,
-            "geometry_strength_lift_coverage_witness found no coverage witness",
+            "geometry_strength_lift_coverage_witness found no coverage recorded example",
             Response)
     ).
 
@@ -2375,7 +2375,7 @@ dispatch_request(geometry_van_hiele_material_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_van_hiele_material_witness,
-                "geometry_van_hiele_material_witness found no material witness for claim_id",
+                "geometry_van_hiele_material_witness found no material recorded example for claim_id",
                 Response)
         )
     ;   error_response(Id, missing_claim_id,
@@ -2390,7 +2390,7 @@ dispatch_request(geometry_van_hiele_marker_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_van_hiele_marker_witness,
-                "geometry_van_hiele_marker_witness found no marker witness",
+                "geometry_van_hiele_marker_witness found no marker recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_geometry_van_hiele_marker_request,
@@ -2413,7 +2413,7 @@ dispatch_request(geometry_cross_link_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_cross_link_witness,
-                "geometry_cross_link_witness found no cross-link witness",
+                "geometry_cross_link_witness found no cross-link recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_geometry_cross_link_request,
@@ -2428,7 +2428,7 @@ dispatch_request(geometry_developmental_arc_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_developmental_arc_witness,
-                "geometry_developmental_arc_witness found no arc witness",
+                "geometry_developmental_arc_witness found no arc recorded example",
                 Response)
         )
     ;   error_response(Id, missing_arc_id,
@@ -2442,7 +2442,7 @@ dispatch_request(geometry_attribute_material_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_attribute_material_witness,
-                "geometry_attribute_material_witness found no material witness",
+                "geometry_attribute_material_witness found no material recorded example",
                 Response)
         )
     ;   error_response(Id, missing_claim_id,
@@ -2456,7 +2456,7 @@ dispatch_request(geometry_similarity_material_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_similarity_material_witness,
-                "geometry_similarity_material_witness found no material witness",
+                "geometry_similarity_material_witness found no material recorded example",
                 Response)
         )
     ;   error_response(Id, missing_claim_id,
@@ -2470,7 +2470,7 @@ dispatch_request(geometry_pythagorean_material_witness, Id, Request, Response) :
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_pythagorean_material_witness,
-                "geometry_pythagorean_material_witness found no material witness",
+                "geometry_pythagorean_material_witness found no material recorded example",
                 Response)
         )
     ;   error_response(Id, missing_claim_id,
@@ -2484,7 +2484,7 @@ dispatch_request(geometry_van_hiele_level_material_witness, Id, Request, Respons
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_van_hiele_level_material_witness,
-                "geometry_van_hiele_level_material_witness found no material witness",
+                "geometry_van_hiele_level_material_witness found no material recorded example",
                 Response)
         )
     ;   error_response(Id, missing_claim_id,
@@ -2499,7 +2499,7 @@ dispatch_request(geometry_measurement_misconception_witness, Id, Request, Respon
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_measurement_misconception_witness,
-                "geometry_measurement_misconception_witness found no misconception witness",
+                "geometry_measurement_misconception_witness found no misconception recorded example",
                 Response)
         )
     ;   error_response(Id, missing_id_value,
@@ -2514,7 +2514,7 @@ dispatch_request(geometry_n103_bootstrap_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_n103_bootstrap_witness,
-                "geometry_n103_bootstrap_witness found no bootstrap witness",
+                "geometry_n103_bootstrap_witness found no bootstrap recorded example",
                 Response)
         )
     ;   error_response(Id, missing_bootstrap_id,
@@ -2529,7 +2529,7 @@ dispatch_request(geometry_van_de_walle_bootstrap_witness, Id, Request, Response)
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_van_de_walle_bootstrap_witness,
-                "geometry_van_de_walle_bootstrap_witness found no bootstrap witness",
+                "geometry_van_de_walle_bootstrap_witness found no bootstrap recorded example",
                 Response)
         )
     ;   error_response(Id, missing_bootstrap_id,
@@ -2544,7 +2544,7 @@ dispatch_request(geometry_shape_recognition_material_witness, Id, Request, Respo
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_shape_recognition_material_witness,
-                "geometry_shape_recognition_material_witness found no material witness",
+                "geometry_shape_recognition_material_witness found no material recorded example",
                 Response)
         )
     ;   error_response(Id, missing_claim_id,
@@ -2559,7 +2559,7 @@ dispatch_request(geometry_coordinate_material_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_coordinate_material_witness,
-                "geometry_coordinate_material_witness found no material witness",
+                "geometry_coordinate_material_witness found no material recorded example",
                 Response)
         )
     ;   error_response(Id, missing_claim_id,
@@ -2574,7 +2574,7 @@ dispatch_request(geometry_angle_material_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_angle_material_witness,
-                "geometry_angle_material_witness found no material witness",
+                "geometry_angle_material_witness found no material recorded example",
                 Response)
         )
     ;   error_response(Id, missing_claim_id,
@@ -2589,7 +2589,7 @@ dispatch_request(geometry_area_perimeter_material_witness, Id, Request, Response
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_area_perimeter_material_witness,
-                "geometry_area_perimeter_material_witness found no material witness",
+                "geometry_area_perimeter_material_witness found no material recorded example",
                 Response)
         )
     ;   error_response(Id, missing_claim_id,
@@ -2604,7 +2604,7 @@ dispatch_request(geometry_volume_surface_area_material_witness, Id, Request, Res
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_volume_surface_area_material_witness,
-                "geometry_volume_surface_area_material_witness found no material witness",
+                "geometry_volume_surface_area_material_witness found no material recorded example",
                 Response)
         )
     ;   error_response(Id, missing_claim_id,
@@ -2619,7 +2619,7 @@ dispatch_request(geometry_transformation_material_witness, Id, Request, Response
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_transformation_material_witness,
-                "geometry_transformation_material_witness found no material witness",
+                "geometry_transformation_material_witness found no material recorded example",
                 Response)
         )
     ;   error_response(Id, missing_claim_id,
@@ -2634,7 +2634,7 @@ dispatch_request(geometry_classification_material_witness, Id, Request, Response
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_classification_material_witness,
-                "geometry_classification_material_witness found no material witness",
+                "geometry_classification_material_witness found no material recorded example",
                 Response)
         )
     ;   error_response(Id, missing_claim_id,
@@ -2649,7 +2649,7 @@ dispatch_request(geometry_pck_classification_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_pck_classification_witness,
-                "geometry_pck_classification_witness found no synthesis witness",
+                "geometry_pck_classification_witness found no synthesis recorded example",
                 Response)
         )
     ;   error_response(Id, missing_concept,
@@ -2666,7 +2666,7 @@ dispatch_request(geometry_measuring_stick_metaphor_witness, Id, Request, Respons
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_measuring_stick_metaphor_witness,
-                "geometry_measuring_stick_metaphor_witness found no metaphor witness",
+                "geometry_measuring_stick_metaphor_witness found no metaphor recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_measuring_stick_metaphor_request,
@@ -2683,7 +2683,7 @@ dispatch_request(geometry_lakoff_nunez_metaphor_witness, Id, Request, Response) 
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_lakoff_nunez_metaphor_witness,
-                "geometry_lakoff_nunez_metaphor_witness found no metaphor witness",
+                "geometry_lakoff_nunez_metaphor_witness found no metaphor recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_lakoff_nunez_metaphor_request,
@@ -2698,7 +2698,7 @@ dispatch_request(geometry_synthesizer_anchor_material_witness, Id, Request, Resp
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_synthesizer_anchor_material_witness,
-                "geometry_synthesizer_anchor_material_witness found no material witness",
+                "geometry_synthesizer_anchor_material_witness found no material recorded example",
                 Response)
         )
     ;   error_response(Id, missing_claim_id,
@@ -2713,7 +2713,7 @@ dispatch_request(geometry_synthesizer_triangulation_witness, Id, Request, Respon
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_synthesizer_triangulation_witness,
-                "geometry_synthesizer_triangulation_witness found no concept witness",
+                "geometry_synthesizer_triangulation_witness found no concept recorded example",
                 Response)
         )
     ;   error_response(Id, missing_concept,
@@ -2729,7 +2729,7 @@ dispatch_request(geometry_ccss_standard_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_ccss_standard_witness,
-                "geometry_ccss_standard_witness found no standard witness",
+                "geometry_ccss_standard_witness found no standard recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_geometry_ccss_standard_request,
@@ -2745,7 +2745,7 @@ dispatch_request(geometry_indiana_standard_witness, Id, Request, Response) :-
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_indiana_standard_witness,
-                "geometry_indiana_standard_witness found no standard witness",
+                "geometry_indiana_standard_witness found no standard recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_geometry_indiana_standard_request,
@@ -2761,7 +2761,7 @@ dispatch_request(geometry_im_grade8_lesson_standard_witness, Id, Request, Respon
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_im_grade8_lesson_standard_witness,
-                "geometry_im_grade8_lesson_standard_witness found no lesson witness",
+                "geometry_im_grade8_lesson_standard_witness found no lesson recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_geometry_im_grade8_lesson_standard_request,
@@ -2777,7 +2777,7 @@ dispatch_request(geometry_im_grade7_lesson_standard_witness, Id, Request, Respon
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_im_grade7_lesson_standard_witness,
-                "geometry_im_grade7_lesson_standard_witness found no lesson witness",
+                "geometry_im_grade7_lesson_standard_witness found no lesson recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_geometry_im_grade7_lesson_standard_request,
@@ -2793,7 +2793,7 @@ dispatch_request(geometry_im_grade6_lesson_standard_witness, Id, Request, Respon
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_im_grade6_lesson_standard_witness,
-                "geometry_im_grade6_lesson_standard_witness found no lesson witness",
+                "geometry_im_grade6_lesson_standard_witness found no lesson recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_geometry_im_grade6_lesson_standard_request,
@@ -2811,7 +2811,7 @@ dispatch_request(geometry_im_grade5_standard_anchor_witness, Id, Request, Respon
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_geometry_im_grade5_standard_anchor_witness,
-                "geometry_im_grade5_standard_anchor_witness found no standard witness",
+                "geometry_im_grade5_standard_anchor_witness found no standard recorded example",
                 Response)
         )
     ;   error_response(Id, malformed_geometry_im_grade5_standard_anchor_request,
@@ -5453,7 +5453,7 @@ hyperedge_row(KindFilter, Row) :-
     catalogue_break_for(Set, Break),
     maplist(term_to_text, Set, SetTexts),
     Row = _{ source: "canonical_relation",
-             provenance: "arche-trace/brandomian_incompatibility.pl declared hyperedges (size >= 3 only; the seed pair edges are reachable through brandomian_check)",
+             provenance: "arche-trace/brandomian_incompatibility.pl declared incompatible claim groups (size >= 3 only; the seed pairs are reachable through brandomian_check)",
              context: "brandomian_engine",
              set: SetTexts,
              kind: "declared",
@@ -5867,6 +5867,6 @@ toggle_export_dict(toggle(ToggleId, Status), _{axiom: IdText, status: StatusText
 
 axiom_pack_disabled_response(Pack, Id, Response) :-
     format(string(Message),
-           "axiom pack ~w is switched off; enable pack(~w) to query this witness",
+           "axiom pack ~w is switched off; enable pack(~w) to query this recorded example",
            [Pack, Pack]),
     error_response(Id, axiom_pack_disabled, Message, Response).
