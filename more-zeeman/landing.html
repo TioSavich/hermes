@@ -325,7 +325,7 @@
 
   <section class="entry-section" id="pick-your-door">
     <h2>What this is</h2>
-    <p>Hermes is a local console for teachers of elementary mathematics. It runs on your machine and reads a knowledge base that encodes children's arithmetic strategies as runnable machines, misconceptions documented in research literature, content standards, and lesson context from the Illustrative Mathematics curriculum. When you ask it something, the answer comes from that knowledge base, with its sources attached.</p>
+    <p>Hermes is a local console for teachers of elementary mathematics. It runs on your machine and reads a knowledge base that encodes children's arithmetic strategies as runnable machines, misconceptions documented in research literature, content standards, and lesson context from the Illustrative Mathematics curriculum. When you ask it something, the answer comes from that knowledge base, with its sources attached. Hermes is the console of the UMEDCTA formalization repository: panels cite their sources, and the numbers they report trace to predicates you can run yourself in SWI-Prolog.</p>
 
     <div class="surface-grid" aria-label="Hermes surfaces">
       <a class="surface-card" href="/"><h3>Console</h3><p>Type a computation and the calculator works it the way a child using a named strategy would, drawing each action on a number line. The encyclopedia holds strategies, documented misconceptions, standards, grounding metaphors, and the places where each metaphor stops working. The lesson lab gathers what the knowledge base holds about a particular IM lesson.</p></a>
@@ -586,7 +586,7 @@ arith_misconception(db_row(193), whole_number, addition_must_make_larger, &helli
   </section>
 
   <div class="footer">
-    <h3>What this is</h3>
+    <h3>About this project</h3>
     <p>This is a research formalization, not a finished product. A Prolog system models how a learner acquires arithmetic strategies through crisis — beginning with counting-by-ones, consulting a teacher when stuck, composing strategies from action automata already in its registry. The model covers whole-number arithmetic through the full ORR cycle (Observe, React, Reorganize). For fractions, the registry now includes the area model for fraction multiplication — <code>fraction:area_model_part_of_part</code> — and a paired productive/deformation rule that captures Van de Walle's "rules without reason" distinction: <code>cross_multiplication_rule_from_pattern</code> carries an area-model justification in its trace; <code>cross_multiplication_rule_without_ground</code> produces the same numeric answer with no inferential ground.</p>
     <p>What still does not work is the negotiation: the meta-interpreter does not yet route fraction outcomes through the ORR cycle as recollection-compatible values, and metamorphic accommodation (Norton/Steffe — strategies synthesised by recursive composition of others) is not implemented. So the system can act with fractions, but it cannot yet undergo the crisis of acquiring them. The formalization is a tool for noticing what it can and cannot do, with equal specificity.</p>
     <p>Part of <a href="https://github.com/TioSavich/umedcta-formalization">umedcta-formalization</a> — the Prolog and manuscript archive for <em>Understanding Mathematics as an Emancipatory Discipline: A Critical Theory Approach</em>.</p>

@@ -421,6 +421,7 @@
   </section>
   <script src="spine.js"></script>
   <script>
+  (function () {
     'use strict';
 
     // Saved snapshot used as the offline fallback when the worker is unreachable.
@@ -630,6 +631,7 @@
       if (e.key === 'Enter') load();
     });
     load();
+  }());
   </script>
   <section class="page-view comparison-view" id="im-vs-traditional" aria-labelledby="comparison-view-title">
     <p class="pair-title">IM vs traditional</p>
@@ -651,6 +653,7 @@
   </main>
   </section>
   <script>
+  (function () {
     'use strict';
 
     // Live-with-fallback, same pattern as scoreboard.html: the saved comparison
@@ -986,6 +989,7 @@
           `<div class="error">Could not load ${esc(DATA_URL)}: ${esc(error.message)}</div>`;
         setDataSource('');
       });
+  }());
   </script>
 </body>
 </html>
