@@ -390,10 +390,10 @@
   <section class="page-view lesson-view" id="this-lesson" aria-labelledby="lesson-view-title">
     <p class="pair-title">This lesson</p>
   <h1 id="lesson-view-title">Commitment Tracker</h1>
-  <p class="sub" id="lesson-line">Loading lesson anticipation sheet…</p>
+  <p class="sub" id="lesson-line">Loading monitoring chart…</p>
 
   <p class="provenance">
-    This page renders the <b>actual JSON</b> emitted by the Prolog lesson anticipation sheet
+    This page renders the <b>actual JSON</b> emitted by the Prolog monitoring chart
     (<code>hermes_worker.pl</code>, op <code>monitoring_chart_export</code>). It is a
     saved snapshot under <code>data/</code>, not a mock and not a live call — regenerate
     it by piping a <code>monitoring_chart_export</code> request through the worker.
@@ -584,7 +584,7 @@
     function load() {
       const lessonCode = (document.getElementById('lesson-input').value || '').trim();
       const baseUrl = (document.getElementById('base-input').value || '').trim();
-      document.getElementById('lesson-line').textContent = 'Loading lesson anticipation sheet…';
+      document.getElementById('lesson-line').textContent = 'Loading monitoring chart…';
       setSource('Asking the Hermes worker at <code>' + esc(baseUrl) + '</code>…');
       const live = (baseUrl && lessonCode)
         ? fetchLive(baseUrl, lessonCode)
@@ -604,7 +604,7 @@
             })
             .catch(snapErr => {
               document.getElementById('lesson-line').textContent =
-                'Could not load a lesson anticipation sheet. Worker: ' + liveErr.message +
+                'Could not load a monitoring chart. Worker: ' + liveErr.message +
                 '. Snapshot: ' + snapErr.message + '.';
               setSource('');
             });

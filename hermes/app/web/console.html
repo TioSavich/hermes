@@ -1327,7 +1327,7 @@ async function openLesson(code) {
       <div class="fc-meta"><span class="chip">${esc(code)}</span><span class="chip">coverage: ${esc(r.coverage_status || 'unknown')}</span><span class="chip">grade ${esc(String(lesson.grade ?? '—'))}</span></div>
       ${briefLine}${nearbyLine}
       <div class="ce-row">
-        <a class="stance-chip" href="../more-zeeman/monitoring_chart.html" target="_blank" rel="noopener">Lesson anticipation sheet — enter this lesson code</a>
+        <a class="stance-chip" href="../more-zeeman/monitoring_chart.html" target="_blank" rel="noopener">Monitoring chart — enter this lesson code</a>
         <a class="stance-chip" href="generated/notation_lesson_charts/index.html" target="_blank" rel="noopener">Notation charts gallery</a>
         <a class="stance-chip" href="generated/lesson_deformation_charts/index.html" target="_blank" rel="noopener">Wrong-answer pattern charts</a>
       </div>
@@ -2051,7 +2051,7 @@ function renderMonitoringStudentWorkPictures(code) {
   if (!code) return "";
   return `<div class="band student-work-picture" data-monitoring-visuals="${escAttr(code)}">
     <h4>Student-work pictures</h4>
-    <p class="band-note">generated from the lesson anticipation sheet, lesson numerals, and reusable renderers</p>
+    <p class="band-note">generated from the monitoring chart, lesson numerals, and reusable renderers</p>
     <div class="chart-visual loading">
       <div class="visual-kicker">generated render docs</div>
       <div>Loading generated pictures...</div>
@@ -2347,7 +2347,7 @@ function renderMonitoringChart(r) {
   const coverageSignal = monitoringCoverageSignal(r);
 
   return `<div class="chart">
-    <div class="chart-head"><h3>Anticipation chart — ${esc(code)}</h3><span class="chip">lesson anticipation sheet</span></div>
+    <div class="chart-head"><h3>Monitoring chart — ${esc(code)}</h3><span class="chip">monitoring chart</span></div>
     ${coverageSignal}
     ${r.productive_core ? `<div class="chart-core"><b>Productive core.</b> ${esc(r.productive_core)}</div>` : ''}
     ${studentWorkPictures}
@@ -2373,7 +2373,7 @@ function monitoringCoverageSignal(r) {
   if (conclusion === 'scope_sequence_only') {
     return `<div class="coverage-signal scope" data-coverage="scope_sequence_only">
       <span class="coverage-label">coverage: scope sequence only</span>
-      No authored strategy or misconception rows are attached yet. This code is present in the IM scope sequence, so the chart is a boundary marker rather than a full anticipation chart.
+      No authored strategy or misconception rows are attached yet. This code is present in the IM scope sequence, so the chart is a boundary marker rather than a full monitoring chart.
     </div>`;
   }
   if (conclusion.startsWith('under_attached')) {
