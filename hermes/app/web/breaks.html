@@ -488,11 +488,27 @@ neg(p)</textarea>
         }
       };
 
+      let packLeftEnabled = false;
+      // If the reader enables the pack and leaves before step 3's restore,
+      // the enriched relation would outlive the walkthrough process-wide.
+      // A best-effort keepalive disable closes that window on page exit.
+      window.addEventListener("pagehide", () => {
+        if (!packLeftEnabled) return;
+        try {
+          navigator.sendBeacon ? fetch("/api/axiom_toggle", {
+            method: "POST", keepalive: true,
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({action: "disable", axiom: "pack(registry_incompatibility)"}),
+          }) : null;
+        } catch (_e) { /* exit path; nothing left to report to */ }
+      });
+
       enableButton.onclick = async () => {
         enableButton.disabled = true;
         enableOut.textContent = "Loading the registry incompatibility pack…";
         try {
           const enabled = await post("/api/axiom_toggle", {action: "enable", axiom: "pack(registry_incompatibility)"});
+          packLeftEnabled = !!enabled.ok;
           enableOut.textContent = enabled.ok
             ? "The registry pack is enabled; its recorded incompatibilities now enrich the relation."
             : "The pack was not enabled: " + (enabled.error || "no detail") + ".";
@@ -515,6 +531,7 @@ neg(p)</textarea>
         } finally {
           try { restored = await post("/api/axiom_toggle", {action: "disable", axiom: "pack(registry_incompatibility)"}); }
           catch (error) { restored = {ok: false, error: error.message}; }
+          packLeftEnabled = !(restored && restored.ok);
         }
         const beforeCount = profileCount(baseline), afterCount = profileCount(after);
         const changed = !after.ok || afterCount !== beforeCount;

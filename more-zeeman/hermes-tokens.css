@@ -30,7 +30,7 @@
   --paper-warm:  #ebdfc5;
   --paper-cool:  #ede4cf;
   --gold:        #d4a747;
-  --gold-deep:   #a97c24;
+  --gold-deep:   #7a5a12; /* 5.33:1 on --paper; text-safe deep gold */
   --gold-pale:   #f0d68a;
   --rust:        #b95238;
   --teal:        #3f7f89;

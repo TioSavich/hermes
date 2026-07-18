@@ -56,7 +56,7 @@
   var THEMES = {
     recollection: { label: "Recollection",       light: "#5b4a9e", dark: "#b3a4ef" },
     norms:        { label: "Norms & curriculum", light: "#2f5f9e", dark: "#7ab0e6" },
-    objects:      { label: "Objects",            light: "#a97c24", dark: "#e8a84c" },
+    objects:      { label: "Objects",            light: "#a97c24", dark: "#e8a84c", lightInk: "#7a5a12" },
     body:         { label: "The feeling body",   light: "#b95238", dark: "#d4634a" },
     negation:     { label: "Incompatibility",    light: "#3d6b45", dark: "#6b9e8c" },
     learner:      { label: "The learner",        light: "#2c7d78", dark: "#5bb4ae" }
@@ -209,7 +209,7 @@
   .hshell-crumb .sep { color: var(--muted, #6c6452); opacity: .5; margin: 0 7px; }
   .hshell-chip { display: inline-block; margin-right: 8px; padding: 3px 7px;
     border: 1px solid var(--accent, currentColor); border-radius: 999px;
-    color: var(--accent, currentColor); background: transparent;
+    color: var(--accent-ink, var(--accent, currentColor)); background: transparent;
     font: 600 9px/1 var(--mono, ui-monospace, monospace); letter-spacing: .06em;
     text-transform: uppercase; vertical-align: 1px; }
   .hshell-orientation { position: absolute; left: 0; right: 0; bottom: 0; height: 24px;
@@ -330,6 +330,10 @@
     if (theme) {
       root.dataset.hermesTheme = page.theme;
       root.style.setProperty("--accent", theme[base]);
+      // Chip text needs 4.5:1; a theme may name a darker ink for light bases
+      // where its graphical accent alone would fall short.
+      root.style.setProperty("--accent-ink",
+        (base === "light" && theme.lightInk) || theme[base]);
     }
     var style = h("style"); style.id = "hshell-css"; style.textContent = CSS;
     document.head.appendChild(style);
