@@ -201,6 +201,47 @@
 
     .connections p:last-child { margin-bottom: 0; }
 
+    /* --- Theory entry and the two door axes --- */
+    .entry-section, .vocabularies {
+      border-top: 1px solid var(--border);
+      margin: 0 0 3rem;
+      padding-top: 2rem;
+    }
+    .entry-section > h2, .vocabularies > h2 {
+      color: var(--snap); font-size: 1.35rem; font-weight: 500; margin-bottom: 0.75rem;
+    }
+    .entry-section > p, .vocabularies > p { color: #b8b0a0; margin-bottom: 1rem; }
+    .surface-grid, .door-grid { display: grid; gap: 0.85rem; margin: 1.2rem 0 2rem; }
+    .surface-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .door-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .surface-card, .door-card, .activity-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+      color: inherit; padding: 1rem; text-decoration: none;
+    }
+    .surface-card h3, .door-card h3, .activity-card h3 { color: var(--release); font-size: 1rem; margin-bottom: .25rem; }
+    .surface-card p, .door-card p, .activity-card p { color: var(--muted); font-size: .84rem; line-height: 1.5; }
+    .door-card .kind { color: var(--snap); font: .68rem 'IBM Plex Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
+    .door-card ul { list-style: none; margin-top: .65rem; }
+    .door-card li { border-top: 1px solid var(--border); padding: .4rem 0; }
+    .door-card a { color: var(--release); font: .76rem 'IBM Plex Mono', monospace; }
+    .door-card .gloss { color: var(--muted); display: block; font-size: .76rem; }
+    .activity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .85rem; }
+    .activity-card { display: block; }
+    .console-note { border-left: 3px solid var(--release); color: var(--muted); font-size: .86rem; padding: .75rem 1rem; }
+    .vocab-task, .vocab-panel, .vocab-scope { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.15rem; }
+    .vocab-task .row { display: flex; gap: .7rem; margin: .25rem 0; }
+    .vocab-task .tag, .vocab-panel .kicker { color: var(--snap); font: .7rem 'IBM Plex Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
+    .vocab-panel h3, .vocab-scope h3 { color: var(--text); font-size: 1.05rem; margin: .35rem 0 .75rem; }
+    .vocab-panel p, .vocab-scope li { color: #b8b0a0; font-size: .88rem; margin-bottom: .7rem; }
+    .vocab-arrow { color: var(--muted); font: .72rem 'IBM Plex Mono', monospace; padding: .45rem 0; text-align: center; text-transform: uppercase; }
+    .vocab-panel .term { background: var(--bg); color: var(--release); display: block; font: .76rem/1.55 'IBM Plex Mono', monospace; overflow-wrap: anywhere; padding: .65rem; white-space: pre-wrap; }
+    .vocab-panel .prov { color: var(--muted); font-size: .76rem; margin-top: .7rem; }
+    .vocab-panel .decode, .vocab-scope ul { margin: .7rem 0 0 1.1rem; }
+    .vocab-panel details { margin-top: .7rem; }
+    .vocab-panel summary { color: var(--snap); cursor: pointer; font: .72rem 'IBM Plex Mono', monospace; }
+    .vocab-panel pre { background: var(--bg); font: .68rem/1.45 'IBM Plex Mono', monospace; overflow: auto; padding: .65rem; white-space: pre-wrap; }
+    .vocab-scope { border-left: 3px solid var(--tension); margin-top: 1rem; }
+
     /* --- Footer --- */
     .footer {
       border-top: 1px solid var(--border);
@@ -268,6 +309,7 @@
       }
 
       .conn-arrow { transform: rotate(90deg); }
+      .surface-grid, .door-grid, .activity-grid { grid-template-columns: 1fr; }
     }
   </style>
   <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="landing"></script>
@@ -281,7 +323,62 @@
     <p class="description">A computational agent begins with counting-by-ones and a small inventory of action automata. When a problem cannot be solved within resource limits, it enters crisis — and either consults a teacher or composes a different strategy from primitives already in its registry. These views show the same process from different angles: the geometry of the snap, the formal dynamics of the Prolog, the step-by-step narrative, and the representation surfaces that make each mathematical move visible.</p>
   </div>
 
-  <p class="tools-heading">Journey index</p>
+  <section class="entry-section" id="pick-your-door">
+    <h2>What this is</h2>
+    <p>Hermes is a local console for teachers of elementary mathematics. It runs on your machine and reads a knowledge base that encodes children's arithmetic strategies as runnable machines, misconceptions documented in research literature, content standards, and lesson context from the Illustrative Mathematics curriculum. When you ask it something, the answer comes from that knowledge base, with its sources attached.</p>
+
+    <div class="surface-grid" aria-label="Hermes surfaces">
+      <a class="surface-card" href="/"><h3>Console</h3><p>Type a computation and the calculator works it the way a child using a named strategy would, drawing each action on a number line. The encyclopedia holds strategies, documented misconceptions, standards, grounding metaphors, and the places where each metaphor stops working. The lesson lab gathers what the knowledge base holds about a particular IM lesson.</p></a>
+      <a class="surface-card" href="/discussions.html"><h3>Discussions</h3><p>Paste a classroom transcript and the console checks the mathematical claims it can recognize, deterministically: each claim comes back <code>holds</code>, <code>refuted</code>, or <code>not covered</code>, with the worked check attached. The fuller two-pass report asks a language model first, so it needs a key.</p></a>
+      <a class="surface-card" href="visualizations.html"><h3>Visualizers</h3><p>Number line, fraction bars, area model, base-ten blocks, set &amp; grouping, and balance scale. The same drawing grammar the calculator uses, available directly.</p></a>
+      <a class="surface-card" href="monitoring_chart.html"><h3>Monitoring charts</h3><p>For an IM lesson: its standards, the strategies to anticipate, and the misconceptions research has documented near its content, arranged the way a monitoring sheet arranges them.</p></a>
+    </div>
+
+    <h2>Pick your door</h2>
+    <p>This is the public face of a workbench for how children learn arithmetic — counting by ones until it stops working, and the moment after, where a new strategy is built. Everything behind these doors is hostable and needs no setup. The one tool that reads student work runs only on your own machine, and it says so.</p>
+    <p>These registers sit side by side. Choose by what you need to do; none is the preferred route.</p>
+    <div class="door-grid" aria-label="Audience doors">
+      <section class="door-card">
+        <h3>Teacher</h3><p class="kind">Use it with a class · public</p>
+        <p>Coded samples of real student work, fraction bars you can manipulate, and a lesson chart that names the misconception alongside the strategy. Bring numbers; watch the method and where it breaks.</p>
+        <ul>
+          <li><a href="gallery.html">Student-work gallery</a><span class="gloss">coded arithmetic samples, filterable</span></li>
+          <li><a href="fraction-bars/calculator.html">Fraction-bars calculator</a><span class="gloss">add and subtract by co-measuring</span></li>
+          <li><a href="monitoring_chart.html">Lesson monitoring chart</a><span class="gloss">strategies and misconceptions for a lesson</span></li>
+        </ul>
+      </section>
+      <section class="door-card">
+        <h3>Reviewer / Researcher</h3><p class="kind">Inspect the claims · public</p>
+        <p>The evidence and its limits: coded student work, a comparison of what each notation can and cannot express, the deontic scorecard where the formalization makes an incoherence operable, and the strategy catalog it draws from.</p>
+        <ul>
+          <li><a href="gallery.html">Coded student-work corpus</a><span class="gloss">the samples the claims rest on</span></li>
+          <li><a href="scoreboard.html#im-vs-traditional">Expressive-power comparison</a><span class="gloss">what each representation can carry</span></li>
+          <li><a href="#three-vocabularies">One error, three vocabularies</a><span class="gloss">follow one error from philosophy to logic to Prolog</span></li>
+          <li><a href="scoreboard.html#this-lesson">Deontic scorecard</a><span class="gloss">commitments, entitlements, incoherence</span></li>
+          <li><a href="strategies/index.html">Strategy catalog</a><span class="gloss">the worked arithmetic strategies</span></li>
+        </ul>
+      </section>
+      <section class="door-card">
+        <h3>Not sure yet</h3><p class="kind">Find your way in · public</p>
+        <p>Three ways through the same idea: draw a strategy, read it as a narrative, or see how the catastrophe machine and the crisis cycle fit together. Start anywhere.</p>
+        <ul>
+          <li><a href="#activity-doors">The three activity doors</a><span class="gloss">draw it · read it · analyze it</span></li>
+          <li><a href="#journey-overview">The narrative journey</a><span class="gloss">continuous pressure, discontinuous snap</span></li>
+          <li><a href="gallery.html">Just show me something real</a><span class="gloss">the student-work gallery</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <p>A child starts with counting by ones. It works until it does not — and the moment it stops working is where a new strategy is built. These pages let you draw that process, read it as a story, and analyze a real classroom discussion against it. Start wherever you like.</p>
+    <div class="activity-grid" id="activity-doors" aria-label="Activity doors">
+      <a class="activity-card" href="visualizations.html"><h3>Tools</h3><p>Number lines, fraction bars, base blocks, area models, balance scales. Type your own numbers and watch a strategy — and its misconception — drawn step by step.</p></a>
+      <a class="activity-card" href="#journey-overview"><h3>Journey</h3><p>The same process told as a narrative: continuous pressure producing a discontinuous snap, the catastrophe machine, the crisis cycle, and where the formalization honestly stops.</p></a>
+      <a class="activity-card" href="/"><h3>Console</h3><p>The Hermes teaching console: bring a classroom discussion, find the strategies and misconceptions in it, and launch a visualizer from what you find. Runs on your own machine.</p></a>
+    </div>
+    <p class="console-note">One capability is deliberately not hosted publicly: the teaching console reads student work. To run it on your own machine, use <code>bash hermes/app/launch.sh</code>, then open <code>http://127.0.0.1:8765/</code>. The interactive visualizers that draw a strategy render through that same local server; the public pages make no calls to any language model.</p>
+  </section>
+
+  <p class="tools-heading" id="journey-overview">Journey index</p>
 
   <div class="tool-cards">
 
@@ -302,7 +399,7 @@
       </div>
     </a>
 
-    <a class="tool-card" href="crisis.html">
+    <a class="tool-card" href="bridge.html">
       <div class="tool-icon formal">
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
           <path d="M4 22 L14 6 L24 22" />
@@ -318,7 +415,7 @@
       </div>
     </a>
 
-    <a class="tool-card" href="bridge.html">
+    <a class="tool-card" href="crisis.html">
       <div class="tool-icon narrative">
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
           <rect x="5" y="4" width="18" height="20" rx="2" />
@@ -423,6 +520,70 @@
 
     <p>The ORR Explorer shows the same process as a story. Where the Bridge gives you dynamics, the Explorer gives you reasons: <em>why</em> the system entered crisis, <em>what</em> the teacher provided, <em>how</em> the new strategy was synthesized, <em>whether</em> the retry succeeded. The three views are the same phenomenon — the geometry, the dynamics, and the account.</p>
   </div>
+
+  <section class="vocabularies" id="three-vocabularies">
+    <h2>How the three vocabularies stay in step</h2>
+    <p>The project keeps three vocabularies in step: the philosophy that names a commitment, the modal calculus that codes it, and the Prolog that runs it until it breaks. This section follows one documented student error through all three, so a reader can check that the same error is being described each time and is not quietly changing under the translation.</p>
+
+    <div class="vocab-task">
+      <div class="row"><span class="tag">task</span><span class="q">solve&nbsp; 6 + X = 4</span></div>
+      <div class="row"><span class="tag">student</span><span style="color:var(--tension)">impossible</span> <span class="mono" style="color:var(--muted);font-size:.82rem">("you cannot add to 6 and end up with less")</span></div>
+      <div class="row"><span class="tag">correct</span><span style="color:var(--release)">-2</span> <span class="mono" style="color:var(--muted);font-size:.82rem">(6 + (-2) = 4)</span></div>
+    </div>
+
+    <section class="vocab-panel">
+      <div class="kicker">1 · Philosophy — the commitment</div>
+      <h3>"A sum must be larger than its parts."</h3>
+      <p>The student is committed to a categorical claim about addition: putting numbers together can only grow the total. In Brandom's terms this is a material-inferential commitment the student is not entitled to. It holds for counting collections and fails the moment an addend is negative, so the move from a true case to a categorical rule is the unlicensed step.</p>
+      <p>The corpus row records the grounding the commitment leans on with a <span class="mono" style="color:var(--snap)">Source-Path-Goal</span> schema: addition read as travel along a path that only ever moves forward.</p>
+      <div class="prov"><b>Source:</b> misconceptions/misconceptions_whole_number_batch_5.pl — corpus row <span class="mono">db_row(193)</span>, comments <span class="mono">SCHEMA: Source-Path-Goal</span> / <span class="mono">GROUNDED</span>.</div>
+    </section>
+
+    <div class="vocab-arrow">↓ coded as</div>
+
+    <section class="vocab-panel">
+      <div class="kicker">2 · Logic · PML — the coding</div>
+      <h3>A subjective, categorical commitment held without entitlement</h3>
+      <p>PML is a material-inference calculus, not a Kripke modal logic. It tags the commitment with a mode, a polarity, and an entitlement marker. The wiring records this misconception as:</p>
+      <span class="term">s( comp_nec( unlicensed( addition_must_make_larger ) ) )</span>
+      <ul class="decode">
+        <li><code>s(·)</code> — <b>Subjective</b> validity: read from the student's own position, not yet checked against the object or the norm.</li>
+        <li><code>comp_nec(·)</code> — <b>Compressive Necessity</b> (↓): a categorical "must", a fixation or crystallization rather than an opening.</li>
+        <li><code>unlicensed(·)</code> — the commitment is asserted <b>without entitlement</b>: the categorical rule is not something the student has earned the right to.</li>
+      </ul>
+      <div class="prov"><b>Source:</b> misconceptions/pml_wire.pl — <span class="mono">misconception_pml(db_row(193), &hellip;)</span>, one of 820 wired facts; legend in pml/pml_operators.pl.</div>
+      <details><summary>follow it yourself</summary><pre><code>swipl -l paths.pl -g \
+  "use_module(misconceptions(pml_wire)), \
+   misconception_pml(db_row(193),Op), \
+   format('~q~n',[Op]), halt"
+% =&gt;  s(comp_nec(unlicensed(addition_must_make_larger)))</code></pre></details>
+    </section>
+
+    <div class="vocab-arrow">↓ run as</div>
+
+    <section class="vocab-panel">
+      <div class="kicker">3 · Math · Prolog — the break, made runnable</div>
+      <h3>The rule returns the wrong token exactly at the boundary</h3>
+      <p>The misconception is encoded as a rule that fires on the task. On the missing-addend case it returns <span class="mono" style="color:var(--tension)">impossible</span>, while the value recorded alongside it is <span class="mono" style="color:var(--release)">-2</span>. The categorical "must make larger" breaks precisely where the addend goes negative, and the Prolog does not smooth that over. It returns the wrong token at the boundary, which is where the misconception becomes detectable rather than hidden.</p>
+      <span class="term">r193_addition_must_make_larger(missing_addend(6,4), impossible).
+arith_misconception(db_row(193), whole_number, addition_must_make_larger, &hellip;, -2).</span>
+      <div class="prov"><b>Source:</b> misconceptions/misconceptions_whole_number_batch_5.pl — the rule predicate and the <span class="mono">arith_misconception/6</span> row carrying the correct value.</div>
+      <details><summary>follow it yourself</summary><pre><code>swipl -l paths.pl -s misconceptions/test_harness.pl -g \
+  "test_harness:arith_misconception(db_row(193),_,N,_,Task,Correct), \
+   format('~w: ~w -&gt; correct ~w~n',[N,Task,Correct]), halt"
+% =&gt;  addition_must_make_larger: missing_addend(6,4) -&gt; correct -2</code></pre></details>
+    </section>
+
+    <div class="vocab-scope">
+      <h3>What this section is, and is not</h3>
+      <ul>
+        <li><b>One worked example, not a live engine.</b> The three-layer trace is hand-chosen and authored. The facts in each panel are real and queryable, but the translation from philosophy to logic to Prolog is not discovered end-to-end by a program; a person assembled it from the tracked predicates.</li>
+        <li><b>The PML coding is a proposal to test.</b> The discourse-marker mapping behind <span class="mono">misconception_pml/2</span> is a coding scheme under test, not a validated instrument. Every one of the 820 wired rows currently carries the same <span class="mono">s(comp_nec(unlicensed(_)))</span> shape, so the coding marks a family resemblance, not a measured distinction. Read it as a hypothesis the project is checking.</li>
+        <li><b>The break is the point.</b> The boundary where the rule returns the wrong token is not a defect to hide. It is the place the formalization names where a categorical commitment stops holding.</li>
+        <li><b>Partial.</b> The fuller interactive walkthrough planned for the paper page is not built here; its framing lives in a source this build does not draw on. This static section closes the narrower goal of letting a reader trust the chain on a single, reproducible example.</li>
+      </ul>
+    </div>
+  </section>
 
   <div class="footer">
     <h3>What this is</h3>

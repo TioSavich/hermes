@@ -1,7 +1,7 @@
 ASKTM_Data/	6543
-hermes/	1545
+hermes/	1543
 geometry/	932
-more-zeeman/	144
+more-zeeman/	140
 strategies/	102
 learner/	49
 crosswalk/	43

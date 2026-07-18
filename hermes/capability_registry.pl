@@ -562,7 +562,7 @@ capability_page('embodied_proof_witness', '/hermes/app/web/breaks.html').
 capability_page('eml_transition_witness', '/hermes/app/web/breaks.html').
 capability_page('event_score', '/hermes/app/web/discussions.html').
 capability_page('executable_practice_witness', '/more-zeeman/witnesses.html').
-capability_page('expressive_power', '/more-zeeman/expressive-power-comparison.html').
+capability_page('expressive_power', '/more-zeeman/scoreboard.html').
 capability_page('field_connectivity_audit', '/hermes/app/web/console.html').
 capability_page('field_context', '/hermes/app/web/console.html').
 capability_page('fraction_cgi_addition', '/more-zeeman/visualizations.html').
@@ -658,7 +658,7 @@ capability_page('lesson_misconception_incompatibility_witness', '/hermes/app/web
 capability_page('list_misconceptions', '/hermes/app/web/console.html').
 capability_page('list_standards', '/hermes/app/web/console.html').
 capability_page('list_strategies', '/hermes/app/web/console.html').
-capability_page('list_strategies', '/hermes/app/web/strategies.html').
+capability_page('list_strategies', '/more-zeeman/strategies.html').
 capability_page('list_strategies', '/more-zeeman/strategies/index.html').
 capability_page('lit_search', '/hermes/app/web/no.html').
 capability_page('magnitude_equivalence_claim_witness', '/more-zeeman/witnesses.html').
@@ -761,9 +761,9 @@ capability_page('standard_k_ns_5_6_compare_groups_witness', '/more-zeeman/witnes
 capability_page('standard_k_ns_7_place_value_witness', '/more-zeeman/witnesses.html').
 capability_page('strategy_trace', '/hermes/app/web/console.html').
 capability_page('strategy_trace', '/hermes/app/web/discussions.html').
-capability_page('strategy_trace', '/hermes/app/web/strategies.html').
 capability_page('strategy_trace', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('strategy_trace', '/more-zeeman/monitoring_chart.html').
+capability_page('strategy_trace', '/more-zeeman/strategies.html').
 capability_page('strategy_trace', '/more-zeeman/unit-echo/index.html').
 capability_page('strategy_trace', '/more-zeeman/visualizations.html').
 capability_page('strategy_trace', '/more-zeeman/witnesses.html').

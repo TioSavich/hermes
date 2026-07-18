@@ -5,7 +5,7 @@
 
 const Journey = {
   pages: [
-    { id: 'entry',      file: 'home.html',        title: 'Start Here' },
+    { id: 'entry',      file: 'landing.html',     title: 'Start Here' },
     { id: 'snap',       file: 'index.html',       title: 'The Snap' },
     { id: 'counting',   file: 'counting.html',    title: 'Counting' },
     { id: 'crisis',     file: 'crisis.html',      title: 'Crisis' },
@@ -108,7 +108,7 @@ function injectNav() {
     ).join('');
     topBar.innerHTML = `
       <div class="top-bar-left">
-        <a class="home-link" href="home.html">home</a>
+        <a class="home-link" href="landing.html">home</a>
         <span class="page-title">${titleText}</span>
         <div class="discourse-buttons">${discourseHTML}</div>
       </div>
@@ -119,8 +119,8 @@ function injectNav() {
     return; // no progress bar or back/forward for non-journey pages
   }
 
-  // Home link: always points to the entry page (the doors, home.html)
-  const homeFile = idx === 0 ? '#' : 'home.html';
+  // Home link: always points to the theory entry page.
+  const homeFile = idx === 0 ? '#' : 'landing.html';
   const homeLink = idx === 0
     ? '<span class="home-link" style="visibility:hidden;">home</span>'
     : `<a class="home-link" href="${homeFile}">home</a>`;

@@ -233,6 +233,8 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
 .modal-body code { font: 0.85em var(--mono); background: var(--paper-cool); padding: 0 0.2em; border-radius: 3px; }
 .modal-body pre.md-pre { white-space: pre-wrap; font: 0.8rem/1.45 var(--mono); background: var(--ink); color: var(--paper); padding: 0.6rem 0.8rem; border-radius: 7px; overflow: auto; }
 .modal-body hr { border: 0; border-top: 1px solid var(--line); margin: 0.9rem 0; }
+.quickstart-boundary { border-left: 3px solid var(--rust); background: var(--paper-cool); padding: .55rem .75rem; }
+.quickstart-local { border-left: 3px solid var(--teal-deep); padding: .55rem .75rem; }
 
 /* results */
 .rtable { border-collapse: collapse; font: 0.82rem var(--mono); width: 100%; }
@@ -767,7 +769,20 @@ unknown_candidate(foo)</textarea>
       <h2>Hermes Quickstart (N103)</h2>
       <button class="btn ghost" id="quickstart-close">Close</button>
     </div>
-    <div class="modal-body" id="quickstart-body">loading…</div>
+    <div class="modal-body">
+      <section aria-labelledby="quickstart-boundaries-title">
+        <h2 id="quickstart-boundaries-title">Before you use student work</h2>
+        <p>The learner this console reasons about is a formal model built from research literature. It is not your student. When a panel places a piece of student work near a strategy or a misconception, it is offering a hypothesis for you to test in conversation with the child, along with the citations and the worked trace that motivated it.</p>
+        <p class="quickstart-boundary">A misconception match is a reason to listen more closely. The console has no access to why a particular child wrote what they wrote, and it does not diagnose children.</p>
+        <p class="quickstart-boundary">Some questions come back <code>not covered</code>. That answer is deliberate. Where its formal ground runs out, the console stops rather than improvising, and it tells you where the boundary is.</p>
+        <h3>What stays on your machine</h3>
+        <p class="quickstart-local">The calculator, encyclopedia, lesson lab, claim checks, and every visualizer run entirely on your machine. No account, no network, no key.</p>
+        <p>Four surfaces ask a language model (IU's REALLMS service) for prose: the Ask-Hermes chat, the PML reading of a passage, transcript reports, and grading suggestions. Each of these says so and stops when no key is configured — the chat still answers from the knowledge base without one. The discussions page states which routes analyze text locally and which send an uploaded file to the model service.</p>
+        <p>Keys, rosters, and anything you upload live in a runtime folder that version control never touches.</p>
+      </section>
+      <hr>
+      <div id="quickstart-body">loading…</div>
+    </div>
   </div>
 </div>
 

@@ -11,7 +11,7 @@
  * the same offline over file:// and on the :8765 server (where the directory
  * mounts under /more-zeeman/). No build step, no framework, no fetch.
  *
- * Surfaces (front door = home.html):
+ * Surfaces (theory entry = landing.html):
  *   Tools   — the visualizers + visualizations.html (light token sheet)
  *   Journey — the narrative/philosophy pages (dark token sheet), index landing.html
  *   Console — Hermes, private, server root "/"  (the front door links it; the
@@ -95,7 +95,7 @@
 
   // home (mark + name) -> front door
   var home = el("a", "hermes-shell__home");
-  home.href = href("home.html");
+  home.href = href("landing.html");
   home.title = "Hermes home";
   var img = el("img", "hermes-shell__mark");
   img.src = MARK;

@@ -7623,7 +7623,6 @@ hermes/app/system_prompts/profile.md
 hermes/app/system_prompts/score.md
 hermes/app/system_prompts/transcribe.md
 hermes/app/system_prompts/transcribe_timed.md
-hermes/app/web/about.html
 hermes/app/web/breaks.html
 hermes/app/web/console.html
 hermes/app/web/discussions.html
@@ -9080,7 +9079,6 @@ hermes/app/web/generated/talkmoves_reports/tm_0249.json
 hermes/app/web/generated/talkmoves_reports/tm_0468.json
 hermes/app/web/hermes_logo.svg
 hermes/app/web/no.html
-hermes/app/web/strategies.html
 hermes/app/worker.py
 hermes/app/workflow/__init__.py
 hermes/app/workflow/content.py
@@ -9232,7 +9230,6 @@ more-zeeman/area-model/samples/fraction-2-3-times-3-4.json
 more-zeeman/area-model/samples/partial-13-14.json
 more-zeeman/area-model/samples/partial-products-13-14.json
 more-zeeman/area-model/samples/prime-7.json
-more-zeeman/audience-index.html
 more-zeeman/balance-scale/samples/solve-2x3-11.json
 more-zeeman/base-ten/compare.html
 more-zeeman/base-ten/samples/add-27-15-base10.json
@@ -9253,7 +9250,6 @@ more-zeeman/counting.html
 more-zeeman/crisis.html
 more-zeeman/data/expressive_power_comparison.json
 more-zeeman/data/monitoring_IM-G1-U3-L17.json
-more-zeeman/expressive-power-comparison.html
 more-zeeman/fractal.html
 more-zeeman/fraction-bars/calculator.html
 more-zeeman/fraction-bars/compare.html
@@ -9307,7 +9303,6 @@ more-zeeman/gallery.html
 more-zeeman/hermes-tokens-dark.css
 more-zeeman/hermes-tokens.css
 more-zeeman/hermes_logo.svg
-more-zeeman/home.html
 more-zeeman/index.html
 more-zeeman/landing.html
 more-zeeman/matrix.html
@@ -9366,7 +9361,6 @@ more-zeeman/strategies/index.html
 more-zeeman/strategies/strategy_shell.css
 more-zeeman/strategies/strategy_styles.css
 more-zeeman/strategies/strategy_viz.js
-more-zeeman/translation-chain.html
 more-zeeman/unit-echo/index.html
 more-zeeman/visualizations.html
 paths.pl

@@ -58,8 +58,6 @@
   // Each item: [id, label, href]. Sections group them.
   var NAV = [
     { title: "Workspace", kind: "console", items: [
-      ["about",       "Start here",       app("about.html")],
-      ["audience",    "Audience tour",    mz("audience-index.html")],
       ["discussions", "Discussions",      app("discussions.html")],
       ["console",     "Console",          app("console.html")],
       ["monitoring",  "Monitoring chart", mz("monitoring_chart.html")],
@@ -83,6 +81,7 @@
       ["boundary",   "Boundary",    mz("boundary.html")],
       ["matrix",     "The Matrix",  mz("matrix.html")],
       ["muds",       "Meaning-Use Diagrams", mz("muds.html")],
+      ["scoreboard", "Scoreboard",  mz("scoreboard.html")],
     ]},
     { title: "Research wing", kind: "research", items: [
       ["bridge",       "The Bridge",       mz("bridge.html")],
@@ -100,15 +99,14 @@
       "discussions.html": "discussions", "console.html": "console",
       "monitoring_chart.html": "monitoring", "visualizations.html": "visualizations",
       "atlas.html": "atlas", "witnesses.html": "witnesses",
-      "gallery.html": "gallery", "audience-index.html": "audience",
+      "gallery.html": "gallery",
       "landing.html": "landing", "index.html": "snap", "counting.html": "counting",
       "crisis.html": "crisis", "strategies.html": "strategies",
       "playground.html": "playground", "bridge.html": "bridge",
       "coordination.html": "coordination", "reorg_demo.html": "reorganization",
       "fractal.html": "fractal", "boundary.html": "boundary", "matrix.html": "matrix",
       "no.html": "no", "breaks.html": "breaks", "muds.html": "muds",
-      "about.html": "about",
-      "home.html": "home",
+      "scoreboard.html": "scoreboard",
     };
     return byFile[file] || "";
   }
@@ -282,7 +280,7 @@
 
     // brand
     var brand = h("a", "hshell-brand");
-    brand.href = mz("home.html");
+    brand.href = mz("landing.html");
     brand.title = "Hermes home";
     brand.innerHTML = '<img src="' + MARK + '" alt="">' +
       '<span class="txt"><span class="nm">Hermes</span>' +
