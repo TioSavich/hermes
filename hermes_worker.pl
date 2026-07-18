@@ -102,6 +102,7 @@ load_runtime :-
     load_axiom_pack_audit(Root),
     use_module(hermes(dispatch_spec),
                [ dispatch_spec/4, dispatch_message/3 ]),
+    validate_dispatch_spec,
     use_module(crosswalk(canonical_all), []),
     % T0 representation spine: concept -> visual surface routing + manifest assets.
     use_module(crosswalk(representation_spine), []),
@@ -3001,6 +3002,33 @@ dispatch_request(Op, Id, Request, Response) :-
     ;   dispatch_malformed_response(Op, Id, Response)
     ).
 
+% Every converter named in the loaded spec must have a
+% convert_dispatch_input/3 clause; a typo would otherwise surface only as a
+% permanent malformed reply. Checked once at load, loudly.
+validate_dispatch_spec :-
+    forall(
+        ( dispatch_spec(SpecOp, Inputs, _, _), member(_Key-Conv, Inputs) ),
+        ( known_dispatch_converter(Conv)
+        -> true
+        ;  format(user_error,
+                  "dispatch_spec ~w names unknown converter ~w~n",
+                  [SpecOp, Conv]),
+           throw(error(domain_error(dispatch_converter, Conv), SpecOp))
+        )
+    ).
+
+known_dispatch_converter(term).
+known_dispatch_converter(atom).
+known_dispatch_converter(code).
+known_dispatch_converter(string).
+known_dispatch_converter(dict).
+known_dispatch_converter(int).
+known_dispatch_converter(int(_, _)).
+known_dispatch_converter(number).
+known_dispatch_converter(recollection).
+known_dispatch_converter(fraction).
+known_dispatch_converter(list).
+
 read_dispatch_inputs([], _Request, []).
 read_dispatch_inputs([Key-Converter|Specs], Request, [Key-Value|Bound]) :-
     get_dict(Key, Request, JSONValue),
@@ -3018,6 +3046,8 @@ convert_dispatch_input(string, Value, Value).
 convert_dispatch_input(dict, Value, Value).
 convert_dispatch_input(int, JSON, Value) :-
     dispatch_integer(JSON, Value).
+convert_dispatch_input(number, Value, Value) :-
+    number(Value).
 convert_dispatch_input(int(Low, High), JSON, Value) :-
     dispatch_integer(JSON, Value),
     Value >= Low,
@@ -3091,7 +3121,10 @@ dispatch_wrap_fields([Label-Slot|Fields], Outputs, Dict) :-
     Dict = Rest.put(Label, Value).
 
 dispatch_malformed_response(Op, Id, Response) :-
-    atom_concat(Base, '_witness', Op),
+    (   atom_concat(Base, '_witness', Op)
+    ->  true
+    ;   Base = Op
+    ),
     atomic_list_concat([malformed, Base, request], '_', Code),
     dispatch_message(Op, malformed, Message),
     error_response(Id, Code, Message, Response).

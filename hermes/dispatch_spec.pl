@@ -12,7 +12,7 @@ dispatch_spec(axiom_pack_witness,
     call(cw_axiom_pack:axiom_pack_witness, [pack, source, out(witness)]),
     witness(no_axiom_pack_witness)).
 dispatch_spec(viability_witness,
-    [resources-int, cost-int, source-term],
+    [resources-number, cost-number, source-term],
     call(cw_viability:viability_witness, [resources, cost, source, out(witness)]),
     witness(no_viability_witness)).
 dispatch_spec(modal_context_witness,
