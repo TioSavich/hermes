@@ -74,6 +74,7 @@
     .walkthrough-result.changed { color: var(--release); }
   </style>
   <script defer src="../more-zeeman/render/hermes-shell.js" data-root="../more-zeeman/" data-app="./" data-active="breaks"></script>
+  <script src="../more-zeeman/render/request.js"></script>
 </head>
 <body data-hshell-doc="1">
   <div class="brand">critical <b>mathematics</b> · where it breaks</div>
@@ -222,7 +223,7 @@ neg(p)</textarea>
 
   <div class="operable" id="formal-witnesses">
     <h3>Formal witnesses</h3>
-    <div class="domains">finite proof and incompatibility relations · live worker replies</div>
+    <div class="domains">finite proof and incompatibility relations · live app replies</div>
     <p class="desc">These controls ask the loaded clauses for a witness. An
       <code>erasure(...)</code> reply records the boundary reached by that derivation; it is a
       returned witness, not a failed request.</p>
@@ -232,8 +233,10 @@ neg(p)</textarea>
 
   <div class="operable" id="formal-research-register" style="border-color:#b8860b;background:rgba(184,134,11,.08)">
     <h3>Research wing — live, in progress</h3>
-    <p class="desc">These files are described here without loading them into the console worker.</p>
-    <div class="tool-grid">
+    <p class="desc">Contributor notes remain available below.</p>
+    <details>
+      <summary>For contributors: modules described here but not loaded</summary>
+      <div class="tool-grid">
       <div class="tool"><h4>Base-invariance demonstrations</h4><p>
         <code>formalization/synthesis/run_add.pl</code> runs the make-base addition demonstration;
         <code>formalization/synthesis/run_lazy.pl</code> runs the cost-bounded subtraction demonstration;
@@ -260,7 +263,8 @@ neg(p)</textarea>
         <code>arche-trace/registry_incompatibility_adapter.pl</code>: loading 342 recorded
         misconception incompatibility pairs enriches the relation and withdraws some entailments
         the sparse seeds licensed.</p></div>
-    </div>
+      </div>
+    </details>
   </div>
 
   <div class="operable" id="differance-seed" style="border-color:#b8860b;background:rgba(184,134,11,.08)">
@@ -278,7 +282,7 @@ neg(p)</textarea>
     encoded as Prolog facts in <code>formalization/grounding_metaphors.pl</code>
     (<code>metaphor_breaks_at/3</code>, <code>metaphor_repair/4</code>) and the
     geometry-era extensions. A break listed here is queryable by the same
-    engine that scores strategies and misconceptions — the point of encoding
+    app that scores strategies and misconceptions — the point of encoding
     the breaks is that the system can be asked where its own ground gives way.
   </div>
 
@@ -316,16 +320,17 @@ neg(p)</textarea>
       const output = document.createElement("pre"); form.appendChild(output);
       form.onsubmit = async event => { event.preventDefault(); const payload = {op:item.name};
         Object.keys(FORMAL_DEFAULTS[item.name]).forEach(name => { const original=FORMAL_DEFAULTS[item.name][name], value=form.elements.namedItem(name).value; payload[name]=Array.isArray(original)?JSON.parse(value):typeof original==="number"?Number(value):value; });
-        output.textContent="Requesting…"; try { const response=await fetch("/api/witness/formal",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}); const body=await response.json(); output.textContent=JSON.stringify(body.result||body.error||body,null,2); } catch(error) { output.textContent="Request failed: "+error.message; }
+        HermesFetch.setState(output,"pending","Requesting witness…"); try { const result=await HermesFetch.requestJSON("/api/witness/formal",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}); const body=HermesFetch.requireOK(result); output.className=""; output.textContent=JSON.stringify(body.result||body.error||body,null,2); } catch(error) { HermesFetch.setState(output,error.kind==="offline"||error.kind==="timeout"?"offline":"broken",error.message); }
       }; return form;
     }
 
-    fetch("/api/capabilities").then(response => response.json()).then(data => {
+    HermesFetch.setState($("formal-witness-status"),"pending","Loading controls from the app…");
+    HermesFetch.requestJSON("/api/capabilities").then(HermesFetch.requireOK).then(data => {
       const registry={}; (data.capabilities||[]).forEach(item => { if(FORMAL_DEFAULTS[item.name]) registry[item.name]=item; });
       const missing=Object.keys(FORMAL_DEFAULTS).filter(name => !registry[name]); if(missing.length) throw new Error("registry is missing: "+missing.join(", "));
       Object.keys(FORMAL_DEFAULTS).forEach(name => $("formal-witness-grid").appendChild(formalWitnessControl(registry[name])));
-      $("formal-witness-status").textContent="Controls built from the local capability registry.";
-    }).catch(error => { $("formal-witness-status").textContent="Controls unavailable: "+error.message; });
+      HermesFetch.setState($("formal-witness-status"),"ready","Controls built from the local capability registry.");
+    }).catch(error => { HermesFetch.setState($("formal-witness-status"),error.kind==="offline"||error.kind==="timeout"?"offline":"broken",error.message||"The app returned a broken reply."); });
 
     function card(m) {
       const div = document.createElement("div");
@@ -346,16 +351,15 @@ neg(p)</textarea>
     }
 
     async function post(path, body) {
-      const resp = await fetch(path, {
+      const result = await HermesFetch.requestJSON(path, {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      return resp.json();
+      return HermesFetch.requireOK(result);
     }
 
     function offlineNote() {
-      return `<div class="verdict">the local Hermes server (port 8765) is not reachable.
-        Launch it with <code>bash hermes/app/launch.sh</code> and try again.</div>`;
+      return `<div class="verdict">The app isn't answering. Start it with the run button, or this stays a static view.</div>`;
     }
 
     // --- the deontic break: commitment without entitlement --------------------
@@ -483,7 +487,7 @@ neg(p)</textarea>
             : "The baseline returned: " + (baseline.error || "no witness") + ".";
           enableButton.disabled = !baseline.ok;
         } catch (error) {
-          baselineOut.textContent = "The local worker did not answer: " + error.message;
+          HermesFetch.setState(baselineOut, "offline", error.message || "The app isn't answering.");
           baselineButton.disabled = false;
         }
       };
@@ -495,11 +499,11 @@ neg(p)</textarea>
       window.addEventListener("pagehide", () => {
         if (!packLeftEnabled) return;
         try {
-          navigator.sendBeacon ? fetch("/api/axiom_toggle", {
+          HermesFetch.requestJSON("/api/axiom_toggle", {
             method: "POST", keepalive: true,
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({action: "disable", axiom: "pack(registry_incompatibility)"}),
-          }) : null;
+          });
         } catch (_e) { /* exit path; nothing left to report to */ }
       });
 
@@ -514,7 +518,7 @@ neg(p)</textarea>
             : "The pack was not enabled: " + (enabled.error || "no detail") + ".";
           afterButton.disabled = !enabled.ok;
         } catch (error) {
-          enableOut.textContent = "The local worker did not answer: " + error.message;
+          HermesFetch.setState(enableOut, "offline", error.message || "The app isn't answering.");
           enableButton.disabled = false;
         }
       };
@@ -558,13 +562,13 @@ neg(p)</textarea>
         button.onclick = async () => {
           const key = button.dataset.formal;
           const out = $(key + "-out");
-          out.textContent = "Requesting…";
+          HermesFetch.setState(out, "pending", "Requesting grounding records…");
           const [path, body] = requests[key]();
           try {
             const data = await post(path, body);
             out.textContent = JSON.stringify(data, null, 2) || "The route returned an empty reply.";
           } catch (err) {
-            out.textContent = "The request failed: the Hermes server did not answer, or answered with something other than JSON.";
+            HermesFetch.setState(out, err.kind === "offline" || err.kind === "timeout" ? "offline" : "broken", err.message || "The app returned a broken reply.");
           }
         };
       });
@@ -572,10 +576,10 @@ neg(p)</textarea>
 
     async function init() {
       try {
-        const resp = await fetch("/api/grounding", {
+        const result = await HermesFetch.requestJSON("/api/grounding", {
           method: "POST", headers: { "Content-Type": "application/json" }, body: "{}",
         });
-        const data = await resp.json();
+        const data = HermesFetch.requireOK(result);
         if (!data.ok) throw new Error(data.error || "query failed");
         const ms = data.result.metaphors.slice()
           .sort((a, b) => (b.breaks.length + b.repairs.length) - (a.breaks.length + a.repairs.length));

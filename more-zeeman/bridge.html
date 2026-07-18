@@ -643,7 +643,7 @@
 <div style="margin:0 0 1.5rem 0;padding:0.9rem 1.2rem;border:1px solid #b8860b;border-radius:6px;background:rgba(184,134,11,0.08);font-size:0.95rem;line-height:1.5;">
   <strong>Research wing — live, in progress.</strong> This page drives the learner engine through the Hermes worker. Contracts may shift and rough edges remain. Colleagues are welcome to take part in its unfolding: the source lives under <code>learner/</code>.
   <details style="margin-top:.75rem">
-    <summary>Source register for the cordoned learner work</summary>
+    <summary>For contributors: modules described here but not loaded</summary>
     <ul style="margin:.65rem 0 0;padding-left:1.25rem">
       <li><code>learner/arithmetic_machine.pl</code> provides the option-driven arithmetic solver loaded on demand by the compute surface.</li>
       <li><code>learner/primordial_start.pl</code> is a standalone essential-kernel startup script with initialization output.</li>
@@ -776,7 +776,7 @@
       </button>
       <button class="preset-btn boundary-btn" onclick="loadPreset('boundary')">
         <span class="preset-title" style="color:var(--tension);">Grade 3: The Fraction Boundary</span>
-        <span class="preset-desc">No ORR run. The registry holds an area-model action automaton and a productive/deformation pair for cross-multiplication, but the meta-interpreter does not yet route fraction outcomes through the crisis cycle.</span>
+        <span class="preset-desc">No ORR run. The runnable version lives on <a href="/breaks.html"><em>Where it breaks</em></a>.</span>
       </button>
     </div>
   </div>
@@ -916,7 +916,7 @@
     <div class="boundary-section" style="margin-top:1.5rem;">
       <h3>Fractions &mdash; What Works at the Action Level, What Does Not Yet Work at the ORR Level</h3>
       <p>The system handles whole-number arithmetic through the ORR cycle (Observe, React, Reorganize). For fractions, the action-level picture is concrete and the cycle-level picture is still open. Both deserve equal specificity:</p>
-      <div class="reason"><strong>What works at the action level.</strong> The registry holds <code>fraction:area_model_part_of_part</code>: a productive action automaton that performs fraction multiplication via the part-of-part area model. Alongside it sits a productive/deformation pair, <code>cross_multiplication_rule_from_pattern</code> and <code>cross_multiplication_rule_without_ground</code>. Both produce the same numeric result for A/B times C/D; the productive variant ends its trace with <code>justify_via_area_model_part_of_part</code> and carries an <code>area_model</code> justification; the deformation ends with <code>skip_area_model_justification</code>, carries no justification, and the deontic scorekeeper marks it <code>commitment_without_entitlement(area_model_justification_missing)</code>. This is Van de Walle's "rules without reason" rendered structurally &mdash; same answer, different inferential standing.</div>
+      <div class="reason"><strong>What works at the action level.</strong> The runnable cross-multiplication and area-model version lives on <a href="/breaks.html"><em>Where it breaks</em></a>.</div>
       <div class="reason"><strong>What does not yet work at the ORR level.</strong> The meta-interpreter does not yet route fraction outcomes through the ORR cycle as recollection-compatible values, so a fraction action's result cannot drive a crisis the way a counting overflow can. Three-level unit coordination (Hackenberg) as a general ORR-negotiable scheme is not implemented. Metamorphic accommodation (Norton/Steffe: strategies synthesised by recursive composition of others) is not in the synthesis path.</div>
       <div class="reason"><strong>Where the metaphors are known to break.</strong> The registry exposes the breaks rather than hiding them: <code>metaphor_breaks_at/3</code> lists known break-points by metaphor (the Lakoff &amp; Núñez "Arithmetic Is Object Collection" metaphor breaks at fractions, for example), and <code>metaphor_repair/4</code> names the ad-hoc moves that re-cover the metaphor when it tears. The breaks are queryable features, not embarrassments.</div>
       <p>The boundary the system now exhibits is not "cannot represent fractions" &mdash; it is "represents fraction multiplication at the action level, but does not yet negotiate fraction acquisition at the ORR-cycle level." The formalization is a tool for noticing both halves of that distinction.</p>
@@ -1089,7 +1089,7 @@ function loadPreset(name) {
   if (name === 'boundary') {
     // No computation — show the boundary section directly
     document.getElementById('narration-card-text').innerHTML =
-      '<strong>The fraction boundary.</strong> There is no "Run" button for this scenario, but not because the system has nothing to say about fractions. The registry holds <code>fraction:area_model_part_of_part</code> (productive fraction multiplication via the area model) and the cross-multiplication pair <code>cross_multiplication_rule_from_pattern</code> / <code>cross_multiplication_rule_without_ground</code> &mdash; same numeric output, different inferential standing; the deontic scorekeeper marks the ungrounded variant <code>commitment_without_entitlement(area_model_justification_missing)</code>. What is missing is the ORR-cycle wiring: the meta-interpreter does not yet route fraction outcomes through crisis-and-recovery as recollection-compatible values, so a fraction action cannot drive the catastrophe machine the way a counting overflow can. The boundary on this page is "action level works, ORR-cycle level does not yet" &mdash; not "cannot represent fractions." Metamorphic accommodation (recursive strategy composition, Norton/Steffe) remains the open synthesis problem.';
+      '<strong>The fraction boundary.</strong> The runnable cross-multiplication and area-model version lives on <a href="/breaks.html"><em>Where it breaks</em></a>.';
     const card = document.getElementById('narration-card');
     card.style.borderLeftColor = 'var(--tension)';
     card.classList.add('visible');

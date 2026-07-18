@@ -6,6 +6,7 @@
   <title>Hermes: Witnesses</title>
   <link rel="stylesheet" href="hermes-tokens.css">
   <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="witnesses"></script>
+  <script src="render/request.js"></script>
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; background: var(--paper, #f4ead6); color: var(--ink, #0d0c08);
@@ -53,20 +54,37 @@
     <h1>Witnesses</h1>
     <p class="lede">These controls query finite records in the loaded knowledge base. Each result
       stays within the named relation and its stated boundary.</p>
-    <a class="why-link" href="../no.html">Why this exists: two ways to say no.</a>
-    <p id="status" class="status" role="status" aria-live="polite">Loading controls from the local worker…</p>
+    <a class="why-link" href="../no.html">Why this exists &rarr;</a>
+    <p id="status" class="status pending" role="status" aria-live="polite">◌ Loading controls from the app…</p>
+    <section class="research-wing">
+      <strong>Research wing — live, in progress.</strong> Contributor notes remain available below.
+      <details>
+        <summary>For contributors: modules described here but not loaded</summary>
+        <p><code>crosswalk/merge_evidence.pl</code> is the provenance-gate ledger for approved
+          canonical-concept mappings. The merge check reads it during development; it is not a
+          runtime crosswalk operation.</p>
+        <p><code>geometry/geometry_bridge.pl</code> is the standalone loader used to compare the
+          geometry closure with the worker closure. It stays outside the worker by design.</p>
+        <p><code>strategies/render/rigid_motion_scene.pl</code> compiles translation, reflection,
+          and rotation specifications into the shared render contract. The worker loads it
+          import-free; this page reaches it through the existing <code>geometry</code> operation.</p>
+        <p><code>pml/talkmoves_adapter.pl</code> prepares attributed TalkMoves packets for review.
+          <code>pml/audit_connectors.pl</code> audits declared MUA connectors against executable practices.
+          <code>pml/mua_health.pl</code> reports which MUA relations have runnable demonstrations.
+          <code>pml/axioms_eml.pl</code> records the toggle-gated embodied-modal transition axioms.
+          <code>pml/mua_conjectures.pl</code> is the intentionally empty register for relations not yet demonstrated.
+          These modules remain outside the startup closure.</p>
+        <p><code>misconceptions/pml_wire.pl</code> is wired into the worker and the console's
+          misconception area. It reports the recorded source-tag-to-PML connections generated from
+          CONNECTS-TO annotations in the misconception registry.</p>
+      </details>
+    </section>
 
     <details class="family" id="crosswalk-claims" open>
       <summary><h2>Crosswalk claims</h2></summary>
       <div class="family-body">
         <p class="family-intro">These records attest that an owner verified a crosswalk edge. They are not
           proofs of the underlying claim. Enter the requested fields to ask for the recorded witness.</p>
-        <section class="research-wing">
-          <strong>Research wing — live, in progress.</strong>
-          <p><code>crosswalk/merge_evidence.pl</code> is the provenance-gate ledger for approved
-            canonical-concept mappings. The merge check reads it during development; it is not a
-            runtime crosswalk operation.</p>
-        </section>
         <div id="crosswalk-groups"></div>
       </div>
     </details>
@@ -77,22 +95,14 @@
         <p class="family-intro">These controls query finite records in the loaded geometry knowledge base.
           A returned witness reports the record and its stated boundary. It is not a general claim
           about a learner or about geometry outside the loaded tables.</p>
-        <section class="research-wing">
-          <strong>Research wing — live, in progress.</strong>
-          <p><code>geometry/geometry_bridge.pl</code> is the standalone loader used to compare the
-            geometry closure with the worker closure. It stays outside the worker by design.</p>
-          <p><code>strategies/render/rigid_motion_scene.pl</code> compiles translation, reflection,
-            and rotation specifications into the shared render contract. The worker loads it
-            import-free; this page reaches it through the existing <code>geometry</code> operation.</p>
-          <form id="rigid-motion" class="general">
+        <form id="rigid-motion" class="general">
             <h3>Rigid-motion scene</h3>
             <label>spec (Prolog term text)
               <input name="spec" required value="translate([0-0,2-0,1-1],1,2)">
             </label>
             <button type="submit">Compile rigid-motion scene</button>
             <output aria-live="polite"></output>
-          </form>
-        </section>
+        </form>
         <div id="geometry-groups"></div>
         <section class="witness-group">
           <h3>General geometry query</h3>
@@ -126,18 +136,6 @@
       <summary><h2>PML witnesses</h2></summary>
       <div class="family-body">
         <p class="family-intro">These controls query four finite PML and material-inference relations. They report what the loaded clauses attest and do not extend a result beyond those clauses.</p>
-        <section class="research-wing">
-          <strong>Research wing — live, in progress.</strong>
-          <p><code>pml/talkmoves_adapter.pl</code> prepares attributed TalkMoves packets for review.
-            <code>pml/audit_connectors.pl</code> audits declared MUA connectors against executable practices.
-            <code>pml/mua_health.pl</code> reports which MUA relations have runnable demonstrations.
-            <code>pml/axioms_eml.pl</code> records the toggle-gated embodied-modal transition axioms.
-            <code>pml/mua_conjectures.pl</code> is the intentionally empty register for relations not yet demonstrated.
-            These modules remain outside the startup closure.</p>
-          <p><code>misconceptions/pml_wire.pl</code> is wired into the worker and the console's
-            misconception area. It reports the recorded source-tag-to-PML connections generated from
-            CONNECTS-TO annotations in the misconception registry.</p>
-        </section>
         <div id="pml-groups"></div>
       </div>
     </details>
@@ -532,19 +530,19 @@
         return value;
       }
 
-      function request(output, path, payload, pending, failure) {
+      async function request(output, path, payload, pending, failure) {
         output.className = "";
-        output.textContent = pending || "Requesting witness…";
-        fetch(path, {
+        HermesFetch.setState(output, "pending", pending || "Requesting witness…");
+        var result = await HermesFetch.requestJSON(path, {
           method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(payload)
-        }).then(function (response) {
-          return response.json().then(function (body) { return {ok: response.ok, body: body}; });
-        }).then(function (reply) {
-          if (reply.ok && reply.body.ok) {
-            output.textContent = JSON.stringify(reply.body.result, null, 2);
-            return;
-          }
-          var detail = String(reply.body.error || "The worker returned no detail.");
+        });
+        if (result.kind === "ok" && result.data.ok) {
+          output.className = "";
+          output.textContent = JSON.stringify(result.data.result, null, 2);
+          return;
+        }
+        if (result.kind === "ok" || result.kind === "http-error") {
+          var detail = String((result.data && result.data.error) || "The app returned no detail.");
           // A typed no_*_witness reply is a boundary report, not a failure:
           // the worker checked its finite relation and found no witness for
           // that input. Present it plainly, without the failure prefix.
@@ -553,12 +551,10 @@
             output.textContent = detail;
             return;
           }
-          output.className = "error";
-          output.textContent = (failure || "Request failed: ") + detail;
-        }).catch(function (error) {
-          output.className = "error";
-          output.textContent = (failure || "Request failed: ") + error.message;
-        });
+          HermesFetch.setState(output, "broken", (failure || "Request failed: ") + detail);
+          return;
+        }
+        HermesFetch.setState(output, "offline", HermesFetch.messageFor(result));
       }
 
       function control(family, item) {
@@ -652,10 +648,8 @@
         });
       });
 
-      fetch("/api/capabilities").then(function (response) {
-        if (!response.ok) throw new Error("HTTP " + response.status);
-        return response.json();
-      }).then(function (data) {
+      HermesFetch.setState(document.getElementById("status"), "pending", "Loading controls from the app…");
+      HermesFetch.requestJSON("/api/capabilities").then(HermesFetch.requireOK).then(function (data) {
         var entries = Array.isArray(data.capabilities) ? data.capabilities : [];
         var registry = {};
         entries.forEach(function (item) {
@@ -668,17 +662,17 @@
           throw registryError;
         }
         families.forEach(function (family) { renderFamily(family, registry); });
-        document.getElementById("status").textContent = "Controls built from the local capability registry.";
+        HermesFetch.setState(document.getElementById("status"), "ready", "Controls built from the local capability registry.");
         families.forEach(function (family) {
           var example = document.querySelector('form[data-op="' + family.autoOp + '"]');
           if (example) example.requestSubmit();
         });
       }).catch(function (error) {
         var status = document.getElementById("status");
-        status.className = "status error";
-        status.textContent = error.name === "RegistryError"
-          ? "These controls cannot be built because " + error.message + "."
-          : "The worker is unavailable, so these controls cannot be built. The request failed: " + error.message;
+        HermesFetch.setState(status, error.name === "RegistryError" ? "broken" : "offline",
+          error.name === "RegistryError"
+            ? "These controls cannot be built because " + error.message + "."
+            : (error.message || "The app isn't answering."));
       });
 
       document.getElementById("rigid-motion").addEventListener("submit", function (event) {

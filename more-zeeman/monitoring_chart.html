@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="hermes-tokens.css">
 <link rel="stylesheet" href="render/host.css">
 <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="monitoring"></script>
+<script src="render/request.js"></script>
 <style>
  /* Colors come from hermes-tokens. Gold = a corpus binding promoted by the
     triage; reject = a low-coherence one; corpus = a manifest-sourced figure. */
@@ -67,7 +68,10 @@
     wraps them in a card and shows the student-facing caption regardless of
     the body view class (the chart has no audience toggle). */
  .viz{border:1px solid var(--line);border-radius:8px;padding:1rem;margin:1rem 0;
-   background:var(--surface,#fff)}
+   background:var(--surface,#fff);overflow-x:auto}
+ .viz .stage{min-height:0;max-height:60vh;aspect-ratio:auto}
+ .viz .stage svg{width:100%;height:auto;max-height:60vh}
+ .viz .calc-note{white-space:normal;overflow-wrap:anywhere}
  .viz .caption{display:block}
  .viz .band:empty,.viz .verbs:empty,.viz .tuple:empty{display:none}
  /* Classroom printing: drop the interactive visualizer controls, force a
@@ -91,8 +95,8 @@
 </style></head><body class="view-freshman">
 <h1 id='chart-title'>Monitoring chart &mdash; IM Grade2 U2 L2: Find the Unknown Addend</h1>
 <p class="code" id='chart-code'>IM-G2-U2-L2</p>
-<p class="register">Every picture on this chart is engine-drawn from this lesson's own numerals; the visualizer recalculates live from the worker's trace. Documented student work from the research literature lives in the <a href="gallery.html">gallery</a>.</p>
-<a class="why-link" href="scoreboard.html">Why this exists: the deontic single-lesson sheet.</a>
+<p class="register">Every picture on this chart is drawn by the app from this lesson's own numerals; the visualizer recalculates from the app's trace. Documented student work from the research literature lives in the <a href="gallery.html">gallery</a>.</p>
+<a class="why-link" href="scoreboard.html">Why this exists &rarr;</a>
 <div class='picker'>
   <label>lesson <input id='lesson-pick' list='lesson-code-list' value='IM-G2-U2-L2'></label>
   <datalist id='lesson-code-list'></datalist>
@@ -222,8 +226,8 @@ trace.</p>
       var s = el('live-status');
       var calc = el('calculate');
       s.className = 'live-state ' + (ok ? 'ok' : 'offline');
-      s.textContent = ok ? 'live app connected'
-                         : 'live app offline — static picture shown';
+      s.textContent = ok ? '✓ live app connected'
+                         : '× live app offline — static picture shown';
       if (calc) calc.disabled = !ok;
       el('lesson-load').disabled = !ok;
       el('lesson-pick').disabled = !ok;
@@ -241,14 +245,11 @@ trace.</p>
 
     // ---- live chart fetch (same contract as scoreboard.html) ----
     function fetchLiveChart(code) {
-      return fetch('/api/monitoring_chart_export', {
+      return HermesFetch.requestJSON('/api/monitoring_chart_export', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ lesson_code: code })
-      }).then(function (r) {
-        if (!r.ok) throw new Error('app responded ' + r.status);
-        return r.json();
-      }).then(function (j) {
+      }).then(HermesFetch.requireOK).then(function (j) {
         if (j && j.error) throw new Error(j.error);
         var chart = j && j.result ? j.result : j;
         if (!chart || typeof chart !== 'object' || !chart.lesson_code) {
@@ -432,10 +433,11 @@ trace.</p>
     // deploy (no worker) still draws. Only when the worker answers do we refresh
     // with a live trace — a failed fetch must not wipe the embedded drawing.
     window.addEventListener('load', function () {
-      fetch('/api/preflight', { method: 'POST', headers:
+      HermesFetch.setState(el('live-status'), 'pending', 'Checking the app…');
+      HermesFetch.requestJSON('/api/preflight', { method: 'POST', headers:
         { 'Content-Type': 'application/json' }, body: '{}' })
-        .then(function (r) { return r.ok; })
-        .then(function (ok) {
+        .then(function (result) {
+          var ok = result.kind === 'ok';
           setLiveState(ok);
           if (ok && d && typeof d.calculate === 'function') d.calculate();
         })
@@ -450,8 +452,8 @@ trace.</p>
     if (location.protocol === 'http:' || location.protocol === 'https:') {
       // no-store: a browser-cached copy must not vouch for a deployment that
       // no longer carries the file.
-      fetch('../representation/asset_manifest.json', { cache: 'no-store' })
-        .then(function (r) { if (!r.ok) throw new Error(String(r.status)); })
+      HermesFetch.requestJSON('../representation/asset_manifest.json', { cache: 'no-store' })
+        .then(function (result) { if (result.kind !== 'ok') throw new Error(HermesFetch.messageFor(result)); })
         .catch(function () {
           el('manifest-line').textContent = 'Corpus figures: '
             + 'representation/asset_manifest.json is not present in this '
@@ -490,20 +492,23 @@ errors remain in the reply below.</p>
     const out = document.getElementById('deformation-output');
     const code = document.getElementById('deformation-code').value.trim();
     if (!code) { out.textContent = 'A lesson code is required.'; return; }
-    out.textContent = 'Requesting…';
+    HermesFetch.setState(out, 'pending', 'Requesting the deformation chart…');
     try {
-      const response = await fetch('/api/lesson_deformation_chart', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code})});
-      const data = await response.json();
+      const result = await HermesFetch.requestJSON('/api/lesson_deformation_chart', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code})});
+      const data = HermesFetch.requireOK(result);
       out.textContent = JSON.stringify(data, null, 2) || 'The route returned an empty reply.';
-    } catch (e) { out.textContent = 'The request failed: the Hermes server did not answer, or answered with something other than JSON.'; }
+    } catch (e) { out.textContent = e.message || 'The app returned a broken reply.'; }
   });
 </script>
 <section style="margin:1.5rem 0;padding:.9rem 1.1rem;border:1px solid #b8860b;border-radius:6px;background:rgba(184,134,11,.08)">
-  <strong>Research wing — live, in progress.</strong>
-  <p><code>lessons/im/im_glossary.pl</code> records the attributed IM K–8 glossary and lesson joins.
-    <code>lessons/im/generated/vision_lesson_digest.pl</code> is the generated grade 6–8 lesson digest cache.
-    <code>lessons/im_harness.pl</code> is the command-line strategy execution and coverage harness.
-    They are described here as monitoring inputs and audits; the console worker does not load them.</p>
+  <strong>Research wing — live, in progress.</strong> Contributor notes remain available below.
+  <details>
+    <summary>For contributors: modules described here but not loaded</summary>
+    <p><code>lessons/im/im_glossary.pl</code> records the attributed IM K–8 glossary and lesson joins.
+      <code>lessons/im/generated/vision_lesson_digest.pl</code> is the generated grade 6–8 lesson digest cache.
+      <code>lessons/im_harness.pl</code> is the command-line strategy execution and coverage harness.
+      They are described here as monitoring inputs and audits; the console worker does not load them.</p>
+  </details>
 </section>
 <hr><p class="register">Generated by tools/phase0_monitoring_chart.py.
 Live picture: more-zeeman/render/drawer.js via /api/render. Misconception join:

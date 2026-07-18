@@ -453,13 +453,14 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
       <div>
         <h1>Teaching console</h1>
         <span class="sub">running locally · on your machine</span>
-        <a class="why-link" href="breaks.html">Why this exists: built to break.</a>
+        <a class="why-link" href="breaks.html">Why this exists &rarr;</a>
       </div>
     </div>
     <div class="top-controls">
       <span id="gate-pill" class="pill" hidden>gate</span>
       <span id="model-pill" class="pill">model …</span>
       <span id="key-pill" class="pill">key …</span>
+      <span id="app-request-status" class="pill pending" role="status" aria-live="polite">◌ Checking the app…</span>
       <button class="btn ghost" id="quickstart-btn">Quickstart</button>
       <button class="btn ghost" id="set-key-btn">Set key</button>
       <label class="adv-toggle" title="Show the research features: PML scoring, the Gemma workflow pipeline, the encyclopedia, monitoring, and Ask Hermes.">
@@ -636,37 +637,6 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
     <section class="panel" data-tab="explore">
       <p class="panel-lede">What the system actually knows. Browse the encoded lessons, check which are fully connected, and open one to read its standards, strategies, misconceptions, and literature — no student data, works anywhere.</p>
 
-      <div class="card adv">
-        <h2><span class="num">▤</span>Monitoring chart</h2>
-        <p class="hint">Enter an Illustrative Mathematics lesson code or standard code to build an anticipation chart for monitoring a class: the lesson's productive core, the strategies to anticipate, and the misconceptions to watch for. For each misconception the chart names what the student's commitment is <em>incompatible with</em> — derived by querying the misconception registry, not asserted. Use <b>Print / Save as PDF</b> for a classroom copy.</p>
-        <div class="mc-bar">
-          <input type="text" id="lesson-code" placeholder="IM lesson code" value="" />
-          <div class="mc-actions">
-            <button class="btn primary" id="mc-load">Load chart</button>
-            <button class="btn ghost" id="mc-print" hidden>Print / Save as PDF</button>
-          </div>
-        </div>
-        <div id="mc-out"></div>
-      </div>
-
-      <div class="card adv">
-        <h2><span class="num">⚖</span>Deontic scorecard</h2>
-        <p class="hint">Brandom's scorekeeping, run live against the Prolog engine — no language model is called. Give a speaker's <em>commitments</em> (one Prolog term per line) and any <em>entitlements</em> they have earned; the engine returns the board and any incoherences. The one to watch is <code>commitment_without_entitlement</code>: a move that is procedurally correct but inferentially hollow. The preloaded <code>result_of(cross_multiply, …)</code> is committed to with no area-model reasoning behind it, so the board flags it; the button deposits the missing vocabulary and the flag clears. The board also reads back what those commitments <em>materially commit you to</em> (consequences, each with the rule that licenses it; try <code>committed_to(area_model_part_of_part(3,4,2,5))</code>), and, when an incoherence will not discharge within its level, the <em>up-level</em> move that names the gap as a new object of discourse. The up-level is a detector: it marks the break and the move past it; it changes no score and supplies no missing vocabulary itself. The break is not an error to hide — it is the thing made legible.</p>
-        <div class="mc-bar">
-          <label class="muted-inline" style="flex:1;display:flex;flex-direction:column;gap:.3rem;align-items:stretch">commitments — one term per line
-            <textarea id="deontic-commitments" class="data-input" style="min-height:64px">result_of(cross_multiply,3,4,2,5,15)</textarea>
-          </label>
-          <label class="muted-inline" style="flex:1;display:flex;flex-direction:column;gap:.3rem;align-items:stretch">entitlements (optional)
-            <textarea id="deontic-entitlements" class="data-input" style="min-height:64px"></textarea>
-          </label>
-        </div>
-        <div class="data-actions">
-          <button class="btn primary" id="deontic-run">Score the commitments</button>
-          <button class="btn ghost" id="deontic-discharge">Deposit area-model vocabulary &rarr; discharge it</button>
-        </div>
-        <div id="deontic-out" class="result" hidden></div>
-      </div>
-
       <div class="catalog-head">
         <div class="catalog-stats" id="catalog-stats">loading the lesson catalog…</div>
         <div class="search"><input type="text" id="catalog-search" placeholder="Search lessons by code or title (e.g. G1-U3, area, ten)…" /></div>
@@ -674,11 +644,6 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
       <div id="catalog"></div>
       <div class="lesson-detail" id="lesson-detail"></div>
 
-      <div class="card">
-        <h2><span class="num">◔</span>Which misconceptions draw</h2>
-        <p class="hint">Every misconception topic in the registry, sorted into four lanes: it draws live on a representation, a parametric deformation clause computes its wrong answers, corpus figures document it, or nothing covers it yet. Counts reflect the data loaded in this installation; the local misconception CSV corpus enlarges the registry.</p>
-        <div id="render-coverage"><em class="muted-inline">The report loads with this tab.</em></div>
-      </div>
     </section>
 
     <!-- ============ ENCYCLOPEDIA ============ -->
@@ -698,79 +663,6 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
       <div class="enc-body">
         <div id="enc-list" class="enc-list"><em class="muted-inline">loading…</em></div>
         <div id="enc-detail" class="enc-detail"><em class="muted-inline">Select an item to inspect it here.</em></div>
-      </div>
-      <div class="card adv">
-        <h2><span class="num">?</span>Registry queries</h2>
-        <p class="hint">The misconception query filters the loaded registry. The geometry
-          dispatcher calls one named geometry predicate with a JSON argument list. Empty matches
-          and rejected arguments are returned without an inferred replacement.</p>
-        <div class="mc-bar">
-          <label class="muted-inline" style="flex:1">misconception domain
-            <input id="misconception-domain" class="data-input" value="fraction">
-          </label>
-          <label class="muted-inline" style="flex:2">description contains
-            <input id="misconception-description" class="data-input" placeholder="optional text">
-          </label>
-          <button class="btn primary small" id="misconception-query-btn">Query misconceptions</button>
-        </div>
-        <div class="mc-bar">
-          <label class="muted-inline" style="flex:1">geometry predicate
-            <select id="geometry-predicate" class="data-input">
-              <option value="matching_concepts">matching_concepts</option>
-              <option value="concepts_in_neighborhood">concepts_in_neighborhood</option>
-              <option value="concept_monitoring_bundle">concept_monitoring_bundle</option>
-            </select>
-          </label>
-          <label class="muted-inline" style="flex:2">JSON args
-            <input id="geometry-args" class="data-input" value='[["triangle"], "grades_3_5"]'>
-          </label>
-          <button class="btn primary small" id="geometry-query-btn">Run geometry query</button>
-        </div>
-        <div id="registry-query-out" class="result" hidden></div>
-      </div>
-      <div class="card adv">
-        <h2><span class="num">⊥</span>Misconception incompatibility witnesses</h2>
-        <p class="hint">These witnesses attest incompatibility structure over the loaded registry.
-          They do not diagnose a learner or make a clinical claim.</p>
-        <div class="mc-bar">
-          <label class="muted-inline" style="flex:1">witness
-            <select id="misconception-witness-op" class="data-input">
-              <option value="misconception_incompatibility_witness">registry incompatibility</option>
-              <option value="lesson_misconception_incompatibility_witness">lesson incompatibility</option>
-              <option value="misconception_jumps_witness">number-line deformation trace</option>
-            </select>
-          </label>
-          <button class="btn primary small" id="misconception-witness-btn">Request witness</button>
-        </div>
-        <textarea id="misconception-witness-payload" class="data-input" style="min-height:100px">{
-  "move": "misconception(count_all_when_count_on_available)",
-  "conflict": "strategy(addition,count_on_from_larger)"
-}</textarea>
-        <div id="misconception-witness-out" class="result" hidden></div>
-      </div>
-      <div class="card adv">
-        <h2><span class="num">N</span>Recorded misconception-to-PML connections</h2>
-        <p class="hint">These are RECORDED connections generated from CONNECTS-TO annotations in
-          the misconception registry. They are not inferred by the system.</p>
-        <div class="mc-bar">
-          <label class="muted-inline" style="flex:1">misconception name (optional)
-            <input id="misconception-pml-name" class="data-input" placeholder="addition_must_make_larger">
-          </label>
-          <button class="btn primary small" id="misconception-pml-btn">Load recorded connections</button>
-        </div>
-        <div id="misconception-pml-out" class="result" hidden></div>
-      </div>
-      <div class="card adv">
-        <h2><span class="num">⌁</span>Canonical vocabulary</h2>
-        <p class="hint">Load the worker's canonical contract, or check candidate Prolog terms against it.</p>
-        <div class="data-actions">
-          <button class="btn ghost small" id="canonical-contract-btn">Load canonical_contract</button>
-          <button class="btn primary small" id="canonical-check-btn">Run canonical_check</button>
-        </div>
-        <textarea id="canonical-terms" class="data-input" style="min-height:70px">committed_to(area_model_part_of_part(3,4,2,5))
-legacy_functor(example)
-unknown_candidate(foo)</textarea>
-        <div id="canonical-out" class="result" hidden></div>
       </div>
     </section>
 
@@ -816,6 +708,7 @@ unknown_candidate(foo)</textarea>
 </div>
 
 <script src="../../../more-zeeman/render/drawer.js"></script>
+<script src="../../../more-zeeman/render/request.js"></script>
 <script>
 // Change this one placeholder to replace the completed computation on first paint.
 const CONSOLE_WORKED_DEFAULT = Object.freeze({ a: 7, b: 5, bridge: 3, result: 12 });
@@ -857,11 +750,13 @@ $("#first-run-dismiss").addEventListener("click", () => {
   try { localStorage.setItem(ORIENTATION_KEY, "1"); } catch (e) {}
 });
 
-async function _json(r) { try { return await r.json(); } catch (e) { return {}; } }
-async function getJSON(path) { const r = await fetch(api(path)); return { status: r.status, data: await _json(r) }; }
+async function getJSON(path) {
+  const result = await HermesFetch.requestJSON(api(path));
+  return { status: result.status, data: HermesFetch.requireOK(result) };
+}
 async function postJSON(path, body) {
-  const r = await fetch(api(path), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body || {}) });
-  return { status: r.status, data: await _json(r) };
+  const result = await HermesFetch.requestJSON(api(path), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body || {}) });
+  return { status: result.status, data: HermesFetch.requireOK(result) };
 }
 
 let MODE = { mode: "home", verified: false, gate_enabled: true };
@@ -870,14 +765,23 @@ let MODE = { mode: "home", verified: false, gate_enabled: true };
 function selectTab(name) {
   document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
   document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.dataset.tab === name));
-  if (name === 'explore') { if (!catalogLoaded) loadCatalog(); loadRenderCoverage(); }
+  if (name === 'explore' && !catalogLoaded) loadCatalog();
   if (name === 'encyclopedia' && !encLoaded) loadEncyclopedia('strategies');
 }
 document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => selectTab(t.dataset.tab)));
 
 /* ---------- mode / models / gate ---------- */
 async function refreshMode() {
-  const { data } = await getJSON('/api/mode'); MODE = data;
+  const state = $("#app-request-status");
+  HermesFetch.setState(state, "pending", "Checking the app…");
+  let data;
+  try { ({ data } = await getJSON('/api/mode')); }
+  catch (error) {
+    HermesFetch.setState(state, error.kind === "offline" || error.kind === "timeout" ? "offline" : "broken", error.message);
+    return;
+  }
+  MODE = data;
+  HermesFetch.setState(state, "ready", "App ready");
   const gateOff = data.gate_enabled === false;
   $("#gate-pill").hidden = false;
   $("#gate-pill").textContent = gateOff ? "FERPA gate: off" : (data.mode === "campus" && data.verified ? "campus · unlocked" : "student data locked");
@@ -886,7 +790,13 @@ async function refreshMode() {
   $("#mode-check").checked = (data.mode === "campus");
 }
 async function refreshModels() {
-  const { data } = await getJSON('/api/models');
+  let data;
+  try { ({ data } = await getJSON('/api/models')); }
+  catch (error) {
+    $("#model-pill").textContent = "model unavailable";
+    $("#key-pill").textContent = "app offline";
+    return;
+  }
   $("#model-pill").textContent = data.model || data.default_model || "model";
   $("#key-pill").textContent = data.key_configured ? "key set" : "no key";
   $("#key-pill").className = "pill " + (data.key_configured ? "ok" : "warn");
@@ -1142,8 +1052,8 @@ async function runDeonticScorecard() {
     + _deonticConsequencesHtml(conseq.data)
     + _deonticUpLevelHtml(uplevel.data);
 }
-$("#deontic-run").addEventListener('click', runDeonticScorecard);
-$("#deontic-discharge").addEventListener('click', () => {
+if ($("#deontic-run")) $("#deontic-run").addEventListener('click', runDeonticScorecard);
+if ($("#deontic-discharge")) $("#deontic-discharge").addEventListener('click', () => {
   const ta = $("#deontic-commitments");
   if (!/deployed_vocabulary\(\s*v_area_model\s*\)/.test(ta.value))
     ta.value = (ta.value.trim() + "\ndeployed_vocabulary(v_area_model)").trim();
@@ -1210,7 +1120,7 @@ async function loadResults() {
   const list = $("#results-list");
   let status, data;
   try { ({ status, data } = await postJSON('/api/results/list', {})); }
-  catch (e) { list.innerHTML = "<em class='muted-inline'>Couldn't reach the server.</em>"; return; }
+  catch (e) { list.innerHTML = "<em class='muted-inline'>× The app isn't answering.</em>"; return; }
   if (status === 423) { list.innerHTML = "<em class='muted-inline'>Locked — open the gate to view results.</em>"; return; }
   if (status !== 200 || !data || !data.sections) { list.innerHTML = `<em class='muted-inline'>Couldn't load results (status ${status}).</em>`; return; }
   const labels = Object.fromEntries(data.sections);
@@ -1694,7 +1604,7 @@ async function loadEncyclopedia(section) {
   $("#enc-detail").innerHTML = "<em class='muted-inline'>Select an item to inspect it here.</em>";
   let r;
   try { const { data } = await postJSON(ENC_PATHS[section], {}); r = (data && data.result) || {}; }
-  catch (e) { $("#enc-list").innerHTML = "<em class='muted-inline'>Couldn't reach the worker.</em>"; return; }
+  catch (e) { $("#enc-list").innerHTML = "<em class='muted-inline'>× The app isn't answering.</em>"; return; }
   ENC_DATA[section] = r;
   renderEncStats(section, r);
   renderEncList(section);
@@ -1761,13 +1671,13 @@ async function runRegistryQuery(path, body) {
   try {
     const response = await postJSON(path, body);
     out.textContent = JSON.stringify(response.data, null, 2) || "The route returned an empty reply.";
-  } catch (e) { out.textContent = "The request failed: the Hermes server did not answer, or answered with something other than JSON."; }
+  } catch (e) { out.textContent = e.message || "! The app returned a broken reply."; }
 }
-$("#misconception-query-btn").addEventListener('click', () => runRegistryQuery('/api/query_misconception', {
+if ($("#misconception-query-btn")) $("#misconception-query-btn").addEventListener('click', () => runRegistryQuery('/api/query_misconception', {
   domain: $("#misconception-domain").value.trim(),
   description: $("#misconception-description").value.trim()
 }));
-$("#geometry-query-btn").addEventListener('click', () => {
+if ($("#geometry-query-btn")) $("#geometry-query-btn").addEventListener('click', () => {
   const out = $("#registry-query-out");
   let args;
   try { args = JSON.parse($("#geometry-args").value); }
@@ -1780,18 +1690,18 @@ const MISCONCEPTION_WITNESS_DEFAULTS = {
   lesson_misconception_incompatibility_witness: {lesson_code:"IM-G6-U2-L3", name:"additive_extension_of_ratio", operation:"ratio"},
   misconception_jumps_witness: {operation:"addition", deformation:"round_without_adjusting", a:28, b:47}
 };
-$("#misconception-witness-op").addEventListener("change", function(){
+if ($("#misconception-witness-op")) $("#misconception-witness-op").addEventListener("change", function(){
   $("#misconception-witness-payload").value=JSON.stringify(MISCONCEPTION_WITNESS_DEFAULTS[this.value],null,2);
 });
-$("#misconception-witness-btn").addEventListener("click", async function(){
+if ($("#misconception-witness-btn")) $("#misconception-witness-btn").addEventListener("click", async function(){
   const out=$("#misconception-witness-out"); let payload;
   try { payload=JSON.parse($("#misconception-witness-payload").value); }
   catch(error) { out.hidden=false; out.textContent="The witness payload is not valid JSON: "+error.message; return; }
   payload.op=$("#misconception-witness-op").value; out.hidden=false; out.textContent="requesting…";
   try { const response=await postJSON("/api/witness/misconception",payload); out.textContent=JSON.stringify(response.data,null,2)||"The route returned an empty reply."; }
-  catch(error) { out.textContent="The request failed: the Hermes server did not answer, or answered with something other than JSON."; }
+  catch(error) { out.textContent=error.message||"! The app returned a broken reply."; }
 });
-$("#misconception-pml-btn").addEventListener("click", async function(){
+if ($("#misconception-pml-btn")) $("#misconception-pml-btn").addEventListener("click", async function(){
   const out=$("#misconception-pml-out");
   const misconception=$("#misconception-pml-name").value.trim();
   const payload={op:"misconception_pml_map"};
@@ -1805,10 +1715,10 @@ $("#misconception-pml-btn").addEventListener("click", async function(){
     const rows=(result.pairs||[]).map(pair=>`<tr><td><code>${esc(pair.source_tag)}</code></td><td>${esc(pair.misconception)}</td><td><code>${esc(pair.operator)}</code></td></tr>`).join("");
     out.innerHTML=`<p class="analysis-note"><b>${esc(result.count)}</b> RECORDED connection${result.count===1?"":"s"}. ${esc(result.provenance)}.</p>`+
       (rows?`<table class="rtable"><thead><tr><th>source tag</th><th>misconception</th><th>PML operator</th></tr></thead><tbody>${rows}</tbody></table>`:"<p class='muted-inline'>No recorded connection matches that name.</p>");
-  } catch(error) { out.textContent="The request failed: the Hermes server did not answer, or answered with something other than JSON."; }
+  } catch(error) { out.textContent=error.message||"! The app returned a broken reply."; }
 });
-$("#canonical-contract-btn").addEventListener('click', loadCanonicalContract);
-$("#canonical-check-btn").addEventListener('click', runCanonicalCheck);
+if ($("#canonical-contract-btn")) $("#canonical-contract-btn").addEventListener('click', loadCanonicalContract);
+if ($("#canonical-check-btn")) $("#canonical-check-btn").addEventListener('click', runCanonicalCheck);
 
 function encItemBtn(key, title, sub, active) {
   return `<button class="enc-item${active ? ' active' : ''}" data-key="${escAttr(key)}"><span class="ti">${esc(title)}</span><span class="sub">${esc(sub)}</span></button>`;
@@ -1986,7 +1896,7 @@ async function runDiagnose(domain, input, got) {
   const out = $("#diag-out"); out.innerHTML = "<em class='muted-inline'>diagnosing…</em>";
   let data;
   try { ({ data } = await postJSON('/api/diagnose_error', { domain, input, got })); }
-  catch (e) { out.innerHTML = `<div class="chat-answer locked">⚠ couldn't reach the engine.</div>`; return; }
+  catch (e) { out.innerHTML = `<div class="chat-answer locked">× The app isn't answering.</div>`; return; }
   const matches = (data && data.result) || [];
   if (!Array.isArray(matches) || !matches.length) {
     out.innerHTML = `<p class="muted-inline">No registered misconception reproduces <code>${esc(got)}</code> for that input — either the answer is correct, or that error pattern isn't modelled.</p>`;
@@ -2103,7 +2013,7 @@ async function runCalc() {
   out.innerHTML = "<em class='muted-inline'>working it as a strategy…</em>";
   let data;
   try { ({ data } = await postJSON('/api/strategy_trace', { strategy: selected.name, input: { a: parsed.a, b: parsed.b } })); }
-  catch (e) { out.innerHTML = `<p class="hint">Couldn't reach the engine.</p>`; return; }
+  catch (e) { out.innerHTML = `<p class="hint">× The app isn't answering.</p>`; return; }
   const t = (data && data.result) || {};
   if (!t.ok) {
     out.innerHTML = `<p class="hint">${esc(t.note || 'This operation is not yet available as a runnable strategy.')}</p>`;
@@ -2471,7 +2381,7 @@ async function loadMonitoringChart() {
   printBtn.hidden = true;
   let res;
   try { res = await postJSON('/api/monitoring_chart_export', { lesson_code: code }); }
-  catch (e) { out.innerHTML = `<p class="hint">Couldn't reach the engine.</p>`; return; }
+  catch (e) { out.innerHTML = `<p class="hint">× The app isn't answering.</p>`; return; }
   if (res.status >= 400 || !res.data || !res.data.ok) {
     out.innerHTML = `<p class="hint">${esc((res.data && res.data.error) || 'No chart for that code.')}</p>`;
     return;
@@ -2481,9 +2391,9 @@ async function loadMonitoringChart() {
   hydrateMonitoringVisuals(out);
   printBtn.hidden = false;
 }
-$("#mc-load").addEventListener('click', loadMonitoringChart);
-$("#lesson-code").addEventListener('keydown', e => { if (e.key === 'Enter') loadMonitoringChart(); });
-$("#mc-print").addEventListener('click', () => window.print());
+if ($("#mc-load")) $("#mc-load").addEventListener('click', loadMonitoringChart);
+if ($("#lesson-code")) $("#lesson-code").addEventListener('keydown', e => { if (e.key === 'Enter') loadMonitoringChart(); });
+if ($("#mc-print")) $("#mc-print").addEventListener('click', () => window.print());
 
 /* ---------- audience-view toggle (body class, matching the drawer §5 contract) ---------- */
 function setView(view) {
@@ -2505,6 +2415,13 @@ function setAdvanced(on) {
   }
 }
 $("#adv-check").addEventListener('change', e => setAdvanced(e.target.checked));
+
+window.addEventListener("unhandledrejection", function (event) {
+  event.preventDefault();
+  const reason = event.reason;
+  const message = reason && reason.message ? reason.message : "The app returned a broken reply.";
+  HermesFetch.setState($("#app-request-status"), reason && (reason.kind === "offline" || reason.kind === "timeout") ? "offline" : "broken", message);
+});
 
 refreshMode(); refreshModels(); populateInputPicker();
 </script>

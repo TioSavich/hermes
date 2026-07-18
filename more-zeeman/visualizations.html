@@ -47,7 +47,7 @@
     <h1>Hermes visualizers</h1>
     <p class="lede">Choose a format by what it draws. Each format opens with a worked example;
       arithmetic formats can send changed inputs to a running Hermes worker.</p>
-    <a class="why-link" href="index.html#snap">Why this exists: the cost-to-snap argument behind these manipulatives.</a>
+    <a class="why-link" href="index.html#snap">Why this exists &rarr;</a>
     <div class="how">
       <b>Just looking?</b> Open any format below. The embedded filmstrip draws without a server.
       <br><b>Want to change the inputs?</b> Run <code>bash hermes/app/launch.sh</code>, then use
@@ -221,7 +221,11 @@
       </section>
       <section id="notation-research" class="panel" data-extra="notation" hidden>
         <h2>Research wing: live, in progress</h2>
-        <p><code>lessons/im/generated/compiled_task_instances.pl</code> is the generated, source-backed task-instance cache. No runtime module currently consults its <code>compiled_lesson_task_instance/3</code> relation, so it remains described here without being added to the worker closure.</p>
+        <p>Contributor notes remain available below.</p>
+        <details>
+          <summary>For contributors: modules described here but not loaded</summary>
+          <p><code>lessons/im/generated/compiled_task_instances.pl</code> is the generated, source-backed task-instance cache. No runtime module currently consults its <code>compiled_lesson_task_instance/3</code> relation, so it remains described here without being added to the worker closure.</p>
+        </details>
       </section>
     </div>
   </main>

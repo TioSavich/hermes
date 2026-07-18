@@ -320,13 +320,9 @@
   <div class="opening">
     <span class="star-accent">&#x22C6; &#x22C6; &#x22C6;</span>
     <h1>What happens when a way of knowing stops working?</h1>
-    <p class="description">A computational agent begins with counting-by-ones and a small inventory of action automata. When a problem cannot be solved within resource limits, it enters crisis — and either consults a teacher or composes a different strategy from primitives already in its registry. These views show the same process from different angles: the geometry of the snap, the formal dynamics of the Prolog, the step-by-step narrative, and the representation surfaces that make each mathematical move visible.</p>
   </div>
 
   <section class="entry-section" id="pick-your-door">
-    <h2>What this is</h2>
-    <p>Hermes is a local console for teachers of elementary mathematics. It runs on your machine and reads a knowledge base that encodes children's arithmetic strategies as runnable machines, misconceptions documented in research literature, content standards, and lesson context from the Illustrative Mathematics curriculum. When you ask it something, the answer comes from that knowledge base, with its sources attached. Hermes is the console of the UMEDCTA formalization repository: panels cite their sources, and the numbers they report trace to predicates you can run yourself in SWI-Prolog.</p>
-
     <div class="surface-grid" aria-label="Hermes surfaces">
       <a class="surface-card" href="/"><h3>Console</h3><p>Type a computation and the calculator works it the way a child using a named strategy would, drawing each action on a number line. The encyclopedia holds strategies, documented misconceptions, standards, grounding metaphors, and the places where each metaphor stops working. The lesson lab gathers what the knowledge base holds about a particular IM lesson.</p></a>
       <a class="surface-card" href="/discussions.html"><h3>Discussions</h3><p>Paste a classroom transcript and the console checks the mathematical claims it can recognize, deterministically: each claim comes back <code>holds</code>, <code>refuted</code>, or <code>not covered</code>, with the worked check attached. The fuller two-pass report asks a language model first, so it needs a key.</p></a>
@@ -335,8 +331,6 @@
     </div>
 
     <h2>Pick your door</h2>
-    <p>This is the public face of a workbench for how children learn arithmetic — counting by ones until it stops working, and the moment after, where a new strategy is built. Everything behind these doors is hostable and needs no setup. The one tool that reads student work runs only on your own machine, and it says so.</p>
-    <p>These registers sit side by side. Choose by what you need to do; none is the preferred route.</p>
     <div class="door-grid" aria-label="Audience doors">
       <section class="door-card">
         <h3>Teacher</h3><p class="kind">Use it with a class · public</p>
@@ -369,11 +363,11 @@
       </section>
     </div>
 
-    <p>A child starts with counting by ones. It works until it does not — and the moment it stops working is where a new strategy is built. These pages let you draw that process, read it as a story, and analyze a real classroom discussion against it. Start wherever you like.</p>
     <div class="activity-grid" id="activity-doors" aria-label="Activity doors">
       <a class="activity-card" href="visualizations.html"><h3>Tools</h3><p>Number lines, fraction bars, base blocks, area models, balance scales. Type your own numbers and watch a strategy — and its misconception — drawn step by step.</p></a>
       <a class="activity-card" href="#journey-overview"><h3>Journey</h3><p>The same process told as a narrative: continuous pressure producing a discontinuous snap, the catastrophe machine, the crisis cycle, and where the formalization honestly stops.</p></a>
       <a class="activity-card" href="/"><h3>Console</h3><p>The Hermes teaching console: bring a classroom discussion, find the strategies and misconceptions in it, and launch a visualizer from what you find. Runs on your own machine.</p></a>
+      <a class="activity-card" id="three-vocabularies" href="/breaks.html"><h3>One error, three vocabularies</h3><p>The runnable version lives on <em>Where it breaks</em>.</p></a>
     </div>
     <p class="console-note">One capability is deliberately not hosted publicly: the teaching console reads student work. To run it on your own machine, use <code>bash hermes/app/launch.sh</code>, then open <code>http://127.0.0.1:8765/</code>. The interactive visualizers that draw a strategy render through that same local server; the public pages make no calls to any language model.</p>
   </section>
@@ -503,93 +497,8 @@
 
   </div>
 
-  <div class="connections">
-    <h3>How they connect</h3>
-
-    <div class="connection-diagram">
-      <span class="conn-node n-embodied">Geometry</span>
-      <span class="conn-arrow">&larr;</span>
-      <span class="conn-node n-formal">Prolog tension</span>
-      <span class="conn-arrow">&rarr;</span>
-      <span class="conn-node n-narrative">Narrative</span>
-    </div>
-
-    <p>The More Machine shows the <em>topology</em> of strategy transitions. Catastrophe theory describes how smooth changes in control parameters produce discontinuous jumps in behavior. You feel this directly — the disc resists, then gives way.</p>
-
-    <p>The Bridge maps the Prolog system's internal state onto that topology. The meta-interpreter's inference count becomes tension. Crisis classification becomes the control parameter. Strategy acquisition becomes the snap. The geometry is no longer abstract — it is driven by an actual computation trying to learn arithmetic.</p>
-
-    <p>The ORR Explorer shows the same process as a story. Where the Bridge gives you dynamics, the Explorer gives you reasons: <em>why</em> the system entered crisis, <em>what</em> the teacher provided, <em>how</em> the new strategy was synthesized, <em>whether</em> the retry succeeded. The three views are the same phenomenon — the geometry, the dynamics, and the account.</p>
-  </div>
-
-  <section class="vocabularies" id="three-vocabularies">
-    <h2>How the three vocabularies stay in step</h2>
-    <p>The project keeps three vocabularies in step: the philosophy that names a commitment, the modal calculus that codes it, and the Prolog that runs it until it breaks. This section follows one documented student error through all three, so a reader can check that the same error is being described each time and is not quietly changing under the translation.</p>
-
-    <div class="vocab-task">
-      <div class="row"><span class="tag">task</span><span class="q">solve&nbsp; 6 + X = 4</span></div>
-      <div class="row"><span class="tag">student</span><span style="color:var(--tension)">impossible</span> <span class="mono" style="color:var(--muted);font-size:.82rem">("you cannot add to 6 and end up with less")</span></div>
-      <div class="row"><span class="tag">correct</span><span style="color:var(--release)">-2</span> <span class="mono" style="color:var(--muted);font-size:.82rem">(6 + (-2) = 4)</span></div>
-    </div>
-
-    <section class="vocab-panel">
-      <div class="kicker">1 · Philosophy — the commitment</div>
-      <h3>"A sum must be larger than its parts."</h3>
-      <p>The student is committed to a categorical claim about addition: putting numbers together can only grow the total. In Brandom's terms this is a material-inferential commitment the student is not entitled to. It holds for counting collections and fails the moment an addend is negative, so the move from a true case to a categorical rule is the unlicensed step.</p>
-      <p>The corpus row records the grounding the commitment leans on with a <span class="mono" style="color:var(--snap)">Source-Path-Goal</span> schema: addition read as travel along a path that only ever moves forward.</p>
-      <div class="prov"><b>Source:</b> misconceptions/misconceptions_whole_number_batch_5.pl — corpus row <span class="mono">db_row(193)</span>, comments <span class="mono">SCHEMA: Source-Path-Goal</span> / <span class="mono">GROUNDED</span>.</div>
-    </section>
-
-    <div class="vocab-arrow">↓ coded as</div>
-
-    <section class="vocab-panel">
-      <div class="kicker">2 · Logic · PML — the coding</div>
-      <h3>A subjective, categorical commitment held without entitlement</h3>
-      <p>PML is a material-inference calculus, not a Kripke modal logic. It tags the commitment with a mode, a polarity, and an entitlement marker. The wiring records this misconception as:</p>
-      <span class="term">s( comp_nec( unlicensed( addition_must_make_larger ) ) )</span>
-      <ul class="decode">
-        <li><code>s(·)</code> — <b>Subjective</b> validity: read from the student's own position, not yet checked against the object or the norm.</li>
-        <li><code>comp_nec(·)</code> — <b>Compressive Necessity</b> (↓): a categorical "must", a fixation or crystallization rather than an opening.</li>
-        <li><code>unlicensed(·)</code> — the commitment is asserted <b>without entitlement</b>: the categorical rule is not something the student has earned the right to.</li>
-      </ul>
-      <div class="prov"><b>Source:</b> misconceptions/pml_wire.pl — <span class="mono">misconception_pml(db_row(193), &hellip;)</span>, one of 820 wired facts; legend in pml/pml_operators.pl.</div>
-      <details><summary>follow it yourself</summary><pre><code>swipl -l paths.pl -g \
-  "use_module(misconceptions(pml_wire)), \
-   misconception_pml(db_row(193),Op), \
-   format('~q~n',[Op]), halt"
-% =&gt;  s(comp_nec(unlicensed(addition_must_make_larger)))</code></pre></details>
-    </section>
-
-    <div class="vocab-arrow">↓ run as</div>
-
-    <section class="vocab-panel">
-      <div class="kicker">3 · Math · Prolog — the break, made runnable</div>
-      <h3>The rule returns the wrong token exactly at the boundary</h3>
-      <p>The misconception is encoded as a rule that fires on the task. On the missing-addend case it returns <span class="mono" style="color:var(--tension)">impossible</span>, while the value recorded alongside it is <span class="mono" style="color:var(--release)">-2</span>. The categorical "must make larger" breaks precisely where the addend goes negative, and the Prolog does not smooth that over. It returns the wrong token at the boundary, which is where the misconception becomes detectable rather than hidden.</p>
-      <span class="term">r193_addition_must_make_larger(missing_addend(6,4), impossible).
-arith_misconception(db_row(193), whole_number, addition_must_make_larger, &hellip;, -2).</span>
-      <div class="prov"><b>Source:</b> misconceptions/misconceptions_whole_number_batch_5.pl — the rule predicate and the <span class="mono">arith_misconception/6</span> row carrying the correct value.</div>
-      <details><summary>follow it yourself</summary><pre><code>swipl -l paths.pl -s misconceptions/test_harness.pl -g \
-  "test_harness:arith_misconception(db_row(193),_,N,_,Task,Correct), \
-   format('~w: ~w -&gt; correct ~w~n',[N,Task,Correct]), halt"
-% =&gt;  addition_must_make_larger: missing_addend(6,4) -&gt; correct -2</code></pre></details>
-    </section>
-
-    <div class="vocab-scope">
-      <h3>What this section is, and is not</h3>
-      <ul>
-        <li><b>One worked example, not a live engine.</b> The three-layer trace is hand-chosen and authored. The facts in each panel are real and queryable, but the translation from philosophy to logic to Prolog is not discovered end-to-end by a program; a person assembled it from the tracked predicates.</li>
-        <li><b>The PML coding is a proposal to test.</b> The discourse-marker mapping behind <span class="mono">misconception_pml/2</span> is a coding scheme under test, not a validated instrument. Every one of the 820 wired rows currently carries the same <span class="mono">s(comp_nec(unlicensed(_)))</span> shape, so the coding marks a family resemblance, not a measured distinction. Read it as a hypothesis the project is checking.</li>
-        <li><b>The break is the point.</b> The boundary where the rule returns the wrong token is not a defect to hide. It is the place the formalization names where a categorical commitment stops holding.</li>
-        <li><b>Partial.</b> The fuller interactive walkthrough planned for the paper page is not built here; its framing lives in a source this build does not draw on. This static section closes the narrower goal of letting a reader trust the chain on a single, reproducible example.</li>
-      </ul>
-    </div>
-  </section>
-
   <div class="footer">
-    <h3>About this project</h3>
-    <p>This is a research formalization, not a finished product. A Prolog system models how a learner acquires arithmetic strategies through crisis — beginning with counting-by-ones, consulting a teacher when stuck, composing strategies from action automata already in its registry. The model covers whole-number arithmetic through the full ORR cycle (Observe, React, Reorganize). For fractions, the registry now includes the area model for fraction multiplication — <code>fraction:area_model_part_of_part</code> — and a paired productive/deformation rule that captures Van de Walle's "rules without reason" distinction: <code>cross_multiplication_rule_from_pattern</code> carries an area-model justification in its trace; <code>cross_multiplication_rule_without_ground</code> produces the same numeric answer with no inferential ground.</p>
-    <p>What still does not work is the negotiation: the meta-interpreter does not yet route fraction outcomes through the ORR cycle as recollection-compatible values, and metamorphic accommodation (Norton/Steffe — strategies synthesised by recursive composition of others) is not implemented. So the system can act with fractions, but it cannot yet undergo the crisis of acquiring them. The formalization is a tool for noticing what it can and cannot do, with equal specificity.</p>
-    <p>Part of <a href="https://github.com/TioSavich/umedcta-formalization">umedcta-formalization</a> — the Prolog and manuscript archive for <em>Understanding Mathematics as an Emancipatory Discipline: A Critical Theory Approach</em>.</p>
+    <p>Part of <a href="https://github.com/TioSavich/umedcta-formalization">umedcta-formalization</a>, the Prolog and manuscript archive for <em>Understanding Mathematics as an Emancipatory Discipline: A Critical Theory Approach</em>.</p>
   </div>
 
   <script src="shared.js"></script>
