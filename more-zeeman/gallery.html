@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" data-page-id="gallery">
+<html lang="en" data-page-id="gallery" data-hermes-base="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student-Work Gallery — Coded Samples</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="hermes-tokens-dark.css">
+  <link rel="stylesheet" href="hermes-tokens.css">
   <script defer src="render/hermes-shell.js" data-root="./" data-active="gallery"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: var(--bg, #15130e);
-      --text: var(--text, #e8e2d4);
-      --muted: var(--muted, #9a927f);
-      --surface: var(--surface, #1e1b15);
-      --surface-raised: var(--surface-raised, #262219);
-      --border: var(--border, #3a352a);
+      --bg: var(--paper);
+      --text: var(--ink);
+      --surface: var(--paper-cool);
+      --surface-raised: var(--paper-warm);
+      --border: var(--line);
+      --tension: var(--rust);
+      --release: var(--teal-deep);
+      --stable: var(--acc-negation);
     }
     html { background: var(--bg); color: var(--text);
            font-family: 'IBM Plex Serif', Georgia, serif; font-size: 16px; line-height: 1.6; }
@@ -68,16 +70,16 @@
     .chips { display: flex; flex-wrap: wrap; gap: .25rem; margin-top: .4rem; }
     .chip { font-family: 'IBM Plex Mono', monospace; font-size: .64rem; padding: .1rem .4rem;
             border-radius: 999px; border: 1px solid var(--border); color: var(--muted); }
-    .chip.err { border-color: var(--tension, #d4634a); color: var(--tension, #d4634a); }
+    .chip.err { border-color: var(--tension, #b95238); color: var(--ink); }
     .chip.strat { border-color: var(--release, #6fb1bf); color: var(--release, #6fb1bf); }
     .chip.cat { border-color: var(--stable, #7fae6f); color: var(--stable, #7fae6f); }
-    .chip.dom { border-color: #c9a24b; color: #d8b65e; }
-    .chip.concept { border-color: #a47cc7; color: #caa4ef; }
+    .chip.dom { border-color: var(--gold-deep); color: var(--gold-deep); }
+    .chip.concept { border-color: var(--acc-recollection); color: var(--acc-recollection); }
     .card-meta { font-family: 'IBM Plex Mono', monospace; font-size: .66rem;
                  color: var(--muted); margin-top: .35rem; }
     .badge { font-family: 'IBM Plex Mono', monospace; font-size: .62rem; padding: .08rem .4rem;
              border-radius: 4px; background: var(--surface-raised); color: var(--muted); }
-    .badge.unreviewed { color: #e0a23c; border: 1px solid #5a4a22; }
+    .badge.unreviewed { color: var(--gold-deep); border: 1px solid var(--gold-deep); }
     .empty { color: var(--muted); padding: 2rem 0; font-style: italic; }
     .corpus-note { grid-column: 1 / -1; background: var(--surface); border: 1px solid var(--border);
                    border-radius: 8px; padding: 1.1rem 1.3rem; max-width: 70ch;

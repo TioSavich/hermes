@@ -57,9 +57,9 @@
     recollection: { label: "Recollection",       light: "#5b4a9e", dark: "#b3a4ef" },
     norms:        { label: "Norms & curriculum", light: "#2f5f9e", dark: "#7ab0e6" },
     objects:      { label: "Objects",            light: "#a97c24", dark: "#e8a84c", lightInk: "#7a5a12" },
-    body:         { label: "The feeling body",   light: "#b95238", dark: "#d4634a" },
+    body:         { label: "The feeling body",   light: "#b95238", dark: "#d4634a", lightInk: "#0d0c08" },
     negation:     { label: "Incompatibility",    light: "#3d6b45", dark: "#6b9e8c" },
-    learner:      { label: "The learner",        light: "#2c7d78", dark: "#5bb4ae" }
+    learner:      { label: "The learner",        light: "#2c7d78", dark: "#5bb4ae", lightInk: "#0d0c08" }
   };
   var PAGE = {
     console:        { theme: "norms",        lede: "Bring a mathematical discussion, computation, or lesson to the local workbench." },
@@ -96,7 +96,7 @@
   // ---- the app map -------------------------------------------------------
   // Each item: [id, label, href]. Sections group them.
   var NAV = [
-    { title: "Practice", kind: "practice", items: [
+    { title: "Practice", kind: "practice", base: "light", items: [
       ["console",     "Console",          app("console.html")],
       ["discussions", "Discussions",      app("discussions.html")],
       ["visualizations", "Visualizers",   mz("visualizations.html")],
@@ -104,7 +104,7 @@
       ["monitoring",  "Monitoring chart", mz("monitoring_chart.html")],
       ["gallery",     "Gallery",          mz("gallery.html")],
     ]},
-    { title: "Theory", kind: "theory", items: [
+    { title: "Theory", kind: "theory", base: "dark", items: [
       ["landing",    "The journey — overview", mz("landing.html")],
       ["no",         "Two ways to say no",   app("no.html")],
       ["breaks",     "Where it breaks",      app("breaks.html")],
@@ -120,7 +120,7 @@
       ["scoreboard", "Scoreboard",  mz("scoreboard.html")],
       ["atlas",      "Capability Atlas", mz("atlas.html")],
     ]},
-    { title: "Research wing", kind: "research", items: [
+    { title: "Research wing", kind: "research", base: "dark", items: [
       ["bridge",       "The Bridge",       mz("bridge.html")],
       ["coordination", "Unit coordination", mz("coordination.html")],
       ["reorganization", "Reorganization", "/learner/reorg_demo.html"],
@@ -236,6 +236,13 @@
     background: transparent; border: 0; cursor: pointer;
     padding: 8px 8px 6px; border-radius: 6px;
   }
+  .hshell-sec > .lbl .base {
+    margin-left: auto; padding: 2px 5px; border: 1px solid var(--group-line);
+    border-radius: 999px; color: var(--group-ink); background: var(--group-bg);
+    font-size: 7.5px; letter-spacing: .09em; opacity: .78;
+  }
+  .hshell-sec[data-base="light"] { --group-bg: #f4ead6; --group-ink: #665f4f; --group-line: rgba(13,12,8,.22); }
+  .hshell-sec[data-base="dark"] { --group-bg: #1a1710; --group-ink: #d4cfc0; --group-line: #3a3428; }
   .hshell-sec > .lbl:hover { color: var(--ink, var(--text, #1b1810)); }
   .hshell-sec > .lbl .dot { width: 6px; height: 6px; border-radius: 50%; flex: 0 0 auto; }
   .hshell-sec > .lbl .chev { margin-left: auto; transition: transform .16s ease; opacity:.6; }
@@ -369,11 +376,12 @@
     side.setAttribute("aria-label", "Sections");
     NAV.forEach(function (sec) {
       var secEl = h("div", "hshell-sec");
+      secEl.dataset.base = sec.base;
       var isActiveSec = active && active.sec === sec;
       if (!isActiveSec && active) secEl.className += " closed";
       var lbl = h("button", "lbl",
-        '<span class="dot" style="background:var(--accent,var(--muted))"></span>' +
-        sec.title + CHEV);
+        '<span class="dot" style="background:var(--group-ink)"></span>' +
+        sec.title + '<span class="base">' + (sec.base === "light" ? "paper" : "dark") + '</span>' + CHEV);
       lbl.addEventListener("click", function () { secEl.classList.toggle("closed"); });
       secEl.appendChild(lbl);
       var items = h("div", "items");
@@ -382,7 +390,7 @@
         a.href = it[2];
         var itemPage = PAGE[it[0]], itemTheme = itemPage && THEMES[itemPage.theme];
         if (itemTheme) {
-          a.style.setProperty("--item-accent", itemTheme[base]);
+          a.style.setProperty("--item-accent", itemTheme[sec.base]);
           a.insertBefore(h("span", "hshell-item-dot"), a.firstChild);
         }
         if (it[0] === ACTIVE) a.setAttribute("aria-current", "page");
