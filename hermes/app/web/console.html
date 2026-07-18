@@ -33,7 +33,7 @@ body::before {
 button, input, textarea, select { font: inherit; }
 button { cursor: pointer; }
 
-.shell { position: relative; z-index: 1; display: grid; grid-template-rows: auto auto 1fr; height: 100vh; }
+.shell { position: relative; z-index: 1; display: grid; grid-template-rows: auto auto auto 1fr; height: 100vh; }
 
 /* ---- topbar ---- */
 .topbar {
@@ -60,6 +60,26 @@ button { cursor: pointer; }
 .btn.primary:hover { box-shadow: 0 3px 12px rgba(44,94,102,0.35); }
 .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
 .btn.small { padding: 0.28rem 0.5rem; font-size: 0.8rem; }
+
+/* ---- first-run orientation ---- */
+.first-run { display: flex; align-items: center; gap: .65rem; flex-wrap: wrap;
+  padding: .55rem 1.3rem; border-bottom: 1px solid var(--line); background: rgba(255,253,247,.72); }
+.first-run[hidden] { display: none; }
+.first-run p { margin: 0; font-size: .88rem; }
+.first-run-chips { display: flex; gap: .35rem; flex-wrap: wrap; }
+.entry-chip { --chip: var(--gold-deep); display: inline-block; padding: .22rem .48rem;
+  border: 1px solid var(--chip); border-radius: 999px; color: var(--ink); background: transparent;
+  font: 600 .68rem/1.2 var(--mono); text-decoration: none; }
+.entry-chip::before { content: ""; display: inline-block; width: .48rem; height: .48rem;
+  margin-right: .3rem; border-radius: 50%; background: var(--chip); }
+.first-run-dismiss { margin-left: auto; border: 0; background: transparent; color: var(--muted);
+  font: .72rem var(--mono); text-decoration: underline; }
+.worked-example { border-left: 3px solid var(--acc-objects, var(--gold-deep)); }
+.worked-example-grid { display: grid; grid-template-columns: minmax(15rem, 1fr) minmax(13rem, .8fr); gap: 1rem; align-items: center; }
+.worked-example svg { display: block; width: 100%; max-width: 520px; height: auto; }
+.worked-steps { margin: 0; padding-left: 1.2rem; font-size: .86rem; }
+.worked-steps li { margin: .25rem 0; }
+@media (max-width: 720px) { .worked-example-grid { grid-template-columns: 1fr; } }
 
 /* ---- tab nav ---- */
 .tabnav { display: flex; align-items: center; gap: 0.4rem; padding: 0 1.3rem; border-bottom: 1px solid var(--line); background: rgba(237,228,207,0.6); }
@@ -448,6 +468,19 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
     </div>
   </div>
 
+  <aside class="first-run" id="first-run" aria-label="First-run orientation">
+    <p>Hermes is a local workbench; enter through one theme, then change the worked defaults.</p>
+    <div class="first-run-chips">
+      <a class="entry-chip" style="--chip:var(--acc-objects)" href="/more-zeeman/visualizations.html?format=fraction-bars">Objects</a>
+      <a class="entry-chip" style="--chip:var(--acc-negation)" href="breaks.html#incompatibility-walkthrough">Incompatibility</a>
+      <a class="entry-chip" style="--chip:var(--acc-body)" href="/more-zeeman/index.html">The feeling body</a>
+      <a class="entry-chip" style="--chip:var(--acc-norms)" href="discussions.html">Norms &amp; curriculum</a>
+      <a class="entry-chip" style="--chip:var(--acc-learner)" href="/learner/reorg_demo.html">The learner</a>
+      <a class="entry-chip" style="--chip:var(--acc-recollection)" href="/more-zeeman/atlas.html">Recollection</a>
+    </div>
+    <button class="first-run-dismiss" id="first-run-dismiss" type="button">Dismiss</button>
+  </aside>
+
   <nav class="tabnav" id="tabnav">
     <button class="tab active" data-tab="workspace"><span class="glyph">01</span>Workspace</button>
     <button class="tab" data-tab="explore"><span class="glyph">02</span>Explore lessons</button>
@@ -478,6 +511,7 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
 
     <!-- ============ WORKSPACE ============ -->
     <section class="panel active" data-tab="workspace">
+      <div class="card worked-example" id="console-worked-example" aria-live="polite"></div>
       <p class="panel-lede">Bring a discussion, read what Hermes makes of it, and open a visualizer. The research features (PML scoring and the Gemma class workflow) wait under <em>Advanced / research</em> in the top bar.</p>
 
       <div class="card">
@@ -790,12 +824,45 @@ unknown_candidate(foo)</textarea>
 
 <script src="../../../more-zeeman/render/drawer.js"></script>
 <script>
+// Change this one placeholder to replace the completed computation on first paint.
+const CONSOLE_WORKED_DEFAULT = Object.freeze({ a: 7, b: 5, bridge: 3, result: 12 });
 const API = window.location.protocol === "file:" ? "http://127.0.0.1:8765" : "";
 const api = p => `${API}${p}`;
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const escAttr = s => esc(s).replace(/"/g, "&quot;");
 document.querySelectorAll("[data-api-href]").forEach(a => { a.href = api(a.dataset.apiHref || a.getAttribute("href")); });
+
+function renderConsoleWorkedExample(example) {
+  const start = 34, unit = 34, y = 66;
+  const ticks = Array.from({length: example.result - example.a + 1}, (_, i) => {
+    const value = example.a + i, x = start + i * unit;
+    return `<line x1="${x}" y1="${y - 6}" x2="${x}" y2="${y + 6}" stroke="currentColor"/><text x="${x}" y="${y + 24}" text-anchor="middle" font-size="12">${value}</text>`;
+  }).join("");
+  const bridgeX = start + example.bridge * unit;
+  const endX = start + example.b * unit;
+  $("#console-worked-example").innerHTML = `
+    <h2><span class="num">✓</span>A completed computation: ${example.a} + ${example.b} = ${example.result}</h2>
+    <p class="hint">This baked trace is available before the worker starts. It is a changeable teaching placeholder.</p>
+    <div class="worked-example-grid">
+      <svg viewBox="0 0 ${endX + 34} 104" role="img" aria-label="Number-line trace from ${example.a} to ${example.result}">
+        <line x1="${start}" y1="${y}" x2="${endX}" y2="${y}" stroke="currentColor" stroke-width="1.5"/>${ticks}
+        <path d="M ${start} ${y - 8} Q ${(start + bridgeX) / 2} 4 ${bridgeX} ${y - 8}" fill="none" stroke="var(--acc-objects)" stroke-width="3"/>
+        <path d="M ${bridgeX} ${y - 8} Q ${(bridgeX + endX) / 2} 20 ${endX} ${y - 8}" fill="none" stroke="var(--acc-learner)" stroke-width="3"/>
+        <text x="${(start + bridgeX) / 2}" y="18" text-anchor="middle" font-size="12">+${example.bridge}</text>
+        <text x="${(bridgeX + endX) / 2}" y="36" text-anchor="middle" font-size="12">+${example.b - example.bridge}</text>
+      </svg>
+      <ol class="worked-steps"><li>Start at ${example.a}.</li><li>Add ${example.bridge} to reach 10.</li><li>Add the remaining ${example.b - example.bridge} to reach ${example.result}.</li></ol>
+    </div>`;
+}
+renderConsoleWorkedExample(CONSOLE_WORKED_DEFAULT);
+
+const ORIENTATION_KEY = "hermes-console-oriented";
+try { if (localStorage.getItem(ORIENTATION_KEY) === "1") $("#first-run").hidden = true; } catch (e) {}
+$("#first-run-dismiss").addEventListener("click", () => {
+  $("#first-run").hidden = true;
+  try { localStorage.setItem(ORIENTATION_KEY, "1"); } catch (e) {}
+});
 
 async function _json(r) { try { return await r.json(); } catch (e) { return {}; } }
 async function getJSON(path) { const r = await fetch(api(path)); return { status: r.status, data: await _json(r) }; }

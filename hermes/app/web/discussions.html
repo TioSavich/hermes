@@ -101,7 +101,7 @@
      every claim checked by the calculator, the conflicts between speakers, and where the class
      repaired a wrong turn. Pasted text is blinded to S01, S02… on this machine before any model call.
      A photo, document, or recording is first transcribed by the campus model (REALLMS), which reads
-     the file itself; the transcript comes back here for your review, and the report passes blind it
+     the file itself; the transcript comes back here for your review, and the report passes it blind
      the same way.</p>
   <a class="why-link" href="../more-zeeman/landing.html#three-vocabularies">Why this exists: one error kept in step across three vocabularies.</a>
 
@@ -388,6 +388,7 @@ async function loadPrepared(){
     document.querySelectorAll("[data-report]").forEach(btn => {
       btn.onclick = () => openReport(btn.dataset.report);
     });
+    if (idx.length) openReport(idx[0].id);
   } catch (e) {
     $("prepared-cards").innerHTML =
       `<span class="status">The prepared set lives on the campus server. Launch it with ` +

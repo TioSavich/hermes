@@ -1,6 +1,6 @@
 /*
  * shell.css — the one navigation bar shared by every public Hermes page.
- * It draws only the top bar shell.js injects; it touches nothing the host
+ * Retained styles for older exported pages; it touches nothing the host
  * page already styles. Colors read from whichever token sheet the page
  * loaded (hermes-tokens.css for Tools, hermes-tokens-dark.css for Journey),
  * with hard fallbacks so the bar still reads on a page that loads neither

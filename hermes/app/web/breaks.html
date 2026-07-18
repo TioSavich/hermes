@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-hermes-base="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,6 +66,12 @@
     .tool input, .tool textarea, .tool select { width: 100%; font-family: var(--mono); font-size: 0.74rem; background: var(--bg); color: var(--text); border: 1px solid var(--border); padding: 0.4rem; margin-bottom: 0.45rem; }
     .tool textarea { min-height: 4.5rem; resize: vertical; }
     .tool pre { white-space: pre-wrap; overflow-wrap: anywhere; color: var(--muted); font: 0.72rem/1.45 var(--mono); margin-top: 0.5rem; }
+    .walkthrough-steps { list-style: none; counter-reset: walkthrough; margin: 1rem 0 0; }
+    .walkthrough-step { counter-increment: walkthrough; border-top: 1px solid var(--border); padding: .9rem 0 .5rem 2.4rem; position: relative; }
+    .walkthrough-step::before { content: counter(walkthrough); position: absolute; left: 0; top: .9rem; width: 1.6rem; height: 1.6rem; display: grid; place-items: center; border: 1px solid var(--accent); border-radius: 50%; color: var(--accent); font: .75rem var(--mono); }
+    .walkthrough-step h4 { color: var(--text); margin-bottom: .25rem; }
+    .walkthrough-result { min-height: 1.5rem; margin-top: .55rem; white-space: pre-wrap; color: var(--muted); font: .76rem/1.45 var(--mono); }
+    .walkthrough-result.changed { color: var(--release); }
   </style>
   <script defer src="../more-zeeman/render/hermes-shell.js" data-root="../more-zeeman/" data-app="./" data-active="breaks"></script>
 </head>
@@ -144,6 +150,33 @@
       <button class="opbtn" id="seq-erasure">Send the trace-marked sequent</button>
     </div>
     <div id="seq-out" class="board"></div>
+  </div>
+
+  <div class="operable" id="incompatibility-walkthrough">
+    <h3>Entailments under a richer incompatibility relation</h3>
+    <div class="domains">seed relation → registry pack → restored seed relation</div>
+    <p class="desc">Run the same entailment witness before and after loading the registry
+      incompatibility pack. The pack adds recorded incompatibilities. That richer relation can
+      also withdraw entailments licensed by the sparse seed, so more data can subtract as well
+      as add. The final step restores the default disabled state.</p>
+    <ol class="walkthrough-steps">
+      <li class="walkthrough-step">
+        <h4>Run the seed relation</h4>
+        <button class="opbtn" id="inc-baseline">Run baseline witness</button>
+        <div class="walkthrough-result" id="inc-baseline-out"></div>
+      </li>
+      <li class="walkthrough-step">
+        <h4>Enrich the relation</h4>
+        <p class="desc">Enable <code>pack(registry_incompatibility)</code>, which loads the recorded pairs.</p>
+        <button class="opbtn" id="inc-enable" disabled>Enable the pack</button>
+        <div class="walkthrough-result" id="inc-enable-out"></div>
+      </li>
+      <li class="walkthrough-step">
+        <h4>Ask again, compare, and restore</h4>
+        <button class="opbtn" id="inc-after" disabled>Re-run the same witness</button>
+        <div class="walkthrough-result" id="inc-after-out"></div>
+      </li>
+    </ol>
   </div>
 
   <div class="operable" id="formal-tools">
@@ -265,6 +298,10 @@ neg(p)</textarea>
       number_theory_self_defeat_witness: {list: [2, 3, 5]},
       robinson_axiom_witness: {axiom: "q4_add_zero", claim: "o(eq(plus(2,0),2))"}
     };
+    const INCOMPATIBILITY_WALKTHROUGH_DEFAULT = Object.freeze({
+      replacement: "add_counts_without_composite_unit",
+      replaced: "misconception(count_all_when_count_on_available)"
+    });
 
     function formalWitnessControl(item) {
       const form = document.createElement("form"); form.className = "tool";
@@ -422,6 +459,75 @@ neg(p)</textarea>
       return $(id).value.split(/\r?\n/).map(s => s.trim()).filter(Boolean);
     }
 
+    function profileCount(reply) {
+      const result = reply && reply.result;
+      return result && Array.isArray(result.profiles_checked) ? result.profiles_checked.length : 0;
+    }
+
+    function wireIncompatibilityWalkthrough() {
+      const baselineButton = $("inc-baseline"), enableButton = $("inc-enable"), afterButton = $("inc-after");
+      const baselineOut = $("inc-baseline-out"), enableOut = $("inc-enable-out"), afterOut = $("inc-after-out");
+      let baseline = null;
+
+      baselineButton.onclick = async () => {
+        baselineButton.disabled = true;
+        baselineOut.textContent = "Checking the pack state and requesting the seed witness…";
+        try {
+          const state = await post("/api/axiom_toggle", {action: "list"});
+          const stateText = JSON.stringify(state);
+          const disabled = stateText.indexOf("registry_incompatibility") !== -1 && stateText.indexOf("disabled") !== -1;
+          if (!disabled) await post("/api/axiom_toggle", {action: "disable", axiom: "pack(registry_incompatibility)"});
+          baseline = await post("/api/witness/formal", Object.assign({op: "incompatibility_entailment_witness"}, INCOMPATIBILITY_WALKTHROUGH_DEFAULT));
+          baselineOut.textContent = baseline.ok
+            ? "Baseline entailment returned; profiles checked: " + profileCount(baseline) + "."
+            : "The baseline returned: " + (baseline.error || "no witness") + ".";
+          enableButton.disabled = !baseline.ok;
+        } catch (error) {
+          baselineOut.textContent = "The local worker did not answer: " + error.message;
+          baselineButton.disabled = false;
+        }
+      };
+
+      enableButton.onclick = async () => {
+        enableButton.disabled = true;
+        enableOut.textContent = "Loading the registry incompatibility pack…";
+        try {
+          const enabled = await post("/api/axiom_toggle", {action: "enable", axiom: "pack(registry_incompatibility)"});
+          enableOut.textContent = enabled.ok
+            ? "The registry pack is enabled; its recorded incompatibilities now enrich the relation."
+            : "The pack was not enabled: " + (enabled.error || "no detail") + ".";
+          afterButton.disabled = !enabled.ok;
+        } catch (error) {
+          enableOut.textContent = "The local worker did not answer: " + error.message;
+          enableButton.disabled = false;
+        }
+      };
+
+      afterButton.onclick = async () => {
+        afterButton.disabled = true;
+        afterOut.textContent = "Requesting the enriched witness…";
+        let after, discovery, restored;
+        try {
+          after = await post("/api/witness/formal", Object.assign({op: "incompatibility_entailment_witness"}, INCOMPATIBILITY_WALKTHROUGH_DEFAULT));
+          discovery = await post("/api/witness/formal", {op: "incompatibility_discovery_witness", context: "formal_registry", set: ["p", "neg(p)"]});
+        } catch (error) {
+          after = {ok: false, error: error.message};
+        } finally {
+          try { restored = await post("/api/axiom_toggle", {action: "disable", axiom: "pack(registry_incompatibility)"}); }
+          catch (error) { restored = {ok: false, error: error.message}; }
+        }
+        const beforeCount = profileCount(baseline), afterCount = profileCount(after);
+        const changed = !after.ok || afterCount !== beforeCount;
+        afterOut.classList.toggle("changed", changed);
+        afterOut.textContent = (after.ok
+          ? "Enriched entailment returned; profiles checked: " + afterCount + "."
+          : "The enriched relation withdrew this entailment: " + (after.error || "no witness") + ".") +
+          " Discovery witness: " + (discovery && discovery.ok ? "returned" : "not returned") + ". " +
+          (restored && restored.ok ? "The registry pack is disabled again." : "RESTORE FAILED: " + ((restored && restored.error) || "no detail"));
+        baselineButton.disabled = false;
+      };
+    }
+
     function wireFormalTools() {
       const requests = {
         crisis: () => ["/api/crisis", { commitments: lines("crisis-commitments"), entitlements: lines("crisis-entitlements") }],
@@ -479,6 +585,7 @@ neg(p)</textarea>
     init();
     wireDeontic();
     wireSequent();
+    wireIncompatibilityWalkthrough();
     wireFormalTools();
   </script>
 </body>

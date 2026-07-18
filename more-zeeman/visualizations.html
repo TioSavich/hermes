@@ -32,6 +32,14 @@
     .back-link { font: 12px var(--mono, ui-monospace, monospace); color: var(--gold-deep, #a97c24); }
     .units-panel svg { max-width: 288px; }
     #notation-worker-output, #solve-witness-out { white-space: pre-wrap; }
+    .fraction-walkthrough-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: .6rem; margin: .8rem 0; }
+    .fraction-walkthrough-step { border: 1px solid var(--line); border-radius: 8px; padding: .65rem; background: rgba(255,253,247,.45); font-size: .82rem; }
+    .fraction-walkthrough-step b { display: block; margin-bottom: .25rem; }
+    .mini-bar { display: flex; height: 22px; margin: .35rem 0; }
+    .mini-bar i { flex: 1; border: 1px solid var(--ink); border-right: 0; background: var(--fig-highlight); }
+    .mini-bar i:last-child { border-right: 1px solid var(--ink); }
+    .mini-bar i.off { background: var(--fig-whole); }
+    @media (max-width: 760px) { .fraction-walkthrough-grid { grid-template-columns: 1fr 1fr; } }
   </style>
 </head>
 <body class="view-freshman">
@@ -164,6 +172,23 @@
         </p>
       </section>
 
+      <section id="fraction-walkthrough" class="panel" data-extra="fraction-walkthrough" hidden>
+        <h2>Unlike denominators, assembled in four moves</h2>
+        <p class="calc-note">No single worker operation draws unlike-denominator addition end to end.
+          This walkthrough uses the fraction-bar action represented by the drawer, re-unitizes both
+          terms, then asks <code>/api/fraction_cgi_addition</code> to run the same-denominator addition.
+          The values below are changeable placeholders.</p>
+        <div class="calc-bar">
+          <label>first numerator <input id="walk-na" type="number" value="3" min="1"></label>
+          <label>first denominator <input id="walk-da" type="number" value="4" min="1"></label>
+          <label>second numerator <input id="walk-nb" type="number" value="2" min="1"></label>
+          <label>second denominator <input id="walk-db" type="number" value="3" min="1"></label>
+          <button id="fraction-cgi-run" type="button">Compute the shared-unit step</button>
+        </div>
+        <div id="fraction-walkthrough-steps" class="fraction-walkthrough-grid"></div>
+        <pre id="fraction-cgi-out" class="tuple"></pre>
+      </section>
+
       <section class="panel only-philosopher">
         <h2>Formal signature</h2>
         <code id="tuple" class="tuple"></code>
@@ -202,7 +227,7 @@
   </main>
 
   <template id="controls-number-line"><label>mode <select data-arg="mode"><option value="jumps">whole-number jumps</option><option value="fraction">fraction iteration</option><option value="length">rounding length</option></select></label><label>strategy <input data-arg="strategy" type="text" value="COBO" size="8"></label><label>a <input data-arg="a" type="number" value="28"></label><label>b <input data-arg="b" type="number" value="47"></label><label>numerator <input data-arg="numerator" type="number" value="7" min="1"></label><label>denominator <input data-arg="denominator" type="number" value="5" min="1"></label><button id="calculate">Calculate</button><span class="calc-note">POSTs to <code>/api/render</code>; renders the returned witness frames.</span></template>
-  <template id="controls-fraction-bars"><label>kind <select data-arg="kind"><option value="splitting">splitting</option><option value="unit_fraction_partition">unit fraction partition</option><option value="unit_fraction_iteration">unit fraction iteration</option></select></label><label>n <input data-arg="n" type="number" value="1" min="1"></label><label>d <input data-arg="d" type="number" value="4" min="1"></label><button id="calculate">Calculate</button><span class="calc-note">POSTs to <code>/api/render</code>; renders the returned witness frames.</span></template>
+  <template id="controls-fraction-bars"><label>kind <select data-arg="kind"><option value="splitting">splitting</option><option value="unit_fraction_partition">unit fraction partition</option><option value="unit_fraction_iteration">unit fraction iteration</option></select></label><label>n <input data-arg="n" type="number" value="5" min="1"></label><label>d <input data-arg="d" type="number" value="3" min="1"></label><button id="calculate">Calculate</button><span class="calc-note">The embedded filmstrip draws without a worker. Changed inputs compute on request through <code>/api/render</code>.</span></template>
   <template id="controls-area-model"><input type="hidden" data-arg="kind" value="array_multiplication"><label>rows <input data-arg="a" type="number" value="3"></label><label>cols <input data-arg="b" type="number" value="4"></label><button id="calculate">Calculate</button><span class="calc-note">POSTs to <code>/api/render</code>; renders the returned witness frames.</span></template>
   <template id="controls-base-ten-columns"><label>move <select data-arg="kind"><option value="add_with_carry">add (carry)</option><option value="subtract_with_borrow">subtract (borrow)</option><option value="represent">represent</option><option value="base_decomposition">decompose</option></select></label><label>a <input id="arg-a" data-arg="a" type="number" value="27"></label><label>b <input data-arg="b" type="number" value="15"></label><input id="arg-n" data-arg="n" type="number" value="27" hidden><label>base <select data-arg="base"><option value="5">5</option><option value="7">7</option><option value="10" selected>10</option><option value="12">12</option></select></label><button id="calculate">Calculate</button><span class="calc-note">The selected base flows through <code>/api/render</code>.</span></template>
   <template id="controls-set-grouping"><input type="hidden" data-arg="spec" value="make_ten"><label>a <input data-arg="a" type="number" value="8"></label><label>b <input data-arg="b" type="number" value="5"></label><button id="calculate">Calculate</button><span class="calc-note">POSTs to <code>/api/render</code>; renders the returned witness frames.</span></template>
@@ -232,9 +257,11 @@
   <script>
     (function () {
       "use strict";
+      // Change this one placeholder to replace the unlike-denominator walkthrough.
+      var FRACTION_WALKTHROUGH_DEFAULT = {na:3, da:4, nb:2, db:3, kind:"count_on_from_larger"};
       var FORMAT = {
         "number-line": {title:"Number line", subhead:"Whole-number and unit-fraction iteration as jumps along a path; rounding as a length diagram. The picture is built from the Prolog trace, not recomputed here.", op:"number_line_render", controls:"controls-number-line", extras:[]},
-        "fraction-bars": {title:"Fraction bars", subhead:"A fraction automaton drawn as bars: partition the whole, disembed the unit fraction, iterate it. The trace coordinates three levels of units at once and is driven from the render witness.", op:"fraction_render", controls:"controls-fraction-bars", extras:["fraction-units"]},
+        "fraction-bars": {title:"Fraction bars", subhead:"A fraction automaton drawn as bars: partition the whole, disembed the unit fraction, iterate it. The trace coordinates three levels of units at once and is driven from the render witness.", op:"fraction_render", controls:"controls-fraction-bars", extras:["fraction-units", "fraction-walkthrough"]},
         "area-model": {title:"Area model", subhead:"Multiplication as a grid of unit squares; partial products as labelled sub-rectangles. Drawn from the array witness.", op:"area_render", controls:"controls-area-model", extras:[]},
         "base-ten-columns": {title:"Ace of Base", subhead:"Place value for the operative base you pick. Units, then groups of the base, the base squared, and the base cubed. Bundling and carrying follow that base from the place-value witness.", op:"base_ten_render", controls:"controls-base-ten-columns", extras:[]},
         "set-grouping": {title:"Set grouping", subhead:"Quantities as dots in ten-frames, bins, and make-ten pairings. Each frame is a step the grouping witness names.", op:"set_grouping_render", controls:"controls-set-grouping", extras:[]},
@@ -274,6 +301,19 @@
         document.querySelectorAll('[data-extra="' + extra + '"]').forEach(function (panel) {
           panel.hidden = false;
         });
+      });
+
+      // Chat-generated scene links use ?a=&b=&kind=. Apply those values to the
+      // visible calculation controls so the link opens as a live worked example.
+      ["a", "b", "kind"].forEach(function (name) {
+        if (!params.has(name)) return;
+        var input = controls.querySelector('[data-arg="' + name + '"]');
+        if (key === "fraction-bars" && name === "a") input = controls.querySelector('[data-arg="n"]');
+        if (key === "fraction-bars" && name === "b") input = controls.querySelector('[data-arg="d"]');
+        if (!input) return;
+        var value = params.get(name);
+        if (input.tagName === "SELECT" && !Array.prototype.some.call(input.options, function (option) { return option.value === value; })) return;
+        input.value = value;
       });
 
       var source = document.querySelector('[data-format-frames="' + key + '"]');
@@ -322,6 +362,51 @@
               .then(function (data) { out.textContent = JSON.stringify(data, null, 2) || "The route returned an empty reply."; })
               .catch(function () { out.textContent = "The Hermes server did not return JSON."; });
           });
+        });
+      }
+
+      if (key === "fraction-bars") {
+        var walkIds = ["na", "da", "nb", "db"];
+        walkIds.forEach(function (name) {
+          document.getElementById("walk-" + name).value = FRACTION_WALKTHROUGH_DEFAULT[name];
+        });
+        function gcd(a, b) { while (b) { var t = b; b = a % b; a = t; } return Math.abs(a); }
+        function bar(n, d) {
+          var groups = [];
+          for (var whole = 0; whole < Math.ceil(n / d); whole += 1) {
+            var parts = [];
+            for (var part = 0; part < d; part += 1) {
+              parts.push('<i class="' + ((whole * d + part) < n ? '' : 'off') + '"></i>');
+            }
+            groups.push('<span class="mini-bar">' + parts.join("") + '</span>');
+          }
+          return groups.join("");
+        }
+        function walkthroughValues() {
+          var out = {};
+          walkIds.forEach(function (name) { out[name] = Math.max(1, Number(document.getElementById("walk-" + name).value) || 1); });
+          out.d = out.da * out.db / gcd(out.da, out.db);
+          out.left = out.na * (out.d / out.da);
+          out.right = out.nb * (out.d / out.db);
+          return out;
+        }
+        function drawWalkthrough() {
+          var v = walkthroughValues();
+          document.getElementById("fraction-walkthrough-steps").innerHTML =
+            '<div class="fraction-walkthrough-step"><b>1 · Make and iterate 1/' + v.da + '</b>' + bar(v.na, v.da) + v.na + '/' + v.da + ' keeps 1/' + v.da + ' as its unit.</div>' +
+            '<div class="fraction-walkthrough-step"><b>2 · Make and iterate 1/' + v.db + '</b>' + bar(v.nb, v.db) + v.nb + '/' + v.db + ' keeps 1/' + v.db + ' as its unit.</div>' +
+            '<div class="fraction-walkthrough-step"><b>3 · Re-unitize</b>' + v.na + '/' + v.da + ' = ' + v.left + '/' + v.d + '<br>' + v.nb + '/' + v.db + ' = ' + v.right + '/' + v.d + '</div>' +
+            '<div class="fraction-walkthrough-step"><b>4 · Add shared units</b>' + v.left + '/' + v.d + ' + ' + v.right + '/' + v.d + ' = ' + (v.left + v.right) + '/' + v.d + '</div>';
+        }
+        walkIds.forEach(function (name) { document.getElementById("walk-" + name).addEventListener("input", drawWalkthrough); });
+        drawWalkthrough();
+        document.getElementById("fraction-cgi-run").addEventListener("click", function () {
+          var v = walkthroughValues(), out = document.getElementById("fraction-cgi-out");
+          out.textContent = "Requesting the same-denominator CGI addition…";
+          fetch("/api/fraction_cgi_addition", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({kind:FRACTION_WALKTHROUGH_DEFAULT.kind, na:v.left, nb:v.right, d:v.d})})
+            .then(function (response) { return response.json(); })
+            .then(function (body) { out.textContent = JSON.stringify(body.result || body, null, 2); })
+            .catch(function () { out.textContent = "The local Hermes worker did not answer."; });
         });
       }
 

@@ -15,6 +15,14 @@
  */
 
 :root {
+  --hermes-base: light;
+  --acc-recollection: #5b4a9e;
+  --acc-norms:        #2f5f9e;
+  --acc-objects:      #a97c24;
+  --acc-body:         #b95238;
+  --acc-negation:     #3d6b45;
+  --acc-learner:      #2c7d78;
+
   /* === Page tokens (the console's warm paper / gold identity) === */
   --ink:         #0d0c08;
   --ink-soft:    #1b1810;

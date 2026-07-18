@@ -70,7 +70,7 @@ def clean_candidate(raw):
         return None, None
     if not PATH_RE.fullmatch(s):
         return None, None
-    # Reject ellipsis pseudo-paths from prose/comments (".../render/shell.js").
+    # Reject ellipsis pseudo-paths from prose/comments.
     if any(part.strip(".") == "" and len(part) > 2 for part in s.split("/")):
         return None, None
     return s, None
@@ -135,7 +135,7 @@ def resolve(repo_root, base_dirs, cand, tracked):
 
 
 # Assets whose internal paths resolve against the PAGE that loads them, not
-# against their own location (shell.js builds nav links this way). These
+# against their own location (client-side shells build nav links this way). These
 # inherit their referrers' base directories as extra resolution bases.
 INHERITS_BASES = {".js", ".mjs", ".css", ".json"}
 

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-hermes-base="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Does it reorganize itself? Test it.</title>
+<link rel="stylesheet" href="/more-zeeman/hermes-tokens-dark.css">
+<script defer src="/more-zeeman/render/hermes-shell.js" data-root="/more-zeeman/" data-app="/" data-active="reorganization"></script>
 <style>
   :root { --bg:#11131a; --panel:#1a1d28; --ink:#e6e8ef; --dim:#9aa0b4;
           --line:#2c3142; --green:#5fd68a; --amber:#e6b84c;
@@ -195,7 +197,6 @@ function moveList(moves) {
 }
 
 document.getElementById('run').onclick = run;
-window.addEventListener('DOMContentLoaded', run);
 
 async function run() {
   const d = domainSel.value;

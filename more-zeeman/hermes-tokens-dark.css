@@ -13,6 +13,14 @@
  */
 
 :root {
+  --hermes-base: dark;
+  --acc-recollection: #b3a4ef;
+  --acc-norms:        #7ab0e6;
+  --acc-objects:      #e8a84c;
+  --acc-body:         #d4634a;
+  --acc-negation:     #6b9e8c;
+  --acc-learner:      #5bb4ae;
+
   /* --- Backgrounds --- */
   --bg:             #110f08;
   --surface:        #1a1710;

@@ -6599,6 +6599,7 @@ crosswalk/families/cw_whole_number_claim.pl
 crosswalk/merge_evidence.pl
 crosswalk/merge_gate_baseline.txt
 crosswalk/representation_spine.pl
+docs/research/2026-06-25-the-juncture-and-differance.md
 docs/research/2026-07-01-talkmoves-pass1-math-prompt.md
 docs/research/2026-07-01-talkmoves-pass2-posture-prompt.md
 docs/research_assets/research/2026-05-11-action-automata-corpus-bindings.csv
@@ -9097,6 +9098,7 @@ hermes/app/workflow/runtime.py
 hermes/app/workflow/score.py
 hermes/app/workflow/service.py
 hermes/app/workflow_api.py
+hermes/capability_registry.pl
 hermes/commitment_matcher.pl
 hermes/encyclopedia.pl
 hermes/event_scoring.pl
@@ -9230,6 +9232,7 @@ more-zeeman/area-model/samples/fraction-2-3-times-3-4.json
 more-zeeman/area-model/samples/partial-13-14.json
 more-zeeman/area-model/samples/partial-products-13-14.json
 more-zeeman/area-model/samples/prime-7.json
+more-zeeman/atlas.html
 more-zeeman/balance-scale/samples/solve-2x3-11.json
 more-zeeman/base-ten/compare.html
 more-zeeman/base-ten/samples/add-27-15-base10.json
@@ -9327,7 +9330,6 @@ more-zeeman/render/hermes-shell.js
 more-zeeman/render/host.css
 more-zeeman/render/node-adapter.js
 more-zeeman/render/shell.css
-more-zeeman/render/shell.js
 more-zeeman/scoreboard.html
 more-zeeman/set-grouping/compare.html
 more-zeeman/set-grouping/samples/equal-groups-3x4.json
@@ -9363,6 +9365,7 @@ more-zeeman/strategies/strategy_styles.css
 more-zeeman/strategies/strategy_viz.js
 more-zeeman/unit-echo/index.html
 more-zeeman/visualizations.html
+more-zeeman/witnesses.html
 paths.pl
 pml/Modal_Logic/AppendixA_Unified_2.pdf
 pml/Modal_Logic/AppendixA_Unified_2.tex
@@ -9395,6 +9398,7 @@ scripts/bundle/app_manifest.py
 scripts/bundle/app_manifest.txt
 scripts/bundle/prebake.py
 scripts/bundle/smoke_bundle.py
+scripts/extract_capability_registry.py
 scripts/html_surface_check.py
 scripts/research/export_mua_for_mud.py
 scripts/talkmoves_score_blind_corpus.py

@@ -50,6 +50,45 @@
   if (location.protocol === "file:" && APP === "/") APP = ROOT + "../hermes/app/web/";
   var FORCED_ACTIVE = attr("data-active", "");
 
+  // --- THE PRESENTATIONAL MAP (revisable; asserts nothing on disk) --------
+  // Theme labels and assignments are orientation cues only. Re-theming a page
+  // changes no route, folder, capability, or conceptual ownership.
+  var THEMES = {
+    recollection: { label: "Recollection",       light: "#5b4a9e", dark: "#b3a4ef" },
+    norms:        { label: "Norms & curriculum", light: "#2f5f9e", dark: "#7ab0e6" },
+    objects:      { label: "Objects",            light: "#a97c24", dark: "#e8a84c" },
+    body:         { label: "The feeling body",   light: "#b95238", dark: "#d4634a" },
+    negation:     { label: "Incompatibility",    light: "#3d6b45", dark: "#6b9e8c" },
+    learner:      { label: "The learner",        light: "#2c7d78", dark: "#5bb4ae" }
+  };
+  var PAGE = {
+    console:        { theme: "norms",        lede: "Bring a mathematical discussion, computation, or lesson to the local workbench." },
+    discussions:    { theme: "norms",        lede: "Build a claim-checked account of a discussion and keep the evidence attached." }, // R? recollection
+    visualizations: { theme: "objects",      lede: "Run a representation filmstrip, then change its inputs when a worker is available." },
+    witnesses:      { theme: "recollection", lede: "Query the finite witness families gathered from the loaded knowledge base." },
+    monitoring:     { theme: "norms",        lede: "Assemble one lesson's standards, anticipated strategies, and recorded misconceptions." },
+    gallery:        { theme: "objects",      lede: "Browse coded representation samples from the local asset manifest." },
+    landing:        { theme: "recollection", lede: "Choose a door into Hermes or follow the theory journey from its shared entry." },
+    no:             { theme: "negation",     lede: "Being wrong has structure: a rule, its domain, and the collision beyond that domain." },
+    breaks:         { theme: "negation",     lede: "Run where a grounding metaphor or incompatibility relation reaches its boundary." },
+    snap:           { theme: "body",         lede: "Drag the disc until accumulated tension produces a snap into another strategy." },
+    counting:       { theme: "objects",      lede: "Counting by ones is correct and, past a point, unaffordable; follow the cost tally by tally." },
+    crisis:         { theme: "body",         lede: "Work 38 + 55 by counting and mark the point where that method stops paying." },
+    strategies:     { theme: "objects",      lede: "Run counting-on, COBO, and RMB as successively shorter strategic actions." },
+    fractal:        { theme: "objects",      lede: "Run the nested strategy machines and change the conditions that propagate a snap." }, // R? body
+    playground:     { theme: "body",         lede: "Drag one node and test when enough local snaps produce a new strategy ring." },
+    boundary:       { theme: "objects",      lede: "Test what the action model handles at the boundary between counting and fractions." }, // R? negation
+    matrix:         { theme: "body",         lede: "Follow each snap as it grows the memory grid and reorganizes repeated tallies." }, // R? objects
+    muds:           { theme: "recollection", lede: "Trace the recorded relations between mathematical uses and their vocabularies." }, // R? negation
+    scoreboard:     { theme: "norms",        lede: "Query commitments, entitlements, and expressive-power records on one scoreboard." },
+    atlas:          { theme: "recollection", lede: "Find each capability, the route that reaches it, and the page that calls it." },
+    bridge:         { theme: "learner",      lede: "Run the formal bridge from a resource limit through consultation to a revised strategy." },
+    coordination:   { theme: "learner",      lede: "Test how units are composed, repeated, and treated as new units." }, // R? objects
+    reorganization: { theme: "learner",      lede: "Give the learner a fraction task, then test the strategy it builds after getting stuck." },
+    "unit-echo":    { theme: "objects",      lede: "Run base regrouping beside fraction iteration at the same arity." },
+    "fraction-bars":{ theme: "objects",      lede: "Draw a fraction operation from its action trace and change the operands." }
+  };
+
   // mz(x) -> more-zeeman file ; app(x) -> console/server-root file
   function mz(f) { return ROOT + f; }
   function app(f) { return APP + f; }
@@ -121,7 +160,7 @@
 
   // ---- CSS ---------------------------------------------------------------
   var CSS = `
-  :root { --hshell-w: 236px; --hshell-top: 46px; }
+  :root { --hshell-w: 236px; --hshell-top: 70px; }
   html.hshell-ready, html.hshell-ready body { height: 100%; }
   html.hshell-ready body {
     margin: 0; padding: 0; max-width: none; width: auto;
@@ -153,7 +192,7 @@
   /* ---- top bar ---- */
   .hshell-top {
     grid-area: top; display: flex; align-items: center; gap: 12px;
-    padding: 0 16px; min-width: 0;
+    padding: 0 16px 24px; min-width: 0; position: relative;
     background: var(--paper-cool, var(--surface, #ede4cf));
     border-bottom: 1px solid var(--line, var(--border, rgba(0,0,0,.16)));
   }
@@ -168,6 +207,16 @@
     color: var(--ink, var(--text, #1b1810)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .hshell-crumb .sec { color: var(--muted, #6c6452); font-weight: 400; }
   .hshell-crumb .sep { color: var(--muted, #6c6452); opacity: .5; margin: 0 7px; }
+  .hshell-chip { display: inline-block; margin-right: 8px; padding: 3px 7px;
+    border: 1px solid var(--accent, currentColor); border-radius: 999px;
+    color: var(--accent, currentColor); background: transparent;
+    font: 600 9px/1 var(--mono, ui-monospace, monospace); letter-spacing: .06em;
+    text-transform: uppercase; vertical-align: 1px; }
+  .hshell-orientation { position: absolute; left: 0; right: 0; bottom: 0; height: 24px;
+    display: flex; align-items: center; padding: 0 16px 0 58px; overflow: hidden;
+    border-top: 1px solid color-mix(in srgb, var(--accent, currentColor) 32%, transparent);
+    color: var(--muted, #6c6452); background: color-mix(in srgb, var(--accent, currentColor) 7%, transparent);
+    font: 11px/1.2 var(--serif, Georgia, serif); white-space: nowrap; text-overflow: ellipsis; }
   .hshell-slot { margin-left: auto; display: flex; align-items: center; gap: 8px; min-width: 0; }
 
   /* ---- sidebar ---- */
@@ -202,12 +251,15 @@
   .hshell-item:hover { background: rgba(127,127,127,.1); opacity: 1; }
   .hshell-item.active {
     opacity: 1; font-weight: 600; color: var(--ink, var(--text, #1b1810));
-    background: var(--gold-pale, rgba(232,168,76,.14));
+    background: color-mix(in srgb, var(--accent, var(--gold-deep, #a97c24)) 14%, transparent);
   }
   .hshell-item.active::before {
     content: ""; position: absolute; left: 8px; top: 7px; bottom: 7px; width: 3px;
-    border-radius: 2px; background: var(--gold-deep, var(--snap, #a97c24));
+    border-radius: 2px; background: var(--accent, var(--gold-deep, var(--snap, #a97c24)));
   }
+  .hshell-item-dot { position: absolute; left: 9px; top: 50%; width: 6px; height: 6px;
+    margin-top: -3px; border-radius: 50%; background: var(--item-accent, var(--muted)); }
+  .hshell-item.active .hshell-item-dot { display: none; }
 
   /* ---- responsive: off-canvas under 860px ---- */
   @media (max-width: 860px) {
@@ -251,12 +303,6 @@
   var MARK = ROOT + "hermes_logo.svg";
   var ICON_MENU = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>';
   var CHEV = '<svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
-  var SECTION_DOT = {
-    practice: "var(--rust,#b95238)",
-    theory: "var(--teal-deep,var(--release,#2c5e66))",
-    research: "var(--muted,#6c6452)"
-  };
-
   // ---- build DOM ---------------------------------------------------------
   function h(tag, cls, html) {
     var n = document.createElement(tag);
@@ -275,6 +321,16 @@
   }
 
   function build() {
+    var root = document.documentElement;
+    var page = PAGE[ACTIVE];
+    var declaredBase = root.getAttribute("data-hermes-base") ||
+      getComputedStyle(root).getPropertyValue("--hermes-base").trim();
+    var base = declaredBase === "dark" ? "dark" : "light";
+    var theme = page && THEMES[page.theme];
+    if (theme) {
+      root.dataset.hermesTheme = page.theme;
+      root.style.setProperty("--accent", theme[base]);
+    }
     var style = h("style"); style.id = "hshell-css"; style.textContent = CSS;
     document.head.appendChild(style);
 
@@ -291,12 +347,18 @@
     var toggle = h("button", "hshell-toggle", ICON_MENU);
     toggle.setAttribute("aria-label", "Toggle navigation");
     var active = findActiveSection();
+    var themeChip = theme ? '<span class="hshell-chip">' + theme.label + '</span>' : '';
     var crumbHTML = active
-      ? '<span class="sec">' + active.sec.title + '</span><span class="sep">/</span>' + active.item[1]
+      ? themeChip + '<span class="sec">' + active.sec.title + '</span><span class="sep">/</span>' + active.item[1]
       : (document.title || "Hermes").replace(/\s*[—–|].*$/, "");
     var crumb = h("div", "hshell-crumb", crumbHTML);
     var slot = h("div", "hshell-slot"); slot.id = "hshell-slot";
     top.appendChild(toggle); top.appendChild(crumb); top.appendChild(slot);
+    if (page && page.lede) {
+      var orientation = h("div", "hshell-orientation");
+      orientation.textContent = page.lede;
+      top.appendChild(orientation);
+    }
 
     // sidebar
     var side = h("nav", "hshell-side");
@@ -306,7 +368,7 @@
       var isActiveSec = active && active.sec === sec;
       if (!isActiveSec && active) secEl.className += " closed";
       var lbl = h("button", "lbl",
-        '<span class="dot" style="background:' + (SECTION_DOT[sec.kind] || "var(--muted)") + '"></span>' +
+        '<span class="dot" style="background:var(--accent,var(--muted))"></span>' +
         sec.title + CHEV);
       lbl.addEventListener("click", function () { secEl.classList.toggle("closed"); });
       secEl.appendChild(lbl);
@@ -314,6 +376,11 @@
       sec.items.forEach(function (it) {
         var a = h("a", "hshell-item" + (it[0] === ACTIVE ? " active" : ""), it[1]);
         a.href = it[2];
+        var itemPage = PAGE[it[0]], itemTheme = itemPage && THEMES[itemPage.theme];
+        if (itemTheme) {
+          a.style.setProperty("--item-accent", itemTheme[base]);
+          a.insertBefore(h("span", "hshell-item-dot"), a.firstChild);
+        }
         if (it[0] === ACTIVE) a.setAttribute("aria-current", "page");
         items.appendChild(a);
       });
@@ -356,7 +423,7 @@
     document.documentElement.classList.add("hshell-ready");
     window.HermesShell = { slot: slot, main: main };
 
-    // ---- absorb any legacy nav (render/shell.js bar, shared.js top-bar) ----
+    // ---- absorb any legacy nav (older injected bars, shared.js top-bar) ----
     // shared.js injects its bar + discourse toggle on DOMContentLoaded, after
     // this defer script runs; adopt the discourse buttons into our top slot and
     // retire the old bars so pages carry one nav, not three.

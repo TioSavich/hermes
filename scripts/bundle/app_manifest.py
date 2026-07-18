@@ -164,7 +164,10 @@ def tracked_files() -> list[str]:
     out = subprocess.run(
         ["git", "ls-files", "-z"], cwd=REPO, capture_output=True, check=True
     )
-    return [p for p in out.stdout.decode().split("\0") if p]
+    # A task may delete a tracked runtime file before the controller stages the
+    # deletion. Generate from the working tree that will be packaged, not from
+    # an index entry whose path no longer exists.
+    return [p for p in out.stdout.decode().split("\0") if p and (REPO / p).is_file()]
 
 
 def keep(path: str, with_figures: bool) -> bool:

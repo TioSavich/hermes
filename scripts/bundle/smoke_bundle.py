@@ -55,7 +55,7 @@ OPTIONAL_PREFIXES = ("/docs/",)
 # inside a try/catch, falling back to local behavior (coordination.html runs
 # its own simulation, the strategies index skips its gaps panel). Their
 # absence is a designed fallback, not a broken surface.
-LEGACY_FALLBACK_ROUTES = {"/api/base", "/api/cgi_dispatch",
+LEGACY_FALLBACK_ROUTES = {"/api/cgi_dispatch",
                           "/api/action/topology/gaps"}
 # Routes intentionally cordoned from the main server may be listed here.
 RESEARCH_WING_ROUTES: set[str] = set()
