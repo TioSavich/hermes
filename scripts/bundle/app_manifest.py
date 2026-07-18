@@ -50,6 +50,8 @@ KEEP_TREES_RATIONALE = [
     ("pml", "semantic axioms, MUA relations"),
     ("arche-trace", "provers, incompatibility engines"),
     ("research", "derivative layer of the literature corpus (coded db + bibliography); the copyrighted articles stay in the source project"),
+    ("docs/research_assets/research/student_work_figures",
+     "student-work figures excerpted from the coded literature, served by the gallery with citations attached; the articles themselves stay in the source project"),
 ]
 KEEP_TREES = [tree for tree, _ in KEEP_TREES_RATIONALE]
 
