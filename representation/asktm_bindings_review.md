@@ -2,7 +2,7 @@
 
 > DRAFT, OWNER NOT VERIFIED. Mapped rows may reach the gallery only with an unverified draft badge.
 
-Accounting: 140 codes; 59 mapped; 0 awaiting_conversion; 81 no_defensible_binding; 0 verified.
+Accounting: 140 codes; 63 mapped; 0 awaiting_conversion; 77 no_defensible_binding; 0 verified.
 
 ## area_model_part_of_part (8)
 
@@ -61,7 +61,7 @@ Accounting: 140 codes; 59 mapped; 0 awaiting_conversion; 81 no_defensible_bindin
 - `G4Q3:B3` — Incorrect response includes visual representations  
   The question asks students to construct equivalent fractions.
 
-## no_defensible_binding (81)
+## no_defensible_binding (77)
 
 - `G4Q1:A1` — Correct answer only, does not include any work or justification  
   This response-form category does not expose an observable strategy to bind.
@@ -75,16 +75,8 @@ Accounting: 140 codes; 59 mapped; 0 awaiting_conversion; 81 no_defensible_bindin
   This response-form category does not expose an observable strategy to bind.
 - `G4Q2:A1` — Correct answer only, does not include any work or justification  
   This response-form category does not expose an observable strategy to bind.
-- `G4Q2:A2` — Correct response includes symbolic work and/or written justification but no visual representations  
-  Decimal comparison has no match among the 27 grounded automata.
-- `G4Q2:A3` — Correct response includes visual representations  
-  Decimal comparison has no match among the 27 grounded automata.
 - `G4Q2:B1` — Incorrect answer only, does not include any work or justification  
   This response-form category does not expose an observable strategy to bind.
-- `G4Q2:B2` — Incorrect response includes symbolic work and/or written justification but no visual representations  
-  Decimal comparison has no match among the 27 grounded automata.
-- `G4Q2:B3` — Incorrect response includes visual representations  
-  Decimal comparison has no match among the 27 grounded automata.
 - `G4Q2:C1` — Blank  
   This response-form category does not expose an observable strategy to bind.
 - `G4Q2:C2` — “I’m not sure” or “I don’t know”  
@@ -250,6 +242,17 @@ Accounting: 140 codes; 59 mapped; 0 awaiting_conversion; 81 no_defensible_bindin
   The dominant coded doing is decimal subtraction.
 - `G5Q6:B3` — Incorrect response includes visual representations  
   The dominant coded doing is decimal subtraction.
+
+## smr_decimal_fraction_compare (4)
+
+- `G4Q2:A2` — Correct response includes symbolic work and/or written justification but no visual representations  
+  The coded work compares decimals by fraction conversion or coordinated place-value units.
+- `G4Q2:A3` — Correct response includes visual representations  
+  The coded work compares decimals by fraction conversion or coordinated place-value units.
+- `G4Q2:B2` — Incorrect response includes symbolic work and/or written justification but no visual representations  
+  The coded work compares decimals by fraction conversion or coordinated place-value units.
+- `G4Q2:B3` — Incorrect response includes visual representations  
+  The coded work compares decimals by fraction conversion or coordinated place-value units.
 
 ## smr_div_ucr (12)
 

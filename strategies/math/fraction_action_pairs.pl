@@ -72,6 +72,22 @@
               [ run_number_line_compare/6,
                 run_count_marks_compare/6
               ]).
+:- use_module(math(smr_frac_area_compare),
+              [ run_area_model_compare/6,
+                run_unequal_partition_piece_compare/6
+              ]).
+:- use_module(math(smr_frac_set_compare),
+              [ run_set_model_compare/6,
+                run_subset_size_focus_compare/6
+              ]).
+:- use_module(math(smr_frac_benchmark_compare),
+              [ run_benchmark_compare/6,
+                run_gap_thinking_compare/7
+              ]).
+:- use_module(math(smr_frac_common_unit_compare),
+              [ run_common_unit_compare/6,
+                run_additive_parts_compare/6
+              ]).
 
 % Text-grounded PFS kernel (Steffe-Hackenberg). Sits alongside the live
 % N101 PFS in divaded_fractional_units as the citable manuscript form.
@@ -543,6 +559,122 @@ run_fraction_action(number_line_count_marks_not_intervals,
                     violated_invariant(interval_count_not_mark_count),
                     elaborates(smr_frac_nl_compare:run_count_marks_compare/6)
                   ]).
+run_fraction_action(area_model_fraction_comparison,
+                    fraction_pair(A, B, C, D), unit(whole), Outcome, Trace) :-
+    run_area_model_compare(A, B, C, D, Result, Trace),
+    comparison_outcome(area_model_fraction_comparison, productive,
+                       fraction_area_model_comparison, q_unequal_partition_piece_count,
+                       [q_unitize_whole, q_verify_same_size_whole, q_partition,
+                        q_disembed, q_iterate_count_parts,
+                        q_unequal_partition_piece_count, q_compare_relative_size],
+                       A, B, C, D, Result, Result,
+                       [ validity(correct),
+                         grounded_by(partition_disembed_iterate_and_co_measure),
+                         elaborates(smr_frac_area_compare:run_area_model_compare/6)
+                       ], Outcome).
+run_fraction_action(area_model_unequal_partition_piece_count,
+                    fraction_pair(A, B, C, D), unit(whole), Outcome, Trace) :-
+    run_area_model_compare(A, B, C, D, Expected, _),
+    run_unequal_partition_piece_compare(A, B, C, D, Result, Trace),
+    comparison_outcome(area_model_unequal_partition_piece_count, deformation,
+                       fraction_area_model_comparison, q_compare_relative_size,
+                       [q_unitize_whole, q_verify_same_size_whole, q_partition,
+                        q_disembed, q_iterate_count_parts, q_compare_relative_size],
+                       A, B, C, D, Result, Expected,
+                       [ validity(incorrect),
+                         deformation_of(area_model_fraction_comparison),
+                         misconception_family(unequal_partition_piece_count),
+                         violated_invariant(equal_parts_before_piece_count),
+                         elaborates(smr_frac_area_compare:run_unequal_partition_piece_compare/6)
+                       ], Outcome).
+run_fraction_action(set_model_fraction_comparison,
+                    fraction_pair(A, B, C, D), unit(whole), Outcome, Trace) :-
+    run_set_model_compare(A, B, C, D, Result, Trace),
+    comparison_outcome(set_model_fraction_comparison, productive,
+                       fraction_set_model_comparison, q_subset_size_focus,
+                       [q_unitize_set, q_verify_same_whole, q_partition_set,
+                        q_count_equal_sets, q_disembed_subset, q_subset_size_focus,
+                        q_compare_relative_size],
+                       A, B, C, D, Result, Result,
+                       [ validity(correct),
+                         grounded_by(equal_sharing_disembedding_and_co_measurement),
+                         elaborates(smr_frac_set_compare:run_set_model_compare/6)
+                       ], Outcome).
+run_fraction_action(set_model_subset_size_focus,
+                    fraction_pair(A, B, C, D), unit(whole), Outcome, Trace) :-
+    run_set_model_compare(A, B, C, D, Expected, _),
+    run_subset_size_focus_compare(A, B, C, D, Result, Trace),
+    comparison_outcome(set_model_subset_size_focus, deformation,
+                       fraction_set_model_comparison, q_compare_relative_size,
+                       [q_unitize_set, q_verify_same_whole, q_partition_set,
+                        q_count_equal_sets, q_disembed_subset,
+                        q_compare_relative_size],
+                       A, B, C, D, Result, Expected,
+                       [ validity(incorrect),
+                         deformation_of(set_model_fraction_comparison),
+                         misconception_family(subset_size_not_equal_sets),
+                         violated_invariant(denominator_counts_equal_sets),
+                         elaborates(smr_frac_set_compare:run_subset_size_focus_compare/6)
+                       ], Outcome).
+run_fraction_action(benchmark_fraction_comparison,
+                    fraction_pair(A, B, C, D), unit(whole), Outcome, Trace) :-
+    run_benchmark_compare(A, B, C, D, Result, Trace),
+    comparison_outcome(benchmark_fraction_comparison, productive,
+                       fraction_benchmark_comparison, q_residual_compare,
+                       [q_select_benchmark, q_benchmark_first,
+                        q_benchmark_second, q_transitive_compare,
+                        q_residual_compare],
+                       A, B, C, D, Result, Result,
+                       [ validity(correct),
+                         grounded_by(reference_point_and_residual_comparison),
+                         elaborates(smr_frac_benchmark_compare:run_benchmark_compare/6)
+                       ], Outcome).
+run_fraction_action(gap_thinking_fraction_comparison,
+                    fraction_pair(A, B, C, D), unit(whole), Outcome, Trace) :-
+    run_benchmark_compare(A, B, C, D, Expected, _),
+    run_gap_thinking_compare(A, B, C, D, Result, Viability, Trace),
+    viability_validity(Viability, Validity),
+    comparison_outcome(gap_thinking_fraction_comparison, deformation,
+                       fraction_benchmark_comparison, q_gap_thinking,
+                       [q_select_benchmark, q_benchmark_first,
+                        q_benchmark_second, q_gap_thinking,
+                        q_transitive_compare, q_residual_compare],
+                       A, B, C, D, Result, Expected,
+                       [ deformation_of(benchmark_fraction_comparison),
+                         misconception_family(gap_thinking),
+                         viability_context(Viability),
+                         validity(Validity),
+                         elaborates(smr_frac_benchmark_compare:run_gap_thinking_compare/7)
+                       ], Outcome).
+run_fraction_action(common_unit_fraction_comparison,
+                    fraction_pair(A, B, C, D), unit(whole), Outcome, Trace) :-
+    run_common_unit_compare(A, B, C, D, Result, Trace),
+    comparison_outcome(common_unit_fraction_comparison, productive,
+                       fraction_common_unit_comparison, q_emit_order,
+                       [q_common_partition, q_common_numerator,
+                        q_transform_commensurate_1, q_transform_commensurate_2,
+                        q_measure_with_co_unit, q_compare_same_denominator,
+                        q_compare_same_numerator],
+                       A, B, C, D, Result, Result,
+                       [ validity(correct),
+                         grounded_by(common_unit_co_measurement),
+                         elaborates(smr_frac_common_unit_compare:run_common_unit_compare/6)
+                       ], Outcome).
+run_fraction_action(add_numerator_denominator_comparison,
+                    fraction_pair(A, B, C, D), unit(whole), Outcome, Trace) :-
+    run_common_unit_compare(A, B, C, D, Expected, _),
+    run_additive_parts_compare(A, B, C, D, Result, Trace),
+    comparison_outcome(add_numerator_denominator_comparison, deformation,
+                       fraction_common_unit_comparison, q_add_numerator_denominator,
+                       [q_common_partition, q_add_numerator_denominator,
+                        q_measure_with_co_unit, q_compare_same_denominator],
+                       A, B, C, D, Result, Expected,
+                       [ validity(incorrect),
+                         deformation_of(common_unit_fraction_comparison),
+                         misconception_family(add_numerator_and_denominator),
+                         violated_invariant(compare_only_after_common_unit),
+                         elaborates(smr_frac_common_unit_compare:run_additive_parts_compare/6)
+                       ], Outcome).
 run_fraction_action(area_model_part_of_part, fraction_pair(A, B, C, D), unit(whole), Outcome, Trace) :-
     multiplication_components(A, B, C, D, Components),
     Components = fraction_multiplication_components(NumeratorProduct,
@@ -871,6 +1003,22 @@ fraction_action_cluster(number_line_fraction_comparison,
                         fraction_number_line_comparison).
 fraction_action_cluster(number_line_count_marks_not_intervals,
                         fraction_number_line_comparison).
+fraction_action_cluster(area_model_fraction_comparison,
+                        fraction_area_model_comparison).
+fraction_action_cluster(area_model_unequal_partition_piece_count,
+                        fraction_area_model_comparison).
+fraction_action_cluster(set_model_fraction_comparison,
+                        fraction_set_model_comparison).
+fraction_action_cluster(set_model_subset_size_focus,
+                        fraction_set_model_comparison).
+fraction_action_cluster(benchmark_fraction_comparison,
+                        fraction_benchmark_comparison).
+fraction_action_cluster(gap_thinking_fraction_comparison,
+                        fraction_benchmark_comparison).
+fraction_action_cluster(common_unit_fraction_comparison,
+                        fraction_common_unit_comparison).
+fraction_action_cluster(add_numerator_denominator_comparison,
+                        fraction_common_unit_comparison).
 fraction_action_cluster(measurement_division, fraction_measurement_division).
 fraction_action_cluster(reversible_measurement_division, fraction_reversible_measurement_division).
 
@@ -955,6 +1103,43 @@ fraction_action_vocabulary(number_line_count_marks_not_intervals,
                            [q_identify_unit, q_partition_interval,
                             q_count_marks_not_intervals, q_locate_endpoint,
                             q_compare_positions]).
+fraction_action_vocabulary(area_model_fraction_comparison,
+                           [q_unitize_whole, q_verify_same_size_whole,
+                            q_partition, q_disembed, q_iterate_count_parts,
+                            q_compare_relative_size]).
+fraction_action_vocabulary(area_model_unequal_partition_piece_count,
+                           [q_unitize_whole, q_verify_same_size_whole,
+                            q_partition, q_disembed, q_iterate_count_parts,
+                            q_unequal_partition_piece_count,
+                            q_compare_relative_size]).
+fraction_action_vocabulary(set_model_fraction_comparison,
+                           [q_unitize_set, q_verify_same_whole,
+                            q_partition_set, q_count_equal_sets,
+                            q_disembed_subset, q_compare_relative_size]).
+fraction_action_vocabulary(set_model_subset_size_focus,
+                           [q_unitize_set, q_verify_same_whole,
+                            q_partition_set, q_count_equal_sets,
+                            q_disembed_subset, q_subset_size_focus,
+                            q_compare_relative_size]).
+fraction_action_vocabulary(benchmark_fraction_comparison,
+                           [q_select_benchmark, q_benchmark_first,
+                            q_benchmark_second, q_transitive_compare,
+                            q_residual_compare]).
+fraction_action_vocabulary(gap_thinking_fraction_comparison,
+                           [q_select_benchmark, q_benchmark_first,
+                            q_benchmark_second, q_gap_thinking,
+                            q_transitive_compare, q_residual_compare]).
+fraction_action_vocabulary(common_unit_fraction_comparison,
+                           [q_common_partition, q_common_numerator,
+                            q_transform_commensurate_1,
+                            q_transform_commensurate_2,
+                            q_measure_with_co_unit,
+                            q_compare_same_denominator,
+                            q_compare_same_numerator]).
+fraction_action_vocabulary(add_numerator_denominator_comparison,
+                           [q_common_partition, q_add_numerator_denominator,
+                            q_measure_with_co_unit,
+                            q_compare_same_denominator]).
 fraction_action_vocabulary(measurement_division,
                            [dividend_fraction, divisor_fraction, shared_measurement_unit,
                             measured_total, measured_group_size, group_size_count,
@@ -987,6 +1172,18 @@ productive_fraction_deformation(solve_for_unit,
 productive_fraction_deformation(number_line_fraction_comparison,
                                 number_line_count_marks_not_intervals,
                                 count_marks_not_intervals).
+productive_fraction_deformation(area_model_fraction_comparison,
+                                area_model_unequal_partition_piece_count,
+                                unequal_partition_piece_count).
+productive_fraction_deformation(set_model_fraction_comparison,
+                                set_model_subset_size_focus,
+                                subset_size_not_equal_sets).
+productive_fraction_deformation(benchmark_fraction_comparison,
+                                gap_thinking_fraction_comparison,
+                                gap_thinking).
+productive_fraction_deformation(common_unit_fraction_comparison,
+                                add_numerator_denominator_comparison,
+                                add_numerator_and_denominator).
 
 
 %!  fraction_action_misconception_hook(+Outcome, -Family, -Hook) is semidet.
@@ -1019,6 +1216,26 @@ fraction_action_misconception_hook(action_outcome(Kind, Fields), Family, Hook) :
 
 rec(N, Rec) :-
     integer_to_recollection(N, Rec).
+
+comparison_outcome(Kind, Classification, Cluster, State, Vocabulary,
+                   A, B, C, D, Result, Expected, Extra, Outcome) :-
+    Base = [ classification(Classification),
+             cluster(Cluster),
+             automaton_state(State),
+             vocabulary(Vocabulary),
+             input(fraction_pair(A, B, C, D)),
+             result(Result),
+             expected(Expected),
+             components(fraction_comparison_components(
+                            fraction(A, B), fraction(C, D)))
+           ],
+    append(Base, Extra, Fields),
+    Outcome = action_outcome(Kind, Fields).
+
+viability_validity(viability(contextual_success, _, validity(Validity)),
+                   Validity).
+viability_validity(viability(fails_in_context, _, _, _, validity(Validity)),
+                   Validity).
 
 
 % positive_integer/1 imported from math(integer_helpers).

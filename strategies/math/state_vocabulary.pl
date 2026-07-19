@@ -45,6 +45,11 @@ state_label(q_compare_relative_size, van_de_walle,
 state_label(q_compare_relative_size, behr_post_lesh,
             "numerator and denominator strategy",
             "Behr, Wachsmuth, Post & Lesh 1984").
+state_label(q_unequal_partition_piece_count, behr_post_lesh,
+            "whole number dominance", "Behr et al. 1984").
+state_label(q_unequal_partition_piece_count, van_de_walle,
+            "unequal-sized parts do not name fractional parts",
+            "Van de Walle, ch. 15, Fractional Parts").
 
 % Number-line placement and comparison.
 state_label(q_identify_unit, bright_behr_post_wachsmuth, "the unit",
@@ -95,6 +100,9 @@ state_label(q_disembed_subset, constructivist, "disembedding",
 state_label(q_disembed_subset, van_de_walle,
             "subsets of the whole make up fractional parts",
             "Van de Walle, ch. 15, Models for Fractions").
+state_label(q_subset_size_focus, van_de_walle,
+            "focus on the size of a subset rather than the number of equal sets",
+            "Van de Walle, ch. 15, Models for Fractions").
 
 % Benchmark comparison.
 state_label(q_select_benchmark, clarke_roche, "benchmarking",
@@ -118,6 +126,8 @@ state_label(q_residual_compare, van_de_walle,
             "Van de Walle, ch. 15, Comparing Fractions").
 state_label(q_residual_compare, riddle_rodzwell, "filling up the whole",
             "Riddle & Rodzwell 2000, via Clarke & Roche 2009").
+state_label(q_gap_thinking, clarke_roche, "gap thinking",
+            "Pearn & Stephens 2004, via Clarke & Roche 2009").
 
 % Common-denominator / equivalence-based ordering.
 state_label(q_common_partition, constructivist, "common partitioning",
@@ -146,6 +156,28 @@ state_label(q_compare_same_denominator, clarke_roche,
 state_label(q_compare_same_denominator, behr_post_lesh,
             "numerator and denominator strategy",
             "Behr, Wachsmuth, Post & Lesh 1984").
+state_label(q_common_numerator, van_de_walle, "common numerator",
+            "Burns 1999, via Van de Walle, ch. 15").
+state_label(q_compare_same_numerator, cramer_post_delmas, "same numerator",
+            "Cramer, Post & delMas 2002").
+state_label(q_compare_same_numerator, clarke_roche,
+            "numerator the same and compares denominator",
+            "Clarke & Roche 2009").
+state_label(q_add_numerator_denominator, behr_post_lesh, "addition",
+            "Behr, Wachsmuth, Post & Lesh 1984").
+
+% Decimal comparison. These labels describe doings visible in the coded G4Q2
+% legend rather than assigning a literature taxonomy the source does not give.
+state_label(q_identify_decimal_units, asktm_g4q2, "refers to a whole",
+            "ASKTM G4Q2 coded legend, A2/A3").
+state_label(q_express_as_fraction, asktm_g4q2, "converts decimals to fractions",
+            "ASKTM G4Q2 coded legend, A2/A3").
+state_label(q_align_place_value_units, asktm_g4q2, "place value reasoning",
+            "ASKTM G4Q2 coded legend, A2/A3").
+state_label(q_compare_decimal_magnitudes, asktm_g4q2,
+            "uses < or >", "ASKTM G4Q2 coded legend, A1/A2").
+state_label(q_scale_loss, asktm_g4q2, "misnomer of quantity",
+            "ASKTM G4Q2 coded legend, A2/B2").
 
 % Display-default policy.  The final atom_name row is deliberately a fallback,
 % including for the three neutral GAP states, which have no state_label fact.

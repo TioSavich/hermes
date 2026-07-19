@@ -5,9 +5,9 @@
   "source_kind": "ASKTM fine-grained Markdown category legends",
   "accounting": {
     "codes_total": 140,
-    "mapped": 59,
+    "mapped": 63,
     "awaiting_conversion": 0,
-    "no_defensible_binding": 81,
+    "no_defensible_binding": 77,
     "verified": 0
   },
   "bindings": [
@@ -156,9 +156,9 @@
       "question": 2,
       "category_code": "A2",
       "legend_text": "Correct response includes symbolic work and/or written justification but no visual representations",
-      "proposed_automaton": "no_defensible_binding",
-      "proposed_prolog_concept": null,
-      "rationale": "Decimal comparison has no match among the 27 grounded automata.",
+      "proposed_automaton": "smr_decimal_fraction_compare",
+      "proposed_prolog_concept": "run_decimal_action(decimal_fraction_place_value_comparison)",
+      "rationale": "The coded work compares decimals by fraction conversion or coordinated place-value units.",
       "verification_status": "draft_unverified",
       "source": {
         "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q2.md",
@@ -170,9 +170,9 @@
       "question": 2,
       "category_code": "A3",
       "legend_text": "Correct response includes visual representations",
-      "proposed_automaton": "no_defensible_binding",
-      "proposed_prolog_concept": null,
-      "rationale": "Decimal comparison has no match among the 27 grounded automata.",
+      "proposed_automaton": "smr_decimal_fraction_compare",
+      "proposed_prolog_concept": "run_decimal_action(decimal_fraction_place_value_comparison)",
+      "rationale": "The coded work compares decimals by fraction conversion or coordinated place-value units.",
       "verification_status": "draft_unverified",
       "source": {
         "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q2.md",
@@ -198,9 +198,9 @@
       "question": 2,
       "category_code": "B2",
       "legend_text": "Incorrect response includes symbolic work and/or written justification but no visual representations",
-      "proposed_automaton": "no_defensible_binding",
-      "proposed_prolog_concept": null,
-      "rationale": "Decimal comparison has no match among the 27 grounded automata.",
+      "proposed_automaton": "smr_decimal_fraction_compare",
+      "proposed_prolog_concept": "run_decimal_action(decimal_fraction_place_value_comparison)",
+      "rationale": "The coded work compares decimals by fraction conversion or coordinated place-value units.",
       "verification_status": "draft_unverified",
       "source": {
         "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q2.md",
@@ -212,9 +212,9 @@
       "question": 2,
       "category_code": "B3",
       "legend_text": "Incorrect response includes visual representations",
-      "proposed_automaton": "no_defensible_binding",
-      "proposed_prolog_concept": null,
-      "rationale": "Decimal comparison has no match among the 27 grounded automata.",
+      "proposed_automaton": "smr_decimal_fraction_compare",
+      "proposed_prolog_concept": "run_decimal_action(decimal_fraction_place_value_comparison)",
+      "rationale": "The coded work compares decimals by fraction conversion or coordinated place-value units.",
       "verification_status": "draft_unverified",
       "source": {
         "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q2.md",

@@ -174,6 +174,48 @@ action_automaton_signature(fraction,
                            number_line_count_marks_not_intervals,
                            inputs(two_nonnegative_fractions, unit_interval),
                            incorrect_fraction_order_relation).
+action_automaton_signature(fraction, area_model_fraction_comparison,
+                           inputs(two_positive_fractions,
+                                  congruent_partitioned_regions),
+                           fraction_order_relation).
+action_automaton_signature(fraction,
+                           area_model_unequal_partition_piece_count,
+                           inputs(two_positive_fractions,
+                                  partitioned_regions),
+                           context_insensitive_piece_count_relation).
+action_automaton_signature(fraction, set_model_fraction_comparison,
+                           inputs(two_positive_fractions,
+                                  commensurable_discrete_collections),
+                           fraction_order_relation).
+action_automaton_signature(fraction, set_model_subset_size_focus,
+                           inputs(two_positive_fractions,
+                                  discrete_collections),
+                           subset_count_relation).
+action_automaton_signature(fraction, benchmark_fraction_comparison,
+                           inputs(two_nonnegative_fractions,
+                                  benchmarks_zero_one_half_one),
+                           fraction_order_relation).
+action_automaton_signature(fraction, gap_thinking_fraction_comparison,
+                           inputs(two_nonnegative_fractions,
+                                  numerator_denominator_gaps),
+                           context_tagged_fraction_order_relation).
+action_automaton_signature(fraction, common_unit_fraction_comparison,
+                           inputs(two_nonnegative_fractions,
+                                  common_denominator_or_numerator),
+                           fraction_order_relation).
+action_automaton_signature(fraction,
+                           add_numerator_denominator_comparison,
+                           inputs(two_nonnegative_fractions, unlike_units),
+                           incorrect_additive_parts_relation).
+action_automaton_signature(decimal,
+                           decimal_fraction_place_value_comparison,
+                           inputs(two_nonnegative_decimal_values,
+                                  fraction_or_place_value_units),
+                           decimal_magnitude_relation).
+action_automaton_signature(decimal, decimal_scale_loss_comparison,
+                           inputs(two_nonnegative_decimal_values,
+                                  uncoordinated_written_numerals),
+                           scale_insensitive_magnitude_relation).
 action_automaton_signature(decimal, positional_decimal_reading,
                            inputs(integer_numeral, positive_power_of_ten_scale),
                            decimal_value).

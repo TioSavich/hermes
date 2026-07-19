@@ -54,6 +54,10 @@
           ]).
 
 :- use_module(math(sar_add_decimal_columnar), [run_decimal_column_add/4]).
+:- use_module(math(smr_decimal_fraction_compare),
+              [ run_decimal_fraction_compare/6,
+                run_decimal_scale_loss_compare/6
+              ]).
 :- use_module(math(integer_helpers),
               [ add_ints/3,
                 subtract_ints/3,
@@ -176,6 +180,46 @@ run_decimal_action(decimal_numeral_comparison_without_scale_alignment, Pair,
               compare_unaligned_numerals(N1, N2, Result),
               lose_decimal_scale_relation(expected(Expected), produced(Result))
             ].
+run_decimal_action(decimal_fraction_place_value_comparison,
+                   decimal_pair(N1, S1, N2, S2), ignored, Outcome, Trace) :-
+    run_decimal_fraction_compare(N1, S1, N2, S2, Result, Trace),
+    Outcome = action_outcome(
+                  decimal_fraction_place_value_comparison,
+                  [ classification(productive),
+                    cluster(decimal_fraction_place_value_comparison),
+                    automaton_state(q_compare_decimal_magnitudes),
+                    vocabulary([q_identify_decimal_units,
+                                q_express_as_fraction,
+                                q_align_place_value_units,
+                                q_compare_decimal_magnitudes]),
+                    result(Result), expected(Result), validity(correct),
+                    operands(decimal_pair(N1, S1, N2, S2)),
+                    grounded_by(common_fraction_or_place_value_unit),
+                    representation(fractions(fraction(N1, S1),
+                                              fraction(N2, S2))),
+                    elaborates(smr_decimal_fraction_compare:run_decimal_fraction_compare/6)
+                  ]).
+run_decimal_action(decimal_scale_loss_comparison,
+                   decimal_pair(N1, S1, N2, S2), ignored, Outcome, Trace) :-
+    run_decimal_fraction_compare(N1, S1, N2, S2, Expected, _),
+    run_decimal_scale_loss_compare(N1, S1, N2, S2, Result, Trace),
+    comparison_validity(Expected, Result, Validity),
+    Outcome = action_outcome(
+                  decimal_scale_loss_comparison,
+                  [ classification(deformation),
+                    cluster(decimal_fraction_place_value_comparison),
+                    automaton_state(q_scale_loss),
+                    vocabulary([q_identify_decimal_units,
+                                q_express_as_fraction,
+                                q_scale_loss,
+                                q_compare_decimal_magnitudes]),
+                    result(Result), expected(Expected), validity(Validity),
+                    operands(decimal_pair(N1, S1, N2, S2)),
+                    deformation_of(decimal_fraction_place_value_comparison),
+                    misconception_family(decimal_scale_loss_comparison),
+                    violated_invariant(compare_only_after_common_unit_alignment),
+                    elaborates(smr_decimal_fraction_compare:run_decimal_scale_loss_compare/6)
+                  ]).
 run_decimal_action(decimal_addition_by_aligned_units, Pair, ignored,
                    Outcome, Trace) :-
     aligned_decimal_operands(Pair, N1, S1, N2, S2,
@@ -492,6 +536,10 @@ decimal_action_cluster(decimal_comparison_by_aligned_units,
                        decimal_magnitude_comparison).
 decimal_action_cluster(decimal_numeral_comparison_without_scale_alignment,
                        decimal_magnitude_comparison).
+decimal_action_cluster(decimal_fraction_place_value_comparison,
+                       decimal_fraction_place_value_comparison).
+decimal_action_cluster(decimal_scale_loss_comparison,
+                       decimal_fraction_place_value_comparison).
 decimal_action_cluster(decimal_addition_by_aligned_units, decimal_addition).
 decimal_action_cluster(decimal_add_unaligned_numerals, decimal_addition).
 decimal_action_cluster(decimal_subtraction_by_aligned_units, decimal_subtraction).
@@ -520,6 +568,13 @@ decimal_action_vocabulary(decimal_comparison_by_aligned_units,
 decimal_action_vocabulary(decimal_numeral_comparison_without_scale_alignment,
                           [decimal_mark, written_numeral, unaligned_scale,
                            magnitude_comparison, scale_unit_loss]).
+decimal_action_vocabulary(decimal_fraction_place_value_comparison,
+                          [q_identify_decimal_units, q_express_as_fraction,
+                           q_align_place_value_units,
+                           q_compare_decimal_magnitudes]).
+decimal_action_vocabulary(decimal_scale_loss_comparison,
+                          [q_identify_decimal_units, q_express_as_fraction,
+                           q_scale_loss, q_compare_decimal_magnitudes]).
 decimal_action_vocabulary(decimal_addition_by_aligned_units,
                           [common_decimal_unit, scale_alignment,
                            grounded_integer_addition,
@@ -567,6 +622,9 @@ productive_decimal_deformation(
     decimal_comparison_by_aligned_units,
     decimal_numeral_comparison_without_scale_alignment,
     decimal_numeral_comparison_without_scale_alignment).
+productive_decimal_deformation(decimal_fraction_place_value_comparison,
+                               decimal_scale_loss_comparison,
+                               decimal_scale_loss_comparison).
 productive_decimal_deformation(decimal_addition_by_aligned_units,
                                decimal_add_unaligned_numerals,
                                decimal_add_unaligned_numerals).
