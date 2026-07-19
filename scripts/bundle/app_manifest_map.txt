@@ -3,9 +3,9 @@ docs/	1613
 hermes/	1545
 geometry/	932
 more-zeeman/	142
-strategies/	102
+strategies/	103
 learner/	49
-crosswalk/	43
+crosswalk/	44
 misconceptions/	42
 standards/	32
 lessons/	29

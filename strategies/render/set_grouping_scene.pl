@@ -65,7 +65,8 @@
             set_grouping_integer_path/1      % ?Enabled  (test flag)
           ]).
 
-:- use_module(library(http/json), [json_write_dict/3]).
+:- use_module(render(render_common),
+              [render_frames/4, term_to_string/2, write_render_json/2]).
 :- use_module(library(lists)).
 :- use_module(standard_indiana(standard_1_ca_1)).
 :- use_module(standard_indiana(standard_2_ns_3)).
@@ -127,11 +128,7 @@ set_grouping_integer_path(X) :-
 %   its standards witness; a term whose witness does not hold (or an integer
 %   path with the flag off) yields one annotation-only frame.
 set_grouping_render_frames(Spec, Frames) :-
-    ( build_frames(Spec, Frames0)
-    -> Frames = Frames0
-    ;  deferred_frame(Spec, F),
-       Frames = [F]
-    ).
+    render_frames(Spec, build_frames, deferred_frame, Frames).
 
 %!  set_grouping_render_json(+Spec, -Dict) is det.
 %
@@ -152,10 +149,7 @@ set_grouping_render_json(Spec, Dict) :-
 %!  set_grouping_render_to_file(+Spec, +Path) is det.
 set_grouping_render_to_file(Spec, Path) :-
     set_grouping_render_json(Spec, Dict),
-    setup_call_cleanup(
-        open(Path, write, Stream),
-        json_write_dict(Stream, Dict, [width(80)]),
-        close(Stream)).
+    write_render_json(Path, Dict).
 
 
 % =============================================================================
@@ -961,10 +955,3 @@ spec_result(_, "unknown").
 
 %!  canvas_dict(-Canvas) is det.
 canvas_dict(_{ width: 700, height: 360 }).
-
-%!  term_to_string(+Term, -String) is det.
-term_to_string(Term, String) :-
-    ( string(Term)
-    -> String = Term
-    ;  format(string(String), '~w', [Term])
-    ).

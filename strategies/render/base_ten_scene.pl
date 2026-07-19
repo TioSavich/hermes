@@ -65,7 +65,8 @@
             base_ten_render_to_file/2    % +Spec, +Path
           ]).
 
-:- use_module(library(http/json), [json_write_dict/3]).
+:- use_module(render(render_common),
+              [render_frames/4, term_to_string/2, write_render_json/2]).
 :- use_module(library(lists)).
 :- use_module(formalization(grounded_utils), []).
 :- use_module(formalization(grounded_arithmetic), []).
@@ -88,11 +89,7 @@
 %   Walk Spec into a list of frame dicts. An unknown/deferred Spec yields a
 %   single annotation-only frame (sceneChanged:false) rather than throwing.
 base_ten_render_frames(Spec, Frames) :-
-    ( gen_frames(Spec, Frames0)
-    -> Frames = Frames0
-    ;  deferred_frame(Spec, F),
-       Frames = [F]
-    ).
+    render_frames(Spec, gen_frames, deferred_frame, Frames).
 
 %!  base_ten_render_json(+Spec, -Dict) is det.
 %
@@ -119,10 +116,7 @@ base_ten_render_json(Spec, Dict) :-
 %!  base_ten_render_to_file(+Spec, +Path) is det.
 base_ten_render_to_file(Spec, Path) :-
     base_ten_render_json(Spec, Dict),
-    setup_call_cleanup(
-        open(Path, write, Stream),
-        json_write_dict(Stream, Dict, [width(80)]),
-        close(Stream)).
+    write_render_json(Path, Dict).
 
 
 % =============================================================================
@@ -915,10 +909,3 @@ digits_to_number_string(IntLow, FracDigits, Str) :-
 replace_nth0(List, Index, Elem, List1) :-
     nth0(Index, List, _Old, Rest),
     nth0(Index, List1, Elem, Rest).
-
-%!  term_to_string(+Term, -String) is det.
-term_to_string(Term, String) :-
-    ( string(Term)
-    -> String = Term
-    ;  format(string(String), '~w', [Term])
-    ).

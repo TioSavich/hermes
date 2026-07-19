@@ -46,7 +46,7 @@
                 recollection_to_integer/2
               ]).
 :- use_module(math(recursive_unit_actions), []).
-:- use_module(library(http/json), [json_write_dict/3]).
+:- use_module(render(render_common), [term_to_string/2, write_render_json/2]).
 :- use_module(library(lists)).
 
 % -----------------------------------------------------------------------------
@@ -599,25 +599,13 @@ request_value(V, S) :- term_to_string(V, S).
 %   Advisory canvas size; the viewer may auto-fit the viewBox.
 canvas_dict(_{ width: 700, height: 320 }).
 
-%!  term_to_string(+Term, -String) is det.
-%   Canonical, quoted, operator-free string of a Prolog term, suitable for a
-%   JSON string field.
-term_to_string(Term, String) :-
-    ( string(Term)
-    -> String = Term
-    ;  format(string(String), '~w', [Term])
-    ).
-
 
 %!  fraction_render_to_file(+Kind, +Count, +Base, +Path) is det.
 %
 %   Render the frame document and write it as pretty-printed JSON to Path.
 fraction_render_to_file(Kind, Count, Base, Path) :-
     fraction_render_json(Kind, Count, Base, Dict),
-    setup_call_cleanup(
-        open(Path, write, Stream),
-        json_write_dict(Stream, Dict, [width(80)]),
-        close(Stream)).
+    write_render_json(Path, Dict).
 
 
 % =============================================================================

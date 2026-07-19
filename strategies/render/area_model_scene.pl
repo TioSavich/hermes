@@ -59,7 +59,7 @@
 :- use_module(strategies(math/fraction_action_pairs),
               [ run_fraction_action/5 ]).
 :- use_module(crosswalk(families/cw_driver), []).
-:- use_module(library(http/json), [json_write_dict/3]).
+:- use_module(render(render_common), [term_to_string/2, write_render_json/2]).
 :- use_module(library(lists)).
 :- use_module(library(apply)).
 
@@ -679,19 +679,10 @@ fmt(S, F, A) :- format(string(S), F, A).
 %   Advisory canvas size; the viewer auto-fits the viewBox to the rects.
 canvas_dict(_Spec, _{ width: 700, height: 520 }).
 
-%!  term_to_string(+Term, -String) is det.
-term_to_string(Term, String) :-
-    ( string(Term)
-    -> String = Term
-    ;  format(string(String), '~w', [Term])
-    ).
 
 
 %!  area_render_to_file(+Spec, +Path) is det.
 %   Render the document and write it as pretty-printed JSON to Path.
 area_render_to_file(Spec, Path) :-
     area_render_json(Spec, Dict),
-    setup_call_cleanup(
-        open(Path, write, Stream),
-        json_write_dict(Stream, Dict, [width(80)]),
-        close(Stream)).
+    write_render_json(Path, Dict).

@@ -104,6 +104,7 @@ KEEP_FILES = [
     "strategies/math/statistics_action_pairs.pl",  # registry data actions
     "strategies/math/measurement_action_pairs.pl",  # registry measurement actions
     "strategies/math/counting_action_pairs.pl",  # registry counting actions
+    "strategies/render/render_common.pl",  # shared scene-compiler plumbing
     "strategies/render/area_unit_covering_scene.pl",  # unit-square area covering
     "strategies/render/measurement_strip_scene.pl",  # lightweight measurement renderer
     "strategies/render/ratio_diagram_scene.pl",  # ordered ratio referent tapes

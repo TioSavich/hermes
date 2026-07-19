@@ -6568,6 +6568,7 @@ crosswalk/families/cw_counting_claim.pl
 crosswalk/families/cw_decimal_claim.pl
 crosswalk/families/cw_deontic_incoherence.pl
 crosswalk/families/cw_domain_context.pl
+crosswalk/families/cw_driver.pl
 crosswalk/families/cw_executable_practice.pl
 crosswalk/families/cw_fraction_claim.pl
 crosswalk/families/cw_fraction_extra_claim.pl
@@ -11136,6 +11137,7 @@ strategies/render/parametric_partition_deformation.pl
 strategies/render/place_value_chart_scene.pl
 strategies/render/polyform_tiling_scene.pl
 strategies/render/ratio_diagram_scene.pl
+strategies/render/render_common.pl
 strategies/render/representation_grammar.pl
 strategies/render/rigid_motion_scene.pl
 strategies/render/set_grouping_scene.pl

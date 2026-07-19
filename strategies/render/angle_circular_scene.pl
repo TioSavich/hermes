@@ -45,7 +45,8 @@
             angle_circular_render_to_file/2    % +Spec, +Path
           ]).
 
-:- use_module(library(http/json), [json_write_dict/3]).
+:- use_module(render(render_common),
+              [render_frames/4, term_to_string/2, write_render_json/2]).
 :- use_module(library(lists)).
 
 % =============================================================================
@@ -70,11 +71,7 @@ ac_canvas(_{ width: 440, height: 380 }).
 %   Walk Spec into a list of frame dicts. A Spec that cannot be drawn yields a
 %   single annotation-only frame (sceneChanged:false), so nothing throws.
 angle_circular_render_frames(Spec, Frames) :-
-    ( gen_frames(Spec, Frames0)
-    -> Frames = Frames0
-    ;  deferred_frame(Spec, F),
-       Frames = [F]
-    ).
+    render_frames(Spec, gen_frames, deferred_frame, Frames).
 
 %!  angle_circular_render_json(+Spec, -Dict) is det.
 %
@@ -167,10 +164,7 @@ angle_circular_compare_json(Spec, _{ kind: SpecStr,
 %!  angle_circular_render_to_file(+Spec, +Path) is det.
 angle_circular_render_to_file(Spec, Path) :-
     angle_circular_render_json(Spec, Dict),
-    setup_call_cleanup(
-        open(Path, write, Stream),
-        json_write_dict(Stream, Dict, [width(80)]),
-        close(Stream)).
+    write_render_json(Path, Dict).
 
 
 % =============================================================================
@@ -362,10 +356,3 @@ deferred_frame(Spec, Frame) :-
                sector: null, label: "" },
     Frame = _{ step: 1, verb: SpecStr, caption: Cap,
                sceneChanged: false, scene: Scene }.
-
-%!  term_to_string(+Term, -String) is det.
-term_to_string(Term, String) :-
-    ( string(Term)
-    -> String = Term
-    ;  format(string(String), '~w', [Term])
-    ).

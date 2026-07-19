@@ -70,7 +70,7 @@
             balance_solve_witness/4     % +A, +B, +C, -Witness
           ]).
 
-:- use_module(library(http/json), [json_write_dict/3]).
+:- use_module(render(render_common), [write_render_json/2]).
 :- use_module(library(lists)).
 
 % -----------------------------------------------------------------------------
@@ -495,7 +495,4 @@ canvas_dict(Canvas) :-
 %   Render the frame document and write it as pretty-printed JSON to Path.
 balance_render_to_file(Spec, Path) :-
     balance_render_json(Spec, Dict),
-    setup_call_cleanup(
-        open(Path, write, Stream),
-        json_write_dict(Stream, Dict, [width(80)]),
-        close(Stream)).
+    write_render_json(Path, Dict).

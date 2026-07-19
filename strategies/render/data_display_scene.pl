@@ -49,7 +49,8 @@
             data_display_render_to_file/2    % +Spec, +Path
           ]).
 
-:- use_module(library(http/json), [json_write_dict/3]).
+:- use_module(render(render_common),
+              [render_frames/4, term_to_string/2, write_render_json/2]).
 :- use_module(library(lists)).
 :- use_module(library(apply), [include/3]).
 
@@ -80,11 +81,7 @@ dd_baseline(Base) :- dd_y0(Y0), dd_plot_h(H), Base is Y0 + H.
 %   Walk Spec into a list of frame dicts. A Spec that cannot be displayed yields
 %   a single annotation-only frame (sceneChanged:false), so nothing throws.
 data_display_render_frames(Spec, Frames) :-
-    ( gen_frames(Spec, Frames0)
-    -> Frames = Frames0
-    ;  deferred_frame(Spec, F),
-       Frames = [F]
-    ).
+    render_frames(Spec, gen_frames, deferred_frame, Frames).
 
 %!  data_display_render_json(+Spec, -Dict) is det.
 %
@@ -219,10 +216,7 @@ data_display_compare_json(Spec, _{ kind: SpecStr,
 %!  data_display_render_to_file(+Spec, +Path) is det.
 data_display_render_to_file(Spec, Path) :-
     data_display_render_json(Spec, Dict),
-    setup_call_cleanup(
-        open(Path, write, Stream),
-        json_write_dict(Stream, Dict, [width(80)]),
-        close(Stream)).
+    write_render_json(Path, Dict).
 
 
 % =============================================================================
@@ -535,10 +529,3 @@ deferred_frame(Spec, Frame) :-
 
 %!  canvas_dict(-Canvas) is det.
 canvas_dict(_{ width: 560, height: 420 }).
-
-%!  term_to_string(+Term, -String) is det.
-term_to_string(Term, String) :-
-    ( string(Term)
-    -> String = Term
-    ;  format(string(String), '~w', [Term])
-    ).

@@ -11,7 +11,7 @@
             place_value_chart_render_to_file/2    % +Spec, +Path
           ]).
 
-:- use_module(library(http/json), [json_write_dict/3]).
+:- use_module(render(render_common), [term_to_string/2, write_render_json/2]).
 :- use_module(math(recursive_unit_actions),
               [ integer_numeral/3,
                 numeral_text/2,
@@ -45,10 +45,7 @@ place_value_chart_render_json(Spec, Dict) :-
 %!  place_value_chart_render_to_file(+Spec, +Path) is det.
 place_value_chart_render_to_file(Spec, Path) :-
     place_value_chart_render_json(Spec, Dict),
-    setup_call_cleanup(
-        open(Path, write, Stream),
-        json_write_dict(Stream, Dict, [width(80)]),
-        close(Stream)).
+    write_render_json(Path, Dict).
 
 
 % --- Addition ---------------------------------------------------------------
@@ -275,9 +272,3 @@ spec_result(add_with_carry(A, B, Base), Result) :- !,
 spec_result(_Spec, "unknown").
 
 canvas_dict(_{ width: 760, height: 360 }).
-
-term_to_string(Term, String) :-
-    ( string(Term)
-    -> String = Term
-    ;  format(string(String), '~w', [Term])
-    ).
