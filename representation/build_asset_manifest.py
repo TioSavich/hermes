@@ -36,6 +36,9 @@ import glob
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(REPO, "representation", "asset_manifest.json")
+ASKTM_BINDINGS = os.path.join(
+    REPO, "representation", "asktm_bindings_draft.json",
+)
 ASKTM_ROOT = os.path.join(REPO, "ASKTM_Data")
 ASKTM_G4_CLIPS = os.path.join(ASKTM_ROOT, "Grade 4student response clippings")
 ASKTM_G5_CLIPS = os.path.join(
@@ -153,7 +156,10 @@ def _with_prolog_concepts(asset):
 ASKTM_FILE = re.compile(r"G(\d)-Q(\d+)-([A-Za-z]+\d*)-(\d+)-(\d+)\.png$", re.I)
 
 # Markdown legend: "# Category A2 – Correct response includes ..."
-CAT_HDR = re.compile(r"^#\s*Category\s+([A-Za-z]+\d*)\s*[–\-—]\s*(.*)$")
+CAT_HDR = re.compile(
+    r"^#\s*(?:\*\*)?(?:Category\s+)?([A-Za-z]+\d*)\s*[–\-—]\s*(.*?)"
+    r"(?:\*\*)?\s*$",
+)
 TAG_LINE = re.compile(r"Tag list:\s*(.*)$")
 # Clip ids inside the legend: q2-04-08 / q2_20_08 (question-student-clip)
 CLIP_ID = re.compile(r"q(\d+)[-_](\d+)[-_](\d+)", re.I)
@@ -218,10 +224,34 @@ def _legend_metadata(metadata_root, grade):
     return cat_desc, clip_tags, clip_categories
 
 
-def _asset(grade, q, code, stu, clip, tags, desc, png, tree=None):
+def _verified_asktm_bindings(path=ASKTM_BINDINGS):
+    """Return owner-verified draft rows keyed by grade/question/category.
+
+    The checked-in table is a review draft and currently contains no verified
+    rows. Keeping the status check here prevents proposed mappings from
+    entering the gallery merely because the draft file exists.
+    """
+    try:
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+    except (OSError, ValueError):
+        return {}
+    verified = {}
+    for row in data.get("bindings", []):
+        concept = row.get("proposed_prolog_concept")
+        if row.get("verification_status") != "verified" or not concept:
+            continue
+        key = (int(row["grade"]), str(row["question"]),
+               row["category_code"].upper())
+        verified.setdefault(key, []).append(concept)
+    return verified
+
+
+def _asset(grade, q, code, stu, clip, tags, desc, png, tree=None,
+           verified_bindings=None):
     code_for_id = code or "uncategorized"
     tree_part = f"-{tree}" if tree else ""
-    return _with_prolog_concepts({
+    asset = _with_prolog_concepts({
         "source": "asktm",
         "id": (f"asktm-g{grade}{tree_part}-q{q}-{code_for_id}-"
                f"{stu}-{clip}"),
@@ -234,10 +264,17 @@ def _asset(grade, q, code, stu, clip, tags, desc, png, tree=None):
         "tags": sorted(tags),
         "image": rel(png),
     })
+    if code:
+        key = (int(grade), str(q), code.upper())
+        for concept in (verified_bindings or {}).get(key, []):
+            if concept not in asset["prolog_concepts"]:
+                asset["prolog_concepts"].append(concept)
+    return asset
 
 
-def build_asktm(metadata_root=None):
+def build_asktm(metadata_root=None, bindings_path=ASKTM_BINDINGS):
     metadata_root = metadata_root or ASKTM_ROOT
+    verified_bindings = _verified_asktm_bindings(bindings_path)
     legends = {grade: _legend_metadata(metadata_root, grade)
                for grade in (4, 5)}
 
@@ -260,6 +297,7 @@ def build_asktm(metadata_root=None):
         assets.append(_asset(
             5, q, code, stu, clip, clip_tags.get((q, stu, clip), ()),
             cat_desc.get((q, code)) or None, png,
+            verified_bindings=verified_bindings,
         ))
 
     # Grade-5 raw/non-first-pass clippings. Their filenames carry no category;
@@ -277,6 +315,7 @@ def build_asktm(metadata_root=None):
         assets.append(_asset(
             5, q, code, stu, clip, clip_tags.get((q, stu, clip), ()),
             cat_desc.get((q, code)) if code else None, png, tree="raw",
+            verified_bindings=verified_bindings,
         ))
 
     # Grade-4 raw clipping directories encode the question in the directory
@@ -296,6 +335,7 @@ def build_asktm(metadata_root=None):
         assets.append(_asset(
             4, q, code, stu, clip, clip_tags.get((q, stu, clip), ()),
             cat_desc.get((q, code)) if code else None, png, tree="raw",
+            verified_bindings=verified_bindings,
         ))
 
     assets.sort(key=lambda a: (a["grade"], a["question"],
