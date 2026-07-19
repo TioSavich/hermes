@@ -305,6 +305,77 @@
     overflow: visible !important; pointer-events: auto !important;
     transition: none !important;
   }
+
+  /* ---- situated documentation ---- */
+  .hshell-help-button {
+    position: fixed; right: 18px; bottom: 18px; z-index: 70;
+    width: 42px; height: 42px; border-radius: 50%; cursor: pointer;
+    display: grid; place-items: center; padding: 0;
+    border: 2px solid var(--accent, #a97c24);
+    color: var(--accent-ink, var(--accent, #7a5a12));
+    background: var(--paper-cool, var(--surface, #fffaf0));
+    box-shadow: 0 5px 20px rgba(0,0,0,.24);
+    font: 700 21px/1 var(--serif, Georgia, serif);
+  }
+  .hshell-help-button:hover, .hshell-help-button:focus-visible {
+    background: color-mix(in srgb, var(--accent, #a97c24) 14%, var(--paper-cool, var(--surface, #fffaf0)));
+    outline: 2px solid color-mix(in srgb, var(--accent, #a97c24) 45%, transparent);
+    outline-offset: 2px;
+  }
+  .hshell-help-panel {
+    position: fixed; right: 18px; bottom: 70px; z-index: 70;
+    width: min(360px, calc(100vw - 28px)); height: min(470px, calc(100vh - 100px));
+    display: grid; grid-template-rows: auto minmax(0, 1fr) auto auto;
+    color: var(--ink, var(--text, #1b1810));
+    background: var(--paper-cool, var(--surface, #fffaf0));
+    border: 1px solid color-mix(in srgb, var(--accent, #a97c24) 42%, var(--line, var(--border, rgba(0,0,0,.2))));
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 12px 36px rgba(0,0,0,.3);
+  }
+  .hshell-help-panel[hidden] { display: none; }
+  .hshell-help-head {
+    display: flex; align-items: center; gap: 8px; padding: 10px 12px;
+    border-bottom: 1px solid var(--line, var(--border, rgba(0,0,0,.16)));
+    font: 600 14px/1.2 var(--serif, Georgia, serif);
+  }
+  .hshell-help-close {
+    margin-left: auto; border: 0; background: transparent; color: inherit;
+    width: 28px; height: 28px; border-radius: 6px; cursor: pointer; font-size: 20px;
+  }
+  .hshell-help-close:hover { background: rgba(127,127,127,.12); }
+  .hshell-help-conversation {
+    overflow-y: auto; padding: 12px; display: flex; flex-direction: column; gap: 9px;
+    font: 13px/1.45 var(--sans, system-ui, sans-serif);
+  }
+  .hshell-help-message { max-width: 90%; padding: 8px 10px; border-radius: 9px; white-space: pre-wrap; }
+  .hshell-help-message.assistant { align-self: flex-start; background: rgba(127,127,127,.12); }
+  .hshell-help-message.user {
+    align-self: flex-end; color: var(--accent-ink, var(--ink, #1b1810));
+    background: color-mix(in srgb, var(--accent, #a97c24) 17%, transparent);
+  }
+  .hshell-help-form { display: flex; gap: 7px; padding: 10px 10px 6px; }
+  .hshell-help-input {
+    min-width: 0; flex: 1; border: 1px solid var(--line, var(--border, rgba(0,0,0,.24)));
+    border-radius: 7px; padding: 8px 9px; color: inherit;
+    background: var(--paper, var(--surface-raised, #fff)); font: 13px/1.3 var(--sans, system-ui, sans-serif);
+  }
+  .hshell-help-submit {
+    border: 1px solid var(--accent, #a97c24); border-radius: 7px; padding: 7px 10px;
+    color: var(--accent-ink, var(--ink, #1b1810));
+    background: color-mix(in srgb, var(--accent, #a97c24) 14%, transparent);
+    cursor: pointer; font: 600 12px/1 var(--sans, system-ui, sans-serif);
+  }
+  .hshell-help-submit:disabled { cursor: wait; opacity: .55; }
+  .hshell-help-state {
+    min-height: 21px; padding: 0 11px 7px; color: var(--muted, #6c6452);
+    font: 10px/1.4 var(--mono, ui-monospace, monospace);
+  }
+  .hshell-help-state.ready { color: #31733b; }
+  .hshell-help-state.offline, .hshell-help-state.broken { color: #a13b2b; }
+  @media (max-width: 520px) {
+    .hshell-help-button { right: 14px; bottom: 14px; }
+    .hshell-help-panel { right: 14px; bottom: 64px; height: min(440px, calc(100vh - 86px)); }
+  }
   `;
 
   // ---- SVG bits ----------------------------------------------------------
@@ -317,6 +388,23 @@
     if (cls) n.className = cls;
     if (html != null) n.innerHTML = html;
     return n;
+  }
+
+  var requestClientPromise;
+  function requestClient() {
+    if (window.HermesFetch) return Promise.resolve(window.HermesFetch);
+    if (requestClientPromise) return requestClientPromise;
+    requestClientPromise = new Promise(function (resolve, reject) {
+      var script = document.createElement("script");
+      script.src = mz("render/request.js");
+      script.onload = function () {
+        if (window.HermesFetch) resolve(window.HermesFetch);
+        else reject(new Error("The request helper did not load."));
+      };
+      script.onerror = function () { reject(new Error("The request helper is unavailable.")); };
+      document.head.appendChild(script);
+    });
+    return requestClientPromise;
   }
 
   function findActiveSection() {
@@ -409,11 +497,52 @@
 
     var scrim = h("div", "hshell-scrim");
 
+    // live, situated documentation
+    var helpButton = h("button", "hshell-help-button", "?");
+    helpButton.type = "button";
+    helpButton.setAttribute("aria-label", "Ask about this page");
+    helpButton.setAttribute("aria-expanded", "false");
+    helpButton.setAttribute("aria-controls", "hshell-help-panel");
+    var helpPanel = h("section", "hshell-help-panel");
+    helpPanel.id = "hshell-help-panel";
+    helpPanel.hidden = true;
+    helpPanel.setAttribute("aria-label", "Live page documentation");
+    var helpHead = h("div", "hshell-help-head", "Ask about this page");
+    var helpClose = h("button", "hshell-help-close", "&times;");
+    helpClose.type = "button";
+    helpClose.setAttribute("aria-label", "Close documentation chat");
+    helpHead.appendChild(helpClose);
+    var helpConversation = h("div", "hshell-help-conversation");
+    helpConversation.setAttribute("role", "log");
+    helpConversation.setAttribute("aria-live", "polite");
+    var helpIntro = h("div", "hshell-help-message assistant");
+    helpIntro.textContent = "Ask why something is here, what an operation means, or how this page connects to another part of Hermes.";
+    helpConversation.appendChild(helpIntro);
+    var helpForm = h("form", "hshell-help-form");
+    var helpInput = h("input", "hshell-help-input");
+    helpInput.type = "text";
+    helpInput.name = "question";
+    helpInput.maxLength = 2000;
+    helpInput.placeholder = "Why is this here?";
+    helpInput.setAttribute("aria-label", "Question about this page");
+    var helpSubmit = h("button", "hshell-help-submit", "Ask");
+    helpSubmit.type = "submit";
+    helpForm.appendChild(helpInput);
+    helpForm.appendChild(helpSubmit);
+    var helpState = h("div", "hshell-help-state");
+    helpState.setAttribute("aria-live", "polite");
+    helpPanel.appendChild(helpHead);
+    helpPanel.appendChild(helpConversation);
+    helpPanel.appendChild(helpForm);
+    helpPanel.appendChild(helpState);
+
     document.body.appendChild(brand);
     document.body.appendChild(top);
     document.body.appendChild(side);
     document.body.appendChild(main);
     document.body.appendChild(scrim);
+    document.body.appendChild(helpButton);
+    document.body.appendChild(helpPanel);
 
     // ---- interactions ----
     var mobile = function () { return window.matchMedia("(max-width: 860px)").matches; };
@@ -429,6 +558,61 @@
     });
     scrim.addEventListener("click", function () {
       document.documentElement.classList.remove("hshell-mobileopen");
+    });
+    function setHelpOpen(open) {
+      helpPanel.hidden = !open;
+      helpButton.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) helpInput.focus();
+      else helpButton.focus();
+    }
+    function addHelpMessage(kind, text) {
+      var message = h("div", "hshell-help-message " + kind);
+      message.textContent = text;
+      helpConversation.appendChild(message);
+      helpConversation.scrollTop = helpConversation.scrollHeight;
+    }
+    helpButton.addEventListener("click", function () { setHelpOpen(helpPanel.hidden); });
+    helpClose.addEventListener("click", function () { setHelpOpen(false); });
+    helpPanel.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") setHelpOpen(false);
+    });
+    helpForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var question = helpInput.value.trim();
+      if (!question || helpSubmit.disabled) return;
+      addHelpMessage("user", question);
+      helpInput.value = "";
+      helpSubmit.disabled = true;
+      requestClient().then(function (client) {
+        client.setState(helpState, "pending", "Reading this page's documentation...");
+        return client.requestJSON("/api/help", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question: question, page: ACTIVE }),
+          timeoutMs: 120000
+        }).then(function (result) { return { client: client, result: result }; });
+      }).then(function (packet) {
+        var result = packet.result;
+        if (result.kind === "ok" && result.data && result.data.answer) {
+          addHelpMessage("assistant", result.data.answer);
+          packet.client.setState(helpState, "ready", "Answer grounded in the shipped documentation.");
+          return;
+        }
+        var message = result.data && result.data.error
+          ? result.data.error
+          : packet.client.messageFor(result);
+        addHelpMessage("assistant", message);
+        packet.client.setState(helpState,
+          result.kind === "offline" || result.kind === "timeout" || (result.data && result.data.error_type === "no_key") ? "offline" : "broken",
+          message);
+      }).catch(function (error) {
+        addHelpMessage("assistant", error.message || "Live documentation is unavailable.");
+        helpState.className = "hshell-help-state offline";
+        helpState.textContent = "× Live documentation is unavailable.";
+      }).finally(function () {
+        helpSubmit.disabled = false;
+        helpInput.focus();
+      });
     });
     window.addEventListener("resize", applyCollapsed);
     applyCollapsed();

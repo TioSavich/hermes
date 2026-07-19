@@ -14,14 +14,15 @@ def _post(method: str) -> Callable[[Any], None]:
 
 
 chat = _post("_handle_chat")
+help_docs = _post("_handle_help")
 transcript_report = _post("_handle_transcript_report")
 media_transcribe = _post("_handle_media_transcribe")
 pml_score = _post("_handle_pml_score")
 
 ROUTES = (
     Route("POST", "/api/chat", chat),
+    Route("POST", "/api/help", help_docs),
     Route("POST", "/api/transcript_report", transcript_report),
     Route("POST", "/api/media_transcribe", media_transcribe),
     Route("POST", "/api/pml_score", pml_score),
 )
-

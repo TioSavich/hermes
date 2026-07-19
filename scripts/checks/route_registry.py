@@ -39,6 +39,7 @@ POST /api/event_score public analysis
 POST /api/pair_graph verified analysis
 POST /api/pair_candidate verified analysis
 POST /api/chat public llm
+POST /api/help public llm
 POST /api/transcript_report public llm
 POST /api/media_transcribe public llm
 POST /api/pml_score public llm

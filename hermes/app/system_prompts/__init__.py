@@ -5,6 +5,7 @@ from pathlib import Path
 
 REQUIRED_SYSTEM_PROMPTS = (
     "chat.md",
+    "help.md",
     "pml_reader.md",
     "content_consolidate.md",
     "content_per_file.md",
@@ -34,4 +35,3 @@ def load_required_system_prompts(directory: Path | None = None) -> dict[str, str
                 f"required system prompt unavailable: {name} ({path}): {exc}"
             ) from exc
     return prompts
-

@@ -80,7 +80,7 @@ TOY_TRANSCRIPT = (
 # staged tree without them fails on first use, not at startup — which is how
 # the gap stayed quiet until a colleague hit it.
 SYSTEM_PROMPTS = [
-    "chat.md", "pml_reader.md",
+    "chat.md", "help.md", "pml_reader.md",
     "content_consolidate.md", "content_per_file.md", "draft.md",
     "grade.md", "parse.md", "profile.md", "score.md",
     "transcribe.md", "transcribe_timed.md",
@@ -736,6 +736,11 @@ def live_probes(tree: Path, python: str, swipl: str | None,
         probe("POST /api/transcript_report (no key)", "/api/transcript_report",
               {"text": TOY_TRANSCRIPT}, want=range(503, 504),
               check=lambda b: b.get("error_type") == "no_key")
+        probe("POST /api/help (no key)", "/api/help",
+              {"question": "why is this page here", "page": "witnesses"},
+              want=range(503, 504),
+              check=lambda b: b.get("error_type") == "no_key"
+              and "REALLMS API key" in b.get("error", ""))
 
         # Workflow CLI route: it may refuse (absent input, no key) but must
         # answer from its shipped files — a system_prompts miss is a

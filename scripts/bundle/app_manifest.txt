@@ -6541,6 +6541,7 @@ ASKTM_Data/Survery questions for students_files/image010.png
 ASKTM_Data/Survery questions for students_files/image011.png
 ASKTM_Data/Survery questions for students_files/image012.png
 ASKTM_Data/survey_questions.md
+arche-trace/README.md
 arche-trace/automata.pl
 arche-trace/brandomian_incompatibility.pl
 arche-trace/critique.pl
@@ -6556,8 +6557,10 @@ arche-trace/registry_incompatibility_adapter.pl
 arche-trace/sequent_brandom_bridge.pl
 arche-trace/sequent_engine.pl
 arche-trace/tools/find_emergent_hyperedges.pl
+crosswalk/README.md
 crosswalk/canonical_all.pl
 crosswalk/canonical_vocabulary.pl
+crosswalk/families/README.md
 crosswalk/families/cw_accommodation.pl
 crosswalk/families/cw_action_cluster.pl
 crosswalk/families/cw_algebra_claim.pl
@@ -8213,6 +8216,7 @@ docs/research_assets/research/student_work_figures/2026-06-18-flm-missed/FLM_Wat
 docs/research_assets/research/student_work_figures/2026-06-18-flm-missed/FLM_Watson_1988_Three/p24.png
 docs/research_assets/research/student_work_figures/2026-06-18-flm-missed/FLM_Watson_1988_Three/p25.png
 docs/research_assets/research/student_work_figures/2026-06-18-flm-missed/IJEMST_Girit_2016_Pre/p86.png
+formalization/README.md
 formalization/axioms_geometry.pl
 formalization/axioms_number_theory.pl
 formalization/axioms_robinson.pl
@@ -8234,6 +8238,7 @@ formalization/synthesis/run_synth.pl
 formalization/synthesis/synth.pl
 formalization/synthesis/synth_lazy.pl
 formalization/witness_dict.pl
+geometry/README.md
 geometry/bootstrap/construction_activities.pl
 geometry/bootstrap/n103_activities.pl
 geometry/bootstrap/van_de_walle_activities.pl
@@ -9166,11 +9171,14 @@ geometry/query.pl
 geometry/schema.pl
 geometry/van_hiele/levels.pl
 geometry/van_hiele/transitions.pl
+hermes/README.md
 hermes/__init__.py
 hermes/app/.env.example
 hermes/app/Hermes.command
 hermes/app/Hermes.svg
 hermes/app/QUICKSTART_N103.md
+hermes/app/README.md
+hermes/app/help_grounding.py
 hermes/app/__init__.py
 hermes/app/activities/INDEX.csv
 hermes/app/analysis/__init__.py
@@ -9223,6 +9231,7 @@ hermes/app/system_prompts/content_consolidate.md
 hermes/app/system_prompts/content_per_file.md
 hermes/app/system_prompts/draft.md
 hermes/app/system_prompts/grade.md
+hermes/app/system_prompts/help.md
 hermes/app/system_prompts/parse.md
 hermes/app/system_prompts/pml_reader.md
 hermes/app/system_prompts/profile.md
@@ -10686,6 +10695,7 @@ hermes/math_claim_checker.pl
 hermes/math_context.pl
 hermes/pair_scoring.pl
 hermes_worker.pl
+learner/README.md
 learner/action_semantic_context.pl
 learner/activity_contract.pl
 learner/arithmetic_machine.pl
@@ -10735,6 +10745,8 @@ learner/teacher.pl
 learner/teacher_local_prolog.pl
 learner/tension_dynamics.pl
 learner/up_leveling.pl
+lessons/README.md
+lessons/im/README.md
 lessons/im/docling_figures.pl
 lessons/im/docling_figures_interpreted.json
 lessons/im/docling_figures_interpreted.pl
@@ -10764,6 +10776,7 @@ lessons/im/lesson_notation_chart.pl
 lessons/im_harness.pl
 lessons/lesson_gap.pl
 lessons/traditional/rays_new_practical.pl
+misconceptions/README.md
 misconceptions/benny.pl
 misconceptions/benny_demo.pl
 misconceptions/generative_misconceptions.pl
@@ -10806,6 +10819,7 @@ misconceptions/misconceptions_whole_number_batch_4.pl
 misconceptions/misconceptions_whole_number_batch_5.pl
 misconceptions/pml_wire.pl
 misconceptions/test_harness.pl
+more-zeeman/README.md
 more-zeeman/area-model/compare.html
 more-zeeman/area-model/samples/array-3-4.json
 more-zeeman/area-model/samples/commutativity-3-5.json
@@ -10905,6 +10919,7 @@ more-zeeman/prolog/zeeman_bifurcation.pl
 more-zeeman/prolog/zeeman_machine.pl
 more-zeeman/prolog/zeeman_pml_bridge.pl
 more-zeeman/prolog/zeeman_tape.pl
+more-zeeman/render/README.md
 more-zeeman/render/compare.js
 more-zeeman/render/drawer.js
 more-zeeman/render/hermes-shell.js
@@ -10951,6 +10966,7 @@ more-zeeman/witnesses.html
 paths.pl
 pml/Modal_Logic/AppendixA_Unified_2.pdf
 pml/Modal_Logic/AppendixA_Unified_2.tex
+pml/README.md
 pml/audit_connectors.pl
 pml/axioms_eml.pl
 pml/discourse_features.pl
@@ -10969,6 +10985,7 @@ pml/talkmoves_adapter.pl
 pml/text_interpreter.pl
 pml/trace_adjudication.pl
 pml/utils.pl
+representation/README.md
 representation/asset_manifest.json
 representation/build_asset_manifest.py
 representation/extract_figures_docling.py
@@ -10986,6 +11003,7 @@ scripts/research/export_mua_for_mud.py
 scripts/research/extract_lesson_context.py
 scripts/talkmoves_score_blind_corpus.py
 scripts/talkmoves_two_pass.py
+standards/README.md
 standards/ccss/geometry.pl
 standards/im/grade_1.pl
 standards/im/grade_2.pl
@@ -11018,10 +11036,12 @@ standards/indiana/standard_k_ns_3.pl
 standards/indiana/standard_k_ns_4.pl
 standards/indiana/standard_k_ns_5_6.pl
 standards/indiana/standard_k_ns_7.pl
+strategies/README.md
 strategies/composition_engine.pl
 strategies/expressive_power.pl
 strategies/fsm_engine.pl
 strategies/hermeneutic_calculator.pl
+strategies/math/README.md
 strategies/math/action_automata_registry.pl
 strategies/math/algebraic_action_pairs.pl
 strategies/math/calculus_limits_action_pairs.pl
@@ -11075,6 +11095,7 @@ strategies/math/smr_mult_c2c.pl
 strategies/math/smr_mult_cbo.pl
 strategies/math/smr_mult_commutative_reasoning.pl
 strategies/math/smr_mult_dr.pl
+strategies/math/state_vocabulary.pl
 strategies/math/statistics_action_pairs.pl
 strategies/math/unit_coordination_viz.pl
 strategies/math_benchmark.pl
@@ -11086,6 +11107,7 @@ strategies/meta/json_writer.pl
 strategies/meta/pattern_detectors.pl
 strategies/meta/pattern_taxonomy.pl
 strategies/normalization.pl
+strategies/render/README.md
 strategies/render/angle_circular_scene.pl
 strategies/render/area_model_scene.pl
 strategies/render/area_unit_covering_scene.pl

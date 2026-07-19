@@ -19,6 +19,7 @@ from hermes.app.system_prompts import (  # noqa: E402
 
 MOVED_HASHES = {
     "chat.md": "ea0c0ef36632bc774ed5346906839a0f8dda23f17473a1168f4f1ec18ccd3444",
+    "help.md": "562821bbc97b693e9f0e820f18349ae7b7e6d682903e157ce62d1abe8e79951d",
     "pml_reader.md": "c2cc958f67702b16bb95b5ebf203637d048636ba36ceaf08c3040831fbcb0152",
 }
 
@@ -53,4 +54,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

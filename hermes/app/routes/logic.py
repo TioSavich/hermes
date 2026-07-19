@@ -14,6 +14,7 @@ import urllib.parse
 from typing import Any
 
 from hermes.app import gate, llm, worker
+from hermes.app.help_grounding import PAGE_CONTEXT, assemble_help_context
 
 TRANSCRIPT_SPEAKER_RE = re.compile(
     r"^\s*(student\s*\d+|s\d+|[A-Za-z][A-Za-z .'-]{0,40})\s*:\s+\S",
@@ -666,6 +667,46 @@ class RouteLogic:
         ).strip()
         self._send_json({"answer": answer, "grounded": grounded, "model": llm.resolve_model(),
                          "mode": self.ctx.services.gate.state.mode, "insecure": not (self.ctx.services.gate.state.mode == gate.CAMPUS and self.ctx.services.gate.state.verified)})
+
+    def _handle_help(self, payload: dict) -> None:
+        question = str(payload.get("question") or "").strip()
+        page = str(payload.get("page") or "").strip()
+        if not question:
+            self._send_json({"error": "question is required"}, status=400)
+            return
+        if len(question) > 2000:
+            self._send_json({"error": "question must be 2000 characters or fewer"}, status=400)
+            return
+        if page not in PAGE_CONTEXT:
+            self._send_json({"error": "page must name a Hermes shell page"}, status=400)
+            return
+        key = llm.load_key(self.ctx.runtime)
+        if key is None:
+            self._send_json({
+                "error": ("Live documentation needs a REALLMS API key. "
+                          "Set one in Hermes, then ask again. No page or question data was sent."),
+                "error_type": "no_key",
+            }, status=503)
+            return
+        grounding = assemble_help_context(self.ctx.repo_root, page)
+        messages = [
+            {"role": "system", "content": self.ctx.prompt("help.md")},
+            {"role": "user", "content": (
+                f"CURRENT PAGE DOCUMENTATION\n{grounding}\n"
+                f"USER QUESTION\n{question}"
+            )},
+        ]
+        try:
+            answer = llm.call_api_messages(
+                messages, api_key=key, api_url=llm.resolve_api_url(),
+                model=llm.resolve_model(), ssl_ctx=self._ssl_ctx_for_mode(),
+                fail_on_error=False,
+            )
+        except Exception as exc:
+            self._send_json({"error": str(exc), "error_type": "reallms"}, status=502)
+            return
+        answer = re.sub(r"(?m)^Context length:.*(?:\n+|$)", "", answer.strip()).strip()
+        self._send_json({"answer": answer, "page": page, "model": llm.resolve_model()})
 
     def _handle_transcript_report(self, payload: dict) -> None:
         """Discussion transcript -> teacher-legible two-pass report.

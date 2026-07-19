@@ -63,6 +63,7 @@ KEEP_FILES = [
     "hermes/dispatch_spec.pl",         # authored generic-dispatch identity + behavior
     "hermes/app/Hermes.command",       # double-click local app launcher
     "hermes/app/Hermes.svg",           # launcher icon asset
+    "hermes/app/help_grounding.py",    # page-specific context for /api/help
     "crosswalk/representation_spine.pl",
     "more-zeeman/contact-sheets/goal-e-console.png",
     "more-zeeman/contact-sheets/goal-e-contact-sheet.html",
@@ -126,15 +127,37 @@ KEEP_FILES = [
 # two pass prompts /api/transcript_report sends as system messages, the
 # per-command system prompts the workflow CLIs and /api/media_transcribe
 # read at request time (kept by prefix so a newly added prompt cannot be
-# silently dropped the way the first nine were), the ASKTM survey text, and
-# the teacher-guide inputs used to generate monitoring visuals.
+# silently dropped the way the first nine were), the module documentation
+# excerpted by /api/help, the ASKTM survey text, and the teacher-guide inputs
+# used to generate monitoring visuals.
 KEEP_MD = {
     "hermes/app/QUICKSTART.md",
+    "hermes/app/system_prompts/help.md",
     "docs/research/2026-07-01-talkmoves-pass1-math-prompt.md",
     "docs/research/2026-07-01-talkmoves-pass2-posture-prompt.md",
     "docs/research/2026-06-25-the-juncture-and-differance.md",
     "ASKTM_Data/survey_questions.md",
     "geometry/corpus/ATTRIBUTION.md",
+    "arche-trace/README.md",
+    "crosswalk/README.md",
+    "crosswalk/families/README.md",
+    "formalization/README.md",
+    "geometry/README.md",
+    "geometry/corpus/im_teacher_guides/grade6/README.md",
+    "hermes/README.md",
+    "hermes/app/README.md",
+    "learner/README.md",
+    "lessons/README.md",
+    "lessons/im/README.md",
+    "misconceptions/README.md",
+    "more-zeeman/README.md",
+    "more-zeeman/render/README.md",
+    "pml/README.md",
+    "representation/README.md",
+    "standards/README.md",
+    "strategies/README.md",
+    "strategies/math/README.md",
+    "strategies/render/README.md",
 }
 KEEP_MD_PREFIXES = (
     "hermes/app/system_prompts/",
