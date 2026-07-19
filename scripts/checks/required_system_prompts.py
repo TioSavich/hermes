@@ -18,7 +18,7 @@ from hermes.app.system_prompts import (  # noqa: E402
 )
 
 MOVED_HASHES = {
-    "chat.md": "5070d58b4f1c69200a545d56ecb4e141c679bc32c267f2a1a5daf470201315af",
+    "chat.md": "ea0c0ef36632bc774ed5346906839a0f8dda23f17473a1168f4f1ec18ccd3444",
     "pml_reader.md": "c2cc958f67702b16bb95b5ebf203637d048636ba36ceaf08c3040831fbcb0152",
 }
 
