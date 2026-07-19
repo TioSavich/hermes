@@ -224,31 +224,35 @@ def _legend_metadata(metadata_root, grade):
     return cat_desc, clip_tags, clip_categories
 
 
-def _verified_asktm_bindings(path=ASKTM_BINDINGS):
-    """Return owner-verified draft rows keyed by grade/question/category.
-
-    The checked-in table is a review draft and currently contains no verified
-    rows. Keeping the status check here prevents proposed mappings from
-    entering the gallery merely because the draft file exists.
-    """
+def _asktm_bindings(path=ASKTM_BINDINGS):
+    """Return mapped rows, with their review tier, keyed by ASKTM category."""
     try:
         with open(path, encoding="utf-8") as f:
             data = json.load(f)
     except (OSError, ValueError):
         return {}
-    verified = {}
+    bindings = {}
     for row in data.get("bindings", []):
         concept = row.get("proposed_prolog_concept")
-        if row.get("verification_status") != "verified" or not concept:
+        automaton = row.get("proposed_automaton")
+        if not concept or automaton in {
+                "awaiting_conversion", "no_defensible_binding"}:
+            continue
+        verification_status = row.get("verification_status")
+        if verification_status == "verified":
+            status = "verified"
+        elif verification_status == "draft_unverified":
+            status = "draft"
+        else:
             continue
         key = (int(row["grade"]), str(row["question"]),
                row["category_code"].upper())
-        verified.setdefault(key, []).append(concept)
-    return verified
+        bindings.setdefault(key, []).append((concept, status))
+    return bindings
 
 
 def _asset(grade, q, code, stu, clip, tags, desc, png, tree=None,
-           verified_bindings=None):
+           bindings=None):
     code_for_id = code or "uncategorized"
     tree_part = f"-{tree}" if tree else ""
     asset = _with_prolog_concepts({
@@ -266,15 +270,16 @@ def _asset(grade, q, code, stu, clip, tags, desc, png, tree=None,
     })
     if code:
         key = (int(grade), str(q), code.upper())
-        for concept in (verified_bindings or {}).get(key, []):
+        for concept, status in (bindings or {}).get(key, []):
             if concept not in asset["prolog_concepts"]:
                 asset["prolog_concepts"].append(concept)
+            asset.setdefault("prolog_concept_binding_status", {})[concept] = status
     return asset
 
 
 def build_asktm(metadata_root=None, bindings_path=ASKTM_BINDINGS):
     metadata_root = metadata_root or ASKTM_ROOT
-    verified_bindings = _verified_asktm_bindings(bindings_path)
+    bindings = _asktm_bindings(bindings_path)
     legends = {grade: _legend_metadata(metadata_root, grade)
                for grade in (4, 5)}
 
@@ -297,7 +302,7 @@ def build_asktm(metadata_root=None, bindings_path=ASKTM_BINDINGS):
         assets.append(_asset(
             5, q, code, stu, clip, clip_tags.get((q, stu, clip), ()),
             cat_desc.get((q, code)) or None, png,
-            verified_bindings=verified_bindings,
+            bindings=bindings,
         ))
 
     # Grade-5 raw/non-first-pass clippings. Their filenames carry no category;
@@ -315,7 +320,7 @@ def build_asktm(metadata_root=None, bindings_path=ASKTM_BINDINGS):
         assets.append(_asset(
             5, q, code, stu, clip, clip_tags.get((q, stu, clip), ()),
             cat_desc.get((q, code)) if code else None, png, tree="raw",
-            verified_bindings=verified_bindings,
+            bindings=bindings,
         ))
 
     # Grade-4 raw clipping directories encode the question in the directory
@@ -335,7 +340,7 @@ def build_asktm(metadata_root=None, bindings_path=ASKTM_BINDINGS):
         assets.append(_asset(
             4, q, code, stu, clip, clip_tags.get((q, stu, clip), ()),
             cat_desc.get((q, code)) if code else None, png, tree="raw",
-            verified_bindings=verified_bindings,
+            bindings=bindings,
         ))
 
     assets.sort(key=lambda a: (a["grade"], a["question"],

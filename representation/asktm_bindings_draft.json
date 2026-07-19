@@ -1,7 +1,7 @@
 {
   "status": "DRAFT_OWNER_NOT_VERIFIED",
   "owner_verified": false,
-  "downstream_policy": "Only rows with verification_status=verified may be joined.",
+  "downstream_policy": "Mapped rows may join as draft; verification_status=verified joins at the verified tier.",
   "source_kind": "ASKTM fine-grained Markdown category legends",
   "accounting": {
     "codes_total": 140,

@@ -1,6 +1,6 @@
 # ASKTM binding review draft
 
-> DRAFT, OWNER NOT VERIFIED. Nothing in this report is approved for gallery binding.
+> DRAFT, OWNER NOT VERIFIED. Mapped rows may reach the gallery only with an unverified draft badge.
 
 Accounting: 140 codes; 51 mapped; 8 awaiting_conversion; 81 no_defensible_binding; 0 verified.
 

@@ -122,7 +122,8 @@ def write_report(path, rows, counts):
     lines = [
         "# ASKTM binding review draft",
         "",
-        "> DRAFT, OWNER NOT VERIFIED. Nothing in this report is approved for gallery binding.",
+        ("> DRAFT, OWNER NOT VERIFIED. Mapped rows may reach the gallery only "
+         "with an unverified draft badge."),
         "",
         (f"Accounting: {counts['codes_total']} codes; {counts['mapped']} mapped; "
          f"{counts['awaiting_conversion']} awaiting_conversion; "
@@ -153,7 +154,10 @@ def main():
     payload = {
         "status": "DRAFT_OWNER_NOT_VERIFIED",
         "owner_verified": False,
-        "downstream_policy": "Only rows with verification_status=verified may be joined.",
+        "downstream_policy": (
+            "Mapped rows may join as draft; verification_status=verified joins "
+            "at the verified tier."
+        ),
         "source_kind": "ASKTM fine-grained Markdown category legends",
         "accounting": counts,
         "bindings": rows,
