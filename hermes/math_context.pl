@@ -45,8 +45,8 @@
 :- use_module(crosswalk(families/cw_fraction_claim), []).
 :- use_module(crosswalk(families/cw_whole_number_addsub_claim), []).
 :- use_module(crosswalk(families/cw_decimal_claim), []).
-% The remaining 11 claim families, each exporting claim_literature_atom/2.
-% Loaded for side effect only and called module-qualified (see concept_literature_atom/2).
+% Mechanical claim families are data modules loaded by cw_driver. These loads
+% also keep the family modules present for the canonical 38-family contract.
 :- use_module(crosswalk(families/cw_algebra_claim), []).
 :- use_module(crosswalk(families/cw_arithmetic_property_claim), []).
 :- use_module(crosswalk(families/cw_calculus_claim), []).
@@ -311,12 +311,17 @@ literature_candidates(Concepts, Cands) :-
 concept_literature_atom(Concept, Concept) :- is_lit_atom(Concept), !.
 concept_literature_atom(Concept, LitAtom) :-
     claim_family_module(Mod),
-    catch(Mod:claim_literature_atom(Concept, LitAtom), _, fail).
+    (   cw_driver:data_family(Mod)
+    ->  catch(cw_driver:family_call(Mod,
+                                    claim_literature_atom(Concept, LitAtom)),
+              _, fail)
+    ;   catch(Mod:claim_literature_atom(Concept, LitAtom), _, fail)
+    ).
 
-% The 14 crosswalk claim families, each exporting claim_literature_atom/2 from a
-% canonical concept to its c_* literature atom. concept_literature_atom/2 fans out
-% over all of them; downstream dedup keys on the candidate, so a concept owned by
-% more than one family does not inflate counts.
+% The 14 crosswalk claim families map a canonical concept to its c_* literature
+% atom. concept_literature_atom/2 fans out over all of them; downstream dedup
+% keys on the candidate, so a concept owned by more than one family does not
+% inflate counts.
 claim_family_module(cw_fraction_claim).
 claim_family_module(cw_whole_number_addsub_claim).
 claim_family_module(cw_decimal_claim).
@@ -455,7 +460,7 @@ misconception_candidate(Productive, Cand) :-
         detail: _{ productive: ProductiveS, deformation: DeformS, family: FamilyS },
         note: Confirmed }.
 misconception_candidate(Concept, Cand) :-
-    catch(cw_decimal_claim:decimal_claim_unified(Concept, edge_surface(Surface), Source),
+    catch(cw_driver:decimal_claim_unified(Concept, edge_surface(Surface), Source),
           _, fail),
     atom(Source),
     sub_atom(Source, 0, _, _, 'misconception_registry:'),

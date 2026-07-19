@@ -16,29 +16,29 @@
 :- reexport(crosswalk(canonical_vocabulary), [incompatible/3, incoherent/2]).
 :- reexport(crosswalk('families/cw_accommodation'), [accommodation_unified/2]).
 :- reexport(crosswalk('families/cw_action_cluster'), [action_cluster_unified/4]).
-:- reexport(crosswalk('families/cw_algebra_claim'), [algebra_claim_unified/3]).
-:- reexport(crosswalk('families/cw_arithmetic_property_claim'), [arithmetic_property_unified/3]).
+:- reexport(crosswalk('families/cw_driver'), [algebra_claim_unified/3]).
+:- reexport(crosswalk('families/cw_driver'), [arithmetic_property_unified/3]).
 :- reexport(crosswalk('families/cw_axiom_pack'), [axiom_pack_unified/2, axiom_pack_control/4]).
-:- reexport(crosswalk('families/cw_calculus_claim'), [calculus_claim_unified/3]).
+:- reexport(crosswalk('families/cw_driver'), [calculus_claim_unified/3]).
 :- reexport(crosswalk('families/cw_counting_claim'), [counting_claim_unified/3]).
-:- reexport(crosswalk('families/cw_decimal_claim'), [decimal_claim_unified/3]).
+:- reexport(crosswalk('families/cw_driver'), [decimal_claim_unified/3]).
 :- reexport(crosswalk('families/cw_deontic_incoherence'), [deontic_incoherence_unified/3]).
 :- reexport(crosswalk('families/cw_domain_context'), [domain_context_unified/3]).
 :- reexport(crosswalk('families/cw_executable_practice'), [executable_practice_unified/4]).
 :- reexport(crosswalk('families/cw_fraction_claim'), [fraction_claim_unified/3]).
-:- reexport(crosswalk('families/cw_fraction_extra_claim'), [fraction_extra_claim_unified/3]).
+:- reexport(crosswalk('families/cw_driver'), [fraction_extra_claim_unified/3]).
 :- reexport(crosswalk('families/cw_fsm_engine'), [fsm_engine_unified/2]).
 :- reexport(crosswalk('families/cw_godel_primes'), [godel_primes_unified/3]).
 :- reexport(crosswalk('families/cw_grounded_arith'), [grounded_arith_unified/4]).
 :- reexport(crosswalk('families/cw_grounding_metaphor'), [grounding_metaphor_unified/3]).
-:- reexport(crosswalk('families/cw_integer_signed_claim'), [integer_signed_claim_unified/3]).
-:- reexport(crosswalk('families/cw_magnitude_equivalence_claim'), [magnitude_equivalence_claim_unified/3]).
+:- reexport(crosswalk('families/cw_driver'), [integer_signed_claim_unified/3]).
+:- reexport(crosswalk('families/cw_driver'), [magnitude_equivalence_claim_unified/3]).
 :- reexport(crosswalk('families/cw_material_inference'), [material_inference_unified/4]).
 :- reexport(crosswalk('families/cw_metaphor_break'), [metaphor_break_unified/4]).
 :- reexport(crosswalk('families/cw_misconception_hook'), [misconception_hook_unified/5]).
 :- reexport(crosswalk('families/cw_modal_context'), [modal_context_unified/3]).
 :- reexport(crosswalk('families/cw_mua_coherence'), [mua_coherence_unified/4]).
-:- reexport(crosswalk('families/cw_multiplication_division_claim'), [multiplication_division_claim_unified/3]).
+:- reexport(crosswalk('families/cw_driver'), [multiplication_division_claim_unified/3]).
 :- reexport(crosswalk('families/cw_normative_crisis'), [normative_crisis_unified/3, normative_crisis_variant/2]).
 :- reexport(crosswalk('families/cw_orr_entry'), [orr_entry_unified/4]).
 % cw_place_value_number_claim exports whole_number_claim_unified/3 (same name as
@@ -49,13 +49,13 @@
             [whole_number_claim_unified/3 as place_value_number_claim_unified]).
 :- reexport(crosswalk('families/cw_practice_vocabulary'), [practice_vocabulary_unified/3]).
 :- reexport(crosswalk('families/cw_productive_deformation'), [productive_deformation_unified/5]).
-:- reexport(crosswalk('families/cw_ratio_proportion_claim'), [ratio_proportion_claim_unified/3]).
+:- reexport(crosswalk('families/cw_driver'), [ratio_proportion_claim_unified/3]).
 :- reexport(crosswalk('families/cw_sequent_proof'), [sequent_proof_unified/2]).
-:- reexport(crosswalk('families/cw_strategy_action_kind'), [strategy_action_kind_unified/3]).
+:- reexport(crosswalk('families/cw_driver'), [strategy_action_kind_unified/3]).
 :- reexport(crosswalk('families/cw_stress_map'), [stress_map_unified/3]).
 :- reexport(crosswalk('families/cw_unit_coordination'), [unit_coordination_unified/3]).
 :- reexport(crosswalk('families/cw_viability'), [viability_unified/3]).
-:- reexport(crosswalk('families/cw_whole_number_addsub_claim'), [whole_number_addsub_claim_unified/3]).
+:- reexport(crosswalk('families/cw_driver'), [whole_number_addsub_claim_unified/3]).
 :- reexport(crosswalk('families/cw_whole_number_claim'), [whole_number_claim_unified/3]).
 
 % --- Expected family registry and contract aggregator ---
@@ -120,7 +120,10 @@ crosswalk_module(Module) :- crosswalk_family(Module).
 %! contract(?Canonical, ?Module, ?LegacyFunctors) is nondet.
 contract(Canonical, Module, Legacy) :-
     crosswalk_module(Module),
-    catch(Module:vocabulary_source(Canonical, Legacy), _, fail).
+    (   cw_driver:data_family(Module)
+    ->  catch(cw_driver:family_vocabulary_source(Module, Canonical, Legacy), _, fail)
+    ;   catch(Module:vocabulary_source(Canonical, Legacy), _, fail)
+    ).
 
 %! legal_term(?Canonical) is nondet.  True when Canonical is a canonical vocabulary term.
 legal_term(Canonical) :- contract(Canonical, _, _).

@@ -10,7 +10,7 @@
  *     rows_count / cols_count / product_count, and its rotated_model sub-dict
  *     supplies the transpose (the same finite cell count under rotation). The
  *     compiler reads those counts; it does not compute R*C or C*R itself.
- *   - cw_arithmetic_property_claim:arithmetic_property_witness/4 supplies the
+ *   - cw_driver:family_witness/6 supplies the
  *     commutativity (commutativity_operation_specific) and distributivity
  *     (distributivity_over_sum) commitment glosses that label the property a
  *     transpose or a four-block tiling answers to.
@@ -58,8 +58,7 @@
                 recollection_to_integer/2 ]).
 :- use_module(strategies(math/fraction_action_pairs),
               [ run_fraction_action/5 ]).
-:- use_module(crosswalk(families/cw_arithmetic_property_claim),
-              [ arithmetic_property_witness/4 ]).
+:- use_module(crosswalk(families/cw_driver), []).
 :- use_module(library(http/json), [json_write_dict/3]).
 :- use_module(library(lists)).
 :- use_module(library(apply)).
@@ -128,10 +127,12 @@ array_grid_witness(R, C, RowsCount, ColsCount, Product, rotated(RotRows, RotCols
 %!  property_gloss(+Canonical, -Gloss) is semidet.
 %
 %   The literature-commitment gloss the property answers to, from
-%   arithmetic_property_witness/4. Used as scene metadata, not as a derivation.
+%   cw_driver:family_witness/6. Used as scene metadata, not as a derivation.
 property_gloss(Canonical, Gloss) :-
-    catch(arithmetic_property_witness(Canonical, commitment(_, Gloss),
-                                      literature_commitment, _),
+    catch(cw_driver:family_witness(cw_arithmetic_property_claim,
+                                   arithmetic_property_witness,
+                                   Canonical, commitment(_, Gloss),
+                                   literature_commitment, _),
           _, fail),
     !.
 
