@@ -103,13 +103,13 @@
 
   <div class="panel">
     <h3>Don't trust the browser? Verify it yourself.</h3>
-    <p class="muted">This page just shows what the Prolog engine returns. Run the engine
+    <p class="muted">This page just shows what the app returns. Run the app
     directly and read the same thing — pick any numbers:</p>
     <div class="verify">swipl -l paths.pl -l learner/fraction_band_ladder.pl \
   -g "story_for(fraction_splitting, reverse(3,8), S), print_story(S), halt"</div>
     <p class="muted">Change <code>reverse(3,8)</code> to <code>reverse(2,7)</code> (base 7),
     or <code>make_improper(9,4)</code>, or <code>ff(2,3,4,5)</code>, or
-    <code>relate(3,5)</code>. The engine code is <code>learner/reorganize.pl</code> — it has
+    <code>relate(3,5)</code>. The app code is <code>learner/reorganize.pl</code> — it has
     no line that asks a teacher or looks up an answer.</p>
   </div>
 </div>
@@ -204,10 +204,10 @@ async function run() {
   const p = new URLSearchParams({domain:d});
   for (const [k] of FIELDS[d]) p.set(k, document.getElementById('f_'+k).value);
   const out = document.getElementById('out');
-  out.innerHTML = '<div class="panel muted">Running the engine…</div>';
+  out.innerHTML = '<div class="panel muted">Running the app…</div>';
   let data;
   try { data = await (await fetch('/api/reorganize?'+p.toString())).json(); }
-  catch(e) { out.innerHTML = '<div class="panel err">Could not reach the engine. Start Hermes with <span class="muted">bash hermes/app/launch.sh</span>. Alternate standalone entry point: <span class="muted">swipl -l paths.pl -l learner/reorg_demo_server.pl -g start_demo</span></div>'; return; }
+  catch(e) { out.innerHTML = '<div class="panel err">Could not reach the app. Start it with <span class="muted">bash hermes/app/launch.sh</span>. Alternate standalone entry point: <span class="muted">swipl -l paths.pl -l learner/reorg_demo_server.pl -g start_demo</span></div>'; return; }
   if (data.error) { out.innerHTML = `<div class="panel err">${data.message}</div>`; qEl.textContent=''; return; }
   qEl.textContent = data.question;
   out.innerHTML = render(data);
@@ -259,7 +259,7 @@ function render(d) {
     // 4. re-execute
     h += `<div class="panel"><div class="step"><div class="num">4</div><div>
       <h3>It ran the method it just built — by doing, not remembering.</h3>
-      <p class="muted">The engine re-executes the installed method move-by-move (each move has to
+      <p class="muted">The app re-executes the installed method move-by-move (each move has to
       fire again from scratch — a stored answer could not pass this). Result:</p>
       <p class="answer">${r.reexecuted_result}</p>
       </div></div></div>`;

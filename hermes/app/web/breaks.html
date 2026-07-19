@@ -107,7 +107,7 @@
   <h2 id="operable">The break, made operable</h2>
 
   <p>The metaphor breaks above are read as facts. The two below you run yourself.
-    Each posts to the live Hermes server and reads back what the formalism records,
+    Each posts to the live app and reads back what the formalism records,
     including the point where it records a gap in place of a result.</p>
 
   <div class="operable" id="deontic">
@@ -141,7 +141,7 @@
       (Savich, <em>PML calculus</em>)
       (<code>pml/pragmatic_axioms.pl</code>); the prover answers
       <code>erasure(propagation)</code>, and the card renders that answer in place of a
-      derivation. A worker loaded without that pack answers that no loaded layer derives
+      derivation. When that pack is not loaded, the app answers that no loaded layer derives
       the same sequent, and the card renders that instead.</p>
     <input class="seqin" id="seq-in" value="[s(a)] =&gt; [s(a)]" spellcheck="false">
     <div>
@@ -186,7 +186,7 @@
 
   <div class="operable" id="formal-tools">
     <h3>Formal registry queries</h3>
-    <div class="domains">loaded relations · live worker replies</div>
+    <div class="domains">loaded relations · live app replies</div>
     <p class="desc">Each control asks one existing relation on its own terms. Empty results
       mean that relation returned no entries for the request. Errors are printed as returned.</p>
     <div class="tool-grid">
@@ -616,7 +616,7 @@ neg(p)</textarea>
         }
       } catch (err) {
         $("cards").innerHTML = `<div class="offline">The knowledge base is not reachable
-          (this page queries the local Hermes server, port 8765). Launch it with
+          (this page queries the local app, port 8765). Launch it with
           <code>bash hermes/app/launch.sh</code> and reload.</div>`;
       }
     }

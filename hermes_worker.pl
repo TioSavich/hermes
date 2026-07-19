@@ -230,203 +230,66 @@ handle_request(Request, Response) :-
     ;   error_response(Id, missing_op, "request has no op", Response)
     ).
 
-%!  known_op(?Op) is nondet.
+%!  dispatch_irregular(?Op) is nondet.
 %
-%   The ops with a dedicated handler. Used to keep the unknown_op catch-all
-%   from swallowing a known op whose body failed (see handle_request/2).
-known_op(health).
-known_op(event_score).
-known_op(batch_event_score).
-known_op(discourse_features).
-known_op(discourse_pragmatics).
-known_op(trace_adjudication).
-known_op(media_alignment).
-known_op(gesture_alignment).
-known_op(pair_score).
-known_op(pair_graph).
-known_op(pair_candidate_witness).
-known_op(critique_bad_infinite).
-known_op(defeasible_classify).
-known_op(deontic_requires_entitlement).
-known_op(deontic_scorecard).
-known_op(deontic_crisis).
-known_op(deontic_consequences).
-known_op(deontic_up_level).
-known_op(axiom_hierarchy_witness).
-known_op(axiom_pack_witness).
-known_op(robinson_axiom_witness).
-known_op(semantic_material_witness).
-known_op(incoherent_witness).
-known_op(eml_transition_witness).
-known_op(number_theory_self_defeat_witness).
-known_op(embodied_proof_witness).
-known_op(viability_witness).
-known_op(modal_context_witness).
-known_op(grounded_arith_witness).
-known_op(material_inference_witness).
-known_op(normative_crisis_witness).
-known_op(metaphor_break_witness).
-known_op(grounding_metaphor_witness).
-known_op(sequent_proof_witness).
-known_op(unit_coordination_witness).
-known_op(unit_coordination_svg).
-known_op(godel_primes_witness).
-known_op(fsm_engine_witness).
-known_op(action_cluster_witness).
-known_op(practice_vocabulary_witness).
-known_op(accommodation_witness).
-known_op(domain_context_witness).
-known_op(orr_entry_witness).
-known_op(executable_practice_witness).
-known_op(misconception_hook_witness).
-known_op(algebra_claim_witness).
-known_op(integer_signed_claim_witness).
-known_op(arithmetic_property_witness).
-known_op(calculus_claim_witness).
-known_op(counting_claim_witness).
-known_op(standard_k_ca_1_3_complement_witness).
-known_op(standard_k_ns_1_count_by_ones_witness).
-known_op(standard_k_ns_2_represent_count_witness).
-known_op(standard_k_ns_3_order_independence_witness).
-known_op(standard_k_ns_4_verify_subitizing_witness).
-known_op(standard_k_ns_5_6_compare_groups_witness).
-known_op(standard_k_ns_7_place_value_witness).
-known_op(standard_1_ns_1_count_by_fives_witness).
-known_op(standard_1_ns_2_place_value_witness).
-known_op(standard_1_ca_1_making_ten_witness).
-known_op(standard_1_ca_3_add_by_place_value_witness).
-known_op(standard_2_ca_2_add_three_digit_witness).
-known_op(standard_2_ns_1_count_by_twos_witness).
-known_op(standard_2_ns_2_4_place_value_witness).
-known_op(standard_2_ns_3_parity_witness).
-known_op(standard_2_ns_5_place_value_comparison_witness).
-known_op(standard_3_ca_3_4_fact_family_witness).
-known_op(standard_3_ca_5_mult_skip_count_witness).
-known_op(standard_3_ns_2_unit_fraction_witness).
-known_op(standard_3_ns_5_fraction_comparison_witness).
-known_op(misconception_jumps_witness).
-known_op(misconception_pml_map).
-known_op(balance_solve_witness).
-known_op(whole_number_addsub_claim_witness).
-known_op(ratio_proportion_claim_witness).
-known_op(magnitude_equivalence_claim_witness).
-known_op(multiplication_division_claim_witness).
-known_op(decimal_claim_witness).
-known_op(place_value_number_claim_witness).
-known_op(whole_number_claim_witness).
-known_op(fraction_extra_claim_witness).
-known_op(fraction_claim_witness).
-known_op(productive_deformation_witness).
-known_op(representation_spine_witness).
-known_op(geometry_entailment_witness).
-known_op(incompatibility_discovery_witness).
-known_op(incompatibility_entailment_witness).
-known_op(misconception_incompatibility_witness).
-known_op(intersubjective_material_witness).
-known_op(mua_kind_coherence_witness).
-known_op(mua_coherence_witness).
-known_op(grounding_inference_witness).
-known_op(target_expressive_power_witness).
-known_op(lesson_misconception_incompatibility_witness).
-known_op(geometry_material_profile_witness).
-known_op(geometry_quadrilateral_entailment_witness).
-known_op(geometry_strength_lift_coverage_witness).
-known_op(geometry_van_hiele_material_witness).
-known_op(geometry_van_hiele_marker_witness).
-known_op(geometry_cross_link_witness).
-known_op(geometry_developmental_arc_witness).
-known_op(geometry_attribute_material_witness).
-known_op(geometry_similarity_material_witness).
-known_op(geometry_pythagorean_material_witness).
-known_op(geometry_van_hiele_level_material_witness).
-known_op(geometry_measurement_misconception_witness).
-known_op(geometry_n103_bootstrap_witness).
-known_op(geometry_van_de_walle_bootstrap_witness).
-known_op(geometry_shape_recognition_material_witness).
-known_op(geometry_coordinate_material_witness).
-known_op(geometry_angle_material_witness).
-known_op(geometry_area_perimeter_material_witness).
-known_op(geometry_volume_surface_area_material_witness).
-known_op(geometry_transformation_material_witness).
-known_op(geometry_classification_material_witness).
-known_op(geometry_pck_classification_witness).
-known_op(geometry_measuring_stick_metaphor_witness).
-known_op(geometry_lakoff_nunez_metaphor_witness).
-known_op(geometry_synthesizer_anchor_material_witness).
-known_op(geometry_synthesizer_triangulation_witness).
-known_op(geometry_ccss_standard_witness).
-known_op(geometry_indiana_standard_witness).
-known_op(geometry_im_grade8_lesson_standard_witness).
-known_op(geometry_im_grade7_lesson_standard_witness).
-known_op(geometry_im_grade6_lesson_standard_witness).
-known_op(geometry_im_grade5_standard_anchor_witness).
-known_op(geometry).
-known_op(diagnose_error).
-known_op(query_misconception).
-known_op(monitoring_chart_export).
-known_op(ranked_figures).
-known_op(field_context).
-known_op(field_connectivity_audit).
-known_op(render_coverage).
-known_op(expressive_power).
-known_op(list_strategies).
-known_op(strategy_trace).
-known_op(fraction_render).
-known_op(fraction_compare).
-known_op(area_render).
-known_op(base_ten_render).
-known_op(ace_of_bases_render).
-known_op(unit_echo_render).
-known_op(set_grouping_render).
-known_op(balance_render).
-known_op(number_line_render).
-known_op(place_value_chart_render).
-known_op(hybridization_render).
-known_op(area_compare).
-known_op(base_ten_compare).
-known_op(set_grouping_compare).
-known_op(balance_compare).
-known_op(number_line_compare).
-known_op(representation_check).
-known_op(representation_candidates).
-known_op(representation_spec_check).
-known_op(teacher_layer).
-known_op(primitive_for_practice).
-known_op(image_schema).
-known_op(set_base).
-known_op(get_base).
-known_op(multiply_array_witness).
-known_op(mult_div_family_witness).
-known_op(list_misconceptions).
-known_op(list_standards).
-known_op(grounding_metaphors).
-known_op(grounding_for).
-known_op(ground).
-known_op(lit_search).
-known_op(pml_score).
-known_op(validate_reader_axioms).
-known_op(canonical_contract).
-known_op(canonical_check).
-known_op(notation_render).
-known_op(fraction_cgi_addition).
-known_op(lesson_deformation_chart).
-known_op(notation_monitoring_chart).
-known_op(brandom_backstop).
-known_op(brandomian_check).
-known_op(hyperedges).
-known_op(axiom_toggle).
-known_op(commitment_match).
-known_op(corpus_grammar_summary).
-known_op(elaborations).
-known_op(carving_strategy_proof).
-known_op(carving_operation_summary).
-known_op(benny_demo).
-known_op(compute).
-known_op(knowledge).
-known_op(visualize_coordination).
-known_op(reorganize).
-known_op(learner_reset).
-known_op(capability_atlas).
+%   The ops with bespoke dispatch_request/4 heads. Generic operations are
+%   identified by dispatch_spec/4; together the two relations keep a failed
+%   handler from being mislabelled as an unknown operation.
+dispatch_irregular(ace_of_bases_render).
+dispatch_irregular(area_compare).
+dispatch_irregular(area_render).
+dispatch_irregular(axiom_toggle).
+dispatch_irregular(balance_compare).
+dispatch_irregular(balance_render).
+dispatch_irregular(balance_solve_witness).
+dispatch_irregular(base_ten_compare).
+dispatch_irregular(base_ten_render).
+dispatch_irregular(brandomian_check).
+dispatch_irregular(canonical_check).
+dispatch_irregular(capability_atlas).
+dispatch_irregular(compute).
+dispatch_irregular(deontic_consequences).
+dispatch_irregular(deontic_crisis).
+dispatch_irregular(deontic_requires_entitlement).
+dispatch_irregular(deontic_scorecard).
+dispatch_irregular(deontic_up_level).
+dispatch_irregular(diagnose_error).
+dispatch_irregular(discourse_features).
+dispatch_irregular(discourse_pragmatics).
+dispatch_irregular(fraction_cgi_addition).
+dispatch_irregular(fraction_compare).
+dispatch_irregular(fraction_render).
+dispatch_irregular(geometry).
+dispatch_irregular(gesture_alignment).
+dispatch_irregular(get_base).
+dispatch_irregular(health).
+dispatch_irregular(hybridization_render).
+dispatch_irregular(hyperedges).
+dispatch_irregular(knowledge).
+dispatch_irregular(learner_reset).
+dispatch_irregular(lesson_deformation_chart).
+dispatch_irregular(media_alignment).
+dispatch_irregular(misconception_jumps_witness).
+dispatch_irregular(notation_monitoring_chart).
+dispatch_irregular(notation_render).
+dispatch_irregular(number_line_compare).
+dispatch_irregular(number_line_render).
+dispatch_irregular(pair_candidate_witness).
+dispatch_irregular(place_value_chart_render).
+dispatch_irregular(query_misconception).
+dispatch_irregular(reorganize).
+dispatch_irregular(representation_candidates).
+dispatch_irregular(representation_check).
+dispatch_irregular(representation_spec_check).
+dispatch_irregular(sequent_proof_witness).
+dispatch_irregular(set_base).
+dispatch_irregular(set_grouping_compare).
+dispatch_irregular(set_grouping_render).
+dispatch_irregular(teacher_layer).
+dispatch_irregular(trace_adjudication).
+dispatch_irregular(unit_coordination_svg).
+dispatch_irregular(unit_echo_render).
+dispatch_irregular(visualize_coordination).
 
 op_error(Id, Op, Error, Response) :-
     message_string(Error, Detail),
@@ -441,9 +304,7 @@ dispatch_request(health, Id, _Request, Response) :-
         ),
         Ops),
     ok_response(Id, _{
-        crosswalk_family_count: 38,
         worker: "hermes_swi",
-        loaded: ["event_scoring", "pair_scoring", "critique", "defeasible_inference", "incompatibility_sets", "sequent_brandom_bridge", "brandomian_incompatibility", "find_emergent_hyperedges", "lesson_gap", "corpus_attested_grammar", "lesson_notation_chart", "lesson_monitoring_selector", "automaton_analyzer", "semantic_axioms", "intersubjective_praxis", "mua_relations", "media_alignment", "gesture_alignment", "discourse_features", "discourse_pragmatics", "trace_adjudication", "embodied_prover", "sequent_engine", "deontic_scorekeeper", "axiom_pack_audit", "geometry", "misconception_registry", "misconceptions", "misconception_render_coverage", "lesson_monitoring", "field_context", "field_connectivity_audit", "grounding_metaphors", "encyclopedia", "visualization", "fraction_bars_scene", "balance_scale_scene", "cw_viability", "cw_axiom_pack", "cw_modal_context", "cw_grounded_arith", "cw_material_inference", "cw_normative_crisis", "cw_metaphor_break", "cw_grounding_metaphor", "cw_sequent_proof", "cw_mua_coherence", "cw_unit_coordination", "cw_godel_primes", "cw_fsm_engine", "cw_action_cluster", "cw_practice_vocabulary", "cw_accommodation", "cw_domain_context", "cw_orr_entry", "cw_executable_practice", "cw_misconception_hook", "cw_algebra_claim", "cw_integer_signed_claim", "cw_arithmetic_property_claim", "cw_calculus_claim", "cw_counting_claim", "cw_whole_number_addsub_claim", "cw_ratio_proportion_claim", "cw_magnitude_equivalence_claim", "cw_multiplication_division_claim", "cw_decimal_claim", "cw_place_value_number_claim", "cw_whole_number_claim", "cw_fraction_extra_claim", "cw_fraction_claim", "cw_productive_deformation", "standard_k_ca_1_3", "standard_k_ns_1", "standard_k_ns_2", "standard_k_ns_3", "standard_k_ns_4", "standard_k_ns_5_6", "standard_k_ns_7", "standard_1_ns_1", "standard_1_ns_2", "standard_1_ca_1", "standard_1_ca_3", "standard_2_ca_2", "standard_2_ns_1", "standard_2_ns_2_4", "standard_2_ns_3", "standard_2_ns_5", "standard_3_ca_3_4", "standard_3_ca_5", "standard_3_ns_2", "standard_3_ns_5", "canonical_vocabulary", "representation_spine"],
         ops: Ops,
         mode: "persistent"
     }, Response).
@@ -2080,12 +1941,12 @@ dispatch_input_failure_response(witness_input_errorless(_), _Op, _Id,
 dispatch_input_failure_response(Result, Op, Id, Response) :-
     dispatch_malformed_response(Result, Op, Id, Response).
 
-% Catch-all: only genuinely unknown ops reach here. The \+ known_op/1 guard
-% stops a KNOWN op whose body failed from backtracking into this clause; that
-% case falls through to op_failed in handle_request/2, so the worker no longer
-% mislabels a failed handler as "unknown_op".
+% Catch-all: only genuinely unknown ops reach here. The spec and bespoke-head
+% guards stop a known op whose body failed from backtracking into this clause;
+% that case falls through to op_failed in handle_request/2.
 dispatch_request(Op, Id, _Request, Response) :-
-    \+ known_op(Op),
+    \+ dispatch_spec(Op, _, _, _),
+    \+ dispatch_irregular(Op),
     format(string(Message), "Unsupported op: ~w", [Op]),
     error_response(Id, unknown_op, Message, Response).
 

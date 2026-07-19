@@ -46,10 +46,10 @@
   <main id="hub" class="hub-wrap">
     <h1>Hermes visualizers</h1>
     <p class="lede">Choose a format by what it draws. Each format opens with a worked example;
-      arithmetic formats can send changed inputs to a running Hermes worker.</p>
+      arithmetic formats can send changed inputs to the running app.</p>
     <a class="why-link" href="index.html#snap">Why this exists &rarr;</a>
     <div class="how">
-      <b>Just looking?</b> Open any format below. The embedded filmstrip draws without a server.
+      <b>Just looking?</b> Open any format below. The embedded filmstrip draws without the app.
       <br><b>Want to change the inputs?</b> Run <code>bash hermes/app/launch.sh</code>, then use
       the calculation controls on the arithmetic formats.
     </div>
@@ -93,7 +93,7 @@
       <a class="card" href="../generated/lesson_deformation_charts/index.html"><h3>Wrong-answer pattern charts</h3><p>Generated productive and wrong-answer comparisons.</p></a>
       <a class="card" href="../generated/parametric_partition/index.html"><h3>Parametric partitions</h3><p>Generated circle partitions and transplanted wrong-answer patterns.</p></a>
       <a class="card" href="../generated/notation_demos/index.html"><h3>Notation demos</h3><p>Generated examples of notation carrying a strategy.</p></a>
-      <a class="card" href="strategies.html"><h3>Strategies, running</h3><p>Strategy automata executed against the worker.</p></a>
+      <a class="card" href="strategies.html"><h3>Strategies, running</h3><p>Strategy automata executed by the app.</p></a>
     </div>
   </main>
 
@@ -174,7 +174,7 @@
 
       <section id="fraction-walkthrough" class="panel" data-extra="fraction-walkthrough" hidden>
         <h2>Unlike denominators, assembled in four moves</h2>
-        <p class="calc-note">No single worker operation draws unlike-denominator addition end to end.
+        <p class="calc-note">No single app operation draws unlike-denominator addition end to end.
           This walkthrough uses the fraction-bar action represented by the drawer, re-unitizes both
           terms, then asks <code>/api/fraction_cgi_addition</code> to run the same-denominator addition.
           The values below are changeable placeholders.</p>
@@ -203,14 +203,14 @@
 
       <section id="balance-extra" class="panel" data-extra="balance" hidden>
         <h2>Recorded solution example</h2>
-        <p class="calc-note">The same a, b, c through <code>/api/balance_solve</code> returns the worker's step record as JSON.</p>
+        <p class="calc-note">The same a, b, c through <code>/api/balance_solve</code> returns the app's step record as JSON.</p>
         <button id="solve-witness" type="button">Request recorded solution</button>
         <pre id="solve-witness-out" class="tuple"></pre>
       </section>
 
       <section id="notation-extra" class="panel" data-extra="notation" hidden>
-        <h2>Notation worker controls</h2>
-        <p class="subhead">These calls return the worker payload directly. A rejected lesson or notation kind remains a reported error.</p>
+        <h2>Notation app controls</h2>
+        <p class="subhead">These calls return the app payload directly. A rejected lesson or notation kind remains a reported error.</p>
         <div class="calc-bar">
           <label>lesson <input id="notation-lesson" value="IM-G1-U3-L17"></label>
           <button type="button" data-notation-route="/api/notation_render">notation reply</button>
@@ -231,7 +231,7 @@
   </main>
 
   <template id="controls-number-line"><label>mode <select data-arg="mode"><option value="jumps">whole-number jumps</option><option value="fraction">fraction iteration</option><option value="length">rounding length</option></select></label><label>strategy <input data-arg="strategy" type="text" value="COBO" size="8"></label><label>a <input data-arg="a" type="number" value="28"></label><label>b <input data-arg="b" type="number" value="47"></label><label>numerator <input data-arg="numerator" type="number" value="7" min="1"></label><label>denominator <input data-arg="denominator" type="number" value="5" min="1"></label><button id="calculate">Calculate</button><span class="calc-note">POSTs to <code>/api/render</code>; renders the returned recorded-example frames.</span></template>
-  <template id="controls-fraction-bars"><label>kind <select data-arg="kind"><option value="splitting">splitting</option><option value="unit_fraction_partition">unit fraction partition</option><option value="unit_fraction_iteration">unit fraction iteration</option></select></label><label>n <input data-arg="n" type="number" value="5" min="1"></label><label>d <input data-arg="d" type="number" value="3" min="1"></label><button id="calculate">Calculate</button><span class="calc-note">The embedded filmstrip draws without a worker. Changed inputs compute on request through <code>/api/render</code>.</span></template>
+  <template id="controls-fraction-bars"><label>kind <select data-arg="kind"><option value="splitting">splitting</option><option value="unit_fraction_partition">unit fraction partition</option><option value="unit_fraction_iteration">unit fraction iteration</option></select></label><label>n <input data-arg="n" type="number" value="5" min="1"></label><label>d <input data-arg="d" type="number" value="3" min="1"></label><button id="calculate">Calculate</button><span class="calc-note">The embedded filmstrip draws without the app. Changed inputs compute on request through <code>/api/render</code>.</span></template>
   <template id="controls-area-model"><input type="hidden" data-arg="kind" value="array_multiplication"><label>rows <input data-arg="a" type="number" value="3"></label><label>cols <input data-arg="b" type="number" value="4"></label><button id="calculate">Calculate</button><span class="calc-note">POSTs to <code>/api/render</code>; renders the returned recorded-example frames.</span></template>
   <template id="controls-base-ten-columns"><label>move <select data-arg="kind"><option value="add_with_carry">add (carry)</option><option value="subtract_with_borrow">subtract (borrow)</option><option value="represent">represent</option><option value="base_decomposition">decompose</option></select></label><label>a <input id="arg-a" data-arg="a" type="number" value="27"></label><label>b <input data-arg="b" type="number" value="15"></label><input id="arg-n" data-arg="n" type="number" value="27" hidden><label>base <select data-arg="base"><option value="5">5</option><option value="7">7</option><option value="10" selected>10</option><option value="12">12</option></select></label><button id="calculate">Calculate</button><span class="calc-note">The selected base flows through <code>/api/render</code>.</span></template>
   <template id="controls-set-grouping"><input type="hidden" data-arg="spec" value="make_ten"><label>a <input data-arg="a" type="number" value="8"></label><label>b <input data-arg="b" type="number" value="5"></label><button id="calculate">Calculate</button><span class="calc-note">POSTs to <code>/api/render</code>; renders the returned recorded-example frames.</span></template>
@@ -270,7 +270,7 @@
         "base-ten-columns": {title:"Ace of Base", subhead:"Place value for the operative base you pick. Units, then groups of the base, the base squared, and the base cubed. Bundling and carrying follow that base from the place-value witness.", op:"base_ten_render", controls:"controls-base-ten-columns", extras:[]},
         "set-grouping": {title:"Set grouping", subhead:"Quantities as dots in ten-frames, bins, and make-ten pairings. Each frame is a step the grouping witness names.", op:"set_grouping_render", controls:"controls-set-grouping", extras:[]},
         "balance-scale": {title:"Balance scale", subhead:"An equation as a two-pan balance. A balance-preserving step keeps it level; an operational-equals wrong-answer pattern tips it. Driven from the recorded solution.", op:"balance_render", controls:"controls-balance-scale", extras:["balance"]},
-        "place-value-chart": {title:"Place-value chart", subhead:"Column addition as a place-value table. The worker sends columns, rows, and carries; the drawer renders only the frozen chart format.", op:"place_value_chart_render", controls:"controls-place-value-chart", extras:[]},
+        "place-value-chart": {title:"Place-value chart", subhead:"Column addition as a place-value table. The app sends columns, rows, and carries; the drawer renders only the frozen chart format.", op:"place_value_chart_render", controls:"controls-place-value-chart", extras:[]},
         "notation": {title:"Notation", subhead:"Glyph-level equation scenes. Productive writing keeps each symbol in its role; wrong-answer cases can mirror a digit or mark a written expression without changing the drawer contract.", op:"notation_render", controls:"controls-notation", extras:["notation"]},
         "hybridization-model": {title:"Hybridization model", subhead:"A grammar-level transplant drawing: host, licensed home, transplant move, and hybrid result. The figure models the representation grammar rather than redrawing student work.", op:"hybridization_render", controls:"controls-hybridization-model", extras:[]},
         "coordinate-plane": {title:"Coordinate plane", subhead:"Points and paths plotted on Cartesian axes from a compiled scene.", op:null, controls:null, extras:[]},
@@ -345,7 +345,7 @@
           fetch("/api/balance_solve", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload)})
             .then(function (response) { return response.json(); })
             .then(function (body) { out.textContent = JSON.stringify(body.ok ? body.result : body, null, 2); })
-            .catch(function () { out.textContent = "The Hermes server did not return JSON."; });
+            .catch(function () { out.textContent = "The app did not return JSON."; });
         });
       }
 
@@ -364,7 +364,7 @@
             fetch(path, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(body)})
               .then(function (response) { return response.json(); })
               .then(function (data) { out.textContent = JSON.stringify(data, null, 2) || "The route returned an empty reply."; })
-              .catch(function () { out.textContent = "The Hermes server did not return JSON."; });
+              .catch(function () { out.textContent = "The app did not return JSON."; });
           });
         });
       }
@@ -410,7 +410,7 @@
           fetch("/api/fraction_cgi_addition", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({kind:FRACTION_WALKTHROUGH_DEFAULT.kind, na:v.left, nb:v.right, d:v.d})})
             .then(function (response) { return response.json(); })
             .then(function (body) { out.textContent = JSON.stringify(body.result || body, null, 2); })
-            .catch(function () { out.textContent = "The local Hermes worker did not answer."; });
+            .catch(function () { out.textContent = "The app did not answer."; });
         });
       }
 

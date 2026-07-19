@@ -396,18 +396,18 @@
     This page renders the <b>actual JSON</b> emitted by the Prolog monitoring chart
     (<code>hermes_worker.pl</code>, op <code>monitoring_chart_export</code>). It is a
     saved snapshot under <code>data/</code>, not a mock and not a live call — regenerate
-    it by piping a <code>monitoring_chart_export</code> request through the worker.
+    it by piping a <code>monitoring_chart_export</code> request through the app.
     The two figures it foregrounds — <b>derived incompatibility</b> and
     <b>expressive power</b>, what each representation can and cannot say (Brandom,
     <em>Between Saying and Doing</em>), is shown here as the
     chart computes them, not as decoration. Enter a lesson code below to ask the live
-    Hermes worker for a fresh chart; when the worker is unreachable the page falls back
+    app for a fresh chart; when the app is unreachable the page falls back
     to the saved snapshot.
   </p>
 
   <div class="controls">
     <label>lesson <input class="lesson mono" id="lesson-input" value="IM-G1-U3-L17"></label>
-    <label>Hermes <input class="base mono" id="base-input" value="http://127.0.0.1:8765"></label>
+    <label>App <input class="base mono" id="base-input" value="http://127.0.0.1:8765"></label>
     <button id="load-btn" type="button">load chart</button>
     <button id="rank-btn" type="button">rank figures</button>
   </div>
@@ -425,7 +425,7 @@
   (function () {
     'use strict';
 
-    // Saved snapshot used as the offline fallback when the worker is unreachable.
+    // Saved snapshot used as the offline fallback when the app is unreachable.
     const SNAPSHOT_URL = 'data/monitoring_IM-G1-U3-L17.json';
 
     function el(tag, cls, html) {
@@ -553,7 +553,7 @@
       renderPml(d.pml_facts);
     }
 
-    // Ask the live Hermes worker for a fresh chart. The route returns
+    // Ask the live app for a fresh chart. The route returns
     // {ok:true, result:{...}}; the saved snapshot is the bare chart object,
     // so unwrap result here to keep both paths feeding renderChart the same shape.
     function fetchLive(baseUrl, lessonCode) {
@@ -563,7 +563,7 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ lesson_code: lessonCode })
       }).then(r => {
-        if (!r.ok) throw new Error('worker responded ' + r.status);
+        if (!r.ok) throw new Error('app responded ' + r.status);
         return r.json();
       }).then(j => {
         if (j && j.error) throw new Error(j.error);
@@ -585,14 +585,14 @@
       const lessonCode = (document.getElementById('lesson-input').value || '').trim();
       const baseUrl = (document.getElementById('base-input').value || '').trim();
       document.getElementById('lesson-line').textContent = 'Loading monitoring chart…';
-      setSource('Asking the Hermes worker at <code>' + esc(baseUrl) + '</code>…');
+      setSource('Asking the app at <code>' + esc(baseUrl) + '</code>…');
       const live = (baseUrl && lessonCode)
         ? fetchLive(baseUrl, lessonCode)
-        : Promise.reject(new Error('lesson code and Hermes URL are both required'));
+        : Promise.reject(new Error('lesson code and app URL are both required'));
       live
         .then(chart => {
           renderChart(chart);
-          setSource('Live chart from the Hermes worker at <code>' + esc(baseUrl) + '</code>.');
+          setSource('Live chart from the app at <code>' + esc(baseUrl) + '</code>.');
         })
         .catch(liveErr => {
           // Worker unreachable or refused — fall back to the saved snapshot.
@@ -616,7 +616,7 @@
       const lessonCode = (document.getElementById('lesson-input').value || '').trim();
       const baseUrl = (document.getElementById('base-input').value || '').trim();
       const out = document.getElementById('rank-output');
-      if (!lessonCode || !baseUrl) { out.textContent = 'A lesson code and Hermes URL are required.'; return; }
+      if (!lessonCode || !baseUrl) { out.textContent = 'A lesson code and app URL are required.'; return; }
       out.textContent = 'Requesting ranked figures…';
       fetch(baseUrl.replace(/\/+$/, '') + '/api/ranked_figures', {
         method: 'POST', headers: {'Content-Type': 'application/json'},
@@ -624,7 +624,7 @@
       }).then(async response => {
         let data;
         try { data = await response.json(); }
-        catch (e) { throw new Error('the server reply was not JSON (HTTP ' + response.status + ')'); }
+        catch (e) { throw new Error('the app reply was not JSON (HTTP ' + response.status + ')'); }
         out.textContent = JSON.stringify(data, null, 2) || 'The route returned an empty reply.';
       }).catch(err => { out.textContent = 'Could not rank figures: ' + err.message + '.'; });
     });
@@ -660,7 +660,7 @@
     // Live-with-fallback, same pattern as scoreboard.html: the saved comparison
     // document carries the curated structure (pairing by standard, provenance,
     // citations, hyperedge deltas, wiring audit); the per-lesson counts are
-    // refreshed from the live Hermes worker (/api/expressive_power) when it
+    // refreshed from the live app (/api/expressive_power) when it
     // answers, and the page names which of the two it is serving.
     const DATA_URL = 'data/expressive_power_comparison.json';
     const WORKER_BASE = location.protocol === 'file:' ? 'http://127.0.0.1:8765' : '';
@@ -898,9 +898,9 @@
       document.getElementById('data-source').innerHTML = html;
     }
 
-    // Ask the live worker for one lesson's expressive-power counts. The route
+    // Ask the live app for one lesson's expressive-power counts. The route
     // returns {ok:true, result:{lesson, resolved, expressive_power}}; a lesson
-    // the worker cannot resolve counts as a live failure so the page never
+    // the app cannot resolve counts as a live failure so the page never
     // mixes live and frozen numbers.
     function fetchLiveCounts(code) {
       return fetch(WORKER_BASE + '/api/expressive_power', {
@@ -908,19 +908,19 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ lesson: code })
       }).then(r => {
-        if (!r.ok) throw new Error('worker responded ' + r.status);
+        if (!r.ok) throw new Error('app responded ' + r.status);
         return r.json();
       }).then(j => {
         if (j && j.error) throw new Error(j.error);
         const res = j && j.result ? j.result : j;
         if (!res || res.resolved !== true || !res.expressive_power) {
-          throw new Error(code + ' did not resolve on the live worker');
+          throw new Error(code + ' did not resolve on the live app');
         }
         return res.expressive_power;
       });
     }
 
-    // Refresh every lesson's counts from the worker, then recompute the count
+    // Refresh every lesson's counts from the app, then recompute the count
     // deltas. A delta the export marked non-commensurable stays as exported:
     // that marker records a judgment about operation regions, not a count.
     // delta.emergent_hyperedges also stays as exported; the live op does not
@@ -966,12 +966,12 @@
         return response.json();
       })
       .then(data => {
-        setDataSource('Asking the Hermes worker for fresh counts…');
+        setDataSource('Asking the app for fresh counts…');
         return refreshFromWorker(data)
           .then(fresh => {
             renderAll(fresh);
             setDataSource('<span class="badge live">live counts</span>' +
-              'Per-lesson counts and the count deltas come from the Hermes worker ' +
+              'Per-lesson counts and the count deltas come from the app ' +
               '(<code>/api/expressive_power</code>). Pairing, provenance, citations, ' +
               'incompatible-claim-group deltas and the wiring audit come from the saved comparison ' +
               'document <code>' + esc(DATA_URL) + '</code>.');
@@ -979,9 +979,9 @@
           .catch(liveErr => {
             renderAll(data);
             setDataSource('<span class="badge snapshot">static snapshot</span>' +
-              'The Hermes worker is not reachable (' + esc(liveErr.message) + '), so every ' +
+              'The app is not reachable (' + esc(liveErr.message) + '), so every ' +
               'number on this page comes from the saved comparison document ' +
-              '<code>' + esc(DATA_URL) + '</code>. Launch the worker with ' +
+              '<code>' + esc(DATA_URL) + '</code>. Launch the app with ' +
               '<code>bash hermes/app/launch.sh</code> and reload for live counts.');
           });
       })

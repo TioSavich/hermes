@@ -435,13 +435,9 @@
     document.documentElement.classList.add("hshell-ready");
     window.HermesShell = { slot: slot, main: main };
 
-    // ---- absorb any legacy nav (older injected bars, shared.js top-bar) ----
-    // shared.js injects its bar + discourse toggle on DOMContentLoaded, after
-    // this defer script runs; adopt the discourse buttons into our top slot and
-    // retire the old bars so pages carry one nav, not three.
-    function integrateLegacy() {
-      var db = document.querySelector(".discourse-buttons");
-      if (db && db.parentNode !== slot) slot.appendChild(db);
+    // Retire static legacy bars still authored in older pages. Discourse
+    // controls already live in the shell slot; this cleanup keeps one nav.
+    function removeLegacyChrome() {
       var junk = document.querySelectorAll(".top-bar, .hermes-shell, #journey-progress-bar, .journey-bar");
       for (var i = 0; i < junk.length; i++) {
         var b = junk[i];
@@ -449,9 +445,10 @@
         b.parentNode && b.parentNode.removeChild(b);
       }
     }
-    window.addEventListener("load", integrateLegacy);
-    setTimeout(integrateLegacy, 300);
-    setTimeout(integrateLegacy, 900);
+    window.addEventListener("load", removeLegacyChrome);
+    setTimeout(removeLegacyChrome, 300);
+    setTimeout(removeLegacyChrome, 900);
+
   }
 
   if (document.body) build();

@@ -505,11 +505,11 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
 
     <!-- ============ WORKSPACE ============ -->
     <section class="panel active" data-tab="workspace">
-      <p class="panel-lede">Bring a discussion, read what Hermes makes of it, and open a visualizer. The research features (modal-posture scoring and the Gemma class workflow) wait under <em>Advanced / research</em> in the top bar.</p>
+      <p class="panel-lede">Bring a discussion, read what the app makes of it, and open a visualizer. The research features (modal-posture scoring and the Gemma class workflow) wait under <em>Advanced / research</em> in the top bar.</p>
 
       <div class="card">
         <h2><span class="num">1</span>Your discussion</h2>
-        <p class="hint">Paste a Canvas discussion (or any <code>Speaker: text</code> transcript / table with Speaker &amp; text columns), drop a file, or load the synthetic sample. Hermes detects the format for you. For the claim-check report of a transcript, use <a href="discussions.html">Discussions</a> in the sidebar.</p>
+        <p class="hint">Paste a Canvas discussion (or any <code>Speaker: text</code> transcript / table with Speaker &amp; text columns), drop a file, or load the synthetic sample. The app detects the format for you. For the claim-check report of a transcript, use <a href="discussions.html">Discussions</a> in the sidebar.</p>
         <div id="data-drop" class="dropzone">
           <textarea id="data-input" class="data-input" placeholder="Maria Rivera: A square is a rectangle because…&#10;David Chen: At first glance…&#10;&#10;…or drop a .txt / .md / .csv file here"></textarea>
         </div>
@@ -668,7 +668,7 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
 
     <!-- ============ ASK ============ -->
     <section class="panel" data-tab="ask">
-      <p class="panel-lede">Ask a plain question. Hermes first searches its symbolic knowledge base — strategies, misconceptions, standards, grounding metaphors — and grounds Gemma's answer in what it finds (shown above each reply). It never sees student work unless you paste it. For discussion analysis use the Workspace.</p>
+      <p class="panel-lede">Ask a plain question. The app first searches its symbolic knowledge base — strategies, misconceptions, standards, grounding metaphors — and grounds Gemma's answer in what it finds (shown above each reply). It never sees student work unless you paste it. For discussion analysis use the Workspace.</p>
       <div class="card">
         <div id="ask-drop" class="dropzone">
           <textarea id="ask-input" class="data-input" placeholder="Ask Hermes a question about the course, a strategy, a lesson…"></textarea>
@@ -744,7 +744,7 @@ function renderConsoleWorkedExample(example) {
   const endX = start + example.b * unit;
   $("#console-worked-example").innerHTML = `
     <h2><span class="num">✓</span>A completed computation: ${example.a} + ${example.b} = ${example.result}</h2>
-    <p class="hint">This baked trace is available before the worker starts. It is a changeable teaching placeholder.</p>
+    <p class="hint">This baked trace is available before the app starts. It is a changeable teaching placeholder.</p>
     <div class="worked-example-grid">
       <svg viewBox="0 0 ${endX + 34} 104" role="img" aria-label="Number-line trace from ${example.a} to ${example.result}">
         <line x1="${start}" y1="${y}" x2="${endX}" y2="${y}" stroke="currentColor" stroke-width="1.5"/>${ticks}
@@ -1419,7 +1419,7 @@ function groundedHtml(g) {
   if (!g || !g.total) return '';
   const row = (label, arr, cls) => (arr && arr.length)
     ? `<div class="g-row"><span class="g-lab">${label}</span>${arr.slice(0, 6).map(x => `<span class="stance-chip ${cls || ''}">${esc(x)}</span>`).join('')}</div>` : '';
-  return `<div class="grounded"><div class="g-head">⛓ grounded in ${g.total} symbolic fact${g.total === 1 ? '' : 's'} Hermes retrieved</div>
+  return `<div class="grounded"><div class="g-head">⛓ grounded in ${g.total} symbolic fact${g.total === 1 ? '' : 's'} the app retrieved</div>
     ${row('strategies', g.strategies)}${row('misconceptions', g.misconceptions, 'comp')}${row('standards', g.standards)}${row('metaphors', g.metaphors, 'exp')}</div>`;
 }
 $("#ask-send").addEventListener('click', sendAsk);
@@ -1821,8 +1821,8 @@ function openEncItem(section, key) {
            <span class="we-in">${esc(ex.input)}</span><span class="we-arrow">→</span><span class="we-wrong">${esc(ex.wrong)}</span>
            <span class="we-correct">✓ correct: ${esc(ex.correct)}</span>
          </div>
-         <p class="muted-inline">Hermes runs this misconception's rule symbolically to produce the wrong answer — that is the error pattern it recognizes, not a guess.</p>`
-      : `<p class="muted-inline">A documented misconception that does not yet have a runnable arithmetic rule, so Hermes cannot reproduce it as a worked example.</p>`;
+         <p class="muted-inline">The app runs this misconception's rule symbolically to produce the wrong answer — that is the error pattern it recognizes, not a guess.</p>`
+      : `<p class="muted-inline">A documented misconception that does not yet have a runnable arithmetic rule, so the app cannot reproduce it as a worked example.</p>`;
     const barsCase = fractionBarsCase(name);
     const bars = barsCase
       ? `<h4>Productive scheme vs this wrong-answer pattern, laid out as bars</h4>
@@ -1893,7 +1893,7 @@ function fractionBarsCase(name) { return FRACTION_BARS_CASE[name] || null; }
 function diagnoseFormHtml(m, ex) {
   if (!m.diagnosable || !ex || !ex.input_term) return '';
   return `<h4>Diagnose a student answer</h4>
-    <p class="muted-inline" style="margin-bottom:.4rem">Enter the problem and the answer a student <b>got</b>, in term form (e.g. <code>frac(1,7)-frac(1,7)</code>). Hermes runs every registered rule and names the misconception that reproduces that exact error.</p>
+    <p class="muted-inline" style="margin-bottom:.4rem">Enter the problem and the answer a student <b>got</b>, in term form (e.g. <code>frac(1,7)-frac(1,7)</code>). The app runs every registered rule and names the misconception that reproduces that exact error.</p>
     <div class="trace-input">
       <input type="text" id="diag-input" value="${escAttr(ex.input_term)}" />
       <b style="font-size:1rem">got</b>

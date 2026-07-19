@@ -32,11 +32,11 @@
 <body>
   <main class="wrap">
     <h1>Capability Atlas</h1>
-    <p class="lede">This registry is generated from the worker dispatch table, public routes,
+    <p class="lede">This registry is generated from the app dispatch table, public routes,
       shipped pages, and bounded op-time load chains. Cordoned modules remain outside the startup
       closure even when a page describes them.</p>
     <div id="counts" class="counts">Loading the capability registry…</div>
-    <div id="health" class="status">Loading worker health…</div>
+    <div id="health" class="status">Loading app health…</div>
     <div id="status" class="status" aria-live="polite"></div>
     <div id="groups"></div>
   </main>
@@ -62,7 +62,7 @@
 
       function renderSurface(item, box) {
         if (item.surface_status === "lazy_reachable") {
-          var via = (item.lazy_via || []).join(", ") || "an attributed worker operation";
+          var via = (item.lazy_via || []).join(", ") || "an attributed app operation";
           box.appendChild(text("div", "Loaded on demand by " + via + ".", "surface"));
           renderDescriptionPages(item, box);
           return;
@@ -119,7 +119,7 @@
           + lazy + " modules loaded on demand; "
           + orphans + " described or queued modules outside the load closure.";
         if (!items.length) {
-          statusNode.textContent = "The worker returned no capability entries.";
+          statusNode.textContent = "The app returned no capability entries.";
           statusNode.className = "status error";
           return;
         }
@@ -150,7 +150,7 @@
             });
           groupsNode.appendChild(section);
         });
-        statusNode.textContent = "Registry loaded from the local worker.";
+        statusNode.textContent = "Registry loaded from the local app.";
       }
 
       fetch("/api/capabilities")
@@ -161,7 +161,7 @@
         .then(render)
         .catch(function (error) {
           countsNode.textContent = "Capability counts are unavailable.";
-          statusNode.textContent = "The capability registry requires a running Hermes worker. "
+          statusNode.textContent = "The capability registry requires the running app. "
             + "The request failed: " + error.message;
           statusNode.className = "status error";
         });

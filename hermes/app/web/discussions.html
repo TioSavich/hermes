@@ -96,7 +96,7 @@
 <body>
 <main>
   <p class="lede">Discussions</p>
-  <p class="sub">Give Hermes a classroom math discussion — pasted text, a photo of written work,
+  <p class="sub">Give the app a classroom math discussion — pasted text, a photo of written work,
      a PDF or DOCX, or an audio recording — and it returns a plain-language report:
      every claim checked by the calculator, the conflicts between speakers, and where the class
      repaired a wrong turn. Pasted text is blinded to S01, S02… on this machine before any model call.
@@ -140,11 +140,11 @@
   <!-- ============ SAMPLE DISCUSSIONS ============ -->
   <h2 class="sec"><span class="num">2</span>Sample discussions</h2>
   <p class="sec-hint">Ready-made transcripts. Click one to load it into the box above, then <b>Build the report</b>.
-     The two on the left ship with the app and work offline; the prepared set streams live from the server.</p>
+     The two on the left ship with the app and work offline; the prepared set streams live from the app.</p>
   <div class="cards" id="sample-cards"></div>
 
   <h3 style="font: .72rem var(--mono, monospace); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 22px 0 8px;">Prepared transcripts &middot; live rerun</h3>
-  <div class="cards" id="prepared-cards"><span class="status">Looking for the prepared set on the server…</span></div>
+  <div class="cards" id="prepared-cards"><span class="status">Looking for the prepared set in the app…</span></div>
 
   <div id="report"></div>
 
@@ -157,7 +157,7 @@
       <em>Between Saying and Doing</em>).</p>
     <label class="fmt-note"><input type="checkbox" id="blind-discourse-speakers">
       Replace speaker names with S01, S02… before sending</label>
-    <p class="fmt-note">Unchecked sends the labels to the worker on this machine; checked replaces
+    <p class="fmt-note">Unchecked sends the labels to the app on this machine; checked replaces
       them when you would rather not keep names in the local run record or you are on a gated deployment.</p>
     <div class="event-actions">
       <button class="btn ghost" data-discourse-route="/api/discourse_features">Surface features</button>
@@ -210,7 +210,7 @@ async function runEventRoute(path){
     }
     response = await fetch(path, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(requestBody)});
     data = await response.json();
-  } catch (e) { status.textContent = "The request failed: the Hermes server did not answer, or answered with something other than JSON."; status.className = "status err"; return; }
+  } catch (e) { status.textContent = "The request failed: the app did not answer, or answered with something other than JSON."; status.className = "status err"; return; }
   status.textContent = response.ok ? "Request completed." : "Request rejected with HTTP " + response.status + ".";
   status.className = response.ok ? "status" : "status err";
   output.textContent = JSON.stringify(data, null, 2) || "The route returned an empty reply.";
@@ -329,7 +329,7 @@ async function transcribeMedia(f){
       body: JSON.stringify({ name: f.name, mime: f.type, data_b64: dataUrl })});
     data = await res.json();
   } catch(e){
-    throw new Error("Nothing answered at this address. Transcription runs on the local Hermes server — start it and try again.");
+    throw new Error("Nothing answered at this address. Transcription runs in the local app — start it and try again.");
   }
   if (!res.ok || data.error) throw new Error(data.error || ("HTTP " + res.status));
   return data;
@@ -377,7 +377,7 @@ $("file-input").onchange = () => {
   $("status").className = "status";
 })();
 
-/* -------- prepared transcripts (server) -------- */
+/* -------- prepared transcripts (app) -------- */
 async function loadPrepared(){
   try {
     const idx = await (await fetch("/generated/talkmoves_reports/index.json")).json();
@@ -394,7 +394,7 @@ async function loadPrepared(){
     if (idx.length) openReport(idx[0].id);
   } catch (e) {
     $("prepared-cards").innerHTML =
-      `<span class="status">The prepared set lives on the campus server. Launch it with ` +
+      `<span class="status">The prepared set lives in the campus app. Launch it with ` +
       `<code style="font-family:var(--mono,monospace)">bash hermes/app/launch.sh</code> and reload — ` +
       `the two samples above work without it.</span>`;
   }
@@ -474,7 +474,7 @@ async function openReport(id){
   try {
     const r = await (await fetch(`/generated/talkmoves_reports/${id}.json`)).json();
     renderReport(r, "");
-  } catch(e){ $("status").textContent = "Could not open that prepared report — is the server running?"; $("status").className = "status err"; }
+  } catch(e){ $("status").textContent = "Could not open that prepared report — is the app running?"; $("status").className = "status err"; }
 }
 
 async function post(text, id, note){
@@ -488,7 +488,7 @@ async function post(text, id, note){
       body: JSON.stringify({text, transcript_id: id})});
   } catch(e){
     $("status").className = "status err";
-    $("status").textContent = "Nothing answered at this address. The report pipeline runs on the local Hermes server — start it (START_HERMES.command in the bundle, or bash hermes/app/launch.sh in the repository) and try again.";
+    $("status").textContent = "Nothing answered at this address. The report pipeline runs in the local app — start it (START_HERMES.command in the bundle, or bash hermes/app/launch.sh in the repository) and try again.";
     $("run").disabled = false;
     return;
   }
@@ -496,7 +496,7 @@ async function post(text, id, note){
     let data = null;
     try { data = await res.json(); } catch(e){
       $("status").className = "status err";
-      $("status").textContent = "The server answered but hit an internal error (HTTP " + res.status + "). The Terminal window that launched Hermes has the detail.";
+      $("status").textContent = "The app answered but hit an internal error (HTTP " + res.status + "). The Terminal window that launched the app has the detail.";
       return;
     }
     if (!res.ok || data.error){ $("status").textContent = "Could not build the report: " + (data.error || res.status); $("status").className = "status err"; return; }

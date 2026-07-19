@@ -357,7 +357,7 @@
   <section class="machine-section" aria-labelledby="machine-title">
     <h2 id="machine-title">Run the real machine</h2>
     <p>Children do not compute the way calculators do. A child finding 38&thinsp;+&thinsp;27 might count on by tens and then by ones, chunk 27 apart, or rearrange to make a friendly base first. The CGI research tradition documented these strategies; this system encodes each one as a finite-state automaton whose steps can be inspected.</p>
-    <p>This is not an animation authored for the page. It sends your numbers to the machine and renders the execution history returned by the local Hermes worker.</p>
+    <p>This is not an animation authored for the page. It sends your numbers to the machine and renders the execution history returned by the local app.</p>
     <div id="machine-picker" class="machine-ops"><span class="interactive-label">loading strategies…</span></div>
     <div class="machine-runbar" id="machine-runbar" hidden>
       <input id="machine-a" type="number" value="38" aria-label="first number">
@@ -469,7 +469,7 @@ async function runCarving(path) {
     const response = await fetch(path, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
     const data = await response.json();
     output.textContent = JSON.stringify(data, null, 2) || 'The route returned an empty reply.';
-  } catch (e) { output.textContent = 'The request failed: the Hermes server did not answer, or answered with something other than JSON.'; }
+  } catch (e) { output.textContent = 'The request failed: the app did not answer, or answered with something other than JSON.'; }
 }
 document.getElementById('carve-summary').onclick = () => runCarving('/api/carving_operation_summary');
 document.getElementById('carve-proof').onclick = () => runCarving('/api/carving_strategy_proof');

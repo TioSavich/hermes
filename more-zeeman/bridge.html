@@ -641,7 +641,7 @@
 <!-- Research-wing notice: retain this posture while the contracts are live
      research interfaces. -->
 <div style="margin:0 0 1.5rem 0;padding:0.9rem 1.2rem;border:1px solid #b8860b;border-radius:6px;background:rgba(184,134,11,0.08);font-size:0.95rem;line-height:1.5;">
-  <strong>Research wing — live, in progress.</strong> This page drives the learner engine through the Hermes worker. Contracts may shift and rough edges remain. Colleagues are welcome to take part in its unfolding: the source lives under <code>learner/</code>.
+  <strong>Research wing — live, in progress.</strong> This page drives the learner through the app. Contracts may shift and rough edges remain. Colleagues are welcome to take part in its unfolding: the source lives under <code>learner/</code>.
   <details style="margin-top:.75rem">
     <summary>For contributors: modules described here but not loaded</summary>
     <ul style="margin:.65rem 0 0;padding-left:1.25rem">
@@ -688,7 +688,7 @@
       A machine starts knowing only how to count. One tally mark at a time. You give it an arithmetic problem, and it tries. When the counting breaks down, it enters <strong>crisis</strong> &mdash; and must learn a new strategy or fail.
     </p>
     <p class="subtitle" style="font-size:0.85rem; color:var(--muted);">
-      This page connects the Prolog formalization to the catastrophe geometry of The More Machine. Each computation runs against a live Prolog server. The tension it accumulates drives a Zeeman catastrophe machine. When the learner snaps, you see it.
+      This page connects the Prolog formalization to the catastrophe geometry of The More Machine. Each computation runs in the live app. The tension it accumulates drives a Zeeman catastrophe machine. When the learner snaps, you see it.
     </p>
     <p class="cue" id="cue">choose a scenario below, or set your own parameters</p>
   </div>
@@ -704,7 +704,7 @@
          the catastrophe geometry you have been feeling. When the Prolog system hits
          crisis, the disc snaps. When it finds a new strategy, the tension relaxes.
          You are watching the same thing from two sides.</p>
-      <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">This page works best with Hermes running
+      <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">This page works best with the app running
          (<code style="font-size:0.85em;color:var(--snap);">bash hermes/app/launch.sh</code>).
          Without it, here is what you would see: the system tries add(38, 55) with
          counting. After about 90 steps the tension turns red. Crisis. The system
@@ -728,7 +728,7 @@
         Interactive diagnostic assessment systems (IDAS) for visualizing student
         thinking — a direct precedent for this bridge visualization.
       </div>
-      <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">Requires Hermes (<code style="font-size:0.85em;color:var(--snap);">bash hermes/app/launch.sh</code>) for live data. A static example: the Kindergarten preset (3 + 2, limit 50) produces a smooth computation with no crisis. The Grade 1 preset (8 + 5, limit 12) produces tension buildup, an efficiency crisis at step 12, and a snap to counting-on.</p>
+      <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">Requires the app (<code style="font-size:0.85em;color:var(--snap);">bash hermes/app/launch.sh</code>) for live data. A static example: the Kindergarten preset (3 + 2, limit 50) produces a smooth computation with no crisis. The Grade 1 preset (8 + 5, limit 12) produces tension buildup, an efficiency crisis at step 12, and a snap to counting-on.</p>
     </div>
     <div data-discourse="philosophy">
       <p>The tension chart is the continuous energy surface. The disc angle is the system state. The timeline is the event log from <code style="font-size:0.85em;color:var(--snap);">event_log.pl</code>. Together they show the same phenomenon from three representations: continuous (tension), geometric (disc), and discrete (events). The bridge's value is making the meta-interpreter's internal dynamics visible — what is usually hidden inside <code style="font-size:0.85em;color:var(--snap);">solve/6</code> becomes observable.</p>
@@ -750,7 +750,7 @@
         produce contradictions. The bridge's tension-to-snap cycle is a computational
         model of this pedagogical technique.
       </div>
-      <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">Requires Hermes (<code style="font-size:0.85em;color:var(--snap);">bash hermes/app/launch.sh</code>) for live data. Without Hermes, the disc and tension chart respond to the preset narratives but do not run actual computations.</p>
+      <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">Requires the app (<code style="font-size:0.85em;color:var(--snap);">bash hermes/app/launch.sh</code>) for live data. Without the app, the disc and tension chart respond to the preset narratives but do not run actual computations.</p>
     </div>
   </div>
 
@@ -836,7 +836,7 @@
 
   <!-- ====== BAKED REPLAY CTA (visible when server offline) ====== -->
   <div class="replay-cta" id="replay-cta">
-    <p>The Prolog server is offline. You can still see what a computation looks like.</p>
+    <p>The app is offline. You can still see what a computation looks like.</p>
     <button class="demo" id="btn-demo" onclick="runBakedReplay()">Watch a replay</button>
     <span style="font-size:0.75rem;color:var(--muted);margin-left:0.6rem;">add(38, 55) — counting-all to counting-on</span>
   </div>
@@ -850,7 +850,7 @@
   <div class="phase" id="phase-1">
     <div class="narration" id="phase-1-narration">
       <p>The red line is <strong>tension</strong> &mdash; how hard the learner is working. Each inference step costs something. Counting 3 + 2 by ones is cheap. Counting 28 + 35 by ones is expensive. When the tension accelerates past the stability threshold, the system enters <strong>crisis</strong>.</p>
-      <p>The blue ball is the teacher's hand on the Zeeman machine. As the Prolog server computes, the tension drives the ball outward. When crisis hits, the disc <strong>snaps</strong> &mdash; a discontinuous jump from one stable state to another. No smooth transition. The learner was one kind of knower; now it is another.</p>
+      <p>The blue ball is the teacher's hand on the Zeeman machine. As the app computes, the tension drives the ball outward. When crisis hits, the disc <strong>snaps</strong> &mdash; a discontinuous jump from one stable state to another. No smooth transition. The learner was one kind of knower; now it is another.</p>
     </div>
   </div>
 
@@ -939,7 +939,7 @@
       <p><strong>It cannot show the felt quality of learning.</strong> Carspecken's "sound of time" &mdash; the pre-reflective ground of temporal experience &mdash; is not a tension curve. A resource limit is not the same as running out of breath. The numbers exhaust; the child tires. These are not the same kind of exhaustion.</p>
       <p><strong>It cannot show the teacher as a person.</strong> The teacher in the code creates conditions for crisis, but the interaction is one-directional. Carspecken's I-Thou involves mutual recognition &mdash; both parties are changed by the encounter. Nothing in the code models the teacher being changed. The blue ball pulls; it does not listen.</p>
       <p><strong>It cannot show the moment where formalism hands off to human judgment.</strong> The sequent calculus has a precise boundary: the arche-trace erasure, the point where the proof returns a blank instead of a result (Derrida, <em>Of Grammatology</em>). This page can describe that boundary; it cannot perform it.</p>
-      <p>The More Machine shows the embodied side of the metaphor &mdash; what it feels like to drag a system through crisis with your hand. This page shows the computational side &mdash; what the Prolog server records when crisis is driven by inference limits rather than spring tension. Neither is complete. The bridge between them is the bridge between formalization and experience, which is the manuscript's central concern.</p>
+      <p>The More Machine shows the embodied side of the metaphor &mdash; what it feels like to drag a system through crisis with your hand. This page shows the computational side &mdash; what the app records when crisis is driven by inference limits rather than spring tension. Neither is complete. The bridge between them is the bridge between formalization and experience, which is the manuscript's central concern.</p>
     </div>
 
     <div class="nav-next">
@@ -1736,7 +1736,7 @@ document.getElementById('reorg-run').addEventListener('click', async function ()
     const response = await fetch(API + '/api/reorganize?' + params.toString());
     const data = await response.json();
     output.textContent = JSON.stringify(data, null, 2) || 'The route returned an empty reply.';
-  } catch (e) { output.textContent = 'The request failed: the Hermes server did not answer, or answered with something other than JSON.'; }
+  } catch (e) { output.textContent = 'The request failed: the app did not answer, or answered with something other than JSON.'; }
 });
 
 async function checkServer() {
@@ -1772,7 +1772,7 @@ async function runComputation() {
     // Show helpful message and offer baked replay
     const div = document.createElement('div');
     div.classList.add('event-entry');
-    div.innerHTML = `<span class="step">--</span><span class="ctx" style="color:${C.tension}">offline</span><span class="vals">Hermes not running — <a href="#" onclick="runBakedReplay();return false;" style="color:${C.release};text-decoration:underline;cursor:pointer;">watch a demo</a> or start: bash hermes/app/launch.sh</span>`;
+    div.innerHTML = `<span class="step">--</span><span class="ctx" style="color:${C.tension}">offline</span><span class="vals">The app is not running — <a href="#" onclick="runBakedReplay();return false;" style="color:${C.release};text-decoration:underline;cursor:pointer;">watch a demo</a> or start: bash hermes/app/launch.sh</span>`;
     eventLogEl.appendChild(div);
     // Scroll the replay CTA into view
     const cta = document.getElementById('replay-cta');
@@ -1864,12 +1864,12 @@ async function resetAll() {
     cue.classList.remove('still');
   }
 
-  // Reset learner state in the Hermes worker
+  // Reset learner state in the app
   try {
     await fetch(API + '/api/learner/reset', { method: 'POST' });
   } catch (e) {}
 
-  // Re-check server to update offline/online UI
+  // Re-check the app to update offline/online UI
   checkServer();
 }
 
@@ -2101,7 +2101,7 @@ document.getElementById('replay-speed').addEventListener('input', e => {
   document.getElementById('speed-val').textContent = e.target.value;
 });
 
-// Check server on load
+// Check the app on load
 checkServer();
 
 // Resize
