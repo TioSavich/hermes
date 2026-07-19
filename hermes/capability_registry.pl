@@ -7,15 +7,15 @@
             capability_lazy_via/2
           ]).
 
-capability('accommodation_witness', 'cw_accommodation', 'unclassified', ['source', 'target'], routed_paged).
+capability('accommodation_witness', 'cw_driver', 'unclassified', ['source', 'target'], routed_paged).
 capability('ace_of_bases_render', 'base_ten_scene', 'render', [], routed_paged).
-capability('action_cluster_witness', 'cw_action_cluster', 'unclassified', ['cluster', 'kind', 'operation', 'source'], routed_paged).
+capability('action_cluster_witness', 'cw_driver', 'unclassified', ['cluster', 'kind', 'operation', 'source'], routed_paged).
 capability('algebra_claim_witness', 'cw_driver', 'unclassified', ['canonical', 'source'], routed_paged).
 capability('area_compare', 'area_model_scene', 'render', ['da', 'db', 'na', 'nb'], routed_paged).
 capability('area_render', 'area_model_scene', 'render', [], routed_paged).
 capability('arithmetic_property_witness', 'cw_driver', 'unclassified', ['canonical', 'source'], routed_paged).
 capability('axiom_hierarchy_witness', 'user', 'arche_trace', ['kind'], routed_paged).
-capability('axiom_pack_witness', 'cw_axiom_pack', 'arche_trace', ['pack', 'source'], routed_paged).
+capability('axiom_pack_witness', 'cw_driver', 'arche_trace', ['pack', 'source'], routed_paged).
 capability('axiom_toggle', 'hermes_worker', 'arche_trace', ['action'], routed_paged).
 capability('balance_compare', 'balance_scale_scene', 'render', ['a', 'b', 'c'], routed_paged).
 capability('balance_render', 'balance_scale_scene', 'render', ['a', 'b', 'c'], routed_paged).
@@ -47,12 +47,12 @@ capability('deontic_up_level', 'deontic_scorekeeper', 'arche_trace', ['agent', '
 capability('diagnose_error', 'hermes_worker', 'misconceptions', ['domain', 'got', 'input'], routed_paged).
 capability('discourse_features', 'discourse_features', 'unclassified', ['utterances'], routed_paged).
 capability('discourse_pragmatics', 'discourse_pragmatics', 'unclassified', ['utterances'], routed_paged).
-capability('domain_context_witness', 'cw_domain_context', 'unclassified', ['context', 'domain', 'source'], routed_paged).
+capability('domain_context_witness', 'cw_driver', 'unclassified', ['context', 'domain', 'source'], routed_paged).
 capability('elaborations', 'user', 'unclassified', [], routed_paged).
 capability('embodied_proof_witness', 'embodied_prover', 'unclassified', ['resources', 'sequent'], routed_paged).
 capability('eml_transition_witness', 'sequent_engine', 'unclassified', ['from', 'to'], routed_paged).
 capability('event_score', 'hermes_event_scoring', 'unclassified', ['event'], routed_paged).
-capability('executable_practice_witness', 'cw_executable_practice', 'unclassified', ['source', 'variant'], routed_paged).
+capability('executable_practice_witness', 'cw_driver', 'unclassified', ['source', 'variant'], routed_paged).
 capability('expressive_power', 'user', 'unclassified', ['lesson'], routed_paged).
 capability('field_connectivity_audit', 'field_context', 'monitoring', [], routed_paged).
 capability('field_context', 'field_context', 'monitoring', ['lesson_code'], routed_paged).
@@ -61,7 +61,7 @@ capability('fraction_claim_witness', 'cw_fraction_claim', 'render', ['canonical'
 capability('fraction_compare', 'fraction_bars_scene', 'render', ['a', 'b', 'kind'], routed_paged).
 capability('fraction_extra_claim_witness', 'cw_driver', 'render', ['canonical', 'source'], routed_paged).
 capability('fraction_render', 'hermes_worker', 'render', ['kind'], routed_paged).
-capability('fsm_engine_witness', 'cw_fsm_engine', 'unclassified', ['descriptor', 'source'], routed_paged).
+capability('fsm_engine_witness', 'cw_driver', 'unclassified', ['descriptor', 'source'], routed_paged).
 capability('geometry', 'hermes_worker', 'geometry_witness', ['args', 'predicate'], routed_paged).
 capability('geometry_angle_material_witness', 'user', 'geometry_witness', ['claim_id'], routed_paged).
 capability('geometry_area_perimeter_material_witness', 'user', 'geometry_witness', ['claim_id'], routed_paged).
@@ -98,12 +98,12 @@ capability('geometry_van_hiele_material_witness', 'user', 'geometry_witness', ['
 capability('geometry_volume_surface_area_material_witness', 'user', 'geometry_witness', ['claim_id'], routed_paged).
 capability('gesture_alignment', 'gesture_alignment', 'unclassified', ['observations', 'utterances'], routed_paged).
 capability('get_base', 'cgi_base', 'infrastructure', [], routed_paged).
-capability('godel_primes_witness', 'cw_godel_primes', 'unclassified', ['query', 'source'], routed_paged).
+capability('godel_primes_witness', 'cw_driver', 'unclassified', ['query', 'source'], routed_paged).
 capability('ground', 'hermes_encyclopedia', 'unclassified', ['query'], routed_paged).
-capability('grounded_arith_witness', 'cw_grounded_arith', 'unclassified', ['inputs', 'operation', 'output', 'source'], routed_paged).
+capability('grounded_arith_witness', 'cw_driver', 'unclassified', ['inputs', 'operation', 'output', 'source'], routed_paged).
 capability('grounding_for', 'hermes_encyclopedia', 'unclassified', ['operation'], routed_paged).
 capability('grounding_inference_witness', 'grounding_metaphors', 'unclassified', ['inference', 'metaphor'], routed_paged).
-capability('grounding_metaphor_witness', 'cw_grounding_metaphor', 'unclassified', ['anchor', 'metaphor', 'source'], routed_paged).
+capability('grounding_metaphor_witness', 'cw_driver', 'unclassified', ['anchor', 'metaphor', 'source'], routed_paged).
 capability('grounding_metaphors', 'hermes_encyclopedia', 'unclassified', [], routed_paged).
 capability('health', 'capability_registry', 'infrastructure', [], routed_paged).
 capability('hybridization_render', 'hybridization_scene', 'render', [], routed_paged).
@@ -123,36 +123,36 @@ capability('list_standards', 'hermes_encyclopedia', 'unclassified', ['framework'
 capability('list_strategies', 'hermes_encyclopedia', 'unclassified', [], routed_paged).
 capability('lit_search', 'hermes_encyclopedia', 'unclassified', ['query'], routed_paged).
 capability('magnitude_equivalence_claim_witness', 'cw_driver', 'unclassified', ['canonical', 'source'], routed_paged).
-capability('material_inference_witness', 'cw_material_inference', 'unclassified', ['conclusion', 'inference_id', 'premises', 'source'], routed_paged).
+capability('material_inference_witness', 'cw_driver', 'unclassified', ['conclusion', 'inference_id', 'premises', 'source'], routed_paged).
 capability('media_alignment', 'media_alignment', 'unclassified', ['segments', 'source'], routed_paged).
-capability('metaphor_break_witness', 'cw_metaphor_break', 'unclassified', ['detail', 'inference', 'metaphor', 'source'], routed_paged).
-capability('misconception_hook_witness', 'cw_misconception_hook', 'misconceptions', ['family', 'operation', 'outcome', 'source'], routed_paged).
+capability('metaphor_break_witness', 'cw_driver', 'unclassified', ['detail', 'inference', 'metaphor', 'source'], routed_paged).
+capability('misconception_hook_witness', 'cw_driver', 'misconceptions', ['family', 'operation', 'outcome', 'source'], routed_paged).
 capability('misconception_incompatibility_witness', 'misconception_registry', 'misconceptions', ['conflict', 'move'], routed_paged).
 capability('misconception_jumps_witness', 'visualization', 'misconceptions', ['a', 'b', 'deformation', 'operation'], routed_paged).
 capability('misconception_pml_map', 'user', 'misconceptions', ['misconception'], routed_paged).
-capability('modal_context_witness', 'cw_modal_context', 'unclassified', ['context', 'source', 'term'], routed_paged).
+capability('modal_context_witness', 'cw_driver', 'unclassified', ['context', 'source', 'term'], routed_paged).
 capability('monitoring_chart_export', 'user', 'monitoring', ['lesson_code'], routed_paged).
-capability('mua_coherence_witness', 'cw_mua_coherence', 'unclassified', ['input', 'source', 'subject'], routed_paged).
-capability('mua_kind_coherence_witness', 'cw_mua_coherence', 'unclassified', ['kind', 'row_text'], routed_paged).
+capability('mua_coherence_witness', 'cw_driver', 'unclassified', ['input', 'source', 'subject'], routed_paged).
+capability('mua_kind_coherence_witness', 'cw_driver', 'unclassified', ['kind', 'row_text'], routed_paged).
 capability('mult_div_family_witness', 'user', 'standards', ['a', 'b'], routed_paged).
 capability('multiplication_division_claim_witness', 'cw_driver', 'unclassified', ['canonical', 'source'], routed_paged).
 capability('multiply_array_witness', 'user', 'standards', ['cols', 'rows'], routed_paged).
-capability('normative_crisis_witness', 'cw_normative_crisis', 'unclassified', ['context', 'goal', 'source'], routed_paged).
+capability('normative_crisis_witness', 'cw_driver', 'unclassified', ['context', 'goal', 'source'], routed_paged).
 capability('notation_monitoring_chart', 'lesson_notation_chart', 'render', ['code'], routed_paged).
 capability('notation_render', 'hermes_worker', 'render', ['kind'], routed_paged).
 capability('number_line_compare', 'number_line_scene', 'render', ['a', 'b', 'operation'], routed_paged).
 capability('number_line_render', 'number_line_scene', 'render', [], routed_paged).
 capability('number_theory_self_defeat_witness', 'sequent_engine', 'unclassified', ['list'], routed_paged).
-capability('orr_entry_witness', 'cw_orr_entry', 'unclassified', ['source', 'variant'], routed_paged).
+capability('orr_entry_witness', 'cw_driver', 'unclassified', ['source', 'variant'], routed_paged).
 capability('pair_candidate_witness', 'hermes_pair_scoring', 'unclassified', ['event_a', 'event_b'], routed_paged).
 capability('pair_graph', 'user', 'unclassified', ['events'], routed_paged).
 capability('pair_score', 'hermes_pair_scoring', 'unclassified', ['events'], routed_paged).
 capability('place_value_chart_render', 'place_value_chart_scene', 'render', [], routed_paged).
 capability('place_value_number_claim_witness', 'cw_place_value_number_claim', 'render', ['canonical', 'source'], routed_paged).
 capability('pml_score', 'hermes_encyclopedia', 'pml', ['clauses'], routed_paged).
-capability('practice_vocabulary_witness', 'cw_practice_vocabulary', 'unclassified', ['key', 'source'], routed_paged).
+capability('practice_vocabulary_witness', 'cw_driver', 'unclassified', ['key', 'source'], routed_paged).
 capability('primitive_for_practice', 'user', 'unclassified', ['practice'], routed_paged).
-capability('productive_deformation_witness', 'cw_productive_deformation', 'unclassified', ['deformation', 'family', 'operation', 'productive', 'source'], routed_paged).
+capability('productive_deformation_witness', 'cw_driver', 'unclassified', ['deformation', 'family', 'operation', 'productive', 'source'], routed_paged).
 capability('query_misconception', 'hermes_worker', 'misconceptions', ['description', 'domain', 'source'], routed_paged).
 capability('ranked_figures', 'user', 'monitoring', ['lesson_code'], routed_paged).
 capability('ratio_proportion_claim_witness', 'cw_driver', 'unclassified', ['canonical', 'source'], routed_paged).
@@ -164,7 +164,7 @@ capability('representation_spec_check', 'hermes_worker', 'crosswalk', ['represen
 capability('representation_spine_witness', 'user', 'crosswalk', ['concept'], routed_paged).
 capability('robinson_axiom_witness', 'sequent_engine', 'unclassified', ['axiom', 'claim'], routed_paged).
 capability('semantic_material_witness', 'semantic_axioms', 'unclassified', ['from', 'to'], routed_paged).
-capability('sequent_proof_witness', 'cw_sequent_proof', 'arche_trace', ['sequent', 'source'], routed_paged).
+capability('sequent_proof_witness', 'cw_driver', 'arche_trace', ['sequent', 'source'], routed_paged).
 capability('set_base', 'cgi_base', 'infrastructure', ['base'], routed_paged).
 capability('set_grouping_compare', 'set_grouping_scene', 'render', ['a', 'b'], routed_paged).
 capability('set_grouping_render', 'set_grouping_scene', 'render', [], routed_paged).
@@ -193,10 +193,10 @@ capability('target_expressive_power_witness', 'user', 'unclassified', ['target']
 capability('teacher_layer', 'teacher_layer', 'render', [], routed_paged).
 capability('trace_adjudication', 'trace_adjudication', 'unclassified', ['ledger', 'utterances'], routed_paged).
 capability('unit_coordination_svg', 'unit_coordination_viz', 'unclassified', ['base', 'denominator', 'numerator', 'value_up'], routed_paged).
-capability('unit_coordination_witness', 'cw_unit_coordination', 'unclassified', ['detail', 'key', 'source'], routed_paged).
+capability('unit_coordination_witness', 'cw_driver', 'unclassified', ['detail', 'key', 'source'], routed_paged).
 capability('unit_echo_render', 'unit_echo_scene', 'unclassified', ['base', 'iterations'], routed_paged).
 capability('validate_reader_axioms', 'hermes_encyclopedia', 'pml', ['clauses', 'lesson_code'], routed_paged).
-capability('viability_witness', 'cw_viability', 'unclassified', ['cost', 'resources', 'source'], routed_paged).
+capability('viability_witness', 'cw_driver', 'unclassified', ['cost', 'resources', 'source'], routed_paged).
 capability('visualize_coordination', 'unit_coordination_viz', 'learner', [], routed_paged).
 capability('whole_number_addsub_claim_witness', 'cw_driver', 'unclassified', ['canonical', 'source'], routed_paged).
 capability('whole_number_claim_witness', 'cw_whole_number_claim', 'unclassified', ['canonical', 'source'], routed_paged).

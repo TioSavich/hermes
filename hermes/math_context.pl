@@ -255,7 +255,7 @@ strategy_candidates(Concepts, Cands) :-
 
 % Productive side of a productive/deformation pair whose productive == Concept.
 strategy_candidate(Concept, Cand) :-
-    catch(cw_productive_deformation:productive_deformation_unified(
+    catch(cw_driver:productive_deformation_unified(
               fraction, Concept, Deform, Family, _Source),
           _, fail),
     cluster_of(Concept, Cluster),
@@ -272,9 +272,9 @@ strategy_candidate(Concept, Cand) :-
 % Action-cluster membership for a kind that is not the productive head of a
 % deformation pair (e.g. unit_fraction_iteration, splitting, improper kind).
 strategy_candidate(Concept, Cand) :-
-    \+ catch(cw_productive_deformation:productive_deformation_unified(
+    \+ catch(cw_driver:productive_deformation_unified(
                  fraction, Concept, _, _, _), _, fail),
-    catch(cw_action_cluster:action_cluster_unified(fraction, Concept, Cluster, _Source),
+    catch(cw_driver:action_cluster_unified(fraction, Concept, Cluster, _Source),
           _, fail),
     fa(Concept, KindS), fa(Cluster, ClusterS),
     Cand = candidate{
@@ -286,7 +286,7 @@ strategy_candidate(Concept, Cand) :-
         note: "" }.
 
 cluster_of(Kind, Cluster) :-
-    ( catch(once(cw_action_cluster:action_cluster_unified(fraction, Kind, Cluster, _)),
+    ( catch(once(cw_driver:action_cluster_unified(fraction, Kind, Cluster, _)),
             _, fail)
     ->  true
     ;   Cluster = fraction ).
@@ -448,7 +448,7 @@ misconception_candidates(Concepts, Cands) :-
             Cands).
 
 misconception_candidate(Productive, Cand) :-
-    catch(cw_productive_deformation:productive_deformation_unified(
+    catch(cw_driver:productive_deformation_unified(
               fraction, Productive, Deform, Family, _Source),
           _, fail),
     confirm_incompatibility(Deform, Productive, Confirmed),

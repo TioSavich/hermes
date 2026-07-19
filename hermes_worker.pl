@@ -791,7 +791,7 @@ dispatch_request(sequent_proof_witness, Id, Request, Response) :-
         get_dict(source, Request, JSONSource)
     ->  json_to_term(JSONSequent, Sequent),
         json_to_term(JSONSource, Source),
-        (   cw_sequent_proof:sequent_proof_witness(Sequent, Source, Witness)
+        (   cw_driver:family_witness(cw_sequent_proof, sequent_proof_witness, Sequent, Source, Witness)
         ->  json_safe(Witness, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_sequent_proof_witness,
