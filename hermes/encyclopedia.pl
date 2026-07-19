@@ -1006,7 +1006,31 @@ ground_tokens(QStr, Tokens) :-
               T = P
             ),
             Tokens0),
-    list_to_set(Tokens0, Tokens).
+    % Teachers speak in halves and gaps; the catalog speaks in machine
+    % names. The alias table bridges the community's words to catalog
+    % vocabulary so grounding reaches the strategies it should.
+    findall(A, ( member(P0, Tokens0), ground_alias(P0, A) ), Aliases),
+    append(Tokens0, Aliases, Tokens1),
+    list_to_set(Tokens1, Tokens).
+
+%!  ground_alias(+SpokenToken, -CatalogToken) is nondet.
+%   Community math-talk words mapped to catalog/machine vocabulary.
+ground_alias(W, "fraction") :-
+    member(W, ["half", "halves", "third", "thirds", "fourth", "fourths",
+               "fifth", "fifths", "sixth", "sixths", "eighth", "eighths",
+               "tenth", "tenths", "twelfth", "twelfths", "fifteenths",
+               "numerator", "denominator", "denominators"]).
+ground_alias(W, "comparison") :-
+    member(W, ["compare", "compares", "comparing", "bigger", "smaller",
+               "greater", "less", "larger", "order", "ordering", "between",
+               "closer", "equivalent"]).
+ground_alias("gap", "gap_thinking").
+ground_alias("gaps", "gap_thinking").
+ground_alias(W, "benchmark") :- member(W, ["half", "halves", "whole"]).
+ground_alias(W, "decimal") :- member(W, ["decimal", "decimals", "point"]).
+ground_alias(W, "number_line") :- member(W, ["line", "jump", "jumps"]).
+ground_alias(W, "area_model") :- member(W, ["shaded", "shading", "pieces", "partition", "partitions", "partitioned"]).
+ground_alias(W, "set_model") :- member(W, ["collection", "counters", "objects"]).
 
 stop_word("the"). stop_word("and"). stop_word("for"). stop_word("are").
 stop_word("you"). stop_word("how"). stop_word("why"). stop_word("what").

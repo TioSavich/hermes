@@ -38,7 +38,7 @@ KEEP_TREES_RATIONALE = [
     ("hermes", "console app + root .pl modules (encyclopedia, scoring)"),
     ("more-zeeman", "public web surfaces"),
     ("representation", "asset manifest the gallery reads"),
-    ("ASKTM_Data", "coded student-work corpus (PNGs + survey text) the gallery serves; publicly shared at IU; coding documents stay in the source project"),
+    ("ASKTM_Data", "coded student-work corpus (PNGs + survey text) the gallery serves; publicly shared at IU; NSF Grant No. 1561453 acknowledgement in NOTICE.md; coding documents stay in the source project"),
     ("strategies", "action automata, render scenes, registries"),
     ("misconceptions", "registry + compiled literature facts (runtime modules)"),
     ("crosswalk", "canonical vocabulary union"),

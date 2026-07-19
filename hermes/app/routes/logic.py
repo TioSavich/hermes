@@ -658,6 +658,12 @@ class RouteLogic:
         except Exception as exc:  # network / API failure -> clean 502, not 500
             self._send_json({"error": str(exc), "error_type": "reallms", "grounded": grounded}, status=502)
             return
+        # Gemma sometimes emits its own model card ("Context length: …") at
+        # either end of a reply. The prompt forbids it; this belt removes the
+        # line wherever it leaks.
+        answer = re.sub(
+            r"(?m)^Context length:.*(?:\n+|$)", "", answer.strip(),
+        ).strip()
         self._send_json({"answer": answer, "grounded": grounded, "model": llm.resolve_model(),
                          "mode": self.ctx.services.gate.state.mode, "insecure": not (self.ctx.services.gate.state.mode == gate.CAMPUS and self.ctx.services.gate.state.verified)})
 

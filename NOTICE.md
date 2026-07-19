@@ -10,6 +10,9 @@ knowledge base incorporates material from third parties whose own terms
 apply to that material and are more permissive than, or independent of,
 this repository's license:
 
+- **ASKTM student-work corpus.** The coded student-work images and survey
+  text under `ASKTM_Data/` come from the ASKTM project. This material is based upon work supported by the National Science Foundation under Grant No. 1561453. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
+
 - **Illustrative Mathematics.** Lesson identifiers, lesson-level goals and
   glossary language, and curriculum structure in `lessons/` derive from the
   Illustrative Mathematics K–8 curriculum, © Illustrative Mathematics,
