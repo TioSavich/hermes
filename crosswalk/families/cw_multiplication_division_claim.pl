@@ -1,10 +1,14 @@
 /** <module> cw_multiplication_division_claim -- mechanical crosswalk family data. */
 :- module(cw_multiplication_division_claim,
           [ cw_family/1,
-            cw_rule/1
+            cw_rule/1,
+            edge/5
           ]).
 
+:- use_module(standards('indiana/standard_3_ca_3_4'), []).
+
 cw_family(cw_multiplication_division_claim).
+edge(standard_3_ca_3_4,mult_div_family_witness/5,[recollection([tally,tally,tally]),recollection([tally,tally,tally,tally])],[3,4,5],call_once_bind_out).
 cw_rule(md(equal_groups_composite_unit, c_equal_groups_equal_size, [edge(cluster(multiplication, coordinate_groups_items), 'action_automata_registry:action_automaton_cluster/3(multiplication,coordinate_groups_items)'), edge(cluster(multiplication, repeat_equal_groups), 'action_automata_registry:action_automaton_cluster/3(multiplication,repeat_equal_groups)')])).
 cw_rule(md(fair_share_partition_grouping, c_equal_sharing_partition_model, [edge(cluster(division, fair_share_equal_groups), 'action_automata_registry:action_automaton_cluster/3(division,fair_share_equal_groups)')])).
 cw_rule(md(division_quotient_remainder_coordination, c_division_structure_and_remainder, [edge(cluster(division, share_into_divisor_groups), 'action_automata_registry:action_automaton_cluster/3(division,share_into_divisor_groups)'), edge(vocabulary(division, measure_groups_of_size), 'action_automata_registry:action_automaton_vocabulary/3(division,measure_groups_of_size)')])).

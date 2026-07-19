@@ -48,15 +48,27 @@
             counting_claim_witness/4,    % counting_claim_witness(?Canonical, ?Detail, ?Source, -Witness)
             claim_literature_atom/2,     % claim_literature_atom(?Canonical, ?LiteratureAtom)
             canonical_concept/2,         % canonical_concept(LegacyFunctor, Canonical)
-            vocabulary_source/2          % vocabulary_source(Canonical, ListOfLegacyFunctors)
+            vocabulary_source/2,         % vocabulary_source(Canonical, ListOfLegacyFunctors)
+            edge/5
           ]).
 
 :- use_module(misconceptions(literature_vocabulary), []).
 :- use_module(strategies('math/action_automata_registry'), []).
 :- use_module(standards('indiana/standard_k_ns_2'), []).
+:- use_module(standards('indiana/standard_k_ns_1'), []).
+:- use_module(standards('indiana/standard_k_ns_3'), []).
+:- use_module(standards('indiana/standard_k_ns_5_6'), []).
+:- use_module(standards('indiana/standard_1_ns_1'), []).
+:- use_module(standards('indiana/standard_2_ns_1'), []).
 :- use_module(standards('indiana/standard_k_ns_4'), []).
 :- use_module(formalization(grounded_arithmetic), []).
 :- use_module(library(lists), [ member/2, append/2 ]).
+
+edge(standard_k_ns_1,count_by_ones_witness/4,[recollection([tally]),recollection([tally,tally,tally])],[3,4],call_with_snapshot).
+edge(standard_k_ns_3,verify_order_independence_witness/3,[[red,blue,green]],[2,3],call_once_bind_out).
+edge(standard_k_ns_5_6,compare_groups_witness/4,[[a,b,c],[x,y]],[3,4],call_once_bind_out).
+edge(standard_1_ns_1,count_by_fives_witness/4,[recollection([tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally])],[3,4],call_with_snapshot).
+edge(standard_2_ns_1,count_by_twos_witness/4,[recollection([tally,tally]),recollection([tally,tally,tally,tally,tally,tally])],[3,4],call_with_snapshot).
 
 %! cc(?Canonical, ?LiteratureAtom, ?LocalGloss, ?VerifiedEdges) is nondet.
 %

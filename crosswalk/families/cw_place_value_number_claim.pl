@@ -33,14 +33,24 @@
             place_value_number_claim_witness/4, % place_value_number_claim_witness(?Canonical, ?Detail, ?Source, -Witness)
             claim_literature_atom/2,       % claim_literature_atom(?Canonical, ?LiteratureAtom)
             canonical_concept/2,           % canonical_concept(LegacyFunctor, Canonical)
-            vocabulary_source/2            % vocabulary_source(Canonical, ListOfLegacyFunctors)
+            vocabulary_source/2,           % vocabulary_source(Canonical, ListOfLegacyFunctors)
+            edge/5
           ]).
 
 :- use_module(misconceptions(literature_vocabulary), []).
 :- use_module(strategies('math/action_automata_registry'), []).
 :- use_module(strategies('math/cgi_base'), []).
 :- use_module(formalization(grounded_arithmetic), []).
+:- use_module(standards('indiana/standard_k_ns_7'), []).
+:- use_module(standards('indiana/standard_1_ns_2'), []).
+:- use_module(standards('indiana/standard_2_ns_2_4'), []).
+:- use_module(standards('indiana/standard_2_ns_5'), []).
 :- use_module(library(lists), [ member/2 ]).
+
+edge(standard_k_ns_7,compose_teen_witness/4,[recollection([tally]),recollection([tally,tally,tally,tally])],[3,4],call_once_bind_out).
+edge(standard_1_ns_2,compose_two_digit_witness/4,[recollection([tally]),recollection([tally,tally])],[3,4],call_once_bind_out).
+edge(standard_2_ns_2_4,compose_three_digit_witness/5,[recollection([tally]),recollection([tally,tally]),recollection([tally,tally,tally])],[4,5],call_once_bind_out).
+edge(standard_2_ns_5,compare_by_place_value_witness/4,[recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally,tally])],[3,4],call_once_bind_out).
 
 %! pv(?Canonical, ?LiteratureAtom, ?Surfaces) is nondet.
 %

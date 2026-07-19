@@ -1,10 +1,20 @@
 /** <module> cw_whole_number_addsub_claim -- mechanical crosswalk family data. */
 :- module(cw_whole_number_addsub_claim,
           [ cw_family/1,
-            cw_rule/1
+            cw_rule/1,
+            edge/5
           ]).
 
+:- use_module(standards('indiana/standard_k_ca_1_3'), []).
+:- use_module(standards('indiana/standard_1_ca_1'), []).
+:- use_module(standards('indiana/standard_1_ca_3'), []).
+:- use_module(standards('indiana/standard_2_ca_2'), []).
+
 cw_family(cw_whole_number_addsub_claim).
+edge(standard_k_ca_1_3,find_complement_to_ten_witness/3,[recollection([tally,tally,tally,tally,tally,tally])],[2,3],call_once_bind_out).
+edge(standard_1_ca_1,add_making_ten_witness/4,[recollection([tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally])],[3,4],call_once_bind_out).
+edge(standard_1_ca_3,add_by_place_value_witness/4,[recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally])],[3,4],call_once_bind_out).
+edge(standard_2_ca_2,add_three_digit_witness/4,[recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally])],[3,4],call_once_bind_out).
 cw_rule(wn(addition_closure_totality, c_addition_total_operation, "Addition is defined for every pair of numbers and generates totals beyond any memorized set.", ['grounded_arithmetic:add_grounded/3', 'grounding_metaphors:grounds_inference/3'])).
 cw_rule(wn(subtraction_fixed_removal, c_subtraction_removes_fixed_quantity, "Subtraction removes a fixed quantity from a starting amount (take-away).", ['action_automata_registry:action_automaton_cluster/3(subtraction,take_away_base_ones)', 'grounded_arithmetic:subtract_grounded/3'])).
 cw_rule(wn(subtraction_directed_difference, c_subtraction_order_difference_relation, "Subtraction expresses a directed difference (comparison) and is order-sensitive: the larger cannot be removed from the smaller in the collection metaphor.", ['action_automata_registry:action_automaton_cluster/3(subtraction,compare_by_matching_difference)', 'grounding_metaphors:metaphor_breaks_at/3'])).

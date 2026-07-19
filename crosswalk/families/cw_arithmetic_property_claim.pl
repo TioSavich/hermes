@@ -1,10 +1,14 @@
 /** <module> cw_arithmetic_property_claim -- mechanical crosswalk family data. */
 :- module(cw_arithmetic_property_claim,
           [ cw_family/1,
-            cw_rule/1
+            cw_rule/1,
+            edge/5
           ]).
 
+:- use_module(standards('indiana/standard_2_ns_3'), []).
+
 cw_family(cw_arithmetic_property_claim).
+edge(standard_2_ns_3,parity_witness/3,[recollection([tally,tally,tally,tally])],[2,3],call_once_bind_out).
 cw_rule(ap(associativity_single_operation, c_associativity_single_operation, ['grounding_metaphors:grounds_inference/3(arithmetic_is_object_collection,associativity_of_addition,associative_erf_for_collections)'])).
 cw_rule(ap(commutativity_operation_specific, c_commutativity_operation_specific, ['grounding_metaphors:grounds_inference/3(arithmetic_is_object_collection,commutativity_of_addition,pooling_order_invariance)', 'action_automata_registry:action_automaton_cluster/3(multiplication,commute_factors_preserve_product,multiplicative_factor_relations)'])).
 cw_rule(ap(distributivity_over_sum, c_distributivity_expansion_structure, ['action_automata_registry:action_automaton_cluster/3(multiplication,distribute_group_size_split,multiplicative_composite_units)'])).

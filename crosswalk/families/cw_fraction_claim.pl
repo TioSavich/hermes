@@ -29,7 +29,8 @@
             fraction_claim_witness/4,    % fraction_claim_witness(?Canonical, ?Detail, ?Source, -Witness)
             claim_literature_atom/2,     % claim_literature_atom(?Canonical, ?LiteratureAtom)
             canonical_concept/2,         % canonical_concept(LegacyFunctor, Canonical)
-            vocabulary_source/2          % vocabulary_source(Canonical, ListOfLegacyFunctors)
+            vocabulary_source/2,         % vocabulary_source(Canonical, ListOfLegacyFunctors)
+            edge/5
           ]).
 
 :- use_module(misconceptions(literature_vocabulary), []).
@@ -42,7 +43,12 @@
 :- use_module(misconceptions(test_harness), []).
 :- use_module(misconceptions(misconceptions_fraction_batch_2), []).
 :- use_module(misconceptions(misconceptions_fraction_batch_7), []).
+:- use_module(standards('indiana/standard_3_ns_2'), []).
+:- use_module(standards('indiana/standard_3_ns_5'), []).
 :- use_module(library(lists), [ member/2, append/2 ]).
+
+edge(standard_3_ns_2,make_unit_fraction_witness/3,[recollection([tally,tally,tally,tally])],[2,3],call_once_bind_out).
+edge(standard_3_ns_5,compare_fractions_witness/4,[fraction(recollection([tally]),recollection([tally,tally,tally,tally])),fraction(recollection([tally,tally,tally]),recollection([tally,tally,tally,tally]))],[3,4],call_once_bind_out).
 
 %! fc(?Canonical, ?LiteratureAtom, ?CheckerLabel, ?ExtraLegacyFunctors) is nondet.
 %
