@@ -312,6 +312,32 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
 .trace-steps .sv { font: 0.78rem var(--mono); color: var(--teal-deep); margin-left: auto; }
 .trace-input { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin: 0.4rem 0; font-size: 0.85rem; }
 .trace-input input { width: 5rem; padding: 0.3rem 0.4rem; border: 1px solid var(--line); border-radius: 6px; background: var(--paper-cool); font: 0.85rem var(--mono); }
+
+/* The Hermeneutic Calculator: the old four-column form in the paper house style. */
+.calculator-card { padding: 0; overflow: hidden; }
+.calculator-card > h2, .calculator-card > .hint { margin-left: 1.15rem; margin-right: 1.15rem; }
+.calculator-card > h2 { margin-top: 1.05rem; }
+.calculator-shell { border-top: 1px solid var(--line); background: var(--paper-cool); padding: 1rem 1.15rem 1.15rem; }
+.calculator-display { border: 1px solid var(--teal-deep); border-radius: 10px; padding: 0.45rem 0.7rem; background: var(--ink); box-shadow: inset 0 2px 8px rgba(0,0,0,.28); }
+.calculator-display label { display: block; color: var(--gold); font: .62rem/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.calculator-display input { width: 100%; border: 0; outline: 0; padding: .18rem 0; color: var(--paper); background: transparent; font: 600 clamp(1.45rem, 4vw, 2.35rem)/1.2 var(--mono); text-align: right; }
+.calculator-body { display: grid; grid-template-columns: minmax(240px, 1fr) minmax(220px, .9fr); gap: .9rem; margin-top: .9rem; align-items: start; }
+.calculator-keypad { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .45rem; }
+.calc-key { min-height: 2.8rem; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); background: var(--paper); font: 600 1rem var(--mono); box-shadow: 0 2px 0 rgba(102,95,79,.15); }
+.calc-key:hover { border-color: var(--gold-deep); background: var(--gold-pale); }
+.calc-key:active { transform: translateY(1px); box-shadow: none; }
+.calc-key.operator { color: var(--teal-deep); background: rgba(63,127,137,.09); }
+.calc-key.clear { grid-column: span 2; color: var(--rust); }
+.calc-key.equals { grid-column: span 2; color: #fff; border-color: var(--teal-deep); background: var(--teal); }
+.calculator-strategies { border: 1px solid var(--line); border-radius: 10px; background: rgba(255,253,247,.7); padding: .75rem; }
+.calculator-strategies label { display: block; font: .68rem/1.4 var(--mono); color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+.calculator-strategies select { width: 100%; margin-top: .25rem; padding: .42rem .5rem; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); }
+.calc-examples { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .7rem; }
+.calc-example { border: 1px solid var(--line); border-radius: 999px; padding: .25rem .5rem; background: transparent; color: var(--ink-soft); font: .72rem var(--mono); }
+.calc-example:hover { border-color: var(--gold-deep); background: var(--gold-pale); }
+.calculator-card .worked-example { margin: .85rem 1.15rem 1.05rem; }
+.calculator-card > .result { margin: 0 1.15rem 1.05rem; }
+@media (max-width: 680px) { .calculator-body { grid-template-columns: 1fr; } }
 .stance-chip { display: inline-flex; gap: 0.3rem; align-items: center; font: 0.66rem var(--mono); border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.45rem; margin: 0.15rem 0.25rem 0 0; }
 .stance-chip.comp { border-color: var(--rust); color: var(--rust); }
 .stance-chip.exp { border-color: var(--teal); color: var(--teal-deep); }
@@ -511,17 +537,34 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
         <div id="pml-out" class="result" hidden></div>
       </div>
 
-      <div class="card">
-        <h2><span class="num">+</span>Quick calculator</h2>
-        <p class="hint">Type a whole-number operation and read its step-by-step proof. The symbolic strategy engine works it as a child's strategy would — counting on by bases, a missing addend, and so on — and returns the decoded result with a number-line trace. Operators: <code>+</code> <code>−</code> <code>×</code> <code>÷</code> (ascii <code>- * /</code> accepted).</p>
-        <div class="data-actions">
-          <input type="text" id="calc-input" class="num" style="flex:1;min-width:8rem;padding:0.42rem 0.6rem;border:1px solid var(--line);border-radius:7px;background:var(--paper-cool)" placeholder="e.g. 7 + 5" value="7 + 5" />
-          <label class="muted-inline" style="display:flex;flex-direction:column;gap:.25rem;min-width:14rem">strategy
-            <select id="calc-strategy" disabled></select>
-          </label>
-          <button class="btn primary" id="calc-run">Compute &amp; trace</button>
+      <div class="card calculator-card">
+        <h2><span class="num">+</span>The Hermeneutic Calculator</h2>
+        <p class="hint">Enter whole numbers, decimals, or fractions. Whole-number arithmetic uses the selected strategy. Type <code>vs</code> between two fractions or decimals to run a comparison machine. Same-denominator fraction addition and the wired decimal operations run through their symbolic machines.</p>
+        <div class="calculator-shell">
+          <div class="calculator-display">
+            <label for="calc-input">expression</label>
+            <input type="text" id="calc-input" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="calculator expression" value="7 + 5" />
+          </div>
+          <div class="calculator-body">
+            <div class="calculator-keypad" aria-label="calculator keypad">
+              <button type="button" class="calc-key" data-calc-key="7">7</button><button type="button" class="calc-key" data-calc-key="8">8</button><button type="button" class="calc-key" data-calc-key="9">9</button><button type="button" class="calc-key operator" data-calc-key="÷">÷</button>
+              <button type="button" class="calc-key" data-calc-key="4">4</button><button type="button" class="calc-key" data-calc-key="5">5</button><button type="button" class="calc-key" data-calc-key="6">6</button><button type="button" class="calc-key operator" data-calc-key="×">×</button>
+              <button type="button" class="calc-key" data-calc-key="1">1</button><button type="button" class="calc-key" data-calc-key="2">2</button><button type="button" class="calc-key" data-calc-key="3">3</button><button type="button" class="calc-key operator" data-calc-key="−">−</button>
+              <button type="button" class="calc-key" data-calc-key="0">0</button><button type="button" class="calc-key" data-calc-key=".">.</button><button type="button" class="calc-key" data-calc-key="/" title="fraction slash">⁄</button><button type="button" class="calc-key operator" data-calc-key="+">+</button>
+              <button type="button" class="calc-key clear" data-calc-action="clear">clear</button><button type="button" class="calc-key equals" data-calc-action="run">=</button>
+            </div>
+            <div class="calculator-strategies">
+              <label for="calc-strategy">strategy machine</label>
+              <select id="calc-strategy" disabled></select>
+              <div id="calc-strategy-status" class="muted-inline" aria-live="polite">Loading runnable strategies…</div>
+              <div class="calc-examples" aria-label="calculator examples">
+                <button type="button" class="calc-example" data-calc-example="7 + 5">7 + 5</button>
+                <button type="button" class="calc-example" data-calc-example="2/3 vs 3/4">2/3 vs 3/4</button>
+                <button type="button" class="calc-example" data-calc-example="0.6 vs 0.60">0.6 vs 0.60</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div id="calc-strategy-status" class="muted-inline">loading runnable strategies…</div>
         <div class="worked-example" id="console-worked-example" aria-live="polite" style="margin-top:.7rem;padding:.7rem .85rem"></div>
         <div id="calc-out" class="result" hidden></div>
       </div>
@@ -1920,46 +1963,159 @@ async function runTrace(name, a, b) {
     ${steps ? `<ol class="trace-steps">${steps}</ol>` : `<div class="muted-inline">${esc(t.note || 'ran to a result; no number-line step-shape for this strategy.')}</div>`}`;
 }
 
-/* ---------- Quick calculator: typed operation → decoded result + proof ---------- */
-let CALC_RUNNABLE = [];
-// Normalize unicode operators to their ascii key.
+/* ---------- Hermeneutic Calculator: expression → machine → decoded trace ---------- */
 function calcNormalizeOp(op) {
   return ({ '+': '+', '−': '-', '-': '-', '×': '*', '*': '*', '÷': '/', '/': '/' })[op] || null;
 }
 function calcOperationName(op) {
   return ({ '+': 'addition', '-': 'subtraction', '*': 'multiplication', '/': 'division' })[op] || '';
 }
-function parseCalcExpr(raw) {
-  const m = /^\s*(-?\d+)\s*([+−\-×*÷\/])\s*(-?\d+)\s*$/.exec(String(raw || ''));
-  if (!m) return null;
-  const op = calcNormalizeOp(m[2]);
-  if (!op) return null;
-  return { a: Number(m[1]), b: Number(m[3]), op };
+function parseCalcOperand(raw) {
+  const text = String(raw || '').trim();
+  let m = /^(\d+)\s*\/\s*(\d+)$/.exec(text);
+  if (m && Number(m[2]) > 0) return { kind: 'fraction', raw: `${Number(m[1])}/${Number(m[2])}`, n: Number(m[1]), d: Number(m[2]) };
+  m = /^(\d*)\.(\d+)$/.exec(text);
+  if (m) {
+    const whole = m[1] || '0', digits = m[2], scale = 10 ** digits.length;
+    return { kind: 'decimal', raw: `${whole}.${digits}`, numeral: Number(whole + digits), scale };
+  }
+  if (/^\d+$/.test(text)) return { kind: 'whole', raw: String(Number(text)), value: Number(text) };
+  return null;
 }
+function parseCalcExpr(raw) {
+  const text = String(raw || '').trim();
+  let m = /^(.+?)\s+(?:vs\.?|compare)\s+(.+)$/i.exec(text);
+  if (m) {
+    const left = parseCalcOperand(m[1]), right = parseCalcOperand(m[2]);
+    return left && right ? { mode: 'compare', op: 'vs', left, right } : null;
+  }
+  m = /^(.+?)\s+\/\s+(.+)$/.exec(text);
+  if (!m) m = /^(.+?)\s*([+−×*÷-])\s*(.+)$/.exec(text);
+  if (!m) return null;
+  const left = parseCalcOperand(m[1]), right = parseCalcOperand(m[m.length - 1]);
+  const op = calcNormalizeOp(m.length === 3 ? '/' : m[2]);
+  return left && right && op ? { mode: 'arithmetic', op, left, right } : null;
+}
+function calcPairKind(parsed) {
+  if (!parsed) return '';
+  if (parsed.left.kind === 'whole' && parsed.right.kind === 'whole') return 'whole';
+  if (parsed.left.kind === 'fraction' && parsed.right.kind === 'fraction') return 'fraction';
+  if (parsed.left.kind !== 'fraction' && parsed.right.kind !== 'fraction' &&
+      (parsed.left.kind === 'decimal' || parsed.right.kind === 'decimal')) return 'decimal';
+  return 'mixed';
+}
+function calcDecimalOperand(operand) {
+  return operand.kind === 'whole'
+    ? { numeral: operand.value, scale: 1 }
+    : { numeral: operand.numeral, scale: operand.scale };
+}
+function calcPlan(parsed) {
+  const pairKind = calcPairKind(parsed);
+  if (parsed.mode === 'compare' && pairKind === 'fraction') return {
+    strategy: 'common_unit_fraction_comparison',
+    input: { kind: 'fraction_pair', left: { n: parsed.left.n, d: parsed.left.d }, right: { n: parsed.right.n, d: parsed.right.d } }
+  };
+  if (parsed.mode === 'compare' && (pairKind === 'decimal' || pairKind === 'whole')) return {
+    strategy: 'decimal_fraction_place_value_comparison',
+    input: { kind: 'decimal_pair', left: calcDecimalOperand(parsed.left), right: calcDecimalOperand(parsed.right) }
+  };
+  if (parsed.mode === 'compare') return { error: 'Comparison is wired for pairs of fractions or pairs of decimals and whole numbers.' };
+  if (pairKind === 'whole') return { strategy: '', input: { a: parsed.left.value, b: parsed.right.value } };
+  if (pairKind === 'fraction' && parsed.op === '+' && parsed.left.d === parsed.right.d) return {
+    strategy: 'co_denominator_count_on_from_larger',
+    input: { kind: 'fraction_pair', left: { n: parsed.left.n, d: parsed.left.d }, right: { n: parsed.right.n, d: parsed.right.d } }
+  };
+  if (pairKind === 'fraction' && parsed.op === '+') return { error: 'Fraction addition is wired only for a shared denominator. Type “2/3 vs 3/4” to use the comparison machine.' };
+  if (pairKind === 'fraction') return { error: 'A full fraction machine for this operation is not wired. Fraction comparison and same-denominator addition are available.' };
+  if (pairKind === 'decimal') {
+    const strategy = ({ '+': 'decimal_addition_by_aligned_units', '-': 'decimal_subtraction_by_aligned_units', '*': 'decimal_multiplication_rule' })[parsed.op];
+    if (!strategy) return { error: 'A decimal division machine is not wired. Decimal comparison, addition, subtraction, and multiplication are available.' };
+    return { strategy, input: { kind: 'decimal_pair', left: calcDecimalOperand(parsed.left), right: calcDecimalOperand(parsed.right) } };
+  }
+  return { error: 'This machine does not combine a fraction with a whole number or decimal in one operation.' };
+}
+function calcAppendKey(current, key) {
+  const text = String(current || '');
+  if (/^\d$/.test(key)) return text + key;
+  if (key === '.') {
+    const operand = text.split(/\s(?:[+−×÷])\s/).pop();
+    return operand.includes('.') || operand.includes('/') ? text : text + '.';
+  }
+  if (key === '/') {
+    const operand = text.split(/\s(?:[+−×÷])\s/).pop();
+    return operand.includes('/') || operand.includes('.') ? text : text + '/';
+  }
+  if (/^[+−×÷]$/.test(key)) {
+    const trimmed = text.trim();
+    if (!trimmed) return text;
+    return /\s[+−×÷]\s$/.test(text) ? text.replace(/\s[+−×÷]\s$/, ` ${key} `) : `${trimmed} ${key} `;
+  }
+  return text;
+}
+
+let CALC_RUNNABLE = [];
+let CALC_COMPARISONS = [];
 function calcStrategiesForOperation(op) {
   const operation = calcOperationName(op);
   return CALC_RUNNABLE.filter(s => s.operation === operation);
 }
-function syncCalcStrategyPicker(parsed) {
+function renderCalcStrategyPicker() {
   const select = $("#calc-strategy");
-  const status = $("#calc-strategy-status");
+  const labels = { addition: 'Add', subtraction: 'Sub', multiplication: 'Mult', division: 'Div' };
+  const arithmetic = Object.keys(labels).map(operation => {
+    const options = CALC_RUNNABLE.filter(s => s.operation === operation).map(s =>
+      `<option value="${escAttr(s.name)}" data-operation="${escAttr(operation)}">${esc(s.name)}</option>`).join('');
+    return options ? `<optgroup label="${labels[operation]}">${options}</optgroup>` : '';
+  }).join('');
+  const comparison = ['fraction', 'decimal'].map(domain => {
+    const options = CALC_COMPARISONS.filter(s => s.domain === domain).map(s =>
+      `<option value="${escAttr(s.name)}" data-operation="${domain}-comparison">${esc(s.name.replace(/_/g, ' '))}</option>`).join('');
+    return options ? `<optgroup label="Compare ${domain}s">${options}</optgroup>` : '';
+  }).join('');
+  select.innerHTML = arithmetic + comparison;
+}
+function setCalcStrategyAvailability(names) {
+  const allowed = new Set(names);
+  document.querySelectorAll('#calc-strategy option').forEach(option => { option.disabled = !allowed.has(option.value); });
+}
+function syncCalcStrategyPicker(parsed) {
+  const select = $("#calc-strategy"), status = $("#calc-strategy-status");
   if (!select || !status) return;
-  const previous = select.value;
-  const choices = parsed ? calcStrategiesForOperation(parsed.op) : CALC_RUNNABLE;
-  select.innerHTML = choices.map(s =>
-    `<option value="${escAttr(s.name)}" data-operation="${escAttr(s.operation || '')}" data-symbol="${escAttr(s.op_symbol || '')}">${esc(s.name)} · ${esc(s.expression || s.operation || '')}</option>`
-  ).join('');
-  if (choices.some(s => s.name === previous)) select.value = previous;
-  select.disabled = choices.length === 0;
-  const operation = parsed ? calcOperationName(parsed.op) : 'operation';
-  status.textContent = choices.length
-    ? `${choices.length} runnable ${operation} strateg${choices.length === 1 ? 'y' : 'ies'} available`
-    : (CALC_RUNNABLE.length ? `No runnable ${operation} strategy is cataloged.` : 'Runnable strategies are still loading.');
+  const pairKind = calcPairKind(parsed);
+  if (!CALC_RUNNABLE.length) {
+    select.disabled = true;
+    status.textContent = 'Runnable strategies are still loading.';
+    return;
+  }
+  if (parsed && parsed.mode === 'compare' && (pairKind === 'fraction' || pairKind === 'decimal' || pairKind === 'whole')) {
+    const domain = pairKind === 'fraction' ? 'fraction' : 'decimal';
+    const choices = CALC_COMPARISONS.filter(s => s.domain === domain);
+    setCalcStrategyAvailability(choices.map(s => s.name));
+    if (choices.length && !choices.some(s => s.name === select.value)) select.value = choices[0].name;
+    select.disabled = choices.length === 0;
+    status.textContent = choices.length
+      ? `${choices.length} ${domain} comparison machine${choices.length === 1 ? '' : 's'} available.`
+      : `No ${domain} comparison machine is cataloged.`;
+    return;
+  }
+  if (parsed && parsed.mode === 'arithmetic' && pairKind === 'whole') {
+    const choices = calcStrategiesForOperation(parsed.op);
+    setCalcStrategyAvailability(choices.map(s => s.name));
+    if (choices.length && !choices.some(s => s.name === select.value)) select.value = choices[0].name;
+    select.disabled = choices.length === 0;
+    const operation = calcOperationName(parsed.op);
+    status.textContent = choices.length ? `${choices.length} runnable ${operation} strateg${choices.length === 1 ? 'y' : 'ies'}.` : `No runnable ${operation} strategy is cataloged.`;
+    return;
+  }
+  setCalcStrategyAvailability([]);
+  select.disabled = true;
+  const plan = parsed ? calcPlan(parsed) : null;
+  status.textContent = plan && plan.strategy
+    ? `This expression uses ${plan.strategy.replace(/_/g, ' ')}.`
+    : (plan && plan.error ? plan.error : 'Type an expression or choose an example.');
 }
 function calcStrategyForOperation(op) {
-  syncCalcStrategyPicker({ op });
-  const select = $("#calc-strategy");
-  const choices = calcStrategiesForOperation(op);
+  const choices = calcStrategiesForOperation(op), select = $("#calc-strategy");
   return choices.find(s => select && s.name === select.value) || choices[0] || null;
 }
 async function loadCalcStrategies() {
@@ -1967,51 +2123,122 @@ async function loadCalcStrategies() {
   try {
     const { data } = await postJSON('/api/strategies', {});
     const runnable = data && data.result && Array.isArray(data.result.runnable) ? data.result.runnable : [];
-    CALC_RUNNABLE = runnable
-      .filter(s => s && s.name && s.operation)
-      .sort((a, b) => String(a.operation).localeCompare(String(b.operation)) || String(a.name).localeCompare(String(b.name)));
-  } catch (e) {
+    const catalog = data && data.result && Array.isArray(data.result.strategies) ? data.result.strategies : [];
+    const comparisonDomains = {
+      number_line_fraction_comparison: 'fraction',
+      area_model_fraction_comparison: 'fraction',
+      set_model_fraction_comparison: 'fraction',
+      benchmark_fraction_comparison: 'fraction',
+      common_unit_fraction_comparison: 'fraction',
+      decimal_fraction_place_value_comparison: 'decimal'
+    };
+    CALC_RUNNABLE = runnable.filter(s => s && s.name && s.operation);
+    CALC_COMPARISONS = catalog
+      .filter(s => s && comparisonDomains[s.kind])
+      .map(s => ({ name: s.kind, domain: comparisonDomains[s.kind] }));
+    renderCalcStrategyPicker();
+    syncCalcStrategyPicker(parseCalcExpr($("#calc-input").value));
+  } catch (error) {
     CALC_RUNNABLE = [];
-    if (status) status.textContent = 'Could not load runnable strategies.';
-    return;
+    CALC_COMPARISONS = [];
+    status.textContent = 'The local strategy catalog is offline.';
   }
-  syncCalcStrategyPicker(parseCalcExpr($("#calc-input").value));
+}
+function calcRelationSymbol(result) {
+  return ({ less_than: '<', less: '<', greater_than: '>', more: '>', equivalent: '=', equal: '=' })[String(result)] || String(result);
+}
+function calcDecimalResult(result) {
+  const m = /^decimal\((\d+),fractional_digits\((\d+),(\d+)\),[^)]+\)$/.exec(String(result));
+  if (!m) return String(result);
+  return `${m[1]}.${m[2].padStart(Number(m[3]), '0')}`;
+}
+function calcResultLine(parsed, result) {
+  if (parsed.mode === 'compare') return `${parsed.left.raw} ${calcRelationSymbol(result)} ${parsed.right.raw}`;
+  if (calcPairKind(parsed) === 'fraction') return `${parsed.left.raw} + ${parsed.right.raw} = ${result}/${parsed.left.d}`;
+  const symbol = ({ '+': '+', '-': '−', '*': '×', '/': '÷' })[parsed.op];
+  const shown = calcPairKind(parsed) === 'decimal' ? calcDecimalResult(result) : String(result);
+  return `${parsed.left.raw} ${symbol} ${parsed.right.raw} = ${shown}`;
 }
 async function runCalc() {
-  const out = $("#calc-out");
+  const out = $("#calc-out"), status = $("#calc-strategy-status"), appState = $("#app-request-status");
   const parsed = parseCalcExpr($("#calc-input").value);
   syncCalcStrategyPicker(parsed);
   if (!parsed) {
     out.hidden = false;
-    out.innerHTML = `<p class="hint">Type a whole-number operation as <code>a op b</code> — for example <code>7 + 5</code> or <code>12 − 5</code>. Operators: + − × ÷.</p>`;
+    out.innerHTML = `<p class="hint">Enter two non-negative values with an operator, such as <code>7 + 5</code>, or type <code>vs</code> for comparison. Use <code>÷</code> for division and <code>/</code> inside a fraction.</p>`;
     return;
   }
-  const selected = calcStrategyForOperation(parsed.op);
-  if (!selected) {
+  const plan = calcPlan(parsed);
+  if (plan.error) {
     out.hidden = false;
-    out.innerHTML = `<p class="hint">That operator does not have a runnable strategy in the catalog.</p>`;
+    out.innerHTML = `<p class="hint">${esc(plan.error)}</p>`;
     return;
+  }
+  let strategy = plan.strategy;
+  if (parsed.mode === 'compare') {
+    const selected = $("#calc-strategy").selectedOptions[0];
+    const domain = calcPairKind(parsed) === 'fraction' ? 'fraction' : 'decimal';
+    if (selected && selected.dataset.operation === `${domain}-comparison`) strategy = selected.value;
+  }
+  if (!strategy) {
+    const selected = calcStrategyForOperation(parsed.op);
+    if (!selected) {
+      out.hidden = false;
+      out.innerHTML = `<p class="hint">No runnable ${esc(calcOperationName(parsed.op))} strategy is cataloged.</p>`;
+      return;
+    }
+    strategy = selected.name;
   }
   out.hidden = false;
-  out.innerHTML = "<em class='muted-inline'>working it as a strategy…</em>";
+  out.innerHTML = "<em class='muted-inline'>Running the symbolic machine…</em>";
+  status.textContent = `Running ${strategy.replace(/_/g, ' ')} locally…`;
+  HermesFetch.setState(appState, 'pending', 'Calculator running locally…');
   let data;
-  try { ({ data } = await postJSON('/api/strategy_trace', { strategy: selected.name, input: { a: parsed.a, b: parsed.b } })); }
-  catch (e) { out.innerHTML = `<p class="hint">× The app isn't answering.</p>`; return; }
-  const t = (data && data.result) || {};
-  if (!t.ok) {
-    out.innerHTML = `<p class="hint">${esc(t.note || 'This operation is not yet available as a runnable strategy.')}</p>`;
+  try {
+    ({ data } = await postJSON('/api/strategy_trace', { strategy, input: plan.input }));
+  } catch (error) {
+    const offline = error && (error.kind === 'offline' || error.kind === 'timeout');
+    HermesFetch.setState(appState, offline ? 'offline' : 'broken', error.message || 'The local app did not answer.');
+    status.textContent = offline ? 'The local app is offline. Start Hermes and try again.' : 'The symbolic machine returned a broken reply.';
+    out.innerHTML = `<p class="hint">${esc(status.textContent)}</p>`;
     return;
   }
+  HermesFetch.setState(appState, 'ready', 'App ready');
+  const t = (data && data.result) || {};
+  if (!t.ok) {
+    status.textContent = 'The selected machine could not run this input.';
+    out.innerHTML = `<p class="hint">${esc(t.note || 'This operation is outside the machine’s current input contract.')}</p>`;
+    return;
+  }
+  status.textContent = `Completed with ${strategy.replace(/_/g, ' ')}.`;
   const steps = (t.steps || []).map(s =>
-    `<li><span class="sn">${esc(String(s.n))}</span><span>${esc(s.label || '')}</span><span class="sv">${esc(s.value || '')}</span></li>`).join('');
-  out.innerHTML = `<div class="out-head" style="font-size:1.15rem">${esc(String(parsed.a))} ${esc(selected.op_symbol || opSymbol(calcOperationName(parsed.op)))} ${esc(String(parsed.b))} = <b>${esc(String(t.result ?? ''))}</b></div>
-    <div class="muted-inline">strategy: ${esc(selected.name)} · ${esc(t.representation || 'fsm')}</div>
-    ${traceSvg(t.jumps)}
-    ${steps ? `<ol class="trace-steps">${steps}</ol>` : `<div class="muted-inline">${esc(t.note || 'Ran to a result; no number-line step-shape for this strategy.')}</div>`}`;
+    `<li><span class="sn">${esc(String(s.n))}</span><span>${esc(String(s.label || '').replace(/_/g, ' '))}</span><span class="sv">${esc(s.value || '')}</span></li>`).join('');
+  out.innerHTML = `<div class="out-head" style="font-size:1.15rem"><b>${esc(calcResultLine(parsed, t.result ?? ''))}</b></div>
+    <div class="muted-inline">strategy: ${esc(strategy.replace(/_/g, ' '))} · ${esc(t.representation || 'fsm')}</div>
+    ${(t.jumps || []).length ? traceSvg(t.jumps) : ''}
+    ${steps ? `<ol class="trace-steps">${steps}</ol>` : `<div class="muted-inline">${esc(t.note || 'The machine returned a result without a drawable step trace.')}</div>`}`;
 }
-$("#calc-run").addEventListener('click', runCalc);
 $("#calc-input").addEventListener('keydown', e => { if (e.key === 'Enter') runCalc(); });
 $("#calc-input").addEventListener('input', () => syncCalcStrategyPicker(parseCalcExpr($("#calc-input").value)));
+$("#calc-strategy").addEventListener('change', () => syncCalcStrategyPicker(parseCalcExpr($("#calc-input").value)));
+document.querySelectorAll('[data-calc-key]').forEach(button => button.addEventListener('click', () => {
+  const input = $("#calc-input");
+  input.value = calcAppendKey(input.value, button.dataset.calcKey || '');
+  input.focus();
+  syncCalcStrategyPicker(parseCalcExpr(input.value));
+}));
+document.querySelector('[data-calc-action="clear"]').addEventListener('click', () => {
+  $("#calc-input").value = '';
+  $("#calc-out").hidden = true;
+  syncCalcStrategyPicker(null);
+  $("#calc-input").focus();
+});
+document.querySelector('[data-calc-action="run"]').addEventListener('click', runCalc);
+document.querySelectorAll('[data-calc-example]').forEach(button => button.addEventListener('click', () => {
+  $("#calc-input").value = button.dataset.calcExample || '';
+  syncCalcStrategyPicker(parseCalcExpr($("#calc-input").value));
+  runCalc();
+}));
 loadCalcStrategies();
 
 /* ---------- Monitoring chart: lesson code → anticipation chart ---------- */

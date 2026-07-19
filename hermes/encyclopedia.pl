@@ -331,16 +331,18 @@ strategy_lookup_name(RawName, LookupName) :-
     ;   LookupName = Trimmed
     ).
 
-trace_result_dict(StrategyName, NameStr, _A, _B, Result, History, _{
+trace_result_dict(StrategyName, NameStr, _A, _B, Result0, History, _{
         strategy: NameStr,
         ok: true,
-        representation: "fsm",
+        representation: Representation,
         result: ResultStr,
         steps: Steps,
         jumps: Jumps,
         jump_witness: JumpWitness,
         note: Note
     }) :-
+    trace_result_value(Result0, Result),
+    trace_representation(Result0, Representation),
     term_text_string(Result, ResultStr),
     history_steps(History, Steps),
     (   catch(visualization:strategy_jumps_witness(StrategyName, History, JumpWitness0), _, fail)
@@ -354,6 +356,19 @@ trace_result_dict(StrategyName, NameStr, _A, _B, Result, History, _{
     -> Note = "Ran to a result; number-line jump trace is not available for this strategy's step shape."
     ;  Note = "Number-line jump trace extracted from the strategy's execution history."
     ).
+
+trace_result_value(action_outcome(_, Properties), Result) :-
+    (   member(result(Result), Properties)
+    ;   member(cgi_outcome(Nested), Properties),
+        trace_result_value(Nested, Result)
+    ;   member(expected(Nested), Properties),
+        trace_result_value(Nested, Result)
+    ),
+    !.
+trace_result_value(Result, Result).
+
+trace_representation(action_outcome(_, _), "action_automaton") :- !.
+trace_representation(_, "fsm").
 
 %!  run_named_strategy(+Name, +A, +B, -Result, -History) is semidet.
 %
@@ -404,6 +419,7 @@ step_state_interp(step(S, _, _, _, I), S, I) :- !.       % COBO-style step/5
 step_state_interp(step(S, _, _, I), S, I) :- !.          % legacy step/4
 step_state_interp(step(S, _, _, _, _, I), S, I) :- !.
 step_state_interp(step(S, _, _, _, _, _, I), S, I) :- !.
+step_state_interp(hist(S, I), S, I) :- !.
 step_state_interp(Step, Step, '').
 
 state_label(state(Name, _), Label) :- !, term_text_string(Name, Label).
@@ -483,8 +499,19 @@ num_value(_, 0).
 %   strategy can at least be attempted.
 trace_inputs(Input, A, B) :-
     ( is_dict(Input) -> D = Input ; D = _{} ),
-    dict_num(D, a, 0, A),
-    dict_num(D, b, 0, B).
+    (   get_dict(kind, D, "fraction_pair"),
+        get_dict(left, D, Left), get_dict(right, D, Right),
+        dict_num(Left, n, 0, N1), dict_num(Left, d, 0, D1),
+        dict_num(Right, n, 0, N2), dict_num(Right, d, 0, D2)
+    ->  A = fraction_pair(N1, D1, N2, D2), B = unit(whole)
+    ;   get_dict(kind, D, "decimal_pair"),
+        get_dict(left, D, Left), get_dict(right, D, Right),
+        dict_num(Left, numeral, 0, N1), dict_num(Left, scale, 1, S1),
+        dict_num(Right, numeral, 0, N2), dict_num(Right, scale, 1, S2)
+    ->  A = decimal_pair(N1, S1, N2, S2), B = ignored
+    ;   dict_num(D, a, 0, A),
+        dict_num(D, b, 0, B)
+    ).
 
 dict_num(Dict, Key, Default, Value) :-
     ( get_dict(Key, Dict, V0), num_value(V0, V) -> Value = V ; Value = Default ).
