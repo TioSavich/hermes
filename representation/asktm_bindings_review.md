@@ -2,7 +2,7 @@
 
 > DRAFT, OWNER NOT VERIFIED. Mapped rows may reach the gallery only with an unverified draft badge.
 
-Accounting: 140 codes; 51 mapped; 8 awaiting_conversion; 81 no_defensible_binding; 0 verified.
+Accounting: 140 codes; 59 mapped; 0 awaiting_conversion; 81 no_defensible_binding; 0 verified.
 
 ## area_model_part_of_part (8)
 
@@ -22,25 +22,6 @@ Accounting: 140 codes; 51 mapped; 8 awaiting_conversion; 81 no_defensible_bindin
   The requested operation is fraction multiplication.
 - `G5Q7:B3` — Incorrect response includes visual representations  
   The requested operation is fraction multiplication.
-
-## awaiting_conversion (8)
-
-- `G4Q1:A2` — Correct response includes symbolic work and/or written justification but no visual representations  
-  Fraction ordering belongs to the unconverted comparison family.
-- `G4Q1:A3` — Correct response includes visual representations  
-  Fraction ordering belongs to the unconverted comparison family.
-- `G4Q1:B2` — Incorrect response includes symbolic work and/or written justification but no visual representations  
-  Fraction ordering belongs to the unconverted comparison family.
-- `G4Q1:B3` — Incorrect response includes visual representations  
-  Fraction ordering belongs to the unconverted comparison family.
-- `G4Q4:A2` — Correct response includes symbolic work and/or written justification but no visual representations  
-  Fraction-decimal ordering belongs to the unconverted comparison family.
-- `G4Q4:A3` — Correct response includes visual representations  
-  Fraction-decimal ordering belongs to the unconverted comparison family.
-- `G4Q4:B2` — Incorrect response includes symbolic work and/or written justification but no visual representations  
-  Fraction-decimal ordering belongs to the unconverted comparison family.
-- `G4Q4:B3` — Incorrect response includes visual representations  
-  Fraction-decimal ordering belongs to the unconverted comparison family.
 
 ## divaded_fractional_units (12)
 
@@ -296,6 +277,25 @@ Accounting: 140 codes; 51 mapped; 8 awaiting_conversion; 81 no_defensible_bindin
   The dominant coded doing is measurement division, often via repeated addition.
 - `G5Q8:B3` — Incorrect response includes visual representations  
   The dominant coded doing is measurement division, often via repeated addition.
+
+## smr_frac_nl_compare (8)
+
+- `G4Q1:A2` — Correct response includes symbolic work and/or written justification but no visual representations  
+  Fraction ordering can be enacted by locating each value and comparing its number-line position.
+- `G4Q1:A3` — Correct response includes visual representations  
+  Fraction ordering can be enacted by locating each value and comparing its number-line position.
+- `G4Q1:B2` — Incorrect response includes symbolic work and/or written justification but no visual representations  
+  Fraction ordering can be enacted by locating each value and comparing its number-line position.
+- `G4Q1:B3` — Incorrect response includes visual representations  
+  Fraction ordering can be enacted by locating each value and comparing its number-line position.
+- `G4Q4:A2` — Correct response includes symbolic work and/or written justification but no visual representations  
+  Fraction-decimal ordering can use the same number-line comparison after expressing both values as fractions.
+- `G4Q4:A3` — Correct response includes visual representations  
+  Fraction-decimal ordering can use the same number-line comparison after expressing both values as fractions.
+- `G4Q4:B2` — Incorrect response includes symbolic work and/or written justification but no visual representations  
+  Fraction-decimal ordering can use the same number-line comparison after expressing both values as fractions.
+- `G4Q4:B3` — Incorrect response includes visual representations  
+  Fraction-decimal ordering can use the same number-line comparison after expressing both values as fractions.
 
 ## smr_mult_dr (4)
 

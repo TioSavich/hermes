@@ -167,6 +167,13 @@ action_automaton_vocabulary(counting, Kind, Vocabulary) :-
 %   These are schemas, not concrete lesson instances: they tell a planner what
 %   information must be recovered from a task before run_action_automaton/6 can
 %   execute without pretending the curriculum source supplied that information.
+action_automaton_signature(fraction, number_line_fraction_comparison,
+                           inputs(two_nonnegative_fractions, unit_interval),
+                           fraction_order_relation).
+action_automaton_signature(fraction,
+                           number_line_count_marks_not_intervals,
+                           inputs(two_nonnegative_fractions, unit_interval),
+                           incorrect_fraction_order_relation).
 action_automaton_signature(decimal, positional_decimal_reading,
                            inputs(integer_numeral, positive_power_of_ten_scale),
                            decimal_value).

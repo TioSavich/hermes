@@ -60,6 +60,7 @@ load_runtime :-
     use_module(im_lessons(field_context)),
     use_module(strategies(expressive_power)),
     use_module(strategies(visualization), []),
+    use_module(math(state_vocabulary), []),
     use_module(render(fraction_bars_scene)),
     use_module(render(balance_scale_scene)),
     use_module(render(misconception_render_coverage), []),
@@ -2726,6 +2727,39 @@ monitoring_chart_export_dict(Code, Dict) :-
     (   lesson_monitoring:lesson_guide_context_dict(Code, GuideContext)
     ->  Dict = Dict0.put(GuideContext)
     ;   Dict = Dict0
+    ).
+
+%! state_vocabulary_dispatch_dict(+State, -Dict) is det.
+%
+%  JSON-safe worker edge for the canonical state-label table.  Surfaces get
+%  one display default and retain every historically distinct alternate with
+%  its tradition and citation.
+state_vocabulary_dispatch_dict(State0, Dict) :-
+    string_or_atom_to_atom(State0, State),
+    state_vocabulary:state_labels(State, Default0, Alternates0),
+    state_vocabulary:state_display_label(
+        State, DefaultTradition, Default0, DefaultCitation),
+    state_label_text(Default0, Default),
+    maplist(state_label_dict, Alternates0, Alternates),
+    atom_string(State, StateText),
+    atom_string(DefaultTradition, DefaultTraditionText),
+    Dict = _{state: StateText,
+             default: Default,
+             default_tradition: DefaultTraditionText,
+             default_citation: DefaultCitation,
+             alternates: Alternates}.
+
+state_label_dict(label(Tradition, Label0, Citation),
+                 _{tradition: TraditionText,
+                   label: Label,
+                   citation: Citation}) :-
+    atom_string(Tradition, TraditionText),
+    state_label_text(Label0, Label).
+
+state_label_text(Value, Text) :-
+    (   string(Value)
+    ->  Text = Value
+    ;   atom_string(Value, Text)
     ).
 
 deformation_chart_scope_export(Code, Dict) :-

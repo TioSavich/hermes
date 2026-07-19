@@ -68,6 +68,10 @@
 :- use_module(math(smr_frac_equiv_cross_mult),
               [ run_cross_mult_equiv/6
               ]).
+:- use_module(math(smr_frac_nl_compare),
+              [ run_number_line_compare/6,
+                run_count_marks_compare/6
+              ]).
 
 % Text-grounded PFS kernel (Steffe-Hackenberg). Sits alongside the live
 % N101 PFS in divaded_fractional_units as the citable manuscript form.
@@ -490,6 +494,55 @@ run_fraction_action(iterate_only_no_reverse, solve(P, Q), Total, Outcome, Trace)
               cannot_run_inverse_edge_to_recover_unknown,
               fail_to_solve(expected(Expected))
             ].
+run_fraction_action(number_line_fraction_comparison,
+                    fraction_pair(A, B, C, D), unit(whole),
+                    Outcome, Trace) :-
+    run_number_line_compare(A, B, C, D, Result, Trace),
+    Outcome = action_outcome(
+                  number_line_fraction_comparison,
+                  [ classification(productive),
+                    cluster(fraction_number_line_comparison),
+                    automaton_state(q_compare_positions),
+                    vocabulary([q_identify_unit, q_partition_interval,
+                                q_mark_off_lengths, q_locate_endpoint,
+                                q_measure_with_unit_fraction,
+                                q_compare_positions]),
+                    input(fraction_pair(A, B, C, D)),
+                    result(Result),
+                    expected(Result),
+                    validity(correct),
+                    components(number_line_comparison_components(
+                                   fraction(A, B), fraction(C, D))),
+                    justification(compare_point_locations_by_distance_from_origin),
+                    grounded_by(metaphor_mapping(
+                                    arithmetic_is_motion_along_a_path,
+                                    distance_from_origin, magnitude)),
+                    elaborates(smr_frac_nl_compare:run_number_line_compare/6)
+                  ]).
+run_fraction_action(number_line_count_marks_not_intervals,
+                    fraction_pair(A, B, C, D), unit(whole),
+                    Outcome, Trace) :-
+    run_number_line_compare(A, B, C, D, Expected, _ProductiveTrace),
+    run_count_marks_compare(A, B, C, D, Result, Trace),
+    Outcome = action_outcome(
+                  number_line_count_marks_not_intervals,
+                  [ classification(deformation),
+                    cluster(fraction_number_line_comparison),
+                    automaton_state(q_count_marks_not_intervals),
+                    vocabulary([q_identify_unit, q_partition_interval,
+                                q_count_marks_not_intervals,
+                                q_locate_endpoint, q_compare_positions]),
+                    input(fraction_pair(A, B, C, D)),
+                    result(Result),
+                    expected(Expected),
+                    validity(incorrect),
+                    components(number_line_comparison_components(
+                                   fraction(A, B), fraction(C, D))),
+                    deformation_of(number_line_fraction_comparison),
+                    misconception_family(count_marks_not_intervals),
+                    violated_invariant(interval_count_not_mark_count),
+                    elaborates(smr_frac_nl_compare:run_count_marks_compare/6)
+                  ]).
 run_fraction_action(area_model_part_of_part, fraction_pair(A, B, C, D), unit(whole), Outcome, Trace) :-
     multiplication_components(A, B, C, D, Components),
     Components = fraction_multiplication_components(NumeratorProduct,
@@ -814,6 +867,10 @@ fraction_action_cluster(recursive_partition, fraction_recursive_partition).
 fraction_action_cluster(clear_inner_referent, fraction_recursive_partition).
 fraction_action_cluster(solve_for_unit, fraction_algebra_reversible).
 fraction_action_cluster(iterate_only_no_reverse, fraction_algebra_reversible).
+fraction_action_cluster(number_line_fraction_comparison,
+                        fraction_number_line_comparison).
+fraction_action_cluster(number_line_count_marks_not_intervals,
+                        fraction_number_line_comparison).
 fraction_action_cluster(measurement_division, fraction_measurement_division).
 fraction_action_cluster(reversible_measurement_division, fraction_reversible_measurement_division).
 
@@ -889,6 +946,15 @@ fraction_action_vocabulary(iterate_only_no_reverse,
                            [unknown_as_fixed, iterate_forward_only,
                             partition_consumed_in_activity, no_disembedded_unit,
                             cannot_solve_for_unknown]).
+fraction_action_vocabulary(number_line_fraction_comparison,
+                           [q_identify_unit, q_partition_interval,
+                            q_mark_off_lengths, q_locate_endpoint,
+                            q_measure_with_unit_fraction,
+                            q_compare_positions]).
+fraction_action_vocabulary(number_line_count_marks_not_intervals,
+                           [q_identify_unit, q_partition_interval,
+                            q_count_marks_not_intervals, q_locate_endpoint,
+                            q_compare_positions]).
 fraction_action_vocabulary(measurement_division,
                            [dividend_fraction, divisor_fraction, shared_measurement_unit,
                             measured_total, measured_group_size, group_size_count,
@@ -918,6 +984,9 @@ productive_fraction_deformation(recursive_partition,
 productive_fraction_deformation(solve_for_unit,
                                 iterate_only_no_reverse,
                                 mc1_no_reversibility).
+productive_fraction_deformation(number_line_fraction_comparison,
+                                number_line_count_marks_not_intervals,
+                                count_marks_not_intervals).
 
 
 %!  fraction_action_misconception_hook(+Outcome, -Family, -Hook) is semidet.

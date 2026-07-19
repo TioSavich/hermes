@@ -40,6 +40,8 @@ modules=(
     smr_div_dealing_by_ones
     smr_div_ucr
     smr_div_idp
+    state_vocabulary
+    smr_frac_nl_compare
 )
 
 for module in "${modules[@]}"; do
@@ -58,4 +60,4 @@ swipl --on-error=status --on-warning=status -q -l paths.pl -g "
     smr_div_dealing_by_ones:run_dealing_by_ones(12, 3, 4, _),
     halt."
 
-echo "PASS strict worker load, 22 isolated strategy loads, and four execution probes"
+echo "PASS strict worker load, 24 isolated strategy loads, and four execution probes"

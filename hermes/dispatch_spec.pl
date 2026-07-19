@@ -646,6 +646,10 @@ dispatch_spec(list_strategies,
     [],
     call(hermes_encyclopedia:strategy_catalog_dict, [out(dict)]),
     raw).
+dispatch_spec(state_labels,
+    [state-code],
+    call(user:state_vocabulary_dispatch_dict, [state, out(dict)]),
+    raw(missing_state)).
 dispatch_spec(strategy_trace,
     [strategy-code, input-default(dict, _{})],
     call(hermes_encyclopedia:strategy_trace_dict,

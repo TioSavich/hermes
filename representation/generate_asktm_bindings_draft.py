@@ -25,14 +25,16 @@ HEADER = re.compile(
 # distinguish response form, not the strategy within that response. The owner
 # must compare each proposal with the tag-list detail before verifying a row.
 QUESTION_BINDINGS = {
-    (4, 1): ("awaiting_conversion", None,
-             "Fraction ordering belongs to the unconverted comparison family."),
+    (4, 1): ("smr_frac_nl_compare",
+             "run_fraction_action(number_line_fraction_comparison)",
+             "Fraction ordering can be enacted by locating each value and comparing its number-line position."),
     (4, 2): ("no_defensible_binding", None,
              "Decimal comparison has no match among the 27 grounded automata."),
     (4, 3): ("fraction_semantics", "apply_equivalence_rule",
              "The question asks students to construct equivalent fractions."),
-    (4, 4): ("awaiting_conversion", None,
-             "Fraction-decimal ordering belongs to the unconverted comparison family."),
+    (4, 4): ("smr_frac_nl_compare",
+             "run_fraction_action(number_line_fraction_comparison)",
+             "Fraction-decimal ordering can use the same number-line comparison after expressing both values as fractions."),
     (4, 5): ("divaded_fractional_units", "add_fractions_by_co_measurement",
              "The dominant coded doing is fraction addition."),
     (4, 6): ("sar_sub_decomposition", "run_decomposition",

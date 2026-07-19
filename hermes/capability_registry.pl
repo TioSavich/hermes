@@ -188,6 +188,7 @@ capability('standard_k_ns_3_order_independence_witness', 'standard_k_ns_3', 'sta
 capability('standard_k_ns_4_verify_subitizing_witness', 'standard_k_ns_4', 'standards', ['pattern'], routed_paged).
 capability('standard_k_ns_5_6_compare_groups_witness', 'standard_k_ns_5_6', 'standards', ['group_a', 'group_b'], routed_paged).
 capability('standard_k_ns_7_place_value_witness', 'standard_k_ns_7', 'standards', ['number'], routed_paged).
+capability('state_labels', 'user', 'unclassified', ['state'], unrouted).
 capability('strategy_trace', 'hermes_encyclopedia', 'unclassified', ['input', 'strategy'], routed_paged).
 capability('target_expressive_power_witness', 'user', 'unclassified', ['target'], routed_paged).
 capability('teacher_layer', 'teacher_layer', 'render', [], routed_paged).
