@@ -565,6 +565,7 @@ capability_page('executable_practice_witness', '/more-zeeman/witnesses.html').
 capability_page('expressive_power', '/more-zeeman/scoreboard.html').
 capability_page('field_connectivity_audit', '/hermes/app/web/console.html').
 capability_page('field_context', '/hermes/app/web/console.html').
+capability_page('field_context', '/more-zeeman/monitoring_chart.html').
 capability_page('fraction_cgi_addition', '/more-zeeman/visualizations.html').
 capability_page('fraction_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('fraction_compare', '/hermes/app/web/console.html').

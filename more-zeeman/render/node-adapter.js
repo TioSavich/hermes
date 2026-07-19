@@ -160,9 +160,43 @@ function svgText(parent, x, y, value, attrs) {
   parent.appendChild(node);
 }
 
+function wrapText(value, maximum) {
+  const words = String(value || '').trim().split(/\s+/).filter(Boolean);
+  const lines = [];
+  let current = '';
+  words.forEach(word => {
+    const candidate = `${current} ${word}`.trim();
+    if (current && candidate.length > maximum) {
+      lines.push(current);
+      current = word;
+    } else {
+      current = candidate;
+    }
+  });
+  if (current) lines.push(current);
+  return lines.length ? lines : [''];
+}
+
+function svgTextLines(parent, x, y, lines, lineHeight, attrs) {
+  const node = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  node.setAttribute('x', x); node.setAttribute('y', y);
+  Object.entries(attrs || {}).forEach(([key, attrValue]) => node.setAttribute(key, attrValue));
+  lines.forEach((line, index) => {
+    const span = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+    span.setAttribute('x', x);
+    span.setAttribute('dy', index === 0 ? '0' : lineHeight);
+    span.textContent = line;
+    node.appendChild(span);
+  });
+  parent.appendChild(node);
+}
+
 function monitoringFilmstrip(drawer, doc, code, index, side, visual) {
   const frames = doc.frames || [], bounds = drawer.documentBounds(frames, doc.canvas || {});
-  const panelW = 320, panelH = 260, frameH = 176, margin = 18, gutter = 18;
+  const panelW = 320, frameH = 176, margin = 18, gutter = 18;
+  const captionLines = frames.map(frame => wrapText(frame.caption || '', 47));
+  const maxCaptionLines = Math.max(1, ...captionLines.map(lines => lines.length));
+  const panelH = frameH + 70 + maxCaptionLines * 15;
   const width = margin * 2 + frames.length * panelW + Math.max(0, frames.length - 1) * gutter;
   const height = margin * 2 + panelH;
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -179,6 +213,7 @@ function monitoringFilmstrip(drawer, doc, code, index, side, visual) {
   frames.forEach((frame, frameIndex) => {
     const x = margin + frameIndex * (panelW + gutter), group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     group.setAttribute('data-frame-index', String(frameIndex));
+    group.setAttribute('data-caption-lines', String(captionLines[frameIndex].length));
     group.setAttribute('transform', `translate(${x} ${margin})`);
     const panel = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
     Object.entries({x:'0', y:'0', width:String(panelW), height:String(panelH), rx:'6', fill:'#fffaf0', stroke:'#cabf9f'})
@@ -191,7 +226,7 @@ function monitoringFilmstrip(drawer, doc, code, index, side, visual) {
     const step = frame.step == null ? frameIndex + 1 : frame.step;
     svgText(group, 14, frameH+34, `Step ${step}: ${frame.verb || 'frame'}`, {
       'font-family':'Georgia, Times New Roman, serif', 'font-size':'14', 'font-weight':'700', fill:'#1b1810'});
-    svgText(group, 14, frameH+56, frame.caption || '', {
+    svgTextLines(group, 14, frameH+56, captionLines[frameIndex], 15, {
       'font-family':'system-ui, sans-serif', 'font-size':'12', fill:'#4d4638'});
     svg.appendChild(group);
   });
