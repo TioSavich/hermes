@@ -19,15 +19,8 @@
 %   Inspectable witness for one concept row in the closed-world finite
 %   measurement concept table.
 measurement_concept_witness(ConceptId, Witness) :-
-    measurement_concept_fact(ConceptId, Name, Topic, GradeBands),
-    measurement_concept_tier_fact(ConceptId,
-                                  Tier,
-                                  Sources,
-                                  SourceNote),
-    maplist(measurement_source_witness, Sources, SourceWitnesses),
-    Witness = _{ kind: geometry_measurement_concept,
-                 scope: closed_world_finite_measurement_concept_table,
-                 concept: ConceptId,
+    witness_dict:witness_dict(geometry_measurement_concept, closed_world_finite_measurement_concept_table,
+                              _{concept: ConceptId,
                  name: Name,
                  topic: Topic,
                  grade_bands: GradeBands,
@@ -36,7 +29,14 @@ measurement_concept_witness(ConceptId, Witness) :-
                  source_witnesses: SourceWitnesses,
                  source_note: SourceNote,
                  boundary: finite_measurement_concept_table_not_general_measurement_theory,
-                 fact: geom_concept(ConceptId, Name, Topic, GradeBands) }.
+                 fact: geom_concept(ConceptId, Name, Topic, GradeBands) }, WitnessDict28),
+    measurement_concept_fact(ConceptId, Name, Topic, GradeBands),
+    measurement_concept_tier_fact(ConceptId,
+                                  Tier,
+                                  Sources,
+                                  SourceNote),
+    maplist(measurement_source_witness, Sources, SourceWitnesses),
+    Witness = WitnessDict28.
 
 measurement_concept_fact(ConceptId, Name, Topic, GradeBands) :-
     Clause = geom_concept(ConceptId, Name, Topic, GradeBands),
@@ -55,20 +55,8 @@ measurement_concept_tier_fact(ConceptId, Tier, Sources, SourceNote) :-
 %   Inspectable witness for one misconception row in the closed-world finite
 %   measurement misconception table.
 measurement_misconception_witness(Id, Witness) :-
-    measurement_misconception_fact(Id,
-                                   Concept,
-                                   Name,
-                                   Triggers,
-                                   Repair,
-                                   Citation),
-    measurement_misconception_tier_fact(Id,
-                                        Tier,
-                                        Sources,
-                                        SourceNote),
-    maplist(measurement_source_witness, Sources, SourceWitnesses),
-    Witness = _{ kind: geometry_measurement_misconception,
-                 scope: closed_world_finite_measurement_misconception_table,
-                 id: Id,
+    witness_dict:witness_dict(geometry_measurement_misconception, closed_world_finite_measurement_misconception_table,
+                              _{id: Id,
                  concept: Concept,
                  name: Name,
                  triggers: Triggers,
@@ -84,7 +72,19 @@ measurement_misconception_witness(Id, Witness) :-
                                           Name,
                                           Triggers,
                                           Repair,
-                                          Citation) }.
+                                          Citation) }, WitnessDict69),
+    measurement_misconception_fact(Id,
+                                   Concept,
+                                   Name,
+                                   Triggers,
+                                   Repair,
+                                   Citation),
+    measurement_misconception_tier_fact(Id,
+                                        Tier,
+                                        Sources,
+                                        SourceNote),
+    maplist(measurement_source_witness, Sources, SourceWitnesses),
+    Witness = WitnessDict69.
 
 measurement_misconception_fact(Id, Concept, Name, Triggers, Repair, Citation) :-
     Clause = geom_misconception(Id, Concept, Name, Triggers, Repair, Citation),

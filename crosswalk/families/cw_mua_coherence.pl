@@ -46,6 +46,7 @@
 :- module(cw_mua_coherence,
           [ mua_coherence_unified/4,   % mua_coherence_unified(?Subject, ?Input, -Score, -Source)
             mua_coherence_witness/5,   % mua_coherence_witness(?Subject, ?Input, -Score, ?Source, -Witness)
+            mua_coherence_source_witness/5,
             canonical_concept/2,       % canonical_concept(LegacyFunctor, Canonical)
             vocabulary_source/2        % vocabulary_source(Canonical, ListOfLegacyFunctors)
           ]).
@@ -76,16 +77,16 @@ mua_coherence_unified(axiom_batch, ClauseStrings, Score, pml_axiom_batch) :-
 %  every possible coherence relation; it records which loaded scorer accepted
 %  the concrete input and the exact evidence that produced the integer score.
 mua_coherence_witness(Subject, Input, Score, Source,
-                      _{ kind: mua_coherence_crosswalk,
-                         scope: closed_world_finite_loaded_mua_coherence_sources,
-                         source: Source,
+                      WitnessDict79) :-
+    witness_dict:witness_dict(mua_coherence_crosswalk, closed_world_finite_loaded_mua_coherence_sources,
+                              _{source: Source,
                          legacy_functor: LegacyFunctor,
                          subject: Subject,
                          input_scope: InputScope,
                          score: Score,
                          score_meaning: ScoreMeaning,
                          derivation: Derivation,
-                         source_witness: SourceWitness }) :-
+                         source_witness: SourceWitness }, WitnessDict79),
     mua_coherence_source(Source, LegacyFunctor),
     source_mua_coherence_witness(Source,
                                  Subject,
@@ -95,6 +96,17 @@ mua_coherence_witness(Subject, Input, Score, Source,
                                  ScoreMeaning,
                                  Derivation,
                                  SourceWitness).
+
+
+%! mua_coherence_source_witness(?Subject, ?Input, -Score, ?Source,
+%!                              -SourceWitness) is nondet.
+%
+%  Project the source-owned witness from the canonical union witness.  Public
+%  routes that need the historical source shape still execute the one union
+%  predicate and then select its source evidence.
+mua_coherence_source_witness(Subject, Input, Score, Source, SourceWitness) :-
+    mua_coherence_witness(Subject, Input, Score, Source, Witness),
+    get_dict(source_witness, Witness, SourceWitness).
 
 
 mua_coherence_source(pml_vocabulary,

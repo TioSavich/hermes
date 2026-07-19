@@ -64,16 +64,16 @@ domain_context_unified(_Domain, Context, domain_context) :-
 %  `learner/axioms_domains.pl`; it does not call `set_domain/1`, which mutates
 %  the dynamic domain state.
 domain_context_witness(Domain, Context, Source,
-                       _{ kind: domain_context_crosswalk,
-                          scope: closed_world_finite_loaded_domain_state,
-                          source: Source,
+                       WitnessDict67) :-
+    witness_dict:witness_dict(domain_context_crosswalk, closed_world_finite_loaded_domain_state,
+                              _{source: Source,
                           legacy_functor: LegacyFunctor,
                           domain: Domain,
                           context: Context,
                           value_shape: ValueShape,
                           derivation: Derivation,
                           setter_policy: set_domain_excluded_mutates_dynamic_state,
-                          source_witness: SourceWitness }) :-
+                          source_witness: SourceWitness }, WitnessDict67),
     source_domain_context_witness(Source,
                                   Domain,
                                   Context,

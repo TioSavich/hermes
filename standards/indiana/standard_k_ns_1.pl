@@ -245,16 +245,16 @@ count_on_(Current, Remaining, Acc, Trace) :-
 %   explicit. stored_trace/4 remains the dynamic backing relation because
 %   reset_traces/0 and the counting automata mutate it deliberately.
 stored_trace_witness(From, To, Direction, Trace,
-                     _{ kind: standard_k_ns_1_stored_trace,
-                        scope: closed_world_finite_standard_k_ns_1_trace_store,
-                        standard: in_k_ns_1,
+                     WitnessDict248) :-
+    witness_dict:witness_dict(standard_k_ns_1_stored_trace, closed_world_finite_standard_k_ns_1_trace_store,
+                              _{standard: in_k_ns_1,
                         direction: Direction,
                         from: From,
                         to: To,
                         trace: Trace,
                         trace_length: TraceLength,
                         derivation: asserted_by_counting_automaton,
-                        source_predicate: stored_trace/4 }) :-
+                        source_predicate: stored_trace/4 }, WitnessDict248),
     stored_trace(From, To, Direction, Trace),
     length(Trace, TraceLength).
 
@@ -265,9 +265,9 @@ counting_trace_witness(Operation,
                        Direction,
                        Projection,
                        Trace,
-                       _{ kind: standard_k_ns_1_counting_trace,
-                          scope: closed_world_finite_standard_k_ns_1_counting_automata,
-                          standard: in_k_ns_1,
+                       WitnessDict268) :-
+    witness_dict:witness_dict(standard_k_ns_1_counting_trace, closed_world_finite_standard_k_ns_1_counting_automata,
+                              _{standard: in_k_ns_1,
                           operation: Operation,
                           source_predicate: Predicate,
                           inputs: Inputs,
@@ -282,7 +282,7 @@ counting_trace_witness(Operation,
                           storage_witness: _{ kind: standard_k_ns_1_storage_effect,
                                               predicate: stored_trace/4,
                                               direction: Direction,
-                                              trace_length: TraceLength } }) :-
+                                              trace_length: TraceLength } }, WitnessDict268),
     length(Trace, TraceLength),
     maplist(trace_state_length, Trace, StateLengths).
 

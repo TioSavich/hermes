@@ -8,11 +8,8 @@
 %   the closed-world finite Grade 5 table. These rows do not carry local tier
 %   facts, so the witness states the existing query default explicitly.
 im_grade5_standard_anchor_witness(ConceptId, Framework, Code, Witness) :-
-    im_grade5_standard_anchor_fact(ConceptId, Framework, Code, Statement),
-    im_grade5_standard_concept_evidence(ConceptId, ConceptEvidence),
-    Witness = _{ kind: im_grade5_standard_anchor,
-                 scope: closed_world_finite_im_grade5_standard_anchor_table,
-                 concept: ConceptId,
+    witness_dict:witness_dict(im_grade5_standard_anchor, closed_world_finite_im_grade5_standard_anchor_table,
+                              _{concept: ConceptId,
                  framework: Framework,
                  code: Code,
                  statement: Statement,
@@ -21,7 +18,10 @@ im_grade5_standard_anchor_witness(ConceptId, Framework, Code, Witness) :-
                  concept_boundary: loaded_geometry_concept_record,
                  concept_evidence: ConceptEvidence,
                  boundary: finite_im_grade5_standard_anchor_table_not_general_alignment_model,
-                 fact: standard_anchor(ConceptId, Framework, Code, Statement) }.
+                 fact: standard_anchor(ConceptId, Framework, Code, Statement) }, WitnessDict13),
+    im_grade5_standard_anchor_fact(ConceptId, Framework, Code, Statement),
+    im_grade5_standard_concept_evidence(ConceptId, ConceptEvidence),
+    Witness = WitnessDict13.
 
 im_grade5_standard_anchor_fact(ConceptId, Framework, Code, Statement) :-
     Clause = standard_anchor(ConceptId, Framework, Code, Statement),

@@ -81,15 +81,15 @@ modal_context_unified(Term, Context, pml_modality) :-
 %  accepted this concrete modal term and how the compressive/expansive context
 %  was derived.
 modal_context_witness(Term, Context, Source,
-                      _{ kind: modal_context,
-                         scope: closed_world_finite_loaded_modal_sources,
-                         source: Source,
+                      WitnessDict84) :-
+    witness_dict:witness_dict(modal_context, closed_world_finite_loaded_modal_sources,
+                              _{source: Source,
                          legacy_functor: LegacyFunctor,
                          term: Term,
                          context: Context,
                          polarity: Polarity,
                          shape: Shape,
-                         derivation: Derivation }) :-
+                         derivation: Derivation }, WitnessDict84),
     modal_context_source(Source, LegacyFunctor),
     source_modal_context_witness(Source, Term, Context, Polarity, Shape, Derivation).
 

@@ -92,15 +92,8 @@ make_ten(Ones, TenGroup) :-
 %   The witness records whether the supplied value is exactly ten or more than
 %   ten and exposes the grounded subtraction/equality used.
 make_ten_witness(Ones, ten_group(TenRec, RemainderRec), Witness) :-
-    incur_cost(inference),
-    integer_to_recollection(10, TenRec),
-    make_ten_case(Ones, TenRec, RemainderRec, GroupingCase, Relation),
-    recollection_to_integer(Ones, OnesValue),
-    recollection_to_integer(RemainderRec, RemainderValue),
-    range_status_for_value(OnesValue, RangeStatus),
-    Witness = _{ kind: standard_k_ns_7_make_ten,
-                 scope: closed_world_finite_one_ten_group,
-                 standard: in_k_ns_7,
+    witness_dict:witness_dict(standard_k_ns_7_make_ten, closed_world_finite_one_ten_group,
+                              _{standard: in_k_ns_7,
                  source_predicate: make_ten/2,
                  ones: Ones,
                  ones_value: OnesValue,
@@ -112,7 +105,14 @@ make_ten_witness(Ones, ten_group(TenRec, RemainderRec), Witness) :-
                  range_status: RangeStatus,
                  relation: Relation,
                  derivation: ground_one_group_of_ten_and_remainder,
-                 boundary: supplied_finite_recollection_checked_against_one_ten_group }.
+                 boundary: supplied_finite_recollection_checked_against_one_ten_group }, WitnessDict101),
+    incur_cost(inference),
+    integer_to_recollection(10, TenRec),
+    make_ten_case(Ones, TenRec, RemainderRec, GroupingCase, Relation),
+    recollection_to_integer(Ones, OnesValue),
+    recollection_to_integer(RemainderRec, RemainderValue),
+    range_status_for_value(OnesValue, RangeStatus),
+    Witness = WitnessDict101.
 
 
 % ============================================================
@@ -139,6 +139,21 @@ decompose_teen(Number, TensCount, OnesCount) :-
 %   place-value form. Under-ten values are retained as compatibility behavior
 %   and recorded as zero tens plus all ones.
 decompose_teen_witness(Number, TensCount, OnesCount, Witness) :-
+    witness_dict:witness_dict(standard_k_ns_7_decompose_place_value, closed_world_finite_one_ten_group,
+                              _{standard: in_k_ns_7,
+                 source_predicate: decompose_teen/3,
+                 number: Number,
+                 number_value: NumberValue,
+                 tens: TensCount,
+                 tens_value: TensValue,
+                 ones: OnesCount,
+                 ones_value: OnesValue,
+                 decomposition_case: DecompositionCase,
+                 range_status: RangeStatus,
+                 relation: Relation,
+                 derivation: one_ten_group_plus_leftover_ones,
+                 boundary: k_ns_7_one_ten_group_projection_for_supplied_recollection,
+                 ten_group_witness: TenGroupWitness }, WitnessDict155),
     incur_cost(inference),
     integer_to_recollection(10, Ten),
     decompose_case(Number,
@@ -152,22 +167,7 @@ decompose_teen_witness(Number, TensCount, OnesCount, Witness) :-
     recollection_to_integer(TensCount, TensValue),
     recollection_to_integer(OnesCount, OnesValue),
     range_status_for_value(NumberValue, RangeStatus),
-    Witness = _{ kind: standard_k_ns_7_decompose_place_value,
-                 scope: closed_world_finite_one_ten_group,
-                 standard: in_k_ns_7,
-                 source_predicate: decompose_teen/3,
-                 number: Number,
-                 number_value: NumberValue,
-                 tens: TensCount,
-                 tens_value: TensValue,
-                 ones: OnesCount,
-                 ones_value: OnesValue,
-                 decomposition_case: DecompositionCase,
-                 range_status: RangeStatus,
-                 relation: Relation,
-                 derivation: one_ten_group_plus_leftover_ones,
-                 boundary: k_ns_7_one_ten_group_projection_for_supplied_recollection,
-                 ten_group_witness: TenGroupWitness }.
+    Witness = WitnessDict155.
 
 
 % ============================================================
@@ -190,6 +190,20 @@ compose_teen(TensCount, OnesCount, Number) :-
 %   recollection. In this kindergarten surface, `TensCount` is interpreted as
 %   zero tens versus one ten group, preserving the previous public behavior.
 compose_teen_witness(TensCount, OnesCount, Number, Witness) :-
+    witness_dict:witness_dict(standard_k_ns_7_compose_place_value, closed_world_finite_one_ten_group,
+                              _{standard: in_k_ns_7,
+                 source_predicate: compose_teen/3,
+                 tens: TensCount,
+                 tens_value: TensValue,
+                 ones: OnesCount,
+                 ones_value: OnesValue,
+                 number: Number,
+                 number_value: NumberValue,
+                 composition_case: CompositionCase,
+                 range_status: RangeStatus,
+                 relation: Relation,
+                 derivation: compose_zero_or_one_ten_group_with_ones,
+                 boundary: k_ns_7_interprets_nonzero_tens_as_one_ten_group }, WitnessDict207),
     incur_cost(inference),
     integer_to_recollection(10, Ten),
     zero(Zero),
@@ -204,21 +218,7 @@ compose_teen_witness(TensCount, OnesCount, Number, Witness) :-
     recollection_to_integer(OnesCount, OnesValue),
     recollection_to_integer(Number, NumberValue),
     range_status_for_value(NumberValue, RangeStatus),
-    Witness = _{ kind: standard_k_ns_7_compose_place_value,
-                 scope: closed_world_finite_one_ten_group,
-                 standard: in_k_ns_7,
-                 source_predicate: compose_teen/3,
-                 tens: TensCount,
-                 tens_value: TensValue,
-                 ones: OnesCount,
-                 ones_value: OnesValue,
-                 number: Number,
-                 number_value: NumberValue,
-                 composition_case: CompositionCase,
-                 range_status: RangeStatus,
-                 relation: Relation,
-                 derivation: compose_zero_or_one_ten_group_with_ones,
-                 boundary: k_ns_7_interprets_nonzero_tens_as_one_ten_group }.
+    Witness = WitnessDict207.
 
 
 % ============================================================
@@ -241,14 +241,8 @@ describe_place_value(Number, Description) :-
 %   Produce the readable `place_value(Tens, Ones)` description together with
 %   the decomposition proof that justifies it.
 describe_place_value_witness(Number, place_value(TensInt, OnesInt), Witness) :-
-    decompose_teen_witness(Number, TensCount, OnesCount, DecomposeWitness),
-    recollection_to_integer(TensCount, TensInt),
-    recollection_to_integer(OnesCount, OnesInt),
-    recollection_to_integer(Number, NumberValue),
-    get_dict(range_status, DecomposeWitness, RangeStatus),
-    Witness = _{ kind: standard_k_ns_7_place_value_description,
-                 scope: closed_world_finite_one_ten_group,
-                 standard: in_k_ns_7,
+    witness_dict:witness_dict(standard_k_ns_7_place_value_description, closed_world_finite_one_ten_group,
+                              _{standard: in_k_ns_7,
                  source_predicate: describe_place_value/2,
                  number: Number,
                  number_value: NumberValue,
@@ -258,7 +252,13 @@ describe_place_value_witness(Number, place_value(TensInt, OnesInt), Witness) :-
                  range_status: RangeStatus,
                  derivation: decompose_then_render_tens_and_ones,
                  boundary: readable_projection_of_k_ns_7_one_ten_group_decomposition,
-                 decompose_witness: DecomposeWitness }.
+                 decompose_witness: DecomposeWitness }, WitnessDict249),
+    decompose_teen_witness(Number, TensCount, OnesCount, DecomposeWitness),
+    recollection_to_integer(TensCount, TensInt),
+    recollection_to_integer(OnesCount, OnesInt),
+    recollection_to_integer(Number, NumberValue),
+    get_dict(range_status, DecomposeWitness, RangeStatus),
+    Witness = WitnessDict249.
 
 make_ten_case(Ones, TenRec, RemainderRec, more_than_ten, smaller_than(TenRec, Ones)) :-
     smaller_than(TenRec, Ones),
@@ -273,11 +273,11 @@ decompose_case(Number,
                OnesCount,
                zero_tens,
                smaller_than(Number, Ten),
-               _{ kind: standard_k_ns_7_no_ten_group,
-                  scope: closed_world_finite_under_ten_recollection,
-                  number: Number,
+               WitnessDict276) :-
+    witness_dict:witness_dict(standard_k_ns_7_no_ten_group, closed_world_finite_under_ten_recollection,
+                              _{number: Number,
                   ten: Ten,
-                  derivation: supplied_number_is_less_than_one_ten }) :-
+                  derivation: supplied_number_is_less_than_one_ten }, WitnessDict276),
     smaller_than(Number, Ten),
     zero(TensCount),
     OnesCount = Number.

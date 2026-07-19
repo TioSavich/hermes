@@ -83,14 +83,14 @@ stress_map_unified(Signature, Count, reflective_monitor) :-
 %  learner disequilibrium; it records that a concrete stress entry is present in
 %  one loaded source map at query time.
 stress_map_witness(Signature, Count, Source,
-                   _{ kind: stress_map_entry,
-                      scope: closed_world_finite_loaded_stress_map_snapshot,
-                      source: Source,
+                   WitnessDict86) :-
+    witness_dict:witness_dict(stress_map_entry, closed_world_finite_loaded_stress_map_snapshot,
+                              _{source: Source,
                       legacy_functor: LegacyFunctor,
                       signature: Signature,
                       count: Count,
                       derivation: map_snapshot_membership,
-                      source_witness: SourceWitness }) :-
+                      source_witness: SourceWitness }, WitnessDict86),
     stress_map_source(Source, LegacyFunctor),
     source_stress_map_witness(Source, Signature, Count, SourceWitness).
 

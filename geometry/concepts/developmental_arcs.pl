@@ -35,9 +35,9 @@
 %   the concept record, tier source, developmental marker, and material claim
 %   together without treating the arc as a universal learning law.
 developmental_arc_witness(ArcId,
-    _{ kind: developmental_arc,
-       scope: closed_world_finite_developmental_arc_table,
-       id: ArcId,
+    WitnessDict38) :-
+    witness_dict:witness_dict(developmental_arc, closed_world_finite_developmental_arc_table,
+                              _{id: ArcId,
        description: Description,
        topic: Topic,
        grades: Grades,
@@ -47,21 +47,21 @@ developmental_arc_witness(ArcId,
        boundary: finite_developmental_arc_not_universal_learning_law,
        concept_fact: geom_concept(ArcId, Description, Topic, Grades),
        marker_witness: MarkerWitness,
-       material_witness: MaterialWitness }) :-
+       material_witness: MaterialWitness }, WitnessDict38),
     geom_concept(ArcId, Description, Topic, Grades),
     tier(ref(concept, ArcId), Tier, Sources, SourceNote),
     developmental_marker_witness(ArcId, MarkerWitness),
     developmental_arc_material_witness(ArcId, MaterialWitness).
 
 developmental_marker_witness(ArcId,
-    _{ kind: developmental_marker,
-       scope: closed_world_finite_developmental_arc_table,
-       id: ArcId,
+    WitnessDict57) :-
+    witness_dict:witness_dict(developmental_marker, closed_world_finite_developmental_arc_table,
+                              _{id: ArcId,
        from_stance: FromStance,
        to_stance: ToStance,
        evidence: Evidence,
        evidence_witnesses: EvidenceWitnesses,
-       fact: developmental_marker(ArcId, FromStance, ToStance, Evidence) }) :-
+       fact: developmental_marker(ArcId, FromStance, ToStance, Evidence) }, WitnessDict57),
     developmental_marker(ArcId, FromStance, ToStance, Evidence),
     maplist(developmental_evidence_witness, Evidence, EvidenceWitnesses).
 
@@ -87,13 +87,13 @@ developmental_evidence_witness(Text,
 %   Inspectable proof object for the finite material-inference claim attached
 %   to a developmental arc.
 developmental_arc_material_witness(ArcId,
-    _{ kind: developmental_arc_material_inference,
-       scope: closed_world_finite_developmental_arc_table,
-       id: ArcId,
+    WitnessDict90) :-
+    witness_dict:witness_dict(developmental_arc_material_inference, closed_world_finite_developmental_arc_table,
+                              _{id: ArcId,
        premise: Premise,
        conclusion: Conclusion,
        polarity: Polarity,
-       fact: material_inference(ArcId, Premise, Conclusion, Polarity) }) :-
+       fact: material_inference(ArcId, Premise, Conclusion, Polarity) }, WitnessDict90),
     material_inference(ArcId, Premise, Conclusion, Polarity).
 
 % =====================================================================

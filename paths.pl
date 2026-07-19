@@ -49,6 +49,10 @@
           ;  asserta(user:file_search_path(Alias, Spec))
           )).
 
+% Shared witness construction is foundational for crosswalk, geometry, and
+% standards modules, including isolated module loads through this path setup.
+:- use_module(formalization(witness_dict), []).
+
 % Public figure corpus entrypoint used by representation/gallery checks.
 :- use_module(lessons('im/docling_figures_interpreted'),
               [ docling_figure_rich/8 ]).

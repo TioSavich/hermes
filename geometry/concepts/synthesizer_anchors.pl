@@ -35,19 +35,8 @@
 %   Inspectable witness for finite material/LX claims introduced by the
 %   synthesizer-anchor layer.
 synthesizer_anchor_material_witness(Id, Witness) :-
-    synthesizer_anchor_material_claim(Id,
-                                      Concept,
-                                      Premise,
-                                      Conclusion,
-                                      Polarity),
-    synthesizer_anchor_concept_evidence(Concept,
-                                        ConceptBoundary,
-                                        ConceptEvidence),
-    synthesizer_anchor_condition_roles(Id, Roles),
-    synthesizer_anchor_lx_support(Id, Support),
-    Witness = _{ kind: geometry_synthesizer_anchor_material_inference,
-                 scope: closed_world_finite_synthesizer_anchor_material_table,
-                 id: Id,
+    witness_dict:witness_dict(geometry_synthesizer_anchor_material_inference, closed_world_finite_synthesizer_anchor_material_table,
+                              _{id: Id,
                  concept: Concept,
                  premise: Premise,
                  conclusion: Conclusion,
@@ -60,7 +49,18 @@ synthesizer_anchor_material_witness(Id, Witness) :-
                  fact: material_inference(Concept,
                                           Premise,
                                           Conclusion,
-                                          Polarity) }.
+                                          Polarity) }, WitnessDict48),
+    synthesizer_anchor_material_claim(Id,
+                                      Concept,
+                                      Premise,
+                                      Conclusion,
+                                      Polarity),
+    synthesizer_anchor_concept_evidence(Concept,
+                                        ConceptBoundary,
+                                        ConceptEvidence),
+    synthesizer_anchor_condition_roles(Id, Roles),
+    synthesizer_anchor_lx_support(Id, Support),
+    Witness = WitnessDict48.
 
 synthesizer_anchor_concept_evidence(Concept,
                                    loaded_geometry_concept_record,

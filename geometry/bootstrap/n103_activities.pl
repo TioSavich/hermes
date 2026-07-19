@@ -11,12 +11,8 @@
 %   activity table. This proves local table membership and tier evidence; it is
 %   not a general instructional-activity model.
 n103_bootstrap_witness(Id, Witness) :-
-    n103_bootstrap_fact(Id, Concept, Kind, Prompt, Tools, Transition),
-    n103_bootstrap_tier_fact(Id, Tier, Sources, SourceNote),
-    maplist(n103_source_witness, Sources, SourceWitnesses),
-    Witness = _{ kind: geometry_n103_bootstrap_activity,
-                 scope: closed_world_finite_n103_bootstrap_table,
-                 id: Id,
+    witness_dict:witness_dict(geometry_n103_bootstrap_activity, closed_world_finite_n103_bootstrap_table,
+                              _{id: Id,
                  concept: Concept,
                  kind_of_record: Kind,
                  prompt: Prompt,
@@ -27,7 +23,11 @@ n103_bootstrap_witness(Id, Witness) :-
                  source_witnesses: SourceWitnesses,
                  source_note: SourceNote,
                  boundary: finite_n103_bootstrap_table_not_general_activity_model,
-                 fact: bootstrap(Id, Concept, Kind, Prompt, Tools, Transition) }.
+                 fact: bootstrap(Id, Concept, Kind, Prompt, Tools, Transition) }, WitnessDict17),
+    n103_bootstrap_fact(Id, Concept, Kind, Prompt, Tools, Transition),
+    n103_bootstrap_tier_fact(Id, Tier, Sources, SourceNote),
+    maplist(n103_source_witness, Sources, SourceWitnesses),
+    Witness = WitnessDict17.
 
 n103_bootstrap_fact(Id, Concept, Kind, Prompt, Tools, Transition) :-
     Clause = bootstrap(Id, Concept, Kind, Prompt, Tools, Transition),

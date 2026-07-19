@@ -74,12 +74,12 @@ quad_rejects(square, no_right_angles).
 quad_rejects(rectangle, no_right_angles).
 
 quad_rejections_witness(Shape,
-                        _{ kind: quadrilateral_rejection_profile,
-                           scope: closed_world_finite_quadrilateral_restriction_table,
-                           shape: Shape,
+                        WitnessDict77) :-
+    witness_dict:witness_dict(quadrilateral_rejection_profile, closed_world_finite_quadrilateral_restriction_table,
+                              _{shape: Shape,
                            label: Label,
                            rejections: Restrictions,
-                           rejected_restriction_witnesses: RejectionWitnesses }) :-
+                           rejected_restriction_witnesses: RejectionWitnesses }, WitnessDict77),
     quad_shape(Shape),
     quad_shape(Shape, Label),
     findall(R, quad_rejects(Shape, R), Raw),
@@ -97,11 +97,11 @@ quad_rejections_witness(Shape,
 
 quad_strength_witness(Shape,
                       Strength,
-                      _{ kind: quadrilateral_strength,
-                         scope: closed_world_finite_quadrilateral_restriction_table,
-                         shape: Shape,
+                      WitnessDict100) :-
+    witness_dict:witness_dict(quadrilateral_strength, closed_world_finite_quadrilateral_restriction_table,
+                              _{shape: Shape,
                          strength: Strength,
-                         rejections_witness: RejectionsWitness }) :-
+                         rejections_witness: RejectionsWitness }, WitnessDict100),
     quad_rejections_witness(Shape, RejectionsWitness),
     get_dict(rejections, RejectionsWitness, Restrictions),
     length(Restrictions, Strength).
@@ -110,6 +110,16 @@ quad_entails(P, Q) :-
     quad_entails_witness(P, Q, _).
 
 quad_entails_witness(P, Q, Witness) :-
+    witness_dict:witness_dict(quadrilateral_entailment, closed_world_finite_quadrilateral_restriction_table,
+                              _{entailer: P,
+                 entailed: Q,
+                 reason: Reason,
+                 required_rejections: Required,
+                 proving_rejections: Proving,
+                 missing_rejections: Missing,
+                 extra_rejections: Extra,
+                 entailer_witness: ProvingWitness,
+                 entailed_witness: RequiredWitness }, WitnessDict132),
     quad_shape(P),
     quad_shape(Q),
     quad_rejections_witness(P, ProvingWitness),
@@ -129,30 +139,20 @@ quad_entails_witness(P, Q, Witness) :-
         Missing = [],
         ord_subtract(Proving, Required, Extra)
     ),
-    Witness = _{ kind: quadrilateral_entailment,
-                 scope: closed_world_finite_quadrilateral_restriction_table,
-                 entailer: P,
-                 entailed: Q,
-                 reason: Reason,
-                 required_rejections: Required,
-                 proving_rejections: Proving,
-                 missing_rejections: Missing,
-                 extra_rejections: Extra,
-                 entailer_witness: ProvingWitness,
-                 entailed_witness: RequiredWitness }.
+    Witness = WitnessDict132.
 
 quad_non_entailment_witness(P,
                             Q,
-                            _{ kind: quadrilateral_non_entailment,
-                               scope: closed_world_finite_quadrilateral_restriction_table,
-                               candidate_entailer: P,
+                            WitnessDict146) :-
+    witness_dict:witness_dict(quadrilateral_non_entailment, closed_world_finite_quadrilateral_restriction_table,
+                              _{candidate_entailer: P,
                                candidate_entailed: Q,
                                relation: Relation,
                                required_rejections: Required,
                                proving_rejections: Proving,
                                missing_rejections: Missing,
                                candidate_entailer_witness: ProvingWitness,
-                               candidate_entailed_witness: RequiredWitness }) :-
+                               candidate_entailed_witness: RequiredWitness }, WitnessDict146),
     quad_shape(P),
     quad_shape(Q),
     quad_rejections_witness(P, ProvingWitness),
@@ -172,15 +172,15 @@ quad_incompatible_with(Shape, Restriction) :-
 
 quad_incompatible_with_witness(Shape,
                                Restriction,
-                               _{ kind: quadrilateral_incompatibility,
-                                  scope: closed_world_finite_quadrilateral_restriction_table,
-                                  shape: Shape,
+                               WitnessDict175) :-
+    witness_dict:witness_dict(quadrilateral_incompatibility, closed_world_finite_quadrilateral_restriction_table,
+                              _{shape: Shape,
                                   restriction: Restriction,
                                   restriction_label: RestrictionLabel,
                                   reason: shape_rejects_restriction,
                                   shape_rejections: Rejections,
                                   shape_witness: ShapeWitness,
-                                  fact: quad_rejects(Shape, Restriction) }) :-
+                                  fact: quad_rejects(Shape, Restriction) }, WitnessDict175),
     quad_shape(Shape),
     quad_restriction(Restriction, RestrictionLabel),
     quad_rejects(Shape, Restriction),
@@ -190,13 +190,13 @@ quad_incompatible_with_witness(Shape,
 quad_inference_witness(P,
                        Q,
                        inference(P, Q, entitled, Detail),
-                       _{ kind: quadrilateral_inference,
-                          scope: closed_world_finite_quadrilateral_restriction_table,
-                          status: entitled,
+                       WitnessDict193) :-
+    witness_dict:witness_dict(quadrilateral_inference, closed_world_finite_quadrilateral_restriction_table,
+                              _{status: entitled,
                           entailer: P,
                           entailed: Q,
                           detail: Detail,
-                          entailment_witness: EntailmentWitness }) :-
+                          entailment_witness: EntailmentWitness }, WitnessDict193),
     quad_entails_witness(P, Q, EntailmentWitness),
     quad_strength_witness(P, SP, _),
     quad_strength_witness(Q, SQ, _),
@@ -212,13 +212,13 @@ quad_inference_witness(P,
 quad_inference_witness(P,
                        Q,
                        inference(P, Q, not_entitled, Detail),
-                       _{ kind: quadrilateral_inference,
-                          scope: closed_world_finite_quadrilateral_restriction_table,
-                          status: not_entitled,
+                       WitnessDict215) :-
+    witness_dict:witness_dict(quadrilateral_inference, closed_world_finite_quadrilateral_restriction_table,
+                              _{status: not_entitled,
                           candidate_entailer: P,
                           candidate_entailed: Q,
                           detail: Detail,
-                          entailment_failure_witness: FailureWitness }) :-
+                          entailment_failure_witness: FailureWitness }, WitnessDict215),
     quad_non_entailment_witness(P, Q, FailureWitness),
     quad_strength_witness(P, SP, _),
     quad_strength_witness(Q, SQ, _),

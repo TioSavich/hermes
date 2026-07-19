@@ -15,18 +15,8 @@
 %
 %   Inspectable proof object for a finite volume/surface-area material row.
 volume_surface_area_material_claim_witness(Id, Witness) :-
-    volume_surface_area_material_claim(Id, Concept, Premise, Conclusion, Polarity),
-    volume_surface_area_concept_tier_evidence(Concept,
-                                              ConceptTierBoundary,
-                                              ConceptTierEvidence),
-    volume_surface_area_related_misconception_witnesses(
-        Concept,
-        MisconceptionWitnesses
-    ),
-    volume_surface_area_condition_roles(Id, Roles),
-    Witness = _{ kind: geometry_volume_surface_area_material_inference,
-                 scope: closed_world_finite_volume_surface_area_table,
-                 id: Id,
+    witness_dict:witness_dict(geometry_volume_surface_area_material_inference, closed_world_finite_volume_surface_area_table,
+                              _{id: Id,
                  concept: Concept,
                  premise: Premise,
                  conclusion: Conclusion,
@@ -36,7 +26,17 @@ volume_surface_area_material_claim_witness(Id, Witness) :-
                  boundary: finite_volume_surface_area_curriculum_claim_not_general_solid_geometry,
                  condition_roles: Roles,
                  related_misconception_witnesses: MisconceptionWitnesses,
-                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }.
+                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }, WitnessDict27),
+    volume_surface_area_material_claim(Id, Concept, Premise, Conclusion, Polarity),
+    volume_surface_area_concept_tier_evidence(Concept,
+                                              ConceptTierBoundary,
+                                              ConceptTierEvidence),
+    volume_surface_area_related_misconception_witnesses(
+        Concept,
+        MisconceptionWitnesses
+    ),
+    volume_surface_area_condition_roles(Id, Roles),
+    Witness = WitnessDict27.
 
 volume_surface_area_concept_tier_evidence(Concept,
                                           loaded_concept_tier_record,

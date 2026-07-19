@@ -83,14 +83,14 @@ sequent_proof_unified(Sequent, deontic_bridge) :-
 %  which loaded prover layer accepted the concrete Sequent and what proof or
 %  bounded-call evidence that layer exposes.
 sequent_proof_witness(Sequent, Source,
-                      _{ kind: sequent_proof_crosswalk,
-                         scope: closed_world_finite_loaded_sequent_sources,
-                         source: Source,
+                      WitnessDict86) :-
+    witness_dict:witness_dict(sequent_proof_crosswalk, closed_world_finite_loaded_sequent_sources,
+                              _{source: Source,
                          legacy_functor: LegacyFunctor,
                          sequent: Sequent,
                          parameters: Parameters,
                          derivation: Derivation,
-                         source_witness: SourceWitness }) :-
+                         source_witness: SourceWitness }, WitnessDict86),
     sequent_proof_source(Source, LegacyFunctor),
     source_sequent_proof_witness(Source,
                                  Sequent,

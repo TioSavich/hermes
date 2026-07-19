@@ -78,9 +78,9 @@ orr_entry_unified(Variant, PredIndicator, Role, Source) :-
 %  predicates run bounded computation, emit events, consult recovery paths, and
 %  may mutate learner state.
 orr_entry_witness(Variant, PredIndicator, Role, Source,
-                  _{ kind: orr_entry_registry_entry,
-                     scope: closed_world_finite_loaded_orr_entry_registry,
-                     variant: Variant,
+                  WitnessDict81) :-
+    witness_dict:witness_dict(orr_entry_registry_entry, closed_world_finite_loaded_orr_entry_registry,
+                              _{variant: Variant,
                      predicate: PredIndicator,
                      role: Role,
                      source: Source,
@@ -88,7 +88,7 @@ orr_entry_witness(Variant, PredIndicator, Role, Source,
                      invocation_policy: registry_only_no_orr_execution,
                      side_effect_boundary: SideEffectBoundary,
                      target_visibility: Visibility,
-                     target_witness: TargetWitness }) :-
+                     target_witness: TargetWitness }, WitnessDict81),
     registry(Variant,
              PredIndicator,
              Role,

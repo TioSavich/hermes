@@ -81,35 +81,35 @@ carving_operation_summary(Op,
 
 
 productive_experiment(add, 20, Config, correct) :-
-    Config = _{base:10,
+    Config = carving_config{base:10,
                unit_levels:2,
                unit_coords:2,
                tolerance:5,
                max_rounds:5,
                rationalize:false}.
 productive_experiment(sub, 20, Config, correct) :-
-    Config = _{base:10,
+    Config = carving_config{base:10,
                unit_levels:2,
                unit_coords:2,
                tolerance:5,
                max_rounds:5,
                rationalize:false}.
 productive_experiment(mult, 12, Config, correct) :-
-    Config = _{base:10,
+    Config = carving_config{base:10,
                unit_levels:2,
                unit_coords:2,
                tolerance:5,
                max_rounds:5,
                rationalize:false}.
 productive_experiment(div, 20, Config, correct) :-
-    Config = _{base:10,
+    Config = carving_config{base:10,
                unit_levels:2,
                unit_coords:2,
                tolerance:5,
                max_rounds:5,
                rationalize:false}.
 productive_experiment(frac, 10, Config, correct) :-
-    Config = _{base:10,
+    Config = carving_config{base:10,
                unit_levels:1,
                unit_coords:3,
                tolerance:5,

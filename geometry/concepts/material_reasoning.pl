@@ -11,9 +11,9 @@ material_concepts(Concepts) :-
     material_concepts_witness(Witness),
     get_dict(concepts, Witness, Concepts).
 
-material_concepts_witness(_{ kind: material_concepts,
-                             scope: closed_world_finite_geometry_kb,
-                             concepts: Concepts }) :-
+material_concepts_witness(WitnessDict14) :-
+    witness_dict:witness_dict(material_concepts, closed_world_finite_geometry_kb,
+                              _{concepts: Concepts }, WitnessDict14),
     findall(Concept,
             material_inference(Concept, _Premise, _Conclusion, _Polarity),
             Raw),
@@ -34,12 +34,12 @@ material_commitments(Concept, Polarity, Commitments) :-
 
 material_commitments_witness(Concept,
                              Polarity,
-                             _{ kind: material_commitments,
-                                scope: closed_world_finite_geometry_kb,
-                                concept: Concept,
+                             WitnessDict37) :-
+    witness_dict:witness_dict(material_commitments, closed_world_finite_geometry_kb,
+                              _{concept: Concept,
                                 polarity: Polarity,
                                 commitments: Commitments,
-                                supporting_inferences: SupportingInferences }) :-
+                                supporting_inferences: SupportingInferences }, WitnessDict37),
     findall(commitment(Premise, Conclusion),
             material_inference(Concept, Premise, Conclusion, Polarity),
             RawCommitments),
@@ -59,14 +59,14 @@ material_inference_strength_witness(Concept,
                                              entitled(EntitledCount),
                                              incompatible(IncompatibleCount),
                                              total(Total)),
-                                    _{ kind: material_inference_strength,
-                                       scope: closed_world_finite_geometry_kb,
-                                       concept: Concept,
+                                    WitnessDict62) :-
+    witness_dict:witness_dict(material_inference_strength, closed_world_finite_geometry_kb,
+                              _{concept: Concept,
                                        entitled_count: EntitledCount,
                                        incompatible_count: IncompatibleCount,
                                        total: Total,
                                        entitled_witness: EntitledWitness,
-                                       incompatible_witness: IncompatibleWitness }) :-
+                                       incompatible_witness: IncompatibleWitness }, WitnessDict62),
     material_commitments_witness(Concept, entitled, EntitledWitness),
     material_commitments_witness(Concept, incompatible, IncompatibleWitness),
     get_dict(commitments, EntitledWitness, Entitled),
@@ -91,13 +91,13 @@ material_inference_profile_witness(Concept,
                                            entitled(Entitled),
                                            incompatible(Incompatible),
                                            boundaries(Boundaries)),
-                                   _{ kind: material_inference_profile,
-                                      scope: closed_world_finite_geometry_kb,
-                                      concept: Concept,
+                                   WitnessDict94) :-
+    witness_dict:witness_dict(material_inference_profile, closed_world_finite_geometry_kb,
+                              _{concept: Concept,
                                       strength_witness: StrengthWitness,
                                       entitled_witness: EntitledWitness,
                                       incompatible_witness: IncompatibleWitness,
-                                      boundary_witnesses: BoundaryWitnesses }) :-
+                                      boundary_witnesses: BoundaryWitnesses }, WitnessDict94),
     material_inference_strength_witness(Concept, Strength, StrengthWitness),
     material_commitments_witness(Concept, entitled, EntitledWitness),
     material_commitments_witness(Concept, incompatible, IncompatibleWitness),
@@ -197,9 +197,9 @@ material_boundary_witness_term(EntitledConcept,
                                IncompatibleConclusion,
                                Relation,
                                RelationWitness,
-                               _{ kind: material_boundary,
-                                  scope: closed_world_finite_geometry_kb,
-                                  entitled_concept: EntitledConcept,
+                               WitnessDict200) :-
+    witness_dict:witness_dict(material_boundary, closed_world_finite_geometry_kb,
+                              _{entitled_concept: EntitledConcept,
                                   incompatible_concept: IncompatibleConcept,
                                   premise: Premise,
                                   entitled_conclusion: EntitledConclusion,
@@ -213,7 +213,7 @@ material_boundary_witness_term(EntitledConcept,
                                   incompatible_fact: material_inference(IncompatibleConcept,
                                                                         Premise,
                                                                         IncompatibleConclusion,
-                                                                        incompatible) }).
+                                                                        incompatible) }, WitnessDict200).
 
 material_boundaries_for(Concept, Boundaries) :-
     material_boundaries_for_witness(Concept, Boundaries, _).
@@ -252,21 +252,21 @@ material_boundary_summary(Summary) :-
     material_boundary_summary_witness(Summary, _).
 
 material_boundary_summary_witness(Summary,
-                                  _{ kind: material_boundary_summary,
-                                     scope: closed_world_finite_geometry_kb,
-                                     summary: Summary,
-                                     concept_witnesses: ConceptWitnesses }) :-
+                                  WitnessDict255) :-
+    witness_dict:witness_dict(material_boundary_summary, closed_world_finite_geometry_kb,
+                              _{summary: Summary,
+                                     concept_witnesses: ConceptWitnesses }, WitnessDict255),
+    witness_dict:witness_dict(material_boundary_count, closed_world_finite_geometry_kb,
+                              _{concept: Concept,
+                           boundary_count: BoundaryCount,
+                           boundary_witnesses: BoundaryWitnesses }, WitnessDict265),
     material_concepts(Concepts),
     findall(Concept-BoundaryCount-Witness,
             ( member(Concept, Concepts),
               material_boundaries_for_witness(Concept, Boundaries, BoundaryWitnesses),
               length(Boundaries, BoundaryCount),
               BoundaryCount > 0,
-              Witness = _{ kind: material_boundary_count,
-                           scope: closed_world_finite_geometry_kb,
-                           concept: Concept,
-                           boundary_count: BoundaryCount,
-                           boundary_witnesses: BoundaryWitnesses }
+              Witness = WitnessDict265
             ),
             Pairs),
     findall(Concept-BoundaryCount,

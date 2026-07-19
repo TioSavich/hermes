@@ -126,9 +126,9 @@ whole_number_addsub_claim_witness(
     Canonical,
     commitment(Lit, GlossS),
     literature_commitment,
-    _{ kind: whole_number_addsub_claim_crosswalk,
-       scope: closed_world_finite_verified_whole_number_addsub_claim_edges,
-       canonical: Canonical,
+    WitnessDict129) :-
+    witness_dict:witness_dict(whole_number_addsub_claim_crosswalk, closed_world_finite_verified_whole_number_addsub_claim_edges,
+                              _{canonical: Canonical,
        detail: commitment(Lit, GlossS),
        source: literature_commitment,
        literature_atom: Lit,
@@ -138,7 +138,7 @@ whole_number_addsub_claim_witness(
                           module: literature_vocabulary,
                           predicate: canonical_commitment/2,
                           atom: Lit,
-                          gloss: GlossS } }) :-
+                          gloss: GlossS } }, WitnessDict129),
     wn(Canonical, Lit, _, _),
     catch(literature_vocabulary:canonical_commitment(Lit, Gloss), _, fail),
     ( string(Gloss) -> GlossS = Gloss ; format(string(GlossS), "~w", [Gloss]) ).
@@ -146,15 +146,15 @@ whole_number_addsub_claim_witness(
     Canonical,
     edge(Functor),
     Functor,
-    _{ kind: whole_number_addsub_claim_crosswalk,
-       scope: closed_world_finite_verified_whole_number_addsub_claim_edges,
-       canonical: Canonical,
+    WitnessDict149) :-
+    witness_dict:witness_dict(whole_number_addsub_claim_crosswalk, closed_world_finite_verified_whole_number_addsub_claim_edges,
+                              _{canonical: Canonical,
        detail: edge(Functor),
        source: Functor,
        legacy_functor: Functor,
        projection: verified_legacy_edge,
        derivation: owner_predicate_edge_check,
-       source_witness: SourceWitness }) :-
+       source_witness: SourceWitness }, WitnessDict149),
     wn(Canonical, _, _, Edges),
     member(Functor, Edges),
     whole_number_addsub_edge_source_witness(Canonical, Functor, SourceWitness).

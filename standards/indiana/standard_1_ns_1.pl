@@ -275,73 +275,73 @@ teach_numerals_to_120 :-
 %   Extend the finite dynamic K.NS.2 naming table with generated rows from 21
 %   through 120 and return the evidence for every row asserted or already known.
 teach_numerals_to_120_witness(Witness) :-
-    findall(RowWitness,
-            teach_extended_numeral_row_witness(RowWitness),
-            RowWitnesses),
-    length(RowWitnesses, TaughtCount),
-    Witness = _{ kind: standard_1_ns_1_teach_numerals_to_120,
-                 scope: closed_world_finite_integer_name_rows_21_to_120,
-                 standard: in_1_ns_1,
+    witness_dict:witness_dict(standard_1_ns_1_teach_numerals_to_120, closed_world_finite_integer_name_rows_21_to_120,
+                              _{standard: in_1_ns_1,
                  source_predicate: teach_numerals_to_120/0,
                  first_taught: 21-'twenty-one',
                  last_taught: 120-'one hundred twenty',
                  taught_count: TaughtCount,
                  rows: RowWitnesses,
                  derivation: generate_finite_integer_name_rows_then_teacher_endorsement,
-                 boundary: finite_rows_21_through_120_generated_by_this_module }.
+                 boundary: finite_rows_21_through_120_generated_by_this_module }, WitnessDict282),
+    findall(RowWitness,
+            teach_extended_numeral_row_witness(RowWitness),
+            RowWitnesses),
+    length(RowWitnesses, TaughtCount),
+    Witness = WitnessDict282.
 
 teach_extended_numeral_row_witness(Witness) :-
-    between(21, 120, N),
-    integer_to_recollection(N, Rec),
-    make_number_word_witness(N, Word, WordWitness),
-    learn_numeral_witness(Rec, Word, LearnWitness),
-    Witness = _{ kind: standard_1_ns_1_extended_numeral_row,
-                 scope: closed_world_finite_integer_name_rows_21_to_120,
-                 integer: N,
+    witness_dict:witness_dict(standard_1_ns_1_extended_numeral_row, closed_world_finite_integer_name_rows_21_to_120,
+                              _{integer: N,
                  recollection: Rec,
                  word: Word,
                  word_witness: WordWitness,
                  learn_witness: LearnWitness,
-                 derivation: generated_number_word_then_k_ns_2_teacher_endorsement }.
+                 derivation: generated_number_word_then_k_ns_2_teacher_endorsement }, WitnessDict298),
+    between(21, 120, N),
+    integer_to_recollection(N, Rec),
+    make_number_word_witness(N, Word, WordWitness),
+    learn_numeral_witness(Rec, Word, LearnWitness),
+    Witness = WitnessDict298.
 
 %% Systematic English number word generation
 make_number_word_witness(N,
                          Word,
-                         _{ kind: standard_1_ns_1_number_word,
-                            scope: closed_world_finite_integer_name_rows_21_to_120,
-                            integer: N,
+                         WitnessDict310) :-
+    witness_dict:witness_dict(standard_1_ns_1_number_word, closed_world_finite_integer_name_rows_21_to_120,
+                              _{integer: N,
                             word: Word,
                             naming_case: one_hundred,
-                            derivation: exact_hundred_name }) :-
+                            derivation: exact_hundred_name }, WitnessDict310),
     N =:= 100,
     !,
     Word = 'one hundred'.
 make_number_word_witness(N,
                          Word,
-                         _{ kind: standard_1_ns_1_number_word,
-                            scope: closed_world_finite_integer_name_rows_21_to_120,
-                            integer: N,
+                         WitnessDict321) :-
+    witness_dict:witness_dict(standard_1_ns_1_number_word, closed_world_finite_integer_name_rows_21_to_120,
+                              _{integer: N,
                             word: Word,
                             naming_case: one_hundred_plus_ones,
                             remainder: Ones,
                             remainder_word: OnesWord,
-                            derivation: one_hundred_prefix_plus_under_twenty_row }) :-
+                            derivation: one_hundred_prefix_plus_under_twenty_row }, WitnessDict321),
     N >= 100, !,
     Ones is N - 100,
     make_number_word_witness(Ones, OnesWord, _),
     atomic_list_concat(['one hundred', OnesWord], ' ', Word).
 make_number_word_witness(N,
                          Word,
-                         _{ kind: standard_1_ns_1_number_word,
-                            scope: closed_world_finite_integer_name_rows_21_to_120,
-                            integer: N,
+                         WitnessDict335) :-
+    witness_dict:witness_dict(standard_1_ns_1_number_word, closed_world_finite_integer_name_rows_21_to_120,
+                              _{integer: N,
                             word: Word,
                             naming_case: decade_plus_ones,
                             tens_digit: Tens,
                             ones_digit: Ones,
                             decade_word: DecWord,
                             ones_word: OnesWord,
-                            derivation: decade_row_plus_hyphenated_ones_row }) :-
+                            derivation: decade_row_plus_hyphenated_ones_row }, WitnessDict335),
     N >= 20,
     Tens is N // 10,
     Ones is N mod 10,
@@ -352,13 +352,13 @@ make_number_word_witness(N,
     atomic_list_concat([DecWord, '-', OnesWord], Word).
 make_number_word_witness(N,
                          Word,
-                         _{ kind: standard_1_ns_1_number_word,
-                            scope: closed_world_finite_integer_name_rows_21_to_120,
-                            integer: N,
+                         WitnessDict355) :-
+    witness_dict:witness_dict(standard_1_ns_1_number_word, closed_world_finite_integer_name_rows_21_to_120,
+                              _{integer: N,
                             word: Word,
                             naming_case: exact_decade,
                             tens_digit: Tens,
-                            derivation: decade_word_row }) :-
+                            derivation: decade_word_row }, WitnessDict355),
     N >= 20,
     Tens is N // 10,
     Ones is N mod 10,
@@ -367,12 +367,12 @@ make_number_word_witness(N,
     decade_word(Tens, Word).
 make_number_word_witness(N,
                          Word,
-                         _{ kind: standard_1_ns_1_number_word,
-                            scope: closed_world_finite_integer_name_rows_21_to_120,
-                            integer: N,
+                         WitnessDict370) :-
+    witness_dict:witness_dict(standard_1_ns_1_number_word, closed_world_finite_integer_name_rows_21_to_120,
+                              _{integer: N,
                             word: Word,
                             naming_case: under_twenty_row,
-                            derivation: finite_ones_word_row }) :-
+                            derivation: finite_ones_word_row }, WitnessDict370),
     ones_word(N, Word).
 
 counting_trace_witness(Kind,
@@ -387,13 +387,8 @@ counting_trace_witness(Kind,
                        StepWitnesses,
                        StoredWitness,
                        Witness) :-
-    recollection_to_integer(From, FromValue),
-    recollection_to_integer(To, ToValue),
-    length(Trace, TraceLength),
-    length(StepWitnesses, StepCount),
-    Witness = _{ kind: Kind,
-                 scope: closed_world_finite_counting_to_120,
-                 standard: in_1_ns_1,
+    witness_dict:witness_dict(Kind, closed_world_finite_counting_to_120,
+                              _{standard: in_1_ns_1,
                  source_predicate: SourcePredicate,
                  from: From,
                  to: To,
@@ -409,7 +404,12 @@ counting_trace_witness(Kind,
                  derivation: finite_iterated_grounded_counting_trace,
                  boundary: supplied_recollections_and_loaded_grounded_arithmetic_relations,
                  steps: StepWitnesses,
-                 stored_trace_witness: StoredWitness }.
+                 stored_trace_witness: StoredWitness }, WitnessDict394),
+    recollection_to_integer(From, FromValue),
+    recollection_to_integer(To, ToValue),
+    length(Trace, TraceLength),
+    length(StepWitnesses, StepCount),
+    Witness = WitnessDict394.
 
 step_witness(StepKind, Relation, Current, Next,
              _{ kind: standard_1_ns_1_counting_step,
@@ -424,15 +424,15 @@ step_witness(StepKind, Relation, Current, Next,
     recollection_to_integer(Next, NextValue).
 
 stored_trace_1_witness(From, To, Direction, Trace,
-                       _{ kind: standard_1_ns_1_stored_trace,
-                          scope: closed_world_finite_counting_to_120,
-                          source_predicate: stored_trace_1/4,
+                       WitnessDict427) :-
+    witness_dict:witness_dict(standard_1_ns_1_stored_trace, closed_world_finite_counting_to_120,
+                              _{source_predicate: stored_trace_1/4,
                           from: From,
                           to: To,
                           direction: Direction,
                           trace_length: TraceLength,
                           derivation: asserted_trace_row_for_later_inspection,
-                          boundary: dynamic_trace_rows_in_standard_1_ns_1 }) :-
+                          boundary: dynamic_trace_rows_in_standard_1_ns_1 }, WitnessDict427),
     assertz(stored_trace_1(From, To, Direction, Trace)),
     length(Trace, TraceLength).
 

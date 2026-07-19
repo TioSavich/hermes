@@ -73,15 +73,15 @@ action_cluster_unified(Operation, Kind, Cluster, registry) :-
 %  and, for the registry source, which operation-specific cluster predicate the
 %  registry dispatches through.
 action_cluster_witness(Operation, Kind, Cluster, Source,
-                       _{ kind: action_cluster_crosswalk,
-                          scope: closed_world_finite_loaded_action_cluster_sources,
-                          operation: Operation,
+                       WitnessDict76) :-
+    witness_dict:witness_dict(action_cluster_crosswalk, closed_world_finite_loaded_action_cluster_sources,
+                              _{operation: Operation,
                           action_kind: Kind,
                           cluster: Cluster,
                           source: Source,
                           legacy_functor: LegacyFunctor,
                           derivation: Derivation,
-                          source_witness: SourceWitness }) :-
+                          source_witness: SourceWitness }, WitnessDict76),
     source_action_cluster_witness(Source,
                                   Operation,
                                   Kind,

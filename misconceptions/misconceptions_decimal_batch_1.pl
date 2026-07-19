@@ -88,10 +88,10 @@ test_harness:arith_misconception(db_row(37556), decimal, division_always_smaller
 % SCHEMA: Arithmetic is Object Collection (digit count as cardinality)
 % GROUNDED: TODO
 % CONNECTS TO: s(comp_nec(unlicensed(longer_is_larger)))
-r37596_longer_is_larger(dec(W,F1,_)-dec(W,F2,_), Winner) :-
+r37596_longer_is_larger(dec(W,F1,L1)-dec(W,F2,L2), Winner) :-
     (   F1 > F2
-    ->  Winner = dec(W,F1,_)
-    ;   Winner = dec(W,F2,_)
+    ->  Winner = dec(W,F1,L1)
+    ;   Winner = dec(W,F2,L2)
     ).
 
 test_harness:arith_misconception(db_row(37596), decimal, longer_is_larger,
@@ -290,10 +290,10 @@ test_harness:arith_misconception(db_row(38098), decimal, too_vague,
 % SCHEMA: Arithmetic is Object Collection
 % GROUNDED: TODO
 % CONNECTS TO: s(comp_nec(unlicensed(longer_is_larger_ordering)))
-r38305_longer_larger_order(dec(W,F1,_)-dec(W,F2,_), Winner) :-
+r38305_longer_larger_order(dec(W,F1,L1)-dec(W,F2,L2), Winner) :-
     (   F1 > F2
-    ->  Winner = dec(W,F1,_)
-    ;   Winner = dec(W,F2,_)
+    ->  Winner = dec(W,F1,L1)
+    ;   Winner = dec(W,F2,L2)
     ).
 
 test_harness:arith_misconception(db_row(38305), decimal, longer_is_larger_ordering,
@@ -554,10 +554,10 @@ test_harness:arith_misconception(db_row(39407), decimal, mult_makes_bigger_judgm
 % SCHEMA: Arithmetic is Object Collection
 % GROUNDED: TODO
 % CONNECTS TO: s(comp_nec(unlicensed(whole_number_string_compare)))
-r39438_whole_string_compare(dec(W,F1,_)-dec(W,F2,_), Winner) :-
+r39438_whole_string_compare(dec(W,F1,L1)-dec(W,F2,L2), Winner) :-
     (   F1 > F2
-    ->  Winner = dec(W,F1,_)
-    ;   Winner = dec(W,F2,_)
+    ->  Winner = dec(W,F1,L1)
+    ;   Winner = dec(W,F2,L2)
     ).
 
 test_harness:arith_misconception(db_row(39438), decimal, whole_number_string_compare,
@@ -590,10 +590,10 @@ test_harness:arith_misconception(db_row(39442), decimal, point_as_fraction_bar,
 % SCHEMA: Arithmetic is Object Collection
 % GROUNDED: TODO
 % CONNECTS TO: s(comp_nec(unlicensed(longer_is_larger)))
-r39460_longer_larger(dec(W,F1,_)-dec(W,F2,_), Winner) :-
+r39460_longer_larger(dec(W,F1,L1)-dec(W,F2,L2), Winner) :-
     (   F1 > F2
-    ->  Winner = dec(W,F1,_)
-    ;   Winner = dec(W,F2,_)
+    ->  Winner = dec(W,F1,L1)
+    ;   Winner = dec(W,F2,L2)
     ).
 
 test_harness:arith_misconception(db_row(39460), decimal, longer_is_larger,
@@ -777,10 +777,10 @@ test_harness:arith_misconception(db_row(39708), decimal, subtract_ignore_point,
 % SCHEMA: Arithmetic is Object Collection
 % GROUNDED: TODO
 % CONNECTS TO: s(comp_nec(unlicensed(closer_to_zero_by_integer)))
-r39732_int_closer_zero(dec(W,F1,_)-dec(W,F2,_), Smaller) :-
+r39732_int_closer_zero(dec(W,F1,L1)-dec(W,F2,L2), Smaller) :-
     (   F1 < F2
-    ->  Smaller = dec(W,F1,_)
-    ;   Smaller = dec(W,F2,_)
+    ->  Smaller = dec(W,F1,L1)
+    ;   Smaller = dec(W,F2,L2)
     ).
 
 test_harness:arith_misconception(db_row(39732), decimal, closer_to_zero_by_integer,
@@ -1040,10 +1040,10 @@ test_harness:arith_misconception(db_row(40500), decimal, longer_is_larger_denom_
 % SCHEMA: Arithmetic is Object Collection
 % GROUNDED: TODO
 % CONNECTS TO: s(comp_nec(unlicensed(decimal_part_as_integer)))
-r40527_decimal_as_int(dec(W,F1,_)-dec(W,F2,_), Winner) :-
+r40527_decimal_as_int(dec(W,F1,L1)-dec(W,F2,L2), Winner) :-
     (   F1 > F2
-    ->  Winner = dec(W,F1,_)
-    ;   Winner = dec(W,F2,_)
+    ->  Winner = dec(W,F1,L1)
+    ;   Winner = dec(W,F2,L2)
     ).
 
 test_harness:arith_misconception(db_row(40527), decimal, decimal_part_as_integer,

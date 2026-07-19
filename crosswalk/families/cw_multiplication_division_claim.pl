@@ -147,9 +147,9 @@ multiplication_division_claim_witness(
     Canonical,
     commitment(Lit, GlossS),
     literature_commitment,
-    _{ kind: multiplication_division_claim_crosswalk,
-       scope: closed_world_finite_verified_multiplication_division_claim_edges,
-       canonical: Canonical,
+    WitnessDict150) :-
+    witness_dict:witness_dict(multiplication_division_claim_crosswalk, closed_world_finite_verified_multiplication_division_claim_edges,
+                              _{canonical: Canonical,
        detail: commitment(Lit, GlossS),
        source: literature_commitment,
        literature_atom: Lit,
@@ -159,7 +159,7 @@ multiplication_division_claim_witness(
                           module: literature_vocabulary,
                           predicate: canonical_commitment/2,
                           atom: Lit,
-                          gloss: GlossS } }) :-
+                          gloss: GlossS } }, WitnessDict150),
     md(Canonical, Lit, _),
     catch(literature_vocabulary:canonical_commitment(Lit, Gloss), _, fail),
     ( string(Gloss) -> GlossS = Gloss ; format(string(GlossS), "~w", [Gloss]) ).
@@ -167,15 +167,15 @@ multiplication_division_claim_witness(
     Canonical,
     edge(Surface),
     Functor,
-    _{ kind: multiplication_division_claim_crosswalk,
-       scope: closed_world_finite_verified_multiplication_division_claim_edges,
-       canonical: Canonical,
+    WitnessDict170) :-
+    witness_dict:witness_dict(multiplication_division_claim_crosswalk, closed_world_finite_verified_multiplication_division_claim_edges,
+                              _{canonical: Canonical,
        detail: edge(Surface),
        source: Functor,
        legacy_functor: Functor,
        projection: verified_legacy_edge,
        derivation: owner_predicate_edge_check,
-       source_witness: SourceWitness }) :-
+       source_witness: SourceWitness }, WitnessDict170),
     md(Canonical, _, Edges),
     member(edge(Surface, Functor), Edges),
     multiplication_division_edge_source_witness(Surface, SourceWitness).

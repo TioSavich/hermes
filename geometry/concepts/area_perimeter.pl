@@ -17,16 +17,8 @@
 %
 %   Inspectable proof object for a finite area/perimeter material row.
 area_perimeter_material_claim_witness(Id, Witness) :-
-    area_perimeter_material_claim(Id, Concept, Premise, Conclusion, Polarity),
-    area_perimeter_concept_tier_evidence(Concept,
-                                         ConceptTierBoundary,
-                                         ConceptTierEvidence),
-    area_perimeter_related_misconception_witnesses(Concept,
-                                                   MisconceptionWitnesses),
-    area_perimeter_condition_roles(Id, Roles),
-    Witness = _{ kind: geometry_area_perimeter_material_inference,
-                 scope: closed_world_finite_area_perimeter_table,
-                 id: Id,
+    witness_dict:witness_dict(geometry_area_perimeter_material_inference, closed_world_finite_area_perimeter_table,
+                              _{id: Id,
                  concept: Concept,
                  premise: Premise,
                  conclusion: Conclusion,
@@ -36,7 +28,15 @@ area_perimeter_material_claim_witness(Id, Witness) :-
                  boundary: finite_area_perimeter_curriculum_claim_not_general_measure_theory,
                  condition_roles: Roles,
                  related_misconception_witnesses: MisconceptionWitnesses,
-                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }.
+                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }, WitnessDict27),
+    area_perimeter_material_claim(Id, Concept, Premise, Conclusion, Polarity),
+    area_perimeter_concept_tier_evidence(Concept,
+                                         ConceptTierBoundary,
+                                         ConceptTierEvidence),
+    area_perimeter_related_misconception_witnesses(Concept,
+                                                   MisconceptionWitnesses),
+    area_perimeter_condition_roles(Id, Roles),
+    Witness = WitnessDict27.
 
 area_perimeter_concept_tier_evidence(Concept,
                                      loaded_concept_tier_record,

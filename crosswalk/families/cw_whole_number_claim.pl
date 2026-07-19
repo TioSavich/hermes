@@ -94,9 +94,9 @@ whole_number_claim_witness(
     Canonical,
     commitment(Lit, GlossS),
     literature_commitment,
-    _{ kind: whole_number_claim_crosswalk,
-       scope: closed_world_finite_verified_zero_claim_edges,
-       canonical: Canonical,
+    WitnessDict97) :-
+    witness_dict:witness_dict(whole_number_claim_crosswalk, closed_world_finite_verified_zero_claim_edges,
+                              _{canonical: Canonical,
        detail: commitment(Lit, GlossS),
        source: literature_commitment,
        literature_atom: Lit,
@@ -106,22 +106,22 @@ whole_number_claim_witness(
                           module: literature_vocabulary,
                           predicate: canonical_commitment/2,
                           atom: Lit,
-                          gloss: GlossS } }) :-
+                          gloss: GlossS } }, WitnessDict97),
     wn(Canonical, Lit, _),
     anchor_gloss(Lit, GlossS).
 whole_number_claim_witness(
     Canonical,
     edge(Functor),
     Functor,
-    _{ kind: whole_number_claim_crosswalk,
-       scope: closed_world_finite_verified_zero_claim_edges,
-       canonical: Canonical,
+    WitnessDict116) :-
+    witness_dict:witness_dict(whole_number_claim_crosswalk, closed_world_finite_verified_zero_claim_edges,
+                              _{canonical: Canonical,
        detail: edge(Functor),
        source: Functor,
        legacy_functor: Functor,
        projection: verified_legacy_edge,
        derivation: owner_predicate_edge_check,
-       source_witness: SourceWitness }) :-
+       source_witness: SourceWitness }, WitnessDict116),
     wn(Canonical, _, Edges),
     member(Functor, Edges),
     whole_number_edge_witness(Functor, SourceWitness).

@@ -73,15 +73,15 @@ viability_unified(Resources, Cost, meta_interpreter) :-
 %  global cognitive limit; it records that the named Source accepted the
 %  concrete Resources >= Cost check without throwing perturbation.
 viability_witness(Resources, Cost, Source,
-                  _{ kind: inference_budget_viability,
-                     scope: closed_world_finite_resource_check,
-                     source: Source,
+                  WitnessDict76) :-
+    witness_dict:witness_dict(inference_budget_viability, closed_world_finite_resource_check,
+                              _{source: Source,
                      legacy_functor: LegacyFunctor,
                      resources: Resources,
                      cost: Cost,
                      relation: resources_cover_cost,
                      comparison: Comparison,
-                     caught_perturbation_boundary: insufficient_budget_throws_resource_exhaustion }) :-
+                     caught_perturbation_boundary: insufficient_budget_throws_resource_exhaustion }, WitnessDict76),
     viability_source(Source, LegacyFunctor),
     must_be(number, Resources),
     must_be(number, Cost),

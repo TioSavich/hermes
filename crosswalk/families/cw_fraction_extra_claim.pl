@@ -131,9 +131,9 @@ fraction_extra_claim_witness(
     Canonical,
     commitment(Lit, GlossS),
     literature_commitment,
-    _{ kind: fraction_extra_claim_crosswalk,
-       scope: closed_world_finite_verified_fraction_extra_claim_edges,
-       canonical: Canonical,
+    WitnessDict134) :-
+    witness_dict:witness_dict(fraction_extra_claim_crosswalk, closed_world_finite_verified_fraction_extra_claim_edges,
+                              _{canonical: Canonical,
        detail: commitment(Lit, GlossS),
        source: literature_commitment,
        literature_atom: Lit,
@@ -143,7 +143,7 @@ fraction_extra_claim_witness(
                           module: literature_vocabulary,
                           predicate: canonical_commitment/2,
                           atom: Lit,
-                          gloss: GlossS } }) :-
+                          gloss: GlossS } }, WitnessDict134),
     fe(Canonical, Lit, _),
     catch(literature_vocabulary:canonical_commitment(Lit, Gloss), _, fail),
     ( string(Gloss) -> GlossS = Gloss ; format(string(GlossS), "~w", [Gloss]) ).
@@ -151,15 +151,15 @@ fraction_extra_claim_witness(
     Canonical,
     edge(Functor),
     Functor,
-    _{ kind: fraction_extra_claim_crosswalk,
-       scope: closed_world_finite_verified_fraction_extra_claim_edges,
-       canonical: Canonical,
+    WitnessDict154) :-
+    witness_dict:witness_dict(fraction_extra_claim_crosswalk, closed_world_finite_verified_fraction_extra_claim_edges,
+                              _{canonical: Canonical,
        detail: edge(Functor),
        source: Functor,
        legacy_functor: Functor,
        projection: verified_legacy_edge,
        derivation: owner_predicate_edge_check,
-       source_witness: SourceWitness }) :-
+       source_witness: SourceWitness }, WitnessDict154),
     fe(Canonical, _, Edges),
     member(Functor, Edges),
     fraction_extra_edge_witness(Functor, SourceWitness).

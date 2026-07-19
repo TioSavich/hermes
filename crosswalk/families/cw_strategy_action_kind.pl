@@ -91,15 +91,15 @@ strategy_action_kind_witness(
     Canonical,
     edge(Functor),
     Functor,
-    _{ kind: strategy_action_kind_crosswalk,
-       scope: closed_world_finite_verified_strategy_action_kind_edges,
-       canonical: Canonical,
+    WitnessDict94) :-
+    witness_dict:witness_dict(strategy_action_kind_crosswalk, closed_world_finite_verified_strategy_action_kind_edges,
+                              _{canonical: Canonical,
        detail: edge(Functor),
        source: Functor,
        legacy_functor: Functor,
        projection: verified_legacy_edge,
        derivation: owner_predicate_edge_check,
-       source_witness: SourceWitness }) :-
+       source_witness: SourceWitness }, WitnessDict94),
     legacy_list(Canonical, Legacies),
     member(Functor, Legacies),
     strategy_action_kind_edge_witness(Canonical, Functor, SourceWitness).

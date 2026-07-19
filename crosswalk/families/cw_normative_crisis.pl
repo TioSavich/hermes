@@ -89,15 +89,15 @@ normative_crisis_unified(Context, Goal, prohibition) :-
 %  language; it records the live configuration under which the non-mutating
 %  prohibition relation accepted this Context/Goal pair.
 normative_crisis_witness(Context, Goal, Source,
-                         _{ kind: normative_crisis,
-                            scope: closed_world_finite_live_domain_configuration,
-                            source: Source,
+                         WitnessDict92) :-
+    witness_dict:witness_dict(normative_crisis, closed_world_finite_live_domain_configuration,
+                              _{source: Source,
                             legacy_functor: LegacyFunctor,
                             context: Context,
                             goal: Goal,
                             goal_family: GoalFamily,
                             derivation: Derivation,
-                            support: Support }) :-
+                            support: Support }, WitnessDict92),
     normative_crisis_source(Source, LegacyFunctor),
     source_normative_crisis_witness(Source,
                                     Context,

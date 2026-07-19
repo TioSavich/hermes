@@ -132,9 +132,9 @@ pair_witness(Operation,
              Module,
              Predicate,
              Projection,
-             _{ kind: productive_deformation_crosswalk,
-                scope: closed_world_finite_verified_productive_deformation_pairs,
-                operation: Operation,
+             WitnessDict135) :-
+    witness_dict:witness_dict(productive_deformation_crosswalk, closed_world_finite_verified_productive_deformation_pairs,
+                              _{operation: Operation,
                 productive: Productive,
                 deformation: Deformation,
                 family: Family,
@@ -149,7 +149,7 @@ pair_witness(Operation,
                                    deformation: Deformation,
                                    family: Family },
                 productive_witness: ProductiveWitness,
-                deformation_witness: DeformationWitness }) :-
+                deformation_witness: DeformationWitness }, WitnessDict135),
     action_kind_witness(Operation, Productive, ProductiveWitness),
     action_kind_witness(Operation, Deformation, DeformationWitness).
 

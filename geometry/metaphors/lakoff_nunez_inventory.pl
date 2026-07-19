@@ -30,6 +30,22 @@
 %   This proves that an authored L&N metaphor row resolves to a loaded
 %   concept, tier evidence, source-target mappings, and any triangulation rows.
 lakoff_nunez_metaphor_witness(ConceptId, MetaphorName, Witness) :-
+    witness_dict:witness_dict(geometry_lakoff_nunez_metaphor, closed_world_finite_lakoff_nunez_metaphor_table,
+                              _{concept: ConceptId,
+                 metaphor: MetaphorName,
+                 concept_boundary: ConceptBoundary,
+                 concept_evidence: ConceptEvidence,
+                 mapping_witnesses: MappingWitnesses,
+                 citations: Citation,
+                 tier_boundary: TierBoundary,
+                 tier: Tier,
+                 tier_evidence: TierEvidence,
+                 triangulation_evidence: TriangulationEvidence,
+                 boundary: finite_lakoff_nunez_geometry_metaphor_claim_not_general_cognitive_metaphor_theory,
+                 fact: metaphor_source(ConceptId,
+                                       MetaphorName,
+                                       Mapping,
+                                       Citation) }, WitnessDict47),
     lakoff_nunez_metaphor_family(MetaphorName),
     metaphor_source(ConceptId, MetaphorName, Mapping, Citation),
     lakoff_nunez_concept_evidence(ConceptId,
@@ -44,23 +60,7 @@ lakoff_nunez_metaphor_witness(ConceptId, MetaphorName, Witness) :-
                                             ConceptId,
                                             MetaphorName),
                                         TriangulationEvidence),
-    Witness = _{ kind: geometry_lakoff_nunez_metaphor,
-                 scope: closed_world_finite_lakoff_nunez_metaphor_table,
-                 concept: ConceptId,
-                 metaphor: MetaphorName,
-                 concept_boundary: ConceptBoundary,
-                 concept_evidence: ConceptEvidence,
-                 mapping_witnesses: MappingWitnesses,
-                 citations: Citation,
-                 tier_boundary: TierBoundary,
-                 tier: Tier,
-                 tier_evidence: TierEvidence,
-                 triangulation_evidence: TriangulationEvidence,
-                 boundary: finite_lakoff_nunez_geometry_metaphor_claim_not_general_cognitive_metaphor_theory,
-                 fact: metaphor_source(ConceptId,
-                                       MetaphorName,
-                                       Mapping,
-                                       Citation) }.
+    Witness = WitnessDict47.
 
 lakoff_nunez_metaphor_family(source_path_goal).
 lakoff_nunez_metaphor_family(fictive_motion).

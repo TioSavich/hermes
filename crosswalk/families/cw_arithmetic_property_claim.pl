@@ -108,9 +108,9 @@ arithmetic_property_witness(
     Canonical,
     commitment(Lit, GlossS),
     literature_commitment,
-    _{ kind: arithmetic_property_crosswalk,
-       scope: closed_world_finite_verified_arithmetic_property_edges,
-       canonical: Canonical,
+    WitnessDict111) :-
+    witness_dict:witness_dict(arithmetic_property_crosswalk, closed_world_finite_verified_arithmetic_property_edges,
+                              _{canonical: Canonical,
        detail: commitment(Lit, GlossS),
        source: literature_commitment,
        literature_atom: Lit,
@@ -120,7 +120,7 @@ arithmetic_property_witness(
                           module: literature_vocabulary,
                           predicate: canonical_commitment/2,
                           atom: Lit,
-                          gloss: GlossS } }) :-
+                          gloss: GlossS } }, WitnessDict111),
     ap(Canonical, Lit, _),
     catch(literature_vocabulary:canonical_commitment(Lit, Gloss), _, fail),
     ( string(Gloss) -> GlossS = Gloss ; format(string(GlossS), "~w", [Gloss]) ).
@@ -128,15 +128,15 @@ arithmetic_property_witness(
     Canonical,
     edge(Functor),
     Functor,
-    _{ kind: arithmetic_property_crosswalk,
-       scope: closed_world_finite_verified_arithmetic_property_edges,
-       canonical: Canonical,
+    WitnessDict131) :-
+    witness_dict:witness_dict(arithmetic_property_crosswalk, closed_world_finite_verified_arithmetic_property_edges,
+                              _{canonical: Canonical,
        detail: edge(Functor),
        source: Functor,
        legacy_functor: Functor,
        projection: verified_legacy_edge,
        derivation: owner_predicate_edge_check,
-       source_witness: SourceWitness }) :-
+       source_witness: SourceWitness }, WitnessDict131),
     ap(Canonical, _, Edges),
     member(Functor, Edges),
     arithmetic_property_edge_source_witness(Functor, SourceWitness).

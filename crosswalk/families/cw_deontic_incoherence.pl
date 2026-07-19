@@ -84,15 +84,15 @@ deontic_incoherence_unified(Agent, Reason, scorecard) :-
 %  system; it records which loaded scorekeeper surface accepted this concrete
 %  Agent/Reason pair and how the source reached it.
 deontic_incoherence_witness(Agent, Reason, Source,
-                            _{ kind: deontic_incoherence,
-                               scope: closed_world_finite_scorekeeper_state,
-                               source: Source,
+                            WitnessDict87) :-
+    witness_dict:witness_dict(deontic_incoherence, closed_world_finite_scorekeeper_state,
+                              _{source: Source,
                                legacy_functor: LegacyFunctor,
                                agent: Agent,
                                reason: Reason,
                                reason_family: ReasonFamily,
                                derivation: Derivation,
-                               support: Support }) :-
+                               support: Support }, WitnessDict87),
     deontic_incoherence_source(Source, LegacyFunctor),
     source_deontic_incoherence_witness(Source,
                                        Agent,

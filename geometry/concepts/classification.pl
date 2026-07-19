@@ -17,16 +17,8 @@
 %
 %   Inspectable proof object for a finite classification material row.
 classification_material_claim_witness(Id, Witness) :-
-    classification_material_claim(Id, Concept, Premise, Conclusion, Polarity),
-    classification_concept_tier_evidence(Concept,
-                                         ConceptTierBoundary,
-                                         ConceptTierEvidence),
-    classification_related_misconception_witnesses(Concept,
-                                                   MisconceptionWitnesses),
-    classification_condition_roles(Id, Roles),
-    Witness = _{ kind: geometry_classification_material_inference,
-                 scope: closed_world_finite_classification_table,
-                 id: Id,
+    witness_dict:witness_dict(geometry_classification_material_inference, closed_world_finite_classification_table,
+                              _{id: Id,
                  concept: Concept,
                  premise: Premise,
                  conclusion: Conclusion,
@@ -36,7 +28,15 @@ classification_material_claim_witness(Id, Witness) :-
                  boundary: finite_classification_curriculum_claim_not_general_taxonomy_theory,
                  condition_roles: Roles,
                  related_misconception_witnesses: MisconceptionWitnesses,
-                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }.
+                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }, WitnessDict27),
+    classification_material_claim(Id, Concept, Premise, Conclusion, Polarity),
+    classification_concept_tier_evidence(Concept,
+                                         ConceptTierBoundary,
+                                         ConceptTierEvidence),
+    classification_related_misconception_witnesses(Concept,
+                                                   MisconceptionWitnesses),
+    classification_condition_roles(Id, Roles),
+    Witness = WitnessDict27.
 
 classification_concept_tier_evidence(Concept,
                                      loaded_concept_tier_record,

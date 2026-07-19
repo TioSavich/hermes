@@ -122,15 +122,15 @@ known_pattern(domino(5, 5), 10).
 %
 %   Inspect the finite pattern-recognition table used by K.NS.4.
 known_pattern_witness(Pattern, Quantity,
-                      _{ kind: standard_k_ns_4_known_pattern,
-                         scope: closed_world_finite_standard_k_ns_4_pattern_table,
-                         standard: in_k_ns_4,
+                      WitnessDict125) :-
+    witness_dict:witness_dict(standard_k_ns_4_known_pattern, closed_world_finite_standard_k_ns_4_pattern_table,
+                              _{standard: in_k_ns_4,
                          source_predicate: known_pattern/2,
                          pattern: Pattern,
                          pattern_family: Family,
                          quantity: Quantity,
                          derivation: loaded_pattern_table_row,
-                         boundary: pattern_rows_loaded_in_standard_k_ns_4 }) :-
+                         boundary: pattern_rows_loaded_in_standard_k_ns_4 }, WitnessDict125),
     known_pattern(Pattern, Quantity),
     pattern_family(Pattern, Family).
 
@@ -160,9 +160,9 @@ subitize(Pattern, Count) :-
 %   Direct pattern recognition over the finite K.NS.4 table. This witness
 %   records the pattern row used and the route by which the count was produced.
 subitize_witness(Pattern, Count,
-                 _{ kind: standard_k_ns_4_subitize,
-                    scope: closed_world_finite_standard_k_ns_4_pattern_table,
-                    standard: in_k_ns_4,
+                 WitnessDict163) :-
+    witness_dict:witness_dict(standard_k_ns_4_subitize, closed_world_finite_standard_k_ns_4_pattern_table,
+                              _{standard: in_k_ns_4,
                     source_predicate: subitize/2,
                     pattern: Pattern,
                     quantity: N,
@@ -170,7 +170,7 @@ subitize_witness(Pattern, Count,
                     route: perceptual_pattern_recognition,
                     derivation: known_pattern_quantity_to_recollection,
                     boundary: pattern_rows_loaded_in_standard_k_ns_4,
-                    pattern_witness: PatternWitness }) :-
+                    pattern_witness: PatternWitness }, WitnessDict163),
     known_pattern_witness(Pattern, N, PatternWitness),
     incur_cost(inference),
     integer_to_recollection(N, Count).
@@ -236,9 +236,9 @@ conceptual_subitizing_witness(Pattern,
                               Route,
                               PartWitnesses,
                               PatternWitness,
-                              _{ kind: standard_k_ns_4_conceptual_subitize,
-                                 scope: closed_world_finite_standard_k_ns_4_pattern_table,
-                                 standard: in_k_ns_4,
+                              WitnessDict239) :-
+    witness_dict:witness_dict(standard_k_ns_4_conceptual_subitize, closed_world_finite_standard_k_ns_4_pattern_table,
+                              _{standard: in_k_ns_4,
                                  source_predicate: conceptual_subitize/3,
                                  pattern: Pattern,
                                  decomposition: Decomposition,
@@ -247,7 +247,7 @@ conceptual_subitizing_witness(Pattern,
                                  derivation: decompose_known_pattern_then_add_parts,
                                  boundary: domino_and_ten_frame_rows_loaded_in_standard_k_ns_4,
                                  pattern_witness: PatternWitness,
-                                 part_witnesses: PartWitnesses }).
+                                 part_witnesses: PartWitnesses }, WitnessDict239).
 
 % ============================================================
 % Verification: does subitizing agree with counting?
@@ -271,9 +271,9 @@ verify_subitizing(Pattern, Result) :-
 %   Verify that direct recognition and finite list counting name the same
 %   quantity for a recognized pattern.
 verify_subitizing_witness(Pattern, Result,
-                          _{ kind: standard_k_ns_4_verify_subitizing,
-                             scope: closed_world_finite_pattern_count_agreement,
-                             standard: in_k_ns_4,
+                          WitnessDict274) :-
+    witness_dict:witness_dict(standard_k_ns_4_verify_subitizing, closed_world_finite_pattern_count_agreement,
+                              _{standard: in_k_ns_4,
                              source_predicate: verify_subitizing/2,
                              pattern: Pattern,
                              objects: Objects,
@@ -284,7 +284,7 @@ verify_subitizing_witness(Pattern, Result,
                              boundary: recognized_pattern_and_generated_object_list,
                              subitize_witness: SubitizeWitness,
                              count_witness: CountWitness,
-                             comparison_witness: ComparisonWitness }) :-
+                             comparison_witness: ComparisonWitness }, WitnessDict274),
     subitize_witness(Pattern, SubCount, SubitizeWitness),
     % Create a collection of N objects and count it
     recollection_to_integer(SubCount, N),

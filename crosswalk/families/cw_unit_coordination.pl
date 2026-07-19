@@ -101,14 +101,14 @@ unit_coordination_unified(compose(UnitSizeInt, UnitCountInt),
 %  does not decide the open-ended mathematical or developmental relation in
 %  general; it records which loaded source produced this concrete crosswalk row.
 unit_coordination_witness(Key, Detail, Source,
-                          _{ kind: unit_coordination_crosswalk,
-                             scope: closed_world_finite_loaded_unit_coordination_sources,
-                             source: Source,
+                          WitnessDict104) :-
+    witness_dict:witness_dict(unit_coordination_crosswalk, closed_world_finite_loaded_unit_coordination_sources,
+                              _{source: Source,
                              legacy_functor: LegacyFunctor,
                              key: Key,
                              detail: Detail,
                              derivation: Derivation,
-                             source_witness: SourceWitness }) :-
+                             source_witness: SourceWitness }, WitnessDict104),
     unit_coordination_source(Source, LegacyFunctor),
     source_unit_coordination_witness(Source,
                                      Key,

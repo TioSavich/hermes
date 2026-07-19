@@ -10,20 +10,8 @@
 %   marker table authored in this file. This proves table membership and local
 %   tier evidence; it is not a general developmental diagnosis for a student.
 van_hiele_marker_witness(ConceptId, Level, Witness) :-
-    van_hiele_marker_fact(ConceptId, Level, MarkerPhrases, Citation),
-    van_hiele_marker_tier_fact(ConceptId,
-                               Level,
-                               Tier,
-                               Sources,
-                               SourceNote),
-    maplist(van_hiele_marker_source_witness, Sources, SourceWitnesses),
-    van_hiele_marker_triangulation_evidence(ConceptId,
-                                            Level,
-                                            TriangulationBoundary,
-                                            TriangulationEvidence),
-    Witness = _{ kind: geometry_van_hiele_marker,
-                 scope: closed_world_finite_van_hiele_levels_marker_table,
-                 concept: ConceptId,
+    witness_dict:witness_dict(geometry_van_hiele_marker, closed_world_finite_van_hiele_levels_marker_table,
+                              _{concept: ConceptId,
                  level: Level,
                  marker_phrases: MarkerPhrases,
                  citation: Citation,
@@ -37,7 +25,19 @@ van_hiele_marker_witness(ConceptId, Level, Witness) :-
                  fact: van_hiele_marker(ConceptId,
                                         Level,
                                         MarkerPhrases,
-                                        Citation) }.
+                                        Citation) }, WitnessDict24),
+    van_hiele_marker_fact(ConceptId, Level, MarkerPhrases, Citation),
+    van_hiele_marker_tier_fact(ConceptId,
+                               Level,
+                               Tier,
+                               Sources,
+                               SourceNote),
+    maplist(van_hiele_marker_source_witness, Sources, SourceWitnesses),
+    van_hiele_marker_triangulation_evidence(ConceptId,
+                                            Level,
+                                            TriangulationBoundary,
+                                            TriangulationEvidence),
+    Witness = WitnessDict24.
 
 van_hiele_marker_fact(ConceptId, Level, MarkerPhrases, Citation) :-
     Clause = van_hiele_marker(ConceptId, Level, MarkerPhrases, Citation),

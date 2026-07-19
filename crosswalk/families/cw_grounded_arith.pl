@@ -158,9 +158,9 @@ grounded_arith_witness(base_decompose,
                                CostWitness,
                                Witness).
 grounded_arith_witness(is_recollection, [N], history(History), robinson_q,
-                       _{ kind: grounded_arith_crosswalk,
-                          scope: closed_world_finite_verified_grounded_arithmetic_operations,
-                          op: is_recollection,
+                       WitnessDict161) :-
+    witness_dict:witness_dict(grounded_arith_crosswalk, closed_world_finite_verified_grounded_arithmetic_operations,
+                              _{op: is_recollection,
                           inputs: [N],
                           output: history(History),
                           source: robinson_q,
@@ -176,7 +176,7 @@ grounded_arith_witness(is_recollection, [N], history(History), robinson_q,
                                            policy: source_predicate_is_pure,
                                            before: not_applicable,
                                            after_goal: not_applicable,
-                                           after_restore: not_applicable } }) :-
+                                           after_restore: not_applicable } }, WitnessDict161),
     catch(robinson_q:is_recollection(N, History), _, fail).
 
 grounded_operation_witness(Op,
@@ -186,9 +186,9 @@ grounded_operation_witness(Op,
                            Predicate,
                            Projection,
                            CostWitness,
-                           _{ kind: grounded_arith_crosswalk,
-                              scope: closed_world_finite_verified_grounded_arithmetic_operations,
-                              op: Op,
+                           WitnessDict189) :-
+    witness_dict:witness_dict(grounded_arith_crosswalk, closed_world_finite_verified_grounded_arithmetic_operations,
+                              _{op: Op,
                               inputs: Inputs,
                               output: Output,
                               source: Source,
@@ -201,7 +201,7 @@ grounded_operation_witness(Op,
                                                  output: Output,
                                                  input_lengths: InputLengths,
                                                  output_length: OutputLength },
-                              cost_witness: CostWitness }) :-
+                              cost_witness: CostWitness }, WitnessDict189),
     maplist(recollection_length, Inputs, InputLengths),
     recollection_length(Output, OutputLength).
 

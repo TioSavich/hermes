@@ -145,9 +145,9 @@ decimal_claim_witness(
     Canonical,
     commitment(Lit, GlossS),
     literature_commitment,
-    _{ kind: decimal_claim_crosswalk,
-       scope: closed_world_finite_verified_decimal_claim_edges,
-       canonical: Canonical,
+    WitnessDict148) :-
+    witness_dict:witness_dict(decimal_claim_crosswalk, closed_world_finite_verified_decimal_claim_edges,
+                              _{canonical: Canonical,
        detail: commitment(Lit, GlossS),
        source: literature_commitment,
        literature_atom: Lit,
@@ -157,7 +157,7 @@ decimal_claim_witness(
                           module: literature_vocabulary,
                           predicate: canonical_commitment/2,
                           atom: Lit,
-                          gloss: GlossS } }) :-
+                          gloss: GlossS } }, WitnessDict148),
     dc(Canonical, Lit, _),
     catch(literature_vocabulary:canonical_commitment(Lit, Gloss), _, fail),
     ( string(Gloss) -> GlossS = Gloss ; format(string(GlossS), "~w", [Gloss]) ).
@@ -165,15 +165,15 @@ decimal_claim_witness(
     Canonical,
     edge_surface(Surface),
     Functor,
-    _{ kind: decimal_claim_crosswalk,
-       scope: closed_world_finite_verified_decimal_claim_edges,
-       canonical: Canonical,
+    WitnessDict168) :-
+    witness_dict:witness_dict(decimal_claim_crosswalk, closed_world_finite_verified_decimal_claim_edges,
+                              _{canonical: Canonical,
        detail: edge_surface(Surface),
        source: Functor,
        legacy_functor: Functor,
        projection: verified_legacy_edge_surface,
        derivation: owner_predicate_edge_check,
-       source_witness: SourceWitness }) :-
+       source_witness: SourceWitness }, WitnessDict168),
     dc(Canonical, _, Edges),
     member(edge(Functor, Surface), Edges),
     decimal_edge_source_witness(Functor, SourceWitness).

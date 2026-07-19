@@ -50,9 +50,9 @@ classify_parity(Number, Result) :-
 %   groups up to 20, while the automaton can still execute on any finite
 %   recollection provided by grounded_arithmetic.
 parity_witness(Number, Result,
-               _{ kind: standard_2_ns_3_parity,
-                  scope: closed_world_finite_pairing_over_supplied_recollection,
-                  standard: in_2_ns_3,
+               WitnessDict53) :-
+    witness_dict:witness_dict(standard_2_ns_3_parity, closed_world_finite_pairing_over_supplied_recollection,
+                              _{standard: in_2_ns_3,
                   source_predicate: classify_parity/2,
                   number: Number,
                   count: Count,
@@ -62,7 +62,7 @@ parity_witness(Number, Result,
                   trace: Trace,
                   trace_length: TraceLength,
                   standard_bound: up_to_20_objects,
-                  bound_status: BoundStatus }) :-
+                  bound_status: BoundStatus }, WitnessDict53),
     parity_trace(Number, Result, Trace),
     recollection_to_integer(Number, Count),
     length(Trace, TraceLength),

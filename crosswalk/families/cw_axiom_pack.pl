@@ -73,30 +73,30 @@ axiom_pack_unified(Pack, Source) :-
 axiom_pack_witness(
     Pack,
     enabled_predicate,
-    _{ kind: axiom_pack_enabled_state,
-       scope: closed_world_finite_current_sequent_engine_axiom_packs,
-       pack: Pack,
+    WitnessDict76) :-
+    witness_dict:witness_dict(axiom_pack_enabled_state, closed_world_finite_current_sequent_engine_axiom_packs,
+                              _{pack: Pack,
        source: enabled_predicate,
        projection: exported_enabled_pack_reader,
        derivation: owner_predicate_state_read,
        source_witness: _{ kind: axiom_pack_reader_row,
                           module: sequent_engine,
                           predicate: enabled_axiom_pack/1,
-                          pack: Pack } }) :-
+                          pack: Pack } }, WitnessDict76),
     catch(sequent_engine:enabled_axiom_pack(Pack), _, fail).
 axiom_pack_witness(
     Pack,
     enabled_store,
-    _{ kind: axiom_pack_enabled_state,
-       scope: closed_world_finite_current_sequent_engine_axiom_packs,
-       pack: Pack,
+    WitnessDict90) :-
+    witness_dict:witness_dict(axiom_pack_enabled_state, closed_world_finite_current_sequent_engine_axiom_packs,
+                              _{pack: Pack,
        source: enabled_store,
        projection: dynamic_enabled_pack_store,
        derivation: owner_predicate_state_read,
        source_witness: _{ kind: axiom_pack_store_row,
                           module: sequent_engine,
                           predicate: axiom_pack_enabled/1,
-                          pack: Pack } }) :-
+                          pack: Pack } }, WitnessDict90),
     catch(sequent_engine:axiom_pack_enabled(Pack), _, fail).
 
 %! axiom_pack_control(?Variant, ?Module, ?Functor, ?Arity) is nondet.
@@ -121,9 +121,9 @@ axiom_pack_control_witness(
     Module,
     Functor,
     Arity,
-    _{ kind: axiom_pack_control_surface,
-       scope: closed_world_finite_sequent_engine_axiom_pack_controls,
-       variant: Variant,
+    WitnessDict124) :-
+    witness_dict:witness_dict(axiom_pack_control_surface, closed_world_finite_sequent_engine_axiom_pack_controls,
+                              _{variant: Variant,
        module: Module,
        functor: Functor,
        arity: Arity,
@@ -135,7 +135,7 @@ axiom_pack_control_witness(
                           module: Module,
                           predicate: Functor/Arity,
                           variant: Variant,
-                          boundary: Boundary } }) :-
+                          boundary: Boundary } }, WitnessDict124),
     axiom_pack_control_spec(Variant, Module, Functor, Arity, Policy, Boundary),
     current_predicate(Module:Functor/Arity).
 

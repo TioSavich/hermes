@@ -17,15 +17,8 @@
 %
 %   Inspectable proof object for a finite coordinate-geometry material row.
 coordinate_geometry_material_claim_witness(Id, Witness) :-
-    coordinate_material_claim(Id, Concept, Premise, Conclusion, Polarity),
-    coordinate_concept_tier_evidence(Concept,
-                                     ConceptTierBoundary,
-                                     ConceptTierEvidence),
-    coordinate_related_misconception_witnesses(Concept, MisconceptionWitnesses),
-    coordinate_condition_roles(Id, Roles),
-    Witness = _{ kind: geometry_coordinate_material_inference,
-                 scope: closed_world_finite_coordinate_geometry_table,
-                 id: Id,
+    witness_dict:witness_dict(geometry_coordinate_material_inference, closed_world_finite_coordinate_geometry_table,
+                              _{id: Id,
                  concept: Concept,
                  premise: Premise,
                  conclusion: Conclusion,
@@ -35,7 +28,14 @@ coordinate_geometry_material_claim_witness(Id, Witness) :-
                  boundary: finite_coordinate_geometry_curriculum_claim_not_general_analytic_geometry,
                  condition_roles: Roles,
                  related_misconception_witnesses: MisconceptionWitnesses,
-                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }.
+                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }, WitnessDict26),
+    coordinate_material_claim(Id, Concept, Premise, Conclusion, Polarity),
+    coordinate_concept_tier_evidence(Concept,
+                                     ConceptTierBoundary,
+                                     ConceptTierEvidence),
+    coordinate_related_misconception_witnesses(Concept, MisconceptionWitnesses),
+    coordinate_condition_roles(Id, Roles),
+    Witness = WitnessDict26.
 
 coordinate_concept_tier_evidence(Concept,
                                  loaded_concept_tier_record,

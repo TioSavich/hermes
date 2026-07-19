@@ -241,9 +241,9 @@ repeated_sub_trace(Remainder, Divisor, Acc, Quotient, FinalRemainder, [Step|Step
     repeated_sub_trace(NewRemainder, Divisor, NewAcc, Quotient, FinalRemainder, Steps).
 
 equal_groups_witness(NumGroups, GroupSize, Product,
-                     _{ kind: standard_3_ca_3_4_equal_groups,
-                        scope: closed_world_finite_standard_3_ca_3_4_whole_number_models,
-                        standard: in_3_ca_3_4,
+                     WitnessDict244) :-
+    witness_dict:witness_dict(standard_3_ca_3_4_equal_groups, closed_world_finite_standard_3_ca_3_4_whole_number_models,
+                              _{standard: in_3_ca_3_4,
                         source_predicate: multiply_equal_groups/3,
                         model: equal_sized_groups,
                         num_groups: NumGroups,
@@ -253,15 +253,15 @@ equal_groups_witness(NumGroups, GroupSize, Product,
                         product: Product,
                         product_count: ProductCount,
                         derivation: finite_grounded_multiplication_of_equal_groups,
-                        boundary: supplied_grounded_recollections }) :-
+                        boundary: supplied_grounded_recollections }, WitnessDict244),
     recollection_to_integer(NumGroups, NumGroupsCount),
     recollection_to_integer(GroupSize, GroupSizeCount),
     recollection_to_integer(Product, ProductCount).
 
 array_witness(Rows, Cols, Product,
-              _{ kind: standard_3_ca_3_4_array,
-                 scope: closed_world_finite_standard_3_ca_3_4_whole_number_models,
-                 standard: in_3_ca_3_4,
+              WitnessDict262) :-
+    witness_dict:witness_dict(standard_3_ca_3_4_array, closed_world_finite_standard_3_ca_3_4_whole_number_models,
+                              _{standard: in_3_ca_3_4,
                  source_predicate: multiply_array/3,
                  model: rectangular_array,
                  rows: Rows,
@@ -276,15 +276,15 @@ array_witness(Rows, Cols, Product,
                        product_count: ProductCount,
                        relation: same_finite_cell_count_under_rotation },
                  derivation: finite_grounded_multiplication_of_rows_and_columns,
-                 boundary: supplied_grounded_recollections }) :-
+                 boundary: supplied_grounded_recollections }, WitnessDict262),
     recollection_to_integer(Rows, RowsCount),
     recollection_to_integer(Cols, ColsCount),
     recollection_to_integer(Product, ProductCount).
 
 repeated_add_witness(Factor, Times, Product, Steps,
-                     _{ kind: standard_3_ca_3_4_repeated_addition,
-                        scope: closed_world_finite_standard_3_ca_3_4_whole_number_models,
-                        standard: in_3_ca_3_4,
+                     WitnessDict285) :-
+    witness_dict:witness_dict(standard_3_ca_3_4_repeated_addition, closed_world_finite_standard_3_ca_3_4_whole_number_models,
+                              _{standard: in_3_ca_3_4,
                         source_predicate: multiply_repeated_add/3,
                         model: repeated_addition,
                         factor: Factor,
@@ -295,15 +295,15 @@ repeated_add_witness(Factor, Times, Product, Steps,
                         product_count: ProductCount,
                         steps: Steps,
                         derivation: finite_repeated_addition_trace,
-                        boundary: supplied_grounded_recollections }) :-
+                        boundary: supplied_grounded_recollections }, WitnessDict285),
     recollection_to_integer(Factor, FactorCount),
     recollection_to_integer(Times, TimesCount),
     recollection_to_integer(Product, ProductCount).
 
 partition_witness(Total, NumGroups, GroupSize,
-                  _{ kind: standard_3_ca_3_4_partition_division,
-                     scope: closed_world_finite_standard_3_ca_3_4_whole_number_models,
-                     standard: in_3_ca_3_4,
+                  WitnessDict304) :-
+    witness_dict:witness_dict(standard_3_ca_3_4_partition_division, closed_world_finite_standard_3_ca_3_4_whole_number_models,
+                              _{standard: in_3_ca_3_4,
                      source_predicate: divide_partition/3,
                      model: equal_sharing_partition,
                      total: Total,
@@ -317,15 +317,15 @@ partition_witness(Total, NumGroups, GroupSize,
                            group_size_count: GroupSizeCount,
                            product_count: TotalCount },
                      derivation: finite_grounded_division_checked_by_inverse_multiplication,
-                     boundary: supplied_grounded_recollections }) :-
+                     boundary: supplied_grounded_recollections }, WitnessDict304),
     recollection_to_integer(Total, TotalCount),
     recollection_to_integer(NumGroups, NumGroupsCount),
     recollection_to_integer(GroupSize, GroupSizeCount).
 
 repeated_sub_witness(Total, Divisor, Quotient, Remainder, Steps,
-                     _{ kind: standard_3_ca_3_4_repeated_subtraction_division,
-                        scope: closed_world_finite_standard_3_ca_3_4_whole_number_models,
-                        standard: in_3_ca_3_4,
+                     WitnessDict326) :-
+    witness_dict:witness_dict(standard_3_ca_3_4_repeated_subtraction_division, closed_world_finite_standard_3_ca_3_4_whole_number_models,
+                              _{standard: in_3_ca_3_4,
                         source_predicate: divide_repeated_sub/3,
                         model: measurement_division,
                         total: Total,
@@ -338,16 +338,16 @@ repeated_sub_witness(Total, Divisor, Quotient, Remainder, Steps,
                         final_remainder_count: RemainderCount,
                         steps: Steps,
                         derivation: finite_repeated_subtraction_trace,
-                        boundary: supplied_grounded_recollections }) :-
+                        boundary: supplied_grounded_recollections }, WitnessDict326),
     recollection_to_integer(Total, TotalCount),
     recollection_to_integer(Divisor, DivisorCount),
     recollection_to_integer(Quotient, QuotientCount),
     recollection_to_integer(Remainder, RemainderCount).
 
 fact_family_witness(A, B, Product, Facts, MultiplicationWitness, DivisionWitnesses,
-                    _{ kind: standard_3_ca_3_4_multiplication_division_family,
-                       scope: closed_world_finite_standard_3_ca_3_4_whole_number_models,
-                       standard: in_3_ca_3_4,
+                    WitnessDict348) :-
+    witness_dict:witness_dict(standard_3_ca_3_4_multiplication_division_family, closed_world_finite_standard_3_ca_3_4_whole_number_models,
+                              _{standard: in_3_ca_3_4,
                        source_predicate: mult_div_family/4,
                        a: A,
                        a_count: ACount,
@@ -359,7 +359,7 @@ fact_family_witness(A, B, Product, Facts, MultiplicationWitness, DivisionWitness
                        multiplication_witness: MultiplicationWitness,
                        division_witnesses: DivisionWitnesses,
                        derivation: multiplication_proof_plus_inverse_partition_proofs,
-                       boundary: supplied_grounded_recollections }) :-
+                       boundary: supplied_grounded_recollections }, WitnessDict348),
     recollection_to_integer(A, ACount),
     recollection_to_integer(B, BCount),
     recollection_to_integer(Product, ProductCount).

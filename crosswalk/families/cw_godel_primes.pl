@@ -83,14 +83,14 @@ godel_primes_unified(product_of_list(L), Product, sequent_engine) :-
 %  does not prove arbitrary number theory; it records the bounded arithmetic
 %  check or finite enumeration that made this concrete query succeed.
 godel_primes_witness(Query, Result, Source,
-                     _{ kind: godel_prime_utility_crosswalk,
-                        scope: closed_world_finite_loaded_godel_prime_utilities,
-                        source: Source,
+                     WitnessDict86) :-
+    witness_dict:witness_dict(godel_prime_utility_crosswalk, closed_world_finite_loaded_godel_prime_utilities,
+                              _{source: Source,
                         legacy_functor: LegacyFunctor,
                         query: Query,
                         result: Result,
                         derivation: Derivation,
-                        source_witness: SourceWitness }) :-
+                        source_witness: SourceWitness }, WitnessDict86),
     godel_prime_source(Source, LegacyFunctor),
     source_godel_prime_witness(Source,
                                Query,

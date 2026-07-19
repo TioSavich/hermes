@@ -75,14 +75,14 @@ fsm_engine_unified(dialectical_engine:run_fsm/4, dialectical_generic) :-
 %  execute an FSM; it proves that a concrete executor descriptor is present as a
 %  defined predicate in its owning module and records the side-effect boundary.
 fsm_engine_witness(Descriptor, Source,
-                   _{ kind: fsm_engine_registry_entry,
-                      scope: closed_world_finite_loaded_fsm_executor_registry,
-                      descriptor: Descriptor,
+                   WitnessDict78) :-
+    witness_dict:witness_dict(fsm_engine_registry_entry, closed_world_finite_loaded_fsm_executor_registry,
+                              _{descriptor: Descriptor,
                       source: Source,
                       legacy_functor: LegacyFunctor,
                       execution_policy: registry_only_no_fsm_execution,
                       side_effect_boundary: owning_executor_may_incur_cost_or_run_search,
-                      source_witness: SourceWitness }) :-
+                      source_witness: SourceWitness }, WitnessDict78),
     fsm_engine_variant(Source, Descriptor, LegacyFunctor, Module, Name, Arity),
     predicate_presence_witness(Module, Name, Arity, SourceWitness).
 

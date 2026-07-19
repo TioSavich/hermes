@@ -8,11 +8,8 @@
 %   finite Grade 8 lesson table. These rows do not carry local tier facts, so
 %   the witness states the existing query default explicitly.
 im_grade8_lesson_standard_witness(ConceptId, Code, Witness) :-
-    im_grade8_lesson_anchor_fact(ConceptId, Code, Statement),
-    im_grade8_lesson_concept_evidence(ConceptId, ConceptEvidence),
-    Witness = _{ kind: im_grade8_lesson_standard_anchor,
-                 scope: closed_world_finite_im_grade8_lesson_table,
-                 concept: ConceptId,
+    witness_dict:witness_dict(im_grade8_lesson_standard_anchor, closed_world_finite_im_grade8_lesson_table,
+                              _{concept: ConceptId,
                  framework: im_lesson,
                  code: Code,
                  statement: Statement,
@@ -21,7 +18,10 @@ im_grade8_lesson_standard_witness(ConceptId, Code, Witness) :-
                  concept_boundary: loaded_geometry_concept_record,
                  concept_evidence: ConceptEvidence,
                  boundary: finite_im_grade8_lesson_anchor_table_not_general_curriculum_model,
-                 fact: standard_anchor(ConceptId, im_lesson, Code, Statement) }.
+                 fact: standard_anchor(ConceptId, im_lesson, Code, Statement) }, WitnessDict13),
+    im_grade8_lesson_anchor_fact(ConceptId, Code, Statement),
+    im_grade8_lesson_concept_evidence(ConceptId, ConceptEvidence),
+    Witness = WitnessDict13.
 
 im_grade8_lesson_anchor_fact(ConceptId, Code, Statement) :-
     Clause = standard_anchor(ConceptId, im_lesson, Code, Statement),

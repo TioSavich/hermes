@@ -15,13 +15,8 @@
 %
 %   Inspectable proof object for a finite similarity/congruence material row.
 similarity_material_claim_witness(Id, Witness) :-
-    similarity_material_claim(Id, Concept, Premise, Conclusion, Polarity),
-    similarity_primary_tier(Concept, Tier, Sources, SourceNote, TierEvidence),
-    similarity_related_misconception_witnesses(Concept, MisconceptionWitnesses),
-    similarity_condition_roles(Id, Roles),
-    Witness = _{ kind: geometry_similarity_material_inference,
-                 scope: closed_world_finite_similarity_congruence_table,
-                 id: Id,
+    witness_dict:witness_dict(geometry_similarity_material_inference, closed_world_finite_similarity_congruence_table,
+                              _{id: Id,
                  concept: Concept,
                  premise: Premise,
                  conclusion: Conclusion,
@@ -33,7 +28,12 @@ similarity_material_claim_witness(Id, Witness) :-
                  boundary: finite_similarity_claim_not_general_polygon_similarity_theory,
                  condition_roles: Roles,
                  related_misconception_witnesses: MisconceptionWitnesses,
-                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }.
+                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }, WitnessDict22),
+    similarity_material_claim(Id, Concept, Premise, Conclusion, Polarity),
+    similarity_primary_tier(Concept, Tier, Sources, SourceNote, TierEvidence),
+    similarity_related_misconception_witnesses(Concept, MisconceptionWitnesses),
+    similarity_condition_roles(Id, Roles),
+    Witness = WitnessDict22.
 
 similarity_primary_tier(Concept, Tier, Sources, SourceNote, TierEvidence) :-
     findall(tier_entry(CandidateTier,

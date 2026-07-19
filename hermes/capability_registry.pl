@@ -133,7 +133,7 @@ capability('misconception_pml_map', 'user', 'misconceptions', ['misconception'],
 capability('modal_context_witness', 'cw_modal_context', 'unclassified', ['context', 'source', 'term'], routed_paged).
 capability('monitoring_chart_export', 'user', 'monitoring', ['lesson_code'], routed_paged).
 capability('mua_coherence_witness', 'cw_mua_coherence', 'unclassified', ['input', 'source', 'subject'], routed_paged).
-capability('mua_kind_coherence_witness', 'mua_relations', 'unclassified', ['kind', 'row_text'], routed_paged).
+capability('mua_kind_coherence_witness', 'cw_mua_coherence', 'unclassified', ['kind', 'row_text'], routed_paged).
 capability('mult_div_family_witness', 'user', 'standards', ['a', 'b'], routed_paged).
 capability('multiplication_division_claim_witness', 'cw_multiplication_division_claim', 'unclassified', ['canonical', 'source'], routed_paged).
 capability('multiply_array_witness', 'user', 'standards', ['cols', 'rows'], routed_paged).

@@ -86,18 +86,8 @@ compare_groups(GroupA, GroupB, Result) :-
 %   K.NS.5-6 quantity-comparison witness that excludes the two other result
 %   alternatives.
 compare_groups_witness(GroupA, GroupB, Result, Witness) :-
-    compare_by_counting_witness(GroupA, GroupB, Result, CountingWitness),
-    get_dict(count_a, CountingWitness, CountA),
-    get_dict(count_b, CountingWitness, CountB),
-    get_dict(count_a_value, CountingWitness, CountAValue),
-    get_dict(count_b_value, CountingWitness, CountBValue),
-    get_dict(count_a_witness, CountingWitness, CountAWitness),
-    get_dict(count_b_witness, CountingWitness, CountBWitness),
-    get_dict(comparison_witness, CountingWitness, ComparisonWitness),
-    incompatible_results(Result, Incompatible),
-    Witness = _{ kind: standard_k_ns_5_6_group_comparison,
-                 scope: closed_world_finite_supplied_object_lists,
-                 standard: in_k_ns_5_6,
+    witness_dict:witness_dict(standard_k_ns_5_6_group_comparison, closed_world_finite_supplied_object_lists,
+                              _{standard: in_k_ns_5_6,
                  source_predicate: compare_groups/3,
                  strategy: counting,
                  group_a: GroupA,
@@ -113,7 +103,17 @@ compare_groups_witness(GroupA, GroupB, Result, Witness) :-
                  count_a_witness: CountAWitness,
                  count_b_witness: CountBWitness,
                  comparison_witness: ComparisonWitness,
-                 strategy_witness: CountingWitness }.
+                 strategy_witness: CountingWitness }, WitnessDict98),
+    compare_by_counting_witness(GroupA, GroupB, Result, CountingWitness),
+    get_dict(count_a, CountingWitness, CountA),
+    get_dict(count_b, CountingWitness, CountB),
+    get_dict(count_a_value, CountingWitness, CountAValue),
+    get_dict(count_b_value, CountingWitness, CountBValue),
+    get_dict(count_a_witness, CountingWitness, CountAWitness),
+    get_dict(count_b_witness, CountingWitness, CountBWitness),
+    get_dict(comparison_witness, CountingWitness, ComparisonWitness),
+    incompatible_results(Result, Incompatible),
+    Witness = WitnessDict98.
 
 %!  compare_by_matching(+GroupA, +GroupB, -Result) is det.
 %
@@ -133,20 +133,8 @@ compare_by_matching(GroupA, GroupB, Result) :-
 %   The terminal case records which side ran out first, making the exclusionary
 %   force of the result inspectable rather than implicit in the recursion.
 compare_by_matching_witness(GroupA, GroupB, Result, Witness) :-
-    matching_comparison_witness(GroupA,
-                                GroupB,
-                                1,
-                                Result,
-                                MatchedPairs,
-                                Steps,
-                                TerminalCase),
-    incompatible_results(Result, Incompatible),
-    length(GroupA, SizeA),
-    length(GroupB, SizeB),
-    length(MatchedPairs, MatchedPairCount),
-    Witness = _{ kind: standard_k_ns_5_6_matching_comparison,
-                 scope: closed_world_finite_supplied_object_lists,
-                 standard: in_k_ns_5_6,
+    witness_dict:witness_dict(standard_k_ns_5_6_matching_comparison, closed_world_finite_supplied_object_lists,
+                              _{standard: in_k_ns_5_6,
                  source_predicate: compare_by_matching/3,
                  group_a: GroupA,
                  group_b: GroupB,
@@ -159,7 +147,19 @@ compare_by_matching_witness(GroupA, GroupB, Result, Witness) :-
                  terminal_case: TerminalCase,
                  derivation: one_to_one_matching_until_exhaustion,
                  boundary: supplied_lists_are_the_compared_object_groups,
-                 steps: Steps }.
+                 steps: Steps }, WitnessDict147),
+    matching_comparison_witness(GroupA,
+                                GroupB,
+                                1,
+                                Result,
+                                MatchedPairs,
+                                Steps,
+                                TerminalCase),
+    incompatible_results(Result, Incompatible),
+    length(GroupA, SizeA),
+    length(GroupB, SizeB),
+    length(MatchedPairs, MatchedPairCount),
+    Witness = WitnessDict147.
 
 %!  compare_by_counting(+GroupA, +GroupB, -Result) is det.
 %
@@ -175,16 +175,8 @@ compare_by_counting(GroupA, GroupB, Result) :-
 %   Prove comparison by counting each supplied finite list using K.NS.3, then
 %   comparing the resulting recollections with the grounded-arithmetic order.
 compare_by_counting_witness(GroupA, GroupB, Result, Witness) :-
-    incur_cost(inference),
-    count_collection_witness(GroupA, CountA, PairingA, CountAWitness),
-    count_collection_witness(GroupB, CountB, PairingB, CountBWitness),
-    comparison_relation_witness(CountA, CountB, Result, ComparisonWitness),
-    incompatible_results(Result, Incompatible),
-    recollection_to_integer(CountA, CountAValue),
-    recollection_to_integer(CountB, CountBValue),
-    Witness = _{ kind: standard_k_ns_5_6_counting_comparison,
-                 scope: closed_world_finite_supplied_object_lists,
-                 standard: in_k_ns_5_6,
+    witness_dict:witness_dict(standard_k_ns_5_6_counting_comparison, closed_world_finite_supplied_object_lists,
+                              _{standard: in_k_ns_5_6,
                  source_predicate: compare_by_counting/3,
                  group_a: GroupA,
                  group_b: GroupB,
@@ -200,7 +192,15 @@ compare_by_counting_witness(GroupA, GroupB, Result, Witness) :-
                  boundary: supplied_lists_and_grounded_arithmetic_order,
                  count_a_witness: CountAWitness,
                  count_b_witness: CountBWitness,
-                 comparison_witness: ComparisonWitness }.
+                 comparison_witness: ComparisonWitness }, WitnessDict185),
+    incur_cost(inference),
+    count_collection_witness(GroupA, CountA, PairingA, CountAWitness),
+    count_collection_witness(GroupB, CountB, PairingB, CountBWitness),
+    comparison_relation_witness(CountA, CountB, Result, ComparisonWitness),
+    incompatible_results(Result, Incompatible),
+    recollection_to_integer(CountA, CountAValue),
+    recollection_to_integer(CountB, CountBValue),
+    Witness = WitnessDict185.
 
 
 % ============================================================
@@ -226,16 +226,8 @@ compare_numerals(NameA, NameB, Result) :-
 %   then expose the finite grounded-order comparison and the excluded result
 %   alternatives.
 compare_numerals_witness(NameA, NameB, Result, Witness) :-
-    incur_cost(inference),
-    read_numeral_witness(NameA, RecA, ReadAWitness),
-    read_numeral_witness(NameB, RecB, ReadBWitness),
-    comparison_relation_witness(RecA, RecB, Result, ComparisonWitness),
-    incompatible_results(Result, Incompatible),
-    recollection_to_integer(RecA, ValueA),
-    recollection_to_integer(RecB, ValueB),
-    Witness = _{ kind: standard_k_ns_5_6_numeral_comparison,
-                 scope: closed_world_finite_dynamic_numeral_table,
-                 standard: in_k_ns_5_6,
+    witness_dict:witness_dict(standard_k_ns_5_6_numeral_comparison, closed_world_finite_dynamic_numeral_table,
+                              _{standard: in_k_ns_5_6,
                  source_predicate: compare_numerals/3,
                  name_a: NameA,
                  name_b: NameB,
@@ -249,7 +241,15 @@ compare_numerals_witness(NameA, NameB, Result, Witness) :-
                  boundary: current_standard_k_ns_2_name_table_and_grounded_arithmetic_order,
                  read_a_witness: ReadAWitness,
                  read_b_witness: ReadBWitness,
-                 comparison_witness: ComparisonWitness }.
+                 comparison_witness: ComparisonWitness }, WitnessDict236),
+    incur_cost(inference),
+    read_numeral_witness(NameA, RecA, ReadAWitness),
+    read_numeral_witness(NameB, RecB, ReadBWitness),
+    comparison_relation_witness(RecA, RecB, Result, ComparisonWitness),
+    incompatible_results(Result, Incompatible),
+    recollection_to_integer(RecA, ValueA),
+    recollection_to_integer(RecB, ValueB),
+    Witness = WitnessDict236.
 
 matching_comparison_witness([], [], _Index, equal_to, [], [Step], both_exhausted) :-
     incur_cost(inference),
@@ -296,13 +296,8 @@ matching_comparison_witness([A|RestA],
                                 TerminalCase).
 
 comparison_relation_witness(Left, Right, Result, Witness) :-
-    comparison_relation(Result, Left, Right, Relation),
-    incompatible_results(Result, Incompatible),
-    recollection_to_integer(Left, LeftValue),
-    recollection_to_integer(Right, RightValue),
-    Witness = _{ kind: standard_k_ns_5_6_quantity_comparison,
-                 scope: closed_world_finite_grounded_arithmetic_order,
-                 standard: in_k_ns_5_6,
+    witness_dict:witness_dict(standard_k_ns_5_6_quantity_comparison, closed_world_finite_grounded_arithmetic_order,
+                              _{standard: in_k_ns_5_6,
                  left: Left,
                  right: Right,
                  left_value: LeftValue,
@@ -311,7 +306,12 @@ comparison_relation_witness(Left, Right, Result, Witness) :-
                  incompatible_results: Incompatible,
                  relation: Relation,
                  derivation: grounded_arithmetic_three_way_order_partition,
-                 boundary: loaded_grounded_arithmetic_order_for_finite_recollections }.
+                 boundary: loaded_grounded_arithmetic_order_for_finite_recollections }, WitnessDict303),
+    comparison_relation(Result, Left, Right, Relation),
+    incompatible_results(Result, Incompatible),
+    recollection_to_integer(Left, LeftValue),
+    recollection_to_integer(Right, RightValue),
+    Witness = WitnessDict303.
 
 comparison_relation(equal_to, Left, Right, equal_to(Left, Right)) :-
     equal_to(Left, Right).

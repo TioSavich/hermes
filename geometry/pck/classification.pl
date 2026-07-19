@@ -32,17 +32,8 @@
 %   witness exists only when every synthesis pointer resolves in the loaded
 %   geometry KB; it is not a general model of teacher knowledge.
 pck_synthesis_witness(ConceptId, Witness) :-
-    pck_synthesis(ConceptId,
-                  KeyKidThinking,
-                  KeyTeacherMoves,
-                  DevelopmentalRefs,
-                  Citations),
-    pck_concept_witness(ConceptId, ConceptBoundary, ConceptEvidence),
-    append([KeyKidThinking, KeyTeacherMoves, DevelopmentalRefs], Refs),
-    maplist(pck_reference_witness, Refs, ResolvedReferences),
-    Witness = _{ kind: geometry_pck_synthesis,
-                 scope: closed_world_finite_pck_synthesis_registry,
-                 concept: ConceptId,
+    witness_dict:witness_dict(geometry_pck_synthesis, closed_world_finite_pck_synthesis_registry,
+                              _{concept: ConceptId,
                  concept_boundary: ConceptBoundary,
                  concept_evidence: ConceptEvidence,
                  key_kid_thinking_refs: KeyKidThinking,
@@ -55,7 +46,16 @@ pck_synthesis_witness(ConceptId, Witness) :-
                                      KeyKidThinking,
                                      KeyTeacherMoves,
                                      DevelopmentalRefs,
-                                     Citations) }.
+                                     Citations) }, WitnessDict43),
+    pck_synthesis(ConceptId,
+                  KeyKidThinking,
+                  KeyTeacherMoves,
+                  DevelopmentalRefs,
+                  Citations),
+    pck_concept_witness(ConceptId, ConceptBoundary, ConceptEvidence),
+    append([KeyKidThinking, KeyTeacherMoves, DevelopmentalRefs], Refs),
+    maplist(pck_reference_witness, Refs, ResolvedReferences),
+    Witness = WitnessDict43.
 
 pck_concept_witness(ConceptId, loaded_geometry_concept_record,
     _{ kind: resolved_pck_concept,

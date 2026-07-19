@@ -26,6 +26,22 @@
 %   This proves that an authored measuring-stick row resolves to a loaded
 %   concept, tier evidence, source-target mappings, and any triangulation rows.
 measuring_stick_metaphor_witness(ConceptId, MetaphorName, Witness) :-
+    witness_dict:witness_dict(geometry_measuring_stick_metaphor, closed_world_finite_measuring_stick_metaphor_table,
+                              _{concept: ConceptId,
+                 metaphor: MetaphorName,
+                 concept_boundary: ConceptBoundary,
+                 concept_evidence: ConceptEvidence,
+                 mapping_witnesses: MappingWitnesses,
+                 citations: Citation,
+                 tier_boundary: TierBoundary,
+                 tier: Tier,
+                 tier_evidence: TierEvidence,
+                 triangulation_evidence: TriangulationEvidence,
+                 boundary: finite_measuring_stick_metaphor_claim_not_general_cognitive_metaphor_theory,
+                 fact: metaphor_source(ConceptId,
+                                       MetaphorName,
+                                       Mapping,
+                                       Citation) }, WitnessDict43),
     measuring_stick_metaphor_family(MetaphorName),
     metaphor_source(ConceptId, MetaphorName, Mapping, Citation),
     measuring_stick_concept_evidence(ConceptId,
@@ -40,23 +56,7 @@ measuring_stick_metaphor_witness(ConceptId, MetaphorName, Witness) :-
                                                ConceptId,
                                                MetaphorName),
                                            TriangulationEvidence),
-    Witness = _{ kind: geometry_measuring_stick_metaphor,
-                 scope: closed_world_finite_measuring_stick_metaphor_table,
-                 concept: ConceptId,
-                 metaphor: MetaphorName,
-                 concept_boundary: ConceptBoundary,
-                 concept_evidence: ConceptEvidence,
-                 mapping_witnesses: MappingWitnesses,
-                 citations: Citation,
-                 tier_boundary: TierBoundary,
-                 tier: Tier,
-                 tier_evidence: TierEvidence,
-                 triangulation_evidence: TriangulationEvidence,
-                 boundary: finite_measuring_stick_metaphor_claim_not_general_cognitive_metaphor_theory,
-                 fact: metaphor_source(ConceptId,
-                                       MetaphorName,
-                                       Mapping,
-                                       Citation) }.
+    Witness = WitnessDict43.
 
 measuring_stick_metaphor_family(measuring_stick_metaphor).
 measuring_stick_metaphor_family(measuring_stick_schema).

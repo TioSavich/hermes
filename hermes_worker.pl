@@ -1936,6 +1936,7 @@ dispatch_call_args([Spec|Specs], Bound, [Arg|Args], Outputs) :-
 
 dispatch_call_arg(drop, _Bound, _Arg, Outputs, Outputs) :- !.
 dispatch_call_arg(out(Name), _Bound, Arg, [Name-Arg|Outputs], Outputs) :- !.
+dispatch_call_arg(const(Value), _Bound, Value, Outputs, Outputs) :- !.
 dispatch_call_arg(Key, Bound, Value, Outputs, Outputs) :-
     memberchk(Key-Value, Bound).
 

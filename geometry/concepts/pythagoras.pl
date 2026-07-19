@@ -15,14 +15,8 @@
 %
 %   Inspectable proof object for a finite Pythagorean curriculum material row.
 pythagorean_material_claim_witness(Id, Witness) :-
-    pythagorean_material_claim(Id, Concept, Premise, Conclusion, Polarity),
-    pythagorean_primary_tier(Concept, Tier, Sources, SourceNote, TierEvidence),
-    pythagorean_related_misconception_witnesses(Concept,
-                                                MisconceptionWitnesses),
-    pythagorean_condition_roles(Id, Roles),
-    Witness = _{ kind: geometry_pythagorean_material_inference,
-                 scope: closed_world_finite_pythagorean_table,
-                 id: Id,
+    witness_dict:witness_dict(geometry_pythagorean_material_inference, closed_world_finite_pythagorean_table,
+                              _{id: Id,
                  concept: Concept,
                  premise: Premise,
                  conclusion: Conclusion,
@@ -34,7 +28,13 @@ pythagorean_material_claim_witness(Id, Witness) :-
                  boundary: finite_pythagorean_curriculum_claim_not_general_metric_geometry,
                  condition_roles: Roles,
                  related_misconception_witnesses: MisconceptionWitnesses,
-                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }.
+                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }, WitnessDict23),
+    pythagorean_material_claim(Id, Concept, Premise, Conclusion, Polarity),
+    pythagorean_primary_tier(Concept, Tier, Sources, SourceNote, TierEvidence),
+    pythagorean_related_misconception_witnesses(Concept,
+                                                MisconceptionWitnesses),
+    pythagorean_condition_roles(Id, Roles),
+    Witness = WitnessDict23.
 
 pythagorean_primary_tier(Concept, Tier, Sources, SourceNote, TierEvidence) :-
     findall(tier_entry(CandidateTier,

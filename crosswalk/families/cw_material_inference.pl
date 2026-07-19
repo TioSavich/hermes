@@ -93,16 +93,16 @@ material_inference_unified(pml_rhythm, [A], C, pml_rhythm) :-
 %  records which loaded source accepted the concrete inference and how its
 %  native premise shape was projected into the crosswalk list form.
 material_inference_witness(Id, Premises, Conclusion, Source,
-                           _{ kind: material_inference,
-                              scope: closed_world_finite_loaded_material_sources,
-                              source: Source,
+                           WitnessDict96) :-
+    witness_dict:witness_dict(material_inference, closed_world_finite_loaded_material_sources,
+                              _{source: Source,
                               legacy_functor: LegacyFunctor,
                               id: Id,
                               premises: Premises,
                               conclusion: Conclusion,
                               premise_projection: Projection,
                               derivation: Derivation,
-                              source_witness: SourceWitness }) :-
+                              source_witness: SourceWitness }, WitnessDict96),
     material_inference_source(Source, LegacyFunctor),
     source_material_inference_witness(Source,
                                       Id,

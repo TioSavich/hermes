@@ -98,15 +98,15 @@ executable_practice_unified(Variant, PredIndicator, Kind, Source) :-
 %  `run_learned_strategy/5`, because that predicate runs learned strategy clauses
 %  when such clauses exist.
 executable_practice_witness(Variant, PredIndicator, Kind, Source,
-                            _{ kind: executable_practice_registry_entry,
-                               scope: closed_world_finite_loaded_executable_practice_registry,
-                               variant: Variant,
+                            WitnessDict101) :-
+    witness_dict:witness_dict(executable_practice_registry_entry, closed_world_finite_loaded_executable_practice_registry,
+                              _{variant: Variant,
                                predicate: PredIndicator,
                                practice_kind: Kind,
                                source: Source,
                                legacy_functor: LegacyFunctor,
                                invocation_policy: InvocationPolicy,
-                               source_witness: SourceWitness }) :-
+                               source_witness: SourceWitness }, WitnessDict101),
     source_executable_practice_witness(Variant,
                                        PredIndicator,
                                        Kind,

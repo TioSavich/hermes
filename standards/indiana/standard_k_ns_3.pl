@@ -105,14 +105,8 @@ count_collection(Objects, Count, Pairing) :-
 %   next successor count, and the final successor state is the collection's
 %   cardinality.
 count_collection_witness(Objects, Count, Pairing, Witness) :-
-    incur_cost(inference),
-    zero(Start),
-    pair_objects_witness(Objects, Start, Count, Pairing, PairWitnesses),
-    length(Objects, ObjectCount),
-    length(Pairing, PairCount),
-    Witness = _{ kind: standard_k_ns_3_count_collection,
-                 scope: closed_world_finite_supplied_object_list,
-                 standard: in_k_ns_3,
+    witness_dict:witness_dict(standard_k_ns_3_count_collection, closed_world_finite_supplied_object_list,
+                              _{standard: in_k_ns_3,
                  source_predicate: count_collection/3,
                  objects: Objects,
                  object_count: ObjectCount,
@@ -122,7 +116,13 @@ count_collection_witness(Objects, Count, Pairing, Witness) :-
                  pair_count: PairCount,
                  derivation: successor_pairing_over_supplied_list,
                  boundary: supplied_list_elements_are_the_countable_objects,
-                 pair_witnesses: PairWitnesses }.
+                 pair_witnesses: PairWitnesses }, WitnessDict113),
+    incur_cost(inference),
+    zero(Start),
+    pair_objects_witness(Objects, Start, Count, Pairing, PairWitnesses),
+    length(Objects, ObjectCount),
+    length(Pairing, PairCount),
+    Witness = WitnessDict113.
 
 pair_objects_witness(Objects, Start, Count, Pairing, PairWitnesses) :-
     pair_objects_witness_(Objects, 1, Start, Count, Pairing, PairWitnesses).
@@ -167,12 +167,8 @@ how_many(Objects, Name) :-
 %   Count a supplied finite object list, take the final count as cardinality,
 %   and resolve that recollection through the current taught-name table.
 how_many_witness(Objects, Name, Witness) :-
-    incur_cost(inference),
-    count_collection_witness(Objects, Count, Pairing, CountWitness),
-    write_numeral_witness(Count, Name, NameWitness),
-    Witness = _{ kind: standard_k_ns_3_how_many,
-                 scope: closed_world_finite_supplied_object_list_and_taught_names,
-                 standard: in_k_ns_3,
+    witness_dict:witness_dict(standard_k_ns_3_how_many, closed_world_finite_supplied_object_list_and_taught_names,
+                              _{standard: in_k_ns_3,
                  source_predicate: how_many/2,
                  objects: Objects,
                  count: Count,
@@ -181,7 +177,11 @@ how_many_witness(Objects, Name, Witness) :-
                  derivation: cardinality_principle_then_taught_name_lookup,
                  boundary: supplied_list_and_current_standard_k_ns_2_name_table,
                  count_witness: CountWitness,
-                 name_witness: NameWitness }.
+                 name_witness: NameWitness }, WitnessDict173),
+    incur_cost(inference),
+    count_collection_witness(Objects, Count, Pairing, CountWitness),
+    write_numeral_witness(Count, Name, NameWitness),
+    Witness = WitnessDict173.
 
 %!  cardinality(+Trace, -Count) is det.
 %
@@ -198,16 +198,16 @@ cardinality(Trace, Count) :-
 %   The cardinality principle for a finite counting trace: the last state in
 %   the supplied trace is the answer to "how many?".
 cardinality_witness(Trace, Count,
-                    _{ kind: standard_k_ns_3_cardinality,
-                       scope: closed_world_finite_counting_trace,
-                       standard: in_k_ns_3,
+                    WitnessDict201) :-
+    witness_dict:witness_dict(standard_k_ns_3_cardinality, closed_world_finite_counting_trace,
+                              _{standard: in_k_ns_3,
                        source_predicate: cardinality/2,
                        trace: Trace,
                        trace_length: TraceLength,
                        last_state: LastState,
                        count: Count,
                        derivation: last_count_state_is_cardinality,
-                       boundary: supplied_trace_must_be_a_finite_counting_trace }) :-
+                       boundary: supplied_trace_must_be_a_finite_counting_trace }, WitnessDict201),
     last(Trace, LastState),
     LastState = state(Count, _Transition),
     length(Trace, TraceLength).
@@ -234,14 +234,8 @@ count_out(Name, Objects) :-
 %   Resolve a taught number name to a recollection and produce a finite list
 %   with exactly that many generic object tokens.
 count_out_witness(Name, Objects, Witness) :-
-    incur_cost(inference),
-    read_numeral_witness(Name, Count, ReadWitness),
-    recollection_to_integer(Count, N),
-    length(Objects, N),
-    maplist(=(object), Objects),
-    Witness = _{ kind: standard_k_ns_3_count_out,
-                 scope: closed_world_finite_taught_name_to_object_list,
-                 standard: in_k_ns_3,
+    witness_dict:witness_dict(standard_k_ns_3_count_out, closed_world_finite_taught_name_to_object_list,
+                              _{standard: in_k_ns_3,
                  source_predicate: count_out/2,
                  name: Name,
                  count: Count,
@@ -249,7 +243,13 @@ count_out_witness(Name, Objects, Witness) :-
                  objects: Objects,
                  derivation: taught_name_lookup_then_finite_list_construction,
                  boundary: current_standard_k_ns_2_name_table_and_generic_tokens,
-                 read_witness: ReadWitness }.
+                 read_witness: ReadWitness }, WitnessDict242),
+    incur_cost(inference),
+    read_numeral_witness(Name, Count, ReadWitness),
+    recollection_to_integer(Count, N),
+    length(Objects, N),
+    maplist(=(object), Objects),
+    Witness = WitnessDict242.
 
 
 % ============================================================
@@ -271,6 +271,21 @@ verify_order_independence(Objects, Result) :-
 %   Count the supplied finite list and its reverse. The relation is witnessed by
 %   both counting traces plus the grounded equality check between final counts.
 verify_order_independence_witness(Objects, Result, Witness) :-
+    witness_dict:witness_dict(standard_k_ns_3_order_independence, closed_world_finite_list_and_reverse,
+                              _{standard: in_k_ns_3,
+                 source_predicate: verify_order_independence/2,
+                 objects: Objects,
+                 reversed_objects: Reversed,
+                 original_count: Count1,
+                 reversed_count: Count2,
+                 result: Result,
+                 original_pairing: Pairing1,
+                 reversed_pairing: Pairing2,
+                 derivation: recount_reverse_and_compare_final_cardinalities,
+                 boundary: supplied_list_and_its_reverse_only,
+                 original_count_witness: CountWitness1,
+                 reversed_count_witness: CountWitness2,
+                 comparison_witness: ComparisonWitness }, WitnessDict294),
     incur_cost(inference),
     count_collection_witness(Objects, Count1, Pairing1, CountWitness1),
     reverse(Objects, Reversed),
@@ -291,19 +306,4 @@ verify_order_independence_witness(Objects, Result, Witness) :-
                                result: different,
                                derivation: grounded_equal_to_failed_for_recount }
     ),
-    Witness = _{ kind: standard_k_ns_3_order_independence,
-                 scope: closed_world_finite_list_and_reverse,
-                 standard: in_k_ns_3,
-                 source_predicate: verify_order_independence/2,
-                 objects: Objects,
-                 reversed_objects: Reversed,
-                 original_count: Count1,
-                 reversed_count: Count2,
-                 result: Result,
-                 original_pairing: Pairing1,
-                 reversed_pairing: Pairing2,
-                 derivation: recount_reverse_and_compare_final_cardinalities,
-                 boundary: supplied_list_and_its_reverse_only,
-                 original_count_witness: CountWitness1,
-                 reversed_count_witness: CountWitness2,
-                 comparison_witness: ComparisonWitness }.
+    Witness = WitnessDict294.

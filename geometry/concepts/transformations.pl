@@ -15,16 +15,8 @@
 %
 %   Inspectable proof object for a finite transformation-geometry material row.
 transformation_material_claim_witness(Id, Witness) :-
-    transformation_material_claim(Id, Concept, Premise, Conclusion, Polarity),
-    transformation_concept_tier_evidence(Concept,
-                                         ConceptTierBoundary,
-                                         ConceptTierEvidence),
-    transformation_related_misconception_witnesses(Concept,
-                                                   MisconceptionWitnesses),
-    transformation_condition_roles(Id, Roles),
-    Witness = _{ kind: geometry_transformation_material_inference,
-                 scope: closed_world_finite_transformation_table,
-                 id: Id,
+    witness_dict:witness_dict(geometry_transformation_material_inference, closed_world_finite_transformation_table,
+                              _{id: Id,
                  concept: Concept,
                  premise: Premise,
                  conclusion: Conclusion,
@@ -34,7 +26,15 @@ transformation_material_claim_witness(Id, Witness) :-
                  boundary: finite_transformation_curriculum_claim_not_general_plane_isometry_theory,
                  condition_roles: Roles,
                  related_misconception_witnesses: MisconceptionWitnesses,
-                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }.
+                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }, WitnessDict25),
+    transformation_material_claim(Id, Concept, Premise, Conclusion, Polarity),
+    transformation_concept_tier_evidence(Concept,
+                                         ConceptTierBoundary,
+                                         ConceptTierEvidence),
+    transformation_related_misconception_witnesses(Concept,
+                                                   MisconceptionWitnesses),
+    transformation_condition_roles(Id, Roles),
+    Witness = WitnessDict25.
 
 transformation_concept_tier_evidence(Concept,
                                      loaded_concept_tier_record,

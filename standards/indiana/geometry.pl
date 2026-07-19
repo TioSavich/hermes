@@ -18,19 +18,8 @@
 %   table; it is not a general standards-alignment model for open-ended
 %   curricula.
 indiana_geometry_standard_witness(ConceptId, Code, Witness) :-
-    indiana_geometry_standard_fact(ConceptId, Code, Statement),
-    indiana_geometry_standard_tier_fact(ConceptId,
-                                        Code,
-                                        Tier,
-                                        Sources,
-                                        SourceNote),
-    indiana_geometry_concept_evidence(ConceptId,
-                                      ConceptBoundary,
-                                      ConceptEvidence),
-    maplist(indiana_geometry_source_witness, Sources, SourceWitnesses),
-    Witness = _{ kind: indiana_geometry_standard_anchor,
-                 scope: closed_world_finite_indiana_geometry_standard_table,
-                 concept: ConceptId,
+    witness_dict:witness_dict(indiana_geometry_standard_anchor, closed_world_finite_indiana_geometry_standard_table,
+                              _{concept: ConceptId,
                  framework: in_indiana,
                  code: Code,
                  statement: Statement,
@@ -41,7 +30,18 @@ indiana_geometry_standard_witness(ConceptId, Code, Witness) :-
                  concept_boundary: ConceptBoundary,
                  concept_evidence: ConceptEvidence,
                  boundary: finite_indiana_geometry_anchor_table_not_general_standards_model,
-                 fact: standard_anchor(ConceptId, in_indiana, Code, Statement) }.
+                 fact: standard_anchor(ConceptId, in_indiana, Code, Statement) }, WitnessDict31),
+    indiana_geometry_standard_fact(ConceptId, Code, Statement),
+    indiana_geometry_standard_tier_fact(ConceptId,
+                                        Code,
+                                        Tier,
+                                        Sources,
+                                        SourceNote),
+    indiana_geometry_concept_evidence(ConceptId,
+                                      ConceptBoundary,
+                                      ConceptEvidence),
+    maplist(indiana_geometry_source_witness, Sources, SourceWitnesses),
+    Witness = WitnessDict31.
 
 indiana_geometry_standard_fact(ConceptId, Code, Statement) :-
     Clause = standard_anchor(ConceptId, in_indiana, Code, Statement),

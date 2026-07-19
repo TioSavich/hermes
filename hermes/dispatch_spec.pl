@@ -533,8 +533,8 @@ dispatch_spec(intersubjective_material_witness,
             malformed_intersubjective_material_request)).
 dispatch_spec(mua_kind_coherence_witness,
     [kind-term, row_text-json],
-    call(mua_relations:kind_mua_coherence_witness,
-         [kind, row_text, drop, out(witness)]),
+    call(cw_mua_coherence:mua_coherence_source_witness,
+         [kind, row_text, drop, const(pml_vocabulary), out(witness)]),
     witness(no_mua_kind_coherence_witness,
             malformed_mua_kind_coherence_request)).
 dispatch_spec(validate_reader_axioms,

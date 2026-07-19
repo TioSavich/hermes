@@ -127,15 +127,15 @@ grounding_metaphor_unified(Metaphor, concept(ConceptId), geometry) :-
 %  records which loaded layer accepted the concrete `(Metaphor, Anchor)` pair
 %  and what source details were preserved outside the shared projection.
 grounding_metaphor_witness(Metaphor, Anchor, Source,
-                           _{ kind: grounding_metaphor_crosswalk,
-                              scope: closed_world_finite_loaded_grounding_metaphor_sources,
-                              source: Source,
+                           WitnessDict130) :-
+    witness_dict:witness_dict(grounding_metaphor_crosswalk, closed_world_finite_loaded_grounding_metaphor_sources,
+                              _{source: Source,
                               legacy_functor: LegacyFunctor,
                               metaphor: Metaphor,
                               anchor: Anchor,
                               projection: Projection,
                               derivation: Derivation,
-                              source_witness: SourceWitness }) :-
+                              source_witness: SourceWitness }, WitnessDict130),
     grounding_metaphor_source(Source, LegacyFunctor),
     source_grounding_metaphor_witness(Source,
                                       Metaphor,

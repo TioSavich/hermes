@@ -89,9 +89,9 @@ misconception_hook_unified(Operation, misconception(Name), Family, Hook, literat
 %   `once/1`, matching the existing projection, because the registry may consult
 %   harness and corpus-backed evidence.
 misconception_hook_witness(Operation, Outcome, Family, Hook, Source,
-                           _{ kind: misconception_hook_crosswalk,
-                              scope: closed_world_finite_loaded_misconception_hook_sources,
-                              operation: Operation,
+                           WitnessDict92) :-
+    witness_dict:witness_dict(misconception_hook_crosswalk, closed_world_finite_loaded_misconception_hook_sources,
+                              _{operation: Operation,
                               outcome: Outcome,
                               family: Family,
                               hook: Hook,
@@ -99,7 +99,7 @@ misconception_hook_witness(Operation, Outcome, Family, Hook, Source,
                               legacy_functor: LegacyFunctor,
                               projection: Projection,
                               derivation: Derivation,
-                              source_witness: SourceWitness }) :-
+                              source_witness: SourceWitness }, WitnessDict92),
     source_misconception_hook_witness(Source,
                                       Operation,
                                       Outcome,

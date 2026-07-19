@@ -77,15 +77,15 @@ practice_vocabulary_unified(Key, [Description], mua_vocabulary_description) :-
 %  accepted the row and how the source value was projected to the canonical
 %  list-shaped `Vocabulary`.
 practice_vocabulary_witness(Key, Vocabulary, Source,
-                            _{ kind: practice_vocabulary_crosswalk,
-                               scope: closed_world_finite_loaded_practice_vocabulary_sources,
-                               key: Key,
+                            WitnessDict80) :-
+    witness_dict:witness_dict(practice_vocabulary_crosswalk, closed_world_finite_loaded_practice_vocabulary_sources,
+                              _{key: Key,
                                vocabulary: Vocabulary,
                                source: Source,
                                legacy_functor: LegacyFunctor,
                                vocabulary_shape: VocabularyShape,
                                derivation: Derivation,
-                               source_witness: SourceWitness }) :-
+                               source_witness: SourceWitness }, WitnessDict80),
     source_practice_vocabulary_witness(Source,
                                        Key,
                                        Vocabulary,

@@ -15,19 +15,8 @@
 %   geometry anchor table. This proves membership in the loaded table; it is
 %   not a general standards-alignment model for open-ended curricula.
 ccss_geometry_standard_witness(ConceptId, Code, Witness) :-
-    ccss_geometry_standard_fact(ConceptId, Code, Statement),
-    ccss_geometry_standard_tier_fact(ConceptId,
-                                     Code,
-                                     Tier,
-                                     Sources,
-                                     SourceNote),
-    ccss_geometry_concept_evidence(ConceptId,
-                                   ConceptBoundary,
-                                   ConceptEvidence),
-    maplist(ccss_geometry_source_witness, Sources, SourceWitnesses),
-    Witness = _{ kind: ccss_geometry_standard_anchor,
-                 scope: closed_world_finite_ccss_geometry_standard_table,
-                 concept: ConceptId,
+    witness_dict:witness_dict(ccss_geometry_standard_anchor, closed_world_finite_ccss_geometry_standard_table,
+                              _{concept: ConceptId,
                  framework: ccss,
                  code: Code,
                  statement: Statement,
@@ -38,7 +27,18 @@ ccss_geometry_standard_witness(ConceptId, Code, Witness) :-
                  concept_boundary: ConceptBoundary,
                  concept_evidence: ConceptEvidence,
                  boundary: finite_ccss_geometry_anchor_table_not_general_standards_model,
-                 fact: standard_anchor(ConceptId, ccss, Code, Statement) }.
+                 fact: standard_anchor(ConceptId, ccss, Code, Statement) }, WitnessDict28),
+    ccss_geometry_standard_fact(ConceptId, Code, Statement),
+    ccss_geometry_standard_tier_fact(ConceptId,
+                                     Code,
+                                     Tier,
+                                     Sources,
+                                     SourceNote),
+    ccss_geometry_concept_evidence(ConceptId,
+                                   ConceptBoundary,
+                                   ConceptEvidence),
+    maplist(ccss_geometry_source_witness, Sources, SourceWitnesses),
+    Witness = WitnessDict28.
 
 ccss_geometry_standard_fact(ConceptId, Code, Statement) :-
     Clause = standard_anchor(ConceptId, ccss, Code, Statement),

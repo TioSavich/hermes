@@ -78,16 +78,16 @@ accommodation_unified(Target, Source) :-
 %  invoke the target because these predicates write diagnostics, mutate stress
 %  or knowledge state, or signal failure to external crisis handlers.
 accommodation_witness(Target, Source,
-                      _{ kind: accommodation_registry_entry,
-                         scope: closed_world_finite_loaded_accommodation_registry,
-                         target: Target,
+                      WitnessDict81) :-
+    witness_dict:witness_dict(accommodation_registry_entry, closed_world_finite_loaded_accommodation_registry,
+                              _{target: Target,
                          source: Source,
                          legacy_functor: LegacyFunctor,
                          trigger_shape: TriggerShape,
                          effect: Effect,
                          invocation_policy: registry_only_no_executor_call,
                          side_effect_boundary: SideEffectBoundary,
-                         target_witness: TargetWitness }) :-
+                         target_witness: TargetWitness }, WitnessDict81),
     registry(Target,
              Source,
              Effect,

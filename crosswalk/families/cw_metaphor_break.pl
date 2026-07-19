@@ -89,16 +89,16 @@ metaphor_break_unified(BreakId, compiled, ConditionSet, compiled) :-
 %  layer accepted the concrete break and how that layer was projected into the
 %  shared `(Metaphor, Inference, Detail)` shape.
 metaphor_break_witness(Metaphor, Inference, Detail, Source,
-                       _{ kind: metaphor_break_crosswalk,
-                          scope: closed_world_finite_loaded_metaphor_break_sources,
-                          source: Source,
+                       WitnessDict92) :-
+    witness_dict:witness_dict(metaphor_break_crosswalk, closed_world_finite_loaded_metaphor_break_sources,
+                              _{source: Source,
                           legacy_functor: LegacyFunctor,
                           metaphor: Metaphor,
                           inference: Inference,
                           detail: Detail,
                           projection: Projection,
                           derivation: Derivation,
-                          source_witness: SourceWitness }) :-
+                          source_witness: SourceWitness }, WitnessDict92),
     metaphor_break_source(Source, LegacyFunctor),
     source_metaphor_break_witness(Source,
                                   Metaphor,

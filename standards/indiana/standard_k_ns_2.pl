@@ -198,19 +198,19 @@ represent_count(Objects, Count, Name) :-
 %   Count a finite object list, convert that length to a recollection, and
 %   resolve it through the taught numeral table.
 represent_count_witness(Objects, Count, Name, Witness) :-
-    length(Objects, N),
-    integer_to_recollection(N, Count),
-    write_numeral_witness(Count, Name, WriteWitness),
-    Witness = _{ kind: standard_k_ns_2_represent_count,
-                 scope: closed_world_finite_dynamic_numeral_table,
-                 standard: in_k_ns_2,
+    witness_dict:witness_dict(standard_k_ns_2_represent_count, closed_world_finite_dynamic_numeral_table,
+                              _{standard: in_k_ns_2,
                  source_predicate: represent_count/3,
                  object_count: N,
                  count: Count,
                  name: Name,
                  derivation: finite_list_length_then_taught_name_lookup,
                  boundary: supplied_object_list_and_current_taught_names,
-                 write_witness: WriteWitness }.
+                 write_witness: WriteWitness }, WitnessDict204),
+    length(Objects, N),
+    integer_to_recollection(N, Count),
+    write_numeral_witness(Count, Name, WriteWitness),
+    Witness = WitnessDict204.
 
 % ============================================================
 % Curriculum support
@@ -239,16 +239,16 @@ teach_numerals_to(MaxInt) :-
 %
 %   Teach all teacher-known number words from 0 through MaxInt.
 teach_numerals_to_witness(MaxInt,
-                          _{ kind: standard_k_ns_2_teach_sequence,
-                             scope: closed_world_finite_teacher_number_word_table,
-                             standard: in_k_ns_2,
+                          WitnessDict242) :-
+    witness_dict:witness_dict(standard_k_ns_2_teach_sequence, closed_world_finite_teacher_number_word_table,
+                              _{standard: in_k_ns_2,
                              source_predicate: teach_numerals_to/1,
                              max: MaxInt,
                              taught: Taught,
                              taught_count: TaughtCount,
                              missing_words: Missing,
                              derivation: iterate_teacher_number_word_table,
-                             boundary: number_word_rows_loaded_in_standard_k_ns_2 }) :-
+                             boundary: number_word_rows_loaded_in_standard_k_ns_2 }, WitnessDict242),
     teach_numerals_(0, MaxInt, [], RevTaught, [], RevMissing),
     reverse(RevTaught, Taught),
     reverse(RevMissing, Missing),
@@ -272,31 +272,31 @@ teach_numerals_(Current, Max, AccTaught, Taught, AccMissing, Missing) :-
 %
 %   Inspect a row in the current dynamic naming table.
 numeral_known_witness(Recollection, Name,
-                      _{ kind: standard_k_ns_2_numeral_known,
-                         scope: closed_world_finite_dynamic_numeral_table,
-                         standard: in_k_ns_2,
+                      WitnessDict275) :-
+    witness_dict:witness_dict(standard_k_ns_2_numeral_known, closed_world_finite_dynamic_numeral_table,
+                              _{standard: in_k_ns_2,
                          source_predicate: numeral_known/2,
                          recollection: Recollection,
                          count: Count,
                          name: Name,
                          derivation: current_teacher_endorsed_name_row,
-                         boundary: current_dynamic_taught_names }) :-
+                         boundary: current_dynamic_taught_names }, WitnessDict275),
     numeral_known(Recollection, Name),
     recollection_to_integer(Recollection, Count).
 
 learning_witness(Recollection,
                  Name,
                  Status,
-                 _{ kind: standard_k_ns_2_learn_numeral,
-                    scope: closed_world_finite_dynamic_numeral_table,
-                    standard: in_k_ns_2,
+                 WitnessDict290) :-
+    witness_dict:witness_dict(standard_k_ns_2_learn_numeral, closed_world_finite_dynamic_numeral_table,
+                              _{standard: in_k_ns_2,
                     source_predicate: learn_numeral/2,
                     recollection: Recollection,
                     count: Count,
                     name: Name,
                     status: Status,
                     derivation: teacher_endorsed_symbol_assignment,
-                    boundary: current_dynamic_taught_names }) :-
+                    boundary: current_dynamic_taught_names }, WitnessDict290),
     recollection_to_integer(Recollection, Count).
 
 naming_projection_witness(Operation,
@@ -304,9 +304,9 @@ naming_projection_witness(Operation,
                           Recollection,
                           Name,
                           KnownWitness,
-                          _{ kind: standard_k_ns_2_naming_projection,
-                             scope: closed_world_finite_dynamic_numeral_table,
-                             standard: in_k_ns_2,
+                          WitnessDict307) :-
+    witness_dict:witness_dict(standard_k_ns_2_naming_projection, closed_world_finite_dynamic_numeral_table,
+                              _{standard: in_k_ns_2,
                              operation: Operation,
                              source_predicate: Predicate,
                              recollection: Recollection,
@@ -314,5 +314,5 @@ naming_projection_witness(Operation,
                              name: Name,
                              derivation: current_taught_name_lookup,
                              boundary: current_dynamic_taught_names,
-                             known_witness: KnownWitness }) :-
+                             known_witness: KnownWitness }, WitnessDict307),
     recollection_to_integer(Recollection, Count).

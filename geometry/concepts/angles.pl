@@ -15,15 +15,8 @@
 %
 %   Inspectable proof object for a finite angle-geometry material row.
 angle_material_claim_witness(Id, Witness) :-
-    angle_material_claim(Id, Concept, Premise, Conclusion, Polarity),
-    angle_concept_tier_evidence(Concept,
-                                ConceptTierBoundary,
-                                ConceptTierEvidence),
-    angle_related_misconception_witnesses(Concept, MisconceptionWitnesses),
-    angle_condition_roles(Id, Roles),
-    Witness = _{ kind: geometry_angle_material_inference,
-                 scope: closed_world_finite_angle_table,
-                 id: Id,
+    witness_dict:witness_dict(geometry_angle_material_inference, closed_world_finite_angle_table,
+                              _{id: Id,
                  concept: Concept,
                  premise: Premise,
                  conclusion: Conclusion,
@@ -33,7 +26,14 @@ angle_material_claim_witness(Id, Witness) :-
                  boundary: finite_angle_curriculum_claim_not_general_euclidean_geometry,
                  condition_roles: Roles,
                  related_misconception_witnesses: MisconceptionWitnesses,
-                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }.
+                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }, WitnessDict24),
+    angle_material_claim(Id, Concept, Premise, Conclusion, Polarity),
+    angle_concept_tier_evidence(Concept,
+                                ConceptTierBoundary,
+                                ConceptTierEvidence),
+    angle_related_misconception_witnesses(Concept, MisconceptionWitnesses),
+    angle_condition_roles(Id, Roles),
+    Witness = WitnessDict24.
 
 angle_concept_tier_evidence(Concept,
                             loaded_concept_tier_record,

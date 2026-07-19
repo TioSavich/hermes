@@ -15,12 +15,8 @@
 %   Van de Walle activity table. This proves local table membership and tier
 %   evidence; it is not a general instructional-activity model.
 van_de_walle_bootstrap_witness(Id, Witness) :-
-    van_de_walle_bootstrap_fact(Id, Concept, Kind, Prompt, Tools, Transition),
-    van_de_walle_bootstrap_tier_fact(Id, Tier, Sources, SourceNote),
-    maplist(van_de_walle_source_witness, Sources, SourceWitnesses),
-    Witness = _{ kind: geometry_van_de_walle_bootstrap_activity,
-                 scope: closed_world_finite_van_de_walle_bootstrap_table,
-                 id: Id,
+    witness_dict:witness_dict(geometry_van_de_walle_bootstrap_activity, closed_world_finite_van_de_walle_bootstrap_table,
+                              _{id: Id,
                  concept: Concept,
                  kind_of_record: Kind,
                  prompt: Prompt,
@@ -31,7 +27,11 @@ van_de_walle_bootstrap_witness(Id, Witness) :-
                  source_witnesses: SourceWitnesses,
                  source_note: SourceNote,
                  boundary: finite_van_de_walle_bootstrap_table_not_general_activity_model,
-                 fact: bootstrap(Id, Concept, Kind, Prompt, Tools, Transition) }.
+                 fact: bootstrap(Id, Concept, Kind, Prompt, Tools, Transition) }, WitnessDict21),
+    van_de_walle_bootstrap_fact(Id, Concept, Kind, Prompt, Tools, Transition),
+    van_de_walle_bootstrap_tier_fact(Id, Tier, Sources, SourceNote),
+    maplist(van_de_walle_source_witness, Sources, SourceWitnesses),
+    Witness = WitnessDict21.
 
 van_de_walle_bootstrap_fact(Id, Concept, Kind, Prompt, Tools, Transition) :-
     Clause = bootstrap(Id, Concept, Kind, Prompt, Tools, Transition),

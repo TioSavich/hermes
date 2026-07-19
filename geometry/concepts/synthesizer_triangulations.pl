@@ -24,17 +24,8 @@
 %   Inspectable witness for the finite cross-source concept triangulations
 %   authored in this file.
 synthesizer_concept_triangulation_witness(ConceptId, Witness) :-
-    synthesizer_triangulation_tier_fact(ConceptId, Tier, Sources, Note),
-    synthesizer_triangulation_concept_evidence(ConceptId,
-                                               ConceptBoundary,
-                                               ConceptEvidence),
-    maplist(synthesizer_source_witness, Sources, SourceWitnesses),
-    synthesizer_triangulation_evidence(ConceptId,
-                                       TriangulationBoundary,
-                                       TriangulationEvidence),
-    Witness = _{ kind: geometry_synthesizer_concept_triangulation,
-                 scope: closed_world_finite_synthesizer_triangulation_table,
-                 concept: ConceptId,
+    witness_dict:witness_dict(geometry_synthesizer_concept_triangulation, closed_world_finite_synthesizer_triangulation_table,
+                              _{concept: ConceptId,
                  tier: Tier,
                  sources: Sources,
                  source_witnesses: SourceWitnesses,
@@ -44,7 +35,16 @@ synthesizer_concept_triangulation_witness(ConceptId, Witness) :-
                  triangulation_boundary: TriangulationBoundary,
                  triangulation_evidence: TriangulationEvidence,
                  boundary: finite_cross_source_triangulation_claim_not_general_literature_model,
-                 fact: tier(ref(concept, ConceptId), Tier, Sources, Note) }.
+                 fact: tier(ref(concept, ConceptId), Tier, Sources, Note) }, WitnessDict35),
+    synthesizer_triangulation_tier_fact(ConceptId, Tier, Sources, Note),
+    synthesizer_triangulation_concept_evidence(ConceptId,
+                                               ConceptBoundary,
+                                               ConceptEvidence),
+    maplist(synthesizer_source_witness, Sources, SourceWitnesses),
+    synthesizer_triangulation_evidence(ConceptId,
+                                       TriangulationBoundary,
+                                       TriangulationEvidence),
+    Witness = WitnessDict35.
 
 synthesizer_triangulation_tier_fact(ConceptId, Tier, Sources, Note) :-
     Clause = tier(ref(concept, ConceptId), Tier, Sources, Note),

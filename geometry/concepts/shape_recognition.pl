@@ -17,18 +17,8 @@
 %
 %   Inspectable proof object for a finite shape-recognition material row.
 shape_recognition_material_claim_witness(Id, Witness) :-
-    shape_recognition_material_claim(Id, Concept, Premise, Conclusion, Polarity),
-    shape_recognition_concept_tier_evidence(Concept,
-                                            ConceptTierBoundary,
-                                            ConceptTierEvidence),
-    shape_recognition_related_misconception_witnesses(
-        Concept,
-        MisconceptionWitnesses
-    ),
-    shape_recognition_condition_roles(Id, Roles),
-    Witness = _{ kind: geometry_shape_recognition_material_inference,
-                 scope: closed_world_finite_shape_recognition_table,
-                 id: Id,
+    witness_dict:witness_dict(geometry_shape_recognition_material_inference, closed_world_finite_shape_recognition_table,
+                              _{id: Id,
                  concept: Concept,
                  premise: Premise,
                  conclusion: Conclusion,
@@ -38,7 +28,17 @@ shape_recognition_material_claim_witness(Id, Witness) :-
                  boundary: finite_shape_recognition_curriculum_claim_not_general_visual_classifier,
                  condition_roles: Roles,
                  related_misconception_witnesses: MisconceptionWitnesses,
-                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }.
+                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }, WitnessDict29),
+    shape_recognition_material_claim(Id, Concept, Premise, Conclusion, Polarity),
+    shape_recognition_concept_tier_evidence(Concept,
+                                            ConceptTierBoundary,
+                                            ConceptTierEvidence),
+    shape_recognition_related_misconception_witnesses(
+        Concept,
+        MisconceptionWitnesses
+    ),
+    shape_recognition_condition_roles(Id, Roles),
+    Witness = WitnessDict29.
 
 shape_recognition_concept_tier_evidence(Concept,
                                         loaded_concept_tier_record,

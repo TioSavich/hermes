@@ -90,15 +90,15 @@ valid_denominator(D) :-
 
 %!  valid_denominator_witness(+Denominator, -Witness) is semidet.
 valid_denominator_witness(D,
-                          _{ kind: standard_3_ns_2_valid_denominator,
-                             scope: closed_world_finite_standard_3_ns_2_denominator_set,
-                             standard: in_3_ns_2,
+                          WitnessDict93) :-
+    witness_dict:witness_dict(standard_3_ns_2_valid_denominator, closed_world_finite_standard_3_ns_2_denominator_set,
+                              _{standard: in_3_ns_2,
                              source_predicate: valid_denominator/1,
                              denominator: D,
                              denominator_value: DI,
                              allowed_values: [2, 3, 4, 6, 8],
                              derivation: member_of_grade3_denominator_set,
-                             boundary: supplied_grounded_recollection_denominator }) :-
+                             boundary: supplied_grounded_recollection_denominator }, WitnessDict93),
     recollection_to_integer(D, DI),
     member(DI, [2, 3, 4, 6, 8]).
 
@@ -119,15 +119,15 @@ make_unit_fraction(Denominator, fraction(One, Denominator)) :-
 %!  make_unit_fraction_witness(+Denominator, -Fraction, -Witness) is semidet.
 make_unit_fraction_witness(Denominator,
                            fraction(One, Denominator),
-                           _{ kind: standard_3_ns_2_unit_fraction,
-                              scope: closed_world_finite_standard_3_ns_2_fraction_models,
-                              standard: in_3_ns_2,
+                           WitnessDict122) :-
+    witness_dict:witness_dict(standard_3_ns_2_unit_fraction, closed_world_finite_standard_3_ns_2_fraction_models,
+                              _{standard: in_3_ns_2,
                               source_predicate: make_unit_fraction/2,
                               fraction: fraction(One, Denominator),
                               pair: fraction(1, DenominatorValue),
                               denominator_witness: DenominatorWitness,
                               derivation: one_part_from_equal_partition,
-                              boundary: denominator_in_grade3_finite_set }) :-
+                              boundary: denominator_in_grade3_finite_set }, WitnessDict122),
     valid_denominator_witness(Denominator, DenominatorWitness),
     integer_to_recollection(1, One),
     recollection_to_integer(Denominator, DenominatorValue).
@@ -150,9 +150,9 @@ iterate_unit_fraction(fraction(One, Den), Count, fraction(Count, Den)) :-
 iterate_unit_fraction_witness(fraction(One, Den),
                               Count,
                               fraction(Count, Den),
-                              _{ kind: standard_3_ns_2_non_unit_fraction_iteration,
-                                 scope: closed_world_finite_standard_3_ns_2_fraction_models,
-                                 standard: in_3_ns_2,
+                              WitnessDict153) :-
+    witness_dict:witness_dict(standard_3_ns_2_non_unit_fraction_iteration, closed_world_finite_standard_3_ns_2_fraction_models,
+                              _{standard: in_3_ns_2,
                                  source_predicate: iterate_unit_fraction/3,
                                  unit_fraction: fraction(One, Den),
                                  result_fraction: fraction(Count, Den),
@@ -160,7 +160,7 @@ iterate_unit_fraction_witness(fraction(One, Den),
                                  unit_check: UnitCheck,
                                  count_bound: CountBound,
                                  derivation: iterate_unit_fraction_count_times,
-                                 boundary: numerator_not_exceeding_denominator }) :-
+                                 boundary: numerator_not_exceeding_denominator }, WitnessDict153),
     integer_to_recollection(1, ExpectedOne),
     equal_to(One, ExpectedOne),
     UnitCheck = numerator_is_one,
@@ -188,16 +188,16 @@ partition_whole(NumParts, Parts) :-
 %!  partition_whole_witness(+NumParts, -Parts, -Witness) is det.
 partition_whole_witness(NumParts,
                         Parts,
-                        _{ kind: standard_3_ns_2_partition,
-                           scope: closed_world_finite_standard_3_ns_2_fraction_models,
-                           standard: in_3_ns_2,
+                        WitnessDict191) :-
+    witness_dict:witness_dict(standard_3_ns_2_partition, closed_world_finite_standard_3_ns_2_fraction_models,
+                              _{standard: in_3_ns_2,
                            source_predicate: partition_whole/2,
                            num_parts: NumParts,
                            num_parts_value: N,
                            parts: Parts,
                            part_count: N,
                            derivation: construct_equal_part_slots,
-                           boundary: structural_partition_not_spatial_cutting }) :-
+                           boundary: structural_partition_not_spatial_cutting }, WitnessDict191),
     recollection_to_integer(NumParts, N),
     length(Parts, N),
     maplist(=(unit_part), Parts).
@@ -215,16 +215,16 @@ fraction_from_partition(NumParts, NumShaded, fraction(NumShaded, NumParts)) :-
 fraction_from_partition_witness(NumParts,
                                 NumShaded,
                                 fraction(NumShaded, NumParts),
-                                _{ kind: standard_3_ns_2_fraction_from_partition,
-                                   scope: closed_world_finite_standard_3_ns_2_fraction_models,
-                                   standard: in_3_ns_2,
+                                WitnessDict218) :-
+    witness_dict:witness_dict(standard_3_ns_2_fraction_from_partition, closed_world_finite_standard_3_ns_2_fraction_models,
+                              _{standard: in_3_ns_2,
                                    source_predicate: fraction_from_partition/3,
                                    fraction: fraction(NumShaded, NumParts),
                                    pair: fraction(ShadedValue, PartsValue),
                                    denominator_witness: DenominatorWitness,
                                    shaded_bound: shaded_less_than_or_equal_to_parts,
                                    derivation: selected_parts_over_equal_partition,
-                                   boundary: denominator_in_grade3_finite_set }) :-
+                                   boundary: denominator_in_grade3_finite_set }, WitnessDict218),
     valid_denominator_witness(NumParts, DenominatorWitness),
     (   smaller_than(NumShaded, NumParts) -> true
     ;   equal_to(NumShaded, NumParts) -> true
@@ -244,13 +244,13 @@ fraction_to_pair(fraction(Num, Den), NumInt, DenInt) :-
 fraction_to_pair_witness(fraction(Num, Den),
                          NumInt,
                          DenInt,
-                         _{ kind: standard_3_ns_2_fraction_pair_projection,
-                            scope: closed_world_finite_standard_3_ns_2_fraction_models,
-                            standard: in_3_ns_2,
+                         WitnessDict247) :-
+    witness_dict:witness_dict(standard_3_ns_2_fraction_pair_projection, closed_world_finite_standard_3_ns_2_fraction_models,
+                              _{standard: in_3_ns_2,
                             source_predicate: fraction_to_pair/3,
                             fraction: fraction(Num, Den),
                             pair: fraction(NumInt, DenInt),
                             derivation: recollection_pair_projection,
-                            boundary: supplied_grounded_fraction_terms }) :-
+                            boundary: supplied_grounded_fraction_terms }, WitnessDict247),
     recollection_to_integer(Num, NumInt),
     recollection_to_integer(Den, DenInt).

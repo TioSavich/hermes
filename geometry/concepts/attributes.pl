@@ -17,12 +17,8 @@
 %
 %   Inspectable proof object for a finite attributes material-inference row.
 attribute_material_claim_witness(Id, Witness) :-
-    attribute_material_claim(Id, Concept, Premise, Conclusion, Polarity),
-    attribute_related_misconception_witnesses(Concept, MisconceptionWitnesses),
-    attribute_condition_roles(Id, Roles),
-    Witness = _{ kind: geometry_attribute_material_inference,
-                 scope: closed_world_finite_geometry_attributes_table,
-                 id: Id,
+    witness_dict:witness_dict(geometry_attribute_material_inference, closed_world_finite_geometry_attributes_table,
+                              _{id: Id,
                  concept: Concept,
                  premise: Premise,
                  conclusion: Conclusion,
@@ -31,7 +27,11 @@ attribute_material_claim_witness(Id, Witness) :-
                  boundary: finite_attribute_material_row_not_general_proof_theory,
                  condition_roles: Roles,
                  related_misconception_witnesses: MisconceptionWitnesses,
-                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }.
+                 fact: material_inference(Concept, Premise, Conclusion, Polarity) }, WitnessDict23),
+    attribute_material_claim(Id, Concept, Premise, Conclusion, Polarity),
+    attribute_related_misconception_witnesses(Concept, MisconceptionWitnesses),
+    attribute_condition_roles(Id, Roles),
+    Witness = WitnessDict23.
 
 %!  attribute_material_inference_witness(+Concept, +Premise, +Conclusion,
 %!                                       +Polarity, -Witness) is semidet.

@@ -127,9 +127,9 @@ place_value_number_claim_witness(
     Canonical,
     commitment(Lit, GlossS),
     literature_commitment,
-    _{ kind: place_value_number_claim_crosswalk,
-       scope: closed_world_finite_verified_place_value_number_claim_edges,
-       canonical: Canonical,
+    WitnessDict130) :-
+    witness_dict:witness_dict(place_value_number_claim_crosswalk, closed_world_finite_verified_place_value_number_claim_edges,
+                              _{canonical: Canonical,
        detail: commitment(Lit, GlossS),
        source: literature_commitment,
        literature_atom: Lit,
@@ -139,7 +139,7 @@ place_value_number_claim_witness(
                           module: literature_vocabulary,
                           predicate: canonical_commitment/2,
                           atom: Lit,
-                          gloss: GlossS } }) :-
+                          gloss: GlossS } }, WitnessDict130),
     pv(Canonical, Lit, _),
     catch(literature_vocabulary:canonical_commitment(Lit, Gloss), _, fail),
     ( string(Gloss) -> GlossS = Gloss ; format(string(GlossS), "~w", [Gloss]) ).
@@ -147,15 +147,15 @@ place_value_number_claim_witness(
     Canonical,
     surface(Detail),
     Source,
-    _{ kind: place_value_number_claim_crosswalk,
-       scope: closed_world_finite_verified_place_value_number_claim_edges,
-       canonical: Canonical,
+    WitnessDict150) :-
+    witness_dict:witness_dict(place_value_number_claim_crosswalk, closed_world_finite_verified_place_value_number_claim_edges,
+                              _{canonical: Canonical,
        detail: surface(Detail),
        source: Source,
        legacy_functor: Source,
        projection: verified_legacy_surface,
        derivation: owner_predicate_surface_check,
-       source_witness: SourceWitness }) :-
+       source_witness: SourceWitness }, WitnessDict150),
     pv(Canonical, _, Surfaces),
     member(surface(Source, Detail), Surfaces),
     place_value_surface_witness(Source, Detail, SourceWitness).
