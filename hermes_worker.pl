@@ -2850,7 +2850,7 @@ monitoring_chart_export_dict(Code, Dict) :-
     maplist(gap_move_export_dict, GapMoves, GapMoveDicts),
     deformation_chart_scope_export(Code, DeformationChartDict),
     atom_string(Code, CodeString),
-    Dict = _{
+    Dict0 = _{
         lesson_code: CodeString,
         productive_core: ProductiveCore,
         anticipated_strategies: StrategyDicts,
@@ -2861,7 +2861,11 @@ monitoring_chart_export_dict(Code, Dict) :-
         deformation_chart: DeformationChartDict,
         expressive_power: ExpressivePowerDict,
         pml_facts: PMLDicts
-    }.
+    },
+    (   lesson_monitoring:lesson_guide_context_dict(Code, GuideContext)
+    ->  Dict = Dict0.put(GuideContext)
+    ;   Dict = Dict0
+    ).
 
 deformation_chart_scope_export(Code, Dict) :-
     findall(CoveredCode,

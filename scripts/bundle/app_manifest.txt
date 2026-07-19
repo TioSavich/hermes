@@ -8232,6 +8232,7 @@ formalization/synthesis/run_lazy.pl
 formalization/synthesis/run_synth.pl
 formalization/synthesis/synth.pl
 formalization/synthesis/synth_lazy.pl
+formalization/witness_dict.pl
 geometry/bootstrap/construction_activities.pl
 geometry/bootstrap/n103_activities.pl
 geometry/bootstrap/van_de_walle_activities.pl
@@ -10764,6 +10765,7 @@ lessons/im/docling_figures_interpreted.json
 lessons/im/docling_figures_interpreted.pl
 lessons/im/field_context.pl
 lessons/im/generated/compiled_action_mappings.pl
+lessons/im/generated/compiled_lesson_context.pl
 lessons/im/generated/compiled_task_instances.pl
 lessons/im/generated/vision_lesson_digest.pl
 lessons/im/grade_1.pl
@@ -11006,6 +11008,7 @@ scripts/bundle/smoke_bundle.py
 scripts/extract_capability_registry.py
 scripts/html_surface_check.py
 scripts/research/export_mua_for_mud.py
+scripts/research/extract_lesson_context.py
 scripts/talkmoves_score_blind_corpus.py
 scripts/talkmoves_two_pass.py
 standards/ccss/geometry.pl

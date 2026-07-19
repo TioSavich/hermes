@@ -12,6 +12,7 @@
             explicit_lesson_standard/4,
             lesson_strategy/4,
             lesson_misconception/4,
+            lesson_guide_context_dict/2,
             vision_lesson_strategy/4,
             cluster_lesson_strategy/4,
             cluster_lesson_misconception/4,
@@ -42,6 +43,8 @@
               ]).
 :- use_module('generated/compiled_action_mappings',
               [compiled_lesson_strategy/4]).
+:- use_module('generated/compiled_lesson_context',
+              [compiled_lesson_context/4]).
 :- use_module(arche_trace(incompatibility_discovery),
               [ classify_candidate_set/3
               ]).
@@ -133,6 +136,32 @@ monitoring_chart_export(Code,
     findall(chart_cluster(Source, ClusterId, Info),
             monitoring_chart_cluster(Code, Source, ClusterId, Info),
             Clusters).
+
+
+%!  lesson_guide_context_dict(+LessonCode, -Dict) is semidet.
+%
+%   Verbatim prompt and synthesis excerpts from the attributed teacher guide.
+%   A field is omitted when the compiler recovered no honest excerpt for it.
+lesson_guide_context_dict(Code, Dict) :-
+    compiled_lesson_context(Code, Prompts, Sequences, source(Source)),
+    ( Prompts \== [] ; Sequences \== [] ),
+    atom_string(Source, SourceText),
+    maplist(context_item_dict(SourceText), Prompts, PromptDicts),
+    maplist(context_item_dict(SourceText), Sequences, SequenceDicts),
+    Context0 = _{source_guide: SourceText},
+    put_context_field(activity_prompt, PromptDicts, Context0, Context1),
+    put_context_field(discussion_sequence, SequenceDicts, Context1, Dict).
+
+context_item_dict(Source, context_item(Heading, Text, line(Line)), _{
+    heading: Heading,
+    text: Text,
+    line: Line,
+    source_guide: Source
+}).
+
+put_context_field(_Key, [], Dict, Dict) :- !.
+put_context_field(Key, Items, Dict0, Dict) :-
+    Dict = Dict0.put(Key, Items).
 
 
 %!  licensed_but_unanticipated(+LessonCode, -OperationGaps) is det.

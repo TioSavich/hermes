@@ -84,6 +84,7 @@ KEEP_FILES = [
     "scripts/html_surface_check.py",   # loopable checker for shipped HTML surfaces
     "scripts/extract_capability_registry.py",  # regenerate the shipped capability inventory
     "scripts/research/export_mua_for_mud.py",  # regenerate the MUD data snapshot
+    "scripts/research/extract_lesson_context.py",  # regenerate attributed lesson prompts and synthesis sequences
     # Coded derivative data tables the worker consults at op time (cluster
     # maps, annotations, classifications). They ship; the student-work
     # figure images beside them are article excerpts and stay optional.
@@ -97,6 +98,7 @@ KEEP_FILES = [
     "learner/peano_utils.pl",          # shared Peano conversion utility
     "learner/teacher_local_prolog.pl", # teacher-bound strategy provider
     "lessons/im/generated/compiled_action_mappings.pl",  # lesson monitoring runtime cache
+    "lessons/im/generated/compiled_lesson_context.pl",  # attributed prompt and synthesis cache
     "lessons/im/generated/compiled_task_instances.pl",  # source-backed learner task cache
     "strategies/math/geometry_action_pairs.pl",  # registry geometry actions
     "strategies/math/statistics_action_pairs.pl",  # registry data actions

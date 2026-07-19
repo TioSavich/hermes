@@ -53,7 +53,7 @@ field_context_dict(Code, Dict) :-
     field_brief_dict(Code, LessonDict, Readiness, ExpressivePower,
                      LessonLiterature, Brief),
     term_text(Code, CodeText),
-    Dict = _{
+    Dict0 = _{
         lesson_code: CodeText,
         lesson: LessonDict,
         coverage_status: CoverageStatus,
@@ -67,7 +67,11 @@ field_context_dict(Code, Dict) :-
         literature: Literature,
         expressive_power: ExpressivePower,
         monitoring_clusters: Clusters
-    }.
+    },
+    (   lesson_monitoring:lesson_guide_context_dict(Code, GuideContext)
+    ->  Dict = Dict0.put(GuideContext)
+    ;   Dict = Dict0
+    ).
 
 
 field_brief_dict(Code, Lesson, Readiness, ExpressivePower,

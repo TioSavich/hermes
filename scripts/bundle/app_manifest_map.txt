@@ -8,11 +8,11 @@ learner/	49
 crosswalk/	43
 misconceptions/	42
 standards/	32
-lessons/	28
-formalization/	20
+lessons/	29
+formalization/	21
 pml/	20
 arche-trace/	15
-scripts/	9
+scripts/	10
 tools/	9
 representation/	5
 (root)	2
