@@ -35,7 +35,7 @@ bash hermes/app/launch.sh
 ```
 
 The console opens at `http://127.0.0.1:8765`.
-`hermes/app/QUICKSTART_N103.md` walks the setup one step at a time and
+`hermes/app/QUICKSTART.md` walks the setup one step at a time and
 assumes no Prolog or Python background.
 
 Node.js is a contributor-time dependency for regenerating and checking tracked

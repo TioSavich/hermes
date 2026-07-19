@@ -157,11 +157,11 @@ WITNESS_OPS: dict[str, frozenset[str]] = {
 SWIPL_HINT = (
     "SWI-Prolog (swipl) isn't installed, or it isn't on your PATH. Install it from "
     "https://www.swi-prolog.org/download/stable, then quit Hermes (Ctrl-C in the "
-    "terminal) and run ./hermes/app/launch.sh again. See QUICKSTART_N103.md, step 1."
+    "terminal) and run ./hermes/app/launch.sh again. See QUICKSTART.md, step 1."
 )
 KEY_HINT = (
     "No REALLMS API key is set. Click “Set key” (top-right) and paste your "
-    "key, or add it to hermes/app/runtime/.env. See QUICKSTART_N103.md, step 2."
+    "key, or add it to hermes/app/runtime/.env. See QUICKSTART.md, step 2."
 )
 WORKER_HINT = (
     "The local Prolog worker didn't respond as expected. If you just installed "

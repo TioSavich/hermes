@@ -1,4 +1,4 @@
-# Hermes Quickstart (N103)
+# Hermes Quickstart
 
 This guide gets Hermes running on your own laptop and walks one discussion all the
 way through. It assumes you can open a terminal and copy-paste a few commands. It

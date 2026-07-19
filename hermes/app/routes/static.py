@@ -20,7 +20,7 @@ def root(ctx: Any) -> None:
 
 
 def quickstart(ctx: Any) -> None:
-    doc = ctx.app_dir / "QUICKSTART_N103.md"
+    doc = ctx.app_dir / "QUICKSTART.md"
     if doc.is_file():
         ctx._send_json({"content": doc.read_text(encoding="utf-8")})
     else:

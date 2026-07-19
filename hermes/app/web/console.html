@@ -61,25 +61,6 @@ button { cursor: pointer; }
 .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
 .btn.small { padding: 0.28rem 0.5rem; font-size: 0.8rem; }
 
-/* ---- first-run orientation ---- */
-.first-run { display: flex; align-items: center; gap: .65rem; flex-wrap: wrap;
-  padding: .55rem 1.3rem; border-bottom: 1px solid var(--line); background: rgba(255,253,247,.72); }
-.first-run[hidden] { display: none; }
-.first-run p { margin: 0; font-size: .88rem; }
-.first-run-chips { display: flex; gap: .35rem; flex-wrap: wrap; }
-.entry-chip { --chip: var(--gold-deep); display: inline-block; padding: .22rem .48rem;
-  border: 1px solid var(--chip); border-radius: 999px; color: var(--ink); background: transparent;
-  font: 600 .68rem/1.2 var(--mono); text-decoration: none; }
-.entry-chip::before { content: ""; display: inline-block; width: .48rem; height: .48rem;
-  margin-right: .3rem; border-radius: 50%; background: var(--chip); }
-.first-run-dismiss { margin-left: auto; border: 0; background: transparent; color: var(--muted);
-  font: .72rem var(--mono); text-decoration: underline; }
-.worked-example { border-left: 3px solid var(--acc-objects, var(--gold-deep)); }
-.worked-example-grid { display: grid; grid-template-columns: minmax(15rem, 1fr) minmax(13rem, .8fr); gap: 1rem; align-items: center; }
-.worked-example svg { display: block; width: 100%; max-width: 520px; height: auto; }
-.worked-steps { margin: 0; padding-left: 1.2rem; font-size: .86rem; }
-.worked-steps li { margin: .25rem 0; }
-@media (max-width: 720px) { .worked-example-grid { grid-template-columns: 1fr; } }
 
 /* ---- tab nav ---- */
 .tabnav { display: flex; align-items: center; gap: 0.4rem; padding: 0 1.3rem; border-bottom: 1px solid var(--line); background: rgba(237,228,207,0.6); }
@@ -111,8 +92,6 @@ body.view-philosopher .only-philosopher { display: block; }
 body.show-advanced .adv { display: revert; }
 body.show-advanced .tab.adv { display: inline-flex; }
 body.show-advanced .card.adv { display: block; }
-.adv-toggle { display: flex; align-items: center; gap: 0.4rem; font: 0.72rem var(--mono); color: var(--muted); white-space: nowrap; }
-.adv-toggle input { accent-color: var(--gold-deep); }
 .adv-note { color: var(--muted); font-size: 0.82rem; font-style: italic; margin: 0.2rem 0 1rem; }
 
 /* ---- panels ---- */
@@ -451,39 +430,24 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
   <div class="topbar">
     <div class="brand">
       <div>
-        <h1>Teaching console</h1>
+        <h1>Teaching console <a class="why-link" href="breaks.html" title="Why this exists">?</a></h1>
         <span class="sub">running locally · on your machine</span>
-        <a class="why-link" href="breaks.html">Why this exists &rarr;</a>
       </div>
     </div>
     <div class="top-controls">
-      <span id="gate-pill" class="pill" hidden>gate</span>
-      <span id="model-pill" class="pill">model …</span>
-      <span id="key-pill" class="pill">key …</span>
       <span id="app-request-status" class="pill pending" role="status" aria-live="polite">◌ Checking the app…</span>
-      <button class="btn ghost" id="quickstart-btn">Quickstart</button>
-      <button class="btn ghost" id="set-key-btn">Set key</button>
-      <label class="adv-toggle" title="Show the research features: modal-posture scoring, the Gemma workflow pipeline, the encyclopedia, monitoring, and Ask Hermes.">
-        <input type="checkbox" id="adv-check" /> Advanced / research
-      </label>
+      <button class="btn ghost" id="quickstart-btn">Quickstart &amp; settings</button>
     </div>
   </div>
 
-  <aside class="first-run" id="first-run" aria-label="First-run orientation">
-    <p>A local workbench: paste a discussion, run a computation, or open a lesson. The colored
-      nav groups carry the theory behind each surface.</p>
-    <button class="first-run-dismiss" id="first-run-dismiss" type="button">Dismiss</button>
-  </aside>
+
 
   <nav class="tabnav" id="tabnav">
     <button class="tab active" data-tab="workspace"><span class="glyph">01</span>Workspace</button>
-    <button class="tab" data-tab="explore"><span class="glyph">02</span>Explore lessons</button>
+
     <button class="tab adv" data-tab="encyclopedia"><span class="glyph">03</span>Encyclopedia</button>
     <button class="tab adv" data-tab="ask"><span class="glyph">04</span>Ask Hermes</button>
     <span class="spacer"></span>
-    <label class="gate-toggle" id="gate-toggle" hidden>
-      <input type="checkbox" id="mode-check" /> campus mode (unlock student data)
-    </label>
   </nav>
 
   <nav class="view-toggle" id="view-toggle" aria-label="audience view" hidden>
@@ -687,10 +651,20 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
 <div id="quickstart-modal" class="modal" hidden>
   <div class="modal-card">
     <div class="modal-head">
-      <h2>Hermes Quickstart (N103)</h2>
+      <h2>Hermes Quickstart</h2>
       <button class="btn ghost" id="quickstart-close">Close</button>
     </div>
     <div class="modal-body">
+      <section aria-label="Status and settings" class="qs-settings">
+        <span id="gate-pill" class="pill" hidden>gate</span>
+        <span id="model-pill" class="pill">model …</span>
+        <span id="key-pill" class="pill">key …</span>
+        <button class="btn ghost" id="set-key-btn">Set key</button>
+        <label class="gate-toggle" id="gate-toggle" hidden>
+          <input type="checkbox" id="mode-check" /> student-data gate open (campus)
+        </label>
+      </section>
+      <hr>
       <section aria-labelledby="quickstart-boundaries-title">
         <h2 id="quickstart-boundaries-title">Before you use student work</h2>
         <p>The learner this console reasons about is a formal model built from research literature. It is not your student. When a panel places a piece of student work near a strategy or a misconception, it is offering a hypothesis for you to test in conversation with the child, along with the citations and the worked trace that motivated it.</p>
@@ -758,12 +732,6 @@ function renderConsoleWorkedExample(example) {
 }
 renderConsoleWorkedExample(CONSOLE_WORKED_DEFAULT);
 
-const ORIENTATION_KEY = "hermes-console-oriented";
-try { if (localStorage.getItem(ORIENTATION_KEY) === "1") $("#first-run").hidden = true; } catch (e) {}
-$("#first-run-dismiss").addEventListener("click", () => {
-  $("#first-run").hidden = true;
-  try { localStorage.setItem(ORIENTATION_KEY, "1"); } catch (e) {}
-});
 
 async function getJSON(path) {
   const result = await HermesFetch.requestJSON(api(path));
@@ -1439,7 +1407,7 @@ $("#quickstart-btn").addEventListener('click', async () => {
   $("#quickstart-modal").hidden = false;
   const body = $("#quickstart-body"); body.innerHTML = "loading…";
   const { status, data } = await getJSON('/api/quickstart');
-  body.innerHTML = (status === 200 && data.content) ? mdToHtml(data.content) : "Open <code>hermes/app/QUICKSTART_N103.md</code> in your editor.";
+  body.innerHTML = (status === 200 && data.content) ? mdToHtml(data.content) : "Open <code>hermes/app/QUICKSTART.md</code> in your editor.";
 });
 $("#quickstart-close").addEventListener('click', () => { $("#quickstart-modal").hidden = true; });
 $("#quickstart-modal").addEventListener('click', e => { if (e.target.id === 'quickstart-modal') $("#quickstart-modal").hidden = true; });
@@ -2410,11 +2378,20 @@ if ($("#mc-load")) $("#mc-load").addEventListener('click', loadMonitoringChart);
 if ($("#lesson-code")) $("#lesson-code").addEventListener('keydown', e => { if (e.key === 'Enter') loadMonitoringChart(); });
 if ($("#mc-print")) $("#mc-print").addEventListener('click', () => window.print());
 
+/* The Explore tab opens from the nav's console.html#explore entry. */
+function openTabFromHash() {
+  if (location.hash === '#explore') selectTab('explore');
+}
+window.addEventListener('hashchange', openTabFromHash);
+openTabFromHash();
+
 /* ---------- audience-view toggle (body class, matching the drawer §5 contract) ---------- */
 function setView(view) {
   document.body.className = document.body.className.replace(/\bview-\w+\b/g, '').trim() + ' view-' + view;
   document.querySelectorAll('#view-toggle [data-view]').forEach(b =>
     b.classList.toggle('active', b.getAttribute('data-view') === view));
+  /* The researcher register carries the research features; no separate toggle. */
+  setAdvanced(view === 'philosopher');
 }
 document.querySelectorAll('#view-toggle [data-view]').forEach(b =>
   b.addEventListener('click', () => setView(b.getAttribute('data-view'))));
@@ -2429,7 +2406,7 @@ function setAdvanced(on) {
     if (active && active.classList.contains('adv')) selectTab('workspace');
   }
 }
-$("#adv-check").addEventListener('change', e => setAdvanced(e.target.checked));
+
 
 window.addEventListener("unhandledrejection", function (event) {
   event.preventDefault();

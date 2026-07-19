@@ -129,7 +129,7 @@ KEEP_FILES = [
 # silently dropped the way the first nine were), the ASKTM survey text, and
 # the teacher-guide inputs used to generate monitoring visuals.
 KEEP_MD = {
-    "hermes/app/QUICKSTART_N103.md",
+    "hermes/app/QUICKSTART.md",
     "docs/research/2026-07-01-talkmoves-pass1-math-prompt.md",
     "docs/research/2026-07-01-talkmoves-pass2-posture-prompt.md",
     "docs/research/2026-06-25-the-juncture-and-differance.md",

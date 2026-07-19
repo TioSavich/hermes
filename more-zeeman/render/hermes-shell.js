@@ -98,6 +98,7 @@
   var NAV = [
     { title: "Practice", kind: "practice", base: "light", items: [
       ["console",     "Console",          app("console.html")],
+      ["explore",     "Explore lessons",  app("console.html#explore")],
       ["discussions", "Discussions",      app("discussions.html")],
       ["visualizations", "Visualizers",   mz("visualizations.html")],
       ["witnesses",   "Witnesses",        mz("witnesses.html")],
@@ -381,7 +382,7 @@
       if (!isActiveSec && active) secEl.className += " closed";
       var lbl = h("button", "lbl",
         '<span class="dot" style="background:var(--group-ink)"></span>' +
-        sec.title + '<span class="base">' + (sec.base === "light" ? "paper" : "dark") + '</span>' + CHEV);
+        sec.title + CHEV);
       lbl.addEventListener("click", function () { secEl.classList.toggle("closed"); });
       secEl.appendChild(lbl);
       var items = h("div", "items");

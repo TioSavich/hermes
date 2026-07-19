@@ -83,7 +83,7 @@ def main() -> int:
                 "error_type": "locked",
             }),
             ("no_key", "POST", "/api/pml_score", {"text": "A square is a rectangle."}, 503, {
-                "error": "No REALLMS API key is set. Click “Set key” (top-right) and paste your key, or add it to hermes/app/runtime/.env. See QUICKSTART_N103.md, step 2.",
+                "error": "No REALLMS API key is set. Click “Set key” (top-right) and paste your key, or add it to hermes/app/runtime/.env. See QUICKSTART.md, step 2.",
                 "error_type": "no_key",
             }),
             ("not_found", "POST", "/api/not-a-route", {}, 404, {"error": "not found"}),
