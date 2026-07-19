@@ -9,26 +9,38 @@ are repo-root-relative; the gallery resolves them against the repo root.
 
 Two sources today:
 
-  - asktm      : Grade-5 ASKTM student-work clips, already coded by category
-                 (A1/A2/...) with per-clip fine-grained reasoning tags. Ready to
-                 display; no cropping needed.
+  - asktm      : Grade-4 and Grade-5 ASKTM student-work clips. Fine-grained
+                 category and reasoning metadata is joined when the source
+                 coding Markdown names the clip; otherwise those fields remain
+                 null. Ready to display; no cropping needed.
   - literature : full-page PDF-page renders of student-work figures from the
                  research literature, joined to citation + page number + the
                  error/strategy topics on that page. These still need a human to
                  eyeball and crop, so each carries crop_status='unreviewed'.
 
-Run from the repo root:  python3 representation/build_asset_manifest.py
+Run from the repo root:
+
+  python3 representation/build_asset_manifest.py \
+    --asktm-metadata-root /path/to/source/ASKTM_Data
+
+The metadata root is optional. The standalone Hermes repository ships the
+clipping PNGs, not the source coding documents, so omitted metadata degrades to
+honest nulls.
 """
 
+import argparse
 import json
 import os
 import re
 import glob
-from datetime import datetime, timezone
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(REPO, "representation", "asset_manifest.json")
 ASKTM_ROOT = os.path.join(REPO, "ASKTM_Data")
+ASKTM_G4_CLIPS = os.path.join(ASKTM_ROOT, "Grade 4student response clippings")
+ASKTM_G5_CLIPS = os.path.join(
+    ASKTM_ROOT, "Grade 5 Students' responses Clips (q1-q8)",
+)
 
 
 def rel(p):
@@ -133,7 +145,7 @@ def _with_prolog_concepts(asset):
 
 
 # --------------------------------------------------------------------------
-# ASKTM (Grade 5, category-coded student work)
+# ASKTM (Grade 4 and Grade 5 student work)
 # --------------------------------------------------------------------------
 
 # Coded filename, e.g. G5-Q2-A2-04-08.png
@@ -145,6 +157,11 @@ CAT_HDR = re.compile(r"^#\s*Category\s+([A-Za-z]+\d*)\s*[–\-—]\s*(.*)$")
 TAG_LINE = re.compile(r"Tag list:\s*(.*)$")
 # Clip ids inside the legend: q2-04-08 / q2_20_08 (question-student-clip)
 CLIP_ID = re.compile(r"q(\d+)[-_](\d+)[-_](\d+)", re.I)
+# Some Grade-4 legends name the clip without repeating the question number.
+BARE_CLIP_ID = re.compile(r"(?<![\w-])(\d+)[-_](\d+)\.(?:png)", re.I)
+G4_CLIP_FILE = re.compile(r"(?:q\d+[-_])?(\d+)[-_](\d+)\.png$", re.I)
+G4_QUESTION_DIR = re.compile(r"^4-q(\d+)(?:-|$)", re.I)
+G5_RAW_FILE = re.compile(r"q(\d+)[-_](\d+)[-_](\d+)\s*\.png$", re.I)
 
 
 def _norm_tags(raw):
@@ -154,9 +171,8 @@ def _norm_tags(raw):
 
 
 def parse_asktm_legend(md_path):
-    """Return (cat_desc[(q,code)], clip_tags[(q,stu,clip)])."""
-    cat_desc, clip_tags = {}, {}
-    cur_q = None
+    """Return category descriptions and per-clip category/tag metadata."""
+    cat_desc, clip_tags, clip_categories = {}, {}, {}
     cur_code = None
     cur_tags = []
     m_q = re.search(r"G(\d)Q(\d+)", os.path.basename(md_path), re.I)
@@ -167,62 +183,123 @@ def parse_asktm_legend(md_path):
         if h:
             cur_code = h.group(1).upper()
             cur_tags = []
-            cur_q = file_q
             cat_desc[(file_q, cur_code)] = re.sub(r"[*`]", "", h.group(2)).strip()
             continue
         t = TAG_LINE.search(line)
         if t:
             cur_tags = _norm_tags(t.group(1))
             continue
-        for cm in CLIP_ID.finditer(line):
-            q, stu, clip = cm.group(1), cm.group(2).zfill(2), cm.group(3).zfill(2)
+        matches = [cm.groups() for cm in CLIP_ID.finditer(line)]
+        if not matches:
+            matches = [(file_q, *cm.groups()) for cm in BARE_CLIP_ID.finditer(line)]
+        for q, stu, clip in matches:
+            stu, clip = stu.zfill(2), clip.zfill(2)
             key = (q, stu, clip)
             clip_tags.setdefault(key, set()).update(cur_tags)
-    return cat_desc, clip_tags
+            if cur_code:
+                clip_categories.setdefault(key, set()).add(cur_code)
+    return cat_desc, clip_tags, clip_categories
 
 
-def build_asktm():
+def _legend_metadata(metadata_root, grade):
+    dirname = ("Grade 4_Fine-Grained Coding_Second Pass" if grade == 4 else
+               "Grade5 _Fine-Grained Coding_Second Pass")
     legends_glob = os.path.join(
-        ASKTM_ROOT, "Grade5 _Fine-Grained Coding_Second Pass",
-        "converted", "G5Q*.md",
+        metadata_root, dirname, "converted", f"G{grade}Q*.md",
     )
-    cat_desc, clip_tags = {}, {}
+    cat_desc, clip_tags, clip_categories = {}, {}, {}
     for md in sorted(glob.glob(legends_glob)):
-        cd, ct = parse_asktm_legend(md)
+        cd, ct, cc = parse_asktm_legend(md)
         cat_desc.update(cd)
         for k, v in ct.items():
             clip_tags.setdefault(k, set()).update(v)
+        for k, v in cc.items():
+            clip_categories.setdefault(k, set()).update(v)
+    return cat_desc, clip_tags, clip_categories
+
+
+def _asset(grade, q, code, stu, clip, tags, desc, png, tree=None):
+    code_for_id = code or "uncategorized"
+    tree_part = f"-{tree}" if tree else ""
+    return _with_prolog_concepts({
+        "source": "asktm",
+        "id": (f"asktm-g{grade}{tree_part}-q{q}-{code_for_id}-"
+               f"{stu}-{clip}"),
+        "grade": grade,
+        "question": int(q),
+        "category_code": code,
+        "category_desc": desc,
+        "student": stu,
+        "clip": clip,
+        "tags": sorted(tags),
+        "image": rel(png),
+    })
+
+
+def build_asktm(metadata_root=None):
+    metadata_root = metadata_root or ASKTM_ROOT
+    legends = {grade: _legend_metadata(metadata_root, grade)
+               for grade in (4, 5)}
 
     assets = []
     seen = set()
-    for png in glob.glob(os.path.join(ASKTM_ROOT, "**", "*.png"),
-                         recursive=True):
+    # Preserve the existing category-coded Grade-5 first-pass population.
+    for png in glob.glob(os.path.join(ASKTM_G5_CLIPS, "Grade 5-*first pass*",
+                                      "*.png")):
         m = ASKTM_FILE.search(os.path.basename(png))
         if not m:
             continue
         grade, q, code, stu, clip = m.groups()
-        if grade != "5":
-            continue
         code = code.upper()
         stu, clip = stu.zfill(2), clip.zfill(2)
         key = (q, code, stu, clip)
         if key in seen:
             continue
         seen.add(key)
-        tags = sorted(clip_tags.get((q, stu, clip), []))
-        assets.append(_with_prolog_concepts({
-            "source": "asktm",
-            "id": f"asktm-g{grade}-q{q}-{code}-{stu}-{clip}",
-            "grade": int(grade),
-            "question": int(q),
-            "category_code": code,
-            "category_desc": cat_desc.get((q, code), ""),
-            "student": stu,
-            "clip": clip,
-            "tags": tags,
-            "image": rel(png),
-        }))
-    assets.sort(key=lambda a: (a["question"], a["category_code"],
+        cat_desc, clip_tags, _ = legends[5]
+        assets.append(_asset(
+            5, q, code, stu, clip, clip_tags.get((q, stu, clip), ()),
+            cat_desc.get((q, code)) or None, png,
+        ))
+
+    # Grade-5 raw/non-first-pass clippings. Their filenames carry no category;
+    # use the fine-grained legend only when it names the exact clip.
+    cat_desc, clip_tags, clip_categories = legends[5]
+    for png in glob.glob(os.path.join(ASKTM_G5_CLIPS, "5-Q*", "**",
+                                      "*.[pP][nN][gG]"), recursive=True):
+        m = G5_RAW_FILE.search(os.path.basename(png))
+        if not m:
+            continue
+        q, stu, clip = m.groups()
+        stu, clip = stu.zfill(2), clip.zfill(2)
+        categories = clip_categories.get((q, stu, clip), set())
+        code = next(iter(categories)) if len(categories) == 1 else None
+        assets.append(_asset(
+            5, q, code, stu, clip, clip_tags.get((q, stu, clip), ()),
+            cat_desc.get((q, code)) if code else None, png, tree="raw",
+        ))
+
+    # Grade-4 raw clipping directories encode the question in the directory
+    # and student/clip in the filename.
+    cat_desc, clip_tags, clip_categories = legends[4]
+    for png in glob.glob(os.path.join(ASKTM_G4_CLIPS, "**",
+                                      "*.[pP][nN][gG]"), recursive=True):
+        qmatch = G4_QUESTION_DIR.match(os.path.relpath(
+            png, ASKTM_G4_CLIPS).split(os.sep)[0])
+        m = G4_CLIP_FILE.search(os.path.basename(png))
+        if not qmatch or not m:
+            continue
+        q = qmatch.group(1)
+        stu, clip = (part.zfill(2) for part in m.groups())
+        categories = clip_categories.get((q, stu, clip), set())
+        code = next(iter(categories)) if len(categories) == 1 else None
+        assets.append(_asset(
+            4, q, code, stu, clip, clip_tags.get((q, stu, clip), ()),
+            cat_desc.get((q, code)) if code else None, png, tree="raw",
+        ))
+
+    assets.sort(key=lambda a: (a["grade"], a["question"],
+                               a["category_code"] or "",
                                a["student"], a["clip"]))
     return assets
 
@@ -495,7 +572,7 @@ def build_literature():
     return assets
 
 
-def input_warnings():
+def input_warnings(metadata_root=None, preserving_literature=False):
     """Describe input omissions that would otherwise look like empty results."""
     warnings = []
 
@@ -513,8 +590,18 @@ def input_warnings():
             "ASKTM_Data is absent; ASKTM assets will be omitted.",
         )
 
+    metadata_root = metadata_root or ASKTM_ROOT
+    if not glob.glob(os.path.join(
+            metadata_root, "Grade5 _Fine-Grained Coding_Second Pass",
+            "converted", "G5Q*.md")):
+        warn(
+            "asktm_metadata_missing",
+            metadata_root,
+            "Fine-grained ASKTM Markdown is absent; category and tag fields degrade to nulls.",
+        )
+
     research_db = os.path.join(REPO, "research_corpus", "research.db")
-    if not os.path.exists(research_db):
+    if not os.path.exists(research_db) and not preserving_literature:
         warn(
             "research_db_missing",
             research_db,
@@ -525,7 +612,13 @@ def input_warnings():
         os.path.exists(DOCLING_JSONL) and os.path.getsize(DOCLING_JSONL) > 0
     )
     lit_available = os.path.exists(LIT_JSON)
-    if not docling_available and not lit_available:
+    if not docling_available and not lit_available and preserving_literature:
+        warn(
+            "literature_inputs_missing_preserving_manifest",
+            DOCLING_JSONL,
+            "Literature inputs are absent; preserving checked-in literature entries.",
+        )
+    elif not docling_available and not lit_available:
         warn(
             "literature_inputs_missing",
             DOCLING_JSONL,
@@ -548,11 +641,35 @@ def input_warnings():
     return warnings
 
 
+def _existing_manifest():
+    try:
+        with open(OUT, encoding="utf-8") as f:
+            data = json.load(f)
+    except (OSError, ValueError):
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
 def main():
-    asktm = build_asktm()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--asktm-metadata-root",
+        help="ASKTM_Data directory containing converted fine-grained Markdown",
+    )
+    args = parser.parse_args()
+
+    existing = _existing_manifest()
+    asktm = build_asktm(args.asktm_metadata_root)
     lit = build_literature()
+    preserving_literature = False
+    if not lit:
+        lit = [a for a in existing.get("assets", [])
+               if a.get("source") == "literature"]
+        preserving_literature = bool(lit)
     manifest = {
-        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        # Preserve the tracked provenance timestamp. The corpus inputs are
+        # immutable for a build, so wall-clock time must not spoil determinism.
+        "generated_at": existing.get("generated_at"),
         "generator": "representation/build_asset_manifest.py",
         "note": ("Repo-root-relative image paths. Serve the gallery from the "
                  "repo root so '../' resolves to it."),
@@ -563,7 +680,9 @@ def main():
                                          if a["crop_status"] == "unreviewed"),
             "total": len(asktm) + len(lit),
         },
-        "input_warnings": input_warnings(),
+        "input_warnings": input_warnings(
+            args.asktm_metadata_root, preserving_literature,
+        ),
         "assets": asktm + lit,
     }
     os.makedirs(os.path.dirname(OUT), exist_ok=True)

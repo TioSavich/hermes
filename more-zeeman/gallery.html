@@ -116,7 +116,8 @@
   <p class="lede">
     Coded student-work samples, drawn from one manifest
     (<code>representation/asset_manifest.json</code>). Two sources: <strong>ASKTM</strong>
-    Grade-5 clips, already coded by response category with fine-grained reasoning tags;
+    Grade-4 and Grade-5 clips, joined to response categories and fine-grained reasoning
+    tags where the source coding names the clip;
     and <strong>literature</strong> figures — student-work figures extracted from research
     PDFs by docling (layout-aware figure detection), joined to citation, page, and the
     error/strategy topics on that page. Figures are auto-extracted
@@ -261,7 +262,8 @@ function initAsktm() {
     .forEach(n => q.append(el('option', { value: n }, 'Q' + n)));
   q.value = [...new Set(DATA.asktm.map(a => a.question))].sort((a, b) => a - b)[0] ?? '';
   const cat = document.getElementById('ak-cat');
-  [...new Set(DATA.asktm.map(a => a.category_code))].sort()
+  [...new Set(DATA.asktm.map(a => a.category_code))]
+    .filter(c => c != null && c !== '').sort()
     .forEach(c => cat.append(el('option', { value: c }, c)));
   const concept = document.getElementById('ak-concept');
   [...new Set(DATA.asktm.flatMap(a => a.prolog_concepts || []))].sort()
@@ -383,7 +385,7 @@ function litCard(a) {
 }
 function asktmCard(a) {
   const chips = el('div', { class: 'chips' });
-  chips.append(el('span', { class: 'chip cat' }, a.category_code));
+  chips.append(el('span', { class: 'chip cat' }, a.category_code || 'uncategorized'));
   a.tags.slice(0, 3).forEach(t => chips.append(el('span', { class: 'chip' }, t)));
   (a.prolog_concepts || []).slice(0, 2).forEach(c => chips.append(conceptChip(c)));
   const card = el('div', { class: 'card' },
@@ -446,7 +448,7 @@ function openLit(a) {
 }
 function openAsktm(a) {
   const nodes = [
-    el('h2', {}, 'Grade ' + a.grade + ' · Q' + a.question + ' · ' + a.category_code),
+    el('h2', {}, 'Grade ' + a.grade + ' · Q' + a.question + ' · ' + (a.category_code || 'uncategorized')),
     row('category', el('div', {}, a.category_desc || '(no description)')),
     row('student / clip', el('span', { class: 'mono' }, a.student + ' / ' + a.clip)),
   ];
