@@ -27,3 +27,4 @@ build/
 *.synctex.gz
 .pytest_cache/
 .superpowers/
+CLAUDE.md
