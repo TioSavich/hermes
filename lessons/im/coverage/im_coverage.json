@@ -58,7 +58,7 @@
       "strategy_atoms": [
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -126,7 +126,7 @@
       "strategy_atoms": [
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -150,7 +150,7 @@
       "strategy_atoms": [
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -271,7 +271,7 @@
         "count_all_when_count_on_available",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -296,7 +296,7 @@
         "count_all_when_count_on_available",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -322,7 +322,7 @@
         "count_on_from_larger",
         "enumerate_collection_one_to_one"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -347,7 +347,7 @@
         "count_all_when_count_on_available",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -371,7 +371,7 @@
       "strategy_atoms": [
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -420,7 +420,7 @@
         "count_all_when_count_on_available",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -446,7 +446,7 @@
         "enumerate_collection_one_to_one",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -473,7 +473,7 @@
         "count_up_missing_addend",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -498,7 +498,7 @@
         "compare_cardinalities_one_to_one",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -524,7 +524,7 @@
         "count_on_from_larger",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -572,7 +572,7 @@
       "strategy_atoms": [
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -621,7 +621,7 @@
         "round_then_adjust",
         "round_without_adjusting"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -646,7 +646,7 @@
         "compare_by_matching_difference",
         "compare_cardinalities_one_to_one"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -670,7 +670,7 @@
       "strategy_atoms": [
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -695,7 +695,7 @@
         "compare_cardinalities_one_to_one",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -720,7 +720,7 @@
         "count_all_when_count_on_available",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -865,7 +865,7 @@
       "strategy_atoms": [
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -912,7 +912,7 @@
         "count_all_when_count_on_available",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -1351,7 +1351,7 @@
         "count_all_when_count_on_available",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -1377,7 +1377,7 @@
         "count_on_from_larger",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -1401,7 +1401,7 @@
       "strategy_atoms": [
         "count_all_when_count_on_available"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -1426,7 +1426,7 @@
         "count_all_when_count_on_available",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -1450,7 +1450,7 @@
       "strategy_atoms": [
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -1474,7 +1474,7 @@
       "strategy_atoms": [
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -1520,7 +1520,7 @@
       "strategy_atoms": [
         "count_all_when_count_on_available"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -1567,7 +1567,7 @@
         "count_all_when_count_on_available",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -1591,7 +1591,7 @@
       "strategy_atoms": [
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -1616,7 +1616,7 @@
         "count_on_from_larger",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -1642,7 +1642,7 @@
         "round_then_adjust",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -1667,7 +1667,7 @@
         "count_on_from_larger",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -1736,7 +1736,7 @@
         "count_all_when_count_on_available",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -1761,7 +1761,7 @@
         "count_on_from_larger",
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -1851,7 +1851,7 @@
       "strategy_atoms": [
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -1966,7 +1966,7 @@
         "count_on_from_larger",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -1990,7 +1990,7 @@
       "strategy_atoms": [
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2015,7 +2015,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2040,7 +2040,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2065,7 +2065,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2090,7 +2090,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2138,7 +2138,7 @@
         "count_on_from_larger",
         "smaller_from_larger_in_column"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2163,7 +2163,7 @@
         "count_all_when_count_on_available",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2213,7 +2213,7 @@
         "count_up_missing_addend",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2238,7 +2238,7 @@
         "count_on_from_larger",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2263,7 +2263,7 @@
         "count_all_when_count_on_available",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2288,7 +2288,7 @@
         "count_all_when_count_on_available",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2313,7 +2313,7 @@
         "count_all_when_count_on_available",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2339,7 +2339,7 @@
         "count_on_from_larger",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2364,7 +2364,7 @@
         "count_all_when_count_on_available",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2389,7 +2389,7 @@
         "count_all_when_count_on_available",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2416,7 +2416,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2465,7 +2465,7 @@
         "count_all_when_count_on_available",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2514,7 +2514,7 @@
         "count_all_when_count_on_available",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2561,7 +2561,7 @@
         "round_then_adjust",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2588,7 +2588,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2680,7 +2680,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 4,
       "deformation_instances": 0,
@@ -2862,7 +2862,7 @@
       "strategy_atoms": [
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2887,7 +2887,7 @@
         "count_on_from_larger",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 2,
       "deformation_instances": 0,
@@ -2912,7 +2912,7 @@
         "count_all_when_count_on_available",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2936,7 +2936,7 @@
       "strategy_atoms": [
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -2960,7 +2960,7 @@
       "strategy_atoms": [
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3050,7 +3050,7 @@
       "strategy_atoms": [
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3097,7 +3097,7 @@
         "count_all_when_count_on_available",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3122,7 +3122,7 @@
         "count_all_when_count_on_available",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3147,7 +3147,7 @@
         "count_all_when_count_on_available",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3171,7 +3171,7 @@
       "strategy_atoms": [
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3196,7 +3196,7 @@
         "count_all_when_count_on_available",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3221,7 +3221,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3247,7 +3247,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -3273,7 +3273,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3298,7 +3298,7 @@
         "base_ones_chunking",
         "decompose_base_for_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3324,7 +3324,7 @@
         "count_on_from_larger",
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3350,7 +3350,7 @@
         "count_on_from_larger",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3376,7 +3376,7 @@
         "count_on_from_larger",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3403,7 +3403,7 @@
         "count_up_missing_addend",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3428,7 +3428,7 @@
         "count_all_when_count_on_available",
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3456,7 +3456,7 @@
         "count_up_missing_addend",
         "known_fact_retrieval"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3483,7 +3483,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3552,7 +3552,7 @@
         "count_all_when_count_on_available",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3580,7 +3580,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3648,7 +3648,7 @@
       "strategy_atoms": [
         "count_all_when_count_on_available"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3673,7 +3673,7 @@
         "count_on_from_larger",
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3721,7 +3721,7 @@
         "count_on_from_larger",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 3,
       "deformation_instances": 1,
@@ -3747,7 +3747,7 @@
         "count_on_from_larger",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 2,
       "deformation_instances": 1,
@@ -3772,7 +3772,7 @@
         "count_on_from_larger",
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 2,
       "deformation_instances": 1,
@@ -3800,7 +3800,7 @@
         "known_fact_retrieval",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3824,7 +3824,7 @@
       "strategy_atoms": [
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3849,7 +3849,7 @@
         "count_all_when_count_on_available",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 2,
       "deformation_instances": 1,
@@ -3876,7 +3876,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3904,7 +3904,7 @@
         "count_up_missing_addend",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3929,7 +3929,7 @@
         "count_on_from_larger",
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3954,7 +3954,7 @@
         "count_on_from_larger",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -3979,7 +3979,7 @@
         "compare_by_matching_difference",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4005,7 +4005,7 @@
         "count_on_from_larger",
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 3,
       "deformation_instances": 0,
@@ -4031,7 +4031,7 @@
         "count_on_from_larger",
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4057,7 +4057,7 @@
         "count_on_from_larger",
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 3,
       "deformation_instances": 0,
@@ -4084,7 +4084,7 @@
         "count_up_missing_addend",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -4109,7 +4109,7 @@
         "count_on_from_larger",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4134,7 +4134,7 @@
         "compare_by_matching_difference",
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4161,7 +4161,7 @@
         "count_up_missing_addend",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -4189,7 +4189,7 @@
         "make_ten_split_leftover",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -4217,7 +4217,7 @@
         "count_up_missing_addend",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 2,
       "deformation_instances": 0,
@@ -4246,7 +4246,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4270,7 +4270,7 @@
       "strategy_atoms": [
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4317,7 +4317,7 @@
         "count_all_when_count_on_available",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4343,7 +4343,7 @@
         "count_on_from_larger",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 6,
       "deformation_instances": 2,
@@ -4368,7 +4368,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4396,7 +4396,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4420,7 +4420,7 @@
       "strategy_atoms": [
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4446,7 +4446,7 @@
         "count_up_missing_addend",
         "known_fact_retrieval"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 3,
       "deformation_instances": 1,
@@ -4471,7 +4471,7 @@
         "count_on_from_larger",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4499,7 +4499,7 @@
         "count_up_missing_addend",
         "decompose_base_for_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4524,7 +4524,7 @@
         "count_all_when_count_on_available",
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4573,7 +4573,7 @@
         "count_on_from_larger",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 2,
       "deformation_instances": 1,
@@ -4602,7 +4602,7 @@
         "round_then_adjust",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -4631,7 +4631,7 @@
         "make_ten_split_leftover",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4655,7 +4655,7 @@
       "strategy_atoms": [
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4683,7 +4683,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4709,7 +4709,7 @@
         "make_ten_split_leftover",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4738,7 +4738,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 8,
       "deformation_instances": 4,
@@ -4766,7 +4766,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4795,7 +4795,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4823,7 +4823,7 @@
         "make_ten_split_leftover",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4850,7 +4850,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4880,7 +4880,7 @@
         "round_then_adjust",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -4909,7 +4909,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4936,7 +4936,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4962,7 +4962,7 @@
         "count_all_when_count_on_available",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -4989,7 +4989,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -5016,7 +5016,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5066,7 +5066,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5091,7 +5091,7 @@
         "recursive_place_value_inscription",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5116,7 +5116,7 @@
         "count_on_from_larger",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5142,7 +5142,7 @@
         "count_on_from_larger",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5166,7 +5166,7 @@
       "strategy_atoms": [
         "base_ones_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5193,7 +5193,7 @@
         "count_on_from_larger",
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5218,7 +5218,7 @@
         "base_ones_chunking",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5243,7 +5243,7 @@
         "base_ones_chunking",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5267,7 +5267,7 @@
       "strategy_atoms": [
         "base_ones_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5293,7 +5293,7 @@
         "recursive_place_value_inscription",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5320,7 +5320,7 @@
         "count_on_from_larger",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5347,7 +5347,7 @@
         "round_then_adjust",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5373,7 +5373,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5401,7 +5401,7 @@
         "place_value_comparison",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 3,
       "deformation_instances": 1,
@@ -5427,7 +5427,7 @@
         "repeat_equal_groups",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5453,7 +5453,7 @@
         "place_value_comparison",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5478,7 +5478,7 @@
         "base_ones_chunking",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5505,7 +5505,7 @@
         "recursive_place_value_inscription",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5531,7 +5531,7 @@
         "count_on_from_larger",
         "decompose_base_for_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5557,7 +5557,7 @@
         "decompose_base_for_ones",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5584,7 +5584,7 @@
         "place_value_comparison",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5610,7 +5610,7 @@
         "recursive_place_value_inscription",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5659,7 +5659,7 @@
         "count_up_missing_addend",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5687,7 +5687,7 @@
         "make_ten_split_leftover",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5712,7 +5712,7 @@
         "base_ones_chunking",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5763,7 +5763,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5795,7 +5795,7 @@
         "recursive_place_value_inscription",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5823,7 +5823,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5847,7 +5847,7 @@
       "strategy_atoms": [
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5877,7 +5877,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5904,7 +5904,7 @@
         "decompose_base_for_ones",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5931,7 +5931,7 @@
         "make_ten_split_leftover",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5959,7 +5959,7 @@
         "make_ten_split_leftover",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -5983,7 +5983,7 @@
       "strategy_atoms": [
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6007,7 +6007,7 @@
       "strategy_atoms": [
         "base_ones_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6054,7 +6054,7 @@
         "base_ones_chunking",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6102,7 +6102,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6199,7 +6199,7 @@
         "base_ones_chunking",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6224,7 +6224,7 @@
         "base_ones_chunking",
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6248,7 +6248,7 @@
       "strategy_atoms": [
         "base_ones_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6276,7 +6276,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6302,7 +6302,7 @@
         "count_on_from_larger",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6327,7 +6327,7 @@
         "count_all_when_count_on_available",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6352,7 +6352,7 @@
         "compare_by_matching_difference",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -6376,7 +6376,7 @@
       "strategy_atoms": [
         "compare_by_matching_difference"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -6401,7 +6401,7 @@
         "base_ones_chunking",
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6447,7 +6447,7 @@
       "strategy_atoms": [
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6565,7 +6565,7 @@
         "repeat_equal_groups",
         "shape_classification_by_defining_attributes"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6615,7 +6615,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6639,7 +6639,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6664,7 +6664,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6689,7 +6689,7 @@
         "count_on_from_larger",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6759,7 +6759,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6783,7 +6783,7 @@
       "strategy_atoms": [
         "base_ones_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6810,7 +6810,7 @@
         "make_ten_split_leftover",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6856,7 +6856,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6883,7 +6883,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6932,7 +6932,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -6959,7 +6959,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -6987,7 +6987,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7011,7 +7011,7 @@
       "strategy_atoms": [
         "compare_by_matching_difference"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 4,
       "deformation_instances": 0,
@@ -7040,7 +7040,7 @@
         "recursive_place_value_inscription",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7065,7 +7065,7 @@
         "base_ones_chunking",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7091,7 +7091,7 @@
         "recursive_place_value_inscription",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7116,7 +7116,7 @@
         "base_ones_chunking",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7141,7 +7141,7 @@
         "add_instead_of_subtract_column",
         "smaller_from_larger_in_column"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7169,7 +7169,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7196,7 +7196,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7224,7 +7224,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7253,7 +7253,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7299,7 +7299,7 @@
       "strategy_atoms": [
         "count_all_when_count_on_available"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7392,7 +7392,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7442,7 +7442,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7491,7 +7491,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7518,7 +7518,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -7543,7 +7543,7 @@
         "base_ones_chunking",
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7567,7 +7567,7 @@
       "strategy_atoms": [
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7597,7 +7597,7 @@
         "decompose_base_for_ones",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 2,
       "deformation_instances": 1,
@@ -7631,7 +7631,7 @@
         "round_then_adjust",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7660,7 +7660,7 @@
         "recursive_place_value_inscription",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 3,
       "deformation_instances": 0,
@@ -7685,7 +7685,7 @@
         "base_ones_chunking",
         "decompose_base_for_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7714,7 +7714,7 @@
         "decompose_base_for_ones",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7741,7 +7741,7 @@
         "round_then_adjust",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7768,7 +7768,7 @@
         "recursive_place_value_inscription",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7795,7 +7795,7 @@
         "known_fact_retrieval",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7824,7 +7824,7 @@
         "make_ten_split_leftover",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7852,7 +7852,7 @@
         "round_then_adjust",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7880,7 +7880,7 @@
         "decompose_base_for_ones",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 5,
       "deformation_instances": 2,
@@ -7907,7 +7907,7 @@
         "count_up_missing_addend",
         "decompose_base_for_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -7933,7 +7933,7 @@
         "count_up_missing_addend",
         "decompose_base_for_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -7961,7 +7961,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -7990,7 +7990,7 @@
         "round_then_adjust",
         "round_without_adjusting"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8110,7 +8110,7 @@
         "decompose_base_for_ones",
         "linear_unit_iteration"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8161,7 +8161,7 @@
         "linear_unit_iteration",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8185,7 +8185,7 @@
       "strategy_atoms": [
         "base_ones_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8210,7 +8210,7 @@
         "decompose_base_for_ones",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8282,7 +8282,7 @@
         "count_up_missing_addend",
         "linear_unit_iteration"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 2,
       "deformation_instances": 1,
@@ -8307,7 +8307,7 @@
         "decompose_base_for_ones",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 2,
       "deformation_instances": 1,
@@ -8332,7 +8332,7 @@
         "base_ones_chunking",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8359,7 +8359,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8407,7 +8407,7 @@
         "dot_plot_frequency_representation",
         "measure_groups_of_size"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8434,7 +8434,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8459,7 +8459,7 @@
         "base_ones_chunking",
         "dot_plot_frequency_representation"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8483,7 +8483,7 @@
       "strategy_atoms": [
         "measure_groups_of_size"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8530,7 +8530,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8554,7 +8554,7 @@
       "strategy_atoms": [
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8579,7 +8579,7 @@
         "base_ones_chunking",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8625,7 +8625,7 @@
       "strategy_atoms": [
         "base_ones_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8697,7 +8697,7 @@
         "decompose_base_for_ones",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8726,7 +8726,7 @@
         "make_ten_split_leftover",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8755,7 +8755,7 @@
         "make_ten_split_leftover",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8781,7 +8781,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8828,7 +8828,7 @@
         "base_ones_chunking",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8875,7 +8875,7 @@
         "base_ones_chunking",
         "decompose_base_for_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8900,7 +8900,7 @@
         "count_on_from_larger",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8926,7 +8926,7 @@
         "decompose_base_for_ones",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8951,7 +8951,7 @@
         "base_ones_chunking",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -8975,7 +8975,7 @@
       "strategy_atoms": [
         "base_ones_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9000,7 +9000,7 @@
         "base_ones_chunking",
         "fair_share_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9027,7 +9027,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9054,7 +9054,7 @@
         "decompose_base_for_ones",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9079,7 +9079,7 @@
         "base_ones_chunking",
         "place_value_comparison"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 4,
       "deformation_instances": 0,
@@ -9107,7 +9107,7 @@
         "recursive_place_value_inscription",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9134,7 +9134,7 @@
         "recursive_place_value_inscription",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9159,7 +9159,7 @@
         "base_ones_chunking",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9186,7 +9186,7 @@
         "recursive_place_value_inscription",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9211,7 +9211,7 @@
         "base_ones_chunking",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9330,7 +9330,7 @@
         "base_ones_chunking",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9378,7 +9378,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9403,7 +9403,7 @@
         "count_on_from_larger",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9427,7 +9427,7 @@
       "strategy_atoms": [
         "unit_fraction_iteration"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9453,7 +9453,7 @@
         "round_then_adjust",
         "shape_classification_by_defining_attributes"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9499,7 +9499,7 @@
       "strategy_atoms": [
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9572,7 +9572,7 @@
         "make_ten_split_leftover",
         "name_group_count_as_share_size"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9599,7 +9599,7 @@
         "count_on_from_larger",
         "name_group_count_as_share_size"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9626,7 +9626,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9674,7 +9674,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9702,7 +9702,7 @@
         "recursive_place_value_inscription",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9728,7 +9728,7 @@
         "count_on_from_larger",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9776,7 +9776,7 @@
         "count_on_from_larger",
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9801,7 +9801,7 @@
         "count_on_from_larger",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9829,7 +9829,7 @@
         "recursive_place_value_inscription",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9856,7 +9856,7 @@
         "count_up_missing_addend",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9881,7 +9881,7 @@
         "base_ones_chunking",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9909,7 +9909,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9937,7 +9937,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9964,7 +9964,7 @@
         "make_ten_split_leftover",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -9990,7 +9990,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10019,7 +10019,7 @@
         "make_ten_split_leftover",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10043,7 +10043,7 @@
       "strategy_atoms": [
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10072,7 +10072,7 @@
         "make_ten_split_leftover",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10102,7 +10102,7 @@
         "recursive_place_value_inscription",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10132,7 +10132,7 @@
         "recursive_place_value_inscription",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10162,7 +10162,7 @@
         "make_ten_split_leftover",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10192,7 +10192,7 @@
         "recursive_place_value_inscription",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10221,7 +10221,7 @@
         "smaller_from_larger_in_column",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10247,7 +10247,7 @@
         "recursive_place_value_inscription",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10271,7 +10271,7 @@
       "strategy_atoms": [
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10295,7 +10295,7 @@
       "strategy_atoms": [
         "smaller_from_larger_in_column"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10320,7 +10320,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10345,7 +10345,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10370,7 +10370,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10397,7 +10397,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10421,7 +10421,7 @@
       "strategy_atoms": [
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10446,7 +10446,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10474,7 +10474,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10499,7 +10499,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10523,7 +10523,7 @@
       "strategy_atoms": [
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10549,7 +10549,7 @@
         "name_group_count_as_share_size",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10574,7 +10574,7 @@
         "name_group_count_as_share_size",
         "rigid_shape_composition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10621,7 +10621,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10645,7 +10645,7 @@
       "strategy_atoms": [
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10673,7 +10673,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10700,7 +10700,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10727,7 +10727,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10753,7 +10753,7 @@
         "count_on_from_larger",
         "decompose_base_for_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10780,7 +10780,7 @@
         "recursive_place_value_inscription",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10809,7 +10809,7 @@
         "make_ten_split_leftover",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10838,7 +10838,7 @@
         "make_ten_split_leftover",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10864,7 +10864,7 @@
         "decompose_base_for_ones",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10889,7 +10889,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10917,7 +10917,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10942,7 +10942,7 @@
         "count_all_when_count_on_available",
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -10967,7 +10967,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -11038,7 +11038,7 @@
         "base_ones_chunking",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -11178,7 +11178,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 3,
       "deformation_instances": 0,
@@ -11203,7 +11203,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 2,
       "deformation_instances": 0,
@@ -11229,7 +11229,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -11254,7 +11254,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 14,
       "deformation_instances": 7,
@@ -11279,7 +11279,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 5,
       "deformation_instances": 1,
@@ -11305,7 +11305,7 @@
         "multiplication_fact_retrieval",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -11334,7 +11334,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 5,
       "deformation_instances": 0,
@@ -11359,7 +11359,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -11384,7 +11384,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -11410,7 +11410,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 2,
       "deformation_instances": 0,
@@ -11435,7 +11435,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 3,
       "deformation_instances": 0,
@@ -11461,7 +11461,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -11487,7 +11487,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -11514,7 +11514,7 @@
         "measure_groups_of_size",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -11612,7 +11612,7 @@
         "rectangle_area_unit_iteration",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -11687,7 +11687,7 @@
         "rectangle_area_unit_iteration",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -11713,7 +11713,7 @@
         "rectangle_area_unit_iteration",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -11739,7 +11739,7 @@
         "rectangle_area_unit_iteration",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -11764,7 +11764,7 @@
         "rectangle_area_unit_iteration",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -11794,7 +11794,7 @@
         "make_ten_split_leftover",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -11822,7 +11822,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -11896,7 +11896,7 @@
         "decompose_base_for_ones",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -11925,7 +11925,7 @@
         "decompose_base_for_ones",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 2,
       "deformation_instances": 1,
@@ -11951,7 +11951,7 @@
         "column_addition_with_carrying",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -11975,7 +11975,7 @@
       "strategy_atoms": [
         "base_ones_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12000,7 +12000,7 @@
         "base_ones_chunking",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12026,7 +12026,7 @@
         "base_ones_chunking",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12053,7 +12053,7 @@
         "decompose_base_for_ones",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12080,7 +12080,7 @@
         "round_then_adjust",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12107,7 +12107,7 @@
         "repeat_equal_groups",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -12133,7 +12133,7 @@
         "decompose_base_for_ones",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12160,7 +12160,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12188,7 +12188,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12213,7 +12213,7 @@
         "base_ones_chunking",
         "count_up_missing_addend"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12240,7 +12240,7 @@
         "count_up_missing_addend",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12266,7 +12266,7 @@
         "base_ones_chunking",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12290,7 +12290,7 @@
       "strategy_atoms": [
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12314,7 +12314,7 @@
       "strategy_atoms": [
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12338,7 +12338,7 @@
       "strategy_atoms": [
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12362,7 +12362,7 @@
       "strategy_atoms": [
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12387,7 +12387,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12411,7 +12411,7 @@
       "strategy_atoms": [
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12435,7 +12435,7 @@
       "strategy_atoms": [
         "measure_groups_of_size"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -12460,7 +12460,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12485,7 +12485,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -12511,7 +12511,7 @@
         "repeat_equal_groups",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12538,7 +12538,7 @@
         "repeat_equal_groups",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12564,7 +12564,7 @@
         "measure_groups_of_size",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -12590,7 +12590,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -12616,7 +12616,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12641,7 +12641,7 @@
         "multiplication_fact_retrieval",
         "smaller_from_larger_in_column"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12666,7 +12666,7 @@
         "rectangle_area_unit_iteration",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12691,7 +12691,7 @@
         "count_all_when_count_on_available",
         "rectangle_area_unit_iteration"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12717,7 +12717,7 @@
         "count_all_when_count_on_available",
         "decompose_base_for_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12744,7 +12744,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12771,7 +12771,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12798,7 +12798,7 @@
         "rectangle_area_unit_iteration",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -12828,7 +12828,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12852,7 +12852,7 @@
       "strategy_atoms": [
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12883,7 +12883,7 @@
         "round_then_adjust",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12911,7 +12911,7 @@
         "repeat_equal_groups",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12938,7 +12938,7 @@
         "repeat_equal_groups",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12964,7 +12964,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -12989,7 +12989,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13013,7 +13013,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13038,7 +13038,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13063,7 +13063,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13092,7 +13092,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13117,7 +13117,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13142,7 +13142,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13166,7 +13166,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13194,7 +13194,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13219,7 +13219,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13266,7 +13266,7 @@
         "repeat_equal_groups",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13291,7 +13291,7 @@
         "co_denominator_count_on_from_larger",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13315,7 +13315,7 @@
       "strategy_atoms": [
         "co_denominator_count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13340,7 +13340,7 @@
         "co_denominator_count_on_from_larger",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13386,7 +13386,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13410,7 +13410,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13434,7 +13434,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13553,7 +13553,7 @@
         "column_addition_with_carrying",
         "dot_plot_frequency_representation"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13759,7 +13759,7 @@
         "round_then_adjust",
         "unit_preserving_measured_quantity_change"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13784,7 +13784,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13857,7 +13857,7 @@
         "repeat_equal_groups",
         "shape_classification_by_defining_attributes"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13885,7 +13885,7 @@
         "round_then_adjust",
         "shape_classification_by_defining_attributes"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13934,7 +13934,7 @@
         "repeat_equal_groups",
         "shape_classification_by_defining_attributes"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13956,10 +13956,9 @@
       "standards_anchor": "lesson",
       "strategy": "both",
       "strategy_atoms": [
-        "perimeter_as_boundary_traversal",
         "polygon_perimeter_boundary_accumulation"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -13985,7 +13984,7 @@
         "polygon_perimeter_boundary_accumulation",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14010,7 +14009,7 @@
         "polygon_perimeter_boundary_accumulation",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14203,7 +14202,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14228,7 +14227,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14365,7 +14364,7 @@
         "multiplication_fact_retrieval",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14391,7 +14390,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14416,7 +14415,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14441,7 +14440,7 @@
         "round_then_adjust",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14488,7 +14487,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14534,7 +14533,7 @@
       "strategy_atoms": [
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14607,7 +14606,7 @@
         "count_all_when_count_on_available",
         "rectangle_factor_pair_search"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14634,7 +14633,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14683,7 +14682,7 @@
         "repeat_group_size_by_itself",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14709,7 +14708,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14823,7 +14822,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14847,7 +14846,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14872,7 +14871,7 @@
         "co_denominator_count_on_from_larger",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14898,7 +14897,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14922,7 +14921,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14946,7 +14945,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14970,7 +14969,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -14995,7 +14994,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15020,7 +15019,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15044,7 +15043,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15068,7 +15067,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15092,7 +15091,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15138,7 +15137,7 @@
       "strategy_atoms": [
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15163,7 +15162,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 2,
       "deformation_instances": 1,
@@ -15188,7 +15187,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15213,7 +15212,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15238,7 +15237,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15263,7 +15262,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15288,7 +15287,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15313,7 +15312,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15337,7 +15336,7 @@
       "strategy_atoms": [
         "improper_fraction_chain_loss"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 2,
       "deformation_instances": 1,
@@ -15362,7 +15361,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15387,7 +15386,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15411,7 +15410,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15435,7 +15434,7 @@
       "strategy_atoms": [
         "co_denominator_make_base_transfer"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15459,7 +15458,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15483,7 +15482,7 @@
       "strategy_atoms": [
         "co_denominator_count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15687,7 +15686,7 @@
       "strategy_atoms": [
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15711,7 +15710,7 @@
       "strategy_atoms": [
         "co_denominator_count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15757,7 +15756,7 @@
       "strategy_atoms": [
         "base_ones_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15786,7 +15785,7 @@
         "make_ten_split_leftover",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15812,7 +15811,7 @@
         "count_all_when_count_on_available",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15837,7 +15836,7 @@
         "base_ones_chunking",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15865,7 +15864,7 @@
         "recursive_place_value_inscription",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15892,7 +15891,7 @@
         "round_then_adjust",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15919,7 +15918,7 @@
         "recursive_place_value_inscription",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15947,7 +15946,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15972,7 +15971,7 @@
         "base_ones_chunking",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -15998,7 +15997,7 @@
         "count_all_instead_of_known_fact",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16025,7 +16024,7 @@
         "name_group_count_as_share_size",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16051,7 +16050,7 @@
         "round_then_adjust",
         "smaller_from_larger_in_column"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16078,7 +16077,7 @@
         "decompose_base_for_ones",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16105,7 +16104,7 @@
         "decompose_base_for_ones",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16133,7 +16132,7 @@
         "decompose_base_for_ones",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16160,7 +16159,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16187,7 +16186,7 @@
         "decompose_base_for_ones",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16212,7 +16211,7 @@
         "base_ones_chunking",
         "column_addition_with_carrying"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16236,7 +16235,7 @@
       "strategy_atoms": [
         "commute_factors_preserve_product"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16261,7 +16260,7 @@
         "fair_share_equal_groups",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16288,7 +16287,7 @@
         "name_reached_total_as_quotient",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 2,
       "deformation_instances": 1,
@@ -16312,7 +16311,7 @@
       "strategy_atoms": [
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16336,7 +16335,7 @@
       "strategy_atoms": [
         "commute_factors_preserve_product"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16361,7 +16360,7 @@
         "base_ones_chunking",
         "count_on_from_larger"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16504,7 +16503,7 @@
         "count_on_from_larger",
         "unit_conversion_by_iteration"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16530,7 +16529,7 @@
         "make_ten_split_leftover",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16558,7 +16557,7 @@
         "smaller_from_larger_in_column",
         "unit_conversion_by_iteration"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16583,7 +16582,7 @@
         "round_then_adjust",
         "unit_conversion_by_iteration"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16659,7 +16658,7 @@
         "commute_factors_preserve_product",
         "unit_conversion_by_iteration"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16688,7 +16687,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16737,7 +16736,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16765,7 +16764,7 @@
         "recursive_place_value_inscription",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16794,7 +16793,7 @@
         "repeat_equal_groups",
         "smaller_from_larger_in_column"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -16823,7 +16822,7 @@
         "recursive_place_value_inscription",
         "smaller_from_larger_in_column"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16850,7 +16849,7 @@
         "distribute_group_size_split",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16876,7 +16875,7 @@
         "decompose_base_for_ones",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16904,7 +16903,7 @@
         "distribute_group_size_split",
         "take_away_base_ones"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16929,7 +16928,7 @@
         "base_ones_chunking",
         "distribute_group_size_split"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16956,7 +16955,7 @@
         "decompose_base_for_ones",
         "distribute_group_size_split"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -16980,7 +16979,7 @@
       "strategy_atoms": [
         "base_ones_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -17007,7 +17006,7 @@
         "repeat_equal_groups",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -17034,7 +17033,7 @@
         "round_then_adjust",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -17063,7 +17062,7 @@
         "repeat_equal_groups",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -17091,7 +17090,7 @@
         "repeat_equal_groups",
         "smaller_from_larger_in_column"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -17120,7 +17119,7 @@
         "repeat_equal_groups",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -17144,7 +17143,7 @@
       "strategy_atoms": [
         "partial_quotient_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -17171,7 +17170,7 @@
         "repeat_equal_groups",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -17197,7 +17196,7 @@
         "repeat_equal_groups",
         "stop_after_first_partial_quotient"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -17225,7 +17224,7 @@
         "round_then_adjust",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -17300,7 +17299,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -17325,7 +17324,7 @@
         "column_addition_with_carrying",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -17352,7 +17351,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -17563,7 +17562,7 @@
         "measure_groups_of_size",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -17591,7 +17590,7 @@
         "round_then_adjust",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18090,7 +18089,7 @@
         "make_ten_drop_leftover",
         "make_ten_split_leftover"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18117,7 +18116,7 @@
         "recursive_place_value_inscription",
         "regroup_to_base_preserving_total"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18141,7 +18140,7 @@
       "strategy_atoms": [
         "partial_quotient_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18167,7 +18166,7 @@
         "positional_decimal_reading",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18193,7 +18192,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18261,7 +18260,7 @@
       "strategy_atoms": [
         "base_ones_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18289,7 +18288,7 @@
         "round_then_adjust",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18387,7 +18386,7 @@
         "rectangular_prism_volume_layer_iteration",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18436,7 +18435,7 @@
         "rectangular_prism_volume_layer_iteration",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18533,7 +18532,7 @@
         "compare_by_matching_difference",
         "composite_prism_volume_sum"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18607,7 +18606,7 @@
         "fair_share_equal_groups",
         "unit_fraction_iteration"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 2,
       "deformation_instances": 0,
@@ -18633,7 +18632,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18657,7 +18656,7 @@
       "strategy_atoms": [
         "unit_fraction_iteration"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18681,7 +18680,7 @@
       "strategy_atoms": [
         "unit_fraction_iteration"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18729,7 +18728,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18754,7 +18753,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18780,7 +18779,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18805,7 +18804,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18830,7 +18829,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18854,7 +18853,7 @@
       "strategy_atoms": [
         "area_model_part_of_part"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18879,7 +18878,7 @@
         "area_model_part_of_part",
         "area_preserving_polygon_decomposition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18903,7 +18902,7 @@
       "strategy_atoms": [
         "area_model_part_of_part"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18927,7 +18926,7 @@
       "strategy_atoms": [
         "area_model_part_of_part"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18951,7 +18950,7 @@
       "strategy_atoms": [
         "area_model_part_of_part"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -18997,7 +18996,7 @@
       "strategy_atoms": [
         "area_model_part_of_part"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19023,7 +19022,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19048,7 +19047,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19073,7 +19072,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19098,7 +19097,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19123,7 +19122,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19148,7 +19147,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19217,7 +19216,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19264,7 +19263,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19289,7 +19288,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19314,7 +19313,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19339,7 +19338,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19364,7 +19363,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19389,7 +19388,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19414,7 +19413,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19439,7 +19438,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19464,7 +19463,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19489,7 +19488,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19515,7 +19514,7 @@
         "column_addition_with_carrying",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19542,7 +19541,7 @@
         "distribute_group_size_split",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19567,7 +19566,7 @@
         "column_addition_with_carrying",
         "distribute_group_size_split"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19592,7 +19591,7 @@
         "base_ones_chunking",
         "column_addition_with_carrying"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19618,7 +19617,7 @@
         "column_addition_with_carrying",
         "distribute_group_size_split"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19644,7 +19643,7 @@
         "column_addition_with_carrying",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19670,7 +19669,7 @@
         "column_addition_with_carrying",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19695,7 +19694,7 @@
         "base_ones_chunking",
         "column_addition_with_carrying"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19721,7 +19720,7 @@
         "column_addition_with_carrying",
         "long_division"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -19746,7 +19745,7 @@
         "base_ones_chunking",
         "partial_quotient_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19774,7 +19773,7 @@
         "repeat_equal_groups",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19799,7 +19798,7 @@
         "partial_quotient_chunking",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19823,7 +19822,7 @@
       "strategy_atoms": [
         "partial_quotient_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19872,7 +19871,7 @@
       "strategy_atoms": [
         "base_ones_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19898,7 +19897,7 @@
         "repeat_equal_groups",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19949,7 +19948,7 @@
         "measure_groups_of_size",
         "rectangle_area_unit_iteration"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -19976,7 +19975,7 @@
         "rectangular_prism_volume_layer_iteration",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -20022,7 +20021,7 @@
       "strategy_atoms": [
         "base_ones_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20071,7 +20070,7 @@
         "base_ones_chunking",
         "positional_decimal_reading"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20098,7 +20097,7 @@
         "positional_decimal_reading",
         "smaller_from_larger_in_column"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 3,
       "deformation_instances": 0,
@@ -20123,7 +20122,7 @@
         "base_ones_chunking",
         "positional_decimal_reading"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20149,7 +20148,7 @@
         "decimal_comparison_by_aligned_units",
         "positional_decimal_reading"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -20176,7 +20175,7 @@
         "positional_decimal_reading",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20202,7 +20201,7 @@
         "positional_decimal_reading",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20229,7 +20228,7 @@
         "count_up_missing_addend",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20256,7 +20255,7 @@
         "positional_decimal_reading",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20283,7 +20282,7 @@
         "decimal_addition_by_aligned_units",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 2,
       "deformation_instances": 1,
@@ -20312,7 +20311,7 @@
         "repeat_equal_groups",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20339,7 +20338,7 @@
         "decimal_addition_by_aligned_units",
         "positional_decimal_reading"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20366,7 +20365,7 @@
         "decimal_subtraction_by_aligned_units",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20394,7 +20393,7 @@
         "positional_decimal_reading",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20422,7 +20421,7 @@
         "decimal_addition_by_aligned_units",
         "decimal_subtraction_by_aligned_units"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20446,7 +20445,7 @@
       "strategy_atoms": [
         "base_ones_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20473,7 +20472,7 @@
         "positional_decimal_reading",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20499,7 +20498,7 @@
         "positional_decimal_reading",
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20524,7 +20523,7 @@
         "base_ones_chunking",
         "decimal_multiplication_rule"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20550,7 +20549,7 @@
         "decimal_multiplication_rule",
         "positional_decimal_reading"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20575,7 +20574,7 @@
         "base_ones_chunking",
         "positional_decimal_reading"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20601,7 +20600,7 @@
         "repeat_equal_groups",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20629,7 +20628,7 @@
         "repeat_equal_groups",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20655,7 +20654,7 @@
         "repeat_equal_groups",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20701,7 +20700,7 @@
       "strategy_atoms": [
         "base_ones_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20727,7 +20726,7 @@
         "count_all_when_count_on_available",
         "name_group_count_as_share_size"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20752,7 +20751,7 @@
         "repeat_equal_groups",
         "smaller_from_larger_in_column"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20778,7 +20777,7 @@
         "positional_decimal_reading",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20803,7 +20802,7 @@
         "base_ones_chunking",
         "measure_groups_of_size"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20828,7 +20827,7 @@
         "repeat_equal_groups",
         "unit_conversion_by_iteration"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20874,7 +20873,7 @@
       "strategy_atoms": [
         "co_denominator_make_base_transfer"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20898,7 +20897,7 @@
       "strategy_atoms": [
         "co_denominator_make_base_transfer"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20922,7 +20921,7 @@
       "strategy_atoms": [
         "co_denominator_make_base_transfer"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20946,7 +20945,7 @@
       "strategy_atoms": [
         "co_denominator_make_base_transfer"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20970,7 +20969,7 @@
       "strategy_atoms": [
         "co_denominator_make_base_transfer"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -20994,7 +20993,7 @@
       "strategy_atoms": [
         "co_denominator_make_base_transfer"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -21021,7 +21020,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -21068,7 +21067,7 @@
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -21158,7 +21157,7 @@
       "strategy_atoms": [
         "repeat_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -21460,7 +21459,7 @@
       "strategy_atoms": [
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -21532,7 +21531,7 @@
         "column_addition_with_carrying",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -21557,7 +21556,7 @@
         "base_ones_chunking",
         "column_addition_with_carrying"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -21581,7 +21580,7 @@
       "strategy_atoms": [
         "column_addition_with_carrying"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -21606,7 +21605,7 @@
         "base_ones_chunking",
         "share_into_divisor_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -21631,7 +21630,7 @@
         "base_ones_chunking",
         "recursive_place_value_inscription"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -21682,7 +21681,7 @@
         "rectangular_prism_volume_layer_iteration",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -21707,7 +21706,7 @@
         "column_addition_with_carrying",
         "rectangular_prism_volume_layer_iteration"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -21753,7 +21752,7 @@
       "strategy_atoms": [
         "co_denominator_make_base_transfer"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -21801,7 +21800,7 @@
         "decimal_addition_by_aligned_units",
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -21869,7 +21868,7 @@
       "strategy_atoms": [
         "column_addition_with_carrying"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -21893,7 +21892,7 @@
       "strategy_atoms": [
         "round_then_adjust"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -21917,7 +21916,7 @@
       "strategy_atoms": [
         "co_denominator_make_base_transfer"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -23255,7 +23254,7 @@
         "fair_share_equal_groups",
         "measure_groups_of_size"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": false,
       "task_instances": 10,
       "deformation_instances": 0,
@@ -23280,7 +23279,7 @@
         "fair_share_equal_groups",
         "measure_groups_of_size"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": false,
       "task_instances": 10,
       "deformation_instances": 0,
@@ -23304,7 +23303,7 @@
       "strategy_atoms": [
         "measure_groups_of_size"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": false,
       "task_instances": 3,
       "deformation_instances": 0,
@@ -23328,7 +23327,7 @@
       "strategy_atoms": [
         "measure_groups_of_size"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": false,
       "task_instances": 4,
       "deformation_instances": 0,
@@ -23352,7 +23351,7 @@
       "strategy_atoms": [
         "measure_groups_of_size"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": false,
       "task_instances": 1,
       "deformation_instances": 0,
@@ -23376,7 +23375,7 @@
       "strategy_atoms": [
         "measure_groups_of_size"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": false,
       "task_instances": 9,
       "deformation_instances": 0,
@@ -23400,7 +23399,7 @@
       "strategy_atoms": [
         "fair_share_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": false,
       "task_instances": 2,
       "deformation_instances": 0,
@@ -23424,7 +23423,7 @@
       "strategy_atoms": [
         "fair_share_equal_groups"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": false,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -23448,7 +23447,7 @@
       "strategy_atoms": [
         "measurement_division"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": false,
       "task_instances": 3,
       "deformation_instances": 0,
@@ -23472,7 +23471,7 @@
       "strategy_atoms": [
         "reversible_measurement_division"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": false,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -23518,7 +23517,7 @@
       "strategy_atoms": [
         "area_model_part_of_part"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": false,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -23852,7 +23851,7 @@
       "strategy_atoms": [
         "partial_quotient_chunking"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": false,
       "task_instances": 8,
       "deformation_instances": 0,
@@ -23876,7 +23875,7 @@
       "strategy_atoms": [
         "long_division"
       ],
-      "automaton_resolves": false,
+      "automaton_resolves": true,
       "verbatim_context": false,
       "task_instances": 14,
       "deformation_instances": 0,

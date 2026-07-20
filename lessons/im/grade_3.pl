@@ -1025,11 +1025,11 @@ explicit_lesson_strategy('IM-G3-U7-L5', multiplication, repeat_equal_groups, Inf
 text_interpreter:explicit_lesson_text_source('IM-G3-U7-L5', Path) :-
     absolute_file_name(geometry('corpus/im_teacher_guides/grade3/unit7/lesson5.md'), Path, [access(read)]).
 
-explicit_lesson_strategy('IM-G3-U7-L6', geometry, perimeter_as_boundary_traversal, Info) :-
-    geometry_strategy_info(perimeter_distance_around, perimeter_as_boundary_traversal, Info).
+explicit_lesson_strategy('IM-G3-U7-L6', geometry, polygon_perimeter_boundary_accumulation, Info) :-
+    geometry_strategy_info(perimeter_distance_around, polygon_perimeter_boundary_accumulation, Info).
 explicit_lesson_misconception('IM-G3-U7-L6', geometry, perimeter_incomplete_traversal, Info) :-
     geometry_misconception_info(perimeter_distance_around,
-                                perimeter_as_boundary_traversal,
+                                polygon_perimeter_boundary_accumulation,
                                 perimeter_incomplete_traversal,
                                 Info).
 text_interpreter:explicit_lesson_text_source('IM-G3-U7-L6', Path) :-
