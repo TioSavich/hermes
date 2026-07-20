@@ -23,7 +23,7 @@
  *     one row per frame, so area reads off as the cell count. Denotes
  *     area_by_tiling(region(C, R), C*R).
  *
- * This language carries the catalog's sharpest break — the erasure boundary —
+ * This language carries the catalog's sharpest break — the hollow boundary —
  * through TWO deformation lanes, reachable ONLY through the compare form (no
  * productive Spec emits either):
  *
@@ -33,7 +33,7 @@
  *       cells fall outside the target footprint (role "deformation"). No rotation
  *       mirrors a chiral piece: violation reason(chirality_requires_flip_not_rotation).
  *
- *   (b) unfillable_by_parity_compare(cols(C), rows(R)) : the ARCHE-TRACE erasure
+ *   (b) unfillable_by_parity_compare(cols(C), rows(R)) : the hollow boundary
  *       boundary. The scene STAGES the repeated failure — a bounded region with a
  *       removed corner and a stalled partial domino cover — but the REASON the
  *       region cannot be tiled (a checkerboard-coloring parity count) leaves the
@@ -170,7 +170,7 @@ polyform_tiling_compare_json(flip_needed_compare(Piece), Dict) :-
                  deformation: _{ frames: [] } },
        term_to_string(Piece, PieceAtom)
     ).
-%   unfillable_by_parity_compare(cols(C), rows(R)): the arche-trace erasure
+%   unfillable_by_parity_compare(cols(C), rows(R)): the hollow boundary
 %   boundary. The tiles stage the stall; the parity reason hands off to inference.
 polyform_tiling_compare_json(unfillable_by_parity_compare(cols(C), rows(R)), Dict) :-
     !,
@@ -340,7 +340,7 @@ flip_note(Piece, Note) :-
 
 
 % =============================================================================
-% Break lane (b): unfillable_by_parity — the arche-trace erasure boundary.
+% Break lane (b): unfillable_by_parity — the hollow boundary.
 % =============================================================================
 %
 % The deformation strip STAGES the repeated failure: a bounded region with one
@@ -396,7 +396,7 @@ parity_deformation_frames(C, R, Reserved, Dominoes, [F1, F2, F3], NResidue) :-
     F2 = _{ step: 2, verb: "cover_partial", caption: Cap2,
             sceneChanged: true, scene: Scene2 },
     % Frame 3: the stall. The residue is marked (role deformation); the reason it
-    % cannot close is a parity argument that leaves the tiles (arche-trace).
+    % cannot close is a parity argument that leaves the tiles.
     length(Leftover, NResidue),
     cell_dicts_role(Leftover, "deformation", "residue", ResidueDicts),
     append([DominoDicts, ReservedDicts, ResidueDicts], Cells3),
@@ -408,7 +408,7 @@ parity_deformation_frames(C, R, Reserved, Dominoes, [F1, F2, F3], NResidue) :-
             sceneChanged: true, scene: Scene3 }.
 
 parity_note(Note) :-
-    Note = "The tiles stage the repeated failure — a partial cover that cannot close around the removed corner — but they cannot deliver its reason. Whether the region admits any tiling is settled by a two-coloring that leaves the two colors' counts unequal, an argument that departs the spatial model and hands off to inference. This is the arche-trace boundary: the picture names the impossibility; human judgment carries the proof.".
+    Note = "The tiles stage the repeated failure — a partial cover that cannot close around the removed corner — but they cannot deliver its reason. Whether the region admits any tiling is settled by a two-coloring that leaves the two colors' counts unequal, an argument that departs the spatial model and hands off to inference. This is a hollow boundary: the picture names the impossibility; human judgment carries the proof.".
 
 
 % =============================================================================

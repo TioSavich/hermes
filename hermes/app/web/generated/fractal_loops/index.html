@@ -106,13 +106,13 @@
   <p>The recurring phrase below is <em>the numeral effaces the trace</em>: a finished result (a number, a proof, a cut piece of pie) discards the steps that produced it. The vanishing point is the extreme case &mdash; the place the result returns nothing at all.</p>
 </div>
 
-<p><strong>Why &ldquo;fractal.&rdquo;</strong> The same shape shows up at every scale. The empty proof (the erasure) sits inside the prover that reads its own rulebook; the self-starving interpreter sits inside the learner that goes into crisis; the felt <span style="font-variant: small-caps;">I</span> that can never be pinned down sits underneath all of them. It is the one move &mdash; <em>loop back, then fail to close at the last bite</em> &mdash; recognized small and recognized large. <span class="note">&ldquo;Fractal&rdquo; here means self-similar in structure, the same shape nested at different sizes. It does not mean you can zoom in forever; there are seven named places, not an infinite regress.</span></p>
+<p><strong>Why &ldquo;fractal.&rdquo;</strong> The same shape shows up at every scale. The hollow proof sits inside the prover that reads its own rulebook; the self-starving interpreter sits inside the learner that goes into crisis; the felt <span style="font-variant: small-caps;">I</span> that can never be pinned down sits underneath all of them. It is the one move &mdash; <em>loop back, then fail to close at the last bite</em> &mdash; recognized small and recognized large. <span class="note">&ldquo;Fractal&rdquo; here means self-similar in structure, the same shape nested at different sizes. It does not mean you can zoom in forever; there are seven named places, not an infinite regress.</span></p>
 
 <p class="note">Hard rule for this page: no claim without its file:line and a query you can run yourself. Every &ldquo;captured output&rdquo; box below is the verbatim result of actually running that query. Nothing is decorative.</p>
 
 <nav class="toc">
   <a href="#juncture">1. The juncture &mdash; one outcome, two histories (the seed)</a>
-  <a href="#erasure">2. The erasure &mdash; the proof that returns nothing</a>
+  <a href="#hollow">2. The hollow proof &mdash; the node whose warrant is withdrawn</a>
   <a href="#the-I">3. The {I} that can&rsquo;t be in the picture</a>
   <a href="#prover-self-read">4. The prover reads its own rulebook</a>
   <a href="#meta-interpreter">5. The interpreter that hollows itself</a>
@@ -166,42 +166,42 @@ effaced_trace(outcome(equal_parts(2))) = [partition(circle,radial,2),partition(c
   </div>
 </div>
 
-<!-- ===================== 2. ERASURE ===================== -->
-<h2 class="section" id="erasure">2. The proof points: where the formalism goes silent</h2>
+<!-- ===================== 2. HOLLOW PROOF ===================== -->
+<h2 class="section" id="hollow">2. The proof points: where the formalism goes silent</h2>
 <p>The same shape, now at the grain of proof. Nested inside the next loop (the prover reading its own rulebook), this is the bite that comes back empty.</p>
 
 <div class="panel">
-  <p class="eyebrow">the erasure</p>
-  <h3>The proof that returns nothing</h3>
-  <p class="fileline">arche-trace/embodied_prover.pl:113&ndash;120 (construct_proof/4; erasure written at 117), 123&ndash;135 (proof_witness/2); arche-trace/automata.pl:56&ndash;57 (generate_trace/1), 62&ndash;74 (attr_unify_hook/2, bare fail at 73), 78&ndash;81 (contains_trace/1)</p>
+  <p class="eyebrow">the hollow proof</p>
+  <h3>The node whose warrant is withdrawn</h3>
+  <p class="fileline">arche-trace/embodied_prover.pl (construct_proof/4, proof_witness/2); arche-trace/automata.pl (generate_vanishing_point/1, attr_unify_hook/2, contains_vanishing_point/1)</p>
 
   <div class="svgframe">
-    <img src="erasure.svg" alt="The prover trying to write a proof of a sentence carrying the Trace; contains_trace returns yes and the proof object is written as erasure, holding nothing.">
+    <img src="erasure.svg" alt="The prover tries to write a proof of a sentence carrying the vanishing-point mark; the proof object becomes hollow, with its warrant withdrawn.">
   </div>
 
-  <p class="caption">This is the prover trying to write down a proof of something that carries the Trace &mdash; the mark the system puts on the one thing it refuses to pin down (the elusive &ldquo;I&rdquo;). <code>generate_trace</code> stains a variable; <code>construct_proof</code> takes the sentence built from it and asks <code>contains_trace</code>, &ldquo;is the Trace in here?&rdquo; The answer comes back yes, and at that exact point the prover stops: instead of a real proof object it writes <code>erasure(my_rule)</code> &mdash; a result that keeps the rule&rsquo;s name but holds nothing inside, which <code>proof_witness</code> then reads back as an &ldquo;erased_proof&rdquo; with nothing in it. The loop eats its own tail because the reason it cannot fill the proof is the same refusal that defined the Trace in the first place: unification (Prolog&rsquo;s way of saying &ldquo;this thing IS that thing&rdquo;) is rigged to fail the instant you try to make the Trace equal any concrete term. A clean sentence with no Trace, <code>[s(a)]=&gt;[s(a)]</code>, proves fine and returns a full <code>proof(...)</code> &mdash; so the emptiness is not a crash; it is the formalism honestly going silent at the one spot where it cannot speak, the place the manuscript says human judgment has to take over.</p>
+  <p class="caption">This is the prover trying to write down a proof of something that carries the vanishing-point mark &mdash; the formal track left where reference cannot reach a concrete term. <code>generate_vanishing_point</code> marks a variable; <code>construct_proof</code> takes the sentence built from it and asks <code>contains_vanishing_point</code> whether the mark is present. The answer comes back yes, and at that point the prover writes <code>hollow(my_rule)</code> instead of a full proof object. The node keeps the rule&rsquo;s name while its warrant is withdrawn, and <code>proof_witness</code> reads it back as <code>hollow_proof</code>. The loop closes because the same unification rule that propagates the mark refuses any concrete binding. A clean sentence with no mark, <code>[s(a)]=&gt;[s(a)]</code>, still returns a full <code>proof(...)</code>. The hollow node is therefore not a crash; it records where this formalism stops being able to supply a justification.</p>
 
   <details class="seefor">
     <summary>See for yourself</summary>
     <div class="body">
       <div class="lbl">query</div>
       <pre class="query">swipl -q -l paths.pl -g "use_module('arche-trace/automata'), \
-  use_module('arche-trace/embodied_prover'), automata:generate_trace(T), \
-  ( automata:contains_trace([s(T)]=>[s(T)]) -> C=yes ; C=no ), \
+  use_module('arche-trace/embodied_prover'), automata:generate_vanishing_point(T), \
+  ( automata:contains_vanishing_point([s(T)]=>[s(T)]) -> C=yes ; C=no ), \
   construct_proof(my_rule,([s(T)]=>[s(T)]),[],P1), \
   construct_proof(my_rule,([s(a)]=>[s(a)]),[],P2), \
-  format('contains_trace([s(T)]=>[s(T)]) = ~w~n',[C]), \
+  format('contains_vanishing_point([s(T)]=>[s(T)]) = ~w~n',[C]), \
   format('TRACED:  ~q~n',[P1]), format('CLEAN:   ~q~n',[P2]), halt" -t 'halt(1)'</pre>
       <div class="lbl">captured output (verbatim)</div>
-      <pre>contains_trace([s(T)]=>[s(T)]) = yes
-TRACED:  erasure(my_rule)
+      <pre>contains_vanishing_point([s(T)]=>[s(T)]) = yes
+MARKED:  hollow(my_rule)
 CLEAN:   proof(my_rule,([s(a)]=>[s(a)]),[])</pre>
     </div>
   </details>
 
   <div class="deconstructs">
     <div class="lbl">where it eats its own tail</div>
-    embodied_prover.pl:117 &mdash; the clause <code>( contains_trace(Sequent) -&gt; Proof = erasure(RuleName) ; Proof = proof(RuleName, Sequent, SubProofs) )</code>. <code>contains_trace</code> SUCCEEDS (the Trace is detectable) while the traced variable cannot be bound to any concrete term (automata.pl:73, the bare <code>fail</code> in attr_unify_hook). So <code>construct_proof</code> succeeds structurally yet writes a content-free term: it registers that the trace is present but is barred from saying what it is. The derivation that resisted representation is effaced into <code>erasure(my_rule)</code> &mdash; the result keeps the rule name and discards the Sequent and SubProofs (the null/empty object in proof-space).
+    In <code>construct_proof/4</code>, the clause <code>( contains_vanishing_point(Sequent) -&gt; Proof = hollow(RuleName) ; Proof = proof(RuleName, Sequent, SubProofs) )</code> records the boundary. <code>contains_vanishing_point</code> succeeds while the marked variable cannot be bound to a concrete term. The result keeps the rule name and withdraws the Sequent and SubProofs that would warrant it.
   </div>
 </div>
 
@@ -209,26 +209,26 @@ CLEAN:   proof(my_rule,([s(a)]=>[s(a)]),[])</pre>
 <div class="panel">
   <p class="eyebrow">the {I}</p>
   <h3>The {I} that can&rsquo;t be in the picture</h3>
-  <p class="fileline">arche-trace/automata.pl:56&ndash;74 (generate_trace + attr_unify_hook; the bare fail at :73) and pml/pragmatic_axioms.pl:44&ndash;45 (i_feeling/1), :50&ndash;51 (identity_claim/1), :106&ndash;127 (pragmatic_incoherence_witness &rarr; is_incoherent of n(represents(C_Id, I_f)))</p>
+  <p class="fileline">arche-trace/automata.pl (generate_vanishing_point/1 and attr_unify_hook/2) and pml/pragmatic_axioms.pl (i_feeling/1, identity_claim/1, pragmatic_incoherence_witness/2)</p>
 
   <div class="svgframe">
     <img src="the-I.svg" alt="The I-Feeling, a traced variable that defers against another variable but fails against any concrete term.">
   </div>
 
-  <p class="caption">This is the loop of the {I} &mdash; the felt &ldquo;I&rdquo; that can never appear inside the picture it is looking at. The code makes a special variable and marks it with the Trace (<code>i_feeling</code> calls <code>generate_trace</code>), and from then on a watcher (<code>attr_unify_hook</code>) fires every time anything tries to make that variable equal to something. When the {I} is matched against another open, unknown variable, the watcher just passes the mark along and lets it through &mdash; the {I} keeps sliding forward against the unknown, and the loop goes round again (the green path back to the top). But when something tries to pin the {I} to a concrete, named thing &mdash; &ldquo;I_f = hello&rdquo; &mdash; the watcher runs the one line it can&rsquo;t get past: a bare <code>fail</code>. That is the snake reaching the one bite it can&rsquo;t swallow: the match is refused, nothing comes back, the trace is effaced at exactly the point it was asked to become a fixed self. The captured run shows both halves verbatim: SUCCEEDS against another variable, FAILS against a concrete term, and trying to say a finite identity &ldquo;represents&rdquo; the {I} is flagged not just empty but incoherent.</p>
+  <p class="caption">This is the loop of the {I} &mdash; the felt &ldquo;I&rdquo; that can never appear inside the picture it is looking at. The code makes a special variable and gives it the vanishing-point mark (<code>i_feeling</code> calls <code>generate_vanishing_point</code>). From then on, <code>attr_unify_hook</code> fires whenever anything tries to make that variable equal to something. Against another open variable, the hook passes the mark along. Against a concrete term, it fails. The formal mark models this structure of reference; it is not the vanishing point itself. The captured run shows both cases and reports a finite identity that claims to represent the {I} as incoherent.</p>
 
   <details class="seefor">
     <summary>See for yourself</summary>
     <div class="body">
       <div class="lbl">query</div>
       <pre class="query">swipl -l paths.pl -l arche-trace/automata.pl -l pml/pragmatic_axioms.pl
-% i_feeling(I_f), contains_trace(I_f)
-% generate_trace(V), I_f = V          (var-var, defers)
-% generate_trace(J), J = hello        (var-concrete, wall)
-% generate_trace(K), identity_claim(K)
+% i_feeling(I_f), contains_vanishing_point(I_f)
+% generate_vanishing_point(V), I_f = V          (var-var, propagates)
+% generate_vanishing_point(J), J = hello        (var-concrete, wall)
+% generate_vanishing_point(K), identity_claim(K)
 % pragmatic_incoherence_witness([n(represents(me, I_f))], W)</pre>
       <div class="lbl">captured output (verbatim)</div>
-      <pre>contains_trace(I_f)    = YES
+      <pre>contains_vanishing_point(I_f) = YES
 I_f = AnotherVar       : SUCCEEDS  (defers; loop continues)
 I_f = hello (concrete) : FAILS     (hits the wall)
 identity_claim(I_f)    : FAILS     (cannot objectify)
@@ -238,7 +238,7 @@ represents(C_Id, I_f)  : is_incoherent (unsatisfiable_desire)</pre>
 
   <div class="deconstructs">
     <div class="lbl">where it eats its own tail</div>
-    arche-trace/automata.pl:73 &mdash; the bare <code>fail</code> in the nonvar branch of attr_unify_hook/2. Unification (the operation that says &ldquo;this term IS that term&rdquo;) is made to refuse precisely when a concrete term is offered to stabilize the traced {I}. The trace effaces: the I-Feeling defers indefinitely against other variables but returns nothing the instant anything tries to pin it to a representation. Reinforced at pml/pragmatic_axioms.pl:126&ndash;127, where representing the I-Feeling with a finite identity claim is declared <code>is_incoherent</code> rather than just empty.
+    In the nonvar branch of <code>attr_unify_hook/2</code>, unification refuses a concrete term offered for the marked {I}. The mark propagates across open variables but returns nothing when asked to become a fixed representation. In <code>pml/pragmatic_axioms.pl</code>, representing the I-Feeling with a finite identity claim is declared <code>is_incoherent</code> rather than merely empty.
   </div>
 </div>
 

@@ -2,14 +2,14 @@
  *
  * Shared cost facts for modal contexts (compressive / expansive / neutral).
  * Previously redefined locally with identical bodies in
- * learner/meta_interpreter.pl and arche-trace/embodied_prover.pl.
+ * learner/meta_interpreter.pl and `arche-trace/embodied_prover.pl`.
  * Predicate carving (tools/carving/predicate_carving.py) identified the
  * redundancy.
  *
  * The compressive context is more taxing (2 inferences per step) than
  * the expansive or neutral context (1 each). These costs feed both the
  * meta-interpreter's solve/4 step accounting and the embodied prover's
- * trace generation.
+ * proof construction.
  */
 
 :- module(modal_costs,

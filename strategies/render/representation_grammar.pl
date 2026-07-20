@@ -1477,7 +1477,7 @@ rigid_motion_normalize(Verts, Norm) :-
 % pentomino vocabulary) seated edge to edge in a bounded lattice region. It
 % denotes composed/decomposed shapes (K.G.6, 1.G.2, 2.G.1) and area by unit
 % tiling (3.MD.6). Its two breaks are the chiral-piece flip-vs-rotation error and
-% the arche-trace parity obstruction (a removed corner no domino cover can
+% the hollow parity obstruction (a removed corner no domino cover can
 % close, whose reason leaves the spatial model). Scene compiler:
 % polyform_tiling_scene.pl.
 
@@ -1546,7 +1546,7 @@ deformation_spec_evidence(
         violation: reason(chirality_requires_flip_not_rotation),
         provenance: literature_only
     }.
-% Break lane (b): the arche-trace parity obstruction. A region with a removed
+% Break lane (b): the hollow parity obstruction. A region with a removed
 % corner stalls under a partial domino cover; whether it tiles at all is a
 % checkerboard-coloring parity count that leaves the spatial model. Reachable
 % only through unfillable_by_parity_compare/1. Same functor and violation the

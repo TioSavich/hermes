@@ -1,8 +1,8 @@
-# arche-trace
+# Vanishing-point mark and proof engines
 
 Classical sequent reasoning and Brandomian material incompatibility, and the
-symbolic place where the arche-trace, différance, and erasure structure is made
-queryable.
+vanishing-point mark that makes a limit of reference queryable. The mark models
+the structure described by Carspecken; it is not the vanishing point itself.
 
 ## How it loads
 
@@ -19,7 +19,10 @@ individual modules directly.
   plainly that it does not carry Brandomian incompatibility semantics.
 - `brandomian_incompatibility.pl` — material incompatibility with no explosion
   rule; nothing follows from incoherence here, and that absence is the point.
-- `embodied_prover.pl` — a resource-tracked prover carrying the erasure mechanism.
+- `automata.pl` — the attributed-variable vanishing-point mark. It propagates
+  through open variables and refuses a concrete binding.
+- `embodied_prover.pl` — a resource-tracked prover carrying hollow proof nodes.
+  A hollow node stands while its warrant is withdrawn.
 - `incompatibility_sets.pl`, `incompatibility_discovery.pl` — the closed-world
   finite case; discovery proposes, the relational engine records.
 - `differance_juncture.pl` — encodes and makes queryable a structural fact; it
@@ -33,5 +36,6 @@ individual modules directly.
 `misconceptions/literature_deontic_bridge.pl` load these modules;
 `tools/axiom_toggle.pl` and `tools/axiom_pack_audit.pl` load the full stack.
 Full incompatibility entailment is not computable over an open language; this
-computes the closed-world finite case. The Derridean structure is encoded and
-made queryable, not implemented.
+computes the closed-world finite case. The former word "erasure" was withdrawn
+for these proof nodes because Derridean erasure keeps the crossed term legible,
+while a hollow proof does not.

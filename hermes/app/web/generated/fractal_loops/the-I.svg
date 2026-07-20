@@ -25,11 +25,11 @@
   <text x="140" y="116" font-size="9.5" text-anchor="middle" fill="#777">pragmatic_axioms.pl:44</text>
   <text x="140" y="128" font-size="9.5" text-anchor="middle" fill="#777">makes the self-tracing {I}</text>
 
-  <!-- Node B: generate_trace -->
+  <!-- Node B: generate_vanishing_point -->
   <rect x="40" y="176" width="200" height="56" rx="8" fill="#fff" stroke="#444" stroke-width="1.5"/>
-  <text x="140" y="198" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#222">generate_trace(T)</text>
+  <text x="140" y="198" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#222">generate_vanishing_point(T)</text>
   <text x="140" y="214" font-size="9.5" text-anchor="middle" fill="#777">automata.pl:56-57</text>
-  <text x="140" y="226" font-size="9.5" text-anchor="middle" fill="#777">marks the variable with the Trace</text>
+  <text x="140" y="226" font-size="9.5" text-anchor="middle" fill="#777">gives the variable the formal mark</text>
 
   <!-- Node C: attr_unify_hook (the engine) -->
   <rect x="40" y="274" width="200" height="56" rx="8" fill="#fff" stroke="#444" stroke-width="1.5"/>
@@ -48,7 +48,7 @@
   <text x="415" y="293" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#7f0000">unify with a CONCRETE term</text>
   <text x="415" y="308" font-size="9.5" text-anchor="middle" fill="#b71c1c">automata.pl:73 — the bare  fail</text>
   <text x="415" y="322" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#7f0000">FAILS — hits the wall</text>
-  <text x="415" y="334" font-size="9" text-anchor="middle" fill="#b71c1c">the trace effaces; nothing comes back</text>
+  <text x="415" y="334" font-size="9" text-anchor="middle" fill="#b71c1c">the concrete binding fails; nothing comes back</text>
 
   <!-- Vanishing-point badge -->
   <circle cx="310" cy="274" r="13" fill="#b71c1c"/>
@@ -77,7 +77,7 @@
   <!-- ===== Captured output panel (the proof inside the picture) ===== -->
   <rect x="40" y="352" width="620" height="56" rx="6" fill="#1e1e1e"/>
   <text x="48" y="349" font-size="9.5" fill="#888">verbatim — swipl -l paths.pl -l arche-trace/automata.pl -l pml/pragmatic_axioms.pl</text>
-  <text x="50" y="367" font-size="10" font-family="Menlo, Consolas, monospace" fill="#9cdc9c">contains_trace(I_f)   = YES        I_f = AnotherVar      : SUCCEEDS (defers; loop continues)</text>
+  <text x="50" y="367" font-size="10" font-family="Menlo, Consolas, monospace" fill="#9cdc9c">contains_vanishing_point(I_f) = YES  I_f = AnotherVar : SUCCEEDS (mark propagates)</text>
   <text x="50" y="381" font-size="10" font-family="Menlo, Consolas, monospace" fill="#ef9a9a">I_f = hello (concrete): FAILS (hits the wall)   identity_claim(I_f) : FAILS (cannot objectify)</text>
   <text x="50" y="395" font-size="10" font-family="Menlo, Consolas, monospace" fill="#ffcc80">represents(C_Id, I_f) : is_incoherent (unsatisfiable_desire)</text>
 </svg>

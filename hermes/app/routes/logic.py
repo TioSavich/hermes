@@ -1076,7 +1076,7 @@ class RouteLogic:
     def _handle_sequent_proof(self, payload: dict) -> None:
         # A sequent witness from the embodied prover. Where the proof goes
         # through, the witness records it; where the source is trace-tainted the
-        # engine returns erasure(...) — the boundary, made operable, where formal
+        # engine returns hollow(...) — the boundary, made operable, where formal
         # proof goes hollow and human judgment has to take over.
         sequent = payload.get("sequent")
         source = payload.get("source")

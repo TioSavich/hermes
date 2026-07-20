@@ -22,7 +22,8 @@
 :- op(500, fx, comp_poss).
 :- op(500, fx, neg).
 
-:- use_module(arche_trace(automata), [generate_trace/1, contains_trace/1]).
+:- use_module(arche_trace(automata),
+              [generate_vanishing_point/1, contains_vanishing_point/1]).
 :- use_module(arche_trace(sequent_engine)).
 :- use_module(pml_operators).
 
@@ -40,15 +41,17 @@
 
 %!  i_feeling(?I_f) is semidet.
 %   The I-Feeling Mode (I_f): The singular, unifying aspect of experience; the elusive subject.
-%   Implemented using the Arche-Trace to ensure it resists objectification.
+%   Modeled with the vanishing-point mark so a concrete binding is refused.
 i_feeling(I_f) :-
-    (var(I_f) -> generate_trace(I_f) ; contains_trace(I_f)).
+    ( var(I_f) -> generate_vanishing_point(I_f)
+    ; contains_vanishing_point(I_f)
+    ).
 
 %!  identity_claim(?C_Id) is semidet.
 %   The Identity Claim (C_Id): The articulated, objectified self (the "me").
-%   Must be a concrete term (cannot contain the Trace).
+%   Must be a concrete term (cannot carry the vanishing-point mark).
 identity_claim(C_Id) :-
-    \+ contains_trace(C_Id).
+    \+ contains_vanishing_point(C_Id).
 
 %!  impetus(?I) is semidet.
 %   The Impetus to Act (I): The holistic, pre-conceptual striving.

@@ -53,9 +53,9 @@
  *   pml/axioms_eml.pl                  — embodied modal logic
  *   learner/axioms_domains.pl          — domain switching, norms, fractions
  *
- * The arche-trace erasure mechanism (in embodied_prover.pl) marks where
- * ALL axiom sets produce hollow proofs — where formalization honestly
- * stops being able to say anything.
+ * The vanishing-point mark (automata.pl) and hollow proofs
+ * (embodied_prover.pl) record where formalization honestly stops being
+ * able to say anything.
  *
  * Priority ordering: Identity/Explosion -> Material Axioms -> Structural
  * Rules -> Reduction Schemata. The include directives preserve this

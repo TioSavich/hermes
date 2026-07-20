@@ -134,13 +134,12 @@
       what rule. The reflexive identity goes through on every layer. Change the right-hand
       side so no loaded prover derives it, and the record says so rather than inventing a
       derivation. A deeper boundary belongs to the embodied prover: when a derivation
-      touches the arche-trace, the point where the proof returns a blank instead of a result
-      (Derrida, <em>Of Grammatology</em>), it returns an <code>erasure</code> in place of a proof,
-      recording that its justification gives out there. The preset below sends a sequent
-      whose derivation draws the trace in through the project's PML pragmatic axiom pack
+      touches the vanishing-point mark, it returns a <code>hollow</code> node in place of a
+      proof, recording that its justification gives out there. The preset below sends a
+      sequent whose derivation draws the mark in through the project's PML pragmatic axiom pack
       (Savich, <em>PML calculus</em>)
       (<code>pml/pragmatic_axioms.pl</code>); the prover answers
-      <code>erasure(propagation)</code>, and the card renders that answer in place of a
+      <code>hollow(propagation)</code>, and the card renders that answer in place of a
       derivation. When that pack is not loaded, the app answers that no loaded layer derives
       the same sequent, and the card renders that instead.</p>
     <input class="seqin" id="seq-in" value="[s(a)] =&gt; [s(a)]" spellcheck="false">
@@ -152,7 +151,7 @@
         <option value="deontic_bridge">deontic_bridge</option>
       </select>
       <button class="opbtn" id="seq-go">Ask for a recorded example</button>
-      <button class="opbtn" id="seq-erasure">Send the trace-marked sequent</button>
+      <button class="opbtn" id="seq-hollow">Send the vanishing-point-marked sequent</button>
     </div>
     <div id="seq-out" class="board"></div>
   </div>
@@ -229,7 +228,7 @@ neg(p)</textarea>
     <h3>Formal recorded examples</h3>
     <div class="domains">finite proof and incompatibility relations · live app replies</div>
     <p class="desc">These controls ask the loaded clauses for a recorded example. An
-      <code>erasure(...)</code> reply records the boundary reached by that derivation; it is a
+      <code>hollow(...)</code> reply records the boundary reached by that derivation; it is a
       returned example, not a failed request.</p>
     <p id="formal-witness-status" class="muted">Loading controls from the capability registry…</p>
     <div class="tool-grid" id="formal-witness-grid"></div>
@@ -422,15 +421,15 @@ neg(p)</textarea>
     }
 
     // --- the sequent witness: where a proof goes through, and where it stops ---
-    // Trace-marked preset: with pml/pragmatic_axioms.pl loaded, the elusive-subject
-    // axiom marks the shared variable with the arche-trace during the derivation
-    // and the embodied prover returns erasure(propagation) in place of a proof.
+    // Vanishing-point-marked preset: with pml/pragmatic_axioms.pl loaded, the
+    // elusive-subject axiom marks the shared variable during the derivation and
+    // the embodied prover returns hollow(propagation) in place of a proof.
     const TRACE_SEQUENT = "[s(comp_nec(X))] => [o(exp_nec(X))]";
 
-    function erasedProofWitness(w) {
+    function hollowProofWitness(w) {
       const sw = w.source_witness || {};
       const pw = sw.proof_witness || {};
-      return pw.kind === "erased_proof" ? pw : null;
+      return pw.kind === "hollow_proof" ? pw : null;
     }
 
     function wireSequent() {
@@ -445,17 +444,18 @@ neg(p)</textarea>
         catch (err) { out.innerHTML = offlineNote(); return; }
         if (data.ok) {
           const w = data.result, sw = w.source_witness || {};
-          const erased = erasedProofWitness(w);
-          if (erased) {
+          const hollow = hollowProofWitness(w);
+          if (hollow) {
             const spent = (sw.resources_spent != null)
               ? `<div class="row"><span class="lab">resources spent</span><span>${sw.resources_spent}</span></div>` : "";
             out.innerHTML = `
               <div class="row"><span class="lab">answered by</span><span class="chip">${w.source}</span></div>
-              <div class="row"><span class="lab">proof</span><span class="chip tension">erasure(${erased.reason || ""})</span></div>
+              <div class="row"><span class="lab">proof</span><span class="chip tension">hollow(${hollow.reason || ""})</span></div>
               ${spent}
-              <div class="verdict tension">erasure in place of a proof: the derivation touched
-                the arche-trace, and the prover records the point where its justification
-                stops. What to make of that point is handed to the reader, not computed.</div>`;
+              <div class="verdict tension">hollow node in place of a proof: the derivation
+                touched the vanishing-point mark, and the prover records where its
+                justification stops. What to make of that point is handed to the reader,
+                not computed.</div>`;
           } else {
             out.innerHTML = `
               <div class="row"><span class="lab">accepted by</span><span class="chip release">${w.source}</span></div>
@@ -469,7 +469,7 @@ neg(p)</textarea>
         }
       }
       $("seq-go").onclick = ask;
-      $("seq-erasure").onclick = () => {
+      $("seq-hollow").onclick = () => {
         $("seq-in").value = TRACE_SEQUENT;
         $("seq-src").value = "embodied";
         ask();

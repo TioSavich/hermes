@@ -19,12 +19,12 @@ structured witness for the level-jump; the *content* of the new level — which
 pragmatic metavocabulary actually resolves the objectivated topic — is not
 supplied by this code. That hand-off is marked explicitly in the witness as an
 `erasure` field. This is a structural rhyme with — not the same mechanism as —
-the arche-trace prover's `erasure`: the prover's erasure is proof-theoretic
-(`contains_trace/1` finds an arche_trace-attributed variable in a sequent under
-proof search and voids the justification), whereas this erasure is a detector
-hand-off with no sequent, no proof search, and no trace variable. Deriving this
-field from the prover would mean fabricating a trace-tainted sequent purely to
-harvest an erasure atom, so the marker stays a local atom on purpose.
+the embodied prover's hollow node: that node is proof-theoretic
+(`contains_vanishing_point/1` finds a vanishing-point-marked variable in a sequent under
+proof search and withdraws the warrant), whereas this `erasure` field is a detector
+hand-off with no sequent, no proof search, and no marked variable. Deriving this
+field from the prover would mean fabricating a marked sequent purely to harvest
+a local atom, so the marker stays separate on purpose.
 
 ## Grounding (sources, not decoration)
 

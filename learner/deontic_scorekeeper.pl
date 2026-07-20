@@ -41,7 +41,8 @@
  * from `pp_sufficient/3` in MUA. The local `incompatible/2` clauses
  * cover explicit result conflicts and explicit negation in this finite
  * scorekeeping layer. Open-ended incompatibility entailment belongs to
- * the arche-trace prover; this module exposes `proves_via_arche_trace/1`
+ * the sequent prover in `arche-trace/`; this module exposes
+ * `proves_via_arche_trace/1`
  * as an optional bridge without making proof search part of ordinary
  * deontic state updates.
  *
@@ -310,26 +311,26 @@ mua_derived_material_inference_witness(Mechanism,
 
 
 %% ----------------------------------------------------------------------
-%% Arche-trace bridge (optional)
+%% Sequent-prover bridge (optional)
 %%
 %% The scorekeeper's `incompatible/2` and `material_inference/3` are
 %% local and finite by design (cf. module header). For high-stakes
 %% consistency checks a consumer can call `proves_via_arche_trace/1`
-%% to consult `arche-trace/sequent_engine.pl`. The arche-
-%% trace prover lives in proof-search mode (sequent calculus); the
+%% to consult `arche-trace/sequent_engine.pl`. That prover lives in
+%% proof-search mode (sequent calculus); the
 %% scorekeeper lives in tracking mode (commitment/entitlement state).
-%% They are complementary: arche-trace decides whether a sequent is
+%% They are complementary: the sequent prover decides whether a sequent is
 %% derivable; the scorekeeper tracks who is committed to what and
 %% whether they have reasons.
 %%
 %% This predicate is a thin wrapper that catches load failures so the
 %% scorekeeper remains usable in test environments without the full
-%% arche-trace module loaded.
+%% sequent-prover module loaded.
 
 %!  proves_via_arche_trace(+Sequent) is semidet.
 %
-%   Succeeds if Sequent is derivable in the arche-trace sequent
-%   calculus. Returns silently false if the arche-trace module is
+%   Succeeds if Sequent is derivable in the sequent calculus under
+%   `arche-trace/`. Returns silently false if that module is
 %   unavailable in the current load context.
 proves_via_arche_trace(Sequent) :-
     catch(

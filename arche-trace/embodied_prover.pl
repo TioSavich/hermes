@@ -2,10 +2,13 @@
  *
  *  This module implements the core of the Brandomian semantic framework.
  *  It provides a sequent calculus-based theorem prover augmented for
- *  Polarized Modal Logic (PML) and the Deconstructive Trace mechanism.
+ *  Polarized Modal Logic (PML) and the vanishing-point mark.
  *
  *  The prover tracks Modal Context (Compressive/Expansive) and Cognitive Resources,
  *  modeling the embodied experience of reasoning.
+ *  A hollow proof node still stands, but its warrant has been withdrawn. The
+ *  former word "erasure" was withdrawn because Derridean erasure keeps the
+ *  crossed term legible, while this mechanism does not.
  *
  *  (Synthesis_1, Chapters 2.3, 3, and 4)
  */
@@ -22,7 +25,7 @@
 
 :- use_module(pml(pml_operators)).
 :- use_module(pml(utils), [select/3, match_antecedents/2]).
-:- use_module(automata, [contains_trace/1]). % For the Erasure mechanism
+:- use_module(automata, [contains_vanishing_point/1]).
 :- use_module(formalization(modal_costs), [get_inference_cost/2]).
 :- use_module(sequent_engine, [incoherent_base/1]).
 
@@ -107,14 +110,14 @@ proves_witness(Sequent, R_In, R_Out, Proof,
     proof_witness(Proof, ProofWitness).
 
 
-% --- Proof Construction and Erasure ---
-% (Independent of embodiment, relies on automata:contains_trace/1)
+% --- Proof construction and hollow nodes ---
+% (Independent of embodiment, relies on automata:contains_vanishing_point/1)
 
 construct_proof(RuleName, Sequent, SubProofs, Proof) :-
-    % 1. Propagation: If any subproof is erased, the whole justification is erased.
-    ( member(erasure(_), SubProofs) -> Proof = erasure(propagation) ;
-    % 2. Contamination: If the sequent itself contains the Trace Entity.
-      ( contains_trace(Sequent) -> Proof = erasure(RuleName)
+    % 1. Propagation: If any subproof is hollow, the whole justification is hollow.
+    ( member(hollow(_), SubProofs) -> Proof = hollow(propagation) ;
+    % 2. If the sequent carries the vanishing-point mark, withdraw its warrant.
+      ( contains_vanishing_point(Sequent) -> Proof = hollow(RuleName)
       ; Proof = proof(RuleName, Sequent, SubProofs)
       )
     ), !.
@@ -129,8 +132,8 @@ proof_witness(proof(RuleName, Sequent, SubProofs),
     !,
     length(SubProofs, Count),
     maplist(proof_witness, SubProofs, SubWitnesses).
-proof_witness(erasure(Reason),
-              _{ kind: erased_proof,
+proof_witness(hollow(Reason),
+              _{ kind: hollow_proof,
                  reason: Reason }) :-
     !.
 proof_witness(Proof,

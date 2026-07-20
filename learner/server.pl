@@ -1257,11 +1257,12 @@ button.reset:hover { border-color: var(--text-dim); }
       Strategy ordering also ignores developmental prerequisites.</p>
     </div>
     <div class="limitation">
-      <p><strong>The erasure boundary.</strong> The sequent calculus (incompatibility
+      <p><strong>The hollow boundary.</strong> The sequent calculus (incompatibility
       semantics) has a precise point where formal proof goes hollow. When sequent
-      variables carry the arche-trace attribute, the prover returns an erasure instead
-      of a proof. The derivation succeeds structurally but the proof object contains
-      no content. These are exactly the points where human judgment must enter.</p>
+      variables carry the vanishing-point mark, the prover returns a hollow node
+      instead of a proof. The derivation succeeds structurally, but its warrant is
+      withdrawn. These are points where the formalization hands the question to
+      human judgment.</p>
     </div>
 
     <h3>Why this matters</h3>

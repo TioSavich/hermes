@@ -128,7 +128,7 @@ find_cycle_impl_witness(proof(RuleName, Sequent, SubProofs), Visited, RepeatedNo
         member(SubProof, SubProofs),
         find_cycle_impl_witness(SubProof, [Node|Visited], RepeatedNode, Cycle)
     ).
-find_cycle_impl_witness(erasure(_), _, _, _) :- fail.
+find_cycle_impl_witness(hollow(_), _, _, _) :- fail.
 
 %!  extract_cycle(+StartNode, +Path, -Cycle) is det.
 %
@@ -184,7 +184,7 @@ extract_commitments(Proof, Commitments) :-
     flatten(C_Nested, C_Flat),
     list_to_set(C_Flat, Commitments).
 
-extract_commitments_recursive(erasure(_), []). % Erased proofs have no commitments.
+extract_commitments_recursive(hollow(_), []). % Hollow proofs have no commitments.
 extract_commitments_recursive(proof(RuleName, _Sequent, SubProofs), Commitments) :-
     % If the rule is a Modus Ponens (MMP), the axiom used is the commitment.
     ( RuleName = mmp(Axiom) -> Commitment = [Axiom] ; Commitment = [] ),

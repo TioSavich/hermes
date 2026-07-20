@@ -6,17 +6,21 @@
  *
  *  Includes:
  *  - The Highlander Automaton (Uniqueness constraint).
- *  - The Arche-Trace (Möbius/Derridean dynamic, resistance to stabilization).
+ *  - The vanishing-point mark (a limit-case of reference).
  *  - Prime Number Utilities (for arithmetization and incompleteness analysis).
  *
- *  (Synthesis_1, Chapter 8.2; Möbius Conclusion)
+ *  The mechanism models Carspecken's limit-case of reference: the trace as
+ *  "a vanishing point behind and a vanishing point ahead unified"
+ *  (Carspecken, "Four Scenes", 1999). The formal mark is not the vanishing
+ *  point itself, since a formal object cannot be. It is the track left in a
+ *  proof where reference fails.
  */
 :- module(automata,
           [ % Highlander
             highlander/2,
-            % Arche-Trace
-            generate_trace/1,
-            contains_trace/1,
+            % Vanishing-point mark
+            generate_vanishing_point/1,
+            contains_vanishing_point/1,
             % Prime Number Utilities
             nth_prime/2,
             is_prime/1
@@ -43,42 +47,42 @@ highlander([_, _|_], _) :- fail.
 
 
 % =================================================================
-% The Arche-Trace (Deconstruction Engine / Möbius Dynamic)
+% The vanishing-point mark
 % =================================================================
-% Implements the Elusive Subject (I_f) and the necessary failure of formal systems
-% using attributed variables. The Trace resists stabilization (unification with a concrete term).
+% Models a reference that propagates while refusing unification with a concrete
+% term. The attributed variable is a formal track of that limit, not the
+% vanishing point itself.
 
 % Note: This implementation is specific to SWI-Prolog (using put_attr/3 and module-specific hooks).
 
-%!  generate_trace(-T) is det.
-%   Creates a variable imbued with the arche_trace attribute.
+%!  generate_vanishing_point(-T) is det.
+%   Creates a variable carrying the vanishing_point attribute value.
 %   The attribute name is the module name (automata).
-generate_trace(T) :-
-    put_attr(T, automata, arche_trace).
+generate_vanishing_point(T) :-
+    put_attr(T, automata, vanishing_point).
 
 %!  attr_unify_hook(+AttValue, +VarValue) is semidet.
-%   The Deconstruction Hook (The Twist). Called by the Prolog engine during unification.
-%   This models the resistance to stabilization (Möbius Conclusion, Section 3.2).
-automata:attr_unify_hook(arche_trace, Value) :-
+%   Called by the Prolog engine during unification. This models the reference's
+%   refusal of a concrete binding while allowing the mark to propagate.
+automata:attr_unify_hook(vanishing_point, Value) :-
     ( var(Value) ->
-        % Différance (Propagation and Deferral): If unifying with another variable, propagate the attribute.
-        ( get_attr(Value, automata, arche_trace) ->
-            true  % Value already has the trace attribute
+        % If unifying with another variable, propagate the attribute.
+        ( get_attr(Value, automata, vanishing_point) ->
+            true  % Value already has the mark
         ;
-            put_attr(Value, automata, arche_trace)  % Propagate the trace
+            put_attr(Value, automata, vanishing_point)
         )
     ;
-        % Resistance to Representation (The "Gobbling Up"):
-        % If an attempt is made to stabilize the Trace with a concrete term (nonvar), unification fails.
+        % A concrete binding fails.
         fail
     ).
 
-%!  contains_trace(+Term) is semidet.
-%   Succeeds if Term is or contains a variable attributed with arche_trace.
-contains_trace(T) :-
+%!  contains_vanishing_point(+Term) is semidet.
+%   Succeeds if Term is or contains a variable carrying the mark.
+contains_vanishing_point(T) :-
     term_variables(T, Vars),
     member(V, Vars),
-    get_attr(V, automata, arche_trace), !.
+    get_attr(V, automata, vanishing_point), !.
 
 % ========================================================================
 % Prime Number Utilities (for Gödel Numbering and Formal Analysis)

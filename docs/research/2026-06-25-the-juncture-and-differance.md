@@ -67,9 +67,9 @@ iterates; the effaced-trace identity is an impetus to act again (more) rather
 than to open (quiet). That choice — act or open — is the standing tension, not a
 thing to resolve.
 
-**The arche-trace, bent.** The arche-trace should bend toward this. There is no
-trace; there is the effaced-trace. The erasure the prover already marks is this
-erasure: the outcome that no longer shows the derivation that reached it. The
+**The vanishing-point mark, bent.** The mark should bend toward this. There is
+no formal trace; there is the effaced-trace. The hollow node the prover already
+marks is the outcome that no longer shows the derivation that reached it. The
 numeral is the anaphora of différance under erasure, and it matters.
 
 **The fractal of différance.** The fractal is a fractal of différance. It looks
@@ -115,5 +115,5 @@ passes over the same identities; the juncture is where their results are joined.
   `show_juncture(half)` reads the contradiction-bearing case back.
 - **Ahead (direction):** the breath-to-kindling learner articulation; the neuro
   layer that sits at the juncture and queries the fractal loop; the divaded
-  machine with licensed/unlicensed sides; the arche-trace bent to the effaced
-  trace; the three worlds as parallel passes.
+  machine with licensed/unlicensed sides; the vanishing-point mark bent to the
+  effaced trace; the three worlds as parallel passes.
