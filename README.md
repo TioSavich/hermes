@@ -49,6 +49,18 @@ docker build -t hermes .
 docker run --rm -p 8765:8765 hermes
 ```
 
+**Stopping and restarting.** There is no quit button yet; the server
+stops from the terminal. If the launch terminal is still open, Ctrl-C
+stops it. Otherwise, this frees port 8765 and starts fresh:
+
+```sh
+lsof -ti :8765 | xargs kill
+bash hermes/app/launch.sh
+```
+
+A Docker copy stops with `docker stop` (or Ctrl-C if attached). After
+pulling new code, restart the server so the worker reloads.
+
 **As a folder that runs from a flash drive.**
 `scripts/bundle/build_app_bundle.py` assembles a self-contained copy with
 vendored SWI-Prolog and Python (Apple Silicon Macs).

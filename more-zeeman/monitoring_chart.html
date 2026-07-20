@@ -318,7 +318,8 @@ trace.</p>
       return HermesFetch.requestJSON('/api/monitoring_chart_export', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ lesson_code: code })
+        body: JSON.stringify({ lesson_code: code }),
+        timeoutMs: HermesFetch.WORKER_TIMEOUT_MS
       }).then(HermesFetch.requireOK).then(function (j) {
         if (j && j.error) throw new Error(j.error);
         var chart = j && j.result ? j.result : j;
@@ -333,7 +334,8 @@ trace.</p>
       return HermesFetch.requestJSON('/api/field_context', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ lesson_code: code })
+        body: JSON.stringify({ lesson_code: code }),
+        timeoutMs: HermesFetch.WORKER_TIMEOUT_MS
       }).then(HermesFetch.requireOK).then(function (j) {
         if (j && j.error) throw new Error(j.error);
         return j && j.result ? j.result : j;
@@ -559,7 +561,11 @@ trace.</p>
     function loadLesson() {
       var code = (el('lesson-pick').value || '').trim();
       if (!code) return;
-      setSource(null, 'Asking the live app for ' + code + '…');
+      var stopElapsed = HermesFetch.startElapsed(
+        el('chart-source'),
+        'Asking the live app for ' + code + '…',
+        function (_box, label) { setSource(null, label); }
+      );
       Promise.all([fetchLiveChart(code), fetchFieldContext(code)])
         .then(function (results) {
           var chart = results[0], context = results[1];
@@ -576,7 +582,8 @@ trace.</p>
             + (shownSource === 'static'
                ? ' from the committed static build.'
                : ' from the earlier live load.'));
-        });
+        })
+        .finally(stopElapsed);
     }
 
     el('lesson-load').addEventListener('click', loadLesson);

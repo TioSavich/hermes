@@ -370,6 +370,7 @@ neg(p)</textarea>
       const result = await HermesFetch.requestJSON(path, {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
+        timeoutMs: HermesFetch.WORKER_TIMEOUT_MS,
       });
       return HermesFetch.requireOK(result);
     }
@@ -595,6 +596,7 @@ neg(p)</textarea>
       try {
         const result = await HermesFetch.requestJSON("/api/grounding", {
           method: "POST", headers: { "Content-Type": "application/json" }, body: "{}",
+          timeoutMs: HermesFetch.WORKER_TIMEOUT_MS,
         });
         const data = HermesFetch.requireOK(result);
         if (!data.ok) throw new Error(data.error || "query failed");

@@ -8,6 +8,14 @@
 (function () {
   'use strict';
 
+  const requestClientReady = window.HermesFetch ? Promise.resolve() : new Promise(function (resolve, reject) {
+    const script = document.createElement('script');
+    script.src = '../render/request.js';
+    script.onload = resolve;
+    script.onerror = function () { reject(new Error('The local request helper did not load.')); };
+    document.head.appendChild(script);
+  });
+
   // Render a number line with jumps. jumps = [{from, to, label}, ...].
   function drawNumberLine(svgId, startVal, jumps, finalVal) {
     const svg = document.getElementById(svgId);
@@ -199,22 +207,25 @@
         outEl.innerHTML = '<div class="error-banner">Please enter valid integers for both operands.</div>';
         return;
       }
-      outEl.textContent = 'Computing in Prolog...';
+      try { await requestClientReady; }
+      catch (err) { outEl.innerHTML = `<div class="error-banner">${err.message}</div>`; return; }
+      const stopElapsed = HermesFetch.startElapsed(outEl, 'Computing in Prolog...');
       stepEl.innerHTML = '';
       svg.innerHTML = '';
 
-      let response, envelope;
+      let envelope;
       try {
-        response = await fetch('/api/strategy_trace', {
+        const response = await HermesFetch.requestJSON('/api/strategy_trace', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({strategy: cfg.strategy, input: {a: a, b: b}})
+          body: JSON.stringify({strategy: cfg.strategy, input: {a: a, b: b}}),
+          timeoutMs: HermesFetch.WORKER_TIMEOUT_MS
         });
-        envelope = await response.json();
+        envelope = HermesFetch.requireOK(response);
       } catch (err) {
-        outEl.innerHTML = `<div class="error-banner">Network error: ${err.message}</div>`;
+        HermesFetch.setState(outEl, err.kind === 'offline' || err.kind === 'timeout' ? 'offline' : 'broken', err.message);
         return;
-      }
+      } finally { stopElapsed(); }
 
       const data = envelope && envelope.ok ? envelope.result : null;
       if (!data || data.ok === false) {

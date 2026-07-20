@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="../more-zeeman/hermes-tokens.css">
 <script defer src="../more-zeeman/render/hermes-shell.js" data-root="../more-zeeman/" data-app="./" data-active="discussions"></script>
 <script defer src="../more-zeeman/render/drawer.js"></script>
+<script src="../more-zeeman/render/request.js"></script>
 <style>
   * { box-sizing: border-box; }
   body { font-family: var(--serif, Georgia, serif); background: var(--paper, #f4ead6);
@@ -478,31 +479,35 @@ async function openReport(id){
 }
 
 async function post(text, id, note){
-  $("status").textContent = "Running: extracting claims, checking each one, reading the moves… (a minute or two)";
+  const stopElapsed = HermesFetch.startElapsed($("status"), "Running: extracting claims, checking each one, reading the moves…");
   $("status").className = "status";
   $("run").disabled = true;
-  let res = null;
+  let result = null;
   try {
-    res = await fetch("/api/transcript_report", {
+    result = await HermesFetch.requestJSON("/api/transcript_report", {
       method: "POST", headers: {"Content-Type":"application/json"},
-      body: JSON.stringify({text, transcript_id: id})});
+      body: JSON.stringify({text, transcript_id: id}),
+      timeoutMs: HermesFetch.WORKER_TIMEOUT_MS});
+    if (result.kind === "timeout" || result.kind === "offline") throw new HermesFetch.HermesRequestError(result.kind, HermesFetch.messageFor(result));
   } catch(e){
     $("status").className = "status err";
-    $("status").textContent = "Nothing answered at this address. The report pipeline runs in the local app — start it (START_HERMES.command in the bundle, or bash hermes/app/launch.sh in the repository) and try again.";
+    $("status").textContent = e.message || "Nothing answered at this address. Start the local app with the run button and try again.";
     $("run").disabled = false;
+    stopElapsed();
     return;
   }
   try {
-    let data = null;
-    try { data = await res.json(); } catch(e){
+    const res = result.response;
+    const data = result.data;
+    if (result.kind === "broken") {
       $("status").className = "status err";
       $("status").textContent = "The app answered but hit an internal error (HTTP " + res.status + "). The Terminal window that launched the app has the detail.";
       return;
     }
-    if (!res.ok || data.error){ $("status").textContent = "Could not build the report: " + (data.error || res.status); $("status").className = "status err"; return; }
+    if (result.kind !== "ok" || data.error){ $("status").textContent = "Could not build the report: " + (data.error || result.status); $("status").className = "status err"; return; }
     $("status").textContent = "";
     renderReport(data.report, note);
-  } finally { $("run").disabled = false; }
+  } finally { stopElapsed(); $("run").disabled = false; }
 }
 
 function rerun(){

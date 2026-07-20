@@ -109,20 +109,22 @@ class PersistentPrologWorker:
         assert self._proc is not None
         return self._proc
 
-    # A generous ceiling for the one-shot strict preflight: load_runtime
-    # pulls in the full symbolic layer (event scoring through the geometry
-    # and standards trees) and normally finishes in a few seconds, but a
-    # cold filesystem cache earns the headroom.
+    # A generous ceiling for the strict boot handshake: load_runtime pulls in
+    # the full symbolic layer before the persistent process reads the probe.
+    # A cold filesystem cache earns the same headroom as the former one-shot
+    # preflight, without loading the symbolic layer twice.
     _PREFLIGHT_TIMEOUT_S = 120.0
 
     def _start(self) -> None:
         env = os.environ.copy()
         env["UMEDCTA_ROOT"] = str(self.umedcta_root)
         worker_pl = self.umedcta_root / "hermes_worker.pl"
-        self._preflight(worker_pl, env)
         self._proc = subprocess.Popen(
-            [self.swipl, "--on-error=status", "-q", "-s", str(worker_pl),
-             "-g", "worker_main"],
+            [self.swipl, "--on-error=halt", "--on-warning=halt", "-q",
+             "-s", str(worker_pl), "-g",
+             "catch(with_output_to(user_error, load_runtime), E, worker_fatal(E)), "
+             "set_prolog_flag(on_warning, print), "
+             "set_prolog_flag(on_error, print), worker_loop"],
             cwd=str(self.umedcta_root),
             env=env,
             stdin=subprocess.PIPE,
@@ -136,39 +138,46 @@ class PersistentPrologWorker:
             target=self._drain_stderr, args=(self._proc,), daemon=True
         )
         self._stderr_thread.start()
+        self._boot_handshake(self._proc)
 
-    def _preflight(self, worker_pl: Path, env: dict[str, str]) -> None:
-        """Load hermes_worker.pl strictly, once, before the long-lived
-        worker is spawned.
+    def _boot_handshake(self, proc: subprocess.Popen[str]) -> None:
+        """Prove that the one persistent process completed its strict load.
 
-        --on-error=status on the worker process only changes the exit status
-        of an eventual `halt` -- a load error SWI prints without raising
-        still lets worker_main fall through into worker_loop, so a defective
-        checkout would serve requests silently (malformed use_module
-        directives once hid this way). This one-shot run adds --on-warning=status and
-        refuses to spawn the worker on any diagnostic; the worker process
-        below is only started once this returns.
+        SWI's ``halt`` warning/error modes terminate on a diagnostic during
+        file loading or ``load_runtime``. Only after that strict region is
+        clean do we restore the worker's normal print behavior and enter its
+        request loop. A valid health reply therefore doubles as the old
+        preflight guarantee and a protocol handshake.
         """
+        assert proc.stdin is not None
         try:
-            proc = subprocess.run(
-                [self.swipl, "--on-error=status", "--on-warning=status", "-q",
-                 "-s", str(worker_pl), "-g", "load_runtime, halt."],
-                cwd=str(self.umedcta_root),
-                env=env,
-                capture_output=True,
-                text=True,
+            proc.stdin.write('{"id":"__boot__","op":"health"}\n')
+            proc.stdin.flush()
+            response_line = self._readline(
+                proc,
                 timeout=self._PREFLIGHT_TIMEOUT_S,
+                restart_on_timeout=False,
             )
-        except subprocess.TimeoutExpired as exc:
+            response = json.loads(response_line)
+            if response.get("id") != "__boot__" or not response.get("ok"):
+                raise PersistentPrologError(
+                    f"invalid worker boot handshake: {response_line!r}"
+                )
+        except TimeoutError as exc:
+            self.close()
             raise PersistentPrologError(
                 "worker preflight timed out after "
                 f"{self._PREFLIGHT_TIMEOUT_S:.0f}s loading hermes_worker.pl"
             ) from exc
-        if proc.returncode != 0:
-            tail = (proc.stderr or "")[-4000:]
+        except (BrokenPipeError, json.JSONDecodeError, PersistentPrologError) as exc:
+            if self._stderr_thread is not None:
+                self._stderr_thread.join(timeout=0.5)
+            status = proc.poll()
+            tail = self._recent_stderr()
+            self.close()
             raise PersistentPrologError(
-                f"worker preflight failed with status {proc.returncode}: {tail}"
-            )
+                f"worker preflight failed with status {status}: {tail or exc}"
+            ) from exc
 
     def _drain_stderr(self, proc: subprocess.Popen[str]) -> None:
         """Continuously empty the worker's stderr so the pipe never fills."""
@@ -184,9 +193,15 @@ class PersistentPrologWorker:
     def _recent_stderr(self) -> str:
         return "\n".join(self._stderr_tail).strip()
 
-    def _readline(self, proc: subprocess.Popen[str]) -> str:
+    def _readline(
+        self,
+        proc: subprocess.Popen[str],
+        *,
+        timeout: float | None = None,
+        restart_on_timeout: bool = True,
+    ) -> str:
         assert proc.stdout is not None
-        deadline = time.monotonic() + self.timeout
+        deadline = time.monotonic() + (self.timeout if timeout is None else timeout)
         fd = proc.stdout.fileno()
         while time.monotonic() < deadline:
             if proc.poll() is not None:
@@ -203,5 +218,7 @@ class PersistentPrologWorker:
             line = proc.stdout.readline()
             if line:
                 return line.rstrip("\n")
+        if not restart_on_timeout:
+            raise TimeoutError("worker boot handshake timed out")
         self.restart()
         raise PersistentPrologError("worker request timed out")

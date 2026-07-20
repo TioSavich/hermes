@@ -780,9 +780,31 @@ async function getJSON(path) {
   const result = await HermesFetch.requestJSON(api(path));
   return { status: result.status, data: HermesFetch.requireOK(result) };
 }
+const WORKER_POST_PATHS = new Set([
+  '/api/analyze', '/api/pml_score', '/api/field_connectivity_audit',
+  '/api/field_context', '/api/grounding', '/api/render_coverage',
+  '/api/strategy_trace', '/api/deontic_scorecard',
+  '/api/deontic_consequences', '/api/deontic_up_level',
+  '/api/chat',
+  '/api/strategies', '/api/misconceptions', '/api/standards',
+  '/api/benny_demo', '/api/canonical_contract', '/api/canonical_check',
+  '/api/query_misconception', '/api/geometry', '/api/witness/misconception',
+  '/api/diagnose_error', '/api/monitoring_visuals',
+  '/api/monitoring_chart_export', '/api/render',
+]);
 async function postJSON(path, body) {
-  const result = await HermesFetch.requestJSON(api(path), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body || {}) });
+  const options = { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body || {}) };
+  if (WORKER_POST_PATHS.has(path)) options.timeoutMs = HermesFetch.WORKER_TIMEOUT_MS;
+  const result = await HermesFetch.requestJSON(api(path), options);
   return { status: result.status, data: HermesFetch.requireOK(result) };
+}
+
+function requestFailureState(error) {
+  return error && (error.kind === 'offline' || error.kind === 'timeout') ? 'offline' : 'broken';
+}
+const startElapsed = HermesFetch.startElapsed;
+function setRequestFailure(element, error) {
+  HermesFetch.setState(element, requestFailureState(error), error.message);
 }
 
 let MODE = { mode: "home", verified: false, gate_enabled: true };
@@ -839,7 +861,9 @@ function loadTextIntoData(text, name) {
 }
 $("#use-sample").addEventListener('click', async () => {
   $("#data-attached").textContent = "loading sample…";
-  const { status, data } = await getJSON('/api/sample');
+  let status, data;
+  try { ({ status, data } = await getJSON('/api/sample')); }
+  catch (error) { $("#data-attached").textContent = error.message; return; }
   if (status === 200 && data.text) loadTextIntoData(data.text, data.name);
   else $("#data-attached").textContent = "couldn't load the sample.";
 });
@@ -854,7 +878,9 @@ async function populateInputPicker() {
 $("#input-picker").addEventListener('change', async e => {
   const key = e.target.value; if (!key) return;
   $("#data-attached").textContent = "loading…";
-  const { status, data } = await postJSON('/api/input', { key });
+  let status, data;
+  try { ({ status, data } = await postJSON('/api/input', { key })); }
+  catch (error) { $("#data-attached").textContent = error.message; e.target.value = ""; return; }
   if (status === 200 && data.text != null) loadTextIntoData(data.text, key.split('/').pop());
   else $("#data-attached").textContent = data.error || "couldn't load that file.";
   e.target.value = "";
@@ -943,9 +969,17 @@ async function runAnalyze() {
   const text = $("#data-input").value.trim();
   const u = $("#analyze-understood"); const out = $("#analyze-result");
   if (!text) { u.hidden = false; u.classList.add('warn'); u.textContent = "Paste or load a discussion first."; out.hidden = true; return; }
-  u.hidden = false; u.classList.remove('warn'); u.textContent = "reading locally…"; out.hidden = true;
+  u.hidden = false; u.classList.remove('warn'); out.hidden = true;
+  const stopElapsed = startElapsed(u, "reading locally…");
   const fm = $("#force-mode").value;
-  const { data } = await postJSON('/api/analyze', { transcript: text, top_n: 10, force_mode: fm || undefined });
+  let data;
+  try {
+    ({ data } = await postJSON('/api/analyze', { transcript: text, top_n: 10, force_mode: fm || undefined }));
+  } catch (error) {
+    u.classList.add('warn');
+    setRequestFailure(u, error);
+    return;
+  } finally { stopElapsed(); }
   if (data.error) { u.classList.add('warn'); u.textContent = data.error; renderAnalysis(data); return; }
   const fmt = (data.ingest && data.ingest.format) || 'text';
   const routing = data.routing || {};
@@ -1002,8 +1036,12 @@ function renderPmlScore(data) {
 }
 async function runPmlScore() {
   const text = $("#pml-input").value.trim(); if (!text) return;
-  const out = $("#pml-out"); out.hidden = false; out.innerHTML = "<em class='muted-inline'>Gemma is encoding the modal posture, swipl is scoring…</em>";
-  const { status, data } = await postJSON('/api/pml_score', { text });
+  const out = $("#pml-out"); out.hidden = false;
+  const stopElapsed = startElapsed(out, "Gemma is encoding the modal posture, swipl is scoring…");
+  let status, data;
+  try { ({ status, data } = await postJSON('/api/pml_score', { text })); }
+  catch (error) { setRequestFailure(out, error); return; }
+  finally { stopElapsed(); }
   if ((data.error || data.error_type) && status >= 400) { out.innerHTML = `<div class="chat-answer locked">⚠ ${esc(data.error || 'error')}</div>`; return; }
   renderPmlScore(data);
 }
@@ -1061,22 +1099,28 @@ function _deonticUpLevelHtml(data) {
 }
 async function runDeonticScorecard() {
   const out = $("#deontic-out"); out.hidden = false;
-  out.innerHTML = "<em class='muted-inline'>swipl is keeping score…</em>";
+  const stopElapsed = startElapsed(out, "swipl is keeping score…");
   const commitments = _deonticLines('deontic-commitments');
   const entitlements = _deonticLines('deontic-entitlements');
-  const board = await postJSON('/api/deontic_scorecard', { commitments, entitlements });
+  let board;
+  try { board = await postJSON('/api/deontic_scorecard', { commitments, entitlements }); }
+  catch (error) { setRequestFailure(out, error); stopElapsed(); return; }
   if ((board.data.error || board.data.error_type) && board.status >= 400) {
     out.innerHTML = `<div class="chat-answer locked">⚠ ${esc(board.data.error || 'error')}</div>`; return;
   }
   // The scorecard is the headline; consequences and the up-level move complete
   // the board. Each is its own route; a failure of one must not blank the rest.
   const [conseq, uplevel] = await Promise.all([
-    postJSON('/api/deontic_consequences', { commitments }).catch(() => ({ data: {} })),
-    postJSON('/api/deontic_up_level', { commitments }).catch(() => ({ data: {} })),
+    postJSON('/api/deontic_consequences', { commitments }).catch(error => ({ data: {}, error })),
+    postJSON('/api/deontic_up_level', { commitments }).catch(error => ({ data: {}, error })),
   ]);
+  stopElapsed();
+  const unavailable = [conseq, uplevel].filter(x => x.error).map(x =>
+    `<div class="analysis-note">⚠ ${esc(x.error.message)}</div>`).join('');
   out.innerHTML = _deonticBoardHtml(board.data)
     + _deonticConsequencesHtml(conseq.data)
-    + _deonticUpLevelHtml(uplevel.data);
+    + _deonticUpLevelHtml(uplevel.data)
+    + unavailable;
 }
 if ($("#deontic-run")) $("#deontic-run").addEventListener('click', runDeonticScorecard);
 if ($("#deontic-discharge")) $("#deontic-discharge").addEventListener('click', () => {
@@ -1111,9 +1155,13 @@ document.querySelectorAll('button[data-cmd]').forEach(b => b.addEventListener('c
   if (cmd === "draft") { body.unit = $("#draft-unit").value; body.force = $("#draft-force").checked; }
   if (cmd === "grade") { body.offline = $("#grade-offline").checked; body.force = $("#grade-force").checked; if ($("#grade-only").value) body.only = $("#grade-only").value; }
   $("#" + outId).hidden = false; $("#" + outId).textContent = "running " + cmd + "…";
-  showOut(outId, await postJSON('/api/' + cmd, body));
+  try { showOut(outId, await postJSON('/api/' + cmd, body)); }
+  catch (error) { $("#" + outId).textContent = error.message; }
 }));
-$("#draft-list").addEventListener('click', async () => showOut('draft-out', await postJSON('/api/draft', { list: true })));
+$("#draft-list").addEventListener('click', async () => {
+  try { showOut('draft-out', await postJSON('/api/draft', { list: true })); }
+  catch (error) { $("#draft-out").hidden = false; $("#draft-out").textContent = error.message; }
+});
 
 /* ---------- results browser ---------- */
 function csvToTable(text) {
@@ -1163,7 +1211,9 @@ async function loadResults() {
 }
 async function viewResult(path) {
   const view = $("#results-view"); view.innerHTML = "<em class='muted-inline'>loading…</em>";
-  const { status, data } = await postJSON('/api/results/get', { path });
+  let status, data;
+  try { ({ status, data } = await postJSON('/api/results/get', { path })); }
+  catch (error) { view.textContent = error.message; return; }
   if (status >= 400) { view.textContent = data.error || "error"; return; }
   if (data.kind === "markdown") view.innerHTML = mdToHtml(data.content);
   else if (data.kind === "csv") view.innerHTML = csvToTable(data.content);
@@ -1195,8 +1245,16 @@ function wireCatalogClicks() {
 }
 async function loadCatalog() {
   catalogLoaded = true;
-  $("#catalog").innerHTML = "<span class='muted-inline'>loading the lesson catalog…</span>";
-  const { data } = await postJSON('/api/field_connectivity_audit', {});
+  const catalog = $("#catalog");
+  const stopElapsed = startElapsed(catalog, "loading the lesson catalog…");
+  let data;
+  try { ({ data } = await postJSON('/api/field_connectivity_audit', {})); }
+  catch (error) {
+    catalogLoaded = false;
+    setRequestFailure(catalog, error);
+    $("#catalog-stats").textContent = error.message;
+    return;
+  } finally { stopElapsed(); }
   const r = data.result || {};
   const s = r.summary || {};
   ALL_LESSONS = r.lessons || [];
@@ -1274,7 +1332,7 @@ async function loadRenderCoverage() {
   if (renderCoverageLoaded) return;
   renderCoverageLoaded = true;
   const el = $("#render-coverage");
-  el.innerHTML = "<em class='muted-inline'>computing coverage from the registry…</em>";
+  const stopElapsed = startElapsed(el, "computing coverage from the registry…");
   try {
     const { status, data } = await postJSON('/api/render_coverage', {});
     if (status >= 400 || !data || !data.result) throw new Error((data && data.error) || 'no report');
@@ -1282,7 +1340,7 @@ async function loadRenderCoverage() {
   } catch (e) {
     renderCoverageLoaded = false;
     el.innerHTML = `<em class="muted-inline">Couldn't load the coverage report: ${esc(e && e.message ? e.message : e)}</em>`;
-  }
+  } finally { stopElapsed(); }
 }
 
 function fcList(items, limit = 8) {
@@ -1306,9 +1364,14 @@ function nearbyStrongLessons(code) {
 }
 async function openLesson(code) {
   const detail = $("#lesson-detail");
-  detail.innerHTML = "<span class='muted-inline'>loading lesson context…</span>";
+  const stopElapsed = startElapsed(detail, "loading lesson context…");
   detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  const { data } = await postJSON('/api/field_context', { lesson_code: code });
+  let data;
+  try { ({ data } = await postJSON('/api/field_context', { lesson_code: code })); }
+  catch (error) {
+    setRequestFailure(detail, error);
+    return;
+  } finally { stopElapsed(); }
   const r = data.result;
   if (!r) { detail.innerHTML = `<div class="chat-answer locked">⚠ ${esc((data.error) || ('no context for ' + code))}</div>`; return; }
   const lesson = r.lesson || {};
@@ -1387,15 +1450,26 @@ async function renderLessonGrounding(ops) {
   const el = $("#lesson-grounding");
   if (!el) return;
   if (!ops.length) { el.innerHTML = `<h4>Grounding (Lakoff &amp; Núñez) — where the metaphor breaks</h4><span class="muted-inline">No strategy operations to ground.</span>`; return; }
+  const stopElapsed = startElapsed(el, "loading grounding…", (node, label) => {
+    node.innerHTML = `<h4>Grounding (Lakoff &amp; Núñez) — where the metaphor breaks</h4><span class="muted-inline">${esc(label)}</span>`;
+  });
+  const results = await Promise.all(ops.map(op =>
+    postJSON('/api/grounding', { operation: op })
+      .then(({ data }) => ({ op, data }))
+      .catch(error => ({ op, error }))
+  ));
+  stopElapsed();
   const seen = new Set(), metaphors = [];
-  for (const op of ops) {
-    const { data } = await postJSON('/api/grounding', { operation: op });
-    const ms = (data.result && data.result.metaphors) || [];
+  for (const item of results) {
+    const ms = (item.data && item.data.result && item.data.result.metaphors) || [];
     for (const m of ms) { if (!seen.has(m.id)) { seen.add(m.id); metaphors.push(m); } }
   }
+  const failures = results.filter(item => item.error).map(item =>
+    `<div class="analysis-note">⚠ ${esc(item.op)}: ${esc(item.error.message)}</div>`).join('');
   el.innerHTML = `<h4>Grounding (Lakoff &amp; Núñez) — where the metaphor breaks</h4>` +
     (metaphors.length ? metaphors.map(metaphorCardHtml).join('')
-      : `<span class="muted-inline">No L&N grounding metaphor maps to these operations — absence is meaningful (the source domain does not ground them).</span>`);
+      : (failures ? '' : `<span class="muted-inline">No L&N grounding metaphor maps to these operations — absence is meaningful (the source domain does not ground them).</span>`))
+    + failures;
 }
 
 /* ---------- ask ---------- */
@@ -1416,8 +1490,11 @@ async function sendAsk() {
     ans.textContent = "That looked like a discussion transcript — moved it to the Workspace analyzer (kept local, off the cloud).";
     return;
   }
-  ans.textContent = "retrieving symbolic facts, then thinking…";
-  const { status, data } = await postJSON('/api/chat', { message: msg });
+  const stopElapsed = startElapsed(ans, "retrieving symbolic facts, then thinking…");
+  let status, data;
+  try { ({ status, data } = await postJSON('/api/chat', { message: msg })); }
+  catch (error) { ans.classList.add('locked'); setRequestFailure(ans, error); return; }
+  finally { stopElapsed(); }
   if (data.error_type === 'chat_transcript_safety') { loadTextIntoData(msg, "from Ask"); selectTab('workspace'); runAnalyze(); ans.textContent = "Moved to the Workspace analyzer (kept local)."; return; }
   ans.classList.toggle('locked', status >= 400);
   const body = data.answer || data.error || JSON.stringify(data, null, 2);
@@ -1449,7 +1526,9 @@ $("#set-key-btn").addEventListener('click', async () => {
 $("#quickstart-btn").addEventListener('click', async () => {
   $("#quickstart-modal").hidden = false;
   const body = $("#quickstart-body"); body.innerHTML = "loading…";
-  const { status, data } = await getJSON('/api/quickstart');
+  let status, data;
+  try { ({ status, data } = await getJSON('/api/quickstart')); }
+  catch (error) { body.textContent = error.message; return; }
   body.innerHTML = (status === 200 && data.content) ? mdToHtml(data.content) : "Open <code>hermes/app/QUICKSTART.md</code> in your editor.";
 });
 $("#quickstart-close").addEventListener('click', () => { $("#quickstart-modal").hidden = true; });
@@ -1626,11 +1705,13 @@ document.querySelectorAll('.enc-tab').forEach(t => t.addEventListener('click', (
 
 async function loadEncyclopedia(section) {
   encLoaded = true; ENC_SECTION = section;
-  $("#enc-list").innerHTML = "<em class='muted-inline'>loading the knowledge base…</em>";
+  const encList = $("#enc-list");
+  const stopElapsed = startElapsed(encList, "loading the knowledge base…");
   $("#enc-detail").innerHTML = "<em class='muted-inline'>Select an item to inspect it here.</em>";
   let r;
   try { const { data } = await postJSON(ENC_PATHS[section], {}); r = (data && data.result) || {}; }
-  catch (e) { $("#enc-list").innerHTML = "<em class='muted-inline'>× The app isn't answering.</em>"; return; }
+  catch (e) { encList.textContent = e.message; return; }
+  finally { stopElapsed(); }
   ENC_DATA[section] = r;
   renderEncStats(section, r);
   renderEncList(section);
@@ -1677,7 +1758,9 @@ async function loadCanonicalContract() {
   const out = $("#canonical-out");
   out.hidden = false;
   out.innerHTML = "<em class='muted-inline'>loading canonical_contract…</em>";
-  const { data } = await postJSON('/api/canonical_contract', {});
+  let data;
+  try { ({ data } = await postJSON('/api/canonical_contract', {})); }
+  catch (error) { out.textContent = error.message; return; }
   out.innerHTML = data && data.ok ? renderCanonicalResult(data.result) : `<span class="muted-inline">${esc((data && data.error) || 'canonical_contract failed')}</span>`;
 }
 
@@ -1686,7 +1769,9 @@ async function runCanonicalCheck() {
   const terms = $("#canonical-terms").value.split(/\n+/).map(s => s.trim()).filter(Boolean);
   out.hidden = false;
   out.innerHTML = "<em class='muted-inline'>running canonical_check…</em>";
-  const { data } = await postJSON('/api/canonical_check', { terms });
+  let data;
+  try { ({ data } = await postJSON('/api/canonical_check', { terms })); }
+  catch (error) { out.textContent = error.message; return; }
   out.innerHTML = data && data.ok ? renderCanonicalResult(data.result) : `<span class="muted-inline">${esc((data && data.error) || 'canonical_check failed')}</span>`;
 }
 
@@ -1922,7 +2007,7 @@ async function runDiagnose(domain, input, got) {
   const out = $("#diag-out"); out.innerHTML = "<em class='muted-inline'>diagnosing…</em>";
   let data;
   try { ({ data } = await postJSON('/api/diagnose_error', { domain, input, got })); }
-  catch (e) { out.innerHTML = `<div class="chat-answer locked">× The app isn't answering.</div>`; return; }
+  catch (e) { out.innerHTML = `<div class="chat-answer locked">× ${esc(e.message)}</div>`; return; }
   const matches = (data && data.result) || [];
   if (!Array.isArray(matches) || !matches.length) {
     out.innerHTML = `<p class="muted-inline">No registered misconception reproduces <code>${esc(got)}</code> for that input — either the answer is correct, or that error pattern isn't modelled.</p>`;
@@ -1952,9 +2037,13 @@ function renderRunnableStrategy(name, op, a, b, meta) {
 }
 
 async function runTrace(name, a, b) {
-  const out = $("#trace-out"); out.innerHTML = "<em class='muted-inline'>running…</em>";
+  const out = $("#trace-out");
+  const stopElapsed = startElapsed(out, "running…");
   const input = {}; if (a !== '' && !isNaN(Number(a))) input.a = Number(a); if (b !== '' && !isNaN(Number(b))) input.b = Number(b);
-  const { data } = await postJSON('/api/strategy_trace', { strategy: name, input });
+  let data;
+  try { ({ data } = await postJSON('/api/strategy_trace', { strategy: name, input })); }
+  catch (error) { setRequestFailure(out, error); return; }
+  finally { stopElapsed(); }
   const t = (data && data.result) || {};
   if (!t.ok) { out.innerHTML = `<div class="chat-answer locked">⚠ ${esc(t.note || 'could not run this strategy')}</div>`; return; }
   const steps = (t.steps || []).map(s => `<li><span class="sn">${esc(String(s.n))}</span><span>${esc(s.label || '')}</span><span class="sv">${esc(s.value || '')}</span></li>`).join('');
@@ -2055,6 +2144,7 @@ function calcAppendKey(current, key) {
 
 let CALC_RUNNABLE = [];
 let CALC_COMPARISONS = [];
+let CALC_STRATEGIES_STATE = 'loading';
 function calcStrategiesForOperation(op) {
   const operation = calcOperationName(op);
   return CALC_RUNNABLE.filter(s => s.operation === operation);
@@ -2084,7 +2174,9 @@ function syncCalcStrategyPicker(parsed) {
   const pairKind = calcPairKind(parsed);
   if (!CALC_RUNNABLE.length) {
     select.disabled = true;
-    status.textContent = 'Runnable strategies are still loading.';
+    status.textContent = CALC_STRATEGIES_STATE === 'failed'
+      ? 'The local strategy catalog is offline. Start Hermes and try again.'
+      : 'Runnable strategies are still loading.';
     return;
   }
   if (parsed && parsed.mode === 'compare' && (pairKind === 'fraction' || pairKind === 'decimal' || pairKind === 'whole')) {
@@ -2136,11 +2228,13 @@ async function loadCalcStrategies() {
     CALC_COMPARISONS = catalog
       .filter(s => s && comparisonDomains[s.kind])
       .map(s => ({ name: s.kind, domain: comparisonDomains[s.kind] }));
+    CALC_STRATEGIES_STATE = 'ready';
     renderCalcStrategyPicker();
     syncCalcStrategyPicker(parseCalcExpr($("#calc-input").value));
   } catch (error) {
     CALC_RUNNABLE = [];
     CALC_COMPARISONS = [];
+    CALC_STRATEGIES_STATE = 'failed';
     status.textContent = 'The local strategy catalog is offline.';
   }
 }
@@ -2190,7 +2284,7 @@ async function runCalc() {
     strategy = selected.name;
   }
   out.hidden = false;
-  out.innerHTML = "<em class='muted-inline'>Running the symbolic machine…</em>";
+  const stopElapsed = startElapsed(out, "Running the symbolic machine…");
   status.textContent = `Running ${strategy.replace(/_/g, ' ')} locally…`;
   HermesFetch.setState(appState, 'pending', 'Calculator running locally…');
   let data;
@@ -2202,7 +2296,7 @@ async function runCalc() {
     status.textContent = offline ? 'The local app is offline. Start Hermes and try again.' : 'The symbolic machine returned a broken reply.';
     out.innerHTML = `<p class="hint">${esc(status.textContent)}</p>`;
     return;
-  }
+  } finally { stopElapsed(); }
   HermesFetch.setState(appState, 'ready', 'App ready');
   const t = (data && data.result) || {};
   if (!t.ok) {
@@ -2591,7 +2685,7 @@ async function loadMonitoringChart() {
   printBtn.hidden = true;
   let res;
   try { res = await postJSON('/api/monitoring_chart_export', { lesson_code: code }); }
-  catch (e) { out.innerHTML = `<p class="hint">× The app isn't answering.</p>`; return; }
+  catch (e) { out.innerHTML = `<p class="hint">× ${esc(e.message)}</p>`; return; }
   if (res.status >= 400 || !res.data || !res.data.ok) {
     out.innerHTML = `<p class="hint">${esc((res.data && res.data.error) || 'No chart for that code.')}</p>`;
     return;

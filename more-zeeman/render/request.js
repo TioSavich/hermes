@@ -2,6 +2,7 @@
   "use strict";
 
   const DEFAULT_TIMEOUT_MS = 8000;
+  const WORKER_TIMEOUT_MS = 22000;
 
   class HermesRequestError extends Error {
     constructor(kind, message, status) {
@@ -73,12 +74,35 @@
     element.textContent = (glyph ? glyph + " " : "") + label;
   }
 
+  function startElapsed(element, message, render) {
+    const started = Date.now();
+    element.classList.remove("pending", "ready", "offline", "broken");
+    element.classList.add("pending");
+    element.dataset.requestState = "pending";
+    const show = function () {
+      const label = message + " (" + Math.floor((Date.now() - started) / 1000) + "s)";
+      if (render) render(element, label);
+      else element.textContent = label;
+    };
+    show();
+    const timer = global.setInterval(show, 1000);
+    return function () {
+      global.clearInterval(timer);
+      if (element.dataset.requestState === "pending") {
+        element.classList.remove("pending");
+        delete element.dataset.requestState;
+      }
+    };
+  }
+
   global.HermesFetch = {
     DEFAULT_TIMEOUT_MS: DEFAULT_TIMEOUT_MS,
+    WORKER_TIMEOUT_MS: WORKER_TIMEOUT_MS,
     HermesRequestError: HermesRequestError,
     messageFor: messageFor,
     requestJSON: requestJSON,
     requireOK: requireOK,
     setState: setState,
+    startElapsed: startElapsed,
   };
 })(window);

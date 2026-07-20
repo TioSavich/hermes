@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="hermes-tokens-dark.css">
   <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="strategies"></script>
+  <script src="render/request.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { background: var(--bg); color: var(--text); font-family: 'IBM Plex Serif', Georgia, serif; font-size: 16px; line-height: 1.7; }
@@ -478,10 +479,11 @@ const machineEl = id => document.getElementById(id);
 let machineCurrent = null;
 
 async function machineApi(path, body) {
-  const response = await fetch(path, {
-    method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)
+  const response = await HermesFetch.requestJSON(path, {
+    method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body),
+    timeoutMs: HermesFetch.WORKER_TIMEOUT_MS
   });
-  const data = await response.json();
+  const data = HermesFetch.requireOK(response);
   if (!data.ok) throw new Error(data.error || 'request failed');
   return data.result;
 }
@@ -535,7 +537,8 @@ function showMachineSteps(steps) {
 
 async function runMachine() {
   if (!machineCurrent) return;
-  machineEl('machine-result').textContent = 'running…';
+  const resultElement = machineEl('machine-result');
+  const stopElapsed = HermesFetch.startElapsed(resultElement, 'running…');
   try {
     const result = await machineApi('/api/strategy_trace', {
       strategy: machineCurrent.name,
@@ -553,9 +556,9 @@ async function runMachine() {
     showMachineSteps(result.steps);
     machineEl('machine-note').textContent = result.jumps.length ? '' : result.note;
   } catch (error) {
-    machineEl('machine-offline').innerHTML = '<div class="machine-offline">The knowledge base is not reachable. Launch it with <code>bash hermes/app/launch.sh</code> and reload.</div>';
-    machineEl('machine-result').textContent = '';
-  }
+    machineEl('machine-offline').textContent = error.message;
+    resultElement.textContent = '';
+  } finally { stopElapsed(); }
 }
 
 function selectMachine(entry, chip) {
