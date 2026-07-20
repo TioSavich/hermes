@@ -4,7 +4,7 @@
  *  pathologies (Fixation, Alienation, Bad Infinite) and the process of
  *  Sublation (Letting Go, Accommodation).
  *
- *  This is arche-trace's own detection-and-accommodation machinery, built for
+ *  This is the formal dialectic detection-and-accommodation machinery, built for
  *  the dialectical/sublation context. It runs parallel to the learner's ORR-cycle
  *  modules (formal/learner/reflective_monitor.pl for detection, formal/learner/reorganization_engine.pl
  *  for accommodation), which remain live in the crisis-cycle subsystem — this module
@@ -40,7 +40,7 @@
 :- op(500, fx, comp_poss).
 :- op(500, fx, neg).
 
-:- use_module(sequent_engine, [incoherent_witness/2]).
+:- use_module(sequent(sequent_engine), [incoherent_witness/2]).
 :- use_module(pml(pml_operators)).
 % Used for identifying the structure of the Bad Infinite.
 :- use_module(pml(utils), [select/3]).

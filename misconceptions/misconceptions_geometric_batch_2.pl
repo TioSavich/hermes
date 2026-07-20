@@ -1,7 +1,7 @@
 :- module(misconceptions_geometric_batch_2, []).
 % Geometric misconceptions — research corpus batch 2/2.
 % Uses entails_via_incompatibility/2 from formal/formalization/axioms_geometry.pl
-% (loaded via arche-trace/load.pl by the test harness).
+% (loaded via formal/load.pl by the test harness).
 %
 % Registration convention:
 %   test_harness:entail_misconception(Source, Description, Shape, Target, Claim).

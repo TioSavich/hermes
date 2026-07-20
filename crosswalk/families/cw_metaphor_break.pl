@@ -2,7 +2,7 @@
 :-module(cw_metaphor_break,[cw_family/1,cw_rule/1,edge/5]).
 :-use_module(formalization(grounding_metaphors),[]).
 :-use_module(pml(mua_relations),[]).
-:-use_module(arche_trace(defeasible_inference),[]).
+:-use_module(incompat(defeasible_inference),[]).
 cw_family(cw_metaphor_break).
 edge(grounding_metaphors,metaphor_breaks_at/3,[arithmetic_is_object_collection,irrational_numbers],[3],call_bind_out).
 cw_rule((metaphor_break_unified(A,B,C,grounding_catalogue):-metaphor_break_witness(A,B,C,grounding_catalogue,_450))).

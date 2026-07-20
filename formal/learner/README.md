@@ -31,7 +31,7 @@ canned answer.
 ## Consumers and boundary
 
 `hermes_worker.pl` loads the scorekeeper, machine, and monitor;
-`arche-trace/sequent_engine.pl`, the `crosswalk` families (`cw_viability` loads
+`formal/sequent/sequent_engine.pl`, the `crosswalk` families (`cw_viability` loads
 `meta_interpreter`), and `misconceptions/` reach in. `reorg_demo.html` states
 plainly what reorganization does and does not mean: the machine is not conscious,
 the ladder of levels is part of the given model, and the honest line is exactly

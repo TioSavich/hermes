@@ -7,7 +7,7 @@
  * recorded as bounded nontermination rather than hanging the run.
  *
  * Consolidation (2026-07): the canonical incompatibility relation lives in
- * `arche-trace/brandomian_incompatibility.pl`; this module is a FEEDER for
+ * `formal/incompatibility/brandomian_incompatibility.pl`; this module is a FEEDER for
  * it. Classification here never changes the canonical relation by itself. A
  * caller that wants discovered sets recorded as hyperedges runs
  * `install_discovered_hyperedges/2` explicitly (discovery proposes, the
@@ -15,7 +15,7 @@
  * reverses exactly that contribution. Bounded nontermination is never
  * installed: it is a search result under an inference limit, not a verdict
  * that a set cannot be jointly held. The Big Red cache route through
- * `arche-trace/incompatibility_sets.pl` is unchanged.
+ * `formal/incompatibility/incompatibility_sets.pl` is unchanged.
  */
 :- module(incompatibility_discovery,
           [ discover_incompatibility_set/2,
@@ -37,12 +37,12 @@
 :- use_module(math(action_automata_registry),
               [ action_automaton_pair/4
               ]).
-:- use_module(arche_trace(defeasible_inference),
+:- use_module(incompat(defeasible_inference),
               [ material_inference/3,
                 defeater_vocabulary/1,
                 classify_defeat/3
               ]).
-:- use_module(arche_trace(brandomian_incompatibility),
+:- use_module(incompat(brandomian_incompatibility),
               [ incompatible_set/1,
                 add_incompatible_set/1,
                 retract_incompatible_set/1
@@ -225,7 +225,7 @@ canonical_context(Context, Context).
 
 
 registry_cache_file(Cache) :-
-    absolute_file_name(arche_trace('data/incompatibility_sets_discovered.pl'),
+    absolute_file_name(incompat(incompatibility_sets_discovered),
                        Cache,
                        [ access(read), file_errors(fail) ]).
 

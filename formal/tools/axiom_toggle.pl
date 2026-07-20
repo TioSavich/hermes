@@ -16,7 +16,7 @@
  *     (robinson, geometry, number_theory, eml, domains), or the opt-in
  *     registry_incompatibility adapter. A sequent pack is a family of
  *     `proves_impl/2` / `is_incoherent/1` clauses include-compiled into
- *     `arche-trace/sequent_engine.pl`, each clause gated by the dynamic fact
+ *     `formal/sequent/sequent_engine.pl`, each clause gated by the dynamic fact
  *     `sequent_engine:axiom_pack_enabled/1`. The adapter pack delegates to
  *     its documented reversible load/unload interface.
  *   - `eml_transition(From, To)` — one row of the finite EML modal
@@ -33,7 +33,7 @@
  * The axiom clauses are include-compiled STATIC predicates: `retract/1` and
  * `erase/1` on `sequent_engine:proves_impl/2` raise
  * `permission_error(modify, static_procedure, ...)` (verified against the
- * live engine; `arche-trace/critique.pl` documents hitting the same wall in
+ * live engine; `formal/dialectic/critique.pl` documents hitting the same wall in
  * its accommodation-lifecycle note). So the representation itself rules the
  * retract/re-assert mechanism out, and the module uses the two seams the
  * representation does support:
@@ -100,20 +100,20 @@
             list_toggles/1
           ]).
 
-% paths.pl asserts into user:file_search_path/2, and arche-trace/load.pl is a
+% paths.pl asserts into user:file_search_path/2, and formal/load.pl is a
 % non-module file, so both belong in `user` regardless of who consults this
 % module first. Loading them from this module's context would re-load the
 % already-user-loaded files into axiom_toggle and fail.
-:- (   user:file_search_path(arche_trace, _)
+:- (   user:file_search_path(sequent, _)
    ->  true
    ;   ensure_loaded('../../paths')
    ).
-:- user:ensure_loaded(arche_trace(load)).
+:- user:ensure_loaded('formal/load.pl').
 
 :- use_module(library(prolog_wrap), [wrap_predicate/4, unwrap_predicate/2]).
 :- use_module(library(lists), [member/2]).
 :- use_module(library(apply), [maplist/2, include/3]).
-:- use_module(arche_trace(registry_incompatibility_adapter), []).
+:- use_module(incompat(registry_incompatibility_adapter), []).
 
 %!  disabled_axiom(?Id) is nondet.
 %

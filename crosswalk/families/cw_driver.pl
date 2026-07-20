@@ -50,7 +50,7 @@
 :- use_module(library(lists), [append/2, member/2]).
 
 % Owner predicates needed by the mechanical family rows.
-:- use_module(arche_trace(sequent_engine), []).
+:- use_module(sequent(sequent_engine), []).
 :- use_module(formalization(grounded_arithmetic), []).
 :- use_module(formalization(grounding_metaphors), []).
 :- use_module(misconceptions(literature_vocabulary), []).

@@ -1,6 +1,6 @@
 /** <module> cw_axiom_pack -- crosswalk family data. */
 :-module(cw_axiom_pack,[cw_family/1,cw_rule/1,edge/5]).
-:-use_module(arche_trace(sequent_engine),[]).
+:-use_module(sequent(sequent_engine),[]).
 cw_family(cw_axiom_pack).
 edge(sequent_engine,enabled_axiom_pack/1,[core],[],call_match_ground).
 cw_rule((axiom_pack_unified(A,B):-axiom_pack_witness(A,B,_8862))).

@@ -45,7 +45,7 @@
               [compiled_lesson_strategy/4]).
 :- use_module('generated/compiled_lesson_context',
               [compiled_lesson_context/4]).
-:- use_module(arche_trace(incompatibility_discovery),
+:- use_module(incompat(incompatibility_discovery),
               [ classify_candidate_set/3
               ]).
 :- use_module(misconceptions(misconception_registry),

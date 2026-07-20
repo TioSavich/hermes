@@ -1,8 +1,8 @@
 /** <module> cw_material_inference -- crosswalk family data. */
 :-module(cw_material_inference,[cw_family/1,cw_rule/1,edge/5]).
-:-use_module(arche_trace(defeasible_inference),[]).
+:-use_module(incompat(defeasible_inference),[]).
 :-use_module(learner(deontic_scorekeeper),[]).
-:-use_module(arche_trace(embodied_prover),[]).
+:-use_module(sequent(embodied_prover),[]).
 :-use_module(pml(semantic_axioms),[]).
 cw_family(cw_material_inference).
 edge(defeasible_inference,material_inference/3,[arithmetic_is_object_collection],[2,3],call_bind_out).

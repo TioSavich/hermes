@@ -16,7 +16,7 @@
 %   * The harness collects every such fact via `findall(test_harness:...)`.
 %
 % axioms_geometry.pl is NOT a module — it is :- include(...)-ed by
-% arche-trace/sequent_engine.pl. `entails_via_incompatibility/2`
+% formal/sequent/sequent_engine.pl. `entails_via_incompatibility/2`
 % therefore lives inside the sequent_engine module and we call
 % it via module qualification below, following the pattern in
 % formal/formalization/tests/test_geometry_entailment.pl.
@@ -33,14 +33,14 @@
           , query_misconception/4
           ]).
 
-% Load the arche-trace stack into user module. `arche_trace(load)` is a
+% Load the formal reasoning stack into user module. `formal/load.pl` is a
 % plain script (no :- module header) that uses ensure_loaded('../paths')
 % and several use_module directives. If we let it run inside the
 % test_harness module it tries to re-load paths.pl (non-module file
 % already in user) and double-imports utilities. Loading via user:
 % keeps every inner directive in user context, matching the pattern
 % in formal/formalization/tests/test_geometry_entailment.pl.
-:- user:ensure_loaded(arche_trace(load)).
+:- user:ensure_loaded('formal/load.pl').
 
 :- use_module(library(lists)).
 :- use_module(library(error)).  % yall lambdas call must_be/2 from here

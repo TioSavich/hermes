@@ -1,7 +1,7 @@
 /** <module> cw_godel_primes -- crosswalk family data. */
 :-module(cw_godel_primes,[cw_family/1,cw_rule/1,edge/5]).
-:-use_module(arche_trace(automata),[]).
-:-use_module(arche_trace(sequent_engine),[]).
+:-use_module(sequent(automata),[]).
+:-use_module(sequent(sequent_engine),[]).
 cw_family(cw_godel_primes).
 edge(automata,is_prime/1,[2],[],call_match_ground).
 cw_rule((godel_primes_unified(is_prime(A),true,automata):-godel_primes_witness(is_prime(A),true,automata,_20532))).

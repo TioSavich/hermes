@@ -1,7 +1,7 @@
 /** <module> Brandomian material incompatibility engine
  *
  * This module models the machinery that the classical sequent engine
- * (`arche-trace/sequent_engine.pl`) deliberately does NOT carry: material
+ * (`formal/sequent/sequent_engine.pl`) deliberately does NOT carry: material
  * incompatibility as semantically primitive, in Brandom's (2008, Between
  * Saying and Doing, Technical Appendix) order of explanation.
  *
@@ -14,7 +14,7 @@
  * explosion rule here. A set is incoherent or it is not; nothing "follows from"
  * incoherence inside this module. That absence is the point — it is what makes
  * the relation non-explosive, and it is what the classical engine is used to
- * back-stop in `arche-trace/sequent_brandom_bridge.pl`.
+ * back-stop in `formal/incompatibility/sequent_brandom_bridge.pl`.
  *
  * What this module provides, and what it does NOT claim:
  *
@@ -119,11 +119,11 @@ incompatible_set([blackberry, red, ripe]).
 %   - catalogue row: base_metaphor_breaks_at/3 for arithmetic_is_measuring_stick
 %     (formal/formalization/grounding_metaphors.pl), a Lakoff & Nunez break-point;
 %   - compiled form: compiled_break(measuring_stick_incommensurability, ...)
-%     (arche-trace/defeasible_inference.pl), whose classification as
+%     (formal/incompatibility/defeasible_inference.pl), whose classification as
 %     emergent_defeat carries a one-element-removal minimality witness
 %     (classify_defeat_witness/4);
 %   - re-derived by the bounded discovery sweep on Big Red iteration7
-%     (arche-trace/data/incompatibility_sets_discovered.pl,
+%     (formal/incompatibility/incompatibility_sets_discovered.pl,
 %     discovered_set_kind/3 = emergent).
 % Scope, stated precisely: this triple is literature-catalogued and
 % machine-checked; it is not derived from the student/misconception corpus,

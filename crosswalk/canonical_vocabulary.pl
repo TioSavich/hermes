@@ -66,9 +66,9 @@
 % import lists are intentional (no name clashes pulled into this module).
 :- use_module(learner(deontic_scorekeeper), []).
 :- use_module(misconceptions(misconception_registry), []).
-:- use_module(arche_trace(incompatibility_sets), []).
-:- use_module(arche_trace(sequent_engine), []).
-:- use_module(arche_trace(defeasible_inference), []).
+:- use_module(incompat(incompatibility_sets), []).
+:- use_module(sequent(sequent_engine), []).
+:- use_module(incompat(defeasible_inference), []).
 :- use_module(library(lists), [select/3, member/2]).
 
 %! incompatible(?A, ?B, -Source) is nondet.

@@ -2,7 +2,7 @@
  *
  * Shared cost facts for modal contexts (compressive / expansive / neutral).
  * Previously redefined locally with identical bodies in
- * formal/learner/meta_interpreter.pl and `arche-trace/embodied_prover.pl`.
+ * formal/learner/meta_interpreter.pl and `formal/sequent/embodied_prover.pl`.
  * Predicate carving (formal/tools/carving/predicate_carving.py) identified the
  * redundancy.
  *

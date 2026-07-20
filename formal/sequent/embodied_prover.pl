@@ -25,9 +25,9 @@
 
 :- use_module(pml(pml_operators)).
 :- use_module(pml(utils), [select/3, match_antecedents/2]).
-:- use_module(automata, [contains_vanishing_point/1]).
+:- use_module(sequent(automata), [contains_vanishing_point/1]).
 :- use_module(formalization(modal_costs), [get_inference_cost/2]).
-:- use_module(sequent_engine, [incoherent_base/1]).
+:- use_module(sequent(sequent_engine), [incoherent_base/1]).
 
 % =================================================================
 % Configuration and Multifile Declarations

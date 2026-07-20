@@ -1,6 +1,6 @@
 /** <module> cw_viability -- crosswalk family data. */
 :-module(cw_viability,[cw_family/1,cw_rule/1,edge/5]).
-:-use_module(arche_trace(embodied_prover),[]).
+:-use_module(sequent(embodied_prover),[]).
 :-use_module(learner(meta_interpreter),[]).
 cw_family(cw_viability).
 edge(embodied_prover,check_viability/2,[5,1],[],call_guarded_numeric).

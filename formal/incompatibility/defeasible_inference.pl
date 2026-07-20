@@ -48,7 +48,7 @@
           ]).
 
 :- use_module(library(lists)).
-:- use_module(arche_trace(sequent_engine),
+:- use_module(sequent(sequent_engine),
               [ incoherent_witness/2,
                 incoherent_base/1
               ]).

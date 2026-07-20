@@ -19,7 +19,7 @@
 :- module(meta_interpreter, [solve/4]).
 :- use_module(object_level). % Ensure we can access the object-level code
 :- use_module(strategies(hermeneutic_calculator)). % For strategic choice
-:- use_module(arche_trace(sequent_engine), [s/1, 'comp_nec'/1, 'comp_poss'/1, 'exp_nec'/1, 'exp_poss'/1, check_norms/1]). % For modal operators and norm checking
+:- use_module(sequent(sequent_engine), [s/1, 'comp_nec'/1, 'comp_poss'/1, 'exp_nec'/1, 'exp_poss'/1, check_norms/1]). % For modal operators and norm checking
 :- use_module(formalization(grounded_arithmetic)). % For cognitive cost tracking
 :- use_module(config). % For cognitive cost lookup
 :- use_module(more_machine_learner,

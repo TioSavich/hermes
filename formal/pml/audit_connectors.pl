@@ -31,8 +31,8 @@
  *      metaphor_kind/2 (would mean the MUDs page would get a
  *      missing-field record).
  *
- *   F. The deontic scorekeeper -> arche-trace bridge: probes
- *      proves_via_arche_trace/1 with a reflexive sequent to confirm
+ *   F. The deontic scorekeeper -> sequent bridge: probes
+ *      proves_via_sequent_core/1 with a reflexive sequent to confirm
  *      the bridge loads and the prover answers.
  *
  *   G. lx_for/3 meta-vocabularies that no practice deploys via
@@ -80,7 +80,7 @@ print_audit(FailedCount) :-
     c_registry_to_mua_practice(_),  % informational; never fails
     d_mua_grounding_to_metaphor(DFail),
     e_metaphor_kind_coverage(EFail),
-    f_arche_trace_bridge(FFail),
+    f_sequent_bridge(FFail),
     g_lx_meta_voc_pv_reach(GFail),
     h_pp_sufficient_to_kind(HFail),
     FailedCount is AFail + BFail + DFail + EFail + FFail + GFail + HFail,
@@ -152,17 +152,17 @@ e_metaphor_kind_coverage(Fail) :-
 
 
 %% ---- F ---- %%
-%% Reflexive sequent of an arbitrary atom; if arche-trace is loaded
+%% Reflexive sequent of an arbitrary atom; if the sequent core is loaded
 %% and answering, this always proves. If the catch in
-%% proves_via_arche_trace/1 swallows a load error and silently fails,
+%% proves_via_sequent_core/1 swallows a load error and silently fails,
 %% the audit reports it as a failure here.
-f_arche_trace_bridge(Fail) :-
-    ( deontic_scorekeeper:proves_via_arche_trace(
+f_sequent_bridge(Fail) :-
+    ( deontic_scorekeeper:proves_via_sequent_core(
                               ([s(audit_sentinel)] => [s(audit_sentinel)]))
     -> Fail = 0,
-       format('F. Arche-trace bridge: callable; reflexive sequent proved.~n')
+       format('F. Sequent bridge: callable; reflexive sequent proved.~n')
     ;  Fail = 1,
-       format('F. Arche-trace bridge: failed to prove reflexive sequent (check that sequent_engine loads cleanly).~n')
+       format('F. Sequent bridge: failed to prove reflexive sequent (check that sequent_engine loads cleanly).~n')
     ).
 
 
@@ -213,10 +213,10 @@ connector_status(e, Status) :-
     e_count(N, Bad),
     ( Bad == [] -> Status = clean(N) ; length(Bad, NB), Status = fail(NB, Bad) ).
 connector_status(f, Status) :-
-    ( deontic_scorekeeper:proves_via_arche_trace(
+    ( deontic_scorekeeper:proves_via_sequent_core(
                               ([s(audit_sentinel)] => [s(audit_sentinel)]))
     -> Status = clean(1)
-    ;  Status = fail(1, [arche_trace_bridge_does_not_answer])
+    ;  Status = fail(1, [sequent_bridge_does_not_answer])
     ).
 connector_status(g, Status) :-
     g_count(N, Bad),
@@ -276,9 +276,9 @@ connector_metadata(e,
                    [grounding_metaphor_definition/4, metaphor_kind/2],
                    every_metaphor_definition_needs_kind_for_muds_page_records).
 connector_metadata(f,
-                   deontic_arche_trace_bridge,
+                   deontic_sequent_bridge,
                    true,
-                   [proves_via_arche_trace/1],
+                   [proves_via_sequent_core/1],
                    bridge_must_prove_reflexive_sentinel_sequent).
 connector_metadata(g,
                    lx_meta_vocabulary_reachability,

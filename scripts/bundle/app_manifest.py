@@ -45,8 +45,7 @@ KEEP_TREES_RATIONALE = [
     ("standards", "CCSS / Indiana / IM anchors (worker glob-loads these)"),
     ("geometry", "schema, concepts, metaphors, van Hiele (glob-loaded); corpus/ holds attributed IM teacher-guide + scope-and-sequence inputs (see geometry/corpus/ATTRIBUTION.md)"),
     ("lessons", "IM lesson monitoring KB"),
-    ("formal", "reasoning machinery: learner models, grounded formalization, PML semantics, and carving/audit tools"),
-    ("arche-trace", "provers, incompatibility engines"),
+    ("formal", "reasoning machinery: sequent and incompatibility engines, dialectic and juncture models, learner models, grounded formalization, PML semantics, and carving/audit tools"),
     ("research", "derivative layer of the literature corpus (coded db + bibliography); the copyrighted articles stay in the source project"),
     ("docs/research_assets/research/student_work_figures",
      "student-work figures excerpted from the coded literature, served by the gallery with citations attached; the articles themselves stay in the source project"),
@@ -118,6 +117,24 @@ KEEP_FILES = [
     "formal/tools/carving/strategy_machine.pl",
     "formal/tools/carving/synthesizer.pl",
     "formal/tools/carving/units_machine.pl",
+    # Formal carve files are explicit so pre-staging regeneration includes
+    # their working-tree locations before the controller records the renames.
+    "formal/README.md",
+    "formal/load.pl",
+    "formal/sequent/sequent_engine.pl",
+    "formal/sequent/embodied_prover.pl",
+    "formal/sequent/automata.pl",
+    "formal/incompatibility/brandomian_incompatibility.pl",
+    "formal/incompatibility/sequent_brandom_bridge.pl",
+    "formal/incompatibility/registry_incompatibility_adapter.pl",
+    "formal/incompatibility/incompatibility_discovery.pl",
+    "formal/incompatibility/incompatibility_sets.pl",
+    "formal/incompatibility/defeasible_inference.pl",
+    "formal/incompatibility/find_emergent_hyperedges.pl",
+    "formal/incompatibility/incompatibility_sets_discovered.pl",
+    "formal/dialectic/dialectical_engine.pl",
+    "formal/dialectic/critique.pl",
+    "formal/juncture/differance_juncture.pl",
 ]
 
 # Markdown is documentation, not runtime — with the exceptions the running
@@ -136,7 +153,7 @@ KEEP_MD = {
     "docs/research/2026-06-25-the-juncture-and-differance.md",
     "ASKTM_Data/survey_questions.md",
     "geometry/corpus/ATTRIBUTION.md",
-    "arche-trace/README.md",
+    "formal/README.md",
     "crosswalk/README.md",
     "crosswalk/families/README.md",
     "formal/formalization/README.md",

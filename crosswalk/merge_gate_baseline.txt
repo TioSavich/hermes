@@ -30,7 +30,7 @@ deontic_scorekeeper:deontic_incoherent/2	deontic_incoherence_unified
 deontic_scorekeeper:incompatible/2	incompatible
 deontic_scorekeeper:material_inference/3	material_inference
 deontic_scorekeeper:mua_derived_material_inference/3	material_inference
-deontic_scorekeeper:proves_via_arche_trace/1	sequent_proof
+deontic_scorekeeper:proves_via_sequent_core/1	sequent_proof
 deontic_scorekeeper:scorecard/2	deontic_incoherence_unified
 dialectical_engine:handle_perturbation/3	orr_entry
 dialectical_engine:run_computation/2	orr_entry

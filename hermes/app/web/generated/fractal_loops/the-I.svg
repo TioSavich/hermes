@@ -76,7 +76,7 @@
 
   <!-- ===== Captured output panel (the proof inside the picture) ===== -->
   <rect x="40" y="352" width="620" height="56" rx="6" fill="#1e1e1e"/>
-  <text x="48" y="349" font-size="9.5" fill="#888">verbatim — swipl -l paths.pl -l arche-trace/automata.pl -l formal/pml/pragmatic_axioms.pl</text>
+  <text x="48" y="349" font-size="9.5" fill="#888">verbatim — swipl -l paths.pl -l formal/sequent/automata.pl -l formal/pml/pragmatic_axioms.pl</text>
   <text x="50" y="367" font-size="10" font-family="Menlo, Consolas, monospace" fill="#9cdc9c">contains_vanishing_point(I_f) = YES  I_f = AnotherVar : SUCCEEDS (mark propagates)</text>
   <text x="50" y="381" font-size="10" font-family="Menlo, Consolas, monospace" fill="#ef9a9a">I_f = hello (concrete): FAILS (hits the wall)   identity_claim(I_f) : FAILS (cannot objectify)</text>
   <text x="50" y="395" font-size="10" font-family="Menlo, Consolas, monospace" fill="#ffcc80">represents(C_Id, I_f) : is_incoherent (unsatisfiable_desire)</text>

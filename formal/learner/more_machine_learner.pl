@@ -14,7 +14,7 @@
           ]).
 
 % Use the semantics engine for validation
-:- use_module(arche_trace(sequent_engine), [proves/1, set_domain/1, current_domain/1, is_recollection/2, normalize/2]).
+:- use_module(sequent(sequent_engine), [proves/1, set_domain/1, current_domain/1, is_recollection/2, normalize/2]).
 :- use_module(library(random)).
 :- use_module(library(lists)).
 :- use_module(strategy_synthesis,

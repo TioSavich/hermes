@@ -39,8 +39,8 @@
           ]).
 
 :- use_module(library(lists)).
-:- use_module(arche_trace(sequent_engine), [ incoherent_base/1, safe_proves/2 ]).
-:- use_module(arche_trace(brandomian_incompatibility),
+:- use_module(sequent(sequent_engine), [ incoherent_base/1, safe_proves/2 ]).
+:- use_module(incompat(brandomian_incompatibility),
               [ incompatible_set/1,
                 brandomian_incoherent/1,
                 coherent_set/1,

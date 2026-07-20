@@ -1,6 +1,6 @@
 /** <module> cw_stress_map -- crosswalk family data. */
 :-module(cw_stress_map,[cw_family/1,cw_rule/1,edge/5]).
-:-use_module(arche_trace(critique),[]).
+:-use_module(dialectic(critique),[]).
 :-use_module(learner(reflective_monitor),[]).
 :-use_module(library(lists),[member/2]).
 cw_family(cw_stress_map).
@@ -10,7 +10,7 @@ cw_rule((stress_map_unified(A,B,reflective_monitor):-stress_map_witness(A,B,refl
 cw_rule((stress_map_witness(A,B,C,D):-witness_dict:witness_dict(stress_map_entry,closed_world_finite_loaded_stress_map_snapshot,_21576{count:B,derivation:map_snapshot_membership,legacy_functor:F,signature:A,source:C,source_witness:G},D),stress_map_source(C,F),source_stress_map_witness(C,A,B,G))).
 cw_rule(stress_map_source(critique,'critique:get_stress_map/1')).
 cw_rule(stress_map_source(reflective_monitor,'reflective_monitor:get_stress_map/1')).
-cw_rule((source_stress_map_witness(critique,A,B,_21864{entry:stress(A,B),kind:stress_map_snapshot_membership,layer:arche_trace_critique,map_reader:'critique:get_stress_map/1',map_size:D,map_snapshot:E}):-catch(once(critique:get_stress_map(E)),_,fail),member(stress(A,B),E),length(E,D))).
+cw_rule((source_stress_map_witness(critique,A,B,_21864{entry:stress(A,B),kind:stress_map_snapshot_membership,layer:dialectic_critique,map_reader:'critique:get_stress_map/1',map_size:D,map_snapshot:E}):-catch(once(critique:get_stress_map(E)),_,fail),member(stress(A,B),E),length(E,D))).
 cw_rule((source_stress_map_witness(reflective_monitor,A,B,_22078{entry:stress(A,B),kind:stress_map_snapshot_membership,layer:learner_reflective_monitor,map_reader:'reflective_monitor:get_stress_map/1',map_size:D,map_snapshot:E}):-catch(once(reflective_monitor:get_stress_map(E)),_,fail),member(stress(A,B),E),length(E,D))).
 cw_rule(canonical_concept('critique:get_stress_map/1',stress_map_unified)).
 cw_rule(canonical_concept('reflective_monitor:get_stress_map/1',stress_map_unified)).

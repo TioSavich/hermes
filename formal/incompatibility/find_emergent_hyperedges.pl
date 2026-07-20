@@ -15,18 +15,18 @@
  * Sources searched:
  *   1. misconception_registry:incompatibility_with/2 (the registry pairs),
  *   2. the Big Red iteration7 discovery cache
- *      (arche-trace/data/incompatibility_sets_discovered.pl, with a
+ *      (formal/incompatibility/incompatibility_sets_discovered.pl, with a
  *      fallback to its former home under scripts/bigred/iteration7/work/),
  *      re-checked LIVE against defeasible_inference's consequence relation,
  *   3. the literature deontic edge graph (sr_* / c_* canonical commitments).
  *
  * The result of a run is a printed report; nothing is asserted into the
  * canonical relation here. The seeded outcome of this search lives in
- * arche-trace/brandomian_incompatibility.pl (the incommensurability triple)
+ * formal/incompatibility/brandomian_incompatibility.pl (the incommensurability triple)
  * and the record in docs/research/2026-07-02-emergent-hyperedge-search.md.
  *
  * Run:
- *   swipl -q -l paths.pl -s arche-trace/tools/find_emergent_hyperedges.pl \
+ *   swipl -q -l paths.pl -s formal/incompatibility/find_emergent_hyperedges.pl \
  *         -g run_search -t halt
  */
 :- module(find_emergent_hyperedges,
@@ -36,17 +36,17 @@
           ]).
 
 :- use_module(library(lists)).
-:- use_module(arche_trace(brandomian_incompatibility),
+:- use_module(incompat(brandomian_incompatibility),
               [ brandomian_incoherent/1,
                 coherent_set/1
               ]).
-:- use_module(arche_trace(defeasible_inference),
+:- use_module(incompat(defeasible_inference),
               [ material_inference/3,
                 classify_defeat/3,
                 compiled_break/2,
                 ctx_incoherent/1
               ]).
-:- use_module(arche_trace(incompatibility_discovery),
+:- use_module(incompat(incompatibility_discovery),
               [ candidate_set/2
               ]).
 :- use_module(misconceptions(misconception_registry),
@@ -176,8 +176,8 @@ verified_emergent(Set) :-
 
 cache_path(Path) :-
     member(Candidate,
-           [ arche_trace('data/incompatibility_sets_discovered.pl'),
-             arche_trace('../scripts/bigred/iteration7/work/incompatibility_sets_discovered.pl')
+           [ incompat(incompatibility_sets_discovered),
+             incompat('../../scripts/bigred/iteration7/work/incompatibility_sets_discovered.pl')
            ]),
     absolute_file_name(Candidate, Path, [access(read), file_errors(fail)]),
     !.
@@ -240,7 +240,7 @@ literature_report :-
 %% Seed check: the authored outcome of this search
 
 seed_check_report :-
-    format("Seed check — arche-trace/brandomian_incompatibility.pl~n"),
+    format("Seed check — formal/incompatibility/brandomian_incompatibility.pl~n"),
     Triple = [o(diagonal_of_unit_square_measured),
               o(length_is_count_of_units),
               o(grounded(measuring_stick))],

@@ -1,6 +1,6 @@
 /** <module> cw_domain_context -- crosswalk family data. */
 :-module(cw_domain_context,[cw_family/1,cw_rule/1,edge/5]).
-:-use_module(arche_trace(sequent_engine),[]).
+:-use_module(sequent(sequent_engine),[]).
 cw_family(cw_domain_context).
 edge(sequent_engine,current_domain/1,[],[1],call_bind_out).
 cw_rule((domain_context_unified(A,_13222,domain_atom):-domain_context_witness(A,not_projected_by_source,domain_atom,_))).

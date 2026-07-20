@@ -84,12 +84,12 @@ load_runtime :-
     use_module(hermes(encyclopedia)),
     use_module(hermes(commitment_matcher), []),
     use_module(hermes(capability_registry), []),
-    use_module(arche_trace(embodied_prover), []),
-    use_module(arche_trace(sequent_engine), []),
-    use_module(arche_trace(critique)),
-    use_module(arche_trace(defeasible_inference), []),
-    use_module(arche_trace(incompatibility_discovery)),
-    use_module(arche_trace(incompatibility_sets), []),
+    use_module(sequent(embodied_prover), []),
+    use_module(sequent(sequent_engine), []),
+    use_module(dialectic(critique)),
+    use_module(incompat(defeasible_inference), []),
+    use_module(incompat(incompatibility_discovery)),
+    use_module(incompat(incompatibility_sets), []),
     % The Brandomian incompatibility bridge. Selective import: only the union
     % incoherence front end and the backstop audit, to avoid the
     % incompatibility_entails/2 and => operator clashes the full module carries.
@@ -97,7 +97,7 @@ load_runtime :-
     % engine's own default behavior is unchanged, and the union incoherence plus
     % the canonical incompatibility_entails/2 are consulted at this app boundary
     % only (the brandomian_check op), never inside the engine.
-    use_module(arche_trace(sequent_brandom_bridge),
+    use_module(incompat(sequent_brandom_bridge),
                [ brandom_backstop/1, brandom_backstop_ok/0,
                  b_proves/1, b_incoherent/1 ]),
     load_axiom_pack_audit(Root),
@@ -173,17 +173,17 @@ load_runtime :-
     % brandomian_incompatibility is the canonical hyperedge relation; it must
     % stay module-qualified because incompatibility_sets exports a different,
     % profile-based incompatibility_entails/2 under the same name.
-    use_module(arche_trace(brandomian_incompatibility), []),
+    use_module(incompat(brandomian_incompatibility), []),
     % The emergence criterion (size >= 3, jointly incoherent, every
     % one-element removal coherent), reused from the search tool rather than
     % reimplemented: the hyperedges op calls verified_emergent/1 on cached
     % discovery rows.
-    use_module(arche_trace('tools/find_emergent_hyperedges'), []),
+    use_module(incompat(find_emergent_hyperedges), []),
     % Lesson-vs-registry gap surface (flat Operation-Kind pairs) backing the
     % monitoring chart export's unanticipated_strategies key.
     use_module(lessons(lesson_gap), []).
     % NOT loaded here: formal/tools/axiom_toggle.pl (the axiom_toggle op). Its
-    % consult-time directive pulls arche_trace(load) into user, and that
+    % consult-time directive pulls 'formal/load.pl' into user, and that
     % chain's full re-imports collide with import bindings this loader has
     % already settled (a stream of harmless but alarming "No permission to
     % import" refusals on stderr). The op lazy-loads it on first use instead:
@@ -3587,7 +3587,7 @@ hyperedge_row(KindFilter, Row) :-
     term_to_text(Context, ContextText),
     term_to_text(Kind, KindText),
     Row = _{ source: "bigred_iteration7_cache",
-             provenance: "arche-trace/data/incompatibility_sets_discovered.pl (Big Red iteration7 bounded discovery; regeneration: docs/bigred-incompatibility-RUNBOOK.md)",
+             provenance: "formal/incompatibility/incompatibility_sets_discovered.pl (Big Red iteration7 bounded discovery; regeneration: docs/bigred-incompatibility-RUNBOOK.md)",
              context: ContextText,
              set: SetTexts,
              kind: KindText,
@@ -3612,7 +3612,7 @@ hyperedge_row(KindFilter, Row) :-
     catalogue_break_for(Set, Break),
     maplist(term_to_text, Set, SetTexts),
     Row = _{ source: "canonical_relation",
-             provenance: "arche-trace/brandomian_incompatibility.pl declared incompatible claim groups (size >= 3 only; the seed pairs are reachable through brandomian_check)",
+             provenance: "formal/incompatibility/brandomian_incompatibility.pl declared incompatible claim groups (size >= 3 only; the seed pairs are reachable through brandomian_check)",
              context: "brandomian_engine",
              set: SetTexts,
              kind: "declared",
@@ -3959,7 +3959,7 @@ learner_request_string(Value, String) :- atom(Value), !, atom_string(Value, Stri
 %
 %   Lazy load for formal/tools/axiom_toggle.pl (see the load_runtime note on why it
 %   is not a boot-time load). with_output_to(user_error, ...) matters: the
-%   module's arche_trace(load) chain prints a banner to stdout at
+%   module's 'formal/load.pl' chain prints a banner to stdout at
 %   initialization, and an unprotected load would corrupt the JSONL protocol
 %   mid-session. A load failure surfaces as an op_exception through
 %   handle_request/2's catch.

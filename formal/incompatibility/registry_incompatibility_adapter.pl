@@ -1,6 +1,6 @@
 /** <module> Registry-to-Brandomian incompatibility adapter
  *
- * The Brandomian engine (`arche-trace/brandomian_incompatibility.pl`) ships
+ * The Brandomian engine (`formal/incompatibility/brandomian_incompatibility.pl`) ships
  * with four seed hyperedges; the misconception registry's
  * incompatibility_with/2 yields 342 distinct non-degenerate core pairs (1,111
  * raw solutions before symmetry and self-pair reduction). This adapter
@@ -34,7 +34,7 @@
 
 :- use_module(library(lists)).
 :- use_module(library(aggregate)).
-:- use_module(arche_trace(brandomian_incompatibility),
+:- use_module(incompat(brandomian_incompatibility),
               [ incompatible_set/1,
                 add_incompatible_set/1,
                 retract_incompatible_set/1

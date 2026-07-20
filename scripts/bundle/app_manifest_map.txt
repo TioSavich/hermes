@@ -3,13 +3,12 @@ docs/	1613
 hermes/	1523
 geometry/	933
 more-zeeman/	144
+formal/	118
 strategies/	114
-formal/	102
 crosswalk/	46
 misconceptions/	43
 standards/	33
 lessons/	32
-arche-trace/	16
 scripts/	10
 representation/	8
 (root)	2

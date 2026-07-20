@@ -127,7 +127,7 @@
 <div class="panel">
   <p class="eyebrow">the juncture</p>
   <h3>One outcome, two histories</h3>
-  <p class="fileline">arche-trace/differance_juncture.pl:74&ndash;76 (effaced_trace/2, the vanishing point); seed at :50&ndash;53, :85&ndash;87, :102&ndash;103, :109&ndash;116</p>
+  <p class="fileline">formal/juncture/differance_juncture.pl:74&ndash;76 (effaced_trace/2, the vanishing point); seed at :50&ndash;53, :85&ndash;87, :102&ndash;103, :109&ndash;116</p>
 
   <div class="svgframe">
     <img src="juncture.svg" alt="The juncture: one outcome, equal_parts(2), reached by a licensed radial cut and an unlicensed vertical cut; the numeral one-half keeps the identity and loses which cut made it.">
@@ -145,7 +145,7 @@
     <summary>See for yourself</summary>
     <div class="body">
       <div class="lbl">query</div>
-      <pre class="query">swipl -q -l paths.pl -l arche-trace/differance_juncture.pl \
+      <pre class="query">swipl -q -l paths.pl -l formal/juncture/differance_juncture.pl \
   -g 'differance_juncture:show_juncture(half)' -t 'halt'</pre>
       <div class="lbl">captured output (verbatim)</div>
       <pre>juncture: half
@@ -162,7 +162,7 @@ effaced_trace(outcome(equal_parts(2))) = [partition(circle,radial,2),partition(c
 
   <div class="deconstructs">
     <div class="lbl">where it eats its own tail</div>
-    <code>effaced_trace/2</code> at arche-trace/differance_juncture.pl:74&ndash;76 &mdash; <code>setof(Path, Name^L^derivation(Name, Outcome, Path, L), Paths)</code>. The existential quantifier <code>Name^L^</code> throws away the very license tag <code>L</code> that the rest of the file labors to assert. The predicate built to <em>name</em> the effaced trace performs the effacement in its own quantifier: both the radial [licensed] and vertical [unlicensed] paths come back collapsed into one list, with no record of which was licensed.
+    <code>effaced_trace/2</code> at formal/juncture/differance_juncture.pl:74&ndash;76 &mdash; <code>setof(Path, Name^L^derivation(Name, Outcome, Path, L), Paths)</code>. The existential quantifier <code>Name^L^</code> throws away the very license tag <code>L</code> that the rest of the file labors to assert. The predicate built to <em>name</em> the effaced trace performs the effacement in its own quantifier: both the radial [licensed] and vertical [unlicensed] paths come back collapsed into one list, with no record of which was licensed.
   </div>
 </div>
 
@@ -173,7 +173,7 @@ effaced_trace(outcome(equal_parts(2))) = [partition(circle,radial,2),partition(c
 <div class="panel">
   <p class="eyebrow">the hollow proof</p>
   <h3>The node whose warrant is withdrawn</h3>
-  <p class="fileline">arche-trace/embodied_prover.pl (construct_proof/4, proof_witness/2); arche-trace/automata.pl (generate_vanishing_point/1, attr_unify_hook/2, contains_vanishing_point/1)</p>
+  <p class="fileline">formal/sequent/embodied_prover.pl (construct_proof/4, proof_witness/2); formal/sequent/automata.pl (generate_vanishing_point/1, attr_unify_hook/2, contains_vanishing_point/1)</p>
 
   <div class="svgframe">
     <img src="erasure.svg" alt="The prover tries to write a proof of a sentence carrying the vanishing-point mark; the proof object becomes hollow, with its warrant withdrawn.">
@@ -185,8 +185,8 @@ effaced_trace(outcome(equal_parts(2))) = [partition(circle,radial,2),partition(c
     <summary>See for yourself</summary>
     <div class="body">
       <div class="lbl">query</div>
-      <pre class="query">swipl -q -l paths.pl -g "use_module('arche-trace/automata'), \
-  use_module('arche-trace/embodied_prover'), automata:generate_vanishing_point(T), \
+      <pre class="query">swipl -q -l paths.pl -g "use_module(sequent(automata)), \
+  use_module(sequent(embodied_prover)), automata:generate_vanishing_point(T), \
   ( automata:contains_vanishing_point([s(T)]=>[s(T)]) -> C=yes ; C=no ), \
   construct_proof(my_rule,([s(T)]=>[s(T)]),[],P1), \
   construct_proof(my_rule,([s(a)]=>[s(a)]),[],P2), \
@@ -209,7 +209,7 @@ CLEAN:   proof(my_rule,([s(a)]=>[s(a)]),[])</pre>
 <div class="panel">
   <p class="eyebrow">the {I}</p>
   <h3>The {I} that can&rsquo;t be in the picture</h3>
-  <p class="fileline">arche-trace/automata.pl (generate_vanishing_point/1 and attr_unify_hook/2) and formal/pml/pragmatic_axioms.pl (i_feeling/1, identity_claim/1, pragmatic_incoherence_witness/2)</p>
+  <p class="fileline">formal/sequent/automata.pl (generate_vanishing_point/1 and attr_unify_hook/2) and formal/pml/pragmatic_axioms.pl (i_feeling/1, identity_claim/1, pragmatic_incoherence_witness/2)</p>
 
   <div class="svgframe">
     <img src="the-I.svg" alt="The I-Feeling, a traced variable that defers against another variable but fails against any concrete term.">
@@ -221,7 +221,7 @@ CLEAN:   proof(my_rule,([s(a)]=>[s(a)]),[])</pre>
     <summary>See for yourself</summary>
     <div class="body">
       <div class="lbl">query</div>
-      <pre class="query">swipl -l paths.pl -l arche-trace/automata.pl -l formal/pml/pragmatic_axioms.pl
+      <pre class="query">swipl -l paths.pl -l formal/sequent/automata.pl -l formal/pml/pragmatic_axioms.pl
 % i_feeling(I_f), contains_vanishing_point(I_f)
 % generate_vanishing_point(V), I_f = V          (var-var, propagates)
 % generate_vanishing_point(J), J = hello        (var-concrete, wall)
@@ -246,7 +246,7 @@ represents(C_Id, I_f)  : is_incoherent (unsatisfiable_desire)</pre>
 <div class="panel">
   <p class="eyebrow">the prover</p>
   <h3>The prover reads its own rulebook</h3>
-  <p class="fileline">arche-trace/sequent_engine.pl:296&ndash;304</p>
+  <p class="fileline">formal/sequent/sequent_engine.pl:296&ndash;304</p>
 
   <div class="svgframe">
     <img src="prover-self-read.svg" alt="The proves_impl rule reaching into its own clause database, which contains itself, and copy_term renaming the stored clause apart before it can be used.">
@@ -259,7 +259,7 @@ represents(C_Id, I_f)  : is_incoherent (unsatisfiable_desire)</pre>
     <div class="body">
       <div class="lbl">query</div>
       <pre class="query">swipl -l paths.pl
-?- use_module('arche-trace/sequent_engine').
+?- use_module(sequent(sequent_engine)).
 ?- aggregate_all(count, clause(sequent_engine:proves_impl(_,_),_), N).
 ?- sequent_engine:proves(([o(eq(succ(0),succ(0)))] => [o(eq(0,0))])).</pre>
       <div class="lbl">captured output (verbatim)</div>
@@ -331,7 +331,7 @@ CAUGHT: perturbation(resource_exhaustion)</pre>
     <summary>See for yourself</summary>
     <div class="body">
       <div class="lbl">query</div>
-      <pre class="query">swipl -l paths.pl -l arche-trace/sequent_engine.pl -g "sequent_engine:enable_axiom_pack(robinson), \
+      <pre class="query">swipl -l paths.pl -l formal/sequent/sequent_engine.pl -g "sequent_engine:enable_axiom_pack(robinson), \
   (sequent_engine:is_recollection(5,H) -> format('History = ~q~n',[H]) ; true), \
   (sequent_engine:proves_impl(_ => [o(eq(5,5))], P) -> \
      (var(P) -> writeln('proves_impl SUCCEEDS; Proof object is UNBOUND (var) -> discarded') \

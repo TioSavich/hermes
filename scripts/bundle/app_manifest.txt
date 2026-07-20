@@ -6541,22 +6541,6 @@ ASKTM_Data/Survery questions for students_files/image010.png
 ASKTM_Data/Survery questions for students_files/image011.png
 ASKTM_Data/Survery questions for students_files/image012.png
 ASKTM_Data/survey_questions.md
-arche-trace/README.md
-arche-trace/automata.pl
-arche-trace/brandomian_incompatibility.pl
-arche-trace/critique.pl
-arche-trace/data/incompatibility_sets_discovered.pl
-arche-trace/defeasible_inference.pl
-arche-trace/dialectical_engine.pl
-arche-trace/differance_juncture.pl
-arche-trace/embodied_prover.pl
-arche-trace/incompatibility_discovery.pl
-arche-trace/incompatibility_sets.pl
-arche-trace/load.pl
-arche-trace/registry_incompatibility_adapter.pl
-arche-trace/sequent_brandom_bridge.pl
-arche-trace/sequent_engine.pl
-arche-trace/tools/find_emergent_hyperedges.pl
 crosswalk/README.md
 crosswalk/canonical_all.pl
 crosswalk/canonical_vocabulary.pl
@@ -8216,6 +8200,9 @@ docs/research_assets/research/student_work_figures/2026-06-18-flm-missed/FLM_Wat
 docs/research_assets/research/student_work_figures/2026-06-18-flm-missed/FLM_Watson_1988_Three/p24.png
 docs/research_assets/research/student_work_figures/2026-06-18-flm-missed/FLM_Watson_1988_Three/p25.png
 docs/research_assets/research/student_work_figures/2026-06-18-flm-missed/IJEMST_Girit_2016_Pre/p86.png
+formal/README.md
+formal/dialectic/critique.pl
+formal/dialectic/dialectical_engine.pl
 formal/formalization/README.md
 formal/formalization/axioms_geometry.pl
 formal/formalization/axioms_number_theory.pl
@@ -8238,6 +8225,15 @@ formal/formalization/synthesis/run_synth.pl
 formal/formalization/synthesis/synth.pl
 formal/formalization/synthesis/synth_lazy.pl
 formal/formalization/witness_dict.pl
+formal/incompatibility/brandomian_incompatibility.pl
+formal/incompatibility/defeasible_inference.pl
+formal/incompatibility/find_emergent_hyperedges.pl
+formal/incompatibility/incompatibility_discovery.pl
+formal/incompatibility/incompatibility_sets.pl
+formal/incompatibility/incompatibility_sets_discovered.pl
+formal/incompatibility/registry_incompatibility_adapter.pl
+formal/incompatibility/sequent_brandom_bridge.pl
+formal/juncture/differance_juncture.pl
 formal/learner/README.md
 formal/learner/action_semantic_context.pl
 formal/learner/activity_contract.pl
@@ -8288,6 +8284,7 @@ formal/learner/teacher.pl
 formal/learner/teacher_local_prolog.pl
 formal/learner/tension_dynamics.pl
 formal/learner/up_leveling.pl
+formal/load.pl
 formal/pml/Modal_Logic/AppendixA_Unified_2.pdf
 formal/pml/Modal_Logic/AppendixA_Unified_2.tex
 formal/pml/README.md
@@ -8309,6 +8306,9 @@ formal/pml/talkmoves_adapter.pl
 formal/pml/text_interpreter.pl
 formal/pml/trace_adjudication.pl
 formal/pml/utils.pl
+formal/sequent/automata.pl
+formal/sequent/embodied_prover.pl
+formal/sequent/sequent_engine.pl
 formal/tools/axiom_pack_audit.pl
 formal/tools/axiom_toggle.pl
 formal/tools/carving/groups_machine.pl

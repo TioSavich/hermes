@@ -41,8 +41,8 @@
  * from `pp_sufficient/3` in MUA. The local `incompatible/2` clauses
  * cover explicit result conflicts and explicit negation in this finite
  * scorekeeping layer. Open-ended incompatibility entailment belongs to
- * the sequent prover in `arche-trace/`; this module exposes
- * `proves_via_arche_trace/1`
+ * the sequent prover in `formal/sequent/`; this module exposes
+ * `proves_via_sequent_core/1`
  * as an optional bridge without making proof search part of ordinary
  * deontic state updates.
  *
@@ -75,7 +75,7 @@
             requires_entitlement_via_mua/1,
             requires_entitlement_witness/2,
             commitment_consequence_witness/4,
-            proves_via_arche_trace/1
+            proves_via_sequent_core/1
           ]).
 
 :- use_module(pml(mua_relations),
@@ -130,7 +130,7 @@ reset_scorekeeper :-
 %% materially commits the agent to Q under the named inference rule.
 %% This is the closed-world finite scorekeeper interface to
 %% incompatibility semantics; open-ended proof search remains in
-%% `arche-trace/sequent_engine.pl`.
+%% `formal/sequent/sequent_engine.pl`.
 %%
 %% `entitlement_preserving(RuleName)` marks rules that preserve
 %% entitlement: if Agent is entitled to P and the rule applies, Agent
@@ -187,7 +187,7 @@ incompatible(not(P), P).
 %% pairs (misconception vs. the strategy or entitlement it conflicts with)
 %% back the local table, so adjudication over a real classroom reading is
 %% non-empty instead of limited to the result_of/not(P) seeds above. The
-%% calls are guarded the same way as proves_via_arche_trace/1: when the
+%% calls are guarded the same way as proves_via_sequent_core/1: when the
 %% misconceptions module is not loaded (standalone learner contexts), the
 %% clauses fail silently and the local seeds are all there is.
 incompatible(A, B) :- registry_backed_incompatible(A, B).
@@ -315,8 +315,8 @@ mua_derived_material_inference_witness(Mechanism,
 %%
 %% The scorekeeper's `incompatible/2` and `material_inference/3` are
 %% local and finite by design (cf. module header). For high-stakes
-%% consistency checks a consumer can call `proves_via_arche_trace/1`
-%% to consult `arche-trace/sequent_engine.pl`. That prover lives in
+%% consistency checks a consumer can call `proves_via_sequent_core/1`
+%% to consult `formal/sequent/sequent_engine.pl`. That prover lives in
 %% proof-search mode (sequent calculus); the
 %% scorekeeper lives in tracking mode (commitment/entitlement state).
 %% They are complementary: the sequent prover decides whether a sequent is
@@ -327,14 +327,14 @@ mua_derived_material_inference_witness(Mechanism,
 %% scorekeeper remains usable in test environments without the full
 %% sequent-prover module loaded.
 
-%!  proves_via_arche_trace(+Sequent) is semidet.
+%!  proves_via_sequent_core(+Sequent) is semidet.
 %
 %   Succeeds if Sequent is derivable in the sequent calculus under
-%   `arche-trace/`. Returns silently false if that module is
+%   `formal/sequent/`. Returns silently false if that module is
 %   unavailable in the current load context.
-proves_via_arche_trace(Sequent) :-
+proves_via_sequent_core(Sequent) :-
     catch(
-        ( use_module(arche_trace(sequent_engine), [proves/1]),
+        ( use_module(sequent(sequent_engine), [proves/1]),
           sequent_engine:proves(Sequent) ),
         _Err,
         fail
@@ -583,8 +583,8 @@ deontic_incoherent(Agent, committed_to_negation_of_consequence(P, Q)) :-
 %%       declared material-incompatibility hyperedge. Pairwise incompatible/2
 %%       cannot express this: the canonical emergent case (blackberry/red/ripe)
 %%       has no incoherent pair, only the triple. Hyperedges come from the
-%%       Brandomian engine's declared sets (arche-trace, guarded like
-%%       proves_via_arche_trace/1) and from the misconception registry's
+%%       Brandomian engine's declared sets (formal/incompatibility, guarded like
+%%       proves_via_sequent_core/1) and from the misconception registry's
 %%       pairs, so the deontic path reaches the same relation b_incoherent/1
 %%       audits rather than topping out at the local seeds.
 deontic_incoherent(Agent, hyperedge_incoherence(Set)) :-

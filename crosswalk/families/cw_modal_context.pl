@@ -1,7 +1,7 @@
 /** <module> cw_modal_context -- crosswalk family data. */
 :-module(cw_modal_context,[cw_family/1,cw_rule/1,edge/5]).
 :-use_module(learner(meta_interpreter),[]).
-:-use_module(arche_trace(embodied_prover),[]).
+:-use_module(sequent(embodied_prover),[]).
 cw_family(cw_modal_context).
 edge(meta_interpreter,is_modal_operator/2,[necessarily],[2],call_bind_out).
 cw_rule((modal_context_unified(A,B,meta_interpreter):-modal_context_witness(A,B,meta_interpreter,_5308))).

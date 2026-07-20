@@ -12,7 +12,7 @@
 
   <!-- Title -->
   <text x="20" y="28" font-size="16" font-weight="bold" fill="#1a1a1a">The prover reads its own rulebook</text>
-  <text x="20" y="46" font-size="11" fill="#555">arche-trace/sequent_engine.pl : proves_impl/2  (lines 296&#8211;304)</text>
+  <text x="20" y="46" font-size="11" fill="#555">formal/sequent/sequent_engine.pl : proves_impl/2  (lines 296&#8211;304)</text>
 
   <!-- ===== The loop nodes ===== -->
 
@@ -56,7 +56,7 @@
 
   <!-- ===== Captured output ===== -->
   <rect x="40" y="262" width="620" height="118" rx="6" fill="#1d1f21" stroke="#444" stroke-width="1"/>
-  <text x="52" y="280" font-size="10" fill="#9fd3a0" font-family="monospace">$ swipl -l paths.pl   (then: use_module('arche-trace/sequent_engine'))</text>
+  <text x="52" y="280" font-size="10" fill="#9fd3a0" font-family="monospace">$ swipl -l paths.pl   (then: use_module(sequent(sequent_engine)))</text>
   <text x="52" y="298" font-size="10" fill="#d6d6d6" font-family="monospace">?- aggregate_all(count, clause(sequent_engine:proves_impl(_,_),_), N).</text>
   <text x="52" y="312" font-size="10" fill="#f0c674" font-family="monospace">N = 41.</text>
   <text x="52" y="332" font-size="10" fill="#d6d6d6" font-family="monospace">?- sequent_engine:proves(([o(eq(succ(0),succ(0)))] =&gt; [o(eq(0,0))])).</text>

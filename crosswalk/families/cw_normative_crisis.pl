@@ -1,6 +1,6 @@
 /** <module> cw_normative_crisis -- crosswalk family data. */
 :-module(cw_normative_crisis,[cw_family/1,cw_rule/1,edge/5]).
-:-use_module(arche_trace(sequent_engine),[]).
+:-use_module(sequent(sequent_engine),[]).
 :-use_module(learner(reorganization_engine),[]).
 cw_family(cw_normative_crisis).
 edge(sequent_engine,prohibition/2,[natural_numbers,subtract(1,2,-1)],[],call_once_bind_out).

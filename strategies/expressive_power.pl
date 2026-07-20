@@ -13,7 +13,7 @@
  *    discovered bounded sets a piece of vocabulary is materially incompatible
  *    with — how many holes its content excludes. Backed by
  *    misconception_registry:incompatibility_with/2 and the bounded
- *    arche-trace incompatibility-set surface.
+ *    formal incompatibility-set surface.
  *
  * The two measures are deliberately NOT collapsed into one number. Path-power is
  * a property of a region of the action space (an operation at a level); the
@@ -60,7 +60,7 @@
 :- use_module(carving(strategy_machine), [ all_paths/6 ]).
 :- use_module(carving(groups_machine), []).
 :- use_module(carving(units_machine), []).
-:- use_module(arche_trace(incompatibility_discovery),
+:- use_module(incompat(incompatibility_discovery),
               [ candidate_set/2,
                 classify_candidate_set/3
               ]).

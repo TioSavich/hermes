@@ -33,7 +33,7 @@ Named sources in the code include Erlwanger 1973, Byers & Erlwanger 1984, Leatha
 
 ## Consumers and boundary
 
-`hermes_worker.pl`, the `arche-trace` incompatibility modules, `strategies/`
+`hermes_worker.pl`, the `formal/incompatibility` modules, `strategies/`
 (expressive power, render coverage), `lessons/im/`, `hermes/` scoring, and
 `crosswalk/families/cw_driver.pl` load the registry. An entry is an attested move
 with a source, not merely a generated deformation; the generated literature facts

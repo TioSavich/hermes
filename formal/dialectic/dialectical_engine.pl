@@ -15,9 +15,9 @@
             run_fsm/4          % Generic FSM executor
           ]).
 
-:- use_module(embodied_prover, [proves/4]).
+:- use_module(sequent(embodied_prover), [proves/4]).
 % The critique module is used to handle the response to perturbations.
-:- use_module(critique, [accommodate/1]).
+:- use_module(dialectic(critique), [accommodate/1]).
 :- use_module(pml(utils), [select/3]).
 
 % =================================================================

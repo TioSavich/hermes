@@ -22,9 +22,9 @@
 :- op(500, fx, comp_poss).
 :- op(500, fx, neg).
 
-:- use_module(arche_trace(automata),
+:- use_module(sequent(automata),
               [generate_vanishing_point/1, contains_vanishing_point/1]).
-:- use_module(arche_trace(sequent_engine)).
+:- use_module(sequent(sequent_engine)).
 :- use_module(pml_operators).
 
 % =================================================================

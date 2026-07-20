@@ -25,7 +25,7 @@
 :- use_module(more_machine_learner).
 :- use_module(reorganize, [reorganize/4]).
 :- use_module('reorg_domains/arithmetic').
-:- use_module(arche_trace(sequent_engine)).
+:- use_module(sequent(sequent_engine)).
 :- use_module(strategies(strategies)). % Load all defined strategies
 :- use_module(deontic_scorekeeper, []).  % qualified calls in retract_commitment/1 (deontic clause)
 :- use_module(peano_utils, [peano_to_int/2]).

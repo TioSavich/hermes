@@ -12,7 +12,7 @@
 
   <!-- title -->
   <text x="24" y="32" font-size="17" fill="#1c1c22" font-weight="bold">The hollow proof: its warrant is withdrawn</text>
-  <text x="24" y="51" font-size="11.5" fill="#555" font-style="italic">arche-trace/embodied_prover.pl + automata.pl — the node stands while its justification is withheld</text>
+  <text x="24" y="51" font-size="11.5" fill="#555" font-style="italic">formal/sequent/embodied_prover.pl + automata.pl — the node stands while its justification is withheld</text>
 
   <!-- ===================== NODES ===================== -->
 

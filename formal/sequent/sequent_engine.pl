@@ -14,9 +14,9 @@
  *   - persistence and the full Brandomian closure-of-incoherence
  *
  * The Brandomian machinery now lives in the sibling module
- * `arche-trace/brandomian_incompatibility.pl` (hyperedges, persistence,
+ * `formal/incompatibility/brandomian_incompatibility.pl` (hyperedges, persistence,
  * `incompatibility_entails/2`, minimal-incompatible negation). The
- * opt-in bridge `arche-trace/sequent_brandom_bridge.pl` unions the two
+ * opt-in bridge `formal/incompatibility/sequent_brandom_bridge.pl` unions the two
  * notions of incoherence and uses THIS engine as a backstop that audits
  * the Brandomian relation for explosion. Neither is loaded by default;
  * this engine's behavior is unchanged. See
@@ -285,11 +285,11 @@ is_incoherent(Y) :- incoherent_base(Y), !.
 % PRIORITY 2: Material Axioms (from axiom sets)
 % =================================================================
 
-:- include('../formal/formalization/axioms_robinson').
-:- include('../formal/formalization/axioms_geometry').
-:- include('../formal/formalization/axioms_number_theory').
-:- include('../formal/pml/axioms_eml').
-:- include('../formal/learner/axioms_domains').
+:- include(formalization(axioms_robinson)).
+:- include(formalization(axioms_geometry)).
+:- include(formalization(axioms_number_theory)).
+:- include(pml(axioms_eml)).
+:- include(learner(axioms_domains)).
 
 % =================================================================
 % PRIORITY 3: Structural Rules (scene-agnostic engine)

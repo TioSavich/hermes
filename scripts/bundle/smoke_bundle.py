@@ -226,8 +226,8 @@ def static_audit(tree: Path, report: Report) -> None:
             "lessons/im/generated/compiled_task_instances.pl",
         ),
         "hermes/app/web/breaks.html": (
-            "arche-trace/differance_juncture.pl", "formal/formalization/axioms_robinson.pl",
-            "arche-trace/registry_incompatibility_adapter.pl",
+            "formal/juncture/differance_juncture.pl", "formal/formalization/axioms_robinson.pl",
+            "formal/incompatibility/registry_incompatibility_adapter.pl",
         ),
         "hermes/app/web/no.html": (
             "misconceptions/literature_canonical_mappings.pl",

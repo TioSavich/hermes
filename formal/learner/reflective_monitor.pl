@@ -31,7 +31,7 @@
     reset_success_reflection/0
 ]).
 
-:- use_module(arche_trace(sequent_engine)).
+:- use_module(sequent(sequent_engine)).
 :- use_module(peano_utils, [peano_to_int/2]).
 :- use_module(spatial_recollection, [reflect_spatial_evidence/2]).
 

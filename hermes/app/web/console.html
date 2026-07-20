@@ -1047,7 +1047,7 @@ function _deonticUpLevelHtml(data) {
   if (!ups.length) return "";  // coherent or within-level-dischargeable: no up-level move
   const blocks = ups.map(w => {
     const obj = w.new_object_of_discourse || w.objectivated || "";
-    const erasure = w.erasure ? `<p class="uplevel-erasure">erasure, the point where the proof returns a blank instead of a result (Derrida, <em>Of Grammatology</em>): <code>${esc(w.erasure)}</code></p>` : "";
+    const erasure = w.erasure ? `<p class="uplevel-erasure">erasure, the commitment withdrawn when the unresolved gap is objectivated at the next level: <code>${esc(w.erasure)}</code></p>` : "";
     const caveat = w.caveat ? `<details class="out-log"><summary>caveat</summary><p class="muted-inline">${esc(w.caveat)}</p></details>` : "";
     return `<div class="uplevel-move">` +
       `<p>The gap <code>${esc(glossTerm(w.objectivated || ""))}</code> will not discharge within its level. ` +

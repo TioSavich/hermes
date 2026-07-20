@@ -2,7 +2,7 @@
 
 2026-06-25. A direction for the book and the code, written from a thought of
 Tio's. Register note: the philosophy here is Tio's; the code described as *built*
-is a seed (`arche-trace/differance_juncture.pl`); everything else is the
+is a seed (`formal/juncture/differance_juncture.pl`); everything else is the
 direction, not a description of existing code. Where this says the code "holds"
 or "makes queryable" a structure, that is meant exactly — the Prolog holds a
 place; it does not instantiate différance.
@@ -42,7 +42,7 @@ The three meet at a single place: a Prolog file that asserts the identity betwee
 1/2 and 1/2, reconstructed in different ways. Because Prolog is homoiconic, the
 two actions *are* terms, and their meeting is an assertion between terms. That
 place is the juncture. It is practically writable, and the seed of it now exists:
-`arche-trace/differance_juncture.pl` holds `juncture/4` (the subjective
+`formal/juncture/differance_juncture.pl` holds `juncture/4` (the subjective
 derivation, the normative license, the objective outcome, all on one identity),
 `differance_fixed_point/1` (one outcome reached licensed *and* unlicensed), and
 `effaced_trace/2` (the outcome that loses its histories).
@@ -108,7 +108,7 @@ passes over the same identities; the juncture is where their results are joined.
 
 ## Built vs ahead
 
-- **Built (seed):** `arche-trace/differance_juncture.pl` — the juncture as a
+- **Built (seed):** `formal/juncture/differance_juncture.pl` — the juncture as a
   runnable Prolog place: `juncture/4`, `differance_fixed_point/1`,
   `effaced_trace/2`, `enacted_identity/1`, the half pair and ground arithmetic
   identity examples such as `self(7)` for add-zero / multiply-by-one.

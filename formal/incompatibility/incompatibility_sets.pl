@@ -26,16 +26,16 @@
           ]).
 
 :- use_module(library(lists)).
-:- use_module(arche_trace(incompatibility_discovery),
+:- use_module(incompat(incompatibility_discovery),
               [ discover_incompatibility_set/2
               ]).
-:- use_module(arche_trace(brandomian_incompatibility), []).
+:- use_module(incompat(brandomian_incompatibility), []).
 :- use_module(misconceptions(misconception_registry),
               [ misconception_registry_entry/5 ]).
 
 % Cached discovery results produced on Big Red (iteration7) and pulled home.
 % Loading them is instant; recomputing on a laptop is the thing we are avoiding.
-% Stable tracked home: arche-trace/data/incompatibility_sets_discovered.pl
+% Stable tracked home: formal/incompatibility/incompatibility_sets_discovered.pl
 % (provenance header inside the file; regeneration steps in
 % docs/bigred-incompatibility-RUNBOOK.md).
 :- dynamic discovered_set_fact/2.
@@ -43,18 +43,18 @@
 
 %!  discovered_cache_file(-Cache) is semidet.
 %
-%   Resolves the discovery cache through the arche_trace search path
+%   Resolves the discovery cache through the incompat search path
 %   (paths.pl), falling back to this module's own directory so a direct
 %   load of this file still finds the cache. Fails when the cache file
 %   is absent.
 discovered_cache_file(Cache) :-
-    absolute_file_name(arche_trace('data/incompatibility_sets_discovered.pl'),
+    absolute_file_name(incompat(incompatibility_sets_discovered),
                        Cache,
                        [ access(read), file_errors(fail) ]),
     !.
 discovered_cache_file(Cache) :-
     prolog_load_context(directory, Dir),
-    directory_file_path(Dir, 'data/incompatibility_sets_discovered.pl', Cache),
+    directory_file_path(Dir, 'incompatibility_sets_discovered.pl', Cache),
     exists_file(Cache).
 
 %!  discovered_cache_load_action(+Cache, -Action) is det.
@@ -77,7 +77,7 @@ load_discovered_cache_action(live_discovery_fallback) :-
 warn_missing_discovery_cache :-
     print_message(warning,
                   format("incompatibility_sets: Big Red discovery cache \c
-                          NOT FOUND at arche-trace/data/incompatibility_sets_discovered.pl. \c
+                          NOT FOUND at formal/incompatibility/incompatibility_sets_discovered.pl. \c
                           incompatibility_set/2 will fall back to slow LIVE discovery for \c
                           uncached contexts. Restore the tracked cache file or regenerate \c
                           it per docs/bigred-incompatibility-RUNBOOK.md.", [])).

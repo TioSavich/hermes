@@ -1,7 +1,7 @@
 /** <module> cw_fsm_engine -- crosswalk family data. */
 :-module(cw_fsm_engine,[cw_family/1,cw_rule/1,edge/5]).
 :-use_module(strategies(fsm_engine),[]).
-:-use_module(arche_trace(dialectical_engine),[]).
+:-use_module(dialectic(dialectical_engine),[]).
 cw_family(cw_fsm_engine).
 edge(fsm_engine,run_fsm/4,[sample_fsm,start],[3,4],registry_projection).
 cw_rule((fsm_engine_unified(fsm_engine:run_fsm/4,strategy_generic):-fsm_engine_witness(fsm_engine:run_fsm/4,strategy_generic,_18300))).

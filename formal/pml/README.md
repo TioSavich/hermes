@@ -29,7 +29,7 @@ well-formed term rather than deciding truth over accessibility relations.
 ## Loading, consumers, boundary
 
 No aggregate loader; `paths.pl` sets the `pml` alias and consumers
-`use_module(pml(<module>))`. `hermes_worker.pl` and `arche-trace/load.pl` load a
+`use_module(pml(<module>))`. `hermes_worker.pl` and `formal/load.pl` load a
 broad set; the `strategies/math/*` automata import `pml_operators`. Discourse
 markers stand in as proxies for modal posture. The framework has been tested for
 consistency in Prolog; whether it admits a model-theoretic semantics is stated,

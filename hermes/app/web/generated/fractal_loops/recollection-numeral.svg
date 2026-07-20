@@ -100,6 +100,6 @@
     <text x="10" y="66" font-family="monospace" font-size="10" fill="#f0e6cd">?- proves_impl(_ =&gt; [o(eq(5,5))], Proof).</text>
     <text x="10" y="80" font-family="monospace" font-size="10" fill="#e7c98a">   true.   % rule succeeds via  once(is_recollection(5, _))  — History = _ , discarded</text>
     <text x="10" y="96" font-family="monospace" font-size="10" fill="#e07a7a">   Proof = _6300.   % proof object is UNBOUND (var) -> the proof is thrown away</text>
-    <text x="10" y="108" font-family="monospace" font-size="8.5" fill="#8a8470">verified live: swipl -l paths.pl -l arche-trace/sequent_engine.pl  (sequent_engine module)</text>
+    <text x="10" y="108" font-family="monospace" font-size="8.5" fill="#8a8470">verified live: swipl -l paths.pl -l formal/sequent/sequent_engine.pl  (sequent_engine module)</text>
   </g>
 </svg>

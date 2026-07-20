@@ -48,7 +48,6 @@ LOAD_CALL_RE = re.compile(
 )
 
 PROLOG_PATHS = {
-    "arche_trace": Path("arche-trace"),
     "carving": Path("formal/tools/carving"),
     "crosswalk": Path("crosswalk"),
     "formalization": Path("formal/formalization"),
@@ -60,6 +59,10 @@ PROLOG_PATHS = {
     "math": Path("strategies/math"),
     "misconceptions": Path("misconceptions"),
     "pml": Path("formal/pml"),
+    "sequent": Path("formal/sequent"),
+    "incompat": Path("formal/incompatibility"),
+    "dialectic": Path("formal/dialectic"),
+    "juncture": Path("formal/juncture"),
     "render": Path("strategies/render"),
     "standards": Path("standards"),
     "strategies": Path("strategies"),
@@ -93,12 +96,12 @@ ROLE_PREFIXES: tuple[tuple[str, str], ...] = (
     ("query_misconception", "misconceptions"),
     ("diagnose_error", "misconceptions"),
     ("list_misconceptions", "misconceptions"),
-    ("deontic_", "arche_trace"),
-    ("sequent_", "arche_trace"),
-    ("incompatibility_", "arche_trace"),
-    ("brandom", "arche_trace"),
-    ("hyperedges", "arche_trace"),
-    ("axiom_", "arche_trace"),
+    ("deontic_", "sequent"),
+    ("sequent_", "sequent"),
+    ("incompatibility_", "incompatibility"),
+    ("brandom", "incompatibility"),
+    ("hyperedges", "incompatibility"),
+    ("axiom_", "sequent"),
     ("fraction_", "render"),
     ("area_", "render"),
     ("base_ten_", "render"),
@@ -123,8 +126,11 @@ ROLE_PREFIXES: tuple[tuple[str, str], ...] = (
 )
 
 DIRECTORY_ROLES = {
-    "arche-trace": "arche_trace",
     "crosswalk": "crosswalk",
+    "formal/sequent": "sequent",
+    "formal/incompatibility": "incompatibility",
+    "formal/dialectic": "dialectic",
+    "formal/juncture": "juncture",
     "formal/formalization": "synthesis",
     "geometry": "geometry_witness",
     "hermes": "infrastructure",

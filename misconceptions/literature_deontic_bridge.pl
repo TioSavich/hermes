@@ -115,7 +115,7 @@
                 undertake_commitment/2,
                 deontic_incoherent/2
               ]).
-:- use_module(arche_trace(brandomian_incompatibility),
+:- use_module(incompat(brandomian_incompatibility),
               [ add_incompatible_set/1,
                 retract_incompatible_set/1
               ]).
@@ -314,7 +314,7 @@ uninstall_lit_incompatible_sets(Count) :-
 % when an install actually runs, keeping this module's load-time footprint
 % unchanged for consumers such as the encyclopedia.
 ensure_backstop_loaded :-
-    use_module(arche_trace(sequent_brandom_bridge), []).
+    use_module(incompat(sequent_brandom_bridge), []).
 
 
 %% ----------------------------------------------------------------------

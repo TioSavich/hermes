@@ -14,9 +14,9 @@ capability('algebra_claim_witness', 'cw_driver', 'unclassified', ['canonical', '
 capability('area_compare', 'area_model_scene', 'render', ['da', 'db', 'na', 'nb'], routed_paged).
 capability('area_render', 'area_model_scene', 'render', [], routed_paged).
 capability('arithmetic_property_witness', 'cw_driver', 'unclassified', ['canonical', 'source'], routed_paged).
-capability('axiom_hierarchy_witness', 'user', 'arche_trace', ['kind'], routed_paged).
-capability('axiom_pack_witness', 'cw_driver', 'arche_trace', ['pack', 'source'], routed_paged).
-capability('axiom_toggle', 'hermes_worker', 'arche_trace', ['action'], routed_paged).
+capability('axiom_hierarchy_witness', 'user', 'sequent', ['kind'], routed_paged).
+capability('axiom_pack_witness', 'cw_driver', 'sequent', ['pack', 'source'], routed_paged).
+capability('axiom_toggle', 'hermes_worker', 'sequent', ['action'], routed_paged).
 capability('balance_compare', 'balance_scale_scene', 'render', ['a', 'b', 'c'], routed_paged).
 capability('balance_render', 'balance_scale_scene', 'render', ['a', 'b', 'c'], routed_paged).
 capability('balance_solve_witness', 'balance_scale_scene', 'render', ['a', 'b', 'c'], routed_paged).
@@ -24,8 +24,8 @@ capability('base_ten_compare', 'base_ten_scene', 'render', ['a', 'b', 'base'], r
 capability('base_ten_render', 'base_ten_scene', 'render', [], routed_paged).
 capability('batch_event_score', 'user', 'unclassified', ['events'], routed_paged).
 capability('benny_demo', 'misconceptions_benny_demo', 'unclassified', [], routed_paged).
-capability('brandom_backstop', 'user', 'arche_trace', [], routed_paged).
-capability('brandomian_check', 'sequent_brandom_bridge', 'arche_trace', ['commitments'], routed_paged).
+capability('brandom_backstop', 'user', 'incompatibility', [], routed_paged).
+capability('brandomian_check', 'sequent_brandom_bridge', 'incompatibility', ['commitments'], routed_paged).
 capability('calculus_claim_witness', 'cw_driver', 'unclassified', ['canonical', 'source'], routed_paged).
 capability('canonical_check', 'hermes_worker', 'crosswalk', ['terms'], routed_paged).
 capability('canonical_contract', 'user', 'crosswalk', [], routed_paged).
@@ -39,11 +39,11 @@ capability('counting_claim_witness', 'cw_counting_claim', 'unclassified', ['cano
 capability('critique_bad_infinite', 'critique', 'unclassified', ['proof'], routed_paged).
 capability('decimal_claim_witness', 'cw_driver', 'unclassified', ['canonical', 'source'], routed_paged).
 capability('defeasible_classify', 'defeasible_inference', 'unclassified', ['defeater_set', 'inference_id'], routed_paged).
-capability('deontic_consequences', 'deontic_scorekeeper', 'arche_trace', ['agent', 'commitments'], routed_paged).
-capability('deontic_crisis', 'deontic_scorekeeper', 'arche_trace', ['agent', 'commitments', 'entitlements'], routed_paged).
-capability('deontic_requires_entitlement', 'deontic_scorekeeper', 'arche_trace', ['proposition'], routed_paged).
-capability('deontic_scorecard', 'deontic_scorekeeper', 'arche_trace', ['agent', 'commitments', 'entitlements'], routed_paged).
-capability('deontic_up_level', 'deontic_scorekeeper', 'arche_trace', ['agent', 'commitments'], routed_paged).
+capability('deontic_consequences', 'deontic_scorekeeper', 'sequent', ['agent', 'commitments'], routed_paged).
+capability('deontic_crisis', 'deontic_scorekeeper', 'sequent', ['agent', 'commitments', 'entitlements'], routed_paged).
+capability('deontic_requires_entitlement', 'deontic_scorekeeper', 'sequent', ['proposition'], routed_paged).
+capability('deontic_scorecard', 'deontic_scorekeeper', 'sequent', ['agent', 'commitments', 'entitlements'], routed_paged).
+capability('deontic_up_level', 'deontic_scorekeeper', 'sequent', ['agent', 'commitments'], routed_paged).
 capability('diagnose_error', 'hermes_worker', 'misconceptions', ['domain', 'got', 'input'], routed_paged).
 capability('discourse_features', 'discourse_features', 'unclassified', ['utterances'], routed_paged).
 capability('discourse_pragmatics', 'discourse_pragmatics', 'unclassified', ['utterances'], routed_paged).
@@ -107,11 +107,11 @@ capability('grounding_metaphor_witness', 'cw_driver', 'unclassified', ['anchor',
 capability('grounding_metaphors', 'hermes_encyclopedia', 'unclassified', [], routed_paged).
 capability('health', 'capability_registry', 'infrastructure', [], routed_paged).
 capability('hybridization_render', 'hybridization_scene', 'render', [], routed_paged).
-capability('hyperedges', 'hermes_worker', 'arche_trace', ['kind'], routed_paged).
+capability('hyperedges', 'hermes_worker', 'incompatibility', ['kind'], routed_paged).
 capability('image_schema', 'user', 'unclassified', ['practice'], routed_paged).
 capability('incoherent_witness', 'sequent_engine', 'unclassified', ['context'], routed_paged).
-capability('incompatibility_discovery_witness', 'incompatibility_discovery', 'arche_trace', ['context', 'set'], routed_paged).
-capability('incompatibility_entailment_witness', 'incompatibility_sets', 'arche_trace', ['replaced', 'replacement'], routed_paged).
+capability('incompatibility_discovery_witness', 'incompatibility_discovery', 'incompatibility', ['context', 'set'], routed_paged).
+capability('incompatibility_entailment_witness', 'incompatibility_sets', 'incompatibility', ['replaced', 'replacement'], routed_paged).
 capability('integer_signed_claim_witness', 'cw_driver', 'unclassified', ['canonical', 'source'], routed_paged).
 capability('intersubjective_material_witness', 'intersubjective_praxis', 'unclassified', ['from', 'to'], routed_paged).
 capability('knowledge', 'hermes_worker', 'learner', [], routed_paged).
@@ -164,7 +164,7 @@ capability('representation_spec_check', 'hermes_worker', 'crosswalk', ['represen
 capability('representation_spine_witness', 'user', 'crosswalk', ['concept'], routed_paged).
 capability('robinson_axiom_witness', 'sequent_engine', 'unclassified', ['axiom', 'claim'], routed_paged).
 capability('semantic_material_witness', 'semantic_axioms', 'unclassified', ['from', 'to'], routed_paged).
-capability('sequent_proof_witness', 'cw_driver', 'arche_trace', ['sequent', 'source'], routed_paged).
+capability('sequent_proof_witness', 'cw_driver', 'sequent', ['sequent', 'source'], routed_paged).
 capability('set_base', 'cgi_base', 'infrastructure', ['base'], routed_paged).
 capability('set_grouping_compare', 'set_grouping_scene', 'render', ['a', 'b'], routed_paged).
 capability('set_grouping_render', 'set_grouping_scene', 'render', [], routed_paged).
@@ -201,8 +201,6 @@ capability('viability_witness', 'cw_driver', 'unclassified', ['cost', 'resources
 capability('visualize_coordination', 'unit_coordination_viz', 'learner', [], routed_paged).
 capability('whole_number_addsub_claim_witness', 'cw_driver', 'unclassified', ['canonical', 'source'], routed_paged).
 capability('whole_number_claim_witness', 'cw_whole_number_claim', 'unclassified', ['canonical', 'source'], routed_paged).
-capability('arche-trace/differance_juncture.pl', 'differance_juncture', 'arche_trace', [], orphan_module).
-capability('arche-trace/registry_incompatibility_adapter.pl', 'registry_incompatibility_adapter', 'arche_trace', [], lazy_reachable).
 capability('crosswalk/merge_evidence.pl', 'merge_evidence', 'crosswalk', [], orphan_module).
 capability('formal/formalization/axioms_geometry.pl', 'axioms_geometry', 'synthesis', [], orphan_module).
 capability('formal/formalization/axioms_number_theory.pl', 'axioms_number_theory', 'synthesis', [], orphan_module).
@@ -212,6 +210,8 @@ capability('formal/formalization/synthesis/run_lazy.pl', 'run_lazy', 'synthesis'
 capability('formal/formalization/synthesis/run_synth.pl', 'run_synth', 'synthesis', [], orphan_module).
 capability('formal/formalization/synthesis/synth.pl', 'synth', 'synthesis', [], orphan_module).
 capability('formal/formalization/synthesis/synth_lazy.pl', 'synth_lazy', 'synthesis', [], orphan_module).
+capability('formal/incompatibility/registry_incompatibility_adapter.pl', 'registry_incompatibility_adapter', 'incompatibility', [], lazy_reachable).
+capability('formal/juncture/differance_juncture.pl', 'differance_juncture', 'juncture', [], orphan_module).
 capability('formal/learner/activity_contract.pl', 'activity_contract', 'learner', [], orphan_module).
 capability('formal/learner/arithmetic_machine.pl', 'arithmetic_machine', 'learner', [], lazy_reachable).
 capability('formal/learner/atlas/basis_transitions.pl', 'basis_transitions', 'learner', [], orphan_module).
@@ -792,9 +792,6 @@ capability_page('viability_witness', '/more-zeeman/witnesses.html').
 capability_page('visualize_coordination', '/more-zeeman/coordination.html').
 capability_page('whole_number_addsub_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('whole_number_claim_witness', '/more-zeeman/witnesses.html').
-capability_page('arche-trace/differance_juncture.pl', '/hermes/app/web/breaks.html').
-capability_page('arche-trace/differance_juncture.pl', '/hermes/app/web/generated/fractal_loops/index.html').
-capability_page('arche-trace/registry_incompatibility_adapter.pl', '/hermes/app/web/breaks.html').
 capability_page('crosswalk/merge_evidence.pl', '/more-zeeman/witnesses.html').
 capability_page('formal/formalization/axioms_geometry.pl', '/hermes/app/web/breaks.html').
 capability_page('formal/formalization/axioms_number_theory.pl', '/hermes/app/web/breaks.html').
@@ -805,6 +802,9 @@ capability_page('formal/formalization/synthesis/run_lazy.pl', '/hermes/app/web/b
 capability_page('formal/formalization/synthesis/run_synth.pl', '/hermes/app/web/breaks.html').
 capability_page('formal/formalization/synthesis/synth.pl', '/hermes/app/web/breaks.html').
 capability_page('formal/formalization/synthesis/synth_lazy.pl', '/hermes/app/web/breaks.html').
+capability_page('formal/incompatibility/registry_incompatibility_adapter.pl', '/hermes/app/web/breaks.html').
+capability_page('formal/juncture/differance_juncture.pl', '/hermes/app/web/breaks.html').
+capability_page('formal/juncture/differance_juncture.pl', '/hermes/app/web/generated/fractal_loops/index.html').
 capability_page('formal/learner/activity_contract.pl', '/more-zeeman/bridge.html').
 capability_page('formal/learner/arithmetic_machine.pl', '/more-zeeman/bridge.html').
 capability_page('formal/learner/atlas/basis_transitions.pl', '/more-zeeman/bridge.html').
@@ -846,7 +846,7 @@ capability_page('more-zeeman/prolog/zeeman_tape.pl', '/more-zeeman/index.html').
 capability_page('strategies/math/unit_coordination_viz.pl', '/more-zeeman/coordination.html').
 capability_page('strategies/math_benchmark.pl', '/more-zeeman/bridge.html').
 
-capability_lazy_via('arche-trace/registry_incompatibility_adapter.pl', 'axiom_toggle').
+capability_lazy_via('formal/incompatibility/registry_incompatibility_adapter.pl', 'axiom_toggle').
 capability_lazy_via('formal/learner/arithmetic_machine.pl', 'compute').
 capability_lazy_via('formal/learner/arithmetic_machine.pl', 'learner_reset').
 capability_lazy_via('formal/learner/fraction_band_ladder.pl', 'reorganize').
