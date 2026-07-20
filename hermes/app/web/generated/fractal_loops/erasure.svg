@@ -89,7 +89,7 @@
   <!-- E -> A : the hook's refusal is why the mark cannot stabilize — loop closes -->
   <path d="M 60 210 C 40 180, 40 150, 70 142" fill="none" stroke="#8a6d2f" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#arrow)"/>
   <text x="22" y="178" font-size="8.6" fill="#6a5524" text-anchor="start" transform="rotate(0)">the same</text>
-  <text x="22" y="189" font-size="8.6" fill="#6a5524" text-anchor="start">Trace</text>
+  <text x="22" y="189" font-size="8.6" fill="#6a5524" text-anchor="start">mark</text>
 
   <!-- the self-bite annotation -->
   <text x="350" y="318" font-size="10.5" fill="#a4243b" text-anchor="middle" font-style="italic">The snake reaches the one bite it cannot swallow: the proof succeeds in shape, but its content is the empty object.</text>
