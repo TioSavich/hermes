@@ -39,7 +39,7 @@
  * Wave 2 refusal, recorded here so the Wave-1 promise of further families
  * does not prompt a re-attempt: no entitled/3 or
  * commitment_without_entitlement/3 union. Verified by reading
- * the candidate layers (2026-07-02): only learner/deontic_scorekeeper.pl
+ * the candidate layers (2026-07-02): only formal/learner/deontic_scorekeeper.pl
  * carries an attributed entitlement status — entitlement/2 is dynamic
  * (Agent, Proposition) state. defeasible_inference:material_inference/3 is a
  * standing, agent-free inference license (Id, Premises, Conclusion): a rule,

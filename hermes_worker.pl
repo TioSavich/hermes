@@ -182,7 +182,7 @@ load_runtime :-
     % Lesson-vs-registry gap surface (flat Operation-Kind pairs) backing the
     % monitoring chart export's unanticipated_strategies key.
     use_module(lessons(lesson_gap), []).
-    % NOT loaded here: tools/axiom_toggle.pl (the axiom_toggle op). Its
+    % NOT loaded here: formal/tools/axiom_toggle.pl (the axiom_toggle op). Its
     % consult-time directive pulls arche_trace(load) into user, and that
     % chain's full re-imports collide with import bindings this loader has
     % already settled (a stream of harmless but alarming "No permission to
@@ -190,7 +190,7 @@ load_runtime :-
     % see ensure_axiom_toggle_loaded/0.
 
 load_axiom_pack_audit(Root) :-
-    directory_file_path(Root, 'tools/axiom_pack_audit.pl', AxiomAudit),
+    directory_file_path(Root, 'formal/tools/axiom_pack_audit.pl', AxiomAudit),
     ensure_loaded(AxiomAudit).
 
 load_geometry_runtime(Root) :-
@@ -598,7 +598,7 @@ dispatch_request(deontic_consequences, Id, Request, Response) :-
     ).
 
 %% deontic_up_level: the objectivation move for gaps the within-level layer
-%% cannot close (REPRESENTATIONAL -- see learner/up_leveling.pl).
+%% cannot close (REPRESENTATIONAL -- see formal/learner/up_leveling.pl).
 %%
 %% Seeds an agent from the request's commitments, then returns the up-level
 %% witnesses: for each commitment_without_entitlement(_) that survived the full
@@ -1271,7 +1271,7 @@ dispatch_request(hyperedges, Id, Request, Response) :-
               Safe),
     ok_response(Id, Safe, Response).
 
-% Runtime axiom toggling over tools/axiom_toggle.pl. Only list/enable/disable
+% Runtime axiom toggling over formal/tools/axiom_toggle.pl. Only list/enable/disable
 % are exposed: every disable made through the persistent worker stays
 % inspectable (list) and reversible (enable) from the same surface. The
 % scoped with_axioms_disabled/2 variant stays CLI-only by design; a scoped
@@ -3957,7 +3957,7 @@ learner_request_string(Value, String) :- atom(Value), !, atom_string(Value, Stri
 
 %!  ensure_axiom_toggle_loaded is det.
 %
-%   Lazy load for tools/axiom_toggle.pl (see the load_runtime note on why it
+%   Lazy load for formal/tools/axiom_toggle.pl (see the load_runtime note on why it
 %   is not a boot-time load). with_output_to(user_error, ...) matters: the
 %   module's arche_trace(load) chain prints a banner to stdout at
 %   initialization, and an unprotected load would corrupt the JSONL protocol

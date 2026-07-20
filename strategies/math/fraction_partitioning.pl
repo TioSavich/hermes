@@ -35,7 +35,7 @@
  *
  * The practice this automaton enacts is `p_unit_fraction_partition`, sufficient
  * for the vocabulary `v_fraction_unit` (pv_sufficient, already in
- * `pml/mua_relations.pl`). The dealing loop (q_partition) is the *algorithmic
+ * `formal/pml/mua_relations.pl`). The dealing loop (q_partition) is the *algorithmic
  * elaboration of equal-sharing division*: the same deal-one-share-at-a-time
  * skeleton as `smr_div_dealing_by_ones`, applied to a continuous whole rather
  * than a discrete collection. So **division is PP-necessary for partitioning**

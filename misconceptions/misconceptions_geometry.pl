@@ -1,6 +1,6 @@
 % Geometry misconceptions — entailment classification layer.
 %
-% Uses entails_via_incompatibility/2 from formalization/axioms_geometry.pl
+% Uses entails_via_incompatibility/2 from formal/formalization/axioms_geometry.pl
 % (included into the sequent_engine module via arche-trace/load.pl).
 %
 % Multifile plumbing: entail_misconception/5 is owned by the `test_harness`

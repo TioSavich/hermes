@@ -641,32 +641,32 @@
 <!-- Research-wing notice: retain this posture while the contracts are live
      research interfaces. -->
 <div style="margin:0 0 1.5rem 0;padding:0.9rem 1.2rem;border:1px solid #b8860b;border-radius:6px;background:rgba(184,134,11,0.08);font-size:0.95rem;line-height:1.5;">
-  <strong>Research wing — live, in progress.</strong> This page drives the learner through the app. Contracts may shift and rough edges remain. Colleagues are welcome to take part in its unfolding: the source lives under <code>learner/</code>.
+  <strong>Research wing — live, in progress.</strong> This page drives the learner through the app. Contracts may shift and rough edges remain. Colleagues are welcome to take part in its unfolding: the source lives under <code>formal/learner/</code>.
   <details style="margin-top:.75rem">
     <summary>For contributors: modules described here but not loaded</summary>
     <ul style="margin:.65rem 0 0;padding-left:1.25rem">
-      <li><code>learner/arithmetic_machine.pl</code> provides the option-driven arithmetic solver loaded on demand by the compute surface.</li>
-      <li><code>learner/primordial_start.pl</code> is a standalone essential-kernel startup script with initialization output.</li>
-      <li><code>learner/main.pl</code> is the command-line entry point for one predefined Observe–React–Reorganize (ORR) computation (Savich, <em>ORR cycle</em>).</li>
-      <li><code>learner/interactive_ui.pl</code> is the terminal menu for running and inspecting the learner.</li>
-      <li><code>learner/crisis_processor.pl</code> runs curriculum tasks through crisis classification and recovery.</li>
-      <li><code>learner/curriculum_processor.pl</code> processes curriculum tasks and records learned facts.</li>
-      <li><code>learner/knowledge_manager.pl</code> resets, backs up, restores, and inspects learned knowledge.</li>
-      <li><code>learner/learned_knowledge_v2.pl</code> is a small generated learned-proof fact file.</li>
-      <li><code>learner/activity_contract.pl</code> compiles lesson activity, task, traversal, and capability records.</li>
-      <li><code>learner/task_transition.pl</code> classifies one activity event and selects its reorganization domain.</li>
-      <li><code>learner/atlas/task_quotient.pl</code> groups transitions by observable signature and checks state-update congruence.</li>
-      <li><code>learner/atlas/basis_transitions.pl</code> is the generated transition table used by that quotient audit.</li>
-      <li><code>learner/axioms_domains.pl</code> records domain membership and finite normative-crisis conditions.</li>
-      <li><code>learner/server.pl</code> is a standalone HTTP application and is not loaded by the console worker.</li>
-      <li><code>learner/server_visualization.pl</code> defines standalone CGI visualization HTTP handlers and remains unloaded.</li>
-      <li><code>learner/reorg_demo_server.pl</code> is the standalone fraction-ladder demo server and remains unloaded.</li>
-      <li><code>learner/fraction_band_ladder.pl</code> assembles inspectable reorganization stories and is loaded on demand by <code>reorganize</code>.</li>
-      <li><code>learner/reorg_domains/fraction_splitting.pl</code> supplies the Band 2 splitting moves (Steffe and Olive, <em>Children's Fractional Knowledge</em>) loaded through the ladder.</li>
-      <li><code>learner/reorg_domains/fraction_improper.pl</code> supplies the Band 3 improper-fraction moves loaded through the ladder.</li>
-      <li><code>learner/reorg_domains/fraction_of_fraction.pl</code> supplies the Band 4 shifting-referent moves loaded through the ladder.</li>
-      <li><code>learner/reorg_domains/fraction_algebra.pl</code> supplies the Band 5 fraction-to-algebra moves loaded through the ladder.</li>
-      <li><code>learner/reorg_domains/fraction.pl</code> supplies a Band 1 disembedding domain, pulling a part back out of the whole (Steffe and Olive, <em>Children's Fractional Knowledge</em>), but no current worker load chain reaches it.</li>
+      <li><code>formal/learner/arithmetic_machine.pl</code> provides the option-driven arithmetic solver loaded on demand by the compute surface.</li>
+      <li><code>formal/learner/primordial_start.pl</code> is a standalone essential-kernel startup script with initialization output.</li>
+      <li><code>formal/learner/main.pl</code> is the command-line entry point for one predefined Observe–React–Reorganize (ORR) computation (Savich, <em>ORR cycle</em>).</li>
+      <li><code>formal/learner/interactive_ui.pl</code> is the terminal menu for running and inspecting the learner.</li>
+      <li><code>formal/learner/crisis_processor.pl</code> runs curriculum tasks through crisis classification and recovery.</li>
+      <li><code>formal/learner/curriculum_processor.pl</code> processes curriculum tasks and records learned facts.</li>
+      <li><code>formal/learner/knowledge_manager.pl</code> resets, backs up, restores, and inspects learned knowledge.</li>
+      <li><code>formal/learner/learned_knowledge_v2.pl</code> is a small generated learned-proof fact file.</li>
+      <li><code>formal/learner/activity_contract.pl</code> compiles lesson activity, task, traversal, and capability records.</li>
+      <li><code>formal/learner/task_transition.pl</code> classifies one activity event and selects its reorganization domain.</li>
+      <li><code>formal/learner/atlas/task_quotient.pl</code> groups transitions by observable signature and checks state-update congruence.</li>
+      <li><code>formal/learner/atlas/basis_transitions.pl</code> is the generated transition table used by that quotient audit.</li>
+      <li><code>formal/learner/axioms_domains.pl</code> records domain membership and finite normative-crisis conditions.</li>
+      <li><code>formal/learner/server.pl</code> is a standalone HTTP application and is not loaded by the console worker.</li>
+      <li><code>formal/learner/server_visualization.pl</code> defines standalone CGI visualization HTTP handlers and remains unloaded.</li>
+      <li><code>formal/learner/reorg_demo_server.pl</code> is the standalone fraction-ladder demo server and remains unloaded.</li>
+      <li><code>formal/learner/fraction_band_ladder.pl</code> assembles inspectable reorganization stories and is loaded on demand by <code>reorganize</code>.</li>
+      <li><code>formal/learner/reorg_domains/fraction_splitting.pl</code> supplies the Band 2 splitting moves (Steffe and Olive, <em>Children's Fractional Knowledge</em>) loaded through the ladder.</li>
+      <li><code>formal/learner/reorg_domains/fraction_improper.pl</code> supplies the Band 3 improper-fraction moves loaded through the ladder.</li>
+      <li><code>formal/learner/reorg_domains/fraction_of_fraction.pl</code> supplies the Band 4 shifting-referent moves loaded through the ladder.</li>
+      <li><code>formal/learner/reorg_domains/fraction_algebra.pl</code> supplies the Band 5 fraction-to-algebra moves loaded through the ladder.</li>
+      <li><code>formal/learner/reorg_domains/fraction.pl</code> supplies a Band 1 disembedding domain, pulling a part back out of the whole (Steffe and Olive, <em>Children's Fractional Knowledge</em>), but no current worker load chain reaches it.</li>
       <li><code>strategies/math_benchmark.pl</code> is a command-line benchmark for integer, fractional, and nested operations; it is not a worker operation.</li>
     </ul>
   </details>

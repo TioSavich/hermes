@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" data-hermes-base="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Does it reorganize itself? Test it.</title>
+<link rel="stylesheet" href="/more-zeeman/hermes-tokens-dark.css">
+<script defer src="/more-zeeman/render/hermes-shell.js" data-root="/more-zeeman/" data-app="/" data-active="reorganization"></script>
+<style>
+  :root { --bg:#11131a; --panel:#1a1d28; --ink:#e6e8ef; --dim:#9aa0b4;
+          --line:#2c3142; --green:#5fd68a; --amber:#e6b84c;
+          --blue:#6ab7ff; --red:#ff7a7a; --accent:#8a7cff; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:16px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; }
+  .wrap { max-width:880px; margin:0 auto; padding:28px 20px 80px; }
+  h1 { font-size:26px; margin:0 0 6px; }
+  .lede { color:var(--dim); margin:0 0 22px; }
+  .panel { background:var(--panel); border:1px solid var(--line); border-radius:12px;
+           padding:18px 20px; margin:16px 0; }
+  .controls { display:flex; flex-wrap:wrap; gap:12px 18px; align-items:end; }
+  .controls label { display:block; font-size:12px; color:var(--dim); margin-bottom:4px; }
+  select,input { background:#0e1017; color:var(--ink); border:1px solid var(--line);
+                 border-radius:8px; padding:8px 10px; font-size:15px; }
+  input[type=number] { width:80px; }
+  button { background:var(--accent); color:#fff; border:0; border-radius:8px;
+           padding:10px 18px; font-size:15px; font-weight:600; cursor:pointer; }
+  button:hover { filter:brightness(1.1); }
+  .question { font-size:18px; margin:4px 0 0; }
+  .step { display:flex; gap:10px; margin:18px 0; }
+  .num { flex:0 0 30px; height:30px; border-radius:50%; background:#0e1017;
+         border:1px solid var(--line); display:flex; align-items:center;
+         justify-content:center; font-weight:700; color:var(--accent); }
+  .step h3 { margin:2px 0 8px; font-size:16px; }
+  .attempt { font-family:ui-monospace,Menlo,monospace; font-size:13px; padding:6px 10px;
+             border-radius:7px; margin:5px 0; background:#0e1017; border:1px solid var(--line); }
+  .dead { border-left:3px solid var(--red); }
+  .goal { border-left:3px solid var(--green); }
+  .banner { padding:10px 14px; border-radius:8px; font-weight:600; }
+  .banner.accommodation { background:rgba(95,214,138,.12); border:1px solid var(--green); color:var(--green); }
+  .banner.efficiency { background:rgba(106,183,255,.12); border:1px solid var(--blue); color:var(--blue); }
+  .banner.needs_oracle { background:rgba(230,184,76,.12); border:1px solid var(--amber); color:var(--amber); }
+  ol.method { margin:8px 0 0; padding-left:0; list-style:none; counter-reset:m; }
+  ol.method li { counter-increment:m; padding:7px 0 7px 34px; position:relative;
+                 border-bottom:1px solid var(--line); }
+  ol.method li:before { content:counter(m); position:absolute; left:0; top:7px;
+                        width:22px; height:22px; border-radius:50%; background:#0e1017;
+                        border:1px solid var(--line); font-size:12px; color:var(--dim);
+                        display:flex; align-items:center; justify-content:center; }
+  ol.method li .raw { display:block; color:var(--dim); font:12px ui-monospace,monospace; margin-top:2px; }
+  .answer { font-size:20px; font-weight:700; color:var(--green); }
+  .honesty { border-color:#3a3320; background:#1b1810; }
+  .honesty h3 { margin:0 0 8px; color:var(--amber); }
+  .honesty .is,.honesty .isnt { margin:6px 0; }
+  .verify { font-family:ui-monospace,Menlo,monospace; font-size:13px; background:#0e1017;
+            border:1px solid var(--line); border-radius:8px; padding:10px 12px;
+            white-space:pre-wrap; word-break:break-word; }
+  .muted { color:var(--dim); font-size:13px; }
+  .err { color:var(--red); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Does the machine actually reorganize itself?</h1>
+  <p class="lede">Don't take the word for it — test it. Type a fraction problem. Watch the
+  machine try everything it knows and get <em>stuck</em>, then build a new method out of
+  two basic actions it already has — cutting a whole into parts, and copying a part — and
+  run that method to get the answer. Change the numbers and it happens again, on a problem
+  it has never seen. Here <em>splitting</em> means coordinating the whole, its parts, and
+  repeated parts (Steffe and Olive, <em>Children's Fractional Knowledge</em>).</p>
+
+  <div class="panel">
+    <div class="controls">
+      <div>
+        <label>Kind of problem</label>
+        <select id="domain">
+          <option value="fraction_splitting">Find the whole from a part (splitting)</option>
+          <option value="fraction_improper">Make a fraction bigger than one whole</option>
+          <option value="fraction_of_fraction">A fraction of a fraction</option>
+          <option value="fraction_algebra">Solve for an unknown</option>
+        </select>
+      </div>
+      <div id="inputs"></div>
+      <button id="run">Run it</button>
+    </div>
+    <p class="question" id="question"></p>
+  </div>
+
+  <div id="out"></div>
+
+  <div class="panel honesty">
+    <h3>Being honest about what this is — and isn't</h3>
+    <p class="is"><strong>What it does on its own:</strong> get stuck (an exhaustive search
+    that provably reaches no answer at its current level), search its own basic actions for
+    a new combination, install that combination, and run it — without being handed the
+    answer and without looking it up.</p>
+    <p class="isnt"><strong>What "reorganize" does <em>not</em> mean here:</strong> the
+    machine is not conscious and wants nothing. The <em>ladder of levels</em> is part of the
+    model we gave it — it comes from how researchers describe the stages children pass
+    through with fractions — not something the machine invented. The honest, interesting
+    line is exactly where it still gets stuck (try an input it can't reach).</p>
+  </div>
+
+  <div class="panel">
+    <h3>Don't trust the browser? Verify it yourself.</h3>
+    <p class="muted">This page just shows what the app returns. Run the app
+    directly and read the same thing — pick any numbers:</p>
+    <div class="verify">swipl -l paths.pl -l formal/learner/fraction_band_ladder.pl \
+  -g "story_for(fraction_splitting, reverse(3,8), S), print_story(S), halt"</div>
+    <p class="muted">Change <code>reverse(3,8)</code> to <code>reverse(2,7)</code> (base 7),
+    or <code>make_improper(9,4)</code>, or <code>ff(2,3,4,5)</code>, or
+    <code>relate(3,5)</code>. The app code is <code>formal/learner/reorganize.pl</code> — it has
+    no line that asks a teacher or looks up an answer.</p>
+  </div>
+</div>
+
+<script>
+const FIELDS = {
+  fraction_splitting:   [['a','top of the part',3],['b','bottom of the part',8]],
+  fraction_improper:    [['a','top (numerator)',7],['b','bottom (denominator)',5]],
+  fraction_of_fraction: [['a','',2],['b','of /',3],['c','times',4],['d','of /',5]],
+  fraction_algebra:     [['a','numerator',3],['b','denominator',5]],
+};
+const domainSel = document.getElementById('domain');
+const inputsDiv = document.getElementById('inputs');
+const qEl = document.getElementById('question');
+
+function renderInputs() {
+  const f = FIELDS[domainSel.value];
+  inputsDiv.innerHTML = f.map(([k,lbl,def]) =>
+    `<div><label>${lbl||k}</label><input type="number" id="f_${k}" value="${def}" min="1"></div>`
+  ).join('');
+}
+domainSel.onchange = renderInputs;
+renderInputs();
+
+// Plain-language glosses, keyed by the step's functor name.
+const GLOSS = {
+  partition_whole_into_equal_units: a => `Cut the whole into ${a[0]} equal parts.`,
+  disembed_unit_fraction: a => `Take one part out without destroying the whole — now it is a ${a[0]} piece you can copy.`,
+  iterate_unit_fraction_back_to_whole: a => `Copy that ${a[1]} piece ${a[0]} times — the copies rebuild the whole.`,
+  recognize_partition_iterate_as_mutual_inverse: () => `See that cutting and copying undo each other. That recognition IS the new idea.`,
+  recover_whole: () => `The whole is recovered.`,
+  open_improper_fraction_domain: () => `This unlocks the next problem: fractions bigger than one whole.`,
+  establish_referent_whole: () => `Fix the whole we are measuring against.`,
+  recover_unit_fraction: a => `Get the unit piece ${a[0]}.`,
+  iterate_unit_past_whole_keeping_referent: a => `Copy the 1/${a[1]} piece ${a[0]} times — past one whole — without forgetting the original whole.`,
+  hold_completion_marker: a => `Keep a marker at where one whole ends (${a[0]}).`,
+  name_improper_fraction_as_number: a => `Name the result as a number: ${a[0]}.`,
+  partition_unit_square_vertically: a => `Cut the whole square into ${a[0]} vertical strips.`,
+  select_first_fraction_strip: a => `Take ${a[0]} of those strips.`,
+  partition_each_strip_horizontally: a => `Cut each strip into ${a[0]} rows.`,
+  select_part_of_part_in_strip: a => `Take ${a[0]} of the rows — a part of a part.`,
+  count_small_rectangles_in_whole: a => `Count the little rectangles in the whole: ${a[0]}.`,
+  count_small_rectangles_selected: a => `Count the ones selected: ${a[0]}.`,
+  read_off_part_of_part: a => `Read the answer off the picture: ${a[0]}.`,
+  read_equation: a => `Read the equation: ${a[0]}.`,
+  treat_unknown_as_iterable_partitionable_quantity: () => `Treat the unknown like a piece you can cut and copy.`,
+  partition_total_into_numerator_parts: a => `Cut the known total ${a[0]} into ${a[1]} parts.`,
+  iterate_recovered_part_by_denominator: a => `Copy that part ${a[0]} times to recover the unknown.`,
+  recover_unknown: a => `The unknown is recovered: ${a[0]}.`,
+  recognize_partition_undoes_iteration_on_the_unknown: () => `Cutting undoes copying — even on an unknown. That is solving.`,
+};
+function parseStep(s) {
+  const m = s.match(/^([a-z0-9_]+)(\((.*)\))?$/i);
+  if (!m) return {fn:s, args:[]};
+  const fn = m[1];
+  const args = m[3] ? splitArgs(m[3]) : [];
+  return {fn, args};
+}
+function splitArgs(s) { // top-level comma split
+  const out=[]; let d=0,cur='';
+  for (const ch of s) {
+    if (ch==='(' ) d++; if (ch===')') d--;
+    if (ch===',' && d===0) { out.push(cur.trim()); cur=''; } else cur+=ch;
+  }
+  if (cur.trim()) out.push(cur.trim());
+  return out;
+}
+function gloss(stepStr) {
+  const {fn,args} = parseStep(stepStr);
+  if (GLOSS[fn]) return GLOSS[fn](args);
+  return fn.replace(/_/g,' ') + (args.length? ' ('+args.join(', ')+')':'');
+}
+const MOVEGLOSS = {
+  iterate_given: 'copy the given part forward (the non-splitter\'s move — overshoots)',
+  iterate: 'copy the unit within the whole',
+  iterate_past: 'copy the unit past the whole (needs the new scheme)',
+  split: 'split: cut and copy as one reversible move',
+  name_local: 'name it against the little bar (wrong whole)',
+  name_global: 'name it against the original whole',
+  whole_number_relate: 'fall back to a whole-number relation (drops the fraction)',
+  fraction_operate: 'use the fraction as an operator on the unknown',
+};
+function moveList(moves) {
+  if (!moves.length) return '(no move available)';
+  return moves.map(m => MOVEGLOSS[m] ? `${m} = ${MOVEGLOSS[m]}` : m).join('  →  ');
+}
+
+document.getElementById('run').onclick = run;
+
+async function run() {
+  const d = domainSel.value;
+  const p = new URLSearchParams({domain:d});
+  for (const [k] of FIELDS[d]) p.set(k, document.getElementById('f_'+k).value);
+  const out = document.getElementById('out');
+  out.innerHTML = '<div class="panel muted">Running the app…</div>';
+  let data;
+  try { data = await (await fetch('/api/reorganize?'+p.toString())).json(); }
+  catch(e) { out.innerHTML = '<div class="panel err">Could not reach the app. Start it with <span class="muted">bash hermes/app/launch.sh</span>. Alternate standalone entry point: <span class="muted">swipl -l paths.pl -l formal/learner/reorg_demo_server.pl -g start_demo</span></div>'; return; }
+  if (data.error) { out.innerHTML = `<div class="panel err">${data.message}</div>`; qEl.textContent=''; return; }
+  qEl.textContent = data.question;
+  out.innerHTML = render(data);
+}
+
+function render(d) {
+  const r = d.result;
+  let h = '';
+
+  // 1. stuck
+  h += `<div class="panel"><div class="step"><div class="num">1</div><div>
+    <h3>It tried everything it knew — and got stuck.</h3>
+    <p class="muted">An exhaustive search at its current level. Every attempt, and how it ended:</p>`;
+  for (const a of d.level1_attempts) {
+    const cls = a.status==='goal' ? 'goal' : 'dead';
+    h += `<div class="attempt ${cls}">tried: ${moveList(a.moves)} &nbsp;→&nbsp; <b>${a.status==='goal'?'reached the answer':'dead end'}</b></div>`;
+  }
+  h += `<p class="muted">Reached the answer at this level? <b>${d.level1_reached_goal?'yes':'no'}</b>${d.level1_reached_goal?' — this problem did not need reorganizing.':' — it is genuinely stuck.'}</p>
+    </div></div></div>`;
+
+  // 2. reorganize
+  h += `<div class="panel"><div class="step"><div class="num">2</div><div>`;
+  if (r.kind === 'accommodation') {
+    h += `<h3>It reorganized.</h3>
+      <div class="banner accommodation">A new move was unlocked one level up (level ${r.unlocked_at_level}).
+      It was not there before; the machine was not told it — it became reachable by searching a level up.</div>`;
+  } else if (r.kind === 'efficiency') {
+    h += `<h3>Solved at its current level — no reorganization needed.</h3>
+      <div class="banner efficiency">For these numbers the machine already had a path. (Try the case that
+      forces a reorganization — e.g. an improper fraction with the top bigger than the bottom.)</div>`;
+  } else {
+    h += `<h3>Still stuck — the honest boundary.</h3>
+      <div class="banner needs_oracle">${r.note||'No path even one level up. The machine would have to ask a teacher.'}</div>`;
+  }
+  h += `</div></div></div>`;
+
+  if (r.kind === 'accommodation' || r.kind === 'efficiency') {
+    // 3. built method
+    h += `<div class="panel"><div class="step"><div class="num">3</div><div>
+      <h3>The method it built — out of cutting and copying.</h3>
+      <p class="muted">Installed move: <b>${moveList(r.installed_path)}</b>. Behind that move is a
+      runnable procedure (<code>${r.built_method.automaton}</code>), step by step:</p>
+      <ol class="method">`;
+    for (const s of r.built_method.steps) {
+      h += `<li>${gloss(s)}<span class="raw">${s}</span></li>`;
+    }
+    h += `</ol></div></div></div>`;
+
+    // 4. re-execute
+    h += `<div class="panel"><div class="step"><div class="num">4</div><div>
+      <h3>It ran the method it just built — by doing, not remembering.</h3>
+      <p class="muted">The app re-executes the installed method move-by-move (each move has to
+      fire again from scratch — a stored answer could not pass this). Result:</p>
+      <p class="answer">${r.reexecuted_result}</p>
+      </div></div></div>`;
+  }
+  return h;
+}
+</script>
+</body>
+</html>

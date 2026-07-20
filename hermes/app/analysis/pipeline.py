@@ -110,7 +110,7 @@ def _canonical_event(
             "mode": mode,
             "polarity": polarity,
             "force": "binding",
-            # One of the 12 legal PML operators (pml/pml_operators.pl): compressive
+            # One of the 12 legal PML operators (formal/pml/pml_operators.pl): compressive
             # necessity vs expansive possibility. The prior value "possibility" is
             # not a PML operator.
             "operator": "comp_nec" if polarity == "compressive" else "exp_poss",
@@ -227,7 +227,7 @@ def _inference_frame_for_topic(topic: str) -> str:
     # A coarse discourse "inference frame" tag for the geometry topic — a routing
     # heuristic, NOT a Lakoff & Núñez grounding metaphor. The real L&N grounding
     # metaphors (object collection, measuring stick, motion along a path, …) and
-    # their break-points live in formalization/grounding_metaphors.pl and are
+    # their break-points live in formal/formalization/grounding_metaphors.pl and are
     # surfaced via the /api/grounding endpoint; do not conflate the two.
     if topic in {"inclusive_shape_hierarchy", "prototype_vs_definition"}:
         return "category_membership_frame"

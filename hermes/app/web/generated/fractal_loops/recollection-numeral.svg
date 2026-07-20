@@ -6,7 +6,7 @@
   <text x="360" y="28" text-anchor="middle" font-family="Georgia,'Times New Roman',serif"
         font-size="20" font-weight="700" fill="#1b1810">The numeral entombs its counting-history</text>
   <text x="360" y="48" text-anchor="middle" font-family="system-ui,sans-serif"
-        font-size="12" fill="#5a5446">formalization/axioms_robinson.pl  ·  proves_impl(_ =&gt; [o(eq(5,5))], _)</text>
+        font-size="12" fill="#5a5446">formal/formalization/axioms_robinson.pl  ·  proves_impl(_ =&gt; [o(eq(5,5))], _)</text>
 
   <defs>
     <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">

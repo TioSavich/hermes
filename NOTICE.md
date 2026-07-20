@@ -51,6 +51,6 @@ this repository's license:
   works remain © their authors and publishers; the encodings are
   descriptions of published findings, not reproductions of the works.
 
-- **Grounding metaphors.** The metaphor inventory in `formalization/` and
+- **Grounding metaphors.** The metaphor inventory in `formal/formalization/` and
   `geometry/` encodes analyses from Lakoff & Núñez, *Where Mathematics
   Comes From* (Basic Books, 2000), cited in the facts.

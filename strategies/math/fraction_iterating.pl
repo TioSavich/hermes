@@ -31,7 +31,7 @@
  * == Brandom / MUA ==
  *
  * The practice enacted is `p_unit_fraction_iteration`, sufficient for
- * `v_fraction_unit`. `pml/mua_relations.pl` already records
+ * `v_fraction_unit`. `formal/pml/mua_relations.pl` already records
  * `pp_necessary(p_unit_fraction_partition, p_unit_fraction_iteration)` —
  * partitioning is PP-necessary for iterating (you cannot iterate a part you
  * cannot first cut and disembed). The q_iterate loop is the *algorithmic

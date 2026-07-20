@@ -17,14 +17,14 @@
 % Load Order
 % =================================================================
 
-% 1. Utilities and Core Vocabulary (pml/ module)
+% 1. Utilities and Core Vocabulary (formal/pml/ module)
 :- use_module(pml(utils)).
 :- use_module(pml(pml_operators)).
 
 % 2. Core Prover (arche-trace/ — must be loaded before axioms that extend it)
 :- use_module(sequent_engine).
 
-% 3. Semantic Foundations (pml/ — axioms extending the prover)
+% 3. Semantic Foundations (formal/pml/ — axioms extending the prover)
 :- use_module(pml(semantic_axioms)).
 
 % 4. Pragmatic Foundations

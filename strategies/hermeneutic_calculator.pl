@@ -11,7 +11,7 @@
  * SURFACE REGISTER — DEMONSTRATION, NOT CRISIS:
  * This dispatcher is the strategy-explorer surface (the /api/strategy/run
  * route and the more-zeeman strategy pages). It differs on purpose from the
- * crisis surface in `learner/oracle_server.pl` for exactly one strategy:
+ * crisis surface in `formal/learner/oracle_server.pl` for exactly one strategy:
  * IDP division. IDP works by recalling multiplication facts. Here, the
  * demonstration supplies a labeled demo times table for the actual divisor
  * (`demo_multiplication_facts/2`), so a visitor can watch the strategy run.
@@ -161,7 +161,7 @@ calculate(T, /, S, 'IDP', Result, History) :-
     % DEMONSTRATION path: supply a demo times table for the actual divisor.
     % The earlier hardcoded KB [40-5, 16-2, 8-1] was a divisor-8 table, so
     % any other divisor produced a wrong quotient (56/7 came back 7).
-    % The crisis surface (learner/oracle_server.pl) passes [] instead; see
+    % The crisis surface (formal/learner/oracle_server.pl) passes [] instead; see
     % the module header for why the two surfaces differ.
     demo_multiplication_facts(S, KB),
     run_idp(T, S, KB, Result, _Remainder, History).

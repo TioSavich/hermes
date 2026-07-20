@@ -4,7 +4,7 @@
  * primitives in formalization(grounded_arithmetic). These were previously
  * redefined locally in each of strategies/math/{sar_add,sar_sub,smr_mult,
  * smr_div}_action_pairs.pl with identical bodies. Predicate carving
- * (tools/carving/predicate_carving.py) identified the redundancy.
+ * (formal/tools/carving/predicate_carving.py) identified the redundancy.
  *
  * The bodies route through integer_to_recollection -> grounded operation
  * -> recollection_to_integer, so callers get integer in/out while

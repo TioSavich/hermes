@@ -4,7 +4,7 @@
 The HTML page at ``more-zeeman/muds.html`` renders Meaning-Use Diagrams from a
 pre-extracted JSON file rather than calling Prolog at request time. This script
 runs swipl in batch mode, queries the two registries that hold the data
-(``pml/mua_relations.pl`` and ``formalization/grounding_metaphors.pl``), and
+(``formal/pml/mua_relations.pl`` and ``formal/formalization/grounding_metaphors.pl``), and
 writes a single JSON object to ``more-zeeman/mua_data.json``.
 
 The JSON schema is documented in the page; the keys correspond one-to-one to
@@ -47,7 +47,7 @@ RESEARCH_DB = REPO_ROOT / "research" / "research_shared.db"
 # boundaries is finicky and the line protocol is trivial and stable.
 PROLOG_SCRIPT = r"""
 :- use_module(pml(mua_relations)).
-:- use_module('{root}/formalization/grounding_metaphors.pl').
+:- use_module('{root}/formal/formalization/grounding_metaphors.pl').
 
 emit(Key, Term) :-
     format('~w|~q~n', [Key, Term]).

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Render the fraction unit-coordination machine's splitting cliff as filmstrips.
 
-The wire: tools/carving/fraction_unit_machine.pl (the search) -> verdicts +
+The wire: formal/tools/carving/fraction_unit_machine.pl (the search) -> verdicts +
 witness traces (swipl) -> fraction-bars frames (here) -> more-zeeman/render/
 drawer.js (buildSvg) -> SVG filmstrips. Bounded on purpose: three demos.
 
@@ -24,7 +24,7 @@ REPO = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO))
 from hermes.app import rendering
 
-MACHINE = "tools/carving/fraction_unit_machine.pl"
+MACHINE = "formal/tools/carving/fraction_unit_machine.pl"
 OUT = rendering.gallery_output(REPO / "hermes" / "app" / "web" / "generated" / "fraction_cliff_demos")
 
 W, H = 300, 70          # whole-bar geometry
@@ -122,7 +122,7 @@ def main() -> int:
     index = ["<!doctype html><meta charset=utf-8><title>Fraction splitting cliff</title>",
              "<body style='font-family:system-ui;background:#f8f1df;padding:24px'>",
              "<h1>The splitting cliff, computed</h1>",
-             "<p>Filmstrips from <code>tools/carving/fraction_unit_machine.pl</code> "
+             "<p>Filmstrips from <code>formal/tools/carving/fraction_unit_machine.pl</code> "
              "via <code>drawer.js</code>. Each strip's verdict comes from the search.</p>"]
     for code, _f, _l, v in cases:
         index.append(f"<h2>{code}</h2><p><small>machine: {v['raw']}</small></p>"

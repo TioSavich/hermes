@@ -20,7 +20,7 @@ of cited traditional comparison lessons.
 ## How it loads and what consumes it
 
 After `paths.pl`, `hermes_worker.pl` loads the monitoring, selector, chart, and
-gap modules; `learner/activity_contract.pl` and
+gap modules; `formal/learner/activity_contract.pl` and
 `crosswalk/families/cw_fraction_claim.pl` read `im/lesson_monitoring`.
 
 ## Attribution and boundary

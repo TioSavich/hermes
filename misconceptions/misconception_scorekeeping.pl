@@ -1,6 +1,6 @@
 /** <module> Misconception scorekeeping wire
  *
- * Connects generative_misconceptions.pl to learner/deontic_scorekeeper.pl.
+ * Connects generative_misconceptions.pl to formal/learner/deontic_scorekeeper.pl.
  * When an agent enacts a generated misconception, the wire:
  *
  *   1. records the misconception term as a commitment of the agent;

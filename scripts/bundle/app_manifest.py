@@ -45,9 +45,7 @@ KEEP_TREES_RATIONALE = [
     ("standards", "CCSS / Indiana / IM anchors (worker glob-loads these)"),
     ("geometry", "schema, concepts, metaphors, van Hiele (glob-loaded); corpus/ holds attributed IM teacher-guide + scope-and-sequence inputs (see geometry/corpus/ATTRIBUTION.md)"),
     ("lessons", "IM lesson monitoring KB"),
-    ("learner", "deontic scorekeeper, up-leveling"),
-    ("formalization", "grounded arithmetic, grounding metaphors"),
-    ("pml", "semantic axioms, MUA relations"),
+    ("formal", "reasoning machinery: learner models, grounded formalization, PML semantics, and carving/audit tools"),
     ("arche-trace", "provers, incompatibility engines"),
     ("research", "derivative layer of the literature corpus (coded db + bibliography); the copyrighted articles stay in the source project"),
     ("docs/research_assets/research/student_work_figures",
@@ -96,8 +94,8 @@ KEEP_FILES = [
     "docs/research_assets/research/2026-05-21-action-semantic-pragmatic-annotations.json",
     "docs/research_assets/research/2026-05-21-action-topology-calculator-context.json",
     "docs/research_assets/research/docling_classifications.json",
-    "learner/peano_utils.pl",          # shared Peano conversion utility
-    "learner/teacher_local_prolog.pl", # teacher-bound strategy provider
+    "formal/learner/peano_utils.pl",          # shared Peano conversion utility
+    "formal/learner/teacher_local_prolog.pl", # teacher-bound strategy provider
     "lessons/im/generated/compiled_action_mappings.pl",  # lesson monitoring runtime cache
     "lessons/im/generated/compiled_lesson_context.pl",  # attributed prompt and synthesis cache
     "lessons/im/generated/compiled_task_instances.pl",  # source-backed learner task cache
@@ -110,16 +108,16 @@ KEEP_FILES = [
     "strategies/render/measurement_strip_scene.pl",  # lightweight measurement renderer
     "strategies/render/ratio_diagram_scene.pl",  # ordered ratio referent tapes
     "strategies/render/signed_number_line_scene.pl",  # signed order and inequality rays
-    "pml/mua_conjectures.pl",          # empty register for non-demonstrated MUA candidates
-    "tools/axiom_pack_audit.pl",       # loaded by the worker's audit op
-    "tools/axiom_toggle.pl",           # lazy-loaded by the axiom_toggle op
-    "tools/carving/groups_machine.pl",
-    "tools/carving/primitives.pl",     # strategy_machine substrate (worker load)
-    "tools/carving/query.pl",
-    "tools/carving/rationalizations.pl",
-    "tools/carving/strategy_machine.pl",
-    "tools/carving/synthesizer.pl",
-    "tools/carving/units_machine.pl",
+    "formal/pml/mua_conjectures.pl",          # empty register for non-demonstrated MUA candidates
+    "formal/tools/axiom_pack_audit.pl",       # loaded by the worker's audit op
+    "formal/tools/axiom_toggle.pl",           # lazy-loaded by the axiom_toggle op
+    "formal/tools/carving/groups_machine.pl",
+    "formal/tools/carving/primitives.pl",     # strategy_machine substrate (worker load)
+    "formal/tools/carving/query.pl",
+    "formal/tools/carving/rationalizations.pl",
+    "formal/tools/carving/strategy_machine.pl",
+    "formal/tools/carving/synthesizer.pl",
+    "formal/tools/carving/units_machine.pl",
 ]
 
 # Markdown is documentation, not runtime — with the exceptions the running
@@ -141,18 +139,18 @@ KEEP_MD = {
     "arche-trace/README.md",
     "crosswalk/README.md",
     "crosswalk/families/README.md",
-    "formalization/README.md",
+    "formal/formalization/README.md",
     "geometry/README.md",
     "geometry/corpus/im_teacher_guides/grade6/README.md",
     "hermes/README.md",
     "hermes/app/README.md",
-    "learner/README.md",
+    "formal/learner/README.md",
     "lessons/README.md",
     "lessons/im/README.md",
     "misconceptions/README.md",
     "more-zeeman/README.md",
     "more-zeeman/render/README.md",
-    "pml/README.md",
+    "formal/pml/README.md",
     "representation/README.md",
     "standards/README.md",
     "strategies/README.md",
@@ -193,10 +191,22 @@ def tracked_files() -> list[str]:
     out = subprocess.run(
         ["git", "ls-files", "-z"], cwd=REPO, capture_output=True, check=True
     )
-    # A task may delete a tracked runtime file before the controller stages the
-    # deletion. Generate from the working tree that will be packaged, not from
-    # an index entry whose path no longer exists.
-    return [p for p in out.stdout.decode().split("\0") if p and (REPO / p).is_file()]
+    # A task may move a tracked runtime tree before the controller stages the
+    # rename. Resolve those index entries to their working-tree locations so a
+    # pre-staging regeneration cannot silently under-ship the moved trees.
+    relocated_trees = {"formalization", "pml", "tools", "learner"}
+    files: list[str] = []
+    for path in out.stdout.decode().split("\0"):
+        if not path:
+            continue
+        if (REPO / path).is_file():
+            files.append(path)
+            continue
+        tree, separator, remainder = path.partition("/")
+        relocated = f"formal/{tree}/{remainder}" if separator and tree in relocated_trees else ""
+        if relocated and (REPO / relocated).is_file():
+            files.append(relocated)
+    return files
 
 
 def keep(path: str, with_figures: bool) -> bool:

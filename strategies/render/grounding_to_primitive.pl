@@ -21,8 +21,8 @@
  * not themselves a claim that a renderer exists for every mapped primitive.
  *
  * Sources:
- *   - formalization/grounding_metaphors.pl (the four metaphors + repairs)
- *   - pml/mua_relations.pl (grounding_metaphor/2: practice -> metaphor label)
+ *   - formal/formalization/grounding_metaphors.pl (the four metaphors + repairs)
+ *   - formal/pml/mua_relations.pl (grounding_metaphor/2: practice -> metaphor label)
  *   - geometry/metaphors/lakoff_nunez_inventory.pl, measuring_stick.pl
  *     (image-schema families: container_schema, source_path_goal,
  *      categories_are_containers; the Container vs Measuring-Stick distinction)

@@ -74,7 +74,7 @@
 :- discontiguous scope_sequence_mapped_lesson/1.
 :- dynamic cached_lesson_topics/2.
 % Dynamic so tests can assert a fixture lesson under setup/cleanup (the
-% lesson_task_instance/3 pattern in learner/activity_contract.pl).
+% lesson_task_instance/3 pattern in formal/learner/activity_contract.pl).
 :- dynamic explicit_lesson_strategy/4.
 
 :- ensure_loaded(grade_k).

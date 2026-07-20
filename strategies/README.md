@@ -28,7 +28,7 @@ After `paths.pl` sets the `strategies` alias, consumers
 
 ## What consumes it
 
-`hermes_worker.pl` runs strategy traces and render operations; `learner/`,
+`hermes_worker.pl` runs strategy traces and render operations; `formal/learner/`,
 `lessons/im/`, and `hermes/` modules query the registry and render surfaces.
 
 ## Boundary

@@ -6,7 +6,7 @@
  *
  *  This is arche-trace's own detection-and-accommodation machinery, built for
  *  the dialectical/sublation context. It runs parallel to the learner's ORR-cycle
- *  modules (learner/reflective_monitor.pl for detection, learner/reorganization_engine.pl
+ *  modules (formal/learner/reflective_monitor.pl for detection, formal/learner/reorganization_engine.pl
  *  for accommodation), which remain live in the crisis-cycle subsystem — this module
  *  does NOT replace them. The two implementations share predicate names
  *  (reflect/2, accommodate/1, get_stress_map/1, the stress map) because they model the

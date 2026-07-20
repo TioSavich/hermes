@@ -112,7 +112,7 @@
 
   <div class="operable" id="deontic">
     <h3>Commitment without entitlement</h3>
-    <div class="domains">commitment tracking · <code>learner/deontic_scorekeeper.pl</code></div>
+    <div class="domains">commitment tracking · <code>formal/learner/deontic_scorekeeper.pl</code></div>
     <p class="desc">Cross-multiplication returns the right number. A learner who runs it on
       &frac34; of &frac25; has <em>undertaken a commitment</em> to the result 6/20 without
       being <em>entitled</em> to it: the move deploys none of the area-model account that
@@ -138,7 +138,7 @@
       proof, recording that its justification gives out there. The preset below sends a
       sequent whose derivation draws the mark in through the project's PML pragmatic axiom pack
       (Savich, <em>PML calculus</em>)
-      (<code>pml/pragmatic_axioms.pl</code>); the prover answers
+      (<code>formal/pml/pragmatic_axioms.pl</code>); the prover answers
       <code>hollow(propagation)</code>, and the card renders that answer in place of a
       derivation. When that pack is not loaded, the app answers that no loaded layer derives
       the same sequent, and the card renders that instead.</p>
@@ -241,24 +241,24 @@ neg(p)</textarea>
       <summary>For contributors: modules described here but not loaded</summary>
       <div class="tool-grid">
       <div class="tool"><h4>Base-invariance demonstrations</h4><p>
-        <code>formalization/synthesis/run_add.pl</code> runs the make-base addition demonstration;
-        <code>formalization/synthesis/run_lazy.pl</code> runs the cost-bounded subtraction demonstration;
-        <code>formalization/synthesis/run_synth.pl</code> runs every declared synthesis target.
+        <code>formal/formalization/synthesis/run_add.pl</code> runs the make-base addition demonstration;
+        <code>formal/formalization/synthesis/run_lazy.pl</code> runs the cost-bounded subtraction demonstration;
+        <code>formal/formalization/synthesis/run_synth.pl</code> runs every declared synthesis target.
         Each harness executes only when invoked as a command-line main, so none is eager-loaded.
-        <code>formalization/synthesis/synth.pl</code> is the bounded program synthesizer library, and
-        <code>formalization/synthesis/synth_lazy.pl</code> is its cost-bounded, base-parameterized library.
+        <code>formal/formalization/synthesis/synth.pl</code> is the bounded program synthesizer library, and
+        <code>formal/formalization/synthesis/synth_lazy.pl</code> is its cost-bounded, base-parameterized library.
       </p></div>
       <div class="tool"><h4>Lazy axiom control</h4><p>
-        <code>tools/axiom_toggle.pl</code> provides reversible runtime toggles. The
+        <code>formal/tools/axiom_toggle.pl</code> provides reversible runtime toggles. The
         <code>axiom_toggle</code> operation loads it on demand because its full loader would create
         import collisions during worker startup.
       </p></div>
       <div class="tool"><h4>Contextual axiom packs</h4><p>
         These packs are in force where relevant and can be switched off where they are not.
-        <code>pack(geometry)</code> carries <code>formalization/axioms_geometry.pl</code>'s finite
+        <code>pack(geometry)</code> carries <code>formal/formalization/axioms_geometry.pl</code>'s finite
         quadrilateral incompatibilities; <code>pack(number_theory)</code> carries
-        <code>formalization/axioms_number_theory.pl</code>'s Euclid self-defeat argument; and
-        <code>pack(robinson)</code> carries <code>formalization/axioms_robinson.pl</code>'s Robinson Q
+        <code>formal/formalization/axioms_number_theory.pl</code>'s Euclid self-defeat argument; and
+        <code>pack(robinson)</code> carries <code>formal/formalization/axioms_robinson.pl</code>'s Robinson Q
         and grounded arithmetic.
       </p></div>
       <div class="tool"><h4>Registry-scale incompatibility</h4><p>
@@ -282,7 +282,7 @@ neg(p)</textarea>
 
   <div class="footnote">
     Source: Lakoff &amp; Núñez, <em>Where Mathematics Comes From</em> (2000),
-    encoded as Prolog facts in <code>formalization/grounding_metaphors.pl</code>
+    encoded as Prolog facts in <code>formal/formalization/grounding_metaphors.pl</code>
     (<code>metaphor_breaks_at/3</code>, <code>metaphor_repair/4</code>) and the
     geometry-era extensions. A break listed here is queryable by the same
     app that scores strategies and misconceptions — the point of encoding
@@ -421,7 +421,7 @@ neg(p)</textarea>
     }
 
     // --- the sequent witness: where a proof goes through, and where it stops ---
-    // Vanishing-point-marked preset: with pml/pragmatic_axioms.pl loaded, the
+    // Vanishing-point-marked preset: with formal/pml/pragmatic_axioms.pl loaded, the
     // elusive-subject axiom marks the shared variable during the derivation and
     // the embodied prover returns hollow(propagation) in place of a proof.
     const TRACE_SEQUENT = "[s(comp_nec(X))] => [o(exp_nec(X))]";

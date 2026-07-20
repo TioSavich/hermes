@@ -868,7 +868,7 @@ strategy_dict(strategy(Operation, Kind, Info),
 % / incompatibility from its registry Info list (info_text/3). These are static
 % per-misconception facts describing the misconception's structure in deontic
 % vocabulary. They are not produced by the live deontic scorekeeper
-% (learner/deontic_scorekeeper.pl, exposed by hermes_worker.pl as the
+% (formal/learner/deontic_scorekeeper.pl, exposed by hermes_worker.pl as the
 % deontic_scorecard / deontic_consequences / deontic_up_level ops): this path
 % runs no consequence propagation and no incompatible/2 closure.
 misconception_dict(misconception(Operation, Name, Info),

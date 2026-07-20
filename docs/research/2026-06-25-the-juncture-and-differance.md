@@ -85,7 +85,7 @@ voice, lifting whatever restrictions on inferential smoothing the current
 firebreaks impose. The aim is the learner able to represent itself in a
 meta-language (Prolog) and spatially reconstruct an ambiguity — the 1/2 that is
 itself two ways. This is a program, not a built thing; the seed juncture is its
-germinating point. The units machine (`tools/carving/units_machine.pl`) already
+germinating point. The units machine (`formal/tools/carving/units_machine.pl`) already
 articulates counting → bases/groups → fractions as one search; the breath-to-
 kindling work is to let the *learner* speak that articulation and meet its own
 normative shadow at the juncture.

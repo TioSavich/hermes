@@ -34,7 +34,7 @@ RUNTIME = APP_DIR / "runtime"
 REPO_ROOT = APP_DIR.parents[1]
 STATIC_MOUNTS = {
     "more-zeeman": REPO_ROOT / "more-zeeman",
-    "learner": REPO_ROOT / "learner",
+    "learner": REPO_ROOT / "formal" / "learner",
     "representation": REPO_ROOT / "representation",
     "ASKTM_Data": REPO_ROOT / "ASKTM_Data",
     "docs": REPO_ROOT / "docs",

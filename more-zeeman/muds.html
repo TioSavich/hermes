@@ -165,7 +165,7 @@
   <h1>Meaning-Use Diagrams</h1>
   <p class="sub">Brandom's Meaning-Use Relations (MUR) framework (Brandom, <em>Between Saying and Doing</em>) applied to the action-automata registry: PP-sufficiency, PV-sufficiency, VP-sufficiency, and the LX resultant that makes inferential commitments, moves made without yet earning the right to them, explicit.</p>
   <div class="meta">
-    <span>From <code>pml/mua_relations.pl</code></span>
+    <span>From <code>formal/pml/mua_relations.pl</code></span>
     <span>32 practices · 24 vocabularies · 13 LX edges</span>
   </div>
 </header>
@@ -183,7 +183,7 @@
   <div id="prose-area">
     <h2 class="head">Brandom's <span class="q">MUR</span> applied to a registry of strategies</h2>
     <p class="lead">In <em>Between Saying and Doing</em>, Brandom names a small set of Meaning-Use Relations between practices-or-abilities (P) and vocabularies (V). The atomic ones are PV-sufficiency (deploying a practice suffices to deploy a vocabulary), VP-sufficiency (a vocabulary suffices to specify a practice), and PP-sufficiency (one practice suffices to algorithmically elaborate another). Stacked together, these give the <em>resultant</em> LX relation: V<sub>meta</sub> is elaborated-explicating for V<sub>base</sub> when the practices of V<sub>meta</sub> elaborate the practices of V<sub>base</sub> and make explicit, as expressible content, what those practices carry implicitly.</p>
-    <p>The page renders the corresponding facts in <code>pml/mua_relations.pl</code> as Meaning-Use Diagrams. The runnable cross-multiplication and area-model version lives on <a href="/breaks.html"><em>Where it breaks</em></a>.</p>
+    <p>The page renders the corresponding facts in <code>formal/pml/mua_relations.pl</code> as Meaning-Use Diagrams. The runnable cross-multiplication and area-model version lives on <a href="/breaks.html"><em>Where it breaks</em></a>.</p>
   </div>
 </section>
 
@@ -252,7 +252,7 @@
 <section id="metaphors">
   <div class="mk"><span class="n">III.</span><span>Grounding metaphors</span><span class="n">⋆</span></div>
   <h2 class="head">Where each metaphor <span class="q">breaks</span></h2>
-  <p>Lakoff and Núñez identify four grounding metaphors, systematic mappings from bodily activity to arithmetic, and several repair metaphors (Lakoff and Núñez, <em>Where Mathematics Comes From</em>). The break points are kept as first-class queryable facts in <code>formalization/grounding_metaphors.pl</code> rather than as commentary; each card below lists what the metaphor cannot ground and which repair metaphor (if any) covers the inference instead. The little illustration at the top of each card is the metaphor's <em>source-domain image</em>, the physical situation the metaphor asks you to think with.</p>
+  <p>Lakoff and Núñez identify four grounding metaphors, systematic mappings from bodily activity to arithmetic, and several repair metaphors (Lakoff and Núñez, <em>Where Mathematics Comes From</em>). The break points are kept as first-class queryable facts in <code>formal/formalization/grounding_metaphors.pl</code> rather than as commentary; each card below lists what the metaphor cannot ground and which repair metaphor (if any) covers the inference instead. The little illustration at the top of each card is the metaphor's <em>source-domain image</em>, the physical situation the metaphor asks you to think with.</p>
   <h3 class="sub">Basic metaphors (16) · anchored by Lakoff and Núñez's four: Object Collection, Construction, Measuring Stick, Motion</h3>
   <div class="gm-grid" id="gm-basic"></div>
   <h3 class="sub">Repair metaphors · rotation by 180°, Zero Collection, Zero Object</h3>
@@ -265,9 +265,9 @@
 <footer>
   <h3>What this page does not do</h3>
   <p>The freshman and math-ed registers are stubbed. The toggle buttons exist and the routing works; the prose for those audiences has not been written. Selecting either button replaces the philosopher prose with a short note saying so. The diagram and the metaphor cards are register-independent because the underlying facts are.</p>
-  <p>The dataset is a seed, not an exhaustive map. The 32 practices, 24 vocabularies, and 13 LX edges visible here were curated against the action-automata registry and against LK_RB_Synthesis's <code>strategy_metadata</code>; they are not a comprehensive registry of arithmetic practice. Adding new <code>practice/2</code>, <code>vocabulary/2</code>, and <code>lx_for/3</code> facts in <code>pml/mua_relations.pl</code> and rerunning <code>scripts/research/export_mua_for_mud.py</code> regenerates the JSON the page reads.</p>
+  <p>The dataset is a seed, not an exhaustive map. The 32 practices, 24 vocabularies, and 13 LX edges visible here were curated against the action-automata registry and against LK_RB_Synthesis's <code>strategy_metadata</code>; they are not a comprehensive registry of arithmetic practice. Adding new <code>practice/2</code>, <code>vocabulary/2</code>, and <code>lx_for/3</code> facts in <code>formal/pml/mua_relations.pl</code> and rerunning <code>scripts/research/export_mua_for_mud.py</code> regenerates the JSON the page reads.</p>
   <p>The page is a static rendering, not a live query into Prolog. It reads <code>mua_data.json</code>, which is produced from the live registry by the export script. When the registry changes and the export script is rerun, the page updates; until then, the page shows the snapshot. The harness's <code>--check</code> flag verifies the JSON matches the current Prolog state.</p>
-  <p class="note">From <code>pml/mua_relations.pl</code> + <code>formalization/grounding_metaphors.pl</code> via <code>scripts/research/export_mua_for_mud.py</code>. Part of <a href="https://github.com/TioSavich/umedcta-formalization">umedcta-formalization</a>.</p>
+  <p class="note">From <code>formal/pml/mua_relations.pl</code> + <code>formal/formalization/grounding_metaphors.pl</code> via <code>scripts/research/export_mua_for_mud.py</code>. Part of <a href="https://github.com/TioSavich/umedcta-formalization">umedcta-formalization</a>.</p>
 </footer>
 
 <script src="mud-render.js"></script>

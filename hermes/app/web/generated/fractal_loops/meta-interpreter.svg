@@ -12,7 +12,7 @@
 
   <!-- Title -->
   <text x="20" y="28" font-size="16" font-weight="bold" fill="#1a1a1a">The interpreter that hollows itself</text>
-  <text x="20" y="46" font-size="11" fill="#555">learner/meta_interpreter.pl : solve/6  (lines 204, 209, 219; crisis at 259)</text>
+  <text x="20" y="46" font-size="11" fill="#555">formal/learner/meta_interpreter.pl : solve/6  (lines 204, 209, 219; crisis at 259)</text>
 
   <!-- ===== The loop nodes ===== -->
 

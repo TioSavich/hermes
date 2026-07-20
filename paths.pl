@@ -3,7 +3,7 @@
  * Load this file before any module to set up file_search_path so
  * use_module directives resolve across module boundaries.
  *
- * Usage: swipl -l paths.pl -l learner/server.pl
+ * Usage: swipl -l paths.pl -l formal/learner/server.pl
  *    or: :- [paths].  at the top of an entry point
  */
 
@@ -12,17 +12,17 @@
 
 :- prolog_load_context(directory, PrologRoot),
    forall(member(Alias-Relative,
-                 [ pml-'pml',
+                 [ pml-'formal/pml',
                    arche_trace-'arche-trace',
                    strategies-'strategies',
-                   learner-'learner',
-                   formalization-'formalization',
+                   learner-'formal/learner',
+                   formalization-'formal/formalization',
                    misconceptions-'misconceptions',
                    lessons-'lessons',
                    hermes-'hermes',
                    geometry-'geometry',
-                   tools-'tools',
-                   carving-'tools/carving',
+                   tools-'formal/tools',
+                   carving-'formal/tools/carving',
                    standards-'standards',
                    crosswalk-'crosswalk',
                    zeeman-'more-zeeman/prolog'

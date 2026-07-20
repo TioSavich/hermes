@@ -1,6 +1,6 @@
 /** <module> Productive geometry action automata
  *
- * Makes the executable geometry plans used by learner/activity_contract.pl
+ * Makes the executable geometry plans used by formal/learner/activity_contract.pl
  * available through the shared action registry. These actions coordinate a
  * measurement or location action with an existing spatial scene compiler.
  * They are productive-only until a deformation is supported by an explicit

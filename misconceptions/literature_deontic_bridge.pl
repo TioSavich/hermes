@@ -34,7 +34,7 @@
  *
  * Scorekeeper wiring. The graph contributes multifile clauses in the shape
  * `deontic_scorekeeper` consumes (see the `incompatible/2` seeds and
- * `requires_entitlement_fact/1` in `learner/deontic_scorekeeper.pl`):
+ * `requires_entitlement_fact/1` in `formal/learner/deontic_scorekeeper.pl`):
  *
  *     incompatible(applies_rule(SrRule), normative_commitment(C))
  *     requires_entitlement_fact(applies_rule(SrRule))

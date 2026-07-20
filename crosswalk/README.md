@@ -36,6 +36,6 @@ worker; `hermes/dispatch_spec.pl` routes witness operations to
 ## Boundary
 
 The crosswalk records where a canonical term is answered; it does not own the
-underlying facts, which live in `strategies/`, `arche-trace/`, `formalization/`,
-`misconceptions/`, and `learner/`. A witness proves membership in a loaded,
+underlying facts, which live in `strategies/`, `arche-trace/`, `formal/formalization/`,
+`misconceptions/`, and `formal/learner/`. A witness proves membership in a loaded,
 closed-world table, not general alignment over open-ended curricula.

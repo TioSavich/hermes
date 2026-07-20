@@ -3,8 +3,8 @@
   "mode": "apply",
   "source_modules": [
     "strategies/math/action_automata_registry.pl",
-    "pml/mua_relations.pl",
-    "learner/deontic_scorekeeper.pl"
+    "formal/pml/mua_relations.pl",
+    "formal/learner/deontic_scorekeeper.pl"
   ],
   "summary": {
     "annotation_row_count": 85,

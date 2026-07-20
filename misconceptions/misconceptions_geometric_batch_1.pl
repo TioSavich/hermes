@@ -1,6 +1,6 @@
 :- module(misconceptions_geometric_batch_1, []).
 % Geometric misconceptions — research corpus batch 1/2.
-% Uses entails_via_incompatibility/2 from formalization/axioms_geometry.pl
+% Uses entails_via_incompatibility/2 from formal/formalization/axioms_geometry.pl
 % (loaded via arche-trace/load.pl by the test harness).
 %
 % Registration convention:

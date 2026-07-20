@@ -179,7 +179,7 @@ subtract_list(All, Sub, Diff) :- findall(X, (member(X, All), \+ member(X, Sub)),
 %% Illustrative Math introduces A's kind in a lesson no later than B's kind;
 %% CONTRADICTED if A's kind is introduced strictly later (a real finding); and
 %% NOT_IN_CURRICULUM when a kind is never prescribed (cannot be demonstrated this
-%% way). This reads the asserted edges in pml/mua_relations.pl against the IM
+%% way). This reads the asserted edges in formal/pml/mua_relations.pl against the IM
 %% lesson order — it does not invent the relations.
 
 % Total order over IM lesson ids 'IM-G{K|n}-U{n}-L{n}'.

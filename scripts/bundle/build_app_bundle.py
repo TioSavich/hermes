@@ -265,7 +265,6 @@ def render_directory_map(manifest: list[str]) -> str:
         "docs/": "runtime prompts the report chain reads, plus the "
                  "gallery's literature figure images when bundled",
         "scripts/": "report-chain scripts and this bundle's own build tools",
-        "tools/": "worker-loaded audit and strategy-carving modules",
     }
     listed = {tree + "/" for tree, _ in KEEP_TREES_RATIONALE}
     for top, n in sorted(counts.items()):

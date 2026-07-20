@@ -209,7 +209,7 @@ CLEAN:   proof(my_rule,([s(a)]=>[s(a)]),[])</pre>
 <div class="panel">
   <p class="eyebrow">the {I}</p>
   <h3>The {I} that can&rsquo;t be in the picture</h3>
-  <p class="fileline">arche-trace/automata.pl (generate_vanishing_point/1 and attr_unify_hook/2) and pml/pragmatic_axioms.pl (i_feeling/1, identity_claim/1, pragmatic_incoherence_witness/2)</p>
+  <p class="fileline">arche-trace/automata.pl (generate_vanishing_point/1 and attr_unify_hook/2) and formal/pml/pragmatic_axioms.pl (i_feeling/1, identity_claim/1, pragmatic_incoherence_witness/2)</p>
 
   <div class="svgframe">
     <img src="the-I.svg" alt="The I-Feeling, a traced variable that defers against another variable but fails against any concrete term.">
@@ -221,7 +221,7 @@ CLEAN:   proof(my_rule,([s(a)]=>[s(a)]),[])</pre>
     <summary>See for yourself</summary>
     <div class="body">
       <div class="lbl">query</div>
-      <pre class="query">swipl -l paths.pl -l arche-trace/automata.pl -l pml/pragmatic_axioms.pl
+      <pre class="query">swipl -l paths.pl -l arche-trace/automata.pl -l formal/pml/pragmatic_axioms.pl
 % i_feeling(I_f), contains_vanishing_point(I_f)
 % generate_vanishing_point(V), I_f = V          (var-var, propagates)
 % generate_vanishing_point(J), J = hello        (var-concrete, wall)
@@ -238,7 +238,7 @@ represents(C_Id, I_f)  : is_incoherent (unsatisfiable_desire)</pre>
 
   <div class="deconstructs">
     <div class="lbl">where it eats its own tail</div>
-    In the nonvar branch of <code>attr_unify_hook/2</code>, unification refuses a concrete term offered for the marked {I}. The mark propagates across open variables but returns nothing when asked to become a fixed representation. In <code>pml/pragmatic_axioms.pl</code>, representing the I-Feeling with a finite identity claim is declared <code>is_incoherent</code> rather than merely empty.
+    In the nonvar branch of <code>attr_unify_hook/2</code>, unification refuses a concrete term offered for the marked {I}. The mark propagates across open variables but returns nothing when asked to become a fixed representation. In <code>formal/pml/pragmatic_axioms.pl</code>, representing the I-Feeling with a finite identity claim is declared <code>is_incoherent</code> rather than merely empty.
   </div>
 </div>
 
@@ -284,7 +284,7 @@ true.</pre>
 <div class="panel">
   <p class="eyebrow">the interpreter</p>
   <h3>The interpreter that hollows itself</h3>
-  <p class="fileline">learner/meta_interpreter.pl:204, 209, 219, 259</p>
+  <p class="fileline">formal/learner/meta_interpreter.pl:204, 209, 219, 259</p>
 
   <div class="svgframe">
     <img src="meta-interpreter.svg" alt="solve re-reading add's own clause, re-running every counting step, accruing cost until the budget hits zero and a resource-exhaustion crisis is thrown instead of returning the sum.">
@@ -296,7 +296,7 @@ true.</pre>
     <summary>See for yourself</summary>
     <div class="body">
       <div class="lbl">query</div>
-      <pre class="query">swipl -q -l paths.pl -g "use_module(learner/meta_interpreter), \
+      <pre class="query">swipl -q -l paths.pl -g "use_module(formal/learner/meta_interpreter), \
   P8 = s(s(s(s(s(s(s(s(0)))))))), P5 = s(s(s(s(s(0))))), \
   catch(solve(object_level:add(P8,P5,_), 6, _, _), Crisis, true), \
   format('CAUGHT: ~q~n',[Crisis]), halt" -t 'halt(1)'
@@ -311,7 +311,7 @@ CAUGHT: perturbation(resource_exhaustion)</pre>
 
   <div class="deconstructs">
     <div class="lbl">where it eats its own tail</div>
-    learner/meta_interpreter.pl:209 (the clause head) read together with the cost/modal gap at :214&ndash;218 and the throw at :259. The head of solve/6 claims to be solving <code>Goal</code>, yet its sixth argument is not the solution but a static trace term <code>[clause(object_level:(Goal:-Body)), trace(Body, BodyTrace)]</code> &mdash; the answer <code>Sum</code> is effaced into a trace at the very point the interpreter is most faithfully re-executing its own clause. The faithful re-execution (the :219 clause-read + :220 re-descent) is exactly what accrues the cost at :214&ndash;218 that drives the budget to zero, so check_viability at :256 throws <code>perturbation(resource_exhaustion)</code> at :259. The interpreter hollows out its own result at the point it is most faithful.
+    formal/learner/meta_interpreter.pl:209 (the clause head) read together with the cost/modal gap at :214&ndash;218 and the throw at :259. The head of solve/6 claims to be solving <code>Goal</code>, yet its sixth argument is not the solution but a static trace term <code>[clause(object_level:(Goal:-Body)), trace(Body, BodyTrace)]</code> &mdash; the answer <code>Sum</code> is effaced into a trace at the very point the interpreter is most faithfully re-executing its own clause. The faithful re-execution (the :219 clause-read + :220 re-descent) is exactly what accrues the cost at :214&ndash;218 that drives the budget to zero, so check_viability at :256 throws <code>perturbation(resource_exhaustion)</code> at :259. The interpreter hollows out its own result at the point it is most faithful.
   </div>
 </div>
 
@@ -319,7 +319,7 @@ CAUGHT: perturbation(resource_exhaustion)</pre>
 <div class="panel">
   <p class="eyebrow">the numeral</p>
   <h3>The numeral entombs its counting-history</h3>
-  <p class="fileline">formalization/axioms_robinson.pl:114&ndash;115 (recollection_history/2); grounding rules at :310&ndash;314, :322&ndash;326, :339&ndash;343 calling once(is_recollection(_, _)); is_recollection/2 at :46&ndash;50 via history_for_nonnegative_integer/2 at :28&ndash;33</p>
+  <p class="fileline">formal/formalization/axioms_robinson.pl:114&ndash;115 (recollection_history/2); grounding rules at :310&ndash;314, :322&ndash;326, :339&ndash;343 calling once(is_recollection(_, _)); is_recollection/2 at :46&ndash;50 via history_for_nonnegative_integer/2 at :28&ndash;33</p>
 
   <div class="svgframe">
     <img src="recollection-numeral.svg" alt="is_recollection building the full count from 5 back to axiom(zero), while the grounding rule calls it with the history slot blanked to an underscore and hands back an empty proof.">
@@ -354,7 +354,7 @@ Proof object is UNBOUND (var) -> the proof is discarded</pre>
 
   <div class="deconstructs">
     <div class="lbl">where it eats its own tail</div>
-    formalization/axioms_robinson.pl:312 &mdash; the second argument of <code>once(is_recollection(A, _))</code> inside the proves_impl grounding rule. The predicate is named is_recollection and its whole reason to exist is to bind and exhibit History; the grounding caller invokes it only to throw the recollected history away (anonymous <code>_</code>), and the proves_impl head discards the proof object as <code>_</code> too. The origin (the count from zero) is effaced at the very instant it would be recollected. This is a vanishing point (effaced trace), not a Diagonal Sandwich.
+    formal/formalization/axioms_robinson.pl:312 &mdash; the second argument of <code>once(is_recollection(A, _))</code> inside the proves_impl grounding rule. The predicate is named is_recollection and its whole reason to exist is to bind and exhibit History; the grounding caller invokes it only to throw the recollected history away (anonymous <code>_</code>), and the proves_impl head discards the proof object as <code>_</code> too. The origin (the count from zero) is effaced at the very instant it would be recollected. This is a vanishing point (effaced trace), not a Diagonal Sandwich.
   </div>
 </div>
 

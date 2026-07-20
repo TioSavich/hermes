@@ -49,21 +49,21 @@ LOAD_CALL_RE = re.compile(
 
 PROLOG_PATHS = {
     "arche_trace": Path("arche-trace"),
-    "carving": Path("tools/carving"),
+    "carving": Path("formal/tools/carving"),
     "crosswalk": Path("crosswalk"),
-    "formalization": Path("formalization"),
+    "formalization": Path("formal/formalization"),
     "geometry": Path("geometry"),
     "hermes": Path("hermes"),
     "im_lessons": Path("lessons/im"),
-    "learner": Path("learner"),
+    "learner": Path("formal/learner"),
     "lessons": Path("lessons"),
     "math": Path("strategies/math"),
     "misconceptions": Path("misconceptions"),
-    "pml": Path("pml"),
+    "pml": Path("formal/pml"),
     "render": Path("strategies/render"),
     "standards": Path("standards"),
     "strategies": Path("strategies"),
-    "tools": Path("tools"),
+    "tools": Path("formal/tools"),
     "zeeman": Path("more-zeeman/prolog"),
 }
 
@@ -125,18 +125,25 @@ ROLE_PREFIXES: tuple[tuple[str, str], ...] = (
 DIRECTORY_ROLES = {
     "arche-trace": "arche_trace",
     "crosswalk": "crosswalk",
-    "formalization": "synthesis",
+    "formal/formalization": "synthesis",
     "geometry": "geometry_witness",
     "hermes": "infrastructure",
-    "learner": "learner",
+    "formal/learner": "learner",
     "lessons": "workflow",
     "misconceptions": "misconceptions",
     "more-zeeman": "zeeman",
-    "pml": "pml",
+    "formal/pml": "pml",
     "standards": "standards",
     "strategies": "synthesis",
-    "tools": "infrastructure",
+    "formal/tools": "infrastructure",
 }
+
+
+def directory_role(path: str) -> str:
+    for prefix, role in DIRECTORY_ROLES.items():
+        if path == prefix or path.startswith(prefix + "/"):
+            return role
+    return "unclassified"
 
 
 def prolog_atom(value: str) -> str:
@@ -574,7 +581,7 @@ def orphan_modules() -> list[tuple[str, str, str]]:
     rows = []
     for rel in sorted(set(shipped) - closure):
         path = ROOT / rel
-        role = DIRECTORY_ROLES.get(rel.split("/", 1)[0], "unclassified")
+        role = directory_role(rel)
         rows.append((rel, module_name(path), role))
     return rows
 

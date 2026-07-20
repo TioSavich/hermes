@@ -33,7 +33,7 @@
  * SYNTACTIC compatibility with the axiom packs. The engine treats them
  * as syntactic constructors used by the law-of-non-contradiction matcher
  * and the S5 elimination rules. It does NOT give the PML operators the
- * modal semantics described in `pml/Modal_Logic/`.
+ * modal semantics described in `formal/pml/Modal_Logic/`.
  *
  * Reader's rule of thumb for the public predicates:
  *   - proves/1 is a yes/no theorem check.
@@ -47,11 +47,11 @@
  * embodied modal logic. The axiom sets that establish the current
  * "assumptive horizon" are included from their respective modules:
  *
- *   formalization/axioms_geometry.pl    — quadrilateral taxonomy
- *   formalization/axioms_robinson.pl    — Robinson Q, arithmetic grounding
- *   formalization/axioms_number_theory.pl — Euclid's prime proof
- *   pml/axioms_eml.pl                  — embodied modal logic
- *   learner/axioms_domains.pl          — domain switching, norms, fractions
+ *   formal/formalization/axioms_geometry.pl    — quadrilateral taxonomy
+ *   formal/formalization/axioms_robinson.pl    — Robinson Q, arithmetic grounding
+ *   formal/formalization/axioms_number_theory.pl — Euclid's prime proof
+ *   formal/pml/axioms_eml.pl                  — embodied modal logic
+ *   formal/learner/axioms_domains.pl          — domain switching, norms, fractions
  *
  * The vanishing-point mark (automata.pl) and hollow proofs
  * (embodied_prover.pl) record where formalization honestly stops being
@@ -285,11 +285,11 @@ is_incoherent(Y) :- incoherent_base(Y), !.
 % PRIORITY 2: Material Axioms (from axiom sets)
 % =================================================================
 
-:- include('../formalization/axioms_robinson').
-:- include('../formalization/axioms_geometry').
-:- include('../formalization/axioms_number_theory').
-:- include('../pml/axioms_eml').
-:- include('../learner/axioms_domains').
+:- include('../formal/formalization/axioms_robinson').
+:- include('../formal/formalization/axioms_geometry').
+:- include('../formal/formalization/axioms_number_theory').
+:- include('../formal/pml/axioms_eml').
+:- include('../formal/learner/axioms_domains').
 
 % =================================================================
 % PRIORITY 3: Structural Rules (scene-agnostic engine)
@@ -346,7 +346,7 @@ proves_impl((P => C), H) :- select(nec(X), C, C1), !, ( proves_impl((P => C1), H
 % =================================================================
 
 % PML operators (s/1, o/1, n/1, neg/1, comp_nec/1, etc.) now live
-% in pml/pml_operators.pl and are re-exported via :- reexport(pml(pml_operators)).
+% in formal/pml/pml_operators.pl and are re-exported via :- reexport(pml(pml_operators)).
 
 % These predicates reserve functor names used inside sequents. They must not
 % succeed as raw goals, otherwise the engine can "prove" domain facts without

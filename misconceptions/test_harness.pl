@@ -19,7 +19,7 @@
 % arche-trace/sequent_engine.pl. `entails_via_incompatibility/2`
 % therefore lives inside the sequent_engine module and we call
 % it via module qualification below, following the pattern in
-% formalization/tests/test_geometry_entailment.pl.
+% formal/formalization/tests/test_geometry_entailment.pl.
 
 :- module(test_harness,
           [ run_all/0
@@ -39,7 +39,7 @@
 % test_harness module it tries to re-load paths.pl (non-module file
 % already in user) and double-imports utilities. Loading via user:
 % keeps every inner directive in user context, matching the pattern
-% in formalization/tests/test_geometry_entailment.pl.
+% in formal/formalization/tests/test_geometry_entailment.pl.
 :- user:ensure_loaded(arche_trace(load)).
 
 :- use_module(library(lists)).

@@ -10,7 +10,7 @@
 %
 % vision_lesson_strategy/4 is deliberately NOT explicit_lesson_strategy/4:
 % these facts license task execution (vision_attested obligations in
-% learner/activity_contract.pl) and compiler coverage, but stay out of the
+% formal/learner/activity_contract.pl) and compiler coverage, but stay out of the
 % monitoring-chart join, so cluster-derived charts and their cited
 % misconceptions are untouched. No lesson is converted, no existing mapping
 % displaced, no misconception added.

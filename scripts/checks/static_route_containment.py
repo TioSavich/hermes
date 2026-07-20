@@ -16,7 +16,7 @@ def main() -> int:
     app = ROOT / "hermes/app"
     mounts = {
         "more-zeeman": ROOT / "more-zeeman",
-        "learner": ROOT / "learner",
+        "learner": ROOT / "formal" / "learner",
         "representation": ROOT / "representation",
         "ASKTM_Data": ROOT / "ASKTM_Data",
         "docs": ROOT / "docs",
@@ -40,4 +40,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

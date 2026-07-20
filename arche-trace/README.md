@@ -28,13 +28,13 @@ individual modules directly.
 - `differance_juncture.pl` — encodes and makes queryable a structural fact; it
   does not implement différance. It is wired only to web pages.
 - `data/incompatibility_sets_discovered.pl` — a generated discovery cache (do not
-  hand-edit); `tools/find_emergent_hyperedges.pl` searches the real data.
+  hand-edit); `arche-trace/tools/find_emergent_hyperedges.pl` searches the real data.
 
 ## Consumers and boundary
 
-`hermes_worker.pl`, `learner/`, the `crosswalk` families, the `pml` axioms, and
+`hermes_worker.pl`, `formal/learner/`, the `crosswalk` families, the `pml` axioms, and
 `misconceptions/literature_deontic_bridge.pl` load these modules;
-`tools/axiom_toggle.pl` and `tools/axiom_pack_audit.pl` load the full stack.
+`formal/tools/axiom_toggle.pl` and `formal/tools/axiom_pack_audit.pl` load the full stack.
 Full incompatibility entailment is not computable over an open language; this
 computes the closed-world finite case. The former word "erasure" was withdrawn
 for these proof nodes because Derridean erasure keeps the crossed term legible,

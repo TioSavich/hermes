@@ -201,7 +201,7 @@ run_fraction_action(whole_number_grab, Count, Base, Outcome, Trace) :-
 % mutual inverses (1/Base * Base = 1). That recognition — not the two moves on
 % their own — is the productive content, grounded in L&N's Object-Construction
 % entailment "split then refit returns the unit" (grounds_inference in
-% formalization/grounding_metaphors.pl). The recovered whole opens the
+% formal/formalization/grounding_metaphors.pl). The recovered whole opens the
 % improper-fraction band. The deformation iterates the part forward without the
 % inverse recognition and overshoots, never recovering the whole.
 % -----------------------------------------------------------------------------

@@ -117,7 +117,7 @@ incompatible_set([blackberry, red, ripe]).
 % irrational), so a count-of-units reading has no value for it.
 % Provenance chain, each link runnable:
 %   - catalogue row: base_metaphor_breaks_at/3 for arithmetic_is_measuring_stick
-%     (formalization/grounding_metaphors.pl), a Lakoff & Nunez break-point;
+%     (formal/formalization/grounding_metaphors.pl), a Lakoff & Nunez break-point;
 %   - compiled form: compiled_break(measuring_stick_incommensurability, ...)
 %     (arche-trace/defeasible_inference.pl), whose classification as
 %     emergent_defeat carries a one-element-removal minimality witness

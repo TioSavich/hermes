@@ -206,11 +206,11 @@ def static_audit(tree: Path, report: Report) -> None:
             "strategies/render/rigid_motion_scene.pl", "geometry/geometry_bridge.pl",
             "rigid_motion_render", "crosswalk/merge_evidence.pl",
             "/api/witness/pml", "semantic_material_witness", "validate_reader_axioms",
-            "pml/mua_conjectures.pl", "misconceptions/pml_wire.pl",
+            "formal/pml/mua_conjectures.pl", "misconceptions/pml_wire.pl",
             "/api/witness/grounding", "image_schema", "target_expressive_power_witness",
         ),
         "more-zeeman/bridge.html": (
-            "learner/activity_contract.pl", "learner/reorg_domains/fraction.pl",
+            "formal/learner/activity_contract.pl", "formal/learner/reorg_domains/fraction.pl",
             "strategies/math_benchmark.pl",
         ),
         "more-zeeman/coordination.html": (
@@ -226,7 +226,7 @@ def static_audit(tree: Path, report: Report) -> None:
             "lessons/im/generated/compiled_task_instances.pl",
         ),
         "hermes/app/web/breaks.html": (
-            "arche-trace/differance_juncture.pl", "formalization/axioms_robinson.pl",
+            "arche-trace/differance_juncture.pl", "formal/formalization/axioms_robinson.pl",
             "arche-trace/registry_incompatibility_adapter.pl",
         ),
         "hermes/app/web/no.html": (
