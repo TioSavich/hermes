@@ -24,6 +24,7 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from hermes.app import gate, llm, worker
+from hermes.app.field_context_cache import load_field_context_cache
 from hermes.app.routes.logic import RouteLogic
 from hermes.app.routes.registry import Router, build_router
 from hermes.app.system_prompts import load_required_system_prompts
@@ -116,6 +117,7 @@ class AppServices:
 
     worker: WorkerService
     gate: GateService
+    field_context_cache: dict[str, dict[str, Any]] = field(default_factory=dict)
     field_audit_cache: Any | None = None
     _two_pass_cache: ModuleType | None = None
     _two_pass_lock: threading.Lock = field(default_factory=threading.Lock)
@@ -136,7 +138,11 @@ class AppServices:
 
 # Prompt loading is a startup invariant, before a socket is opened.
 SYSTEM_PROMPTS = MappingProxyType(load_required_system_prompts())
-SERVICES = AppServices(WorkerService(), GateService(RUNTIME))
+SERVICES = AppServices(
+    WorkerService(),
+    GateService(RUNTIME),
+    field_context_cache=load_field_context_cache(REPO_ROOT),
+)
 ROUTER = build_router()
 
 

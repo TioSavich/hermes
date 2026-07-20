@@ -87,7 +87,19 @@ python3 scripts/render/check_prebaked.py
 python3 scripts/bundle/smoke_bundle.py
 ```
 
-`scripts/checks/` holds twelve focused checks — strict Prolog loads,
+When lesson, strategy, misconception, standards, literature, or
+expressive-power facts change, regenerate the lesson context cache before the
+checks:
+
+```sh
+python3 scripts/research/build_field_context_cache.py
+```
+
+The generator records the checkout revision and computes all lessons in one
+SWI-Prolog process. The check suite compares a fixed lesson with the live
+worker and fails if the generated values drift.
+
+`scripts/checks/` holds focused checks — strict Prolog loads,
 route registry and behavior fixtures, render contract and adapter
 round-trips, workflow service parity — each runnable on its own; the
 runner stops at the first failure and names it.

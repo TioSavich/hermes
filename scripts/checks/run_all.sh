@@ -20,6 +20,7 @@ run required_system_prompts.py python3 "$CHECKS_DIR/required_system_prompts.py"
 run extract_capability_registry python3 "$CHECKS_DIR/../extract_capability_registry.py" --check
 run render_contract.py      python3 "$CHECKS_DIR/render_contract.py"
 run strict_load.sh          bash "$CHECKS_DIR/strict_load.sh"
+run field_context_cache.py  python3 "$CHECKS_DIR/field_context_cache.py"
 run crosswalk_load.sh       bash "$CHECKS_DIR/crosswalk_load.sh"
 run geometry_load.sh        bash "$CHECKS_DIR/geometry_load.sh"
 run strict_gate_failures.py python3 "$CHECKS_DIR/strict_gate_failures.py"

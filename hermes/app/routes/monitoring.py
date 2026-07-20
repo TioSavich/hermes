@@ -17,7 +17,16 @@ def field_context(ctx: Any) -> None:
     if not lesson_code:
         ctx._send_json({"error": "lesson_code is required"}, status=400)
         return
-    ctx._send_json({"ok": True, "result": ctx.worker_request("field_context", lesson_code=lesson_code)})
+    cached = ctx.services.field_context_cache.get(lesson_code)
+    if cached is not None:
+        result = dict(cached)
+        result["served_from"] = "cache"
+        ctx._send_json({"ok": True, "result": result})
+        return
+    result = ctx.worker_request("field_context", lesson_code=lesson_code)
+    result = dict(result)
+    result["served_from"] = "live"
+    ctx._send_json({"ok": True, "result": result})
 
 
 def monitoring_chart_export(ctx: Any) -> None:

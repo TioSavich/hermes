@@ -176,7 +176,24 @@ field_brief_evidence_points(_Status, Missing, Counts, _ProofPaths,
             CitationCount]).
 
 
-lesson_readiness_dict(Code, Readiness) :-
+:- dynamic lesson_readiness_inputs_cache/5.
+
+lesson_readiness_inputs(Codes,
+                        StrategyPairs,
+                        MisconceptionPairs,
+                        ClusterPairs,
+                        LiteratureLinkPairs) :-
+    lesson_readiness_inputs_cache(Codes,
+                                  StrategyPairs,
+                                  MisconceptionPairs,
+                                  ClusterPairs,
+                                  LiteratureLinkPairs),
+    !.
+lesson_readiness_inputs(Codes,
+                        StrategyPairs,
+                        MisconceptionPairs,
+                        ClusterPairs,
+                        LiteratureLinkPairs) :-
     findall(EncodedCode,
             lesson_monitoring:encoded_lesson(EncodedCode, _Concept, _Title, _Grade, _Unit, _Lesson),
             Codes0),
@@ -185,6 +202,19 @@ lesson_readiness_dict(Code, Readiness) :-
     audit_misconception_pairs(MisconceptionPairs),
     audit_cluster_pairs(Codes, ClusterPairs),
     audit_literature_link_pairs(LiteratureLinkPairs),
+    assertz(lesson_readiness_inputs_cache(Codes,
+                                          StrategyPairs,
+                                          MisconceptionPairs,
+                                          ClusterPairs,
+                                          LiteratureLinkPairs)).
+
+
+lesson_readiness_dict(Code, Readiness) :-
+    lesson_readiness_inputs(_Codes,
+                            StrategyPairs,
+                            MisconceptionPairs,
+                            ClusterPairs,
+                            LiteratureLinkPairs),
     lesson_connectivity_row(StrategyPairs,
                             MisconceptionPairs,
                             ClusterPairs,
@@ -995,7 +1025,17 @@ operation_power_dict(Operation-region_paths(ProofPaths, Cells, SumDistinctCosts)
     term_text(Operation, OperationText).
 
 
-literature_summary_dict(_{
+:- dynamic literature_summary_cache/1.
+
+literature_summary_dict(Dict) :-
+    literature_summary_cache(Dict),
+    !.
+literature_summary_dict(Dict) :-
+    literature_summary_uncached(Dict),
+    assertz(literature_summary_cache(Dict)).
+
+
+literature_summary_uncached(_{
     scope: "corpus_global",
     total_facts: Total,
     mapped_facts: Mapped,
