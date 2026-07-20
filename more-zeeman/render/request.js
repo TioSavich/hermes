@@ -53,7 +53,10 @@
   }
 
   function messageFor(result) {
-    if (result.kind === "timeout" || result.kind === "offline") {
+    if (result.kind === "timeout") {
+      return "This ran past its time budget. The app may still be computing — heavy requests can outlast the wait. Trying again often works; restarting the app clears a stuck worker.";
+    }
+    if (result.kind === "offline") {
       return "The app isn't answering. Start it with the run button, or this stays a static view.";
     }
     if (result.kind === "http-error") return "The app returned HTTP " + result.status + ".";

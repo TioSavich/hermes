@@ -259,6 +259,10 @@ class HermesHandler(BaseHTTPRequestHandler):
         """
         try:
             self.router.dispatch(context)
+        except (BrokenPipeError, ConnectionResetError):
+            # The client hung up mid-reply (usually a browser that hit its
+            # time budget). Nothing to answer; one quiet line, no traceback.
+            print(f"client disconnected mid-reply ({self.path})", file=sys.stderr)
         except Exception as exc:
             self._send_backend_error(context, exc)
 
@@ -311,13 +315,16 @@ class HermesHandler(BaseHTTPRequestHandler):
 
     def _send_json(self, payload: Any, *, status: int = 200) -> None:
         data = json.dumps(payload).encode("utf-8")
-        self.send_response(status)
-        self.send_header("Content-Type", "application/json")
-        self._send_cors_headers()
-        self.send_header("Cache-Control", "no-store, max-age=0")
-        self.send_header("Content-Length", str(len(data)))
-        self.end_headers()
-        self.wfile.write(data)
+        try:
+            self.send_response(status)
+            self.send_header("Content-Type", "application/json")
+            self._send_cors_headers()
+            self.send_header("Cache-Control", "no-store, max-age=0")
+            self.send_header("Content-Length", str(len(data)))
+            self.end_headers()
+            self.wfile.write(data)
+        except (BrokenPipeError, ConnectionResetError):
+            print(f"client disconnected before the reply ({self.path})", file=sys.stderr)
 
 
 def main(argv: list[str] | None = None) -> int:
