@@ -546,11 +546,23 @@ def balanced_selection(entries: list[Entry], domains: list[str], limit: int) -> 
     if unknown:
         raise ValueError(f"non-arithmetic or unknown pilot domain(s): {', '.join(unknown)}")
     buckets = {domain: [entry for entry in entries if entry.domain == domain] for domain in domains}
-    quota = math.ceil(limit / len(domains))
+    # Round-robin so small domains empty gracefully and the surplus goes
+    # to the domains that still have rows.
     selected: list[Entry] = []
-    for domain in domains:
-        selected.extend(buckets[domain][:quota])
-    return selected[:limit]
+    cursors = {domain: 0 for domain in domains}
+    while len(selected) < limit:
+        advanced = False
+        for domain in domains:
+            if len(selected) >= limit:
+                break
+            i = cursors[domain]
+            if i < len(buckets[domain]):
+                selected.append(buckets[domain][i])
+                cursors[domain] = i + 1
+                advanced = True
+        if not advanced:
+            break
+    return selected
 
 
 def write_outcome(entry: Entry, status: str, body: str, gate: GateResult | None = None) -> Path:
@@ -595,7 +607,14 @@ def run(args: argparse.Namespace) -> int:
 
     selected = balanced_selection(entries, args.domains, args.limit)
     if len(selected) < args.limit:
-        raise RuntimeError(f"requested {args.limit} entries but only selected {len(selected)}")
+        print(f"note: {args.limit} requested; the chosen domains hold {len(selected)} skip rows — running all of them", flush=True)
+    already = [e for e in selected if any(
+        (OUTPUT_ROOT / status / e.domain / f"{e.candidate_name}{'.pl' if status == 'admitted' else '.txt'}").exists()
+        for status in ("admitted", "abstained", "rejected"))]
+    if already:
+        print(f"resume: {len(already)} rows already carry an outcome record and are skipped", flush=True)
+        skip_names = {e.candidate_name for e in already}
+        selected = [e for e in selected if e.candidate_name not in skip_names]
     llm = load_llm_module()
     llm.load_dotenv(ROOT)
     api_key = llm.require_api_key()
