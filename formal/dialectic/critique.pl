@@ -11,7 +11,8 @@
  *  does NOT replace them. The two implementations share predicate names
  *  (reflect/2, accommodate/1, get_stress_map/1, the stress map) because they model the
  *  same activity in two distinct registers; they are reconciled, not merged, by
- *  knowledge/crosswalk/families/cw_stress_map.pl, cw_accommodation.pl, and cw_normative_crisis.pl,
+ *  the cw_stress_map, cw_accommodation, and cw_normative_crisis groups in
+ *  knowledge/crosswalk/families/cw_edges.pl,
  *  each of which use_modules both sides.
  *
  *  (Synthesis_1, Chapter 4.5)

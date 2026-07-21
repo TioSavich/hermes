@@ -19,7 +19,8 @@ proves the concept in context.
   grandfathered before the gate.
 - `representation_spine.pl` — crosswalks coded student-work assets, reading
   `hermes/representation/asset_manifest.json`.
-- `families/` — the 38 crosswalk families. See `families/README.md`.
+- `families/` — 34 keyed data families in `cw_edges.pl`, four own-surface
+  families, and their shared driver. See `families/README.md`.
 
 ## How it loads
 

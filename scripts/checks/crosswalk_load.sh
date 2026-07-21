@@ -8,9 +8,9 @@ swipl --on-error=status --on-warning=status -q -l paths.pl -g "
     use_module(crosswalk(canonical_all), []),
     canonical_all:crosswalk_family_count(38),
     canonical_all:validate_crosswalk_families,
-    current_module(cw_deontic_incoherence),
-    current_module(cw_strategy_action_kind),
-    current_module(cw_stress_map),
+    cw_driver:data_family(cw_deontic_incoherence),
+    cw_driver:data_family(cw_strategy_action_kind),
+    cw_driver:data_family(cw_stress_map),
     halt."
 
 staged_crosswalk=$(mktemp -d)
@@ -19,10 +19,15 @@ trap 'rm -rf "$staged_crosswalk"; rm -f "$diagnostics"' EXIT
 mkdir -p "$staged_crosswalk/families"
 cp knowledge/crosswalk/canonical_all.pl knowledge/crosswalk/canonical_vocabulary.pl "$staged_crosswalk/"
 for family in knowledge/crosswalk/families/cw_*.pl; do
-    if [[ $(basename "$family") != cw_stress_map.pl ]]; then
+    if [[ $(basename "$family") != cw_edges.pl ]]; then
         ln -s "$repo_root/$family" "$staged_crosswalk/families/$(basename "$family")"
     fi
 done
+awk '
+    $0 == "% cw_stress_map" { skip = 1 }
+    $0 == "% cw_unit_coordination" { skip = 0 }
+    !skip { print }
+' knowledge/crosswalk/families/cw_edges.pl >"$staged_crosswalk/families/cw_edges.pl"
 
 if CROSSWALK_CHECK_ROOT="$staged_crosswalk" \
     swipl --on-error=status --on-warning=status -q -l paths.pl -g "

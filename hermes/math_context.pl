@@ -35,28 +35,13 @@
             provenance/1 ]).
 
 % --- surfaces (loaded with empty import lists; called module-qualified) ------
-% The crosswalk families export overlapping helper predicates
-% (canonical_concept/2, vocabulary_source/2); importing several at once
-% collides. We load them for side effect only and qualify every call.
-:- use_module(crosswalk(families/cw_productive_deformation), []).
-:- use_module(crosswalk(families/cw_action_cluster), []).
-:- use_module(crosswalk(families/cw_unit_coordination), []).
-:- use_module(crosswalk(families/cw_grounding_metaphor), []).
+% Driver-backed families share one keyed data table. Own-surface families still
+% export overlapping helpers, so all crosswalk imports stay empty and calls are
+% module-qualified.
+:- use_module(crosswalk(families/cw_driver), []).
 :- use_module(crosswalk(families/cw_fraction_claim), []).
-:- use_module(crosswalk(families/cw_whole_number_addsub_claim), []).
-:- use_module(crosswalk(families/cw_decimal_claim), []).
-% Mechanical claim families are data modules loaded by cw_driver. These loads
-% also keep the family modules present for the canonical 38-family contract.
-:- use_module(crosswalk(families/cw_algebra_claim), []).
-:- use_module(crosswalk(families/cw_arithmetic_property_claim), []).
-:- use_module(crosswalk(families/cw_calculus_claim), []).
 :- use_module(crosswalk(families/cw_counting_claim), []).
-:- use_module(crosswalk(families/cw_fraction_extra_claim), []).
-:- use_module(crosswalk(families/cw_integer_signed_claim), []).
-:- use_module(crosswalk(families/cw_magnitude_equivalence_claim), []).
-:- use_module(crosswalk(families/cw_multiplication_division_claim), []).
 :- use_module(crosswalk(families/cw_place_value_number_claim), []).
-:- use_module(crosswalk(families/cw_ratio_proportion_claim), []).
 :- use_module(crosswalk(families/cw_whole_number_claim), []).
 :- use_module(crosswalk(canonical_all), []).
 :- use_module(misconceptions(literature_vocabulary), []).

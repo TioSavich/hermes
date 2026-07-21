@@ -33,7 +33,7 @@
  * incompatibility-set routes, and when it is absent the guarded call fails
  * silently instead of raising existence_error. Within-scorekeeper surface unions
  * (relation vs scorecard dict) belong to the family modules
- * (knowledge/crosswalk/families/cw_deontic_incoherence.pl); this module unions ACROSS
+ * (`cw_deontic_incoherence` in knowledge/crosswalk/families/cw_edges.pl); this module unions ACROSS
  * engine layers.
  *
  * Wave 2 refusal, recorded here so the Wave-1 promise of further families

@@ -19,6 +19,7 @@
             domain_context_unified/3,
             executable_practice_unified/4,
             fraction_extra_claim_unified/3,
+            family_edge/6,
             fsm_engine_unified/2,
             godel_primes_unified/3,
             grounded_arith_unified/4,
@@ -58,77 +59,17 @@
 :- use_module(strategies('math/action_automata_registry'), []).
 :- use_module(strategies('math/fraction_action_pairs'), []).
 
-% The eleven source modules are data containers. Loading them here also keeps
-% canonical_all's named 38-family module contract intact.
-:- use_module(crosswalk('families/cw_algebra_claim'), []).
-:- use_module(crosswalk('families/cw_arithmetic_property_claim'), []).
-:- use_module(crosswalk('families/cw_calculus_claim'), []).
-:- use_module(crosswalk('families/cw_decimal_claim'), []).
-:- use_module(crosswalk('families/cw_fraction_extra_claim'), []).
-:- use_module(crosswalk('families/cw_integer_signed_claim'), []).
-:- use_module(crosswalk('families/cw_magnitude_equivalence_claim'), []).
-:- use_module(crosswalk('families/cw_multiplication_division_claim'), []).
-:- use_module(crosswalk('families/cw_ratio_proportion_claim'), []).
-:- use_module(crosswalk('families/cw_strategy_action_kind'), []).
-:- use_module(crosswalk('families/cw_whole_number_addsub_claim'), []).
-:- use_module(crosswalk('families/cw_accommodation'), []).
-:- use_module(crosswalk('families/cw_action_cluster'), []).
-:- use_module(crosswalk('families/cw_axiom_pack'), []).
-:- use_module(crosswalk('families/cw_deontic_incoherence'), []).
-:- use_module(crosswalk('families/cw_domain_context'), []).
-:- use_module(crosswalk('families/cw_executable_practice'), []).
-:- use_module(crosswalk('families/cw_fsm_engine'), []).
-:- use_module(crosswalk('families/cw_godel_primes'), []).
-:- use_module(crosswalk('families/cw_grounded_arith'), []).
-:- use_module(crosswalk('families/cw_grounding_metaphor'), []).
-:- use_module(crosswalk('families/cw_material_inference'), []).
-:- use_module(crosswalk('families/cw_metaphor_break'), []).
-:- use_module(crosswalk('families/cw_misconception_hook'), []).
-:- use_module(crosswalk('families/cw_modal_context'), []).
-:- use_module(crosswalk('families/cw_mua_coherence'), []).
-:- use_module(crosswalk('families/cw_normative_crisis'), []).
-:- use_module(crosswalk('families/cw_orr_entry'), []).
-:- use_module(crosswalk('families/cw_practice_vocabulary'), []).
-:- use_module(crosswalk('families/cw_productive_deformation'), []).
-:- use_module(crosswalk('families/cw_sequent_proof'), []).
-:- use_module(crosswalk('families/cw_stress_map'), []).
-:- use_module(crosswalk('families/cw_unit_coordination'), []).
-:- use_module(crosswalk('families/cw_viability'), []).
+% One keyed table holds the recorded clauses and owner-predicate edges for all
+% driver-backed families. The four own-surface families remain separate.
+:- use_module(crosswalk('families/cw_edges'), []).
 
-data_family(cw_algebra_claim).
-data_family(cw_arithmetic_property_claim).
-data_family(cw_calculus_claim).
-data_family(cw_decimal_claim).
-data_family(cw_fraction_extra_claim).
-data_family(cw_integer_signed_claim).
-data_family(cw_magnitude_equivalence_claim).
-data_family(cw_multiplication_division_claim).
-data_family(cw_ratio_proportion_claim).
-data_family(cw_strategy_action_kind).
-data_family(cw_whole_number_addsub_claim).
-data_family(cw_accommodation).
-data_family(cw_action_cluster).
-data_family(cw_axiom_pack).
-data_family(cw_deontic_incoherence).
-data_family(cw_domain_context).
-data_family(cw_executable_practice).
-data_family(cw_fsm_engine).
-data_family(cw_godel_primes).
-data_family(cw_grounded_arith).
-data_family(cw_grounding_metaphor).
-data_family(cw_material_inference).
-data_family(cw_metaphor_break).
-data_family(cw_misconception_hook).
-data_family(cw_modal_context).
-data_family(cw_mua_coherence).
-data_family(cw_normative_crisis).
-data_family(cw_orr_entry).
-data_family(cw_practice_vocabulary).
-data_family(cw_productive_deformation).
-data_family(cw_sequent_proof).
-data_family(cw_stress_map).
-data_family(cw_unit_coordination).
-data_family(cw_viability).
+data_family(Family) :-
+    cw_edges:family(Family).
+
+%! family_edge(+Family, ?Module, ?Predicate, ?Args, ?Outputs, ?Archetype) is nondet.
+family_edge(Family, Module, Predicate, Args, Outputs, Archetype) :-
+    data_family(Family),
+    cw_edges:edge(Family, Module, Predicate, Args, Outputs, Archetype).
 
 % Closed enum for how a recorded edge probes its owner predicate.
 archetype(call_bind_out).
@@ -268,14 +209,17 @@ solve_family_goal(Family, Goal) :-
 
 family_predicate(Family, Goal) :-
     functor(Goal, Name, Arity),
-    once(( Family:cw_rule(Rule),
+    once(( family_rule(Family, Rule),
            rule_head(Rule, Head),
            functor(Head, Name, Arity) )).
 
 family_clause(Family, Goal, Body) :-
-    Family:cw_rule(Rule),
+    family_rule(Family, Rule),
     rule_clause(Rule, Head, Body),
     Goal = Head.
+
+family_rule(Family, Rule) :-
+    cw_edges:rule(Family, Rule).
 
 rule_head((Head :- _), Head) :- !.
 rule_head(Head, Head).
