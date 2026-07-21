@@ -9,6 +9,7 @@ from pathlib import Path
 
 
 REPO = Path(__file__).resolve().parent.parent
+DEFAULT_METADATA_ROOT = REPO / "data" / "asktm"
 DEFAULT_OUT = REPO / "representation" / "asktm_bindings_draft.json"
 DEFAULT_REPORT = REPO / "representation" / "asktm_bindings_review.md"
 LEGEND_DIRS = {
@@ -148,7 +149,8 @@ def write_report(path, rows, counts):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--metadata-root", required=True, type=Path)
+    parser.add_argument("--metadata-root", type=Path,
+                        default=DEFAULT_METADATA_ROOT)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUT)
     parser.add_argument("--report", type=Path, default=DEFAULT_REPORT)
     args = parser.parse_args()

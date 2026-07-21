@@ -26,8 +26,8 @@ from types import SimpleNamespace
 REPO = Path(__file__).resolve().parents[1]
 CORPUS_SCRIPT = REPO / "research_corpus" / "scripts" / "find_student_work_figures.py"
 STAMP = "2026-06-18-all-domains"
-ASSET_DIR = REPO / "docs" / "research_assets" / "research" / "student_work_figures" / STAMP
-JSON_OUT = (REPO / "docs" / "research_assets" / "research"
+ASSET_DIR = REPO / "data" / "research_assets" / "research" / "student_work_figures" / STAMP
+JSON_OUT = (REPO / "data" / "research_assets" / "research"
             / f"{STAMP}-student-work-figure-candidates.json")
 
 

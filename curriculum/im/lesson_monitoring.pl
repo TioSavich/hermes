@@ -1268,11 +1268,11 @@ scope_sequence_lesson_line(Line, Code, Title, Grade, Unit, LessonNumber) :-
 
 
 monitoring_cluster_source(k8_operations,
-                          'docs/research_assets/research/2026-05-11-k8-operations-monitoring-chart-clusters.json').
+                          'data/research_assets/research/2026-05-11-k8-operations-monitoring-chart-clusters.json').
 monitoring_cluster_source(fraction,
-                          'docs/research_assets/research/2026-05-11-fraction-monitoring-chart-clusters.json').
+                          'data/research_assets/research/2026-05-11-fraction-monitoring-chart-clusters.json').
 monitoring_cluster_source(geometry,
-                          'docs/research_assets/research/2026-05-11-geometry-monitoring-chart-clusters.json').
+                          'data/research_assets/research/2026-05-11-geometry-monitoring-chart-clusters.json').
 
 
 monitoring_cluster_dict(RelativePath, Cluster) :-

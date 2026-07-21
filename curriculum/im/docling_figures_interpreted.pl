@@ -4,8 +4,8 @@
  *   python3 representation/regenerate_docling_interpreted.py
  *
  * Source join (iteration13 B1):
- *   docs/research_assets/research/docling_classifications.json  (REALLMs per-figure)
- *   docs/research_assets/research/2026-06-18-docling-figures.jsonl (crop list + topics)
+ *   data/research_assets/research/docling_classifications.json  (REALLMs per-figure)
+ *   data/research_assets/research/2026-06-18-docling-figures.jsonl (crop list + topics)
  *   research_corpus/research.db  (article-level domains, grade_bucket)
  *
  * Membership: figures REALLMs flagged as student work.

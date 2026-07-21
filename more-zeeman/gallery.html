@@ -199,7 +199,7 @@ function el(tag, attrs = {}, ...kids) {
 let DATA = { asktm: [], literature: [] };
 let tab = 'asktm';
 
-// The manifest and the ASKTM images it points at ship under ASKTM_Data/;
+// The manifest and ASKTM images ship from data/asktm/ at the stable /ASKTM_Data/ URL;
 // the fine-grained coding Word documents stay in the source project. Probe
 // one manifest path once; if a copy is incomplete, the ASKTM tab explains
 // itself instead of laying out broken thumbnails. The literature figures
@@ -342,7 +342,7 @@ function render() {
       ? el('p', { class: 'empty' }, 'Checking for the local image corpus…')
       : el('div', { class: 'corpus-note' },
           el('p', {}, 'The ' + DATA.asktm.length + ' ASKTM student-work images '
-            + 'ship in the research corpus under ASKTM_Data/, but this copy '
+            + 'ship in the research corpus under data/asktm/, but this copy '
             + 'cannot serve them.'),
           el('p', { style: 'margin-top:.6rem' },
             'The fine-grained coding Word documents stay in the source project. '

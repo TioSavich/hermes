@@ -10,9 +10,9 @@
 #
 # Gallery figure images (~190 MB) are not baked in; the gallery names the
 # absence, the same way a checkout without local research data does. To serve
-# them, bind-mount the repo's docs tree:
+# them, bind-mount the repo's research-assets tree at its stable URL path:
 #   docker run --rm -p 8765:8765 \
-#     -v "$PWD/docs/research_assets:/app/docs/research_assets:ro" umedcta
+#     -v "$PWD/data/research_assets:/app/data/research_assets:ro" umedcta
 #
 # Build:    docker build -t umedcta .
 # Run:      docker run --rm -p 8765:8765 umedcta

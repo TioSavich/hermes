@@ -26,6 +26,17 @@ import sys
 
 MANIFEST_REL = os.path.join("representation", "asset_manifest.json")
 
+
+def asset_storage_path(bundle, url_path):
+    """Map a stable gallery URL to its location in a staged bundle."""
+    if url_path.startswith("ASKTM_Data/"):
+        url_path = "data/asktm/" + url_path.removeprefix("ASKTM_Data/")
+    elif url_path.startswith("docs/research_assets/"):
+        url_path = "data/research_assets/" + url_path.removeprefix(
+            "docs/research_assets/"
+        )
+    return os.path.join(bundle, url_path)
+
 READMES = {
     "reviewer": """\
 # UMEDCTA public surfaces — reviewer bundle
@@ -57,7 +68,7 @@ def prune_manifest(bundle):
     kept, dropped_by_source = [], {}
     for a in assets:
         img = a.get("image", "")
-        if img and os.path.exists(os.path.join(bundle, img)):
+        if img and os.path.exists(asset_storage_path(bundle, img)):
             kept.append(a)
         else:
             src = a.get("source", "unknown")

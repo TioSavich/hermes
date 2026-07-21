@@ -5,7 +5,7 @@
  * Companion to knowledge/strategies/render/attested_objects.pl (same corpus, same membership).
  *
  * Source: REALLMs figure classifications
- *   docs/research_assets/research/docling_classifications.json
+ *   data/research_assets/research/docling_classifications.json
  *   joined to bibkey via the crop directory name.
  * Membership: figures REALLMs flagged as student work
  *   (has_handwriting_or_student_work = true), same rule as the per-figure file

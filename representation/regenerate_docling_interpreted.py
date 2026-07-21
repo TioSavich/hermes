@@ -2,8 +2,8 @@
 """Regenerate the interpreted-figure fact base (iteration13 B1).
 
 Joins the per-figure REALLMs classifications
-(docs/research_assets/research/docling_classifications.json) to the docling figure
-crop list (docs/research_assets/research/2026-06-18-docling-figures.jsonl) and to the
+(data/research_assets/research/docling_classifications.json) to the docling figure
+crop list (data/research_assets/research/2026-06-18-docling-figures.jsonl) and to the
 article-level coding in research_corpus/research.db, then writes a richer
 GENERATED Prolog fact base over the same student-work figures the old /5 file
 carried.
@@ -61,10 +61,10 @@ PL_OUT = os.path.join(REPO, "curriculum", "im", "docling_figures_interpreted.pl"
 JSON_OUT = os.path.join(REPO, "curriculum", "im", "docling_figures_interpreted.json")
 
 DOCLING_JSONL = os.path.join(
-    REPO, "docs", "research_assets", "research", "2026-06-18-docling-figures.jsonl"
+    REPO, "data", "research_assets", "research", "2026-06-18-docling-figures.jsonl"
 )
 DOCLING_CLASSIFICATIONS = os.path.join(
-    REPO, "docs", "research_assets", "research", "docling_classifications.json"
+    REPO, "data", "research_assets", "research", "docling_classifications.json"
 )
 
 
@@ -201,8 +201,8 @@ def emit_pl(rows):
     out.append(" *   python3 representation/regenerate_docling_interpreted.py")
     out.append(" *")
     out.append(" * Source join (iteration13 B1):")
-    out.append(" *   docs/research_assets/research/docling_classifications.json  (REALLMs per-figure)")
-    out.append(" *   docs/research_assets/research/2026-06-18-docling-figures.jsonl (crop list + topics)")
+    out.append(" *   data/research_assets/research/docling_classifications.json  (REALLMs per-figure)")
+    out.append(" *   data/research_assets/research/2026-06-18-docling-figures.jsonl (crop list + topics)")
     out.append(" *   research_corpus/research.db  (article-level domains, grade_bucket)")
     out.append(" *")
     out.append(" * Membership: figures REALLMs flagged as student work.")
@@ -282,7 +282,7 @@ def emit_json(rows):
     payload = {
         "generator": "representation/regenerate_docling_interpreted.py",
         "note": ("Audit/debug surface mirroring docling_figures_interpreted.pl "
-                 "docling_figure_rich/8. Repo-root-relative image paths."),
+                 "docling_figure_rich/8. Stable public image URL paths."),
         "count": len(rows),
         "rows": rows,
     }

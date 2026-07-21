@@ -55,13 +55,17 @@ def _resolve_mount(ctx: Any, url_path: str) -> Path | None:
     # Pre-split semantics, preserved exactly: unquote before selecting the
     # mount, require a non-empty tail, and serve files only (no directory
     # index fallback — the web root resolver has none either).
-    parts = urllib.parse.unquote(url_path.lstrip("/")).split("/", 1)
-    if len(parts) < 2 or not parts[1]:
+    decoded = urllib.parse.unquote(url_path.lstrip("/"))
+    matches = [name for name in ctx.static_mounts
+               if decoded.startswith(name + "/")]
+    if not matches:
         return None
-    base = ctx.static_mounts.get(parts[0])
-    if base is None:
+    mount = max(matches, key=len)
+    tail = decoded[len(mount) + 1:]
+    if not tail:
         return None
-    target = (base / parts[1]).resolve()
+    base = ctx.static_mounts[mount]
+    target = (base / tail).resolve()
     base_resolved = base.resolve()
     if not target.is_file():
         return None

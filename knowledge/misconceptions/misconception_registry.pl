@@ -622,14 +622,14 @@ action_corpus_bindings_path(Path) :-
     action_corpus_bindings_root(Root),
     directory_file_path(
         Root,
-        'docs/research_assets/research/2026-05-11-action-automata-corpus-bindings.csv',
+        'data/research_assets/research/2026-05-11-action-automata-corpus-bindings.csv',
         Path
     ),
     exists_file(Path),
     !.
 action_corpus_bindings_path(Path) :-
     absolute_file_name(
-        'docs/research_assets/research/2026-05-11-action-automata-corpus-bindings.csv',
+        'data/research_assets/research/2026-05-11-action-automata-corpus-bindings.csv',
         Path,
         [access(read)]
     ).

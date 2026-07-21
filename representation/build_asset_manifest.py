@@ -2,10 +2,8 @@
 """Build the representation asset manifest.
 
 Reads two already-coded image corpora and emits one JSON manifest that the
-gallery surface (more-zeeman/gallery.html) fetches. This is the first concrete
-`asset_for` data for the representation spine described in
-docs/proposals/2026-06-18-representation-vision.md. Image paths in the manifest
-are repo-root-relative; the gallery resolves them against the repo root.
+gallery surface (more-zeeman/gallery.html) fetches. Image paths in the manifest
+are stable public URL paths; the gallery resolves them against the server root.
 
 Two sources today:
 
@@ -39,7 +37,7 @@ OUT = os.path.join(REPO, "representation", "asset_manifest.json")
 ASKTM_BINDINGS = os.path.join(
     REPO, "representation", "asktm_bindings_draft.json",
 )
-ASKTM_ROOT = os.path.join(REPO, "ASKTM_Data")
+ASKTM_ROOT = os.path.join(REPO, "data", "asktm")
 ASKTM_G4_CLIPS = os.path.join(ASKTM_ROOT, "Grade 4student response clippings")
 ASKTM_G5_CLIPS = os.path.join(
     ASKTM_ROOT, "Grade 5 Students' responses Clips (q1-q8)",
@@ -49,6 +47,29 @@ ASKTM_G5_CLIPS = os.path.join(
 def rel(p):
     """Path relative to the repo root, forward-slashed."""
     return os.path.relpath(p, REPO).replace(os.sep, "/")
+
+
+def public_url(p):
+    """Stable repo-root URL for a file in the reorganized data trees."""
+    path = rel(p)
+    if path.startswith("data/asktm/"):
+        return "ASKTM_Data/" + path.removeprefix("data/asktm/")
+    if path.startswith("data/research_assets/"):
+        return "docs/research_assets/" + path.removeprefix(
+            "data/research_assets/"
+        )
+    return path
+
+
+def storage_path(url_path):
+    """Resolve a stable manifest URL to its repository storage path."""
+    if url_path.startswith("ASKTM_Data/"):
+        url_path = "data/asktm/" + url_path.removeprefix("ASKTM_Data/")
+    elif url_path.startswith("docs/research_assets/"):
+        url_path = "data/research_assets/" + url_path.removeprefix(
+            "docs/research_assets/"
+        )
+    return os.path.join(REPO, url_path)
 
 
 # Predicate-shaped concept keys for the gallery. These are conservative joins:
@@ -266,7 +287,7 @@ def _asset(grade, q, code, stu, clip, tags, desc, png, tree=None,
         "student": stu,
         "clip": clip,
         "tags": sorted(tags),
-        "image": rel(png),
+        "image": public_url(png),
     })
     if code:
         key = (int(grade), str(q), code.upper())
@@ -354,17 +375,17 @@ def build_asktm(metadata_root=None, bindings_path=ASKTM_BINDINGS):
 # --------------------------------------------------------------------------
 
 LIT_JSON = os.path.join(
-    REPO, "docs", "research_assets", "research",
+    REPO, "data", "research_assets", "research",
     "2026-05-11-fraction-student-work-figure-candidates.json",
 )
 # docling figure crops (all domains) — preferred over the full-page fraction set
 DOCLING_JSONL = os.path.join(
-    REPO, "docs", "research_assets", "research", "2026-06-18-docling-figures.jsonl",
+    REPO, "data", "research_assets", "research", "2026-06-18-docling-figures.jsonl",
 )
 # REALLMs per-figure classification (representation language, spatial elements,
 # student-work flag, transplant-hybridization flag, transcribed math, strategy).
 DOCLING_CLASSIFICATIONS = os.path.join(
-    REPO, "docs", "research_assets", "research", "docling_classifications.json",
+    REPO, "data", "research_assets", "research", "docling_classifications.json",
 )
 
 
@@ -522,7 +543,7 @@ def build_literature_docling():
             if not line:
                 continue
             r = json.loads(line)
-            if not os.path.exists(os.path.join(REPO, r["image"])):
+            if not os.path.exists(storage_path(r["image"])):
                 continue
             am = meta.get(r.get("bibtex_key"), {})
             ckey = "/".join(r["image"].replace("\\", "/").split("/")[-2:])
@@ -584,10 +605,10 @@ def build_literature():
     assets = []
     for c in data.get("candidates", []):
         page_img = c.get("rendered_page_path")
-        if not page_img or not os.path.exists(os.path.join(REPO, page_img)):
+        if not page_img or not os.path.exists(storage_path(page_img)):
             continue
         crops = [p for p in (c.get("crop_paths") or [])
-                 if os.path.exists(os.path.join(REPO, p))]
+                 if os.path.exists(storage_path(p))]
         assets.append(_with_prolog_concepts({
             "source": "literature",
             "id": f"lit-{c.get('article_id')}-p{c.get('page_ref')}",
@@ -632,7 +653,7 @@ def input_warnings(metadata_root=None, preserving_literature=False):
         warn(
             "asktm_data_missing",
             ASKTM_ROOT,
-            "ASKTM_Data is absent; ASKTM assets will be omitted.",
+            "data/asktm is absent; ASKTM assets will be omitted.",
         )
 
     metadata_root = metadata_root or ASKTM_ROOT
@@ -699,7 +720,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--asktm-metadata-root",
-        help="ASKTM_Data directory containing converted fine-grained Markdown",
+        help="ASKTM metadata directory containing converted fine-grained Markdown",
     )
     args = parser.parse_args()
 
@@ -716,8 +737,8 @@ def main():
         # immutable for a build, so wall-clock time must not spoil determinism.
         "generated_at": existing.get("generated_at"),
         "generator": "representation/build_asset_manifest.py",
-        "note": ("Repo-root-relative image paths. Serve the gallery from the "
-                 "repo root so '../' resolves to it."),
+        "note": ("Stable public image URL paths. Serve the gallery from the "
+                 "server root so '../' resolves to them."),
         "counts": {
             "asktm": len(asktm),
             "literature": len(lit),

@@ -10,8 +10,8 @@ bloat and removes the hand-cropping step.
 Slow but resumable: it skips articles already recorded, so it can run for hours
 in the background and be re-run to finish. Outputs:
 
-  docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/<bibkey>/pNN_k.png
-  docs/research_assets/research/2026-06-18-docling-figures.jsonl   (one figure per line)
+  data/research_assets/research/student_work_figures/2026-06-18-docling-figures/<bibkey>/pNN_k.png
+  data/research_assets/research/2026-06-18-docling-figures.jsonl   (one figure per line)
 
 representation/build_asset_manifest.py reads the .jsonl when present.
 
@@ -33,8 +33,8 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 CORPUS_SCRIPT = REPO / "research_corpus" / "scripts" / "find_student_work_figures.py"
 STAMP = "2026-06-18-docling-figures"
-ASSET_DIR = REPO / "docs" / "research_assets" / "research" / "student_work_figures" / STAMP
-JSONL = REPO / "docs" / "research_assets" / "research" / f"{STAMP}.jsonl"
+ASSET_DIR = REPO / "data" / "research_assets" / "research" / "student_work_figures" / STAMP
+JSONL = REPO / "data" / "research_assets" / "research" / f"{STAMP}.jsonl"
 LOG = Path(tempfile.gettempdir()) / "docling_pipeline.log"
 
 MIN_KB = 10          # drop glyph-noise
@@ -195,7 +195,9 @@ def process(art, idx_in, total):
                 "page_no": page_no,
                 "page_ref": pg["page_ref"] if pg else None,
                 "on_candidate_page": on_cand,
-                "image": str(dest.relative_to(REPO)).replace(os.sep, "/"),
+                "image": ("docs/research_assets/" + str(
+                    dest.relative_to(REPO / "data" / "research_assets")
+                ).replace(os.sep, "/")),
                 "width": w, "height": ht,
                 "caption": caption,
                 "error_topics": err[:6],

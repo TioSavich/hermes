@@ -1,6 +1,6 @@
 {
  "generator": "representation/regenerate_docling_interpreted.py",
- "note": "Audit/debug surface mirroring docling_figures_interpreted.pl docling_figure_rich/8. Repo-root-relative image paths.",
+ "note": "Audit/debug surface mirroring docling_figures_interpreted.pl docling_figure_rich/8. Stable public image URL paths.",
  "count": 1359,
  "rows": [
   {

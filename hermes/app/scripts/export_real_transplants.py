@@ -5,7 +5,7 @@ literature-exemplar transplant filmstrips.
 These three figures were read by the ReaLLMs descriptor pass and carry
 ``is_hybridized_transplant: true`` with a ``hybrid_details`` tuple
 (foreign_primitive, illicit_host) in
-``docs/research_assets/research/docling_classifications.json``:
+``data/research_assets/research/docling_classifications.json``:
 
   - ESM_Cadez_2018  p14_2  (rectangular_grid_partition on circle)
   - MERJ_Zhang_2015 p18_1  (radial_partition on rectangle)
@@ -41,7 +41,7 @@ from hermes.app.scripts import export_hybridization_demo as demo
 
 DOCLING_CLASSIFICATIONS = (
     REPO_ROOT
-    / "docs"
+    / "data"
     / "research_assets"
     / "research"
     / "docling_classifications.json"

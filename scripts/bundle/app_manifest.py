@@ -38,12 +38,12 @@ KEEP_TREES_RATIONALE = [
     ("hermes", "console app + root .pl modules (encyclopedia, scoring)"),
     ("more-zeeman", "public web surfaces"),
     ("representation", "asset manifest the gallery reads"),
-    ("ASKTM_Data", "coded student-work corpus (PNGs + survey text) the gallery serves; publicly shared at IU; NSF Grant No. 1561453 acknowledgement in NOTICE.md; coding documents stay in the source project"),
+    ("data/asktm", "coded student-work corpus (PNGs + survey text) the gallery serves at /ASKTM_Data/; publicly shared at IU; NSF Grant No. 1561453 acknowledgement in NOTICE.md; coding documents stay in the source project"),
     ("knowledge", "empirically sourced action automata, misconception registry, standards anchors, geometry concepts and corpus, and canonical vocabulary crosswalk"),
     ("curriculum", "IM lesson monitoring KB and attributed teacher-guide inputs"),
     ("formal", "reasoning machinery: sequent and incompatibility engines, dialectic and juncture models, learner models, grounded formalization, PML semantics, and carving/audit tools"),
-    ("research", "derivative layer of the literature corpus (coded db + bibliography); the copyrighted articles stay in the source project"),
-    ("docs/research_assets/research/student_work_figures",
+    ("data/research", "derivative layer of the literature corpus (coded db + bibliography); the copyrighted articles stay in the source project"),
+    ("data/research_assets/research/student_work_figures",
      "student-work figures excerpted from the coded literature, served by the gallery with citations attached; the articles themselves stay in the source project"),
 ]
 KEEP_TREES = [tree for tree, _ in KEEP_TREES_RATIONALE]
@@ -82,13 +82,13 @@ KEEP_FILES = [
     # Coded derivative data tables the worker consults at op time (cluster
     # maps, annotations, classifications). They ship; the student-work
     # figure images beside them are article excerpts and stay optional.
-    "docs/research_assets/research/2026-05-11-action-automata-corpus-bindings.csv",
-    "docs/research_assets/research/2026-05-11-fraction-monitoring-chart-clusters.json",
-    "docs/research_assets/research/2026-05-11-geometry-monitoring-chart-clusters.json",
-    "docs/research_assets/research/2026-05-11-k8-operations-monitoring-chart-clusters.json",
-    "docs/research_assets/research/2026-05-21-action-semantic-pragmatic-annotations.json",
-    "docs/research_assets/research/2026-05-21-action-topology-calculator-context.json",
-    "docs/research_assets/research/docling_classifications.json",
+    "data/research_assets/research/2026-05-11-action-automata-corpus-bindings.csv",
+    "data/research_assets/research/2026-05-11-fraction-monitoring-chart-clusters.json",
+    "data/research_assets/research/2026-05-11-geometry-monitoring-chart-clusters.json",
+    "data/research_assets/research/2026-05-11-k8-operations-monitoring-chart-clusters.json",
+    "data/research_assets/research/2026-05-21-action-semantic-pragmatic-annotations.json",
+    "data/research_assets/research/2026-05-21-action-topology-calculator-context.json",
+    "data/research_assets/research/docling_classifications.json",
     "formal/learner/peano_utils.pl",          # shared Peano conversion utility
     "formal/learner/teacher_local_prolog.pl", # teacher-bound strategy provider
     "curriculum/im/generated/compiled_action_mappings.pl",  # lesson monitoring runtime cache
@@ -147,7 +147,7 @@ KEEP_MD = {
     "docs/research/2026-07-01-talkmoves-pass1-math-prompt.md",
     "docs/research/2026-07-01-talkmoves-pass2-posture-prompt.md",
     "docs/research/2026-06-25-the-juncture-and-differance.md",
-    "ASKTM_Data/survey_questions.md",
+    "data/asktm/survey_questions.md",
     "curriculum/im_teacher_guides/ATTRIBUTION.md",
     "formal/README.md",
     "knowledge/crosswalk/README.md",
@@ -197,7 +197,7 @@ EXCLUDE_FILES = {
 # Gallery figures (--with-figures): the literature student-work images the
 # asset manifest points at. ~190 MB; the flash-drive bundle wants them, the
 # Docker image degrades honestly without them (prebake-style manifest prune).
-FIGURES_PREFIX = "docs/research_assets/research/"
+FIGURES_PREFIX = "data/research_assets/research/"
 
 
 def tracked_files() -> list[str]:
@@ -209,6 +209,11 @@ def tracked_files() -> list[str]:
     # pre-staging regeneration cannot silently under-ship the moved trees.
     relocated_trees = {"formalization", "pml", "tools", "learner"}
     knowledge_trees = {"strategies", "misconceptions", "standards", "geometry", "crosswalk"}
+    data_trees = {
+        "ASKTM_Data": "asktm",
+        "research": "research",
+        "docs/research_assets": "research_assets",
+    }
     files: list[str] = []
     for path in out.stdout.decode().split("\0"):
         if not path:
@@ -229,6 +234,16 @@ def tracked_files() -> list[str]:
         curriculum_path = "/".join(curriculum_parts)
         if curriculum_path and (REPO / curriculum_path).is_file():
             files.append(curriculum_path)
+            continue
+        for old_tree, new_tree in data_trees.items():
+            if path == old_tree or path.startswith(old_tree + "/"):
+                data_path = "data/" + new_tree + path[len(old_tree):]
+                if (REPO / data_path).is_file():
+                    files.append(data_path)
+                    break
+        else:
+            data_path = ""
+        if data_path and (REPO / data_path).is_file():
             continue
         tree, separator, remainder = path.partition("/")
         relocated = f"formal/{tree}/{remainder}" if separator and tree in relocated_trees else ""

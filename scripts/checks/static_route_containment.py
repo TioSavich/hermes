@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
 from hermes.app.routes.static import resolve_static_file  # noqa: E402
+from hermes.app.server import STATIC_MOUNTS  # noqa: E402
 
 
 def main() -> int:
@@ -18,9 +19,14 @@ def main() -> int:
         "more-zeeman": ROOT / "more-zeeman",
         "learner": ROOT / "formal" / "learner",
         "representation": ROOT / "representation",
-        "ASKTM_Data": ROOT / "ASKTM_Data",
+        "ASKTM_Data": ROOT / "data" / "asktm",
         "docs": ROOT / "docs",
+        "docs/research_assets": ROOT / "data" / "research_assets",
     }
+    if mounts != dict(STATIC_MOUNTS):
+        print("containment mount table differs from server STATIC_MOUNTS",
+              file=sys.stderr)
+        return 1
     ctx = SimpleNamespace(web_root=app / "web", static_mounts=mounts)
     probes = ["/../server.py", "/%2e%2e/server.py"]
     for mount in mounts:
@@ -34,7 +40,7 @@ def main() -> int:
     if resolve_static_file(ctx, "/console.html") != app / "web/console.html":
         print("web-root control file did not resolve", file=sys.stderr)
         return 1
-    print(f"static containment: {len(probes)} traversal probes rejected across web root and five mounts")
+    print(f"static containment: {len(probes)} traversal probes rejected across web root and six mounts")
     return 0
 
 

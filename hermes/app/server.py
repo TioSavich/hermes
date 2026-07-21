@@ -37,8 +37,9 @@ STATIC_MOUNTS = {
     "more-zeeman": REPO_ROOT / "more-zeeman",
     "learner": REPO_ROOT / "formal" / "learner",
     "representation": REPO_ROOT / "representation",
-    "ASKTM_Data": REPO_ROOT / "ASKTM_Data",
+    "ASKTM_Data": REPO_ROOT / "data" / "asktm",
     "docs": REPO_ROOT / "docs",
+    "docs/research_assets": REPO_ROOT / "data" / "research_assets",
 }
 
 OVERRIDE_ALLOWED = os.environ.get("HERMES_GATE_OVERRIDE", "").strip().lower() in ("1", "true", "yes")

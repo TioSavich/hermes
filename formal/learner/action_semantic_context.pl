@@ -28,13 +28,13 @@
    file_directory_name(ThisDir, RepoRoot),
    directory_file_path(
        RepoRoot,
-       'docs/research_assets/research/2026-05-21-action-semantic-pragmatic-annotations.json',
+       'data/research_assets/research/2026-05-21-action-semantic-pragmatic-annotations.json',
        ReportPath
    ),
    assertz(default_annotation_report_path(ReportPath)),
    directory_file_path(
        RepoRoot,
-       'docs/research_assets/research/2026-05-21-action-topology-calculator-context.json',
+       'data/research_assets/research/2026-05-21-action-topology-calculator-context.json',
        ContextPath
    ),
    assertz(default_calculator_context_report_path(ContextPath)).

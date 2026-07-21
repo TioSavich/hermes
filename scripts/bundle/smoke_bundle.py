@@ -168,6 +168,11 @@ def api_prefixes(tree: Path) -> list[str]:
 
 
 def url_to_file(tree: Path, url_path: str) -> Path:
+    if url_path.startswith("/ASKTM_Data/"):
+        return tree / "data/asktm" / url_path.removeprefix("/ASKTM_Data/")
+    if url_path.startswith("/docs/research_assets/"):
+        return (tree / "data/research_assets"
+                / url_path.removeprefix("/docs/research_assets/"))
     parts = url_path.lstrip("/").split("/", 1)
     if parts[0] in MOUNTS:
         return tree / url_path.lstrip("/")

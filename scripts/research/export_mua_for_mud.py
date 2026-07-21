@@ -12,7 +12,7 @@ Prolog predicates. The script is idempotent: running it again will produce
 byte-for-byte identical output (modulo Prolog's discovery order, which is
 sorted in the output for stability).
 
-The shipped ``research/research_shared.db`` is a complete copy of the source
+The shipped ``data/research/research_shared.db`` is a complete copy of the source
 database: the export audit found no full-text carrier tables or columns, so
 none were dropped. Article abstracts remain as bibliographic metadata; coded
 fields, short summaries, and page-anchored quotations are derivative records.
@@ -38,7 +38,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[2]
 OUT_PATH = REPO_ROOT / "more-zeeman" / "mua_data.json"
 PATHS_PL = REPO_ROOT / "paths.pl"
-RESEARCH_DB = REPO_ROOT / "research" / "research_shared.db"
+RESEARCH_DB = REPO_ROOT / "data" / "research" / "research_shared.db"
 
 
 # Prolog extractor script content. The Prolog code prints lines of the form

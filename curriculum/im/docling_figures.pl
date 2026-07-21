@@ -17,7 +17,7 @@
  *   OnCandidatePage -- docling's candidate-page flag (weak student-work signal)
  *   Caption         -- docling caption (largely empty; '' when absent)
  *
- * Source: docs/research_assets/research/2026-06-18-docling-figures.jsonl
+ * Source: data/research_assets/research/2026-06-18-docling-figures.jsonl
  */
 :- module(docling_figures, [ docling_figure/5 ]).
 
