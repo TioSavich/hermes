@@ -10,11 +10,62 @@
   const PROSE_AREA = document.getElementById('prose-area');
   const ORIGINAL_PROSE = PROSE_AREA.innerHTML;
 
-  const REGISTER_STUB = {
-    freshman:
-      'This register is not yet written. The philosopher register below is what has been written so far. The freshman view will narrate the same diagram in undergraduate language, but that prose has not yet been drafted.',
-    'math-ed':
-      'This register is not yet written. The philosopher register below is what has been written so far. The math-ed view will frame the diagram for teacher educators, but that prose has not yet been drafted.',
+  // Each register narrates the same diagram for a different reader. The
+  // facts underneath (formal/pml/mua_relations.pl) do not change; the
+  // vocabulary that makes them accessible does.
+  const REGISTER_PROSE = {
+    'math-ed': `
+      <h2 class="head">Doings and sayings in a strategy registry</h2>
+      <p class="lead">A child who counts on from the larger addend can
+      already do most of what long division will one day require: hold a
+      number, act on it in order, keep track of what remains. This page
+      charts relations of that kind. A box is a practice a student can
+      have; an oval is a vocabulary a classroom can talk in; an arrow
+      records a sufficiency claim &mdash; this doing is enough to build
+      that one, this talk is enough to spell out that doing. Brandom's
+      name for the composite relation, LX, fits classroom work closely:
+      talk that grows out of a practice and, once grown, says what the
+      practice was already doing.</p>
+      <p>The pairing teachers usually meet as procedural and conceptual
+      knowledge sits inside these arrows rather than beside them. On the
+      account this page draws from, grasping a concept is a practical
+      mastery: the student who reliably makes ten, and can tell what
+      makes the move good, holds the concept, and the telling is the
+      doing made explicit. Long division is Brandom's own example of
+      elaboration &mdash; multiplication and subtraction exercised in the
+      right order under the right conditions. What a curriculum calls
+      building on prior knowledge, the diagram treats as a claim precise
+      enough to check: which abilities suffice to assemble which others.</p>
+      <p>The arrows also carry a stake beyond arithmetic. A strategy is
+      an action, and an action is something a student can answer for.
+      When a student names the move they made and stands behind it, or
+      revises it under a classmate's question, they take on a commitment;
+      the mathematics becomes theirs to defend and to change. Freedom in
+      a mathematics classroom, read this way, is the capacity to bind
+      oneself to a claim and remain answerable for it. The diagram cannot
+      draw that becoming, but every LX edge it holds is a place where it
+      can happen.</p>`,
+    freshman: `
+      <h2 class="head">What you can do and what you can say</h2>
+      <p class="lead">You already know how to do more mathematics than
+      you can put into words. This page draws maps of that gap and of the
+      ways across it. A box is something a person can do: count on from
+      the larger number, split a ten, share a total into equal groups. An
+      oval is a way of talking. An arrow is a claim about enough: if you
+      can do this, you can already build that; if a class can talk this
+      way, it can spell out what that doing was.</p>
+      <p>The example the framework itself uses is long division. There is
+      no extra ingredient in it: multiplication, subtraction, and writing
+      results down, run in the right order, are the whole of it. New
+      abilities in mathematics are mostly old abilities put together
+      under a schedule, and the diagram records which ones suffice.</p>
+      <p>The dashed line marks something worth noticing in your own work.
+      When you explain why your move was a good one, the explanation
+      turns a habit into a claim you hold: a thing you can defend, fix
+      when it fails, or hand to someone else. Mathematics starts to
+      belong to you at exactly that step, and it is also the step where
+      you can be asked for reasons. Both are the same fact about what an
+      explanation is.</p>`,
   };
 
   document.querySelectorAll('.reg-btn').forEach(btn => {
@@ -28,12 +79,13 @@
       const reg = btn.dataset.reg;
       if (reg === 'philosopher') {
         PROSE_AREA.innerHTML = ORIGINAL_PROSE;
+      } else if (REGISTER_PROSE[reg]) {
+        PROSE_AREA.innerHTML = REGISTER_PROSE[reg];
       } else {
-        const note = REGISTER_STUB[reg] || 'This register is not yet written.';
         PROSE_AREA.innerHTML = `
           <div class="stub">
             <b>${reg} register — not yet written</b>
-            ${note}
+            This register is not yet written.
           </div>`;
       }
     });
