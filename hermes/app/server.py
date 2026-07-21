@@ -25,6 +25,7 @@ if __package__ in (None, ""):
 
 from hermes.app import gate, llm, worker
 from hermes.app.field_context_cache import load_field_context_cache
+from hermes.app.routes.misconception_search import EmbeddingIndex, load_index as load_misconception_embedding_index
 from hermes.app.routes.logic import RouteLogic
 from hermes.app.routes.registry import Router, build_router
 from hermes.app.system_prompts import load_required_system_prompts
@@ -119,6 +120,7 @@ class AppServices:
     worker: WorkerService
     gate: GateService
     field_context_cache: dict[str, dict[str, Any]] = field(default_factory=dict)
+    misconception_embedding_index: EmbeddingIndex | None = None
     field_audit_cache: Any | None = None
     _two_pass_cache: ModuleType | None = None
     _two_pass_lock: threading.Lock = field(default_factory=threading.Lock)
@@ -143,6 +145,7 @@ SERVICES = AppServices(
     WorkerService(),
     GateService(RUNTIME),
     field_context_cache=load_field_context_cache(REPO_ROOT),
+    misconception_embedding_index=load_misconception_embedding_index(REPO_ROOT),
 )
 ROUTER = build_router()
 

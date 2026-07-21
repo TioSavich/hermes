@@ -667,6 +667,11 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
         <div class="search"><input type="text" id="enc-search" placeholder="Filter…" /></div>
         <span id="enc-stats" class="catalog-stats"></span>
       </div>
+      <div class="mc-bar" id="misconception-resonance" hidden>
+        <input type="text" id="misconception-resonance-input" placeholder="Find documented misconceptions from an utterance…" />
+        <button class="btn" id="misconception-resonance-search">Search</button>
+        <div class="out" id="misconception-resonance-out" hidden></div>
+      </div>
       <div class="enc-body">
         <div id="enc-list" class="enc-list"><em class="muted-inline">loading…</em></div>
         <div id="enc-detail" class="enc-detail"><em class="muted-inline">Select an item to inspect it here.</em></div>
@@ -789,6 +794,7 @@ const WORKER_POST_PATHS = new Set([
   '/api/strategies', '/api/misconceptions', '/api/standards',
   '/api/benny_demo', '/api/canonical_contract', '/api/canonical_check',
   '/api/query_misconception', '/api/geometry', '/api/witness/misconception',
+  '/api/misconception_search',
   '/api/diagnose_error', '/api/monitoring_visuals',
   '/api/monitoring_chart_export', '/api/render',
 ]);
@@ -1696,6 +1702,7 @@ const ENC_PATHS = { strategies: '/api/strategies', misconceptions: '/api/misconc
 function selectEnc(section) {
   ENC_SECTION = section; ENC_SEL = null;
   document.querySelectorAll('.enc-tab').forEach(t => t.classList.toggle('active', t.dataset.enc === section));
+  $("#misconception-resonance").hidden = section !== 'misconceptions';
   $("#enc-search").value = '';
   $("#enc-search").placeholder = section === 'standards' ? 'Filter by code or statement…'
     : section === 'grounding' ? 'Filter metaphors…' : `Filter ${section}…`;
@@ -1725,6 +1732,24 @@ function renderEncStats(section, r) {
   else if (section === 'grounding') el.innerHTML = `<b>${r.count || 0}</b> grounding metaphors (basic + repair)`;
   else if (section === 'benny') el.innerHTML = `<b>${(r.comparisons || []).length}</b> side-by-side comparisons (Benny's deformed rules vs their correct counterparts)`;
 }
+
+function renderMisconceptionResonance(results) {
+  if (!results.length) return "<p class='muted-inline'>No indexed rows were returned.</p>";
+  return results.map(result => `<div class="enc-group"><b>${esc(result.name)}</b> · ${esc(result.domain)} <span class="muted-inline">score ${Number(result.score).toFixed(3)}</span><br>${esc(result.description)}<br><span class="muted-inline">${esc(result.citation)}</span></div>`).join('');
+}
+
+async function searchMisconceptionResonance() {
+  const utterance = $("#misconception-resonance-input").value.trim();
+  const out = $("#misconception-resonance-out");
+  if (!utterance) { out.hidden = false; out.textContent = "Enter an utterance to search the documented registry."; return; }
+  out.hidden = false; out.innerHTML = "<em class='muted-inline'>searching the embedding index…</em>";
+  try {
+    const { data } = await postJSON('/api/misconception_search', { utterance, k: 8 });
+    if (!data || data.retrieval !== 'embedding') throw new Error((data && data.error) || 'The embedding search returned no provenance marker.');
+    out.innerHTML = renderMisconceptionResonance(data.results || []);
+  } catch (error) { setRequestFailure(out, error); }
+}
+if ($("#misconception-resonance-search")) $("#misconception-resonance-search").addEventListener('click', searchMisconceptionResonance);
 
 function encFilter() {
   const q = $("#enc-search").value.trim().toLowerCase();

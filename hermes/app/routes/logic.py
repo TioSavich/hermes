@@ -29,7 +29,7 @@ WITNESS_OPS: dict[str, frozenset[str]] = {
         "critique_bad_infinite",
         "defeasible_classify",
         "embodied_proof_witness",
-        "eml_transition_witness",
+        "rhythm_transition_witness",
         "incoherent_witness",
         "incompatibility_discovery_witness",
         "incompatibility_entailment_witness",
@@ -1480,7 +1480,7 @@ class RouteLogic:
     def _handle_axiom_toggle(self, payload: dict) -> None:
         # Runtime axiom toggling: action=list enumerates every toggle with its
         # state; enable/disable require `axiom` (a toggle term string such as
-        # "pack(eml)"). Only these three actions exist on this surface, so any
+        # "pack(rhythm)"). Only these three actions exist on this surface, so any
         # disable stays inspectable and reversible from the same console.
         action = str(payload.get("action") or "list").strip()
         request: dict[str, Any] = {"action": action}

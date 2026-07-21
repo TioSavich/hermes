@@ -65,7 +65,7 @@ class Router:
 
 
 def build_router() -> Router:
-    from hermes.app.routes import analysis, gate, llm, monitoring, runtime, static, worker, workflow
+    from hermes.app.routes import analysis, gate, llm, misconception_search, monitoring, runtime, static, worker, workflow
 
     routes = (
         *static.ROUTES,
@@ -73,6 +73,7 @@ def build_router() -> Router:
         *runtime.ROUTES,
         *analysis.ROUTES,
         *llm.ROUTES,
+        *misconception_search.ROUTES,
         *monitoring.ROUTES,
         *worker.ROUTES,
         *workflow.ROUTES,
