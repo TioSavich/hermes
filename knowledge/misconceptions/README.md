@@ -34,7 +34,7 @@ Named sources in the code include Erlwanger 1973, Byers & Erlwanger 1984, Leatha
 ## Consumers and boundary
 
 `hermes_worker.pl`, the `formal/incompatibility` modules, `knowledge/strategies/`
-(expressive power, render coverage), `curriculum/im/`, `hermes/` scoring, and
+(inferential strength, render coverage), `curriculum/im/`, `hermes/` scoring, and
 `knowledge/crosswalk/families/cw_driver.pl` load the registry. An entry is an attested move
 with a source, not merely a generated deformation; the generated literature facts
 come from a source-project database and are not hand-edited here.

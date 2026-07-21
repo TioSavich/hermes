@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40192",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40192_equal_area_requires_congruent_shape",
+    "target_operation": "equipartitioning_noncongruent_parts",
+    "citation": "P. Holt Wilson, Paola Sztajn, Cyndi Edgington, Jere Confrey (2014)",
+    "error_action": "equal_area_requires_congruent_shape",
+    "error_description": "parts can only be the same size if they have matching side lengths or shapes",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (equal area requires congruent shape), but no runnable procedural rule (predicate of arity 2) can be derived that produces a specific wrong numerical outcome for a given input in the fraction domain. The error is semantic/visual, not algorithmic, and does not map to a deterministic arithmetic operation on fractions that can be encoded as a Prolog rule producing a concrete incorrect result.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (equal area requires congruent shape), but no runnable procedural rule (predicate of arity 2) can be derived that produces a specific wrong numerical outcome for a given input in the fraction domain. The error is semantic/visual, not algorithmic, and does not map to a deterministic arithmetic operation on fractions that can be encoded as a Prolog rule producing a concrete incorrect result.",
+      "result": "abstained"
+    }
+  ]
+}

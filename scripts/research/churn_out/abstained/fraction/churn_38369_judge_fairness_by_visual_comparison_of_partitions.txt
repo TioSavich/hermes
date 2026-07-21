@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38369",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38369_judge_fairness_by_visual_comparison_of_partitions",
+    "target_operation": "fair_share_checking",
+    "citation": "Catherine Ulrich (2016)",
+    "error_action": "judge_fairness_by_visual_comparison_of_partitions",
+    "error_description": "decide whether shares are fair by visually comparing the drawn pieces to each other",
+    "provenance_comments": "=== row 38369: simultaneous partitioning ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a judgment procedure (visual comparison of drawn pieces) that cannot be expressed as a deterministic binary predicate `Rule(Input, Got)` producing a specific wrong answer, because visual comparison is not algorithmically formalizable in SWI-Prolog without subjective or perceptual assumptions. The schema requires a runnable rule that produces a concrete incorrect result for a given input, but no such deterministic mapping from fractional inputs to a fixed erroneous output is specified.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a judgment procedure (visual comparison of drawn pieces) that cannot be expressed as a deterministic binary predicate `Rule(Input, Got)` producing a specific wrong answer, because visual comparison is not algorithmically formalizable in SWI-Prolog without subjective or perceptual assumptions. The schema requires a runnable rule that produces a concrete incorrect result for a given input, but no such deterministic mapping from fractional inputs to a fixed erroneous output is specified.",
+      "result": "abstained"
+    }
+  ]
+}

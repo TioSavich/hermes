@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40268",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40268_base_ten_chosen_for_intrinsic_mathematical_patterns",
+    "target_operation": "base_ten_origins",
+    "citation": "Janine T. Remillard, Pamela Kaye Geist (2002)",
+    "error_action": "base_ten_chosen_for_intrinsic_mathematical_patterns",
+    "error_description": "base 10 was selected because the number 10 has special inherent patterns",
+    "provenance_comments": "=== row 40268: base-10 chosen for mathematical patterns ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception (about why base ten is used), not a procedural error that can be modeled as a binary predicate producing a wrong numeric result. There is no runnable rule that maps an input to the documented wrong answer, nor a well-defined input-output pair satisfying the schema requirements.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(base_ten_chosen_for_intrinsic_mathematical_patterns(_, 10) :- true).\n\ntest_harness:arith_misconception(db_row(40268), whole_number, churn_40268_base_ten_chosen_for_intrinsic_mathematical_patterns,\n    churn_candidate:base_ten_chosen_for_intrinsic_mathematical_patterns,\n    5,\n    2).",
+      "result": "predicate must be named churn_40268_base_ten_chosen_for_intrinsic_mathematical_patterns"
+    },
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception (about why base ten is used), not a procedural error that can be modeled as a binary predicate producing a wrong numeric result. There is no runnable rule that maps an input to the documented wrong answer, nor a well-defined input-output pair satisfying the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38573",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38573_removing_part_destroys_whole",
+    "target_operation": "part_whole_disembedding",
+    "citation": "Amy J. Hackenberg (2013)",
+    "error_action": "removing_part_destroys_whole",
+    "error_description": "once a part is taken out, the original whole no longer exists and only the remaining parts remain",
+    "provenance_comments": "=== row 38573: disembedding failure — whole destroyed when part removed ===\nToo vague — conceptual disembedding failure; no concrete numeric wrong answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: documented error is a conceptual disembedding failure without a concrete, generalizable numeric wrong answer; no runnable rule can be constructed that consistently produces a documented wrong result for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: documented error is a conceptual disembedding failure without a concrete, generalizable numeric wrong answer; no runnable rule can be constructed that consistently produces a documented wrong result for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

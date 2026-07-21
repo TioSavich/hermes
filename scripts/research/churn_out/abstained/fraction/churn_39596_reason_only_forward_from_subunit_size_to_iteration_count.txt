@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39596",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39596_reason_only_forward_from_subunit_size_to_iteration_count",
+    "target_operation": "reciprocal_iteration_relation",
+    "citation": "Jose Luis Cortina & Jana Visnovska & Claudia Zuniga (2014)",
+    "error_action": "reason_only_forward_from_subunit_size_to_iteration_count",
+    "error_description": "you can iterate a small part to compare sizes but cannot reverse to conclude that n iterations restore the whole",
+    "provenance_comments": "=== row 39596: unidirectional iteration ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual limitation (unidirectional reasoning about iteration) rather than a specific syntactic error that can be expressed as a runnable Prolog rule producing a wrong result. No concrete arithmetic operation or transformation is specified that would allow construction of a predicate `Rule(Input, Got)` where `Got` is the documented wrong answer. The error is epistemological (in reasoning), not procedural (in computation), and thus cannot be encoded as a deterministic, generalizable Prolog rule per the schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual limitation (unidirectional reasoning about iteration) rather than a specific syntactic error that can be expressed as a runnable Prolog rule producing a wrong result. No concrete arithmetic operation or transformation is specified that would allow construction of a predicate `Rule(Input, Got)` where `Got` is the documented wrong answer. The error is epistemological (in reasoning), not procedural (in computation), and thus cannot be encoded as a deterministic, generalizable Prolog rule per the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

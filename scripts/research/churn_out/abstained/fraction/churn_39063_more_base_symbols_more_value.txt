@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39063",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39063_more_base_symbols_more_value",
+    "target_operation": "fraction_base_invariance",
+    "citation": "HELEN A. KHOURY AND RINA ZAZKIS (1994)",
+    "error_action": "more_base_symbols_more_value",
+    "error_description": "a fraction's value grows with the number of digit-symbols the base provides",
+    "provenance_comments": "=== row 39063: fraction value changes with base ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception about base representation and fraction value, but no runnable procedural rule (i.e., a predicate that takes an input and produces a specific wrong output via syntactic transformation) can be derived. The error is semantic (confusing base symbol count with numerical magnitude) and not algorithmic; there is no well-defined input→output mapping that isolates this misconception without additional assumptions about the student’s representation or computation model.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception about base representation and fraction value, but no runnable procedural rule (i.e., a predicate that takes an input and produces a specific wrong output via syntactic transformation) can be derived. The error is semantic (confusing base symbol count with numerical magnitude) and not algorithmic; there is no well-defined input→output mapping that isolates this misconception without additional assumptions about the student’s representation or computation model.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38968",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38968_assign_value_to_the_holder_rod_not_its_pieces",
+    "target_operation": "place_value_model",
+    "citation": "Kaye Stacey, Sue Helme, Shona Archer and Caroline Condon (2001)",
+    "error_action": "assign_value_to_the_holder_rod_not_its_pieces",
+    "error_description": "give the organizing rod the place value rather than the pieces it holds",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual mistake (assigning place value to the holder rod rather than to the pieces it holds) but provides no explicit mathematical procedure or formula that a student would compute. Without a runnable rule that maps a well-defined input to a specific incorrect numeric output—grounded in arithmetic operations—the execution gate cannot validate or reproduce the misconception. The schema requires a predicate `Rule(Input, Got)` where `Got` is the documented wrong answer; this cannot be supplied without inventing a computational model of the misconception.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38968_assign_value_to_the_holder_rod_not_its_pieces(rod_with_pieces(R, P), Got) :-\n    Got is R).\n\ntest_harness:arith_misconception(db_row(38968), decimal, churn_38968_assign_value_to_the_holder_rod_not_its_pieces,\n    churn_candidate:churn_38968_assign_value_to_the_holder_rod_not_its_pieces,\n    rod_with_pieces(100, 5),\n    5).",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual mistake (assigning place value to the holder rod rather than to the pieces it holds) but provides no explicit mathematical procedure or formula that a student would compute. Without a runnable rule that maps a well-defined input to a specific incorrect numeric output—grounded in arithmetic operations—the execution gate cannot validate or reproduce the misconception. The schema requires a predicate `Rule(Input, Got)` where `Got` is the documented wrong answer; this cannot be supplied without inventing a computational model of the misconception.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40233",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40233_operate_on_stated_quantity_as_given_total",
+    "target_operation": "word_problem_comprehension",
+    "citation": "Mine Isiksal, Erdinc Cakiroglu (2011)",
+    "error_action": "operate_on_stated_quantity_as_given_total",
+    "error_description": "treat the quantity named in the sentence as the whole rather than as a part already taken",
+    "provenance_comments": "=== row 40233: word problem language confusion ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a linguistic comprehension mistake in word problems (treating a part as the whole), but no runnable procedural rule (predicate of arity 2) can be extracted—only a misinterpretation heuristic, not a deterministic computational procedure. The schema requires a rule that, when applied to an input, *produces* the documented wrong answer; without a concrete, generalizable computation (e.g., arithmetic transformation), this cannot be formalized as a deterministic Prolog predicate meeting the contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a linguistic comprehension mistake in word problems (treating a part as the whole), but no runnable procedural rule (predicate of arity 2) can be extracted—only a misinterpretation heuristic, not a deterministic computational procedure. The schema requires a rule that, when applied to an input, *produces* the documented wrong answer; without a concrete, generalizable computation (e.g., arithmetic transformation), this cannot be formalized as a deterministic Prolog predicate meeting the contract.",
+      "result": "abstained"
+    }
+  ]
+}

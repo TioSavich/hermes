@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38769",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38769_convert_area_as_separate_lengths",
+    "target_operation": "area_unit_conversion",
+    "citation": "ORIT HAZZAN AND RINA ZAZKIS (2005)",
+    "error_action": "convert_area_as_separate_lengths",
+    "error_description": "convert an area by assigning it length and width dimensions and converting each one-dimensional length separately",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38769_convert_area_as_separate_lengths(area(W,L), Got) :-\n    length_to_cm(W, Wcm),\n    length_to_cm(L, Lcm),\n    Got is Wcm * Lcm).\n\nchurn_candidate:length_to_cm(X, Y) :- Y is X * 100.\n\ntest_harness:arith_misconception(db_row(38769), measurement, churn_38769_convert_area_as_separate_lengths,\n    churn_candidate:churn_38769_convert_area_as_separate_lengths,\n    area(2,3), 60000).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "churn_candidate:(churn_38769_convert_area_as_separate_lengths(area(L,W), Got) :-\n    Got is L*100 * W*100).\n\ntest_harness:arith_misconception(db_row(38769), measurement, churn_38769_convert_area_as_separate_lengths,\n    churn_candidate:churn_38769_convert_area_as_separate_lengths,\n    area(1,1), 10000).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40166",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40166_difference_means_everyday_distinction",
+    "target_operation": "difference_word_polysemy",
+    "citation": "TIM ROWLAND, PETER HUCKSTEP and ANNE THWAITES (2005)",
+    "error_action": "difference_means_everyday_distinction",
+    "error_description": "interpret 'difference' as a general qualitative distinction rather than as a numerical subtraction",
+    "provenance_comments": "=== row 40166: polysemy of 'difference' ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (interpreting 'difference' as everyday distinction rather than numerical subtraction), but provides no specific computational procedure or rule that students follow to produce a wrong numeric result. Without a defined syntactic or algorithmic rule that maps inputs to a specific erroneous output, we cannot construct a runnable Prolog rule of arity 2 that produces the documented wrong answer for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (interpreting 'difference' as everyday distinction rather than numerical subtraction), but provides no specific computational procedure or rule that students follow to produce a wrong numeric result. Without a defined syntactic or algorithmic rule that maps inputs to a specific erroneous output, we cannot construct a runnable Prolog rule of arity 2 that produces the documented wrong answer for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

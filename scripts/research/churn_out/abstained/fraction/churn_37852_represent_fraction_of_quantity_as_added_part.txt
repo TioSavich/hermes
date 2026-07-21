@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37852",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37852_represent_fraction_of_quantity_as_added_part",
+    "target_operation": "multiplicative_vs_additive_relation",
+    "citation": "Swee Fong Ng and Kerry Lee (2009)",
+    "error_action": "represent_fraction_of_quantity_as_added_part",
+    "error_description": "render 'one-fourth of B' as B with a quarter-bar appended",
+    "provenance_comments": "=== row 37852: additive representation of multiplicative relationship ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a representational misconception (graphical or diagrammatic), not a procedural algebraic rule that can be encoded as a binary predicate producing a wrong numeric result. The task requires a rule `Rule(Input, Got)` where `Got` is a wrong numeric output, but \"B with a quarter-bar appended\" is a visual/structural representation, not a computable arithmetic expression in SWI-Prolog. No concrete, well-typed Input (e.g., numeric fraction) maps deterministically to a unique wrong numeric output via this misconception without additional interpretation or diagrammatics.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a representational misconception (graphical or diagrammatic), not a procedural algebraic rule that can be encoded as a binary predicate producing a wrong numeric result. The task requires a rule `Rule(Input, Got)` where `Got` is a wrong numeric output, but \"B with a quarter-bar appended\" is a visual/structural representation, not a computable arithmetic expression in SWI-Prolog. No concrete, well-typed Input (e.g., numeric fraction) maps deterministically to a unique wrong numeric output via this misconception without additional interpretation or diagrammatics.",
+      "result": "abstained"
+    }
+  ]
+}

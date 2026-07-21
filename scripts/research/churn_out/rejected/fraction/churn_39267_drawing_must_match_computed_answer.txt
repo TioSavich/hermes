@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39267",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39267_drawing_must_match_computed_answer",
+    "target_operation": "number_line_as_performance",
+    "citation": "Andrea McCloskey & Gwendolyn Lloyd & Courtney Lynch (2017)",
+    "error_action": "drawing_must_match_computed_answer",
+    "error_description": "the visual model is adjusted to fit the number already computed, not used to derive it",
+    "provenance_comments": "=== row 39267: number line after-the-fact ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "external module qualification is not allowed: misconception:",
+  "attempts": [
+    {
+      "response": "churn_candidate:(draw_after_fact(Frac, Frac) :- true).\n\ntest_harness:arith_misconception(db_row(39267), fraction, churn_39267_drawing_must_match_computed_answer,\n    churn_candidate:draw_after_fact,\n    frac(3,4),\n    frac(3,4)).",
+      "result": "predicate must be named churn_39267_drawing_must_match_computed_answer"
+    },
+    {
+      "response": "churn_candidate:(churn_39267_drawing_must_match_computed_answer(frac(N,D), frac(N,D))) :-\n    % The misconception: student computes a fraction (e.g., 3/4) and then draws a number line\n    % to *match* that precomputed result, rather than using the number line to derive it.\n    % The rule reflects the behavior: output equals the *given* (presumably precomputed) fraction,\n    % ignoring the number line structure.\n    true.\n\ntest_harness:arith_misconception(db_row(39267), fraction, churn_39267_drawing_must_match_computed_answer,\n    churn_candidate:churn_39267_drawing_must_match_computed_answer,\n    frac(3,4),\n    frac(3,8)).",
+      "result": "external module qualification is not allowed: misconception:"
+    }
+  ]
+}

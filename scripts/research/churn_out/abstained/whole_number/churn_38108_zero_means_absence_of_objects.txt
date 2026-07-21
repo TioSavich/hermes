@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38108",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38108_zero_means_absence_of_objects",
+    "target_operation": "zero_as_nothing",
+    "citation": "Heinz Steinbring (2015)",
+    "error_action": "zero_means_absence_of_objects",
+    "error_description": "zero is simply the empirical fact that there is nothing there",
+    "provenance_comments": "=== row 38108: zero means nothing (conceptual) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception (\"zero is simply the empirical fact that there is nothing there\") rather than a procedural rule that maps inputs to a specific incorrect output. No runnable binary predicate `Rule(Input, Got)` can be constructed to produce the documented wrong answer for a given input, because the misconception does not define a deterministic computational procedure over numeric inputs—it describes a philosophical interpretation, not a syntactic error in arithmetic evaluation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception (\"zero is simply the empirical fact that there is nothing there\") rather than a procedural rule that maps inputs to a specific incorrect output. No runnable binary predicate `Rule(Input, Got)` can be constructed to produce the documented wrong answer for a given input, because the misconception does not define a deterministic computational procedure over numeric inputs—it describes a philosophical interpretation, not a syntactic error in arithmetic evaluation.",
+      "result": "abstained"
+    }
+  ]
+}

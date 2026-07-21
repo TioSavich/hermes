@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39684",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39684_fractions_are_procedures",
+    "target_operation": "fraction_addition",
+    "citation": "Eddie Gray & David Tall (2007)",
+    "error_action": "fractions_are_procedures",
+    "error_description": "treat fraction addition as following denominator rules rather than combining quantities",
+    "provenance_comments": "=== row 39684: procedural view of addition ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error description is too vague to construct a runnable rule that produces a specific wrong answer for fraction addition. It states that students “treat fraction addition as following denominator rules rather than combining quantities,” but this does not specify a consistent, generalizable syntactic or semantic transformation (e.g., “add numerators and denominators separately” or “ignore numerators entirely”) that yields a deterministic incorrect result across inputs. Without a concrete, repeatable misapplication (e.g., `a/b + c/d = (a+c)/(b+d)` or `a/b + c/d = (a+c)/(b)`), the rule cannot be formalized as a Prolog predicate of arity 2 that reliably produces the documented wrong outcome for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error description is too vague to construct a runnable rule that produces a specific wrong answer for fraction addition. It states that students “treat fraction addition as following denominator rules rather than combining quantities,” but this does not specify a consistent, generalizable syntactic or semantic transformation (e.g., “add numerators and denominators separately” or “ignore numerators entirely”) that yields a deterministic incorrect result across inputs. Without a concrete, repeatable misapplication (e.g., `a/b + c/d = (a+c)/(b+d)` or `a/b + c/d = (a+c)/(b)`), the rule cannot be formalized as a Prolog predicate of arity 2 that reliably produces the documented wrong outcome for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

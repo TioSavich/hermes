@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40222",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40222_subtraction_step_as_procedural_bookkeeping",
+    "target_operation": "long_division_subtraction_step",
+    "citation": "RON TZUR, MARTIN A. SIMON, KAREN HEINZ and MARGARET KINZEL (2001)",
+    "error_action": "subtraction_step_as_procedural_bookkeeping",
+    "error_description": "the subtraction in long division is just to find what's left or make the number smaller",
+    "provenance_comments": "=== row 40222: procedural justification in long division ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating subtraction in long division as mere bookkeeping to reduce the number) but does not specify a runnable procedural rule that consistently produces a wrong answer in a way that can be captured by a binary predicate `Rule(Input, Got)` over whole numbers. Without a concrete, generalizable computational pattern (e.g., a formula or algorithmic step) that students are documented to apply incorrectly, we cannot construct a deterministic `Rule` that yields a fixed erroneous result for a given input. Hence, no admissible clause block can be formed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating subtraction in long division as mere bookkeeping to reduce the number) but does not specify a runnable procedural rule that consistently produces a wrong answer in a way that can be captured by a binary predicate `Rule(Input, Got)` over whole numbers. Without a concrete, generalizable computational pattern (e.g., a formula or algorithmic step) that students are documented to apply incorrectly, we cannot construct a deterministic `Rule` that yields a fixed erroneous result for a given input. Hence, no admissible clause block can be formed.",
+      "result": "abstained"
+    }
+  ]
+}

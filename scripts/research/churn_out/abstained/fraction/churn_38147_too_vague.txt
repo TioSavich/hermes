@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38147",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38147_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "=== row 38147: N or D increasing → fraction increases ===\nNo concrete example given; description only.",
+    "provenance_comments": "=== row 38147: N or D increasing → fraction increases ===\nNo concrete example given; description only.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: No concrete input-output pair is provided in the documentation to construct a runnable rule that produces the documented error; the description “N or D increasing → fraction increases” is a conceptual misunderstanding but does not specify a deterministic arithmetic procedure or a unique wrong result for a given input, making it impossible to define a testable rule of arity 2 that reliably yields the documented error for a specific input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No concrete input-output pair is provided in the documentation to construct a runnable rule that produces the documented error; the description “N or D increasing → fraction increases” is a conceptual misunderstanding but does not specify a deterministic arithmetic procedure or a unique wrong result for a given input, making it impossible to define a testable rule of arity 2 that reliably yields the documented error for a specific input.",
+      "result": "abstained"
+    }
+  ]
+}

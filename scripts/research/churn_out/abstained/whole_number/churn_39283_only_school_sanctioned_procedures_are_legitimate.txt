@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39283",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39283_only_school_sanctioned_procedures_are_legitimate",
+    "target_operation": "valid_informal_algorithms",
+    "citation": "Miwa Aoki Takeuchi (2018)",
+    "error_action": "only_school_sanctioned_procedures_are_legitimate",
+    "error_description": "a method is correct only if it is the standard procedure taught at school",
+    "provenance_comments": "=== row 39283: informal algorithms judged invalid ===\nSociocultural stance; no arithmetic output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual stance about legitimacy of methods, not a specific arithmetic procedure that can be encoded as a binary predicate producing a wrong numerical result. No runnable rule can be constructed that maps an input to a documented wrong output, because the misconception does not prescribe a computational transformation but rather a judgment about method validity.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual stance about legitimacy of methods, not a specific arithmetic procedure that can be encoded as a binary predicate producing a wrong numerical result. No runnable rule can be constructed that maps an input to a documented wrong output, because the misconception does not prescribe a computational transformation but rather a judgment about method validity.",
+      "result": "abstained"
+    }
+  ]
+}

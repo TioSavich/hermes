@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38849",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38849_forms_xy_or_x_cubed_give_four_factors",
+    "target_operation": "factor_count_from_form",
+    "citation": "Martin Griffiths (2013)",
+    "error_action": "forms_xy_or_x_cubed_give_four_factors",
+    "error_description": "assume any number of the form xy or x^3 has exactly four factors",
+    "provenance_comments": "=== row 38849: xy or x^3 has exactly four factors ===\nConceptual overgeneralization with varying instances; no canonical single\ninput/output pair.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual overgeneralization (\"assume any number of the form xy or x^3 has exactly four factors\") without specifying a particular instantiation of x and y, and the proviso \"no canonical single input/output pair\" indicates there is no unique, deterministic wrong answer to encode in the rule. The rule must produce the documented wrong answer for a given input, but without a specific counterexample or canonical case, we cannot define a deterministic binary predicate that reliably yields the erroneous result (four factors) while violating correctness in a fixed, reproducible way.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual overgeneralization (\"assume any number of the form xy or x^3 has exactly four factors\") without specifying a particular instantiation of x and y, and the proviso \"no canonical single input/output pair\" indicates there is no unique, deterministic wrong answer to encode in the rule. The rule must produce the documented wrong answer for a given input, but without a specific counterexample or canonical case, we cannot define a deterministic binary predicate that reliably yields the erroneous result (four factors) while violating correctness in a fixed, reproducible way.",
+      "result": "abstained"
+    }
+  ]
+}

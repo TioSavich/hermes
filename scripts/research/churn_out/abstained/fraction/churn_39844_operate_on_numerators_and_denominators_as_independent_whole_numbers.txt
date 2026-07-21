@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39844",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39844_operate_on_numerators_and_denominators_as_independent_whole_numbers",
+    "target_operation": "fraction_estimation",
+    "citation": "Ji-Won Son, Qintong Hu & Woong Lim (2018)",
+    "error_action": "operate_on_numerators_and_denominators_as_independent_whole_numbers",
+    "error_description": "combine fractions by handling top and bottom as separate whole numbers",
+    "provenance_comments": "=== row 39844: independent whole-number operations with weird scaling ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: the documented error description does not specify a concrete, deterministic procedure (e.g., which operations are applied to numerators and denominators), and no runnable rule can be derived without inventing mathematics.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: the documented error description does not specify a concrete, deterministic procedure (e.g., which operations are applied to numerators and denominators), and no runnable rule can be derived without inventing mathematics.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38278",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38278_answer_with_any_fact_matching_the_total",
+    "target_operation": "fact_disconnected_from_referent",
+    "citation": "Anderson Norton, Steven Boyce (2015)",
+    "error_action": "answer_with_any_fact_matching_the_total",
+    "error_description": "any known multiplication fact that reproduces the computed total is an acceptable answer",
+    "provenance_comments": "=== row 38278: disconnected multiplication fact guess ===\nStudent answers with unrelated multiplication facts that happen to share\nthe total. No single deterministic wrong answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a non-deterministic response pattern—any multiplication fact matching the total is acceptable—so no single runnable rule can be constructed that consistently produces the documented wrong answer. A rule must be deterministic to satisfy the schema requirement that `Rule(Input, Got)` yields the documented error. Since the error allows multiple valid outputs (e.g., for total 12, 3×4, 2×6, 1×12 are all acceptable), no unique `Got` can be assigned in the test harness.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a non-deterministic response pattern—any multiplication fact matching the total is acceptable—so no single runnable rule can be constructed that consistently produces the documented wrong answer. A rule must be deterministic to satisfy the schema requirement that `Rule(Input, Got)` yields the documented error. Since the error allows multiple valid outputs (e.g., for total 12, 3×4, 2×6, 1×12 are all acceptable), no unique `Got` can be assigned in the test harness.",
+      "result": "abstained"
+    }
+  ]
+}

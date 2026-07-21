@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40355",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40355_impressive_object_maps_to_large_number",
+    "target_operation": "measurement_estimation",
+    "citation": "Der-Ching Yang & Iwan Andi J. Sianturi (2018)",
+    "error_action": "impressive_object_maps_to_large_number",
+    "error_description": "if something is described as very tall or big, pick a correspondingly large magnitude",
+    "provenance_comments": "=== row 40355: estimation with no real-world anchor ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: the documented error description “impressive_object_maps_to_large_number” and source context do not specify a concrete, runnable arithmetic rule or a well-defined input-output pair; they describe a heuristic bias rather than a deterministic procedure. Without a clear mapping from input to a specific incorrect numeric output (e.g., a formula or algorithm), we cannot construct a rule `Rule(Input, Got)` that reliably produces the documented wrong answer. The gate requires a deterministic, executable rule — this entry provides only a cognitive tendency, not a procedural error.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40355_impressive_object_maps_to_large_number(estimation(tall, _), 1000)).\n\ntest_harness:arith_misconception(db_row(40355), measurement, impressive_object_maps_to_large_number,\n    churn_candidate:churn_40355_impressive_object_maps_to_large_number,\n    estimation(tall, building), 1000).",
+      "result": "registration source/domain/description does not match the entry"
+    },
+    {
+      "response": "ABSTAIN: the documented error description “impressive_object_maps_to_large_number” and source context do not specify a concrete, runnable arithmetic rule or a well-defined input-output pair; they describe a heuristic bias rather than a deterministic procedure. Without a clear mapping from input to a specific incorrect numeric output (e.g., a formula or algorithm), we cannot construct a rule `Rule(Input, Got)` that reliably produces the documented wrong answer. The gate requires a deterministic, executable rule — this entry provides only a cognitive tendency, not a procedural error.",
+      "result": "abstained"
+    }
+  ]
+}

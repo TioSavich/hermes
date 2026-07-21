@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40212",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40212_drop_units_and_overload_equals",
+    "target_operation": "units_rates_and_equality",
+    "citation": "Stacy K. Boote, David N. Boote (2018)",
+    "error_action": "drop_units_and_overload_equals",
+    "error_description": "compute with bare numbers while dropping or swapping units and writing '=' between non-equal quantities like '3 pieces = 2 cuts'",
+    "provenance_comments": "=== row 40212: pervasive unit/rate imprecision ===\nToo vague: diffuse class of unit-handling failures.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error is too vague (no specific, reproducible rule can be extracted) and lacks a concrete worked example or sufficient formal description to construct a runnable Prolog rule that reliably produces the documented wrong answer for a general class of inputs. The task requires a precise, generalizable procedure; \"drop_units_and_overload_equals\" as described does not define a deterministic arithmetic transformation or input structure suitable for formal encoding in SWI-Prolog.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is too vague (no specific, reproducible rule can be extracted) and lacks a concrete worked example or sufficient formal description to construct a runnable Prolog rule that reliably produces the documented wrong answer for a general class of inputs. The task requires a precise, generalizable procedure; \"drop_units_and_overload_equals\" as described does not define a deterministic arithmetic transformation or input structure suitable for formal encoding in SWI-Prolog.",
+      "result": "abstained"
+    }
+  ]
+}

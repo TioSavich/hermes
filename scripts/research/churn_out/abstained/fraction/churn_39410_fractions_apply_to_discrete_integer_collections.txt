@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39410",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39410_fractions_apply_to_discrete_integer_collections",
+    "target_operation": "fraction_problem_posing",
+    "citation": "GERARD SENSEVY (1996)",
+    "error_action": "fractions_apply_to_discrete_integer_collections",
+    "error_description": "fractions describe whole-number counts of separate objects",
+    "provenance_comments": "=== row 39410: prefer integer/discrete schemes ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is conceptual (fractions apply to discrete integer collections) but no runnable procedural rule or specific arithmetic operation is provided; it lacks a concrete transformation or computation that can be encoded as a predicate of arity 2 producing a wrong result from a given input. Without a defined rule-like procedure or a specific input-output pair that yields the documented misconception, the schema contract cannot be satisfied.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is conceptual (fractions apply to discrete integer collections) but no runnable procedural rule or specific arithmetic operation is provided; it lacks a concrete transformation or computation that can be encoded as a predicate of arity 2 producing a wrong result from a given input. Without a defined rule-like procedure or a specific input-output pair that yields the documented misconception, the schema contract cannot be satisfied.",
+      "result": "abstained"
+    }
+  ]
+}

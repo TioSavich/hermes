@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38840",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38840_equal_parts_must_be_congruent",
+    "target_operation": "equal_parts_definition",
+    "citation": "Tatjana Hodnik Cadez, Vida Manfreda Kolar (2018)",
+    "error_action": "equal_parts_must_be_congruent",
+    "error_description": "only shapes split into geometrically identical pieces count as showing equal fractional parts",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "SWI-Prolog gate exited 23",
+  "attempts": [
+    {
+      "response": "churn_candidate:(equal_parts_must_be_congruent(frac(N,D), frac(1,1)) :-\n    D > 0,\n    N =:= 1).\n\ntest_harness:arith_misconception(db_row(38840), fraction, churn_38840_equal_parts_must_be_congruent,\n    churn_candidate:equal_parts_must_be_congruent,\n    frac(1,4),\n    frac(1,4)).",
+      "result": "predicate must be named churn_38840_equal_parts_must_be_congruent"
+    },
+    {
+      "response": "churn_candidate:(equal_parts_must_be_congruent(frac(N,D), frac(N,D))) :-\n    true.\n\ntest_harness:arith_misconception(db_row(38840), fraction, churn_38840_equal_parts_must_be_congruent,\n    churn_candidate:churn_38840_equal_parts_must_be_congruent,\n    frac(1,4),\n    frac(1,4)).",
+      "result": "SWI-Prolog gate exited 23"
+    }
+  ]
+}

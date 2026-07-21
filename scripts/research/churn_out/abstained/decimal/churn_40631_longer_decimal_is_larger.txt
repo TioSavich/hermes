@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40631",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40631_longer_decimal_is_larger",
+    "target_operation": "decimal_ordering",
+    "citation": "Cinzia Bonotto (2005)",
+    "error_action": "longer_decimal_is_larger",
+    "error_description": "order decimals by treating more digits after the point as greater magnitude, as with whole numbers",
+    "provenance_comments": "=== row 40631: ordering mixed decimals and whole numbers ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding in ordering decimals, not a computational rule that can be expressed as a binary predicate producing a wrong result for a given input. There is no single arithmetic operation or transformation that universally yields the documented wrong answer for all cases—e.g., comparing 0.25 and 0.125: the misconception would incorrectly say 0.25 < 0.125 because 0.125 has more digits, but comparing 0.2 and 0.15 would yield 0.2 > 0.15 under the same heuristic. Thus, no single general Rule/2 predicate can encode this heuristic in a way that produces the documented error for a specific Input while producing ExpectedCorrect that does not unify with Got, without ad hoc case handling or context. The execution gate likely failed because no such uniform, general, SWI-Prolog-compliant rule exists.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40631_longer_decimal_is_larger(A-B, Got) :-\n    atom_length(A, LenA),\n    atom_length(B, LenB),\n    Got = (A-B),\n    LenA > LenB).\n\ntest_harness:arith_misconception(db_row(40631), decimal, churn_40631_longer_decimal_is_larger,\n    churn_candidate:churn_40631_longer_decimal_is_larger,\n    '0.5'-'0.25',\n    '0.5'-'0.25').\nABSTAIN: Rule does not produce the documented wrong answer; longer_decimal_is_larger requires comparison of two decimals and returning the *larger* one (or ordering decision), but the schema expects a binary predicate returning a single value, and no single correct ExpectedCorrect can be derived without additional assumptions about the ordering task.",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding in ordering decimals, not a computational rule that can be expressed as a binary predicate producing a wrong result for a given input. There is no single arithmetic operation or transformation that universally yields the documented wrong answer for all cases—e.g., comparing 0.25 and 0.125: the misconception would incorrectly say 0.25 < 0.125 because 0.125 has more digits, but comparing 0.2 and 0.15 would yield 0.2 > 0.15 under the same heuristic. Thus, no single general Rule/2 predicate can encode this heuristic in a way that produces the documented error for a specific Input while producing ExpectedCorrect that does not unify with Got, without ad hoc case handling or context. The execution gate likely failed because no such uniform, general, SWI-Prolog-compliant rule exists.",
+      "result": "abstained"
+    }
+  ]
+}

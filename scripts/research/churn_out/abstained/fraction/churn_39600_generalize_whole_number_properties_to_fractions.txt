@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39600",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39600_generalize_whole_number_properties_to_fractions",
+    "target_operation": "whole_number_overgeneralization_to_rationals",
+    "citation": "Tad Watanabe (1995)",
+    "error_action": "generalize_whole_number_properties_to_fractions",
+    "error_description": "rules that hold for counting numbers carry over unchanged to fractions",
+    "provenance_comments": "=== row 39600: whole number concepts interfere (general) ===\nToo vague — general claim, no specific wrong numeric example.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a general overgeneralization claim without a specific, runnable procedural rule or a concrete numeric example. The schema requires a predicate that, when called with a specific input, produces the documented wrong answer; without a defined transformation or operation (e.g., addition, multiplication, property application), no executable `Rule` can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a general overgeneralization claim without a specific, runnable procedural rule or a concrete numeric example. The schema requires a predicate that, when called with a specific input, produces the documented wrong answer; without a defined transformation or operation (e.g., addition, multiplication, property application), no executable `Rule` can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

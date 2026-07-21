@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37692",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37692_zero_digit_has_no_quantity",
+    "target_operation": "subtraction_with_zero",
+    "citation": "Terezinha Nunes Carraher, David William Carraher and Analucia Dias Schliemann (1987)",
+    "error_action": "zero_digit_has_no_quantity",
+    "error_description": "treat a written zero as a placeholder with no numeric value to operate on",
+    "provenance_comments": "=== row 37692: confused by zero in subtraction ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(subtracts_zero_as_nothing(A-0, Got) :-\n    Got is A).\n\ntest_harness:arith_misconception(db_row(37692), whole_number, churn_37692_zero_digit_has_no_quantity,\n    churn_candidate:subtracts_zero_as_nothing,\n    507-0,\n    507).",
+      "result": "predicate must be named churn_37692_zero_digit_has_no_quantity"
+    },
+    {
+      "response": "churn_candidate:(churn_37692_zero_digit_has_no_quantity(A-0, Got) :-\n    Got is A).\n\ntest_harness:arith_misconception(db_row(37692), whole_number, churn_37692_zero_digit_has_no_quantity,\n    churn_candidate:churn_37692_zero_digit_has_no_quantity,\n    5-0,\n    5).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

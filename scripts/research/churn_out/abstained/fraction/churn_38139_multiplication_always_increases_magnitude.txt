@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38139",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38139_multiplication_always_increases_magnitude",
+    "target_operation": "fraction_multiplication_magnitude",
+    "citation": "Xu Hua Sun (2018)",
+    "error_action": "multiplication_always_increases_magnitude",
+    "error_description": "expect a product to be larger than the numbers being multiplied",
+    "provenance_comments": "=== row 38139: multiplication always makes bigger ===\nToo vague — a belief claim; no concrete example in CSV.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a belief claim (\"expect a product to be larger than the numbers being multiplied\") without a concrete, executable procedure or example in the source. No runnable rule can be determined because the error description lacks a specific computational procedure to encode as a predicate of arity 2 that produces a fixed wrong output for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a belief claim (\"expect a product to be larger than the numbers being multiplied\") without a concrete, executable procedure or example in the source. No runnable rule can be determined because the error description lacks a specific computational procedure to encode as a predicate of arity 2 that produces a fixed wrong output for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

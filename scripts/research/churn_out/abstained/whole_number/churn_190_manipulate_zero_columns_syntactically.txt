@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "190",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_190_manipulate_zero_columns_syntactically",
+    "target_operation": "subtraction_with_zeros",
+    "citation": "Davis, McKnight (1980)",
+    "error_action": "manipulate_zero_columns_syntactically",
+    "error_description": "move through columns containing zero by symbol rules without tracking quantity",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: no runnable rule or concrete probe can be extracted from the documented error description; it specifies a syntactic manipulation strategy without a deterministic arithmetic procedure or specific input-output pair sufficient to define a predicate `Rule/2` that produces a unique wrong result for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no runnable rule or concrete probe can be extracted from the documented error description; it specifies a syntactic manipulation strategy without a deterministic arithmetic procedure or specific input-output pair sufficient to define a predicate `Rule/2` that produces a unique wrong result for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

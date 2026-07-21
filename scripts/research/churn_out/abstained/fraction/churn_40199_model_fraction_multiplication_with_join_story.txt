@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40199",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40199_model_fraction_multiplication_with_join_story",
+    "target_operation": "fraction_multiplication_story_problems",
+    "citation": "Tonya Gau Bartell • Corey Webel • Brian Bowen • Nancy Dyson (2013)",
+    "error_action": "model_fraction_multiplication_with_join_story",
+    "error_description": "write story problems for fraction multiplication that do not capture the part-of-a-part operation",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a pedagogical misconception about modeling fraction multiplication via story problems, not a specific syntactic or semantic error in a computational rule. It does not specify a runnable Prolog predicate that produces a wrong output for a given input in a way that can be tested against a correct result. Since no concrete transformation or evaluation procedure is provided, we cannot construct a rule that satisfies the schema contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a pedagogical misconception about modeling fraction multiplication via story problems, not a specific syntactic or semantic error in a computational rule. It does not specify a runnable Prolog predicate that produces a wrong output for a given input in a way that can be tested against a correct result. Since no concrete transformation or evaluation procedure is provided, we cannot construct a rule that satisfies the schema contract.",
+      "result": "abstained"
+    }
+  ]
+}

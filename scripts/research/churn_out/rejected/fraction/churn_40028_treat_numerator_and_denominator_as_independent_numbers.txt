@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40028",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40028_treat_numerator_and_denominator_as_independent_numbers",
+    "target_operation": "fraction_as_number",
+    "citation": "Shuhua An, Gerald Kulm and Zhonghe Wu (2004)",
+    "error_action": "treat_numerator_and_denominator_as_independent_numbers",
+    "error_description": "read a fraction as two separate whole numbers rather than one quantity",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_40028_treat_numerator_and_denominator_as_independent_numbers",
+  "attempts": [
+    {
+      "response": "churn_candidate:(treat_numerator_and_denominator_as_independent_numbers(frac(N,D), Result) :-\n    number_string(N, NS),\n    number_string(D, DS),\n    string_concat(NS, DS, S),\n    atom_string(A, S),\n    atom_number(A, Result)).\n\ntest_harness:arith_misconception(db_row(40028), fraction, churn_40028_treat_numerator_and_denominator_as_independent_numbers,\n    churn_candidate:treat_numerator_and_denominator_as_independent_numbers,\n    frac(1,4),\n    14).",
+      "result": "predicate must be named churn_40028_treat_numerator_and_denominator_as_independent_numbers"
+    },
+    {
+      "response": "churn_candidate:(treat_frac_as_two_nums(frac(N,D), [N,D])).\n\ntest_harness:arith_misconception(db_row(40028), fraction, churn_40028_treat_numerator_and_denominator_as_independent_numbers,\n    churn_candidate:treat_frac_as_two_nums,\n    frac(3,5),\n    3/5).",
+      "result": "predicate must be named churn_40028_treat_numerator_and_denominator_as_independent_numbers"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39819",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39819_drop_whole_part_of_mixed_number",
+    "target_operation": "mixed_number_addition",
+    "citation": "Tuğrul Kar (2015)",
+    "error_action": "drop_whole_part_of_mixed_number",
+    "error_description": "ignore the integer part when posing or adding a mixed number",
+    "provenance_comments": "=== row 39819: mixed fraction whole parts omitted ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error “drop_whole_part_of_mixed_number” describes a behavioral pattern (ignoring the integer part), but no runnable arithmetic rule (e.g., a predicate defining how the wrong result is computed) is provided. Without a concrete transformation rule (e.g., how the wrong output is derived from the input), a testable `Rule` predicate cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error “drop_whole_part_of_mixed_number” describes a behavioral pattern (ignoring the integer part), but no runnable arithmetic rule (e.g., a predicate defining how the wrong result is computed) is provided. Without a concrete transformation rule (e.g., how the wrong output is derived from the input), a testable `Rule` predicate cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

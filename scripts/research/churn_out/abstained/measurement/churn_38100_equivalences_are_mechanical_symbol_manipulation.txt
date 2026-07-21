@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38100",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38100_equivalences_are_mechanical_symbol_manipulation",
+    "target_operation": "unit_conversion_meaning",
+    "citation": "Cinzia Bonotto (2001)",
+    "error_action": "equivalences_are_mechanical_symbol_manipulation",
+    "error_description": "solving an equivalence is a formal procedure detached from quantity",
+    "provenance_comments": "=== row 38100: unit equivalences as mechanical symbol shuffle ===\nToo vague: the student's calculation is correct; the misconception is conceptual.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error is conceptual (equivalences treated as mechanical symbol manipulation) and does not specify a particular incorrect computational rule that can be encoded as a runnable predicate producing a wrong answer distinct from the correct one. No concrete procedural error is given that would yield a unique `Got` differing from `ExpectedCorrect`.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is conceptual (equivalences treated as mechanical symbol manipulation) and does not specify a particular incorrect computational rule that can be encoded as a runnable predicate producing a wrong answer distinct from the correct one. No concrete procedural error is given that would yield a unique `Got` differing from `ExpectedCorrect`.",
+      "result": "abstained"
+    }
+  ]
+}

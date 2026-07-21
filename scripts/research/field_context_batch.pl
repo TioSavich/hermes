@@ -59,11 +59,11 @@ prepare_batch_tables :-
     table((field_context:audit_cluster_pairs/2) as shared),
     table((field_context:audit_literature_link_pairs/1) as shared),
     table((field_context:literature_summary_dict/1) as shared),
-    table((expressive_power:operation_path_power_for_vocabulary/5) as shared),
-    table((expressive_power:operation_path_power_for_vocabulary_witness/5) as shared),
-    table((expressive_power:incompatibility_power/2) as shared),
-    table((expressive_power:incompatibility_power_witness/2) as shared),
-    table((expressive_power:lesson_expressive_power/4) as shared).
+    table((inferential_strength:operation_path_power_for_vocabulary/5) as shared),
+    table((inferential_strength:operation_path_power_for_vocabulary_witness/5) as shared),
+    table((inferential_strength:incompatibility_power/2) as shared),
+    table((inferential_strength:incompatibility_power_witness/2) as shared),
+    table((inferential_strength:lesson_inferential_strength/4) as shared).
 
 
 field_context_entry(Code, Code-Result) :-

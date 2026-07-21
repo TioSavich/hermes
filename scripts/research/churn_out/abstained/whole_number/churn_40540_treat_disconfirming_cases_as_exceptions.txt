@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40540",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40540_treat_disconfirming_cases_as_exceptions",
+    "target_operation": "counterexample_status",
+    "citation": "Rina Zazkis and Dov Zazkis (2014)",
+    "error_action": "treat_disconfirming_cases_as_exceptions",
+    "error_description": "label cases that violate a rule as exceptions while keeping the rule",
+    "provenance_comments": "=== row 40540: primes as mere exceptions, not counterexamples ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive tendency to treat counterexamples as exceptions rather than revising the rule, but it does not specify a concrete, executable arithmetic procedure that produces a predictable wrong output for a given input. Without a defined algorithmic transformation (e.g., a formula or rewrite rule) that students follow to compute a result, no runnable predicate of arity 2 can be constructed per the schema requirement.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive tendency to treat counterexamples as exceptions rather than revising the rule, but it does not specify a concrete, executable arithmetic procedure that produces a predictable wrong output for a given input. Without a defined algorithmic transformation (e.g., a formula or rewrite rule) that students follow to compute a result, no runnable predicate of arity 2 can be constructed per the schema requirement.",
+      "result": "abstained"
+    }
+  ]
+}

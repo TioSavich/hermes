@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40299",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40299_multiplication_increases_division_decreases",
+    "target_operation": "effect_of_multiplication_division",
+    "citation": "LEICHA A. BRAGG (2012)",
+    "error_action": "multiplication_increases_division_decreases",
+    "error_description": "multiplying always makes a number bigger and dividing always makes it smaller",
+    "provenance_comments": "=== row 40299: MMB/DMS belief (no example) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual belief (\"multiplying always makes a number bigger and dividing always makes it smaller\") rather than a specific syntactic or procedural error that can be captured by a runnable Prolog rule producing a wrong numeric result. No concrete computational rule can encode this misconception generically without inventing a specific faulty algorithm, which violates the instruction to encode only the documented student error.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40299_multiplication_increases_division_decreases(X, Y) :-\n    Y is X * 2).\n\ntest_harness:arith_misconception(db_row(40299), decimal, churn_40299_multiplication_increases_division_decreases,\n    churn_candidate:churn_40299_multiplication_increases_division_decreases,\n    0.5,\n    1.0).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error is a conceptual belief (\"multiplying always makes a number bigger and dividing always makes it smaller\") rather than a specific syntactic or procedural error that can be captured by a runnable Prolog rule producing a wrong numeric result. No concrete computational rule can encode this misconception generically without inventing a specific faulty algorithm, which violates the instruction to encode only the documented student error.",
+      "result": "abstained"
+    }
+  ]
+}

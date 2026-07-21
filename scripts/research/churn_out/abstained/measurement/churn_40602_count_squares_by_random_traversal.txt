@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40602",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40602_count_squares_by_random_traversal",
+    "target_operation": "area_array_structuring",
+    "citation": "Michael T. Battista (2004)",
+    "error_action": "count_squares_by_random_traversal",
+    "error_description": "enumerate covering squares by pointing along an unsystematic path",
+    "provenance_comments": "=== row 40602: random-path counting loses track ===\nToo vague: process failure, variable outputs.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a process failure (random-path counting) that yields variable, non-deterministic outputs, and does not specify a fixed, deterministic rule that maps a given input to a specific wrong output. Since the registration schema requires a runnable rule (a predicate of arity 2) that consistently produces the documented wrong answer for a given input, and the error is inherently non-deterministic and unquantifiable, a defensible, reproducible rule cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a process failure (random-path counting) that yields variable, non-deterministic outputs, and does not specify a fixed, deterministic rule that maps a given input to a specific wrong output. Since the registration schema requires a runnable rule (a predicate of arity 2) that consistently produces the documented wrong answer for a given input, and the error is inherently non-deterministic and unquantifiable, a defensible, reproducible rule cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

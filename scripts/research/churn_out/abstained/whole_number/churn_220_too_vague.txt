@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "220",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_220_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The source row provides no concrete documented error action or description beyond the label \"too_vague\", and no worked example or citation is present to infer a specific incorrect procedure. Without a clear, documented mathematical error (e.g., a specific misapplication of an operation), there is no basis to construct a runnable rule that produces a predictable wrong result for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The source row provides no concrete documented error action or description beyond the label \"too_vague\", and no worked example or citation is present to infer a specific incorrect procedure. Without a clear, documented mathematical error (e.g., a specific misapplication of an operation), there is no basis to construct a runnable rule that produces a predictable wrong result for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

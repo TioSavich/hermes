@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37981",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37981_must_compute_before_comparing",
+    "target_operation": "relative_size_of_division",
+    "citation": "Yeping Li, Gerald Kulm (2008)",
+    "error_action": "must_compute_before_comparing",
+    "error_description": "the relative size of two division expressions can only be known by evaluating them",
+    "provenance_comments": "=== row 37981: cannot order divisions without computing ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "expected exactly one arith_misconception/6 registration; found 0",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_37981_must_compute_before_comparing(div(A,B)-div(C,D), '<') :-\n    B > 0,\n    D > 0,\n    A =:= C,\n    B < D).\n\ntest_harness:arith_misception(db_row(37981), fraction, churn_37981_must_compute_before_comparing,\n    churn_candidate:churn_37981_must_compute_before_comparing,\n    div(5,2)-div(5,4),\n    '>').\nABSTAIN: rule does not produce documented wrong answer for any input; the documented error requires that the student *assumes* divisions cannot be compared without computation, but the rule must *produce* that incorrect comparison outcome (e.g., '<' when correct is '>') for a specific input. The above rule yields '<' for div(5,2)-div(5,4), but the correct order is '>' (since 5/2 > 5/4), matching the misconception. However, the registration schema requires `ExpectedCorrect` to be the *correct* outcome, which is '>', and must *not* unify with `Got`. In the test_harness above, `Got` is '<' and `ExpectedCorrect` is '>', so they do not unify — this satisfies the contract.",
+      "result": "expected exactly one arith_misconception/6 registration; found 0"
+    },
+    {
+      "response": "churn_candidate:(churn_37981_must_compute_before_comparing(div(A,B)-div(C,D), false) :-\n    A =:= C,\n    B =\\= D,\n    false).\n\ntest_harness:arith_misception(db_row(37981), fraction, churn_37981_must_compute_before_comparing,\n    churn_candidate:churn_37981_must_compute_before_comparing,\n    div(4,2)-div(4,4),\n    true).",
+      "result": "expected exactly one arith_misconception/6 registration; found 0"
+    }
+  ]
+}

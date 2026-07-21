@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40125",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40125_numerator_must_be_less_than_denominator",
+    "target_operation": "improper_fraction_validity",
+    "citation": "Eva Thanheiser, Dana Olanoff, Amy Hillen, Ziv Feldman, Jennifer M. Tobias, Rachael M. Welder (2016)",
+    "error_action": "numerator_must_be_less_than_denominator",
+    "error_description": "hold that a valid fraction (and any comparable fraction) must have its numerator below its denominator",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception (that a valid fraction must have numerator < denominator), but the task requires encoding a runnable Prolog rule that, when called with a specific input, produces the documented wrong answer. There is no arithmetic operation or syntactic transformation described that yields a *wrong numeric result*; instead, it is a *judgment* about validity. Since the schema requires `Rule(Input, Got)` to produce the *documented wrong answer* and `ExpectedCorrect` to be the *correct outcome*, and the documented error does not specify a computational procedure that maps an input to an incorrect numeric output (e.g., no specific operation like addition or comparison is defined that would yield a concrete wrong value), no runnable rule satisfying the contract can be constructed without invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40125_numerator_must_be_less_than_denominator(frac(N,D), frac(N,D)) :-\n    N < D).\n\ntest_harness:arith_misconception(db_row(40125), fraction, churn_40125_numerator_must_be_less_than_denominator,\n    churn_candidate:churn_40125_numerator_must_be_less_than_denominator,\n    frac(5,3),\n    true).\nABSTAIN: Rule does not produce the documented wrong answer; it succeeds only for proper fractions, but the documented misconception requires that the *invalid* fraction (e.g., improper) be incorrectly rejected, not that the rule only accepts proper ones. The rule as written does not model the student error of rejecting a valid improper fraction; it merely restricts acceptance. To model the error, the rule must produce a wrong result (e.g., failure or wrong value) when given an improper fraction, but this rule only succeeds for proper fractions and fails for improper ones—yet `ExpectedCorrect` must unify with the correct outcome, and `true` does not reflect a *result* of the operation. A proper error model would need to return a specific erroneous output (e.g., `false` or a sentinel), but the source does not specify such an output; it only states the belief, not a computational procedure.",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception (that a valid fraction must have numerator < denominator), but the task requires encoding a runnable Prolog rule that, when called with a specific input, produces the documented wrong answer. There is no arithmetic operation or syntactic transformation described that yields a *wrong numeric result*; instead, it is a *judgment* about validity. Since the schema requires `Rule(Input, Got)` to produce the *documented wrong answer* and `ExpectedCorrect` to be the *correct outcome*, and the documented error does not specify a computational procedure that maps an input to an incorrect numeric output (e.g., no specific operation like addition or comparison is defined that would yield a concrete wrong value), no runnable rule satisfying the contract can be constructed without invention.",
+      "result": "abstained"
+    }
+  ]
+}

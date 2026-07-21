@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "161",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_161_treat_ten_as_ten_separate_units",
+    "target_operation": "subtraction_borrowing",
+    "citation": "Bednarz, Nadine & Janvier, Bernadette (1982)",
+    "error_action": "treat_ten_as_ten_separate_units",
+    "error_description": "see a ten as ten loose individual units rather than as one composed group, and perform borrowing as an unexplained procedure",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed from the documentation, as the error describes a conceptual misinterpretation (treating ten as ten separate units during borrowing) rather than a specific syntactic arithmetic operation that can be encoded as a deterministic 2-place predicate producing the documented wrong result. The description does not specify a formulaic procedure that yields a unique incorrect output for a given input, making it impossible to satisfy the schema requirement that `Rule(Input, Got)` produce the documented wrong answer.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed from the documentation, as the error describes a conceptual misinterpretation (treating ten as ten separate units during borrowing) rather than a specific syntactic arithmetic operation that can be encoded as a deterministic 2-place predicate producing the documented wrong result. The description does not specify a formulaic procedure that yields a unique incorrect output for a given input, making it impossible to satisfy the schema requirement that `Rule(Input, Got)` produce the documented wrong answer.",
+      "result": "abstained"
+    }
+  ]
+}

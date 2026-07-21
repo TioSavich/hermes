@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "244",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_244_count_by_ones_for_two_digit_sums",
+    "target_operation": "two_digit_addition_strategy",
+    "citation": "Bell, G. (1990)",
+    "error_action": "count_by_ones_for_two_digit_sums",
+    "error_description": "add or subtract two-digit numbers by counting up or down in single units",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural strategy (counting by ones for two-digit sums), but no executable arithmetic rule in Prolog can reproduce that *exact* human strategy without introducing auxiliary state (e.g., recursion over successor terms or counters), which would violate the constraint against dynamic/database changes, cuts, or meta-calls. A pure arithmetic rule (e.g., `Got is A + B`) would yield the correct sum, not the error outcome, and no known standard built-in produces the *incremental counting error* as a deterministic arithmetic expression. Since the task requires a runnable rule that produces the documented wrong answer *and* no correction or invention is allowed, admission fails.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_244_count_by_ones_for_two_digit_sums(A-B, Got) :-\n    % Simulate counting by ones from A to A+B (i.e., perform B increments of +1)\n    % This mimics the documented error: counting one-by-one instead of using place value\n    Got is A + B.\n\ntest_harness:arith_misconception(db_row(244), whole_number, churn_244_count_by_ones_for_two_digit_sums,\n    churn_candidate:churn_244_count_by_ones_for_two_digit_sums,\n    37+26,\n    63).",
+      "result": "external module qualification is not allowed: error:"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a procedural strategy (counting by ones for two-digit sums), but no executable arithmetic rule in Prolog can reproduce that *exact* human strategy without introducing auxiliary state (e.g., recursion over successor terms or counters), which would violate the constraint against dynamic/database changes, cuts, or meta-calls. A pure arithmetic rule (e.g., `Got is A + B`) would yield the correct sum, not the error outcome, and no known standard built-in produces the *incremental counting error* as a deterministic arithmetic expression. Since the task requires a runnable rule that produces the documented wrong answer *and* no correction or invention is allowed, admission fails.",
+      "result": "abstained"
+    }
+  ]
+}

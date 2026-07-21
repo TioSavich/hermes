@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "157",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_157_count_up_within_tacitly_nested_number_sequence",
+    "target_operation": "subtraction_number_sequence",
+    "citation": "Ulrich, Catherine (2016)",
+    "error_action": "count_up_within_tacitly_nested_number_sequence",
+    "error_description": "solve subtraction such as 17-8 by counting up from the subtrahend without an iterable unit of one",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 1",
+  "attempts": [
+    {
+      "response": "churn_candidate:(count_up_within_tacitly_nested_number_sequence(A-B, Got) :-\n    Got is B + (A - B)).\n\ntest_harness:arith_misconception(db_row(157), whole_number, churn_157_count_up_within_tacitly_nested_number_sequence,\n    churn_candidate:count_up_within_tacitly_nested_number_sequence,\n    17-8,\n    9).",
+      "result": "predicate must be named churn_157_count_up_within_tacitly_nested_number_sequence"
+    },
+    {
+      "response": "churn_candidate:(churn_157_count_up_within_tacitly_nested_number_sequence(A-B, Got) :-\n    between(A, B, Got)).\n\ntest_harness:arith_misconception(db_row(157), whole_number, churn_157_count_up_within_tacitly_nested_number_sequence,\n    churn_candidate:churn_157_count_up_within_tacitly_nested_number_sequence,\n    17-8,\n    9).",
+      "result": "SWI-Prolog gate exited 1"
+    }
+  ]
+}

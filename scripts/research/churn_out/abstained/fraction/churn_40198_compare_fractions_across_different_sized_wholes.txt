@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40198",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40198_compare_fractions_across_different_sized_wholes",
+    "target_operation": "same_sized_whole_omission",
+    "citation": "Tonya Gau Bartell • Corey Webel • Brian Bowen • Nancy Dyson (2013)",
+    "error_action": "compare_fractions_across_different_sized_wholes",
+    "error_description": "draw and compare fraction models without holding the wholes to the same size",
+    "provenance_comments": "=== row 40198: unaligned wholes in drawn comparison ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a visual comparison procedure (drawing fraction models with misaligned wholes) that cannot be expressed as a deterministic, executable Prolog rule of arity 2 producing a specific wrong output; no clear, general, runnable procedure is specified that maps a canonical input to a unique erroneous result.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a visual comparison procedure (drawing fraction models with misaligned wholes) that cannot be expressed as a deterministic, executable Prolog rule of arity 2 producing a specific wrong output; no clear, general, runnable procedure is specified that maps a canonical input to a unique erroneous result.",
+      "result": "abstained"
+    }
+  ]
+}

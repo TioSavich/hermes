@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "279",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_279_recount_both_addends_from_one",
+    "target_operation": "counting_on_vs_counting_all",
+    "citation": "Wayne Holmes and Ann Dowker (2013)",
+    "error_action": "recount_both_addends_from_one",
+    "error_description": "add by counting the entire combined set starting from one rather than counting on from an addend",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "registration source/domain/description does not match the entry",
+  "attempts": [
+    {
+      "response": "churn_candidate:(recounts_both_addends_from_one(A+B, Got) :-\n    Got is A + B,\n    Got =:= A + B,\n    % The error: simulate counting from 1 up to the total,\n    % which is mathematically correct but reflects the misconception\n    % by constructing the sum via explicit counting loop starting at 1.\n    findall(1, between(1, A+B, _), Ones),\n    sum_list(Ones, Got)).\n\ntest_harness:arith_misconception(db_row(279), whole_number, churn_279_recount_both_addends_from_one,\n    churn_candidate:recounts_both_addends_from_one,\n    3+4,\n    7).",
+      "result": "external module qualification is not allowed: error:"
+    },
+    {
+      "response": "churn_candidate:(recounts_both_addends_from_one(A+B, Got) :-\n    Got is A + B,\n    !,\n    false.\n\ntest_harness:arith_misconception(db_row(279), whole_number, recount_both_addends_from_one,\n    churn_candidate:recounts_both_addends_from_one,\n    3+4,\n    7).",
+      "result": "registration source/domain/description does not match the entry"
+    }
+  ]
+}

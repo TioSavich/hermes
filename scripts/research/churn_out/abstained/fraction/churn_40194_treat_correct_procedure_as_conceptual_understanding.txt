@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40194",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40194_treat_correct_procedure_as_conceptual_understanding",
+    "target_operation": "procedural_vs_conceptual_assessment",
+    "citation": "Tonya Gau Bartell • Corey Webel • Brian Bowen • Nancy Dyson (2013)",
+    "error_action": "treat_correct_procedure_as_conceptual_understanding",
+    "error_description": "count a teacher's reading of correct algorithmic steps as evidence that the child understands the concept",
+    "provenance_comments": "=== row 40194: accept procedure as understanding ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is pedagogical (misinterpreting procedural fluency as conceptual understanding) and does not correspond to a specific arithmetic operation or computational rule that can be expressed as a Prolog predicate producing a wrong result from a given input. No runnable rule or defensible probe can be constructed per the schema contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is pedagogical (misinterpreting procedural fluency as conceptual understanding) and does not correspond to a specific arithmetic operation or computational rule that can be expressed as a Prolog predicate producing a wrong result from a given input. No runnable rule or defensible probe can be constructed per the schema contract.",
+      "result": "abstained"
+    }
+  ]
+}

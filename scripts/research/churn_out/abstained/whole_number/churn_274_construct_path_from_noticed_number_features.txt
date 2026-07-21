@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "274",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_274_construct_path_from_noticed_number_features",
+    "target_operation": "invented_addition_strategies",
+    "citation": "Threlfall, John (2002)",
+    "error_action": "construct_path_from_noticed_number_features",
+    "error_description": "choose a solution path dynamically from features noticed in the specific numbers",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a meta-strategy (constructing a solution path from noticed number features) rather than a specific incorrect computational rule. Without a concrete, runnable procedure that produces a fixed wrong answer for a given input, no executable Rule predicate can be formed that satisfies the schema requirement of producing the documented wrong result.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a meta-strategy (constructing a solution path from noticed number features) rather than a specific incorrect computational rule. Without a concrete, runnable procedure that produces a fixed wrong answer for a given input, no executable Rule predicate can be formed that satisfies the schema requirement of producing the documented wrong result.",
+      "result": "abstained"
+    }
+  ]
+}

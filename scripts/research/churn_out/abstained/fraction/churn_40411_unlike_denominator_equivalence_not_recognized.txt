@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40411",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40411_unlike_denominator_equivalence_not_recognized",
+    "target_operation": "fraction_equivalence",
+    "citation": "Juhaina Awawdeh Shahbari & Irit Peled (2017)",
+    "error_action": "unlike_denominator_equivalence_not_recognized",
+    "error_description": "fractions written with different denominators are not recognized as the same value because the scaling relation is not seen",
+    "provenance_comments": "=== row 40411: reduce/expand with unlike denominators ===\nToo vague — difficulty description, no concrete wrong numeric answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is too vague — it describes a conceptual difficulty (not recognizing equivalence of fractions with unlike denominators) but does not specify a concrete wrong numeric answer or a runnable procedure that produces a specific incorrect result. Without a deterministic mapping from input to a fixed erroneous output, no SWI-Prolog rule can be constructed that reliably produces the documented error.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is too vague — it describes a conceptual difficulty (not recognizing equivalence of fractions with unlike denominators) but does not specify a concrete wrong numeric answer or a runnable procedure that produces a specific incorrect result. Without a deterministic mapping from input to a fixed erroneous output, no SWI-Prolog rule can be constructed that reliably produces the documented error.",
+      "result": "abstained"
+    }
+  ]
+}

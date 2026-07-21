@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37792",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37792_multiplication_enlarges_division_shrinks",
+    "target_operation": "relative_effect_of_operations",
+    "citation": "Nancy Nesbitt Vacc and George W. Bright (1999)",
+    "error_action": "multiplication_enlarges_division_shrinks",
+    "error_description": "multiplying always makes a number bigger and dividing always makes it smaller",
+    "provenance_comments": "=== row 37792: belief that multiplication always increases (general belief) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a general belief about multiplication and division affecting magnitude, not a specific syntactic error that can be encoded as a deterministic Prolog rule producing a fixed wrong result from a given input. There is no concrete procedure or formula supplied that maps inputs to a specific incorrect output; thus, no runnable rule of arity 2 can be constructed per schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a general belief about multiplication and division affecting magnitude, not a specific syntactic error that can be encoded as a deterministic Prolog rule producing a fixed wrong result from a given input. There is no concrete procedure or formula supplied that maps inputs to a specific incorrect output; thus, no runnable rule of arity 2 can be constructed per schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

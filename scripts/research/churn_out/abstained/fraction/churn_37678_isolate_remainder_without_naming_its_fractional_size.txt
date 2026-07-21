@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37678",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37678_isolate_remainder_without_naming_its_fractional_size",
+    "target_operation": "equal_sharing",
+    "citation": "Susan B. Empson (2003)",
+    "error_action": "isolate_remainder_without_naming_its_fractional_size",
+    "error_description": "set aside the leftover piece without stating what fraction of the whole it is",
+    "provenance_comments": "=== row 37678: ambiguous representation of remainder ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (failing to name the fractional size of a remainder) rather than a specific syntactic or procedural rule that can be modeled as a binary predicate producing a wrong result. No runnable rule can be constructed that deterministically yields a documented wrong answer for a given input without additional mathematical specification of how the remainder is isolated or what incorrect value is produced.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (failing to name the fractional size of a remainder) rather than a specific syntactic or procedural rule that can be modeled as a binary predicate producing a wrong result. No runnable rule can be constructed that deterministically yields a documented wrong answer for a given input without additional mathematical specification of how the remainder is isolated or what incorrect value is produced.",
+      "result": "abstained"
+    }
+  ]
+}

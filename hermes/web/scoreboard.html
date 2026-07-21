@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Commitment Tracker and Expressive Power</title>
+  <title>Commitment Tracker and Inferential Strength</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="hermes-tokens-dark.css">
@@ -230,6 +230,16 @@
       margin-top: 1rem;
       overflow: hidden;
     }
+    .containment-note {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      margin-top: 0.75rem;
+      padding: 0.75rem 0.9rem;
+    }
+    .containment-note b { color: var(--text); }
     .axis-row {
       display: grid;
       grid-template-columns: minmax(120px, 0.8fr) minmax(0, 1fr) minmax(0, 1fr) minmax(120px, 0.7fr);
@@ -393,16 +403,15 @@
   <p class="sub" id="lesson-line">Loading monitoring chart…</p>
 
   <p class="provenance">
-    This page renders the <b>actual JSON</b> emitted by the Prolog monitoring chart
+    This page renders JSON emitted by the Prolog monitoring chart
     (<code>hermes_worker.pl</code>, op <code>monitoring_chart_export</code>). It is a
-    saved snapshot under <code>data/</code>, not a mock and not a live call — regenerate
-    it by piping a <code>monitoring_chart_export</code> request through the app.
-    The two figures it foregrounds — <b>derived incompatibility</b> and
-    <b>expressive power</b>, what each representation can and cannot say (Brandom,
-    <em>Between Saying and Doing</em>), is shown here as the
-    chart computes them, not as decoration. Enter a lesson code below to ask the live
-    app for a fresh chart; when the app is unreachable the page falls back
-    to the saved snapshot.
+    saved snapshot under <code>data/</code>. Regenerate it by piping a
+    <code>monitoring_chart_export</code> request through the app. The chart reports
+    <b>derived incompatibilities</b> and bounded breadth tallies. The paired lesson
+    comparison below adds conflict-set containment, which models the Brandomian
+    relation described in <em>Between Saying and Doing</em>. Enter a lesson code below
+    to ask the live app for a fresh chart; when the app is unreachable the page uses
+    the saved snapshot.
   </p>
 
   <div class="controls">
@@ -453,11 +462,12 @@
     function renderPower(ep) {
       const sec = document.getElementById('power');
       if (!ep) return;
-      sec.appendChild(el('h2', null, 'Expressive power this lesson puts in play'));
+      sec.appendChild(el('h2', null, 'Inferential-strength measures for this lesson'));
       sec.appendChild(el('p', 'note',
         'Two finite measures, kept deliberately distinct: proof-paths (how many strategic ' +
-        'routes through the action space) and incompatibilities (how many commitments, moves made without earning the right to them (Brandom, Between Saying and Doing), the ' +
-        'vocabulary excludes — the cheese-grater holes).'));
+        'routes through the action space) and incompatibility breadth (how many distinct ' +
+        'conflicts the lesson vocabulary records). Counts are breadth tallies; they do ' +
+        'not by themselves establish entailment.'));
       const grid = el('div', 'power-grid');
       const paths = el('div', 'metric paths');
       paths.appendChild(el('div', 'n', esc(ep.proof_paths ?? '—')));
@@ -467,7 +477,7 @@
       const total = (ep.strategy_incompatibilities ?? 0) + (ep.misconception_incompatibilities ?? 0);
       inc.appendChild(el('div', 'n', esc(total)));
       inc.appendChild(el('div', 'lbl',
-        `incompatibilities (${esc(ep.strategy_incompatibilities ?? 0)} strategy · ` +
+        `incompatibility breadth (${esc(ep.strategy_incompatibilities ?? 0)} strategy · ` +
         `${esc(ep.misconception_incompatibilities ?? 0)} misconception)`));
       grid.appendChild(inc);
       sec.appendChild(grid);
@@ -546,7 +556,7 @@
       });
       document.getElementById('lesson-line').textContent =
         'Lesson ' + (d.lesson_code || '(unknown)');
-      renderPower(d.expressive_power);
+      renderPower(d.inferential_strength);
       renderCore(d.productive_core);
       renderStrategies(d.anticipated_strategies);
       renderMisconceptions(d.teacher_misconceptions);
@@ -637,11 +647,12 @@
   <section class="page-view comparison-view" id="im-vs-traditional" aria-labelledby="comparison-view-title">
     <p class="pair-title">IM vs traditional</p>
   <header>
-    <h1 id="comparison-view-title">Expressive Power Comparison</h1>
+    <h1 id="comparison-view-title">Inferential Strength Comparison</h1>
     <p class="sub">
       IM lessons and cited Ray-style traditional lessons are paired by standard.
-      Each report shows the expressive power the lesson puts in play, not an
-      empirical classroom outcome.
+      Each report shows proof-path and incompatibility-breadth tallies alongside
+      conflict-set containment. Containment models the Brandomian relation; the
+      lesson sums remain breadth tallies. These are not empirical classroom outcomes.
     </p>
     <p class="data-source" id="data-source"></p>
     <div class="claim-register" id="claim-register"></div>
@@ -650,7 +661,7 @@
   <section class="summary" id="summary"></section>
   <section class="audit" id="wiring-audit"></section>
   <main id="reports">
-    <div class="loading">Loading <code>data/expressive_power_comparison.json</code>...</div>
+    <div class="loading">Loading <code>data/inferential_strength_comparison.json</code>...</div>
   </main>
   </section>
   <script>
@@ -660,9 +671,9 @@
     // Live-with-fallback, same pattern as scoreboard.html: the saved comparison
     // document carries the curated structure (pairing by standard, provenance,
     // citations, hyperedge deltas, wiring audit); the per-lesson counts are
-    // refreshed from the live app (/api/expressive_power) when it
+    // refreshed from the live app (/api/inferential_strength) when it
     // answers, and the page names which of the two it is serving.
-    const DATA_URL = 'data/expressive_power_comparison.json';
+    const DATA_URL = 'data/inferential_strength_comparison.json';
     const WORKER_BASE = location.protocol === 'file:' ? 'http://127.0.0.1:8765' : '';
     // The three per-lesson counts the live op reports; the axis deltas over
     // these are recomputed when live counts arrive.
@@ -835,6 +846,7 @@
       root.innerHTML = '';
       [
         ['structural_claim', 'structural claim'],
+        ['measure_rule', 'measure rule'],
         ['understanding_hypothesis', 'understanding hypothesis'],
         ['decentering_link', 'decentering link']
       ].forEach(([key, label]) => {
@@ -887,6 +899,17 @@
         pair.delta.misconception_incompatibilities, computed));
       section.appendChild(axis);
 
+      const containment = pair.delta.containment || {};
+      const strategyContainment = containment.strategy || {};
+      const misconceptionContainment = containment.misconception || {};
+      section.appendChild(el('div', 'containment-note',
+        `<b>Conflict-set containment:</b> strategy ${esc(strategyContainment.relation || 'unreported')} ` +
+        `(${esc(strategyContainment.delta_status || 'no delta status')}); misconception ` +
+        `${esc(misconceptionContainment.relation || 'unreported')} ` +
+        `(${esc(misconceptionContainment.delta_status || 'no delta status')}). ` +
+        `A licensed verdict follows the containment direction. An incomparable verdict ` +
+        `leaves the numeric difference as a breadth tally.`));
+
       const grid = el('div', 'lesson-grid');
       grid.appendChild(lessonPanel(pair.im, 'im'));
       grid.appendChild(lessonPanel(pair.traditional, 'traditional'));
@@ -898,12 +921,12 @@
       document.getElementById('data-source').innerHTML = html;
     }
 
-    // Ask the live app for one lesson's expressive-power counts. The route
-    // returns {ok:true, result:{lesson, resolved, expressive_power}}; a lesson
+    // Ask the live app for one lesson's inferential-strength counts. The route
+    // returns {ok:true, result:{lesson, resolved, inferential_strength}}; a lesson
     // the app cannot resolve counts as a live failure so the page never
     // mixes live and frozen numbers.
     function fetchLiveCounts(code) {
-      return fetch(WORKER_BASE + '/api/expressive_power', {
+      return fetch(WORKER_BASE + '/api/inferential_strength', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ lesson: code })
@@ -913,10 +936,10 @@
       }).then(j => {
         if (j && j.error) throw new Error(j.error);
         const res = j && j.result ? j.result : j;
-        if (!res || res.resolved !== true || !res.expressive_power) {
+        if (!res || res.resolved !== true || !res.inferential_strength) {
           throw new Error(code + ' did not resolve on the live app');
         }
-        return res.expressive_power;
+        return res.inferential_strength;
       });
     }
 
@@ -972,7 +995,7 @@
             renderAll(fresh);
             setDataSource('<span class="badge live">live counts</span>' +
               'Per-lesson counts and the count deltas come from the app ' +
-              '(<code>/api/expressive_power</code>). Pairing, provenance, citations, ' +
+              '(<code>/api/inferential_strength</code>). Pairing, provenance, citations, ' +
               'incompatible-claim-group deltas and the wiring audit come from the saved comparison ' +
               'document <code>' + esc(DATA_URL) + '</code>.');
           })

@@ -1,4 +1,30 @@
 {
+  "activity_prompt": [
+    {
+      "heading": "Warm-up — Student Task Statement",
+      "line": 101,
+      "source_guide": "curriculum/im_teacher_guides/grade1/unit3/lesson17.md",
+      "text": "How many do you see?\nHow do you see them?"
+    },
+    {
+      "heading": "Activity 1 — Student Task Statement",
+      "line": 182,
+      "source_guide": "curriculum/im_teacher_guides/grade1/unit3/lesson17.md",
+      "text": "• Put out 9 counters.\n• Pick a number card and add that many\ncounters.\n\n• Write an equation to represent the counters.\nCan you write more than 1?\n\nEquations:\n\nRound 1:\n\nRound 2:\n\nRound 3:\n\nRound 4:\n\nRound 5:"
+    },
+    {
+      "heading": "Activity 2 — Student Task Statement",
+      "line": 266,
+      "source_guide": "curriculum/im_teacher_guides/grade1/unit3/lesson17.md",
+      "text": "1. Clare draws some birds.\nShe draws 3 birds in a nest and 9 birds flying.\nHow many birds did she draw?\nShow your thinking using drawings, numbers,\nor words.\n\n2. Clare draws birds that like warm weather.\nShe draws 6 toucans and 8 parrots.\nHow many birds did she draw?\n\nShow your thinking using drawings, numbers,\nor words.\n\n3. Clare draws birds that like cold weather.\n\nShe draws 7 penguins and 5 owls.\nHow many birds did she draw?\nShow your thinking using drawings, numbers,\nor words."
+    },
+    {
+      "heading": "Cool-down — Student Task Statement",
+      "line": 341,
+      "source_guide": "curriculum/im_teacher_guides/grade1/unit3/lesson17.md",
+      "text": "8 birds sit in a tree.\n6 birds sit on the grass.\nHow many birds are there in all?\nShow your thinking using drawings, numbers, or words."
+    }
+  ],
   "anticipated_strategies": [
     {
       "kind": "count_all_when_count_on_available",
@@ -55,23 +81,483 @@
       "where_to_spot": "[equal_group,repeated_addend,iteration_count,running_product]"
     }
   ],
-  "expressive_power": {
-    "misconception_incompatibilities": 6,
+  "deformation_chart": {
+    "available": false,
+    "coverage": "scope_limited",
+    "covered_lesson_codes": [
+      "IM-G3-U5-L1",
+      "IM-G3-U5-L15",
+      "IM-G3-U5-L2"
+    ],
+    "lesson_code": "IM-G1-U3-L17",
+    "note": "Deformation charts are currently authored only for the covered grade-3 fraction lessons.",
+    "request_op": "lesson_deformation_chart",
+    "scope": "grade_3_fraction_lessons"
+  },
+  "discussion_sequence": [
+    {
+      "heading": "Warm-up — Activity Synthesis",
+      "line": 124,
+      "source_guide": "curriculum/im_teacher_guides/grade1/unit3/lesson17.md",
+      "text": "• “Who can restate the way _____ saw the dots in\n\ndifferent words?”"
+    },
+    {
+      "heading": "Activity 1 — Activity Synthesis",
+      "line": 223,
+      "source_guide": "curriculum/im_teacher_guides/grade1/unit3/lesson17.md",
+      "text": "• “What patterns did you notice as you played the\ngame?” (I saw that a   expression can be written as\na     expression. You can take 1 from the other\naddend. The 9 goes up by 1, and the other addend\ngoes down by 1.)\n• “We can write the equation                 to\nrepresent that the expressions are equal.”"
+    },
+    {
+      "heading": "Lesson Synthesis",
+      "line": 321,
+      "source_guide": "curriculum/im_teacher_guides/grade1/unit3/lesson17.md",
+      "text": "“Today, we saw that making a ten can help us add numbers within 20.”\n\nDisplay the double 10-frame with 9 red counters.\n\n“If I add 7, how could we record the sum with an equation?” (           ,             )\n\n“How can I write one equation to show that these two expressions are equivalent?” (                )"
+    }
+  ],
+  "figures": {
+    "candidate_count": 1622,
+    "candidates": [
+      {
+        "bibkey": "ESM_Neuman_1999_Early",
+        "domains": [
+          "whole_number"
+        ],
+        "evidence": {
+          "is_hybridized_transplant": false,
+          "score_components": [
+            {
+              "name": "representation_language",
+              "weight": 40
+            },
+            {
+              "name": "spatial_elements",
+              "weight": 5
+            },
+            {
+              "name": "domain",
+              "weight": 25
+            },
+            {
+              "name": "grade_band",
+              "weight": 20
+            },
+            {
+              "name": "topics",
+              "weight": 10
+            },
+            {
+              "name": "transcribed_numerals",
+              "weight": 0
+            },
+            {
+              "name": "bibkey_provenance",
+              "weight": 0
+            }
+          ]
+        },
+        "grade_bucket": "elementary (K–5)",
+        "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/ESM_Neuman_1999_Early/p10_1.png",
+        "refusals": [],
+        "render_plan": {
+          "kind": "productive_diagram",
+          "note": "representation grammar accepts; lesson-exact analogue may be generated",
+          "productive": true,
+          "source": "svg_analogue"
+        },
+        "representation_language": "set_grouping",
+        "score": 100,
+        "source_label": "ESM_Neuman_1999_Early - elementary (K–5) - set_grouping - svg_analogue",
+        "status": "productive_fit"
+      },
+      {
+        "bibkey": "ESM_Neuman_1999_Early",
+        "domains": [
+          "whole_number"
+        ],
+        "evidence": {
+          "is_hybridized_transplant": false,
+          "score_components": [
+            {
+              "name": "representation_language",
+              "weight": 40
+            },
+            {
+              "name": "spatial_elements",
+              "weight": 5
+            },
+            {
+              "name": "domain",
+              "weight": 25
+            },
+            {
+              "name": "grade_band",
+              "weight": 20
+            },
+            {
+              "name": "topics",
+              "weight": 10
+            },
+            {
+              "name": "transcribed_numerals",
+              "weight": 0
+            },
+            {
+              "name": "bibkey_provenance",
+              "weight": 0
+            }
+          ]
+        },
+        "grade_bucket": "elementary (K–5)",
+        "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/ESM_Neuman_1999_Early/p10_2.png",
+        "refusals": [],
+        "render_plan": {
+          "kind": "productive_diagram",
+          "note": "representation grammar accepts; lesson-exact analogue may be generated",
+          "productive": true,
+          "source": "svg_analogue"
+        },
+        "representation_language": "set_grouping",
+        "score": 100,
+        "source_label": "ESM_Neuman_1999_Early - elementary (K–5) - set_grouping - svg_analogue",
+        "status": "productive_fit"
+      },
+      {
+        "bibkey": "ESM_Neuman_1999_Early",
+        "domains": [
+          "whole_number"
+        ],
+        "evidence": {
+          "is_hybridized_transplant": false,
+          "score_components": [
+            {
+              "name": "representation_language",
+              "weight": 40
+            },
+            {
+              "name": "spatial_elements",
+              "weight": 5
+            },
+            {
+              "name": "domain",
+              "weight": 25
+            },
+            {
+              "name": "grade_band",
+              "weight": 20
+            },
+            {
+              "name": "topics",
+              "weight": 10
+            },
+            {
+              "name": "transcribed_numerals",
+              "weight": 0
+            },
+            {
+              "name": "bibkey_provenance",
+              "weight": 0
+            }
+          ]
+        },
+        "grade_bucket": "elementary (K–5)",
+        "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/ESM_Neuman_1999_Early/p13_1.png",
+        "refusals": [],
+        "render_plan": {
+          "kind": "productive_diagram",
+          "note": "representation grammar accepts; lesson-exact analogue may be generated",
+          "productive": true,
+          "source": "svg_analogue"
+        },
+        "representation_language": "set_grouping",
+        "score": 100,
+        "source_label": "ESM_Neuman_1999_Early - elementary (K–5) - set_grouping - svg_analogue",
+        "status": "productive_fit"
+      },
+      {
+        "bibkey": "ESM_Neuman_1999_Early",
+        "domains": [
+          "whole_number"
+        ],
+        "evidence": {
+          "is_hybridized_transplant": false,
+          "score_components": [
+            {
+              "name": "representation_language",
+              "weight": 40
+            },
+            {
+              "name": "spatial_elements",
+              "weight": 5
+            },
+            {
+              "name": "domain",
+              "weight": 25
+            },
+            {
+              "name": "grade_band",
+              "weight": 20
+            },
+            {
+              "name": "topics",
+              "weight": 10
+            },
+            {
+              "name": "transcribed_numerals",
+              "weight": 0
+            },
+            {
+              "name": "bibkey_provenance",
+              "weight": 0
+            }
+          ]
+        },
+        "grade_bucket": "elementary (K–5)",
+        "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/ESM_Neuman_1999_Early/p15_1.png",
+        "refusals": [],
+        "render_plan": {
+          "kind": "productive_diagram",
+          "note": "representation grammar accepts; lesson-exact analogue may be generated",
+          "productive": true,
+          "source": "svg_analogue"
+        },
+        "representation_language": "set_grouping",
+        "score": 100,
+        "source_label": "ESM_Neuman_1999_Early - elementary (K–5) - set_grouping - svg_analogue",
+        "status": "productive_fit"
+      },
+      {
+        "bibkey": "ESM_Neuman_1999_Early",
+        "domains": [
+          "whole_number"
+        ],
+        "evidence": {
+          "is_hybridized_transplant": false,
+          "score_components": [
+            {
+              "name": "representation_language",
+              "weight": 40
+            },
+            {
+              "name": "spatial_elements",
+              "weight": 5
+            },
+            {
+              "name": "domain",
+              "weight": 25
+            },
+            {
+              "name": "grade_band",
+              "weight": 20
+            },
+            {
+              "name": "topics",
+              "weight": 10
+            },
+            {
+              "name": "transcribed_numerals",
+              "weight": 0
+            },
+            {
+              "name": "bibkey_provenance",
+              "weight": 0
+            }
+          ]
+        },
+        "grade_bucket": "elementary (K–5)",
+        "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/ESM_Neuman_1999_Early/p17_1.png",
+        "refusals": [],
+        "render_plan": {
+          "kind": "productive_diagram",
+          "note": "representation grammar accepts; lesson-exact analogue may be generated",
+          "productive": true,
+          "source": "svg_analogue"
+        },
+        "representation_language": "set_grouping",
+        "score": 100,
+        "source_label": "ESM_Neuman_1999_Early - elementary (K–5) - set_grouping - svg_analogue",
+        "status": "productive_fit"
+      },
+      {
+        "bibkey": "ESM_Saenzludlow_1998_Third",
+        "domains": [
+          "whole_number"
+        ],
+        "evidence": {
+          "is_hybridized_transplant": false,
+          "score_components": [
+            {
+              "name": "representation_language",
+              "weight": 40
+            },
+            {
+              "name": "spatial_elements",
+              "weight": 5
+            },
+            {
+              "name": "domain",
+              "weight": 25
+            },
+            {
+              "name": "grade_band",
+              "weight": 20
+            },
+            {
+              "name": "topics",
+              "weight": 10
+            },
+            {
+              "name": "transcribed_numerals",
+              "weight": 0
+            },
+            {
+              "name": "bibkey_provenance",
+              "weight": 0
+            }
+          ]
+        },
+        "grade_bucket": "elementary (K–5)",
+        "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/ESM_Saenzludlow_1998_Third/p12_1.png",
+        "refusals": [],
+        "render_plan": {
+          "kind": "productive_diagram",
+          "note": "representation grammar accepts; lesson-exact analogue may be generated",
+          "productive": true,
+          "source": "svg_analogue"
+        },
+        "representation_language": "set_grouping",
+        "score": 100,
+        "source_label": "ESM_Saenzludlow_1998_Third - elementary (K–5) - set_grouping - svg_analogue",
+        "status": "productive_fit"
+      }
+    ],
+    "selected": {
+      "bibkey": "ESM_Neuman_1999_Early",
+      "domains": [
+        "whole_number"
+      ],
+      "evidence": {
+        "is_hybridized_transplant": false,
+        "score_components": [
+          {
+            "name": "representation_language",
+            "weight": 40
+          },
+          {
+            "name": "spatial_elements",
+            "weight": 5
+          },
+          {
+            "name": "domain",
+            "weight": 25
+          },
+          {
+            "name": "grade_band",
+            "weight": 20
+          },
+          {
+            "name": "topics",
+            "weight": 10
+          },
+          {
+            "name": "transcribed_numerals",
+            "weight": 0
+          },
+          {
+            "name": "bibkey_provenance",
+            "weight": 0
+          }
+        ]
+      },
+      "grade_bucket": "elementary (K–5)",
+      "image_path": "docs/research_assets/research/student_work_figures/2026-06-18-docling-figures/ESM_Neuman_1999_Early/p10_1.png",
+      "refusals": [],
+      "render_plan": {
+        "kind": "productive_diagram",
+        "note": "representation grammar accepts; lesson-exact analogue may be generated",
+        "productive": true,
+        "source": "svg_analogue"
+      },
+      "representation_language": "set_grouping",
+      "score": 100,
+      "source_label": "ESM_Neuman_1999_Early - elementary (K–5) - set_grouping - svg_analogue",
+      "status": "productive_fit"
+    }
+  },
+  "inferential_strength": {
+    "misconception_incompatibilities": 3,
+    "misconception_incompatibilities_kind": "breadth_tally",
     "per_operation": [
       {
         "cells": 16,
         "distinct_costs": 48,
         "operation": "addition",
         "proof_paths": 180
+      },
+      {
+        "cells": 12,
+        "distinct_costs": 12,
+        "operation": "multiplication",
+        "proof_paths": 12
       }
     ],
-    "proof_paths": 180,
-    "strategy_incompatibilities": 12
+    "proof_paths": 192,
+    "strategy_incompatibilities": 14,
+    "strategy_incompatibilities_kind": "breadth_tally"
   },
   "lesson_code": "IM-G1-U3-L17",
+  "licensed_but_unanticipated": [
+    {
+      "anticipated_count": 5,
+      "licensed_count": 18,
+      "operation": "addition",
+      "unanticipated": [
+        "append_column_sum_without_carrying",
+        "base_ones_chunking",
+        "column_addition_with_carrying",
+        "count_all_instead_of_known_fact",
+        "derived_fact_adjustment",
+        "drop_carry_to_next_column",
+        "dropped_ones_chunk",
+        "known_fact_retrieval",
+        "make_base_transfer",
+        "rote_derived_fact_rule_misfire",
+        "round_without_adjusting",
+        "unbalanced_make_base_compensation",
+        "wrong_carry_amount_to_next_column"
+      ],
+      "unanticipated_count": 13
+    },
+    {
+      "anticipated_count": 1,
+      "licensed_count": 20,
+      "operation": "multiplication",
+      "unanticipated": [
+        "add_counts_without_composite_unit",
+        "add_instead_of_multiply",
+        "add_numbers_as_common_multiple",
+        "common_factor_intersection",
+        "common_multiple_sequence",
+        "commute_factors_preserve_product",
+        "context_free_fact_family_guess",
+        "coordinate_groups_items",
+        "distribute_group_size_split",
+        "drop_regrouping_remainder",
+        "drop_second_partial_product",
+        "factors_of_first_number_only",
+        "known_product_adjustment",
+        "known_product_without_adjustment",
+        "multiplication_fact_retrieval",
+        "regroup_to_base_preserving_total",
+        "repeat_group_size_by_itself",
+        "rigid_factor_order_roles",
+        "sequential_recompute_commuted_products"
+      ],
+      "unanticipated_count": 19
+    }
+  ],
   "pml_facts": [
     {
-      "conclusion": "n(comp_nec(make_ten_strategy_is_lesson_target))",
+      "conclusion": "n(comp_nec make_ten_strategy_is_lesson_target)",
       "id": "im_g1_u3_l17_purpose_make_ten",
       "polarity": "compressive",
       "premises": [
@@ -80,7 +566,7 @@
       ]
     },
     {
-      "conclusion": "o(comp_nec(student_methods_are_recorded_with_equations))",
+      "conclusion": "o(comp_nec student_methods_are_recorded_with_equations)",
       "id": "im_g1_u3_l17_equation_recording",
       "polarity": "compressive",
       "premises": [
@@ -88,13 +574,13 @@
       ]
     },
     {
-      "conclusion": "s(exp_poss(student_explains_own_make_ten_strategy))",
+      "conclusion": "s(exp_poss student_explains_own_make_ten_strategy)",
       "id": "im_g1_u3_l17_student_strategy_explanation",
       "polarity": "expansive",
       "premises": [
         "learning_goal(explain_strategies_within_20)",
         "teacher_prompt(how_do_you_know)",
-        "n(comp_nec(make_ten_strategy_is_lesson_target))"
+        "n(comp_nec make_ten_strategy_is_lesson_target)"
       ]
     },
     {
@@ -104,7 +590,7 @@
       "premises": []
     },
     {
-      "conclusion": "n(comp_nec(lesson_purpose(IM-G1-U3-L17)))",
+      "conclusion": "n(comp_nec lesson_purpose(IM-G1-U3-L17))",
       "id": "im_g1_u3_l17_lesson_purpose",
       "polarity": "compressive",
       "premises": [
@@ -112,26 +598,12 @@
       ]
     },
     {
-      "conclusion": "n(comp_nec(lesson_purpose(IM-G1-U3-L17)))",
-      "id": "im_g1_u3_l17_lesson_purpose",
-      "polarity": "compressive",
-      "premises": [
-        "lesson_text_source(IM-G1-U3-L17)"
-      ]
-    },
-    {
-      "conclusion": "s(exp_poss(student_orally_explains_strategy(IM-G1-U3-L17)))",
+      "conclusion": "s(exp_poss student_orally_explains_strategy(IM-G1-U3-L17))",
       "id": "im_g1_u3_l17_oral_strategy_explanation",
       "polarity": "expansive",
       "premises": [
-        "n(comp_nec(lesson_purpose(IM-G1-U3-L17)))"
+        "n(comp_nec lesson_purpose(IM-G1-U3-L17))"
       ]
-    },
-    {
-      "conclusion": "The lesson text fixes a lesson purpose and asks students to explain strategies orally.",
-      "id": "im_g1_u3_l17_lesson_text",
-      "polarity": "successful_rhythm",
-      "premises": []
     },
     {
       "conclusion": "The lesson text fixes a lesson purpose and asks students to explain strategies orally.",
@@ -147,32 +619,182 @@
     }
   ],
   "productive_core": "Efficient addition and subtraction strategies use known facts, making ten, decomposing, compensating, counting on/back, and the relation between operations.",
+  "source_guide": "curriculum/im_teacher_guides/grade1/unit3/lesson17.md",
   "teacher_misconceptions": [
     {
       "citation": "ESM_Gray_1999_Knowledge: Gray et al. 1999 corpus bindings ground count-all/count-on divergence in action/object focus and procedural counting.",
       "commitment_made": "deformed_action(count_on_from_larger,count_all_when_count_on_available,count_all_when_count_on_available)",
+      "commitment_made_gloss": "the 'count on from larger' strategy deformed into 'count all when count on available'",
       "discovered_incompatibility_sets": [
         "[count_all_when_count_on_available,strategy(addition,count_on_from_larger)]"
       ],
       "entitlement_lacked": "strategy(addition,count_on_from_larger)",
+      "entitlement_lacked_gloss": "the 'count on from larger' strategy (addition)",
       "incompatibility": "strategy(addition,count_on_from_larger)",
+      "incompatibility_gloss": "the 'count on from larger' strategy (addition)",
+      "incompatibility_set_witness": {
+        "classification": "incoherent(_3644102{kind:registry_neighborhood_incompatibility,pair:[count_all_when_count_on_available,strategy(addition,count_on_from_larger)],relation:incompatibility_with,terms_checked:[count_all_when_count_on_available,strategy(addition,count_on_from_larger)]})",
+        "kind": "bounded_big_red_incompatibility_set",
+        "scope": "closed_world_finite_big_red_search",
+        "set": [
+          "count_all_when_count_on_available",
+          "strategy(addition,count_on_from_larger)"
+        ],
+        "source": "registry_neighborhood"
+      },
+      "incompatibility_witness": {
+        "conflict": "strategy(addition,count_on_from_larger)",
+        "kind": "lesson_monitoring_incompatibility",
+        "query": "count_all_when_count_on_available",
+        "registry_witness": {
+          "conflict": "strategy(addition,count_on_from_larger)",
+          "evidence": {
+            "deformation": "count_all_when_count_on_available",
+            "family": "count_all_when_count_on_available",
+            "operation": "addition",
+            "productive": "count_on_from_larger"
+          },
+          "kind": "misconception_registry_incompatibility",
+          "move": "count_all_when_count_on_available",
+          "rule": "action_automaton_deformation",
+          "source": "closed_world_finite_misconception_registry"
+        },
+        "source": "registry_query"
+      },
       "name": "count_all_when_count_on_available",
       "operation": "addition",
       "provenance": "text_evidenced",
       "re_anchoring_move": "Re-anchor toward strategy(addition,count_on_from_larger)."
+    }
+  ],
+  "unanticipated_strategies": [
+    {
+      "kind": "append_column_sum_without_carrying",
+      "operation": "addition"
     },
     {
-      "citation": "JRME_Steinberg_1985_Instruction: Students treat derived fact strategies as rote procedural rules, indiscriminately applying verbal rules without attending to the relative size of the addends.",
-      "commitment_made": "result_of(double_first_add_one,db_row(37794),15)",
-      "discovered_incompatibility_sets": [
-        "[double_first_add_one,result_of(double_first_add_one,db_row(37794),13)]"
-      ],
-      "entitlement_lacked": "result_of(double_first_add_one,db_row(37794),13)",
-      "incompatibility": "result_of(double_first_add_one,db_row(37794),13)",
-      "name": "double_first_add_one",
-      "operation": "addition",
-      "provenance": "text_evidenced",
-      "re_anchoring_move": "Re-anchor toward result_of(double_first_add_one,db_row(37794),13)."
+      "kind": "base_ones_chunking",
+      "operation": "addition"
+    },
+    {
+      "kind": "column_addition_with_carrying",
+      "operation": "addition"
+    },
+    {
+      "kind": "count_all_instead_of_known_fact",
+      "operation": "addition"
+    },
+    {
+      "kind": "derived_fact_adjustment",
+      "operation": "addition"
+    },
+    {
+      "kind": "drop_carry_to_next_column",
+      "operation": "addition"
+    },
+    {
+      "kind": "dropped_ones_chunk",
+      "operation": "addition"
+    },
+    {
+      "kind": "known_fact_retrieval",
+      "operation": "addition"
+    },
+    {
+      "kind": "make_base_transfer",
+      "operation": "addition"
+    },
+    {
+      "kind": "rote_derived_fact_rule_misfire",
+      "operation": "addition"
+    },
+    {
+      "kind": "round_without_adjusting",
+      "operation": "addition"
+    },
+    {
+      "kind": "unbalanced_make_base_compensation",
+      "operation": "addition"
+    },
+    {
+      "kind": "wrong_carry_amount_to_next_column",
+      "operation": "addition"
+    },
+    {
+      "kind": "add_counts_without_composite_unit",
+      "operation": "multiplication"
+    },
+    {
+      "kind": "add_instead_of_multiply",
+      "operation": "multiplication"
+    },
+    {
+      "kind": "add_numbers_as_common_multiple",
+      "operation": "multiplication"
+    },
+    {
+      "kind": "common_factor_intersection",
+      "operation": "multiplication"
+    },
+    {
+      "kind": "common_multiple_sequence",
+      "operation": "multiplication"
+    },
+    {
+      "kind": "commute_factors_preserve_product",
+      "operation": "multiplication"
+    },
+    {
+      "kind": "context_free_fact_family_guess",
+      "operation": "multiplication"
+    },
+    {
+      "kind": "coordinate_groups_items",
+      "operation": "multiplication"
+    },
+    {
+      "kind": "distribute_group_size_split",
+      "operation": "multiplication"
+    },
+    {
+      "kind": "drop_regrouping_remainder",
+      "operation": "multiplication"
+    },
+    {
+      "kind": "drop_second_partial_product",
+      "operation": "multiplication"
+    },
+    {
+      "kind": "factors_of_first_number_only",
+      "operation": "multiplication"
+    },
+    {
+      "kind": "known_product_adjustment",
+      "operation": "multiplication"
+    },
+    {
+      "kind": "known_product_without_adjustment",
+      "operation": "multiplication"
+    },
+    {
+      "kind": "multiplication_fact_retrieval",
+      "operation": "multiplication"
+    },
+    {
+      "kind": "regroup_to_base_preserving_total",
+      "operation": "multiplication"
+    },
+    {
+      "kind": "repeat_group_size_by_itself",
+      "operation": "multiplication"
+    },
+    {
+      "kind": "rigid_factor_order_roles",
+      "operation": "multiplication"
+    },
+    {
+      "kind": "sequential_recompute_commuted_products",
+      "operation": "multiplication"
     }
   ]
 }

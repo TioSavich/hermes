@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37689",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37689_attach_numbers_to_nearest_named_feature",
+    "target_operation": "quotition_problem_interpretation",
+    "citation": "Joanne T. Mulligan and Michael C. Mitchelmore (1997)",
+    "error_action": "attach_numbers_to_nearest_named_feature",
+    "error_description": "bind each stated number to whatever physical object the phrase mentions",
+    "provenance_comments": "=== row 37689: quotition language misinterpretation ===\nStudent reinterprets \"2 children at each table\" as \"children are at 2\ntables\". No specific numerical output — the error is in problem parsing.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a parsing misinterpretation in quotition problems, not a calculable arithmetic rule that produces a specific wrong numeric output. The error describes a semantic misbinding of quantities to objects (\"2 children at each table\" misread as \"children are at 2 tables\") but provides no concrete numerical procedure, no specific incorrect result, and no way to construct a deterministic `Rule(Input, Got)` that yields a fixed erroneous value. Since the schema requires a runnable rule producing a specific `Got` that differs from `ExpectedCorrect`, and no such rule can be defined from the vague, non-quantitative description, admission is precluded.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a parsing misinterpretation in quotition problems, not a calculable arithmetic rule that produces a specific wrong numeric output. The error describes a semantic misbinding of quantities to objects (\"2 children at each table\" misread as \"children are at 2 tables\") but provides no concrete numerical procedure, no specific incorrect result, and no way to construct a deterministic `Rule(Input, Got)` that yields a fixed erroneous value. Since the schema requires a runnable rule producing a specific `Got` that differs from `ExpectedCorrect`, and no such rule can be defined from the vague, non-quantitative description, admission is precluded.",
+      "result": "abstained"
+    }
+  ]
+}

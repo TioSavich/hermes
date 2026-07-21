@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "223",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_223_always_borrow_from_leftmost_place",
+    "target_operation": "borrowing_across_places",
+    "citation": "Peled & Segalis (2005)",
+    "error_action": "always_borrow_from_leftmost_place",
+    "error_description": "take the borrowed unit from the hundreds rather than the adjacent tens place",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "external module qualification is not allowed: digits:",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_223_always_borrow_from_leftmost_place(A-B, Got) :-\n    A >= 100,\n    B < 10,\n    % Simulate borrowing 1 hundred (i.e., 100) and subtracting B from the last two digits\n    % This mimics the misconception: borrow 1 from hundreds place (100 units) regardless of tens digit\n    % Then compute: (A mod 100) + 100 - B\n    Got is (A mod 100) + 100 - B).\n\ntest_harness:arith_misconception(db_row(223), whole_number, churn_223_always_borrow_from_leftmost_place,\n    churn_candidate:churn_223_always_borrow_from_leftmost_place,\n    203-5,\n    198).",
+      "result": "external module qualification is not allowed: misconception:"
+    },
+    {
+      "response": "churn_candidate:(churn_223_always_borrow_from_leftmost_place(A-B, Got) :-\n    % Simulate borrowing from hundreds even when subtracting in tens place\n    A >= 100, B >= 10,\n    % Extract digits: assume A is three-digit, B is two-digit for simplicity\n    H is A // 100,\n    T is (A // 10) mod 10,\n    O is A mod 10,\n    B1 is B // 10,\n    B0 is B mod 10,\n    % Borrow 1 from hundreds (H) instead of tens (T)\n    NewH is H - 1,\n    NewT is T + 10,\n    % Then subtract tens: but incorrectly use NewT instead of adjusting for tens borrowing\n    % Since error is always borrowing from leftmost, tens subtraction uses NewT directly\n    % Compute tens difference: (NewT - B1), but if NewT < B1, borrow again from hundreds (error compounds)\n    ( NewT >= B1 ->\n        TDiff is NewT - B1,\n        ODig is O - B0,\n        ( ODig >= 0 ->\n            Got is NewH * 100 + TDiff * 10 + ODig\n        ;   % borrow from tens again (still wrong place)\n            TDiff2 is TDiff - 1,\n            ODig2 is ODig + 10,\n            Got is NewH * 100 + TDiff2 * 10 + ODig2\n        )\n    ;   % borrow from hundreds again (error)\n        NewH2 is NewH - 1,\n        TDiff is NewT + 10 - B1,\n        ODig is O - B0,\n        ( ODig >= 0 ->\n            Got is NewH2 * 100 + TDiff * 10 + ODig\n        ;   TDiff2 is TDiff - 1,\n            ODig2 is ODig + 10,\n            Got is NewH2 * 100 + TDiff2 * 10 + ODig2\n        )\n    )).\n    \ntest_harness:arith_misconception(db_row(223), whole_number, churn_223_always_borrow_from_leftmost_place,\n    churn_candidate:churn_223_always_borrow_from_leftmost_place,\n    102-57,\n    45).",
+      "result": "external module qualification is not allowed: digits:"
+    }
+  ]
+}

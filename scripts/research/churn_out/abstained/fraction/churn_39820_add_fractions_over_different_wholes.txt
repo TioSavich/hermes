@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39820",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39820_add_fractions_over_different_wholes",
+    "target_operation": "fraction_addition",
+    "citation": "Tuğrul Kar (2015)",
+    "error_action": "add_fractions_over_different_wholes",
+    "error_description": "combine fractions of separate wholes as though one whole",
+    "provenance_comments": "=== row 39820: different wholes not coordinated ===\nDepends on unspecified values; no canonical wrong answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual mistake—combining fractions of separate wholes as though one whole—but provides no concrete, generalizable procedural rule or canonical wrong answer. Without a deterministic mapping from input to the documented错误 outcome (e.g., a specific arithmetic operation that students consistently perform), a runnable Prolog rule cannot be constructed that reliably reproduces the documented error for arbitrary inputs. The absence of a worked example or explicit algorithm prevents faithful encoding.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual mistake—combining fractions of separate wholes as though one whole—but provides no concrete, generalizable procedural rule or canonical wrong answer. Without a deterministic mapping from input to the documented错误 outcome (e.g., a specific arithmetic operation that students consistently perform), a runnable Prolog rule cannot be constructed that reliably reproduces the documented error for arbitrary inputs. The absence of a worked example or explicit algorithm prevents faithful encoding.",
+      "result": "abstained"
+    }
+  ]
+}

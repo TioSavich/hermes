@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40409",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40409_parts_need_not_sum_to_the_whole",
+    "target_operation": "part_whole_sum",
+    "citation": "Juhaina Awawdeh Shahbari & Irit Peled (2017)",
+    "error_action": "parts_need_not_sum_to_the_whole",
+    "error_description": "fractional parts of a set can be assigned without requiring their sum to equal one whole",
+    "provenance_comments": "=== row 40409: parts priced don't sum to 1 ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception (fractional parts of a set need not sum to one whole), not a procedural computation error that can be captured by a deterministic 2-place predicate Rule(Input, Got) producing a specific wrong numeric result. There is no well-defined algorithmic \"rule\" that students apply to compute a wrong value; rather, it reflects a misinterpretation of the part-whole relationship. Hence, no runnable SWI-Prolog rule of arity 2 can encode this misconception without fabrication.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception (fractional parts of a set need not sum to one whole), not a procedural computation error that can be captured by a deterministic 2-place predicate Rule(Input, Got) producing a specific wrong numeric result. There is no well-defined algorithmic \"rule\" that students apply to compute a wrong value; rather, it reflects a misinterpretation of the part-whole relationship. Hence, no runnable SWI-Prolog rule of arity 2 can encode this misconception without fabrication.",
+      "result": "abstained"
+    }
+  ]
+}

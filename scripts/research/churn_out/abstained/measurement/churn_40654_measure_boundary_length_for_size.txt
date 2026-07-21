@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40654",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40654_measure_boundary_length_for_size",
+    "target_operation": "area_perimeter_confusion",
+    "citation": "Jinfa Cai (2000)",
+    "error_action": "measure_boundary_length_for_size",
+    "error_description": "find how much edge a figure has when asked how much surface it covers",
+    "provenance_comments": "=== row 40654: perimeter reported for area of irregular island ===\nToo vague: duplicates 40362 — general area/perimeter swap without\ndistinct numeric signature.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual swap between area and perimeter but provides no specific numerical procedure or signature that can be encoded as a runnable Prolog rule; it is too vague to construct a general rule that reliably produces the documented wrong answer for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual swap between area and perimeter but provides no specific numerical procedure or signature that can be encoded as a runnable Prolog rule; it is too vague to construct a general rule that reliably produces the documented wrong answer for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

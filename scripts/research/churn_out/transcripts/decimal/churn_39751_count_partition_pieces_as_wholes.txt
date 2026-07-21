@@ -1,0 +1,9 @@
+command: swipl -q --on-warning=status --on-error=status -s <scratch>/candidate.pl -g <gate> -t halt
+exit: 0
+stdout:
+GOT=6
+EXPECTED=6.0
+CLASS=incorrect
+stderr:
+
+description-match: matched error-action tokens: count, partition, pieces, wholes

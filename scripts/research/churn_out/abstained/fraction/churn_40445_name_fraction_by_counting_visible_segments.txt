@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40445",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40445_name_fraction_by_counting_visible_segments",
+    "target_operation": "number_line_midpoint",
+    "citation": "Sitti Maesuri Patahuddin & H. B. Usman & Ajay Ramful (2018)",
+    "error_action": "name_fraction_by_counting_visible_segments",
+    "error_description": "identify a fraction's position by counting the visible partitioned segments rather than measuring distance from zero",
+    "provenance_comments": "=== row 40445: number-line midpoint hidden by extra partitions ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (counting visible segments instead of measuring distance from zero) but does not specify a deterministic arithmetic rule that can be implemented as a binary predicate producing a fixed wrong output for a given input. Without a concrete procedure or formula linking input (e.g., a number line diagram or coordinates) to a specific incorrect output, a runnable `Rule` cannot be constructed under the schema constraints.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (counting visible segments instead of measuring distance from zero) but does not specify a deterministic arithmetic rule that can be implemented as a binary predicate producing a fixed wrong output for a given input. Without a concrete procedure or formula linking input (e.g., a number line diagram or coordinates) to a specific incorrect output, a runnable `Rule` cannot be constructed under the schema constraints.",
+      "result": "abstained"
+    }
+  ]
+}

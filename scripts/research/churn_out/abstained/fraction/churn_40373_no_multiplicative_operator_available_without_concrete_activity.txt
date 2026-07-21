@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40373",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40373_no_multiplicative_operator_available_without_concrete_activity",
+    "target_operation": "scale_factor_between_unit_fractions",
+    "citation": "SOO JIN LEE and JAEHONG SHIN (2015)",
+    "error_action": "no_multiplicative_operator_available_without_concrete_activity",
+    "error_description": "a scale factor cannot be found unless the transformation is enacted concretely rather than re-presented mentally",
+    "provenance_comments": "=== row 40373: scale factor between two unit fractions (abstract cue) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive limitation—students cannot find a scale factor abstractly without concrete enactment—but does not specify a runnable procedural rule that produces a wrong answer. No executable predicate of arity 2 can be constructed that encodes this limitation in a way that yields a deterministic incorrect result for a given input, as the error is epistemological (lack of abstract reasoning), not syntactic or algorithmic.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive limitation—students cannot find a scale factor abstractly without concrete enactment—but does not specify a runnable procedural rule that produces a wrong answer. No executable predicate of arity 2 can be constructed that encodes this limitation in a way that yields a deterministic incorrect result for a given input, as the error is epistemological (lack of abstract reasoning), not syntactic or algorithmic.",
+      "result": "abstained"
+    }
+  ]
+}

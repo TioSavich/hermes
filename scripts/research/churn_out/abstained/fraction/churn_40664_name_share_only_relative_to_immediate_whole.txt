@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40664",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40664_name_share_only_relative_to_immediate_whole",
+    "target_operation": "recursive_partitioning",
+    "citation": "John Olive (1999)",
+    "error_action": "name_share_only_relative_to_immediate_whole",
+    "error_description": "name a partitioned share against the most recent piece, not the original whole",
+    "provenance_comments": "=== row 40664: recursive partitioning — can't name share of original ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a conceptual naming strategy (referencing only the immediate piece, not the original whole) without specifying a concrete syntactic or arithmetic operation that maps inputs to a wrong output in a deterministic, testable way. The error is epistemic (a reasoning pattern) rather than procedural (a computational rule), and no executable mapping from input to incorrect output is provided.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a conceptual naming strategy (referencing only the immediate piece, not the original whole) without specifying a concrete syntactic or arithmetic operation that maps inputs to a wrong output in a deterministic, testable way. The error is epistemic (a reasoning pattern) rather than procedural (a computational rule), and no executable mapping from input to incorrect output is provided.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38677",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38677_count_border_then_interior_unsystematically",
+    "target_operation": "quantifying_area_by_counting",
+    "citation": "Douglas H. Clements, Julie Sarama, Douglas W. Van Dine, Jeffrey E. Barrett, Craig J. Cullen, Aaron Hudyma, Ron Dolgin, Amanda L. Cullen, Cheryl L. Eames (2018)",
+    "error_action": "count_border_then_interior_unsystematically",
+    "error_description": "count the units around the boundary first and then the inside ones in no fixed order",
+    "provenance_comments": "=== row 38677: unsystematic border-then-inside counting ===\nToo vague: counting path process, not a single output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a process (counting border units then interior units in no fixed order) that is not deterministic and does not yield a unique output for a given input, making it impossible to define a runnable Prolog rule `Rule(Input, Got)` that consistently produces the documented wrong answer. The schema requires a specific `ExpectedCorrect` that must not unify with `Got`, but without a fixed counting order or deterministic behavior, `Got` cannot be pinned to a single erroneous value.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a process (counting border units then interior units in no fixed order) that is not deterministic and does not yield a unique output for a given input, making it impossible to define a runnable Prolog rule `Rule(Input, Got)` that consistently produces the documented wrong answer. The schema requires a specific `ExpectedCorrect` that must not unify with `Got`, but without a fixed counting order or deterministic behavior, `Got` cannot be pinned to a single erroneous value.",
+      "result": "abstained"
+    }
+  ]
+}

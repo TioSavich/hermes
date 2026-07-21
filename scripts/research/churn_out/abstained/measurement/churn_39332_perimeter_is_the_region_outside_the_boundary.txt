@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39332",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39332_perimeter_is_the_region_outside_the_boundary",
+    "target_operation": "perimeter_vs_area",
+    "citation": "JACK LOCHHEAD (1992)",
+    "error_action": "perimeter_is_the_region_outside_the_boundary",
+    "error_description": "perimeter means the space just outside the figure's border",
+    "provenance_comments": "=== row 39332: perimeter read as area outside boundary ===\nToo vague: everyday-language interference, not a distinct calc output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misinterpretation (\"perimeter means the space just outside the figure's border\") rather than a specific computational procedure that can be encoded as a deterministic 2-arity predicate producing a wrong numerical result. There is no runnable rule that maps an input geometry to a *fixed incorrect numerical output*—the error describes a semantic confusion, not a calculational algorithm.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misinterpretation (\"perimeter means the space just outside the figure's border\") rather than a specific computational procedure that can be encoded as a deterministic 2-arity predicate producing a wrong numerical result. There is no runnable rule that maps an input geometry to a *fixed incorrect numerical output*—the error describes a semantic confusion, not a calculational algorithm.",
+      "result": "abstained"
+    }
+  ]
+}

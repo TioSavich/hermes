@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "182",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_182_select_strategy_by_problem_difficulty",
+    "target_operation": "addition_strategy_flexibility",
+    "citation": "Baroody, Feil, Johnson (2007)",
+    "error_action": "select_strategy_by_problem_difficulty",
+    "error_description": "switch between count-all and count-on depending on how hard the combination is",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a strategy-selection heuristic (switching between count-all and count-on based on perceived problem difficulty) but provides no concrete, runnable procedural rule that maps a specific input to a specific wrong output. Without a deterministic mapping from problem instance to erroneous result, we cannot construct a valid `Rule(Input, Got)` that produces the documented wrong answer for a given `Input`. The schema requires a precise, executable rule producing the documented misconception, which is not determinable from the vague description.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a strategy-selection heuristic (switching between count-all and count-on based on perceived problem difficulty) but provides no concrete, runnable procedural rule that maps a specific input to a specific wrong output. Without a deterministic mapping from problem instance to erroneous result, we cannot construct a valid `Rule(Input, Got)` that produces the documented wrong answer for a given `Input`. The schema requires a precise, executable rule producing the documented misconception, which is not determinable from the vague description.",
+      "result": "abstained"
+    }
+  ]
+}

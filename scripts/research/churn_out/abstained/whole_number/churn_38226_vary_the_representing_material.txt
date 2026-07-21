@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38226",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38226_vary_the_representing_material",
+    "target_operation": "place_value_concrete_representation",
+    "citation": "Gillian M. Boulton-Lewis (1998)",
+    "error_action": "vary_the_representing_material",
+    "error_description": "use different or mixed materials to show place value",
+    "provenance_comments": "=== row 38226: regress to mixed materials ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be formed because the documented error describes a pedagogical misstep (using mixed or varying materials for place value representation) rather than a specific computational or syntactic procedure that can be captured as a deterministic 2-place predicate producing a wrong numerical result. The schema requires a rule that, when applied to an input, yields the documented incorrect output; this misstep is not algorithmically representable in the required form.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be formed because the documented error describes a pedagogical misstep (using mixed or varying materials for place value representation) rather than a specific computational or syntactic procedure that can be captured as a deterministic 2-place predicate producing a wrong numerical result. The schema requires a rule that, when applied to an input, yields the documented incorrect output; this misstep is not algorithmically representable in the required form.",
+      "result": "abstained"
+    }
+  ]
+}

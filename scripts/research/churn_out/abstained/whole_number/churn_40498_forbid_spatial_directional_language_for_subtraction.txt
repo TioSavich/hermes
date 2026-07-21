@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40498",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40498_forbid_spatial_directional_language_for_subtraction",
+    "target_operation": "mental_subtraction_strategies",
+    "citation": "Tim Rowland, Anne Thwaites and Libby Jared (2015)",
+    "error_action": "forbid_spatial_directional_language_for_subtraction",
+    "error_description": "require subtraction be spoken as taking away rather than as movement on the hundred square",
+    "provenance_comments": "=== row 40498: teacher resists spatial language ===\nDiscourse-level pedagogical stance; no arithmetic output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a discourse-level pedagogical stance—prohibiting spatial or directional language in subtraction—and does not correspond to a runnable computational procedure that maps an input to a specific erroneous output. Since no arithmetic operation or transformation is described, there is no definable predicate `Rule/2` that can produce the documented error as a deterministic result. Therefore, a test harness clause satisfying the schema cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a discourse-level pedagogical stance—prohibiting spatial or directional language in subtraction—and does not correspond to a runnable computational procedure that maps an input to a specific erroneous output. Since no arithmetic operation or transformation is described, there is no definable predicate `Rule/2` that can produce the documented error as a deterministic result. Therefore, a test harness clause satisfying the schema cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

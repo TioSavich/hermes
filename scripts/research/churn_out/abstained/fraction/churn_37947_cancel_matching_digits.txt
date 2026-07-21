@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37947",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37947_cancel_matching_digits",
+    "target_operation": "fraction_cancellation",
+    "citation": "Bharath Sriraman, Benjamin Dickman (2017)",
+    "error_action": "cancel_matching_digits",
+    "error_description": "you may cancel a digit that appears in both numerator and denominator",
+    "provenance_comments": "Digit-cancellation examples that happen to land on the correct numeric value.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a heuristic (cancel matching digits) that is not a deterministic, generalizable rule; it only applies in specific numerical coincidences (e.g., 16/64 → 1/4), and no unique, executable predicate can be defined that consistently reproduces the *documented* wrong behavior across a general class of inputs without ad hoc case analysis. SWI-Prolog requires a well-defined, terminating, pure arithmetic rule; this misconception lacks a uniform algorithmic formulation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a heuristic (cancel matching digits) that is not a deterministic, generalizable rule; it only applies in specific numerical coincidences (e.g., 16/64 → 1/4), and no unique, executable predicate can be defined that consistently reproduces the *documented* wrong behavior across a general class of inputs without ad hoc case analysis. SWI-Prolog requires a well-defined, terminating, pure arithmetic rule; this misconception lacks a uniform algorithmic formulation.",
+      "result": "abstained"
+    }
+  ]
+}

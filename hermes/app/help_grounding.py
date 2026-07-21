@@ -28,7 +28,7 @@ PAGE_CONTEXT: dict[str, dict[str, str]] = {
     "boundary": {"theme": "Objects", "lede": "Test what the action model handles at the boundary between counting and fractions.", "path": "/more-zeeman/boundary.html", "theory": "/more-zeeman/boundary.html"},
     "matrix": {"theme": "The feeling body", "lede": "Follow each snap as it grows the memory grid and reorganizes repeated tallies.", "path": "/more-zeeman/matrix.html", "theory": "/more-zeeman/matrix.html"},
     "muds": {"theme": "Recollection", "lede": "Trace the recorded relations between mathematical uses and their vocabularies.", "path": "/more-zeeman/muds.html", "theory": "/more-zeeman/muds.html"},
-    "scoreboard": {"theme": "Norms & curriculum", "lede": "Query commitments, entitlements, and expressive-power records on one scoreboard.", "path": "/more-zeeman/scoreboard.html", "theory": "/more-zeeman/scoreboard.html"},
+    "scoreboard": {"theme": "Norms & curriculum", "lede": "Query commitments, entitlements, and inferential-strength records on one scoreboard.", "path": "/more-zeeman/scoreboard.html", "theory": "/more-zeeman/scoreboard.html"},
     "atlas": {"theme": "Recollection", "lede": "Find each capability, the route that reaches it, and the page that calls it.", "path": "/more-zeeman/atlas.html", "theory": "/more-zeeman/landing.html"},
     "bridge": {"theme": "The learner", "lede": "Run the formal bridge from a resource limit through consultation to a revised strategy.", "path": "/more-zeeman/bridge.html", "theory": "/more-zeeman/bridge.html"},
     "coordination": {"theme": "The learner", "lede": "Test how units are composed, repeated, and treated as new units.", "path": "/more-zeeman/coordination.html", "theory": "/more-zeeman/coordination.html"},

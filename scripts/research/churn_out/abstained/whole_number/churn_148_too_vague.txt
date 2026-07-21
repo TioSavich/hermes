@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "148",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_148_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "=== direct solo pass: whole-number queue chunk 1 ===",
+    "provenance_comments": "=== direct solo pass: whole-number queue chunk 1 ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The source row provides no concrete mathematical error, operation, or procedural detail beyond the vague label \"too_vague\" and the placeholder description \"direct solo pass: whole-number queue chunk 1\". Without a specific documented misstep (e.g., a wrong formula, incorrect application of an operation, or a reproducible wrong result), it is impossible to construct a runnable rule that produces the documented error nor to supply a concrete Input and ExpectedCorrect satisfying the schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The source row provides no concrete mathematical error, operation, or procedural detail beyond the vague label \"too_vague\" and the placeholder description \"direct solo pass: whole-number queue chunk 1\". Without a specific documented misstep (e.g., a wrong formula, incorrect application of an operation, or a reproducible wrong result), it is impossible to construct a runnable rule that produces the documented error nor to supply a concrete Input and ExpectedCorrect satisfying the schema.",
+      "result": "abstained"
+    }
+  ]
+}

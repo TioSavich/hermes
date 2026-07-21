@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38887",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38887_anchor_money_value_in_largest_units",
+    "target_operation": "place_value_unit_ordering",
+    "citation": "MARY E. BRENNER (1998)",
+    "error_action": "anchor_money_value_in_largest_units",
+    "error_description": "what matters about money starts from dollars and quarters, not pennies",
+    "provenance_comments": "=== row 38887: curriculum sequencing for money (not a computation error) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual anchoring in money education (starting from dollars and quarters rather than pennies), but no runnable arithmetic procedure is provided that maps inputs to a specific incorrect output. Without a concrete, generalizable rule that produces a deterministic wrong result from a well-defined input, the schema requirement for a runnable Rule predicate cannot be satisfied.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual anchoring in money education (starting from dollars and quarters rather than pennies), but no runnable arithmetic procedure is provided that maps inputs to a specific incorrect output. Without a concrete, generalizable rule that produces a deterministic wrong result from a well-defined input, the schema requirement for a runnable Rule predicate cannot be satisfied.",
+      "result": "abstained"
+    }
+  ]
+}

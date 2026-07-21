@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40073",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40073_invert_and_multiply_procedure",
+    "target_operation": "fraction_division_unit_coordination",
+    "citation": "LouAnn H. Lovin, Alexis L. Stevens, John Siegfried, Jesse L. M. Wilkins, Anderson Norton (2018)",
+    "error_action": "invert_and_multiply_procedure",
+    "error_description": "to divide by a fraction, multiply by its reciprocal",
+    "provenance_comments": "=== row 40073: rote invert-and-multiply (procedure correct, concept missing) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a procedural description (\"invert and multiply\") rather than a specific incorrect algebraic transformation. It does not specify a definable syntactic rule that maps inputs to a *fixed wrong output*—the procedure itself is mathematically correct, and the misconception is conceptual (lack of understanding of why it works), not computational. Since the task requires encoding a *runnable rule* that produces the documented wrong answer, and no such wrong answer (i.e., a systematic deviation from correct division) is specified, admission fails.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a procedural description (\"invert and multiply\") rather than a specific incorrect algebraic transformation. It does not specify a definable syntactic rule that maps inputs to a *fixed wrong output*—the procedure itself is mathematically correct, and the misconception is conceptual (lack of understanding of why it works), not computational. Since the task requires encoding a *runnable rule* that produces the documented wrong answer, and no such wrong answer (i.e., a systematic deviation from correct division) is specified, admission fails.",
+      "result": "abstained"
+    }
+  ]
+}

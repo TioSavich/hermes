@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40639",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40639_tool_must_be_physically_placed_in_full",
+    "target_operation": "subdividing_units",
+    "citation": "Koeno Gravemeijer (2004)",
+    "error_action": "tool_must_be_physically_placed_in_full",
+    "error_description": "a measuring tool only counts when its whole physical length is laid against the object",
+    "provenance_comments": "=== row 40639: cannot mentally truncate tool past object ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding about using a measuring tool (e.g., a ruler), but it does not specify a runnable, general, two-argument predicate rule that produces a *systematic, deterministic wrong numerical answer* from a *concrete input*. The description \"tool_must_be_physically_placed_in_full\" implies a procedural constraint (e.g., requiring full-length alignment), but no specific arithmetic operation or transformation is given that would yield a predictable incorrect result for a given input. Without a clear mapping from input to erroneous output (e.g., \"always measures as 10 cm regardless of actual length\" or \"adds fixed offset\"), we cannot construct a well-defined `Rule(Input, Got)` that reliably produces the documented error in a testable way.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding about using a measuring tool (e.g., a ruler), but it does not specify a runnable, general, two-argument predicate rule that produces a *systematic, deterministic wrong numerical answer* from a *concrete input*. The description \"tool_must_be_physically_placed_in_full\" implies a procedural constraint (e.g., requiring full-length alignment), but no specific arithmetic operation or transformation is given that would yield a predictable incorrect result for a given input. Without a clear mapping from input to erroneous output (e.g., \"always measures as 10 cm regardless of actual length\" or \"adds fixed offset\"), we cannot construct a well-defined `Rule(Input, Got)` that reliably produces the documented error in a testable way.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37566",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37566_area_measures_any_quantity_of_stuff",
+    "target_operation": "area_dimensionality",
+    "citation": "Dolores D. Pesek and David Kirshner (2000)",
+    "error_action": "area_measures_any_quantity_of_stuff",
+    "error_description": "use area for lengths, volumes, and heights as a generic measure of amount",
+    "provenance_comments": "=== row 37566: area applied to 1D/3D contexts ===\nToo vague: categorical misapplication of 'area' as generic attribute.\nNot a computable input/output pair.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a categorical misapplication of the term 'area' across dimensions (1D/3D) without a specific, computable input/output procedure; no runnable rule can be constructed that consistently produces the documented wrong answer for a well-defined input, as the misconception is conceptual (overgeneralization) rather than algorithmic.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a categorical misapplication of the term 'area' across dimensions (1D/3D) without a specific, computable input/output procedure; no runnable rule can be constructed that consistently produces the documented wrong answer for a well-defined input, as the misconception is conceptual (overgeneralization) rather than algorithmic.",
+      "result": "abstained"
+    }
+  ]
+}

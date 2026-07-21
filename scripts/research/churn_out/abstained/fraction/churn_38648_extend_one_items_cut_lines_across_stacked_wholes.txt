@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38648",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38648_extend_one_items_cut_lines_across_stacked_wholes",
+    "target_operation": "partitioning_multiple_wholes",
+    "citation": "Jessica H. Hunt, Arla Westenskow, Juanita Silva, Jasmine Welch-Ptak (2016)",
+    "error_action": "extend_one_items_cut_lines_across_stacked_wholes",
+    "error_description": "cut several stacked items along the same lines used to split one item by the number of sharers",
+    "provenance_comments": "=== row 38648: cross-cut leftover items ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error description \"cut several stacked items along the same lines used to split one item by the number of sharers\" describes a spatial or visual partitioning strategy in a concrete context (stacked wholes), but does not specify a precise symbolic arithmetic operation or transformation on fraction representations. Without a clear mapping from this perceptual procedure to a computable function on fraction inputs (e.g., how the number of sharers, number of stacked wholes, or cut lines translate to numerator/denominator arithmetic), no runnable Prolog rule of arity 2 can be constructed that consistently produces the documented wrong output for a given input. The schema requires a generalizable rule with deterministic behavior on formal inputs, which is not determinable from this vague procedural description.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error description \"cut several stacked items along the same lines used to split one item by the number of sharers\" describes a spatial or visual partitioning strategy in a concrete context (stacked wholes), but does not specify a precise symbolic arithmetic operation or transformation on fraction representations. Without a clear mapping from this perceptual procedure to a computable function on fraction inputs (e.g., how the number of sharers, number of stacked wholes, or cut lines translate to numerator/denominator arithmetic), no runnable Prolog rule of arity 2 can be constructed that consistently produces the documented wrong output for a given input. The schema requires a generalizable rule with deterministic behavior on formal inputs, which is not determinable from this vague procedural description.",
+      "result": "abstained"
+    }
+  ]
+}

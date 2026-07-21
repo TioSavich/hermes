@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40202",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40202_always_apply_standard_algorithm",
+    "target_operation": "algorithmic_fixation",
+    "citation": "Esther Levenson (2013)",
+    "error_action": "always_apply_standard_algorithm",
+    "error_description": "use the full long-multiplication procedure even when a simpler mental method suffices",
+    "provenance_comments": "=== row 40202: algorithmic fixation on 20x20 (inefficient but correct) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive tendency (algorithmic fixation) rather than a specific syntactic or semantic error that can be encoded as a runnable Prolog rule producing a wrong result. The student’s answer is correct (20×20 = 400 via long multiplication is valid), so there is no *incorrect* output (`Got`) to encode — only an inefficient but correct procedure. The schema requires `ExpectedCorrect` to *not* unify with `Got`, but here `Got` would be correct, violating the contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive tendency (algorithmic fixation) rather than a specific syntactic or semantic error that can be encoded as a runnable Prolog rule producing a wrong result. The student’s answer is correct (20×20 = 400 via long multiplication is valid), so there is no *incorrect* output (`Got`) to encode — only an inefficient but correct procedure. The schema requires `ExpectedCorrect` to *not* unify with `Got`, but here `Got` would be correct, violating the contract.",
+      "result": "abstained"
+    }
+  ]
+}

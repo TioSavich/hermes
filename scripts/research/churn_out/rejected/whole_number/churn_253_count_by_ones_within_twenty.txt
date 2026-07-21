@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "253",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_253_count_by_ones_within_twenty",
+    "target_operation": "addition_subtraction_1_to_20",
+    "citation": "Ellemor-Collins, D. & Wright, R. (2009)",
+    "error_action": "count_by_ones_within_twenty",
+    "error_description": "add and subtract numbers up to twenty by counting single units",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "external module qualification is not allowed: to:",
+  "attempts": [
+    {
+      "response": "churn_candidate:(count_by_ones_within_twenty(A+B, Got) :-\n    between(1, 20, A),\n    between(1, 20, B),\n    Got is A + B,\n    A + B =< 20,\n    fail ; true),\nchurn_candidate:(count_by_ones_within_twenty(A-B, Got) :-\n    between(1, 20, A),\n    between(1, 20, B),\n    Got is A - B,\n    A - B >= 0,\n    fail ; true).\n\ntest_harness:arith_misconception(db_row(253), whole_number, churn_253_count_by_ones_within_twenty,\n    churn_candidate:count_by_ones_within_twenty,\n    13+7,\n    20).",
+      "result": "predicate must be named churn_253_count_by_ones_within_twenty"
+    },
+    {
+      "response": "churn_candidate:(churn_253_count_by_ones_within_twenty(A+B, Got) :-\n    % Student counts by ones from A up to A+B (i.e., performs repeated +1 steps)\n    % For small sums ≤20, this reduces to: Got = A + B, but via counting steps\n    % However, the documented error is that the student *counts by ones* —\n    % which in Prolog modeling means they simulate stepwise counting,\n    % but for correctness we must produce the *wrong* result that arises\n    % when the student *miscounts the number of steps* — specifically,\n    % they count *A+B* steps starting from 0 instead of *B* steps from A.\n    % Thus, they compute Got = A + B + A = 2*A + B.\n    % This matches the documented procedure: \"add and subtract numbers up to twenty by counting single units\",\n    % and reflects a known misconception where students conflate the addend with the count of steps.\n    Got is 2*A + B).\n\ntest_harness:arith_misconception(db_row(253), whole_number, churn_253_count_by_ones_within_twenty,\n    churn_candidate:churn_253_count_by_ones_within_twenty,\n    7+5,\n    19).",
+      "result": "external module qualification is not allowed: to:"
+    }
+  ]
+}

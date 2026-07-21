@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38435",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38435_dividing_by_half_equals_doubling_scenario",
+    "target_operation": "fraction_division_word_problem_construction",
+    "citation": "Mourat Tchoshanov, Maria Cruz Quinones, Kadriya B. Shakirova, Elena N. Ibragimova, Liliana R. Shakirova (2017)",
+    "error_action": "dividing_by_half_equals_doubling_scenario",
+    "error_description": "since dividing by 1/2 equals multiplying by 2, a division story can be told as a doubling story",
+    "provenance_comments": "=== row 38435: division word problem replaced by multiplication ===\nConceptual replacement, not a single wrong numeric output on one task.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual replacement of division by 1/2 with multiplication by 2 in word problem construction, but provides no runnable syntactic rule (e.g., a predicate that maps inputs to outputs) nor a specific probe input-output pair. It characterizes a reasoning pattern, not a deterministic transformation of terms, and thus fails to yield a testable rule of the required arity and form.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual replacement of division by 1/2 with multiplication by 2 in word problem construction, but provides no runnable syntactic rule (e.g., a predicate that maps inputs to outputs) nor a specific probe input-output pair. It characterizes a reasoning pattern, not a deterministic transformation of terms, and thus fails to yield a testable rule of the required arity and form.",
+      "result": "abstained"
+    }
+  ]
+}

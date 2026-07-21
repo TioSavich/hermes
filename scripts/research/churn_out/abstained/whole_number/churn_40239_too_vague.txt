@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40239",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40239_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No documented error action or description provided; insufficient information to construct a runnable rule or defensible probe.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No documented error action or description provided; insufficient information to construct a runnable rule or defensible probe.",
+      "result": "abstained"
+    }
+  ]
+}

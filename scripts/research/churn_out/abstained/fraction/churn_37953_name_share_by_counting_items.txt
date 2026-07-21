@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37953",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37953_name_share_by_counting_items",
+    "target_operation": "relational_naming_of_shares",
+    "citation": "Jere Confrey, Alan Maloney (2015)",
+    "error_action": "name_share_by_counting_items",
+    "error_description": "report a share by stating how many items it contains",
+    "provenance_comments": "=== row 37953: relational naming vs count ===\nMixed \"how many\" vs \"how much\" — not a single numeric rule.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual confusion between \"how many\" (counting discrete items) and \"how much\" (magnitude of a share), but does not specify a deterministic, generalizable syntactic rule that maps a fraction expression to a specific wrong numeric output in a way that can be implemented as a binary predicate without ambiguity or side effects. Since the error is described as \"not a single numeric rule\" and \"mixed 'how many' vs 'how much'\", it cannot be captured by a deterministic, pure arithmetic rule of the form `Rule(Input, Got)` that reliably produces a unique incorrect result for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual confusion between \"how many\" (counting discrete items) and \"how much\" (magnitude of a share), but does not specify a deterministic, generalizable syntactic rule that maps a fraction expression to a specific wrong numeric output in a way that can be implemented as a binary predicate without ambiguity or side effects. Since the error is described as \"not a single numeric rule\" and \"mixed 'how many' vs 'how much'\", it cannot be captured by a deterministic, pure arithmetic rule of the form `Rule(Input, Got)` that reliably produces a unique incorrect result for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40548",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40548_name_remainder_by_chosen_referent",
+    "target_operation": "unit_referent_for_remainder",
+    "citation": "Nadine Bednarz and Jérôme Proulx (2017)",
+    "error_action": "name_remainder_by_chosen_referent",
+    "error_description": "express a leftover quantity as a fraction of whichever whole you take as the unit",
+    "provenance_comments": "=== row 40548: remainder named with varying unit referents ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule or defensible probe can be constructed because the documented error describes a *conceptual choice* (selecting a unit referent for remainder) rather than a deterministic syntactic transformation. The error is not a fixed computational procedure that maps inputs to a unique wrong output, but a variability in unit selection, which cannot be encoded as a binary predicate `Rule(Input, Got)` producing a consistent incorrect result for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule or defensible probe can be constructed because the documented error describes a *conceptual choice* (selecting a unit referent for remainder) rather than a deterministic syntactic transformation. The error is not a fixed computational procedure that maps inputs to a unique wrong output, but a variability in unit selection, which cannot be encoded as a binary predicate `Rule(Input, Got)` producing a consistent incorrect result for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

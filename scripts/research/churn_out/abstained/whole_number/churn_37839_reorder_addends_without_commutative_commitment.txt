@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37839",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37839_reorder_addends_without_commutative_commitment",
+    "target_operation": "addition_commutativity",
+    "citation": "Arthur J. Baroody and Herbert P. Ginsburg (1990)",
+    "error_action": "reorder_addends_without_commutative_commitment",
+    "error_description": "I can swap addend order to count more easily, but a known sum does not entail the swapped sum equals it",
+    "provenance_comments": "=== row 37839: denies commutativity of known sum ===\nSeeing 6+4=10, student says 4+6 will not equal 10. No determinate wrong\nnumeric value — student produces any non-10 answer or denies knowing.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual denial of commutativity without producing a determinate wrong numeric value; it allows \"any non-10 answer or denies knowing\", which is not expressible as a deterministic binary relation `Rule(Input, Got)` that consistently yields a specific incorrect result. A runnable rule must produce a unique `Got` for a given `Input`, but no such fixed mapping is defined here.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual denial of commutativity without producing a determinate wrong numeric value; it allows \"any non-10 answer or denies knowing\", which is not expressible as a deterministic binary relation `Rule(Input, Got)` that consistently yields a specific incorrect result. A runnable rule must produce a unique `Got` for a given `Input`, but no such fixed mapping is defined here.",
+      "result": "abstained"
+    }
+  ]
+}

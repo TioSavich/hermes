@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37805",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37805_angle_measure_is_object_label",
+    "target_operation": "angle_measure_meaning",
+    "citation": "Kevin C. Moore (2014)",
+    "error_action": "angle_measure_is_object_label",
+    "error_description": "a degree value is a fixed name attached to a geometric figure rather than a measured quantity",
+    "provenance_comments": "=== row 37805: angle as label not quantity ===\nToo vague: conceptual / definitional claim about angle measure.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about the interpretation of angle measure (treating degrees as labels rather than quantities), but no runnable procedural rule is provided that produces a specific wrong output for a given input. Without a concrete, executable misapplication (e.g., a formula or computation that yields an incorrect numeric result), there is no basis to define a predicate `Rule(Input, Got)` that reliably produces the documented error in a testable way.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about the interpretation of angle measure (treating degrees as labels rather than quantities), but no runnable procedural rule is provided that produces a specific wrong output for a given input. Without a concrete, executable misapplication (e.g., a formula or computation that yields an incorrect numeric result), there is no basis to define a predicate `Rule(Input, Got)` that reliably produces the documented error in a testable way.",
+      "result": "abstained"
+    }
+  ]
+}

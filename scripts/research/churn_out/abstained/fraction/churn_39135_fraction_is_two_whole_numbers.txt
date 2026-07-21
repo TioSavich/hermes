@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39135",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39135_fraction_is_two_whole_numbers",
+    "target_operation": "fraction_as_single_rational_entity",
+    "citation": "ROBERT ADJIAGE AND FRANCOIS PLUVINAGE (2007)",
+    "error_action": "fraction_is_two_whole_numbers",
+    "error_description": "read a fraction as two separate whole numbers rather than one number",
+    "provenance_comments": "=== row 39135: pie part model — fractions as two numbers ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misunderstanding (reading a fraction as two separate whole numbers) rather than a specific syntactic or procedural error that can be captured by a runnable Prolog rule producing a deterministic wrong result. No concrete input-output mapping is provided that would allow formulation of a rule that reliably produces the documented wrong answer for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misunderstanding (reading a fraction as two separate whole numbers) rather than a specific syntactic or procedural error that can be captured by a runnable Prolog rule producing a deterministic wrong result. No concrete input-output mapping is provided that would allow formulation of a rule that reliably produces the documented wrong answer for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

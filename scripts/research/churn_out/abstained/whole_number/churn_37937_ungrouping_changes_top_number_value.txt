@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37937",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37937_ungrouping_changes_top_number_value",
+    "target_operation": "ungrouping_value_conservation",
+    "citation": "Karen C. Fuson, Yeping Li (2009)",
+    "error_action": "ungrouping_changes_top_number_value",
+    "error_description": "treat borrowing as altering the total value of the top number because columns are seen as separate single-digit operations",
+    "provenance_comments": "=== row 37937: ungrouping changes total (belief, no formula) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating borrowing as altering the total value of the top number) without specifying a runnable procedural rule or a concrete computational pattern that yields a predictable incorrect result. There is no deterministic mapping from input to a fixed wrong output that can be captured by a binary predicate `Rule(Input, Got)` producing the documented error.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating borrowing as altering the total value of the top number) without specifying a runnable procedural rule or a concrete computational pattern that yields a predictable incorrect result. There is no deterministic mapping from input to a fixed wrong output that can be captured by a binary predicate `Rule(Input, Got)` producing the documented error.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38690",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38690_written_ten_in_tens_column_means_ten_ones",
+    "target_operation": "reading_regrouped_notation",
+    "citation": "Eva Thanheiser (2012)",
+    "error_action": "written_ten_in_tens_column_means_ten_ones",
+    "error_description": "a '10' written above the tens column denotes ten single units",
+    "provenance_comments": "=== row 38690: misread \"10\" in tens column as 10 ones when interpreting work ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding about place value notation (interpreting a '10' written in the tens column as ten single units), but it does not specify a runnable computational rule or a clear, generalizable procedure that can be encoded as a predicate of arity 2 producing a deterministic wrong result for a given input. Without a concrete algorithmic procedure tied to a well-defined input-output mapping, no testable rule satisfying the schema can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding about place value notation (interpreting a '10' written in the tens column as ten single units), but it does not specify a runnable computational rule or a clear, generalizable procedure that can be encoded as a predicate of arity 2 producing a deterministic wrong result for a given input. Without a concrete algorithmic procedure tied to a well-defined input-output mapping, no testable rule satisfying the schema can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

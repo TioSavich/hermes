@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40215",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40215_correct_answer_implies_target_understanding",
+    "target_operation": "evaluating_evidence_of_learning",
+    "citation": "Sandy M. Spitzer, Christine M. Phelps, James E. R. Beyers, Delayne Y. Johnson, Elizabeth M. Sieminski (2011)",
+    "error_action": "correct_answer_implies_target_understanding",
+    "error_description": "treat a correct fraction comparison reached by any means (calculator, money analogy) as evidence the student grasped the common-denominator strategy",
+    "provenance_comments": "=== row 40215: correct answer via irrelevant strategy ===\nToo vague — assessment artifact, no wrong numeric student answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is an assessment interpretation artifact (treating correct answer from irrelevant strategy as evidence of target understanding), not a runnable arithmetic procedure that produces a wrong numeric result. No concrete student answer is documented, and the error resides in the evaluation rubric, not in a syntactic rule over fractions.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is an assessment interpretation artifact (treating correct answer from irrelevant strategy as evidence of target understanding), not a runnable arithmetic procedure that produces a wrong numeric result. No concrete student answer is documented, and the error resides in the evaluation rubric, not in a syntactic rule over fractions.",
+      "result": "abstained"
+    }
+  ]
+}

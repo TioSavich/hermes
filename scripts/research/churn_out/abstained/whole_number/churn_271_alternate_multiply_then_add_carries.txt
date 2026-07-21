@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "271",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_271_alternate_multiply_then_add_carries",
+    "target_operation": "multidigit_multiplication_algorithm",
+    "citation": "Shutler (2009)",
+    "error_action": "alternate_multiply_then_add_carries",
+    "error_description": "perform the digit multiplications and the carry additions as one interleaved memorized sequence",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes an interleaved memorized sequence of digit multiplications and carry additions, but does not specify a concrete, generalizable procedural rule that can be implemented as a binary predicate without inventing the internal mechanics of the student's algorithm. The phrase \"alternate_multiply_then_add_carries\" indicates a cognitive process, not a syntactic transformation on operands that yields a unique, deterministic wrong result across cases. Without a clear, reproducible algorithm (e.g., \"always ignore carries\", \"always add before multiply\", etc.), we cannot construct a `Rule` that reliably produces the documented error for arbitrary inputs. The failed gate rejection of `product:` suggests a prior attempt used module qualification improperly, but no such attempt is present here—however, the core issue remains the lack of a definable computational procedure.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_271_alternate_multiply_then_add_carries(A-B, Got) :-\n    % Simulate interleaved multiply-and-add-with-carry for two-digit numbers\n    % where student treats multiplication as a single memorized sequence,\n    % e.g., for 23 × 45, computes 2×4=8, then 3×5=15 (writes 5, carries 1),\n    % then adds carry to previous product: 8+1=9 → writes 9, then concatenates 9 and 5 → 95.\n    % This is overly specific to two-digit × one-digit or two-digit × two-digit cases;\n    % Here we model a common two-digit × one-digit variant:\n    % For A = 10*X + Y, B = Z, student computes (X*Z) then (Y*Z), then adds carry to X*Z.\n    A = 10*X + Y,\n    B = Z,\n    P1 is X * Z,\n    P2 is Y * Z,\n    C is P2 // 10,\n    D is P2 mod 10,\n    P1Adjusted is P1 + C,\n    Got is 10 * P1Adjusted + D).\n\ntest_harness:arith_misconception(db_row(271), whole_number, churn_271_alternate_multiply_then_add_carries,\n    churn_candidate:churn_271_alternate_multiply_then_add_carries,\n    23-4,\n    92).",
+      "result": "external module qualification is not allowed: product:"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes an interleaved memorized sequence of digit multiplications and carry additions, but does not specify a concrete, generalizable procedural rule that can be implemented as a binary predicate without inventing the internal mechanics of the student's algorithm. The phrase \"alternate_multiply_then_add_carries\" indicates a cognitive process, not a syntactic transformation on operands that yields a unique, deterministic wrong result across cases. Without a clear, reproducible algorithm (e.g., \"always ignore carries\", \"always add before multiply\", etc.), we cannot construct a `Rule` that reliably produces the documented error for arbitrary inputs. The failed gate rejection of `product:` suggests a prior attempt used module qualification improperly, but no such attempt is present here—however, the core issue remains the lack of a definable computational procedure.",
+      "result": "abstained"
+    }
+  ]
+}

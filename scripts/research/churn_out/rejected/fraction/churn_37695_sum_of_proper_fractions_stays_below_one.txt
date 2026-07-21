@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37695",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37695_sum_of_proper_fractions_stays_below_one",
+    "target_operation": "proper_fraction_sum_estimation",
+    "citation": "Merlyn J. Behr, Ipke Wachsmuth and Thomas R. Post (1985)",
+    "error_action": "sum_of_proper_fractions_stays_below_one",
+    "error_description": "if each addend is less than 1 then their sum is also less than 1",
+    "provenance_comments": "=== row 37695: sum of proper fractions always <1 ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_37695_sum_of_proper_fractions_stays_below_one",
+  "attempts": [
+    {
+      "response": "churn_candidate:(sum_of_proper_fractions_stays_below_one(frac(A,B)+frac(C,D), frac(E,F)) :-\n    A < B,\n    C < D,\n    E is A + C,\n    F is B + D).\n\ntest_harness:arith_misconception(db_row(37695), fraction, churn_37695_sum_of_proper_fractions_stays_below_one,\n    churn_candidate:sum_of_proper_fractions_stays_below_one,\n    frac(1,2)+frac(1,3),\n    frac(2,5)).",
+      "result": "predicate must be named churn_37695_sum_of_proper_fractions_stays_below_one"
+    },
+    {
+      "response": "churn_candidate:(sum_of_proper_fractions_stays_below_one(frac(N1,D1)+frac(N2,D2), frac(SumN,SumD)) :-\n    N1 < D1,\n    N2 < D2,\n    SumN is N1 + N2,\n    SumD is D1 + D2).\n\ntest_harness:arith_misconception(db_row(37695), fraction, churn_37695_sum_of_proper_fractions_stays_below_one,\n    churn_candidate:sum_of_proper_fractions_stays_below_one,\n    frac(1,2)+frac(1,3),\n    frac(5,6)).",
+      "result": "predicate must be named churn_37695_sum_of_proper_fractions_stays_below_one"
+    }
+  ]
+}

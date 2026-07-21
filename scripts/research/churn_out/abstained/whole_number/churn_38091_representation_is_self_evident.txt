@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38091",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38091_representation_is_self_evident",
+    "target_operation": "number_line_instruction_transparency",
+    "citation": "Anne Teppo, Marja van den Heuvel-Panhuizen (2014)",
+    "error_action": "representation_is_self_evident",
+    "error_description": "the expert's reading of the number line is obvious to the learner",
+    "provenance_comments": "=== row 38091: teacher ambiguity on number line (no arithmetic rule) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive misconception about representation transparency, not a specific arithmetic procedure that can be captured by a runnable Prolog rule of arity 2 producing a wrong result. There is no deterministic mathematical operation or formula associated with \"representation_is_self_evident\" that yields a fixed incorrect output for a given input; it reflects a pedagogical misunderstanding rather than a computational error pattern.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive misconception about representation transparency, not a specific arithmetic procedure that can be captured by a runnable Prolog rule of arity 2 producing a wrong result. There is no deterministic mathematical operation or formula associated with \"representation_is_self_evident\" that yields a fixed incorrect output for a given input; it reflects a pedagogical misunderstanding rather than a computational error pattern.",
+      "result": "abstained"
+    }
+  ]
+}

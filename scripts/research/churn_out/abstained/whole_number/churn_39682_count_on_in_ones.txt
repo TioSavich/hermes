@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39682",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39682_count_on_in_ones",
+    "target_operation": "place_value_construction",
+    "citation": "Eddie Gray & David Tall (2007)",
+    "error_action": "count_on_in_ones",
+    "error_description": "solve any arithmetic by counting forward by single units",
+    "provenance_comments": "=== row 39682: no thinkable ten, counts by ones ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error \"count_on_in_ones\" describes a procedural strategy (counting forward by single units), but no runnable arithmetic rule of arity 2 can be derived that produces the documented wrong answer without specifying a concrete operation (e.g., addition, multiplication) and concrete operands. The schema requires a deterministic, executable rule `Rule(Input, Got)` where `Got` is the *documented wrong answer* for a given `Input`, but \"counting by ones\" is not expressible as a closed-form arithmetic expression in SWI-Prolog without inventing a simulation of stepwise counting (which would violate the constraint against non-executable or invented procedures). No concrete worked example or operation type is provided to ground the rule.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39682_count_on_in_ones(A+B, Got) :-\n    Got is A + B).\n\ntest_harness:arith_misconception(db_row(39682), whole_number, churn_39682_count_on_in_ones,\n    churn_candidate:churn_39682_count_on_in_ones,\n    7+5,\n    12).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error \"count_on_in_ones\" describes a procedural strategy (counting forward by single units), but no runnable arithmetic rule of arity 2 can be derived that produces the documented wrong answer without specifying a concrete operation (e.g., addition, multiplication) and concrete operands. The schema requires a deterministic, executable rule `Rule(Input, Got)` where `Got` is the *documented wrong answer* for a given `Input`, but \"counting by ones\" is not expressible as a closed-form arithmetic expression in SWI-Prolog without inventing a simulation of stepwise counting (which would violate the constraint against non-executable or invented procedures). No concrete worked example or operation type is provided to ground the rule.",
+      "result": "abstained"
+    }
+  ]
+}

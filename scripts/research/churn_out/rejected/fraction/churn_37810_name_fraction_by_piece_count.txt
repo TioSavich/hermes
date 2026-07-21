@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37810",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37810_name_fraction_by_piece_count",
+    "target_operation": "fractional_language",
+    "citation": "Anderson Norton (2008)",
+    "error_action": "name_fraction_by_piece_count",
+    "error_description": "a fractional amount is identified by how many pieces remain rather than their size relative to the whole",
+    "provenance_comments": "=== row 37810: unit-fraction naming by visible count (no specific numeric task) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_37810_name_fraction_by_piece_count",
+  "attempts": [
+    {
+      "response": "churn_candidate:(name_fraction_by_piece_count(frac(N,_D), frac(N,1))).\n\ntest_harness:arith_misconception(db_row(37810), fraction, churn_37810_name_fraction_by_piece_count,\n    churn_candidate:name_fraction_by_piece_count,\n    frac(3,4),\n    frac(3,4)).",
+      "result": "predicate must be named churn_37810_name_fraction_by_piece_count"
+    },
+    {
+      "response": "churn_candidate:(name_fraction_by_piece_count(frac(N,D), frac(C,1)) :-\n    C = N).\n\ntest_harness:arith_misconception(db_row(37810), fraction, churn_37810_name_fraction_by_piece_count,\n    churn_candidate:name_fraction_by_piece_count,\n    frac(3,4),\n    frac(3,4)).",
+      "result": "predicate must be named churn_37810_name_fraction_by_piece_count"
+    }
+  ]
+}

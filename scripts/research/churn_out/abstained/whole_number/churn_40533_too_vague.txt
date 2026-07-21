@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40533",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40533_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule or defensible probe can be constructed from the documentation; the error description \"too_vague\" provides no specific incorrect procedure, operation, or pattern to encode.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule or defensible probe can be constructed from the documentation; the error description \"too_vague\" provides no specific incorrect procedure, operation, or pattern to encode.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38857",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38857_count_cuts_or_pieces_for_denominator",
+    "target_operation": "fraction_equal_parts",
+    "citation": "BEATRIZ S. D'AMBROSIO AND TANIA MARIA MENDONCA CAMPOS (1992)",
+    "error_action": "count_cuts_or_pieces_for_denominator",
+    "error_description": "name the fraction by counting the pieces or cuts without checking that the pieces are equal",
+    "provenance_comments": "=== row 38857: count cuts as parts ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(count_cuts_or_pieces_for_denominator(frac(N,D), frac(N, Count)) :-\n    count_cuts(D, Count)).\n\ncount_cuts(N, Count) :-\n    Count is N + 1.\n\ntest_harness:arith_misconception(db_row(38857), fraction, churn_38857_count_cuts_or_pieces_for_denominator,\n    churn_candidate:count_cuts_or_pieces_for_denominator,\n    frac(3,4),\n    frac(3,5)).",
+      "result": "predicate must be named churn_38857_count_cuts_or_pieces_for_denominator"
+    },
+    {
+      "response": "churn_candidate:(churn_38857_count_cuts_or_pieces_for_denominator(frac(_,_)-frac(N2,D2), frac(N2, Count)) :-\n    fraction_pieces(frac(N2,D2), Count)).\n\nfraction_pieces(frac(N,D), Count) :-\n    Count is D + 1.\n\ntest_harness:arith_misconception(db_row(38857), fraction, churn_38857_count_cuts_or_pieces_for_denominator,\n    churn_candidate:churn_38857_count_cuts_or_pieces_for_denominator,\n    frac(1,4)-frac(1,3),\n    frac(1,4)).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

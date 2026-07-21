@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "264",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_264_misapply_borrowing_subprocedure",
+    "target_operation": "borrowing_subprocedure_errors",
+    "citation": "Attisha, Al-Daimi (1984)",
+    "error_action": "misapply_borrowing_subprocedure",
+    "error_description": "carry out the borrow step incorrectly within multidigit subtraction",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documentation does not specify a particular incorrect procedure or pattern that can be translated into a runnable Prolog rule; it only states a generic misapplication of borrowing without a concrete algorithmic error to encode.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documentation does not specify a particular incorrect procedure or pattern that can be translated into a runnable Prolog rule; it only states a generic misapplication of borrowing without a concrete algorithmic error to encode.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39070",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39070_borrowing_is_crossing_out_and_adding_one",
+    "target_operation": "subtraction_regrouping",
+    "citation": "NADINE BEDNARZ AND BERNADETTE JANVIER (1982)",
+    "error_action": "borrowing_is_crossing_out_and_adding_one",
+    "error_description": "borrowing is the visual act of striking a digit and writing a small 1, with no exchange meaning",
+    "provenance_comments": "=== row 39070: borrowing without regrouping meaning ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (borrowing as a visual act without exchange meaning), but does not specify a concrete computational procedure that yields a deterministic wrong result for a given input. A runnable rule must produce a specific incorrect output for a specific input; here, no such mechanical transformation is provided—only a psychological interpretation of student behavior. Without a definable algorithmic rule mapping inputs to the documented error, no testable Prolog rule can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (borrowing as a visual act without exchange meaning), but does not specify a concrete computational procedure that yields a deterministic wrong result for a given input. A runnable rule must produce a specific incorrect output for a specific input; here, no such mechanical transformation is provided—only a psychological interpretation of student behavior. Without a definable algorithmic rule mapping inputs to the documented error, no testable Prolog rule can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

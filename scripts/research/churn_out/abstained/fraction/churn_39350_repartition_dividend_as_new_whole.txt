@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39350",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39350_repartition_dividend_as_new_whole",
+    "target_operation": "fraction_division_referent_units",
+    "citation": "Mi Yeon Lee (2017)",
+    "error_action": "repartition_dividend_as_new_whole",
+    "error_description": "treat the dividend bar (3/5) as the unit whole and partition it into divisor-many parts, shifting the referent unit",
+    "provenance_comments": "=== row 39350: PST uses incorrect referent (no numeric result) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual referent shift (treating the dividend as the unit whole and partitioning it into divisor-many parts), but no concrete numeric example is provided, and the operation \"fraction_division_referent_units\" lacks a precise executable specification in the source. Without a determinate input-output pair or a runnable procedural description (e.g., how many parts, what resulting fraction), the rule cannot be instantiated as a deterministic Prolog predicate that reliably produces the documented wrong answer for a concrete input. The gate failure (exit 23) confirms the rule is not executable as intended.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(repartition_dividend_as_new_whole(dividend(N1,D1)-divisor(N2,D2), frac(N1, D1*N2)) :-\n    true).\n\ntest_harness:arith_misconception(db_row(39350), fraction, churn_39350_repartition_dividend_as_new_whole,\n    churn_candidate:churn_39350_repartition_dividend_as_new_whole,\n    dividend(3,5)-divisor(2,1),\n    frac(3,10)).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual referent shift (treating the dividend as the unit whole and partitioning it into divisor-many parts), but no concrete numeric example is provided, and the operation \"fraction_division_referent_units\" lacks a precise executable specification in the source. Without a determinate input-output pair or a runnable procedural description (e.g., how many parts, what resulting fraction), the rule cannot be instantiated as a deterministic Prolog predicate that reliably produces the documented wrong answer for a concrete input. The gate failure (exit 23) confirms the rule is not executable as intended.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40260",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40260_teacher_validates_answers_as_sole_authority",
+    "target_operation": "consensus_building",
+    "citation": "Noriyuki Inoue (2011)",
+    "error_action": "teacher_validates_answers_as_sole_authority",
+    "error_description": "the teacher endorses and checks understanding rather than having students evaluate",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a pedagogical behavior (teacher as sole authority in validation) rather than a concrete mathematical procedure or syntactic transformation that can be encoded as a binary predicate Rule(Input, Got) producing a specific wrong output for a given input. There is no definable algorithmic rule over fraction representations that corresponds to \"teacher validates answers as sole authority\"; it is a classroom interaction pattern, not a computational error.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a pedagogical behavior (teacher as sole authority in validation) rather than a concrete mathematical procedure or syntactic transformation that can be encoded as a binary predicate Rule(Input, Got) producing a specific wrong output for a given input. There is no definable algorithmic rule over fraction representations that corresponds to \"teacher validates answers as sole authority\"; it is a classroom interaction pattern, not a computational error.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40018",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40018_recite_familiar_number_words_loosely",
+    "target_operation": "counting_sequence",
+    "citation": "Despina Potari, Barbara Georgiadou-Kabouridis (2009)",
+    "error_action": "recite_familiar_number_words_loosely",
+    "error_description": "say remembered number words without one-to-one matching to objects",
+    "provenance_comments": "=== row 40018: counting sequence skipping ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a behavioral description (reciting number words without one-to-one matching) rather than a computational rule that maps an input to a specific wrong output in arithmetic. No runnable predicate of arity 2 can be constructed that produces a concrete wrong numerical result from a given input, as the misconception pertains to counting procedure, not arithmetic evaluation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a behavioral description (reciting number words without one-to-one matching) rather than a computational rule that maps an input to a specific wrong output in arithmetic. No runnable predicate of arity 2 can be constructed that produces a concrete wrong numerical result from a given input, as the misconception pertains to counting procedure, not arithmetic evaluation.",
+      "result": "abstained"
+    }
+  ]
+}

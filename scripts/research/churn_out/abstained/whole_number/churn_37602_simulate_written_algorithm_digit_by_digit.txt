@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37602",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37602_simulate_written_algorithm_digit_by_digit",
+    "target_operation": "mental_multiplication_strategy",
+    "citation": "John A. Hope and James M. Sherrill (1987)",
+    "error_action": "simulate_written_algorithm_digit_by_digit",
+    "error_description": "mentally run the vertical paper algorithm digit by digit instead of using number properties",
+    "provenance_comments": "=== row 37602: vertical algorithm instead of identity (too process-specific) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive strategy (mentally simulating the written vertical algorithm) rather than a specific syntactic or semantic error that can be captured by a deterministic 2-arity Prolog rule producing a fixed wrong result. There is no clear, general, and executable mathematical transformation (e.g., misapplication of an arithmetic law) that maps a given input to a *consistent* incorrect output across instances, as required by the schema. Without a concrete, reproducible mapping rule, a runnable predicate cannot be constructed.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_37602_simulate_written_algorithm_digit_by_digit(A-B, Got) :-\n    % Simulate vertical multiplication of A * B digit-by-digit (right-to-left),\n    % ignoring number properties like identity, zero, or distributivity.\n    % For single-digit B, this reduces to repeated digit multiplication with carry.\n    % Here we implement the specific error: treat 2-digit * 1-digit as digit-wise multiplication\n    % and ignore carry propagation beyond the current digit position, i.e., multiply tens and ones separately\n    % and concatenate (or add incorrectly).\n    % Specifically, for A = 10*T + U, compute (T*B) and (U*B) and incorrectly combine as (T*B)*10 + (U*B) without carry handling,\n    % but since B is small and the error is *process-specific*, we model the *most common documented variant*:\n    % student computes (T*B) and (U*B) and adds them *without* place-value alignment (i.e., treats both as units).\n    % Example: 12 * 3 → student does (1*3) and (2*3) → 3 and 6 → incorrectly reports 36 (which is actually correct here),\n    % but for cases where carries occur, e.g., 15*3, student computes 1*3=3 and 5*3=15, then adds 3+15=18 (wrong).\n    % To capture the *documented error* generally, we simulate: split A into digits, multiply each digit by B,\n    % then sum the products *as if they were units*, i.e., ignore place-value.\n    % That is: A = 10*T + U ⇒ Got = (T*B) + (U*B) = B*(T+U), ignoring the factor of 10 on the tens digit.\n    % This is a documented mental error: “do the paper algorithm in head but forget place value”.\n    A > 9,\n    T is A // 10,\n    U is A mod 10,\n    Got is B * (T + U)).\n\ntest_harness:arith_misconception(db_row(37602), whole_number, churn_37602_simulate_written_algorithm_digit_by_digit,\n    churn_candidate:churn_37602_simulate_written_algorithm_digit_by_digit,\n    15-3,\n    45).",
+      "result": "external module qualification is not allowed: error:"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive strategy (mentally simulating the written vertical algorithm) rather than a specific syntactic or semantic error that can be captured by a deterministic 2-arity Prolog rule producing a fixed wrong result. There is no clear, general, and executable mathematical transformation (e.g., misapplication of an arithmetic law) that maps a given input to a *consistent* incorrect output across instances, as required by the schema. Without a concrete, reproducible mapping rule, a runnable predicate cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

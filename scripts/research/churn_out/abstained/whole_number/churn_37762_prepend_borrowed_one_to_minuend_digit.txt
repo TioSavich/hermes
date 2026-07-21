@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37762",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37762_prepend_borrowed_one_to_minuend_digit",
+    "target_operation": "subtraction_decomposition",
+    "citation": "Eddie M. Gray and David O. Tall (1994)",
+    "error_action": "prepend_borrowed_one_to_minuend_digit",
+    "error_description": "write a little 1 in front of the top digit to make subtraction possible",
+    "provenance_comments": "=== row 37762: ritual borrow that recreates the same problem ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural misstep (writing a '1' in front of the top digit) rather than a computable mathematical rule that maps an input to a specific incorrect output. No runnable predicate of arity 2 can be constructed that deterministically produces a unique wrong result from a given subtraction problem, because the misapplication is contextual (depends on digit alignment and borrowing necessity) and not a fixed arithmetic transformation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural misstep (writing a '1' in front of the top digit) rather than a computable mathematical rule that maps an input to a specific incorrect output. No runnable predicate of arity 2 can be constructed that deterministically produces a unique wrong result from a given subtraction problem, because the misapplication is contextual (depends on digit alignment and borrowing necessity) and not a fixed arithmetic transformation.",
+      "result": "abstained"
+    }
+  ]
+}

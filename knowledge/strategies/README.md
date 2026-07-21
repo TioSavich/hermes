@@ -10,7 +10,7 @@ that runs them and draws them.
   automaton.
 - `composition_engine.pl`, `normalization.pl` — grounded fractional arithmetic
   (composition and normal forms over the grounded number representation).
-- `expressive_power.pl` — finite measures of a vocabulary's inferential reach.
+- `inferential_strength.pl` — finite measures of a vocabulary's inferential reach.
 - `math_benchmark.pl` — a reasoning benchmark over the registry.
 - `strategies.pl` — a signpost to the deployed dispatch surface.
 - `math/` — the automata registry and the per-operation action-pair modules.

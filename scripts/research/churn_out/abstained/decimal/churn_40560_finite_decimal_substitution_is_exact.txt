@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40560",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40560_finite_decimal_substitution_is_exact",
+    "target_operation": "decimal_approximation_of_irrationals",
+    "citation": "Alejandro S. González-Martín, Victor Giraldo & Alexandre M. Souto (2013)",
+    "error_action": "finite_decimal_substitution_is_exact",
+    "error_description": "treat pi = 3.14 (or similar finite decimals) as the exact value in a computation",
+    "provenance_comments": "=== row 40560: irrational conflated with its finite decimal approx ===\nToo vague — pedagogical/conceptual gap, not a rule.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error is conceptual (conflating an irrational number with a finite decimal approximation) and does not specify a runnable, generalizable rule that produces the documented wrong answer in a deterministic, testable way. There is no concrete, schema-appropriate Input-Output pair that can be derived without inventing mathematics or assuming a specific computational context (e.g., which approximation of π is used, how many digits, whether substitution occurs in symbolic vs numeric evaluation). The description “treat pi = 3.14 (or similar finite decimals) as the exact value” is too vague to define a unique, general predicate of arity 2 that reliably yields the documented error across instances.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is conceptual (conflating an irrational number with a finite decimal approximation) and does not specify a runnable, generalizable rule that produces the documented wrong answer in a deterministic, testable way. There is no concrete, schema-appropriate Input-Output pair that can be derived without inventing mathematics or assuming a specific computational context (e.g., which approximation of π is used, how many digits, whether substitution occurs in symbolic vs numeric evaluation). The description “treat pi = 3.14 (or similar finite decimals) as the exact value” is too vague to define a unique, general predicate of arity 2 that reliably yields the documented error across instances.",
+      "result": "abstained"
+    }
+  ]
+}

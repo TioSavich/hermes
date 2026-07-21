@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39411",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39411_fraction_is_strictly_less_than_one",
+    "target_operation": "fractions_greater_than_one",
+    "citation": "GERARD SENSEVY (1996)",
+    "error_action": "fraction_is_strictly_less_than_one",
+    "error_description": "a fraction always names a part smaller than the whole",
+    "provenance_comments": "=== row 39411: improper fraction destabilized by realistic context ===\nToo vague — contextual rejection, no wrong numeric.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception (\"a fraction always names a part smaller than the whole\") but no runnable rule or specific incorrect numeric procedure is provided; the \"too vague\" tag and \"contextual rejection, no wrong numeric\" indicate the error manifests only in interpretation, not in a deterministic syntactic computation on arithmetic input that can be captured by a Prolog predicate of arity 2 producing a fixed wrong output. Without a concrete, generalizable computational error (e.g., a misapplied formula), a runnable Rule cannot be constructed per schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception (\"a fraction always names a part smaller than the whole\") but no runnable rule or specific incorrect numeric procedure is provided; the \"too vague\" tag and \"contextual rejection, no wrong numeric\" indicate the error manifests only in interpretation, not in a deterministic syntactic computation on arithmetic input that can be captured by a Prolog predicate of arity 2 producing a fixed wrong output. Without a concrete, generalizable computational error (e.g., a misapplied formula), a runnable Rule cannot be constructed per schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

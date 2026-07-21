@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37721",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37721_apply_available_formula_or_expected_layout",
+    "target_operation": "area_perimeter_interference",
+    "citation": "Sandra P. Marshall (1983)",
+    "error_action": "apply_available_formula_or_expected_layout",
+    "error_description": "use the area formula (or expected vertical alignment) when a related but different one is required",
+    "provenance_comments": "=== row 37721: generic perimeter/area interference ===\nToo vague: general confusion category with no unique numeric signature.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error is too vague to define a runnable rule; it describes a generic confusion category (\"area formula or expected vertical alignment\") without specifying a concrete formula, layout, or numeric pattern that can be encoded as a deterministic Prolog predicate. No unique numeric signature or procedural detail is provided to construct a rule that reliably produces the documented wrong answer for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is too vague to define a runnable rule; it describes a generic confusion category (\"area formula or expected vertical alignment\") without specifying a concrete formula, layout, or numeric pattern that can be encoded as a deterministic Prolog predicate. No unique numeric signature or procedural detail is provided to construct a rule that reliably produces the documented wrong answer for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39670",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39670_name_part_by_count_of_units_in_whole",
+    "target_operation": "naming_fractional_parts",
+    "citation": "Mary Mueller & Carolyn Maher (2009)",
+    "error_action": "name_part_by_count_of_units_in_whole",
+    "error_description": "name a single piece by how many such pieces fill the whole (ten pieces, so call it 'ten')",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_39670_name_part_by_count_of_units_in_whole",
+  "attempts": [
+    {
+      "response": "churn_candidate:(name_part_by_count_of_units_in_whole(frac(N,D), Name) :-\n    integer(N),\n    integer(D),\n    N =:= 1,\n    name(D, Name)).\n\ntest_harness:arith_misconception(db_row(39670), fraction, churn_39670_name_part_by_count_of_units_in_whole,\n    churn_candidate:name_part_by_count_of_units_in_whole,\n    frac(1,10),\n    'ten').",
+      "result": "predicate must be named churn_39670_name_part_by_count_of_units_in_whole"
+    },
+    {
+      "response": "churn_candidate:(name_part_by_count_of_units_in_whole(count(N), Name) :-\n    atom_concat(N, '', Name)).\n\ntest_harness:arith_misconception(db_row(39670), fraction, churn_39670_name_part_by_count_of_units_in_whole,\n    churn_candidate:name_part_by_count_of_units_in_whole,\n    count(10),\n    'ten').",
+      "result": "predicate must be named churn_39670_name_part_by_count_of_units_in_whole"
+    }
+  ]
+}

@@ -181,8 +181,8 @@ SURFACES_SERVER = [
      "strategy. Fetches its catalog from the server.",
      CONSOLE_URL + "/more-zeeman/gallery.html"),
     ("Deontic scoreboard", "hermes/web/scoreboard.html",
-     "The monitoring chart's derived figures — strategy incompatibilities "
-     "and expressive power — as the Prolog worker reports them. Asks the "
+     "The monitoring chart's incompatibility breadth tallies and the paired "
+     "lesson report's conflict-set containment. Asks the "
      "live worker first and names its data source on the page.",
      CONSOLE_URL + "/more-zeeman/scoreboard.html"),
 ]

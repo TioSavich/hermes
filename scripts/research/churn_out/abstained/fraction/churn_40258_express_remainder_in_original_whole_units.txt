@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40258",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40258_express_remainder_in_original_whole_units",
+    "target_operation": "fraction_division",
+    "citation": "Charalambos Y. Charalambous (2015)",
+    "error_action": "express_remainder_in_original_whole_units",
+    "error_description": "report the leftover as a fraction of the original whole rather than of the divisor",
+    "provenance_comments": "=== row 40258: misinterpreting remainder in fraction division ===\nAdult pedagogical; no single numeric rule.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is described as a conceptual misinterpretation (\"report the leftover as a fraction of the original whole rather than of the divisor\") without a specific, runnable procedural rule or a concrete numeric example that allows constructing a deterministic, generalizable Prolog rule producing the *exact* wrong result for a given input. The source states \"Adult pedagogical; no single numeric rule\", and no worked example is provided, making it impossible to derive a well-defined binary predicate `Rule(Input, Got)` that reliably yields the documented incorrect outcome for arbitrary inputs.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is described as a conceptual misinterpretation (\"report the leftover as a fraction of the original whole rather than of the divisor\") without a specific, runnable procedural rule or a concrete numeric example that allows constructing a deterministic, generalizable Prolog rule producing the *exact* wrong result for a given input. The source states \"Adult pedagogical; no single numeric rule\", and no worked example is provided, making it impossible to derive a well-defined binary predicate `Rule(Input, Got)` that reliably yields the documented incorrect outcome for arbitrary inputs.",
+      "result": "abstained"
+    }
+  ]
+}

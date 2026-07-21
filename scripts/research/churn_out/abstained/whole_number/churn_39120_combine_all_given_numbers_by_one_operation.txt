@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39120",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39120_combine_all_given_numbers_by_one_operation",
+    "target_operation": "word_problem_operation_choice",
+    "citation": "Einat Heyd-Metzuyanim (2013)",
+    "error_action": "combine_all_given_numbers_by_one_operation",
+    "error_description": "apply the same operation, here subtraction, to every number in the problem",
+    "provenance_comments": "=== row 39120: subtract all given digits ===\nStudent suggests subtracting every number in sight, with non-canonical\npairing order.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a non-deterministic or non-canonical pairing order for subtracting every number in sight, which cannot be expressed as a deterministic binary predicate `Rule(Input, Got)` without inventing an order or sequence not specified in the documentation. SWI-Prolog requires a well-defined, deterministic computation for `Rule(Input, Got)` to produce a reproducible wrong answer, and the absence of a canonical procedure prevents constructing a runnable rule that matches the documented behavior exactly.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39120_combine_all_given_numbers_by_one_operation(List, Got) :-\n    List = [A,B,C|_],\n    Got is A - B - C).\n\ntest_harness:arith_misconception(db_row(39120), whole_number, churn_39120_combine_all_given_numbers_by_one_operation,\n    churn_candidate:churn_39120_combine_all_given_numbers_by_one_operation,\n    [50, 12, 8],\n    30).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a non-deterministic or non-canonical pairing order for subtracting every number in sight, which cannot be expressed as a deterministic binary predicate `Rule(Input, Got)` without inventing an order or sequence not specified in the documentation. SWI-Prolog requires a well-defined, deterministic computation for `Rule(Input, Got)` to produce a reproducible wrong answer, and the absence of a canonical procedure prevents constructing a runnable rule that matches the documented behavior exactly.",
+      "result": "abstained"
+    }
+  ]
+}

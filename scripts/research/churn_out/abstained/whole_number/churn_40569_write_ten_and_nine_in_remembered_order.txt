@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40569",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40569_write_ten_and_nine_in_remembered_order",
+    "target_operation": "borrowing_across_zero",
+    "citation": "Kay McClain (2003)",
+    "error_action": "write_ten_and_nine_in_remembered_order",
+    "error_description": "when borrowing across a zero, place a ten and a nine by recalling which numeral comes first",
+    "provenance_comments": "=== row 40569: rote borrowing across zero ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a rote procedural mistake (\"place a ten and a nine in remembered order\") without specifying a computable mapping from inputs to outputs that yields a deterministic wrong result; it is a description of a memory recall error rather than a definable arithmetic transformation, and no runnable rule (predicate of arity 2) can be constructed that consistently produces a unique wrong output for given inputs based solely on this description.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a rote procedural mistake (\"place a ten and a nine in remembered order\") without specifying a computable mapping from inputs to outputs that yields a deterministic wrong result; it is a description of a memory recall error rather than a definable arithmetic transformation, and no runnable rule (predicate of arity 2) can be constructed that consistently produces a unique wrong output for given inputs based solely on this description.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "243",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_243_extend_whole_number_subtraction_to_negatives",
+    "target_operation": "integer_subtraction",
+    "citation": "Linchevski, Liora & Williams, Julian (1999)",
+    "error_action": "extend_whole_number_subtraction_to_negatives",
+    "error_description": "apply take-away whole-number subtraction rules when subtracting through zero into negatives",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(extends_whole_number_subtraction_to_negatives(A-B, Got) :-\n    Got is A - B).\n\ntest_harness:arith_misconception(db_row(243), whole_number, churn_243_extend_whole_number_subtraction_to_negatives,\n    churn_candidate:extends_whole_number_subtraction_to_negatives,\n    3-5,\n    -2).",
+      "result": "predicate must be named churn_243_extend_whole_number_subtraction_to_negatives"
+    },
+    {
+      "response": "churn_candidate:(churn_243_extend_whole_number_subtraction_to_negatives(A-B, Got) :-\n    Got is A - B,\n    A < B).\n\ntest_harness:arith_misconception(db_row(243), whole_number, churn_243_extend_whole_number_subtraction_to_negatives,\n    churn_candidate:churn_243_extend_whole_number_subtraction_to_negatives,\n    3-5,\n    -2).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

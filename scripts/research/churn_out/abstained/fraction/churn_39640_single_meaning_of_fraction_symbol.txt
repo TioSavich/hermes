@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39640",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39640_single_meaning_of_fraction_symbol",
+    "target_operation": "improper_fractions",
+    "citation": "Vince Wright (2014)",
+    "error_action": "single_meaning_of_fraction_symbol",
+    "error_description": "interpret a fraction by one meaning at a time rather than coordinating part-whole with iteration of unit fractions",
+    "provenance_comments": "=== row 39640: coordinating multiple meanings of 8/6 ===\nConceptual struggle, no single wrong output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is described as a conceptual struggle with coordinating multiple meanings of a fraction (part-whole vs. iteration of unit fractions), and explicitly states \"no single wrong output\". Since the error is not tied to a specific, reproducible procedural mistake that yields a deterministic incorrect result for a given input, it cannot be encoded as a runnable SWI-Prolog rule producing a fixed wrong answer for a specific input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is described as a conceptual struggle with coordinating multiple meanings of a fraction (part-whole vs. iteration of unit fractions), and explicitly states \"no single wrong output\". Since the error is not tied to a specific, reproducible procedural mistake that yields a deterministic incorrect result for a given input, it cannot be encoded as a runnable SWI-Prolog rule producing a fixed wrong answer for a specific input.",
+      "result": "abstained"
+    }
+  ]
+}

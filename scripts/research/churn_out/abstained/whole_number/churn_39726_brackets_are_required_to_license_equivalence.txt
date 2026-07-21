@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39726",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39726_brackets_are_required_to_license_equivalence",
+    "target_operation": "associative_property_brackets",
+    "citation": "Eugene Kaminski (1997)",
+    "error_action": "brackets_are_required_to_license_equivalence",
+    "error_description": "two factor expressions are only equal if bracketing makes the grouping explicit",
+    "provenance_comments": "=== row 39726: associative property doubt ===\nBelief about notation, not a specific computation error.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual belief about notation (\"brackets are required to license equivalence\") rather than a specific computational procedure that can be captured as a runnable 2-place predicate producing a wrong result. No deterministic, general, executable rule can be formulated that maps an input pair to the documented erroneous output without introducing arbitrary or invented mathematics.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual belief about notation (\"brackets are required to license equivalence\") rather than a specific computational procedure that can be captured as a runnable 2-place predicate producing a wrong result. No deterministic, general, executable rule can be formulated that maps an input pair to the documented erroneous output without introducing arbitrary or invented mathematics.",
+      "result": "abstained"
+    }
+  ]
+}

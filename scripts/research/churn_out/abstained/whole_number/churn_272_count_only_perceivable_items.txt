@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "272",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_272_count_only_perceivable_items",
+    "target_operation": "early_counting_development",
+    "citation": "Wright, R. (1991)",
+    "error_action": "count_only_perceivable_items",
+    "error_description": "a quantity can be counted only when its items are physically present to perceive",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a conceptual misconception (counting only perceivable items) without specifying a concrete arithmetic operation or transformation that yields a wrong numerical result from a given input; there is no deterministic mapping from input to documented wrong output that can be expressed as a binary predicate in SWI-Prolog without inventing mathematics.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a conceptual misconception (counting only perceivable items) without specifying a concrete arithmetic operation or transformation that yields a wrong numerical result from a given input; there is no deterministic mapping from input to documented wrong output that can be expressed as a binary predicate in SWI-Prolog without inventing mathematics.",
+      "result": "abstained"
+    }
+  ]
+}

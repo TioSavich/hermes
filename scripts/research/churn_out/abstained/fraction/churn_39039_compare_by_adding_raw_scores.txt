@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39039",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39039_compare_by_adding_raw_scores",
+    "target_operation": "fraction_comparison_in_context",
+    "citation": "JO BOALER (1993)",
+    "error_action": "compare_by_adding_raw_scores",
+    "error_description": "in a context problem, sum the penalty scores and ignore denominators",
+    "provenance_comments": "=== row 39039: contextual fraction comparison ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a contextual behavior (summing penalty scores and ignoring denominators) but provides no concrete mathematical rule that maps input fractions to a specific wrong output; it lacks sufficient detail to construct a general, runnable predicate that produces a deterministic incorrect result for a given input. Without a clear algorithmic transformation (e.g., how raw scores are extracted or summed), the rule cannot be formalized in SWI-Prolog as required.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a contextual behavior (summing penalty scores and ignoring denominators) but provides no concrete mathematical rule that maps input fractions to a specific wrong output; it lacks sufficient detail to construct a general, runnable predicate that produces a deterministic incorrect result for a given input. Without a clear algorithmic transformation (e.g., how raw scores are extracted or summed), the rule cannot be formalized in SWI-Prolog as required.",
+      "result": "abstained"
+    }
+  ]
+}

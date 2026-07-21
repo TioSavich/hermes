@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40257",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40257_draw_dividend_and_divisor_as_separate_pictures",
+    "target_operation": "fraction_division",
+    "citation": "Charalambos Y. Charalambous (2015)",
+    "error_action": "draw_dividend_and_divisor_as_separate_pictures",
+    "error_description": "represent 2 and 3/4 as unrelated drawings",
+    "provenance_comments": "=== row 40257: dividend and divisor drawn separately ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a visual representation strategy (drawing dividend and divisor as separate pictures) that cannot be expressed as a deterministic binary relation between input and output values required by the schema. There is no well-defined computational rule that maps a fraction division problem to a specific incorrect symbolic result via this misrepresentation; the error is contextual, visual, and not algorithmic.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a visual representation strategy (drawing dividend and divisor as separate pictures) that cannot be expressed as a deterministic binary relation between input and output values required by the schema. There is no well-defined computational rule that maps a fraction division problem to a specific incorrect symbolic result via this misrepresentation; the error is contextual, visual, and not algorithmic.",
+      "result": "abstained"
+    }
+  ]
+}

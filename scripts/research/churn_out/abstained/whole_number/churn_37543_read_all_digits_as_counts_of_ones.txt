@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37543",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37543_read_all_digits_as_counts_of_ones",
+    "target_operation": "place_value_concatenation",
+    "citation": "Eva Thanheiser (2009)",
+    "error_action": "read_all_digits_as_counts_of_ones",
+    "error_description": "treat each digit as a number of ones, ignoring its place-value reference unit",
+    "provenance_comments": "=== row 37543: digits-as-ones in regrouping ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating each digit as a count of ones, ignoring place value), but no runnable procedural rule is specified or inferable without invention. The gate failure (exit 23) indicates a runtime or type error in the previous attempt, and no concrete, general, executable mapping from input to the documented wrong output is provided in the source. Without a clear algorithmic procedure (e.g., “sum all digits” or “repeat '1' digit times”), the rule cannot be implemented as a deterministic, general predicate of arity 2 over whole numbers.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_37543_read_all_digits_as_counts_of_ones(N, Got) :-\n    number_chars(N, Chars),\n    maplist(atom_number, Chars, Digits),\n    sum_list(Digits, Got)).\n\ntest_harness:arith_misconception(db_row(37543), whole_number, churn_37543_read_all_digits_as_counts_of_ones,\n    churn_candidate:churn_37543_read_all_digits_as_counts_of_ones,\n    123,\n    6).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating each digit as a count of ones, ignoring place value), but no runnable procedural rule is specified or inferable without invention. The gate failure (exit 23) indicates a runtime or type error in the previous attempt, and no concrete, general, executable mapping from input to the documented wrong output is provided in the source. Without a clear algorithmic procedure (e.g., “sum all digits” or “repeat '1' digit times”), the rule cannot be implemented as a deterministic, general predicate of arity 2 over whole numbers.",
+      "result": "abstained"
+    }
+  ]
+}

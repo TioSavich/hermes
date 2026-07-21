@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38112",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38112_dividend_must_exceed_divisor",
+    "target_operation": "cannot_divide_smaller_by_larger",
+    "citation": "Pessia Tsamir, Dina Tirosh (2008)",
+    "error_action": "dividend_must_exceed_divisor",
+    "error_description": "you cannot divide a smaller number by a larger one",
+    "provenance_comments": "=== row 38112: smaller cannot be divided by larger ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_38112_dividend_must_exceed_divisor",
+  "attempts": [
+    {
+      "response": "churn_candidate:(dividend_must_exceed_divisor(frac(A,B), frac(0,1)) :-\n    A < B).\n\ntest_harness:arith_misception(db_row(38112), fraction, churn_38112_dividend_must_exceed_divisor,\n    churn_candidate:dividend_must_exceed_divisor,\n    frac(1,2),\n    frac(2,1)).",
+      "result": "expected exactly one arith_misconception/6 registration; found 0"
+    },
+    {
+      "response": "churn_candidate:(div_smaller_by_larger(frac(N1,D1)-frac(N2,D2), frac(0,1)) :-\n    N1 * D2 < N2 * D1).\n\ntest_harness:arith_misconception(db_row(38112), fraction, churn_38112_dividend_must_exceed_divisor,\n    churn_candidate:div_smaller_by_larger,\n    frac(1,2)-frac(3,4),\n    frac(2,3)).",
+      "result": "predicate must be named churn_38112_dividend_must_exceed_divisor"
+    }
+  ]
+}

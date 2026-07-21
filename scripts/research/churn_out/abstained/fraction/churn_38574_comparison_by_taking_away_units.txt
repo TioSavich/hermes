@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38574",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38574_comparison_by_taking_away_units",
+    "target_operation": "multiplicative_comparison",
+    "citation": "Amy J. Hackenberg (2013)",
+    "error_action": "comparison_by_taking_away_units",
+    "error_description": "to make one quantity a multiple-times-smaller version of another, take away a number of spatial units rather than partition",
+    "provenance_comments": "=== row 38574: multiplicative as additive spaces ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (using additive unit removal instead of partitioning for multiplicative comparison), but no runnable rule or specific syntactic pattern is provided that would produce a predictable wrong output in Prolog. Without a concrete, formalizable procedure that maps inputs to a specific incorrect result, we cannot construct a testable rule meeting the schema contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (using additive unit removal instead of partitioning for multiplicative comparison), but no runnable rule or specific syntactic pattern is provided that would produce a predictable wrong output in Prolog. Without a concrete, formalizable procedure that maps inputs to a specific incorrect result, we cannot construct a testable rule meeting the schema contract.",
+      "result": "abstained"
+    }
+  ]
+}

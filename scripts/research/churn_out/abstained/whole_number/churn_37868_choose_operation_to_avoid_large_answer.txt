@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37868",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37868_choose_operation_to_avoid_large_answer",
+    "target_operation": "operation_choice_by_number_size",
+    "citation": "Yan Ping Xin (2008)",
+    "error_action": "choose_operation_to_avoid_large_answer",
+    "error_description": "pick the operation whose result seems a reasonable, not-too-large size",
+    "provenance_comments": "=== row 37868: operation chosen by expected answer size ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a heuristic (\"pick the operation whose result seems a reasonable, not-too-large size\") that is subjective and context-dependent, not a deterministic mathematical procedure. The requirement demands a runnable Prolog rule that *must* produce the documented wrong answer for a given input, but \"seems reasonable\" cannot be formalized into a deterministic, general, SWI-Prolog-definable rule without inventing a subjective model. Execution gate requires deterministic output for given input; this misconception lacks a well-defined algorithmic mapping from input to the documented error outcome.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_37868_choose_operation_to_avoid_large_answer(A-B, Got) :-\n    % Student chooses subtraction when multiplication would yield a large answer,\n    % aiming for a \"reasonable, not-too-large\" result.\n    (A * B > A + B -> Got is A - B ; Got is A + B)).\n\ntest_harness:arith_misconception(db_row(37868), whole_number, churn_37868_choose_operation_to_avoid_large_answer,\n    churn_candidate:churn_37868_choose_operation_to_avoid_large_answer,\n    12-13,\n    156).",
+      "result": "output -1 does not match explicit documented claim(s) ['seems']"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a heuristic (\"pick the operation whose result seems a reasonable, not-too-large size\") that is subjective and context-dependent, not a deterministic mathematical procedure. The requirement demands a runnable Prolog rule that *must* produce the documented wrong answer for a given input, but \"seems reasonable\" cannot be formalized into a deterministic, general, SWI-Prolog-definable rule without inventing a subjective model. Execution gate requires deterministic output for given input; this misconception lacks a well-defined algorithmic mapping from input to the documented error outcome.",
+      "result": "abstained"
+    }
+  ]
+}

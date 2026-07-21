@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40086",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40086_partition_by_repeated_halving",
+    "target_operation": "partitioning_scheme_development",
+    "citation": "Alexis L. Stevens, Jesse L. M. Wilkins, LouAnn H. Lovin, John Siegfried, Anderson Norton, Richard Busi (2018)",
+    "error_action": "partition_by_repeated_halving",
+    "error_description": "create fractional parts by successively halving the whole",
+    "provenance_comments": "=== row 40086: halving overreliance inhibits odd partitions ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual overreliance on halving (i.e., only generating partitions that are powers of two), but no runnable procedural rule is provided—only a description of a cognitive bias. A runnable rule must specify a deterministic syntactic transformation that yields the documented wrong output for given inputs. Since no algorithmic procedure (e.g., a formula or stepwise construction) is given, we cannot construct a well-defined predicate `Rule(Input, Got)` that reliably produces the erroneous result across instances. Without such a procedure, we cannot satisfy the schema requirement that `Rule(Input, Got)` produce the documented wrong answer.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual overreliance on halving (i.e., only generating partitions that are powers of two), but no runnable procedural rule is provided—only a description of a cognitive bias. A runnable rule must specify a deterministic syntactic transformation that yields the documented wrong output for given inputs. Since no algorithmic procedure (e.g., a formula or stepwise construction) is given, we cannot construct a well-defined predicate `Rule(Input, Got)` that reliably produces the erroneous result across instances. Without such a procedure, we cannot satisfy the schema requirement that `Rule(Input, Got)` produce the documented wrong answer.",
+      "result": "abstained"
+    }
+  ]
+}

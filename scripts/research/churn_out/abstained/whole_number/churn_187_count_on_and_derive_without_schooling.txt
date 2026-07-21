@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "187",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_187_count_on_and_derive_without_schooling",
+    "target_operation": "informal_addition",
+    "citation": "Adetula (1989)",
+    "error_action": "count_on_and_derive_without_schooling",
+    "error_description": "use counting-on and derived facts learned outside formal instruction",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive strategy (counting-on and derived facts learned outside formal instruction) rather than a specific syntactic error or deterministic procedural rule that can be encoded as a binary predicate producing a fixed incorrect result. Without a concrete, reproducible computational mistake (e.g., misapplied operator, off-by-one, misremembered identity), no runnable rule `Rule(Input, Got)` can be constructed that reliably yields the documented wrong answer for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive strategy (counting-on and derived facts learned outside formal instruction) rather than a specific syntactic error or deterministic procedural rule that can be encoded as a binary predicate producing a fixed incorrect result. Without a concrete, reproducible computational mistake (e.g., misapplied operator, off-by-one, misremembered identity), no runnable rule `Rule(Input, Got)` can be constructed that reliably yields the documented wrong answer for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

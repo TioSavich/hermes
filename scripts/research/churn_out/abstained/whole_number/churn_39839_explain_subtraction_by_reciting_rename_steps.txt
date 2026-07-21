@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39839",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39839_explain_subtraction_by_reciting_rename_steps",
+    "target_operation": "subtraction_renaming",
+    "citation": "Mairéad Hourigan & John O'Donoghue (2015)",
+    "error_action": "explain_subtraction_by_reciting_rename_steps",
+    "error_description": "describe solving 502-6 by reciting the renaming procedure rather than decomposing it conceptually",
+    "provenance_comments": "=== row 39839: \"renaming\" recited without conceptual steps ===\nPedagogical procedural report; no wrong numeric output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a pedagogical procedural report (reciting renaming steps) without producing a wrong numeric output, and thus does not specify a runnable rule that yields a documented incorrect result. The schema requires `ExpectedCorrect` to differ from `Got`, but no incorrect numeric outcome is documented for this misconception.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a pedagogical procedural report (reciting renaming steps) without producing a wrong numeric output, and thus does not specify a runnable rule that yields a documented incorrect result. The schema requires `ExpectedCorrect` to differ from `Got`, but no incorrect numeric outcome is documented for this misconception.",
+      "result": "abstained"
+    }
+  ]
+}

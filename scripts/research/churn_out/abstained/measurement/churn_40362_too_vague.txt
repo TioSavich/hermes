@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40362",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40362_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "=== row 40362: area/perimeter undifferentiated (generic) ===\nToo vague: general category with no numeric signature.",
+    "provenance_comments": "=== row 40362: area/perimeter undifferentiated (generic) ===\nToo vague: general category with no numeric signature.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a generic category (\"area/perimeter undifferentiated\") with no specific numeric signature or procedural description; it does not specify a runnable rule or a concrete input-output pair required by the schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a generic category (\"area/perimeter undifferentiated\") with no specific numeric signature or procedural description; it does not specify a runnable rule or a concrete input-output pair required by the schema.",
+      "result": "abstained"
+    }
+  ]
+}

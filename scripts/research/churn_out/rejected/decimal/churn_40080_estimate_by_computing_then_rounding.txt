@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40080",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40080_estimate_by_computing_then_rounding",
+    "target_operation": "computational_estimation_meaning",
+    "citation": "Amal Hussain Alajmi (2009)",
+    "error_action": "estimate_by_computing_then_rounding",
+    "error_description": "find the exact answer first, then round the final result",
+    "provenance_comments": "=== row 40080: decimal point in remainder ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40080_estimate_by_computing_then_rounding(Dividend, Divisor, Got) :-\n    Exact is Dividend / Divisor,\n    round(Exact * 100) / 100 =:= Got).\n\ntest_harness:arith_misconception(db_row(40080), decimal, churn_40080_estimate_by_computing_then_rounding,\n    churn_candidate:churn_40080_estimate_by_computing_then_rounding,\n    100, 3,\n    33.33).",
+      "result": "registration has 7 arguments, expected 6"
+    },
+    {
+      "response": "churn_candidate:(churn_40080_estimate_by_computing_then_rounding(Value, Got) :-\n    Got is round(Value)).\n\ntest_harness:arith_misconception(db_row(40080), decimal, churn_40080_estimate_by_computing_then_rounding,\n    churn_candidate:churn_40080_estimate_by_computing_then_rounding,\n    123.456,\n    123).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

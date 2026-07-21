@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38220",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38220_multiplication_is_only_repeated_addition",
+    "target_operation": "meaning_of_multiplication",
+    "citation": "Nancy K. Mack (2000)",
+    "error_action": "multiplication_is_only_repeated_addition",
+    "error_description": "multiplication must be a repeated addition of equal groups",
+    "provenance_comments": "=== row 38220: multiplication only as repeated addition ===\nToo vague — rejection of operation, not a concrete wrong numeric answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about the meaning of multiplication (restricting it to repeated addition of equal groups), not a specific syntactic error that produces a predictable incorrect numeric result for a given input. No runnable rule can be constructed that, when called with an input, yields a consistent incorrect numeric output as documented. The error manifests as rejection or misapplication of multiplication in broader contexts (e.g., non-integer or fractional multipliers), but no single deterministic wrong answer is specified for a concrete input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about the meaning of multiplication (restricting it to repeated addition of equal groups), not a specific syntactic error that produces a predictable incorrect numeric result for a given input. No runnable rule can be constructed that, when called with an input, yields a consistent incorrect numeric output as documented. The error manifests as rejection or misapplication of multiplication in broader contexts (e.g., non-integer or fractional multipliers), but no single deterministic wrong answer is specified for a concrete input.",
+      "result": "abstained"
+    }
+  ]
+}

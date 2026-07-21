@@ -32,7 +32,7 @@ def _post_witness(family: str) -> Callable[[Any], None]:
 _HANDLERS = (
     ("/api/base", "_handle_set_base"),
     ("/api/render", "_handle_render"),
-    ("/api/expressive_power", "_handle_expressive_power"),
+    ("/api/inferential_strength", "_handle_inferential_strength"),
     ("/api/strategies", "_handle_strategies"),
     ("/api/strategy_trace", "_handle_strategy_trace"),
     ("/api/deontic_scorecard", "_handle_deontic_scorecard"),

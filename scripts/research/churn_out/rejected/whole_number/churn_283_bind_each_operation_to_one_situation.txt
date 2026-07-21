@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "283",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_283_bind_each_operation_to_one_situation",
+    "target_operation": "single_meaning_per_operation",
+    "citation": "Peter Kelly (2004)",
+    "error_action": "bind_each_operation_to_one_situation",
+    "error_description": "treat each operation as having a single meaning: multiplication is times, division is sharing",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "predicate must be named churn_283_bind_each_operation_to_one_situation",
+  "attempts": [
+    {
+      "response": "churn_candidate:(bind_each_operation_to_one_situation(A * B, Got) :-\n    Got is A * B).\n\ntest_harness:arith_misconception(db_row(283), whole_number, churn_283_bind_each_operation_to_one_situation,\n    churn_candidate:bind_each_operation_to_one_situation,\n    4 * 5,\n    20).",
+      "result": "predicate must be named churn_283_bind_each_operation_to_one_situation"
+    },
+    {
+      "response": "churn_candidate:(binds_mult_to_times_and_div_to_sharing(A-B, Got) :-\n    memberchk(A-B, [5-3, 12-4]),\n    (   A = 5, B = 3, Got = times\n    ;   A = 12, B = 4, Got = sharing\n    )).\n\ntest_harness:arith_misconception(db_row(283), whole_number, churn_283_bind_each_operation_to_one_situation,\n    churn_candidate:binds_mult_to_times_and_div_to_sharing,\n    5-3,\n    times).",
+      "result": "predicate must be named churn_283_bind_each_operation_to_one_situation"
+    }
+  ]
+}

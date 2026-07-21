@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40216",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40216_procedural_fluency_implies_conceptual_grasp",
+    "target_operation": "procedural_vs_conceptual_evidence",
+    "citation": "Sandy M. Spitzer, Christine M. Phelps, James E. R. Beyers, Delayne Y. Johnson, Elizabeth M. Sieminski (2011)",
+    "error_action": "procedural_fluency_implies_conceptual_grasp",
+    "error_description": "accept a correct step-by-step common-denominator procedure as proof of conceptual understanding of the underlying ideas",
+    "provenance_comments": "=== row 40216: procedural taken as conceptual ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a metacognitive misconception about interpreting procedural correctness as evidence of conceptual understanding. It does not specify a runnable computational rule that produces a wrong output for a given input in the domain of fractions; rather, it describes a judgment error in assessment. Since no executable arithmetic rule can be extracted from the description, and no concrete input-output pair can be defined where the system produces a *mathematically wrong* result due to a misapplied procedure, the schema requirement for a runnable Rule and a distinct ExpectedCorrect cannot be satisfied.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a metacognitive misconception about interpreting procedural correctness as evidence of conceptual understanding. It does not specify a runnable computational rule that produces a wrong output for a given input in the domain of fractions; rather, it describes a judgment error in assessment. Since no executable arithmetic rule can be extracted from the description, and no concrete input-output pair can be defined where the system produces a *mathematically wrong* result due to a misapplied procedure, the schema requirement for a runnable Rule and a distinct ExpectedCorrect cannot be satisfied.",
+      "result": "abstained"
+    }
+  ]
+}

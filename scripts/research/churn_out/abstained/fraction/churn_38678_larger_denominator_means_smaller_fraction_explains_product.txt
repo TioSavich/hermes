@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38678",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38678_larger_denominator_means_smaller_fraction_explains_product",
+    "target_operation": "magnitude_of_fraction_products",
+    "citation": "Corey Webel, William W. DeLeeuw (2016)",
+    "error_action": "larger_denominator_means_smaller_fraction_explains_product",
+    "error_description": "a fraction gets smaller as its denominator gets bigger, so multiplying fractions makes a smaller one",
+    "provenance_comments": "=== row 38678: bigger-denominator-smaller-fraction as procedural fact ===\nTask: explain why 1/2 > 1/12\nToo vague for numeric encoding — meta/justification, not an arithmetic result.",
+    "worked_example": "Task: explain why 1/2 > 1/12",
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual justification (\"a fraction gets smaller as its denominator gets bigger, so multiplying fractions makes a smaller one\") rather than a specific arithmetic procedure producing a numeric result. It does not define a runnable binary predicate `Rule(Input, Got)` that yields a *wrong numeric outcome* for a given input; instead, it describes a reasoning pattern used in an explanation task. Since the schema requires a concrete `Rule` that computes an incorrect numeric result (`Got`) differing from `ExpectedCorrect`, and no such deterministic computational error is specified (only a vague heuristic explanation), admission fails.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual justification (\"a fraction gets smaller as its denominator gets bigger, so multiplying fractions makes a smaller one\") rather than a specific arithmetic procedure producing a numeric result. It does not define a runnable binary predicate `Rule(Input, Got)` that yields a *wrong numeric outcome* for a given input; instead, it describes a reasoning pattern used in an explanation task. Since the schema requires a concrete `Rule` that computes an incorrect numeric result (`Got`) differing from `ExpectedCorrect`, and no such deterministic computational error is specified (only a vague heuristic explanation), admission fails.",
+      "result": "abstained"
+    }
+  ]
+}

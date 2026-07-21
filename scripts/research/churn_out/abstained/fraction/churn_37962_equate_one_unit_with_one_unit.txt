@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37962",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37962_equate_one_unit_with_one_unit",
+    "target_operation": "rate_unit_coordination",
+    "citation": "Victoria R. Jacobs, Susan B. Empson (2016)",
+    "error_action": "equate_one_unit_with_one_unit",
+    "error_description": "treat one cup of water as equal to one mile hiked",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual confusion between unrelated units (cup of water vs. mile hiked), which is not representable as a binary arithmetic operation on fractions in SWI-Prolog without introducing external unit semantics or non-mathematical predicates. The schema requires a runnable rule `Rule(Input, Got)` that produces the documented wrong answer via arithmetic computation, but no such arithmetic rule can encode \"equate one cup with one mile\" as a fraction manipulation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual confusion between unrelated units (cup of water vs. mile hiked), which is not representable as a binary arithmetic operation on fractions in SWI-Prolog without introducing external unit semantics or non-mathematical predicates. The schema requires a runnable rule `Rule(Input, Got)` that produces the documented wrong answer via arithmetic computation, but no such arithmetic rule can encode \"equate one cup with one mile\" as a fraction manipulation.",
+      "result": "abstained"
+    }
+  ]
+}

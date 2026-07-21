@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40081",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40081_mathematics_requires_exact_answers",
+    "target_operation": "estimation_vs_exact_computation",
+    "citation": "Amal Hussain Alajmi (2009)",
+    "error_action": "mathematics_requires_exact_answers",
+    "error_description": "every problem must be solved by an exact paper-and-pencil algorithm",
+    "provenance_comments": "=== row 40081: abandons estimation for long division ===\nTeacher belief, no computational error.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a teacher belief about requiring exact answers, not a student procedural error that can be encoded as a runnable Prolog rule producing a specific wrong output for a given input. There is no concrete student calculation procedure described that yields a deterministic incorrect result for a specific input pair, and thus no Rule predicate of arity 2 can be constructed to produce the documented error.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a teacher belief about requiring exact answers, not a student procedural error that can be encoded as a runnable Prolog rule producing a specific wrong output for a given input. There is no concrete student calculation procedure described that yields a deterministic incorrect result for a specific input pair, and thus no Rule predicate of arity 2 can be constructed to produce the documented error.",
+      "result": "abstained"
+    }
+  ]
+}

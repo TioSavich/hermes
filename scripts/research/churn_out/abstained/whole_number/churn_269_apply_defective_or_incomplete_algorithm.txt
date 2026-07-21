@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "269",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_269_apply_defective_or_incomplete_algorithm",
+    "target_operation": "computation_algorithm_breakdowns",
+    "citation": "Hourigan, ODonoghue (2013)",
+    "error_action": "apply_defective_or_incomplete_algorithm",
+    "error_description": "execute a computation procedure that is missing or corrupts a required step",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is too vague to specify a runnable rule and defensible probe; it describes a meta-level failure (missing or corrupt step) without identifying a concrete algorithm, step, or arithmetic pattern that can be encoded as a Prolog predicate of arity 2 producing a specific wrong result.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is too vague to specify a runnable rule and defensible probe; it describes a meta-level failure (missing or corrupt step) without identifying a concrete algorithm, step, or arithmetic pattern that can be encoded as a Prolog predicate of arity 2 producing a specific wrong result.",
+      "result": "abstained"
+    }
+  ]
+}

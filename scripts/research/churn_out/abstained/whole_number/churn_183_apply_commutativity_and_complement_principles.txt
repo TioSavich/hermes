@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "183",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_183_apply_commutativity_and_complement_principles",
+    "target_operation": "single_digit_principles",
+    "citation": "Baroody, Ginsburg, Waxman (1983)",
+    "error_action": "apply_commutativity_and_complement_principles",
+    "error_description": "use a+b=b+a and addition-subtraction complements to derive facts",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: no runnable rule or defensible probe can be constructed from the documented error description alone; the description specifies a *strategy* (applying commutativity and complement principles) rather than a specific computational procedure that yields a deterministic wrong result for a given input. Without a concrete incorrect computation step or formula, we cannot define a predicate `Rule(Input, Got)` that reliably produces the documented error.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no runnable rule or defensible probe can be constructed from the documented error description alone; the description specifies a *strategy* (applying commutativity and complement principles) rather than a specific computational procedure that yields a deterministic wrong result for a given input. Without a concrete incorrect computation step or formula, we cannot define a predicate `Rule(Input, Got)` that reliably produces the documented error.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40443",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40443_more_faces_or_volume_means_more_ribbon",
+    "target_operation": "perimeter_3d_wrapping",
+    "citation": "Rut Almeida & Alicia Bruno & Josefa Perdomo-Diaz (2016)",
+    "error_action": "more_faces_or_volume_means_more_ribbon",
+    "error_description": "a shape needing more wrapping is determined by its number of faces or its volume",
+    "provenance_comments": "=== row 40443: ribbon length judged by face count or volume ===\nToo vague: cross-attribute confusion, not a single numeric bug.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: documented error is cross-attribute confusion (face count or volume as proxy for ribbon length) without specifying a single, runnable numeric procedure; no concrete Rule predicate of arity 2 can be defined that produces the documented wrong answer in a general, executable way.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: documented error is cross-attribute confusion (face count or volume as proxy for ribbon length) without specifying a single, runnable numeric procedure; no concrete Rule predicate of arity 2 can be defined that produces the documented wrong answer in a general, executable way.",
+      "result": "abstained"
+    }
+  ]
+}

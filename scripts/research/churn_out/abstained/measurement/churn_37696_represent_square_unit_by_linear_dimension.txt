@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37696",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37696_represent_square_unit_by_linear_dimension",
+    "target_operation": "area_unit_modeling",
+    "citation": "Marjorie Henningsen and Mary Kay Stein (1997)",
+    "error_action": "represent_square_unit_by_linear_dimension",
+    "error_description": "model a metric square by its side length and treat sub-units as isolated nested squares",
+    "provenance_comments": "=== direct solo pass: remaining measurement queue cleanup ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual modeling mistake (treating a square unit by its side length and sub-units as nested squares), but no runnable procedural rule is specified that maps a given input to a *specific wrong numeric output* via a deterministic computation. Without a concrete algorithm or formula that students are documented to apply, we cannot define a predicate `Rule(Input, Got)` that reliably produces the documented erroneous result. The execution gate exited 24 likely due to missing executable semantics — not a syntax or module issue — so admission cannot be achieved without invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_37696_represent_square_unit_by_linear_dimension(square_unit(S), Got) :-\n    Got is S).\n\ntest_harness:arith_misconception(db_row(37696), measurement, churn_37696_represent_square_unit_by_linear_dimension,\n    churn_candidate:churn_37696_represent_square_unit_by_linear_dimension,\n    square_unit(1), 1).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual modeling mistake (treating a square unit by its side length and sub-units as nested squares), but no runnable procedural rule is specified that maps a given input to a *specific wrong numeric output* via a deterministic computation. Without a concrete algorithm or formula that students are documented to apply, we cannot define a predicate `Rule(Input, Got)` that reliably produces the documented erroneous result. The execution gate exited 24 likely due to missing executable semantics — not a syntax or module issue — so admission cannot be achieved without invention.",
+      "result": "abstained"
+    }
+  ]
+}

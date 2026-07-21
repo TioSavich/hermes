@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40457",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40457_apply_memorized_rule_without_justification",
+    "target_operation": "procedural_rule_use",
+    "citation": "DER-CHING YANG (2003)",
+    "error_action": "apply_memorized_rule_without_justification",
+    "error_description": "execute a memorized comparison or operation rule while being unable to give reasons for it",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive behavior (applying a memorized rule without justification) rather than a specific incorrect procedural rule or mathematical transformation. Without a concrete, executable misapplication rule (e.g., “add numerators and denominators separately”), no runnable predicate can be constructed to reproduce the error in the required format.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive behavior (applying a memorized rule without justification) rather than a specific incorrect procedural rule or mathematical transformation. Without a concrete, executable misapplication rule (e.g., “add numerators and denominators separately”), no runnable predicate can be constructed to reproduce the error in the required format.",
+      "result": "abstained"
+    }
+  ]
+}

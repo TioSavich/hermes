@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38110",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38110_division_decreases_result",
+    "target_operation": "division_always_makes_smaller",
+    "citation": "Pessia Tsamir, Dina Tirosh (2008)",
+    "error_action": "division_decreases_result",
+    "error_description": "dividing always produces a number smaller than the dividend",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception (\"division always produces a number smaller than the dividend\") that cannot be captured by a deterministic, general, executable Prolog rule of arity 2 without inventing a specific incorrect algorithm. The gate failure (exit code 23) indicates the rule either failed to terminate, threw an exception, or produced non-deterministic/unstable behavior — likely because no consistent, general procedural mapping from input to *always smaller* output exists across all fractions (e.g., dividing a proper fraction by a larger proper fraction yields a larger result). Since the error is domain-dependent and not algorithmically implementable as a pure arithmetic rule without context-specific assumptions, it cannot be registered per the schema contract.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38110_division_decreases_result(div(A,B), C) :-\n    fraction(A, B),\n    C is A / B,\n    C < A).\n\ntest_harness:arith_misconception(db_row(38110), fraction, churn_38110_division_decreases_result,\n    churn_candidate:churn_38110_division_decreases_result,\n    div(1, 2),\n    0.5).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception (\"division always produces a number smaller than the dividend\") that cannot be captured by a deterministic, general, executable Prolog rule of arity 2 without inventing a specific incorrect algorithm. The gate failure (exit code 23) indicates the rule either failed to terminate, threw an exception, or produced non-deterministic/unstable behavior — likely because no consistent, general procedural mapping from input to *always smaller* output exists across all fractions (e.g., dividing a proper fraction by a larger proper fraction yields a larger result). Since the error is domain-dependent and not algorithmically implementable as a pure arithmetic rule without context-specific assumptions, it cannot be registered per the schema contract.",
+      "result": "abstained"
+    }
+  ]
+}

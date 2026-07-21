@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38129",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38129_enumerate_by_serial_unit_counting",
+    "target_operation": "dyscalculia_enumeration",
+    "citation": "Brian Butterworth, Diana Laurillard (2010)",
+    "error_action": "enumerate_by_serial_unit_counting",
+    "error_description": "count each dot aloud one by one rather than recognizing the array pattern",
+    "provenance_comments": "=== row 38129: dyscalculia slowness (not a rule) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a behavioral strategy (serial unit counting) rather than a specific arithmetic rule that can be encoded as a binary predicate producing a deterministic wrong result. There is no well-defined mathematical transformation or output associated with the strategy that can be consistently captured in a rule `Rule(Input, Got)` where `Got` is a unique incorrect value derived from a canonical procedure. Without a concrete mapping from input to erroneous output, a runnable rule and test harness cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a behavioral strategy (serial unit counting) rather than a specific arithmetic rule that can be encoded as a binary predicate producing a deterministic wrong result. There is no well-defined mathematical transformation or output associated with the strategy that can be consistently captured in a rule `Rule(Input, Got)` where `Got` is a unique incorrect value derived from a canonical procedure. Without a concrete mapping from input to erroneous output, a runnable rule and test harness cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

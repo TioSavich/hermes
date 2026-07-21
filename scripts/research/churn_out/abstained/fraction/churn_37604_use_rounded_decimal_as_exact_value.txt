@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37604",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37604_use_rounded_decimal_as_exact_value",
+    "target_operation": "decimal_approximation_of_fraction",
+    "citation": "Debra I. Johanning (2008)",
+    "error_action": "use_rounded_decimal_as_exact_value",
+    "error_description": "treat a truncated decimal for a fraction as if it were the exact quantity in calculation",
+    "provenance_comments": "=== row 37604: decimal approximation perturbation ===\nConceptual — awareness that decimal approximations are not exact.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes using a truncated decimal as if it were exact, but no concrete decimal truncation or rounding rule is provided in the documentation, and SWI-Prolog cannot natively represent truncated decimals for arbitrary fractions without arbitrary-precision floating-point control or custom rounding logic. Since the schema requires a runnable rule and concrete input, and no specific truncation method (e.g., to 2 decimal places) is given, the rule cannot be implemented as a general, deterministic predicate without invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_37604_use_rounded_decimal_as_exact_value(frac(N,D), Result) :-\n    Decimal is N / D,\n    format(string(Rounded), '~3f', Decimal),\n    atom_number(Rounded, RoundedNum),\n    Result = RoundedNum).\n\ntest_harness:arith_misconception(db_row(37604), fraction, churn_37604_use_rounded_decimal_as_exact_value,\n    churn_candidate:churn_37604_use_rounded_decimal_as_exact_value,\n    frac(1,3),\n    0.333).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes using a truncated decimal as if it were exact, but no concrete decimal truncation or rounding rule is provided in the documentation, and SWI-Prolog cannot natively represent truncated decimals for arbitrary fractions without arbitrary-precision floating-point control or custom rounding logic. Since the schema requires a runnable rule and concrete input, and no specific truncation method (e.g., to 2 decimal places) is given, the rule cannot be implemented as a general, deterministic predicate without invention.",
+      "result": "abstained"
+    }
+  ]
+}

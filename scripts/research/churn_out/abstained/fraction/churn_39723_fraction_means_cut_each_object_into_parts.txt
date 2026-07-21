@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39723",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39723_fraction_means_cut_each_object_into_parts",
+    "target_operation": "fraction_of_a_discrete_set",
+    "citation": "Ban Heng Choy (2016)",
+    "error_action": "fraction_means_cut_each_object_into_parts",
+    "error_description": "to take a fraction of a collection, partition each individual object into that many parts",
+    "provenance_comments": "=== row 39723: fraction of a set interpreted as cutting items ===\nNo numeric wrong answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: no runnable rule can be constructed because the documented error describes a conceptual misunderstanding (partitioning each individual object) without specifying a concrete computational procedure that yields a unique wrong numeric answer; the schema requires a rule that produces a specific incorrect result for a given input, and no such deterministic mapping is provided.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no runnable rule can be constructed because the documented error describes a conceptual misunderstanding (partitioning each individual object) without specifying a concrete computational procedure that yields a unique wrong numeric answer; the schema requires a rule that produces a specific incorrect result for a given input, and no such deterministic mapping is provided.",
+      "result": "abstained"
+    }
+  ]
+}

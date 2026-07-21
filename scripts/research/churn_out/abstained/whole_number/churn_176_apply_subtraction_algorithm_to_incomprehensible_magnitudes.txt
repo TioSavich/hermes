@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "176",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_176_apply_subtraction_algorithm_to_incomprehensible_magnitudes",
+    "target_operation": "large_number_rote_subtraction",
+    "citation": "Griffiths, H. B. (1987)",
+    "error_action": "apply_subtraction_algorithm_to_incomprehensible_magnitudes",
+    "error_description": "execute the subtraction procedure on very large numbers before any sense of their magnitude is available",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive behavior (applying subtraction to incomprehensibly large numbers without magnitude sense) but provides no concrete, generalizable algorithmic rule that can be encoded as a runnable Prolog predicate of arity 2 producing a specific wrong result. The error is psychological/strategic, not syntactic or computational; it lacks a defined procedure that maps inputs deterministically to the documented incorrect output. Without a precise rule for *how* the wrong answer is computed (e.g., a mechanical misapplication like reversing digits or ignoring borrows), no testable `Rule(Input, Got)` can be constructed.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_176_apply_subtraction_algorithm_to_incomprehensible_magnitudes(A-B, Got) :-\n    Got is A - B).\n\ntest_harness:arith_misconception(db_row(176), whole_number, churn_176_apply_subtraction_algorithm_to_incomprehensible_magnitudes,\n    churn_candidate:churn_176_apply_subtraction_algorithm_to_incomprehensible_magnitudes,\n    1000000000000-999999999999,\n    1).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive behavior (applying subtraction to incomprehensibly large numbers without magnitude sense) but provides no concrete, generalizable algorithmic rule that can be encoded as a runnable Prolog predicate of arity 2 producing a specific wrong result. The error is psychological/strategic, not syntactic or computational; it lacks a defined procedure that maps inputs deterministically to the documented incorrect output. Without a precise rule for *how* the wrong answer is computed (e.g., a mechanical misapplication like reversing digits or ignoring borrows), no testable `Rule(Input, Got)` can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

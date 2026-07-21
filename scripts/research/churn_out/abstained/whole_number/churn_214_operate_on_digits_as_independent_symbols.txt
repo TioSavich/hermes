@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "214",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_214_operate_on_digits_as_independent_symbols",
+    "target_operation": "place_value_digit_operations",
+    "citation": "Houdement, Tempier (2018)",
+    "error_action": "operate_on_digits_as_independent_symbols",
+    "error_description": "juxtapose, drop, or add digits treating each digit as a free-standing number",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a qualitative cognitive procedure (treating digits as independent symbols) without specifying a concrete syntactic or arithmetic transformation that maps inputs to a unique wrong output; without a deterministic mapping, we cannot supply a well-defined predicate that reliably produces the documented error for a given input.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_214_operate_on_digits_as_independent_symbols(A-B, Got) :-\n    number_chars(A, CharsA),\n    number_chars(B, CharsB),\n    maplist(atom_number, [CharsA, CharsB], [DigitsA, DigitsB]),\n    append(DigitsA, DigitsB, Combined),\n    number_chars(Got, Combined)).\n\ntest_harness:arith_misconception(db_row(214), whole_number, churn_214_operate_on_digits_as_independent_symbols,\n    churn_candidate:churn_214_operate_on_digits_as_independent_symbols,\n    12-34,\n    1234).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a qualitative cognitive procedure (treating digits as independent symbols) without specifying a concrete syntactic or arithmetic transformation that maps inputs to a unique wrong output; without a deterministic mapping, we cannot supply a well-defined predicate that reliably produces the documented error for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

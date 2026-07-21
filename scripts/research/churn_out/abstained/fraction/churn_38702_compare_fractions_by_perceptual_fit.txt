@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38702",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38702_compare_fractions_by_perceptual_fit",
+    "target_operation": "equivalent_fractions",
+    "citation": "Constance Kamii, Faye B. Clark (1995)",
+    "error_action": "compare_fractions_by_perceptual_fit",
+    "error_description": "decide equality by physically fitting and visually comparing the pieces",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a perceptual/visual comparison procedure (fitting and visually comparing pieces) rather than a specific arithmetic operation or algebraic rule that can be expressed as a binary predicate in SWI-Prolog producing a deterministic wrong result for a given input. Since no runnable rule (e.g., a syntactic transformation or formula) is provided—only a cognitive strategy—there is no well-defined `Rule(Input, Got)` that can be implemented without arbitrary modeling assumptions, violating the requirement to encode the documented student error *exactly* and *runnable*.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a perceptual/visual comparison procedure (fitting and visually comparing pieces) rather than a specific arithmetic operation or algebraic rule that can be expressed as a binary predicate in SWI-Prolog producing a deterministic wrong result for a given input. Since no runnable rule (e.g., a syntactic transformation or formula) is provided—only a cognitive strategy—there is no well-defined `Rule(Input, Got)` that can be implemented without arbitrary modeling assumptions, violating the requirement to encode the documented student error *exactly* and *runnable*.",
+      "result": "abstained"
+    }
+  ]
+}

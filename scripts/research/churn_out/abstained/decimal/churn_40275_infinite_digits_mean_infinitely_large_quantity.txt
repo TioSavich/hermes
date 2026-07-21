@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40275",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40275_infinite_digits_mean_infinitely_large_quantity",
+    "target_operation": "infinite_decimal_magnitude",
+    "citation": "Plinio C. Moreira, Maria M. David (2008)",
+    "error_action": "infinite_digits_mean_infinitely_large_quantity",
+    "error_description": "a decimal with infinitely many digits represents an unboundedly large number",
+    "provenance_comments": "=== row 40275: infinite non-periodic decimals seen as infinite numbers ===\nToo vague — conceptual error about representation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (confusing infinite decimal representation with unbounded magnitude) but does not specify a concrete, runnable procedure or rule that a student would follow to produce a specific incorrect numeric result for a given input. Without a clear algorithmic error pattern that yields a deterministic wrong answer from a well-defined input, no executable rule satisfying the schema can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (confusing infinite decimal representation with unbounded magnitude) but does not specify a concrete, runnable procedure or rule that a student would follow to produce a specific incorrect numeric result for a given input. Without a clear algorithmic error pattern that yields a deterministic wrong answer from a well-defined input, no executable rule satisfying the schema can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39159",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39159_solve_subtraction_by_building_up",
+    "target_operation": "complementary_addition_subtraction",
+    "citation": "LESLEY R. BOOTH (1981)",
+    "error_action": "solve_subtraction_by_building_up",
+    "error_description": "find a difference by counting up from the smaller number to the larger",
+    "provenance_comments": "=== row 39159: primitive counting on strategies ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a general counting-up strategy for subtraction (finding the difference by counting from the smaller to the larger number), but no concrete, executable procedural rule is specified—only a high-level description of a strategy. Without a specific, deterministic computational rule (e.g., a formula, rewrite, or algorithm) that maps inputs to the *exact* documented wrong output, a runnable Prolog rule cannot be constructed. The schema requires a rule `Rule(Input, Got)` that produces the documented misconception *as written*, not an interpretation or approximation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a general counting-up strategy for subtraction (finding the difference by counting from the smaller to the larger number), but no concrete, executable procedural rule is specified—only a high-level description of a strategy. Without a specific, deterministic computational rule (e.g., a formula, rewrite, or algorithm) that maps inputs to the *exact* documented wrong output, a runnable Prolog rule cannot be constructed. The schema requires a rule `Rule(Input, Got)` that produces the documented misconception *as written*, not an interpretation or approximation.",
+      "result": "abstained"
+    }
+  ]
+}

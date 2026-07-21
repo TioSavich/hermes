@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "212",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_212_split_into_tens_and_ones_then_subtract_each_place",
+    "target_operation": "subtraction_split_strategy",
+    "citation": "Heinze, Marschick, Lipowsky (2009)",
+    "error_action": "split_into_tens_and_ones_then_subtract_each_place",
+    "error_description": "separate both numbers into tens and ones and subtract place by place independently",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_212_split_into_tens_and_ones_then_subtract_each_place(A-B, Got) :-\n    TensA is A // 10,\n    OnesA is A mod 10,\n    TensB is B // 10,\n    OnesB is B mod 10,\n    DiffTens is TensA - TensB,\n    DiffOnes is OnesA - OnesB,\n    Got is DiffTens * 10 + DiffOnes).\n\ntest_harness:arith_misconception(db_row(212), whole_number, churn_212_split_into_tens_and_ones_then_subtract_each_place,\n    churn_candidate:churn_212_split_into_tens_and_ones_then_subtract_each_place,\n    53-27,\n    26).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "churn_candidate:(churn_212_split_into_tens_and_ones_then_subtract_each_place(A-B, Got) :-\n    A10 is A // 10,\n    A1 is A mod 10,\n    B10 is B // 10,\n    B1 is B mod 10,\n    TensDiff is A10 - B10,\n    OnesDiff is A1 - B1,\n    Got is TensDiff * 10 + OnesDiff).\n\ntest_harness:arith_misconception(db_row(212), whole_number, churn_212_split_into_tens_and_ones_then_subtract_each_place,\n    churn_candidate:churn_212_split_into_tens_and_ones_then_subtract_each_place,\n    42-15,\n    27).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

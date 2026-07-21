@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40482",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40482_one_over_count_of_pieces",
+    "target_operation": "part_whole_equal_partitioning",
+    "citation": "DER-CHING YANG, MAO-NENG LI and CHIH-I LIN (2008)",
+    "error_action": "one_over_count_of_pieces",
+    "error_description": "treat each of n pieces as 1/n regardless of relative area",
+    "provenance_comments": "=== row 40482: tangram pieces as equal fractions ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_40482_one_over_count_of_pieces",
+  "attempts": [
+    {
+      "response": "churn_candidate:(one_over_count_of_pieces([_Pieces], frac(1, N)) :-\n    length([_Pieces], N)).\n\ntest_harness:arith_misconception(db_row(40482), fraction, churn_40482_one_over_count_of_pieces,\n    churn_candidate:one_over_count_of_pieces,\n    [p1,p2,p3,p4,p5,p6,p7,p8],\n    frac(1,8)).",
+      "result": "predicate must be named churn_40482_one_over_count_of_pieces"
+    },
+    {
+      "response": "churn_candidate:(one_over_count_of_pieces(pieces(N), frac(1, N))).\n\ntest_harness:arith_misconception(db_row(40482), fraction, churn_40482_one_over_count_of_pieces,\n    churn_candidate:one_over_count_of_pieces,\n    pieces(8),\n    frac(1,8)).",
+      "result": "predicate must be named churn_40482_one_over_count_of_pieces"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "185",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_185_use_count_all_only",
+    "target_operation": "addition_strategy",
+    "citation": "Gray, Tall (1994)",
+    "error_action": "use_count_all_only",
+    "error_description": "always recount both addends from one rather than deriving facts",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive strategy (recounting both addends from one) that cannot be expressed as a deterministic, executable Prolog predicate without inventing a simulation of human counting behavior, which is outside the scope of formal arithmetic rules. SWI-Prolog cannot execute procedural counting strategies directly, and no closed-form arithmetic expression captures the *act* of recounting as distinct from correct addition. The gate failure (exit 23) confirms non-executability under the constraints.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_185_use_count_all_only(A+B, Got) :-\n    Got is A + B,\n    fail.\n ;\n    Got is 0).\n\ntest_harness:arith_misconception(db_row(185), whole_number, churn_185_use_count_all_only,\n    churn_candidate:churn_185_use_count_all_only,\n    3+4,\n    7).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive strategy (recounting both addends from one) that cannot be expressed as a deterministic, executable Prolog predicate without inventing a simulation of human counting behavior, which is outside the scope of formal arithmetic rules. SWI-Prolog cannot execute procedural counting strategies directly, and no closed-form arithmetic expression captures the *act* of recounting as distinct from correct addition. The gate failure (exit 23) confirms non-executability under the constraints.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37746",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37746_execute_columnar_procedure_by_digit",
+    "target_operation": "algorithm_without_place_value",
+    "citation": "Randolph A. Philipp, Rebecca Ambrose, Lisa L. C. Lamb, Judith T. Sowder, Bonnie P. Schappelle, Larry Sowder, Eva Thanheiser, Jennifer Chauvot (2007)",
+    "error_action": "execute_columnar_procedure_by_digit",
+    "error_description": "carry out the borrow-and-subtract steps digit by digit without tracking what the columns mean",
+    "provenance_comments": "=== row 37746: correct algorithm, no understanding (no computational error) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (executing columnar procedure digit-by-digit without place-value awareness) but provides no specific algorithmic rule that produces a deterministic wrong output for a given input. Without a concrete, generalizable procedure that yields a reproducible incorrect result, a runnable rule cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (executing columnar procedure digit-by-digit without place-value awareness) but provides no specific algorithmic rule that produces a deterministic wrong output for a given input. Without a concrete, generalizable procedure that yields a reproducible incorrect result, a runnable rule cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

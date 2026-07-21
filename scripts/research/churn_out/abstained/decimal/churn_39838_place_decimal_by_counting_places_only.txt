@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39838",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39838_place_decimal_by_counting_places_only",
+    "target_operation": "decimal_multiplication_placement",
+    "citation": "Mairéad Hourigan & John O'Donoghue (2015)",
+    "error_action": "place_decimal_by_counting_places_only",
+    "error_description": "justify the decimal point's position solely by counting total decimal places in the factors",
+    "provenance_comments": "=== row 39838: rote decimal-place-counting without understanding ===\nToo vague — lack of justification, not a wrong computation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: the documented error describes a reasoning strategy (counting decimal places to justify decimal point position) rather than a specific computational rule that produces a wrong numerical result; no runnable predicate can be constructed that yields the documented error outcome without additional mathematical specification of the operation being performed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: the documented error describes a reasoning strategy (counting decimal places to justify decimal point position) rather than a specific computational rule that produces a wrong numerical result; no runnable predicate can be constructed that yields the documented error outcome without additional mathematical specification of the operation being performed.",
+      "result": "abstained"
+    }
+  ]
+}

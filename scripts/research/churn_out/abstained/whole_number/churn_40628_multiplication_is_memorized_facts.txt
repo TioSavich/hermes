@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40628",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40628_multiplication_is_memorized_facts",
+    "target_operation": "multiplication_meaning",
+    "citation": "Janine T. Remillard, Kara Jackson (2006)",
+    "error_action": "multiplication_is_memorized_facts",
+    "error_description": "treat multiplication strictly as recall of memorized number facts, rejecting array models",
+    "provenance_comments": "=== row 40628: parent rejection of conceptual arrays ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (treating multiplication as purely memorized facts and rejecting array models) but does not specify a runnable procedural rule that produces a concrete wrong output for a given input. Without a defined algorithmic transformation or error function that maps inputs to a specific incorrect result, no SWI-Prolog rule of arity 2 can be constructed to reproduce the error in a testable way.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (treating multiplication as purely memorized facts and rejecting array models) but does not specify a runnable procedural rule that produces a concrete wrong output for a given input. Without a defined algorithmic transformation or error function that maps inputs to a specific incorrect result, no SWI-Prolog rule of arity 2 can be constructed to reproduce the error in a testable way.",
+      "result": "abstained"
+    }
+  ]
+}

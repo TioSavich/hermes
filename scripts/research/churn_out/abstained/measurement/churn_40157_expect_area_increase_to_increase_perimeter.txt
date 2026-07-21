@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40157",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40157_expect_area_increase_to_increase_perimeter",
+    "target_operation": "area_perimeter_relationship",
+    "citation": "Ruhama Even (1999)",
+    "error_action": "expect_area_increase_to_increase_perimeter",
+    "error_description": "assume adding area (a square) must increase the figure's perimeter",
+    "provenance_comments": "=== row 40157: area-perimeter relation not monotone ===\nToo vague: productive perturbation, not a student error per se.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception (expecting area increase to imply perimeter increase), but no runnable procedural rule is provided that maps an input to a specific wrong output; the description does not specify a concrete computation or predicate that produces a deterministic incorrect result for a given input. Without a clear, executable mapping from input to wrong answer, a valid Prolog rule cannot be constructed per the schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception (expecting area increase to imply perimeter increase), but no runnable procedural rule is provided that maps an input to a specific wrong output; the description does not specify a concrete computation or predicate that produces a deterministic incorrect result for a given input. Without a clear, executable mapping from input to wrong answer, a valid Prolog rule cannot be constructed per the schema.",
+      "result": "abstained"
+    }
+  ]
+}

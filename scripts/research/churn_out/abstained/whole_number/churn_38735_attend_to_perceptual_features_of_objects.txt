@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38735",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38735_attend_to_perceptual_features_of_objects",
+    "target_operation": "number_abstraction",
+    "citation": "EDDIE GRAY, MARCIA PINTO, DEMETRA PITTA and DAVID TALL (1999)",
+    "error_action": "attend_to_perceptual_features_of_objects",
+    "error_description": "treat a collection by its color, pattern, or physical arrangement rather than by its cardinality",
+    "provenance_comments": "=== row 38735: focus on physical features of manipulatives ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive bias (attending to perceptual features like color or arrangement) rather than a specific syntactic or semantic rule that can be encoded as a binary predicate producing a deterministic wrong arithmetic result. No runnable rule of arity 2 can be constructed that consistently yields a documented wrong output for a given input under the operation `number_abstraction`, because the misconception is context-dependent on visual presentation, not determined by numeric input alone.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive bias (attending to perceptual features like color or arrangement) rather than a specific syntactic or semantic rule that can be encoded as a binary predicate producing a deterministic wrong arithmetic result. No runnable rule of arity 2 can be constructed that consistently yields a documented wrong output for a given input under the operation `number_abstraction`, because the misconception is context-dependent on visual presentation, not determined by numeric input alone.",
+      "result": "abstained"
+    }
+  ]
+}

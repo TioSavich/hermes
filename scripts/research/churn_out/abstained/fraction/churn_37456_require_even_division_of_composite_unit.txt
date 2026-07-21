@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37456",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37456_require_even_division_of_composite_unit",
+    "target_operation": "units_coordination",
+    "citation": "Amy J. Hackenberg (2010)",
+    "error_action": "require_even_division_of_composite_unit",
+    "error_description": "expect that a composite unit can only be split into a number of parts that divides it evenly",
+    "provenance_comments": "=== row 37456: cognitive perturbation at odd partition (no concrete wrong answer) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive perturbation (expectation of even division) but provides no concrete wrong answer or runnable rule; without a specific incorrect procedure or output, a runnable Prolog rule cannot be constructed per the schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive perturbation (expectation of even division) but provides no concrete wrong answer or runnable rule; without a specific incorrect procedure or output, a runnable Prolog rule cannot be constructed per the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

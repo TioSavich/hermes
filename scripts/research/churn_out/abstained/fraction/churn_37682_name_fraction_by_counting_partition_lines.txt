@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37682",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37682_name_fraction_by_counting_partition_lines",
+    "target_operation": "area_models",
+    "citation": "Susan B. Empson (2003)",
+    "error_action": "name_fraction_by_counting_partition_lines",
+    "error_description": "decide the fraction by counting line segments rather than counting equal regions",
+    "provenance_comments": "=== row 37682: counts lines instead of regions (no deterministic numeric rule) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a non-deterministic cognitive strategy—counting line segments in area models—without specifying a consistent, executable arithmetic rule that maps inputs to a unique wrong output. Since the misconception lacks a deterministic numeric procedure, no runnable predicate of arity 2 can be formed that reliably produces the documented wrong answer for general inputs.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a non-deterministic cognitive strategy—counting line segments in area models—without specifying a consistent, executable arithmetic rule that maps inputs to a unique wrong output. Since the misconception lacks a deterministic numeric procedure, no runnable predicate of arity 2 can be formed that reliably produces the documented wrong answer for general inputs.",
+      "result": "abstained"
+    }
+  ]
+}

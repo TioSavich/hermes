@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "231",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_231_multiplication_always_increases_division_always_decreases",
+    "target_operation": "multiplication_makes_bigger",
+    "citation": "Bonotto (2005)",
+    "error_action": "multiplication_always_increases_division_always_decreases",
+    "error_description": "assume any product exceeds its factors and any quotient is smaller than its dividend",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception (assumption about behavior of operations), not a syntactic or procedural error that can be captured by a deterministic predicate `Rule(Input, Got)` producing a specific wrong result. The gate requires a runnable rule that, given an input, produces the documented wrong output; but the misconception as stated is general and not tied to a specific operation instance (e.g., “multiplication always increases” fails for inputs like `5 * 0 = 0` or `2 * 0.5 = 1`), and the domain is `whole_number`, where counterexamples exist (e.g., `1 * 1 = 1`, `5 * 0 = 0`). However, the task forbids repairing or inventing mathematics — only encoding the documented error. Since no single input-output pair can universally encode the *assumption* (as it’s a belief, not a deterministic algorithm), and the execution gate requires a concrete `Input` and `ExpectedCorrect` that *must not unify* with `Got`, the rule cannot be made both general and executable without invention. No runnable predicate can encode the *belief* that “multiplication always increases” as a function from a single input to a specific wrong output without imposing arbitrary choices.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_231_multiplication_always_increases_division_always_decreases(A-B, Got) :-\n    Got is A * B,\n    A > 1,\n    B > 1).\n\ntest_harness:arith_misconception(db_row(231), whole_number, churn_231_multiplication_always_increases_division_always_decreases,\n    churn_candidate:churn_231_multiplication_always_increases_division_always_decreases,\n    4-2,\n    8).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception (assumption about behavior of operations), not a syntactic or procedural error that can be captured by a deterministic predicate `Rule(Input, Got)` producing a specific wrong result. The gate requires a runnable rule that, given an input, produces the documented wrong output; but the misconception as stated is general and not tied to a specific operation instance (e.g., “multiplication always increases” fails for inputs like `5 * 0 = 0` or `2 * 0.5 = 1`), and the domain is `whole_number`, where counterexamples exist (e.g., `1 * 1 = 1`, `5 * 0 = 0`). However, the task forbids repairing or inventing mathematics — only encoding the documented error. Since no single input-output pair can universally encode the *assumption* (as it’s a belief, not a deterministic algorithm), and the execution gate requires a concrete `Input` and `ExpectedCorrect` that *must not unify* with `Got`, the rule cannot be made both general and executable without invention. No runnable predicate can encode the *belief* that “multiplication always increases” as a function from a single input to a specific wrong output without imposing arbitrary choices.",
+      "result": "abstained"
+    }
+  ]
+}

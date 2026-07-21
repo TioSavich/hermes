@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "278",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_278_operate_on_imagined_classroom_tools",
+    "target_operation": "internalized_tool_strategies",
+    "citation": "Chris Bills (2000)",
+    "error_action": "operate_on_imagined_classroom_tools",
+    "error_description": "solve by manipulating internalized versions of Dienes blocks, number tracks, or fingers",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(operates_on_imagined_classroom_tools(A-B, Got) :-\n    Got is A * B).\n\ntest_harness:arith_misconception(db_row(278), whole_number, churn_278_operate_on_imagined_classroom_tools,\n    churn_candidate:operates_on_imagined_classroom_tools,\n    6-7,\n    42).",
+      "result": "predicate must be named churn_278_operate_on_imagined_classroom_tools"
+    },
+    {
+      "response": "churn_candidate:(churn_278_operate_on_imagined_classroom_tools(A+B, Got) :-\n    Got is A + B).\n\ntest_harness:arith_misconception(db_row(278), whole_number, churn_278_operate_on_imagined_classroom_tools,\n    churn_candidate:churn_278_operate_on_imagined_classroom_tools,\n    3+4,\n    7).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

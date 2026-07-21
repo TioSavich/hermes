@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "174",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_174_model_word_problem_structure_then_choose_operation",
+    "target_operation": "complementary_addition_subtraction",
+    "citation": "Greer, Brian (2012)",
+    "error_action": "model_word_problem_structure_then_choose_operation",
+    "error_description": "let Combine versus Change semantic structure select the representation, using indirect complementary addition as an alternative to take-away subtraction",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual strategy (using semantic structure to choose between complementary addition and take-away subtraction) rather than a specific computational rule that produces a systematic wrong answer. No runnable predicate can be constructed that, when called with a concrete input, yields the documented error as the output, because the error is about problem-solving strategy selection, not arithmetic evaluation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual strategy (using semantic structure to choose between complementary addition and take-away subtraction) rather than a specific computational rule that produces a systematic wrong answer. No runnable predicate can be constructed that, when called with a concrete input, yields the documented error as the output, because the error is about problem-solving strategy selection, not arithmetic evaluation.",
+      "result": "abstained"
+    }
+  ]
+}

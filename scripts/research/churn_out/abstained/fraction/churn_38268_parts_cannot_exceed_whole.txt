@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38268",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38268_parts_cannot_exceed_whole",
+    "target_operation": "improper_fraction_conceptualization",
+    "citation": "Martin A. Simon, Nicora Placa, Arnon Avitzur, Melike Kara (2018)",
+    "error_action": "parts_cannot_exceed_whole",
+    "error_description": "a fraction can name at most as many parts as the whole was divided into, never more",
+    "provenance_comments": "=== row 38268: part-whole prohibits improper ===\nFailure to produce; no specific wrong numeric answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (\"a fraction can name at most as many parts as the whole was divided into, never more\") but provides no runnable procedural rule or specific wrong numeric answer. The schema requires a predicate that, when called with a specific input, produces the documented wrong outcome, and a corresponding correct outcome to which it must not unify. Without a concrete procedure or output to encode, no runnable rule and probe can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (\"a fraction can name at most as many parts as the whole was divided into, never more\") but provides no runnable procedural rule or specific wrong numeric answer. The schema requires a predicate that, when called with a specific input, produces the documented wrong outcome, and a corresponding correct outcome to which it must not unify. Without a concrete procedure or output to encode, no runnable rule and probe can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

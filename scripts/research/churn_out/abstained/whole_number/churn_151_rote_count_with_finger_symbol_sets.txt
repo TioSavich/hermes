@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "151",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_151_rote_count_with_finger_symbol_sets",
+    "target_operation": "part_whole_counting",
+    "citation": "Hunting, R. P. (2003)",
+    "error_action": "rote_count_with_finger_symbol_sets",
+    "error_description": "track transformations by reciting number words and matching them to finger movements before the words carry cardinal meaning",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive process (rote counting with finger symbols before cardinal meaning is established) rather than a specific arithmetic operation or syntactic transformation that can be captured by a deterministic 2-place Prolog predicate producing a wrong result for a given input. No concrete input-output pair can be supplied where the predicate would systematically yield the documented error outcome without inventing a procedural model.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(rote_count_with_finger_symbol_sets(N, Got) :-\n    between(1, N, _),\n    Got is N).\n\ntest_harness:arith_misconception(db_row(151), whole_number, churn_151_rote_count_with_finger_symbol_sets,\n    churn_candidate:rote_count_with_finger_symbol_sets,\n    5,\n    1).",
+      "result": "predicate must be named churn_151_rote_count_with_finger_symbol_sets"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive process (rote counting with finger symbols before cardinal meaning is established) rather than a specific arithmetic operation or syntactic transformation that can be captured by a deterministic 2-place Prolog predicate producing a wrong result for a given input. No concrete input-output pair can be supplied where the predicate would systematically yield the documented error outcome without inventing a procedural model.",
+      "result": "abstained"
+    }
+  ]
+}

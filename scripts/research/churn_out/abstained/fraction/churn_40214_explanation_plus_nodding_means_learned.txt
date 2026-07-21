@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40214",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40214_explanation_plus_nodding_means_learned",
+    "target_operation": "assessing_student_understanding",
+    "citation": "Sandy M. Spitzer, Christine M. Phelps, James E. R. Beyers, Delayne Y. Johnson, Elizabeth M. Sieminski (2011)",
+    "error_action": "explanation_plus_nodding_means_learned",
+    "error_description": "treat a teacher's clear explanation plus students' compliant nodding as sufficient evidence that students achieved the learning goal",
+    "provenance_comments": "=== row 40214: accept nodding as learning ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a pedagogical misconception about interpreting student response behavior (nodding) as evidence of learning, not a mathematical error in fraction arithmetic. It cannot be expressed as a Prolog rule that produces a wrong arithmetic result for a fraction operation, which is required by the schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a pedagogical misconception about interpreting student response behavior (nodding) as evidence of learning, not a mathematical error in fraction arithmetic. It cannot be expressed as a Prolog rule that produces a wrong arithmetic result for a fraction operation, which is required by the schema.",
+      "result": "abstained"
+    }
+  ]
+}

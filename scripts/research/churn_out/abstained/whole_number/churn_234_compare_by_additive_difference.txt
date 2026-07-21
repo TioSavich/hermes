@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "234",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_234_compare_by_additive_difference",
+    "target_operation": "additive_vs_multiplicative_reasoning",
+    "citation": "Alsawaie, Othman N. (2012)",
+    "error_action": "compare_by_additive_difference",
+    "error_description": "relate two quantities by how much is added rather than by how many times",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (comparing quantities additively instead of multiplicatively), but does not specify a concrete, generalizable syntactic rule that a program could execute to reproduce the error. A runnable rule requires a deterministic algorithmic transformation of input to a specific wrong output, and no such algorithm is provided—only a qualitative description of a reasoning pattern. Without a clear procedure that maps inputs to the documented erroneous output, the execution gate cannot admit a candidate.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_234_compare_by_additive_difference(A, B, Got) :-\n    Got is B - A).\n\ntest_harness:arith_misconception(db_row(234), whole_number, churn_234_compare_by_additive_difference,\n    churn_candidate:churn_234_compare_by_additive_difference,\n    4-12,\n    3).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (comparing quantities additively instead of multiplicatively), but does not specify a concrete, generalizable syntactic rule that a program could execute to reproduce the error. A runnable rule requires a deterministic algorithmic transformation of input to a specific wrong output, and no such algorithm is provided—only a qualitative description of a reasoning pattern. Without a clear procedure that maps inputs to the documented erroneous output, the execution gate cannot admit a candidate.",
+      "result": "abstained"
+    }
+  ]
+}

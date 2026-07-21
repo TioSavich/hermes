@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38592",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38592_simulate_vertical_algorithm_mentally",
+    "target_operation": "extending_change_rules_to_large_numbers",
+    "citation": "Elizabeth A. Warren, Tom J. Cooper, Janeen T. Lamb (2006)",
+    "error_action": "simulate_vertical_algorithm_mentally",
+    "error_description": "mentally run the digit-by-digit algorithm rather than use a generalized pattern",
+    "provenance_comments": "=== row 38592: mental algorithm breakdown at boundary ===\nStudent uses vertical algorithm in head for +3 on 3999; gets correct\nanswer eventually. Procedural inefficiency, not a wrong value.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural inefficiency (mentally simulating the vertical algorithm) that does not produce a wrong value; it yields the correct answer. Since the task requires encoding a *documented student error* that produces a *wrong* outcome (i.e., `Got` must differ from `ExpectedCorrect`), and no incorrect result is documented for this case, no runnable rule producing a defensible probe can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural inefficiency (mentally simulating the vertical algorithm) that does not produce a wrong value; it yields the correct answer. Since the task requires encoding a *documented student error* that produces a *wrong* outcome (i.e., `Got` must differ from `ExpectedCorrect`), and no incorrect result is documented for this case, no runnable rule producing a defensible probe can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

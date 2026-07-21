@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37698",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37698_distinct_numbers_can_be_infinitely_close",
+    "target_operation": "infinitely_close_numbers",
+    "citation": "Robert Ely (2010)",
+    "error_action": "distinct_numbers_can_be_infinitely_close",
+    "error_description": "two distinct points can sit infinitely close together on the number line with no gap between them",
+    "provenance_comments": "=== row 37698: 3.999... and 4 are different numbers ===\nToo vague — involves infinitesimal framework not mechanizable as a simple rule.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error invokes an infinitesimal framework (distinct numbers being \"infinitely close\") that has no representation in standard real arithmetic, and no executable procedural rule can be formed that produces the documented misconception as a deterministic output in SWI-Prolog without introducing non-standard analysis or approximations, which are disallowed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error invokes an infinitesimal framework (distinct numbers being \"infinitely close\") that has no representation in standard real arithmetic, and no executable procedural rule can be formed that produces the documented misconception as a deterministic output in SWI-Prolog without introducing non-standard analysis or approximations, which are disallowed.",
+      "result": "abstained"
+    }
+  ]
+}

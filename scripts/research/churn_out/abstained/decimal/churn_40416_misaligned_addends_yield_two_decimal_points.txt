@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40416",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40416_misaligned_addends_yield_two_decimal_points",
+    "target_operation": "decimal_addition_alignment",
+    "citation": "MUN YEE LAI and SARA MURRAY (2015)",
+    "error_action": "misaligned_addends_yield_two_decimal_points",
+    "error_description": "if you do not line up the points the answer will end up with two separate decimal points",
+    "provenance_comments": "=== row 40416: failing to align decimals -> two decimal points ===\nToo vague — belief about notation, not a computation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a verbal description about misalignment of decimal points leading to \"two separate decimal points\" in the result, but no concrete computational rule or procedure is specified. Without a clear, executable student rule that maps inputs to a specific incorrect output (e.g., a pattern of misalignment that produces a deterministic wrong result), we cannot construct a runnable Prolog rule satisfying the schema. The phrase \"the answer will end up with two separate decimal points\" is not mathematically precise or implementable as a function `Rule(Input, Got)` producing a fixed incorrect value for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a verbal description about misalignment of decimal points leading to \"two separate decimal points\" in the result, but no concrete computational rule or procedure is specified. Without a clear, executable student rule that maps inputs to a specific incorrect output (e.g., a pattern of misalignment that produces a deterministic wrong result), we cannot construct a runnable Prolog rule satisfying the schema. The phrase \"the answer will end up with two separate decimal points\" is not mathematically precise or implementable as a function `Rule(Input, Got)` producing a fixed incorrect value for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

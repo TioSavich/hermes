@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "235",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_235_iconic_count_then_decompose",
+    "target_operation": "preformal_multiplication_strategies",
+    "citation": "Badillo, Font, Edo (2015)",
+    "error_action": "iconic_count_then_decompose",
+    "error_description": "draw and count icons, then decompose toward a multiplicative grouping",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive strategy (\"draw and count icons, then decompose toward a multiplicative grouping\") but provides no specific arithmetic rule or algorithm that can be implemented as a deterministic predicate of arity 2 in SWI-Prolog. Without a concrete, executable transformation (e.g., a formula, sequence of operations, or systematic misapplication), no runnable `Rule/2` predicate can be constructed that reliably produces the documented wrong answer for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive strategy (\"draw and count icons, then decompose toward a multiplicative grouping\") but provides no specific arithmetic rule or algorithm that can be implemented as a deterministic predicate of arity 2 in SWI-Prolog. Without a concrete, executable transformation (e.g., a formula, sequence of operations, or systematic misapplication), no runnable `Rule/2` predicate can be constructed that reliably produces the documented wrong answer for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

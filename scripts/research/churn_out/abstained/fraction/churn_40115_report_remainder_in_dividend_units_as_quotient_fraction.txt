@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40115",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40115_report_remainder_in_dividend_units_as_quotient_fraction",
+    "target_operation": "fraction_division_remainder_unit",
+    "citation": "Charalambos Y. Charalambous, Heather C. Hill, Deborah L. Ball (2011)",
+    "error_action": "report_remainder_in_dividend_units_as_quotient_fraction",
+    "error_description": "express the leftover from a measurement-model division as a fraction of the original dividend whole and equate it with the algorithm's quotient fraction",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misalignment (reporting remainder as fraction of original dividend and equating it with quotient), but no runnable rule or concrete input-output pair is specified that would produce a deterministic wrong answer in SWI-Prolog without additional assumptions or invented mathematics.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misalignment (reporting remainder as fraction of original dividend and equating it with quotient), but no runnable rule or concrete input-output pair is specified that would produce a deterministic wrong answer in SWI-Prolog without additional assumptions or invented mathematics.",
+      "result": "abstained"
+    }
+  ]
+}

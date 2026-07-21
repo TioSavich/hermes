@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "273",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_273_relate_ones_digits_across_minuend_subtrahend",
+    "target_operation": "ones_digit_structural_relations",
+    "citation": "Steinbring, Heinz (1997)",
+    "error_action": "relate_ones_digits_across_minuend_subtrahend",
+    "error_description": "read off structural relationships between ones digits to derive related subtraction facts",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a cognitive strategy (relating ones digits structurally to derive subtraction facts) without specifying a concrete syntactic procedure that maps an input pair to a fixed wrong output; it characterizes reasoning, not a deterministic arithmetic transformation. A rule must produce a specific incorrect result for a given input, but no such deterministic mapping is provided.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a cognitive strategy (relating ones digits structurally to derive subtraction facts) without specifying a concrete syntactic procedure that maps an input pair to a fixed wrong output; it characterizes reasoning, not a deterministic arithmetic transformation. A rule must produce a specific incorrect result for a given input, but no such deterministic mapping is provided.",
+      "result": "abstained"
+    }
+  ]
+}

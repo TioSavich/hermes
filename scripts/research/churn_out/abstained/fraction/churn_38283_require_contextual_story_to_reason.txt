@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38283",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38283_require_contextual_story_to_reason",
+    "target_operation": "equivalent_fraction_missing_denominator",
+    "citation": "Melike Kara, Martin A. Simon, Nicora Placa (2018)",
+    "error_action": "require_contextual_story_to_reason",
+    "error_description": "only attempt the equivalence when a concrete pizza/story scaffold is provided",
+    "provenance_comments": "=== row 38283: missing-denominator task — couldn't proceed ===\nToo vague — strategy breakdown without a concrete wrong numeric output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a metacognitive or strategic limitation (\"only attempt the equivalence when a concrete pizza/story scaffold is provided\") rather than a specific syntactic or semantic misapplication of arithmetic rules. It does not specify a deterministic, runnable rule that produces a fixed wrong numeric output for a given input. Without a reproducible incorrect computation (e.g., a formula mapping inputs to a specific erroneous result), no executable Rule predicate of arity 2 can be defined as required.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a metacognitive or strategic limitation (\"only attempt the equivalence when a concrete pizza/story scaffold is provided\") rather than a specific syntactic or semantic misapplication of arithmetic rules. It does not specify a deterministic, runnable rule that produces a fixed wrong numeric output for a given input. Without a reproducible incorrect computation (e.g., a formula mapping inputs to a specific erroneous result), no executable Rule predicate of arity 2 can be defined as required.",
+      "result": "abstained"
+    }
+  ]
+}

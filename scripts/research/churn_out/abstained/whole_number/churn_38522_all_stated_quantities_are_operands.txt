@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38522",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38522_all_stated_quantities_are_operands",
+    "target_operation": "word_problem_information_load",
+    "citation": "Casey Hord, Ron Tzur, Yan Ping Xin, Luo Si, Rachel H. Kenney, Jerry Woodward (2016)",
+    "error_action": "all_stated_quantities_are_operands",
+    "error_description": "every number and detail given in a problem must be incorporated into the computation",
+    "provenance_comments": "=== row 38522: irrelevant info overwhelms working memory ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive misconception about problem-solving behavior (treating all stated quantities as operands) rather than a specific syntactic or semantic error that can be captured by a runnable Prolog rule of arity 2 producing a *wrong* output for a given input. No deterministic, generalizable computation is specified that would produce a consistent incorrect result across instances; thus, no executable `Rule(Input, Got)` can be constructed that reliably yields the documented error outcome.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive misconception about problem-solving behavior (treating all stated quantities as operands) rather than a specific syntactic or semantic error that can be captured by a runnable Prolog rule of arity 2 producing a *wrong* output for a given input. No deterministic, generalizable computation is specified that would produce a consistent incorrect result across instances; thus, no executable `Rule(Input, Got)` can be constructed that reliably yields the documented error outcome.",
+      "result": "abstained"
+    }
+  ]
+}

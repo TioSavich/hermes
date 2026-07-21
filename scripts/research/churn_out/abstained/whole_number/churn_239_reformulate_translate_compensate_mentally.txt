@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "239",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_239_reformulate_translate_compensate_mentally",
+    "target_operation": "informal_mental_computation",
+    "citation": "Naresh (2015)",
+    "error_action": "reformulate_translate_compensate_mentally",
+    "error_description": "rework numbers into easier forms and compensate rather than run the taught algorithm",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a mental computation strategy (reformulating, translating, and compensating) rather than a specific procedural error that can be captured by a deterministic 2-place predicate producing a fixed wrong result; no runnable rule or defensible probe can be constructed without inventing mathematics or assuming a particular misapplication.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a mental computation strategy (reformulating, translating, and compensating) rather than a specific procedural error that can be captured by a deterministic 2-place predicate producing a fixed wrong result; no runnable rule or defensible probe can be constructed without inventing mathematics or assuming a particular misapplication.",
+      "result": "abstained"
+    }
+  ]
+}

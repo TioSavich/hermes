@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40589",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40589_name_fraction_by_counting_parts",
+    "target_operation": "naming_fractions_unequal_parts",
+    "citation": "Koeno Gravemeijer, Geeke Bruin-Muurling, Jean-Marie Kraemer, Irene van Stiphout (2016)",
+    "error_action": "name_fraction_by_counting_parts",
+    "error_description": "identify a fractional part by counting pieces regardless of whether the pieces are equal",
+    "provenance_comments": "=== row 40589: unequal-sized parts make naming impossible ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (counting pieces regardless of equality) but provides no runnable algorithmic rule that maps a concrete input to a specific wrong output in a deterministic, executable way. Naming a fraction by counting parts in an unequal partition is inherently underspecified for programmatic testing, as the \"counted\" part is not uniquely determined without additional visual or geometric context. No clear, general, SWI-Prolog-executable Rule predicate of arity 2 can be constructed that produces the documented error for a given formal input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (counting pieces regardless of equality) but provides no runnable algorithmic rule that maps a concrete input to a specific wrong output in a deterministic, executable way. Naming a fraction by counting parts in an unequal partition is inherently underspecified for programmatic testing, as the \"counted\" part is not uniquely determined without additional visual or geometric context. No clear, general, SWI-Prolog-executable Rule predicate of arity 2 can be constructed that produces the documented error for a given formal input.",
+      "result": "abstained"
+    }
+  ]
+}

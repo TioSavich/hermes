@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39273",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39273_equivalence_admits_degrees_by_distance_from_reduced_form",
+    "target_operation": "fraction_equivalence",
+    "citation": "SUSAN PIRIE AND THOMAS KIEREN (1992)",
+    "error_action": "equivalence_admits_degrees_by_distance_from_reduced_form",
+    "error_description": "fractions are 'more' or 'less' equivalent depending on how far their representation is from the reduced form",
+    "provenance_comments": "=== row 39273: degrees of equivalence ===\nToo vague — belief about equivalence; no wrong numeric computation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception about equivalence being graded by distance from reduced form, but provides no specific incorrect computational rule or numeric outcome that can be encoded as a runnable Prolog predicate producing a wrong result. There is no concrete operation or formula to implement; it is a qualitative belief, not a procedural error.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception about equivalence being graded by distance from reduced form, but provides no specific incorrect computational rule or numeric outcome that can be encoded as a runnable Prolog predicate producing a wrong result. There is no concrete operation or formula to implement; it is a qualitative belief, not a procedural error.",
+      "result": "abstained"
+    }
+  ]
+}

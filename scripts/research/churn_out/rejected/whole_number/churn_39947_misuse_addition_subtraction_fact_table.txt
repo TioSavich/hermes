@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39947",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39947_misuse_addition_subtraction_fact_table",
+    "target_operation": "basic_fact_recall",
+    "citation": "M. G. Attisha & K. J. Al-Daimi (1984)",
+    "error_action": "misuse_addition_subtraction_fact_table",
+    "error_description": "retrieve a wrong entry from a memorized addition or subtraction fact",
+    "provenance_comments": "=== row 39947: fact-table slips (unsystematic) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(misuses_addition_subtraction_fact_table(A+B, Got) :-\n    Got is A - B).\n\ntest_harness:arith_misconception(db_row(39947), whole_number, churn_39947_misuse_addition_subtraction_fact_table,\n    churn_candidate:misuses_addition_subtraction_fact_table,\n    7+5,\n    2).",
+      "result": "predicate must be named churn_39947_misuse_addition_subtraction_fact_table"
+    },
+    {
+      "response": "churn_candidate:(churn_39947_misuse_addition_subtraction_fact_table(A+B, Got) :-\n    Got is A - B).\n\ntest_harness:arith_misconception(db_row(39947), whole_number, churn_39947_misuse_addition_subtraction_fact_table,\n    churn_candidate:churn_39947_misuse_addition_subtraction_fact_table,\n    7+5,\n    2).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

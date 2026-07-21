@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38241",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38241_carried_digit_is_one_unit",
+    "target_operation": "place_value_of_carry",
+    "citation": "Marta Laupa (2000)",
+    "error_action": "carried_digit_is_one_unit",
+    "error_description": "the digit you carry is worth one, not ten",
+    "provenance_comments": "=== row 38241: carried/borrowed digit named as 'one' not 'ten' ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "predicate must be named churn_38241_carried_digit_is_one_unit",
+  "attempts": [
+    {
+      "response": "churn_candidate:(carries_digit_as_one_unit(A+B, Got) :-\n    A1 is A // 10,\n    B1 is B // 10,\n    A0 is A mod 10,\n    B0 is B mod 10,\n    S0 is A0 + B0,\n    ( S0 < 10 ->\n        Got is A + B\n    ;   % carry occurs\n        C is 1,  % error: carry is treated as 1 instead of 10\n        S1 is A1 + B1 + C,\n        Got is S1 * 10 + (S0 mod 10)\n    )).\n\ntest_harness:arith_misconception(db_row(38241), whole_number, churn_38241_carried_digit_is_one_unit,\n    churn_candidate:carries_digit_as_one_unit,\n    18+27,\n    45).",
+      "result": "external module qualification is not allowed: error:"
+    },
+    {
+      "response": "churn_candidate:(carries_digit_as_one_unit(A+B, Got) :-\n    G1 is A mod 10,\n    G2 is B mod 10,\n    S is G1 + G2,\n    ( S < 10 -> Got = S ; Got = S - 10 ),\n    ( S >= 10 -> true ; true )).\n\ntest_harness:arith_misconception(db_row(38241), whole_number, churn_38241_carried_digit_is_one_unit,\n    churn_candidate:carries_digit_as_one_unit,\n    15+7,\n    22).",
+      "result": "predicate must be named churn_38241_carried_digit_is_one_unit"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37951",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37951_relational_keyword_dictates_operation",
+    "target_operation": "additive_comparison_word_problem",
+    "citation": "Rongjin Huang, Qinqiong Zhang, Yu-ping Chang, Dovie Kimmins (2018)",
+    "error_action": "relational_keyword_dictates_operation",
+    "error_description": "the word 'more' means add and the word 'less' means subtract, regardless of structure",
+    "provenance_comments": "=== row 37951: inconsistent-language comparison problem ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 23",
+  "attempts": [
+    {
+      "response": "churn_candidate:(relational_keyword_dictates_operation(A-B, Got) :-\n    Got is A + B).\n\ntest_harness:arith_misconception(db_row(37951), whole_number, churn_37951_relational_keyword_dictates_operation,\n    churn_candidate:relational_keyword_dictates_operation,\n    15-7,\n    8).",
+      "result": "predicate must be named churn_37951_relational_keyword_dictates_operation"
+    },
+    {
+      "response": "churn_candidate:(relational_keyword_dictates_operation(A-B, Got) :-\n    Got is A + B).\n\ntest_harness:arith_misconception(db_row(37951), whole_number, churn_37951_relational_keyword_dictates_operation,\n    churn_candidate:churn_37951_relational_keyword_dictates_operation,\n    15-7,\n    8).",
+      "result": "SWI-Prolog gate exited 23"
+    }
+  ]
+}

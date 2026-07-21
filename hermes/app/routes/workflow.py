@@ -8,7 +8,7 @@ from hermes.app.routes.logic import RouteLogic
 from hermes.app.routes.registry import Route
 from hermes.app.workflow import service
 
-COMMANDS = ("parse", "content", "profile", "draft", "grade", "score", "metrics")
+COMMANDS = ("parse", "content", "profile", "draft", "grade", "score", "metrics", "work_read", "work_refine")
 
 
 def _workflow(command: str) -> Callable[[Any], None]:

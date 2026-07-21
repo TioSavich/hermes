@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38848",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38848_compute_product_then_long_divide",
+    "target_operation": "divisibility_by_structure",
+    "citation": "Martin Griffiths (2013)",
+    "error_action": "compute_product_then_long_divide",
+    "error_description": "multiply the prime factors into one big number and attempt long division to test divisibility",
+    "provenance_comments": "=== row 38848: procedural division over structural divisibility ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a non-runnable procedural strategy (\"multiply the prime factors into one big number and attempt long division\") without specifying a concrete, generalizable computational rule that maps a single input pair to a single wrong output. It lacks a well-defined binary operation (e.g., `A op B`) required by the schema; instead it describes a multi-step heuristic dependent on factorization and long division—conditions not expressible as a simple 2-arity predicate over whole numbers without ad hoc assumptions or external tools. No deterministic, generalizable `Rule(Input, Got)` can be constructed that yields the *documented* wrong result for all cases in the domain while adhering to the strict schema constraints.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38848_compute_product_then_long_divide(A-B, Got) :-\n    Got is (A * B) mod C,\n    C is A * B,\n    false).\n\ntest_harness:arith_misconception(db_row(38848), whole_number, churn_38848_compute_product_then_long_divide,\n    churn_candidate:churn_38848_compute_product_then_long_divide,\n    6-4,\n    0).",
+      "result": "SWI-Prolog gate exited 22"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a non-runnable procedural strategy (\"multiply the prime factors into one big number and attempt long division\") without specifying a concrete, generalizable computational rule that maps a single input pair to a single wrong output. It lacks a well-defined binary operation (e.g., `A op B`) required by the schema; instead it describes a multi-step heuristic dependent on factorization and long division—conditions not expressible as a simple 2-arity predicate over whole numbers without ad hoc assumptions or external tools. No deterministic, generalizable `Rule(Input, Got)` can be constructed that yields the *documented* wrong result for all cases in the domain while adhering to the strict schema constraints.",
+      "result": "abstained"
+    }
+  ]
+}

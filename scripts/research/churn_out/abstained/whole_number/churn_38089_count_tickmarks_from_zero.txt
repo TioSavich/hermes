@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38089",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38089_count_tickmarks_from_zero",
+    "target_operation": "number_line_location",
+    "citation": "Anne Teppo, Marja van den Heuvel-Panhuizen (2014)",
+    "error_action": "count_tickmarks_from_zero",
+    "error_description": "a point's value equals the count of tick marks between it and zero",
+    "provenance_comments": "=== row 38089: tick count ignores spacing ===\nError is in reading a visual representation, not an arithmetic\ncomputation. The resulting value depends entirely on the unshown figure.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is purely visual interpretation (counting tick marks without accounting for spacing), but no runnable rule can be constructed because the input must include a specific number line figure (e.g., positions of tick marks and the target point), which cannot be represented as a simple numeric pair (Input) per the schema. The schema requires Input to be a term suitable for a 2-arity predicate with numeric structure, but the error depends on an unshown diagram, making generalization impossible without ad-hoc encoding of figure geometry.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is purely visual interpretation (counting tick marks without accounting for spacing), but no runnable rule can be constructed because the input must include a specific number line figure (e.g., positions of tick marks and the target point), which cannot be represented as a simple numeric pair (Input) per the schema. The schema requires Input to be a term suitable for a 2-arity predicate with numeric structure, but the error depends on an unshown diagram, making generalization impossible without ad-hoc encoding of figure geometry.",
+      "result": "abstained"
+    }
+  ]
+}

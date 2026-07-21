@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38647",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38647_partition_only_by_repeated_halving",
+    "target_operation": "partitioning_strategy",
+    "citation": "Jessica H. Hunt, Arla Westenskow, Juanita Silva, Jasmine Welch-Ptak (2016)",
+    "error_action": "partition_only_by_repeated_halving",
+    "error_description": "produce shares only by splitting items in two, again and again",
+    "provenance_comments": "=== row 38647: repeated halving breaks with odd sharers ===\nToo vague — strategy breakdown without a specific wrong numeric answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a qualitative partitioning strategy (repeated halving) rather than a specific arithmetic rule that produces a deterministic wrong numeric outcome; no concrete Input/ExpectedCorrect pair can be defined without inventing a numerical scenario or rule.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a qualitative partitioning strategy (repeated halving) rather than a specific arithmetic rule that produces a deterministic wrong numeric outcome; no concrete Input/ExpectedCorrect pair can be defined without inventing a numerical scenario or rule.",
+      "result": "abstained"
+    }
+  ]
+}

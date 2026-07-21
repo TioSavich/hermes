@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38771",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38771_count_empty_spaces_as_answer",
+    "target_operation": "change_and_state_problems",
+    "citation": "ALAN BELL (1993)",
+    "error_action": "count_empty_spaces_as_answer",
+    "error_description": "answer a how-many-got-off question by counting all the empty seats on the bus",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 1",
+  "attempts": [
+    {
+      "response": "churn_candidate:(counts_empty_spaces_as_answer(UsedSeats-TotalSeats, Got) :-\n    Got is TotalSeats - UsedSeats).\n\ntest_harness:arith_misconception(db_row(38771), whole_number, churn_38771_count_empty_spaces_as_answer,\n    churn_candidate:counts_empty_spaces_as_answer,\n    12-20,\n    8).",
+      "result": "predicate must be named churn_38771_count_empty_spaces_as_answer"
+    },
+    {
+      "response": "churn_candidate:(churn_38771_count_empty_spaces_as_answer(seats(occupied, total), Got) :-\n    Got is total - occupied).\n\ntest_harness:arith_misconception(db_row(38771), whole_number, churn_38771_count_empty_spaces_as_answer,\n    churn_candidate:churn_38771_count_empty_spaces_as_answer,\n    seats(5, 12),\n    7).",
+      "result": "SWI-Prolog gate exited 1"
+    }
+  ]
+}

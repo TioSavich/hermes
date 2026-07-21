@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39863",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39863_quantities_divide_only_into_whole_units",
+    "target_operation": "whole_unit_subdivision",
+    "citation": "Irit Peled & Sara Hershkovitz (1999)",
+    "error_action": "quantities_divide_only_into_whole_units",
+    "error_description": "a length or area can only be cut into a whole number of unit squares",
+    "provenance_comments": "=== row 39863: continuous quantity forced to whole squares ===\nToo vague: constraint-imposition failure, many possible outputs.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (that quantities can only be divided into whole numbers of unit squares) but does not specify a runnable rule that produces a unique incorrect output for a given input; it allows “many possible outputs” and lacks a deterministic procedure to encode as a Prolog predicate of arity 2. Since the schema requires a specific rule that, when called with Input, yields the documented wrong answer (and ExpectedCorrect must not unify with Got), the ambiguity prevents constructing a valid, testable rule.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (that quantities can only be divided into whole numbers of unit squares) but does not specify a runnable rule that produces a unique incorrect output for a given input; it allows “many possible outputs” and lacks a deterministic procedure to encode as a Prolog predicate of arity 2. Since the schema requires a specific rule that, when called with Input, yields the documented wrong answer (and ExpectedCorrect must not unify with Got), the ambiguity prevents constructing a valid, testable rule.",
+      "result": "abstained"
+    }
+  ]
+}

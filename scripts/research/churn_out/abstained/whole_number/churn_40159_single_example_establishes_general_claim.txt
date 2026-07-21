@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40159",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40159_single_example_establishes_general_claim",
+    "target_operation": "empirical_proof_scheme",
+    "citation": "Sarah K. Bleiler, Denisse R. Thompson, Milé Krajčevski (2014)",
+    "error_action": "single_example_establishes_general_claim",
+    "error_description": "confirm a universally quantified statement by checking one instance of it",
+    "provenance_comments": "=== row 40159: single example as proof ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: no runnable rule can be constructed because the documented error is a reasoning misconception (single example as proof) rather than an arithmetic procedure; it cannot be expressed as a binary predicate `Rule(Input, Got)` that produces the wrong result via arithmetic evaluation using SWI-Prolog built-ins.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no runnable rule can be constructed because the documented error is a reasoning misconception (single example as proof) rather than an arithmetic procedure; it cannot be expressed as a binary predicate `Rule(Input, Got)` that produces the wrong result via arithmetic evaluation using SWI-Prolog built-ins.",
+      "result": "abstained"
+    }
+  ]
+}

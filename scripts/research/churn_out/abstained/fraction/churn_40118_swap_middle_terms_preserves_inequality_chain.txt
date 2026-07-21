@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40118",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40118_swap_middle_terms_preserves_inequality_chain",
+    "target_operation": "inequality_justification",
+    "citation": "Charalambos Y. Charalambous, Heather C. Hill, Deborah L. Ball (2011)",
+    "error_action": "swap_middle_terms_preserves_inequality_chain",
+    "error_description": "justify an inequality chain by claiming the two middle terms of valid inequalities can simply be switched",
+    "provenance_comments": "=== row 40118: swap middle terms of inequality chain ===\nToo vague — meta-justification, no numeric wrong answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a meta-justification error (swapping middle terms in an inequality chain) without a specific arithmetic operation or numeric outcome. It does not define a runnable Prolog rule that produces a wrong result from a given input, nor does it specify a concrete ExpectedCorrect value. The misconception is conceptual and procedural, not arithmetically computable in the required format.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a meta-justification error (swapping middle terms in an inequality chain) without a specific arithmetic operation or numeric outcome. It does not define a runnable Prolog rule that produces a wrong result from a given input, nor does it specify a concrete ExpectedCorrect value. The misconception is conceptual and procedural, not arithmetically computable in the required format.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39896",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39896_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "=== row 39896: basic fact errors ===",
+    "provenance_comments": "=== row 39896: basic fact errors ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: no concrete arithmetic procedure or error behavior is documented; \"too_vague\" and \"basic fact errors\" lack sufficient specificity to construct a runnable rule that produces a determinate wrong result for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no concrete arithmetic procedure or error behavior is documented; \"too_vague\" and \"basic fact errors\" lack sufficient specificity to construct a runnable rule that produces a determinate wrong result for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

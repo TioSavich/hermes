@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39540",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39540_compute_exactly_in_head_instead_of_estimating",
+    "target_operation": "mental_addition_overload",
+    "citation": "Janette Bobis (1991)",
+    "error_action": "compute_exactly_in_head_instead_of_estimating",
+    "error_description": "answer a many-addend addition task by attempting an exact mental computation rather than producing an estimate",
+    "provenance_comments": "=== row 39540: mental overload on many large addends ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "output 3330 does not match explicit documented claim(s) ['a']",
+  "attempts": [
+    {
+      "response": "churn_candidate:(computes_exactly_instead_of_estimating(Sum, Got) :-\n    Got is Sum).\n\ntest_harness:arith_misconception(db_row(39540), whole_number, churn_39540_compute_exactly_in_head_instead_of_estimating,\n    churn_candidate:computes_exactly_instead_of_estimating,\n    123+456+789+321+654,\n    2343).",
+      "result": "predicate must be named churn_39540_compute_exactly_in_head_instead_of_estimating"
+    },
+    {
+      "response": "churn_candidate:(churn_39540_compute_exactly_in_head_instead_of_estimating(A-[B,C,D,E,F], Got) :-\n    Got is A + B + C + D + E + F).\n\ntest_harness:arith_misconception(db_row(39540), whole_number, churn_39540_compute_exactly_in_head_instead_of_estimating,\n    churn_candidate:churn_39540_compute_exactly_in_head_instead_of_estimating,\n    123-[456,789,321,654,987],\n    2330).",
+      "result": "output 3330 does not match explicit documented claim(s) ['a']"
+    }
+  ]
+}

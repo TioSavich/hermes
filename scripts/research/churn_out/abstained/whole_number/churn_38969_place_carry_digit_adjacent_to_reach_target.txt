@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38969",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38969_place_carry_digit_adjacent_to_reach_target",
+    "target_operation": "place_value_addition",
+    "citation": "Einat Heyd-Metzuyanim & Mellony Graven (2016)",
+    "error_action": "place_carry_digit_adjacent_to_reach_target",
+    "error_description": "take a digit from the column sum and set it beside another digit to produce the wanted answer",
+    "provenance_comments": "=== row 38969: ritualistic digit manipulation (improvised, not a rule) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a ritualistic, improvised digit manipulation without a consistent, generalizable procedure that can be encoded as a deterministic binary predicate producing the wrong result for a given input. There is no clear rule mapping inputs to the documented incorrect output, and no concrete worked example or sufficient detail to define a reproducible `Rule(Input, Got)` that yields the error for arbitrary whole-number addition problems.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a ritualistic, improvised digit manipulation without a consistent, generalizable procedure that can be encoded as a deterministic binary predicate producing the wrong result for a given input. There is no clear rule mapping inputs to the documented incorrect output, and no concrete worked example or sufficient detail to define a reproducible `Rule(Input, Got)` that yields the error for arbitrary whole-number addition problems.",
+      "result": "abstained"
+    }
+  ]
+}

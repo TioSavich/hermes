@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38106",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38106_answer_tracks_teacher_cue",
+    "target_operation": "funnel_pattern_guessing",
+    "citation": "Heinz Steinbring (2015)",
+    "error_action": "answer_tracks_teacher_cue",
+    "error_description": "produce the operation the interviewer's narrowing questions seem to want rather than reasoning about quantities",
+    "provenance_comments": "=== row 38106: blind guessing guided by interviewer ===\nNot a stable misconception rule — random output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is not a runnable rule—it describes a behavioral tendency (blind guessing guided by interviewer) rather than a deterministic mathematical procedure. No consistent, general predicate of arity 2 can be defined to reproduce the documented wrong answer without modeling external cues or randomness, which violates the constraint against non-determinism and external dependencies.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is not a runnable rule—it describes a behavioral tendency (blind guessing guided by interviewer) rather than a deterministic mathematical procedure. No consistent, general predicate of arity 2 can be defined to reproduce the documented wrong answer without modeling external cues or randomness, which violates the constraint against non-determinism and external dependencies.",
+      "result": "abstained"
+    }
+  ]
+}

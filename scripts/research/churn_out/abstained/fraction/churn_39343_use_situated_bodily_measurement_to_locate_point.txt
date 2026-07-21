@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39343",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39343_use_situated_bodily_measurement_to_locate_point",
+    "target_operation": "number_line_naming_transfer",
+    "citation": "Irit Lavie, Aya Steiner, Anna Sfard (2018)",
+    "error_action": "use_situated_bodily_measurement_to_locate_point",
+    "error_description": "describe a point by measuring it with available physical means such as finger widths",
+    "provenance_comments": "=== row 39343: situational transfer failure ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a non-mathematical, embodied reasoning strategy (using finger widths) that cannot be expressed as a deterministic, executable Prolog rule of arity 2 mapping inputs to a fixed wrong output. The error is contextual and situated, not algorithmic; it lacks a well-defined input-output mapping suitable for formal rule encoding without inventing an ad hoc procedure not documented.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a non-mathematical, embodied reasoning strategy (using finger widths) that cannot be expressed as a deterministic, executable Prolog rule of arity 2 mapping inputs to a fixed wrong output. The error is contextual and situated, not algorithmic; it lacks a well-defined input-output mapping suitable for formal rule encoding without inventing an ad hoc procedure not documented.",
+      "result": "abstained"
+    }
+  ]
+}

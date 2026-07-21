@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38200",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38200_cancel_matching_digits",
+    "target_operation": "fraction_simplification",
+    "citation": "Ivor Grattan-Guinness (1998)",
+    "error_action": "cancel_matching_digits",
+    "error_description": "delete identical digits appearing in numerator and denominator",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error “cancel matching digits” is not a well-defined arithmetic operation and cannot be expressed as a deterministic, general Prolog predicate of arity 2 that reliably produces the documented wrong result across instances. The procedure is ambiguous (e.g., which digits match? order? multiplicity? overlapping? leading zeros?) and lacks a concrete, executable specification that satisfies the schema requirement for a general rule and a concrete input/output pair without invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38200_cancel_matching_digits(frac(N,D), frac(NRed, DRed)) :-\n    number_codes(N, NC),\n    number_codes(D, DC),\n    include(=(0'1), NC, NC1),\n    include(=(0'1), DC, DC1),\n    length(NC1, LenN),\n    length(DC1, LenD),\n    LenN > 0,\n    LenD > 0,\n    nth0(0, NC1, 0'1),\n    nth0(0, DC1, 0'1),\n    exclude(=(0'1), NC, NRest),\n    exclude(=(0'1), DC, DRest),\n    (NRest = [] -> NRed = 0 ; number_codes(NRed, NRest)),\n    (DRest = [] -> DRed = 0 ; number_codes(DRed, DRest))).\n\ntest_harness:arith_misconception(db_row(38200), fraction, churn_38200_cancel_matching_digits,\n    churn_candidate:churn_38200_cancel_matching_digits,\n    frac(11, 11),\n    frac(0, 0)).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error “cancel matching digits” is not a well-defined arithmetic operation and cannot be expressed as a deterministic, general Prolog predicate of arity 2 that reliably produces the documented wrong result across instances. The procedure is ambiguous (e.g., which digits match? order? multiplicity? overlapping? leading zeros?) and lacks a concrete, executable specification that satisfies the schema requirement for a general rule and a concrete input/output pair without invention.",
+      "result": "abstained"
+    }
+  ]
+}

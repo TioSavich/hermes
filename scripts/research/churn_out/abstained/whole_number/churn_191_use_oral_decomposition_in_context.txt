@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "191",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_191_use_oral_decomposition_in_context",
+    "target_operation": "subtraction_context",
+    "citation": "Carraher, Carraher, Schliemann (1987)",
+    "error_action": "use_oral_decomposition_in_context",
+    "error_description": "compute differences by mental decomposition grounded in a real purchase situation",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule or defensible probe can be constructed from the documentation; the error description \"use_oral_decomposition_in_context\" specifies only a cognitive strategy (mental decomposition in a purchase context) without specifying a particular incorrect computational procedure or rule that yields a deterministic wrong result for a given input. Without a concrete misapplication (e.g., misorder of steps, wrong base, incorrect regrouping), we cannot define a predicate `Rule(Input, Got)` that reliably produces the documented error.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule or defensible probe can be constructed from the documentation; the error description \"use_oral_decomposition_in_context\" specifies only a cognitive strategy (mental decomposition in a purchase context) without specifying a particular incorrect computational procedure or rule that yields a deterministic wrong result for a given input. Without a concrete misapplication (e.g., misorder of steps, wrong base, incorrect regrouping), we cannot define a predicate `Rule(Input, Got)` that reliably produces the documented error.",
+      "result": "abstained"
+    }
+  ]
+}

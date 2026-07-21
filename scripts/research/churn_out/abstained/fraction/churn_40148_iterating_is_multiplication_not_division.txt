@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40148",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40148_iterating_is_multiplication_not_division",
+    "target_operation": "partitive_division_conception",
+    "citation": "Amanda Jansen, Charles Hohensee (2016)",
+    "error_action": "iterating_is_multiplication_not_division",
+    "error_description": "treat the act of iterating a quantity as multiplication and therefore not a legitimate division process",
+    "provenance_comments": "=== row 40148: iterating seen as multiplication ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is conceptual (treating iteration as multiplication rather than division) but no runnable procedural rule is specified—only a cognitive misattribution. A Prolog rule must implement a concrete syntactic transformation that produces a specific wrong result; this description lacks the procedural detail needed to define such a rule (e.g., no formula, operation sequence, or error pattern like “multiply instead of divide by N” is given). Without a determinate error computation, a valid Rule predicate cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is conceptual (treating iteration as multiplication rather than division) but no runnable procedural rule is specified—only a cognitive misattribution. A Prolog rule must implement a concrete syntactic transformation that produces a specific wrong result; this description lacks the procedural detail needed to define such a rule (e.g., no formula, operation sequence, or error pattern like “multiply instead of divide by N” is given). Without a determinate error computation, a valid Rule predicate cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

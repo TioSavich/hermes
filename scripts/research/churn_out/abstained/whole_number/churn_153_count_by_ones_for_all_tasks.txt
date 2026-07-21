@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "153",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_153_count_by_ones_for_all_tasks",
+    "target_operation": "counting_schemes_progression",
+    "citation": "Eriksson, G. (2011)",
+    "error_action": "count_by_ones_for_all_tasks",
+    "error_description": "solve any addition or subtraction task by counting single units, regardless of the size of the numbers",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive strategy (counting by ones for all tasks) that cannot be expressed as a deterministic 2-argument Prolog rule producing the exact wrong output for a given input, without specifying a particular implementation of counting (e.g., using a counter, recursion, etc.). The execution gate likely failed because no clear, finite, closed-form arithmetic rule corresponds to the vague strategy of “count by ones for all tasks” — it is process-oriented and non-uniform, not a fixed arithmetic transformation. A runnable rule must yield a specific wrong result for a specific input; here, the wrong result depends on an unbounded, procedural simulation of counting, which violates the schema’s requirement for a predicate `Rule(Input, Got)` that produces the documented error directly and deterministically.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_153_count_by_ones_for_all_tasks(A+B, Got) :-\n    Got is A + B,\n    false.\n\nchurn_candidate:(churn_153_count_by_ones_for_all_tasks(A-B, Got) :-\n    Got is A - B,\n    false.\n\ntest_harness:arith_misconception(db_row(153), whole_number, churn_153_count_by_ones_for_all_tasks,\n    churn_candidate:churn_153_count_by_ones_for_all_tasks,\n    47+53,\n    100).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive strategy (counting by ones for all tasks) that cannot be expressed as a deterministic 2-argument Prolog rule producing the exact wrong output for a given input, without specifying a particular implementation of counting (e.g., using a counter, recursion, etc.). The execution gate likely failed because no clear, finite, closed-form arithmetic rule corresponds to the vague strategy of “count by ones for all tasks” — it is process-oriented and non-uniform, not a fixed arithmetic transformation. A runnable rule must yield a specific wrong result for a specific input; here, the wrong result depends on an unbounded, procedural simulation of counting, which violates the schema’s requirement for a predicate `Rule(Input, Got)` that produces the documented error directly and deterministically.",
+      "result": "abstained"
+    }
+  ]
+}

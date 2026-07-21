@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39119",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39119_manipulate_digits_without_place_value",
+    "target_operation": "multidigit_subtraction",
+    "citation": "Einat Heyd-Metzuyanim (2013)",
+    "error_action": "manipulate_digits_without_place_value",
+    "error_description": "produce an answer by associatively combining digits without tracking base-ten structure",
+    "provenance_comments": "=== row 39119: idiosyncratic guessing on 5000 - 2 ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a cognitive procedure (associative digit manipulation without place-value tracking) that lacks a consistent, general, executable algorithm; the example \"5000 - 2\" suggests a specific symptom (e.g., treating it as 500 - 2 = 498 or 5002), but no general, deterministic rule over whole-number subtraction inputs is specified. Without a reproducible, general procedure, we cannot define a predicate `Rule(Input, Got)` that reliably produces the documented wrong answer for arbitrary inputs.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39119_manipulate_digits_without_place_value(A-B, Got) :-\n    number_chars(A, CharsA),\n    number_chars(B, [BChar]),\n    last(CharsA, LastA),\n    LastAMinusB is LastA - BChar + 0'0,\n    number_chars(Got, [LastAMinusB])).\n\ntest_harness:arith_misconception(db_row(39119), whole_number, churn_39119_manipulate_digits_without_place_value,\n    churn_candidate:churn_39119_manipulate_digits_without_place_value,\n    5000-2,\n    8).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a cognitive procedure (associative digit manipulation without place-value tracking) that lacks a consistent, general, executable algorithm; the example \"5000 - 2\" suggests a specific symptom (e.g., treating it as 500 - 2 = 498 or 5002), but no general, deterministic rule over whole-number subtraction inputs is specified. Without a reproducible, general procedure, we cannot define a predicate `Rule(Input, Got)` that reliably produces the documented wrong answer for arbitrary inputs.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38184",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38184_compute_quotient_then_iterate_that_value",
+    "target_operation": "partitive_division_continuous",
+    "citation": "Joanne Lobato, C. David Walters, Charles Hohensee, John Gruver, Jaime Marie Diamond (2015)",
+    "error_action": "compute_quotient_then_iterate_that_value",
+    "error_description": "divide numerically to get a quotient and then independently iterate that amount rather than partitioning the given quantity",
+    "provenance_comments": "=== row 38184: divide-then-iterate partitive ===\nToo vague: the student's numerical answer is correct; the misconception\nis in the partitioning process, not the output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural misconception (divide-then-iterate) without specifying a concrete, runnable rule that produces a *systematically wrong output* from a given input; the prose states the numerical answer may be correct, making it impossible to define a `Rule(Input, Got)` where `Got` is *always* the documented wrong answer and `ExpectedCorrect` differs. Since the registration requires a runnable rule whose execution yields the *documented error*, and no such deterministic, incorrect mapping is provided (only the *process* is described, and the *output* may be correct), admission cannot be justified under the schema contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural misconception (divide-then-iterate) without specifying a concrete, runnable rule that produces a *systematically wrong output* from a given input; the prose states the numerical answer may be correct, making it impossible to define a `Rule(Input, Got)` where `Got` is *always* the documented wrong answer and `ExpectedCorrect` differs. Since the registration requires a runnable rule whose execution yields the *documented error*, and no such deterministic, incorrect mapping is provided (only the *process* is described, and the *output* may be correct), admission cannot be justified under the schema contract.",
+      "result": "abstained"
+    }
+  ]
+}

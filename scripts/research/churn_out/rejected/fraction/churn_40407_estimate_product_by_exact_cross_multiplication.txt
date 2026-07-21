@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40407",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40407_estimate_product_by_exact_cross_multiplication",
+    "target_operation": "fraction_product_estimation",
+    "citation": "DER-CHING YANG, CHUN-JEN HSU and MING-CHIANG HUANG (2004)",
+    "error_action": "estimate_product_by_exact_cross_multiplication",
+    "error_description": "estimate a fraction product by computing the full written multiplication of components",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_40407_estimate_product_by_exact_cross_multiplication",
+  "attempts": [
+    {
+      "response": "churn_candidate:(estimate_product_by_exact_cross_multiplication(frac(N1,D1)*frac(N2,D2), frac(N1*N2, D1*D2))).\n\ntest_harness:arith_misconception(db_row(40407), fraction, churn_40407_estimate_product_by_exact_cross_multiplication,\n    churn_candidate:estimate_product_by_exact_cross_multiplication,\n    frac(3,4)*frac(2,5),\n    frac(3,10)).",
+      "result": "predicate must be named churn_40407_estimate_product_by_exact_cross_multiplication"
+    },
+    {
+      "response": "churn_candidate:(estimate_product_by_exact_cross_multiplication(frac(N1,D1)*frac(N2,D2), frac(N1*N2, D1*D2)) :-\n    true).\n\ntest_harness:arith_misconception(db_row(40407), fraction, churn_40407_estimate_product_by_exact_cross_multiplication,\n    churn_candidate:estimate_product_by_exact_cross_multiplication,\n    frac(2,3)*frac(4,5),\n    frac(8,15)).",
+      "result": "predicate must be named churn_40407_estimate_product_by_exact_cross_multiplication"
+    }
+  ]
+}

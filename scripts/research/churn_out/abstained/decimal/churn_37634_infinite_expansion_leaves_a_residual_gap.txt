@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37634",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37634_infinite_expansion_leaves_a_residual_gap",
+    "target_operation": "density_and_point_nine_repeating",
+    "citation": "Jennifer Earles Szydlik (2000)",
+    "error_action": "infinite_expansion_leaves_a_residual_gap",
+    "error_description": "because 0.999... never finishes there remains an infinitely small distance to 1",
+    "provenance_comments": "=== row 37634: 0.999... vs 1 are not equal (density/infinity confusion) ===\nToo vague for mechanical encoding (philosophical claim about limits).",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a philosophical claim about limits and infinity (\"because 0.999... never finishes there remains an infinitely small distance to 1\"), not a mechanical computational procedure that can be encoded as a deterministic 2-place predicate producing a specific wrong result. No runnable rule can be defined that consistently yields a fixed incorrect value for a well-defined input without introducing arbitrary assumptions or non-standard arithmetic.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a philosophical claim about limits and infinity (\"because 0.999... never finishes there remains an infinitely small distance to 1\"), not a mechanical computational procedure that can be encoded as a deterministic 2-place predicate producing a specific wrong result. No runnable rule can be defined that consistently yields a fixed incorrect value for a well-defined input without introducing arbitrary assumptions or non-standard arithmetic.",
+      "result": "abstained"
+    }
+  ]
+}

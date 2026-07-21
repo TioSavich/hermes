@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39813",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39813_partition_by_repeated_halving",
+    "target_operation": "continuous_quantity_partitioning",
+    "citation": "Robert P. Hunting & Richard K. Korbosky (1990)",
+    "error_action": "partition_by_repeated_halving",
+    "error_description": "make equal parts by folding in half over and over",
+    "provenance_comments": "=== row 39813: halving-fails for odd denominators ===\nStrategy-selection issue, no numeric output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a geometric or procedural misconception (folding in half repeatedly) with no explicit numeric operation or output, and no worked example is provided to infer a concrete, generalizable arithmetic rule. The schema requires a runnable rule that produces a specific wrong numerical result for a given input, which cannot be determined from the available documentation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a geometric or procedural misconception (folding in half repeatedly) with no explicit numeric operation or output, and no worked example is provided to infer a concrete, generalizable arithmetic rule. The schema requires a runnable rule that produces a specific wrong numerical result for a given input, which cannot be determined from the available documentation.",
+      "result": "abstained"
+    }
+  ]
+}

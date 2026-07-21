@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39470",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39470_fraction_is_piece_of_one_shape",
+    "target_operation": "part_whole_continuous_model",
+    "citation": "ANNE PITKETHLY AND ROBERT HUNTING (1996)",
+    "error_action": "fraction_is_piece_of_one_shape",
+    "error_description": "a fraction is a region cut from a single continuous whole",
+    "provenance_comments": "=== row 39470: overreliance on circle model ===\nToo vague — model-rigidity, no wrong numeric output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual model-rigidity (overreliance on circle/continuous whole models) without specifying a concrete syntactic or numeric procedure that yields a deterministic wrong output. Since the schema requires a runnable rule that produces a specific incorrect result for a given input, and no such rule is definable from the vague, model-based description alone, admission cannot be justified.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual model-rigidity (overreliance on circle/continuous whole models) without specifying a concrete syntactic or numeric procedure that yields a deterministic wrong output. Since the schema requires a runnable rule that produces a specific incorrect result for a given input, and no such rule is definable from the vague, model-based description alone, admission cannot be justified.",
+      "result": "abstained"
+    }
+  ]
+}

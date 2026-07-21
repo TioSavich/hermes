@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39067",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39067_compare_numbers_digit_by_digit_left_to_right",
+    "target_operation": "number_comparison",
+    "citation": "NADINE BEDNARZ AND BERNADETTE JANVIER (1982)",
+    "error_action": "compare_numbers_digit_by_digit_left_to_right",
+    "error_description": "build and compare numbers as independent digits read in sequence rather than as a single magnitude",
+    "provenance_comments": "=== row 39067: digit-by-digit comparison ===\nOutcome depends on the digit sequence built; not a clean arithmetic\ninput→output rule on a pair of numbers.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural misconception (digit-by-digit left-to-right comparison) without specifying a concrete, deterministic arithmetic operation that maps a pair of inputs to a single wrong output in a way that can be captured by a general, runnable Prolog rule of arity 2. The error is contextual and depends on the specific digit sequence and comparison logic (e.g., stopping at first difference), making it impossible to encode as a deterministic function `Rule(Input, Got)` that consistently produces the documented wrong answer for a given `Input`.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural misconception (digit-by-digit left-to-right comparison) without specifying a concrete, deterministic arithmetic operation that maps a pair of inputs to a single wrong output in a way that can be captured by a general, runnable Prolog rule of arity 2. The error is contextual and depends on the specific digit sequence and comparison logic (e.g., stopping at first difference), making it impossible to encode as a deterministic function `Rule(Input, Got)` that consistently produces the documented wrong answer for a given `Input`.",
+      "result": "abstained"
+    }
+  ]
+}

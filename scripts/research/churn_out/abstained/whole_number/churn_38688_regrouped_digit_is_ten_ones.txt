@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38688",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38688_regrouped_digit_is_ten_ones",
+    "target_operation": "regrouping_reference_units",
+    "citation": "Eva Thanheiser (2012)",
+    "error_action": "regrouped_digit_is_ten_ones",
+    "error_description": "a regrouped 1 written in a column always stands for ten ones",
+    "provenance_comments": "=== row 38688: PST regroup unit misreference ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (a regrouped 1 *always* stands for ten ones), but does not specify a runnable, generalizable syntactic rule that produces a *systematic wrong answer* for a concrete input. Without a clear algorithmic transformation (e.g., “replace regrouped digit with 10 and add to next column”), we cannot construct a deterministic predicate `Rule(Input, Got)` that reliably yields the documented error across instances. The description is semantic and contextual, not procedural.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (a regrouped 1 *always* stands for ten ones), but does not specify a runnable, generalizable syntactic rule that produces a *systematic wrong answer* for a concrete input. Without a clear algorithmic transformation (e.g., “replace regrouped digit with 10 and add to next column”), we cannot construct a deterministic predicate `Rule(Input, Got)` that reliably yields the documented error across instances. The description is semantic and contextual, not procedural.",
+      "result": "abstained"
+    }
+  ]
+}

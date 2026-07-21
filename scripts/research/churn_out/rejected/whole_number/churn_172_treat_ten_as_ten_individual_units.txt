@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "172",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_172_treat_ten_as_ten_individual_units",
+    "target_operation": "unitizing_ten",
+    "citation": "Godino, Juan D. and Font, Vicenc and Wilhelmi, Miguel R. and Lurduy, Orlando (2011)",
+    "error_action": "treat_ten_as_ten_individual_units",
+    "error_description": "count a ten as ten separate objects rather than as one composite unit of ten",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "predicate must be named churn_172_treat_ten_as_ten_individual_units",
+  "attempts": [
+    {
+      "response": "churn_candidate:(treats_ten_as_units(A, Got) :- length(_, A), Got = 10).\n\ntest_harness:arith_misconception(db_row(172), whole_number, churn_172_treat_ten_as_ten_individual_units,\n    churn_candidate:treats_ten_as_units,\n    10,\n    1).",
+      "result": "predicate must be named churn_172_treat_ten_as_ten_individual_units"
+    },
+    {
+      "response": "churn_candidate:(treats_ten_as_ten_individual_units(A, Got) :-\n    A = 10,\n    Got = 10).\n\ntest_harness:arith_misconception(db_row(172), whole_number, churn_172_treat_ten_as_ten_individual_units,\n    churn_candidate:treats_ten_as_ten_individual_units,\n    10,\n    1).",
+      "result": "predicate must be named churn_172_treat_ten_as_ten_individual_units"
+    }
+  ]
+}

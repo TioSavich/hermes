@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "166",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_166_compute_sums_by_truncating_counts",
+    "target_operation": "counting_vs_structural_addition",
+    "citation": "Ekdahl, Ulla Runesson & Venkat, Hakan & Adler, Jill (2016)",
+    "error_action": "compute_sums_by_truncating_counts",
+    "error_description": "reach a sum by progressive counting operations (commutativity, compensation, bridging through ten) rather than by decomposing part-whole structure",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "external module qualification is not allowed: counting:",
+  "attempts": [
+    {
+      "response": "churn_candidate:(compute_sums_by_truncating_counts(A+B, Got) :-\n    Got is A + B - 1).\n\ntest_harness:arith_misconception(db_row(166), whole_number, churn_166_compute_sums_by_truncating_counts,\n    churn_candidate:compute_sums_by_truncating_counts,\n    7+5,\n    12).",
+      "result": "predicate must be named churn_166_compute_sums_by_truncating_counts"
+    },
+    {
+      "response": "churn_candidate:(churn_166_compute_sums_by_truncating_counts(A+B, Got) :-\n    % Simulate progressive counting: count up from A by B steps, but truncate intermediate counts to single digits\n    % For simplicity and determinism, simulate truncation as: if B > 9, truncate to 9; then add A + min(B,9)\n    % This captures the idea of \"bridging through ten\" by capping at ten, but not decomposing properly.\n    truncate_count(B, TruncB),\n    Got is A + TruncB).\n\ntruncate_count(B, TruncB) :-\n    (B > 9 -> TruncB is 9 ; TruncB = B).\n\ntest_harness:arith_misconception(db_row(166), whole_number, churn_166_compute_sums_by_truncating_counts,\n    churn_candidate:churn_166_compute_sums_by_truncating_counts,\n    8+7,\n    15).",
+      "result": "external module qualification is not allowed: counting:"
+    }
+  ]
+}

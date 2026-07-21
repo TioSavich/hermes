@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40178",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40178_naming_rod_by_fraction_without_stated_whole_is_confusion",
+    "target_operation": "fraction_referent_unit",
+    "citation": "John M. Francisco, Carolyn A. Maher (2011)",
+    "error_action": "naming_rod_by_fraction_without_stated_whole_is_confusion",
+    "error_description": "a student who calls a rod 'one-half' without stating 'of what' has failed to identify the unit",
+    "provenance_comments": "=== row 40178: teacher misinterprets student ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a linguistic/unit-identification issue (naming a rod as 'one-half' without specifying the whole), not a computational procedure that can be captured by a deterministic binary predicate `Rule(Input, Got)` producing a wrong numerical result. There is no well-defined input-output mapping (e.g., no input fraction and expected wrong output fraction) that encodes the *misnaming* itself as a mathematical operation; it is a semantic/conceptual error about reference, not arithmetic. Hence no runnable SWI-Prolog rule satisfying the schema can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a linguistic/unit-identification issue (naming a rod as 'one-half' without specifying the whole), not a computational procedure that can be captured by a deterministic binary predicate `Rule(Input, Got)` producing a wrong numerical result. There is no well-defined input-output mapping (e.g., no input fraction and expected wrong output fraction) that encodes the *misnaming* itself as a mathematical operation; it is a semantic/conceptual error about reference, not arithmetic. Hence no runnable SWI-Prolog rule satisfying the schema can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

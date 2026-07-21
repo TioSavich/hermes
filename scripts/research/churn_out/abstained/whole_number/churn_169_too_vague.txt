@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "169",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_169_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The source row provides no concrete documented error action or mathematical procedure—only the label \"too_vague\"—and lacks a worked example, citation, or description sufficient to infer a specific runnable rule or probe. Without a determinate error behavior (e.g., a specific misapplied operation or incorrect formula), no valid Rule predicate of arity 2 can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The source row provides no concrete documented error action or mathematical procedure—only the label \"too_vague\"—and lacks a worked example, citation, or description sufficient to infer a specific runnable rule or probe. Without a determinate error behavior (e.g., a specific misapplied operation or incorrect formula), no valid Rule predicate of arity 2 can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

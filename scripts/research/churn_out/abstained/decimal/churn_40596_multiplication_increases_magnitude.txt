@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40596",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40596_multiplication_increases_magnitude",
+    "target_operation": "multiplication_makes_bigger",
+    "citation": "Guershon Harel, Larry Sowder (2005)",
+    "error_action": "multiplication_increases_magnitude",
+    "error_description": "assume a product is always larger than the multiplicand",
+    "provenance_comments": "=== row 40596: MMB in story problems ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (\"assume a product is always larger than the multiplicand\") but provides no concrete, executable procedure or formula that produces a specific wrong result from a given input. Without a defined mapping from input to incorrect output (e.g., a specific miscalculation rule), we cannot construct a runnable Prolog rule that reliably yields the documented error. The task requires a deterministic rule that, when applied to a concrete input, produces the exact documented wrong answer — this cannot be satisfied from the vague description alone.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40596_multiplication_increases_magnitude(multiplicand(M)-multiplier(N), Got) :-\n    Got is M * N,\n    M > 0,\n    N > 0,\n    N < 1,\n    Got < M).\n\ntest_harness:arith_misconception(db_row(40596), decimal, churn_40596_multiplication_increases_magnitude,\n    churn_candidate:churn_40596_multiplication_increases_magnitude,\n    multiplicand(10.0)-multiplier(0.5),\n    5.0).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (\"assume a product is always larger than the multiplicand\") but provides no concrete, executable procedure or formula that produces a specific wrong result from a given input. Without a defined mapping from input to incorrect output (e.g., a specific miscalculation rule), we cannot construct a runnable Prolog rule that reliably yields the documented error. The task requires a deterministic rule that, when applied to a concrete input, produces the exact documented wrong answer — this cannot be satisfied from the vague description alone.",
+      "result": "abstained"
+    }
+  ]
+}

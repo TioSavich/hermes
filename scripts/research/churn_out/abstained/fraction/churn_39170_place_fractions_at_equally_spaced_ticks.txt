@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39170",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39170_place_fractions_at_equally_spaced_ticks",
+    "target_operation": "number_line_representation",
+    "citation": "Nurbanu Yilmaz, Ilhan Karatas (2018)",
+    "error_action": "place_fractions_at_equally_spaced_ticks",
+    "error_description": "lay fractions out at evenly spaced marks regardless of their magnitudes",
+    "provenance_comments": "=== row 39170: equally spaced unit fractions on number line ===\nPST representation error; no specific numeric rule.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a representational misconception about placing fractions at equally spaced ticks on a number line regardless of magnitude, but no concrete arithmetic rule or procedure is provided that maps inputs to a specific incorrect output. The error is qualitative (spatial reasoning), not a syntactic arithmetic manipulation, and cannot be captured by a deterministic, generalizable binary predicate `Rule(Input, Got)` that reliably produces a fixed incorrect result for a given input under SWI-Prolog constraints.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a representational misconception about placing fractions at equally spaced ticks on a number line regardless of magnitude, but no concrete arithmetic rule or procedure is provided that maps inputs to a specific incorrect output. The error is qualitative (spatial reasoning), not a syntactic arithmetic manipulation, and cannot be captured by a deterministic, generalizable binary predicate `Rule(Input, Got)` that reliably produces a fixed incorrect result for a given input under SWI-Prolog constraints.",
+      "result": "abstained"
+    }
+  ]
+}

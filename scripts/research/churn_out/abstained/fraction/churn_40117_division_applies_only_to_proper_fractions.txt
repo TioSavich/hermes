@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40117",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40117_division_applies_only_to_proper_fractions",
+    "target_operation": "fraction_division_algorithm_scope",
+    "citation": "Charalambos Y. Charalambous, Heather C. Hill, Deborah L. Ball (2011)",
+    "error_action": "division_applies_only_to_proper_fractions",
+    "error_description": "treat fraction division as a memorized procedure usable only when the fractions are proper",
+    "provenance_comments": "=== row 40117: PST rote invert-and-multiply ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: the documented error describes a conceptual restriction (division only for proper fractions), but no runnable procedural rule is provided that would produce a specific wrong output for a given input; without a concrete algorithmic transformation that yields a determinate incorrect result, we cannot construct a predicate `Rule(Input, Got)` that reliably produces the documented misconception.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(division_only_proper(frac(A,B) / frac(C,D), frac(A * D, B * C)) :-\n    A < B).\n\ntest_harness:arith_misconception(db_row(40117), fraction, churn_40117_division_applies_only_to_proper_fractions,\n    churn_candidate:division_only_proper,\n    frac(5,3) / frac(2,7),\n    frac(35,6)).",
+      "result": "predicate must be named churn_40117_division_applies_only_to_proper_fractions"
+    },
+    {
+      "response": "ABSTAIN: the documented error describes a conceptual restriction (division only for proper fractions), but no runnable procedural rule is provided that would produce a specific wrong output for a given input; without a concrete algorithmic transformation that yields a determinate incorrect result, we cannot construct a predicate `Rule(Input, Got)` that reliably produces the documented misconception.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38858",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38858_execute_fraction_procedure_without_referent",
+    "target_operation": "procedural_without_conceptual",
+    "citation": "BEATRIZ S. D'AMBROSIO AND TANIA MARIA MENDONCA CAMPOS (1992)",
+    "error_action": "execute_fraction_procedure_without_referent",
+    "error_description": "carry out fraction operations correctly without a model of what the fractions or operations mean",
+    "provenance_comments": "=== row 38858: arithmetic without conceptual understanding ===\nDescriptive — no specific wrong transformation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes procedural execution without conceptual understanding but provides no specific incorrect transformation or rule; therefore, no runnable predicate can be defined that produces a documented wrong answer distinct from the correct one.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes procedural execution without conceptual understanding but provides no specific incorrect transformation or rule; therefore, no runnable predicate can be defined that produces a documented wrong answer distinct from the correct one.",
+      "result": "abstained"
+    }
+  ]
+}

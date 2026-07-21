@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39061",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39061_base_determines_size_of_unit_whole",
+    "target_operation": "base_unit_whole",
+    "citation": "HELEN A. KHOURY AND RINA ZAZKIS (1994)",
+    "error_action": "base_determines_size_of_unit_whole",
+    "error_description": "treat a positional fraction as a part-of-base ratio so the base sets the whole's size",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding about how the base determines the size of the unit whole in positional fractions, but no specific syntactic or procedural error is given that can be encoded as a runnable rule producing a deterministic wrong result from a given input. Without a concrete, generalizable misapplication (e.g., a formulaic error like \"add denominators\"), no testable `Rule/2` predicate can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding about how the base determines the size of the unit whole in positional fractions, but no specific syntactic or procedural error is given that can be encoded as a runnable rule producing a deterministic wrong result from a given input. Without a concrete, generalizable misapplication (e.g., a formulaic error like \"add denominators\"), no testable `Rule/2` predicate can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

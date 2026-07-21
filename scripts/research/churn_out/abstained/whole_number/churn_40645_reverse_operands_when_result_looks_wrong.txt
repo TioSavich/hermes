@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40645",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40645_reverse_operands_when_result_looks_wrong",
+    "target_operation": "operation_selection",
+    "citation": "John K. Lannin (2005)",
+    "error_action": "reverse_operands_when_result_looks_wrong",
+    "error_description": "if dividing gives an awkward decimal, swap the numbers and divide the other way",
+    "provenance_comments": "=== row 40645: guess operations shallowly ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a heuristic behavior (\"swap the numbers and divide the other way\") that is not a fixed syntactic or semantic transformation of the operation, but a conditional, context-dependent strategy triggered by \"awkward decimal\" outcomes. This makes it impossible to encode as a deterministic, general-purpose Prolog rule of arity 2 that always produces the documented wrong answer for a given input, without inventing criteria for \"awkward decimal\" and assuming a specific initial incorrect operation. The schema requires a rule that, for a given Input, deterministically yields the documented incorrect result—here, the rule would need to know the student's internal evaluation path (e.g., that they first tried A/B and found it awkward, then computed B/A), which cannot be recovered from the input pair alone.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40645_reverse_operands_when_result_looks_wrong(A-B, Got) :-\n    (Got is A / B, integer(A), integer(B), \\+ (A mod B =:= 0), Got \\= _//1)\n    ;  (Got is B / A, integer(A), integer(B), \\+ (B mod A =:= 0))).\n\ntest_harness:arith_misconception(db_row(40645), whole_number, churn_40645_reverse_operands_when_result_looks_wrong,\n    churn_candidate:churn_40645_reverse_operands_when_result_looks_wrong,\n    10-3,\n    3.3333333333333335).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a heuristic behavior (\"swap the numbers and divide the other way\") that is not a fixed syntactic or semantic transformation of the operation, but a conditional, context-dependent strategy triggered by \"awkward decimal\" outcomes. This makes it impossible to encode as a deterministic, general-purpose Prolog rule of arity 2 that always produces the documented wrong answer for a given input, without inventing criteria for \"awkward decimal\" and assuming a specific initial incorrect operation. The schema requires a rule that, for a given Input, deterministically yields the documented incorrect result—here, the rule would need to know the student's internal evaluation path (e.g., that they first tried A/B and found it awkward, then computed B/A), which cannot be recovered from the input pair alone.",
+      "result": "abstained"
+    }
+  ]
+}

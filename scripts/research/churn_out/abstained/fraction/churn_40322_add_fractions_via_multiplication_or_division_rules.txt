@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40322",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40322_add_fractions_via_multiplication_or_division_rules",
+    "target_operation": "fraction_addition",
+    "citation": "OTHMAN N. ALSAWAIE (2012)",
+    "error_action": "add_fractions_via_multiplication_or_division_rules",
+    "error_description": "combine fractions for addition using cross-multiplication or division procedures",
+    "provenance_comments": "=== row 40322: \"2x9/5x20 < 1/2 therefore sum < 1/2\" (mixed operations) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error description and example do not specify a consistent, runnable procedure for fraction addition. The phrase “cross-multiplication or division procedures” is ambiguous and does not map to a single, deterministic arithmetic rule applicable to all inputs. The example “2x9/5x20 < 1/2 therefore sum < 1/2” mixes inequality reasoning with addition and lacks a clear algorithm for producing a wrong sum. Without a well-defined mapping from inputs to a specific incorrect result, a general, testable rule cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error description and example do not specify a consistent, runnable procedure for fraction addition. The phrase “cross-multiplication or division procedures” is ambiguous and does not map to a single, deterministic arithmetic rule applicable to all inputs. The example “2x9/5x20 < 1/2 therefore sum < 1/2” mixes inequality reasoning with addition and lacks a clear algorithm for producing a wrong sum. Without a well-defined mapping from inputs to a specific incorrect result, a general, testable rule cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

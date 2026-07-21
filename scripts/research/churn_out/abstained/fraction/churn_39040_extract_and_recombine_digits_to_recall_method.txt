@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39040",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39040_extract_and_recombine_digits_to_recall_method",
+    "target_operation": "fraction_comparison_algorithm",
+    "citation": "JO BOALER (1993)",
+    "error_action": "extract_and_recombine_digits_to_recall_method",
+    "error_description": "pull numbers out of the fractions and rearrange them in a half-remembered procedure (e.g. 3/10,6/15 to 4/3,2/2)",
+    "provenance_comments": "=== row 39040: algorithm executed incorrectly without meaning ===\nIdiosyncratic extraction (\"4/3 and 2/2\") — no regular rule.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes an idiosyncratic, ill-specified procedure (\"pull numbers out of the fractions and rearrange them in a half-remembered procedure\") with an example (3/10,6/15 → 4/3,2/2) that does not follow a consistent, generalizable rule. No deterministic, general predicate of arity 2 can be constructed from the description that reliably produces the documented wrong answer for arbitrary inputs. The transformation lacks definable arithmetic semantics and cannot be encoded as a SWI-Prolog rule meeting the schema requirement of generality and reproducibility.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes an idiosyncratic, ill-specified procedure (\"pull numbers out of the fractions and rearrange them in a half-remembered procedure\") with an example (3/10,6/15 → 4/3,2/2) that does not follow a consistent, generalizable rule. No deterministic, general predicate of arity 2 can be constructed from the description that reliably produces the documented wrong answer for arbitrary inputs. The transformation lacks definable arithmetic semantics and cannot be encoded as a SWI-Prolog rule meeting the schema requirement of generality and reproducibility.",
+      "result": "abstained"
+    }
+  ]
+}

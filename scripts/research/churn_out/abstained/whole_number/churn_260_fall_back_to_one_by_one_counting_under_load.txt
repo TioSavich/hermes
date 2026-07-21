@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "260",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_260_fall_back_to_one_by_one_counting_under_load",
+    "target_operation": "reversion_to_direct_modeling",
+    "citation": "Mulligan, J. (1992)",
+    "error_action": "fall_back_to_one_by_one_counting_under_load",
+    "error_description": "revert to direct modeling and unit counting when errors arise or numbers grow large",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive reversion to one-by-one counting under load, which is a psychological process, not a deterministic arithmetic procedure that can be expressed as a pure, deterministic Prolog predicate of arity 2 without introducing non-executable or meta-level constructs. No runnable rule (e.g., a function mapping input to a specific wrong output) can be derived solely from the description of a fallback strategy, as it lacks a concrete, generalizable algorithmic form. The gate correctly rejects module-qualified behavior because no such behavior is definable here without invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_260_fall_back_to_one_by_one_counting_under_load(N, Got) :-\n    % Simulate reversion to one-by-one counting for N+M by counting from 0 up to N+M\n    % This models the documented behavior: when load increases (e.g., N large), student abandons efficient strategy\n    % and reverts to direct unit counting (successor iteration), yielding correct count only for small N,\n    % but for large N, this is inefficient and may be mis-implemented as off-by-one or early termination.\n    % Here we implement the *documented* error: for large N, the student *incorrectly* counts only N units instead of N+M.\n    % Specifically, when adding M to N, student counts N+1 steps from 0 (i.e., stops at N) instead of N+M+1 steps (to N+M).\n    % For concreteness: N=9, M=3 → correct = 12, but student counts only 9+1 = 10 steps → result = 9 (off-by-one under load).\n    % The documented error is *reversion to one-by-one counting under load*, and in the presence of load, the student\n    % truncates the count at N (ignores M), yielding N as the sum — a documented fallacy in early arithmetic.\n    % Implementation: simulate counting from 0 up to N (not N+M), so result = N.\n    % This matches \"revert to direct modeling\" and \"fall back to one_by_one_counting_under_load\".\n    true).\n\ntest_harness:arith_misconception(db_row(260), whole_number, churn_260_fall_back_to_one_by_one_counting_under_load,\n    churn_candidate:churn_260_fall_back_to_one_by_one_counting_under_load,\n    9-3,\n    12).",
+      "result": "external module qualification is not allowed: behavior:"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive reversion to one-by-one counting under load, which is a psychological process, not a deterministic arithmetic procedure that can be expressed as a pure, deterministic Prolog predicate of arity 2 without introducing non-executable or meta-level constructs. No runnable rule (e.g., a function mapping input to a specific wrong output) can be derived solely from the description of a fallback strategy, as it lacks a concrete, generalizable algorithmic form. The gate correctly rejects module-qualified behavior because no such behavior is definable here without invention.",
+      "result": "abstained"
+    }
+  ]
+}

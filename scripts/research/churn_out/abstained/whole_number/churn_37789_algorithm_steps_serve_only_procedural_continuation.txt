@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37789",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37789_algorithm_steps_serve_only_procedural_continuation",
+    "target_operation": "long_division_algorithm",
+    "citation": "Martin A. Simon (1993)",
+    "error_action": "algorithm_steps_serve_only_procedural_continuation",
+    "error_description": "each multiply/subtract step exists only to generate the next number to keep the procedure going",
+    "provenance_comments": "=== row 37789: long division steps as disconnected rules ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a conceptual misunderstanding (procedural disconnectedness) rather than a specific syntactic or semantic deviation in the algorithm's output; it does not specify a deterministic incorrect computation that can be encoded as a predicate producing a unique wrong result for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a conceptual misunderstanding (procedural disconnectedness) rather than a specific syntactic or semantic deviation in the algorithm's output; it does not specify a deterministic incorrect computation that can be encoded as a predicate producing a unique wrong result for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

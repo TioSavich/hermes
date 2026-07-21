@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40245",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40245_halve_only_the_numerator",
+    "target_operation": "equivalent_fractions",
+    "citation": "Jennifer Y. Kinser-Traut, Erin E. Turner (2018)",
+    "error_action": "halve_only_the_numerator",
+    "error_description": "since 2 is half of 4, take 2/4 as half of 4/8",
+    "provenance_comments": "=== row 40245: 4/8 equals 1/2 but \"shouldn't it be 2/4?\" ===\nTask: halve frac(4,8)\nCorrect: frac(2,4) (or simplified 1/2)\nError: confusion between the two equivalent forms — no numeric error, just a\nsemantic question. Treat as too_vague.",
+    "worked_example": "Task: halve frac(4,8)\nCorrect: frac(2,4) (or simplified 1/2)\nError: confusion between the two equivalent forms — no numeric error, just a",
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is semantic (confusion between equivalent forms) rather than a calculational mistake; no runnable rule can be constructed that produces a wrong numeric answer, only a question. The schema requires a rule that yields a specific incorrect result, which is not possible here.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is semantic (confusion between equivalent forms) rather than a calculational mistake; no runnable rule can be constructed that produces a wrong numeric answer, only a question. The schema requires a rule that yields a specific incorrect result, which is not possible here.",
+      "result": "abstained"
+    }
+  ]
+}

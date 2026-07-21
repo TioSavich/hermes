@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37896",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37896_express_all_results_in_scientific_notation",
+    "target_operation": "metric_conversion_notation",
+    "citation": "Charles Hohensee (2016)",
+    "error_action": "express_all_results_in_scientific_notation",
+    "error_description": "convert every numeric metric answer into scientific notation regardless of the prompt",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a procedural habit (expressing all results in scientific notation regardless of prompt), not a specific arithmetic operation that can be modeled as a deterministic predicate `Rule(Input, Got)` producing a unique wrong result. There is no well-defined mathematical transformation that maps an arbitrary measurement input to a scientifically-notation-only output *as a systematic error*, because scientific notation is a representation choice, not a computed value. SWI-Prolog cannot unify a representation choice with a numeric outcome without introducing arbitrary formatting rules (e.g., always using `scientific` flag), which would constitute invention, not documentation. The execution gate likely failed because no runnable, non-inventive predicate can encode “always use scientific notation” as a *numeric* error outcome without side effects (e.g., `format/2`), which are prohibited.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_37896_express_all_results_in_scientific_notation(Value, Got) :-\n    scientific(Value, Got)).\n\ntest_harness:arith_misconception(db_row(37896), measurement, churn_37896_express_all_results_in_scientific_notation,\n    churn_candidate:churn_37896_express_all_results_in_scientific_notation,\n    0.0045, 4.5e-3).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error is a procedural habit (expressing all results in scientific notation regardless of prompt), not a specific arithmetic operation that can be modeled as a deterministic predicate `Rule(Input, Got)` producing a unique wrong result. There is no well-defined mathematical transformation that maps an arbitrary measurement input to a scientifically-notation-only output *as a systematic error*, because scientific notation is a representation choice, not a computed value. SWI-Prolog cannot unify a representation choice with a numeric outcome without introducing arbitrary formatting rules (e.g., always using `scientific` flag), which would constitute invention, not documentation. The execution gate likely failed because no runnable, non-inventive predicate can encode “always use scientific notation” as a *numeric* error outcome without side effects (e.g., `format/2`), which are prohibited.",
+      "result": "abstained"
+    }
+  ]
+}

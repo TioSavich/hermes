@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39526",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39526_decimals_are_discrete_with_a_next_value",
+    "target_operation": "decimal_density",
+    "citation": "KAYE STACEY, SUE HELME, SHONA ARCHER and CAROLINE CONDON (2001)",
+    "error_action": "decimals_are_discrete_with_a_next_value",
+    "error_description": "treats decimals as discrete units so that no number lies between adjacent ones",
+    "provenance_comments": "=== row 39526: decimals as discrete, no density ===\nToo vague — lack of density understanding, not a specific wrong output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (lack of density understanding) without specifying a concrete, runnable procedure that produces a deterministic wrong output for a given input. No specific computational rule or mapping from input to erroneous output is provided, making it impossible to construct a SWI-Prolog rule that reliably produces the documented error.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (lack of density understanding) without specifying a concrete, runnable procedure that produces a deterministic wrong output for a given input. No specific computational rule or mapping from input to erroneous output is provided, making it impossible to construct a SWI-Prolog rule that reliably produces the documented error.",
+      "result": "abstained"
+    }
+  ]
+}

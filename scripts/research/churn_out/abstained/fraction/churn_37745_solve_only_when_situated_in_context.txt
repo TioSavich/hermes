@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37745",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37745_solve_only_when_situated_in_context",
+    "target_operation": "fraction_subtraction_context_dependence",
+    "citation": "Randolph A. Philipp, Rebecca Ambrose, Lisa L. C. Lamb, Judith T. Sowder, Bonnie P. Schappelle, Larry Sowder, Eva Thanheiser, Jennifer Chauvot (2007)",
+    "error_action": "solve_only_when_situated_in_context",
+    "error_description": "operate on the quantities only when they are embedded in a familiar situation",
+    "provenance_comments": "=== row 37745: context vs symbolic ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive tendency (solve_only_when_situated_in_context) rather than a specific syntactic or semantic rule that produces a deterministic wrong output in a formal arithmetic operation. It does not specify a mechanical transformation or formula that can be encoded as a Prolog predicate of arity 2 producing a fixed incorrect result for a given input. Without a reproducible procedural error (e.g., misapplication of an operator), no runnable Rule can be constructed per the schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive tendency (solve_only_when_situated_in_context) rather than a specific syntactic or semantic rule that produces a deterministic wrong output in a formal arithmetic operation. It does not specify a mechanical transformation or formula that can be encoded as a Prolog predicate of arity 2 producing a fixed incorrect result for a given input. Without a reproducible procedural error (e.g., misapplication of an operator), no runnable Rule can be constructed per the schema.",
+      "result": "abstained"
+    }
+  ]
+}

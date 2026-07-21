@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38140",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38140_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "=== row 38140: division always smaller ===",
+    "provenance_comments": "=== row 38140: division always smaller ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error description \"division always smaller\" does not specify a concrete syntactic or semantic rule that can be translated into a runnable Prolog predicate of arity 2. Without a clear statement of the student's procedure (e.g., which operands, what operation form, what transformation is applied), there is insufficient information to construct a deterministic rule that reproduces the error. A defensible probe and concrete Input-ExpectedCorrect pair cannot be supplied.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error description \"division always smaller\" does not specify a concrete syntactic or semantic rule that can be translated into a runnable Prolog predicate of arity 2. Without a clear statement of the student's procedure (e.g., which operands, what operation form, what transformation is applied), there is insufficient information to construct a deterministic rule that reproduces the error. A defensible probe and concrete Input-ExpectedCorrect pair cannot be supplied.",
+      "result": "abstained"
+    }
+  ]
+}

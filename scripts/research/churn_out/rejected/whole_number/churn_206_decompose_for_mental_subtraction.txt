@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "206",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_206_decompose_for_mental_subtraction",
+    "target_operation": "mental_subtraction_strategies",
+    "citation": "Broza, Orit and Kolikant, Yifat Ben-David (2015)",
+    "error_action": "decompose_for_mental_subtraction",
+    "error_description": "break numbers apart to subtract mentally rather than using the column algorithm",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(decompose_for_mental_subtraction(A-B, Got) :-\n    decompose(A, TensA, OnesA),\n    decompose(B, TensB, OnesB),\n    Got is (TensA - TensB) + (OnesA - OnesB)).\n\ndecompose(N, Tens, Ones) :-\n    Tens is (N // 10) * 10,\n    Ones is N mod 10.\n\ntest_harness:arith_misconception(db_row(206), whole_number, churn_206_decompose_for_mental_subtraction,\n    churn_candidate:decompose_for_mental_subtraction,\n    84-37,\n    57).",
+      "result": "predicate must be named churn_206_decompose_for_mental_subtraction"
+    },
+    {
+      "response": "churn_candidate:(churn_206_decompose_for_mental_subtraction(A-B, Got) :-\n    decomposition(A, TensA, OnesA),\n    decomposition(B, TensB, OnesB),\n    % Student mistakenly subtracts tens from ones and ones from tens (cross-subtraction)\n    Got is (TensA - OnesB) + (OnesA - TensB)).\n\ndecomposition(N, Tens, Ones) :-\n    Tens is (N // 10) * 10,\n    Ones is N mod 10.\n\ntest_harness:arith_misconception(db_row(206), whole_number, churn_206_decompose_for_mental_subtraction,\n    churn_candidate:churn_206_decompose_for_mental_subtraction,\n    85-47,\n    38).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

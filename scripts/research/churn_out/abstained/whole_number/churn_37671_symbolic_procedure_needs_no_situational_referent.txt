@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37671",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37671_symbolic_procedure_needs_no_situational_referent",
+    "target_operation": "multiplication_as_ritual",
+    "citation": "Miriam Ben-Yehuda, Ilana Lavy, Liora Linchevski, Anna Sfard (2005)",
+    "error_action": "symbolic_procedure_needs_no_situational_referent",
+    "error_description": "a multiplication is justified by following its rules, not by any real-world situation it models",
+    "provenance_comments": "=== row 37671: cannot situate 24x9 in a real-world context ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding about multiplication (procedural justification without situational grounding), but it does not specify a concrete symbolic manipulation rule that produces a *wrong numerical answer* from a given input. The execution gate requires a rule that, when called with a specific input, yields the documented incorrect result (e.g., 24), whereas this misconception is about reasoning, not computation. No runnable arithmetic rule can be extracted without inventing a specific computational error (e.g., misapplying a formula), which violates the constraint to encode *only* the documented student error.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_37671_symbolic_procedure_needs_no_situational_referent(_-_ , Got) :-\n    Got is 24 * 9).\n\ntest_harness:arith_misconception(db_row(37671), whole_number, churn_37671_symbolic_procedure_needs_no_situational_referent,\n    churn_candidate:churn_37671_symbolic_procedure_needs_no_situational_referent,\n    24-9,\n    216).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding about multiplication (procedural justification without situational grounding), but it does not specify a concrete symbolic manipulation rule that produces a *wrong numerical answer* from a given input. The execution gate requires a rule that, when called with a specific input, yields the documented incorrect result (e.g., 24), whereas this misconception is about reasoning, not computation. No runnable arithmetic rule can be extracted without inventing a specific computational error (e.g., misapplying a formula), which violates the constraint to encode *only* the documented student error.",
+      "result": "abstained"
+    }
+  ]
+}

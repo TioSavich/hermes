@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39545",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39545_read_numerals_as_frequency_adverbs",
+    "target_operation": "counting_word_translation",
+    "citation": "Lisa Lunney Borden (2013)",
+    "error_action": "read_numerals_as_frequency_adverbs",
+    "error_description": "render '1+2=3' with adverbial multiplicative forms (once, twice, three times)",
+    "provenance_comments": "=== row 39545: Mi'kmaq translation awkwardness ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a linguistic translation issue (rendering arithmetic expressions using frequency adverbs like \"once\", \"twice\", \"three times\") rather than a runnable arithmetic procedure that can be expressed as a binary predicate `Rule(Input, Got)` producing a wrong numerical result. There is no well-defined, general, executable mapping from a mathematical input to a systematically incorrect numerical output that matches the schema requirement for `arith_misconception/6`.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a linguistic translation issue (rendering arithmetic expressions using frequency adverbs like \"once\", \"twice\", \"three times\") rather than a runnable arithmetic procedure that can be expressed as a binary predicate `Rule(Input, Got)` producing a wrong numerical result. There is no well-defined, general, executable mapping from a mathematical input to a systematically incorrect numerical output that matches the schema requirement for `arith_misconception/6`.",
+      "result": "abstained"
+    }
+  ]
+}

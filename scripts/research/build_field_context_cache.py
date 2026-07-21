@@ -6,7 +6,7 @@ Regenerate with:
     python3 scripts/research/build_field_context_cache.py
 
 Run this whenever the lesson, strategy, misconception, standards, literature,
-or expressive-power knowledge base changes. The regular check suite compares
+or inferential-strength knowledge base changes. The regular check suite compares
 one fixed lesson against the live worker and fails when the artifact drifts.
 The generator starts one SWI-Prolog process for the complete batch; that
 process applies a 120-second limit to each lesson and records failures instead

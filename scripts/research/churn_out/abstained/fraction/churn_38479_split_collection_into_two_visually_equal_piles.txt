@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38479",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38479_split_collection_into_two_visually_equal_piles",
+    "target_operation": "fraction_of_a_set",
+    "citation": "Barry D. Biddlecomb (2002)",
+    "error_action": "split_collection_into_two_visually_equal_piles",
+    "error_description": "find half of a set by separating it into two roughly equal heaps and adjusting by eye",
+    "provenance_comments": "=== row 38479: trial-and-error halving of collection ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a heuristic, non-algorithmic procedure (visual estimation and adjustment) that cannot be expressed as a deterministic Prolog rule of arity 2 mapping input to the *exact* documented wrong output. The schema requires a runnable rule that reliably produces the documented misconception result for a given input, but visual approximation lacks a formal, executable specification.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a heuristic, non-algorithmic procedure (visual estimation and adjustment) that cannot be expressed as a deterministic Prolog rule of arity 2 mapping input to the *exact* documented wrong output. The schema requires a runnable rule that reliably produces the documented misconception result for a given input, but visual approximation lacks a formal, executable specification.",
+      "result": "abstained"
+    }
+  ]
+}

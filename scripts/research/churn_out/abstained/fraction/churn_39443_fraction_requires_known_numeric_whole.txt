@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39443",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39443_fraction_requires_known_numeric_whole",
+    "target_operation": "fraction_unspecified_whole",
+    "citation": "ADALIRA SÁENZ-LUDLOW (1995)",
+    "error_action": "fraction_requires_known_numeric_whole",
+    "error_description": "you cannot give a fractional part unless the whole's exact amount is a known number",
+    "provenance_comments": "=== row 39443: can't operate without magnitude of whole ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about the necessity of a known numeric whole for defining a fraction, not a syntactic or procedural error that can be modeled as a deterministic binary relation `Rule(Input, Got)` producing a specific incorrect result. It describes a meta-level reasoning constraint, not a calculational mistake with a predictable output. No runnable rule of arity 2 can encode the *failure to recognize* that a fraction requires a known whole, because the error manifests in problem interpretation or question posing—not in evaluation of a given arithmetic expression where `Got` would be a concrete incorrect term.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about the necessity of a known numeric whole for defining a fraction, not a syntactic or procedural error that can be modeled as a deterministic binary relation `Rule(Input, Got)` producing a specific incorrect result. It describes a meta-level reasoning constraint, not a calculational mistake with a predictable output. No runnable rule of arity 2 can encode the *failure to recognize* that a fraction requires a known whole, because the error manifests in problem interpretation or question posing—not in evaluation of a given arithmetic expression where `Got` would be a concrete incorrect term.",
+      "result": "abstained"
+    }
+  ]
+}

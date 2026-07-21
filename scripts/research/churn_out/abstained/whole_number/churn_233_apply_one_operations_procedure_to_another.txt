@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "233",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_233_apply_one_operations_procedure_to_another",
+    "target_operation": "cross_operation_rule_confusion",
+    "citation": "Alajmi, Amal Hussain and Reys, Robert (2010)",
+    "error_action": "apply_one_operations_procedure_to_another",
+    "error_description": "carry a procedural step from one operation into a different operation",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: no runnable rule or defensible probe can be constructed from the vague description \"apply_one_operations_procedure_to_another\" without a specific documented example or concrete procedural step to encode.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no runnable rule or defensible probe can be constructed from the vague description \"apply_one_operations_procedure_to_another\" without a specific documented example or concrete procedural step to encode.",
+      "result": "abstained"
+    }
+  ]
+}

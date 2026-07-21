@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40532",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40532_order_of_addends_affects_difficulty",
+    "target_operation": "addition_commutativity",
+    "citation": "Gert Schubring (2012)",
+    "error_action": "order_of_addends_affects_difficulty",
+    "error_description": "treat adding a large number to a small one as a different and harder task than the reverse",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "predicate must be named churn_40532_order_of_addends_affects_difficulty",
+  "attempts": [
+    {
+      "response": "churn_candidate:(order_of_addends_affects_difficulty(A+B, Got) :-\n    (A > B -> Got is A + B ; Got is A + B + 1)).\n\ntest_harness:arith_misconception(db_row(40532), whole_number, churn_40532_order_of_addends_affects_difficulty,\n    churn_candidate:order_of_addends_affects_difficulty,\n    2+5,\n    7).",
+      "result": "predicate must be named churn_40532_order_of_addends_affects_difficulty"
+    },
+    {
+      "response": "churn_candidate:(order_of_addends_affects_difficulty(A-B, Got) :-\n    Got is B + A).\n\ntest_harness:arith_misconception(db_row(40532), whole_number, churn_40532_order_of_addends_affects_difficulty,\n    churn_candidate:order_of_addends_affects_difficulty,\n    2-100,\n    102).",
+      "result": "predicate must be named churn_40532_order_of_addends_affects_difficulty"
+    }
+  ]
+}

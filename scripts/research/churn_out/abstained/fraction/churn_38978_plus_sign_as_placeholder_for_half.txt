@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38978",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38978_plus_sign_as_placeholder_for_half",
+    "target_operation": "fraction_notation",
+    "citation": "BARBARA M. BRIZUELA (2005)",
+    "error_action": "plus_sign_as_placeholder_for_half",
+    "error_description": "write a plus sign as a stand-in symbol marking that a half is present, not as an operation",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a notational misconception (using '+' as a placeholder for half), but no runnable procedural rule can be constructed that produces a specific wrong output for a given input under SWI-Prolog arithmetic without inventing mathematics or assuming non-standard evaluation semantics. The task requires a predicate `Rule(Input, Got)` where `Got` is the documented wrong answer, but there is no clear, general, executable mapping from a fraction representation to a representation involving a '+' placeholder in a way that yields a deterministic, testable output consistent with the schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a notational misconception (using '+' as a placeholder for half), but no runnable procedural rule can be constructed that produces a specific wrong output for a given input under SWI-Prolog arithmetic without inventing mathematics or assuming non-standard evaluation semantics. The task requires a predicate `Rule(Input, Got)` where `Got` is the documented wrong answer, but there is no clear, general, executable mapping from a fraction representation to a representation involving a '+' placeholder in a way that yields a deterministic, testable output consistent with the schema.",
+      "result": "abstained"
+    }
+  ]
+}

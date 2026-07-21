@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40620",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40620_treat_partial_halving_sums_as_reaching_the_whole",
+    "target_operation": "repeated_halving_sum",
+    "citation": "Clea Fernandez (2005)",
+    "error_action": "treat_partial_halving_sums_as_reaching_the_whole",
+    "error_description": "assume that adding repeatedly halved pieces in finitely many steps fills the whole exactly",
+    "provenance_comments": "=== row 40620: repeated halving converges to whole in finite steps ===\nToo vague — infinite-series belief; no specific wrong numeric output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes an infinite-series belief (that repeated halving sums reach the whole in finite steps), but provides no specific numeric procedure or wrong output to encode as a runnable rule. Without a concrete computational error (e.g., a specific incorrect formula, step, or value), no SWI-Prolog rule of arity 2 can be constructed that produces the documented wrong answer.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes an infinite-series belief (that repeated halving sums reach the whole in finite steps), but provides no specific numeric procedure or wrong output to encode as a runnable rule. Without a concrete computational error (e.g., a specific incorrect formula, step, or value), no SWI-Prolog rule of arity 2 can be constructed that produces the documented wrong answer.",
+      "result": "abstained"
+    }
+  ]
+}

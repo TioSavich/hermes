@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39815",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39815_treat_fraction_as_count_of_objects",
+    "target_operation": "fraction_vs_natural_number",
+    "citation": "Tuğrul Kar (2015)",
+    "error_action": "treat_fraction_as_count_of_objects",
+    "error_description": "use a fraction as if it counted whole discrete items",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is too vague to encode a runnable rule; it describes a conceptual tendency (\"treat a fraction as if it counted whole discrete items\") without specifying a concrete syntactic or procedural misstep that yields a deterministic wrong output for a given input. A rule must produce a specific incorrect result via a defined computation; this description lacks sufficient operational detail to construct such a predicate.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is too vague to encode a runnable rule; it describes a conceptual tendency (\"treat a fraction as if it counted whole discrete items\") without specifying a concrete syntactic or procedural misstep that yields a deterministic wrong output for a given input. A rule must produce a specific incorrect result via a defined computation; this description lacks sufficient operational detail to construct such a predicate.",
+      "result": "abstained"
+    }
+  ]
+}

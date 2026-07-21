@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37899",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37899_divide_fractions_without_quotient_meaning",
+    "target_operation": "fraction_division_modeling",
+    "citation": "Roger Howe (1999)",
+    "error_action": "divide_fractions_without_quotient_meaning",
+    "error_description": "perform fraction division as symbol manipulation detached from any measurement-of model",
+    "provenance_comments": "=== row 37899: teachers fail 1 3/4 ÷ 1/2 ===\nPopulation-level description; no one uniform wrong transformation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: documented error is population-level and lacks a single uniform transformation rule; no runnable predicate can be constructed from the provided documentation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: documented error is population-level and lacks a single uniform transformation rule; no runnable predicate can be constructed from the provided documentation.",
+      "result": "abstained"
+    }
+  ]
+}

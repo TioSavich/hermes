@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40156",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40156_describe_subset_by_absolute_count",
+    "target_operation": "fraction_as_relational_quantity",
+    "citation": "DEBORAH SCHIFTER (1998)",
+    "error_action": "describe_subset_by_absolute_count",
+    "error_description": "name a part by the whole-number count of items rather than as a fraction of the whole",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual description mistake (naming a part by absolute count rather than as a fraction), but no runnable binary predicate rule can be constructed that systematically produces a *specific wrong answer* from a *specific input* in the required arithmetic form. The error is linguistic/semantic, not procedural or算术; it does not define a deterministic mapping from input to wrong output that can be encoded as a Prolog rule of arity 2 without additional concrete instance data.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual description mistake (naming a part by absolute count rather than as a fraction), but no runnable binary predicate rule can be constructed that systematically produces a *specific wrong answer* from a *specific input* in the required arithmetic form. The error is linguistic/semantic, not procedural or算术; it does not define a deterministic mapping from input to wrong output that can be encoded as a Prolog rule of arity 2 without additional concrete instance data.",
+      "result": "abstained"
+    }
+  ]
+}

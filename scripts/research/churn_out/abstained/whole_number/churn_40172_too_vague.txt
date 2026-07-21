@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40172",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40172_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "=== row 40172: groups vs group-size confusion in division ===\nStudent creates unequal groups and varies on corrections; no single\ncanonical wrong answer.",
+    "provenance_comments": "=== row 40172: groups vs group-size confusion in division ===\nStudent creates unequal groups and varies on corrections; no single\ncanonical wrong answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual confusion (groups vs group-size in division) where students produce unequal groups and vary corrections, yielding no single canonical wrong answer. Since the task requires a runnable rule that consistently produces a specific wrong answer for a specific input, and no deterministic arithmetic procedure can be extracted from a \"no single canonical wrong answer\" description, admission fails the execution gate.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual confusion (groups vs group-size in division) where students produce unequal groups and vary corrections, yielding no single canonical wrong answer. Since the task requires a runnable rule that consistently produces a specific wrong answer for a specific input, and no deterministic arithmetic procedure can be extracted from a \"no single canonical wrong answer\" description, admission fails the execution gate.",
+      "result": "abstained"
+    }
+  ]
+}

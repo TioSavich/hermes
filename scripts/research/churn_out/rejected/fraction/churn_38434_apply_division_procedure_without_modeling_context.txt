@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38434",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38434_apply_division_procedure_without_modeling_context",
+    "target_operation": "fraction_division_area_model",
+    "citation": "Mourat Tchoshanov, Maria Cruz Quinones, Kadriya B. Shakirova, Elena N. Ibragimova, Liliana R. Shakirova (2017)",
+    "error_action": "apply_division_procedure_without_modeling_context",
+    "error_description": "carry out the invert-and-multiply procedure and draw a figure without checking that the drawing fits the measurement situation",
+    "provenance_comments": "=== row 38434: missing factor geometric ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_38434_apply_division_procedure_without_modeling_context",
+  "attempts": [
+    {
+      "response": "churn_candidate:(divide_fractions_invert_and_multiply(frac(N1,D1) / frac(N2,D2), frac(ResultN, ResultD)) :-\n    ResultN is N1 * D2,\n    ResultD is D1 * N2).\n\ntest_harness:arith_misconception(db_row(38434), fraction, churn_38434_apply_division_procedure_without_modeling_context,\n    churn_candidate:divide_fractions_invert_and_multiply,\n    frac(1,2) / frac(1,4),\n    frac(2,1)).",
+      "result": "predicate must be named churn_38434_apply_division_procedure_without_modeling_context"
+    },
+    {
+      "response": "churn_candidate:(divide_fractions_invert_multiply(frac(N1,D1)/frac(N2,D2), frac(ProdN, ProdD)) :-\n    ProdN is N1 * D2,\n    ProdD is D1 * N2).\n\ntest_harness:arith_misconception(db_row(38434), fraction, churn_38434_apply_division_procedure_without_modeling_context,\n    churn_candidate:divide_fractions_invert_multiply,\n    frac(1,2)/frac(1,4),\n    frac(2,1)).",
+      "result": "predicate must be named churn_38434_apply_division_procedure_without_modeling_context"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38340",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38340_steepness_measured_directly",
+    "target_operation": "steepness_as_quantity",
+    "citation": "Joanne Lobato, Daniel Siebert (2002)",
+    "error_action": "steepness_measured_directly",
+    "error_description": "steepness is a physical feature readable directly off the object like an angle or bubble level",
+    "provenance_comments": "=== row 38340: steepness as directly-measurable quantity ===\nToo vague: conceptual claim about intensive vs extensive quantity.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception (steepness as directly measurable like an angle), but no runnable procedural rule or specific mathematical operation is provided to derive a wrong answer from a given input. Without a concrete, executable mapping from input to incorrect output (e.g., a formula or procedure that students are documented to use), a valid `Rule` predicate cannot be constructed per the schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception (steepness as directly measurable like an angle), but no runnable procedural rule or specific mathematical operation is provided to derive a wrong answer from a given input. Without a concrete, executable mapping from input to incorrect output (e.g., a formula or procedure that students are documented to use), a valid `Rule` predicate cannot be constructed per the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

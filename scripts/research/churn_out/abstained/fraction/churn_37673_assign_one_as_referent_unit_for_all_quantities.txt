@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37673",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37673_assign_one_as_referent_unit_for_all_quantities",
+    "target_operation": "fraction_division",
+    "citation": "Andrew Izsák, Erik Jacobson, Zandra de Araujo, and Chandra Hawley Orrill (2012)",
+    "error_action": "assign_one_as_referent_unit_for_all_quantities",
+    "error_description": "treat '1' as the referent for every quantity including the quotient",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: the documentation does not specify a concrete arithmetic procedure that produces a unique wrong result for a general input; it only describes a conceptual misattribution (assigning '1' as referent unit universally) without indicating how this manifests in a runnable rule for fraction division. Without a deterministic mapping from input to the documented错误 output, a testable rule cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: the documentation does not specify a concrete arithmetic procedure that produces a unique wrong result for a general input; it only describes a conceptual misattribution (assigning '1' as referent unit universally) without indicating how this manifests in a runnable rule for fraction division. Without a deterministic mapping from input to the documented错误 output, a testable rule cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

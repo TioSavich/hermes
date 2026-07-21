@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40116",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40116_label_partition_shares_with_final_answer",
+    "target_operation": "fraction_division_representation",
+    "citation": "Charalambos Y. Charalambous, Heather C. Hill, Deborah L. Ball (2011)",
+    "error_action": "label_partition_shares_with_final_answer",
+    "error_description": "mark each drawn share with the computed final quotient instead of the intermediate amount the picture actually shows",
+    "provenance_comments": "=== row 40116: PST division drawings ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a labeling mistake in pictorial representations of division (assigning the final quotient label to each share instead of the intermediate per-share amount), but no runnable arithmetic rule or probe can be derived that maps a syntactic input to a specific wrong output in the required Prolog format. The misconception is visual/semantic, not a syntactic arithmetic operation over fractions.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a labeling mistake in pictorial representations of division (assigning the final quotient label to each share instead of the intermediate per-share amount), but no runnable arithmetic rule or probe can be derived that maps a syntactic input to a specific wrong output in the required Prolog format. The misconception is visual/semantic, not a syntactic arithmetic operation over fractions.",
+      "result": "abstained"
+    }
+  ]
+}

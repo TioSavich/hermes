@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38521",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38521_count_in_units_of_one",
+    "target_operation": "mixed_unit_coordination",
+    "citation": "Casey Hord, Ron Tzur, Yan Ping Xin, Luo Si, Rachel H. Kenney, Jerry Woodward (2016)",
+    "error_action": "count_in_units_of_one",
+    "error_description": "total everything as single items rather than segmenting into composite units",
+    "provenance_comments": "=== row 38521: counts cubes instead of towers in mixed-unit task ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "predicate must be named churn_38521_count_in_units_of_one",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38521_count_in_units_of_one(Towers-CubesPerTower, Got) :-\n    Got is Towers * CubesPerTower * 1).\n\ntest_harness:arith_misconception(db_row(38521), whole_number, churn_38521_count_in_units_of_one,\n    churn_candidate:churn_38521_count_in_units_of_one,\n    3-4,\n    12).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "churn_candidate:(counts_cubes_instead_of_towers(A-B, Got) :-\n    Got is A * B * 1).\n\ntest_harness:arith_misconception(db_row(38521), whole_number, churn_38521_count_in_units_of_one,\n    churn_candidate:counts_cubes_instead_of_towers,\n    3-4,\n    12).",
+      "result": "predicate must be named churn_38521_count_in_units_of_one"
+    }
+  ]
+}

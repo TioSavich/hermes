@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39541",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39541_use_exact_paper_and_pencil_only",
+    "target_operation": "fraction_estimation_avoidance",
+    "citation": "Janette Bobis (1991)",
+    "error_action": "use_exact_paper_and_pencil_only",
+    "error_description": "always compute fractions by exact written algorithms rather than estimating",
+    "provenance_comments": "=== row 39541: no example text ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a behavioral tendency (use exact algorithms instead of estimating) but does not specify a runnable computational rule that produces a *wrong answer* in a well-defined input-output mapping. A misconception rule must define a predicate that, when given an input, yields the documented erroneous output; here, the error is methodological, not algorithmic, and no concrete arithmetic transformation is given that can be encoded as a Prolog predicate of arity 2 producing a specific incorrect result.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a behavioral tendency (use exact algorithms instead of estimating) but does not specify a runnable computational rule that produces a *wrong answer* in a well-defined input-output mapping. A misconception rule must define a predicate that, when given an input, yields the documented erroneous output; here, the error is methodological, not algorithmic, and no concrete arithmetic transformation is given that can be encoded as a Prolog predicate of arity 2 producing a specific incorrect result.",
+      "result": "abstained"
+    }
+  ]
+}

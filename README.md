@@ -88,7 +88,7 @@ python3 scripts/bundle/smoke_bundle.py
 ```
 
 When lesson, strategy, misconception, standards, literature, or
-expressive-power facts change, regenerate the lesson context cache before the
+inferential-strength facts change, regenerate the lesson context cache before the
 checks:
 
 ```sh

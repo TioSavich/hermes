@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37809",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37809_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "=== row 37809: anticipatory checking strategies ===\nDevelopmental / strategic — no numeric answer.",
+    "provenance_comments": "=== row 37809: anticipatory checking strategies ===\nDevelopmental / strategic — no numeric answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is described as a \"Developmental / strategic — no numeric answer\" and refers to \"anticipatory checking strategies\", which is a cognitive or metacognitive behavior, not a concrete syntactic arithmetic error that can be captured by a deterministic rule producing a specific wrong result. No runnable rule of arity 2 can be constructed that would reliably produce a documented wrong answer for a given input, as no specific incorrect computation or output is specified.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is described as a \"Developmental / strategic — no numeric answer\" and refers to \"anticipatory checking strategies\", which is a cognitive or metacognitive behavior, not a concrete syntactic arithmetic error that can be captured by a deterministic rule producing a specific wrong result. No runnable rule of arity 2 can be constructed that would reliably produce a documented wrong answer for a given input, as no specific incorrect computation or output is specified.",
+      "result": "abstained"
+    }
+  ]
+}

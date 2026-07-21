@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "246",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_246_apply_regrouping_algorithm_by_rote",
+    "target_operation": "subtraction_with_regrouping",
+    "citation": "Boulton-Lewis, G. & Halford, G. (1992)",
+    "error_action": "apply_regrouping_algorithm_by_rote",
+    "error_description": "execute the written borrowing procedure as memorized steps without mapping it to place-value quantities",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive process (rote execution of borrowing steps without place-value mapping) but does not specify a concrete, executable syntactic transformation or arithmetic rule that produces a deterministic wrong result for a given input. Without a clear mapping from input to the erroneous output (e.g., a specific miscalculation pattern like ignoring zeros, reversing digits, or miscomputing a fixed pattern), no runnable Prolog rule can be constructed that reliably reproduces the documented error.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive process (rote execution of borrowing steps without place-value mapping) but does not specify a concrete, executable syntactic transformation or arithmetic rule that produces a deterministic wrong result for a given input. Without a clear mapping from input to the erroneous output (e.g., a specific miscalculation pattern like ignoring zeros, reversing digits, or miscomputing a fixed pattern), no runnable Prolog rule can be constructed that reliably reproduces the documented error.",
+      "result": "abstained"
+    }
+  ]
+}

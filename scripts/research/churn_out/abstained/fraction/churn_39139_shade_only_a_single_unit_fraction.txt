@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39139",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39139_shade_only_a_single_unit_fraction",
+    "target_operation": "fraction_symbol_meaning",
+    "citation": "M. A. (KEN) CLEMENTS (1980)",
+    "error_action": "shade_only_a_single_unit_fraction",
+    "error_description": "treat a fraction symbol as a request to mark one part, regardless of the numerator",
+    "provenance_comments": "=== row 39139: no visual imagery for numerator>1 ===\nFailure to produce — no wrong numeric rule.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error is purely visual/interpretive ( shading only one part regardless of numerator ) and does not correspond to a numeric computation or symbolic manipulation that can be expressed as a binary predicate Rule(Input, Got) producing a wrong numeric result. The misconception lacks a well-defined arithmetic procedure over fractions, and the Prolog schema requires a concrete wrong numeric output that differs from the correct one.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error is purely visual/interpretive ( shading only one part regardless of numerator ) and does not correspond to a numeric computation or symbolic manipulation that can be expressed as a binary predicate Rule(Input, Got) producing a wrong numeric result. The misconception lacks a well-defined arithmetic procedure over fractions, and the Prolog schema requires a concrete wrong numeric output that differs from the correct one.",
+      "result": "abstained"
+    }
+  ]
+}

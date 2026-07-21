@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40072",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40072_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "=== row 40072: PST conflations reproducing the whole ===\nMultiple distinct errors described; no single canonical transformation.",
+    "provenance_comments": "=== row 40072: PST conflations reproducing the whole ===\nMultiple distinct errors described; no single canonical transformation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is described as \"Multiple distinct errors described; no single canonical transformation\" and there is no worked example or precise transformation rule provided. Without a determinate, consistent mathematical error that can be expressed as a single Prolog rule producing a specific wrong result from a specific input, the requirement to encode a runnable rule and defensible probe cannot be met.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is described as \"Multiple distinct errors described; no single canonical transformation\" and there is no worked example or precise transformation rule provided. Without a determinate, consistent mathematical error that can be expressed as a single Prolog rule producing a specific wrong result from a specific input, the requirement to encode a runnable rule and defensible probe cannot be met.",
+      "result": "abstained"
+    }
+  ]
+}

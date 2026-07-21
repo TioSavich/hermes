@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38370",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38370_multiplication_is_iterated_copying_of_groups",
+    "target_operation": "fraction_multiplication",
+    "citation": "Martin A. Simon, Melike Kara, Anderson Norton, Nicora Placa (2018)",
+    "error_action": "multiplication_is_iterated_copying_of_groups",
+    "error_description": "multiplying means making whole or fractional copies of a group, so a proper fraction cannot be a multiplier",
+    "provenance_comments": "=== row 38370: proper fraction multipliers contradict iteration ===\nConceptual refusal, not a uniform wrong numeric output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual refusal (a student's belief that a proper fraction cannot be a multiplier), not a uniform, deterministic computational error that yields a specific wrong numeric output for a given input. The schema requires a rule that, when called with a specific Input, produces a documented wrong answer (Got) that does not unify with the correct ExpectedCorrect. Since this misconception reflects a reasoning barrier rather than a reproducible procedural error, it cannot be encoded as a runnable Prolog rule satisfying the contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual refusal (a student's belief that a proper fraction cannot be a multiplier), not a uniform, deterministic computational error that yields a specific wrong numeric output for a given input. The schema requires a rule that, when called with a specific Input, produces a documented wrong answer (Got) that does not unify with the correct ExpectedCorrect. Since this misconception reflects a reasoning barrier rather than a reproducible procedural error, it cannot be encoded as a runnable Prolog rule satisfying the contract.",
+      "result": "abstained"
+    }
+  ]
+}

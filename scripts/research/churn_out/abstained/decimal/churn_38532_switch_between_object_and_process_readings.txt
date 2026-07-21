@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38532",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38532_switch_between_object_and_process_readings",
+    "target_operation": "object_vs_process",
+    "citation": "David A. Yopp (2018)",
+    "error_action": "switch_between_object_and_process_readings",
+    "error_description": "treat a repeating decimal as a finished number or as an unfinished process depending on the question",
+    "provenance_comments": "=== row 38532: 0.999... as process vs object (inconsistent framing) ===\nToo vague — cognitive framing of infinite processes, not a computation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes an inconsistent cognitive framing of infinite processes (e.g., 0.999... as an unfinished process versus a completed object) rather than a specific, executable computational procedure. No runnable rule of arity 2 can be constructed that produces the documented wrong answer in a deterministic, generalizable way using SWI-Prolog built-ins, because the misconception resides in semantic interpretation, not arithmetic syntax or algorithm.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes an inconsistent cognitive framing of infinite processes (e.g., 0.999... as an unfinished process versus a completed object) rather than a specific, executable computational procedure. No runnable rule of arity 2 can be constructed that produces the documented wrong answer in a deterministic, generalizable way using SWI-Prolog built-ins, because the misconception resides in semantic interpretation, not arithmetic syntax or algorithm.",
+      "result": "abstained"
+    }
+  ]
+}

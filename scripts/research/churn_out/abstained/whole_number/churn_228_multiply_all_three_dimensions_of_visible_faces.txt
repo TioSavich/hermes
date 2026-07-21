@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "228",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_228_multiply_all_three_dimensions_of_visible_faces",
+    "target_operation": "array_volume_structuring",
+    "citation": "Battista, M. T. (2004)",
+    "error_action": "multiply_all_three_dimensions_of_visible_faces",
+    "error_description": "compute volume by multiplying the counts seen on the three faces (e.g. 3x3x5)",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes multiplying the counts seen on the three *visible faces* of a 3D array (e.g., 3×3×5), but this is not a well-defined operation in terms of input structure for a Prolog rule of arity 2. To implement `churn_228_multiply_all_three_dimensions_of_visible_faces/2`, the rule must accept an input term and compute a wrong volume by multiplying three visible-face dimensions. However, the input format required to extract *three visible face dimensions* is underspecified in the source row and cannot be derived without inventing a representation (e.g., a 3D list or dimension tuple). Since the schema requires a concrete, schema-appropriate Input and the domain is `whole_number`, and no such input representation for face counts is provided, the rule cannot be implemented as a general, runnable predicate without assumption.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_228_multiply_all_three_dimensions_of_visible_faces(Input, Got) :-\n    Input = rows-cols-depth,\n    Got is rows * cols * depth).\n\ntest_harness:arith_misconception(db_row(228), whole_number, churn_228_multiply_all_three_dimensions_of_visible_faces,\n    churn_candidate:churn_228_multiply_all_three_dimensions_of_visible_faces,\n    3-3-5,\n    45).",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes multiplying the counts seen on the three *visible faces* of a 3D array (e.g., 3×3×5), but this is not a well-defined operation in terms of input structure for a Prolog rule of arity 2. To implement `churn_228_multiply_all_three_dimensions_of_visible_faces/2`, the rule must accept an input term and compute a wrong volume by multiplying three visible-face dimensions. However, the input format required to extract *three visible face dimensions* is underspecified in the source row and cannot be derived without inventing a representation (e.g., a 3D list or dimension tuple). Since the schema requires a concrete, schema-appropriate Input and the domain is `whole_number`, and no such input representation for face counts is provided, the rule cannot be implemented as a general, runnable predicate without assumption.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38222",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38222_multiply_fractions_by_cross_cancel_procedure",
+    "target_operation": "traditional_algorithm",
+    "citation": "Nancy K. Mack (2000)",
+    "error_action": "multiply_fractions_by_cross_cancel_procedure",
+    "error_description": "fractions are multiplied by canceling and cross products as taught",
+    "provenance_comments": "=== row 38222: rote cross-cancel without understanding ===\nLisa's cross-canceling yields the correct answer; no wrong numeric output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedure (cross-canceling) that yields the correct answer, not a wrong one. Since the task requires encoding a *documented student error* that produces an *incorrect* result (ExpectedCorrect must not unify with Got), and no incorrect output is documented, a runnable misconception rule cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedure (cross-canceling) that yields the correct answer, not a wrong one. Since the task requires encoding a *documented student error* that produces an *incorrect* result (ExpectedCorrect must not unify with Got), and no incorrect output is documented, a runnable misconception rule cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38800",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38800_concatenate_digits_as_independent_single_digit_numbers",
+    "target_operation": "place_value",
+    "citation": "Janne Fauskanger (2015)",
+    "error_action": "concatenate_digits_as_independent_single_digit_numbers",
+    "error_description": "read a multi-digit number as separate single digits set side by side rather than as positional values",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 23",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38800_concatenate_digits_as_independent_single_digit_numbers(N, Got) :-\n    number_codes(N, Cs),\n    maplist(code_char, Cs, Chars),\n    atomic_list_concat(Chars, '', GotStr),\n    number_codes(Got, [0'0, 0'1, 0'2, 0'3, 0'4, 0'5, 0'6, 0'7, 0'8, 0'9]).\n\ntest_harness:arith_misconception(db_row(38800), whole_number, churn_38800_concatenate_digits_as_independent_single_digit_numbers,\n    churn_candidate:churn_38800_concatenate_digits_as_independent_single_digit_numbers,\n    123,\n    123).\n\nABSTAIN: The documented error is about misreading a multi-digit number as separate digits (e.g., reading 123 as \"one two three\" instead of one hundred twenty-three), but this is a *semantic* or *interpretive* misconception—not a computational procedure that can be expressed as a deterministic 2-place predicate producing a specific wrong numeric output via SWI-Prolog built-ins without external interpretation. The task requires a runnable rule where `Rule(Input, Got)` yields the documented wrong answer; no such numeric transformation (e.g., from 123 → some specific wrong value like 123 or 1,2,3) is uniquely determined by the description. The misconception does not fix a unique arithmetic output, only a misinterpretation mode.",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "churn_candidate:(churn_38800_concatenate_digits_as_independent_single_digit_numbers(N, Got) :-\n    number_chars(N, Chars),\n    maplist(char_number, Chars, Digits),\n    Got is Digits).\n\ntest_harness:arith_misconception(db_row(38800), whole_number, churn_38800_concatenate_digits_as_independent_single_digit_numbers,\n    churn_candidate:churn_38800_concatenate_digits_as_independent_single_digit_numbers,\n    123,\n    123).",
+      "result": "SWI-Prolog gate exited 23"
+    }
+  ]
+}

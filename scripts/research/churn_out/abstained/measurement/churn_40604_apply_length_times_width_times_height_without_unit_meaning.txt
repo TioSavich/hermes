@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40604",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40604_apply_length_times_width_times_height_without_unit_meaning",
+    "target_operation": "volume_formula_meaning",
+    "citation": "Michael T. Battista (2004)",
+    "error_action": "apply_length_times_width_times_height_without_unit_meaning",
+    "error_description": "use the LxWxH algorithm or extend it without conceptualizing what each factor counts",
+    "provenance_comments": "=== row 40604: corner-cube triple-counting puzzle ===\nToo vague: multiple distinct bugs described in one row.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The source row is marked \"too vague\" and describes multiple distinct bugs without specifying a single runnable procedure; the documentation does not determine a unique, defensible rule that produces exactly the documented wrong answer.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The source row is marked \"too vague\" and describes multiple distinct bugs without specifying a single runnable procedure; the documentation does not determine a unique, defensible rule that produces exactly the documented wrong answer.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39558",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39558_divide_only_larger_by_smaller",
+    "target_operation": "division_smaller_by_larger",
+    "citation": "Anne Gooding and Kaye Stacey (1993)",
+    "error_action": "divide_only_larger_by_smaller",
+    "error_description": "you can only divide when the dividend is at least as large as the divisor",
+    "provenance_comments": "=== row 39558: smaller / larger \"can't be done\" (no numeric output) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (\"can't be done\") that yields no numeric output, but the schema requires a rule that produces a wrong numeric result (Got) that does not unify with the correct ExpectedCorrect. Since the error implies failure (no output), it cannot be modeled as a binary predicate `Rule(Input, Got)` that returns a numeric Got value in SWI-Prolog without introducing non-standard or non-executable constructs. No runnable rule can be formed that both (a) matches the documented behavior (no numeric output) and (b) satisfies the execution gate (must unify Got with a numeric value).",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (\"can't be done\") that yields no numeric output, but the schema requires a rule that produces a wrong numeric result (Got) that does not unify with the correct ExpectedCorrect. Since the error implies failure (no output), it cannot be modeled as a binary predicate `Rule(Input, Got)` that returns a numeric Got value in SWI-Prolog without introducing non-standard or non-executable constructs. No runnable rule can be formed that both (a) matches the documented behavior (no numeric output) and (b) satisfies the execution gate (must unify Got with a numeric value).",
+      "result": "abstained"
+    }
+  ]
+}

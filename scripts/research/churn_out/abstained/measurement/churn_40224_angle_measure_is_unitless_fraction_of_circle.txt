@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40224",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40224_angle_measure_is_unitless_fraction_of_circle",
+    "target_operation": "angle_measure_as_unitless_fraction",
+    "citation": "Michael A. Tallman, Kristin M. Frank (2018)",
+    "error_action": "angle_measure_is_unitless_fraction_of_circle",
+    "error_description": "angle measure is a bare ratio of arc to circumference, unit-less because units cancel",
+    "provenance_comments": "=== row 40224: angle measure as unit-less ratio ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating angle measure as a unitless fraction of a circle), but no runnable Prolog rule can be constructed that computes a *wrong* angle measure as a bare ratio of arc length to circumference without additional assumptions (e.g., radius = 1, or arc length given directly). The task requires a predicate `Rule(Input, Got)` where `Got` is the *documented incorrect result*, but the error description lacks a concrete computational procedure or input schema (e.g., what `Input` should be: arc length? radius? full circumference?). Without a well-defined, generalizable input format and a deterministic, implementable misapplication (e.g., always dividing arc length by circumference *without* multiplying by 2π), the execution gate cannot be satisfied. SWI-Prolog cannot compute a non-numeric conceptual error without a precise algorithm.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40224_angle_measure_is_unitless_fraction_of_circle(angle_measure(Arc, Circ), Got) :-\n    Got is Arc / Circ).\n\ntest_harness:arith_misconception(db_row(40224), measurement, churn_40224_angle_measure_is_unitless_fraction_of_circle,\n    churn_candidate:churn_40224_angle_measure_is_unitless_fraction_of_circle,\n    angle_measure(1, 2), 0.5).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating angle measure as a unitless fraction of a circle), but no runnable Prolog rule can be constructed that computes a *wrong* angle measure as a bare ratio of arc length to circumference without additional assumptions (e.g., radius = 1, or arc length given directly). The task requires a predicate `Rule(Input, Got)` where `Got` is the *documented incorrect result*, but the error description lacks a concrete computational procedure or input schema (e.g., what `Input` should be: arc length? radius? full circumference?). Without a well-defined, generalizable input format and a deterministic, implementable misapplication (e.g., always dividing arc length by circumference *without* multiplying by 2π), the execution gate cannot be satisfied. SWI-Prolog cannot compute a non-numeric conceptual error without a precise algorithm.",
+      "result": "abstained"
+    }
+  ]
+}

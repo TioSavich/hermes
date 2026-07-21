@@ -2,7 +2,7 @@
  *
  * A bounded integration surface for Hermes and teacher-facing tools.  The
  * module does not own standards, automata, misconceptions, literature facts, or
- * expressive-power measures; it gathers the existing surfaces for one lesson
+ * proof-path and incompatibility-breadth measures; it gathers the existing surfaces for one lesson
  * into a single JSON-safe dict with explicit provenance and coverage flags.
  */
 :- module(field_context,
@@ -11,7 +11,7 @@
           ]).
 
 :- use_module(im_lessons(lesson_monitoring)).
-:- use_module(strategies(expressive_power)).
+:- use_module(strategies(inferential_strength)).
 :- use_module(misconceptions(literature_vocabulary)).
 :- use_module(misconceptions(literature_incompatibility_facts),
               [ lit_derived/9
@@ -46,11 +46,11 @@ field_context_dict(Code, Dict) :-
     map_sort(cluster_dict, ClusterTerms, Clusters),
     coverage_dicts(PMLFacts, Coverage),
     coverage_status(Coverage, CoverageStatus),
-    expressive_power_dict(Code, ExpressivePower),
+    inferential_strength_dict(Code, InferentialStrength),
     literature_summary_dict(Literature),
     lesson_literature_dict(Misconceptions, LessonLiterature),
     lesson_readiness_dict(Code, Readiness),
-    field_brief_dict(Code, LessonDict, Readiness, ExpressivePower,
+    field_brief_dict(Code, LessonDict, Readiness, InferentialStrength,
                      LessonLiterature, Brief),
     term_text(Code, CodeText),
     Dict0 = _{
@@ -65,7 +65,7 @@ field_context_dict(Code, Dict) :-
         misconceptions: Misconceptions,
         lesson_literature: LessonLiterature,
         literature: Literature,
-        expressive_power: ExpressivePower,
+        inferential_strength: InferentialStrength,
         monitoring_clusters: Clusters
     },
     (   lesson_monitoring:lesson_guide_context_dict(Code, GuideContext)
@@ -74,13 +74,13 @@ field_context_dict(Code, Dict) :-
     ).
 
 
-field_brief_dict(Code, Lesson, Readiness, ExpressivePower,
+field_brief_dict(Code, Lesson, Readiness, InferentialStrength,
                  LessonLiterature, Brief) :-
     get_dict(status, Readiness, Status),
     get_dict(next_actions, Readiness, NextActions),
     get_dict(missing, Readiness, Missing),
     get_dict(counts, Readiness, Counts),
-    get_dict(proof_paths, ExpressivePower, ProofPaths),
+    get_dict(proof_paths, InferentialStrength, ProofPaths),
     get_dict(citation_count, LessonLiterature, CitationCount),
     get_dict(title, Lesson, Title),
     field_brief_status(Status, BriefStatus, Label),
@@ -136,8 +136,8 @@ primary_repair_action(Missing, "Link at least one misconception to normalized li
 primary_repair_action(Missing, "Map linked literature to at least one canonical incompatibility commitment.") :-
     memberchk("canonical_literature_commitments", Missing),
     !.
-primary_repair_action(Missing, "Pair at least one strategy with one misconception so expressive-power can be inspected.") :-
-    memberchk("expressive_power", Missing),
+primary_repair_action(Missing, "Pair at least one strategy with one misconception so incompatibility breadth can be computed.") :-
+    memberchk("inferential_strength", Missing),
     !.
 primary_repair_action(Missing, "Attach a monitoring cluster with productive core and deformation.") :-
     (   memberchk("monitoring_clusters", Missing)
@@ -159,7 +159,7 @@ field_brief_evidence_points("fully_connected", _Missing, Counts, ProofPaths,
             Counts.deformations,
             CitationCount]),
     format(string(ProofText),
-           "Expressive-power proof paths: ~w.",
+           "Bounded proof paths: ~w.",
            [ProofPaths]).
 field_brief_evidence_points(_Status, Missing, Counts, _ProofPaths,
                             CitationCount,
@@ -266,7 +266,7 @@ readiness_dict_from_row(Row, _{
     has_misconceptions: HasMisconceptions,
     has_literature_links: HasLiteratureLinks,
     has_canonical_literature_commitments: HasCanonicalLiteratureCommitments,
-    has_expressive_power: HasExpressivePower,
+    has_inferential_strength: HasInferentialStrength,
     has_monitoring_clusters: HasMonitoringClusters,
     has_deformations: HasDeformations
 }) :-
@@ -282,7 +282,7 @@ readiness_dict_from_row(Row, _{
     get_dict(has_misconceptions, Row, HasMisconceptions),
     get_dict(has_literature_links, Row, HasLiteratureLinks),
     get_dict(has_canonical_literature_commitments, Row, HasCanonicalLiteratureCommitments),
-    get_dict(has_expressive_power, Row, HasExpressivePower),
+    get_dict(has_inferential_strength, Row, HasInferentialStrength),
     get_dict(has_monitoring_clusters, Row, HasMonitoringClusters),
     get_dict(has_deformations, Row, HasDeformations).
 
@@ -356,7 +356,7 @@ lesson_connectivity_row(StrategyPairs,
     length(Clusters, ClusterCount),
     deformation_count(Clusters, DeformationCount),
     audit_coverage_status(StrategyCount, MisconceptionCount, ClusterCount, CoverageStatus),
-    audit_expressive_power_candidate_count(StrategyCount, MisconceptionCount, ExpressivePowerCandidates),
+    audit_inferential_strength_candidate_count(StrategyCount, MisconceptionCount, InferentialStrengthCandidates),
     bool_count(StandardCount, HasStandards),
     bool_count(CCSSCount, HasCCSS),
     bool_count(StrategyCount, HasStrategies),
@@ -364,7 +364,7 @@ lesson_connectivity_row(StrategyPairs,
     bool_count(MisconceptionCount, HasMisconceptions),
     bool_count(LiteratureLinkCount, HasLiteratureLinks),
     bool_count(CanonicalLiteratureCommitmentCount, HasCanonicalLiteratureCommitments),
-    bool_count(ExpressivePowerCandidates, HasExpressivePower),
+    bool_count(InferentialStrengthCandidates, HasInferentialStrength),
     bool_count(ClusterCount, HasMonitoringClusters),
     bool_count(DeformationCount, HasDeformations),
     missing_dimensions(_{
@@ -375,7 +375,7 @@ lesson_connectivity_row(StrategyPairs,
         misconceptions: MisconceptionCount,
         literature_links: LiteratureLinkCount,
         canonical_literature_commitments: CanonicalLiteratureCommitmentCount,
-        expressive_power: ExpressivePowerCandidates,
+        inferential_strength: InferentialStrengthCandidates,
         monitoring_clusters: ClusterCount,
         deformations: DeformationCount
     }, Missing),
@@ -400,7 +400,7 @@ lesson_connectivity_row(StrategyPairs,
         has_misconceptions: HasMisconceptions,
         has_literature_links: HasLiteratureLinks,
         has_canonical_literature_commitments: HasCanonicalLiteratureCommitments,
-        has_expressive_power: HasExpressivePower,
+        has_inferential_strength: HasInferentialStrength,
         has_monitoring_clusters: HasMonitoringClusters,
         has_deformations: HasDeformations,
         counts: _{
@@ -411,7 +411,7 @@ lesson_connectivity_row(StrategyPairs,
             misconceptions: MisconceptionCount,
             literature_links: LiteratureLinkCount,
             canonical_literature_commitments: CanonicalLiteratureCommitmentCount,
-            expressive_power_candidates: ExpressivePowerCandidates,
+            inferential_strength_candidates: InferentialStrengthCandidates,
             monitoring_clusters: ClusterCount,
             deformations: DeformationCount
         },
@@ -597,12 +597,12 @@ audit_coverage_status(_StrategyCount, _MisconceptionCount, ClusterCount, "unit_c
 audit_coverage_status(_, _, _, "under_attached").
 
 
-audit_expressive_power_candidate_count(StrategyCount, MisconceptionCount, CandidateCount) :-
+audit_inferential_strength_candidate_count(StrategyCount, MisconceptionCount, CandidateCount) :-
     StrategyCount > 0,
     MisconceptionCount > 0,
     !,
     CandidateCount is StrategyCount * MisconceptionCount.
-audit_expressive_power_candidate_count(_, _, 0).
+audit_inferential_strength_candidate_count(_, _, 0).
 
 
 bool_count(Count, true) :-
@@ -633,8 +633,8 @@ missing_dimension(literature_links, Counts) :-
     Counts.literature_links =:= 0.
 missing_dimension(canonical_literature_commitments, Counts) :-
     Counts.canonical_literature_commitments =:= 0.
-missing_dimension(expressive_power, Counts) :-
-    Counts.expressive_power =:= 0.
+missing_dimension(inferential_strength, Counts) :-
+    Counts.inferential_strength =:= 0.
 missing_dimension(monitoring_clusters, Counts) :-
     Counts.monitoring_clusters =:= 0.
 missing_dimension(deformations, Counts) :-
@@ -670,8 +670,8 @@ next_action_for_missing(Missing, "Link at least one misconception to normalized 
 next_action_for_missing(Missing, "Map linked literature to at least one canonical incompatibility commitment.") :-
     memberchk("canonical_literature_commitments", Missing),
     \+ memberchk("literature_links", Missing).
-next_action_for_missing(Missing, "Pair at least one strategy with one misconception so expressive-power can be inspected.") :-
-    memberchk("expressive_power", Missing).
+next_action_for_missing(Missing, "Pair at least one strategy with one misconception so incompatibility breadth can be computed.") :-
+    memberchk("inferential_strength", Missing).
 next_action_for_missing(Missing, "Attach a monitoring cluster with productive core and deformation.") :-
     (   memberchk("monitoring_clusters", Missing)
     ;   memberchk("deformations", Missing)
@@ -691,7 +691,7 @@ audit_summary(Rows, _{
     lessons_with_misconceptions: WithMisconceptions,
     lessons_with_literature_links: WithLiteratureLinks,
     lessons_with_canonical_literature_commitments: WithCanonicalLiteratureCommitments,
-    lessons_with_expressive_power: WithExpressivePower,
+    lessons_with_inferential_strength: WithInferentialStrength,
     lessons_with_monitoring_clusters: WithMonitoringClusters,
     lessons_with_deformations: WithDeformations
 }) :-
@@ -707,7 +707,7 @@ audit_summary(Rows, _{
     count_bool_field(Rows, has_misconceptions, WithMisconceptions),
     count_bool_field(Rows, has_literature_links, WithLiteratureLinks),
     count_bool_field(Rows, has_canonical_literature_commitments, WithCanonicalLiteratureCommitments),
-    count_bool_field(Rows, has_expressive_power, WithExpressivePower),
+    count_bool_field(Rows, has_inferential_strength, WithInferentialStrength),
     count_bool_field(Rows, has_monitoring_clusters, WithMonitoringClusters),
     count_bool_field(Rows, has_deformations, WithDeformations).
 
@@ -725,7 +725,7 @@ dimension_spec("strategy_automata", "Strategy automata", has_strategy_automata).
 dimension_spec("misconceptions", "Misconception rows", has_misconceptions).
 dimension_spec("literature_links", "Literature links", has_literature_links).
 dimension_spec("canonical_literature_commitments", "Canonical literature", has_canonical_literature_commitments).
-dimension_spec("expressive_power", "Expressive power", has_expressive_power).
+dimension_spec("inferential_strength", "Inferential strength", has_inferential_strength).
 dimension_spec("monitoring_clusters", "Monitoring clusters", has_monitoring_clusters).
 dimension_spec("deformations", "Deformations", has_deformations).
 
@@ -979,19 +979,21 @@ coverage_status(Coverage, "usable") :-
 coverage_status(_, "unknown").
 
 
-expressive_power_dict(Code, Dict) :-
-    expressive_power:lesson_expressive_power_for(Code, Report),
+inferential_strength_dict(Code, Dict) :-
+    inferential_strength:lesson_inferential_strength_for(Code, Report),
     !,
-    expressive_power_report_dict(Report, Dict).
-expressive_power_dict(_, _{
+    inferential_strength_report_dict(Report, Dict).
+inferential_strength_dict(_, _{
     proof_paths: 0,
     strategy_incompatibilities: 0,
+    strategy_incompatibilities_kind: "breadth_tally",
     misconception_incompatibilities: 0,
+    misconception_incompatibilities_kind: "breadth_tally",
     incompatibility_note: "Counts include both binary clashes and the singleton sets wrapping them; treat as an upper bound, not distinct A-vs-B pairs.",
     per_operation: []
 }).
 
-expressive_power_report_dict(
+inferential_strength_report_dict(
         report(paths(ProofPaths),
                strategy_incompatibility(StrategyIncompatibilities),
                misconception_incompatibility(MisconceptionIncompatibilities),
@@ -1001,16 +1003,20 @@ expressive_power_report_dict(
         _{
             proof_paths: ProofPaths,
             strategy_incompatibilities: StrategyIncompatibilities,
+            strategy_incompatibilities_kind: "breadth_tally",
             misconception_incompatibilities: MisconceptionIncompatibilities,
+            misconception_incompatibilities_kind: "breadth_tally",
             incompatibility_note: "Counts include both binary clashes and the singleton sets wrapping them; treat as an upper bound, not distinct A-vs-B pairs.",
             per_operation: OperationDicts
         }) :-
     !,
     maplist(operation_power_dict, OpPowers, OperationDicts).
-expressive_power_report_dict(_, _{
+inferential_strength_report_dict(_, _{
     proof_paths: 0,
     strategy_incompatibilities: 0,
+    strategy_incompatibilities_kind: "breadth_tally",
     misconception_incompatibilities: 0,
+    misconception_incompatibilities_kind: "breadth_tally",
     incompatibility_note: "Counts include both binary clashes and the singleton sets wrapping them; treat as an upper bound, not distinct A-vs-B pairs.",
     per_operation: []
 }).

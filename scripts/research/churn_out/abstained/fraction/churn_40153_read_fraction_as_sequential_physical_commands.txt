@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40153",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40153_read_fraction_as_sequential_physical_commands",
+    "target_operation": "fraction_notation_part_whole",
+    "citation": "DEBORAH SCHIFTER (1998)",
+    "error_action": "read_fraction_as_sequential_physical_commands",
+    "error_description": "read 1/2 as 'one thing, then cut into two pieces' with the bar meaning the cutting action",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misreading of fraction notation (interpreting the bar as a sequential action rather than a relational operator), but it does not specify a runnable computational rule that produces a deterministic wrong result for a given input. Since the task requires encoding a runnable rule that yields the documented wrong answer and a defensible probe, and no such rule can be constructed from the vague description, admission is not possible.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misreading of fraction notation (interpreting the bar as a sequential action rather than a relational operator), but it does not specify a runnable computational rule that produces a deterministic wrong result for a given input. Since the task requires encoding a runnable rule that yields the documented wrong answer and a defensible probe, and no such rule can be constructed from the vague description, admission is not possible.",
+      "result": "abstained"
+    }
+  ]
+}

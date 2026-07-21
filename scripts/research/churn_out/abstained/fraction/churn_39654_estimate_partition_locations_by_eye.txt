@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39654",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39654_estimate_partition_locations_by_eye",
+    "target_operation": "linear_partitioning",
+    "citation": "Xiaofen Zhang & M. A. (Ken) Clements & Nerida F. Ellerton (2015)",
+    "error_action": "estimate_partition_locations_by_eye",
+    "error_description": "place the fractional marks on a length by visual guessing once the part-count is known",
+    "provenance_comments": "=== row 39654: linear model partition without equal parts ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a perceptual estimation strategy (visual guessing) rather than a deterministic arithmetic procedure; it cannot be expressed as a runnable SWI-Prolog rule that reliably produces the documented wrong answer for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a perceptual estimation strategy (visual guessing) rather than a deterministic arithmetic procedure; it cannot be expressed as a runnable SWI-Prolog rule that reliably produces the documented wrong answer for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

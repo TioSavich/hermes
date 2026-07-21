@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37653",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37653_unique_right_answer_expectation",
+    "target_operation": "computational_estimation",
+    "citation": "Judith T. Sowder and Margariete M. Wheeler (1989)",
+    "error_action": "unique_right_answer_expectation",
+    "error_description": "a math problem has exactly one correct answer and one correct process",
+    "provenance_comments": "=== row 37653: estimation must have one right answer ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception about estimation (expecting a unique right answer and process), but does not specify a runnable procedural rule that produces a documented wrong answer for a given input. Without a concrete computational procedure or a specific incorrect output tied to an input, no SWI-Prolog rule can be constructed that meets the schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception about estimation (expecting a unique right answer and process), but does not specify a runnable procedural rule that produces a documented wrong answer for a given input. Without a concrete computational procedure or a specific incorrect output tied to an input, no SWI-Prolog rule can be constructed that meets the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

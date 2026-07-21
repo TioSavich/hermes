@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39598",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39598_treat_relative_size_as_dependent_on_physical_orientation",
+    "target_operation": "conservation_of_area_under_orientation",
+    "citation": "Tad Watanabe (1995)",
+    "error_action": "treat_relative_size_as_dependent_on_physical_orientation",
+    "error_description": "which shape is bigger can change when you rotate one of them",
+    "provenance_comments": "=== row 39598: orientation changes judged size ===\nToo vague: qualitative judgment about area conservation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a qualitative misconception about how rotation affects perceived size/area, but does not specify a runnable procedural rule that maps inputs to a wrong output in a way that can be expressed as a deterministic, executable Prolog predicate of arity 2. The error is conceptual (e.g., believing a rotated rectangle has different area), not algorithmic—there is no clear, generalizable computation that students are documented to perform that yields a specific incorrect numerical result from a given input. Without a concrete, reproducible transformation or formula tied to a well-defined input structure, a testable rule cannot be formed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a qualitative misconception about how rotation affects perceived size/area, but does not specify a runnable procedural rule that maps inputs to a wrong output in a way that can be expressed as a deterministic, executable Prolog predicate of arity 2. The error is conceptual (e.g., believing a rotated rectangle has different area), not algorithmic—there is no clear, generalizable computation that students are documented to perform that yields a specific incorrect numerical result from a given input. Without a concrete, reproducible transformation or formula tied to a well-defined input structure, a testable rule cannot be formed.",
+      "result": "abstained"
+    }
+  ]
+}

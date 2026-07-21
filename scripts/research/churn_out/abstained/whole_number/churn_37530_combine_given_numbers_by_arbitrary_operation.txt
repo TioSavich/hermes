@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37530",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37530_combine_given_numbers_by_arbitrary_operation",
+    "target_operation": "open_ended_problem_solving",
+    "citation": "Jinfa Cai (1995)",
+    "error_action": "combine_given_numbers_by_arbitrary_operation",
+    "error_description": "extract the numbers in the text and apply some operation to them",
+    "provenance_comments": "=== row 37530: random-op combination of text numbers ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a heuristic (combine given numbers by arbitrary operation) rather than a specific, deterministic rule that can be expressed as a binary predicate producing a unique wrong result for a given input. Without a concrete, repeatable operation (e.g., always addition, always concatenation, always first-number minus second), the procedure is too vague to implement as a runnable SWI-Prolog rule meeting the schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a heuristic (combine given numbers by arbitrary operation) rather than a specific, deterministic rule that can be expressed as a binary predicate producing a unique wrong result for a given input. Without a concrete, repeatable operation (e.g., always addition, always concatenation, always first-number minus second), the procedure is too vague to implement as a runnable SWI-Prolog rule meeting the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

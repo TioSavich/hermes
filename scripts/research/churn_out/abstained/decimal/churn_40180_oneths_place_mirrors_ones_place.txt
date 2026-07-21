@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40180",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40180_oneths_place_mirrors_ones_place",
+    "target_operation": "decimal_place_value",
+    "citation": "Shikha Takker, K. Subramaniam (2017)",
+    "error_action": "oneths_place_mirrors_ones_place",
+    "error_description": "just as there is a ones place, there should be a 'oneths' place immediately right of the decimal point",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about naming a non-existent place value (\"oneths\"), not a computational error that can be encoded as a deterministic arithmetic rule producing a wrong numeric result. There is no runnable rule that computes a specific numeric output corresponding to this belief, because the misconception does not specify a formula or operation—only a mislabeling of place value terminology. Hence no `Rule(Input, Got)` can be constructed to produce the documented wrong *answer* (since there is no numerical answer produced by the misconception itself).",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40180_oneths_place_mirrors_ones_place(Place, Got) :-\n    (Place = ones -> Got = oneths ; Got = Place)).\n\ntest_harness:arith_misconception(db_row(40180), decimal, churn_40180_oneths_place_mirrors_ones_place,\n    churn_candidate:churn_40180_oneths_place_mirrors_ones_place,\n    ones,\n    oneths).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about naming a non-existent place value (\"oneths\"), not a computational error that can be encoded as a deterministic arithmetic rule producing a wrong numeric result. There is no runnable rule that computes a specific numeric output corresponding to this belief, because the misconception does not specify a formula or operation—only a mislabeling of place value terminology. Hence no `Rule(Input, Got)` can be constructed to produce the documented wrong *answer* (since there is no numerical answer produced by the misconception itself).",
+      "result": "abstained"
+    }
+  ]
+}

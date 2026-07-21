@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40489",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40489_teach_subtraction_only_as_take_away",
+    "target_operation": "subtraction_structures",
+    "citation": "Tim Rowland, Sarah Martyn, Patti Barber and Caroline Heal (2000)",
+    "error_action": "teach_subtraction_only_as_take_away",
+    "error_description": "restrict subtraction instruction to the removal model and exclude difference",
+    "provenance_comments": "=== row 40489: teacher-belief subtraction-as-take-away ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(subtraction_as_take_away_only(A-B, Got) :-\n    Got is A - B,\n    B > A,\n    !,\n    fail;\n    Got is A - B).\n\ntest_harness:arith_misconception(db_row(40489), whole_number, churn_40489_teach_subtraction_only_as_take_away,\n    churn_candidate:subtraction_as_take_away_only,\n    5-8,\n    -3).",
+      "result": "predicate must be named churn_40489_teach_subtraction_only_as_take_away"
+    },
+    {
+      "response": "churn_candidate:(churn_40489_teach_subtraction_only_as_take_away(A-B, Got) :-\n    Got is A - B).\n\ntest_harness:arith_misconception(db_row(40489), whole_number, churn_40489_teach_subtraction_only_as_take_away,\n    churn_candidate:churn_40489_teach_subtraction_only_as_take_away,\n    7-3,\n    4).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

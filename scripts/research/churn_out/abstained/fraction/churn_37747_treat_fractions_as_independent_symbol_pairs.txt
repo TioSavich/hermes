@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37747",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37747_treat_fractions_as_independent_symbol_pairs",
+    "target_operation": "fraction_comparison_equivalence",
+    "citation": "Randolph A. Philipp, Rebecca Ambrose, Lisa L. C. Lamb, Judith T. Sowder, Bonnie P. Schappelle, Larry Sowder, Eva Thanheiser, Jennifer Chauvot (2007)",
+    "error_action": "treat_fractions_as_independent_symbol_pairs",
+    "error_description": "compare or equate fractions without coordinating numerator and denominator as a single magnitude",
+    "provenance_comments": "=== row 37747: PSTs fail simple equivalence/comparison ===\nPopulation-level rates without specific wrong transformation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive misconception (treating numerator and denominator as independent) but does not specify a concrete, runnable procedural rule that produces a deterministic wrong result for a given input; without a defined algorithmic transformation, a runnable Prolog rule and a defensible probe cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive misconception (treating numerator and denominator as independent) but does not specify a concrete, runnable procedural rule that produces a deterministic wrong result for a given input; without a defined algorithmic transformation, a runnable Prolog rule and a defensible probe cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

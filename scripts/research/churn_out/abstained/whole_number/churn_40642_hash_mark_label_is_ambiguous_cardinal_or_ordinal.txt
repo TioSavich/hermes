@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40642",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40642_hash_mark_label_is_ambiguous_cardinal_or_ordinal",
+    "target_operation": "number_line_interpretation",
+    "citation": "Koeno Gravemeijer (2004)",
+    "error_action": "hash_mark_label_is_ambiguous_cardinal_or_ordinal",
+    "error_description": "a labeled mark on the line could mean that many objects or the position with that rank",
+    "provenance_comments": "=== row 40642: hash marks on empty number line — cardinal vs ordinal ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual ambiguity in labeling hash marks on a number line (cardinal vs. ordinal interpretation), but does not specify a concrete syntactic or procedural error that can be encoded as a binary predicate `Rule(Input, Got)` producing a *deterministic wrong answer* for a *specific numeric input*. There is no runnable computational rule—only an interpretive ambiguity—so no executable `Rule` can be constructed that meets the schema requirement of producing the documented wrong outcome via a deterministic computation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual ambiguity in labeling hash marks on a number line (cardinal vs. ordinal interpretation), but does not specify a concrete syntactic or procedural error that can be encoded as a binary predicate `Rule(Input, Got)` producing a *deterministic wrong answer* for a *specific numeric input*. There is no runnable computational rule—only an interpretive ambiguity—so no executable `Rule` can be constructed that meets the schema requirement of producing the documented wrong outcome via a deterministic computation.",
+      "result": "abstained"
+    }
+  ]
+}

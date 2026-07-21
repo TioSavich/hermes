@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "154",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_154_repeated_addition_or_skip_counting_for_multiplication",
+    "target_operation": "multiplication_units_coordination",
+    "citation": "Norton, Anderson and Boyce, Steven (2015)",
+    "error_action": "repeated_addition_or_skip_counting_for_multiplication",
+    "error_description": "compute a product by adding the multiplicand repeatedly or skip-counting rather than coordinating composite units",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive procedure (repeated addition or skip-counting) rather than a specific syntactic rule that can be implemented as a Prolog predicate of arity 2 without side effects or dynamic behavior. SWI-Prolog built-ins alone cannot simulate the student's mental process of repeated addition or skip-counting in a deterministic, stateless way that produces a *fixed wrong answer* for arbitrary inputs, because the number of iterations (the multiplier) is not fixed in the rule. A rule like `Got is A * B` would compute the correct result, not the erroneous one, and no pure arithmetic rule can encode \"student incorrectly uses repeated addition\" without introducing non-determinism, cuts, or dynamic predicates—none of which are permitted. Hence, no runnable rule satisfying the contract can be constructed.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_154_repeated_addition_or_skip_counting_for_multiplication(A-B, Got) :-\n    % Simulate repeated addition of B, A times\n    findall(B, between(1, A, _), Addends),\n    sum_list(Addends, Got)).\n\ntest_harness:arith_misconception(db_row(154), whole_number, churn_154_repeated_addition_or_skip_counting_for_multiplication,\n    churn_candidate:churn_154_repeated_addition_or_skip_counting_for_multiplication,\n    4-3,\n    12).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive procedure (repeated addition or skip-counting) rather than a specific syntactic rule that can be implemented as a Prolog predicate of arity 2 without side effects or dynamic behavior. SWI-Prolog built-ins alone cannot simulate the student's mental process of repeated addition or skip-counting in a deterministic, stateless way that produces a *fixed wrong answer* for arbitrary inputs, because the number of iterations (the multiplier) is not fixed in the rule. A rule like `Got is A * B` would compute the correct result, not the erroneous one, and no pure arithmetic rule can encode \"student incorrectly uses repeated addition\" without introducing non-determinism, cuts, or dynamic predicates—none of which are permitted. Hence, no runnable rule satisfying the contract can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

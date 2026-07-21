@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39218",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39218_measure_and_operator_fractions_are_identical",
+    "target_operation": "fraction_subconstructs",
+    "citation": "Marie Tichá & Alena Hošpesová (2013)",
+    "error_action": "measure_and_operator_fractions_are_identical",
+    "error_description": "two problems are the same problem if their fractions look the same, regardless of whether a fraction names a quantity or acts on one",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_39218_measure_and_operator_fractions_are_identical",
+  "attempts": [
+    {
+      "response": "churn_candidate:(measure_and_operator_identical(frac(N1,D1), frac(N2,D2)) :-\n    N1 =:= N2,\n    D1 =:= D2).\n\ntest_harness:arith_misconception(db_row(39218), fraction, churn_39218_measure_and_operator_fractions_are_identical,\n    churn_candidate:measure_and_operator_identical,\n    frac(1,2),\n    frac(1,2)).",
+      "result": "predicate must be named churn_39218_measure_and_operator_fractions_are_identical"
+    },
+    {
+      "response": "churn_candidate:(measure_and_operator_identical(frac(N1,D1), frac(N2,D2)) :-\n    N1 =:= N2,\n    D1 =:= D2).\n\ntest_harness:arith_misconception(db_row(39218), fraction, churn_39218_measure_and_operator_fractions_are_identical,\n    churn_candidate:measure_and_operator_identical,\n    frac(3,4),\n    frac(3,4)).",
+      "result": "predicate must be named churn_39218_measure_and_operator_fractions_are_identical"
+    }
+  ]
+}

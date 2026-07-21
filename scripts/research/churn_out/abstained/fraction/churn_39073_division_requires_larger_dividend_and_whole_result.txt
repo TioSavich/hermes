@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39073",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39073_division_requires_larger_dividend_and_whole_result",
+    "target_operation": "division_dividend_smaller_than_divisor",
+    "citation": "LYN D. ENGLISH (1997)",
+    "error_action": "division_requires_larger_dividend_and_whole_result",
+    "error_description": "you cannot divide a smaller number by a larger one because the quotient must be a whole number",
+    "provenance_comments": "=== row 39073: can't divide smaller by larger ===\nToo vague — refusal of operation, no numeric wrong output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual refusal of the operation (\"you cannot divide a smaller number by a larger one\") with no numeric wrong output specified. Since the schema requires a runnable rule that produces a documented wrong answer (Got) that does not unify with ExpectedCorrect, and the error lacks a concrete incorrect result to encode, a runnable Prolog rule cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual refusal of the operation (\"you cannot divide a smaller number by a larger one\") with no numeric wrong output specified. Since the schema requires a runnable rule that produces a documented wrong answer (Got) that does not unify with ExpectedCorrect, and the error lacks a concrete incorrect result to encode, a runnable Prolog rule cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39772",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39772_mark_fraction_after_wrong_segment_count",
+    "target_operation": "number_line_partition_marking",
+    "citation": "Ali Alenazi (2016)",
+    "error_action": "mark_fraction_after_wrong_segment_count",
+    "error_description": "place 1/2 after three of six segments rather than at the correct partition point",
+    "provenance_comments": "=== row 39772: mismark number line for measurement division ===\nToo vague — placement error without a concrete numeric arithmetic output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a placement mistake on a number line (marking 1/2 after three of six segments) but provides no concrete numeric arithmetic operation or output format that can be captured by a deterministic binary predicate `Rule(Input, Got)` producing a structured wrong answer. The error is spatial/graphical, not arithmetical, and cannot be encoded as a SWI-Prolog arithmetic rule yielding a non-unifying `ExpectedCorrect`.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a placement mistake on a number line (marking 1/2 after three of six segments) but provides no concrete numeric arithmetic operation or output format that can be captured by a deterministic binary predicate `Rule(Input, Got)` producing a structured wrong answer. The error is spatial/graphical, not arithmetical, and cannot be encoded as a SWI-Prolog arithmetic rule yielding a non-unifying `ExpectedCorrect`.",
+      "result": "abstained"
+    }
+  ]
+}

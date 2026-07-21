@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39050",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39050_combine_all_numerals_found_in_text",
+    "target_operation": "word_problem_number_grabbing",
+    "citation": "ROLF HEDRÉN (1985)",
+    "error_action": "combine_all_numerals_found_in_text",
+    "error_description": "pull every number out of the problem text and apply some operation to them",
+    "provenance_comments": "=== row 39050: blindly combine all numbers from problem text ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a general heuristic (“pull every number out of the problem text and apply some operation to them”) without specifying a unique, deterministic operation or rule. Since the procedure is underspecified (no canonical operation is given), we cannot construct a runnable Prolog rule of arity 2 that reliably produces the documented wrong answer for a given input. Without a precise mapping from input to erroneous output, admission violates the execution gate requirement.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a general heuristic (“pull every number out of the problem text and apply some operation to them”) without specifying a unique, deterministic operation or rule. Since the procedure is underspecified (no canonical operation is given), we cannot construct a runnable Prolog rule of arity 2 that reliably produces the documented wrong answer for a given input. Without a precise mapping from input to erroneous output, admission violates the execution gate requirement.",
+      "result": "abstained"
+    }
+  ]
+}

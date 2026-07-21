@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38276",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38276_build_up_by_repeated_addition_of_smallest_unit",
+    "target_operation": "composite_unit_construction",
+    "citation": "Anderson Norton, Steven Boyce (2015)",
+    "error_action": "build_up_by_repeated_addition_of_smallest_unit",
+    "error_description": "reach a larger quantity by repeatedly adding the smallest unit and counting",
+    "provenance_comments": "=== row 38276: Stage 1 composite units via repeated addition ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive process (repeated addition of smallest units with counting) that cannot be captured by a deterministic 2-place predicate rule without inventing a simulation of student counting behavior; no runnable procedural rule exists that produces the documented wrong answer in a single call while preserving the exact documented mechanism.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(build_up_by_repeated_addition_of_smallest_unit(A, Got) :-\n    Got is A).\n\ntest_harness:arith_misconception(db_row(38276), whole_number, churn_38276_build_up_by_repeated_addition_of_smallest_unit,\n    churn_candidate:churn_38276_build_up_by_repeated_addition_of_smallest_unit,\n    5,\n    5).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive process (repeated addition of smallest units with counting) that cannot be captured by a deterministic 2-place predicate rule without inventing a simulation of student counting behavior; no runnable procedural rule exists that produces the documented wrong answer in a single call while preserving the exact documented mechanism.",
+      "result": "abstained"
+    }
+  ]
+}

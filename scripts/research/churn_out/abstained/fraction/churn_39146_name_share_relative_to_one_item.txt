@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39146",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39146_name_share_relative_to_one_item",
+    "target_operation": "referent_unit_naming",
+    "citation": "Amy J. Hackenberg & Mi Yeon Lee (2016)",
+    "error_action": "name_share_relative_to_one_item",
+    "error_description": "call a distributed share three-fifths because three parts were taken, one from each of several items",
+    "provenance_comments": "=== row 39146: distributive partition names share against one item ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (naming a distributed share as three-fifths because three parts were taken, one from each of several items) but does not specify a runnable syntactic rule or a concrete input-output pair that produces a fixed incorrect result. Without a precise, generalizable transformation or operation (e.g., an arithmetic or syntactic procedure mapping inputs to the documented error), a SWI-Prolog rule satisfying the schema cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (naming a distributed share as three-fifths because three parts were taken, one from each of several items) but does not specify a runnable syntactic rule or a concrete input-output pair that produces a fixed incorrect result. Without a precise, generalizable transformation or operation (e.g., an arithmetic or syntactic procedure mapping inputs to the documented error), a SWI-Prolog rule satisfying the schema cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

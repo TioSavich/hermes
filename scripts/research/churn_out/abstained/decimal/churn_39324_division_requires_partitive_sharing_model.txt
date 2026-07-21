@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39324",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39324_division_requires_partitive_sharing_model",
+    "target_operation": "division_by_decimal_less_than_one",
+    "citation": "MASAKAZU OKAZAKI and MASATAKA KOYAMA (2005)",
+    "error_action": "division_requires_partitive_sharing_model",
+    "error_description": "division only makes sense as sharing a whole into a whole number of equal groups",
+    "provenance_comments": "=== row 39324: division by 0.8 conceptually meaningless ===\nToo vague — inability, not a specific wrong answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: documented error is too vague to yield a specific runnable rule and defensible probe; it expresses a conceptual inability rather than a concrete wrong computation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: documented error is too vague to yield a specific runnable rule and defensible probe; it expresses a conceptual inability rather than a concrete wrong computation.",
+      "result": "abstained"
+    }
+  ]
+}

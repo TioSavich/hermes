@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40095",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40095_hold_reference_unit_fixed_across_operation",
+    "target_operation": "reference_unit_in_fraction_operations",
+    "citation": "JUDITH SOWDER, BARBARA ARMSTRONG, SUSAN LAMON, MARTIN SIMON, LARRY SOWDER and ALBA THOMPSON (1998)",
+    "error_action": "hold_reference_unit_fixed_across_operation",
+    "error_description": "keep a single whole as the referent rather than re-unitizing as the situation shifts",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding about re-unitizing reference units in fraction operations, but no specific syntactic or procedural rule is provided that would generate a concrete, runnable Prolog predicate producing a fixed wrong answer for a given input. Without a precise algorithmic error (e.g., \"always add denominators\", \"ignore numerators\"), we cannot construct a deterministic rule that reliably produces the documented incorrect result for a test case.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding about re-unitizing reference units in fraction operations, but no specific syntactic or procedural rule is provided that would generate a concrete, runnable Prolog predicate producing a fixed wrong answer for a given input. Without a precise algorithmic error (e.g., \"always add denominators\", \"ignore numerators\"), we cannot construct a deterministic rule that reliably produces the documented incorrect result for a test case.",
+      "result": "abstained"
+    }
+  ]
+}

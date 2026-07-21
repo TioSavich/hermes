@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40174",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40174_always_use_common_denominator_algorithm",
+    "target_operation": "fraction_comparison",
+    "citation": "Ian Whitacre, Susan D. Nickerson (2016)",
+    "error_action": "always_use_common_denominator_algorithm",
+    "error_description": "compare any two fractions by converting them to a common denominator and comparing numerators",
+    "provenance_comments": "=== row 40174: inflexible common-denominator algorithm ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a correct general algorithm (common denominator comparison) rather than a specific procedural misconception; no incorrect rule can be encoded without inventing mathematics or misrepresenting the documented behavior.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a correct general algorithm (common denominator comparison) rather than a specific procedural misconception; no incorrect rule can be encoded without inventing mathematics or misrepresenting the documented behavior.",
+      "result": "abstained"
+    }
+  ]
+}

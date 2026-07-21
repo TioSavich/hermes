@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38553",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38553_partition_only_when_count_divisible",
+    "target_operation": "equipartitioning",
+    "citation": "Jae M. Baek, Megan H. Wickstrom, Jennifer M. Tobias, Amanda L. Miller, Elif Safak, Nicole Wessman-Enzinger, J. Vince Kirwan (2017)",
+    "error_action": "partition_only_when_count_divisible",
+    "error_description": "you can split a set of pieces into equal new parts only when the piece-count is already a multiple of the new denominator",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception about partitioning (a discrete, combinatorial constraint), but the schema requires an executable arithmetic rule that produces a specific wrong result for a given input. There is no concrete arithmetic operation or transformation on fractions specified—only a condition on divisibility of counts. Without a defined input-output behavior (e.g., a formula or algorithm that yields a specific incorrect fraction), we cannot construct a runnable predicate `Rule(Input, Got)` that reliably produces the documented wrong outcome in all cases. Thus, no admissible rule can be drafted per the contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception about partitioning (a discrete, combinatorial constraint), but the schema requires an executable arithmetic rule that produces a specific wrong result for a given input. There is no concrete arithmetic operation or transformation on fractions specified—only a condition on divisibility of counts. Without a defined input-output behavior (e.g., a formula or algorithm that yields a specific incorrect fraction), we cannot construct a runnable predicate `Rule(Input, Got)` that reliably produces the documented wrong outcome in all cases. Thus, no admissible rule can be drafted per the contract.",
+      "result": "abstained"
+    }
+  ]
+}

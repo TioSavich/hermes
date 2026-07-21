@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37668",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37668_more_partition_lines_means_different_amount",
+    "target_operation": "equivalent_fractions",
+    "citation": "Thomas R. Post, Ipke Wachsmuth, Richard Lesh and Merlyn J. Behr (1985)",
+    "error_action": "more_partition_lines_means_different_amount",
+    "error_description": "a region cut into more visible pieces is treated as showing a different quantity than one cut into fewer",
+    "provenance_comments": "=== row 37668: embodiment transformations / perception ===\nConceptual perception issue — no numeric wrong answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual perception issue about visual partitioning, not a concrete arithmetic procedure that can be encoded as a runnable Prolog rule producing a specific wrong output for a given input. There is no deterministic mathematical rule linking \"more partition lines\" to a specific numeric error in equivalent fraction reasoning that can be captured by a predicate of arity 2 with a fixed input-output pair.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual perception issue about visual partitioning, not a concrete arithmetic procedure that can be encoded as a runnable Prolog rule producing a specific wrong output for a given input. There is no deterministic mathematical rule linking \"more partition lines\" to a specific numeric error in equivalent fraction reasoning that can be captured by a predicate of arity 2 with a fixed input-output pair.",
+      "result": "abstained"
+    }
+  ]
+}

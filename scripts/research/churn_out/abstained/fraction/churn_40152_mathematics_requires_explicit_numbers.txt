@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40152",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40152_mathematics_requires_explicit_numbers",
+    "target_operation": "nature_of_mathematical_activity",
+    "citation": "MARIE TICHA and ALENA HOSPESOVA (2006)",
+    "error_action": "mathematics_requires_explicit_numbers",
+    "error_description": "an activity counts as mathematical only if it explicitly manipulates numbers",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception about the nature of mathematical activity (i.e., that mathematics only counts if it explicitly manipulates numbers), rather than a specific syntactic or semantic error in fraction arithmetic. It does not specify a runnable rule that produces a *wrong numerical result* for a given input in fraction operations. The schema requires a rule that, when applied to an input, yields the documented incorrect output; this misconception lacks a defined computational procedure or output mismatch in the arithmetic domain.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception about the nature of mathematical activity (i.e., that mathematics only counts if it explicitly manipulates numbers), rather than a specific syntactic or semantic error in fraction arithmetic. It does not specify a runnable rule that produces a *wrong numerical result* for a given input in fraction operations. The schema requires a rule that, when applied to an input, yields the documented incorrect output; this misconception lacks a defined computational procedure or output mismatch in the arithmetic domain.",
+      "result": "abstained"
+    }
+  ]
+}

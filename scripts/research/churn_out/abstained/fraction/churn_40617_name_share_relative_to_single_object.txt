@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40617",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40617_name_share_relative_to_single_object",
+    "target_operation": "defining_the_whole_in_sharing",
+    "citation": "Clea Fernandez (2005)",
+    "error_action": "name_share_relative_to_single_object",
+    "error_description": "name the resulting fraction against one object rather than the whole set being shared",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (naming a fraction relative to a single object instead of the whole set), but provides no concrete arithmetic procedure or rule that yields a specific wrong result from a given input. Without a definable, general, executable mapping from input to erroneous output (e.g., a formula or reduction step), no runnable rule of arity 2 can be constructed that consistently produces the documented error in a testable way.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (naming a fraction relative to a single object instead of the whole set), but provides no concrete arithmetic procedure or rule that yields a specific wrong result from a given input. Without a definable, general, executable mapping from input to erroneous output (e.g., a formula or reduction step), no runnable rule of arity 2 can be constructed that consistently produces the documented error in a testable way.",
+      "result": "abstained"
+    }
+  ]
+}

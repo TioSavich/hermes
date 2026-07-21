@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38195",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38195_quotient_smaller_than_dividend",
+    "target_operation": "division_by_a_fraction",
+    "citation": "Susanne Prediger (2005)",
+    "error_action": "quotient_smaller_than_dividend",
+    "error_description": "dividing always produces a result smaller than the starting amount",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "registration source/domain/description does not match the entry",
+  "attempts": [
+    {
+      "response": "churn_candidate:(quotient_smaller_than_dividend_div_by_fraction(A/B, Q) :-\n    A > 0,\n    B > 0,\n    Q is A / (1/B),\n    Q < A).\n\ntest_harness:arith_misconception(db_row(38195), fraction, churn_38195_quotient_smaller_than_dividend,\n    churn_candidate:quotient_smaller_than_dividend_div_by_fraction,\n    5/(1/2),\n    10).",
+      "result": "predicate must be named churn_38195_quotient_smaller_than_dividend"
+    },
+    {
+      "response": "churn_candidate:(quotient_smaller_than_dividend_f(A/B, Q) :-\n    number(A),\n    number(B),\n    Q is A / B,\n    Q < A).\n\ntest_harness:arith_misconception(db_row(38195), fraction, quotient_smaller_than_dividend,\n    churn_candidate:quotient_smaller_than_dividend_f,\n    3/2,\n    1.5).",
+      "result": "registration source/domain/description does not match the entry"
+    }
+  ]
+}

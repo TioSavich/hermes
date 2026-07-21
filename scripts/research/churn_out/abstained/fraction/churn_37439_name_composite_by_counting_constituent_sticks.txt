@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37439",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37439_name_composite_by_counting_constituent_sticks",
+    "target_operation": "commensurate_unit_fraction",
+    "citation": "Leslie P. Steffe (2002)",
+    "error_action": "name_composite_by_counting_constituent_sticks",
+    "error_description": "name a six-of-twenty-four piece by how many sub-sticks compose it ('four-twenty-fourths')",
+    "provenance_comments": "Fraction misconceptions — research corpus batch 6/7.\nNative arithmetic layer only. Theoretical annotations as comments:\n% GROUNDED: TODO — placeholder for future embodied arithmetic layer\n% SCHEMA: <schema name> — Lakoff & Nunez grounding when applicable\n% CONNECTS TO: s(comp_nec(unlicensed(...))) — PML operator path\n\nRegistration convention (from Task 3 arch fix):\ntest_harness:arith_misconception(Source, Domain, Description,\nmisconceptions_fraction_batch_6:rule_name, Input, Expected).\nRule predicates do NOT go on the module export list.\n\n\n---- Encodings appended by agent for batch 6 ----\n\n=== row 37439: composite unit fraction naming (context-specific, no mechanical rule) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: documented error describes a naming convention (counting sub-sticks) rather than a computational rule that can be expressed as a binary predicate producing a wrong arithmetic result; no runnable rule predicate of arity 2 can be constructed from the description without inventing mathematics.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: documented error describes a naming convention (counting sub-sticks) rather than a computational rule that can be expressed as a binary predicate producing a wrong arithmetic result; no runnable rule predicate of arity 2 can be constructed from the description without inventing mathematics.",
+      "result": "abstained"
+    }
+  ]
+}

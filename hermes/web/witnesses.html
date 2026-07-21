@@ -403,14 +403,14 @@
       };
       var groundingOps = [
         "image_schema", "primitive_for_practice", "grounding_inference_witness", "commitment_match",
-        "corpus_grammar_summary", "elaborations", "representation_spine_witness", "target_expressive_power_witness"
+        "corpus_grammar_summary", "elaborations", "representation_spine_witness", "target_inferential_strength_witness"
       ];
       var groundingDefaults = {
         image_schema: {practice: "p_count_on_from_larger"}, primitive_for_practice: {practice: "p_count_on_from_larger"},
         grounding_inference_witness: {metaphor: "arithmetic_is_object_collection", inference: "commutativity_of_addition"},
         commitment_match: {content: "A square is a rectangle because it has four right angles."},
         corpus_grammar_summary: {}, elaborations: {}, representation_spine_witness: {concept: "fraction"},
-        target_expressive_power_witness: {target: "fraction_addition"}
+        target_inferential_strength_witness: {target: "fraction_addition"}
       };
 
       function objectGroups(groups) {
@@ -519,7 +519,7 @@
         scorecard: "commitment tracker",
         up_level: "new question",
         up_levels: "new questions",
-        expressive_power: "what the representation can and cannot say",
+        inferential_strength: "conflict-set containment and bounded breadth tallies",
         hyperedge: "incompatible claim group",
         hyperedges: "incompatible claim groups",
         mua_kind: "Meaning-Use Relation kind",

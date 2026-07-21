@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39950",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39950_different_denominators_imply_no_relationship",
+    "target_operation": "fraction_relationships",
+    "citation": "Hara Bouta & Fotini Paraskeva (2013)",
+    "error_action": "different_denominators_imply_no_relationship",
+    "error_description": "fractions split into different numbers of parts have nothing to do with each other",
+    "provenance_comments": "=== row 39950: different denominators → unrelated fractions ===\nConceptual refusal, not a numeric rule.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual refusal (\"fractions split into different numbers of parts have nothing to do with each other\") rather than a computable syntactic transformation rule that produces a specific wrong numeric result. It does not specify a deterministic procedure mapping inputs to a fixed incorrect output, and thus cannot be encoded as a runnable predicate `Rule(Input, Got)` that reliably yields the documented error for arbitrary inputs.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual refusal (\"fractions split into different numbers of parts have nothing to do with each other\") rather than a computable syntactic transformation rule that produces a specific wrong numeric result. It does not specify a deterministic procedure mapping inputs to a fixed incorrect output, and thus cannot be encoded as a runnable predicate `Rule(Input, Got)` that reliably yields the documented error for arbitrary inputs.",
+      "result": "abstained"
+    }
+  ]
+}

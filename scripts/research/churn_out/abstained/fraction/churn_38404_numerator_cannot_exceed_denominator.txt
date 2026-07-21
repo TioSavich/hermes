@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38404",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38404_numerator_cannot_exceed_denominator",
+    "target_operation": "fractions_greater_than_one",
+    "citation": "Lynsey K. Gibbons, Elham Kazemi, Rebecca M. Lewis (2017)",
+    "error_action": "numerator_cannot_exceed_denominator",
+    "error_description": "a fraction's count of parts cannot be larger than the number of parts in one whole",
+    "provenance_comments": "=== row 38404: fraction cannot exceed parts per whole ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (numerator cannot exceed denominator) but provides no specific syntactic rule or algorithm that students apply to produce a wrong result in a computational task. Without a runnable procedure (e.g., a formula or transformation step) that yields a predictable incorrect output for a given input, no executable rule of arity 2 can be constructed. The misconception is interpretive and not procedural, so it cannot be encoded as `Rule(Input, Got)` where `Got` is the documented wrong answer.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (numerator cannot exceed denominator) but provides no specific syntactic rule or algorithm that students apply to produce a wrong result in a computational task. Without a runnable procedure (e.g., a formula or transformation step) that yields a predictable incorrect output for a given input, no executable rule of arity 2 can be constructed. The misconception is interpretive and not procedural, so it cannot be encoded as `Rule(Input, Got)` where `Got` is the documented wrong answer.",
+      "result": "abstained"
+    }
+  ]
+}

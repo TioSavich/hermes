@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39643",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39643_fractions_require_equal_parts_else_not_fractions",
+    "target_operation": "part_whole_partitioning",
+    "citation": "Julie M. Amador & Darrell Earnest (2018)",
+    "error_action": "fractions_require_equal_parts_else_not_fractions",
+    "error_description": "treat unequal pieces of a whole as failing to be parts at all rather than as unequal parts",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_39643_fractions_require_equal_parts_else_not_fractions",
+  "attempts": [
+    {
+      "response": "churn_candidate:(fractions_require_equal_parts_else_not_fractions(partition(Shape, Pieces), false) :-\n    \\+ all_equal(Pieces),\n    !,\n    false).\n\nall_equal([]).\nall_equal([X|Xs]) :-\n    maplist(=(X), Xs).\n\ntest_harness:arith_misconception(db_row(39643), fraction, churn_39643_fractions_require_equal_parts_else_not_fractions,\n    churn_candidate:fractions_require_equal_parts_else_not_fractions,\n    partition(circle, [1/3, 1/3, 1/6]),\n    true).",
+      "result": "predicate must be named churn_39643_fractions_require_equal_parts_else_not_fractions"
+    },
+    {
+      "response": "churn_candidate:(fractions_require_equal_parts_else_not_fractions(partition(Sides), false) :-\n    is_list(Sides),\n    Sides = [_,_|_],\n    \\+ all_equal(Sides)).\n\nall_equal([]).\nall_equal([X|Xs]) :- all_matching(X, Xs).\n\nall_matching(_, []).\nall_matching(X, [Y|Ys]) :- X =:= Y, all_matching(X, Ys).\n\ntest_harness:arith_misconception(db_row(39643), fraction, churn_39643_fractions_require_equal_parts_else_not_fractions,\n    churn_candidate:fractions_require_equal_parts_else_not_fractions,\n    partition([1,2,3]),\n    true).",
+      "result": "predicate must be named churn_39643_fractions_require_equal_parts_else_not_fractions"
+    }
+  ]
+}

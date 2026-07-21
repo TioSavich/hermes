@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37452",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37452_multiply_numerators_and_denominators",
+    "target_operation": "fraction_multiplication_algorithm",
+    "citation": "Amy J. Hackenberg, Erik S. Tillema (2009)",
+    "error_action": "multiply_numerators_and_denominators",
+    "error_description": "compute the composition by multiplying numerator by numerator and denominator by denominator",
+    "provenance_comments": "=== row 37452: standard algorithm as hindrance to reasoning ===\nStudent computed 2/3 × 7/9 = 14/27 by standard algorithm. The algorithm\nyields the correct numeric answer; the misconception is procedural\nreliance without structural modeling — no distinct wrong numeric answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a correct procedure (standard algorithm for fraction multiplication) and yields the numerically correct result (14/27 for 2/3 × 7/9). Since the misconception lies in procedural reliance without structural reasoning—not in producing a specific incorrect numerical answer—there is no documented *wrong* answer to encode as `Got` that differs from `ExpectedCorrect`. The schema requires `ExpectedCorrect` to not unify with `Got`, which cannot be satisfied when the procedure is mathematically valid.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a correct procedure (standard algorithm for fraction multiplication) and yields the numerically correct result (14/27 for 2/3 × 7/9). Since the misconception lies in procedural reliance without structural reasoning—not in producing a specific incorrect numerical answer—there is no documented *wrong* answer to encode as `Got` that differs from `ExpectedCorrect`. The schema requires `ExpectedCorrect` to not unify with `Got`, which cannot be satisfied when the procedure is mathematically valid.",
+      "result": "abstained"
+    }
+  ]
+}

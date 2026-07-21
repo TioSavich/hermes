@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "285",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_285_recall_facts_as_verbal_chant",
+    "target_operation": "rote_table_recall",
+    "citation": "Alice Onion (1998)",
+    "error_action": "recall_facts_as_verbal_chant",
+    "error_description": "retrieve multiplication facts as a memorized verbal chant without underlying structure",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive behavior (verbal chanting of memorized facts) rather than a specific, executable computational rule that can be expressed as a 2-arity predicate in SWI-Prolog producing a wrong numeric result. No runnable rule can be derived that maps an input pair to a documented incorrect output without inventing mathematics.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive behavior (verbal chanting of memorized facts) rather than a specific, executable computational rule that can be expressed as a 2-arity predicate in SWI-Prolog producing a wrong numeric result. No runnable rule can be derived that maps an input pair to a documented incorrect output without inventing mathematics.",
+      "result": "abstained"
+    }
+  ]
+}

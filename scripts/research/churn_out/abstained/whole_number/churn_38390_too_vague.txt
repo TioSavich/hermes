@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38390",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38390_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "=== row 38390: nonstandard count-tag sequence ===",
+    "provenance_comments": "=== row 38390: nonstandard count-tag sequence ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error description “nonstandard count-tag sequence” does not specify a runnable arithmetic procedure or a concrete computational error that can be expressed as a binary predicate rule producing a wrong result. Without a clear algorithmic mistake (e.g., misapplication of an operation, incorrect order, off-by-one in counting, etc.), no testable `Rule(Input, Got)` can be constructed that yields the documented error while remaining faithful to the schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error description “nonstandard count-tag sequence” does not specify a runnable arithmetic procedure or a concrete computational error that can be expressed as a binary predicate rule producing a wrong result. Without a clear algorithmic mistake (e.g., misapplication of an operation, incorrect order, off-by-one in counting, etc.), no testable `Rule(Input, Got)` can be constructed that yields the documented error while remaining faithful to the schema.",
+      "result": "abstained"
+    }
+  ]
+}

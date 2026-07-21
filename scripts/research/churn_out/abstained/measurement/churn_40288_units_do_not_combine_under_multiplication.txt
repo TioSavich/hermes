@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40288",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40288_units_do_not_combine_under_multiplication",
+    "target_operation": "multiplying_units",
+    "citation": "John K. Lannin, Matthew Webb, Kathryn Chval, Fran Arbaugh, Sarah Hicks, Cynthia Taylor, Rebecca Bruton (2013)",
+    "error_action": "units_do_not_combine_under_multiplication",
+    "error_description": "treat the product of two lengths as still a length rather than as an area with squared units",
+    "provenance_comments": "=== row 40288: no understanding of cm * cm = cm^2 ===\nToo vague: conceptual unit-multiplication gap.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: documented error is conceptual (misunderstanding that cm * cm = cm^2) but no runnable procedural rule or concrete input/output pair is provided; the description does not determine a specific, generalizable predicate that produces the wrong result in a way that can be tested with a concrete ExpectedCorrect.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: documented error is conceptual (misunderstanding that cm * cm = cm^2) but no runnable procedural rule or concrete input/output pair is provided; the description does not determine a specific, generalizable predicate that produces the wrong result in a way that can be tested with a concrete ExpectedCorrect.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38240",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38240_algorithm_placement_rules_are_arbitrary_conventions",
+    "target_operation": "algorithm_rule_status",
+    "citation": "Marta Laupa (2000)",
+    "error_action": "algorithm_placement_rules_are_arbitrary_conventions",
+    "error_description": "where you place a carried ten is a changeable social convention like a notation choice",
+    "provenance_comments": "=== row 38240: algorithm rules seen as conventions ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (treating algorithm placement rules as arbitrary conventions) but does not specify a runnable procedural rule that produces a specific wrong output for a given input. Without a concrete, generalizable algorithmic transformation that yields a documented incorrect result, no testable `Rule/2` predicate can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (treating algorithm placement rules as arbitrary conventions) but does not specify a runnable procedural rule that produces a specific wrong output for a given input. Without a concrete, generalizable algorithmic transformation that yields a documented incorrect result, no testable `Rule/2` predicate can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39187",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39187_retain_conjecture_against_negating_evidence",
+    "target_operation": "conjecturing_under_counterevidence",
+    "citation": "Pessia Tsamir (2002)",
+    "error_action": "retain_conjecture_against_negating_evidence",
+    "error_description": "keep the original claim and attend only to the confirming part of the work",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive behavior (retaining a conjecture despite negating evidence) rather than a specific syntactic or semantic error in computation that can be captured by a runnable Prolog rule of arity 2 producing a fixed wrong result for a given input. No concrete algorithmic procedure or deterministic transformation is specified that would allow construction of a testable `Rule(Input, Got)` where `Got` is a deterministic wrong answer. Without a reproducible computational error, no schema-compliant registration can be formed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive behavior (retaining a conjecture despite negating evidence) rather than a specific syntactic or semantic error in computation that can be captured by a runnable Prolog rule of arity 2 producing a fixed wrong result for a given input. No concrete algorithmic procedure or deterministic transformation is specified that would allow construction of a testable `Rule(Input, Got)` where `Got` is a deterministic wrong answer. Without a reproducible computational error, no schema-compliant registration can be formed.",
+      "result": "abstained"
+    }
+  ]
+}

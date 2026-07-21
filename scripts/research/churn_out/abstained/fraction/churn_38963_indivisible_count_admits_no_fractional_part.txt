@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38963",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38963_indivisible_count_admits_no_fractional_part",
+    "target_operation": "continuous_vs_discrete",
+    "citation": "Leen Streefland (1978)",
+    "error_action": "indivisible_count_admits_no_fractional_part",
+    "error_description": "since a week is seven whole days and seven has no half, the quantity cannot be halved",
+    "provenance_comments": "=== row 38963: cannot halve a week ===\nToo vague — discreteness claim without numeric transformation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: the documented error is a conceptual reasoning error about impossibility of halving a discrete whole (a week), not a syntactic arithmetic transformation that can be encoded as a binary predicate Rule(Input, Got) producing a specific wrong numerical result; no runnable rule with deterministic input-output behavior can be constructed from this vague discreteness claim without introducing external assumptions about representation or transformation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: the documented error is a conceptual reasoning error about impossibility of halving a discrete whole (a week), not a syntactic arithmetic transformation that can be encoded as a binary predicate Rule(Input, Got) producing a specific wrong numerical result; no runnable rule with deterministic input-output behavior can be constructed from this vague discreteness claim without introducing external assumptions about representation or transformation.",
+      "result": "abstained"
+    }
+  ]
+}

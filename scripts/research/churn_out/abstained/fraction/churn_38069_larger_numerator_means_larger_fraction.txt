@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38069",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38069_larger_numerator_means_larger_fraction",
+    "target_operation": "fraction_comparison_numerator_rule",
+    "citation": "Yaa Cole (2012)",
+    "error_action": "larger_numerator_means_larger_fraction",
+    "error_description": "judge the fraction with the bigger numerator to be the greater one",
+    "provenance_comments": "=== row 38069: \"larger numerator → larger fraction\" (no specific pair) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a heuristic (larger numerator implies larger fraction) without specifying a concrete binary operation or pair of fractions; it cannot be encoded as a deterministic 2-place predicate that reliably produces the documented wrong answer for a specific input pair without additional assumptions about the input fractions. The schema requires a runnable rule and a defensible probe, but no single input-output pair can capture the general heuristic without inventing the missing comparison logic (e.g., denominator equality or magnitude assumptions).",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38069_larger_numerator_means_larger_fraction(frac(N1,D1), frac(N2,D2), N1 > N2)).\n\ntest_harness:arith_misconception(db_row(38069), fraction, churn_38069_larger_numerator_means_larger_fraction,\n    churn_candidate:churn_38069_larger_numerator_means_larger_fraction,\n    frac(3,8) > frac(2,5),\n    true).\nABSTAIN: the documented error does not specify a binary comparison operation; the rule head expects two fractions but the registration's input is a comparison term, violating the schema's expectation that Input unifies with the first argument of Rule and ExpectedCorrect with the second.",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error is a heuristic (larger numerator implies larger fraction) without specifying a concrete binary operation or pair of fractions; it cannot be encoded as a deterministic 2-place predicate that reliably produces the documented wrong answer for a specific input pair without additional assumptions about the input fractions. The schema requires a runnable rule and a defensible probe, but no single input-output pair can capture the general heuristic without inventing the missing comparison logic (e.g., denominator equality or magnitude assumptions).",
+      "result": "abstained"
+    }
+  ]
+}

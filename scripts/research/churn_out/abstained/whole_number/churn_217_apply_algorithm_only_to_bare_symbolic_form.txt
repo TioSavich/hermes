@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "217",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_217_apply_algorithm_only_to_bare_symbolic_form",
+    "target_operation": "contextual_problem_solving",
+    "citation": "Sembiring et al. (2008)",
+    "error_action": "apply_algorithm_only_to_bare_symbolic_form",
+    "error_description": "execute the standard multiplication procedure but cannot select it for a word-problem situation",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a failure to apply a known algorithm in a word-problem context, which is a *meta-cognitive* or *situational recognition* error—not a procedural arithmetic mistake. No binary predicate `Rule(Input, Got)` can produce the *wrong* output for a given input without modeling the student's *failure to initiate* the algorithm, which requires context (e.g., natural language parsing, problem categorization) beyond pure arithmetic evaluation. SWI-Prolog built-ins alone cannot encode a \"select algorithm only for bare symbolic form\" behavior as a deterministic 2-place function from input to *incorrect* output, because the error manifests in *algorithm selection*, not in *computation*. Hence, no runnable rule satisfying the schema can be constructed without invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(applies_only_symbolic_mult(A-B, Got) :-\n    Got is A * B).\n\ntest_harness:arith_misconception(db_row(217), whole_number, churn_217_apply_algorithm_only_to_bare_symbolic_form,\n    churn_candidate:applies_only_symbolic_mult,\n    7*6,\n    42).",
+      "result": "predicate must be named churn_217_apply_algorithm_only_to_bare_symbolic_form"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a failure to apply a known algorithm in a word-problem context, which is a *meta-cognitive* or *situational recognition* error—not a procedural arithmetic mistake. No binary predicate `Rule(Input, Got)` can produce the *wrong* output for a given input without modeling the student's *failure to initiate* the algorithm, which requires context (e.g., natural language parsing, problem categorization) beyond pure arithmetic evaluation. SWI-Prolog built-ins alone cannot encode a \"select algorithm only for bare symbolic form\" behavior as a deterministic 2-place function from input to *incorrect* output, because the error manifests in *algorithm selection*, not in *computation*. Hence, no runnable rule satisfying the schema can be constructed without invention.",
+      "result": "abstained"
+    }
+  ]
+}

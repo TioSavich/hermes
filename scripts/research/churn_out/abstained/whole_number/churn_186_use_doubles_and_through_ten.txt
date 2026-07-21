@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "186",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_186_use_doubles_and_through_ten",
+    "target_operation": "derived_fact_addition",
+    "citation": "Steinberg (1985)",
+    "error_action": "use_doubles_and_through_ten",
+    "error_description": "derive a sum from a known double plus one or by bridging through ten",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error action \"use_doubles_and_through_ten\" describes a *strategy* (deriving a sum via doubles plus one or bridging through ten) rather than a specific incorrect computational rule that yields a deterministic wrong result for a given input. Without a concrete, generalizable rule that maps inputs to a fixed erroneous output (e.g., \"always add 1 to the double\" or \"always round to ten then add remainder\"), the procedure is under-specified to define a runnable predicate `Rule(Input, Got)` that consistently produces the documented error. The description does not uniquely determine *how* the error manifests numerically across instances.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error action \"use_doubles_and_through_ten\" describes a *strategy* (deriving a sum via doubles plus one or bridging through ten) rather than a specific incorrect computational rule that yields a deterministic wrong result for a given input. Without a concrete, generalizable rule that maps inputs to a fixed erroneous output (e.g., \"always add 1 to the double\" or \"always round to ten then add remainder\"), the procedure is under-specified to define a runnable predicate `Rule(Input, Got)` that consistently produces the documented error. The description does not uniquely determine *how* the error manifests numerically across instances.",
+      "result": "abstained"
+    }
+  ]
+}

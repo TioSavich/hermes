@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37681",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37681_pieces_below_a_size_threshold_are_not_viable_shares",
+    "target_operation": "equal_sharing",
+    "citation": "Susan B. Empson (2003)",
+    "error_action": "pieces_below_a_size_threshold_are_not_viable_shares",
+    "error_description": "if partitioning yields very small pieces the sharing is treated as impossible",
+    "provenance_comments": "=== row 37681: partition too-small-to-be-viable ===\nAffective / size-viability block — not a numeric error.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is described as an affective/size-viability block — not a numeric error — and lacks a concrete, executable procedural rule that maps inputs to a specific incorrect output. Since the task requires encoding a runnable rule that produces the documented wrong answer and the description gives no algorithmic detail (e.g., no threshold value, no decision function, no mapping from input to erroneous output), it cannot be formalized as a SWI-Prolog predicate of arity 2 without speculation or invention.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is described as an affective/size-viability block — not a numeric error — and lacks a concrete, executable procedural rule that maps inputs to a specific incorrect output. Since the task requires encoding a runnable rule that produces the documented wrong answer and the description gives no algorithmic detail (e.g., no threshold value, no decision function, no mapping from input to erroneous output), it cannot be formalized as a SWI-Prolog predicate of arity 2 without speculation or invention.",
+      "result": "abstained"
+    }
+  ]
+}

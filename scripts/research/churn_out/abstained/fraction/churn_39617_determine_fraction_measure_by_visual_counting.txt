@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39617",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39617_determine_fraction_measure_by_visual_counting",
+    "target_operation": "fractional_measure_distributive_coordination",
+    "citation": "Amy Hackenberg (2010)",
+    "error_action": "determine_fraction_measure_by_visual_counting",
+    "error_description": "read off a fractional measure by visually counting the possible small parts rather than reasoning from how the quantity was made",
+    "provenance_comments": "=== row 39617: retrospective visual counting ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a cognitive strategy (visual counting of parts) rather than a syntactic arithmetic rule that can be expressed as a binary predicate producing a deterministic wrong result from a given input; no runnable Rule predicate of arity 2 can be constructed without inventing a specific misapplication or assuming a particular representation not provided in the source.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a cognitive strategy (visual counting of parts) rather than a syntactic arithmetic rule that can be expressed as a binary predicate producing a deterministic wrong result from a given input; no runnable Rule predicate of arity 2 can be constructed without inventing a specific misapplication or assuming a particular representation not provided in the source.",
+      "result": "abstained"
+    }
+  ]
+}

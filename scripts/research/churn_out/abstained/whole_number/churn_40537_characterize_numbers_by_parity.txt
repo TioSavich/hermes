@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40537",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40537_characterize_numbers_by_parity",
+    "target_operation": "number_properties",
+    "citation": "Anne Watson (2010)",
+    "error_action": "characterize_numbers_by_parity",
+    "error_description": "attend chiefly to whether outcomes are odd or even when describing numbers",
+    "provenance_comments": "=== row 40537: odd/even focus dominating structure ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive bias (focusing on parity when describing numbers) rather than a specific, executable arithmetic procedure that can be captured as a deterministic 2-place predicate producing a wrong result. No runnable rule can be derived that consistently yields a documented wrong answer for a given input, nor can a clear Input/ExpectedCorrect pair be constructed per schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive bias (focusing on parity when describing numbers) rather than a specific, executable arithmetic procedure that can be captured as a deterministic 2-place predicate producing a wrong result. No runnable rule can be derived that consistently yields a documented wrong answer for a given input, nor can a clear Input/ExpectedCorrect pair be constructed per schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

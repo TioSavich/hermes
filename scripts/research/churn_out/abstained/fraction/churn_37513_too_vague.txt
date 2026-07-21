@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37513",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37513_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "=== row 37513: operator compare by additive difference ===",
+    "provenance_comments": "=== row 37513: operator compare by additive difference ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documentation provides no concrete mathematical procedure, only the phrase \"operator compare by additive difference\", which is insufficient to construct a runnable rule or a defensible probe. Without a clear description of the incorrect operation (e.g., how operands are transformed or combined), a faithful encoding of the documented student error cannot be determined.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documentation provides no concrete mathematical procedure, only the phrase \"operator compare by additive difference\", which is insufficient to construct a runnable rule or a defensible probe. Without a clear description of the incorrect operation (e.g., how operands are transformed or combined), a faithful encoding of the documented student error cannot be determined.",
+      "result": "abstained"
+    }
+  ]
+}

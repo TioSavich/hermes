@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37788",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37788_model_all_division_as_partitive_sharing",
+    "target_operation": "partitive_quotitive_division_models",
+    "citation": "Martin A. Simon (1993)",
+    "error_action": "model_all_division_as_partitive_sharing",
+    "error_description": "treat every division as splitting a quantity into a given number of equal groups",
+    "provenance_comments": "=== row 37788: rigidly partitive division (cannot generate quotitive model) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual bias (treating all division as partitive sharing), but no specific syntactic rule or algorithm is provided that produces a wrong result for a given input. Without a concrete, executable procedure that yields a deterministic incorrect output for a specific division problem, a runnable SWI-Prolog rule cannot be drafted. The task requires encoding a *documented student error* that maps an input to a *specific wrong answer*; this row only describes a cognitive tendency, not a computable misapplication.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(models_all_division_as_partitive_sharing(A-B, Got) :-\n    % Per misconception: treat division A ÷ B as splitting A into B equal groups,\n    % i.e., compute the size of each group → integer division A // B\n    % But in SWI-Prolog, // is integer division, and for whole numbers it matches partitive sharing\n    % However, the misconception is *rigid*: it applies to ALL division, including cases where\n    % quotitive (measurement) interpretation is natural (e.g., 12 ÷ 3 as \"how many groups of 3?\").\n    % The error is that the student *only* thinks partitively, so for 12 ÷ 3 they compute 12 ÷ 3 = 4 (size of each group),\n    % but they *fail* to recognize that the same computation also answers \"how many groups?\".\n    % Crucially, the misconception manifests as *inability to model quotitive cases*, not as wrong arithmetic.\n    % However, the task requires a runnable rule that produces a *documented wrong answer*.\n    % Since the documented error is *modeling-only* and not computational, no arithmetic error arises.\n    % Therefore, the misconception does not yield a distinct incorrect numerical result in standard arithmetic.\n    % But the registration schema demands a mismatch between Got and ExpectedCorrect.\n    % To satisfy the contract while staying true to the documented error, we must find a case where\n    % the partitive-only model leads to an incorrect *interpretation* that maps to a numerical error.\n    %\n    % Consider: 0 ÷ 5. Partitive: split 0 into 5 groups → each group has 0.\n    % Quotitive: how many groups of 5 can be made from 0? → 0 groups.\n    % Both give 0 — no mismatch.\n    %\n    % Consider: 5 ÷ 0. Partitive: split 5 into 0 groups — undefined. Student may incorrectly say 0 or 5.\n    % But the source does not document a specific numerical error for division by zero.\n    %\n    % Since the documented error is purely *conceptual* (rigid partitive model), and no *numerical* error is specified,\n    % we cannot construct a runnable rule that produces a documented *wrong answer* without overreaching.\n    % The schema requires a mismatch: `ExpectedCorrect` must not unify with `Got`.\n    % Without a documented numerical error, any numeric rule would be invented, violating the instruction.\n    %\n    % ABSTAIN is appropriate.\n    fail).\n\n% But ABSTAIN must be output if no runnable rule and defensible probe exist.\n% So the clause block above is invalid per contract.\n% Therefore:\nABSTAIN: The documented error is a conceptual modeling rigidity (only partitive interpretation), not a computational error. No specific numerical wrong answer is documented, so no runnable rule can be constructed that produces a mismatch between a documented wrong result and the correct result. The schema requires a concrete Input and ExpectedCorrect that do not unify with Got, which cannot be satisfied without inventing mathematics.",
+      "result": "external module qualification is not allowed: misconception:"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual bias (treating all division as partitive sharing), but no specific syntactic rule or algorithm is provided that produces a wrong result for a given input. Without a concrete, executable procedure that yields a deterministic incorrect output for a specific division problem, a runnable SWI-Prolog rule cannot be drafted. The task requires encoding a *documented student error* that maps an input to a *specific wrong answer*; this row only describes a cognitive tendency, not a computable misapplication.",
+      "result": "abstained"
+    }
+  ]
+}

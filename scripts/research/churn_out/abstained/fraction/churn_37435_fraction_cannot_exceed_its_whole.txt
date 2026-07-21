@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37435",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37435_fraction_cannot_exceed_its_whole",
+    "target_operation": "improper_fraction_conceptualization",
+    "citation": "John Olive, Leslie P. Steffe (2002)",
+    "error_action": "fraction_cannot_exceed_its_whole",
+    "error_description": "a fraction must be a part of and therefore no larger than the whole it names",
+    "provenance_comments": "Fraction misconceptions — research corpus batch 2/7.\nNative arithmetic layer only. Theoretical annotations as comments:\n% GROUNDED: TODO — placeholder for future embodied arithmetic layer\n% SCHEMA: <schema name> — Lakoff & Nunez grounding when applicable\n% CONNECTS TO: s(comp_nec(unlicensed(...))) — PML operator path\n\nRegistration convention (from Task 3 arch fix):\ntest_harness:arith_misconception(Source, Domain, Description,\nmisconceptions_fraction_batch_2:rule_name, Input, Expected).\nRule predicates do NOT go on the module export list.\n\n\n---- Encodings appended by agent for batch 2 ----\n\n=== row 37435: perturbation on improper fraction ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: no runnable rule can be constructed because the documented error describes a conceptual misunderstanding (that a fraction cannot exceed its whole) rather than a specific syntactic arithmetic procedure that can be encoded as a binary predicate producing a deterministic wrong result; the error is epistemological, not algorithmic.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no runnable rule can be constructed because the documented error describes a conceptual misunderstanding (that a fraction cannot exceed its whole) rather than a specific syntactic arithmetic procedure that can be encoded as a binary predicate producing a deterministic wrong result; the error is epistemological, not algorithmic.",
+      "result": "abstained"
+    }
+  ]
+}

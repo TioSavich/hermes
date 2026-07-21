@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39574",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39574_treat_all_number_lines_alike",
+    "target_operation": "number_line_model_type_confusion",
+    "citation": "Marja van den Heuvel-Panhuizen (2008)",
+    "error_action": "treat_all_number_lines_alike",
+    "error_description": "apply one undifferentiated procedure to any number line regardless of whether it models discrete or continuous quantity",
+    "provenance_comments": "=== row 39574: discrete vs continuous number lines (no numeric error) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual model confusion (treating discrete and continuous number lines identically) rather than a specific arithmetic procedure that can be encoded as a binary predicate producing a wrong result. No runnable rule or defensible probe can be constructed without inventing mathematics or assumptions beyond the documented description.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual model confusion (treating discrete and continuous number lines identically) rather than a specific arithmetic procedure that can be encoded as a binary predicate producing a wrong result. No runnable rule or defensible probe can be constructed without inventing mathematics or assumptions beyond the documented description.",
+      "result": "abstained"
+    }
+  ]
+}

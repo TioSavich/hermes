@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37524",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37524_odd_number_of_equal_parts_is_impossible",
+    "target_operation": "odd_partition_possibility",
+    "citation": "Yvonne Pothier and Daiyo Sawada (1983)",
+    "error_action": "odd_number_of_equal_parts_is_impossible",
+    "error_description": "a shape cannot be divided into an odd number of equal parts",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about geometric partitioning (odd number of equal parts being impossible), but no runnable arithmetic rule or executable predicate can be constructed that produces this misconception as a deterministic output for a given input, since it is not a computational procedure but a persistent belief. The schema requires a Rule predicate of arity 2 that, when called with Input, yields the documented wrong answer; this cannot be satisfied without arbitrary, non-generalizable encoding.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about geometric partitioning (odd number of equal parts being impossible), but no runnable arithmetic rule or executable predicate can be constructed that produces this misconception as a deterministic output for a given input, since it is not a computational procedure but a persistent belief. The schema requires a Rule predicate of arity 2 that, when called with Input, yields the documented wrong answer; this cannot be satisfied without arbitrary, non-generalizable encoding.",
+      "result": "abstained"
+    }
+  ]
+}

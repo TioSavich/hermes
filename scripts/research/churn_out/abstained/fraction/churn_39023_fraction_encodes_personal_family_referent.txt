@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39023",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39023_fraction_encodes_personal_family_referent",
+    "target_operation": "fraction_meaning",
+    "citation": "David Pimm (1991)",
+    "error_action": "fraction_encodes_personal_family_referent",
+    "error_description": "explains a fraction by mapping its parts onto members of one's own family",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule or defensible probe can be constructed because the documented error describes a conceptual mapping (personal family referent) rather than a syntactic or semantic transformation of fractional syntax that can be captured by a binary predicate producing a wrong output for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule or defensible probe can be constructed because the documented error describes a conceptual mapping (personal family referent) rather than a syntactic or semantic transformation of fractional syntax that can be captured by a binary predicate producing a wrong output for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

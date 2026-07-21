@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39676",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39676_only_doubling_numbers_terminate",
+    "target_operation": "terminating_decimal_conjecture",
+    "citation": "Nigel Calder, Tony Brown, Una Hanley, and Susan Darby (2006)",
+    "error_action": "only_doubling_numbers_terminate",
+    "error_description": "only divisors that are powers/multiples of two yield terminating decimals",
+    "provenance_comments": "=== row 39676: only doubling divisors terminate ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception about terminating decimals (that only divisors that are powers or multiples of 2 yield terminating decimals), but no runnable procedural rule is provided that maps a specific input to a wrong output in a way that can be implemented as a binary predicate without additional mathematical interpretation or assumptions. The misconception is about a general property, not a specific computational step, and no concrete input–output pair is documented. Therefore, a runnable `Rule(Input, Got)` cannot be constructed per schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception about terminating decimals (that only divisors that are powers or multiples of 2 yield terminating decimals), but no runnable procedural rule is provided that maps a specific input to a wrong output in a way that can be implemented as a binary predicate without additional mathematical interpretation or assumptions. The misconception is about a general property, not a specific computational step, and no concrete input–output pair is documented. Therefore, a runnable `Rule(Input, Got)` cannot be constructed per schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

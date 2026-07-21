@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38981",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38981_consecutive_ages_coexist_on_same_day",
+    "target_operation": "continuous_magnitude_mapping",
+    "citation": "BARBARA M. BRIZUELA (2005)",
+    "error_action": "consecutive_ages_coexist_on_same_day",
+    "error_description": "one can be both seven and seven-and-a-half on the very same day",
+    "provenance_comments": "=== row 38981: can be both ages simultaneously ===\nToo vague — timeline/ordering belief; no concrete fraction arithmetic output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding about age and time (consecutive ages coexisting on the same day), not a specific arithmetic procedure that produces a wrong fraction result. There is no runnable rule of arity 2 that maps inputs to a documented incorrect fraction output, nor a well-defined ExpectedCorrect fraction to compare against. The misconception resides in temporal reasoning, not in syntactic fraction manipulation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding about age and time (consecutive ages coexisting on the same day), not a specific arithmetic procedure that produces a wrong fraction result. There is no runnable rule of arity 2 that maps inputs to a documented incorrect fraction output, nor a well-defined ExpectedCorrect fraction to compare against. The misconception resides in temporal reasoning, not in syntactic fraction manipulation.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38765",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38765_check_each_number_in_range",
+    "target_operation": "divisibility_over_an_interval",
+    "citation": "ORIT HAZZAN AND RINA ZAZKIS (2005)",
+    "error_action": "check_each_number_in_range",
+    "error_description": "to find whether an interval contains a multiple of 7, test each individual number in the range by division",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "registration source/domain/description does not match the entry",
+  "attempts": [
+    {
+      "response": "churn_candidate:(check_each_number_in_range(A-B, Got) :-\n    findall(X, between(A, B, X), Numbers),\n    member(N, Numbers),\n    Got is N mod 7).\n\ntest_harness:arith_misconception(db_row(38765), whole_number, check_each_number_in_range,\n    churn_candidate:check_each_number_in_range,\n    10-20,\n    0).",
+      "result": "registration source/domain/description does not match the entry"
+    },
+    {
+      "response": "churn_candidate:(checks_each_number_in_range(A-B, Got) :-\n    findall(X, between(A, B, X), Numbers),\n    member(N, Numbers),\n    Got is N mod 7,\n    N mod 7 =:= 0).\n\ntest_harness:arith_misconception(db_row(38765), whole_number, too_vague,\n    churn_candidate:checks_each_number_in_range,\n    10-20,\n    0).",
+      "result": "registration source/domain/description does not match the entry"
+    }
+  ]
+}

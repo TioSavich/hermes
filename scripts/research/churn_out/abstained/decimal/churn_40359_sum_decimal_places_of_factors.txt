@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40359",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40359_sum_decimal_places_of_factors",
+    "target_operation": "decimal_point_placement",
+    "citation": "DER-CHING YANG, ROBERT E. REYS AND BARBARA J. REYS (2009)",
+    "error_action": "sum_decimal_places_of_factors",
+    "error_description": "the number of decimal places in the product equals the total decimal places in the two factors",
+    "provenance_comments": "=== row 40359: rote count-all-decimal-places rule (no factors) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a general principle (sum of decimal places in factors equals decimal places in product) but provides no concrete operation or rule form that can be instantiated as a runnable predicate without inventing mathematics or assumptions beyond the documentation. No specific input-output pair or procedural rule is given that would allow a defensible probe to be constructed without over-interpretation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a general principle (sum of decimal places in factors equals decimal places in product) but provides no concrete operation or rule form that can be instantiated as a runnable predicate without inventing mathematics or assumptions beyond the documentation. No specific input-output pair or procedural rule is given that would allow a defensible probe to be constructed without over-interpretation.",
+      "result": "abstained"
+    }
+  ]
+}

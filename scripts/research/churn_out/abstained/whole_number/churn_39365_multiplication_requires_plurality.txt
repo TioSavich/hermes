@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39365",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39365_multiplication_requires_plurality",
+    "target_operation": "multiplication_by_zero_and_one",
+    "citation": "ZBIGNIEW SEMADENI (1984)",
+    "error_action": "multiplication_requires_plurality",
+    "error_description": "multiplication must combine several groups, so multiplying by one or zero is meaningless",
+    "provenance_comments": "=== row 39365: conceptual discontinuity at x*0 and x*1 ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about the meaning of multiplication, not a procedural rule that can be encoded as a predicate producing a specific wrong output for a given input. Since no runnable rule can be defined that systematically produces a fixed incorrect result for multiplication by 0 or 1 (the error is contextual and semantic, not computational), and no concrete Input/ExpectedCorrect pair can be supplied that reflects this misconception in a testable arithmetic fashion, admission is precluded by the execution gate.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about the meaning of multiplication, not a procedural rule that can be encoded as a predicate producing a specific wrong output for a given input. Since no runnable rule can be defined that systematically produces a fixed incorrect result for multiplication by 0 or 1 (the error is contextual and semantic, not computational), and no concrete Input/ExpectedCorrect pair can be supplied that reflects this misconception in a testable arithmetic fashion, admission is precluded by the execution gate.",
+      "result": "abstained"
+    }
+  ]
+}

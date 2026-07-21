@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37569",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37569_all_drawn_partition_marks_must_be_counted",
+    "target_operation": "number_line_unpartitioning",
+    "citation": "George W. Bright, Merlyn J. Behr, Thomas R. Post and Ipke Wachsmuth (1988)",
+    "error_action": "all_drawn_partition_marks_must_be_counted",
+    "error_description": "every tick shown on the line must figure in the fraction name, so partitions cannot be mentally removed",
+    "provenance_comments": "=== row 37569: cannot mentally remove partition marks (no concrete numeric transformation) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about interpreting number lines (counting all partition marks as part of the denominator), but no concrete arithmetic operation or symbolic transformation is specified. There is no runnable binary predicate rule that produces a specific incorrect fraction from a given input without inventing a numeric procedure. The error is visual-spatial and not algebraically expressible in the required Prolog form.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about interpreting number lines (counting all partition marks as part of the denominator), but no concrete arithmetic operation or symbolic transformation is specified. There is no runnable binary predicate rule that produces a specific incorrect fraction from a given input without inventing a numeric procedure. The error is visual-spatial and not algebraically expressible in the required Prolog form.",
+      "result": "abstained"
+    }
+  ]
+}

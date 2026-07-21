@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37711",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37711_hour_requires_exact_hand_alignment",
+    "target_operation": "analog_clock_hour_reading",
+    "citation": "Darrell Earnest (2017)",
+    "error_action": "hour_requires_exact_hand_alignment",
+    "error_description": "if the hour hand is not exactly on the numeral, read the previous hour",
+    "provenance_comments": "=== row 37711: clock hand not exactly on the numeral ===\nToo vague: interpretation of clock hand position is not a numeric rule.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error \"if the hour hand is not exactly on the numeral, read the previous hour\" is not expressible as a deterministic, runnable SWI-Prolog rule of arity 2 because it lacks precise numeric criteria for \"not exactly on the numeral\" and \"exactly on the numeral\". Without a defined angular tolerance or numerical model of hand positions, the rule cannot be made general and executable.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error \"if the hour hand is not exactly on the numeral, read the previous hour\" is not expressible as a deterministic, runnable SWI-Prolog rule of arity 2 because it lacks precise numeric criteria for \"not exactly on the numeral\" and \"exactly on the numeral\". Without a defined angular tolerance or numerical model of hand positions, the rule cannot be made general and executable.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39494",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39494_apply_buggy_subtraction_procedure",
+    "target_operation": "subtraction_place_value",
+    "citation": "JAMES A. LEVIN (1981)",
+    "error_action": "apply_buggy_subtraction_procedure",
+    "error_description": "execute a systematic but flawed place-value subtraction routine",
+    "provenance_comments": "=== row 39494: empty example — no content to encode ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documentation provides no concrete example or specific flawed procedure to encode; it only states \"apply_buggy_subtraction_procedure\" and \"systematic but flawed place-value subtraction routine\" without specifying the exact buggy step(s) (e.g., subtracting tens from ones, ignoring zeros, borrowing errors). Without a determinate rule mapping inputs to the documented wrong output, a runnable predicate cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documentation provides no concrete example or specific flawed procedure to encode; it only states \"apply_buggy_subtraction_procedure\" and \"systematic but flawed place-value subtraction routine\" without specifying the exact buggy step(s) (e.g., subtracting tens from ones, ignoring zeros, borrowing errors). Without a determinate rule mapping inputs to the documented wrong output, a runnable predicate cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

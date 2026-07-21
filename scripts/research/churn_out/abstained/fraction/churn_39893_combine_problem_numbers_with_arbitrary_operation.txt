@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39893",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39893_combine_problem_numbers_with_arbitrary_operation",
+    "target_operation": "fraction_of_a_quantity",
+    "citation": "Fatma Gizem Karaoglan Yilmaz, Burçin Gökkurt Özdemir & Zehra Yasar (2018)",
+    "error_action": "combine_problem_numbers_with_arbitrary_operation",
+    "error_description": "pick numbers from the problem and apply some operation without modeling the part-of-quantity relation",
+    "provenance_comments": "=== row 39893: random arithmetic for fraction of a quantity ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is too vague to specify a runnable rule that consistently produces a wrong answer for the fraction_of_a_quantity operation without inventing a specific incorrect procedure. The phrase \"combine_problem_numbers_with_arbitrary_operation\" does not define a deterministic algebraic pattern (e.g., which numbers, which operation, in what order), making it impossible to encode a single, general, executable rule meeting the schema requirements.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39893_combine_problem_numbers_with_arbitrary_operation(Num1-Num2, Result) :-\n    random_operator(Operator),\n    Result is Num1 Operator Num2).\n\nrandom_operator(+) :- !.\nrandom_operator(*) :- !.\n\ntest_harness:arith_misconception(db_row(39893), fraction, churn_39893_combine_problem_numbers_with_arbitrary_operation,\n    churn_candidate:churn_39893_combine_problem_numbers_with_arbitrary_operation,\n    3-4,\n    7).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error is too vague to specify a runnable rule that consistently produces a wrong answer for the fraction_of_a_quantity operation without inventing a specific incorrect procedure. The phrase \"combine_problem_numbers_with_arbitrary_operation\" does not define a deterministic algebraic pattern (e.g., which numbers, which operation, in what order), making it impossible to encode a single, general, executable rule meeting the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

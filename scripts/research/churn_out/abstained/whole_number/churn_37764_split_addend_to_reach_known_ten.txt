@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37764",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37764_split_addend_to_reach_known_ten",
+    "target_operation": "addition_derived_facts",
+    "citation": "Eddie M. Gray and David O. Tall (1994)",
+    "error_action": "split_addend_to_reach_known_ten",
+    "error_description": "break an addend into equal halves to reuse a known doubles/ten combination",
+    "provenance_comments": "=== row 37764: derived-facts path gets correct answer ===\nStudent eventually arrives at 14 for 8+6 via a clunky split. Procedural\ninefficiency, no wrong numeric output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural inefficiency (splitting an addend into equal halves to reuse a known doubles/ten combination) that still yields the correct answer (14 for 8+6). Since the output contract requires that `ExpectedCorrect` must not unify with `Got`, but the documented procedure produces the correct result, no valid `Got` exists that is both (a) the documented wrong answer and (b) different from the correct answer. The misconception does not produce an incorrect numeric outcome, so it cannot satisfy the schema requirement.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural inefficiency (splitting an addend into equal halves to reuse a known doubles/ten combination) that still yields the correct answer (14 for 8+6). Since the output contract requires that `ExpectedCorrect` must not unify with `Got`, but the documented procedure produces the correct result, no valid `Got` exists that is both (a) the documented wrong answer and (b) different from the correct answer. The misconception does not produce an incorrect numeric outcome, so it cannot satisfy the schema requirement.",
+      "result": "abstained"
+    }
+  ]
+}

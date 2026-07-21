@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40372",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40372_result_cannot_exceed_the_original_whole",
+    "target_operation": "whole_times_improper_fraction",
+    "citation": "SOO JIN LEE and JAEHONG SHIN (2015)",
+    "error_action": "result_cannot_exceed_the_original_whole",
+    "error_description": "after partitioning, the constructed quantity should stay within the size of the starting whole",
+    "provenance_comments": "=== row 40372: whole × improper fraction conflation ===\nComplex unit-coordination described without a single wrong numeric output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is conceptual (students believe the result of multiplying a whole by an improper fraction cannot exceed the original whole) but no specific incorrect computational rule or numeric output is provided; thus, no runnable predicate Rule(Input, Got) can be constructed to produce the documented error.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is conceptual (students believe the result of multiplying a whole by an improper fraction cannot exceed the original whole) but no specific incorrect computational rule or numeric output is provided; thus, no runnable predicate Rule(Input, Got) can be constructed to produce the documented error.",
+      "result": "abstained"
+    }
+  ]
+}

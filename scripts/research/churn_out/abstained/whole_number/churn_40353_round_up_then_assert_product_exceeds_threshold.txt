@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40353",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40353_round_up_then_assert_product_exceeds_threshold",
+    "target_operation": "computational_estimation",
+    "citation": "Der-Ching Yang & Iwan Andi J. Sianturi (2018)",
+    "error_action": "round_up_then_assert_product_exceeds_threshold",
+    "error_description": "round a factor up to a friendly number, compute, and use that inflated result to assert the exact product exceeds a threshold",
+    "provenance_comments": "=== row 40353: answer-only reasoning ignores estimation ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: the documented error describes a two-step reasoning pattern (round up, then assert the exact product exceeds a threshold), but no specific numerical claim \"to\" is given in the source row—only the vague phrase \"answer-only reasoning ignores estimation\". Without a concrete threshold or target value to assert exceedance against, a runnable rule with a determinate ExpectedCorrect cannot be constructed.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40353_round_up_then_assert_product_exceeds_threshold(A-B, Got) :-\n    A_up is A + (10 - A mod 10),\n    Got is A_up * B).\n\ntest_harness:arith_misconception(db_row(40353), whole_number, churn_40353_round_up_then_assert_product_exceeds_threshold,\n    churn_candidate:churn_40353_round_up_then_assert_product_exceeds_threshold,\n    47-8,\n    376).",
+      "result": "output 400 does not match explicit documented claim(s) ['to']"
+    },
+    {
+      "response": "ABSTAIN: the documented error describes a two-step reasoning pattern (round up, then assert the exact product exceeds a threshold), but no specific numerical claim \"to\" is given in the source row—only the vague phrase \"answer-only reasoning ignores estimation\". Without a concrete threshold or target value to assert exceedance against, a runnable rule with a determinate ExpectedCorrect cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37790",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37790_remainder_unit_equals_dividend_unit",
+    "target_operation": "division_units_and_remainders",
+    "citation": "Martin A. Simon (1993)",
+    "error_action": "remainder_unit_equals_dividend_unit",
+    "error_description": "the leftover fractional part is counted in the same unit as the original dividend",
+    "provenance_comments": "=== row 37790: fractional remainder units confused ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error \"remainder_unit_equals_dividend_unit\" describes a conceptual confusion about units in division involving fractions, but no concrete, runnable procedure or syntactic rule is provided that would generate a specific incorrect result from a given input. Without a clear, generalizable syntactic rule (e.g., an algorithmic transformation of operands yielding a predictable wrong result), we cannot construct a deterministic Prolog predicate satisfying the schema. The description is qualitative and contextual, not procedural.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error \"remainder_unit_equals_dividend_unit\" describes a conceptual confusion about units in division involving fractions, but no concrete, runnable procedure or syntactic rule is provided that would generate a specific incorrect result from a given input. Without a clear, generalizable syntactic rule (e.g., an algorithmic transformation of operands yielding a predictable wrong result), we cannot construct a deterministic Prolog predicate satisfying the schema. The description is qualitative and contextual, not procedural.",
+      "result": "abstained"
+    }
+  ]
+}

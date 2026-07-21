@@ -220,7 +220,7 @@ def static_audit(tree: Path, report: Report) -> None:
             "rigid_motion_render", "knowledge/crosswalk/merge_evidence.pl",
             "/api/witness/pml", "semantic_material_witness", "validate_reader_axioms",
             "formal/pml/mua_conjectures.pl", "knowledge/misconceptions/pml_wire.pl",
-            "/api/witness/grounding", "image_schema", "target_expressive_power_witness",
+            "/api/witness/grounding", "image_schema", "target_inferential_strength_witness",
         ),
         "hermes/web/bridge.html": (
             "formal/learner/activity_contract.pl",

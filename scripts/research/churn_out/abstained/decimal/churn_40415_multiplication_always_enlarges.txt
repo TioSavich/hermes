@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40415",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40415_multiplication_always_enlarges",
+    "target_operation": "decimal_multiplication",
+    "citation": "MUN YEE LAI and SARA MURRAY (2015)",
+    "error_action": "multiplication_always_enlarges",
+    "error_description": "multiplying two numbers always yields a product larger than the factors",
+    "provenance_comments": "=== row 40415: placement error from MMB generalization (no example) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (\"multiplication always enlarges\") but provides no specific syntactic rule or algorithm that students follow, making it impossible to encode a runnable Prolog rule that produces the documented wrong answer without inventing mathematics. The gate requires a concrete, generalizable rule that can be tested with a specific input and produces the erroneous output; this misconception is too vague to satisfy that requirement.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40415_multiplication_always_enlarges(X*Y, Got) :-\n    Got is X * Y,\n    (X > 0, X < 1, Y > 0, Y < 1 -> true ; fail)).\n\ntest_harness:arith_misconception(db_row(40415), decimal, churn_40415_multiplication_always_enlarges,\n    churn_candidate:churn_40415_multiplication_always_enlarges,\n    0.5 * 0.4,\n    0.2).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (\"multiplication always enlarges\") but provides no specific syntactic rule or algorithm that students follow, making it impossible to encode a runnable Prolog rule that produces the documented wrong answer without inventing mathematics. The gate requires a concrete, generalizable rule that can be tested with a specific input and produces the erroneous output; this misconception is too vague to satisfy that requirement.",
+      "result": "abstained"
+    }
+  ]
+}

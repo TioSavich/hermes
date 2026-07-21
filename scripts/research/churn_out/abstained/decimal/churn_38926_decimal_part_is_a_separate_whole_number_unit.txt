@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38926",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38926_decimal_part_is_a_separate_whole_number_unit",
+    "target_operation": "decimal_place_value_reading",
+    "citation": "ALAN BELL, MALCOLM SWAN AND GLENDA TAYLOR (1981)",
+    "error_action": "decimal_part_is_a_separate_whole_number_unit",
+    "error_description": "read the digits after the point as a count of a smaller unit like minutes or ounces",
+    "provenance_comments": "=== row 38926: misread decimal as mixed unit ===\nTask: read 11.9 miles/hr\nCorrect: 11.9\nError: reads as 11 miles 9 minutes -> nonsense unit\nToo vague — reading error, no single numerical rule.",
+    "worked_example": "Task: read 11.9 miles/hr\nCorrect: 11.9\nError: reads as 11 miles 9 minutes -> nonsense unit",
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: the documented error is a conceptual misreading (treating the decimal part as a separate unit like minutes) rather than a specific arithmetic operation; no runnable predicate of arity 2 can reproduce the error in a deterministic, generalizable way without introducing external semantics (e.g., unit conversion or time interpretation) that violate the constraints.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: the documented error is a conceptual misreading (treating the decimal part as a separate unit like minutes) rather than a specific arithmetic operation; no runnable predicate of arity 2 can reproduce the error in a deterministic, generalizable way without introducing external semantics (e.g., unit conversion or time interpretation) that violate the constraints.",
+      "result": "abstained"
+    }
+  ]
+}

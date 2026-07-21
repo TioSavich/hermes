@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38823",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38823_append_zeros_to_multiply_by_powers_of_ten",
+    "target_operation": "multiply_by_powers_of_ten",
+    "citation": "HANS FREUDENTHAL (1981)",
+    "error_action": "append_zeros_to_multiply_by_powers_of_ten",
+    "error_description": "to multiply by 100, write the number and add two zeros to its end",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedure that is not generally executable as a rule because it is not algorithmically precise in Prolog without additional assumptions (e.g., string manipulation, digit counting, or base conversion), and SWI-Prolog arithmetic does not support appending zeros as a primitive operation on integers. Any attempt to encode it would require invention (e.g., converting to string, appending \"00\", converting back), which violates the constraint against invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38823_append_zeros_to_multiply_by_powers_of_ten(N, Got) :-\n    number_chars(N, Digits),\n    append(Digits, ['0','0'], NewDigits),\n    number_chars(Got, NewDigits)).\n\ntest_harness:arith_misconception(db_row(38823), whole_number, churn_38823_append_zeros_to_multiply_by_powers_of_ten,\n    churn_candidate:churn_38823_append_zeros_to_multiply_by_powers_of_ten,\n    45,\n    4500).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a procedure that is not generally executable as a rule because it is not algorithmically precise in Prolog without additional assumptions (e.g., string manipulation, digit counting, or base conversion), and SWI-Prolog arithmetic does not support appending zeros as a primitive operation on integers. Any attempt to encode it would require invention (e.g., converting to string, appending \"00\", converting back), which violates the constraint against invention.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39790",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39790_division_makes_smaller_divide_big_by_small",
+    "target_operation": "division_magnitude",
+    "citation": "Phillip Nissen (1994)",
+    "error_action": "division_makes_smaller_divide_big_by_small",
+    "error_description": "division always yields a smaller result and one must divide the larger number by the smaller",
+    "provenance_comments": "=== row 39790: cue words trigger operation ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (that division always makes numbers smaller and that one must divide the larger number by the smaller), but does not specify a deterministic *syntactic* rule that maps inputs to outputs in a way that can be implemented as a pure, ground-term relation `Rule(Input, Got)` producing a *fixed wrong result* for a given input. The error is contextual (depends on ordering of numbers relative to size), not algorithmic in the required sense; without a clear, executable procedure (e.g., “always divide first argument by second regardless of magnitude” or “always divide larger by smaller and output the quotient”), we cannot construct a runnable predicate that reliably yields the documented misconception outcome for a given `Input`. The gate failure (exit 24) likely reflects non-determinism or non-termination due to ambiguity in how the misconception maps to a deterministic function.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39790_division_makes_smaller_divide_big_by_small(A-B, Got) :-\n    (A > B -> Got is A / B ; Got is B / A)).\n\ntest_harness:arith_misconception(db_row(39790), whole_number, churn_39790_division_makes_smaller_divide_big_by_small,\n    churn_candidate:churn_39790_division_makes_smaller_divide_big_by_small,\n    4-2,\n    2).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (that division always makes numbers smaller and that one must divide the larger number by the smaller), but does not specify a deterministic *syntactic* rule that maps inputs to outputs in a way that can be implemented as a pure, ground-term relation `Rule(Input, Got)` producing a *fixed wrong result* for a given input. The error is contextual (depends on ordering of numbers relative to size), not algorithmic in the required sense; without a clear, executable procedure (e.g., “always divide first argument by second regardless of magnitude” or “always divide larger by smaller and output the quotient”), we cannot construct a runnable predicate that reliably yields the documented misconception outcome for a given `Input`. The gate failure (exit 24) likely reflects non-determinism or non-termination due to ambiguity in how the misconception maps to a deterministic function.",
+      "result": "abstained"
+    }
+  ]
+}

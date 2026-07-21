@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39193",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39193_redistribute_existing_share_incrementally",
+    "target_operation": "partitioning_adjusting_shares",
+    "citation": "GARY ERNEST DAVIS AND ROBERT PAUL HUNTING (1990)",
+    "error_action": "redistribute_existing_share_incrementally",
+    "error_description": "patch an already-unfair share by adding items piecemeal rather than redealing",
+    "provenance_comments": "=== row 39193: adjusting unfair shares ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a procedural strategy (“redistribute existing share incrementally”) rather than a concrete arithmetic operation with deterministic input-output behavior; the description lacks sufficient mathematical specification to define a predicate `Rule(Input, Got)` that reliably produces the documented wrong answer for general inputs.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a procedural strategy (“redistribute existing share incrementally”) rather than a concrete arithmetic operation with deterministic input-output behavior; the description lacks sufficient mathematical specification to define a predicate `Rule(Input, Got)` that reliably produces the documented wrong answer for general inputs.",
+      "result": "abstained"
+    }
+  ]
+}

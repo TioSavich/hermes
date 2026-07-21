@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39771",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39771_reject_division_sentence_for_repeated_subtraction_situation",
+    "target_operation": "measurement_division_number_sentence",
+    "citation": "Ali Alenazi (2016)",
+    "error_action": "reject_division_sentence_for_repeated_subtraction_situation",
+    "error_description": "solve a how-many-fit measurement task by repeated subtraction yet deny it is division",
+    "provenance_comments": "=== row 39771: reject fraction division as division ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual rejection (denial of division) rather than a computational mistake; there is no runnable arithmetic rule that produces a wrong numeric result matching the schema requirement.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual rejection (denial of division) rather than a computational mistake; there is no runnable arithmetic rule that produces a wrong numeric result matching the schema requirement.",
+      "result": "abstained"
+    }
+  ]
+}

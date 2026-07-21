@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39497",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39497_digits_indivisible_refer_to_whole",
+    "target_operation": "place_value_part_whole",
+    "citation": "ANNE SINCLAIR AND NORA SCHEUER (1993)",
+    "error_action": "digits_indivisible_refer_to_whole",
+    "error_description": "the digits of a numeral cannot be split to map onto subsets of the quantity",
+    "provenance_comments": "=== row 39497: bi-digit numeral as indivisible whole ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (that digits of a numeral cannot be split to map onto subsets of the quantity), but does not specify a runnable procedural rule that produces a wrong output in a testable arithmetic operation. No concrete algorithmic transformation (e.g., a function from input to incorrect output) is provided, and the description is semantic rather than operational. Without a defined mapping from input to incorrect result, a runnable rule cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (that digits of a numeral cannot be split to map onto subsets of the quantity), but does not specify a runnable procedural rule that produces a wrong output in a testable arithmetic operation. No concrete algorithmic transformation (e.g., a function from input to incorrect output) is provided, and the description is semantic rather than operational. Without a defined mapping from input to incorrect result, a runnable rule cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37665",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37665_name_each_piece_without_stating_order_relation",
+    "target_operation": "representation_translation",
+    "citation": "Thomas R. Post, Ipke Wachsmuth, Richard Lesh and Merlyn J. Behr (1985)",
+    "error_action": "name_each_piece_without_stating_order_relation",
+    "error_description": "label each physical piece with its fraction name instead of comparing them",
+    "provenance_comments": "=== row 37665: linguistic interference more vs greater ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a linguistic misstatement (\"more vs greater\") rather than a specific computational rule that can be encoded as a binary predicate producing a wrong result from a given input. No runnable rule or defensible probe can be constructed because the error is semantic/pragmatic (misuse of comparative adjectives) rather than syntactic/arithmetical.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a linguistic misstatement (\"more vs greater\") rather than a specific computational rule that can be encoded as a binary predicate producing a wrong result from a given input. No runnable rule or defensible probe can be constructed because the error is semantic/pragmatic (misuse of comparative adjectives) rather than syntactic/arithmetical.",
+      "result": "abstained"
+    }
+  ]
+}

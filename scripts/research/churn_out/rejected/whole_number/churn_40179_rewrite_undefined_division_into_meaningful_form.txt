@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40179",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40179_rewrite_undefined_division_into_meaningful_form",
+    "target_operation": "division_by_zero",
+    "citation": "Andrew M. Tyminski (2010)",
+    "error_action": "rewrite_undefined_division_into_meaningful_form",
+    "error_description": "if 'two divided by zero' makes no sense, swap it to 'zero divided by two' which does",
+    "provenance_comments": "=== row 40179: division by zero reworded as 0 / 2 ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(rewrites_undefined_division_into_meaningful_form(A-0, Got) :-\n    Got is 0 / A).\n\ntest_harness:arith_misconception(db_row(40179), whole_number, churn_40179_rewrite_undefined_division_into_meaningful_form,\n    churn_candidate:rewrites_undefined_division_into_meaningful_form,\n    2-0,\n    0).",
+      "result": "predicate must be named churn_40179_rewrite_undefined_division_into_meaningful_form"
+    },
+    {
+      "response": "churn_candidate:(churn_40179_rewrite_undefined_division_into_meaningful_form(A-0, Got) :-\n    Got is 0 // A).\n\ntest_harness:arith_misconception(db_row(40179), whole_number, churn_40179_rewrite_undefined_division_into_meaningful_form,\n    churn_candidate:churn_40179_rewrite_undefined_division_into_meaningful_form,\n    2-0,\n    0).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

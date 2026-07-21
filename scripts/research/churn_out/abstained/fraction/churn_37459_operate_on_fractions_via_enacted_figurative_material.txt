@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37459",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37459_operate_on_fractions_via_enacted_figurative_material",
+    "target_operation": "reversible_multiplicative_reasoning",
+    "citation": "Amy J. Hackenberg (2010)",
+    "error_action": "operate_on_fractions_via_enacted_figurative_material",
+    "error_description": "the student determines a fractional relationship by drawing or manipulating a model rather than operating mentally",
+    "provenance_comments": "=== row 37459: reliance on figurative material ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive strategy (reliance on figurative material) rather than a specific syntactic or semantic error in arithmetic manipulation; it cannot be expressed as a deterministic Prolog rule that reliably produces a wrong result from a given input without invoking external modeling or procedural simulation, which violates the constraint against side effects, dynamic database changes, or meta-calls.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive strategy (reliance on figurative material) rather than a specific syntactic or semantic error in arithmetic manipulation; it cannot be expressed as a deterministic Prolog rule that reliably produces a wrong result from a given input without invoking external modeling or procedural simulation, which violates the constraint against side effects, dynamic database changes, or meta-calls.",
+      "result": "abstained"
+    }
+  ]
+}

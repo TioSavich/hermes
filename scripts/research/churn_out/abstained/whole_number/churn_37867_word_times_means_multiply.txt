@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37867",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37867_word_times_means_multiply",
+    "target_operation": "keyword_operation_selection",
+    "citation": "Yan Ping Xin (2008)",
+    "error_action": "word_times_means_multiply",
+    "error_description": "the word 'times' in a problem dictates that you multiply",
+    "provenance_comments": "=== row 37867: 'times' keyword triggers multiplication ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about keyword interpretation, not a specific computational procedure that can be encoded as a binary predicate `Rule(Input, Got)` producing a deterministic wrong output for a given input. Since the error is about overgeneralized keyword mapping (e.g., interpreting *any* occurrence of the word \"times\" as a signal to multiply, even when inappropriate), there is no unique, generalizable arithmetic expression `Got is ...` that consistently yields the *documented wrong answer* across inputs without ad hoc assumptions. No concrete Input/ExpectedCorrect pair can be supplied that satisfies the schema requirement of producing the *exact documented error* via a well-defined predicate.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(word_times_means_multiply(_-_ , Got) :-\n    Got is 0).\n\ntest_harness:arith_misconception(db_row(37867), whole_number, churn_37867_word_times_means_multiply,\n    churn_candidate:churn_37867_word_times_means_multiply,\n    5-3,\n    2).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about keyword interpretation, not a specific computational procedure that can be encoded as a binary predicate `Rule(Input, Got)` producing a deterministic wrong output for a given input. Since the error is about overgeneralized keyword mapping (e.g., interpreting *any* occurrence of the word \"times\" as a signal to multiply, even when inappropriate), there is no unique, generalizable arithmetic expression `Got is ...` that consistently yields the *documented wrong answer* across inputs without ad hoc assumptions. No concrete Input/ExpectedCorrect pair can be supplied that satisfies the schema requirement of producing the *exact documented error* via a well-defined predicate.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "205",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_205_count_ten_as_ten_ones",
+    "target_operation": "place_value_unit_composition",
+    "citation": "Askew (2018)",
+    "error_action": "count_ten_as_ten_ones",
+    "error_description": "treat a ten as a collection of ten single units rather than one composite unit",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating ten as ten ones) but does not specify a runnable procedural rule that can be expressed as a binary predicate `Rule(Input, Got)` producing the wrong answer via a deterministic computation. Without a concrete algorithm or operation (e.g., a specific arithmetic transformation or syntactic substitution), we cannot construct a valid SWI-Prolog rule that reliably yields the documented incorrect result for a given input. The gate failure (exit 24) reflects this underspecification.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_205_count_ten_as_ten_ones(Tens, Got) :-\n    Got is Tens * 10).\n\ntest_harness:arith_misconception(db_row(205), whole_number, churn_205_count_ten_as_ten_ones,\n    churn_candidate:churn_205_count_ten_as_ten_ones,\n    1-0,\n    10).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating ten as ten ones) but does not specify a runnable procedural rule that can be expressed as a binary predicate `Rule(Input, Got)` producing the wrong answer via a deterministic computation. Without a concrete algorithm or operation (e.g., a specific arithmetic transformation or syntactic substitution), we cannot construct a valid SWI-Prolog rule that reliably yields the documented incorrect result for a given input. The gate failure (exit 24) reflects this underspecification.",
+      "result": "abstained"
+    }
+  ]
+}

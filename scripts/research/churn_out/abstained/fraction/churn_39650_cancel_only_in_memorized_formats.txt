@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39650",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39650_cancel_only_in_memorized_formats",
+    "target_operation": "cancelling_common_factors",
+    "citation": "Eugene Kaminski (2002)",
+    "error_action": "cancel_only_in_memorized_formats",
+    "error_description": "cancelling is allowed only in the exact textbook configurations one was taught",
+    "provenance_comments": "=== row 39650: rigid on cancelling common factors ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule or defensible probe can be constructed because the documented error describes a *cognitive constraint* (rigid adherence to memorized formats) rather than a specific syntactic or semantic transformation error that can be encoded as a deterministic Prolog predicate producing a unique wrong output. The phrase “cancel_only_in_memorized_formats” does not define a general algorithmic rule applicable to a class of inputs, nor does it specify *how* cancellation is misapplied or omitted — only *when* (i.e., only in memorized contexts). Without a concrete, generalizable mapping from input to incorrect output, the schema’s requirement for a testable `Rule/2` predicate cannot be satisfied.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule or defensible probe can be constructed because the documented error describes a *cognitive constraint* (rigid adherence to memorized formats) rather than a specific syntactic or semantic transformation error that can be encoded as a deterministic Prolog predicate producing a unique wrong output. The phrase “cancel_only_in_memorized_formats” does not define a general algorithmic rule applicable to a class of inputs, nor does it specify *how* cancellation is misapplied or omitted — only *when* (i.e., only in memorized contexts). Without a concrete, generalizable mapping from input to incorrect output, the schema’s requirement for a testable `Rule/2` predicate cannot be satisfied.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39262",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39262_decimal_requires_finite_digits_after_comma",
+    "target_operation": "decimal_vs_rational_definitions",
+    "citation": "J. ROBINET (1986)",
+    "error_action": "decimal_requires_finite_digits_after_comma",
+    "error_description": "a number counts as 'a decimal' only when written with a finite string of digits after the decimal point",
+    "provenance_comments": "=== row 39262: decimal vs rational definitions confusion ===\nToo vague — definitional, philosophical.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: the documented error is a definitional/philosophical misconception about the concept of \"decimal\" numbers, not a concrete computational procedure that can be expressed as a runnable Prolog rule producing a specific incorrect numeric result for a given input. No executable rule of arity 2 can be constructed that consistently yields the documented错误 without also encoding incorrect mathematics or introducing non-logical assumptions about representation. The schema requires a rule that, when called with Input, produces Got = ExpectedWrong, and ExpectedCorrect must not unify with Got; but the misconception does not specify a well-defined algorithmic transformation on numeric inputs.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: the documented error is a definitional/philosophical misconception about the concept of \"decimal\" numbers, not a concrete computational procedure that can be expressed as a runnable Prolog rule producing a specific incorrect numeric result for a given input. No executable rule of arity 2 can be constructed that consistently yields the documented错误 without also encoding incorrect mathematics or introducing non-logical assumptions about representation. The schema requires a rule that, when called with Input, produces Got = ExpectedWrong, and ExpectedCorrect must not unify with Got; but the misconception does not specify a well-defined algorithmic transformation on numeric inputs.",
+      "result": "abstained"
+    }
+  ]
+}

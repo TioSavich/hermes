@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "219",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_219_apply_borrowing_procedure_before_grounding_in_grouping",
+    "target_operation": "subtraction_borrowing",
+    "citation": "Whitenack, J., Knipping, N., & Novinger, S. (2001)",
+    "error_action": "apply_borrowing_procedure_before_grounding_in_grouping",
+    "error_description": "perform the borrowing steps of the algorithm before the informal tens-and-ones model is stable",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural timing issue (applying borrowing before grounding in grouping) but does not specify a concrete, runnable arithmetic rule that produces a deterministic wrong output for a given input; without a clear algebraic or algorithmic misapplication, a testable rule cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural timing issue (applying borrowing before grounding in grouping) but does not specify a concrete, runnable arithmetic rule that produces a deterministic wrong output for a given input; without a clear algebraic or algorithmic misapplication, a testable rule cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

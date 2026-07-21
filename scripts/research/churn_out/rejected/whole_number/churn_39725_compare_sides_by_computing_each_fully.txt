@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39725",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39725_compare_sides_by_computing_each_fully",
+    "target_operation": "equivalence_by_computation",
+    "citation": "Eugene Kaminski (1997)",
+    "error_action": "compare_sides_by_computing_each_fully",
+    "error_description": "decide whether two expressions are equal by calculating each side completely and comparing the results",
+    "provenance_comments": "=== row 39725: commutativity recognized only by computing both sides ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "output ','(is(5,A),','(is(3,B),=(A,B))) does not match explicit documented claim(s) ['by']",
+  "attempts": [
+    {
+      "response": "churn_candidate:(compare_sides_by_computing_each_fully(A-B, Got) :-\n    Left is A,\n    Right is B,\n    Got = (Left =:= Right)).\n\ntest_harness:arith_misconception(db_row(39725), whole_number, churn_39725_compare_sides_by_computing_each_fully,\n    churn_candidate:compare_sides_by_computing_each_fully,\n    5-3,\n    true).",
+      "result": "predicate must be named churn_39725_compare_sides_by_computing_each_fully"
+    },
+    {
+      "response": "churn_candidate:(churn_39725_compare_sides_by_computing_each_fully(A-B, Got) :-\n    Got = (A is A1, B is B1, A1 = B1)).\n\ntest_harness:arith_misconception(db_row(39725), whole_number, churn_39725_compare_sides_by_computing_each_fully,\n    churn_candidate:churn_39725_compare_sides_by_computing_each_fully,\n    5-3,\n    true).",
+      "result": "output ','(is(5,A),','(is(3,B),=(A,B))) does not match explicit documented claim(s) ['by']"
+    }
+  ]
+}

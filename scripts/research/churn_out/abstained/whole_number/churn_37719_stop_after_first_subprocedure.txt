@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37719",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37719_stop_after_first_subprocedure",
+    "target_operation": "incomplete_iteration",
+    "citation": "Sandra P. Marshall (1983)",
+    "error_action": "stop_after_first_subprocedure",
+    "error_description": "report an intermediate result instead of repeating the algorithm to completion",
+    "provenance_comments": "=== row 37719: fails to repeat algorithm ===\nStudent stops at intermediate value rather than running all required\niterations. No canonical input/output pair without fabricating the\nlarger problem context.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error lacks a concrete, runnable input/output pair because it depends on an unspecified larger problem context; the schema requires a specific Input and ExpectedCorrect that are not provided and cannot be defensibly fabricated without inventing the broader problem.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error lacks a concrete, runnable input/output pair because it depends on an unspecified larger problem context; the schema requires a specific Input and ExpectedCorrect that are not provided and cannot be defensibly fabricated without inventing the broader problem.",
+      "result": "abstained"
+    }
+  ]
+}

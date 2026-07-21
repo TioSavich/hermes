@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38198",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38198_symbol_value_independent_of_column",
+    "target_operation": "place_value_multiplicative_meaning",
+    "citation": "Andrea Gellert (2014)",
+    "error_action": "symbol_value_independent_of_column",
+    "error_description": "a marker's value is what it shows, not multiplied by its column position",
+    "provenance_comments": "=== row 38198: absolute vs positional value of tally marks in place-value table ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (symbol value independent of column position) but provides no runnable procedural rule or concrete arithmetic operation that yields a specific wrong result from a given input. A testable rule must define a deterministic computation that produces the documented error for a specific input; here, no such computation is specified—only a description of a misconception about interpretation of tally marks in a place-value table. Without a definable function or procedure, no SWI-Prolog rule can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (symbol value independent of column position) but provides no runnable procedural rule or concrete arithmetic operation that yields a specific wrong result from a given input. A testable rule must define a deterministic computation that produces the documented error for a specific input; here, no such computation is specified—only a description of a misconception about interpretation of tally marks in a place-value table. Without a definable function or procedure, no SWI-Prolog rule can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

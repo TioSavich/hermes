@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "257",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_257_apply_whole_number_rule_to_new_domain",
+    "target_operation": "rule_overgeneralization_across_domains",
+    "citation": "Hativa (1992)",
+    "error_action": "apply_whole_number_rule_to_new_domain",
+    "error_description": "carry a procedure that worked for whole numbers into a new number domain unchanged",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a high-level overgeneralization across number domains (e.g., applying integer-only reasoning to fractions or decimals) but no specific, runnable rule or concrete worked example is provided to construct a testable Prolog predicate. Without a precise incorrect transformation (e.g., “add numerators and denominators separately”) and a specific input-output pair, the schema requirement for a runnable `Rule` and `ExpectedCorrect` cannot be satisfied.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a high-level overgeneralization across number domains (e.g., applying integer-only reasoning to fractions or decimals) but no specific, runnable rule or concrete worked example is provided to construct a testable Prolog predicate. Without a precise incorrect transformation (e.g., “add numerators and denominators separately”) and a specific input-output pair, the schema requirement for a runnable `Rule` and `ExpectedCorrect` cannot be satisfied.",
+      "result": "abstained"
+    }
+  ]
+}

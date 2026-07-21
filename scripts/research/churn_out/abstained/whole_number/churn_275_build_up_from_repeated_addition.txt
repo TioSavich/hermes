@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "275",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_275_build_up_from_repeated_addition",
+    "target_operation": "progressive_schematisation",
+    "citation": "Treffers, Adri (1987)",
+    "error_action": "build_up_from_repeated_addition",
+    "error_description": "treat multiplication and division as informal additive build-up before formal columns",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a pedagogical progression description rather than a specific syntactic or semantic error that can be encoded as a deterministic rule producing a unique wrong output for a given input. It describes a stage in conceptual development (\"treat multiplication and division as informal additive build-up before formal columns\") without specifying a concrete computational mistake that yields a predictable incorrect result for a given arithmetic expression. Without a precise mapping from input to erroneous output, no runnable rule satisfying the schema can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a pedagogical progression description rather than a specific syntactic or semantic error that can be encoded as a deterministic rule producing a unique wrong output for a given input. It describes a stage in conceptual development (\"treat multiplication and division as informal additive build-up before formal columns\") without specifying a concrete computational mistake that yields a predictable incorrect result for a given arithmetic expression. Without a precise mapping from input to erroneous output, no runnable rule satisfying the schema can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

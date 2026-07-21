@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "159",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_159_represent_quantities_as_tally_marks_and_add",
+    "target_operation": "proportion_via_tally_counting",
+    "citation": "Abele, A. (1978)",
+    "error_action": "represent_quantities_as_tally_marks_and_add",
+    "error_description": "model the objects in a proportional word problem with tally marks and resolve it by counting and adding",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error action \"represent_quantities_as_tally_marks_and_add\" describes a procedural misconception but does not specify a precise, generalizable mathematical rule that can be implemented as a deterministic binary predicate producing the documented wrong answer in all cases. Without a concrete, reproducible transformation from input to incorrect output (e.g., a formula or algorithmic step), no runnable rule can be defensibly constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error action \"represent_quantities_as_tally_marks_and_add\" describes a procedural misconception but does not specify a precise, generalizable mathematical rule that can be implemented as a deterministic binary predicate producing the documented wrong answer in all cases. Without a concrete, reproducible transformation from input to incorrect output (e.g., a formula or algorithmic step), no runnable rule can be defensibly constructed.",
+      "result": "abstained"
+    }
+  ]
+}

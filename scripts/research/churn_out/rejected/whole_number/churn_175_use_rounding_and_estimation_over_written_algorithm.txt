@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "175",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_175_use_rounding_and_estimation_over_written_algorithm",
+    "target_operation": "everyday_mental_arithmetic",
+    "citation": "Greiffenhagen, Christian & Sharrock, Wes (2008)",
+    "error_action": "use_rounding_and_estimation_over_written_algorithm",
+    "error_description": "reach answers by memorized results, rounding up, and approximating rather than the school pencil-and-paper algorithm",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 23",
+  "attempts": [
+    {
+      "response": "churn_candidate:(uses_rounding_over_algorithm(A-B, Got) :-\n    Got is (A + 9) - B).\n\ntest_harness:arith_misconception(db_row(175), whole_number, churn_175_use_rounding_and_estimation_over_written_algorithm,\n    churn_candidate:uses_rounding_over_algorithm,\n    102-47,\n    55).",
+      "result": "predicate must be named churn_175_use_rounding_and_estimation_over_written_algorithm"
+    },
+    {
+      "response": "churn_candidate:(churn_175_use_rounding_and_estimation_over_written_algorithm(A-B, Got) :-\n    round(A, RA),\n    round(B, RB),\n    Got is RA * RB).\n\ntest_harness:arith_misconception(db_row(175), whole_number, churn_175_use_rounding_and_estimation_over_written_algorithm,\n    churn_candidate:churn_175_use_rounding_and_estimation_over_written_algorithm,\n    12-8,\n    96).",
+      "result": "SWI-Prolog gate exited 23"
+    }
+  ]
+}

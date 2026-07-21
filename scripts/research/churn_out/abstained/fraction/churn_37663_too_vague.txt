@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37663",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37663_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error description and worked example are absent, and no specific arithmetic procedure is provided. Without a clear, documented student error action or example, a runnable rule and defensible probe cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error description and worked example are absent, and no specific arithmetic procedure is provided. Without a clear, documented student error action or example, a runnable rule and defensible probe cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

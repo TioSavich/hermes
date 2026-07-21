@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "213",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_213_build_up_additively_to_reach_target_quantity",
+    "target_operation": "proportional_reasoning",
+    "citation": "Hino, Kato (2018)",
+    "error_action": "build_up_additively_to_reach_target_quantity",
+    "error_description": "add equal groups repeatedly until reaching the asked-for amount rather than scaling multiplicatively",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 23",
+  "attempts": [
+    {
+      "response": "churn_candidate:(build_up_additively_to_reach_target_quantity(Target, Got) :-\n    Got is Target * 2).\n\ntest_harness:arith_misconception(db_row(213), whole_number, churn_213_build_up_additively_to_reach_target_quantity,\n    churn_candidate:build_up_additively_to_reach_target_quantity,\n    5,\n    10).",
+      "result": "predicate must be named churn_213_build_up_additively_to_reach_target_quantity"
+    },
+    {
+      "response": "churn_candidate:(churn_213_build_up_additively_to_reach_target_quantity(Target, Count, Got) :-\n    Got is Target * Count).\n\ntest_harness:arith_misconception(db_row(213), whole_number, churn_213_build_up_additively_to_reach_target_quantity,\n    churn_candidate:churn_213_build_up_additively_to_reach_target_quantity,\n    4-5,\n    20).",
+      "result": "SWI-Prolog gate exited 23"
+    }
+  ]
+}

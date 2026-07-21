@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37821",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37821_piece_size_judged_by_visual_arrangement",
+    "target_operation": "fraction_as_quantity",
+    "citation": "Martin A. Simon, Ron Tzur, Karen Heinz, Margaret Kinzel (2004)",
+    "error_action": "piece_size_judged_by_visual_arrangement",
+    "error_description": "a piece's size is read off its shape or cutting orientation rather than its share of the whole",
+    "provenance_comments": "=== row 37821: fraction as arrangement of parts ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be formed because the documented error describes a perceptual/misinterpretive strategy (judging piece size by visual arrangement) rather than an algebraic or syntactic operation; it does not specify a deterministic, executable mapping from input to wrong output that can be encoded as a Prolog predicate of arity 2 producing a concrete fractional value.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be formed because the documented error describes a perceptual/misinterpretive strategy (judging piece size by visual arrangement) rather than an algebraic or syntactic operation; it does not specify a deterministic, executable mapping from input to wrong output that can be encoded as a Prolog predicate of arity 2 producing a concrete fractional value.",
+      "result": "abstained"
+    }
+  ]
+}

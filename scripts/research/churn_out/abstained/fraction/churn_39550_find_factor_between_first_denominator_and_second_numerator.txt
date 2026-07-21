@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39550",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39550_find_factor_between_first_denominator_and_second_numerator",
+    "target_operation": "equivalent_fraction_pattern",
+    "citation": "Ji-Won Son & Ok-Kyeong Kim (2015)",
+    "error_action": "find_factor_between_first_denominator_and_second_numerator",
+    "error_description": "look for the multiplier linking the first fraction's denominator to the second fraction's numerator (in 1/2=4/8, multiply numerator 4 by 2 to get denominator 8)",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes an incorrect procedure—multiplying the numerator of the second fraction by the denominator of the first to obtain the denominator of the second—which is mathematically incoherent and does not correspond to a computable, deterministic function of the input that would consistently produce the documented wrong answer. Specifically, in the example (1/2 = 4/8), the error is described as \"multiply numerator 4 by 2 to get denominator 8\", but that yields 8, which *happens* to match the actual denominator, making it ambiguous whether the error is in *how* the factor is found or *how* it's applied. Crucially, the procedure is not generalizable to other equivalent fractions (e.g., 1/3 = 5/15: 5×3 = 15, works; but 2/5 = 6/15: 6×5 = 30 ≠ 15), so the rule is not reliable or definable as a pure arithmetic predicate over the input pair. Since the rule cannot be made both general and consistent with the documented error, admission fails.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39550_find_factor_between_first_denominator_and_second_numerator(frac(A,B)=frac(C,D), F) :-\n    F is D // B,\n    C * F =:= D).\n\ntest_harness:arith_misconception(db_row(39550), fraction, churn_39550_find_factor_between_first_denominator_and_second_numerator,\n    churn_candidate:churn_39550_find_factor_between_first_denominator_and_second_numerator,\n    frac(1,2)=frac(4,8),\n    2).",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes an incorrect procedure—multiplying the numerator of the second fraction by the denominator of the first to obtain the denominator of the second—which is mathematically incoherent and does not correspond to a computable, deterministic function of the input that would consistently produce the documented wrong answer. Specifically, in the example (1/2 = 4/8), the error is described as \"multiply numerator 4 by 2 to get denominator 8\", but that yields 8, which *happens* to match the actual denominator, making it ambiguous whether the error is in *how* the factor is found or *how* it's applied. Crucially, the procedure is not generalizable to other equivalent fractions (e.g., 1/3 = 5/15: 5×3 = 15, works; but 2/5 = 6/15: 6×5 = 30 ≠ 15), so the rule is not reliable or definable as a pure arithmetic predicate over the input pair. Since the rule cannot be made both general and consistent with the documented error, admission fails.",
+      "result": "abstained"
+    }
+  ]
+}

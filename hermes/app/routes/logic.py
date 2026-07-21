@@ -50,7 +50,7 @@ WITNESS_OPS: dict[str, frozenset[str]] = {
         "image_schema",
         "primitive_for_practice",
         "representation_spine_witness",
-        "target_expressive_power_witness",
+        "target_inferential_strength_witness",
     }),
     "misconception": frozenset({
         "lesson_misconception_incompatibility_witness",
@@ -989,12 +989,12 @@ class RouteLogic:
         self._send_json({"ok": True, "text": text, "result": result, "raw": raw,
                          "model": llm.resolve_model()})
 
-    def _handle_expressive_power(self, payload: dict) -> None:
+    def _handle_inferential_strength(self, payload: dict) -> None:
         lesson = payload.get("lesson")
         if not lesson:
             self._send_json({"error": "lesson is required"}, status=400)
             return
-        self._send_json({"ok": True, "result": self.ctx.worker_request("expressive_power", lesson=lesson)})
+        self._send_json({"ok": True, "result": self.ctx.worker_request("inferential_strength", lesson=lesson)})
 
     def _handle_deontic_scorecard(self, payload: dict) -> None:
         # The deontic board for one ephemeral agent: seed `commitments` and

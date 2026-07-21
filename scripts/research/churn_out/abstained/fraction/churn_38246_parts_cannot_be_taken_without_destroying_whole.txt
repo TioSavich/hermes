@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38246",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38246_parts_cannot_be_taken_without_destroying_whole",
+    "target_operation": "part_whole_disembedding",
+    "citation": "Anderson Norton, Steven Boyce, Catherine Ulrich, Nathan Phillips (2015)",
+    "error_action": "parts_cannot_be_taken_without_destroying_whole",
+    "error_description": "a fraction is parts inside a whole and cannot be held separately while the whole stays intact",
+    "provenance_comments": "=== row 38246: disembedding ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a conceptual misunderstanding (inability to disembed parts from a whole) rather than a specific syntactic or operational misapplication of arithmetic rules on fractions. The task requires a rule that, when applied to an input, produces the documented wrong output via deterministic computation; this misconception does not yield a deterministic procedural error in symbolic manipulation without additional assumptions or ad-hoc modeling.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a conceptual misunderstanding (inability to disembed parts from a whole) rather than a specific syntactic or operational misapplication of arithmetic rules on fractions. The task requires a rule that, when applied to an input, produces the documented wrong output via deterministic computation; this misconception does not yield a deterministic procedural error in symbolic manipulation without additional assumptions or ad-hoc modeling.",
+      "result": "abstained"
+    }
+  ]
+}

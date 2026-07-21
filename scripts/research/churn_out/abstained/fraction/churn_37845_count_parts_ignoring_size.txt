@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37845",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37845_count_parts_ignoring_size",
+    "target_operation": "unequal_area_part_whole",
+    "citation": "Geoffrey B. Saxe, Edd V. Taylor, Clifton McIntosh, and Maryl Gearhart (2005)",
+    "error_action": "count_parts_ignoring_size",
+    "error_description": "the fraction is shaded-parts over total-parts, counted as discrete pieces regardless of their differing sizes",
+    "provenance_comments": "=== row 37845: count parts ignoring unequal sizes ===\nTask: 1 shaded of 5 unequal parts; what fraction is shaded?\nCorrect: frac(1,5) is not well-defined for unequal parts;\ncorrect answer requires area ratio — we encode the recognition\nthat \"unequal parts\" makes fraction naming invalid.",
+    "worked_example": "Task: 1 shaded of 5 unequal parts; what fraction is shaded?\nCorrect: frac(1,5) is not well-defined for unequal parts;",
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding where students count parts ignoring size, but the correct resolution is not a numerical computation—it is the recognition that the fraction is undefined for unequal parts. No runnable predicate can produce the documented wrong answer while conforming to SWI-Prolog constraints and the schema requirement that `ExpectedCorrect` must not unify with `Got`. The task lacks a well-defined arithmetic transformation; it is a metacognitive judgment, not a calculational error.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding where students count parts ignoring size, but the correct resolution is not a numerical computation—it is the recognition that the fraction is undefined for unequal parts. No runnable predicate can produce the documented wrong answer while conforming to SWI-Prolog constraints and the schema requirement that `ExpectedCorrect` must not unify with `Got`. The task lacks a well-defined arithmetic transformation; it is a metacognitive judgment, not a calculational error.",
+      "result": "abstained"
+    }
+  ]
+}

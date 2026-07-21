@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39185",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39185_coin_word_from_operation_structure",
+    "target_operation": "divisibility_terminology",
+    "citation": "Pessia Tsamir (2002)",
+    "error_action": "coin_word_from_operation_structure",
+    "error_description": "name a relation by improvising a word built from the operation (e.g. 'timesing')",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a linguistic/semantic misconception (students inventing words like \"timesing\" from operation names), which cannot be expressed as a runnable SWI-Prolog predicate of arity 2 that produces a *wrong* answer for a given input in the domain of whole-number arithmetic. No executable rule can capture this type of lexical invention without arbitrary or invented mathematics.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39185_coin_word_from_operation_structure(A-B, Got) :-\n    atom_concat('by_', A, Temp),\n    atom_concat(Temp, '_ing', Got)).\n\ntest_harness:arith_misconception(db_row(39185), whole_number, churn_39185_coin_word_from_operation_structure,\n    churn_candidate:churn_39185_coin_word_from_operation_structure,\n    12-4,\n    3).",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a linguistic/semantic misconception (students inventing words like \"timesing\" from operation names), which cannot be expressed as a runnable SWI-Prolog predicate of arity 2 that produces a *wrong* answer for a given input in the domain of whole-number arithmetic. No executable rule can capture this type of lexical invention without arbitrary or invented mathematics.",
+      "result": "abstained"
+    }
+  ]
+}

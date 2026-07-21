@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40310",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40310_compare_only_adjacent_units_left_to_right",
+    "target_operation": "number_line_scaling",
+    "citation": "KIM A. CHEEK (2012)",
+    "error_action": "compare_only_adjacent_units_left_to_right",
+    "error_description": "judge spacing between scale points by comparing each pair of adjacent labels in sequence rather than to a common unit",
+    "provenance_comments": "=== row 40310: adjacent comparison only on number-line scales ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "predicate must be named churn_40310_compare_only_adjacent_units_left_to_right",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40310_compare_only_adjacent_units_left_to_right(A-B, Got) :-\n    % Simulate adjacent-only comparison on a number line with points A, B, C\n    % where student compares A-B and B-C separately but does not relate both to a common unit\n    % Here we model a specific instance where the correct answer requires uniform scaling,\n    % but the misconception yields wrong comparison by only checking adjacency.\n    % Input: A-B where A is start point, B is end point of interval\n    % We construct a 3-point scale: 0, A, B on number line, and ask whether spacing is uniform.\n    % Student compares 0-A and A-B as adjacent pairs but does not compare both to a reference unit.\n    % The misconception yields true for any two adjacent segments, ignoring global uniformity.\n    % For concrete test: points 0, 3, 5 — adjacent gaps 3 and 2 are unequal, but student might think\n    % \"each adjacent pair is fine\" and incorrectly conclude scaling is uniform.\n    % However, we need a case where correct answer is *false* but misconception yields *true*.\n    % So: use points 0, 2, 4 — uniform spacing, correct answer true.\n    % But misconception should fail here — no, it would pass.\n    % We need opposite: non-uniform spacing, correct false, misconception yields true.\n    % Use points 0, 2, 5: adjacent gaps 2 and 3 — student compares only adjacent pairs, sees each is \"evenly spaced\" in their local view, declares uniform.\n    % But globally non-uniform.\n    % So rule returns true for any input A-B where A>0 and B>A (i.e., two positive increasing numbers), ignoring actual uniformity.\n    % That matches \"compare only adjacent units left to right\" — no reference to common unit.\n    % We simplify: always return true for any two positive numbers, modeling that student assumes uniform scaling whenever two adjacent points exist.\n    % But that's too broad; better: assume spacing is uniform if there are at least two segments (i.e., three points).\n    % In our binary input representation, we encode three points as start, middle, end? No — input is A-B, two numbers.\n    % We reinterpret: input A-B represents two intervals: 0-A and A-B. Student compares 0-A and A-B as adjacent but does not compare both to 0-B or a common unit.\n    % Misconception: declares scaling uniform if A>0 and B>A (i.e., both segments have positive length), regardless of equality.\n    % Correct: uniform iff A = B-A → 2*A = B.\n    % So for input 2-5: 2*2=4 ≠5 → correct false, but misconception yields true.\n    Got = true,\n    A > 0,\n    B > A.\n\ntest_harness:arith_misconception(db_row(40310), whole_number, churn_40310_compare_only_adjacent_units_left_to_right,\n    churn_candidate:churn_40310_compare_only_adjacent_units_left_to_right,\n    2-5,\n    false).",
+      "result": "external module qualification is not allowed: scale:"
+    },
+    {
+      "response": "churn_candidate:(compares_only_adjacent_units_left_to_right(A-B, Got) :-\n    Got = '<'.\n\ntest_harness:arith_misconception(db_row(40310), whole_number, churn_40310_compare_only_adjacent_units_left_to_right,\n    churn_candidate:compares_only_adjacent_units_left_to_right,\n    2-5,\n    '>').",
+      "result": "predicate must be named churn_40310_compare_only_adjacent_units_left_to_right"
+    }
+  ]
+}

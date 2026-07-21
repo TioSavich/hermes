@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39071",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39071_match_problems_by_surface_story_features",
+    "target_operation": "word_problem_structure",
+    "citation": "LYN D. ENGLISH (1997)",
+    "error_action": "match_problems_by_surface_story_features",
+    "error_description": "group word problems by shared context or opening sentence rather than relational structure",
+    "provenance_comments": "=== row 39071: surface story features drive pairing ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a cognitive grouping strategy (matching problems by surface story features) rather than a specific arithmetic computation that can be expressed as a binary predicate producing a deterministic wrong result for a given input. The error is methodological, not algorithmic, and lacks a concrete procedure that maps an input to a documented incorrect output in a way suitable for formal testing.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a cognitive grouping strategy (matching problems by surface story features) rather than a specific arithmetic computation that can be expressed as a binary predicate producing a deterministic wrong result for a given input. The error is methodological, not algorithmic, and lacks a concrete procedure that maps an input to a documented incorrect output in a way suitable for formal testing.",
+      "result": "abstained"
+    }
+  ]
+}

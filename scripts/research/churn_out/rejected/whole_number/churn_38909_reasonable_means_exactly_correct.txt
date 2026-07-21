@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38909",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38909_reasonable_means_exactly_correct",
+    "target_operation": "reasonableness_of_answers",
+    "citation": "AMAL ALAJMI AND ROBERT REYS (2007)",
+    "error_action": "reasonable_means_exactly_correct",
+    "error_description": "an answer counts as reasonable only if it is the one exact right value",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "registration source/domain/description does not match the entry",
+  "attempts": [
+    {
+      "response": "churn_candidate:(reasonable_means_exactly_correct(Input, Got) :-\n    Got = Input).\n\ntest_harness:arith_misconception(db_row(38909), whole_number, reasonable_means_exactly_correct,\n    churn_candidate:reasonable_means_exactly_correct,\n    123,\n    100).",
+      "result": "registration source/domain/description does not match the entry"
+    },
+    {
+      "response": "churn_candidate:(reasonable_means_exactly_correct(A, Got) :-\n    Got = A).\n\ntest_harness:arith_misconception(db_row(38909), whole_number, reasonable_means_exactly_correct,\n    churn_candidate:reasonable_means_exactly_correct,\n    42,\n    43).",
+      "result": "registration source/domain/description does not match the entry"
+    }
+  ]
+}

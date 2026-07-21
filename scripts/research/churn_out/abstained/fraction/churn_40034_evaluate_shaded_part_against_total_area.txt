@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40034",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40034_evaluate_shaded_part_against_total_area",
+    "target_operation": "linear_vs_area_model",
+    "citation": "Seán Delaney, Deborah Loewenberg Ball, Heather C. Hill, Stephen G. Schilling, Deborah Zopf (2008)",
+    "error_action": "evaluate_shaded_part_against_total_area",
+    "error_description": "read a number-line shading as a fraction of the diagram's total area",
+    "provenance_comments": "=== row 40034: treat linear shaded half as area 1/8 ===\nToo vague — perceptual misidentification; no clean numeric transformation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is described as a perceptual misidentification with no clean numeric transformation; the source does not provide a runnable rule (a deterministic, generalizable procedure) that maps input to the documented wrong answer. The task requires encoding a documented student error as a runnable Prolog rule, but the description “too vague — perceptual misidentification” precludes constructing a well-defined, general predicate.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is described as a perceptual misidentification with no clean numeric transformation; the source does not provide a runnable rule (a deterministic, generalizable procedure) that maps input to the documented wrong answer. The task requires encoding a documented student error as a runnable Prolog rule, but the description “too vague — perceptual misidentification” precludes constructing a well-defined, general predicate.",
+      "result": "abstained"
+    }
+  ]
+}

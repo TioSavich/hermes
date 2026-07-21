@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38057",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38057_only_the_taught_algorithm_is_valid",
+    "target_operation": "fraction_division_method_evaluation",
+    "citation": "Keiko Hino (2007)",
+    "error_action": "only_the_taught_algorithm_is_valid",
+    "error_description": "judge any procedure differing from the memorized standard algorithm as incorrect",
+    "provenance_comments": "=== row 38057: reject valid algorithm ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a meta-cognitive judgment (rejection of valid alternative procedures) rather than a specific computational mistake; it cannot be expressed as a runnable Prolog rule that produces a *documented wrong answer* for a given input, since the error is about procedure rejection, not arithmetic output. No concrete Input→Got mapping is specified, and ExpectedCorrect cannot be derived without assuming a specific alternative algorithm, which violates the instruction to encode only the documented error.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a meta-cognitive judgment (rejection of valid alternative procedures) rather than a specific computational mistake; it cannot be expressed as a runnable Prolog rule that produces a *documented wrong answer* for a given input, since the error is about procedure rejection, not arithmetic output. No concrete Input→Got mapping is specified, and ExpectedCorrect cannot be derived without assuming a specific alternative algorithm, which violates the instruction to encode only the documented error.",
+      "result": "abstained"
+    }
+  ]
+}

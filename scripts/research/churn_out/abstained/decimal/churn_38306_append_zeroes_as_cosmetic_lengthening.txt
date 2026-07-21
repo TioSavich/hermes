@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38306",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38306_append_zeroes_as_cosmetic_lengthening",
+    "target_operation": "decimal_equivalence",
+    "citation": "Andrea Lachance, Jere Confrey (2002)",
+    "error_action": "append_zeroes_as_cosmetic_lengthening",
+    "error_description": "add trailing zeroes only to match length without grounding why value is preserved",
+    "provenance_comments": "=== row 38306: blindly appending zeros to match lengths ===\nTask: pad 0.5 to look like 0.250 (three-digit peer).\nCorrect: 0.500 (appending zeros is value-preserving for decimal).\nError: appends '25' or nonzero digits to change value? The misconception\nas stated is blind appending WITHOUT understanding why value unchanged.\nThe output 0.500 is numerically the same. Encode as: student pads by\nappending N zeros but claims the result is a NEW number (equal-length\ndigit-concatenation treated as bigger).\nEncode: student pads by appending digits equal to TargetLen - CurLen;\nappended digits are zeros (correct), but student reports the\nwhole-number-interpreted string as the new \"magnitude\". Too vague in\nthat the misconception isn't about a wrong calculation — it's about\nlack of understanding. Mark too_vague.",
+    "worked_example": "Task: pad 0.5 to look like 0.250 (three-digit peer).\nCorrect: 0.500 (appending zeros is value-preserving for decimal).\nError: appends '25' or nonzero digits to change value? The misconception",
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding about decimal equivalence (blindly appending zeros and treating the result as a new, larger number) rather than a specific syntactic or computational rule that maps an input to a wrong output. The misconception is about *reasoning*, not a definable function `Rule(Input, Got)` that produces a fixed incorrect result. Since no runnable rule can be encoded that consistently yields the documented error behavior without introducing arbitrary or context-dependent logic (e.g., appending `'25'` instead of zeros), admission fails the execution gate.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding about decimal equivalence (blindly appending zeros and treating the result as a new, larger number) rather than a specific syntactic or computational rule that maps an input to a wrong output. The misconception is about *reasoning*, not a definable function `Rule(Input, Got)` that produces a fixed incorrect result. Since no runnable rule can be encoded that consistently yields the documented error behavior without introducing arbitrary or context-dependent logic (e.g., appending `'25'` instead of zeros), admission fails the execution gate.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37916",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37916_fraction_is_only_part_of_a_shape",
+    "target_operation": "fractions_as_numbers",
+    "citation": "Catherine Lewis and Rebecca Perry (2017)",
+    "error_action": "fraction_is_only_part_of_a_shape",
+    "error_description": "a fraction names pieces of an object, not a number that lives on the number line",
+    "provenance_comments": "=== row 37916: fractions not as numbers / number line ===\nOntological claim, not a computable wrong answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is an ontological misconception (fractions as only parts of shapes, not as numbers on the number line) and does not specify a computable procedural error that can be captured by a runnable Prolog rule producing a specific wrong output for a given input. The task requires encoding a *documented student error* that yields a *runnable rule* and a *defensible probe* with a concrete expected correct outcome; this misconception lacks a defined algorithmic deviation, making it impossible to construct a valid Rule predicate of arity 2 that systematically produces the documented wrong answer for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is an ontological misconception (fractions as only parts of shapes, not as numbers on the number line) and does not specify a computable procedural error that can be captured by a runnable Prolog rule producing a specific wrong output for a given input. The task requires encoding a *documented student error* that yields a *runnable rule* and a *defensible probe* with a concrete expected correct outcome; this misconception lacks a defined algorithmic deviation, making it impossible to construct a valid Rule predicate of arity 2 that systematically produces the documented wrong answer for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

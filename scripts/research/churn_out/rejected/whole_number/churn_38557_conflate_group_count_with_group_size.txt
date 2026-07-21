@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38557",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38557_conflate_group_count_with_group_size",
+    "target_operation": "unit_coordination",
+    "citation": "Adalira Saenz-Ludlow (2003)",
+    "error_action": "conflate_group_count_with_group_size",
+    "error_description": "treat 'three groups of four' as interchangeable with 'four groups of three'",
+    "provenance_comments": "=== row 38557: group-count vs group-size conflation ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "predicate must be named churn_38557_conflate_group_count_with_group_size",
+  "attempts": [
+    {
+      "response": "churn_candidate:(conflates_group_count_with_group_size(A-B, Got) :-\n    Got is A * B).\n\ntest_harness:arith_misconception(db_row(38557), whole_number, churn_38557_conflate_group_count_with_group_size,\n    churn_candidate:conflates_group_count_with_group_size,\n    3-4,\n    12).",
+      "result": "predicate must be named churn_38557_conflate_group_count_with_group_size"
+    },
+    {
+      "response": "churn_candidate:(conflates_group_count_with_group_size(A-B, Got) :-\n    Got is A * B,\n    Got = B * A).\n\ntest_harness:arith_misconception(db_row(38557), whole_number, churn_38557_conflate_group_count_with_group_size,\n    churn_candidate:conflates_group_count_with_group_size,\n    3-4,\n    12).",
+      "result": "predicate must be named churn_38557_conflate_group_count_with_group_size"
+    }
+  ]
+}

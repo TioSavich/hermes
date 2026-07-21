@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37516",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37516_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The source row provides no documented error action or description beyond the vague label \"too_vague\", and no worked example or citation is available to infer a specific incorrect procedure. Without a concrete, documented misapplication of arithmetic rules on fractions, a runnable rule and defensible probe cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The source row provides no documented error action or description beyond the vague label \"too_vague\", and no worked example or citation is available to infer a specific incorrect procedure. Without a concrete, documented misapplication of arithmetic rules on fractions, a runnable rule and defensible probe cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

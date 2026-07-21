@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40119",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40119_assume_listener_can_map_skipped_unit_steps",
+    "target_operation": "explanation_unpacking",
+    "citation": "Charalambos Y. Charalambous, Heather C. Hill, Deborah L. Ball (2011)",
+    "error_action": "assume_listener_can_map_skipped_unit_steps",
+    "error_description": "give a condensed correct explanation that skips the logic connecting different units, assuming the learner can reconstruct it from the picture",
+    "provenance_comments": "=== row 40119: condensed explanation ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a pedagogical strategy (condensed explanation skipping unit-mapping logic) rather than a concrete, executable arithmetic procedure that produces a specific wrong result for a given input. No runnable rule of arity 2 can be derived that consistently yields a documented incorrect output for a well-defined input, as the misconception lies in explanation design, not in a computational error.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a pedagogical strategy (condensed explanation skipping unit-mapping logic) rather than a concrete, executable arithmetic procedure that produces a specific wrong result for a given input. No runnable rule of arity 2 can be derived that consistently yields a documented incorrect output for a well-defined input, as the misconception lies in explanation design, not in a computational error.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,1111 @@
+{
+  "claim_register": {
+    "decentering_link":"downstream conjecture only: this exclusion map may support teacher decentering, but the comparison does not measure classroom decentering or learning outcomes.",
+    "measure_rule":"Counts are breadth tallies. Containment is the Brandomian incompatibility relation. The comparison reports both.",
+    "structural_claim":"Each lesson's report is the inferential strength it puts in play.",
+    "understanding_hypothesis":"Understanding grows as students and teachers can explicate what it is not: what a concept, operation, or strategy excludes, what it rules out, and what is materially incompatible with it."
+  },
+  "pairs": [
+    {
+      "delta": {
+	"containment": {
+	  "misconception": {
+	    "delta_status":"breadth_tally_over_incomparable_sets",
+	    "extra_rejections": {
+	      "im": [
+		"discovered_set(registry_neighborhood,[count_all_when_count_on_available,strategy(addition,count_on_from_larger)])",
+		"discovered_set(registry_neighborhood,[misconception(count_all_when_count_on_available),strategy(addition,count_on_from_larger)])",
+		"strategy(addition,count_on_from_larger)"
+	      ],
+	      "traditional": [
+		"discovered_set(registry_neighborhood,[count_all_instead_of_known_fact,strategy(addition,known_fact_retrieval)])",
+		"discovered_set(registry_neighborhood,[misconception(count_all_instead_of_known_fact),strategy(addition,known_fact_retrieval)])",
+		"strategy(addition,known_fact_retrieval)"
+	      ]
+	    },
+	    "numeric_delta_kind":"breadth_tally",
+	    "relation":"incomparable"
+	  },
+	  "strategy": {
+	    "delta_status":"breadth_tally_over_incomparable_sets",
+	    "extra_rejections": {
+	      "im": [
+		"misconception(add_instead_of_multiply)",
+		"misconception(make_ten_drop_leftover)",
+		"misconception(repeat_group_size_by_itself)",
+		"misconception(round_without_adjusting)",
+		"discovered_set(registry_neighborhood,[misconception(add_instead_of_multiply),strategy(multiplication,repeat_equal_groups)])",
+		"discovered_set(registry_neighborhood,[misconception(make_ten_drop_leftover),strategy(addition,make_ten_split_leftover)])",
+		"discovered_set(registry_neighborhood,[misconception(repeat_group_size_by_itself),strategy(multiplication,repeat_equal_groups)])",
+		"discovered_set(registry_neighborhood,[misconception(round_without_adjusting),strategy(addition,round_then_adjust)])",
+		"discovered_set(registry_neighborhood,[strategy(addition,count_all_when_count_on_available),strategy(addition,count_on_from_larger)])",
+		"discovered_set(registry_neighborhood,[strategy(addition,make_ten_drop_leftover),strategy(addition,make_ten_split_leftover)])",
+		"strategy(addition,count_on_from_larger)",
+		"strategy(addition,make_ten_split_leftover)"
+	      ],
+	      "traditional": [
+		"misconception(count_all_instead_of_known_fact)",
+		"discovered_set(registry_neighborhood,[misconception(count_all_instead_of_known_fact),strategy(addition,known_fact_retrieval)])"
+	      ]
+	    },
+	    "numeric_delta_kind":"breadth_tally",
+	    "relation":"incomparable"
+	  }
+	},
+	"emergent_hyperedges":5,
+	"misconception_incompatibilities":0,
+	"misconception_incompatibilities_kind":"breadth_tally",
+	"notes": [
+	  "structural_claim(puts_in_play)",
+	  "understanding_hypothesis(explicate_exclusions)",
+	  "decentering_link(downstream_conjecture_not_result)",
+	  "measure_note('proof paths are region-level and compared only when both lessons use supported operation regions')",
+	  "measure_note('incompatibility counts proxy how much a lesson makes explicit about what a move rules out')",
+	  "measure_note('incompatibility sums are breadth tallies; counts alone do not establish entailment')",
+	  "measure_note('conflict-set containment models the Brandomian relation used to license a directional comparison')",
+	  "measure_note('incomparable conflict sets leave the numeric delta as a breadth tally, not an entailment result')",
+	  "measure_note('delta is IM minus traditional; negative values mean the traditional lesson leads on that axis')"
+	],
+	"proof_paths": {"reason":"mismatched_path_regions(operations([addition,multiplication],[addition]))","status":"non_commensurable"},
+	"strategy_incompatibilities":10,
+	"strategy_incompatibilities_kind":"breadth_tally"
+      },
+      "im": {
+	"citations": [
+	  "ESM_Gray_1999_Knowledge: Gray et al. 1999 corpus bindings ground count-all/count-on divergence in action/object focus and procedural counting."
+	],
+	"code":"IM-G1-U3-L17",
+	"concept":"im_grade1_u3_l17",
+	"grade":"grade(1)",
+	"lesson":"lesson(17)",
+	"misconceptions": [
+	  {
+	    "citations": [
+	      "ESM_Gray_1999_Knowledge: Gray et al. 1999 corpus bindings ground count-all/count-on divergence in action/object focus and procedural counting."
+	    ],
+	    "name":"count_all_when_count_on_available",
+	    "operation":"addition",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  }
+	],
+	"report": {
+	  "misconception_count":1,
+	  "misconception_incompatibilities":3,
+	  "misconception_incompatibilities_kind":"breadth_tally",
+	  "operations": [
+	    {"cells":16,"operation":"addition","sum_distinct_costs":48,"total_paths":180},
+	    {"cells":12,"operation":"multiplication","sum_distinct_costs":12,"total_paths":12}
+	  ],
+	  "proof_paths":192,
+	  "strategy_count":6,
+	  "strategy_incompatibilities":14,
+	  "strategy_incompatibilities_kind":"breadth_tally"
+	},
+	"strategies": [
+	  {
+	    "citations": [],
+	    "kind":"count_all_when_count_on_available",
+	    "operation":"addition",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  },
+	  {
+	    "citations": [],
+	    "kind":"count_on_from_larger",
+	    "operation":"addition",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  },
+	  {
+	    "citations": [],
+	    "kind":"make_ten_drop_leftover",
+	    "operation":"addition",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  },
+	  {
+	    "citations": [],
+	    "kind":"make_ten_split_leftover",
+	    "operation":"addition",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  },
+	  {"citations": [],"kind":"round_then_adjust","operation":"addition","provenance":"text_evidenced","sources": []},
+	  {
+	    "citations": [],
+	    "kind":"repeat_equal_groups",
+	    "operation":"multiplication",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  }
+	],
+	"title":"IM Grade1 U3 L17: Make 10 to Add",
+	"unit":"unit(3)"
+      },
+      "notes": [
+	"structural_claim(puts_in_play)",
+	"understanding_hypothesis(explicate_exclusions)",
+	"decentering_link(downstream_conjecture_not_result)",
+	"measure_note('proof paths are region-level and compared only when both lessons use supported operation regions')",
+	"measure_note('incompatibility counts proxy how much a lesson makes explicit about what a move rules out')",
+	"measure_note('incompatibility sums are breadth tallies; counts alone do not establish entailment')",
+	"measure_note('conflict-set containment models the Brandomian relation used to license a directional comparison')",
+	"measure_note('incomparable conflict sets leave the numeric delta as a breadth tally, not an entailment result')",
+	"measure_note('delta is IM minus traditional; negative values mean the traditional lesson leads on that axis')"
+      ],
+      "standard": {"code":"1.OA.C.6","framework":"ccss","label":"ccss 1.OA.C.6"},
+      "traditional": {
+	"citations": [
+	  "ESM_Gray_1999_Knowledge: procedural_count_when_fact_available: Less successful students in arithmetic rely strictly on procedural, step-by-step counting tied to mental analogues of physical objects (like fingers) rather than flexibly using derived facts. | mental analogues; strictly on procedural; step-by-step counting; rather than flexibly using derived facts | Less successful students in arithmetic rely strictly on procedural, step-by-step counting tied to mental analogues of physical objects (like fingers) rather than flexibly using derived facts.",
+	  "ray_new_primary_arithmetic: A fair traditional facts lesson can include counting-on practice while centering accurate recall and written exercises.",
+	  "ray_new_primary_arithmetic: Fact-practice lessons can still put procedural counting instead of fact retrieval in play; this is an attested registry misconception, not an invented weakness.",
+	  "ray_new_primary_arithmetic: Smithsonian characterizes Ray's New Primary Arithmetic as containing simple lessons on the four operations, largely equations and word problems."
+	],
+	"code":"TRAD-RAY-G1-OA-C6-ADD-FACTS",
+	"concept":"trad_ray_g1_addition_facts",
+	"grade":"grade(1)",
+	"lesson":"lesson(addition_facts_within_20)",
+	"misconceptions": [
+	  {
+	    "citations": [
+	      "ESM_Gray_1999_Knowledge: procedural_count_when_fact_available: Less successful students in arithmetic rely strictly on procedural, step-by-step counting tied to mental analogues of physical objects (like fingers) rather than flexibly using derived facts. | mental analogues; strictly on procedural; step-by-step counting; rather than flexibly using derived facts | Less successful students in arithmetic rely strictly on procedural, step-by-step counting tied to mental analogues of physical objects (like fingers) rather than flexibly using derived facts.",
+	      "ray_new_primary_arithmetic: Fact-practice lessons can still put procedural counting instead of fact retrieval in play; this is an attested registry misconception, not an invented weakness."
+	    ],
+	    "name":"count_all_instead_of_known_fact",
+	    "operation":"addition",
+	    "provenance":"source_characterization",
+	    "sources": [
+	      "source(ray_new_primary_arithmetic,\"Ray's New Primary Arithmetic for Young Learners\",\"Smithsonian National Museum of American History object nmah_1842659\",\"https://www.si.edu/object/nmah_1842659\")"
+	    ]
+	  }
+	],
+	"report": {
+	  "misconception_count":1,
+	  "misconception_incompatibilities":3,
+	  "misconception_incompatibilities_kind":"breadth_tally",
+	  "operations": [ {"cells":16,"operation":"addition","sum_distinct_costs":48,"total_paths":180} ],
+	  "proof_paths":180,
+	  "strategy_count":2,
+	  "strategy_incompatibilities":4,
+	  "strategy_incompatibilities_kind":"breadth_tally"
+	},
+	"strategies": [
+	  {
+	    "citations": [
+	      "ray_new_primary_arithmetic: A fair traditional facts lesson can include counting-on practice while centering accurate recall and written exercises."
+	    ],
+	    "kind":"count_on_from_larger",
+	    "operation":"addition",
+	    "provenance":"source_characterization",
+	    "sources": [
+	      "source(ray_new_primary_arithmetic,\"Ray's New Primary Arithmetic for Young Learners\",\"Smithsonian National Museum of American History object nmah_1842659\",\"https://www.si.edu/object/nmah_1842659\")"
+	    ]
+	  },
+	  {
+	    "citations": [
+	      "ray_new_primary_arithmetic: Smithsonian characterizes Ray's New Primary Arithmetic as containing simple lessons on the four operations, largely equations and word problems."
+	    ],
+	    "kind":"known_fact_retrieval",
+	    "operation":"addition",
+	    "provenance":"source_characterization",
+	    "sources": [
+	      "source(ray_new_primary_arithmetic,\"Ray's New Primary Arithmetic for Young Learners\",\"Smithsonian National Museum of American History object nmah_1842659\",\"https://www.si.edu/object/nmah_1842659\")"
+	    ]
+	  }
+	],
+	"title":"Ray-style addition facts and word problems within 20",
+	"unit":"unit(ray_primary)"
+      }
+    },
+    {
+      "delta": {
+	"containment": {
+	  "misconception": {
+	    "delta_status":"licensed_by_containment",
+	    "extra_rejections": {
+	      "im": [],
+	      "traditional": [
+		"discovered_set(registry_neighborhood,[drop_carry_to_next_column,strategy(addition,column_addition_with_carrying)])",
+		"discovered_set(registry_neighborhood,[misconception(drop_carry_to_next_column),strategy(addition,column_addition_with_carrying)])",
+		"strategy(addition,column_addition_with_carrying)"
+	      ]
+	    },
+	    "numeric_delta_kind":"breadth_tally",
+	    "relation":"subset"
+	  },
+	  "strategy": {
+	    "delta_status":"breadth_tally_over_incomparable_sets",
+	    "extra_rejections": {
+	      "im": [
+		"misconception(drop_ones_after_base_takeaway)",
+		"misconception(omit_highest_place_regrouping)",
+		"discovered_set(registry_neighborhood,[misconception(drop_ones_after_base_takeaway),strategy(subtraction,take_away_base_ones)])",
+		"discovered_set(registry_neighborhood,[misconception(omit_highest_place_regrouping),strategy(counting,recursive_place_value_inscription)])"
+	      ],
+	      "traditional": [
+		"misconception(append_column_sum_without_carrying)",
+		"misconception(drop_carry_to_next_column)",
+		"misconception(wrong_carry_amount_to_next_column)",
+		"discovered_set(registry_neighborhood,[misconception(append_column_sum_without_carrying),strategy(addition,column_addition_with_carrying)])",
+		"discovered_set(registry_neighborhood,[misconception(drop_carry_to_next_column),strategy(addition,column_addition_with_carrying)])",
+		"discovered_set(registry_neighborhood,[misconception(wrong_carry_amount_to_next_column),strategy(addition,column_addition_with_carrying)])"
+	      ]
+	    },
+	    "numeric_delta_kind":"breadth_tally",
+	    "relation":"incomparable"
+	  }
+	},
+	"emergent_hyperedges":-2,
+	"misconception_incompatibilities":-3,
+	"misconception_incompatibilities_kind":"breadth_tally",
+	"notes": [
+	  "structural_claim(puts_in_play)",
+	  "understanding_hypothesis(explicate_exclusions)",
+	  "decentering_link(downstream_conjecture_not_result)",
+	  "measure_note('proof paths are region-level and compared only when both lessons use supported operation regions')",
+	  "measure_note('incompatibility counts proxy how much a lesson makes explicit about what a move rules out')",
+	  "measure_note('incompatibility sums are breadth tallies; counts alone do not establish entailment')",
+	  "measure_note('conflict-set containment models the Brandomian relation used to license a directional comparison')",
+	  "measure_note('incomparable conflict sets leave the numeric delta as a breadth tally, not an entailment result')",
+	  "measure_note('delta is IM minus traditional; negative values mean the traditional lesson leads on that axis')"
+	],
+	"proof_paths":0,
+	"strategy_incompatibilities":-2,
+	"strategy_incompatibilities_kind":"breadth_tally"
+      },
+      "im": {
+	"citations": [
+	  "JRME_Baroody_1990_Chapter: incomplete borrowing; incomplete borrowing procedure; fail to reduce the tens; fail to reduce; add 10 to the ones column | Students execute an incomplete borrowing procedure where they correctly add 10 to the ones column but fail to reduce the tens column."
+	],
+	"code":"IM-G2-U2-L7",
+	"concept":"im_grade2_u2_l7",
+	"grade":"grade(2)",
+	"lesson":"lesson(7)",
+	"misconceptions": [
+	  {
+	    "citations": [
+	      "JRME_Baroody_1990_Chapter: incomplete borrowing; incomplete borrowing procedure; fail to reduce the tens; fail to reduce; add 10 to the ones column | Students execute an incomplete borrowing procedure where they correctly add 10 to the ones column but fail to reduce the tens column."
+	    ],
+	    "name":"borrow_without_reducing_bases",
+	    "operation":"subtraction",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  }
+	],
+	"report": {
+	  "misconception_count":1,
+	  "misconception_incompatibilities":3,
+	  "misconception_incompatibilities_kind":"breadth_tally",
+	  "operations": [
+	    {"cells":16,"operation":"addition","sum_distinct_costs":48,"total_paths":180},
+	    {"cells":16,"operation":"subtraction","sum_distinct_costs":48,"total_paths":180}
+	  ],
+	  "proof_paths":360,
+	  "strategy_count":4,
+	  "strategy_incompatibilities":14,
+	  "strategy_incompatibilities_kind":"breadth_tally"
+	},
+	"strategies": [
+	  {
+	    "citations": [],
+	    "kind":"base_ones_chunking",
+	    "operation":"addition",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  },
+	  {
+	    "citations": [],
+	    "kind":"recursive_place_value_inscription",
+	    "operation":"counting",
+	    "provenance":"compiled_text_evidence",
+	    "sources": [
+	      "source(mapping_evidence(rule(recursive_place_value_inscription),source('curriculum/im_teacher_guides/grade2/unit2/lesson7.md',line(5)),confidence(high),input_domain(discrete_collection),excerpt(\"Explain (orally) strategies for subtracting a two-digit number from a two-digit number, including those that use base-ten representations.\")))"
+	    ]
+	  },
+	  {
+	    "citations": [],
+	    "kind":"decompose_base_for_ones",
+	    "operation":"subtraction",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  },
+	  {
+	    "citations": [],
+	    "kind":"take_away_base_ones",
+	    "operation":"subtraction",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  }
+	],
+	"title":"IM Grade2 U2 L7: Subtract 2 Digits",
+	"unit":"unit(2)"
+      },
+      "notes": [
+	"structural_claim(puts_in_play)",
+	"understanding_hypothesis(explicate_exclusions)",
+	"decentering_link(downstream_conjecture_not_result)",
+	"measure_note('proof paths are region-level and compared only when both lessons use supported operation regions')",
+	"measure_note('incompatibility counts proxy how much a lesson makes explicit about what a move rules out')",
+	"measure_note('incompatibility sums are breadth tallies; counts alone do not establish entailment')",
+	"measure_note('conflict-set containment models the Brandomian relation used to license a directional comparison')",
+	"measure_note('incomparable conflict sets leave the numeric delta as a breadth tally, not an entailment result')",
+	"measure_note('delta is IM minus traditional; negative values mean the traditional lesson leads on that axis')"
+      ],
+      "standard": {"code":"2.NBT.B.5","framework":"ccss","label":"ccss 2.NBT.B.5"},
+      "traditional": {
+	"citations": [
+	  "JMB_Ebby_2005_Powers: Ebby 2005 documents a student computing 24 + 37 as 611 by adding each column independently and writing partial sums side by side, omitting the carry to the next column.",
+	  "JRME_Baroody_1990_Chapter: incomplete borrowing; incomplete borrowing procedure; fail to reduce the tens; fail to reduce; add 10 to the ones column | Students execute an incomplete borrowing procedure where they correctly add 10 to the ones column but fail to reduce the tens column.",
+	  "ray_new_practical_arithmetic: A fair traditional subtraction lesson foregrounds decomposition/regrouping for the written algorithm.",
+	  "ray_new_practical_arithmetic: Column addition depends on place-value decomposition into base chunks and ones, even when the written algorithm is foregrounded.",
+	  "ray_new_practical_arithmetic: Ray's New Practical Arithmetic includes sections for addition and subtraction with columnar written work and rules for operation.",
+	  "ray_new_practical_arithmetic: The carried ten is a real risk surface in column addition, and the misconception registry supplies attested evidence for omitted carry.",
+	  "ray_new_practical_arithmetic: The regrouping exchange in written subtraction can be performed incompletely; this is registry-attested."
+	],
+	"code":"TRAD-RAY-G2-NBT-B5-COLUMN-ADD-SUB",
+	"concept":"trad_ray_g2_column_add_sub",
+	"grade":"grade(2)",
+	"lesson":"lesson(column_addition_subtraction_within_100)",
+	"misconceptions": [
+	  {
+	    "citations": [
+	      "JMB_Ebby_2005_Powers: Ebby 2005 documents a student computing 24 + 37 as 611 by adding each column independently and writing partial sums side by side, omitting the carry to the next column.",
+	      "ray_new_practical_arithmetic: The carried ten is a real risk surface in column addition, and the misconception registry supplies attested evidence for omitted carry."
+	    ],
+	    "name":"drop_carry_to_next_column",
+	    "operation":"addition",
+	    "provenance":"source_characterization",
+	    "sources": [
+	      "source(ray_new_practical_arithmetic,\"Ray's New Practical Arithmetic\",\"Open Library edition OL7111104M / Google Books scan 1s5EAAAAIAAJ\",\"https://openlibrary.org/books/OL7111104M/Ray%27s_New_practical_arithmetic\")"
+	    ]
+	  },
+	  {
+	    "citations": [
+	      "JRME_Baroody_1990_Chapter: incomplete borrowing; incomplete borrowing procedure; fail to reduce the tens; fail to reduce; add 10 to the ones column | Students execute an incomplete borrowing procedure where they correctly add 10 to the ones column but fail to reduce the tens column.",
+	      "ray_new_practical_arithmetic: The regrouping exchange in written subtraction can be performed incompletely; this is registry-attested."
+	    ],
+	    "name":"borrow_without_reducing_bases",
+	    "operation":"subtraction",
+	    "provenance":"source_characterization",
+	    "sources": [
+	      "source(ray_new_practical_arithmetic,\"Ray's New Practical Arithmetic\",\"Open Library edition OL7111104M / Google Books scan 1s5EAAAAIAAJ\",\"https://openlibrary.org/books/OL7111104M/Ray%27s_New_practical_arithmetic\")"
+	    ]
+	  }
+	],
+	"report": {
+	  "misconception_count":2,
+	  "misconception_incompatibilities":6,
+	  "misconception_incompatibilities_kind":"breadth_tally",
+	  "operations": [
+	    {"cells":16,"operation":"addition","sum_distinct_costs":48,"total_paths":180},
+	    {"cells":16,"operation":"subtraction","sum_distinct_costs":48,"total_paths":180}
+	  ],
+	  "proof_paths":360,
+	  "strategy_count":3,
+	  "strategy_incompatibilities":16,
+	  "strategy_incompatibilities_kind":"breadth_tally"
+	},
+	"strategies": [
+	  {
+	    "citations": [
+	      "ray_new_practical_arithmetic: Column addition depends on place-value decomposition into base chunks and ones, even when the written algorithm is foregrounded."
+	    ],
+	    "kind":"base_ones_chunking",
+	    "operation":"addition",
+	    "provenance":"source_characterization",
+	    "sources": [
+	      "source(ray_new_practical_arithmetic,\"Ray's New Practical Arithmetic\",\"Open Library edition OL7111104M / Google Books scan 1s5EAAAAIAAJ\",\"https://openlibrary.org/books/OL7111104M/Ray%27s_New_practical_arithmetic\")"
+	    ]
+	  },
+	  {
+	    "citations": [
+	      "ray_new_practical_arithmetic: Ray's New Practical Arithmetic includes sections for addition and subtraction with columnar written work and rules for operation."
+	    ],
+	    "kind":"column_addition_with_carrying",
+	    "operation":"addition",
+	    "provenance":"source_characterization",
+	    "sources": [
+	      "source(ray_new_practical_arithmetic,\"Ray's New Practical Arithmetic\",\"Open Library edition OL7111104M / Google Books scan 1s5EAAAAIAAJ\",\"https://openlibrary.org/books/OL7111104M/Ray%27s_New_practical_arithmetic\")"
+	    ]
+	  },
+	  {
+	    "citations": [
+	      "ray_new_practical_arithmetic: A fair traditional subtraction lesson foregrounds decomposition/regrouping for the written algorithm."
+	    ],
+	    "kind":"decompose_base_for_ones",
+	    "operation":"subtraction",
+	    "provenance":"source_characterization",
+	    "sources": [
+	      "source(ray_new_practical_arithmetic,\"Ray's New Practical Arithmetic\",\"Open Library edition OL7111104M / Google Books scan 1s5EAAAAIAAJ\",\"https://openlibrary.org/books/OL7111104M/Ray%27s_New_practical_arithmetic\")"
+	    ]
+	  }
+	],
+	"title":"Ray-style column addition and subtraction within 100",
+	"unit":"unit(ray_practical)"
+      }
+    },
+    {
+      "delta": {
+	"containment": {
+	  "misconception": {
+	    "delta_status":"breadth_tally_over_incomparable_sets",
+	    "extra_rejections": {
+	      "im": [
+		"discovered_set(registry_neighborhood,[borrow_without_reducing_bases,strategy(subtraction,decompose_base_for_ones)])",
+		"discovered_set(registry_neighborhood,[misconception(borrow_without_reducing_bases),strategy(subtraction,decompose_base_for_ones)])"
+	      ],
+	      "traditional": [
+		"discovered_set(registry_neighborhood,[wrong_carry_amount_to_next_column,strategy(addition,column_addition_with_carrying)])",
+		"discovered_set(registry_neighborhood,[misconception(wrong_carry_amount_to_next_column),strategy(addition,column_addition_with_carrying)])",
+		"strategy(addition,column_addition_with_carrying)"
+	      ]
+	    },
+	    "numeric_delta_kind":"breadth_tally",
+	    "relation":"incomparable"
+	  },
+	  "strategy": {
+	    "delta_status":"breadth_tally_over_incomparable_sets",
+	    "extra_rejections": {
+	      "im": [
+		"misconception(answer_as_endpoint_count_up)",
+		"misconception(dropped_ones_chunk)",
+		"misconception(round_without_adjusting)",
+		"discovered_set(registry_neighborhood,[misconception(answer_as_endpoint_count_up),strategy(subtraction,count_up_missing_addend)])",
+		"discovered_set(registry_neighborhood,[misconception(dropped_ones_chunk),strategy(addition,base_ones_chunking)])",
+		"discovered_set(registry_neighborhood,[misconception(round_without_adjusting),strategy(addition,round_then_adjust)])"
+	      ],
+	      "traditional": [
+		"discovered_set(registry_neighborhood,[misconception(borrow_across_zero_no_cascade),strategy(subtraction,borrow_across_zero_cascade)])"
+	      ]
+	    },
+	    "numeric_delta_kind":"breadth_tally",
+	    "relation":"incomparable"
+	  }
+	},
+	"emergent_hyperedges":2,
+	"misconception_incompatibilities":0,
+	"misconception_incompatibilities_kind":"breadth_tally",
+	"notes": [
+	  "structural_claim(puts_in_play)",
+	  "understanding_hypothesis(explicate_exclusions)",
+	  "decentering_link(downstream_conjecture_not_result)",
+	  "measure_note('proof paths are region-level and compared only when both lessons use supported operation regions')",
+	  "measure_note('incompatibility counts proxy how much a lesson makes explicit about what a move rules out')",
+	  "measure_note('incompatibility sums are breadth tallies; counts alone do not establish entailment')",
+	  "measure_note('conflict-set containment models the Brandomian relation used to license a directional comparison')",
+	  "measure_note('incomparable conflict sets leave the numeric delta as a breadth tally, not an entailment result')",
+	  "measure_note('delta is IM minus traditional; negative values mean the traditional lesson leads on that axis')"
+	],
+	"proof_paths":0,
+	"strategy_incompatibilities":4,
+	"strategy_incompatibilities_kind":"breadth_tally"
+      },
+      "im": {
+	"citations": [
+	  "JRME_Baroody_1990_Chapter: incomplete borrowing; incomplete borrowing procedure; fail to reduce the tens; fail to reduce; add 10 to the ones column | Students execute an incomplete borrowing procedure where they correctly add 10 to the ones column but fail to reduce the tens column.",
+	  "JRME_Hill_2008_Unpacking: subtracting the smaller digit from the larger; smaller digit from the larger; always subtracting the smaller digit; minuend or subtrahend | Students perform a 'buggy' subtraction algorithm by always subtracting the smaller digit from the larger digit in each column, regardless of whether it is the minuend or subtrahend."
+	],
+	"code":"IM-G4-U4-L20",
+	"concept":"im_grade4_u4_l20",
+	"grade":"grade(4)",
+	"lesson":"lesson(20)",
+	"misconceptions": [
+	  {
+	    "citations": [
+	      "JRME_Baroody_1990_Chapter: incomplete borrowing; incomplete borrowing procedure; fail to reduce the tens; fail to reduce; add 10 to the ones column | Students execute an incomplete borrowing procedure where they correctly add 10 to the ones column but fail to reduce the tens column."
+	    ],
+	    "name":"borrow_without_reducing_bases",
+	    "operation":"subtraction",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  },
+	  {
+	    "citations": [
+	      "JRME_Hill_2008_Unpacking: subtracting the smaller digit from the larger; smaller digit from the larger; always subtracting the smaller digit; minuend or subtrahend | Students perform a 'buggy' subtraction algorithm by always subtracting the smaller digit from the larger digit in each column, regardless of whether it is the minuend or subtrahend."
+	    ],
+	    "name":"smaller_from_larger_in_column",
+	    "operation":"subtraction",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  }
+	],
+	"report": {
+	  "misconception_count":2,
+	  "misconception_incompatibilities":6,
+	  "misconception_incompatibilities_kind":"breadth_tally",
+	  "operations": [
+	    {"cells":16,"operation":"addition","sum_distinct_costs":48,"total_paths":180},
+	    {"cells":16,"operation":"subtraction","sum_distinct_costs":48,"total_paths":180}
+	  ],
+	  "proof_paths":360,
+	  "strategy_count":5,
+	  "strategy_incompatibilities":20,
+	  "strategy_incompatibilities_kind":"breadth_tally"
+	},
+	"strategies": [
+	  {
+	    "citations": [],
+	    "kind":"base_ones_chunking",
+	    "operation":"addition",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  },
+	  {
+	    "citations": [],
+	    "kind":"column_addition_with_carrying",
+	    "operation":"addition",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  },
+	  {"citations": [],"kind":"round_then_adjust","operation":"addition","provenance":"text_evidenced","sources": []},
+	  {
+	    "citations": [],
+	    "kind":"count_up_missing_addend",
+	    "operation":"subtraction",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  },
+	  {
+	    "citations": [],
+	    "kind":"decompose_base_for_ones",
+	    "operation":"subtraction",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  }
+	],
+	"title":"IM Grade4 U4 L20: Add and Subtract within 1,000,000",
+	"unit":"unit(4)"
+      },
+      "notes": [
+	"structural_claim(puts_in_play)",
+	"understanding_hypothesis(explicate_exclusions)",
+	"decentering_link(downstream_conjecture_not_result)",
+	"measure_note('proof paths are region-level and compared only when both lessons use supported operation regions')",
+	"measure_note('incompatibility counts proxy how much a lesson makes explicit about what a move rules out')",
+	"measure_note('incompatibility sums are breadth tallies; counts alone do not establish entailment')",
+	"measure_note('conflict-set containment models the Brandomian relation used to license a directional comparison')",
+	"measure_note('incomparable conflict sets leave the numeric delta as a breadth tally, not an entailment result')",
+	"measure_note('delta is IM minus traditional; negative values mean the traditional lesson leads on that axis')"
+      ],
+      "standard": {"code":"4.NBT.B.4","framework":"ccss","label":"ccss 4.NBT.B.4"},
+      "traditional": {
+	"citations": [
+	  "JRME_Hill_2008_Unpacking: carrying an incorrect amount; incorrect amount to the next column; regrouping errors in multi digit addition; regrouping errors in multi-digit addition | Students make regrouping errors in multi-digit addition by carrying an incorrect amount to the next column.",
+	  "JRME_Hill_2008_Unpacking: subtracting the smaller digit from the larger; smaller digit from the larger; always subtracting the smaller digit; minuend or subtrahend | Students perform a 'buggy' subtraction algorithm by always subtracting the smaller digit from the larger digit in each column, regardless of whether it is the minuend or subtrahend.",
+	  "ray_new_practical_arithmetic: Always subtracting the smaller digit from the larger is an attested risk in column subtraction.",
+	  "ray_new_practical_arithmetic: Carrying the wrong amount is an attested risk in multi-digit written addition.",
+	  "ray_new_practical_arithmetic: Multi-digit subtraction practice puts in play the special case of borrowing across zeros.",
+	  "ray_new_practical_arithmetic: Ray's practical arithmetic treats written addition as a standard column algorithm for larger numbers.",
+	  "ray_new_practical_arithmetic: Written subtraction with regrouping is represented here as decomposition of a base unit for ones."
+	],
+	"code":"TRAD-RAY-G4-NBT-B4-MULTIDIGIT",
+	"concept":"trad_ray_g4_multidigit_add_sub",
+	"grade":"grade(4)",
+	"lesson":"lesson(multidigit_addition_subtraction_algorithms)",
+	"misconceptions": [
+	  {
+	    "citations": [
+	      "JRME_Hill_2008_Unpacking: carrying an incorrect amount; incorrect amount to the next column; regrouping errors in multi digit addition; regrouping errors in multi-digit addition | Students make regrouping errors in multi-digit addition by carrying an incorrect amount to the next column.",
+	      "ray_new_practical_arithmetic: Carrying the wrong amount is an attested risk in multi-digit written addition."
+	    ],
+	    "name":"wrong_carry_amount_to_next_column",
+	    "operation":"addition",
+	    "provenance":"source_characterization",
+	    "sources": [
+	      "source(ray_new_practical_arithmetic,\"Ray's New Practical Arithmetic\",\"Open Library edition OL7111104M / Google Books scan 1s5EAAAAIAAJ\",\"https://openlibrary.org/books/OL7111104M/Ray%27s_New_practical_arithmetic\")"
+	    ]
+	  },
+	  {
+	    "citations": [
+	      "JRME_Hill_2008_Unpacking: subtracting the smaller digit from the larger; smaller digit from the larger; always subtracting the smaller digit; minuend or subtrahend | Students perform a 'buggy' subtraction algorithm by always subtracting the smaller digit from the larger digit in each column, regardless of whether it is the minuend or subtrahend.",
+	      "ray_new_practical_arithmetic: Always subtracting the smaller digit from the larger is an attested risk in column subtraction."
+	    ],
+	    "name":"smaller_from_larger_in_column",
+	    "operation":"subtraction",
+	    "provenance":"source_characterization",
+	    "sources": [
+	      "source(ray_new_practical_arithmetic,\"Ray's New Practical Arithmetic\",\"Open Library edition OL7111104M / Google Books scan 1s5EAAAAIAAJ\",\"https://openlibrary.org/books/OL7111104M/Ray%27s_New_practical_arithmetic\")"
+	    ]
+	  }
+	],
+	"report": {
+	  "misconception_count":2,
+	  "misconception_incompatibilities":6,
+	  "misconception_incompatibilities_kind":"breadth_tally",
+	  "operations": [
+	    {"cells":16,"operation":"addition","sum_distinct_costs":48,"total_paths":180},
+	    {"cells":16,"operation":"subtraction","sum_distinct_costs":48,"total_paths":180}
+	  ],
+	  "proof_paths":360,
+	  "strategy_count":3,
+	  "strategy_incompatibilities":16,
+	  "strategy_incompatibilities_kind":"breadth_tally"
+	},
+	"strategies": [
+	  {
+	    "citations": [
+	      "ray_new_practical_arithmetic: Ray's practical arithmetic treats written addition as a standard column algorithm for larger numbers."
+	    ],
+	    "kind":"column_addition_with_carrying",
+	    "operation":"addition",
+	    "provenance":"source_characterization",
+	    "sources": [
+	      "source(ray_new_practical_arithmetic,\"Ray's New Practical Arithmetic\",\"Open Library edition OL7111104M / Google Books scan 1s5EAAAAIAAJ\",\"https://openlibrary.org/books/OL7111104M/Ray%27s_New_practical_arithmetic\")"
+	    ]
+	  },
+	  {
+	    "citations": [
+	      "ray_new_practical_arithmetic: Multi-digit subtraction practice puts in play the special case of borrowing across zeros."
+	    ],
+	    "kind":"borrow_across_zero_cascade",
+	    "operation":"subtraction",
+	    "provenance":"source_characterization",
+	    "sources": [
+	      "source(ray_new_practical_arithmetic,\"Ray's New Practical Arithmetic\",\"Open Library edition OL7111104M / Google Books scan 1s5EAAAAIAAJ\",\"https://openlibrary.org/books/OL7111104M/Ray%27s_New_practical_arithmetic\")"
+	    ]
+	  },
+	  {
+	    "citations": [
+	      "ray_new_practical_arithmetic: Written subtraction with regrouping is represented here as decomposition of a base unit for ones."
+	    ],
+	    "kind":"decompose_base_for_ones",
+	    "operation":"subtraction",
+	    "provenance":"source_characterization",
+	    "sources": [
+	      "source(ray_new_practical_arithmetic,\"Ray's New Practical Arithmetic\",\"Open Library edition OL7111104M / Google Books scan 1s5EAAAAIAAJ\",\"https://openlibrary.org/books/OL7111104M/Ray%27s_New_practical_arithmetic\")"
+	    ]
+	  }
+	],
+	"title":"Ray-style multi-digit addition and subtraction standard algorithms",
+	"unit":"unit(ray_practical)"
+      }
+    },
+    {
+      "delta": {
+	"containment": {
+	  "misconception": {
+	    "delta_status":"licensed_by_containment",
+	    "extra_rejections": {
+	      "im": [
+		"discovered_set(registry_neighborhood,[rigid_factor_order_roles,strategy(multiplication,commute_factors_preserve_product)])",
+		"discovered_set(registry_neighborhood,[misconception(rigid_factor_order_roles),strategy(multiplication,commute_factors_preserve_product)])",
+		"strategy(multiplication,commute_factors_preserve_product)"
+	      ],
+	      "traditional": []
+	    },
+	    "numeric_delta_kind":"breadth_tally",
+	    "relation":"superset"
+	  },
+	  "strategy": {
+	    "delta_status":"licensed_by_containment",
+	    "extra_rejections": {
+	      "im": [
+		"misconception(add_counts_without_composite_unit)",
+		"discovered_set(registry_neighborhood,[misconception(add_counts_without_composite_unit),strategy(multiplication,coordinate_groups_items)])"
+	      ],
+	      "traditional": []
+	    },
+	    "numeric_delta_kind":"breadth_tally",
+	    "relation":"superset"
+	  }
+	},
+	"emergent_hyperedges":3,
+	"misconception_incompatibilities":3,
+	"misconception_incompatibilities_kind":"breadth_tally",
+	"notes": [
+	  "structural_claim(puts_in_play)",
+	  "understanding_hypothesis(explicate_exclusions)",
+	  "decentering_link(downstream_conjecture_not_result)",
+	  "measure_note('proof paths are region-level and compared only when both lessons use supported operation regions')",
+	  "measure_note('incompatibility counts proxy how much a lesson makes explicit about what a move rules out')",
+	  "measure_note('incompatibility sums are breadth tallies; counts alone do not establish entailment')",
+	  "measure_note('conflict-set containment models the Brandomian relation used to license a directional comparison')",
+	  "measure_note('incomparable conflict sets leave the numeric delta as a breadth tally, not an entailment result')",
+	  "measure_note('delta is IM minus traditional; negative values mean the traditional lesson leads on that axis')"
+	],
+	"proof_paths":0,
+	"strategy_incompatibilities":2,
+	"strategy_incompatibilities_kind":"breadth_tally"
+      },
+      "im": {
+	"citations": [
+	  "JMB_Larsson_2017_Students: rigidly fixed roles; multiplier and multiplicand; struggle to intuitively apply commutativity; asymmetric models; repeated addition | Because early instruction strongly roots multiplication in asymmetric models like equal groups or repeated addition, students struggle to intuitively apply commutativity, viewing the multiplier and multiplicand as rigidly fixed roles.",
+	  "JMB_Norton_2015_Provoking: contextualized referent units; familiar multiplication facts; guess an answer; unit of units structure; entirely disconnected | When unable to construct a necessary unit of units structure, students may rely on familiar multiplication facts to guess an answer that is entirely disconnected from the contextualized referent units of the problem."
+	],
+	"code":"IM-G3-U1-L14",
+	"concept":"im_grade3_u1_l14",
+	"grade":"grade(3)",
+	"lesson":"lesson(14)",
+	"misconceptions": [
+	  {
+	    "citations": [
+	      "JMB_Norton_2015_Provoking: contextualized referent units; familiar multiplication facts; guess an answer; unit of units structure; entirely disconnected | When unable to construct a necessary unit of units structure, students may rely on familiar multiplication facts to guess an answer that is entirely disconnected from the contextualized referent units of the problem."
+	    ],
+	    "name":"context_free_fact_family_guess",
+	    "operation":"multiplication",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  },
+	  {
+	    "citations": [
+	      "JMB_Larsson_2017_Students: rigidly fixed roles; multiplier and multiplicand; struggle to intuitively apply commutativity; asymmetric models; repeated addition | Because early instruction strongly roots multiplication in asymmetric models like equal groups or repeated addition, students struggle to intuitively apply commutativity, viewing the multiplier and multiplicand as rigidly fixed roles."
+	    ],
+	    "name":"rigid_factor_order_roles",
+	    "operation":"multiplication",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  }
+	],
+	"report": {
+	  "misconception_count":2,
+	  "misconception_incompatibilities":6,
+	  "misconception_incompatibilities_kind":"breadth_tally",
+	  "operations": [ {"cells":12,"operation":"multiplication","sum_distinct_costs":12,"total_paths":12} ],
+	  "proof_paths":12,
+	  "strategy_count":3,
+	  "strategy_incompatibilities":8,
+	  "strategy_incompatibilities_kind":"breadth_tally"
+	},
+	"strategies": [
+	  {
+	    "citations": [],
+	    "kind":"coordinate_groups_items",
+	    "operation":"multiplication",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  },
+	  {
+	    "citations": [],
+	    "kind":"multiplication_fact_retrieval",
+	    "operation":"multiplication",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  },
+	  {
+	    "citations": [],
+	    "kind":"repeat_equal_groups",
+	    "operation":"multiplication",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  }
+	],
+	"title":"IM Grade3 U1 L14: Write and Solve Equations with Unknowns",
+	"unit":"unit(1)"
+      },
+      "notes": [
+	"structural_claim(puts_in_play)",
+	"understanding_hypothesis(explicate_exclusions)",
+	"decentering_link(downstream_conjecture_not_result)",
+	"measure_note('proof paths are region-level and compared only when both lessons use supported operation regions')",
+	"measure_note('incompatibility counts proxy how much a lesson makes explicit about what a move rules out')",
+	"measure_note('incompatibility sums are breadth tallies; counts alone do not establish entailment')",
+	"measure_note('conflict-set containment models the Brandomian relation used to license a directional comparison')",
+	"measure_note('incomparable conflict sets leave the numeric delta as a breadth tally, not an entailment result')",
+	"measure_note('delta is IM minus traditional; negative values mean the traditional lesson leads on that axis')"
+      ],
+      "standard": {"code":"3.OA.C.7","framework":"ccss","label":"ccss 3.OA.C.7"},
+      "traditional": {
+	"citations": [
+	  "JMB_Norton_2015_Provoking: contextualized referent units; familiar multiplication facts; guess an answer; unit of units structure; entirely disconnected | When unable to construct a necessary unit of units structure, students may rely on familiar multiplication facts to guess an answer that is entirely disconnected from the contextualized referent units of the problem.",
+	  "ray_new_primary_arithmetic: Fact retrieval can become disconnected from the contextualized unit structure; the misconception is registry-attested.",
+	  "ray_new_primary_arithmetic: Ray's primary arithmetic includes multiplication lessons and equation practice; a fair encoding foregrounds fact retrieval.",
+	  "ray_new_primary_arithmetic: Word problems in a traditional arithmetic text can still put equal-groups interpretation in play."
+	],
+	"code":"TRAD-RAY-G3-OA-C7-MULT-FACTS",
+	"concept":"trad_ray_g3_multiplication_facts",
+	"grade":"grade(3)",
+	"lesson":"lesson(multiplication_facts_within_100)",
+	"misconceptions": [
+	  {
+	    "citations": [
+	      "JMB_Norton_2015_Provoking: contextualized referent units; familiar multiplication facts; guess an answer; unit of units structure; entirely disconnected | When unable to construct a necessary unit of units structure, students may rely on familiar multiplication facts to guess an answer that is entirely disconnected from the contextualized referent units of the problem.",
+	      "ray_new_primary_arithmetic: Fact retrieval can become disconnected from the contextualized unit structure; the misconception is registry-attested."
+	    ],
+	    "name":"context_free_fact_family_guess",
+	    "operation":"multiplication",
+	    "provenance":"source_characterization",
+	    "sources": [
+	      "source(ray_new_primary_arithmetic,\"Ray's New Primary Arithmetic for Young Learners\",\"Smithsonian National Museum of American History object nmah_1842659\",\"https://www.si.edu/object/nmah_1842659\")"
+	    ]
+	  }
+	],
+	"report": {
+	  "misconception_count":1,
+	  "misconception_incompatibilities":3,
+	  "misconception_incompatibilities_kind":"breadth_tally",
+	  "operations": [ {"cells":12,"operation":"multiplication","sum_distinct_costs":12,"total_paths":12} ],
+	  "proof_paths":12,
+	  "strategy_count":2,
+	  "strategy_incompatibilities":6,
+	  "strategy_incompatibilities_kind":"breadth_tally"
+	},
+	"strategies": [
+	  {
+	    "citations": [
+	      "ray_new_primary_arithmetic: Ray's primary arithmetic includes multiplication lessons and equation practice; a fair encoding foregrounds fact retrieval."
+	    ],
+	    "kind":"multiplication_fact_retrieval",
+	    "operation":"multiplication",
+	    "provenance":"source_characterization",
+	    "sources": [
+	      "source(ray_new_primary_arithmetic,\"Ray's New Primary Arithmetic for Young Learners\",\"Smithsonian National Museum of American History object nmah_1842659\",\"https://www.si.edu/object/nmah_1842659\")"
+	    ]
+	  },
+	  {
+	    "citations": [
+	      "ray_new_primary_arithmetic: Word problems in a traditional arithmetic text can still put equal-groups interpretation in play."
+	    ],
+	    "kind":"repeat_equal_groups",
+	    "operation":"multiplication",
+	    "provenance":"source_characterization",
+	    "sources": [
+	      "source(ray_new_primary_arithmetic,\"Ray's New Primary Arithmetic for Young Learners\",\"Smithsonian National Museum of American History object nmah_1842659\",\"https://www.si.edu/object/nmah_1842659\")"
+	    ]
+	  }
+	],
+	"title":"Ray-style multiplication facts and equal-groups practice",
+	"unit":"unit(ray_primary)"
+      }
+    },
+    {
+      "delta": {
+	"containment": {
+	  "misconception": {
+	    "delta_status":"licensed_by_containment",
+	    "extra_rejections": {"im": [],"traditional": []},
+	    "numeric_delta_kind":"breadth_tally",
+	    "relation":"equal"
+	  },
+	  "strategy": {
+	    "delta_status":"licensed_by_containment",
+	    "extra_rejections": {
+	      "im": [
+		"misconception(whole_number_grab)",
+		"discovered_set(registry_neighborhood,[misconception(whole_number_grab),strategy(fraction,unit_fraction_iteration)])",
+		"discovered_set(registry_neighborhood,[missing_entitlement(strategy(fraction,unit_fraction_partition),vocabulary([referent_whole,equal_partition,denominator,unit_fraction,inside_part,iterable_unit])),strategy(fraction,unit_fraction_partition)])",
+		"missing_entitlement(strategy(fraction,unit_fraction_partition),vocabulary([referent_whole,equal_partition,denominator,unit_fraction,inside_part,iterable_unit]))"
+	      ],
+	      "traditional": []
+	    },
+	    "numeric_delta_kind":"breadth_tally",
+	    "relation":"superset"
+	  }
+	},
+	"emergent_hyperedges":2,
+	"misconception_incompatibilities":0,
+	"misconception_incompatibilities_kind":"breadth_tally",
+	"notes": [
+	  "structural_claim(puts_in_play)",
+	  "understanding_hypothesis(explicate_exclusions)",
+	  "decentering_link(downstream_conjecture_not_result)",
+	  "measure_note('proof paths are region-level and compared only when both lessons use supported operation regions')",
+	  "measure_note('incompatibility counts proxy how much a lesson makes explicit about what a move rules out')",
+	  "measure_note('incompatibility sums are breadth tallies; counts alone do not establish entailment')",
+	  "measure_note('conflict-set containment models the Brandomian relation used to license a directional comparison')",
+	  "measure_note('incomparable conflict sets leave the numeric delta as a breadth tally, not an entailment result')",
+	  "measure_note('delta is IM minus traditional; negative values mean the traditional lesson leads on that axis')"
+	],
+	"proof_paths":0,
+	"strategy_incompatibilities":4,
+	"strategy_incompatibilities_kind":"breadth_tally"
+      },
+      "im": {
+	"citations": [],
+	"code":"IM-G5-U6-L14",
+	"concept":"im_grade5_u6_l14",
+	"grade":"grade(5)",
+	"lesson":"lesson(14)",
+	"misconceptions": [],
+	"report": {
+	  "misconception_count":0,
+	  "misconception_incompatibilities":0,
+	  "misconception_incompatibilities_kind":"breadth_tally",
+	  "operations": [ {"cells":14,"operation":"fraction","sum_distinct_costs":14,"total_paths":14} ],
+	  "proof_paths":14,
+	  "strategy_count":4,
+	  "strategy_incompatibilities":8,
+	  "strategy_incompatibilities_kind":"breadth_tally"
+	},
+	"strategies": [
+	  {
+	    "citations": [],
+	    "kind":"co_denominator_count_on_from_larger",
+	    "operation":"fraction",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  },
+	  {
+	    "citations": [],
+	    "kind":"co_denominator_make_base_transfer",
+	    "operation":"fraction",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  },
+	  {
+	    "citations": [],
+	    "kind":"unit_fraction_iteration",
+	    "operation":"fraction",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  },
+	  {
+	    "citations": [],
+	    "kind":"unit_fraction_partition",
+	    "operation":"fraction",
+	    "provenance":"text_evidenced",
+	    "sources": []
+	  }
+	],
+	"title":"IM Grade5 U6 L14: Representing Fractions on a Line Plot",
+	"unit":"unit(6)"
+      },
+      "notes": [
+	"structural_claim(puts_in_play)",
+	"understanding_hypothesis(explicate_exclusions)",
+	"decentering_link(downstream_conjecture_not_result)",
+	"measure_note('proof paths are region-level and compared only when both lessons use supported operation regions')",
+	"measure_note('incompatibility counts proxy how much a lesson makes explicit about what a move rules out')",
+	"measure_note('incompatibility sums are breadth tallies; counts alone do not establish entailment')",
+	"measure_note('conflict-set containment models the Brandomian relation used to license a directional comparison')",
+	"measure_note('incomparable conflict sets leave the numeric delta as a breadth tally, not an entailment result')",
+	"measure_note('delta is IM minus traditional; negative values mean the traditional lesson leads on that axis')"
+      ],
+      "standard": {"code":"5.NF.A.1","framework":"ccss","label":"ccss 5.NF.A.1"},
+      "traditional": {
+	"citations": [
+	  "ray_new_practical_arithmetic: After common-denominator transformation, same-unit numerator accumulation can reuse additive counting structure.",
+	  "ray_new_practical_arithmetic: Ray's New Practical Arithmetic includes common fractions and fraction addition; the fair encoding is common-denominator transformation before addition."
+	],
+	"code":"TRAD-RAY-G5-NF-A1-FRACTION-ADD",
+	"concept":"trad_ray_g5_fraction_addition",
+	"grade":"grade(5)",
+	"lesson":"lesson(unlike_denominator_fraction_addition)",
+	"misconceptions": [],
+	"report": {
+	  "misconception_count":0,
+	  "misconception_incompatibilities":0,
+	  "misconception_incompatibilities_kind":"breadth_tally",
+	  "operations": [ {"cells":14,"operation":"fraction","sum_distinct_costs":14,"total_paths":14} ],
+	  "proof_paths":14,
+	  "strategy_count":2,
+	  "strategy_incompatibilities":4,
+	  "strategy_incompatibilities_kind":"breadth_tally"
+	},
+	"strategies": [
+	  {
+	    "citations": [
+	      "ray_new_practical_arithmetic: After common-denominator transformation, same-unit numerator accumulation can reuse additive counting structure."
+	    ],
+	    "kind":"co_denominator_count_on_from_larger",
+	    "operation":"fraction",
+	    "provenance":"source_characterization",
+	    "sources": [
+	      "source(ray_new_practical_arithmetic,\"Ray's New Practical Arithmetic\",\"Open Library edition OL7111104M / Google Books scan 1s5EAAAAIAAJ\",\"https://openlibrary.org/books/OL7111104M/Ray%27s_New_practical_arithmetic\")"
+	    ]
+	  },
+	  {
+	    "citations": [
+	      "ray_new_practical_arithmetic: Ray's New Practical Arithmetic includes common fractions and fraction addition; the fair encoding is common-denominator transformation before addition."
+	    ],
+	    "kind":"co_denominator_make_base_transfer",
+	    "operation":"fraction",
+	    "provenance":"source_characterization",
+	    "sources": [
+	      "source(ray_new_practical_arithmetic,\"Ray's New Practical Arithmetic\",\"Open Library edition OL7111104M / Google Books scan 1s5EAAAAIAAJ\",\"https://openlibrary.org/books/OL7111104M/Ray%27s_New_practical_arithmetic\")"
+	    ]
+	  }
+	],
+	"title":"Ray-style common-denominator fraction addition",
+	"unit":"unit(ray_practical)"
+      }
+    }
+  ],
+  "title":"Inferential Strength Comparison: IM vs Ray-style Traditional Lessons",
+  "wiring_audit": [
+    {
+      "code":"IM-G1-U3-L17",
+      "counts": {"citations":1,"clusters":1,"misconceptions":1,"strategies":6},
+      "issues": [],
+      "role":"im",
+      "standard": {"code":"1.OA.C.6","framework":"ccss","label":"ccss 1.OA.C.6"},
+      "status":"ok"
+    },
+    {
+      "code":"IM-G2-U2-L7",
+      "counts": {"citations":1,"clusters":1,"misconceptions":1,"strategies":4},
+      "issues": [],
+      "role":"im",
+      "standard": {"code":"2.NBT.B.5","framework":"ccss","label":"ccss 2.NBT.B.5"},
+      "status":"ok"
+    },
+    {
+      "code":"IM-G3-U1-L14",
+      "counts": {"citations":2,"clusters":1,"misconceptions":2,"strategies":3},
+      "issues": [],
+      "role":"im",
+      "standard": {"code":"3.OA.C.7","framework":"ccss","label":"ccss 3.OA.C.7"},
+      "status":"ok"
+    },
+    {
+      "code":"IM-G4-U4-L20",
+      "counts": {"citations":2,"clusters":1,"misconceptions":2,"strategies":5},
+      "issues": [],
+      "role":"im",
+      "standard": {"code":"4.NBT.B.4","framework":"ccss","label":"ccss 4.NBT.B.4"},
+      "status":"ok"
+    },
+    {
+      "code":"IM-G5-U6-L14",
+      "counts": {"citations":0,"clusters":1,"misconceptions":0,"strategies":4},
+      "issues": [
+	"missing_citation_evidence",
+	"no_misconception_encoding",
+	"cluster_available_but_sparse_direct_encoding(strategy_count(4),misconception_count(0),clusters(1))"
+      ],
+      "role":"im",
+      "standard": {"code":"5.NF.A.1","framework":"ccss","label":"ccss 5.NF.A.1"},
+      "status":"review"
+    },
+    {
+      "code":"TRAD-RAY-G1-OA-C6-ADD-FACTS",
+      "counts": {"citations":4,"clusters":0,"misconceptions":1,"strategies":2},
+      "issues": [],
+      "role":"traditional",
+      "standard": {"code":"1.OA.C.6","framework":"ccss","label":"ccss 1.OA.C.6"},
+      "status":"ok"
+    },
+    {
+      "code":"TRAD-RAY-G2-NBT-B5-COLUMN-ADD-SUB",
+      "counts": {"citations":7,"clusters":0,"misconceptions":2,"strategies":3},
+      "issues": [],
+      "role":"traditional",
+      "standard": {"code":"2.NBT.B.5","framework":"ccss","label":"ccss 2.NBT.B.5"},
+      "status":"ok"
+    },
+    {
+      "code":"TRAD-RAY-G3-OA-C7-MULT-FACTS",
+      "counts": {"citations":4,"clusters":0,"misconceptions":1,"strategies":2},
+      "issues": [],
+      "role":"traditional",
+      "standard": {"code":"3.OA.C.7","framework":"ccss","label":"ccss 3.OA.C.7"},
+      "status":"ok"
+    },
+    {
+      "code":"TRAD-RAY-G4-NBT-B4-MULTIDIGIT",
+      "counts": {"citations":7,"clusters":0,"misconceptions":2,"strategies":3},
+      "issues": [],
+      "role":"traditional",
+      "standard": {"code":"4.NBT.B.4","framework":"ccss","label":"ccss 4.NBT.B.4"},
+      "status":"ok"
+    },
+    {
+      "code":"TRAD-RAY-G5-NF-A1-FRACTION-ADD",
+      "counts": {"citations":2,"clusters":0,"misconceptions":0,"strategies":2},
+      "issues": ["no_misconception_encoding" ],
+      "role":"traditional",
+      "standard": {"code":"5.NF.A.1","framework":"ccss","label":"ccss 5.NF.A.1"},
+      "status":"review"
+    }
+  ]
+}

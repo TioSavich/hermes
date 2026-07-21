@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38180",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38180_distribute_visible_groups_then_split_remainder_loosely",
+    "target_operation": "partitive_division",
+    "citation": "Delinda van Garderen, Amy Scheuermann, Apryl Poch (2014)",
+    "error_action": "distribute_visible_groups_then_split_remainder_loosely",
+    "error_description": "hand out the easy place-value groups equally but partition the leftover quantity without maintaining equal shares",
+    "provenance_comments": "=== row 38180: visual partition error (vague) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural misconception (“distribute visible groups then split remainder loosely”) without specifying a precise, generalizable arithmetic operation that can be encoded as a deterministic 2-place predicate producing a unique wrong result. The description is too vague to define a reproducible rule that consistently yields the documented error for a given input, and no concrete worked example or formula is provided to ground the rule. Therefore, no runnable rule and defensible probe can be constructed under the schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural misconception (“distribute visible groups then split remainder loosely”) without specifying a precise, generalizable arithmetic operation that can be encoded as a deterministic 2-place predicate producing a unique wrong result. The description is too vague to define a reproducible rule that consistently yields the documented error for a given input, and no concrete worked example or formula is provided to ground the rule. Therefore, no runnable rule and defensible probe can be constructed under the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

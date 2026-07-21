@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "188",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_188_apply_sensibly_derived_faulty_rule",
+    "target_operation": "computation_errors",
+    "citation": "Ginsburg (1977)",
+    "error_action": "apply_sensibly_derived_faulty_rule",
+    "error_description": "follow a self-constructed rule that has a coherent origin even when it misfires",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule or defensible probe can be extracted from the documented error description \"follow a self-constructed rule that has a coherent origin even when it misfires\", as it describes a cognitive tendency rather than a specific, implementable arithmetic procedure.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule or defensible probe can be extracted from the documented error description \"follow a self-constructed rule that has a coherent origin even when it misfires\", as it describes a cognitive tendency rather than a specific, implementable arithmetic procedure.",
+      "result": "abstained"
+    }
+  ]
+}

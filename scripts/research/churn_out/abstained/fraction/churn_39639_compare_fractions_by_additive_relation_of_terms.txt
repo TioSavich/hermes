@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39639",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39639_compare_fractions_by_additive_relation_of_terms",
+    "target_operation": "fraction_comparison",
+    "citation": "Vince Wright (2014)",
+    "error_action": "compare_fractions_by_additive_relation_of_terms",
+    "error_description": "compare fractions by focusing on additive relations between numerators and denominators as if they were whole numbers",
+    "provenance_comments": "=== row 39639: whole number interference comparing ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a *comparative reasoning strategy* (comparing fractions by additive relations between numerators and denominators) rather than a deterministic binary operation that maps an input to a unique wrong output. The description does not specify a concrete syntactic transformation or evaluation rule applicable to a given pair of fractions; it characterizes a cognitive bias, not a computable function. Since `Rule(Input, Got)` must produce the documented wrong answer deterministically, and no such deterministic procedure is provided, admission fails.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a *comparative reasoning strategy* (comparing fractions by additive relations between numerators and denominators) rather than a deterministic binary operation that maps an input to a unique wrong output. The description does not specify a concrete syntactic transformation or evaluation rule applicable to a given pair of fractions; it characterizes a cognitive bias, not a computable function. Since `Rule(Input, Got)` must produce the documented wrong answer deterministically, and no such deterministic procedure is provided, admission fails.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39817",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39817_pose_problem_requiring_extra_operations",
+    "target_operation": "fraction_addition",
+    "citation": "Tuğrul Kar (2015)",
+    "error_action": "pose_problem_requiring_extra_operations",
+    "error_description": "write a story whose solution needs operations beyond the single one asked for",
+    "provenance_comments": "=== row 39817: poses problem with other operation ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural misconception about problem-posing (introducing unnecessary operations), not a computational error in evaluating a fraction expression. It does not specify a deterministic arithmetic rule that maps an input to a specific incorrect output via a binary predicate `Rule(Input, Got)`. Since the registration schema requires a runnable rule producing a documented wrong answer, and no such rule can be derived from the vague, meta-level description, admission is not possible.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural misconception about problem-posing (introducing unnecessary operations), not a computational error in evaluating a fraction expression. It does not specify a deterministic arithmetic rule that maps an input to a specific incorrect output via a binary predicate `Rule(Input, Got)`. Since the registration schema requires a runnable rule producing a documented wrong answer, and no such rule can be derived from the vague, meta-level description, admission is not possible.",
+      "result": "abstained"
+    }
+  ]
+}

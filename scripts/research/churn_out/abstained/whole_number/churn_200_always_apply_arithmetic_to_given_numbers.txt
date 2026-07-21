@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "200",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_200_always_apply_arithmetic_to_given_numbers",
+    "target_operation": "reasonableness_checking",
+    "citation": "Verschaffel, De Corte, Lasure (1994)",
+    "error_action": "always_apply_arithmetic_to_given_numbers",
+    "error_description": "combine the stated numbers with an operation regardless of whether the answer makes sense",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive tendency to apply arithmetic operations regardless of reasonableness, but it does not specify a particular arithmetic operation or a deterministic mapping from inputs to a specific wrong output. The gate failure indicates that the output 150 does not match the documented claim(s) involving 'makes', suggesting the error is not a fixed syntactic transformation (e.g., always adding or multiplying) but a contextual reasoning failure. Without a concrete, generalizable rule that produces a *deterministic* wrong result from inputs—consistent with the documented error action and compatible with SWI-Prolog’s pure arithmetic—we cannot construct a runnable rule meeting the schema contract.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_200_always_apply_arithmetic_to_given_numbers(A-B, Got) :-\n    Got is A + B).\n\ntest_harness:arith_misconception(db_row(200), whole_number, churn_200_always_apply_arithmetic_to_given_numbers,\n    churn_candidate:churn_200_always_apply_arithmetic_to_given_numbers,\n    100-50,\n    2).",
+      "result": "output 150 does not match explicit documented claim(s) ['makes']"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive tendency to apply arithmetic operations regardless of reasonableness, but it does not specify a particular arithmetic operation or a deterministic mapping from inputs to a specific wrong output. The gate failure indicates that the output 150 does not match the documented claim(s) involving 'makes', suggesting the error is not a fixed syntactic transformation (e.g., always adding or multiplying) but a contextual reasoning failure. Without a concrete, generalizable rule that produces a *deterministic* wrong result from inputs—consistent with the documented error action and compatible with SWI-Prolog’s pure arithmetic—we cannot construct a runnable rule meeting the schema contract.",
+      "result": "abstained"
+    }
+  ]
+}

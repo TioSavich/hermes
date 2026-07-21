@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37654",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37654_round_up_past_five_always",
+    "target_operation": "rounding",
+    "citation": "Judith T. Sowder and Margariete M. Wheeler (1989)",
+    "error_action": "round_up_past_five_always",
+    "error_description": "if the next digit is past five you must round up to the standard place value",
+    "provenance_comments": "=== row 37654: rigid rounding rules ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error description \"if the next digit is past five you must round up to the standard place value\" does not specify a clear, generalizable algorithm independent of context (e.g., which digit position, what base, how to handle exactly 5). The phrase \"past five\" is ambiguous—it may mean >5 or ≥5—and the rule lacks precision for constructing a runnable Prolog predicate that consistently reproduces the documented behavior across inputs. Without a deterministic, implementable procedure, no defensible probe and rule can be constructed per the schema contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error description \"if the next digit is past five you must round up to the standard place value\" does not specify a clear, generalizable algorithm independent of context (e.g., which digit position, what base, how to handle exactly 5). The phrase \"past five\" is ambiguous—it may mean >5 or ≥5—and the rule lacks precision for constructing a runnable Prolog predicate that consistently reproduces the documented behavior across inputs. Without a deterministic, implementable procedure, no defensible probe and rule can be constructed per the schema contract.",
+      "result": "abstained"
+    }
+  ]
+}

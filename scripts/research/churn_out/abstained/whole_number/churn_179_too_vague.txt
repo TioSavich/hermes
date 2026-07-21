@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "179",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_179_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error action \"too_vague\" and description are empty or non-specific; no concrete arithmetic procedure or error behavior is provided to encode.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error action \"too_vague\" and description are empty or non-specific; no concrete arithmetic procedure or error behavior is provided to encode.",
+      "result": "abstained"
+    }
+  ]
+}

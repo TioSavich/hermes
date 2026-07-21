@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37522",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37522_half_names_the_act_of_breaking_or_any_resulting_piece",
+    "target_operation": "meaning_of_half",
+    "citation": "Yvonne Pothier and Daiyo Sawada (1983)",
+    "error_action": "half_names_the_act_of_breaking_or_any_resulting_piece",
+    "error_description": "call any break or broken piece a half regardless of equality",
+    "provenance_comments": "=== row 37522: language for halves ===\nNo concrete wrong numeric answer — linguistic/terminological.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is linguistic/terminological and does not specify a runnable arithmetic rule that produces a concrete wrong numeric answer; the schema requires a rule that, when called with an input, produces a specific incorrect result that does not unify with the correct outcome. Since no such numeric rule can be derived from the description \"call any break or broken piece a half regardless of equality\", admission is precluded.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is linguistic/terminological and does not specify a runnable arithmetic rule that produces a concrete wrong numeric answer; the schema requires a rule that, when called with an input, produces a specific incorrect result that does not unify with the correct outcome. Since no such numeric rule can be derived from the description \"call any break or broken piece a half regardless of equality\", admission is precluded.",
+      "result": "abstained"
+    }
+  ]
+}

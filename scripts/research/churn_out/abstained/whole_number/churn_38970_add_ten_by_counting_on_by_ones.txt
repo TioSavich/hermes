@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38970",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38970_add_ten_by_counting_on_by_ones",
+    "target_operation": "adding_ten",
+    "citation": "Einat Heyd-Metzuyanim & Mellony Graven (2016)",
+    "error_action": "add_ten_by_counting_on_by_ones",
+    "error_description": "reach the sum by counting forward one finger at a time ten times",
+    "provenance_comments": "=== row 38970: counts by ones to add ten (strategy critique only) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a manual counting strategy (\"counting forward one finger at a time ten times\") that cannot be expressed as a deterministic, executable Prolog arithmetic rule without inventing a simulation of finger-counting behavior. The task requires a rule of arity 2 where `Rule(Input, Got)` produces the documented wrong answer via a runnable predicate; counting-by-ones is procedural, stateful, and non-mathematical in nature, and cannot be captured using only SWI-Prolog built-in arithmetic operations without introducing non-arithmetical constructs (e.g., recursion with successor terms or explicit counters), which would constitute invention beyond the documented error.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38970_add_ten_by_counting_on_by_ones(N, Got) :-\n    Got is N + 10, !, fail ; Got is N + 10).\n\ntest_harness:arith_misconception(db_row(38970), whole_number, churn_38970_add_ten_by_counting_on_by_ones,\n    churn_candidate:churn_38970_add_ten_by_counting_on_by_ones,\n    23,\n    33).",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a manual counting strategy (\"counting forward one finger at a time ten times\") that cannot be expressed as a deterministic, executable Prolog arithmetic rule without inventing a simulation of finger-counting behavior. The task requires a rule of arity 2 where `Rule(Input, Got)` produces the documented wrong answer via a runnable predicate; counting-by-ones is procedural, stateful, and non-mathematical in nature, and cannot be captured using only SWI-Prolog built-in arithmetic operations without introducing non-arithmetical constructs (e.g., recursion with successor terms or explicit counters), which would constitute invention beyond the documented error.",
+      "result": "abstained"
+    }
+  ]
+}

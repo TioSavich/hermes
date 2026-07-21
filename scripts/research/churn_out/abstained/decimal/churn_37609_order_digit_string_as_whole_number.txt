@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37609",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37609_order_digit_string_as_whole_number",
+    "target_operation": "decimal_ordering",
+    "citation": "Heather C. Hill, Deborah Loewenberg Ball and Stephen G. Schilling (2008)",
+    "error_action": "order_digit_string_as_whole_number",
+    "error_description": "strip the decimal point and order the remaining digit strings as if they were whole numbers",
+    "provenance_comments": "=== direct solo pass: remaining decimal queue cleanup ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural misconception (stripping the decimal point and ordering digit strings as whole numbers), but this is a comparative ordering operation over multiple inputs, not a binary function that maps a single input to a wrong output. The schema requires a rule `Rule(Input, Got)` where `Got` is the *incorrect result* of applying the misconception to `Input`, and `ExpectedCorrect` is the *correct* result. No single-input example can encode the comparative decision (e.g., which of two decimals is larger) without additional structure (e.g., a pair), which the schema does not support. The execution gate likely failed because no unary function can produce the documented error behavior on a single decimal.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_37609_order_digit_string_as_whole_number(DecimalStr-Got) :-\n    string_concat(_, \".\", DecimalStr, Rest),\n    string_concat(Whole, \".\", DecimalStr),\n    string_concat(_, \".\", DecimalStr, _),\n    string_chars(DecimalStr, Chars),\n    exclude(=(.), Chars, Digits),\n    string_chars(WholePart, Digits),\n    atom_number(WholePart, Got)).\n\ntest_harness:arith_misconception(db_row(37609), decimal, churn_37609_order_digit_string_as_whole_number,\n    churn_candidate:churn_37609_order_digit_string_as_whole_number,\n    \"1.23\"-\"123\",\n    1.23).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a procedural misconception (stripping the decimal point and ordering digit strings as whole numbers), but this is a comparative ordering operation over multiple inputs, not a binary function that maps a single input to a wrong output. The schema requires a rule `Rule(Input, Got)` where `Got` is the *incorrect result* of applying the misconception to `Input`, and `ExpectedCorrect` is the *correct* result. No single-input example can encode the comparative decision (e.g., which of two decimals is larger) without additional structure (e.g., a pair), which the schema does not support. The execution gate likely failed because no unary function can produce the documented error behavior on a single decimal.",
+      "result": "abstained"
+    }
+  ]
+}

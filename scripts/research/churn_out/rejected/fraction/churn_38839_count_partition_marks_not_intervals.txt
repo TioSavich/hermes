@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38839",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38839_count_partition_marks_not_intervals",
+    "target_operation": "number_line_fraction_location",
+    "citation": "CHARALAMBOS Y. CHARALAMBOUS and DEMETRA PITTA-PANTAZI (2007)",
+    "error_action": "count_partition_marks_not_intervals",
+    "error_description": "count the tick marks on a number line rather than the spaces between them to locate a fraction",
+    "provenance_comments": "=== row 38839: no example text given ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_38839_count_partition_marks_not_intervals",
+  "attempts": [
+    {
+      "response": "churn_candidate:(count_partition_marks_not_intervals(N, M) :-\n    M is N + 1).\n\ntest_harness:arith_misconception(db_row(38839), fraction, churn_38839_count_partition_marks_not_intervals,\n    churn_candidate:count_partition_marks_not_intervals,\n    3,\n    4).",
+      "result": "predicate must be named churn_38839_count_partition_marks_not_intervals"
+    },
+    {
+      "response": "churn_candidate:(count_partition_marks_not_intervals(frac(N,D), Pos) :-\n    Pos is N + 1).\n\ntest_harness:arith_misconception(db_row(38839), fraction, churn_38839_count_partition_marks_not_intervals,\n    churn_candidate:count_partition_marks_not_intervals,\n    frac(3,4),\n    4).",
+      "result": "predicate must be named churn_38839_count_partition_marks_not_intervals"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40096",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40096_attribute_full_argument_from_partial_statement",
+    "target_operation": "interpreting_student_reasoning",
+    "citation": "TALI WALLACH and RUHAMA EVEN (2005)",
+    "error_action": "attribute_full_argument_from_partial_statement",
+    "error_description": "credit a student with a complete deduction when they have only offered a partial claim",
+    "provenance_comments": "=== row 40096: teacher over-hears student ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a pedagogical or assessment misjudgment (attributing a full deduction for a partial claim), not a computational procedure that can be expressed as a binary predicate `Rule(Input, Got)` producing a specific wrong numerical output. There is no well-defined mathematical operation or deterministic transformation from input to incorrect output that matches the described misconception.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a pedagogical or assessment misjudgment (attributing a full deduction for a partial claim), not a computational procedure that can be expressed as a binary predicate `Rule(Input, Got)` producing a specific wrong numerical output. There is no well-defined mathematical operation or deterministic transformation from input to incorrect output that matches the described misconception.",
+      "result": "abstained"
+    }
+  ]
+}

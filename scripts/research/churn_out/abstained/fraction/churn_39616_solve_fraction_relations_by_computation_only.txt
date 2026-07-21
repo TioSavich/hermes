@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39616",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39616_solve_fraction_relations_by_computation_only",
+    "target_operation": "fraction_relationship_without_imagery",
+    "citation": "Amy Hackenberg (2010)",
+    "error_action": "solve_fraction_relations_by_computation_only",
+    "error_description": "attempt unknown-whole fraction relationships through numerical computation while refusing visual partitioning imagery",
+    "provenance_comments": "=== row 39616: cognitive block ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive block—refusal to use visual partitioning imagery in favor of computation alone—but provides no concrete computational procedure or example that yields a specific incorrect result. Without a reproducible rule that produces a documented wrong answer from a given input, no runnable Prolog rule can be constructed per the schema contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive block—refusal to use visual partitioning imagery in favor of computation alone—but provides no concrete computational procedure or example that yields a specific incorrect result. Without a reproducible rule that produces a documented wrong answer from a given input, no runnable Prolog rule can be constructed per the schema contract.",
+      "result": "abstained"
+    }
+  ]
+}

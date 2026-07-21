@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37447",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37447_treat_numerator_count_as_the_whole_unit",
+    "target_operation": "improper_fraction_units_coordination",
+    "citation": "Amy J. Hackenberg (2007)",
+    "error_action": "treat_numerator_count_as_the_whole_unit",
+    "error_description": "treat the number of parts needed as if it equals the unit bar",
+    "provenance_comments": "=============================================================\nOption B rows — too vague / no concrete wrong numeric answer.\nThese register with `skip` as the rule name; the harness will\nclassify them as `undefined` and move on.\n=============================================================",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The source row provides no concrete wrong numeric answer or specific operation to instantiate a runnable rule; the description “treat the number of parts needed as if it equals the unit bar” is too vague to derive a general, executable Prolog rule without ambiguity. Per the schema contract, a runnable Rule and a defensible probe (Input, ExpectedCorrect) must be supplied.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The source row provides no concrete wrong numeric answer or specific operation to instantiate a runnable rule; the description “treat the number of parts needed as if it equals the unit bar” is too vague to derive a general, executable Prolog rule without ambiguity. Per the schema contract, a runnable Rule and a defensible probe (Input, ExpectedCorrect) must be supplied.",
+      "result": "abstained"
+    }
+  ]
+}

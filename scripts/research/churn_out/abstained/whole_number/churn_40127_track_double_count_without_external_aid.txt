@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40127",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40127_track_double_count_without_external_aid",
+    "target_operation": "counting_on_keeping_track",
+    "citation": "RUTH M. STEINBERG, SUSAN B. EMPSON and THOMAS P. CARPENTER (2004)",
+    "error_action": "track_double_count_without_external_aid",
+    "error_description": "maintain two simultaneous count sequences in working memory while counting up to solve a join-change-unknown problem",
+    "provenance_comments": "=== row 40127: loses double count in counting on ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: no runnable rule can be constructed because the documented error describes a cognitive tracking failure (maintaining two count sequences in working memory) rather than a syntactic arithmetic procedure; it does not specify a deterministic mapping from input to a particular wrong output that can be encoded as a Prolog predicate of arity 2 without additional procedural or psychological modeling.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no runnable rule can be constructed because the documented error describes a cognitive tracking failure (maintaining two count sequences in working memory) rather than a syntactic arithmetic procedure; it does not specify a deterministic mapping from input to a particular wrong output that can be encoded as a Prolog predicate of arity 2 without additional procedural or psychological modeling.",
+      "result": "abstained"
+    }
+  ]
+}

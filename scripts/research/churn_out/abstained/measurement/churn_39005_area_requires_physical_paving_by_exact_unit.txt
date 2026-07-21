@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39005",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39005_area_requires_physical_paving_by_exact_unit",
+    "target_operation": "area_unit_paving",
+    "citation": "Regine Douady and Marie-Jeanne Perrin-Glorian (1989)",
+    "error_action": "area_requires_physical_paving_by_exact_unit",
+    "error_description": "a surface can be measured in a unit only if it can be physically tiled by squares of that unit",
+    "provenance_comments": "=== row 39005: area unit requires physical paving ===\nToo vague: ontological belief about what allows unit expression.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes an ontological belief (\"a surface can be measured in a unit only if it can be physically tiled by squares of that unit\") rather than a specific computational procedure or algebraic rule that yields a predictable, incorrect numerical result. There is no runnable rule (e.g., no formula, no transformation) that can be encoded in Prolog to produce a fixed wrong answer for a given input; the misconception is conceptual and not algorithmic, and thus cannot satisfy the requirement that `Rule(Input, Got)` produce the documented wrong answer.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes an ontological belief (\"a surface can be measured in a unit only if it can be physically tiled by squares of that unit\") rather than a specific computational procedure or algebraic rule that yields a predictable, incorrect numerical result. There is no runnable rule (e.g., no formula, no transformation) that can be encoded in Prolog to produce a fixed wrong answer for a given input; the misconception is conceptual and not algorithmic, and thus cannot satisfy the requirement that `Rule(Input, Got)` produce the documented wrong answer.",
+      "result": "abstained"
+    }
+  ]
+}

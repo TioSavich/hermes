@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40187",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40187_one_piece_per_person_makes_equal_shares",
+    "target_operation": "partitioning_equal_shares",
+    "citation": "Geoffrey B. Saxe, Maryl Gearhart and Na'ilah Suad Nasir (2001)",
+    "error_action": "one_piece_per_person_makes_equal_shares",
+    "error_description": "any partition is fair as long as each person receives one piece",
+    "provenance_comments": "=== row 40187: unequal parts treated as equal shares ===\nGeometric/partition issue with no numeric rule.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about partition fairness (unequal parts treated as equal) without a runnable algebraic or procedural rule that maps inputs to a specific incorrect output; it lacks a deterministic, generalizable operation definable as a Prolog predicate of arity 2 producing a concrete wrong result.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about partition fairness (unequal parts treated as equal) without a runnable algebraic or procedural rule that maps inputs to a specific incorrect output; it lacks a deterministic, generalizable operation definable as a Prolog predicate of arity 2 producing a concrete wrong result.",
+      "result": "abstained"
+    }
+  ]
+}

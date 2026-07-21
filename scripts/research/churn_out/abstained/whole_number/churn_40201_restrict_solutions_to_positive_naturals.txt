@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40201",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40201_restrict_solutions_to_positive_naturals",
+    "target_operation": "number_domain_fixation",
+    "citation": "Esther Levenson (2013)",
+    "error_action": "restrict_solutions_to_positive_naturals",
+    "error_description": "consider only natural numbers greater than zero when finding numbers with a given sum",
+    "provenance_comments": "=== row 40201: content-universe fixation (natural numbers only) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual restriction (considering only positive naturals), but does not specify a runnable procedural rule that produces a wrong answer in a testable arithmetic task. Without a concrete algorithm or operation that can be encoded as a binary predicate producing the documented incorrect output, no executable rule can be constructed per the schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual restriction (considering only positive naturals), but does not specify a runnable procedural rule that produces a wrong answer in a testable arithmetic task. Without a concrete algorithm or operation that can be encoded as a binary predicate producing the documented incorrect output, no executable rule can be constructed per the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

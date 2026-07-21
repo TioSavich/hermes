@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37675",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37675_only_unit_wholes_can_be_partitioned",
+    "target_operation": "partitioning",
+    "citation": "Nancy K. Mack (2001)",
+    "error_action": "only_unit_wholes_can_be_partitioned",
+    "error_description": "only a single uncut unit can be divided; an already-cut composite cannot be partitioned further",
+    "provenance_comments": "=== row 37675: \"already cut up, can't partition further\" (no concrete wrong number) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: no runnable rule or concrete input/output pair can be constructed from the documentation; the misconception is purely conceptual (\"only unit wholes can be partitioned\") and lacks a specific arithmetic procedure or numerical error to encode as a Prolog predicate that produces a wrong numerical result.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no runnable rule or concrete input/output pair can be constructed from the documentation; the misconception is purely conceptual (\"only unit wholes can be partitioned\") and lacks a specific arithmetic procedure or numerical error to encode as a Prolog predicate that produces a wrong numerical result.",
+      "result": "abstained"
+    }
+  ]
+}

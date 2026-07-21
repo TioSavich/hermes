@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40661",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40661_halves_must_share_same_shape_to_be_equal",
+    "target_operation": "fraction_as_quantity",
+    "citation": "Martin A. Simon (2006)",
+    "error_action": "halves_must_share_same_shape_to_be_equal",
+    "error_description": "two parts count as equal only when they look congruent, not merely equal in measure",
+    "provenance_comments": "=== row 40661: differently-shaped halves equal? ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_40661_halves_must_share_same_shape_to_be_equal",
+  "attempts": [
+    {
+      "response": "churn_candidate:(halves_must_share_same_shape_to_be_equal(frac(N1,D)-frac(N2,D), true) :-\n    N1 =:= 1,\n    N2 =:= 1,\n    D =:= 2).\n\ntest_harness:arith_misconception(db_row(40661), fraction, churn_40661_halves_must_share_same_shape_to_be_equal,\n    churn_candidate:halves_must_share_same_shape_to_be_equal,\n    frac(1,2)-frac(1,2),\n    false).",
+      "result": "predicate must be named churn_40661_halves_must_share_same_shape_to_be_equal"
+    },
+    {
+      "response": "churn_candidate:(halves_must_share_same_shape_to_be_equal(frac(N1,D1), frac(N2,D2)) :-\n    D1 =:= 2,\n    D2 =:= 2,\n    N1 =:= 1,\n    N2 =:= 1,\n    fail).\n\ntest_harness:arith_misconception(db_row(40661), fraction, churn_40661_halves_must_share_same_shape_to_be_equal,\n    churn_candidate:halves_must_share_same_shape_to_be_equal,\n    frac(1,2), frac(1,2)).",
+      "result": "predicate must be named churn_40661_halves_must_share_same_shape_to_be_equal"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39206",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39206_at_least_triggers_lcm",
+    "target_operation": "keyword_triggered_procedure",
+    "citation": "Konstantinos Stouraitis & Despina Potari & Jeppe Skott (2017)",
+    "error_action": "at_least_triggers_lcm",
+    "error_description": "the phrase 'at least' signals that you should find the least common multiple",
+    "provenance_comments": "=== row 39206: 'at least' keyword triggers LCM ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(at_least_triggers_lcm(A-B, Got) :-\n    Got is lcm(A, B)).\n\ntest_harness:arith_misconception(db_row(39206), whole_number, churn_39206_at_least_triggers_lcm,\n    churn_candidate:at_least_triggers_lcm,\n    6-8,\n    24).",
+      "result": "predicate must be named churn_39206_at_least_triggers_lcm"
+    },
+    {
+      "response": "churn_candidate:(churn_39206_at_least_triggers_lcm(A-B, Got) :-\n    Got is lcm(A, B)).\n\ntest_harness:arith_misconception(db_row(39206), whole_number, churn_39206_at_least_triggers_lcm,\n    churn_candidate:churn_39206_at_least_triggers_lcm,\n    4-6,\n    12).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

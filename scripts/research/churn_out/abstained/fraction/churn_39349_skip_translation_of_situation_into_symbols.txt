@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39349",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39349_skip_translation_of_situation_into_symbols",
+    "target_operation": "fraction_division_word_problems",
+    "citation": "Mi Yeon Lee (2017)",
+    "error_action": "skip_translation_of_situation_into_symbols",
+    "error_description": "produce a symbolic or pictorial answer without transferring the problem's quantities into corresponding mathematical structure",
+    "provenance_comments": "=== row 39349: PSTs failed to transfer info ===\nDescription-only, no concrete wrong answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documentation specifies only a procedural error (skipping translation of situation into symbols) without specifying a concrete wrong symbolic output or rule that consistently produces a documented incorrect result for a given input. No runnable rule or defensible probe can be constructed without a concrete example of the incorrect answer or a pattern of misapplication.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documentation specifies only a procedural error (skipping translation of situation into symbols) without specifying a concrete wrong symbolic output or rule that consistently produces a documented incorrect result for a given input. No runnable rule or defensible probe can be constructed without a concrete example of the incorrect answer or a pattern of misapplication.",
+      "result": "abstained"
+    }
+  ]
+}

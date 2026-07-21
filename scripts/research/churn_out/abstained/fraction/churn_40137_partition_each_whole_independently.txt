@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40137",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40137_partition_each_whole_independently",
+    "target_operation": "equal_sharing_partitioning",
+    "citation": "Patricia S. Moyer, Elizabeth Milewicz (2002)",
+    "error_action": "partition_each_whole_independently",
+    "error_description": "cut each pizza into a different number of pieces without coordinating across the wholes",
+    "provenance_comments": "=== row 40137: partitions into 5 and 6 (unequal shares, no numeric answer) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a qualitative partitioning procedure (cutting each whole into a different number of pieces without coordination) that yields unequal shares and explicitly has \"no numeric answer\". Since the error produces no well-defined numerical result, it cannot be captured by a deterministic binary predicate `Rule(Input, Got)` that produces a specific wrong value `Got` distinct from a correct `ExpectedCorrect`. The schema requires a runnable rule that produces a concrete wrong outcome, but this misconception is procedural and non-numeric in its documented form.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a qualitative partitioning procedure (cutting each whole into a different number of pieces without coordination) that yields unequal shares and explicitly has \"no numeric answer\". Since the error produces no well-defined numerical result, it cannot be captured by a deterministic binary predicate `Rule(Input, Got)` that produces a specific wrong value `Got` distinct from a correct `ExpectedCorrect`. The schema requires a runnable rule that produces a concrete wrong outcome, but this misconception is procedural and non-numeric in its documented form.",
+      "result": "abstained"
+    }
+  ]
+}

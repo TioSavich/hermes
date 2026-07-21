@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38552",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38552_each_fraction_refers_to_the_original_whole",
+    "target_operation": "changing_referent_wholes",
+    "citation": "Jae M. Baek, Megan H. Wickstrom, Jennifer M. Tobias, Amanda L. Miller, Elif Safak, Nicole Wessman-Enzinger, J. Vince Kirwan (2017)",
+    "error_action": "each_fraction_refers_to_the_original_whole",
+    "error_description": "represent each successive fractional expense as a part of the same original whole and add them with a common denominator",
+    "provenance_comments": "=== row 38552: multistep expenses all from same whole ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating each fractional expense as part of the original whole), but provides no concrete syntactic rule for computing an incorrect result. The description is procedural and semantic, not algorithmic; it does not specify how to derive a particular incorrect output from a given input in a way that can be encoded as a deterministic, generalizable Prolog rule without invention. The gate requires a runnable rule that produces the documented wrong answer, and this documentation does not supply sufficient computational detail to construct one.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38552_each_fraction_refers_to_the_original_whole(Fractions, Sum) :-\n   Fractions = [frac(N1,D1), frac(N2,D2)],\n    Sum = frac(N1+N2, D1)).\n\ntest_harness:arith_misconception(db_row(38552), fraction, churn_38552_each_fraction_refers_to_the_original_whole,\n    churn_candidate:churn_38552_each_fraction_refers_to_the_original_whole,\n    [frac(1,4), frac(1,3)],\n    frac(7,12)).",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating each fractional expense as part of the original whole), but provides no concrete syntactic rule for computing an incorrect result. The description is procedural and semantic, not algorithmic; it does not specify how to derive a particular incorrect output from a given input in a way that can be encoded as a deterministic, generalizable Prolog rule without invention. The gate requires a runnable rule that produces the documented wrong answer, and this documentation does not supply sufficient computational detail to construct one.",
+      "result": "abstained"
+    }
+  ]
+}

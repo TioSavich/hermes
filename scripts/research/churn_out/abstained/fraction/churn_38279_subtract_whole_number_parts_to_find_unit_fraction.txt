@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38279",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38279_subtract_whole_number_parts_to_find_unit_fraction",
+    "target_operation": "parts_out_of_wholes_scheme",
+    "citation": "Steven Boyce, Anderson Norton (2017)",
+    "error_action": "subtract_whole_number_parts_to_find_unit_fraction",
+    "error_description": "find 1/7 from 5/7 by physically removing four of the five pieces",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a physical removal procedure (\"subtracting whole number parts\") rather than a mathematical operation that can be expressed as a deterministic binary predicate producing a specific wrong result. There is no clear, generalizable arithmetic rule (e.g., an algebraic formula or rewrite rule) that maps the input to the documented wrong output in a way that is both executable and uniquely determined. Without a precise mapping, a runnable Rule predicate cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a physical removal procedure (\"subtracting whole number parts\") rather than a mathematical operation that can be expressed as a deterministic binary predicate producing a specific wrong result. There is no clear, generalizable arithmetic rule (e.g., an algebraic formula or rewrite rule) that maps the input to the documented wrong output in a way that is both executable and uniquely determined. Without a precise mapping, a runnable Rule predicate cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

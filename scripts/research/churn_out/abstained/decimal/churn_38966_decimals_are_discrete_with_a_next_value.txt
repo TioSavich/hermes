@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38966",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38966_decimals_are_discrete_with_a_next_value",
+    "target_operation": "number_density",
+    "citation": "Kaye Stacey, Sue Helme, Shona Archer and Caroline Condon (2001)",
+    "error_action": "decimals_are_discrete_with_a_next_value",
+    "error_description": "treat decimals like countable blocks so there is no number to find between two of them",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (treating decimals as discrete with a next value), but does not specify a concrete, runnable procedural rule that produces a specific incorrect numerical result from a given input. Without a defined algorithm or operation that students apply to yield a predictable wrong answer, no testable Rule predicate can be constructed per the schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (treating decimals as discrete with a next value), but does not specify a concrete, runnable procedural rule that produces a specific incorrect numerical result from a given input. Without a defined algorithm or operation that students apply to yield a predictable wrong answer, no testable Rule predicate can be constructed per the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

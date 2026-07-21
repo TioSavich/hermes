@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38867",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38867_switch_representations_without_explicit_connection",
+    "target_operation": "representation_conversion_without_links",
+    "citation": "Anika Dreher & Sebastian Kuntze (2015)",
+    "error_action": "switch_representations_without_explicit_connection",
+    "error_description": "a teacher moves between rectangle, pizza, and symbolic forms as if the correspondences are self-evident to learners",
+    "provenance_comments": "=== row 38867: teacher switches representations without connection ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a pedagogical practice (switching representations without explicit connection) rather than a specific mathematical procedure or rule that can be encoded as a binary predicate producing a wrong result. There is no definable syntactic transformation or algorithmic step that constitutes the error in the form required (i.e., a rule that takes an input and yields a specific incorrect output).",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a pedagogical practice (switching representations without explicit connection) rather than a specific mathematical procedure or rule that can be encoded as a binary predicate producing a wrong result. There is no definable syntactic transformation or algorithmic step that constitutes the error in the form required (i.e., a rule that takes an input and yields a specific incorrect output).",
+      "result": "abstained"
+    }
+  ]
+}

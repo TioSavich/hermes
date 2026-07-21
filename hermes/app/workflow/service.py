@@ -105,7 +105,7 @@ class WorkflowLLMClient:
         }
 
 
-COMMANDS = ("parse", "content", "profile", "draft", "grade", "score", "metrics")
+COMMANDS = ("parse", "content", "profile", "draft", "grade", "score", "metrics", "work_read", "work_refine")
 POSITIONAL = {"parse": "input", "content": "activity", "draft": "unit"}
 FLAGS = {
     "force", "list", "graph", "offline", "skip_prompts",

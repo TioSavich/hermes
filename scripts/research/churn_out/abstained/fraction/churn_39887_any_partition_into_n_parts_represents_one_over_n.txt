@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39887",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39887_any_partition_into_n_parts_represents_one_over_n",
+    "target_operation": "area_model_equal_parts",
+    "citation": "Fatma Gizem Karaoglan Yilmaz, Burçin Gökkurt Özdemir & Zehra Yasar (2018)",
+    "error_action": "any_partition_into_n_parts_represents_one_over_n",
+    "error_description": "a shape cut into n pieces shows 1/n regardless of whether the pieces are equal",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (that any partition into n parts represents 1/n regardless of equality), but there is no runnable arithmetic procedure or deterministic predicate that maps an input to the *wrong* answer in a way that is both general and executable in SWI-Prolog without side effects or non-deterministic assumptions. The misconception is about interpretation, not computation; it cannot be encoded as a function `Rule(Input, Got)` that reliably produces the *exact* documented wrong output for a given input. The execution gate likely failed due to non-determinism or lack of concrete input-output behavior.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39887_any_partition_into_n_parts_represents_one_over_n(PartCount, 1/PartCount)).\n\ntest_harness:arith_misconception(db_row(39887), fraction, churn_39887_any_partition_into_n_parts_represents_one_over_n,\n    churn_candidate:churn_39887_any_partition_into_n_parts_represents_one_over_n,\n    4,\n    1/4).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (that any partition into n parts represents 1/n regardless of equality), but there is no runnable arithmetic procedure or deterministic predicate that maps an input to the *wrong* answer in a way that is both general and executable in SWI-Prolog without side effects or non-deterministic assumptions. The misconception is about interpretation, not computation; it cannot be encoded as a function `Rule(Input, Got)` that reliably produces the *exact* documented wrong output for a given input. The execution gate likely failed due to non-determinism or lack of concrete input-output behavior.",
+      "result": "abstained"
+    }
+  ]
+}

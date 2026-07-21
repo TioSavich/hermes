@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "241",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_241_smaller_from_larger_per_column",
+    "target_operation": "place_value_subtraction_bugs",
+    "citation": "Levin (1981)",
+    "error_action": "smaller_from_larger_per_column",
+    "error_description": "in each column subtract the smaller digit from the larger regardless of which is on top",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 23",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_241_smaller_from_larger_per_column(A-B, Got) :-\n    A > 0, B > 0,\n    numbervars((A, B), 0, _),\n    digits(A, AList),\n    digits(B, BList),\n    pad_lists(AList, BList, APad, BPad),\n    maplist(sub_smaller_larger, APad, BPad, Digits),\n    reverse(Digits, RevDigits),\n    number_digits(Got, RevDigits)).\n\ntest_harness:arith_misconception(db_row(241), whole_number, churn_241_smaller_from_larger_per_column,\n    churn_candidate:churn_241_smaller_from_larger_per_column,\n    42-17,\n    35).\n\n% auxiliary helpers\ndigits(N, Ds) :-\n    number_codes(N, Cs),\n    maplist(code_digit, Cs, Ds).\n\ncode_digit(C, D) :- D is C - 48.\n\npad_lists([], L, [0|Ls], L) :- pad_lists([], Ls, Ls, []), !.\npad_lists(L, [], L, [0|Ls]) :- pad_lists([], L, Ls, []), !.\npad_lists([X|Xs], [Y|Ys], [X|XsPadded], [Y|YsPadded]) :- pad_lists(Xs, Ys, XsPadded, YsPadded).\n\npad_lists([], [], [], []).\n\nsub_smaller_larger(X, Y, Z) :-\n    (X >= Y -> Z is X - Y ; Z is Y - X).\n\nnumber_digits(N, Ds) :-\n    number_digits_acc(Ds, 0, N).\n\nnumber_digits_acc([], N, N).\nnumber_digits_acc([D|Ds], Acc, N) :-\n    N1 is Acc * 10 + D,\n    number_digits_acc(Ds, N1, N).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "churn_candidate:(churn_241_smaller_from_larger_per_column(A-B, Got) :-\n    number_codes(A, CA),\n    number_codes(B, CB),\n    pad_lists(CA, CB, CA1, CB1),\n    maplist(sub_abs, CA1, CB1, GD),\n    number_codes(Got, GD)).\n\nsub_abs(CA, CB, D) :-\n    A is CA - 0'0,\n    B is CB - 0'0,\n    D is abs(A - B) + 0'0.\n\npad_lists(A, B, A1, B1) :-\n    length(A, LA),\n    length(B, LB),\n    Max is max(LA, LB),\n    pad_right(A, Max, A1),\n    pad_right(B, Max, B1).\n\npad_right(List, Len, Padded) :-\n    length(List, L),\n    PadLen is Len - L,\n    pad_list(PadLen, 0'0, Pad),\n    append(List, Pad, Padded).\n\npad_list(0, _, []).\npad_list(N, X, [X|T]) :-\n    N > 0,\n    N1 is N - 1,\n    pad_list(N1, X, T).\n\ntest_harness:arith_misconception(db_row(241), whole_number, churn_241_smaller_from_larger_per_column,\n    churn_candidate:churn_241_smaller_from_larger_per_column,\n    321-145,\n    224).",
+      "result": "SWI-Prolog gate exited 23"
+    }
+  ]
+}

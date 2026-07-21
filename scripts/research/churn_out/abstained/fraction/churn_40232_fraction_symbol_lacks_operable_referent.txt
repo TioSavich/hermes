@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40232",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40232_fraction_symbol_lacks_operable_referent",
+    "target_operation": "fraction_symbol_meaning",
+    "citation": "Mine Isiksal, Erdinc Cakiroglu (2011)",
+    "error_action": "fraction_symbol_lacks_operable_referent",
+    "error_description": "the symbol 1/3 cannot be operated on because it does not stand for a definite quantity",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is conceptual (the symbol 1/3 is not considered to represent a definite quantity), not a syntactic or procedural computational mistake. There is no runnable rule that produces a *wrong numeric output* when given an input; rather, the error is about refusal to operate, which cannot be expressed as a binary predicate `Rule(Input, Got)` where `Got` is a numerically wrong result. No concrete `Input` and `ExpectedCorrect` can be supplied that satisfy the schema requirement of producing the documented wrong answer via a deterministic computation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is conceptual (the symbol 1/3 is not considered to represent a definite quantity), not a syntactic or procedural computational mistake. There is no runnable rule that produces a *wrong numeric output* when given an input; rather, the error is about refusal to operate, which cannot be expressed as a binary predicate `Rule(Input, Got)` where `Got` is a numerically wrong result. No concrete `Input` and `ExpectedCorrect` can be supplied that satisfy the schema requirement of producing the documented wrong answer via a deterministic computation.",
+      "result": "abstained"
+    }
+  ]
+}

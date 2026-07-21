@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "155",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_155_build_two_level_structure_as_segmented_number_line",
+    "target_operation": "multiplication_units_coordination",
+    "citation": "Norton, Anderson and Boyce, Steven (2015)",
+    "error_action": "build_two_level_structure_as_segmented_number_line",
+    "error_description": "represent a two-level multiplicative situation as a linear segmented sequence rather than a two-dimensional array",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 1",
+  "attempts": [
+    {
+      "response": "churn_candidate:(build_two_level_structure_as_segmented_number_line(A-B, Got) :-\n    Got is A + (B-1) * A).\n\ntest_harness:arith_misconception(db_row(155), whole_number, churn_155_build_two_level_structure_as_segmented_number_line,\n    churn_candidate:build_two_level_structure_as_segmented_number_line,\n    3-4,\n    12).",
+      "result": "predicate must be named churn_155_build_two_level_structure_as_segmented_number_line"
+    },
+    {
+      "response": "churn_candidate:(churn_155_build_two_level_structure_as_segmented_number_line(A-B, Got) :-\n    Got = [1,2,3,4,5,6,7,8,9,10,11,12]).\n\ntest_harness:arith_misconception(db_row(155), whole_number, churn_155_build_two_level_structure_as_segmented_number_line,\n    churn_candidate:churn_155_build_two_level_structure_as_segmented_number_line,\n    3-4,\n    12).",
+      "result": "SWI-Prolog gate exited 1"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "167",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_167_carried_digit_names_tenths",
+    "target_operation": "regrouping_place_value",
+    "citation": "Ellerton, Nerida F. (1986)",
+    "error_action": "carried_digit_names_tenths",
+    "error_description": "interpret the carried 1 in column addition as denoting tenths rather than the next higher whole-number place",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "predicate must be named churn_167_carried_digit_names_tenths",
+  "attempts": [
+    {
+      "response": "churn_candidate:(carries_digit_names_tenths(A+B, Got) :-\n    % Simulate column-wise addition with a carried 1 interpreted as 0.1\n    % For single-digit operands, carry occurs when A+B >= 10\n    ( A + B >= 10 -> Got is (A + B - 10) + 0.1 ; Got is A + B )).\n\ntest_harness:arith_misconception(db_row(167), whole_number, churn_167_carried_digit_names_tenths,\n    churn_candidate:carries_digit_names_tenths,\n    7+8,\n    15).",
+      "result": "predicate must be named churn_167_carried_digit_names_tenths"
+    },
+    {
+      "response": "churn_candidate:(carries_digit_names_tenths(A-B, Got) :-\n    Got is A + B + 0.1).\n\ntest_harness:arith_misconception(db_row(167), whole_number, churn_167_carried_digit_names_tenths,\n    churn_candidate:carries_digit_names_tenths,\n    27-45,\n    72).",
+      "result": "predicate must be named churn_167_carried_digit_names_tenths"
+    }
+  ]
+}

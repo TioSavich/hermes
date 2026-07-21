@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40109",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40109_no_remainder_distinct_from_remainder_zero",
+    "target_operation": "remainder_zero_concept",
+    "citation": "Jason Cooper, Ronnie Karsenty (2018)",
+    "error_action": "no_remainder_distinct_from_remainder_zero",
+    "error_description": "writing 'remainder zero' shows a different (deficient) understanding than 'no remainder'",
+    "provenance_comments": "=== row 40109: \"no remainder\" vs \"remainder zero\" ===\nNotation belief; no arithmetic output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 1",
+  "attempts": [
+    {
+      "response": "churn_candidate:(no_remainder_distinct_from_remainder_zero(A, Got) :-\n    Got = 'no remainder').\n\ntest_harness:arith_misconception(db_row(40109), whole_number, churn_40109_no_remainder_distinct_from_remainder_zero,\n    churn_candidate:no_remainder_distinct_from_remainder_zero,\n    12-3,\n    'remainder 0').",
+      "result": "predicate must be named churn_40109_no_remainder_distinct_from_remainder_zero"
+    },
+    {
+      "response": "churn_candidate:(churn_40109_no_remainder_distinct_from_remainder_zero(A, Got) :-\n    Got = 'no remainder').\n\ntest_harness:arith_misconception(db_row(40109), whole_number, churn_40109_no_remainder_distinct_from_remainder_zero,\n    churn_candidate:churn_40109_no_remainder_distinct_from_remainder_zero,\n    12-3,\n    'remainder 0').",
+      "result": "SWI-Prolog gate exited 1"
+    }
+  ]
+}

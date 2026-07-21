@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38617",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38617_count_back_within_decade_only",
+    "target_operation": "counting_back_across_decade",
+    "citation": "Guy Brousseau, Virginia M. Warfield (1999)",
+    "error_action": "count_back_within_decade_only",
+    "error_description": "count backwards fluently while staying inside one tens decade but falter at a multiple of ten",
+    "provenance_comments": "=== row 38617: count-back failure across decade boundary ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural fluency failure (counting back within a decade but failing at a decade boundary) but does not specify a concrete, runnable arithmetic rule that produces a deterministic wrong output for a given input. There is no explicit algorithm or formula provided—only a behavioral description—so we cannot construct a well-defined 2-place predicate `Rule(Input, Got)` that reliably yields the documented wrong answer for arbitrary inputs. Without a formalizable procedure, the schema contract cannot be satisfied.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural fluency failure (counting back within a decade but failing at a decade boundary) but does not specify a concrete, runnable arithmetic rule that produces a deterministic wrong output for a given input. There is no explicit algorithm or formula provided—only a behavioral description—so we cannot construct a well-defined 2-place predicate `Rule(Input, Got)` that reliably yields the documented wrong answer for arbitrary inputs. Without a formalizable procedure, the schema contract cannot be satisfied.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38744",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38744_treat_cents_as_independent_whole_units",
+    "target_operation": "decimal_referent_units",
+    "citation": "JAMES HIEBERT (1988)",
+    "error_action": "treat_cents_as_independent_whole_units",
+    "error_description": "read the cent portion of a money amount as its own whole-number units rather than as tenths and hundredths of a dollar",
+    "provenance_comments": "=== row 38744: cents as independent units (not hundredths of dollar) ===\nToo vague — conceptual mismatch without a specific wrong computation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual mismatch—treating cents as independent whole units rather than as hundredths of a dollar—but provides no specific incorrect computation or algorithm. Without a runnable rule that produces a documented wrong answer, and without a concrete, generalizable procedure to encode in Prolog, a testable rule cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual mismatch—treating cents as independent whole units rather than as hundredths of a dollar—but provides no specific incorrect computation or algorithm. Without a runnable rule that produces a documented wrong answer, and without a concrete, generalizable procedure to encode in Prolog, a testable rule cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

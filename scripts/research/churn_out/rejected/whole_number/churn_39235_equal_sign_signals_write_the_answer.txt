@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39235",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39235_equal_sign_signals_write_the_answer",
+    "target_operation": "equal_sign_meaning",
+    "citation": "ADALIRA SÁENZ-LUDLOW and CATHERINE WALGAMUTH (1998)",
+    "error_action": "equal_sign_signals_write_the_answer",
+    "error_description": "the equals sign tells you to compute and put the result next to it",
+    "provenance_comments": "=== row 39235: equal sign as 'put answer here' ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39235_equal_sign_signals_write_the_answer(A+B, Got) :-\n    Got is A + B).\n\ntest_harness:arith_misception(db_row(39235), whole_number, churn_39235_equal_sign_signals_write_the_answer,\n    churn_candidate:churn_39235_equal_sign_signals_write_the_answer,\n    3+5,\n    8).",
+      "result": "expected exactly one arith_misconception/6 registration; found 0"
+    },
+    {
+      "response": "churn_candidate:(churn_39235_equal_sign_signals_write_the_answer(A+B, Got) :-\n    Got is A + B).\n\ntest_harness:arith_misconception(db_row(39235), whole_number, churn_39235_equal_sign_signals_write_the_answer,\n    churn_candidate:churn_39235_equal_sign_signals_write_the_answer,\n    3+5,\n    8).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

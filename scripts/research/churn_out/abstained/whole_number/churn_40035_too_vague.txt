@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40035",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40035_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "=== row 40035: carries \"2 tens\" as \"1 ten\" ===\nNo concrete example given in the CSV row — too vague to encode.",
+    "provenance_comments": "=== row 40035: carries \"2 tens\" as \"1 ten\" ===\nNo concrete example given in the CSV row — too vague to encode.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error \"carries '2 tens' as '1 ten'\" lacks a concrete numerical example or operation context, making it impossible to construct a runnable Prolog rule that reliably reproduces the error in a generalizable way. Without a specific arithmetic operation (e.g., addition, multiplication) and at least one worked instance, the rule’s domain, input, and expected incorrect output cannot be determined rigorously.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error \"carries '2 tens' as '1 ten'\" lacks a concrete numerical example or operation context, making it impossible to construct a runnable Prolog rule that reliably reproduces the error in a generalizable way. Without a specific arithmetic operation (e.g., addition, multiplication) and at least one worked instance, the rule’s domain, input, and expected incorrect output cannot be determined rigorously.",
+      "result": "abstained"
+    }
+  ]
+}

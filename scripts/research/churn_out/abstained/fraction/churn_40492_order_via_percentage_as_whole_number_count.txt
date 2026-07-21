@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40492",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40492_order_via_percentage_as_whole_number_count",
+    "target_operation": "ordering_fractions",
+    "citation": "Bill Domoney (2002)",
+    "error_action": "order_via_percentage_as_whole_number_count",
+    "error_description": "convert each fraction to a percentage and compare them as countable whole numbers",
+    "provenance_comments": "=== row 40492: convert to percent treat as whole ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes converting fractions to percentages and comparing them as whole numbers, but percentages are real numbers (e.g., 1/2 → 50.0), not integers. Ordering by “countable whole numbers” implies truncating or rounding to integers, yet no specific transformation (e.g., floor, round) is documented. Without a precise, unambiguous rule for mapping percentages to integers (e.g., truncate, round, floor), the procedure is underdetermined and cannot be encoded as a runnable, general SWI-Prolog predicate satisfying the schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes converting fractions to percentages and comparing them as whole numbers, but percentages are real numbers (e.g., 1/2 → 50.0), not integers. Ordering by “countable whole numbers” implies truncating or rounding to integers, yet no specific transformation (e.g., floor, round) is documented. Without a precise, unambiguous rule for mapping percentages to integers (e.g., truncate, round, floor), the procedure is underdetermined and cannot be encoded as a runnable, general SWI-Prolog predicate satisfying the schema.",
+      "result": "abstained"
+    }
+  ]
+}

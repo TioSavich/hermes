@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40079",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40079_estimation_is_rounding_to_tens",
+    "target_operation": "computational_estimation_meaning",
+    "citation": "Amal Hussain Alajmi (2009)",
+    "error_action": "estimation_is_rounding_to_tens",
+    "error_description": "to estimate, round each number to the nearest multiple of ten",
+    "provenance_comments": "=== row 40079: estimation equated with rounding ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(estimates_by_rounding_to_tens(A+B, Got) :-\n    round_to_nearest_ten(A, ATen),\n    round_to_nearest_ten(B, BTen),\n    Got is ATen + BTen).\n\nround_to_nearest_ten(N, T) :-\n    T is (N + 5) // 10 * 10.\n\ntest_harness:arith_misconception(db_row(40079), whole_number, churn_40079_estimation_is_rounding_to_tens,\n    churn_candidate:estimates_by_rounding_to_tens,\n    27+46,\n    80).",
+      "result": "predicate must be named churn_40079_estimation_is_rounding_to_tens"
+    },
+    {
+      "response": "churn_candidate:(churn_40079_estimation_is_rounding_to_tens(A-B, Got) :-\n    round_to_nearest_ten(A, ATen),\n    round_to_nearest_ten(B, BTen),\n    Got is ATen + BTen).\n\nround_to_nearest_ten(N, T) :-\n    T is round(N / 10) * 10.\n\ntest_harness:arith_misconception(db_row(40079), whole_number, churn_40079_estimation_is_rounding_to_tens,\n    churn_candidate:churn_40079_estimation_is_rounding_to_tens,\n    23-47,\n    70).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

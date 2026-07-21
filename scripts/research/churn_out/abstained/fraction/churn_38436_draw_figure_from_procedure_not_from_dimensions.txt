@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38436",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38436_draw_figure_from_procedure_not_from_dimensions",
+    "target_operation": "fraction_division_rectangular_model",
+    "citation": "Mourat Tchoshanov, Maria Cruz Quinones, Kadriya B. Shakirova, Elena N. Ibragimova, Liliana R. Shakirova (2017)",
+    "error_action": "draw_figure_from_procedure_not_from_dimensions",
+    "error_description": "let the computed answer drive the picture rather than ensuring the picture's dimensions are accurate",
+    "provenance_comments": "=== row 38436: teacher's drawing doesn't match arithmetic (visual, no numeric rule) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a visual misalignment between a drawn figure and the arithmetic result in fraction division, but no runnable procedural rule (e.g., a predicate of arity 2 that computes a wrong result) is specified. The error is qualitative (drawing based on procedure rather than dimensions), not a syntactic arithmetic transformation that can be captured as a SWI-Prolog rule producing a specific incorrect value. No concrete Input/ExpectedCorrect pair can be derived without inventing a representation for “figure” or “drawing,” which violates the schema constraint against side effects, non-built-ins, or domain-invented constructs.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a visual misalignment between a drawn figure and the arithmetic result in fraction division, but no runnable procedural rule (e.g., a predicate of arity 2 that computes a wrong result) is specified. The error is qualitative (drawing based on procedure rather than dimensions), not a syntactic arithmetic transformation that can be captured as a SWI-Prolog rule producing a specific incorrect value. No concrete Input/ExpectedCorrect pair can be derived without inventing a representation for “figure” or “drawing,” which violates the schema constraint against side effects, non-built-ins, or domain-invented constructs.",
+      "result": "abstained"
+    }
+  ]
+}

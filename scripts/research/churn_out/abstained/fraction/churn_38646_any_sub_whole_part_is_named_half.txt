@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38646",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38646_any_sub_whole_part_is_named_half",
+    "target_operation": "fraction_naming",
+    "citation": "Jessica H. Hunt, Arla Westenskow, Juanita Silva, Jasmine Welch-Ptak (2016)",
+    "error_action": "any_sub_whole_part_is_named_half",
+    "error_description": "a piece smaller than the whole is called a half regardless of how many pieces there are",
+    "provenance_comments": "=== row 38646: arbitrary naming as half ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual naming misconception (\"any piece smaller than the whole is called a half\") rather than a procedural arithmetic rule that can be encoded as a deterministic binary predicate producing a specific incorrect result for a given input. There is no well-defined input-output mapping (e.g., no unique output for \"half\" regardless of partition) that can be captured by a pure, deterministic Prolog predicate without introducing ambiguity or ad hoc assumptions. The misconception is contextual and depends on learner interpretation, not a mechanical computation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual naming misconception (\"any piece smaller than the whole is called a half\") rather than a procedural arithmetic rule that can be encoded as a deterministic binary predicate producing a specific incorrect result for a given input. There is no well-defined input-output mapping (e.g., no unique output for \"half\" regardless of partition) that can be captured by a pure, deterministic Prolog predicate without introducing ambiguity or ad hoc assumptions. The misconception is contextual and depends on learner interpretation, not a mechanical computation.",
+      "result": "abstained"
+    }
+  ]
+}

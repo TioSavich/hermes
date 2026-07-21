@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38225",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38225_read_numeral_in_spoken_word_order",
+    "target_operation": "teens_numeral_reading",
+    "citation": "Gillian M. Boulton-Lewis (1998)",
+    "error_action": "read_numeral_in_spoken_word_order",
+    "error_description": "map the digits to the order the number is spoken",
+    "provenance_comments": "=== row 38225: irregular teens-number reading errors ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive mapping (reading digits in spoken word order) but provides no runnable procedural rule or concrete example; without a deterministic transformation that maps an input numeral to the documented wrong output, a SWI-Prolog rule cannot be constructed that reliably reproduces the error for arbitrary inputs. The gate failure (exit 22) confirms the rule was non-runnable or ill-specified.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38225_read_numeral_in_spoken_word_order(Digits, Got) :-\n    number_chars(N, Digits),\n    atom_chars(Atom, Digits),\n    atom_number(Atom, Got)).\n\ntest_harness:arith_misconception(db_row(38225), whole_number, churn_38225_read_numeral_in_spoken_word_order,\n    churn_candidate:churn_38225_read_numeral_in_spoken_word_order,\n    [1,3],\n    13).",
+      "result": "SWI-Prolog gate exited 22"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive mapping (reading digits in spoken word order) but provides no runnable procedural rule or concrete example; without a deterministic transformation that maps an input numeral to the documented wrong output, a SWI-Prolog rule cannot be constructed that reliably reproduces the error for arbitrary inputs. The gate failure (exit 22) confirms the rule was non-runnable or ill-specified.",
+      "result": "abstained"
+    }
+  ]
+}

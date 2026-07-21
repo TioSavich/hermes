@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40584",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40584_always_borrow_left_misdistributing",
+    "target_operation": "multidigit_subtraction_borrowing",
+    "citation": "Irit Peled, Bracha Segalis (2005)",
+    "error_action": "always_borrow_left_misdistributing",
+    "error_description": "borrow from the nearest non-zero column but add the borrowed amounts to the wrong intermediate columns",
+    "provenance_comments": "=== row 40584: \"always borrow left\" with misdistributed intermediate columns ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural mistake in multidigit subtraction (borrowing from the nearest non-zero column and misplacing the borrowed amount), but it does not specify a concrete, generalizable arithmetic rule that maps an input pair to a fixed incorrect output in a way that can be expressed as a binary predicate without context-dependent digit manipulation. The error is positional and column-dependent, not a simple arithmetic transformation over the whole numbers as a domain. No runnable rule of arity 2 (Input, Got) can be defined that captures \"always borrow left with misdistributed intermediate columns\" for arbitrary whole-number inputs without simulating full multidigit subtraction — which would require string/digit decomposition, violating the requirement for simple arithmetic built-ins and general applicability.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural mistake in multidigit subtraction (borrowing from the nearest non-zero column and misplacing the borrowed amount), but it does not specify a concrete, generalizable arithmetic rule that maps an input pair to a fixed incorrect output in a way that can be expressed as a binary predicate without context-dependent digit manipulation. The error is positional and column-dependent, not a simple arithmetic transformation over the whole numbers as a domain. No runnable rule of arity 2 (Input, Got) can be defined that captures \"always borrow left with misdistributed intermediate columns\" for arbitrary whole-number inputs without simulating full multidigit subtraction — which would require string/digit decomposition, violating the requirement for simple arithmetic built-ins and general applicability.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37791",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37791_given_partition_is_relevant_to_target_fraction",
+    "target_operation": "perceptual_distracter_partitioning",
+    "citation": "Kathleen A. Cramer, Thomas R. Post and Merlyn J. Behr (1989)",
+    "error_action": "given_partition_is_relevant_to_target_fraction",
+    "error_description": "the existing divisions in the figure are the units to use for naming the requested fraction",
+    "provenance_comments": "=== row 37791: perceptual distracters ===\nTask difficulty description, no numeric wrong answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a perceptual distracter misconception about how students misinterpret partitioned figures, but no runnable arithmetic rule or concrete input-output pair can be derived from the description. The error is qualitative (misreading the whole unit) rather than syntactic or procedural in a way that maps to a deterministic 2-place predicate producing a specific wrong value. Without a determinate wrong numerical output, a valid test_harness:arith_misconception/6 entry cannot be constructed per the schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a perceptual distracter misconception about how students misinterpret partitioned figures, but no runnable arithmetic rule or concrete input-output pair can be derived from the description. The error is qualitative (misreading the whole unit) rather than syntactic or procedural in a way that maps to a deterministic 2-place predicate producing a specific wrong value. Without a determinate wrong numerical output, a valid test_harness:arith_misconception/6 entry cannot be constructed per the schema.",
+      "result": "abstained"
+    }
+  ]
+}

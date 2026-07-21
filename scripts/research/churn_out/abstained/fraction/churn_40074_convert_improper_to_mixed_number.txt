@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40074",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40074_convert_improper_to_mixed_number",
+    "target_operation": "improper_fraction_as_number",
+    "citation": "LouAnn H. Lovin, Alexis L. Stevens, John Siegfried, Jesse L. M. Wilkins, Anderson Norton (2018)",
+    "error_action": "convert_improper_to_mixed_number",
+    "error_description": "rewrite any improper fraction as a whole number plus a remaining fraction",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error description \"rewrite any improper fraction as a whole number plus a remaining fraction\" does not specify a concrete computational rule that yields a *systematically wrong result*; it describes a correct general strategy, not a misconception. Without evidence of a specific incorrect procedure (e.g., omitting the remainder, miscalculating the remainder, or misusing division), no runnable rule producing a documented wrong answer can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error description \"rewrite any improper fraction as a whole number plus a remaining fraction\" does not specify a concrete computational rule that yields a *systematically wrong result*; it describes a correct general strategy, not a misconception. Without evidence of a specific incorrect procedure (e.g., omitting the remainder, miscalculating the remainder, or misusing division), no runnable rule producing a documented wrong answer can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

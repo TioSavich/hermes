@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39992",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39992_add_every_numeral_in_the_problem",
+    "target_operation": "relevant_information_selection",
+    "citation": "Jinfa Cai (2003)",
+    "error_action": "add_every_numeral_in_the_problem",
+    "error_description": "collect all numbers appearing in the text, including labels, and add them",
+    "provenance_comments": "=== row 39992: unsystematic extraction of all numbers in a word problem ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a linguistic strategy (adding every numeral appearing in the problem text, including labels), which cannot be expressed as a deterministic binary predicate `Rule(Input, Got)` over a structured input term `Input` without reconstructing or simulating a specific word problem text. The schema requires `Input` to be an arithmetic expression or structured datum (e.g., `A-B`), and `Rule` to compute a wrong result from that structure. Since the misconception is text-dependent and not definable over a canonical arithmetic representation, no runnable rule satisfying the contract can be constructed.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39992_add_every_numeral_in_the_problem(Problem, Got) :-\n    aggregate_all(sum(Digit), member(Digit, Problem), Got)).\n\ntest_harness:arith_misconception(db_row(39992), whole_number, churn_39992_add_every_numeral_in_the_problem,\n    churn_candidate:churn_39992_add_every_numeral_in_the_problem,\n    [3, 5, 2],\n    10).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a linguistic strategy (adding every numeral appearing in the problem text, including labels), which cannot be expressed as a deterministic binary predicate `Rule(Input, Got)` over a structured input term `Input` without reconstructing or simulating a specific word problem text. The schema requires `Input` to be an arithmetic expression or structured datum (e.g., `A-B`), and `Rule` to compute a wrong result from that structure. Since the misconception is text-dependent and not definable over a canonical arithmetic representation, no runnable rule satisfying the contract can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38375",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38375_trust_recalled_rule_over_own_model",
+    "target_operation": "model_procedure_connection",
+    "citation": "Roberta Y. Schorr (2000)",
+    "error_action": "trust_recalled_rule_over_own_model",
+    "error_description": "answer with the remembered classroom procedure even when it contradicts your own picture",
+    "provenance_comments": "=== row 38375: ignores own model falls back on rule ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive tendency (trusting recalled rules over self-generated models) rather than a specific syntactic or semantic error that can be captured by a deterministic arithmetic rule producing a fixed wrong output for a given input. No runnable rule of arity 2 can be constructed that consistently yields a *documented* wrong answer for a concrete input without additional mathematical specification of the mismatch between model and rule.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive tendency (trusting recalled rules over self-generated models) rather than a specific syntactic or semantic error that can be captured by a deterministic arithmetic rule producing a fixed wrong output for a given input. No runnable rule of arity 2 can be constructed that consistently yields a *documented* wrong answer for a concrete input without additional mathematical specification of the mismatch between model and rule.",
+      "result": "abstained"
+    }
+  ]
+}

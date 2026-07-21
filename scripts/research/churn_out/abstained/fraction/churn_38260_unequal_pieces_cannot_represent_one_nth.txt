@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38260",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38260_unequal_pieces_cannot_represent_one_nth",
+    "target_operation": "area_model_equal_partition",
+    "citation": "Marianna Ciosek, Maria Samborska (2016)",
+    "error_action": "unequal_pieces_cannot_represent_one_nth",
+    "error_description": "if the region is cut into visibly unequal pieces, none of them can be 1/n",
+    "provenance_comments": "=== row 38260: 1/n only via equal partition — unequal means not 1/n ===\nToo vague — a rejection claim about representation, not a numeric transformation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual rejection claim (\"unequal pieces cannot represent 1/n\") rather than a computational transformation rule. It does not specify a procedure that produces a *numerical output* for a given input; hence no runnable predicate of arity 2 can be constructed that yields the documented wrong answer as a term. The schema requires a rule that, when called with Input, produces Got unifying with the documented misconception output — but here there is no such output term, only a meta-level assertion about representability.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual rejection claim (\"unequal pieces cannot represent 1/n\") rather than a computational transformation rule. It does not specify a procedure that produces a *numerical output* for a given input; hence no runnable predicate of arity 2 can be constructed that yields the documented wrong answer as a term. The schema requires a rule that, when called with Input, produces Got unifying with the documented misconception output — but here there is no such output term, only a meta-level assertion about representability.",
+      "result": "abstained"
+    }
+  ]
+}

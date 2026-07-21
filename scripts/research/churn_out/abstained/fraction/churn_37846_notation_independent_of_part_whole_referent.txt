@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37846",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37846_notation_independent_of_part_whole_referent",
+    "target_operation": "notation_without_referent",
+    "citation": "Geoffrey B. Saxe, Edd V. Taylor, Clifton McIntosh, and Maryl Gearhart (2005)",
+    "error_action": "notation_independent_of_part_whole_referent",
+    "error_description": "standard a/b notation can be written for any partitioned figure without checking that it names a normative part-whole relation",
+    "provenance_comments": "=== row 37846: standard notation without part-whole reference ===\nToo vague — notational use without a specific wrong numeric answer in the example.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is conceptual—notation can be applied without verifying part-whole correspondence—but no specific incorrect numeric computation or symbolic transformation is provided. A runnable rule requires a deterministic, generalizable procedure that produces a fixed wrong output for a given input; here, the error is about misapplication of notation, not a calculational mistake, and no concrete input-output pair is documented to ground the rule.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is conceptual—notation can be applied without verifying part-whole correspondence—but no specific incorrect numeric computation or symbolic transformation is provided. A runnable rule requires a deterministic, generalizable procedure that produces a fixed wrong output for a given input; here, the error is about misapplication of notation, not a calculational mistake, and no concrete input-output pair is documented to ground the rule.",
+      "result": "abstained"
+    }
+  ]
+}

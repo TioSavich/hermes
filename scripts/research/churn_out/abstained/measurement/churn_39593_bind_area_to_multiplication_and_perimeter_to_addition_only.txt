@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39593",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39593_bind_area_to_multiplication_and_perimeter_to_addition_only",
+    "target_operation": "area_perimeter_operation_binding",
+    "citation": "JoAnn Cady, Sherry L. Meier & Cheryl A. Lubinski (2006)",
+    "error_action": "bind_area_to_multiplication_and_perimeter_to_addition_only",
+    "error_description": "perimeter must be found by adding sides and may never be found by multiplying",
+    "provenance_comments": "=== row 39593: teacher rejects multiplicative perimeter strategy ===\nToo vague: pedagogical framing bug, not a student calc error.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: pedagogical framing bug, not a student calc error — the documented \"error\" is a teacher's rejection of a multiplicative perimeter strategy, which does not constitute a student's incorrect calculation rule. No runnable student rule exists to encode.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: pedagogical framing bug, not a student calc error — the documented \"error\" is a teacher's rejection of a multiplicative perimeter strategy, which does not constitute a student's incorrect calculation rule. No runnable student rule exists to encode.",
+      "result": "abstained"
+    }
+  ]
+}

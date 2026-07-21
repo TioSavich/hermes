@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38789",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38789_only_shaded_region_is_a_fraction",
+    "target_operation": "fraction_representation",
+    "citation": "Laurie D. Edwards (1993)",
+    "error_action": "only_shaded_region_is_a_fraction",
+    "error_description": "a fraction is just the shaded part of a partitioned figure; the rest is nothing",
+    "provenance_comments": "=== row 38789: unshaded is nothing ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating the unshaded portion as nothing), not a specific syntactic or procedural error that can be modeled as a binary predicate producing a wrong numerical result. There is no runnable rule that maps an input fraction representation to a documented incorrect output in a way that satisfies the schema requirement for `Rule(Input, Got)` to yield the exact documented wrong answer.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating the unshaded portion as nothing), not a specific syntactic or procedural error that can be modeled as a binary predicate producing a wrong numerical result. There is no runnable rule that maps an input fraction representation to a documented incorrect output in a way that satisfies the schema requirement for `Rule(Input, Got)` to yield the exact documented wrong answer.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+command: swipl -q --on-warning=status --on-error=status -s <scratch>/candidate.pl -g <gate> -t halt
+exit: 0
+stdout:
+GOT=frac(2,6)
+EXPECTED=frac(4,6)
+CLASS=incorrect
+stderr:
+
+description-match: matched error-action tokens: across, denominators, multiply, numerators, rote, rule

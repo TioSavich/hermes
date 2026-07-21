@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39802",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39802_treat_fraction_estimation_as_whole_number_estimation",
+    "target_operation": "fraction_estimation_difficulty",
+    "citation": "Terry Goodman (1991)",
+    "error_action": "treat_fraction_estimation_as_whole_number_estimation",
+    "error_description": "approach estimation with fractions using the same procedures that work for whole numbers",
+    "provenance_comments": "=== row 39802: difficulty with fraction estimation ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive tendency (treating fraction estimation like whole-number estimation) but does not specify a concrete, runnable procedure that maps inputs to a fixed wrong output. Without a deterministic rule that produces a specific incorrect result from a given input (e.g., a formulaic misapplication like \"ignore denominators\" or \"round each fraction to nearest integer and subtract\"), no runnable predicate of arity 2 can be defined. The description is too vague to encode as a formal Prolog rule satisfying the schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive tendency (treating fraction estimation like whole-number estimation) but does not specify a concrete, runnable procedure that maps inputs to a fixed wrong output. Without a deterministic rule that produces a specific incorrect result from a given input (e.g., a formulaic misapplication like \"ignore denominators\" or \"round each fraction to nearest integer and subtract\"), no runnable predicate of arity 2 can be defined. The description is too vague to encode as a formal Prolog rule satisfying the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

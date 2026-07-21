@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "208",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_208_use_self_developed_algorithm",
+    "target_operation": "student_invented_algorithms",
+    "citation": "Cole (2012)",
+    "error_action": "use_self_developed_algorithm",
+    "error_description": "carry out a non-standard procedure the student constructed",
+    "provenance_comments": "=== direct solo pass: whole-number queue chunk 2 ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documentation provides only a generic description (“use a non-standard procedure the student constructed”) without specifying any concrete algorithmic rule that can be encoded as a deterministic, runnable Prolog predicate. Without a defined transformation (e.g., how the self-developed algorithm manipulates operands), no specific Rule predicate of arity 2 can be constructed that reliably produces the documented wrong answer for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documentation provides only a generic description (“use a non-standard procedure the student constructed”) without specifying any concrete algorithmic rule that can be encoded as a deterministic, runnable Prolog predicate. Without a defined transformation (e.g., how the self-developed algorithm manipulates operands), no specific Rule predicate of arity 2 can be constructed that reliably produces the documented wrong answer for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

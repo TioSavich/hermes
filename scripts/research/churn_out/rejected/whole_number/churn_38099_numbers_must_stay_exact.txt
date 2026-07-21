@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38099",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38099_numbers_must_stay_exact",
+    "target_operation": "estimation_resistance",
+    "citation": "Cinzia Bonotto (2001)",
+    "error_action": "numbers_must_stay_exact",
+    "error_description": "values cannot be altered or rounded for calculation",
+    "provenance_comments": "=== row 38099: resistance to approximation ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(numbers_must_stay_exact(A-B, Got) :-\n    Got is A - B).\n\ntest_harness:arith_misconception(db_row(38099), whole_number, churn_38099_numbers_must_stay_exact,\n    churn_candidate:numbers_must_stay_exact,\n    103-97,\n    6).",
+      "result": "predicate must be named churn_38099_numbers_must_stay_exact"
+    },
+    {
+      "response": "churn_candidate:(churn_38099_numbers_must_stay_exact(A+B, Got) :-\n    Got is A + B).\n\ntest_harness:arith_misconception(db_row(38099), whole_number, churn_38099_numbers_must_stay_exact,\n    churn_candidate:churn_38099_numbers_must_stay_exact,\n    123+456,\n    579).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

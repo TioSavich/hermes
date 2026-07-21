@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37763",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37763_always_count_back_by_subtrahend",
+    "target_operation": "subtraction_counting_strategy",
+    "citation": "Eddie M. Gray and David O. Tall (1994)",
+    "error_action": "always_count_back_by_subtrahend",
+    "error_description": "subtract by counting backward as many steps as the subtrahend names",
+    "provenance_comments": "=== row 37763: counting-back for subtraction ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented procedure “always_count_back_by_subtrahend” describes a procedural counting strategy, not a closed-form arithmetic operation; it cannot be expressed as a deterministic binary predicate `Rule(Input, Got)` using SWI-Prolog built-ins without simulating explicit counting steps, which would require dynamic state or non-logical constructs (e.g., `findall`, `bagof`, or `between/3` loops), violating the constraint against meta-calls and side effects.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented procedure “always_count_back_by_subtrahend” describes a procedural counting strategy, not a closed-form arithmetic operation; it cannot be expressed as a deterministic binary predicate `Rule(Input, Got)` using SWI-Prolog built-ins without simulating explicit counting steps, which would require dynamic state or non-logical constructs (e.g., `findall`, `bagof`, or `between/3` loops), violating the constraint against meta-calls and side effects.",
+      "result": "abstained"
+    }
+  ]
+}

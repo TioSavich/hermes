@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40495",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40495_equal_quarters_need_only_equal_area",
+    "target_operation": "partitioning_shapes",
+    "citation": "Tim Rowland, Anne Thwaites and Libby Jared (2015)",
+    "error_action": "equal_quarters_need_only_equal_area",
+    "error_description": "accept four parts as quarters if their areas are equal even when their shapes differ",
+    "provenance_comments": "=== row 40495: two diagonals on non-square rectangle give quarters ===\nToo vague — partitioning claim; not a numeric wrong answer in the usual sense.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding about partitioning shapes into quarters, not a specific arithmetic operation that can be encoded as a binary predicate producing a wrong numeric result. The misconception concerns visual or geometric reasoning (equal areas regardless of shape), which cannot be represented as a runnable Prolog rule of arity 2 that computes a wrong numeric outcome for a given input. No concrete numeric Input and ExpectedCorrect can be supplied that match the schema requirement of producing a *documented wrong answer* via a *runnable rule*.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding about partitioning shapes into quarters, not a specific arithmetic operation that can be encoded as a binary predicate producing a wrong numeric result. The misconception concerns visual or geometric reasoning (equal areas regardless of shape), which cannot be represented as a runnable Prolog rule of arity 2 that computes a wrong numeric outcome for a given input. No concrete numeric Input and ExpectedCorrect can be supplied that match the schema requirement of producing a *documented wrong answer* via a *runnable rule*.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "168",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_168_derive_facts_by_make_ten_bridging",
+    "target_operation": "addition_subtraction_progression",
+    "citation": "Ernest, Paul (2006)",
+    "error_action": "derive_facts_by_make_ten_bridging",
+    "error_description": "build new sums and differences from known facts via counting-on-from-larger and make-ten bridging, and execute equal-addition or decomposition subtraction as rule-governed procedures",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error description is too vague to encode a specific runnable rule; it describes a category of strategies (counting-on, make-ten, equal-addition, decomposition) without specifying a single, deterministic procedure that yields a unique incorrect result for a given input. Without a concrete, reproducible misapplication (e.g., always dropping the ones digit in subtraction, always adding ones before tens regardless of carry), no testable `Rule/2` predicate can be constructed that consistently produces the documented wrong answer.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error description is too vague to encode a specific runnable rule; it describes a category of strategies (counting-on, make-ten, equal-addition, decomposition) without specifying a single, deterministic procedure that yields a unique incorrect result for a given input. Without a concrete, reproducible misapplication (e.g., always dropping the ones digit in subtraction, always adding ones before tens regardless of carry), no testable `Rule/2` predicate can be constructed that consistently produces the documented wrong answer.",
+      "result": "abstained"
+    }
+  ]
+}

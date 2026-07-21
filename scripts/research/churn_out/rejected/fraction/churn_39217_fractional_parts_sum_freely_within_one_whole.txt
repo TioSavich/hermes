@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39217",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39217_fractional_parts_sum_freely_within_one_whole",
+    "target_operation": "fraction_whole_coordination",
+    "citation": "Marie Tichá & Alena Hošpesová (2013)",
+    "error_action": "fractional_parts_sum_freely_within_one_whole",
+    "error_description": "you can assign 1/2 and 3/4 of the same pizza to different people without checking that the parts fit",
+    "provenance_comments": "=== row 39217: problem posing — fractions of a whole summing >1 ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_39217_fractional_parts_sum_freely_within_one_whole",
+  "attempts": [
+    {
+      "response": "churn_candidate:(fractional_parts_sum_freely_within_one_whole(frac(N1,D1)-frac(N2,D2), frac(N1+N2, D))) :-\n    D1 =:= D2,\n    D is D1,\n    N1+N2 > D.\n\ntest_harness:arith_misconception(db_row(39217), fraction, churn_39217_fractional_parts_sum_freely_within_one_whole,\n    churn_candidate:fractional_parts_sum_freely_within_one_whole,\n    frac(1,4)-frac(3,4),\n    frac(1,1)).",
+      "result": "predicate must be named churn_39217_fractional_parts_sum_freely_within_one_whole"
+    },
+    {
+      "response": "churn_candidate:(fractional_parts_sum_freely_within_one_whole(frac(N1,D1)-frac(N2,D2), frac(SumN,SumD)) :-\n    SumN is N1 * D2 + N2 * D1,\n    SumD is D1 * D2,\n    SumN > SumD).\n\ntest_harness:arith_misconception(db_row(39217), fraction, churn_39217_fractional_parts_sum_freely_within_one_whole,\n    churn_candidate:fractional_parts_sum_freely_within_one_whole,\n    frac(1,2)-frac(3,4),\n    frac(10,8)).",
+      "result": "predicate must be named churn_39217_fractional_parts_sum_freely_within_one_whole"
+    }
+  ]
+}

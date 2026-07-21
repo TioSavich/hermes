@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40535",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40535_multiplication_always_increases_magnitude",
+    "target_operation": "multiplication_magnitude",
+    "citation": "Anne Watson (2010)",
+    "error_action": "multiplication_always_increases_magnitude",
+    "error_description": "treat multiplying as an operation that necessarily makes the result larger",
+    "provenance_comments": "=== row 40535: multiplication always increases magnitude ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception (treating multiplication as always increasing magnitude), not a specific syntactic or operational error that can be encoded as a deterministic 2-place Prolog predicate producing a fixed wrong output for a given input. There is no unique \"wrong answer\" produced by this misconception without additional assumptions about the student's mental model (e.g., which numbers they assume are involved, whether they consider zero or negatives, etc.). Since the schema requires a runnable rule that maps a specific input to the *documented wrong answer*, and the misconception does not specify a deterministic procedure yielding a unique incorrect result for a given input, the requirement cannot be satisfied without invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40535_multiplication_always_increases_magnitude(A-B, Got) :-\n    Got is A * B,\n    A > 0,\n    B > 0,\n    (A = 0 ; B = 0 ; A < 1 ; B < 1) -> false ; true,\n    (A < 0 ; B < 0) -> false ; true,\n    A >= 1,\n    B >= 1,\n    Got > A,\n    Got > B).\n\ntest_harness:arith_misconception(db_row(40535), whole_number, churn_40535_multiplication_always_increases_magnitude,\n    churn_candidate:churn_40535_multiplication_always_increases_magnitude,\n    5-0,\n    0).",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception (treating multiplication as always increasing magnitude), not a specific syntactic or operational error that can be encoded as a deterministic 2-place Prolog predicate producing a fixed wrong output for a given input. There is no unique \"wrong answer\" produced by this misconception without additional assumptions about the student's mental model (e.g., which numbers they assume are involved, whether they consider zero or negatives, etc.). Since the schema requires a runnable rule that maps a specific input to the *documented wrong answer*, and the misconception does not specify a deterministic procedure yielding a unique incorrect result for a given input, the requirement cannot be satisfied without invention.",
+      "result": "abstained"
+    }
+  ]
+}

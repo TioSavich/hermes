@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40470",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40470_match_decimal_digit_count_for_answer",
+    "target_operation": "decimal_division_reasonableness",
+    "citation": "AMAL HUSSAIN ALAJMI and ROBERT REYS (2010)",
+    "error_action": "match_decimal_digit_count_for_answer",
+    "error_description": "select an answer whose number of decimal places matches the dividend's",
+    "provenance_comments": "=== row 40470: visual pattern matching for reasonableness ===\nTask: choose reasonable answer for 16.48 / X from options\nToo vague — heuristic selection, no single rule output.",
+    "worked_example": "Task: choose reasonable answer for 16.48 / X from options",
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: the documented error is described as a heuristic visual pattern matching without a single runnable rule; no deterministic predicate of arity 2 can be constructed to produce the documented wrong answer for arbitrary inputs.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: the documented error is described as a heuristic visual pattern matching without a single runnable rule; no deterministic predicate of arity 2 can be constructed to produce the documented wrong answer for arbitrary inputs.",
+      "result": "abstained"
+    }
+  ]
+}

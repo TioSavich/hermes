@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40550",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40550_fraction_cannot_exceed_one_whole",
+    "target_operation": "improper_fractions",
+    "citation": "Bodil Kleve (2010)",
+    "error_action": "fraction_cannot_exceed_one_whole",
+    "error_description": "a fraction names a part of a single whole, so you cannot take more parts than the whole has",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception (a fraction cannot exceed one whole), but no runnable arithmetic rule is provided that produces a wrong answer for an improper fraction operation. Without a specific procedural error (e.g., misapplying an operation like addition or multiplication to produce an incorrect result), we cannot construct a predicate `Rule/2` that reliably yields the documented wrong outcome for a given input. The misconception describes a belief, not a computational mistake, and no concrete operation or input-output pair is given to ground a testable rule.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception (a fraction cannot exceed one whole), but no runnable arithmetic rule is provided that produces a wrong answer for an improper fraction operation. Without a specific procedural error (e.g., misapplying an operation like addition or multiplication to produce an incorrect result), we cannot construct a predicate `Rule/2` that reliably yields the documented wrong outcome for a given input. The misconception describes a belief, not a computational mistake, and no concrete operation or input-output pair is given to ground a testable rule.",
+      "result": "abstained"
+    }
+  ]
+}

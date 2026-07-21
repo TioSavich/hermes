@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40253",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40253_restart_measure_without_marking_endpoint",
+    "target_operation": "unit_iteration",
+    "citation": "DIANA F. STEELE (2001)",
+    "error_action": "restart_measure_without_marking_endpoint",
+    "error_description": "begin the next tool-length anywhere and just keep going",
+    "provenance_comments": "=== row 40253: iterating past tool end ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error description “begin the next tool-length anywhere and just keep going” describes a procedural mistake in measurement iteration but does not specify a concrete, generalizable arithmetic operation or rule that yields a deterministic incorrect result from a well-defined input. Without a clear mapping from input to erroneous output (e.g., no formula, no fixed misapplication of arithmetic), a runnable SWI-Prolog rule satisfying the schema cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error description “begin the next tool-length anywhere and just keep going” describes a procedural mistake in measurement iteration but does not specify a concrete, generalizable arithmetic operation or rule that yields a deterministic incorrect result from a well-defined input. Without a clear mapping from input to erroneous output (e.g., no formula, no fixed misapplication of arithmetic), a runnable SWI-Prolog rule satisfying the schema cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38852",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38852_answer_must_be_an_integer",
+    "target_operation": "division_with_remainder",
+    "citation": "Raimo Kaasila & Erkki Pehkonen & Anu Hellinen (2010)",
+    "error_action": "answer_must_be_an_integer",
+    "error_description": "keep division answers as whole numbers and discard or ignore any leftover",
+    "provenance_comments": "=== row 38852: integer division ignores fractional remainder ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38852_answer_must_be_an_integer(A-B, Got) :-\n    Got is A div B).\n\ntest_harness:arith_misconception(db_row(38852), whole_number, churn_38852_answer_must_be_an_integer,\n    churn_candidate:churn_38852_answer_must_be_an_integer,\n    7-3,\n    2).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "churn_candidate:(churn_38852_answer_must_be_an_integer(A-B, Got) :-\n    Got is A div B).\n\ntest_harness:arith_misconception(db_row(38852), whole_number, churn_38852_answer_must_be_an_integer,\n    churn_candidate:churn_38852_answer_must_be_an_integer,\n    7-3,\n    2).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

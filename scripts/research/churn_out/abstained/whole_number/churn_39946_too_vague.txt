@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39946",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39946_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "=== row 39946: borrowing across zero / equal-addition bugs ===\nDescribed as a family of bugs without a single canonical output.",
+    "provenance_comments": "=== row 39946: borrowing across zero / equal-addition bugs ===\nDescribed as a family of bugs without a single canonical output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a family of bugs (\"borrowing across zero / equal-addition bugs\") without a single canonical output or specific procedural description, making it impossible to construct a runnable rule that produces a *single* documented wrong answer as required. The schema demands a concrete `Rule` that, when called with a specific `Input`, yields the *exact* documented incorrect result (`Got`) distinct from `ExpectedCorrect`. Since no specific incorrect computation or output is provided, and the description is intentionally vague and non-canonical, a runnable test case cannot be defensibly constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a family of bugs (\"borrowing across zero / equal-addition bugs\") without a single canonical output or specific procedural description, making it impossible to construct a runnable rule that produces a *single* documented wrong answer as required. The schema demands a concrete `Rule` that, when called with a specific `Input`, yields the *exact* documented incorrect result (`Got`) distinct from `ExpectedCorrect`. Since no specific incorrect computation or output is provided, and the description is intentionally vague and non-canonical, a runnable test case cannot be defensibly constructed.",
+      "result": "abstained"
+    }
+  ]
+}

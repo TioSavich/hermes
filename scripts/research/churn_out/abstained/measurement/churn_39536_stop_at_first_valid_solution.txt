@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39536",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39536_stop_at_first_valid_solution",
+    "target_operation": "optimization_constraint_neglect",
+    "citation": "Margaret Taplin (1998)",
+    "error_action": "stop_at_first_valid_solution",
+    "error_description": "once one set of dimensions satisfies the volume, the problem is finished",
+    "provenance_comments": "=== row 39536: one valid answer without optimization ===\nToo vague: stopping criterion, not a wrong number.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a stopping criterion (\"stop at first valid solution\") rather than a specific arithmetic miscalculation or syntactically expressible rule that produces a wrong numeric result. No runnable predicate of arity 2 can be defined that consistently yields a *documented wrong answer* for arbitrary inputs, because the error is procedural (premature termination) rather than computational (incorrect formula application). The schema requires a rule where `Rule(Input, Got)` produces the documented wrong outcome, but here the \"wrong answer\" depends on the search path and is not a fixed function of the input alone.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a stopping criterion (\"stop at first valid solution\") rather than a specific arithmetic miscalculation or syntactically expressible rule that produces a wrong numeric result. No runnable predicate of arity 2 can be defined that consistently yields a *documented wrong answer* for arbitrary inputs, because the error is procedural (premature termination) rather than computational (incorrect formula application). The schema requires a rule where `Rule(Input, Got)` produces the documented wrong outcome, but here the \"wrong answer\" depends on the search path and is not a fixed function of the input alone.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40410",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40410_fraction_not_used_as_operator_on_quantity",
+    "target_operation": "operator_construct",
+    "citation": "Juhaina Awawdeh Shahbari & Irit Peled (2017)",
+    "error_action": "fraction_not_used_as_operator_on_quantity",
+    "error_description": "a fraction is treated as a static part-of-whole label rather than as an operation applied to a quantity",
+    "provenance_comments": "=== row 40410: fraction as operator ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (treating a fraction as a static label rather than an operation), but no specific syntactic or procedural error is provided that can be encoded as a deterministic, runnable Prolog rule producing a fixed incorrect output for a given input. Without a concrete algorithmic error pattern (e.g., \"add numerators and denominators separately\"), we cannot construct a rule that reliably yields a documented wrong answer via a predicate `Rule(Input, Got)`.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (treating a fraction as a static label rather than an operation), but no specific syntactic or procedural error is provided that can be encoded as a deterministic, runnable Prolog rule producing a fixed incorrect output for a given input. Without a concrete algorithmic error pattern (e.g., \"add numerators and denominators separately\"), we cannot construct a rule that reliably yields a documented wrong answer via a predicate `Rule(Input, Got)`.",
+      "result": "abstained"
+    }
+  ]
+}

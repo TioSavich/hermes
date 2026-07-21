@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "277",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_277_treat_array_and_algorithm_as_separate",
+    "target_operation": "array_to_algorithm_link",
+    "citation": "Rosamund Sutherland, Jan Winter, and Tony Harries (2001)",
+    "error_action": "treat_array_and_algorithm_as_separate",
+    "error_description": "hold the visual array model and the vertical algorithm as unconnected procedures, having learned from materials that did not link them",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a conceptual separation between two representations (visual array and vertical algorithm) rather than a specific syntactic or semantic distortion in arithmetic evaluation that can be captured by a binary predicate Rule(Input, Got) producing a wrong numerical result. The misconception pertains to pedagogical linkage, not a calculational mistake with a deterministic incorrect output for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a conceptual separation between two representations (visual array and vertical algorithm) rather than a specific syntactic or semantic distortion in arithmetic evaluation that can be captured by a binary predicate Rule(Input, Got) producing a wrong numerical result. The misconception pertains to pedagogical linkage, not a calculational mistake with a deterministic incorrect output for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

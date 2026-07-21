@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38637",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38637_place_parts_and_whole_freely_in_boxes",
+    "target_operation": "box_diagram_partition_mapping",
+    "citation": "Alison Castro Superfine, Reality S. Canty, Anne Marie Marshall (2009)",
+    "error_action": "place_parts_and_whole_freely_in_boxes",
+    "error_description": "fill a box diagram without binding the whole to the large box and parts to the small boxes",
+    "provenance_comments": "=== row 38637: box-diagram partition placement ===\nError is in diagram layout, not computable as arithmetic.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error concerns diagram layout semantics (placement of parts and whole in boxes) rather than an arithmetic procedure; no executable predicate of arity 2 can be defined that produces the documented wrong answer via arithmetic evaluation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error concerns diagram layout semantics (placement of parts and whole in boxes) rather than an arithmetic procedure; no executable predicate of arity 2 can be defined that produces the documented wrong answer via arithmetic evaluation.",
+      "result": "abstained"
+    }
+  ]
+}

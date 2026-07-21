@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38836",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38836_convert_toward_larger_denominator_as_common_unit",
+    "target_operation": "unlike_denominator_conversion",
+    "citation": "Susan Joan Courey & Endre Balogh & Jody Rebecca Siker & Jae Paik (2012)",
+    "error_action": "convert_toward_larger_denominator_as_common_unit",
+    "error_description": "to add unlike fractions, change denominators to a larger number",
+    "provenance_comments": "=== row 38836: convert smaller to larger denominator incorrectly ===\nToo vague — describes incorrect conversion attempts without specific numeric example.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is too vague to specify a runnable rule and defensible probe; it describes a general incorrect strategy (“change denominators to a larger number”) without defining how the conversion is performed (e.g., which larger number, how numerators are adjusted), and lacks a concrete worked example or clear mapping to a deterministic, generalizable procedure. Without a precise, implementable transformation rule, we cannot construct a Prolog predicate that reliably reproduces the documented error across instances.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is too vague to specify a runnable rule and defensible probe; it describes a general incorrect strategy (“change denominators to a larger number”) without defining how the conversion is performed (e.g., which larger number, how numerators are adjusted), and lacks a concrete worked example or clear mapping to a deterministic, generalizable procedure. Without a precise, implementable transformation rule, we cannot construct a Prolog predicate that reliably reproduces the documented error across instances.",
+      "result": "abstained"
+    }
+  ]
+}

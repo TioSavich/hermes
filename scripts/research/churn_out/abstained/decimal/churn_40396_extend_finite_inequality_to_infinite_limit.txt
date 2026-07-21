@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40396",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40396_extend_finite_inequality_to_infinite_limit",
+    "target_operation": "repeating_decimal_equality",
+    "citation": "Ali Barahmand (2017)",
+    "error_action": "extend_finite_inequality_to_infinite_limit",
+    "error_description": "carry the strict inequality of every finite truncation over to the infinite expansion",
+    "provenance_comments": "=== row 40396: finite-to-infinite extrapolation: 0.999... < 1 ===\nToo vague — limit reasoning, not a mechanical rule.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about extending a finite inequality to an infinite limit (e.g., concluding 0.999... < 1 because every finite truncation 0.9, 0.99, 0.999, ... is less than 1). This is not a syntactic or algorithmic rule that can be encoded as a deterministic 2-place predicate producing a specific wrong value from an input; it is a reasoning fallacy without a unique mechanical output. No concrete Input → WrongOutput mapping is determined by the documentation, and the error does not correspond to a reproducible computational procedure over a well-defined domain input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about extending a finite inequality to an infinite limit (e.g., concluding 0.999... < 1 because every finite truncation 0.9, 0.99, 0.999, ... is less than 1). This is not a syntactic or algorithmic rule that can be encoded as a deterministic 2-place predicate producing a specific wrong value from an input; it is a reasoning fallacy without a unique mechanical output. No concrete Input → WrongOutput mapping is determined by the documentation, and the error does not correspond to a reproducible computational procedure over a well-defined domain input.",
+      "result": "abstained"
+    }
+  ]
+}

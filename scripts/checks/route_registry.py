@@ -53,7 +53,7 @@ GET /api/capabilities public worker
 GET /api/base public worker
 POST /api/base public worker
 POST /api/render public worker
-POST /api/expressive_power public worker
+POST /api/inferential_strength public worker
 POST /api/strategies public worker
 POST /api/strategy_trace public worker
 POST /api/deontic_scorecard public worker
@@ -101,6 +101,8 @@ POST /api/draft verified workflow
 POST /api/grade verified workflow
 POST /api/score verified workflow
 POST /api/metrics verified workflow
+POST /api/work_read verified workflow
+POST /api/work_refine verified workflow
 """
 EXPECTED = tuple(tuple(line.split()) for line in EXPECTED_TEXT.splitlines() if line.strip())
 

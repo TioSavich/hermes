@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40494",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40494_frame_all_division_as_partition_sharing",
+    "target_operation": "division_problem_structure",
+    "citation": "Tim Rowland, Anne Thwaites and Libby Jared (2015)",
+    "error_action": "frame_all_division_as_partition_sharing",
+    "error_description": "interpret a division word problem as breaking a quantity into a number of equal groups",
+    "provenance_comments": "=== row 40494: teacher directs to wrong division model ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual framing of division (partition sharing) rather than a specific syntactic or procedural error that can be encoded as a runnable Prolog rule producing a wrong result from a given input. Without a concrete, reproducible computational mistake (e.g., misordering operands, misapplying a formula), there is no deterministic rule `Rule(Input, Got)` that yields a fixed incorrect output for a given input, violating the schema requirement for a testable `Rule`.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual framing of division (partition sharing) rather than a specific syntactic or procedural error that can be encoded as a runnable Prolog rule producing a wrong result from a given input. Without a concrete, reproducible computational mistake (e.g., misordering operands, misapplying a formula), there is no deterministic rule `Rule(Input, Got)` that yields a fixed incorrect output for a given input, violating the schema requirement for a testable `Rule`.",
+      "result": "abstained"
+    }
+  ]
+}

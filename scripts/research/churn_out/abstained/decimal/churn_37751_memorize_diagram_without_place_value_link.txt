@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37751",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37751_memorize_diagram_without_place_value_link",
+    "target_operation": "area_model_decimal_multiplication",
+    "citation": "Margaret Eisenhart, Hilda Borko, Robert Underhill, Catherine Brown, Doug Jones and Patricia Agard (1993)",
+    "error_action": "memorize_diagram_without_place_value_link",
+    "error_description": "reproduce the shaded-rectangle picture without connecting it to how place values combine",
+    "provenance_comments": "=== row 37751: PST procedural area model without conceptual link ===\nToo vague — inability to complete explanation, not a wrong computation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error is described as an inability to complete an explanation (too vague) rather than a specific computational procedure yielding a wrong result; no runnable rule can be constructed that produces a fixed incorrect numeric output from a given input, as the misconception is conceptual/explanatory, not procedural.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is described as an inability to complete an explanation (too vague) rather than a specific computational procedure yielding a wrong result; no runnable rule can be constructed that produces a fixed incorrect numeric output from a given input, as the misconception is conceptual/explanatory, not procedural.",
+      "result": "abstained"
+    }
+  ]
+}

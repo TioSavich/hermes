@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37822",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37822_partition_by_iterate_and_adjust",
+    "target_operation": "partitioning",
+    "citation": "Martin A. Simon, Ron Tzur, Karen Heinz, Margaret Kinzel (2004)",
+    "error_action": "partition_by_iterate_and_adjust",
+    "error_description": "find a part by guessing a piece, iterating it, and resizing until it fits the whole",
+    "provenance_comments": "=== row 37822: partition by iteration + adjustment ===\nToo vague — describes search behavior rather than a concrete wrong numeric answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a general heuristic (guess-and-adjust search behavior) without specifying a concrete arithmetic operation or a determinate wrong answer that can be captured by a runnable Prolog rule of arity 2. The schema requires a specific `Rule` predicate that, when called with `Input`, produces the documented *wrong answer* (Got), which must be distinct from `ExpectedCorrect`. Since the misconception is defined only as a procedural strategy without a fixed numerical outcome, no such rule can be constructed that meets the contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a general heuristic (guess-and-adjust search behavior) without specifying a concrete arithmetic operation or a determinate wrong answer that can be captured by a runnable Prolog rule of arity 2. The schema requires a specific `Rule` predicate that, when called with `Input`, produces the documented *wrong answer* (Got), which must be distinct from `ExpectedCorrect`. Since the misconception is defined only as a procedural strategy without a fixed numerical outcome, no such rule can be constructed that meets the contract.",
+      "result": "abstained"
+    }
+  ]
+}

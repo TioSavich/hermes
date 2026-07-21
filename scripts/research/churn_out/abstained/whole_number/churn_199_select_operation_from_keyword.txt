@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "199",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_199_select_operation_from_keyword",
+    "target_operation": "keyword_operation_selection",
+    "citation": "Hegarty, Mayer, Green (1992)",
+    "error_action": "select_operation_from_keyword",
+    "error_description": "pick the operation cued by a surface word such as 'more' meaning add",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error description \"pick the operation cued by a surface word such as 'more' meaning add\" describes a general heuristic, not a specific, executable rule that produces a deterministic wrong result for a given input. Without a concrete, generalizable algorithm (e.g., a mapping from keywords to operations that fails in a reproducible way), we cannot construct a runnable `Rule(Input, Got)` predicate that consistently yields the documented misconception across instances. The exemplars require deterministic, mathematical missteps (e.g., `Got is A * B` for subtraction), but this description is semantic and contextual—not algorithmic. Hence, no runnable rule can be drafted without invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(select_operation_from_keyword(A-B, Got) :-\n    Got is A + B).\n\ntest_harness:arith_misconception(db_row(199), whole_number, select_operation_from_keyword,\n    churn_candidate:select_operation_from_keyword,\n    7-3,\n    4).",
+      "result": "registration source/domain/description does not match the entry"
+    },
+    {
+      "response": "ABSTAIN: The documented error description \"pick the operation cued by a surface word such as 'more' meaning add\" describes a general heuristic, not a specific, executable rule that produces a deterministic wrong result for a given input. Without a concrete, generalizable algorithm (e.g., a mapping from keywords to operations that fails in a reproducible way), we cannot construct a runnable `Rule(Input, Got)` predicate that consistently yields the documented misconception across instances. The exemplars require deterministic, mathematical missteps (e.g., `Got is A * B` for subtraction), but this description is semantic and contextual—not algorithmic. Hence, no runnable rule can be drafted without invention.",
+      "result": "abstained"
+    }
+  ]
+}

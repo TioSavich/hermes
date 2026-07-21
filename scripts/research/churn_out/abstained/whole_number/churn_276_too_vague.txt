@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "276",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_276_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error is \"too_vague\"—the source provides no concrete procedure, operation, or example to derive a specific incorrect computation rule. Without a defined error action or worked example, the rule predicate cannot be instantiated in a way that satisfies the schema contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error is \"too_vague\"—the source provides no concrete procedure, operation, or example to derive a specific incorrect computation rule. Without a defined error action or worked example, the rule predicate cannot be instantiated in a way that satisfies the schema contract.",
+      "result": "abstained"
+    }
+  ]
+}

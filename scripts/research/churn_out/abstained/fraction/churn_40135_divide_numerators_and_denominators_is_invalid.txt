@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40135",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40135_divide_numerators_and_denominators_is_invalid",
+    "target_operation": "fraction_division_algorithm",
+    "citation": "Ji-Won Son, Sandra Crespo (2009)",
+    "error_action": "divide_numerators_and_denominators_is_invalid",
+    "error_description": "judge that dividing numerators and dividing denominators separately is not a legitimate fraction-division method",
+    "provenance_comments": "=== row 40135: alt algorithm rejected ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a *rejection* of a valid mathematical procedure (divide numerators and denominators separately) as *invalid*, but the task requires encoding a *documented student error* — i.e., a *mistaken application* of a procedure that yields a wrong result. Since the source describes students *rejecting* an otherwise correct technique (which is not an arithmetic error but a conceptual misunderstanding about validity), it does not specify a runnable *incorrect computation rule* that produces a wrong numerical output. No concrete `Rule(Input, Got)` can be constructed that yields a documented wrong answer because no incorrect *output* is documented — only a *judgment* of invalidity.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a *rejection* of a valid mathematical procedure (divide numerators and denominators separately) as *invalid*, but the task requires encoding a *documented student error* — i.e., a *mistaken application* of a procedure that yields a wrong result. Since the source describes students *rejecting* an otherwise correct technique (which is not an arithmetic error but a conceptual misunderstanding about validity), it does not specify a runnable *incorrect computation rule* that produces a wrong numerical output. No concrete `Rule(Input, Got)` can be constructed that yields a documented wrong answer because no incorrect *output* is documented — only a *judgment* of invalidity.",
+      "result": "abstained"
+    }
+  ]
+}

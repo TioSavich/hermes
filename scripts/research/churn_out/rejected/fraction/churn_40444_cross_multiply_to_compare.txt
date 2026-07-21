@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40444",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40444_cross_multiply_to_compare",
+    "target_operation": "fraction_comparison",
+    "citation": "Rut Almeida & Alicia Bruno & Josefa Perdomo-Diaz (2016)",
+    "error_action": "cross_multiply_to_compare",
+    "error_description": "compare two fractions by cross-multiplying numerators and denominators and seeing which product is greater",
+    "provenance_comments": "=== row 40444: mechanical cross-multiplication ===\nNo wrong numeric answer given — just an algorithmic preference.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "expected exactly one arith_misconception/6 registration; found 0",
+  "attempts": [
+    {
+      "response": "churn_candidate:(cross_multiply_to_compare(frac(N1,D1)-frac(N2,D2), gt) :-\n    N1 * D2 > N2 * D1).\n\ntest_harness:arith_misconception(db_row(40444), fraction, churn_40444_cross_multiply_to_compare,\n    churn_candidate:cross_multiply_to_compare,\n    frac(1,2)-frac(2,5),\n    lt).",
+      "result": "predicate must be named churn_40444_cross_multiply_to_compare"
+    },
+    {
+      "response": "churn_candidate:(cross_multiply_to_compare(frac(N1,D1), frac(N2,D2), greater) :- N1 * D2 > N2 * D1).\nchurn_candidate:(cross_multiply_to_compare(frac(N1,D1), frac(N2,D2), less) :- N1 * D2 < N2 * D1).\nchurn_candidate:(cross_multiply_to_compare(frac(N1,D1), frac(N2,D2), equal) :- N1 * D2 =:= N2 * D1).\n\ntest_harness:arith_misception(db_row(40444), fraction, churn_40444_cross_multiply_to_compare,\n    churn_candidate:cross_multiply_to_compare,\n    frac(2,3),\n    greater).",
+      "result": "expected exactly one arith_misconception/6 registration; found 0"
+    }
+  ]
+}

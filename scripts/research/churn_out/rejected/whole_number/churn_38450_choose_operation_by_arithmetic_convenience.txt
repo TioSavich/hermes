@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38450",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38450_choose_operation_by_arithmetic_convenience",
+    "target_operation": "multiplicative_reasoning",
+    "citation": "Steven Boyce, Anderson Norton (2016)",
+    "error_action": "choose_operation_by_arithmetic_convenience",
+    "error_description": "pick multiplication because adding would give too small a result rather than because the units relate multiplicatively",
+    "provenance_comments": "=== row 38450: additive justification for multiplication ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "output 60 does not match explicit documented claim(s) ['rather']",
+  "attempts": [
+    {
+      "response": "churn_candidate:(chooses_multiplication_by_arithmetic_convenience(A-B, Got) :-\n    Got is A * B).\n\ntest_harness:arith_misconception(db_row(38450), whole_number, churn_38450_choose_operation_by_arithmetic_convenience,\n    churn_candidate:chooses_multiplication_by_arithmetic_convenience,\n    4-5,\n    9).",
+      "result": "predicate must be named churn_38450_choose_operation_by_arithmetic_convenience"
+    },
+    {
+      "response": "churn_candidate:(churn_38450_choose_operation_by_arithmetic_convenience(A-B, Got) :-\n    Got is A * B).\n\ntest_harness:arith_misconception(db_row(38450), whole_number, churn_38450_choose_operation_by_arithmetic_convenience,\n    churn_candidate:churn_38450_choose_operation_by_arithmetic_convenience,\n    12-5,\n    17).",
+      "result": "output 60 does not match explicit documented claim(s) ['rather']"
+    }
+  ]
+}

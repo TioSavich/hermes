@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40613",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40613_infer_inequality_from_differing_division_outputs",
+    "target_operation": "repeating_decimal_equivalence",
+    "citation": "Barbara S. Edwards, Ed Dubinsky, Michael A. McDonald (2005)",
+    "error_action": "infer_inequality_from_differing_division_outputs",
+    "error_description": "if dividing produces different-looking decimals, treat the values as unequal",
+    "provenance_comments": "=== row 40613: .999... = 1 rejection ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (inferring inequality from differing decimal representations, e.g., rejecting 0.999... = 1), but no runnable procedural rule—only a misinterpretation. There is no deterministic algorithmic operation a student *performs* to compute a wrong result; rather, it is a failure to recognize equivalence under real-number semantics. Since SWI-Prolog cannot execute a \"misconception rule\" that lacks a concrete, deterministic computation (and the gate requires `Rule(Input, Got)` to produce the documented wrong answer), no runnable predicate can be constructed without invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40613_infer_inequality_from_differing_division_outputs(division_pair(A/B, C/D), Got) :-\n    Got = (A/B \\= C/D)).\n\ntest_harness:arith_misconception(db_row(40613), decimal, churn_40613_infer_inequality_from_differing_division_outputs,\n    churn_candidate:churn_40613_infer_inequality_from_differing_division_outputs,\n    division_pair(1/3, 0.3333333333333333),\n    true).",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (inferring inequality from differing decimal representations, e.g., rejecting 0.999... = 1), but no runnable procedural rule—only a misinterpretation. There is no deterministic algorithmic operation a student *performs* to compute a wrong result; rather, it is a failure to recognize equivalence under real-number semantics. Since SWI-Prolog cannot execute a \"misconception rule\" that lacks a concrete, deterministic computation (and the gate requires `Rule(Input, Got)` to produce the documented wrong answer), no runnable predicate can be constructed without invention.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40623",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40623_recount_to_answer_how_many",
+    "target_operation": "cardinality_principle",
+    "citation": "Arthur J. Baroody, Michael Cibulskis, Meng-lung Lai, Xia Li (2004)",
+    "error_action": "recount_to_answer_how_many",
+    "error_description": "to answer 'how many?', perform the counting act again rather than reporting the last count word as the total",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "registration source/domain/description does not match the entry",
+  "attempts": [
+    {
+      "response": "churn_candidate:(recount_to_answer_how_many(N, Got) :-\n    Got is N + 1).\n\ntest_harness:arith_misconception(db_row(40623), whole_number, recount_to_answer_how_many,\n    churn_candidate:churn_40623_recount_to_answer_how_many,\n    5,\n    5).",
+      "result": "registration source/domain/description does not match the entry"
+    },
+    {
+      "response": "churn_candidate:(recount_to_answer_how_many(List, Got) :-\n    length(List, _),\n    Got is 0).\n\ntest_harness:arith_misconception(db_row(40623), whole_number, recount_to_answer_how_many,\n    churn_candidate:churn_40623_recount_to_answer_how_many,\n    [a,b,c],\n    3).",
+      "result": "registration source/domain/description does not match the entry"
+    }
+  ]
+}

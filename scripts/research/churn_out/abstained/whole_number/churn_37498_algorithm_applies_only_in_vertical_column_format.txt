@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37498",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37498_algorithm_applies_only_in_vertical_column_format",
+    "target_operation": "computation_format_dependency",
+    "citation": "Paul Cobb, Terry Wood, Erna Yackel, John Nicholls, Grayson Wheatley, Beatriz Trigatti and Marcella Perlwitz (1991)",
+    "error_action": "algorithm_applies_only_in_vertical_column_format",
+    "error_description": "regrouping procedures belong to vertical layouts and not to horizontal sentences",
+    "provenance_comments": "=== row 37498: vertical vs horizontal format dependency ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception about the perceived applicability of regrouping procedures to vertical versus horizontal formats, but it does not specify a runnable algorithmic rule that produces a predictable wrong output for a given input. Without a concrete procedural transformation that maps an input to a documented incorrect result, no executable Rule predicate can be constructed per the schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception about the perceived applicability of regrouping procedures to vertical versus horizontal formats, but it does not specify a runnable algorithmic rule that produces a predictable wrong output for a given input. Without a concrete procedural transformation that maps an input to a documented incorrect result, no executable Rule predicate can be constructed per the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40319",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40319_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "=== row 40319: 18/19 > 15/16 because N+D larger ===\nStudent's comparison answer matches the correct comparison (18/19 > 15/16),\nso this rule has no distinct wrong output on this example.",
+    "provenance_comments": "=== row 40319: 18/19 > 15/16 because N+D larger ===\nStudent's comparison answer matches the correct comparison (18/19 > 15/16),\nso this rule has no distinct wrong output on this example.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a reasoning strategy (\"N+D larger\") that, on the given example (18/19 > 15/16), produces the correct comparison result. Since the rule does not yield a *distinct wrong output* for any input where the correct answer is known and differs, it cannot satisfy the schema requirement that `ExpectedCorrect` must not unify with `Got`. No runnable rule can be constructed that produces a *systematically incorrect* outcome while matching the documented procedure.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a reasoning strategy (\"N+D larger\") that, on the given example (18/19 > 15/16), produces the correct comparison result. Since the rule does not yield a *distinct wrong output* for any input where the correct answer is known and differs, it cannot satisfy the schema requirement that `ExpectedCorrect` must not unify with `Got`. No runnable rule can be constructed that produces a *systematically incorrect* outcome while matching the documented procedure.",
+      "result": "abstained"
+    }
+  ]
+}

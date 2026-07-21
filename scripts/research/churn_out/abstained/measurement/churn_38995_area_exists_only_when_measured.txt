@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38995",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38995_area_exists_only_when_measured",
+    "target_operation": "area_existence_vs_measurement",
+    "citation": "ANNETTE BATURO and ROD NASON (1996)",
+    "error_action": "area_exists_only_when_measured",
+    "error_description": "a figure has no area until it is measured or unless it is a polygon with countable sides",
+    "provenance_comments": "=== row 38995: area only exists when physically measured ===\nToo vague: ontological claim about area, not a numeric bug.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error is an ontological claim (\"area only exists when physically measured\") rather than a concrete computational procedure that can be expressed as a runnable Prolog rule producing a specific wrong numeric result. No deterministic, generalizable arithmetic or geometric computation is specified—only a conceptual misconception about existence. This fails the requirement that `Rule(Input, Got)` must produce the documented wrong answer via a runnable predicate.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is an ontological claim (\"area only exists when physically measured\") rather than a concrete computational procedure that can be expressed as a runnable Prolog rule producing a specific wrong numeric result. No deterministic, generalizable arithmetic or geometric computation is specified—only a conceptual misconception about existence. This fails the requirement that `Rule(Input, Got)` must produce the documented wrong answer via a runnable predicate.",
+      "result": "abstained"
+    }
+  ]
+}

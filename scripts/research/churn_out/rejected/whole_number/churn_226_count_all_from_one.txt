@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "226",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_226_count_all_from_one",
+    "target_operation": "counting_strategy_regression",
+    "citation": "Baroody, Cibulskis, Lai & Li (2004)",
+    "error_action": "count_all_from_one",
+    "error_description": "to find a sum, enumerate every unit of both addends starting from one",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 1",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_226_count_all_from_one(A+B, Got) :-\n    length(OnesA, A), length(OnesB, B),\n    append(OnesA, OnesB, AllOnes),\n    length(AllOnes, Got)).\n\ntest_harness:arith_misconception(db_row(226), whole_number, churn_226_count_all_from_one,\n    churn_candidate:churn_226_count_all_from_one,\n    3+4,\n    7).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "churn_candidate:(churn_226_count_all_from_one(A-B, Got) :-\n    Got is A + B,\n    false).\n\ntest_harness:arith_misconception(db_row(226), whole_number, churn_226_count_all_from_one,\n    churn_candidate:churn_226_count_all_from_one,\n    3-4,\n    7).",
+      "result": "SWI-Prolog gate exited 1"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "194",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_194_read_digits_as_concatenated_symbols",
+    "target_operation": "place_value_understanding",
+    "citation": "Thanheiser (2009)",
+    "error_action": "read_digits_as_concatenated_symbols",
+    "error_description": "treat the digits of a numeral as separate symbols rather than grouped reference units",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 23",
+  "attempts": [
+    {
+      "response": "churn_candidate:(reads_digits_as_concatenated_symbols(A, Got) :-\n    atom_chars(A, Chars),\n    maplist(atom_number, Chars, Digits),\n    sum_list(Digits, Got)).\n\ntest_harness:arith_misconception(db_row(194), whole_number, churn_194_read_digits_as_concatenated_symbols,\n    churn_candidate:reads_digits_as_concatenated_symbols,\n    123,\n    6).",
+      "result": "predicate must be named churn_194_read_digits_as_concatenated_symbols"
+    },
+    {
+      "response": "churn_candidate:(churn_194_read_digits_as_concatenated_symbols(A, Got) :-\n    number_codes(A, Chars),\n    maplist(char_code, Digits, Chars),\n    maplist(atom_number, DigitAtoms, Digits),\n    atomic_list_concat(DigitAtoms, '', Got)).\n\ntest_harness:arith_misconception(db_row(194), whole_number, churn_194_read_digits_as_concatenated_symbols,\n    churn_candidate:churn_194_read_digits_as_concatenated_symbols,\n    1023,\n    1023).",
+      "result": "SWI-Prolog gate exited 23"
+    }
+  ]
+}

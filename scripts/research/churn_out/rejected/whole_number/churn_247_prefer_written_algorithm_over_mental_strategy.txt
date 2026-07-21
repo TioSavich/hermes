@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "247",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_247_prefer_written_algorithm_over_mental_strategy",
+    "target_operation": "two_digit_addition_strategy",
+    "citation": "McIntosh, Alistair & Reys, Barbara J. & Reys, Robert E. & Bana, Jack & Farrell, Barry (1995)",
+    "error_action": "prefer_written_algorithm_over_mental_strategy",
+    "error_description": "abandon a secure mental method for the newly taught written column procedure",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "external module qualification is not allowed: misapplication:",
+  "attempts": [
+    {
+      "response": "churn_candidate:(prefers_column_addition_over_mental_renaming(A+B, Got) :-\n    % Simulates abandoning mental renaming (e.g., 38+47 = 30+40+8+7) in favor of\n    % incorrectly simulating column addition with left-to-right digit-wise addition\n    % without carry handling—e.g., treating 38+47 as (3+4)(8+7) = 715\n    Got = (A1*10 + A2) + (B1*10 + B2),\n    A1 is A // 10, A2 is A mod 10,\n    B1 is B // 10, B2 is B mod 10,\n    Tens is A1 + B1,\n    Ones is A2 + B2,\n    Got is Tens*100 + Ones).\n\ntest_harness:arith_misconception(db_row(247), whole_number, churn_247_prefer_written_algorithm_over_mental_strategy,\n    churn_candidate:prefers_column_addition_over_mental_renaming,\n    38+47,\n    85).",
+      "result": "predicate must be named churn_247_prefer_written_algorithm_over_mental_strategy"
+    },
+    {
+      "response": "churn_candidate:(churn_247_prefer_written_algorithm_over_mental_strategy(A+B, Got) :-\n    % Simulates student switching from mental strategy (e.g., compensation) to written algorithm,\n    % resulting in misapplication: for 38+45, mental strategy would do 40+45−2 = 83,\n    % but student uses column addition incorrectly by adding tens and ones separately without carry,\n    % yielding (3+4)+(8+5) = 7+13 = 813 — a documented error pattern in early column addition.\n    Got is (A // 10 + B // 10) * 100 + (A mod 10 + B mod 10)).\n\ntest_harness:arith_misconception(db_row(247), whole_number, churn_247_prefer_written_algorithm_over_mental_strategy,\n    churn_candidate:churn_247_prefer_written_algorithm_over_mental_strategy,\n    38+45,\n    83).",
+      "result": "external module qualification is not allowed: misapplication:"
+    }
+  ]
+}

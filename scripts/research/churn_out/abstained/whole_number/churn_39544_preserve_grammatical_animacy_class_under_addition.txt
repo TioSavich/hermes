@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39544",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39544_preserve_grammatical_animacy_class_under_addition",
+    "target_operation": "addition_word_problems_translation",
+    "citation": "Lisa Lunney Borden (2013)",
+    "error_action": "preserve_grammatical_animacy_class_under_addition",
+    "error_description": "expect a sum to carry a single animate-or-inanimate counting word inherited from the addends",
+    "provenance_comments": "=== row 39544: Mi'kmaq animacy in addition word problems ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: no runnable rule or defensible probe can be constructed from the documented error, as it describes a linguistic/semantic misconception about grammatical animacy class in word-problem translation, not a calculational procedure that can be encoded as a binary predicate producing a specific wrong numeric output.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no runnable rule or defensible probe can be constructed from the documented error, as it describes a linguistic/semantic misconception about grammatical animacy class in word-problem translation, not a calculational procedure that can be encoded as a binary predicate producing a specific wrong numeric output.",
+      "result": "abstained"
+    }
+  ]
+}

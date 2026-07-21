@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38560",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38560_non_unit_fraction_requires_prior_unit_fraction_step",
+    "target_operation": "non_unit_fraction_of_whole",
+    "citation": "Martin A. Simon, Nicora Placa, Melike Kara, Arnon Avitzur (2018)",
+    "error_action": "non_unit_fraction_requires_prior_unit_fraction_step",
+    "error_description": "you can only find a/b of a number if you were just shown how to find 1/b of it first",
+    "provenance_comments": "=== row 38560: non-unit requires unit-fraction staging ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception about prerequisite reasoning (that students believe non-unit fractions require prior unit-fraction computation), but it does not specify a concrete syntactic procedure or algorithmic rule that produces a fixed incorrect output for a given input. Since the schema requires a runnable predicate `Rule(Input, Got)` that *must* produce the documented wrong answer, and no such deterministic transformation is provided (only a metacognitive constraint), the row fails the execution gate.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception about prerequisite reasoning (that students believe non-unit fractions require prior unit-fraction computation), but it does not specify a concrete syntactic procedure or algorithmic rule that produces a fixed incorrect output for a given input. Since the schema requires a runnable predicate `Rule(Input, Got)` that *must* produce the documented wrong answer, and no such deterministic transformation is provided (only a metacognitive constraint), the row fails the execution gate.",
+      "result": "abstained"
+    }
+  ]
+}

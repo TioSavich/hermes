@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37941",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37941_multiplication_always_enlarges",
+    "target_operation": "magnitude_of_products",
+    "citation": "Stefan Hoch, Frank Reinhold, Bernhard Werner, Jurgen Richter-Gebert, Kristina Reiss (2018)",
+    "error_action": "multiplication_always_enlarges",
+    "error_description": "multiplying two numbers always yields a product larger than the factors",
+    "provenance_comments": "=== row 37941: multiplication always enlarges ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about magnitude, not a specific syntactic or procedural rule that can be encoded as a binary predicate producing a deterministic wrong result for a given input. Multiplication always enlarges is not a mechanical error that yields a unique wrong output for a given pair of fractions—it depends on the values (e.g., multiplying by a proper fraction reduces magnitude), so no single rule `Rule(Input, Got)` can consistently produce the documented misjudgment across instances without context-dependent reasoning. The schema requires a runnable rule that produces the *exact documented wrong answer* for a concrete input; this misconception does not admit such a rule without introducing external assumptions or non-determinism, violating the schema contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about magnitude, not a specific syntactic or procedural rule that can be encoded as a binary predicate producing a deterministic wrong result for a given input. Multiplication always enlarges is not a mechanical error that yields a unique wrong output for a given pair of fractions—it depends on the values (e.g., multiplying by a proper fraction reduces magnitude), so no single rule `Rule(Input, Got)` can consistently produce the documented misjudgment across instances without context-dependent reasoning. The schema requires a runnable rule that produces the *exact documented wrong answer* for a concrete input; this misconception does not admit such a rule without introducing external assumptions or non-determinism, violating the schema contract.",
+      "result": "abstained"
+    }
+  ]
+}

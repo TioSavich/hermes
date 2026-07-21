@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40114",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40114_pluralize_referent_whole_when_amount_exceeds_one",
+    "target_operation": "improper_fraction_whole_referent",
+    "citation": "Jennifer M. Tobias (2013)",
+    "error_action": "pluralize_referent_whole_when_amount_exceeds_one",
+    "error_description": "insist that the named whole must be plural or greater than one whenever the fractional amount described is more than a single unit",
+    "provenance_comments": "=== row 40114: language about whole for improper fractions ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a linguistic/semantic misconception about pluralizing the referent whole (e.g., saying “three wholes” instead of “a whole” when the fraction exceeds one), but no runnable arithmetic rule or predicate of arity 2 can be constructed that produces the documented wrong *numerical* answer. The error is not a computational procedure over fractions that yields a specific incorrect value; it is a pragmatic or discourse-level misstep. Since the schema requires a rule `Rule(Input, Got)` where `Got` is the *incorrect numerical output* and `ExpectedCorrect` is the *correct numerical output*, and no such numerical transformation is documented, the row cannot be encoded as a testable arithmetic misconception per the schema contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a linguistic/semantic misconception about pluralizing the referent whole (e.g., saying “three wholes” instead of “a whole” when the fraction exceeds one), but no runnable arithmetic rule or predicate of arity 2 can be constructed that produces the documented wrong *numerical* answer. The error is not a computational procedure over fractions that yields a specific incorrect value; it is a pragmatic or discourse-level misstep. Since the schema requires a rule `Rule(Input, Got)` where `Got` is the *incorrect numerical output* and `ExpectedCorrect` is the *correct numerical output*, and no such numerical transformation is documented, the row cannot be encoded as a testable arithmetic misconception per the schema contract.",
+      "result": "abstained"
+    }
+  ]
+}

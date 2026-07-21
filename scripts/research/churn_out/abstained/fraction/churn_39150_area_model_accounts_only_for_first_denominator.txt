@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39150",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39150_area_model_accounts_only_for_first_denominator",
+    "target_operation": "fraction_multiplication_area_model",
+    "citation": "Matthias Glade & Susanne Prediger (2017)",
+    "error_action": "area_model_accounts_only_for_first_denominator",
+    "error_description": "build a rectangle divisible by the first denominator without provisioning for the second",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a geometric reasoning mistake in area models for fraction multiplication (ignoring the second denominator), but no runnable arithmetic rule of arity 2 can be constructed that produces the documented wrong result without inventing mathematical semantics not specified in the source. The error is conceptual (misapplied visualization), not a syntactic arithmetic transformation, and cannot be expressed as a deterministic Prolog predicate `Rule(Input, Got)` that reliably yields the erroneous output for arbitrary inputs per the schema requirements.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39150_area_model_accounts_only_for_first_denominator(frac(N1,D1)*frac(N2,D2), Area)) :-\n    Area is D1 * N1.\n\ntest_harness:arith_misconception(db_row(39150), fraction, churn_39150_area_model_accounts_only_for_first_denominator,\n    churn_candidate:churn_39150_area_model_accounts_only_for_first_denominator,\n    frac(1,2)*frac(1,3),\n    1/6).",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a geometric reasoning mistake in area models for fraction multiplication (ignoring the second denominator), but no runnable arithmetic rule of arity 2 can be constructed that produces the documented wrong result without inventing mathematical semantics not specified in the source. The error is conceptual (misapplied visualization), not a syntactic arithmetic transformation, and cannot be expressed as a deterministic Prolog predicate `Rule(Input, Got)` that reliably yields the erroneous output for arbitrary inputs per the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40278",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40278_bring_decimal_point_straight_down_into_remainder",
+    "target_operation": "decimal_division_remainder",
+    "citation": "Jinfa Cai, Meixia Ding (2017)",
+    "error_action": "bring_decimal_point_straight_down_into_remainder",
+    "error_description": "place the decimal point in the remainder by copying its column position straight down, as you do for the quotient",
+    "provenance_comments": "=== row 40278: decimal point moved down into remainder ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural mistake in decimal division (copying the decimal point position into the remainder), but no runnable, general, executable Prolog rule can be constructed that reliably produces that wrong outcome without side effects or non-logical constructs. The error is context-sensitive (depends on alignment and digit-by-digit division steps), and cannot be captured by a pure arithmetic predicate of arity 2 that maps input to the *exact* erroneous remainder as described.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural mistake in decimal division (copying the decimal point position into the remainder), but no runnable, general, executable Prolog rule can be constructed that reliably produces that wrong outcome without side effects or non-logical constructs. The error is context-sensitive (depends on alignment and digit-by-digit division steps), and cannot be captured by a pure arithmetic predicate of arity 2 that maps input to the *exact* erroneous remainder as described.",
+      "result": "abstained"
+    }
+  ]
+}

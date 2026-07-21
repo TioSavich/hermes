@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38680",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38680_reference_part_to_original_whole_not_subgroup",
+    "target_operation": "referent_whole_misattribution",
+    "citation": "Corey Webel, William W. DeLeeuw (2016)",
+    "error_action": "reference_part_to_original_whole_not_subgroup",
+    "error_description": "express a part relative to the entire whole rather than to the intended sub-group",
+    "provenance_comments": "=== row 38680: teacher misinterprets diagram referent ===\nAdult-pedagogical shift; not a student computational rule.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is an adult-pedagogical misattribution (teacher misinterprets diagram referent), not a student computational procedure. No runnable student rule can be extracted or generalized, and no probe can be constructed per schema requirements that reflects a student’s erroneous computation or reasoning.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is an adult-pedagogical misattribution (teacher misinterprets diagram referent), not a student computational procedure. No runnable student rule can be extracted or generalized, and no probe can be constructed per schema requirements that reflects a student’s erroneous computation or reasoning.",
+      "result": "abstained"
+    }
+  ]
+}

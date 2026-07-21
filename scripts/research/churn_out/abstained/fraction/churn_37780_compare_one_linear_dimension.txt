@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37780",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37780_compare_one_linear_dimension",
+    "target_operation": "area_comparison",
+    "citation": "Barbara E. Armstrong and Carol Novillis Larson (1995)",
+    "error_action": "compare_one_linear_dimension",
+    "error_description": "the wider shaded region is the larger one",
+    "provenance_comments": "=== row 37780: perceptual width comparison ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a perceptual strategy (comparing only width) rather than a specific syntactic arithmetic rule that can be encoded as a binary predicate producing a wrong result from a well-defined input. There is no clear algorithmic rule mapping an input expression to a specific erroneous output that is both generalizable and executable in SWI-Prolog without ad hoc assumptions.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a perceptual strategy (comparing only width) rather than a specific syntactic arithmetic rule that can be encoded as a binary predicate producing a wrong result from a well-defined input. There is no clear algorithmic rule mapping an input expression to a specific erroneous output that is both generalizable and executable in SWI-Prolog without ad hoc assumptions.",
+      "result": "abstained"
+    }
+  ]
+}

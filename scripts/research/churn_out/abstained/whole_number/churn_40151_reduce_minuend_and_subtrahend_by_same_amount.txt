@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40151",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40151_reduce_minuend_and_subtrahend_by_same_amount",
+    "target_operation": "subtraction_constant_difference",
+    "citation": "MARIE TICHA and ALENA HOSPESOVA (2006)",
+    "error_action": "reduce_minuend_and_subtrahend_by_same_amount",
+    "error_description": "shift both numbers down by the same amount to make the subtraction easier",
+    "provenance_comments": "=== row 40151: constant-difference strategy (non-error) ===\nA productive non-standard strategy, not an error.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented \"error\" describes a valid mathematical strategy (constant-difference) rather than a misconception; it is explicitly labeled a non-error in the provence comments. Since the task requires encoding a *documented student error* and the source explicitly states this is not an error, admission violates the core constraint.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented \"error\" describes a valid mathematical strategy (constant-difference) rather than a misconception; it is explicitly labeled a non-error in the provence comments. Since the task requires encoding a *documented student error* and the source explicitly states this is not an error, admission violates the core constraint.",
+      "result": "abstained"
+    }
+  ]
+}

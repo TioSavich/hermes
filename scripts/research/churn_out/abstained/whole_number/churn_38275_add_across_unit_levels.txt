@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38275",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38275_add_across_unit_levels",
+    "target_operation": "unit_conflation_three_levels",
+    "citation": "Anderson Norton, Steven Boyce (2015)",
+    "error_action": "add_across_unit_levels",
+    "error_description": "a count of one kind of unit can be added directly to a count of another kind of unit",
+    "provenance_comments": "=== row 38275: cups/chips unit conflation ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual unit conflation (adding different kinds of units), but no runnable arithmetic rule is specified—only a semantic description. A Prolog rule must define a deterministic, executable transformation that produces the documented wrong result; here, no concrete syntactic procedure (e.g., “ignore units and add numerals”) is provided, and “add_across_unit_levels” is not formalized as a mechanical operation. Without a clear, implementable algorithm for generating the incorrect output, no valid rule can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual unit conflation (adding different kinds of units), but no runnable arithmetic rule is specified—only a semantic description. A Prolog rule must define a deterministic, executable transformation that produces the documented wrong result; here, no concrete syntactic procedure (e.g., “ignore units and add numerals”) is provided, and “add_across_unit_levels” is not formalized as a mechanical operation. Without a clear, implementable algorithm for generating the incorrect output, no valid rule can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

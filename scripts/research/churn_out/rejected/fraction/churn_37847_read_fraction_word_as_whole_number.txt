@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37847",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37847_read_fraction_word_as_whole_number",
+    "target_operation": "nonunit_fraction_of_discrete_whole",
+    "citation": "Adalira Saenz-Ludlow (1994)",
+    "error_action": "read_fraction_word_as_whole_number",
+    "error_description": "interpret 'two tenths' as the whole number 'two tens' (=20), reading the fraction term as a count of tens",
+    "provenance_comments": "=== row 37847: \"two tenths\" as 2 × 10 (process bug, result coincides) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_37847_read_fraction_word_as_whole_number",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_37847_read_fraction_word_as_whole_number(frac(Tens,10), Tens*10) :-\n    integer(Tens),\n    Tens > 0).\n\ntest_harness:arith_misconception(db_row(37847), fraction, churn_37847_read_fraction_word_as_whole_number,\n    churn_candidate:churn_37847_read_fraction_word_as_whole_number,\n    frac(2,10),\n    1//5).",
+      "result": "output *(2,10) does not match explicit documented claim(s) ['20']"
+    },
+    {
+      "response": "churn_candidate:(read_fraction_word_as_whole_number(frac(_N,D), Result) :-\n    atom_concat('two', ' tenths', Word),\n    atom_number(Word, Result),\n    Result =:= 20).\n\ntest_harness:arith_misconception(db_row(37847), fraction, churn_37847_read_fraction_word_as_whole_number,\n    churn_candidate:read_fraction_word_as_whole_number,\n    frac(2,10),\n    20).",
+      "result": "predicate must be named churn_37847_read_fraction_word_as_whole_number"
+    }
+  ]
+}

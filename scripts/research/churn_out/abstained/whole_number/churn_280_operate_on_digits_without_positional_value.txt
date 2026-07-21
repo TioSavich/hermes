@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "280",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_280_operate_on_digits_without_positional_value",
+    "target_operation": "multidigit_subtraction_without_place_value",
+    "citation": "Anna Sierpinska and Helen Osana (2011)",
+    "error_action": "operate_on_digits_without_positional_value",
+    "error_description": "manipulate digits column-wise without treating their positions as powers of ten",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (treating digits as isolated units rather than as representatives of place value) but provides no explicit algorithmic rule that can be implemented as a SWI-Prolog predicate producing a specific incorrect result. Without a concrete, generalizable procedural step (e.g., “subtract tens from units regardless of position”), no runnable rule can be constructed. The task requires encoding a *documented* student error with a *runnable* rule; this row fails that requirement.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_280_operate_on_digits_without_positional_value(A-B, Got) :-\n    number_digits(A, ADigits),\n    number_digits(B, BDigits),\n    align_digits(ADigits, BDigits, AAlign, BAlign),\n    subtract_digits(AAlign, BAlign, ResultDigits),\n    digits_number(ResultDigits, Got)).\n\nnumber_digits(N, Ds) :-\n    number_chars(N, Cs),\n    maplist(char_code_digit, Cs, Ds).\n\nchar_code_digit(C, D) :-\n    char_code(C, Code),\n    D is Code - 48.\n\nalign_digits(As, Bs, AsPad, BsPad) :-\n    length(As, LA),\n    length(Bs, LB),\n    Max is max(LA, LB),\n    PadA is Max - LA,\n    PadB is Max - LB,\n    pad_left(PadA, 0, As, AsPad),\n    pad_left(PadB, 0, Bs, BsPad).\n\npad_left(0, _, L, L) :- !.\npad_left(N, P, L, [P|Rest]) :-\n    N1 is N - 1,\n    pad_left(N1, P, L, Rest).\n\nsubtract_digits([], [], []) :- !.\nsubtract_digits([A|As], [B|Bs], [R|Rs]) :-\n    R is A - B,\n    subtract_digits(As, Bs, Rs).\n\ndigits_number([], 0) :- !.\ndigits_number([D|Ds], N) :-\n    digits_number(Ds, N1),\n    length([D|Ds], Len),\n    Exp is Len - 1,\n    N is D * (10 ^ Exp) + N1.\n\ntest_harness:arith_misconception(db_row(280), whole_number, churn_280_operate_on_digits_without_positional_value,\n    churn_candidate:churn_280_operate_on_digits_without_positional_value,\n    42-15,\n    33).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (treating digits as isolated units rather than as representatives of place value) but provides no explicit algorithmic rule that can be implemented as a SWI-Prolog predicate producing a specific incorrect result. Without a concrete, generalizable procedural step (e.g., “subtract tens from units regardless of position”), no runnable rule can be constructed. The task requires encoding a *documented* student error with a *runnable* rule; this row fails that requirement.",
+      "result": "abstained"
+    }
+  ]
+}

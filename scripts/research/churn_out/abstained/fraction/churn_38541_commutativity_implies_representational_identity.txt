@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38541",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38541_commutativity_implies_representational_identity",
+    "target_operation": "multiplication_referent",
+    "citation": "Philipp, Flores, Sowder, and Schappelle (1994)",
+    "error_action": "commutativity_implies_representational_identity",
+    "error_description": "since a x b equals b x a numerically, the two expressions are the same in every respect including what they model",
+    "provenance_comments": "=== row 38541: commutativity elides conceptual difference ===\nTeacher pedagogical conflation; no wrong numeric answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (confusing numerical equality with representational identity) rather than a runnable syntactic rule that produces a specific wrong numeric output for a given input. Since no concrete syntactic transformation or computational procedure is specified, a runnable rule producing a predictable incorrect result cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (confusing numerical equality with representational identity) rather than a runnable syntactic rule that produces a specific wrong numeric output for a given input. Since no concrete syntactic transformation or computational procedure is specified, a runnable rule producing a predictable incorrect result cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

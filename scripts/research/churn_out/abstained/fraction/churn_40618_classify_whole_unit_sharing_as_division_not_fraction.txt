@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40618",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40618_classify_whole_unit_sharing_as_division_not_fraction",
+    "target_operation": "fraction_division_relationship",
+    "citation": "Clea Fernandez (2005)",
+    "error_action": "classify_whole_unit_sharing_as_division_not_fraction",
+    "error_description": "treat equal-sharing of whole units as division and as conceptually separate from fractions",
+    "provenance_comments": "=== row 40618: equal-sharing seen as division not fraction ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (treating equal-sharing as division rather than as a fraction) but does not specify a runnable, syntactically definable arithmetic rule that produces a wrong result in a way that can be encoded as a Prolog predicate of arity 2. There is no concrete algorithm or formula provided—only a cognitive misclassification—so no deterministic `Rule(Input, Got)` can be constructed to yield the documented wrong answer for a given input. Without a computable procedure, a test harness entry cannot be formed per schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (treating equal-sharing as division rather than as a fraction) but does not specify a runnable, syntactically definable arithmetic rule that produces a wrong result in a way that can be encoded as a Prolog predicate of arity 2. There is no concrete algorithm or formula provided—only a cognitive misclassification—so no deterministic `Rule(Input, Got)` can be constructed to yield the documented wrong answer for a given input. Without a computable procedure, a test harness entry cannot be formed per schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

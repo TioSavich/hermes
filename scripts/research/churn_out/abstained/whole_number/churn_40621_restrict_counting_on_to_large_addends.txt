@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40621",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40621_restrict_counting_on_to_large_addends",
+    "target_operation": "counting_strategy_reversion",
+    "citation": "Arthur J. Baroody, Michael Cibulskis, Meng-lung Lai, Xia Li (2004)",
+    "error_action": "restrict_counting_on_to_large_addends",
+    "error_description": "use counting-on only for challenging items and revert to counting-all for small combinations",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a strategic behavior (reverting from counting-on to counting-all for small addends) rather than a consistent computational rule that can be expressed as a binary predicate `Rule(Input, Got)` producing a fixed wrong output for a given input. No runnable, general arithmetic rule can be extracted that maps a specific input pair to a documented incorrect result without additional concrete worked examples or procedural formalization.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a strategic behavior (reverting from counting-on to counting-all for small addends) rather than a consistent computational rule that can be expressed as a binary predicate `Rule(Input, Got)` producing a fixed wrong output for a given input. No runnable, general arithmetic rule can be extracted that maps a specific input pair to a documented incorrect result without additional concrete worked examples or procedural formalization.",
+      "result": "abstained"
+    }
+  ]
+}

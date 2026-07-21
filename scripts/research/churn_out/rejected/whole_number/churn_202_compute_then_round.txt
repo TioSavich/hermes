@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "202",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_202_compute_then_round",
+    "target_operation": "estimation_rounding_order",
+    "citation": "Sowder, Wheeler (1989)",
+    "error_action": "compute_then_round",
+    "error_description": "calculate the exact answer first and then round it",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "predicate must be named churn_202_compute_then_round",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_202_compute_then_round(A-B, Got) :-\n    Exact is A * B,\n    Got is round(Exact / 10) * 10).\n\ntest_harness:arith_misconception(db_row(202), whole_number, churn_202_compute_then_round,\n    churn_candidate:churn_202_compute_then_round,\n    123-45,\n    5500).",
+      "result": "output 5540 does not match explicit documented claim(s) ['first']"
+    },
+    {
+      "response": "churn_candidate:(compute_then_round(A-B, Got) :-\n    Exact is A * B,\n    Got is round(Exact / 100) * 100).\n\ntest_harness:arith_misconception(db_row(202), whole_number, churn_202_compute_then_round,\n    churn_candidate:compute_then_round,\n    55*100,\n    5500).",
+      "result": "predicate must be named churn_202_compute_then_round"
+    }
+  ]
+}

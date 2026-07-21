@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38205",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38205_count_each_tick_by_ones",
+    "target_operation": "number_line_scale_convention",
+    "citation": "Andrea Gellert, Heinz Steinbring (2014)",
+    "error_action": "count_each_tick_by_ones",
+    "error_description": "read a number line by counting every tick mark in unit steps",
+    "provenance_comments": "=== row 38205: counts unmarked tick marks as ones ===\nError depends on a specific graphical scale — no clean arithmetic rule\noutput without modeling the figure.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error depends on a specific graphical scale and requires modeling the figure (e.g., interpreting unmarked tick marks), which cannot be expressed as a general, runnable arithmetic rule without visual or geometric context. The schema requires a predicate of arity 2 that, given Input, produces the documented wrong answer via arithmetic computation alone; no such general arithmetic rule is definable here.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error depends on a specific graphical scale and requires modeling the figure (e.g., interpreting unmarked tick marks), which cannot be expressed as a general, runnable arithmetic rule without visual or geometric context. The schema requires a predicate of arity 2 that, given Input, produces the documented wrong answer via arithmetic computation alone; no such general arithmetic rule is definable here.",
+      "result": "abstained"
+    }
+  ]
+}

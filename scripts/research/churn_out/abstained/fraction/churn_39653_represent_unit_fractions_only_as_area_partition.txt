@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39653",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39653_represent_unit_fractions_only_as_area_partition",
+    "target_operation": "unit_fraction_embodiments",
+    "citation": "Xiaofen Zhang & M. A. (Ken) Clements & Nerida F. Ellerton (2015)",
+    "error_action": "represent_unit_fractions_only_as_area_partition",
+    "error_description": "every unit fraction is depicted as a partitioned area such as a circle",
+    "provenance_comments": "=== row 39653: area-model only for unit fractions ===\nToo vague — model rigidity; no concrete wrong numeric output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a representational misconception (model rigidity—using only area models for unit fractions) rather than a computational error that yields a specific incorrect numeric output; thus, no runnable rule can be constructed that produces a deterministic wrong numeric result for a given input under the required schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a representational misconception (model rigidity—using only area models for unit fractions) rather than a computational error that yields a specific incorrect numeric output; thus, no runnable rule can be constructed that produces a deterministic wrong numeric result for a given input under the required schema.",
+      "result": "abstained"
+    }
+  ]
+}

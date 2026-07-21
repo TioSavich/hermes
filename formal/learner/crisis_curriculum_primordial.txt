@@ -58,7 +58,7 @@ add(s(s(s(s(s(s(s(s(s(s(0)))))))))), s(s(s(s(s(s(s(s(s(s(0)))))))))), R_TEST_4).
 # STAGE 5: SECOND CRISIS TYPE (Missing Predicate - Expressive Failure)
 # ═══════════════════════════════════════════════════════════════════════
 # The machine has no subtract/3 predicate. This is a NEW kind of crisis:
-# not resource exhaustion, but failure of expressive power.
+# not resource exhaustion, but failure of inferential strength.
 # This requires a different learning response - synthesizing a new operation.
 
 # Note: This will fail because subtract/3 doesn't exist in primordial state

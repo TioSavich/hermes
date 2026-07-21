@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "204",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_204_treat_only_exact_answers_as_acceptable",
+    "target_operation": "estimation_disposition",
+    "citation": "Hanson, Sheri A. and Hogan, Thomas P. (2000)",
+    "error_action": "treat_only_exact_answers_as_acceptable",
+    "error_description": "regard an approximate answer as inadequate or in need of apology",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(treats_only_exact_answers_as_acceptable(Estimate, Got) :-\n    atom_string(Estimate, EstString),\n    string_chars(EstString, Chars),\n    include(char_digit, Chars, Digits),\n    Digits = [H|_],\n    char_code(H, Code),\n    Got is Code - 48).\n\ntest_harness:arith_misconception(db_row(204), whole_number, churn_204_treat_only_exact_answers_as_acceptable,\n    churn_candidate:treats_only_exact_answers_as_acceptable,\n    '100',\n    1).",
+      "result": "predicate must be named churn_204_treat_only_exact_answers_as_acceptable"
+    },
+    {
+      "response": "churn_candidate:(churn_204_treat_only_exact_answers_as_acceptable(A, Got) :-\n    Got is A).\n\ntest_harness:arith_misconception(db_row(204), whole_number, churn_204_treat_only_exact_answers_as_acceptable,\n    churn_candidate:churn_204_treat_only_exact_answers_as_acceptable,\n    100,\n    100).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37878",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37878_read_numerator_as_count_of_wholes_denominator_as_parts_per_whole",
+    "target_operation": "fraction_symbol_meaning",
+    "citation": "Nancy K. Mack (1995)",
+    "error_action": "read_numerator_as_count_of_wholes_denominator_as_parts_per_whole",
+    "error_description": "the top number tells how many whole objects there are and the bottom tells how many pieces each whole is cut into",
+    "provenance_comments": "=== row 37878: numerator/denom as wholes/parts-each ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (reading numerator as count of wholes and denominator as parts per whole) but does not specify a runnable arithmetic procedure that produces a wrong result for a given input; it is a semantic misinterpretation rather than a syntactic transformation rule, and thus cannot be encoded as a deterministic predicate Rule(Input, Got) that reliably yields a specific incorrect output for a well-defined input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (reading numerator as count of wholes and denominator as parts per whole) but does not specify a runnable arithmetic procedure that produces a wrong result for a given input; it is a semantic misinterpretation rather than a syntactic transformation rule, and thus cannot be encoded as a deterministic predicate Rule(Input, Got) that reliably yields a specific incorrect output for a well-defined input.",
+      "result": "abstained"
+    }
+  ]
+}

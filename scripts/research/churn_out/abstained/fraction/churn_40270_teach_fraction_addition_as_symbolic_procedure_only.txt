@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40270",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40270_teach_fraction_addition_as_symbolic_procedure_only",
+    "target_operation": "common_denominator_procedure",
+    "citation": "Rebecca Ambrose (2004)",
+    "error_action": "teach_fraction_addition_as_symbolic_procedure_only",
+    "error_description": "add fractions by executing the find-a-common-denominator procedure without a model",
+    "provenance_comments": "=== row 40270: default to symbolic procedure without blocks ===\nToo vague — pedagogical strategy, no numeric output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a pedagogical strategy (\"teach_fraction_addition_as_symbolic_procedure_only\") rather than a specific computational mistake with a determinable symbolic output. There is no concrete numeric or symbolic result associated with the error, so no runnable rule `Rule(Input, Got)` can be constructed that produces a documented wrong answer `Got` distinct from the correct `ExpectedCorrect`. The schema requires a specific incorrect output, but this misconception describes a lack of conceptual model, not a calculational error.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a pedagogical strategy (\"teach_fraction_addition_as_symbolic_procedure_only\") rather than a specific computational mistake with a determinable symbolic output. There is no concrete numeric or symbolic result associated with the error, so no runnable rule `Rule(Input, Got)` can be constructed that produces a documented wrong answer `Got` distinct from the correct `ExpectedCorrect`. The schema requires a specific incorrect output, but this misconception describes a lack of conceptual model, not a calculational error.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38618",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38618_treat_given_quantities_as_disjoint_sets",
+    "target_operation": "subset_complement_representation",
+    "citation": "Guy Brousseau, Virginia M. Warfield (1999)",
+    "error_action": "treat_given_quantities_as_disjoint_sets",
+    "error_description": "draw the subset as an additional separate collection rather than as part of the whole",
+    "provenance_comments": "=== row 38618: subset and complement drawn as disjoint collections ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "registration source/domain/description does not match the entry",
+  "attempts": [
+    {
+      "response": "churn_candidate:(subset_complement_disjoint(A-B, Got) :-\n    Got = A + B).\n\ntest_harness:arith_misconception(db_row(38618), whole_number, churn_38618_treat_given_quantities_as_disjoint_sets,\n    churn_candidate:subset_complement_disjoint,\n    15-4,\n    11).",
+      "result": "predicate must be named churn_38618_treat_given_quantities_as_disjoint_sets"
+    },
+    {
+      "response": "churn_candidate:(treat_given_quantities_as_disjoint_sets(A-B, Got) :-\n    Got is A + B).\n\ntest_harness:arith_misconception(db_row(38618), whole_number, treat_given_quantities_as_disjoint_sets,\n    churn_candidate:treat_given_quantities_as_disjoint_sets,\n    5-3,\n    2).",
+      "result": "registration source/domain/description does not match the entry"
+    }
+  ]
+}

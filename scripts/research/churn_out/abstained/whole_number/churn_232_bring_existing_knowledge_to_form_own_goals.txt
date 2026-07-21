@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "232",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_232_bring_existing_knowledge_to_form_own_goals",
+    "target_operation": "emergent_goal_formation",
+    "citation": "Stipek, D and Salmon, JM and Givvin, KB and Kazemi, E and Saxe, G and MacGyvers, VL (1998)",
+    "error_action": "bring_existing_knowledge_to_form_own_goals",
+    "error_description": "interpret a game task through prior knowledge and set self-generated learning goals",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive process (interpreting a task through prior knowledge and setting self-generated learning goals) rather than a specific syntactic or semantic deviation in arithmetic computation. It does not specify a runnable rule of arity 2 that produces a *fixed incorrect output* for a given input in whole-number arithmetic. Without a concrete mapping from input to erroneous output, the schema requirement for `Rule(Input, Got)` producing the documented wrong answer cannot be satisfied.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive process (interpreting a task through prior knowledge and setting self-generated learning goals) rather than a specific syntactic or semantic deviation in arithmetic computation. It does not specify a runnable rule of arity 2 that produces a *fixed incorrect output* for a given input in whole-number arithmetic. Without a concrete mapping from input to erroneous output, the schema requirement for `Rule(Input, Got)` producing the documented wrong answer cannot be satisfied.",
+      "result": "abstained"
+    }
+  ]
+}

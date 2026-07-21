@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40481",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40481_most_digits_yields_largest_product",
+    "target_operation": "product_size_estimation",
+    "citation": "DER-CHING YANG, MAO-NENG LI and CHIH-I LIN (2008)",
+    "error_action": "most_digits_yields_largest_product",
+    "error_description": "treat the factor with the most digits or largest integer part as guaranteeing the largest product",
+    "provenance_comments": "=== row 40481: most digits = largest product ===\nTask: 9999 * 9.999\nCorrect: 99980.0001 (approx)\nError: claims largest because 9999 is 4-digit integer\nToo vague — a predictive claim about size, not a specific computation.",
+    "worked_example": "Task: 9999 * 9.999\nCorrect: 99980.0001 (approx)\nError: claims largest because 9999 is 4-digit integer",
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about size estimation (most digits → largest product), not a specific computational rule that can be encoded as a deterministic predicate producing the wrong result. The error is a qualitative claim, not a reproducible arithmetic operation, so it cannot be formalized as a SWI-Prolog rule that reliably yields the documented wrong answer for arbitrary inputs.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about size estimation (most digits → largest product), not a specific computational rule that can be encoded as a deterministic predicate producing the wrong result. The error is a qualitative claim, not a reproducible arithmetic operation, so it cannot be formalized as a SWI-Prolog rule that reliably yields the documented wrong answer for arbitrary inputs.",
+      "result": "abstained"
+    }
+  ]
+}

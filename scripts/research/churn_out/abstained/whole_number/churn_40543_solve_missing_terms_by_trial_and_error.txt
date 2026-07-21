@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40543",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40543_solve_missing_terms_by_trial_and_error",
+    "target_operation": "number_pattern_structure",
+    "citation": "Taro Fujita and Shinya Yamamoto (2011)",
+    "error_action": "solve_missing_terms_by_trial_and_error",
+    "error_description": "guess intermediate terms instead of deducing them from the sequence's common difference",
+    "provenance_comments": "=== row 40543: trial-and-error on missing sequence terms ===\nNon-deterministic search; no canonical output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a non-deterministic trial-and-error procedure with no canonical output, which cannot be expressed as a deterministic, pure Prolog rule of arity 2 that consistently produces the documented wrong answer for a given input. The schema requires a runnable rule that yields the *documented wrong answer* on a specific input, but \"trial and error\" lacks a fixed computational behavior to encode.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a non-deterministic trial-and-error procedure with no canonical output, which cannot be expressed as a deterministic, pure Prolog rule of arity 2 that consistently produces the documented wrong answer for a given input. The schema requires a runnable rule that yields the *documented wrong answer* on a specific input, but \"trial and error\" lacks a fixed computational behavior to encode.",
+      "result": "abstained"
+    }
+  ]
+}

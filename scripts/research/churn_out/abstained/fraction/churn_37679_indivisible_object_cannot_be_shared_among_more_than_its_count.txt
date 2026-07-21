@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37679",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37679_indivisible_object_cannot_be_shared_among_more_than_its_count",
+    "target_operation": "equal_sharing",
+    "citation": "Susan B. Empson (2003)",
+    "error_action": "indivisible_object_cannot_be_shared_among_more_than_its_count",
+    "error_description": "a single leftover object cannot be split because its count is less than the number of sharers",
+    "provenance_comments": "=== row 37679: remainder cannot be shared ===\nToo vague — conceptual refusal to partition, no concrete wrong numeric output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual refusal to partition a remainder, with no concrete wrong numeric output specified; thus no runnable rule producing a specific incorrect result can be determined.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual refusal to partition a remainder, with no concrete wrong numeric output specified; thus no runnable rule producing a specific incorrect result can be determined.",
+      "result": "abstained"
+    }
+  ]
+}

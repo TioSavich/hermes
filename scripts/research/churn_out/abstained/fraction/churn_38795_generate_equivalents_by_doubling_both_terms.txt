@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38795",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38795_generate_equivalents_by_doubling_both_terms",
+    "target_operation": "equivalent_fractions",
+    "citation": "RONALD KEIJZER and JAN TERWEL (2001)",
+    "error_action": "generate_equivalents_by_doubling_both_terms",
+    "error_description": "make an equivalent fraction by repeatedly doubling numerator and denominator together",
+    "provenance_comments": "=== row 38795: doubling-only equivalence strategy (strategy selection) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural strategy (repeatedly doubling both terms) but provides no concrete input-output pair or rule that maps a specific input to a specific wrong output. A runnable rule requires a deterministic mapping from Input to a specific wrong result (Got), and a clear ExpectedCorrect. Here, \"repeatedly doubling\" is underspecified—how many times? The gate failure (exit code 24) suggests the prior rule was non-deterministic, non-terminating, or otherwise non-executable in SWI-Prolog. Without a fixed number of doublings or a concrete example, we cannot define a terminating, general, deterministic predicate that produces *the* documented wrong answer for a given input.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38795_generate_equivalents_by_doubling_both_terms(frac(N,D), frac(NDoubled, DDoubled)) :-\n    NDoubled is N * 2,\n    DDoubled is D * 2).\n\ntest_harness:arith_misconception(db_row(38795), fraction, churn_38795_generate_equivalents_by_doubling_both_terms,\n    churn_candidate:churn_38795_generate_equivalents_by_doubling_both_terms,\n    frac(3,4),\n    frac(6,8)).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a procedural strategy (repeatedly doubling both terms) but provides no concrete input-output pair or rule that maps a specific input to a specific wrong output. A runnable rule requires a deterministic mapping from Input to a specific wrong result (Got), and a clear ExpectedCorrect. Here, \"repeatedly doubling\" is underspecified—how many times? The gate failure (exit code 24) suggests the prior rule was non-deterministic, non-terminating, or otherwise non-executable in SWI-Prolog. Without a fixed number of doublings or a concrete example, we cannot define a terminating, general, deterministic predicate that produces *the* documented wrong answer for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

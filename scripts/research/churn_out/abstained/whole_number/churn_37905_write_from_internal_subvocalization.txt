@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37905",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37905_write_from_internal_subvocalization",
+    "target_operation": "numeral_copying",
+    "citation": "Kristine K. Montis (2000)",
+    "error_action": "write_from_internal_subvocalization",
+    "error_description": "transcribe a numeral from the way it was said internally rather than from the visible symbol",
+    "provenance_comments": "=== row 37905: miscopy via subvocalization ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a cognitive transcription process (internal subvocalization → written output) that cannot be captured by a deterministic, general, executable Prolog predicate of arity 2 over whole numbers without additional structural assumptions about the internal representation or visual input. The schema requires a rule that, given an input, produces the documented wrong output; here, the error is context-sensitive and not functionally determined by the input alone.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a cognitive transcription process (internal subvocalization → written output) that cannot be captured by a deterministic, general, executable Prolog predicate of arity 2 over whole numbers without additional structural assumptions about the internal representation or visual input. The schema requires a rule that, given an input, produces the documented wrong output; here, the error is context-sensitive and not functionally determined by the input alone.",
+      "result": "abstained"
+    }
+  ]
+}

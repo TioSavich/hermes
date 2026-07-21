@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40019",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40019_add_all_given_numbers",
+    "target_operation": "word_problem_operation_choice",
+    "citation": "Despina Potari, Barbara Georgiadou-Kabouridis (2009)",
+    "error_action": "add_all_given_numbers",
+    "error_description": "combine every number in a problem by addition",
+    "provenance_comments": "=== row 40019: indiscriminate addition of all numbers in a problem ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40019_add_all_given_numbers(Input, Got) :-\n    Input =.. [add|Nums],\n    sum_list(Nums, Got)).\n\ntest_harness:arith_misconception(db_row(40019), whole_number, churn_40019_add_all_given_numbers,\n    churn_candidate:churn_40019_add_all_given_numbers,\n    add(5,3,2),\n    10).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "churn_candidate:(churn_40019_add_all_given_numbers(A+B+C, Got) :-\n    Got is A + B + C).\n\ntest_harness:arith_misconception(db_row(40019), whole_number, churn_40019_add_all_given_numbers,\n    churn_candidate:churn_40019_add_all_given_numbers,\n    5+3+2,\n    10).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

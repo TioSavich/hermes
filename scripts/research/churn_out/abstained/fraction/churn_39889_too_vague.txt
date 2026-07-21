@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39889",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39889_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "=== row 39889: area-model on number line ===",
+    "provenance_comments": "=== row 39889: area-model on number line ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error is “too_vague” with only a vague reference “area-model on number line” and no concrete arithmetic procedure, input pattern, or incorrect output. Without a specific misapplication of operations on fractions (e.g., addition, multiplication, comparison), the required schema cannot be satisfied.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error is “too_vague” with only a vague reference “area-model on number line” and no concrete arithmetic procedure, input pattern, or incorrect output. Without a specific misapplication of operations on fractions (e.g., addition, multiplication, comparison), the required schema cannot be satisfied.",
+      "result": "abstained"
+    }
+  ]
+}

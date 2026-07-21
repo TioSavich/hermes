@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "177",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_177_interpret_subtraction_only_as_take_away",
+    "target_operation": "subtraction_as_take_away",
+    "citation": "Gvozdic, Katarina and Sander, Emmanuel (2018)",
+    "error_action": "interpret_subtraction_only_as_take_away",
+    "error_description": "frame every subtraction as taking away and count down, even when determining a distance would be more efficient",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "predicate must be named churn_177_interpret_subtraction_only_as_take_away",
+  "attempts": [
+    {
+      "response": "churn_candidate:(interpret_subtraction_only_as_take_away(A, B, Got) :-\n    % Simulate counting down from A by B steps, starting at A and decrementing B times\n    G is A - B,\n    % But enforce take-away by explicit countdown (incorrectly implemented as subtraction itself)\n    % This rule models the *procedure* of counting down B steps from A,\n    % yet due to a flaw, it computes A - B directly — matching the documented error\n    % where the student *intends* to count down but actually performs subtraction directly.\n    % The documented misconception is that the student *only* frames subtraction as take-away,\n    % and fails to use distance (e.g., counting up), but here we simulate the *result* they produce:\n    % they compute A - B, but *only* via take-away mental model (not distance).\n    % For the harness, we need a case where the correct answer differs from what the misconception yields.\n    % However, in standard arithmetic, A - B is correct — so to expose the misconception,\n    % we must use a scenario where a distance strategy yields a different *mental representation*,\n    % but numerically identical. Since the task requires ExpectedCorrect ≠ Got, we must find a case\n    % where the misconception produces an *incorrect* numeric result due to misapplication.\n    % Since the documented error does not alter the numeric result (counting down = subtraction),\n    % no numeric error arises. Therefore, the misconception cannot be expressed as a rule that\n    % produces a *wrong* numeric answer in standard arithmetic. It is a *procedural* bias, not a\n    % computational error. Hence, no runnable rule can be defined that yields a documented wrong answer.\n    fail).\n\ntest_harness:arith_misconception(db_row(177), whole_number, churn_177_interpret_subtraction_only_as_take_away,\n    churn_candidate:interpret_subtraction_only_as_take_away,\n    1000-997,\n    3).\n\nABSTAIN: The documented error is a procedural framing bias (interpreting subtraction *only* as take-away) and does not produce a numerically incorrect result in standard arithmetic; hence no runnable rule can yield a wrong answer distinct from the correct one.",
+      "result": "external module qualification is not allowed: produce:"
+    },
+    {
+      "response": "churn_candidate:(interpret_subtraction_only_as_take_away(A-B, Got) :-\n    Got is A - B,\n    Gvozdic is A - B,\n    Got = Gvozdic).\n\ntest_harness:arith_misconception(db_row(177), whole_number, churn_177_interpret_subtraction_only_as_take_away,\n    churn_candidate:interpret_subtraction_only_as_take_away,\n    100-97,\n    3).",
+      "result": "predicate must be named churn_177_interpret_subtraction_only_as_take_away"
+    }
+  ]
+}

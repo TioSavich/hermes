@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40102",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40102_represent_changing_quantity_with_equal_to_one_fractions",
+    "target_operation": "modeling_change_with_equality",
+    "citation": "Amy E. Ryken (2009)",
+    "error_action": "represent_changing_quantity_with_equal_to_one_fractions",
+    "error_description": "use fractions equal to one to describe a whole quantity that is changing",
+    "provenance_comments": "=== row 40102: model change using equality of fractions ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding—using fractions equal to one to model a changing quantity—but does not specify a runnable procedural rule (i.e., no deterministic transformation from input to the erroneous output is provided). Without a clear algorithmic procedure that students follow to produce a specific incorrect result, we cannot define a deterministic Prolog predicate `Rule(Input, Got)` that reliably yields the documented misconception. The description is semantic, not syntactic or computational.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding—using fractions equal to one to model a changing quantity—but does not specify a runnable procedural rule (i.e., no deterministic transformation from input to the erroneous output is provided). Without a clear algorithmic procedure that students follow to produce a specific incorrect result, we cannot define a deterministic Prolog predicate `Rule(Input, Got)` that reliably yields the documented misconception. The description is semantic, not syntactic or computational.",
+      "result": "abstained"
+    }
+  ]
+}

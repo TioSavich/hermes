@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39367",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39367_dividing_by_half_means_halving",
+    "target_operation": "language_of_division_by_a_fraction",
+    "citation": "ZBIGNIEW SEMADENI (1984)",
+    "error_action": "dividing_by_half_means_halving",
+    "error_description": "interpret 'dividing by half' as splitting into two equal parts, i.e. dividing by two",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_39367_dividing_by_half_means_halving",
+  "attempts": [
+    {
+      "response": "churn_candidate:(dividing_by_half_means_halving(frac(N,D), frac(N, D2)) :-\n    D2 is D // 2).\n\ntest_harness:arith_misconception(db_row(39367), fraction, churn_39367_dividing_by_half_means_halving,\n    churn_candidate:dividing_by_half_means_halving,\n    frac(1,4),\n    frac(1,2)).",
+      "result": "predicate must be named churn_39367_dividing_by_half_means_halving"
+    },
+    {
+      "response": "churn_candidate:(divide_by_half_means_halving(Frac, Result) :-\n    Frac = frac(N, D),\n    Result = frac(N, D*2)).\n\ntest_harness:arith_misconception(db_row(39367), fraction, churn_39367_dividing_by_half_means_halving,\n    churn_candidate:divide_by_half_means_halving,\n    frac(3,4),\n    frac(3,2)).",
+      "result": "predicate must be named churn_39367_dividing_by_half_means_halving"
+    }
+  ]
+}

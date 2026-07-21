@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38635",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38635_measure_size_by_outline_length",
+    "target_operation": "area_vs_perimeter",
+    "citation": "Wolff-Michael Roth, Kadriye Ercikan, Marielle Simon, Romeo Fola (2015)",
+    "error_action": "measure_size_by_outline_length",
+    "error_description": "find the size of a shape by measuring the length of its outline",
+    "provenance_comments": "=== row 38635: perimeter reported as area for irregular shape ===\nToo vague: no specific example numeric — general perimeter-for-area.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: No concrete numeric example or shape specification is provided in the documentation to construct a runnable rule and a defensible probe; the error is described only as “perimeter reported as area for irregular shape” without a specific input format or expected numerical mismatch.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No concrete numeric example or shape specification is provided in the documentation to construct a runnable rule and a defensible probe; the error is described only as “perimeter reported as area for irregular shape” without a specific input format or expected numerical mismatch.",
+      "result": "abstained"
+    }
+  ]
+}

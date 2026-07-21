@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39559",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39559_quotient_smaller_than_dividend",
+    "target_operation": "division_always_shrinks",
+    "citation": "Anne Gooding and Kaye Stacey (1993)",
+    "error_action": "quotient_smaller_than_dividend",
+    "error_description": "dividing always produces a result smaller than the number you started with",
+    "provenance_comments": "=== row 39559: division always smaller ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (\"division always produces a result smaller than the number you started with\") rather than a specific syntactic or procedural rule that can be implemented as a deterministic, generalizable predicate of arity 2 in SWI-Prolog without side effects or assumptions. There is no concrete, runnable rule—only a blanket overgeneralization—so we cannot construct a `Rule` predicate that reliably produces the documented wrong answer for arbitrary inputs within the constraints.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (\"division always produces a result smaller than the number you started with\") rather than a specific syntactic or procedural rule that can be implemented as a deterministic, generalizable predicate of arity 2 in SWI-Prolog without side effects or assumptions. There is no concrete, runnable rule—only a blanket overgeneralization—so we cannot construct a `Rule` predicate that reliably produces the documented wrong answer for arbitrary inputs within the constraints.",
+      "result": "abstained"
+    }
+  ]
+}

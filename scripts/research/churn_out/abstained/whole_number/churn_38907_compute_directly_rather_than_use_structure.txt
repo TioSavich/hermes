@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38907",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38907_compute_directly_rather_than_use_structure",
+    "target_operation": "inverse_operation_structure",
+    "citation": "Brian Greer (2012)",
+    "error_action": "compute_directly_rather_than_use_structure",
+    "error_description": "carry out the full calculation step by step instead of exploiting structural shortcuts",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: no runnable rule can be constructed because the documented error describes a procedural tendency (step-by-step computation instead of structural insight) rather than a specific syntactic transformation or algebraic misapplication that can be encoded as a deterministic 2-place predicate producing a fixed incorrect result for a given input. The error is cognitive and contextual, not formal or computational in a way that admits a SWI-Prolog rule matching the schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no runnable rule can be constructed because the documented error describes a procedural tendency (step-by-step computation instead of structural insight) rather than a specific syntactic transformation or algebraic misapplication that can be encoded as a deterministic 2-place predicate producing a fixed incorrect result for a given input. The error is cognitive and contextual, not formal or computational in a way that admits a SWI-Prolog rule matching the schema.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40017",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40017_fraction_division_is_invert_and_multiply_only",
+    "target_operation": "fraction_division_strategy",
+    "citation": "Despina Potari, Barbara Georgiadou-Kabouridis (2009)",
+    "error_action": "fraction_division_is_invert_and_multiply_only",
+    "error_description": "treat the only correct division of fractions as multiplying by the reciprocal",
+    "provenance_comments": "=== row 40017: misread informal division reasoning as wrong ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual description (\"treat the only correct division of fractions as multiplying by the reciprocal\") rather than a specific procedural mistake that yields a consistent incorrect result; it does not define a deterministic rule that maps inputs to a unique wrong output. Without a concrete misapplication (e.g., \"always invert first operand only\", \"invert second operand but forget to multiply\", etc.), no runnable predicate `Rule(Input, Got)` can be constructed that reliably produces the documented error.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual description (\"treat the only correct division of fractions as multiplying by the reciprocal\") rather than a specific procedural mistake that yields a consistent incorrect result; it does not define a deterministic rule that maps inputs to a unique wrong output. Without a concrete misapplication (e.g., \"always invert first operand only\", \"invert second operand but forget to multiply\", etc.), no runnable predicate `Rule(Input, Got)` can be constructed that reliably produces the documented error.",
+      "result": "abstained"
+    }
+  ]
+}

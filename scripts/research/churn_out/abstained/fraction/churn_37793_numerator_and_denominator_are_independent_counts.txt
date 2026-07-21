@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37793",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37793_numerator_and_denominator_are_independent_counts",
+    "target_operation": "numerator_denominator_relationship",
+    "citation": "Nancy Nesbitt Vacc and George W. Bright (1999)",
+    "error_action": "numerator_and_denominator_are_independent_counts",
+    "error_description": "the top and bottom numbers are two separate tallies of chosen and total things",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating numerator and denominator as independent counts) but does not specify a runnable procedural rule that produces a consistent, deterministic wrong answer for a given input. Without a concrete algorithm or formula that students are documented to apply, we cannot construct a Prolog rule that reliably generates the erroneous output for test_harness:arith_misconception/6.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(independent_counts(frac(N,D), N-D) :-\n    true).\n\ntest_harness:arith_misconception(db_row(37793), fraction, churn_37793_numerator_and_denominator_are_independent_counts,\n    churn_candidate:churn_37793_numerator_and_denominator_are_independent_counts,\n    frac(3,5),\n    5-3).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating numerator and denominator as independent counts) but does not specify a runnable procedural rule that produces a consistent, deterministic wrong answer for a given input. Without a concrete algorithm or formula that students are documented to apply, we cannot construct a Prolog rule that reliably generates the erroneous output for test_harness:arith_misconception/6.",
+      "result": "abstained"
+    }
+  ]
+}

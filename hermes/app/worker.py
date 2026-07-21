@@ -3,7 +3,7 @@
 Keeps one bounded local worker alive and speaks newline-delimited JSON over
 stdin/stdout. The worker loads this repo's `hermes_worker.pl`, so the symbolic
 layer (event/pair scoring, geometry, misconceptions, lesson monitoring,
-expressive power) reads the live KB — no copied Prolog.
+inferential strength) reads the live KB — no copied Prolog.
 """
 from __future__ import annotations
 

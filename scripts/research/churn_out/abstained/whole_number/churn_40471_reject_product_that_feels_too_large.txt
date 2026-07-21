@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40471",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40471_reject_product_that_feels_too_large",
+    "target_operation": "product_magnitude_judgment",
+    "citation": "AMAL HUSSAIN ALAJMI and ROBERT REYS (2010)",
+    "error_action": "reject_product_that_feels_too_large",
+    "error_description": "judge a product unreasonable because it intuitively seems too big",
+    "provenance_comments": "=== row 40471: judges correct product \"too large\" ===\nIntuition about magnitude, not a computation error.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a judgmental bias (\"reject product because it feels too large\") rather than a deterministic computational procedure. It does not specify a runnable predicate `Rule(Input, Got)` that systematically produces a wrong answer; instead, it describes a cognitive response that varies by context and individual, and cannot be formalized as a general, deterministic Prolog rule without inventing the student's internal threshold or intuition.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a judgmental bias (\"reject product because it feels too large\") rather than a deterministic computational procedure. It does not specify a runnable predicate `Rule(Input, Got)` that systematically produces a wrong answer; instead, it describes a cognitive response that varies by context and individual, and cannot be formalized as a general, deterministic Prolog rule without inventing the student's internal threshold or intuition.",
+      "result": "abstained"
+    }
+  ]
+}

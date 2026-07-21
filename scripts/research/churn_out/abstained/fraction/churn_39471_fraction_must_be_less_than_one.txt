@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39471",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39471_fraction_must_be_less_than_one",
+    "target_operation": "fraction_less_than_whole_stereotype",
+    "citation": "ANNE PITKETHLY AND ROBERT HUNTING (1996)",
+    "error_action": "fraction_must_be_less_than_one",
+    "error_description": "a fraction always names a quantity smaller than a whole",
+    "provenance_comments": "=== row 39471: fraction less than whole ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception (\"a fraction always names a quantity smaller than a whole\"), not a syntactic or procedural error that can be encoded as a deterministic binary predicate rule producing a specific wrong result. There is no well-defined algorithmic transformation or operation that consistently yields a wrong output for all inputs under this misconception; the error manifests contextually (e.g., rejecting 5/4 as invalid), but no runnable rule `Rule(Input, Got)` can be constructed that returns the *documented wrong answer* in a general, schema-compliant way without ad-hoc case splitting or meta-reasoning, which violates the constraints.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception (\"a fraction always names a quantity smaller than a whole\"), not a syntactic or procedural error that can be encoded as a deterministic binary predicate rule producing a specific wrong result. There is no well-defined algorithmic transformation or operation that consistently yields a wrong output for all inputs under this misconception; the error manifests contextually (e.g., rejecting 5/4 as invalid), but no runnable rule `Rule(Input, Got)` can be constructed that returns the *documented wrong answer* in a general, schema-compliant way without ad-hoc case splitting or meta-reasoning, which violates the constraints.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40087",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40087_take_fractional_part_of_the_given_piece",
+    "target_operation": "reversible_partitive_fraction_scheme",
+    "citation": "Alexis L. Stevens, Jesse L. M. Wilkins, LouAnn H. Lovin, John Siegfried, Anderson Norton, Richard Busi (2018)",
+    "error_action": "take_fractional_part_of_the_given_piece",
+    "error_description": "when given a part, partition that part itself by the fraction instead of using it to rebuild the whole",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: the documented error description does not specify a concrete arithmetic operation or procedure that can be translated into a runnable Prolog rule without inventing mathematics; it describes a conceptual misunderstanding (reversing partitive reasoning) but provides no algorithmic pattern that determines a unique, general, SWI-Prolog-definable rule for producing the documented wrong answer from a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: the documented error description does not specify a concrete arithmetic operation or procedure that can be translated into a runnable Prolog rule without inventing mathematics; it describes a conceptual misunderstanding (reversing partitive reasoning) but provides no algorithmic pattern that determines a unique, general, SWI-Prolog-definable rule for producing the documented wrong answer from a given input.",
+      "result": "abstained"
+    }
+  ]
+}

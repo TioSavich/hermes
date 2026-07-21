@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "248",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_248_decompose_across_zero_without_base_ten_meaning",
+    "target_operation": "multidigit_subtraction",
+    "citation": "Boulton-Lewis, G., Wilss, L., & Mutch, S. (1996)",
+    "error_action": "decompose_across_zero_without_base_ten_meaning",
+    "error_description": "run the borrowing-across-zero steps without conceptual grasp of regrouping tens and hundreds",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural misconception (decomposing across zero without base-ten meaning) but provides no explicit algorithmic rule or concrete instance that determines a unique, executable Prolog predicate producing the *documented wrong answer*. Without a verifiable mapping from input to erroneous output (e.g., a specific miscalculation pattern like treating 100 − 1 as 19 instead of 99), we cannot define a deterministic Rule predicate satisfying the schema requirement that `Rule(Input, Got)` produces *the documented wrong answer*. The description is too vague to ground a testable, reproducible misconception rule.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural misconception (decomposing across zero without base-ten meaning) but provides no explicit algorithmic rule or concrete instance that determines a unique, executable Prolog predicate producing the *documented wrong answer*. Without a verifiable mapping from input to erroneous output (e.g., a specific miscalculation pattern like treating 100 − 1 as 19 instead of 99), we cannot define a deterministic Rule predicate satisfying the schema requirement that `Rule(Input, Got)` produces *the documented wrong answer*. The description is too vague to ground a testable, reproducible misconception rule.",
+      "result": "abstained"
+    }
+  ]
+}

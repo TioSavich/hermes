@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39823",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39823_multiplying_by_reciprocal_still_decreases_unit",
+    "target_operation": "invert_and_multiply",
+    "citation": "Kien H. Lim (2011)",
+    "error_action": "multiplying_by_reciprocal_still_decreases_unit",
+    "error_description": "after inverting and multiplying, treat the result as smaller anyway",
+    "provenance_comments": "=== row 39823: multiplying fractions decreases ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error description \"after inverting and multiplying, treat the result as smaller anyway\" is not a syntactic or semantic rule that can be encoded as a deterministic binary predicate producing a specific wrong output; it describes a cognitive bias or interpretation, not a calculational procedure. No runnable rule `Rule(Input, Got)` can be constructed to consistently yield the documented wrong answer without specifying how the \"smaller\" judgment is computed, and the task requires encoding the *exact documented student error* as a runnable rule.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error description \"after inverting and multiplying, treat the result as smaller anyway\" is not a syntactic or semantic rule that can be encoded as a deterministic binary predicate producing a specific wrong output; it describes a cognitive bias or interpretation, not a calculational procedure. No runnable rule `Rule(Input, Got)` can be constructed to consistently yield the documented wrong answer without specifying how the \"smaller\" judgment is computed, and the task requires encoding the *exact documented student error* as a runnable rule.",
+      "result": "abstained"
+    }
+  ]
+}

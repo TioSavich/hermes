@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40318",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40318_no_numbers_between_consecutive_values",
+    "target_operation": "decimal_density",
+    "citation": "OTHMAN N. ALSAWAIE (2012)",
+    "error_action": "no_numbers_between_consecutive_values",
+    "error_description": "if two values look consecutive there are no numbers between them",
+    "provenance_comments": "=== row 40318: decimal density — no numbers between two hundredths ===\nToo vague — denial of density, not a wrong computation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual denial of density of decimals (i.e., the belief that no numbers exist between two consecutive decimals such as 0.25 and 0.26), not a specific computational procedure that can be encoded as a binary predicate producing a wrong result. Since no runnable rule—i.e., a deterministic function mapping inputs to the *documented wrong output*—is provided, and the error is semantic rather than syntactic, it cannot satisfy the schema requirement that `Rule(Input, Got)` produce the documented misconception as `Got`.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual denial of density of decimals (i.e., the belief that no numbers exist between two consecutive decimals such as 0.25 and 0.26), not a specific computational procedure that can be encoded as a binary predicate producing a wrong result. Since no runnable rule—i.e., a deterministic function mapping inputs to the *documented wrong output*—is provided, and the error is semantic rather than syntactic, it cannot satisfy the schema requirement that `Rule(Input, Got)` produce the documented misconception as `Got`.",
+      "result": "abstained"
+    }
+  ]
+}

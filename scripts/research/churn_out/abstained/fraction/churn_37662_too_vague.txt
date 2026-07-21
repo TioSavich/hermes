@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37662",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37662_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "=== row 37662: arrow points to location, not a quantity ===",
+    "provenance_comments": "=== row 37662: arrow points to location, not a quantity ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error “arrow points to location, not a quantity” describes a spatial or representational misunderstanding (e.g., misinterpreting a number line arrow as indicating a location rather than a magnitude or quantity), but provides no concrete arithmetic operation, procedure, or syntactic pattern that can be encoded as a deterministic 2-place predicate producing a specific wrong result. Without a runnable student procedure or a reproducible computational rule, a SWI-Prolog rule satisfying the schema cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error “arrow points to location, not a quantity” describes a spatial or representational misunderstanding (e.g., misinterpreting a number line arrow as indicating a location rather than a magnitude or quantity), but provides no concrete arithmetic operation, procedure, or syntactic pattern that can be encoded as a deterministic 2-place predicate producing a specific wrong result. Without a runnable student procedure or a reproducible computational rule, a SWI-Prolog rule satisfying the schema cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40225",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40225_cancel_2pi_to_justify_arc_length",
+    "target_operation": "radian_arc_length_shortcut",
+    "citation": "Michael A. Tallman, Kristin M. Frank (2018)",
+    "error_action": "cancel_2pi_to_justify_arc_length",
+    "error_description": "justify multiplying radian measure by radius by algebraically canceling the 2pi terms",
+    "provenance_comments": "=== row 40225: teacher validates shortcut algebraically ===\nToo vague: pedagogical choice, not a student calc.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: documented error is a pedagogical justification (algebraic cancellation of 2π) rather than a concrete computational rule that yields a specific wrong numerical result; no runnable predicate can be constructed that produces a documented incorrect output without inventing mathematics.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: documented error is a pedagogical justification (algebraic cancellation of 2π) rather than a concrete computational rule that yields a specific wrong numerical result; no runnable predicate can be constructed that produces a documented incorrect output without inventing mathematics.",
+      "result": "abstained"
+    }
+  ]
+}

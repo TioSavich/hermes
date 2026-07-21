@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40267",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40267_angle_size_is_the_region_it_encloses",
+    "target_operation": "angle_measure_vs_area",
+    "citation": "Joan Ferrini-Mundy, Gail Burrill, William H. Schmidt (2007)",
+    "error_action": "angle_size_is_the_region_it_encloses",
+    "error_description": "judge one angle as bigger if its drawn region fits inside or contains the other",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "registration source/domain/description does not match the entry",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40267_angle_size_is_the_region_it_encloses(angle(A1, W1, H1), angle(A2, W2, H2), Got) :-\n    area1 is W1 * H1,\n    area2 is W2 * H2,\n    (area1 >= area2 -> Got = (angle(A1, W1, H1) >= angle(A2, W2, H2)) ; Got = (angle(A2, W2, H2) > angle(A1, W1, H1)))).\n\ntest_harness:arith_misconception(db_row(40267), measurement, angle_size_is_the_region_it_encloses,\n    churn_candidate:churn_40267_angle_size_is_the_region_it_encloses,\n    (angle(30, 2, 2), angle(45, 1, 1)), true).",
+      "result": "registration source/domain/description does not match the entry"
+    },
+    {
+      "response": "churn_candidate:(churn_40267_angle_size_is_the_region_it_encloses(angle(A1, A2), Got) :-\n    Got = (A1 =< A2)).\n\ntest_harness:arith_misconception(db_row(40267), measurement, angle_size_is_the_region_it_encloses,\n    churn_candidate:churn_40267_angle_size_is_the_region_it_encloses,\n    angle(30, 150), true).",
+      "result": "registration source/domain/description does not match the entry"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37869",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37869_partition_into_named_count_any_sizes",
+    "target_operation": "fraction_equal_partitioning",
+    "citation": "Donald M. Peck and Stanley M. Jencks (1981)",
+    "error_action": "partition_into_named_count_any_sizes",
+    "error_description": "cut the figure into as many pieces as the denominator, regardless of whether the pieces are equal",
+    "provenance_comments": "=== row 37869: unequal parts ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_37869_partition_into_named_count_any_sizes",
+  "attempts": [
+    {
+      "response": "churn_candidate:(partition_into_named_count_any_sizes(Frac, Parts) :-\n    Frac = frac(N, D),\n    length(Parts, D),\n    maplist(=(frac(1, D)), Parts)).\n\ntest_harness:arith_misconception(db_row(37869), fraction, churn_37869_partition_into_named_count_any_sizes,\n    churn_candidate:partition_into_named_count_any_sizes,\n    frac(3, 4),\n    [frac(1,4), frac(1,4), frac(1,4), frac(1,4)]).",
+      "result": "predicate must be named churn_37869_partition_into_named_count_any_sizes"
+    },
+    {
+      "response": "churn_candidate:(partition_into_named_count_any_sizes(frac(N,_), Parts) :-\n    findall(part(_), between(1, N, _), Parts)).\n\ntest_harness:arith_misconception(db_row(37869), fraction, churn_37869_partition_into_named_count_any_sizes,\n    churn_candidate:partition_into_named_count_any_sizes,\n    frac(4, _),\n    [part(_), part(_), part(_), part(_)]).",
+      "result": "predicate must be named churn_37869_partition_into_named_count_any_sizes"
+    }
+  ]
+}

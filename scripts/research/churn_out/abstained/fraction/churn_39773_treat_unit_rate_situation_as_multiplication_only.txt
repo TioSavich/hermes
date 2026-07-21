@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39773",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39773_treat_unit_rate_situation_as_multiplication_only",
+    "target_operation": "unit_rate_division",
+    "citation": "Ali Alenazi (2016)",
+    "error_action": "treat_unit_rate_situation_as_multiplication_only",
+    "error_description": "insist that determining a unit rate can only be multiplication, denying any division",
+    "provenance_comments": "=== row 39773: unit-rate sharing must be multiplication ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (insisting unit rate determination can only be multiplication), but no runnable procedural rule is provided that maps inputs to a specific incorrect output via a definable arithmetic operation. The error is phrased as a belief or reasoning flaw rather than a computational procedure that can be encoded as a predicate `Rule(Input, Got)` producing a deterministic wrong result. Without a concrete algorithmic misapplication (e.g., a formulaic misordering of operations or incorrect arithmetic transformation), the rule cannot be implemented as required.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (insisting unit rate determination can only be multiplication), but no runnable procedural rule is provided that maps inputs to a specific incorrect output via a definable arithmetic operation. The error is phrased as a belief or reasoning flaw rather than a computational procedure that can be encoded as a predicate `Rule(Input, Got)` producing a deterministic wrong result. Without a concrete algorithmic misapplication (e.g., a formulaic misordering of operations or incorrect arithmetic transformation), the rule cannot be implemented as required.",
+      "result": "abstained"
+    }
+  ]
+}

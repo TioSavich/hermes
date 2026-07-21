@@ -285,15 +285,15 @@ def format_prolog_chart(result: dict) -> str:
             "",
         ])
 
-    expressive = result.get("expressive_power")
-    if isinstance(expressive, dict):
-        lines.append("## Expressive power this lesson puts in play")
+    inferential = result.get("inferential_strength")
+    if isinstance(inferential, dict):
+        lines.append("## Inferential-strength measures for this lesson")
         for label, key in (
             ("proof-paths (strategic routes through the action space)", "proof_paths"),
             ("strategy incompatibilities", "strategy_incompatibilities"),
             ("misconception incompatibilities", "misconception_incompatibilities"),
         ):
-            field = _fmt_field(label, expressive.get(key))
+            field = _fmt_field(label, inferential.get(key))
             if field:
                 lines.append(field)
         lines.append("")

@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "203",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_203_round_to_nearest_leading_power_of_ten",
+    "target_operation": "rounding_strategy_flexibility",
+    "citation": "Schoen, Blume, Hoover (1990)",
+    "error_action": "round_to_nearest_leading_power_of_ten",
+    "error_description": "always round each number to its highest place value",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 1",
+  "attempts": [
+    {
+      "response": "churn_candidate:(round_to_nearest_leading_power_of_ten(N, Got) :-\n    number_chars(N, Chars),\n    length(Chars, Len),\n    First is Len - 1,\n    Power is 10 ^ First,\n    Got is round(N / Power) * Power).\n\ntest_harness:arith_misconception(db_row(203), whole_number, churn_203_round_to_nearest_leading_power_of_ten,\n    churn_candidate:round_to_nearest_leading_power_of_ten,\n    487,\n    500).",
+      "result": "predicate must be named churn_203_round_to_nearest_leading_power_of_ten"
+    },
+    {
+      "response": "churn_candidate:(churn_203_round_to_nearest_leading_power_of_ten(N, Got) :-\n    between(1, 9, D),\n    N = D * P,\n    P is 10^(X),\n    X is integer(log10(N)),\n    Got is P).\n\ntest_harness:arith_misconception(db_row(203), whole_number, churn_203_round_to_nearest_leading_power_of_ten,\n    churn_candidate:churn_203_round_to_nearest_leading_power_of_ten,\n    450,\n    1000).",
+      "result": "SWI-Prolog gate exited 1"
+    }
+  ]
+}

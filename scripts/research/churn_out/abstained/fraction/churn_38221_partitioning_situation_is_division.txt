@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38221",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38221_partitioning_situation_is_division",
+    "target_operation": "symbolic_representation",
+    "citation": "Nancy K. Mack (2000)",
+    "error_action": "partitioning_situation_is_division",
+    "error_description": "a part-of-part action should be written as a division sentence",
+    "provenance_comments": "=== row 38221: number sentence choice ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error description does not specify a runnable rule that maps an input to a wrong symbolic representation; it only states a pedagogical guideline (\"a part-of-part action should be written as a division sentence\") without specifying *what* incorrect symbolic representation students produce, nor a concrete input where this misconception manifests. Without a clear mapping from input to incorrect output (e.g., a specific symbolic expression they write instead of the correct one), the rule cannot be formalized as required.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error description does not specify a runnable rule that maps an input to a wrong symbolic representation; it only states a pedagogical guideline (\"a part-of-part action should be written as a division sentence\") without specifying *what* incorrect symbolic representation students produce, nor a concrete input where this misconception manifests. Without a clear mapping from input to incorrect output (e.g., a specific symbolic expression they write instead of the correct one), the rule cannot be formalized as required.",
+      "result": "abstained"
+    }
+  ]
+}

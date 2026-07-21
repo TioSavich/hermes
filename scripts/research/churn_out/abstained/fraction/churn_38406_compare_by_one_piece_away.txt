@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38406",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38406_compare_by_one_piece_away",
+    "target_operation": "fraction_comparison",
+    "citation": "Lynsey K. Gibbons, Elham Kazemi, Rebecca M. Lewis (2017)",
+    "error_action": "compare_by_one_piece_away",
+    "error_description": "judge fractions by how many pieces they are short of a benchmark without sizing those pieces",
+    "provenance_comments": "=== row 38406: benchmark failure ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual reasoning pattern (comparing fractions by how many pieces they are short of a benchmark without considering piece size), not a specific syntactic arithmetic procedure that can be encoded as a deterministic 2-place predicate producing a fixed wrong result for a given input. No runnable rule can be defined without inventing or assuming a particular syntactic misapplication (e.g., ignoring denominators, subtracting numerators only, etc.), which violates the requirement to encode the documented error *exactly* and not repair or invent mathematics.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual reasoning pattern (comparing fractions by how many pieces they are short of a benchmark without considering piece size), not a specific syntactic arithmetic procedure that can be encoded as a deterministic 2-place predicate producing a fixed wrong result for a given input. No runnable rule can be defined without inventing or assuming a particular syntactic misapplication (e.g., ignoring denominators, subtracting numerators only, etc.), which violates the requirement to encode the documented error *exactly* and not repair or invent mathematics.",
+      "result": "abstained"
+    }
+  ]
+}

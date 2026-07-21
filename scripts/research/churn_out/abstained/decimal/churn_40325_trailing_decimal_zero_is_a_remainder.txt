@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40325",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40325_trailing_decimal_zero_is_a_remainder",
+    "target_operation": "decimal_multiplication_notation",
+    "citation": "Raisa Guberman (2016)",
+    "error_action": "trailing_decimal_zero_is_a_remainder",
+    "error_description": "a trailing zero after the decimal point is a leftover remainder that can be erased",
+    "provenance_comments": "=== row 40325: trailing zero as \"remainder\" ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating a trailing decimal zero as a \"leftover remainder that can be erased\") but provides no explicit procedural rule or algorithm that students follow to produce a wrong result. Without a concrete, generalizable computational step that yields a specific incorrect output for a given input, we cannot construct a runnable SWI-Prolog rule that produces the documented wrong answer. The task requires a rule where calling `Rule(Input, Got)` yields the documented error outcome, but here the misconception is semantic/interpretive, not algorithmic.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating a trailing decimal zero as a \"leftover remainder that can be erased\") but provides no explicit procedural rule or algorithm that students follow to produce a wrong result. Without a concrete, generalizable computational step that yields a specific incorrect output for a given input, we cannot construct a runnable SWI-Prolog rule that produces the documented wrong answer. The task requires a rule where calling `Rule(Input, Got)` yields the documented error outcome, but here the misconception is semantic/interpretive, not algorithmic.",
+      "result": "abstained"
+    }
+  ]
+}

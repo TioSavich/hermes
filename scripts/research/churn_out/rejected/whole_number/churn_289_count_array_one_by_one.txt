@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "289",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_289_count_array_one_by_one",
+    "target_operation": "array_multiplication",
+    "citation": "[Unknown from NotebookLM] ()",
+    "error_action": "count_array_one_by_one",
+    "error_description": "find an array total by counting every element individually",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 23",
+  "attempts": [
+    {
+      "response": "churn_candidate:(count_array_one_by_one(Rows-Columns, Got) :-\n    between(1, Rows, _),\n    between(1, Columns, _),\n    aggregate(count, true, Got)).\n\ntest_harness:arith_misception(db_row(289), whole_number, churn_289_count_array_one_by_one,\n    churn_candidate:count_array_one_by_one,\n    4-5,\n    20).",
+      "result": "expected exactly one arith_misconception/6 registration; found 0"
+    },
+    {
+      "response": "churn_candidate:(churn_289_count_array_one_by_one(Rows-Cols, Got) :-\n    % Simulate counting each element one-by-one by generating a list of length Rows*Cols\n    % and counting its elements, which yields the correct product, but the *process*\n    % is documented as counting individually — however, the *result* of that process\n    % must match the documented wrong behavior. Since counting one-by-one in an\n    % array of R rows and C columns yields R*C, and no arithmetic error occurs,\n    % there is no documented incorrect result — only a description of a method.\n    % Therefore, we cannot produce a *wrong* output that matches the documented error,\n    % because the documented error describes a *correct* procedure (just inefficient).\n    % The execution gate requires a rule that produces the *documented wrong answer*,\n    % but the description does not specify a *wrong* numerical answer, only a method.\n    fail.\n\ntest_harness:arith_misconception(db_row(289), whole_number, churn_289_count_array_one_by_one,\n    churn_candidate:churn_289_count_array_one_by_one,\n    4-5,\n    20).\n\nABSTAIN: The documented error describes a correct counting method (counting each element individually) that yields the correct total, not a mathematical misconception producing an incorrect result. The schema requires the rule to produce the *documented wrong answer*, but no wrong answer is documented—only the procedure. Without a specified incorrect output, admission is impossible.",
+      "result": "SWI-Prolog gate exited 23"
+    }
+  ]
+}

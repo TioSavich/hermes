@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40170",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40170_repeated_halving_is_not_division",
+    "target_operation": "halving_as_division_model",
+    "citation": "Susan B. Empson, Debra L. Junk (2004)",
+    "error_action": "repeated_halving_is_not_division",
+    "error_description": "treat splitting in half repeatedly as a separate operation unrelated to dividing",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(repeated_halving_is_not_division(N, Got) :-\n    Got is N // 2).\n\ntest_harness:arith_misconception(db_row(40170), whole_number, churn_40170_repeated_halving_is_not_division,\n    churn_candidate:repeated_halving_is_not_division,\n    8,\n    4).",
+      "result": "predicate must be named churn_40170_repeated_halving_is_not_division"
+    },
+    {
+      "response": "churn_candidate:(churn_40170_repeated_halving_is_not_division(A, Got) :-\n    A > 0,\n    half(A, H),\n    Got = H).\n\ntest_harness:arith_misconception(db_row(40170), whole_number, churn_40170_repeated_halving_is_not_division,\n    churn_candidate:churn_40170_repeated_halving_is_not_division,\n    8,\n    4).\n\n% auxiliary helper for halving (integer division by 2, floor)\nchurn_candidate:(half(X, Y) :- Y is X // 2).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

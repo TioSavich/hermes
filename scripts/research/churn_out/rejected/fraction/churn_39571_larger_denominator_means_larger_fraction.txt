@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39571",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39571_larger_denominator_means_larger_fraction",
+    "target_operation": "denominator_size_to_magnitude",
+    "citation": "Hartono Tjoe & Jimmy de la Torre (2014)",
+    "error_action": "larger_denominator_means_larger_fraction",
+    "error_description": "a fraction with a bigger denominator is the bigger fraction",
+    "provenance_comments": "=== row 39571: larger denominator as cause of bigger fraction ===\nNo example in corpus row.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "SWI-Prolog gate exited 1",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39571_larger_denominator_means_larger_fraction(frac(_,D1)-frac(_,D2), frac(N1,D1)) :-\n    D1 > D2).\n\ntest_harness:arith_misconception(db_row(39571), fraction, churn_39571_larger_denominator_means_larger_fraction,\n    churn_candidate:churn_39571_larger_denominator_means_larger_fraction,\n    frac(1,4)-frac(1,3),\n    frac(1,3)).",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "churn_candidate:(churn_39571_larger_denominator_means_larger_fraction(frac(N1,D1)-frac(N2,D2), frac(N1,D1)) :-\n    D1 > D2).\n\ntest_harness:arith_misconception(db_row(39571), fraction, churn_39571_larger_denominator_means_larger_fraction,\n    churn_candidate:churn_39571_larger_denominator_means_larger_fraction,\n    frac(1,4)-frac(1,3),\n    frac(1,3)).",
+      "result": "SWI-Prolog gate exited 1"
+    }
+  ]
+}

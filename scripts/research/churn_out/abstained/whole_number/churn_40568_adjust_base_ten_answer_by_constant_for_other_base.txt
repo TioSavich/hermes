@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40568",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40568_adjust_base_ten_answer_by_constant_for_other_base",
+    "target_operation": "base_conversion_addition",
+    "citation": "Kay McClain (2003)",
+    "error_action": "adjust_base_ten_answer_by_constant_for_other_base",
+    "error_description": "compute in base ten then nudge the answer by a fixed amount to get the other-base result",
+    "provenance_comments": "=== row 40568: base-10 adjust for base-8 (no concrete wrong numeric) ===\nText: student's wrong procedure happens to land on the correct base-8\nanswer (41). No clear wrong numeric output in the example.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error action is described only as \"adjust_base_ten_answer_by_constant_for_other_base\" with no specific constant, and the provenance comments state \"no clear wrong numeric output in the example\". A runnable rule requires a concrete, deterministic adjustment (e.g., `Got is BaseTenAnswer + K`), but no value for `K` or any rule-usable constant is provided. Without a specific documented numerical error or adjustment factor, the rule cannot be instantiated in a way that satisfies the schema requirement for a general, runnable predicate producing the documented wrong answer.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error action is described only as \"adjust_base_ten_answer_by_constant_for_other_base\" with no specific constant, and the provenance comments state \"no clear wrong numeric output in the example\". A runnable rule requires a concrete, deterministic adjustment (e.g., `Got is BaseTenAnswer + K`), but no value for `K` or any rule-usable constant is provided. Without a specific documented numerical error or adjustment factor, the rule cannot be instantiated in a way that satisfies the schema requirement for a general, runnable predicate producing the documented wrong answer.",
+      "result": "abstained"
+    }
+  ]
+}

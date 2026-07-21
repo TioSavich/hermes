@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40271",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40271_standard_algorithm_is_always_the_safest_method",
+    "target_operation": "standard_algorithm_preference",
+    "citation": "Rebecca Ambrose (2004)",
+    "error_action": "standard_algorithm_is_always_the_safest_method",
+    "error_description": "students should use only the standard subtraction algorithm because it is faster and less error-prone",
+    "provenance_comments": "=== row 40271: preference for standard algorithm ===\nAttitude/belief, no arithmetic error.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a belief or attitude (preference for a method) rather than a specific computational error that can be encoded as a deterministic rule producing a wrong arithmetic result. There is no definable input-output mapping that captures \"preference for standard algorithm\" as a procedural error yielding a specific incorrect numeric outcome; it describes a cognitive bias, not a calculational mistake.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a belief or attitude (preference for a method) rather than a specific computational error that can be encoded as a deterministic rule producing a wrong arithmetic result. There is no definable input-output mapping that captures \"preference for standard algorithm\" as a procedural error yielding a specific incorrect numeric outcome; it describes a cognitive bias, not a calculational mistake.",
+      "result": "abstained"
+    }
+  ]
+}

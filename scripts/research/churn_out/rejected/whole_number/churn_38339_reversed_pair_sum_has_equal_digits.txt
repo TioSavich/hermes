@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38339",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38339_reversed_pair_sum_has_equal_digits",
+    "target_operation": "reversed_digit_addition",
+    "citation": "Kotaro Komatsu (2010)",
+    "error_action": "reversed_pair_sum_has_equal_digits",
+    "error_description": "adding a two-digit number to its reversal always yields equal tens and ones digits",
+    "provenance_comments": "=== row 38339: digit-reversal sum conjecture ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 1",
+  "attempts": [
+    {
+      "response": "churn_candidate:(reversed_pair_sum_has_equal_digits(AB, Got) :-\n    between(10, 99, AB),\n    number_chars(AB, [Tens, Ones]),\n    number_chars(Reversed, [Ones, Tens]),\n    Got is AB + Reversed,\n    Tens = Ones).\n\ntest_harness:arith_misconception(db_row(38339), whole_number, churn_38339_reversed_pair_sum_has_equal_digits,\n    churn_candidate:reversed_pair_sum_has_equal_digits,\n    12,\n    33).",
+      "result": "predicate must be named churn_38339_reversed_pair_sum_has_equal_digits"
+    },
+    {
+      "response": "churn_candidate:(churn_38339_reversed_pair_sum_has_equal_digits(A-B, Tens-Ones) :-\n    N1 is A * 10 + B,\n    N2 is B * 10 + A,\n    Sum is N1 + N2,\n    Tens is Sum // 10,\n    Ones is Sum mod 10,\n    Tens = Ones).\n\ntest_harness:arith_misconception(db_row(38339), whole_number, churn_38339_reversed_pair_sum_has_equal_digits,\n    churn_candidate:churn_38339_reversed_pair_sum_has_equal_digits,\n    21-12,\n    33-3).",
+      "result": "SWI-Prolog gate exited 1"
+    }
+  ]
+}

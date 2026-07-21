@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38764",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38764_simulate_written_algorithm_mentally",
+    "target_operation": "mental_computation_strategy",
+    "citation": "ORIT HAZZAN AND RINA ZAZKIS (2005)",
+    "error_action": "simulate_written_algorithm_mentally",
+    "error_description": "perform mental arithmetic by visualizing the column-aligned pen-and-paper algorithm and operating digit by digit right to left",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a mental strategy (simulating written algorithm) but does not specify a concrete, runnable rule that produces a *systematic wrong answer* from a given input; it describes a process, not a mapping from input to incorrect output. Without a defined incorrect result for a specific input, a testable rule cannot be constructed without invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38764_simulate_written_algorithm_mentally(A-B, Got) :-\n    % Simulate mental execution of written addition algorithm: right-to-left digit-wise addition with carry,\n    % but omit carry propagation beyond the most significant digit of the shorter operand (i.e., drop final carry).\n    number_chars(A, CA),\n    number_chars(B, CB),\n    reverse(CA, RA),\n    reverse(CB, RB),\n    pad_to_same_length(RA, RB, PaddedA, PaddedB),\n    compute_digitwise_sum(PaddedA, PaddedB, 0, [], RevSum),\n    reverse(RevSum, SumDigits),\n    drop_final_carry_if_present(SumDigits, FinalSumDigits),\n    number_chars(Got, FinalSumDigits)).\n\npad_to_same_length(List1, List2, Padded1, Padded2) :-\n    length(List1, Len1),\n    length(List2, Len2),\n    MaxLen is max(Len1, Len2),\n    pad_list(List1, MaxLen, Padded1),\n    pad_list(List2, MaxLen, Padded2).\n\npad_list(List, Len, Padded) :-\n    length(List, L),\n    Diff is Len - L,\n    ( Diff > 0 ->\n        append(List, fill_chars(Diff, '0'), Padded)\n    ; Padded = List ).\n\nfill_chars(0, []) :- !.\nfill_chars(N, ['0'|Rest]) :-\n    N1 is N - 1,\n    fill_chars(N1, Rest).\n\ncompute_digitwise_sum([], [], Carry, Acc, Acc) :-\n    Carry = 0, !.\ncompute_digitwise_sum([], [], Carry, Acc, [C|Acc]) :-\n    Carry > 0,\n    C is Carry.\n\ncompute_digitwise_sum([A|As], [B|Bs], Carry, Acc, Result) :-\n    Da is A - '0',\n    Db is B - '0',\n    Sum is Da + Db + Carry,\n    Digit is Sum mod 10,\n    NewCarry is Sum div 10,\n    compute_digitwise_sum(As, Bs, NewCarry, [Digit+0'0|Acc], Result).\n\ndrop_final_carry_if_present([0], []) :- !.\ndrop_final_carry_if_present([H|T], [H|T]).\n\ntest_harness:arith_misconception(db_row(38764), whole_number, churn_38764_simulate_written_algorithm_mentally,\n    churn_candidate:churn_38764_simulate_written_algorithm_mentally,\n    999-1,\n    990).",
+      "result": "external module qualification is not allowed: algorithm:"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a mental strategy (simulating written algorithm) but does not specify a concrete, runnable rule that produces a *systematic wrong answer* from a given input; it describes a process, not a mapping from input to incorrect output. Without a defined incorrect result for a specific input, a testable rule cannot be constructed without invention.",
+      "result": "abstained"
+    }
+  ]
+}

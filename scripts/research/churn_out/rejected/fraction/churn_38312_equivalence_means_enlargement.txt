@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38312",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38312_equivalence_means_enlargement",
+    "target_operation": "equivalent_fractions",
+    "citation": "Iman C. Chahine (2013)",
+    "error_action": "equivalence_means_enlargement",
+    "error_description": "believe multiplying numerator and denominator enlarges the physical quantity",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_38312_equivalence_means_enlargement",
+  "attempts": [
+    {
+      "response": "churn_candidate:(equivalence_means_enlargement(frac(N,D), frac(N*2, D*2)) :-\n    true).\n\ntest_harness:arith_misconception(db_row(38312), fraction, churn_38312_equivalence_means_enlargement,\n    churn_candidate:equivalence_means_enlargement,\n    frac(1,2),\n    frac(1,2)).",
+      "result": "predicate must be named churn_38312_equivalence_means_enlargement"
+    },
+    {
+      "response": "churn_candidate:(equivalence_means_enlargement(frac(N,D), frac(N2,D2)) :-\n    N2 is N * K,\n    D2 is D * K,\n    K > 1,\n    N2 > N).\n\ntest_harness:arith_misconception(db_row(38312), fraction, churn_38312_equivalence_means_enlargement,\n    churn_candidate:equivalence_means_enlargement,\n    frac(1,2),\n    frac(2,4)).",
+      "result": "predicate must be named churn_38312_equivalence_means_enlargement"
+    }
+  ]
+}

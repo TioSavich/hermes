@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39605",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39605_numerator_names_count_in_each_group",
+    "target_operation": "numerator_meaning_discrete_quantity",
+    "citation": "Angelika Kullberg & Ulla Runesson (2013)",
+    "error_action": "numerator_names_count_in_each_group",
+    "error_description": "treat the numerator as how many objects to place in each partitioned group",
+    "provenance_comments": "=== row 39605: numerator as per-group count ===\nTask: 2/4 of 12.\nCorrect: 6.\nError: partitioned 12 into groups of 2 (N per group), producing 6 groups —\nnumeric answer coincidentally 6. No distinct wrong output.",
+    "worked_example": "Task: 2/4 of 12.\nCorrect: 6.\nError: partitioned 12 into groups of 2 (N per group), producing 6 groups —",
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error produces the same numeric answer (6) as the correct solution for the given example (2/4 of 12), so there is no distinct wrong output to capture; the rule cannot be made general without altering the misconception or producing non-unique results across inputs.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error produces the same numeric answer (6) as the correct solution for the given example (2/4 of 12), so there is no distinct wrong output to capture; the rule cannot be made general without altering the misconception or producing non-unique results across inputs.",
+      "result": "abstained"
+    }
+  ]
+}

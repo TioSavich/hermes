@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37667",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37667_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "=== row 37667: translation failure ===",
+    "provenance_comments": "=== row 37667: translation failure ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: no runnable rule can be constructed because the documented error is merely \"too_vague\" with no specific mathematical procedure or incorrect operation described; without a concrete error behavior or worked example, the required Rule predicate cannot be defined.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no runnable rule can be constructed because the documented error is merely \"too_vague\" with no specific mathematical procedure or incorrect operation described; without a concrete error behavior or worked example, the required Rule predicate cannot be defined.",
+      "result": "abstained"
+    }
+  ]
+}

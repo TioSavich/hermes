@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "221",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_221_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error description and all metadata are insufficient to determine a runnable rule or a defensible probe; the term \"too_vague\" provides no concrete procedural error, and no worked example or operation is specified to derive Input or ExpectedCorrect.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error description and all metadata are insufficient to determine a runnable rule or a defensible probe; the term \"too_vague\" provides no concrete procedural error, and no worked example or operation is specified to derive Input or ExpectedCorrect.",
+      "result": "abstained"
+    }
+  ]
+}

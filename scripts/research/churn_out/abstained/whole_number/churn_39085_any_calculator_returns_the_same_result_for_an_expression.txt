@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39085",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39085_any_calculator_returns_the_same_result_for_an_expression",
+    "target_operation": "calculator_operation_logic",
+    "citation": "JAN VAN DEN BRINK (1993)",
+    "error_action": "any_calculator_returns_the_same_result_for_an_expression",
+    "error_description": "typing the same sequence of keys gives the same answer on every machine",
+    "provenance_comments": "=== row 39085: calculator-logic differences (not a student rule) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a misconception about calculator behavior rather than a specific syntactic or semantic rule that a student applies to compute an expression. It does not specify a deterministic, generalizable computational procedure that can be encoded as a Prolog predicate of arity 2 producing a consistent incorrect result across inputs. The error is contextual (device-dependent behavior), not a mathematical manipulation rule, and thus cannot be rendered as a runnable rule meeting the schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a misconception about calculator behavior rather than a specific syntactic or semantic rule that a student applies to compute an expression. It does not specify a deterministic, generalizable computational procedure that can be encoded as a Prolog predicate of arity 2 producing a consistent incorrect result across inputs. The error is contextual (device-dependent behavior), not a mathematical manipulation rule, and thus cannot be rendered as a runnable rule meeting the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

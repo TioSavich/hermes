@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38457",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38457_place_fractions_as_positions_without_length_measure",
+    "target_operation": "fractions_on_number_line",
+    "citation": "John Olive, Eugenia Vomvoridi (2006)",
+    "error_action": "place_fractions_as_positions_without_length_measure",
+    "error_description": "place each fraction as a position treating one half as the largest possible fraction and ignoring distance",
+    "provenance_comments": "=== row 38457: placement on number line without distance sense ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding about placing fractions on a number line (treating 1/2 as the largest possible fraction and ignoring distance), but does not specify a runnable procedural rule that maps an input to a wrong output via a predicate of arity 2. Without a concrete, generalizable computational procedure (e.g., a formula or algorithm) that students are documented to apply, we cannot construct a deterministic rule `Rule(Input, Got)` that reliably produces the documented wrong answer for arbitrary inputs. The error is cognitive and spatial, not algorithmic in a provable computational sense.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding about placing fractions on a number line (treating 1/2 as the largest possible fraction and ignoring distance), but does not specify a runnable procedural rule that maps an input to a wrong output via a predicate of arity 2. Without a concrete, generalizable computational procedure (e.g., a formula or algorithm) that students are documented to apply, we cannot construct a deterministic rule `Rule(Input, Got)` that reliably produces the documented wrong answer for arbitrary inputs. The error is cognitive and spatial, not algorithmic in a provable computational sense.",
+      "result": "abstained"
+    }
+  ]
+}

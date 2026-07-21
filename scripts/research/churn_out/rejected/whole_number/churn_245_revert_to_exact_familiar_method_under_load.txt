@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "245",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_245_revert_to_exact_familiar_method_under_load",
+    "target_operation": "addition_estimation",
+    "citation": "Bobis, J. (1991)",
+    "error_action": "revert_to_exact_familiar_method_under_load",
+    "error_description": "abandon estimation and fall back to a familiar exact procedure when there are many addends",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(reverts_to_exact_addition_under_load(List, Got) :-\n    Got is sum_list(List)).\n\ntest_harness:arith_misconception(db_row(245), whole_number, churn_245_revert_to_exact_familiar_method_under_load,\n    churn_candidate:reverts_to_exact_addition_under_load,\n    [12, 34, 56, 78, 90, 12, 34],\n    316).",
+      "result": "predicate must be named churn_245_revert_to_exact_familiar_method_under_load"
+    },
+    {
+      "response": "churn_candidate:(churn_245_revert_to_exact_familiar_method_under_load(A+B+C+D+E, Got) :-\n    Got is A + B + C + D + E).\n\ntest_harness:arith_misconception(db_row(245), whole_number, churn_245_revert_to_exact_familiar_method_under_load,\n    churn_candidate:churn_245_revert_to_exact_familiar_method_under_load,\n    12+34+56+78+90,\n    270).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

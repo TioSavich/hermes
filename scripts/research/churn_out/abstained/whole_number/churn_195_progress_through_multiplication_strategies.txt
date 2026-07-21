@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "195",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_195_progress_through_multiplication_strategies",
+    "target_operation": "multiplication_strategy_progression",
+    "citation": "Sherin, Fuson (2005)",
+    "error_action": "progress_through_multiplication_strategies",
+    "error_description": "move from count-all through count-by and pattern-based to learned products",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a pedagogical progression description, not a concrete computational error; it does not specify a runnable rule or a defensible probe that produces a *wrong* output from a *given* input in a way that can be captured by a 2-arity predicate without additional mathematical or procedural assumptions not present in the source.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a pedagogical progression description, not a concrete computational error; it does not specify a runnable rule or a defensible probe that produces a *wrong* output from a *given* input in a way that can be captured by a 2-arity predicate without additional mathematical or procedural assumptions not present in the source.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "259",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_259_type_digits_in_computation_direction_order",
+    "target_operation": "digit_order_reversal_from_direction_conflict",
+    "citation": "Hativa (1993)",
+    "error_action": "type_digits_in_computation_direction_order",
+    "error_description": "enter answer digits following the direction the computation proceeded, reversing them under mixed horizontal/vertical practice",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "output 86 does not match explicit documented claim(s) ['digits']",
+  "attempts": [
+    {
+      "response": "churn_candidate:(reverses_digit_order_on_horizontal_left_to_right(A-B, Got) :-\n    atomic_list_concat([A, B], '-', Expr),\n    string_codes(Expr, Codes),\n    reverse(Codes, RevCodes),\n    atomic_list_concat(RevCodes, '', GotStr),\n    atom_number(GotStr, Got)).\n\ntest_harness:arith_misconception(db_row(259), whole_number, churn_259_type_digits_in_computation_direction_order,\n    churn_candidate:reverses_digit_order_on_horizontal_left_to_right,\n    32-4,\n    28).",
+      "result": "predicate must be named churn_259_type_digits_in_computation_direction_order"
+    },
+    {
+      "response": "churn_candidate:(churn_259_type_digits_in_computation_direction_order(A+B, Got) :-\n    Got is (A mod 10)*10 + (A // 10) + (B mod 10)*10 + (B // 10)).\n\ntest_harness:arith_misconception(db_row(259), whole_number, churn_259_type_digits_in_computation_direction_order,\n    churn_candidate:churn_259_type_digits_in_computation_direction_order,\n    23+45,\n    68).",
+      "result": "output 86 does not match explicit documented claim(s) ['digits']"
+    }
+  ]
+}

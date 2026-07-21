@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39700",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39700_treat_each_linear_representation_as_context_specific",
+    "target_operation": "fraction_across_linear_contexts",
+    "citation": "Xiaofen Zhang & M. A. (Ken) Clements & Nerida F. Ellerton (2015)",
+    "error_action": "treat_each_linear_representation_as_context_specific",
+    "error_description": "mark a fraction at different proportional positions depending on whether the model is a number line or a physical length",
+    "provenance_comments": "=== row 39700: number line vs ribbon ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating number line and physical length models differently) but does not specify a runnable, generalizable syntactic rule that produces a predictable incorrect output in a specific arithmetic operation on fractions. Without a concrete, executable transformation (e.g., a formula or procedural step that consistently yields a wrong result), no valid `Rule` predicate of arity 2 can be constructed per schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating number line and physical length models differently) but does not specify a runnable, generalizable syntactic rule that produces a predictable incorrect output in a specific arithmetic operation on fractions. Without a concrete, executable transformation (e.g., a formula or procedural step that consistently yields a wrong result), no valid `Rule` predicate of arity 2 can be constructed per schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

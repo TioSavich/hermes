@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39467",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39467_trust_formal_algorithm_over_situation",
+    "target_operation": "partitive_division",
+    "citation": "DAGMAR NEUMAN (1999)",
+    "error_action": "trust_formal_algorithm_over_situation",
+    "error_description": "apply a formal division or multiplication algorithm and reject results, even correct facts, that one cannot relate to the sharing situation",
+    "provenance_comments": "=== row 39467: partitive division clash with algorithm ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a meta-level rejection of correct results due to situational incoherence, not a specific syntactic manipulation that produces a wrong numerical output; the error is epistemic (trust in algorithm over sense-making), not algorithmic (a deterministic computational mistake).",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a meta-level rejection of correct results due to situational incoherence, not a specific syntactic manipulation that produces a wrong numerical output; the error is epistemic (trust in algorithm over sense-making), not algorithmic (a deterministic computational mistake).",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "173",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_173_count_perceptual_objects_for_every_fact",
+    "target_operation": "perceptual_counting_reliance",
+    "citation": "Gray, Eddie & Pinto, Marcia & Pitta, Demetra & Tall, David (1999)",
+    "error_action": "count_perceptual_objects_for_every_fact",
+    "error_description": "compute by counting perceptual or finger-based objects each time rather than retrieving compressed number facts",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive strategy (counting perceptual objects for every fact) rather than a specific syntactic arithmetic procedure that can be encoded as a deterministic SWI-Prolog predicate of arity 2 producing a unique wrong output for a given input. Such a strategy is inherently procedural and context-dependent, not a definable algebraic rule applicable to a general input pair. No concrete, generalizable Rule predicate can be constructed without inventing a model of human counting behavior, which violates the constraint to encode the documented error exactly and without invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_173_count_perceptual_objects_for_every_fact(A+B, Got) :-\n    % Simulate counting A objects, then B objects, and tallying total\n    findall(1, between(1, A, _), As), length(As, LA),\n    findall(1, between(1, B, _), Bs), length(Bs, LB),\n    Got is LA + LB).\n\ntest_harness:arith_misconception(db_row(173), whole_number, churn_173_count_perceptual_objects_for_every_fact,\n    churn_candidate:churn_173_count_perceptual_objects_for_every_fact,\n    3+4,\n    7).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive strategy (counting perceptual objects for every fact) rather than a specific syntactic arithmetic procedure that can be encoded as a deterministic SWI-Prolog predicate of arity 2 producing a unique wrong output for a given input. Such a strategy is inherently procedural and context-dependent, not a definable algebraic rule applicable to a general input pair. No concrete, generalizable Rule predicate can be constructed without inventing a model of human counting behavior, which violates the constraint to encode the documented error exactly and without invention.",
+      "result": "abstained"
+    }
+  ]
+}

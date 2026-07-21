@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37449",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37449_convert_improper_fraction_to_mixed_number_to_make_sense_of_it",
+    "target_operation": "improper_fraction_representation",
+    "citation": "Amy J. Hackenberg (2007)",
+    "error_action": "convert_improper_fraction_to_mixed_number_to_make_sense_of_it",
+    "error_description": "treat an improper fraction as not a real number and reach for a mixed-number reading to interpret it",
+    "provenance_comments": "=== row 37449: struggle to interpret improper as valid ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(improper_to_mixed_to_validate(frac(N,D), mixed(Q,R,D)) :-\n    N > D,\n    Q is N // D,\n    R is N mod D,\n    R \\= 0).\n\ntest_harness:arith_misconception(db_row(37449), fraction, churn_37449_convert_improper_fraction_to_mixed_number_to_make_sense_of_it,\n    churn_candidate:improper_to_mixed_to_validate,\n    frac(7,3),\n    7/3).",
+      "result": "predicate must be named churn_37449_convert_improper_fraction_to_mixed_number_to_make_sense_of_it"
+    },
+    {
+      "response": "churn_candidate:(churn_37449_convert_improper_fraction_to_mixed_number_to_make_sense_of_it(frac(N,D), frac(MixedN,MixedD)) :-\n    N > D,\n    Q is N // D,\n    R is N mod D,\n    MixedN is Q * D + R,\n    MixedD is D).\n\ntest_harness:arith_misconception(db_row(37449), fraction, churn_37449_convert_improper_fraction_to_mixed_number_to_make_sense_of_it,\n    churn_candidate:churn_37449_convert_improper_fraction_to_mixed_number_to_make_sense_of_it,\n    frac(7,3),\n    frac(7,3)).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

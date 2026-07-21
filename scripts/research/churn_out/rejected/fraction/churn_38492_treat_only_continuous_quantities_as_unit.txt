@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38492",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38492_treat_only_continuous_quantities_as_unit",
+    "target_operation": "discrete_fractions",
+    "citation": "Guy Brousseau, Nadine Brousseau, Virginia Warfield (2004)",
+    "error_action": "treat_only_continuous_quantities_as_unit",
+    "error_description": "recognize a fractional unit only when the whole is a continuous object, not a collection",
+    "provenance_comments": "=== row 38492: discrete fractions ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_38492_treat_only_continuous_quantities_as_unit",
+  "attempts": [
+    {
+      "response": "churn_candidate:(treat_only_continuous_as_unit(frac(_,_)-frac(_,_), 1) :-\n    true).\n\ntest_harness:arith_misconception(db_row(38492), fraction, churn_38492_treat_only_continuous_quantities_as_unit,\n    churn_candidate:treat_only_continuous_as_unit,\n    frac(3,5)-frac(2,5),\n    1).",
+      "result": "predicate must be named churn_38492_treat_only_continuous_quantities_as_unit"
+    },
+    {
+      "response": "churn_candidate:(discrete_to_continuous_only(frac(N,W)-frac(_,_), frac(N,1)) :-\n    integer(N),\n    integer(W),\n    W > 0,\n    N > 0).\n\ntest_harness:arith_misconception(db_row(38492), fraction, churn_38492_treat_only_continuous_quantities_as_unit,\n    churn_candidate:discrete_to_continuous_only,\n    frac(3,5)-frac(1,5),\n    frac(3,5)).",
+      "result": "predicate must be named churn_38492_treat_only_continuous_quantities_as_unit"
+    }
+  ]
+}

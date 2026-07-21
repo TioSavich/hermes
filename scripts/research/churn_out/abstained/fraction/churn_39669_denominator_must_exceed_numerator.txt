@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39669",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39669_denominator_must_exceed_numerator",
+    "target_operation": "improper_fraction_legitimacy",
+    "citation": "Mary Mueller & Carolyn Maher (2009)",
+    "error_action": "denominator_must_exceed_numerator",
+    "error_description": "a fraction is only well-formed when its denominator is larger than its numerator",
+    "provenance_comments": "=== row 39669: belief numerator can't exceed denominator ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception (a belief about well-formedness), not a procedural rule that can be encoded as a binary predicate producing a specific wrong output. There is no executable procedure described—only a false constraint on fraction legitimacy—so no runnable `Rule(Input, Got)` can be constructed that yields a *wrong numerical answer* for a given input; instead, the error would manifest as rejecting valid inputs, which does not fit the `arith_misconception/6` schema requiring a concrete `ExpectedCorrect` that *does* unify with the correct result.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception (a belief about well-formedness), not a procedural rule that can be encoded as a binary predicate producing a specific wrong output. There is no executable procedure described—only a false constraint on fraction legitimacy—so no runnable `Rule(Input, Got)` can be constructed that yields a *wrong numerical answer* for a given input; instead, the error would manifest as rejecting valid inputs, which does not fit the `arith_misconception/6` schema requiring a concrete `ExpectedCorrect` that *does* unify with the correct result.",
+      "result": "abstained"
+    }
+  ]
+}

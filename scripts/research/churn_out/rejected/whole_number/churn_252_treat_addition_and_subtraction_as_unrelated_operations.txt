@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "252",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_252_treat_addition_and_subtraction_as_unrelated_operations",
+    "target_operation": "addition_subtraction_inverse",
+    "citation": "Nunes, Terezinha & Bryant, Peter & Barros, Rossana & Sylva, Kathy (2012)",
+    "error_action": "treat_addition_and_subtraction_as_unrelated_operations",
+    "error_description": "do not use the inverse relation between addition and subtraction when carrying or borrowing",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "predicate must be named churn_252_treat_addition_and_subtraction_as_unrelated_operations",
+  "attempts": [
+    {
+      "response": "churn_candidate:(treats_addition_subtraction_as_unrelated(A+B, Got) :-\n    Got is A + B).\n\ntest_harness:arith_misconception(db_row(252), whole_number, churn_252_treat_addition_and_subtraction_as_unrelated_operations,\n    churn_candidate:treats_addition_subtraction_as_unrelated,\n    34+28,\n    62).",
+      "result": "predicate must be named churn_252_treat_addition_and_subtraction_as_unrelated_operations"
+    },
+    {
+      "response": "churn_candidate:(treats_addition_subtraction_as_unrelated(A+B-C, Got) :-\n    Got is (A + B) - C).\n\ntest_harness:arith_misconception(db_row(252), whole_number, churn_252_treat_addition_and_subtraction_as_unrelated_operations,\n    churn_candidate:treats_addition_subtraction_as_unrelated,\n    15+7-5,\n    17).",
+      "result": "predicate must be named churn_252_treat_addition_and_subtraction_as_unrelated_operations"
+    }
+  ]
+}

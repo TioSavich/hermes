@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37691",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37691_subtract_smaller_digit_from_larger_per_column",
+    "target_operation": "vertical_subtraction_columnwise",
+    "citation": "Terezinha Nunes Carraher, David William Carraher and Analucia Dias Schliemann (1987)",
+    "error_action": "subtract_smaller_digit_from_larger_per_column",
+    "error_description": "in each column take the smaller digit from the larger regardless of which is on top",
+    "provenance_comments": "=== row 37691: absurd subtraction result accepted (no single rule) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: the documented procedure “subtract smaller digit from larger per column” is ambiguous without specifying digit positions (e.g., units vs. tens), and the source provides no concrete worked example or disambiguating detail to construct a general, deterministic, and executable rule. Without a well-defined mapping from input digits to output digits (e.g., handling of borrowing or sign), the procedure cannot be rendered as a pure, deterministic 2-place predicate without invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_37691_subtract_smaller_digit_from_larger_per_column(A-B, Got) :-\n    number_digits(A, ADigits),\n    number_digits(B, BDigits),\n    pad_to_same_length(ADigits, BDigits, PAD_A, PAD_B),\n    subtract_digits_smaller_from_larger(PAD_A, PAD_B, ResultDigits),\n    digits_to_number(ResultDigits, Got)).\n\nnumber_digits(N, Ds) :-\n    number_chars(N, Cs),\n    maplist(char_code_digit, Cs, Ds).\n\nchar_code_digit(C, D) :-\n    code_type(C, digit(D)).\n\npad_to_same_length(As, Bs, AsPad, BsPad) :-\n    length(As, LA),\n    length(Bs, LB),\n    Max is max(LA, LB),\n    pad_list(As, Max, AsPad),\n    pad_list(Bs, Max, BsPad).\n\npad_list(List, Len, Padded) :-\n    length(List, L),\n    PadLen is Len - L,\n    pad_right(PadLen, List, Padded).\n\npad_right(0, L, L).\npad_right(N, L, [0|Rest]) :-\n    N > 0,\n    N1 is N - 1,\n    pad_right(N1, L, Rest).\n\nsubtract_digits_smaller_from_larger([], [], []).\nsubtract_digits_smaller_from_larger([A|As], [B|Bs], [D|Ds]) :-\n    D is abs(A - B),\n    subtract_digits_smaller_from_larger(As, Bs, Ds).\n\ndigits_to_number(Ds, N) :-\n    digits_to_number_acc(Ds, 0, N).\n\ndigits_to_number_acc([], Acc, Acc).\ndigits_to_number_acc([D|Ds], Acc, N) :-\n    Acc1 is Acc * 10 + D,\n    digits_to_number_acc(Ds, Acc1, N).\n\ntest_harness:arith_misconception(db_row(37691), whole_number, churn_37691_subtract_smaller_digit_from_larger_per_column,\n    churn_candidate:churn_37691_subtract_smaller_digit_from_larger_per_column,\n    42-27,\n    25).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: the documented procedure “subtract smaller digit from larger per column” is ambiguous without specifying digit positions (e.g., units vs. tens), and the source provides no concrete worked example or disambiguating detail to construct a general, deterministic, and executable rule. Without a well-defined mapping from input digits to output digits (e.g., handling of borrowing or sign), the procedure cannot be rendered as a pure, deterministic 2-place predicate without invention.",
+      "result": "abstained"
+    }
+  ]
+}

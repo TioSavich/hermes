@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39928",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39928_write_essential_counting_strokes",
+    "target_operation": "numeral_formation",
+    "citation": "Paul M.E. Shutler & Ng Swee Fong (2010)",
+    "error_action": "write_essential_counting_strokes",
+    "error_description": "form a numeral by its essential counting strokes, sometimes reversed or inverted",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "predicate must be named churn_39928_write_essential_counting_strokes",
+  "attempts": [
+    {
+      "response": "churn_candidate:(write_essential_counting_strokes(N, Got) :-\n    % Documented error: write the digits in reversed order\n    number_chars(N, Chars),\n    reverse(Chars, Reversed),\n    atom_chars(GotAtom, Reversed),\n    atom_number(GotAtom, Got)).\n\ntest_harness:arith_misconception(db_row(39928), whole_number, churn_39928_write_essential_counting_strokes,\n    churn_candidate:write_essential_counting_strokes,\n    123,\n    321).",
+      "result": "external module qualification is not allowed: error:"
+    },
+    {
+      "response": "churn_candidate:(write_essential_counting_strokes(N, Got) :-\n    % Student writes the numeral by counting strokes in reverse order (e.g., 21 instead of 12)\n    % Specifically: for a two-digit number AB, student writes BA as the numeral\n    number_codes(N, Chars),\n    reverse(Chars, RevChars),\n    number_codes(Got, RevChars)).\n\ntest_harness:arith_misconception(db_row(39928), whole_number, churn_39928_write_essential_counting_strokes,\n    churn_candidate:write_essential_counting_strokes,\n    12,\n    21).",
+      "result": "predicate must be named churn_39928_write_essential_counting_strokes"
+    }
+  ]
+}

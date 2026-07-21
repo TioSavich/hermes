@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "255",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_255_treat_ten_as_ten_ones_only",
+    "target_operation": "place_value_and_counting",
+    "citation": "Gray & Tall (2007)",
+    "error_action": "treat_ten_as_ten_ones_only",
+    "error_description": "understand ten as a collection of ten individual ones rather than as one composite unit",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "predicate must be named churn_255_treat_ten_as_ten_ones_only",
+  "attempts": [
+    {
+      "response": "churn_candidate:(treat_ten_as_ten_ones_only(Tens, Got) :-\n    Got is Tens * 1).\n\ntest_harness:arith_misconception(db_row(255), whole_number, churn_255_treat_ten_as_ten_ones_only,\n    churn_candidate:treat_ten_as_ten_ones_only,\n    10-1,\n    10).",
+      "result": "predicate must be named churn_255_treat_ten_as_ten_ones_only"
+    },
+    {
+      "response": "churn_candidate:(treat_ten_as_ten_ones_only(A, Got) :-\n    length(_, A),\n    length(Got, A)).\n\ntest_harness:arith_misconception(db_row(255), whole_number, churn_255_treat_ten_as_ten_ones_only,\n    churn_candidate:treat_ten_as_ten_ones_only,\n    10,\n    [1,1,1,1,1,1,1,1,1,1]).\nABSTAIN: predicate must be named churn_255_treat_ten_as_ten_ones_only",
+      "result": "predicate must be named churn_255_treat_ten_as_ten_ones_only"
+    }
+  ]
+}

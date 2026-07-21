@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40106",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40106_number_sense_does_not_transfer_from_money_context_to_formal_format",
+    "target_operation": "context_situated_subtraction",
+    "citation": "Edd V. Taylor (2012)",
+    "error_action": "number_sense_does_not_transfer_from_money_context_to_formal_format",
+    "error_description": "the difference-from-100 is solvable in a money/change situation but not when posed as a formal written exercise",
+    "provenance_comments": "=== row 40106: formal vs situated subtraction ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive phenomenon—difficulty transferring number sense from a money/change context to a formal subtraction problem—but provides no specific syntactic or procedural rule that a student follows to produce a *systematically wrong answer*. Without a reproducible, generalizable computational rule (e.g., a misapplied algorithm or misinterpreted operation), no runnable Prolog rule of arity 2 can be constructed that yields the documented error for a given input. The test harness requires a deterministic rule mapping Input → Got, where Got is the erroneous output; this cannot be satisfied from the current documentation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive phenomenon—difficulty transferring number sense from a money/change context to a formal subtraction problem—but provides no specific syntactic or procedural rule that a student follows to produce a *systematically wrong answer*. Without a reproducible, generalizable computational rule (e.g., a misapplied algorithm or misinterpreted operation), no runnable Prolog rule of arity 2 can be constructed that yields the documented error for a given input. The test harness requires a deterministic rule mapping Input → Got, where Got is the erroneous output; this cannot be satisfied from the current documentation.",
+      "result": "abstained"
+    }
+  ]
+}

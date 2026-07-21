@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40129",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40129_repeated_halving_partition",
+    "target_operation": "equal_sharing_partitioning",
+    "citation": "RUTH M. STEINBERG, SUSAN B. EMPSON and THOMAS P. CARPENTER (2004)",
+    "error_action": "repeated_halving_partition",
+    "error_description": "share by halving cakes and then halving the halves rather than cutting standard nths",
+    "provenance_comments": "=== row 40129: repeated halving sharing ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_40129_repeated_halving_partition",
+  "attempts": [
+    {
+      "response": "churn_candidate:(repeated_halving_partition(frac(N,D), frac(N, D * 2^K)) :-\n    integer(N),\n    integer(D),\n    K > 0,\n    N =\\= 0,\n    D > 0,\n    K is K1 + 1,\n    repeated_halving_partition(frac(N,D), frac(N, D * 2^K1)).\n\ntest_harness:arith_misconception(db_row(40129), fraction, churn_40129_repeated_halving_partition,\n    churn_candidate:repeated_halving_partition,\n    frac(1,1),\n    frac(1,2)).",
+      "result": "predicate must be named churn_40129_repeated_halving_partition"
+    },
+    {
+      "response": "churn_candidate:(repeated_halving_partition(frac(N,D), frac(N, D * 2^K)) :-\n    integer(K),\n    K > 0,\n    D2K is D * (1 << K)).\n\ntest_harness:arith_misconception(db_row(40129), fraction, churn_40129_repeated_halving_partition,\n    churn_candidate:repeated_halving_partition,\n    frac(1,1),\n    frac(1,4)).",
+      "result": "predicate must be named churn_40129_repeated_halving_partition"
+    }
+  ]
+}

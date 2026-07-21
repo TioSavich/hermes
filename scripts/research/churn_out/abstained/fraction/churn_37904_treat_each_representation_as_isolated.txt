@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37904",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37904_treat_each_representation_as_isolated",
+    "target_operation": "representation_linking",
+    "citation": "Kristine K. Montis (2000)",
+    "error_action": "treat_each_representation_as_isolated",
+    "error_description": "hold model, spoken word, and symbol as separate concepts without a connecting bridge",
+    "provenance_comments": "=== row 37904: phonological-processing deficit (cognitive, not arithmetic) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive processing deficit (phonological-processing) rather than a specific arithmetical manipulation rule. It does not specify a runnable predicate or a deterministic transformation that maps inputs to a documented wrong output in a way that can be expressed as a SWI-Prolog rule of arity 2 without invoking semantics beyond arithmetic (e.g., phonological or conceptual linking). The schema requires a concrete, executable rule producing a *mathematically incorrect* but *systematically reproducible* result; this entry provides only a descriptive cognitive label without algorithmic content.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive processing deficit (phonological-processing) rather than a specific arithmetical manipulation rule. It does not specify a runnable predicate or a deterministic transformation that maps inputs to a documented wrong output in a way that can be expressed as a SWI-Prolog rule of arity 2 without invoking semantics beyond arithmetic (e.g., phonological or conceptual linking). The schema requires a concrete, executable rule producing a *mathematically incorrect* but *systematically reproducible* result; this entry provides only a descriptive cognitive label without algorithmic content.",
+      "result": "abstained"
+    }
+  ]
+}

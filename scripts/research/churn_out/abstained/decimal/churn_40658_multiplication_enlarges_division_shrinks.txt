@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40658",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40658_multiplication_enlarges_division_shrinks",
+    "target_operation": "operation_size_effect",
+    "citation": "Lieven Verschaffel, Erik De Corte, Sabien Lasure, Griet Van Vaerenbergh, Hedwig Bogaerts, Elie Ratinckx (1999)",
+    "error_action": "multiplication_enlarges_division_shrinks",
+    "error_description": "multiplying always yields a bigger result and dividing a smaller one",
+    "provenance_comments": "=== row 40658: MMB/DMS inverse-operation errors ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception (\"multiplication always yields a bigger result and dividing a smaller one\") but no specific runnable rule or concrete input-output pair is provided in the source row to construct a valid SWI-Prolog predicate that produces the *documented wrong answer*. The execution gate requires a concrete, generalizable rule that, when executed with a specific input, yields the documented incorrect output. Without a worked example or explicit error-formula, constructing such a rule would require invention, violating the task constraint.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40658_multiplication_enlarges_division_shrinks(Expr, Got) :-\n    Expr =.. [Op, A, B],\n    (Op = (*) -> Got is A * B ; Got is A / B),\n    (   (Op = (*), A > 1, B > 0, B < 1)\n    ;   (Op = (/), A > 0, B > 1)\n    ) -> true ; fail).\n\ntest_harness:arith_misconception(db_row(40658), decimal, churn_40658_multiplication_enlarges_division_shrinks,\n    churn_candidate:churn_40658_multiplication_enlarges_division_shrinks,\n    5 * 0.8,\n    4.0).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception (\"multiplication always yields a bigger result and dividing a smaller one\") but no specific runnable rule or concrete input-output pair is provided in the source row to construct a valid SWI-Prolog predicate that produces the *documented wrong answer*. The execution gate requires a concrete, generalizable rule that, when executed with a specific input, yields the documented incorrect output. Without a worked example or explicit error-formula, constructing such a rule would require invention, violating the task constraint.",
+      "result": "abstained"
+    }
+  ]
+}

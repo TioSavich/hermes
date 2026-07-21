@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39192",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39192_grab_then_trade_to_share",
+    "target_operation": "partitioning_dealing",
+    "citation": "GARY ERNEST DAVIS AND ROBERT PAUL HUNTING (1990)",
+    "error_action": "grab_then_trade_to_share",
+    "error_description": "distribute items by grabbing and haphazard trading rather than systematic dealing",
+    "provenance_comments": "=== row 39192: dealing strategy abandoned ===\nToo vague — strategy abandonment, no concrete wrong numeric answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural misconception (grab_then_trade_to_share) involving haphazard distribution rather than systematic dealing, but provides no concrete numeric error pattern or deterministic wrong result. Without a well-defined mapping from input to a specific incorrect output, no runnable rule of arity 2 can be constructed that consistently produces a documented wrong answer.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural misconception (grab_then_trade_to_share) involving haphazard distribution rather than systematic dealing, but provides no concrete numeric error pattern or deterministic wrong result. Without a well-defined mapping from input to a specific incorrect output, no runnable rule of arity 2 can be constructed that consistently produces a documented wrong answer.",
+      "result": "abstained"
+    }
+  ]
+}

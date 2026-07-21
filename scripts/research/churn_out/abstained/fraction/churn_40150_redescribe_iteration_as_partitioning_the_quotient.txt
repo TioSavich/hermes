@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40150",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40150_redescribe_iteration_as_partitioning_the_quotient",
+    "target_operation": "partitive_division_mapping",
+    "citation": "Amanda Jansen, Charles Hohensee (2016)",
+    "error_action": "redescribe_iteration_as_partitioning_the_quotient",
+    "error_description": "after iterating to get the answer, claim the division was really partitioning the result into parts to recover the dividend",
+    "provenance_comments": "=== row 40150: partitive division mislabeled (process, no numeric error) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual mislabeling of a procedure (redescribing iterative measurement as partitioning) without specifying a concrete syntactic rule that maps inputs to a wrong output. No runnable predicate of arity 2 can be constructed that produces the documented *wrong answer* (as distinct from a misdescription), because the error is semantic/metacognitive, not arithmetical. The schema requires a rule where `Rule(Input, Got)` yields the documented incorrect result, but here the \"error\" is in the *explanation*, not the computed value.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual mislabeling of a procedure (redescribing iterative measurement as partitioning) without specifying a concrete syntactic rule that maps inputs to a wrong output. No runnable predicate of arity 2 can be constructed that produces the documented *wrong answer* (as distinct from a misdescription), because the error is semantic/metacognitive, not arithmetical. The schema requires a rule where `Rule(Input, Got)` yields the documented incorrect result, but here the \"error\" is in the *explanation*, not the computed value.",
+      "result": "abstained"
+    }
+  ]
+}

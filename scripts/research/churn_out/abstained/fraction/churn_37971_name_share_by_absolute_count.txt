@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37971",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37971_name_share_by_absolute_count",
+    "target_operation": "relational_naming_of_shares",
+    "citation": "Jere Confrey, Alan P. Maloney, Andrew K. Corley (2014)",
+    "error_action": "name_share_by_absolute_count",
+    "error_description": "describe a fair share by counting the objects in it rather than by its relation to the whole",
+    "provenance_comments": "=== row 37971: relational vs absolute naming of share ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a *naming convention* (relational vs absolute), not a syntactic arithmetic manipulation that can be captured by a binary predicate `Rule(Input, Got)` producing a wrong value. The error is semantic (mischaracterization of a share), not computational (incorrect arithmetic result), and thus does not admit a deterministic input-output mapping where `Got` is a specific incorrect term that can be compared against `ExpectedCorrect`.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a *naming convention* (relational vs absolute), not a syntactic arithmetic manipulation that can be captured by a binary predicate `Rule(Input, Got)` producing a wrong value. The error is semantic (mischaracterization of a share), not computational (incorrect arithmetic result), and thus does not admit a deterministic input-output mapping where `Got` is a specific incorrect term that can be compared against `ExpectedCorrect`.",
+      "result": "abstained"
+    }
+  ]
+}

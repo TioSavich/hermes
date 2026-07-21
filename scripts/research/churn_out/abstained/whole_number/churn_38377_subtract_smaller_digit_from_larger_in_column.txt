@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38377",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38377_subtract_smaller_digit_from_larger_in_column",
+    "target_operation": "multidigit_subtraction",
+    "citation": "Caroline Brayer Ebby (2005)",
+    "error_action": "subtract_smaller_digit_from_larger_in_column",
+    "error_description": "in each column take the smaller digit from the larger regardless of which is on top",
+    "provenance_comments": "=== row 38377: idiosyncratic subtraction with added ten ===\nHighly individual procedure; not a canonical systematic bug.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error \"subtract_smaller_digit_from_larger_in_column\" describes a column-wise procedure that selects the smaller digit from the larger in each column regardless of positional order, but no concrete worked example or explicit digit-level algorithm is provided to derive a general, runnable Prolog rule. The provenance comment \"idiosyncratic subtraction with added ten\" and \"not a canonical systematic bug\" further indicate the procedure is not well-defined or stable enough to encode as a deterministic predicate without speculation. Since the rule must be exact, generalizable, and executable per schema requirements, and no sufficient specification exists to construct such a rule, admission is blocked.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error \"subtract_smaller_digit_from_larger_in_column\" describes a column-wise procedure that selects the smaller digit from the larger in each column regardless of positional order, but no concrete worked example or explicit digit-level algorithm is provided to derive a general, runnable Prolog rule. The provenance comment \"idiosyncratic subtraction with added ten\" and \"not a canonical systematic bug\" further indicate the procedure is not well-defined or stable enough to encode as a deterministic predicate without speculation. Since the rule must be exact, generalizable, and executable per schema requirements, and no sufficient specification exists to construct such a rule, admission is blocked.",
+      "result": "abstained"
+    }
+  ]
+}

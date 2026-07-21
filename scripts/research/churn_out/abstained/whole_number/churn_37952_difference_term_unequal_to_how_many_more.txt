@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37952",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37952_difference_term_unequal_to_how_many_more",
+    "target_operation": "additive_comparison_language",
+    "citation": "Rongjin Huang, Qinqiong Zhang, Yu-ping Chang, Dovie Kimmins (2018)",
+    "error_action": "difference_term_unequal_to_how_many_more",
+    "error_description": "asking for 'the difference' is a distinct task from asking 'how many more'",
+    "provenance_comments": "=== row 37952: 'difference' not recognized as 'how many more' ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a linguistic distinction in word problems (‘difference’ vs. ‘how many more’) rather than a computational procedure that can be expressed as a deterministic, general, executable 2-arity predicate producing a specific wrong result via arithmetic evaluation. No runnable rule of the form `Rule(Input, Got)` can be constructed without inventing a specific misinterpretation strategy (e.g., flipping operands, using absolute value, etc.), which would not be faithful to the documented misconception — it is context- and phrasing-dependent, not a mechanical arithmetic error.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(difference_term_unequal_to_how_many_more(A-B, Got) :-\n    Got is A - B).\n\ntest_harness:arith_misconception(db_row(37952), whole_number, churn_37952_difference_term_unequal_to_how_many_more,\n    churn_candidate:churn_37952_difference_term_unequal_to_how_many_more,\n    8-5,\n    3).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error is a linguistic distinction in word problems (‘difference’ vs. ‘how many more’) rather than a computational procedure that can be expressed as a deterministic, general, executable 2-arity predicate producing a specific wrong result via arithmetic evaluation. No runnable rule of the form `Rule(Input, Got)` can be constructed without inventing a specific misinterpretation strategy (e.g., flipping operands, using absolute value, etc.), which would not be faithful to the documented misconception — it is context- and phrasing-dependent, not a mechanical arithmetic error.",
+      "result": "abstained"
+    }
+  ]
+}

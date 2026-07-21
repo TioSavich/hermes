@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37798",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37798_concrete_model_derives_invert_and_multiply",
+    "target_operation": "invert_and_multiply_justification",
+    "citation": "Hilda Borko, Margaret Eisenhart, Catherine A. Brown, Robert G. Underhill, Doug Jones and Patricia C. Agard (1992)",
+    "error_action": "concrete_model_derives_invert_and_multiply",
+    "error_description": "a pizza or area drawing can show why you flip the second fraction",
+    "provenance_comments": "=== row 37798: visualizing invert-and-multiply ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual justification (\"a pizza or area drawing can show why you flip the second fraction\") rather than a specific syntactic or procedural rule that produces a wrong answer. No runnable predicate Rule can be derived that maps an input to a *documented incorrect output*; the description is pedagogical, not computational.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual justification (\"a pizza or area drawing can show why you flip the second fraction\") rather than a specific syntactic or procedural rule that produces a wrong answer. No runnable predicate Rule can be derived that maps an input to a *documented incorrect output*; the description is pedagogical, not computational.",
+      "result": "abstained"
+    }
+  ]
+}

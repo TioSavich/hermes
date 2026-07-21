@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39752",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39752_distinct_visual_distributions_are_mathematically_distinct",
+    "target_operation": "referent_whole_coordination",
+    "citation": "Zandra de Araujo, Chandra Hawley Orrill & Erik Jacobson (2018)",
+    "error_action": "distinct_visual_distributions_are_mathematically_distinct",
+    "error_description": "if two sharing distributions look different on the diagram they must yield different amounts",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_39752_distinct_visual_distributions_are_mathematically_distinct",
+  "attempts": [
+    {
+      "response": "churn_candidate:(distinct_visual_distributions_are_mathematically_distinct(frac(N1,D1)-frac(N2,D2), frac(N1,D1)) :-\n    N1*D2 =:= N2*D1,\n    D1 \\== D2).\n\ntest_harness:arith_misconception(db_row(39752), fraction, churn_39752_distinct_visual_distributions_are_mathematically_distinct,\n    churn_candidate:distinct_visual_distributions_are_mathematically_distinct,\n    frac(1,2)-frac(2,4),\n    frac(1,2)).",
+      "result": "predicate must be named churn_39752_distinct_visual_distributions_are_mathematically_distinct"
+    },
+    {
+      "response": "churn_candidate:(distinct_visual_distributions_are_mathematically_distinct(frac(N1,D1)-frac(N2,D2), frac(N1,D1)) :-\n    N1 =:= N2,\n    D1 \\== D2).\n\ntest_harness:arith_misconception(db_row(39752), fraction, churn_39752_distinct_visual_distributions_are_mathematically_distinct,\n    churn_candidate:distinct_visual_distributions_are_mathematically_distinct,\n    frac(1,2)-frac(1,4),\n    frac(1,2)).",
+      "result": "predicate must be named churn_39752_distinct_visual_distributions_are_mathematically_distinct"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39770",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39770_apply_invert_and_multiply_without_meaning",
+    "target_operation": "fraction_division_invert_and_multiply",
+    "citation": "Ali Alenazi (2016)",
+    "error_action": "apply_invert_and_multiply_without_meaning",
+    "error_description": "execute the invert-and-multiply algorithm as a purely mechanical procedure",
+    "provenance_comments": "=== row 39770: invert-and-multiply without meaning ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error description “execute the invert-and-multiply algorithm as a purely mechanical procedure” does not specify a *systematic mathematical mistake*—only a lack of conceptual understanding. Without a concrete deviation from correct arithmetic (e.g., inverting the wrong fraction, forgetting to multiply, or misapplying the rule in a way that yields a specific wrong result), no runnable rule producing a *fixed incorrect output* can be constructed. The schema requires a Rule that, when called with Input, produces the documented wrong answer (Got) that does *not* unify with the correct ExpectedCorrect. Since no such deterministic error outcome is given, admission fails.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error description “execute the invert-and-multiply algorithm as a purely mechanical procedure” does not specify a *systematic mathematical mistake*—only a lack of conceptual understanding. Without a concrete deviation from correct arithmetic (e.g., inverting the wrong fraction, forgetting to multiply, or misapplying the rule in a way that yields a specific wrong result), no runnable rule producing a *fixed incorrect output* can be constructed. The schema requires a Rule that, when called with Input, produces the documented wrong answer (Got) that does *not* unify with the correct ExpectedCorrect. Since no such deterministic error outcome is given, admission fails.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40363",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40363_treat_area_and_perimeter_as_interchangeable",
+    "target_operation": "area_perimeter_distinction",
+    "citation": "Hsin-Mei E. Huang (2017)",
+    "error_action": "treat_area_and_perimeter_as_interchangeable",
+    "error_description": "use one boundary-or-covering measure as though it answers for the other",
+    "provenance_comments": "=== row 40363: rote formulas, no decomposition of compound figures ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error description states that students treat area and perimeter as interchangeable, but the gate failure indicates that the output 16 does not match the explicit documented claim(s) ['for'], suggesting the expected correct value is not 16. However, no concrete correct value or specific worked example is provided in the source row, and the phrase \"for\" in ['for'] is incomplete and ambiguous. Without a determinate ExpectedCorrect or a clear rule-based mapping from the documented error to a unique, generalizable wrong computation, a runnable rule and defensible probe cannot be constructed.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40363_treat_area_and_perimeter_as_interchangeable(rect(W,H), Got) :-\n    Got is 2*(W+H)).\n\ntest_harness:arith_misconception(db_row(40363), measurement, churn_40363_treat_area_and_perimeter_as_interchangeable,\n    churn_candidate:churn_40363_treat_area_and_perimeter_as_interchangeable,\n    rect(5,3), 15).",
+      "result": "output 16 does not match explicit documented claim(s) ['for']"
+    },
+    {
+      "response": "ABSTAIN: The documented error description states that students treat area and perimeter as interchangeable, but the gate failure indicates that the output 16 does not match the explicit documented claim(s) ['for'], suggesting the expected correct value is not 16. However, no concrete correct value or specific worked example is provided in the source row, and the phrase \"for\" in ['for'] is incomplete and ambiguous. Without a determinate ExpectedCorrect or a clear rule-based mapping from the documented error to a unique, generalizable wrong computation, a runnable rule and defensible probe cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

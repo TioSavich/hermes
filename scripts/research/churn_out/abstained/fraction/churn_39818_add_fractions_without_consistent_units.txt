@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39818",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39818_add_fractions_without_consistent_units",
+    "target_operation": "fraction_addition",
+    "citation": "Tuğrul Kar (2015)",
+    "error_action": "add_fractions_without_consistent_units",
+    "error_description": "combine fractional amounts while leaving their units unstated or mismatched",
+    "provenance_comments": "=== row 39818: inconsistent units in fraction addition ===\nToo vague — unit inconsistency without specific numeric wrong answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is too vague to specify a runnable rule and defensible probe; it describes unit inconsistency without a concrete, generalizable procedure or a determinable wrong answer for a specific input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is too vague to specify a runnable rule and defensible probe; it describes unit inconsistency without a concrete, generalizable procedure or a determinable wrong answer for a specific input.",
+      "result": "abstained"
+    }
+  ]
+}

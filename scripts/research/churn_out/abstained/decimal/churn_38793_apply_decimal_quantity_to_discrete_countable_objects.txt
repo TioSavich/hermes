@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38793",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38793_apply_decimal_quantity_to_discrete_countable_objects",
+    "target_operation": "decimal_word_problem_modeling",
+    "citation": "Adolf af Ekenstam and Karl Greger (1983)",
+    "error_action": "apply_decimal_quantity_to_discrete_countable_objects",
+    "error_description": "treat any number, including a non-integer decimal, as a count of individual discrete things",
+    "provenance_comments": "=== row 38793: invents discrete context for continuous decimals ===\nToo vague — pragmatic/contextual error, not a calculation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a pragmatic/contextual misunderstanding—treating non-integer decimals as counts of discrete objects—but provides no specific syntactic or procedural rule that can be implemented as a deterministic predicate `Rule(Input, Got)` yielding a *fixed* wrong answer for a given input. Since the error is contextual (e.g., interpreting “2.5 apples” as 2 apples *or* 3 apples depending on narrative) rather than algorithmic, it cannot be captured by a pure, general, deterministic arithmetic rule without adding assumptions not present in the source. The schema requires a runnable rule that consistently produces the documented wrong result; this cannot be guaranteed here.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a pragmatic/contextual misunderstanding—treating non-integer decimals as counts of discrete objects—but provides no specific syntactic or procedural rule that can be implemented as a deterministic predicate `Rule(Input, Got)` yielding a *fixed* wrong answer for a given input. Since the error is contextual (e.g., interpreting “2.5 apples” as 2 apples *or* 3 apples depending on narrative) rather than algorithmic, it cannot be captured by a pure, general, deterministic arithmetic rule without adding assumptions not present in the source. The schema requires a runnable rule that consistently produces the documented wrong result; this cannot be guaranteed here.",
+      "result": "abstained"
+    }
+  ]
+}

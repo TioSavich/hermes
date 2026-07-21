@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38438",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38438_count_by_ones_into_boxes",
+    "target_operation": "place_value_grouping_by_ten",
+    "citation": "Noel D. Thomas, Joanne T. Mulligan, Gerald A. Goldin (2002)",
+    "error_action": "count_by_ones_into_boxes",
+    "error_description": "fill in numerals one at a time without grouping them into tens",
+    "provenance_comments": "=== row 38438: ten not as composite unit (no operational error) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural misconception (counting by ones instead of grouping by tens) but does not specify a runnable arithmetic rule that produces a wrong output from a given input; there is no concrete operation or transformation defined that can be encoded as a binary predicate returning a specific incorrect result.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural misconception (counting by ones instead of grouping by tens) but does not specify a runnable arithmetic rule that produces a wrong output from a given input; there is no concrete operation or transformation defined that can be encoded as a binary predicate returning a specific incorrect result.",
+      "result": "abstained"
+    }
+  ]
+}

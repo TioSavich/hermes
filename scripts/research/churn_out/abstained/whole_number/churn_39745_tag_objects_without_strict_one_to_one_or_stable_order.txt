@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39745",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39745_tag_objects_without_strict_one_to_one_or_stable_order",
+    "target_operation": "counting_principles",
+    "citation": "Aurelia Noda Herrera, Alicia Bruno, Carina González, Lorenzo Moreno & Hilda Sanabria (2011)",
+    "error_action": "tag_objects_without_strict_one_to_one_or_stable_order",
+    "error_description": "count by assigning number words to objects without guaranteeing one tag per object in a fixed sequence",
+    "provenance_comments": "=== row 39745: one-to-one and stable order fail ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural failure in counting (lack of one-to-one correspondence and stable order), not a specific arithmetic operation that can be modeled as a deterministic 2-place predicate producing a wrong numeric result. There is no clear input-output pair where a wrong numeric answer can be consistently derived from a rule reflecting that cognitive failure.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural failure in counting (lack of one-to-one correspondence and stable order), not a specific arithmetic operation that can be modeled as a deterministic 2-place predicate producing a wrong numeric result. There is no clear input-output pair where a wrong numeric answer can be consistently derived from a rule reflecting that cognitive failure.",
+      "result": "abstained"
+    }
+  ]
+}

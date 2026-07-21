@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40348",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40348_compute_mentally_then_input_result",
+    "target_operation": "machine_assisted_addition",
+    "citation": "MICHELA MASCHIETTO (2015)",
+    "error_action": "compute_mentally_then_input_result",
+    "error_description": "calculate the sum in the head and enter the final answer directly rather than carrying it out through the machine's procedure",
+    "provenance_comments": "=== row 40348: mental-calc bypass of instrument ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "predicate must be named churn_40348_compute_mentally_then_input_result",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40348_compute_mentally_then_input_result(A+B, Got) :-\n    Got is A + B).\n\ntest_harness:arith_misception(db_row(40348), whole_number, churn_40348_compute_mentally_then_input_result,\n    churn_candidate:churn_40348_compute_mentally_then_input_result,\n    27+35,\n    62).",
+      "result": "expected exactly one arith_misconception/6 registration; found 0"
+    },
+    {
+      "response": "churn_candidate:(compute_mentally_then_input_result(A+B, Got) :-\n    Got is A + B).\n\ntest_harness:arith_misconception(db_row(40348), whole_number, churn_40348_compute_mentally_then_input_result,\n    churn_candidate:compute_mentally_then_input_result,\n    23+45,\n    68).",
+      "result": "predicate must be named churn_40348_compute_mentally_then_input_result"
+    }
+  ]
+}

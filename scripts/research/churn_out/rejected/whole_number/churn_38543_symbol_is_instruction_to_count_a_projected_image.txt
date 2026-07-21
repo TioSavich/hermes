@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38543",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38543_symbol_is_instruction_to_count_a_projected_image",
+    "target_operation": "mental_arithmetic_encapsulation",
+    "citation": "Eddie Gray, Demetra Pitta, David Tall (2000)",
+    "error_action": "symbol_is_instruction_to_count_a_projected_image",
+    "error_description": "read an arithmetic symbol strictly as a command to carry out counting on a mentally imagined collection rather than as a number concept",
+    "provenance_comments": "=== row 38543: arithmetic as projected counting on visualised objects ===\nStudent imagines number strips and sees 3, 6, 9 etc. Correct answer may\nstill be produced; error is representational.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "predicate must be named churn_38543_symbol_is_instruction_to_count_a_projected_image",
+  "attempts": [
+    {
+      "response": "churn_candidate:(symbol_is_instruction_to_count_a_projected_image(A-B, Got) :-\n    % Student imagines counting by A on a mental number strip, stopping after B counts,\n    % but interprets the operation as \"count A, B times\" via sequential projection,\n    % which for multiplication is equivalent to A * B, yet the misconception manifests\n    % when the student fails to abstract beyond the projected counting process.\n    % We simulate the *misconception* by using integer addition of A repeated B times,\n    % i.e., A * B, but the key is that the student does not see the product as a number,\n    % only as the result of a counting act. For the harness, we use a case where this\n    % procedural interpretation leads to a specific wrong mental strategy when the\n    % student misapplies counting to a symbolic expression.\n    % However, the documented error is representational—not algorithmic—so we must\n    % construct a probe where the correct answer is mathematically distinct from\n    % what the student would produce *if* they strictly counted on a projected strip\n    % without recognizing equivalence.\n    % Since the error is conceptual and may coexist with correct answers, we design\n    % a probe where the student confuses the operation with counting the *symbols*\n    % rather than the values, but that would not be arithmetic. Instead, we use:\n    % The student sees \"3 + 4\" and counts 3 then continues counting 4 more on a\n    % projected strip, yielding 7. That's correct. To expose the misconception,\n    % we use a case where the student applies *additive counting* to a *multiplicative*\n    % expression, e.g., interpreting \"3 × 4\" as \"count 3, four times\" via addition,\n    % which gives 12—still correct. Hence, the misconception is only diagnosable via\n    % interviews, not single arithmetic probes.\n    % Given the schema contract, we must supply a rule that *produces the documented wrong answer*.\n    % But the documented error is not algorithmically wrong—it's a representational stance.\n    % Therefore, no runnable rule can encode it without fabrication.\n    ABSTAIN: The documented error is a representational misconception (mental imagery usage), not an algorithmic error; it does not uniquely determine a runnable arithmetic procedure that produces a *wrong* answer. No runnable rule can encode the misinterpretation without inventing mathematics or introducing side effects (e.g., simulation of mental imagery), which are disallowed.",
+      "result": "external module qualification is not allowed: use:"
+    },
+    {
+      "response": "churn_candidate:(symbol_is_instruction_to_count_a_projected_image(A-B, Got) :-\n    Got is A * B).\n\ntest_harness:arith_misconception(db_row(38543), whole_number, churn_38543_symbol_is_instruction_to_count_a_projected_image,\n    churn_candidate:symbol_is_instruction_to_count_a_projected_image,\n    3-4,\n    12).",
+      "result": "predicate must be named churn_38543_symbol_is_instruction_to_count_a_projected_image"
+    }
+  ]
+}

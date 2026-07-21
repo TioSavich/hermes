@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "163",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_163_extend_counting_and_order_reasoning_to_negatives",
+    "target_operation": "integer_extension_via_counting",
+    "citation": "Bishop, Jessica Pierson and Lamb, Lisa L. and Philipp, Randolph A. and Whitacre, Ian and Schappelle, Bonnie P. (2014)",
+    "error_action": "extend_counting_and_order_reasoning_to_negatives",
+    "error_description": "solve start-unknown and negative-number problems by order-based counting along a number line",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive strategy (order-based counting along a number line) but provides no runnable procedural rule mapping inputs to a specific erroneous output; without a concrete, implementable algorithm that produces a deterministic wrong result, no testable rule can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive strategy (order-based counting along a number line) but provides no runnable procedural rule mapping inputs to a specific erroneous output; without a concrete, implementable algorithm that produces a deterministic wrong result, no testable rule can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -58,7 +58,7 @@ load_runtime :-
     use_module(im_lessons(lesson_monitoring)),
     use_module(im_lessons(lesson_monitoring_selector), []),
     use_module(im_lessons(field_context)),
-    use_module(strategies(expressive_power)),
+    use_module(strategies(inferential_strength)),
     use_module(strategies(visualization), []),
     use_module(math(state_vocabulary), []),
     use_module(render(fraction_bars_scene)),
@@ -1583,15 +1583,15 @@ pair_graph_dispatch_dict(Events, Graph) :-
     hermes_pair_scoring:score_pair_candidates(Events, Pairs),
     hermes_pair_scoring:pair_graph(Pairs, Graph).
 
-expressive_power_dispatch_dict(Code, Dict) :-
-    (   lesson_expressive_power_for(Code, Report)
+inferential_strength_dispatch_dict(Code, Dict) :-
+    (   lesson_inferential_strength_for(Code, Report)
     ->  Resolved = true
     ;   Report = none,
         Resolved = false
     ),
-    expressive_power_export_dict(Report, Power),
+    inferential_strength_export_dict(Report, Power),
     atom_string(Code, CodeString),
-    Dict = _{lesson: CodeString, resolved: Resolved, expressive_power: Power}.
+    Dict = _{lesson: CodeString, resolved: Resolved, inferential_strength: Power}.
 
 canonical_contract_dispatch_dict(Dict) :-
     findall(_{canonical: CS, module: MS, legacy: LS},
@@ -2688,8 +2688,8 @@ monitoring_chart_export_dict(Code, Dict) :-
     productive_core(Clusters, ProductiveCore),
     maplist(strategy_export_dict, Strategies, StrategyDicts),
     maplist(misconception_export_dict, Misconceptions, MisconceptionDicts),
-    lesson_expressive_power_for(Code, ExpressivePowerReport),
-    expressive_power_export_dict(ExpressivePowerReport, ExpressivePowerDict),
+    lesson_inferential_strength_for(Code, InferentialStrengthReport),
+    inferential_strength_export_dict(InferentialStrengthReport, InferentialStrengthDict),
     findall(PMLDict,
             ( member(PMLFact, PMLFacts),
               pml_fact_export_dict(PMLFact, PMLDict)
@@ -2721,7 +2721,7 @@ monitoring_chart_export_dict(Code, Dict) :-
         unanticipated_strategies: GapMoveDicts,
         figures: FigureDict,
         deformation_chart: DeformationChartDict,
-        expressive_power: ExpressivePowerDict,
+        inferential_strength: InferentialStrengthDict,
         pml_facts: PMLDicts
     },
     (   lesson_monitoring:lesson_guide_context_dict(Code, GuideContext)
@@ -2882,7 +2882,7 @@ operation_gap_export_dict(
         unanticipated: UnanticipatedTexts
     }.
 
-expressive_power_export_dict(
+inferential_strength_export_dict(
         report(paths(ProofPaths),
                strategy_incompatibility(StrategyIncompatibilities),
                misconception_incompatibility(MisconceptionIncompatibilities),
@@ -2894,13 +2894,17 @@ expressive_power_export_dict(
     Dict = _{
         proof_paths: ProofPaths,
         strategy_incompatibilities: StrategyIncompatibilities,
+        strategy_incompatibilities_kind: "breadth_tally",
         misconception_incompatibilities: MisconceptionIncompatibilities,
+        misconception_incompatibilities_kind: "breadth_tally",
         per_operation: OperationDicts
     }.
-expressive_power_export_dict(_, _{
+inferential_strength_export_dict(_, _{
     proof_paths: 0,
     strategy_incompatibilities: 0,
+    strategy_incompatibilities_kind: "breadth_tally",
     misconception_incompatibilities: 0,
+    misconception_incompatibilities_kind: "breadth_tally",
     per_operation: []
 }).
 

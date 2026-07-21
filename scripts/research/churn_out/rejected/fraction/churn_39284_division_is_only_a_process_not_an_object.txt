@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39284",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39284_division_is_only_a_process_not_an_object",
+    "target_operation": "process_object_duality",
+    "citation": "ANNA SFARD (1991)",
+    "error_action": "division_is_only_a_process_not_an_object",
+    "error_description": "treat 7 divided by 4 as an action to carry out, not as a number you can write down",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "external module qualification is not allowed: misconception:",
+  "attempts": [
+    {
+      "response": "churn_candidate:(divide_as_process_only(frac(7,4), result_of_division(7,4)) :-\n    true).\n\ntest_harness:arith_misconception(db_row(39284), fraction, churn_39284_division_is_only_a_process_not_an_object,\n    churn_candidate:divide_as_process_only,\n    frac(7,4),\n    7/4).",
+      "result": "predicate must be named churn_39284_division_is_only_a_process_not_an_object"
+    },
+    {
+      "response": "churn_candidate:(division_as_process_only(frac(N,D), Result) :-\n    Result is N / D,\n    % The misconception: student performs division and gets a decimal,\n    % rather than representing the quotient as a fraction.\n    float(Result)).\n\ntest_harness:arith_misconception(db_row(39284), fraction, churn_39284_division_is_only_a_process_not_an_object,\n    churn_candidate:division_as_process_only,\n    frac(7,4),\n    1.75).",
+      "result": "external module qualification is not allowed: misconception:"
+    }
+  ]
+}

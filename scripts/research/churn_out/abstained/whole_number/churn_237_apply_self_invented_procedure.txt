@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "237",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_237_apply_self_invented_procedure",
+    "target_operation": "student_invented_subtraction_algorithm",
+    "citation": "Haroun et al. (2016)",
+    "error_action": "apply_self_invented_procedure",
+    "error_description": "use a personally constructed procedure rather than the standard algorithm",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a procedural tendency (use of a self-invented procedure) rather than a specific, executable computational error. No unique, deterministic mapping from input to a fixed incorrect output is specified, making it impossible to define a runnable rule `Rule(Input, Got)` that consistently produces the documented wrong answer without additional concrete instantiation of the invented procedure.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a procedural tendency (use of a self-invented procedure) rather than a specific, executable computational error. No unique, deterministic mapping from input to a fixed incorrect output is specified, making it impossible to define a runnable rule `Rule(Input, Got)` that consistently produces the documented wrong answer without additional concrete instantiation of the invented procedure.",
+      "result": "abstained"
+    }
+  ]
+}

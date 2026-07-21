@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38987",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38987_fraction_is_only_a_sharing_action",
+    "target_operation": "fraction_as_quantity",
+    "citation": "Adolf Af Ekenstam (1977)",
+    "error_action": "fraction_is_only_a_sharing_action",
+    "error_description": "a fraction means an act of sharing an object, not a number with a location",
+    "provenance_comments": "=== row 38987: fractions strictly as objects ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (fractions as only a sharing action, not as numbers with location) but provides no executable procedural rule that maps inputs to a specific incorrect output. A runnable rule requires a deterministic, syntactically expressible transformation yielding a concrete wrong result; this description is purely semantic and does not specify such a transformation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (fractions as only a sharing action, not as numbers with location) but provides no executable procedural rule that maps inputs to a specific incorrect output. A runnable rule requires a deterministic, syntactically expressible transformation yielding a concrete wrong result; this description is purely semantic and does not specify such a transformation.",
+      "result": "abstained"
+    }
+  ]
+}

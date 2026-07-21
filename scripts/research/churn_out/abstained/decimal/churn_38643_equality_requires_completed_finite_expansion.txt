@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38643",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38643_equality_requires_completed_finite_expansion",
+    "target_operation": "fraction_decimal_equivalence",
+    "citation": "David A. Yopp, Elizabeth A. Burroughs, Brian J. Lindaman (2011)",
+    "error_action": "equality_requires_completed_finite_expansion",
+    "error_description": "two quantities are equal only if a terminating, fully-written-out representation can be reached",
+    "provenance_comments": "=== row 38643: 1/3 ≠ 0.333... because process never terminates ===\nToo vague — philosophical stance on limits.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a philosophical stance on limits rather than a runnable computational procedure that can be encoded as a SWI-Prolog predicate of arity 2 producing a specific wrong result for a given input. There is no concrete, generalizable rule that maps an input to a deterministic incorrect output in the decimal domain without invoking non-computable reasoning or meta-level interpretation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a philosophical stance on limits rather than a runnable computational procedure that can be encoded as a SWI-Prolog predicate of arity 2 producing a specific wrong result for a given input. There is no concrete, generalizable rule that maps an input to a deterministic incorrect output in the decimal domain without invoking non-computable reasoning or meta-level interpretation.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40195",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40195_treat_conceptual_surface_markers_as_understanding",
+    "target_operation": "surface_features_as_understanding",
+    "citation": "Tonya Gau Bartell • Corey Webel • Brian Bowen • Nancy Dyson (2013)",
+    "error_action": "treat_conceptual_surface_markers_as_understanding",
+    "error_description": "count the presence of a diagram or conceptual vocabulary as evidence of understanding regardless of whether the underlying reasoning is sound",
+    "provenance_comments": "=== row 40195: surface-feature equated with understanding ===\nToo vague — teacher-evaluation artifact, not a fraction computation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a teacher-evaluation artifact (misinterpreting surface features as evidence of understanding) rather than a concrete computational procedure that can be expressed as a binary predicate `Rule(Input, Got)` producing a specific incorrect numerical result. No runnable arithmetic rule over fraction inputs is determinable from the documentation; hence no schema-compliant `test_harness:arith_misconception/6` clause can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a teacher-evaluation artifact (misinterpreting surface features as evidence of understanding) rather than a concrete computational procedure that can be expressed as a binary predicate `Rule(Input, Got)` producing a specific incorrect numerical result. No runnable arithmetic rule over fraction inputs is determinable from the documentation; hence no schema-compliant `test_harness:arith_misconception/6` clause can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

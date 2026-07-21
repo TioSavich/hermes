@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37672",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37672_discard_units_deemed_irrelevant_and_reset_whole",
+    "target_operation": "fraction_division",
+    "citation": "Andrew Izsák, Erik Jacobson, Zandra de Araujo, and Chandra Hawley Orrill (2012)",
+    "error_action": "discard_units_deemed_irrelevant_and_reset_whole",
+    "error_description": "drop the part of the whole not currently in play and treat the remainder as a new whole",
+    "provenance_comments": "Rows with no determinate wrong numeric or symbolic output in the extracted row.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a qualitative reasoning strategy (“drop the part of the whole not currently in play and treat the remainder as a new whole”) without specifying a deterministic numeric or symbolic procedure that yields a unique wrong result for a given input. Since the rule must be implementable as a binary predicate producing a definite wrong output for a concrete input, and no determinate transformation rule or example output is provided, a runnable rule cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a qualitative reasoning strategy (“drop the part of the whole not currently in play and treat the remainder as a new whole”) without specifying a deterministic numeric or symbolic procedure that yields a unique wrong result for a given input. Since the rule must be implementable as a binary predicate producing a definite wrong output for a concrete input, and no determinate transformation rule or example output is provided, a runnable rule cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

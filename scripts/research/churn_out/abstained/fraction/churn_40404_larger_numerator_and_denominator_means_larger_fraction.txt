@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40404",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40404_larger_numerator_and_denominator_means_larger_fraction",
+    "target_operation": "fraction_comparison",
+    "citation": "DER-CHING YANG, CHUN-JEN HSU and MING-CHIANG HUANG (2004)",
+    "error_action": "larger_numerator_and_denominator_means_larger_fraction",
+    "error_description": "if both numerator and denominator are bigger then the fraction is bigger",
+    "provenance_comments": "=== row 40404: 8/9 > 5/6 because both larger ===\nStudent's answer is correct numerically (8/9 > 5/6); no distinct wrong output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a reasoning misconception (larger numerator and denominator implies larger fraction), but the specific instance 8/9 > 5/6 yields a correct numerical comparison; there is no documented incorrect output to encode as `ExpectedCorrect` that differs from the student's result. Without a documented wrong answer, no runnable rule producing a *miscomputed* result can be constructed per schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a reasoning misconception (larger numerator and denominator implies larger fraction), but the specific instance 8/9 > 5/6 yields a correct numerical comparison; there is no documented incorrect output to encode as `ExpectedCorrect` that differs from the student's result. Without a documented wrong answer, no runnable rule producing a *miscomputed* result can be constructed per schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38729",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38729_verify_computation_not_model",
+    "target_operation": "solution_reasonableness",
+    "citation": "Adolf Af Ekenstam and Karl Greger (1983)",
+    "error_action": "verify_computation_not_model",
+    "error_description": "check that the arithmetic is computed correctly and accept the answer on that basis alone",
+    "provenance_comments": "=== row 38729: accept computation without contextual check ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a meta-level reasoning flaw (accepting an answer because the computation appears correct, without checking reasonableness in context), which cannot be expressed as a runnable arithmetic rule that produces a specific wrong output for a given input. There is no well-defined mathematical transformation or predicate of arity 2 that encodes “accepting computation without contextual check” as a deterministic wrong result for a concrete input–output pair. The gate failure reflects this: no valid Prolog rule can be constructed to satisfy the schema without inventing mathematics or assuming external evaluation.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38729_verify_computation_not_model(A+B, Got) :-\n    Got is A + B).\n\ntest_harness:arith_misconception(db_row(38729), whole_number, churn_38729_verify_computation_not_model,\n    churn_candidate:churn_38729_verify_computation_not_model,\n    45+67,\n    112).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a meta-level reasoning flaw (accepting an answer because the computation appears correct, without checking reasonableness in context), which cannot be expressed as a runnable arithmetic rule that produces a specific wrong output for a given input. There is no well-defined mathematical transformation or predicate of arity 2 that encodes “accepting computation without contextual check” as a deterministic wrong result for a concrete input–output pair. The gate failure reflects this: no valid Prolog rule can be constructed to satisfy the schema without inventing mathematics or assuming external evaluation.",
+      "result": "abstained"
+    }
+  ]
+}

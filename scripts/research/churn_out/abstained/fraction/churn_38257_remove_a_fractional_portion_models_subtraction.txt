@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38257",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38257_remove_a_fractional_portion_models_subtraction",
+    "target_operation": "subtraction_problem_posing",
+    "citation": "Helena P. Osana, Diana A. Royea (2011)",
+    "error_action": "remove_a_fractional_portion_models_subtraction",
+    "error_description": "pose 'eats half of what is there' as the way to model a subtraction sentence",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual modeling mistake in posing subtraction problems (e.g., interpreting \"eats half of what is there\" as modeling subtraction), but does not specify a runnable syntactic rule that maps an input expression to a *documented incorrect output* via a deterministic, generalizable computation. There is no concrete procedure given that produces a specific erroneous result from a given input; instead, it characterizes a misinterpretation of情境 modeling, not a formal arithmetic transformation. Without a reproducible mapping from input to incorrect output, a testable rule satisfying the schema cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual modeling mistake in posing subtraction problems (e.g., interpreting \"eats half of what is there\" as modeling subtraction), but does not specify a runnable syntactic rule that maps an input expression to a *documented incorrect output* via a deterministic, generalizable computation. There is no concrete procedure given that produces a specific erroneous result from a given input; instead, it characterizes a misinterpretation of情境 modeling, not a formal arithmetic transformation. Without a reproducible mapping from input to incorrect output, a testable rule satisfying the schema cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

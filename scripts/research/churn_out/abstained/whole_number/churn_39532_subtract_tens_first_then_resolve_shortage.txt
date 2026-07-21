@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39532",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39532_subtract_tens_first_then_resolve_shortage",
+    "target_operation": "subtraction_left_to_right",
+    "citation": "ADRIAN TREFFERS (1991)",
+    "error_action": "subtract_tens_first_then_resolve_shortage",
+    "error_description": "subtract the larger units first and then correct for a negative partial difference (shortage)",
+    "provenance_comments": "=== row 39532: left-to-right subtraction (productive, not error) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The source row does not document a student error but describes a productive left-to-right subtraction strategy; there is no documented incorrect procedure to encode.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The source row does not document a student error but describes a productive left-to-right subtraction strategy; there is no documented incorrect procedure to encode.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38391",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38391_quantity_requires_visual_access",
+    "target_operation": "mental_representation_of_quantity",
+    "citation": "Robert P. Hunting (2003)",
+    "error_action": "quantity_requires_visual_access",
+    "error_description": "a hidden quantity cannot be known without seeing the items",
+    "provenance_comments": "=== row 38391: cannot recall hidden quantities ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive misconception (inability to recall hidden quantities without visual access) but does not specify a runnable computational rule or a concrete mathematical procedure that can be expressed as a predicate of arity 2 producing a specific wrong output from a given input. Without a clear, generalizable rule mapping inputs to the documented erroneous output, no admissible rule can be constructed per the schema contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive misconception (inability to recall hidden quantities without visual access) but does not specify a runnable computational rule or a concrete mathematical procedure that can be expressed as a predicate of arity 2 producing a specific wrong output from a given input. Without a clear, generalizable rule mapping inputs to the documented erroneous output, no admissible rule can be constructed per the schema contract.",
+      "result": "abstained"
+    }
+  ]
+}

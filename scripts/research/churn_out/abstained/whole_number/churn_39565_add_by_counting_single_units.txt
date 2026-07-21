@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39565",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39565_add_by_counting_single_units",
+    "target_operation": "two_digit_addition_unit_counting",
+    "citation": "Garry Bell (1990)",
+    "error_action": "add_by_counting_single_units",
+    "error_description": "add two quantities by counting all of them one at a time",
+    "provenance_comments": "=== row 39565: 10 not objectified as composite unit ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural misconception (counting single units) that cannot be expressed as a deterministic, generalizable Prolog rule of arity 2 without modeling the counting process explicitly, which would violate the constraint against dynamic or procedural logic. The requirement is for a *rule* that, when applied to an input, *produces the documented wrong answer*, but counting all units one-by-one is inherently procedural and not expressible as a simple arithmetic expression or predicate in SWI-Prolog without simulation (e.g., via recursion with list enumeration), which would introduce side effects, meta-calls, or dynamic behavior. Since no runnable, general, pure arithmetic rule can be formed that yields the *exact* wrong result for all instances of the misconception while satisfying the schema and constraints, admission is precluded.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural misconception (counting single units) that cannot be expressed as a deterministic, generalizable Prolog rule of arity 2 without modeling the counting process explicitly, which would violate the constraint against dynamic or procedural logic. The requirement is for a *rule* that, when applied to an input, *produces the documented wrong answer*, but counting all units one-by-one is inherently procedural and not expressible as a simple arithmetic expression or predicate in SWI-Prolog without simulation (e.g., via recursion with list enumeration), which would introduce side effects, meta-calls, or dynamic behavior. Since no runnable, general, pure arithmetic rule can be formed that yields the *exact* wrong result for all instances of the misconception while satisfying the schema and constraints, admission is precluded.",
+      "result": "abstained"
+    }
+  ]
+}

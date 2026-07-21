@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39581",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39581_imitate_modeled_structure_without_constructing_it",
+    "target_operation": "structuring_numbers",
+    "citation": "David Ellemor-Collins & Robert (Bob) Wright (2009)",
+    "error_action": "imitate_modeled_structure_without_constructing_it",
+    "error_description": "use a teacher-arranged grouping form without having mentally built the grouping",
+    "provenance_comments": "=== row 39581: cannot use structure only teacher modelled ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: no runnable rule or defensible probe can be constructed from the documented error, which describes a cognitive process (imitating structure without mental construction) rather than a specific arithmetic operation or syntactic error.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no runnable rule or defensible probe can be constructed from the documented error, which describes a cognitive process (imitating structure without mental construction) rather than a specific arithmetic operation or syntactic error.",
+      "result": "abstained"
+    }
+  ]
+}

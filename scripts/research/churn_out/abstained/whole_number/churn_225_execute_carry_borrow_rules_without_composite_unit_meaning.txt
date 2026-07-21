@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "225",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_225_execute_carry_borrow_rules_without_composite_unit_meaning",
+    "target_operation": "place_value_understanding",
+    "citation": "McClain, K. (2003)",
+    "error_action": "execute_carry_borrow_rules_without_composite_unit_meaning",
+    "error_description": "follow carrying and borrowing steps across zero as rules detached from why a unit is exchanged",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No concrete, runnable rule can be constructed because the documented error describes a conceptual misunderstanding (executing carry/borrow as detached rules) rather than a specific syntactic or semantic deviation in computation that can be captured by a deterministic Prolog predicate producing a fixed wrong output for a given input. Without a reproducible procedural error (e.g., misapplying a specific formula or rule), there is no well-defined `Rule(Input, Got)` that reliably yields the documented wrong answer across instances.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No concrete, runnable rule can be constructed because the documented error describes a conceptual misunderstanding (executing carry/borrow as detached rules) rather than a specific syntactic or semantic deviation in computation that can be captured by a deterministic Prolog predicate producing a fixed wrong output for a given input. Without a reproducible procedural error (e.g., misapplying a specific formula or rule), there is no well-defined `Rule(Input, Got)` that reliably yields the documented wrong answer across instances.",
+      "result": "abstained"
+    }
+  ]
+}

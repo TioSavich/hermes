@@ -80,7 +80,7 @@
     boundary:       { theme: "objects",      lede: "Test what the action model handles at the boundary between counting and fractions." }, // R? negation
     matrix:         { theme: "body",         lede: "Follow each snap as it grows the memory grid and reorganizes repeated tallies." }, // R? objects
     muds:           { theme: "recollection", lede: "Trace the recorded relations between mathematical uses and their vocabularies." }, // R? negation
-    scoreboard:     { theme: "norms",        lede: "Query commitments, entitlements, and expressive-power records on one scoreboard." },
+    scoreboard:     { theme: "norms",        lede: "Query commitments, entitlements, and inferential-strength records on one scoreboard." },
     atlas:          { theme: "recollection", lede: "Find each capability, the route that reaches it, and the page that calls it." },
     bridge:         { theme: "learner",      lede: "Run the formal bridge from a resource limit through consultation to a revised strategy." },
     coordination:   { theme: "learner",      lede: "Test how units are composed, repeated, and treated as new units." }, // R? objects

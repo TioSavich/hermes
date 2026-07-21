@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39697",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39697_apply_area_partition_to_non_area_context",
+    "target_operation": "fraction_of_discrete_set",
+    "citation": "Xiaofen Zhang & M. A. (Ken) Clements & Nerida F. Ellerton (2015)",
+    "error_action": "apply_area_partition_to_non_area_context",
+    "error_description": "use region-splitting strategies to locate a fraction in a perimeter, capacity, or distance context",
+    "provenance_comments": "=== row 39697: area-model in non-area context ===\nGeometric misapplication; no arithmetic output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a *geometric misapplication* (using region-splitting strategies in non-area contexts like perimeter, capacity, or distance) but provides no concrete arithmetic rule or output behavior. The schema requires a runnable Prolog rule that produces the *documented wrong answer* via a predicate `Rule(Input, Got)` where `Got` is a specific incorrect value. Here, no such deterministic output (e.g., a fraction) is specified—only a procedural misstep (misapplied visualization), making it impossible to construct a testable rule meeting the contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a *geometric misapplication* (using region-splitting strategies in non-area contexts like perimeter, capacity, or distance) but provides no concrete arithmetic rule or output behavior. The schema requires a runnable Prolog rule that produces the *documented wrong answer* via a predicate `Rule(Input, Got)` where `Got` is a specific incorrect value. Here, no such deterministic output (e.g., a fraction) is specified—only a procedural misstep (misapplied visualization), making it impossible to construct a testable rule meeting the contract.",
+      "result": "abstained"
+    }
+  ]
+}

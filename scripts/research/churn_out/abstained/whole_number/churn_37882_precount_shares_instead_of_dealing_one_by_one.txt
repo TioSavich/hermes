@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37882",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37882_precount_shares_instead_of_dealing_one_by_one",
+    "target_operation": "sharing_distribution",
+    "citation": "Kristine L. Pepper and Robert P. Hunting (1998)",
+    "error_action": "precount_shares_instead_of_dealing_one_by_one",
+    "error_description": "figure out each share's size by counting in advance rather than dealing items one at a time",
+    "provenance_comments": "=== row 37882: pre-count dealing failure ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural misconception (precounting shares instead of dealing one-by-one) but does not specify a concrete arithmetic operation or output that can be captured as a deterministic, executable Prolog rule producing a wrong result from a given input. Without a runnable error transformation (e.g., a formula or algorithmic deviation), no rule of arity 2 can be defined that reliably yields the documented wrong answer for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural misconception (precounting shares instead of dealing one-by-one) but does not specify a concrete arithmetic operation or output that can be captured as a deterministic, executable Prolog rule producing a wrong result from a given input. Without a runnable error transformation (e.g., a formula or algorithmic deviation), no rule of arity 2 can be defined that reliably yields the documented wrong answer for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

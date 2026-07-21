@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38923",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38923_teacher_expected_unit_overrides_student_unit",
+    "target_operation": "identifying_the_whole",
+    "citation": "Theodora H. Reynolds (1995)",
+    "error_action": "teacher_expected_unit_overrides_student_unit",
+    "error_description": "the correct denominator is fixed by the teacher's anticipated whole rather than the unit the student actually used",
+    "provenance_comments": "=== row 38923: teacher forces procedure ===\nAdult-pedagogical; no student computational rule.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes an adult-pedagogical behavior (teacher forcing a unit) rather than a student's computational rule or procedure. The schema requires a runnable rule `Rule(Input, Got)` where `Got` is the *student's* produced answer, but no student procedure is documented—only a teacher's override. Without a student-executable algorithm, a SWI-Prolog rule of arity 2 cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes an adult-pedagogical behavior (teacher forcing a unit) rather than a student's computational rule or procedure. The schema requires a runnable rule `Rule(Input, Got)` where `Got` is the *student's* produced answer, but no student procedure is documented—only a teacher's override. Without a student-executable algorithm, a SWI-Prolog rule of arity 2 cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39888",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39888_count_all_shaded_parts_as_improper_numerator",
+    "target_operation": "mixed_fraction_area_model",
+    "citation": "Fatma Gizem Karaoglan Yilmaz, Burçin Gökkurt Özdemir & Zehra Yasar (2018)",
+    "error_action": "count_all_shaded_parts_as_improper_numerator",
+    "error_description": "count every shaded equal part across all whole units as the numerator over the per-unit denominator",
+    "provenance_comments": "=== row 39888: mixed fraction area model misread ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(count_all_shaded_parts_as_improper_numerator(fraction(A,B), fraction(N,D)) :-\n    A = fraction(Whole, Num, Denom),\n    D = Denom,\n    N is Whole * Denom + Num).\n\ntest_harness:arith_misconception(db_row(39888), fraction, churn_39888_count_all_shaded_parts_as_improper_numerator,\n    churn_candidate:count_all_shaded_parts_as_improper_numerator,\n    fraction(fraction(2, 3, 4)),\n    fraction(11, 4)).",
+      "result": "predicate must be named churn_39888_count_all_shaded_parts_as_improper_numerator"
+    },
+    {
+      "response": "churn_candidate:(churn_39888_count_all_shaded_parts_as_improper_numerator(fraction(N_whole, D, N_shaded), frac(NTotal, D))) :-\n    NTotal is N_whole * D + N_shaded.\n\ntest_harness:arith_misconception(db_row(39888), fraction, churn_39888_count_all_shaded_parts_as_improper_numerator,\n    churn_candidate:churn_39888_count_all_shaded_parts_as_improper_numerator,\n    fraction(2, 3, 1),\n    frac(7, 3)).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

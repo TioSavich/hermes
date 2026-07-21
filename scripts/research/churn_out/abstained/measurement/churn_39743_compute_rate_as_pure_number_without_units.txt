@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39743",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39743_compute_rate_as_pure_number_without_units",
+    "target_operation": "rate_units_coherence",
+    "citation": "Crisólogo Dolores-Flores, Martha Iris Rivera-López & Javier García-García (2019)",
+    "error_action": "compute_rate_as_pure_number_without_units",
+    "error_description": "calculate the rate numerically and ignore or arbitrarily assign units of measure",
+    "provenance_comments": "=== row 39743: rate computed without unit handling ===\nToo vague: unit labeling error, not a numeric procedure.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error is described as “unit labeling error, not a numeric procedure” and lacks a concrete, runnable algorithm or procedure that can be expressed as a deterministic Prolog rule of arity 2 producing the *documented wrong answer*. Without a clear, generalizable computational step (e.g., a formula or transformation), no executable `Rule/2` predicate can be formed that reliably yields the documented misconception for arbitrary inputs.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is described as “unit labeling error, not a numeric procedure” and lacks a concrete, runnable algorithm or procedure that can be expressed as a deterministic Prolog rule of arity 2 producing the *documented wrong answer*. Without a clear, generalizable computational step (e.g., a formula or transformation), no executable `Rule/2` predicate can be formed that reliably yields the documented misconception for arbitrary inputs.",
+      "result": "abstained"
+    }
+  ]
+}

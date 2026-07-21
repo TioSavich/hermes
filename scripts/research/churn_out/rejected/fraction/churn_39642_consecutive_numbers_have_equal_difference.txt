@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39642",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39642_consecutive_numbers_have_equal_difference",
+    "target_operation": "fraction_magnitude_and_counting",
+    "citation": "Julie M. Amador & Darrell Earnest (2018)",
+    "error_action": "consecutive_numbers_have_equal_difference",
+    "error_description": "assume each listed fraction differs from the next by the same amount, as consecutive counting numbers do",
+    "provenance_comments": "=== row 39642: fractions counted as evenly spaced ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_39642_consecutive_numbers_have_equal_difference",
+  "attempts": [
+    {
+      "response": "churn_candidate:(consecutive_diff_equal(frac(N1,D)-frac(N2,D), frac(N3,D)-frac(N4,D)) :-\n    N2 is N1 + 1,\n    N4 is N3 + 1,\n    D \\== 0).\n\ntest_harness:arith_misconception(db_row(39642), fraction, churn_39642_consecutive_numbers_have_equal_difference,\n    churn_candidate:consecutive_diff_equal,\n    frac(1,4)-frac(2,4),\n    frac(3,4)-frac(4,4)).",
+      "result": "predicate must be named churn_39642_consecutive_numbers_have_equal_difference"
+    },
+    {
+      "response": "churn_candidate:(consecutive_numbers_have_equal_difference([F1, F2, F3], true) :-\n    F1 = frac(N1, D1),\n    F2 = frac(N2, D2),\n    F3 = frac(N3, D3),\n    N2 - N1 =:= N3 - N2,\n    D1 =:= D2,\n    D2 =:= D3).\n\ntest_harness:arith_misconception(db_row(39642), fraction, churn_39642_consecutive_numbers_have_equal_difference,\n    churn_candidate:consecutive_numbers_have_equal_difference,\n    [frac(1,5), frac(2,5), frac(3,5)],\n    false).",
+      "result": "predicate must be named churn_39642_consecutive_numbers_have_equal_difference"
+    }
+  ]
+}

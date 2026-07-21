@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39011",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39011_partition_correctly_but_do_not_link_people_to_name",
+    "target_operation": "people_to_fraction_name_mapping",
+    "citation": "KATHY CHARLES and ROD NASON (2000)",
+    "error_action": "partition_correctly_but_do_not_link_people_to_name",
+    "error_description": "split the object into the right number of equal pieces without connecting the number of sharers to the fraction name",
+    "provenance_comments": "=== row 39011: partition without quantifying shares ===\nToo vague — inability to name shares; no wrong numeric output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is non-numeric and procedural — students partition correctly but fail to link the number of sharers to the fraction name — and yields no concrete wrong numeric output. Since `ExpectedCorrect` must be a concrete value that does not unify with `Got`, and no runnable rule producing a specific erroneous result is specified, the requirement for a runnable `Rule` and a unifiable `ExpectedCorrect` cannot be satisfied.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is non-numeric and procedural — students partition correctly but fail to link the number of sharers to the fraction name — and yields no concrete wrong numeric output. Since `ExpectedCorrect` must be a concrete value that does not unify with `Got`, and no runnable rule producing a specific erroneous result is specified, the requirement for a runnable `Rule` and a unifiable `ExpectedCorrect` cannot be satisfied.",
+      "result": "abstained"
+    }
+  ]
+}

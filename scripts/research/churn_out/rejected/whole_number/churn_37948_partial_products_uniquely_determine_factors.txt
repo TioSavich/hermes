@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37948",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37948_partial_products_uniquely_determine_factors",
+    "target_operation": "factorization_uniqueness",
+    "citation": "Bharath Sriraman, Benjamin Dickman (2017)",
+    "error_action": "partial_products_uniquely_determine_factors",
+    "error_description": "a number's product representation picks out one unique pair of factors",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "predicate must be named churn_37948_partial_products_uniquely_determine_factors",
+  "attempts": [
+    {
+      "response": "churn_candidate:(partial_products_uniquely_determine_factors(A*B, Got) :-\n    Got = A-B).\n\ntest_harness:arith_misconception(db_row(37948), whole_number, churn_37948_partial_products_uniquely_determine_factors,\n    churn_candidate:partial_products_uniquely_determine_factors,\n    12-1,\n    2-6).",
+      "result": "predicate must be named churn_37948_partial_products_uniquely_determine_factors"
+    },
+    {
+      "response": "churn_candidate:(partial_products_uniquely_determine_factors(A-B, Got) :-\n    Got = (A, B)).\n\ntest_harness:arith_misconception(db_row(37948), whole_number, churn_37948_partial_products_uniquely_determine_factors,\n    churn_candidate:partial_products_uniquely_determine_factors,\n    12-6,\n    (4,3)).",
+      "result": "predicate must be named churn_37948_partial_products_uniquely_determine_factors"
+    }
+  ]
+}

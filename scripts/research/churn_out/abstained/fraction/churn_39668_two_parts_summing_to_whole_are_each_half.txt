@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39668",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39668_two_parts_summing_to_whole_are_each_half",
+    "target_operation": "equal_partition_requirement",
+    "citation": "Mary Mueller & Carolyn Maher (2009)",
+    "error_action": "two_parts_summing_to_whole_are_each_half",
+    "error_description": "any two pieces that together make the whole can each be called one-half",
+    "provenance_comments": "=== row 39668: unequal rods called halves ===\nNo arithmetic rule to encode.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about partitioning (any two pieces that sum to the whole are each called one-half), not a syntactic arithmetic operation. There is no runnable arithmetic rule (predicate of arity 2 over inputs yielding a wrong output) that can encode this misconception without inventing mathematics or introducing side effects. The error pertains to reasoning about equal partitioning, not to a specific computational procedure.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about partitioning (any two pieces that sum to the whole are each called one-half), not a syntactic arithmetic operation. There is no runnable arithmetic rule (predicate of arity 2 over inputs yielding a wrong output) that can encode this misconception without inventing mathematics or introducing side effects. The error pertains to reasoning about equal partitioning, not to a specific computational procedure.",
+      "result": "abstained"
+    }
+  ]
+}

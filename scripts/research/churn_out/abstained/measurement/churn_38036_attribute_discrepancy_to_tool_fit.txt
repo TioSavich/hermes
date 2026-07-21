@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38036",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38036_attribute_discrepancy_to_tool_fit",
+    "target_operation": "measurement_consistency",
+    "citation": "Jeffrey E. Barrett, Craig Cullen, Julie Sarama, Douglas H. Clements, David Klanderman, Amanda L. Miller, Chepina Rumsey (2011)",
+    "error_action": "attribute_discrepancy_to_tool_fit",
+    "error_description": "when two tools disagree, blame the tools' fit rather than one's own method",
+    "provenance_comments": "=== row 38036: blames tools for inconsistent measurements ===\nToo vague: attribution claim, not a computable procedure.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a cognitive attribution claim (\"blame the tools' fit rather than one's own method\") without a specified computational procedure or rule that produces a concrete incorrect numerical result. No runnable predicate of arity 2 can be derived from the description, and no concrete Input/ExpectedCorrect pair satisfying the schema can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a cognitive attribution claim (\"blame the tools' fit rather than one's own method\") without a specified computational procedure or rule that produces a concrete incorrect numerical result. No runnable predicate of arity 2 can be derived from the description, and no concrete Input/ExpectedCorrect pair satisfying the schema can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

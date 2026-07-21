@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40374",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40374_apply_inverse_fraction_to_current_amount_to_undo_a_change",
+    "target_operation": "changing_reference_whole",
+    "citation": "JUHAINA AWAWDEH SHAHBARI and IRIT PELED (2015)",
+    "error_action": "apply_inverse_fraction_to_current_amount_to_undo_a_change",
+    "error_description": "undo an increase by taking the same fraction off the new, larger amount",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_40374_apply_inverse_fraction_to_current_amount_to_undo_a_change",
+  "attempts": [
+    {
+      "response": "churn_candidate:(apply_inverse_fraction_to_current_amount_to_undo_a_change(frac(N,D)-frac(A,B), frac(ResultN, ResultD)) :-\n    ResultN is A * D,\n    ResultD is B * D - B * N).\n\ntest_harness:arith_misconception(db_row(40374), fraction, churn_40374_apply_inverse_fraction_to_current_amount_to_undo_a_change,\n    churn_candidate:apply_inverse_fraction_to_current_amount_to_undo_a_change,\n    frac(1,5)-frac(6,5),\n    frac(1,1)).",
+      "result": "predicate must be named churn_40374_apply_inverse_fraction_to_current_amount_to_undo_a_change"
+    },
+    {
+      "response": "churn_candidate:(apply_inverse_fraction_to_current_amount_to_undo_a_change(frac(N,D)-Total, Result) :-\n    Result is Total * (D - N) // D).\n\ntest_harness:arith_misconception(db_row(40374), fraction, churn_40374_apply_inverse_fraction_to_current_amount_to_undo_a_change,\n    churn_candidate:apply_inverse_fraction_to_current_amount_to_undo_a_change,\n    frac(1,4)-100,\n    75).",
+      "result": "predicate must be named churn_40374_apply_inverse_fraction_to_current_amount_to_undo_a_change"
+    }
+  ]
+}

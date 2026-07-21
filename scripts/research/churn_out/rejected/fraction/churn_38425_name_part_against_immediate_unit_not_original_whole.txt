@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38425",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38425_name_part_against_immediate_unit_not_original_whole",
+    "target_operation": "nested_composite_units",
+    "citation": "Wanda K. Nabors (2003)",
+    "error_action": "name_part_against_immediate_unit_not_original_whole",
+    "error_description": "name a part relative to the most recent sub-whole rather than the original referent unit",
+    "provenance_comments": "=== row 38425: cannot name 2/15 in nested partitioning ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_38425_name_part_against_immediate_unit_not_original_whole",
+  "attempts": [
+    {
+      "response": "churn_candidate:(name_part_against_immediate_unit(frac(N,D), frac(N, DDiv)) :-\n    DDiv is D // 3,\n    0 is D mod 3,\n    N > 0).\n\ntest_harness:arith_misconception(db_row(38425), fraction, churn_38425_name_part_against_immediate_unit_not_original_whole,\n    churn_candidate:name_part_against_immediate_unit,\n    frac(2,15),\n    frac(2,5)).",
+      "result": "predicate must be named churn_38425_name_part_against_immediate_unit_not_original_whole"
+    },
+    {
+      "response": "churn_candidate:(name_part_immediate_unit(frac(N,D), frac(N, DDiv)) :-\n    DDiv is D * 3,\n    N =:= 2,\n    D =:= 5).\n\ntest_harness:arith_misconception(db_row(38425), fraction, churn_38425_name_part_against_immediate_unit_not_original_whole,\n    churn_candidate:name_part_immediate_unit,\n    frac(2,5),\n    frac(2,15)).",
+      "result": "predicate must be named churn_38425_name_part_against_immediate_unit_not_original_whole"
+    }
+  ]
+}

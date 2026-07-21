@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39393",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39393_treat_nominal_dimensions_as_exact",
+    "target_operation": "tolerances_and_gaps",
+    "citation": "Lionel LaCroix (2014)",
+    "error_action": "treat_nominal_dimensions_as_exact",
+    "error_description": "assemble components at their stated dimensions without allowing for required gaps, tolerances, or rounding conventions",
+    "provenance_comments": "=== row 39393: industry tolerances / standard gaps ignored ===\nToo vague: failure to attend to conventions, not a generic bug.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a failure to attend to conventions (e.g., industry tolerances, standard gaps, rounding) rather than a specific, executable arithmetic procedure that can be captured as a deterministic 2-place predicate producing a fixed wrong result. The misconception is contextual and dependent on external standards or unstated assumptions, so no runnable rule can be formulated that consistently yields the documented wrong outcome across instances without additional domain-specific parameters or external data.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a failure to attend to conventions (e.g., industry tolerances, standard gaps, rounding) rather than a specific, executable arithmetic procedure that can be captured as a deterministic 2-place predicate producing a fixed wrong result. The misconception is contextual and dependent on external standards or unstated assumptions, so no runnable rule can be formulated that consistently yields the documented wrong outcome across instances without additional domain-specific parameters or external data.",
+      "result": "abstained"
+    }
+  ]
+}

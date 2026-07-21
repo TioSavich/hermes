@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38229",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38229_apply_written_algorithm_by_rote",
+    "target_operation": "addition_with_zero_and_place_value",
+    "citation": "Gillian M. Boulton-Lewis (1998)",
+    "error_action": "apply_written_algorithm_by_rote",
+    "error_description": "follow the column-addition steps without tracking what zero or position means",
+    "provenance_comments": "=== row 38229: complex addition errors (too general) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(adds_with_zero_ignoring_place_value(A-B, Got) :-\n    Got is A + B).\n\ntest_harness:arith_misconception(db_row(38229), whole_number, churn_38229_apply_written_algorithm_by_rote,\n    churn_candidate:adds_with_zero_ignoring_place_value,\n    1000+0,\n    1000).",
+      "result": "predicate must be named churn_38229_apply_written_algorithm_by_rote"
+    },
+    {
+      "response": "churn_candidate:(churn_38229_apply_written_algorithm_by_rote(A-B, Got) :-\n    Got is A + B).\n\ntest_harness:arith_misconception(db_row(38229), whole_number, churn_38229_apply_written_algorithm_by_rote,\n    churn_candidate:churn_38229_apply_written_algorithm_by_rote,\n    105-203,\n    308).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39671",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39671_transfer_known_ratio_to_new_whole",
+    "target_operation": "relative_unit_value",
+    "citation": "Mary Mueller & Carolyn Maher (2009)",
+    "error_action": "transfer_known_ratio_to_new_whole",
+    "error_description": "if A is half of B, treat A as half of any larger object too",
+    "provenance_comments": "=== row 39671: transfer proportional relation to wrong whole ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (transferring a proportional relation to a wrong whole) but does not specify a runnable, general syntactic rule for a predicate `Rule(Input, Got)` that produces a *consistent, predictable wrong answer* in Prolog. The error is contextual (depends on reasoning about a story or model), not a purely syntactic arithmetic transformation, and thus cannot be encoded as a deterministic 2-arity predicate without inventing a specific problem instance or assumption.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (transferring a proportional relation to a wrong whole) but does not specify a runnable, general syntactic rule for a predicate `Rule(Input, Got)` that produces a *consistent, predictable wrong answer* in Prolog. The error is contextual (depends on reasoning about a story or model), not a purely syntactic arithmetic transformation, and thus cannot be encoded as a deterministic 2-arity predicate without inventing a specific problem instance or assumption.",
+      "result": "abstained"
+    }
+  ]
+}

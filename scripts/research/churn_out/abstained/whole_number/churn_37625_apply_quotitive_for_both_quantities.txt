@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37625",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37625_apply_quotitive_for_both_quantities",
+    "target_operation": "partitive_quotitive_division",
+    "citation": "Jane-Jane Lo and Tad Watanabe (1997)",
+    "error_action": "apply_quotitive_for_both_quantities",
+    "error_description": "form groups of the known group-size for each quantity rather than switching to a fixed number of groups",
+    "provenance_comments": "=== row 37625: quotitive/partitive shift struggle ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual shift between quotitive and partitive division models but does not specify a concrete, runnable procedural rule that consistently produces a wrong result for a given input. Without a deterministic algorithm (e.g., a specific arithmetic transformation or sequence of operations) tied to the phrase “apply_quotitive_for_both_quantities”, no testable rule of arity 2 can be formed that reliably yields the documented misconception outcome.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual shift between quotitive and partitive division models but does not specify a concrete, runnable procedural rule that consistently produces a wrong result for a given input. Without a deterministic algorithm (e.g., a specific arithmetic transformation or sequence of operations) tied to the phrase “apply_quotitive_for_both_quantities”, no testable rule of arity 2 can be formed that reliably yields the documented misconception outcome.",
+      "result": "abstained"
+    }
+  ]
+}

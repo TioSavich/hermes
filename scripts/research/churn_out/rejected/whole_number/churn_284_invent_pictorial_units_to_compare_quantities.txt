@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "284",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_284_invent_pictorial_units_to_compare_quantities",
+    "target_operation": "invented_comparison_models",
+    "citation": "Declan O'Reilly (1999)",
+    "error_action": "invent_pictorial_units_to_compare_quantities",
+    "error_description": "build personal visual figures (stick people, jumpers, raindrops) to represent, count, and compare whole numbers",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 23",
+  "attempts": [
+    {
+      "response": "churn_candidate:(invents_pictorial_units_to_compare_quantities(A-B, Got) :-\n    length(_, A, Got),\n    length(_, B, _),\n    Got = A).\n\ntest_harness:arith_misconception(db_row(284), whole_number, churn_284_invent_pictorial_units_to_compare_quantities,\n    churn_candidate:invents_pictorial_units_to_compare_quantities,\n    5-3,\n    2).",
+      "result": "predicate must be named churn_284_invent_pictorial_units_to_compare_quantities"
+    },
+    {
+      "response": "churn_candidate:(churn_284_invent_pictorial_units_to_compare_quantities(A-B, Got) :-\n    length(_, A, _, Got),\n    length(_, B, _, _),\n    Got = A).\n\ntest_harness:arith_misconception(db_row(284), whole_number, churn_284_invent_pictorial_units_to_compare_quantities,\n    churn_candidate:churn_284_invent_pictorial_units_to_compare_quantities,\n    5-3,\n    5).",
+      "result": "SWI-Prolog gate exited 23"
+    }
+  ]
+}

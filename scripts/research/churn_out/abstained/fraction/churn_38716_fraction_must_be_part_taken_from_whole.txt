@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38716",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38716_fraction_must_be_part_taken_from_whole",
+    "target_operation": "improper_fractions",
+    "citation": "Anderson Norton, Jesse L.M. Wilkins (2009)",
+    "error_action": "fraction_must_be_part_taken_from_whole",
+    "error_description": "a fraction can only name parts removed from within a single whole, so its numerator cannot exceed its denominator",
+    "provenance_comments": "=== row 38716: part-whole scheme rejects 9/7 ===\nToo vague — belief/rejection, no numeric transformation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: documented error is a conceptual belief (rejection of improper fractions) without a specific numeric transformation or rule that produces a wrong numeric output; no runnable predicate of arity 2 can be defined that yields the documented error as a computed result.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: documented error is a conceptual belief (rejection of improper fractions) without a specific numeric transformation or rule that produces a wrong numeric output; no runnable predicate of arity 2 can be defined that yields the documented error as a computed result.",
+      "result": "abstained"
+    }
+  ]
+}

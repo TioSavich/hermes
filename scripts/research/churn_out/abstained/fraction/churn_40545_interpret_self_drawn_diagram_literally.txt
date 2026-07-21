@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40545",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40545_interpret_self_drawn_diagram_literally",
+    "target_operation": "part_whole_representation",
+    "citation": "Jeremy Hodgen, Dietmar Küchemann, Margaret Brown and Robert Coe (2010)",
+    "error_action": "interpret_self_drawn_diagram_literally",
+    "error_description": "read a self-generated circle diagram as a concrete object rather than a flexible model",
+    "provenance_comments": "=== row 40545: circle diagram taken literally ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive misconception (interpreting a self-drawn diagram as a concrete object) rather than a specific syntactic or procedural arithmetic rule that can be encoded as a binary predicate producing a deterministic wrong output for a given input. No runnable rule or defensible probe can be constructed without inventing mathematics or assuming arbitrary diagram-to-symbol mappings.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive misconception (interpreting a self-drawn diagram as a concrete object) rather than a specific syntactic or procedural arithmetic rule that can be encoded as a binary predicate producing a deterministic wrong output for a given input. No runnable rule or defensible probe can be constructed without inventing mathematics or assuming arbitrary diagram-to-symbol mappings.",
+      "result": "abstained"
+    }
+  ]
+}

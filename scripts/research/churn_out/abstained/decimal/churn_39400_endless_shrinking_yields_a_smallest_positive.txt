@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39400",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39400_endless_shrinking_yields_a_smallest_positive",
+    "target_operation": "infinitesimals",
+    "citation": "JOHN MONAGHAN (2001)",
+    "error_action": "endless_shrinking_yields_a_smallest_positive",
+    "error_description": "posit a number like 0.000...1 by treating infinity as an endless process of getting smaller",
+    "provenance_comments": "=== row 39400: believe in infinitesimal 0.000...1 ===\nToo vague — belief in infinitesimals, not a wrong computation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual belief in infinitesimals (0.000...1) as a result of misunderstanding infinity as an endless shrinking process, rather than a specific erroneous computational procedure that can be captured by a deterministic 2-place predicate producing a fixed wrong output. Since no runnable rule (i.e., a deterministic mapping from input to the *documented* wrong answer) is definable—only a vague epistemic stance—no testable `Rule(Input, Got)` can be constructed per schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual belief in infinitesimals (0.000...1) as a result of misunderstanding infinity as an endless shrinking process, rather than a specific erroneous computational procedure that can be captured by a deterministic 2-place predicate producing a fixed wrong output. Since no runnable rule (i.e., a deterministic mapping from input to the *documented* wrong answer) is definable—only a vague epistemic stance—no testable `Rule(Input, Got)` can be constructed per schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

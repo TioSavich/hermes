@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40562",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40562_irrationals_are_only_roots_and_pi",
+    "target_operation": "definition_of_irrational_numbers",
+    "citation": "Alejandro S. González-Martín, Victor Giraldo & Alexandre M. Souto (2013)",
+    "error_action": "irrationals_are_only_roots_and_pi",
+    "error_description": "treat irrational numbers as just the familiar cases of square roots and pi",
+    "provenance_comments": "=== row 40562: irrational non-periodic recognition ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (treating irrational numbers as only square roots and pi) but does not specify a runnable computational rule that produces a concrete wrong decimal output from a given input. There is no clear predicate arity-2 procedure mapping a well-defined input to a specific erroneous result that can be tested against a correct value. Without a precise, executable transformation rule derived from the misconception, a test harness clause cannot be constructed per the schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (treating irrational numbers as only square roots and pi) but does not specify a runnable computational rule that produces a concrete wrong decimal output from a given input. There is no clear predicate arity-2 procedure mapping a well-defined input to a specific erroneous result that can be tested against a correct value. Without a precise, executable transformation rule derived from the misconception, a test harness clause cannot be constructed per the schema.",
+      "result": "abstained"
+    }
+  ]
+}

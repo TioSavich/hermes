@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40499",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40499_generate_intermediate_numbers_only_by_halving",
+    "target_operation": "density_of_rationals",
+    "citation": "Declan O'Reilly (1999)",
+    "error_action": "generate_intermediate_numbers_only_by_halving",
+    "error_description": "find a number between two values exclusively by repeatedly bisecting the interval",
+    "provenance_comments": "=== row 40499: density denial → bisection only ===\nOffers bisections (5.5, 5.25) — strategy description, not a fixed wrong rule.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a strategy (repeated bisection) rather than a fixed, runnable computational rule producing a specific wrong result; it lacks sufficient mathematical specificity to define a deterministic predicate Rule(Input, Got) that reliably yields the documented wrong answer across general inputs.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a strategy (repeated bisection) rather than a fixed, runnable computational rule producing a specific wrong result; it lacks sufficient mathematical specificity to define a deterministic predicate Rule(Input, Got) that reliably yields the documented wrong answer across general inputs.",
+      "result": "abstained"
+    }
+  ]
+}

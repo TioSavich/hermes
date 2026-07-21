@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40188",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40188_treat_diagram_and_numeral_solutions_independently",
+    "target_operation": "representation_coordination",
+    "citation": "Geoffrey B. Saxe, Maryl Gearhart and Na'ilah Suad Nasir (2001)",
+    "error_action": "treat_diagram_and_numeral_solutions_independently",
+    "error_description": "solve the sharing task once with a picture and once with an algorithm without requiring the two answers to agree",
+    "provenance_comments": "=== row 40188: diagram vs algorithm give different answers ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural separation between diagrammatic and algorithmic solutions yielding *different* answers, but provides no specific numerical claim (\"to\") that the diagram produces a particular wrong result like `frac(1,4)`. Without a concrete documented output for a specific input, we cannot construct a rule that reliably produces a *single* documented wrong answer on a *single* input. The error is conceptual (lack of coordination), not algorithmic with a fixed mapping.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40188_treat_diagram_and_numeral_solutions_independently(DiagramAns, NumeralAns) :-\n    diagram_ans(DiagramAns),\n    numeral_ans(NumeralAns),\n    DiagramAns \\= NumeralAns).\n\ndiagram_ans(frac(1,3)).\nnumeral_ans(frac(1,4)).\n\ntest_harness:arith_misconception(db_row(40188), fraction, churn_40188_treat_diagram_and_numeral_solutions_independently,\n    churn_candidate:churn_40188_treat_diagram_and_numeral_solutions_independently,\n    _,\n    frac(1,3)).",
+      "result": "output frac(1,4) does not match explicit documented claim(s) ['to']"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a procedural separation between diagrammatic and algorithmic solutions yielding *different* answers, but provides no specific numerical claim (\"to\") that the diagram produces a particular wrong result like `frac(1,4)`. Without a concrete documented output for a specific input, we cannot construct a rule that reliably produces a *single* documented wrong answer on a *single* input. The error is conceptual (lack of coordination), not algorithmic with a fixed mapping.",
+      "result": "abstained"
+    }
+  ]
+}

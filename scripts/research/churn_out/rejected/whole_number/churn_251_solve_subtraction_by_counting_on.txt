@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "251",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_251_solve_subtraction_by_counting_on",
+    "target_operation": "subtraction_borrowing",
+    "citation": "Davis, G. (1989)",
+    "error_action": "solve_subtraction_by_counting_on",
+    "error_description": "find a difference by counting up from the subtrahend rather than borrowing",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "external module qualification is not allowed: error:",
+  "attempts": [
+    {
+      "response": "churn_candidate:(solve_subtraction_by_counting_on(A-B, Got) :-\n    between(1, B, K),\n    C is A + K,\n    C = B,\n    Got is K).\n\ntest_harness:arith_misconception(db_row(251), whole_number, churn_251_solve_subtraction_by_counting_on,\n    churn_candidate:solve_subtraction_by_counting_on,\n    7-3,\n    4).",
+      "result": "predicate must be named churn_251_solve_subtraction_by_counting_on"
+    },
+    {
+      "response": "churn_candidate:(churn_251_solve_subtraction_by_counting_on(A-B, Got) :-\n    % Documented error: solve subtraction by counting on from subtrahend to minuend\n    % For whole numbers A >= B, this incorrectly computes (A - B) as (A - B) + 1\n    % i.e., overcounts by one due to inclusive counting error\n    Got is (A - B) + 1).\n\ntest_harness:arith_misconception(db_row(251), whole_number, churn_251_solve_subtraction_by_counting_on,\n    churn_candidate:churn_251_solve_subtraction_by_counting_on,\n    7-3,\n    4).",
+      "result": "external module qualification is not allowed: error:"
+    }
+  ]
+}

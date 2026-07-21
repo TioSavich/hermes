@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40047",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40047_factor_and_multiple_interchangeable",
+    "target_operation": "factors_and_multiples",
+    "citation": "Carol E. Seaman, Jennifer Earles Szydlik (2007)",
+    "error_action": "factor_and_multiple_interchangeable",
+    "error_description": "factor and multiple mean roughly the same 'numbers related by multiplication' relation",
+    "provenance_comments": "=== row 40047: factor/multiple conflation ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 23",
+  "attempts": [
+    {
+      "response": "churn_candidate:(factor_and_multiple_interchangeable(A-B, Got) :-\n    % Misconception: treats \"factor of B\" as equivalent to \"multiple of B\"\n    % So for input A-B, student computes A * B (a multiple of A) but labels it as a factor of B\n    Got is A * B).\n\ntest_harness:arith_misconception(db_row(40047), whole_number, churn_40047_factor_and_multiple_interchangeable,\n    churn_candidate:factor_and_multiple_interchangeable,\n    3-4,\n    12).",
+      "result": "predicate must be named churn_40047_factor_and_multiple_interchangeable"
+    },
+    {
+      "response": "churn_candidate:(churn_40047_factor_and_multiple_interchangeable(A, B, Got) :-\n    Got is A * B).\n\ntest_harness:arith_misconception(db_row(40047), whole_number, churn_40047_factor_and_multiple_interchangeable,\n    churn_candidate:churn_40047_factor_and_multiple_interchangeable,\n    6-12,\n    2).",
+      "result": "SWI-Prolog gate exited 23"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38736",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38736_count_all_via_physical_analogues",
+    "target_operation": "additive_combination",
+    "citation": "EDDIE GRAY, MARCIA PINTO, DEMETRA PITTA and DAVID TALL (1999)",
+    "error_action": "count_all_via_physical_analogues",
+    "error_description": "find a sum by step-by-step double counting of mental finger-like objects rather than recalling derived facts",
+    "provenance_comments": "=== row 38736: finger counting over derived facts ===\nProcedural style, not a specific wrong answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural cognitive strategy (step-by-step double counting via mental finger-like objects) rather than a specific syntactic error that can be encoded as a deterministic Prolog rule mapping input to a fixed wrong output. Since the misconception is about *how* a student arrives at an answer (a cognitive process), not *what* answer they produce, there is no unique, generalizable wrong output for a given input that the rule can reliably compute. Without a consistent, predictable incorrect result, no runnable Rule predicate of arity 2 can be constructed per schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural cognitive strategy (step-by-step double counting via mental finger-like objects) rather than a specific syntactic error that can be encoded as a deterministic Prolog rule mapping input to a fixed wrong output. Since the misconception is about *how* a student arrives at an answer (a cognitive process), not *what* answer they produce, there is no unique, generalizable wrong output for a given input that the rule can reliably compute. Without a consistent, predictable incorrect result, no runnable Rule predicate of arity 2 can be constructed per schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

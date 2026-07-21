@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40134",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40134_model_division_by_whole_number",
+    "target_operation": "fraction_division_story_problems",
+    "citation": "Ji-Won Son, Sandra Crespo (2009)",
+    "error_action": "model_division_by_whole_number",
+    "error_description": "write a sharing story that divides a fractional amount evenly among a whole number of groups",
+    "provenance_comments": "=== row 40134: division-by-whole-number story for fraction divisor ===\nToo vague — story-problem generation error, not a numeric computation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a story-problem generation error (\"write a sharing story that divides a fractional amount evenly among a whole number of groups\"), not a numeric computation error. It does not specify a runnable arithmetic rule producing a wrong numeric result, and no concrete input-output pair is given. Since the schema requires a predicate `Rule(Input, Got)` that yields the documented wrong answer (and `ExpectedCorrect` must differ), and no such numeric rule or output is documented, the row cannot be encoded per the schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a story-problem generation error (\"write a sharing story that divides a fractional amount evenly among a whole number of groups\"), not a numeric computation error. It does not specify a runnable arithmetic rule producing a wrong numeric result, and no concrete input-output pair is given. Since the schema requires a predicate `Rule(Input, Got)` that yields the documented wrong answer (and `ExpectedCorrect` must differ), and no such numeric rule or output is documented, the row cannot be encoded per the schema.",
+      "result": "abstained"
+    }
+  ]
+}

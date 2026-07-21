@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40065",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40065_treat_ten_as_position_not_quantity",
+    "target_operation": "tens_as_position_only",
+    "citation": "Frédérick Tempier (2016)",
+    "error_action": "treat_ten_as_position_not_quantity",
+    "error_description": "read the tens digit as a slot without connecting it to the quantity it counts",
+    "provenance_comments": "=== row 40065: ten as position not quantity ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule or defensible probe can be constructed from the documented error, as the misconception describes a conceptual misreading (tens digit as a positional slot without quantity meaning) rather than a specific arithmetic procedure that yields a determinate incorrect output for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule or defensible probe can be constructed from the documented error, as the misconception describes a conceptual misreading (tens digit as a positional slot without quantity meaning) rather than a specific arithmetic procedure that yields a determinate incorrect output for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

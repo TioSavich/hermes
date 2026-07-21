@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38061",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38061_always_perform_the_subtraction_as_written",
+    "target_operation": "subtraction_strategy_selection",
+    "citation": "Wim Van Dooren, Matthew Inglis (2015)",
+    "error_action": "always_perform_the_subtraction_as_written",
+    "error_description": "carry out direct take-away exactly as the minus sign presents it",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a general strategy of performing subtraction as written (i.e., direct take-away without considering efficiency or number sense), but provides no concrete algorithmic rule that maps inputs to a specific erroneous output. Without a predictable, deterministic transformation (e.g., a formula or procedure that consistently produces the *wrong* result for given inputs), no runnable rule predicate can be constructed. The task requires a rule that, when applied to an input, yields the documented incorrect result; this is impossible to define without more specificity than \"always perform subtraction as written\", which is not algorithmically precise.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a general strategy of performing subtraction as written (i.e., direct take-away without considering efficiency or number sense), but provides no concrete algorithmic rule that maps inputs to a specific erroneous output. Without a predictable, deterministic transformation (e.g., a formula or procedure that consistently produces the *wrong* result for given inputs), no runnable rule predicate can be constructed. The task requires a rule that, when applied to an input, yields the documented incorrect result; this is impossible to define without more specificity than \"always perform subtraction as written\", which is not algorithmically precise.",
+      "result": "abstained"
+    }
+  ]
+}

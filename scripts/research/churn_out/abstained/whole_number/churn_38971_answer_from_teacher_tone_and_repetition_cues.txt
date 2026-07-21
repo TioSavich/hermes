@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38971",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38971_answer_from_teacher_tone_and_repetition_cues",
+    "target_operation": "number_sequence",
+    "citation": "Einat Heyd-Metzuyanim & Mellony Graven (2016)",
+    "error_action": "answer_from_teacher_tone_and_repetition_cues",
+    "error_description": "give or revise the chorused answer based on the teacher's tone and repeated questioning rather than the numbers",
+    "provenance_comments": "=== row 38971: ritual chorused answers ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a pedagogical behavior—students answering based on teacher tone and repetition rather than numerical reasoning—without specifying a concrete arithmetic procedure or rule that can be encoded as a deterministic predicate producing a wrong output. No runnable rule or defensible probe can be constructed under the schema constraints.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a pedagogical behavior—students answering based on teacher tone and repetition rather than numerical reasoning—without specifying a concrete arithmetic procedure or rule that can be encoded as a deterministic predicate producing a wrong output. No runnable rule or defensible probe can be constructed under the schema constraints.",
+      "result": "abstained"
+    }
+  ]
+}

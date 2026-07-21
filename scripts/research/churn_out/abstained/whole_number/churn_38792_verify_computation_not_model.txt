@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38792",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38792_verify_computation_not_model",
+    "target_operation": "solution_evaluation",
+    "citation": "Adolf af Ekenstam and Karl Greger (1983)",
+    "error_action": "verify_computation_not_model",
+    "error_description": "a solution is correct if the arithmetic is computed correctly",
+    "provenance_comments": "=== row 38792: duplicate of 38729 ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about verification criteria (\"a solution is correct if the arithmetic is computed correctly\") rather than a specific syntactic or semantic error in computation. It does not describe a runnable procedural rule that produces a *systematically wrong output* for a given input, which is required for the schema. Without a defined mapping from input to incorrect output, a runnable `Rule/2` predicate cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about verification criteria (\"a solution is correct if the arithmetic is computed correctly\") rather than a specific syntactic or semantic error in computation. It does not describe a runnable procedural rule that produces a *systematically wrong output* for a given input, which is required for the schema. Without a defined mapping from input to incorrect output, a runnable `Rule/2` predicate cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

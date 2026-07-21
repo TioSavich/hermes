@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37477",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37477_verify_shares_by_counting_individual_items",
+    "target_operation": "composite_unit_formation",
+    "citation": "Susan J. Lamon (1996)",
+    "error_action": "verify_shares_by_counting_individual_items",
+    "error_description": "draw and count every constituent item rather than treating the pack as one unit of five",
+    "provenance_comments": "=== row 37477: requires perceptual support (cognitive load, no concrete rule) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a perceptual/cognitive strategy (counting individual items instead of treating a pack as one unit) rather than a specific arithmetic rule that can be expressed as a binary predicate producing a deterministic wrong result. No runnable rule can be formed without inventing mathematics or assuming a specific instantiation not given in the documentation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a perceptual/cognitive strategy (counting individual items instead of treating a pack as one unit) rather than a specific arithmetic rule that can be expressed as a binary predicate producing a deterministic wrong result. No runnable rule can be formed without inventing mathematics or assuming a specific instantiation not given in the documentation.",
+      "result": "abstained"
+    }
+  ]
+}

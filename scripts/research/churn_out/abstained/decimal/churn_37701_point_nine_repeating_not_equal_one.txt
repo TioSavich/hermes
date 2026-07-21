@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37701",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37701_point_nine_repeating_not_equal_one",
+    "target_operation": "repeating_decimal_equality",
+    "citation": "Robert Ely (2010)",
+    "error_action": "point_nine_repeating_not_equal_one",
+    "error_description": "0.999... must denote something strictly less than 1 or it would serve no purpose",
+    "provenance_comments": "=== row 37701: rejection of 0.999... = 1 on philosophical grounds ===\nToo vague — philosophical commitment, not a computation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a philosophical rejection of 0.999... = 1, not a computational procedure or algorithmic rule that can be encoded as a deterministic 2-place predicate producing a specific incorrect numerical result. There is no runnable rule that maps a concrete input to a fixed wrong output in the sense required by the schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a philosophical rejection of 0.999... = 1, not a computational procedure or algorithmic rule that can be encoded as a deterministic 2-place predicate producing a specific incorrect numerical result. There is no runnable rule that maps a concrete input to a fixed wrong output in the sense required by the schema.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37778",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37778_treat_factor_as_added_pieces_of_same_whole",
+    "target_operation": "fraction_multiplication_unit",
+    "citation": "Keith R. Leatham, Blake E. Peterson, Shari L. Stockero and Laura R. Van Zoest (2015)",
+    "error_action": "treat_factor_as_added_pieces_of_same_whole",
+    "error_description": "one fourth times three means three of the four pieces of a single pie",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_37778_treat_factor_as_added_pieces_of_same_whole",
+  "attempts": [
+    {
+      "response": "churn_candidate:(treat_factor_as_added_pieces_of_same_whole(frac(N1,D1)*frac(N2,D2), frac(N2, D1)) :-\n    N1 =:= 1).\n\ntest_harness:arith_misconception(db_row(37778), fraction, churn_37778_treat_factor_as_added_pieces_of_same_whole,\n    churn_candidate:treat_factor_as_added_pieces_of_same_whole,\n    frac(1,4)*frac(3,1),\n    frac(3,4)).",
+      "result": "predicate must be named churn_37778_treat_factor_as_added_pieces_of_same_whole"
+    },
+    {
+      "response": "churn_candidate:(treat_factor_as_added_pieces_of_same_whole(frac(1,D)*frac(N,1), frac(N,D)) :-\n    D > 0,\n    N > 0).\n\ntest_harness:arith_misconception(db_row(37778), fraction, churn_37778_treat_factor_as_added_pieces_of_same_whole,\n    churn_candidate:treat_factor_as_added_pieces_of_same_whole,\n    frac(1,4)*frac(3,1),\n    frac(3,4)).",
+      "result": "predicate must be named churn_37778_treat_factor_as_added_pieces_of_same_whole"
+    }
+  ]
+}

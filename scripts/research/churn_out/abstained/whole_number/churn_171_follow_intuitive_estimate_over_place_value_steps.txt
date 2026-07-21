@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "171",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_171_follow_intuitive_estimate_over_place_value_steps",
+    "target_operation": "borrowing_across_zero",
+    "citation": "Fischbein, Efraim (1999)",
+    "error_action": "follow_intuitive_estimate_over_place_value_steps",
+    "error_description": "lean on intuitive magnitude estimation through borrow-across-zero steps that contradict the formal place-value procedure",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a cognitive tendency (intuitive magnitude estimation overriding formal place-value steps) rather than a specific syntactic or procedural transformation that can be captured by a deterministic binary predicate `Rule(Input, Got)` producing a fixed wrong output. The description does not specify a concrete algorithm or arithmetic operation that yields a unique incorrect result for a given input, making it impossible to define a testable rule adhering to the schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a cognitive tendency (intuitive magnitude estimation overriding formal place-value steps) rather than a specific syntactic or procedural transformation that can be captured by a deterministic binary predicate `Rule(Input, Got)` producing a fixed wrong output. The description does not specify a concrete algorithm or arithmetic operation that yields a unique incorrect result for a given input, making it impossible to define a testable rule adhering to the schema.",
+      "result": "abstained"
+    }
+  ]
+}

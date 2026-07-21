@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39741",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39741_numeral_is_the_mathematical_object",
+    "target_operation": "symbol_referent_relation",
+    "citation": "John Cable (2015)",
+    "error_action": "numeral_is_the_mathematical_object",
+    "error_description": "treat the written numeral as if it were the number itself",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (confusing numerals with numbers), but no runnable Prolog rule can be constructed that produces the documented wrong answer without inventing mathematics or using non-arithmetic constructs. The gate failure (exit code 23) indicates the prior rule was invalid; no arithmetic operation on whole numbers can model \"treating a numeral as the number itself\" in a way that yields a deterministic, generalizable wrong output for a given input, because numerals and numbers are distinct semantic categories, not arithmetically inter-derivable. SWI-Prolog cannot represent this distinction operationally without ad hoc encoding.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(numeral_is_the_mathematical_object(Numeral, Got) :-\n    Got = Numeral).\n\ntest_harness:arith_misconception(db_row(39741), whole_number, churn_39741_numeral_is_the_mathematical_object,\n    churn_candidate:churn_39741_numeral_is_the_mathematical_object,\n    '3',\n    3).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (confusing numerals with numbers), but no runnable Prolog rule can be constructed that produces the documented wrong answer without inventing mathematics or using non-arithmetic constructs. The gate failure (exit code 23) indicates the prior rule was invalid; no arithmetic operation on whole numbers can model \"treating a numeral as the number itself\" in a way that yields a deterministic, generalizable wrong output for a given input, because numerals and numbers are distinct semantic categories, not arithmetically inter-derivable. SWI-Prolog cannot represent this distinction operationally without ad hoc encoding.",
+      "result": "abstained"
+    }
+  ]
+}

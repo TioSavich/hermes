@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38202",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38202_zero_is_nothing",
+    "target_operation": "properties_of_zero",
+    "citation": "Ivor Grattan-Guinness (1998)",
+    "error_action": "zero_is_nothing",
+    "error_description": "zero denotes the absence of quantity and so has no mathematical properties",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 1",
+  "attempts": [
+    {
+      "response": "churn_candidate:(zero_is_nothing(A, Got) :-\n    Got = 0).\n\ntest_harness:arith_misconception(db_row(38202), whole_number, churn_38202_zero_is_nothing,\n    churn_candidate:zero_is_nothing,\n    5-5,\n    0).\nABSTAIN: The documented error asserts that zero has no mathematical properties, but the task requires encoding a *runnable rule* that produces the documented wrong answer. The rule `zero_is_nothing(A, Got) :- Got = 0` returns `0` for any input, which is the *correct* value for `5-5`, not a *wrong* answer. To manifest the misconception, we would need a rule that yields a non-zero or undefined result when zero is expected—e.g., treating `0` as `fail` or `undefined`. However, the description does not specify *what* the student outputs in place of zero (e.g., omission, error, or a different number), nor is there a concrete worked example to infer the precise incorrect behavior. Without a documented specific incorrect output, the rule cannot be made runnable and defensible per the schema.",
+      "result": "predicate must be named churn_38202_zero_is_nothing"
+    },
+    {
+      "response": "churn_candidate:(churn_38202_zero_is_nothing(A, Got) :-\n    Got = 0).\n\ntest_harness:arith_misconception(db_row(38202), whole_number, churn_38202_zero_is_nothing,\n    churn_candidate:churn_38202_zero_is_nothing,\n    0+5,\n    5).",
+      "result": "SWI-Prolog gate exited 1"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37544",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37544_regroup_without_preserving_unit_value",
+    "target_operation": "regrouping_unit_type",
+    "citation": "Eva Thanheiser (2009)",
+    "error_action": "regroup_without_preserving_unit_value",
+    "error_description": "carry a regrouped digit while assigning it the wrong unit type so total value is not conserved",
+    "provenance_comments": "=== row 37544: regrouped 1 in tens place viewed as 10 ===\nThe example describes conceptual confusion about the value of a regrouped\ndigit but not a specific numerical final answer distinct from the correct\ncomputation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual mistake (assigning wrong unit value to a regrouped digit) but does not specify a concrete, deterministic arithmetic procedure that yields a unique incorrect result from a given input; no runnable rule or defensible probe can be constructed without inventing mathematics.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual mistake (assigning wrong unit value to a regrouped digit) but does not specify a concrete, deterministic arithmetic procedure that yields a unique incorrect result from a given input; no runnable rule or defensible probe can be constructed without inventing mathematics.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40059",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40059_explain_pattern_by_holistic_balance",
+    "target_operation": "holistic_pattern_observation",
+    "citation": "Peter Liljedahl, Egan Chernoff, Rina Zazkis (2007)",
+    "error_action": "explain_pattern_by_holistic_balance",
+    "error_description": "justify a remainder pattern by appeal to a shape being balanced or cancelling out",
+    "provenance_comments": "=== row 40059: pentomino symmetry reasoning ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a reasoning misconception (appealing to \"balanced\" or \"cancelling out\" shapes to justify remainder patterns), not a syntactic arithmetic procedure that can be captured by a binary predicate `Rule(Input, Got)` producing a specific wrong numerical output. There is no concrete, generalizable arithmetic operation or transformation described that yields a deterministic incorrect result for a given input pair; the error is interpretive and contextual, not computational. Hence, no runnable rule satisfying the schema can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a reasoning misconception (appealing to \"balanced\" or \"cancelling out\" shapes to justify remainder patterns), not a syntactic arithmetic procedure that can be captured by a binary predicate `Rule(Input, Got)` producing a specific wrong numerical output. There is no concrete, generalizable arithmetic operation or transformation described that yields a deterministic incorrect result for a given input pair; the error is interpretive and contextual, not computational. Hence, no runnable rule satisfying the schema can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

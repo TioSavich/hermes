@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38728",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38728_stop_after_first_computed_step",
+    "target_operation": "multistep_problem_chaining",
+    "citation": "Adolf Af Ekenstam and Karl Greger (1983)",
+    "error_action": "stop_after_first_computed_step",
+    "error_description": "complete the first operation but do not carry its result forward into a second step",
+    "provenance_comments": "=== row 38728: two-step word problem — cognitive load failure ===\nToo vague — working memory issue, not a rule.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a cognitive load failure (working memory limitation) where the student stops after the first computed step, but no runnable rule can be derived because the error is procedural and context-dependent, not a fixed arithmetic transformation. No general, executable predicate of arity 2 can encode \"stop after first step\" without domain-specific step definitions, violating the requirement for a general, runnable Rule.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a cognitive load failure (working memory limitation) where the student stops after the first computed step, but no runnable rule can be derived because the error is procedural and context-dependent, not a fixed arithmetic transformation. No general, executable predicate of arity 2 can encode \"stop after first step\" without domain-specific step definitions, violating the requirement for a general, runnable Rule.",
+      "result": "abstained"
+    }
+  ]
+}

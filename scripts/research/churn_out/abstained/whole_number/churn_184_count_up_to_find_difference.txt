@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "184",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_184_count_up_to_find_difference",
+    "target_operation": "subtraction_strategy",
+    "citation": "Fuson (1986)",
+    "error_action": "count_up_to_find_difference",
+    "error_description": "find a difference by counting forward from the subtrahend to the minuend",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural strategy (counting forward from subtrahend to minuend) rather than a specific syntactic arithmetic operation or algebraic rule that can be expressed as a binary predicate in SWI-Prolog without simulation of counting steps. Such a strategy inherently involves iteration and state (e.g., counters, accumulators) that cannot be captured by a pure, deterministic arithmetic expression of arity 2 using only built-in arithmetic evaluables like `is/2`. The task requires a runnable rule where `Rule(Input, Got)` produces the documented wrong answer via direct evaluation — this is not feasible for a counting-based strategy without non-deterministic or meta-logical constructs (e.g., `findall/3`, `repeat`, cuts), which are prohibited.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural strategy (counting forward from subtrahend to minuend) rather than a specific syntactic arithmetic operation or algebraic rule that can be expressed as a binary predicate in SWI-Prolog without simulation of counting steps. Such a strategy inherently involves iteration and state (e.g., counters, accumulators) that cannot be captured by a pure, deterministic arithmetic expression of arity 2 using only built-in arithmetic evaluables like `is/2`. The task requires a runnable rule where `Rule(Input, Got)` produces the documented wrong answer via direct evaluation — this is not feasible for a counting-based strategy without non-deterministic or meta-logical constructs (e.g., `findall/3`, `repeat`, cuts), which are prohibited.",
+      "result": "abstained"
+    }
+  ]
+}

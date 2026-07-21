@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39275",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39275_derive_fraction_name_by_ordinal_pattern_extension",
+    "target_operation": "fraction_naming",
+    "citation": "SUSAN PIRIE AND THOMAS KIEREN (1992)",
+    "error_action": "derive_fraction_name_by_ordinal_pattern_extension",
+    "error_description": "name the denominator by regularly extending the productive ordinal pattern (thirty-twoth)",
+    "provenance_comments": "=== row 39275: invented fraction names ===\nLinguistic — no numeric error.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a linguistic naming mistake (\"thirty-twoth\") rather than a calculational or structural arithmetic error. No executable Prolog predicate of arity 2 can produce the wrong name \"thirty-twoth\" from a fraction input in a way that satisfies the schema requirement that `Rule(Input, Got)` produces the documented wrong answer *and* `ExpectedCorrect` does not unify with `Got`, because the schema expects a numeric outcome (`ExpectedCorrect` is numeric, e.g., `frac(N,D)`), while the error is purely lexical and not reducible to a numeric term in the fraction domain without arbitrary mapping. The schema contract requires the rule to be runnable and the outcome to be a numeric value that fails unification with the correct numeric value, which is incompatible with a purely lexical naming error.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a linguistic naming mistake (\"thirty-twoth\") rather than a calculational or structural arithmetic error. No executable Prolog predicate of arity 2 can produce the wrong name \"thirty-twoth\" from a fraction input in a way that satisfies the schema requirement that `Rule(Input, Got)` produces the documented wrong answer *and* `ExpectedCorrect` does not unify with `Got`, because the schema expects a numeric outcome (`ExpectedCorrect` is numeric, e.g., `frac(N,D)`), while the error is purely lexical and not reducible to a numeric term in the fraction domain without arbitrary mapping. The schema contract requires the rule to be runnable and the outcome to be a numeric value that fails unification with the correct numeric value, which is incompatible with a purely lexical naming error.",
+      "result": "abstained"
+    }
+  ]
+}

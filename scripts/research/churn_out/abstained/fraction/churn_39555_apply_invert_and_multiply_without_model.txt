@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39555",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39555_apply_invert_and_multiply_without_model",
+    "target_operation": "fraction_division_procedure",
+    "citation": "Mohan Chinnappan & Tricia Forrester (2014)",
+    "error_action": "apply_invert_and_multiply_without_model",
+    "error_description": "execute the invert-and-multiply algorithm correctly but cannot pictorially justify it",
+    "provenance_comments": "=== row 39555: invert-and-multiply without concept ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive gap (lack of pictorial justification) rather than a syntactic or semantic error in the computation itself; no runnable rule can be constructed that produces a *wrong* numerical output, since the algorithm is executed correctly. The schema requires `Rule(Input, Got)` to yield the documented *incorrect* result, but here the result is mathematically correct—only the reasoning is deficient. Hence no admissible `ExpectedCorrect` can be defined as a differing value.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive gap (lack of pictorial justification) rather than a syntactic or semantic error in the computation itself; no runnable rule can be constructed that produces a *wrong* numerical output, since the algorithm is executed correctly. The schema requires `Rule(Input, Got)` to yield the documented *incorrect* result, but here the result is mathematically correct—only the reasoning is deficient. Hence no admissible `ExpectedCorrect` can be defined as a differing value.",
+      "result": "abstained"
+    }
+  ]
+}

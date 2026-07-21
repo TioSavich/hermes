@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40149",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40149_apply_measurement_partitioning_to_partitive_situation",
+    "target_operation": "division_meaning_overgeneralization",
+    "citation": "Amanda Jansen, Charles Hohensee (2016)",
+    "error_action": "apply_measurement_partitioning_to_partitive_situation",
+    "error_description": "break each unit into smaller equal pieces (measurement model) when the situation calls for finding the whole",
+    "provenance_comments": "=== row 40149: partitive/measurement model confusion ===\nMultiple interpretations yield the correct numeric answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual confusion between measurement and partitive division models but provides no runnable procedural rule or concrete input-output pair; without a clear algorithmic misapplication that maps to a deterministic Prolog rule producing the documented wrong answer, no testable rule can be constructed per the schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual confusion between measurement and partitive division models but provides no runnable procedural rule or concrete input-output pair; without a clear algorithmic misapplication that maps to a deterministic Prolog rule producing the documented wrong answer, no testable rule can be constructed per the schema.",
+      "result": "abstained"
+    }
+  ]
+}

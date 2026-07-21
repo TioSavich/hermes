@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39580",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39580_count_back_by_ones_for_all_subtraction",
+    "target_operation": "counting_strategy_persistence",
+    "citation": "David Ellemor-Collins & Robert (Bob) Wright (2009)",
+    "error_action": "count_back_by_ones_for_all_subtraction",
+    "error_description": "solve every subtraction by counting backward one unit at a time",
+    "provenance_comments": "=== row 39580: counting-by-ones for 17-15 stalls ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 1",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39580_count_back_by_ones_for_all_subtraction(A-B, Got) :-\n    count_back(A, B, 0, Got)).\n\nchurn_candidate:count_back(X, 0, Acc, Acc) :- !.\nchurn_candidate:count_back(X, N, Acc, Got) :-\n    N > 0,\n    NextN is N - 1,\n    NextAcc is Acc + 1,\n    count_back(X, NextN, NextAcc, Got).\n\ntest_harness:arith_misconception(db_row(39580), whole_number, churn_39580_count_back_by_ones_for_all_subtraction,\n    churn_candidate:churn_39580_count_back_by_ones_for_all_subtraction,\n    17-15,\n    2).",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "churn_candidate:(churn_39580_count_back_by_ones_for_all_subtraction(A-B, Got) :-\n    count_back(A, B, 0, Got)).\n\ncount_back(X, 0, Acc, Acc) :- !.\ncount_back(X, N, Acc, Got) :-\n    N > 0,\n    M is N - 1,\n    count_back(X, M, Acc, Got).\n\ntest_harness:arith_misconception(db_row(39580), whole_number, churn_39580_count_back_by_ones_for_all_subtraction,\n    churn_candidate:churn_39580_count_back_by_ones_for_all_subtraction,\n    17-15,\n    2).",
+      "result": "SWI-Prolog gate exited 1"
+    }
+  ]
+}

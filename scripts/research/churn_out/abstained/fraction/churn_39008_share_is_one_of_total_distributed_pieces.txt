@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39008",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39008_share_is_one_of_total_distributed_pieces",
+    "target_operation": "region_to_set_model_conversion",
+    "citation": "KATHY CHARLES and ROD NASON (2000)",
+    "error_action": "share_is_one_of_total_distributed_pieces",
+    "error_description": "quantify a share as one part out of the total number of separate pieces handed out",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding about interpreting a share as \"one part out of the total number of separate pieces handed out\", but no runnable arithmetic rule or concrete procedural formula is provided. Without a specific syntactic or semantic mapping from inputs to a deterministic incorrect output (e.g., a formula like \"numerator = 1, denominator = total pieces\"), we cannot construct a defensible Prolog rule that reliably produces the documented wrong answer for a general class of inputs. A probe requires a precise, executable misapplication, which is absent here.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding about interpreting a share as \"one part out of the total number of separate pieces handed out\", but no runnable arithmetic rule or concrete procedural formula is provided. Without a specific syntactic or semantic mapping from inputs to a deterministic incorrect output (e.g., a formula like \"numerator = 1, denominator = total pieces\"), we cannot construct a defensible Prolog rule that reliably produces the documented wrong answer for a general class of inputs. A probe requires a precise, executable misapplication, which is absent here.",
+      "result": "abstained"
+    }
+  ]
+}

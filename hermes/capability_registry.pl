@@ -53,7 +53,6 @@ capability('embodied_proof_witness', 'embodied_prover', 'unclassified', ['resour
 capability('eml_transition_witness', 'sequent_engine', 'unclassified', ['from', 'to'], routed_paged).
 capability('event_score', 'hermes_event_scoring', 'unclassified', ['event'], routed_paged).
 capability('executable_practice_witness', 'cw_driver', 'unclassified', ['source', 'variant'], routed_paged).
-capability('expressive_power', 'user', 'unclassified', ['lesson'], routed_paged).
 capability('field_connectivity_audit', 'field_context', 'monitoring', [], routed_paged).
 capability('field_context', 'field_context', 'monitoring', ['lesson_code'], routed_paged).
 capability('fraction_cgi_addition', 'fraction_cgi_dispatch', 'render', ['d', 'kind', 'na', 'nb'], routed_paged).
@@ -112,6 +111,7 @@ capability('image_schema', 'user', 'unclassified', ['practice'], routed_paged).
 capability('incoherent_witness', 'sequent_engine', 'unclassified', ['context'], routed_paged).
 capability('incompatibility_discovery_witness', 'incompatibility_discovery', 'incompatibility', ['context', 'set'], routed_paged).
 capability('incompatibility_entailment_witness', 'incompatibility_sets', 'incompatibility', ['replaced', 'replacement'], routed_paged).
+capability('inferential_strength', 'user', 'unclassified', ['lesson'], routed_paged).
 capability('integer_signed_claim_witness', 'cw_driver', 'unclassified', ['canonical', 'source'], routed_paged).
 capability('intersubjective_material_witness', 'intersubjective_praxis', 'unclassified', ['from', 'to'], routed_paged).
 capability('knowledge', 'hermes_worker', 'learner', [], routed_paged).
@@ -190,7 +190,7 @@ capability('standard_k_ns_5_6_compare_groups_witness', 'standard_k_ns_5_6', 'sta
 capability('standard_k_ns_7_place_value_witness', 'standard_k_ns_7', 'standards', ['number'], routed_paged).
 capability('state_labels', 'user', 'unclassified', ['state'], unrouted).
 capability('strategy_trace', 'hermes_encyclopedia', 'unclassified', ['input', 'strategy'], routed_paged).
-capability('target_expressive_power_witness', 'user', 'unclassified', ['target'], routed_paged).
+capability('target_inferential_strength_witness', 'user', 'unclassified', ['target'], routed_paged).
 capability('teacher_layer', 'teacher_layer', 'render', [], routed_paged).
 capability('trace_adjudication', 'trace_adjudication', 'unclassified', ['ledger', 'utterances'], routed_paged).
 capability('unit_coordination_svg', 'unit_coordination_viz', 'unclassified', ['base', 'denominator', 'numerator', 'value_up'], routed_paged).
@@ -307,7 +307,6 @@ capability_route('embodied_proof_witness', 'POST', '/api/witness/formal').
 capability_route('eml_transition_witness', 'POST', '/api/witness/formal').
 capability_route('event_score', 'POST', '/api/event_score').
 capability_route('executable_practice_witness', 'POST', '/api/witness/crosswalk_claim').
-capability_route('expressive_power', 'POST', '/api/expressive_power').
 capability_route('field_connectivity_audit', 'POST', '/api/field_connectivity_audit').
 capability_route('field_context', 'POST', '/api/field_context').
 capability_route('fraction_cgi_addition', 'POST', '/api/fraction_cgi_addition').
@@ -374,6 +373,7 @@ capability_route('image_schema', 'POST', '/api/witness/grounding').
 capability_route('incoherent_witness', 'POST', '/api/witness/formal').
 capability_route('incompatibility_discovery_witness', 'POST', '/api/witness/formal').
 capability_route('incompatibility_entailment_witness', 'POST', '/api/witness/formal').
+capability_route('inferential_strength', 'POST', '/api/inferential_strength').
 capability_route('integer_signed_claim_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('intersubjective_material_witness', 'POST', '/api/witness/pml').
 capability_route('knowledge', 'GET', '/api/knowledge').
@@ -457,7 +457,7 @@ capability_route('standard_k_ns_5_6_compare_groups_witness', 'POST', '/api/witne
 capability_route('standard_k_ns_7_place_value_witness', 'POST', '/api/witness/standards').
 capability_route('strategy_trace', 'POST', '/api/render').
 capability_route('strategy_trace', 'POST', '/api/strategy_trace').
-capability_route('target_expressive_power_witness', 'POST', '/api/witness/grounding').
+capability_route('target_inferential_strength_witness', 'POST', '/api/witness/grounding').
 capability_route('teacher_layer', 'POST', '/api/render').
 capability_route('trace_adjudication', 'POST', '/api/trace_adjudication').
 capability_route('unit_coordination_svg', 'GET', '/api/unit_coordination.svg').
@@ -561,7 +561,6 @@ capability_page('embodied_proof_witness', '/hermes/app/web/breaks.html').
 capability_page('eml_transition_witness', '/hermes/app/web/breaks.html').
 capability_page('event_score', '/hermes/app/web/discussions.html').
 capability_page('executable_practice_witness', '/more-zeeman/witnesses.html').
-capability_page('expressive_power', '/more-zeeman/scoreboard.html').
 capability_page('field_connectivity_audit', '/hermes/app/web/console.html').
 capability_page('field_context', '/hermes/app/web/console.html').
 capability_page('field_context', '/more-zeeman/monitoring_chart.html').
@@ -649,6 +648,7 @@ capability_page('image_schema', '/more-zeeman/witnesses.html').
 capability_page('incoherent_witness', '/hermes/app/web/breaks.html').
 capability_page('incompatibility_discovery_witness', '/hermes/app/web/breaks.html').
 capability_page('incompatibility_entailment_witness', '/hermes/app/web/breaks.html').
+capability_page('inferential_strength', '/more-zeeman/scoreboard.html').
 capability_page('integer_signed_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('intersubjective_material_witness', '/more-zeeman/witnesses.html').
 capability_page('knowledge', '/more-zeeman/bridge.html').
@@ -767,7 +767,7 @@ capability_page('strategy_trace', '/more-zeeman/strategies.html').
 capability_page('strategy_trace', '/more-zeeman/unit-echo/index.html').
 capability_page('strategy_trace', '/more-zeeman/visualizations.html').
 capability_page('strategy_trace', '/more-zeeman/witnesses.html').
-capability_page('target_expressive_power_witness', '/more-zeeman/witnesses.html').
+capability_page('target_inferential_strength_witness', '/more-zeeman/witnesses.html').
 capability_page('teacher_layer', '/hermes/app/web/console.html').
 capability_page('teacher_layer', '/hermes/app/web/discussions.html').
 capability_page('teacher_layer', '/more-zeeman/fraction-bars/calculator.html').

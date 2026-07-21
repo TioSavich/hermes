@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38392",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38392_follow_steps_without_place_value_meaning",
+    "target_operation": "long_division_algorithm",
+    "citation": "Ji-Eun Lee (2007)",
+    "error_action": "follow_steps_without_place_value_meaning",
+    "error_description": "execute the algorithm's steps as rote procedure without tracking place value or why subtraction appears",
+    "provenance_comments": "=== row 38392: rote long division without meaning ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a *cognitive process* (rote execution without place-value meaning) rather than a specific syntactic or semantic deviation in the arithmetic computation that can be expressed as a deterministic Prolog function mapping input to a unique wrong output. The gate requires a concrete, generalizable rule that produces the documented wrong answer for a given input, but the description lacks sufficient mathematical specificity to define such a rule without invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38392_follow_steps_without_place_value_meaning(A-B, Got) :-\n    Got is A div B).\n\ntest_harness:arith_misconception(db_row(38392), whole_number, churn_38392_follow_steps_without_place_value_meaning,\n    churn_candidate:churn_38392_follow_steps_without_place_value_meaning,\n    847-3,\n    282).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a *cognitive process* (rote execution without place-value meaning) rather than a specific syntactic or semantic deviation in the arithmetic computation that can be expressed as a deterministic Prolog function mapping input to a unique wrong output. The gate requires a concrete, generalizable rule that produces the documented wrong answer for a given input, but the description lacks sufficient mathematical specificity to define such a rule without invention.",
+      "result": "abstained"
+    }
+  ]
+}

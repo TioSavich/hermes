@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39229",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39229_common_denominator_division_keeps_numerator_quotient",
+    "target_operation": "fraction_division_algorithm",
+    "citation": "AZITA MANOUCHEHRI and TERRY GOODMAN (2000)",
+    "error_action": "common_denominator_division_keeps_numerator_quotient",
+    "error_description": "convert to a common denominator, then divide the numerators to get the quotient",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "expected exactly one arith_misconception/6 registration; found 0",
+  "attempts": [
+    {
+      "response": "churn_candidate:(common_denominator_division_keeps_numerator_quotient(frac(N1,D1) / frac(N2,D2), frac(QNum, 1)) :-\n    D1 * D2 =:= DCommon,\n    D2 * D1 =:= DCommon,\n    QNum is N1 * D2 // (N2 * D1)).\n\ntest_harness:arith_misconception(db_row(39229), fraction, churn_39229_common_denominator_division_keeps_numerator_quotient,\n    churn_candidate:common_denominator_division_keeps_numerator_quotient,\n    frac(1,4) / frac(1,2),\n    frac(1,2)).",
+      "result": "predicate must be named churn_39229_common_denominator_division_keeps_numerator_quotient"
+    },
+    {
+      "response": "churn_candidate:(churn_39229_common_denominator_division_keeps_numerator_quotient(frac(N1,D1) / frac(N2,D2), frac(N1, D))) :-\n    D is D1,\n    D1 =:= D2.\n\ntest_harness:arith_misception(db_row(39229), fraction, churn_39229_common_denominator_division_keeps_numerator_quotient,\n    churn_candidate:churn_39229_common_denominator_division_keeps_numerator_quotient,\n    frac(3,4) / frac(5,4),\n    frac(3,5)).",
+      "result": "expected exactly one arith_misconception/6 registration; found 0"
+    }
+  ]
+}

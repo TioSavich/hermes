@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38119",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38119_count_by_single_units",
+    "target_operation": "composite_unit_counting",
+    "citation": "Mike Askew (2018)",
+    "error_action": "count_by_single_units",
+    "error_description": "treat every quantity as a collection of ones and count back one at a time",
+    "provenance_comments": "=== row 38119: unit counting for 15-5-5 (strategy critique only) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "predicate must be named churn_38119_count_by_single_units",
+  "attempts": [
+    {
+      "response": "churn_candidate:(count_by_single_units(Subtrahend, Result) :-\n    Subtrahend = A-B,\n    Result is A - B,\n    Result is A - 1 - 1 - 1 - 1 - 1).\n\ntest_harness:arith_misconception(db_row(38119), whole_number, churn_38119_count_by_single_units,\n    churn_candidate:count_by_single_units,\n    15-5,\n    5).",
+      "result": "predicate must be named churn_38119_count_by_single_units"
+    },
+    {
+      "response": "churn_candidate:(count_by_single_units(A-B, Got) :-\n    Got is A - B).\n\ntest_harness:arith_misconception(db_row(38119), whole_number, churn_38119_count_by_single_units,\n    churn_candidate:count_by_single_units,\n    15-5-5,\n    5).",
+      "result": "predicate must be named churn_38119_count_by_single_units"
+    }
+  ]
+}

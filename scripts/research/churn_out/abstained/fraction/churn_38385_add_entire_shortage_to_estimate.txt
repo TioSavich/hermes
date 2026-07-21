@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38385",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38385_add_entire_shortage_to_estimate",
+    "target_operation": "equipartitioning_iteration",
+    "citation": "Jessica Hunt, Ron Tzur (2017)",
+    "error_action": "add_entire_shortage_to_estimate",
+    "error_description": "correct a too-short share by adding the whole noticed shortage to the single estimate",
+    "provenance_comments": "=== row 38385: add full shortage to next estimate ===\nToo vague — describes adjustment strategy, not a concrete wrong numeric output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error action \"add_entire_shortage_to_estimate\" describes a qualitative adjustment strategy without specifying a concrete, generalizable numeric procedure or rule. The phrase \"too vague\" in the provenance comments explicitly indicates the lack of a determinate mathematical transformation, making it impossible to encode a runnable Prolog rule that produces a specific wrong output. Without a well-defined computation (e.g., a formula or algorithm), the schema requirement for a rule predicate `Rule(Input, Got)` that yields the documented error cannot be satisfied.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error action \"add_entire_shortage_to_estimate\" describes a qualitative adjustment strategy without specifying a concrete, generalizable numeric procedure or rule. The phrase \"too vague\" in the provenance comments explicitly indicates the lack of a determinate mathematical transformation, making it impossible to encode a runnable Prolog rule that produces a specific wrong output. Without a well-defined computation (e.g., a formula or algorithm), the schema requirement for a rule predicate `Rule(Input, Got)` that yields the documented error cannot be satisfied.",
+      "result": "abstained"
+    }
+  ]
+}

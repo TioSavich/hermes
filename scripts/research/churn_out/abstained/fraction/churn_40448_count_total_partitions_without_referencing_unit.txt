@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40448",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40448_count_total_partitions_without_referencing_unit",
+    "target_operation": "improper_fraction_reading",
+    "citation": "Sitti Maesuri Patahuddin & H. B. Usman & Ajay Ramful (2018)",
+    "error_action": "count_total_partitions_without_referencing_unit",
+    "error_description": "read a fraction above one by tallying total partitions from zero without relating them to the unit interval",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive misconception (counting total partitions from zero without referencing the unit interval) but provides no concrete, executable procedural rule that maps an input fraction to a specific wrong output in a deterministic, testable way. Without a clear mapping from input (e.g., a fraction term) to a unique erroneous output, no runnable Prolog rule satisfying the schema can be formed. The task requires encoding a *documented student error* as a *runnable rule* producing a *specific wrong answer*—this cannot be done here without invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40448_count_total_partitions_without_referencing_unit(frac(N,D), Count) :-\n    Count is N + D).\n\ntest_harness:arith_misconception(db_row(40448), fraction, churn_40448_count_total_partitions_without_referencing_unit,\n    churn_candidate:churn_40448_count_total_partitions_without_referencing_unit,\n    frac(5,3),\n    8).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive misconception (counting total partitions from zero without referencing the unit interval) but provides no concrete, executable procedural rule that maps an input fraction to a specific wrong output in a deterministic, testable way. Without a clear mapping from input (e.g., a fraction term) to a unique erroneous output, no runnable Prolog rule satisfying the schema can be formed. The task requires encoding a *documented student error* as a *runnable rule* producing a *specific wrong answer*—this cannot be done here without invention.",
+      "result": "abstained"
+    }
+  ]
+}

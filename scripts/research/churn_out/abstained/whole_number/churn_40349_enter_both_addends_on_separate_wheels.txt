@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40349",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40349_enter_both_addends_on_separate_wheels",
+    "target_operation": "machine_assisted_addition",
+    "citation": "MICHELA MASCHIETTO (2015)",
+    "error_action": "enter_both_addends_on_separate_wheels",
+    "error_description": "input both numbers to be added on different wheels and expect a third wheel to display the result",
+    "provenance_comments": "=== row 40349: both addends entered on separate wheels simultaneously ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a physical interaction (entering both addends on separate wheels) that cannot be expressed as a deterministic 2-place Prolog predicate producing a specific wrong numeric output without additional operational semantics. No runnable rule can be constructed that maps an input pair to a unique wrong result per the schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a physical interaction (entering both addends on separate wheels) that cannot be expressed as a deterministic 2-place Prolog predicate producing a specific wrong numeric output without additional operational semantics. No runnable rule can be constructed that maps an input pair to a unique wrong result per the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

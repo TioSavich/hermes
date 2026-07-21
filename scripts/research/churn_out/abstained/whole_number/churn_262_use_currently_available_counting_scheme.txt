@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "262",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_262_use_currently_available_counting_scheme",
+    "target_operation": "multiplicative_strategy_progression",
+    "citation": "Mulligan, J. & Watson, J. (1998)",
+    "error_action": "use_currently_available_counting_scheme",
+    "error_description": "solve via whatever counting scheme is available, from unitary counting up through known multiplicative facts",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a behavioral tendency rather than a specific syntactic or semantic rule that maps inputs deterministically to a wrong output; it describes a strategy spectrum without specifying a unique computational procedure. No runnable Rule predicate of arity 2 can be constructed that consistently produces a single documented wrong answer for a given Input, as the error depends on learner state (available scheme) rather than a fixed mathematical transformation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a behavioral tendency rather than a specific syntactic or semantic rule that maps inputs deterministically to a wrong output; it describes a strategy spectrum without specifying a unique computational procedure. No runnable Rule predicate of arity 2 can be constructed that consistently produces a single documented wrong answer for a given Input, as the error depends on learner state (available scheme) rather than a fixed mathematical transformation.",
+      "result": "abstained"
+    }
+  ]
+}

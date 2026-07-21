@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38876",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38876_irrational_is_infinite_decimal",
+    "target_operation": "irrational_number_definition",
+    "citation": "EFRAIM FISCHBEIN, RUTH JEHIAM AND DORIT COHEN (1995)",
+    "error_action": "irrational_is_infinite_decimal",
+    "error_description": "an irrational number is any decimal with infinitely many digits",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error conflates irrational numbers with all infinite decimals, but SWI-Prolog cannot represent an actual infinite decimal numerically; any finite representation is rational. No runnable rule can produce the documented wrong answer for a general irrational number without inventing mathematics (e.g., symbolic irrational constants are not natively supported in arithmetic evaluation).",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38876_irrational_is_infinite_decimal(Decimal, Got) :-\n    Got = true).\n\ntest_harness:arith_misconception(db_row(38876), decimal, churn_38876_irrational_is_infinite_decimal,\n    churn_candidate:churn_38876_irrational_is_infinite_decimal,\n    0.101001000100001000001,\n    false).",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "ABSTAIN: The documented error conflates irrational numbers with all infinite decimals, but SWI-Prolog cannot represent an actual infinite decimal numerically; any finite representation is rational. No runnable rule can produce the documented wrong answer for a general irrational number without inventing mathematics (e.g., symbolic irrational constants are not natively supported in arithmetic evaluation).",
+      "result": "abstained"
+    }
+  ]
+}

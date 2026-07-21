@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40110",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40110_remainder_is_a_terminal_whole_number",
+    "target_operation": "remainder_as_divisible_fraction",
+    "citation": "Jason Cooper, Ronnie Karsenty (2018)",
+    "error_action": "remainder_is_a_terminal_whole_number",
+    "error_description": "treat the remainder as a final whole-number leftover that is not further divided",
+    "provenance_comments": "=== row 40110: remainder in long division not seen as fractional ===\nToo vague — conceptual issue about remainder notation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating remainder as a final whole-number leftover) but does not specify a concrete syntactic or procedural transformation that yields a unique wrong output for a given input in a way that can be captured by a deterministic 2-place predicate without additional assumptions or invented mathematics. No runnable rule (e.g., a specific arithmetic misapplication) can be derived solely from the phrase \"remainder is a terminal whole number\" without assuming a particular division algorithm or input format, and the absence of a worked example prevents unambiguous formalization.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating remainder as a final whole-number leftover) but does not specify a concrete syntactic or procedural transformation that yields a unique wrong output for a given input in a way that can be captured by a deterministic 2-place predicate without additional assumptions or invented mathematics. No runnable rule (e.g., a specific arithmetic misapplication) can be derived solely from the phrase \"remainder is a terminal whole number\" without assuming a particular division algorithm or input format, and the absence of a worked example prevents unambiguous formalization.",
+      "result": "abstained"
+    }
+  ]
+}

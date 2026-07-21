@@ -740,7 +740,7 @@ const WORKER_REPLY_KEYS = {witness:"recorded example", witnesses:"recorded examp
   deformation:"wrong-answer pattern", parametric_deformation:"computed wrong-answer pattern",
   pml:"modal posture", pml_tags:"modal-posture tags", scorecard:"commitment tracker",
   up_level:"new question", up_levels:"new questions",
-  expressive_power:"what the representation can and cannot say",
+  inferential_strength:"conflict-set containment and bounded breadth tallies",
   hyperedge:"incompatible claim group", hyperedges:"incompatible claim groups"};
 function displayWorkerReply(value) {
   if (Array.isArray(value)) return value.map(displayWorkerReply);
@@ -1375,7 +1375,7 @@ async function openLesson(code) {
   const r = data.result;
   if (!r) { detail.innerHTML = `<div class="chat-answer locked">⚠ ${esc((data.error) || ('no context for ' + code))}</div>`; return; }
   const lesson = r.lesson || {};
-  const power = r.expressive_power || {};
+  const power = r.inferential_strength || {};
   const standards = (r.standards || []).filter(x => x.framework !== 'im_lesson').map(x => `${x.framework} ${x.code}`);
   const strategies = (r.strategies || []).map(x => `${x.operation || ''}:${x.kind || ''} [${x.evidence_level || '—'}]`);
   const clusters = (r.monitoring_clusters || []).map(x => `${x.source || ''}:${x.id || ''}`);
@@ -1411,10 +1411,10 @@ async function openLesson(code) {
       <section class="fc-sec"><h4>Strategies</h4>${fcList(strategies)}</section>
       <section class="fc-sec"><h4>Monitoring clusters</h4>${fcList(clusters)}</section>
     </div>
-    <div class="fc-sec"><h4>Inferential strength</h4>
+    <div class="fc-sec"><h4>Inferential-strength measures</h4>
       <div class="exp-line">Derivation paths (operation-level): ${pathsLine}
         <span class="muted-inline">— the strategic room each operation opens in the grounded layer. This is a property of the operation, so every lesson teaching it shows the same count; it is not a per-lesson fingerprint.</span></div>
-      <div class="exp-line">Incompatibilities in this lesson: <b>${esc(String(power.strategy_incompatibilities ?? 0))}</b> strategy · <b>${esc(String(power.misconception_incompatibilities ?? 0))}</b> misconception <span class="muted-inline">(upper bound — ${esc(power.incompatibility_note || 'includes set wrappers')})</span></div>
+      <div class="exp-line">Incompatibility breadth tallies: <b>${esc(String(power.strategy_incompatibilities ?? 0))}</b> strategy · <b>${esc(String(power.misconception_incompatibilities ?? 0))}</b> misconception <span class="muted-inline">(counts alone do not establish entailment; ${esc(power.incompatibility_note || 'includes set wrappers')})</span></div>
     </div>
     <div class="fc-sec"><h4>Incompatibility graph — what conflicts with what</h4>${incompatGraphSvg(misconceptions)}</div>
     <div class="fc-sec"><h4>Misconceptions &amp; incompatibilities</h4><p class="muted-inline">These readings are fixed facts from the misconception registry, not a live scoring run. The <b>commitment tracker</b> (advanced view) is the separate surface that runs the scorekeeper engine live against a speaker's commitments.</p>${miscCardsHtml(misconceptions)}</div>

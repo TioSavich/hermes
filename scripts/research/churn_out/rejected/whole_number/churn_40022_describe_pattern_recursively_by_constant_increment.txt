@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "40022",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40022_describe_pattern_recursively_by_constant_increment",
+    "target_operation": "skip_counting_vs_multiplication",
+    "citation": "Amy Roth McDuffie (2004)",
+    "error_action": "describe_pattern_recursively_by_constant_increment",
+    "error_description": "characterize a sequence only by how much it grows from the previous term",
+    "provenance_comments": "=== row 40022: recursive pattern, no link to multiplication ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 1",
+  "attempts": [
+    {
+      "response": "churn_candidate:(describes_pattern_recursively_by_constant_increment(N, Got) :-\n    Got is N + 5).\n\ntest_harness:arith_misconception(db_row(40022), whole_number, churn_40022_describe_pattern_recursively_by_constant_increment,\n    churn_candidate:describes_pattern_recursively_by_constant_increment,\n    10,\n    50).",
+      "result": "predicate must be named churn_40022_describe_pattern_recursively_by_constant_increment"
+    },
+    {
+      "response": "churn_candidate:(churn_40022_describe_pattern_recursively_by_constant_increment([A|Rest], Got) :-\n    Got = [A|Rest],\n    Rest = [B|_],\n    Got = [A,B|_]).\n\ntest_harness:arith_misconception(db_row(40022), whole_number, churn_40022_describe_pattern_recursively_by_constant_increment,\n    churn_candidate:churn_40022_describe_pattern_recursively_by_constant_increment,\n    [2,4,6,8]-4,\n    [2,4,6,8]-16).",
+      "result": "SWI-Prolog gate exited 1"
+    }
+  ]
+}

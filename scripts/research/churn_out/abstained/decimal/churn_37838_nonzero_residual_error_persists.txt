@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37838",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37838_nonzero_residual_error_persists",
+    "target_operation": "repeating_decimal_equality",
+    "citation": "Michael Oehrtman (2009)",
+    "error_action": "nonzero_residual_error_persists",
+    "error_description": "0.999... is only a sequence of approximations that always leaves an infinitely small but real difference from 1",
+    "provenance_comments": "=== row 37838: 0.999... = 1 rejected as \"negligible error\" ===\nToo vague — infinite-series conceptual issue, not a fixed computation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about infinite series and limits, not a fixed computational procedure that can be encoded as a deterministic, generalizable Prolog rule producing a specific wrong answer via a simple arithmetic operation. The error describes an intuitive resistance to the equality 0.999... = 1 based on a belief in a \"nonzero residual,\" but no concrete, reproducible algorithm (e.g., a specific operation or transformation) is provided that would consistently yield a particular incorrect numerical result from a given input. Without a defined rule that maps inputs to a stable erroneous output (e.g., via a formula or stepwise computation), a runnable rule predicate of arity 2 cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about infinite series and limits, not a fixed computational procedure that can be encoded as a deterministic, generalizable Prolog rule producing a specific wrong answer via a simple arithmetic operation. The error describes an intuitive resistance to the equality 0.999... = 1 based on a belief in a \"nonzero residual,\" but no concrete, reproducible algorithm (e.g., a specific operation or transformation) is provided that would consistently yield a particular incorrect numerical result from a given input. Without a defined rule that maps inputs to a stable erroneous output (e.g., via a formula or stepwise computation), a runnable rule predicate of arity 2 cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

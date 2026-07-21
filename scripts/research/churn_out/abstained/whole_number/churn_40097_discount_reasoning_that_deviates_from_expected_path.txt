@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40097",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40097_discount_reasoning_that_deviates_from_expected_path",
+    "target_operation": "interpreting_student_reasoning",
+    "citation": "TALI WALLACH and RUHAMA EVEN (2005)",
+    "error_action": "discount_reasoning_that_deviates_from_expected_path",
+    "error_description": "treat a correct solution by an unexpected method as guesswork and ignore alternative strategies",
+    "provenance_comments": "=== row 40097: teacher under-hearing / non-hearing ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a teacher's misinterpretation of student reasoning (discounting correct but unexpected strategies as guesswork), not a computational error that can be encoded as a deterministic Prolog rule producing a wrong result from a given input. There is no well-defined arithmetic operation or transformation that maps an input to the documented misconception output in a way that satisfies the schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a teacher's misinterpretation of student reasoning (discounting correct but unexpected strategies as guesswork), not a computational error that can be encoded as a deterministic Prolog rule producing a wrong result from a given input. There is no well-defined arithmetic operation or transformation that maps an input to the documented misconception output in a way that satisfies the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

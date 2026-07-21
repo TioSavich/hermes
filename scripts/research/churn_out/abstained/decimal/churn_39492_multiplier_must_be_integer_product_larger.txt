@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39492",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39492_multiplier_must_be_integer_product_larger",
+    "target_operation": "multiplication_repeated_addition",
+    "citation": "JEAN-PIERRE LEVAIN (1992)",
+    "error_action": "multiplier_must_be_integer_product_larger",
+    "error_description": "multiplication repeats a quantity, so the multiplier is a whole count and the product exceeds the multiplicand",
+    "provenance_comments": "=== row 39492: multiplication = repeated addition, must be integer ===\nTask: 43 * 0.7\nCorrect: 30.1\nError: refuses non-integer multiplier; answer unspecified.\nEncode variant: student swaps to 0.7 * 43 (commuting) but still fails,\nreturning 43 (fixed point of \"you can't repeat add 0.7 times\").\nMark too_vague — no single computed wrong answer.",
+    "worked_example": "Task: 43 * 0.7\nCorrect: 30.1\nError: refuses non-integer multiplier; answer unspecified.",
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual refusal to compute a non-integer multiplier, with no single computed wrong answer provided — only a qualitative refusal (\"answer unspecified\"). The schema requires a concrete `ExpectedCorrect` and a rule that, when called with `Rule(Input, Got)`, produces the *documented wrong answer* (`Got`). Since the error does not yield a deterministic numerical output (it is unspecified), no runnable rule can encode it per the contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual refusal to compute a non-integer multiplier, with no single computed wrong answer provided — only a qualitative refusal (\"answer unspecified\"). The schema requires a concrete `ExpectedCorrect` and a rule that, when called with `Rule(Input, Got)`, produces the *documented wrong answer* (`Got`). Since the error does not yield a deterministic numerical output (it is unspecified), no runnable rule can encode it per the contract.",
+      "result": "abstained"
+    }
+  ]
+}

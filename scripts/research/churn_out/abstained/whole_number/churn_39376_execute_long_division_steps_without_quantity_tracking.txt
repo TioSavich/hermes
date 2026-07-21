@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39376",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39376_execute_long_division_steps_without_quantity_tracking",
+    "target_operation": "long_division_procedural_errors",
+    "citation": "A. TREFFERS (1987)",
+    "error_action": "execute_long_division_steps_without_quantity_tracking",
+    "error_description": "run the algorithm's surface steps while losing track of place value and remainder constraints",
+    "provenance_comments": "=== row 39376: long division procedural errors ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural misconception (losing track of place value and remainder constraints during long division) but does not specify a concrete, executable syntactic rule that reliably produces a predictable incorrect output for a given input. Without a precise algorithmic description of the error (e.g., which step is omitted, misapplied, or miscalculated), no SWI-Prolog rule of arity 2 can be constructed that consistently yields the documented wrong result across instances. The schema requires a runnable `Rule(Input, Got)` that produces the documented error, which cannot be determined here.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural misconception (losing track of place value and remainder constraints during long division) but does not specify a concrete, executable syntactic rule that reliably produces a predictable incorrect output for a given input. Without a precise algorithmic description of the error (e.g., which step is omitted, misapplied, or miscalculated), no SWI-Prolog rule of arity 2 can be constructed that consistently yields the documented wrong result across instances. The schema requires a runnable `Rule(Input, Got)` that produces the documented error, which cannot be determined here.",
+      "result": "abstained"
+    }
+  ]
+}

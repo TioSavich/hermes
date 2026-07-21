@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39595",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39595_treat_a_part_as_a_discrete_physical_piece_bounded_by_the_whole",
+    "target_operation": "part_whole_iteration_beyond_unit",
+    "citation": "Jose Luis Cortina & Jana Visnovska & Claudia Zuniga (2014)",
+    "error_action": "treat_a_part_as_a_discrete_physical_piece_bounded_by_the_whole",
+    "error_description": "a third is an actual chunk of the object and cannot be iterated past the original whole",
+    "provenance_comments": "=== row 39595: part as physical piece ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating a fraction part as a physical, bounded piece that cannot be iterated beyond the whole), but no runnable arithmetic rule or procedural error is specified—only a semantic constraint. Without a concrete computational procedure or formula that students follow to produce a wrong result, a Prolog rule of arity 2 cannot be constructed to simulate the error.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating a fraction part as a physical, bounded piece that cannot be iterated beyond the whole), but no runnable arithmetic rule or procedural error is specified—only a semantic constraint. Without a concrete computational procedure or formula that students follow to produce a wrong result, a Prolog rule of arity 2 cannot be constructed to simulate the error.",
+      "result": "abstained"
+    }
+  ]
+}

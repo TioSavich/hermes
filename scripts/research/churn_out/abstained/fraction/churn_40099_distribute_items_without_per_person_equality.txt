@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40099",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40099_distribute_items_without_per_person_equality",
+    "target_operation": "equal_sharing",
+    "citation": "Helena P. Osana, Guy L. Lacroix, Bradley J. Tucker, Chantal Desrosiers (2006)",
+    "error_action": "distribute_items_without_per_person_equality",
+    "error_description": "hand out the items among groups without ensuring each person gets the same amount",
+    "provenance_comments": "=== row 40099: unequal distribution ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural mistake in equal sharing (unequal distribution among people) rather than a specific arithmetic operation on fractions. There is no clear, general, executable binary predicate Rule(Input, Got) that produces the documented wrong answer, because the error is contextual (distribution across people) and not a syntactic arithmetic manipulation on fraction terms. The schema requires a concrete, generalizable arithmetic rule with deterministic input-output behavior, which is not definable from the given description.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural mistake in equal sharing (unequal distribution among people) rather than a specific arithmetic operation on fractions. There is no clear, general, executable binary predicate Rule(Input, Got) that produces the documented wrong answer, because the error is contextual (distribution across people) and not a syntactic arithmetic manipulation on fraction terms. The schema requires a concrete, generalizable arithmetic rule with deterministic input-output behavior, which is not definable from the given description.",
+      "result": "abstained"
+    }
+  ]
+}

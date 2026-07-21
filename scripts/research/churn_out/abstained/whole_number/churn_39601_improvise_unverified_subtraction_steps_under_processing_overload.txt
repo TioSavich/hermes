@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39601",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39601_improvise_unverified_subtraction_steps_under_processing_overload",
+    "target_operation": "multidigit_subtraction_decomposition",
+    "citation": "Gillian M. Boulton-Lewis, Lynn A. Wilss and Susan J. Mutch (1996)",
+    "error_action": "improvise_unverified_subtraction_steps_under_processing_overload",
+    "error_description": "when mapping blocks to the written algorithm overloads working memory, invent a step and proceed",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive process (improvising unverified subtraction steps under working memory overload) without specifying a concrete, generalizable syntactic or semantic rule that produces a deterministic incorrect output for a given input. No runnable predicate rule can be defined that reliably reproduces the described error behavior across instances without ad-hoc or speculative modeling.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive process (improvising unverified subtraction steps under working memory overload) without specifying a concrete, generalizable syntactic or semantic rule that produces a deterministic incorrect output for a given input. No runnable predicate rule can be defined that reliably reproduces the described error behavior across instances without ad-hoc or speculative modeling.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39675",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39675_unit_divided_by_counting_number_is_below_one",
+    "target_operation": "division_quotient_expectation",
+    "citation": "Nigel Calder, Tony Brown, Una Hanley, and Susan Darby (2006)",
+    "error_action": "unit_divided_by_counting_number_is_below_one",
+    "error_description": "dividing one by a whole number should always give a decimal less than one",
+    "provenance_comments": "=== row 39675: tension about 1/N outputs > 1 in spreadsheet ===\nToo vague — expectation conflict, not a calculation.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: the documented error describes an expectation or conceptual tension (that 1/N should always be < 1) but provides no runnable computational rule or procedure that produces a specific wrong output; it is a belief, not a deterministic error in calculation or algorithm. Since the schema requires a rule that, when applied to an input, produces the documented wrong answer, and no such rule is specified or inferable, admission cannot be justified.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: the documented error describes an expectation or conceptual tension (that 1/N should always be < 1) but provides no runnable computational rule or procedure that produces a specific wrong output; it is a belief, not a deterministic error in calculation or algorithm. Since the schema requires a rule that, when applied to an input, produces the documented wrong answer, and no such rule is specified or inferable, admission cannot be justified.",
+      "result": "abstained"
+    }
+  ]
+}

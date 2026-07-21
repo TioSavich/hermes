@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38760",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38760_convert_to_base_ten_then_back",
+    "target_operation": "non_decimal_base_addition",
+    "citation": "ORIT HAZZAN AND RINA ZAZKIS (2005)",
+    "error_action": "convert_to_base_ten_then_back",
+    "error_description": "do arithmetic by translating into base ten, computing, and translating the result back",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 1",
+  "attempts": [
+    {
+      "response": "churn_candidate:(convert_to_base_ten_then_back(A-B, Got) :-\n    integer(A),\n    integer(B),\n    A > 0,\n    B > 0,\n    between(2, 9, Base),\n    to_base_ten(A, Base, ATen),\n    to_base_ten(B, Base, BTen),\n    ATen + BTen =:= CTen,\n    from_base_ten(CTen, Base, Got)).\n\nto_base_ten(N, Base, Ten) :-\n    to_base_ten_acc(N, Base, 0, 0, Ten).\n\nto_base_ten_acc(0, _, _, Acc, Acc).\nto_base_ten_acc(N, Base, Power, Acc, Ten) :-\n    N > 0,\n    Digit is N mod Base,\n    NewAcc is Acc + Digit * (Base ^ Power),\n    NewPower is Power + 1,\n    N1 is N div Base,\n    to_base_ten_acc(N1, Base, NewPower, NewAcc, Ten).\n\nfrom_base_ten(Ten, Base, N) :-\n    from_base_ten_acc(Ten, Base, 0, N).\n\nfrom_base_ten_acc(0, _, Acc, Acc).\nfrom_base_ten_acc(Ten, Base, Pos, N) :-\n    Ten > 0,\n    Digit is Ten mod Base,\n    NewTen is Ten div Base,\n    NewPos is Pos * 10 + Digit,\n    from_base_ten_acc(NewTen, Base, NewPos, N).\n\ntest_harness:arith_misconception(db_row(38760), whole_number, churn_38760_convert_to_base_ten_then_back,\n    churn_candidate:convert_to_base_ten_then_back,\n    12-23,\n    35).",
+      "result": "predicate must be named churn_38760_convert_to_base_ten_then_back"
+    },
+    {
+      "response": "churn_candidate:(churn_38760_convert_to_base_ten_then_back(A-B, Got) :-\n    base_to_decimal(A, 10, X),\n    base_to_decimal(B, 10, Y),\n    Z is X + Y,\n    decimal_to_base(Z, 10, Got)).\n\ntest_harness:arith_misconception(db_row(38760), whole_number, churn_38760_convert_to_base_ten_then_back,\n    churn_candidate:churn_38760_convert_to_base_ten_then_back,\n    '12'_-'34',\n    46).",
+      "result": "SWI-Prolog gate exited 1"
+    }
+  ]
+}

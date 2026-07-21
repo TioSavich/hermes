@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39019",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39019_multiplication_makes_bigger",
+    "target_operation": "multiplication_magnitude",
+    "citation": "CELIA HOYLES AND RICHARD NOSS (1992)",
+    "error_action": "multiplication_makes_bigger",
+    "error_description": "expects any multiplication to produce a result larger than the starting number",
+    "provenance_comments": "=== row 39019: mult always makes larger (target-seeking in Logo) ===\nTask: 13 * K to reach 100 — student doesn't use K<1.\nToo vague — strategic choice avoidance, not a wrong computation with a\nspecific output.",
+    "worked_example": "Task: 13 * K to reach 100 — student doesn't use K<1.",
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a strategic misconception about expectation of magnitude (assuming multiplication always increases value) rather than a specific computational error that produces a fixed wrong output for a given input. No runnable rule can be constructed that consistently yields a single documented incorrect result for a concrete input, because the error manifests as failure to choose K<1 in the task \"13 * K to reach 100\", but the student's actual computed value of K is not documented—only their reasoning error is. Without a documented specific output (e.g., student computed K=7.69), the schema requirement for `ExpectedCorrect` and a deterministic `Rule(Input, Got)` cannot be satisfied.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a strategic misconception about expectation of magnitude (assuming multiplication always increases value) rather than a specific computational error that produces a fixed wrong output for a given input. No runnable rule can be constructed that consistently yields a single documented incorrect result for a concrete input, because the error manifests as failure to choose K<1 in the task \"13 * K to reach 100\", but the student's actual computed value of K is not documented—only their reasoning error is. Without a documented specific output (e.g., student computed K=7.69), the schema requirement for `ExpectedCorrect` and a deterministic `Rule(Input, Got)` cannot be satisfied.",
+      "result": "abstained"
+    }
+  ]
+}

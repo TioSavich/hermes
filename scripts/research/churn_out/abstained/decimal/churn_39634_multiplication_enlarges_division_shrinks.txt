@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39634",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39634_multiplication_enlarges_division_shrinks",
+    "target_operation": "operation_effect_on_magnitude",
+    "citation": "Leicha A. Bragg (2012)",
+    "error_action": "multiplication_enlarges_division_shrinks",
+    "error_description": "expect any product to be larger than its factor and any quotient to be smaller than its dividend",
+    "provenance_comments": "=== row 39634: 102 * 0.1 bewilderment (no rule) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about the effect of multiplication and division on magnitude, not a specific syntactic error that can be captured by a single Prolog rule producing a wrong result for a given input. There is no runnable rule that computes the *expected* wrong answer in a way that satisfies the schema requirement: the error is not a mechanical misapplication of an operator but a belief that applies only in certain cases (e.g., with integers >1) and fails generally (e.g., with decimals <1). No single predicate `Rule(Input, Got)` can uniformly encode the student’s flawed heuristic across all inputs while matching the schema’s expectation of a concrete, testable wrong output for a concrete input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about the effect of multiplication and division on magnitude, not a specific syntactic error that can be captured by a single Prolog rule producing a wrong result for a given input. There is no runnable rule that computes the *expected* wrong answer in a way that satisfies the schema requirement: the error is not a mechanical misapplication of an operator but a belief that applies only in certain cases (e.g., with integers >1) and fails generally (e.g., with decimals <1). No single predicate `Rule(Input, Got)` can uniformly encode the student’s flawed heuristic across all inputs while matching the schema’s expectation of a concrete, testable wrong output for a concrete input.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37795",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37795_transformed_combinations_are_separate_problems",
+    "target_operation": "addition_compensation",
+    "citation": "Ruth M. Steinberg (1985)",
+    "error_action": "transformed_combinations_are_separate_problems",
+    "error_description": "the original sum and its compensated form are distinct problems each computed on their own",
+    "provenance_comments": "=== row 37795: models compensation but disbelieves equivalence ===\nStudent writes two different answers or separate computations. No single\ndeterministic wrong answer.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding where the student treats the original sum and its compensated form as distinct problems each computed on their own, resulting in no single deterministic wrong answer. Since the error lacks a specific, consistent output for a given input, it cannot be encoded as a deterministic Prolog rule that produces a fixed wrong result for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding where the student treats the original sum and its compensated form as distinct problems each computed on their own, resulting in no single deterministic wrong answer. Since the error lacks a specific, consistent output for a given input, it cannot be encoded as a deterministic Prolog rule that produces a fixed wrong result for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

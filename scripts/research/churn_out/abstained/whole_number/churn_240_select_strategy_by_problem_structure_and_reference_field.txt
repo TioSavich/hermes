@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "240",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_240_select_strategy_by_problem_structure_and_reference_field",
+    "target_operation": "multiplicative_word_problem_strategy_selection",
+    "citation": "Levain, Jean-Pierre (1992)",
+    "error_action": "select_strategy_by_problem_structure_and_reference_field",
+    "error_description": "choose a multiplicative strategy according to the problem's structure, numeric variables, and reference field",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is described only at a high conceptual level—“choose a multiplicative strategy according to the problem's structure, numeric variables, and reference field”—without specifying a concrete, runnable procedural error that yields a fixed incorrect output for a given input. No specific misapplication (e.g., misidentifying part-part-whole as additive vs. multiplicative, misusing scaling factor, etc.) is provided, nor is there a deterministic mapping from input to erroneous output. Without such specificity, a testable rule `Rule(Input, Got)` cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is described only at a high conceptual level—“choose a multiplicative strategy according to the problem's structure, numeric variables, and reference field”—without specifying a concrete, runnable procedural error that yields a fixed incorrect output for a given input. No specific misapplication (e.g., misidentifying part-part-whole as additive vs. multiplicative, misusing scaling factor, etc.) is provided, nor is there a deterministic mapping from input to erroneous output. Without such specificity, a testable rule `Rule(Input, Got)` cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

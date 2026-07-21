@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "267",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_267_treat_subtraction_as_only_take_away",
+    "target_operation": "subtraction_meaning_conflation",
+    "citation": "Galbraith (1974)",
+    "error_action": "treat_subtraction_as_only_take_away",
+    "error_description": "interpret every subtraction situation as a take-away action",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be formed because the documented error describes a conceptual misinterpretation (treating all subtraction as take-away) without specifying a concrete syntactic or semantic transformation that maps inputs to the documented wrong output; a rule must produce a specific incorrect result, but the description gives no algorithm or formula for deriving that result from arbitrary inputs.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_267_treat_subtraction_as_only_take_away(A-B, Got) :-\n    Got is A - B,\n    A >= B).\n\ntest_harness:arith_misconception(db_row(267), whole_number, churn_267_treat_subtraction_as_only_take_away,\n    churn_candidate:churn_267_treat_subtraction_as_only_take_away,\n    3-5,\n    -2).",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "ABSTAIN: No runnable rule can be formed because the documented error describes a conceptual misinterpretation (treating all subtraction as take-away) without specifying a concrete syntactic or semantic transformation that maps inputs to the documented wrong output; a rule must produce a specific incorrect result, but the description gives no algorithm or formula for deriving that result from arbitrary inputs.",
+      "result": "abstained"
+    }
+  ]
+}

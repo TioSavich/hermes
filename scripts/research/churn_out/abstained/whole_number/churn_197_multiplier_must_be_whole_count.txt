@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "197",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_197_multiplier_must_be_whole_count",
+    "target_operation": "multiplication_word_problem_interpretation",
+    "citation": "Fischbein, Deri, Nello, Marino (1985)",
+    "error_action": "multiplier_must_be_whole_count",
+    "error_description": "the multiplier is a counting number so multiplying always enlarges",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error \"the multiplier is a counting number so multiplying always enlarges\" is a conceptual misconception about monotonicity of multiplication, not a syntactic or procedural rule that can be expressed as a binary predicate `Rule(Input, Got)` producing a specific wrong numerical result from a given input. The misconception describes a belief (e.g., that $a \\times b > a$ for all $b \\ge 1$), but does not specify a deterministic computational procedure or a canonical incorrect output for a concrete input that can be verified against a correct value. Without a runnable rule (i.e., a deterministic mapping from input to *wrong* output), and without a clear, documented incorrect computation procedure (only an informal belief), the execution gate cannot admit a test harness per schema.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(multiplier_must_be_whole_count(A-B, Got) :-\n    (   B > 0\n    ->  Got is A * B\n    ;   Got = A\n    )).\n\ntest_harness:arith_misconception(db_row(197), whole_number, multiplier_must_be_whole_count,\n    churn_candidate:multiplier_must_be_whole_count,\n    5-0,\n    0).",
+      "result": "registration source/domain/description does not match the entry"
+    },
+    {
+      "response": "ABSTAIN: The documented error \"the multiplier is a counting number so multiplying always enlarges\" is a conceptual misconception about monotonicity of multiplication, not a syntactic or procedural rule that can be expressed as a binary predicate `Rule(Input, Got)` producing a specific wrong numerical result from a given input. The misconception describes a belief (e.g., that $a \\times b > a$ for all $b \\ge 1$), but does not specify a deterministic computational procedure or a canonical incorrect output for a concrete input that can be verified against a correct value. Without a runnable rule (i.e., a deterministic mapping from input to *wrong* output), and without a clear, documented incorrect computation procedure (only an informal belief), the execution gate cannot admit a test harness per schema.",
+      "result": "abstained"
+    }
+  ]
+}

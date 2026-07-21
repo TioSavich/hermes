@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39463",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39463_zero_is_not_a_number",
+    "target_operation": "status_of_zero",
+    "citation": "Esther Levenson (2013)",
+    "error_action": "zero_is_not_a_number",
+    "error_description": "treat zero as nothing rather than a number because one is taken to be the smallest number",
+    "provenance_comments": "=== row 39463: zero as 'not a number' ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 1",
+  "attempts": [
+    {
+      "response": "churn_candidate:(zero_is_not_a_number(zero, Got) :-\n    Got = 0,\n    false.\n\ntest_harness:arith_misconception(db_row(39463), whole_number, churn_39463_zero_is_not_a_number,\n    churn_candidate:zero_is_not_a_number,\n    zero,\n    1).\nABSTAIN: Rule body cannot produce documented wrong answer (0) while ExpectedCorrect (1) is non-unifiable with 0; but the documented misconception is about *rejecting* zero as a number, not computing 0 as 1. No runnable Prolog rule can encode \"zero is not a number\" as a computational error without misrepresenting arithmetic. The task requires encoding the *error*, not the *correction*, and zero_is_not_a_number/2 must yield the documented wrong output for the given input. However, the documented error is conceptual rejection, not a numeric output mismatch in a computation. No concrete Input/ExpectedCorrect pair satisfies the schema while preserving the documented error as a computational rule.",
+      "result": "predicate must be named churn_39463_zero_is_not_a_number"
+    },
+    {
+      "response": "churn_candidate:(churn_39463_zero_is_not_a_number(X, Got) :-\n    Got = false).\n\ntest_harness:arith_misconception(db_row(39463), whole_number, churn_39463_zero_is_not_a_number,\n    churn_candidate:churn_39463_zero_is_not_a_number,\n    0,\n    true).",
+      "result": "SWI-Prolog gate exited 1"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40619",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40619_resolve_share_by_whole_number_length_division",
+    "target_operation": "measurement_bypass_of_fraction",
+    "citation": "Clea Fernandez (2005)",
+    "error_action": "resolve_share_by_whole_number_length_division",
+    "error_description": "find each share by measuring the object and dividing the total length as whole numbers",
+    "provenance_comments": "=== row 40619: measure-and-divide bypass of fraction ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural misconception (\"measure the object and divide the total length as whole numbers\") that cannot be expressed as a deterministic, general, executable Prolog rule of arity 2 without additional concrete mathematical formulation. The description lacks sufficient precision to define a unique, general rule predicate (e.g., no input/output schema, no operation on symbolic fractions, no clear algebraic form). The task requires encoding a runnable rule that produces the documented wrong answer; this documentation does not determine one.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural misconception (\"measure the object and divide the total length as whole numbers\") that cannot be expressed as a deterministic, general, executable Prolog rule of arity 2 without additional concrete mathematical formulation. The description lacks sufficient precision to define a unique, general rule predicate (e.g., no input/output schema, no operation on symbolic fractions, no clear algebraic form). The task requires encoding a runnable rule that produces the documented wrong answer; this documentation does not determine one.",
+      "result": "abstained"
+    }
+  ]
+}

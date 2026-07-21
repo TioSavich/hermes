@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37491",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37491_even_requires_two_identical_positive_addends",
+    "target_operation": "parity_of_zero",
+    "citation": "Deborah Loewenberg Ball, Jennifer Lewis and Mark Hoover Thames (2008)",
+    "error_action": "even_requires_two_identical_positive_addends",
+    "error_description": "a number is even only if two equal whole numbers can be put together to make it",
+    "provenance_comments": "whole_number misconceptions — research corpus batch 5/5.\nNative arithmetic layer only. Theoretical annotations as comments:\n% GROUNDED: TODO — placeholder for future embodied arithmetic layer\n% SCHEMA: <schema name> — Lakoff & Nunez grounding when applicable\n% CONNECTS TO: s(comp_nec(unlicensed(...))) — PML operator path\n\nRegistration convention (from Task 3 arch fix):\ntest_harness:arith_misconception(Source, Domain, Description,\nmisconceptions_whole_number_batch_5:rule_name, Input, Expected).\nRule predicates do NOT go on the module export list.\n\n\n---- Encodings appended by agent for whole_number batch 5 ----\n\n=== row 37491: zero as even — philosophical argument, no computation ===\nTwo students debate whether zero is even with no concrete computational\nerror producing a specific numeric output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual philosophical argument about zero's parity, not a runnable arithmetic procedure that produces a specific incorrect numeric output. No concrete Input and ExpectedCorrect can be supplied that satisfy the schema requirement of producing the documented wrong answer via a 2-place predicate rule.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual philosophical argument about zero's parity, not a runnable arithmetic procedure that produces a specific incorrect numeric output. No concrete Input and ExpectedCorrect can be supplied that satisfy the schema requirement of producing the documented wrong answer via a 2-place predicate rule.",
+      "result": "abstained"
+    }
+  ]
+}

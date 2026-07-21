@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38991",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38991_area_is_enclosed_space_or_edges_of_solid",
+    "target_operation": "area_volume_distinction",
+    "citation": "ANNETTE BATURO and ROD NASON (1996)",
+    "error_action": "area_is_enclosed_space_or_edges_of_solid",
+    "error_description": "the area of a 3-D shape is its interior empty space or the length of its edges",
+    "provenance_comments": "=== row 38991: volume confused with area for 3D shape ===\nToo vague: identification-of-attribute confusion, not a calc signature.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error is conceptual (confusing area with volume for 3D shapes) and does not specify a runnable computational procedure or a deterministic arithmetic rule that produces a specific wrong result for a given input; it describes a misidentification of attribute rather than a calculational mistake with a reproducible output. Without a concrete, generalizable rule that maps inputs to a specific incorrect output (e.g., a formula or algorithm), no runnable `Rule/2` predicate can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is conceptual (confusing area with volume for 3D shapes) and does not specify a runnable computational procedure or a deterministic arithmetic rule that produces a specific wrong result for a given input; it describes a misidentification of attribute rather than a calculational mistake with a reproducible output. Without a concrete, generalizable rule that maps inputs to a specific incorrect output (e.g., a formula or algorithm), no runnable `Rule/2` predicate can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

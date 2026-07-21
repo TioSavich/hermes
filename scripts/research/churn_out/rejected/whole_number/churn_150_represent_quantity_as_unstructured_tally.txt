@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "150",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_150_represent_quantity_as_unstructured_tally",
+    "target_operation": "counting_numeration_representation",
+    "citation": "Thomas, N. D., Mulligan, J. T., & Goldin, G. A. (2002)",
+    "error_action": "represent_quantity_as_unstructured_tally",
+    "error_description": "record quantity as iconic one-by-one marks without grouping into tens",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 23",
+  "attempts": [
+    {
+      "response": "churn_candidate:(represent_quantity_as_unstructured_tally(N, Got) :-\n    length(Got, N),\n    maplist(=(1), Got)).\n\ntest_harness:arith_misconception(db_row(150), whole_number, churn_150_represent_quantity_as_unstructured_tally,\n    churn_candidate:represent_quantity_as_unstructured_tally,\n    7,\n    [1,1,1,1,1,1,1]).",
+      "result": "predicate must be named churn_150_represent_quantity_as_unstructured_tally"
+    },
+    {
+      "response": "churn_candidate:(churn_150_represent_quantity_as_unstructured_tally(N, Got) :-\n    length(Got, N),\n    maplist(=(1), Got)).\n\ntest_harness:arith_misconception(db_row(150), whole_number, churn_150_represent_quantity_as_unstructured_tally,\n    churn_candidate:churn_150_represent_quantity_as_unstructured_tally,\n    7,\n    [1,1,1,1,1,1,1]).",
+      "result": "SWI-Prolog gate exited 23"
+    }
+  ]
+}

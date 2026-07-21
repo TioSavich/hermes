@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39949",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39949_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "=== row 39949: unit fraction comparison reasoning ===",
+    "provenance_comments": "=== row 39949: unit fraction comparison reasoning ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error “too_vague” provides no specific syntactic or semantic procedure—only a label—and the worked example is absent. Without a concrete misapplication (e.g., a specific operation, formula, or transformation), there is insufficient information to define a predicate `Rule/2` that reliably produces the documented wrong behavior.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error “too_vague” provides no specific syntactic or semantic procedure—only a label—and the worked example is absent. Without a concrete misapplication (e.g., a specific operation, formula, or transformation), there is insufficient information to define a predicate `Rule/2` that reliably produces the documented wrong behavior.",
+      "result": "abstained"
+    }
+  ]
+}

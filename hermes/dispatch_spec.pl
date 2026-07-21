@@ -579,10 +579,10 @@ dispatch_spec(representation_spine_witness,
     call(user:representation_spine_dispatch_witness,
          [concept, out(witness)]),
     witness(no_representation_spine_witness)).
-dispatch_spec(target_expressive_power_witness,
+dispatch_spec(target_inferential_strength_witness,
     [target-term],
-    call(user:target_expressive_power_witness, [target, out(witness)]),
-    witness(no_target_expressive_power_witness, missing_target)).
+    call(user:target_inferential_strength_witness, [target, out(witness)]),
+    witness(no_target_inferential_strength_witness, missing_target)).
 dispatch_spec(misconception_incompatibility_witness,
     [move-term, conflict-term],
     call(misconception_registry:incompatibility_with_witness,
@@ -638,9 +638,9 @@ dispatch_spec(render_coverage,
     call(misconception_render_coverage:render_coverage_report_dict,
          [out(dict)]),
     raw).
-dispatch_spec(expressive_power,
+dispatch_spec(inferential_strength,
     [lesson-code],
-    call(user:expressive_power_dispatch_dict, [lesson, out(dict)]),
+    call(user:inferential_strength_dispatch_dict, [lesson, out(dict)]),
     raw(missing_lesson)).
 dispatch_spec(list_strategies,
     [],
@@ -720,7 +720,7 @@ dispatch_message(ranked_figures, malformed, "ranked_figures requires lesson_code
 dispatch_message(ranked_figures, no_result, "ranked_figures found no selector candidates for lesson_code").
 dispatch_message(field_context, malformed, "field_context requires lesson_code").
 dispatch_message(field_context, no_result, "field_context found no context for lesson_code").
-dispatch_message(expressive_power, malformed, "expressive_power requires lesson").
+dispatch_message(inferential_strength, malformed, "inferential_strength requires lesson").
 dispatch_message(strategy_trace, malformed, "strategy_trace requires strategy").
 dispatch_message(grounding_for, malformed, "grounding_for requires operation").
 dispatch_message(ground, malformed, "ground requires query").
@@ -921,8 +921,8 @@ dispatch_message(grounding_inference_witness, malformed, "grounding_inference_wi
 dispatch_message(image_schema, malformed, "image_schema requires practice (a practice atom string)").
 dispatch_message(primitive_for_practice, malformed, "primitive_for_practice requires practice (a practice atom string)").
 dispatch_message(representation_spine_witness, no_witness, "representation_spine_witness found no renders_on route or asset for that concept").
-dispatch_message(target_expressive_power_witness, no_witness, "target_expressive_power_witness found no recorded example for target").
-dispatch_message(target_expressive_power_witness, malformed, "target_expressive_power_witness requires target").
+dispatch_message(target_inferential_strength_witness, no_witness, "target_inferential_strength_witness found no recorded example for target").
+dispatch_message(target_inferential_strength_witness, malformed, "target_inferential_strength_witness requires target").
 dispatch_message(misconception_incompatibility_witness, no_witness, "misconception_incompatibility_witness found no registry recorded example").
 dispatch_message(misconception_incompatibility_witness, malformed, "misconception_incompatibility_witness requires move and conflict").
 dispatch_message(lesson_misconception_incompatibility_witness, no_witness, "lesson_misconception_incompatibility_witness found no lesson recorded example").

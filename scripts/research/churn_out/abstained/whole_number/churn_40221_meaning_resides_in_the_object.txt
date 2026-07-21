@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40221",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40221_meaning_resides_in_the_object",
+    "target_operation": "manipulatives_as_objective_meaning",
+    "citation": "RON TZUR, MARTIN A. SIMON, KAREN HEINZ and MARGARET KINZEL (2001)",
+    "error_action": "meaning_resides_in_the_object",
+    "error_description": "mathematical relationships are physically present in the manipulative and can be seen by anyone who looks",
+    "provenance_comments": "=== row 40221: \"perception-based\" view of manipulatives ===\nTeacher epistemology; no arithmetic output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a perception-based epistemological view (that mathematical relationships \"reside in\" manipulatives and are visible to anyone who looks) and explicitly states \"no arithmetic output.\" Since the error is not an operational arithmetic procedure that can be captured by a binary predicate producing a specific numerical output, it cannot be encoded as a runnable SWI-Prolog rule of the required form.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a perception-based epistemological view (that mathematical relationships \"reside in\" manipulatives and are visible to anyone who looks) and explicitly states \"no arithmetic output.\" Since the error is not an operational arithmetic procedure that can be captured by a binary predicate producing a specific numerical output, it cannot be encoded as a runnable SWI-Prolog rule of the required form.",
+      "result": "abstained"
+    }
+  ]
+}

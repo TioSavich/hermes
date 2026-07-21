@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39609",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39609_rewritten_fractions_lose_link_to_originals",
+    "target_operation": "common_denominator_procedure",
+    "citation": "Linda Galligan & Carola Hobohm (2015)",
+    "error_action": "rewritten_fractions_lose_link_to_originals",
+    "error_description": "treat fractions rewritten over a common denominator as new unrelated fractions rather than equal to the originals",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_39609_rewritten_fractions_lose_link_to_originals",
+  "attempts": [
+    {
+      "response": "churn_candidate:(rewrite_and_lose_link(frac(N1,D1), frac(N2,D2)) :-\n    GCD is gcd(N1,D1),\n    N1s is N1 // GCD,\n    D1s is D1 // GCD,\n    LCM is (D1s * D2s) // gcd(D1s, D2s),\n    D2s is D1s,\n    N2 is N1s * (LCM // D1s),\n    D2 is LCM,\n    D2s = D1s).\n\ntest_harness:arith_misconception(db_row(39609), fraction, churn_39609_rewritten_fractions_lose_link_to_originals,\n    churn_candidate:rewrite_and_lose_link,\n    frac(1,2),\n    frac(1,2)).",
+      "result": "predicate must be named churn_39609_rewritten_fractions_lose_link_to_originals"
+    },
+    {
+      "response": "churn_candidate:(rewritten_fractions_lose_link_to_originals(frac(N,D), frac(N2,D2)) :-\n    G is gcd(N,D),\n    N1 is N // G,\n    D1 is D // G,\n    L is lcm(D,D1),\n    N2 is N1 * (L // D1),\n    D2 is L,\n    N2 =\\= N,\n    D2 =\\= D).\n\ntest_harness:arith_misconception(db_row(39609), fraction, churn_39609_rewritten_fractions_lose_link_to_originals,\n    churn_candidate:rewritten_fractions_lose_link_to_originals,\n    frac(2,4),\n    frac(1,2)).",
+      "result": "predicate must be named churn_39609_rewritten_fractions_lose_link_to_originals"
+    }
+  ]
+}

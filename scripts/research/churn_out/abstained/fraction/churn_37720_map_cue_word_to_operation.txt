@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37720",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37720_map_cue_word_to_operation",
+    "target_operation": "key_word_operation_mapping",
+    "citation": "Sandra P. Marshall (1983)",
+    "error_action": "map_cue_word_to_operation",
+    "error_description": "let words like 'of' trigger multiplication and 'how many' trigger addition",
+    "provenance_comments": "=== row 37720: key-word triggers for operation ===\nToo vague — strategy-selection error, no concrete wrong numeric answer given.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a strategy-selection error (mapping cue words to operations) without a concrete, runnable procedure that produces a specific wrong numeric answer. The schema requires a rule that, when called with a specific Input, yields a documented wrong answer (Got) that does not unify with a correct ExpectedCorrect. Since no concrete wrong numeric answer is provided and the error is described at the level of word-to-operation mapping (not a specific arithmetic miscomputation), a runnable rule satisfying the schema cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a strategy-selection error (mapping cue words to operations) without a concrete, runnable procedure that produces a specific wrong numeric answer. The schema requires a rule that, when called with a specific Input, yields a documented wrong answer (Got) that does not unify with a correct ExpectedCorrect. Since no concrete wrong numeric answer is provided and the error is described at the level of word-to-operation mapping (not a specific arithmetic miscomputation), a runnable rule satisfying the schema cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

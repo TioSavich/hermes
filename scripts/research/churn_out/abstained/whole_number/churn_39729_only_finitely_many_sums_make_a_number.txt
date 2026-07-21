@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39729",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39729_only_finitely_many_sums_make_a_number",
+    "target_operation": "finiteness_of_sums",
+    "citation": "Elizabeth Warren (2003)",
+    "error_action": "only_finitely_many_sums_make_a_number",
+    "error_description": "believe that only a limited set of whole-number pairs can add to a given total",
+    "provenance_comments": "=== row 39729: only finitely many sums reach target ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception about belief in finiteness of sums, but no runnable procedural rule is provided that would produce a specific incorrect output for a given input; thus, a testable rule cannot be constructed per the schema contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception about belief in finiteness of sums, but no runnable procedural rule is provided that would produce a specific incorrect output for a given input; thus, a testable rule cannot be constructed per the schema contract.",
+      "result": "abstained"
+    }
+  ]
+}

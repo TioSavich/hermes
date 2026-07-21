@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38314",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38314_part_is_missing_piece_to_complete_figure",
+    "target_operation": "part_whole_relationship",
+    "citation": "Iman C. Chahine (2013)",
+    "error_action": "part_is_missing_piece_to_complete_figure",
+    "error_description": "a fractional part is whatever piece is left over to finish a standard whole shape",
+    "provenance_comments": "=== row 38314: part as missing piece to complete standard whole ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (\"a fractional part is whatever piece is left over to finish a standard whole shape\") but does not specify a runnable computational rule that produces a wrong result from a given input in a way that can be encoded as a binary predicate without additional assumptions. There is no concrete algorithm or transformation provided that maps an input to a specific incorrect output; rather, it is a vague epistemic stance about interpretation of parts. Without a deterministic, generalizable procedure, no SWI-Prolog rule of arity 2 can be constructed that reliably yields the documented wrong answer for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (\"a fractional part is whatever piece is left over to finish a standard whole shape\") but does not specify a runnable computational rule that produces a wrong result from a given input in a way that can be encoded as a binary predicate without additional assumptions. There is no concrete algorithm or transformation provided that maps an input to a specific incorrect output; rather, it is a vague epistemic stance about interpretation of parts. Without a deterministic, generalizable procedure, no SWI-Prolog rule of arity 2 can be constructed that reliably yields the documented wrong answer for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

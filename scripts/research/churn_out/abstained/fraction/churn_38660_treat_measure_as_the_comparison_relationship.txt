@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38660",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38660_treat_measure_as_the_comparison_relationship",
+    "target_operation": "quantity_measure_conflict",
+    "citation": "Ajay Ramful (2014)",
+    "error_action": "treat_measure_as_the_comparison_relationship",
+    "error_description": "use the bar's own measure fraction as the comparison multiplier between the two bars",
+    "provenance_comments": "",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual confusion (treating a bar’s own measure fraction as a comparison multiplier) but does not specify a runnable procedural rule that maps inputs to a wrong output in a way that can be encoded as a deterministic Prolog predicate of arity 2 without additional assumptions. No concrete, generalizable algorithmic transformation is given—only a qualitative description of misapplication—so a testable `Rule(Input, Got)` cannot be constructed that reliably produces the documented error for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual confusion (treating a bar’s own measure fraction as a comparison multiplier) but does not specify a runnable procedural rule that maps inputs to a wrong output in a way that can be encoded as a deterministic Prolog predicate of arity 2 without additional assumptions. No concrete, generalizable algorithmic transformation is given—only a qualitative description of misapplication—so a testable `Rule(Input, Got)` cannot be constructed that reliably produces the documented error for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

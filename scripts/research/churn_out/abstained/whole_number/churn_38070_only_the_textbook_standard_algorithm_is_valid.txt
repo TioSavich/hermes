@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38070",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38070_only_the_textbook_standard_algorithm_is_valid",
+    "target_operation": "subtraction_algorithm_legitimacy",
+    "citation": "Yaa Cole (2012)",
+    "error_action": "only_the_textbook_standard_algorithm_is_valid",
+    "error_description": "accept only the official textbook subtraction formula and reject non-standard methods as confusing",
+    "provenance_comments": "=== row 38070: teacher dismisses non-standard algorithms ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a pedagogical stance (rejecting non-standard methods) rather than a computational rule that produces a specific incorrect output from a given input. There is no well-defined mathematical operation or algorithm that can be encoded as a Prolog predicate of arity 2 that maps an input to the documented错误 outcome, because the error is about *belief* or *attitude*, not about computing a numeric result. The schema requires `Rule(Input, Got)` to produce the documented wrong *answer*, but this misconception does not yield a calculable `Got` — it yields a rejection of method, not a numerical value. Therefore, no runnable rule can be constructed without invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(only_the_textbook_standard_algorithm_is_valid(A-B, Got) :-\n    % Simulates rejecting non-standard methods by returning the textbook standard result\n    % (here: left-to-right subtraction via direct arithmetic, which matches standard algorithm for whole numbers)\n    Got is A - B).\n\ntest_harness:arith_misconception(db_row(38070), whole_number, churn_38070_only_the_textbook_standard_algorithm_is_valid,\n    churn_candidate:only_the_textbook_standard_algorithm_is_valid,\n    42-17,\n    25).",
+      "result": "external module qualification is not allowed: here:"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a pedagogical stance (rejecting non-standard methods) rather than a computational rule that produces a specific incorrect output from a given input. There is no well-defined mathematical operation or algorithm that can be encoded as a Prolog predicate of arity 2 that maps an input to the documented错误 outcome, because the error is about *belief* or *attitude*, not about computing a numeric result. The schema requires `Rule(Input, Got)` to produce the documented wrong *answer*, but this misconception does not yield a calculable `Got` — it yields a rejection of method, not a numerical value. Therefore, no runnable rule can be constructed without invention.",
+      "result": "abstained"
+    }
+  ]
+}

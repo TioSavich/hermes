@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37568",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37568_formula_constants_count_visible_features",
+    "target_operation": "measurement_formula_justification",
+    "citation": "Dolores D. Pesek and David Kirshner (2000)",
+    "error_action": "formula_constants_count_visible_features",
+    "error_description": "explain a coefficient like the 2 in P=2(l+w) by counting sides or numbers visible on the shape",
+    "provenance_comments": "=== row 37568: invented rationales for formula constants ===\nToo vague: verbal explanation of formula components, not a calc.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about explaining formula constants (e.g., interpreting the 2 in P = 2(l + w) as counting visible sides), not a specific computational error yielding a fixed incorrect value for a given input. There is no deterministic mapping from input to a unique wrong output that can be captured by a binary predicate Rule(Input, Got) producing a single incorrect result. The misconception is explanatory, not algorithmic, and thus cannot be encoded as a runnable Prolog rule that reliably produces a specific erroneous value for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about explaining formula constants (e.g., interpreting the 2 in P = 2(l + w) as counting visible sides), not a specific computational error yielding a fixed incorrect value for a given input. There is no deterministic mapping from input to a unique wrong output that can be captured by a binary predicate Rule(Input, Got) producing a single incorrect result. The misconception is explanatory, not algorithmic, and thus cannot be encoded as a runnable Prolog rule that reliably produces a specific erroneous value for a given input.",
+      "result": "abstained"
+    }
+  ]
+}
