@@ -253,7 +253,7 @@ def build_lesson_index(chart: dict, cells: list) -> str:
                 "deformation is one field (one flipped glyph, or one appended "
                 "mark). Logic in "
                 "<code>curriculum/im/lesson_notation_chart.pl</code>; render "
-                "projected through <code>more-zeeman/render/drawer.js</code> (the "
+                "projected through <code>hermes/web/render/drawer.js</code> (the "
                 "<code>notation</code> format).</p>")
     # The load-bearing honesty card, on every lesson page.
     rows.append("<div style='max-width:860px;margin:18px 0;padding:14px 16px;"

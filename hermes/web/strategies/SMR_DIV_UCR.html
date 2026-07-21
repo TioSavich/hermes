@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>UCR — Using Commutative Reasoning</title>
+<link rel="stylesheet" href="strategy_shell.css">
+</head>
+<body>
+<div class="container">
+  <p class="back"><a href="index.html">← All strategies</a></p>
+  <h1>UCR: Using Commutative Reasoning (Division)</h1>
+  <p class="meta">Computed by <code>knowledge/strategies/math/smr_div_ucr.pl</code>. Repeatedly add G to a running total T, counting rounds, until T reaches E. The round count is the answer.</p>
+
+  <div class="inputs">
+    <label>Total E: <input type="number" id="a1" value="24"></label>
+    <label>Group size G: <input type="number" id="a2" value="6"></label>
+    <button id="go">Calculate and Visualize</button>
+  </div>
+
+  <h2>Result (number of groups)</h2>
+  <div id="out"></div>
+
+  <h2>Number-line Diagram (T climbing toward E)</h2>
+  <svg id="diagram" width="700" height="280"></svg>
+
+  <h2>Step Trace (from Prolog)</h2>
+  <ol id="steps" class="step-list"></ol>
+</div>
+<script src="strategy_viz.js"></script>
+<script>
+  wireStrategyPage({
+    strategy: 'UCR', op: '/',
+    a1Id: 'a1', a2Id: 'a2', btnId: 'go',
+    outId: 'out', svgId: 'diagram', stepListId: 'steps'
+  });
+</script>
+</body>
+</html>

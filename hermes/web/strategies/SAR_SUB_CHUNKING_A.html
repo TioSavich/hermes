@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Chunking A — Prolog-driven</title>
+<link rel="stylesheet" href="strategy_shell.css">
+</head>
+<body>
+<div class="container">
+  <p class="back"><a href="index.html">← All strategies</a></p>
+  <h1>Chunking A (backward chunking by place value)</h1>
+  <p class="meta">Computed by <code>knowledge/strategies/math/sar_sub_chunking_a.pl</code>. Identify the leading chunk of S, subtract it, repeat.</p>
+
+  <div class="inputs">
+    <label>Minuend M: <input type="number" id="a1" value="73"></label>
+    <label>Subtrahend S: <input type="number" id="a2" value="47"></label>
+    <button id="go">Calculate and Visualize</button>
+  </div>
+
+  <h2>Result</h2>
+  <div id="out"></div>
+
+  <h2>Number-line Diagram</h2>
+  <svg id="diagram" width="700" height="280"></svg>
+
+  <h2>Step Trace (from Prolog)</h2>
+  <ol id="steps" class="step-list"></ol>
+</div>
+<script src="strategy_viz.js"></script>
+<script>
+  wireStrategyPage({
+    strategy: 'Chunking A', op: '-',
+    a1Id: 'a1', a2Id: 'a2', btnId: 'go',
+    outId: 'out', svgId: 'diagram', stepListId: 'steps'
+  });
+</script>
+</body>
+</html>

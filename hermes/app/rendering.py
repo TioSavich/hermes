@@ -12,7 +12,7 @@ from typing import Any
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-NODE_ADAPTER = REPO_ROOT / "more-zeeman" / "render" / "node-adapter.js"
+NODE_ADAPTER = REPO_ROOT / "hermes" / "web" / "render" / "node-adapter.js"
 SUPPORTED_FORMATS = frozenset(
     {
         "fraction-bars",

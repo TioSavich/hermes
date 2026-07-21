@@ -1209,7 +1209,7 @@ class RouteLogic:
         self._send_json(result)
 
     def _handle_render(self, payload: dict) -> None:
-        """Generic render bridge. The unified drawer (more-zeeman/render/drawer.js)
+        """Generic render bridge. The unified drawer (hermes/web/render/drawer.js)
         POSTs {op, ...inputs} here; forward to the worker op and return its render
         document. Whitelisted ops only — this is a public KB surface, no student
         data. Lets every visualizer page draw against this same origin."""

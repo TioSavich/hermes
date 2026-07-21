@@ -12,7 +12,7 @@
 
   <!-- title -->
   <text x="24" y="30" fill="#e6ecf3" font-size="16" font-weight="600">The More Machine: the matrix grows by reading its own diagonal</text>
-  <text x="24" y="48" fill="#7a8aa0" font-size="11">more-zeeman/matrix.html : finitized Cantorian diagonalization (the Diagonal Sandwich that actually runs)</text>
+  <text x="24" y="48" fill="#7a8aa0" font-size="11">hermes/web/matrix.html : finitized Cantorian diagonalization (the Diagonal Sandwich that actually runs)</text>
 
   <!-- ===== the loop: three nodes in a cycle, top band ===== -->
 

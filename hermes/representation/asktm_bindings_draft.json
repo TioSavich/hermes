@@ -1,0 +1,1975 @@
+{
+  "status": "DRAFT_OWNER_NOT_VERIFIED",
+  "owner_verified": false,
+  "downstream_policy": "Mapped rows may join as draft; verification_status=verified joins at the verified tier.",
+  "source_kind": "ASKTM fine-grained Markdown category legends",
+  "accounting": {
+    "codes_total": 140,
+    "mapped": 63,
+    "awaiting_conversion": 0,
+    "no_defensible_binding": 77,
+    "verified": 0
+  },
+  "bindings": [
+    {
+      "grade": 4,
+      "question": 1,
+      "category_code": "A1",
+      "legend_text": "Correct answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q1.md",
+        "line": 1
+      }
+    },
+    {
+      "grade": 4,
+      "question": 1,
+      "category_code": "A2",
+      "legend_text": "Correct response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "smr_frac_nl_compare",
+      "proposed_prolog_concept": "run_fraction_action(number_line_fraction_comparison)",
+      "rationale": "Fraction ordering can be enacted by locating each value and comparing its number-line position.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q1.md",
+        "line": 29
+      }
+    },
+    {
+      "grade": 4,
+      "question": 1,
+      "category_code": "A3",
+      "legend_text": "Correct response includes visual representations",
+      "proposed_automaton": "smr_frac_nl_compare",
+      "proposed_prolog_concept": "run_fraction_action(number_line_fraction_comparison)",
+      "rationale": "Fraction ordering can be enacted by locating each value and comparing its number-line position.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q1.md",
+        "line": 268
+      }
+    },
+    {
+      "grade": 4,
+      "question": 1,
+      "category_code": "B1",
+      "legend_text": "Incorrect answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q1.md",
+        "line": 578
+      }
+    },
+    {
+      "grade": 4,
+      "question": 1,
+      "category_code": "B2",
+      "legend_text": "Incorrect response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "smr_frac_nl_compare",
+      "proposed_prolog_concept": "run_fraction_action(number_line_fraction_comparison)",
+      "rationale": "Fraction ordering can be enacted by locating each value and comparing its number-line position.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q1.md",
+        "line": 682
+      }
+    },
+    {
+      "grade": 4,
+      "question": 1,
+      "category_code": "B3",
+      "legend_text": "Incorrect response includes visual representations",
+      "proposed_automaton": "smr_frac_nl_compare",
+      "proposed_prolog_concept": "run_fraction_action(number_line_fraction_comparison)",
+      "rationale": "Fraction ordering can be enacted by locating each value and comparing its number-line position.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q1.md",
+        "line": 1120
+      }
+    },
+    {
+      "grade": 4,
+      "question": 1,
+      "category_code": "C1",
+      "legend_text": "Blank",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q1.md",
+        "line": 1853
+      }
+    },
+    {
+      "grade": 4,
+      "question": 1,
+      "category_code": "C2",
+      "legend_text": "“I’m not sure” or “I don’t know”",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q1.md",
+        "line": 1855
+      }
+    },
+    {
+      "grade": 4,
+      "question": 1,
+      "category_code": "C3",
+      "legend_text": "Unclear/incomplete strategy",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q1.md",
+        "line": 1873
+      }
+    },
+    {
+      "grade": 4,
+      "question": 2,
+      "category_code": "A1",
+      "legend_text": "Correct answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q2.md",
+        "line": 1
+      }
+    },
+    {
+      "grade": 4,
+      "question": 2,
+      "category_code": "A2",
+      "legend_text": "Correct response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "smr_decimal_fraction_compare",
+      "proposed_prolog_concept": "run_decimal_action(decimal_fraction_place_value_comparison)",
+      "rationale": "The coded work compares decimals by fraction conversion or coordinated place-value units.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q2.md",
+        "line": 36
+      }
+    },
+    {
+      "grade": 4,
+      "question": 2,
+      "category_code": "A3",
+      "legend_text": "Correct response includes visual representations",
+      "proposed_automaton": "smr_decimal_fraction_compare",
+      "proposed_prolog_concept": "run_decimal_action(decimal_fraction_place_value_comparison)",
+      "rationale": "The coded work compares decimals by fraction conversion or coordinated place-value units.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q2.md",
+        "line": 442
+      }
+    },
+    {
+      "grade": 4,
+      "question": 2,
+      "category_code": "B1",
+      "legend_text": "Incorrect answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q2.md",
+        "line": 656
+      }
+    },
+    {
+      "grade": 4,
+      "question": 2,
+      "category_code": "B2",
+      "legend_text": "Incorrect response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "smr_decimal_fraction_compare",
+      "proposed_prolog_concept": "run_decimal_action(decimal_fraction_place_value_comparison)",
+      "rationale": "The coded work compares decimals by fraction conversion or coordinated place-value units.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q2.md",
+        "line": 831
+      }
+    },
+    {
+      "grade": 4,
+      "question": 2,
+      "category_code": "B3",
+      "legend_text": "Incorrect response includes visual representations",
+      "proposed_automaton": "smr_decimal_fraction_compare",
+      "proposed_prolog_concept": "run_decimal_action(decimal_fraction_place_value_comparison)",
+      "rationale": "The coded work compares decimals by fraction conversion or coordinated place-value units.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q2.md",
+        "line": 1253
+      }
+    },
+    {
+      "grade": 4,
+      "question": 2,
+      "category_code": "C1",
+      "legend_text": "Blank",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q2.md",
+        "line": 1355
+      }
+    },
+    {
+      "grade": 4,
+      "question": 2,
+      "category_code": "C2",
+      "legend_text": "“I’m not sure” or “I don’t know”",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q2.md",
+        "line": 1373
+      }
+    },
+    {
+      "grade": 4,
+      "question": 2,
+      "category_code": "C3",
+      "legend_text": "Unclear/incomplete strategy",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q2.md",
+        "line": 1431
+      }
+    },
+    {
+      "grade": 4,
+      "question": 3,
+      "category_code": "A1",
+      "legend_text": "Correct answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q3.md",
+        "line": 1
+      }
+    },
+    {
+      "grade": 4,
+      "question": 3,
+      "category_code": "A2",
+      "legend_text": "Correct response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "fraction_semantics",
+      "proposed_prolog_concept": "apply_equivalence_rule",
+      "rationale": "The question asks students to construct equivalent fractions.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q3.md",
+        "line": 89
+      }
+    },
+    {
+      "grade": 4,
+      "question": 3,
+      "category_code": "A3",
+      "legend_text": "Correct response includes visual representations",
+      "proposed_automaton": "fraction_semantics",
+      "proposed_prolog_concept": "apply_equivalence_rule",
+      "rationale": "The question asks students to construct equivalent fractions.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q3.md",
+        "line": 526
+      }
+    },
+    {
+      "grade": 4,
+      "question": 3,
+      "category_code": "B1",
+      "legend_text": "Incorrect answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q3.md",
+        "line": 931
+      }
+    },
+    {
+      "grade": 4,
+      "question": 3,
+      "category_code": "B2",
+      "legend_text": "Incorrect response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "fraction_semantics",
+      "proposed_prolog_concept": "apply_equivalence_rule",
+      "rationale": "The question asks students to construct equivalent fractions.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q3.md",
+        "line": 1283
+      }
+    },
+    {
+      "grade": 4,
+      "question": 3,
+      "category_code": "B3",
+      "legend_text": "Incorrect response includes visual representations",
+      "proposed_automaton": "fraction_semantics",
+      "proposed_prolog_concept": "apply_equivalence_rule",
+      "rationale": "The question asks students to construct equivalent fractions.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q3.md",
+        "line": 1637
+      }
+    },
+    {
+      "grade": 4,
+      "question": 3,
+      "category_code": "C1",
+      "legend_text": "blank",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q3.md",
+        "line": 2337
+      }
+    },
+    {
+      "grade": 4,
+      "question": 3,
+      "category_code": "C2",
+      "legend_text": "“I’m not sure” or “I don’t know”",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q3.md",
+        "line": 2355
+      }
+    },
+    {
+      "grade": 4,
+      "question": 3,
+      "category_code": "C3",
+      "legend_text": "Unclear/incomplete strategy",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q3.md",
+        "line": 2399
+      }
+    },
+    {
+      "grade": 4,
+      "question": 4,
+      "category_code": "A1",
+      "legend_text": "Correct answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q4.md",
+        "line": 1
+      }
+    },
+    {
+      "grade": 4,
+      "question": 4,
+      "category_code": "A2",
+      "legend_text": "Correct response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "smr_frac_nl_compare",
+      "proposed_prolog_concept": "run_fraction_action(number_line_fraction_comparison)",
+      "rationale": "Fraction-decimal ordering can use the same number-line comparison after expressing both values as fractions.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q4.md",
+        "line": 46
+      }
+    },
+    {
+      "grade": 4,
+      "question": 4,
+      "category_code": "A3",
+      "legend_text": "Correct response includes visual representations",
+      "proposed_automaton": "smr_frac_nl_compare",
+      "proposed_prolog_concept": "run_fraction_action(number_line_fraction_comparison)",
+      "rationale": "Fraction-decimal ordering can use the same number-line comparison after expressing both values as fractions.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q4.md",
+        "line": 1056
+      }
+    },
+    {
+      "grade": 4,
+      "question": 4,
+      "category_code": "B1",
+      "legend_text": "Incorrect answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q4.md",
+        "line": 1282
+      }
+    },
+    {
+      "grade": 4,
+      "question": 4,
+      "category_code": "B2",
+      "legend_text": "Incorrect response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "smr_frac_nl_compare",
+      "proposed_prolog_concept": "run_fraction_action(number_line_fraction_comparison)",
+      "rationale": "Fraction-decimal ordering can use the same number-line comparison after expressing both values as fractions.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q4.md",
+        "line": 1356
+      }
+    },
+    {
+      "grade": 4,
+      "question": 4,
+      "category_code": "B3",
+      "legend_text": "Incorrect response includes visual representations",
+      "proposed_automaton": "smr_frac_nl_compare",
+      "proposed_prolog_concept": "run_fraction_action(number_line_fraction_comparison)",
+      "rationale": "Fraction-decimal ordering can use the same number-line comparison after expressing both values as fractions.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q4.md",
+        "line": 1752
+      }
+    },
+    {
+      "grade": 4,
+      "question": 4,
+      "category_code": "C1",
+      "legend_text": "Blank",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q4.md",
+        "line": 1866
+      }
+    },
+    {
+      "grade": 4,
+      "question": 4,
+      "category_code": "C2",
+      "legend_text": "“I’m not sure” or “I don’t know”",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q4.md",
+        "line": 1884
+      }
+    },
+    {
+      "grade": 4,
+      "question": 4,
+      "category_code": "C3",
+      "legend_text": "Unclear/incomplete strategy",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q4.md",
+        "line": 1903
+      }
+    },
+    {
+      "grade": 4,
+      "question": 5,
+      "category_code": "A1",
+      "legend_text": "Correct answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q5.md",
+        "line": 3
+      }
+    },
+    {
+      "grade": 4,
+      "question": 5,
+      "category_code": "A2",
+      "legend_text": "Correct response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "divaded_fractional_units",
+      "proposed_prolog_concept": "add_fractions_by_co_measurement",
+      "rationale": "The dominant coded doing is fraction addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q5.md",
+        "line": 74
+      }
+    },
+    {
+      "grade": 4,
+      "question": 5,
+      "category_code": "A3",
+      "legend_text": "Correct response includes visual representations",
+      "proposed_automaton": "divaded_fractional_units",
+      "proposed_prolog_concept": "add_fractions_by_co_measurement",
+      "rationale": "The dominant coded doing is fraction addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q5.md",
+        "line": 520
+      }
+    },
+    {
+      "grade": 4,
+      "question": 5,
+      "category_code": "B1",
+      "legend_text": "Incorrect answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q5.md",
+        "line": 889
+      }
+    },
+    {
+      "grade": 4,
+      "question": 5,
+      "category_code": "B2",
+      "legend_text": "Incorrect response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "divaded_fractional_units",
+      "proposed_prolog_concept": "add_fractions_by_co_measurement",
+      "rationale": "The dominant coded doing is fraction addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q5.md",
+        "line": 946
+      }
+    },
+    {
+      "grade": 4,
+      "question": 5,
+      "category_code": "B3",
+      "legend_text": "Incorrect response includes visual representations",
+      "proposed_automaton": "divaded_fractional_units",
+      "proposed_prolog_concept": "add_fractions_by_co_measurement",
+      "rationale": "The dominant coded doing is fraction addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q5.md",
+        "line": 1071
+      }
+    },
+    {
+      "grade": 4,
+      "question": 5,
+      "category_code": "C1",
+      "legend_text": "Blank",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q5.md",
+        "line": 1169
+      }
+    },
+    {
+      "grade": 4,
+      "question": 5,
+      "category_code": "C2",
+      "legend_text": "“I’m not sure” or “I don’t know”",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q5.md",
+        "line": 1190
+      }
+    },
+    {
+      "grade": 4,
+      "question": 5,
+      "category_code": "C3",
+      "legend_text": "Unclear/incomplete strategy",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q5.md",
+        "line": 1208
+      }
+    },
+    {
+      "grade": 4,
+      "question": 6,
+      "category_code": "A1",
+      "legend_text": "Correct answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q6.md",
+        "line": 3
+      }
+    },
+    {
+      "grade": 4,
+      "question": 6,
+      "category_code": "A2",
+      "legend_text": "Correct response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "sar_sub_decomposition",
+      "proposed_prolog_concept": "run_decomposition",
+      "rationale": "The dominant coded doing is subtraction across decimal and fraction forms.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q6.md",
+        "line": 20
+      }
+    },
+    {
+      "grade": 4,
+      "question": 6,
+      "category_code": "A3",
+      "legend_text": "Correct response includes visual representations",
+      "proposed_automaton": "sar_sub_decomposition",
+      "proposed_prolog_concept": "run_decomposition",
+      "rationale": "The dominant coded doing is subtraction across decimal and fraction forms.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q6.md",
+        "line": 152
+      }
+    },
+    {
+      "grade": 4,
+      "question": 6,
+      "category_code": "B1",
+      "legend_text": "Incorrect answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q6.md",
+        "line": 184
+      }
+    },
+    {
+      "grade": 4,
+      "question": 6,
+      "category_code": "B2",
+      "legend_text": "Incorrect response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "sar_sub_decomposition",
+      "proposed_prolog_concept": "run_decomposition",
+      "rationale": "The dominant coded doing is subtraction across decimal and fraction forms.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q6.md",
+        "line": 274
+      }
+    },
+    {
+      "grade": 4,
+      "question": 6,
+      "category_code": "B3",
+      "legend_text": "Incorrect response includes visual representations",
+      "proposed_automaton": "sar_sub_decomposition",
+      "proposed_prolog_concept": "run_decomposition",
+      "rationale": "The dominant coded doing is subtraction across decimal and fraction forms.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q6.md",
+        "line": 696
+      }
+    },
+    {
+      "grade": 4,
+      "question": 6,
+      "category_code": "C1",
+      "legend_text": "Blank",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q6.md",
+        "line": 754
+      }
+    },
+    {
+      "grade": 4,
+      "question": 6,
+      "category_code": "C2",
+      "legend_text": "“I’m not sure” or “I don’t know”",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q6.md",
+        "line": 769
+      }
+    },
+    {
+      "grade": 4,
+      "question": 6,
+      "category_code": "C3",
+      "legend_text": "Unclear/incomplete strategy",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q6.md",
+        "line": 805
+      }
+    },
+    {
+      "grade": 4,
+      "question": 7,
+      "category_code": "A1",
+      "legend_text": "Correct answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q7.md",
+        "line": 1
+      }
+    },
+    {
+      "grade": 4,
+      "question": 7,
+      "category_code": "A2",
+      "legend_text": "Correct response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "area_model_part_of_part",
+      "proposed_prolog_concept": "run_fraction_action(area_model_part_of_part)",
+      "rationale": "The dominant coded doing is fraction multiplication or repeated addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q7.md",
+        "line": 45
+      }
+    },
+    {
+      "grade": 4,
+      "question": 7,
+      "category_code": "A3",
+      "legend_text": "Correct response includes visual representations",
+      "proposed_automaton": "area_model_part_of_part",
+      "proposed_prolog_concept": "run_fraction_action(area_model_part_of_part)",
+      "rationale": "The dominant coded doing is fraction multiplication or repeated addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q7.md",
+        "line": 640
+      }
+    },
+    {
+      "grade": 4,
+      "question": 7,
+      "category_code": "B1",
+      "legend_text": "Incorrect answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q7.md",
+        "line": 686
+      }
+    },
+    {
+      "grade": 4,
+      "question": 7,
+      "category_code": "B2",
+      "legend_text": "Incorrect response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "area_model_part_of_part",
+      "proposed_prolog_concept": "run_fraction_action(area_model_part_of_part)",
+      "rationale": "The dominant coded doing is fraction multiplication or repeated addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q7.md",
+        "line": 869
+      }
+    },
+    {
+      "grade": 4,
+      "question": 7,
+      "category_code": "B3",
+      "legend_text": "Incorrect response includes visual representations",
+      "proposed_automaton": "area_model_part_of_part",
+      "proposed_prolog_concept": "run_fraction_action(area_model_part_of_part)",
+      "rationale": "The dominant coded doing is fraction multiplication or repeated addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q7.md",
+        "line": 1643
+      }
+    },
+    {
+      "grade": 4,
+      "question": 7,
+      "category_code": "C1",
+      "legend_text": "blank",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q7.md",
+        "line": 1884
+      }
+    },
+    {
+      "grade": 4,
+      "question": 7,
+      "category_code": "C2",
+      "legend_text": "“I’m not sure” or “I don’t know”",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q7.md",
+        "line": 1900
+      }
+    },
+    {
+      "grade": 4,
+      "question": 7,
+      "category_code": "C3",
+      "legend_text": "Unclear/incomplete strategy",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q7.md",
+        "line": 1918
+      }
+    },
+    {
+      "grade": 4,
+      "question": 8,
+      "category_code": "A1",
+      "legend_text": "Correct answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q8.md",
+        "line": 3
+      }
+    },
+    {
+      "grade": 4,
+      "question": 8,
+      "category_code": "A2",
+      "legend_text": "Correct response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "smr_mult_dr",
+      "proposed_prolog_concept": "run_dr",
+      "rationale": "The dominant coded doing is decimal multiplication or repeated addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q8.md",
+        "line": 21
+      }
+    },
+    {
+      "grade": 4,
+      "question": 8,
+      "category_code": "A3",
+      "legend_text": "Correct response includes visual representations",
+      "proposed_automaton": "smr_mult_dr",
+      "proposed_prolog_concept": "run_dr",
+      "rationale": "The dominant coded doing is decimal multiplication or repeated addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q8.md",
+        "line": 152
+      }
+    },
+    {
+      "grade": 4,
+      "question": 8,
+      "category_code": "B1",
+      "legend_text": "Incorrect answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q8.md",
+        "line": 171
+      }
+    },
+    {
+      "grade": 4,
+      "question": 8,
+      "category_code": "B2",
+      "legend_text": "Incorrect response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "smr_mult_dr",
+      "proposed_prolog_concept": "run_dr",
+      "rationale": "The dominant coded doing is decimal multiplication or repeated addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q8.md",
+        "line": 213
+      }
+    },
+    {
+      "grade": 4,
+      "question": 8,
+      "category_code": "B3",
+      "legend_text": "Incorrect response includes visual representations",
+      "proposed_automaton": "smr_mult_dr",
+      "proposed_prolog_concept": "run_dr",
+      "rationale": "The dominant coded doing is decimal multiplication or repeated addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q8.md",
+        "line": 517
+      }
+    },
+    {
+      "grade": 4,
+      "question": 8,
+      "category_code": "C1",
+      "legend_text": "Blank",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q8.md",
+        "line": 597
+      }
+    },
+    {
+      "grade": 4,
+      "question": 8,
+      "category_code": "C2",
+      "legend_text": "“I’m not sure” or “I don’t know”",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q8.md",
+        "line": 612
+      }
+    },
+    {
+      "grade": 4,
+      "question": 8,
+      "category_code": "C3",
+      "legend_text": "Unclear/incomplete strategy",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade 4_Fine-Grained Coding_Second Pass/converted/G4Q8.md",
+        "line": 629
+      }
+    },
+    {
+      "grade": 5,
+      "question": 1,
+      "category_code": "A1",
+      "legend_text": "Correct answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q1.md",
+        "line": 1
+      }
+    },
+    {
+      "grade": 5,
+      "question": 1,
+      "category_code": "A2",
+      "legend_text": "Correct response includes symbolic work and, or written justification but no visual representations",
+      "proposed_automaton": "divaded_fractional_units",
+      "proposed_prolog_concept": "add_fractions_by_co_measurement",
+      "rationale": "The dominant coded doing is fraction addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q1.md",
+        "line": 21
+      }
+    },
+    {
+      "grade": 5,
+      "question": 1,
+      "category_code": "A3",
+      "legend_text": "Correct response includes visual representations",
+      "proposed_automaton": "divaded_fractional_units",
+      "proposed_prolog_concept": "add_fractions_by_co_measurement",
+      "rationale": "The dominant coded doing is fraction addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q1.md",
+        "line": 1075
+      }
+    },
+    {
+      "grade": 5,
+      "question": 1,
+      "category_code": "B1",
+      "legend_text": "Incorrect answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q1.md",
+        "line": 1269
+      }
+    },
+    {
+      "grade": 5,
+      "question": 1,
+      "category_code": "B2",
+      "legend_text": "Incorrect response includes symbolic work and,or written justification but no visual representations",
+      "proposed_automaton": "divaded_fractional_units",
+      "proposed_prolog_concept": "add_fractions_by_co_measurement",
+      "rationale": "The dominant coded doing is fraction addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q1.md",
+        "line": 1286
+      }
+    },
+    {
+      "grade": 5,
+      "question": 1,
+      "category_code": "B3",
+      "legend_text": "Incorrect response includes visual representations",
+      "proposed_automaton": "divaded_fractional_units",
+      "proposed_prolog_concept": "add_fractions_by_co_measurement",
+      "rationale": "The dominant coded doing is fraction addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q1.md",
+        "line": 1812
+      }
+    },
+    {
+      "grade": 5,
+      "question": 1,
+      "category_code": "C1",
+      "legend_text": "Blank",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q1.md",
+        "line": 1949
+      }
+    },
+    {
+      "grade": 5,
+      "question": 1,
+      "category_code": "C2",
+      "legend_text": "“I’m not sure” or “I don’t know”",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q1.md",
+        "line": 1963
+      }
+    },
+    {
+      "grade": 5,
+      "question": 1,
+      "category_code": "C3",
+      "legend_text": "Unclear,incomplete strategy",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q1.md",
+        "line": 1977
+      }
+    },
+    {
+      "grade": 5,
+      "question": 2,
+      "category_code": "A1",
+      "legend_text": "Correct answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q2.md",
+        "line": 1
+      }
+    },
+    {
+      "grade": 5,
+      "question": 2,
+      "category_code": "A2",
+      "legend_text": "Correct response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "sar_sub_decomposition",
+      "proposed_prolog_concept": "run_decomposition",
+      "rationale": "The dominant coded doing is subtraction with estimation.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q2.md",
+        "line": 19
+      }
+    },
+    {
+      "grade": 5,
+      "question": 2,
+      "category_code": "B1",
+      "legend_text": "Incorrect answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q2.md",
+        "line": 406
+      }
+    },
+    {
+      "grade": 5,
+      "question": 2,
+      "category_code": "B2",
+      "legend_text": "Incorrect response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "sar_sub_decomposition",
+      "proposed_prolog_concept": "run_decomposition",
+      "rationale": "The dominant coded doing is subtraction with estimation.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q2.md",
+        "line": 426
+      }
+    },
+    {
+      "grade": 5,
+      "question": 2,
+      "category_code": "B3",
+      "legend_text": "Incorrect response includes visual representations",
+      "proposed_automaton": "sar_sub_decomposition",
+      "proposed_prolog_concept": "run_decomposition",
+      "rationale": "The dominant coded doing is subtraction with estimation.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q2.md",
+        "line": 671
+      }
+    },
+    {
+      "grade": 5,
+      "question": 2,
+      "category_code": "C2",
+      "legend_text": "“I’m not sure” or “I don’t know”",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q2.md",
+        "line": 685
+      }
+    },
+    {
+      "grade": 5,
+      "question": 2,
+      "category_code": "C3",
+      "legend_text": "Unclear/incomplete strategy",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q2.md",
+        "line": 702
+      }
+    },
+    {
+      "grade": 5,
+      "question": 3,
+      "category_code": "A1",
+      "legend_text": "Correct answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q3.md",
+        "line": 1
+      }
+    },
+    {
+      "grade": 5,
+      "question": 3,
+      "category_code": "A2",
+      "legend_text": "Correct response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "smr_div_ucr",
+      "proposed_prolog_concept": "run_ucr",
+      "rationale": "The dominant coded doing is measurement division of 36 by 8.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q3.md",
+        "line": 22
+      }
+    },
+    {
+      "grade": 5,
+      "question": 3,
+      "category_code": "A3",
+      "legend_text": "Correct response includes visual representations",
+      "proposed_automaton": "smr_div_ucr",
+      "proposed_prolog_concept": "run_ucr",
+      "rationale": "The dominant coded doing is measurement division of 36 by 8.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q3.md",
+        "line": 426
+      }
+    },
+    {
+      "grade": 5,
+      "question": 3,
+      "category_code": "B1",
+      "legend_text": "Incorrect answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q3.md",
+        "line": 443
+      }
+    },
+    {
+      "grade": 5,
+      "question": 3,
+      "category_code": "B2",
+      "legend_text": "Incorrect response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "smr_div_ucr",
+      "proposed_prolog_concept": "run_ucr",
+      "rationale": "The dominant coded doing is measurement division of 36 by 8.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q3.md",
+        "line": 583
+      }
+    },
+    {
+      "grade": 5,
+      "question": 3,
+      "category_code": "B3",
+      "legend_text": "Incorrect response includes visual representations",
+      "proposed_automaton": "smr_div_ucr",
+      "proposed_prolog_concept": "run_ucr",
+      "rationale": "The dominant coded doing is measurement division of 36 by 8.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q3.md",
+        "line": 1284
+      }
+    },
+    {
+      "grade": 5,
+      "question": 3,
+      "category_code": "C2",
+      "legend_text": "“I’m not sure” or “I don’t know”",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q3.md",
+        "line": 1335
+      }
+    },
+    {
+      "grade": 5,
+      "question": 3,
+      "category_code": "C3",
+      "legend_text": "Unclear/incomplete strategy",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q3.md",
+        "line": 1352
+      }
+    },
+    {
+      "grade": 5,
+      "question": 4,
+      "category_code": "A1",
+      "legend_text": "Correct answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q4.md",
+        "line": 1
+      }
+    },
+    {
+      "grade": 5,
+      "question": 4,
+      "category_code": "A2",
+      "legend_text": "Correct response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "smr_div_ucr",
+      "proposed_prolog_concept": "run_ucr",
+      "rationale": "The dominant coded doing is division of 8 by 10.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q4.md",
+        "line": 21
+      }
+    },
+    {
+      "grade": 5,
+      "question": 4,
+      "category_code": "A3",
+      "legend_text": "Correct response includes visual representations",
+      "proposed_automaton": "smr_div_ucr",
+      "proposed_prolog_concept": "run_ucr",
+      "rationale": "The dominant coded doing is division of 8 by 10.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q4.md",
+        "line": 362
+      }
+    },
+    {
+      "grade": 5,
+      "question": 4,
+      "category_code": "B1",
+      "legend_text": "Incorrect answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q4.md",
+        "line": 500
+      }
+    },
+    {
+      "grade": 5,
+      "question": 4,
+      "category_code": "B2",
+      "legend_text": "Incorrect response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "smr_div_ucr",
+      "proposed_prolog_concept": "run_ucr",
+      "rationale": "The dominant coded doing is division of 8 by 10.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q4.md",
+        "line": 637
+      }
+    },
+    {
+      "grade": 5,
+      "question": 4,
+      "category_code": "B3",
+      "legend_text": "Incorrect response includes visual representations",
+      "proposed_automaton": "smr_div_ucr",
+      "proposed_prolog_concept": "run_ucr",
+      "rationale": "The dominant coded doing is division of 8 by 10.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q4.md",
+        "line": 1144
+      }
+    },
+    {
+      "grade": 5,
+      "question": 4,
+      "category_code": "C2",
+      "legend_text": "“I’m not sure” or “I don’t know”",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q4.md",
+        "line": 1290
+      }
+    },
+    {
+      "grade": 5,
+      "question": 4,
+      "category_code": "C3",
+      "legend_text": "Unclear/incomplete strategy",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q4.md",
+        "line": 1307
+      }
+    },
+    {
+      "grade": 5,
+      "question": 5,
+      "category_code": "A1",
+      "legend_text": "Correct answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q5.md",
+        "line": 3
+      }
+    },
+    {
+      "grade": 5,
+      "question": 5,
+      "category_code": "A2",
+      "legend_text": "Correct response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "divaded_fractional_units",
+      "proposed_prolog_concept": "subtract_fractions_by_co_measurement",
+      "rationale": "The dominant coded doing is fraction subtraction via equivalent fractions.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q5.md",
+        "line": 15
+      }
+    },
+    {
+      "grade": 5,
+      "question": 5,
+      "category_code": "A3",
+      "legend_text": "Correct response includes visual representations",
+      "proposed_automaton": "divaded_fractional_units",
+      "proposed_prolog_concept": "subtract_fractions_by_co_measurement",
+      "rationale": "The dominant coded doing is fraction subtraction via equivalent fractions.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q5.md",
+        "line": 152
+      }
+    },
+    {
+      "grade": 5,
+      "question": 5,
+      "category_code": "B1",
+      "legend_text": "Incorrect answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q5.md",
+        "line": 170
+      }
+    },
+    {
+      "grade": 5,
+      "question": 5,
+      "category_code": "B2",
+      "legend_text": "Incorrect response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "divaded_fractional_units",
+      "proposed_prolog_concept": "subtract_fractions_by_co_measurement",
+      "rationale": "The dominant coded doing is fraction subtraction via equivalent fractions.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q5.md",
+        "line": 218
+      }
+    },
+    {
+      "grade": 5,
+      "question": 5,
+      "category_code": "B3",
+      "legend_text": "Incorrect response includes visual representations",
+      "proposed_automaton": "divaded_fractional_units",
+      "proposed_prolog_concept": "subtract_fractions_by_co_measurement",
+      "rationale": "The dominant coded doing is fraction subtraction via equivalent fractions.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q5.md",
+        "line": 1262
+      }
+    },
+    {
+      "grade": 5,
+      "question": 5,
+      "category_code": "C1",
+      "legend_text": "Blank",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q5.md",
+        "line": 1315
+      }
+    },
+    {
+      "grade": 5,
+      "question": 5,
+      "category_code": "C2",
+      "legend_text": "“I’m not sure” or “I don’t know”",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q5.md",
+        "line": 1334
+      }
+    },
+    {
+      "grade": 5,
+      "question": 5,
+      "category_code": "C3",
+      "legend_text": "Unclear/incomplete strategy",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q5.md",
+        "line": 1354
+      }
+    },
+    {
+      "grade": 5,
+      "question": 6,
+      "category_code": "A1",
+      "legend_text": "Correct answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q6.md",
+        "line": 3
+      }
+    },
+    {
+      "grade": 5,
+      "question": 6,
+      "category_code": "A2",
+      "legend_text": "Correct response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "sar_sub_decomposition",
+      "proposed_prolog_concept": "run_decomposition",
+      "rationale": "The dominant coded doing is decimal subtraction.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q6.md",
+        "line": 19
+      }
+    },
+    {
+      "grade": 5,
+      "question": 6,
+      "category_code": "A3",
+      "legend_text": "Correct response includes visual representations",
+      "proposed_automaton": "sar_sub_decomposition",
+      "proposed_prolog_concept": "run_decomposition",
+      "rationale": "The dominant coded doing is decimal subtraction.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q6.md",
+        "line": 163
+      }
+    },
+    {
+      "grade": 5,
+      "question": 6,
+      "category_code": "B1",
+      "legend_text": "Incorrect answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q6.md",
+        "line": 175
+      }
+    },
+    {
+      "grade": 5,
+      "question": 6,
+      "category_code": "B2",
+      "legend_text": "Incorrect response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "sar_sub_decomposition",
+      "proposed_prolog_concept": "run_decomposition",
+      "rationale": "The dominant coded doing is decimal subtraction.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q6.md",
+        "line": 223
+      }
+    },
+    {
+      "grade": 5,
+      "question": 6,
+      "category_code": "B3",
+      "legend_text": "Incorrect response includes visual representations",
+      "proposed_automaton": "sar_sub_decomposition",
+      "proposed_prolog_concept": "run_decomposition",
+      "rationale": "The dominant coded doing is decimal subtraction.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q6.md",
+        "line": 743
+      }
+    },
+    {
+      "grade": 5,
+      "question": 6,
+      "category_code": "C1",
+      "legend_text": "Blank",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q6.md",
+        "line": 762
+      }
+    },
+    {
+      "grade": 5,
+      "question": 6,
+      "category_code": "C2",
+      "legend_text": "“I’m not sure” or “I don’t know”",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q6.md",
+        "line": 781
+      }
+    },
+    {
+      "grade": 5,
+      "question": 6,
+      "category_code": "C3",
+      "legend_text": "Unclear/incomplete strategy",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q6.md",
+        "line": 799
+      }
+    },
+    {
+      "grade": 5,
+      "question": 7,
+      "category_code": "A1",
+      "legend_text": "Correct answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q7.md",
+        "line": 3
+      }
+    },
+    {
+      "grade": 5,
+      "question": 7,
+      "category_code": "A2",
+      "legend_text": "Correct response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "area_model_part_of_part",
+      "proposed_prolog_concept": "run_fraction_action(area_model_part_of_part)",
+      "rationale": "The requested operation is fraction multiplication.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q7.md",
+        "line": 15
+      }
+    },
+    {
+      "grade": 5,
+      "question": 7,
+      "category_code": "A3",
+      "legend_text": "Correct response includes visual representations",
+      "proposed_automaton": "area_model_part_of_part",
+      "proposed_prolog_concept": "run_fraction_action(area_model_part_of_part)",
+      "rationale": "The requested operation is fraction multiplication.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q7.md",
+        "line": 126
+      }
+    },
+    {
+      "grade": 5,
+      "question": 7,
+      "category_code": "B1",
+      "legend_text": "Incorrect answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q7.md",
+        "line": 164
+      }
+    },
+    {
+      "grade": 5,
+      "question": 7,
+      "category_code": "B2",
+      "legend_text": "Incorrect response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "area_model_part_of_part",
+      "proposed_prolog_concept": "run_fraction_action(area_model_part_of_part)",
+      "rationale": "The requested operation is fraction multiplication.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q7.md",
+        "line": 237
+      }
+    },
+    {
+      "grade": 5,
+      "question": 7,
+      "category_code": "B3",
+      "legend_text": "Incorrect response includes visual representations",
+      "proposed_automaton": "area_model_part_of_part",
+      "proposed_prolog_concept": "run_fraction_action(area_model_part_of_part)",
+      "rationale": "The requested operation is fraction multiplication.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q7.md",
+        "line": 1408
+      }
+    },
+    {
+      "grade": 5,
+      "question": 7,
+      "category_code": "C1",
+      "legend_text": "Blank",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q7.md",
+        "line": 1609
+      }
+    },
+    {
+      "grade": 5,
+      "question": 7,
+      "category_code": "C2",
+      "legend_text": "“I’m not sure” or “I don’t know”",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q7.md",
+        "line": 1630
+      }
+    },
+    {
+      "grade": 5,
+      "question": 7,
+      "category_code": "C3",
+      "legend_text": "Unclear/incomplete strategy",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q7.md",
+        "line": 1650
+      }
+    },
+    {
+      "grade": 5,
+      "question": 8,
+      "category_code": "A1",
+      "legend_text": "Correct answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q8.md",
+        "line": 3
+      }
+    },
+    {
+      "grade": 5,
+      "question": 8,
+      "category_code": "A2",
+      "legend_text": "Correct response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "smr_div_ucr",
+      "proposed_prolog_concept": "run_ucr",
+      "rationale": "The dominant coded doing is measurement division, often via repeated addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q8.md",
+        "line": 20
+      }
+    },
+    {
+      "grade": 5,
+      "question": 8,
+      "category_code": "A3",
+      "legend_text": "Correct response includes visual representations",
+      "proposed_automaton": "smr_div_ucr",
+      "proposed_prolog_concept": "run_ucr",
+      "rationale": "The dominant coded doing is measurement division, often via repeated addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q8.md",
+        "line": 429
+      }
+    },
+    {
+      "grade": 5,
+      "question": 8,
+      "category_code": "B1",
+      "legend_text": "Incorrect answer only, does not include any work or justification",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q8.md",
+        "line": 466
+      }
+    },
+    {
+      "grade": 5,
+      "question": 8,
+      "category_code": "B2",
+      "legend_text": "Incorrect response includes symbolic work and/or written justification but no visual representations",
+      "proposed_automaton": "smr_div_ucr",
+      "proposed_prolog_concept": "run_ucr",
+      "rationale": "The dominant coded doing is measurement division, often via repeated addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q8.md",
+        "line": 582
+      }
+    },
+    {
+      "grade": 5,
+      "question": 8,
+      "category_code": "B3",
+      "legend_text": "Incorrect response includes visual representations",
+      "proposed_automaton": "smr_div_ucr",
+      "proposed_prolog_concept": "run_ucr",
+      "rationale": "The dominant coded doing is measurement division, often via repeated addition.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q8.md",
+        "line": 1411
+      }
+    },
+    {
+      "grade": 5,
+      "question": 8,
+      "category_code": "C1",
+      "legend_text": "Blank",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q8.md",
+        "line": 1429
+      }
+    },
+    {
+      "grade": 5,
+      "question": 8,
+      "category_code": "C2",
+      "legend_text": "“I’m not sure” or “I don’t know”",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q8.md",
+        "line": 1451
+      }
+    },
+    {
+      "grade": 5,
+      "question": 8,
+      "category_code": "C3",
+      "legend_text": "Unclear/incomplete strategy",
+      "proposed_automaton": "no_defensible_binding",
+      "proposed_prolog_concept": null,
+      "rationale": "This response-form category does not expose an observable strategy to bind.",
+      "verification_status": "draft_unverified",
+      "source": {
+        "file": "Grade5 _Fine-Grained Coding_Second Pass/converted/G5Q8.md",
+        "line": 1468
+      }
+    }
+  ]
+}

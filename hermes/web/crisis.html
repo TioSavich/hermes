@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" data-page-id="crisis" data-hermes-base="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crisis — When Counting Breaks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hermes-tokens-dark.css">
+  <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="crisis"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--bg); color: var(--text); font-family: 'IBM Plex Serif', Georgia, serif; font-size: 16px; line-height: 1.7; }
+    body { max-width: 680px; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
+    .narrative { margin-top: 1.5rem; }
+    .narrative p { margin-bottom: 1.2rem; }
+    .interactive-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center;
+    }
+    .tension-bar-container {
+      width: 100%; height: 40px; background: var(--surface-raised);
+      border-radius: 4px; overflow: hidden; margin: 1rem 0;
+      border: 1px solid var(--border); position: relative;
+    }
+    .tension-bar {
+      height: 100%; width: 0%; transition: width 0.3s, background-color 0.3s;
+      background: var(--release); border-radius: 3px;
+    }
+    .tension-label {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+      color: var(--text); pointer-events: none; z-index: 1;
+    }
+    .snap-flash {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--snap); opacity: 0; pointer-events: none;
+      transition: opacity 0.1s; z-index: 9999;
+    }
+    .snap-flash.active { opacity: 0.3; }
+    .post-snap { display: none; }
+    .post-snap.visible { display: block; }
+    .try-it {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+      color: var(--snap); cursor: pointer; background: none;
+      border: 1px solid var(--snap); padding: 0.4rem 1rem;
+      border-radius: 3px; margin: 0.25rem;
+    }
+    .try-it:hover { background: var(--snap); color: var(--bg); }
+    .try-it:disabled { opacity: 0.3; cursor: not-allowed; }
+    .interactive-label {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem;
+      color: var(--muted); margin-top: 0.5rem;
+    }
+    .closing-question {
+      margin-top: 2rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-style: italic; color: var(--muted);
+    }
+    .margin-note {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+      color: var(--muted); border-left: 2px solid var(--border);
+      padding-left: 0.75rem; margin: 1rem 0;
+    }
+    code { font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; color: var(--snap); }
+    .tally-area {
+      min-height: 48px; margin: 0.5rem 0; padding: 0.5rem;
+      background: var(--surface-raised); border-radius: 3px;
+      font-family: 'IBM Plex Mono', monospace; font-size: 1.1rem;
+      line-height: 1.4; word-break: break-all; text-align: left;
+      color: var(--release); transition: color 0.3s;
+    }
+    .crisis-type {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+      color: var(--tension); background: var(--surface-raised);
+      padding: 0.5rem 1rem; border-radius: 3px; margin: 0.5rem 0;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body data-hshell-doc="1">
+<div class="snap-flash" id="flash"></div>
+
+<div class="narrative">
+
+  <!-- === FRESHMAN === -->
+  <div data-discourse="freshman">
+    <p class="story-recap"><em>Previously: You counted 7+5 in 12 steps. Then 38+55 in 93 steps. The cost kept growing.</em></p>
+    <p>You've been counting by ones. It works, but 38 + 55 took 93 steps.
+       Your patience has a limit. So does the system's.</p>
+
+    <p>Try it yourself. Click once for each tally mark to solve 38 + 55 by
+       counting. Watch the tension build.</p>
+
+    <div class="interactive-box">
+      <p style="margin-bottom:0.5rem;" class="js-problem-label">Solve 38 + 55 by counting. One click = one tally mark.</p>
+      <div class="tally-area js-tally"></div>
+      <div class="tension-bar-container">
+        <div class="tension-bar js-bar"></div>
+        <span class="tension-label js-bar-label">0 / 93</span>
+      </div>
+      <button class="try-it js-count-btn" onclick="addTally()">Count one more: |</button>
+      <button class="try-it js-giveup-btn" onclick="giveUp()" style="display:none; border-color:var(--tension); color:var(--tension);">I give up — there must be a better way</button>
+      <p class="interactive-label js-hint">Click once for every tally mark. All 93 of them.</p>
+    </div>
+
+    <div class="post-snap">
+      <p>That was a <strong>crisis</strong>. Not a failure — the counting strategy
+         didn't give a wrong answer. It just couldn't keep up. The cost exceeded
+         what the system could afford.</p>
+
+      <p>This is the most important moment in the whole story. Everything that
+         comes next — every shortcut, every strategy, every clever trick a child
+         discovers — starts here. At the snap.</p>
+
+      <p>A crisis doesn't tell you what to do next. It tells you that what
+         you're doing now isn't enough. The specific way it's not enough
+         determines what kind of help you need.</p>
+      <button class="try-it" onclick="resetCrisis(10)" style="margin-top: 1rem;">Try again: 7 + 3 (only 10 steps)</button>
+    </div>
+  </div>
+
+  <!-- === MATH ED === -->
+  <div data-discourse="mathEd">
+    <p>Steffe (1992) describes this moment as a <em>perturbation</em> — the
+       child's current scheme is inadequate for the task. The perturbation is
+       not a bug; it is the mechanism of development. Without it, there is
+       no pressure to reorganize.</p>
+
+    <div class="interactive-box">
+      <p style="margin-bottom:0.5rem;" class="js-problem-label">Solve 38 + 55 by Direct Modeling: one click per tally mark.</p>
+      <div class="tally-area js-tally"></div>
+      <div class="tension-bar-container">
+        <div class="tension-bar js-bar"></div>
+        <span class="tension-label js-bar-label">0 / 93</span>
+      </div>
+      <button class="try-it js-count-btn" onclick="addTally()">Count one more: |</button>
+      <button class="try-it js-giveup-btn" onclick="giveUp()" style="display:none; border-color:var(--tension); color:var(--tension);">I give up — there must be a better way</button>
+      <p class="interactive-label js-hint">In CGI terms: Direct Modeling is O(A+B). Feel the cost.</p>
+    </div>
+
+    <div class="margin-note">
+      Steffe, L. P. (1992). Schemes of action and operation involving composite units.
+      <em>Learning and Individual Differences, 4</em>(3), 259-309. The perturbation
+      creates what Steffe calls an "experiential state" that motivates accommodation.
+    </div>
+
+    <div class="margin-note">
+      von Glasersfeld, E. (1995). <em>Radical Constructivism: A Way of Knowing
+      and Learning.</em> Falmer Press. Scheme theory: a scheme has three parts
+      (recognition template, activity, expected result). When the result of
+      goal-directed activity is unexpected, resolving the perturbation is the
+      impetus for establishing a new scheme. Piaget (1985) defined perturbations
+      as "anything creating obstacle to assimilation or to achieving a goal."
+    </div>
+
+    <div class="margin-note">
+      The necessity of disequilibrium is debated. Harel &amp; Koichu (2010,
+      <em>JMB</em>) define learning as a "continuum of disequilibrium-equilibrium
+      phases." Simon (2013, <em>JMB</em>) challenges this directly: "disequilibrium
+      is neither necessary nor sufficient to explain mathematics conceptual
+      learning," citing students who construct new concepts through carefully
+      sequenced tasks without obvious obstacles. The UMEDCTA model takes the
+      Steffe/Harel position &mdash; crisis drives reorganization &mdash; but
+      Simon's counterexamples mark where that assumption might be too strong.
+    </div>
+
+    <div class="post-snap">
+      <p>In CGI's developmental sequence, this crisis marks the transition
+         from Direct Modeling to Counting strategies. The child doesn't abandon
+         counting — they refine it. Counting-on keeps the first addend intact
+         and counts forward from it, reducing cost from O(A+B) to O(B).</p>
+
+      <p>The Prolog formalization classifies crises into four types:</p>
+      <p><span class="crisis-type">efficiency_crisis</span> — strategy works but costs too much</p>
+      <p><span class="crisis-type">unknown_operation</span> — operation type never encountered</p>
+      <p><span class="crisis-type">normative_crisis</span> — mathematical norms violated</p>
+      <p><span class="crisis-type">incoherence_crisis</span> — contradictory commitments, moves made without yet earning the right to them (Brandom, <em>Between Saying and Doing</em>)</p>
+
+      <p>What we just saw was an efficiency crisis. The strategy is correct but
+         too expensive. The specific type of crisis determines what kind of new
+         strategy can resolve it.</p>
+      <button class="try-it" onclick="resetCrisis(10)" style="margin-top: 1rem;">Try again: 7 + 3 (only 10 steps)</button>
+    </div>
+  </div>
+
+  <!-- === PHILOSOPHER === -->
+  <div data-discourse="philosophy">
+    <p>The perturbation is thrown by the meta-interpreter when inference cost
+       exceeds <code>max_inferences</code>. But the system also monitors
+       continuous tension via <code>tension_dynamics.pl</code>: when stability
+       drops below zero, a <code>perturbation(tension_instability)</code> is
+       thrown independently of the discrete counter. Two paths to crisis — one
+       discrete, one continuous — modeling the same energy surface.</p>
+
+    <div class="interactive-box">
+      <p style="margin-bottom:0.5rem;" class="js-problem-label">solve(add(38,55), counting_all) — click once per inference step.</p>
+      <div class="tally-area js-tally"></div>
+      <div class="tension-bar-container">
+        <div class="tension-bar js-bar"></div>
+        <span class="tension-label js-bar-label">stability: 1.00</span>
+      </div>
+      <button class="try-it js-count-btn" onclick="addTally()">succ/1 — next inference</button>
+      <button class="try-it js-giveup-btn" onclick="giveUp()" style="display:none; border-color:var(--tension); color:var(--tension);">throw(perturbation(efficiency_crisis))</button>
+      <p class="interactive-label js-hint">Tension tracked by tension_dynamics.pl. 93 inferences to snap.</p>
+    </div>
+
+    <div class="margin-note">
+      Negarestani, R. (2018). <em>Intelligence and Spirit.</em> Urbanomic/Sequence
+      Press. "Decoherence is not destruction but the loss of coherence between the
+      model and its domain." The intelligence must learn to take pleasure in the
+      "continual disintegration and reintegration of its world." Crisis is not
+      system failure but the constitutive engine of cognitive progress. Rescher
+      (via Negarestani): "cognitive progress goes smoothly until an over-simple
+      solution becomes destabilized by enlarged experience."
+    </div>
+
+    <div class="margin-note">
+      Brandom, R. (2019). <em>A Spirit of Trust.</em> Harvard University Press.
+      Brandom calls this the <em>experience of error</em> (Hegel's <em>Erfahrung</em>),
+      a three-phase process: (1) <strong>Register</strong> &mdash; "the detection of
+      an anomaly," acknowledging materially incompatible commitments; (2)
+      <strong>Repair</strong> &mdash; "rectification by revising or rejecting some
+      of the offending commitments"; (3) <strong>Recollect</strong> &mdash;
+      "retrospective rational reconstruction that exhibits the course of experience
+      as expressively progressive." The code implements Register and Repair. Recollection
+      is absent &mdash; and that absence is where the formalization honestly stops.
+    </div>
+
+    <div class="post-snap">
+      <p>The <code>execution_handler.pl</code> catches the perturbation and
+         classifies it via <code>classify_crisis/3</code>, consulting the
+         incompatibility semantics module. The crisis type determines the recovery
+         strategy:</p>
+
+      <p><span class="crisis-type">efficiency_crisis</span> →
+         find a strategy with lower <code>strategy_runtime_cost/4</code></p>
+      <p><span class="crisis-type">unknown_operation</span> →
+         consult oracle for new operation type</p>
+      <p><span class="crisis-type">normative_crisis</span> →
+         validate against <code>proves/4</code> sequent calculus</p>
+      <p><span class="crisis-type">incoherence_crisis</span> →
+         retract contradictory commitments</p>
+
+      <p>This models the structure of what Hegel calls determinate negation:
+         the <em>specific</em> failure determines the <em>specific</em> response.
+         An efficiency crisis and an incoherence crisis don't just both "fail" —
+         they fail differently, and the difference matters. The formalization
+         captures the structural pattern, not the full philosophical concept.</p>
+      <button class="try-it" onclick="resetCrisis(10)" style="margin-top: 1rem;">Try again: 7 + 3 (only 10 steps)</button>
+    </div>
+  </div>
+
+  <p class="closing-question">
+    The crisis tells you <em>that</em> you need something new, and <em>what kind</em>
+    of new thing you need. But where does the new strategy come from?
+  </p>
+</div>
+
+<script>
+let TOTAL = 93;
+const GIVEUP_THRESHOLD_RATIO = 30 / 93;
+let count = 0;
+let snapped = false;
+
+function el(cls) {
+  // Find element by js- class within the currently visible discourse block
+  const level = typeof Discourse !== 'undefined' ? Discourse.current() : 'freshman';
+  const block = document.querySelector('[data-discourse="' + level + '"]');
+  return block ? block.querySelector('.js-' + cls) : null;
+}
+
+function addTally() {
+  if (snapped) return;
+  count++;
+
+  // Update ALL discourse blocks' tally areas so switching levels shows progress
+  document.querySelectorAll('.js-tally').forEach(area => {
+    area.textContent += '|';
+    if (count % 5 === 0) area.textContent += ' ';
+  });
+
+  const t = count / TOTAL;
+  const r = Math.round(91 + t * 121);
+  const g = Math.round(158 - t * 59);
+  const b = Math.round(174 - t * 100);
+  const rgb = `rgb(${r},${g},${b})`;
+
+  // Update ALL bars and labels across discourse levels
+  document.querySelectorAll('.js-bar').forEach(bar => {
+    bar.style.width = (t * 100) + '%';
+    bar.style.background = rgb;
+  });
+  document.querySelectorAll('.js-tally').forEach(area => {
+    area.style.color = rgb;
+  });
+
+  // Labels differ by discourse level
+  const level = typeof Discourse !== 'undefined' ? Discourse.current() : 'freshman';
+  document.querySelectorAll('.js-bar-label').forEach(label => {
+    const block = label.closest('[data-discourse]');
+    if (block && block.dataset.discourse === 'philosophy') {
+      label.textContent = 'stability: ' + (1 - t).toFixed(2);
+    } else {
+      label.textContent = count + ' / ' + TOTAL;
+    }
+  });
+
+  // Show give-up buttons after threshold
+  if (count >= Math.floor(GIVEUP_THRESHOLD_RATIO * TOTAL)) {
+    document.querySelectorAll('.js-giveup-btn').forEach(btn => {
+      btn.style.display = '';
+    });
+  }
+
+  // Hint messages that escalate (only update visible one)
+  const hint = el('hint');
+  if (hint) {
+    if (count < 15) {
+      hint.textContent = count + ' down, ' + (TOTAL - count) + ' to go.';
+    } else if (count < 30) {
+      hint.textContent = 'Still counting... ' + (TOTAL - count) + ' left.';
+    } else if (count < 50) {
+      hint.textContent = 'Getting tedious? That\'s the point.';
+    } else if (count < 70) {
+      hint.textContent = 'A six-year-old does this with their fingers.';
+    } else if (count < 85) {
+      hint.textContent = 'Almost there. Or you could stop.';
+    } else {
+      hint.textContent = 'So close. ' + (TOTAL - count) + ' more.';
+    }
+  }
+
+  if (count >= TOTAL) {
+    snap(false);
+  }
+}
+
+function giveUp() {
+  if (snapped) return;
+  snap(true);
+}
+
+function snap(gaveUp) {
+  snapped = true;
+  const flash = document.getElementById('flash');
+
+  // Flash
+  flash.classList.add('active');
+  setTimeout(() => flash.classList.remove('active'), 300);
+
+  // Update ALL bars and labels across discourse levels
+  document.querySelectorAll('.js-bar').forEach(bar => {
+    bar.style.width = '100%';
+    bar.style.background = 'var(--snap)';
+  });
+  document.querySelectorAll('.js-bar-label').forEach(label => {
+    label.textContent = 'SNAP';
+  });
+  document.querySelectorAll('.js-count-btn').forEach(btn => { btn.disabled = true; });
+  document.querySelectorAll('.js-giveup-btn').forEach(btn => { btn.disabled = true; });
+
+  // Update visible hint
+  const hint = el('hint');
+  if (hint) {
+    hint.textContent = gaveUp
+      ? 'Crisis. You stopped — and wanted a better way. That\'s the developmental moment.'
+      : 'Crisis. You felt it. ' + TOTAL + ' clicks for one addition problem.';
+  }
+
+  // Reveal post-snap content
+  setTimeout(() => {
+    document.querySelectorAll('.post-snap').forEach(el => {
+      el.classList.add('visible');
+    });
+  }, 800);
+}
+
+function resetCrisis(newTarget) {
+  // Reset state
+  count = 0;
+  snapped = false;
+  TOTAL = newTarget;
+
+  // Clear tally areas
+  document.querySelectorAll('.js-tally').forEach(area => {
+    area.textContent = '';
+    area.style.color = 'var(--release)';
+  });
+
+  // Reset bars
+  document.querySelectorAll('.js-bar').forEach(bar => {
+    bar.style.width = '0%';
+    bar.style.background = 'var(--release)';
+  });
+
+  // Reset labels
+  document.querySelectorAll('.js-bar-label').forEach(label => {
+    const block = label.closest('[data-discourse]');
+    if (block && block.dataset.discourse === 'philosophy') {
+      label.textContent = 'stability: 1.00';
+    } else {
+      label.textContent = '0 / ' + newTarget;
+    }
+  });
+
+  // Re-enable buttons
+  document.querySelectorAll('.js-count-btn').forEach(btn => { btn.disabled = false; });
+  document.querySelectorAll('.js-giveup-btn').forEach(btn => {
+    btn.disabled = false;
+    btn.style.display = 'none';
+  });
+
+  // Update problem labels
+  document.querySelectorAll('.js-problem-label').forEach(label => {
+    const block = label.closest('[data-discourse]');
+    if (block && block.dataset.discourse === 'philosophy') {
+      label.textContent = 'solve(add(7,3), counting_all) — click once per inference step.';
+    } else if (block && block.dataset.discourse === 'mathEd') {
+      label.textContent = 'Solve 7 + 3 by Direct Modeling: one click per tally mark.';
+    } else {
+      label.textContent = 'Solve 7 + 3 by counting. One click = one tally mark.';
+    }
+  });
+
+  // Reset hint
+  document.querySelectorAll('.js-hint').forEach(hint => {
+    hint.textContent = 'This time it\'s only ' + newTarget + ' steps. Feel the difference.';
+  });
+
+  // Hide post-snap content
+  document.querySelectorAll('.post-snap').forEach(el => {
+    el.classList.remove('visible');
+  });
+}
+</script>
+<script src="shared.js"></script>
+</body>
+</html>

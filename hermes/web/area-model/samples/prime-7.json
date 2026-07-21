@@ -1,0 +1,34 @@
+{
+  "canvas": {"height":520, "width":700},
+  "frames": [
+    {
+      "caption":"7 is prime: only a 1 x 7 strip (and 7 x 1) tiles it as a rectangle.",
+      "scene": {
+	"format":"area-model",
+	"gridlines": [],
+	"rects": [
+	  {
+	    "cellH":48,
+	    "cellW":64,
+	    "color":"#7fb2e6",
+	    "cols":7,
+	    "h":48,
+	    "kind":"grid",
+	    "label":"",
+	    "rows":1,
+	    "w":448,
+	    "x":40,
+	    "y":40
+	  }
+	],
+	"version":1
+      },
+      "sceneChanged":true,
+      "step":1,
+      "verb":"prime_as_strip(7)"
+    }
+  ],
+  "kind":"prime_as_strip",
+  "request": {"n":7},
+  "result":"7"
+}

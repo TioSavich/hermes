@@ -1,0 +1,153 @@
+{
+ "canvas": {
+  "height": 320,
+  "width": 720
+ },
+ "frames": [
+  {
+   "caption": "The whole is 75 (28 + 47). Measure it as a length.",
+   "scene": {
+    "bars": [
+     {
+      "h": 40,
+      "label": "known whole",
+      "role": "whole",
+      "w": 545,
+      "x": 60,
+      "y": 60
+     }
+    ],
+    "format": "number-line",
+    "mode": "length",
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 1,
+   "verb": "establish_known_whole"
+  },
+  {
+   "caption": "Round 28 up to 30, then add 47: the rounded total 77 runs past the whole.",
+   "scene": {
+    "bars": [
+     {
+      "h": 40,
+      "label": "known whole",
+      "role": "whole",
+      "w": 545,
+      "x": 60,
+      "y": 60
+     },
+     {
+      "h": 40,
+      "label": "known part",
+      "role": "highlight",
+      "w": 341,
+      "x": 60,
+      "y": 120
+     },
+     {
+      "h": 40,
+      "label": "rounded total",
+      "role": "deformation",
+      "w": 560,
+      "x": 60,
+      "y": 120
+     },
+     {
+      "h": 40,
+      "label": "rounded overshoot",
+      "role": "deformation",
+      "w": 14,
+      "x": 605,
+      "y": 120
+     }
+    ],
+    "format": "number-line",
+    "mode": "length",
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 2,
+   "verb": "round_and_overshoot"
+  },
+  {
+   "caption": "Count back the adjustment of 2: the rounded total 77 lands on the whole 75.",
+   "scene": {
+    "bars": [
+     {
+      "h": 40,
+      "label": "known whole",
+      "role": "whole",
+      "w": 545,
+      "x": 60,
+      "y": 60
+     },
+     {
+      "h": 40,
+      "label": "rounded total",
+      "role": "deformation",
+      "w": 560,
+      "x": 60,
+      "y": 120
+     },
+     {
+      "h": 40,
+      "label": "adjustment",
+      "role": "iterated",
+      "w": 14,
+      "x": 605,
+      "y": 180
+     }
+    ],
+    "format": "number-line",
+    "mode": "length",
+    "version": 2
+   },
+   "sceneChanged": true,
+   "step": 3,
+   "verb": "adjust_back_to_whole"
+  }
+ ],
+ "grounded_result": 75,
+ "grounding": {
+  "metaphor_gloss": "Motion Along a Path \u2014 numbers as point-locations reached by moving",
+  "metaphor_label": "motion_along_path",
+  "practice": "p_round_then_adjust",
+  "primitive": "P1",
+  "role": "primary"
+ },
+ "kind": "round_then_adjust",
+ "note": "Rounding then adjusting keeps the total: the overshoot is counted back so the answer lands on the whole.",
+ "request": {
+  "a": 28,
+  "b": 47,
+  "op": "addition"
+ },
+ "result": "75",
+ "rounded_result": 77,
+ "teacher": {
+  "breaks_at": [
+   {
+    "inference": "product_of_two_negatives",
+    "reason": "In the source domain of motion, doing something a negative number of times makes no sense; the iterated-motion grounding of multiplication cannot be extended to negative multipliers."
+   }
+  ],
+  "embodied": "Move along a path, away from or back toward a starting point.",
+  "incompatibility_penumbra": "Rules out the round without adjusting deformation (rounding without compensation): the representation will not sustain it.",
+  "repair": "Switch to Multiplication by -1 is Rotation by 180 degrees.",
+  "standard": "addition strand: round_then_adjust",
+  "witness": {
+   "channels": {
+    "breaks_at": "present",
+    "embodied": "present",
+    "incompatibility_penumbra": "present",
+    "standard": "present"
+   },
+   "kind": "teacher_layer",
+   "metaphor_id": "arithmetic_is_motion_along_a_path",
+   "practice": "p_round_then_adjust",
+   "source": "teacher_layer_composition_over_existing_witnesses"
+  }
+ },
+ "tuple": "rounding_length(addition,28,47)"
+}

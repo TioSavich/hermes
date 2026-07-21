@@ -100,7 +100,7 @@ def prompts_check(tree: Path, report: Report) -> None:
 
 def muds_chain_check(tree: Path, report: Report) -> None:
     required = [
-        "more-zeeman/mua_data.json",
+        "hermes/web/mua_data.json",
         "scripts/research/export_mua_for_mud.py",
     ]
     missing = [rel for rel in required if not (tree / rel).is_file()]
@@ -173,6 +173,10 @@ def url_to_file(tree: Path, url_path: str) -> Path:
     if url_path.startswith("/docs/research_assets/"):
         return (tree / "data/research_assets"
                 / url_path.removeprefix("/docs/research_assets/"))
+    if url_path.startswith("/more-zeeman/"):
+        return tree / "hermes/web" / url_path.removeprefix("/more-zeeman/")
+    if url_path.startswith("/representation/"):
+        return tree / "hermes/representation" / url_path.removeprefix("/representation/")
     parts = url_path.lstrip("/").split("/", 1)
     if parts[0] in MOUNTS:
         return tree / url_path.lstrip("/")
@@ -184,6 +188,10 @@ def url_to_file(tree: Path, url_path: str) -> Path:
 def page_url_for(rel: str) -> str | None:
     if rel.startswith("hermes/app/web/"):
         return "/" + rel[len("hermes/app/web/"):]
+    if rel.startswith("hermes/web/"):
+        return "/more-zeeman/" + rel[len("hermes/web/"):]
+    if rel.startswith("hermes/representation/"):
+        return "/representation/" + rel[len("hermes/representation/"):]
     first = rel.split("/", 1)[0]
     if first in MOUNTS:
         return "/" + rel
@@ -192,8 +200,8 @@ def page_url_for(rel: str) -> str | None:
 
 def static_audit(tree: Path, report: Report) -> None:
     required = (
-        "more-zeeman/atlas.html",
-        "more-zeeman/witnesses.html",
+        "hermes/web/atlas.html",
+        "hermes/web/witnesses.html",
         "hermes/capability_registry.pl",
         "scripts/extract_capability_registry.py",
     )
@@ -204,30 +212,30 @@ def static_audit(tree: Path, report: Report) -> None:
     else:
         report.add("PASS", "capability registry files staged")
     page_assertions = {
-        "more-zeeman/atlas.html": (
+        "hermes/web/atlas.html": (
             "lazy_reachable", "Loaded on demand by", "Described on:",
         ),
-        "more-zeeman/witnesses.html": (
+        "hermes/web/witnesses.html": (
             "knowledge/strategies/render/rigid_motion_scene.pl", "knowledge/geometry/geometry_bridge.pl",
             "rigid_motion_render", "knowledge/crosswalk/merge_evidence.pl",
             "/api/witness/pml", "semantic_material_witness", "validate_reader_axioms",
             "formal/pml/mua_conjectures.pl", "knowledge/misconceptions/pml_wire.pl",
             "/api/witness/grounding", "image_schema", "target_expressive_power_witness",
         ),
-        "more-zeeman/bridge.html": (
+        "hermes/web/bridge.html": (
             "formal/learner/activity_contract.pl", "formal/learner/reorg_domains/fraction.pl",
             "knowledge/strategies/math_benchmark.pl",
         ),
-        "more-zeeman/coordination.html": (
+        "hermes/web/coordination.html": (
             "knowledge/strategies/math/unit_coordination_viz.pl",
         ),
-        "more-zeeman/index.html": (
-            "ZEEMAN_BIFURCATION_VERDICT agreement", "more-zeeman/prolog/zeeman_machine.pl",
+        "hermes/web/index.html": (
+            "ZEEMAN_BIFURCATION_VERDICT agreement", "hermes/web/prolog/zeeman_machine.pl",
         ),
-        "more-zeeman/monitoring_chart.html": (
+        "hermes/web/monitoring_chart.html": (
             "curriculum/im/im_glossary.pl", "curriculum/im_harness.pl",
         ),
-        "more-zeeman/visualizations.html": (
+        "hermes/web/visualizations.html": (
             "curriculum/im/generated/compiled_task_instances.pl",
         ),
         "hermes/app/web/breaks.html": (
@@ -369,8 +377,24 @@ def staged_route_table(tree: Path, python: str) -> set[tuple[str, str]]:
     return {tuple(row) for row in json.loads(proc.stdout)}
 
 
+# Page URLs use the server's mount names; the staged tree stores files at
+# their filesystem homes. Keep this table in step with server.py
+# STATIC_MOUNTS whenever a mount target moves.
+CAPABILITY_PAGE_MOUNTS = {
+    "docs/research_assets": "data/research_assets",
+    "more-zeeman": "hermes/web",
+    "representation": "hermes/representation",
+    "learner": "formal/learner",
+    "ASKTM_Data": "data/asktm",
+}
+
+
 def capability_page_file(tree: Path, page: str) -> Path:
-    return tree / page.lstrip("/")
+    rel = page.lstrip("/")
+    for mount, target in CAPABILITY_PAGE_MOUNTS.items():
+        if rel == mount or rel.startswith(mount + "/"):
+            return tree / target / rel[len(mount):].lstrip("/")
+    return tree / rel
 
 
 def live_probes(tree: Path, python: str, swipl: str | None,
@@ -515,7 +539,7 @@ def live_probes(tree: Path, python: str, swipl: str | None,
         # every shipped page answers
         for page in sorted((tree / "hermes/app/web").glob("*.html")):
             probe(f"GET /{page.name}", f"/{page.name}")
-        for page in sorted((tree / "more-zeeman").glob("*.html")):
+        for page in sorted((tree / "hermes/web").glob("*.html")):
             probe(f"GET /more-zeeman/{page.name}",
                   f"/more-zeeman/{page.name}")
 

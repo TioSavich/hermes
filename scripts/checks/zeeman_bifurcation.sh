@@ -14,4 +14,4 @@ if ! "$python_bin" -c 'import numpy' >/dev/null 2>&1; then
     fi
 fi
 
-"${runner[@]}" "$repo/more-zeeman/bifurcation_verify.py" --cross-check --repo "$repo"
+"${runner[@]}" "$repo/hermes/web/bifurcation_verify.py" --cross-check --repo "$repo"

@@ -1,7 +1,7 @@
 /** <module> docling_figures_interpreted
  *
  * GENERATED FILE -- do not hand-edit. Regenerate with:
- *   python3 representation/regenerate_docling_interpreted.py
+ *   python3 hermes/representation/regenerate_docling_interpreted.py
  *
  * Source join (iteration13 B1):
  *   data/research_assets/research/docling_classifications.json  (REALLMs per-figure)

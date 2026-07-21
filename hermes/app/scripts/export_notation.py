@@ -10,7 +10,7 @@ knowledge/strategies/render/parametric_notation_deformation.pl decide WHAT each 
 (which glyph reverses, which equals sign carries a chain tick, the literal glyph
 row) and emit drawer-compatible frame documents. This script is the projection
 step: it runs swipl through paths.pl to get the documents, then pipes each frame
-through the shared rendering adapter and more-zeeman/render/drawer.js (the
+through the shared rendering adapter and hermes/web/render/drawer.js (the
 'notation' format), writing per-frame SVGs and a small index.
 
 It renders exactly the three bounded demos of spec §8:
@@ -156,7 +156,7 @@ def write_index(out_dir: Path, rendered: list[dict]) -> Path:
         "<p>Glyph-level filmstrips from "
         "<code>knowledge/strategies/render/notation_scene.pl</code> and "
         "<code>knowledge/strategies/render/parametric_notation_deformation.pl</code> via "
-        "<code>more-zeeman/render/drawer.js</code> (the <code>notation</code> "
+        "<code>hermes/web/render/drawer.js</code> (the <code>notation</code> "
         "format). Notation denotes the symbol string a child wrote, not the "
         "quantity it was meant to mean. Each deformation is born only as a "
         "labeled misconception (one flagged glyph or one appended mark). The "

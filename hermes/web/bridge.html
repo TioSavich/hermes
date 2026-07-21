@@ -1,0 +1,2116 @@
+<!DOCTYPE html>
+<html lang="en" data-page-id="bridge" data-hermes-base="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>The Bridge — Crisis-Driven Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hermes-tokens-dark.css">
+  <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="bridge"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Serif', Georgia, serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    body {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 4rem;
+    }
+
+    /* --- Header --- */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .back-link {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .back-link:hover { color: var(--text); }
+
+    .status-area {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .server-status {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+    .server-status .live { color: var(--release); }
+    .server-status .dead { color: var(--tension); }
+
+    .score {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .score-num {
+      color: var(--snap);
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    /* --- Phase system --- */
+    .phase {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.8s ease, max-height 1s ease;
+      pointer-events: none;
+    }
+    .phase.revealed {
+      opacity: 1;
+      max-height: 4000px;
+      pointer-events: auto;
+    }
+    .phase-0 { opacity: 1; max-height: none; pointer-events: auto; }
+
+    /* --- Invitation --- */
+    .invitation {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      transition: opacity 0.5s;
+    }
+
+    .invitation h1 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--snap);
+      margin-bottom: 0.3rem;
+    }
+    .invitation h1::before { content: ''; opacity: 0.5; }
+    .invitation h1::after { content: ''; opacity: 0.5; }
+
+    .invitation .subtitle {
+      font-size: 0.92rem;
+      color: #b8b0a0;
+      max-width: 520px;
+      margin: 0 auto 0.75rem;
+      line-height: 1.6;
+    }
+
+    .invitation .cue {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--release);
+      animation: pulse-text 2s ease-in-out infinite;
+    }
+    .invitation .cue.still { animation: none; opacity: 0.5; }
+
+    @keyframes pulse-text {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    /* --- Narration --- */
+    .narration {
+      max-width: 640px;
+      margin: 0 auto 1.25rem;
+      padding: 0 0.5rem;
+    }
+    .narration p {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: #b8b0a0;
+      margin-bottom: 0.75rem;
+    }
+    .narration p:last-child { margin-bottom: 0; }
+    .narration strong { color: var(--text); font-weight: 600; }
+    .narration em { color: var(--muted); font-size: 0.88rem; }
+
+    .label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    /* --- Preset scenarios --- */
+    .presets {
+      max-width: 640px;
+      margin: 0 auto 1.25rem;
+      padding: 0 0.5rem;
+    }
+
+    .preset-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+
+    .preset-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.6rem 0.8rem;
+      cursor: pointer;
+      text-align: left;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .preset-btn:hover { border-color: var(--release); background: var(--surface-raised); }
+    .preset-btn.active { border-color: var(--snap); }
+    .preset-btn.boundary-btn {
+      grid-column: 1 / -1;
+      border-color: rgba(212,99,74,0.3);
+    }
+    .preset-btn.boundary-btn:hover { border-color: var(--tension); }
+
+    .preset-title {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text);
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    .preset-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.4;
+      display: block;
+    }
+
+    /* --- Narration card (appears with presets) --- */
+    .narration-card {
+      max-width: 640px;
+      margin: 0 auto 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--surface);
+      border-left: 3px solid var(--snap);
+      border-radius: 0 6px 6px 0;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.5s, max-height 0.5s;
+    }
+    .narration-card.visible {
+      opacity: 1;
+      max-height: 500px;
+    }
+    .narration-card p {
+      font-size: 0.85rem;
+      line-height: 1.55;
+      color: #b8b0a0;
+      margin-bottom: 0.4rem;
+    }
+    .narration-card p:last-child { margin-bottom: 0; }
+    .narration-card strong { color: var(--text); font-weight: 600; }
+
+    /* --- Controls --- */
+    .controls {
+      max-width: 640px;
+      margin: 0 auto 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+    }
+
+    .controls-row {
+      display: flex;
+      gap: 0.6rem;
+      align-items: end;
+      flex-wrap: wrap;
+    }
+
+    .field label {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.2rem;
+    }
+    .field select, .field input {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.35rem 0.45rem;
+      border-radius: 4px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .field select { width: 100px; }
+    .field input[type=number] { width: 52px; }
+
+    .spacer { flex: 1; }
+
+    button.run {
+      background: var(--tension);
+      color: #fff;
+      border: none;
+      padding: 0.4rem 1.1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: filter 0.15s;
+    }
+    button.run:hover { filter: brightness(1.15); }
+    button.run:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    button.secondary {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.35rem 0.6rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+    }
+    button.secondary:hover { border-color: var(--muted); color: var(--text); }
+
+    .speed-control {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .speed-control input[type=range] {
+      width: 60px; height: 3px;
+      border-radius: 2px;
+      background: var(--border);
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .speed-control input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--release);
+      cursor: pointer;
+    }
+
+    .replay-bar {
+      height: 3px;
+      background: var(--border);
+      border-radius: 2px;
+      margin-top: 0.5rem;
+      overflow: hidden;
+    }
+    .replay-fill {
+      height: 100%;
+      background: var(--release);
+      border-radius: 2px;
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+
+    /* --- Visualization grid --- */
+    .viz-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      position: relative;
+    }
+    .panel-full { grid-column: 1 / -1; }
+
+    /* --- Canvas --- */
+    .canvas-wrap {
+      position: relative;
+      width: 100%;
+    }
+    .canvas-wrap canvas {
+      display: block;
+      width: 100%;
+      border-radius: 6px;
+      background: var(--surface);
+    }
+
+    .snap-flash {
+      position: absolute;
+      inset: 0;
+      border-radius: 6px;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(232,168,76,0.2) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+    .snap-flash.active { opacity: 1; transition: none; }
+
+    /* --- Tension chart --- */
+    #tension-canvas {
+      display: block;
+      width: 100%;
+      height: 220px;
+      border-radius: 6px;
+    }
+
+    /* --- Event log --- */
+    .event-log {
+      max-height: 140px;
+      overflow-y: auto;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      line-height: 1.5;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+    .event-log::-webkit-scrollbar { width: 4px; }
+    .event-log::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    .event-entry {
+      padding: 0.2rem 0;
+      border-bottom: 1px solid rgba(58, 52, 40, 0.3);
+      display: flex;
+      gap: 0.5rem;
+    }
+    .event-entry .step { color: var(--muted); min-width: 2.5em; text-align: right; }
+    .event-entry .ctx { min-width: 5em; }
+    .event-entry .ctx.compressive { color: var(--tension); }
+    .event-entry .ctx.expansive { color: var(--release); }
+    .event-entry .ctx.neutral { color: var(--neutral); }
+    .event-entry .ctx.relaxation { color: var(--snap); }
+    .event-entry .vals { color: var(--text); }
+
+    /* --- Matrix --- */
+    #matrix-grid {
+      display: grid;
+      gap: 3px;
+      justify-content: center;
+    }
+    .matrix-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 500;
+      border-radius: 3px;
+      transition: transform 0.2s;
+    }
+    .matrix-cell.m-cell { background: var(--m-mode); color: #ede8f2; }
+    .matrix-cell.w-cell { background: var(--w-mode); color: #ede8f2; }
+    .matrix-cell.diagonal { outline: 2px solid var(--snap); outline-offset: -2px; }
+    .matrix-cell:hover { transform: scale(1.08); }
+
+    /* --- Tape --- */
+    .tape-container {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 0.5rem 0;
+      min-height: 60px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+    .tape-container::-webkit-scrollbar { height: 4px; }
+    .tape-container::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    .tape-event {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+    .tape-letter {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 500;
+    }
+    .tape-bar {
+      width: 8px;
+      border-radius: 2px 2px 0 0;
+    }
+
+    /* --- Machine state display --- */
+    .machine-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+    .machine-footer .label { margin: 0; }
+
+    /* --- Lower grid (matrix + tape) --- */
+    .lower-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* --- Investigation prompts --- */
+    .prompts {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .prompt-card {
+      padding: 0.6rem 0.8rem;
+      background: var(--surface-raised);
+      border-left: 3px solid var(--border);
+      border-radius: 0 4px 4px 0;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      transition: border-color 0.3s;
+    }
+    .prompt-card:hover { border-color: var(--snap); color: var(--text); }
+
+    /* --- Boundary section --- */
+    .boundary-section {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 1rem 1.25rem;
+      background: var(--surface);
+      border: 1px solid rgba(212,99,74,0.25);
+      border-radius: 8px;
+    }
+    .boundary-section h3 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--tension);
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+    }
+    .boundary-section p {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: #b8b0a0;
+      margin-bottom: 0.6rem;
+    }
+    .boundary-section p:last-child { margin-bottom: 0; }
+    .boundary-section strong { color: var(--text); font-weight: 600; }
+    .boundary-section .reason {
+      padding-left: 1rem;
+      border-left: 2px solid var(--border);
+      margin: 0.5rem 0;
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* --- What's Missing footer --- */
+    .missing {
+      max-width: 640px;
+      margin: 2rem auto 0;
+      border-left: 2px solid var(--snap);
+      padding-left: 1.25rem;
+    }
+    .missing h3 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--snap);
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+    }
+    .missing p {
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.6;
+      margin-bottom: 0.6rem;
+    }
+    .missing p:last-child { margin-bottom: 0; }
+    .missing strong { color: var(--text); font-weight: 600; }
+
+    .nav-next {
+      max-width: 640px;
+      margin: 2rem auto 0;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+    .nav-next a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--release);
+      text-decoration: none;
+    }
+    .nav-next a:hover { color: var(--snap); }
+    .nav-next .hint {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 0.2rem;
+    }
+
+    /* --- Baked replay button --- */
+    .replay-cta {
+      max-width: 640px;
+      margin: 0 auto 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-align: center;
+      display: none;
+    }
+    .replay-cta.visible { display: block; }
+    .replay-cta p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+    .replay-cta p:last-child { margin-bottom: 0; }
+
+    button.demo {
+      background: var(--release);
+      color: #fff;
+      border: none;
+      padding: 0.45rem 1.2rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: filter 0.15s;
+    }
+    button.demo:hover { filter: brightness(1.15); }
+    button.demo:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    button.demo-secondary {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.35rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      margin-left: 0.5rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    button.demo-secondary:hover { border-color: var(--muted); color: var(--text); }
+
+    /* --- Baked event log styling --- */
+    .event-entry.baked-computing .ctx { color: var(--muted); }
+    .event-entry.baked-crisis .ctx { color: var(--tension); font-weight: 500; }
+    .event-entry.baked-oracle .ctx { color: var(--snap); }
+    .event-entry.baked-synthesis .ctx { color: var(--release); }
+    .event-entry.baked-success .ctx { color: var(--w-mode); }
+    .event-entry.baked-start .ctx { color: var(--muted); }
+    .event-entry.baked-validation .ctx { color: var(--release); }
+    .event-entry.baked-retry .ctx { color: var(--release); }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      .viz-grid { grid-template-columns: 1fr; }
+      .lower-grid { grid-template-columns: 1fr; }
+      .panel-full { grid-column: 1; }
+      .preset-grid { grid-template-columns: 1fr; }
+      .controls-row { flex-direction: column; align-items: stretch; }
+      .controls-row .spacer { display: none; }
+      body { padding: 1rem 1rem 3rem; }
+    }
+
+    @media (max-width: 400px) {
+      .invitation h1 { font-size: 1.3rem; }
+    }
+
+    .margin-note {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+      color: var(--muted); border-left: 2px solid var(--border);
+      padding-left: 0.75rem; margin: 1rem 0;
+    }
+  </style>
+</head>
+<body data-hshell-doc="1">
+<!-- Research-wing notice: retain this posture while the contracts are live
+     research interfaces. -->
+<div style="margin:0 0 1.5rem 0;padding:0.9rem 1.2rem;border:1px solid #b8860b;border-radius:6px;background:rgba(184,134,11,0.08);font-size:0.95rem;line-height:1.5;">
+  <strong>Research wing — live, in progress.</strong> This page drives the learner through the app. Contracts may shift and rough edges remain. Colleagues are welcome to take part in its unfolding: the source lives under <code>formal/learner/</code>.
+  <details style="margin-top:.75rem">
+    <summary>For contributors: modules described here but not loaded</summary>
+    <ul style="margin:.65rem 0 0;padding-left:1.25rem">
+      <li><code>formal/learner/arithmetic_machine.pl</code> provides the option-driven arithmetic solver loaded on demand by the compute surface.</li>
+      <li><code>formal/learner/primordial_start.pl</code> is a standalone essential-kernel startup script with initialization output.</li>
+      <li><code>formal/learner/main.pl</code> is the command-line entry point for one predefined Observe–React–Reorganize (ORR) computation (Savich, <em>ORR cycle</em>).</li>
+      <li><code>formal/learner/interactive_ui.pl</code> is the terminal menu for running and inspecting the learner.</li>
+      <li><code>formal/learner/crisis_processor.pl</code> runs curriculum tasks through crisis classification and recovery.</li>
+      <li><code>formal/learner/curriculum_processor.pl</code> processes curriculum tasks and records learned facts.</li>
+      <li><code>formal/learner/knowledge_manager.pl</code> resets, backs up, restores, and inspects learned knowledge.</li>
+      <li><code>formal/learner/learned_knowledge_v2.pl</code> is a small generated learned-proof fact file.</li>
+      <li><code>formal/learner/activity_contract.pl</code> compiles lesson activity, task, traversal, and capability records.</li>
+      <li><code>formal/learner/task_transition.pl</code> classifies one activity event and selects its reorganization domain.</li>
+      <li><code>formal/learner/atlas/task_quotient.pl</code> groups transitions by observable signature and checks state-update congruence.</li>
+      <li><code>formal/learner/atlas/basis_transitions.pl</code> is the generated transition table used by that quotient audit.</li>
+      <li><code>formal/learner/axioms_domains.pl</code> records domain membership and finite normative-crisis conditions.</li>
+      <li><code>formal/learner/server.pl</code> is a standalone HTTP application and is not loaded by the console worker.</li>
+      <li><code>formal/learner/server_visualization.pl</code> defines standalone CGI visualization HTTP handlers and remains unloaded.</li>
+      <li><code>formal/learner/reorg_demo_server.pl</code> is the standalone fraction-ladder demo server and remains unloaded.</li>
+      <li><code>formal/learner/fraction_band_ladder.pl</code> assembles inspectable reorganization stories and is loaded on demand by <code>reorganize</code>.</li>
+      <li><code>formal/learner/reorg_domains/fraction_splitting.pl</code> supplies the Band 2 splitting moves (Steffe and Olive, <em>Children's Fractional Knowledge</em>) loaded through the ladder.</li>
+      <li><code>formal/learner/reorg_domains/fraction_improper.pl</code> supplies the Band 3 improper-fraction moves loaded through the ladder.</li>
+      <li><code>formal/learner/reorg_domains/fraction_of_fraction.pl</code> supplies the Band 4 shifting-referent moves loaded through the ladder.</li>
+      <li><code>formal/learner/reorg_domains/fraction_algebra.pl</code> supplies the Band 5 fraction-to-algebra moves loaded through the ladder.</li>
+      <li><code>formal/learner/reorg_domains/fraction.pl</code> supplies a Band 1 disembedding domain, pulling a part back out of the whole (Steffe and Olive, <em>Children's Fractional Knowledge</em>), but no current worker load chain reaches it.</li>
+      <li><code>knowledge/strategies/math_benchmark.pl</code> is a command-line benchmark for integer, fractional, and nested operations; it is not a worker operation.</li>
+    </ul>
+  </details>
+</div>
+
+  <div class="top-bar">
+    <div class="status-area">
+      <div class="server-status">
+        prolog: <span id="server-status" class="dead">checking...</span>
+      </div>
+      <div class="score">snaps <span class="score-num" id="score">0</span></div>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 0: The Invitation (always visible) ====== -->
+  <div class="invitation phase-0" id="invitation">
+    <h1>The Bridge</h1>
+    <p class="subtitle">
+      A machine starts knowing only how to count. One tally mark at a time. You give it an arithmetic problem, and it tries. When the counting breaks down, it enters <strong>crisis</strong> &mdash; and must learn a new strategy or fail.
+    </p>
+    <p class="subtitle" style="font-size:0.85rem; color:var(--muted);">
+      This page connects the Prolog formalization to the catastrophe geometry of The More Machine. Each computation runs in the live app. The tension it accumulates drives a Zeeman catastrophe machine. When the learner snaps, you see it.
+    </p>
+    <p class="cue" id="cue">choose a scenario below, or set your own parameters</p>
+  </div>
+
+  <!-- ====== DISCOURSE NARRATIVE ====== -->
+  <div class="narration" style="max-width:640px;margin:0 auto 1.25rem;padding:0 0.5rem;">
+    <div data-discourse="freshman">
+      <p class="story-recap"><em>Previously: You dragged nodes and watched one machine's snap trigger another.</em></p>
+      <p>Everything you have felt so far &mdash; the snaps, the tension, the nested
+         machines &mdash; that is what the Prolog formalization does. This page connects
+         the two: it takes the formal system's internal state (how many inferences,
+         whether crisis has fired, how much tension has built) and uses it to drive
+         the catastrophe geometry you have been feeling. When the Prolog system hits
+         crisis, the disc snaps. When it finds a new strategy, the tension relaxes.
+         You are watching the same thing from two sides.</p>
+      <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">This page works best with the app running
+         (<code style="font-size:0.85em;color:var(--snap);">bash hermes/app/launch.sh</code>).
+         Without it, here is what you would see: the system tries add(38, 55) with
+         counting. After about 90 steps the tension turns red. Crisis. The system
+         consults for a new strategy. COBO arrives. The tension drops. The disc settles.
+         You can still explore the presets below to read through each scenario.</p>
+    </div>
+    <div data-discourse="mathEd">
+      <p>The bridge visualizes the project's Observe–React–Reorganize (ORR) cycle in real time (Savich, <em>ORR cycle</em>). Tension accumulates during computation (<code style="font-size:0.85em;color:var(--snap);">solve/6</code> tracking inference cost). When cost exceeds the threshold, crisis fires. The execution handler classifies the crisis and initiates recovery. Each event appears in the timeline.</p>
+      <div class="margin-note">
+        Wachsmuth, I., &amp; Becker, J. (1986). The Lakos Project. PME report.
+        University of Osnabruck. This bridge is doing what the Lakos Project did in
+        1986: modeling individual children's mathematical knowledge as logical
+        propositions in a Prolog machine, then making the internal state visible.
+        The Lakos Project modeled memory nodes, misconceptions, and cognitive
+        conflicts. This bridge adds real-time tension dynamics and catastrophe
+        geometry to the same basic idea.
+      </div>
+      <div class="margin-note">
+        Confrey, J., &amp; Maloney, A. P. (2010). The construction, refinement, and
+        early validation of the equipartitioning learning trajectory. <em>ZDM</em>.
+        Interactive diagnostic assessment systems (IDAS) for visualizing student
+        thinking — a direct precedent for this bridge visualization.
+      </div>
+      <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">Requires the app (<code style="font-size:0.85em;color:var(--snap);">bash hermes/app/launch.sh</code>) for live data. A static example: the Kindergarten preset (3 + 2, limit 50) produces a smooth computation with no crisis. The Grade 1 preset (8 + 5, limit 12) produces tension buildup, an efficiency crisis at step 12, and a snap to counting-on.</p>
+    </div>
+    <div data-discourse="philosophy">
+      <p>The tension chart is the continuous energy surface. The disc angle is the system state. The timeline is the event log from <code style="font-size:0.85em;color:var(--snap);">event_log.pl</code>. Together they show the same phenomenon from three representations: continuous (tension), geometric (disc), and discrete (events). The bridge's value is making the meta-interpreter's internal dynamics visible — what is usually hidden inside <code style="font-size:0.85em;color:var(--snap);">solve/6</code> becomes observable.</p>
+      <div class="margin-note">
+        Borasi, R. (1994). Capitalizing on errors as "springboards for inquiry."
+        <em>JRME, 25</em>(2), 166-208. Drawing on Lakatos, I. (1976), <em>Proofs
+        and Refutations</em>, Cambridge University Press. Borasi demonstrates that
+        mathematical knowledge historically grows through a dialectic of proofs and
+        refutations. Errors are not obstacles but generative: "the doubt and
+        cognitive dissonance generated by an error can force students to rethink the
+        foundations of their mathematical definitions." The bridge makes this
+        dialectic visible &mdash; crisis is not the system failing but the system
+        generating the conditions for its own reorganization.
+      </div>
+      <div class="margin-note">
+        Tirosh, D., &amp; Graeber, A. O. (1990). Evoking cognitive conflict to explore
+        preservice teachers' thinking about division. <em>JRME, 21</em>(2), 98-108.
+        Conflict teaching: deliberately creating situations where existing beliefs
+        produce contradictions. The bridge's tension-to-snap cycle is a computational
+        model of this pedagogical technique.
+      </div>
+      <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">Requires the app (<code style="font-size:0.85em;color:var(--snap);">bash hermes/app/launch.sh</code>) for live data. Without the app, the disc and tension chart respond to the preset narratives but do not run actual computations.</p>
+    </div>
+  </div>
+
+  <!-- ====== PRESETS ====== -->
+  <div class="presets phase-0">
+    <p class="label">A Guided Curriculum</p>
+    <div class="preset-grid">
+      <button class="preset-btn" onclick="loadPreset('kindergarten')">
+        <span class="preset-title">Kindergarten: Counting</span>
+        <span class="preset-desc">add 3 + 2, limit 50. The machine can count this far without strain.</span>
+      </button>
+      <button class="preset-btn" onclick="loadPreset('grade1')">
+        <span class="preset-title">Grade 1: First Crisis</span>
+        <span class="preset-desc">add 8 + 5, limit 12. Counting-all won't finish in time. The teacher intervenes.</span>
+      </button>
+      <button class="preset-btn" onclick="loadPreset('grade2')">
+        <span class="preset-title">Grade 2: Place Value</span>
+        <span class="preset-desc">add 28 + 35, limit 15. Needs a strategy the machine hasn't built yet.</span>
+      </button>
+      <button class="preset-btn" onclick="loadPreset('grade3')">
+        <span class="preset-title">Grade 3: Multiplication</span>
+        <span class="preset-desc">multiply 4 x 3, limit 20. The machine does not know what multiplication is.</span>
+      </button>
+      <button class="preset-btn boundary-btn" onclick="loadPreset('boundary')">
+        <span class="preset-title" style="color:var(--tension);">Grade 3: The Fraction Boundary</span>
+        <span class="preset-desc">No ORR run. The runnable version lives on <a href="/breaks.html"><em>Where it breaks</em></a>.</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Narration card (updates with each preset) -->
+  <div class="narration-card" id="narration-card">
+    <p id="narration-card-text"></p>
+  </div>
+
+  <!-- ====== CONTROLS ====== -->
+  <div class="controls phase-0" id="controls-panel">
+    <div class="controls-row">
+      <div class="field">
+        <label>Operation</label>
+        <select id="op">
+          <option value="add">add</option>
+          <option value="subtract">subtract</option>
+          <option value="multiply">multiply</option>
+          <option value="divide">divide</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>A</label>
+        <input type="number" id="inp-a" value="3" min="0" max="99">
+      </div>
+      <div class="field">
+        <label>B</label>
+        <input type="number" id="inp-b" value="2" min="0" max="99">
+      </div>
+      <div class="field">
+        <label>Limit</label>
+        <input type="number" id="inp-limit" value="50" min="5" max="500">
+      </div>
+      <div class="speed-control">
+        <label>speed</label>
+        <input type="range" id="replay-speed" min="1" max="20" value="5">
+        <span id="speed-val">5</span>
+      </div>
+      <div class="spacer"></div>
+      <button class="run" id="btn-run" onclick="runComputation()">Run</button>
+      <button class="secondary" onclick="resetAll()">Reset</button>
+    </div>
+    <div class="replay-bar"><div class="replay-fill" id="replay-fill"></div></div>
+  </div>
+
+  <div class="controls phase-0" id="reorganize-panel">
+    <div class="controls-row">
+      <div class="field"><label>Reorganization domain</label><select id="reorg-domain"><option value="fraction_splitting">fraction splitting</option><option value="fraction_improper">improper fraction</option><option value="fraction_of_fraction">fraction of a fraction</option><option value="fraction_algebra">fraction algebra</option></select></div>
+      <div class="field"><label>A</label><input type="number" id="reorg-a" value="3"></div>
+      <div class="field"><label>B</label><input type="number" id="reorg-b" value="8"></div>
+      <div class="field"><label>C</label><input type="number" id="reorg-c" value="4"></div>
+      <div class="field"><label>D</label><input type="number" id="reorg-d" value="5"></div>
+      <button class="secondary" id="reorg-run" type="button">Run reorganization</button>
+    </div>
+    <pre id="reorg-output" style="white-space:pre-wrap;overflow-wrap:anywhere;color:var(--muted);font:0.75rem/1.45 'IBM Plex Mono',monospace;margin-top:.7rem;"></pre>
+  </div>
+
+  <!-- ====== BAKED REPLAY CTA (visible when server offline) ====== -->
+  <div class="replay-cta" id="replay-cta">
+    <p>The app is offline. You can still see what a computation looks like.</p>
+    <button class="demo" id="btn-demo" onclick="runBakedReplay()">Watch a replay</button>
+    <span style="font-size:0.75rem;color:var(--muted);margin-left:0.6rem;">add(38, 55) — counting-all to counting-on</span>
+  </div>
+
+  <!-- ====== SECONDARY DEMO LINK (visible when server online) ====== -->
+  <div id="demo-link" style="display:none;max-width:640px;margin:0 auto 0.5rem;text-align:center;">
+    <button class="demo-secondary" onclick="runBakedReplay()">or watch a demo</button>
+  </div>
+
+  <!-- ====== PHASE 1: After first computation — main visualization ====== -->
+  <div class="phase" id="phase-1">
+    <div class="narration" id="phase-1-narration">
+      <p>The red line is <strong>tension</strong> &mdash; how hard the learner is working. Each inference step costs something. Counting 3 + 2 by ones is cheap. Counting 28 + 35 by ones is expensive. When the tension accelerates past the stability threshold, the system enters <strong>crisis</strong>.</p>
+      <p>The blue ball is the teacher's hand on the Zeeman machine. As the app computes, the tension drives the ball outward. When crisis hits, the disc <strong>snaps</strong> &mdash; a discontinuous jump from one stable state to another. No smooth transition. The learner was one kind of knower; now it is another.</p>
+    </div>
+  </div>
+
+  <div class="viz-grid phase" id="viz-grid">
+    <!-- Zeeman Machine -->
+    <div class="panel">
+      <p class="label">Catastrophe Geometry</p>
+      <div class="canvas-wrap">
+        <canvas id="zeeman-canvas" width="560" height="560"></canvas>
+        <div class="snap-flash" id="snap-flash"></div>
+      </div>
+      <div class="machine-footer">
+        <span class="label" id="machine-state">waiting</span>
+        <span class="label" style="color:var(--snap);" id="snap-count">snaps: 0</span>
+      </div>
+    </div>
+
+    <!-- Tension Chart -->
+    <div class="panel">
+      <p class="label">Tension &amp; Stability</p>
+      <canvas id="tension-canvas" width="560" height="220"></canvas>
+      <div class="event-log" id="event-log"></div>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 2: After a crisis — explain what happened ====== -->
+  <div class="phase" id="phase-2">
+    <div class="narration">
+      <p>That was a <strong>crisis</strong>. The learner's counting strategy could not finish within the inference limit. The tension spiked, stability went negative, and the system called for help.</p>
+      <p>In the Prolog formalization, "help" means the <strong>teacher</strong> intervened &mdash; not by handing over a strategy, but by creating conditions where the learner's current approach could no longer hold. What the system receives is a result and a description, not the internal workings. The snap on the machine corresponds to this moment &mdash; the disc's state changed, but the springs don't remember being stretched.</p>
+      <p><em>The gold dots on the tension chart mark where tension relaxed after a crisis. Each one is a snap.</em></p>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 3: After multiple runs — matrix + tape + deeper explanation ====== -->
+  <div class="phase" id="phase-3">
+    <div class="narration">
+      <p>Run a few more computations. Each crisis adds to the record below. The <strong>tape</strong> logs every snap in sequence. The <strong>matrix</strong> remembers them structurally: each new snap negates the diagonal of the previous matrix &mdash; the same operation Cantor used in 1891 to prove that any enumeration of binary strings misses at least one. Here, each snap produces a state that was provably outside the previous totality of states.</p>
+      <p>The developmental story runs left to right across the preset buttons. A kindergartener counts by ones. A first-grader hits the limit of counting and learns to count on from the larger number. A second-grader needs place-value decomposition. A third-grader encounters an operation the system has never seen. Each transition is a crisis that demands a qualitatively different strategy &mdash; not a smoother version of the old one.</p>
+    </div>
+  </div>
+
+  <div class="lower-grid phase" id="lower-grid">
+    <!-- Matrix -->
+    <div class="panel">
+      <p class="label">The Memory</p>
+      <div id="matrix-grid"></div>
+    </div>
+    <!-- Tape -->
+    <div class="panel">
+      <p class="label">The Tape</p>
+      <div class="tape-container" id="tape-container"></div>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 4: The philosophical payoff ====== -->
+  <div class="phase" id="phase-4">
+    <div class="narration" style="margin-top: 1.5rem;">
+      <p>By now you have seen tension build and release several times. The shape repeats: accumulation, acceleration, crisis, partial relaxation. Partial &mdash; because the system does not return to zero after a snap. Tension carries forward. The learner's next computation starts harder than the last one started. This is <strong>hysteresis</strong> in the formal model, though the Zeeman machine's springs are ideal and forget their strain. The tape remembers what the physics cannot.</p>
+      <p>The formalization tracks this process at two levels that must not be confused. The meta-interpreter (<strong>solve/6</strong>) attempts computation; it is the “doing” layer. The incompatibility semantics module (<strong>proves/4</strong>) tracks inferential commitments, moves made without yet earning the right to them (Brandom, <em>Between Saying and Doing</em>); it is the “justifying” layer. A learner can do what it cannot justify, and can justify what it cannot do.</p>
+    </div>
+
+    <div class="boundary-section" style="margin-top:1.5rem;">
+      <h3>Fractions: What Works at the Action Level, What Does Not Yet Work in the Observe–React–Reorganize Cycle</h3>
+      <p>The system handles whole-number arithmetic through the ORR cycle (Observe, React, Reorganize). For fractions, the action-level picture is concrete and the cycle-level picture is still open. Both deserve equal specificity:</p>
+      <div class="reason"><strong>What works at the action level.</strong> The runnable cross-multiplication and area-model version lives on <a href="/breaks.html"><em>Where it breaks</em></a>.</div>
+      <div class="reason"><strong>What does not yet work at the ORR level.</strong> The meta-interpreter does not yet route fraction outcomes through the ORR cycle as recollection-compatible values, so a fraction action's result cannot drive a crisis the way a counting overflow can. Three-level unit coordination (Hackenberg) as a general ORR-negotiable scheme is not implemented. Metamorphic accommodation (Norton/Steffe: strategies synthesised by recursive composition of others) is not in the synthesis path.</div>
+      <div class="reason"><strong>Where the metaphors are known to break.</strong> A grounding metaphor is a systematic mapping from bodily activity to arithmetic (Lakoff and Núñez, <em>Where Mathematics Comes From</em>). The registry lists recorded break points and repair moves.</div>
+      <p>The boundary the system now exhibits is not "cannot represent fractions" &mdash; it is "represents fraction multiplication at the action level, but does not yet negotiate fraction acquisition at the ORR-cycle level." The formalization is a tool for noticing both halves of that distinction.</p>
+    </div>
+
+    <div class="prompts" style="margin-top:1.5rem;">
+      <p class="label">Questions to sit with</p>
+      <div class="prompt-card">What changes between the kindergarten run and the Grade 1 run? Not in the numbers &mdash; in the shape of the tension curve.</div>
+      <div class="prompt-card">The teacher provides strategies but the learner does not build them. When does receiving a method become understanding it? The formalism cannot say.</div>
+      <div class="prompt-card">Each snap on the matrix negates the previous diagonal. The new state is provably outside the old totality. But the matrix is finite and wraps at 8 rows. What gets lost when the memory is bounded?</div>
+      <div class="prompt-card">The fraction boundary is where flat FSM synthesis fails. What kind of computation would be needed to cross it? The manuscript calls it "metamorphic accommodation." The code does not implement it.</div>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 5: What's Missing ====== -->
+  <div class="phase" id="phase-5">
+    <div class="missing">
+      <h3>What This Page Can and Cannot Show</h3>
+      <p><strong>It can show</strong> tension building and snapping &mdash; the shape of crisis as catastrophe geometry. It can show the tape accumulating, the matrix growing, the discontinuity between one strategy and the next.</p>
+      <p><strong>It cannot show the felt quality of learning.</strong> Carspecken's "sound of time" &mdash; the pre-reflective ground of temporal experience &mdash; is not a tension curve. A resource limit is not the same as running out of breath. The numbers exhaust; the child tires. These are not the same kind of exhaustion.</p>
+      <p><strong>It cannot show the teacher as a person.</strong> The teacher in the code creates conditions for crisis, but the interaction is one-directional. Carspecken's I-Thou involves mutual recognition &mdash; both parties are changed by the encounter. Nothing in the code models the teacher being changed. The blue ball pulls; it does not listen.</p>
+      <p><strong>It cannot show the moment where formalism hands off to human judgment.</strong> The sequent calculus has a precise boundary: a vanishing-point mark yields a hollow proof, a node that stands with its warrant withdrawn. This page can describe that boundary; it cannot perform it.</p>
+      <p>The More Machine shows the embodied side of the metaphor &mdash; what it feels like to drag a system through crisis with your hand. This page shows the computational side &mdash; what the app records when crisis is driven by inference limits rather than spring tension. Neither is complete. The bridge between them is the bridge between formalization and experience, which is the manuscript's central concern.</p>
+    </div>
+
+    <div class="nav-next">
+      <span class="hint">The embodied side of the metaphor. Drag the system through crisis yourself.</span>
+    </div>
+  </div>
+
+<script>
+// =======================================================================
+// COLORS (matching More Machine)
+// =======================================================================
+const C = {
+  bg: '#1a1710', tension: '#d4634a', release: '#5b9eae', snap: '#e8a84c',
+  mColor: '#9b6b9e', wColor: '#6b9e8c', wheel: '#201c14', wheelBorder: '#3a3428',
+  slack: '#3a3428', letter: '#f0ead8', letterBlur: 'rgba(240, 234, 216, 0.25)',
+  text: '#d4cfc0', muted: '#8a8470', gridLine: '#201c14',
+  controlDrag: '#f0ead8', compressive: '#d4634a', expansive: '#5b9eae',
+  neutral: '#8a8470', relaxation: '#e8a84c', stable: '#6b9e8c', unstable: '#d4634a',
+};
+
+// =======================================================================
+// CANVAS HELPERS
+// =======================================================================
+function setupCanvas(canvas, logicalW, logicalH) {
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.parentElement.getBoundingClientRect();
+  const w = rect.width;
+  const aspect = logicalH / logicalW;
+  const h = w * aspect;
+  canvas.style.height = h + 'px';
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return { w, h, ctx };
+}
+
+// =======================================================================
+// STATE
+// =======================================================================
+let totalSnaps = 0;
+let totalRuns = 0;
+let hasCrisis = false;
+const snapHistory = [];
+let tensionData = [];
+let replayIndex = 0;
+let isReplaying = false;
+let replayTimer = null;
+let bakedReplayTimer = null;
+
+// =======================================================================
+// PHASE SYSTEM
+// =======================================================================
+// Phase 0: always visible (invitation, presets, controls)
+// Phase 1: after first computation — viz grid + tension explanation
+// Phase 2: after a crisis computation — explain crisis, teacher, snap
+// Phase 3: after 2+ runs — matrix, tape, developmental story
+// Phase 4: after 3+ runs — philosophical payoff, fraction boundary, questions
+// Phase 5: after 4+ runs — what's missing, nav
+
+const phases = {
+  1: { check: () => totalRuns >= 1, ids: ['phase-1', 'viz-grid'] },
+  2: { check: () => hasCrisis, ids: ['phase-2'] },
+  3: { check: () => totalRuns >= 2, ids: ['phase-3', 'lower-grid'] },
+  4: { check: () => totalRuns >= 3, ids: ['phase-4'] },
+  5: { check: () => totalRuns >= 4, ids: ['phase-5'] },
+};
+
+let currentPhase = 0;
+
+function checkPhases() {
+  for (const [phase, config] of Object.entries(phases)) {
+    const p = parseInt(phase);
+    if (config.check() && currentPhase < p) {
+      currentPhase = p;
+      config.ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.classList.add('revealed');
+          setTimeout(() => {
+            el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, 400);
+        }
+      });
+    }
+  }
+
+  // Update invitation after first run
+  if (totalRuns >= 1) {
+    const cue = document.getElementById('cue');
+    if (cue) {
+      cue.textContent = 'try another scenario — each tells a different part of the story';
+      cue.classList.add('still');
+    }
+  }
+}
+
+// =======================================================================
+// SCORE
+// =======================================================================
+const scoreEl = document.getElementById('score');
+function updateScore() {
+  scoreEl.textContent = totalSnaps;
+  scoreEl.style.color = '#ede8f2';
+  setTimeout(() => { scoreEl.style.color = ''; }, 300);
+}
+
+// =======================================================================
+// SNAP FLASH
+// =======================================================================
+function triggerFlash() {
+  const flash = document.getElementById('snap-flash');
+  flash.classList.add('active');
+  setTimeout(() => flash.classList.remove('active'), 200);
+}
+
+// =======================================================================
+// PRESET SCENARIOS
+// =======================================================================
+const presets = {
+  kindergarten: {
+    op: 'add', a: 3, b: 2, limit: 50,
+    narration: '<strong>Kindergarten: counting by ones.</strong> The machine counts 3 + 2 by enumerating every tally mark. Three marks, then two more, then count the whole collection. This is "counting all" &mdash; the most primitive addition strategy. With a limit of 50 inferences, this finishes easily. Watch the tension curve: it should stay low, stability should stay positive. No crisis. The machine is not being asked to do anything it cannot do.'
+  },
+  grade1: {
+    op: 'add', a: 8, b: 5, limit: 12,
+    narration: '<strong>Grade 1: the first crisis.</strong> 8 + 5 by counting-all requires 13+ inferences (enumerate 8, enumerate 5, combine, count the result). With a limit of 12, the machine runs out of time. Tension spikes, stability goes negative, the system enters crisis. The teacher provides "counting on" &mdash; start at 8 and count up 5 more: 9, 10, 11, 12, 13. This costs only 5 inferences instead of 13+. The snap on the Zeeman machine corresponds to this moment: the learner was a counter-of-all; now it is a counter-on.'
+  },
+  grade2: {
+    op: 'add', a: 28, b: 35, limit: 15,
+    narration: '<strong>Grade 2: place value.</strong> Even counting-on cannot add 28 + 35 in 15 inferences (it would need 35 steps of counting). The system needs place-value decomposition: break 28 into 20 + 8, break 35 into 30 + 5, add the tens (50), add the ones (13), combine (63). This strategy costs O(1) operations, not O(B). But the machine must be taught it &mdash; place-value decomposition is not something it can synthesize from counting primitives alone.'
+  },
+  grade3: {
+    op: 'multiply', a: 4, b: 3, limit: 20,
+    narration: '<strong>Grade 3: unknown operation.</strong> The machine does not have a definition for multiplication. This is a different kind of crisis from running out of inferences &mdash; it is an "unknown operation" crisis. The system does not just need a better strategy; it needs a new <em>concept</em>. The teacher provides repeated addition (4 x 3 = 4 + 4 + 4), but this only works because someone else defined what multiplication means. The formalism records the strategy; it does not record the understanding.'
+  },
+  boundary: null // handled specially
+};
+
+const presetNarrations = presets;
+
+function loadPreset(name) {
+  // Highlight the clicked button
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+
+  if (name === 'boundary') {
+    // No computation — show the boundary section directly
+    document.getElementById('narration-card-text').innerHTML =
+      '<strong>The fraction boundary.</strong> The runnable cross-multiplication and area-model version lives on <a href="/breaks.html"><em>Where it breaks</em></a>.';
+    const card = document.getElementById('narration-card');
+    card.style.borderLeftColor = 'var(--tension)';
+    card.classList.add('visible');
+    // Reveal phase 4 to show the boundary section
+    ['phase-4', 'phase-5'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('revealed');
+    });
+    currentPhase = Math.max(currentPhase, 5);
+    setTimeout(() => {
+      document.querySelector('.boundary-section').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 300);
+    return;
+  }
+
+  const preset = presets[name];
+  if (!preset) return;
+
+  // Fill controls
+  document.getElementById('op').value = preset.op;
+  document.getElementById('inp-a').value = preset.a;
+  document.getElementById('inp-b').value = preset.b;
+  document.getElementById('inp-limit').value = preset.limit;
+
+  // Show narration card
+  document.getElementById('narration-card-text').innerHTML = preset.narration;
+  const card = document.getElementById('narration-card');
+  card.style.borderLeftColor = 'var(--snap)';
+  card.classList.add('visible');
+}
+
+// =======================================================================
+// MATRIX AUTOMATON
+// =======================================================================
+class MatrixAutomaton {
+  constructor() {
+    this.gridContainer = document.getElementById('matrix-grid');
+    this.matrix = [['M']];
+    this.maxSize = 8;
+    this.render();
+  }
+
+  grow(ch) {
+    let base = this.matrix;
+    let newSize = this.matrix.length + 1;
+    if (this.matrix.length >= this.maxSize) {
+      newSize = this.maxSize;
+      base = [];
+      for (let i = 1; i < this.matrix.length; i++) base.push(this.matrix[i].slice(1));
+    }
+    const n = base.length;
+    const m = Array(newSize).fill(null).map(() => Array(newSize).fill(null));
+    for (let i = 0; i < n; i++)
+      for (let j = 0; j < n; j++) m[i][j] = base[i][j];
+    const diag = [];
+    for (let i = 0; i < n; i++) diag.push(base[i][i]);
+    const neg = diag.map(c => c === 'M' ? 'W' : 'M');
+    for (let i = 0; i < n; i++) { m[n][i] = neg[i]; m[i][n] = neg[i]; }
+    m[n][n] = ch;
+    this.matrix = m;
+    this.render();
+  }
+
+  render() {
+    this.gridContainer.innerHTML = '';
+    const size = this.matrix.length;
+    const cellPx = size <= 4 ? 36 : size <= 6 ? 30 : 26;
+    this.gridContainer.style.gridTemplateColumns = `repeat(${size}, ${cellPx}px)`;
+    for (let i = 0; i < size; i++) {
+      for (let j = 0; j < size; j++) {
+        const cell = document.createElement('div');
+        cell.classList.add('matrix-cell');
+        cell.style.width = cellPx + 'px';
+        cell.style.height = cellPx + 'px';
+        cell.style.fontSize = (cellPx <= 26 ? 0.72 : 0.88) + 'rem';
+        const v = this.matrix[i][j] || '';
+        cell.textContent = v;
+        cell.classList.add(v === 'M' ? 'm-cell' : 'w-cell');
+        if (i === j) cell.classList.add('diagonal');
+        this.gridContainer.appendChild(cell);
+      }
+    }
+  }
+}
+
+// =======================================================================
+// TAPE
+// =======================================================================
+class TapeRenderer {
+  constructor() { this.container = document.getElementById('tape-container'); }
+  addEvent(letter, tensionLevel) {
+    const el = document.createElement('div');
+    el.classList.add('tape-event');
+    const lt = document.createElement('span');
+    lt.classList.add('tape-letter');
+    lt.textContent = letter;
+    lt.style.color = letter === 'M' ? C.mColor : C.wColor;
+    const bar = document.createElement('div');
+    bar.classList.add('tape-bar');
+    const h = Math.min(45, Math.max(5, (tensionLevel / 50) * 45));
+    bar.style.height = h + 'px';
+    const ratio = Math.min(1, tensionLevel / 50);
+    bar.style.background = ratio > 0.5 ? C.tension : C.release;
+    bar.style.opacity = 0.4 + ratio * 0.6;
+    el.appendChild(lt);
+    el.appendChild(bar);
+    this.container.appendChild(el);
+    this.container.scrollLeft = this.container.scrollWidth;
+  }
+  clear() { this.container.innerHTML = ''; }
+}
+
+// =======================================================================
+// TENSION CHART
+// =======================================================================
+class TensionChart {
+  constructor() {
+    this.canvas = document.getElementById('tension-canvas');
+    this.data = [];
+    this.playhead = 0;
+    this.resize();
+  }
+
+  resize() {
+    const s = setupCanvas(this.canvas, 560, 220);
+    this.w = s.w; this.h = s.h; this.ctx = s.ctx;
+    this.draw();
+  }
+
+  setData(history) {
+    this.data = history;
+    this.draw();
+  }
+
+  setPlayhead(idx) {
+    this.playhead = idx;
+    this.draw();
+  }
+
+  draw() {
+    const ctx = this.ctx, w = this.w, h = this.h;
+    ctx.fillStyle = C.bg;
+    ctx.fillRect(0, 0, w, h);
+
+    if (this.data.length === 0) {
+      ctx.fillStyle = C.muted;
+      ctx.font = '11px IBM Plex Mono, monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('run a computation to see tension data', w / 2, h / 2);
+      return;
+    }
+
+    const pad = { l: 40, r: 12, t: 16, b: 24 };
+    const pw = w - pad.l - pad.r;
+    const ph = h - pad.t - pad.b;
+
+    let maxLevel = 0, maxStab = 0, minStab = 0;
+    for (const d of this.data) {
+      if (d.level > maxLevel) maxLevel = d.level;
+      if (d.stability > maxStab) maxStab = d.stability;
+      if (d.stability < minStab) minStab = d.stability;
+    }
+    maxLevel = Math.max(maxLevel, 1);
+    const stabRange = Math.max(Math.abs(maxStab), Math.abs(minStab), 1);
+
+    const midY = pad.t + ph * 0.6;
+    ctx.fillStyle = 'rgba(107, 158, 140, 0.04)';
+    ctx.fillRect(pad.l, pad.t, pw, midY - pad.t);
+    ctx.fillStyle = 'rgba(212, 99, 74, 0.04)';
+    ctx.fillRect(pad.l, midY, pw, pad.t + ph - midY);
+
+    // Stability zero line
+    ctx.strokeStyle = 'rgba(138, 132, 112, 0.3)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(pad.l, midY);
+    ctx.lineTo(pad.l + pw, midY);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Grid
+    ctx.strokeStyle = C.gridLine;
+    ctx.lineWidth = 1;
+    for (let i = 1; i <= 3; i++) {
+      const y = pad.t + (i / 4) * ph;
+      ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l + pw, y); ctx.stroke();
+    }
+
+    // Tension line
+    const tensionH = ph * 0.55;
+    ctx.beginPath();
+    ctx.strokeStyle = C.tension;
+    ctx.lineWidth = 2;
+    for (let i = 0; i < this.data.length; i++) {
+      const x = pad.l + (i / Math.max(1, this.data.length - 1)) * pw;
+      const y = pad.t + tensionH - (this.data[i].level / maxLevel) * tensionH;
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Stability line
+    const stabH = ph * 0.35;
+    ctx.beginPath();
+    ctx.strokeStyle = C.release;
+    ctx.lineWidth = 1.5;
+    for (let i = 0; i < this.data.length; i++) {
+      const x = pad.l + (i / Math.max(1, this.data.length - 1)) * pw;
+      const y = midY - (this.data[i].stability / stabRange) * (stabH / 2);
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Relaxation dots (snap markers)
+    for (let i = 0; i < this.data.length; i++) {
+      const d = this.data[i];
+      if (d.context === 'relaxation') {
+        const x = pad.l + (i / Math.max(1, this.data.length - 1)) * pw;
+        const y = pad.t + tensionH - (d.level / maxLevel) * tensionH;
+        ctx.beginPath();
+        ctx.arc(x, y, 4, 0, 2 * Math.PI);
+        ctx.fillStyle = C.relaxation;
+        ctx.fill();
+      }
+    }
+
+    // Playhead
+    if (this.playhead > 0 && this.playhead < this.data.length) {
+      const x = pad.l + (this.playhead / Math.max(1, this.data.length - 1)) * pw;
+      ctx.strokeStyle = 'rgba(240, 234, 216, 0.5)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(x, pad.t);
+      ctx.lineTo(x, pad.t + ph);
+      ctx.stroke();
+    }
+
+    // Labels
+    ctx.fillStyle = C.muted;
+    ctx.font = '9px IBM Plex Mono, monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('tension', pad.l + 4, pad.t + 12);
+    ctx.fillStyle = C.release;
+    ctx.fillText('stability', pad.l + 4, midY - 4);
+    ctx.fillStyle = 'rgba(212, 99, 74, 0.4)';
+    ctx.fillText('unstable zone', pad.l + 4, midY + 12);
+    ctx.fillStyle = C.muted;
+    ctx.textAlign = 'center';
+    ctx.fillText('inference step', pad.l + pw / 2, h - 4);
+  }
+}
+
+// =======================================================================
+// ZEEMAN MACHINE (data-driven mode)
+// =======================================================================
+class ZeemanMachine {
+  constructor(matrix, tape) {
+    this.canvas = document.getElementById('zeeman-canvas');
+    this.matrix = matrix;
+    this.tape = tape;
+    this.resize();
+
+    this.springK = 2.0;
+    this.L0 = 100;
+    this.angle = Math.PI / 2;
+    this.previousAngle = this.angle;
+
+    this.controlPoint = { x: this.w * 0.5, y: this.h * 0.65 };
+    this.restPosition = { x: this.w * 0.5, y: this.h * 0.65 };
+    this.isDragging = false;
+
+    this.isStable = true;
+    this.currentStability = 1.0;
+    this._lastGrow = 0;
+    this._snapDebounce = 200;
+
+    this.updateGeometry();
+    this.bindDrag();
+    this.loop();
+  }
+
+  updateGeometry() {
+    const s = Math.min(this.w, this.h);
+    this.wheelRadius = s * 0.1;
+    this.attachmentRadius = s * 0.083;
+    this.wheelCenter = { x: this.w / 2, y: this.h / 2 };
+    this.fixedAnchor = { x: this.w / 2, y: this.h * 0.1 };
+    this.restPosition = { x: this.w * 0.5, y: this.h * 0.65 };
+    this.controlPoint = { ...this.restPosition };
+  }
+
+  resize() {
+    const s = setupCanvas(this.canvas, 560, 560);
+    this.w = s.w; this.h = s.h; this.ctx = s.ctx;
+    this.updateGeometry();
+  }
+
+  bindDrag() {
+    const getPos = (e) => {
+      const rect = this.canvas.getBoundingClientRect();
+      const sx = this.w / rect.width, sy = this.h / rect.height;
+      if (e.touches && e.touches.length) {
+        return { x: (e.touches[0].clientX - rect.left) * sx, y: (e.touches[0].clientY - rect.top) * sy };
+      }
+      return { x: (e.clientX - rect.left) * sx, y: (e.clientY - rect.top) * sy };
+    };
+    const hit = (pos) => Math.hypot(pos.x - this.controlPoint.x, pos.y - this.controlPoint.y) < 30;
+    const down = (e) => { if (hit(getPos(e))) { this.isDragging = true; e.preventDefault(); } };
+    const move = (e) => {
+      if (!this.isDragging) return;
+      e.preventDefault();
+      const pos = getPos(e);
+      this.controlPoint.x = Math.max(0, Math.min(this.w, pos.x));
+      this.controlPoint.y = Math.max(0, Math.min(this.h, pos.y));
+    };
+    const up = () => { this.isDragging = false; };
+    this.canvas.addEventListener('mousedown', down);
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+    this.canvas.addEventListener('touchstart', down, { passive: false });
+    window.addEventListener('touchmove', move, { passive: false });
+    window.addEventListener('touchend', up);
+  }
+
+  driveFromTension(entry, maxTension) {
+    if (this.isDragging) return;
+    const level = entry.level;
+    const stability = entry.stability;
+    const context = entry.context;
+
+    const t = Math.min(1, level / Math.max(maxTension, 1));
+
+    const minR = 20;
+    const maxR = this.w * 0.38;
+    const radius = minR + t * (maxR - minR);
+
+    let targetAngle;
+    if (context === 'compressive') {
+      targetAngle = -Math.PI / 3 + (stability < 0 ? -0.3 : 0);
+    } else if (context === 'expansive') {
+      targetAngle = Math.PI * 0.6;
+    } else if (context === 'relaxation') {
+      targetAngle = Math.PI / 2;
+    } else {
+      targetAngle = 0;
+    }
+
+    const effectiveR = context === 'relaxation' ? radius * 0.3 : radius;
+    const cx = this.wheelCenter.x + effectiveR * Math.cos(targetAngle);
+    const cy = this.wheelCenter.y + effectiveR * Math.sin(targetAngle);
+
+    this.controlPoint.x += (cx - this.controlPoint.x) * 0.3;
+    this.controlPoint.y += (cy - this.controlPoint.y) * 0.3;
+  }
+
+  getAttachmentPoint(a) {
+    return {
+      x: this.wheelCenter.x + this.attachmentRadius * Math.cos(a),
+      y: this.wheelCenter.y + this.attachmentRadius * Math.sin(a)
+    };
+  }
+
+  calculateGradient(a) {
+    const R = this.attachmentRadius;
+    const Fx = this.fixedAnchor.x - this.wheelCenter.x;
+    const Fy = this.fixedAnchor.y - this.wheelCenter.y;
+    const Cx = this.controlPoint.x - this.wheelCenter.x;
+    const Cy = this.controlPoint.y - this.wheelCenter.y;
+    const Px = R * Math.cos(a), Py = R * Math.sin(a);
+    const L1 = Math.hypot(Px - Fx, Py - Fy);
+    const L2 = Math.hypot(Px - Cx, Py - Cy);
+    let T1 = 0, T2 = 0;
+    if (L1 > this.L0 && L1 > 0.001)
+      T1 = this.springK * (1 - this.L0 / L1) * (Fx * Math.sin(a) - Fy * Math.cos(a));
+    if (L2 > this.L0 && L2 > 0.001)
+      T2 = this.springK * (1 - this.L0 / L2) * (Cx * Math.sin(a) - Cy * Math.cos(a));
+    return R * (T1 + T2);
+  }
+
+  estimateStability(a) {
+    const d = 0.01;
+    return (this.calculateGradient(a + d) - this.calculateGradient(a - d)) / (2 * d);
+  }
+
+  updateState() {
+    let a = this.angle;
+    let stab = 0;
+    for (let i = 0; i < 250; i++) {
+      const g = this.calculateGradient(a);
+      if (Math.abs(g) < 0.05) { stab = this.estimateStability(a); if (stab > 0) break; }
+      a -= Math.max(-0.1, Math.min(0.1, 0.001 * g));
+      a = ((a % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+    }
+    if (stab <= 0) stab = this.estimateStability(a);
+    let diff = a - this.angle;
+    while (diff > Math.PI) diff -= 2 * Math.PI;
+    while (diff < -Math.PI) diff += 2 * Math.PI;
+    const snapped = Math.abs(diff) > 0.6;
+    this.angle = a;
+    this.currentStability = Math.max(0, Math.min(1, stab / 5000));
+    return { snapped };
+  }
+
+  recordSnap(letter) {
+    const P = this.getAttachmentPoint(this.angle);
+    const L1 = Math.hypot(P.x - this.fixedAnchor.x, P.y - this.fixedAnchor.y);
+    const L2 = Math.hypot(P.x - this.controlPoint.x, P.y - this.controlPoint.y);
+    const t1 = Math.max(0, L1 - this.L0) * this.springK;
+    const t2 = Math.max(0, L2 - this.L0) * this.springK;
+    totalSnaps++;
+    document.getElementById('snap-count').textContent = 'snaps: ' + totalSnaps;
+    updateScore();
+    triggerFlash();
+    const tensionNow = tensionData[replayIndex] ? tensionData[replayIndex].level : 0;
+    this.tape.addEvent(letter, tensionNow);
+    this.matrix.grow(letter);
+  }
+
+  update() {
+    const { snapped } = this.updateState();
+    const letter = (this.angle > Math.PI / 2 && this.angle < 3 * Math.PI / 2) ? 'W' : 'M';
+    this.isStable = this.currentStability > 0.3;
+    if (this.isStable && snapped) {
+      const now = Date.now();
+      if (now - this._lastGrow > this._snapDebounce) {
+        this._lastGrow = now;
+        this.recordSnap(letter);
+      }
+    }
+    const stateEl = document.getElementById('machine-state');
+    if (isReplaying) {
+      stateEl.textContent = this.isStable ? letter : '? unstable';
+      stateEl.style.color = this.isStable
+        ? (letter === 'M' ? C.mColor : C.wColor)
+        : C.tension;
+    }
+  }
+
+  draw() {
+    const ctx = this.ctx, w = this.w, h = this.h;
+    ctx.fillStyle = C.bg;
+    ctx.fillRect(0, 0, w, h);
+
+    const P = this.getAttachmentPoint(this.angle);
+    const L1 = Math.hypot(P.x - this.fixedAnchor.x, P.y - this.fixedAnchor.y);
+    const L2 = Math.hypot(P.x - this.controlPoint.x, P.y - this.controlPoint.y);
+
+    // Band to anchor (normative constraint)
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.moveTo(this.fixedAnchor.x, this.fixedAnchor.y);
+    ctx.lineTo(P.x, P.y);
+    if (L1 <= this.L0) {
+      ctx.setLineDash([4, 4]); ctx.strokeStyle = C.slack;
+    } else {
+      ctx.setLineDash([]);
+      const s = Math.min(1, (L1 - this.L0) / 150);
+      ctx.strokeStyle = `rgba(212,99,74,${0.3 + s * 0.7})`;
+      ctx.lineWidth = 2.5 + s * 1.5;
+    }
+    ctx.stroke();
+
+    // Band to control point (teacher pulling)
+    ctx.beginPath();
+    ctx.moveTo(this.controlPoint.x, this.controlPoint.y);
+    ctx.lineTo(P.x, P.y);
+    if (L2 <= this.L0) {
+      ctx.setLineDash([4, 4]); ctx.strokeStyle = C.slack;
+    } else {
+      ctx.setLineDash([]);
+      const s = Math.min(1, (L2 - this.L0) / 150);
+      ctx.strokeStyle = `rgba(91,158,174,${0.3 + s * 0.7})`;
+      ctx.lineWidth = 2.5 + s * 1.5;
+    }
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Fixed anchor
+    ctx.beginPath();
+    ctx.arc(this.fixedAnchor.x, this.fixedAnchor.y, 6, 0, 2 * Math.PI);
+    ctx.fillStyle = C.tension; ctx.fill();
+    ctx.font = '10px IBM Plex Mono, monospace';
+    ctx.fillStyle = C.muted; ctx.textAlign = 'center';
+    ctx.fillText('norm', this.fixedAnchor.x, this.fixedAnchor.y - 12);
+
+    // Wheel (the learner)
+    ctx.beginPath();
+    ctx.arc(this.wheelCenter.x, this.wheelCenter.y, this.wheelRadius, 0, 2 * Math.PI);
+    ctx.fillStyle = C.wheel; ctx.fill();
+    ctx.strokeStyle = C.wheelBorder; ctx.lineWidth = 2; ctx.stroke();
+
+    // Letter on wheel
+    ctx.save();
+    ctx.translate(this.wheelCenter.x, this.wheelCenter.y);
+    ctx.rotate(this.angle + Math.PI / 2);
+    const fs = this.wheelRadius * 0.9;
+    ctx.font = `600 ${fs}px IBM Plex Mono, monospace`;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    if (!this.isStable) {
+      ctx.fillStyle = C.letterBlur;
+      ctx.filter = `blur(${(1 - this.currentStability) * 4}px)`;
+    } else {
+      ctx.fillStyle = C.letter;
+    }
+    ctx.fillText('M', 0, 0);
+    ctx.restore();
+
+    // Attachment point
+    ctx.beginPath();
+    ctx.arc(P.x, P.y, 4, 0, 2 * Math.PI);
+    ctx.fillStyle = C.text; ctx.fill();
+
+    // Control point (teacher's hand)
+    ctx.beginPath();
+    ctx.arc(this.controlPoint.x, this.controlPoint.y, 12, 0, 2 * Math.PI);
+    ctx.fillStyle = C.release; ctx.fill();
+    ctx.strokeStyle = this.isDragging ? C.controlDrag : C.wheelBorder;
+    ctx.lineWidth = 2; ctx.stroke();
+    ctx.font = '10px IBM Plex Mono, monospace';
+    ctx.fillStyle = C.muted; ctx.textAlign = 'center';
+    ctx.fillText('teacher', this.controlPoint.x, this.controlPoint.y + 22);
+
+    // State indicator (top right)
+    if (this.isStable) {
+      const ltr = (this.angle > Math.PI / 2 && this.angle < 3 * Math.PI / 2) ? 'W' : 'M';
+      ctx.font = '600 18px IBM Plex Mono, monospace';
+      ctx.fillStyle = ltr === 'M' ? C.mColor : C.wColor;
+      ctx.textAlign = 'right';
+      ctx.fillText(ltr, w - 16, 28);
+    } else {
+      ctx.font = '11px IBM Plex Mono, monospace';
+      ctx.fillStyle = C.muted;
+      ctx.textAlign = 'right';
+      ctx.fillText('?', w - 16, 28);
+    }
+  }
+
+  loop() {
+    this.update();
+    this.draw();
+    requestAnimationFrame(() => this.loop());
+  }
+}
+
+// =======================================================================
+// EVENT LOG
+// =======================================================================
+const eventLogEl = document.getElementById('event-log');
+
+function logTensionEntry(entry) {
+  const div = document.createElement('div');
+  div.classList.add('event-entry');
+  div.innerHTML = `
+    <span class="step">${entry.step}</span>
+    <span class="ctx ${entry.context}">${entry.context}</span>
+    <span class="vals">T=${entry.level.toFixed(1)} S=${entry.stability.toFixed(2)}</span>
+  `;
+  eventLogEl.appendChild(div);
+  eventLogEl.scrollTop = eventLogEl.scrollHeight;
+}
+
+function clearEventLog() {
+  eventLogEl.innerHTML = '';
+}
+
+// =======================================================================
+// REPLAY ENGINE
+// =======================================================================
+function startReplay() {
+  if (tensionData.length === 0) return;
+
+  isReplaying = true;
+  replayIndex = 0;
+  const fillBar = document.getElementById('replay-fill');
+  document.getElementById('machine-state').textContent = 'replaying...';
+
+  let maxT = 0;
+  for (const d of tensionData) { if (d.level > maxT) maxT = d.level; }
+
+  // Check if this computation had a crisis (relaxation event = post-crisis)
+  const hadCrisis = tensionData.some(d => d.context === 'relaxation' || d.stability < 0);
+  if (hadCrisis) {
+    hasCrisis = true;
+  }
+
+  function step() {
+    if (replayIndex >= tensionData.length) {
+      isReplaying = false;
+      fillBar.style.width = '100%';
+      document.getElementById('machine-state').textContent = 'done';
+      document.getElementById('machine-state').style.color = C.muted;
+      checkPhases();
+      return;
+    }
+
+    const speed = parseInt(document.getElementById('replay-speed').value) || 5;
+    const stepsPerFrame = Math.max(1, Math.ceil(speed / 3));
+
+    for (let s = 0; s < stepsPerFrame && replayIndex < tensionData.length; s++) {
+      const entry = tensionData[replayIndex];
+      zeeman.driveFromTension(entry, maxT);
+
+      if (replayIndex % Math.max(1, Math.floor(tensionData.length / 60)) === 0) {
+        logTensionEntry(entry);
+      }
+
+      replayIndex++;
+    }
+
+    chart.setPlayhead(replayIndex);
+
+    const pct = (replayIndex / tensionData.length) * 100;
+    fillBar.style.width = pct + '%';
+
+    const delay = Math.max(16, 200 / speed);
+    replayTimer = setTimeout(step, delay);
+  }
+
+  step();
+}
+
+function stopReplay() {
+  if (replayTimer) clearTimeout(replayTimer);
+  if (bakedReplayTimer) clearTimeout(bakedReplayTimer);
+  isReplaying = false;
+}
+
+// =======================================================================
+// API
+// =======================================================================
+const API = '';
+
+document.getElementById('reorg-run').addEventListener('click', async function () {
+  const output = document.getElementById('reorg-output');
+  const params = new URLSearchParams({
+    domain:document.getElementById('reorg-domain').value,
+    a:document.getElementById('reorg-a').value,
+    b:document.getElementById('reorg-b').value,
+    c:document.getElementById('reorg-c').value,
+    d:document.getElementById('reorg-d').value
+  });
+  output.textContent = 'Requesting…';
+  try {
+    const response = await fetch(API + '/api/reorganize?' + params.toString());
+    const data = await response.json();
+    output.textContent = JSON.stringify(data, null, 2) || 'The route returned an empty reply.';
+  } catch (e) { output.textContent = 'The request failed: the app did not answer, or answered with something other than JSON.'; }
+});
+
+async function checkServer() {
+  const el = document.getElementById('server-status');
+  const replayCta = document.getElementById('replay-cta');
+  const demoLink = document.getElementById('demo-link');
+  try {
+    const res = await fetch(API + '/api/knowledge', { signal: AbortSignal.timeout(2000) });
+    if (res.ok) {
+      el.textContent = 'connected';
+      el.className = 'live';
+      if (replayCta) replayCta.classList.remove('visible');
+      if (demoLink) demoLink.style.display = '';
+      return true;
+    }
+  } catch (e) {}
+  el.textContent = 'offline';
+  el.className = 'dead';
+  if (replayCta) replayCta.classList.add('visible');
+  if (demoLink) demoLink.style.display = 'none';
+  return false;
+}
+
+async function runComputation() {
+  const btn = document.getElementById('btn-run');
+  btn.disabled = true;
+  stopReplay();
+  clearEventLog();
+
+  const alive = await checkServer();
+  if (!alive) {
+    btn.disabled = false;
+    // Show helpful message and offer baked replay
+    const div = document.createElement('div');
+    div.classList.add('event-entry');
+    div.innerHTML = `<span class="step">--</span><span class="ctx" style="color:${C.tension}">offline</span><span class="vals">The app is not running — <a href="#" onclick="runBakedReplay();return false;" style="color:${C.release};text-decoration:underline;cursor:pointer;">watch a demo</a> or start: bash hermes/app/launch.sh</span>`;
+    eventLogEl.appendChild(div);
+    // Scroll the replay CTA into view
+    const cta = document.getElementById('replay-cta');
+    if (cta) cta.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    return;
+  }
+
+  const op = document.getElementById('op').value;
+  const a = parseInt(document.getElementById('inp-a').value);
+  const b = parseInt(document.getElementById('inp-b').value);
+  const limit = parseInt(document.getElementById('inp-limit').value);
+
+  document.getElementById('machine-state').textContent = 'computing...';
+  document.getElementById('machine-state').style.color = C.muted;
+
+  try {
+    const res = await fetch(API + '/api/compute', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ operation: op, a, b, limit })
+    });
+    const data = await res.json();
+
+    tensionData = data.tension_history || [];
+    chart.setData(tensionData);
+
+    totalRuns++;
+
+    // Log summary
+    const summary = document.createElement('div');
+    summary.classList.add('event-entry');
+    summary.innerHTML = `
+      <span class="step">--</span>
+      <span class="ctx" style="color:${data.success ? C.stable : C.tension}">
+        ${data.success ? 'success' : 'failed'}
+      </span>
+      <span class="vals">${a} ${op} ${b} | ${tensionData.length} steps</span>
+    `;
+    eventLogEl.appendChild(summary);
+
+    // Reveal phase 1 immediately (viz grid)
+    checkPhases();
+
+    if (tensionData.length > 0) {
+      startReplay();
+    } else {
+      document.getElementById('machine-state').textContent = 'no tension data';
+      checkPhases();
+    }
+  } catch (e) {
+    document.getElementById('machine-state').textContent = 'error: ' + e.message;
+    document.getElementById('machine-state').style.color = C.tension;
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+async function resetAll() {
+  stopReplay();
+  tensionData = [];
+  replayIndex = 0;
+  totalSnaps = 0;
+  totalRuns = 0;
+  hasCrisis = false;
+  currentPhase = 0;
+  chart.setData([]);
+  chart.setPlayhead(0);
+  clearEventLog();
+  tapeRenderer.clear();
+  scoreEl.textContent = '0';
+  document.getElementById('snap-count').textContent = 'snaps: 0';
+  document.getElementById('replay-fill').style.width = '0%';
+  document.getElementById('machine-state').textContent = 'waiting';
+  document.getElementById('machine-state').style.color = C.muted;
+
+  // Hide narration card
+  document.getElementById('narration-card').classList.remove('visible');
+
+  // Hide all phases
+  document.querySelectorAll('.phase').forEach(el => el.classList.remove('revealed'));
+
+  // Unhighlight presets
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+
+  // Reset cue
+  const cue = document.getElementById('cue');
+  if (cue) {
+    cue.textContent = 'choose a scenario below, or set your own parameters';
+    cue.classList.remove('still');
+  }
+
+  // Reset learner state in the app
+  try {
+    await fetch(API + '/api/learner/reset', { method: 'POST' });
+  } catch (e) {}
+
+  // Re-check the app to update offline/online UI
+  checkServer();
+}
+
+// =======================================================================
+// BAKED REPLAY — offline demo of add(38, 55)
+// =======================================================================
+
+const BAKED_EVENTS = [
+  { time: 0,    type: 'computation_start', operation: 'add(38, 55)', strategy: 'counting_all', tension: 0.1 },
+  { time: 500,  type: 'computing', tension: 0.15 },
+  { time: 1200, type: 'computing', tension: 0.25 },
+  { time: 2000, type: 'computing', tension: 0.4 },
+  { time: 3000, type: 'computing', tension: 0.55 },
+  { time: 4000, type: 'computing', tension: 0.7 },
+  { time: 5000, type: 'computing', tension: 0.85 },
+  { time: 5500, type: 'crisis_detected', crisis_type: 'efficiency_crisis', tension: 0.95 },
+  { time: 6000, type: 'crisis_classified', classification: 'efficiency_crisis', tension: 1.0 },
+  { time: 6500, type: 'oracle_consulted', tension: 0.9 },
+  { time: 7000, type: 'synthesis_attempted', new_strategy: 'counting_on', tension: 0.7 },
+  { time: 7500, type: 'validation_passed', tension: 0.5 },
+  { time: 8000, type: 'retry', strategy: 'counting_on', tension: 0.3 },
+  { time: 9000, type: 'computing', tension: 0.2 },
+  { time: 10000, type: 'computation_success', result: 93, tension: 0.1 },
+];
+
+// Discourse-level descriptions for each event type
+const BAKED_DESCRIPTIONS = {
+  freshman: {
+    computation_start: (e) => `Starting ${e.operation}. Counting everything...`,
+    computing: (e) => {
+      if (e.tension < 0.3) return 'Counting...';
+      if (e.tension < 0.6) return 'Still counting... getting slow...';
+      if (e.tension < 0.8) return 'This is taking a while...';
+      return 'Almost out of time...';
+    },
+    crisis_detected: () => 'CRISIS! Counting is too slow!',
+    crisis_classified: () => 'The machine can\'t finish in time.',
+    oracle_consulted: () => 'Looking for help from the teacher...',
+    synthesis_attempted: (e) => `Found a shortcut: ${e.new_strategy.replace('_', ' ')}!`,
+    validation_passed: () => 'Checking if the shortcut works...',
+    retry: () => 'Trying again with the new method!',
+    computation_success: (e) => `Done! The answer is ${e.result}.`,
+  },
+  mathEd: {
+    computation_start: (e) => `Direct modeling: ${e.operation}, strategy=${e.strategy.replace('_', '-')}`,
+    computing: (e) => {
+      if (e.tension < 0.3) return `Enumerating: cost O(A+B), tension=${(e.tension * 100).toFixed(0)}%`;
+      if (e.tension < 0.6) return `Inference accumulating: tension=${(e.tension * 100).toFixed(0)}%`;
+      if (e.tension < 0.8) return `Approaching resource limit: tension=${(e.tension * 100).toFixed(0)}%`;
+      return `Perturbation imminent: tension=${(e.tension * 100).toFixed(0)}%`;
+    },
+    crisis_detected: (e) => `Perturbation: ${e.crisis_type.replace('_', ' ')}`,
+    crisis_classified: (e) => `Crisis classified: ${e.classification.replace('_', ' ')}`,
+    oracle_consulted: () => 'Consulting CGI strategy repertoire...',
+    synthesis_attempted: (e) => `Strategy acquired: ${e.new_strategy.replace('_', '-')} (O(B) cost)`,
+    validation_passed: () => 'Validation: strategy produces correct result',
+    retry: (e) => `Retry with ${e.strategy.replace('_', '-')}`,
+    computation_success: (e) => `Success: result=${e.result}`,
+  },
+  philosophy: {
+    computation_start: (e) => `solve/6 computing ${e.operation}, strategy=${e.strategy}`,
+    computing: (e) => {
+      if (e.tension < 0.6) return `solve/6 step, tension=${e.tension.toFixed(2)}`;
+      return `resource_pressure(${e.tension.toFixed(2)})`;
+    },
+    crisis_detected: (e) => `perturbation(${e.crisis_type})`,
+    crisis_classified: (e) => `classify_crisis(${e.classification})`,
+    oracle_consulted: () => 'consult_oracle — teacher creates conditions',
+    synthesis_attempted: (e) => `synthesize(${e.new_strategy}) — wrapper, not construction`,
+    validation_passed: () => 'validate(strategy) — structural check only',
+    retry: (e) => `retry(solve/6, ${e.strategy})`,
+    computation_success: (e) => `success(${e.result}) — tension relaxes`,
+  },
+};
+
+// Convert baked events into the tension_history format the replay engine expects
+function bakedEventsToTensionHistory() {
+  const history = [];
+  const totalSteps = 80; // simulate ~80 inference steps
+
+  for (let i = 0; i < BAKED_EVENTS.length; i++) {
+    const evt = BAKED_EVENTS[i];
+    const nextEvt = BAKED_EVENTS[i + 1];
+    const startStep = Math.round((evt.time / 10000) * totalSteps);
+    const endStep = nextEvt ? Math.round((nextEvt.time / 10000) * totalSteps) : totalSteps;
+    const stepsInSegment = Math.max(1, endStep - startStep);
+
+    for (let s = 0; s < stepsInSegment; s++) {
+      const step = startStep + s;
+      const t = s / stepsInSegment;
+      const nextTension = nextEvt ? nextEvt.tension : evt.tension;
+      const tension = evt.tension + (nextTension - evt.tension) * t;
+      const level = tension * 50; // scale to match chart expectations
+
+      let context, stability;
+      if (evt.type === 'crisis_detected' || evt.type === 'crisis_classified') {
+        context = 'compressive';
+        stability = -0.5 - tension * 0.5;
+      } else if (evt.type === 'oracle_consulted' || evt.type === 'synthesis_attempted') {
+        context = 'expansive';
+        stability = 0.1 + (1 - tension) * 0.3;
+      } else if (evt.type === 'computation_success' || (evt.type === 'retry' && tension < 0.3)) {
+        context = 'relaxation';
+        stability = 0.5 + (1 - tension) * 0.5;
+      } else if (tension > 0.7) {
+        context = 'compressive';
+        stability = 0.3 - tension * 0.8;
+      } else {
+        context = 'neutral';
+        stability = 0.8 - tension * 0.5;
+      }
+
+      history.push({ step, level, stability, context });
+    }
+  }
+
+  return history;
+}
+
+// Get the description for a baked event at the current discourse level
+function getBakedDescription(evt) {
+  const level = typeof Discourse !== 'undefined' ? Discourse.current() : 'freshman';
+  const descs = BAKED_DESCRIPTIONS[level] || BAKED_DESCRIPTIONS.freshman;
+  const fn = descs[evt.type];
+  return fn ? fn(evt) : evt.type;
+}
+
+// CSS class for event type
+function bakedEventClass(type) {
+  switch (type) {
+    case 'computation_start': return 'baked-start';
+    case 'computing': return 'baked-computing';
+    case 'crisis_detected':
+    case 'crisis_classified': return 'baked-crisis';
+    case 'oracle_consulted': return 'baked-oracle';
+    case 'synthesis_attempted': return 'baked-synthesis';
+    case 'validation_passed': return 'baked-validation';
+    case 'retry': return 'baked-retry';
+    case 'computation_success': return 'baked-success';
+    default: return 'baked-computing';
+  }
+}
+
+// Log a baked event into the event log
+function logBakedEvent(evt, stepNum) {
+  const div = document.createElement('div');
+  div.classList.add('event-entry', bakedEventClass(evt.type));
+  const desc = getBakedDescription(evt);
+  div.innerHTML = `
+    <span class="step">${stepNum}</span>
+    <span class="ctx">${evt.type.replace(/_/g, ' ')}</span>
+    <span class="vals">${desc}</span>
+  `;
+  eventLogEl.appendChild(div);
+  eventLogEl.scrollTop = eventLogEl.scrollHeight;
+}
+
+function runBakedReplay() {
+  // Stop any existing replay
+  stopReplay();
+  if (bakedReplayTimer) clearTimeout(bakedReplayTimer);
+  clearEventLog();
+
+  // Generate tension history from baked events
+  tensionData = bakedEventsToTensionHistory();
+  chart.setData(tensionData);
+
+  // Fill controls to show what we're computing
+  document.getElementById('op').value = 'add';
+  document.getElementById('inp-a').value = 38;
+  document.getElementById('inp-b').value = 55;
+  document.getElementById('inp-limit').value = 90;
+
+  // Reveal viz grid immediately
+  totalRuns++;
+  hasCrisis = true; // this scenario has a crisis
+  checkPhases();
+
+  // Summary entry
+  const summary = document.createElement('div');
+  summary.classList.add('event-entry');
+  summary.innerHTML = `
+    <span class="step">--</span>
+    <span class="ctx" style="color:${C.snap}">demo</span>
+    <span class="vals">baked replay: add(38, 55) — counting-all to counting-on</span>
+  `;
+  eventLogEl.appendChild(summary);
+
+  // Play baked events with timing, then drive tension replay
+  let evtIdx = 0;
+  const speed = parseInt(document.getElementById('replay-speed').value) || 5;
+  const timeScale = 1 / speed; // speed up the baked timeline
+
+  function playNextEvent() {
+    if (evtIdx >= BAKED_EVENTS.length) {
+      // All baked events logged. Now run the tension-driven replay.
+      startReplay();
+      return;
+    }
+
+    const evt = BAKED_EVENTS[evtIdx];
+    logBakedEvent(evt, evtIdx + 1);
+    evtIdx++;
+
+    // Calculate delay to next event
+    if (evtIdx < BAKED_EVENTS.length) {
+      const nextEvt = BAKED_EVENTS[evtIdx];
+      const delay = Math.max(50, (nextEvt.time - evt.time) * timeScale);
+      bakedReplayTimer = setTimeout(playNextEvent, delay);
+    } else {
+      // Last event — small pause then start tension replay
+      bakedReplayTimer = setTimeout(() => startReplay(), 200);
+    }
+  }
+
+  playNextEvent();
+}
+
+// =======================================================================
+// INIT
+// =======================================================================
+var matrixAuto = new MatrixAutomaton();
+var tapeRenderer = new TapeRenderer();
+var chart = new TensionChart();
+var zeeman = new ZeemanMachine(matrixAuto, tapeRenderer);
+
+// Speed display
+document.getElementById('replay-speed').addEventListener('input', e => {
+  document.getElementById('speed-val').textContent = e.target.value;
+});
+
+// Check the app on load
+checkServer();
+
+// Resize
+let rTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(rTimer);
+  rTimer = setTimeout(() => { zeeman.resize(); chart.resize(); }, 200);
+});
+</script>
+<script src="shared.js"></script>
+</body>
+</html>

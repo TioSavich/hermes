@@ -4,7 +4,7 @@
 Three jobs, all confined to the bundle directory (the repository's own files
 are never modified):
 
-1. Prune the bundle's copy of representation/asset_manifest.json to the
+1. Prune the bundle's copy of hermes/representation/asset_manifest.json to the
    assets whose image file was actually bundled, and record the exclusion in
    the manifest's note field. The ASKTM student-work images ship with the
    repository; coded figures are included, but the fine-grained source coding
@@ -24,7 +24,7 @@ import json
 import os
 import sys
 
-MANIFEST_REL = os.path.join("representation", "asset_manifest.json")
+MANIFEST_REL = os.path.join("hermes", "representation", "asset_manifest.json")
 
 
 def asset_storage_path(bundle, url_path):

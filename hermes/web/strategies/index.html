@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Prolog-driven Strategy Visualizations</title>
+<link rel="stylesheet" href="strategy_shell.css">
+</head>
+<body>
+<div class="container">
+  <h1>Strategy Visualizations</h1>
+  <p class="meta">Each page below executes a strategy in Prolog (<code>knowledge/strategies/math/*.pl</code>) and renders the resulting step trace and number-line trajectory. The JavaScript only renders; it does not compute.</p>
+
+  <h2>Addition</h2>
+  <div class="strategy-grid">
+    <a href="SAR_ADD_COBO.html"><strong>COBO</strong><span>Counting On by Bases and Ones</span></a>
+    <a href="SAR_ADD_CHUNKING.html"><strong>Chunking</strong><span>Chunking by Bases and Then Ones</span></a>
+    <a href="SAR_ADD_RMB.html"><strong>RMB</strong><span>Rearranging to Make Bases</span></a>
+    <a href="SAR_ADD_Rounding.html"><strong>Rounding</strong><span>Rounding and Adjusting</span></a>
+  </div>
+
+  <h2>Subtraction</h2>
+  <div class="strategy-grid">
+    <a href="SAR_SUB_COBO.html"><strong>COBO (Missing Addend)</strong><span>Count on from S to M</span></a>
+    <a href="SAR_SUB_CBBO.html"><strong>CBBO (Take Away)</strong><span>Count back from M</span></a>
+    <a href="SAR_SUB_Decomposition.html"><strong>Decomposition</strong><span>Column subtraction with borrowing</span></a>
+    <a href="SAR_SUB_Rounding.html"><strong>Sub Rounding</strong><span>Round both, subtract, adjust</span></a>
+    <a href="SAR_SUB_Sliding.html"><strong>Sliding</strong><span>Add K to both (preserves difference)</span></a>
+    <a href="SAR_SUB_CHUNKING_A.html"><strong>Chunking A</strong><span>Backward chunks of S</span></a>
+    <a href="SAR_SUB_CHUNKING_B.html"><strong>Chunking B</strong><span>Forward count from S to M</span></a>
+    <a href="SAR_SUB_CHUNKING_C.html"><strong>Chunking C</strong><span>Strategic backward chunks</span></a>
+  </div>
+
+  <h2>Multiplication</h2>
+  <div class="strategy-grid">
+    <a href="SMR_MULT_C2C.html"><strong>C2C</strong><span>Coordinating two counts</span></a>
+    <a href="SMR_MULT_CBO.html"><strong>CBO</strong><span>Group redistribution</span></a>
+    <a href="SMR_MULT_Commutative_Reasoning.html"><strong>Commutative Reasoning</strong><span>Repeated addition</span></a>
+    <a href="SMR_MULT_DR.html"><strong>DR</strong><span>Distributive split</span></a>
+  </div>
+
+  <h2>Division</h2>
+  <div class="strategy-grid">
+    <a href="SMR_DIV_Dealing_By_Ones.html"><strong>Dealing by Ones</strong><span>Round-robin distribute</span></a>
+    <a href="SMR_DIV_UCR.html"><strong>UCR</strong><span>Repeated addition until E</span></a>
+    <a href="SMR_DIV_CBO.html"><strong>CGOB</strong><span>Conversion to Groups Other than Bases (dispatcher gap)</span></a>
+    <a href="SMR_DIV_IDP.html"><strong>IDP</strong><span>(dispatcher gap — see page)</span></a>
+  </div>
+
+  <p class="meta" style="margin-top:24px">Sliding and RMB share the K-count phase (count up to next base). Compare them side-by-side to see Hackenberg's claim about Sliding deriving from RMB.</p>
+
+  <section class="grounding-queue" aria-labelledby="grounding-queue-title">
+    <h2 id="grounding-queue-title">Grounding Queue</h2>
+    <ol id="groundingQueueList" class="grounding-queue-list"></ol>
+  </section>
+</div>
+<script>
+(async function enrichStrategyTopology() {
+  const operations = ['add', 'subtract', 'multiply', 'divide'];
+  const grids = Array.from(document.querySelectorAll('.strategy-grid'));
+  for (let i = 0; i < operations.length && i < grids.length; i++) {
+    try {
+      const op = operations[i];
+      const res = await fetch(`/api/strategies?operation=${encodeURIComponent(op)}`);
+      const data = await res.json();
+      const byStrategy = new Map();
+      for (const context of data.strategy_contexts || []) {
+        byStrategy.set(context.strategy, context);
+      }
+      grids[i].querySelectorAll('a').forEach(card => {
+        const name = card.querySelector('strong')?.textContent?.trim();
+        const context = byStrategy.get(name);
+        if (!context || context.available === false) return;
+        const badge = document.createElement('span');
+        badge.className = 'topology-badge';
+        badge.textContent = `${context.semantic_label} · ${context.deformation_count} deformation(s) · ${context.grounded_deformation_count} grounded`;
+        card.appendChild(badge);
+      });
+    } catch (_) {
+      return;
+    }
+  }
+})();
+
+(async function renderGroundingQueue() {
+  const list = document.getElementById('groundingQueueList');
+  if (!list) return;
+  try {
+    const res = await fetch('/api/action/topology/gaps?limit=5');
+    const data = await res.json();
+    list.innerHTML = '';
+    for (const gap of data.gaps || []) {
+      const li = document.createElement('li');
+      const pair = `${gap.operation}:${gap.productive_kind} -> ${gap.deformation_kind}`;
+      li.innerHTML = `<code></code><span></span><small></small>`;
+      li.querySelector('code').textContent = pair;
+      li.querySelector('span').textContent = `${gap.binding_total} binding(s) · ${gap.delta_type}`;
+      li.querySelector('small').textContent = gap.notebooklm_query;
+      list.appendChild(li);
+    }
+  } catch (_) {
+    list.remove();
+  }
+})();
+</script>
+</body>
+</html>

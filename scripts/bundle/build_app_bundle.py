@@ -163,11 +163,11 @@ inside this folder).
 # file itself for the no-server pages, the local server URL for the rest.
 CONSOLE_URL = "http://127.0.0.1:8765"
 SURFACES_OFFLINE = [
-    ("Lesson monitoring chart", "more-zeeman/monitoring_chart.html",
+    ("Lesson monitoring chart", "hermes/web/monitoring_chart.html",
      "The chart a teacher monitors an IM lesson with: the strategies the "
      "lesson calls for and the student work that signals each one. Draws "
      "from embedded sample data."),
-    ("Fraction-bars calculator", "more-zeeman/fraction-bars/calculator.html",
+    ("Fraction-bars calculator", "hermes/web/fraction-bars/calculator.html",
      "Fraction arithmetic drawn as partitioned bars. The embedded samples "
      "draw immediately; the Calculate button needs the console running."),
 ]
@@ -176,11 +176,11 @@ SURFACES_SERVER = [
      "Paste or drop student work, check strategy and misconception claims "
      "against the Prolog worker, and build discussion reports.",
      CONSOLE_URL + "/"),
-    ("Student-work gallery", "more-zeeman/gallery.html",
+    ("Student-work gallery", "hermes/web/gallery.html",
      "Coded work samples from the research literature, organized by "
      "strategy. Fetches its catalog from the server.",
      CONSOLE_URL + "/more-zeeman/gallery.html"),
-    ("Deontic scoreboard", "more-zeeman/scoreboard.html",
+    ("Deontic scoreboard", "hermes/web/scoreboard.html",
      "The monitoring chart's derived figures — strategy incompatibilities "
      "and expressive power — as the Prolog worker reports them. Asks the "
      "live worker first and names its data source on the page.",

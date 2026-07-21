@@ -18,7 +18,7 @@ proves the concept in context.
   needs a companion evidence fact; `merge_gate_baseline.txt` lists the facts
   grandfathered before the gate.
 - `representation_spine.pl` — crosswalks coded student-work assets, reading
-  `representation/asset_manifest.json`.
+  `hermes/representation/asset_manifest.json`.
 - `families/` — the 38 crosswalk families. See `families/README.md`.
 
 ## How it loads

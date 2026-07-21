@@ -404,7 +404,7 @@ strategy_action_topology(Op, Strategy, Context) :-
 
 %!  serve_strategy_page(+Request) is det.
 %
-%   GET /strategies/<name>.html — serves files from more-zeeman/strategies/
+%   GET /strategies/<name>.html — serves files from hermes/web/strategies/
 %   with a <base> tag pointing at /assets/strategies/ so relative CSS loads.
 serve_strategy_page(Request) :-
     cors_enable(Request, [methods([get])]),
@@ -414,7 +414,7 @@ serve_strategy_page(Request) :-
     source_file(serve_bridge(_), ThisFile),
     file_directory_name(ThisFile, PrologDir),
     file_directory_name(PrologDir, RepoRoot),
-    atom_concat(RepoRoot, '/more-zeeman/strategies/index.html', IndexPath),
+    atom_concat(RepoRoot, '/hermes/web/strategies/index.html', IndexPath),
     ( exists_file(IndexPath) ->
         read_file_to_string(IndexPath, HTML, []),
         inject_strategies_base_tag(HTML, Patched),
@@ -430,7 +430,7 @@ serve_strategy_page(Request) :-
     source_file(serve_bridge(_), ThisFile),
     file_directory_name(ThisFile, PrologDir),
     file_directory_name(PrologDir, RepoRoot),
-    atomic_list_concat([RepoRoot, '/more-zeeman/strategies/', RelPath], FullPath),
+    atomic_list_concat([RepoRoot, '/hermes/web/strategies/', RelPath], FullPath),
     ( exists_file(FullPath) ->
         ( atom_concat(_, '.html', RelPath) ->
             read_file_to_string(FullPath, HTML, []),
@@ -567,7 +567,7 @@ serve_bridge(Request) :-
     source_file(serve_bridge(_), ThisFile),
     file_directory_name(ThisFile, PrologDir),
     file_directory_name(PrologDir, RepoRoot),
-    atom_concat(RepoRoot, '/more-zeeman/bridge.html', BridgePath),
+    atom_concat(RepoRoot, '/hermes/web/bridge.html', BridgePath),
     (   exists_file(BridgePath)
     ->  read_file_to_string(BridgePath, HTML, []),
         inject_base_tag(HTML, Patched),
@@ -582,7 +582,7 @@ serve_fractal(Request) :-
     source_file(serve_bridge(_), ThisFile),
     file_directory_name(ThisFile, PrologDir),
     file_directory_name(PrologDir, RepoRoot),
-    atom_concat(RepoRoot, '/more-zeeman/fractal.html', FractalPath),
+    atom_concat(RepoRoot, '/hermes/web/fractal.html', FractalPath),
     (   exists_file(FractalPath)
     ->  read_file_to_string(FractalPath, HTML, []),
         inject_base_tag(HTML, Patched),
@@ -597,7 +597,7 @@ serve_landing(Request) :-
     source_file(serve_bridge(_), ThisFile),
     file_directory_name(ThisFile, PrologDir),
     file_directory_name(PrologDir, RepoRoot),
-    atom_concat(RepoRoot, '/more-zeeman/landing.html', LandingPath),
+    atom_concat(RepoRoot, '/hermes/web/landing.html', LandingPath),
     (   exists_file(LandingPath)
     ->  read_file_to_string(LandingPath, HTML, []),
         inject_base_tag(HTML, Patched),
@@ -624,7 +624,7 @@ serve_coordination_page(Request) :-
     source_file(serve_bridge(_), ThisFile),
     file_directory_name(ThisFile, PrologDir),
     file_directory_name(PrologDir, RepoRoot),
-    atom_concat(RepoRoot, '/more-zeeman/coordination.html', CoordinationPath),
+    atom_concat(RepoRoot, '/hermes/web/coordination.html', CoordinationPath),
     (   exists_file(CoordinationPath)
     ->  read_file_to_string(CoordinationPath, HTML, []),
         inject_base_tag(HTML, Patched),
@@ -779,7 +779,7 @@ serve_html_string(HTML) :-
     set_stream(Out, encoding(OldEnc)).
 
 %!  serve_zeeman_asset(+Request) is det.
-%   GET /assets/* — serves static files from more-zeeman/ (shared.js, etc.)
+%   GET /assets/* — serves static files from hermes/web/ (shared.js, etc.)
 %   so that pages served via the Prolog server can load their JS dependencies.
 serve_zeeman_asset(Request) :-
     cors_enable(Request, [methods([get])]),
@@ -789,7 +789,7 @@ serve_zeeman_asset(Request) :-
     source_file(serve_bridge(_), ThisFile),
     file_directory_name(ThisFile, PrologDir),
     file_directory_name(PrologDir, RepoRoot),
-    atomic_list_concat([RepoRoot, '/more-zeeman/', RelPath], AssetPath),
+    atomic_list_concat([RepoRoot, '/hermes/web/', RelPath], AssetPath),
     (   exists_file(AssetPath)
     ->  asset_content_type(RelPath, ContentType),
         format('Content-type: ~w~n~n', [ContentType]),

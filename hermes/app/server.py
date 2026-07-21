@@ -34,9 +34,9 @@ WEB_ROOT = APP_DIR / "web"
 RUNTIME = APP_DIR / "runtime"
 REPO_ROOT = APP_DIR.parents[1]
 STATIC_MOUNTS = {
-    "more-zeeman": REPO_ROOT / "more-zeeman",
+    "more-zeeman": REPO_ROOT / "hermes" / "web",
     "learner": REPO_ROOT / "formal" / "learner",
-    "representation": REPO_ROOT / "representation",
+    "representation": REPO_ROOT / "hermes" / "representation",
     "ASKTM_Data": REPO_ROOT / "data" / "asktm",
     "docs": REPO_ROOT / "docs",
     "docs/research_assets": REPO_ROOT / "data" / "research_assets",

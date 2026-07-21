@@ -1,10 +1,8 @@
 data/	8155
-hermes/	3628
+hermes/	3780
 curriculum/	934
 knowledge/	268
-more-zeeman/	144
 formal/	118
 scripts/	10
-representation/	8
 docs/	3
 (root)	2

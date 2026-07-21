@@ -696,7 +696,7 @@ mua_label_to_metaphor_id(balance_preservation_schema, balance_preservation_schem
 %% display-friendly short names queryable from Prolog rather than
 %% hardcoded in JavaScript. The export script reads them through and
 %% emits `kind` and `short_name` fields on each metaphor in
-%% `more-zeeman/mua_data.json`. Adding a new metaphor to
+%% `hermes/web/mua_data.json`. Adding a new metaphor to
 %% `grounding_metaphor_definition/4` should be accompanied by a fact
 %% here so the MUDs page picks it up without further JS edits.
 

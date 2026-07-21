@@ -818,7 +818,7 @@ lesson_wiring_issue(
 
 %!  expressive_power_comparison_json(-JSONDict) is det.
 %
-%   JSON-shaped dict consumed by the comparison view in more-zeeman/scoreboard.html.
+%   JSON-shaped dict consumed by the comparison view in hermes/web/scoreboard.html.
 expressive_power_comparison_json(_{
     title: "Expressive Power Comparison: IM vs Ray-style Traditional Lessons",
     claim_register: _{

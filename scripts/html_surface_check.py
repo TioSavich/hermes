@@ -13,7 +13,7 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_WEB_ROOTS = [
     ROOT / "hermes" / "app" / "web",
-    ROOT / "more-zeeman",
+    ROOT / "hermes" / "web",
 ]
 DEFAULT_SERVER = ROOT / "hermes" / "app" / "server.py"
 
@@ -96,8 +96,8 @@ def asset_exists(html: Path, target: str, web_roots: list[Path]) -> bool:
     normalized = target.replace("\\", "/")
     marker = "more-zeeman/"
     if marker in normalized:
-        rel = normalized[normalized.index(marker):]
-        return (ROOT / rel).exists()
+        rel = normalized[normalized.index(marker) + len(marker):]
+        return (ROOT / "hermes" / "web" / rel).exists()
     return False
 
 

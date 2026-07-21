@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Export the MUA + grounding-metaphor registry as JSON for the MUD page.
 
-The HTML page at ``more-zeeman/muds.html`` renders Meaning-Use Diagrams from a
+The HTML page at ``hermes/web/muds.html`` renders Meaning-Use Diagrams from a
 pre-extracted JSON file rather than calling Prolog at request time. This script
 runs swipl in batch mode, queries the two registries that hold the data
 (``formal/pml/mua_relations.pl`` and ``formal/formalization/grounding_metaphors.pl``), and
-writes a single JSON object to ``more-zeeman/mua_data.json``.
+writes a single JSON object to ``hermes/web/mua_data.json``.
 
 The JSON schema is documented in the page; the keys correspond one-to-one to
 Prolog predicates. The script is idempotent: running it again will produce
@@ -36,7 +36,7 @@ import tempfile
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-OUT_PATH = REPO_ROOT / "more-zeeman" / "mua_data.json"
+OUT_PATH = REPO_ROOT / "hermes" / "web" / "mua_data.json"
 PATHS_PL = REPO_ROOT / "paths.pl"
 RESEARCH_DB = REPO_ROOT / "data" / "research" / "research_shared.db"
 

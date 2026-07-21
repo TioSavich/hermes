@@ -14,7 +14,7 @@ export_parametric_deformations.py verbatim):
       parametric_fraction_errors:error_evidence/4), so it is a labeled
       misconception, never an unlabeled productive diagram.
       -> a monitoring-chart dict (swipl -l paths.pl, json_write_dict) -> here
-      -> more-zeeman/render/drawer.js buildSvg -> SVG filmstrips.
+      -> hermes/web/render/drawer.js buildSvg -> SVG filmstrips.
 
 Logic lives in Prolog; this script is projection plus layout. It does NOT edit
 representation_grammar.pl or drawer.js. Output under
@@ -193,7 +193,7 @@ def build_lesson_index(chart: dict, cells: list) -> str:
                 "a labeled misconception, gated through the representation grammar's "
                 "misconception lane &mdash; never an unlabeled productive diagram. "
                 "Logic in <code>curriculum/im/lesson_deformation_chart.pl</code>; render "
-                "projected through <code>more-zeeman/render/drawer.js</code>.</p>")
+                "projected through <code>hermes/web/render/drawer.js</code>.</p>")
 
     # group cells by host, then fraction
     by_host: dict[str, list] = {}

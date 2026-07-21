@@ -1,0 +1,178 @@
+{
+  "anticipated_strategies": [
+    {
+      "kind": "count_all_when_count_on_available",
+      "name": "count_all_when_count_on_available",
+      "operation": "addition",
+      "productive": true,
+      "provenance": "text_evidenced",
+      "source": "explicit",
+      "where_to_spot": "[counted_collection,successor_tick,cardinal_sum,composite_start]"
+    },
+    {
+      "kind": "count_on_from_larger",
+      "name": "count_on_from_larger",
+      "operation": "addition",
+      "productive": true,
+      "provenance": "text_evidenced",
+      "source": "explicit",
+      "where_to_spot": "[start_number,counted_addend,successor_tick,cardinal_sum]"
+    },
+    {
+      "kind": "make_ten_drop_leftover",
+      "name": "make_ten_drop_leftover",
+      "operation": "addition",
+      "productive": true,
+      "provenance": "text_evidenced",
+      "source": "explicit",
+      "where_to_spot": "[addend,ten,split,needed_part,leftover,conservation]"
+    },
+    {
+      "kind": "make_ten_split_leftover",
+      "name": "make_ten_split_leftover",
+      "operation": "addition",
+      "productive": true,
+      "provenance": "text_evidenced",
+      "source": "explicit",
+      "where_to_spot": "[addend,ten,split,needed_part,leftover,conservation]"
+    },
+    {
+      "kind": "round_then_adjust",
+      "name": "round_then_adjust",
+      "operation": "addition",
+      "productive": true,
+      "provenance": "text_evidenced",
+      "source": "explicit",
+      "where_to_spot": "[rounding_target,base,adjustment,temporary_sum,conservation]"
+    },
+    {
+      "kind": "repeat_equal_groups",
+      "name": "repeat_equal_groups",
+      "operation": "multiplication",
+      "productive": true,
+      "provenance": "text_evidenced",
+      "source": "explicit",
+      "where_to_spot": "[equal_group,repeated_addend,iteration_count,running_product]"
+    }
+  ],
+  "expressive_power": {
+    "misconception_incompatibilities": 6,
+    "per_operation": [
+      {
+        "cells": 16,
+        "distinct_costs": 48,
+        "operation": "addition",
+        "proof_paths": 180
+      }
+    ],
+    "proof_paths": 180,
+    "strategy_incompatibilities": 12
+  },
+  "lesson_code": "IM-G1-U3-L17",
+  "pml_facts": [
+    {
+      "conclusion": "n(comp_nec(make_ten_strategy_is_lesson_target))",
+      "id": "im_g1_u3_l17_purpose_make_ten",
+      "polarity": "compressive",
+      "premises": [
+        "lesson_purpose(decompose_one_addend_to_make_ten)",
+        "lesson_purpose(add_within_20)"
+      ]
+    },
+    {
+      "conclusion": "o(comp_nec(student_methods_are_recorded_with_equations))",
+      "id": "im_g1_u3_l17_equation_recording",
+      "polarity": "compressive",
+      "premises": [
+        "representation(student_methods_recorded_with_equations)"
+      ]
+    },
+    {
+      "conclusion": "s(exp_poss(student_explains_own_make_ten_strategy))",
+      "id": "im_g1_u3_l17_student_strategy_explanation",
+      "polarity": "expansive",
+      "premises": [
+        "learning_goal(explain_strategies_within_20)",
+        "teacher_prompt(how_do_you_know)",
+        "n(comp_nec(make_ten_strategy_is_lesson_target))"
+      ]
+    },
+    {
+      "conclusion": "The lesson fixes make-ten as a target strategy, records student methods as equations, and opens space for students to explain how their own decomposition strategy works.",
+      "id": "im_g1_u3_l17_lesson",
+      "polarity": "successful_rhythm",
+      "premises": []
+    },
+    {
+      "conclusion": "n(comp_nec(lesson_purpose(IM-G1-U3-L17)))",
+      "id": "im_g1_u3_l17_lesson_purpose",
+      "polarity": "compressive",
+      "premises": [
+        "lesson_text_source(IM-G1-U3-L17)"
+      ]
+    },
+    {
+      "conclusion": "n(comp_nec(lesson_purpose(IM-G1-U3-L17)))",
+      "id": "im_g1_u3_l17_lesson_purpose",
+      "polarity": "compressive",
+      "premises": [
+        "lesson_text_source(IM-G1-U3-L17)"
+      ]
+    },
+    {
+      "conclusion": "s(exp_poss(student_orally_explains_strategy(IM-G1-U3-L17)))",
+      "id": "im_g1_u3_l17_oral_strategy_explanation",
+      "polarity": "expansive",
+      "premises": [
+        "n(comp_nec(lesson_purpose(IM-G1-U3-L17)))"
+      ]
+    },
+    {
+      "conclusion": "The lesson text fixes a lesson purpose and asks students to explain strategies orally.",
+      "id": "im_g1_u3_l17_lesson_text",
+      "polarity": "successful_rhythm",
+      "premises": []
+    },
+    {
+      "conclusion": "The lesson text fixes a lesson purpose and asks students to explain strategies orally.",
+      "id": "im_g1_u3_l17_lesson_text",
+      "polarity": "successful_rhythm",
+      "premises": []
+    },
+    {
+      "conclusion": "text_evidenced",
+      "id": "coverage",
+      "polarity": "coverage",
+      "premises": []
+    }
+  ],
+  "productive_core": "Efficient addition and subtraction strategies use known facts, making ten, decomposing, compensating, counting on/back, and the relation between operations.",
+  "teacher_misconceptions": [
+    {
+      "citation": "ESM_Gray_1999_Knowledge: Gray et al. 1999 corpus bindings ground count-all/count-on divergence in action/object focus and procedural counting.",
+      "commitment_made": "deformed_action(count_on_from_larger,count_all_when_count_on_available,count_all_when_count_on_available)",
+      "discovered_incompatibility_sets": [
+        "[count_all_when_count_on_available,strategy(addition,count_on_from_larger)]"
+      ],
+      "entitlement_lacked": "strategy(addition,count_on_from_larger)",
+      "incompatibility": "strategy(addition,count_on_from_larger)",
+      "name": "count_all_when_count_on_available",
+      "operation": "addition",
+      "provenance": "text_evidenced",
+      "re_anchoring_move": "Re-anchor toward strategy(addition,count_on_from_larger)."
+    },
+    {
+      "citation": "JRME_Steinberg_1985_Instruction: Students treat derived fact strategies as rote procedural rules, indiscriminately applying verbal rules without attending to the relative size of the addends.",
+      "commitment_made": "result_of(double_first_add_one,db_row(37794),15)",
+      "discovered_incompatibility_sets": [
+        "[double_first_add_one,result_of(double_first_add_one,db_row(37794),13)]"
+      ],
+      "entitlement_lacked": "result_of(double_first_add_one,db_row(37794),13)",
+      "incompatibility": "result_of(double_first_add_one,db_row(37794),13)",
+      "name": "double_first_add_one",
+      "operation": "addition",
+      "provenance": "text_evidenced",
+      "re_anchoring_move": "Re-anchor toward result_of(double_first_add_one,db_row(37794),13)."
+    }
+  ]
+}

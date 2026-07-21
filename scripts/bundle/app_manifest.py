@@ -35,9 +35,7 @@ REPO = Path(__file__).resolve().parents[2]
 # Each entry pairs the tree with why it ships; build_app_bundle.py renders
 # these rationales into the bundle's DIRECTORY_MAP.md.
 KEEP_TREES_RATIONALE = [
-    ("hermes", "console app + root .pl modules (encyclopedia, scoring)"),
-    ("more-zeeman", "public web surfaces"),
-    ("representation", "asset manifest the gallery reads"),
+    ("hermes", "console app, public web surfaces, representation assets, and root .pl modules (encyclopedia, scoring)"),
     ("data/asktm", "coded student-work corpus (PNGs + survey text) the gallery serves at /ASKTM_Data/; publicly shared at IU; NSF Grant No. 1561453 acknowledgement in NOTICE.md; coding documents stay in the source project"),
     ("knowledge", "empirically sourced action automata, misconception registry, standards anchors, geometry concepts and corpus, and canonical vocabulary crosswalk"),
     ("curriculum", "IM lesson monitoring KB and attributed teacher-guide inputs"),
@@ -58,15 +56,15 @@ KEEP_FILES = [
     "hermes/app/Hermes.svg",           # launcher icon asset
     "hermes/app/help_grounding.py",    # page-specific context for /api/help
     "knowledge/crosswalk/representation_spine.pl",
-    "more-zeeman/contact-sheets/goal-e-console.png",
-    "more-zeeman/contact-sheets/goal-e-contact-sheet.html",
-    "more-zeeman/contact-sheets/goal-e-contact-sheet.png",
-    "more-zeeman/contact-sheets/goal-e-fraction-bars.png",
-    "more-zeeman/contact-sheets/goal-e-gallery.png",
-    "more-zeeman/contact-sheets/goal-e-monitoring-chart.png",
-    "more-zeeman/contact-sheets/goal-e-scoreboard.png",
-    "more-zeeman/contact-sheets/goal-e-visualizations.png",
-    "more-zeeman/atlas.html",          # generated capability inventory surface
+    "hermes/web/contact-sheets/goal-e-console.png",
+    "hermes/web/contact-sheets/goal-e-contact-sheet.html",
+    "hermes/web/contact-sheets/goal-e-contact-sheet.png",
+    "hermes/web/contact-sheets/goal-e-fraction-bars.png",
+    "hermes/web/contact-sheets/goal-e-gallery.png",
+    "hermes/web/contact-sheets/goal-e-monitoring-chart.png",
+    "hermes/web/contact-sheets/goal-e-scoreboard.png",
+    "hermes/web/contact-sheets/goal-e-visualizations.png",
+    "hermes/web/atlas.html",          # generated capability inventory surface
     "scripts/talkmoves_two_pass.py",   # imported by server.py for masking
     # /api/transcript_report chain: talkmoves_two_pass._load_scorer()
     # path-loads the blind-corpus scorer for transcript numbering.
@@ -161,10 +159,10 @@ KEEP_MD = {
     "curriculum/README.md",
     "curriculum/im/README.md",
     "knowledge/misconceptions/README.md",
-    "more-zeeman/README.md",
-    "more-zeeman/render/README.md",
+    "hermes/web/README.md",
+    "hermes/web/render/README.md",
     "formal/pml/README.md",
-    "representation/README.md",
+    "hermes/representation/README.md",
     "knowledge/standards/README.md",
     "knowledge/strategies/README.md",
     "knowledge/strategies/math/README.md",
@@ -191,7 +189,7 @@ EXCLUDE_PREFIXES = [
     "hermes/scripts/",                     # dev harness scripts (ralph, hardening)
 ]
 EXCLUDE_FILES = {
-    "more-zeeman/bifurcation_verify.py",   # analysis script, not a surface
+    "hermes/web/bifurcation_verify.py",   # analysis script, not a surface
 }
 
 # Gallery figures (--with-figures): the literature student-work images the
@@ -213,6 +211,10 @@ def tracked_files() -> list[str]:
         "ASKTM_Data": "asktm",
         "research": "research",
         "docs/research_assets": "research_assets",
+    }
+    hermes_trees = {
+        "more-zeeman": "web",
+        "representation": "representation",
     }
     files: list[str] = []
     for path in out.stdout.decode().split("\0"):
@@ -244,6 +246,16 @@ def tracked_files() -> list[str]:
         else:
             data_path = ""
         if data_path and (REPO / data_path).is_file():
+            continue
+        for old_tree, new_tree in hermes_trees.items():
+            if path == old_tree or path.startswith(old_tree + "/"):
+                hermes_path = "hermes/" + new_tree + path[len(old_tree):]
+                if (REPO / hermes_path).is_file():
+                    files.append(hermes_path)
+                    break
+        else:
+            hermes_path = ""
+        if hermes_path and (REPO / hermes_path).is_file():
             continue
         tree, separator, remainder = path.partition("/")
         relocated = f"formal/{tree}/{remainder}" if separator and tree in relocated_trees else ""

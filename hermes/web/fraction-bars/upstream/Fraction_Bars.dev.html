@@ -1,0 +1,5548 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fraction Bars</title>
+<style>/* FB_Summer_2026/src/styles/app.css
+ *
+ * Skinnable, full-viewport Fraction Bars chrome.
+ *
+ * THEME SYSTEM ----------------------------------------------------------------
+ * Every chrome color / font / radius is a CSS custom property declared on
+ * :root with the ORIGINAL drab values as defaults (white bordered buttons,
+ * Helvetica, #EFEFEF grooved canvas). A skin is just an override block keyed on
+ * html[data-theme="…"]; the theme picker toggles that attribute. The SVG
+ * renderer reads --fb-ink / --fb-split-stroke / --fb-guide / --fb-label-halo /
+ * --fb-canvas-font off the canvas via getComputedStyle, so the canvas marks
+ * re-skin too -- all CSP-safe (no inline styles, no eval), all in one hashed
+ * stylesheet. No external fonts (sealed/offline): skins use system stacks.
+ *
+ * LAYOUT ----------------------------------------------------------------------
+ * .fb-app is a full-height flex column: header / toolbar / (hide banner) /
+ * stage. The stage takes the remaining height and the SVG fits inside it
+ * (preserveAspectRatio="meet"), so nothing ever scrolls to reach a tool.
+ */
+
+:root {
+	color-scheme: light;
+
+	/* shell */
+	--fb-bg: #ffffff;
+	--fb-bg-image: none;
+	--fb-fg: #000000;
+	--fb-font-ui: Helvetica, Arial, sans-serif;
+	--fb-font-head: Helvetica, Arial, sans-serif;
+	--fb-title-size: 19px;
+	--fb-title-weight: 700;
+	--fb-title-tracking: normal;
+	--fb-title-transform: none;
+	--fb-divider: rgba(0, 0, 0, 0.16);
+
+	/* buttons */
+	--fb-btn-bg: #ffffff;
+	--fb-btn-fg: #000000;
+	--fb-btn-border: #999999;
+	--fb-btn-hover-bg: #f4f4f4;
+	--fb-btn-active-bg: #eeeeee;
+	--fb-btn-active-border: #000000;
+	--fb-btn-active-fg: #000000;
+	--fb-btn-radius: 0px;
+
+	/* accents */
+	--fb-accent: #2a64d6;
+	--fb-accent-fg: #ffffff;
+
+	/* canvas + canvas marks (read by the SVG renderer) */
+	--fb-canvas-bg: #efefef;
+	--fb-canvas-border-color: #808080;
+	--fb-canvas-border-style: groove;
+	--fb-canvas-radius: 0px;
+	--fb-stage-bg: transparent;
+	--fb-ink: #000000;
+	--fb-split-stroke: #ff0000;
+	--fb-guide: #ff0000;
+	--fb-label-halo: rgba(255, 255, 255, 0.72);
+	--fb-canvas-font: Helvetica, Arial, sans-serif;
+
+	/* panels (gallery + dialogs) */
+	--fb-panel-bg: #fafafa;
+	--fb-panel-border: #808080;
+}
+
+/* ======================================================================== */
+/* SKINS                                                                     */
+/* ======================================================================== */
+
+/* Parchment / gold -- "Hermes" hermeneutic-calculator lineage. */
+html[data-theme="hermes"] {
+	--fb-bg: #e7d9bb;
+	--fb-bg-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.13 0 0 0 0 0.08 0 0 0 0.05 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+	--fb-fg: #2a2418;
+	--fb-font-ui: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+	--fb-font-head: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+	--fb-title-tracking: 0.005em;
+	--fb-divider: rgba(42, 36, 24, 0.22);
+	--fb-btn-bg: #f4ead6;
+	--fb-btn-fg: #2a2418;
+	--fb-btn-border: #b78930;
+	--fb-btn-hover-bg: #efe1bf;
+	--fb-btn-active-bg: #d4a747;
+	--fb-btn-active-border: #2a2418;
+	--fb-btn-active-fg: #2a2418;
+	--fb-btn-radius: 6px;
+	--fb-accent: #b78930;
+	--fb-accent-fg: #2a2418;
+	--fb-canvas-bg: #f4ead6;
+	--fb-canvas-border-color: #b78930;
+	--fb-canvas-border-style: solid;
+	--fb-canvas-radius: 8px;
+	--fb-ink: #2a2418;
+	--fb-split-stroke: #c45a3e;
+	--fb-guide: #c45a3e;
+	--fb-label-halo: rgba(244, 234, 214, 0.84);
+	--fb-canvas-font: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+	--fb-panel-bg: #f4ead6;
+	--fb-panel-border: #b78930;
+}
+
+/* Crimson academic worksheet -- "IU math-ed" lineage. Cream + crimson, not brown:
+ * pale cream surfaces, warm-but-neutral lines (no olive/tan), crimson accents. */
+html[data-theme="iu"] {
+	--fb-bg: #f1e8d4;
+	--fb-bg-image: none;
+	--fb-fg: #2a1c1c;
+	--fb-font-ui: Georgia, "Times New Roman", serif;
+	--fb-font-head: Georgia, "Times New Roman", serif;
+	--fb-title-tracking: -0.01em;
+	--fb-divider: rgba(153, 0, 0, 0.2);
+	--fb-btn-bg: #fffdf7;
+	--fb-btn-fg: #2a1c1c;
+	--fb-btn-border: #d8c2bd;
+	--fb-btn-hover-bg: #fbeeee;
+	--fb-btn-active-bg: #990000;
+	--fb-btn-active-border: #7a0000;
+	--fb-btn-active-fg: #ffffff;
+	--fb-btn-radius: 2px;
+	--fb-accent: #990000;
+	--fb-accent-fg: #ffffff;
+	--fb-canvas-bg: #fffdf7;
+	--fb-canvas-border-color: #d8c2bd;
+	--fb-canvas-border-style: solid;
+	--fb-canvas-radius: 3px;
+	--fb-ink: #2a1c1c;
+	--fb-split-stroke: #990000;
+	--fb-guide: #990000;
+	--fb-label-halo: rgba(255, 253, 247, 0.9);
+	--fb-canvas-font: Georgia, "Times New Roman", serif;
+	--fb-panel-bg: #fffdf7;
+	--fb-panel-border: #d8c2bd;
+}
+/* IU crimson title accent. */
+html[data-theme="iu"] h1.bar_title { color: #990000; }
+
+/* Chalkboard -- playful dark slate with chalk marks. */
+html[data-theme="chalk"] {
+	--fb-bg: #1f302b;
+	--fb-bg-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 0.95 0 0 0 0.04 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+	--fb-fg: #f3efe6;
+	--fb-font-ui: "Chalkboard SE", "Comic Sans MS", "Segoe Print", "Bradley Hand", cursive;
+	--fb-font-head: "Chalkboard SE", "Comic Sans MS", "Segoe Print", cursive;
+	--fb-divider: rgba(243, 239, 230, 0.22);
+	--fb-btn-bg: #2c403a;
+	--fb-btn-fg: #f3efe6;
+	--fb-btn-border: #5e7a6f;
+	--fb-btn-hover-bg: #38504a;
+	--fb-btn-active-bg: #f6d04d;
+	--fb-btn-active-border: #f6d04d;
+	--fb-btn-active-fg: #1f302b;
+	--fb-btn-radius: 11px;
+	--fb-accent: #f6d04d;
+	--fb-accent-fg: #1f302b;
+	--fb-canvas-bg: #243530;
+	--fb-canvas-border-color: #0c1512;
+	--fb-canvas-border-style: solid;
+	--fb-canvas-radius: 7px;
+	--fb-ink: #f3efe6;
+	--fb-split-stroke: #f6d04d;
+	--fb-guide: #ff9a7a;
+	--fb-label-halo: rgba(16, 26, 22, 0.5);
+	--fb-canvas-font: "Chalkboard SE", "Comic Sans MS", cursive;
+	--fb-panel-bg: #2c403a;
+	--fb-panel-border: #5e7a6f;
+}
+
+/* Bubblegum -- playful bright candy palette with pill buttons. */
+html[data-theme="candy"] {
+	--fb-bg: #fff0f6;
+	--fb-bg-image: none;
+	--fb-fg: #5a2a4a;
+	--fb-font-ui: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
+	--fb-font-head: "Trebuchet MS", "Segoe UI", sans-serif;
+	--fb-divider: rgba(90, 42, 74, 0.16);
+	--fb-btn-bg: #ffffff;
+	--fb-btn-fg: #5a2a4a;
+	--fb-btn-border: #ff8fc4;
+	--fb-btn-hover-bg: #ffe3f0;
+	--fb-btn-active-bg: #ff5ca8;
+	--fb-btn-active-border: #e23d8a;
+	--fb-btn-active-fg: #ffffff;
+	--fb-btn-radius: 18px;
+	--fb-accent: #ff5ca8;
+	--fb-accent-fg: #ffffff;
+	--fb-canvas-bg: #fffafd;
+	--fb-canvas-border-color: #ff8fc4;
+	--fb-canvas-border-style: solid;
+	--fb-canvas-radius: 18px;
+	--fb-ink: #5a2a4a;
+	--fb-split-stroke: #7a5cff;
+	--fb-guide: #ff5ca8;
+	--fb-label-halo: rgba(255, 255, 255, 0.86);
+	--fb-canvas-font: "Trebuchet MS", "Segoe UI", sans-serif;
+	--fb-panel-bg: #fffafd;
+	--fb-panel-border: #ff8fc4;
+}
+
+/* ======================================================================== */
+/* BASE                                                                      */
+/* ======================================================================== */
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+body, p, td {
+	font-family: var(--fb-font-ui);
+	font-size: 12px;
+	color: var(--fb-fg);
+}
+body {
+	background: var(--fb-bg);
+	overflow: hidden; /* the stage fits; the page itself never scrolls */
+}
+a { cursor: pointer; }
+[hidden] { display: none !important; }
+
+h1.bar_title {
+	font-family: var(--fb-font-head);
+	font-size: var(--fb-title-size);
+	font-weight: var(--fb-title-weight);
+	letter-spacing: var(--fb-title-tracking);
+	text-transform: var(--fb-title-transform);
+	margin: 0;
+	color: var(--fb-fg);
+}
+
+/* ---- App shell: full-viewport flex column ------------------------------- */
+.fb-app {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	height: 100dvh;
+	padding: 8px 12px 10px;
+	box-sizing: border-box;
+	background: var(--fb-bg);
+	background-image: var(--fb-bg-image);
+	background-attachment: fixed;
+}
+
+/* ---- Header (title + theme picker) -------------------------------------- */
+.fb-header {
+	flex: none;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+.fb-header-tools {
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+.fb-theme-label {
+	font-family: var(--fb-font-ui);
+	font-size: 10px;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	opacity: 0.7;
+}
+.fb-theme-select {
+	font-family: var(--fb-font-ui);
+	font-size: 12px;
+	color: var(--fb-btn-fg);
+	background: var(--fb-btn-bg);
+	border: 1px solid var(--fb-btn-border);
+	border-radius: var(--fb-btn-radius);
+	min-height: 32px;
+	padding: 2px 8px;
+	cursor: pointer;
+}
+
+/* ---- Workspace: stage fills it; the toolbar floats over it ---------------- */
+.fb-workspace {
+	position: relative;
+	flex: 1 1 auto;
+	min-height: 0;
+}
+
+/* ---- Toolbar: a compact, draggable, docked-left panel -------------------- */
+.fb-toolbar {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	z-index: 7;
+	width: 184px;
+	max-height: calc(100% - 20px);
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding: 6px;
+	box-sizing: border-box;
+	background: var(--fb-panel-bg);
+	border: 1px solid var(--fb-panel-border);
+	border-radius: max(7px, var(--fb-btn-radius));
+	box-shadow: 0 8px 26px -10px rgba(0, 0, 0, 0.45);
+	overflow: auto;
+	touch-action: none;
+}
+
+/* Drag handle = themed title bar pinned to the top of the panel. */
+.fb-toolbar-handle {
+	position: sticky;
+	top: -6px;
+	z-index: 2;
+	margin: -6px -6px 3px;
+	padding: 6px 8px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	background: var(--fb-btn-active-bg);
+	color: var(--fb-btn-active-fg);
+	border-radius: max(7px, var(--fb-btn-radius)) max(7px, var(--fb-btn-radius)) 0 0;
+	cursor: grab;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: none;
+	font-family: var(--fb-font-ui);
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+.fb-toolbar.is-dragging .fb-toolbar-handle,
+.fb-toolbar-handle:active { cursor: grabbing; }
+.fb-toolbar-grip {
+	width: 14px;
+	height: 12px;
+	flex: none;
+	background-image: radial-gradient(currentColor 1.1px, transparent 1.2px);
+	background-size: 4px 4px;
+	opacity: 0.65;
+}
+.fb-toolbar-handle-label { flex: 1 1 auto; }
+.fb-toolbar-dock {
+	flex: none;
+	background: transparent;
+	border: none;
+	color: inherit;
+	cursor: pointer;
+	font-size: 13px;
+	line-height: 1;
+	padding: 2px 3px;
+	opacity: 0.75;
+}
+.fb-toolbar-dock:hover { opacity: 1; }
+
+.fb-toolbar .toolGroup {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 3px;
+	align-content: flex-start;
+	padding-bottom: 4px;
+	border-bottom: 1px solid var(--fb-divider);
+}
+.fb-toolbar .toolGroup:last-child { border-bottom: none; padding-bottom: 0; }
+
+.fb-toolbar .toolBtn {
+	flex: 1 1 auto;
+	border: 1px solid var(--fb-btn-border);
+	border-radius: var(--fb-btn-radius);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	min-height: 25px;
+	padding: 2px 7px;
+	margin: 0;
+	text-align: center;
+	white-space: nowrap;
+	background: var(--fb-btn-bg);
+	color: var(--fb-btn-fg);
+	font-family: var(--fb-font-ui);
+	font-size: 11px;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: transparent;
+}
+.fb-btn, .colorBlock, .colorBlock1, .fb-theme-select { touch-action: manipulation; }
+.fb-toolbar .toolBtn:hover { background-color: var(--fb-btn-hover-bg); }
+
+.fb-toolbar .toolBtn.toolSelected,
+.fb-toolbar .toolBtn[aria-pressed="true"] {
+	border: 1px solid var(--fb-btn-active-border);
+	background-color: var(--fb-btn-active-bg);
+	color: var(--fb-btn-active-fg);
+}
+
+/* Touch devices: roomier targets (the panel scrolls if it gets tall). */
+@media (pointer: coarse) {
+	.fb-toolbar { width: 210px; }
+	.fb-toolbar .toolBtn { min-height: 38px; font-size: 12px; }
+	.fb-theme-select { min-height: 44px; }
+}
+
+/* ---- Color swatches ----------------------------------------------------- */
+.swatchGroup { gap: 5px; }
+.fb-toolbar .colorBlock {
+	flex: 0 0 auto;
+	border: 1px solid var(--fb-btn-border);
+	border-radius: calc(var(--fb-btn-radius) * 0.5);
+	width: 27px;
+	height: 27px;
+	box-sizing: border-box;
+	display: inline-block;
+	margin: 0;
+}
+@media (pointer: coarse) {
+	.fb-toolbar .colorBlock { width: 34px; height: 34px; }
+}
+.colorBlock.colorSelected,
+.colorBlock1.colorSelected {
+	border: 1px solid var(--fb-accent);
+	outline: 2px solid var(--fb-accent);
+}
+
+.fb-color-palette {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	max-width: 360px;
+	margin: 8px 0;
+}
+.fb-color-palette p { flex-basis: 100%; margin: 0 0 4px; }
+.colorBlock1 {
+	border: 1px solid gray;
+	width: 32px;
+	height: 32px;
+	box-sizing: border-box;
+	display: inline-block;
+	margin: 2px;
+}
+
+/* Exact .colorN hex values transcribed from fractionBars.css. */
+.color1 { background-color: #A8FFF4; }
+.color2 { background-color: #DDFFF0; }
+.color3 { background-color: #ACBEFF; }
+.color4 { background-color: #707EFF; }
+.color5 { background-color: #FFFFFF; }
+.color6 { background-color: #EFEFEF; }
+.color7 { background-color: #E6E6E6; }
+.color8 { background-color: #D6D6D6; }
+.color9 { background-color: #FFCC66; }
+.color10 { background-color: #FFFF66; }
+.color11 { background-color: #E9FF66; }
+.color12 { background-color: #CCFF66; }
+.color13 { background-color: #DD99FF; }
+.color14 { background-color: #FF92DA; }
+.color15 { background-color: #F56ED0; }
+.color16 { background-color: #FF8C8C; }
+
+/* ---- Hide-mode banner --------------------------------------------------- */
+.fb-hide-banner {
+	flex: none;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	background: var(--fb-accent);
+	color: var(--fb-accent-fg);
+	font-family: var(--fb-font-ui);
+	font-size: 13px;
+	line-height: 1.3;
+	padding: 8px 14px;
+	border-radius: var(--fb-btn-radius);
+}
+.fb-hide-banner-text { flex: 1 1 auto; }
+.fb-hide-banner-text strong { font-weight: 700; }
+.fb-hide-done {
+	flex: none;
+	font-family: var(--fb-font-ui);
+	font-size: 12px;
+	font-weight: 700;
+	color: var(--fb-accent);
+	background: var(--fb-accent-fg);
+	border: none;
+	border-radius: var(--fb-btn-radius);
+	min-height: 32px;
+	padding: 4px 14px;
+	cursor: pointer;
+}
+.fb-hide-done:hover { opacity: 0.9; }
+
+/* While in hide mode, every hidable tool advertises that a tap removes it. */
+body.fb-hide-active .fb-toolbar .toolBtn:not(.hideShow) { cursor: crosshair; }
+body.fb-hide-active .fb-toolbar .toolBtn:not(.hideShow):hover {
+	outline: 2px dashed var(--fb-accent);
+	outline-offset: 1px;
+}
+/* The Hide control itself reads as the active "mode" switch. */
+.fb-toolbar #tool_hide.toolSelected {
+	background: var(--fb-accent);
+	border-color: var(--fb-accent);
+	color: var(--fb-accent-fg);
+}
+/* Show All is dimmed + inert when nothing is hidden. */
+.fb-toolbar .toolBtn.is-disabled {
+	opacity: 0.4;
+	pointer-events: none;
+}
+
+/* ---- Canvas stage (fills the workspace; toolbar floats above it) --------- */
+.fb-stage {
+	position: absolute;
+	inset: 0;
+	background: var(--fb-stage-bg);
+}
+.fb-canvas {
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-color: var(--fb-canvas-bg);
+	border: 1px var(--fb-canvas-border-color) var(--fb-canvas-border-style);
+	border-radius: var(--fb-canvas-radius);
+	box-sizing: border-box;
+	touch-action: none;
+}
+
+/* Label overlay input. */
+.fb-label-input {
+	display: none;
+	position: absolute;
+	font-family: var(--fb-font-ui);
+	font-size: 12px;
+	z-index: 5;
+}
+.fb-label-input.is-editing { display: inline-block; }
+
+.fb-vh-toggle { display: none; }
+
+/* ---- Gallery (floating overlay panel) ----------------------------------- */
+.fb-gallery {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 6;
+	display: block;
+	border: 1px solid var(--fb-panel-border);
+	border-radius: var(--fb-btn-radius);
+	background: var(--fb-panel-bg);
+	color: var(--fb-fg);
+	padding: 8px 12px;
+	width: 300px;
+	max-width: calc(100% - 20px);
+	max-height: calc(100% - 20px);
+	overflow: auto;
+	box-shadow: 0 8px 28px -10px rgba(0, 0, 0, 0.45);
+}
+.fb-gallery-title { font-size: 14px; font-weight: bold; margin: 0 0 8px; }
+.fb-gallery-saverow { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+.fb-gallery-input { flex: 1 1 140px; min-height: 32px; padding: 2px 4px; box-sizing: border-box; }
+.fb-gallery-list { list-style: none; margin: 0; padding: 0; }
+.fb-gallery-item { display: flex; align-items: center; gap: 6px; padding: 4px 0; flex-wrap: wrap; }
+.fb-gallery-name { flex: 1 1 120px; }
+.fb-gallery-empty { color: var(--fb-fg); opacity: 0.6; font-style: italic; }
+.fb-btn-sm { min-height: 32px; min-width: 0; padding: 2px 8px; }
+
+/* ---- Native dialogs ----------------------------------------------------- */
+.fb-dialog {
+	border: 1px solid var(--fb-panel-border);
+	border-radius: max(4px, var(--fb-btn-radius));
+	padding: 0;
+	max-width: min(92vw, 480px);
+	font-family: var(--fb-font-ui);
+	font-size: 12px;
+	color: var(--fb-fg);
+	background: var(--fb-panel-bg);
+}
+.fb-dialog::backdrop { background: rgba(0, 0, 0, 0.35); }
+.fb-dialog-body { padding: 16px; margin: 0; }
+.fb-dialog-title {
+	font-family: var(--fb-font-head);
+	font-size: 15px;
+	font-weight: bold;
+	margin: 0 0 12px;
+}
+.fb-dialog label { display: inline-block; margin-right: 6px; }
+.fb-dialog input[type="text"] {
+	font-family: var(--fb-font-ui);
+	min-height: 32px;
+	padding: 2px 4px;
+	box-sizing: border-box;
+}
+.fb-dialog input[type="radio"] { width: 20px; height: 20px; vertical-align: middle; }
+.fb-slider { width: 250px; max-width: 100%; height: 32px; accent-color: var(--fb-accent); }
+.fb-split-display {
+	background-color: var(--fb-canvas-bg);
+	border: 1px solid var(--fb-panel-border);
+	width: 100px;
+	height: 100px;
+}
+.fb-make-table { display: inline-table; margin: 8px 0; }
+.fb-make-table input { width: 48px; }
+.fb-make-num { border-bottom: solid 1px var(--fb-fg); }
+
+.fb-dialog-buttons { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+.fb-btn {
+	font-family: var(--fb-font-ui);
+	font-size: 12px;
+	min-height: 40px;
+	min-width: 64px;
+	padding: 4px 12px;
+	border: 1px solid var(--fb-btn-border);
+	border-radius: var(--fb-btn-radius);
+	background: var(--fb-btn-bg);
+	color: var(--fb-btn-fg);
+	cursor: pointer;
+}
+.fb-btn:hover { background-color: var(--fb-btn-hover-bg); }
+
+/* ---- Toast -------------------------------------------------------------- */
+.fb-toast {
+	position: fixed;
+	left: 50%;
+	bottom: 24px;
+	transform: translateX(-50%);
+	max-width: 90vw;
+	background: #323232;
+	color: #ffffff;
+	font-family: var(--fb-font-ui);
+	font-size: 13px;
+	padding: 10px 16px;
+	border-radius: 4px;
+	white-space: pre-line;
+	opacity: 0;
+	transition: opacity 0.2s ease;
+	z-index: 1000;
+}
+.fb-toast.is-visible { opacity: 1; }
+
+/* ---- Print (vector) ----------------------------------------------------- */
+@media print {
+	.fb-toolbar,
+	.fb-gallery,
+	.fb-label-input,
+	.fb-header,
+	.fb-hide-banner,
+	.fb-toast { display: none !important; }
+	.fb-app { display: block; padding: 0; height: auto; background: #fff; }
+	.fb-workspace { position: static; }
+	.fb-stage { position: static; width: 100%; height: auto; }
+	.fb-canvas {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1000 / 700;
+		border: 1px solid #000;
+		background-color: #ffffff;
+		border-radius: 0;
+	}
+}
+</style>
+</head><body>
+<div id="fb-app" class="fb-app">
+
+  <!-- Header: title + skin picker -->
+  <div class="fb-header">
+    <h1 class="bar_title" id="bar_titles">Fraction Bars</h1>
+    <div class="fb-header-tools">
+      <label class="fb-theme-label" for="fb-theme">Theme</label>
+      <select id="fb-theme" class="fb-theme-select" aria-label="Color theme">
+        <option value="">Classic</option>
+        <option value="hermes">Hermes · Parchment</option>
+        <option value="iu">Crimson · Academic</option>
+        <option value="chalk">Chalkboard</option>
+        <option value="candy">Bubblegum</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Hide-mode banner: full-width, above the workspace, makes the "locked" hide mode obvious. -->
+  <div id="fb-hide-banner" class="fb-hide-banner" role="status" aria-live="polite" hidden>
+    <span class="fb-hide-banner-text" id="fb-hide-banner-text"><strong>Hide mode on.</strong> Tap any tool button to hide it from learners.<span id="fb-hide-count"></span></span>
+    <button type="button" id="fb-hide-done" class="fb-hide-done">Done hiding</button>
+  </div>
+
+  <div class="fb-workspace">
+
+  <!-- ===================================================================== -->
+  <!-- Toolbar: a compact, draggable, docked-left panel -->
+  <!-- ===================================================================== -->
+  <div id="fb-toolbar" class="fb-toolbar" role="toolbar" aria-label="Fraction Bars tools">
+
+    <div class="fb-toolbar-handle" id="fb-toolbar-handle" title="Drag to move the toolbar">
+      <span class="fb-toolbar-grip" aria-hidden="true"></span>
+      <span class="fb-toolbar-handle-label">Tools</span>
+      <button type="button" id="fb-toolbar-dock" class="fb-toolbar-dock" title="Reset toolbar position" aria-label="Reset toolbar position">⤢</button>
+    </div>
+
+    <div class="toolGroup">
+      <a class="toolBtn" id="tool_bar" data-i18n="bar" role="button" tabindex="0">Bar</a>
+      <a class="toolBtn" id="tool_mat" data-i18n="mat" role="button" tabindex="0">Mat</a>
+    </div>
+
+    <div class="toolGroup">
+      <a class="toolBtn" id="action_copy" data-i18n="copy" role="button" tabindex="0">Copy</a>
+      <a class="toolBtn" id="tool_repeat" data-i18n="repeat" role="button" tabindex="0">Repeat</a>
+      <a class="toolBtn" id="window_iterate" data-i18n="iterate" role="button" tabindex="0">Iterate</a>
+      <a class="toolBtn" id="action_join" data-i18n="join" role="button" tabindex="0">Join</a>
+      <a class="toolBtn" id="action_delete" data-i18n="delete" role="button" tabindex="0">Delete</a>
+    </div>
+
+    <div class="toolGroup">
+      <a class="toolBtn" id="window_split" data-i18n="parts" role="button" tabindex="0">Parts</a>
+      <a class="toolBtn" id="tool_manualSplit" data-i18n="pieces" role="button" tabindex="0">Line</a>
+      <a class="toolBtn" id="action_breakApart" data-i18n="b_apart" role="button" tabindex="0">Break Apart</a>
+      <a class="toolBtn" id="action_pullOutSplit" data-i18n="pullout" role="button" tabindex="0">Pull Out Parts</a>
+      <a class="toolBtn" id="action_clearSplits" data-i18n="c_parts" role="button" tabindex="0">Clear Parts</a>
+    </div>
+
+    <div class="toolGroup">
+      <a class="toolBtn" id="action_setUnitBar" data-i18n="set_unit" role="button" tabindex="0">Set Unit Bar</a>
+      <a class="toolBtn" id="action_measure" data-i18n="measure" role="button" tabindex="0">Measure</a>
+      <a class="toolBtn" id="action_make" data-i18n="make" role="button" tabindex="0">Make</a>
+      <a class="toolBtn" id="window_label" data-i18n="label" role="button" tabindex="0">Label</a>
+    </div>
+
+    <div class="toolGroup">
+      <a class="toolBtn" id="action_undo" data-i18n="undo" role="button" tabindex="0">Undo</a>
+      <a class="toolBtn" id="action_redo" data-i18n="redo" role="button" tabindex="0">Redo</a>
+      <a class="toolBtn" id="action_save" data-i18n="save" role="button" tabindex="0">Save</a>
+      <a class="toolBtn" id="action_open" data-i18n="open" role="button" tabindex="0">Open</a>
+      <a class="toolBtn" id="action_clearAll" data-i18n="new" role="button" tabindex="0">New</a>
+      <a class="toolBtn" id="action_print" data-i18n="print" role="button" tabindex="0">Print</a>
+      <a class="toolBtn" id="window_properties" data-i18n="properties" role="button" tabindex="0">Properties</a>
+      <a class="toolBtn" id="fb-gallery-toggle" role="button" tabindex="0" aria-pressed="false">Saved Work</a>
+    </div>
+
+    <!-- 8 quick swatches: exact .colorN classes/order from the original -->
+    <div class="toolGroup swatchGroup" role="group" aria-label="Fill color">
+      <a class="colorBlock color10 colorSelected" id="setColor1" data-color="#FFFF66" role="button" tabindex="0" aria-label="Fill color"></a>
+      <a class="colorBlock color3" id="setColor2" data-color="#ACBEFF" role="button" tabindex="0" aria-label="Fill color"></a>
+      <a class="colorBlock color7" id="setColor3" data-color="#E6E6E6" role="button" tabindex="0" aria-label="Fill color"></a>
+      <a class="colorBlock color5" id="setColor4" data-color="#FFFFFF" role="button" tabindex="0" aria-label="Fill color"></a>
+      <a class="colorBlock color12" id="setColor5" data-color="#CCFF66" role="button" tabindex="0" aria-label="Fill color"></a>
+      <a class="colorBlock color9" id="setColor6" data-color="#FFCC66" role="button" tabindex="0" aria-label="Fill color"></a>
+      <a class="colorBlock color13" id="setColor7" data-color="#DD99FF" role="button" tabindex="0" aria-label="Fill color"></a>
+      <a class="colorBlock color14" id="setColor8" data-color="#FF92DA" role="button" tabindex="0" aria-label="Fill color"></a>
+    </div>
+
+    <div class="toolGroup">
+      <a class="toolBtn" id="action_previous" data-i18n="previous" hidden role="button" tabindex="0">Previous</a>
+      <a class="toolBtn" id="action_next" data-i18n="next" hidden role="button" tabindex="0">Next</a>
+    </div>
+
+    <div class="toolGroup">
+      <a class="toolBtn hideShow" id="tool_hide" data-i18n="hide" role="button" tabindex="0">Hide Tools</a>
+      <a class="toolBtn hideShow" id="action_show" data-i18n="show" role="button" tabindex="0">Show All</a>
+    </div>
+
+    <div class="toolGroup">
+      <a class="toolBtn" id="fb-add-to-selection" role="button" tabindex="0" aria-pressed="false">Add to Selection</a>
+    </div>
+  </div>
+  <!-- /toolbar -->
+
+  <!-- ===================================================================== -->
+  <!-- Canvas + overlays -->
+  <!-- ===================================================================== -->
+  <div class="fb-stage">
+    <svg id="fbCanvas" class="fb-canvas" viewBox="0 0 1000 700"
+         preserveAspectRatio="xMidYMid meet"
+         role="img" aria-label="Fraction Bars canvas"
+         xmlns="http://www.w3.org/2000/svg"></svg>
+
+    <input name="labelField" id="labelInput" class="fb-label-input" type="text" value="" autocomplete="off">
+
+    <div id="fb-gallery" class="fb-gallery" hidden></div>
+  </div>
+
+  </div><!-- /fb-workspace -->
+
+  <!-- Flags carried over from the original hidden #flags block. -->
+  <div hidden id="flags">
+    <a id="marked-iterate" data-flag="true"></a>
+  </div>
+</div>
+
+<!-- ===================================================================== -->
+<!-- Native <dialog>s (ported from the prior UI-toolkit markup) -->
+<!-- ===================================================================== -->
+
+<!-- Partition / Splits -->
+<dialog id="dialog-splits" class="fb-dialog">
+  <form method="dialog" class="fb-dialog-body">
+    <h2 class="fb-dialog-title">Partition part of bar</h2>
+
+    <p>
+      <svg id="split-display" class="fb-split-display" viewBox="0 0 100 100"
+           preserveAspectRatio="xMidYMid meet" width="100" height="100"
+           xmlns="http://www.w3.org/2000/svg"></svg>
+    </p>
+
+    <div class="radio_vert_horz fb-vh-toggle" id="radio_vert">
+      <label for="vert">Vertical</label>
+      <input type="radio" name="vert_horiz" id="vert" value="Vertical" checked>
+      <label for="horiz">Horizontal</label>
+      <input type="radio" name="vert_horiz" id="horiz" value="Horizontal">
+    </div>
+
+    <p>
+      <label for="split-slider-field">Number of parts:</label>
+      <input type="text" id="split-slider-field" value="2" readonly>
+    </p>
+
+    <input type="range" id="split-slider" min="2" max="20" step="1" value="2" class="fb-slider">
+
+    <div id="radio_whole">
+      <label for="whole">Partition whole bar</label>
+      <input type="radio" name="whole_part" id="whole" value="Whole" checked>
+      <br>
+      <label for="part">Partition part of bar</label>
+      <input type="radio" name="whole_part" id="part" value="Part">
+    </div>
+
+    <div class="fb-dialog-buttons">
+      <button type="button" id="splits-ok" class="fb-btn">Ok</button>
+      <button type="button" id="splits-cancel" class="fb-btn">Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Properties -->
+<dialog id="dialog-properties" class="fb-dialog">
+  <form method="dialog" class="fb-dialog-body">
+    <h2 class="fb-dialog-title">Properties</h2>
+
+    <label for="same">Iterations</label>
+    <div id="radio_iterate_p">
+      <p>
+        <label for="same">Don't Create New Bar</label>
+        <input type="radio" name="create" id="same" value="Same">
+        <br>
+        <label for="new">Create New Bar</label>
+        <input type="radio" name="create" id="new" value="New" checked>
+        <br>
+        <label for="two_way">Two way Iterate</label>
+        <input type="radio" name="two_ittr" id="two_way" value="Two_way">
+        <br>
+        <label for="one_way">Only one way Iterate</label>
+        <input type="radio" name="two_ittr" id="one_way" value="One_way" checked>
+      </p>
+    </div>
+
+    <label>Splits (Parts)</label>
+    <div id="radio_split_p">
+      <p>
+        <label for="two_horiz">Vertical or Horizontal Split</label>
+        <input type="radio" name="two_split" id="two_horiz" value="Two_horiz">
+        <br>
+        <label for="one_horiz">Only vertical split</label>
+        <input type="radio" name="two_split" id="one_horiz" value="One_horiz" checked>
+      </p>
+    </div>
+
+    <div id="radio_lang_tr">
+      <p>
+        <label>Language</label>
+        <br>
+        <label for="lang_tr">Turkish</label>
+        <input type="radio" name="lang" id="lang_tr" value="lang_tur">
+        <label for="lang_en">English</label>
+        <input type="radio" name="lang" id="lang_en" value="lang_eng" checked>
+      </p>
+    </div>
+
+    <div class="fb-color-palette" role="group" aria-label="Background Color">
+      <p><label>Background Color</label></p>
+      <a class="colorBlock1 color1" id="bgColor1" data-color="#A8FFF4" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color2" id="bgColor2" data-color="#DDFFF0" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color3" id="bgColor3" data-color="#ACBEFF" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color4" id="bgColor4" data-color="#707EFF" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color5" id="bgColor5" data-color="#FFFFFF" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color6" id="bgColor6" data-color="#EFEFEF" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color7" id="bgColor7" data-color="#E6E6E6" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color8" id="bgColor8" data-color="#D6D6D6" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color9" id="bgColor9" data-color="#FFCC66" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color10 colorSelected" id="bgColor10" data-color="#FFFF66" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color11" id="bgColor11" data-color="#E9FF66" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color12" id="bgColor12" data-color="#CCFF66" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color13" id="bgColor13" data-color="#DD99FF" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color14" id="bgColor14" data-color="#FF92DA" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color15" id="bgColor15" data-color="#F56ED0" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color16" id="bgColor16" data-color="#FF8C8C" role="button" tabindex="0" aria-label="Background color"></a>
+    </div>
+
+    <div class="fb-dialog-buttons">
+      <button type="button" id="properties-ok" class="fb-btn">Ok</button>
+      <button type="button" id="properties-cancel" class="fb-btn">Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Iterate -->
+<dialog id="dialog-iterate" class="fb-dialog">
+  <form method="dialog" class="fb-dialog-body">
+    <h2 class="fb-dialog-title">Iterate</h2>
+
+    <div class="radio_itterate_vert_horz fb-vh-toggle" id="iterate_vert-horiz">
+      <label for="iterate_vert">Vertical</label>
+      <input type="radio" name="vert_horiz" id="iterate_vert" value="Vertical" checked>
+      <label for="iterate_horiz">Horizontal</label>
+      <input type="radio" name="vert_horiz" id="iterate_horiz" value="Horizontal">
+    </div>
+
+    <p>
+      <label for="iterate-field">Number of iterations:</label>
+      <input type="text" id="iterate-field" value="2">
+    </p>
+
+    <div class="fb-dialog-buttons">
+      <button type="button" id="iterate-ok" class="fb-btn">Ok</button>
+      <button type="button" id="iterate-cancel" class="fb-btn">Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Make -->
+<dialog id="dialog-make" class="fb-dialog">
+  <form method="dialog" class="fb-dialog-body">
+    <h2 class="fb-dialog-title">Make</h2>
+
+    <p>
+      <label for="whole-field">Write Fraction:</label>
+      <table class="fb-make-table">
+        <tbody>
+          <tr>
+            <td rowspan="2"><input type="text" id="whole-field" class="fb-make-whole" size="4" value=""></td>
+            <td class="fb-make-num"><input type="text" id="num-field" size="4"></td>
+          </tr>
+          <tr>
+            <td><input type="text" id="denum-field" size="4"></td>
+          </tr>
+        </tbody>
+      </table>
+    </p>
+
+    <div class="fb-dialog-buttons">
+      <button type="button" id="make-ok" class="fb-btn">Ok</button>
+      <button type="button" id="make-cancel" class="fb-btn">Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Choose a File -->
+<dialog id="dialog-file" class="fb-dialog">
+  <form method="dialog" class="fb-dialog-body">
+    <h2 class="fb-dialog-title">Choose a File</h2>
+    <p class="c_open_file">Use the button below to choose one or more FractionBars files to open.</p>
+    <input type="file" id="fileInput" name="files[]" multiple>
+    <div class="fb-dialog-buttons">
+      <button type="button" id="file-cancel" class="fb-btn">Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+<script>var FB = (typeof window !== 'undefined' ? (window.FB = window.FB || {}) : (globalThis.FB = globalThis.FB || {}));
+
+// src/api/hooks.js
+//
+// Extension hooks for the Fraction Bars canvas. This is the seam that lets
+// future work bolt reasoning + reactive UI onto the manipulative WITHOUT
+// touching the sealed core or breaking the CSP (no eval, no network, no
+// innerHTML -- everything here is plain function registration + data export).
+//
+// Two audiences:
+//
+//   * PROLOG  -- a logic engine that wants the scene as facts it can query
+//     ("is this set of bars a valid partition of the unit?", "which bars are
+//     equivalent fractions?"). FB.Hooks.toProlog(scene) emits ground facts;
+//     FB.Hooks.toFacts(scene) returns the same as structured objects. Register
+//     FB.Hooks.on('render', cb) to recompute facts whenever the model changes.
+//
+//   * LIT (or any web-component / custom-element layer) -- reactive overlays
+//     drawn on top of the bars (handles, hints, annotations). Register with
+//     FB.Hooks.registerOverlay(fn); fn is called on every render with
+//     { svgRoot, scene, doc, ns } and should (re)draw its own <g> (the SVG tree
+//     is rebuilt each frame, so overlays are idempotent redraws, not one-time
+//     mounts). A Lit ReactiveController can mirror this: subscribe to 'render',
+//     read toFacts(scene), and update its host element positioned over .fb-stage.
+//
+// Nothing here is wired to a concrete engine yet -- it is the stable contract
+// those engines attach to.
+
+FB.Hooks = FB.Hooks || (function () {
+	var listeners = {};   // event name -> [fn]
+	var overlays = [];    // [fn({svgRoot,scene,doc,ns})]
+
+	function on(name, fn) {
+		if (typeof fn !== 'function') { return function () {}; }
+		(listeners[name] || (listeners[name] = [])).push(fn);
+		return function off() {
+			var a = listeners[name] || [];
+			var i = a.indexOf(fn);
+			if (i > -1) { a.splice(i, 1); }
+		};
+	}
+
+	function emit(name, payload) {
+		var a = listeners[name];
+		if (!a) { return; }
+		for (var i = 0; i < a.length; i++) {
+			try { a[i](payload); } catch (e) { /* a bad hook must never break the app */ }
+		}
+	}
+
+	function registerOverlay(fn) {
+		if (typeof fn !== 'function') { return function () {}; }
+		overlays.push(fn);
+		return function remove() {
+			var i = overlays.indexOf(fn);
+			if (i > -1) { overlays.splice(i, 1); }
+		};
+	}
+
+	function runOverlays(ctx) {
+		for (var i = 0; i < overlays.length; i++) {
+			try { overlays[i](ctx); } catch (e) { /* isolate overlay errors */ }
+		}
+	}
+
+	// ---- Prolog fact export --------------------------------------------------
+	// Quote an atom for Prolog: lowercase atoms pass bare, anything else is
+	// single-quoted with embedded quotes doubled.
+	function atom(s) {
+		s = String(s == null ? '' : s);
+		if (/^[a-z][a-zA-Z0-9_]*$/.test(s)) { return s; }
+		return "'" + s.replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
+	}
+	function num(n) { return String(Math.round(Number(n) || 0)); }
+	function int(n) { return Math.round(Number(n) || 0); }
+
+	function parseFrac(f) {
+		var m = /^(\d+)\/(\d+)$/.exec(String(f || '').trim());
+		return m ? { num: +m[1], den: +m[2] } : null;
+	}
+
+	// Structured facts (objects) -- convenient for JS consumers / Lit.
+	function toFacts(scene) {
+		scene = scene || {};
+		var bars = scene.bars || [];
+		var facts = [];
+		for (var i = 0; i < bars.length; i++) {
+			var b = bars[i];
+			var id = 'b' + i;
+			facts.push({ pred: 'bar', args: [id, int(b.x), int(b.y), int(b.w), int(b.h)] });
+			if (b.isUnitBar) { facts.push({ pred: 'unit_bar', args: [id] }); }
+			var fr = parseFrac(b.fraction);
+			if (fr) { facts.push({ pred: 'fraction', args: [id, fr.num, fr.den] }); }
+			if (b.label) { facts.push({ pred: 'label', args: [id, b.label] }); }
+			var splits = b.splits || [];
+			for (var s = 0; s < splits.length; s++) {
+				facts.push({ pred: 'part', args: [id, s, int(splits[s].x), int(splits[s].w)] });
+			}
+			if (splits.length) { facts.push({ pred: 'parts_count', args: [id, splits.length] }); }
+		}
+		return facts;
+	}
+
+	// Ground Prolog program text, one fact per line.
+	function toProlog(scene) {
+		return toFacts(scene).map(function (f) {
+			var args = f.args.map(function (a) {
+				return (typeof a === 'number') ? String(a) : atom(a);
+			});
+			return f.pred + '(' + args.join(', ') + ').';
+		}).join('\n');
+	}
+
+	return {
+		on: on, emit: emit,
+		registerOverlay: registerOverlay, runOverlays: runOverlays,
+		toFacts: toFacts, toProlog: toProlog
+	};
+})();
+
+// Copyright University of Massachusetts Dartmouth 2013
+//
+// Designed and built by James P. Burke and Jason Orrill
+// Modified and developed by Hakan Sandir
+//
+// This Javascript version of Fraction Bars is based on
+// the Transparent Media desktop version of Fraction Bars,
+// which in turn was based on the original TIMA Bars software
+// by John Olive and Leslie Steffe.
+// We thank them for allowing us to update that product.
+
+
+
+FB.Point = function Point() {
+	this.x = null ;
+	this.y = null ;
+};
+
+FB.Point.prototype.equals = function(p) {
+	var _output = false ;
+	if( p ) {
+		_output = (p.x == this.x && p.y == this.y) ;
+	}
+	return _output ;
+};
+
+FB.Point.prototype.isOnLine = function(line) {
+	var onLine ;
+	if (line.x1 == line.x2) {
+		isOnLine = (this.x == line.x1) && (this.y >= Math.min(line.y1, line.y2)) && (this.y <= Math.max(line.y1, line.y2)) ;
+	} else {
+		isOnLine = (this.y == line.y1) && (this.x >= Math.min(line.x1, line.x2)) && (this.x <= Math.max(line.x1, line.x2)) ;
+	}
+	return isOnLine ;
+};
+
+// static methods
+
+FB.Point.fromCoords = function (x, y) { var p = new FB.Point(); p.x = x; p.y = y; return p; };
+// Kept for compatibility; callers now pass already-localized coords:
+FB.Point.createFromCoords = FB.Point.fromCoords;
+
+FB.Point.subtract = function(p1, p2) {
+	var p = new FB.Point() ;
+	p.x = p1.x - p2.x ;
+	p.y = p1.y - p2.y ;
+	return p ;
+}
+
+FB.Point.add = function(p1, p2) {
+	var p = new FB.Point() ;
+	p.x = p1.x + p2.x ;
+	p.y = p1.y + p2.y ;
+	return p ;
+
+}
+
+FB.Point.multiply = function(p1, p2) {
+	var p = new FB.Point() ;
+	p.x = p1.x * p2.x ;
+	p.y = p1.y * p2.y ;
+	return p ;
+}
+
+FB.Point.min = function( p1, p2 ) {
+	var p = new FB.Point() ;
+	p.x = Math.min(p1.x, p2.x) ;
+	p.y = Math.min(p1.y, p2.y) ;
+	return p ;
+}
+
+// Copyright University of Massachusetts Dartmouth 2013
+//
+// Designed and built by James P. Burke and Jason Orrill
+// Modified and developed by Hakan Sandir
+//
+// This Javascript version of Fraction Bars is based on
+// the Transparent Media desktop version of Fraction Bars,
+// which in turn was based on the original TIMA Bars software
+// by John Olive and Leslie Steffe.
+// We thank them for allowing us to update that product.
+
+
+FB.Line = function Line(x1, y1, x2, y2) {
+	this.x1 = x1 ;
+	this.y1 = y1 ;
+	this.x2 = x2 ;
+	this.y2 = y2 ;
+};
+
+FB.Line.prototype.equals = function(line) {
+	var _output ;
+	if( line ) {
+		_output = (this.x1 == line.x1 && this.y1 == line.y1 && this.x2 == line.x2 && this.y2 == line.y2) ;
+	}
+	return _output ;
+}
+
+// Copyright University of Massachusetts Dartmouth 2013
+//
+// Designed and built by James P. Burke and Jason Orrill
+// Modified and developed by Hakan Sandir
+//
+// This Javascript version of Fraction Bars is based on
+// the Transparent Media desktop version of Fraction Bars,
+// which in turn was based on the original TIMA Bars software
+// by John Olive and Leslie Steffe.
+// We thank them for allowing us to update that product.
+
+
+FB.Split = function Split(x, y, w, h, c) {
+	this.x = x ;
+	this.y = y ;
+	this.w = w ;
+	this.h = h ;
+	this.color = c ;
+	this.isSelected = false;
+};
+
+FB.Split.prototype.equals = function(s) {
+	var _output = false ;
+	if( s ) {
+		_output = (s.x == this.x && s.y == this.y && s.w == this.w && s.h == this.h) ;
+	}
+	return _output ;
+};
+
+FB.Split.prototype.copy = function() {
+	newsplit = new FB.Split(this.x, this.y, this.w, this.h, this.color);
+	return newsplit;
+};
+
+// Copyright University of Massachusetts Dartmouth 2013
+//
+// Designed and built by James P. Burke and Jason Orrill
+// Modified and developed by Hakan Sandir
+//
+// This Javascript version of Fraction Bars is based on
+// the Transparent Media desktop version of Fraction Bars,
+// which in turn was based on the original TIMA Bars software
+// by John Olive and Leslie Steffe.
+// We thank them for allowing us to update that product.
+
+
+
+FB.Mat = function Mat() {
+	//TODO: convert x, y to a Point?
+	this.x = null ;
+	this.y = null ;
+	this.w = null ;
+	this.h = null ;
+	this.size = null ;
+	this.color = null ;
+//	this.splits = [] ;
+//	this.label = '' ;
+//	this.fraction = '' ;
+	this.type = null ;
+	this.isSelected = false ;
+};
+
+
+
+FB.Mat.prototype.copy = function(with_offset) {
+	var offset = 10 ;
+	var b = new FB.Bar() ;
+
+	if (with_offset === false) {
+		offset = 0;
+	}
+
+	b.x = this.x + offset ;
+	b.y = this.y + offset ;
+	b.w = this.w ;
+	b.h = this.h ;
+	b.size = this.size ;
+	b.color = this.color ;
+//	b.splits = this.copySplits() ;
+//	b.label = this.label ;
+//	b.isUnitBar = false ;
+//	b.fraction = this.fraction ;
+	b.type = this.type ;
+	b.isSelected = true ;
+
+	return b ;
+};
+
+
+FB.Mat.prototype.nearestEdge = function(p) {
+	// return a string indicating which edge is the closest one to the given point (p)
+	var closestEdge = 'bottom' ;
+	var dl = p.x - this.x ;
+	var dr = this.w - dl ;
+	var dt = p.y - this.y ;
+	var db = this.h - dt ;
+
+	if (dl <= dr && dl <= dt && dl <= db ) {
+		closestEdge = "left" ;
+	} else if ( dr <= dl && dr <= dt && dr <= db ) {
+		closestEdge = "right" ;
+	} else if ( dt <= dl && dt <= dr && dt <= db ) {
+		closestEdge = "top" ;
+	}
+	return closestEdge ;
+};
+
+FB.Mat.prototype.toggleSelection = function() {};
+
+// static methods
+
+FB.Mat.create = function(x, y, w, h, type, color) {
+	var b = new FB.Mat() ;
+	b.x = x ;
+	b.y = y ;
+	b.w = w ;
+	b.h = h ;
+	b.size = w * h ;
+	b.color = color ;
+	b.type = type ;
+	return b ;
+};
+
+FB.Mat.createFromMouse = function(p1, p2, type, color) {
+	var w = Math.abs(p2.x - p1.x) ;
+	var h = Math.abs(p2.y - p1.y) ;
+	var p = FB.Point.min( p1, p2 ) ;
+	var b = FB.Mat.create(p.x, p.y, w, h, type, color) ;
+	return b ;
+};
+
+FB.Mat.distanceBetween = function(b1, b2) {
+	var p = new FB.Point() ;
+	var totalDistance = Math.max(b1.x + b1.w, b2.x + b2.w) - Math.min(b1.x, b2.x) ;
+	p.x = totalDistance - b1.w - b2.w ;
+	totalDistance = Math.max(b1.y + b1.h, b2.y + b2.h) - Math.min(b1.y, b2.y) ;
+	p.y = totalDistance - b1.h - b2.h ;
+	return p ;
+};
+
+FB.Mat.copyFromJSON = function(JSON_Mat) {
+	var b = new FB.Mat() ;
+
+
+	var F = FB.Utilities;
+	b.x = F.toFinite(JSON_Mat.x) ;
+	b.y = F.toFinite(JSON_Mat.y) ;
+	b.w = F.toNonNeg(JSON_Mat.w) ;
+	b.h = F.toNonNeg(JSON_Mat.h) ;
+	b.size = F.toNonNeg(JSON_Mat.size) ;
+	b.color = (typeof JSON_Mat.color === 'string') ? JSON_Mat.color : '#888888' ;
+
+	b.type = (typeof JSON_Mat.type === 'string') ? JSON_Mat.type : 'mat' ;
+	b.isSelected = false ;
+
+	return b ;
+};
+
+// Copyright University of Massachusetts Dartmouth 2013
+//
+// Designed and built by James P. Burke and Jason Orrill
+// Modified and developed by Hakan Sandir
+//
+// This Javascript version of Fraction Bars is based on
+// the Transparent Media desktop version of Fraction Bars,
+// which in turn was based on the original TIMA Bars software
+// by John Olive and Leslie Steffe.
+// We thank them for allowing us to update that product.
+
+
+
+FB.Utilities = function Utilities() {
+	this.shiftKeyDown = false ;
+	this.ctrlKeyDown = false ;
+};
+
+//First attempt
+FB.Utilities.file_list="";
+FB.Utilities.file_index=0;
+//
+
+FB.Utilities.flag=['it,sp,rpt,lng'];
+FB.Utilities.flag[0]=false;
+FB.Utilities.flag[1]=false;
+FB.Utilities.flag[2]=false;
+FB.Utilities.flag[3]=false;
+FB.Utilities.USE_CURRENT_SELECTION = 'useCurrent' ;
+FB.Utilities.USE_LAST_SELECTION = 'useLast' ;
+
+
+// NOTE: the original Utilities.include_js dynamically injected <script> tags.
+// It is intentionally removed: the sealed build inlines all code under a strict
+// CSP, and runtime script injection has no place in a hermetically-sealed,
+// no-network deployment.
+
+// Coercion helpers used when importing save files so that corrupt or
+// hand-edited data renders safely instead of producing invalid SVG attributes.
+FB.Utilities.toFinite = function (v, def) {
+  var n = Number(v);
+  return isFinite(n) ? n : (def || 0);
+};
+FB.Utilities.toNonNeg = function (v) {
+  var n = Number(v);
+  return (isFinite(n) && n > 0) ? n : 0;
+};
+
+FB.Utilities.createFraction = function(numerator, denominator) {
+  // Calculate the (approximate) fraction for this measurement.
+  // Basic algorigm taken from Dr. Math at the Math Forum...
+  // Reference: Dr. Math, "Reducing Fractions to Lowest Terms" (mathforum.org).
+
+  var max_terms = 30 ;
+  var min_divisor = 0.000001 ;
+  var max_error = 0.00001 ;
+
+  var v = numerator / denominator ;
+  var f = v ;
+
+  var n1 = 1 ;
+  var d1 = 0 ;
+  var n2 = 0 ;
+  var d2 = 1 ;
+
+  var a, i, n, d ;
+
+  for (i = 0; i < max_terms; i++) {
+    a = Math.round(f) ;
+    f = f - a ;
+    n = n1 * a + n2 ;
+    d = d1 * a + d2 ;
+
+    n2 = n1 ;
+    d2 = d1 ;
+
+    n1 = n ;
+    d1 = d ;
+
+    if (f < min_divisor && Math.abs(v-n/d) < max_error) {
+      break ;
+    }
+
+    f = 1/f ;
+  }
+
+  if (Math.floor(v) == v) {
+  	return v ;
+  }
+  else{
+  	return Math.abs(n) + "/" + Math.abs(d) ;
+  }
+};
+
+FB.Utilities.colorLuminance = function(hex, lum) {
+
+  // validate hex string
+  hex = String(hex).replace(/[^0-9a-f]/gi, '');
+  if (hex.length < 6) {
+    hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+  }
+  lum = lum || 0;
+
+  // convert to decimal and change luminosity
+  var rgb = "#", c, i;
+  for (i = 0; i < 3; i++) {
+    c = parseInt(hex.substr(i*2,2), 16);
+    c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+    rgb += ("00"+c).substr(c.length);
+  }
+
+  return rgb;
+};
+
+FB.Utilities.getMarkedIterateFlag = function() {
+  // Vanilla DOM replacement for the original library-based selector read of
+  // #marked-iterate. Returns false when the element is absent (headless tests).
+  var el = (typeof document !== 'undefined' && document.getElementById)
+    ? document.getElementById('marked-iterate')
+    : null;
+  return !!el && el.getAttribute('data-flag') === 'true';
+};
+
+// Copyright University of Massachusetts Dartmouth 2013
+//
+// Designed and built by James P. Burke and Jason Orrill
+// Modified and developed by Hakan Sandir
+//
+// This Javascript version of Fraction Bars is based on
+// the Transparent Media desktop version of Fraction Bars,
+// which in turn was based on the original TIMA Bars software
+// by John Olive and Leslie Steffe.
+// We thank them for allowing us to update that product.
+
+
+// Module flag replacing the original global coupling on
+// fbCanvasObj.currentAction == "repeat". Controller (Task 10) sets this.
+FB.repeatModeActive = false;
+
+// The original model called the browser global alert() directly inside
+// join()/repeat(). Outside a browser (Node tests) that global is absent and
+// would throw a ReferenceError on the no-match path. Resolve once to a safe
+// local that prefers the real browser alert (verbatim behavior) and is a
+// no-op otherwise. No logic change.
+function alert(msg) {
+	// Prefer the app's accessible, non-blocking toast when wired; otherwise fall
+	// back to the browser alert; in headless tests this is a no-op.
+	if (FB && typeof FB.notify === 'function') {
+		FB.notify(msg);
+	} else if (typeof window !== 'undefined' && typeof window.alert === 'function') {
+		window.alert(msg);
+	}
+}
+
+FB.Bar = function Bar() {
+	//TODO: convert x, y to a Point?
+	this.x = null ;
+	this.y = null ;
+	this.w = null ;
+	this.h = null ;
+	this.size = null ;
+	this.color = null ;
+	this.splits = [] ;
+	this.label = '' ;
+	this.isUnitBar = false ;
+	this.fraction = '' ;
+	this.type = null ;
+	this.isSelected = false ;
+	this.repeatUnit = null;    // This is a copy of whatever the bar looks like at the moment "repeat" mode is turned on.
+	this.selectedSplit = null;
+};
+
+FB.Bar.prototype.measure = function(targetBar) {
+	this.fraction = FB.Utilities.createFraction( this.size, targetBar.size ) ;
+};
+FB.Bar.prototype.clearMeasurement = function() {
+	this.fraction = '' ;
+};
+FB.Bar.prototype.drawMeasurement = function() {};
+
+
+FB.Bar.prototype.addSplit = function(x, y, w, h, c) {
+	this.addSplitToList(this.splits, x, y, w, h, c);
+};
+
+FB.Bar.prototype.addSplitToList = function(list, x, y, w, h, c) {
+	var split = new FB.Split(x, y, w, h, c) ;
+	if( this.splits.length > 0 ) {
+		for( i = 0; i < this.splits.length; i++ ) {
+			if( split.equals( this.splits[i] )) {
+				return ;
+			}
+		}
+	}
+	list.push( split ) ;
+};
+
+FB.Bar.prototype.clearSplits = function() {
+	this.splits = [] ;
+};
+
+FB.Bar.prototype.copySplits = function() {
+	var splitsCopy = [] ;
+
+	for( var i = 0; i < this.splits.length; i++ ) {
+		splitsCopy.push( this.splits[i].copy() ) ;
+	}
+
+	return splitsCopy ;
+};
+
+FB.Bar.prototype.hasSelectedSplit = function() {
+	for (var i = 0; i < this.splits.length; i++) {
+		if (this.splits[i].isSelected) {
+			return true;
+		}
+	}
+	return false;
+};
+
+FB.Bar.prototype.updateColorOfSelectedSplit = function(in_color) {
+		for (var i = 0; i < this.splits.length; i++) {
+		if (this.splits[i].isSelected) {
+			this.splits[i].color = in_color;
+		}
+	}
+	return false;
+};
+
+FB.Bar.prototype.clearSplitSelection = function() {
+	this.selectedSplit = null;
+	for (var i = 0; i < this.splits.length; i++) {
+		this.splits[i].isSelected = false;
+	}
+};
+
+
+FB.Bar.prototype.updateSplitSelectionFromState = function() {
+	this.selectedSplit = null;
+	for( var i = 0; i < this.splits.length; i++ ) {
+		if( this.splits[i].isSelected ) {
+			this.selectedSplit = this.splits[i];
+		}
+	}
+};
+
+
+FB.Bar.prototype.selectSplit = function(mouse_loc) {
+
+	this.selectedSplit = this.splitClickedOn(mouse_loc);
+};
+
+FB.Bar.prototype.findSplitForPoint = function(p)  {
+	for( var i = this.splits.length-1; i >= 0; i-- ) {
+		if( p.x > this.splits[i].x+this.x &&
+			p.x < this.splits[i].x+this.x + this.splits[i].w &&
+			p.y > this.splits[i].y+this.y &&
+			p.y < this.splits[i].y+this.y + this.splits[i].h) {
+
+			return(this.splits[i]);
+		}
+	}
+	return null;
+};
+
+FB.Bar.prototype.splitClickedOn = function(mouse_loc) {
+	for( var i = this.splits.length-1; i >= 0; i-- ) {
+		// FB.Utilities.log(i);
+		if( mouse_loc.x > this.x + this.splits[i].x &&
+			mouse_loc.x < this.x + this.splits[i].x + this.splits[i].w &&
+			mouse_loc.y > this.y + this.splits[i].y &&
+			mouse_loc.y < this.y + this.splits[i].y + this.splits[i].h)
+		{
+			this.clearSplitSelection();
+			this.splits[i].isSelected = true ;
+			return this.splits[i] ;
+		}
+	}
+	return null ;
+};
+
+FB.Bar.prototype.removeASplit = function(split) {
+	// If this bar has this split, remove it.
+	var newsplits = [];
+	for (var i = this.splits.length - 1; i >= 0; i--) {
+		if (this.splits[i] !== split) {
+			newsplits.push(this.splits[i]);
+		}
+	}
+	this.splits = newsplits;
+};
+
+
+
+//////////////////////////
+FB.Bar.prototype.splitBarAtPoint = function(split_point, vert_split) {
+	var the_split = this.findSplitForPoint(split_point);
+
+	if ((the_split !== null)) {
+
+		// Splitting a single split
+		if (!vert_split) {
+			this.addSplit(the_split.x, the_split.y, split_point.x-(this.x+the_split.x), the_split.h, the_split.color);
+			this.addSplit(split_point.x-this.x, the_split.y, the_split.w-(split_point.x-(this.x+the_split.x)), the_split.h, the_split.color);
+		} else {
+			this.addSplit(the_split.x, the_split.y, the_split.w, split_point.y-(this.y+the_split.y), the_split.color);
+			this.addSplit(the_split.x, split_point.y-this.y, the_split.w, the_split.h-(split_point.y-(this.y+the_split.y)), the_split.color);
+		}
+		this.removeASplit(the_split);
+	} else {
+		// Adding a split to a bar with none
+		if (this.splits.length == 0) {
+			// Make sure we really have no splits before doing this.
+			if (!vert_split) {
+				this.addSplit(0, 0, split_point.x-this.x, this.h, this.color);
+				this.addSplit(split_point.x-this.x, 0, this.x+this.w-split_point.x, this.h, this.color);
+			} else {
+				this.addSplit(0, 0, this.w, split_point.y-this.y, this.color);
+				this.addSplit(0, split_point.y-this.y, this.w, this.y+this.h-split_point.y, this.color);
+			}
+		}
+	}
+
+};
+
+FB.Bar.prototype.initialSplits = function(num_splits, vert_direction) {
+// Used for when there are no existing splits in a bar
+	var split_interval = 0;
+	var x = 0;
+	var y = 0;
+	var i = 0;
+
+	if (vert_direction === true) {
+		split_interval = this.w / num_splits;
+		for ( i = 0; i < num_splits; i++) {
+			x = i*split_interval;
+			this.addSplit(x, y, split_interval, this.h, this.color);
+		}
+	} else {
+		split_interval = this.h / num_splits;
+		for ( i = 0; i < num_splits; i++) {
+			y = i*split_interval;
+			this.addSplit(x, y, this.w, split_interval, this.color);
+		}
+	}
+};
+
+FB.Bar.prototype.splitSelectedSplit = function(num_splits, vert_direction) {
+
+	this.updateSplitSelectionFromState();
+	if (this.selectedSplit === null) {return;}
+
+	var split_interval = 0;
+	var x = this.selectedSplit.x;
+	var y = this.selectedSplit.y;
+	var i = 0;
+
+	if (vert_direction === true) {
+		split_interval = this.selectedSplit.w / num_splits;
+		for ( i = 0; i < num_splits; i++) {
+			x = i*split_interval + this.selectedSplit.x;
+			this.addSplit(x, y, split_interval, this.selectedSplit.h, this.selectedSplit.color);
+		}
+	} else {
+		split_interval = this.selectedSplit.h / num_splits;
+		for ( i = 0; i < num_splits; i++) {
+			y = i*split_interval +this.selectedSplit.y;
+			this.addSplit(x, y, this.selectedSplit.w, split_interval, this.selectedSplit.color);
+		}
+	}
+	var place = 0;
+	while (this.splits[place] !== this.selectedSplit) {
+		place++;
+	}
+	this.splits.splice(place, 1);
+};
+
+
+
+FB.Bar.prototype.wholeBarSubSplit = function(a_split, vert_direction, subsplit_interval) {
+	// Takes a single split and tries to subsplit it based on a whole bar fraction
+	// If there is no subsplit, we just return a list containing the original split.
+	// Otherwise we return the subsplits, but not the original split
+	var new_subsplit_list = [];
+	var i = 0;
+	var split_hit = false; // Start out assuming we have not hit a split
+	var lower_bound = 0; //storing the lower boundary of a new split
+	var upper_bound = 0; // self explanatory
+	var corrected_interval = 0; // storing the corrected width or height of a new split (in case it is cut off)
+
+	if (vert_direction === true) {
+		for (i = subsplit_interval; Math.floor(i)<= this.w; i = i + subsplit_interval) {
+			if (	((i > a_split.x)						&& (i < a_split.x + a_split.w)) ||
+					((i - subsplit_interval > a_split.x )	&& (i - subsplit_interval < a_split.x + a_split.w)) ) {
+				split_hit = true;
+				lower_bound =  (a_split.x > (i - subsplit_interval)) ? a_split.x : (i - subsplit_interval);
+				upper_bound =  ((a_split.x + a_split.w) < i) ? a_split.x + a_split.w : i;
+				corrected_interval = upper_bound - lower_bound;
+				this.addSplitToList(new_subsplit_list, lower_bound, a_split.y, corrected_interval, a_split.h, a_split.color);
+			}
+		}
+	} else {
+		for (i = subsplit_interval; Math.floor(i)<= this.h; i = i + subsplit_interval) {
+			if (	((i > a_split.y)						&& (i < a_split.y + a_split.h)) ||
+					((i - subsplit_interval > a_split.y )	&& (i - subsplit_interval < a_split.y + a_split.h)) ) {
+				split_hit = true;
+				lower_bound =  (a_split.y > (i - subsplit_interval)) ? a_split.y : (i - subsplit_interval);
+				upper_bound =  ((a_split.y + a_split.h) < i) ? a_split.y + a_split.h : i;
+				corrected_interval = upper_bound - lower_bound;
+				this.addSplitToList(new_subsplit_list, a_split.x, lower_bound, a_split.w, corrected_interval, a_split.color);
+			}
+		}
+	}
+	if (split_hit === false) {
+		new_subsplit_list.push(a_split);
+	}
+	return new_subsplit_list;
+};
+
+
+
+FB.Bar.prototype.wholeBarSplits = function(num_splits, vert_direction) {
+	// Tries to split a whole bar, despite subsplits.
+	var new_splits_list = [];
+	var split_interval = 0;
+	var list_passback = [];
+
+	if (this.splits.length === 0) {
+		// Doing initial splits because there are no existing splits
+		this.initialSplits(num_splits, vert_direction);
+	} else {
+		// Doing subsequent splits because we already have some splits
+		if (vert_direction === true) {
+			split_interval = this.w / num_splits;
+		} else {
+			split_interval = this.h / num_splits;
+		}
+		// For every split
+		for (var i = this.splits.length - 1; i >= 0; i--) {
+			// Attempt to subsplit it and concat the result into the new list
+			list_passback = this.wholeBarSubSplit(this.splits[i], vert_direction, split_interval);
+			new_splits_list = new_splits_list.concat(list_passback);
+		}
+		// When complete, use the new list to replace the old list.
+		this.clearSplits();
+		this.splits = new_splits_list;
+	}
+};
+
+
+
+FB.Bar.prototype.breakApart = function() {
+	var newBars = [] ;
+	var aBar ;
+	if( this.splits.length === 0 ) {
+		aBar = this.copy(false) ;
+		aBar.isSelected = false ;
+		newBars.push( aBar ) ;
+	} else {
+		for( var i = 0; i < this.splits.length; i++ ) {
+			newBars.push( FB.Bar.create( this.x + this.splits[i].x, this.y + this.splits[i].y, this.splits[i].w, this.splits[i].h, 'bar', this.splits[i].color )) ;
+		}
+	}
+	return newBars ;
+};
+
+FB.Bar.prototype.copy = function(with_offset) {
+	var offset = 10 ;
+	var b = new FB.Bar() ;
+
+	if (with_offset === false) {
+		offset = 0;
+	}
+	if (FB.repeatModeActive) {
+		offset=0;
+	}
+	b.x = this.x + offset ;
+	b.y = this.y + offset ;
+	b.w = this.w ;
+	b.h = this.h ;
+	b.size = this.size ;
+	b.color = this.color ;
+	b.splits = this.copySplits() ;
+	b.label = this.label ;
+	b.isUnitBar = false ;
+	if (this.isUnitBar === true) {
+		b.fraction = "" ;
+	} else {
+		b.fraction = this.fraction ;
+	}
+	b.type = this.type ;
+	b.isSelected = true ;
+	b.repeatUnit = this.repeatUnit;
+
+	return b ;
+};
+
+
+FB.Bar.prototype.makeCopy = function() {
+
+	// This version of the copy routine does not set isSelected to true.
+	// I a using this to make a copy that is just stored, so there is no reason for
+	// the bar to think it is selected.
+
+	var offset = 10 ;
+	var b = new FB.Bar() ;
+
+	b.x = this.x + offset ;
+	b.y = this.y + offset ;
+	b.w = this.w ;
+	b.h = this.h ;
+	b.size = this.size ;
+	b.color = this.color ;
+	b.splits = this.copySplits() ;
+	b.label = this.label ;
+	b.isUnitBar = false ;
+	b.fraction = this.fraction ;
+	b.type = this.type ;
+	b.isSelected = false ;
+
+	return b ;
+};
+
+FB.Bar.prototype.makeNewCopy = function(with_height) {
+
+	// This version of the copy routine does not set isSelected to true.
+	// I a using this to make a copy that is just stored, so there is no reason for
+	// the bar to think it is selected.
+
+	var offset = 10 ;
+
+	var b = new FB.Bar() ;
+
+	b.x = this.x ;
+	b.y = this.y +this.h + offset ;
+	b.w = this.w * with_height;
+	b.h = this.h  ;
+	b.size = this.size * with_height;
+	b.color = this.color ;
+	b.isUnitBar = false ;
+	b.type = this.type ;
+	b.isSelected = false ;
+	this.isSelected = false ;
+	return b ;
+};
+
+FB.Bar.prototype.repeat = function(clickLoc) {
+
+//	alert(clickLoc.x +", "+clickLoc.y);
+
+	var govert = false;
+/*	local_x = clickLoc.x - this.x;
+	local_y = clickLoc.y - this.y;
+	diag_slope = this.h / this.w;
+	// modified by hsandir
+	if (local_y > (local_x * diag_slope)) {
+		govert = true;
+	}*/
+
+	if (this.repeatUnit !== null) {
+		if (govert) {
+			this.repeatUnit.x -= 5;
+		} else {
+			this.repeatUnit.y -= 5;
+		}
+		this.join(this.repeatUnit);
+		if ((this.splits.length === 2) && (this.repeatUnit.splits.length === 0) && FB.Utilities.getMarkedIterateFlag()) {
+			this.splits[1].color = this.splits[0].color;
+/////////////////////////////
+//			this.splits[1].color = FB.Utilities.colorLuminance(this.splits[0].color.toString(), -0.1);
+		}
+	} else {
+		alert("Tried to Repeat when no repeatUnit was set.");
+	}
+
+};
+
+
+FB.Bar.prototype.iterate = function(iterate_num, vert) {
+
+	offset = 3;
+	i_iter = 0;
+
+	iterate_unit = this.makeCopy();
+	if (vert === true) {
+		iterate_unit.y += offset;
+	} else {
+		iterate_unit.x += offset;
+	}
+
+	start_split_num = this.splits.length;
+
+	for (i_iter = 1; i_iter < iterate_num; i_iter++) {
+		this.join(iterate_unit);
+	}
+
+	if((start_split_num === 0) && (this.splits.length >0) && FB.Utilities.getMarkedIterateFlag()) {
+		//this.splits[0].color = FB.Utilities.colorLuminance(this.splits[0].color.toString(), -0.1);
+	}
+};
+
+FB.Bar.prototype.join = function(b) {
+	var gap = FB.Bar.distanceBetween(this,b);
+	gap.x = Math.abs(gap.x);
+	gap.y = Math.abs(gap.y);
+	var b1, b2 ;
+	var originalBar = this.copy(true) ;
+	var joinDimension ='' ;
+
+	// TODO: add check for matching dimensions
+
+	var vertmatch = this.h == b.h;
+	var horizmatch = this.w == b.w;
+
+	if (!vertmatch && !horizmatch) {
+		alert("To Join, bars must have a matching dimension in height or width.");
+		return(false);
+	}
+
+
+//	this.x = Math.min(this.x, b.x) ;
+//	this.y = Math.min(this.y, b.y) ;
+
+	if (vertmatch && horizmatch) { // since both match, determine join dimension
+//		alert("Both match!");
+
+		if( Math.abs(gap.x) < Math.abs(gap.y) ) {
+			this.h = this.h + b.h ;
+			joinDimension = 'w' ;
+		} else {
+			this.w = this.w + b.w ;
+			joinDimension = 'h' ;
+		}
+	} else { // just one matched
+		if (vertmatch) {
+//			alert("Only h matched!");
+			this.w = this.w + b.w ;
+			joinDimension = 'h';
+		} else {
+//			alert("Only w matched!");
+			this.h = this.h + b.h ;
+			joinDimension = 'w';
+		}
+	}
+
+	this.size = this.w * this.h ;
+
+	var i = 0;
+
+	this.clearSplits();
+
+	// handling will be different for vertical/horizontal joins
+	if( joinDimension == 'w' ) {
+//		alert("Joining along width");
+		if( originalBar.y < b.y ) {
+			b1 = originalBar ;
+			b2 = b ;
+		} else {
+			b1 = b ;
+			b2 = originalBar ;
+		}
+
+		this.x = b1.x;
+		this.y = b1.y;
+
+		if (b1.splits.length === 0) {
+			this.addSplit(0, 0, b1.w, b1.h, b1.color) ;
+		}
+		if (b2.splits.length === 0) {
+			this.addSplit(0, b1.h, b2.w, b2.h, b2.color ) ;
+		}
+
+		if( b1.splits.length > 0 ) {
+			for(i = 0; i < b1.splits.length; i++ ) {
+				this.addSplit(b1.splits[i].x, b1.splits[i].y, b1.splits[i].w, b1.splits[i].h, b1.splits[i].color ) ;
+			}
+		}
+		if( b2.splits.length > 0 ) {
+			for(i = 0; i < b2.splits.length; i++ ) {
+				this.addSplit(b2.splits[i].x, b2.splits[i].y + b1.h, b2.splits[i].w, b2.splits[i].h, b2.splits[i].color ) ;
+			}
+		}
+
+
+	} else {
+//		alert("Joining along height");
+		if( originalBar.x < b.x ) {
+			b1 = originalBar ;
+			b2 = b ;
+		} else {
+			b1 = b ;
+			b2 = originalBar ;
+		}
+
+		this.x = b1.x;
+		this.y = b1.y;
+
+		if (b1.splits.length === 0) {
+			this.addSplit(0, 0, b1.w, b1.h, b1.color) ;
+		}
+//		this.addSplit(0, b1.h, originalBar.w, originalBar.h, b2.c) ;
+//		this.addSplit(0, b1.h, b2.w, b2.h, b2.c) ;
+		if (b2.splits.length === 0) {
+			this.addSplit(b1.w, 0, b2.w, b2.h, b2.color) ;
+		}
+
+		if( b1.splits.length > 0 ) {
+			for(i = 0; i < b1.splits.length; i++ ) {
+				this.addSplit(b1.splits[i].x, b1.splits[i].y, b1.splits[i].w, b1.splits[i].h, b1.splits[i].color ) ;
+			}
+		}
+		if( b2.splits.length > 0 ) {
+			for(i = 0; i < b2.splits.length; i++ ) {
+				this.addSplit(b2.splits[i].x + b1.w, b2.splits[i].y, b2.splits[i].w, b2.splits[i].h, b2.splits[i].color ) ;
+			}
+		}
+
+	}
+
+	// this.purgeOverlappingSplits() ;
+
+
+	this.clearMeasurement() ;
+
+	return(true);
+};
+
+FB.Bar.prototype.nearestEdge = function(p) {
+	// return a string indicating which edge is the closest one to the given point (p)
+	var closestEdge = 'bottom' ;
+	var dl = p.x - this.x ;
+	var dr = this.w - dl ;
+	var dt = p.y - this.y ;
+	var db = this.h - dt ;
+
+	if (dl <= dr && dl <= dt && dl <= db ) {
+		closestEdge = "left" ;
+	} else if ( dr <= dl && dr <= dt && dr <= db ) {
+		closestEdge = "right" ;
+	} else if ( dt <= dl && dt <= dr && dt <= db ) {
+		closestEdge = "top" ;
+	}
+	return closestEdge ;
+
+};
+
+FB.Bar.prototype.toggleSelection = function() {};
+
+FB.Bar.prototype.setRepeatUnit = function() {
+	this.repeatUnit = this.makeCopy(true);
+	this.repeatUnit.unPastel();
+};
+
+FB.Bar.prototype.unPastel = function() {
+
+}
+
+// static methods
+
+FB.Bar.create = function(x, y, w, h, type, color) {
+	var b = new FB.Bar() ;
+	b.x = x ;
+	b.y = y ;
+	b.w = w ;
+	b.h = h ;
+	b.size = w * h ;
+	b.color = color ;
+	b.type = type ;
+	return b ;
+};
+
+FB.Bar.createFromMouse = function(p1, p2, type, color) {
+	var w = Math.abs(p2.x - p1.x) ;
+	var h = Math.abs(p2.y - p1.y) ;
+	var p = FB.Point.min( p1, p2 ) ;
+	var b = FB.Bar.create(p.x, p.y, w, h, type, color) ;
+	return b ;
+};
+
+
+FB.Bar.createFromSplit = function(s, inx, iny) {
+	var b = FB.Bar.create(inx+s.x+10, iny+s.y+10, s.w, s.h, this.type, s.color) ;
+	return b ;
+};
+
+FB.Bar.distanceBetween = function(b1, b2) {
+	// Returns the distance vertically and horizontally between the centers
+	// of two bars.
+	// Given as separate dimensions in a Point object, think of the return value as the amount needed
+	// to translate b1 so that the center would be precisely over b2.
+	var p = new FB.Point() ;
+//	var totalDistance = Math.max(b1.x + b1.w, b2.x + b2.w) - Math.min(b1.x, b2.x) ;
+//	p.x = totalDistance - b1.w - b2.w ;
+//	totalDistance = Math.max(b1.y + b1.h, b2.y + b2.h) - Math.min(b1.y, b2.y) ;
+//	p.y = totalDistance - b1.h - b2.h ;
+	p.x = b2.x - b1.x;
+	p.y = b2.y - b1.y;
+	return p ;
+};
+
+
+FB.Bar.copyFromJSON = function(JSON_Bar) {
+	var b = new FB.Bar() ;
+
+
+	// Coerce on import so a corrupt or hand-edited file cannot inject NaN /
+	// undefined / non-string values that would produce invalid SVG attributes.
+	var F = FB.Utilities;
+	b.x = F.toFinite(JSON_Bar.x) ;
+	b.y = F.toFinite(JSON_Bar.y) ;
+	b.w = F.toNonNeg(JSON_Bar.w) ;
+	b.h = F.toNonNeg(JSON_Bar.h) ;
+	b.size = F.toNonNeg(JSON_Bar.size) ;
+	b.color = (typeof JSON_Bar.color === 'string') ? JSON_Bar.color : '#FFFF66' ;
+	b.makeSplitsFromJSON(Array.isArray(JSON_Bar.splits) ? JSON_Bar.splits : []) ;
+	b.label = (JSON_Bar.label == null) ? '' : String(JSON_Bar.label) ;
+	b.isUnitBar = !!JSON_Bar.isUnitBar ;
+	b.fraction = (typeof JSON_Bar.fraction === 'number' || typeof JSON_Bar.fraction === 'string') ? JSON_Bar.fraction : '' ;
+	b.type = (typeof JSON_Bar.type === 'string') ? JSON_Bar.type : 'bar' ;
+	b.isSelected = false ;
+
+	return b ;
+};
+
+FB.Bar.prototype.makeSplitsFromJSON = function(JSON_splits) {
+
+	this.clearSplits();
+	var F = FB.Utilities;
+	for (var i = 0; i < JSON_splits.length; i++) {
+		var s = JSON_splits[i] || {};
+		this.addSplit(F.toFinite(s.x), F.toFinite(s.y), F.toNonNeg(s.w), F.toNonNeg(s.h),
+			(typeof s.color === 'string') ? s.color : '#FFFF66');
+	}
+};
+
+// A CanvasState object is used to contain a copy of the hierarchy of all the contents of the
+// FractionBars Canvas. Essentially, it is kind of an epty husk of a canvas with just the bars,
+// mats, and minimum required noformation for performing an "undo" or a "redo"
+
+// Copyright University of Massachusetts Dartmouth 2013
+//
+// Designed and built by James P. Burke and Jason Orrill
+// Modified and developed by Hakan Sandir
+//
+// This Javascript version of Fraction Bars is based on
+// the Transparent Media desktop version of Fraction Bars,
+// which in turn was based on the original TIMA Bars software
+// by John Olive and Leslie Steffe.
+// We thank them for allowing us to update that product.
+
+
+// Controller-owned list replacing the original global hiddenButtonsName.
+FB.hiddenButtonNames = [];
+
+FB.CanvasState = function CanvasState(FBCanvas) {
+	this.mFBCanvas = FBCanvas ;
+	this.canvasState = null ;
+
+	this.mBars = [] ;
+	this.mMats = [] ;
+	this.mUnitBar = null ;
+	this.mHidden= [] ;
+};
+
+
+
+// Also copy mats
+FB.CanvasState.prototype.grabBarsAndMats = function() {
+
+	var mBars = [];
+	var mMats = [];
+	var aBar = null;
+	var mHidden=[];
+
+	for( var i = 0; i < this.mFBCanvas.bars.length; i++ ) {
+		aBar = this.mFBCanvas.bars[i].copy(false);
+		this.mBars.push( aBar ) ;
+		if (this.mFBCanvas.bars[i] === this.mFBCanvas.unitBar) {
+			this.mUnitBar = aBar; // Remember which copy is a copy of the unit bar, if any.
+		}
+		if (this.mFBCanvas.bars[i].isSelected) {
+			aBar.isSelected = true;
+		} else {
+			aBar.isSelected = false;
+		}
+		if (this.mFBCanvas.bars[i].isUnitBar) {
+			aBar.isUnitBar = true;
+		}
+//		aBar.clearSplitSelection();
+	}
+
+	for(var j = 0; j <this.mFBCanvas.mats.length; j++ ) {
+		this.mMats.push( this.mFBCanvas.mats[j].copy(false) ) ;
+	}
+	this.mHidden=FB.hiddenButtonNames.slice(0);
+	if (FB.hiddenButtonNames.indexOf("tool_hide")<0) {
+	this.mHidden.push('tool_hide') ;
+	}
+	if (FB.hiddenButtonNames.indexOf("action_show")<0) {
+	this.mHidden.push('action_show') ;
+	}
+
+};
+
+FB.Persistence = FB.Persistence || {};
+FB.Persistence.FORMAT = 'fraction-bars';
+FB.Persistence.VERSION = 2;
+
+function barToPlain(b) {
+  return { x:b.x, y:b.y, w:b.w, h:b.h, size:b.size, color:b.color, label:b.label,
+    isUnitBar:!!b.isUnitBar, fraction:b.fraction, type:b.type,
+    splits:(b.splits||[]).map(function(s){ return { x:s.x, y:s.y, w:s.w, h:s.h, color:s.color }; }) };
+}
+function matToPlain(m) {
+  return { x:m.x, y:m.y, w:m.w, h:m.h, size:m.size, color:m.color, type:m.type };
+}
+
+FB.Persistence.serialize = function (state) {
+  var bars = state.bars || [];
+  var idx = state.unitBar ? bars.indexOf(state.unitBar) : -1;
+  return {
+    format: FB.Persistence.FORMAT,
+    version: FB.Persistence.VERSION,
+    bars: bars.map(barToPlain),
+    mats: (state.mats || []).map(matToPlain),
+    unitBarIndex: idx >= 0 ? idx : null,
+    hidden: (state.hidden || []).slice(0)
+  };
+};
+
+FB.Persistence.toJSON = function (state) { return JSON.stringify(FB.Persistence.serialize(state)); };
+
+FB.Persistence.deserialize = function (obj) {
+  var bars = (obj.bars || []).map(FB.Bar.copyFromJSON);
+  var mats = (obj.mats || []).map(FB.Mat.copyFromJSON);
+  var unitBar = null;
+  if (obj.unitBarIndex !== null && obj.unitBarIndex !== undefined && bars[obj.unitBarIndex]) {
+    unitBar = bars[obj.unitBarIndex];
+    unitBar.isUnitBar = true;
+    unitBar.fraction = '1/1';
+  }
+  return { bars: bars, mats: mats, unitBar: unitBar, hidden: (obj.hidden || []).slice(0) };
+};
+
+// Safe replacement for Crockford retrocycle: walk $ref paths via a parsed token list.
+var REF_PATH = /^\$(?:\[(?:\d+|"(?:[^"\\]|\\.)*")\])*$/;
+
+// Keys that must never be followed or written when resolving attacker-supplied
+// save data, to prevent prototype-pollution via a crafted file.
+function isUnsafeKey(k) {
+  return k === '__proto__' || k === 'constructor' || k === 'prototype';
+}
+
+function parseRefPath(path) {
+  // returns array of keys (strings/numbers) for paths like $["mBars"][0]
+  var keys = [];
+  var re = /\[(?:(\d+)|"((?:[^"\\]|\\.)*)")\]/g, m;
+  while ((m = re.exec(path)) !== null) {
+    if (m[1] !== undefined) keys.push(parseInt(m[1], 10));
+    else keys.push(JSON.parse('"' + m[2] + '"'));
+  }
+  return keys;
+}
+
+FB.Persistence.resolveRefs = function (root) {
+  function deref(path) {
+    if (typeof path !== 'string' || !REF_PATH.test(path)) return undefined;
+    var node = root, keys = parseRefPath(path);
+    for (var i = 0; i < keys.length; i++) {
+      if (node == null) return undefined;
+      if (isUnsafeKey(keys[i])) return undefined;
+      node = node[keys[i]];
+    }
+    return node;
+  }
+  (function rez(value) {
+    if (!value || typeof value !== 'object') return;
+    var keys = Array.isArray(value) ? value.map(function (_, i) { return i; }) : Object.keys(value);
+    for (var k = 0; k < keys.length; k++) {
+      var name = keys[k];
+      if (isUnsafeKey(name)) continue;
+      var item = value[name];
+      if (item && typeof item === 'object') {
+        if (typeof item.$ref === 'string') {
+          var target = deref(item.$ref);
+          if (target !== undefined) value[name] = target; // else leave invalid $ref untouched
+        } else {
+          rez(item);
+        }
+      }
+    }
+  })(root);
+  return root;
+};
+
+FB.Persistence.detectVersion = function (obj) {
+  if (obj && obj.format === FB.Persistence.FORMAT && obj.version >= 2) return 2;
+  return 1; // legacy decycled CanvasState
+};
+
+FB.Persistence.parseFile = function (text) {
+  var clean = String(text).replace(/(\r\n|\n|\r)/gm, '');
+  var raw = JSON.parse(clean);
+  if (FB.Persistence.detectVersion(raw) === 2) return raw;
+  var resolved = FB.Persistence.resolveRefs(raw);
+  var bars = (resolved.mBars || []);
+  var unitIdx = resolved.mUnitBar ? bars.indexOf(resolved.mUnitBar) : -1;
+  return {
+    format: FB.Persistence.FORMAT,
+    version: 2,
+    bars: bars.map(function (b) {
+      return { x:b.x,y:b.y,w:b.w,h:b.h,size:b.size,color:b.color,label:b.label||'',
+        isUnitBar:!!b.isUnitBar,fraction:b.fraction||'',type:b.type||'bar',
+        splits:(b.splits||[]).map(function(s){return {x:s.x,y:s.y,w:s.w,h:s.h,color:s.color};}) };
+    }),
+    mats: (resolved.mMats || []).map(function (m) {
+      return { x:m.x,y:m.y,w:m.w,h:m.h,size:m.size,color:m.color,type:m.type||'mat' };
+    }),
+    unitBarIndex: unitIdx >= 0 ? unitIdx : null,
+    hidden: (resolved.mHidden || []).slice(0)
+  };
+};
+
+// src/persistence/gallery.js
+FB.Gallery = FB.Gallery || {};
+
+FB.Gallery.memoryAdapter = function () {
+  var m = new Map();
+  return {
+    get: async (k) => (m.has(k) ? m.get(k) : undefined),
+    set: async (k, v) => { m.set(k, v); },
+    delete: async (k) => { m.delete(k); },
+    keys: async () => Array.from(m.keys()),
+  };
+};
+
+FB.Gallery.indexedDbAdapter = function (dbName) {
+  dbName = dbName || 'fraction-bars';
+  function open() {
+    return new Promise(function (res, rej) {
+      var req = indexedDB.open(dbName, 1);
+      req.onupgradeneeded = function () { req.result.createObjectStore('saves'); };
+      req.onsuccess = function () { res(req.result); };
+      req.onerror = function () { rej(req.error); };
+    });
+  }
+  function tx(mode, fn) {
+    return open().then(function (db) {
+      return new Promise(function (res, rej) {
+        var t = db.transaction('saves', mode), store = t.objectStore('saves'), out;
+        out = fn(store);
+        t.oncomplete = function () { res(out && out.result !== undefined ? out.result : out); };
+        t.onerror = function () { rej(t.error); };
+      });
+    });
+  }
+  return {
+    get: (k) => tx('readonly', (s) => s.get(k)),
+    set: (k, v) => tx('readwrite', (s) => s.put(v, k)),
+    delete: (k) => tx('readwrite', (s) => s.delete(k)),
+    keys: () => tx('readonly', (s) => s.getAllKeys()),
+  };
+};
+
+FB.Gallery.create = function (adapter) {
+  var rec = (obj, updatedAt) => ({ updatedAt: updatedAt || 0, data: obj });
+  return {
+    save: async (name, obj, updatedAt) => { await adapter.set(name, rec(obj, updatedAt)); },
+    load: async (name) => { var r = await adapter.get(name); return r ? r.data : null; },
+    list: async () => {
+      var keys = await adapter.keys(), out = [];
+      for (var i = 0; i < keys.length; i++) { var r = await adapter.get(keys[i]); out.push({ name: keys[i], updatedAt: r ? r.updatedAt : 0 }); }
+      return out;
+    },
+    rename: async (oldName, newName) => { var r = await adapter.get(oldName); if (r) { await adapter.set(newName, r); await adapter.delete(oldName); } },
+    remove: async (name) => { await adapter.delete(name); },
+    duplicate: async (name, copyName, updatedAt) => { var r = await adapter.get(name); if (r) await adapter.set(copyName, rec(r.data, updatedAt)); },
+  };
+};
+
+// src/render/typeset.js
+//
+// Offline, CSP-safe fraction typesetter. No MathJax / KaTeX: loading either
+// would mean a CDN fetch (blocked by `connect-src 'none'`) or inlining ~1 MB of
+// third-party code that also uses `new Function` (blocked by the script-src
+// hash + the seal's no-eval rule). Instead we lay out fractions as native SVG
+// <text>/<line> with a deterministic Helvetica advance-width estimator -- the
+// same visual result (stacked numerator / rule / denominator, mixed numbers)
+// with zero network and zero dynamic code.
+//
+// The estimator understands LABELS that mix prose and fractions, so a learner
+// label like  "1 1/2 oranges"  typesets as  1½ (stacked)  +  " oranges", which
+// in TeX would be  $1 \frac{1}{2}$ oranges.  Each token is measured and placed
+// on a single baseline; the whole run can be anchored start / middle / end and
+// its measured width is exposed so the renderer can draw a readability halo.
+
+FB.Typeset = FB.Typeset || {};
+var SVGNS = 'http://www.w3.org/2000/svg';
+
+// --- advance-width estimate (Helvetica/Arial, em units) ---------------------
+// Good enough for placement without a DOM measure pass; keeps render
+// deterministic and free of layout thrash.
+FB.Typeset.charEm = function (ch) {
+	if (ch === ' ') { return 0.30; }
+	if ('iIl.,;:!|\'’`'.indexOf(ch) > -1) { return 0.26; }
+	if ('jftr()[]{}/\\'.indexOf(ch) > -1) { return 0.34; }
+	if ('mwMW'.indexOf(ch) > -1) { return 0.86; }
+	if (ch >= '0' && ch <= '9') { return 0.556; }
+	if (ch >= 'A' && ch <= 'Z') { return 0.68; }
+	return 0.52; // generic lowercase / punctuation
+};
+
+FB.Typeset.advance = function (str, fontSize) {
+	var s = (str === null || str === undefined) ? '' : String(str);
+	var w = 0;
+	for (var i = 0; i < s.length; i++) { w += FB.Typeset.charEm(s[i]); }
+	return w * fontSize;
+};
+
+// Back-compat: classify a single trimmed token.
+FB.Typeset.parseFraction = function (raw) {
+	var str = (raw === null || raw === undefined) ? '' : String(raw).trim();
+	if (str === '') { return { kind: 'text', text: '' }; }
+	var mixed = /^(\d+)\s+(\d+)\/(\d+)$/.exec(str);
+	if (mixed) { return { kind: 'mixed', whole: +mixed[1], num: +mixed[2], den: +mixed[3] }; }
+	var frac = /^(\d+)\/(\d+)$/.exec(str);
+	if (frac) { return { kind: 'fraction', num: +frac[1], den: +frac[2] }; }
+	var intgr = /^\d+$/.exec(str);
+	if (intgr) { return { kind: 'integer', whole: +str }; }
+	return { kind: 'text', text: str };
+};
+
+// Tokenize a full label into a left-to-right run of text + fraction atoms.
+// Finds mixed numbers ("1 1/2") and bare fractions ("3/4") anywhere inside
+// surrounding prose, leaving everything else as text tokens.
+FB.Typeset.tokenizeLabel = function (raw) {
+	var str = (raw === null || raw === undefined) ? '' : String(raw);
+	if (str === '') { return []; }
+	// mixed number  |  bare fraction. \b keeps us off the middle of "1234".
+	var re = /(\d+)\s+(\d+)\/(\d+)|(\d+)\/(\d+)/g;
+	var out = [];
+	var last = 0, m;
+	while ((m = re.exec(str)) !== null) {
+		if (m.index > last) { out.push({ type: 'text', text: str.slice(last, m.index) }); }
+		if (m[1] !== undefined) {
+			out.push({ type: 'frac', whole: +m[1], num: +m[2], den: +m[3] });
+		} else {
+			out.push({ type: 'frac', whole: null, num: +m[4], den: +m[5] });
+		}
+		last = re.lastIndex;
+	}
+	if (last < str.length) { out.push({ type: 'text', text: str.slice(last) }); }
+	return out;
+};
+
+// Measure the advance width of a single token run (no DOM).
+FB.Typeset.measureLabel = function (tokens, fontSize) {
+	var fsF = fontSize * 0.92;
+	var w = 0;
+	for (var i = 0; i < tokens.length; i++) {
+		var tk = tokens[i];
+		if (tk.type === 'text') {
+			w += FB.Typeset.advance(tk.text, fontSize);
+		} else {
+			if (tk.whole !== null && tk.whole !== undefined) {
+				w += FB.Typeset.advance(String(tk.whole), fontSize) + fontSize * 0.12;
+			}
+			var boxW = Math.max(
+				FB.Typeset.advance(String(tk.num), fsF),
+				FB.Typeset.advance(String(tk.den), fsF)
+			) + fsF * 0.30;
+			w += boxW + fontSize * 0.10;
+		}
+	}
+	return w;
+};
+
+// Build an SVG <g> for a label/fraction. Returns the <g>; the measured width is
+// attached as g.__fbWidth (and via getAttribute data-w) so callers can place a
+// halo or right-anchor without a DOM measure pass.
+//
+// opts: { x, y (baseline), fontSize, color, anchor: 'start'|'middle'|'end' }
+FB.Typeset.buildFractionSVG = function (doc, raw, opts) {
+	opts = opts || {};
+	var fs = opts.fontSize || 12;
+	var color = opts.color || '#000';
+	var anchor = opts.anchor || 'start';
+	var fsF = fs * 0.92;
+	var weight = opts.fontWeight || 'normal';
+	var family = opts.fontFamily || 'inherit';
+
+	var tokens = FB.Typeset.tokenizeLabel(raw);
+	var totalW = FB.Typeset.measureLabel(tokens, fs);
+
+	var g = doc.createElementNS(SVGNS, 'g');
+	g.__fbWidth = totalW;
+	g.setAttribute('data-w', String(Math.round(totalW)));
+
+	var y = opts.y || 0;
+	var startX = opts.x || 0;
+	if (anchor === 'end') { startX = (opts.x || 0) - totalW; }
+	else if (anchor === 'middle') { startX = (opts.x || 0) - totalW / 2; }
+
+	function text(t, x, ty, mid, sz) {
+		var el = doc.createElementNS(SVGNS, 'text');
+		el.setAttribute('x', x);
+		el.setAttribute('y', ty);
+		el.setAttribute('font-size', sz || fs);
+		el.setAttribute('fill', color);
+		el.setAttribute('text-anchor', mid ? 'middle' : 'start');
+		el.setAttribute('font-family', family);
+		if (weight !== 'normal') { el.setAttribute('font-weight', weight); }
+		el.textContent = String(t);
+		g.appendChild(el);
+		return el;
+	}
+
+	var cx = startX;
+	for (var i = 0; i < tokens.length; i++) {
+		var tk = tokens[i];
+		if (tk.type === 'text') {
+			text(tk.text, cx, y);
+			cx += FB.Typeset.advance(tk.text, fs);
+			continue;
+		}
+		// fraction (optionally mixed)
+		if (tk.whole !== null && tk.whole !== undefined) {
+			text(tk.whole, cx, y);
+			cx += FB.Typeset.advance(String(tk.whole), fs) + fs * 0.12;
+		}
+		var boxW = Math.max(
+			FB.Typeset.advance(String(tk.num), fsF),
+			FB.Typeset.advance(String(tk.den), fsF)
+		) + fsF * 0.30;
+		var midX = cx + boxW / 2;
+		var barY = y - fs * 0.34;
+		// numerator (sits above the rule)
+		text(tk.num, midX, barY - fsF * 0.18, true, fsF);
+		// fraction rule
+		var line = doc.createElementNS(SVGNS, 'line');
+		line.setAttribute('x1', cx); line.setAttribute('y1', barY);
+		line.setAttribute('x2', cx + boxW); line.setAttribute('y2', barY);
+		line.setAttribute('stroke', color);
+		line.setAttribute('stroke-width', Math.max(1, fs / 14));
+		line.setAttribute('stroke-linecap', 'round');
+		g.appendChild(line);
+		// denominator (sits below the rule)
+		text(tk.den, midX, barY + fsF * 0.86, true, fsF);
+		cx += boxW + fs * 0.10;
+	}
+
+	return g;
+};
+
+// src/render/svgRenderer.js
+//
+// SVG renderer ported from the original canvas drawBar/drawMat/refreshCanvas
+// logic in fractionbarscanvas.js. The original used an immediate-mode canvas
+// 2D context; here we rebuild the SVG tree deterministically on every render
+// using createElementNS only (no innerHTML). Parity rules are preserved:
+//  - base rect fill = bar.color
+//  - each split: rect with fill split.color and a black stroke
+//  - selected split: a 4x4 center marker rect
+//  - selected bar/mat: outline stroke-width 2.5 (else 1)
+//  - unit bar: "Unit Bar" caption below the bar
+//  - fraction typeset at top-right (anchor end), label at bottom-left
+//  - manual-split guide line drawn red when currentAction === 'manualSplit'
+FB.Renderer = FB.Renderer || {};
+
+(function () {
+	var SVGNS = 'http://www.w3.org/2000/svg';
+
+	FB.Renderer.create = function (svgRoot, doc) {
+		var previewSpec = null;
+
+		// Theme colors are read from CSS custom properties on the canvas each
+		// render, so a skin swap (data-theme on <html>) instantly re-skins the
+		// canvas marks too -- no per-theme renderer code, no inline styles. The
+		// fallbacks ARE the original drab values, so an unstyled build is identical.
+		var TH = {
+			ink: '#000000', split: '#FF0000', guide: '#FF0000',
+			halo: 'rgba(255,255,255,0.72)', font: 'Helvetica, Arial, sans-serif'
+		};
+		function readTheme() {
+			try {
+				var view = svgRoot && svgRoot.ownerDocument && svgRoot.ownerDocument.defaultView;
+				if (!view || !view.getComputedStyle) { return; }
+				var cs = view.getComputedStyle(svgRoot);
+				function g(name, fb) { var v = cs.getPropertyValue(name); v = v && v.trim(); return v || fb; }
+				TH.ink = g('--fb-ink', '#000000');
+				TH.split = g('--fb-split-stroke', '#FF0000');
+				TH.guide = g('--fb-guide', '#FF0000');
+				TH.halo = g('--fb-label-halo', 'rgba(255,255,255,0.72)');
+				TH.font = g('--fb-canvas-font', 'Helvetica, Arial, sans-serif');
+			} catch (e) { /* keep defaults */ }
+		}
+
+		function elem(tag) {
+			return doc.createElementNS(SVGNS, tag);
+		}
+
+		function rect(x, y, w, h, attrs) {
+			var r = elem('rect');
+			r.setAttribute('x', x);
+			r.setAttribute('y', y);
+			r.setAttribute('width', w);
+			r.setAttribute('height', h);
+			if (attrs) {
+				for (var k in attrs) {
+					if (Object.prototype.hasOwnProperty.call(attrs, k)) {
+						r.setAttribute(k, attrs[k]);
+					}
+				}
+			}
+			return r;
+		}
+
+		function textNode(str, x, y, anchor) {
+			var t = elem('text');
+			t.setAttribute('x', x);
+			t.setAttribute('y', y);
+			t.setAttribute('fill', TH.ink);
+			t.setAttribute('font-size', 12);
+			t.setAttribute('font-family', TH.font);
+			t.setAttribute('text-anchor', anchor === 'end' ? 'end' : 'start');
+			t.textContent = String(str);
+			return t;
+		}
+
+		// Translucent rounded "halo" drawn behind label / fraction text so it stays
+		// legible over any bar fill or where bars overlap. Sized from the typeset
+		// run's measured advance width (group.__fbWidth). Skipped when the active
+		// theme sets --fb-label-halo to a fully transparent value.
+		function haloFor(group, x, y, anchor, fs) {
+			var w = group && group.__fbWidth ? group.__fbWidth : 0;
+			if (!w) { return null; }
+			var halo = TH.halo;
+			if (!halo || halo === 'transparent' || /\b0\s*\)\s*$/.test(halo)) { return null; }
+			var padX = fs * 0.4, padTop = fs * 1.02, padBot = fs * 0.5;
+			var rx = (anchor === 'end') ? x - w - padX
+				: (anchor === 'middle') ? x - w / 2 - padX : x - padX;
+			return rect(rx, y - padTop, w + padX * 2, padTop + padBot, {
+				fill: halo, stroke: 'none',
+				rx: Math.max(2, fs * 0.3), ry: Math.max(2, fs * 0.3)
+			});
+		}
+
+		// Place a typeset label/fraction (with halo) onto a layer.
+		function placeLabel(layer, raw, x, y, anchor, fs, weight) {
+			var grp = FB.Typeset.buildFractionSVG(doc, raw, {
+				x: x, y: y, anchor: anchor, fontSize: fs,
+				color: TH.ink, fontFamily: TH.font, fontWeight: weight || 'normal'
+			});
+			var h = haloFor(grp, x, y, anchor, fs);
+			if (h) { layer.appendChild(h); }
+			layer.appendChild(grp);
+		}
+
+		function renderMat(layer, m) {
+			var g = elem('g');
+			g.setAttribute('class', 'mat');
+			g.appendChild(rect(m.x, m.y, m.w, m.h, {
+				fill: m.color,
+				stroke: TH.ink,
+				'stroke-width': m.isSelected ? 2.5 : 1
+			}));
+			layer.appendChild(g);
+		}
+
+		function renderBar(layer, b) {
+			var g = elem('g');
+			g.setAttribute('class', 'bar');
+
+			// base rect (fill only; the single black outline is drawn below, matching
+			// the original drawBar which fillRect'd the base then strokeRect'd once).
+			g.appendChild(rect(b.x, b.y, b.w, b.h, { fill: b.color, stroke: 'none' }));
+
+			// splits -- the original drew split borders in red ('#FF0000').
+			if (b.splits && b.splits.length > 0) {
+				for (var i = 0; i < b.splits.length; i++) {
+					var s = b.splits[i];
+					g.appendChild(rect(b.x + s.x, b.y + s.y, s.w, s.h, {
+						fill: s.color,
+						stroke: TH.split,
+						'stroke-width': 1
+					}));
+					if (s.isSelected === true) {
+						// Selected-split marker: red, matching the original (which used
+						// the prevailing red strokeStyle for the 4x4 center marker).
+						var xcenter = s.x + (s.w / 2);
+						var ycenter = s.y + (s.h / 2);
+						g.appendChild(rect(b.x + xcenter - 2, b.y + ycenter - 2, 4, 4, {
+							fill: 'none',
+							stroke: TH.split,
+							'stroke-width': 1
+						}));
+					}
+				}
+			}
+
+			// selection outline (stroke-width 2.5 when selected else 1)
+			g.appendChild(rect(b.x, b.y, b.w, b.h, {
+				fill: 'none',
+				stroke: TH.ink,
+				'stroke-width': b.isSelected ? 2.5 : 1
+			}));
+
+			// unit bar caption below the bar
+			if (b.isUnitBar) {
+				placeLabel(g, 'Unit Bar', b.x, b.y + b.h + 15, 'start', 12, 'bold');
+			}
+
+			// fraction typeset at top-right (anchor end)
+			if (b.fraction !== null && b.fraction !== undefined && String(b.fraction) !== '') {
+				placeLabel(g, b.fraction, b.x + b.w - 5, b.y - 14, 'end', 13);
+			}
+
+			// label at bottom-left (typeset so mixed numbers / fractions render nicely)
+			if (b.label !== null && b.label !== undefined && String(b.label) !== '') {
+				placeLabel(g, b.label, b.x + 6, b.y + b.h - 6, 'start', 12);
+			}
+
+			layer.appendChild(g);
+		}
+
+		function hguide(x1, y1, x2, y2) {
+			var line = elem('line');
+			line.setAttribute('x1', x1);
+			line.setAttribute('y1', y1);
+			line.setAttribute('x2', x2);
+			line.setAttribute('y2', y2);
+			line.setAttribute('stroke', TH.guide);
+			line.setAttribute('stroke-width', 1);
+			return line;
+		}
+
+		// Hit-test helpers mirroring Bar.findSplitForPoint / findBarForPoint so the
+		// overlay can reproduce the original drawBar manual-split guide.
+		function barAt(bars, p) {
+			for (var i = bars.length - 1; i >= 0; i--) {
+				var b = bars[i];
+				if (p.x > b.x && p.x < b.x + b.w && p.y > b.y && p.y < b.y + b.h) { return b; }
+			}
+			return null;
+		}
+		function splitAt(b, p) {
+			if (!b || !b.splits) { return null; }
+			for (var i = b.splits.length - 1; i >= 0; i--) {
+				var s = b.splits[i];
+				if (p.x > s.x + b.x && p.x < s.x + b.x + s.w &&
+					p.y > s.y + b.y && p.y < s.y + b.y + s.h) { return s; }
+			}
+			return null;
+		}
+
+		function renderOverlay(layer, scene) {
+			// rubber-band preview rect (from the scene, set during a bar/mat draw).
+			var pv = scene.preview || previewSpec;
+			if (pv && pv.type === 'rect') {
+				layer.appendChild(rect(pv.x, pv.y, pv.w, pv.h, {
+					fill: pv.fill || 'none',
+					stroke: pv.stroke || '#000000',
+					'stroke-width': 1
+				}));
+			}
+
+			// manual-split red guide -- ported from the original drawBar logic: the
+			// guide spans the full width/height of the bar (or split) under the
+			// pointer, drawn only over a valid target. Direction follows the flag[1]
+			// (two-way split enabled) + shift-key rule from the original.
+			if (scene.currentAction === 'manualSplit' && scene.manualSplitPoint) {
+				var p = scene.manualSplitPoint;
+				var bars = scene.bars || [];
+				var abar = barAt(bars, p);
+				var asplit = abar ? splitAt(abar, p) : null;
+				var thing = null, xoff = 0, yoff = 0;
+				if (asplit) { thing = asplit; xoff = abar.x; yoff = abar.y; }
+				else { thing = abar; }
+
+				// split_key: original used flag[1] ? !shiftKeyDown : true
+				var twoWay = !!(FB.Utilities && FB.Utilities.flag && FB.Utilities.flag[1]);
+				var split_key = twoWay ? !scene.shiftDown : true;
+
+				// Skip the ambiguous case the original guarded: pointer exactly
+				// between existing splits of a bar that already has splits.
+				var ambiguous = (asplit === null) && (abar !== null) && (abar.splits && abar.splits.length !== 0);
+				if (thing !== null && !ambiguous) {
+					if (!split_key) {
+						// horizontal cut: full-width line at the pointer's y
+						layer.appendChild(hguide(thing.x + xoff, p.y, thing.x + xoff + thing.w, p.y));
+					} else {
+						// vertical cut: full-height line at the pointer's x
+						layer.appendChild(hguide(p.x, thing.y + yoff, p.x, thing.y + yoff + thing.h));
+					}
+				}
+			}
+		}
+
+		function render(scene) {
+			scene = scene || {};
+			readTheme();
+			var bars = scene.bars || [];
+			var mats = scene.mats || [];
+
+			svgRoot.replaceChildren();
+
+			// mats first, then bars, then overlays
+			var matLayer = elem('g');
+			matLayer.setAttribute('class', 'mats');
+			for (var mi = 0; mi < mats.length; mi++) {
+				renderMat(matLayer, mats[mi]);
+			}
+			svgRoot.appendChild(matLayer);
+
+			var barLayer = elem('g');
+			barLayer.setAttribute('class', 'bars');
+			for (var bi = 0; bi < bars.length; bi++) {
+				renderBar(barLayer, bars[bi]);
+			}
+			svgRoot.appendChild(barLayer);
+
+			var overlayLayer = elem('g');
+			overlayLayer.setAttribute('class', 'overlay');
+			renderOverlay(overlayLayer, scene);
+			svgRoot.appendChild(overlayLayer);
+
+			// Extension point: external layers (a Prolog reasoner drawing
+			// constraint annotations, Lit-based custom-element overlays, etc.)
+			// registered via FB.Hooks.registerOverlay are invoked here every
+			// frame and (re)draw into the freshly rebuilt tree. See src/api/hooks.js.
+			if (FB.Hooks && typeof FB.Hooks.runOverlays === 'function') {
+				FB.Hooks.runOverlays({ svgRoot: svgRoot, scene: scene, doc: doc, ns: SVGNS });
+			}
+			if (FB.Hooks && typeof FB.Hooks.emit === 'function') {
+				FB.Hooks.emit('render', scene);
+			}
+
+			return svgRoot.children.length;
+		}
+
+		function setPreview(spec) {
+			previewSpec = spec || null;
+		}
+
+		return { render: render, setPreview: setPreview };
+	};
+})();
+
+// Copyright University of Massachusetts Dartmouth 2013
+//
+// Designed and built by James P. Burke and Jason Orrill
+// Modified and developed by Hakan Sandir
+//
+// This Javascript version of Fraction Bars is based on
+// the Transparent Media desktop version of Fraction Bars,
+// which in turn was based on the original TIMA Bars software
+// by John Olive and Leslie Steffe.
+// We thank them for allowing us to update that product.
+
+// FB.Controller ports the model-orchestration logic of the original
+// FractionBarsCanvas (FractionBarsCanvas.js). Drawing methods are NOT ported
+// here -- the SVG renderer (FB.Renderer) owns rendering. The legacy DOM helpers
+// ($.inArray / $.each) are replaced with plain JS; alert(...) is replaced with an injected
+// notify(msg) callback; refreshCanvas() becomes renderer.render(getScene()).
+
+FB.Controller = FB.Controller || {};
+
+FB.Controller.create = function (deps) {
+	deps = deps || {};
+	var renderer = deps.renderer || { render: function () {} };
+	var notify = deps.notify || function () {};
+	var getMarkedIterate = deps.getMarkedIterate || function () { return false; };
+
+	var controller = {};
+
+	// The controller's mutable model state. CanvasState reads bars/mats/unitBar
+	// and the per-item isSelected flags off whatever object it is constructed
+	// with, so the state object below is what we hand to `new FB.CanvasState`.
+	var state = {
+		bars: [],
+		mats: [],
+		selectedBars: [],
+		selectedMats: [],
+		lastSelectedBars: [],
+		lastSelectedMats: [],
+		unitBar: null,
+		currentAction: '',
+		currentFill: '#FFFF66',
+		matFill: '#888888',
+		mouseDownLoc: null,
+		mouseUpLoc: null,
+		mouseLastLoc: null,
+		manualSplitPoint: null
+	};
+	controller.state = state;
+
+	// Undo / redo stacks and drag-detection bookkeeping (ported verbatim).
+	var mUndoArray = [];
+	var mRedoArray = [];
+	controller.mUndoArray = mUndoArray;
+	controller.mRedoArray = mRedoArray;
+	controller.CachedState = null;
+	controller.check_for_drag = false; // store an undo state before a drag,
+	controller.found_a_drag = false;   // and register it once we know it happened
+
+	controller.getScene = function () {
+		var scene = {
+			bars: state.bars,
+			mats: state.mats,
+			currentAction: state.currentAction,
+			manualSplitPoint: state.manualSplitPoint,
+			shiftDown: FB.Utilities.shiftKeyDown === true,
+			preview: null
+		};
+		// While drawing a bar/mat, expose a rubber-band preview rect so the
+		// renderer can draw it (replacing the original canvas snapshot trick).
+		if ((state.currentAction === 'bar' || state.currentAction === 'mat') &&
+			state.mouseDownLoc && state.mouseUpLoc) {
+			var p1 = state.mouseDownLoc, p2 = state.mouseUpLoc;
+			scene.preview = {
+				type: 'rect',
+				x: Math.min(p1.x, p2.x),
+				y: Math.min(p1.y, p2.y),
+				w: Math.abs(p2.x - p1.x),
+				h: Math.abs(p2.y - p1.y),
+				fill: state.currentAction === 'mat' ? state.matFill : state.currentFill,
+				stroke: '#000000'
+			};
+		}
+		return scene;
+	};
+
+	// Change listeners: external consumers (e.g. the State API / Hermes bridge)
+	// can register callbacks fired whenever the model is mutated/refreshed.
+	var changeListeners = [];
+	controller.onMutate = function (cb) {
+		if (typeof cb === 'function') { changeListeners.push(cb); }
+	};
+	controller.notifyChange = function () {
+		for (var i = 0; i < changeListeners.length; i++) {
+			try { changeListeners[i](); } catch (e) { /* listener errors must not break the app */ }
+		}
+	};
+
+	controller.refresh = function () {
+		renderer.render(controller.getScene());
+		controller.notifyChange();
+	};
+
+	// ----- Bar / Mat creation ------------------------------------------------
+
+	controller.addBar = function (a_bar) {
+		var b = null;
+		if (a_bar === null || a_bar === undefined) {
+			b = FB.Bar.createFromMouse(state.mouseDownLoc, state.mouseUpLoc, 'bar', state.currentFill);
+		} else {
+			b = a_bar;
+		}
+
+		state.bars.push(b);
+		controller.clearSelection();
+		controller.updateSelectionFromState();
+		controller.refresh();
+	};
+
+	controller.addMat = function () {
+		var m = FB.Mat.createFromMouse(state.mouseDownLoc, state.mouseUpLoc, 'mat', state.matFill);
+		state.mats.push(m);
+		controller.refresh();
+	};
+
+	// Also copy mats
+	controller.copyBars = function () {
+		if (state.selectedBars.length > 0) {
+			for (var i = state.selectedBars.length - 1; i >= 0; i--) {
+				state.bars.push(state.selectedBars[i].copy(true));
+				state.selectedBars[i].isSelected = false;
+			}
+		}
+		if (state.selectedMats.length > 0) {
+			for (var j = state.selectedMats.length - 1; j >= 0; j--) {
+				state.mats.push(state.selectedMats[j].copy(true));
+				state.selectedMats[j].isSelected = false;
+			}
+		}
+		controller.updateSelectionFromState();
+	};
+
+	controller.breakApartBars = function () {
+		var newBars;
+		if (state.selectedBars.length > 0) {
+			for (var i = 0; i < state.selectedBars.length; i++) {
+				newBars = state.selectedBars[i].breakApart();
+				for (var j = 0; j < newBars.length; j++) {
+					state.bars.push(newBars[j]);
+				}
+			}
+
+			// all splits in bars copied...delete the original selection
+			controller.deleteSelectedBars();
+		}
+	};
+
+	controller.pullOutSplit = function () {
+		var sel_split = null;
+
+		for (var i = 0; i < state.selectedBars.length; i++) {
+			if (state.selectedBars[i].selectedSplit !== null) {
+				sel_split = state.selectedBars[i].selectedSplit;
+				var newbar = FB.Bar.createFromSplit(sel_split, state.selectedBars[i].x, state.selectedBars[i].y);
+				controller.addBar(newbar);
+			}
+		}
+	};
+
+	controller.clearSplits = function () {
+		if (state.selectedBars.length > 0) {
+			for (var i = 0; i < state.selectedBars.length; i++) {
+				state.selectedBars[i].clearSplits();
+			}
+		}
+	};
+
+	// ----- Splits / iterate / make -------------------------------------------
+
+	controller.makeSplits = function (num_splits, vert_horiz, whole_part) {
+		var vert_truth = (vert_horiz === "Vertical");
+		if (state.selectedBars.length > 0) {
+			if (whole_part === "Whole") {
+				for (var i = 0; i < state.selectedBars.length; i++) {
+					var this_bar = state.selectedBars[i];
+					this_bar.wholeBarSplits(num_splits, vert_truth);
+				}
+			} else {
+				if ((state.selectedBars[0].splits.length === 0) || (state.selectedBars[0].selectedSplit === null)) {
+					// No splits, or no selected split, so treat this like a whole bar split
+					state.selectedBars[0].wholeBarSplits(num_splits, vert_truth);
+				} else {
+					state.selectedBars[0].splitSelectedSplit(num_splits, vert_truth);
+				}
+			}
+			controller.refresh();
+		}
+	};
+
+	controller.makeIterations = function (num_iterations, vert_horiz) {
+		var vert_truth = (vert_horiz === "Vertical");
+		if (state.selectedBars.length > 0) {
+
+			if (!FB.Utilities.flag[0]) { controller.copyBars(); }
+
+			state.selectedBars[0].iterate(num_iterations, vert_truth);
+
+			controller.refresh();
+		}
+	};
+
+	controller.makeMake = function (num_frac) {
+		// Only build a bar for a finite, positive fraction. Guards against a
+		// negative whole-number entry (which produced a negative-width rect) and
+		// NaN/0 inputs.
+		if (!(typeof num_frac === 'number' && isFinite(num_frac) && num_frac > 0)) { return; }
+		if (state.selectedBars.length > 0) {
+			state.bars.push(state.selectedBars[0].makeNewCopy(num_frac));
+			controller.refresh();
+		}
+	};
+
+	// ----- Measurement / unit bar --------------------------------------------
+
+	controller.measureBars = function () {
+		if (state.selectedBars.length === 0) { return; }
+		// Guard: measuring requires a unit bar. Without this the original threw a
+		// TypeError on this.unitBar.size and left the app wedged -- a common path
+		// for a learner who taps Measure before Set Unit Bar.
+		if (!state.unitBar || !(state.unitBar.size > 0)) {
+			notify(FB.I18N && FB.I18N.t ? FB.I18N.t('measure_no_unit') : 'Set a unit bar first.');
+			return;
+		}
+		for (var i = state.selectedBars.length - 1; i >= 0; i--) {
+			state.selectedBars[i].fraction = FB.Utilities.createFraction(state.selectedBars[i].size, state.unitBar.size);
+		}
+	};
+
+	controller.clearAllMeasurements = function () {
+		for (var i = 0; i < state.bars.length; i++) {
+			state.bars[i].isUnitBar = false;
+			state.bars[i].fraction = '';
+		}
+	};
+
+	controller.setUnitBar = function () {
+		controller.clearAllMeasurements();
+		if (state.selectedBars.length == 1) {
+			state.selectedBars[0].isUnitBar = true;
+			state.selectedBars[0].fraction = '';
+			state.unitBar = state.selectedBars[0];
+		}
+	};
+
+	controller.saveLabel = function (labelText, selectionType) {
+		var barSelection = [];
+		if (selectionType == FB.Utilities.USE_CURRENT_SELECTION) {
+			barSelection = state.selectedBars;
+		} else {
+			barSelection = state.lastSelectedBars;
+		}
+
+		if (barSelection.length == 1) {
+			barSelection[0].label = labelText;
+		}
+		state.lastSelectedBars = [];
+		controller.refresh();
+	};
+
+	// Deletes both bars and mats that are selected
+	controller.deleteSelectedBars = function () {
+		var newBars = [];
+		var unitBarDeleted = false;
+
+		for (var i = 0; i < state.bars.length; i++) {
+			if (!state.bars[i].isSelected) {
+				newBars.push(state.bars[i]);
+			} else {
+				if (state.bars[i].isUnitBar) {
+					unitBarDeleted = true;
+				}
+			}
+		}
+		state.bars = newBars;
+		if (unitBarDeleted) {
+			controller.clearAllMeasurements();
+		}
+		var newMats = [];
+		for (i = 0; i < state.mats.length; i++) {
+			if (!state.mats[i].isSelected) {
+				newMats.push(state.mats[i]);
+			}
+		}
+		state.mats = newMats;
+	};
+
+	// ----- Selection ---------------------------------------------------------
+
+	// Works on bars and mats together
+	controller.updateSelectionFromState = function () {
+		state.selectedBars = [];
+		for (var i = 0; i < state.bars.length; i++) {
+			if (state.bars[i].isSelected) {
+				state.selectedBars.push(state.bars[i]);
+			}
+		}
+		state.selectedMats = [];
+		for (i = 0; i < state.mats.length; i++) {
+			if (state.mats[i].isSelected) {
+				state.selectedMats.push(state.mats[i]);
+			}
+		}
+	};
+
+	controller.findBarForPoint = function (p) {
+		for (var i = state.bars.length - 1; i >= 0; i--) {
+			if (p.x > state.bars[i].x &&
+				p.x < state.bars[i].x + state.bars[i].w &&
+				p.y > state.bars[i].y &&
+				p.y < state.bars[i].y + state.bars[i].h) {
+
+				return (state.bars[i]);
+			}
+		}
+		return null;
+	};
+
+	controller.findSplitForPoint = function (p) {
+		var the_bar = controller.findBarForPoint(p);
+		if (the_bar !== null) {
+			return (the_bar.findSplitForPoint(p));
+		} else {
+			return (null);
+		}
+	};
+
+	controller.findSomethingForPoint = function (p) {
+		// Returns either a bar or a split that matches the point. Or null if no match.
+		var the_bar = controller.findBarForPoint(p);
+		if (the_bar !== null) {
+			var the_split = the_bar.findSplitForPoint(p);
+			if (the_split !== null) {
+				return (the_split);
+			} else {
+				return (the_bar);
+			}
+		} else {
+			return (null);
+		}
+	};
+
+	controller.barClickedOn = function () {
+		var split_key;
+		for (var i = state.bars.length - 1; i >= 0; i--) {
+			if (state.mouseDownLoc.x > state.bars[i].x &&
+				state.mouseDownLoc.x < state.bars[i].x + state.bars[i].w &&
+				state.mouseDownLoc.y > state.bars[i].y &&
+				state.mouseDownLoc.y < state.bars[i].y + state.bars[i].h)
+			{
+				if (state.currentAction == "manualSplit") {
+					controller.addUndoState();
+					if (FB.Utilities.flag[1]) {
+						split_key = FB.Utilities.shiftKeyDown;
+					} else {
+						split_key = false;
+					}
+
+					state.bars[i].splitBarAtPoint(state.mouseDownLoc, split_key);
+
+				} else {
+					state.bars[i].selectSplit(state.mouseDownLoc);
+				}
+				return state.bars[i];
+			}
+		}
+		return null;
+	};
+
+	controller.barToFront = function (bar) {
+		var new_list = [];
+
+		for (var i = 0; i < state.bars.length; i++) {
+			if (bar !== state.bars[i]) {
+				new_list.push(state.bars[i]);
+			}
+		}
+		new_list.push(bar);
+		state.bars = new_list;
+	};
+
+	controller.matClickedOn = function () {
+		for (var i = state.mats.length - 1; i >= 0; i--) {
+			if (state.mouseDownLoc.x > state.mats[i].x &&
+				state.mouseDownLoc.x < state.mats[i].x + state.mats[i].w &&
+				state.mouseDownLoc.y > state.mats[i].y &&
+				state.mouseDownLoc.y < state.mats[i].y + state.mats[i].h)
+			{
+				return state.mats[i];
+			}
+		}
+		return null;
+	};
+
+	// Clear for bars and mats
+	controller.clearSelection = function () {
+		for (var i = 0; i < state.bars.length; i++) {
+			state.bars[i].isSelected = false;
+			state.bars[i].clearSplitSelection();
+		}
+		state.lastSelectedBars = state.selectedBars;
+		state.selectedBars = [];
+
+		for (var j = 0; j < state.mats.length; j++) {
+			state.mats[j].isSelected = false;
+		}
+		state.lastSelectedMats = state.selectedMats;
+		state.selectedMats = [];
+	};
+
+	// Clear for bars and mats
+	controller.removeBarFromSelection = function (bar) {
+		var new_list = [];
+
+		for (var i = 0; i < state.selectedBars.length; i++) {
+			if (bar !== state.selectedBars[i]) {
+				new_list.push(state.selectedBars[i]);
+			}
+		}
+
+		state.selectedBars = new_list;
+		bar.isSelected = false;
+		bar.clearSplitSelection();
+	};
+
+	controller.removeMatFromSelection = function (mat) {
+		var new_list = [];
+
+		for (var i = 0; i < state.selectedMats.length; i++) {
+			if (mat !== state.selectedMats[i]) {
+				new_list.push(state.selectedMats[i]);
+			}
+		}
+
+		state.selectedMats = new_list;
+		mat.isSelected = false;
+	};
+
+	// ----- Join --------------------------------------------------------------
+
+	controller.joinSelected = function () {
+		// TODO: bulletproof this
+		// TODO: update this to allow for more than two bars to be joined.
+		if ((state.selectedBars.length > 2) || (state.selectedBars.length === 1) || (state.selectedMats.length > 0)) {
+			if (FB.Utilities.flag[3]) {
+				notify("Birleştirme işlemi yapabilmek için lütfen iki kesir şeridi seçiniz.");
+			} else {
+				notify("Please select exactly two bars (and no mats) before attempting to Join.");
+			}
+			return;
+		}
+		var success = state.selectedBars[0].join(state.selectedBars[1]);
+
+		if (success) {
+			state.selectedBars[0].isSelected = false;
+			controller.deleteSelectedBars();
+			controller.updateSelectionFromState();
+		}
+	};
+
+	// ----- Repeat tool -------------------------------------------------------
+
+	controller.setupBarRepeats = function () {
+		// For every bar, just set its repeatUnit. So that Repeat can work correctly.
+		for (var i = state.bars.length - 1; i >= 0; i--) {
+			state.bars[i].setRepeatUnit();
+		}
+	};
+
+	controller.unsetBarRepeats = function () {
+		for (var i = state.bars.length - 1; i >= 0; i--) {
+			state.bars[i].repeatUnit = null;
+		}
+	};
+
+	controller.handleToolUpdate = function (tool_name, tool_on) {
+		// This is the Canvas' chance to do something when a tool switched on or off.
+		// We are given the name of the tool, and a Boolean value of whether it was turned on or off.
+		switch (tool_name) {
+			case 'repeat':
+				FB.repeatModeActive = !!tool_on;
+				if (tool_on) {
+					controller.setupBarRepeats();
+				} else {
+					controller.unsetBarRepeats();
+				}
+		}
+	};
+
+	// ----- Colors / drag -----------------------------------------------------
+
+	controller.setFillColor = function (fillColor) {
+		state.currentFill = fillColor;
+	};
+
+	controller.updateColorsOfSelectedBars = function () {
+		var i;
+		if (state.selectedBars.length > 0) {
+			controller.addUndoState();
+		}
+		for (i = 0; i < state.selectedBars.length; i++) {
+			if (state.selectedBars[i].hasSelectedSplit()) {
+				state.selectedBars[i].updateColorOfSelectedSplit(state.currentFill);
+			} else {
+				state.selectedBars[i].color = state.currentFill;
+			}
+		}
+		controller.refresh();
+	};
+
+	controller.drag = function (currentLoc) {
+		if (state.mouseLastLoc === null || typeof (state.mouseLastLoc) == 'undefined') {
+			state.mouseLastLoc = state.mouseDownLoc;
+		}
+
+		for (var i = 0; i < state.selectedBars.length; i++) {
+			state.selectedBars[i].x = state.selectedBars[i].x + currentLoc.x - state.mouseLastLoc.x;
+			state.selectedBars[i].y = state.selectedBars[i].y + currentLoc.y - state.mouseLastLoc.y;
+		}
+
+		for (i = 0; i < state.selectedMats.length; i++) {
+			state.selectedMats[i].x = state.selectedMats[i].x + currentLoc.x - state.mouseLastLoc.x;
+			state.selectedMats[i].y = state.selectedMats[i].y + currentLoc.y - state.mouseLastLoc.y;
+		}
+
+		if (controller.check_for_drag) {
+			controller.found_a_drag = true;
+			controller.check_for_drag = false;
+		}
+
+		state.mouseLastLoc = currentLoc;
+
+		controller.refresh();
+	};
+
+	// ----- Undo / redo -------------------------------------------------------
+
+	controller.addUndoState = function () {
+		var newstate = new FB.CanvasState(state);
+		newstate.grabBarsAndMats();
+		mUndoArray.push(newstate);  // Push new state onto the stack
+
+		while (mUndoArray.length > 100) {
+			mUndoArray.shift();  // Shift states off the bottom of the undo stack
+		}
+
+		mRedoArray.length = 0; // When an undoable event happens, it clears the redo stack.
+	};
+
+	controller.cacheUndoState = function () {
+		controller.CachedState = new FB.CanvasState(state);
+		controller.CachedState.grabBarsAndMats();
+	};
+
+	controller.finalizeCachedUndoState = function () {
+		if (controller.CachedState !== null) {
+			mUndoArray.push(controller.CachedState);  // Push new state onto the stack
+
+			while (mUndoArray.length > 100) {
+				mUndoArray.shift();  // Shift states off the bottom of the undo stack
+			}
+
+			mRedoArray.length = 0; // When an undoable event happens, it clears the redo stack.
+		}
+
+		controller.check_for_drag = false;
+		controller.found_a_drag = false;
+	};
+
+	controller.undo = function () {
+		// Store current state in Redo stack
+		// Pop an undo state off the stack
+		// Restore undo state
+		if (mUndoArray.length > 0) {
+
+			var newstate = new FB.CanvasState(state);
+			newstate.grabBarsAndMats();
+			mRedoArray.push(newstate);  // Push new state onto the stack
+
+			controller.restoreAState(mUndoArray.pop());
+		}
+	};
+
+	controller.redo = function () {
+		if (mRedoArray.length > 0) {
+
+			var newstate = new FB.CanvasState(state);
+			newstate.grabBarsAndMats();
+			mUndoArray.push(newstate);  // Push new state onto the stack
+
+			controller.restoreAState(mRedoArray.pop());
+		}
+	};
+
+	controller.restoreAState = function (a_new_state) {
+		// clear the bars and mats
+		// copy bars and mats from the new state
+		// set the unit bar, if any.
+		var temp_bar;
+
+		state.bars = [];
+		state.mats = [];
+		state.selectedBars = [];
+		state.selectedMats = [];
+
+		while (a_new_state.mBars.length > 0) {
+			temp_bar = a_new_state.mBars.shift();
+			state.bars.push(temp_bar);
+		}
+
+		while (a_new_state.mMats.length > 0) {
+			state.mats.push(a_new_state.mMats.shift());
+		}
+
+		state.unitBar = a_new_state.mUnitBar;
+		if (state.unitBar !== null) {
+			state.unitBar.isUnitBar = true;
+			state.unitBar.fraction = '1/1';
+		}
+		controller.clearSelection();
+	};
+
+	return controller;
+};
+
+// Copyright University of Massachusetts Dartmouth 2014
+//
+// Designed and built by James P. Burke and Jason Orrill
+// Modified and developed by Hakan Sandir
+//
+// This Javascript version of Fraction Bars is based on
+// the Transparent Media desktop version of Fraction Bars,
+// which in turn was based on the original TIMA Bars software
+// by John Olive and Leslie Steffe.
+// We thank them for allowing us to update that product.
+
+// FB.Pointer ports the original $('#fbCanvas').mousedown/mousemove/mouseup
+// handlers (fractionbars.js) to unified Pointer Events so touch, mouse, and
+// stylus all work. The original drew a live rubber-band rect onto a saved
+// canvas snapshot; here the SVG renderer redraws the scene each move, and the
+// in-progress drag rectangle is supplied to the scene via mouseDownLoc/
+// mouseUpLoc + currentAction so the renderer can draw the preview.
+
+FB.Pointer = FB.Pointer || {};
+
+// Builds a clientToLocal(evt) -> {x,y} converter that maps client (screen)
+// coordinates into the SVG viewBox space using the inverse screen CTM. Guarded
+// so a missing getScreenCTM (e.g. in tests) degrades to raw offset coords.
+FB.Pointer.makeClientToLocal = function (svgRoot) {
+	return function clientToLocal(evt) {
+		if (svgRoot && typeof svgRoot.getScreenCTM === 'function') {
+			var ctm = svgRoot.getScreenCTM();
+			if (ctm && typeof ctm.inverse === 'function') {
+				// Prefer DOMPoint.matrixTransform when available.
+				if (typeof svgRoot.createSVGPoint === 'function') {
+					var pt = svgRoot.createSVGPoint();
+					pt.x = evt.clientX;
+					pt.y = evt.clientY;
+					var local = pt.matrixTransform(ctm.inverse());
+					return { x: local.x, y: local.y };
+				}
+				var inv = ctm.inverse();
+				return {
+					x: inv.a * evt.clientX + inv.c * evt.clientY + inv.e,
+					y: inv.b * evt.clientX + inv.d * evt.clientY + inv.f
+				};
+			}
+		}
+		// Fallback: use offset/page coords relative to the element's bounds.
+		var rect = (svgRoot && typeof svgRoot.getBoundingClientRect === 'function')
+			? svgRoot.getBoundingClientRect()
+			: { left: 0, top: 0 };
+		return { x: (evt.clientX || 0) - rect.left, y: (evt.clientY || 0) - rect.top };
+	};
+};
+
+// Produces an FB.Point from a local {x,y}.
+FB.Pointer.pointFromLocal = function (loc) {
+	return FB.Point.fromCoords(loc.x, loc.y);
+};
+
+// Reproduces the original mousedown handler. `loc` is the localized {x,y}.
+// `shiftDown` honors `Utilities.shiftKeyDown || FB.Toolbar.selectionMode`.
+FB.Pointer.handleDown = function (controller, loc, shiftDown) {
+	var state = controller.state;
+
+	controller.check_for_drag = true;
+	controller.cacheUndoState();
+
+	state.mouseDownLoc = FB.Pointer.pointFromLocal(loc);
+	state.mouseLastLoc = null;
+
+	var b = controller.barClickedOn();
+	var m = controller.matClickedOn();
+
+	var action = state.currentAction;
+
+	if (action === 'bar' || action === 'mat') {
+		// The original snapshotted the canvas (saveCanvas) so the rubber-band
+		// rect could be drawn over it. With SVG we just keep mouseDownLoc set;
+		// the renderer reads currentAction + mouseDownLoc/mouseUpLoc to draw the
+		// preview rect during move. Nothing else to do on down.
+		return;
+	}
+
+	if (action === 'repeat') {
+		controller.addUndoState();
+		if (b !== null) {
+			b.repeat(state.mouseDownLoc);
+		}
+		controller.refresh();
+		return;
+	}
+
+	// The click is being used to update the selected bars.
+	if (b !== null) {
+		if (FB.Pointer.indexOf(state.selectedBars, b) === -1) {
+			// clicked-on bar is not already selected
+			if (!shiftDown) {
+				controller.clearSelection();
+			}
+			for (var i = 0; i < state.selectedBars.length; i++) {
+				state.selectedBars[i].clearSplitSelection();
+			}
+			controller.barToFront(b);
+			state.selectedBars.push(b);
+			b.isSelected = true;
+			b.selectSplit(state.mouseDownLoc);
+		} else {
+			// clicked bar is already selected
+			for (var j = 0; j < state.selectedBars.length; j++) {
+				state.selectedBars[j].clearSplitSelection();
+			}
+			if (!shiftDown) {
+				b.selectSplit(state.mouseDownLoc);
+			} else {
+				controller.removeBarFromSelection(b);
+			}
+			controller.barToFront(b);
+		}
+		if (action === 'manualSplit') {
+			controller.clearSelection();
+		}
+	} else if (m !== null) {
+		if (FB.Pointer.indexOf(state.selectedMats, m) === -1) {
+			// clicked-on mat is not already selected
+			if (!shiftDown) {
+				controller.clearSelection();
+			}
+			m.isSelected = true;
+			state.selectedMats.push(m);
+		} else {
+			// clicked-on mat is already selected
+			if (shiftDown) {
+				controller.removeMatFromSelection(m);
+			}
+		}
+	} else {
+		controller.clearSelection();
+	}
+	controller.refresh();
+};
+
+// Reproduces the original mousemove handler body.
+FB.Pointer.handleMove = function (controller, loc) {
+	var state = controller.state;
+	var p = FB.Pointer.pointFromLocal(loc);
+
+	if (state.currentAction === 'manualSplit') {
+		state.manualSplitPoint = p;
+		controller.refresh();
+	}
+
+	if (state.mouseDownLoc !== null) {
+		FB.Pointer.updateCanvas(controller, p);
+	}
+};
+
+// Ports FractionBarsCanvas.updateCanvas: while a bar/mat is being drawn, track
+// the current corner (mouseUpLoc) so the renderer draws the preview rect; while
+// in manualSplit, track the split point; otherwise drag the selection.
+FB.Pointer.updateCanvas = function (controller, currentLoc) {
+	var state = controller.state;
+	if (state.currentAction === 'bar' || state.currentAction === 'mat') {
+		state.mouseUpLoc = currentLoc;
+		controller.refresh();
+	} else if (state.currentAction === 'manualSplit') {
+		state.manualSplitPoint = currentLoc;
+		controller.refresh();
+	} else {
+		controller.drag(currentLoc);
+	}
+};
+
+// Reproduces the original mouseup handler body.
+FB.Pointer.handleUp = function (controller, loc) {
+	var state = controller.state;
+	state.mouseUpLoc = FB.Pointer.pointFromLocal(loc);
+
+	if (state.currentAction === 'bar' || state.currentAction === 'mat') {
+		// Ignore degenerate "draws" -- a tap with little or no drag. On touch
+		// devices a stray tap in Bar/Mat mode otherwise created an invisible
+		// zero-size object that clutters the model and exports.
+		var MIN_DRAW = 4;
+		var d = state.mouseDownLoc, u = state.mouseUpLoc;
+		var big = d && u && (Math.abs(u.x - d.x) >= MIN_DRAW || Math.abs(u.y - d.y) >= MIN_DRAW);
+		if (big) {
+			controller.addUndoState();
+			if (state.currentAction === 'bar') { controller.addBar(); } else { controller.addMat(); }
+		}
+		FB.Toolbar.clearSelectionButton(controller);
+	}
+
+	if (controller.found_a_drag) {
+		controller.finalizeCachedUndoState();
+		controller.check_for_drag = false;
+	}
+
+	state.mouseUpLoc = null;
+	state.mouseDownLoc = null;
+	state.mouseLastLoc = null;
+
+	controller.refresh();
+};
+
+// Plain replacement for the legacy $.inArray helper.
+FB.Pointer.indexOf = function (arr, item) {
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i] === item) { return i; }
+	}
+	return -1;
+};
+
+// Attaches Pointer Event listeners to the SVG root. Uses setPointerCapture so
+// drags continue when the pointer leaves the element. `opts.clientToLocal` may
+// override the default CTM-based converter.
+FB.Pointer.attach = function (svgRoot, controller, opts) {
+	opts = opts || {};
+	var clientToLocal = opts.clientToLocal || FB.Pointer.makeClientToLocal(svgRoot);
+	var activePointerId = null;
+
+	function shiftActive() {
+		return (FB.Utilities.shiftKeyDown === true) ||
+			(FB.Toolbar && FB.Toolbar.selectionMode === true);
+	}
+
+	function onDown(e) {
+		if (activePointerId !== null) { return; }
+		activePointerId = (e.pointerId !== undefined ? e.pointerId : 0);
+		if (svgRoot.setPointerCapture && e.pointerId !== undefined) {
+			try { svgRoot.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+		}
+		if (typeof e.preventDefault === 'function') { e.preventDefault(); }
+		FB.Pointer.handleDown(controller, clientToLocal(e), shiftActive());
+	}
+
+	function onMove(e) {
+		// Only react while a gesture is in progress (mouseDownLoc set), or when
+		// manualSplit needs the live preview (original moved on every mousemove).
+		if (activePointerId !== null && e.pointerId !== undefined &&
+			e.pointerId !== activePointerId) { return; }
+		FB.Pointer.handleMove(controller, clientToLocal(e));
+	}
+
+	function onUp(e) {
+		if (activePointerId !== null && e.pointerId !== undefined &&
+			e.pointerId !== activePointerId) { return; }
+		if (svgRoot.releasePointerCapture && e.pointerId !== undefined) {
+			try { svgRoot.releasePointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+		}
+		activePointerId = null;
+		FB.Pointer.handleUp(controller, clientToLocal(e));
+	}
+
+	svgRoot.addEventListener('pointerdown', onDown);
+	svgRoot.addEventListener('pointermove', onMove);
+	svgRoot.addEventListener('pointerup', onUp);
+	svgRoot.addEventListener('pointercancel', onUp);
+
+	return function detach() {
+		svgRoot.removeEventListener('pointerdown', onDown);
+		svgRoot.removeEventListener('pointermove', onMove);
+		svgRoot.removeEventListener('pointerup', onUp);
+		svgRoot.removeEventListener('pointercancel', onUp);
+	};
+};
+
+// Copyright University of Massachusetts Dartmouth 2014
+//
+// Designed and built by James P. Burke and Jason Orrill
+// Modified and developed by Hakan Sandir
+//
+// This Javascript version of Fraction Bars is based on
+// the Transparent Media desktop version of Fraction Bars,
+// which in turn was based on the original TIMA Bars software
+// by John Olive and Leslie Steffe.
+// We thank them for allowing us to update that product.
+
+// FB.Toolbar ports the original `$('a').click` dispatch switch and the
+// `.colorBlock` / `.colorBlock1` handlers from fractionbars.js. The original
+// coupled tool/action/window routing into one delegated click handler; this module
+// exposes a pure `dispatch(controller, id, opts)` (so it is unit-testable
+// without a DOM) plus a thin `bind(rootEl, controller, opts)` that wires
+// click/pointerup listeners on the toolbar to `dispatch`.
+
+FB.Toolbar = FB.Toolbar || {};
+
+// When true, touch "add to selection" toggle stands in for the shift key in the
+// original mousedown selection branch (replaces Utilities.shiftKeyDown). The
+// pointer layer reads `shiftDown || FB.Toolbar.selectionMode`.
+FB.Toolbar.selectionMode = false;
+
+// UI hooks for the things the original delegated to dialogs / chrome (label
+// editor, splits/iterate/make/properties dialogs, file open/save, print, hide).
+// Task 11 (FB.Dialogs) installs these. Each is optional and called only if set.
+FB.Toolbar.ui = {
+	editLabel: null,        // window_label
+	openSplits: null,       // window_split
+	openIterate: null,      // window_iterate
+	openProperties: null,   // window_properties
+	openMake: null,         // action_make (Make dialog before makeMake)
+	save: null,             // action_save
+	open: null,             // action_open
+	print: null,            // action_print
+	clearAll: null,         // action_clearAll
+	showAll: null,          // action_show
+	previous: null,         // action_previous
+	next: null,             // action_next
+	hideButton: null,       // hide mode: hide the clicked element (id)
+	onHideMode: null,       // hide mode entered/exited (active:boolean)
+	onHideChanged: null,    // a tool was hidden / shown (refresh banner + Show All)
+	setToolSelected: null,  // mark a tool element selected (id, on)
+	setColorSelected: null  // mark a color swatch selected
+};
+
+// Routes a clicked element id through the original switch. `id` is the element's
+// id attribute (e.g. 'tool_bar', 'action_copy', 'window_split'). Returns true if
+// the id was handled.
+FB.Toolbar.dispatch = function (controller, id, opts) {
+	if (id === null || id === undefined) { return false; }
+	opts = opts || {};
+	var ui = FB.Toolbar.ui;
+	var state = controller.state;
+
+	// First, handle hide-mode: if a tool is in 'hide' currentAction and the
+	// clicked element isn't a hide control, hide it and record it. (Original:
+	// $(this).hide(); hiddenButtonsName.push(thisId).)
+	if (state.currentAction === 'hide' && id.indexOf('hide') === -1) {
+		if (ui.hideButton) { ui.hideButton(id); }
+		if (ui.onHideChanged) { ui.onHideChanged(); }
+		return true;
+	}
+
+	if (id.indexOf('tool_') > -1) {
+		var toolName = id.substr(5, id.length);
+		var tool_on = false;
+		if (toolName.toString() === state.currentAction.toString()) {
+			// Second press turns the tool off (clear_selection_button).
+			tool_on = false;
+			FB.Toolbar.clearSelectionButton(controller);
+		} else {
+			state.currentAction = toolName;
+			tool_on = true;
+			if (ui.setToolSelected) { ui.setToolSelected(id, true); }
+		}
+		controller.handleToolUpdate(toolName, tool_on);
+		if (toolName === 'hide' && ui.onHideMode) { ui.onHideMode(tool_on); }
+		controller.refresh();
+		return true;
+	}
+
+	if (id.indexOf('action_') > -1) {
+		switch (id.substr(7, id.length)) {
+			case 'copy':
+				controller.addUndoState();
+				controller.copyBars();
+				controller.refresh();
+				break;
+			case 'delete':
+				controller.addUndoState();
+				controller.deleteSelectedBars();
+				controller.refresh();
+				break;
+			case 'join':
+				controller.addUndoState();
+				controller.joinSelected();
+				controller.refresh();
+				break;
+			case 'setUnitBar':
+				controller.addUndoState();
+				controller.setUnitBar();
+				controller.refresh();
+				break;
+			case 'measure':
+				controller.addUndoState();
+				controller.measureBars();
+				controller.refresh();
+				break;
+			case 'make':
+				// Original opened the Make dialog (fbCanvasObj.make()); the
+				// dialog OK then calls controller.makeMake(n).
+				controller.addUndoState();
+				if (ui.openMake) { ui.openMake(); }
+				controller.refresh();
+				break;
+			case 'breakApart':
+				controller.addUndoState();
+				controller.breakApartBars();
+				controller.refresh();
+				break;
+			case 'clearSplits':
+				controller.addUndoState();
+				controller.clearSplits();
+				controller.refresh();
+				break;
+			case 'pullOutSplit':
+				controller.addUndoState();
+				controller.pullOutSplit();
+				controller.refresh();
+				break;
+			case 'undo':
+				controller.undo();
+				controller.refresh();
+				break;
+			case 'redo':
+				controller.redo();
+				controller.refresh();
+				break;
+			case 'save':
+				if (ui.save) { ui.save(); }
+				break;
+			case 'open':
+				if (ui.open) { ui.open(); }
+				break;
+			case 'print':
+				if (ui.print) { ui.print(); }
+				break;
+			case 'clearAll':
+				if (ui.clearAll) { ui.clearAll(); }
+				break;
+			case 'show':
+				if (ui.showAll) { ui.showAll(); }
+				break;
+			case 'previous':
+				if (ui.previous) { ui.previous(); }
+				break;
+			case 'next':
+				if (ui.next) { ui.next(); }
+				break;
+		}
+		return true;
+	}
+
+	if (id.indexOf('window_') > -1) {
+		switch (id.substr(7, id.length)) {
+			case 'label':
+				controller.addUndoState();
+				if (ui.editLabel) { ui.editLabel(); }
+				break;
+			case 'split':
+				controller.addUndoState();
+				if (ui.openSplits) { ui.openSplits(); }
+				break;
+			case 'iterate':
+				controller.addUndoState();
+				if (ui.openIterate) { ui.openIterate(); }
+				break;
+			case 'properties':
+				if (ui.openProperties) { ui.openProperties(); }
+				break;
+		}
+		return true;
+	}
+
+	return false;
+};
+
+// Ports clear_selection_button: clear mouse, clear selection, deselect tools,
+// reset currentAction.
+FB.Toolbar.clearSelectionButton = function (controller) {
+	var state = controller.state;
+	state.mouseDownLoc = null;
+	state.mouseUpLoc = null;
+	controller.clearSelection();
+	if (FB.Toolbar.ui && FB.Toolbar.ui.setToolSelected) {
+		FB.Toolbar.ui.setToolSelected(null, false); // null id => clear all
+	}
+	state.currentAction = '';
+};
+
+// Ports the .colorBlock click handler: set fill color, recolor selected bars.
+FB.Toolbar.setColor = function (controller, color) {
+	controller.setFillColor(color);
+	controller.updateColorsOfSelectedBars();
+	controller.refresh();
+};
+
+// Ports the .colorBlock1 click handler: set the canvas background color.
+FB.Toolbar.setBackgroundColor = function (svgEl, color) {
+	if (svgEl && svgEl.style) {
+		svgEl.style.backgroundColor = color;
+	}
+};
+
+// Wires the toolbar DOM: every element with an id matching tool_/action_/window_
+// dispatches on click + pointerup (touch); color swatches recolor; the
+// add-to-selection toggle drives FB.Toolbar.selectionMode.
+FB.Toolbar.bind = function (rootEl, controller, opts) {
+	opts = opts || {};
+	if (!rootEl || !rootEl.querySelectorAll) { return; }
+
+	var handle = function (el) {
+		return function (e) {
+			if (e && typeof e.preventDefault === 'function') { e.preventDefault(); }
+			var id = el.getAttribute('id');
+			FB.Toolbar.dispatch(controller, id, opts);
+		};
+	};
+
+	var links = rootEl.querySelectorAll('[id^="tool_"],[id^="action_"],[id^="window_"]');
+	for (var i = 0; i < links.length; i++) {
+		var el = links[i];
+		var h = handle(el);
+		el.addEventListener('click', h);
+	}
+
+	// Foreground (fill) color swatches.
+	var swatches = rootEl.querySelectorAll('.colorBlock');
+	for (var s = 0; s < swatches.length; s++) {
+		(function (sw) {
+			sw.addEventListener('click', function () {
+				var color = sw.getAttribute('data-color') ||
+					(sw.style && sw.style.backgroundColor) || '';
+				FB.Toolbar.setColor(controller, color);
+				if (FB.Toolbar.ui && FB.Toolbar.ui.setColorSelected) {
+					FB.Toolbar.ui.setColorSelected(sw);
+				}
+			});
+		})(swatches[s]);
+	}
+
+	// Background color swatches.
+	var bgSwatches = rootEl.querySelectorAll('.colorBlock1');
+	var svgEl = opts.svgRoot || null;
+	for (var b = 0; b < bgSwatches.length; b++) {
+		(function (sw) {
+			sw.addEventListener('click', function () {
+				var color = sw.getAttribute('data-color') ||
+					(sw.style && sw.style.backgroundColor) || '';
+				FB.Toolbar.setBackgroundColor(svgEl, color);
+			});
+		})(bgSwatches[b]);
+	}
+
+	// The touch "add to selection" toggle (replaces shiftKey when true).
+	if (opts.addToSelectionToggle) {
+		var toggle = opts.addToSelectionToggle;
+		toggle.addEventListener('click', function () {
+			FB.Toolbar.selectionMode = !FB.Toolbar.selectionMode;
+			if (toggle.setAttribute) {
+				toggle.setAttribute('aria-pressed', FB.Toolbar.selectionMode ? 'true' : 'false');
+			}
+		});
+	}
+};
+
+// src/chrome/splitsWidget.js
+//
+// SVG port of the original canvas-based SplitsWidget (splitswidget.js).
+// The original drew, into a 2D canvas context, a filled background rect in
+// `this.color` and then N stroked rects (red stroke "#FF3333") laid out across
+// the width (vertical splits) or down the height (horizontal splits).
+//
+// Here we rebuild the SVG tree deterministically on refresh() using
+// createElementNS only (no innerHTML). Each cell is a single <rect> that
+// carries the fill color and the red stroke, so N splits => N <rect> elements.
+FB.SplitsWidget = FB.SplitsWidget || {};
+
+(function () {
+	var SVGNS = 'http://www.w3.org/2000/svg';
+
+	FB.SplitsWidget.create = function (svgEl, doc) {
+		var vertical = true;
+		var numSplits = 2;
+		var color = 'yellow';
+
+		function num(attr, fallback) {
+			var v = parseFloat(svgEl.getAttribute(attr));
+			return isFinite(v) && v > 0 ? v : fallback;
+		}
+
+		function rect(x, y, w, h) {
+			var r = doc.createElementNS(SVGNS, 'rect');
+			r.setAttribute('x', x);
+			r.setAttribute('y', y);
+			r.setAttribute('width', w);
+			r.setAttribute('height', h);
+			r.setAttribute('fill', color);
+			r.setAttribute('stroke', '#FF3333');
+			r.setAttribute('stroke-width', 1);
+			return r;
+		}
+
+		var widget = {
+			setVertical: function (b) {
+				vertical = !!b;
+				return widget;
+			},
+			setNumSplits: function (n) {
+				var v = parseInt(n, 10);
+				if (isFinite(v) && v >= 1) {
+					numSplits = v;
+				}
+				return widget;
+			},
+			setColor: function (c) {
+				if (c) {
+					color = c;
+				}
+				return widget;
+			},
+			refresh: function () {
+				svgEl.replaceChildren();
+				var width = num('width', 100);
+				var height = num('height', 100);
+				var i;
+				if (vertical) {
+					var cw = width / numSplits;
+					for (i = 0; i < numSplits; i++) {
+						svgEl.appendChild(rect(i * cw, 0, cw, height));
+					}
+				} else {
+					var ch = height / numSplits;
+					for (i = 0; i < numSplits; i++) {
+						svgEl.appendChild(rect(0, i * ch, width, ch));
+					}
+				}
+				return widget;
+			}
+		};
+
+		return widget;
+	};
+})();
+
+// src/chrome/dialogs.js
+//
+// Native <dialog>-based replacement for the original UI-toolkit dialogs and the
+// slider/splits widget wiring in fractionbars.js. Every dialog uses
+// the platform <dialog> element with showModal()/close() instead of
+// the legacy .dialog("open")/"close" calls. The OK/Cancel button handlers reproduce the
+// original button logic verbatim (including Utilities.flag[0..3] updates and the
+// canvas background-color set), and notify() is an accessible non-blocking toast
+// that replaces the original alert(...) calls.
+//
+// No third-party UI toolkit, no dynamic code execution, no markup injection, no network.
+FB.Dialogs = FB.Dialogs || {};
+
+(function () {
+	FB.Dialogs.init = function (doc, controller) {
+		function byId(id) {
+			return doc.getElementById ? doc.getElementById(id) : null;
+		}
+
+		function show(id) {
+			var d = byId(id);
+			if (d && typeof d.showModal === 'function') {
+				d.showModal();
+			}
+		}
+
+		function close(id) {
+			var d = byId(id);
+			if (d && typeof d.close === 'function') {
+				d.close();
+			}
+		}
+
+		// Value of the checked radio in a named group, or undefined.
+		function radioValue(name) {
+			if (!doc.querySelector) { return undefined; }
+			var checked = doc.querySelector("input[type='radio'][name='" + name + "']:checked");
+			return checked ? checked.value : undefined;
+		}
+
+		function fieldValue(id) {
+			var f = byId(id);
+			return f ? f.value : undefined;
+		}
+
+		function setDisplay(id, value) {
+			var node = byId(id);
+			if (node && node.style) { node.style.display = value; }
+		}
+
+		// --- accessible non-blocking toast (replaces alert) ----------------------
+
+		var toast = null;
+		var toastTimer = null;
+		function ensureToast() {
+			if (toast) { return toast; }
+			toast = byId('fb-toast');
+			if (!toast && doc.createElement) {
+				toast = doc.createElement('div');
+				toast.id = 'fb-toast';
+				toast.className = 'fb-toast';
+				toast.setAttribute('role', 'status');
+				toast.setAttribute('aria-live', 'polite');
+				toast.setAttribute('hidden', '');
+				if (doc.body && doc.body.appendChild) {
+					doc.body.appendChild(toast);
+				}
+			}
+			return toast;
+		}
+
+		function notify(msg) {
+			var t = ensureToast();
+			if (!t) { return; }
+			t.textContent = String(msg == null ? '' : msg);
+			t.removeAttribute('hidden');
+			if (t.classList && t.classList.add) { t.classList.add('is-visible'); }
+			if (toastTimer && typeof clearTimeout === 'function') { clearTimeout(toastTimer); }
+			if (typeof setTimeout === 'function') {
+				toastTimer = setTimeout(function () {
+					if (t.classList && t.classList.remove) { t.classList.remove('is-visible'); }
+					t.setAttribute('hidden', '');
+				}, 4000);
+			}
+		}
+
+		// --- wiring helpers ------------------------------------------------------
+
+		function on(node, type, handler) {
+			if (node && node.addEventListener) {
+				node.addEventListener(type, handler);
+			}
+		}
+
+		// Bind the OK/Cancel buttons of a dialog. Buttons are looked up by id
+		// (<dialog>-scoped) so each dialog owns its own pair.
+		function bindButtons(dialogId, okId, cancelId, okHandler) {
+			on(byId(okId), 'click', function () {
+				if (okHandler) { okHandler(); }
+			});
+			on(byId(cancelId), 'click', function () {
+				close(dialogId);
+			});
+		}
+
+		// --- #split-slider -> #split-slider-field --------------------------------
+		// Original UI-toolkit slider mirrored ui.value into #split-slider-field on
+		// slide; the native range input does the same on 'input'.
+		(function () {
+			var slider = byId('split-slider');
+			var field = byId('split-slider-field');
+			on(slider, 'input', function () {
+				if (field) { field.value = slider.value; }
+			});
+		})();
+
+		// --- #dialog-splits ------------------------------------------------------
+		bindButtons('dialog-splits', 'splits-ok', 'splits-cancel', function () {
+			var num_splits = fieldValue('split-slider-field');
+			var whole = radioValue('whole_part');
+			var direction = 'Vertical';
+			if (FB.Utilities.flag[1]) {
+				direction = radioValue('vert_horiz');
+			}
+			controller.makeSplits(num_splits, direction, whole);
+			close('dialog-splits');
+		});
+
+		// --- #dialog-properties --------------------------------------------------
+		bindButtons('dialog-properties', 'properties-ok', 'properties-cancel', function () {
+			var create_checked = radioValue('create');
+			if (create_checked === 'Same') {
+				FB.Utilities.flag[0] = true;
+			} else if (create_checked === 'New') {
+				FB.Utilities.flag[0] = false;
+			}
+
+			var horiz_checked = radioValue('two_split');
+			if (horiz_checked === 'One_horiz') {
+				FB.Utilities.flag[1] = false;
+				setDisplay('radio_vert', 'none');
+			} else if (horiz_checked === 'Two_horiz') {
+				FB.Utilities.flag[1] = true;
+				setDisplay('radio_vert', 'block');
+			}
+
+			var iterate_way_checked = radioValue('two_ittr');
+			if (iterate_way_checked === 'One_way') {
+				FB.Utilities.flag[2] = false;
+				setDisplay('iterate_vert-horiz', 'none');
+			} else if (iterate_way_checked === 'Two_way') {
+				FB.Utilities.flag[2] = true;
+				setDisplay('iterate_vert-horiz', 'block');
+			}
+
+			var language_checked = radioValue('lang');
+			switch (language_checked) {
+				case 'lang_eng':
+					FB.Utilities.flag[3] = false;
+					if (FB.I18N && FB.I18N.set) { FB.I18N.set('eng'); }
+					break;
+				case 'lang_tur':
+					FB.Utilities.flag[3] = true;
+					if (FB.I18N && FB.I18N.set) { FB.I18N.set('tur'); }
+					break;
+			}
+
+			close('dialog-properties');
+		});
+
+		// --- #dialog-iterate -----------------------------------------------------
+		bindButtons('dialog-iterate', 'iterate-ok', 'iterate-cancel', function () {
+			// Validate + clamp: ignore non-numeric / < 1, cap at 100 so a stray
+			// large entry cannot freeze a low-powered tablet.
+			var raw = parseInt(fieldValue('iterate-field'), 10);
+			if (!isFinite(raw) || raw < 1) { close('dialog-iterate'); return; }
+			var MAX_ITER = 100;
+			var num_iterate = raw > MAX_ITER ? MAX_ITER : raw;
+			if (raw > MAX_ITER) { notify('Maximum ' + MAX_ITER + ' iterations.'); }
+			var direction;
+			if (!FB.Utilities.flag[2]) {
+				direction = 'Horizontal';
+			} else {
+				direction = radioValue('vert_horiz');
+			}
+			controller.makeIterations(num_iterate, direction);
+			close('dialog-iterate');
+		});
+
+		// --- #dialog-make --------------------------------------------------------
+		bindButtons('dialog-make', 'make-ok', 'make-cancel', function () {
+			var num_whole = parseFloat(fieldValue('whole-field'));
+			var num_num = parseFloat(fieldValue('num-field'));
+			var num_denum = parseFloat(fieldValue('denum-field'));
+
+			if (!num_whole) { num_whole = 0; }
+			if (!num_denum) { num_denum = 1; }
+			if (!num_num) { num_num = 0; }
+
+			var num_frac = num_whole + (num_num / num_denum);
+			if (!num_frac) {
+				notify('Please input fraction!');
+			} else {
+				controller.makeMake(num_frac);
+			}
+
+			var wf = byId('whole-field'); if (wf) { wf.value = ''; }
+			var nf = byId('num-field'); if (nf) { nf.value = ''; }
+			var df = byId('denum-field'); if (df) { df.value = ''; }
+			close('dialog-make');
+		});
+
+		// --- #dialog-file --------------------------------------------------------
+		// Cancel-only in the original. The file <input> change handler closes the
+		// dialog and hands the selected file off to the controller's open path.
+		(function () {
+			on(byId('file-cancel'), 'click', function () {
+				close('dialog-file');
+			});
+			var fileInput = byId('fileInput');
+			on(fileInput, 'change', function (event) {
+				close('dialog-file');
+				var files = event && event.target ? event.target.files : null;
+				if (!files || files.length === 0) { return; }
+				if (controller && typeof controller.openFile === 'function') {
+					controller.openFile(files[0]);
+				}
+			});
+		})();
+
+		return {
+			notify: notify,
+			open: show,
+			close: close
+		};
+	};
+})();
+
+// src/chrome/appActions.js
+//
+// The DOM-facing application actions that the original fractionbars.js performed
+// inline (file Save/Open with multi-file Previous/Next, Print, New/clearAll, the
+// Label editor overlay, Hide/Show toolbar buttons, and the toolbar selection-
+// state helpers). These were not part of the model/controller port, so they live
+// here and are wired into FB.Toolbar.ui by main.js.
+//
+// No network, no eval, no innerHTML. Files are read with FileReader and parsed as
+// data; downloads use an object URL on a transient <a>. DOM is built with
+// createElement/textContent only.
+
+FB.AppActions = FB.AppActions || {};
+
+FB.AppActions.create = function (deps) {
+	deps = deps || {};
+	var doc = deps.document;
+	var win = deps.window;
+	var controller = deps.controller;
+	var svgRoot = deps.svgRoot;
+	var notify = deps.notify || function () {};
+	var openFileDialog = deps.openFileDialog || function () {};
+	var closeFileDialog = deps.closeFileDialog || function () {};
+
+	var hiddenEls = [];        // elements hidden via Hide mode (for Show All)
+	var fileList = [];         // FileList from a multi-file Open
+	var fileIndex = 0;
+	var currentFileName = null;
+
+	function t(key) {
+		return (FB.I18N && FB.I18N.t) ? FB.I18N.t(key) : key;
+	}
+
+	// ----- state apply (shared by file open and gallery load) ----------------
+
+	function applyStateObject(obj) {
+		var rebuilt = FB.Persistence.deserialize(obj);
+		var s = controller.state;
+		s.bars = rebuilt.bars;
+		s.mats = rebuilt.mats;
+		s.unitBar = rebuilt.unitBar;
+		s.selectedBars = [];
+		s.selectedMats = [];
+		s.lastSelectedBars = [];
+		s.lastSelectedMats = [];
+		controller.mUndoArray.length = 0;
+		controller.mRedoArray.length = 0;
+		showAll();
+		applyHidden(rebuilt.hidden || []);
+		controller.refresh();
+	}
+
+	// ----- Save (file download) ----------------------------------------------
+
+	function save() {
+		var json;
+		try {
+			json = FB.Persistence.toJSON(controller.state);
+		} catch (e) {
+			notify(t('save_unsupported'));
+			return;
+		}
+		var suggested = currentFileName || 'FractionBarsSave.txt';
+		var name = win && win.prompt ? win.prompt('File name:', suggested) : suggested;
+		if (name == null) { return; }
+		try {
+			var blob = new Blob([json], { type: 'text/plain;charset=utf-8' });
+			var url = (win.URL || win.webkitURL).createObjectURL(blob);
+			var a = doc.createElement('a');
+			a.href = url;
+			a.download = name;
+			doc.body.appendChild(a);
+			a.click();
+			doc.body.removeChild(a);
+			if (typeof win.setTimeout === 'function') {
+				win.setTimeout(function () { (win.URL || win.webkitURL).revokeObjectURL(url); }, 0);
+			}
+			currentFileName = name;
+		} catch (e2) {
+			notify(t('save_unsupported'));
+		}
+	}
+
+	// ----- Open (file dialog + multi-file navigation) ------------------------
+
+	function open() {
+		// Reset the file input so re-opening the same file fires 'change'.
+		var input = doc.getElementById('fileInput');
+		if (input) { try { input.value = ''; } catch (e) { /* ignore */ } }
+		openFileDialog();
+	}
+
+	function setTitle(name) {
+		currentFileName = name;
+		var title = doc.getElementById('bar_titles');
+		if (title) { title.textContent = name ? (t('bar_title') + ': ' + name) : t('bar_title'); }
+		if (name) { try { doc.title = name; } catch (e) { /* ignore */ } }
+	}
+
+	function loadFileAt(i) {
+		if (i < 0 || i >= fileList.length) { return; }
+		fileIndex = i;
+		var f = fileList[i];
+		var reader = new FileReader();
+		reader.onload = function (ev) {
+			var obj;
+			try {
+				obj = FB.Persistence.parseFile(ev.target.result);
+			} catch (err) {
+				notify('Fraction Bars cannot open this file.\n\n' + (err && err.message ? err.message : err));
+				return;
+			}
+			applyStateObject(obj);
+			setTitle(f.name);
+			updateNav();
+		};
+		reader.readAsText(f);
+	}
+
+	function handleFiles(list) {
+		if (!list || list.length === 0) { return; }
+		fileList = list;
+		fileIndex = 0;
+		closeFileDialog();
+		loadFileAt(0);
+	}
+
+	function previous() { if (fileIndex > 0) { loadFileAt(fileIndex - 1); } }
+	function next() { if (fileIndex < fileList.length - 1) { loadFileAt(fileIndex + 1); } }
+
+	function updateNav() {
+		var prev = doc.getElementById('action_previous');
+		var nxt = doc.getElementById('action_next');
+		var many = fileList.length > 1;
+		if (prev) { prev.toggleAttribute('hidden', !(many && fileIndex > 0)); }
+		if (nxt) { nxt.toggleAttribute('hidden', !(many && fileIndex < fileList.length - 1)); }
+	}
+
+	// ----- Print (vector, via @media print CSS) ------------------------------
+
+	function print() {
+		// The sealed build prints vector SVG directly: a print stylesheet hides the
+		// chrome and shows only the canvas, then we ask the browser to print.
+		if (win && typeof win.print === 'function') { win.print(); }
+	}
+
+	// ----- New / clearAll ----------------------------------------------------
+
+	function clearAll() {
+		var ok = win && win.confirm ? win.confirm('Start a new Fraction Bars document? Unsaved work will be lost.') : true;
+		if (!ok) { return; }
+		var s = controller.state;
+		s.bars = [];
+		s.mats = [];
+		s.unitBar = null;
+		s.selectedBars = [];
+		s.selectedMats = [];
+		s.lastSelectedBars = [];
+		s.lastSelectedMats = [];
+		controller.mUndoArray.length = 0;
+		controller.mRedoArray.length = 0;
+		fileList = [];
+		fileIndex = 0;
+		setTitle(null);
+		showAll();
+		controller.refresh();
+	}
+
+	// ----- Label editor overlay ----------------------------------------------
+
+	var labelWired = false;
+	function wireLabelInput() {
+		if (labelWired) { return; }
+		var input = doc.getElementById('labelInput');
+		if (!input) { return; }
+		labelWired = true;
+		input.addEventListener('keyup', function (e) {
+			if (e.which === 13 || e.key === 'Enter') {
+				controller.saveLabel(input.value, FB.Utilities.USE_CURRENT_SELECTION);
+				hideLabel();
+				controller.refresh();
+			}
+		});
+		input.addEventListener('blur', function () {
+			// Fires after selection may have cleared; use last selection.
+			controller.saveLabel(input.value, FB.Utilities.USE_LAST_SELECTION);
+			hideLabel();
+		});
+	}
+
+	function hideLabel() {
+		var input = doc.getElementById('labelInput');
+		if (input) { input.classList.remove('is-editing'); input.style.display = 'none'; }
+	}
+
+	function editLabel() {
+		wireLabelInput();
+		var sel = controller.state.selectedBars;
+		if (sel.length !== 1) { return; }
+		var b = sel[0];
+		var input = doc.getElementById('labelInput');
+		if (!input) { return; }
+		// Map model coords -> client pixels. The canvas fills the stage and
+		// letterboxes a 1000x700 viewBox (preserveAspectRatio="xMidYMid meet"),
+		// so the content scale is the smaller axis ratio and the drawing is
+		// centered -- account for both the uniform scale and the letterbox offset.
+		var rect = svgRoot.getBoundingClientRect
+			? svgRoot.getBoundingClientRect()
+			: { left: 0, top: 0, width: 1000, height: 700 };
+		var scale = Math.min(rect.width / 1000, rect.height / 700) || 1;
+		var offX = (rect.width - 1000 * scale) / 2;
+		var offY = (rect.height - 700 * scale) / 2;
+		input.style.position = 'fixed';
+		input.style.left = (rect.left + offX + (b.x + 5) * scale) + 'px';
+		input.style.top = (rect.top + offY + (b.y + b.h - 22) * scale) + 'px';
+		input.style.width = Math.max(40, (b.w - 13) * scale) + 'px';
+		input.value = b.label || '';
+		input.classList.add('is-editing');
+		input.style.display = 'inline-block';
+		if (typeof input.focus === 'function') { input.focus(); }
+	}
+
+	// ----- Hide / Show toolbar buttons ---------------------------------------
+
+	function hideButton(id) {
+		if (FB.hiddenButtonNames.indexOf(id) < 0) {
+			var el = doc.getElementById(id);
+			if (el) {
+				el.setAttribute('hidden', '');
+				FB.hiddenButtonNames.push(id);
+				hiddenEls.push(el);
+			}
+		}
+		updateHideUi();
+	}
+
+	// Reflect the hidden-tool count into the Show All button + the banner so the
+	// (otherwise invisible, "locked") hide state is always legible.
+	function updateHideUi() {
+		var n = hiddenEls.length;
+		var show = doc.getElementById('action_show');
+		if (show) {
+			show.classList.toggle('is-disabled', n === 0);
+			show.setAttribute('aria-disabled', n === 0 ? 'true' : 'false');
+			show.textContent = n > 0 ? (t('show') + ' (' + n + ')') : t('show');
+		}
+		var count = doc.getElementById('fb-hide-count');
+		if (count) {
+			count.textContent = n > 0
+				? (' ' + n + (n === 1 ? ' tool hidden.' : ' tools hidden.'))
+				: '';
+		}
+	}
+
+	// Enter / leave hide mode: toggle the body affordance class, show the banner,
+	// and swap the Hide control's label to "Done hiding" so it clearly reads as a
+	// toggle the user must turn back off.
+	function setHideMode(active) {
+		if (doc.body) { doc.body.classList.toggle('fb-hide-active', !!active); }
+		var banner = doc.getElementById('fb-hide-banner');
+		if (banner) { banner.toggleAttribute('hidden', !active); }
+		var hideBtn = doc.getElementById('tool_hide');
+		if (hideBtn) { hideBtn.textContent = active ? t('hide_done') : t('hide'); }
+		updateHideUi();
+	}
+
+	function showAll() {
+		while (hiddenEls.length > 0) {
+			var el = hiddenEls.pop();
+			el.removeAttribute('hidden');
+		}
+		FB.hiddenButtonNames.length = 0;
+		updateHideUi();
+	}
+
+	function applyHidden(names) {
+		for (var i = 0; i < names.length; i++) {
+			// The snapshot always includes the Hide/Show controls; skip those so a
+			// loaded file does not permanently bury them.
+			if (names[i] === 'tool_hide' || names[i] === 'action_show') { continue; }
+			hideButton(names[i]);
+		}
+	}
+
+	// ----- Toolbar selection-state helpers -----------------------------------
+
+	function setToolSelected(id, on) {
+		if (id === null) {
+			var sel = doc.querySelectorAll('.toolBtn.toolSelected');
+			for (var i = 0; i < sel.length; i++) { sel[i].classList.remove('toolSelected'); }
+			return;
+		}
+		var el = doc.getElementById(id);
+		if (el) {
+			if (on) { el.classList.add('toolSelected'); }
+			else { el.classList.remove('toolSelected'); }
+		}
+	}
+
+	function setColorSelected(sw) {
+		var sel = doc.querySelectorAll('.colorBlock.colorSelected');
+		for (var i = 0; i < sel.length; i++) { sel[i].classList.remove('colorSelected'); }
+		if (sw && sw.classList) { sw.classList.add('colorSelected'); }
+	}
+
+	return {
+		save: save,
+		open: open,
+		handleFiles: handleFiles,
+		previous: previous,
+		next: next,
+		print: print,
+		clearAll: clearAll,
+		editLabel: editLabel,
+		hideLabel: hideLabel,
+		hideButton: hideButton,
+		setHideMode: setHideMode,
+		updateHideUi: updateHideUi,
+		showAll: showAll,
+		applyState: applyStateObject,
+		setToolSelected: setToolSelected,
+		setColorSelected: setColorSelected
+	};
+};
+
+// src/chrome/galleryUi.js
+//
+// Minimal UI for the in-browser (IndexedDB) saved-work gallery (FB.Gallery). It
+// renders a "save to browser" field plus a list of saved documents with Load,
+// Duplicate, and Delete. This is the modern, no-file save/load surface; portable
+// file Save/Open remain available in the toolbar.
+//
+// DOM is built with createElement/textContent only (no innerHTML, no network).
+
+FB.GalleryUI = FB.GalleryUI || {};
+
+FB.GalleryUI.bind = function (panelEl, gallery, controller, opts) {
+	opts = opts || {};
+	var doc = opts.document || (panelEl && panelEl.ownerDocument);
+	var win = opts.window;
+	var notify = opts.notify || function () {};
+	var getState = opts.getState || function () { return FB.Persistence.serialize(controller.state); };
+	var applyState = opts.applyState || function () {};
+	if (!panelEl || !doc) { return null; }
+
+	function now() {
+		return (win && win.Date) ? win.Date.now() : 0;
+	}
+
+	function el(tag, opts2) {
+		var node = doc.createElement(tag);
+		if (opts2 && opts2.text != null) { node.textContent = opts2.text; }
+		if (opts2 && opts2.cls) { node.className = opts2.cls; }
+		return node;
+	}
+
+	function button(label, cls, onClick) {
+		var b = el('button', { text: label, cls: cls || 'fb-btn' });
+		b.type = 'button';
+		b.addEventListener('click', onClick);
+		return b;
+	}
+
+	var listEl = null;
+
+	function refreshList() {
+		gallery.list().then(function (entries) {
+			if (!listEl) { return; }
+			listEl.replaceChildren();
+			entries.sort(function (a, b) { return (b.updatedAt || 0) - (a.updatedAt || 0); });
+			if (entries.length === 0) {
+				listEl.appendChild(el('li', { text: 'No saved work yet.', cls: 'fb-gallery-empty' }));
+				return;
+			}
+			for (var i = 0; i < entries.length; i++) {
+				(function (name) {
+					var li = el('li', { cls: 'fb-gallery-item' });
+					li.appendChild(el('span', { text: name, cls: 'fb-gallery-name' }));
+					li.appendChild(button('Load', 'fb-btn fb-btn-sm', function () {
+						gallery.load(name).then(function (obj) {
+							if (obj) { applyState(obj); notify('Loaded "' + name + '".'); }
+						});
+					}));
+					li.appendChild(button('Duplicate', 'fb-btn fb-btn-sm', function () {
+						gallery.duplicate(name, name + ' copy', now()).then(refreshList);
+					}));
+					li.appendChild(button('Delete', 'fb-btn fb-btn-sm', function () {
+						var ok = win && win.confirm ? win.confirm('Delete "' + name + '"?') : true;
+						if (ok) { gallery.remove(name).then(refreshList); }
+					}));
+					listEl.appendChild(li);
+				})(entries[i].name);
+			}
+		});
+	}
+
+	function buildPanel() {
+		panelEl.replaceChildren();
+		panelEl.appendChild(el('h2', { text: 'Saved Work', cls: 'fb-gallery-title' }));
+
+		var saveRow = el('div', { cls: 'fb-gallery-saverow' });
+		var nameInput = el('input');
+		nameInput.type = 'text';
+		nameInput.placeholder = 'Name this work';
+		nameInput.className = 'fb-gallery-input';
+		saveRow.appendChild(nameInput);
+		saveRow.appendChild(button('Save to browser', 'fb-btn', function () {
+			var name = (nameInput.value || '').trim();
+			if (!name) { notify('Please name this work first.'); return; }
+			gallery.save(name, getState(), now()).then(function () {
+				nameInput.value = '';
+				notify('Saved "' + name + '" in this browser.');
+				refreshList();
+			});
+		}));
+		panelEl.appendChild(saveRow);
+
+		listEl = el('ul', { cls: 'fb-gallery-list' });
+		panelEl.appendChild(listEl);
+		refreshList();
+	}
+
+	buildPanel();
+
+	return {
+		toggle: function () {
+			var hidden = panelEl.hasAttribute('hidden');
+			if (hidden) { panelEl.removeAttribute('hidden'); refreshList(); }
+			else { panelEl.setAttribute('hidden', ''); }
+			return !hidden;
+		},
+		refresh: refreshList
+	};
+};
+
+// src/chrome/swatches.js
+//
+// Per-theme quick-fill swatch palettes. The 8 quick swatches in the toolbar
+// drive the current fill color (read off each swatch's data-color by
+// FB.Toolbar). Each skin gets its own on-brand palette: Classic keeps the
+// original eight, Bubblegum gets candy colors, etc. Applied by setting both the
+// swatch's data-color (so picking uses the themed color) and its background
+// (scripted style -- CSP-safe, same mechanism the app already uses for the
+// canvas background swatches). No eval, no innerHTML.
+
+FB.Swatches = FB.Swatches || (function () {
+	var palettes = {
+		// Classic -- the original eight (kept verbatim).
+		'':       ['#FFFF66', '#ACBEFF', '#E6E6E6', '#FFFFFF', '#CCFF66', '#FFCC66', '#DD99FF', '#FF92DA'],
+		// Hermes -- parchment / gold / rust / teal scholarly palette.
+		'hermes': ['#F0D68A', '#E0B84C', '#C96F43', '#6FA3AD', '#E7D9BB', '#B8915A', '#A8B79A', '#D98C6A'],
+		// Crimson (IU) -- cream + crimson family, a couple of muted neutrals.
+		'iu':     ['#FBE9E9', '#F2C9C9', '#DE9A9A', '#C56A6A', '#F6EFDF', '#EADCC2', '#CBB07A', '#BBD2C6'],
+		// Chalkboard -- bright chalk pastels that pop on the dark board.
+		'chalk':  ['#F6D04D', '#FF9A7A', '#8FD6C4', '#9EC5FF', '#F4A9D4', '#C9B3FF', '#F3EFE6', '#B6E08A'],
+		// Bubblegum -- candy pinks, purples, and pastels.
+		'candy':  ['#FFD1E8', '#FF8FC4', '#FF5CA8', '#C9B3FF', '#A8E6FF', '#B6F5C9', '#FFF2A8', '#FFC1A8']
+	};
+
+	// Recolor the 8 quick swatches for `theme` and keep the active selection on
+	// the same slot (re-pointing the controller's current fill to the themed hue).
+	function apply(doc, theme, controller) {
+		if (!doc || !doc.getElementById) { return; }
+		var pal = palettes[theme] || palettes[''];
+		var selIndex = 0;
+		for (var i = 0; i < 8; i++) {
+			var el = doc.getElementById('setColor' + (i + 1));
+			if (!el) { continue; }
+			if (el.classList && el.classList.contains('colorSelected')) { selIndex = i; }
+			el.setAttribute('data-color', pal[i]);
+			el.style.backgroundColor = pal[i];
+		}
+		if (controller && typeof controller.setFillColor === 'function') {
+			controller.setFillColor(pal[selIndex] || pal[0]);
+		}
+	}
+
+	return { palettes: palettes, apply: apply };
+})();
+
+// src/chrome/toolbarDrag.js
+//
+// Makes the toolbar a draggable floating panel (docked top-left by default).
+// Drag by its handle; position persists in localStorage and is clamped to the
+// workspace. Pointer Events only, scripted styles only -- no eval / network /
+// innerHTML, so the seal holds.
+
+FB.ToolbarDrag = FB.ToolbarDrag || {};
+
+FB.ToolbarDrag.install = function (doc, win) {
+	if (!doc || !doc.getElementById) { return; }
+	var panel = doc.getElementById('fb-toolbar');
+	var handle = doc.getElementById('fb-toolbar-handle');
+	var dock = doc.getElementById('fb-toolbar-dock');
+	if (!panel || !handle) { return; }
+	var KEY = 'fb-toolbar-pos';
+	var DEFAULT = { left: 10, top: 10 };
+
+	function workspace() { return panel.parentElement; }
+
+	function clamp(left, top) {
+		var ws = workspace();
+		var wr = ws && ws.getBoundingClientRect
+			? ws.getBoundingClientRect()
+			: { width: (win && win.innerWidth) || 800, height: (win && win.innerHeight) || 600 };
+		var maxL = Math.max(0, wr.width - panel.offsetWidth);
+		var maxT = Math.max(0, wr.height - panel.offsetHeight);
+		return {
+			left: Math.min(Math.max(0, left), maxL),
+			top: Math.min(Math.max(0, top), maxT)
+		};
+	}
+
+	function setPos(left, top) {
+		var c = clamp(left, top);
+		panel.style.left = c.left + 'px';
+		panel.style.top = c.top + 'px';
+	}
+
+	function save() {
+		try {
+			if (win && win.localStorage) {
+				win.localStorage.setItem(KEY, JSON.stringify({
+					left: parseFloat(panel.style.left) || DEFAULT.left,
+					top: parseFloat(panel.style.top) || DEFAULT.top
+				}));
+			}
+		} catch (e) { /* ignore */ }
+	}
+
+	function restore() {
+		var pos = null;
+		try { pos = win && win.localStorage && JSON.parse(win.localStorage.getItem(KEY)); } catch (e) { /* ignore */ }
+		if (pos && isFinite(pos.left) && isFinite(pos.top)) { setPos(pos.left, pos.top); }
+	}
+
+	var dragging = false, startX = 0, startY = 0, baseL = 0, baseT = 0, pid = null;
+
+	function down(e) {
+		if (e.target === dock) { return; } // let the reset button click through
+		dragging = true;
+		panel.classList.add('is-dragging');
+		pid = (e.pointerId !== undefined ? e.pointerId : 0);
+		try { handle.setPointerCapture(pid); } catch (_) { /* ignore */ }
+		startX = e.clientX; startY = e.clientY;
+		var r = panel.getBoundingClientRect();
+		var wr = workspace().getBoundingClientRect();
+		baseL = r.left - wr.left; baseT = r.top - wr.top;
+		if (e.preventDefault) { e.preventDefault(); }
+	}
+	function move(e) {
+		if (!dragging) { return; }
+		setPos(baseL + (e.clientX - startX), baseT + (e.clientY - startY));
+	}
+	function up() {
+		if (!dragging) { return; }
+		dragging = false;
+		panel.classList.remove('is-dragging');
+		try { handle.releasePointerCapture(pid); } catch (_) { /* ignore */ }
+		save();
+	}
+
+	handle.addEventListener('pointerdown', down);
+	handle.addEventListener('pointermove', move);
+	handle.addEventListener('pointerup', up);
+	handle.addEventListener('pointercancel', up);
+
+	if (dock) {
+		dock.addEventListener('click', function (e) {
+			if (e && e.stopPropagation) { e.stopPropagation(); }
+			setPos(DEFAULT.left, DEFAULT.top);
+			save();
+		});
+	}
+
+	if (win && win.addEventListener) {
+		win.addEventListener('resize', function () {
+			var l = parseFloat(panel.style.left), t = parseFloat(panel.style.top);
+			if (isFinite(l) && isFinite(t)) { setPos(l, t); }
+		});
+	}
+
+	restore();
+};
+
+// src/i18n/strings.js
+//
+// String table for Fraction Bars. The English ('eng') entries are transcribed
+// verbatim from the original `lang_eng.css` content-map (the `.c_*:before {
+// content: "..." }` rules the old app injected via stylesheet). The Turkish
+// ('tur') entries are transcribed from the inline Turkish `alert(...)` strings
+// found in the original `FractionBarsCanvas.js` and `Bar.js`.
+//
+// FB.I18N.set(lang) selects the active language ('eng' | 'tur'); FB.I18N.t(key)
+// returns the active string for a key (falling back to English, then the key
+// itself). No DOM, no network, no eval.
+
+FB.I18N = FB.I18N || {};
+
+(function () {
+	// English: transcribed from lang_eng.css (.c_*:before content values).
+	var eng = {
+		// toolbar labels
+		bar: 'Bar',
+		mat: 'Mat',
+		copy: 'Copy',
+		repeat: 'Repeat',
+		iterate: 'Iterate',
+		join: 'Join',
+		delete: 'Delete',
+		parts: 'Parts',
+		pieces: 'Line',
+		b_apart: 'Break Apart',
+		pullout: 'Pull Out Parts',
+		c_parts: 'Clear Parts',
+		set_unit: 'Set Unit Bar',
+		measure: 'Measure',
+		make: 'Make',
+		label: 'Label',
+		undo: 'Undo',
+		redo: 'Redo',
+		save: 'Save',
+		open: 'Open',
+		'new': 'New',
+		print: 'Print',
+		properties: 'Properties',
+		hide: 'Hide Tools',
+		show: 'Show All',
+		hide_done: 'Done hiding',
+		previous: 'Previous',
+		next: 'Next',
+
+		// titles / headings
+		bar_title: 'Fraction Bar',
+
+		// dialog: splits
+		dialog_splits: 'Partition part of bar',
+		vertical: 'Vertical',
+		horizontal: 'Horizontal',
+		number_part: 'Number of parts:',
+		part_whole: 'Partition whole bar',
+		part_part: 'Partition part of bar',
+
+		// dialog: properties
+		dialog_properties: 'Partition part of bar',
+		iterations: 'Iterations',
+		dont_create: "Don't Create New Bar",
+		create_new: 'Create New Bar',
+		two_way: 'Two way Iterate',
+		one_way: 'Only one way Iterate',
+		splits: 'Splits (Parts)',
+		vert_horiz: 'Vertical or Horizontal Split',
+		only_vert: 'Only vertical split',
+		lang: 'Language',
+		lang_tur: 'Turkish',
+		lang_eng: 'English',
+		color: 'Background Color',
+
+		// dialog: iterate
+		dialog_iterate: 'Iterate',
+		number_iterations: 'Number of iterations:',
+
+		// dialog: make
+		number_whole: 'Write Fraction:',
+
+		// dialog: file
+		choose_file: 'Choose a File',
+		open_file: 'Use the button below to choose a FractionBars file to open.',
+
+		// alerts (English originals from FractionBarsCanvas.js / Bar.js)
+		split_alert: 'Please select a bar to partition.',
+		select_bar_to_partition: 'Please select a bar to partition.',
+		select_one_to_iterate: 'Please select exactly one bar to iterate.',
+		select_one_to_make: 'Please select exactly one bar to make new bar.',
+		select_two_to_join: 'Please select exactly two bars (and no mats) before attempting to Join.',
+		measure_no_unit: 'Set a unit bar first: select a bar, then tap "Set Unit Bar".',
+		join_dimension_mismatch: 'To Join, bars must have a matching dimension in height or width.',
+		repeat_no_unit: 'Tried to Repeat when no repeatUnit was set.',
+		save_unsupported: 'This browser does not support saving. \nHTML5 support is needed. \n\nFor best results use the most recent Firefox, \nChrome, Safari, or Internet Explorer browser.'
+	};
+
+	// Turkish: transcribed from the inline alert() strings in the original.
+	var tur = {
+		// alerts
+		split_alert: 'Lütfen ayrıştırılacak bir kesir şeridi seçiniz.',
+		select_bar_to_partition: 'Lütfen ayrıştırılacak bir kesir şeridi seçiniz.',
+		select_one_to_iterate: 'Lütfen yineleme işlemi yapabilmek için bir kesir şeridi seçiniz.',
+		select_one_to_make: 'Lütfen yeni bir şerit yapabilmek için bir kesir şeridi seçiniz.',
+		select_two_to_join: 'Birleştirme işlemi yapabilmek için lütfen iki kesir şeridi seçiniz.',
+		measure_no_unit: 'Önce bir birim kesir şeridi ayarlayın: bir şerit seçin, sonra "Birim Şerit Ayarla" düğmesine basın.',
+		save_unsupported: 'Bu tarayıcı kaydetmeyi desteklememektedir. Tarayıcının \nHTML5 destekli olması gereklidir. \n\nEn iyi sonuç için lütfen Firefox, \nChrome, Safari ya da Internet Explorer tarayıcılarından birini kullanınız.'
+	};
+
+	var tables = { eng: eng, tur: tur };
+	var current = 'eng';
+
+	FB.I18N.set = function (lang) {
+		// Accept BCP-47-ish values too ('en', 'en-US', 'tr', 'tr-TR').
+		var l = (lang == null ? '' : String(lang)).toLowerCase();
+		if (l === 'eng' || l.indexOf('en') === 0) {
+			current = 'eng';
+		} else if (l === 'tur' || l.indexOf('tr') === 0) {
+			current = 'tur';
+		} else if (tables[l]) {
+			current = l;
+		}
+		return current;
+	};
+
+	FB.I18N.get = function () { return current; };
+
+	FB.I18N.t = function (key) {
+		var table = tables[current] || eng;
+		if (Object.prototype.hasOwnProperty.call(table, key)) {
+			return table[key];
+		}
+		if (Object.prototype.hasOwnProperty.call(eng, key)) {
+			return eng[key];
+		}
+		return key;
+	};
+
+	// Apply the active language to the DOM: every element carrying a data-i18n
+	// attribute gets its textContent set from t(key). Keys without an authentic
+	// translation in the active table fall back to English (see t()), so the UI
+	// stays usable; supply lang_tur UI strings in `tur` above to fully localize.
+	FB.I18N.apply = function (doc) {
+		if (!doc || !doc.querySelectorAll) { return; }
+		var nodes = doc.querySelectorAll('[data-i18n]');
+		for (var i = 0; i < nodes.length; i++) {
+			var key = nodes[i].getAttribute('data-i18n');
+			if (key) { nodes[i].textContent = FB.I18N.t(key); }
+		}
+	};
+})();
+
+// FB.StateApi -- the external integration surface for Fraction Bars.
+//
+// install(controller, target) defines target.FractionBars = { getState, loadState,
+// onChange, version }. This is the contract a host page (or an LTI/Hermes shell)
+// uses to read and restore the v2 save state.
+//
+// installPostMessage(api, win) bridges that contract over window.postMessage with
+// strict origin checks: it only honors messages from an allowlisted origin and
+// never replies with a '*' target origin to a known opener. There is no network
+// access; this is purely cross-frame/cross-window message passing.
+
+FB.StateApi = FB.StateApi || {};
+
+FB.StateApi.install = function (controller, target) {
+	target = target || {};
+
+	var listeners = [];
+
+	// Fire registered onChange listeners whenever the controller mutates/refreshes.
+	controller.onMutate(function () {
+		for (var i = 0; i < listeners.length; i++) {
+			try { listeners[i](); } catch (e) { /* a bad listener must not break others */ }
+		}
+	});
+
+	function getState() {
+		return FB.Persistence.serialize(controller.state);
+	}
+
+	function loadState(obj) {
+		if (!obj || typeof obj !== 'object') {
+			throw new Error('FractionBars.loadState: expected a state object');
+		}
+		if (obj.format !== FB.Persistence.FORMAT) {
+			throw new Error('FractionBars.loadState: unrecognized format "' + obj.format + '"');
+		}
+		if (!(typeof obj.version === 'number' && obj.version >= 2)) {
+			throw new Error('FractionBars.loadState: unsupported version "' + obj.version + '"');
+		}
+
+		var rebuilt = FB.Persistence.deserialize(obj);
+		var state = controller.state;
+		state.bars = rebuilt.bars;
+		state.mats = rebuilt.mats;
+		state.unitBar = rebuilt.unitBar;
+		state.selectedBars = [];
+		state.selectedMats = [];
+		state.lastSelectedBars = [];
+		state.lastSelectedMats = [];
+		if (rebuilt.hidden !== undefined) { state.hidden = rebuilt.hidden; }
+
+		controller.refresh();
+	}
+
+	function onChange(cb) {
+		if (typeof cb === 'function') { listeners.push(cb); }
+	}
+
+	target.FractionBars = {
+		getState: getState,
+		loadState: loadState,
+		onChange: onChange,
+		version: FB.Persistence.VERSION
+	};
+
+	return target.FractionBars;
+};
+
+// installPostMessage wires the State API to window.postMessage with origin checks.
+//
+//   FB.StateApi.installPostMessage(api, win, options)
+//
+// options.allowedOrigins : array of exact origin strings permitted to talk to us
+//                          (default: [win.location.origin] when available).
+// Messages must be { source:'hermes', type:'getState'|'loadState', payload? }.
+// Replies are { source:'fraction-bars', type, requestId?, ok, payload|error } and
+// are posted back to the *sender's* origin (event.origin), never '*'.
+FB.StateApi.installPostMessage = function (api, win, options) {
+	options = options || {};
+
+	var sameOrigin = (win && win.location && win.location.origin) ? win.location.origin : null;
+	var allowed = options.allowedOrigins || (sameOrigin ? [sameOrigin] : []);
+
+	function isAllowed(origin) {
+		// "null" (sandboxed iframes / file:) and the wildcard are never trusted.
+		if (!origin || origin === 'null' || origin === '*') { return false; }
+		for (var i = 0; i < allowed.length; i++) {
+			if (allowed[i] === origin) { return true; }
+		}
+		return false;
+	}
+
+	function handler(event) {
+		// Reject anything not from an allowlisted origin before reading the body.
+		if (!isAllowed(event.origin)) { return; }
+
+		var data = event.data;
+		if (!data || typeof data !== 'object' || data.source !== 'hermes') { return; }
+
+		var source = event.source;
+		if (!source || typeof source.postMessage !== 'function') { return; }
+
+		function reply(msg) {
+			msg.source = 'fraction-bars';
+			if (data.requestId !== undefined) { msg.requestId = data.requestId; }
+			// Always target the verified sender origin -- never '*'.
+			source.postMessage(msg, event.origin);
+		}
+
+		switch (data.type) {
+			case 'getState':
+				try {
+					reply({ type: 'getState', ok: true, payload: api.getState() });
+				} catch (e) {
+					reply({ type: 'getState', ok: false, error: String(e && e.message || e) });
+				}
+				break;
+			case 'loadState':
+				try {
+					api.loadState(data.payload);
+					reply({ type: 'loadState', ok: true });
+				} catch (e) {
+					reply({ type: 'loadState', ok: false, error: String(e && e.message || e) });
+				}
+				break;
+			default:
+				// Unknown message types are ignored silently.
+				break;
+		}
+	}
+
+	if (win && typeof win.addEventListener === 'function') {
+		win.addEventListener('message', handler, false);
+	}
+
+	return handler;
+};
+
+// src/main.js -- application bootstrap.
+//
+// Wired on DOMContentLoaded. Assembles the renderer, controller, pointer input,
+// toolbar, dialogs, gallery, i18n, keyboard shortcuts, and the external State API
+// / postMessage bridge into a running app.
+//
+// No network, no eval, no innerHTML. DOM is built by the renderer/chrome via
+// createElement(NS); this file locates elements and connects modules.
+
+FB.Main = FB.Main || {};
+
+FB.Main.boot = function (doc, win) {
+	doc = doc || (typeof document !== 'undefined' ? document : null);
+	win = win || (typeof window !== 'undefined' ? window : null);
+	if (!doc) { return null; }
+
+	// ----- DOM anchors -------------------------------------------------------
+	var svgRoot = doc.getElementById('fbCanvas');
+	var toolbarEl = doc.getElementById('fb-toolbar');
+	var galleryEl = doc.getElementById('fb-gallery');
+
+	// ----- Renderer ----------------------------------------------------------
+	var renderer = (FB.Renderer && svgRoot)
+		? FB.Renderer.create(svgRoot, doc)
+		: { render: function () {} };
+
+	// ----- i18n --------------------------------------------------------------
+	var i18n = FB.I18N || null;
+	if (i18n && typeof i18n.set === 'function') {
+		var lang = (doc.documentElement && doc.documentElement.lang) || 'en';
+		i18n.set(lang);
+	}
+	function translate(key) {
+		return (i18n && typeof i18n.t === 'function') ? i18n.t(key) : key;
+	}
+	function applyI18n() {
+		if (i18n && typeof i18n.apply === 'function') { i18n.apply(doc); }
+	}
+
+	// ----- Notify (late-bound to the dialog toast once dialogs exist) --------
+	var notifyImpl = function (msg) { if (win && typeof win.alert === 'function') { win.alert(msg); } };
+	function notify(msg) { return notifyImpl(msg); }
+	FB.notify = notify; // model layer (Bar.alert shim) routes here
+
+	// ----- Controller --------------------------------------------------------
+	var controller = FB.Controller.create({
+		renderer: renderer,
+		notify: notify,
+		getMarkedIterate: function () { return FB.Utilities.getMarkedIterateFlag(); }
+	});
+
+	// ----- Dialogs -----------------------------------------------------------
+	var dialogs = (FB.Dialogs && typeof FB.Dialogs.init === 'function')
+		? FB.Dialogs.init(doc, controller)
+		: null;
+	if (dialogs && typeof dialogs.notify === 'function') { notifyImpl = dialogs.notify; }
+	function openDialog(id) { if (dialogs && dialogs.open) { dialogs.open(id); } }
+	function closeDialog(id) { if (dialogs && dialogs.close) { dialogs.close(id); } }
+
+	// ----- Splits preview widget --------------------------------------------
+	var splitDisplay = doc.getElementById('split-display');
+	var splitsWidget = (FB.SplitsWidget && splitDisplay)
+		? FB.SplitsWidget.create(splitDisplay, doc)
+		: null;
+	function syncSplitsWidget() {
+		if (!splitsWidget) { return; }
+		var field = doc.getElementById('split-slider-field');
+		var n = field ? parseInt(field.value, 10) : 2;
+		var vertRadio = doc.getElementById('vert');
+		var vertical = FB.Utilities.flag[1] ? !(vertRadio && !vertRadio.checked) : true;
+		splitsWidget.setNumSplits(isFinite(n) ? n : 2).setVertical(vertical).refresh();
+	}
+	if (splitsWidget) {
+		var slider = doc.getElementById('split-slider');
+		if (slider) { slider.addEventListener('input', syncSplitsWidget); }
+		var vr = doc.getElementById('vert'), hr = doc.getElementById('horiz');
+		if (vr) { vr.addEventListener('change', syncSplitsWidget); }
+		if (hr) { hr.addEventListener('change', syncSplitsWidget); }
+	}
+
+	// ----- App actions (file save/open/print/new, label, hide/show) ----------
+	var actions = FB.AppActions ? FB.AppActions.create({
+		document: doc, window: win, controller: controller, svgRoot: svgRoot,
+		notify: notify,
+		openFileDialog: function () { openDialog('dialog-file'); },
+		closeFileDialog: function () { closeDialog('dialog-file'); }
+	}) : null;
+
+	// Multi-file Open: our own change handler drives Previous/Next navigation.
+	var fileInput = doc.getElementById('fileInput');
+	if (fileInput && actions) {
+		fileInput.addEventListener('change', function (e) {
+			actions.handleFiles(e && e.target ? e.target.files : null);
+		});
+	}
+
+	// ----- Selection guard helper (ports the split/iterate/make guards) ------
+	function requireOneBar(alertKey) {
+		var n = controller.state.selectedBars.length;
+		if (n !== 1) { notify(translate(alertKey)); return false; }
+		return true;
+	}
+
+	// ----- Wire FB.Toolbar.ui hooks ------------------------------------------
+	if (FB.Toolbar && FB.Toolbar.ui) {
+		var ui = FB.Toolbar.ui;
+		ui.editLabel = function () { if (actions) { actions.editLabel(); } };
+		ui.openSplits = function () {
+			if (!requireOneBar('select_bar_to_partition')) { return; }
+			var bar = controller.state.selectedBars[0];
+			if (splitsWidget && bar) { splitsWidget.setColor(bar.color); syncSplitsWidget(); }
+			openDialog('dialog-splits');
+		};
+		ui.openIterate = function () {
+			if (!requireOneBar('select_one_to_iterate')) { return; }
+			openDialog('dialog-iterate');
+		};
+		ui.openMake = function () {
+			if (!requireOneBar('select_one_to_make')) { return; }
+			openDialog('dialog-make');
+		};
+		ui.openProperties = function () {
+			// Reflect current flags into the radio controls before opening.
+			function check(id, on) { var el = doc.getElementById(id); if (el) { el.checked = !!on; } }
+			check('same', FB.Utilities.flag[0]); check('new', !FB.Utilities.flag[0]);
+			check('two_horiz', FB.Utilities.flag[1]); check('one_horiz', !FB.Utilities.flag[1]);
+			check('two_way', FB.Utilities.flag[2]); check('one_way', !FB.Utilities.flag[2]);
+			check('lang_tr', FB.Utilities.flag[3]); check('lang_en', !FB.Utilities.flag[3]);
+			openDialog('dialog-properties');
+		};
+		if (actions) {
+			ui.save = actions.save; ui.open = actions.open; ui.print = actions.print;
+			ui.clearAll = actions.clearAll; ui.showAll = actions.showAll;
+			ui.previous = actions.previous; ui.next = actions.next;
+			ui.hideButton = actions.hideButton;
+			ui.onHideMode = actions.setHideMode;
+			ui.onHideChanged = actions.updateHideUi;
+			ui.setToolSelected = actions.setToolSelected;
+			ui.setColorSelected = actions.setColorSelected;
+		}
+	}
+
+	// Re-apply i18n when the Properties OK handler changes the language.
+	if (dialogs) {
+		var propsOk = doc.getElementById('properties-ok');
+		if (propsOk) { propsOk.addEventListener('click', applyI18n); }
+	}
+
+	// ----- Toolbar -----------------------------------------------------------
+	if (FB.Toolbar && toolbarEl && typeof FB.Toolbar.bind === 'function') {
+		FB.Toolbar.bind(toolbarEl, controller, {
+			svgRoot: svgRoot,
+			addToSelectionToggle: doc.getElementById('fb-add-to-selection')
+		});
+	}
+
+	// ----- Pointer input -----------------------------------------------------
+	if (FB.Pointer && svgRoot && typeof FB.Pointer.attach === 'function') {
+		FB.Pointer.attach(svgRoot, controller, {});
+	}
+
+	// ----- Theme / skin picker -----------------------------------------------
+	// A skin is a data-theme attribute on <html>; all chrome + canvas colors are
+	// CSS custom properties that cascade from it (see app.css). Persisted in
+	// localStorage. After a swap we refresh so the renderer re-reads the themed
+	// --fb-ink / --fb-split-stroke / --fb-guide / --fb-label-halo off the canvas.
+	(function () {
+		var sel = doc.getElementById('fb-theme');
+		var root = doc.documentElement;
+		function applyTheme(name) {
+			if (name) { root.setAttribute('data-theme', name); }
+			else { root.removeAttribute('data-theme'); }
+			// Repaint the quick swatches to the theme's palette, then re-render so
+			// the canvas re-reads themed --fb-ink / strokes / halo.
+			if (FB.Swatches && typeof FB.Swatches.apply === 'function') {
+				FB.Swatches.apply(doc, name || '', controller);
+			}
+			controller.refresh();
+		}
+		var saved = '';
+		try { saved = (win && win.localStorage && win.localStorage.getItem('fb-theme')) || ''; } catch (e) { /* ignore */ }
+		if (sel) {
+			if (saved) { sel.value = saved; }
+			applyTheme(sel.value);
+			sel.addEventListener('change', function () {
+				var v = sel.value;
+				try { if (win && win.localStorage) { win.localStorage.setItem('fb-theme', v); } } catch (e) { /* ignore */ }
+				applyTheme(v);
+			});
+		} else if (saved) {
+			applyTheme(saved);
+		}
+	})();
+
+	// "Done hiding" button leaves hide mode exactly like tapping Hide Tools again.
+	var hideDone = doc.getElementById('fb-hide-done');
+	if (hideDone && FB.Toolbar && typeof FB.Toolbar.dispatch === 'function') {
+		hideDone.addEventListener('click', function () {
+			FB.Toolbar.dispatch(controller, 'tool_hide', {});
+		});
+	}
+
+	// Draggable, docked-left toolbar panel (position persisted to localStorage).
+	if (FB.ToolbarDrag && typeof FB.ToolbarDrag.install === 'function') {
+		FB.ToolbarDrag.install(doc, win);
+	}
+
+	// ----- Keyboard shortcuts (ports fractionbars.js keydown/keyup) ----------
+	if (doc.addEventListener) {
+		doc.addEventListener('keydown', function (e) {
+			if (e.which === 16 || e.key === 'Shift') { FB.Utilities.shiftKeyDown = true; controller.refresh(); }
+		});
+		doc.addEventListener('keyup', function (e) {
+			if (e.which === 16 || e.key === 'Shift') { FB.Utilities.shiftKeyDown = false; controller.refresh(); }
+			if (e.ctrlKey && (e.keyCode === 80 || e.key === 'p')) { // Ctrl+P -> Properties
+				e.preventDefault();
+				if (FB.Toolbar.ui.openProperties) { FB.Toolbar.ui.openProperties(); }
+			}
+			if (e.ctrlKey && (e.keyCode === 83 || e.key === 's')) { // Ctrl+S -> Save
+				e.preventDefault();
+				if (actions) { actions.save(); }
+			}
+			if (e.ctrlKey && (e.keyCode === 72 || e.key === 'h')) { // Ctrl+H -> toggle Hide/Show controls
+				e.preventDefault();
+				FB.Utilities.ctrlKeyDown = !FB.Utilities.ctrlKeyDown;
+				var hideBtn = doc.getElementById('tool_hide');
+				var showBtn = doc.getElementById('action_show');
+				var hideThem = FB.Utilities.ctrlKeyDown;
+				if (hideBtn) { hideBtn.toggleAttribute('hidden', hideThem); }
+				if (showBtn) { showBtn.toggleAttribute('hidden', hideThem); }
+				FB.Toolbar.clearSelectionButton(controller);
+				controller.refresh();
+			}
+			if (e.ctrlKey && (e.keyCode === 46 || e.key === 'Delete')) { // Ctrl+Del -> Delete
+				controller.addUndoState();
+				controller.deleteSelectedBars();
+				controller.refresh();
+			}
+		});
+	}
+
+	// ----- Gallery -----------------------------------------------------------
+	var gallery = null, galleryUi = null;
+	if (FB.Gallery && typeof FB.Gallery.create === 'function') {
+		var adapter = (win && win.indexedDB && typeof FB.Gallery.indexedDbAdapter === 'function')
+			? FB.Gallery.indexedDbAdapter('fraction-bars')
+			: FB.Gallery.memoryAdapter();
+		gallery = FB.Gallery.create(adapter);
+		if (galleryEl && FB.GalleryUI && typeof FB.GalleryUI.bind === 'function') {
+			galleryUi = FB.GalleryUI.bind(galleryEl, gallery, controller, {
+				document: doc, window: win, notify: notify,
+				getState: function () { return FB.Persistence.serialize(controller.state); },
+				applyState: actions ? actions.applyState : function () {}
+			});
+			var galleryToggle = doc.getElementById('fb-gallery-toggle');
+			if (galleryToggle && galleryUi) {
+				galleryToggle.addEventListener('click', function () {
+					var shown = galleryUi.toggle();
+					galleryToggle.setAttribute('aria-pressed', shown ? 'true' : 'false');
+				});
+			}
+		}
+	}
+
+	// ----- External State API + postMessage bridge ---------------------------
+	var api = null;
+	if (FB.StateApi && typeof FB.StateApi.install === 'function') {
+		api = FB.StateApi.install(controller, win || {});
+		if (api && win && typeof FB.StateApi.installPostMessage === 'function') {
+			// Intentionally same-origin-only by default. A host embedding this tool
+			// (Canvas LTI / Hermes) should pass an explicit allowedOrigins list.
+			FB.StateApi.installPostMessage(api, win, {
+				allowedOrigins: (win.FB_ALLOWED_ORIGINS && win.FB_ALLOWED_ORIGINS.slice) ? win.FB_ALLOWED_ORIGINS.slice(0) : undefined
+			});
+		}
+	}
+
+	// Initial label/i18n/paint.
+	applyI18n();
+	if (actions && typeof actions.updateHideUi === 'function') { actions.updateHideUi(); }
+	controller.refresh();
+
+	var app = {
+		controller: controller, renderer: renderer, gallery: gallery,
+		galleryUi: galleryUi, dialogs: dialogs, actions: actions, i18n: i18n, api: api
+	};
+	FB.app = app;
+	return app;
+};
+
+// Auto-boot in a browser once the DOM is ready.
+if (typeof document !== 'undefined' && document.addEventListener) {
+	document.addEventListener('DOMContentLoaded', function () {
+		FB.Main.boot(document, typeof window !== 'undefined' ? window : undefined);
+	}, false);
+}
+</script>
+</body></html>

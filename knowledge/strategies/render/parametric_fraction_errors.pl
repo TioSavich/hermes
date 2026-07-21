@@ -27,7 +27,7 @@
  *
  * Output contract (docs/render-contract-v2.md): each scene is a
  * {frames:[...]} document. Each frame is a dict carrying step, verb, caption,
- * and a scene the drawer (more-zeeman/render/drawer.js) can draw. Verbs are the
+ * and a scene the drawer (hermes/web/render/drawer.js) can draw. Verbs are the
  * named B/M/E steps: establish_whole / apply_partition / shade_parts. The
  * geometry is computed here in Prolog; the drawer is pure projection.
  *

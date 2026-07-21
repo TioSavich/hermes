@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CBO Multiplication</title>
+<link rel="stylesheet" href="strategy_shell.css">
+</head>
+<body>
+<div class="container">
+  <p class="back"><a href="index.html">← All strategies</a></p>
+  <h1>CBO (Coordinating Bases and Ones — Multiplication)</h1>
+  <p class="meta">Computed by <code>knowledge/strategies/math/smr_mult_cbo.pl</code>. Redistribute items across N groups to make a friendly group of S. The state is a list of group counts, not a single value, so the number line is empty for this strategy. Read the step trace to follow the redistribution.</p>
+
+  <div class="inputs">
+    <label>Groups N: <input type="number" id="a1" value="7"></label>
+    <label>Group size S: <input type="number" id="a2" value="4"></label>
+    <button id="go">Calculate and Visualize</button>
+  </div>
+
+  <h2>Result</h2>
+  <div id="out"></div>
+
+  <h2>Number-line Diagram (not applicable — list-redistribution strategy)</h2>
+  <svg id="diagram" width="700" height="120"></svg>
+
+  <h2>Step Trace (from Prolog)</h2>
+  <ol id="steps" class="step-list"></ol>
+</div>
+<script src="strategy_viz.js"></script>
+<script>
+  wireStrategyPage({
+    strategy: 'CBO', op: '*',
+    a1Id: 'a1', a2Id: 'a2', btnId: 'go',
+    outId: 'out', svgId: 'diagram', stepListId: 'steps'
+  });
+</script>
+</body>
+</html>

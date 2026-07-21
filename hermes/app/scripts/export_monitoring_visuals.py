@@ -2,7 +2,7 @@
 """Export generated monitoring-chart visuals as static SVG files.
 
 The Python side asks the existing Hermes worker/server generator for render
-documents. The shared rendering adapter uses more-zeeman/render/drawer.js to
+documents. The shared rendering adapter uses hermes/web/render/drawer.js to
 serialize the final frame of each document as SVG.
 """
 from __future__ import annotations

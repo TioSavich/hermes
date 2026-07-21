@@ -243,15 +243,15 @@ capability('formal/pml/mua_conjectures.pl', 'mua_conjectures', 'pml', [], orphan
 capability('formal/pml/mua_health.pl', 'mua_health', 'pml', [], orphan_module).
 capability('formal/pml/talkmoves_adapter.pl', 'talkmoves_adapter', 'pml', [], orphan_module).
 capability('formal/tools/axiom_toggle.pl', 'axiom_toggle', 'infrastructure', [], lazy_reachable).
+capability('hermes/web/prolog/zeeman_bifurcation.pl', 'zeeman_bifurcation', 'zeeman', [], orphan_module).
+capability('hermes/web/prolog/zeeman_machine.pl', 'zeeman_machine', 'zeeman', [], orphan_module).
+capability('hermes/web/prolog/zeeman_pml_bridge.pl', 'zeeman_pml_bridge', 'zeeman', [], orphan_module).
+capability('hermes/web/prolog/zeeman_tape.pl', 'zeeman_tape', 'zeeman', [], orphan_module).
 capability('knowledge/crosswalk/merge_evidence.pl', 'merge_evidence', 'crosswalk', [], orphan_module).
 capability('knowledge/geometry/geometry_bridge.pl', 'geometry_bridge', 'geometry_witness', [], orphan_module).
 capability('knowledge/misconceptions/literature_canonical_mappings.pl', 'literature_canonical_mappings', 'misconceptions', [], orphan_module).
 capability('knowledge/strategies/math/unit_coordination_viz.pl', 'unit_coordination_viz', 'synthesis', [], lazy_reachable).
 capability('knowledge/strategies/math_benchmark.pl', 'math_benchmark', 'synthesis', [], orphan_module).
-capability('more-zeeman/prolog/zeeman_bifurcation.pl', 'zeeman_bifurcation', 'zeeman', [], orphan_module).
-capability('more-zeeman/prolog/zeeman_machine.pl', 'zeeman_machine', 'zeeman', [], orphan_module).
-capability('more-zeeman/prolog/zeeman_pml_bridge.pl', 'zeeman_pml_bridge', 'zeeman', [], orphan_module).
-capability('more-zeeman/prolog/zeeman_tape.pl', 'zeeman_tape', 'zeeman', [], orphan_module).
 
 capability_route('accommodation_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('ace_of_bases_render', 'POST', '/api/monitoring_visuals').
@@ -836,15 +836,15 @@ capability_page('formal/pml/mua_conjectures.pl', '/more-zeeman/witnesses.html').
 capability_page('formal/pml/mua_health.pl', '/more-zeeman/witnesses.html').
 capability_page('formal/pml/talkmoves_adapter.pl', '/more-zeeman/witnesses.html').
 capability_page('formal/tools/axiom_toggle.pl', '/hermes/app/web/breaks.html').
+capability_page('hermes/web/prolog/zeeman_bifurcation.pl', '/more-zeeman/index.html').
+capability_page('hermes/web/prolog/zeeman_machine.pl', '/more-zeeman/index.html').
+capability_page('hermes/web/prolog/zeeman_pml_bridge.pl', '/more-zeeman/index.html').
+capability_page('hermes/web/prolog/zeeman_tape.pl', '/more-zeeman/index.html').
 capability_page('knowledge/crosswalk/merge_evidence.pl', '/more-zeeman/witnesses.html').
 capability_page('knowledge/geometry/geometry_bridge.pl', '/more-zeeman/witnesses.html').
 capability_page('knowledge/misconceptions/literature_canonical_mappings.pl', '/hermes/app/web/no.html').
 capability_page('knowledge/strategies/math/unit_coordination_viz.pl', '/more-zeeman/coordination.html').
 capability_page('knowledge/strategies/math_benchmark.pl', '/more-zeeman/bridge.html').
-capability_page('more-zeeman/prolog/zeeman_bifurcation.pl', '/more-zeeman/index.html').
-capability_page('more-zeeman/prolog/zeeman_machine.pl', '/more-zeeman/index.html').
-capability_page('more-zeeman/prolog/zeeman_pml_bridge.pl', '/more-zeeman/index.html').
-capability_page('more-zeeman/prolog/zeeman_tape.pl', '/more-zeeman/index.html').
 
 capability_lazy_via('formal/incompatibility/registry_incompatibility_adapter.pl', 'axiom_toggle').
 capability_lazy_via('formal/learner/arithmetic_machine.pl', 'compute').

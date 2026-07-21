@@ -1,0 +1,1644 @@
+{
+  "grounding_metaphor": [
+    [
+      "p_area_model_part_of_part",
+      "object_construction"
+    ],
+    [
+      "p_base_ones_chunking",
+      "object_construction"
+    ],
+    [
+      "p_bounded_numerator_over_diverging_denominator",
+      "motion_along_path"
+    ],
+    [
+      "p_column_addition_with_carrying",
+      "object_construction"
+    ],
+    [
+      "p_count_on_from_larger",
+      "motion_along_path"
+    ],
+    [
+      "p_count_on_from_larger",
+      "object_collection"
+    ],
+    [
+      "p_cross_multiplication_rule_from_pattern",
+      "object_construction"
+    ],
+    [
+      "p_cross_multiplication_rule_without_ground",
+      "no_metaphor_grounding"
+    ],
+    [
+      "p_decimal_multiplication_rule",
+      "measuring_stick"
+    ],
+    [
+      "p_decompose_base_for_ones",
+      "object_construction"
+    ],
+    [
+      "p_ecuadorian_decimal_long_division",
+      "measuring_stick"
+    ],
+    [
+      "p_make_base_transfer",
+      "object_construction"
+    ],
+    [
+      "p_make_ten_split_leftover",
+      "object_construction"
+    ],
+    [
+      "p_programming_expression_evaluation",
+      "object_collection"
+    ],
+    [
+      "p_relational_equals_balance_preservation",
+      "balance_preservation_schema"
+    ],
+    [
+      "p_rigorous_counting_procedure",
+      "object_collection"
+    ],
+    [
+      "p_round_then_adjust",
+      "motion_along_path"
+    ],
+    [
+      "p_scale_ratio_unit",
+      "measuring_stick"
+    ],
+    [
+      "p_signed_addition_with_sign_relation",
+      "motion_along_path"
+    ],
+    [
+      "p_unit_fraction_denominator_product_rule",
+      "object_construction"
+    ],
+    [
+      "p_unit_fraction_iteration",
+      "measuring_stick"
+    ],
+    [
+      "p_unit_fraction_iteration",
+      "object_collection"
+    ],
+    [
+      "p_unit_fraction_partition",
+      "object_construction"
+    ]
+  ],
+  "grounds_inference": [
+    {
+      "grounding": "every_length_must_have_a_number_blend",
+      "inference": "irrational_numbers",
+      "metaphor": "arithmetic_is_measuring_stick"
+    },
+    {
+      "grounding": "repeated_motion_in_one_direction",
+      "inference": "multiplication_of_positives",
+      "metaphor": "arithmetic_is_motion_along_a_path"
+    },
+    {
+      "grounding": "point_locations_on_opposite_side_of_origin",
+      "inference": "negative_numbers",
+      "metaphor": "arithmetic_is_motion_along_a_path"
+    },
+    {
+      "grounding": "associative_erf_for_collections",
+      "inference": "associativity_of_addition",
+      "metaphor": "arithmetic_is_object_collection"
+    },
+    {
+      "grounding": "pooling_order_invariance",
+      "inference": "commutativity_of_addition",
+      "metaphor": "arithmetic_is_object_collection"
+    },
+    {
+      "grounding": "fitting_together_m_parts_of_size_1_over_n",
+      "inference": "complex_fractions_m_over_n",
+      "metaphor": "arithmetic_is_object_construction"
+    },
+    {
+      "grounding": "nested_partition_of_unit_object",
+      "inference": "fraction_multiplication_as_part_of_part",
+      "metaphor": "arithmetic_is_object_construction"
+    },
+    {
+      "grounding": "partition_then_iterate_returns_unit",
+      "inference": "multiplicative_inverse_1_over_n_times_n_is_1",
+      "metaphor": "arithmetic_is_object_construction"
+    },
+    {
+      "grounding": "splitting_unit_into_n_parts",
+      "inference": "simple_fractions_1_over_n",
+      "metaphor": "arithmetic_is_object_construction"
+    },
+    {
+      "grounding": "composition_of_two_180_degree_rotations_to_identity",
+      "inference": "product_of_two_negatives",
+      "metaphor": "multiplication_by_minus_one_is_rotation_by_180_degrees"
+    }
+  ],
+  "lx_for": [
+    [
+      "v_area_justification",
+      "v_cross_multiplication_rule",
+      "rule_groundedness_against_the_area_model"
+    ],
+    [
+      "v_area_model",
+      "v_fraction_unit",
+      "part_of_part_as_iterated_partition"
+    ],
+    [
+      "v_column_algorithm",
+      "v_make_base_transfer",
+      "positional_place_value_carry_propagation"
+    ],
+    [
+      "v_cross_multiplication_rule",
+      "v_area_model",
+      "numerator_and_denominator_product_invariance"
+    ],
+    [
+      "v_decimal_multiplication_rule",
+      "v_decimal_positional",
+      "place_count_summation_rule_for_decimal_products"
+    ],
+    [
+      "v_distributive_decomposition",
+      "v_make_base_transfer",
+      "distributivity_of_multiplication_over_addition"
+    ],
+    [
+      "v_error_magnitude_comparison",
+      "v_counting_on",
+      "rounded_estimate_error_as_omitted_partial_product"
+    ],
+    [
+      "v_explicit_trade",
+      "v_direct_modeling",
+      "positional_decomposition_as_inverse_exchange"
+    ],
+    [
+      "v_function_limit",
+      "v_algebraic_expression",
+      "continuity_and_removable_discontinuity_at_a_point"
+    ],
+    [
+      "v_hermes_event_scoring",
+      "v_deontic_scorekeeper",
+      "runtime_event_deontics"
+    ],
+    [
+      "v_inverse_multiplication",
+      "v_counting_on",
+      "division_quotient_validation_against_dividend_bound"
+    ],
+    [
+      "v_make_base_transfer",
+      "v_counting_on",
+      "associativity_decomposition_and_base_bridging"
+    ],
+    [
+      "v_sequence_convergence",
+      "v_counting_on",
+      "epsilon_N_tail_bound_for_eventual_behaviour"
+    ]
+  ],
+  "metaphor_breaks": [
+    {
+      "inference": "negative_numbers",
+      "metaphor": "arithmetic_is_measuring_stick",
+      "reason": "The source domain has 'lack of any physical segment' as zero; you cannot have a segment shorter than nothing, so negatives have no source-domain referent."
+    },
+    {
+      "inference": "product_of_two_negatives",
+      "metaphor": "arithmetic_is_motion_along_a_path",
+      "reason": "In the source domain of motion, doing something a negative number of times makes no sense; the iterated-motion grounding of multiplication cannot be extended to negative multipliers."
+    },
+    {
+      "inference": "fractions_of_a_unit",
+      "metaphor": "arithmetic_is_object_collection",
+      "reason": "Object collections are discrete; there are no 'fractional collections'."
+    },
+    {
+      "inference": "irrational_numbers",
+      "metaphor": "arithmetic_is_object_collection",
+      "reason": "Irrationals have no source-domain referent as a collection."
+    },
+    {
+      "inference": "subtraction_of_larger_from_smaller",
+      "metaphor": "arithmetic_is_object_collection",
+      "reason": "No source-domain referent for 'taking a larger collection from a smaller one'."
+    },
+    {
+      "inference": "zero_as_a_number",
+      "metaphor": "arithmetic_is_object_collection",
+      "reason": "No source-domain referent for 'a collection of nothing'; requires the ad-hoc Zero Collection Metaphor to supply the additive identity."
+    },
+    {
+      "inference": "irrational_numbers",
+      "metaphor": "arithmetic_is_object_construction",
+      "reason": "Irrationals are not constructible by finite assembly of unit parts."
+    },
+    {
+      "inference": "zero_as_a_number",
+      "metaphor": "arithmetic_is_object_construction",
+      "reason": "No source-domain referent for 'an object that is the absence of an object'; requires the ad-hoc Zero Object Metaphor."
+    },
+    {
+      "inference": "zero_as_an_object",
+      "metaphor": "arithmetic_is_object_construction",
+      "reason": "Zero requires the ad-hoc Zero Object Metaphor; lack-of-object is not itself a constructible object."
+    },
+    {
+      "inference": "everyday_same_number_as_for_infinite_collections",
+      "metaphor": "cantors_metaphor",
+      "reason": "'There are just as many even numbers as natural numbers' is true under Cantor's pairability metaphor; under everyday Same-Number-As (take-away comparison) the naturals have more. Cantor's metaphor reassigns the concept."
+    },
+    {
+      "inference": "sets_that_contain_themselves",
+      "metaphor": "classes_are_containers",
+      "reason": "Physical containers cannot be placed inside their own interiors; the Container-reading of sets blocks self-membership (codified as the axiom of Foundation)."
+    },
+    {
+      "inference": "monster_functions_lacking_tangents_or_continuity",
+      "metaphor": "functions_are_curves",
+      "reason": "Weierstrass-type pathological functions (continuous everywhere, differentiable nowhere; space-filling curves) violate the prototypical-curve properties Pierpont named; the metaphor cannot ground them."
+    },
+    {
+      "inference": "conceptual_distinction_between_rule_and_extension",
+      "metaphor": "functions_are_sets_of_ordered_pairs",
+      "reason": "Two conceptually different rules with the same extension become the same function under this metaphor; the conceptual distinction the rule-reading preserves is collapsed."
+    },
+    {
+      "inference": "actual_infinity_as_a_point_on_the_line",
+      "metaphor": "numbers_are_points_on_a_line",
+      "reason": "The number line has no point at infinity in the everyday version; specializations of the BMI introduce one (projective geometry, inversive geometry, infinitesimals)."
+    },
+    {
+      "inference": "naturally_continuous_space_as_constitutively_pre_point",
+      "metaphor": "spaces_are_sets_of_points",
+      "reason": "L&N flag the 'two conceptions are inconsistent': in everyday cognition points are inherent to space; here space is constituted by points. The metaphor's target requires holding both simultaneously, which is a blend, not a clean reduction."
+    },
+    {
+      "inference": "naturally_continuous_motion_of_a_trajectory",
+      "metaphor": "weierstrass_continuity_metaphor",
+      "reason": "Preservation of closeness has no motion, no approach, no time; what is lost is precisely the everyday phenomenology of continuity as continuous trajectory."
+    }
+  ],
+  "metaphor_breaks_short": [
+    [
+      "measuring_stick",
+      "negative_numbers"
+    ],
+    [
+      "measuring_stick",
+      "product_of_two_negative_quantities"
+    ],
+    [
+      "motion_along_path",
+      "irrationals_without_completeness"
+    ],
+    [
+      "motion_along_path",
+      "product_of_two_negative_steps"
+    ],
+    [
+      "object_collection",
+      "fractions_of_a_unit"
+    ],
+    [
+      "object_collection",
+      "irrational_numbers"
+    ],
+    [
+      "object_collection",
+      "subtraction_of_larger_from_smaller"
+    ],
+    [
+      "object_construction",
+      "irrational_numbers"
+    ],
+    [
+      "object_construction",
+      "zero_as_an_object"
+    ]
+  ],
+  "metaphor_mappings": [
+    {
+      "metaphor": "arithmetic_is_measuring_stick",
+      "notes": "A chosen basic physical segment grounds the unit.",
+      "source_concept": "basic_unit_segment",
+      "target_concept": "one"
+    },
+    {
+      "metaphor": "arithmetic_is_measuring_stick",
+      "notes": "The conceptual blend forces irrationals into existence: a diagonal of a unit square has a definite physical length but no rational name, so a number must exist for it.",
+      "source_concept": "every_physical_length_must_have_a_number",
+      "target_concept": "irrational_numbers"
+    },
+    {
+      "metaphor": "arithmetic_is_measuring_stick",
+      "notes": "Zero is grounded as the absence of any physical segment.",
+      "source_concept": "lack_of_segment",
+      "target_concept": "zero"
+    },
+    {
+      "metaphor": "arithmetic_is_measuring_stick",
+      "notes": "Segments are numbers; length of segment is magnitude of number.",
+      "source_concept": "physical_segments",
+      "target_concept": "numbers"
+    },
+    {
+      "metaphor": "arithmetic_is_measuring_stick",
+      "notes": "Lengths combine by concatenation.",
+      "source_concept": "placing_segments_end_to_end",
+      "target_concept": "addition"
+    },
+    {
+      "metaphor": "arithmetic_is_measuring_stick",
+      "notes": "Source-domain subtraction only defined when the second segment is no longer than the first.",
+      "source_concept": "taking_shorter_segment_from_longer",
+      "target_concept": "subtraction"
+    },
+    {
+      "metaphor": "arithmetic_is_motion_along_a_path",
+      "notes": "Magnitude grounded as distance traveled from the origin.",
+      "source_concept": "distance_from_origin",
+      "target_concept": "magnitude"
+    },
+    {
+      "metaphor": "arithmetic_is_motion_along_a_path",
+      "notes": "Addition is motion away from the origin along the path.",
+      "source_concept": "moving_away_from_origin",
+      "target_concept": "addition"
+    },
+    {
+      "metaphor": "arithmetic_is_motion_along_a_path",
+      "notes": "Subtraction is motion back toward the origin.",
+      "source_concept": "moving_toward_origin",
+      "target_concept": "subtraction"
+    },
+    {
+      "metaphor": "arithmetic_is_motion_along_a_path",
+      "notes": "Zero is the origin by its very nature; no entity-creating metaphor required for zero here.",
+      "source_concept": "origin",
+      "target_concept": "zero"
+    },
+    {
+      "metaphor": "arithmetic_is_motion_along_a_path",
+      "notes": "Numbers are points on a path that extends in both directions.",
+      "source_concept": "point_locations_on_path",
+      "target_concept": "numbers"
+    },
+    {
+      "metaphor": "arithmetic_is_motion_along_a_path",
+      "notes": "Negatives are point-locations on the opposite side of zero. Bombelli (16th c.) made this explicit.",
+      "source_concept": "point_locations_opposite_side_of_origin",
+      "target_concept": "negative_numbers"
+    },
+    {
+      "metaphor": "arithmetic_is_motion_along_a_path",
+      "notes": "Multiplication grounded as iterated motion; only works for positive multipliers because 'doing something a negative number of times' has no source-domain referent.",
+      "source_concept": "repeated_motion_in_one_direction",
+      "target_concept": "multiplication_of_positives"
+    },
+    {
+      "metaphor": "arithmetic_is_object_collection",
+      "notes": "Size of collection corresponds to magnitude of number.",
+      "source_concept": "collections_of_objects",
+      "target_concept": "numbers"
+    },
+    {
+      "metaphor": "arithmetic_is_object_collection",
+      "notes": "Requires ad-hoc Zero Collection Metaphor: 'no objects' conceptualised as a special empty collection.",
+      "source_concept": "empty_collection",
+      "target_concept": "zero"
+    },
+    {
+      "metaphor": "arithmetic_is_object_collection",
+      "notes": "Multiplication as iterated pooling; A subcollections each of size B.",
+      "source_concept": "pooling_A_subcollections_of_size_B",
+      "target_concept": "multiplication"
+    },
+    {
+      "metaphor": "arithmetic_is_object_collection",
+      "notes": "Putting collections together; pooling-order-invariance grounds commutativity and the associative ERF grounds associativity.",
+      "source_concept": "pooling_collections",
+      "target_concept": "addition"
+    },
+    {
+      "metaphor": "arithmetic_is_object_collection",
+      "notes": "Division as equal-splitting; also expressible as iterated subtraction.",
+      "source_concept": "splitting_collection_into_A_equal_subcollections",
+      "target_concept": "division"
+    },
+    {
+      "metaphor": "arithmetic_is_object_collection",
+      "notes": "Source-domain operation only defined when the taken collection is no larger than the source.",
+      "source_concept": "taking_smaller_collection_from_larger",
+      "target_concept": "subtraction"
+    },
+    {
+      "metaphor": "arithmetic_is_object_construction",
+      "notes": "Joining parts into a larger constructed object.",
+      "source_concept": "fitting_parts_together",
+      "target_concept": "addition"
+    },
+    {
+      "metaphor": "arithmetic_is_object_construction",
+      "notes": "Complex fraction m/n grounded by fitting together m parts of size 1/n.",
+      "source_concept": "fitting_together_m_parts_of_size_1_over_n",
+      "target_concept": "fraction_m_over_n"
+    },
+    {
+      "metaphor": "arithmetic_is_object_construction",
+      "notes": "Requires ad-hoc Zero Object Metaphor: lack-of-object conceptualised as the number zero.",
+      "source_concept": "lack_of_object",
+      "target_concept": "zero"
+    },
+    {
+      "metaphor": "arithmetic_is_object_construction",
+      "notes": "Numbers are whole objects made of ultimate parts of unit size.",
+      "source_concept": "parts_of_unit_size",
+      "target_concept": "numbers"
+    },
+    {
+      "metaphor": "arithmetic_is_object_construction",
+      "notes": "Simple fraction 1/n grounded as a single part produced by splitting a unit object into n equal parts.",
+      "source_concept": "splitting_unit_into_n_parts",
+      "target_concept": "fraction_1_over_n"
+    },
+    {
+      "metaphor": "arithmetic_is_object_construction",
+      "notes": "Removing a part from a constructed object.",
+      "source_concept": "taking_a_part_away",
+      "target_concept": "subtraction"
+    },
+    {
+      "metaphor": "basic_metaphor_of_infinity",
+      "notes": "Base of the mapping.",
+      "source_concept": "beginning_state_of_iterative_process",
+      "target_concept": "beginning_state_of_unending_process"
+    },
+    {
+      "metaphor": "basic_metaphor_of_infinity",
+      "notes": "The metaphorically-imposed completion; this is the load-bearing line of the mapping.",
+      "source_concept": "final_resultant_state_of_completed_process",
+      "target_concept": "final_resultant_state_actual_infinity"
+    },
+    {
+      "metaphor": "basic_metaphor_of_infinity",
+      "notes": "The iterative step maps identically.",
+      "source_concept": "process_step_produces_next_state",
+      "target_concept": "process_step_produces_next_state"
+    },
+    {
+      "metaphor": "basic_metaphor_of_infinity",
+      "notes": "Entailment E: the final resultant state is unique and follows every nonfinal state.",
+      "source_concept": "uniqueness_of_final_state",
+      "target_concept": "uniqueness_of_actual_infinity_entity"
+    },
+    {
+      "metaphor": "cantors_metaphor",
+      "notes": "Identifies 'same numerosity' with pairability; the move that licenses |N| = |2N| for infinite sets.",
+      "source_concept": "one_to_one_correspondence_between_sets",
+      "target_concept": "same_number_as"
+    },
+    {
+      "metaphor": "classes_are_containers",
+      "notes": "Set complement grounded in spatial exterior.",
+      "source_concept": "exterior_of_a_container",
+      "target_concept": "complement_of_a_class"
+    },
+    {
+      "metaphor": "classes_are_containers",
+      "notes": "Class = bounded interior.",
+      "source_concept": "interior_of_container_schema",
+      "target_concept": "a_class"
+    },
+    {
+      "metaphor": "classes_are_containers",
+      "notes": "Set intersection grounded in spatial overlap.",
+      "source_concept": "overlap_of_interiors",
+      "target_concept": "intersection_of_classes"
+    },
+    {
+      "metaphor": "classes_are_containers",
+      "notes": "Set union grounded in spatial totality.",
+      "source_concept": "totality_of_interiors",
+      "target_concept": "union_of_classes"
+    },
+    {
+      "metaphor": "essence_of_mathematical_system_is_algebraic_structure",
+      "notes": "The instance worked out in Ch. 5.",
+      "source_concept": "abstract_group_with_three_elements",
+      "target_concept": "essence_of_addition_modulo_3"
+    },
+    {
+      "metaphor": "functions_are_curves",
+      "notes": "Descartes's observation that planar motion correlates with continuous changes of x and y in algebraic equations.",
+      "source_concept": "continuous_motion_of_a_point",
+      "target_concept": "continuous_variation_of_numerical_variables"
+    },
+    {
+      "metaphor": "functions_are_curves",
+      "notes": "Grounds Newton's geometric derivative; itself requires Tangent Is Limit of Secants to be arithmetized.",
+      "source_concept": "tangent_line_to_curve_at_point",
+      "target_concept": "derivative_at_a_point"
+    },
+    {
+      "metaphor": "functions_are_sets_of_ordered_pairs",
+      "notes": "Two conceptually different rules with the same Taylor series determine the same set of ordered pairs and hence 'are the same function'.",
+      "source_concept": "set_of_ordered_pairs_of_real_numbers",
+      "target_concept": "a_function"
+    },
+    {
+      "metaphor": "fundamental_metonymy_of_algebra",
+      "notes": "The role-for-individual metonymy that licenses x+y=y+x as a law over all numbers.",
+      "source_concept": "notation_x_as_role",
+      "target_concept": "individual_number_filling_role"
+    },
+    {
+      "metaphor": "multiplication_by_minus_one_is_rotation_by_180_degrees",
+      "notes": "Two 180-degree rotations compose to the identity (360 = 0 mod 360), so (-1)*(-1) is grounded as returning to the original orientation -- which IS 1.",
+      "source_concept": "composition_of_two_180_degree_rotations",
+      "target_concept": "multiplication_of_two_negatives_yielding_positive"
+    },
+    {
+      "metaphor": "multiplication_by_minus_one_is_rotation_by_180_degrees",
+      "notes": "Single application of -1 corresponds to a half-turn in the plane.",
+      "source_concept": "rotation_by_180_degrees",
+      "target_concept": "multiplication_by_negative_one"
+    },
+    {
+      "metaphor": "numbers_are_points_on_a_line",
+      "notes": "Geometric distance grounds arithmetic |x - y|.",
+      "source_concept": "distance_between_points",
+      "target_concept": "absolute_value_of_difference"
+    },
+    {
+      "metaphor": "numbers_are_points_on_a_line",
+      "notes": "Underwrites magnitude and ordering on the number line.",
+      "source_concept": "point_to_right_of_origin",
+      "target_concept": "positive_number"
+    },
+    {
+      "metaphor": "numbers_are_points_on_a_line",
+      "notes": "Negatives are point-locations on the opposite side of zero (cf. Motion Along a Path in basic table).",
+      "source_concept": "points_to_left_of_origin",
+      "target_concept": "negative_numbers"
+    },
+    {
+      "metaphor": "sets_are_graphs",
+      "notes": "Membership becomes an asymmetric arrow in a directed graph.",
+      "source_concept": "apg_arrow_from_node_to_node",
+      "target_concept": "set_membership_relation"
+    },
+    {
+      "metaphor": "sets_are_graphs",
+      "notes": "Hypersets: a loop in the graph models a set that contains itself; replaces axiom of Foundation with Anti-Foundation.",
+      "source_concept": "loop_in_apg",
+      "target_concept": "set_that_contains_itself"
+    },
+    {
+      "metaphor": "spaces_are_sets_of_points",
+      "notes": "Distance becomes a function assigning numbers to pairs of set members.",
+      "source_concept": "distance_function_on_set",
+      "target_concept": "metric_on_the_space"
+    },
+    {
+      "metaphor": "spaces_are_sets_of_points",
+      "notes": "The constitutive mapping.",
+      "source_concept": "membership_in_the_set",
+      "target_concept": "being_a_point_in_the_space"
+    },
+    {
+      "metaphor": "spaces_are_sets_of_points",
+      "notes": "A circle, triangle, or curve is just a subset of the point-set with relations holding among the points.",
+      "source_concept": "subset_of_the_set",
+      "target_concept": "geometric_figure_as_subset"
+    },
+    {
+      "metaphor": "weierstrass_continuity_metaphor",
+      "notes": "For every epsilon there exists delta such that ... \u2014 static logical constraint replacing geometric approach.",
+      "source_concept": "epsilon_delta_quantifier_pattern",
+      "target_concept": "preservation_of_closeness_at_a_point"
+    }
+  ],
+  "metaphor_repairs": [
+    {
+      "broken": "arithmetic_is_measuring_stick",
+      "inference": "negative_numbers",
+      "mechanism": "see(arithmetic_is_motion_along_a_path)",
+      "repair": "none_in_this_metaphor"
+    },
+    {
+      "broken": "arithmetic_is_motion_along_a_path",
+      "inference": "product_of_two_negatives",
+      "mechanism": "rotation_by_180_degrees_preserves_arithmetic_closure_under_all_four_grounding_metaphors",
+      "repair": "multiplication_by_minus_one_is_rotation_by_180_degrees"
+    },
+    {
+      "broken": "arithmetic_is_object_collection",
+      "inference": "fractions_of_a_unit",
+      "mechanism": "see(arithmetic_is_object_construction)",
+      "repair": "none_in_this_metaphor"
+    },
+    {
+      "broken": "arithmetic_is_object_collection",
+      "inference": "irrational_numbers",
+      "mechanism": "see(arithmetic_is_measuring_stick)",
+      "repair": "none_in_this_metaphor"
+    },
+    {
+      "broken": "arithmetic_is_object_collection",
+      "inference": "zero_as_a_number",
+      "mechanism": "empty_collection_introduced_as_an_entity_to_preserve_additive_identity",
+      "repair": "zero_collection_metaphor"
+    },
+    {
+      "broken": "arithmetic_is_object_construction",
+      "inference": "irrational_numbers",
+      "mechanism": "see(arithmetic_is_measuring_stick)",
+      "repair": "none_in_this_metaphor"
+    },
+    {
+      "broken": "arithmetic_is_object_construction",
+      "inference": "zero_as_a_number",
+      "mechanism": "absence_of_object_introduced_as_an_entity_to_preserve_additive_identity",
+      "repair": "zero_object_metaphor"
+    },
+    {
+      "broken": "arithmetic_is_object_construction",
+      "inference": "zero_as_an_object",
+      "mechanism": "absence_of_object_introduced_as_an_entity_to_preserve_construction_closure",
+      "repair": "zero_object_metaphor"
+    },
+    {
+      "broken": "classes_are_containers",
+      "inference": "sets_that_contain_themselves",
+      "mechanism": "accessible_pointed_graphs_with_loops_replace_containment_with_membership_arrows",
+      "repair": "sets_are_graphs"
+    },
+    {
+      "broken": "functions_are_curves",
+      "inference": "monster_functions_lacking_tangents_or_continuity",
+      "mechanism": "set_theoretic_reading_admits_pathological_functions_at_the_cost_of_geometric_intuition",
+      "repair": "functions_are_sets_of_ordered_pairs"
+    },
+    {
+      "broken": "numbers_are_points_on_a_line",
+      "inference": "actual_infinity_as_a_point_on_the_line",
+      "mechanism": "bmi_supplies_unique_final_resultant_state_for_specialized_iterative_processes",
+      "repair": "basic_metaphor_of_infinity"
+    }
+  ],
+  "metaphors": [
+    {
+      "description": "Specialization of the general AE metaphor: maps the commutative group with three elements onto addition modulo 3 \u2014 abstract elements {I,A,B} to numbers {0,1,2}, abstract * to +, abstract identity I to arithmetic identity 0, abstract laws to arithmetic laws.",
+      "id": "addition_mod_3_as_commutative_group",
+      "kind": "algebraic_essence",
+      "short_name": "addition mod 3 as commutative group",
+      "source": "algebra_groups",
+      "source_practices": [],
+      "target": "modular_arithmetic",
+      "target_practices": []
+    },
+    {
+      "description": "Numbers are physical segments; addition is placing segments end-to-end; every length must have a number, which forces irrationals into existence.",
+      "id": "arithmetic_is_measuring_stick",
+      "kind": "basic",
+      "short_name": "Measuring Stick",
+      "source": "physical_segments_and_lengths",
+      "source_practices": [
+        "p_comparing_segment_lengths",
+        "p_placing_segments_end_to_end"
+      ],
+      "target": "arithmetic",
+      "target_practices": [
+        "p_scale_ratio_unit",
+        "p_unit_fraction_iteration"
+      ]
+    },
+    {
+      "description": "Numbers are point-locations on a path; zero is the origin; addition is motion away from origin; negatives are point-locations on the opposite side of zero.",
+      "id": "arithmetic_is_motion_along_a_path",
+      "kind": "basic",
+      "short_name": "Motion Along a Path",
+      "source": "motion_along_a_path",
+      "source_practices": [
+        "p_moving_along_a_path"
+      ],
+      "target": "arithmetic",
+      "target_practices": [
+        "p_count_on_from_larger",
+        "p_signed_addition_with_sign_relation"
+      ]
+    },
+    {
+      "description": "Numbers are collections of objects; addition is pooling, subtraction is taking-from, multiplication is pooling A subcollections of size B.",
+      "id": "arithmetic_is_object_collection",
+      "kind": "basic",
+      "short_name": "Object Collection",
+      "source": "physical_object_collections",
+      "source_practices": [
+        "p_pooling_of_collections",
+        "p_taking_collection_from_collection"
+      ],
+      "target": "arithmetic",
+      "target_practices": [
+        "p_rigorous_counting_procedure"
+      ]
+    },
+    {
+      "description": "Numbers are whole objects made of parts; fractions are parts produced by splitting a unit object; m/n is m parts of size 1/n fitted together.",
+      "id": "arithmetic_is_object_construction",
+      "kind": "basic",
+      "short_name": "Object Construction",
+      "source": "physical_object_construction",
+      "source_practices": [
+        "p_fitting_parts_together",
+        "p_splitting_object_into_parts"
+      ],
+      "target": "arithmetic",
+      "target_practices": [
+        "p_area_model_part_of_part",
+        "p_make_base_transfer",
+        "p_unit_fraction_partition"
+      ]
+    },
+    {
+      "description": "Project-local relational-equals schema: two expressions name equal quantities, and applying the same operation to both sides preserves that equality.",
+      "id": "balance_preservation_schema",
+      "kind": "schema",
+      "short_name": "Balance Preservation",
+      "source": "two_pan_balance",
+      "source_practices": [],
+      "target": "relational_equality",
+      "target_practices": []
+    },
+    {
+      "description": "Master metaphor for actual infinity: an iterative process without end is conceptualized in terms of a completed iterative process by metaphorically adding a 'final resultant state' to the unending process; the final resultant state is unique and follows every nonfinal state.",
+      "id": "basic_metaphor_of_infinity",
+      "kind": "specialization_substrate",
+      "short_name": "basic metaphor of infinity",
+      "source": "completed_iterative_processes",
+      "source_practices": [],
+      "target": "iterative_processes_without_end",
+      "target_practices": [
+        "p_bounded_numerator_over_diverging_denominator",
+        "p_direct_substitution",
+        "p_factor_cancel_substitute"
+      ]
+    },
+    {
+      "description": "Boole's mathematization of the Classes Are Containers metaphor: abstract elements correspond to classes; abstract operations to union and intersection; 0 to the empty class; 1 to the universal class; arithmetic laws to laws on classes.",
+      "id": "booles_metaphor",
+      "kind": "basic",
+      "short_name": "booles metaphor",
+      "source": "algebra",
+      "source_practices": [],
+      "target": "classes",
+      "target_practices": []
+    },
+    {
+      "description": "Cantor's replacement of the everyday Same-Number-As concept by 'pairability': set A and set B have the same number of elements iff they can be put into one-to-one correspondence. Enables transfinite cardinal arithmetic.",
+      "id": "cantors_metaphor",
+      "kind": "basic",
+      "short_name": "cantors metaphor",
+      "source": "mappings_one_to_one_correspondence",
+      "source_practices": [],
+      "target": "numeration_same_number_as",
+      "target_practices": []
+    },
+    {
+      "description": "Everyday grounding metaphor: change of a variable is conceptualized as motion of a trajector along a path. Together with Numbers Are Points on a Line and Talmy's fictive-motion schema, supports phrases like 'x approaches a' for static numerical relations.",
+      "id": "change_is_motion",
+      "kind": "basic",
+      "short_name": "change is motion",
+      "source": "spatial_motion",
+      "source_practices": [],
+      "target": "numerical_change",
+      "target_practices": []
+    },
+    {
+      "description": "The change of a function f(x) as x varies is conceptualized as two coordinated trajectors: one moves in the domain, the other in the range. Underwrites the standard reading of 'f(x) approaches L as x approaches a'.",
+      "id": "change_of_function_is_coordinated_motion_of_two_trajectors",
+      "kind": "basic",
+      "short_name": "change of function is coordinated motion of two trajectors",
+      "source": "two_coordinated_trajectors_in_motion",
+      "source_practices": [],
+      "target": "change_of_a_function",
+      "target_practices": []
+    },
+    {
+      "description": "Premathematical metaphor: a class is a bounded region in space; members are objects in the interior. Underwrites Venn diagrams; gives modus ponens, modus tollens, excluded middle, and hypothetical syllogism their spatial logic.",
+      "id": "classes_are_containers",
+      "kind": "basic",
+      "short_name": "classes are containers",
+      "source": "container_schemas",
+      "source_practices": [],
+      "target": "classes",
+      "target_practices": [
+        "p_error_magnitude_estimate_comparison",
+        "p_multiplicative_bound_invalidation"
+      ]
+    },
+    {
+      "description": "Greek philosophical metaphor adopted by algebra: an object's essence is its form. Underwrites algebra as the study of abstract structure.",
+      "id": "essence_is_form",
+      "kind": "philosophical_substrate",
+      "short_name": "essence is form",
+      "source": "form_of_object",
+      "source_practices": [],
+      "target": "essence_of_object",
+      "target_practices": []
+    },
+    {
+      "description": "Master AE metaphor: the essence of a mathematical system in any domain D outside algebra is an abstract algebraic structure (group, ring, field). Licenses 'addition modulo 3 is a commutative group with three elements'.",
+      "id": "essence_of_mathematical_system_is_algebraic_structure",
+      "kind": "algebraic_essence",
+      "short_name": "essence of mathematical system is algebraic structure",
+      "source": "algebraic_structure",
+      "source_practices": [],
+      "target": "essence_of_mathematical_system",
+      "target_practices": []
+    },
+    {
+      "description": "Descartes's metaphor: a mathematical function is a curve in the Cartesian plane. Pillar of the geometric paradigm of calculus; allows numerical functions to be visualized spatially.",
+      "id": "functions_are_curves",
+      "kind": "basic",
+      "short_name": "functions are curves",
+      "source": "curves_in_the_cartesian_plane",
+      "source_practices": [],
+      "target": "mathematical_functions",
+      "target_practices": []
+    },
+    {
+      "description": "Weierstrass-era metaphor that replaced Descartes's curve-grounding: a function IS its set of input-output pairs. Two conceptually different rules that determine the same set of ordered pairs are 'the same function'.",
+      "id": "functions_are_sets_of_ordered_pairs",
+      "kind": "repair",
+      "short_name": "functions are sets of ordered pairs",
+      "source": "sets_of_ordered_pairs_of_numbers",
+      "source_practices": [],
+      "target": "mathematical_functions",
+      "target_practices": [
+        "p_factor_cancel_substitute",
+        "p_factor_cancel_without_common_factor"
+      ]
+    },
+    {
+      "description": "A notation (e.g. x) stands metonymically for a role (Number) which stands for an individual number; the everyday role-for-individual mechanism that licenses 'whatever number x happens to be, x+2=7' and laws like x+y=y+x.",
+      "id": "fundamental_metonymy_of_algebra",
+      "kind": "metonymy",
+      "short_name": "fundamental metonymy of algebra",
+      "source": "role_individual_metonymy",
+      "source_practices": [],
+      "target": "algebra",
+      "target_practices": [
+        "p_programming_expression_evaluation"
+      ]
+    },
+    {
+      "description": "Calculus grounding metaphor: instantaneous rate of change is conceptualized as average rate of change over an interval of infinitely small size. The 'infinitely small interval' is itself metaphorical and is arithmetized differently by Newton (limit) and Leibniz (infinitesimal).",
+      "id": "instantaneous_change_is_average_change_over_infinitely_small_interval",
+      "kind": "basic",
+      "short_name": "instantaneous change is average change over infinitely small interval",
+      "source": "average_change_over_an_interval",
+      "source_practices": [],
+      "target": "instantaneous_change_at_a_point",
+      "target_practices": [
+        "p_factor_cancel_substitute"
+      ]
+    },
+    {
+      "description": "Repair metaphor: multiplication by -1 IS rotation by 180 degrees. Introduced specifically to preserve arithmetic closure for the product of two negatives, which Motion Along a Path cannot ground.",
+      "id": "multiplication_by_minus_one_is_rotation_by_180_degrees",
+      "kind": "repair",
+      "short_name": "Multiplication by -1 is Rotation by 180 degrees",
+      "source": "rotation_in_the_plane",
+      "source_practices": [
+        "p_rotation_in_the_plane"
+      ],
+      "target": "arithmetic_of_signed_numbers",
+      "target_practices": []
+    },
+    {
+      "description": "Numerical analogue of Motion Along a Path: a point P on a line is a number, point O is zero, point 1 is to the right of O, distance from O to P is absolute value of P. Underwrites the Number-Line blend and the Cartesian-Plane blend.",
+      "id": "numbers_are_points_on_a_line",
+      "kind": "basic",
+      "short_name": "numbers are points on a line",
+      "source": "points_on_a_line",
+      "source_practices": [],
+      "target": "collection_of_numbers",
+      "target_practices": [
+        "p_count_on_from_larger",
+        "p_signed_addition_with_sign_relation"
+      ]
+    },
+    {
+      "description": "Conceptualizes each proposition P as the class of world-states in which P is true; A union B becomes 'P or Q'; A intersect B becomes 'P and Q'; complement becomes negation. Carries Container-schema inferences into propositional calculus.",
+      "id": "propositional_logic_metaphor",
+      "kind": "basic",
+      "short_name": "propositional logic metaphor",
+      "source": "boolean_classes",
+      "source_practices": [],
+      "target": "propositions",
+      "target_practices": []
+    },
+    {
+      "description": "Aczel-Barwise-Moss metaphor: a set is an accessible pointed graph (APG); membership is an arrow; nodes-that-are-tails are sets; decorations on nodes-that-are-heads are members. Eliminates the Container reading; supports the Anti-Foundation axiom and sets that contain themselves.",
+      "id": "sets_are_graphs",
+      "kind": "repair",
+      "short_name": "sets are graphs",
+      "source": "accessible_pointed_graphs",
+      "source_practices": [],
+      "target": "sets_hypersets",
+      "target_practices": []
+    },
+    {
+      "description": "Modern set theory's prerequisite metaphor: a set is an object that can itself be a member of another set. Lets us form power sets. Combined with the Container-schema reading of sets, supports the von Neumann axiom of Foundation (sets cannot contain themselves).",
+      "id": "sets_are_objects",
+      "kind": "basic",
+      "short_name": "sets are objects",
+      "source": "objects_on_a_par_with_other_objects",
+      "source_practices": [],
+      "target": "sets_in_modern_set_theory",
+      "target_practices": []
+    },
+    {
+      "description": "Conceptual blend of Spaces Are Sets of Points with naturally continuous space: a line is at once a set of points and a continuous geometric object; a circle is at once a subset of the point-set and a geometric curve. Dedekind's continuity-as-gaplessness lives inside this blend.",
+      "id": "space_set_blend",
+      "kind": "blend",
+      "short_name": "space set blend",
+      "source": "naturally_continuous_space_blended_with_set_of_elements",
+      "source_practices": [],
+      "target": "geometric_objects_as_subsets_of_a_set_of_points",
+      "target_practices": []
+    },
+    {
+      "description": "The central metaphor of the discretization program: an n-dimensional space (line, plane, ...) is a set; elements are point-locations; set-membership distinctness maps to point-location distinctness; relations among members map to properties of space. Reverses the natural-continuity-priority of points.",
+      "id": "spaces_are_sets_of_points",
+      "kind": "basic",
+      "short_name": "spaces are sets of points",
+      "source": "set_with_elements",
+      "source_practices": [],
+      "target": "naturally_continuous_space_with_point_locations",
+      "target_practices": []
+    },
+    {
+      "description": "Newton's geometric metaphor for the derivative: the tangent to a curve at a point is the limit of a sequence of secant lines whose two intersection points draw arbitrarily close together. A specialization of the BMI for limits, applied to the geometric tangent.",
+      "id": "tangent_is_limit_of_secants",
+      "kind": "basic",
+      "short_name": "tangent is limit of secants",
+      "source": "sequence_of_secant_lines_to_a_curve",
+      "source_practices": [],
+      "target": "tangent_line_at_a_point",
+      "target_practices": []
+    },
+    {
+      "description": "Static-arithmetic reconceptualization of continuity: a function preserves closeness if, for every epsilon-neighborhood in the range, there is a corresponding delta-neighborhood in the domain. Eliminates motion and naturally continuous space; produces the epsilon-delta definition.",
+      "id": "weierstrass_continuity_metaphor",
+      "kind": "repair",
+      "short_name": "weierstrass continuity metaphor",
+      "source": "preservation_of_numerical_closeness",
+      "source_practices": [],
+      "target": "continuity_of_functions_over_continuous_curves",
+      "target_practices": [
+        "p_direct_substitution",
+        "p_factor_cancel_without_common_factor"
+      ]
+    },
+    {
+      "description": "Repair metaphor: an empty collection IS zero. Introduced to give Object Collection an additive identity (A + 0 = A) that 'no collection at all' would otherwise leave undefined.",
+      "id": "zero_collection_metaphor",
+      "kind": "repair",
+      "short_name": "Zero Collection",
+      "source": "absence_of_objects",
+      "source_practices": [],
+      "target": "arithmetic_with_zero",
+      "target_practices": []
+    },
+    {
+      "description": "Repair metaphor: the absence of an object IS zero. Introduced to give Object Construction an additive identity that 'no object at all' would otherwise leave undefined.",
+      "id": "zero_object_metaphor",
+      "kind": "repair",
+      "short_name": "Zero Object",
+      "source": "absence_of_an_object",
+      "source_practices": [],
+      "target": "arithmetic_with_zero",
+      "target_practices": []
+    }
+  ],
+  "pp_necessary": [
+    [
+      "p_area_model_part_of_part",
+      "p_cross_multiplication_rule_from_pattern"
+    ],
+    [
+      "p_area_model_part_of_part",
+      "p_unit_fraction_denominator_product_rule"
+    ],
+    [
+      "p_count_on_from_larger",
+      "p_make_base_transfer"
+    ],
+    [
+      "p_count_on_from_larger",
+      "p_make_ten_split_leftover"
+    ],
+    [
+      "p_decompose_base_for_ones",
+      "p_column_addition_with_carrying"
+    ],
+    [
+      "p_direct_substitution",
+      "p_factor_cancel_substitute"
+    ],
+    [
+      "p_make_ten_split_leftover",
+      "p_make_base_transfer"
+    ],
+    [
+      "p_signed_addition_with_sign_relation",
+      "p_decimal_multiplication_rule"
+    ],
+    [
+      "p_unit_fraction_iteration",
+      "p_area_model_part_of_part"
+    ],
+    [
+      "p_unit_fraction_partition",
+      "p_unit_fraction_iteration"
+    ]
+  ],
+  "pp_sufficient": [
+    [
+      "p_area_model_part_of_part",
+      "p_cross_multiplication_rule_from_pattern",
+      "rule_extraction_from_invariant_in_the_model"
+    ],
+    [
+      "p_base_ones_chunking",
+      "p_column_addition_with_carrying",
+      "algorithmic_elaboration_explicit_carry_vocabulary"
+    ],
+    [
+      "p_count_on_from_larger",
+      "p_make_base_transfer",
+      "algorithmic_elaboration_decomposition_and_transfer"
+    ],
+    [
+      "p_decompose_base_for_ones",
+      "p_column_addition_with_carrying",
+      "symmetric_grounding_for_inverse_operations"
+    ],
+    [
+      "p_decompose_base_for_ones",
+      "p_explicit_trade_method",
+      "written_record_of_inverse_place_value_exchange"
+    ],
+    [
+      "p_direct_substitution",
+      "p_factor_cancel_substitute",
+      "extension_to_removable_discontinuities"
+    ],
+    [
+      "p_unit_fraction_iteration",
+      "p_area_model_part_of_part",
+      "metaphor_lifting_object_construction"
+    ]
+  ],
+  "practice_kind": [
+    [
+      "p_area_model_part_of_part",
+      "fraction",
+      "area_model_part_of_part"
+    ],
+    [
+      "p_base_ones_chunking",
+      "addition",
+      "base_ones_chunking"
+    ],
+    [
+      "p_bounded_numerator_over_diverging_denominator",
+      "calculus",
+      "bounded_numerator_over_diverging_denominator"
+    ],
+    [
+      "p_column_addition_with_carrying",
+      "addition",
+      "column_addition_with_carrying"
+    ],
+    [
+      "p_count_on_from_larger",
+      "addition",
+      "count_on_from_larger"
+    ],
+    [
+      "p_cross_multiplication_rule_from_pattern",
+      "fraction",
+      "cross_multiplication_rule_from_pattern"
+    ],
+    [
+      "p_cross_multiplication_rule_without_ground",
+      "fraction",
+      "cross_multiplication_rule_without_ground"
+    ],
+    [
+      "p_decimal_multiplication_rule",
+      "decimal",
+      "decimal_multiplication_rule"
+    ],
+    [
+      "p_decompose_base_for_ones",
+      "subtraction",
+      "decompose_base_for_ones"
+    ],
+    [
+      "p_decomposed_divisor_product",
+      "diagnostic",
+      "decomposed_divisor_product"
+    ],
+    [
+      "p_direct_substitution",
+      "calculus",
+      "direct_substitution"
+    ],
+    [
+      "p_ecuadorian_decimal_long_division",
+      "decimal",
+      "ecuadorian_decimal_long_division"
+    ],
+    [
+      "p_error_magnitude_estimate_comparison",
+      "diagnostic",
+      "error_magnitude_estimate_comparison"
+    ],
+    [
+      "p_explicit_trade_method",
+      "subtraction",
+      "decompose_base_for_ones"
+    ],
+    [
+      "p_factor_cancel_substitute",
+      "calculus",
+      "factor_cancel_substitute"
+    ],
+    [
+      "p_factor_cancel_without_common_factor",
+      "calculus",
+      "factor_cancel_without_common_factor"
+    ],
+    [
+      "p_make_base_transfer",
+      "addition",
+      "make_base_transfer"
+    ],
+    [
+      "p_make_ten_split_leftover",
+      "addition",
+      "make_ten_split_leftover"
+    ],
+    [
+      "p_multiplicative_bound_invalidation",
+      "diagnostic",
+      "multiplicative_bound_invalidation"
+    ],
+    [
+      "p_programming_expression_evaluation",
+      "algebraic",
+      "programming_expression_evaluation"
+    ],
+    [
+      "p_recalled_result_scaling",
+      "decimal",
+      "recalled_result_scaling"
+    ],
+    [
+      "p_rigorous_counting_procedure",
+      "diagnostic",
+      "rigorous_counting_procedure"
+    ],
+    [
+      "p_round_then_adjust",
+      "addition",
+      "round_then_adjust"
+    ],
+    [
+      "p_scale_ratio_unit",
+      "ratio",
+      "scale_ratio_unit"
+    ],
+    [
+      "p_signed_addition_with_sign_relation",
+      "integer",
+      "signed_addition_with_sign_relation"
+    ],
+    [
+      "p_small_area_justification",
+      "diagnostic",
+      "small_area_justification"
+    ],
+    [
+      "p_unit_fraction_denominator_product_rule",
+      "fraction",
+      "unit_fraction_denominator_product_rule"
+    ],
+    [
+      "p_unit_fraction_iteration",
+      "fraction",
+      "unit_fraction_iteration"
+    ],
+    [
+      "p_unit_fraction_partition",
+      "fraction",
+      "unit_fraction_partition"
+    ]
+  ],
+  "practices": [
+    {
+      "description": "Partition the unit square into B vertical strips, take A; partition each into D horizontal slices, take C. Names the part-of-part.",
+      "id": "p_area_model_part_of_part"
+    },
+    {
+      "description": "Decompose and recombine by base-and-ones place value.",
+      "id": "p_base_ones_chunking"
+    },
+    {
+      "description": "Sequence convergence: bounded numerator over diverging denominator goes to zero via epsilon-N tail bound.",
+      "id": "p_bounded_numerator_over_diverging_denominator"
+    },
+    {
+      "description": "Column-by-column addition with carrying. LX-elaboration of base-ones chunking with explicit carry vocabulary.",
+      "id": "p_column_addition_with_carrying"
+    },
+    {
+      "description": "Counting-On from the larger addend: a strategy that says nothing explicit about commutativity but presupposes it.",
+      "id": "p_count_on_from_larger"
+    },
+    {
+      "description": "Productive cross-multiplication: executes the rule AND carries an area-model justification. LX-elaboration of the area-model practice.",
+      "id": "p_cross_multiplication_rule_from_pattern"
+    },
+    {
+      "description": "Deformation: the cross-multiplication rule held without the area-model justification. Procedurally correct, inferentially hollow.",
+      "id": "p_cross_multiplication_rule_without_ground"
+    },
+    {
+      "description": "Multiply digits as integers, place decimal by summing place counts. LX for decimal-positional notation.",
+      "id": "p_decimal_multiplication_rule"
+    },
+    {
+      "description": "Borrow / decompose a base into smaller units for subtraction.",
+      "id": "p_decompose_base_for_ones"
+    },
+    {
+      "description": "Diagnostic validation by distributive decomposition: validate a product by summing partial products.",
+      "id": "p_decomposed_divisor_product"
+    },
+    {
+      "description": "Deontic scorekeeping: inspect an agent's commitments, entitlements, and incoherences through the learner scorekeeper runtime surface. This is the executable practice behind the deontic-scorekeeper vocabulary.",
+      "id": "p_deontic_scorekeeping"
+    },
+    {
+      "description": "Limit of a continuous function at a point by substitution.",
+      "id": "p_direct_substitution"
+    },
+    {
+      "description": "Scale both operands by a power of ten, divide as integers.",
+      "id": "p_ecuadorian_decimal_long_division"
+    },
+    {
+      "description": "Diagnostic validation across two candidate estimates: compare their omitted partial products and select the smaller-omission estimate.",
+      "id": "p_error_magnitude_estimate_comparison"
+    },
+    {
+      "description": "Written explicit-trade method: records a base-ten exchange in place-value columns before the standard subtraction algorithm.",
+      "id": "p_explicit_trade_method"
+    },
+    {
+      "description": "Limit at a removable discontinuity by factoring, cancelling the common factor, then substituting.",
+      "id": "p_factor_cancel_substitute"
+    },
+    {
+      "description": "Deformation: applying factor-cancel-substitute when there is no common factor. Rule-without-its-precondition.",
+      "id": "p_factor_cancel_without_common_factor"
+    },
+    {
+      "description": "Hermes runtime event-scoring: lift commitments, entitlements, and question candidates from a runtime discourse event. Its executable lives in the Hermes scoring surface, not the action-automata registry.",
+      "id": "p_hermes_event_scoring"
+    },
+    {
+      "description": "Compensation/Make-A-Base transfer. Productive partner of the unbalanced compensation deformation.",
+      "id": "p_make_base_transfer"
+    },
+    {
+      "description": "Make-Ten and split the leftover. PP-sufficient for the base-bridging move.",
+      "id": "p_make_ten_split_leftover"
+    },
+    {
+      "description": "Diagnostic validation by inverse multiplication: reject the candidate quotient when divisor * proposed exceeds dividend.",
+      "id": "p_multiplicative_bound_invalidation"
+    },
+    {
+      "description": "Walk an algebraic expression as a program: substitute variables, evaluate sub-expressions, combine via arithmetic primitives.",
+      "id": "p_programming_expression_evaluation"
+    },
+    {
+      "description": "Recall a base division fact and scale the quotient by a power of ten.",
+      "id": "p_recalled_result_scaling"
+    },
+    {
+      "description": "Relational-equals solving: treat an equation as a balance and preserve equality by making the same move to both sides.",
+      "id": "p_relational_equals_balance_preservation"
+    },
+    {
+      "description": "Diagnostic cardinality: establish a collection's cardinal by bijective counting under the five counting principles.",
+      "id": "p_rigorous_counting_procedure"
+    },
+    {
+      "description": "Round to a base, then adjust by the rounding amount.",
+      "id": "p_round_then_adjust"
+    },
+    {
+      "description": "Productive proportional reasoning: multiplicative scaling of both ratio terms preserves the unit ratio.",
+      "id": "p_scale_ratio_unit"
+    },
+    {
+      "description": "Productive signed addition that coordinates magnitude via the sign relation between addends.",
+      "id": "p_signed_addition_with_sign_relation"
+    },
+    {
+      "description": "Diagnostic justification: re-ground a procedural fraction rule by invoking the area-model kernel on the same inputs.",
+      "id": "p_small_area_justification"
+    },
+    {
+      "description": "Grounds (a/b)*(c/d) in unit-fraction logic: 1/b partitioned into d gives 1/(b*d); iterate a*c times.",
+      "id": "p_unit_fraction_denominator_product_rule"
+    },
+    {
+      "description": "Iterate a unit fraction to produce m/n. May extend beyond the whole.",
+      "id": "p_unit_fraction_iteration"
+    },
+    {
+      "description": "Partition a referent whole into equal units and select one.",
+      "id": "p_unit_fraction_partition"
+    }
+  ],
+  "pv_sufficient": [
+    [
+      "p_area_model_part_of_part",
+      "v_area_model"
+    ],
+    [
+      "p_bounded_numerator_over_diverging_denominator",
+      "v_sequence_convergence"
+    ],
+    [
+      "p_column_addition_with_carrying",
+      "v_column_algorithm"
+    ],
+    [
+      "p_count_on_from_larger",
+      "v_counting_on"
+    ],
+    [
+      "p_cross_multiplication_rule_from_pattern",
+      "v_area_model"
+    ],
+    [
+      "p_cross_multiplication_rule_from_pattern",
+      "v_cross_multiplication_rule"
+    ],
+    [
+      "p_cross_multiplication_rule_without_ground",
+      "v_cross_multiplication_rule"
+    ],
+    [
+      "p_decimal_multiplication_rule",
+      "v_decimal_multiplication_rule"
+    ],
+    [
+      "p_decompose_base_for_ones",
+      "v_direct_modeling"
+    ],
+    [
+      "p_decomposed_divisor_product",
+      "v_distributive_decomposition"
+    ],
+    [
+      "p_deontic_scorekeeping",
+      "v_deontic_scorekeeper"
+    ],
+    [
+      "p_direct_substitution",
+      "v_function_limit"
+    ],
+    [
+      "p_ecuadorian_decimal_long_division",
+      "v_decimal_positional"
+    ],
+    [
+      "p_error_magnitude_estimate_comparison",
+      "v_error_magnitude_comparison"
+    ],
+    [
+      "p_explicit_trade_method",
+      "v_explicit_trade"
+    ],
+    [
+      "p_factor_cancel_substitute",
+      "v_function_limit"
+    ],
+    [
+      "p_hermes_event_scoring",
+      "v_hermes_event_scoring"
+    ],
+    [
+      "p_make_base_transfer",
+      "v_make_base_transfer"
+    ],
+    [
+      "p_multiplicative_bound_invalidation",
+      "v_inverse_multiplication"
+    ],
+    [
+      "p_programming_expression_evaluation",
+      "v_algebraic_expression"
+    ],
+    [
+      "p_relational_equals_balance_preservation",
+      "v_relational_equals_balance"
+    ],
+    [
+      "p_rigorous_counting_procedure",
+      "v_bijective_counting"
+    ],
+    [
+      "p_scale_ratio_unit",
+      "v_ratio_scaling"
+    ],
+    [
+      "p_signed_addition_with_sign_relation",
+      "v_signed_addition_with_sign_relation"
+    ],
+    [
+      "p_small_area_justification",
+      "v_area_justification"
+    ],
+    [
+      "p_unit_fraction_denominator_product_rule",
+      "v_fraction_unit"
+    ],
+    [
+      "p_unit_fraction_iteration",
+      "v_fraction_unit"
+    ],
+    [
+      "p_unit_fraction_partition",
+      "v_fraction_unit"
+    ]
+  ],
+  "vocabularies": [
+    {
+      "description": "Algebraic-expression vocabulary: variables, literals, operators, assignments, sub-expressions, evaluation.",
+      "id": "v_algebraic_expression"
+    },
+    {
+      "description": "Area-model justification vocabulary: re-grounds a procedural fraction rule by deriving its output from the area-model kernel and comparing.",
+      "id": "v_area_justification"
+    },
+    {
+      "description": "Area-model vocabulary for fraction multiplication. Names the unit square, side-partitions, sub-rectangles, and selected area as part-of-part.",
+      "id": "v_area_model"
+    },
+    {
+      "description": "Bijective counting and the five counting principles: one-to-one correspondence, stable order, cardinal, abstraction, order-irrelevance.",
+      "id": "v_bijective_counting"
+    },
+    {
+      "description": "Place-value column-algorithm vocabulary. Names columns, carries, regroupings, place-values.",
+      "id": "v_column_algorithm"
+    },
+    {
+      "description": "Counting words and the count-from-one practice. Source domain vocabulary for the Object-Collection metaphor.",
+      "id": "v_counting"
+    },
+    {
+      "description": "The Counting-On vocabulary: start at the larger addend and count the smaller. Implicit associativity but no explicit decomposition.",
+      "id": "v_counting_on"
+    },
+    {
+      "description": "The rule (a/b) * (c/d) = (a*c)/(b*d) as a pure pattern. Names numerators, denominators, and the multiply-across operation. Without a kernel justification this vocabulary is held without an LX-elaboration.",
+      "id": "v_cross_multiplication_rule"
+    },
+    {
+      "description": "The decimal-multiplication rule: multiply digits as integers, place the decimal by summing fractional-place counts.",
+      "id": "v_decimal_multiplication_rule"
+    },
+    {
+      "description": "Decimal-positional notation: whole part, fractional part, place-unit, decimal point.",
+      "id": "v_decimal_positional"
+    },
+    {
+      "description": "Deontic status scoreboard: tracks commitments, entitlements, and incoherences per agent.",
+      "id": "v_deontic_scorekeeper"
+    },
+    {
+      "description": "Direct base-ten modeling vocabulary: physical units, base rods, exchanges between adjacent place values, and represented quantity.",
+      "id": "v_direct_modeling"
+    },
+    {
+      "description": "Validation by distributive decomposition: a product is validated by summing partial products over an additive decomposition of one factor.",
+      "id": "v_distributive_decomposition"
+    },
+    {
+      "description": "Comparison-of-rounding-errors vocabulary: names what each candidate estimate omits and selects the estimate whose omission has the smaller magnitude.",
+      "id": "v_error_magnitude_comparison"
+    },
+    {
+      "description": "Explicit-trade vocabulary: written place-value columns, crossed-out units, decomposed pieces, and inverse exchanges between adjacent places.",
+      "id": "v_explicit_trade"
+    },
+    {
+      "description": "Fraction-as-unit vocabulary. Names the referent whole, equal partitions, the unit fraction, and iteration of the unit.",
+      "id": "v_fraction_unit"
+    },
+    {
+      "description": "Function-limit vocabulary: substitution at a continuous point, factor-cancel reduction, tail bound.",
+      "id": "v_function_limit"
+    },
+    {
+      "description": "Hermes event-scoring vocabulary: lifts runtime-event commitments, entitlements, and question candidates.",
+      "id": "v_hermes_event_scoring"
+    },
+    {
+      "description": "Validation by inverse multiplication: the divisor times a proposed quotient must not exceed the dividend.",
+      "id": "v_inverse_multiplication"
+    },
+    {
+      "description": "Compensation / making-a-base vocabulary. Names the base, the decomposition, the transfer, and the conservation of total.",
+      "id": "v_make_base_transfer"
+    },
+    {
+      "description": "Multiplicative ratio scaling: scale factor preserves the unit ratio across both terms.",
+      "id": "v_ratio_scaling"
+    },
+    {
+      "description": "Relational-equals balance vocabulary: equation sides as equal quantities and same-operation moves that preserve equality.",
+      "id": "v_relational_equals_balance"
+    },
+    {
+      "description": "Sequence-convergence vocabulary: bounded numerator, diverging denominator, epsilon-N tail bound.",
+      "id": "v_sequence_convergence"
+    },
+    {
+      "description": "Signed-addition vocabulary that coordinates magnitudes by the sign relation between addends.",
+      "id": "v_signed_addition_with_sign_relation"
+    }
+  ],
+  "vp_sufficient": [
+    [
+      "v_area_model",
+      "p_area_model_part_of_part"
+    ],
+    [
+      "v_bijective_counting",
+      "p_rigorous_counting_procedure"
+    ],
+    [
+      "v_cross_multiplication_rule",
+      "p_cross_multiplication_rule_from_pattern"
+    ],
+    [
+      "v_decimal_multiplication_rule",
+      "p_decimal_multiplication_rule"
+    ],
+    [
+      "v_decimal_positional",
+      "p_decimal_multiplication_rule"
+    ],
+    [
+      "v_distributive_decomposition",
+      "p_decomposed_divisor_product"
+    ],
+    [
+      "v_inverse_multiplication",
+      "p_multiplicative_bound_invalidation"
+    ],
+    [
+      "v_relational_equals_balance",
+      "p_relational_equals_balance_preservation"
+    ]
+  ]
+}

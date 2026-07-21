@@ -23,7 +23,7 @@ from pathlib import Path
 
 repo = Path(sys.argv[1])
 node = sys.argv[2]
-adapter = repo / "more-zeeman" / "render" / "node-adapter.js"
+adapter = repo / "hermes" / "web" / "render" / "node-adapter.js"
 
 def invoke(payload):
     proc = subprocess.run(

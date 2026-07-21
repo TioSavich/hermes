@@ -67,7 +67,7 @@ PROLOG_PATHS = {
     "standards": Path("knowledge/standards"),
     "strategies": Path("knowledge/strategies"),
     "tools": Path("formal/tools"),
-    "zeeman": Path("more-zeeman/prolog"),
+    "zeeman": Path("hermes/web/prolog"),
 }
 
 
@@ -133,16 +133,26 @@ DIRECTORY_ROLES = {
     "formal/juncture": "juncture",
     "formal/formalization": "synthesis",
     "knowledge/geometry": "geometry_witness",
+    "hermes/web": "zeeman",
     "hermes": "infrastructure",
     "formal/learner": "learner",
     "lessons": "workflow",
     "knowledge/misconceptions": "misconceptions",
-    "more-zeeman": "zeeman",
     "formal/pml": "pml",
     "knowledge/standards": "standards",
     "knowledge/strategies": "synthesis",
     "formal/tools": "infrastructure",
 }
+
+
+def public_page_path(page: Path) -> str:
+    """Return the stable served path for a repository HTML file."""
+    rel = page.relative_to(ROOT).as_posix()
+    if rel.startswith("hermes/web/"):
+        return "/more-zeeman/" + rel.removeprefix("hermes/web/")
+    if rel.startswith("hermes/representation/"):
+        return "/representation/" + rel.removeprefix("hermes/representation/")
+    return "/" + rel
 
 
 def directory_role(path: str) -> str:
@@ -468,9 +478,9 @@ def page_map() -> dict[str, set[str]]:
     pages = iter_html_files([Path(root) for root in DEFAULT_WEB_ROOTS])
     for page in pages:
         source = page.read_text(encoding="utf-8")
-        rel = page.relative_to(ROOT).as_posix()
+        rel = public_page_path(page)
         for literal in API_LITERAL_RE.findall(source):
-            route_pages[normalize_api(literal)].add("/" + rel)
+            route_pages[normalize_api(literal)].add(rel)
     return route_pages
 
 
@@ -574,7 +584,7 @@ def module_page_map(module_paths: set[str]) -> dict[str, set[str]]:
     pages_by_module: dict[str, set[str]] = defaultdict(set)
     for page in iter_html_files([Path(root) for root in DEFAULT_WEB_ROOTS]):
         source = page.read_text(encoding="utf-8", errors="replace")
-        page_name = "/" + page.relative_to(ROOT).as_posix()
+        page_name = public_page_path(page)
         for module_path in module_paths:
             if module_path in source:
                 pages_by_module[module_path].add(page_name)

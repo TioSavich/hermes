@@ -6,7 +6,7 @@ WHAT each deformation is (a foreign partition rule on an illicit host, parametri
 over the fraction's denominator N) and emits drawer-compatible frame documents.
 This script is the projection step: it runs swipl through paths.pl to get the
 documents, then passes each through the shared rendering adapter and
-more-zeeman/render/drawer.js, writing per-frame SVGs and a four-up filmstrip.
+hermes/web/render/drawer.js, writing per-frame SVGs and a four-up filmstrip.
 
 The replication panel renders the SAME deformation for several denominators so
 the eye confirms what the skeleton-diff test asserts: only the cut count changes.

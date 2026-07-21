@@ -24,8 +24,8 @@ geometry; it never computes a result.
 
 The document shape is fixed by `docs/render-contract-v2.md`. `hermes_worker.pl`
 runs the render operations; the browser draws the documents through
-`more-zeeman/render/drawer.js`, which resolves each role atom to a CSS variable
-from `more-zeeman/hermes-tokens.css`.
+`hermes/web/render/drawer.js`, which resolves each role atom to a CSS variable
+from `hermes/web/hermes-tokens.css`.
 
 ## Boundary
 

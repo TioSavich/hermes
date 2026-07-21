@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" data-page-id="landing" data-hermes-base="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crisis-Driven Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hermes-tokens-dark.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Serif', Georgia, serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    body {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    /* --- Opening --- */
+    .opening {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .star-accent {
+      display: block;
+      font-size: 1.4rem;
+      color: var(--snap);
+      opacity: 0.35;
+      letter-spacing: 0.4em;
+      margin-bottom: 1.5rem;
+    }
+
+    .opening h1 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text);
+      margin-bottom: 1.75rem;
+      line-height: 1.5;
+    }
+
+    .opening .description {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      color: #b8b0a0;
+      line-height: 1.75;
+    }
+
+    /* --- Tool cards --- */
+    .tools-heading {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .tool-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .tool-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem 1.75rem;
+      text-decoration: none;
+      color: inherit;
+      display: grid;
+      grid-template-columns: 3.5rem 1fr;
+      gap: 1.25rem;
+      align-items: start;
+      transition: border-color 0.25s, background 0.25s;
+    }
+
+    .tool-card:hover {
+      border-color: var(--snap);
+      background: var(--surface-raised);
+    }
+
+    .tool-icon {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    .tool-icon.embodied { background: rgba(212, 99, 74, 0.12); color: var(--tension); }
+    .tool-icon.formal { background: rgba(232, 168, 76, 0.12); color: var(--snap); }
+    .tool-icon.narrative { background: rgba(91, 158, 174, 0.12); color: var(--release); }
+
+    .tool-content h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .tool-card:nth-child(1) .tool-content h2 { color: var(--tension); }
+    .tool-card:nth-child(2) .tool-content h2 { color: var(--snap); }
+    .tool-card:nth-child(3) .tool-content h2 { color: var(--release); }
+
+    .tool-subtitle {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .tool-desc {
+      font-size: 0.9rem;
+      color: #b8b0a0;
+      line-height: 1.6;
+    }
+
+    .tool-note {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      opacity: 0.7;
+    }
+
+    .tool-note code {
+      background: var(--surface-raised);
+      padding: 0.1em 0.35em;
+      border-radius: 3px;
+      font-size: inherit;
+    }
+
+    /* --- Connection section --- */
+    .connections {
+      margin-bottom: 3rem;
+      padding: 0 0.25rem;
+    }
+
+    .connections h3 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .connection-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .conn-node {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.4rem 0.75rem;
+      border-radius: 4px;
+      border: 1px solid;
+    }
+
+    .conn-node.n-embodied { color: var(--tension); border-color: rgba(212, 99, 74, 0.3); }
+    .conn-node.n-formal { color: var(--snap); border-color: rgba(232, 168, 76, 0.3); }
+    .conn-node.n-narrative { color: var(--release); border-color: rgba(91, 158, 174, 0.3); }
+
+    .conn-arrow {
+      color: var(--muted);
+      font-size: 0.85rem;
+      opacity: 0.5;
+    }
+
+    .connections p {
+      font-size: 0.9rem;
+      color: #b8b0a0;
+      line-height: 1.7;
+      max-width: 640px;
+      margin: 0 auto 0.75rem;
+    }
+
+    .connections p:last-child { margin-bottom: 0; }
+
+    /* --- Theory entry and the two door axes --- */
+    .entry-section, .vocabularies {
+      border-top: 1px solid var(--border);
+      margin: 0 0 3rem;
+      padding-top: 2rem;
+    }
+    .entry-section > h2, .vocabularies > h2 {
+      color: var(--snap); font-size: 1.35rem; font-weight: 500; margin-bottom: 0.75rem;
+    }
+    .entry-section > p, .vocabularies > p { color: #b8b0a0; margin-bottom: 1rem; }
+    .surface-grid, .door-grid { display: grid; gap: 0.85rem; margin: 1.2rem 0 2rem; }
+    .surface-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .door-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .surface-card, .door-card, .activity-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+      color: inherit; padding: 1rem; text-decoration: none;
+    }
+    .surface-card h3, .door-card h3, .activity-card h3 { color: var(--release); font-size: 1rem; margin-bottom: .25rem; }
+    .surface-card p, .door-card p, .activity-card p { color: var(--muted); font-size: .84rem; line-height: 1.5; }
+    .door-card .kind { color: var(--snap); font: .68rem 'IBM Plex Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
+    .door-card ul { list-style: none; margin-top: .65rem; }
+    .door-card li { border-top: 1px solid var(--border); padding: .4rem 0; }
+    .door-card a { color: var(--release); font: .76rem 'IBM Plex Mono', monospace; }
+    .door-card .gloss { color: var(--muted); display: block; font-size: .76rem; }
+    .activity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .85rem; }
+    .activity-card { display: block; }
+    .console-note { border-left: 3px solid var(--release); color: var(--muted); font-size: .86rem; padding: .75rem 1rem; }
+    .vocab-task, .vocab-panel, .vocab-scope { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.15rem; }
+    .vocab-task .row { display: flex; gap: .7rem; margin: .25rem 0; }
+    .vocab-task .tag, .vocab-panel .kicker { color: var(--snap); font: .7rem 'IBM Plex Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
+    .vocab-panel h3, .vocab-scope h3 { color: var(--text); font-size: 1.05rem; margin: .35rem 0 .75rem; }
+    .vocab-panel p, .vocab-scope li { color: #b8b0a0; font-size: .88rem; margin-bottom: .7rem; }
+    .vocab-arrow { color: var(--muted); font: .72rem 'IBM Plex Mono', monospace; padding: .45rem 0; text-align: center; text-transform: uppercase; }
+    .vocab-panel .term { background: var(--bg); color: var(--release); display: block; font: .76rem/1.55 'IBM Plex Mono', monospace; overflow-wrap: anywhere; padding: .65rem; white-space: pre-wrap; }
+    .vocab-panel .prov { color: var(--muted); font-size: .76rem; margin-top: .7rem; }
+    .vocab-panel .decode, .vocab-scope ul { margin: .7rem 0 0 1.1rem; }
+    .vocab-panel details { margin-top: .7rem; }
+    .vocab-panel summary { color: var(--snap); cursor: pointer; font: .72rem 'IBM Plex Mono', monospace; }
+    .vocab-panel pre { background: var(--bg); font: .68rem/1.45 'IBM Plex Mono', monospace; overflow: auto; padding: .65rem; white-space: pre-wrap; }
+    .vocab-scope { border-left: 3px solid var(--tension); margin-top: 1rem; }
+
+    /* --- Footer --- */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .footer h3 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .footer p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer p:last-child { margin-bottom: 0; }
+
+    .footer a {
+      color: var(--release);
+      text-decoration: none;
+    }
+
+    .footer a:hover { color: var(--snap); }
+
+    /* --- Responsive --- */
+    @media (min-width: 640px) {
+      .tool-cards {
+        gap: 1.25rem;
+      }
+
+      .tool-card {
+        padding: 1.75rem 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 2rem 1rem 3rem; }
+
+      .opening h1 { font-size: 1.25rem; }
+
+      .tool-card {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        padding: 1.25rem;
+      }
+
+      .tool-icon {
+        width: 2.75rem;
+        height: 2.75rem;
+        font-size: 1.2rem;
+      }
+
+      .connection-diagram {
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .conn-arrow { transform: rotate(90deg); }
+      .surface-grid, .door-grid, .activity-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="landing"></script>
+  <style>.top-bar,#journey-progress-bar{display:none!important}</style>
+</head>
+<body data-hshell-doc="1">
+
+  <div class="opening">
+    <span class="star-accent">&#x22C6; &#x22C6; &#x22C6;</span>
+    <h1>What happens when a way of knowing stops working?</h1>
+  </div>
+
+  <section class="entry-section" id="pick-your-door">
+    <div class="surface-grid" aria-label="Hermes surfaces">
+      <a class="surface-card" href="/"><h3>Console</h3><p>Type a computation and the calculator works it the way a child using a named strategy would, drawing each action on a number line. The encyclopedia includes grounding metaphors, systematic mappings from bodily activity to arithmetic (Lakoff and Núñez, <em>Where Mathematics Comes From</em>), and records where each one stops working.</p></a>
+      <a class="surface-card" href="/discussions.html"><h3>Discussions</h3><p>Paste a classroom transcript and the console checks the mathematical claims it can recognize, deterministically: each claim comes back <code>holds</code>, <code>refuted</code>, or <code>not covered</code>, with the worked check attached. The fuller two-pass report asks a language model first, so it needs a key.</p></a>
+      <a class="surface-card" href="visualizations.html"><h3>Visualizers</h3><p>Number line, fraction bars, area model, base-ten blocks, set &amp; grouping, and balance scale. The same drawing grammar the calculator uses, available directly.</p></a>
+      <a class="surface-card" href="monitoring_chart.html"><h3>Monitoring charts</h3><p>For an IM lesson: its standards, the strategies to anticipate, and the misconceptions research has documented near its content.</p></a>
+    </div>
+
+    <h2>Pick your door</h2>
+    <div class="door-grid" aria-label="Audience doors">
+      <section class="door-card">
+        <h3>Teacher</h3><p class="kind">Use it with a class · public</p>
+        <p>Coded samples of real student work, fraction bars you can manipulate, and a lesson chart that names the misconception alongside the strategy. Bring numbers; watch the method and where it breaks.</p>
+        <ul>
+          <li><a href="gallery.html">Student-work gallery</a><span class="gloss">coded arithmetic samples, filterable</span></li>
+          <li><a href="fraction-bars/calculator.html">Fraction-bars calculator</a><span class="gloss">add and subtract by co-measuring</span></li>
+          <li><a href="monitoring_chart.html">Monitoring chart</a><span class="gloss">strategies and misconceptions for a lesson</span></li>
+        </ul>
+      </section>
+      <section class="door-card">
+        <h3>Reviewer / Researcher</h3><p class="kind">Inspect the claims · public</p>
+        <p>The evidence and its limits: coded student work, a comparison of what each notation can and cannot express, and a commitment tracker for moves made without yet earning the right to them (Brandom, <em>Between Saying and Doing</em>).</p>
+        <ul>
+          <li><a href="gallery.html">Coded student-work corpus</a><span class="gloss">the samples the claims rest on</span></li>
+          <li><a href="scoreboard.html#im-vs-traditional">Representation comparison</a><span class="gloss">what each representation can and cannot say</span></li>
+          <li><a href="#three-vocabularies">One error, three vocabularies</a><span class="gloss">follow one error from philosophy to logic to Prolog</span></li>
+          <li><a href="scoreboard.html#this-lesson">Commitment tracker</a><span class="gloss">a move made without earning the right to it (Brandom, <em>Between Saying and Doing</em>)</span></li>
+          <li><a href="strategies/index.html">Strategy catalog</a><span class="gloss">the worked arithmetic strategies</span></li>
+        </ul>
+      </section>
+      <section class="door-card">
+        <h3>Not sure yet</h3><p class="kind">Find your way in · public</p>
+        <p>Three ways through the same idea: draw a strategy, read it as a narrative, or see how the catastrophe machine and the crisis cycle fit together. Start anywhere.</p>
+        <ul>
+          <li><a href="#activity-doors">The three activity doors</a><span class="gloss">draw it · read it · analyze it</span></li>
+          <li><a href="#journey-overview">The narrative journey</a><span class="gloss">continuous pressure, discontinuous snap</span></li>
+          <li><a href="gallery.html">Just show me something real</a><span class="gloss">the student-work gallery</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="activity-grid" id="activity-doors" aria-label="Activity doors">
+      <a class="activity-card" href="visualizations.html"><h3>Tools</h3><p>Number lines, fraction bars, base blocks, area models, balance scales. Type your own numbers and watch a strategy — and its misconception — drawn step by step.</p></a>
+      <a class="activity-card" href="#journey-overview"><h3>Journey</h3><p>The same process told as a narrative: continuous pressure producing a discontinuous snap, the catastrophe machine, the crisis cycle, and where the formalization honestly stops.</p></a>
+      <a class="activity-card" href="/"><h3>Console</h3><p>The app's teaching console: bring a classroom discussion, find the strategies and misconceptions in it, and launch a visualizer from what you find. Runs on your own machine.</p></a>
+      <a class="activity-card" id="three-vocabularies" href="/breaks.html"><h3>One error, three vocabularies</h3><p>The runnable version lives on <em>Where it breaks</em>.</p></a>
+    </div>
+    <p class="console-note">One capability is deliberately not hosted publicly: the teaching console reads student work. To run it on your own machine, use <code>bash hermes/app/launch.sh</code>, then open <code>http://127.0.0.1:8765/</code>. The interactive visualizers that draw a strategy render through that same local app; the public pages make no calls to any language model.</p>
+  </section>
+
+  <p class="tools-heading" id="journey-overview">Journey index</p>
+
+  <div class="tool-cards">
+
+    <a class="tool-card" href="index.html">
+      <div class="tool-icon embodied">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <circle cx="14" cy="6" r="3" />
+          <line x1="14" y1="6" x2="14" y2="22" />
+          <line x1="14" y1="22" x2="6" y2="16" stroke-dasharray="2 2" />
+          <line x1="14" y1="22" x2="22" y2="16" stroke-dasharray="2 2" />
+          <circle cx="14" cy="22" r="2.5" fill="currentColor" opacity="0.3" />
+        </svg>
+      </div>
+      <div class="tool-content">
+        <h2>The More Machine</h2>
+        <p class="tool-subtitle">Feel the snap</p>
+        <p class="tool-desc">A Zeeman catastrophe machine. Drag the blue point and watch continuous tension produce a discontinuous jump. The disc cannot transition smoothly — it must snap. The machine remembers each snap through Cantor's diagonal construction: read the history, negate it, produce something new.</p>
+      </div>
+    </a>
+
+    <a class="tool-card" href="bridge.html">
+      <div class="tool-icon formal">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <path d="M4 22 L14 6 L24 22" />
+          <line x1="9" y1="14" x2="19" y2="14" stroke-dasharray="2 2" />
+          <circle cx="14" cy="6" r="2" />
+          <circle cx="14" cy="14" r="1.5" fill="currentColor" opacity="0.4" />
+        </svg>
+      </div>
+      <div class="tool-content">
+        <h2>The Bridge</h2>
+        <p class="tool-subtitle">Watch the formalization's internal dynamics</p>
+        <p class="tool-desc">Connects the Prolog meta-interpreter to the catastrophe geometry. Run an arithmetic computation and watch the system's tension — inference count, crisis state, strategy transitions — drive the catastrophe machine in real time. When the learner hits crisis, the machine snaps.</p>
+      </div>
+    </a>
+
+    <a class="tool-card" href="crisis.html">
+      <div class="tool-icon narrative">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <rect x="5" y="4" width="18" height="20" rx="2" />
+          <line x1="9" y1="9" x2="19" y2="9" />
+          <line x1="9" y1="13" x2="17" y2="13" />
+          <line x1="9" y1="17" x2="15" y2="17" />
+        </svg>
+      </div>
+      <div class="tool-content">
+        <h2>The Observe–React–Reorganize Explorer</h2>
+        <p class="tool-subtitle">Read the story of learning</p>
+        <p class="tool-desc">The app's built-in timeline. Shows the narrative of crisis-driven learning as a sequence of events: the attempt, the failure, the teacher consultation, the strategy synthesis, the retry. Each card records a stage of the project's Observe–React–Reorganize (ORR) cycle (Savich, <em>ORR cycle</em>).</p>
+      </div>
+    </a>
+
+    <a class="tool-card" href="playground.html">
+      <div class="tool-icon embodied">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <circle cx="14" cy="14" r="5" />
+          <circle cx="14" cy="14" r="9" stroke-dasharray="2 2" />
+          <circle cx="14" cy="14" r="12.5" stroke-dasharray="1.5 2.5" />
+          <circle cx="14" cy="5" r="1.5" fill="currentColor" opacity="0.5" />
+          <circle cx="23" cy="14" r="1.5" fill="currentColor" opacity="0.5" />
+          <line x1="14" y1="9" x2="14" y2="5" stroke-dasharray="1 1.5" />
+        </svg>
+      </div>
+      <div class="tool-content">
+        <h2>The Playground</h2>
+        <p class="tool-subtitle">Grab a node, tug the springs</p>
+        <p class="tool-desc">A coupled physics simulation where each state in a strategy automaton is a Zeeman catastrophe machine. Drag control points to build tension. When a node snaps, tension propagates through the network. Enough snaps trigger crisis — and a new strategy ring materializes from the inside out.</p>
+      </div>
+    </a>
+
+    <a class="tool-card" href="muds.html">
+      <div class="tool-icon formal">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <rect x="4" y="10" width="9" height="6" />
+          <ellipse cx="20" cy="13" rx="5" ry="4" />
+          <line x1="13" y1="13" x2="15" y2="13" />
+          <rect x="4" y="19" width="9" height="6" />
+          <line x1="13" y1="22" x2="15" y2="22" />
+          <ellipse cx="20" cy="22" rx="5" ry="4" stroke-dasharray="2 2" />
+        </svg>
+      </div>
+      <div class="tool-content">
+        <h2>Meaning-Use Diagrams</h2>
+        <p class="tool-subtitle">How one practice makes another's reasons explicit</p>
+        <p class="tool-desc">An interactive Meaning-Use Diagram for the action-automata registry (Brandom, <em>Between Saying and Doing</em>). It connects practices and vocabularies and lets you inspect how one practice makes another's reasons explicit. The page teaches the formal relation names.</p>
+      </div>
+    </a>
+
+    <a class="tool-card" href="visualizations.html">
+      <div class="tool-icon formal">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <rect x="4" y="5" width="20" height="5" />
+          <line x1="7" y1="14" x2="21" y2="14" />
+          <circle cx="9" cy="20" r="2.5" />
+          <circle cx="14" cy="20" r="2.5" />
+          <circle cx="19" cy="20" r="2.5" />
+        </svg>
+      </div>
+      <div class="tool-content">
+        <h2>Representation Visualizations</h2>
+        <p class="tool-subtitle">Draw what the records show</p>
+        <p class="tool-desc">Number lines, fraction bars, area models, base-ten blocks, set grouping, and balance-scale filmstrips. Compare pages put productive schemes beside wrong-answer patterns, productive strategies with one step broken.</p>
+      </div>
+    </a>
+
+    <a class="tool-card" href="unit-echo/index.html">
+      <div class="tool-icon embodied">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <rect x="3" y="3" width="10" height="10" rx="1" />
+          <rect x="15" y="3" width="10" height="10" rx="1" stroke-dasharray="2 2" />
+          <rect x="3" y="15" width="10" height="10" rx="1" stroke-dasharray="2 2" />
+          <rect x="15" y="15" width="10" height="10" rx="1" stroke-dasharray="2 2" />
+          <line x1="8" y1="8" x2="20" y2="20" stroke-dasharray="1 1.5" />
+        </svg>
+      </div>
+      <div class="tool-content">
+        <h2>Unit Echo</h2>
+        <p class="tool-subtitle">Regroup outward, partition inward</p>
+        <p class="tool-desc">Pairs a recorded Ace-of-Base regrouping example with a Fraction Bars iteration at the same arity. The Prolog bridge retains the opposed action directions and validates a unit-fraction plan reconstructed from the final bar geometry.</p>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="footer">
+    <p>Part of <a href="https://github.com/TioSavich/umedcta-formalization">umedcta-formalization</a>, the Prolog and manuscript archive for <em>Understanding Mathematics as an Emancipatory Discipline: A Critical Theory Approach</em>.</p>
+  </div>
+
+  <script src="shared.js"></script>
+</body>
+</html>

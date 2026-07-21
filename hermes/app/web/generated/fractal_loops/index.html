@@ -365,7 +365,7 @@ Proof object is UNBOUND (var) -> the proof is discarded</pre>
 <div class="panel">
   <p class="eyebrow">the More Machine</p>
   <h3>The matrix grows by reading its own diagonal</h3>
-  <p class="fileline">more-zeeman/matrix.html:359&ndash;366 (addSnap); diagonal at :307, flip at :306, seed identity D1 at :312, corner vanishing point at :365&ndash;366. Mirrored in more-zeeman/more-machine.js:113&ndash;131, with maxSize sliding-window truncation at :116&ndash;120.</p>
+  <p class="fileline">hermes/web/matrix.html:359&ndash;366 (addSnap); diagonal at :307, flip at :306, seed identity D1 at :312, corner vanishing point at :365&ndash;366. Mirrored in hermes/web/more-machine.js:113&ndash;131, with maxSize sliding-window truncation at :116&ndash;120.</p>
 
   <div class="svgframe">
     <img src="more-machine.svg" alt="The matrix reading its diagonal, flipping every cell, writing the flipped strip down a new row and column; the new row provably differs from each older one, but the corner cell is filled by an alternating metronome tick.">
@@ -373,14 +373,14 @@ Proof object is UNBOUND (var) -> the proof is discarded</pre>
 
   <p class="caption">This is the snake that grows by eating a copy of its own tail. The matrix starts as a little identity grid with W running down the diagonal &mdash; each row&rsquo;s way of saying &ldquo;I am myself.&rdquo; To add a row, the machine reads that whole diagonal, flips every cell (W becomes M), and writes the flipped strip down a fresh column and across a fresh row. In <code>matrix.html</code>, the new row is guaranteed to differ from every existing row at that row&rsquo;s own diagonal index, and the enlarged grid is read again on the next snap. In the mirrored <code>more-machine.js</code> component, the same local diagonal move runs only within a bounded sliding window after <code>maxSize</code> is reached. The one place it eats its own tail is the single corner cell where the new row meets the new column: there the code stops diagonalizing and just writes a metronome tick (M, then W, then M&hellip;) that flips no matter what the diagonal said. At exactly the cell that is supposed to be the freshest act, the act is a clock, not a decision &mdash; the finished grid keeps the symbol but loses the trace of whether that corner was forced into being or merely ticked.</p>
 
-  <p><a class="livelink" href="https://tiosavich.github.io/umedcta-formalization/more-zeeman/matrix.html" target="_blank" rel="noopener">&rarr; Watch it run live (matrix.html)</a> &mdash; click <strong>Snap</strong> / <strong>Auto-snap</strong>. Source: <code>more-zeeman/matrix.html</code>.</p>
+  <p><a class="livelink" href="https://tiosavich.github.io/umedcta-formalization/more-zeeman/matrix.html" target="_blank" rel="noopener">&rarr; Watch it run live (matrix.html)</a> &mdash; click <strong>Snap</strong> / <strong>Auto-snap</strong>. Source: <code>hermes/web/matrix.html</code>.</p>
 
   <details class="seefor">
     <summary>See for yourself</summary>
     <div class="body">
       <div class="lbl">query</div>
       <pre class="query"># This loop runs in the browser. Open the live page and click to add snapshots:
-open more-zeeman/matrix.html
+open hermes/web/matrix.html
 # The seedMatrix / diagonal / flip / addSnap functions are at matrix.html:299-366
 # The mirrored more-machine.js component uses the same local move, but after
 # maxSize it first drops the oldest row/column and diagonalizes the visible
@@ -411,7 +411,7 @@ corner cells written so far (nextSymbol stream, the metronome at m[n][n]):
 
   <div class="deconstructs">
     <div class="lbl">where it eats its own tail</div>
-    more-zeeman/matrix.html:365&ndash;366 &mdash; the corner cell <code>m[n][n]</code>, filled by <code>nextSymbol</code> then <code>nextSymbol = flip(nextSymbol)</code>. The diagonal part of the new row is Cantor-forced and provably novel inside the current matrix, but the corner is an external alternating tick independent of any diagonal content; at the one cell asserting the new act&rsquo;s freshness the engine substitutes a metronome, and the stored symbol effaces whether it was forced or ticked. The mirrored <code>more-machine.js</code> version preserves that local structure but bounds it with a sliding window. (Page-level second grain: :294 comment &ldquo;The matrix is recollection&rdquo; is retracted by :280 prose &ldquo;The matrix records. It does not recollect.&rdquo;)
+    hermes/web/matrix.html:365&ndash;366 &mdash; the corner cell <code>m[n][n]</code>, filled by <code>nextSymbol</code> then <code>nextSymbol = flip(nextSymbol)</code>. The diagonal part of the new row is Cantor-forced and provably novel inside the current matrix, but the corner is an external alternating tick independent of any diagonal content; at the one cell asserting the new act&rsquo;s freshness the engine substitutes a metronome, and the stored symbol effaces whether it was forced or ticked. The mirrored <code>more-machine.js</code> version preserves that local structure but bounds it with a sliding window. (Page-level second grain: :294 comment &ldquo;The matrix is recollection&rdquo; is retracted by :280 prose &ldquo;The matrix records. It does not recollect.&rdquo;)
   </div>
 </div>
 

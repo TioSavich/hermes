@@ -56,7 +56,7 @@
 
 % =============================================================================
 % Pixel layout constants. Kept in step with the drawer's own constants
-% (drawDataDisplay in more-zeeman/render/drawer.js) so bars and axis tick
+% (drawDataDisplay in hermes/web/render/drawer.js) so bars and axis tick
 % labels line up; the drawer draws forward-only at the pixels emitted here.
 % =============================================================================
 

@@ -1,0 +1,302 @@
+<div id="fb-app" class="fb-app">
+
+  <!-- Header: title + skin picker -->
+  <div class="fb-header">
+    <h1 class="bar_title" id="bar_titles">Fraction Bars</h1>
+    <div class="fb-header-tools">
+      <label class="fb-theme-label" for="fb-theme">Theme</label>
+      <select id="fb-theme" class="fb-theme-select" aria-label="Color theme">
+        <option value="">Classic</option>
+        <option value="hermes">Hermes · Parchment</option>
+        <option value="iu">Crimson · Academic</option>
+        <option value="chalk">Chalkboard</option>
+        <option value="candy">Bubblegum</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Hide-mode banner: full-width, above the workspace, makes the "locked" hide mode obvious. -->
+  <div id="fb-hide-banner" class="fb-hide-banner" role="status" aria-live="polite" hidden>
+    <span class="fb-hide-banner-text" id="fb-hide-banner-text"><strong>Hide mode on.</strong> Tap any tool button to hide it from learners.<span id="fb-hide-count"></span></span>
+    <button type="button" id="fb-hide-done" class="fb-hide-done">Done hiding</button>
+  </div>
+
+  <div class="fb-workspace">
+
+  <!-- ===================================================================== -->
+  <!-- Toolbar: a compact, draggable, docked-left panel -->
+  <!-- ===================================================================== -->
+  <div id="fb-toolbar" class="fb-toolbar" role="toolbar" aria-label="Fraction Bars tools">
+
+    <div class="fb-toolbar-handle" id="fb-toolbar-handle" title="Drag to move the toolbar">
+      <span class="fb-toolbar-grip" aria-hidden="true"></span>
+      <span class="fb-toolbar-handle-label">Tools</span>
+      <button type="button" id="fb-toolbar-dock" class="fb-toolbar-dock" title="Reset toolbar position" aria-label="Reset toolbar position">⤢</button>
+    </div>
+
+    <div class="toolGroup">
+      <a class="toolBtn" id="tool_bar" data-i18n="bar" role="button" tabindex="0">Bar</a>
+      <a class="toolBtn" id="tool_mat" data-i18n="mat" role="button" tabindex="0">Mat</a>
+    </div>
+
+    <div class="toolGroup">
+      <a class="toolBtn" id="action_copy" data-i18n="copy" role="button" tabindex="0">Copy</a>
+      <a class="toolBtn" id="tool_repeat" data-i18n="repeat" role="button" tabindex="0">Repeat</a>
+      <a class="toolBtn" id="window_iterate" data-i18n="iterate" role="button" tabindex="0">Iterate</a>
+      <a class="toolBtn" id="action_join" data-i18n="join" role="button" tabindex="0">Join</a>
+      <a class="toolBtn" id="action_delete" data-i18n="delete" role="button" tabindex="0">Delete</a>
+    </div>
+
+    <div class="toolGroup">
+      <a class="toolBtn" id="window_split" data-i18n="parts" role="button" tabindex="0">Parts</a>
+      <a class="toolBtn" id="tool_manualSplit" data-i18n="pieces" role="button" tabindex="0">Line</a>
+      <a class="toolBtn" id="action_breakApart" data-i18n="b_apart" role="button" tabindex="0">Break Apart</a>
+      <a class="toolBtn" id="action_pullOutSplit" data-i18n="pullout" role="button" tabindex="0">Pull Out Parts</a>
+      <a class="toolBtn" id="action_clearSplits" data-i18n="c_parts" role="button" tabindex="0">Clear Parts</a>
+    </div>
+
+    <div class="toolGroup">
+      <a class="toolBtn" id="action_setUnitBar" data-i18n="set_unit" role="button" tabindex="0">Set Unit Bar</a>
+      <a class="toolBtn" id="action_measure" data-i18n="measure" role="button" tabindex="0">Measure</a>
+      <a class="toolBtn" id="action_make" data-i18n="make" role="button" tabindex="0">Make</a>
+      <a class="toolBtn" id="window_label" data-i18n="label" role="button" tabindex="0">Label</a>
+    </div>
+
+    <div class="toolGroup">
+      <a class="toolBtn" id="action_undo" data-i18n="undo" role="button" tabindex="0">Undo</a>
+      <a class="toolBtn" id="action_redo" data-i18n="redo" role="button" tabindex="0">Redo</a>
+      <a class="toolBtn" id="action_save" data-i18n="save" role="button" tabindex="0">Save</a>
+      <a class="toolBtn" id="action_open" data-i18n="open" role="button" tabindex="0">Open</a>
+      <a class="toolBtn" id="action_clearAll" data-i18n="new" role="button" tabindex="0">New</a>
+      <a class="toolBtn" id="action_print" data-i18n="print" role="button" tabindex="0">Print</a>
+      <a class="toolBtn" id="window_properties" data-i18n="properties" role="button" tabindex="0">Properties</a>
+      <a class="toolBtn" id="fb-gallery-toggle" role="button" tabindex="0" aria-pressed="false">Saved Work</a>
+    </div>
+
+    <!-- 8 quick swatches: exact .colorN classes/order from the original -->
+    <div class="toolGroup swatchGroup" role="group" aria-label="Fill color">
+      <a class="colorBlock color10 colorSelected" id="setColor1" data-color="#FFFF66" role="button" tabindex="0" aria-label="Fill color"></a>
+      <a class="colorBlock color3" id="setColor2" data-color="#ACBEFF" role="button" tabindex="0" aria-label="Fill color"></a>
+      <a class="colorBlock color7" id="setColor3" data-color="#E6E6E6" role="button" tabindex="0" aria-label="Fill color"></a>
+      <a class="colorBlock color5" id="setColor4" data-color="#FFFFFF" role="button" tabindex="0" aria-label="Fill color"></a>
+      <a class="colorBlock color12" id="setColor5" data-color="#CCFF66" role="button" tabindex="0" aria-label="Fill color"></a>
+      <a class="colorBlock color9" id="setColor6" data-color="#FFCC66" role="button" tabindex="0" aria-label="Fill color"></a>
+      <a class="colorBlock color13" id="setColor7" data-color="#DD99FF" role="button" tabindex="0" aria-label="Fill color"></a>
+      <a class="colorBlock color14" id="setColor8" data-color="#FF92DA" role="button" tabindex="0" aria-label="Fill color"></a>
+    </div>
+
+    <div class="toolGroup">
+      <a class="toolBtn" id="action_previous" data-i18n="previous" hidden role="button" tabindex="0">Previous</a>
+      <a class="toolBtn" id="action_next" data-i18n="next" hidden role="button" tabindex="0">Next</a>
+    </div>
+
+    <div class="toolGroup">
+      <a class="toolBtn hideShow" id="tool_hide" data-i18n="hide" role="button" tabindex="0">Hide Tools</a>
+      <a class="toolBtn hideShow" id="action_show" data-i18n="show" role="button" tabindex="0">Show All</a>
+    </div>
+
+    <div class="toolGroup">
+      <a class="toolBtn" id="fb-add-to-selection" role="button" tabindex="0" aria-pressed="false">Add to Selection</a>
+    </div>
+  </div>
+  <!-- /toolbar -->
+
+  <!-- ===================================================================== -->
+  <!-- Canvas + overlays -->
+  <!-- ===================================================================== -->
+  <div class="fb-stage">
+    <svg id="fbCanvas" class="fb-canvas" viewBox="0 0 1000 700"
+         preserveAspectRatio="xMidYMid meet"
+         role="img" aria-label="Fraction Bars canvas"
+         xmlns="http://www.w3.org/2000/svg"></svg>
+
+    <input name="labelField" id="labelInput" class="fb-label-input" type="text" value="" autocomplete="off">
+
+    <div id="fb-gallery" class="fb-gallery" hidden></div>
+  </div>
+
+  </div><!-- /fb-workspace -->
+
+  <!-- Flags carried over from the original hidden #flags block. -->
+  <div hidden id="flags">
+    <a id="marked-iterate" data-flag="true"></a>
+  </div>
+</div>
+
+<!-- ===================================================================== -->
+<!-- Native <dialog>s (ported from the prior UI-toolkit markup) -->
+<!-- ===================================================================== -->
+
+<!-- Partition / Splits -->
+<dialog id="dialog-splits" class="fb-dialog">
+  <form method="dialog" class="fb-dialog-body">
+    <h2 class="fb-dialog-title">Partition part of bar</h2>
+
+    <p>
+      <svg id="split-display" class="fb-split-display" viewBox="0 0 100 100"
+           preserveAspectRatio="xMidYMid meet" width="100" height="100"
+           xmlns="http://www.w3.org/2000/svg"></svg>
+    </p>
+
+    <div class="radio_vert_horz fb-vh-toggle" id="radio_vert">
+      <label for="vert">Vertical</label>
+      <input type="radio" name="vert_horiz" id="vert" value="Vertical" checked>
+      <label for="horiz">Horizontal</label>
+      <input type="radio" name="vert_horiz" id="horiz" value="Horizontal">
+    </div>
+
+    <p>
+      <label for="split-slider-field">Number of parts:</label>
+      <input type="text" id="split-slider-field" value="2" readonly>
+    </p>
+
+    <input type="range" id="split-slider" min="2" max="20" step="1" value="2" class="fb-slider">
+
+    <div id="radio_whole">
+      <label for="whole">Partition whole bar</label>
+      <input type="radio" name="whole_part" id="whole" value="Whole" checked>
+      <br>
+      <label for="part">Partition part of bar</label>
+      <input type="radio" name="whole_part" id="part" value="Part">
+    </div>
+
+    <div class="fb-dialog-buttons">
+      <button type="button" id="splits-ok" class="fb-btn">Ok</button>
+      <button type="button" id="splits-cancel" class="fb-btn">Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Properties -->
+<dialog id="dialog-properties" class="fb-dialog">
+  <form method="dialog" class="fb-dialog-body">
+    <h2 class="fb-dialog-title">Properties</h2>
+
+    <label for="same">Iterations</label>
+    <div id="radio_iterate_p">
+      <p>
+        <label for="same">Don't Create New Bar</label>
+        <input type="radio" name="create" id="same" value="Same">
+        <br>
+        <label for="new">Create New Bar</label>
+        <input type="radio" name="create" id="new" value="New" checked>
+        <br>
+        <label for="two_way">Two way Iterate</label>
+        <input type="radio" name="two_ittr" id="two_way" value="Two_way">
+        <br>
+        <label for="one_way">Only one way Iterate</label>
+        <input type="radio" name="two_ittr" id="one_way" value="One_way" checked>
+      </p>
+    </div>
+
+    <label>Splits (Parts)</label>
+    <div id="radio_split_p">
+      <p>
+        <label for="two_horiz">Vertical or Horizontal Split</label>
+        <input type="radio" name="two_split" id="two_horiz" value="Two_horiz">
+        <br>
+        <label for="one_horiz">Only vertical split</label>
+        <input type="radio" name="two_split" id="one_horiz" value="One_horiz" checked>
+      </p>
+    </div>
+
+    <div id="radio_lang_tr">
+      <p>
+        <label>Language</label>
+        <br>
+        <label for="lang_tr">Turkish</label>
+        <input type="radio" name="lang" id="lang_tr" value="lang_tur">
+        <label for="lang_en">English</label>
+        <input type="radio" name="lang" id="lang_en" value="lang_eng" checked>
+      </p>
+    </div>
+
+    <div class="fb-color-palette" role="group" aria-label="Background Color">
+      <p><label>Background Color</label></p>
+      <a class="colorBlock1 color1" id="bgColor1" data-color="#A8FFF4" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color2" id="bgColor2" data-color="#DDFFF0" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color3" id="bgColor3" data-color="#ACBEFF" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color4" id="bgColor4" data-color="#707EFF" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color5" id="bgColor5" data-color="#FFFFFF" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color6" id="bgColor6" data-color="#EFEFEF" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color7" id="bgColor7" data-color="#E6E6E6" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color8" id="bgColor8" data-color="#D6D6D6" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color9" id="bgColor9" data-color="#FFCC66" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color10 colorSelected" id="bgColor10" data-color="#FFFF66" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color11" id="bgColor11" data-color="#E9FF66" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color12" id="bgColor12" data-color="#CCFF66" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color13" id="bgColor13" data-color="#DD99FF" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color14" id="bgColor14" data-color="#FF92DA" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color15" id="bgColor15" data-color="#F56ED0" role="button" tabindex="0" aria-label="Background color"></a>
+      <a class="colorBlock1 color16" id="bgColor16" data-color="#FF8C8C" role="button" tabindex="0" aria-label="Background color"></a>
+    </div>
+
+    <div class="fb-dialog-buttons">
+      <button type="button" id="properties-ok" class="fb-btn">Ok</button>
+      <button type="button" id="properties-cancel" class="fb-btn">Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Iterate -->
+<dialog id="dialog-iterate" class="fb-dialog">
+  <form method="dialog" class="fb-dialog-body">
+    <h2 class="fb-dialog-title">Iterate</h2>
+
+    <div class="radio_itterate_vert_horz fb-vh-toggle" id="iterate_vert-horiz">
+      <label for="iterate_vert">Vertical</label>
+      <input type="radio" name="vert_horiz" id="iterate_vert" value="Vertical" checked>
+      <label for="iterate_horiz">Horizontal</label>
+      <input type="radio" name="vert_horiz" id="iterate_horiz" value="Horizontal">
+    </div>
+
+    <p>
+      <label for="iterate-field">Number of iterations:</label>
+      <input type="text" id="iterate-field" value="2">
+    </p>
+
+    <div class="fb-dialog-buttons">
+      <button type="button" id="iterate-ok" class="fb-btn">Ok</button>
+      <button type="button" id="iterate-cancel" class="fb-btn">Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Make -->
+<dialog id="dialog-make" class="fb-dialog">
+  <form method="dialog" class="fb-dialog-body">
+    <h2 class="fb-dialog-title">Make</h2>
+
+    <p>
+      <label for="whole-field">Write Fraction:</label>
+      <table class="fb-make-table">
+        <tbody>
+          <tr>
+            <td rowspan="2"><input type="text" id="whole-field" class="fb-make-whole" size="4" value=""></td>
+            <td class="fb-make-num"><input type="text" id="num-field" size="4"></td>
+          </tr>
+          <tr>
+            <td><input type="text" id="denum-field" size="4"></td>
+          </tr>
+        </tbody>
+      </table>
+    </p>
+
+    <div class="fb-dialog-buttons">
+      <button type="button" id="make-ok" class="fb-btn">Ok</button>
+      <button type="button" id="make-cancel" class="fb-btn">Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Choose a File -->
+<dialog id="dialog-file" class="fb-dialog">
+  <form method="dialog" class="fb-dialog-body">
+    <h2 class="fb-dialog-title">Choose a File</h2>
+    <p class="c_open_file">Use the button below to choose one or more FractionBars files to open.</p>
+    <input type="file" id="fileInput" name="files[]" multiple>
+    <div class="fb-dialog-buttons">
+      <button type="button" id="file-cancel" class="fb-btn">Cancel</button>
+    </div>
+  </form>
+</dialog>

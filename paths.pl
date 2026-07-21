@@ -28,7 +28,7 @@
                    carving-'formal/tools/carving',
                    standards-'knowledge/standards',
                    crosswalk-'knowledge/crosswalk',
-                   zeeman-'more-zeeman/prolog'
+                   zeeman-'hermes/web/prolog'
                  ]),
           ( directory_file_path(PrologRoot, Relative, Absolute),
             ( user:file_search_path(Alias, Absolute)

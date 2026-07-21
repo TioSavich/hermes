@@ -13,7 +13,7 @@ data) is reported as a named skip, never copied. A referenced file that does
 not exist at all is reported as missing.
 
 Usage:
-  python3 scripts/bundle/walk_closure.py --entry more-zeeman/landing.html
+  python3 scripts/bundle/walk_closure.py --entry hermes/web/landing.html
   python3 scripts/bundle/walk_closure.py --entry A.html --entry B.html \
       --copy-to build/bundles/name
 """

@@ -2,7 +2,7 @@
 """Render the parametric equipartition-failure family as SVG filmstrips.
 
 The wire: knowledge/strategies/render/parametric_fraction_errors.pl (the logic) ->
-B/M/E frames per (host, fraction, error type) (swipl) -> more-zeeman/render/
+B/M/E frames per (host, fraction, error type) (swipl) -> hermes/web/render/
 drawer.js (buildSvg) -> SVG filmstrips. The point: one deformation reproduces
 across the fraction family. The script renders the SAME error type for several
 fractions side by side so the replication is legible.
@@ -100,7 +100,7 @@ def main() -> int:
         "Each strip below is the same deformation generated for several fractions, "
         "differing only by the fraction parameter. Logic: "
         "<code>knowledge/strategies/render/parametric_fraction_errors.pl</code>. Render: "
-        "<code>more-zeeman/render/drawer.js</code>. A deformation is drawn only as a "
+        "<code>hermes/web/render/drawer.js</code>. A deformation is drawn only as a "
         "labeled misconception, never as an unlabeled productive diagram.</p>",
     ]
 

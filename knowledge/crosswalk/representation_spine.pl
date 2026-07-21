@@ -17,7 +17,7 @@ facts.
 :- dynamic asset_manifest_path/1.
 
 :- prolog_load_context(directory, CrosswalkDir),
-   directory_file_path(CrosswalkDir, '../../representation/asset_manifest.json', ManifestPath),
+   directory_file_path(CrosswalkDir, '../../hermes/representation/asset_manifest.json', ManifestPath),
    asserta(asset_manifest_path(ManifestPath)).
 
 renders_on(unit_fraction_partition, fraction_bars, fraction_bar_scene).

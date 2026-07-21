@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
-PAGE = ROOT / "more-zeeman" / "witnesses.html"
+PAGE = ROOT / "hermes" / "web" / "witnesses.html"
 sys.path.insert(0, str(ROOT))
 
 from hermes.app.worker import PersistentPrologError, PersistentPrologWorker  # noqa: E402

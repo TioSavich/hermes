@@ -7,7 +7,7 @@ harness verbatim):
   knowledge/strategies/render/parametric_partition_deformation.pl  (the transplant family)
   knowledge/strategies/render/parametric_fraction_errors.pl        (the equipartition family)
       -> frames dicts (swipl -l paths.pl, json_write_dict) -> here
-      -> more-zeeman/render/drawer.js buildSvg -> SVG filmstrips.
+      -> hermes/web/render/drawer.js buildSvg -> SVG filmstrips.
 
 What this draws:
 
@@ -276,7 +276,7 @@ def build_index(repl_ns, pairs, equi, dashed) -> str:
                 "in the denominator. Logic in Prolog "
                 "(<code>knowledge/strategies/render/parametric_partition_deformation.pl</code>, "
                 "<code>parametric_fraction_errors.pl</code>); render projected "
-                "through <code>more-zeeman/render/drawer.js</code>.</p>")
+                "through <code>hermes/web/render/drawer.js</code>.</p>")
 
     rows.append("<h2>The headline: one deformation, four denominators</h2>")
     check = ", ".join(f"1/{n} drew {d} interior cuts (expected {n-1})"

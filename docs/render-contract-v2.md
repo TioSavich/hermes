@@ -1,7 +1,7 @@
 # Render document contract, version 2
 
 Hermes scene compilers return render documents. The browser and the offline
-gallery exporter pass the same documents to `more-zeeman/render/drawer.js`.
+gallery exporter pass the same documents to `hermes/web/render/drawer.js`.
 The drawer serializes the supplied geometry and does not compute mathematical
 results.
 
@@ -48,7 +48,7 @@ drawable and rejects scalar or malformed results.
 ## Offline regeneration
 
 `hermes.app.rendering` validates documents and invokes
-`more-zeeman/render/node-adapter.js`. The adapter provides the supported fake
+`hermes/web/render/node-adapter.js`. The adapter provides the supported fake
 DOM, resolves Hermes color tokens, loads the same drawer used by shipped pages,
 and serializes frames and filmstrips. Node.js is required only when a contributor
 regenerates or checks tracked galleries.

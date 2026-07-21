@@ -2,7 +2,7 @@
 """Render the fraction unit-coordination machine's splitting cliff as filmstrips.
 
 The wire: formal/tools/carving/fraction_unit_machine.pl (the search) -> verdicts +
-witness traces (swipl) -> fraction-bars frames (here) -> more-zeeman/render/
+witness traces (swipl) -> fraction-bars frames (here) -> hermes/web/render/
 drawer.js (buildSvg) -> SVG filmstrips. Bounded on purpose: three demos.
 
   - 3/5  (proper)    : reachable intact at every stage, no crisis.

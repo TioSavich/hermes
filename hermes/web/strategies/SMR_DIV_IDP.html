@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>IDP (dispatcher gap)</title>
+<link rel="stylesheet" href="strategy_shell.css">
+</head>
+<body>
+<div class="container">
+  <p class="back"><a href="index.html">← All strategies</a></p>
+  <h1>IDP: Inverse of Distributive Property</h1>
+  <p class="meta"><strong>Status: dispatcher gap.</strong> Same as CGOB — <code>knowledge/strategies/math/smr_div_idp.pl:run_idp/5</code> returns <code>(Quotient, Remainder)</code>, not a step <code>History</code>. The page will surface the dispatcher mismatch honestly.</p>
+
+  <div class="inputs">
+    <label>Total T: <input type="number" id="a1" value="56"></label>
+    <label>Divisor S: <input type="number" id="a2" value="8"></label>
+    <button id="go">Calculate and Visualize</button>
+  </div>
+
+  <h2>Result</h2>
+  <div id="out"></div>
+
+  <h2>Number-line Diagram (none)</h2>
+  <svg id="diagram" width="700" height="120"></svg>
+
+  <h2>Step Trace</h2>
+  <ol id="steps" class="step-list"></ol>
+</div>
+<script src="strategy_viz.js"></script>
+<script>
+  wireStrategyPage({
+    strategy: 'IDP', op: '/',
+    a1Id: 'a1', a2Id: 'a2', btnId: 'go',
+    outId: 'out', svgId: 'diagram', stepListId: 'steps'
+  });
+</script>
+</body>
+</html>

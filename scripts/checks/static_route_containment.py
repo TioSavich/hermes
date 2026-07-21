@@ -16,9 +16,9 @@ from hermes.app.server import STATIC_MOUNTS  # noqa: E402
 def main() -> int:
     app = ROOT / "hermes/app"
     mounts = {
-        "more-zeeman": ROOT / "more-zeeman",
+        "more-zeeman": ROOT / "hermes" / "web",
         "learner": ROOT / "formal" / "learner",
-        "representation": ROOT / "representation",
+        "representation": ROOT / "hermes" / "representation",
         "ASKTM_Data": ROOT / "data" / "asktm",
         "docs": ROOT / "docs",
         "docs/research_assets": ROOT / "data" / "research_assets",

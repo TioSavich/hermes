@@ -39,7 +39,7 @@
  *      The assembled chart dict: the lesson metadata, the productive scene per
  *      (host, fraction), and the likely deformation scenes per (host, fraction).
  *      Each scene is a drawer-compatible {frames:[...]} document, so the render
- *      driver projects it through more-zeeman/render/drawer.js without this file
+ *      driver projects it through hermes/web/render/drawer.js without this file
  *      touching the drawer or the grammar.
  *
  * GROUNDING vs RENDER separation is preserved: this file decides WHICH
