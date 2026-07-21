@@ -7,7 +7,7 @@
  * or override the grammar.
  *
  * Source: REALLMs figure classifications, joined to article domains, surfaced as
- *   lessons/im/docling_figures_interpreted.pl  (docling_figure_rich/8).
+ *   curriculum/im/docling_figures_interpreted.pl  (docling_figure_rich/8).
  * Generalization: per-figure student_strategy_description + transcribed math are
  *   abstracted into a SMALL controlled vocabulary of use patterns (a denotation
  *   verb), then counted per (language, domain). One fact per

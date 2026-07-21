@@ -40,7 +40,7 @@ KEEP_TREES_RATIONALE = [
     ("representation", "asset manifest the gallery reads"),
     ("ASKTM_Data", "coded student-work corpus (PNGs + survey text) the gallery serves; publicly shared at IU; NSF Grant No. 1561453 acknowledgement in NOTICE.md; coding documents stay in the source project"),
     ("knowledge", "empirically sourced action automata, misconception registry, standards anchors, geometry concepts and corpus, and canonical vocabulary crosswalk"),
-    ("lessons", "IM lesson monitoring KB"),
+    ("curriculum", "IM lesson monitoring KB and attributed teacher-guide inputs"),
     ("formal", "reasoning machinery: sequent and incompatibility engines, dialectic and juncture models, learner models, grounded formalization, PML semantics, and carving/audit tools"),
     ("research", "derivative layer of the literature corpus (coded db + bibliography); the copyrighted articles stay in the source project"),
     ("docs/research_assets/research/student_work_figures",
@@ -91,9 +91,9 @@ KEEP_FILES = [
     "docs/research_assets/research/docling_classifications.json",
     "formal/learner/peano_utils.pl",          # shared Peano conversion utility
     "formal/learner/teacher_local_prolog.pl", # teacher-bound strategy provider
-    "lessons/im/generated/compiled_action_mappings.pl",  # lesson monitoring runtime cache
-    "lessons/im/generated/compiled_lesson_context.pl",  # attributed prompt and synthesis cache
-    "lessons/im/generated/compiled_task_instances.pl",  # source-backed learner task cache
+    "curriculum/im/generated/compiled_action_mappings.pl",  # lesson monitoring runtime cache
+    "curriculum/im/generated/compiled_lesson_context.pl",  # attributed prompt and synthesis cache
+    "curriculum/im/generated/compiled_task_instances.pl",  # source-backed learner task cache
     "knowledge/strategies/math/geometry_action_pairs.pl",  # registry geometry actions
     "knowledge/strategies/math/statistics_action_pairs.pl",  # registry data actions
     "knowledge/strategies/math/measurement_action_pairs.pl",  # registry measurement actions
@@ -148,18 +148,18 @@ KEEP_MD = {
     "docs/research/2026-07-01-talkmoves-pass2-posture-prompt.md",
     "docs/research/2026-06-25-the-juncture-and-differance.md",
     "ASKTM_Data/survey_questions.md",
-    "knowledge/geometry/corpus/ATTRIBUTION.md",
+    "curriculum/im_teacher_guides/ATTRIBUTION.md",
     "formal/README.md",
     "knowledge/crosswalk/README.md",
     "knowledge/crosswalk/families/README.md",
     "formal/formalization/README.md",
     "knowledge/geometry/README.md",
-    "knowledge/geometry/corpus/im_teacher_guides/grade6/README.md",
+    "curriculum/im_teacher_guides/grade6/README.md",
     "hermes/README.md",
     "hermes/app/README.md",
     "formal/learner/README.md",
-    "lessons/README.md",
-    "lessons/im/README.md",
+    "curriculum/README.md",
+    "curriculum/im/README.md",
     "knowledge/misconceptions/README.md",
     "more-zeeman/README.md",
     "more-zeeman/render/README.md",
@@ -172,8 +172,8 @@ KEEP_MD = {
 }
 KEEP_MD_PREFIXES = (
     "hermes/app/system_prompts/",
-    "knowledge/geometry/corpus/im_teacher_guides/",
-    "knowledge/geometry/corpus/im_scope_and_sequence/",  # only grade6-8.md ship; lesson_monitoring.pl consults them
+    "curriculum/im_teacher_guides/",
+    "curriculum/scope_and_sequence/",  # only grade6-8.md ship; lesson_monitoring.pl consults them
 )
 
 # Excluded from the kept trees. Substring "/tests/" prunes every test suite;
@@ -215,6 +215,20 @@ def tracked_files() -> list[str]:
             continue
         if (REPO / path).is_file():
             files.append(path)
+            continue
+        parts = path.split("/")
+        curriculum_parts: list[str] = []
+        if parts[:1] == ["lessons"]:
+            curriculum_parts = ["curriculum", *parts[1:]]
+        elif parts[:4] == ["knowledge", "geometry", "corpus", "im_teacher_guides"]:
+            curriculum_parts = ["curriculum", "im_teacher_guides", *parts[4:]]
+        elif parts[:4] == ["knowledge", "geometry", "corpus", "im_scope_and_sequence"]:
+            curriculum_parts = ["curriculum", "scope_and_sequence", *parts[4:]]
+        elif parts == ["knowledge", "geometry", "corpus", "ATTRIBUTION.md"]:
+            curriculum_parts = ["curriculum", "im_teacher_guides", "ATTRIBUTION.md"]
+        curriculum_path = "/".join(curriculum_parts)
+        if curriculum_path and (REPO / curriculum_path).is_file():
+            files.append(curriculum_path)
             continue
         tree, separator, remainder = path.partition("/")
         relocated = f"formal/{tree}/{remainder}" if separator and tree in relocated_trees else ""

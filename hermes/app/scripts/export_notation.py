@@ -42,7 +42,7 @@ DEFAULT_OUT = (
 )
 
 # The real K lesson the demos host on. IM-GK-U1-L12 ("count all when count on
-# available", addition) is verified at lessons/im/grade_k.pl:18. The IM K/G1
+# available", addition) is verified at curriculum/im/grade_k.pl:18. The IM K/G1
 # corpus has no number-writing lesson, so the notation deformations attach to a
 # counting/addition lesson as host (spec §1, §8).
 HOST_LESSON = "IM-GK-U1-L12"

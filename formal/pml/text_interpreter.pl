@@ -60,7 +60,7 @@ lesson_text_source(Code, Path) :-
     \+ explicit_lesson_text_source(Code, _),
     im_teacher_guide_relative_path(Code, RelativePath),
     absolute_file_name(
-        geometry(RelativePath),
+        lessons(RelativePath),
         Path,
         [ access(read),
           file_errors(fail)
@@ -77,14 +77,14 @@ lesson_text_source(Code, Path) :-
 
 explicit_lesson_text_source('IM-G1-U3-L17', Path) :-
     absolute_file_name(
-        geometry('corpus/im_teacher_guides/grade1/unit3/lesson17.md'),
+        lessons('im_teacher_guides/grade1/unit3/lesson17.md'),
 
         Path,
         [access(read)]
     ).
 explicit_lesson_text_source('IM-G2-U1-L3', Path) :-
     absolute_file_name(
-        geometry('corpus/im_teacher_guides/grade2/unit1/lesson3.md'),
+        lessons('im_teacher_guides/grade2/unit1/lesson3.md'),
         Path,
         [access(read)]
     ).
@@ -244,12 +244,12 @@ pml_fact_from_text(Code,
 im_teacher_guide_relative_path(Code, RelativePath) :-
     im_lesson_code_path_parts(Code, GradeDirectory, UnitNumber, LessonNumber),
     format(atom(RelativePath),
-           'corpus/im_teacher_guides/~w/unit~d/lesson~d.md',
+           'im_teacher_guides/~w/unit~d/lesson~d.md',
            [GradeDirectory, UnitNumber, LessonNumber]).
 
 enumerated_teacher_guide_source(Code, Path) :-
     absolute_file_name(
-        geometry('corpus/im_teacher_guides'),
+        lessons('im_teacher_guides'),
         Root,
         [ file_type(directory),
           access(read)
@@ -277,9 +277,9 @@ enumerated_teacher_guide_source(Code, Path) :-
 scope_sequence_source(Code, Path) :-
     im_lesson_code_numbers(Code, Grade, _UnitNumber, _LessonNumber),
     between(6, 8, Grade),
-    format(atom(RelativePath), 'corpus/im_scope_and_sequence/grade~d.md', [Grade]),
+    format(atom(RelativePath), 'scope_and_sequence/grade~d.md', [Grade]),
     absolute_file_name(
-        geometry(RelativePath),
+        lessons(RelativePath),
         Path,
         [ access(read),
           file_errors(fail)
@@ -288,9 +288,9 @@ scope_sequence_source(Code, Path) :-
 
 enumerated_scope_sequence_source(Code, Path) :-
     between(6, 8, Grade),
-    format(atom(RelativePath), 'corpus/im_scope_and_sequence/grade~d.md', [Grade]),
+    format(atom(RelativePath), 'scope_and_sequence/grade~d.md', [Grade]),
     absolute_file_name(
-        geometry(RelativePath),
+        lessons(RelativePath),
         Path,
         [ access(read),
           file_errors(fail)

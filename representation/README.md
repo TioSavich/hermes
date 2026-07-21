@@ -16,7 +16,7 @@ draft bindings from ASKTM categories to action automata.
 - `generate_asktm_bindings_draft.py` — writes `asktm_bindings_draft.json` and
   `asktm_bindings_review.md`.
 - `regenerate_docling_interpreted.py` — rebuilds
-  `lessons/im/docling_figures_interpreted.pl`.
+  `curriculum/im/docling_figures_interpreted.pl`.
 
 ## Boundary and attribution
 

@@ -7,7 +7,7 @@ from typing import Any
 
 
 def load_field_context_cache(repo_root: Path) -> dict[str, dict[str, Any]]:
-    path = repo_root / "lessons/im/generated/field_context_cache.json"
+    path = repo_root / "curriculum/im/generated/field_context_cache.json"
     try:
         artifact = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):

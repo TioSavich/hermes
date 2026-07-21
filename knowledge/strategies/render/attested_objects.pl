@@ -4,7 +4,7 @@
  * Do NOT hand-edit; regenerate from docling_classifications.json.
  *
  * This layer aggregates the per-figure ground facts
- * (lessons/im/docling_figures_interpreted.pl) up to the
+ * (curriculum/im/docling_figures_interpreted.pl) up to the
  * language / spatial-object / domain level. It is a corpus-attested
  * companion to knowledge/strategies/render/representation_grammar.pl's
  * representation_object/2 -- it never edits that grammar, and it is honest

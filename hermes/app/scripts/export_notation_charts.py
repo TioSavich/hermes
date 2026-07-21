@@ -3,7 +3,7 @@
 
 This is the notation cousin of export_lesson_deformation_charts.py. It uses the
 shared drawer adapter with title and per-frame panels, but consumes
-lessons/im/lesson_notation_chart.pl:notation_monitoring_chart/2 instead of the
+curriculum/im/lesson_notation_chart.pl:notation_monitoring_chart/2 instead of the
 fraction monitoring_chart/2. The two pipelines never collide: the fraction
 chart is keyed on frac(M,N) and backs the live grade-3 fraction charts; this
 chart is keyed on equation(A,Op,B,R) and emits equation/operands fields.
@@ -252,7 +252,7 @@ def build_lesson_index(chart: dict, cells: list) -> str:
                 "inscription. The diff between the correct inscription and a "
                 "deformation is one field (one flipped glyph, or one appended "
                 "mark). Logic in "
-                "<code>lessons/im/lesson_notation_chart.pl</code>; render "
+                "<code>curriculum/im/lesson_notation_chart.pl</code>; render "
                 "projected through <code>more-zeeman/render/drawer.js</code> (the "
                 "<code>notation</code> format).</p>")
     # The load-bearing honesty card, on every lesson page.

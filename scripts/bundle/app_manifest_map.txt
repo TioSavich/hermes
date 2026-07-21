@@ -1,10 +1,10 @@
 ASKTM_Data/	6543
 hermes/	3628
 docs/	1613
-knowledge/	1169
+curriculum/	934
+knowledge/	268
 more-zeeman/	144
 formal/	118
-lessons/	33
 scripts/	10
 representation/	8
 (root)	2

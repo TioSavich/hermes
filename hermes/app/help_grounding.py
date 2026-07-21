@@ -42,7 +42,7 @@ PAGE_READMES: dict[str, tuple[str, ...]] = {
     "discussions": ("hermes/app/README.md", "formal/pml/README.md"),
     "visualizations": ("knowledge/strategies/render/README.md",),
     "witnesses": ("knowledge/crosswalk/README.md", "knowledge/standards/README.md", "formal/pml/README.md", "knowledge/geometry/README.md"),
-    "monitoring": ("lessons/im/README.md",),
+    "monitoring": ("curriculum/im/README.md",),
     "gallery": ("representation/README.md",),
     "landing": ("more-zeeman/README.md",),
     "no": ("formal/README.md", "formal/pml/README.md"),

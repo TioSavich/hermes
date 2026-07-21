@@ -27,7 +27,7 @@
  *     op's misconception scenes or wrong answers live (the equipartition
  *     failures in parametric_fraction_errors.pl, the notation deformations in
  *     representation_grammar.pl). The lesson deformation charts in
- *     lessons/im/lesson_deformation_chart.pl consume this same lane.
+ *     curriculum/im/lesson_deformation_chart.pl consume this same lane.
  *   - evidence_pointer: an aggregated corpus-figure bucket in
  *     attested_deformations.pl documents the error pattern; a pointer to
  *     literature figures, not scene geometry.

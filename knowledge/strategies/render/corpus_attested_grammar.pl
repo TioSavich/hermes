@@ -8,7 +8,7 @@
  * support; the joins are read-only over both sides.
  *
  * The three generated layers aggregate the per-figure REALLMs ground facts
- * (lessons/im/docling_figures_interpreted.pl) up to the language / object /
+ * (curriculum/im/docling_figures_interpreted.pl) up to the language / object /
  * use-pattern / domain level. This module does NOT re-aggregate the figures; it
  * reconciles those aggregates with the grammar's own vocabulary.
  *

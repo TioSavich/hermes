@@ -23,12 +23,14 @@ top-level files load into `user`; they carry no `:- module` declaration.
   source.
 - `bootstrap/` — construction, Van de Walle, and N103 activity facts.
 - `pck/` — pedagogical-content-knowledge synthesis.
-- `corpus/` — IM teacher-guide markdown (no Prolog). Attribution and per-grade
-  scope are in `corpus/ATTRIBUTION.md` and `corpus/im_teacher_guides/grade6/README.md`.
+
+The IM teacher-guide and scope-and-sequence inputs consumed by curriculum
+modules live in `curriculum/im_teacher_guides/` and
+`curriculum/scope_and_sequence/`.
 
 ## Consumers and boundary
 
-`hermes_worker.pl` consults `schema.pl`; `lessons/im/lesson_monitoring.pl`,
+`hermes_worker.pl` consults `schema.pl`; `curriculum/im/lesson_monitoring.pl`,
 `knowledge/crosswalk/families/cw_grounding_metaphor.pl`, and the app's geometry route read
 the KB. Witnesses build through `witness_dict:witness_dict/4`. van Hiele markers
 cover levels 0 through 4; some declared tables hold no rows in this snapshot; a

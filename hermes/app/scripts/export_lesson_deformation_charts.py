@@ -7,7 +7,7 @@ a fraction strip, here are the student-work errors to watch for, rendered on 1/N
 The wire (the established render pattern, reusing the node drawer.js harness from
 export_parametric_deformations.py verbatim):
 
-  lessons/im/lesson_deformation_chart.pl
+  curriculum/im/lesson_deformation_chart.pl
       decides WHICH deformations to watch for, on WHICH fraction, for each real
       IM lesson -- every deformation gated through the grammar's misconception
       lane (representation_grammar:deformation_spec_evidence/4 and
@@ -192,7 +192,7 @@ def build_lesson_index(chart: dict, cells: list) -> str:
                 "regenerates for every fraction the lesson names. Each deformation is "
                 "a labeled misconception, gated through the representation grammar's "
                 "misconception lane &mdash; never an unlabeled productive diagram. "
-                "Logic in <code>lessons/im/lesson_deformation_chart.pl</code>; render "
+                "Logic in <code>curriculum/im/lesson_deformation_chart.pl</code>; render "
                 "projected through <code>more-zeeman/render/drawer.js</code>.</p>")
 
     # group cells by host, then fraction

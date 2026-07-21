@@ -21,7 +21,7 @@
                    learner-'formal/learner',
                    formalization-'formal/formalization',
                    misconceptions-'knowledge/misconceptions',
-                   lessons-'lessons',
+                   lessons-'curriculum',
                    hermes-'hermes',
                    geometry-'knowledge/geometry',
                    tools-'formal/tools',

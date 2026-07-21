@@ -13,8 +13,8 @@ exact helpers in representation/build_asset_manifest.py (_article_meta,
 _grade_bucket, _classifications) so the two surfaces stay consistent.
 
 Outputs (both under repo-served paths, never /private/tmp):
-  - lessons/im/docling_figures_interpreted.pl   (the logic surface)
-  - lessons/im/docling_figures_interpreted.json  (the audit/debug surface)
+  - curriculum/im/docling_figures_interpreted.pl   (the logic surface)
+  - curriculum/im/docling_figures_interpreted.json  (the audit/debug surface)
 
 The .pl carries TWO fact shapes from one generation:
   - docling_figure_interpreted/5  (unchanged shape, retained for any consumer
@@ -57,8 +57,8 @@ from build_asset_manifest import (  # noqa: E402
     _grade_bucket,  # noqa: F401  (imported for explicitness / reuse parity)
 )
 
-PL_OUT = os.path.join(REPO, "lessons", "im", "docling_figures_interpreted.pl")
-JSON_OUT = os.path.join(REPO, "lessons", "im", "docling_figures_interpreted.json")
+PL_OUT = os.path.join(REPO, "curriculum", "im", "docling_figures_interpreted.pl")
+JSON_OUT = os.path.join(REPO, "curriculum", "im", "docling_figures_interpreted.json")
 
 DOCLING_JSONL = os.path.join(
     REPO, "docs", "research_assets", "research", "2026-06-18-docling-figures.jsonl"

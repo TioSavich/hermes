@@ -12,7 +12,7 @@
  *   and attested_objects.pl. Transplant rows are student work by construction.
  *
  * This layer GENERALISES the per-figure ground facts in
- * lessons/im/docling_figures_interpreted.pl up to the language / pattern level.
+ * curriculum/im/docling_figures_interpreted.pl up to the language / pattern level.
  * It produces only facts the data supports, and is honest about gaps.
  *
  * Two generalisations:

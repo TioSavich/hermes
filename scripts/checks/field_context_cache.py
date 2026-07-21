@@ -22,7 +22,7 @@ from hermes.app.routes import monitoring
 from hermes.app.worker import PersistentPrologWorker
 
 
-CACHE_PATH = ROOT / "lessons/im/generated/field_context_cache.json"
+CACHE_PATH = ROOT / "curriculum/im/generated/field_context_cache.json"
 SAMPLE_LESSON = "IM-GK-U1-L1"
 
 

@@ -2701,7 +2701,7 @@ monitoring_chart_export_dict(Code, Dict) :-
     ;   OperationGaps = []
     ),
     maplist(operation_gap_export_dict, OperationGaps, OperationGapDicts),
-    % Flat Operation-Kind pairs from lessons/lesson_gap.pl: the registry-covered
+    % Flat Operation-Kind pairs from curriculum/lesson_gap.pl: the registry-covered
     % moves this chart does not anticipate — the opening the chart structurally
     % leaves. Delegates to the same licensed_but_unanticipated/2 computation
     % behind the per-operation key above, so the two surfaces cannot drift.
@@ -3011,7 +3011,7 @@ deontic_term_gloss(deformed_action(Prod, Def, _Family), Gloss) :-
 % The batch-corpus deontic terms (misconception_registry.pl). As with
 % result_of above, db_row provenance stays out of the sentence — the citation
 % field carries the source. Mirrors gloss_commitment/2 in
-% lessons/im/field_context.pl, which glosses db_row(Id) as "corpus row Id".
+% curriculum/im/field_context.pl, which glosses db_row(Id) as "corpus row Id".
 deontic_term_gloss(documented_batch_misconception(Name, _Source, _Detail, _Rule), Gloss) :-
     !,
     atom_spaces(Name, N),

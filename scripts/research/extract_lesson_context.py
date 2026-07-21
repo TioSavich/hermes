@@ -18,8 +18,8 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-GUIDES = ROOT / "knowledge/geometry/corpus/im_teacher_guides"
-OUTPUT = ROOT / "lessons/im/generated/compiled_lesson_context.pl"
+GUIDES = ROOT / "curriculum/im_teacher_guides"
+OUTPUT = ROOT / "curriculum/im/generated/compiled_lesson_context.pl"
 
 ANCHOR_RE = re.compile(r"_Anchor ID: `([^`]+)`")
 MAJOR_RE = re.compile(r"^\f?(Warm-up|Activity \d+|Lesson Synthesis|Cool-down)\b")

@@ -220,10 +220,10 @@ def static_audit(tree: Path, report: Report) -> None:
             "ZEEMAN_BIFURCATION_VERDICT agreement", "more-zeeman/prolog/zeeman_machine.pl",
         ),
         "more-zeeman/monitoring_chart.html": (
-            "lessons/im/im_glossary.pl", "lessons/im_harness.pl",
+            "curriculum/im/im_glossary.pl", "curriculum/im_harness.pl",
         ),
         "more-zeeman/visualizations.html": (
-            "lessons/im/generated/compiled_task_instances.pl",
+            "curriculum/im/generated/compiled_task_instances.pl",
         ),
         "hermes/app/web/breaks.html": (
             "formal/juncture/differance_juncture.pl", "formal/formalization/axioms_robinson.pl",

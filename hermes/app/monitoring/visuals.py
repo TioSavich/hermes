@@ -22,9 +22,7 @@ class _VisualBuilder:
         grade_dir = "kindergarten" if grade == "K" else f"grade{grade}"
         return (
             self.repo_root
-            / "knowledge"
-            / "geometry"
-            / "corpus"
+            / "curriculum"
             / "im_teacher_guides"
             / grade_dir
             / f"unit{match.group('unit')}"
