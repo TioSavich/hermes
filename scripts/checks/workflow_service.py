@@ -39,6 +39,10 @@ PAYLOADS: dict[str, dict[str, Any]] = {
     "grade": {"offline": True},
     "score": {},
     "metrics": {},
+    # The student-work stages validate before any model call; an empty
+    # payload exercises the clean invalid-request path in both transports.
+    "work_read": {},
+    "work_refine": {},
 }
 
 

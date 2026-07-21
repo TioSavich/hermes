@@ -92,6 +92,12 @@
   .event-tools textarea { width: 100%; min-height: 9rem; resize: vertical; font: .78rem/1.45 var(--mono, monospace); padding: 10px; border: 1px solid var(--line, rgba(13,12,8,.16)); border-radius: 6px; background: var(--paper, #f4ead6); color: var(--ink, #0d0c08); }
   .event-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
   .event-tools pre { white-space: pre-wrap; overflow-wrap: anywhere; font: .76rem/1.45 var(--mono, monospace); color: var(--muted, #665f4f); }
+  .work-tools { margin-top: 28px; padding: 18px 22px; border: 1px solid var(--line, rgba(13,12,8,.16)); border-radius: 12px; background: rgba(255,253,247,.7); }
+  .work-tools textarea { min-height: 8rem; }
+  .work-output { display: grid; gap: 10px; margin-top: 14px; }
+  .work-card { border: 1px solid var(--line, rgba(13,12,8,.16)); border-radius: 8px; padding: 10px 12px; font-size: .86rem; line-height: 1.45; }
+  .work-card h3 { margin: 0 0 6px; font: .78rem var(--mono, monospace); color: var(--gold-deep, #a97c24); }
+  .work-card p { margin: .35em 0; white-space: pre-wrap; }
 </style>
 </head>
 <body>
@@ -137,6 +143,20 @@
        check the transcript against the original before building the report. Both the
        transcription and a live run need the campus connection.</p>
   </div>
+
+  <section class="work-tools">
+    <h2 class="sec">you can upload a transcript of a discussion or student work and the problems they were working on for some analysis of their thinking</h2>
+    <p class="sec-hint">READ transcribes each file and groups only confident matches. REFINE turns the pseudonymized notes into a non-graded assessment. Uploaded files go to REALLMS for READ; names are replaced before results render.</p>
+    <textarea id="work-assignment" placeholder="Paste the geometry problems or assignment here."></textarea>
+    <div class="composer-actions">
+      <label class="btn ghost" for="work-files">&#128206; Attach student work</label>
+      <input type="file" id="work-files" accept=".txt,.md,.csv,.pdf,.docx,image/*" multiple hidden>
+      <button class="btn" id="work-read">READ and REFINE</button>
+      <span class="status" id="work-status"></span>
+    </div>
+    <p class="fmt-note" id="work-files-note">No files selected. Low-confidence work remains unattributed rather than assigned to a student.</p>
+    <div class="work-output" id="work-output"></div>
+  </section>
 
   <!-- ============ SAMPLE DISCUSSIONS ============ -->
   <h2 class="sec"><span class="num">2</span>Sample discussions</h2>
@@ -517,6 +537,57 @@ function rerun(){
   post(plain, (r.transcript_id || "report") + "_rerun",
     "Fresh run of the same transcript. Claim verdicts should match; move readings may differ — they are interpretive.");
 }
+
+function workFileData(file){
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve({name:file.name, mime:file.type, data_b64:String(reader.result || "")});
+    reader.onerror = () => reject(new Error("could not read " + file.name));
+    reader.readAsDataURL(file);
+  });
+}
+
+function workflowPayload(data){
+  if (!data || typeof data.stdout !== "string") throw new Error("The app returned no workflow result.");
+  const parsed = JSON.parse(data.stdout);
+  if (!parsed.ok) throw new Error(parsed.error || "The workflow could not complete.");
+  return parsed;
+}
+
+function renderWork(read, refine){
+  const out = $("work-output");
+  const files = (read.read_results || []).map(item =>
+    `<article class="work-card"><h3>${esc(item.student)} · file ${esc(item.file_index)}</h3><p><b>Transcription</b>\n${esc(item.transcription || "No readable transcription.")}</p><p><b>Notes</b>\n${esc(item.per_file_notes || "No notes returned.")}</p><p><b>Uncertainty</b>\n${esc(item.uncertainty || "None named.")}</p></article>`).join("");
+  const unattributed = (read.unattributed_work || []).map(item =>
+    `<article class="work-card"><h3>unattributed work · file ${esc(item.file_index)}</h3><p><b>Transcription</b>\n${esc(item.transcription || "No readable transcription.")}</p><p><b>Uncertainty</b>\n${esc(item.uncertainty || "Identification was not confident enough to group this file.")}</p></article>`).join("");
+  const cards = (refine.refine_cards || []).map(item =>
+    `<article class="work-card"><h3>${esc(item.student)} · refined assessment</h3><p>${esc(item.assessment || "No assessment returned.")}</p></article>`).join("");
+  out.innerHTML = cards + files + unattributed || "<p class=\"status\">No readable work was returned.</p>";
+}
+
+$("work-files").onchange = () => {
+  const files = Array.from($("work-files").files || []);
+  $("work-files-note").textContent = files.length ? files.map(f => f.name).join(", ") : "No files selected.";
+};
+
+$("work-read").onclick = async () => {
+  const assignment = $("work-assignment").value.trim();
+  const files = Array.from($("work-files").files || []);
+  const status = $("work-status"), button = $("work-read");
+  if (!assignment || !files.length) { status.textContent = "Add the assignment and at least one student-work file."; status.className = "status err"; return; }
+  button.disabled = true; $("work-output").innerHTML = "";
+  const stopElapsed = HermesFetch.startElapsed(status, "Reading student work…");
+  try {
+    const uploads = await Promise.all(files.map(workFileData));
+    const readReply = await HermesFetch.requestJSON("/api/work_read", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({assignment, files:uploads}), timeoutMs:HermesFetch.WORKER_TIMEOUT_MS});
+    const read = workflowPayload(HermesFetch.requireOK(readReply));
+    const refineReply = await HermesFetch.requestJSON("/api/work_refine", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({assignment, read_results:read.read_results}), timeoutMs:HermesFetch.WORKER_TIMEOUT_MS});
+    const refine = workflowPayload(HermesFetch.requireOK(refineReply));
+    renderWork(read, refine); status.textContent = "READ and REFINE completed."; status.className = "status";
+  } catch (error) {
+    status.textContent = error.message || "The student-work request did not complete."; status.className = "status err";
+  } finally { stopElapsed(); button.disabled = false; }
+};
 
 $("run").onclick = () => { const t = $("paste").value.trim(); if (t) post(t, "pasted", ""); else { $("status").textContent = "Paste a transcript or load a sample first."; } };
 $("event-score").onclick = () => runEventRoute("/api/event_score");
