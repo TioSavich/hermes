@@ -1,7 +1,7 @@
 data/	8155
 hermes/	3780
 curriculum/	934
-knowledge/	268
+knowledge/	261
 formal/	118
 scripts/	10
 docs/	3

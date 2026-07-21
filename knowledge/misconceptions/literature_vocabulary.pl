@@ -40,11 +40,11 @@
 :- use_module(library(yall)).
 :- use_module(learner(deontic_scorekeeper), []).
 :- use_module(misconceptions(test_harness), []).
-:- use_module(misconceptions(misconceptions_combinatorial_batch_1), []).
+:- use_module(misconceptions(misconceptions_combinatorial), []).
 :- use_module(misconceptions(misconceptions_decimal), []).
 :- use_module(misconceptions(misconceptions_decimal_batch_1), []).
 :- use_module(misconceptions(misconceptions_decimal_batch_2), []).
-:- use_module(misconceptions(misconceptions_discrete_batch_1), []).
+:- use_module(misconceptions(misconceptions_discrete), []).
 :- use_module(misconceptions(misconceptions_extended_arithmetic), []).
 :- use_module(misconceptions(misconceptions_fraction), []).
 :- use_module(misconceptions(misconceptions_fraction_batch_1), []).
@@ -54,16 +54,14 @@
 :- use_module(misconceptions(misconceptions_fraction_batch_5), []).
 :- use_module(misconceptions(misconceptions_fraction_batch_6), []).
 :- use_module(misconceptions(misconceptions_fraction_batch_7), []).
-:- use_module(misconceptions(misconceptions_geometric_batch_1), []).
-:- use_module(misconceptions(misconceptions_geometric_batch_2), []).
 :- use_module(misconceptions(misconceptions_geometry), []).
-:- use_module(misconceptions(misconceptions_integer_batch_1), []).
+:- use_module(misconceptions(misconceptions_integer), []).
 :- use_module(misconceptions(misconceptions_measurement), []).
 :- use_module(misconceptions(misconceptions_measurement_batch_1), []).
 :- use_module(misconceptions(misconceptions_measurement_batch_2), []).
 :- use_module(misconceptions(misconceptions_percent_batch_1), []).
-:- use_module(misconceptions(misconceptions_ratio_batch_1), []).
-:- use_module(misconceptions(misconceptions_rational_batch_1), []).
+:- use_module(misconceptions(misconceptions_ratio), []).
+:- use_module(misconceptions(misconceptions_rational), []).
 :- use_module(misconceptions(misconceptions_whole_number), []).
 :- use_module(misconceptions(misconceptions_whole_number_batch_1), []).
 :- use_module(misconceptions(misconceptions_whole_number_batch_2), []).

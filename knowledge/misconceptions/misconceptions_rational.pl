@@ -1,6 +1,15 @@
-:- module(misconceptions_rational_batch_1, []).
-% rational-number misconceptions — direct solo batch 1.
-% Native arithmetic/symbolic layer only.
+/** <module> Rational misconception table
+ *
+ * This table holds literature-attested rational misconception registrations
+ * and their evidence predicates. Registrations use
+ * test_harness:arith_misconception/6 with the schema
+ * arith_misconception(Source, Domain, Description, Rule, Input, Expected).
+ *
+ * Rows retain source order: existing non-batch rows first, followed by batch
+ * rows in ascending batch number. Provenance stays with each row; git history
+ * is the archive.
+ */
+:- module(misconceptions_rational, []).
 
 :- multifile test_harness:arith_misconception/6.
 :- discontiguous test_harness:arith_misconception/6.
@@ -10,66 +19,66 @@ test_harness:arith_misconception(db_row(37495), rational, too_vague, skip, none,
 test_harness:arith_misconception(db_row(37501), rational, too_vague, skip, none, none).
 
 % Natural-number/additive schemas applied to rational magnitude.
-r37579_missing_piece_compare(compare(frac(2,3), frac(3,4)), equal).
-r37580_fraction_digits_as_decimal(decimal_for_fraction(frac(1,8)), 0.8).
-r37645_decimal_fraction_not_equivalent(equivalent(frac(3,6), decimal(0.50)), false).
-r37942_operation_outcome_blocks_solution(solve(div(6, x) = 14), impossible).
-r37943_unknown_must_be_natural(solve(6 * x = 11), no_natural_solution).
-r37944_bigger_denominator_bigger(compare(frac(1,5), frac(1,7)), greater(frac(1,7))).
-r37945_no_decimal_between(count_between(0.005, 0.006), 0).
-r37978_eighth_as_point_eight(decimal_for_fraction(frac(1,8)), 0.8).
-r37996_mult_equation_no_fraction_solution(solve(8 * x = 3), no_solution).
-r38020_long_repeating_assumed_irrational(number_status(frac(1,7)), irrational).
-r38065_decimal_interval_discrete(count_between(1.2, 1.3), finite(0)).
-r38079_same_numerator_bigger_denominator(compare(frac(2,5), frac(2,7)), greater(frac(2,7))).
-r38092_no_decimal_between(count_between(0.3, 0.4), 0).
-r38145_no_decimal_between(count_between(5.31, 5.32), 0).
-r38148_multiplication_always_exceeds_factor(greater_than(product(0.71,3), 3), true).
-r38152_repeating_nines_less_than_one(compare(decimal_repeating(0,9), 1), less_than).
-r38167_reverse_quotative_division(grain_pounds(money(0.50), price_per_pound(1.68)), 3.36).
-r38189_rational_interval_discrete(count_between(rational_a, rational_b), 0).
-r38190_immediate_successor_exists(successor(decimal(0.5)), exists_but_unknown).
-r38265_repeating_nines_less_than_one(compare(decimal_repeating(0,9), 1), less_than).
-r38298_forms_unrelated(equivalent_forms(frac(1,2), decimal(0.5), percent(50)), unrelated).
-r38384_next_rational_exists(next_after(rational_point), exists).
-r38443_multiplication_makes_bigger(scale_effect(0.5), bigger).
-r38533_repeating_decimal_only_approx(equivalent(decimal_repeating(0,3), frac(1,3)), approximate).
-r38535_noninteger_means_prime(prime_status(pi), prime).
-r38561_addition_must_increase(statement_can_be_true(3 + 12*z < 3), false).
-r38562_decimal_interval_discrete(count_between(0.005, 0.006), 0).
-r38751_next_rational_exists(next_after(rational_point), exists).
-r38877_not_whole_means_irrational(number_status(frac(1,2)), irrational).
-r38878_rational_irrational_same_cardinality(compare_cardinality(rationals, irrationals), same_cardinality).
-r38925_benny_fraction_decimal_collapse(values(frac(3,2), frac(2,3)), values(0.5, 0.5)).
-r39030_representation_relative_answer(add(2, decimal(0.3)), 0.5).
-r39104_division_makes_smaller_operation_choice(cost(0.75, litres, price_per_litre(5)), divide).
-r39111_repeating_decimal_tends_to_fraction(equivalent(decimal_repeating(0,3), frac(1,3)), tends_to).
-r39158_division_unrelated_to_fraction(equivalent(division(3,4), frac(3,4)), unrelated).
-r39228_reference_unit_ignored(remaining_after_eating(half_cake, quarter_of_remaining), frac(1,4)).
-r39231_repeating_decimals_nearly_one(add(decimal_repeating(0,3), decimal_repeating(0,6)), nearly(1)).
-r39241_fallacious_sqrt4_irrational(number_status(sqrt(4)), irrational).
-r39261_number_between_repeating_and_fraction(exists_between(frac(1,3), decimal_repeating(0,3)), true).
-r39279_division_can_increase_false(statement_can_be_true(5 / x > 5), false).
-r39310_shape_feature_equivalence(compare_representations(frac(1,2), frac(3,5)), equal).
-r39364_longer_decimal_bigger(compare(0.021, 0.87), greater(0.021)).
-r39382_decimal_as_whole_number(compare(0.34, 0.8), greater(0.34)).
-r39383_decimal_point_after_digit_sum(5 + 0.3, 0.8).
-r39479_only_one_between_fractions(count_between(frac(3,8), frac(5,8)), 1).
-r39480_tail_digits_compare(compare(0.65, 0.8), greater(0.65)).
-r39481_fraction_multiplier_assumed_smaller(less_than(product(50, frac(3,2)), 50), true).
-r39504_rationals_finite(cardinality(rationals_between_0_and_1), finite).
-r39505_all_infinities_equal(compare_cardinality(rationals, irrationals), same_cardinality).
-r39506_consecutive_irrationals_exist(consecutive(irrational_a, irrational_b), true).
-r39514_finite_between_fractions(count_between(frac(3,5), frac(4,5)), finite).
-r39758_base_parts_converted_separately(base_five_to_decimal(12.34), 7.19).
-r39837_one_third_as_three_percent(percent_for_fraction(frac(1,3)), 3).
-r39857_one_and_half_as_one_fifth(decimal_or_fraction_for(one_and_half), frac(1,5)).
-r40161_i_as_irrational(number_status(i), irrational).
-r40218_exact_fraction_forced_decimal(solution(3*x = 2), 0.6).
-r40429_decimal_quotient_guess(5 / 2, 3).
-r40541_fraction_display_irrrational(number_status(frac(23,43)), irrational).
-r40542_cycle_length_as_required_test(rationality_test(frac(23,43)), need_42_digits).
-r40553_no_decimal_between(count_between(1.2, 1.3), 0).
+misconceptions_rational_batch_1:r37579_missing_piece_compare(compare(frac(2,3), frac(3,4)), equal).
+misconceptions_rational_batch_1:r37580_fraction_digits_as_decimal(decimal_for_fraction(frac(1,8)), 0.8).
+misconceptions_rational_batch_1:r37645_decimal_fraction_not_equivalent(equivalent(frac(3,6), decimal(0.50)), false).
+misconceptions_rational_batch_1:r37942_operation_outcome_blocks_solution(solve(div(6, x) = 14), impossible).
+misconceptions_rational_batch_1:r37943_unknown_must_be_natural(solve(6 * x = 11), no_natural_solution).
+misconceptions_rational_batch_1:r37944_bigger_denominator_bigger(compare(frac(1,5), frac(1,7)), greater(frac(1,7))).
+misconceptions_rational_batch_1:r37945_no_decimal_between(count_between(0.005, 0.006), 0).
+misconceptions_rational_batch_1:r37978_eighth_as_point_eight(decimal_for_fraction(frac(1,8)), 0.8).
+misconceptions_rational_batch_1:r37996_mult_equation_no_fraction_solution(solve(8 * x = 3), no_solution).
+misconceptions_rational_batch_1:r38020_long_repeating_assumed_irrational(number_status(frac(1,7)), irrational).
+misconceptions_rational_batch_1:r38065_decimal_interval_discrete(count_between(1.2, 1.3), finite(0)).
+misconceptions_rational_batch_1:r38079_same_numerator_bigger_denominator(compare(frac(2,5), frac(2,7)), greater(frac(2,7))).
+misconceptions_rational_batch_1:r38092_no_decimal_between(count_between(0.3, 0.4), 0).
+misconceptions_rational_batch_1:r38145_no_decimal_between(count_between(5.31, 5.32), 0).
+misconceptions_rational_batch_1:r38148_multiplication_always_exceeds_factor(greater_than(product(0.71,3), 3), true).
+misconceptions_rational_batch_1:r38152_repeating_nines_less_than_one(compare(decimal_repeating(0,9), 1), less_than).
+misconceptions_rational_batch_1:r38167_reverse_quotative_division(grain_pounds(money(0.50), price_per_pound(1.68)), 3.36).
+misconceptions_rational_batch_1:r38189_rational_interval_discrete(count_between(rational_a, rational_b), 0).
+misconceptions_rational_batch_1:r38190_immediate_successor_exists(successor(decimal(0.5)), exists_but_unknown).
+misconceptions_rational_batch_1:r38265_repeating_nines_less_than_one(compare(decimal_repeating(0,9), 1), less_than).
+misconceptions_rational_batch_1:r38298_forms_unrelated(equivalent_forms(frac(1,2), decimal(0.5), percent(50)), unrelated).
+misconceptions_rational_batch_1:r38384_next_rational_exists(next_after(rational_point), exists).
+misconceptions_rational_batch_1:r38443_multiplication_makes_bigger(scale_effect(0.5), bigger).
+misconceptions_rational_batch_1:r38533_repeating_decimal_only_approx(equivalent(decimal_repeating(0,3), frac(1,3)), approximate).
+misconceptions_rational_batch_1:r38535_noninteger_means_prime(prime_status(pi), prime).
+misconceptions_rational_batch_1:r38561_addition_must_increase(statement_can_be_true(3 + 12*z < 3), false).
+misconceptions_rational_batch_1:r38562_decimal_interval_discrete(count_between(0.005, 0.006), 0).
+misconceptions_rational_batch_1:r38751_next_rational_exists(next_after(rational_point), exists).
+misconceptions_rational_batch_1:r38877_not_whole_means_irrational(number_status(frac(1,2)), irrational).
+misconceptions_rational_batch_1:r38878_rational_irrational_same_cardinality(compare_cardinality(rationals, irrationals), same_cardinality).
+misconceptions_rational_batch_1:r38925_benny_fraction_decimal_collapse(values(frac(3,2), frac(2,3)), values(0.5, 0.5)).
+misconceptions_rational_batch_1:r39030_representation_relative_answer(add(2, decimal(0.3)), 0.5).
+misconceptions_rational_batch_1:r39104_division_makes_smaller_operation_choice(cost(0.75, litres, price_per_litre(5)), divide).
+misconceptions_rational_batch_1:r39111_repeating_decimal_tends_to_fraction(equivalent(decimal_repeating(0,3), frac(1,3)), tends_to).
+misconceptions_rational_batch_1:r39158_division_unrelated_to_fraction(equivalent(division(3,4), frac(3,4)), unrelated).
+misconceptions_rational_batch_1:r39228_reference_unit_ignored(remaining_after_eating(half_cake, quarter_of_remaining), frac(1,4)).
+misconceptions_rational_batch_1:r39231_repeating_decimals_nearly_one(add(decimal_repeating(0,3), decimal_repeating(0,6)), nearly(1)).
+misconceptions_rational_batch_1:r39241_fallacious_sqrt4_irrational(number_status(sqrt(4)), irrational).
+misconceptions_rational_batch_1:r39261_number_between_repeating_and_fraction(exists_between(frac(1,3), decimal_repeating(0,3)), true).
+misconceptions_rational_batch_1:r39279_division_can_increase_false(statement_can_be_true(5 / x > 5), false).
+misconceptions_rational_batch_1:r39310_shape_feature_equivalence(compare_representations(frac(1,2), frac(3,5)), equal).
+misconceptions_rational_batch_1:r39364_longer_decimal_bigger(compare(0.021, 0.87), greater(0.021)).
+misconceptions_rational_batch_1:r39382_decimal_as_whole_number(compare(0.34, 0.8), greater(0.34)).
+misconceptions_rational_batch_1:r39383_decimal_point_after_digit_sum(5 + 0.3, 0.8).
+misconceptions_rational_batch_1:r39479_only_one_between_fractions(count_between(frac(3,8), frac(5,8)), 1).
+misconceptions_rational_batch_1:r39480_tail_digits_compare(compare(0.65, 0.8), greater(0.65)).
+misconceptions_rational_batch_1:r39481_fraction_multiplier_assumed_smaller(less_than(product(50, frac(3,2)), 50), true).
+misconceptions_rational_batch_1:r39504_rationals_finite(cardinality(rationals_between_0_and_1), finite).
+misconceptions_rational_batch_1:r39505_all_infinities_equal(compare_cardinality(rationals, irrationals), same_cardinality).
+misconceptions_rational_batch_1:r39506_consecutive_irrationals_exist(consecutive(irrational_a, irrational_b), true).
+misconceptions_rational_batch_1:r39514_finite_between_fractions(count_between(frac(3,5), frac(4,5)), finite).
+misconceptions_rational_batch_1:r39758_base_parts_converted_separately(base_five_to_decimal(12.34), 7.19).
+misconceptions_rational_batch_1:r39837_one_third_as_three_percent(percent_for_fraction(frac(1,3)), 3).
+misconceptions_rational_batch_1:r39857_one_and_half_as_one_fifth(decimal_or_fraction_for(one_and_half), frac(1,5)).
+misconceptions_rational_batch_1:r40161_i_as_irrational(number_status(i), irrational).
+misconceptions_rational_batch_1:r40218_exact_fraction_forced_decimal(solution(3*x = 2), 0.6).
+misconceptions_rational_batch_1:r40429_decimal_quotient_guess(5 / 2, 3).
+misconceptions_rational_batch_1:r40541_fraction_display_irrrational(number_status(frac(23,43)), irrational).
+misconceptions_rational_batch_1:r40542_cycle_length_as_required_test(rationality_test(frac(23,43)), need_42_digits).
+misconceptions_rational_batch_1:r40553_no_decimal_between(count_between(1.2, 1.3), 0).
 
 test_harness:arith_misconception(db_row(37579), rational, missing_piece_compare,
     misconceptions_rational_batch_1:r37579_missing_piece_compare,

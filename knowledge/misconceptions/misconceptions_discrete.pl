@@ -1,6 +1,15 @@
-:- module(misconceptions_discrete_batch_1, []).
-% discrete mathematics misconceptions — direct solo batch 1.
-% Native symbolic layer only.
+/** <module> Discrete misconception table
+ *
+ * This table holds literature-attested discrete misconception registrations
+ * and their evidence predicates. Registrations use
+ * test_harness:arith_misconception/6 with the schema
+ * arith_misconception(Source, Domain, Description, Rule, Input, Expected).
+ *
+ * Rows retain source order: existing non-batch rows first, followed by batch
+ * rows in ascending batch number. Provenance stays with each row; git history
+ * is the archive.
+ */
+:- module(misconceptions_discrete, []).
 
 :- multifile test_harness:arith_misconception/6.
 :- discontiguous test_harness:arith_misconception/6.
@@ -13,7 +22,7 @@
 % SCHEMA: Source-Path-Goal.
 % GROUNDED: TODO distinguish implication direction from biconditional.
 % CONNECTS TO: s(comp_nec(unlicensed(converse_of_conditional)))
-r37642_converse_of_conditional(card(letter_above), number_required_below).
+misconceptions_discrete_batch_1:r37642_converse_of_conditional(card(letter_above), number_required_below).
 
 test_harness:arith_misconception(db_row(37642), discrete, converse_of_conditional,
     misconceptions_discrete_batch_1:r37642_converse_of_conditional,
@@ -31,7 +40,7 @@ test_harness:arith_misconception(db_row(37890), discrete, too_vague, skip, none,
 % SCHEMA: Container.
 % GROUNDED: TODO use bijection for infinite sets, not finite part-whole size.
 % CONNECTS TO: s(comp_nec(unlicensed(finite_subset_rule_for_infinite_sets)))
-r38114_finite_subset_rule(compare_cardinality(naturals, squares), fewer_squares).
+misconceptions_discrete_batch_1:r38114_finite_subset_rule(compare_cardinality(naturals, squares), fewer_squares).
 
 test_harness:arith_misconception(db_row(38114), discrete, finite_subset_rule_for_infinite_sets,
     misconceptions_discrete_batch_1:r38114_finite_subset_rule,
@@ -49,7 +58,7 @@ test_harness:arith_misconception(db_row(38507), discrete, too_vague, skip, none,
 % SCHEMA: Source-Path-Goal.
 % GROUNDED: TODO encapsulate infinite union by its quantified membership condition.
 % CONNECTS TO: s(comp_nec(unlicensed(finite_endpoint_for_infinite_process)))
-r38825_finite_endpoint_for_infinite_process(infinite_union_power_sets, p(x_infinity)).
+misconceptions_discrete_batch_1:r38825_finite_endpoint_for_infinite_process(infinite_union_power_sets, p(x_infinity)).
 
 test_harness:arith_misconception(db_row(38825), discrete, finite_endpoint_for_infinite_process,
     misconceptions_discrete_batch_1:r38825_finite_endpoint_for_infinite_process,
@@ -62,7 +71,7 @@ test_harness:arith_misconception(db_row(38825), discrete, finite_endpoint_for_in
 % SCHEMA: Container.
 % GROUNDED: TODO check membership in some finite-stage power set.
 % CONNECTS TO: s(comp_nec(unlicensed(infinite_member_in_finite_stage_union)))
-r38827_infinite_member_in_finite_union(member(naturals, union_finite_power_sets), true).
+misconceptions_discrete_batch_1:r38827_infinite_member_in_finite_union(member(naturals, union_finite_power_sets), true).
 
 test_harness:arith_misconception(db_row(38827), discrete, infinite_member_in_finite_stage_union,
     misconceptions_discrete_batch_1:r38827_infinite_member_in_finite_union,
@@ -78,7 +87,7 @@ test_harness:arith_misconception(db_row(38889), discrete, too_vague, skip, none,
 % SCHEMA: Container.
 % GROUNDED: TODO evaluate inclusive disjunction at the whole-statement level.
 % CONNECTS TO: s(comp_nec(unlicensed(disjunction_requires_both_parts_true)))
-r38982_disjunction_requires_both_parts_true(or(even(15), odd(15)), false).
+misconceptions_discrete_batch_1:r38982_disjunction_requires_both_parts_true(or(even(15), odd(15)), false).
 
 test_harness:arith_misconception(db_row(38982), discrete, disjunction_requires_both_parts_true,
     misconceptions_discrete_batch_1:r38982_disjunction_requires_both_parts_true,
@@ -91,7 +100,7 @@ test_harness:arith_misconception(db_row(38982), discrete, disjunction_requires_b
 % SCHEMA: Container.
 % GROUNDED: TODO separate formal truth from conversational informativeness.
 % CONNECTS TO: s(comp_nec(unlicensed(pragmatic_rejection_of_true_disjunction)))
-r38983_pragmatic_rejection(order_disjunction(real_x, real_y), false).
+misconceptions_discrete_batch_1:r38983_pragmatic_rejection(order_disjunction(real_x, real_y), false).
 
 test_harness:arith_misconception(db_row(38983), discrete, pragmatic_rejection_of_true_disjunction,
     misconceptions_discrete_batch_1:r38983_pragmatic_rejection,
@@ -104,7 +113,7 @@ test_harness:arith_misconception(db_row(38983), discrete, pragmatic_rejection_of
 % SCHEMA: Container.
 % GROUNDED: TODO use inclusive mathematical disjunction.
 % CONNECTS TO: s(comp_nec(unlicensed(exclusive_or_for_inclusive_or)))
-r38985_exclusive_or_for_inclusive_or(or(true, true), false).
+misconceptions_discrete_batch_1:r38985_exclusive_or_for_inclusive_or(or(true, true), false).
 
 test_harness:arith_misconception(db_row(38985), discrete, exclusive_or_for_inclusive_or,
     misconceptions_discrete_batch_1:r38985_exclusive_or_for_inclusive_or,
@@ -117,7 +126,7 @@ test_harness:arith_misconception(db_row(38985), discrete, exclusive_or_for_inclu
 % SCHEMA: Container.
 % GROUNDED: TODO distinguish membership definition from shared attribute.
 % CONNECTS TO: s(comp_nec(unlicensed(common_property_required_for_set)))
-r39044_common_property_required(collection([apple, 7, blue]), not_set).
+misconceptions_discrete_batch_1:r39044_common_property_required(collection([apple, 7, blue]), not_set).
 
 test_harness:arith_misconception(db_row(39044), discrete, common_property_required_for_set,
     misconceptions_discrete_batch_1:r39044_common_property_required,
@@ -130,7 +139,7 @@ test_harness:arith_misconception(db_row(39044), discrete, common_property_requir
 % SCHEMA: Container.
 % GROUNDED: TODO allow cardinality one containers.
 % CONNECTS TO: s(comp_nec(unlicensed(singleton_not_set)))
-r39045_singleton_not_set(set_candidate([a]), not_set).
+misconceptions_discrete_batch_1:r39045_singleton_not_set(set_candidate([a]), not_set).
 
 test_harness:arith_misconception(db_row(39045), discrete, singleton_not_set,
     misconceptions_discrete_batch_1:r39045_singleton_not_set,
@@ -143,7 +152,7 @@ test_harness:arith_misconception(db_row(39045), discrete, singleton_not_set,
 % SCHEMA: Container.
 % GROUNDED: TODO allow empty container as a mathematical object.
 % CONNECTS TO: s(comp_nec(unlicensed(empty_set_not_set)))
-r39046_empty_set_not_set(set_candidate([]), not_set).
+misconceptions_discrete_batch_1:r39046_empty_set_not_set(set_candidate([]), not_set).
 
 test_harness:arith_misconception(db_row(39046), discrete, empty_set_not_set,
     misconceptions_discrete_batch_1:r39046_empty_set_not_set,
@@ -156,7 +165,7 @@ test_harness:arith_misconception(db_row(39046), discrete, empty_set_not_set,
 % SCHEMA: Container.
 % GROUNDED: TODO compare extensional membership, not just size.
 % CONNECTS TO: s(comp_nec(unlicensed(set_equality_by_cardinality)))
-r39047_set_equality_by_cardinality(compare_sets([1,2], [3,4]), equal).
+misconceptions_discrete_batch_1:r39047_set_equality_by_cardinality(compare_sets([1,2], [3,4]), equal).
 
 test_harness:arith_misconception(db_row(39047), discrete, set_equality_by_cardinality,
     misconceptions_discrete_batch_1:r39047_set_equality_by_cardinality,
@@ -170,7 +179,7 @@ test_harness:arith_misconception(db_row(39047), discrete, set_equality_by_cardin
 % SCHEMA: Container.
 % GROUNDED: TODO collapse identical set elements.
 % CONNECTS TO: s(comp_nec(unlicensed(repeated_elements_counted_in_set)))
-r39048_repeated_elements_counted(cardinality(repeated_set(4)), infinity).
+misconceptions_discrete_batch_1:r39048_repeated_elements_counted(cardinality(repeated_set(4)), infinity).
 
 test_harness:arith_misconception(db_row(39048), discrete, repeated_elements_counted_in_set,
     misconceptions_discrete_batch_1:r39048_repeated_elements_counted,
@@ -189,7 +198,7 @@ test_harness:arith_misconception(db_row(39096), discrete, too_vague, skip, none,
 % SCHEMA: Container.
 % GROUNDED: TODO use bijection n -> 2n for countable sets.
 % CONNECTS TO: s(comp_nec(unlicensed(part_whole_rule_for_infinite_sets)))
-r39109_part_whole_infinite(compare_cardinality(naturals, evens), naturals_bigger).
+misconceptions_discrete_batch_1:r39109_part_whole_infinite(compare_cardinality(naturals, evens), naturals_bigger).
 
 test_harness:arith_misconception(db_row(39109), discrete, part_whole_rule_for_infinite_sets,
     misconceptions_discrete_batch_1:r39109_part_whole_infinite,
@@ -203,7 +212,7 @@ test_harness:arith_misconception(db_row(39109), discrete, part_whole_rule_for_in
 % SCHEMA: Source-Path-Goal.
 % GROUNDED: TODO negate implication as antecedent plus negated consequent.
 % CONNECTS TO: s(comp_nec(unlicensed(negate_conditional_as_inverse)))
-r39657_negate_conditional_as_inverse(negate(if(rains, umbrella)), if(not(rains), not(umbrella))).
+misconceptions_discrete_batch_1:r39657_negate_conditional_as_inverse(negate(if(rains, umbrella)), if(not(rains), not(umbrella))).
 
 test_harness:arith_misconception(db_row(39657), discrete, negate_conditional_as_inverse,
     misconceptions_discrete_batch_1:r39657_negate_conditional_as_inverse,
@@ -217,7 +226,7 @@ test_harness:arith_misconception(db_row(39657), discrete, negate_conditional_as_
 % SCHEMA: Container.
 % GROUNDED: TODO flip connective when distributing negation.
 % CONNECTS TO: s(comp_nec(unlicensed(demorgan_connective_unchanged)))
-r39658_demorgan_connective_unchanged(negate(and(dogs_bark, convoy_passes)),
+misconceptions_discrete_batch_1:r39658_demorgan_connective_unchanged(negate(and(dogs_bark, convoy_passes)),
     and(not(dogs_bark), not(convoy_passes))).
 
 test_harness:arith_misconception(db_row(39658), discrete, demorgan_connective_unchanged,
@@ -234,7 +243,7 @@ test_harness:arith_misconception(db_row(39780), discrete, too_vague, skip, none,
 % SCHEMA: Container.
 % GROUNDED: TODO keep proposition wrapper distinct from expression value.
 % CONNECTS TO: s(comp_nec(unlicensed(proposition_as_expression_value)))
-r39851_proposition_as_expression_value(induction_base(p(1)), expression_value(9)).
+misconceptions_discrete_batch_1:r39851_proposition_as_expression_value(induction_base(p(1)), expression_value(9)).
 
 test_harness:arith_misconception(db_row(39851), discrete, proposition_as_expression_value,
     misconceptions_discrete_batch_1:r39851_proposition_as_expression_value,
