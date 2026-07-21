@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37935",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37935_find_teen_total_by_counting_on",
+    "target_operation": "teen_number_base_ten_structure",
+    "citation": "Karen C. Fuson, Yeping Li (2009)",
+    "error_action": "find_teen_total_by_counting_on",
+    "error_description": "after recording a ten, count single units forward to reach a total over ten rather than composing a ten and ones",
+    "provenance_comments": "=== row 37935: teen numbers force counting, not make-a-ten ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: the documented error describes a procedural misconception (counting on from a ten) that cannot be expressed as a deterministic 2-place predicate producing a unique wrong result without additional assumptions about the student's counting steps; no runnable rule can be defensibly inferred.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: the documented error describes a procedural misconception (counting on from a ten) that cannot be expressed as a deterministic 2-place predicate producing a unique wrong result without additional assumptions about the student's counting steps; no runnable rule can be defensibly inferred.",
+      "result": "abstained"
+    }
+  ]
+}

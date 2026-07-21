@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37567",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37567_guess_add_or_multiply_the_given_numbers",
+    "target_operation": "area_perimeter_operation_choice",
+    "citation": "Dolores D. Pesek and David Kirshner (2000)",
+    "error_action": "guess_add_or_multiply_the_given_numbers",
+    "error_description": "pick adding or multiplying the side numbers without grounding the choice in the figure's spatial properties",
+    "provenance_comments": "=== row 37567: haphazard guessing of operation ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "SWI-Prolog gate exited 23",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_37567_guess_add_or_multiply_the_given_numbers(rect(W,H), Got) :-\n    random_member(Got, [W+H, W*H])).\n\ntest_harness:arith_misconception(db_row(37567), measurement, churn_37567_guess_add_or_multiply_the_given_numbers,\n    churn_candidate:churn_37567_guess_add_or_multiply_the_given_numbers,\n    rect(5,3), 8).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "churn_candidate:(churn_37567_guess_add_or_multiply_the_given_numbers(rect(W,H), Got) :-\n    random_between(0,1,0), % deterministically choose addition\n    Got is W + H).\n\ntest_harness:arith_misconception(db_row(37567), measurement, churn_37567_guess_add_or_multiply_the_given_numbers,\n    churn_candidate:churn_37567_guess_add_or_multiply_the_given_numbers,\n    rect(5,3), 8).",
+      "result": "SWI-Prolog gate exited 23"
+    }
+  ]
+}

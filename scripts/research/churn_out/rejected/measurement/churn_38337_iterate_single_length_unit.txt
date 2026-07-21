@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38337",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38337_iterate_single_length_unit",
+    "target_operation": "area_as_multiplicative_relation",
+    "citation": "Erik S. Tillema ()",
+    "error_action": "iterate_single_length_unit",
+    "error_description": "establish area by repeating one length unit rather than coordinating length and width",
+    "provenance_comments": "=== row 38337: can't assemble area from composite units ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "external module qualification is not allowed: misconceptions_measurement_batch_1:",
+  "attempts": [
+    {
+      "response": "misconceptions_measurement_batch_1:(churn_38337_iterate_single_length_unit(area_rect(W,H), Got) :-\n    Got is W * 1).\n\ntest_harness:arith_misconception(db_row(38337), measurement, churn_38337_iterate_single_length_unit,\n    misconceptions_measurement_batch_1:churn_38337_iterate_single_length_unit,\n    area_rect(5,3), 15).",
+      "result": "external module qualification is not allowed: misconceptions_measurement_batch_1:"
+    },
+    {
+      "response": "misconceptions_measurement_batch_1:(churn_38337_iterate_single_length_unit(rect(W,_H), Got) :-\n    Got is W).\n\ntest_harness:arith_misconception(db_row(38337), measurement, churn_38337_iterate_single_length_unit,\n    misconceptions_measurement_batch_1:churn_38337_iterate_single_length_unit,\n    rect(5,3), 15).",
+      "result": "external module qualification is not allowed: misconceptions_measurement_batch_1:"
+    }
+  ]
+}

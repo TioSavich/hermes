@@ -1,0 +1,151 @@
+{
+  "schema": "lesson_negative_receipts_v1",
+  "register": "Reviewed lesson-source excerpts establish a specific counterpossibility for the named lesson action. A registry-derived candidate does not enter this file until a local source excerpt supports the lesson-level attribution.",
+  "receipts": [
+    {
+      "lesson": "IM-G5-U2-L1",
+      "intended_action": {"operation": "division", "kind": "fair_share_equal_groups"},
+      "alternative": "discard_unshared_remainder",
+      "material_incompatibility": "The response leaves part of the available sandwich undistributed, while equal sharing requires the full available quantity to be partitioned among the people.",
+      "source_kind": "activity_guidance",
+      "source": {
+        "path": "geometry/corpus/im_teacher_guides/grade5/unit2/lesson1.md",
+        "fragments": [
+          {"line": 215, "text": "There may be fewer people than sandwiches"},
+          {"line": 216, "text": "students only share whole sandwiches"},
+          {"line": 217, "text": "people share 5 sandwiches and each gets 2"},
+          {"line": 218, "text": "If students ignore the extra sandwich"}
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G4-U5-L7",
+      "intended_action": {"operation": "measurement", "kind": "unit_conversion_by_iteration"},
+      "alternative": "compare_raw_numerals_ignore_unit_scale",
+      "material_incompatibility": "Comparing 62 with 1 without coordinating centimeters and meters conflicts with the conversion relation that one meter is one hundred centimeters.",
+      "source_kind": "responding_to_student_thinking",
+      "source": {
+        "path": "geometry/corpus/im_teacher_guides/grade4/unit5/lesson7.md",
+        "fragments": [
+          {"line": 344, "text": "Students may say that 62 centimeters is longer than 1"},
+          {"line": 345, "text": "meter because 62 is greater than 1."}
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G3-U1-L9",
+      "intended_action": {"operation": "multiplication", "kind": "repeat_equal_groups"},
+      "alternative": "reverse_group_count_and_group_size",
+      "material_incompatibility": "The response exchanges the number of groups with the number in each group, so the representation no longer preserves the roles named in the situation.",
+      "source_kind": "responding_to_student_thinking",
+      "source": {
+        "path": "geometry/corpus/im_teacher_guides/grade3/unit1/lesson9.md",
+        "fragments": [
+          {"line": 401, "text": "Students indicate that they mixed up the number of"},
+          {"line": 402, "text": "groups and the number of objects in each group by"},
+          {"line": 403, "text": "making 5 groups of 3."}
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G3-U4-L1",
+      "intended_action": {"operation": "division", "kind": "measure_groups_of_size"},
+      "alternative": "represent_group_count_as_group_size",
+      "material_incompatibility": "Representing six bags rather than six apples in each bag exchanges the sought number of groups with the divisor that fixes each group size.",
+      "source_kind": "responding_to_student_thinking",
+      "source": {
+        "path": "geometry/corpus/im_teacher_guides/grade3/unit4/lesson1.md",
+        "fragments": [
+          {"line": 324, "text": "Students represent 6 bags of apples instead of 6 apples in"},
+          {"line": 325, "text": "each bag."}
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G3-U7-L9",
+      "intended_action": {"operation": "geometry", "kind": "polygon_perimeter_boundary_accumulation"},
+      "alternative": "omit_unlabeled_rectangle_sides",
+      "material_incompatibility": "Naming only the opposite equal side leaves two boundary segments unaccounted for, so it cannot determine the rectangle's complete perimeter.",
+      "source_kind": "responding_to_student_thinking",
+      "source": {
+        "path": "geometry/corpus/im_teacher_guides/grade3/unit7/lesson9.md",
+        "fragments": [
+          {"line": 328, "text": "Students identify the side that is 32 feet long"},
+          {"line": 329, "text": "but not the other two sides of the"},
+          {"line": 330, "text": "swimming pool."}
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G3-U1-L18",
+      "intended_action": {"operation": "multiplication", "kind": "repeat_equal_groups"},
+      "alternative": "array_expression_role_mismatch",
+      "material_incompatibility": "An expression whose factors do not represent the array's rows and objects per row fails to preserve the represented equal-groups structure.",
+      "source_kind": "responding_to_student_thinking",
+      "source": {
+        "path": "geometry/corpus/im_teacher_guides/grade3/unit1/lesson18.md",
+        "fragments": [
+          {"line": 337, "text": "Students write a multiplication expression that does not"},
+          {"line": 338, "text": "match the array they created"}
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G3-U4-L6",
+      "intended_action": {"operation": "division", "kind": "fair_share_equal_groups"},
+      "alternative": "different_unknowns_in_inverse_equations",
+      "material_incompatibility": "Assigning different unknown values to equations that represent the same situation breaks the multiplication-division relation the paired equations retain.",
+      "source_kind": "responding_to_student_thinking",
+      "source": {
+        "path": "geometry/corpus/im_teacher_guides/grade3/unit4/lesson6.md",
+        "fragments": [
+          {"line": 329, "text": "Students say that different numbers should be used to"},
+          {"line": 330, "text": "complete each equation."}
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G2-U1-L16",
+      "intended_action": {"operation": "addition", "kind": "make_ten_split_leftover"},
+      "alternative": "solve_difference_unknown_for_greater_unknown",
+      "material_incompatibility": "A difference-unknown calculation answers how many more, while the task asks for the greater quantity produced by combining the smaller quantity and the difference.",
+      "source_kind": "responding_to_student_thinking",
+      "source": {
+        "path": "geometry/corpus/im_teacher_guides/grade2/unit1/lesson16.md",
+        "fragments": [
+          {"line": 360, "text": "Students find the value of the difference between 17 and"},
+          {"line": 361, "text": "rather than the value of the sum"},
+          {"line": 362, "text": "of 17 and 9 (greater unknown)."}
+        ]
+      }
+    },
+    {
+      "lesson": "IM-G2-U2-L14",
+      "intended_action": {"operation": "addition", "kind": "count_on_from_larger"},
+      "alternative": "add_change_to_only_one_prior_addend",
+      "material_incompatibility": "Adding the new seeds to one earlier addend omits the other part of the prior total and therefore does not preserve the composed quantity being updated.",
+      "source_kind": "responding_to_student_thinking",
+      "source": {
+        "path": "geometry/corpus/im_teacher_guides/grade2/unit2/lesson14.md",
+        "fragments": [
+          {"line": 388, "text": "Students add the 38 new seeds in the second problem to"},
+          {"line": 389, "text": "only one addend from the first problem."}
+        ]
+      }
+    },
+    {
+      "lesson": "IM-GK-U8-L18",
+      "intended_action": {"operation": "addition", "kind": "make_ten_split_leftover"},
+      "alternative": "single_decomposition_treated_as_exhaustive",
+      "material_incompatibility": "Stopping after one pair of addends does not satisfy the lesson's demand to find multiple compositions of ten and test whether the set is complete.",
+      "source_kind": "responding_to_student_thinking",
+      "source": {
+        "path": "geometry/corpus/im_teacher_guides/kindergarten/unit8/lesson18.md",
+        "fragments": [
+          {"line": 480, "text": "Students do not yet find more than one solution to the"},
+          {"line": 481, "text": "problem."}
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38644",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38644_the_value_one_equals_the_single_unit_label",
+    "target_operation": "number_representation",
+    "citation": "David A. Yopp, Elizabeth A. Burroughs, Brian J. Lindaman (2011)",
+    "error_action": "the_value_one_equals_the_single_unit_label",
+    "error_description": "the number 1 can only be the thing called a whole unit and nothing with a non-unit notation can be it",
+    "provenance_comments": "=== row 38644: 1 cannot be a repeating decimal ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about the representation of the number 1, not a syntactic or procedural computational error that can be modeled as a binary predicate producing a specific wrong output for a given input. There is no clear, general, runnable rule that maps an input to the documented erroneous output without also producing correct outputs in other cases or requiring non-executable reasoning (e.g., about notation systems). The constraint that `Rule(Input, Got)` must produce *exactly* the documented wrong answer for some `Input` cannot be satisfied because the misconception is not about a specific computational step but about a belief regarding identity and notation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about the representation of the number 1, not a syntactic or procedural computational error that can be modeled as a binary predicate producing a specific wrong output for a given input. There is no clear, general, runnable rule that maps an input to the documented erroneous output without also producing correct outputs in other cases or requiring non-executable reasoning (e.g., about notation systems). The constraint that `Rule(Input, Got)` must produce *exactly* the documented wrong answer for some `Input` cannot be satisfied because the misconception is not about a specific computational step but about a belief regarding identity and notation.",
+      "result": "abstained"
+    }
+  ]
+}

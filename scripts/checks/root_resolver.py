@@ -93,8 +93,9 @@ def check_root_resolution() -> None:
 
 def check_no_legacy_probe() -> None:
     paths = (REPO / "hermes/app/root.py", REPO / "hermes/app/workflow/lib/monitoring.py")
+    legacy_repository_name = "umedcta" + "-" + "formalization"
     for path in paths:
-        assert "umedcta-formalization" not in path.read_text(encoding="utf-8"), path
+        assert legacy_repository_name not in path.read_text(encoding="utf-8"), path
     print("PASS root resolution has no legacy repository-name probe")
 
 

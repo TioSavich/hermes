@@ -1,0 +1,194 @@
+{
+  "declared": "2026-07-11",
+  "criterion": "every entry is a fully-traversable lesson: a source-backed productive route that executes AND a source-attested deformation route that is exercised in curriculum_traversal_audit/2",
+  "coverage": {
+    "operations": [
+      "addition",
+      "counting",
+      "decimal",
+      "division",
+      "fraction",
+      "measurement",
+      "multiplication",
+      "subtraction"
+    ],
+    "grades": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "deformation_families": [
+      "addition_instead_of_multiplication",
+      "count_all_when_count_on_available",
+      "decimal_add_unaligned_numerals",
+      "endpoint_as_difference",
+      "improper_fraction_reset",
+      "liquid_volume_count_marks_not_intervals",
+      "ones_digit_substituted_for_place_value_comparison",
+      "operation_direction_reversal",
+      "spatial_extent_substituted_for_cardinality",
+      "total_as_missing_factor"
+    ]
+  },
+  "not_yet_traversable": {
+    "regions": [],
+    "note": "Each of the five previously-open regions now carries at least one fully-traversable basis lesson (productive execution plus an exercised deformation): counting-across-bases via IM-GK-U5-L7, place-value recursion via IM-G1-U4-L14, unit fractions and fractions beyond one via IM-G4-U3-L8, decimal/ratio/signed-number transitions via IM-G5-U5-L11, and notation and spatial representations via IM-G3-U6-L8. Region coverage is one-lesson-deep and its depth is uneven: within the decimal/ratio/signed-number region only the decimal-addition transition is exercised (ratio and signed-number transitions carry no basis lesson yet), and the counting region is exercised at base ten only (cardinality comparison), not across a non-decimal base."
+  },
+  "entries": [
+    {
+      "lesson": "IM-G1-U2-L1",
+      "grade": 1,
+      "operation": "addition",
+      "productive_task": "add(5,2)",
+      "deformation_family": "count_all_when_count_on_available"
+    },
+    {
+      "lesson": "IM-G1-U2-L2",
+      "grade": 1,
+      "operation": "addition",
+      "productive_task": "add(6,3)",
+      "deformation_family": "count_all_when_count_on_available"
+    },
+    {
+      "lesson": "IM-G1-U2-L3",
+      "grade": 1,
+      "operation": "subtraction",
+      "productive_task": "subtract(8,6)",
+      "deformation_family": "operation_direction_reversal"
+    },
+    {
+      "lesson": "IM-G1-U2-L6",
+      "grade": 1,
+      "operation": "addition",
+      "productive_task": "add(4,5)",
+      "deformation_family": "count_all_when_count_on_available"
+    },
+    {
+      "lesson": "IM-G1-U3-L11",
+      "grade": 1,
+      "operation": "addition",
+      "productive_task": "add(14,3)",
+      "deformation_family": "count_all_when_count_on_available"
+    },
+    {
+      "lesson": "IM-G1-U3-L17",
+      "grade": 1,
+      "operation": "addition",
+      "productive_task": "add(3,9)",
+      "deformation_family": "count_all_when_count_on_available"
+    },
+    {
+      "lesson": "IM-G1-U3-L2",
+      "grade": 1,
+      "operation": "addition",
+      "productive_task": "add(2,8)",
+      "deformation_family": "count_all_when_count_on_available"
+    },
+    {
+      "lesson": "IM-G1-U3-L6",
+      "grade": 1,
+      "operation": "subtraction",
+      "productive_task": "subtract(10,3)",
+      "deformation_family": "operation_direction_reversal"
+    },
+    {
+      "lesson": "IM-G2-U2-L1",
+      "grade": 2,
+      "operation": "subtraction",
+      "productive_task": "subtract(36,23)",
+      "deformation_family": "operation_direction_reversal"
+    },
+    {
+      "lesson": "IM-G2-U2-L11",
+      "grade": 2,
+      "operation": "subtraction",
+      "productive_task": "subtract(31,15)",
+      "deformation_family": "operation_direction_reversal"
+    },
+    {
+      "lesson": "IM-G2-U3-L10",
+      "grade": 2,
+      "operation": "subtraction",
+      "productive_task": "subtract(27,13)",
+      "deformation_family": "endpoint_as_difference"
+    },
+    {
+      "lesson": "IM-G2-U3-L11",
+      "grade": 2,
+      "operation": "subtraction",
+      "productive_task": "subtract(44,18)",
+      "deformation_family": "operation_direction_reversal"
+    },
+    {
+      "lesson": "IM-G3-U1-L12",
+      "grade": 3,
+      "operation": "multiplication",
+      "productive_task": "multiply(3,10)",
+      "deformation_family": "addition_instead_of_multiplication"
+    },
+    {
+      "lesson": "IM-G3-U1-L13",
+      "grade": 3,
+      "operation": "multiplication",
+      "productive_task": "multiply(4,5)",
+      "deformation_family": "addition_instead_of_multiplication"
+    },
+    {
+      "lesson": "IM-G3-U3-L2",
+      "grade": 3,
+      "operation": "subtraction",
+      "productive_task": "subtract(674,327)",
+      "deformation_family": "operation_direction_reversal"
+    },
+    {
+      "lesson": "IM-G4-U5-L3",
+      "grade": 4,
+      "operation": "division",
+      "productive_task": "divide(21,3)",
+      "deformation_family": "total_as_missing_factor"
+    },
+    {
+      "lesson": "IM-GK-U5-L7",
+      "grade": 0,
+      "operation": "counting",
+      "productive_task": "compare_cardinalities(5, 1, 5, 5)",
+      "deformation_family": "spatial_extent_substituted_for_cardinality",
+      "region": "counting across bases"
+    },
+    {
+      "lesson": "IM-G1-U4-L14",
+      "grade": 1,
+      "operation": "counting",
+      "productive_task": "compare_numerals_by_place_value(75, 65, 10)",
+      "deformation_family": "ones_digit_substituted_for_place_value_comparison",
+      "region": "place-value recursion"
+    },
+    {
+      "lesson": "IM-G3-U6-L8",
+      "grade": 3,
+      "operation": "measurement",
+      "productive_task": "read_liquid_volume(3, 1, liter)",
+      "deformation_family": "liquid_volume_count_marks_not_intervals",
+      "region": "notation and spatial representations"
+    },
+    {
+      "lesson": "IM-G4-U3-L8",
+      "grade": 4,
+      "operation": "fraction",
+      "productive_task": "iterate_improper_fraction(11, 8)",
+      "deformation_family": "improper_fraction_reset",
+      "region": "unit fractions and fractions beyond one"
+    },
+    {
+      "lesson": "IM-G5-U5-L11",
+      "grade": 5,
+      "operation": "decimal",
+      "productive_task": "decimal_add(12, 10, 13, 100)",
+      "deformation_family": "decimal_add_unaligned_numerals",
+      "region": "decimal / ratio / signed-number transitions"
+    }
+  ]
+}

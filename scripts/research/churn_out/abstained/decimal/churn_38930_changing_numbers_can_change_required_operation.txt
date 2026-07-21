@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38930",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38930_changing_numbers_can_change_required_operation",
+    "target_operation": "problem_structure_invariance",
+    "citation": "ALAN BELL, MALCOLM SWAN AND GLENDA TAYLOR (1981)",
+    "error_action": "changing_numbers_can_change_required_operation",
+    "error_description": "substituting different numbers into a problem may change which operation is needed",
+    "provenance_comments": "=== row 38930: structure changes with number substitution ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a cognitive misconception about problem structure invariance (i.e., students incorrectly believe that changing numbers can change the required operation), but no specific syntactic pattern of input/output behavior is provided that would allow construction of a deterministic rule producing the wrong result. A misconception registry requires a concrete, executable misapplication, not a meta-level misunderstanding about problem structure.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a cognitive misconception about problem structure invariance (i.e., students incorrectly believe that changing numbers can change the required operation), but no specific syntactic pattern of input/output behavior is provided that would allow construction of a deterministic rule producing the wrong result. A misconception registry requires a concrete, executable misapplication, not a meta-level misunderstanding about problem structure.",
+      "result": "abstained"
+    }
+  ]
+}

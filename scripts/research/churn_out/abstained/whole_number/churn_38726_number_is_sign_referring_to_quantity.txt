@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38726",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38726_number_is_sign_referring_to_quantity",
+    "target_operation": "definition_of_number",
+    "citation": "Juan D. Godino & Vicenc Font & Miguel R. Wilhelmi & Orlando Lurduy (2011)",
+    "error_action": "number_is_sign_referring_to_quantity",
+    "error_description": "define a number as a sign that points to a quantity",
+    "provenance_comments": "=== row 38726: formal vs informal meaning of number ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual definition (\"define a number as a sign that points to a quantity\"), not a computational procedure or syntactic transformation that can be captured by a binary predicate `Rule(Input, Got)` producing a specific wrong output. There is no concrete operation or algorithm described that yields a deterministic incorrect result for a given input, nor is there a clear mapping from input to erroneous output required by the schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual definition (\"define a number as a sign that points to a quantity\"), not a computational procedure or syntactic transformation that can be captured by a binary predicate `Rule(Input, Got)` producing a specific wrong output. There is no concrete operation or algorithm described that yields a deterministic incorrect result for a given input, nor is there a clear mapping from input to erroneous output required by the schema.",
+      "result": "abstained"
+    }
+  ]
+}

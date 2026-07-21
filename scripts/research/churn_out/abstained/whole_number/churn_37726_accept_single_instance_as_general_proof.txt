@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37726",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37726_accept_single_instance_as_general_proof",
+    "target_operation": "particular_vs_general_case",
+    "citation": "Eric J. Knuth (2002)",
+    "error_action": "accept_single_instance_as_general_proof",
+    "error_description": "treat verification of one number as proof of the rule for all numbers",
+    "provenance_comments": "=== row 37726: example-as-proof (no numeric error) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error is a logical reasoning flaw (confusing empirical verification with general proof), not an arithmetic procedure that yields a specific wrong numerical output for a given input. The schema requires a rule `Rule(Input, Got)` where `Got` is the *incorrect numerical result* produced by the student's faulty computation, but this misconception does not define a deterministic arithmetic transformation—it describes a methodological error in proof structure, not a calculational mistake.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error is a logical reasoning flaw (confusing empirical verification with general proof), not an arithmetic procedure that yields a specific wrong numerical output for a given input. The schema requires a rule `Rule(Input, Got)` where `Got` is the *incorrect numerical result* produced by the student's faulty computation, but this misconception does not define a deterministic arithmetic transformation—it describes a methodological error in proof structure, not a calculational mistake.",
+      "result": "abstained"
+    }
+  ]
+}

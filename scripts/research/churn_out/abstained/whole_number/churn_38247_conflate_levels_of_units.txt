@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38247",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38247_conflate_levels_of_units",
+    "target_operation": "composite_unit_coordination",
+    "citation": "Anderson Norton, Steven Boyce, Catherine Ulrich, Nathan Phillips (2015)",
+    "error_action": "conflate_levels_of_units",
+    "error_description": "treat columns, rows, and individual seats as interchangeable units",
+    "provenance_comments": "=== row 38247: conflates levels of units ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a conceptual conflation of levels of units (columns, rows, individual seats) without specifying a concrete arithmetic operation or transformation that yields a deterministic wrong result for a given input. The error is contextual and task-dependent (e.g., in array or seating problems), and no specific input-output mapping or generalizable procedural rule producing a fixed incorrect value is provided. Without such a mapping, we cannot define a predicate `Rule(Input, Got)` that reliably produces the documented wrong answer.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a conceptual conflation of levels of units (columns, rows, individual seats) without specifying a concrete arithmetic operation or transformation that yields a deterministic wrong result for a given input. The error is contextual and task-dependent (e.g., in array or seating problems), and no specific input-output mapping or generalizable procedural rule producing a fixed incorrect value is provided. Without such a mapping, we cannot define a predicate `Rule(Input, Got)` that reliably produces the documented wrong answer.",
+      "result": "abstained"
+    }
+  ]
+}

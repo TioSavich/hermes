@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39983",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39983_decimal_reading_is_an_arbitrary_label",
+    "target_operation": "decimal_on_ruler",
+    "citation": "Berit Bungum, Saeed Manshadi & Dag Atle Lysne (2014)",
+    "error_action": "decimal_reading_is_an_arbitrary_label",
+    "error_description": "a decimal like 12.88 is treated as an identifier or code, not a length between marks",
+    "provenance_comments": "=== row 39983: decimal on ruler read as identifier ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misinterpretation (treating a decimal as an identifier rather than a measurable length), but no runnable procedural rule or specific arithmetic operation is provided that would produce a concrete wrong output from a given input. Without a defined mapping from input to erroneous output (e.g., a formula or transformation), no testable `Rule/2` predicate can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misinterpretation (treating a decimal as an identifier rather than a measurable length), but no runnable procedural rule or specific arithmetic operation is provided that would produce a concrete wrong output from a given input. Without a defined mapping from input to erroneous output (e.g., a formula or transformation), no testable `Rule/2` predicate can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39182",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39182_take_away_framing_is_always_easiest",
+    "target_operation": "subtraction_problem_difficulty",
+    "citation": "Katarina Gvozdic & Emmanuel Sander (2018)",
+    "error_action": "take_away_framing_is_always_easiest",
+    "error_description": "assume problems matching the 'taking away' model are always the easiest for students",
+    "provenance_comments": "=== row 39182: judges takeaway easier than missing-addend ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a cognitive bias or belief about problem difficulty, not a concrete computational procedure that can be expressed as a deterministic 2-place predicate producing a specific wrong output for a given input. There is no executable rule that maps an input subtraction problem to a systematically incorrect difficulty assessment in the required functional form.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a cognitive bias or belief about problem difficulty, not a concrete computational procedure that can be expressed as a deterministic 2-place predicate producing a specific wrong output for a given input. There is no executable rule that maps an input subtraction problem to a systematically incorrect difficulty assessment in the required functional form.",
+      "result": "abstained"
+    }
+  ]
+}

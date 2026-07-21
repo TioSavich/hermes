@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38642",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38642_point_nine_repeating_less_than_one",
+    "target_operation": "repeating_decimal_equals_one",
+    "citation": "David A. Yopp, Elizabeth A. Burroughs, Brian J. Lindaman (2011)",
+    "error_action": "point_nine_repeating_less_than_one",
+    "error_description": "treat 0.999... as strictly less than 1 with a tiny remainder missing",
+    "provenance_comments": "=== row 38642: 0.999... < 1 (teachers) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (treating 0.999... as strictly less than 1), but no runnable procedural rule is provided that maps an input to the *documented wrong output* via a finite, executable procedure. SWI-Prolog cannot natively evaluate infinite decimal expansions like 0.999... as a literal term; any attempt to compute 0.999... would require modeling infinite series or limits, which would constitute mathematical invention rather than encoding the *exact documented student error*. The schema requires a rule where calling `Rule(Input, Got)` produces the *documented wrong answer* — but the error is not algorithmically specified beyond a declarative claim, and no concrete input-output pair is given. Without a deterministic, finite procedure that yields the misconception as output for a given input (e.g., a specific finite representation or approximation), the rule cannot be constructed per contract.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38642_point_nine_repeating_less_than_one(X, Got) :-\n    member(X, [0.9, 0.99, 0.999, 0.9999]),\n    Got is X).\n\ntest_harness:arith_misconception(db_row(38642), decimal, churn_38642_point_nine_repeating_less_than_one,\n    churn_candidate:churn_38642_point_nine_repeating_less_than_one,\n    0.999,\n    1.0).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (treating 0.999... as strictly less than 1), but no runnable procedural rule is provided that maps an input to the *documented wrong output* via a finite, executable procedure. SWI-Prolog cannot natively evaluate infinite decimal expansions like 0.999... as a literal term; any attempt to compute 0.999... would require modeling infinite series or limits, which would constitute mathematical invention rather than encoding the *exact documented student error*. The schema requires a rule where calling `Rule(Input, Got)` produces the *documented wrong answer* — but the error is not algorithmically specified beyond a declarative claim, and no concrete input-output pair is given. Without a deterministic, finite procedure that yields the misconception as output for a given input (e.g., a specific finite representation or approximation), the rule cannot be constructed per contract.",
+      "result": "abstained"
+    }
+  ]
+}

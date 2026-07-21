@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39000",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39000_decimals_and_fractions_are_separate_kinds",
+    "target_operation": "decimal_fraction_equivalence",
+    "citation": "DAVID S. FIELKER (1987)",
+    "error_action": "decimals_and_fractions_are_separate_kinds",
+    "error_description": "a decimal output like 0.01 is not recognized as the same number as the fraction one-hundredth",
+    "provenance_comments": "=== row 39000: calculator reciprocal recognition ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (decimals and fractions are treated as separate kinds) rather than a specific computational procedure that can be encoded as a runnable Prolog rule producing a wrong answer. There is no clear algorithmic rule that a student would follow to produce the documented wrong behavior in a way that is both generalizable and executable as a predicate of arity 2 without additional assumptions or ad-hoc hardcoding.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (decimals and fractions are treated as separate kinds) rather than a specific computational procedure that can be encoded as a runnable Prolog rule producing a wrong answer. There is no clear algorithmic rule that a student would follow to produce the documented wrong behavior in a way that is both generalizable and executable as a predicate of arity 2 without additional assumptions or ad-hoc hardcoding.",
+      "result": "abstained"
+    }
+  ]
+}

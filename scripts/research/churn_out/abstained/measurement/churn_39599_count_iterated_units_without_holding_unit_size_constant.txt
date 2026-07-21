@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39599",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39599_count_iterated_units_without_holding_unit_size_constant",
+    "target_operation": "length_unit_coordination",
+    "citation": "Tad Watanabe (1995)",
+    "error_action": "count_iterated_units_without_holding_unit_size_constant",
+    "error_description": "two large rods and four small rods covering equal sides can be read as different quantities",
+    "provenance_comments": "=== row 39599: mixes larger/smaller unit rods ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual confusion about counting iterated units when unit sizes differ, but it does not specify a runnable procedural rule that produces a particular wrong output from a given input. Without a concrete algorithm or formula that students are documented to apply, we cannot define a predicate `Rule(Input, Got)` that reliably yields the documented wrong answer. The description is too vague to instantiate a testable, generalizable misconception rule in Prolog.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual confusion about counting iterated units when unit sizes differ, but it does not specify a runnable procedural rule that produces a particular wrong output from a given input. Without a concrete algorithm or formula that students are documented to apply, we cannot define a predicate `Rule(Input, Got)` that reliably yields the documented wrong answer. The description is too vague to instantiate a testable, generalizable misconception rule in Prolog.",
+      "result": "abstained"
+    }
+  ]
+}

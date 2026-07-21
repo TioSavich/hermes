@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37699",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37699_infinitesimal_as_decimal_with_terminal_digit",
+    "target_operation": "infinitesimal_notation",
+    "citation": "Robert Ely (2010)",
+    "error_action": "infinitesimal_as_decimal_with_terminal_digit",
+    "error_description": "an infinitely small quantity can be written as 0.000...1 with a digit placed after infinitely many zeros",
+    "provenance_comments": "=== row 37699: infinitesimal 0.000...1 notation ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a non-runnable conceptual mistake (placing a digit after infinitely many zeros) that cannot be expressed as a deterministic, executable Prolog rule producing a specific finite output; it lacks a well-defined algorithmic procedure suitable for rule encoding under the schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a non-runnable conceptual mistake (placing a digit after infinitely many zeros) that cannot be expressed as a deterministic, executable Prolog rule producing a specific finite output; it lacks a well-defined algorithmic procedure suitable for rule encoding under the schema.",
+      "result": "abstained"
+    }
+  ]
+}

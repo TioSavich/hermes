@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37824",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37824_measure_map_distance_without_scale_or_straight_line",
+    "target_operation": "scale_and_distance",
+    "citation": "Eric Gutstein, Pauline Lipman, Patricia Hernandez, Rebeca de los Reyes (1997)",
+    "error_action": "measure_map_distance_without_scale_or_straight_line",
+    "error_description": "read distance between marked points directly without applying scale or a straight-line path",
+    "provenance_comments": "=== row 37824: map scale with unfamiliar idiom ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "external module qualification is not allowed: misconceptions_measurement_batch_1:",
+  "attempts": [
+    {
+      "response": "misconceptions_measurement_batch_1:(churn_37824_measure_map_distance_without_scale_or_straight_line(map_distance(Point1, Point2, _Scale), Got) :-\n    distance(Point1, Point2, Got)).\n\ndistance((X1,Y1), (X2,Y2), D) :-\n    D is sqrt((X2-X1)*(X2-X1) + (Y2-Y1)*(Y2-Y1)).\n\ntest_harness:arith_misconception(db_row(37824), measurement, churn_37824_measure_map_distance_without_scale_or_straight_line,\n    misconceptions_measurement_batch_1:churn_37824_measure_map_distance_without_scale_or_straight_line,\n    map_distance((2,3), (6,6), 2), 5).",
+      "result": "external module qualification is not allowed: misconceptions_measurement_batch_1:"
+    },
+    {
+      "response": "misconceptions_measurement_batch_1:(churn_37824_measure_map_distance_without_scale_or_straight_line(distance_on_map(PointA, PointB, Scale), Got) :-\n    % Documented error: read map distance directly without scale or straight-line correction\n    % Here, we assume Points are given as (X,Y) coordinates on the map, and Scale is in cm per real unit (e.g., 1 cm = 10 km)\n    % The error is to treat map distance (Euclidean distance in cm) as real-world distance, ignoring scale.\n    distance(PointA, PointB, MapDist),\n    Got = MapDist).\n\ndistance((X1,Y1),(X2,Y2),Dist) :-\n    Dist is sqrt((X2-X1)*(X2-X1) + (Y2-Y1)*(Y2-Y1)).\n\ntest_harness:arith_misconception(db_row(37824), measurement, churn_37824_measure_map_distance_without_scale_or_straight_line,\n    misconceptions_measurement_batch_1:churn_37824_measure_map_distance_without_scale_or_straight_line,\n    distance_on_map((2,3), (5,7), 10), 5).",
+      "result": "external module qualification is not allowed: misconceptions_measurement_batch_1:"
+    }
+  ]
+}

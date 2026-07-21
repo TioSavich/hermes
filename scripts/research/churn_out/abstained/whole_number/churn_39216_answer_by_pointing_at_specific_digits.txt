@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39216",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39216_answer_by_pointing_at_specific_digits",
+    "target_operation": "subtraction_generalization",
+    "citation": "HEINZ STEINBRING (1997)",
+    "error_action": "answer_by_pointing_at_specific_digits",
+    "error_description": "explain a subtraction outcome by acting on the particular digits in this one problem rather than stating a general relation",
+    "provenance_comments": "=== row 39216: reverts to concrete example instead of abstracting ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive misconception—reverting to concrete digit-level explanation instead of stating a general relation—but does not specify a runnable procedural rule that consistently produces a wrong output for a given input. Without a deterministic, executable transformation from input to the documented erroneous output, no testable rule can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive misconception—reverting to concrete digit-level explanation instead of stating a general relation—but does not specify a runnable procedural rule that consistently produces a wrong output for a given input. Without a deterministic, executable transformation from input to the documented erroneous output, no testable rule can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

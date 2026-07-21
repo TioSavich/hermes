@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37441",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37441_share_is_people_over_pieces",
+    "target_operation": "share_as_count_of_pieces",
+    "citation": "Leslie P. Steffe (2004)",
+    "error_action": "share_is_people_over_pieces",
+    "error_description": "a person's share of 27 pieces among 3 people is 3/27 by counting people over pieces",
+    "provenance_comments": "=== row 37441: names fraction as parts-of-total without simplifying ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_37441_share_is_people_over_pieces",
+  "attempts": [
+    {
+      "response": "churn_candidate:(share_is_people_over_pieces(Pieces, People, frac(People, Pieces)) :-\n    true).\n\ntest_harness:arith_misconception(db_row(37441), fraction, churn_37441_share_is_people_over_pieces,\n    churn_candidate:share_is_people_over_pieces,\n    27-3,\n    frac(1,9)).",
+      "result": "predicate must be named churn_37441_share_is_people_over_pieces"
+    },
+    {
+      "response": "churn_candidate:(share_is_people_over_pieces(count(People), Pieces, frac(People, Pieces)) :-\n    integer(People),\n    integer(Pieces),\n    People > 0,\n    Pieces > 0).\n\ntest_harness:arith_misconception(db_row(37441), fraction, churn_37441_share_is_people_over_pieces,\n    churn_candidate:share_is_people_over_pieces,\n    share_is_people_over_pieces(3, 27, Got),\n    frac(1,9)).",
+      "result": "predicate must be named churn_37441_share_is_people_over_pieces"
+    }
+  ]
+}

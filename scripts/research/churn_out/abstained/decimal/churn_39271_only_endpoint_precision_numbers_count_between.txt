@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39271",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39271_only_endpoint_precision_numbers_count_between",
+    "target_operation": "density_of_rationals",
+    "citation": "Vida Manfreda Kolar, Tatjana Hodnik Cadez (2012)",
+    "error_action": "only_endpoint_precision_numbers_count_between",
+    "error_description": "between 0.9 and 1.5 only numbers at the endpoints' decimal precision exist",
+    "provenance_comments": "=== row 39271: same-precision-only counting (density) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception about density of rationals (only counting numbers at endpoint precision), but provides no runnable procedural rule or concrete algorithm that can be encoded as a SWI-Prolog predicate of arity 2 producing the documented wrong answer. The phrase “only numbers at the endpoints' decimal precision exist” is a qualitative description of a misconception, not a deterministic computational procedure. Without a specified counting method or formula that students are documented to apply, no general, executable rule can be constructed that yields a specific wrong result for a given input while preserving the exact documented error behavior.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39271_only_endpoint_precision_numbers_count_between(range(A-B), Count) :-\n    A =< B,\n    format(string(AStr), '~.1f', A),\n    format(string(BStr), '~.1f', B),\n    atom_length(AStr, ALen),\n    atom_length(BStr, BLen),\n    Precision is min(ALen, BLen),\n    % Count integers scaled to the common decimal precision (tenths)\n    Scale is 10,\n    Start is integer(A * Scale),\n    End is integer(B * Scale),\n    Count is End - Start + 1).\n\ntest_harness:arith_misconception(db_row(39271), decimal, churn_39271_only_endpoint_precision_numbers_count_between,\n    churn_candidate:churn_39271_only_endpoint_precision_numbers_count_between,\n    range(0.9-1.5),\n    7).",
+      "result": "SWI-Prolog gate exited 22"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception about density of rationals (only counting numbers at endpoint precision), but provides no runnable procedural rule or concrete algorithm that can be encoded as a SWI-Prolog predicate of arity 2 producing the documented wrong answer. The phrase “only numbers at the endpoints' decimal precision exist” is a qualitative description of a misconception, not a deterministic computational procedure. Without a specified counting method or formula that students are documented to apply, no general, executable rule can be constructed that yields a specific wrong result for a given input while preserving the exact documented error behavior.",
+      "result": "abstained"
+    }
+  ]
+}

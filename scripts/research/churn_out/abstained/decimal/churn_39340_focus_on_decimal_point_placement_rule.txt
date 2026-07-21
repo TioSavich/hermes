@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39340",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39340_focus_on_decimal_point_placement_rule",
+    "target_operation": "estimation_decimal_placement",
+    "citation": "BARBARA J. REYS, ROBERT E. REYS, AND ALFINIO FLORES PEÑAFIEL (1991)",
+    "error_action": "focus_on_decimal_point_placement_rule",
+    "error_description": "when working with a decimal, attend to where the decimal point goes by counting digits",
+    "provenance_comments": "=== row 39340: procedural focus on placement ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a vague procedural focus on counting digits to place the decimal point, but no concrete, generalizable rule is provided that maps a specific input to a specific wrong output. Without a clear algorithmic prescription (e.g., \"move decimal point left by number of digits in multiplier\") or a worked example yielding a deterministic incorrect result, we cannot construct a runnable rule that consistently produces the documented error for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a vague procedural focus on counting digits to place the decimal point, but no concrete, generalizable rule is provided that maps a specific input to a specific wrong output. Without a clear algorithmic prescription (e.g., \"move decimal point left by number of digits in multiplier\") or a worked example yielding a deterministic incorrect result, we cannot construct a runnable rule that consistently produces the documented error for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

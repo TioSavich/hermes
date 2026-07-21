@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37963",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37963_dividing_by_two_equals_dividing_by_half",
+    "target_operation": "division_by_whole_vs_unit_fraction",
+    "citation": "Victoria R. Jacobs, Susan B. Empson (2016)",
+    "error_action": "dividing_by_two_equals_dividing_by_half",
+    "error_description": "treat dividing by 2 and dividing by 1/2 as the same operation",
+    "provenance_comments": "=== row 37963: divide by 2 vs by 1/2 confusion ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_37963_dividing_by_two_equals_dividing_by_half",
+  "attempts": [
+    {
+      "response": "churn_candidate:(divide_by_two_equals_divide_by_half(Frac, Result) :-\n    Frac = frac(N, D),\n    Result = frac(N div 2, D)).\n\ntest_harness:arith_misconception(db_row(37963), fraction, churn_37963_dividing_by_two_equals_dividing_by_half,\n    churn_candidate:divide_by_two_equals_divide_by_half,\n    frac(3,4),\n    frac(3,2)).",
+      "result": "predicate must be named churn_37963_dividing_by_two_equals_dividing_by_half"
+    },
+    {
+      "response": "churn_candidate:(dividing_by_two_equals_dividing_by_half(Frac, Result) :-\n    Frac = frac(N, D),\n    Result = frac(N, D * 2)).\n\ntest_harness:arith_misconception(db_row(37963), fraction, churn_37963_dividing_by_two_equals_dividing_by_half,\n    churn_candidate:dividing_by_two_equals_dividing_by_half,\n    frac(3,4),\n    frac(3,8)).",
+      "result": "predicate must be named churn_37963_dividing_by_two_equals_dividing_by_half"
+    }
+  ]
+}

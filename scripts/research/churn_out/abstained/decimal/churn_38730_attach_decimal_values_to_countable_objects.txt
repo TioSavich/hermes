@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38730",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38730_attach_decimal_values_to_countable_objects",
+    "target_operation": "decimal_word_problem_authoring",
+    "citation": "Adolf Af Ekenstam and Karl Greger (1983)",
+    "error_action": "attach_decimal_values_to_countable_objects",
+    "error_description": "build a context by assigning fractional-decimal amounts to discrete countable things",
+    "provenance_comments": "=== row 38730: invent word problem with discrete unit + decimal quantity ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a conceptual mistake in problem *authoring* (assigning decimal quantities to countable objects), not a specific syntactic or semantic error in arithmetic evaluation; thus there is no deterministic binary predicate `Rule(Input, Got)` that produces the documented wrong answer without additional assumptions about the problem structure or evaluation semantics.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a conceptual mistake in problem *authoring* (assigning decimal quantities to countable objects), not a specific syntactic or semantic error in arithmetic evaluation; thus there is no deterministic binary predicate `Rule(Input, Got)` that produces the documented wrong answer without additional assumptions about the problem structure or evaluation semantics.",
+      "result": "abstained"
+    }
+  ]
+}

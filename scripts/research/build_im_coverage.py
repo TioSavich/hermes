@@ -12,10 +12,7 @@ from pathlib import Path
 
 
 REPO = Path(__file__).resolve().parents[2]
-RATCHET_PATH = Path(
-    "/Users/tio/Documents/GitHub/umedcta-formalization/"
-    "scripts/curriculum/lesson_evidence_ratchet.json"
-)
+RATCHET_PATH = REPO / "curriculum/im/coverage/lesson_evidence_ratchet.json"
 JSON_OUTPUT = REPO / "curriculum/im/coverage/im_coverage.json"
 SUMMARY_OUTPUT = REPO / "curriculum/im/coverage/im_coverage_summary.md"
 GENERATED_HEADER = (
@@ -376,7 +373,7 @@ def summary_markdown(artifact: dict, cross_checks: list[dict[str, int | str]]) -
             "## Method",
             "",
             "This inventory uses the 2026-07-20 published floor and admitted-lesson list from "
-            "`lesson_evidence_ratchet.json` in the read-only `umedcta-formalization` checkout. "
+            "the vendored `curriculum/im/coverage/lesson_evidence_ratchet.json`. "
             "Lesson IDs and coverage facts come from the Hermes lesson stack loaded through "
             "`paths.pl`. The builder also parses the generated fact files to cross-check the "
             "loaded counts.",

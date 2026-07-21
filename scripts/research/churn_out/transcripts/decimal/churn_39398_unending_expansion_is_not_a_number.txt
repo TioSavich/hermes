@@ -1,0 +1,9 @@
+command: swipl -q --on-warning=status --on-error=status -s <scratch>/candidate.pl -g <gate> -t halt
+exit: 0
+stdout:
+GOT=/(1,-(**(10,1),1))
+EXPECTED=0.1111111111111111
+CLASS=incorrect
+stderr:
+
+description-match: matched error-action tokens: expansion, unending

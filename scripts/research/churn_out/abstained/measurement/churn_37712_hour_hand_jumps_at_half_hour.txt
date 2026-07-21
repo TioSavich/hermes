@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37712",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37712_hour_hand_jumps_at_half_hour",
+    "target_operation": "clock_hand_proportional_relation",
+    "citation": "Darrell Earnest (2017)",
+    "error_action": "hour_hand_jumps_at_half_hour",
+    "error_description": "the hour hand stays on the numeral and jumps to the midpoint only when the minute hand reaches the half hour",
+    "provenance_comments": "=== row 37712: clock hands non-proportional (hour hand jumps) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding about clock hand movement, but it does not specify a runnable Prolog rule that produces a wrong output for a given input in a way that can be tested with a single predicate of arity 2. The misconception involves continuous vs. discrete motion of the hour hand, which is inherently analog and not directly expressible as a simple arithmetic computation without inventing a model (e.g., interpolation). No clear, generalizable, SWI-Prolog-only arithmetic rule can be constructed from the description without exceeding the constraint of not inventing mathematics.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_37712_hour_hand_jumps_at_half_hour(time(H,M), Pos) :-\n    ( M < 30 -> Pos is H\n    ; M >= 30 -> Pos is H + 0.5\n    )).\n\ntest_harness:arith_misconception(db_row(37712), measurement, churn_37712_hour_hand_jumps_at_half_hour,\n    churn_candidate:churn_37712_hour_hand_jumps_at_half_hour,\n    time(2, 30), 2.5).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding about clock hand movement, but it does not specify a runnable Prolog rule that produces a wrong output for a given input in a way that can be tested with a single predicate of arity 2. The misconception involves continuous vs. discrete motion of the hour hand, which is inherently analog and not directly expressible as a simple arithmetic computation without inventing a model (e.g., interpolation). No clear, generalizable, SWI-Prolog-only arithmetic rule can be constructed from the description without exceeding the constraint of not inventing mathematics.",
+      "result": "abstained"
+    }
+  ]
+}

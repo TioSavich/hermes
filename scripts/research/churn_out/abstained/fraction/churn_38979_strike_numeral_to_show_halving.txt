@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38979",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38979_strike_numeral_to_show_halving",
+    "target_operation": "fraction_notation",
+    "citation": "BARBARA M. BRIZUELA (2005)",
+    "error_action": "strike_numeral_to_show_halving",
+    "error_description": "draw a line through the whole-number numeral to depict cutting the quantity in half",
+    "provenance_comments": "=== row 38979: crossing out numeral to show half ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a visual notation practice (striking through a numeral to indicate halving), which cannot be expressed as a deterministic binary relation `Rule(Input, Got)` producing a specific wrong answer from a given input. There is no well-defined input-output mapping for a procedure that is purely graphical and context-dependent (e.g., depends on how the numeral is written, context of the problem, etc.), and thus no runnable Prolog rule can be constructed that reliably produces the documented wrong outcome for a given formal input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a visual notation practice (striking through a numeral to indicate halving), which cannot be expressed as a deterministic binary relation `Rule(Input, Got)` producing a specific wrong answer from a given input. There is no well-defined input-output mapping for a procedure that is purely graphical and context-dependent (e.g., depends on how the numeral is written, context of the problem, etc.), and thus no runnable Prolog rule can be constructed that reliably produces the documented wrong outcome for a given formal input.",
+      "result": "abstained"
+    }
+  ]
+}

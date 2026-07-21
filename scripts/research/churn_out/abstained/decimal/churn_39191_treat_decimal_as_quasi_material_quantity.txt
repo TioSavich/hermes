@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39191",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39191_treat_decimal_as_quasi_material_quantity",
+    "target_operation": "operations_powers_of_ten",
+    "citation": "RAYMOND DUVAL (2006)",
+    "error_action": "treat_decimal_as_quasi_material_quantity",
+    "error_description": "operate on decimals as concrete amounts rather than by place-value notation rules",
+    "provenance_comments": "=== row 39191: quasi-material representation (no specific error) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error is too vague to encode a specific, runnable rule; it describes a general conceptual tendency (\"treat decimals as quasi-material quantities\") without specifying a concrete computational procedure or error pattern that can be captured by a predicate of arity 2 producing a deterministic wrong result from a given input. No testable input-output mapping is provided.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is too vague to encode a specific, runnable rule; it describes a general conceptual tendency (\"treat decimals as quasi-material quantities\") without specifying a concrete computational procedure or error pattern that can be captured by a predicate of arity 2 producing a deterministic wrong result from a given input. No testable input-output mapping is provided.",
+      "result": "abstained"
+    }
+  ]
+}

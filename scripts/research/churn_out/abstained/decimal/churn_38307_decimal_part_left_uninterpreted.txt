@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38307",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38307_decimal_part_left_uninterpreted",
+    "target_operation": "decimal_quotient_interpretation",
+    "citation": "Andrea Lachance, Jere Confrey (2002)",
+    "error_action": "decimal_part_left_uninterpreted",
+    "error_description": "treat the decimal remainder of a quotient as having no contextual meaning",
+    "provenance_comments": "=== row 38307: interpret decimal remainder in quotient ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating the decimal remainder as having no contextual meaning) but does not specify a runnable procedural rule that produces a concrete wrong answer for a given input; without a clear algorithmic transformation or formula, no testable rule can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (treating the decimal remainder as having no contextual meaning) but does not specify a runnable procedural rule that produces a concrete wrong answer for a given input; without a clear algorithmic transformation or formula, no testable rule can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

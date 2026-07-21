@@ -234,6 +234,7 @@ capability('formal/learner/reorg_domains/fraction_of_fraction.pl', 'reorg_fracti
 capability('formal/learner/reorg_domains/fraction_splitting.pl', 'reorg_fraction_splitting', 'learner', [], lazy_reachable).
 capability('formal/learner/server.pl', 'server', 'learner', [], orphan_module).
 capability('formal/learner/server_visualization.pl', 'server_visualization', 'learner', [], orphan_module).
+capability('formal/learner/task_transition.pl', 'task_transition', 'learner', [], orphan_module).
 capability('formal/pml/audit_connectors.pl', 'audit_connectors', 'pml', [], orphan_module).
 capability('formal/pml/axioms_eml.pl', 'axioms_eml', 'pml', [], orphan_module).
 capability('formal/pml/mua_conjectures.pl', 'mua_conjectures', 'pml', [], orphan_module).
@@ -824,6 +825,7 @@ capability_page('formal/learner/reorg_domains/fraction_of_fraction.pl', '/more-z
 capability_page('formal/learner/reorg_domains/fraction_splitting.pl', '/more-zeeman/bridge.html').
 capability_page('formal/learner/server.pl', '/more-zeeman/bridge.html').
 capability_page('formal/learner/server_visualization.pl', '/more-zeeman/bridge.html').
+capability_page('formal/learner/task_transition.pl', '/more-zeeman/bridge.html').
 capability_page('formal/pml/audit_connectors.pl', '/more-zeeman/witnesses.html').
 capability_page('formal/pml/axioms_eml.pl', '/more-zeeman/witnesses.html').
 capability_page('formal/pml/mua_conjectures.pl', '/more-zeeman/witnesses.html').

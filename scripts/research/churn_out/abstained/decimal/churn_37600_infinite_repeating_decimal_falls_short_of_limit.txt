@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37600",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37600_infinite_repeating_decimal_falls_short_of_limit",
+    "target_operation": "infinite_decimal_equivalence",
+    "citation": "Andrei Toom (1993)",
+    "error_action": "infinite_repeating_decimal_falls_short_of_limit",
+    "error_description": "0.999... never quite reaches one because each finite truncation is less than one",
+    "provenance_comments": "=== row 37600: 0.999... < 1 ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding about the limit of an infinite decimal sequence, not a specific syntactic or procedural computation that can be captured by a binary predicate `Rule(Input, Got)` producing a wrong numeric result via a fixed Prolog arithmetic expression. The error is about convergence and limit reasoning, not a calculational mistake like misapplied operator precedence or incorrect formula. No runnable rule of arity 2 can be constructed that, when called with a concrete input, yields the documented misconception (e.g., `0.999... < 1`) as a numeric output, because `0.999...` is not a finite term in Prolog arithmetic and cannot be directly evaluated to a wrong value via standard `is/2`. The misconception is inherently about infinite processes, not finite computation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding about the limit of an infinite decimal sequence, not a specific syntactic or procedural computation that can be captured by a binary predicate `Rule(Input, Got)` producing a wrong numeric result via a fixed Prolog arithmetic expression. The error is about convergence and limit reasoning, not a calculational mistake like misapplied operator precedence or incorrect formula. No runnable rule of arity 2 can be constructed that, when called with a concrete input, yields the documented misconception (e.g., `0.999... < 1`) as a numeric output, because `0.999...` is not a finite term in Prolog arithmetic and cannot be directly evaluated to a wrong value via standard `is/2`. The misconception is inherently about infinite processes, not finite computation.",
+      "result": "abstained"
+    }
+  ]
+}

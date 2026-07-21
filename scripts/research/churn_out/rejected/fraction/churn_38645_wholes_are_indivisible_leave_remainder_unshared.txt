@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38645",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38645_wholes_are_indivisible_leave_remainder_unshared",
+    "target_operation": "equal_sharing",
+    "citation": "Jessica H. Hunt, Arla Westenskow, Juanita Silva, Jasmine Welch-Ptak (2016)",
+    "error_action": "wholes_are_indivisible_leave_remainder_unshared",
+    "error_description": "leftover whole items stay whole and are simply set aside rather than cut",
+    "provenance_comments": "=== row 38645: indivisible whole for remainders ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_38645_wholes_are_indivisible_leave_remainder_unshared",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38645_wholes_are_indivisible_leave_remainder_unshared(Dividend, Quotient) :-\n    Dividend > 0,\n    Quotient is Dividend // 2,\n    remainder(Dividend, 2, Rem),\n    Rem > 0,\n    Quotient = Dividend // 2).\n\ntest_harness:arith_misconception(db_row(38645), fraction, churn_38645_wholes_are_indivisible_leave_remainder_unshared,\n    churn_candidate:churn_38645_wholes_are_indivisible_leave_remainder_unshared,\n    5,\n    2).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "churn_candidate:(share_wholes_as_wholes(Items-Remainder, Items-Remainder) :-\n    is_list(Items),\n    is_list(Remainder),\n    maplist(whole_item, Items),\n    maplist(whole_item, Remainder)).\n\ntest_harness:arith_misconception(db_row(38645), fraction, churn_38645_wholes_are_indivisible_leave_remainder_unshared,\n    churn_candidate:share_wholes_as_wholes,\n    [apple,apple]-[apple,apple],\n    [apple/2,apple/2]-[]).\nABSTAIN: SWI-Prolog gate exited 23",
+      "result": "predicate must be named churn_38645_wholes_are_indivisible_leave_remainder_unshared"
+    }
+  ]
+}

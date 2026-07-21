@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38919",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38919_non_host_algorithm_is_wrong",
+    "target_operation": "culturally_different_division_algorithm",
+    "citation": "Nuria Gorgorio & Guida de Abreu (2009)",
+    "error_action": "non_host_algorithm_is_wrong",
+    "error_description": "a division method is wrong because it differs from the host country's standard procedure",
+    "provenance_comments": "=== row 38919: teacher marks cultural algorithm wrong ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a meta-cognitive or pedagogical misconception (judging correctness based on cultural origin rather than mathematical validity), not a computational algorithm that produces a specific wrong numerical output. No runnable rule of the form `Rule(Input, Got)` can be constructed that yields a documented incorrect *numerical result*—only a judgment about method legitimacy, which cannot be expressed as an arithmetic evaluation producing a distinct `Got` vs. `ExpectedCorrect`.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a meta-cognitive or pedagogical misconception (judging correctness based on cultural origin rather than mathematical validity), not a computational algorithm that produces a specific wrong numerical output. No runnable rule of the form `Rule(Input, Got)` can be constructed that yields a documented incorrect *numerical result*—only a judgment about method legitimacy, which cannot be expressed as an arithmetic evaluation producing a distinct `Got` vs. `ExpectedCorrect`.",
+      "result": "abstained"
+    }
+  ]
+}

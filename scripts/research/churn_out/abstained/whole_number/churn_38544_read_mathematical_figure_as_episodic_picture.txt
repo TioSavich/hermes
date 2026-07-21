@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38544",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38544_read_mathematical_figure_as_episodic_picture",
+    "target_operation": "representation_filtering",
+    "citation": "Eddie Gray, Demetra Pitta, David Tall (2000)",
+    "error_action": "read_mathematical_figure_as_episodic_picture",
+    "error_description": "interpret a diagram or symbol by its realistic descriptive features and a story rather than its abstract mathematical structure",
+    "provenance_comments": "=== row 38544: abstract symbols read as pictures ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a cognitive misinterpretation (reading symbols as pictures) rather than a specific syntactic or algorithmic error that can be encoded as a deterministic Prolog rule producing a wrong answer from a given input. There is no clear, general, executable procedure that maps an input expression to a fixed erroneous output in the manner required by the schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a cognitive misinterpretation (reading symbols as pictures) rather than a specific syntactic or algorithmic error that can be encoded as a deterministic Prolog rule producing a wrong answer from a given input. There is no clear, general, executable procedure that maps an input expression to a fixed erroneous output in the manner required by the schema.",
+      "result": "abstained"
+    }
+  ]
+}

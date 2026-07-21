@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37717",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37717_too_vague",
+    "target_operation": "unknown",
+    "citation": "citation unavailable",
+    "error_action": "too_vague",
+    "error_description": "=== row 37717: generic \"skill or algorithm\" errors (no example) ===",
+    "provenance_comments": "=== row 37717: generic \"skill or algorithm\" errors (no example) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: no runnable rule or defensible probe can be constructed from a documented error that provides no concrete operation, input, or incorrect output—only the label \"too_vague\" with no example.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no runnable rule or defensible probe can be constructed from a documented error that provides no concrete operation, input, or incorrect output—only the label \"too_vague\" with no example.",
+      "result": "abstained"
+    }
+  ]
+}

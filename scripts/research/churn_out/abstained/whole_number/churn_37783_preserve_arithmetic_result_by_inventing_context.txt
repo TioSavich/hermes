@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37783",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37783_preserve_arithmetic_result_by_inventing_context",
+    "target_operation": "division_with_remainder",
+    "citation": "Lieven Verschaffel and Erik De Corte (1997)",
+    "error_action": "preserve_arithmetic_result_by_inventing_context",
+    "error_description": "defend the computed answer by imagining special circumstances rather than revising it",
+    "provenance_comments": "=== row 37783: invents contextual excuses for fractional remainder ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive strategy (inventing contextual excuses for fractional remainders) rather than a specific syntactic or semantic distortion in computation. No runnable arithmetic rule can be formulated that consistently produces the documented wrong answer, because the error is meta-cognitive—students do not compute incorrectly; they accept correct arithmetic results and then justify them with fictional contexts (e.g., “the leftover 2 apples are for the teacher”). Since the error does not map to a deterministic function from input to incorrect output, a runnable `Rule/2` predicate cannot be defined per the schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive strategy (inventing contextual excuses for fractional remainders) rather than a specific syntactic or semantic distortion in computation. No runnable arithmetic rule can be formulated that consistently produces the documented wrong answer, because the error is meta-cognitive—students do not compute incorrectly; they accept correct arithmetic results and then justify them with fictional contexts (e.g., “the leftover 2 apples are for the teacher”). Since the error does not map to a deterministic function from input to incorrect output, a runnable `Rule/2` predicate cannot be defined per the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

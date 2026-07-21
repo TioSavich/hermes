@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38739",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38739_restate_rule_and_give_examples_as_proof",
+    "target_operation": "justification_of_rule",
+    "citation": "A. W. Bell (1979)",
+    "error_action": "restate_rule_and_give_examples_as_proof",
+    "error_description": "justify a rule by reasserting it and supplying numerical instances of its use",
+    "provenance_comments": "=== row 38739: explains rule only by example ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a meta-cognitive justification strategy (restating the rule and giving examples as proof) rather than a concrete computational procedure that can be modeled as a binary predicate `Rule(Input, Got)` producing a specific incorrect numeric outcome. There is no well-defined input-output mapping that yields a deterministic wrong answer for a given arithmetic input; the error is epistemic, not algorithmic. Hence, no runnable rule satisfying the schema contract can be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a meta-cognitive justification strategy (restating the rule and giving examples as proof) rather than a concrete computational procedure that can be modeled as a binary predicate `Rule(Input, Got)` producing a specific incorrect numeric outcome. There is no well-defined input-output mapping that yields a deterministic wrong answer for a given arithmetic input; the error is epistemic, not algorithmic. Hence, no runnable rule satisfying the schema contract can be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

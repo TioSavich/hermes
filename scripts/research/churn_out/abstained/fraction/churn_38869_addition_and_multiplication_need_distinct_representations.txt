@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38869",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38869_addition_and_multiplication_need_distinct_representations",
+    "target_operation": "fraction_operation_representation",
+    "citation": "Anika Dreher & Sebastian Kuntze (2015)",
+    "error_action": "addition_and_multiplication_need_distinct_representations",
+    "error_description": "fraction addition and fraction multiplication cannot share one type of pictorial model",
+    "provenance_comments": "=== row 38869: PST believes add/mult need different pictures ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about representational needs for addition vs. multiplication of fractions (i.e., that they require *different* pictorial models), not a syntactic or operational rule that produces a specific incorrect numerical result. There is no runnable procedure (arity-2 predicate) that can be defined to *produce* the documented wrong answer as a term, because the error is about model selection, not arithmetic computation. The schema requires a rule that, when applied to an input, yields a specific incorrect output that differs from the correct value; this misconception does not admit such a rule.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about representational needs for addition vs. multiplication of fractions (i.e., that they require *different* pictorial models), not a syntactic or operational rule that produces a specific incorrect numerical result. There is no runnable procedure (arity-2 predicate) that can be defined to *produce* the documented wrong answer as a term, because the error is about model selection, not arithmetic computation. The schema requires a rule that, when applied to an input, yields a specific incorrect output that differs from the correct value; this misconception does not admit such a rule.",
+      "result": "abstained"
+    }
+  ]
+}

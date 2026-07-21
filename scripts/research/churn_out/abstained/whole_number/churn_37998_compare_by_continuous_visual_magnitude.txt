@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37998",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37998_compare_by_continuous_visual_magnitude",
+    "target_operation": "numerosity_comparison",
+    "citation": "Sarah Clayton, Camilla Gilmore (2015)",
+    "error_action": "compare_by_continuous_visual_magnitude",
+    "error_description": "judge which array has more by total area or item size rather than by count",
+    "provenance_comments": "=== row 37998: numerosity vs convex hull visual cue ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive strategy (judging by total area or item size rather than count), but no runnable procedural rule is provided that maps an input pair of arrays to a wrong output via that strategy. A rule must be executable in Prolog to produce the documented wrong answer; here, there is no formalized transformation from input to incorrect output based on continuous visual magnitude. Without a concrete, generalizable computation (e.g., “sum of bounding box areas” or “product of diameter and density”), the rule cannot be defined.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive strategy (judging by total area or item size rather than count), but no runnable procedural rule is provided that maps an input pair of arrays to a wrong output via that strategy. A rule must be executable in Prolog to produce the documented wrong answer; here, there is no formalized transformation from input to incorrect output based on continuous visual magnitude. Without a concrete, generalizable computation (e.g., “sum of bounding box areas” or “product of diameter and density”), the rule cannot be defined.",
+      "result": "abstained"
+    }
+  ]
+}

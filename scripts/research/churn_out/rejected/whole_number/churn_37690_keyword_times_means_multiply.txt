@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37690",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37690_keyword_times_means_multiply",
+    "target_operation": "keyword_strategy_selection",
+    "citation": "Joanne T. Mulligan and Michael C. Mitchelmore (1997)",
+    "error_action": "keyword_times_means_multiply",
+    "error_description": "if the word 'times' appears, choose multiplication",
+    "provenance_comments": "=== row 37690: linguistic cue \"times\" -> multiply (no numeric error) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "external module qualification is not allowed: churn_37690_keyword_times_means_multiply:",
+  "attempts": [
+    {
+      "response": "misconceptions_whole_number_batch_1:(churn_37690_keyword_times_means_multiply(A-B, Got) :-\n    Got is A * B).\n\ntest_harness:arith_misconception(db_row(37690), whole_number, churn_37690_keyword_times_means_multiply,\n    misconceptions_whole_number_batch_1:churn_37690_keyword_times_means_multiply,\n    5-3,\n    2).",
+      "result": "external module qualification is not allowed: misconceptions_whole_number_batch_1:"
+    },
+    {
+      "response": "churn_37690_keyword_times_means_multiply:(churn_37690_keyword_times_means_multiply(A-B, Got) :-\n    Got is A * B).\n\ntest_harness:arith_misconception(db_row(37690), whole_number, churn_37690_keyword_times_means_multiply,\n    churn_candidate:churn_37690_keyword_times_means_multiply,\n    5-6,\n    11).",
+      "result": "external module qualification is not allowed: churn_37690_keyword_times_means_multiply:"
+    }
+  ]
+}

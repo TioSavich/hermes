@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39080",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39080_select_operation_by_expected_answer_magnitude",
+    "target_operation": "operation_invariance_under_number_size",
+    "citation": "ALAN BELL, EFRAIM FISCHBEIN, AND BRIAN GREER (1984)",
+    "error_action": "select_operation_by_expected_answer_magnitude",
+    "error_description": "choose multiplication or division based on whether the context numbers make the answer get bigger or smaller",
+    "provenance_comments": "=== row 39080: invariance of operation under substitution ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes selecting multiplication or division based on whether the answer is expected to get bigger or smaller, but no concrete numerical example or expected output is provided in the row. The gate failure indicates the output `0.05` does not match the documented claim(s) ['get'], yet no explicit correct or incorrect numerical outcome is given in the row to construct a valid `Input` and `ExpectedCorrect`. Without a runnable, documented case that yields a specific wrong result (and a corresponding correct result), a testable rule cannot be formed without invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39080_select_operation_by_expected_answer_magnitude(numbers(A,B), Got) :-\n    ( A > 1 -> Got is A * B ; Got is A / B )).\n\ntest_harness:arith_misconception(db_row(39080), decimal, churn_39080_select_operation_by_expected_answer_magnitude,\n    churn_candidate:churn_39080_select_operation_by_expected_answer_magnitude,\n    numbers(0.5, 10),\n    20.0).",
+      "result": "output 0.05 does not match explicit documented claim(s) ['get']"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes selecting multiplication or division based on whether the answer is expected to get bigger or smaller, but no concrete numerical example or expected output is provided in the row. The gate failure indicates the output `0.05` does not match the documented claim(s) ['get'], yet no explicit correct or incorrect numerical outcome is given in the row to construct a valid `Input` and `ExpectedCorrect`. Without a runnable, documented case that yields a specific wrong result (and a corresponding correct result), a testable rule cannot be formed without invention.",
+      "result": "abstained"
+    }
+  ]
+}

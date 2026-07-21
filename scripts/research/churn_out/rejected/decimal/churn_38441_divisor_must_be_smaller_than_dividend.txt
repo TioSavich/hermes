@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38441",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38441_divisor_must_be_smaller_than_dividend",
+    "target_operation": "decimal_division_divisor_constraint",
+    "citation": "Guy Brousseau, Nadine Brousseau, Virginia Warfield (2009)",
+    "error_action": "divisor_must_be_smaller_than_dividend",
+    "error_description": "you can only divide a bigger number by a smaller one, sharing into equal parts",
+    "provenance_comments": "=== row 38441: divisor must be smaller than dividend ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "SWI-Prolog gate exited 1",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38441_divisor_must_be_smaller_than_dividend(X/Y, Got) :-\n    Got is X / Y,\n    X < Y,\n    !,\n    fail;\n    Got is 0).\n\ntest_harness:arith_misconception(db_row(38441), decimal, churn_38441_divisor_must_be_smaller_than_dividend,\n    churn_candidate:churn_38441_divisor_must_be_smaller_than_dividend,\n    3/5,\n    0.6).",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "churn_candidate:(churn_38441_divisor_must_be_smaller_than_dividend(dividend(D)-divisor(Dv), Got) :-\n    Dv > D,\n    !,\n    fail ;\n    Got is D / Dv).\n\ntest_harness:arith_misconception(db_row(38441), decimal, churn_38441_divisor_must_be_smaller_than_dividend,\n    churn_candidate:churn_38441_divisor_must_be_smaller_than_dividend,\n    dividend(5.0)-divisor(10.0),\n    0.5).",
+      "result": "SWI-Prolog gate exited 1"
+    }
+  ]
+}

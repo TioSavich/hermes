@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37694",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37694_misapply_half_benchmark_to_fraction_magnitude",
+    "target_operation": "fraction_benchmark_comparison",
+    "citation": "Merlyn J. Behr, Ipke Wachsmuth and Thomas R. Post (1985)",
+    "error_action": "misapply_half_benchmark_to_fraction_magnitude",
+    "error_description": "judge a fraction as above or below one half but misidentify which side it falls on",
+    "provenance_comments": "=== row 37694: misjudge reference benchmark ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misjudgment (confusing whether a fraction is above or below one half) but does not specify a deterministic, runnable syntactic rule that produces a consistent wrong output for a given input. Since the task requires encoding a *documented student error* as a *runnable rule* that yields a *specific wrong answer*, and no procedural pattern (e.g., a formulaic misapplication) is provided—only a qualitative misinterpretation—the rule cannot be formalized without speculation.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misjudgment (confusing whether a fraction is above or below one half) but does not specify a deterministic, runnable syntactic rule that produces a consistent wrong output for a given input. Since the task requires encoding a *documented student error* as a *runnable rule* that yields a *specific wrong answer*, and no procedural pattern (e.g., a formulaic misapplication) is provided—only a qualitative misinterpretation—the rule cannot be formalized without speculation.",
+      "result": "abstained"
+    }
+  ]
+}

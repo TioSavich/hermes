@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38791",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38791_treat_first_result_as_terminal",
+    "target_operation": "multistep_process_selection",
+    "citation": "Adolf af Ekenstam and Karl Greger (1983)",
+    "error_action": "treat_first_result_as_terminal",
+    "error_description": "once the first step is computed, guess the next operation rather than chaining the result",
+    "provenance_comments": "=== row 38791: working memory failure on multi-step ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: the documented error describes a cognitive process (guessing the next operation after the first step) rather than a specific arithmetic rule that can be expressed as a deterministic predicate producing a wrong result; no runnable rule can be constructed without inventing a specific incorrect computation not documented.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: the documented error describes a cognitive process (guessing the next operation after the first step) rather than a specific arithmetic rule that can be expressed as a deterministic predicate producing a wrong result; no runnable rule can be constructed without inventing a specific incorrect computation not documented.",
+      "result": "abstained"
+    }
+  ]
+}

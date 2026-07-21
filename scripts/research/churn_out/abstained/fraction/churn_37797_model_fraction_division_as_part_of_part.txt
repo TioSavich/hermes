@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37797",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37797_model_fraction_division_as_part_of_part",
+    "target_operation": "division_representation_confusion",
+    "citation": "Hilda Borko, Margaret Eisenhart, Catherine A. Brown, Robert G. Underhill, Doug Jones and Patricia C. Agard (1992)",
+    "error_action": "model_fraction_division_as_part_of_part",
+    "error_description": "represent a divided b by drawing a fraction of the other quantity",
+    "provenance_comments": "=== row 37797: PST confuses mult/div representations ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual representation mistake (drawing a fraction of the other quantity), but does not specify a concrete syntactic or procedural rule that maps an input expression to a specific incorrect output in a way that can be implemented as a deterministic, groundable Prolog predicate of arity 2 without additional assumptions. The error is representational and contextual (e.g., drawing-based reasoning), not algorithmic over closed-form fraction expressions, and thus cannot be encoded as a runnable rule meeting the schema contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual representation mistake (drawing a fraction of the other quantity), but does not specify a concrete syntactic or procedural rule that maps an input expression to a specific incorrect output in a way that can be implemented as a deterministic, groundable Prolog predicate of arity 2 without additional assumptions. The error is representational and contextual (e.g., drawing-based reasoning), not algorithmic over closed-form fraction expressions, and thus cannot be encoded as a runnable rule meeting the schema contract.",
+      "result": "abstained"
+    }
+  ]
+}

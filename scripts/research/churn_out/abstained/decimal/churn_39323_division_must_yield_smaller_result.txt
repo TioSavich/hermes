@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39323",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39323_division_must_yield_smaller_result",
+    "target_operation": "quotient_interpretation",
+    "citation": "MASAKAZU OKAZAKI and MASATAKA KOYAMA (2005)",
+    "error_action": "division_must_yield_smaller_result",
+    "error_description": "a quotient larger than the dividend must refer to a smaller unit",
+    "provenance_comments": "=== row 39323: interpreting quotient > dividend ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error description “a quotient larger than the dividend must refer to a smaller unit” expresses a conceptual misinterpretation, not a specific syntactic or procedural error that can be captured by a deterministic binary predicate `Rule(Input, Got)` producing the *wrong* output. No concrete, reproducible computational rule can be derived without inventing an algorithmic mapping (e.g., how to convert “smaller unit” into arithmetic), which violates the constraint to encode only the *documented* student error. The gate failure (exit 24) confirms the prior attempt failed to yield a runnable, deterministic rule.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39323_division_must_yield_smaller_result(A-B, Got) :-\n    Got is A / B,\n    A > 0,\n    B < 1).\n\ntest_harness:arith_misconception(db_row(39323), decimal, churn_39323_division_must_yield_smaller_result,\n    churn_candidate:churn_39323_division_must_yield_smaller_result,\n    5-0.5,\n    10.0).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error description “a quotient larger than the dividend must refer to a smaller unit” expresses a conceptual misinterpretation, not a specific syntactic or procedural error that can be captured by a deterministic binary predicate `Rule(Input, Got)` producing the *wrong* output. No concrete, reproducible computational rule can be derived without inventing an algorithmic mapping (e.g., how to convert “smaller unit” into arithmetic), which violates the constraint to encode only the *documented* student error. The gate failure (exit 24) confirms the prior attempt failed to yield a runnable, deterministic rule.",
+      "result": "abstained"
+    }
+  ]
+}

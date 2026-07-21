@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37824",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37824_measure_map_distance_without_scale_or_straight_line",
+    "target_operation": "scale_and_distance",
+    "citation": "Eric Gutstein, Pauline Lipman, Patricia Hernandez, Rebeca de los Reyes (1997)",
+    "error_action": "measure_map_distance_without_scale_or_straight_line",
+    "error_description": "read distance between marked points directly without applying scale or a straight-line path",
+    "provenance_comments": "=== row 37824: map scale with unfamiliar idiom ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural mistake (reading map distance directly without applying scale or taking straight-line path), but no runnable rule can be constructed without inventing a specific map representation, scale interpretation, or geometric computation not provided in the documentation. The gate failure (exit 22) confirms the prior attempt failed due to lack of executable semantics; without a concrete, generalizable mapping from points to a miscomputed distance (e.g., via Euclidean distance *without* scale factor), the rule cannot be defined in SWI-Prolog per the schema.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_37824_measure_map_distance_without_scale_or_straight_line(distance_on_map(P1-P2, Scale), Got) :-\n    Got is abs(X2-X1) + abs(Y2-Y1),\n    P1 = point(X1,Y1),\n    P2 = point(X2,Y2)).\n\ntest_harness:arith_misconception(db_row(37824), measurement, churn_37824_measure_map_distance_without_scale_or_straight_line,\n    churn_candidate:churn_37824_measure_map_distance_without_scale_or_straight_line,\n    distance_on_map(point(2,3)-point(5,7), 2000), 7).",
+      "result": "SWI-Prolog gate exited 22"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a procedural mistake (reading map distance directly without applying scale or taking straight-line path), but no runnable rule can be constructed without inventing a specific map representation, scale interpretation, or geometric computation not provided in the documentation. The gate failure (exit 22) confirms the prior attempt failed due to lack of executable semantics; without a concrete, generalizable mapping from points to a miscomputed distance (e.g., via Euclidean distance *without* scale factor), the rule cannot be defined in SWI-Prolog per the schema.",
+      "result": "abstained"
+    }
+  ]
+}

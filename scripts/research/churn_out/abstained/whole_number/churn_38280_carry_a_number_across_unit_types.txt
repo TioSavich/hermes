@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38280",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38280_carry_a_number_across_unit_types",
+    "target_operation": "unit_conflation_reversal",
+    "citation": "Steven Boyce, Anderson Norton (2017)",
+    "error_action": "carry_a_number_across_unit_types",
+    "error_description": "once a count is computed it can stand for whatever unit is convenient at the next step",
+    "provenance_comments": "=== row 38280: conflates intermediate and overall units ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual conflation of units (treating an intermediate count as if it could be reinterpreted with a different unit), but no specific arithmetic operation or deterministic transformation is provided that would allow a runnable Prolog rule to be constructed. Without a clear, generalizable procedure that maps inputs to the documented wrong output, a defensible probe and rule cannot be formed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual conflation of units (treating an intermediate count as if it could be reinterpreted with a different unit), but no specific arithmetic operation or deterministic transformation is provided that would allow a runnable Prolog rule to be constructed. Without a clear, generalizable procedure that maps inputs to the documented wrong output, a defensible probe and rule cannot be formed.",
+      "result": "abstained"
+    }
+  ]
+}

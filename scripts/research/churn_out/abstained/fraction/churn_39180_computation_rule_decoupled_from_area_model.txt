@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39180",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39180_computation_rule_decoupled_from_area_model",
+    "target_operation": "fraction_multiplication_diagram",
+    "citation": "KLAUS HASEMANN (1981)",
+    "error_action": "computation_rule_decoupled_from_area_model",
+    "error_description": "apply the numerator-times-numerator rule but cannot read it off a part-of-part diagram",
+    "provenance_comments": "=== row 39180: mult rule unlinked from diagram ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a cognitive link failure (inability to read off the result from a diagram) rather than a specific syntactic or procedural computation error that can be encoded as a runnable Prolog rule producing a wrong answer from a given input. There is no clear, generalizable rule that maps inputs to the documented wrong output; it reflects a representational gap, not a calculational rule.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a cognitive link failure (inability to read off the result from a diagram) rather than a specific syntactic or procedural computation error that can be encoded as a runnable Prolog rule producing a wrong answer from a given input. There is no clear, generalizable rule that maps inputs to the documented wrong output; it reflects a representational gap, not a calculational rule.",
+      "result": "abstained"
+    }
+  ]
+}

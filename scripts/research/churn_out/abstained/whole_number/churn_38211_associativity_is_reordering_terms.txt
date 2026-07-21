@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38211",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38211_associativity_is_reordering_terms",
+    "target_operation": "associative_vs_commutative",
+    "citation": "Meixia Ding, Xiaobao Li, Mary M. Capraro (2013)",
+    "error_action": "associativity_is_reordering_terms",
+    "error_description": "the associative property lets you rearrange the numbers into any order",
+    "provenance_comments": "=== row 38211: confuses associative with commutative property ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (confusing associative with commutative property) but does not specify a runnable procedural rule that produces a *specific incorrect numeric outcome* from a given input. Without a concrete algorithmic transformation (e.g., \"ignore parentheses and reorder terms arbitrarily\" yielding a particular wrong result), we cannot construct a deterministic predicate `Rule(Input, Got)` that reliably produces the documented error for a given input. The task requires a rule that, when executed, yields the *documented wrong answer*—but here only a vague description is given, not a computable error procedure.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (confusing associative with commutative property) but does not specify a runnable procedural rule that produces a *specific incorrect numeric outcome* from a given input. Without a concrete algorithmic transformation (e.g., \"ignore parentheses and reorder terms arbitrarily\" yielding a particular wrong result), we cannot construct a deterministic predicate `Rule(Input, Got)` that reliably produces the documented error for a given input. The task requires a rule that, when executed, yields the *documented wrong answer*—but here only a vague description is given, not a computable error procedure.",
+      "result": "abstained"
+    }
+  ]
+}

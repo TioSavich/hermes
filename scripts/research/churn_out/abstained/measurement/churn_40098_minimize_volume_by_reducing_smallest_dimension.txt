@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40098",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40098_minimize_volume_by_reducing_smallest_dimension",
+    "target_operation": "volume_dimensional_change",
+    "citation": "Helena P. Osana, Guy L. Lacroix, Bradley J. Tucker, Chantal Desrosiers (2006)",
+    "error_action": "minimize_volume_by_reducing_smallest_dimension",
+    "error_description": "to make a solid as small as possible, reduce its smallest dimension",
+    "provenance_comments": "=== row 40098: reducing smallest dim for smallest delta-volume ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (that reducing the smallest dimension minimizes volume change), but does not specify a runnable procedural rule that produces a specific wrong numerical answer from a well-defined input. A rule must be executable in SWI-Prolog such that `Rule(Input, Got)` yields the *documented incorrect result*; here, no concrete input–output mapping is provided—only a qualitative strategy. Without a concrete procedure or numeric outcome, we cannot construct a valid `arith_misconception/6` entry per schema.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_40098_minimize_volume_by_reducing_smallest_dimension(box(L,W,H), Got) :-\n    min_list([L,W,H], Min),\n    (   L = Min, NewL is L - 1, NewW is W, NewH is H\n    ;   W = Min, NewL is L, NewW is W - 1, NewH is H\n    ;   H = Min, NewL is L, NewW is W, NewH is H - 1\n    ),\n    Got is NewL * NewW * NewH).\n\ntest_harness:arith_misconception(db_row(40098), measurement, churn_40098_minimize_volume_by_reducing_smallest_dimension,\n    churn_candidate:churn_40098_minimize_volume_by_reducing_smallest_dimension,\n    box(4,3,2), 20).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (that reducing the smallest dimension minimizes volume change), but does not specify a runnable procedural rule that produces a specific wrong numerical answer from a well-defined input. A rule must be executable in SWI-Prolog such that `Rule(Input, Got)` yields the *documented incorrect result*; here, no concrete input–output mapping is provided—only a qualitative strategy. Without a concrete procedure or numeric outcome, we cannot construct a valid `arith_misconception/6` entry per schema.",
+      "result": "abstained"
+    }
+  ]
+}

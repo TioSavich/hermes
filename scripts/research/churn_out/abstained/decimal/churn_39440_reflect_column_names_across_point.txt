@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39440",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39440_reflect_column_names_across_point",
+    "target_operation": "place_value_labels",
+    "citation": "BARBARA M. MOSKAL and MARIA E. MAGONE (2000)",
+    "error_action": "reflect_column_names_across_point",
+    "error_description": "name decimal columns by mirroring the whole-number column names around the decimal point",
+    "provenance_comments": "=== row 39440: place value label mirror (oneths/tenths/hundredths) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a naming convention (mirroring whole-number column names around the decimal point, e.g., \"oneths\" for the first decimal place), which is a lexical/labeling misconception, not an arithmetic operation. There is no well-defined 2-place predicate `Rule(Input, Got)` that can produce a *numerical* wrong answer `Got` from an *input* `Input` under this naming misconception, because the error does not alter computation—it alters terminology. The schema requires `Rule` to produce a *wrong numerical outcome* that differs from `ExpectedCorrect`, but no such numeric transformation corresponds to \"naming\" or \"labeling\" alone. Without a concrete arithmetic procedure that yields a specific incorrect numeric result, the execution gate cannot validate the rule.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39440_reflect_column_names_across_point(place_value_label(Index, Name), Name) :-\n    (Index =:= 0 -> Name = 'ones'\n    ; Index > 0 -> Name = Name0, atom_concat(Name0, 'ths', Name)\n    ; Index < 0 -> Abs is -Index, atom_concat(Name0, 'ths', Name), atom_concat(Name0, 'th', Name0), Name = Name0),\n    fail).\nchurn_candidate:(churn_39440_reflect_column_names_across_point(place_value_label(Index, Name), Name) :-\n    (Index =:= 0 -> Name = 'ones'\n    ; Index > 0 -> Name0 is Index - 1, nth1(Name0, [ones, tens, hundreds, thousands, ten_thousands, hundred_thousands, millions, ten_millions, hundred_millions], BaseName), atom_concat(BaseName, 'ths', Name)\n    ; Index < 0 -> Abs is -Index, nth1(Abs, [tenths, hundredths, thousandths, ten_thousandths, hundred_thousandths, millionths, ten_millionths, hundred_millionths], Name))).\n\ntest_harness:arith_misconception(db_row(39440), decimal, churn_39440_reflect_column_names_across_point,\n    churn_candidate:churn_39440_reflect_column_names_across_point,\n    place_value_label(1, Name),\n    'tens').",
+      "result": "SWI-Prolog gate exited 22"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a naming convention (mirroring whole-number column names around the decimal point, e.g., \"oneths\" for the first decimal place), which is a lexical/labeling misconception, not an arithmetic operation. There is no well-defined 2-place predicate `Rule(Input, Got)` that can produce a *numerical* wrong answer `Got` from an *input* `Input` under this naming misconception, because the error does not alter computation—it alters terminology. The schema requires `Rule` to produce a *wrong numerical outcome* that differs from `ExpectedCorrect`, but no such numeric transformation corresponds to \"naming\" or \"labeling\" alone. Without a concrete arithmetic procedure that yields a specific incorrect numeric result, the execution gate cannot validate the rule.",
+      "result": "abstained"
+    }
+  ]
+}

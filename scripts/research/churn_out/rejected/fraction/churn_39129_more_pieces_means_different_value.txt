@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39129",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39129_more_pieces_means_different_value",
+    "target_operation": "equivalent_fractions_conservation",
+    "citation": "Laurie D. Edwards (2009)",
+    "error_action": "more_pieces_means_different_value",
+    "error_description": "treat splitting into more pieces as changing the fraction's value",
+    "provenance_comments": "=== row 39129: conservation of value under splitting ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_39129_more_pieces_means_different_value",
+  "attempts": [
+    {
+      "response": "churn_candidate:(more_pieces_means_different_value(frac(N,D), frac(N2,D2)) :-\n    D2 is D * K,\n    N2 is N * K,\n    K > 1,\n    D2 > D,\n    fail).\n\ntest_harness:arith_misconception(db_row(39129), fraction, churn_39129_more_pieces_means_different_value,\n    churn_candidate:more_pieces_means_different_value,\n    frac(1,2),\n    frac(1,4)).",
+      "result": "predicate must be named churn_39129_more_pieces_means_different_value"
+    },
+    {
+      "response": "churn_candidate:(more_pieces_means_different_value(frac(N,D), frac(NNew,DNew)) :-\n    DNew is D * K,\n    NNew is N * K,\n    K > 1).\n\ntest_harness:arith_misconception(db_row(39129), fraction, churn_39129_more_pieces_means_different_value,\n    churn_candidate:more_pieces_means_different_value,\n    frac(1,2),\n    frac(2,4)).",
+      "result": "predicate must be named churn_39129_more_pieces_means_different_value"
+    }
+  ]
+}

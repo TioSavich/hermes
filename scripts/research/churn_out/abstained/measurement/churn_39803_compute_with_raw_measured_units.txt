@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39803",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39803_compute_with_raw_measured_units",
+    "target_operation": "si_unit_conversion",
+    "citation": "D. M. Ames & D. A. Leathard (1978)",
+    "error_action": "compute_with_raw_measured_units",
+    "error_description": "calculate directly with measured units without converting to coherent SI units",
+    "provenance_comments": "=== row 39803: SI-unit coherence failure ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: no runnable rule can be constructed because the documented error describes a procedural mistake (using raw measured units without SI conversion) rather than a specific syntactic or semantic mapping that can be captured by a deterministic 2-place predicate producing the documented wrong answer; no concrete input–output pair can be defined without inventing a particular incorrect conversion scenario.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no runnable rule can be constructed because the documented error describes a procedural mistake (using raw measured units without SI conversion) rather than a specific syntactic or semantic mapping that can be captured by a deterministic 2-place predicate producing the documented wrong answer; no concrete input–output pair can be defined without inventing a particular incorrect conversion scenario.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37844",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37844_only_one_school_method_is_legitimate",
+    "target_operation": "unit_conversion_method_rigidity",
+    "citation": "Arthur J. Baroody and Herbert P. Ginsburg (1990)",
+    "error_action": "only_one_school_method_is_legitimate",
+    "error_description": "a problem must be solved by the single taught formal algorithm, and informal knowledge may not be substituted",
+    "provenance_comments": "=== row 37844: rigid reliance on school-taught algorithm ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: no runnable rule can be constructed because the documented error describes a metacognitive stance (rigid belief about method legitimacy) rather than a specific computational procedure that maps inputs to a wrong numerical output; no well-defined predicate of arity 2 can be formed that produces a deterministic incorrect result for a given input in the measurement domain without inventing mathematics.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no runnable rule can be constructed because the documented error describes a metacognitive stance (rigid belief about method legitimacy) rather than a specific computational procedure that maps inputs to a wrong numerical output; no well-defined predicate of arity 2 can be formed that produces a deterministic incorrect result for a given input in the measurement domain without inventing mathematics.",
+      "result": "abstained"
+    }
+  ]
+}

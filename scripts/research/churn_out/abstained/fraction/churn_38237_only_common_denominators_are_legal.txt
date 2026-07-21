@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38237",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38237_only_common_denominators_are_legal",
+    "target_operation": "equivalent_fraction_comparison",
+    "citation": "Ian Whitacre, Şebnem Atabaş, Kelly Findley (2018)",
+    "error_action": "only_common_denominators_are_legal",
+    "error_description": "creating equivalent fractions is only allowed by finding common denominators",
+    "provenance_comments": "=== row 38237: PST hesitation on equivalent-numerator ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error description “creating equivalent fractions is only allowed by finding common denominators” does not specify a runnable rule that produces a wrong answer in a test harness, nor does it identify a concrete operation (e.g., addition, comparison) with deterministic input/output behavior. Without a clear algorithmic misapplication (e.g., a specific procedure that yields a particular incorrect result), no executable `Rule/2` predicate can be constructed that reliably produces the documented misconception outcome.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error description “creating equivalent fractions is only allowed by finding common denominators” does not specify a runnable rule that produces a wrong answer in a test harness, nor does it identify a concrete operation (e.g., addition, comparison) with deterministic input/output behavior. Without a clear algorithmic misapplication (e.g., a specific procedure that yields a particular incorrect result), no executable `Rule/2` predicate can be constructed that reliably produces the documented misconception outcome.",
+      "result": "abstained"
+    }
+  ]
+}

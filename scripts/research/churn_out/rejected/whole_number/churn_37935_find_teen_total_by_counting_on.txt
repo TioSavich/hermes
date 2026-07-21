@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37935",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37935_find_teen_total_by_counting_on",
+    "target_operation": "teen_number_base_ten_structure",
+    "citation": "Karen C. Fuson, Yeping Li (2009)",
+    "error_action": "find_teen_total_by_counting_on",
+    "error_description": "after recording a ten, count single units forward to reach a total over ten rather than composing a ten and ones",
+    "provenance_comments": "=== row 37935: teen numbers force counting, not make-a-ten ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "external module qualification is not allowed: misconceptions_whole_number_batch_1:",
+  "attempts": [
+    {
+      "response": "misconceptions_whole_number_batch_1:(churn_37935_find_teen_total_by_counting_on(Tens, Ones, Got) :-\n    Tens = 1,\n    Got is Tens * 10 + Ones,\n    % Documented error: student counts on from the ten instead of composing it\n    % So they compute 10 + Ones by counting Ons steps from 10, but only if Ones > 0\n    % However, to match the documented error *exactly*, we model the student’s procedure:\n    % They start at 10 and count forward Ones more numbers, ending at 10 + Ones — which is actually correct.\n    % BUT the misconception is that they *don’t use base-ten composition*, i.e., they don’t recognize the total as \"one ten and X ones\"\n    % Since the task is *finding the total*, not *expressing structure*, the arithmetic result is still correct.\n    % However, per the schema contract, we must produce a *documented wrong answer*.\n    % The only documented error action is \"find_teen_total_by_counting_on\" — and in Fuson & Li, this refers to *procedural over-reliance* on counting,\n    % not a numerical error. Therefore, no incorrect arithmetic result is documented.\n    % The row description says: \"teen numbers force counting, not make-a-ten\". This implies a *structural* misconception, not a computational one.\n    % Since the task is to produce a *wrong numerical outcome* (ExpectedCorrect must not unify with Got),\n    % and no such numerical error is documented, we cannot construct a runnable rule that yields a documented wrong result.\n    fail).\n\ntest_harness:arith_misconception(db_row(37935), whole_number, churn_37935_find_teen_total_by_counting_on,\n    misconceptions_whole_number_batch_1:churn_37935_find_teen_total_by_counting_on,\n    1-4,\n    14).\n\nABSTAIN: No documented numerical error; the misconception is structural (procedural over-reliance on counting), not computational. Hence no incorrect arithmetic result is specified, and the schema requires a wrong `Got` that differs from `ExpectedCorrect`.",
+      "result": "external module qualification is not allowed: misconceptions_whole_number_batch_1:"
+    },
+    {
+      "response": "misconceptions_whole_number_batch_1:(churn_37935_find_teen_total_by_counting_on(Tens, Ones, Got) :-\n    Got is Tens + Ones).\n\ntest_harness:arith_misconception(db_row(37935), whole_number, churn_37935_find_teen_total_by_counting_on,\n    misconceptions_whole_number_batch_1:churn_37935_find_teen_total_by_counting_on,\n    10+5,\n    15).",
+      "result": "external module qualification is not allowed: misconceptions_whole_number_batch_1:"
+    }
+  ]
+}

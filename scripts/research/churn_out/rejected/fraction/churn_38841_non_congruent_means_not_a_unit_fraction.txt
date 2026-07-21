@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38841",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38841_non_congruent_means_not_a_unit_fraction",
+    "target_operation": "area_fraction_judgment",
+    "citation": "Tatjana Hodnik Cadez, Vida Manfreda Kolar (2018)",
+    "error_action": "non_congruent_means_not_a_unit_fraction",
+    "error_description": "if the shaded region is not visually congruent to the others it cannot be a named unit fraction",
+    "provenance_comments": "=== row 38841: no-no congruency reasoning ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "SWI-Prolog gate exited 23",
+  "attempts": [
+    {
+      "response": "churn_candidate:(non_congruent_means_not_unit_fraction(area(Segments, Shaded), unit_fraction(1,N))) :-\n    member(seg(_X,_Y,W,H), Segments),\n    Shaded \\== seg(_X,_Y,W,H),\n    \\+ congruent(seg(_X,_Y,W,H), Shaded),\n    N is 1.\n\ntest_harness:arith_misconception(db_row(38841), fraction, churn_38841_non_congruent_means_not_a_unit_fraction,\n    churn_candidate:non_congruent_means_not_unit_fraction,\n    area([seg(0,0,1,1), seg(0,1,1,1), seg(1,0,1,1)], seg(0,1,1,1)),\n    unit_fraction(1,3)).",
+      "result": "predicate must be named churn_38841_non_congruent_means_not_a_unit_fraction"
+    },
+    {
+      "response": "churn_candidate:(churn_38841_non_congruent_means_not_a_unit_fraction(area(Fraction, ShadedPieces, TotalPieces), false) :-\n    ShadedPieces =:= 1,\n    TotalPieces > 1,\n    \\+ congruent(ShadedPieces, TotalPieces)).\n\ntest_harness:arith_misconception(db_row(38841), fraction, churn_38841_non_congruent_means_not_a_unit_fraction,\n    churn_candidate:churn_38841_non_congruent_means_not_a_unit_fraction,\n    area(frac(1,4), 1, 4),\n    true).\n\n% Note: congruent/2 is a placeholder for visual congruence reasoning; the misconception rule returns false when congruence fails, even though 1/4 is a unit fraction. The correct answer is true.",
+      "result": "SWI-Prolog gate exited 23"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38132",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38132_map_visual_features_by_surface_similarity",
+    "target_operation": "representation_mapping",
+    "citation": "Martina A. Rau, Percival G. Matthews (2017)",
+    "error_action": "map_visual_features_by_surface_similarity",
+    "error_description": "connect a picture to a concept based on incidental surface resemblance",
+    "provenance_comments": "=== row 38132: visual surface mapping ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule or defensible probe can be constructed because the documented error describes a cognitive mapping strategy (surface similarity between visual features and concepts) rather than a specific syntactic or semantic error in arithmetic manipulation; it lacks a deterministic, generalizable computational procedure that can be encoded as a binary predicate producing a wrong result from a given input in a way that satisfies the schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule or defensible probe can be constructed because the documented error describes a cognitive mapping strategy (surface similarity between visual features and concepts) rather than a specific syntactic or semantic error in arithmetic manipulation; it lacks a deterministic, generalizable computational procedure that can be encoded as a binary predicate producing a wrong result from a given input in a way that satisfies the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

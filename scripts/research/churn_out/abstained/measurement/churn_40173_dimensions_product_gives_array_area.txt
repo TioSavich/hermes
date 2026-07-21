@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "40173",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_40173_dimensions_product_gives_array_area",
+    "target_operation": "area_array_multiplication",
+    "citation": "Rossella Santagata, Cathery Yeh (2014)",
+    "error_action": "dimensions_product_gives_array_area",
+    "error_description": "the area of a rectangular array equals the product of its row and column counts",
+    "provenance_comments": "=== row 40173: productive abstraction (not a misconception) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: the documented error action \"dimensions_product_gives_array_area\" describes a *correct* mathematical relationship (area = rows × columns), and the provenance comment explicitly labels it as \"productive abstraction (not a misconception)\"; therefore no erroneous rule can be encoded as required.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: the documented error action \"dimensions_product_gives_array_area\" describes a *correct* mathematical relationship (area = rows × columns), and the provenance comment explicitly labels it as \"productive abstraction (not a misconception)\"; therefore no erroneous rule can be encoded as required.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39298",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39298_nonstandard_strategy_is_invalid_or_lucky",
+    "target_operation": "evaluating_invented_strategies",
+    "citation": "Ji-Won Son (2016)",
+    "error_action": "nonstandard_strategy_is_invalid_or_lucky",
+    "error_description": "a correct answer reached without the standard algorithm is mere luck and not a real method",
+    "provenance_comments": "=== row 39298: rejects valid partial-differences strategy ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a conceptual misconception about valuing only standard algorithms, not a specific syntactic arithmetic error that can be encoded as a runnable rule producing a wrong answer for a given input. There is no concrete, generalizable computational rule that students follow which yields a systematically incorrect result; rather, the misconception is a judgment about legitimacy of method, not about arithmetic outcome. Hence, no rule of the required form can be constructed that both produces a documented wrong answer and is generalizable.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a conceptual misconception about valuing only standard algorithms, not a specific syntactic arithmetic error that can be encoded as a runnable rule producing a wrong answer for a given input. There is no concrete, generalizable computational rule that students follow which yields a systematically incorrect result; rather, the misconception is a judgment about legitimacy of method, not about arithmetic outcome. Hence, no rule of the required form can be constructed that both produces a documented wrong answer and is generalizable.",
+      "result": "abstained"
+    }
+  ]
+}

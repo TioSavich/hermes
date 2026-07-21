@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38098",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38098_multiplication_always_increases",
+    "target_operation": "multiplication_magnitude",
+    "citation": "Cinzia Bonotto (2001)",
+    "error_action": "multiplication_always_increases",
+    "error_description": "the product of two numbers is always larger than each factor",
+    "provenance_comments": "=== row 38098: mult-makes-bigger general struggle (no concrete error) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error is a general misconception (\"the product of two numbers is always larger than each factor\") without specifying a concrete erroneous procedure or rule that yields a *deterministic wrong answer* for a given input. A runnable rule must define how the incorrect result is computed; here, no such computational procedure is provided—only a qualitative belief. Without a clear algorithmic error pattern (e.g., \"ignore decimal points\", \"always add instead of multiply\"), the task cannot be satisfied.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is a general misconception (\"the product of two numbers is always larger than each factor\") without specifying a concrete erroneous procedure or rule that yields a *deterministic wrong answer* for a given input. A runnable rule must define how the incorrect result is computed; here, no such computational procedure is provided—only a qualitative belief. Without a clear algorithmic error pattern (e.g., \"ignore decimal points\", \"always add instead of multiply\"), the task cannot be satisfied.",
+      "result": "abstained"
+    }
+  ]
+}

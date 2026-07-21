@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37448",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37448_split_each_part_into_two_without_target_check",
+    "target_operation": "equivalence_repartitioning",
+    "citation": "Amy J. Hackenberg (2007)",
+    "error_action": "split_each_part_into_two_without_target_check",
+    "error_description": "halve every existing part regardless of whether the resulting total reaches the target",
+    "provenance_comments": "=== row 37448: arbitrary partition without anticipation ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_37448_split_each_part_into_two_without_target_check",
+  "attempts": [
+    {
+      "response": "churn_candidate:(split_each_part_into_two_without_target_check(frac(N,D), frac(NewN, NewD)) :-\n    NewD is D * 2,\n    NewN is N * 2).\n\ntest_harness:arith_misconception(db_row(37448), fraction, churn_37448_split_each_part_into_two_without_target_check,\n    churn_candidate:split_each_part_into_two_without_target_check,\n    frac(1,4),\n    frac(2,8)).",
+      "result": "predicate must be named churn_37448_split_each_part_into_two_without_target_check"
+    },
+    {
+      "response": "churn_candidate:(split_each_part_into_two_without_target_check(frac(N,D), frac(NNew, DNew)) :-\n    NNew is N * 2,\n    DNew is D * 2).\n\ntest_harness:arith_misconception(db_row(37448), fraction, churn_37448_split_each_part_into_two_without_target_check,\n    churn_candidate:split_each_part_into_two_without_target_check,\n    frac(3,4),\n    frac(6,8)).",
+      "result": "predicate must be named churn_37448_split_each_part_into_two_without_target_check"
+    }
+  ]
+}

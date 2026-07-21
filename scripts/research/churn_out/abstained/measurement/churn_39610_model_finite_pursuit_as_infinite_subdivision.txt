@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39610",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39610_model_finite_pursuit_as_infinite_subdivision",
+    "target_operation": "infinity_modeling_paradox",
+    "citation": "Elizabeth Date-Huxtable & Michael Cavanagh & Carmel Coady & Michael Easey (2018)",
+    "error_action": "model_finite_pursuit_as_infinite_subdivision",
+    "error_description": "map a finite catching-up event onto an endless spatial subdivision so the pursuer never arrives",
+    "provenance_comments": "=== row 39610: Zeno's paradox / infinite-spatial model of finite-temporal ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual modeling mistake (mapping a finite temporal process onto an infinite spatial subdivision), but no runnable, general arithmetic rule is provided that yields a specific wrong numeric output for a given input. The error is semantic/interpretive (e.g., concluding the pursuer never catches up due to infinite steps), not a definable 2-place predicate that computes a wrong numeric result from a concrete input without side effects or meta-logical operations. SWI-Prolog cannot encode the *reasoning failure* itself as a pure arithmetic rule producing a deterministic incorrect value, per schema requirement that `Rule(Input, Got)` must produce the documented wrong answer.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39610_model_finite_pursuit_as_infinite_subdivision(distance(D), Got) :-\n    Got is D / 2).\n\ntest_harness:arith_misconception(db_row(39610), measurement, churn_39610_model_finite_pursuit_as_infinite_subdivision,\n    churn_candidate:churn_39610_model_finite_pursuit_as_infinite_subdivision,\n    distance(1), 0.5).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual modeling mistake (mapping a finite temporal process onto an infinite spatial subdivision), but no runnable, general arithmetic rule is provided that yields a specific wrong numeric output for a given input. The error is semantic/interpretive (e.g., concluding the pursuer never catches up due to infinite steps), not a definable 2-place predicate that computes a wrong numeric result from a concrete input without side effects or meta-logical operations. SWI-Prolog cannot encode the *reasoning failure* itself as a pure arithmetic rule producing a deterministic incorrect value, per schema requirement that `Rule(Input, Got)` must produce the documented wrong answer.",
+      "result": "abstained"
+    }
+  ]
+}

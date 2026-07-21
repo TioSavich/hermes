@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37677",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37677_take_named_count_of_parts_and_discard_uneven_remainder",
+    "target_operation": "fraction_multiplication",
+    "citation": "Nancy K. Mack (2001)",
+    "error_action": "take_named_count_of_parts_and_discard_uneven_remainder",
+    "error_description": "read 2/3 as simply two of three pieces and ignore leftover pieces when groups don't divide evenly",
+    "provenance_comments": "=== row 37677: fraction-of-fraction ignoring remainder ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding about interpreting fractions as named parts and discarding remainders, but no runnable procedural rule (e.g., a deterministic algorithm that *always* produces the documented wrong answer) is specified. The description is qualitative and context-sensitive (e.g., depends on grouping or fair-sharing scenarios), not a general syntactic transformation applicable to all fraction multiplication inputs. Without a clear, generalizable computational rule that maps *any* valid input to the *exact* documented erroneous output, a testable Prolog rule cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding about interpreting fractions as named parts and discarding remainders, but no runnable procedural rule (e.g., a deterministic algorithm that *always* produces the documented wrong answer) is specified. The description is qualitative and context-sensitive (e.g., depends on grouping or fair-sharing scenarios), not a general syntactic transformation applicable to all fraction multiplication inputs. Without a clear, generalizable computational rule that maps *any* valid input to the *exact* documented erroneous output, a testable Prolog rule cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

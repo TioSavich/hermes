@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38661",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38661_use_recursive_partitioning_for_fraction_of_fraction",
+    "target_operation": "fraction_multiplication_partitioning",
+    "citation": "Martin A. Simon, Melike Kara, Nicora Placa (2018)",
+    "error_action": "use_recursive_partitioning_for_fraction_of_fraction",
+    "error_description": "subdivide each existing part again, the way you share whole items, when taking a fraction of a fraction",
+    "provenance_comments": "=== row 38661: distributive partitioning failure ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_38661_use_recursive_partitioning_for_fraction_of_fraction",
+  "attempts": [
+    {
+      "response": "churn_candidate:(recursive_partition_mult(frac(N1,D1) * frac(N2,D2), frac(N1*N2, D1*D2)) :-\n    true).\n\ntest_harness:arith_misconception(db_row(38661), fraction, churn_38661_use_recursive_partitioning_for_fraction_of_fraction,\n    churn_candidate:recursive_partition_mult,\n    frac(1,2) * frac(1,3),\n    frac(1,6)).",
+      "result": "predicate must be named churn_38661_use_recursive_partitioning_for_fraction_of_fraction"
+    },
+    {
+      "response": "churn_candidate:(use_recursive_partitioning_for_fraction_of_fraction(frac(N1,D1)-frac(N2,D2), frac(N1*N2, D1*D2)) :-\n    true).\n\ntest_harness:arith_misconception(db_row(38661), fraction, churn_38661_use_recursive_partitioning_for_fraction_of_fraction,\n    churn_candidate:use_recursive_partitioning_for_fraction_of_fraction,\n    frac(1,2)-frac(1,3),\n    frac(1,6)).",
+      "result": "predicate must be named churn_38661_use_recursive_partitioning_for_fraction_of_fraction"
+    }
+  ]
+}

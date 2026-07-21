@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38415",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38415_mirror_positive_ray_with_negative_zero",
+    "target_operation": "negative_decimal_number_line",
+    "citation": "Wanty Widjaja, Kaye Stacey, Vicki Steinle (2011)",
+    "error_action": "mirror_positive_ray_with_negative_zero",
+    "error_description": "build a negative ray that increases left-to-right and posit a separate negative zero",
+    "provenance_comments": "=== row 38415: negative number ray mirror (with negative decimals) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding involving mirroring a positive ray on a number line with a separate \"negative zero,\" which is not a computable arithmetic operation but a geometric or conceptual error. There is no well-defined mathematical procedure that can be expressed as a 2-place predicate in SWI-Prolog producing a specific numeric output for a given numeric input that matches the documented error. The error is representational (graphical/visual reasoning), not arithmetical, and cannot be instantiated as a deterministic rule yielding a wrong numeric result for a concrete numeric input without invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38415_mirror_positive_ray_with_negative_zero(Number, Got) :-\n    Number >= 0.0,\n    Got is Number),\nchurn_candidate:(churn_38415_mirror_positive_ray_with_negative_zero(Number, Got) :-\n    Number < 0.0,\n    Got is -Number).\n\ntest_harness:arith_misconception(db_row(38415), decimal, churn_38415_mirror_positive_ray_with_negative_zero,\n    churn_candidate:churn_38415_mirror_positive_ray_with_negative_zero,\n    -2.5,\n    -2.5).",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding involving mirroring a positive ray on a number line with a separate \"negative zero,\" which is not a computable arithmetic operation but a geometric or conceptual error. There is no well-defined mathematical procedure that can be expressed as a 2-place predicate in SWI-Prolog producing a specific numeric output for a given numeric input that matches the documented error. The error is representational (graphical/visual reasoning), not arithmetical, and cannot be instantiated as a deterministic rule yielding a wrong numeric result for a concrete numeric input without invention.",
+      "result": "abstained"
+    }
+  ]
+}

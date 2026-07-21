@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39151",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39151_multiply_numerators_by_numerical_analogy",
+    "target_operation": "fraction_multiplication_rule_justification",
+    "citation": "Matthias Glade & Susanne Prediger (2017)",
+    "error_action": "multiply_numerators_by_numerical_analogy",
+    "error_description": "extend the multiply-across rule to numerators from a noticed number pattern rather than a model",
+    "provenance_comments": "=== row 39151: procedural rule from analogy ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: no runnable rule can be constructed because the documented error describes a procedural justification strategy based on numerical analogy without specifying a concrete, generalizable syntactic transformation or algorithm that produces a deterministic wrong output for a given input. The phrase “extend the multiply-across rule to numerators from a noticed number pattern rather than a model” is too vague to encode as a deterministic Prolog predicate of arity 2 that consistently yields a specific incorrect result.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no runnable rule can be constructed because the documented error describes a procedural justification strategy based on numerical analogy without specifying a concrete, generalizable syntactic transformation or algorithm that produces a deterministic wrong output for a given input. The phrase “extend the multiply-across rule to numerators from a noticed number pattern rather than a model” is too vague to encode as a deterministic Prolog predicate of arity 2 that consistently yields a specific incorrect result.",
+      "result": "abstained"
+    }
+  ]
+}

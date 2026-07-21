@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37598",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37598_mirror_place_names_symmetrically_around_point",
+    "target_operation": "decimal_place_value_naming",
+    "citation": "Kathryn C. Irwin (2001)",
+    "error_action": "mirror_place_names_symmetrically_around_point",
+    "error_description": "the columns right of the point mirror those left of it, so a oneths column sits just past the point",
+    "provenance_comments": "=== row 37598: column name mirror symmetry (oneths) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception about decimal place names (e.g., \"oneths\" as the column immediately right of the decimal point), but no runnable arithmetic rule can be derived that produces this misconception as an output. The error is lexical/naming, not computational — it does not correspond to a calculable expression `Got is ...` that yields a specific numeric result from numeric inputs. The schema requires a rule of the form `Rule(Input, Got)` where `Got` is a numeric outcome that differs from the correct one; no such mapping exists for a naming confusion without inventing a model of how naming affects computation.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_37598_mirror_place_names_symmetrically_around_point(places_left(N), Got) :-\n    Got is N / 10).\n\ntest_harness:arith_misconception(db_row(37598), decimal, churn_37598_mirror_place_names_symmetrically_around_point,\n    churn_candidate:churn_37598_mirror_place_names_symmetrically_around_point,\n    places_left(5),\n    0.5).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception about decimal place names (e.g., \"oneths\" as the column immediately right of the decimal point), but no runnable arithmetic rule can be derived that produces this misconception as an output. The error is lexical/naming, not computational — it does not correspond to a calculable expression `Got is ...` that yields a specific numeric result from numeric inputs. The schema requires a rule of the form `Rule(Input, Got)` where `Got` is a numeric outcome that differs from the correct one; no such mapping exists for a naming confusion without inventing a model of how naming affects computation.",
+      "result": "abstained"
+    }
+  ]
+}

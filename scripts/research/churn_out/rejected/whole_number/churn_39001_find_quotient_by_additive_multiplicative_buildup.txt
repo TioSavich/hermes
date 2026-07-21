@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39001",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39001_find_quotient_by_additive_multiplicative_buildup",
+    "target_operation": "division_as_grouping",
+    "citation": "DAVID S. FIELKER (1987)",
+    "error_action": "find_quotient_by_additive_multiplicative_buildup",
+    "error_description": "determine how many times a divisor fits by building up with known products and adding the remainder",
+    "provenance_comments": "=== row 39001: additive trial-and-error for factors ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 23",
+  "attempts": [
+    {
+      "response": "churn_candidate:(find_quotient_by_additive_multiplicative_buildup(Dividend-Divisor, Got) :-\n    Divisor > 0,\n    find_quotient_by_additive_multiplicative_buildup_(Divisor, 0, 0, Dividend, Got)).\n\nchurn_candidate:(find_quotient_by_additive_multiplicative_buildup_(Divisor, Acc, Count, Target, Got) :-\n    Acc =< Target,\n    NextAcc is Acc + Divisor,\n    NextCount is Count + 1,\n    find_quotient_by_additive_multiplicative_buildup_(Divisor, NextAcc, NextCount, Target, Got)).\nchurn_candidate:(find_quotient_by_additive_multiplicative_buildup_(Divisor, Acc, Count, Target, Count) :-\n    Acc > Target).\n\ntest_harness:arith_misconception(db_row(39001), whole_number, churn_39001_find_quotient_by_additive_multiplicative_buildup,\n    churn_candidate:find_quotient_by_additive_multiplicative_buildup,\n    23-5,\n    4).",
+      "result": "predicate must be named churn_39001_find_quotient_by_additive_multiplicative_buildup"
+    },
+    {
+      "response": "churn_candidate:(churn_39001_find_quotient_by_additive_multiplicative_buildup(Divisor-Target, Quotient) :-\n    findall(Q, (\n        between(0, Target, Q),\n        Product is Q * Divisor,\n        Product =< Target\n    ), Quotients),\n    max_list(Quotients, Quotient)).\n\ntest_harness:arith_misconception(db_row(39001), whole_number, churn_39001_find_quotient_by_additive_multiplicative_buildup,\n    churn_candidate:churn_39001_find_quotient_by_additive_multiplicative_buildup,\n    7-50,\n    7).",
+      "result": "SWI-Prolog gate exited 23"
+    }
+  ]
+}

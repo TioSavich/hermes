@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38107",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38107_treat_scale_marks_as_collectible_objects",
+    "target_operation": "number_line_pseudo_things",
+    "citation": "Heinz Steinbring (2015)",
+    "error_action": "treat_scale_marks_as_collectible_objects",
+    "error_description": "gather the bars on a number line as concrete countable things rather than relational interval markers",
+    "provenance_comments": "=== row 38107: number line bars as concrete objects ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a conceptual misinterpretation (treating scale marks as collectible objects) rather than a specific syntactic or semantic deviation in arithmetic computation; there is no clear, general, executable Prolog predicate of arity 2 that produces the documented wrong answer for a given input without introducing ad-hoc or non-mathematical behavior.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a conceptual misinterpretation (treating scale marks as collectible objects) rather than a specific syntactic or semantic deviation in arithmetic computation; there is no clear, general, executable Prolog predicate of arity 2 that produces the documented wrong answer for a given input without introducing ad-hoc or non-mathematical behavior.",
+      "result": "abstained"
+    }
+  ]
+}

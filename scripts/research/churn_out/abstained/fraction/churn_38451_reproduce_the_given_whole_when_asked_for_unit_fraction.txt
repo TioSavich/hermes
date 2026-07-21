@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38451",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38451_reproduce_the_given_whole_when_asked_for_unit_fraction",
+    "target_operation": "partitive_unit_fraction_scheme",
+    "citation": "Steven Boyce, Anderson Norton (2016)",
+    "error_action": "reproduce_the_given_whole_when_asked_for_unit_fraction",
+    "error_description": "draw a stick the same length as the given one and ignore the fractional language",
+    "provenance_comments": "=== row 38451: drew whole instead of 1/7 ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a visual or representational mistake (drawing a whole stick instead of a unit fraction), which cannot be expressed as a deterministic, executable Prolog rule of arity 2 that produces the wrong output from the input without introducing modeling assumptions beyond the documented behavior. The task requires a *runnable* rule where `Rule(Input, Got)` yields the documented wrong answer; no such deterministic, generalizable computational rule is provided—only a qualitative description of a diagrammatic error.",
+  "attempts": [
+    {
+      "response": "churn_candidate:churn_38451_reproduce_the_given_whole_when_asked_for_unit_fraction(frac(N,D), frac(N,D)).\n\ntest_harness:arith_misconception(db_row(38451), fraction, churn_38451_reproduce_the_given_whole_when_asked_for_unit_fraction,\n    churn_candidate:churn_38451_reproduce_the_given_whole_when_asked_for_unit_fraction,\n    frac(1,7),\n    frac(1,7)).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a visual or representational mistake (drawing a whole stick instead of a unit fraction), which cannot be expressed as a deterministic, executable Prolog rule of arity 2 that produces the wrong output from the input without introducing modeling assumptions beyond the documented behavior. The task requires a *runnable* rule where `Rule(Input, Got)` yields the documented wrong answer; no such deterministic, generalizable computational rule is provided—only a qualitative description of a diagrammatic error.",
+      "result": "abstained"
+    }
+  ]
+}

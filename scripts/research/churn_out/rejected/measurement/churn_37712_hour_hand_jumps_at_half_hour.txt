@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37712",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37712_hour_hand_jumps_at_half_hour",
+    "target_operation": "clock_hand_proportional_relation",
+    "citation": "Darrell Earnest (2017)",
+    "error_action": "hour_hand_jumps_at_half_hour",
+    "error_description": "the hour hand stays on the numeral and jumps to the midpoint only when the minute hand reaches the half hour",
+    "provenance_comments": "=== row 37712: clock hands non-proportional (hour hand jumps) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "external module qualification is not allowed: misconceptions_measurement_batch_1:",
+  "attempts": [
+    {
+      "response": "misconceptions_measurement_batch_1:(churn_37712_hour_hand_jumps_at_half_hour(minutes, HourPos) :-\n    HourPos is 1 + (minutes // 30)).\n\ntest_harness:arith_misconception(db_row(37712), measurement, churn_37712_hour_hand_jumps_at_half_hour,\n    misconceptions_measurement_batch_1:churn_37712_hour_hand_jumps_at_half_hour,\n    30, 2).",
+      "result": "external module qualification is not allowed: misconceptions_measurement_batch_1:"
+    },
+    {
+      "response": "misconceptions_measurement_batch_1:(churn_37712_hour_hand_jumps_at_half_hour(minutes, Got) :-\n    Got is (minutes // 30) * 5).\n\ntest_harness:arith_misconception(db_row(37712), measurement, churn_37712_hour_hand_jumps_at_half_hour,\n    misconceptions_measurement_batch_1:churn_37712_hour_hand_jumps_at_half_hour,\n    30, 5).",
+      "result": "external module qualification is not allowed: misconceptions_measurement_batch_1:"
+    }
+  ]
+}

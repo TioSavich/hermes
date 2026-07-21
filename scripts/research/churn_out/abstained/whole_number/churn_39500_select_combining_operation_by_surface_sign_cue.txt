@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39500",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39500_select_combining_operation_by_surface_sign_cue",
+    "target_operation": "partial_sum_combination",
+    "citation": "LIORA LINCHEVSKI and DRORA LIVNEH (1999)",
+    "error_action": "select_combining_operation_by_surface_sign_cue",
+    "error_description": "choose how to combine partial sums based on which sign happens to appear in the middle of the expression",
+    "provenance_comments": "=== row 39500: random operator choice on surface cue ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error describes a heuristic selection of operation based on surface sign, which is not a deterministic arithmetic transformation of inputs to a fixed wrong output; it is a decision process dependent on problem presentation, not a binary relation between input and output that can be implemented as a pure arithmetic predicate.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error describes a heuristic selection of operation based on surface sign, which is not a deterministic arithmetic transformation of inputs to a fixed wrong output; it is a decision process dependent on problem presentation, not a binary relation between input and output that can be implemented as a pure arithmetic predicate.",
+      "result": "abstained"
+    }
+  ]
+}

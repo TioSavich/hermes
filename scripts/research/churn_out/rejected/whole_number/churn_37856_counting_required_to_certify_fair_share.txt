@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37856",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37856_counting_required_to_certify_fair_share",
+    "target_operation": "fair_sharing",
+    "citation": "Gary Ernest Davis and Anne Pitkethly (1990)",
+    "error_action": "counting_required_to_certify_fair_share",
+    "error_description": "a deal-out is not known to be fair until the shares are counted",
+    "provenance_comments": "=== row 37856: counting required after dealing ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "external module qualification is not allowed: misconceptions_whole_number_batch_1:",
+  "attempts": [
+    {
+      "response": "misconceptions_whole_number_batch_1:(churn_37856_counting_required_to_certify_fair_share(DealOut, Got) :-\n    Got = true).\n\ntest_harness:arith_misconception(db_row(37856), whole_number, churn_37856_counting_required_to_certify_fair_share,\n    misconceptions_whole_number_batch_1:churn_37856_counting_required_to_certify_fair_share,\n    [5,5,5],\n    false).",
+      "result": "external module qualification is not allowed: misconceptions_whole_number_batch_1:"
+    },
+    {
+      "response": "misconceptions_whole_number_batch_1:(churn_37856_counting_required_to_certify_fair_share(A, Got) :-\n    Got is A).\n\ntest_harness:arith_misconception(db_row(37856), whole_number, churn_37856_counting_required_to_certify_fair_share,\n    misconceptions_whole_number_batch_1:churn_37856_counting_required_to_certify_fair_share,\n    12,\n    1).",
+      "result": "external module qualification is not allowed: misconceptions_whole_number_batch_1:"
+    }
+  ]
+}

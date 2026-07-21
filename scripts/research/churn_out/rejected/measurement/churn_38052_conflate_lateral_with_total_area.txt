@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38052",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38052_conflate_lateral_with_total_area",
+    "target_operation": "cylinder_surface_area",
+    "citation": "Andreas Kittel, Astrid Beckmann, Volker Hole, Silke Ladel (2005)",
+    "error_action": "conflate_lateral_with_total_area",
+    "error_description": "treat 'the surface' as a single undifferentiated area without separating lateral from total",
+    "provenance_comments": "=== row 38052: lateral vs total surface area vocabulary ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "external module qualification is not allowed: churn_38052_conflate_lateral_with_total_area:",
+  "attempts": [
+    {
+      "response": "misconceptions_measurement_batch_1:(churn_38052_conflate_lateral_with_total_area(cylinder(R,H), Got) :-\n    Got is 2 * pi * R * H).\n\ntest_harness:arith_misconception(db_row(38052), measurement, churn_38052_conflate_lateral_with_total_area,\n    misconceptions_measurement_batch_1:churn_38052_conflate_lateral_with_total_area,\n    cylinder(3,5), 94.24777960769379).",
+      "result": "external module qualification is not allowed: misconceptions_measurement_batch_1:"
+    },
+    {
+      "response": "churn_38052_conflate_lateral_with_total_area:(churn_38052_conflate_lateral_with_total_area(cylinder(R,H), Got) :-\n    Got is 2 * pi * R * H).\n\ntest_harness:arith_misconception(db_row(38052), measurement, churn_38052_conflate_lateral_with_total_area,\n    churn_38052_conflate_lateral_with_total_area,\n    cylinder(3,5), 94.24777960769379).",
+      "result": "external module qualification is not allowed: churn_38052_conflate_lateral_with_total_area:"
+    }
+  ]
+}

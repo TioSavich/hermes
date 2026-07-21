@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38651",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38651_decimal_whole_is_set_by_the_denominator",
+    "target_operation": "fraction_to_decimal_conversion",
+    "citation": "Ronnie Karsenty, Abraham Arcavi, Nurit Hadas (2007)",
+    "error_action": "decimal_whole_is_set_by_the_denominator",
+    "error_description": "the reference whole for a fraction's decimal form is the denominator rather than ten",
+    "provenance_comments": "=== row 38651: whole depends on denominator (3/4 -> 0.7 via 8-1=7) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (treating the denominator as the reference whole for decimal conversion), but provides no runnable algorithmic rule that can be implemented in SWI-Prolog without inventing mathematics. The example \"3/4 -> 0.7 via 8-1=7\" suggests an ad hoc calculation (e.g., 3×2=6, 4×2=8, 8−1=7 → 0.7), but this is not generalizable, not mathematically sound, and cannot be captured by a deterministic, testable predicate of arity 2 that reliably produces the documented wrong result across inputs. Without a clear, general, and executable procedure, admission fails the execution gate.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38651_decimal_whole_is_set_by_the_denominator(fraction(Numerator-Denominator), Got) :-\n    Got is Numerator / Denominator * 10).\n\ntest_harness:arith_misconception(db_row(38651), decimal, churn_38651_decimal_whole_is_set_by_the_denominator,\n    churn_candidate:churn_38651_decimal_whole_is_set_by_the_denominator,\n    fraction(3-4),\n    7.5).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (treating the denominator as the reference whole for decimal conversion), but provides no runnable algorithmic rule that can be implemented in SWI-Prolog without inventing mathematics. The example \"3/4 -> 0.7 via 8-1=7\" suggests an ad hoc calculation (e.g., 3×2=6, 4×2=8, 8−1=7 → 0.7), but this is not generalizable, not mathematically sound, and cannot be captured by a deterministic, testable predicate of arity 2 that reliably produces the documented wrong result across inputs. Without a clear, general, and executable procedure, admission fails the execution gate.",
+      "result": "abstained"
+    }
+  ]
+}

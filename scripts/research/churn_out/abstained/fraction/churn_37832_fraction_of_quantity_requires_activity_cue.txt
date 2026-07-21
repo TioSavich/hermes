@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37832",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37832_fraction_of_quantity_requires_activity_cue",
+    "target_operation": "fraction_of_whole_number",
+    "citation": "Martin A. Simon, Nicora Placa, and Arnon Avitzur (2016)",
+    "error_action": "fraction_of_quantity_requires_activity_cue",
+    "error_description": "a fraction of a number can be found only when the supporting partitioning activity is present",
+    "provenance_comments": "=== row 37832: abstract task unreachable ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception about the necessity of a partitioning activity for computing a fraction of a quantity, but provides no concrete syntactic or procedural rule that a student would implement in code. There is no runnable arithmetic operation or transformation that can be encoded as a predicate `Rule(Input, Got)` producing a specific wrong output from a given input. Without a determinate computational procedure, no testable rule and probe can be constructed per schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception about the necessity of a partitioning activity for computing a fraction of a quantity, but provides no concrete syntactic or procedural rule that a student would implement in code. There is no runnable arithmetic operation or transformation that can be encoded as a predicate `Rule(Input, Got)` producing a specific wrong output from a given input. Without a determinate computational procedure, no testable rule and probe can be constructed per schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

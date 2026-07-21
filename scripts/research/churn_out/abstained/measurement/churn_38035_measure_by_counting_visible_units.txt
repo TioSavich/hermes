@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38035",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38035_measure_by_counting_visible_units",
+    "target_operation": "length_unit_iteration",
+    "citation": "Jeffrey E. Barrett, Craig Cullen, Julie Sarama, Douglas H. Clements, David Klanderman, Amanda L. Miller, Chepina Rumsey (2011)",
+    "error_action": "measure_by_counting_visible_units",
+    "error_description": "find length by counting the units you can actually see marked",
+    "provenance_comments": "=== row 38035: obscured ruler requires reading numerals ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a procedural misconception (counting only visible units on an obscured ruler), but no runnable, general Prolog rule can be constructed that reliably produces the documented wrong answer for arbitrary inputs without additional assumptions about the specific obscuration pattern or numeral visibility. The error is context-dependent on visual presentation and not expressible as a pure arithmetic transformation over a well-defined input structure.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a procedural misconception (counting only visible units on an obscured ruler), but no runnable, general Prolog rule can be constructed that reliably produces the documented wrong answer for arbitrary inputs without additional assumptions about the specific obscuration pattern or numeral visibility. The error is context-dependent on visual presentation and not expressible as a pure arithmetic transformation over a well-defined input structure.",
+      "result": "abstained"
+    }
+  ]
+}

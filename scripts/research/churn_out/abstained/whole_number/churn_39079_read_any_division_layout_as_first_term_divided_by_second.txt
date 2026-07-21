@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39079",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39079_read_any_division_layout_as_first_term_divided_by_second",
+    "target_operation": "division_notation_language",
+    "citation": "ALAN BELL, EFRAIM FISCHBEIN, AND BRIAN GREER (1984)",
+    "error_action": "read_any_division_layout_as_first_term_divided_by_second",
+    "error_description": "whatever symbol or layout is written, read it as the leftmost/first number divided by the other",
+    "provenance_comments": "=== row 39079: confuses \"divided by\" with \"divided into\" ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a linguistic confusion between \"divided by\" and \"divided into\", which is a semantic misunderstanding of natural language, not a syntactic parsing rule that can be expressed as a general, runnable SWI-Prolog predicate of arity 2 producing a numeric result. No concrete, general, executable rule can be drafted without inventing a specific misinterpretation (e.g., interpreting \"a divided into b\" as a/b), and the gate rejected a prior attempt likely due to non-executable or non-deterministic semantics. The schema requires a runnable rule that produces the documented wrong answer for a given input, but the description does not specify a deterministic computational procedure—only a language misreading.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39079_read_any_division_layout_as_first_term_divided_by_second(A/B, Got) :-\n    Got is A / B).\n\ntest_harness:arith_misconception(db_row(39079), whole_number, churn_39079_read_any_division_layout_as_first_term_divided_by_second,\n    churn_candidate:churn_39079_read_any_division_layout_as_first_term_divided_by_second,\n    12/3,\n    4).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a linguistic confusion between \"divided by\" and \"divided into\", which is a semantic misunderstanding of natural language, not a syntactic parsing rule that can be expressed as a general, runnable SWI-Prolog predicate of arity 2 producing a numeric result. No concrete, general, executable rule can be drafted without inventing a specific misinterpretation (e.g., interpreting \"a divided into b\" as a/b), and the gate rejected a prior attempt likely due to non-executable or non-deterministic semantics. The schema requires a runnable rule that produces the documented wrong answer for a given input, but the description does not specify a deterministic computational procedure—only a language misreading.",
+      "result": "abstained"
+    }
+  ]
+}

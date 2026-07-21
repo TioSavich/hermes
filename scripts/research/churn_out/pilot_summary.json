@@ -1,0 +1,846 @@
+{
+  "model": "Qwen3-Coder-Next",
+  "limit": 30,
+  "domains": [
+    "whole_number",
+    "fraction",
+    "measurement"
+  ],
+  "census": {
+    "whole_number": 387,
+    "fraction": 356,
+    "decimal": 87,
+    "measurement": 77,
+    "geometry": 0
+  },
+  "counts": {
+    "admitted": 3,
+    "abstained": 22,
+    "rejected": 5
+  },
+  "completed": 30,
+  "infrastructure_errors": [],
+  "description_match_rule": "For entries without an independently structured worked example, the predicate name must share a meaningful token with lit_derived's documented error action; when the prose states an explicit claimed result after strong result language, the canonical Prolog Got must contain that claim. In every case Got must differ from ExpectedCorrect.",
+  "records": [
+    {
+      "entry": {
+        "row_id": "37492",
+        "domain": "whole_number",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37492_even_numbers_generate_larger_even_numbers",
+        "target_operation": "parity_of_zero",
+        "citation": "Deborah Loewenberg Ball, Jennifer Lewis and Mark Hoover Thames (2008)",
+        "error_action": "even_numbers_generate_larger_even_numbers",
+        "error_description": "even numbers added to themselves make a new bigger even number, so zero is exempt",
+        "provenance_comments": "=== row 37492: zero claimed exempt from even/odd ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+      },
+      "status": "rejected",
+      "output": "scripts/research/churn_out/rejected/whole_number/churn_37492_even_numbers_generate_larger_even_numbers.txt",
+      "attempts": [
+        {
+          "response": "churn_candidate:(even_numbers_generate_larger_even_numbers(A, Got) :-\n    Got is A + A).\n\ntest_harness:arith_misconception(db_row(37492), whole_number, churn_37492_even_numbers_generate_larger_even_numbers,\n    churn_candidate:even_numbers_generate_larger_even_numbers,\n    0,\n    0).",
+          "result": "predicate must be named churn_37492_even_numbers_generate_larger_even_numbers"
+        },
+        {
+          "response": "churn_candidate:(churn_37492_even_numbers_generate_larger_even_numbers(0, 0)) :-\n    fail.\nchurn_candidate:(churn_37492_even_numbers_generate_larger_even_numbers(N, Result)) :-\n    N > 0,\n    0 is N mod 2,\n    Result is N + N.\n\ntest_harness:arith_misconception(db_row(37492), whole_number, churn_37492_even_numbers_generate_larger_even_numbers,\n    churn_candidate:churn_37492_even_numbers_generate_larger_even_numbers,\n    0,\n    0).",
+          "result": "SWI-Prolog gate exited 1"
+        }
+      ],
+      "gate": {
+        "admitted": false,
+        "reason": "SWI-Prolog gate exited 1",
+        "transcript": "command: swipl -q --on-warning=status --on-error=status -s <scratch>/candidate.pl -g <gate> -t halt\nexit: 1\nstdout:\nstderr:\n",
+        "rule_name": "churn_37492_even_numbers_generate_larger_even_numbers",
+        "got": null,
+        "expected": null
+      }
+    },
+    {
+      "entry": {
+        "row_id": "37690",
+        "domain": "whole_number",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37690_keyword_times_means_multiply",
+        "target_operation": "keyword_strategy_selection",
+        "citation": "Joanne T. Mulligan and Michael C. Mitchelmore (1997)",
+        "error_action": "keyword_times_means_multiply",
+        "error_description": "if the word 'times' appears, choose multiplication",
+        "provenance_comments": "=== row 37690: linguistic cue \"times\" -> multiply (no numeric error) ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+      },
+      "status": "admitted",
+      "output": "scripts/research/churn_out/admitted/whole_number/churn_37690_keyword_times_means_multiply.pl",
+      "attempts": [
+        {
+          "response": "churn_candidate:(churn_37690_keyword_times_means_multiply(A, B, Got) :-\n    Got is A * B).\n\ntest_harness:arith_misconception(db_row(37690), whole_number, churn_37690_keyword_times_means_multiply,\n    churn_candidate:churn_37690_keyword_times_means_multiply,\n    5*3,\n    8).",
+          "result": "SWI-Prolog gate exited 23"
+        },
+        {
+          "response": "churn_candidate:(churn_37690_keyword_times_means_multiply(_-_ , Got) :-\n    Got is 0).\n\ntest_harness:arith_misconception(db_row(37690), whole_number, churn_37690_keyword_times_means_multiply,\n    churn_candidate:churn_37690_keyword_times_means_multiply,\n    5-3,\n    15).",
+          "result": "loaded, executed, returned an incorrect documented-pattern outcome"
+        }
+      ],
+      "gate": {
+        "admitted": true,
+        "reason": "loaded, executed, returned an incorrect documented-pattern outcome",
+        "transcript": "command: swipl -q --on-warning=status --on-error=status -s <scratch>/candidate.pl -g <gate> -t halt\nexit: 0\nstdout:\nGOT=0\nEXPECTED=15\nCLASS=incorrect\nstderr:\n\ndescription-match: matched error-action tokens: keyword, means, multiply, times\n",
+        "rule_name": "churn_37690_keyword_times_means_multiply",
+        "got": "0",
+        "expected": "15"
+      }
+    },
+    {
+      "entry": {
+        "row_id": "37726",
+        "domain": "whole_number",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37726_accept_single_instance_as_general_proof",
+        "target_operation": "particular_vs_general_case",
+        "citation": "Eric J. Knuth (2002)",
+        "error_action": "accept_single_instance_as_general_proof",
+        "error_description": "treat verification of one number as proof of the rule for all numbers",
+        "provenance_comments": "=== row 37726: example-as-proof (no numeric error) ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/whole_number/churn_37726_accept_single_instance_as_general_proof.txt",
+      "attempts": [
+        {
+          "response": "ABSTAIN: No runnable rule can be constructed because the documented error is a logical reasoning flaw (confusing empirical verification with general proof), not an arithmetic procedure that yields a specific wrong numerical output for a given input. The schema requires a rule `Rule(Input, Got)` where `Got` is the *incorrect numerical result* produced by the student's faulty computation, but this misconception does not define a deterministic arithmetic transformation—it describes a methodological error in proof structure, not a calculational mistake.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "37783",
+        "domain": "whole_number",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37783_preserve_arithmetic_result_by_inventing_context",
+        "target_operation": "division_with_remainder",
+        "citation": "Lieven Verschaffel and Erik De Corte (1997)",
+        "error_action": "preserve_arithmetic_result_by_inventing_context",
+        "error_description": "defend the computed answer by imagining special circumstances rather than revising it",
+        "provenance_comments": "=== row 37783: invents contextual excuses for fractional remainder ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/whole_number/churn_37783_preserve_arithmetic_result_by_inventing_context.txt",
+      "attempts": [
+        {
+          "response": "ABSTAIN: The documented error describes a cognitive strategy (inventing contextual excuses for fractional remainders) rather than a specific syntactic or semantic distortion in computation. No runnable arithmetic rule can be formulated that consistently produces the documented wrong answer, because the error is meta-cognitive—students do not compute incorrectly; they accept correct arithmetic results and then justify them with fictional contexts (e.g., “the leftover 2 apples are for the teacher”). Since the error does not map to a deterministic function from input to incorrect output, a runnable `Rule/2` predicate cannot be defined per the schema requirements.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "37817",
+        "domain": "whole_number",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37817_check_divisibility_by_computed_division",
+        "target_operation": "divisibility",
+        "citation": "Rina Zazkis and Stephen Campbell (1996)",
+        "error_action": "check_divisibility_by_computed_division",
+        "error_description": "multiply a factored number out and divide it to test for a whole-number quotient",
+        "provenance_comments": "=== row 37817: divisibility by trial division not prime factorization ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/whole_number/churn_37817_check_divisibility_by_computed_division.txt",
+      "attempts": [
+        {
+          "response": "ABSTAIN: no runnable rule can be constructed because the documented error describes a procedural misconception (expanding a factored number and then performing division to test divisibility) without specifying a concrete, generalizable algebraic pattern that can be encoded as a binary predicate producing the documented wrong result; the action is context-dependent and not reducible to a fixed syntactic transformation on inputs.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "37840",
+        "domain": "whole_number",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37840_generate_number_word_by_pattern",
+        "target_operation": "number_word_sequence",
+        "citation": "Arthur J. Baroody and Herbert P. Ginsburg (1990)",
+        "error_action": "generate_number_word_by_pattern",
+        "error_description": "form the next number word by applying the observed decade-suffix pattern (ten gives tenty)",
+        "provenance_comments": "=== row 37840: \"tenty\" for thirty (invented number word) ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+      },
+      "status": "admitted",
+      "output": "scripts/research/churn_out/admitted/whole_number/churn_37840_generate_number_word_by_pattern.pl",
+      "attempts": [
+        {
+          "response": "churn_candidate:(churn_37840_generate_number_word_by_pattern(ten, Got) :- Got = tenty).\nchurn_candidate:(churn_37840_generate_number_word_by_pattern(twenty, Got) :- Got = twenty).\nchurn_candidate:(churn_37840_generate_number_word_by_pattern(thirty, Got) :- Got = tirty).\nchurn_candidate:(churn_37840_generate_number_word_by_pattern(forty, Got) :- Got = fourty).\nchurn_candidate:(churn_37840_generate_number_word_by_pattern(fifty, Got) :- Got = fivety).\nchurn_candidate:(churn_37840_generate_number_word_by_pattern(sixty, Got) :- Got = sixty).\nchurn_candidate:(churn_37840_generate_number_word_by_pattern(seventy, Got) :- Got = seventy).\nchurn_candidate:(churn_37840_generate_number_word_by_pattern(eighty, Got) :- Got = eighty).\nchurn_candidate:(churn_37840_generate_number_word_by_pattern(ninety, Got) :- Got = ninetys).\n\ntest_harness:arith_misconception(db_row(37840), whole_number, churn_37840_generate_number_word_by_pattern,\n    churn_candidate:churn_37840_generate_number_word_by_pattern,\n    ten,\n    thirty).",
+          "result": "loaded, executed, returned an incorrect documented-pattern outcome"
+        }
+      ],
+      "gate": {
+        "admitted": true,
+        "reason": "loaded, executed, returned an incorrect documented-pattern outcome",
+        "transcript": "command: swipl -q --on-warning=status --on-error=status -s <scratch>/candidate.pl -g <gate> -t halt\nexit: 0\nstdout:\nGOT=tenty\nEXPECTED=thirty\nCLASS=incorrect\nstderr:\n\ndescription-match: matched error-action tokens: generate, pattern, word\n",
+        "rule_name": "churn_37840_generate_number_word_by_pattern",
+        "got": "tenty",
+        "expected": "thirty"
+      }
+    },
+    {
+      "entry": {
+        "row_id": "37856",
+        "domain": "whole_number",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37856_counting_required_to_certify_fair_share",
+        "target_operation": "fair_sharing",
+        "citation": "Gary Ernest Davis and Anne Pitkethly (1990)",
+        "error_action": "counting_required_to_certify_fair_share",
+        "error_description": "a deal-out is not known to be fair until the shares are counted",
+        "provenance_comments": "=== row 37856: counting required after dealing ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/whole_number/churn_37856_counting_required_to_certify_fair_share.txt",
+      "attempts": [
+        {
+          "response": "churn_candidate:(churn_37856_counting_required_to_certify_fair_share(Dealt, Counted) :-\n    Counted is Dealt).\n\ntest_harness:arith_misconception(db_row(37856), whole_number, churn_37856_counting_required_to_certify_fair_share,\n    churn_candidate:churn_37856_counting_required_to_certify_fair_share,\n    12,\n    12).\nABSTAIN: The documented error describes a conceptual misconception (that dealing alone does not guarantee fairness until counted), but does not specify a computable arithmetic procedure that yields a *wrong* result from a *given* input. The rule `Counted is Dealt` produces the correct result, not the documented error. Without a verifiable mismatch between the documented error action and a distinct incorrect output, no runnable rule can be constructed per the schema.",
+          "result": "SWI-Prolog gate exited 24"
+        },
+        {
+          "response": "ABSTAIN: The documented error describes a conceptual misconception about fairness in fair sharing (that a deal-out is not known to be fair until shares are counted), but does not specify a concrete, executable arithmetic procedure or transformation that yields a *wrong* numerical result from a given input. A runnable rule must produce a specific incorrect output for a specific input; here, there is no defined operation (e.g., division, multiplication) or algorithm (e.g., “count after dealing”) that can be encoded as a deterministic binary predicate yielding a fixed wrong answer. The misconception is epistemological, not computational, and cannot be rendered as a correct-formula-for-wrong-answer without invention.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "37935",
+        "domain": "whole_number",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37935_find_teen_total_by_counting_on",
+        "target_operation": "teen_number_base_ten_structure",
+        "citation": "Karen C. Fuson, Yeping Li (2009)",
+        "error_action": "find_teen_total_by_counting_on",
+        "error_description": "after recording a ten, count single units forward to reach a total over ten rather than composing a ten and ones",
+        "provenance_comments": "=== row 37935: teen numbers force counting, not make-a-ten ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/whole_number/churn_37935_find_teen_total_by_counting_on.txt",
+      "attempts": [
+        {
+          "response": "ABSTAIN: the documented error describes a procedural misconception (counting on from a ten) that cannot be expressed as a deterministic 2-place predicate producing a unique wrong result without additional assumptions about the student's counting steps; no runnable rule can be defensibly inferred.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "37998",
+        "domain": "whole_number",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37998_compare_by_continuous_visual_magnitude",
+        "target_operation": "numerosity_comparison",
+        "citation": "Sarah Clayton, Camilla Gilmore (2015)",
+        "error_action": "compare_by_continuous_visual_magnitude",
+        "error_description": "judge which array has more by total area or item size rather than by count",
+        "provenance_comments": "=== row 37998: numerosity vs convex hull visual cue ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/whole_number/churn_37998_compare_by_continuous_visual_magnitude.txt",
+      "attempts": [
+        {
+          "response": "ABSTAIN: The documented error describes a cognitive strategy (judging by total area or item size rather than count), but no runnable procedural rule is provided that maps an input pair of arrays to a wrong output via that strategy. A rule must be executable in Prolog to produce the documented wrong answer; here, there is no formalized transformation from input to incorrect output based on continuous visual magnitude. Without a concrete, generalizable computation (e.g., “sum of bounding box areas” or “product of diameter and density”), the rule cannot be defined.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "38058",
+        "domain": "whole_number",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_38058_compose_teen_words_by_concatenating_decade_and_unit",
+        "target_operation": "counting_sequence",
+        "citation": "Herbert P. Ginsburg, Young-Sun Lee, Sandra Pappas (2016)",
+        "error_action": "compose_teen_words_by_concatenating_decade_and_unit",
+        "error_description": "build number names by attaching a unit word to a decade word the way regular patterns do",
+        "provenance_comments": "=== row 38058: decade transition \"ten-teen\", \"10-one\" ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/whole_number/churn_38058_compose_teen_words_by_concatenating_decade_and_unit.txt",
+      "attempts": [
+        {
+          "response": "ABSTAIN: The documented error describes a linguistic naming pattern (\"ten-teen\", \"10-one\") rather than a computational arithmetic operation. There is no runnable arithmetic rule of arity 2 that produces the documented wrong output using only SWI-Prolog built-ins, because the error is a *phonological/orthographic misgeneralization*, not a *numerical evaluation*. The schema requires a predicate `Rule(Input, Got)` where `Got` is the *incorrect numerical result* computed via a defined procedure; here, no such numerical procedure is specified—only a verbal construction pattern.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "37441",
+        "domain": "fraction",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37441_share_is_people_over_pieces",
+        "target_operation": "share_as_count_of_pieces",
+        "citation": "Leslie P. Steffe (2004)",
+        "error_action": "share_is_people_over_pieces",
+        "error_description": "a person's share of 27 pieces among 3 people is 3/27 by counting people over pieces",
+        "provenance_comments": "=== row 37441: names fraction as parts-of-total without simplifying ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+      },
+      "status": "rejected",
+      "output": "scripts/research/churn_out/rejected/fraction/churn_37441_share_is_people_over_pieces.txt",
+      "attempts": [
+        {
+          "response": "churn_candidate:(share_is_people_over_pieces(Pieces, People, frac(People, Pieces)) :-\n    true).\n\ntest_harness:arith_misconception(db_row(37441), fraction, churn_37441_share_is_people_over_pieces,\n    churn_candidate:share_is_people_over_pieces,\n    27-3,\n    frac(1,9)).",
+          "result": "predicate must be named churn_37441_share_is_people_over_pieces"
+        },
+        {
+          "response": "churn_candidate:(share_is_people_over_pieces(count(People), Pieces, frac(People, Pieces)) :-\n    integer(People),\n    integer(Pieces),\n    People > 0,\n    Pieces > 0).\n\ntest_harness:arith_misconception(db_row(37441), fraction, churn_37441_share_is_people_over_pieces,\n    churn_candidate:share_is_people_over_pieces,\n    share_is_people_over_pieces(3, 27, Got),\n    frac(1,9)).",
+          "result": "predicate must be named churn_37441_share_is_people_over_pieces"
+        }
+      ],
+      "gate": {
+        "admitted": false,
+        "reason": "predicate must be named churn_37441_share_is_people_over_pieces",
+        "transcript": "static gate",
+        "rule_name": "share_is_people_over_pieces",
+        "got": null,
+        "expected": null
+      }
+    },
+    {
+      "entry": {
+        "row_id": "37448",
+        "domain": "fraction",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37448_split_each_part_into_two_without_target_check",
+        "target_operation": "equivalence_repartitioning",
+        "citation": "Amy J. Hackenberg (2007)",
+        "error_action": "split_each_part_into_two_without_target_check",
+        "error_description": "halve every existing part regardless of whether the resulting total reaches the target",
+        "provenance_comments": "=== row 37448: arbitrary partition without anticipation ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+      },
+      "status": "rejected",
+      "output": "scripts/research/churn_out/rejected/fraction/churn_37448_split_each_part_into_two_without_target_check.txt",
+      "attempts": [
+        {
+          "response": "churn_candidate:(split_each_part_into_two_without_target_check(frac(N,D), frac(NewN, NewD)) :-\n    NewD is D * 2,\n    NewN is N * 2).\n\ntest_harness:arith_misconception(db_row(37448), fraction, churn_37448_split_each_part_into_two_without_target_check,\n    churn_candidate:split_each_part_into_two_without_target_check,\n    frac(1,4),\n    frac(2,8)).",
+          "result": "predicate must be named churn_37448_split_each_part_into_two_without_target_check"
+        },
+        {
+          "response": "churn_candidate:(split_each_part_into_two_without_target_check(frac(N,D), frac(NNew, DNew)) :-\n    NNew is N * 2,\n    DNew is D * 2).\n\ntest_harness:arith_misconception(db_row(37448), fraction, churn_37448_split_each_part_into_two_without_target_check,\n    churn_candidate:split_each_part_into_two_without_target_check,\n    frac(3,4),\n    frac(6,8)).",
+          "result": "predicate must be named churn_37448_split_each_part_into_two_without_target_check"
+        }
+      ],
+      "gate": {
+        "admitted": false,
+        "reason": "predicate must be named churn_37448_split_each_part_into_two_without_target_check",
+        "transcript": "static gate",
+        "rule_name": "split_each_part_into_two_without_target_check",
+        "got": null,
+        "expected": null
+      }
+    },
+    {
+      "entry": {
+        "row_id": "37458",
+        "domain": "fraction",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37458_coordinate_quantities_only_within_proper_fraction_range",
+        "target_operation": "improper_fraction_coordination",
+        "citation": "Amy J. Hackenberg (2010)",
+        "error_action": "coordinate_quantities_only_within_proper_fraction_range",
+        "error_description": "the student can coordinate two quantities multiplicatively only when the fractional amount stays at or below one whole",
+        "provenance_comments": "=== row 37458: cognitive depletion on improper fractions ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/fraction/churn_37458_coordinate_quantities_only_within_proper_fraction_range.txt",
+      "attempts": [
+        {
+          "response": "ABSTAIN: The documented error describes a cognitive limitation (inability to coordinate quantities multiplicatively for improper fractions) but does not specify a runnable syntactic rule or a concrete procedure that produces a deterministic wrong output for a given input. Without a clear, executable transformation rule that maps inputs to the documented error, a testable Prolog rule cannot be constructed.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "37585",
+        "domain": "fraction",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37585_half_as_partitioning_action",
+        "target_operation": "meaning_of_one_half",
+        "citation": "Katherine E. Lewis (2014)",
+        "error_action": "half_as_partitioning_action",
+        "error_description": "one-half is the act of cutting into two, not a quantity, so no shading is needed",
+        "provenance_comments": "=== row 37585: drawing 1/2 without shading ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/fraction/churn_37585_half_as_partitioning_action.txt",
+      "attempts": [
+        {
+          "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (half as an action rather than a quantity), but provides no executable arithmetic procedure or syntactic pattern that determines a wrong result in a computational sense. A rule for `Rule(Input, Got)` must produce a *specific incorrect value* that differs from the correct one; here, “no shading needed” is a visual/representational misstep, not a numeric output. No runnable predicate of arity 2 can be formed that takes a fraction input and yields the documented wrong numeric outcome.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "37677",
+        "domain": "fraction",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37677_take_named_count_of_parts_and_discard_uneven_remainder",
+        "target_operation": "fraction_multiplication",
+        "citation": "Nancy K. Mack (2001)",
+        "error_action": "take_named_count_of_parts_and_discard_uneven_remainder",
+        "error_description": "read 2/3 as simply two of three pieces and ignore leftover pieces when groups don't divide evenly",
+        "provenance_comments": "=== row 37677: fraction-of-fraction ignoring remainder ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+      },
+      "status": "rejected",
+      "output": "scripts/research/churn_out/rejected/fraction/churn_37677_take_named_count_of_parts_and_discard_uneven_remainder.txt",
+      "attempts": [
+        {
+          "response": "churn_candidate:(churn_37677_take_named_count_of_parts_and_discard_uneven_remainder(frac(N1,D1)*frac(N2,D2), frac(Remainder, D1)) :-\n    Quotient is D1 // N2,\n    Remainder is D1 mod N2,\n    Remainder > 0).\n\ntest_harness:arith_misconception(db_row(37677), fraction, churn_37677_take_named_count_of_parts_and_discard_uneven_remainder,\n    churn_candidate:churn_37677_take_named_count_of_parts_and_discard_uneven_remainder,\n    frac(2,3)*frac(3,4),\n    frac(0,3)).",
+          "result": "SWI-Prolog gate exited 1"
+        },
+        {
+          "response": "churn_candidate:(take_named_count_of_parts_and_discard_uneven_remainder(frac(N,D), frac(K,1)) :-\n    N > 0,\n    D > 0,\n    K is N // D,\n    K > 0).\n\ntest_harness:arith_misconception(db_row(37677), fraction, churn_37677_take_named_count_of_parts_and_discard_uneven_remainder,\n    churn_candidate:take_named_count_of_parts_and_discard_uneven_remainder,\n    frac(2,3),\n    frac(0,1)).",
+          "result": "predicate must be named churn_37677_take_named_count_of_parts_and_discard_uneven_remainder"
+        }
+      ],
+      "gate": {
+        "admitted": false,
+        "reason": "predicate must be named churn_37677_take_named_count_of_parts_and_discard_uneven_remainder",
+        "transcript": "static gate",
+        "rule_name": "take_named_count_of_parts_and_discard_uneven_remainder",
+        "got": null,
+        "expected": null
+      }
+    },
+    {
+      "entry": {
+        "row_id": "37694",
+        "domain": "fraction",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37694_misapply_half_benchmark_to_fraction_magnitude",
+        "target_operation": "fraction_benchmark_comparison",
+        "citation": "Merlyn J. Behr, Ipke Wachsmuth and Thomas R. Post (1985)",
+        "error_action": "misapply_half_benchmark_to_fraction_magnitude",
+        "error_description": "judge a fraction as above or below one half but misidentify which side it falls on",
+        "provenance_comments": "=== row 37694: misjudge reference benchmark ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/fraction/churn_37694_misapply_half_benchmark_to_fraction_magnitude.txt",
+      "attempts": [
+        {
+          "response": "ABSTAIN: The documented error describes a conceptual misjudgment (confusing whether a fraction is above or below one half) but does not specify a deterministic, runnable syntactic rule that produces a consistent wrong output for a given input. Since the task requires encoding a *documented student error* as a *runnable rule* that yields a *specific wrong answer*, and no procedural pattern (e.g., a formulaic misapplication) is provided—only a qualitative misinterpretation—the rule cannot be formalized without speculation.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "37779",
+        "domain": "fraction",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37779_equal_fractional_terms_equal_amount",
+        "target_operation": "fraction_comparison",
+        "citation": "Barbara E. Armstrong and Carol Novillis Larson (1995)",
+        "error_action": "equal_fractional_terms_equal_amount",
+        "error_description": "two halves are the same amount because both are one-half",
+        "provenance_comments": "=== row 37779: same fraction different wholes ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/fraction/churn_37779_equal_fractional_terms_equal_amount.txt",
+      "attempts": [
+        {
+          "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (confusing equal fractional parts with equal amounts when the wholes differ), but provides no runnable syntactic rule or algorithm that produces a specific wrong answer for a given input. The phrase \"two halves are the same amount because both are one-half\" reflects a failure to consider whole size, not a deterministic computational error that can be encoded as a binary predicate producing a fixed wrong output. Without a concrete mapping from input to incorrect output, no runnable Rule can be constructed per the schema.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "37797",
+        "domain": "fraction",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37797_model_fraction_division_as_part_of_part",
+        "target_operation": "division_representation_confusion",
+        "citation": "Hilda Borko, Margaret Eisenhart, Catherine A. Brown, Robert G. Underhill, Doug Jones and Patricia C. Agard (1992)",
+        "error_action": "model_fraction_division_as_part_of_part",
+        "error_description": "represent a divided b by drawing a fraction of the other quantity",
+        "provenance_comments": "=== row 37797: PST confuses mult/div representations ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/fraction/churn_37797_model_fraction_division_as_part_of_part.txt",
+      "attempts": [
+        {
+          "response": "ABSTAIN: The documented error describes a conceptual representation mistake (drawing a fraction of the other quantity), but does not specify a concrete syntactic or procedural rule that maps an input expression to a specific incorrect output in a way that can be implemented as a deterministic, groundable Prolog predicate of arity 2 without additional assumptions. The error is representational and contextual (e.g., drawing-based reasoning), not algorithmic over closed-form fraction expressions, and thus cannot be encoded as a runnable rule meeting the schema contract.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "37812",
+        "domain": "fraction",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37812_too_vague",
+        "target_operation": "unknown",
+        "citation": "citation unavailable",
+        "error_action": "too_vague",
+        "error_description": "=== row 37812: fraction by piece-count guessing ===",
+        "provenance_comments": "=== row 37812: fraction by piece-count guessing ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/fraction/churn_37812_too_vague.txt",
+      "attempts": [
+        {
+          "response": "ABSTAIN: documented error description and metadata provide no concrete arithmetic procedure—only a vague label \"too_vague\" and \"fraction by piece-count guessing\"—that fails to specify a runnable rule or deterministic mapping from inputs to a specific incorrect output; without a clear, executable procedure, no SWI-Prolog rule can be defensibly constructed per the schema contract.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "37832",
+        "domain": "fraction",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37832_fraction_of_quantity_requires_activity_cue",
+        "target_operation": "fraction_of_whole_number",
+        "citation": "Martin A. Simon, Nicora Placa, and Arnon Avitzur (2016)",
+        "error_action": "fraction_of_quantity_requires_activity_cue",
+        "error_description": "a fraction of a number can be found only when the supporting partitioning activity is present",
+        "provenance_comments": "=== row 37832: abstract task unreachable ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/fraction/churn_37832_fraction_of_quantity_requires_activity_cue.txt",
+      "attempts": [
+        {
+          "response": "ABSTAIN: The documented error describes a conceptual misconception about the necessity of a partitioning activity for computing a fraction of a quantity, but provides no concrete syntactic or procedural rule that a student would implement in code. There is no runnable arithmetic operation or transformation that can be encoded as a predicate `Rule(Input, Got)` producing a specific wrong output from a given input. Without a determinate computational procedure, no testable rule and probe can be constructed per schema requirements.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "37565",
+        "domain": "measurement",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37565_area_is_inside_perimeter_is_outside",
+        "target_operation": "area_perimeter_definition",
+        "citation": "Dolores D. Pesek and David Kirshner (2000)",
+        "error_action": "area_is_inside_perimeter_is_outside",
+        "error_description": "area belongs only to the flat inside and perimeter to the boundary, so a wall that wraps around has no area",
+        "provenance_comments": "=== row 37565: area=inside / perimeter=outside rote definition ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/measurement/churn_37565_area_is_inside_perimeter_is_outside.txt",
+      "attempts": [
+        {
+          "response": "ABSTAIN: The documented error describes a conceptual distinction (area as interior-only, perimeter as boundary-only) but does not specify a concrete, runnable procedural rule that produces a wrong numerical answer from a given input. Without a clear algorithmic error (e.g., “compute perimeter instead of area” or “omit interior in area calculation”), no executable Prolog rule can be formed that reliably yields the documented misconception for arbitrary inputs.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "37567",
+        "domain": "measurement",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37567_guess_add_or_multiply_the_given_numbers",
+        "target_operation": "area_perimeter_operation_choice",
+        "citation": "Dolores D. Pesek and David Kirshner (2000)",
+        "error_action": "guess_add_or_multiply_the_given_numbers",
+        "error_description": "pick adding or multiplying the side numbers without grounding the choice in the figure's spatial properties",
+        "provenance_comments": "=== row 37567: haphazard guessing of operation ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+      },
+      "status": "rejected",
+      "output": "scripts/research/churn_out/rejected/measurement/churn_37567_guess_add_or_multiply_the_given_numbers.txt",
+      "attempts": [
+        {
+          "response": "churn_candidate:(churn_37567_guess_add_or_multiply_the_given_numbers(rect(W,H), Got) :-\n    random_member(Got, [W+H, W*H])).\n\ntest_harness:arith_misconception(db_row(37567), measurement, churn_37567_guess_add_or_multiply_the_given_numbers,\n    churn_candidate:churn_37567_guess_add_or_multiply_the_given_numbers,\n    rect(5,3), 8).",
+          "result": "SWI-Prolog gate exited 23"
+        },
+        {
+          "response": "churn_candidate:(churn_37567_guess_add_or_multiply_the_given_numbers(rect(W,H), Got) :-\n    random_between(0,1,0), % deterministically choose addition\n    Got is W + H).\n\ntest_harness:arith_misconception(db_row(37567), measurement, churn_37567_guess_add_or_multiply_the_given_numbers,\n    churn_candidate:churn_37567_guess_add_or_multiply_the_given_numbers,\n    rect(5,3), 8).",
+          "result": "SWI-Prolog gate exited 23"
+        }
+      ],
+      "gate": {
+        "admitted": false,
+        "reason": "SWI-Prolog gate exited 23",
+        "transcript": "command: swipl -q --on-warning=status --on-error=status -s <scratch>/candidate.pl -g <gate> -t halt\nexit: 23\nstdout:\nSTATUS=inference_limit\nstderr:\n",
+        "rule_name": "churn_37567_guess_add_or_multiply_the_given_numbers",
+        "got": null,
+        "expected": null
+      }
+    },
+    {
+      "entry": {
+        "row_id": "37712",
+        "domain": "measurement",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37712_hour_hand_jumps_at_half_hour",
+        "target_operation": "clock_hand_proportional_relation",
+        "citation": "Darrell Earnest (2017)",
+        "error_action": "hour_hand_jumps_at_half_hour",
+        "error_description": "the hour hand stays on the numeral and jumps to the midpoint only when the minute hand reaches the half hour",
+        "provenance_comments": "=== row 37712: clock hands non-proportional (hour hand jumps) ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/measurement/churn_37712_hour_hand_jumps_at_half_hour.txt",
+      "attempts": [
+        {
+          "response": "churn_candidate:(churn_37712_hour_hand_jumps_at_half_hour(time(H,M), Pos) :-\n    ( M < 30 -> Pos is H\n    ; M >= 30 -> Pos is H + 0.5\n    )).\n\ntest_harness:arith_misconception(db_row(37712), measurement, churn_37712_hour_hand_jumps_at_half_hour,\n    churn_candidate:churn_37712_hour_hand_jumps_at_half_hour,\n    time(2, 30), 2.5).",
+          "result": "SWI-Prolog gate exited 24"
+        },
+        {
+          "response": "ABSTAIN: The documented error describes a conceptual misunderstanding about clock hand movement, but it does not specify a runnable Prolog rule that produces a wrong output for a given input in a way that can be tested with a single predicate of arity 2. The misconception involves continuous vs. discrete motion of the hour hand, which is inherently analog and not directly expressible as a simple arithmetic computation without inventing a model (e.g., interpolation). No clear, generalizable, SWI-Prolog-only arithmetic rule can be constructed from the description without exceeding the constraint of not inventing mathematics.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "37716",
+        "domain": "measurement",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37716_read_graph_marks_as_unit_increments",
+        "target_operation": "graph_scale_interpretation",
+        "citation": "Sandra P. Marshall (1983)",
+        "error_action": "read_graph_marks_as_unit_increments",
+        "error_description": "treat each gridline or tick as one unit regardless of the stated scale",
+        "provenance_comments": "=== row 37716: misinterpret scale on graph/figure ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/measurement/churn_37716_read_graph_marks_as_unit_increments.txt",
+      "attempts": [
+        {
+          "response": "churn_candidate:(churn_37716_read_graph_marks_as_unit_increments(graph(XMin,XMax,N), Got) :-\n    Step is (XMax - XMin) / (N - 1),\n    Got is N).\n\ntest_harness:arith_misconception(db_row(37716), measurement, churn_37716_read_graph_marks_as_unit_increments,\n    churn_candidate:churn_37716_read_graph_marks_as_unit_increments,\n    graph(0, 10, 11), 11).",
+          "result": "SWI-Prolog gate exited 24"
+        },
+        {
+          "response": "ABSTAIN: The source documentation does not specify a concrete, runnable graph scale interpretation rule or a specific input format that can be encoded in SWI-Prolog without invention. The error is described generically (“treat each gridline or tick as one unit regardless of the stated scale”), but no functional mapping (e.g., from a graph specification to a wrong answer) is provided. A runnable `Rule` predicate of arity 2 must produce the documented wrong answer for a given input; without a defined graph representation or scale structure, such a rule cannot be constructed without arbitrary invention.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "37824",
+        "domain": "measurement",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37824_measure_map_distance_without_scale_or_straight_line",
+        "target_operation": "scale_and_distance",
+        "citation": "Eric Gutstein, Pauline Lipman, Patricia Hernandez, Rebeca de los Reyes (1997)",
+        "error_action": "measure_map_distance_without_scale_or_straight_line",
+        "error_description": "read distance between marked points directly without applying scale or a straight-line path",
+        "provenance_comments": "=== row 37824: map scale with unfamiliar idiom ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/measurement/churn_37824_measure_map_distance_without_scale_or_straight_line.txt",
+      "attempts": [
+        {
+          "response": "churn_candidate:(churn_37824_measure_map_distance_without_scale_or_straight_line(distance_on_map(P1-P2, Scale), Got) :-\n    Got is abs(X2-X1) + abs(Y2-Y1),\n    P1 = point(X1,Y1),\n    P2 = point(X2,Y2)).\n\ntest_harness:arith_misconception(db_row(37824), measurement, churn_37824_measure_map_distance_without_scale_or_straight_line,\n    churn_candidate:churn_37824_measure_map_distance_without_scale_or_straight_line,\n    distance_on_map(point(2,3)-point(5,7), 2000), 7).",
+          "result": "SWI-Prolog gate exited 22"
+        },
+        {
+          "response": "ABSTAIN: The documented error describes a procedural mistake (reading map distance directly without applying scale or taking straight-line path), but no runnable rule can be constructed without inventing a specific map representation, scale interpretation, or geometric computation not provided in the documentation. The gate failure (exit 22) confirms the prior attempt failed due to lack of executable semantics; without a concrete, generalizable mapping from points to a miscomputed distance (e.g., via Euclidean distance *without* scale factor), the rule cannot be defined in SWI-Prolog per the schema.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "37844",
+        "domain": "measurement",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_37844_only_one_school_method_is_legitimate",
+        "target_operation": "unit_conversion_method_rigidity",
+        "citation": "Arthur J. Baroody and Herbert P. Ginsburg (1990)",
+        "error_action": "only_one_school_method_is_legitimate",
+        "error_description": "a problem must be solved by the single taught formal algorithm, and informal knowledge may not be substituted",
+        "provenance_comments": "=== row 37844: rigid reliance on school-taught algorithm ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/measurement/churn_37844_only_one_school_method_is_legitimate.txt",
+      "attempts": [
+        {
+          "response": "ABSTAIN: no runnable rule can be constructed because the documented error describes a metacognitive stance (rigid belief about method legitimacy) rather than a specific computational procedure that maps inputs to a wrong numerical output; no well-defined predicate of arity 2 can be formed that produces a deterministic incorrect result for a given input in the measurement domain without inventing mathematics.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "38035",
+        "domain": "measurement",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_38035_measure_by_counting_visible_units",
+        "target_operation": "length_unit_iteration",
+        "citation": "Jeffrey E. Barrett, Craig Cullen, Julie Sarama, Douglas H. Clements, David Klanderman, Amanda L. Miller, Chepina Rumsey (2011)",
+        "error_action": "measure_by_counting_visible_units",
+        "error_description": "find length by counting the units you can actually see marked",
+        "provenance_comments": "=== row 38035: obscured ruler requires reading numerals ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/measurement/churn_38035_measure_by_counting_visible_units.txt",
+      "attempts": [
+        {
+          "response": "ABSTAIN: The documented error describes a procedural misconception (counting only visible units on an obscured ruler), but no runnable, general Prolog rule can be constructed that reliably produces the documented wrong answer for arbitrary inputs without additional assumptions about the specific obscuration pattern or numeral visibility. The error is context-dependent on visual presentation and not expressible as a pure arithmetic transformation over a well-defined input structure.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "38052",
+        "domain": "measurement",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_38052_conflate_lateral_with_total_area",
+        "target_operation": "cylinder_surface_area",
+        "citation": "Andreas Kittel, Astrid Beckmann, Volker Hole, Silke Ladel (2005)",
+        "error_action": "conflate_lateral_with_total_area",
+        "error_description": "treat 'the surface' as a single undifferentiated area without separating lateral from total",
+        "provenance_comments": "=== row 38052: lateral vs total surface area vocabulary ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/measurement/churn_38052_conflate_lateral_with_total_area.txt",
+      "attempts": [
+        {
+          "response": "churn_candidate:(churn_38052_conflate_lateral_with_total_area(cylinder(r,h), Got) :-\n    Got is 2 * pi * r * h).\n\ntest_harness:arith_misconception(db_row(38052), measurement, churn_38052_conflate_lateral_with_total_area,\n    churn_candidate:churn_38052_conflate_lateral_with_total_area,\n    cylinder(3,5), 30*pi).",
+          "result": "SWI-Prolog gate exited 1"
+        },
+        {
+          "response": "ABSTAIN: The documented error describes a conceptual conflation (treating surface as undifferentiated) but provides no runnable procedural rule or concrete input-output mapping required to construct a testable predicate. Without a specific formulaic error (e.g., omitting base areas), we cannot define a deterministic rule that reliably produces the documented wrong answer for a given input.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "38179",
+        "domain": "measurement",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_38179_let_drawing_constraints_dictate_the_answer",
+        "target_operation": "diagram_based_reasoning",
+        "citation": "Delinda van Garderen, Amy Scheuermann, Apryl Poch (2014)",
+        "error_action": "let_drawing_constraints_dictate_the_answer",
+        "error_description": "stop reasoning and answer once the physical drawing runs out of space, treating the diagram as self-contained",
+        "provenance_comments": "=== row 38179: diagram runs out of space ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+      },
+      "status": "abstained",
+      "output": "scripts/research/churn_out/abstained/measurement/churn_38179_let_drawing_constraints_dictate_the_answer.txt",
+      "attempts": [
+        {
+          "response": "ABSTAIN: No runnable rule or defensible probe can be constructed from the documented error description, as it reflects a metacognitive strategy failure (premature termination based on diagram constraints) rather than a specific arithmetic or symbolic error with a determinable functional form.",
+          "result": "abstained"
+        }
+      ],
+      "gate": null
+    },
+    {
+      "entry": {
+        "row_id": "38337",
+        "domain": "measurement",
+        "registered_name": "too_vague",
+        "candidate_name": "churn_38337_iterate_single_length_unit",
+        "target_operation": "area_as_multiplicative_relation",
+        "citation": "Erik S. Tillema ()",
+        "error_action": "iterate_single_length_unit",
+        "error_description": "establish area by repeating one length unit rather than coordinating length and width",
+        "provenance_comments": "=== row 38337: can't assemble area from composite units ===",
+        "worked_example": null,
+        "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+      },
+      "status": "admitted",
+      "output": "scripts/research/churn_out/admitted/measurement/churn_38337_iterate_single_length_unit.pl",
+      "attempts": [
+        {
+          "response": "churn_candidate:(churn_38337_iterate_single_length_unit(rect(W, _H), Got) :-\n    Got is W).\n\ntest_harness:arith_misconception(db_row(38337), measurement, churn_38337_iterate_single_length_unit,\n    churn_candidate:churn_38337_iterate_single_length_unit,\n    rect(5,3), 15).",
+          "result": "loaded, executed, returned an incorrect documented-pattern outcome"
+        }
+      ],
+      "gate": {
+        "admitted": true,
+        "reason": "loaded, executed, returned an incorrect documented-pattern outcome",
+        "transcript": "command: swipl -q --on-warning=status --on-error=status -s <scratch>/candidate.pl -g <gate> -t halt\nexit: 0\nstdout:\nGOT=5\nEXPECTED=15\nCLASS=incorrect\nstderr:\n\ndescription-match: matched error-action tokens: iterate, length, single, unit\n",
+        "rule_name": "churn_38337_iterate_single_length_unit",
+        "got": "5",
+        "expected": "15"
+      }
+    }
+  ]
+}

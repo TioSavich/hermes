@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37677",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37677_take_named_count_of_parts_and_discard_uneven_remainder",
+    "target_operation": "fraction_multiplication",
+    "citation": "Nancy K. Mack (2001)",
+    "error_action": "take_named_count_of_parts_and_discard_uneven_remainder",
+    "error_description": "read 2/3 as simply two of three pieces and ignore leftover pieces when groups don't divide evenly",
+    "provenance_comments": "=== row 37677: fraction-of-fraction ignoring remainder ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "predicate must be named churn_37677_take_named_count_of_parts_and_discard_uneven_remainder",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_37677_take_named_count_of_parts_and_discard_uneven_remainder(frac(N1,D1)*frac(N2,D2), frac(Remainder, D1)) :-\n    Quotient is D1 // N2,\n    Remainder is D1 mod N2,\n    Remainder > 0).\n\ntest_harness:arith_misconception(db_row(37677), fraction, churn_37677_take_named_count_of_parts_and_discard_uneven_remainder,\n    churn_candidate:churn_37677_take_named_count_of_parts_and_discard_uneven_remainder,\n    frac(2,3)*frac(3,4),\n    frac(0,3)).",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "churn_candidate:(take_named_count_of_parts_and_discard_uneven_remainder(frac(N,D), frac(K,1)) :-\n    N > 0,\n    D > 0,\n    K is N // D,\n    K > 0).\n\ntest_harness:arith_misconception(db_row(37677), fraction, churn_37677_take_named_count_of_parts_and_discard_uneven_remainder,\n    churn_candidate:take_named_count_of_parts_and_discard_uneven_remainder,\n    frac(2,3),\n    frac(0,1)).",
+      "result": "predicate must be named churn_37677_take_named_count_of_parts_and_discard_uneven_remainder"
+    }
+  ]
+}

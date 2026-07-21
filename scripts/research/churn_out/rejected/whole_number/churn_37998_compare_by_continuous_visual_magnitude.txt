@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37998",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37998_compare_by_continuous_visual_magnitude",
+    "target_operation": "numerosity_comparison",
+    "citation": "Sarah Clayton, Camilla Gilmore (2015)",
+    "error_action": "compare_by_continuous_visual_magnitude",
+    "error_description": "judge which array has more by total area or item size rather than by count",
+    "provenance_comments": "=== row 37998: numerosity vs convex hull visual cue ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "external module qualification is not allowed: churn_37998_compare_by_continuous_visual_magnitude:",
+  "attempts": [
+    {
+      "response": "misconceptions_whole_number_batch_1:(compare_by_continuous_visual_magnitude(A-B, Got) :-\n    Got is A * B).\n\ntest_harness:arith_misconception(db_row(37998), whole_number, churn_37998_compare_by_continuous_visual_magnitude,\n    misconceptions_whole_number_batch_1:churn_37998_compare_by_continuous_visual_magnitude,\n    3-4,\n    12).",
+      "result": "external module qualification is not allowed: misconceptions_whole_number_batch_1:"
+    },
+    {
+      "response": "churn_37998_compare_by_continuous_visual_magnitude:(compare_by_continuous_visual_magnitude(A-B, Got) :-\n    % Documented error: judge by total area (A*B) rather than count (A vs B)\n    Got is A * B).\n\ntest_harness:arith_misconception(db_row(37998), whole_number, churn_37998_compare_by_continuous_visual_magnitude,\n    churn_37998_compare_by_continuous_visual_magnitude:compare_by_continuous_visual_magnitude,\n    4-3,\n    7).",
+      "result": "external module qualification is not allowed: churn_37998_compare_by_continuous_visual_magnitude:"
+    }
+  ]
+}

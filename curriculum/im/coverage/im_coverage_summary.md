@@ -16,7 +16,7 @@
 
 ## Method
 
-This inventory uses the 2026-07-20 published floor and admitted-lesson list from `lesson_evidence_ratchet.json` in the read-only `umedcta-formalization` checkout. Lesson IDs and coverage facts come from the Hermes lesson stack loaded through `paths.pl`. The builder also parses the generated fact files to cross-check the loaded counts.
+This inventory uses the 2026-07-20 published floor and admitted-lesson list from the vendored `curriculum/im/coverage/lesson_evidence_ratchet.json`. Lesson IDs and coverage facts come from the Hermes lesson stack loaded through `paths.pl`. The builder also parses the generated fact files to cross-check the loaded counts.
 
 A lesson standard anchor is an exact lesson record for K–5 or a unit fallback for grades 6–8. Strategy counts distinguish hand clauses from compiled mappings; `automaton_resolves` requires at least one strategy atom and requires every atom to occur as an `action_automaton_signature/4` kind. Context means a `compiled_lesson_context/4` record. Task and deformation counts retain duplicate fact instances because each fact is a source-backed instance. Render fields record generated-file presence under `hermes/app/web/generated`; they do not assess pedagogical quality. A filmstrip is an `IM-*` filmstrip file under any `monitoring_visuals*` directory.
 

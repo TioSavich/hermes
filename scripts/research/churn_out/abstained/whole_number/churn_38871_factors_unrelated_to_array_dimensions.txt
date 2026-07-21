@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38871",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38871_factors_unrelated_to_array_dimensions",
+    "target_operation": "array_multiplication_structure",
+    "citation": "Patrick Barmby, Tony Harries, Steve Higgins & Jennifer Suggate (2009)",
+    "error_action": "factors_unrelated_to_array_dimensions",
+    "error_description": "the two numbers multiplied need not map onto the rows and columns of an array",
+    "provenance_comments": "=== row 38871: cannot represent multiplication via array ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding—that factors in multiplication need not correspond to rows and columns of an array—but does not specify a concrete syntactic or procedural error that yields a predictable incorrect numerical result from a given input. Without a deterministic mapping from input to a specific wrong output (e.g., a rule like \"always swaps rows/columns\" or \"ignores one factor\"), no runnable Prolog rule `Rule(Input, Got)` can be constructed that reliably produces the documented misconception.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding—that factors in multiplication need not correspond to rows and columns of an array—but does not specify a concrete syntactic or procedural error that yields a predictable incorrect numerical result from a given input. Without a deterministic mapping from input to a specific wrong output (e.g., a rule like \"always swaps rows/columns\" or \"ignores one factor\"), no runnable Prolog rule `Rule(Input, Got)` can be constructed that reliably produces the documented misconception.",
+      "result": "abstained"
+    }
+  ]
+}

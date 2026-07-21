@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38554",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38554_fractional_part_independent_of_referent_whole",
+    "target_operation": "representation_quantity_tracking",
+    "citation": "Jae M. Baek, Megan H. Wickstrom, Jennifer M. Tobias, Amanda L. Miller, Elif Safak, Nicole Wessman-Enzinger, J. Vince Kirwan (2017)",
+    "error_action": "fractional_part_independent_of_referent_whole",
+    "error_description": "treat a drawn fractional piece without re-anchoring it to the total quantity it stands for",
+    "provenance_comments": "=== row 38554: PST tracking whole values ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: no runnable rule or defensible probe can be constructed because the documented error describes a cognitive misstep (treating a fractional piece independently of its referent whole) without specifying a concrete syntactic or operational procedure that yields a deterministic wrong output from a given input in Prolog arithmetic. The error is representational and contextual, not algorithmic, and thus cannot be captured by a pure arithmetic predicate satisfying the schema constraints.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no runnable rule or defensible probe can be constructed because the documented error describes a cognitive misstep (treating a fractional piece independently of its referent whole) without specifying a concrete syntactic or operational procedure that yields a deterministic wrong output from a given input in Prolog arithmetic. The error is representational and contextual, not algorithmic, and thus cannot be captured by a pure arithmetic predicate satisfying the schema constraints.",
+      "result": "abstained"
+    }
+  ]
+}

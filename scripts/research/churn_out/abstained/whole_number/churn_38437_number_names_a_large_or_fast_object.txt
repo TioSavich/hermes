@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38437",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38437_number_names_a_large_or_fast_object",
+    "target_operation": "number_as_semantic_label",
+    "citation": "Noel D. Thomas, Joanne T. Mulligan, Gerald A. Goldin (2002)",
+    "error_action": "number_names_a_large_or_fast_object",
+    "error_description": "a big number stands for a big or fast thing rather than a position in the counting sequence",
+    "provenance_comments": "=== row 38437: idiosyncratic large-number imagery ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a semantic misconception (attributing physical size or speed to numbers) rather than a specific syntactic or procedural arithmetic error that can be modeled as a deterministic predicate producing a wrong numerical output. No runnable rule can be constructed that maps a given input to a documented incorrect output under SWI-Prolog built-ins without introducing arbitrary or non-mathematical assumptions.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a semantic misconception (attributing physical size or speed to numbers) rather than a specific syntactic or procedural arithmetic error that can be modeled as a deterministic predicate producing a wrong numerical output. No runnable rule can be constructed that maps a given input to a documented incorrect output under SWI-Prolog built-ins without introducing arbitrary or non-mathematical assumptions.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38378",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38378_multiply_digits_at_face_value",
+    "target_operation": "multidigit_multiplication",
+    "citation": "Caroline Brayer Ebby (2005)",
+    "error_action": "multiply_digits_at_face_value",
+    "error_description": "multiply each digit as its face value, treating the 8 in 81 as eight rather than eighty",
+    "provenance_comments": "=== row 38378: multi-digit multiplication without place value ===\nText reports she arrives at 324 (which is the correct answer for 81 * 4)\nvia a digit-by-digit procedure. No concrete wrong numeric output.",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 23",
+  "attempts": [
+    {
+      "response": "churn_candidate:(multiply_digits_at_face_value(A-B, Got) :-\n    A > 0, B > 0,\n    number_chars(A, CharsA),\n    maplist(atom_number, CharsA, DigitsA),\n    length(DigitsA, LenA),\n    findall(D, (nth1(I, DigitsA, D), D * B =:= G, true), Gs),\n    maplist(*B, DigitsA, Gs),\n    foldl([X,Y,Z]>>Z is X*10+Y, Gs, 0, Got)).\n\ntest_harness:arith_misconception(db_row(38378), whole_number, churn_38378_multiply_digits_at_face_value,\n    churn_candidate:multiply_digits_at_face_value,\n    81-4,\n    324).",
+      "result": "predicate must be named churn_38378_multiply_digits_at_face_value"
+    },
+    {
+      "response": "churn_candidate:(churn_38378_multiply_digits_at_face_value(A-B, Got) :-\n    A >= 10,\n    number_chars(A, Digits),\n    last(Digits, LastDigitChar),\n    char_code(LastDigitChar, LastDigitCode),\n    LastDigit is LastDigitCode - 48,\n    Got is LastDigit * B).\n\ntest_harness:arith_misconception(db_row(38378), whole_number, churn_38378_multiply_digits_at_face_value,\n    churn_candidate:churn_38378_multiply_digits_at_face_value,\n    81-4,\n    324).",
+      "result": "SWI-Prolog gate exited 23"
+    }
+  ]
+}

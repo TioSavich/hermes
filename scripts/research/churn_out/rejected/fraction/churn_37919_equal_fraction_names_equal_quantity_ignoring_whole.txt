@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37919",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37919_equal_fraction_names_equal_quantity_ignoring_whole",
+    "target_operation": "reference_whole",
+    "citation": "Catherine Lewis and Rebecca Perry (2017)",
+    "error_action": "equal_fraction_names_equal_quantity_ignoring_whole",
+    "error_description": "treat two fractions with the same name as equal quantities regardless of the size of the whole",
+    "provenance_comments": "=== row 37919: reference whole size ignored ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "SWI-Prolog gate exited 23",
+  "attempts": [
+    {
+      "response": "churn_candidate:(equal_fraction_names_equal_quantity_ignoring_whole(frac(N1,D1)-frac(N2,D2), true) :-\n    D1 =:= D2).\n\ntest_harness:arith_misconception(db_row(37919), fraction, churn_37919_equal_fraction_names_equal_quantity_ignoring_whole,\n    churn_candidate:equal_fraction_names_equal_quantity_ignoring_whole,\n    frac(1,4)-frac(1,4),\n    false).",
+      "result": "predicate must be named churn_37919_equal_fraction_names_equal_quantity_ignoring_whole"
+    },
+    {
+      "response": "churn_candidate:(equal_fraction_names_equal_quantity_ignoring_whole(frac(N1,D1)-frac(N2,D2), true) :-\n    N1 =:= N2,\n    D1 =:= D2).\n\ntest_harness:arith_misconception(db_row(37919), fraction, churn_37919_equal_fraction_names_equal_quantity_ignoring_whole,\n    churn_candidate:churn_37919_equal_fraction_names_equal_quantity_ignoring_whole,\n    frac(1,4)-frac(1,4),\n    false).",
+      "result": "SWI-Prolog gate exited 23"
+    }
+  ]
+}

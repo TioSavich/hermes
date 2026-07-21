@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38052",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38052_conflate_lateral_with_total_area",
+    "target_operation": "cylinder_surface_area",
+    "citation": "Andreas Kittel, Astrid Beckmann, Volker Hole, Silke Ladel (2005)",
+    "error_action": "conflate_lateral_with_total_area",
+    "error_description": "treat 'the surface' as a single undifferentiated area without separating lateral from total",
+    "provenance_comments": "=== row 38052: lateral vs total surface area vocabulary ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual conflation (treating surface as undifferentiated) but provides no runnable procedural rule or concrete input-output mapping required to construct a testable predicate. Without a specific formulaic error (e.g., omitting base areas), we cannot define a deterministic rule that reliably produces the documented wrong answer for a given input.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38052_conflate_lateral_with_total_area(cylinder(r,h), Got) :-\n    Got is 2 * pi * r * h).\n\ntest_harness:arith_misconception(db_row(38052), measurement, churn_38052_conflate_lateral_with_total_area,\n    churn_candidate:churn_38052_conflate_lateral_with_total_area,\n    cylinder(3,5), 30*pi).",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual conflation (treating surface as undifferentiated) but provides no runnable procedural rule or concrete input-output mapping required to construct a testable predicate. Without a specific formulaic error (e.g., omitting base areas), we cannot define a deterministic rule that reliably produces the documented wrong answer for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

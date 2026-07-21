@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37499",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37499_successor_of_decimal_by_incrementing_last_digit",
+    "target_operation": "decimal_density",
+    "citation": "Robert E. Reys and Der-Ching Yang (1998)",
+    "error_action": "successor_of_decimal_by_incrementing_last_digit",
+    "error_description": "the next decimal is found by counting up the last digit, so only finitely many lie between two decimals",
+    "provenance_comments": "=== row 37499: finite decimals between two decimals (density) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception about decimal density (believing only finitely many decimals lie between two decimals), but it does not specify a concrete, generalizable syntactic procedure that can be implemented as a binary predicate `Rule(Input, Got)` producing the *exact* wrong result for a given input. The phrase \"counting up the last digit\" is ambiguous (e.g., does it mean incrementing the last digit by 1? wrapping? ignoring carry? assuming fixed precision?). Without a precise, executable rule (e.g., \"increment last digit by 1 and truncate if overflow\"), no runnable `Rule` can be drafted without invention. The execution gate likely rejected the first draft because the rule was underspecified or non-deterministic, and the source provides no sufficient detail to fix it.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_37499_successor_of_decimal_by_incrementing_last_digit(DecimalStr, SuccessorStr) :-\n    atom_chars(DecimalStr, Chars),\n    last(Chars, LastChar),\n    atom_chars(LastChar, [LastDigit]),\n    atom_number(LastDigit, LastNum),\n    NextNum is LastNum + 1,\n    atom_number(NextNumStr, NextNum),\n    atom_chars(NextNumStr, [NextDigit]),\n    append(AllButLast, [LastChar], Chars),\n    append(AllButLast, [NextDigit], NewChars),\n    atom_chars(SuccessorStr, NewChars)).\n\ntest_harness:arith_misconception(db_row(37499), decimal, churn_37499_successor_of_decimal_by_incrementing_last_digit,\n    churn_candidate:churn_37499_successor_of_decimal_by_incrementing_last_digit,\n    \"3.4\",\n    \"3.5\").",
+      "result": "SWI-Prolog gate exited 23"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception about decimal density (believing only finitely many decimals lie between two decimals), but it does not specify a concrete, generalizable syntactic procedure that can be implemented as a binary predicate `Rule(Input, Got)` producing the *exact* wrong result for a given input. The phrase \"counting up the last digit\" is ambiguous (e.g., does it mean incrementing the last digit by 1? wrapping? ignoring carry? assuming fixed precision?). Without a precise, executable rule (e.g., \"increment last digit by 1 and truncate if overflow\"), no runnable `Rule` can be drafted without invention. The execution gate likely rejected the first draft because the rule was underspecified or non-deterministic, and the source provides no sufficient detail to fix it.",
+      "result": "abstained"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37817",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37817_check_divisibility_by_computed_division",
+    "target_operation": "divisibility",
+    "citation": "Rina Zazkis and Stephen Campbell (1996)",
+    "error_action": "check_divisibility_by_computed_division",
+    "error_description": "multiply a factored number out and divide it to test for a whole-number quotient",
+    "provenance_comments": "=== row 37817: divisibility by trial division not prime factorization ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: no runnable rule can be constructed because the documented error describes a procedural misconception (expanding a factored number and then performing division to test divisibility) without specifying a concrete, generalizable algebraic pattern that can be encoded as a binary predicate producing the documented wrong result; the action is context-dependent and not reducible to a fixed syntactic transformation on inputs.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no runnable rule can be constructed because the documented error describes a procedural misconception (expanding a factored number and then performing division to test divisibility) without specifying a concrete, generalizable algebraic pattern that can be encoded as a binary predicate producing the documented wrong result; the action is context-dependent and not reducible to a fixed syntactic transformation on inputs.",
+      "result": "abstained"
+    }
+  ]
+}

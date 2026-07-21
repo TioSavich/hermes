@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37779",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37779_equal_fractional_terms_equal_amount",
+    "target_operation": "fraction_comparison",
+    "citation": "Barbara E. Armstrong and Carol Novillis Larson (1995)",
+    "error_action": "equal_fractional_terms_equal_amount",
+    "error_description": "two halves are the same amount because both are one-half",
+    "provenance_comments": "=== row 37779: same fraction different wholes ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (confusing equal fractional parts with equal amounts when the wholes differ), but provides no runnable syntactic rule or algorithm that produces a specific wrong answer for a given input. The phrase \"two halves are the same amount because both are one-half\" reflects a failure to consider whole size, not a deterministic computational error that can be encoded as a binary predicate producing a fixed wrong output. Without a concrete mapping from input to incorrect output, no runnable Rule can be constructed per the schema.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (confusing equal fractional parts with equal amounts when the wholes differ), but provides no runnable syntactic rule or algorithm that produces a specific wrong answer for a given input. The phrase \"two halves are the same amount because both are one-half\" reflects a failure to consider whole size, not a deterministic computational error that can be encoded as a binary predicate producing a fixed wrong output. Without a concrete mapping from input to incorrect output, no runnable Rule can be constructed per the schema.",
+      "result": "abstained"
+    }
+  ]
+}

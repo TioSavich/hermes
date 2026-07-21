@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37856",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37856_counting_required_to_certify_fair_share",
+    "target_operation": "fair_sharing",
+    "citation": "Gary Ernest Davis and Anne Pitkethly (1990)",
+    "error_action": "counting_required_to_certify_fair_share",
+    "error_description": "a deal-out is not known to be fair until the shares are counted",
+    "provenance_comments": "=== row 37856: counting required after dealing ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception about fairness in fair sharing (that a deal-out is not known to be fair until shares are counted), but does not specify a concrete, executable arithmetic procedure or transformation that yields a *wrong* numerical result from a given input. A runnable rule must produce a specific incorrect output for a specific input; here, there is no defined operation (e.g., division, multiplication) or algorithm (e.g., “count after dealing”) that can be encoded as a deterministic binary predicate yielding a fixed wrong answer. The misconception is epistemological, not computational, and cannot be rendered as a correct-formula-for-wrong-answer without invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_37856_counting_required_to_certify_fair_share(Dealt, Counted) :-\n    Counted is Dealt).\n\ntest_harness:arith_misconception(db_row(37856), whole_number, churn_37856_counting_required_to_certify_fair_share,\n    churn_candidate:churn_37856_counting_required_to_certify_fair_share,\n    12,\n    12).\nABSTAIN: The documented error describes a conceptual misconception (that dealing alone does not guarantee fairness until counted), but does not specify a computable arithmetic procedure that yields a *wrong* result from a *given* input. The rule `Counted is Dealt` produces the correct result, not the documented error. Without a verifiable mismatch between the documented error action and a distinct incorrect output, no runnable rule can be constructed per the schema.",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception about fairness in fair sharing (that a deal-out is not known to be fair until shares are counted), but does not specify a concrete, executable arithmetic procedure or transformation that yields a *wrong* numerical result from a given input. A runnable rule must produce a specific incorrect output for a specific input; here, there is no defined operation (e.g., division, multiplication) or algorithm (e.g., “count after dealing”) that can be encoded as a deterministic binary predicate yielding a fixed wrong answer. The misconception is epistemological, not computational, and cannot be rendered as a correct-formula-for-wrong-answer without invention.",
+      "result": "abstained"
+    }
+  ]
+}

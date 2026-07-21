@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38058",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38058_compose_teen_words_by_concatenating_decade_and_unit",
+    "target_operation": "counting_sequence",
+    "citation": "Herbert P. Ginsburg, Young-Sun Lee, Sandra Pappas (2016)",
+    "error_action": "compose_teen_words_by_concatenating_decade_and_unit",
+    "error_description": "build number names by attaching a unit word to a decade word the way regular patterns do",
+    "provenance_comments": "=== row 38058: decade transition \"ten-teen\", \"10-one\" ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a linguistic naming pattern (\"ten-teen\", \"10-one\") rather than a computational arithmetic operation. There is no runnable arithmetic rule of arity 2 that produces the documented wrong output using only SWI-Prolog built-ins, because the error is a *phonological/orthographic misgeneralization*, not a *numerical evaluation*. The schema requires a predicate `Rule(Input, Got)` where `Got` is the *incorrect numerical result* computed via a defined procedure; here, no such numerical procedure is specified—only a verbal construction pattern.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a linguistic naming pattern (\"ten-teen\", \"10-one\") rather than a computational arithmetic operation. There is no runnable arithmetic rule of arity 2 that produces the documented wrong output using only SWI-Prolog built-ins, because the error is a *phonological/orthographic misgeneralization*, not a *numerical evaluation*. The schema requires a predicate `Rule(Input, Got)` where `Got` is the *incorrect numerical result* computed via a defined procedure; here, no such numerical procedure is specified—only a verbal construction pattern.",
+      "result": "abstained"
+    }
+  ]
+}

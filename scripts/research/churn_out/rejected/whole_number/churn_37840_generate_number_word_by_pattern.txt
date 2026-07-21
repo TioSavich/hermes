@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37840",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37840_generate_number_word_by_pattern",
+    "target_operation": "number_word_sequence",
+    "citation": "Arthur J. Baroody and Herbert P. Ginsburg (1990)",
+    "error_action": "generate_number_word_by_pattern",
+    "error_description": "form the next number word by applying the observed decade-suffix pattern (ten gives tenty)",
+    "provenance_comments": "=== row 37840: \"tenty\" for thirty (invented number word) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "external module qualification is not allowed: misconceptions_whole_number_batch_1:",
+  "attempts": [
+    {
+      "response": "misconceptions_whole_number_batch_1:(churn_37840_generate_number_word_by_pattern(N, Got) :-\n    N >= 20,\n    N mod 10 =:= 0,\n    Tens is N div 10,\n    atom_concat(Tens, 'ty', Got)).\n\ntest_harness:arith_misconception(db_row(37840), whole_number, churn_37840_generate_number_word_by_pattern,\n    misconceptions_whole_number_batch_1:churn_37840_generate_number_word_by_pattern,\n    30,\n    'thirty').",
+      "result": "external module qualification is not allowed: misconceptions_whole_number_batch_1:"
+    },
+    {
+      "response": "misconceptions_whole_number_batch_1:(churn_37840_generate_number_word_by_pattern(tenty, thirty)).\n\ntest_harness:arith_misconception(db_row(37840), whole_number, churn_37840_generate_number_word_by_pattern,\n    misconceptions_whole_number_batch_1:churn_37840_generate_number_word_by_pattern,\n    thirty,\n    tenty).",
+      "result": "external module qualification is not allowed: misconceptions_whole_number_batch_1:"
+    }
+  ]
+}

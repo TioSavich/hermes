@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "38281",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38281_form_unit_fraction_by_cutting_off_remainder",
+    "target_operation": "equipartitioning_continuous",
+    "citation": "Steven Boyce, Anderson Norton (2017)",
+    "error_action": "form_unit_fraction_by_cutting_off_remainder",
+    "error_description": "make a smaller fractional piece by trimming off whatever is left over and calling it the unit",
+    "provenance_comments": "=== row 38281: continuous equipartition ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(form_unit_fraction_by_cutting_off_remainder(frac(Total, Parts), frac(1, PartsPlusOne)) :-\n    Total > 0,\n    Parts > 0,\n    PartsPlusOne is Parts + 1).\n\ntest_harness:arith_misconception(db_row(38281), fraction, churn_38281_form_unit_fraction_by_cutting_off_remainder,\n    churn_candidate:form_unit_fraction_by_cutting_off_remainder,\n    frac(1,3),\n    frac(1,4)).",
+      "result": "predicate must be named churn_38281_form_unit_fraction_by_cutting_off_remainder"
+    },
+    {
+      "response": "churn_candidate:(churn_38281_form_unit_fraction_by_cutting_off_remainder(frac(Total, Pieces), frac(1, CutPieces)) :-\n    CutPieces is Pieces - 1,\n    Total =:= 1).\n\ntest_harness:arith_misconception(db_row(38281), fraction, churn_38281_form_unit_fraction_by_cutting_off_remainder,\n    churn_candidate:churn_38281_form_unit_fraction_by_cutting_off_remainder,\n    frac(1,4),\n    frac(1,3)).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

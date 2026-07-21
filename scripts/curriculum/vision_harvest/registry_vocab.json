@@ -1,0 +1,156 @@
+{
+ "addition": [
+  "base_ones_chunking",
+  "column_addition_with_carrying",
+  "count_on_from_larger",
+  "derived_fact_adjustment",
+  "known_fact_retrieval",
+  "make_base_transfer",
+  "make_ten_split_leftover",
+  "round_then_adjust"
+ ],
+ "algebraic": [
+  "balance_preserving_linear_solution",
+  "contextual_linear_equation_construction",
+  "distributive_expression_rewrite",
+  "equation_truth_by_substitution",
+  "exponent_as_repeated_factor",
+  "exponential_equivalence_by_expansion",
+  "linear_pattern_contextual_rule",
+  "programming_expression_evaluation",
+  "symbolic_expression_construction"
+ ],
+ "calculus": [
+  "bounded_numerator_over_diverging_denominator",
+  "direct_substitution",
+  "factor_cancel_substitute"
+ ],
+ "counting": [
+  "compare_cardinalities_one_to_one",
+  "enumerate_collection_one_to_one",
+  "inscribe_cardinality",
+  "place_value_comparison",
+  "recursive_place_value_inscription"
+ ],
+ "decimal": [
+  "decimal_addition_by_aligned_units",
+  "decimal_comparison_by_aligned_units",
+  "decimal_multiplication_rule",
+  "decimal_place_unit_regrouping",
+  "decimal_subtraction_by_aligned_units",
+  "ecuadorian_decimal_long_division",
+  "positional_decimal_reading",
+  "recalled_result_scaling"
+ ],
+ "diagnostic": [
+  "decomposed_divisor_product",
+  "error_magnitude_estimate_comparison",
+  "multiplicative_bound_invalidation",
+  "rigorous_counting_procedure",
+  "small_area_justification"
+ ],
+ "division": [
+  "fair_share_equal_groups",
+  "inverse_fact_decomposition",
+  "long_division",
+  "measure_groups_of_size",
+  "missing_factor_known_product_search",
+  "missing_factor_repeated_addition",
+  "partial_quotient_chunking"
+ ],
+ "fraction": [
+  "area_model_part_of_part",
+  "co_denominator_count_on_from_larger",
+  "co_denominator_make_base_transfer",
+  "co_denominator_make_ten_split_leftover",
+  "cross_multiplication_rule_from_pattern",
+  "improper_fraction_iteration",
+  "measurement_division",
+  "recursive_partition",
+  "reversible_measurement_division",
+  "solve_for_unit",
+  "splitting",
+  "unit_fraction_denominator_product_rule",
+  "unit_fraction_iteration",
+  "unit_fraction_partition"
+ ],
+ "geometry": [
+  "angle_additive_composition",
+  "angle_turn_measurement",
+  "area_preserving_polygon_decomposition",
+  "area_unit_covering",
+  "area_unit_scale_selection",
+  "axis_aligned_coordinate_distance",
+  "compare_solid_volume_by_cube_count",
+  "composite_prism_volume_sum",
+  "dimensional_measure_unit_coordination",
+  "ordered_pair_coordinate_plot",
+  "parallelogram_area_base_height",
+  "polygon_perimeter_boundary_accumulation",
+  "polyhedron_surface_area_from_net",
+  "rectangle_area_perimeter_constraint_search",
+  "rectangle_area_unit_iteration",
+  "rectangle_factor_pair_search",
+  "rectangle_missing_side_from_area",
+  "rectangle_missing_side_from_perimeter",
+  "rectangle_perimeter_boundary_traversal",
+  "rectangle_perimeter_side_pair_search",
+  "rectangular_prism_missing_dimension_from_volume",
+  "rectangular_prism_volume_layer_iteration",
+  "rigid_shape_composition",
+  "shape_classification_by_defining_attributes",
+  "symmetry_constrained_side_reconstruction",
+  "triangle_area_half_base_height"
+ ],
+ "integer": [
+  "inequality_solution_set_representation",
+  "signed_addition_with_sign_relation",
+  "signed_number_location_and_order"
+ ],
+ "measurement": [
+  "linear_unit_iteration",
+  "liquid_volume_scale_reading",
+  "unit_conversion_by_iteration",
+  "unit_preserving_measured_quantity_change"
+ ],
+ "multiplication": [
+  "common_factor_intersection",
+  "common_multiple_sequence",
+  "commute_factors_preserve_product",
+  "coordinate_groups_items",
+  "distribute_group_size_split",
+  "known_product_adjustment",
+  "multiplication_fact_retrieval",
+  "regroup_to_base_preserving_total",
+  "repeat_equal_groups"
+ ],
+ "probability": [
+  "terminal_tree_endpoint_probability_sum"
+ ],
+ "ratio": [
+  "construct_referent_ratio_diagram",
+  "scale_ratio_unit"
+ ],
+ "statistics": [
+  "box_plot_from_five_number_summary",
+  "categorical_frequency_bar_representation",
+  "distribution_summary_selection",
+  "dot_plot_frequency_representation",
+  "five_number_summary_and_iqr",
+  "histogram_equal_interval_representation",
+  "mean_absolute_deviation",
+  "mean_as_balance_point",
+  "mean_as_fair_share",
+  "median_as_ordered_middle",
+  "mode_as_maximal_frequency",
+  "statistical_question_variability_classification"
+ ],
+ "subtraction": [
+  "borrow_across_zero_cascade",
+  "compare_by_matching_difference",
+  "count_up_missing_addend",
+  "decompose_base_for_ones",
+  "sliding_constant_difference",
+  "take_away_base_ones"
+ ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38636",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38636_count_segments_excluding_zero",
+    "target_operation": "number_line_discrete_vs_continuous",
+    "citation": "Alison Castro Superfine, Reality S. Canty, Anne Marie Marshall (2009)",
+    "error_action": "count_segments_excluding_zero",
+    "error_description": "read number-line marks as discrete countable segments and omit zero",
+    "provenance_comments": "=== row 38636: number line numerals as discrete counts ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error is described only at a high level (“count_segments_excluding_zero”) without a concrete, executable procedure or formula. No specific rule structure (e.g., a predicate definition) can be derived that would reliably reproduce the misconception in a generalizable way, and no explicit input-output mapping is provided to determine a unique ExpectedCorrect value. Without a clear algorithm or example, constructing a runnable SWI-Prolog rule and a defensible probe violates the schema contract.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error is described only at a high level (“count_segments_excluding_zero”) without a concrete, executable procedure or formula. No specific rule structure (e.g., a predicate definition) can be derived that would reliably reproduce the misconception in a generalizable way, and no explicit input-output mapping is provided to determine a unique ExpectedCorrect value. Without a clear algorithm or example, constructing a runnable SWI-Prolog rule and a defensible probe violates the schema contract.",
+      "result": "abstained"
+    }
+  ]
+}

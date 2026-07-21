@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37585",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37585_half_as_partitioning_action",
+    "target_operation": "meaning_of_one_half",
+    "citation": "Katherine E. Lewis (2014)",
+    "error_action": "half_as_partitioning_action",
+    "error_description": "one-half is the act of cutting into two, not a quantity, so no shading is needed",
+    "provenance_comments": "=== row 37585: drawing 1/2 without shading ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (half as an action rather than a quantity), but provides no executable arithmetic procedure or syntactic pattern that determines a wrong result in a computational sense. A rule for `Rule(Input, Got)` must produce a *specific incorrect value* that differs from the correct one; here, “no shading needed” is a visual/representational misstep, not a numeric output. No runnable predicate of arity 2 can be formed that takes a fraction input and yields the documented wrong numeric outcome.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (half as an action rather than a quantity), but provides no executable arithmetic procedure or syntactic pattern that determines a wrong result in a computational sense. A rule for `Rule(Input, Got)` must produce a *specific incorrect value* that differs from the correct one; here, “no shading needed” is a visual/representational misstep, not a numeric output. No runnable predicate of arity 2 can be formed that takes a fraction input and yields the documented wrong numeric outcome.",
+      "result": "abstained"
+    }
+  ]
+}

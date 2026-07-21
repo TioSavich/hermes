@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39004",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39004_shape_change_preserves_area_and_alters_only_lengths",
+    "target_operation": "area_conservation_under_deformation",
+    "citation": "Regine Douady and Marie-Jeanne Perrin-Glorian (1989)",
+    "error_action": "shape_change_preserves_area_and_alters_only_lengths",
+    "error_description": "treat tilting a parallelogram as conserving area while the side lengths or heights are what change",
+    "provenance_comments": "=== row 39004: parallelogram deformation and area conservation ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misunderstanding (that tilting a parallelogram preserves area while only altering side lengths or heights), but it does not specify a concrete, runnable procedural rule that produces a *systematically wrong numerical answer* for a given input. The gate requires a rule that, when invoked with a specific input, yields the documented incorrect result (e.g., computing area as base × slanted side instead of base × height). No such runnable rule is determined from the description; it only states a misattribution of what changes during deformation, without prescribing a computational formula. Without a definable computational step that yields a fixed wrong output, a runnable rule cannot be constructed.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39004_shape_change_preserves_area_and_alters_only_lengths(parallelogram(A,B,Angle), Got) :-\n    Got is A * B).\n\ntest_harness:arith_misconception(db_row(39004), measurement, churn_39004_shape_change_preserves_area_and_alters_only_lengths,\n    churn_candidate:churn_39004_shape_change_preserves_area_and_alters_only_lengths,\n    parallelogram(5,4,30), 10).",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misunderstanding (that tilting a parallelogram preserves area while only altering side lengths or heights), but it does not specify a concrete, runnable procedural rule that produces a *systematically wrong numerical answer* for a given input. The gate requires a rule that, when invoked with a specific input, yields the documented incorrect result (e.g., computing area as base × slanted side instead of base × height). No such runnable rule is determined from the description; it only states a misattribution of what changes during deformation, without prescribing a computational formula. Without a definable computational step that yields a fixed wrong output, a runnable rule cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

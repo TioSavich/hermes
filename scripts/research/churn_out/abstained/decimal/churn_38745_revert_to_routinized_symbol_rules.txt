@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38745",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38745_revert_to_routinized_symbol_rules",
+    "target_operation": "routinized_procedure_resistance",
+    "citation": "JAMES HIEBERT (1988)",
+    "error_action": "revert_to_routinized_symbol_rules",
+    "error_description": "fall back on previously automatized symbol-manipulation procedures and ignore quantitative meaning even after referent-based instruction",
+    "provenance_comments": "=== row 38745: remediation resistance ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: no concrete, runnable rule can be constructed from the provided documentation; the error is described as a cognitive resistance to referent-based reasoning rather than a specific syntactic or procedural misapplication that can be modeled as a deterministic, generalizable predicate producing a unique wrong output for a given input.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: no concrete, runnable rule can be constructed from the provided documentation; the error is described as a cognitive resistance to referent-based reasoning rather than a specific syntactic or procedural misapplication that can be modeled as a deterministic, generalizable predicate producing a unique wrong output for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

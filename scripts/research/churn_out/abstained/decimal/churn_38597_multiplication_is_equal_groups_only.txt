@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38597",
+    "domain": "decimal",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38597_multiplication_is_equal_groups_only",
+    "target_operation": "decimal_multiplication_model",
+    "citation": "Kerstin Larsson, Kerstin Pettersson, Paul Andrews (2017)",
+    "error_action": "multiplication_is_equal_groups_only",
+    "error_description": "multiplication always means a whole number of equal groups",
+    "provenance_comments": "=== row 38597: equal-groups model fails for decimal factors ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_decimal.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented misconception describes a conceptual limitation (\"multiplication always means a whole number of equal groups\") rather than a specific syntactic error or algorithmic misstep that produces a deterministic incorrect numeric output from a given input. Without a concrete procedure mapping inputs to a fixed wrong output, a predicate `Rule(Input, Got)` cannot be defined to reliably yield the documented error.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented misconception describes a conceptual limitation (\"multiplication always means a whole number of equal groups\") rather than a specific syntactic error or algorithmic misstep that produces a deterministic incorrect numeric output from a given input. Without a concrete procedure mapping inputs to a fixed wrong output, a predicate `Rule(Input, Got)` cannot be defined to reliably yield the documented error.",
+      "result": "abstained"
+    }
+  ]
+}

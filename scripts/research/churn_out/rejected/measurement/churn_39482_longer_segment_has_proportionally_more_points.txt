@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "39482",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39482_longer_segment_has_proportionally_more_points",
+    "target_operation": "points_on_a_line",
+    "citation": "DAVID TALL (1980)",
+    "error_action": "longer_segment_has_proportionally_more_points",
+    "error_description": "a segment twice as long contains about twice as many points",
+    "provenance_comments": "=== row 39482: more points on longer segment ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "SWI-Prolog gate exited 24",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39482_longer_segment_has_proportionally_more_points(length(L), Got) :-\n    Got is L).\n\ntest_harness:arith_misconception(db_row(39482), measurement, churn_39482_longer_segment_has_proportionally_more_points,\n    churn_candidate:churn_39482_longer_segment_has_proportionally_more_points,\n    length(2), 2).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "churn_candidate:(churn_39482_longer_segment_has_proportionally_more_points(ratio(L1,L2), Got) :-\n    Got is L2 // L1).\n\ntest_harness:arith_misconception(db_row(39482), measurement, churn_39482_longer_segment_has_proportionally_more_points,\n    churn_candidate:churn_39482_longer_segment_has_proportionally_more_points,\n    ratio(1,2), 2).",
+      "result": "SWI-Prolog gate exited 24"
+    }
+  ]
+}

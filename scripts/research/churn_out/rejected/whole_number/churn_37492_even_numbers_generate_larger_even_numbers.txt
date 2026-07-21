@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37492",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37492_even_numbers_generate_larger_even_numbers",
+    "target_operation": "parity_of_zero",
+    "citation": "Deborah Loewenberg Ball, Jennifer Lewis and Mark Hoover Thames (2008)",
+    "error_action": "even_numbers_generate_larger_even_numbers",
+    "error_description": "even numbers added to themselves make a new bigger even number, so zero is exempt",
+    "provenance_comments": "=== row 37492: zero claimed exempt from even/odd ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "SWI-Prolog gate exited 1",
+  "attempts": [
+    {
+      "response": "churn_candidate:(even_numbers_generate_larger_even_numbers(A, Got) :-\n    Got is A + A).\n\ntest_harness:arith_misconception(db_row(37492), whole_number, churn_37492_even_numbers_generate_larger_even_numbers,\n    churn_candidate:even_numbers_generate_larger_even_numbers,\n    0,\n    0).",
+      "result": "predicate must be named churn_37492_even_numbers_generate_larger_even_numbers"
+    },
+    {
+      "response": "churn_candidate:(churn_37492_even_numbers_generate_larger_even_numbers(0, 0)) :-\n    fail.\nchurn_candidate:(churn_37492_even_numbers_generate_larger_even_numbers(N, Result)) :-\n    N > 0,\n    0 is N mod 2,\n    Result is N + N.\n\ntest_harness:arith_misconception(db_row(37492), whole_number, churn_37492_even_numbers_generate_larger_even_numbers,\n    churn_candidate:churn_37492_even_numbers_generate_larger_even_numbers,\n    0,\n    0).",
+      "result": "SWI-Prolog gate exited 1"
+    }
+  ]
+}

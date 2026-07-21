@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39527",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39527_angle_meaning_only_via_formula_or_familiar_object",
+    "target_operation": "angle_measure",
+    "citation": "Kevin C. Moore (2013)",
+    "error_action": "angle_meaning_only_via_formula_or_familiar_object",
+    "error_description": "an angle measure means something only as a calculation rule or property of a familiar figure",
+    "provenance_comments": "=== row 39527: angle measure only as formula artifact ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (that angle measure is meaningful only as a formula or familiar figure property) but does not specify a concrete, executable procedural rule that consistently produces a wrong numerical output for a given input. Without a clear algorithmic error pattern (e.g., a specific formula misuse, misapplication, or arithmetic error), no runnable Prolog rule of arity 2 can be constructed that reliably yields the documented wrong answer for general inputs. The test harness requires a deterministic, generalizable rule—this misconception is too vague to instantiate in the required form.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (that angle measure is meaningful only as a formula or familiar figure property) but does not specify a concrete, executable procedural rule that consistently produces a wrong numerical output for a given input. Without a clear algorithmic error pattern (e.g., a specific formula misuse, misapplication, or arithmetic error), no runnable Prolog rule of arity 2 can be constructed that reliably yields the documented wrong answer for general inputs. The test harness requires a deterministic, generalizable rule—this misconception is too vague to instantiate in the required form.",
+      "result": "abstained"
+    }
+  ]
+}

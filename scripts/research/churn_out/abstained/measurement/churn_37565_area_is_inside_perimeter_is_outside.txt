@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37565",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37565_area_is_inside_perimeter_is_outside",
+    "target_operation": "area_perimeter_definition",
+    "citation": "Dolores D. Pesek and David Kirshner (2000)",
+    "error_action": "area_is_inside_perimeter_is_outside",
+    "error_description": "area belongs only to the flat inside and perimeter to the boundary, so a wall that wraps around has no area",
+    "provenance_comments": "=== row 37565: area=inside / perimeter=outside rote definition ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual distinction (area as interior-only, perimeter as boundary-only) but does not specify a concrete, runnable procedural rule that produces a wrong numerical answer from a given input. Without a clear algorithmic error (e.g., “compute perimeter instead of area” or “omit interior in area calculation”), no executable Prolog rule can be formed that reliably yields the documented misconception for arbitrary inputs.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual distinction (area as interior-only, perimeter as boundary-only) but does not specify a concrete, runnable procedural rule that produces a wrong numerical answer from a given input. Without a clear algorithmic error (e.g., “compute perimeter instead of area” or “omit interior in area calculation”), no executable Prolog rule can be formed that reliably yields the documented misconception for arbitrary inputs.",
+      "result": "abstained"
+    }
+  ]
+}

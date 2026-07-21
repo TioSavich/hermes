@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38703",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38703_fraction_names_one_quantity_only",
+    "target_operation": "equivalent_fractions",
+    "citation": "Constance Kamii, Faye B. Clark (1995)",
+    "error_action": "fraction_names_one_quantity_only",
+    "error_description": "a given fractional piece has exactly one correct name and cannot be renamed",
+    "provenance_comments": "=== row 38703: can't name equivalent fraction ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (inability to recognize equivalent fractions as having multiple names) rather than a specific syntactic or procedural rule that can be encoded as a binary predicate producing a wrong result. There is no runnable rule that maps an input to a documented wrong output; it is a belief about representation, not a computational error with a deterministic incorrect result.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (inability to recognize equivalent fractions as having multiple names) rather than a specific syntactic or procedural rule that can be encoded as a binary predicate producing a wrong result. There is no runnable rule that maps an input to a documented wrong output; it is a belief about representation, not a computational error with a deterministic incorrect result.",
+      "result": "abstained"
+    }
+  ]
+}

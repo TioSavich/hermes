@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "39002",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_39002_area_and_perimeter_covary_with_size",
+    "target_operation": "area_perimeter_covariation",
+    "citation": "Regine Douady and Marie-Jeanne Perrin-Glorian (1989)",
+    "error_action": "area_and_perimeter_covary_with_size",
+    "error_description": "changing a figure's perimeter changes its area in the same direction because both track how big the shape is",
+    "provenance_comments": "=== row 39002: increasing perimeter increases area ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception (that area and perimeter covary monotonically with size), but no specific computational rule or algorithm is provided that a student would consistently apply to produce a wrong answer in a testable scenario. Without a clear, generalizable procedure that yields a predictable incorrect result for a given input, we cannot construct a runnable Prolog rule that matches the schema requirements.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_39002_area_and_perimeter_covary_with_size(shape(rect(W,H)), Got) :-\n    Got is W * H,\n    Perimeter is 2 * (W + H),\n    NewPerimeter is Perimeter + 10,\n    NewW is W + 5,\n    NewH is H + 0,\n    NewPerimeter =:= 2 * (NewW + NewH),\n    Got is NewW * NewH).\n\ntest_harness:arith_misconception(db_row(39002), measurement, churn_39002_area_and_perimeter_covary_with_size,\n    churn_candidate:churn_39002_area_and_perimeter_covary_with_size,\n    shape(rect(4,2)), 14).",
+      "result": "SWI-Prolog gate exited 1"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception (that area and perimeter covary monotonically with size), but no specific computational rule or algorithm is provided that a student would consistently apply to produce a wrong answer in a testable scenario. Without a clear, generalizable procedure that yields a predictable incorrect result for a given input, we cannot construct a runnable Prolog rule that matches the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}

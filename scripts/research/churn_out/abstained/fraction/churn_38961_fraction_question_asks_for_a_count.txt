@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38961",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38961_fraction_question_asks_for_a_count",
+    "target_operation": "fraction_of_discrete_quantity",
+    "citation": "Leen Streefland (1978)",
+    "error_action": "fraction_question_asks_for_a_count",
+    "error_description": "treat a fractional-part question as a how-many cardinal count of objects",
+    "provenance_comments": "=== row 38961: cardinal-number overemphasis ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misinterpretation (treating a fractional-part question as a cardinal count) but does not specify a concrete syntactic or procedural rule that maps inputs to a specific wrong output in a way that can be encoded as a deterministic, runnable Prolog predicate without inventing mathematics or assumptions beyond the description. No runnable rule (e.g., a deterministic computation step) is provided—only a high-level cognitive misstep—making it impossible to construct a testable `Rule/2` that reliably produces the documented wrong answer for a given input.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38961_fraction_question_asks_for_a_count(fraction_of(N,D,Total), Count) :-\n    Count is N * (Total // D)).\n\ntest_harness:arith_misconception(db_row(38961), fraction, churn_38961_fraction_question_asks_for_a_count,\n    churn_candidate:churn_38961_fraction_question_asks_for_a_count,\n    fraction_of(2,3,12),\n    8).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misinterpretation (treating a fractional-part question as a cardinal count) but does not specify a concrete syntactic or procedural rule that maps inputs to a specific wrong output in a way that can be encoded as a deterministic, runnable Prolog predicate without inventing mathematics or assumptions beyond the description. No runnable rule (e.g., a deterministic computation step) is provided—only a high-level cognitive misstep—making it impossible to construct a testable `Rule/2` that reliably produces the documented wrong answer for a given input.",
+      "result": "abstained"
+    }
+  ]
+}

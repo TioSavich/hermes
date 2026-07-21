@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37716",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37716_read_graph_marks_as_unit_increments",
+    "target_operation": "graph_scale_interpretation",
+    "citation": "Sandra P. Marshall (1983)",
+    "error_action": "read_graph_marks_as_unit_increments",
+    "error_description": "treat each gridline or tick as one unit regardless of the stated scale",
+    "provenance_comments": "=== row 37716: misinterpret scale on graph/figure ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "ABSTAIN: The source documentation does not specify a concrete, runnable graph scale interpretation rule or a specific input format that can be encoded in SWI-Prolog without invention. The error is described generically (“treat each gridline or tick as one unit regardless of the stated scale”), but no functional mapping (e.g., from a graph specification to a wrong answer) is provided. A runnable `Rule` predicate of arity 2 must produce the documented wrong answer for a given input; without a defined graph representation or scale structure, such a rule cannot be constructed without arbitrary invention.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_37716_read_graph_marks_as_unit_increments(graph(XMin,XMax,N), Got) :-\n    Step is (XMax - XMin) / (N - 1),\n    Got is N).\n\ntest_harness:arith_misconception(db_row(37716), measurement, churn_37716_read_graph_marks_as_unit_increments,\n    churn_candidate:churn_37716_read_graph_marks_as_unit_increments,\n    graph(0, 10, 11), 11).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: The source documentation does not specify a concrete, runnable graph scale interpretation rule or a specific input format that can be encoded in SWI-Prolog without invention. The error is described generically (“treat each gridline or tick as one unit regardless of the stated scale”), but no functional mapping (e.g., from a graph specification to a wrong answer) is provided. A runnable `Rule` predicate of arity 2 must produce the documented wrong answer for a given input; without a defined graph representation or scale structure, such a rule cannot be constructed without arbitrary invention.",
+      "result": "abstained"
+    }
+  ]
+}

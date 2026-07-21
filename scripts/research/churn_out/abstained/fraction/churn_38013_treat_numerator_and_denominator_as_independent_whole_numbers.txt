@@ -1,0 +1,27 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38013",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38013_treat_numerator_and_denominator_as_independent_whole_numbers",
+    "target_operation": "fraction_numeral_interpretation",
+    "citation": "Geoffrey B. Saxe, Ronli Diakow, Maryl Gearhart (2013)",
+    "error_action": "treat_numerator_and_denominator_as_independent_whole_numbers",
+    "error_description": "operate on the top and bottom of a fraction as if each were a separate whole number",
+    "provenance_comments": "=== row 38013: treat numerals as whole numbers (generic) ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: No runnable rule can be constructed because the documented error is a generic misinterpretation (treating numerator and denominator as independent whole numbers) without specifying a concrete operation or output pattern. The task requires a rule that, when called with a specific input, produces the *documented wrong answer*—but no specific operation (e.g., addition, simplification, comparison) or resulting incorrect value is provided in the row. Without knowing *how* the student incorrectly combines or manipulates the numerator and denominator, we cannot define a deterministic, generalizable predicate that yields the documented error. The exemplars specify exact arithmetic procedures (e.g., add denominators, multiply numerators and add denominators); this row does not.",
+  "attempts": [
+    {
+      "response": "churn_candidate:(churn_38013_treat_numerator_and_denominator_as_independent_whole_numbers(frac(N,D), frac(N1,D1)) :-\n    N1 is N + 1,\n    D1 is D + 1).\n\ntest_harness:arith_misconception(db_row(38013), fraction, churn_38013_treat_numerator_and_denominator_as_independent_whole_numbers,\n    churn_candidate:churn_38013_treat_numerator_and_denominator_as_independent_whole_numbers,\n    frac(2,3),\n    frac(3,4)).",
+      "result": "SWI-Prolog gate exited 24"
+    },
+    {
+      "response": "ABSTAIN: No runnable rule can be constructed because the documented error is a generic misinterpretation (treating numerator and denominator as independent whole numbers) without specifying a concrete operation or output pattern. The task requires a rule that, when called with a specific input, produces the *documented wrong answer*—but no specific operation (e.g., addition, simplification, comparison) or resulting incorrect value is provided in the row. Without knowing *how* the student incorrectly combines or manipulates the numerator and denominator, we cannot define a deterministic, generalizable predicate that yields the documented error. The exemplars specify exact arithmetic procedures (e.g., add denominators, multiply numerators and add denominators); this row does not.",
+      "result": "abstained"
+    }
+  ]
+}

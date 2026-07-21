@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "38478",
+    "domain": "fraction",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_38478_adjust_estimate_until_remainder_fits",
+    "target_operation": "partitioning_equal_parts",
+    "citation": "Barry D. Biddlecomb (2002)",
+    "error_action": "adjust_estimate_until_remainder_fits",
+    "error_description": "if a repeated estimate overshoots the whole, break off the excess and call the pieces halves",
+    "provenance_comments": "=== row 38478: cut-off-excess partitioning ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_fraction.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a verbal heuristic (“break off the excess and call the pieces halves”) without specifying a concrete, generalizable arithmetic operation or transformation that yields a deterministic wrong result for a given input. There is no runnable rule (e.g., no clear syntactic form of input, no precise computation for “excess”, no definition of when overshoot occurs, and no unique output structure) to encode as a Prolog predicate of arity 2 that reliably produces the documented misconception across instances. Without such determinism and generality, a defensible probe and a formal rule cannot be constructed.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a verbal heuristic (“break off the excess and call the pieces halves”) without specifying a concrete, generalizable arithmetic operation or transformation that yields a deterministic wrong result for a given input. There is no runnable rule (e.g., no clear syntactic form of input, no precise computation for “excess”, no definition of when overshoot occurs, and no unique output structure) to encode as a Prolog predicate of arity 2 that reliably produces the documented misconception across instances. Without such determinism and generality, a defensible probe and a formal rule cannot be constructed.",
+      "result": "abstained"
+    }
+  ]
+}

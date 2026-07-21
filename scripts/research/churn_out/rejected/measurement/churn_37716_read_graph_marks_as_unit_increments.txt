@@ -1,0 +1,27 @@
+{
+  "status": "rejected",
+  "entry": {
+    "row_id": "37716",
+    "domain": "measurement",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37716_read_graph_marks_as_unit_increments",
+    "target_operation": "graph_scale_interpretation",
+    "citation": "Sandra P. Marshall (1983)",
+    "error_action": "read_graph_marks_as_unit_increments",
+    "error_description": "treat each gridline or tick as one unit regardless of the stated scale",
+    "provenance_comments": "=== row 37716: misinterpret scale on graph/figure ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_measurement.pl"
+  },
+  "reason": "external module qualification is not allowed: misconceptions_measurement_batch_1:",
+  "attempts": [
+    {
+      "response": "misconceptions_measurement_batch_1:(churn_37716_read_graph_marks_as_unit_increments(graph_tick_value(Value, _ActualScale), Got) :-\n    Got is Value).\n\ntest_harness:arith_misconception(db_row(37716), measurement, churn_37716_read_graph_marks_as_unit_increments,\n    misconceptions_measurement_batch_1:churn_37716_read_graph_marks_as_unit_increments,\n    graph_tick_value(4, 2.5), 4).",
+      "result": "external module qualification is not allowed: misconceptions_measurement_batch_1:"
+    },
+    {
+      "response": "misconceptions_measurement_batch_1:(churn_37716_read_graph_marks_as_unit_increments(scale(_Divisions, _Total), Got) :-\n    Got is 1).\n\ntest_harness:arith_misconception(db_row(37716), measurement, churn_37716_read_graph_marks_as_unit_increments,\n    misconceptions_measurement_batch_1:churn_37716_read_graph_marks_as_unit_increments,\n    scale(4, 20), 1).",
+      "result": "external module qualification is not allowed: misconceptions_measurement_batch_1:"
+    }
+  ]
+}

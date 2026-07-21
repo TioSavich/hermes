@@ -1,0 +1,23 @@
+{
+  "status": "abstained",
+  "entry": {
+    "row_id": "37492",
+    "domain": "whole_number",
+    "registered_name": "too_vague",
+    "candidate_name": "churn_37492_even_numbers_generate_larger_even_numbers",
+    "target_operation": "parity_of_zero",
+    "citation": "Deborah Loewenberg Ball, Jennifer Lewis and Mark Hoover Thames (2008)",
+    "error_action": "even_numbers_generate_larger_even_numbers",
+    "error_description": "even numbers added to themselves make a new bigger even number, so zero is exempt",
+    "provenance_comments": "=== row 37492: zero claimed exempt from even/odd ===",
+    "worked_example": null,
+    "source_file": "knowledge/misconceptions/misconceptions_whole_number.pl"
+  },
+  "reason": "ABSTAIN: The documented error describes a conceptual misconception about zero's parity (claiming zero is exempt from even/odd classification), but does not specify a runnable procedural rule that consistently produces a wrong output for a given input. The phrase \"even numbers added to themselves make a new bigger even number, so zero is exempt\" is not a general computational rule—it is a justification for an exception claim—and lacks sufficient structure to define a binary predicate `Rule(Input, Got)` that reliably yields the documented error for a concrete `Input`. Without a clear, generalizable mapping from input to incorrect output (e.g., a specific algorithm or misapplication of an operation), no runnable `Rule` can be constructed per the schema requirements.",
+  "attempts": [
+    {
+      "response": "ABSTAIN: The documented error describes a conceptual misconception about zero's parity (claiming zero is exempt from even/odd classification), but does not specify a runnable procedural rule that consistently produces a wrong output for a given input. The phrase \"even numbers added to themselves make a new bigger even number, so zero is exempt\" is not a general computational rule—it is a justification for an exception claim—and lacks sufficient structure to define a binary predicate `Rule(Input, Got)` that reliably yields the documented error for a concrete `Input`. Without a clear, generalizable mapping from input to incorrect output (e.g., a specific algorithm or misapplication of an operation), no runnable `Rule` can be constructed per the schema requirements.",
+      "result": "abstained"
+    }
+  ]
+}
