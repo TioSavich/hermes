@@ -406,7 +406,11 @@ def output_matches_documentation(entry: Entry, rule_name: str, got: str) -> tupl
 
 
 def parse_candidate_registration(draft: str) -> tuple[list[str] | None, str | None]:
-    terms = list(iter_terms(draft, "test_harness:arith_misconception"))
+    try:
+        terms = list(iter_terms(draft, "test_harness:arith_misconception"))
+    except ValueError as exc:
+        # A malformed draft (unbalanced term) is a rejection, not a crash.
+        return None, str(exc)
     if len(terms) != 1:
         return None, f"expected exactly one arith_misconception/6 registration; found {len(terms)}"
     args = terms[0][2]
