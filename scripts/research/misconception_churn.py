@@ -268,6 +268,10 @@ def runnable_examples(domain: str, count: int = 2) -> list[str]:
             continue
         clause = segment[clause_at:].strip()
         registration = text[start:end].strip()
+        # Exemplars must wear the form the gate expects: the candidate
+        # module, not the historical batch module they were archived under.
+        clause = clause.replace(f"{module}:", "churn_candidate:")
+        registration = registration.replace(f"{module}:{predicate}", f"churn_candidate:{predicate}")
         if len(clause) <= 1800:
             examples.append(clause + "\n\n" + registration)
         previous_end = end
@@ -297,6 +301,7 @@ Output contract:
 - Use `db_row({entry.row_id})`, domain `{entry.domain}`, and description `{entry.candidate_name}` exactly.
 - Supply a concrete, schema-appropriate Input and correct ExpectedCorrect. Keep the rule general when the documented procedure supports generality.
 - Use only SWI-Prolog built-ins; no directives, imports, side effects, cuts, meta-calls, file access, network access, or dynamic database changes.
+- Qualify the rule clause head and the registration rule slot with `churn_candidate:` exactly as the exemplars do; no other module qualification.
 
 Two admitted-style schema exemplars from the same domain follow. They are shape examples only; do not copy their mathematics.
 
@@ -333,7 +338,10 @@ def user_prompt(entry: Entry, prior_failure: str | None = None) -> str:
 def clean_response(response: str) -> str:
     text = (response or "").strip()
     fence = re.fullmatch(r"```(?:prolog)?\s*(.*?)\s*```", text, flags=re.DOTALL | re.IGNORECASE)
-    return fence.group(1).strip() if fence else text
+    text = fence.group(1).strip() if fence else text
+    # Normalize historical registry qualifiers to the candidate module so
+    # the stored draft and the judged draft are the same text.
+    return re.sub(r"\b(?:misconceptions_[a-z0-9_]+|churn_(?!candidate\b)[a-z0-9_]+)\s*:", "churn_candidate:", text)
 
 
 def existing_rule_names() -> set[str]:
@@ -423,6 +431,9 @@ def gate_draft(entry: Entry, draft: str, collisions: set[str]) -> GateResult:
             f"unsafe or meta predicate is not allowed: {forbidden.group(0).rstrip('(').strip()}",
             "static gate: forbidden predicate",
         )
+    # Models sometimes copy a registry module's historical qualifier;
+    # normalize those to the candidate module before judging.
+    draft = re.sub(r"\b(?:misconceptions_[a-z0-9_]+|churn_(?!candidate\b)[a-z0-9_]+)\s*:", "churn_candidate:", draft)
     external_module = re.search(r"\b(?!test_harness\b|churn_candidate\b)[a-z][a-zA-Z0-9_]*\s*:", draft)
     if external_module:
         return GateResult(
@@ -625,6 +636,12 @@ def run(args: argparse.Namespace) -> int:
                 print(f"  infrastructure error: {exc}", file=sys.stderr, flush=True)
                 break
             final_response = clean_response(response)
+            # The predicate name is our convention, not the model's choice:
+            # rewrite any churn_* name it coined to the canonical one.
+            for coined in set(re.findall(r"churn_candidate:\(?([a-z][a-zA-Z0-9_]*)", final_response)):
+                if coined.startswith("churn_") and coined != entry.candidate_name:
+                    final_response = re.sub(r"\b" + re.escape(coined) + r"\b",
+                                            entry.candidate_name, final_response)
             if final_response.upper().startswith("ABSTAIN"):
                 status = "abstained"
                 attempts.append({"response": final_response, "result": "abstained"})
