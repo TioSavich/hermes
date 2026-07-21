@@ -16,7 +16,7 @@ well-formed term rather than deciding truth over accessibility relations.
 
 ## What else it holds
 
-- `axioms_eml.pl`, `semantic_axioms.pl`, `pragmatic_axioms.pl` — the
+- `rhythm_axioms.pl`, `semantic_axioms.pl`, `pragmatic_axioms.pl` — the
   dialectical-rhythm material inferences, integrated with the sequent engine.
 - `discourse_features.pl`, `discourse_pragmatics.pl` — deterministic transcript
   features and candidate relations.

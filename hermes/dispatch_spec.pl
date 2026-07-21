@@ -486,12 +486,12 @@ dispatch_spec(embodied_proof_witness,
          [sequent, resources, drop, drop, out(witness)]),
     witness(no_embodied_proof_witness,
             malformed_embodied_proof_request)).
-dispatch_spec(eml_transition_witness,
+dispatch_spec(rhythm_transition_witness,
     [from-term, to-term],
-    call(sequent_engine:eml_transition_witness,
-         [from, to, out(witness)]),
-    witness(no_eml_transition_witness,
-            malformed_eml_transition_request)).
+    call(sequent_engine:rhythm_transition_witness,
+        [from, to, out(witness)]),
+    witness(no_rhythm_transition_witness,
+            malformed_rhythm_transition_request)).
 dispatch_spec(incoherent_witness,
     [context-term],
     call(sequent_engine:incoherent_witness,
@@ -896,8 +896,8 @@ dispatch_message(critique_bad_infinite, malformed, "critique_bad_infinite requir
 dispatch_message(defeasible_classify, malformed, "defeasible_classify requires inference_id and defeater_set list").
 dispatch_message(embodied_proof_witness, no_witness, "embodied_proof_witness found no proof recorded example").
 dispatch_message(embodied_proof_witness, malformed, "embodied_proof_witness requires sequent and resources").
-dispatch_message(eml_transition_witness, no_witness, "eml_transition_witness found no transition recorded example for from/to").
-dispatch_message(eml_transition_witness, malformed, "eml_transition_witness requires from and to").
+dispatch_message(rhythm_transition_witness, no_witness, "rhythm_transition_witness found no transition recorded example for from/to").
+dispatch_message(rhythm_transition_witness, malformed, "rhythm_transition_witness requires from and to").
 dispatch_message(incoherent_witness, no_witness, "incoherent_witness found no recorded example for context").
 dispatch_message(incoherent_witness, malformed, "incoherent_witness requires context").
 dispatch_message(incompatibility_discovery_witness, malformed, "incompatibility_discovery_witness requires context and set").

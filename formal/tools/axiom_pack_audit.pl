@@ -9,7 +9,7 @@
             audit_result/3,
             hierarchy_proof_witness/2,
             hierarchy_witness/1,
-            print_eml_hierarchy/0,
+            print_rhythm_hierarchy/0,
             print_domain_hierarchy/0,
             print_number_theory_hierarchy/0
           ]).
@@ -106,7 +106,7 @@ throws_normative_crisis(Goal, Context) :-
 
 all_default_packs_enabled :-
     enabled_packs(Packs),
-    Packs == [domains, eml, geometry, number_theory, robinson].
+    Packs == [domains, geometry, number_theory, rhythm, robinson].
 
 enabled_packs(Packs) :-
     findall(Pack, sequent_engine:enabled_axiom_pack(Pack), Packs0),
@@ -167,13 +167,13 @@ audit_obligation(number_theory_completeness_self_defeat,
                       [n(neg(is_complete([2, 3, 5])))],
                       [number_theory])).
 
-audit_obligation(eml_direct_modal_commitment,
-                 'EML proves the direct letting-go modal commitment',
-                 safe([s(lg)] => [s(exp_nec(u_prime))], [eml])).
+audit_obligation(rhythm_direct_modal_commitment,
+                 'RHYTHM proves the direct letting-go modal commitment',
+                 safe([s(lg)] => [s(exp_nec(u_prime))], [rhythm])).
 
-audit_obligation(eml_necessity_cashout,
-                 'EML necessity cashes out into a material state transition',
-                 safe([s(lg)] => [s(u_prime)], [eml])).
+audit_obligation(rhythm_necessity_cashout,
+                 'RHYTHM necessity cashes out into a material state transition',
+                 safe([s(lg)] => [s(u_prime)], [rhythm])).
 
 audit_obligation(pack_isolation,
                  'a geometry-only horizon does not prove arithmetic facts',
@@ -234,8 +234,8 @@ geometry_cover_edge(Strong, Weak, ExtraRejections) :-
 %   remains as the compact compatibility predicate.
 hierarchy_proof_witness(geometry_cover(Strong, Weak), Witness) :-
     geometry_cover_edge_witness(Strong, Weak, Witness).
-hierarchy_proof_witness(eml_necessity_cashout(From, ActualTo), Witness) :-
-    eml_necessity_cashout_hierarchy_witness(From, ActualTo, Witness).
+hierarchy_proof_witness(rhythm_necessity_cashout(From, ActualTo), Witness) :-
+    rhythm_necessity_cashout_hierarchy_witness(From, ActualTo, Witness).
 hierarchy_proof_witness(domain_expansion(n_to_z), Witness) :-
     domain_expansion_n_to_z_witness(Witness).
 hierarchy_proof_witness(domain_expansion(n_to_q), Witness) :-
@@ -299,23 +299,23 @@ geometry_entailment_status(Entailer, Entailed, false,
                               entailed: Entailed }) :-
     \+ sequent_engine:entails_via_incompatibility(Entailer, Entailed).
 
-eml_necessity_cashout_hierarchy_witness(From, ActualTo,
-                                        _{ kind: eml_necessity_cashout,
+rhythm_necessity_cashout_hierarchy_witness(From, ActualTo,
+                                        _{ kind: rhythm_necessity_cashout,
                                            from: From,
                                            modal_to: ModalTo,
                                            actual_to: ActualTo,
                                            modal_sequent: ModalSequent,
                                            actual_sequent: ActualSequent,
-                                           modal_sequent_status: proved_by_eml_pack,
-                                           actual_sequent_status: proved_by_eml_pack,
+                                           modal_sequent_status: proved_by_rhythm_pack,
+                                           actual_sequent_status: proved_by_rhythm_pack,
                                            transition_witness: TransitionWitness }) :-
-    sequent_engine:eml_transition_witness(From, ActualTo, TransitionWitness),
+    sequent_engine:rhythm_transition_witness(From, ActualTo, TransitionWitness),
     TransitionWitness.source == necessity_cashout,
     ModalTo = TransitionWitness.modal_to,
     ModalSequent = ([From] => [ModalTo]),
     ActualSequent = ([From] => [ActualTo]),
-    safe(ModalSequent, [eml]),
-    safe(ActualSequent, [eml]).
+    safe(ModalSequent, [rhythm]),
+    safe(ActualSequent, [rhythm]).
 
 domain_expansion_n_to_z_witness(
     _{ kind: domain_expansion,
@@ -390,14 +390,14 @@ hierarchy_witness(domain_expansion(n_to_q(divide(1, 2, _),
                                            partition(1, 2, 1 rdiv 2)))) :-
     hierarchy_proof_witness(domain_expansion(n_to_q), _).
 
-hierarchy_witness(eml_necessity_cashout(s(u), s(comp_nec(a)), s(a))) :-
-    hierarchy_proof_witness(eml_necessity_cashout(s(u), s(a)), Witness),
+hierarchy_witness(rhythm_necessity_cashout(s(u), s(comp_nec(a)), s(a))) :-
+    hierarchy_proof_witness(rhythm_necessity_cashout(s(u), s(a)), Witness),
     Witness.modal_to == s(comp_nec(a)).
 
-hierarchy_witness(eml_necessity_cashout(s(lg),
+hierarchy_witness(rhythm_necessity_cashout(s(lg),
                                         s(exp_nec(u_prime)),
                                         s(u_prime))) :-
-    hierarchy_proof_witness(eml_necessity_cashout(s(lg), s(u_prime)), Witness),
+    hierarchy_proof_witness(rhythm_necessity_cashout(s(lg), s(u_prime)), Witness),
     Witness.modal_to == s(exp_nec(u_prime)).
 
 hierarchy_witness(number_theory_self_defeat(is_complete([2, 3, 5]))) :-
@@ -412,7 +412,7 @@ print_hierarchy_witnesses :-
     writeln('=== Hierarchy Witnesses ==='),
     print_geometry_hierarchy,
     print_domain_hierarchy,
-    print_eml_hierarchy,
+    print_rhythm_hierarchy,
     print_number_theory_hierarchy.
 
 print_geometry_hierarchy :-
@@ -441,11 +441,11 @@ print_domain_hierarchy :-
                     ])
            )).
 
-print_eml_hierarchy :-
-    writeln('eml_necessity_witnesses:'),
+print_rhythm_hierarchy :-
+    writeln('rhythm_necessity_witnesses:'),
     forall(member(Kind,
-                  [ eml_necessity_cashout(s(u), s(a)),
-                    eml_necessity_cashout(s(lg), s(u_prime))
+                  [ rhythm_necessity_cashout(s(u), s(a)),
+                    rhythm_necessity_cashout(s(lg), s(u_prime))
                   ]),
            ( hierarchy_proof_witness(Kind, Witness),
              canonical_atom(Witness.from, From),

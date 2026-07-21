@@ -13,16 +13,16 @@
  * representation (list_toggles/1 shows all of them):
  *
  *   - `pack(Pack)` — one of the five sequent-engine axiom packs
- *     (robinson, geometry, number_theory, eml, domains), or the opt-in
+ *     (robinson, geometry, number_theory, rhythm, domains), or the opt-in
  *     registry_incompatibility adapter. A sequent pack is a family of
  *     `proves_impl/2` / `is_incoherent/1` clauses include-compiled into
  *     `formal/sequent/sequent_engine.pl`, each clause gated by the dynamic fact
  *     `sequent_engine:axiom_pack_enabled/1`. The adapter pack delegates to
  *     its documented reversible load/unload interface.
- *   - `eml_transition(From, To)` — one row of the finite EML modal
+ *   - `rhythm_transition(From, To)` — one row of the finite rhythm modal
  *     transition table compiled into the sequent engine from
- *     `formal/pml/axioms_eml.pl` (for example the bad-infinite pair
- *     `eml_transition(s(t_b), s(comp_nec(t_n)))` and its converse).
+ *     `formal/pml/rhythm_axioms.pl` (for example the bad-infinite pair
+ *     `rhythm_transition(s(t_b), s(comp_nec(t_n)))` and its converse).
  *   - `dialectical_transition(Stage, ModalTo)` — one row of the dialectical
  *     rhythm table in `formal/pml/semantic_axioms.pl`, which feeds
  *     `embodied_prover:material_inference/3` and any FSM that speaks the
@@ -44,7 +44,7 @@
  *      `pack(Pack)` toggles delegate to
  *      `sequent_engine:enable_axiom_pack/1` / `disable_axiom_pack/1`.
  *   2. Fact granularity: the two modal-transition tables are called BY
- *      PREDICATE NAME from every consumer (the EML witness predicates inside
+ *      PREDICATE NAME from every consumer (the rhythm witness predicates inside
  *      the sequent engine, the semantic-axiom witness bodies behind
  *      `embodied_prover:material_inference/3`, and FSM fixtures). A
  *      `library(prolog_wrap)` supervisor on the table predicate intercepts
@@ -137,7 +137,7 @@
 %
 %   The fact-table families that support per-row toggling. The family name
 %   doubles as the toggle-identifier functor and the wrapped predicate name.
-toggle_family(eml_transition,         sequent_engine,  eml_transition/2).
+toggle_family(rhythm_transition,      sequent_engine,  rhythm_transition/2).
 toggle_family(dialectical_transition, semantic_axioms, dialectical_transition/2).
 
 %!  known_toggle(?Id) is nondet.

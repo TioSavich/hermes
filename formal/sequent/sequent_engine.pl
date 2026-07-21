@@ -43,14 +43,14 @@
  *
  * The engine provides proves/1 — a sequent calculus prover operating on
  * sequents of the form Premises => Conclusions. It is scene-agnostic:
- * it does not care whether it is proving geometry, arithmetic, or
- * embodied modal logic. The axiom sets that establish the current
+ * it does not care whether it is proving geometry, arithmetic, or a
+ * dialectical rhythm. The axiom sets that establish the current
  * "assumptive horizon" are included from their respective modules:
  *
  *   formal/formalization/axioms_geometry.pl    — quadrilateral taxonomy
  *   formal/formalization/axioms_robinson.pl    — Robinson Q, arithmetic grounding
  *   formal/formalization/axioms_number_theory.pl — Euclid's prime proof
- *   formal/pml/axioms_eml.pl                  — embodied modal logic
+ *   formal/pml/rhythm_axioms.pl                — dialectical rhythm table
  *   formal/learner/axioms_domains.pl          — domain switching, norms, fractions
  *
  * The vanishing-point mark (automata.pl) and hollow proofs
@@ -67,7 +67,7 @@
           , incoherent/1, incoherent_witness/2
           , incoherent_base/1, incoherent_base_witness/2
           , entails_via_incompatibility/2, entails_via_incompatibility_witness/3
-          , eml_transition_witness/3
+          , rhythm_transition_witness/3
           , robinson_axiom_witness/3, robinson_incoherence_witness/2
           , number_theory_self_defeat_witness/2, number_theory_factor_witness/3
           , normalize/2
@@ -118,7 +118,7 @@
 default_axiom_pack(robinson).
 default_axiom_pack(geometry).
 default_axiom_pack(number_theory).
-default_axiom_pack(eml).
+default_axiom_pack(rhythm).
 default_axiom_pack(domains).
 
 initialize_axiom_packs :-
@@ -288,7 +288,7 @@ is_incoherent(Y) :- incoherent_base(Y), !.
 :- include(formalization(axioms_robinson)).
 :- include(formalization(axioms_geometry)).
 :- include(formalization(axioms_number_theory)).
-:- include(pml(axioms_eml)).
+:- include(pml(rhythm_axioms)).
 :- include(learner(axioms_domains)).
 
 % =================================================================

@@ -50,7 +50,6 @@ capability('discourse_pragmatics', 'discourse_pragmatics', 'unclassified', ['utt
 capability('domain_context_witness', 'cw_driver', 'unclassified', ['context', 'domain', 'source'], routed_paged).
 capability('elaborations', 'user', 'unclassified', [], routed_paged).
 capability('embodied_proof_witness', 'embodied_prover', 'unclassified', ['resources', 'sequent'], routed_paged).
-capability('eml_transition_witness', 'sequent_engine', 'unclassified', ['from', 'to'], routed_paged).
 capability('event_score', 'hermes_event_scoring', 'unclassified', ['event'], routed_paged).
 capability('executable_practice_witness', 'cw_driver', 'unclassified', ['source', 'variant'], routed_paged).
 capability('field_connectivity_audit', 'field_context', 'monitoring', [], routed_paged).
@@ -162,6 +161,7 @@ capability('representation_candidates', 'hermes_worker', 'crosswalk', ['misconce
 capability('representation_check', 'hermes_worker', 'crosswalk', ['mode', 'representation'], routed_paged).
 capability('representation_spec_check', 'hermes_worker', 'crosswalk', ['representation'], routed_paged).
 capability('representation_spine_witness', 'user', 'crosswalk', ['concept'], routed_paged).
+capability('rhythm_transition_witness', 'sequent_engine', 'unclassified', ['from', 'to'], routed_paged).
 capability('robinson_axiom_witness', 'sequent_engine', 'unclassified', ['axiom', 'claim'], routed_paged).
 capability('semantic_material_witness', 'semantic_axioms', 'unclassified', ['from', 'to'], routed_paged).
 capability('sequent_proof_witness', 'cw_driver', 'sequent', ['sequent', 'source'], routed_paged).
@@ -236,9 +236,9 @@ capability('formal/learner/server.pl', 'server', 'learner', [], orphan_module).
 capability('formal/learner/server_visualization.pl', 'server_visualization', 'learner', [], orphan_module).
 capability('formal/learner/task_transition.pl', 'task_transition', 'learner', [], orphan_module).
 capability('formal/pml/audit_connectors.pl', 'audit_connectors', 'pml', [], orphan_module).
-capability('formal/pml/axioms_eml.pl', 'axioms_eml', 'pml', [], orphan_module).
 capability('formal/pml/mua_conjectures.pl', 'mua_conjectures', 'pml', [], orphan_module).
 capability('formal/pml/mua_health.pl', 'mua_health', 'pml', [], orphan_module).
+capability('formal/pml/rhythm_axioms.pl', 'rhythm_axioms', 'pml', [], orphan_module).
 capability('formal/pml/talkmoves_adapter.pl', 'talkmoves_adapter', 'pml', [], orphan_module).
 capability('formal/tools/axiom_toggle.pl', 'axiom_toggle', 'infrastructure', [], lazy_reachable).
 capability('hermes/web/prolog/zeeman_bifurcation.pl', 'zeeman_bifurcation', 'zeeman', [], orphan_module).
@@ -304,7 +304,6 @@ capability_route('discourse_pragmatics', 'POST', '/api/discourse_pragmatics').
 capability_route('domain_context_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('elaborations', 'POST', '/api/witness/grounding').
 capability_route('embodied_proof_witness', 'POST', '/api/witness/formal').
-capability_route('eml_transition_witness', 'POST', '/api/witness/formal').
 capability_route('event_score', 'POST', '/api/event_score').
 capability_route('executable_practice_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('field_connectivity_audit', 'POST', '/api/field_connectivity_audit').
@@ -427,6 +426,7 @@ capability_route('representation_candidates', 'POST', '/api/monitoring_visuals')
 capability_route('representation_check', 'POST', '/api/monitoring_visuals').
 capability_route('representation_spec_check', 'POST', '/api/monitoring_visuals').
 capability_route('representation_spine_witness', 'POST', '/api/witness/grounding').
+capability_route('rhythm_transition_witness', 'POST', '/api/witness/formal').
 capability_route('robinson_axiom_witness', 'POST', '/api/witness/formal').
 capability_route('semantic_material_witness', 'POST', '/api/witness/pml').
 capability_route('sequent_proof_witness', 'POST', '/api/sequent_proof').
@@ -558,7 +558,6 @@ capability_page('discourse_pragmatics', '/hermes/app/web/discussions.html').
 capability_page('domain_context_witness', '/more-zeeman/witnesses.html').
 capability_page('elaborations', '/more-zeeman/witnesses.html').
 capability_page('embodied_proof_witness', '/hermes/app/web/breaks.html').
-capability_page('eml_transition_witness', '/hermes/app/web/breaks.html').
 capability_page('event_score', '/hermes/app/web/discussions.html').
 capability_page('executable_practice_witness', '/more-zeeman/witnesses.html').
 capability_page('field_connectivity_audit', '/hermes/app/web/console.html').
@@ -721,6 +720,7 @@ capability_page('representation_candidates', '/hermes/app/web/console.html').
 capability_page('representation_check', '/hermes/app/web/console.html').
 capability_page('representation_spec_check', '/hermes/app/web/console.html').
 capability_page('representation_spine_witness', '/more-zeeman/witnesses.html').
+capability_page('rhythm_transition_witness', '/hermes/app/web/breaks.html').
 capability_page('robinson_axiom_witness', '/hermes/app/web/breaks.html').
 capability_page('semantic_material_witness', '/more-zeeman/witnesses.html').
 capability_page('sequent_proof_witness', '/hermes/app/web/breaks.html').
@@ -827,9 +827,9 @@ capability_page('formal/learner/server.pl', '/more-zeeman/bridge.html').
 capability_page('formal/learner/server_visualization.pl', '/more-zeeman/bridge.html').
 capability_page('formal/learner/task_transition.pl', '/more-zeeman/bridge.html').
 capability_page('formal/pml/audit_connectors.pl', '/more-zeeman/witnesses.html').
-capability_page('formal/pml/axioms_eml.pl', '/more-zeeman/witnesses.html').
 capability_page('formal/pml/mua_conjectures.pl', '/more-zeeman/witnesses.html').
 capability_page('formal/pml/mua_health.pl', '/more-zeeman/witnesses.html').
+capability_page('formal/pml/rhythm_axioms.pl', '/more-zeeman/witnesses.html').
 capability_page('formal/pml/talkmoves_adapter.pl', '/more-zeeman/witnesses.html').
 capability_page('formal/tools/axiom_toggle.pl', '/hermes/app/web/breaks.html').
 capability_page('hermes/web/prolog/zeeman_bifurcation.pl', '/more-zeeman/index.html').
