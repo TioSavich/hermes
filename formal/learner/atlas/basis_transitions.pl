@@ -1,6 +1,6 @@
 /** <module> Generated basis transitions of the curriculum dynamics.
  *
- * Do not edit by hand. Regenerate with scripts/curriculum/mini_atlas.pl.
+ * Do not edit by hand. Regenerate with mini_atlas.pl in the umedcta-formalization checkout (scripts/curriculum/), not this repository.
  * basis_transition(Lesson, Stage0, Role, Task, State1, Observation): one run
  * of f_{t,c} over a basis event. atlas_sufficiency_finding(Op, RoleKind,
  * Stage, ObservationKinds): an event class the (stage, operation, role)

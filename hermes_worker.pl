@@ -156,7 +156,7 @@ load_runtime :-
     use_module(render(notation_scene), []),
     use_module(math(fraction_cgi_dispatch), []),
     use_module(im_lessons(lesson_deformation_chart), []),
-    % The notation monitoring chart (183 K/G1 lessons). Import-free for the same
+    % The notation monitoring chart (519 lessons, GK-G6, four operations). Import-free for the same
     % reason as lesson_deformation_chart: its monitoring_chart_*/N predicates
     % must not collide with the lesson_monitoring exports imported above.
     use_module(im_lessons(lesson_notation_chart), []),
@@ -1171,7 +1171,7 @@ dispatch_request(lesson_deformation_chart, Id, Request, Response) :-
             "lesson_deformation_chart requires code (an IM lesson code)", Response)
     ).
 
-% The notation monitoring chart for one lesson code (183 K/G1 lessons). Mirrors
+% The notation monitoring chart for one lesson code (519 lessons, GK-G6). Mirrors
 % lesson_deformation_chart: a missing chart for the code is a clear coverage
 % error rather than a silent failure.
 dispatch_request(notation_monitoring_chart, Id, Request, Response) :-

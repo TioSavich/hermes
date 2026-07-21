@@ -218,7 +218,6 @@ capability('formal/juncture/differance_juncture.pl', 'differance_juncture', 'jun
 capability('formal/learner/activity_contract.pl', 'activity_contract', 'learner', [], orphan_module).
 capability('formal/learner/arithmetic_machine.pl', 'arithmetic_machine', 'learner', [], lazy_reachable).
 capability('formal/learner/atlas/basis_transitions.pl', 'basis_transitions', 'learner', [], orphan_module).
-capability('formal/learner/atlas/task_quotient.pl', 'task_quotient', 'learner', [], orphan_module).
 capability('formal/learner/axioms_domains.pl', 'axioms_domains', 'learner', [], orphan_module).
 capability('formal/learner/crisis_processor.pl', 'crisis_processor', 'learner', [], orphan_module).
 capability('formal/learner/curriculum_processor.pl', 'curriculum_processor', 'learner', [], orphan_module).
@@ -229,14 +228,12 @@ capability('formal/learner/learned_knowledge_v2.pl', 'learned_knowledge_v2', 'le
 capability('formal/learner/main.pl', 'main', 'learner', [], orphan_module).
 capability('formal/learner/primordial_start.pl', 'primordial_start', 'learner', [], orphan_module).
 capability('formal/learner/reorg_demo_server.pl', 'reorg_demo_server', 'learner', [], orphan_module).
-capability('formal/learner/reorg_domains/fraction.pl', 'reorg_fraction', 'learner', [], orphan_module).
 capability('formal/learner/reorg_domains/fraction_algebra.pl', 'reorg_fraction_algebra', 'learner', [], lazy_reachable).
 capability('formal/learner/reorg_domains/fraction_improper.pl', 'reorg_fraction_improper', 'learner', [], lazy_reachable).
 capability('formal/learner/reorg_domains/fraction_of_fraction.pl', 'reorg_fraction_of_fraction', 'learner', [], lazy_reachable).
 capability('formal/learner/reorg_domains/fraction_splitting.pl', 'reorg_fraction_splitting', 'learner', [], lazy_reachable).
 capability('formal/learner/server.pl', 'server', 'learner', [], orphan_module).
 capability('formal/learner/server_visualization.pl', 'server_visualization', 'learner', [], orphan_module).
-capability('formal/learner/task_transition.pl', 'task_transition', 'learner', [], orphan_module).
 capability('formal/pml/audit_connectors.pl', 'audit_connectors', 'pml', [], orphan_module).
 capability('formal/pml/axioms_eml.pl', 'axioms_eml', 'pml', [], orphan_module).
 capability('formal/pml/mua_conjectures.pl', 'mua_conjectures', 'pml', [], orphan_module).
@@ -811,7 +808,6 @@ capability_page('formal/juncture/differance_juncture.pl', '/hermes/app/web/gener
 capability_page('formal/learner/activity_contract.pl', '/more-zeeman/bridge.html').
 capability_page('formal/learner/arithmetic_machine.pl', '/more-zeeman/bridge.html').
 capability_page('formal/learner/atlas/basis_transitions.pl', '/more-zeeman/bridge.html').
-capability_page('formal/learner/atlas/task_quotient.pl', '/more-zeeman/bridge.html').
 capability_page('formal/learner/axioms_domains.pl', '/more-zeeman/bridge.html').
 capability_page('formal/learner/crisis_processor.pl', '/more-zeeman/bridge.html').
 capability_page('formal/learner/curriculum_processor.pl', '/more-zeeman/bridge.html').
@@ -822,14 +818,12 @@ capability_page('formal/learner/learned_knowledge_v2.pl', '/more-zeeman/bridge.h
 capability_page('formal/learner/main.pl', '/more-zeeman/bridge.html').
 capability_page('formal/learner/primordial_start.pl', '/more-zeeman/bridge.html').
 capability_page('formal/learner/reorg_demo_server.pl', '/more-zeeman/bridge.html').
-capability_page('formal/learner/reorg_domains/fraction.pl', '/more-zeeman/bridge.html').
 capability_page('formal/learner/reorg_domains/fraction_algebra.pl', '/more-zeeman/bridge.html').
 capability_page('formal/learner/reorg_domains/fraction_improper.pl', '/more-zeeman/bridge.html').
 capability_page('formal/learner/reorg_domains/fraction_of_fraction.pl', '/more-zeeman/bridge.html').
 capability_page('formal/learner/reorg_domains/fraction_splitting.pl', '/more-zeeman/bridge.html').
 capability_page('formal/learner/server.pl', '/more-zeeman/bridge.html').
 capability_page('formal/learner/server_visualization.pl', '/more-zeeman/bridge.html').
-capability_page('formal/learner/task_transition.pl', '/more-zeeman/bridge.html').
 capability_page('formal/pml/audit_connectors.pl', '/more-zeeman/witnesses.html').
 capability_page('formal/pml/axioms_eml.pl', '/more-zeeman/witnesses.html').
 capability_page('formal/pml/mua_conjectures.pl', '/more-zeeman/witnesses.html').

@@ -6,7 +6,7 @@
  *  operand was recovered from a figure a text extractor drops), anticipated
  *  student errors, and the honest developmental boundary. Source-cited; a
  *  cache with provenance, not an authority. Regenerate with
- *  scripts/curriculum/build_digest.py from the vision run.
+ *  build_digest.py in the umedcta-formalization checkout (scripts/curriculum/), not this repository from the vision run.
  */
 :- module(vision_lesson_digest,
           [ vision_lesson/5,

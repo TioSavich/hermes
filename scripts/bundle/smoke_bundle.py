@@ -223,7 +223,7 @@ def static_audit(tree: Path, report: Report) -> None:
             "/api/witness/grounding", "image_schema", "target_expressive_power_witness",
         ),
         "hermes/web/bridge.html": (
-            "formal/learner/activity_contract.pl", "formal/learner/reorg_domains/fraction.pl",
+            "formal/learner/activity_contract.pl",
             "knowledge/strategies/math_benchmark.pl",
         ),
         "hermes/web/coordination.html": (
