@@ -686,7 +686,7 @@ deformation_spec_evidence(
 % reason is the DIRECTION of place, distinct from place_value_chart's column
 % drift and from digit_transposition's last-two-place swap. Corpus-anchored via
 % the decimal sibling mirror_place_value/2 + arith_misconception(db_row(38397),
-% decimal, mirror_image_place_value, ...) (misconceptions_decimal_batch_2.pl:318,
+% decimal, mirror_image_place_value, ...) (misconceptions_decimal.pl,
 % 329; the source comment gives no grade band). The whole-number K/G1 instance is
 % not itself in this corpus; the provenance flag carries the attested decimal
 % sibling, the same honesty move operational_equals_chain makes.
@@ -751,7 +751,8 @@ transposed_answer(N, Swapped) :-
 
 % mirror_place_value_answer(+N, -Reversed): the digits of N inscribed with place
 % value growing rightward — the FULL decimal-digit reversal (13 -> 31, 120 -> 21).
-% The notation cousin of misconceptions_decimal_batch_2:mirror_place_value/2.
+% The notation cousin of the retained
+% misconceptions_decimal_batch_2:mirror_place_value/2 rule namespace.
 % Distinct from transposed_answer/2, which swaps only the bottom two places, so
 % the two coincide on two-digit numbers but diverge once there are three digits.
 mirror_place_value_answer(N, Reversed) :-

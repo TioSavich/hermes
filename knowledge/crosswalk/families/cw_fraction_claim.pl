@@ -41,8 +41,7 @@
 :- use_module(formalization(grounded_arithmetic), [ integer_to_recollection/2 ]).
 :- use_module(lessons('im/lesson_monitoring'), []).
 :- use_module(misconceptions(test_harness), []).
-:- use_module(misconceptions(misconceptions_fraction_batch_2), []).
-:- use_module(misconceptions(misconceptions_fraction_batch_7), []).
+:- use_module(misconceptions(misconceptions_fraction), []).
 :- use_module(standards('indiana/standard_3_ns_2'), []).
 :- use_module(standards('indiana/standard_3_ns_5'), []).
 :- use_module(library(lists), [ member/2, append/2 ]).

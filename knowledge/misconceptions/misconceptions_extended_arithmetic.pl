@@ -3,7 +3,7 @@
 
 :- module(misconceptions_extended_arithmetic, []).
 
-:- use_module(misconceptions(misconceptions_percent_batch_1)).
+:- use_module(misconceptions(misconceptions_percent)).
 :- use_module(misconceptions(misconceptions_ratio)).
 :- use_module(misconceptions(misconceptions_combinatorial)).
 :- use_module(misconceptions(misconceptions_discrete)).
