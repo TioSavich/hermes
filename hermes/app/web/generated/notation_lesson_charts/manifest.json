@@ -1,15 +1,28 @@
 {
   "kind": "notation_lesson_charts",
-  "host_note": "The IM Kindergarten / Grade-1 corpus has no number-writing lessons: the K/G1 lessons are counting and addition lessons, not lessons whose object is the written numeral. A notation deformation is therefore hosted on an addition lesson and rendered over a representative equation drawn from that lesson's operation. The chart is a parametric render over that equation, not a count of corpus instances of the deformation in the lesson.",
-  "lesson_count": 183,
-  "k_count": 71,
-  "g1_count": 112,
-  "skipped": [
-    "IM-GK-U5-L7"
-  ],
+  "host_note": "An IM lesson hosts one notation chart through its encoded addition, subtraction, or multiplication operation. The chart includes only deformations admitted by cited evidence and renders them over a representative equation; it does not count instances in the lesson.",
+  "lesson_count": 519,
+  "grade_counts": {
+    "K": 74,
+    "1": 120,
+    "2": 115,
+    "3": 81,
+    "4": 64,
+    "5": 62,
+    "6": 3,
+    "7": 0,
+    "8": 0
+  },
+  "operation_counts": {
+    "addition": 448,
+    "subtraction": 18,
+    "multiplication": 53
+  },
+  "skipped": [],
   "lessons": [
     {
       "code": "IM-G1-U1-L1",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -20,6 +33,7 @@
     },
     {
       "code": "IM-G1-U1-L10",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -32,6 +46,7 @@
     },
     {
       "code": "IM-G1-U1-L13",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -42,6 +57,7 @@
     },
     {
       "code": "IM-G1-U1-L14",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -52,6 +68,7 @@
     },
     {
       "code": "IM-G1-U1-L2",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -62,6 +79,7 @@
     },
     {
       "code": "IM-G1-U1-L3",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -72,6 +90,7 @@
     },
     {
       "code": "IM-G1-U1-L4",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -82,6 +101,7 @@
     },
     {
       "code": "IM-G1-U1-L5",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -92,6 +112,7 @@
     },
     {
       "code": "IM-G1-U1-L6",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -104,6 +125,7 @@
     },
     {
       "code": "IM-G1-U1-L9",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -114,6 +136,7 @@
     },
     {
       "code": "IM-G1-U2-L1",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -124,6 +147,7 @@
     },
     {
       "code": "IM-G1-U2-L10",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -134,6 +158,7 @@
     },
     {
       "code": "IM-G1-U2-L11",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -144,6 +169,7 @@
     },
     {
       "code": "IM-G1-U2-L12",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -154,6 +180,7 @@
     },
     {
       "code": "IM-G1-U2-L13",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -164,6 +191,7 @@
     },
     {
       "code": "IM-G1-U2-L14",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -174,6 +202,7 @@
     },
     {
       "code": "IM-G1-U2-L15",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -184,6 +213,7 @@
     },
     {
       "code": "IM-G1-U2-L16",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -193,7 +223,19 @@
       ]
     },
     {
+      "code": "IM-G1-U2-L17",
+      "operation": "subtraction",
+      "standards": [],
+      "representative_equation": "5 - 2 = 3",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
       "code": "IM-G1-U2-L18",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -204,6 +246,7 @@
     },
     {
       "code": "IM-G1-U2-L19",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -216,6 +259,7 @@
     },
     {
       "code": "IM-G1-U2-L2",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -226,6 +270,7 @@
     },
     {
       "code": "IM-G1-U2-L20",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -236,6 +281,7 @@
     },
     {
       "code": "IM-G1-U2-L21",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -247,7 +293,19 @@
       ]
     },
     {
+      "code": "IM-G1-U2-L22",
+      "operation": "subtraction",
+      "standards": [],
+      "representative_equation": "5 - 2 = 3",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
       "code": "IM-G1-U2-L3",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -258,6 +316,7 @@
     },
     {
       "code": "IM-G1-U2-L4",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -267,7 +326,19 @@
       ]
     },
     {
+      "code": "IM-G1-U2-L5",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
       "code": "IM-G1-U2-L6",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -278,6 +349,7 @@
     },
     {
       "code": "IM-G1-U2-L7",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -290,6 +362,7 @@
     },
     {
       "code": "IM-G1-U2-L8",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -300,6 +373,7 @@
     },
     {
       "code": "IM-G1-U2-L9",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -310,6 +384,7 @@
     },
     {
       "code": "IM-G1-U3-L1",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -320,6 +395,7 @@
     },
     {
       "code": "IM-G1-U3-L11",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -332,6 +408,7 @@
     },
     {
       "code": "IM-G1-U3-L12",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -344,6 +421,7 @@
     },
     {
       "code": "IM-G1-U3-L13",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -355,7 +433,19 @@
       ]
     },
     {
+      "code": "IM-G1-U3-L14",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
       "code": "IM-G1-U3-L15",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -368,6 +458,7 @@
     },
     {
       "code": "IM-G1-U3-L16",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -380,6 +471,7 @@
     },
     {
       "code": "IM-G1-U3-L17",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -392,6 +484,7 @@
     },
     {
       "code": "IM-G1-U3-L18",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -404,6 +497,7 @@
     },
     {
       "code": "IM-G1-U3-L19",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -416,6 +510,7 @@
     },
     {
       "code": "IM-G1-U3-L2",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -426,6 +521,7 @@
     },
     {
       "code": "IM-G1-U3-L20",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -438,6 +534,7 @@
     },
     {
       "code": "IM-G1-U3-L21",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -450,6 +547,7 @@
     },
     {
       "code": "IM-G1-U3-L22",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -462,6 +560,7 @@
     },
     {
       "code": "IM-G1-U3-L23",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -474,6 +573,7 @@
     },
     {
       "code": "IM-G1-U3-L24",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -486,6 +586,7 @@
     },
     {
       "code": "IM-G1-U3-L25",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -496,6 +597,7 @@
     },
     {
       "code": "IM-G1-U3-L26",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -508,6 +610,7 @@
     },
     {
       "code": "IM-G1-U3-L27",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -520,6 +623,7 @@
     },
     {
       "code": "IM-G1-U3-L3",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -530,6 +634,7 @@
     },
     {
       "code": "IM-G1-U3-L4",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -541,7 +646,19 @@
       ]
     },
     {
+      "code": "IM-G1-U3-L5",
+      "operation": "subtraction",
+      "standards": [],
+      "representative_equation": "5 - 2 = 3",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
       "code": "IM-G1-U3-L6",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -552,6 +669,7 @@
     },
     {
       "code": "IM-G1-U3-L7",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -562,6 +680,7 @@
     },
     {
       "code": "IM-G1-U3-L8",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -574,6 +693,7 @@
     },
     {
       "code": "IM-G1-U3-L9",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -584,6 +704,7 @@
     },
     {
       "code": "IM-G1-U4-L1",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -596,6 +717,7 @@
     },
     {
       "code": "IM-G1-U4-L10",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -608,6 +730,7 @@
     },
     {
       "code": "IM-G1-U4-L11",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -620,6 +743,7 @@
     },
     {
       "code": "IM-G1-U4-L12",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -632,6 +756,7 @@
     },
     {
       "code": "IM-G1-U4-L13",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -644,6 +769,7 @@
     },
     {
       "code": "IM-G1-U4-L14",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -656,6 +782,7 @@
     },
     {
       "code": "IM-G1-U4-L15",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -668,6 +795,7 @@
     },
     {
       "code": "IM-G1-U4-L16",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -680,6 +808,7 @@
     },
     {
       "code": "IM-G1-U4-L17",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -692,6 +821,7 @@
     },
     {
       "code": "IM-G1-U4-L18",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -704,6 +834,7 @@
     },
     {
       "code": "IM-G1-U4-L19",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -716,6 +847,7 @@
     },
     {
       "code": "IM-G1-U4-L2",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -726,6 +858,7 @@
     },
     {
       "code": "IM-G1-U4-L20",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -738,6 +871,7 @@
     },
     {
       "code": "IM-G1-U4-L21",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -750,6 +884,7 @@
     },
     {
       "code": "IM-G1-U4-L22",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -762,6 +897,7 @@
     },
     {
       "code": "IM-G1-U4-L3",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -772,6 +908,7 @@
     },
     {
       "code": "IM-G1-U4-L4",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -784,6 +921,7 @@
     },
     {
       "code": "IM-G1-U4-L5",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -796,6 +934,7 @@
     },
     {
       "code": "IM-G1-U4-L6",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -808,6 +947,7 @@
     },
     {
       "code": "IM-G1-U4-L7",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -820,6 +960,7 @@
     },
     {
       "code": "IM-G1-U4-L8",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -832,6 +973,7 @@
     },
     {
       "code": "IM-G1-U4-L9",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -844,6 +986,7 @@
     },
     {
       "code": "IM-G1-U5-L1",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -856,6 +999,7 @@
     },
     {
       "code": "IM-G1-U5-L10",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -868,6 +1012,7 @@
     },
     {
       "code": "IM-G1-U5-L11",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -880,6 +1025,7 @@
     },
     {
       "code": "IM-G1-U5-L12",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -892,6 +1038,7 @@
     },
     {
       "code": "IM-G1-U5-L13",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -902,6 +1049,7 @@
     },
     {
       "code": "IM-G1-U5-L14",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -914,6 +1062,7 @@
     },
     {
       "code": "IM-G1-U5-L2",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -926,6 +1075,7 @@
     },
     {
       "code": "IM-G1-U5-L3",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -938,6 +1088,7 @@
     },
     {
       "code": "IM-G1-U5-L5",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -950,6 +1101,7 @@
     },
     {
       "code": "IM-G1-U5-L6",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -962,6 +1114,7 @@
     },
     {
       "code": "IM-G1-U5-L7",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -974,6 +1127,7 @@
     },
     {
       "code": "IM-G1-U5-L8",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -984,6 +1138,7 @@
     },
     {
       "code": "IM-G1-U5-L9",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -996,6 +1151,7 @@
     },
     {
       "code": "IM-G1-U6-L10",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -1008,6 +1164,7 @@
     },
     {
       "code": "IM-G1-U6-L11",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -1020,6 +1177,7 @@
     },
     {
       "code": "IM-G1-U6-L12",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1030,6 +1188,7 @@
     },
     {
       "code": "IM-G1-U6-L13",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1039,7 +1198,30 @@
       ]
     },
     {
+      "code": "IM-G1-U6-L14",
+      "operation": "subtraction",
+      "standards": [],
+      "representative_equation": "5 - 2 = 3",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G1-U6-L15",
+      "operation": "subtraction",
+      "standards": [],
+      "representative_equation": "5 - 2 = 3",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
       "code": "IM-G1-U6-L16",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -1052,6 +1234,7 @@
     },
     {
       "code": "IM-G1-U6-L2",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -1064,6 +1247,7 @@
     },
     {
       "code": "IM-G1-U6-L4",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -1076,6 +1260,7 @@
     },
     {
       "code": "IM-G1-U6-L8",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -1088,6 +1273,7 @@
     },
     {
       "code": "IM-G1-U6-L9",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -1100,6 +1286,7 @@
     },
     {
       "code": "IM-G1-U7-L1",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1110,6 +1297,7 @@
     },
     {
       "code": "IM-G1-U7-L11",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1120,6 +1308,7 @@
     },
     {
       "code": "IM-G1-U7-L14",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1130,6 +1319,7 @@
     },
     {
       "code": "IM-G1-U7-L15",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -1142,6 +1332,7 @@
     },
     {
       "code": "IM-G1-U7-L16",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -1154,6 +1345,7 @@
     },
     {
       "code": "IM-G1-U7-L6",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -1166,6 +1358,7 @@
     },
     {
       "code": "IM-G1-U7-L8",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -1178,6 +1371,7 @@
     },
     {
       "code": "IM-G1-U8-L1",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -1190,6 +1384,7 @@
     },
     {
       "code": "IM-G1-U8-L10",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -1202,6 +1397,7 @@
     },
     {
       "code": "IM-G1-U8-L3",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -1214,6 +1410,7 @@
     },
     {
       "code": "IM-G1-U8-L4",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -1226,6 +1423,7 @@
     },
     {
       "code": "IM-G1-U8-L5",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -1237,7 +1435,19 @@
       ]
     },
     {
+      "code": "IM-G1-U8-L6",
+      "operation": "subtraction",
+      "standards": [],
+      "representative_equation": "5 - 2 = 3",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
       "code": "IM-G1-U8-L7",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -1250,6 +1460,7 @@
     },
     {
       "code": "IM-G1-U8-L8",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -1262,6 +1473,7 @@
     },
     {
       "code": "IM-G1-U8-L9",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "8 + 4 = 12",
       "cell_count": 1,
@@ -1273,7 +1485,4005 @@
       ]
     },
     {
+      "code": "IM-G2-U1-L1",
+      "operation": "subtraction",
+      "standards": [],
+      "representative_equation": "21 - 3 = 18",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U1-L11",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U1-L13",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U1-L15",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U1-L16",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U1-L17",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U1-L18",
+      "operation": "subtraction",
+      "standards": [],
+      "representative_equation": "5 - 2 = 3",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U1-L2",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U1-L3",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U1-L4",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U1-L5",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U1-L7",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U2-L1",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U2-L10",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U2-L11",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U2-L12",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U2-L13",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U2-L14",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U2-L15",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U2-L2",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U2-L3",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U2-L4",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U2-L5",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U2-L6",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U2-L7",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U2-L8",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U2-L9",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U3-L10",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U3-L11",
+      "operation": "subtraction",
+      "standards": [],
+      "representative_equation": "21 - 3 = 18",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U3-L12",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U3-L13",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U3-L15",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U3-L16",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U3-L17",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U3-L3",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U3-L5",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U3-L6",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U3-L7",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U4-L10",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U4-L11",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U4-L12",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U4-L14",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U4-L2",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U4-L3",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U4-L4",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U4-L6",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U4-L9",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U5-L1",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U5-L10",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U5-L11",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U5-L12",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U5-L13",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U5-L14",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U5-L2",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U5-L3",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U5-L4",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U5-L5",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U5-L6",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U5-L7",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U5-L8",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U5-L9",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U6-L10",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U6-L12",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U6-L15",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U6-L16",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U6-L17",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U6-L19",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U6-L20",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U6-L21",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U6-L5",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U6-L8",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U7-L1",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U7-L10",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U7-L11",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U7-L12",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U7-L13",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U7-L14",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U7-L15",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U7-L16",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U7-L17",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U7-L18",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U7-L19",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U7-L2",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U7-L3",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U7-L4",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U7-L5",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U7-L6",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U7-L7",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U7-L8",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U7-L9",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U8-L1",
+      "operation": "subtraction",
+      "standards": [],
+      "representative_equation": "21 - 3 = 18",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U8-L10",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U8-L11",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U8-L14",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U8-L2",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U8-L3",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U8-L4",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U8-L5",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U8-L6",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U8-L7",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U8-L8",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U8-L9",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U9-L1",
+      "operation": "subtraction",
+      "standards": [],
+      "representative_equation": "5 - 2 = 3",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U9-L10",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U9-L11",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U9-L12",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U9-L13",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U9-L2",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U9-L3",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U9-L4",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U9-L5",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U9-L6",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U9-L7",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U9-L8",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G2-U9-L9",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U1-L10",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U1-L11",
+      "operation": "subtraction",
+      "standards": [],
+      "representative_equation": "21 - 3 = 18",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U1-L12",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U1-L13",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U1-L14",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U1-L15",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U1-L16",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U1-L17",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U1-L18",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U1-L19",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U1-L20",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U1-L21",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U1-L3",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U1-L9",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U2-L1",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U2-L10",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U2-L11",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U2-L12",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U2-L13",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U2-L5",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U2-L8",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U2-L9",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L1",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L10",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L11",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L12",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L13",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L14",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L15",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L16",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L17",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L18",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L19",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L2",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L20",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L21",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L3",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L4",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L5",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L6",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L7",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L8",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U3-L9",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L10",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L11",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L12",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L13",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L14",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L15",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L16",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L17",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L18",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L19",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L2",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L20",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L21",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L22",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L3",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L4",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L5",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L6",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L7",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L8",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U4-L9",
+      "operation": "subtraction",
+      "standards": [],
+      "representative_equation": "21 - 3 = 18",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U5-L11",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U5-L4",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U5-L8",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U6-L14",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U6-L15",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U6-L5",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U7-L2",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U7-L3",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U7-L5",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U7-L7",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U7-L8",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U8-L10",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U8-L11",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U8-L13",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U8-L15",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U8-L8",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G3-U8-L9",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U1-L3",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U1-L4",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U1-L6",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U1-L7",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U2-L17",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U4-L10",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U4-L11",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U4-L12",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U4-L13",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U4-L14",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U4-L15",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U4-L16",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U4-L17",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U4-L18",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U4-L19",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U4-L20",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U4-L21",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U4-L22",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U4-L23",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U4-L6",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U4-L7",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U4-L8",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U4-L9",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U5-L1",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U5-L12",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U5-L13",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U5-L14",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U5-L15",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U5-L18",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U5-L2",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U5-L3",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U5-L4",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U5-L5",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U5-L6",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L1",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L10",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L11",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L12",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L13",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L14",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L15",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L16",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L17",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L19",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L20",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L21",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L24",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L25",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L26",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L3",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L4",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L5",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L6",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L7",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L8",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U6-L9",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U7-L10",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U7-L9",
+      "operation": "subtraction",
+      "standards": [],
+      "representative_equation": "5 - 2 = 3",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U9-L11",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U9-L12",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U9-L4",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U9-L5",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "7 * 3 = 21",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U9-L7",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G4-U9-L8",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U1-L10",
+      "operation": "subtraction",
+      "standards": [],
+      "representative_equation": "5 - 2 = 3",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U1-L4",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U1-L6",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U2-L6",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U2-L8",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U4-L1",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U4-L10",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U4-L11",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U4-L15",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U4-L16",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U4-L18",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U4-L19",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U4-L2",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U4-L3",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U4-L4",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U4-L5",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U4-L6",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U4-L7",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U4-L8",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U4-L9",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L1",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L10",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L11",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L12",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L13",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L14",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L15",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L16",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L17",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L18",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L19",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L20",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L21",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L22",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L23",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L24",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L25",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L3",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L4",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L5",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L6",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L7",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L8",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U5-L9",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U6-L1",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U6-L2",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U6-L20",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U6-L3",
+      "operation": "subtraction",
+      "standards": [],
+      "representative_equation": "21 - 3 = 18",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U6-L4",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U6-L5",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U6-L6",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U7-L12",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U8-L1",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U8-L12",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U8-L15",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U8-L16",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U8-L2",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U8-L3",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U8-L4",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U8-L5",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "8 + 4 = 12",
+      "cell_count": 1,
+      "deformations": [
+        "carry_mark|corpus_attested",
+        "digit_transposition|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U8-L7",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G5-U8-L8",
+      "operation": "addition",
+      "standards": [],
+      "representative_equation": "3 + 2 = 5",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G6-U7-L16",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G6-U7-L17",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
+      "code": "IM-G6-U7-L18",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
       "code": "IM-GK-U1-L12",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1284,6 +5494,7 @@
     },
     {
       "code": "IM-GK-U1-L13",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1294,6 +5505,7 @@
     },
     {
       "code": "IM-GK-U1-L14",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1304,6 +5516,7 @@
     },
     {
       "code": "IM-GK-U1-L15",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1314,6 +5527,7 @@
     },
     {
       "code": "IM-GK-U1-L16",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1324,6 +5538,7 @@
     },
     {
       "code": "IM-GK-U1-L3",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1334,6 +5549,7 @@
     },
     {
       "code": "IM-GK-U1-L6",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1344,6 +5560,7 @@
     },
     {
       "code": "IM-GK-U1-L7",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1354,6 +5571,7 @@
     },
     {
       "code": "IM-GK-U2-L1",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1363,7 +5581,19 @@
       ]
     },
     {
+      "code": "IM-GK-U2-L10",
+      "operation": "subtraction",
+      "standards": [],
+      "representative_equation": "5 - 2 = 3",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
       "code": "IM-GK-U2-L11",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1374,6 +5604,7 @@
     },
     {
       "code": "IM-GK-U2-L12",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1384,6 +5615,7 @@
     },
     {
       "code": "IM-GK-U2-L13",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1394,6 +5626,7 @@
     },
     {
       "code": "IM-GK-U2-L19",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1404,6 +5637,7 @@
     },
     {
       "code": "IM-GK-U2-L2",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1414,6 +5648,7 @@
     },
     {
       "code": "IM-GK-U2-L21",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1424,6 +5659,7 @@
     },
     {
       "code": "IM-GK-U2-L3",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1434,6 +5670,7 @@
     },
     {
       "code": "IM-GK-U2-L4",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1444,6 +5681,7 @@
     },
     {
       "code": "IM-GK-U2-L5",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1454,6 +5692,7 @@
     },
     {
       "code": "IM-GK-U2-L7",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1464,6 +5703,7 @@
     },
     {
       "code": "IM-GK-U2-L9",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1474,6 +5714,7 @@
     },
     {
       "code": "IM-GK-U4-L1",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1484,6 +5725,7 @@
     },
     {
       "code": "IM-GK-U4-L10",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1493,7 +5735,21 @@
       ]
     },
     {
+      "code": "IM-GK-U4-L11",
+      "operation": "subtraction",
+      "standards": [],
+      "representative_equation": "21 - 3 = 18",
+      "cell_count": 1,
+      "deformations": [
+        "digit_transposition|literature_only",
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested",
+        "place_value_writing_error|corpus_attested"
+      ]
+    },
+    {
       "code": "IM-GK-U4-L12",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1504,6 +5760,7 @@
     },
     {
       "code": "IM-GK-U4-L13",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1514,6 +5771,7 @@
     },
     {
       "code": "IM-GK-U4-L14",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1524,6 +5782,7 @@
     },
     {
       "code": "IM-GK-U4-L17",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1534,6 +5793,7 @@
     },
     {
       "code": "IM-GK-U4-L18",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1544,6 +5804,7 @@
     },
     {
       "code": "IM-GK-U4-L2",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1554,6 +5815,7 @@
     },
     {
       "code": "IM-GK-U4-L3",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1564,6 +5826,7 @@
     },
     {
       "code": "IM-GK-U4-L4",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1574,6 +5837,7 @@
     },
     {
       "code": "IM-GK-U4-L5",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1584,6 +5848,7 @@
     },
     {
       "code": "IM-GK-U4-L6",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1594,6 +5859,7 @@
     },
     {
       "code": "IM-GK-U4-L8",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1604,6 +5870,7 @@
     },
     {
       "code": "IM-GK-U5-L10",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1614,6 +5881,7 @@
     },
     {
       "code": "IM-GK-U5-L11",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1624,6 +5892,7 @@
     },
     {
       "code": "IM-GK-U5-L12",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1634,6 +5903,7 @@
     },
     {
       "code": "IM-GK-U5-L13",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1644,6 +5914,7 @@
     },
     {
       "code": "IM-GK-U5-L14",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1654,6 +5925,7 @@
     },
     {
       "code": "IM-GK-U5-L4",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1664,6 +5936,7 @@
     },
     {
       "code": "IM-GK-U5-L9",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1674,6 +5947,7 @@
     },
     {
       "code": "IM-GK-U6-L1",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1684,6 +5958,7 @@
     },
     {
       "code": "IM-GK-U6-L10",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1694,6 +5969,7 @@
     },
     {
       "code": "IM-GK-U6-L11",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1704,6 +5980,7 @@
     },
     {
       "code": "IM-GK-U6-L12",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1714,6 +5991,7 @@
     },
     {
       "code": "IM-GK-U6-L2",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1724,6 +6002,7 @@
     },
     {
       "code": "IM-GK-U6-L4",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1734,6 +6013,7 @@
     },
     {
       "code": "IM-GK-U6-L5",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1744,6 +6024,7 @@
     },
     {
       "code": "IM-GK-U6-L6",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1754,6 +6035,7 @@
     },
     {
       "code": "IM-GK-U6-L7",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1764,6 +6046,7 @@
     },
     {
       "code": "IM-GK-U6-L8",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1774,6 +6057,7 @@
     },
     {
       "code": "IM-GK-U6-L9",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1784,6 +6068,7 @@
     },
     {
       "code": "IM-GK-U7-L1",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1794,6 +6079,7 @@
     },
     {
       "code": "IM-GK-U7-L10",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1804,6 +6090,7 @@
     },
     {
       "code": "IM-GK-U7-L3",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1814,6 +6101,7 @@
     },
     {
       "code": "IM-GK-U7-L5",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1824,6 +6112,7 @@
     },
     {
       "code": "IM-GK-U7-L6",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1834,6 +6123,7 @@
     },
     {
       "code": "IM-GK-U8-L10",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1844,6 +6134,7 @@
     },
     {
       "code": "IM-GK-U8-L12",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1854,6 +6145,7 @@
     },
     {
       "code": "IM-GK-U8-L13",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1864,6 +6156,7 @@
     },
     {
       "code": "IM-GK-U8-L14",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1873,7 +6166,19 @@
       ]
     },
     {
+      "code": "IM-GK-U8-L15",
+      "operation": "multiplication",
+      "standards": [],
+      "representative_equation": "3 * 2 = 6",
+      "cell_count": 1,
+      "deformations": [
+        "mirror_written_numeral|literature_only",
+        "operational_equals_chain|corpus_attested"
+      ]
+    },
+    {
       "code": "IM-GK-U8-L16",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1884,6 +6189,7 @@
     },
     {
       "code": "IM-GK-U8-L17",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1894,6 +6200,7 @@
     },
     {
       "code": "IM-GK-U8-L18",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1904,6 +6211,7 @@
     },
     {
       "code": "IM-GK-U8-L19",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1914,6 +6222,7 @@
     },
     {
       "code": "IM-GK-U8-L2",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1924,6 +6233,7 @@
     },
     {
       "code": "IM-GK-U8-L20",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1934,6 +6244,7 @@
     },
     {
       "code": "IM-GK-U8-L21",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1944,6 +6255,7 @@
     },
     {
       "code": "IM-GK-U8-L3",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1954,6 +6266,7 @@
     },
     {
       "code": "IM-GK-U8-L4",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1964,6 +6277,7 @@
     },
     {
       "code": "IM-GK-U8-L5",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,
@@ -1974,6 +6288,7 @@
     },
     {
       "code": "IM-GK-U8-L6",
+      "operation": "addition",
       "standards": [],
       "representative_equation": "3 + 2 = 5",
       "cell_count": 1,

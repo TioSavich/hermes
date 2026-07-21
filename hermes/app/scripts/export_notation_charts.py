@@ -8,20 +8,17 @@ fraction monitoring_chart/2. The two pipelines never collide: the fraction
 chart is keyed on frac(M,N) and backs the live grade-3 fraction charts; this
 chart is keyed on equation(A,Op,B,R) and emits equation/operands fields.
 
-The usefulness payoff: "for this real Kindergarten / Grade-1 IM addition
-lesson, here is the correct written inscription a child should produce, beside
-the written-work errors to watch for -- a reversed numeral, an equals sign read
-as 'makes', a transposed answer -- each rendered over a representative equation
-from the lesson's operation."
+Each IM lesson with an encoded addition, subtraction, or multiplication
+attachment hosts one chart. The Prolog layer chooses the operation and admits
+only deformations supported by cited evidence; this script projects those
+charts without adding a grade heuristic.
 
 The honesty boundary the chart must carry, not hide:
 
-  - The IM K/G1 corpus has NO number-writing lessons (the K/G1 lessons are
-    counting/addition lessons, not lessons whose object is the written numeral).
-    A notation deformation is therefore HOSTED on an addition lesson and
-    rendered over a REPRESENTATIVE equation from that lesson's operation. The
-    chart is a PARAMETRIC render over that equation, NOT a count of corpus
-    instances of the deformation in the lesson. Every lesson index says so.
+  - A notation deformation is hosted on an operation lesson and rendered over
+    a representative equation from the chosen operation. The chart is a
+    parametric render over that equation, not a count of corpus instances of
+    the deformation in the lesson. Every lesson index says so.
   - Every deformation carries its provenance (corpus_attested | literature_only)
     read off the grammar's own Evidence dict via
     parametric_notation_deformation:notation_deformation_evidence/2. The index
@@ -39,6 +36,7 @@ from __future__ import annotations
 import argparse
 import html
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -51,42 +49,49 @@ OUT = rendering.gallery_output(REPO / "hermes" / "app" / "web" / "generated" / "
 
 # The top-level honesty note, stated once on the top index and once per lesson.
 HOST_NOTE = (
-    "The IM Kindergarten / Grade-1 corpus has no number-writing lessons: the "
-    "K/G1 lessons are counting and addition lessons, not lessons whose object "
-    "is the written numeral. A notation deformation is therefore hosted on an "
-    "addition lesson and rendered over a representative equation drawn from "
-    "that lesson's operation. The chart is a parametric render over that "
-    "equation, not a count of corpus instances of the deformation in the "
-    "lesson."
+    "An IM lesson hosts one notation chart through its encoded addition, "
+    "subtraction, or multiplication operation. The chart includes only "
+    "deformations admitted by cited evidence and renders them over a "
+    "representative equation; it does not count instances in the lesson."
 )
+GRADE_RE = re.compile(r"^IM-G(K|[1-8])-U\d+-L\d+$")
+GRADE_ORDER = ["K", "1", "2", "3", "4", "5", "6", "7", "8"]
 
 
-# --- Enumerate the K and Grade-1 lessons that host a notation chart ----------
+# --- Enumerate and build every hosted chart in one swipl process -------------
 #
-# A lesson hosts a chart when it carries an addition (or counting that resolves
-# to addition) strategy AND the grammar admits at least one notation deformation
-# for its representative equation. The Prolog decides both; this just collects.
+# A lesson hosts a chart when it carries one of the three hosted operations and
+# the grammar admits at least one notation deformation for its representative
+# equation. The Prolog decides both; this just collects.
 
-def enumerate_lessons() -> dict:
+def lesson_charts(limit: int = 0) -> dict:
     goal = (
         "use_module(lessons('im/lesson_notation_chart')), "
         "use_module(lessons('im/lesson_monitoring')), "
         "use_module(library(http/json)), "
-        # hosting lessons (addition) with >=1 admitted notation deformation
+        # hosting lessons with >=1 admitted notation deformation
         "findall(C, "
         "  ( lesson_notation_chart:notation_chart_lesson(C, _, _, _), "
         "    once(lesson_notation_chart:lesson_likely_notation_deformation("
         "         C, notation, _, _)) ), Hosted0), "
-        "sort(Hosted0, Hosted), "
-        # all K/G1 lessons carrying an addition or counting strategy (the pool)
+        "sort(Hosted0, HostedAll), "
+        # all lessons carrying one of the hosted operations (the pool)
         "findall(P, "
-        "  ( lesson_monitoring:explicit_lesson_strategy(P, Op, _, _), "
-        "    member(Op, [addition, counting]), "
-        "    ( sub_atom(P,0,_,_,'IM-GK') ; sub_atom(P,0,_,_,'IM-G1') ) ), Pool0), "
+        "  ( lesson_monitoring:im_lesson(P, _, _, _, _, _), "
+        "    lesson_monitoring:specific_attachment_operation(P, Op), "
+        "    member(Op, [addition, subtraction, multiplication]) ), Pool0), "
         "sort(Pool0, Pool), "
         # the pool lessons that are NOT hosted (no admitted notation deformation)
-        "findall(S, (member(S, Pool), \\+ member(S, Hosted)), Skipped), "
-        "Doc = _{ hosted: Hosted, pool: Pool, skipped: Skipped }, "
+        "findall(S, (member(S, Pool), \\+ member(S, HostedAll)), Skipped), "
+        f"Limit = {limit}, length(HostedAll, Total), "
+        "( Limit > 0, Limit < Total "
+        "  -> length(Hosted, Limit), append(Hosted, _, HostedAll) "
+        "  ; Hosted = HostedAll ), "
+        "findall(Chart, "
+        "  ( member(Code, Hosted), "
+        "    lesson_notation_chart:notation_monitoring_chart(Code, Chart) ), Charts), "
+        "Doc = _{ hosted: Hosted, hosted_all: HostedAll, pool: Pool, "
+        "         skipped: Skipped, charts: Charts }, "
         "json_write_dict(user_output, Doc, [width(0)]), nl, halt."
     )
     res = subprocess.run(
@@ -96,28 +101,7 @@ def enumerate_lessons() -> dict:
     lines = [l for l in res.stdout.splitlines() if l.startswith("{")]
     if not lines:
         sys.stderr.write(res.stdout + "\n" + res.stderr)
-        raise SystemExit("swipl produced no lesson enumeration")
-    return json.loads(lines[0])
-
-
-# --- Ask swipl for one lesson's notation monitoring chart --------------------
-
-def lesson_chart(code: str) -> dict:
-    goal = (
-        "use_module(lessons('im/lesson_notation_chart')), "
-        "use_module(library(http/json)), "
-        f"( lesson_notation_chart:notation_monitoring_chart('{code}', Doc) "
-        "  -> json_write_dict(user_output, Doc, [width(0)]), nl "
-        "  ; (write(user_error, 'no chart'), nl(user_error)) ), halt."
-    )
-    res = subprocess.run(
-        ["swipl", "-q", "-l", "paths.pl", "-g", goal, "-t", "halt(1)"],
-        cwd=REPO, capture_output=True, text=True,
-    )
-    lines = [l for l in res.stdout.splitlines() if l.startswith("{")]
-    if not lines:
-        sys.stderr.write(res.stdout + "\n" + res.stderr)
-        raise SystemExit(f"swipl produced no chart for {code}")
+        raise SystemExit("swipl produced no batched lesson charts")
     return json.loads(lines[0])
 
 
@@ -155,8 +139,8 @@ def _slug(s: str) -> str:
 
 # --- render one lesson's notation chart --------------------------------------
 
-def export_lesson(code: str) -> dict:
-    chart = lesson_chart(code)
+def export_lesson(chart: dict) -> dict:
+    code = chart["lesson_code"]
     lesson_dir = OUT / code
     lesson_dir.mkdir(parents=True, exist_ok=True)
 
@@ -228,6 +212,7 @@ def export_lesson(code: str) -> dict:
         "title": chart["title"],
         "standards": chart.get("standards", []),
         "hosts": chart.get("hosts", []),
+        "operation": chart["operation"],
         "representative_equation": equation,
         "cell_count": len(cell_records),
         "cells": cell_records,
@@ -310,20 +295,18 @@ def build_lesson_index(chart: dict, cells: list) -> str:
 def build_top_index(records: list, skipped: list) -> str:
     rows = []
     rows.append("<!doctype html><meta charset=utf-8>")
-    rows.append("<title>Notation monitoring charts (Kindergarten + Grade 1)</title>")
+    rows.append("<title>Notation monitoring charts (Grades K-8)</title>")
     rows.append("<body style='font-family:system-ui;background:#f8f1df;color:#1b1810;"
                 "max-width:1000px;margin:0 auto;padding:28px'>")
     rows.append("<h1 style=\"font-family:Georgia,'Times New Roman',serif\">"
-                "Notation monitoring charts &mdash; Kindergarten and Grade 1</h1>")
-    rows.append("<p style='max-width:840px;line-height:1.45'>For each real "
-                "Kindergarten and Grade-1 Illustrative Mathematics addition "
-                "lesson, the correct written inscription a child should produce "
-                "beside the written-work deformations to watch for (reversed "
-                "numeral, equals-as-makes chain, transposed answer), each "
-                "rendered over a representative equation from the lesson's "
-                "operation. The deformations are parametric over the equation's "
-                "numbers and gated through the representation grammar's "
-                "misconception lane. The companion fraction chart "
+                "Notation monitoring charts &mdash; Grades K&ndash;8</h1>")
+    rows.append("<p style='max-width:840px;line-height:1.45'>Each Illustrative "
+                "Mathematics lesson with an encoded addition, subtraction, or "
+                "multiplication attachment hosts one chart. When a lesson has "
+                "several such operations, addition precedes subtraction, which "
+                "precedes multiplication. The deformations are admitted by cited "
+                "evidence through the representation grammar's misconception "
+                "lane and rendered over a representative equation. The companion fraction chart "
                 "(<code>lesson_deformation_chart.pl</code>) is a separate "
                 "pipeline and is untouched.</p>")
     # The top-level honesty card.
@@ -334,19 +317,29 @@ def build_top_index(records: list, skipped: list) -> str:
                 "Provenance travels with every deformation: "
                 "<code>corpus_attested</code> means the violation reason or "
                 "inscription form is attested somewhere in this corpus; "
-                "<code>literature_only</code> means the K/G1 instance is a "
+                "<code>literature_only</code> means the rendered instance is a "
                 "literature-grounded named misconception rendered parametrically, "
                 "with no instance counted in this corpus.</p></div>")
 
-    # group records by grade band
-    k_records = [r for r in records if r["code"].startswith("IM-GK")]
-    g1_records = [r for r in records if r["code"].startswith("IM-G1")]
+    # group records by the grade atom in the lesson code
+    grade_records = {grade: [] for grade in GRADE_ORDER}
+    for record in records:
+        match = GRADE_RE.fullmatch(record["code"])
+        if not match:
+            raise ValueError(f"invalid lesson code: {record['code']}")
+        grade_records[match.group(1)].append(record)
+    count_text = ", ".join(
+        f"{len(grade_records[g])} G{g}" for g in GRADE_ORDER
+        if grade_records[g]
+    )
     rows.append(f"<p><strong>{len(records)} lessons charted</strong> "
-                f"({len(k_records)} Kindergarten, {len(g1_records)} Grade 1).</p>")
+                f"({html.escape(count_text)}).</p>")
 
-    for band, band_records in (("Kindergarten", k_records), ("Grade 1", g1_records)):
+    for grade in GRADE_ORDER:
+        band_records = grade_records[grade]
         if not band_records:
             continue
+        band = "Kindergarten" if grade == "K" else f"Grade {grade}"
         rows.append(f"<h2>{band} ({len(band_records)} lessons)</h2>")
         rows.append("<ul style='columns:2;-webkit-columns:2;line-height:1.5'>")
         for r in band_records:
@@ -364,8 +357,8 @@ def build_top_index(records: list, skipped: list) -> str:
 
     if skipped:
         rows.append("<h2>Lessons with no notation chart</h2>")
-        rows.append("<p style='max-width:840px;line-height:1.45'>These K/G1 "
-                    "lessons in the addition/counting pool produced no admitted "
+        rows.append("<p style='max-width:840px;line-height:1.45'>These lessons "
+                    "in the hosted-operation pool produced no admitted "
                     "notation deformation for their representative equation, so no "
                     "chart was rendered.</p>")
         rows.append("<ul>")
@@ -388,22 +381,29 @@ def main() -> int:
     args = parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
 
-    enum = enumerate_lessons()
+    enum = lesson_charts(args.limit)
     hosted = enum["hosted"]
     skipped = enum["skipped"]
-    if args.limit:
-        hosted = hosted[: args.limit]
-
-    k_codes = [c for c in hosted if c.startswith("IM-GK")]
-    g1_codes = [c for c in hosted if c.startswith("IM-G1")]
-    print(f"Enumerated {len(hosted)} hosting lessons "
-          f"({len(k_codes)} K, {len(g1_codes)} G1); "
-          f"{len(skipped)} addition/counting lessons skipped (no admitted "
+    charts = enum["charts"]
+    operation_counts = {
+        operation: sum(c["operation"] == operation for c in charts)
+        for operation in ("addition", "subtraction", "multiplication")
+    }
+    grade_counts = {
+        grade: sum(c["lesson_code"].startswith(f"IM-G{grade}-") for c in charts)
+        for grade in GRADE_ORDER
+    }
+    print(f"Enumerated {len(hosted)} hosting lessons in one swipl process "
+          f"({operation_counts['addition']} addition, "
+          f"{operation_counts['subtraction']} subtraction, "
+          f"{operation_counts['multiplication']} multiplication); "
+          f"{len(skipped)} hosted-operation lessons skipped (no admitted "
           f"notation deformation).", flush=True)
 
     records = []
-    for i, code in enumerate(hosted, 1):
-        rec = export_lesson(code)
+    for i, chart in enumerate(charts, 1):
+        code = chart["lesson_code"]
+        rec = export_lesson(chart)
         records.append(rec)
         if i % 20 == 0 or i == len(hosted):
             print(f"  [{i}/{len(hosted)}] {code}: {rec['cell_count']} cell(s)",
@@ -416,12 +416,13 @@ def main() -> int:
         "kind": "notation_lesson_charts",
         "host_note": HOST_NOTE,
         "lesson_count": len(records),
-        "k_count": len(k_codes),
-        "g1_count": len(g1_codes),
+        "grade_counts": grade_counts,
+        "operation_counts": operation_counts,
         "skipped": skipped,
         "lessons": [
             {
                 "code": r["code"],
+                "operation": r["operation"],
                 "standards": r["standards"],
                 "representative_equation": r["representative_equation"],
                 "cell_count": r["cell_count"],
@@ -436,10 +437,14 @@ def main() -> int:
     (OUT / "manifest.json").write_text(json.dumps(manifest, indent=2),
                                        encoding="utf-8")
 
-    total_files = sum(len(r["files"]) for r in records)
-    print(f"Wrote {total_files} SVG/HTML files across {len(records)} lessons to {OUT}")
-    print(f"  Kindergarten lessons charted: {len(k_codes)}")
-    print(f"  Grade 1 lessons charted:      {len(g1_codes)}")
+    svg_count = sum(
+        Path(path).suffix == ".svg" for record in records for path in record["files"]
+    )
+    print(f"Wrote {svg_count} SVGs across {len(records)} lessons to {OUT}")
+    for grade in GRADE_ORDER:
+        print(f"  Grade {grade} lessons charted: {grade_counts[grade]}")
+    for operation, count in operation_counts.items():
+        print(f"  {operation.capitalize()} lessons charted: {count}")
     print(f"  Skipped (no notation deformation): {len(skipped)}")
     print(OUT / "index.html")
     print(OUT / "manifest.json")

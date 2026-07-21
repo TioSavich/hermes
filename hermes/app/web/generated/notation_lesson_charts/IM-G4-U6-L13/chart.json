@@ -1,0 +1,266 @@
+{
+  "cells": [
+    {
+      "deformations": [
+        {
+          "deformation": "operational_equals_chain",
+          "family": "notation_error",
+          "host_note": "Rendered over a representative equation from the lesson's operation, not a corpus instance of this deformation in this lesson.",
+          "provenance": "corpus_attested",
+          "scene": {
+            "canvas": {
+              "height": 120,
+              "width": 760
+            },
+            "frames": [
+              {
+                "caption": "Equals read as makes: 3 * 2 chained to 6.",
+                "scene": {
+                  "baseline": 40,
+                  "format": "notation",
+                  "glyphPitch": 24,
+                  "glyphs": [
+                    {
+                      "ch": "3",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 0,
+                      "y": 40
+                    },
+                    {
+                      "ch": "\u00d7",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "operator",
+                      "size": 20,
+                      "x": 24,
+                      "y": 40
+                    },
+                    {
+                      "ch": "2",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 48,
+                      "y": 40
+                    },
+                    {
+                      "ch": "=",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "equals",
+                      "size": 20,
+                      "x": 72,
+                      "y": 40
+                    },
+                    {
+                      "ch": "6",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 96,
+                      "y": 40
+                    }
+                  ],
+                  "marks": [
+                    {
+                      "kind": "chain-equals",
+                      "x": 72,
+                      "y": 40
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "operational_equals_chain(3,*,2,6)"
+              }
+            ],
+            "kind": "operational_equals_chain",
+            "request": {
+              "spec": "operational_equals_chain(3,*,2,6)"
+            },
+            "result": "unknown"
+          }
+        },
+        {
+          "deformation": "mirror_written_numeral",
+          "family": "notation_error",
+          "host_note": "Rendered over a representative equation from the lesson's operation, not a corpus instance of this deformation in this lesson.",
+          "provenance": "literature_only",
+          "scene": {
+            "canvas": {
+              "height": 120,
+              "width": 760
+            },
+            "frames": [
+              {
+                "caption": "Mirror-written 3 in 3 * 2 = 6.",
+                "scene": {
+                  "baseline": 40,
+                  "format": "notation",
+                  "glyphPitch": 24,
+                  "glyphs": [
+                    {
+                      "ch": "3",
+                      "flip": "horizontal",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 0,
+                      "y": 40
+                    },
+                    {
+                      "ch": "\u00d7",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "operator",
+                      "size": 20,
+                      "x": 24,
+                      "y": 40
+                    },
+                    {
+                      "ch": "2",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 48,
+                      "y": 40
+                    },
+                    {
+                      "ch": "=",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "equals",
+                      "size": 20,
+                      "x": 72,
+                      "y": 40
+                    },
+                    {
+                      "ch": "6",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 96,
+                      "y": 40
+                    }
+                  ],
+                  "marks": [],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "mirror_written(3,3,*,2,6)"
+              }
+            ],
+            "kind": "mirror_written",
+            "request": {
+              "spec": "mirror_written(3,3,*,2,6)"
+            },
+            "result": "6"
+          }
+        }
+      ],
+      "equation": "3 * 2 = 6",
+      "host": "notation",
+      "operands": {
+        "a": 3,
+        "b": 2,
+        "op": "*",
+        "r": 6
+      },
+      "productive": {
+        "canvas": {
+          "height": 120,
+          "width": 760
+        },
+        "frames": [
+          {
+            "caption": "Write 3 * 2 = 6.",
+            "scene": {
+              "baseline": 40,
+              "format": "notation",
+              "glyphPitch": 24,
+              "glyphs": [
+                {
+                  "ch": "3",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 0,
+                  "y": 40
+                },
+                {
+                  "ch": "\u00d7",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "operator",
+                  "size": 20,
+                  "x": 24,
+                  "y": 40
+                },
+                {
+                  "ch": "2",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 48,
+                  "y": 40
+                },
+                {
+                  "ch": "=",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "equals",
+                  "size": 20,
+                  "x": 72,
+                  "y": 40
+                },
+                {
+                  "ch": "6",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 96,
+                  "y": 40
+                }
+              ],
+              "marks": [],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 1,
+            "verb": "write_equation(3,*,2,6)"
+          }
+        ],
+        "kind": "write_equation",
+        "request": {
+          "a": 3,
+          "b": 2,
+          "op": "*",
+          "r": 6
+        },
+        "result": "6"
+      }
+    }
+  ],
+  "host_note": "This lesson hosts a notation chart through its multiplication operation. Each deformation is admitted by cited evidence and rendered over a representative equation, not counted as an instance in this lesson.",
+  "hosts": [
+    "notation"
+  ],
+  "kind": "lesson_notation_chart",
+  "lesson_code": "IM-G4-U6-L13",
+  "operation": "multiplication",
+  "representative_equation": "3 * 2 = 6",
+  "standards": [],
+  "title": "IM-G4-U6-L13"
+}
