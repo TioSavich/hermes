@@ -30,7 +30,7 @@ well-formed term rather than deciding truth over accessibility relations.
 
 No aggregate loader; `paths.pl` sets the `pml` alias and consumers
 `use_module(pml(<module>))`. `hermes_worker.pl` and `formal/load.pl` load a
-broad set; the `strategies/math/*` automata import `pml_operators`. Discourse
+broad set; the `knowledge/strategies/math/*` automata import `pml_operators`. Discourse
 markers stand in as proxies for modal posture. The framework has been tested for
 consistency in Prolog; whether it admits a model-theoretic semantics is stated,
 in the appendix, as an open question. That "not a Kripke logic" commitment lives

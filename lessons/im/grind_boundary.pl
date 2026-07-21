@@ -40,7 +40,7 @@
  *                                      interpreting expressions and equations -- an
  *                                      algebra obligation, not an arithmetic one.
  *
- * Lesson titles below are from geometry/corpus/im_scope_and_sequence/grade{6,7}.md.
+ * Lesson titles below are from knowledge/geometry/corpus/im_scope_and_sequence/grade{6,7}.md.
  */
 :- module(grind_boundary,
           [ grind_boundary/2,

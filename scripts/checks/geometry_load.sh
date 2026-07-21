@@ -13,26 +13,26 @@ checked_manifest="$scratch_dir/checked-manifest.txt"
 emit_geometry_files() {
     local directory=$1
     while IFS= read -r file; do
-        printf ":- ensure_loaded('%s').\n" "${file#geometry/}"
+        printf ":- ensure_loaded('%s').\n" "${file#knowledge/geometry/}"
     done < <(find "$directory" -maxdepth 1 -type f -name '*.pl' | LC_ALL=C sort)
 }
 
 emit_repository_files() {
     local directory=$1
     while IFS= read -r file; do
-        printf ":- ensure_loaded('../%s').\n" "$file"
+        printf ":- ensure_loaded('../%s').\n" "${file#knowledge/}"
     done < <(find "$directory" -maxdepth 1 -type f -name '*.pl' | LC_ALL=C sort)
 }
 
 {
-    emit_geometry_files geometry/concepts
-    emit_geometry_files geometry/metaphors
-    emit_geometry_files geometry/van_hiele
-    emit_geometry_files geometry/bootstrap
-    emit_repository_files standards/ccss
+    emit_geometry_files knowledge/geometry/concepts
+    emit_geometry_files knowledge/geometry/metaphors
+    emit_geometry_files knowledge/geometry/van_hiele
+    emit_geometry_files knowledge/geometry/bootstrap
+    emit_repository_files knowledge/standards/ccss
     printf ":- ensure_loaded('../standards/indiana/geometry.pl').\n"
-    emit_repository_files standards/im
-    emit_geometry_files geometry/pck
+    emit_repository_files knowledge/standards/im
+    emit_geometry_files knowledge/geometry/pck
     printf ":- ensure_loaded('query.pl').\n"
 } >"$generated_manifest"
 
@@ -40,7 +40,7 @@ awk '
     /BEGIN CANONICAL GEOMETRY LOAD MANIFEST/ { inside = 1; next }
     /END CANONICAL GEOMETRY LOAD MANIFEST/ { inside = 0 }
     inside && /^:- ensure_loaded/ { print }
-' geometry/schema.pl >"$checked_manifest"
+' knowledge/geometry/schema.pl >"$checked_manifest"
 
 if ! diff -u "$generated_manifest" "$checked_manifest"; then
     echo "FAIL canonical geometry manifest differs from the ordered directory inventory" >&2
@@ -48,13 +48,13 @@ if ! diff -u "$generated_manifest" "$checked_manifest"; then
 fi
 echo "PASS canonical geometry manifest matches the ordered directory inventory"
 
-source_goal="findall(F,(source_file(F),\\+sub_atom(F,_,_,_,'/geometry/geometry_bridge.pl'),(sub_atom(F,_,_,_,'/geometry/');sub_atom(F,_,_,_,'/standards/ccss/');sub_atom(F,_,_,_,'/standards/im/');sub_atom(F,_,_,_,'/standards/indiana/geometry.pl'))),Fs),sort(Fs,Sorted),forall(member(File,Sorted),writeln(File))"
+source_goal="findall(F,(source_file(F),\\+sub_atom(F,_,_,_,'/knowledge/geometry/geometry_bridge.pl'),(sub_atom(F,_,_,_,'/knowledge/geometry/');sub_atom(F,_,_,_,'/knowledge/standards/ccss/');sub_atom(F,_,_,_,'/knowledge/standards/im/');sub_atom(F,_,_,_,'/knowledge/standards/indiana/geometry.pl'))),Fs),sort(Fs,Sorted),forall(member(File,Sorted),writeln(File))"
 
 swipl --on-error=status --on-warning=status -q -l hermes_worker.pl \
     -g "working_directory(Root,Root),load_geometry_runtime(Root),$source_goal,halt." \
     | sed "s|$repo_root/||" >"$scratch_dir/worker-sources.txt"
 swipl --on-error=status --on-warning=status -q -l paths.pl \
-    -l geometry/geometry_bridge.pl -g "$source_goal,halt." \
+    -l knowledge/geometry/geometry_bridge.pl -g "$source_goal,halt." \
     | sed "s|$repo_root/||" >"$scratch_dir/bridge-sources.txt"
 
 if ! diff -u "$scratch_dir/worker-sources.txt" "$scratch_dir/bridge-sources.txt"; then
@@ -68,7 +68,7 @@ swipl --on-error=status --on-warning=status -q -l hermes_worker.pl \
     -g "working_directory(Root,Root),load_geometry_runtime(Root),$count_goal,halt." \
     >"$scratch_dir/worker-counts.txt"
 swipl --on-error=status --on-warning=status -q -l paths.pl \
-    -l geometry/geometry_bridge.pl -g "$count_goal,halt." \
+    -l knowledge/geometry/geometry_bridge.pl -g "$count_goal,halt." \
     >"$scratch_dir/bridge-counts.txt"
 
 if ! diff -u "$scratch_dir/worker-counts.txt" "$scratch_dir/bridge-counts.txt"; then
@@ -78,13 +78,13 @@ fi
 echo "PASS worker and bridge geometry predicate counts are equivalent ($(tr '\n' ' ' <"$scratch_dir/worker-counts.txt"))"
 
 swipl --on-error=status --on-warning=status -q -l paths.pl -g "
-    consult('geometry/schema.pl'),
+    consult('knowledge/geometry/schema.pl'),
     forall(
         ( source_file(File),
-          ( sub_atom(File,_,_,_,'/geometry/')
-          ; sub_atom(File,_,_,_,'/standards/ccss/')
-          ; sub_atom(File,_,_,_,'/standards/im/')
-          ; sub_atom(File,_,_,_,'/standards/indiana/geometry.pl')
+          ( sub_atom(File,_,_,_,'/knowledge/geometry/')
+          ; sub_atom(File,_,_,_,'/knowledge/standards/ccss/')
+          ; sub_atom(File,_,_,_,'/knowledge/standards/im/')
+          ; sub_atom(File,_,_,_,'/knowledge/standards/indiana/geometry.pl')
           )
         ),
         source_file_property(File,load_count(1))
@@ -93,7 +93,7 @@ swipl --on-error=status --on-warning=status -q -l paths.pl -g "
 echo "PASS every geometry-chain source is consulted once"
 
 swipl --on-error=status --on-warning=status -q -l paths.pl -g "
-    consult('geometry/schema.pl'),
+    consult('knowledge/geometry/schema.pl'),
     ccss_geometry_standard_witness(shape_recognition_2d_3d,\"K.G.A.1\",_),
     indiana_geometry_standard_witness(triangles_circles_radius_diameter,\"5.G.1\",_),
     im_grade5_standard_anchor_witness(im_grade5_u1_l1,ccss,\"5.MD.C.3\",_),

@@ -242,7 +242,7 @@ recollection_to_integer(recollection(History), Integer) :-
 %       learner:config:cognitive_cost/2, applies the modal-context multiplier,
 %       and decrements the interpreter's inference budget directly. The
 %       grounded_arithmetic:incur_cost/1 body below is only reached for
-%       *direct* callers — principally the FSM automata in strategies/math/,
+%       *direct* callers — principally the FSM automata in knowledge/strategies/math/,
 %       which run outside the meta-interpreter and would otherwise leave
 %       the cost unaccounted-for.
 %

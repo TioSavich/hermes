@@ -1255,7 +1255,7 @@
   // --- notation ----------------------------------------------------------
   // The glyph-level language: a row of inscribed characters at (x,y), each
   // carrying its own optional deformation transform. The compiler
-  // (strategies/render/notation_scene.pl) computes every x/y and fixes every
+  // (knowledge/strategies/render/notation_scene.pl) computes every x/y and fixes every
   // flip/ghost/mark; this drawer only applies them. A productive scene lays
   // straight glyphs with an empty marks list; a deformation routed through the
   // misconception lane sets exactly one glyph's flip:horizontal or ghost, or

@@ -1066,7 +1066,7 @@ ground_strategies(Tokens, Out) :-
 %   Two additive sources. First the native catalog, by token overlap against
 %   misconception names, exactly as before (same dict shape, same bound of 6).
 %   Then the literature-derived head rules: matches from the deontic edge
-%   graph (misconceptions/literature_deontic_bridge.pl), each labeled
+%   graph (knowledge/misconceptions/literature_deontic_bridge.pl), each labeled
 %   `source: "literature"` so a teacher can tell which register a match came
 %   from. The literature entries never displace catalog entries.
 ground_misconceptions(Tokens, Out) :-
@@ -1258,7 +1258,7 @@ ground_literature(Tokens, Out) :-
 %!  literature_search_dict(+QueryText, -Dict) is det.
 %
 %   Keyword retrieval over the 3,711 literature-derived incompatibility
-%   analyses (misconceptions/literature_incompatibility_facts.pl): each case
+%   analyses (knowledge/misconceptions/literature_incompatibility_facts.pl): each case
 %   carries the Brandomian triple — the rule the student appears to follow,
 %   the domain where that rule IS valid, and the normative commitment it
 %   collides with — plus the canonical-commitment mapping, citation, and

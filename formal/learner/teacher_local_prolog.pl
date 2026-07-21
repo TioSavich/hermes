@@ -38,7 +38,7 @@
  * SURFACE REGISTER — CRISIS, NOT DEMONSTRATION:
  * This oracle serves the crisis pipeline, and for IDP division it differs
  * on purpose from the strategy-explorer surface
- * (strategies/hermeneutic_calculator.pl). IDP recalls multiplication facts.
+ * (knowledge/strategies/hermeneutic_calculator.pl). IDP recalls multiplication facts.
  * Here the knowledge base stays empty: run_idp/6 unions in only the facts
  * the learner has earned through the ORR cycle, and until multiplication
  * has been learned, query_oracle/4 for IDP throws a named
@@ -197,11 +197,11 @@ execute_strategy(Num1, /, Num2, 'IDP', Result, History) :-
     % CRISIS path: no hardcoded KB — IDP must rely on learned multiplication
     % facts, which run_idp/6 unions in from the more_machine_learner. This
     % makes the elaboration chain (add → multiply → divide) real; see
-    % strategies/FRACTION_CRISIS_ASSESSMENT.md, gap 1. When nothing has been
+    % knowledge/strategies/FRACTION_CRISIS_ASSESSMENT.md, gap 1. When nothing has been
     % learned yet, the honest outcome is a named prerequisite gap, not the
     % catch-all not_implemented error (IDP IS implemented — what is missing
     % is developmental, not code). The demonstration surface
-    % (strategies/hermeneutic_calculator.pl) differs on purpose: it supplies
+    % (knowledge/strategies/hermeneutic_calculator.pl) differs on purpose: it supplies
     % a labeled demo times table so visitors can watch the strategy run.
     (   smr_div_idp:run_idp(Num1, Num2, [], Result, _Remainder, History)
     ->  true

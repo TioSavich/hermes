@@ -322,7 +322,7 @@ check_math_claim(ordering(List, Direction), Dict) :-
 
 % --- quadrilateral class inclusion: every Sub is a Super ---
 %   Adjudicated over the inclusive hierarchy the geometry KB encodes
-%   (geometry/concepts/classification.pl: square_as_rectangle,
+%   (knowledge/geometry/concepts/classification.pl: square_as_rectangle,
 %   rectangle_as_parallelogram, ...). Closed world over the registered
 %   shapes: an inclusion the hierarchy does not license is refuted; a shape
 %   outside the registry is not_covered. Claims that a parallelogram-family
@@ -456,7 +456,7 @@ ordering_pred(descending, greater_than).
 % ---------------------------------------------------------------------------
 % Quadrilateral hierarchy (for class_inclusion and shape_property claims).
 % Each direct edge cites the geometry KB concept that records it
-% (geometry/concepts/classification.pl); trapezoid_as_quadrilateral has no
+% (knowledge/geometry/concepts/classification.pl); trapezoid_as_quadrilateral has no
 % KB concept because no source disputes it.
 % ---------------------------------------------------------------------------
 quad_shape(square).

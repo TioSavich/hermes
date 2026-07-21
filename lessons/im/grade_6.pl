@@ -331,7 +331,7 @@ text_interpreter:explicit_lesson_text_source('IM-G6-U4-L17', Path) :-
 % diagrams, L3 with few non-zero digits, L4 with many non-zero digits -- so each
 % lesson demands BOTH decimal addition and decimal subtraction. Map each to the
 % aligned-units addition and subtraction actions built in the overnight decimal
-% pass (strategies/math/decimal_action_pairs.pl), each with its canonical
+% pass (knowledge/strategies/math/decimal_action_pairs.pl), each with its canonical
 % unaligned-numeral deformation. The deformation kinds have no
 % misconception_registry_entry, so they license through the strategy route
 % (action_role reclassifies each as role=deformation), the same pattern the

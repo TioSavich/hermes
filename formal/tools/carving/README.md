@@ -22,7 +22,7 @@ machines are base-parametric (checked at base 10 and base 5).
 
 ## Consumers and boundary
 
-`hermes_worker.pl`, `strategies/expressive_power.pl`, `hermes/dispatch_spec.pl`,
+`hermes_worker.pl`, `knowledge/strategies/expressive_power.pl`, `hermes/dispatch_spec.pl`,
 and `hermes/capability_registry.pl` call `carving_query`. The two sibling files
 `formal/tools/axiom_pack_audit.pl` and `formal/tools/axiom_toggle.pl` audit and toggle axiom
 packs. The config bounds here are small, sized for loader-level smoke tests;

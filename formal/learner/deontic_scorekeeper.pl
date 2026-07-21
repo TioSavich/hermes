@@ -15,7 +15,7 @@
  * Canonical entry point: the cross-multiplication-without-grounding
  * case. The strategies module already encodes the productive /
  * deformation pair at the action level
- * (`strategies/math/fraction_action_pairs.pl`). The deformation's
+ * (`knowledge/strategies/math/fraction_action_pairs.pl`). The deformation's
  * `validity(correct)` field records that the answer is numerically
  * right; the scorekeeper records that the agent is *not entitled* to
  * that answer because the area-model LX-elaboration (per

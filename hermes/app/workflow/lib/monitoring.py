@@ -155,7 +155,7 @@ def _hashable_grade_band(grade_band: object) -> object:
     """Coerce a grade-band value to something lru_cache can key on.
 
     `grade_band` is either the atom "any" or a list of grade integers (see
-    `norm_grade_band/2` in geometry/query.pl); lists are not hashable, so the
+    `norm_grade_band/2` in knowledge/geometry/query.pl); lists are not hashable, so the
     cache key uses a tuple in that case.
     """
     if isinstance(grade_band, list):
@@ -212,7 +212,7 @@ def format_geometry_fallback(prompt_id: str, data: dict, tokens: list[str]) -> s
     lines = [
         "----- PCK CONTEXT (from Prolog geometry concept fallback; use for PCK grounding only) -----",
         f"Prompt: {prompt_id}",
-        "Source: geometry/query.pl concept_monitoring_bundle/2 matched from prompt tokens.",
+        "Source: knowledge/geometry/query.pl concept_monitoring_bundle/2 matched from prompt tokens.",
         f"Matched tokens: {', '.join(tokens[:16])}",
         "",
         "## Matched geometry concepts",

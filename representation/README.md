@@ -8,7 +8,7 @@ draft bindings from ASKTM categories to action automata.
 
 - `build_asset_manifest.py` — emits `asset_manifest.json`, read by
   `more-zeeman/gallery.html`, `more-zeeman/spine.js`,
-  `more-zeeman/monitoring_chart.html`, `crosswalk/representation_spine.pl`, and
+  `more-zeeman/monitoring_chart.html`, `knowledge/crosswalk/representation_spine.pl`, and
   `scripts/bundle/prebake.py`.
 - `extract_figures_docling.py`, `extract_literature_figures.py` — render
   per-figure PNG crops from the literature and write the candidate lists the

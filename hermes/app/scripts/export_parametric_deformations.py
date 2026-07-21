@@ -4,8 +4,8 @@
 The wire (the established render pattern, reusing export_fraction_cliff.py's NODE
 harness verbatim):
 
-  strategies/render/parametric_partition_deformation.pl  (the transplant family)
-  strategies/render/parametric_fraction_errors.pl        (the equipartition family)
+  knowledge/strategies/render/parametric_partition_deformation.pl  (the transplant family)
+  knowledge/strategies/render/parametric_fraction_errors.pl        (the equipartition family)
       -> frames dicts (swipl -l paths.pl, json_write_dict) -> here
       -> more-zeeman/render/drawer.js buildSvg -> SVG filmstrips.
 
@@ -274,7 +274,7 @@ def build_index(repl_ns, pairs, equi, dashed) -> str:
                 "The same vertical-strip rule transplanted onto a circle botches "
                 "the model of 1/4, 1/5, 1/6, and 1/8 the same way, differing only "
                 "in the denominator. Logic in Prolog "
-                "(<code>strategies/render/parametric_partition_deformation.pl</code>, "
+                "(<code>knowledge/strategies/render/parametric_partition_deformation.pl</code>, "
                 "<code>parametric_fraction_errors.pl</code>); render projected "
                 "through <code>more-zeeman/render/drawer.js</code>.</p>")
 

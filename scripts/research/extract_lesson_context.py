@@ -18,7 +18,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-GUIDES = ROOT / "geometry/corpus/im_teacher_guides"
+GUIDES = ROOT / "knowledge/geometry/corpus/im_teacher_guides"
 OUTPUT = ROOT / "lessons/im/generated/compiled_lesson_context.pl"
 
 ANCHOR_RE = re.compile(r"_Anchor ID: `([^`]+)`")

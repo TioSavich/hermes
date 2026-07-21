@@ -2,7 +2,7 @@
   "generated_at": "2026-05-21T10:25:10.215364+00:00",
   "mode": "apply",
   "source_modules": [
-    "strategies/math/action_automata_registry.pl",
+    "knowledge/strategies/math/action_automata_registry.pl",
     "formal/pml/mua_relations.pl",
     "formal/learner/deontic_scorekeeper.pl"
   ],

@@ -23,8 +23,8 @@ metaphors, Robinson Arithmetic Q, and the shared witness constructor.
 
 ## Consumers and boundary
 
-`crosswalk/families/cw_driver.pl` reaches `grounded_arithmetic` and
-`grounding_metaphors`; `strategies/` and `hermes_worker.pl` load the core.
+`knowledge/crosswalk/families/cw_driver.pl` reaches `grounded_arithmetic` and
+`grounding_metaphors`; `knowledge/strategies/` and `hermes_worker.pl` load the core.
 Robinson Q is a deliberately weak arithmetic: the module encodes the mapping
 from Q into the calculator to make queryable exactly where Gödel's First
 Incompleteness Theorem bites. The limit is a finding to name, not a defect to

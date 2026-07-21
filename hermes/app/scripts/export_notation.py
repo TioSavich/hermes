@@ -5,8 +5,8 @@ Notation is the eighth representation language: a written equation as a row of
 single inscribed characters, each at its own (x, y), each carrying an optional
 per-glyph deformation transform (spec §3-§4,
 docs/proposals/2026-06-25-notation-in-monitoring-charts.md). The Prolog layer
-strategies/render/notation_scene.pl and
-strategies/render/parametric_notation_deformation.pl decide WHAT each scene is
+knowledge/strategies/render/notation_scene.pl and
+knowledge/strategies/render/parametric_notation_deformation.pl decide WHAT each scene is
 (which glyph reverses, which equals sign carries a chain tick, the literal glyph
 row) and emit drawer-compatible frame documents. This script is the projection
 step: it runs swipl through paths.pl to get the documents, then pipes each frame
@@ -154,8 +154,8 @@ def write_index(out_dir: Path, rendered: list[dict]) -> Path:
         "max-width:900px'>",
         "<h1>Notation: the symbol-level companion to spatial representations</h1>",
         "<p>Glyph-level filmstrips from "
-        "<code>strategies/render/notation_scene.pl</code> and "
-        "<code>strategies/render/parametric_notation_deformation.pl</code> via "
+        "<code>knowledge/strategies/render/notation_scene.pl</code> and "
+        "<code>knowledge/strategies/render/parametric_notation_deformation.pl</code> via "
         "<code>more-zeeman/render/drawer.js</code> (the <code>notation</code> "
         "format). Notation denotes the symbol string a child wrote, not the "
         "quantity it was meant to mean. Each deformation is born only as a "

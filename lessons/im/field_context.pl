@@ -1282,7 +1282,7 @@ term_text(Value, Text) :-
     number_string(Value, Text).
 % The deontic commitment terms that flow into a misconception's
 % commitment_made / entitlement_lacked / incompatibility slots are compound
-% Prolog terms (built in misconceptions/misconception_registry.pl and
+% Prolog terms (built in knowledge/misconceptions/misconception_registry.pl and
 % lessons/im/lesson_monitoring.pl). Without the clause below a term such as
 % documented_batch_misconception(name, db_row(39498), note, op) reaches the
 % field-context JSON, and the markdown export, as a raw Prolog term. The gloss

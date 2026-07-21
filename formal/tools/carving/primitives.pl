@@ -660,7 +660,7 @@ carving_synthesizer:prove(fact(div, T, 2, Q), _Config,
 % FRACTION construction primitives
 % ============================================================================
 % Three core productive moves and one classic deformation. Aligned with
-% strategies/math/fraction_action_pairs.pl: partitive (1/D from the
+% knowledge/strategies/math/fraction_action_pairs.pl: partitive (1/D from the
 % whole), iterative (N/D from N copies of 1/D), equivalence (N/D = M/E
 % when D*M = E*N), and whole_number_grab (the deformation that ignores
 % the denominator).

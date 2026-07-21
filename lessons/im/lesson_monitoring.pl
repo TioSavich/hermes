@@ -249,8 +249,8 @@ encoded_lesson(Code, ConceptId, Title, Grade, Unit, LessonNumber) :-
 
 %!  encoded_im_lesson(?Code, ?ConceptId, ?Title, ?Grade, ?Unit, ?LessonNumber) is nondet.
 %
-%   Lesson-level IM anchors currently come from standards/im/lesson_anchors.pl
-%   for K-5 and from geometry/corpus/im_scope_and_sequence for grades 6-8.
+%   Lesson-level IM anchors currently come from knowledge/standards/im/lesson_anchors.pl
+%   for K-5 and from knowledge/geometry/corpus/im_scope_and_sequence for grades 6-8.
 %   Grades 6-8 use the existing unit-level IM anchors for standards.
 encoded_im_lesson(Code, ConceptId, Title, grade(Grade), unit(Unit), lesson(LessonNumber)) :-
     loaded_standard_anchor(ConceptId, im_lesson, CodeString, _Statement),
@@ -1239,9 +1239,9 @@ scope_sequence_im_lesson(Code, ConceptId, Title, Grade, Unit, LessonNumber) :-
     once(loaded_standard_anchor(ConceptId, im_lesson, UnitAnchorString, _Statement)).
 
 
-scope_sequence_file(6, 'geometry/corpus/im_scope_and_sequence/grade6.md').
-scope_sequence_file(7, 'geometry/corpus/im_scope_and_sequence/grade7.md').
-scope_sequence_file(8, 'geometry/corpus/im_scope_and_sequence/grade8.md').
+scope_sequence_file(6, 'knowledge/geometry/corpus/im_scope_and_sequence/grade6.md').
+scope_sequence_file(7, 'knowledge/geometry/corpus/im_scope_and_sequence/grade7.md').
+scope_sequence_file(8, 'knowledge/geometry/corpus/im_scope_and_sequence/grade8.md').
 
 
 scope_sequence_lesson_line(Line, Code, Title, Grade, Unit, LessonNumber) :-

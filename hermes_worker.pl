@@ -194,7 +194,7 @@ load_axiom_pack_audit(Root) :-
     ensure_loaded(AxiomAudit).
 
 load_geometry_runtime(Root) :-
-    directory_file_path(Root, 'geometry/schema.pl', Schema),
+    directory_file_path(Root, 'knowledge/geometry/schema.pl', Schema),
     consult(Schema).
 
 worker_loop :-
@@ -1015,7 +1015,7 @@ dispatch_request(number_line_compare, Id, Request, Response) :-
     ok_response(Id, Dict, Response).
 
 % --- set_base / get_base: shift the operative base (Ace-of-Base base-invariance) ---
-% cgi_base:set_cgi_base/1 (strategies/math/cgi_base.pl) is the single source of
+% cgi_base:set_cgi_base/1 (knowledge/strategies/math/cgi_base.pl) is the single source of
 % truth for the operative base; these ops surface base-shifting so the base-ten
 % visualizer can show the same make-base move at base 10 and base 12 (the
 % base-invariance the synthesis branch proved). The operative base is NOT a

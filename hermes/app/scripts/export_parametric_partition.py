@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Export the parametric partition-rule transplant deformations as SVG filmstrips.
 
-The Prolog layer strategies/render/parametric_partition_deformation.pl decides
+The Prolog layer knowledge/strategies/render/parametric_partition_deformation.pl decides
 WHAT each deformation is (a foreign partition rule on an illicit host, parametric
 over the fraction's denominator N) and emits drawer-compatible frame documents.
 This script is the projection step: it runs swipl through paths.pl to get the

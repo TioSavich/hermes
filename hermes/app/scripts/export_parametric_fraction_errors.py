@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Render the parametric equipartition-failure family as SVG filmstrips.
 
-The wire: strategies/render/parametric_fraction_errors.pl (the logic) ->
+The wire: knowledge/strategies/render/parametric_fraction_errors.pl (the logic) ->
 B/M/E frames per (host, fraction, error type) (swipl) -> more-zeeman/render/
 drawer.js (buildSvg) -> SVG filmstrips. The point: one deformation reproduces
 across the fraction family. The script renders the SAME error type for several
@@ -23,14 +23,14 @@ REPO = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO))
 from hermes.app import rendering
 
-MODULE = "strategies/render/parametric_fraction_errors.pl"
+MODULE = "knowledge/strategies/render/parametric_fraction_errors.pl"
 OUT = rendering.gallery_output(REPO / "hermes" / "app" / "web" / "generated" / "parametric_fraction_errors")
 
 
 def scene_doc(host: str, m: int, n: int, error_goal: str) -> dict:
     """Ask the Prolog module for the {frames:...} document, as JSON."""
     goal = (
-        f"consult('paths.pl'), use_module(strategies/render/parametric_fraction_errors), "
+        f"consult('paths.pl'), use_module(knowledge/strategies/render/parametric_fraction_errors), "
         f"parametric_fraction_errors:deformed_fraction_error_scene("
         f"{host}, frac({m},{n}), {error_goal}, D), "
         f"use_module(library(http/json)), "
@@ -99,7 +99,7 @@ def main() -> int:
         "<p>One documented student-work error is a <b>rule</b>, not a single figure. "
         "Each strip below is the same deformation generated for several fractions, "
         "differing only by the fraction parameter. Logic: "
-        "<code>strategies/render/parametric_fraction_errors.pl</code>. Render: "
+        "<code>knowledge/strategies/render/parametric_fraction_errors.pl</code>. Render: "
         "<code>more-zeeman/render/drawer.js</code>. A deformation is drawn only as a "
         "labeled misconception, never as an unlabeled productive diagram.</p>",
     ]

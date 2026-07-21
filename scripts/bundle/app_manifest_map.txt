@@ -1,14 +1,10 @@
 ASKTM_Data/	6543
+hermes/	3628
 docs/	1613
-hermes/	1523
-geometry/	933
+knowledge/	1169
 more-zeeman/	144
 formal/	118
-strategies/	114
-crosswalk/	46
-misconceptions/	43
-standards/	33
-lessons/	32
+lessons/	33
 scripts/	10
 representation/	8
 (root)	2

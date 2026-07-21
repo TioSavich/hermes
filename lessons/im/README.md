@@ -8,7 +8,7 @@ generated lesson context.
 `grade_k.pl` through `grade_8.pl` carry mappings, not prose: `explicit_lesson_strategy/4`
 and `explicit_lesson_misconception/4` tie each lesson id to strategy and
 misconception atoms, and `explicit_lesson_text_source/2` points to the
-teacher-guide markdown under `geometry/corpus/`. `grade_6_vision.pl` and
+teacher-guide markdown under `knowledge/geometry/corpus/`. `grade_6_vision.pl` and
 `grade_7_vision.pl` add vision digests.
 
 ## Monitoring and generated context

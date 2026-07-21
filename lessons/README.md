@@ -21,7 +21,7 @@ of cited traditional comparison lessons.
 
 After `paths.pl`, `hermes_worker.pl` loads the monitoring, selector, chart, and
 gap modules; `formal/learner/activity_contract.pl` and
-`crosswalk/families/cw_fraction_claim.pl` read `im/lesson_monitoring`.
+`knowledge/crosswalk/families/cw_fraction_claim.pl` read `im/lesson_monitoring`.
 
 ## Attribution and boundary
 
@@ -29,5 +29,5 @@ Lesson identifiers, lesson-level goals, glossary language, and curriculum
 structure derive from the Illustrative Mathematics K–8 curriculum (CC BY 4.0);
 the teacher-guide markdown is CC BY-NC 4.0 (K–5) and CC BY 4.0 (grade 6 via Open
 Up Resources). Terms are in `NOTICE.md`. Coverage follows the teacher-guide
-markdown present under `geometry/corpus/`, which is partial and weighted to the
+markdown present under `knowledge/geometry/corpus/`, which is partial and weighted to the
 E343 slices.

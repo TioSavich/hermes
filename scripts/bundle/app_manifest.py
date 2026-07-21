@@ -39,11 +39,7 @@ KEEP_TREES_RATIONALE = [
     ("more-zeeman", "public web surfaces"),
     ("representation", "asset manifest the gallery reads"),
     ("ASKTM_Data", "coded student-work corpus (PNGs + survey text) the gallery serves; publicly shared at IU; NSF Grant No. 1561453 acknowledgement in NOTICE.md; coding documents stay in the source project"),
-    ("strategies", "action automata, render scenes, registries"),
-    ("misconceptions", "registry + compiled literature facts (runtime modules)"),
-    ("crosswalk", "canonical vocabulary union"),
-    ("standards", "CCSS / Indiana / IM anchors (worker glob-loads these)"),
-    ("geometry", "schema, concepts, metaphors, van Hiele (glob-loaded); corpus/ holds attributed IM teacher-guide + scope-and-sequence inputs (see geometry/corpus/ATTRIBUTION.md)"),
+    ("knowledge", "empirically sourced action automata, misconception registry, standards anchors, geometry concepts and corpus, and canonical vocabulary crosswalk"),
     ("lessons", "IM lesson monitoring KB"),
     ("formal", "reasoning machinery: sequent and incompatibility engines, dialectic and juncture models, learner models, grounded formalization, PML semantics, and carving/audit tools"),
     ("research", "derivative layer of the literature corpus (coded db + bibliography); the copyrighted articles stay in the source project"),
@@ -61,7 +57,7 @@ KEEP_FILES = [
     "hermes/app/Hermes.command",       # double-click local app launcher
     "hermes/app/Hermes.svg",           # launcher icon asset
     "hermes/app/help_grounding.py",    # page-specific context for /api/help
-    "crosswalk/representation_spine.pl",
+    "knowledge/crosswalk/representation_spine.pl",
     "more-zeeman/contact-sheets/goal-e-console.png",
     "more-zeeman/contact-sheets/goal-e-contact-sheet.html",
     "more-zeeman/contact-sheets/goal-e-contact-sheet.png",
@@ -98,15 +94,15 @@ KEEP_FILES = [
     "lessons/im/generated/compiled_action_mappings.pl",  # lesson monitoring runtime cache
     "lessons/im/generated/compiled_lesson_context.pl",  # attributed prompt and synthesis cache
     "lessons/im/generated/compiled_task_instances.pl",  # source-backed learner task cache
-    "strategies/math/geometry_action_pairs.pl",  # registry geometry actions
-    "strategies/math/statistics_action_pairs.pl",  # registry data actions
-    "strategies/math/measurement_action_pairs.pl",  # registry measurement actions
-    "strategies/math/counting_action_pairs.pl",  # registry counting actions
-    "strategies/render/render_common.pl",  # shared scene-compiler plumbing
-    "strategies/render/area_unit_covering_scene.pl",  # unit-square area covering
-    "strategies/render/measurement_strip_scene.pl",  # lightweight measurement renderer
-    "strategies/render/ratio_diagram_scene.pl",  # ordered ratio referent tapes
-    "strategies/render/signed_number_line_scene.pl",  # signed order and inequality rays
+    "knowledge/strategies/math/geometry_action_pairs.pl",  # registry geometry actions
+    "knowledge/strategies/math/statistics_action_pairs.pl",  # registry data actions
+    "knowledge/strategies/math/measurement_action_pairs.pl",  # registry measurement actions
+    "knowledge/strategies/math/counting_action_pairs.pl",  # registry counting actions
+    "knowledge/strategies/render/render_common.pl",  # shared scene-compiler plumbing
+    "knowledge/strategies/render/area_unit_covering_scene.pl",  # unit-square area covering
+    "knowledge/strategies/render/measurement_strip_scene.pl",  # lightweight measurement renderer
+    "knowledge/strategies/render/ratio_diagram_scene.pl",  # ordered ratio referent tapes
+    "knowledge/strategies/render/signed_number_line_scene.pl",  # signed order and inequality rays
     "formal/pml/mua_conjectures.pl",          # empty register for non-demonstrated MUA candidates
     "formal/tools/axiom_pack_audit.pl",       # loaded by the worker's audit op
     "formal/tools/axiom_toggle.pl",           # lazy-loaded by the axiom_toggle op
@@ -152,46 +148,46 @@ KEEP_MD = {
     "docs/research/2026-07-01-talkmoves-pass2-posture-prompt.md",
     "docs/research/2026-06-25-the-juncture-and-differance.md",
     "ASKTM_Data/survey_questions.md",
-    "geometry/corpus/ATTRIBUTION.md",
+    "knowledge/geometry/corpus/ATTRIBUTION.md",
     "formal/README.md",
-    "crosswalk/README.md",
-    "crosswalk/families/README.md",
+    "knowledge/crosswalk/README.md",
+    "knowledge/crosswalk/families/README.md",
     "formal/formalization/README.md",
-    "geometry/README.md",
-    "geometry/corpus/im_teacher_guides/grade6/README.md",
+    "knowledge/geometry/README.md",
+    "knowledge/geometry/corpus/im_teacher_guides/grade6/README.md",
     "hermes/README.md",
     "hermes/app/README.md",
     "formal/learner/README.md",
     "lessons/README.md",
     "lessons/im/README.md",
-    "misconceptions/README.md",
+    "knowledge/misconceptions/README.md",
     "more-zeeman/README.md",
     "more-zeeman/render/README.md",
     "formal/pml/README.md",
     "representation/README.md",
-    "standards/README.md",
-    "strategies/README.md",
-    "strategies/math/README.md",
-    "strategies/render/README.md",
+    "knowledge/standards/README.md",
+    "knowledge/strategies/README.md",
+    "knowledge/strategies/math/README.md",
+    "knowledge/strategies/render/README.md",
 }
 KEEP_MD_PREFIXES = (
     "hermes/app/system_prompts/",
-    "geometry/corpus/im_teacher_guides/",
-    "geometry/corpus/im_scope_and_sequence/",  # only grade6-8.md ship; lesson_monitoring.pl consults them
+    "knowledge/geometry/corpus/im_teacher_guides/",
+    "knowledge/geometry/corpus/im_scope_and_sequence/",  # only grade6-8.md ship; lesson_monitoring.pl consults them
 )
 
 # Excluded from the kept trees. Substring "/tests/" prunes every test suite;
 # the named directories are research material that no runtime path reads.
 EXCLUDE_DIR_PARTS = ["/tests/"]
 EXCLUDE_PREFIXES = [
-    "geometry/corpus/lakoff_nunez_existing_audit.md",
-    "geometry/corpus/misconception_harvest_log.md",
-    "geometry/corpus/n103_chapter_extracts.md",
-    "geometry/corpus/van_de_walle_excerpts.md",
-    "geometry/corpus/van_hiele_dissertation_excerpts.md",
-    "misconceptions/literature_derivation/",  # per-article derivation shards;
-    "misconceptions/round_2/",                # the compiled facts modules ship
-    "misconceptions/scripts/",
+    "knowledge/geometry/corpus/lakoff_nunez_existing_audit.md",
+    "knowledge/geometry/corpus/misconception_harvest_log.md",
+    "knowledge/geometry/corpus/n103_chapter_extracts.md",
+    "knowledge/geometry/corpus/van_de_walle_excerpts.md",
+    "knowledge/geometry/corpus/van_hiele_dissertation_excerpts.md",
+    "knowledge/misconceptions/literature_derivation/",  # per-article derivation shards;
+    "knowledge/misconceptions/round_2/",                # the compiled facts modules ship
+    "knowledge/misconceptions/scripts/",
     "hermes/scripts/",                     # dev harness scripts (ralph, hardening)
 ]
 EXCLUDE_FILES = {
@@ -212,6 +208,7 @@ def tracked_files() -> list[str]:
     # rename. Resolve those index entries to their working-tree locations so a
     # pre-staging regeneration cannot silently under-ship the moved trees.
     relocated_trees = {"formalization", "pml", "tools", "learner"}
+    knowledge_trees = {"strategies", "misconceptions", "standards", "geometry", "crosswalk"}
     files: list[str] = []
     for path in out.stdout.decode().split("\0"):
         if not path:
@@ -221,6 +218,8 @@ def tracked_files() -> list[str]:
             continue
         tree, separator, remainder = path.partition("/")
         relocated = f"formal/{tree}/{remainder}" if separator and tree in relocated_trees else ""
+        if separator and tree in knowledge_trees:
+            relocated = f"knowledge/{tree}/{remainder}"
         if relocated and (REPO / relocated).is_file():
             files.append(relocated)
     return files

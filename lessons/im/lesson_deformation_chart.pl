@@ -8,7 +8,7 @@
  *
  * "Given a lesson on 1/4 modeled with a circle, here are the botches to expect,
  * rendered on 1/4" -- and because the deformations are parametric (the layers in
- * strategies/render/parametric_partition_deformation.pl and
+ * knowledge/strategies/render/parametric_partition_deformation.pl and
  * parametric_fraction_errors.pl are functions of the fraction), the same chart
  * regenerates for any fraction the lesson names.
  *
@@ -20,7 +20,7 @@
  *      addressed standards, the host representations it partitions in
  *      (circle / rectangle / bar), and the unit fractions it has students model.
  *      The fractions and hosts are read off the teacher-guide markdown in
- *      geometry/corpus/im_teacher_guides/grade3/unit5/.
+ *      knowledge/geometry/corpus/im_teacher_guides/grade3/unit5/.
  *
  *   2. lesson_likely_deformation(Code, Host, frac(M,N), Deformation)
  *      For a lesson host and fraction, the deformations LIKELY on that

@@ -20,7 +20,7 @@ result or edits a scene.
 
 ## Boundary
 
-The scene compilers that produce these documents live in `strategies/render/`;
+The scene compilers that produce these documents live in `knowledge/strategies/render/`;
 this directory only draws them. The Node adapter renders in Node and Python on
 one machine, so it cannot catch a browser/Node divergence; the drawing contract
 is `docs/render-contract-v2.md`.

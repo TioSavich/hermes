@@ -39,7 +39,7 @@
 %
 %   Structural predecessor on the recollection/1 list representation:
 %   strip one leading element. Previously redefined identically in three
-%   standards/indiana/*.pl files; consolidated here per predicate
+%   knowledge/standards/indiana/*.pl files; consolidated here per predicate
 %   carving (formal/tools/carving/predicate_carving.py).
 predecessor_rec(recollection([_|H]), recollection(H)).
 

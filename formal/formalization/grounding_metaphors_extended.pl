@@ -30,7 +30,7 @@
  *      Number As Is Pairability), Sets Are Graphs (Aczel's hypersets).
  *
  * Citation atoms follow `ln_chN[_pNNN]` per
- * `geometry/metaphors/lakoff_nunez_inventory.pl`. Pages are recorded
+ * `knowledge/geometry/metaphors/lakoff_nunez_inventory.pl`. Pages are recorded
  * where the NotebookLM response surfaced them; otherwise chapter only.
  *
  * Heroic-register note: L&N name specific embodied groundings the
@@ -413,7 +413,7 @@ ln_metaphor_target_practice(numbers_are_points_on_a_line,
 ln_metaphor_target_practice(numbers_are_points_on_a_line,
                             p_signed_addition_with_sign_relation).
 
-% Calculus practices in strategies/math/calculus_limits_action_pairs.pl.
+% Calculus practices in knowledge/strategies/math/calculus_limits_action_pairs.pl.
 % Direct substitution, factor-cancel-substitute, the
 % bounded-numerator/diverging-denominator practice, and
 % factor-cancel-without-common-factor all deploy the limit notion
@@ -454,7 +454,7 @@ ln_metaphor_target_practice(classes_are_containers,
 
 % Fundamental Metonymy of Algebra grounds any practice that uses a
 % variable in place of a specific number. The programming-expression
-% evaluation practice in strategies/math/algebraic_action_pairs.pl is
+% evaluation practice in knowledge/strategies/math/algebraic_action_pairs.pl is
 % the most direct deployment in the current codebase.
 ln_metaphor_target_practice(fundamental_metonymy_of_algebra,
                             p_programming_expression_evaluation).

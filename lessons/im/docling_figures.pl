@@ -5,7 +5,7 @@
  * docs/proposals/2026-06-18-student-work-images-todo.md).
  *
  * One fact per extracted figure whose bibtex_key is cited by a
- * lesson-attached misconception in misconceptions/misconception_registry.pl.
+ * lesson-attached misconception in knowledge/misconceptions/misconception_registry.pl.
  * This is the *bibkey-level* join: a figure here documents the cited
  * misconception's literature source, NOT a child's response to a specific
  * IM lesson's numerals. Label any rendered artifact as a literature exemplar.

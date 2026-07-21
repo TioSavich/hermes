@@ -203,18 +203,18 @@ def static_audit(tree: Path, report: Report) -> None:
             "lazy_reachable", "Loaded on demand by", "Described on:",
         ),
         "more-zeeman/witnesses.html": (
-            "strategies/render/rigid_motion_scene.pl", "geometry/geometry_bridge.pl",
-            "rigid_motion_render", "crosswalk/merge_evidence.pl",
+            "knowledge/strategies/render/rigid_motion_scene.pl", "knowledge/geometry/geometry_bridge.pl",
+            "rigid_motion_render", "knowledge/crosswalk/merge_evidence.pl",
             "/api/witness/pml", "semantic_material_witness", "validate_reader_axioms",
-            "formal/pml/mua_conjectures.pl", "misconceptions/pml_wire.pl",
+            "formal/pml/mua_conjectures.pl", "knowledge/misconceptions/pml_wire.pl",
             "/api/witness/grounding", "image_schema", "target_expressive_power_witness",
         ),
         "more-zeeman/bridge.html": (
             "formal/learner/activity_contract.pl", "formal/learner/reorg_domains/fraction.pl",
-            "strategies/math_benchmark.pl",
+            "knowledge/strategies/math_benchmark.pl",
         ),
         "more-zeeman/coordination.html": (
-            "strategies/math/unit_coordination_viz.pl",
+            "knowledge/strategies/math/unit_coordination_viz.pl",
         ),
         "more-zeeman/index.html": (
             "ZEEMAN_BIFURCATION_VERDICT agreement", "more-zeeman/prolog/zeeman_machine.pl",
@@ -230,7 +230,7 @@ def static_audit(tree: Path, report: Report) -> None:
             "formal/incompatibility/registry_incompatibility_adapter.pl",
         ),
         "hermes/app/web/no.html": (
-            "misconceptions/literature_canonical_mappings.pl",
+            "knowledge/misconceptions/literature_canonical_mappings.pl",
         ),
     }
     for rel, markers in page_assertions.items():

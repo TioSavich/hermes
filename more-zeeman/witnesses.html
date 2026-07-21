@@ -60,12 +60,12 @@
       <strong>Research wing — live, in progress.</strong> Contributor notes remain available below.
       <details>
         <summary>For contributors: modules described here but not loaded</summary>
-        <p><code>crosswalk/merge_evidence.pl</code> is the provenance-gate ledger for approved
+        <p><code>knowledge/crosswalk/merge_evidence.pl</code> is the provenance-gate ledger for approved
           canonical-concept mappings. The merge check reads it during development; it is not a
           runtime crosswalk operation.</p>
-        <p><code>geometry/geometry_bridge.pl</code> is the standalone loader used to compare the
+        <p><code>knowledge/geometry/geometry_bridge.pl</code> is the standalone loader used to compare the
           geometry closure with the worker closure. It stays outside the worker by design.</p>
-        <p><code>strategies/render/rigid_motion_scene.pl</code> compiles translation, reflection,
+        <p><code>knowledge/strategies/render/rigid_motion_scene.pl</code> compiles translation, reflection,
           and rotation specifications into the shared render contract. The worker loads it
           import-free; this page reaches it through the existing <code>geometry</code> operation.</p>
         <p><code>formal/pml/talkmoves_adapter.pl</code> prepares attributed TalkMoves packets for review.
@@ -74,7 +74,7 @@
           <code>formal/pml/axioms_eml.pl</code> records the toggle-gated embodied-modal transition axioms.
           <code>formal/pml/mua_conjectures.pl</code> is the intentionally empty register for relations not yet demonstrated.
           These modules remain outside the startup closure.</p>
-        <p><code>misconceptions/pml_wire.pl</code> is wired into the worker and the console's
+        <p><code>knowledge/misconceptions/pml_wire.pl</code> is wired into the worker and the console's
           misconception area. It reports the recorded source-tag-to-modal-posture connections generated from
           CONNECTS-TO annotations in the misconception registry.</p>
       </details>

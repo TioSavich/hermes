@@ -17,8 +17,8 @@ staged_crosswalk=$(mktemp -d)
 diagnostics=$(mktemp)
 trap 'rm -rf "$staged_crosswalk"; rm -f "$diagnostics"' EXIT
 mkdir -p "$staged_crosswalk/families"
-cp crosswalk/canonical_all.pl crosswalk/canonical_vocabulary.pl "$staged_crosswalk/"
-for family in crosswalk/families/cw_*.pl; do
+cp knowledge/crosswalk/canonical_all.pl knowledge/crosswalk/canonical_vocabulary.pl "$staged_crosswalk/"
+for family in knowledge/crosswalk/families/cw_*.pl; do
     if [[ $(basename "$family") != cw_stress_map.pl ]]; then
         ln -s "$repo_root/$family" "$staged_crosswalk/families/$(basename "$family")"
     fi

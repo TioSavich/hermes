@@ -201,7 +201,6 @@ capability('viability_witness', 'cw_driver', 'unclassified', ['cost', 'resources
 capability('visualize_coordination', 'unit_coordination_viz', 'learner', [], routed_paged).
 capability('whole_number_addsub_claim_witness', 'cw_driver', 'unclassified', ['canonical', 'source'], routed_paged).
 capability('whole_number_claim_witness', 'cw_whole_number_claim', 'unclassified', ['canonical', 'source'], routed_paged).
-capability('crosswalk/merge_evidence.pl', 'merge_evidence', 'crosswalk', [], orphan_module).
 capability('formal/formalization/axioms_geometry.pl', 'axioms_geometry', 'synthesis', [], orphan_module).
 capability('formal/formalization/axioms_number_theory.pl', 'axioms_number_theory', 'synthesis', [], orphan_module).
 capability('formal/formalization/axioms_robinson.pl', 'axioms_robinson', 'synthesis', [], orphan_module).
@@ -240,18 +239,19 @@ capability('formal/pml/mua_conjectures.pl', 'mua_conjectures', 'pml', [], orphan
 capability('formal/pml/mua_health.pl', 'mua_health', 'pml', [], orphan_module).
 capability('formal/pml/talkmoves_adapter.pl', 'talkmoves_adapter', 'pml', [], orphan_module).
 capability('formal/tools/axiom_toggle.pl', 'axiom_toggle', 'infrastructure', [], lazy_reachable).
-capability('geometry/geometry_bridge.pl', 'geometry_bridge', 'geometry_witness', [], orphan_module).
+capability('knowledge/crosswalk/merge_evidence.pl', 'merge_evidence', 'crosswalk', [], orphan_module).
+capability('knowledge/geometry/geometry_bridge.pl', 'geometry_bridge', 'geometry_witness', [], orphan_module).
+capability('knowledge/misconceptions/literature_canonical_mappings.pl', 'literature_canonical_mappings', 'misconceptions', [], orphan_module).
+capability('knowledge/strategies/math/unit_coordination_viz.pl', 'unit_coordination_viz', 'synthesis', [], lazy_reachable).
+capability('knowledge/strategies/math_benchmark.pl', 'math_benchmark', 'synthesis', [], orphan_module).
 capability('lessons/im/generated/compiled_task_instances.pl', 'compiled_task_instances', 'workflow', [], orphan_module).
 capability('lessons/im/generated/vision_lesson_digest.pl', 'vision_lesson_digest', 'workflow', [], orphan_module).
 capability('lessons/im/im_glossary.pl', 'im_glossary', 'workflow', [], orphan_module).
 capability('lessons/im_harness.pl', 'im_harness', 'workflow', [], orphan_module).
-capability('misconceptions/literature_canonical_mappings.pl', 'literature_canonical_mappings', 'misconceptions', [], orphan_module).
 capability('more-zeeman/prolog/zeeman_bifurcation.pl', 'zeeman_bifurcation', 'zeeman', [], orphan_module).
 capability('more-zeeman/prolog/zeeman_machine.pl', 'zeeman_machine', 'zeeman', [], orphan_module).
 capability('more-zeeman/prolog/zeeman_pml_bridge.pl', 'zeeman_pml_bridge', 'zeeman', [], orphan_module).
 capability('more-zeeman/prolog/zeeman_tape.pl', 'zeeman_tape', 'zeeman', [], orphan_module).
-capability('strategies/math/unit_coordination_viz.pl', 'unit_coordination_viz', 'synthesis', [], lazy_reachable).
-capability('strategies/math_benchmark.pl', 'math_benchmark', 'synthesis', [], orphan_module).
 
 capability_route('accommodation_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('ace_of_bases_render', 'POST', '/api/monitoring_visuals').
@@ -792,7 +792,6 @@ capability_page('viability_witness', '/more-zeeman/witnesses.html').
 capability_page('visualize_coordination', '/more-zeeman/coordination.html').
 capability_page('whole_number_addsub_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('whole_number_claim_witness', '/more-zeeman/witnesses.html').
-capability_page('crosswalk/merge_evidence.pl', '/more-zeeman/witnesses.html').
 capability_page('formal/formalization/axioms_geometry.pl', '/hermes/app/web/breaks.html').
 capability_page('formal/formalization/axioms_number_theory.pl', '/hermes/app/web/breaks.html').
 capability_page('formal/formalization/axioms_robinson.pl', '/hermes/app/web/breaks.html').
@@ -833,18 +832,19 @@ capability_page('formal/pml/mua_conjectures.pl', '/more-zeeman/witnesses.html').
 capability_page('formal/pml/mua_health.pl', '/more-zeeman/witnesses.html').
 capability_page('formal/pml/talkmoves_adapter.pl', '/more-zeeman/witnesses.html').
 capability_page('formal/tools/axiom_toggle.pl', '/hermes/app/web/breaks.html').
-capability_page('geometry/geometry_bridge.pl', '/more-zeeman/witnesses.html').
+capability_page('knowledge/crosswalk/merge_evidence.pl', '/more-zeeman/witnesses.html').
+capability_page('knowledge/geometry/geometry_bridge.pl', '/more-zeeman/witnesses.html').
+capability_page('knowledge/misconceptions/literature_canonical_mappings.pl', '/hermes/app/web/no.html').
+capability_page('knowledge/strategies/math/unit_coordination_viz.pl', '/more-zeeman/coordination.html').
+capability_page('knowledge/strategies/math_benchmark.pl', '/more-zeeman/bridge.html').
 capability_page('lessons/im/generated/compiled_task_instances.pl', '/more-zeeman/visualizations.html').
 capability_page('lessons/im/generated/vision_lesson_digest.pl', '/more-zeeman/monitoring_chart.html').
 capability_page('lessons/im/im_glossary.pl', '/more-zeeman/monitoring_chart.html').
 capability_page('lessons/im_harness.pl', '/more-zeeman/monitoring_chart.html').
-capability_page('misconceptions/literature_canonical_mappings.pl', '/hermes/app/web/no.html').
 capability_page('more-zeeman/prolog/zeeman_bifurcation.pl', '/more-zeeman/index.html').
 capability_page('more-zeeman/prolog/zeeman_machine.pl', '/more-zeeman/index.html').
 capability_page('more-zeeman/prolog/zeeman_pml_bridge.pl', '/more-zeeman/index.html').
 capability_page('more-zeeman/prolog/zeeman_tape.pl', '/more-zeeman/index.html').
-capability_page('strategies/math/unit_coordination_viz.pl', '/more-zeeman/coordination.html').
-capability_page('strategies/math_benchmark.pl', '/more-zeeman/bridge.html').
 
 capability_lazy_via('formal/incompatibility/registry_incompatibility_adapter.pl', 'axiom_toggle').
 capability_lazy_via('formal/learner/arithmetic_machine.pl', 'compute').
@@ -855,5 +855,5 @@ capability_lazy_via('formal/learner/reorg_domains/fraction_improper.pl', 'reorga
 capability_lazy_via('formal/learner/reorg_domains/fraction_of_fraction.pl', 'reorganize').
 capability_lazy_via('formal/learner/reorg_domains/fraction_splitting.pl', 'reorganize').
 capability_lazy_via('formal/tools/axiom_toggle.pl', 'axiom_toggle').
-capability_lazy_via('strategies/math/unit_coordination_viz.pl', 'unit_coordination_svg').
-capability_lazy_via('strategies/math/unit_coordination_viz.pl', 'visualize_coordination').
+capability_lazy_via('knowledge/strategies/math/unit_coordination_viz.pl', 'unit_coordination_svg').
+capability_lazy_via('knowledge/strategies/math/unit_coordination_viz.pl', 'visualize_coordination').

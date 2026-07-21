@@ -931,7 +931,7 @@ def _frac_pair(value: Any) -> tuple[int, int] | None:
 def claim_render_request(extraction: dict[str, Any]) -> dict[str, Any] | None:
     """Map one adjudicated claim onto a ready `/api/render` request, or None.
 
-    The drawing packages already exist (strategies/render/ scene compilers
+    The drawing packages already exist (knowledge/strategies/render/ scene compilers
     behind the worker's render ops); this is only the join. Three mappings,
     chosen because each is a straight pass-through:
 

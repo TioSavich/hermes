@@ -40,29 +40,29 @@ PAGE_CONTEXT: dict[str, dict[str, str]] = {
 PAGE_READMES: dict[str, tuple[str, ...]] = {
     "console": ("hermes/app/README.md",),
     "discussions": ("hermes/app/README.md", "formal/pml/README.md"),
-    "visualizations": ("strategies/render/README.md",),
-    "witnesses": ("crosswalk/README.md", "standards/README.md", "formal/pml/README.md", "geometry/README.md"),
+    "visualizations": ("knowledge/strategies/render/README.md",),
+    "witnesses": ("knowledge/crosswalk/README.md", "knowledge/standards/README.md", "formal/pml/README.md", "knowledge/geometry/README.md"),
     "monitoring": ("lessons/im/README.md",),
     "gallery": ("representation/README.md",),
     "landing": ("more-zeeman/README.md",),
     "no": ("formal/README.md", "formal/pml/README.md"),
     "breaks": ("formal/README.md", "formal/formalization/README.md"),
     "snap": ("more-zeeman/README.md",),
-    "counting": ("strategies/README.md",),
-    "crisis": ("strategies/README.md", "misconceptions/README.md"),
-    "strategies": ("strategies/README.md",),
-    "fractal": ("more-zeeman/README.md", "strategies/README.md"),
+    "counting": ("knowledge/strategies/README.md",),
+    "crisis": ("knowledge/strategies/README.md", "knowledge/misconceptions/README.md"),
+    "strategies": ("knowledge/strategies/README.md",),
+    "fractal": ("more-zeeman/README.md", "knowledge/strategies/README.md"),
     "playground": ("more-zeeman/README.md",),
-    "boundary": ("formal/formalization/README.md", "strategies/README.md"),
+    "boundary": ("formal/formalization/README.md", "knowledge/strategies/README.md"),
     "matrix": ("more-zeeman/README.md",),
     "muds": ("formal/pml/README.md",),
     "scoreboard": ("formal/learner/README.md", "formal/pml/README.md"),
     "atlas": ("hermes/README.md",),
     "bridge": ("formal/learner/README.md",),
-    "coordination": ("strategies/math/README.md",),
+    "coordination": ("knowledge/strategies/math/README.md",),
     "reorganization": ("formal/learner/README.md",),
-    "unit-echo": ("strategies/render/README.md",),
-    "fraction-bars": ("strategies/render/README.md",),
+    "unit-echo": ("knowledge/strategies/render/README.md",),
+    "fraction-bars": ("knowledge/strategies/render/README.md",),
 }
 
 CAPABILITY_RE = re.compile(
@@ -112,7 +112,7 @@ def _capability_lines(repo_root: Path, page_path: str) -> list[str]:
 
 
 def _state_label_lines(repo_root: Path) -> list[str]:
-    source = (repo_root / "strategies/math/state_vocabulary.pl").read_text(encoding="utf-8")
+    source = (repo_root / "knowledge/strategies/math/state_vocabulary.pl").read_text(encoding="utf-8")
     labels = [
         (" ".join(state.split()), " ".join(tradition.split()), " ".join(label.split()), " ".join(citation.split()))
         for state, tradition, label, citation in STATE_LABEL_RE.findall(source)
