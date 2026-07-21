@@ -962,7 +962,7 @@ inferential_strength_comparison_json(_{
     title: "Inferential Strength Comparison: IM vs Ray-style Traditional Lessons",
     claim_register: _{
         structural_claim: "Each lesson's report is the inferential strength it puts in play.",
-        measure_rule: "Counts are breadth tallies. Containment is the Brandomian incompatibility relation. The comparison reports both.",
+        measure_rule: "Counts are breadth tallies. Containment models the Brandomian incompatibility relation. The comparison reports both.",
         understanding_hypothesis: "Understanding grows as students and teachers can explicate what it is not: what a concept, operation, or strategy excludes, what it rules out, and what is materially incompatible with it.",
         decentering_link: "downstream conjecture only: this exclusion map may support teacher decentering, but the comparison does not measure classroom decentering or learning outcomes."
     },

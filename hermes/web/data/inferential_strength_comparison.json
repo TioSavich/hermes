@@ -1,7 +1,7 @@
 {
   "claim_register": {
     "decentering_link":"downstream conjecture only: this exclusion map may support teacher decentering, but the comparison does not measure classroom decentering or learning outcomes.",
-    "measure_rule":"Counts are breadth tallies. Containment is the Brandomian incompatibility relation. The comparison reports both.",
+    "measure_rule":"Counts are breadth tallies. Containment models the Brandomian incompatibility relation. The comparison reports both.",
     "structural_claim":"Each lesson's report is the inferential strength it puts in play.",
     "understanding_hypothesis":"Understanding grows as students and teachers can explicate what it is not: what a concept, operation, or strategy excludes, what it rules out, and what is materially incompatible with it."
   },
