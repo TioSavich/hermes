@@ -178,7 +178,13 @@ def call_api_messages(
         try:
             with urllib.request.urlopen(req, timeout=timeout, context=ssl_ctx) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
-                return data["choices"][0]["message"]["content"]
+                message = data["choices"][0]["message"]
+                content = message.get("content")
+                if content:
+                    return content
+                # Some REALLMS deployments (the Qwen family) return the whole
+                # answer in reasoning_content and leave content null.
+                return message.get("reasoning_content") or ""
         except urllib.error.HTTPError as e:
             err_body = e.read().decode("utf-8", errors="replace")
             last_err = f"HTTP {e.code}: {err_body[:500]}"

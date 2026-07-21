@@ -331,7 +331,7 @@ def user_prompt(entry: Entry, prior_failure: str | None = None) -> str:
 
 
 def clean_response(response: str) -> str:
-    text = response.strip()
+    text = (response or "").strip()
     fence = re.fullmatch(r"```(?:prolog)?\s*(.*?)\s*```", text, flags=re.DOTALL | re.IGNORECASE)
     return fence.group(1).strip() if fence else text
 
