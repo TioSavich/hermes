@@ -68,6 +68,12 @@
 :- use_module(render(attested_deformations)).
 :- use_module(render(parametric_partition_deformation)).
 :- use_module(render(parametric_fraction_errors)).
+:- use_module(lessons('im/generated/default_fill_lessons')).
+:- use_module(lessons('im/lesson_monitoring'),
+              [ im_lesson/6,
+                lesson_standard/4,
+                lesson_strategy/4
+              ]).
 
 % =========================================================================
 % 1. The encoded lessons.
@@ -93,18 +99,42 @@
 %       compares fractions with the same denominator on area diagrams,
 %       fraction strips, and number lines (fourths and sixths in the task set).
 
-lesson_chart_lesson('IM-G3-U5-L1', "Name the Parts",
+hand_authored_chart_lesson('IM-G3-U5-L1', "Name the Parts",
         ['3.G.A.2', '3.NF.A.1'],
         [rectangle, circle],
         [frac(1,2), frac(1,3), frac(1,4), frac(1,6), frac(1,8)]).
-lesson_chart_lesson('IM-G3-U5-L2', "Name Parts as Fractions",
+hand_authored_chart_lesson('IM-G3-U5-L2', "Name Parts as Fractions",
         ['3.G.A.2', '3.NF.A.1'],
         [rectangle, circle, bar],
         [frac(1,2), frac(1,3), frac(1,4), frac(1,6), frac(1,8)]).
-lesson_chart_lesson('IM-G3-U5-L15', "Compare Fractions with the Same Denominator",
+hand_authored_chart_lesson('IM-G3-U5-L15', "Compare Fractions with the Same Denominator",
         ['3.NF.A.3.d'],
         [bar, circle],
         [frac(1,4), frac(1,6)]).
+
+% Hand-authored rows preserve their guide-specific hosts and fractions.  The
+% default fill admits every other lesson through lesson_monitoring's explicit /
+% compiled strategy union, not through a second inventory of lesson codes.
+lesson_chart_lesson(Code, Title, Standards, Hosts, Fractions) :-
+    hand_authored_chart_lesson(Code, Title, Standards, Hosts, Fractions).
+lesson_chart_lesson(Code, Title, Standards, Hosts, Fractions) :-
+    default_fill_chart_lesson(Code, Title, Standards, Hosts, Fractions),
+    \+ hand_authored_chart_lesson(Code, _, _, _, _).
+
+default_fill_chart_lesson(Code, Title, Standards,
+        [circle, rectangle, bar],
+        [frac(1,2), frac(1,3), frac(1,4), frac(1,6), frac(1,8)]) :-
+    % Everything here is a generated fact lookup (see
+    % generated/default_fill_lessons.pl and its builder). The strategy
+    % union, lesson titles, and standards are all rule-backed in the
+    % full worker image and cost minutes to walk at request time; the
+    % build step walks them once and serves facts.
+    default_fill_lessons:default_fill_lesson(Code, Title, Standards).
+
+chart_provenance(Code, hand_authored) :-
+    hand_authored_chart_lesson(Code, _, _, _, _),
+    !.
+chart_provenance(_Code, default_fill).
 
 % lesson_fraction_task(Code, frac(M,N)): each fraction the lesson models.
 lesson_fraction_task(Code, Frac) :-
@@ -274,6 +304,7 @@ monitoring_chart(Code, Chart) :-
     standards_strings(Standards, StandardStrings),
     fractions_strings(Fractions, FractionStrings),
     maplist(atom_string, Hosts, HostStrings),
+    chart_provenance(Code, Provenance),
     Chart = _{
         kind: lesson_deformation_chart,
         lesson_code: Code,
@@ -281,7 +312,8 @@ monitoring_chart(Code, Chart) :-
         standards: StandardStrings,
         hosts: HostStrings,
         fractions: FractionStrings,
-        cells: Cells
+        cells: Cells,
+        provenance: Provenance
     }.
 
 % chart_cell(Code, Host, frac(M,N), CellDict): the productive scene and the

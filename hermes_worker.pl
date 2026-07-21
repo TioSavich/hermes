@@ -1164,7 +1164,7 @@ dispatch_request(lesson_deformation_chart, Id, Request, Response) :-
         ->  json_safe(Chart, Safe),
             ok_response(Id, Safe, Response)
         ;   error_response(Id, no_deformation_chart,
-                "lesson_deformation_chart covers only the grade-3 fraction lessons; no chart for that code",
+                "lesson_deformation_chart covers IM lessons with unit-fraction partition or iteration strategies; no chart for that code",
                 Response)
         )
     ;   error_response(Id, missing_code,
@@ -4001,7 +4001,7 @@ axiom_toggle_action(Action, Id, Request, Response) :-
             error_response(Id, unknown_axiom_toggle, Msg, Response)
         )
     ;   error_response(Id, missing_axiom,
-            "axiom_toggle enable/disable requires axiom (a toggle term string such as pack(eml))",
+            "axiom_toggle enable/disable requires axiom (a toggle term string such as pack(rhythm))",
             Response)
     ).
 axiom_toggle_action(Action, Id, _Request, Response) :-

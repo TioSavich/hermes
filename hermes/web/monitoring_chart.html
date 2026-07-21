@@ -556,6 +556,9 @@ trace.</p>
 
       shownLesson = code;
       shownSource = 'live';
+      if (typeof window.bindDeformationLesson === 'function') {
+        window.bindDeformationLesson(code);
+      }
     }
 
     function loadLesson() {
@@ -640,16 +643,55 @@ trace.</p>
 </div>
 </div>
 <p class='fig-coverage' id='figure-coverage' hidden></p>
-<h2>Separate fraction wrong-answer example</h2>
-<p class="note">The route currently covers encoded grade 3 fraction lessons, so this
-placeholder is separate from the grade 2 monitoring chart above. Unsupported codes and app
-errors remain in the reply below.</p>
+<h2>Fraction wrong-answer chart</h2>
+<p class="note" id="deformation-context">Loading the charted fraction lesson for this monitoring chart’s grade.</p>
 <div class="picker">
   <label>lesson <input id="deformation-code" value="IM-G3-U5-L1"></label>
   <button id="deformation-run" type="button">load wrong-answer pattern chart</button>
 </div>
 <pre id="deformation-output" style="white-space:pre-wrap;overflow-wrap:anywhere;color:var(--muted);font:0.76rem/1.45 ui-monospace,monospace"></pre>
 <script>
+  (function () {
+    const manifestPath = '../hermes/app/web/generated/lesson_deformation_charts/manifest.json';
+    let chartedLessons = null;
+
+    function gradeOf(code) {
+      const match = /^IM-G(K|[1-8])-U\d+-L\d+$/.exec(code || '');
+      return match ? match[1] : null;
+    }
+
+    async function loadChartedLessons() {
+      if (chartedLessons) return chartedLessons;
+      const response = await fetch(manifestPath, {cache: 'no-store'});
+      if (!response.ok) throw new Error('the generated deformation-chart manifest is unavailable');
+      const manifest = await response.json();
+      chartedLessons = Array.isArray(manifest.lessons) ? manifest.lessons : [];
+      return chartedLessons;
+    }
+
+    window.bindDeformationLesson = async function (monitoringCode) {
+      const context = document.getElementById('deformation-context');
+      const input = document.getElementById('deformation-code');
+      const grade = gradeOf(monitoringCode);
+      try {
+        const lessons = await loadChartedLessons();
+        const matching = lessons.find(function (lesson) { return gradeOf(lesson.code) === grade; });
+        if (matching) {
+          input.value = matching.code;
+          context.textContent = 'This wrong-answer chart uses ' + matching.code
+            + ', a charted grade ' + grade + ' fraction lesson matching the monitoring chart above.';
+        } else {
+          context.textContent = 'No charted unit-fraction lesson matches grade ' + (grade || 'unknown')
+            + '. The picker keeps ' + input.value + ' so the available fraction chart is explicit rather than presented as part of this lesson.';
+        }
+      } catch (error) {
+        context.textContent = 'The generated deformation-chart manifest is unavailable, so the picker keeps '
+          + input.value + '. Its grade relationship to the monitoring chart cannot be checked in this deployment.';
+      }
+    };
+    window.bindDeformationLesson('IM-G2-U2-L2');
+  })();
+
   document.getElementById('deformation-run').addEventListener('click', async function () {
     const out = document.getElementById('deformation-output');
     const code = document.getElementById('deformation-code').value.trim();
