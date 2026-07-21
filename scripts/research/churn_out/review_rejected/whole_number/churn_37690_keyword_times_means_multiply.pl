@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_whole_number.pl, db_row(37690)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: Joanne T. Mulligan and Michael C. Mitchelmore (1997)
 % Documented error: if the word 'times' appears, choose multiplication
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

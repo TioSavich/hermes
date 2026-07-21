@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_whole_number.pl, db_row(38708)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: Erik S. Tillema (2014)
 % Documented error: you must physically form and count every symmetric addend pair rather than anticipate how many pairs there are
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

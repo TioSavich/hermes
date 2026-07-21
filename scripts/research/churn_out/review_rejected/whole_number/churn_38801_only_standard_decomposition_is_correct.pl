@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_whole_number.pl, db_row(38801)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: Janne Fauskanger (2015)
 % Documented error: a number may be decomposed correctly only by its standard place-value digits, not as 45x10+6
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

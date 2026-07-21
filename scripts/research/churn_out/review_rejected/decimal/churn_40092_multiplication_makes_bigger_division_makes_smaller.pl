@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_decimal.pl, db_row(40092)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: JUDITH SOWDER, BARBARA ARMSTRONG, SUSAN LAMON, MARTIN SIMON, LARRY SOWDER and ALBA THOMPSON (1998)
 % Documented error: assume multiplying always increases and dividing always decreases a quantity
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

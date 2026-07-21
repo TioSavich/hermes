@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_whole_number.pl, db_row(40020)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: Despina Potari, Barbara Georgiadou-Kabouridis (2009)
 % Documented error: treat the number you divide by as the count of items per share
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

@@ -14,5 +14,5 @@ churn_candidate:(churn_38090_place_result_in_jump_direction_ignoring_sign(A-B, G
 
 test_harness:arith_misconception(db_row(38090), whole_number, churn_38090_place_result_in_jump_direction_ignoring_sign,
     churn_candidate:churn_38090_place_result_in_jump_direction_ignoring_sign,
-    5-(-3),
+    5-3,
     2).

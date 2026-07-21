@@ -127,11 +127,11 @@ test_harness:arith_misconception(db_row(38269), measurement, remainder_as_unmeas
 
 % === row 38337: can't assemble area from composite units ===
 test_harness:arith_misconception(db_row(38337), measurement, too_vague,
-    skip, none, none).
+    misconceptions_measurement_churn_2026_07_21:churn_38337_iterate_single_length_unit, rect(5,3), 15).
 
 % === row 38493: paper too thin to measure ===
 test_harness:arith_misconception(db_row(38493), measurement, too_vague,
-    skip, none, none).
+    misconceptions_measurement_churn_2026_07_21:churn_38493_if_smaller_than_smallest_unit_then_has_no_measure, thickness(0.5), 0.5).
 
 % === row 38583: linear ratio used for square-tile area ratio ===
 % Task: how many times larger is an 8-inch square tile than a 4-inch square tile?
@@ -208,7 +208,7 @@ test_harness:arith_misconception(db_row(38992), measurement, area_labeled_linear
 
 % === row 38994: reading '6 m^2' as '6 meters squared' ===
 test_harness:arith_misconception(db_row(38994), measurement, too_vague,
-    skip, none, none).
+    misconceptions_measurement_churn_2026_07_21:churn_38994_read_squared_notation_as_unit_then_squared, meters_squared(6), 6).
 
 % === row 39002: increasing perimeter increases area ===
 test_harness:arith_misconception(db_row(39002), measurement, too_vague,
@@ -353,7 +353,7 @@ test_harness:arith_misconception(db_row(40603), measurement, too_vague,
 
 % === row 40609: discrete-bead vs interval-boundary marking ===
 test_harness:arith_misconception(db_row(40609), measurement, too_vague,
-    skip, none, none).
+    misconceptions_measurement_churn_2026_07_21:churn_40609_mark_quantity_on_the_nth_item, nth_bead(5), 4).
 
 % === row 40639: cannot mentally truncate tool past object ===
 test_harness:arith_misconception(db_row(40639), measurement, too_vague,
@@ -899,7 +899,7 @@ test_harness:arith_misconception(db_row(39551), measurement, decimal_time_as_abs
     hours_minutes(23,46.8)).
 
 test_harness:arith_misconception(db_row(39552), measurement, too_vague,
-    skip, none, none).
+    misconceptions_measurement_churn_2026_07_21:churn_39552_treat_arc_minutes_as_unrelated_to_degrees, arc_minutes(60), 1).
 
 % === row 40241: square side from area by dividing by two ===
 % Task: find side length of square with area 9.
@@ -1205,3 +1205,24 @@ test_harness:arith_misconception(
     misconceptions_measurement:elapsed_base10_regroup,
     hours(7,8)-hours(2,53),
     hours(4,15)).   % correct 4h 15min (base-60); student returns hours(4,55) via base-10
+
+% === churn 2026-07-21: semantic-review admissions ===
+% Citation: Erik S. Tillema ()
+% Documented error: establish area by repeating one length unit rather than coordinating length and width
+misconceptions_measurement_churn_2026_07_21:(churn_38337_iterate_single_length_unit(rect(W, _H), Got) :- Got is W).
+
+% Citation: Guy Brousseau, Nadine Brousseau, Virginia Warfield (2004)
+% Documented error: a quantity below the smallest gradation of the instrument has no measurable magnitude
+misconceptions_measurement_churn_2026_07_21:(churn_38493_if_smaller_than_smallest_unit_then_has_no_measure(thickness(Microns), Got) :- Microns < 1, Got = 0).
+
+% Citation: ANNETTE BATURO and ROD NASON (1996)
+% Documented error: interpret 6 m^2 as 'six meters, squared' rather than 'six square meters'
+misconceptions_measurement_churn_2026_07_21:(churn_38994_read_squared_notation_as_unit_then_squared(meters_squared(N), Got) :- Got is N*N).
+
+% Citation: Thomas Lingefjard & Stephanie Meier (2010)
+% Documented error: do not connect arc minutes to degrees or to the unit circle's circumference
+misconceptions_measurement_churn_2026_07_21:(churn_39552_treat_arc_minutes_as_unrelated_to_degrees(arc_minutes(N), Got) :- Got = N).
+
+% Citation: Koeno Gravemeijer (1999)
+% Documented error: place a quantity label on the discrete item bearing that ordinal position
+misconceptions_measurement_churn_2026_07_21:(churn_40609_mark_quantity_on_the_nth_item(nth_bead(N), Got) :- Got = N).

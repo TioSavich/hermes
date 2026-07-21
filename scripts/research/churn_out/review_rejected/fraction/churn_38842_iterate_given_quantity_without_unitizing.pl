@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_fraction.pl, db_row(38842)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: Tatjana Hodnik Cadez, Vida Manfreda Kolar (2018)
 % Documented error: try to rebuild the whole by iterating the shown 2/5 region directly instead of first finding the 1/5 unit
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

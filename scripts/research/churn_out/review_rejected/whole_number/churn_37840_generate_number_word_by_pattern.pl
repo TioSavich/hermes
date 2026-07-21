@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_whole_number.pl, db_row(37840)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: Arthur J. Baroody and Herbert P. Ginsburg (1990)
 % Documented error: form the next number word by applying the observed decade-suffix pattern (ten gives tenty)
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

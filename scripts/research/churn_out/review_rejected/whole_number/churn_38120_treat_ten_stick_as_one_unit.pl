@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_whole_number.pl, db_row(38120)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: Mike Askew (2018)
 % Documented error: count a ten-stick as a single object rather than as ten ones
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

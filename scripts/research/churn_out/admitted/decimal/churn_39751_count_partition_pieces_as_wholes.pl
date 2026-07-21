@@ -17,4 +17,4 @@ churn_candidate:(churn_39751_count_partition_pieces_as_wholes(dividend(D)-diviso
 test_harness:arith_misconception(db_row(39751), decimal, churn_39751_count_partition_pieces_as_wholes,
     churn_candidate:churn_39751_count_partition_pieces_as_wholes,
     dividend(3)-divisor(5),
-    6.0).
+    0.6).

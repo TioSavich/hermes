@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_whole_number.pl, db_row(266)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: Ding (2018)
 % Documented error: form the equation by following the order numbers appear in the problem text
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

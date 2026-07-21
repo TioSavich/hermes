@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_whole_number.pl, db_row(39409)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: ALEKSANDRA URBAŃSKA (1993)
 % Documented error: the row that stretches further contains the greater quantity
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_whole_number.pl, db_row(249)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: Cai, J. (1998)
 % Documented error: find a quotient and remainder by repeatedly adding or subtracting the divisor
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

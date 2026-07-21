@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_whole_number.pl, db_row(40108)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: Jason Cooper, Ronnie Karsenty (2018)
 % Documented error: treat two divisions with the same quotient and remainder as equal
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

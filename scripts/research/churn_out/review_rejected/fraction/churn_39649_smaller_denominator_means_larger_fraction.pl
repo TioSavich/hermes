@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_fraction.pl, db_row(39649)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: Eugene Kaminski (2002)
 % Documented error: the smaller the denominator, the larger the fraction regardless of numerator
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

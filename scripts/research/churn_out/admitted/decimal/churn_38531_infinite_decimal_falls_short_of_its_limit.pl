@@ -9,13 +9,10 @@
 :- dynamic test_harness:arith_misconception/6.
 :- discontiguous test_harness:arith_misconception/6.
 
-churn_candidate:(churn_38531_infinite_decimal_falls_short_of_its_limit(RepeatingDec, Got) :-
-    RepeatingDec = 0.999,
-    Got is 0.999;
-    RepeatingDec = 0.333,
-    Got is 0.333).
+churn_candidate:(churn_38531_infinite_decimal_falls_short_of_its_limit(repeating(D,S), Got) :-
+    ( D = 0, S = 9 -> Got is 0.999 ; D = 0, S = 3, Got is 0.333 )).
 
 test_harness:arith_misconception(db_row(38531), decimal, churn_38531_infinite_decimal_falls_short_of_its_limit,
     churn_candidate:churn_38531_infinite_decimal_falls_short_of_its_limit,
-    0.999,
+    repeating(0,9),
     1.0).

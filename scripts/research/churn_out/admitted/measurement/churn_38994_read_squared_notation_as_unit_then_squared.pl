@@ -9,8 +9,8 @@
 :- dynamic test_harness:arith_misconception/6.
 :- discontiguous test_harness:arith_misconception/6.
 
-churn_candidate:(churn_38994_read_squared_notation_as_unit_then_squared(meters_squared(6), Got) :-
-    Got is 36).
+churn_candidate:(churn_38994_read_squared_notation_as_unit_then_squared(meters_squared(N), Got) :-
+    Got is N*N).
 
 test_harness:arith_misconception(db_row(38994), measurement, churn_38994_read_squared_notation_as_unit_then_squared,
     churn_candidate:churn_38994_read_squared_notation_as_unit_then_squared,

@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_fraction.pl, db_row(38371)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: Martin A. Simon, Melike Kara, Anderson Norton, Nicora Placa (2018)
 % Documented error: the product of two fractions is that many parts of the second factor rather than of the whole
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_whole_number.pl, db_row(207)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: Clarke (2011)
 % Documented error: solve 12-9 by asking what added to 9 makes 12
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

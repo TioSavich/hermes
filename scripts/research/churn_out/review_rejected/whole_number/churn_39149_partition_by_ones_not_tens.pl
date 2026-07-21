@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_whole_number.pl, db_row(39149)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: SARA HENNESSY, TIM O'SHEA, RICK EVERTSZ AND ANN FLOYD (1989)
 % Documented error: break a number into single units rather than into tens during mental calculation
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

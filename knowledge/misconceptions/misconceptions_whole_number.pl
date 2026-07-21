@@ -236,7 +236,7 @@ test_harness:arith_misconception(db_row(38058), whole_number, too_vague,
 
 % === row 38090: empty number line spatial violation ===
 test_harness:arith_misconception(db_row(38090), whole_number, too_vague,
-    skip, none, none).
+    misconceptions_whole_number_churn_2026_07_21:churn_38090_place_result_in_jump_direction_ignoring_sign, 5-3, 2).
 
 % === row 38107: number line bars as concrete objects ===
 test_harness:arith_misconception(db_row(38107), whole_number, too_vague,
@@ -1004,7 +1004,7 @@ test_harness:arith_misconception(db_row(37937), whole_number, too_vague,
 
 % === row 38026: 'more than' keyword triggers addition ===
 test_harness:arith_misconception(db_row(38026), whole_number, too_vague,
-    skip, none, none).
+    misconceptions_whole_number_churn_2026_07_21:churn_38026_map_keyword_more_than_directly_to_addition, 15-7, 8).
 
 % === row 38059: write digits exactly as spoken ===
 % Task: write the numeral for a spoken number given as Tens-Ones.
@@ -1300,7 +1300,7 @@ test_harness:arith_misconception(db_row(39543), whole_number, too_vague,
 
 % === row 39560: division notation directionality (symbolic/notational) ===
 test_harness:arith_misconception(db_row(39560), whole_number, too_vague,
-    skip, none, none).
+    misconceptions_whole_number_churn_2026_07_21:churn_39560_transcribe_linear_order_into_bracket, 12-3, bracket(3,12)).
 
 % === row 39578: prime-power as compute-then-factor instruction ===
 % Task: given a prime-power expression Base^Exp, report the set of
@@ -1346,7 +1346,7 @@ test_harness:arith_misconception(db_row(39729), whole_number, too_vague,
 
 % === row 39748: zero mishandled in multi-digit ops (mixed bag) ===
 test_harness:arith_misconception(db_row(39748), whole_number, too_vague,
-    skip, none, none).
+    misconceptions_whole_number_churn_2026_07_21:churn_39748_zero_has_no_value_so_it_can_be_ignored_or_treated_as_one, 5-0, 5).
 
 % === row 39842: division estimation by leading-digit truncation ===
 % Task: estimate 6034 / 52.
@@ -1671,7 +1671,7 @@ test_harness:arith_misconception(db_row(37868), whole_number, too_vague,
 
 % === row 37891: "more" keyword triggers addition (no example given) ===
 test_harness:arith_misconception(db_row(37891), whole_number, too_vague,
-    skip, none, none).
+    misconceptions_whole_number_churn_2026_07_21:churn_37891_keyword_more_signals_addition, 15-7, 8).
 
 % === row 37903: additive rather than multiplicative decomposition of 8 ===
 % Task: 144 / 8 computed as repeatedly halving (2+2+2+2 = 8)
@@ -1769,7 +1769,7 @@ test_harness:arith_misconception(db_row(38521), whole_number, too_vague,
 
 % === row 38566: zero is "nothing" so not divisible ===
 test_harness:arith_misconception(db_row(38566), whole_number, too_vague,
-    skip, none, none).
+    misconceptions_whole_number_churn_2026_07_21:churn_38566_division_requires_a_nonempty_quantity, 0, 0).
 
 % === row 38606: didactical contract — apply recently learned operation ===
 % Task: 57 cars, 24 red, how many non-red?
@@ -2310,7 +2310,7 @@ test_harness:arith_misconception(db_row(37688), whole_number, add_irrelevant_cou
 
 % === row 37718: negative transfer of operation habit ===
 test_harness:arith_misconception(db_row(37718), whole_number, too_vague,
-    skip, none, none).
+    misconceptions_whole_number_churn_2026_07_21:churn_37718_reapply_operation_associated_with_quantity_type, 500-375, 875).
 
 % === row 37763: counting-back for subtraction ===
 test_harness:arith_misconception(db_row(37763), whole_number, too_vague,
@@ -4049,9 +4049,9 @@ test_harness:arith_misconception(db_row(223), whole_number, too_vague, skip, non
 test_harness:arith_misconception(db_row(224), whole_number, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(225), whole_number, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(226), whole_number, too_vague, skip, none, none).
-test_harness:arith_misconception(db_row(227), whole_number, too_vague, skip, none, none).
+test_harness:arith_misconception(db_row(227), whole_number, too_vague, misconceptions_whole_number_churn_2026_07_21:churn_227_ten_is_only_ten_ones, 10, 1).
 test_harness:arith_misconception(db_row(228), whole_number, too_vague, skip, none, none).
-test_harness:arith_misconception(db_row(229), whole_number, too_vague, skip, none, none).
+test_harness:arith_misconception(db_row(229), whole_number, too_vague, misconceptions_whole_number_churn_2026_07_21:churn_229_multiplication_is_memorized_recall, 12-7, 84).
 test_harness:arith_misconception(db_row(230), whole_number, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(231), whole_number, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(232), whole_number, too_vague, skip, none, none).
@@ -4125,7 +4125,7 @@ test_harness:arith_misconception(db_row(267), whole_number, too_vague, skip, non
 
 % === direct solo pass: whole-number queue final chunk ===
 
-test_harness:arith_misconception(db_row(268), whole_number, too_vague, skip, none, none).
+test_harness:arith_misconception(db_row(268), whole_number, too_vague, misconceptions_whole_number_churn_2026_07_21:churn_268_count_starting_point_as_first_jump, 3-7, 4).
 test_harness:arith_misconception(db_row(269), whole_number, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(270), whole_number, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(271), whole_number, too_vague, skip, none, none).
@@ -4280,7 +4280,7 @@ test_harness:arith_misconception(db_row(39184), whole_number, unconstrained_rema
     quotient_remainder(10, 1)).
 
 test_harness:arith_misconception(db_row(39185), whole_number, too_vague, skip, none, none).
-test_harness:arith_misconception(db_row(39186), whole_number, too_vague, skip, none, none).
+test_harness:arith_misconception(db_row(39186), whole_number, too_vague, misconceptions_whole_number_churn_2026_07_21:churn_39186_apply_factoring_algorithm_without_linking_to_divisibility, 12, [2,3]).
 test_harness:arith_misconception(db_row(39187), whole_number, too_vague, skip, none, none).
 
 % === row 39257: large-number line spacing treated as linear place growth ===
@@ -4360,7 +4360,7 @@ test_harness:arith_misconception(db_row(39720), whole_number, smaller_from_large
     32 - 17,
     15).
 
-test_harness:arith_misconception(db_row(39721), whole_number, too_vague, skip, none, none).
+test_harness:arith_misconception(db_row(39721), whole_number, too_vague, misconceptions_whole_number_churn_2026_07_21:churn_39721_treat_ten_as_loose_collection_of_singles, 10, 1).
 
 % === row 39740: bus context answer left fractional ===
 % Correct: 5 buses.
@@ -4422,7 +4422,7 @@ test_harness:arith_misconception(db_row(39907), whole_number, transaction_role_s
     20).
 
 test_harness:arith_misconception(db_row(39928), whole_number, too_vague, skip, none, none).
-test_harness:arith_misconception(db_row(39929), whole_number, too_vague, skip, none, none).
+test_harness:arith_misconception(db_row(39929), whole_number, too_vague, misconceptions_whole_number_churn_2026_07_21:churn_39929_write_borrowed_base_as_ten_in_column, 42-5, 37).
 
 % === row 40091: fractional remainder treated as whole-number remainder ===
 % Task: 37 / 5.
@@ -4528,3 +4528,57 @@ test_harness:arith_misconception(db_row(40624), whole_number, endpoint_counting_
     misconceptions_whole_number_batch_5:r40624_endpoint_counting,
     missing_subtrahend(90, 88),
     2).
+
+% === churn 2026-07-21: semantic-review admissions ===
+% Citation: Simon (2006)
+% Documented error: treat ten strictly as ten separate single units, not also as one thing
+misconceptions_whole_number_churn_2026_07_21:(churn_227_ten_is_only_ten_ones(10, Got) :- Got = 10).
+
+% Citation: Remillard, J. T., & Jackson, K. (2006)
+% Documented error: treat multiplication as facts to be remembered rather than drawn or worked out
+misconceptions_whole_number_churn_2026_07_21:(churn_229_multiplication_is_memorized_recall(A-B, Got) :- (A =< 10, B =< 10 -> Got is A * B ; Got = 0)).
+
+% Citation: Galbraith (1975)
+% Documented error: include the starting tick when counting jumps along the number line
+misconceptions_whole_number_churn_2026_07_21:(churn_268_count_starting_point_as_first_jump(A-B, Got) :- Got is B - A + 1).
+
+% Citation: Sandra P. Marshall (1983)
+% Documented error: subtract whenever two money amounts appear because that worked before
+misconceptions_whole_number_churn_2026_07_21:(churn_37718_reapply_operation_associated_with_quantity_type(A-B, Got) :- Got is A - B).
+
+% Citation: Lawal O. Adetula (1989)
+% Documented error: the word 'more' in a problem means you should add
+misconceptions_whole_number_churn_2026_07_21:(churn_37891_keyword_more_signals_addition(A-B, Got) :- Got is A + B).
+
+% Citation: Berinderjeet Kaur (2018)
+% Documented error: choose addition whenever the phrase 'more than' appears
+misconceptions_whole_number_churn_2026_07_21:(churn_38026_map_keyword_more_than_directly_to_addition(A-B, Got) :- Got is A + B).
+
+% Citation: Anne Teppo, Marja van den Heuvel-Panhuizen (2014)
+% Documented error: draw each jump as a forward hop and place the landing point accordingly
+misconceptions_whole_number_churn_2026_07_21:(churn_38090_place_result_in_jump_direction_ignoring_sign(A-B, Got) :- Got is A + abs(B)).
+
+% Citation: Esther Levenson, Pessia Tsamir, Dina Tirosh (2007)
+% Documented error: you cannot divide zero because there is nothing there to divide
+misconceptions_whole_number_churn_2026_07_21:(churn_38566_division_requires_a_nonempty_quantity(A, Got) :- A = 0, Got = error('division requires a nonempty quantity')).
+
+% Citation: Pessia Tsamir (2002)
+% Documented error: carry out factorization procedurally without connecting it to what divisibility means
+misconceptions_whole_number_churn_2026_07_21:(churn_39186_apply_factoring_algorithm_without_linking_to_divisibility(N, Got) :- churn_39186_factorize_procedurally(N, Got)).
+misconceptions_whole_number_churn_2026_07_21:churn_39186_factorize_procedurally(N, Factors) :- findall(F, (between(2, N, F), 0 is N mod F), Factors).
+
+% Citation: Anne Gooding and Kaye Stacey (1993)
+% Documented error: write the dividend and divisor into the long-division bracket in the same left-to-right order they appear in a/b
+misconceptions_whole_number_churn_2026_07_21:(churn_39560_transcribe_linear_order_into_bracket(A-B, Got) :- Got = bracket(A, B)).
+
+% Citation: Gillian Boulton-Lewis & Graeme Halford (1992)
+% Documented error: regard a group of ten as any loose gathering of ten separate objects rather than a single entity
+misconceptions_whole_number_churn_2026_07_21:(churn_39721_treat_ten_as_loose_collection_of_singles(A, Got) :- Got is A).
+
+% Citation: Aurelia Noda Herrera, Alicia Bruno, Carina González, Lorenzo Moreno & Hilda Sanabria (2011)
+% Documented error: because zero names nothing, treat it as having no effect, as a counted object, or as the word one
+misconceptions_whole_number_churn_2026_07_21:(churn_39748_zero_has_no_value_so_it_can_be_ignored_or_treated_as_one(A-B, Got) :- ( A =:= 0 -> Got is 1 - B ; B =:= 0 -> Got is A - 1 ; Got is A - B )).
+
+% Citation: Paul M.E. Shutler & Ng Swee Fong (2010)
+% Documented error: a borrowed base unit is written literally as 10 inside one column
+misconceptions_whole_number_churn_2026_07_21:(churn_39929_write_borrowed_base_as_ten_in_column(A-B, Got) :- A >= 10, B < 10, Got is (A // 10) * 10 + (A mod 10 + 10 - B)).

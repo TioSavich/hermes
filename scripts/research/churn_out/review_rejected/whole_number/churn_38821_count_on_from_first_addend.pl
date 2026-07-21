@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_whole_number.pl, db_row(38821)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: HANS FREUDENTHAL (1981)
 % Documented error: add by counting forward the second addend starting from the first
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

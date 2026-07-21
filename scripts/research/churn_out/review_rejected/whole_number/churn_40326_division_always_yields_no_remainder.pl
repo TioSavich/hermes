@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_whole_number.pl, db_row(40326)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: Raisa Guberman (2016)
 % Documented error: every division must come out evenly with nothing left over
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

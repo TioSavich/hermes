@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_decimal.pl, db_row(39398)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: JOHN MONAGHAN (2001)
 % Documented error: treat a non-terminating decimal as an unfinished process rather than a fixed quantity
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

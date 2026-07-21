@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_fraction.pl, db_row(38671)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: Guy Brousseau, Nadine Brousseau, Virginia Warfield (2008)
 % Documented error: multiply tops and bottoms because that is just what you are supposed to do
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

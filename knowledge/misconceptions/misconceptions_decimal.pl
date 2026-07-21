@@ -367,7 +367,8 @@ test_harness:arith_misconception(db_row(38441), decimal, too_vague,
 
 % === row 38531: 0.333... * 3 ≠ 1 belief ===
 test_harness:arith_misconception(db_row(38531), decimal, too_vague,
-    skip, none, none).
+    misconceptions_decimal_churn_2026_07_21:churn_38531_infinite_decimal_falls_short_of_its_limit,
+    repeating(0,9), 1.0).
 
 % === row 38564: shorter-is-larger via tenths > hundredths ===
 % Task: compare 2.3 and 2.32; return the larger.
@@ -647,7 +648,8 @@ test_harness:arith_misconception(db_row(39462), decimal, longer_is_larger_zero_r
 
 % === row 39493: divisor-must-be-integer model ===
 test_harness:arith_misconception(db_row(39493), decimal, too_vague,
-    skip, none, none).
+    misconceptions_decimal_churn_2026_07_21:churn_39493_divisor_integer_dividend_larger,
+    dividend(5)-divisor(7), 0.7142857142857143).
 
 % === row 39525: multibase block dimensionality ===
 test_harness:arith_misconception(db_row(39525), decimal, too_vague,
@@ -2486,7 +2488,9 @@ test_harness:arith_misconception(db_row(39661), decimal, repeating_nines_less_th
     compare(repeating(0,9), 1),
     equal).
 
-test_harness:arith_misconception(db_row(39751), decimal, too_vague, skip, none, none).
+test_harness:arith_misconception(db_row(39751), decimal, too_vague,
+    misconceptions_decimal_churn_2026_07_21:churn_39751_count_partition_pieces_as_wholes,
+    dividend(3)-divisor(5), 0.6).
 
 % === row 39933: shorter-decimal rule misorders list ===
 % Task: order 0.248, 0.4, 0.63, 0.85 increasingly.
@@ -2623,4 +2627,36 @@ test_harness:arith_misconception(db_row(40357), decimal, repeating_nines_less_th
     compare(repeating(0,9), 1),
     equal).
 
-test_harness:arith_misconception(db_row(40651), decimal, too_vague, skip, none, none).
+test_harness:arith_misconception(db_row(40651), decimal, too_vague,
+    misconceptions_decimal_churn_2026_07_21:churn_40651_compare_decimals_as_extensions_of_whole_numbers,
+    '0.25'-'0.125', '>').
+
+% === churn 2026-07-21: semantic-review admissions ===
+% Citation: David A. Yopp (2018)
+% Documented error: 0.999... stays an infinitesimal amount below 1 and 0.333... below 1/3
+misconceptions_decimal_churn_2026_07_21:(churn_38531_infinite_decimal_falls_short_of_its_limit(repeating(D,S), Got) :-
+    repeating_value(D, S, Got)).
+
+misconceptions_decimal_churn_2026_07_21:repeating_value(0, 9, 0.999).
+misconceptions_decimal_churn_2026_07_21:repeating_value(0, 3, 0.333).
+
+% Citation: JEAN-PIERRE LEVAIN (1992)
+% Documented error: division shares among a whole number of objects, so the divisor is an integer smaller than the dividend
+misconceptions_decimal_churn_2026_07_21:(churn_39493_divisor_integer_dividend_larger(dividend(D)-divisor(Dv), Got) :-
+    integer(Dv),
+    Dv > D,
+    Got is 0).
+
+% Citation: Zandra de Araujo, Chandra Hawley Orrill & Erik Jacobson (2018)
+% Documented error: treat each one-tenth piece drawn in a division model as if it were a whole unit
+misconceptions_decimal_churn_2026_07_21:(churn_39751_count_partition_pieces_as_wholes(dividend(D)-divisor(Dv), Got) :-
+    Got is (D * 10) / Dv).
+
+% Citation: Annie Selden, John Selden (2005)
+% Documented error: judge decimal size using whole-number reasoning about the digit string
+misconceptions_decimal_churn_2026_07_21:(churn_40651_compare_decimals_as_extensions_of_whole_numbers(Decimal1-Decimal2, Got) :-
+    atom_string(Decimal1, Str1),
+    atom_string(Decimal2, Str2),
+    string_length(Str1, Len1),
+    string_length(Str2, Len2),
+    ( Len1 > Len2 -> Got = '>' ; ( Len1 < Len2 -> Got = '<' ; Got = '=' ) )).

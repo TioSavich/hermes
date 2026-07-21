@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_decimal.pl, db_row(39164)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: ANNA O. GRAEBER AND DINA TIROSH (1990)
 % Documented error: expect a product to always be larger than its factors
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

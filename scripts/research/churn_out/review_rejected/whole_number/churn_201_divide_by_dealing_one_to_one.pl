@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_whole_number.pl, db_row(201)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: Pepper, KL and Hunting, RP (1998)
 % Documented error: distribute items one at a time into groups using one-to-one correspondence
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome

@@ -656,7 +656,8 @@ test_harness:arith_misconception(db_row(39795), fraction, scale_as_doubling_valu
 
 % === row 39816: daily-life logic error ===
 test_harness:arith_misconception(db_row(39816), fraction, too_vague,
-    skip, none, none).
+    misconceptions_fraction_churn_2026_07_21:churn_39816_add_fractions_of_a_diminishing_whole_as_if_same_whole,
+    frac(1,2)-frac(1,2), frac(3,4)).
 
 % === row 39823: multiplying fractions decreases ===
 test_harness:arith_misconception(db_row(39823), fraction, too_vague,
@@ -816,7 +817,8 @@ test_harness:arith_misconception(db_row(40264), fraction, common_num_pst_denom_d
 
 % === row 40356: arbitrary mapping into numerator/denominator ===
 test_harness:arith_misconception(db_row(40356), fraction, too_vague,
-    skip, none, none).
+    misconceptions_fraction_churn_2026_07_21:churn_40356_map_given_numbers_to_numerator_and_denominator,
+    3-5, frac(5,3)).
 
 % === row 40378: subtraction to non-zero ===
 % Task: 4/5 - 4/5
@@ -1597,7 +1599,8 @@ test_harness:arith_misconception(db_row(39817), fraction, too_vague,
 
 % === row 39835: reads fraction as two separate wholes ===
 test_harness:arith_misconception(db_row(39835), fraction, too_vague,
-    skip, none, none).
+    misconceptions_fraction_churn_2026_07_21:churn_39835_read_fraction_as_two_separate_wholes,
+    frac(3,4), 0.75).
 
 % === row 39889: area-model on number line ===
 test_harness:arith_misconception(db_row(39889), fraction, too_vague,
@@ -3412,7 +3415,8 @@ test_harness:arith_misconception(db_row(39135), fraction, too_vague,
 
 % === row 39169: unit fraction distinction ===
 test_harness:arith_misconception(db_row(39169), fraction, too_vague,
-    skip, none, none).
+    misconceptions_fraction_churn_2026_07_21:churn_39169_any_fraction_counts_as_a_unit_fraction,
+    frac(2,3), false).
 
 % === row 39193: adjusting unfair shares ===
 test_harness:arith_misconception(db_row(39193), fraction, too_vague,
@@ -6249,7 +6253,9 @@ test_harness:arith_misconception(db_row(37508), fraction, partitive_model_fracti
 test_harness:arith_misconception(db_row(37447), fraction, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(37516), fraction, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(37524), fraction, too_vague, skip, none, none).
-test_harness:arith_misconception(db_row(37570), fraction, too_vague, skip, none, none).
+test_harness:arith_misconception(db_row(37570), fraction, too_vague,
+    misconceptions_fraction_churn_2026_07_21:churn_37570_whole_visible_segment_is_the_unit,
+    number_line(0, 2), unit(1)).
 test_harness:arith_misconception(db_row(37639), fraction, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(37663), fraction, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(37676), fraction, too_vague, skip, none, none).
@@ -6265,7 +6271,9 @@ test_harness:arith_misconception(db_row(38279), fraction, too_vague, skip, none,
 test_harness:arith_misconception(db_row(38312), fraction, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(38449), fraction, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(38553), fraction, too_vague, skip, none, none).
-test_harness:arith_misconception(db_row(38609), fraction, too_vague, skip, none, none).
+test_harness:arith_misconception(db_row(38609), fraction, too_vague,
+    misconceptions_fraction_churn_2026_07_21:churn_38609_add_numerators_and_add_denominators,
+    frac(1,2)+frac(1,3), frac(5,6)).
 test_harness:arith_misconception(db_row(38660), fraction, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(38667), fraction, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(38702), fraction, too_vague, skip, none, none).
@@ -6295,7 +6303,44 @@ test_harness:arith_misconception(db_row(40232), fraction, too_vague, skip, none,
 test_harness:arith_misconception(db_row(40374), fraction, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(40407), fraction, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(40457), fraction, too_vague, skip, none, none).
-test_harness:arith_misconception(db_row(40538), fraction, too_vague, skip, none, none).
+test_harness:arith_misconception(db_row(40538), fraction, too_vague,
+    misconceptions_fraction_churn_2026_07_21:churn_40538_fraction_is_pair_of_independent_integers,
+    frac(3,4), 3/4).
+
+% === churn 2026-07-21: semantic-review admissions ===
+% Citation: George W. Bright, Merlyn J. Behr, Thomas R. Post and Ipke Wachsmuth (1988)
+% Documented error: take the entire drawn span (here 0 to 2) as the single reference unit
+misconceptions_fraction_churn_2026_07_21:(churn_37570_whole_visible_segment_is_the_unit(number_line(Start, End), unit(End - Start))) :-
+    Start < End.
+
+% Citation: Cheng-Yao Lin, Jerry Becker, Yi-Yin Ko, Mi-Ran Byun (2013)
+% Documented error: add the tops together and the bottoms together to combine fractions
+misconceptions_fraction_churn_2026_07_21:(churn_38609_add_numerators_and_add_denominators(frac(N1,D1)+frac(N2,D2), frac(N1+N2, D1+D2))).
+
+% Citation: Nurbanu Yilmaz, Ilhan Karatas (2018)
+% Documented error: treat proper or improper fractions as interchangeable with unit fractions
+misconceptions_fraction_churn_2026_07_21:(churn_39169_any_fraction_counts_as_a_unit_fraction(frac(N,D), true) :-
+    N =\= 1,
+    N > 0,
+    D > 0).
+
+% Citation: Kin Keung Poon (2018)
+% Documented error: interpret the numerator and denominator as two independent counting numbers rather than one quantity
+misconceptions_fraction_churn_2026_07_21:(churn_39835_read_fraction_as_two_separate_wholes(frac(N,D), [N,D])).
+
+% Citation: Tuğrul Kar (2015)
+% Documented error: add successive fractional amounts ignoring that each is taken from what remains
+misconceptions_fraction_churn_2026_07_21:(churn_39816_add_fractions_of_a_diminishing_whole_as_if_same_whole(frac(A1,B1)-frac(A2,B2), frac(SumNum, SumDenom)) :-
+    SumNum is A1 * B2 + A2 * B1,
+    SumDenom is B1 * B2).
+
+% Citation: Der-Ching Yang & Iwan Andi J. Sianturi (2018)
+% Documented error: place the two numbers in the problem directly as the top and bottom of a fraction
+misconceptions_fraction_churn_2026_07_21:(churn_40356_map_given_numbers_to_numerator_and_denominator(Num-Den, frac(Num, Den))).
+
+% Citation: Anne Watson (2010)
+% Documented error: read a fraction as two separate whole numbers rather than one quantity
+misconceptions_fraction_churn_2026_07_21:(churn_40538_fraction_is_pair_of_independent_integers(frac(N,D), [N,D])).
 test_harness:arith_misconception(db_row(40617), fraction, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(40665), fraction, too_vague, skip, none, none).
 

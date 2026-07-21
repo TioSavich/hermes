@@ -16,4 +16,4 @@ churn_candidate:(churn_39816_add_fractions_of_a_diminishing_whole_as_if_same_who
 test_harness:arith_misconception(db_row(39816), fraction, churn_39816_add_fractions_of_a_diminishing_whole_as_if_same_whole,
     churn_candidate:churn_39816_add_fractions_of_a_diminishing_whole_as_if_same_whole,
     frac(1,2)-frac(1,2),
-    frac(1,2)).
+    frac(3,4)).

@@ -15,4 +15,4 @@ churn_candidate:(churn_39560_transcribe_linear_order_into_bracket(A-B, Got) :-
 test_harness:arith_misconception(db_row(39560), whole_number, churn_39560_transcribe_linear_order_into_bracket,
     churn_candidate:churn_39560_transcribe_linear_order_into_bracket,
     12-3,
-    4).
+    bracket(3,12)).

@@ -1,5 +1,6 @@
 % Misconception churn candidate; not integrated into a domain table.
 % Source: knowledge/misconceptions/misconceptions_fraction.pl, db_row(38335)
+% Review reason: rejected in Task 69 semantic review; no distinct executable misconception was established.
 % Citation: Ron Tzur (2000)
 % Documented error: the word 'one-half' names any single piece of a partitioned whole
 % Gate: loaded, executed, returned an incorrect documented-pattern outcome
