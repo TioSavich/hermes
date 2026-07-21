@@ -7,35 +7,26 @@ serialize the final frame of each document as SVG.
 """
 from __future__ import annotations
 
-import argparse
 import html
 import json
-import subprocess
 import sys
 from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO_ROOT))
-from hermes.app import rendering
+from hermes.app.scripts import export_engine
 
 DEFAULT_LESSONS = ["IM-G1-U3-L17", "IM-G2-U2-L7", "IM-G4-U4-L20"]
-DEFAULT_OUT = rendering.gallery_output(REPO_ROOT / "hermes" / "app" / "web" / "generated" / "monitoring_visuals")
+DEFAULT_OUT = export_engine.gallery_output(REPO_ROOT / "hermes" / "app" / "web" / "generated" / "monitoring_visuals")
 
 
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description=__doc__)
+def configure_cli(parser) -> None:
     parser.add_argument(
         "--lesson",
         action="append",
         dest="lessons",
         help="IM lesson code to export. Repeat for multiple lessons. Defaults to current regression examples.",
-    )
-    parser.add_argument(
-        "--out",
-        type=Path,
-        default=DEFAULT_OUT,
-        help=f"Output directory. Default: {DEFAULT_OUT}",
     )
     parser.add_argument(
         "--chart-json",
@@ -46,7 +37,6 @@ def parse_args() -> argparse.Namespace:
             "monitoring_chart_export."
         ),
     )
-    return parser.parse_args()
 
 
 def svg_name(code: str, total: int, index: int, side: str) -> str:
@@ -156,7 +146,7 @@ p {{ margin: 8px 0 0; font-size: 0.9rem; }}
 </body>
 </html>
 """
-    (out_dir / "index.html").write_text(html_doc, encoding="utf-8")
+    export_engine.write_index(out_dir, html_doc)
 
 
 def load_chart_json(path: Path) -> dict[str, dict]:
@@ -178,12 +168,12 @@ def load_chart_json(path: Path) -> dict[str, dict]:
 
 
 def main() -> int:
-    args = parse_args()
+    args = export_engine.parse_args(
+        __doc__, default_out=DEFAULT_OUT, configure=configure_cli
+    )
     out_dir = args.out.resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    sys.path.insert(0, str(REPO_ROOT))
-    from hermes.app import server
     from hermes.app.monitoring.visuals import monitoring_visuals_for_chart
 
     try:
@@ -195,26 +185,25 @@ def main() -> int:
 
     docs: dict[str, dict] = {}
     try:
-        for code in lessons:
-            if chart_overrides is not None:
-                if code not in chart_overrides:
-                    raise RuntimeError(f"{code}: no chart in {args.chart_json}")
-                chart = chart_overrides[code]
-            else:
-                chart = server.SERVICES.worker.request("monitoring_chart_export", lesson_code=code)
-            if not isinstance(chart, dict):
-                raise RuntimeError(f"{code}: monitoring_chart_export returned {type(chart).__name__}")
-            docs[code] = monitoring_visuals_for_chart(
-                code, chart, server.SERVICES.worker.request, repo_root=REPO_ROOT
-            )
+        with export_engine.worker_requester() as request:
+            for code in lessons:
+                if chart_overrides is not None:
+                    if code not in chart_overrides:
+                        raise RuntimeError(f"{code}: no chart in {args.chart_json}")
+                    chart = chart_overrides[code]
+                else:
+                    chart = request("monitoring_chart_export", lesson_code=code)
+                if not isinstance(chart, dict):
+                    raise RuntimeError(f"{code}: monitoring_chart_export returned {type(chart).__name__}")
+                docs[code] = monitoring_visuals_for_chart(
+                    code, chart, request, repo_root=REPO_ROOT
+                )
     except RuntimeError as exc:
         sys.stderr.write(f"{exc}\n")
         return 2
-    finally:
-        server.SERVICES.worker.close()
 
     docs_path = out_dir / "docs.json"
-    docs_path.write_text(json.dumps(docs, indent=2), encoding="utf-8")
+    export_engine.write_json(docs_path, docs)
 
     from hermes.app.scripts import verify_monitoring_visuals
 
@@ -225,8 +214,8 @@ def main() -> int:
         return 1
 
     try:
-        written_paths = rendering.render_monitoring_docs(docs, out_dir)
-    except rendering.RenderAdapterError as exc:
+        written_paths = export_engine.render_monitoring_docs(docs, out_dir)
+    except export_engine.RenderAdapterError as exc:
         sys.stderr.write(f"{exc}\n")
         return 1
 
@@ -246,6 +235,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    if "--check" in sys.argv:
-        raise SystemExit(rendering.check_exporter(Path(__file__), DEFAULT_OUT))
-    raise SystemExit(main())
+    raise SystemExit(export_engine.exporter_main(main, DEFAULT_OUT))

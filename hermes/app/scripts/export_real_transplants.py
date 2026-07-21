@@ -27,7 +27,6 @@ the descriptor-to-scene mapping and the literature labels.
 """
 from __future__ import annotations
 
-import argparse
 import html
 import json
 import re
@@ -38,6 +37,7 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO_ROOT))
 
 from hermes.app.scripts import export_hybridization_demo as demo
+from hermes.app.scripts import export_engine
 
 DOCLING_CLASSIFICATIONS = (
     REPO_ROOT
@@ -46,9 +46,10 @@ DOCLING_CLASSIFICATIONS = (
     / "research"
     / "docling_classifications.json"
 )
-DEFAULT_OUT = (
+TRACKED_OUT = (
     REPO_ROOT / "hermes" / "app" / "web" / "generated" / "real_transplants"
 )
+DEFAULT_OUT = export_engine.gallery_output(TRACKED_OUT)
 
 # The three ReaLLMs-flagged real transplants. Each names the bibkey + page that
 # locate the record in docling_classifications.json, the registered
@@ -102,10 +103,10 @@ def find_record(classifications: dict, bibkey: str, page: str) -> tuple[str, dic
     raise KeyError(f"no docling record for {bibkey} {page}")
 
 
-def labelled_doc(transplant: dict, record: dict) -> dict:
+def labelled_doc(transplant: dict, record: dict, scene_doc: dict) -> dict:
     """Fetch the registered scene doc and attach the literature label +
     the ReaLLMs-read hybrid_details so the render is grounded, not invented."""
-    doc = demo.hybridization_doc(transplant["scene_kind"])
+    doc = dict(scene_doc)
     details = record.get("hybrid_details") or {}
     source_label = (
         f"{transplant['author']} ({transplant['year']}), {transplant['page_label']}"
@@ -140,6 +141,11 @@ def write_frames(out_dir: Path, code: str, doc: dict) -> list[Path]:
 
 def repo_relative(path: str | Path) -> str:
     p = Path(path)
+    try:
+        generated_rel = p.resolve().relative_to(DEFAULT_OUT.resolve())
+        return (TRACKED_OUT / generated_rel).relative_to(REPO_ROOT).as_posix()
+    except ValueError:
+        pass
     try:
         return p.resolve().relative_to(REPO_ROOT).as_posix()
     except ValueError:
@@ -241,28 +247,16 @@ def _write_index(out_dir: Path, cards_html: str, exported: list[dict]) -> Path:
 </body>
 </html>
 """
-    path = out_dir / "index.html"
-    path.write_text(html_doc, encoding="utf-8")
-    return path
-
-
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--out",
-        type=Path,
-        default=DEFAULT_OUT,
-        help=f"Output directory. Default: {DEFAULT_OUT}",
-    )
-    return parser.parse_args()
+    return export_engine.write_index(out_dir, html_doc)
 
 
 def main() -> int:
-    args = parse_args()
+    args = export_engine.parse_args(__doc__, default_out=DEFAULT_OUT)
     out_dir = args.out.resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
 
     classifications = load_classifications()
+    scene_docs = demo.hybridization_docs()
     exported: list[dict] = []
     written: list[Path] = []
 
@@ -275,11 +269,13 @@ def main() -> int:
                 f"{transplant['bibkey']} {transplant['page']} is not flagged "
                 "is_hybridized_transplant; refusing to render it as one."
             )
-        doc = labelled_doc(transplant, record)
+        doc = labelled_doc(
+            transplant, record, scene_docs[transplant["scene_kind"]]
+        )
         code = transplant["code"]
         # Persist the labeled doc so the artifact is auditable.
         doc_path = out_dir / f"{code}-doc.json"
-        doc_path.write_text(json.dumps(doc, indent=2), encoding="utf-8")
+        export_engine.write_json(doc_path, doc)
         filmstrip = write_filmstrip(out_dir, code, doc)
         frames = write_frames(out_dir, code, doc)
         details = record.get("hybrid_details") or {}
@@ -304,8 +300,9 @@ def main() -> int:
     index = build_index_html(out_dir, exported)
     written.append(index)
 
-    manifest = out_dir / "real_transplants_manifest.json"
-    manifest.write_text(json.dumps(exported, indent=2), encoding="utf-8")
+    manifest = export_engine.write_json(
+        out_dir / "real_transplants_manifest.json", exported
+    )
     written.append(manifest)
 
     print(f"Wrote real transplant exemplars to {out_dir}")
@@ -315,4 +312,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(export_engine.exporter_main(main, DEFAULT_OUT))

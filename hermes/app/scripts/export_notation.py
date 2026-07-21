@@ -27,18 +27,15 @@ hermes/app/web/generated/notation_demos/.
 """
 from __future__ import annotations
 
-import argparse
-import json
-import subprocess
 import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO_ROOT))
-from hermes.app import rendering
+from hermes.app.scripts import export_engine
 
 DEFAULT_OUT = (
-    rendering.gallery_output(REPO_ROOT / "hermes" / "app" / "web" / "generated" / "notation_demos")
+    export_engine.gallery_output(REPO_ROOT / "hermes" / "app" / "web" / "generated" / "notation_demos")
 )
 
 # The real K lesson the demos host on. IM-GK-U1-L12 ("count all when count on
@@ -60,7 +57,7 @@ DEMOS = [
         "title": "Productive baseline 2+3=5 (IM-GK-U1-L12)",
         "goal": (
             "use_module(render(parametric_notation_deformation)),"
-            "productive_notation_scene(write_equation(2,'+',3,5), D)"
+            "productive_notation_scene(write_equation(2,'+',3,5), Doc)"
         ),
         "card": (
             "Productive inscription on the real lesson IM-GK-U1-L12 "
@@ -75,7 +72,7 @@ DEMOS = [
         "goal": (
             "use_module(render(notation_scene)),"
             "notation_render_json("
-            "operational_equals_chain_full([2-(+)-3, 5-(+)-4], 9), D)"
+            "operational_equals_chain_full([2-(+)-3, 5-(+)-4], 9), Doc)"
         ),
         "card": (
             "Equals read as makes: the child chains the running total, writing "
@@ -90,7 +87,7 @@ DEMOS = [
         "goal": (
             "use_module(render(parametric_notation_deformation)),"
             "deformed_notation_scene(write_equation(2,'+',3,5),"
-            " notation_error(mirror_written_numeral), D)"
+            " notation_error(mirror_written_numeral), Doc)"
         ),
         "card": (
             "A reversed digit in a small sum; the reversed digit is chosen in "
@@ -105,33 +102,11 @@ DEMOS = [
 
 # --- swipl bridge: get a drawer-ready document for one demo goal --------------
 
-SWIPL_TEMPLATE = (
-    "use_module(library(http/json)),"
-    "{goal},"
-    "current_output(S),"
-    "json_write_dict(S, D, [width(0)]),"
-    "halt."
-)
-
-
-def swipl_doc(goal: str) -> dict:
-    full_goal = SWIPL_TEMPLATE.format(goal=goal)
-    proc = subprocess.run(
-        ["swipl", "-q", "-l", "paths.pl", "-g", full_goal],
-        cwd=REPO_ROOT,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        check=False,
-    )
-    if proc.returncode != 0:
-        raise RuntimeError(f"swipl failed for goal:\n{goal}\n{proc.stderr}")
-    out = proc.stdout.strip()
-    # The goal may have written warnings before the JSON; take from the first {.
-    brace = out.find("{")
-    if brace < 0:
-        raise RuntimeError(f"no JSON in swipl output:\n{out}\n{proc.stderr}")
-    return json.loads(out[brace:])
+def swipl_docs() -> dict[str, dict]:
+    return export_engine.run_swipl_batch([
+        export_engine.SwiplRequest(demo["code"], demo["goal"])
+        for demo in DEMOS
+    ])
 
 
 # --- shared drawer adapter ---------------------------------------------------
@@ -139,8 +114,8 @@ def swipl_doc(goal: str) -> dict:
 
 def export_frames(out_dir: Path, code: str, doc: dict) -> list[Path]:
     doc_path = out_dir / f"{code}-doc.json"
-    doc_path.write_text(json.dumps(doc, indent=2), encoding="utf-8")
-    return rendering.render_frames(doc, out_dir, code)
+    export_engine.write_json(doc_path, doc)
+    return export_engine.render_frames(doc, out_dir, code)
 
 
 # --- index.html (honesty cards, the fraction_cliff_demos pattern) ------------
@@ -184,29 +159,22 @@ def write_index(out_dir: Path, rendered: list[dict]) -> Path:
             f"{frames_html}"
             "</section>"
         )
-    index = out_dir / "index.html"
-    index.write_text("\n".join(parts) + "\n", encoding="utf-8")
-    return index
-
-
-def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--out", type=Path, default=DEFAULT_OUT)
-    return p.parse_args()
+    return export_engine.write_index(out_dir, "\n".join(parts) + "\n")
 
 
 def main() -> int:
-    args = parse_args()
+    args = export_engine.parse_args(__doc__, default_out=DEFAULT_OUT)
     out_dir = args.out.resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
 
     written: list[Path] = []
     rendered: list[dict] = []
     manifest: dict = {"host_lesson": HOST_LESSON, "demos": []}
+    documents = swipl_docs()
 
     for demo in DEMOS:
         code = demo["code"]
-        doc = swipl_doc(demo["goal"])
+        doc = documents[code]
         frame_files = export_frames(out_dir, code, doc)
         written.extend(frame_files)
         rendered.append(
@@ -229,9 +197,7 @@ def main() -> int:
 
     index = write_index(out_dir, rendered)
     written.append(index)
-    (out_dir / "manifest.json").write_text(
-        json.dumps(manifest, indent=2), encoding="utf-8"
-    )
+    export_engine.write_json(out_dir / "manifest.json", manifest)
 
     print(f"Wrote {len(written)} files to {out_dir}")
     for path in written:
@@ -240,6 +206,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    if "--check" in sys.argv:
-        raise SystemExit(rendering.check_exporter(Path(__file__), DEFAULT_OUT))
-    raise SystemExit(main())
+    raise SystemExit(export_engine.exporter_main(main, DEFAULT_OUT))

@@ -18,6 +18,7 @@ EXPORTERS = (
     "export_parametric_deformations.py",
     "export_parametric_fraction_errors.py",
     "export_parametric_partition.py",
+    "export_real_transplants.py",
 )
 
 

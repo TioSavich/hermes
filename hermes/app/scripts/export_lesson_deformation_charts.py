@@ -25,39 +25,31 @@ Run: python3 hermes/app/scripts/export_lesson_deformation_charts.py
 from __future__ import annotations
 
 import html
-import json
-import subprocess
 import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO))
-from hermes.app import rendering
+from hermes.app.scripts import export_engine
 
-OUT = rendering.gallery_output(REPO / "hermes" / "app" / "web" / "generated" / "lesson_deformation_charts")
+OUT = export_engine.gallery_output(REPO / "hermes" / "app" / "web" / "generated" / "lesson_deformation_charts")
 
 LESSONS = ["IM-G3-U5-L1", "IM-G3-U5-L2", "IM-G3-U5-L15"]
 
 
 # --- Ask swipl for one lesson's monitoring chart -----------------------------
 
-def lesson_chart(code: str) -> dict:
-    goal = (
-        "use_module(lessons('im/lesson_deformation_chart')), "
-        "use_module(library(http/json)), "
-        f"( lesson_deformation_chart:monitoring_chart('{code}', Doc) "
-        "  -> json_write_dict(user_output, Doc, [width(0)]), nl "
-        "  ; (write(user_error, 'no chart'), nl(user_error)) ), halt."
+def lesson_charts() -> dict[str, dict]:
+    return export_engine.run_swipl_batch(
+        [
+            export_engine.SwiplRequest(
+                code,
+                f"lesson_deformation_chart:monitoring_chart('{code}', Doc)",
+            )
+            for code in LESSONS
+        ],
+        prelude=("use_module(lessons('im/lesson_deformation_chart'))",),
     )
-    res = subprocess.run(
-        ["swipl", "-q", "-l", "paths.pl", "-g", goal, "-t", "halt(1)"],
-        cwd=REPO, capture_output=True, text=True,
-    )
-    lines = [l for l in res.stdout.splitlines() if l.startswith("{")]
-    if not lines:
-        sys.stderr.write(res.stdout + "\n" + res.stderr)
-        raise SystemExit(f"swipl produced no chart for {code}")
-    return json.loads(lines[0])
 
 
 # --- shared drawer adapter ---------------------------------------------------
@@ -65,7 +57,7 @@ def lesson_chart(code: str) -> dict:
 def render(frames, out_file, labels, *, title="", captions=None,
            panel_w=270, panel_h=220, canvas=None):
     doc = {"frames": frames, "canvas": canvas or {}}
-    rendering.render_svg(
+    export_engine.render_svg(
         doc, "filmstrip", out_file, labels=labels, title=title,
         captions=captions or [], panelWidth=panel_w, panelHeight=panel_h,
         captionEllipsis=True,
@@ -92,14 +84,11 @@ def _slug(s: str) -> str:
 
 # --- render one lesson's chart -----------------------------------------------
 
-def export_lesson(code: str) -> dict:
-    chart = lesson_chart(code)
-    lesson_dir = OUT / code
+def export_lesson(out_dir: Path, code: str, chart: dict) -> dict:
+    lesson_dir = out_dir / code
     lesson_dir.mkdir(parents=True, exist_ok=True)
 
-    (lesson_dir / "chart.json").write_text(
-        json.dumps(chart, indent=2), encoding="utf-8"
-    )
+    export_engine.write_json(lesson_dir / "chart.json", chart)
 
     written = []
     cell_records = []
@@ -152,7 +141,7 @@ def export_lesson(code: str) -> dict:
         })
 
     index = build_lesson_index(chart, cell_records)
-    (lesson_dir / "index.html").write_text(index, encoding="utf-8")
+    export_engine.write_index(lesson_dir, index)
     written.append(lesson_dir / "index.html")
 
     return {
@@ -253,10 +242,13 @@ def build_top_index(records: list) -> str:
 
 
 def main() -> int:
-    OUT.mkdir(parents=True, exist_ok=True)
-    records = [export_lesson(code) for code in LESSONS]
+    args = export_engine.parse_args(__doc__, default_out=OUT)
+    out_dir = args.out.resolve()
+    out_dir.mkdir(parents=True, exist_ok=True)
+    charts = lesson_charts()
+    records = [export_lesson(out_dir, code, charts[code]) for code in LESSONS]
 
-    (OUT / "index.html").write_text(build_top_index(records), encoding="utf-8")
+    export_engine.write_index(out_dir, build_top_index(records))
 
     manifest = {
         "kind": "lesson_deformation_charts",
@@ -276,22 +268,19 @@ def main() -> int:
             for r in records
         ],
     }
-    (OUT / "manifest.json").write_text(json.dumps(manifest, indent=2),
-                                       encoding="utf-8")
+    export_engine.write_json(out_dir / "manifest.json", manifest)
 
     total_files = sum(len(r["files"]) for r in records)
-    print(f"Wrote {total_files} SVG/HTML files across {len(records)} lessons to {OUT}")
+    print(f"Wrote {total_files} SVG/HTML files across {len(records)} lessons to {out_dir}")
     for r in records:
         defs = sorted({d["deformation"] for c in r["cells"] for d in c["deformations"]})
         print(f"  {r['code']} ({r['title']}): {r['cell_count']} cells; "
               f"fractions {', '.join(r['fractions'])}; "
               f"deformations {', '.join(defs)}")
-    print(OUT / "index.html")
-    print(OUT / "manifest.json")
+    print(out_dir / "index.html")
+    print(out_dir / "manifest.json")
     return 0
 
 
 if __name__ == "__main__":
-    if "--check" in sys.argv:
-        raise SystemExit(rendering.check_exporter(Path(__file__), OUT))
-    raise SystemExit(main())
+    raise SystemExit(export_engine.exporter_main(main, OUT))

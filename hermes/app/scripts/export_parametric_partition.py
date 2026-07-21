@@ -15,18 +15,15 @@ Output lands under hermes/app/web/generated/parametric_partition/.
 """
 from __future__ import annotations
 
-import argparse
-import json
-import subprocess
 import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO_ROOT))
-from hermes.app import rendering
+from hermes.app.scripts import export_engine
 
 DEFAULT_OUT = (
-    rendering.gallery_output(REPO_ROOT / "hermes" / "app" / "web" / "generated" / "parametric_partition")
+    export_engine.gallery_output(REPO_ROOT / "hermes" / "app" / "web" / "generated" / "parametric_partition")
 )
 
 # The cases to render. Each is (host, transplant_rule, [denominators]).
@@ -53,49 +50,21 @@ def productive_code(host: str, n: int) -> str:
 
 # --- swipl bridge: get a drawer-ready document for one (host, rule, n) --------
 
-SWIPL_DEFORMED = (
-    "use_module(library(http/json)),"
-    "use_module(render(parametric_partition_deformation)),"
-    "deformed_partition_scene({host}, {n}, transplant({rule}), D),"
-    "current_output(S),"
-    "json_write_dict(S, D, [width(0)]),"
-    "halt."
-)
-SWIPL_PRODUCTIVE = (
-    "use_module(library(http/json)),"
-    "use_module(render(parametric_partition_deformation)),"
-    "productive_partition_scene({host}, {n}, D),"
-    "current_output(S),"
-    "json_write_dict(S, D, [width(0)]),"
-    "halt."
-)
-
-
-def swipl_doc(goal: str) -> dict:
-    proc = subprocess.run(
-        ["swipl", "-q", "-l", "paths.pl", "-g", goal],
-        cwd=REPO_ROOT,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        check=False,
-    )
-    if proc.returncode != 0:
-        raise RuntimeError(f"swipl failed for goal:\n{goal}\n{proc.stderr}")
-    out = proc.stdout.strip()
-    # The goal may have written warnings before the JSON; take the last JSON line.
-    brace = out.find("{")
-    if brace < 0:
-        raise RuntimeError(f"no JSON in swipl output:\n{out}\n{proc.stderr}")
-    return json.loads(out[brace:])
-
-
-def deformed_doc(host: str, rule: str, n: int) -> dict:
-    return swipl_doc(SWIPL_DEFORMED.format(host=host, rule=rule, n=n))
-
-
-def productive_doc(host: str, n: int) -> dict:
-    return swipl_doc(SWIPL_PRODUCTIVE.format(host=host, n=n))
+def document_requests() -> list[export_engine.SwiplRequest]:
+    requests = []
+    for host, rule, ns in CASES:
+        for n in ns:
+            requests.append(export_engine.SwiplRequest(
+                case_code(host, rule, n),
+                f"deformed_partition_scene({host}, {n}, transplant({rule}), Doc)",
+            ))
+    for host, ns in PRODUCTIVE:
+        for n in ns:
+            requests.append(export_engine.SwiplRequest(
+                productive_code(host, n),
+                f"productive_partition_scene({host}, {n}, Doc)",
+            ))
+    return requests
 
 
 # --- shared drawer adapter ---------------------------------------------------
@@ -103,8 +72,8 @@ def productive_doc(host: str, n: int) -> dict:
 
 def export_frames(out_dir: Path, code: str, doc: dict) -> list[Path]:
     doc_path = out_dir / f"{code}-doc.json"
-    doc_path.write_text(json.dumps(doc, indent=2), encoding="utf-8")
-    return rendering.render_frames(doc, out_dir, code)
+    export_engine.write_json(doc_path, doc)
+    return export_engine.render_frames(doc, out_dir, code)
 
 
 def export_replication_strip(
@@ -114,13 +83,13 @@ def export_replication_strip(
     frames = []
     for n in ns:
         doc_path = out_dir / f"{case_code(host, rule, n)}-doc.json"
-        doc_path.write_text(json.dumps(docs[n], indent=2), encoding="utf-8")
+        export_engine.write_json(doc_path, docs[n])
         frames.append(docs[n]["frames"][-1])
     title = (
         f"Same {rule}-rule transplant on a {host}, parametric over the fraction "
         f"(only the cut count changes)"
     )
-    rendering.render_svg(
+    export_engine.render_svg(
         {"frames": frames, "_bounds_documents": [docs[n] for n in ns]},
         "filmstrip", out_file,
         labels=[f"1/{n}" for n in ns], title=title,
@@ -187,22 +156,20 @@ def build_index(manifest: dict) -> str:
     return "\n".join(rows)
 
 
-def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--out", type=Path, default=DEFAULT_OUT)
-    return p.parse_args()
-
-
 def main() -> int:
-    args = parse_args()
+    args = export_engine.parse_args(__doc__, default_out=DEFAULT_OUT)
     out_dir = args.out.resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
 
     written: list[Path] = []
     manifest: dict = {"deformations": [], "productive": [], "replication_strips": []}
+    documents = export_engine.run_swipl_batch(
+        document_requests(),
+        prelude=("use_module(render(parametric_partition_deformation))",),
+    )
 
     for host, rule, ns in CASES:
-        docs = {n: deformed_doc(host, rule, n) for n in ns}
+        docs = {n: documents[case_code(host, rule, n)] for n in ns}
         for n in ns:
             code = case_code(host, rule, n)
             frame_files = export_frames(out_dir, code, docs[n])
@@ -228,8 +195,8 @@ def main() -> int:
 
     for host, ns in PRODUCTIVE:
         for n in ns:
-            doc = productive_doc(host, n)
             code = productive_code(host, n)
+            doc = documents[code]
             frame_files = export_frames(out_dir, code, doc)
             written.extend(frame_files)
             manifest["productive"].append(
@@ -242,12 +209,9 @@ def main() -> int:
                 }
             )
 
-    (out_dir / "manifest.json").write_text(
-        json.dumps(manifest, indent=2), encoding="utf-8"
-    )
+    export_engine.write_json(out_dir / "manifest.json", manifest)
 
-    index_path = out_dir / "index.html"
-    index_path.write_text(build_index(manifest), encoding="utf-8")
+    index_path = export_engine.write_index(out_dir, build_index(manifest))
     written.append(index_path)
 
     print(f"Wrote {len(written)} files to {out_dir}")
@@ -257,6 +221,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    if "--check" in sys.argv:
-        raise SystemExit(rendering.check_exporter(Path(__file__), DEFAULT_OUT))
-    raise SystemExit(main())
+    raise SystemExit(export_engine.exporter_main(main, DEFAULT_OUT))

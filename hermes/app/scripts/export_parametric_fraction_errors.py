@@ -14,42 +14,33 @@ Run: python3 hermes/app/scripts/export_parametric_fraction_errors.py
 """
 from __future__ import annotations
 
-import json
-import subprocess
 import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO))
-from hermes.app import rendering
+from hermes.app.scripts import export_engine
 
 MODULE = "knowledge/strategies/render/parametric_fraction_errors.pl"
-OUT = rendering.gallery_output(REPO / "hermes" / "app" / "web" / "generated" / "parametric_fraction_errors")
+OUT = export_engine.gallery_output(REPO / "hermes" / "app" / "web" / "generated" / "parametric_fraction_errors")
 
 
-def scene_doc(host: str, m: int, n: int, error_goal: str) -> dict:
-    """Ask the Prolog module for the {frames:...} document, as JSON."""
-    goal = (
-        f"consult('paths.pl'), use_module(knowledge/strategies/render/parametric_fraction_errors), "
-        f"parametric_fraction_errors:deformed_fraction_error_scene("
-        f"{host}, frac({m},{n}), {error_goal}, D), "
-        f"use_module(library(http/json)), "
-        f"json_write_dict(user_output, D, [width(0)]), nl, halt."
-    )
-    res = subprocess.run(
-        ["swipl", "-q", "-g", goal, "-t", "halt(1)"],
-        cwd=REPO, capture_output=True, text=True,
-    )
-    if res.returncode != 0:
-        sys.stderr.write(res.stderr)
-        raise SystemExit(f"prolog failed for {host} {m}/{n} {error_goal}")
-    # take the last JSON line (consult may print warnings before it)
-    line = res.stdout.strip().splitlines()[-1]
-    return json.loads(line)
+def scene_requests() -> list[export_engine.SwiplRequest]:
+    requests = []
+    for host in ("circle", "bar", "area"):
+        for short, goal, _title in ERROR_CASES:
+            for m, n in FAMILY[host]:
+                key = f"{host}-{short}-{m}-{n}"
+                requests.append(export_engine.SwiplRequest(
+                    key,
+                    "parametric_fraction_errors:deformed_fraction_error_scene("
+                    f"{host}, frac({m},{n}), {goal}, Doc)",
+                ))
+    return requests
 
 
 def render(doc: dict, out_file: Path, labels: list[str], title: str) -> Path:
-    rendering.render_svg(
+    export_engine.render_svg(
         doc, "filmstrip", out_file, labels=labels, title=title,
         panelWidth=360, panelHeight=190, rootHeight=336, gap=22, pad=24,
         headHeight=36, titleLeft=True, fullPanelHeight=True, yOffset=74,
@@ -89,7 +80,15 @@ def bme_labels(m: int, n: int) -> list[str]:
 
 
 def main() -> int:
-    OUT.mkdir(parents=True, exist_ok=True)
+    args = export_engine.parse_args(__doc__, default_out=OUT)
+    out_dir = args.out.resolve()
+    out_dir.mkdir(parents=True, exist_ok=True)
+    documents = export_engine.run_swipl_batch(
+        scene_requests(),
+        prelude=(
+            "use_module(knowledge/strategies/render/parametric_fraction_errors)",
+        ),
+    )
     manifest: dict = {"cases": []}
     index_lines = [
         "<!doctype html><meta charset=utf-8>",
@@ -108,9 +107,9 @@ def main() -> int:
         index_lines.append(f"<h2>Host: {host}</h2>")
         for short, goal, title in ERROR_CASES:
             for (m, n) in FAMILY[host]:
-                doc = scene_doc(host, m, n, goal)
+                doc = documents[f"{host}-{short}-{m}-{n}"]
                 code = f"DEMO-eqfail-{host}-{short}-{m}-{n}"
-                out_file = OUT / f"{code}-filmstrip.svg"
+                out_file = out_dir / f"{code}-filmstrip.svg"
                 render(doc, out_file, bme_labels(m, n), f"{title}  |  {host}  {m}/{n}")
                 manifest["cases"].append({
                     "code": code, "host": host, "error_type": short,
@@ -124,15 +123,13 @@ def main() -> int:
                 )
                 print(out_file)
 
-    (OUT / "manifest.json").write_text(json.dumps(manifest, indent=2))
+    export_engine.write_json(out_dir / "manifest.json", manifest)
     index_lines.append("</body>")
-    (OUT / "index.html").write_text("\n".join(index_lines))
-    print(OUT / "index.html")
-    print(OUT / "manifest.json")
+    export_engine.write_index(out_dir, "\n".join(index_lines))
+    print(out_dir / "index.html")
+    print(out_dir / "manifest.json")
     return 0
 
 
 if __name__ == "__main__":
-    if "--check" in sys.argv:
-        raise SystemExit(rendering.check_exporter(Path(__file__), OUT))
-    raise SystemExit(main())
+    raise SystemExit(export_engine.exporter_main(main, OUT))

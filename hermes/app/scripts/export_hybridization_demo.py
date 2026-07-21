@@ -2,10 +2,8 @@
 """Export the canonical hybridization misconception demo as SVG files."""
 from __future__ import annotations
 
-import argparse
 import html
 import json
-import subprocess
 import sys
 from pathlib import Path
 
@@ -13,10 +11,10 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO_ROOT))
 
 from hermes.app.scripts import export_monitoring_visuals
-from hermes.app import rendering
+from hermes.app.scripts import export_engine
 
 
-DEFAULT_OUT = rendering.gallery_output(REPO_ROOT / "hermes" / "app" / "web" / "generated" / "misconception_demos")
+DEFAULT_OUT = export_engine.gallery_output(REPO_ROOT / "hermes" / "app" / "web" / "generated" / "misconception_demos")
 HYBRIDIZATION_CASES = {
     "circle_partition_on_rectangle": {
         "code": "DEMO-hybridization-circle-partition-on-rectangle",
@@ -53,35 +51,17 @@ HYBRIDIZATION_CASES = {
 }
 
 
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--out",
-        type=Path,
-        default=DEFAULT_OUT,
-        help=f"Output directory. Default: {DEFAULT_OUT}",
-    )
-    return parser.parse_args()
-
-
-def hybridization_doc(kind: str) -> dict:
-    sys.path.insert(0, str(REPO_ROOT))
-    from hermes.app import server
-
-    try:
-        doc = server.SERVICES.worker.request(
-            "hybridization_render",
-            kind=kind,
-        )
-    finally:
-        server.SERVICES.worker.close()
-    if not isinstance(doc, dict):
-        raise RuntimeError(f"hybridization_render returned {type(doc).__name__}")
-    return doc
-
-
 def hybridization_docs() -> dict[str, dict]:
-    return {kind: hybridization_doc(kind) for kind in HYBRIDIZATION_CASES}
+    docs = {}
+    with export_engine.worker_requester() as request:
+        for kind in HYBRIDIZATION_CASES:
+            doc = request("hybridization_render", kind=kind)
+            if not isinstance(doc, dict):
+                raise RuntimeError(
+                    f"hybridization_render returned {type(doc).__name__}"
+                )
+            docs[kind] = doc
+    return docs
 
 
 def demo_docs(docs_by_kind: dict) -> dict:
@@ -269,9 +249,10 @@ def build_hybridized_model_chart_html(docs_by_kind: dict) -> str:
 
 
 def write_hybridized_model_chart(out_dir: Path, docs_by_kind: dict) -> Path:
-    path = out_dir / "hybridized_model_chart.html"
-    path.write_text(build_hybridized_model_chart_html(docs_by_kind), encoding="utf-8")
-    return path
+    return export_engine.write_text(
+        out_dir / "hybridized_model_chart.html",
+        build_hybridized_model_chart_html(docs_by_kind),
+    )
 
 
 def merge_existing_docs(out_dir: Path, new_docs: dict) -> dict:
@@ -286,17 +267,17 @@ def merge_existing_docs(out_dir: Path, new_docs: dict) -> dict:
 
 def export_final_svgs(out_dir: Path, docs: dict) -> None:
     docs_path = out_dir / "docs.json"
-    docs_path.write_text(json.dumps(docs, indent=2), encoding="utf-8")
-    rendering.render_monitoring_docs(docs, out_dir)
+    export_engine.write_json(docs_path, docs)
+    export_engine.render_monitoring_docs(docs, out_dir)
     export_monitoring_visuals.build_gallery(out_dir, docs)
 
 
 def export_filmstrip(out_dir: Path, code: str, doc: dict) -> Path:
     kind = str(doc.get("kind", code)).replace("-", "_")
     doc_path = out_dir / f"hybridization_{kind}_doc.json"
-    doc_path.write_text(json.dumps(doc, indent=2), encoding="utf-8")
+    export_engine.write_json(doc_path, doc)
     out_file = out_dir / f"{code}-filmstrip.svg"
-    rendering.render_svg(
+    export_engine.render_svg(
         doc, "filmstrip", out_file,
         labels=["Host", "Licensed home", "Transplant", "Hybrid result"],
         panelWidth=258, panelHeight=220, gap=16, rootHeight=328,
@@ -310,24 +291,21 @@ def export_filmstrip(out_dir: Path, code: str, doc: dict) -> Path:
 def export_frame_svgs(out_dir: Path, code: str, doc: dict) -> list[Path]:
     kind = str(doc.get("kind", code)).replace("-", "_")
     doc_path = out_dir / f"hybridization_{kind}_doc.json"
-    doc_path.write_text(json.dumps(doc, indent=2), encoding="utf-8")
-    return rendering.render_frames(
+    export_engine.write_json(doc_path, doc)
+    return export_engine.render_frames(
         doc, out_dir, code, metadata_kind="hybridization-frame-proof",
         metadata_payload_kind="hermes_hybridization_frame_proof",
     )
 
 
 def main() -> int:
-    args = parse_args()
+    args = export_engine.parse_args(__doc__, default_out=DEFAULT_OUT)
     out_dir = args.out.resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
 
     docs_by_kind = hybridization_docs()
     new_docs = demo_docs(docs_by_kind)
-    (out_dir / "hybridization_docs.json").write_text(
-        json.dumps(new_docs, indent=2),
-        encoding="utf-8",
-    )
+    export_engine.write_json(out_dir / "hybridization_docs.json", new_docs)
     docs = merge_existing_docs(out_dir, new_docs)
     export_final_svgs(out_dir, docs)
     filmstrips = [
@@ -364,8 +342,6 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    if "--check" in sys.argv:
-        raise SystemExit(
-            rendering.check_exporter(Path(__file__), DEFAULT_OUT, seed_tracked=True)
-        )
-    raise SystemExit(main())
+    raise SystemExit(
+        export_engine.exporter_main(main, DEFAULT_OUT, seed_tracked=True)
+    )

@@ -33,19 +33,16 @@ Run: python3 hermes/app/scripts/export_notation_charts.py
 """
 from __future__ import annotations
 
-import argparse
 import html
-import json
 import re
-import subprocess
 import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO))
-from hermes.app import rendering
+from hermes.app.scripts import export_engine
 
-OUT = rendering.gallery_output(REPO / "hermes" / "app" / "web" / "generated" / "notation_lesson_charts")
+OUT = export_engine.gallery_output(REPO / "hermes" / "app" / "web" / "generated" / "notation_lesson_charts")
 
 # The top-level honesty note, stated once on the top index and once per lesson.
 HOST_NOTE = (
@@ -91,25 +88,22 @@ def lesson_charts(limit: int = 0) -> dict:
         "  ( member(Code, Hosted), "
         "    lesson_notation_chart:notation_monitoring_chart(Code, Chart) ), Charts), "
         "Doc = _{ hosted: Hosted, hosted_all: HostedAll, pool: Pool, "
-        "         skipped: Skipped, charts: Charts }, "
-        "json_write_dict(user_output, Doc, [width(0)]), nl, halt."
+        "         skipped: Skipped, charts: Charts }"
     )
-    res = subprocess.run(
-        ["swipl", "-q", "-l", "paths.pl", "-g", goal, "-t", "halt(1)"],
-        cwd=REPO, capture_output=True, text=True,
-    )
-    lines = [l for l in res.stdout.splitlines() if l.startswith("{")]
-    if not lines:
-        sys.stderr.write(res.stdout + "\n" + res.stderr)
-        raise SystemExit("swipl produced no batched lesson charts")
-    return json.loads(lines[0])
+    return export_engine.run_swipl_batch(
+        [export_engine.SwiplRequest("notation-charts", goal)],
+        prelude=(
+            "use_module(lessons('im/lesson_notation_chart'))",
+            "use_module(lessons('im/lesson_monitoring'))",
+        ),
+    )["notation-charts"]
 
 
 # --- shared drawer adapter ---------------------------------------------------
 
 def render(frames, out_file, labels, *, title="", captions=None,
            panel_w=270, panel_h=220, canvas=None):
-    rendering.render_svg(
+    export_engine.render_svg(
         {"frames": frames, "canvas": canvas or {}}, "filmstrip", out_file,
         labels=labels, title=title, captions=captions or [],
         panelWidth=panel_w, panelHeight=panel_h,
@@ -139,14 +133,12 @@ def _slug(s: str) -> str:
 
 # --- render one lesson's notation chart --------------------------------------
 
-def export_lesson(chart: dict) -> dict:
+def export_lesson(out_dir: Path, chart: dict) -> dict:
     code = chart["lesson_code"]
-    lesson_dir = OUT / code
+    lesson_dir = out_dir / code
     lesson_dir.mkdir(parents=True, exist_ok=True)
 
-    (lesson_dir / "chart.json").write_text(
-        json.dumps(chart, indent=2), encoding="utf-8"
-    )
+    export_engine.write_json(lesson_dir / "chart.json", chart)
 
     equation = chart["representative_equation"]
     eq_slug = _slug(equation)
@@ -204,7 +196,7 @@ def export_lesson(chart: dict) -> dict:
         })
 
     index = build_lesson_index(chart, cell_records)
-    (lesson_dir / "index.html").write_text(index, encoding="utf-8")
+    export_engine.write_index(lesson_dir, index)
     written.append(lesson_dir / "index.html")
 
     return {
@@ -370,16 +362,17 @@ def build_top_index(records: list, skipped: list) -> str:
     return "\n".join(rows)
 
 
-def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--limit", type=int, default=0,
-                   help="render at most N lessons (0 = all); for quick checks")
-    return p.parse_args()
+def configure_cli(parser) -> None:
+    parser.add_argument("--limit", type=int, default=0,
+                        help="render at most N lessons (0 = all); for quick checks")
 
 
 def main() -> int:
-    args = parse_args()
-    OUT.mkdir(parents=True, exist_ok=True)
+    args = export_engine.parse_args(
+        __doc__, default_out=OUT, configure=configure_cli
+    )
+    out_dir = args.out.resolve()
+    out_dir.mkdir(parents=True, exist_ok=True)
 
     enum = lesson_charts(args.limit)
     hosted = enum["hosted"]
@@ -403,14 +396,13 @@ def main() -> int:
     records = []
     for i, chart in enumerate(charts, 1):
         code = chart["lesson_code"]
-        rec = export_lesson(chart)
+        rec = export_lesson(out_dir, chart)
         records.append(rec)
         if i % 20 == 0 or i == len(hosted):
             print(f"  [{i}/{len(hosted)}] {code}: {rec['cell_count']} cell(s)",
                   flush=True)
 
-    (OUT / "index.html").write_text(
-        build_top_index(records, skipped), encoding="utf-8")
+    export_engine.write_index(out_dir, build_top_index(records, skipped))
 
     manifest = {
         "kind": "notation_lesson_charts",
@@ -434,24 +426,21 @@ def main() -> int:
             for r in records
         ],
     }
-    (OUT / "manifest.json").write_text(json.dumps(manifest, indent=2),
-                                       encoding="utf-8")
+    export_engine.write_json(out_dir / "manifest.json", manifest)
 
     svg_count = sum(
         Path(path).suffix == ".svg" for record in records for path in record["files"]
     )
-    print(f"Wrote {svg_count} SVGs across {len(records)} lessons to {OUT}")
+    print(f"Wrote {svg_count} SVGs across {len(records)} lessons to {out_dir}")
     for grade in GRADE_ORDER:
         print(f"  Grade {grade} lessons charted: {grade_counts[grade]}")
     for operation, count in operation_counts.items():
         print(f"  {operation.capitalize()} lessons charted: {count}")
     print(f"  Skipped (no notation deformation): {len(skipped)}")
-    print(OUT / "index.html")
-    print(OUT / "manifest.json")
+    print(out_dir / "index.html")
+    print(out_dir / "manifest.json")
     return 0
 
 
 if __name__ == "__main__":
-    if "--check" in sys.argv:
-        raise SystemExit(rendering.check_exporter(Path(__file__), OUT))
-    raise SystemExit(main())
+    raise SystemExit(export_engine.exporter_main(main, OUT))

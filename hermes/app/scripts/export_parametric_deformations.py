@@ -29,16 +29,14 @@ representation_grammar.pl or drawer.js. Run: python3 hermes/app/scripts/export_p
 """
 from __future__ import annotations
 
-import json
-import subprocess
 import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO))
-from hermes.app import rendering
+from hermes.app.scripts import export_engine
 
-OUT = rendering.gallery_output(REPO / "hermes" / "app" / "web" / "generated" / "parametric_deformations")
+OUT = export_engine.gallery_output(REPO / "hermes" / "app" / "web" / "generated" / "parametric_deformations")
 
 
 # --- Phase-1 Prolog generators: ask swipl for the frames dict ----------------
@@ -47,50 +45,34 @@ OUT = rendering.gallery_output(REPO / "hermes" / "app" / "web" / "generated" / "
 # and prints exactly one JSON line (the frames document) on stdout, so the
 # render path is a pure projection of what the Prolog decided.
 
-def _swipl_json(goal_body: str) -> dict:
-    """Run a swipl goal that json_write_dict's one document, return the dict."""
-    goal = (
-        "use_module(strategies(render/parametric_partition_deformation)), "
-        "use_module(strategies(render/parametric_fraction_errors)), "
-        "use_module(library(http/json)), "
-        f"{goal_body}, "
-        "json_write_dict(user_output, Doc, [width(0)]), nl, halt."
-    )
-    res = subprocess.run(
-        ["swipl", "-q", "-l", "paths.pl", "-g", goal, "-t", "halt(1)"],
-        cwd=REPO, capture_output=True, text=True,
-    )
-    lines = [l for l in res.stdout.splitlines() if l.startswith("{")]
-    if not lines:
-        sys.stderr.write(res.stdout + "\n" + res.stderr)
-        raise SystemExit(f"swipl produced no JSON for goal: {goal_body}")
-    return json.loads(lines[0])
+def deformed_key(host: str, n: int, rule: str) -> str:
+    return f"deformed-{host}-{n}-{rule}"
 
 
-def deformed_partition(host: str, n: int, rule: str) -> dict:
-    return _swipl_json(
-        f"deformed_partition_scene({host}, {n}, transplant({rule}), Doc)"
-    )
+def productive_key(host: str, n: int) -> str:
+    return f"productive-{host}-{n}"
 
 
-def productive_partition(host: str, n: int) -> dict:
-    return _swipl_json(f"productive_partition_scene({host}, {n}, Doc)")
+def fraction_error_key(host: str, m: int, n: int, error: str) -> str:
+    return f"fraction-error-{host}-{m}-{n}-{error}"
 
 
-def fraction_error(host: str, m: int, n: int, error: str) -> dict:
-    return _swipl_json(
-        f"deformed_fraction_error_scene({host}, frac({m},{n}), {error}, Doc)"
-    )
-
-
-def transplant_final_frame(host: str, n: int, rule: str) -> dict:
-    """The last frame of a transplant scene: the hybrid result for 1/N.
-
-    The replication strip is one such final frame per denominator, laid side by
-    side. They differ only by N, so the strip is the visual replication proof.
-    """
-    doc = deformed_partition(host, n, rule)
-    return doc["frames"][-1]
+def document_requests(repl_ns, pair_hosts, equi_cases):
+    goals = {}
+    for n in repl_ns:
+        goals[deformed_key("circle", n, "vertical")] = (
+            f"deformed_partition_scene(circle, {n}, transplant(vertical), Doc)"
+        )
+    for host, rule in pair_hosts:
+        goals[productive_key(host, 5)] = f"productive_partition_scene({host}, 5, Doc)"
+        goals[deformed_key(host, 5, rule)] = (
+            f"deformed_partition_scene({host}, 5, transplant({rule}), Doc)"
+        )
+    for host, m, n, error in equi_cases:
+        goals[fraction_error_key(host, m, n, error)] = (
+            f"deformed_fraction_error_scene({host}, frac({m},{n}), {error}, Doc)"
+        )
+    return [export_engine.SwiplRequest(key, goal) for key, goal in goals.items()]
 
 
 # --- shared drawer adapter ---------------------------------------------------
@@ -98,7 +80,7 @@ def transplant_final_frame(host: str, n: int, rule: str) -> dict:
 def render(frames, out_file, labels, *, title="", captions=None,
            panel_w=300, panel_h=220, canvas=None):
     doc = {"frames": frames, "canvas": canvas or {}}
-    rendering.render_svg(
+    export_engine.render_svg(
         doc, "filmstrip", out_file, labels=labels, title=title,
         captions=captions or [], panelWidth=panel_w, panelHeight=panel_h,
         captionChars=72, ariaLabel=title or "parametric deformation filmstrip",
@@ -124,22 +106,44 @@ def headline_replication_captions(denominators: list[int]) -> list[str]:
 
 
 def main() -> int:
-    OUT.mkdir(parents=True, exist_ok=True)
+    args = export_engine.parse_args(__doc__, default_out=OUT)
+    out_dir = args.out.resolve()
+    out_dir.mkdir(parents=True, exist_ok=True)
     written = []
     manifest = {}
 
     # ---- THE HEADLINE: vertical-on-circle replication across 1/4,1/5,1/6,1/8 --
     repl_ns = [4, 5, 6, 8]
-    repl_frames = [transplant_final_frame("circle", n, "vertical") for n in repl_ns]
+    pair_hosts = [
+        ("circle", "vertical"),
+        ("rectangle", "radial"),
+        ("set", "radial"),
+    ]
+    equi_cases = [
+        ("bar", 1, 5, "unequal_partition"),
+        ("bar", 1, 6, "unequal_partition"),
+        ("circle", 1, 5, "miscount_partition"),
+        ("circle", 1, 6, "miscount_partition"),
+    ]
+    documents = export_engine.run_swipl_batch(
+        document_requests(repl_ns, pair_hosts, equi_cases),
+        prelude=(
+            "use_module(strategies(render/parametric_partition_deformation))",
+            "use_module(strategies(render/parametric_fraction_errors))",
+        ),
+    )
+    repl_frames = [
+        documents[deformed_key("circle", n, "vertical")]["frames"][-1]
+        for n in repl_ns
+    ]
     repl_labels = [f"1/{n}" for n in repl_ns]
     repl_caps = headline_replication_captions(repl_ns)
-    headline = OUT / "HEADLINE-vertical-on-circle-replication.svg"
+    headline = out_dir / "HEADLINE-vertical-on-circle-replication.svg"
     render(repl_frames, headline, repl_labels,
            title="The same deformation across 1/4, 1/5, 1/6, 1/8",
            captions=repl_caps, panel_w=260, panel_h=240)
     written.append(headline)
-    dashed = [count_dashed_lines_in_frame(REPO, n, "circle", "vertical")
-              for n in repl_ns]
+    dashed = [count_deformed_dashed(frame) for frame in repl_frames]
     manifest["headline_replication"] = {
         "file": headline.name,
         "denominators": repl_ns,
@@ -149,21 +153,16 @@ def main() -> int:
     }
 
     # ---- THE PAIR: productive vs deformed for 1/5, per host ------------------
-    pair_hosts = [
-        ("circle", "vertical"),
-        ("rectangle", "radial"),
-        ("set", "radial"),
-    ]
     pairs = []
     for host, rule in pair_hosts:
-        prod = productive_partition(host, 5)
-        deform = deformed_partition(host, 5, rule)
+        prod = documents[productive_key(host, 5)]
+        deform = documents[deformed_key(host, 5, rule)]
         # productive: 3 B/M/E frames. deformed: 4 transplant frames. Show the
         # licensed shade-unit frame (productive final) beside the hybrid result
         # (deformed final), the two endpoints, so the pair reads at a glance.
         prod_final = prod["frames"][-1]
         deform_final = deform["frames"][-1]
-        out_file = OUT / f"PAIR-{host}-1-5.svg"
+        out_file = out_dir / f"PAIR-{host}-1-5.svg"
         render(
             [prod_final, deform_final], out_file,
             ["Productive (licensed rule)", "Deformed (transplant)"],
@@ -180,13 +179,13 @@ def main() -> int:
             "productive_dashed_lines": count_dashed_lines(out_file) - count_deformed_dashed(deform_final),
         })
         # full B/M/E filmstrips too, so the named verbs are legible
-        prod_strip = OUT / f"PRODUCTIVE-{host}-1-5-filmstrip.svg"
+        prod_strip = out_dir / f"PRODUCTIVE-{host}-1-5-filmstrip.svg"
         render(prod["frames"], prod_strip,
                [_verb_label(f) for f in prod["frames"]],
                title=f"Productive 1/5 on a {host} (establish -> partition -> shade)",
                panel_w=270, panel_h=220)
         written.append(prod_strip)
-        deform_strip = OUT / f"DEFORMED-{host}-1-5-filmstrip.svg"
+        deform_strip = out_dir / f"DEFORMED-{host}-1-5-filmstrip.svg"
         render(deform["frames"], deform_strip,
                [_verb_label(f) for f in deform["frames"]],
                title=f"Transplant deformation of 1/5 onto a {host}",
@@ -196,17 +195,11 @@ def main() -> int:
 
     # ---- THE EQUIPARTITION FAILURES: unequal & miscount for 1/5 and 1/6 ------
     equi = []
-    equi_cases = [
-        ("bar", 1, 5, "unequal_partition"),
-        ("bar", 1, 6, "unequal_partition"),
-        ("circle", 1, 5, "miscount_partition"),
-        ("circle", 1, 6, "miscount_partition"),
-    ]
     for host, m, n, err in equi_cases:
-        doc = fraction_error(host, m, n, err)
+        doc = documents[fraction_error_key(host, m, n, err)]
         frames = doc["frames"]
         code = f"EQUIPARTITION-{host}-{err}-{m}-{n}"
-        out_file = OUT / f"{code}-filmstrip.svg"
+        out_file = out_dir / f"{code}-filmstrip.svg"
         render(frames, out_file, [_verb_label(f) for f in frames],
                title=f"{err.replace('_', ' ')} of {m}/{n} on a {host}",
                panel_w=270, panel_h=220)
@@ -217,12 +210,9 @@ def main() -> int:
 
     # ---- index.html ----------------------------------------------------------
     index = build_index(repl_ns, pairs, equi, dashed)
-    (OUT / "index.html").write_text(index, encoding="utf-8")
-    written.append(OUT / "index.html")
+    written.append(export_engine.write_index(out_dir, index))
 
-    (OUT / "manifest.json").write_text(json.dumps(manifest, indent=2),
-                                       encoding="utf-8")
-    written.append(OUT / "manifest.json")
+    written.append(export_engine.write_json(out_dir / "manifest.json", manifest))
 
     for w in written:
         print(w)
@@ -246,11 +236,6 @@ def count_deformed_dashed(frame: dict) -> int:
         elif p.get("kind") == "radial-partition":
             total += int(p.get("segments", 0))
     return total
-
-
-def count_dashed_lines_in_frame(repo: Path, n: int, host: str, rule: str) -> int:
-    frame = transplant_final_frame(host, n, rule)
-    return count_deformed_dashed(frame)
 
 
 def _verb_label(frame: dict) -> str:
@@ -317,6 +302,4 @@ def build_index(repl_ns, pairs, equi, dashed) -> str:
 
 
 if __name__ == "__main__":
-    if "--check" in sys.argv:
-        raise SystemExit(rendering.check_exporter(Path(__file__), OUT))
-    raise SystemExit(main())
+    raise SystemExit(export_engine.exporter_main(main, OUT))

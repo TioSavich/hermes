@@ -15,36 +15,36 @@ Run: python3 hermes/app/scripts/export_fraction_cliff.py
 """
 from __future__ import annotations
 
-import json
-import subprocess
 import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO))
-from hermes.app import rendering
+from hermes.app.scripts import export_engine
 
 MACHINE = "formal/tools/carving/fraction_unit_machine.pl"
-OUT = rendering.gallery_output(REPO / "hermes" / "app" / "web" / "generated" / "fraction_cliff_demos")
+OUT = export_engine.gallery_output(REPO / "hermes" / "app" / "web" / "generated" / "fraction_cliff_demos")
 
 W, H = 300, 70          # whole-bar geometry
 X0, Y0 = 30, 40
 
 
-def verdict(stage: str, tc: int, tb: int) -> dict:
-    """Ask the machine: intact cost/witness and collapsed cost at this stage."""
-    goal = (
-        f"consult('{MACHINE}'), M=fraction_unit_machine, "
-        f"( M:uc_min_cost({stage}, frac({tc},{tb}), 12, 24, IC, IW) "
-        f"  -> true ; IC = -1, IW = [] ), "
-        f"( M:uc_min_cost_collapsed({stage}, frac({tc},{tb}), 12, 24, CC, _) "
-        f"  -> true ; CC = -1 ), "
-        f"format('~q~n', [v(IC, IW, CC)]), halt."
-    )
-    res = subprocess.run(["swipl", "-q", "-g", goal, "-t", "halt(1)"],
-                         cwd=REPO, capture_output=True, text=True)
-    line = [l for l in res.stdout.splitlines() if l.startswith("v(")]
-    return {"raw": line[0] if line else "v(-1,[],-1)"}
+def verdict_requests() -> list[export_engine.SwiplRequest]:
+    requests = []
+    for stage, tc, tb in (("mc1", 3, 5), ("mc2", 7, 5), ("mc3", 7, 5)):
+        requests.append(export_engine.SwiplRequest(
+            f"{stage}-{tc}-{tb}",
+            f"M=fraction_unit_machine, "
+            "( current_predicate(fraction_unit_machine:uc_min_cost/7) "
+            f"  -> ( M:uc_min_cost({stage}, frac({tc},{tb}), 12, 24, IC, IW) "
+            f"       -> true ; IC = -1, IW = [] ), "
+            f"     ( M:uc_min_cost_collapsed({stage}, frac({tc},{tb}), 12, 24, CC, _) "
+            f"       -> true ; CC = -1 ) "
+            "  ; IC = -1, IW = [], CC = -1 ), "
+            "with_output_to(string(Raw), writeq(v(IC, IW, CC))), "
+            "Doc = _{raw:Raw}",
+        ))
+    return requests
 
 
 def bar(x, y, parts, filled, label):
@@ -94,7 +94,7 @@ def frames_collapsed(tc, tb):
 
 
 def render(doc, out_file, labels):
-    rendering.render_svg(
+    export_engine.render_svg(
         doc, "filmstrip", out_file, preset="fraction-cliff", labels=labels,
         captionChars=60, omitAria=True,
     )
@@ -102,23 +102,30 @@ def render(doc, out_file, labels):
 
 
 def main() -> int:
-    OUT.mkdir(parents=True, exist_ok=True)
+    args = export_engine.parse_args(__doc__, default_out=OUT)
+    out_dir = args.out.resolve()
+    out_dir.mkdir(parents=True, exist_ok=True)
+    verdicts = export_engine.run_swipl_batch(
+        verdict_requests(),
+        prelude=(f"( exists_file('{MACHINE}') -> consult('{MACHINE}') ; true )",),
+        load_paths=False,
+    )
     cases = [
         ("DEMO-fraction-3-5-proper", frames_proper(3, 5),
-         ["Partition", "Iterate 3/5", "Intact"], verdict("mc1", 3, 5)),
+         ["Partition", "Iterate 3/5", "Intact"], verdicts["mc1-3-5"]),
         ("DEMO-fraction-7-5-mc2-chain-loss", frames_collapsed(7, 5),
-         ["1 whole", "Re-partition", "Chain lost (mc2)"], verdict("mc2", 7, 5)),
+         ["1 whole", "Re-partition", "Chain lost (mc2)"], verdicts["mc2-7-5"]),
         ("DEMO-fraction-7-5-mc3-freed-intact", frames_intact_beyond(7, 5),
-         ["5/5 = 1", "Free unit", "7/5 intact (mc3)"], verdict("mc3", 7, 5)),
+         ["5/5 = 1", "Free unit", "7/5 intact (mc3)"], verdicts["mc3-7-5"]),
     ]
     docs = {}
     for code, frames, labels, v in cases:
         doc = {"canvas": {"width": 760, "height": 150}, "frames": frames}
-        out_file = OUT / f"{code}-filmstrip.svg"
+        out_file = out_dir / f"{code}-filmstrip.svg"
         render(doc, out_file, labels)
         docs[code] = {"frames": frames, "machine_verdict": v["raw"]}
         print(out_file)
-    (OUT / "docs.json").write_text(json.dumps(docs, indent=2))
+    export_engine.write_json(out_dir / "docs.json", docs)
     index = ["<!doctype html><meta charset=utf-8><title>Fraction splitting cliff</title>",
              "<body style='font-family:system-ui;background:#f8f1df;padding:24px'>",
              "<h1>The splitting cliff, computed</h1>",
@@ -127,12 +134,10 @@ def main() -> int:
     for code, _f, _l, v in cases:
         index.append(f"<h2>{code}</h2><p><small>machine: {v['raw']}</small></p>"
                      f"<img src='{code}-filmstrip.svg' style='max-width:100%'>")
-    (OUT / "index.html").write_text("\n".join(index))
-    print(OUT / "index.html")
+    export_engine.write_index(out_dir, "\n".join(index))
+    print(out_dir / "index.html")
     return 0
 
 
 if __name__ == "__main__":
-    if "--check" in sys.argv:
-        raise SystemExit(rendering.check_exporter(Path(__file__), OUT))
-    raise SystemExit(main())
+    raise SystemExit(export_engine.exporter_main(main, OUT))
