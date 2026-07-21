@@ -74,16 +74,12 @@
 :- ensure_loaded('bootstrap/van_de_walle_activities.pl').
 :- ensure_loaded('../standards/ccss/geometry.pl').
 :- ensure_loaded('../standards/indiana/geometry.pl').
-:- ensure_loaded('../standards/im/grade_1.pl').
-:- ensure_loaded('../standards/im/grade_2.pl').
-:- ensure_loaded('../standards/im/grade_3.pl').
-:- ensure_loaded('../standards/im/grade_4.pl').
 :- ensure_loaded('../standards/im/grade_5.pl').
 :- ensure_loaded('../standards/im/grade_6.pl').
 :- ensure_loaded('../standards/im/grade_7.pl').
 :- ensure_loaded('../standards/im/grade_8.pl').
-:- ensure_loaded('../standards/im/grade_k.pl').
 :- ensure_loaded('../standards/im/lesson_anchors.pl').
+:- ensure_loaded('../standards/im/standards_im.pl').
 :- ensure_loaded('pck/classification.pl').
 :- ensure_loaded('query.pl').
 % END CANONICAL GEOMETRY LOAD MANIFEST

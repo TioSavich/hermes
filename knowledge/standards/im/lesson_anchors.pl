@@ -24,11 +24,7 @@
 :- multifile geom_concept/4, standard_anchor/4, tier/4.
 :- discontiguous geom_concept/4, standard_anchor/4, tier/4.
 
-:- ensure_loaded(grade_k).
-:- ensure_loaded(grade_1).
-:- ensure_loaded(grade_2).
-:- ensure_loaded(grade_3).
-:- ensure_loaded(grade_4).
+:- ensure_loaded(standards_im).
 :- ensure_loaded(grade_5).
 :- ensure_loaded(grade_6).
 :- ensure_loaded(grade_7).

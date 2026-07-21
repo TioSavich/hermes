@@ -9,11 +9,16 @@ provenance fact. The framework atoms are `ccss`, `in_indiana`, and `im_lesson`.
 - `ccss/geometry.pl` — CCSS K–8.G, Tier-1 verbatim, retrieved via the Learning
   Commons Knowledge Graph (jurisdiction California, which adopts CCSS verbatim
   for K–8.G).
-- `indiana/` — `geometry.pl` plus 20 `standard_*.pl` modules holding the Indiana
-  Academic Standards for Mathematics (2014/2020 revision).
-- `im/` — `lesson_anchors.pl` (auto-generated) and `grade_k.pl` through
-  `grade_8.pl`, anchoring Illustrative Mathematics lesson ids; each lesson row
-  carries both a `ccss` and an `in_indiana` anchor.
+- `indiana/geometry.pl` — Indiana Academic Standards for Mathematics geometry
+  anchors (2014/2020 revision). The neighboring `standard_*.pl` files are
+  executable strategy modules, not rows of the shared anchor schema.
+- `im/standards_im.pl` — the grades K–4 anchor table, ordered by ascending grade
+  with rows retained in their original order.
+- `im/grade_5.pl` through `im/grade_8.pl` — anchor tables with source-local
+  witness predicates that depend on their current filenames.
+- `im/lesson_anchors.pl` — an auto-generated geometry-concept and lesson-anchor
+  table. Its hand-authored loader section loads the consolidated and held IM
+  tables.
 
 ## Consumers and boundary
 
