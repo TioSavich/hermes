@@ -26,6 +26,19 @@ boundary, not an execution result.
 lesson exporters. Runtime: long. Copy the generated trees only after reviewing
 their JSON chart data and the HTML/SVG output.
 
+`run_field_context.sh` rebuilds the whole-curriculum field-context cache.
+Runtime: long; it intentionally has no `--limit` option. The builder writes
+its canonical in-tree cache and the runner returns a copy at
+`field-context/field_context_cache.json`. After collect, replace
+`curriculum/im/generated/field_context_cache.json` with that returned artifact
+and rerun the Tier-1 drift check.
+
+`run_learner_paths.sh` records a graph of lesson order within units,
+lesson-to-registered-strategy mappings, analyzer elaborations, and recorded
+crosswalk-family edges. It writes `learner_paths.json` and `learner_paths.md`.
+`--limit N` selects the first N whole IM units for a bounded local smoke. The
+graph has no learner simulation, path scoring, or inferred prerequisite edges.
+
 The live registry has 172 action-automaton invocation signatures. It does not
 provide a general concrete-input generator for every signature, so an
 all-automata modeling grid is not included. That scenario is not batchable

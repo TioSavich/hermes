@@ -4,6 +4,8 @@
 :- use_module(library(filesex)).
 :- use_module(library(http/json)).
 :- use_module(library(lists)).
+:- use_module(crosswalk('families/cw_driver'), []).
+:- use_module(strategies('meta/automaton_analyzer'), []).
 :- use_module(carving(strategy_machine)).
 :- use_module(incompat(find_emergent_hyperedges)).
 :- use_module(incompat(incompatibility_sets)).
@@ -14,6 +16,7 @@
 main(hyperedges) :- !, run_hyperedges.
 main(search_traces) :- !, run_search_traces.
 main(predicate_carving) :- !, run_predicate_carving.
+main(learner_paths) :- !, run_learner_paths.
 main(Scenario) :- throw(error(domain_error(bigred_scenario, Scenario), _)).
 
 output_dir(Dir) :-
@@ -163,3 +166,152 @@ write_carving_markdown(Out, Lessons, Operations, Containments) :-
     length(Lessons, LessonCount), length(Operations, OperationCount), length(Containments, ContainmentCount),
     format(Out, "# Predicate carving batch results~n~n", []),
     format(Out, "Computed ~w lesson reports, ~w operation rows, and ~w ordered containment verdicts. `predicate-carving.json` holds the complete finite records for this run. A missing carving model is reported as such; it is not a failed automaton execution.\n", [LessonCount, OperationCount, ContainmentCount]).
+
+% The graph is deliberately a record of the available relations, not a learner
+% model.  A bounded run selects whole IM units, so --limit 2 is useful locally.
+run_learner_paths :-
+    output_dir(Dir), limit(Limit),
+    selected_lessons(Limit, Units, Lessons),
+    maplist(unit_record, Units, UnitRecords),
+    lesson_nodes(Lessons, LessonNodes),
+    action_strategy_nodes(ActionNodes),
+    analyzer_strategy_nodes(AnalyzerNodes),
+    crosswalk_nodes(CrosswalkNodes),
+    append([LessonNodes, ActionNodes, AnalyzerNodes, CrosswalkNodes], Nodes0),
+    sort(Nodes0, Nodes),
+    lesson_sequence_edges(Lessons, SequenceEdges),
+    lesson_strategy_edges(Lessons, MappingEdges),
+    elaboration_edges(ElaborationEdges),
+    crosswalk_edges(CrosswalkEdges),
+    append([SequenceEdges, MappingEdges, ElaborationEdges, CrosswalkEdges], Edges0),
+    sort(Edges0, Edges),
+    graph_counts(Lessons, SequenceEdges, MappingEdges, ElaborationEdges,
+                 CrosswalkEdges, Counts),
+    directory_file_path(Dir, 'learner_paths.json', Json),
+    write_json(Json, _{scenario:"learner_paths",
+                       scope:"recorded curriculum and strategy relations; no learner simulation or path scoring",
+                       limit_units:Limit, selected_units:UnitRecords,
+                       prerequisite_edges:0,
+                       prerequisite_note:"No explicit IM lesson-prerequisite predicate was found; none were inferred.",
+                       counts:Counts, nodes:Nodes, edges:Edges}),
+    directory_file_path(Dir, 'learner_paths.md', Markdown),
+    setup_call_cleanup(open(Markdown, write, Out, [encoding(utf8)]),
+                       write_learner_paths_markdown(Out, Units, Lessons, Counts),
+                       close(Out)).
+
+selected_lessons(Limit, Units, Lessons) :-
+    findall(lesson(Code, Grade, Unit, LessonNo, Title),
+            ( lesson_monitoring:im_lesson(Code, _, Title, grade(Grade), unit(Unit), lesson(LessonNo)) ),
+            All0),
+    sort(All0, All),
+    findall(unit(Grade, Unit), member(lesson(_, Grade, Unit, _, _), All), Units0),
+    sort(Units0, AllUnits), take_limit(Limit, AllUnits, Units),
+    include(in_selected_units(Units), All, Lessons).
+
+in_selected_units(Units, lesson(_, Grade, Unit, _, _)) :- memberchk(unit(Grade, Unit), Units).
+
+unit_record(unit(Grade, Unit), _{grade:Grade, unit:Unit}).
+
+lesson_nodes(Lessons, Nodes) :- maplist(lesson_node, Lessons, Nodes).
+lesson_node(lesson(Code, Grade, Unit, LessonNo, Title),
+            _{id:Id, type:"lesson", code:CodeText, grade:Grade, unit:Unit,
+              lesson_number:LessonNo, title:Title}) :-
+    node_id(lesson(Code), Id), atom_string(Code, CodeText).
+
+action_strategy_nodes(Nodes) :-
+    findall(_{id:Id, type:"registered_action_strategy", operation:OperationText,
+              kind:KindText, input_schema:InputText, output_schema:OutputText},
+            ( action_automata_registry:action_automaton_signature(Operation, Kind, Input, Output),
+              node_id(action_strategy(Operation, Kind), Id),
+              term_text(Operation, OperationText), term_text(Kind, KindText),
+              term_text(Input, InputText), term_text(Output, OutputText) ),
+            Nodes0), sort(Nodes0, Nodes).
+
+analyzer_strategy_nodes(Nodes) :-
+    automaton_analyzer:analyze_all,
+    findall(_{id:Id, type:"analyzer_strategy", name:NameText, operation:OperationText,
+              module:ModuleText, source_path:PathText},
+            ( automaton_analyzer:strategy_registry(Name, Operation, Module, Path),
+              node_id(analyzer_strategy(Name), Id), term_text(Name, NameText),
+              term_text(Operation, OperationText), term_text(Module, ModuleText), term_text(Path, PathText) ),
+            Nodes0), sort(Nodes0, Nodes).
+
+crosswalk_nodes(Nodes) :-
+    findall(Node,
+            ( cw_edges:edge(Family, Module, Predicate, _Args, _Outputs, _Archetype),
+              crosswalk_edge_nodes(Family, Module, Predicate, Node) ),
+            Nodes0), sort(Nodes0, Nodes).
+
+crosswalk_edge_nodes(Family, _Module, _Predicate,
+                     _{id:Id, type:"crosswalk_family", family:FamilyText}) :-
+    node_id(crosswalk_family(Family), Id), term_text(Family, FamilyText).
+crosswalk_edge_nodes(_Family, Module, Predicate,
+                     _{id:Id, type:"crosswalk_predicate", module:ModuleText, predicate:PredicateText}) :-
+    node_id(crosswalk_predicate(Module, Predicate), Id),
+    term_text(Module, ModuleText), term_text(Predicate, PredicateText).
+
+lesson_sequence_edges(Lessons, Edges) :-
+    findall(Edge,
+            ( select(lesson(From, Grade, Unit, LessonNo, _), Lessons, Rest),
+              Next is LessonNo + 1,
+              member(lesson(To, Grade, Unit, Next, _), Rest),
+              node_id(lesson(From), FromId), node_id(lesson(To), ToId),
+              Edge = _{from:FromId, to:ToId, type:"lesson_sequence",
+                       provenance:"lesson_monitoring:im_lesson/6"} ),
+            Edges0), sort(Edges0, Edges).
+
+lesson_strategy_edges(Lessons, Edges) :-
+    findall(Edge,
+            ( member(lesson(Code, _, _, _, _), Lessons),
+              lesson_monitoring:lesson_strategy(Code, Operation, Kind, _Info),
+              action_automata_registry:action_automaton_signature(Operation, Kind, _, _),
+              node_id(lesson(Code), FromId), node_id(action_strategy(Operation, Kind), ToId),
+              Edge = _{from:FromId, to:ToId, type:"lesson_strategy_mapping",
+                       provenance:"lesson_monitoring:lesson_strategy/4"} ),
+            Edges0), sort(Edges0, Edges).
+
+elaboration_edges(Edges) :-
+    findall(Edge,
+            ( automaton_analyzer:elaborates(Base, Elaborated, Shared, Type, CMax, CJac, Asymmetry),
+              node_id(analyzer_strategy(Base), FromId), node_id(analyzer_strategy(Elaborated), ToId),
+              term_text(Shared, SharedText), term_text(Type, TypeText),
+              Edge = _{from:FromId, to:ToId, type:"strategy_elaboration",
+                       relation:TypeText, shared_patterns:SharedText,
+                       confidence_max:CMax, confidence_jaccard:CJac,
+                       direction_asymmetry:Asymmetry,
+                       provenance:"automaton_analyzer:elaborates/7"} ),
+            Edges0), sort(Edges0, Edges).
+
+crosswalk_edges(Edges) :-
+    findall(Edge,
+            ( cw_edges:edge(Family, Module, Predicate, Args, Outputs, Archetype),
+              node_id(crosswalk_family(Family), FromId),
+              node_id(crosswalk_predicate(Module, Predicate), ToId),
+              term_text(Args, ArgsText), term_text(Outputs, OutputsText), term_text(Archetype, ArchetypeText),
+              Edge = _{from:FromId, to:ToId, type:"crosswalk_family_edge",
+                       arguments:ArgsText, outputs:OutputsText, archetype:ArchetypeText,
+                       provenance:"cw_edges:edge/6"} ),
+            Edges0), sort(Edges0, Edges).
+
+node_id(Term, Id) :- term_text(Term, Id).
+
+graph_counts(Lessons, SequenceEdges, MappingEdges, ElaborationEdges, CrosswalkEdges,
+             _{lessons:LessonCount, lesson_sequence_edges:SequenceCount,
+               lesson_strategy_edges:MappingCount, strategy_elaboration_edges:ElaborationCount,
+               crosswalk_family_edges:CrosswalkCount, prerequisite_edges:0}) :-
+    length(Lessons, LessonCount), length(SequenceEdges, SequenceCount),
+    length(MappingEdges, MappingCount), length(ElaborationEdges, ElaborationCount),
+    length(CrosswalkEdges, CrosswalkCount).
+
+write_learner_paths_markdown(Out, Units, Lessons, Counts) :-
+    format(Out, "# Learner-path graph\n\n", []),
+    format(Out, "This artifact records existing curriculum and strategy relations. It does not simulate a learner or score a path.\n\n", []),
+    format(Out, "Selected units: `~w`. Lesson nodes: ~w. Sequence edges: ~w. Lesson-strategy mappings: ~w. Strategy elaborations: ~w. Crosswalk family edges: ~w.\n\n",
+           [Units, Counts.lessons, Counts.lesson_sequence_edges, Counts.lesson_strategy_edges,
+            Counts.strategy_elaboration_edges, Counts.crosswalk_family_edges]),
+    format(Out, "## Per-grade lesson counts\n\n| Grade | Lessons |\n| --- | ---: |\n", []),
+    findall(Grade, member(lesson(_, Grade, _, _, _), Lessons), Grades0), sort(Grades0, Grades),
+    forall(member(Grade, Grades),
+           ( aggregate_all(count, member(lesson(_, Grade, _, _, _), Lessons), Count),
+             format(Out, "| ~w | ~w |\n", [Grade, Count]) )),
+    format(Out, "\nNo explicit IM lesson-prerequisite predicate was found, so this graph contains no prerequisite edges.\n", []).

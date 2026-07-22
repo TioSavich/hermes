@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Task 80: offline Big Red scenario suite. Replace account and email before submit.
+# Offline Big Red scenario suite. Replace account and email before submit.
 #SBATCH --job-name=hermes-scenario-suite
 #SBATCH --account=REPLACE_WITH_BIG_RED_ACCOUNT
 #SBATCH --partition=general
@@ -28,6 +28,8 @@ conda activate "${HERMES_ENV:-umedcta}"
 set -u
 
 echo "[$(date -Is)] host=$(hostname) python=$(command -v python3) swipl=$(command -v swipl) node=$(command -v node)"
+bash scripts/bigred/suite/run_field_context.sh
+bash scripts/bigred/suite/run_learner_paths.sh
 bash scripts/bigred/suite/run_hyperedges.sh
 bash scripts/bigred/suite/run_search_traces.sh
 bash scripts/bigred/suite/run_predicate_carving.sh

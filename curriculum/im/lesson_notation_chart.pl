@@ -75,6 +75,7 @@
 :- use_module(render(representation_grammar)).
 :- use_module(render(notation_scene)).
 :- use_module(render(parametric_notation_deformation)).
+:- use_module(lessons('im/generated/compiled_task_instances')).
 
 % The hosting lessons come from the encoded IM corpus. lesson_monitoring loads
 % grade_k.pl through grade_8.pl and supplies the strategy_info/3 and
@@ -88,7 +89,9 @@
 % =========================================================================
 %
 % A real IM lesson hosts a notation chart when it carries an addition,
-% subtraction, or multiplication attachment.
+% subtraction, or multiplication attachment and has a registered productive
+% task instance for that operation. The equation comes from that task; an
+% absent lesson fact is never filled with a shared exemplar.
 % The host is the inscription language itself (notation): the deformation is a
 % written-work botch, drawn over a representative equation from the lesson's
 % operation, not over a corpus instance.
@@ -107,9 +110,8 @@ notation_chart_lesson(Code, Title, Standards, [notation]) :-
     lesson_title(Code, Title),
     lesson_standard_codes(Code, Standards).
 
-% hosting_lesson(Code, Operation): the one operation selected for a lesson's
-% chart. Operation priority is explicit and stable so a multi-operation lesson
-% still emits one chart.
+% hosting_lesson(Code, Operation): the highest-priority operation with both a
+% lesson attachment and an equation-bearing productive task instance.
 hosting_lesson(Code, Operation) :-
     nonvar(Code),
     !,
@@ -121,7 +123,7 @@ hosting_lesson(Code, Operation) :-
 hosting_candidate(Code, Operation) :-
     lesson_monitoring:im_lesson(Code, _, _, _, _, _),
     notation_operation(Operation),
-    lesson_monitoring:specific_attachment_operation(Code, Operation),
+    lesson_operation_with_registered_equation(Code, Operation, _),
     \+ higher_priority_hosting_operation(Code, Operation).
 
 notation_operation(addition).
@@ -129,10 +131,10 @@ notation_operation(subtraction).
 notation_operation(multiplication).
 
 higher_priority_hosting_operation(Code, subtraction) :-
-    lesson_monitoring:specific_attachment_operation(Code, addition).
+    lesson_operation_with_registered_equation(Code, addition, _).
 higher_priority_hosting_operation(Code, multiplication) :-
-    ( lesson_monitoring:specific_attachment_operation(Code, addition)
-    ; lesson_monitoring:specific_attachment_operation(Code, subtraction)
+    ( lesson_operation_with_registered_equation(Code, addition, _)
+    ; lesson_operation_with_registered_equation(Code, subtraction, _)
     ).
 
 % lesson_title(Code, Title): the grade facts do not carry lesson titles, so the
@@ -150,92 +152,27 @@ lesson_standard_codes(Code, StandardStrings) :-
     maplist(atom_string, SCs, StandardStrings).
 
 % lesson_representative_equation(Code, equation(A, Op, B, R)): the equation the
-% chart renders the deformations over. Chosen by the selected operation:
-%   - single-digit addition (the K lessons and the single-digit G1 lessons) ->
-%     3 + 2 = 5. The 3 is a reversal-prone digit, so the mirror-written
-%     deformation is applicable; the sum is single-digit, so the
-%     digit-transposition deformation is correctly NOT applicable.
-%   - two-digit addition (the G1 lessons that work in the 11-99 range) ->
-%     8 + 4 = 12. The multi-digit answer makes the digit-transposition
-%     deformation applicable (12 recorded as 21); the operands carry no
-%     reversal-prone digit, so the mirror-written deformation is correctly
-%     not applicable here.
-% The two representative equations are the only two the K/G1 addition corpus
-% needs: every hosting lesson is single- or two-digit addition.
+% chart renders. It is the first registered productive task for the selected
+% operation, preserving the compiled source order as the lesson's task order.
 lesson_representative_equation(Code, Equation) :-
     hosting_lesson(Code, Operation),
-    representative_equation(Operation, Code, Equation).
+    once(lesson_operation_with_registered_equation(Code, Operation, Equation)).
 
-representative_equation(addition, Code, equation(3, '+', 2, 5)) :-
-    \+ multi_digit_operation_lesson(Code, addition).
-representative_equation(addition, Code, equation(8, '+', 4, 12)) :-
-    multi_digit_operation_lesson(Code, addition).
-representative_equation(subtraction, Code, equation(5, '-', 2, 3)) :-
-    \+ multi_digit_operation_lesson(Code, subtraction).
-representative_equation(subtraction, Code, equation(21, '-', 3, 18)) :-
-    multi_digit_operation_lesson(Code, subtraction).
-representative_equation(multiplication, Code, equation(3, '*', 2, 6)) :-
-    \+ multi_digit_operation_lesson(Code, multiplication).
-representative_equation(multiplication, Code, equation(7, '*', 3, 21)) :-
-    multi_digit_operation_lesson(Code, multiplication).
+% The attachment keeps the chart aligned with the lesson's encoded strategy;
+% the compiled task instance supplies the actual numbers and operation.
+lesson_operation_with_registered_equation(Code, Operation, Equation) :-
+    lesson_monitoring:specific_attachment_operation(Code, Operation),
+    registered_task_equation(Code, Operation, Equation).
 
-% multi_digit_addition_attachment(Code): a G1 lesson whose addition strategies
-% work in the multi-digit range. The classification is read off the encoded strategy,
-% using explicit strategy atoms where the atom name does not carry a reliable
-% range marker, with a legacy marker fallback for older place-value names.
-multi_digit_addition_attachment(Code) :-
-    sub_atom(Code, 0, _, _, 'IM-G1'),
-    lesson_monitoring:explicit_lesson_strategy(Code, addition, Strategy, _),
-    two_digit_strategy(Strategy),
-    !.
-
-multi_digit_operation_lesson(Code, addition) :-
-    multi_digit_addition_attachment(Code).
-multi_digit_operation_lesson(Code, addition) :-
-    \+ sub_atom(Code, 0, _, _, 'IM-GK'),
-    \+ sub_atom(Code, 0, _, _, 'IM-G1'),
-    attached_strategy(Code, addition, Strategy),
-    two_digit_strategy(Strategy),
-    !.
-multi_digit_operation_lesson(Code, subtraction) :-
-    attached_strategy(Code, subtraction, Strategy),
-    multi_digit_strategy(subtraction, Strategy),
-    !.
-multi_digit_operation_lesson(Code, multiplication) :-
-    attached_strategy(Code, multiplication, Strategy),
-    multi_digit_strategy(multiplication, Strategy),
-    !.
-
-attached_strategy(Code, Operation, Strategy) :-
-    lesson_monitoring:explicit_lesson_strategy(Code, Operation, Strategy, _).
-attached_strategy(Code, Operation, Strategy) :-
-    compiled_action_mappings:compiled_lesson_strategy(Code, Operation, Strategy, _).
-
-multi_digit_strategy(subtraction, decompose_base_for_ones).
-multi_digit_strategy(subtraction, take_away_base_ones).
-multi_digit_strategy(subtraction, borrow_across_zero_cascade).
-multi_digit_strategy(subtraction, add_instead_of_subtract_column).
-multi_digit_strategy(subtraction, smaller_from_larger_in_column).
-multi_digit_strategy(multiplication, distribute_group_size_split).
-multi_digit_strategy(multiplication, regroup_to_base_preserving_total).
-
-two_digit_strategy(Strategy) :-
-    two_digit_strategy_atom(Strategy),
-    !.
-two_digit_strategy(Strategy) :-
-    two_digit_strategy_marker(Marker),
-    sub_atom(Strategy, _, _, _, Marker),
-    !.
-
-% Strategy atoms known to require the multi-digit representative equation even
-% though their names do not necessarily contain ten/tens/place/decade.
-two_digit_strategy_atom(base_ones_chunking).
-
-% Strategy-name substrings that mark multi-digit addition work.
-two_digit_strategy_marker(ten).      % make_ten, add_through_ten, count_on_by_tens
-two_digit_strategy_marker(tens).     % add_tens_then_ones and kin
-two_digit_strategy_marker(place).    % place_value strategies
-two_digit_strategy_marker(decade).   % decade-crossing strategies
+registered_task_equation(Code, addition, equation(A, '+', B, R)) :-
+    compiled_task_instances:compiled_lesson_task_instance(Code, productive-add(A, B), _),
+    R is A + B.
+registered_task_equation(Code, subtraction, equation(A, '-', B, R)) :-
+    compiled_task_instances:compiled_lesson_task_instance(Code, productive-subtract(A, B), _),
+    R is A - B.
+registered_task_equation(Code, multiplication, equation(A, '*', B, R)) :-
+    compiled_task_instances:compiled_lesson_task_instance(Code, productive-multiply(A, B), _),
+    R is A * B.
 
 % =========================================================================
 % 2. The likely notation deformations for a lesson's representative equation.
@@ -419,18 +356,30 @@ notation_monitoring_chart(Code, Doc) :-
         cells: Cells
     },
     notation_host_note(Code, Operation, HostNote).
+notation_monitoring_chart(Code, Doc) :-
+    lesson_monitoring:im_lesson(Code, _, _, _, _, _),
+    \+ notation_chart_lesson(Code, _, _, _),
+    lesson_title(Code, Title),
+    lesson_standard_codes(Code, Standards),
+    Doc = _{
+        kind: no_lesson_notation_chart,
+        lesson_code: Code,
+        title: Title,
+        standards: Standards,
+        message: "No lesson-specific notation material is registered for this lesson."
+    }.
 
 % Preserve the established K/G1 addition chart payload apart from the new
 % operation field. Other charts state the generalized hosting rule plainly.
 notation_host_note(Code, addition,
-                   "The IM K/G1 corpus has no number-writing lessons; this notation deformation is hosted on an addition lesson and rendered over a representative equation from the lesson's operation. The chart is a parametric render over that equation, not a count of corpus instances.") :-
+                   "The IM K/G1 corpus has no number-writing lessons; this notation chart uses a registered addition task from the lesson. The chart renders that task rather than counting corpus instances of a deformation.") :-
     ( sub_atom(Code, 0, _, _, 'IM-GK')
     ; sub_atom(Code, 0, _, _, 'IM-G1')
     ),
     !.
 notation_host_note(_Code, Operation, HostNote) :-
     format(string(HostNote),
-           "This lesson hosts a notation chart through its ~w operation. Each deformation is admitted by cited evidence and rendered over a representative equation, not counted as an instance in this lesson.",
+           "This lesson hosts a notation chart through its ~w operation. Its equation comes from a registered lesson task; each deformation is admitted by cited evidence and is not counted as an instance in this lesson.",
            [Operation]).
 
 % notation_chart_cell(Code, Host, equation(A,Op,B,R), CellDict): the productive

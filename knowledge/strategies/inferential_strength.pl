@@ -56,6 +56,7 @@
             target_inferential_strength_witness/2,% +Target,-Witness
             lesson_inferential_strength/4,     % +Ops,+Strategies,+Misconceptions,-Report
             lesson_inferential_strength_for/2, % +LessonCode,-Report   (pulls vocabulary from lesson_monitoring if loaded)
+            lesson_inferential_strength_for/3, % +LessonCode,-Report,-Source (precomputed or computed)
             lesson_inferential_strength_delta/2,% +LessonCode,-Delta    (needs learner pre-state)
             commensurate_lesson/3,         % ?IMCode,?TraditionalCode,?Standard
             inferential_strength_comparison/4, % +Standard,-IMReport,-TraditionalReport,-Delta
@@ -78,6 +79,14 @@
                 incompatibility_with_witness/3
               ]).
 :- use_module(library(lists)).
+
+% Big Red's carving table is optional at load time so isolated formal loads
+% retain the original computed path. The application checkout ships the facts.
+:- prolog_load_context(directory, Directory),
+   directory_file_path(Directory,
+                       '../../curriculum/im/generated/predicate_carving_facts.pl',
+                       GeneratedFacts),
+   ( exists_file(GeneratedFacts) -> use_module(GeneratedFacts, []) ; true ).
 :- use_module(library(apply)).
 :- use_module(library(aggregate)).
 :- use_module(library(http/json)).
@@ -571,6 +580,19 @@ sum_incompat(StrategyPowers, Sum) :-
 %   lesson_monitoring_not_loaded when the chart module is unavailable, so this
 %   module stays loadable on its own.
 lesson_inferential_strength_for(LessonCode, Report) :-
+    lesson_inferential_strength_for(LessonCode, Report, _).
+
+
+%!  lesson_inferential_strength_for(+LessonCode, -Report, -Source) is det.
+%
+%   Prefer the build-time carving table when present.  The live calculation is
+%   deliberately retained for absent generated files and lesson ids not in a
+%   collected run.
+lesson_inferential_strength_for(LessonCode, Report, precomputed) :-
+    current_predicate(predicate_carving_facts:precomputed_lesson_inferential_strength/2),
+    predicate_carving_facts:precomputed_lesson_inferential_strength(LessonCode, Report),
+    !.
+lesson_inferential_strength_for(LessonCode, Report, computed) :-
     ( current_predicate(lesson_monitoring:lesson_strategy/4),
       current_predicate(lesson_monitoring:lesson_misconception/4)
     ->  findall(strategy(Op, Kind),
