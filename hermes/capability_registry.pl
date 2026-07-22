@@ -201,7 +201,6 @@ capability('viability_witness', 'cw_driver', 'unclassified', ['cost', 'resources
 capability('visualize_coordination', 'unit_coordination_viz', 'learner', [], routed_paged).
 capability('whole_number_addsub_claim_witness', 'cw_driver', 'unclassified', ['canonical', 'source'], routed_paged).
 capability('whole_number_claim_witness', 'cw_whole_number_claim', 'unclassified', ['canonical', 'source'], routed_paged).
-capability('curriculum/im/generated/compiled_task_instances.pl', 'compiled_task_instances', 'unclassified', [], orphan_module).
 capability('curriculum/im/generated/vision_lesson_digest.pl', 'vision_lesson_digest', 'unclassified', [], orphan_module).
 capability('curriculum/im/im_glossary.pl', 'im_glossary', 'unclassified', [], orphan_module).
 capability('curriculum/im_harness.pl', 'im_harness', 'unclassified', [], orphan_module).
@@ -790,7 +789,6 @@ capability_page('viability_witness', '/more-zeeman/witnesses.html').
 capability_page('visualize_coordination', '/more-zeeman/coordination.html').
 capability_page('whole_number_addsub_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('whole_number_claim_witness', '/more-zeeman/witnesses.html').
-capability_page('curriculum/im/generated/compiled_task_instances.pl', '/more-zeeman/visualizations.html').
 capability_page('curriculum/im/generated/vision_lesson_digest.pl', '/more-zeeman/monitoring_chart.html').
 capability_page('curriculum/im/im_glossary.pl', '/more-zeeman/monitoring_chart.html').
 capability_page('curriculum/im_harness.pl', '/more-zeeman/monitoring_chart.html').

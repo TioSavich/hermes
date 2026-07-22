@@ -243,13 +243,11 @@ field_context_clusters(Code, DirectClusters, Clusters) :-
 
 
 fallback_cluster_for_lesson(Code, DirectClusters, chart_cluster(Source, ClusterId, Info)) :-
-    lesson_monitoring:lesson_unit_anchor(Code, UnitAnchor),
-    lesson_monitoring:monitoring_cluster_source(Source, RelativePath),
-    lesson_monitoring:monitoring_cluster_dict(RelativePath, Cluster),
-    lesson_monitoring:dict_value(Cluster, im_anchors, Anchors),
-    lesson_monitoring:cluster_anchor_matches(Code, UnitAnchor, Anchors),
-    lesson_monitoring:dict_value(Cluster, id, ClusterId),
-    lesson_monitoring:cluster_info(Cluster, Info0),
+    % Do not reintroduce every cluster with this unit anchor here.  The
+    % monitoring selector already applies the lesson's explicit strategy facts
+    % before it admits a cluster, so this fallback must use that same
+    % lesson-grain operation filter.
+    lesson_monitoring:monitoring_chart_cluster(Code, Source, ClusterId, Info0),
     \+ memberchk(chart_cluster(Source, ClusterId, Info0), DirectClusters),
     Info = [evidence_level(unit_cluster_fallback)|Info0].
 

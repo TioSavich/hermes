@@ -241,12 +241,31 @@ trace.</p>
       return text ? text.charAt(0).toUpperCase() + text.slice(1) : 'Unnamed strategy';
     }
 
-    function renderMonitoringVisuals(code) {
+    function renderDeformationProductiveScene(box, code, chart) {
+      var doc = chart && chart.productive_scene;
+      if (!doc || !Array.isArray(doc.frames) || !doc.frames.length || !window.HermesDrawer) return false;
+      var frame = doc.frames[doc.frames.length - 1];
+      var bounds = HermesDrawer._internal.documentBounds(doc);
+      var row = document.createElement('div');
+      row.className = 'visual-pair';
+      var figure = document.createElement('figure');
+      var cap = document.createElement('figcaption');
+      cap.textContent = 'Productive strategy from this lesson’s deformation chart.';
+      figure.appendChild(cap);
+      figure.appendChild(HermesDrawer._internal.buildSvg(frame, bounds));
+      row.appendChild(figure);
+      box.appendChild(row);
+      return true;
+    }
+
+    function renderMonitoringVisuals(code, deformationChart) {
       var box = el('monitoring-visuals');
       var pairs = VISUALS[code] || [];
       box.textContent = '';
       if (!pairs.length) {
-        box.appendChild(noteP('No committed productive-strategy and documented-error filmstrip pair is available for this lesson.'));
+        if (!renderDeformationProductiveScene(box, code, deformationChart)) {
+          box.appendChild(noteP('No committed productive-strategy and documented-error filmstrip pair is available for this lesson.'));
+        }
         return;
       }
       pairs.forEach(function (pair) {
@@ -374,6 +393,26 @@ trace.</p>
       });
     }
 
+    function renderRegisteredTaskInstances(items) {
+      var target = el('lesson-task');
+      target.textContent = '';
+      target.appendChild(noteP('The full activity prompt is not carried here; these registered task instances are the excerpts the live payload does carry.'));
+      items.forEach(function (item) {
+        var p = document.createElement('p');
+        p.className = 'guide-item';
+        var heading = document.createElement('b');
+        heading.textContent = 'Registered task instance — ' + (item.position || 'lesson task');
+        p.appendChild(heading);
+        p.appendChild(document.createElement('br'));
+        p.appendChild(document.createTextNode(item.excerpt || item.task || ''));
+        var source = document.createElement('span');
+        source.className = 'guide-source';
+        source.textContent = item.source || 'registered source';
+        p.appendChild(source);
+        target.appendChild(p);
+      });
+    }
+
     // ---- figure coverage (text only; the images stay in the gallery) ----
     // The join behind this count runs in Prolog over tracked interpreted-figure
     // facts (curriculum/im/docling_figures_interpreted.pl). The classification
@@ -422,8 +461,14 @@ trace.</p>
       el('chart-title').textContent = 'Monitoring chart — ' + title;
       el('chart-code').textContent = code;
 
-      renderGuideItems('lesson-task', chart.activity_prompt || context.activity_prompt,
-        'The live lesson payload does not carry the activity prompt. Open the teacher guide before teaching this lesson.');
+      var registeredTasks = Array.isArray(chart.registered_task_instances)
+        ? chart.registered_task_instances : [];
+      if (registeredTasks.length) {
+        renderRegisteredTaskInstances(registeredTasks);
+      } else {
+        renderGuideItems('lesson-task', chart.activity_prompt || context.activity_prompt,
+          'The live lesson payload does not carry the activity prompt. Open the teacher guide before teaching this lesson.');
+      }
       var anchors = (context.standards || []).filter(function (row) { return row.framework === 'im_lesson'; });
       el('lesson-goal').textContent = anchors.length
         ? anchors[0].statement
@@ -565,7 +610,8 @@ trace.</p>
       });
 
       renderFigureCoverage(chart.figures);
-      renderMonitoringVisuals(code);
+      var deformationChart = chart.deformation_chart && chart.deformation_chart.chart;
+      renderMonitoringVisuals(code, deformationChart);
 
       // Point the visualizer at the live lesson's leading strand, mirroring
       // lead_strand() in the generator.
@@ -578,6 +624,22 @@ trace.</p>
       var viz = el('viz');
       var drawingNote = el('strategy-drawing-note');
       var unavailable = el('strategy-unavailable');
+      var productiveScene = deformationChart && deformationChart.productive_scene;
+      if (productiveScene && Array.isArray(productiveScene.frames) && productiveScene.frames.length) {
+        drawingNote.hidden = false;
+        drawingNote.textContent = 'This productive scene comes from the lesson’s deformation chart.';
+        viz.hidden = false;
+        unavailable.hidden = true;
+        var calcBar = viz.querySelector('.calc-bar');
+        if (calcBar) calcBar.hidden = true;
+        d.ingest(productiveScene);
+        shownLesson = code;
+        shownSource = 'live';
+        if (typeof window.bindDeformationLesson === 'function') window.bindDeformationLesson(code, deformationChart);
+        return;
+      }
+      var calcBar = viz.querySelector('.calc-bar');
+      if (calcBar) calcBar.hidden = false;
       if (!strand || !OP_FOR_STRAND[strand]) {
         drawingNote.hidden = true;
         viz.hidden = true;
@@ -592,7 +654,7 @@ trace.</p>
       if (!strand || !OP_FOR_STRAND[strand]) {
         shownLesson = code;
         shownSource = 'live';
-        if (typeof window.bindDeformationLesson === 'function') window.bindDeformationLesson(code);
+        if (typeof window.bindDeformationLesson === 'function') window.bindDeformationLesson(code, deformationChart);
         return;
       }
       var addSub = strand === 'addition' || strand === 'subtraction';
@@ -605,7 +667,7 @@ trace.</p>
       shownLesson = code;
       shownSource = 'live';
       if (typeof window.bindDeformationLesson === 'function') {
-        window.bindDeformationLesson(code);
+        window.bindDeformationLesson(code, deformationChart);
       }
     }
 
@@ -712,9 +774,16 @@ trace.</p>
       return chartedLessons;
     }
 
-    window.bindDeformationLesson = async function (monitoringCode) {
+    window.bindDeformationLesson = async function (monitoringCode, liveChart) {
       const context = document.getElementById('deformation-context');
       const input = document.getElementById('deformation-code');
+      if (liveChart && typeof liveChart === 'object') {
+        window.activeDeformationChart = liveChart;
+        input.value = monitoringCode;
+        context.textContent = 'This wrong-answer chart belongs to ' + monitoringCode + '.';
+        return;
+      }
+      window.activeDeformationChart = null;
       try {
         const lessons = await loadChartedLessons();
         const matching = lessons.find(function (lesson) { return lesson.code === monitoringCode; });
@@ -737,6 +806,10 @@ trace.</p>
     const out = document.getElementById('deformation-output');
     const code = document.getElementById('deformation-code').value.trim();
     if (!code) { out.textContent = 'No wrong-answer chart is available for this lesson.'; return; }
+    if (window.activeDeformationChart) {
+      out.textContent = JSON.stringify(window.activeDeformationChart, null, 2);
+      return;
+    }
     HermesFetch.setState(out, 'pending', 'Requesting the wrong-answer pattern chart…');
     try {
       const result = await HermesFetch.requestJSON('/api/lesson_deformation_chart', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code}),timeoutMs:HermesFetch.HEAVY_PROLOG_TIMEOUT_MS});

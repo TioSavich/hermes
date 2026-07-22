@@ -156,6 +156,7 @@ load_runtime :-
     use_module(render(notation_scene), []),
     use_module(math(fraction_cgi_dispatch), []),
     use_module(im_lessons(lesson_deformation_chart), []),
+    use_module(im_lessons('generated/compiled_task_instances'), []),
     % The notation monitoring chart (519 lessons, GK-G6, four operations). Import-free for the same
     % reason as lesson_deformation_chart: its monitoring_chart_*/N predicates
     % must not collide with the lesson_monitoring exports imported above.
@@ -2716,6 +2717,7 @@ monitoring_chart_export_dict(Code, Dict) :-
     ),
     maplist(gap_move_export_dict, GapMoves, GapMoveDicts),
     deformation_chart_scope_export(Code, DeformationChartDict),
+    registered_task_instances_export(Code, TaskInstances),
     atom_string(Code, CodeString),
     Dict0 = _{
         lesson_code: CodeString,
@@ -2727,6 +2729,7 @@ monitoring_chart_export_dict(Code, Dict) :-
         unanticipated_strategies: GapMoveDicts,
         figures: FigureDict,
         deformation_chart: DeformationChartDict,
+        registered_task_instances: TaskInstances,
         inferential_strength: InferentialStrengthDict,
         pml_facts: PMLDicts
     },
@@ -2777,20 +2780,24 @@ state_label_text(Value, Text) :-
 
 deformation_chart_scope_export(Code, Dict) :-
     findall(CoveredCode,
-            lesson_deformation_chart:lesson_chart_lesson(CoveredCode, _, _, _, _),
+            ( lesson_deformation_chart:lesson_chart_lesson(CoveredCode, _, _, _, _)
+            ; lesson_deformation_chart:lesson_division_deformation_chart(CoveredCode, _)
+            ),
             Codes0),
     sort(Codes0, Codes),
     maplist(atom_string, Codes, CodeStrings),
     atom_string(Code, CodeString),
-    (   memberchk(Code, Codes)
+    (   lesson_deformation_chart:monitoring_chart(Code, Chart0)
     ->  Dict = _{
             available: true,
             coverage: "covered",
-            scope: "hand_authored_lesson_deformation_charts",
+            scope: "lesson_deformation_charts",
             lesson_code: CodeString,
             request_op: "lesson_deformation_chart",
-            covered_lesson_codes: CodeStrings
-        }
+            covered_lesson_codes: CodeStrings,
+            chart: Chart
+        },
+        json_safe(Chart0, Chart)
     ;   Dict = _{
             available: false,
             coverage: "scope_limited",
@@ -2801,6 +2808,28 @@ deformation_chart_scope_export(Code, Dict) :-
             note: "Deformation charts are currently authored only for the listed lessons."
         }
     ).
+
+registered_task_instances_export(Code, Dicts) :-
+    findall(Dict,
+            ( compiled_task_instances:compiled_lesson_task_instance(Code, Task, Evidence),
+              registered_task_instance_export(Task, Evidence, Dict)
+            ),
+            Dicts0),
+    sort(Dicts0, Dicts).
+
+registered_task_instance_export(
+        Task,
+        task_evidence(rule(Rule), source(Source), position(Position), excerpt(Excerpt)),
+        _{registered: true,
+          task: TaskText,
+          rule: RuleText,
+          source: SourceText,
+          position: PositionText,
+          excerpt: Excerpt}) :-
+    term_to_text(Task, TaskText),
+    term_to_text(Rule, RuleText),
+    term_to_text(Source, SourceText),
+    term_to_text(Position, PositionText).
 
 % One flat gap pair. "Licensed" here means registry coverage (moves the
 % action automata can run), not normative entitlement; an empty list on a

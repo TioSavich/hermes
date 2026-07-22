@@ -69,6 +69,7 @@
 :- use_module(render(attested_deformations)).
 :- use_module(render(parametric_partition_deformation)).
 :- use_module(render(parametric_fraction_errors)).
+:- use_module(render(set_grouping_scene)).
 :- use_module(lessons('im/generated/default_fill_lessons')).
 :- use_module(lessons('im/lesson_monitoring'),
               [ im_lesson/6,
@@ -302,6 +303,9 @@ deformation_scene_for_lesson(Code, Host, Frac, equipartition_failure(ErrorType),
 % misconception_registry_entry/5, so this chart does not label it a registered
 % misconception.
 lesson_division_deformation_chart('IM-G6-U4-L10', Chart) :-
+    % This warm-up instance is a registered task, so its equal-share scene can
+    % be drawn without inventing a fraction-partition prompt the payload lacks.
+    set_grouping_scene:set_grouping_render_json(fair_share(12, 3), ProductiveScene),
     Chart = _{
         kind: lesson_deformation_chart,
         lesson_code: 'IM-G6-U4-L10',
@@ -313,6 +317,7 @@ lesson_division_deformation_chart('IM-G6-U4-L10', Chart) :-
             _{expression: "12 / 4", position: "warm_up", source_pages: "181-183"},
             _{expression: "12 / 6", position: "warm_up", source_pages: "181-183"}
         ],
+        productive_scene: ProductiveScene,
         likely_deformations: [
             _{name: "referent_unit_shift",
               status: "likely_deformation",
