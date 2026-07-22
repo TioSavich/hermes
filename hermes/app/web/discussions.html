@@ -88,6 +88,9 @@
   .claim-pic { min-width: 150px; }
   .claim-pic svg { display: block; width: 170px; height: auto; }
   .claim-pic .pic-note { font-size: .72rem; color: var(--muted, #7a7466); }
+  .try-next { border-left: 4px solid var(--gold, #d4a747); background: var(--paper-cool, #ede4cf); padding: 12px 14px; margin: 12px 0; }
+  .try-next h3 { margin-top: 0; color: var(--ink, #0d0c08); }
+  .try-next p { margin: .45em 0; font-size: .9rem; line-height: 1.45; }
   .event-tools { margin-top: 28px; padding: 18px 22px; border: 1px solid var(--line, rgba(13,12,8,.16)); border-radius: 12px; background: rgba(255,253,247,.7); }
   .event-tools textarea { width: 100%; min-height: 9rem; resize: vertical; font: .78rem/1.45 var(--mono, monospace); padding: 10px; border: 1px solid var(--line, rgba(13,12,8,.16)); border-radius: 6px; background: var(--paper, #f4ead6); color: var(--ink, #0d0c08); }
   .event-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
@@ -129,7 +132,7 @@
   <div class="composer">
     <textarea id="paste" placeholder="Teacher: What do we think about one half and two fourths?&#10;Student A: They go in the same place because…"></textarea>
     <div class="composer-actions">
-      <button class="btn" id="run">Build the report</button>
+      <button class="btn" id="run">Build a discussion report</button>
       <label class="btn ghost" for="file-input">&#128206; Attach file</label>
       <input type="file" id="file-input"
              accept=".csv,.tsv,.txt,.md,.text,.pdf,.docx,image/*,audio/*" hidden />
@@ -142,6 +145,7 @@
        audio recordings are sent to the campus model to be transcribed into the box first —
        check the transcript against the original before building the report. Both the
        transcription and a live run need the campus connection.</p>
+    <p class="fmt-note"><b>Optional next step.</b> Needs campus connection; your transcript will be pseudonymized before analysis.</p>
   </div>
 
   <section class="work-tools">
@@ -396,7 +400,7 @@ $("file-input").onchange = () => {
   if (!handed) return;
   try { sessionStorage.removeItem("hermes-transcript-handoff"); } catch (_) {}
   $("paste").value = handed;
-  $("status").textContent = "Brought over from the console. Press Build the report.";
+  $("status").textContent = "Brought over from the console. Needs campus connection; your transcript will be pseudonymized before analysis.";
   $("status").className = "status";
 })();
 
@@ -439,10 +443,21 @@ function renderReport(r, note){
     `<li><b>${esc(p.speaker)}</b> <span class="anchor">${esc((p.utterances||[]).join(", "))}</span>
      &mdash; ${esc(p.move)} (${esc(p.register)}); ${esc(p.response)}.</li>`).join("") || "<li>no move readings returned</li>";
   const caveats = (r.caveats||[]).map(c => `<li>${esc(c)}</li>`).join("");
+  const firstClaim = (r.claims || [])[0] || {};
+  const firstTension = (r.tensions || [])[0] || {};
+  const firstQuestion = (r.question_candidates || [])[0];
+  const grouping = firstTension.speakers && firstTension.speakers.length
+    ? `Bring ${firstTension.speakers.join(' and ')} together to compare their ideas.`
+    : (firstClaim.speaker ? `Ask ${firstClaim.speaker} to share this idea with a partner before the class discussion.` : 'Choose two students with different approaches to compare their ideas.');
+  const question = typeof firstQuestion === 'string' ? firstQuestion
+    : (firstQuestion && (firstQuestion.question || firstQuestion.text))
+      || 'What in the problem supports your idea?';
+  const prompt = firstClaim.said ? `This responds to: “${esc(firstClaim.said)}”` : 'This responds to the submitted discussion.';
   $("report").innerHTML = `
     <div class="report">
       ${note ? `<p class="status">${esc(note)}</p>` : ""}
       <div class="headline">${esc(r.headline)}</div>
+      <section class="try-next"><h3>Try next</h3><p><b>Grouping:</b> ${esc(grouping)}</p><p><b>Ask:</b> ${esc(question)}</p><p class="anchor">${prompt}</p></section>
       <h3>Claims, checked</h3>
       <table><tr><th>Who</th><th>Said</th><th>Finding</th>${anyPics ? "<th>Picture</th>" : ""}</tr>${claims}</table>
       <h3>Conflicts between speakers</h3><ul>${tensions}</ul>
@@ -450,7 +465,7 @@ function renderReport(r, note){
       <h3>Notable moves and how the class responded</h3><ul>${moves}</ul>
       <div class="caveats"><ul>${caveats}</ul><p>${esc(r.attribution || "")}</p></div>
       ${r.transcript ? `<details><summary>The blinded transcript</summary><pre>${esc(r.transcript)}</pre></details>` : ""}
-      <details><summary>Machine detail (for auditing)</summary><pre>${esc(JSON.stringify(r.machine || {}, null, 1))}</pre></details>
+      <details><summary>Sources and details</summary><pre>${esc(JSON.stringify(r.machine || {}, null, 1))}</pre></details>
       ${r.transcript ? `<button class="btn ghost" onclick="rerun()">Run this transcript again</button>` : ""}
     </div>`;
   window._current = r;

@@ -210,7 +210,7 @@
 
       <section id="notation-extra" class="panel" data-extra="notation" hidden>
         <h2>Notation app controls</h2>
-        <p class="subhead">These calls return the app payload directly. A rejected lesson or notation kind remains a reported error.</p>
+        <p class="subhead">These calls return the app payload directly. A notation chart uses a registered task from the requested lesson; where none is registered, the payload says so rather than reusing another lesson's chart.</p>
         <div class="calc-bar">
           <label>lesson <input id="notation-lesson" value="IM-G1-U3-L17"></label>
           <button type="button" data-notation-route="/api/notation_render">notation reply</button>
@@ -224,7 +224,7 @@
         <p>Contributor notes remain available below.</p>
         <details>
           <summary>For contributors: modules described here but not loaded</summary>
-          <p><code>curriculum/im/generated/compiled_task_instances.pl</code> is the generated, source-backed task-instance cache. No runtime module currently consults its <code>compiled_lesson_task_instance/3</code> relation, so it remains described here without being added to the worker closure.</p>
+          <p><code>curriculum/im/generated/compiled_task_instances.pl</code> is the generated, source-backed task-instance cache. The notation-chart path consults its <code>compiled_lesson_task_instance/3</code> relation to select lesson-specific equations.</p>
         </details>
       </section>
     </div>

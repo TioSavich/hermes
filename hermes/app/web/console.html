@@ -367,6 +367,8 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
 /* ---- monitoring / anticipation chart ---- */
 .mc-bar { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
 .mc-bar input { flex: 1; min-width: 9rem; padding: 0.42rem 0.6rem; border: 1px solid var(--line); border-radius: 7px; background: var(--paper-cool); font: 0.9rem var(--mono); }
+.mc-bar-input { flex: 1; min-width: 13rem; padding: 0.42rem 0.6rem; border: 1px solid var(--line); border-radius: 7px; background: var(--paper-cool); font: 0.9rem var(--mono); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 .chart { border: 1px solid var(--line); border-radius: 10px; background: var(--paper); padding: 1rem 1.1rem; margin-top: 0.85rem; }
 .chart-head h3 { margin: 0; font-size: 1.15rem; }
 .chart-head .chip { margin-top: 0.4rem; }
@@ -495,10 +497,21 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
 
     <!-- ============ WORKSPACE ============ -->
     <section class="panel active" data-tab="workspace">
-      <p class="panel-lede">Bring a discussion, read what the app makes of it, and open a visualizer. The research features (modal-posture scoring and the Gemma class workflow) wait under <em>Advanced / research</em> in the top bar.</p>
+      <p class="panel-lede">Plan a lesson or bring a discussion. Research tools wait under <em>Advanced / research</em> in the top bar.</p>
 
       <div class="card">
-        <h2><span class="num">1</span>Your discussion</h2>
+        <h2><span class="num">1</span>Plan tomorrow's lesson</h2>
+        <p class="hint">Choose your IM lesson to make a one-page card with what to listen for, a likely trouble spot, and questions to ask.</p>
+        <div class="row">
+          <label class="sr-only" for="plan-lesson-code">IM lesson</label>
+          <input id="plan-lesson-code" class="mc-bar-input" placeholder="IM lesson, for example IM-G6-U4-L6" autocomplete="off" />
+          <button class="btn primary" id="plan-lesson-btn">Plan this lesson</button>
+        </div>
+        <p id="plan-lesson-note" class="hint" aria-live="polite"></p>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">2</span>Your discussion</h2>
         <p class="hint">Paste a Canvas discussion (or any <code>Speaker: text</code> transcript / table with Speaker &amp; text columns), drop a file, or load the synthetic sample. The app detects the format for you. For the claim-check report of a transcript, use <a href="discussions.html">Discussions</a> in the sidebar.</p>
         <div id="data-drop" class="dropzone">
           <textarea id="data-input" class="data-input" placeholder="Maria Rivera: A square is a rectangle because…&#10;David Chen: At first glance…&#10;&#10;…or drop a .txt / .md / .csv file here"></textarea>
@@ -513,11 +526,11 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
       </div>
 
       <div class="card">
-        <h2><span class="num">2</span>Analyze &amp; pair</h2>
+        <h2><span class="num">3</span>Find a next teaching move</h2>
         <p class="hint">Reads the discussion locally (no cloud, no key) and proposes student pairs with a plain reason for each.</p>
         <div class="row">
-          <button class="btn primary" id="analyze-btn">Analyze &amp; pair</button>
-          <button class="btn ghost" id="to-report-btn" title="Carry this discussion to the Discussions page and build the claim-check report there (needs the campus connection).">Claim-check report &rarr;</button>
+          <button class="btn primary" id="analyze-btn">Find pairs to try</button>
+          <button class="btn ghost" id="to-report-btn" title="Open an optional discussion report. It needs a campus connection; the transcript is pseudonymized before analysis.">Build a discussion report</button>
           <label class="muted-inline">domain model:
             <select id="force-mode"><option value="">auto</option><option value="general">off (discourse only)</option></select>
           </label>
@@ -538,7 +551,7 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
       </div>
 
       <div class="card calculator-card">
-        <h2><span class="num">+</span>The Hermeneutic Calculator</h2>
+        <h2><span class="num">+</span>Work through a math strategy</h2>
         <p class="hint">Enter whole numbers, decimals, or fractions. Whole-number arithmetic uses the selected strategy. Type <code>vs</code> between two fractions or decimals to run a comparison machine. Same-denominator fraction addition and the wired decimal operations run through their symbolic machines.</p>
         <div class="calculator-shell">
           <div class="calculator-display">
@@ -554,7 +567,7 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
               <button type="button" class="calc-key clear" data-calc-action="clear">clear</button><button type="button" class="calc-key equals" data-calc-action="run">=</button>
             </div>
             <div class="calculator-strategies">
-              <label for="calc-strategy">strategy machine</label>
+              <label for="calc-strategy">method to show</label>
               <select id="calc-strategy" disabled></select>
               <div id="calc-strategy-status" class="muted-inline" aria-live="polite">Loading runnable strategies…</div>
               <div class="calc-examples" aria-label="calculator examples">
@@ -963,7 +976,7 @@ function renderAnalysis(data) {
     html += '<ul class="dyadlist">';
     for (const p of pairs) {
       const why = (p.reasons || []).map(pairReasonGloss).join('; ');
-      html += `<li><div class="dyad-pair">${esc(p.a)}<span class="arrow">↔</span>${esc(p.b)}<span class="dyad-score">score ${esc(String(p.score ?? ''))}</span></div><div class="dyad-why">${esc(why || '—')}</div></li>`;
+      html += `<li><div class="dyad-pair">${esc(p.a)}<span class="arrow">↔</span>${esc(p.b)}</div><div class="dyad-why">${esc(why || '—')}</div></li>`;
     }
     html += '</ul>';
   } else html += '<div class="muted-inline">No candidate pairs found in this text.</div>';
@@ -1241,7 +1254,7 @@ function lessonCard(row) {
   const code = row.lesson_code || '';
   const ready = (row.status === 'fully_connected');
   const usable = (row.coverage_status === 'usable');
-  const badge = ready ? '✓ ready' : (usable ? '◐ usable' : '◐ thin');
+  const badge = ready ? 'Prepared for classroom use' : (usable ? 'Partial notes' : 'Not prepared yet');
   const title = row.title ? `<span class="ttl">${esc(row.title)}</span>` : '';
   return `<button class="lesson-card" data-lesson="${escAttr(code)}"><span class="code">${esc(code)}</span>${title}<span class="badge ${ready ? 'ready' : 'thin'}">${badge}</span></button>`;
 }
@@ -1268,7 +1281,7 @@ async function loadCatalog() {
   ALL_LESSONS = r.lessons || [];
   READY_LESSONS = (r.connected_examples || []);
   if (READY_LESSONS.length) {
-    CATALOG_DEFAULT = { rows: READY_LESSONS.slice(0, 24), label: "Ready exemplars" };
+    CATALOG_DEFAULT = { rows: READY_LESSONS.slice(0, 24), label: "Prepared lessons" };
   } else {
     // No lesson clears the full-connectivity bar in this installation (the
     // literature dimensions ride on the local corpus). Fall back to the
@@ -1277,9 +1290,9 @@ async function loadCatalog() {
     const usable = ALL_LESSONS
       .filter(l => l.coverage_status === 'usable')
       .sort((a, b) => lessonSubstance(b) - lessonSubstance(a));
-    CATALOG_DEFAULT = { rows: usable.slice(0, 24), label: "Usable exemplars" };
+    CATALOG_DEFAULT = { rows: usable.slice(0, 24), label: "Lessons with partial notes" };
   }
-  $("#catalog-stats").innerHTML = `<b>${s.total_lessons || 0}</b> lessons encoded · <b>${s.fully_connected_lessons || 0}</b> ready to explore · <b>${s.usable_lessons || 0}</b> usable · ${s.review_lessons || 0} need work`;
+  $("#catalog-stats").textContent = `${s.total_lessons || 0} lessons available`;
   $("#catalog").innerHTML = renderCatalog(CATALOG_DEFAULT.rows, CATALOG_DEFAULT.label);
   wireCatalogClicks();
 }
@@ -1383,15 +1396,10 @@ async function openLesson(code) {
   const r = data.result;
   if (!r) { detail.innerHTML = `<div class="chat-answer locked">⚠ ${esc((data.error) || ('no context for ' + code))}</div>`; return; }
   const lesson = r.lesson || {};
-  const power = r.inferential_strength || {};
   const standards = (r.standards || []).filter(x => x.framework !== 'im_lesson').map(x => `${x.framework} ${x.code}`);
   const strategies = (r.strategies || []).map(x => `${x.operation || ''}:${x.kind || ''} [${x.evidence_level || '—'}]`);
   const clusters = (r.monitoring_clusters || []).map(x => `${x.source || ''}:${x.id || ''}`);
   const misconceptions = r.misconceptions || [];
-  const perOp = power.per_operation || [];
-  const pathsLine = perOp.length
-    ? perOp.map(o => `${esc(o.operation)} <b>${esc(String(o.proof_paths))}</b>`).join(' · ')
-    : `<b>${esc(String(power.proof_paths ?? 0))}</b>`;
   // Field brief: only when the response carries it.
   const brief = r.field_brief || {};
   const briefLine = brief.primary_action
@@ -1401,15 +1409,15 @@ async function openLesson(code) {
   const cov = r.coverage_status || 'unknown';
   const nearby = (cov !== 'usable' && cov !== 'fully_connected') ? nearbyStrongLessons(code) : [];
   const nearbyLine = nearby.length
-    ? `<div class="exp-line"><b>Strongest nearby:</b> ${nearby.map(n =>
+    ? `<div class="exp-line"><b>Try these nearby prepared lessons:</b> ${nearby.map(n =>
         `<a href="#" class="nearby-lesson" data-lesson="${escAttr(n.lesson_code)}">${esc(n.lesson_code)}</a>`).join(' · ')}</div>`
     : '';
   detail.innerHTML = `<div class="card"><div class="fc">
     <div class="fc-head"><h3>${esc(lesson.title || code)}</h3>
-      <div class="fc-meta"><span class="chip">${esc(code)}</span><span class="chip">coverage: ${esc(r.coverage_status || 'unknown')}</span><span class="chip">grade ${esc(String(lesson.grade ?? '—'))}</span></div>
+      <div class="fc-meta"><span class="chip">${esc(code)}</span><span class="chip">grade ${esc(String(lesson.grade ?? '—'))}</span></div>
       ${briefLine}${nearbyLine}
       <div class="ce-row">
-        <a class="stance-chip" href="../more-zeeman/monitoring_chart.html" target="_blank" rel="noopener">Monitoring chart — enter this lesson code</a>
+        <a class="stance-chip" href="../more-zeeman/monitoring_chart.html?lesson=${encodeURIComponent(code)}">Plan this lesson</a>
         <a class="stance-chip" href="generated/notation_lesson_charts/index.html" target="_blank" rel="noopener">Notation charts gallery</a>
         <a class="stance-chip" href="generated/lesson_deformation_charts/index.html" target="_blank" rel="noopener">Wrong-answer pattern charts</a>
       </div>
@@ -1419,38 +1427,21 @@ async function openLesson(code) {
       <section class="fc-sec"><h4>Strategies</h4>${fcList(strategies)}</section>
       <section class="fc-sec"><h4>Monitoring clusters</h4>${fcList(clusters)}</section>
     </div>
-    <div class="fc-sec"><h4>Inferential-strength measures</h4>
-      <div class="exp-line">Derivation paths (operation-level): ${pathsLine}
-        <span class="muted-inline">— the strategic room each operation opens in the grounded layer. This is a property of the operation, so every lesson teaching it shows the same count; it is not a per-lesson fingerprint.</span></div>
-      <div class="exp-line">Incompatibility breadth tallies: <b>${esc(String(power.strategy_incompatibilities ?? 0))}</b> strategy · <b>${esc(String(power.misconception_incompatibilities ?? 0))}</b> misconception <span class="muted-inline">(counts alone do not establish entailment; ${esc(power.incompatibility_note || 'includes set wrappers')})</span></div>
-    </div>
-    <div class="fc-sec"><h4>Incompatibility graph — what conflicts with what</h4>${incompatGraphSvg(misconceptions)}</div>
-    <div class="fc-sec"><h4>Misconceptions &amp; incompatibilities</h4><p class="muted-inline">These readings are fixed facts from the misconception registry, not a live scoring run. The <b>commitment tracker</b> (advanced view) is the separate surface that runs the scorekeeper engine live against a speaker's commitments.</p>${miscCardsHtml(misconceptions)}</div>
-    <div class="fc-sec" id="lesson-grounding"><h4>Grounding (Lakoff &amp; Núñez) — where the metaphor breaks</h4><span class="muted-inline">loading grounding…</span></div>
-    <details class="fc-raw"><summary>raw context</summary><pre>${esc(JSON.stringify(r, null, 2))}</pre></details>
+    <div class="fc-sec"><h4>What to listen for</h4>${miscCardsHtml(misconceptions)}</div>
   </div></div>`;
   detail.querySelectorAll('.nearby-lesson').forEach(a => a.addEventListener('click', e => {
     e.preventDefault(); openLesson(a.dataset.lesson);
   }));
-  // Grounding metaphors for the lesson's distinct operations (real L&N module).
-  const ops = [...new Set((r.strategies || []).map(x => x.operation).filter(Boolean))];
-  renderLessonGrounding(ops);
 }
 
 function miscCardsHtml(misconceptions) {
   if (!misconceptions.length) return '<span class="chip">none attached</span>';
   return misconceptions.map(m => {
-    const commit = m.commitment_made ? `<div class="ce commit"><b>commits to</b>${esc(glossTerm(m.commitment_made))}</div>` : '';
-    const entitle = m.entitlement_lacked ? `<div class="ce entitle"><b>but lacks entitlement to</b>${esc(glossTerm(m.entitlement_lacked))}</div>` : '';
-    const ce = (commit || entitle) ? `<div class="ce-row">${commit}${entitle}</div>` : '';
-    const incompat = m.incompatibility ? `<div class="incompat">incompatible with <span class="perp">⊥</span> ${glossPair(m.incompatibility)}</div>` : '';
-    const sets = (m.discovered_incompatibility_sets || []).length
-      ? `<div class="incompat">discovered set: ${m.discovered_incompatibility_sets.map(s => esc(glossTerm(s))).join(' · ')}</div>` : '';
-    const reanchor = m.entitlement_lacked ? `<div class="reanchor">↳ re-anchor toward ${esc(glossTerm(m.entitlement_lacked))}</div>` : '';
+    const reanchor = m.re_anchoring_move ? `<div class="reanchor">Try: ${esc(m.re_anchoring_move)}</div>` : '';
     const cite = m.citation ? `<div class="muted-inline">${esc(m.citation)}</div>` : '';
     const lit = (m.literature_links || []).length
       ? `<div class="muted-inline">${m.literature_links.length} literature link(s): ${m.literature_links.slice(0,3).map(l => esc(l.canonical_commitment_label || l.id || '')).join('; ')}</div>` : '';
-    return `<div class="misc-card"><span class="mn">${esc(m.name || '')}</span> <span class="dyad-score">${esc(m.operation || '')} · ${esc(m.evidence_level || '—')}</span>${ce}${incompat}${sets}${reanchor}${lit}${cite}</div>`;
+    return `<div class="misc-card"><span class="mn">${esc(m.name || '')}</span>${reanchor}${lit}${cite}</div>`;
   }).join('');
 }
 
@@ -2703,28 +2694,27 @@ function monitoringCoverageSignal(r) {
   </div>`;
 }
 
-async function loadMonitoringChart() {
-  const out = $("#mc-out");
-  const printBtn = $("#mc-print");
-  const code = ($("#lesson-code").value || '').trim();
-  if (!code) { out.innerHTML = `<p class="hint">Enter a lesson or standard code.</p>`; return; }
-  out.innerHTML = "<em class='muted-inline'>building the chart…</em>";
-  printBtn.hidden = true;
-  let res;
-  try { res = await postJSON('/api/monitoring_chart_export', { lesson_code: code }); }
-  catch (e) { out.innerHTML = `<p class="hint">× ${esc(e.message)}</p>`; return; }
-  if (res.status >= 400 || !res.data || !res.data.ok) {
-    out.innerHTML = `<p class="hint">${esc((res.data && res.data.error) || 'No chart for that code.')}</p>`;
-    return;
+async function planLesson() {
+  const input = $("#plan-lesson-code"), note = $("#plan-lesson-note");
+  const code = input.value.trim().toUpperCase();
+  if (!code) { note.textContent = 'Enter your IM lesson code, for example IM-G6-U4-L6.'; return; }
+  note.textContent = 'Checking this lesson…';
+  try {
+    const { data } = await postJSON('/api/field_connectivity_audit', {});
+    const lessons = ((data && data.result && data.result.lessons) || []);
+    const lesson = lessons.find(row => String(row.lesson_code || '').toUpperCase() === code);
+    if (lesson && lesson.coverage_status !== 'usable' && lesson.status !== 'fully_connected') {
+      const nearby = nearbyStrongLessons(code);
+      note.innerHTML = `Hermes has the lesson goal but not enough monitored approaches yet.${nearby.length ? ' Try these nearby prepared lessons: ' + nearby.map(row => `<a href="../more-zeeman/monitoring_chart.html?lesson=${encodeURIComponent(row.lesson_code)}">${esc(row.lesson_code)}</a>`).join(', ') + '.' : ''}`;
+      return;
+    }
+    location.href = '../more-zeeman/monitoring_chart.html?lesson=' + encodeURIComponent(code);
+  } catch (error) {
+    note.textContent = 'The lesson list is not available right now. Try again when the app is running.';
   }
-  out.innerHTML = renderMonitoringChart(res.data.result || {});
-  hydrateMonitoringStudentWorkPictures(out, code);
-  hydrateMonitoringVisuals(out);
-  printBtn.hidden = false;
 }
-if ($("#mc-load")) $("#mc-load").addEventListener('click', loadMonitoringChart);
-if ($("#lesson-code")) $("#lesson-code").addEventListener('keydown', e => { if (e.key === 'Enter') loadMonitoringChart(); });
-if ($("#mc-print")) $("#mc-print").addEventListener('click', () => window.print());
+$("#plan-lesson-btn").addEventListener('click', planLesson);
+$("#plan-lesson-code").addEventListener('keydown', event => { if (event.key === 'Enter') planLesson(); });
 
 /* The Explore tab opens from the nav's console.html#explore entry. */
 function openTabFromHash() {

@@ -224,6 +224,13 @@ neg(p)</textarea>
     </div>
   </div>
 
+  <div class="operable" id="bigred-emergent-hyperedges">
+    <h3>Emergent incompatibility sets from the collected run</h3>
+    <div class="domains">Big Red 2026-07-22 · served facts</div>
+    <p class="desc">Each listed set records commitments that the collected finite run returned as jointly incompatible. The list states the sets and their members; it does not add an interpretation.</p>
+    <div id="bigred-hyperedges-out" class="board muted">Loading collected sets…</div>
+  </div>
+
   <div class="operable" id="formal-witnesses">
     <h3>Formal recorded examples</h3>
     <div class="domains">finite proof and incompatibility relations · live app replies</div>
@@ -592,7 +599,24 @@ neg(p)</textarea>
       });
     }
 
+    async function loadCollectedHyperedges() {
+      const out = $("bigred-hyperedges-out");
+      try {
+        const data = await post("/api/hyperedges", {kind: "bigred_precomputed"});
+        const result = data && data.result;
+        const rows = result && result.hyperedges;
+        if (!data.ok || !Array.isArray(rows)) throw new Error((data && data.error) || "No collected sets returned.");
+        out.classList.remove("muted");
+        out.innerHTML = rows.map((row, index) =>
+          `<div class="row"><span class="lab">set ${index + 1}</span><span>${(row.set || []).map(esc).join(" · ")}</span></div>`
+        ).join("") || "No collected emergent sets were returned.";
+      } catch (error) {
+        HermesFetch.setState(out, "offline", error.message || "The app is not answering.");
+      }
+    }
+
     async function init() {
+      loadCollectedHyperedges();
       try {
         const result = await HermesFetch.requestJSON("/api/grounding", {
           method: "POST", headers: { "Content-Type": "application/json" }, body: "{}",

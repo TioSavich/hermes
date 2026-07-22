@@ -70,7 +70,13 @@
  .guide-item{white-space:pre-line}.guide-source{display:block;color:var(--muted);font-size:.75rem;margin-top:.25rem}
  .strategy-list{display:grid;gap:.65rem;padding:0;list-style:none}
  .strategy-list li{border-left:3px solid var(--gold);padding:.35rem .65rem;background:var(--paper-cool)}
- .strategy-name{font-weight:700}.strategy-cue,.strategy-question{display:block;font-size:.86rem;color:var(--muted)}
+.strategy-name{font-weight:700}.strategy-cue,.strategy-question{display:block;font-size:.86rem;color:var(--muted)}
+.tomorrow-card{max-width:860px;margin:1rem auto;padding:1.15rem 1.3rem;border:2px solid var(--gold);border-radius:10px;background:var(--surface,#fff)}
+.tomorrow-card h2{margin:.2rem 0 .8rem}.tomorrow-card h3{font-size:.9rem;margin:1rem 0 .35rem}.tomorrow-card ul{margin:.3rem 0;padding-left:1.2rem}
+.tomorrow-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem 1.25rem}.tomorrow-grid section{break-inside:avoid}
+.tomorrow-visual{max-width:100%;max-height:180px;display:block;border:1px solid var(--line);border-radius:6px}
+.print-card{margin:.2rem 0 .8rem}.chart-error{max-width:860px;margin:1rem auto;padding:1rem 1.2rem;border:2px solid #a33;border-radius:10px;background:#fff5f3;color:#541d15}
+.load-failed .teacher-detail{display:none}
  .visual-pairs{display:grid;gap:1rem}.visual-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
  .visual-pair figure{max-width:none}.visual-pair img{width:100%;max-height:360px;object-fit:contain}
  @media(max-width:720px){.visual-pair{grid-template-columns:1fr}}
@@ -90,6 +96,8 @@
    body{max-width:none;margin:0;color:#000;background:#fff}
    nav,.controls,.calc-bar,.calc-note,#download,#play,#prev,#next,#seek,
    .meta-line,.picker,.picker-note,.source-line,.live-state{display:none}
+   .teacher-detail,details,.register,.why-link,#chart-error{display:none!important}
+   .tomorrow-card{border:0;margin:0;padding:0;max-width:none}.tomorrow-grid{gap:.4rem 1rem}
    a[href]::after{content:""}
    h2:not(:first-of-type){break-before:page}
    h1{break-after:avoid}
@@ -103,9 +111,16 @@
    .note,.why,.cite,figcaption,.fw,.code{color:#333}
  }
 </style></head><body class="view-freshman">
+<div id="chart-error" class="chart-error" hidden role="alert"></div>
+<section id="tomorrow-card" class="tomorrow-card">
+  <button class="print-card" type="button" id="print-card">Print / save PDF</button>
+  <h2>Tomorrow card</h2>
+  <p id="card-goal">Loading the lesson card…</p>
+  <div id="card-body" class="tomorrow-grid"></div>
+  <details><summary>Sources and details</summary><p>Lesson notes and visual details remain available below.</p></details>
+</section>
+<div class="teacher-detail">
 <h1 id='chart-title'>Monitoring chart &mdash; IM Grade2 U2 L2: Find the Unknown Addend</h1>
-<p class="note">A commitment is a move made without yet earning the right to it; an entitlement records the earned right (Brandom, <em>Between Saying and Doing</em>).</p>
-<p class="note">A wrong-answer pattern is a productive strategy with one step broken.</p>
 <p class="code" id='chart-code'>IM-G2-U2-L2</p>
 <p class="register">Every picture on this chart is drawn by the app from this lesson's own numerals; the visualizer recalculates from the app's trace. Documented student work from the research literature lives in the <a href="gallery.html">gallery</a>.</p>
 <a class="why-link" href="scoreboard.html">Why this exists &rarr;</a>
@@ -114,6 +129,7 @@
   <datalist id='lesson-code-list'></datalist>
   <button id='lesson-load' type='button'>load chart</button>
 </div>
+<p class='picker-note'>Choose an IM lesson to make its Tomorrow card.</p>
 <p class='picker-note'>Any of the <span id='lesson-count'>&hellip;</span> lessons
 with encoded strategies or misconceptions can be loaded here. The list is built
 into this page from the lesson encodings in <code>curriculum/im</code> (the app has
@@ -369,6 +385,71 @@ trace.</p>
       return p;
     }
 
+    function cardSection(title, text) {
+      var section = document.createElement('section');
+      var heading = document.createElement('h3');
+      heading.textContent = title;
+      var body = document.createElement('p');
+      body.textContent = text || 'Not included in the lesson notes.';
+      section.appendChild(heading);
+      section.appendChild(body);
+      return section;
+    }
+
+    function renderTomorrowCard(chart, context) {
+      context = context || {};
+      var goal = el('lesson-goal').textContent;
+      var tasks = Array.isArray(chart.registered_task_instances) ? chart.registered_task_instances : [];
+      var task = tasks.length ? (tasks[0].excerpt || tasks[0].task || '') : '';
+      if (!task && Array.isArray(chart.activity_prompt) && chart.activity_prompt.length) task = chart.activity_prompt[0].text || '';
+      var strategies = (context.strategies || chart.anticipated_strategies || []).slice(0, 3);
+      var clusters = context.monitoring_clusters || [];
+      var assess = [], advance = [];
+      clusters.forEach(function (cluster) {
+        assess = assess.concat(cluster.assessing_questions || []);
+        advance = advance.concat(cluster.advancing_questions || []);
+      });
+      var body = el('card-body');
+      body.textContent = '';
+      body.appendChild(cardSection('Lesson goal', goal));
+      body.appendChild(cardSection('Task', task || 'Open the teacher guide for the task prompt.'));
+      var approaches = document.createElement('section');
+      var heading = document.createElement('h3'); heading.textContent = 'Approaches to listen for'; approaches.appendChild(heading);
+      var list = document.createElement('ul');
+      strategies.forEach(function (strategy) {
+        var item = document.createElement('li');
+        var cue = strategy.vocabulary || strategy.where_to_spot || [];
+        if (typeof cue === 'string') cue = cue.replace(/^\[|\]$/g, '').split(',');
+        item.textContent = plainName(strategy.kind || strategy.name || 'Approach') + (cue.length ? ': listen for ' + cue.map(plainName).join(', ') + '.' : '.');
+        list.appendChild(item);
+      });
+      if (!strategies.length) { var none = document.createElement('li'); none.textContent = 'No approaches are prepared for this lesson yet.'; list.appendChild(none); }
+      approaches.appendChild(list); body.appendChild(approaches);
+      var trouble = (chart.teacher_misconceptions || [])[0];
+      body.appendChild(cardSection('Likely trouble spot', trouble ? plainName(trouble.name || trouble.re_anchoring_move || 'A documented wrong turn') : 'No likely trouble spot is prepared for this lesson yet.'));
+      body.appendChild(cardSection('Assess question', assess[0] || 'No assess question is attached to this lesson yet.'));
+      body.appendChild(cardSection('Advance question', advance[0] || 'No advance question is attached to this lesson yet.'));
+      var visual = document.querySelector('#monitoring-visuals img');
+      if (visual) {
+        var visualSection = document.createElement('section');
+        var visualHeading = document.createElement('h3'); visualHeading.textContent = 'Visual or representation';
+        var image = visual.cloneNode(true); image.className = 'tomorrow-visual';
+        visualSection.appendChild(visualHeading); visualSection.appendChild(image); body.appendChild(visualSection);
+      }
+      el('card-goal').textContent = chart.lesson_code + ' — ' + goal;
+      document.body.classList.remove('load-failed');
+      el('chart-error').hidden = true;
+    }
+
+    function showChartError(code, error) {
+      var message = error && error.message ? error.message : String(error || 'The lesson could not load.');
+      el('chart-error').textContent = 'Could not load ' + code + '. No lesson card is shown. ' + message;
+      el('chart-error').hidden = false;
+      el('card-goal').textContent = 'Lesson card unavailable';
+      el('card-body').textContent = '';
+      document.body.classList.add('load-failed');
+    }
+
     function renderGuideItems(targetId, items, missingText) {
       var target = el(targetId);
       target.textContent = '';
@@ -612,6 +693,7 @@ trace.</p>
       renderFigureCoverage(chart.figures);
       var deformationChart = chart.deformation_chart && chart.deformation_chart.chart;
       renderMonitoringVisuals(code, deformationChart);
+      renderTomorrowCard(chart, context);
 
       // Point the visualizer at the live lesson's leading strand, mirroring
       // lead_strand() in the generator.
@@ -687,15 +769,7 @@ trace.</p>
             + 'app (/api/monitoring_chart_export). All lesson-fed sections were '
             + 'replaced together from that one payload.');
         })
-        .catch(function (err) {
-          setSource(shownSource === 'static' ? 'snapshot' : 'live',
-            'Could not load ' + code + ' from the live app ('
-            + (err && err.message ? err.message : err) + '). The chart below '
-            + 'still shows ' + shownLesson
-            + (shownSource === 'static'
-               ? ' from the committed static build.'
-               : ' from the earlier live load.'));
-        })
+        .catch(function (err) { showChartError(code, err); })
         .finally(stopElapsed);
     }
 
@@ -703,6 +777,7 @@ trace.</p>
     el('lesson-pick').addEventListener('keydown', function (e) {
       if (e.key === 'Enter') loadLesson();
     });
+    el('print-card').addEventListener('click', function () { window.print(); });
 
     // The embedded #frames block paints a real picture immediately, so a static
     // deploy (no worker) still draws. Only when the worker answers do we refresh
@@ -717,6 +792,11 @@ trace.</p>
           if (ok && d && typeof d.calculate === 'function') d.calculate();
         })
         .catch(function () { setLiveState(false); });
+      var requestedLesson = new URLSearchParams(window.location.search).get('lesson');
+      if (requestedLesson) {
+        el('lesson-pick').value = requestedLesson.trim().toUpperCase();
+        loadLesson();
+      }
     });
 
     // ---- footer claim about the corpus-figure manifest (checked, not assumed).
@@ -818,18 +898,19 @@ trace.</p>
     } catch (e) { out.textContent = e.message || 'The app returned a broken reply.'; }
   });
 </script>
-<section style="margin:1.5rem 0;padding:.9rem 1.1rem;border:1px solid #b8860b;border-radius:6px;background:rgba(184,134,11,.08)">
-  <strong>Research wing — live, in progress.</strong> Contributor notes remain available below.
-  <details>
+<details class="research-detail" style="margin:1.5rem 0;padding:.9rem 1.1rem;border:1px solid #b8860b;border-radius:6px;background:rgba(184,134,11,.08)">
+  <summary>Research details</summary>
+  <div>
     <summary>For contributors: modules described here but not loaded</summary>
     <p><code>curriculum/im/im_glossary.pl</code> records the attributed IM K–8 glossary and lesson joins.
       <code>curriculum/im/generated/vision_lesson_digest.pl</code> is the generated grade 6–8 lesson digest cache.
       <code>curriculum/im_harness.pl</code> is the command-line strategy execution and coverage harness.
       They are described here as monitoring inputs and audits; the console worker does not load them.</p>
-  </details>
-</section>
+  </div>
+</details>
 <hr><p class="register">Generated by formal/tools/phase0_monitoring_chart.py.
 Live picture: hermes/web/render/drawer.js via /api/render. Misconception join:
 curriculum/im/lesson_monitoring_figures.pl. <span id='manifest-line'>Corpus figures:
 representation/asset_manifest.json (the gallery's source).</span></p>
+</div>
 </body></html>
