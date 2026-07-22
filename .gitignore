@@ -29,3 +29,4 @@ build/
 .superpowers/
 scripts/research/talkmoves_rerun_out/
 CLAUDE.md
+.bigred-output/
