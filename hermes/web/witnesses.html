@@ -541,7 +541,8 @@
         output.className = "";
         HermesFetch.setState(output, "pending", pending || "Requesting witness…");
         var result = await HermesFetch.requestJSON(path, {
-          method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(payload)
+          method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(payload),
+          timeoutMs: HermesFetch.HEAVY_PROLOG_TIMEOUT_MS
         });
         if (result.kind === "ok" && result.data.ok) {
           output.className = "";

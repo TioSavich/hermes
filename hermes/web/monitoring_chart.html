@@ -145,9 +145,9 @@ How are the tools alike? How are they different?
 <li><b>2.NBT.B.9</b> <span class='fw'>ccss</span><br>Explain why addition and subtraction strategies work, using place value and the properties of operations.</li>
 </ul>
 <h2>What to monitor</h2><ul class='strategy-list' id='strategy-chips'>
-<li><span class='strategy-name'>Count on from the larger number</span><span class='strategy-cue'>Look for a clear starting number, counted-on addend, successive counts, and a final total.</span><span class='strategy-question'>Ask: “How did your starting number help you find the unknown?”</span></li>
-<li><span class='strategy-name'>Combine or separate tens and ones</span><span class='strategy-cue'>Look for tens and ones kept aligned, with the unknown represented as a missing part.</span><span class='strategy-question'>Ask: “Where is the unknown in your blocks or drawing?”</span></li>
-<li><span class='strategy-name'>Make a ten and preserve the leftover</span><span class='strategy-cue'>Look for a split addend, the part needed to make ten, and the leftover conserved in the result.</span><span class='strategy-question'>Ask: “What happened to the part you did not use to make ten?”</span></li>
+<li><span class='strategy-name'>Count on from the larger number</span><span class='strategy-cue'>Listen for a clear starting number, counted-on addend, successive counts, and a final total.</span><span class='strategy-question'>Ask: “How did your starting number help you find the unknown?”</span></li>
+<li><span class='strategy-name'>Combine or separate tens and ones</span><span class='strategy-cue'>Listen for tens and ones kept aligned, with the unknown represented as a missing part.</span><span class='strategy-question'>Ask: “Where is the unknown in your blocks or drawing?”</span></li>
+<li><span class='strategy-name'>Make a ten and preserve the leftover</span><span class='strategy-cue'>Listen for a split addend, the part needed to make ten, and the leftover conserved in the result.</span><span class='strategy-question'>Ask: “What happened to the part you did not use to make ten?”</span></li>
 </ul>
 <section class='context-card'><h3>Discussion order</h3><div id='lesson-sequence'><p class='guide-item'><b>Activity 1 — Activity Synthesis</b><br>• Invite previously selected students to share in the given order. Record or display their work for all to see.
 • Connect students’ approaches by asking:
@@ -162,10 +162,11 @@ How are the tools alike? How are they different?
 <div id='monitoring-visuals' class='visual-pairs'></div>
 
 <h2>How the strategy looks</h2>
-<p class='note'>A live drawing of the leading anticipated strategy
+<p class='note' id='strategy-drawing-note'>A live drawing of the leading anticipated strategy
 (<span class='op' id='lead-strand'>addition</span>), built from the app's trace rather than
 recomputed here. Change the numbers and recalculate to step through the
 trace.</p>
+<p class='note' id='strategy-unavailable' hidden>The leading strategy for this lesson cannot be drawn by the app.</p>
 <div class='viz' id='viz'>
   <div class='meta-line'>
     <span id='context'></span><span id='result'></span>
@@ -319,7 +320,7 @@ trace.</p>
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ lesson_code: code }),
-        timeoutMs: HermesFetch.WORKER_TIMEOUT_MS
+        timeoutMs: HermesFetch.HEAVY_PROLOG_TIMEOUT_MS
       }).then(HermesFetch.requireOK).then(function (j) {
         if (j && j.error) throw new Error(j.error);
         var chart = j && j.result ? j.result : j;
@@ -335,7 +336,7 @@ trace.</p>
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ lesson_code: code }),
-        timeoutMs: HermesFetch.WORKER_TIMEOUT_MS
+        timeoutMs: HermesFetch.HEAVY_PROLOG_TIMEOUT_MS
       }).then(HermesFetch.requireOK).then(function (j) {
         if (j && j.error) throw new Error(j.error);
         return j && j.result ? j.result : j;
@@ -484,7 +485,7 @@ trace.</p>
         var cue = document.createElement('span');
         cue.className = 'strategy-cue';
         cue.textContent = vocabulary.length
-          ? 'Look for: ' + vocabulary.map(plainName).join(', ') + '.'
+          ? 'Listen for: ' + vocabulary.map(plainName).join(', ') + '.'
           : 'The live payload carries no observation cue for this strategy.';
         item.appendChild(cue);
         var question = document.createElement('span');
@@ -499,8 +500,10 @@ trace.</p>
       var box = el('misc-list');
       box.textContent = '';
       var miscs = chart.teacher_misconceptions || [];
-      if (miscs.length === 0) {
-        box.appendChild(noteP('No misconceptions are encoded for this lesson.'));
+      var resonantMiscs = Array.isArray(chart.resonant_misconceptions)
+        ? chart.resonant_misconceptions : [];
+      if (miscs.length === 0 && resonantMiscs.length === 0) {
+        box.appendChild(noteP('No misconceptions are documented for this lesson or returned by resonance.'));
       }
       miscs.forEach(function (m) {
         var card = document.createElement('div');
@@ -532,6 +535,34 @@ trace.</p>
         });
         box.appendChild(card);
       });
+      if (resonantMiscs.length) {
+        var heading = document.createElement('h3');
+        heading.textContent = 'Documented misconceptions near this content (retrieved by resonance, not lesson-encoded)';
+        box.appendChild(heading);
+      }
+      resonantMiscs.forEach(function (m) {
+        var card = document.createElement('div');
+        card.className = 'misc';
+        var head = document.createElement('div');
+        head.className = 'misc-head';
+        var domain = document.createElement('span');
+        domain.className = 'op';
+        domain.textContent = m.domain || '';
+        head.appendChild(domain);
+        head.appendChild(document.createTextNode(' '));
+        var name = document.createElement('b');
+        name.textContent = m.name || 'Documented error';
+        head.appendChild(name);
+        if (m.citation) {
+          var cite = document.createElement('span');
+          cite.className = 'cite';
+          cite.textContent = ' ' + m.citation;
+          head.appendChild(cite);
+        }
+        card.appendChild(head);
+        if (typeof m.score === 'number') card.appendChild(noteP('resonance score: ' + m.score));
+        box.appendChild(card);
+      });
 
       renderFigureCoverage(chart.figures);
       renderMonitoringVisuals(code);
@@ -544,9 +575,26 @@ trace.</p>
       for (var i = 0; i < STRAND_ORDER.length; i++) {
         if (present[STRAND_ORDER[i]]) { strand = STRAND_ORDER[i]; break; }
       }
-      if (!strand) strand = Object.keys(present)[0] || 'addition';
-      el('lead-strand').textContent = strand;
-      d.opts.op = OP_FOR_STRAND[strand] || 'base_ten_render';
+      var viz = el('viz');
+      var drawingNote = el('strategy-drawing-note');
+      var unavailable = el('strategy-unavailable');
+      if (!strand || !OP_FOR_STRAND[strand]) {
+        drawingNote.hidden = true;
+        viz.hidden = true;
+        unavailable.hidden = false;
+      } else {
+        drawingNote.hidden = false;
+        viz.hidden = false;
+        unavailable.hidden = true;
+        el('lead-strand').textContent = strand;
+        d.opts.op = OP_FOR_STRAND[strand];
+      }
+      if (!strand || !OP_FOR_STRAND[strand]) {
+        shownLesson = code;
+        shownSource = 'live';
+        if (typeof window.bindDeformationLesson === 'function') window.bindDeformationLesson(code);
+        return;
+      }
       var addSub = strand === 'addition' || strand === 'subtraction';
       var inputA = document.querySelector("[data-arg='a']");
       var inputB = document.querySelector("[data-arg='b']");
@@ -644,9 +692,9 @@ trace.</p>
 </div>
 <p class='fig-coverage' id='figure-coverage' hidden></p>
 <h2>Fraction wrong-answer chart</h2>
-<p class="note" id="deformation-context">Loading the charted fraction lesson for this monitoring chart’s grade.</p>
+<p class="note" id="deformation-context">No wrong-answer chart is available for this lesson.</p>
 <div class="picker">
-  <label>lesson <input id="deformation-code" value="IM-G3-U5-L1"></label>
+  <label>lesson <input id="deformation-code" value="" readonly></label>
   <button id="deformation-run" type="button">load wrong-answer pattern chart</button>
 </div>
 <pre id="deformation-output" style="white-space:pre-wrap;overflow-wrap:anywhere;color:var(--muted);font:0.76rem/1.45 ui-monospace,monospace"></pre>
@@ -654,11 +702,6 @@ trace.</p>
   (function () {
     const manifestPath = '../hermes/app/web/generated/lesson_deformation_charts/manifest.json';
     let chartedLessons = null;
-
-    function gradeOf(code) {
-      const match = /^IM-G(K|[1-8])-U\d+-L\d+$/.exec(code || '');
-      return match ? match[1] : null;
-    }
 
     async function loadChartedLessons() {
       if (chartedLessons) return chartedLessons;
@@ -672,21 +715,19 @@ trace.</p>
     window.bindDeformationLesson = async function (monitoringCode) {
       const context = document.getElementById('deformation-context');
       const input = document.getElementById('deformation-code');
-      const grade = gradeOf(monitoringCode);
       try {
         const lessons = await loadChartedLessons();
-        const matching = lessons.find(function (lesson) { return gradeOf(lesson.code) === grade; });
+        const matching = lessons.find(function (lesson) { return lesson.code === monitoringCode; });
         if (matching) {
           input.value = matching.code;
-          context.textContent = 'This wrong-answer chart uses ' + matching.code
-            + ', a charted grade ' + grade + ' fraction lesson matching the monitoring chart above.';
+          context.textContent = 'This wrong-answer chart belongs to ' + matching.code + '.';
         } else {
-          context.textContent = 'No charted unit-fraction lesson matches grade ' + (grade || 'unknown')
-            + '. The picker keeps ' + input.value + ' so the available fraction chart is explicit rather than presented as part of this lesson.';
+          input.value = '';
+          context.textContent = 'No wrong-answer chart is available for this lesson.';
         }
       } catch (error) {
-        context.textContent = 'The generated deformation-chart manifest is unavailable, so the picker keeps '
-          + input.value + '. Its grade relationship to the monitoring chart cannot be checked in this deployment.';
+        input.value = '';
+        context.textContent = 'No wrong-answer chart is available for this lesson.';
       }
     };
     window.bindDeformationLesson('IM-G2-U2-L2');
@@ -695,10 +736,10 @@ trace.</p>
   document.getElementById('deformation-run').addEventListener('click', async function () {
     const out = document.getElementById('deformation-output');
     const code = document.getElementById('deformation-code').value.trim();
-    if (!code) { out.textContent = 'A lesson code is required.'; return; }
+    if (!code) { out.textContent = 'No wrong-answer chart is available for this lesson.'; return; }
     HermesFetch.setState(out, 'pending', 'Requesting the wrong-answer pattern chart…');
     try {
-      const result = await HermesFetch.requestJSON('/api/lesson_deformation_chart', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code})});
+      const result = await HermesFetch.requestJSON('/api/lesson_deformation_chart', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code}),timeoutMs:HermesFetch.HEAVY_PROLOG_TIMEOUT_MS});
       const data = HermesFetch.requireOK(result);
       out.textContent = JSON.stringify(data, null, 2) || 'The route returned an empty reply.';
     } catch (e) { out.textContent = e.message || 'The app returned a broken reply.'; }

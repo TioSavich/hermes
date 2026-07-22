@@ -49,7 +49,7 @@ INITIAL_GATE_ENABLED = gate.gate_enabled_for_launch(
 )
 
 _WORKER_TRANSPORT_MARKERS = ("pipe closed", "malformed json", "worker exited")
-_WORKER_TIMEOUT = 120.0
+_WORKER_TIMEOUT = 300.0
 
 
 @dataclass(slots=True)

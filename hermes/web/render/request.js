@@ -3,6 +3,8 @@
 
   const DEFAULT_TIMEOUT_MS = 8000;
   const WORKER_TIMEOUT_MS = 22000;
+  const HEAVY_PROLOG_TIMEOUT_MS = 180000;
+  const LLM_TIMEOUT_MS = 300000;
 
   class HermesRequestError extends Error {
     constructor(kind, message, status) {
@@ -54,7 +56,7 @@
 
   function messageFor(result) {
     if (result.kind === "timeout") {
-      return "This ran past its time budget. The app may still be computing — heavy requests can outlast the wait. Trying again often works; restarting the app clears a stuck worker.";
+      return "The request exceeded its time budget. The server may still finish. Retrying re-runs the work.";
     }
     if (result.kind === "offline") {
       return "The app isn't answering. Start it with the run button, or this stays a static view.";
@@ -101,6 +103,8 @@
   global.HermesFetch = {
     DEFAULT_TIMEOUT_MS: DEFAULT_TIMEOUT_MS,
     WORKER_TIMEOUT_MS: WORKER_TIMEOUT_MS,
+    HEAVY_PROLOG_TIMEOUT_MS: HEAVY_PROLOG_TIMEOUT_MS,
+    LLM_TIMEOUT_MS: LLM_TIMEOUT_MS,
     HermesRequestError: HermesRequestError,
     messageFor: messageFor,
     requestJSON: requestJSON,

@@ -654,7 +654,8 @@ class RouteLogic:
         try:
             answer = llm.call_api_messages(
                 messages, api_key=key, api_url=llm.resolve_api_url(),
-                model=llm.resolve_model(), ssl_ctx=ssl_ctx, fail_on_error=False,
+                model=llm.resolve_model(), ssl_ctx=ssl_ctx, timeout=300,
+                fail_on_error=False,
             )
         except Exception as exc:  # network / API failure -> clean 502, not 500
             self._send_json({"error": str(exc), "error_type": "reallms", "grounded": grounded}, status=502)
@@ -699,7 +700,7 @@ class RouteLogic:
         try:
             answer = llm.call_api_messages(
                 messages, api_key=key, api_url=llm.resolve_api_url(),
-                model=llm.resolve_model(), ssl_ctx=self._ssl_ctx_for_mode(),
+                model=llm.resolve_model(), ssl_ctx=self._ssl_ctx_for_mode(), timeout=300,
                 fail_on_error=False,
             )
         except Exception as exc:
@@ -783,7 +784,7 @@ class RouteLogic:
                 [{"role": "system", "content": system},
                  {"role": "user", "content": user}],
                 api_key=key, api_url=llm.resolve_api_url(),
-                model=llm.resolve_model(), ssl_ctx=ssl_ctx,
+                model=llm.resolve_model(), ssl_ctx=ssl_ctx, timeout=300,
                 fail_on_error=False,
             )
 
@@ -876,7 +877,8 @@ class RouteLogic:
                 [{"role": "system", "content": system},
                  {"role": "user", "content": user_content}],
                 api_key=key, api_url=llm.resolve_api_url(),
-                model=llm.resolve_model(), ssl_ctx=ssl_ctx, fail_on_error=False,
+                model=llm.resolve_model(), ssl_ctx=ssl_ctx, timeout=300,
+                fail_on_error=False,
             )
 
         try:
@@ -969,7 +971,8 @@ class RouteLogic:
         try:
             raw = llm.call_api_messages(
                 messages, api_key=key, api_url=llm.resolve_api_url(),
-                model=llm.resolve_model(), ssl_ctx=ssl_ctx, fail_on_error=False,
+                model=llm.resolve_model(), ssl_ctx=ssl_ctx, timeout=300,
+                fail_on_error=False,
             )
         except Exception as exc:
             self._send_json({"error": str(exc), "error_type": "reallms"}, status=502)

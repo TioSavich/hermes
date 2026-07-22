@@ -335,7 +335,7 @@ function isMediaFile(f){
 }
 
 async function transcribeMedia(f){
-  $("status").textContent = "Transcribing “" + f.name + "” on the campus model… (this can take a minute)";
+  const stopElapsed = HermesFetch.startElapsed($("status"), "The model is still working while transcribing “" + f.name + "”…");
   $("status").className = "status";
   const dataUrl = await new Promise((resolve, reject) => {
     const r = new FileReader();
@@ -343,17 +343,19 @@ async function transcribeMedia(f){
     r.onerror = () => reject(new Error("could not read the file"));
     r.readAsDataURL(f);
   });
-  let res, data;
   try {
-    res = await fetch("/api/media_transcribe", {
+    const result = await HermesFetch.requestJSON("/api/media_transcribe", {
       method: "POST", headers: {"Content-Type":"application/json"},
-      body: JSON.stringify({ name: f.name, mime: f.type, data_b64: dataUrl })});
-    data = await res.json();
+      body: JSON.stringify({ name: f.name, mime: f.type, data_b64: dataUrl }),
+      timeoutMs: HermesFetch.LLM_TIMEOUT_MS
+    });
+    const data = HermesFetch.requireOK(result);
+    if (data.error) throw new Error(data.error);
+    return data;
   } catch(e){
-    throw new Error("Nothing answered at this address. Transcription runs in the local app — start it and try again.");
-  }
-  if (!res.ok || data.error) throw new Error(data.error || ("HTTP " + res.status));
-  return data;
+    if (e instanceof HermesFetch.HermesRequestError) throw e;
+    throw new Error("Nothing answered at this address. Transcription runs in the local app. Start it and try again.");
+  } finally { stopElapsed(); }
 }
 
 $("file-input").onchange = () => {
@@ -469,12 +471,14 @@ async function drawClaimPictures(r){
     const c = (r.claims||[])[Number(cell.dataset.claimIndex)];
     if (!c || !c.render) continue;
     try {
-      const res = await fetch("/api/render", {
+      const result = await HermesFetch.requestJSON("/api/render", {
         method: "POST", headers: {"Content-Type":"application/json"},
-        body: JSON.stringify(c.render)});
-      const doc = await res.json();
+        body: JSON.stringify(c.render),
+        timeoutMs: HermesFetch.HEAVY_PROLOG_TIMEOUT_MS
+      });
+      const doc = HermesFetch.requireOK(result);
       const frames = Array.isArray(doc.frames) ? doc.frames : [];
-      if (!res.ok || !frames.length) continue;
+      if (!frames.length) continue;
       const bounds = HermesDrawer._internal.documentBounds(frames, doc.canvas || {});
       const last = frames[frames.length - 1];
       const svg = HermesDrawer._internal.buildSvg(last, bounds);
@@ -499,7 +503,7 @@ async function openReport(id){
 }
 
 async function post(text, id, note){
-  const stopElapsed = HermesFetch.startElapsed($("status"), "Running: extracting claims, checking each one, reading the moves…");
+  const stopElapsed = HermesFetch.startElapsed($("status"), "The model is still working: extracting claims, checking each one, reading the moves…");
   $("status").className = "status";
   $("run").disabled = true;
   let result = null;
@@ -507,7 +511,7 @@ async function post(text, id, note){
     result = await HermesFetch.requestJSON("/api/transcript_report", {
       method: "POST", headers: {"Content-Type":"application/json"},
       body: JSON.stringify({text, transcript_id: id}),
-      timeoutMs: HermesFetch.WORKER_TIMEOUT_MS});
+      timeoutMs: HermesFetch.LLM_TIMEOUT_MS});
     if (result.kind === "timeout" || result.kind === "offline") throw new HermesFetch.HermesRequestError(result.kind, HermesFetch.messageFor(result));
   } catch(e){
     $("status").className = "status err";
@@ -576,12 +580,12 @@ $("work-read").onclick = async () => {
   const status = $("work-status"), button = $("work-read");
   if (!assignment || !files.length) { status.textContent = "Add the assignment and at least one student-work file."; status.className = "status err"; return; }
   button.disabled = true; $("work-output").innerHTML = "";
-  const stopElapsed = HermesFetch.startElapsed(status, "Reading student work…");
+  const stopElapsed = HermesFetch.startElapsed(status, "The model is still working: reading student work…");
   try {
     const uploads = await Promise.all(files.map(workFileData));
-    const readReply = await HermesFetch.requestJSON("/api/work_read", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({assignment, files:uploads}), timeoutMs:HermesFetch.WORKER_TIMEOUT_MS});
+    const readReply = await HermesFetch.requestJSON("/api/work_read", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({assignment, files:uploads}), timeoutMs:HermesFetch.LLM_TIMEOUT_MS});
     const read = workflowPayload(HermesFetch.requireOK(readReply));
-    const refineReply = await HermesFetch.requestJSON("/api/work_refine", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({assignment, read_results:read.read_results}), timeoutMs:HermesFetch.WORKER_TIMEOUT_MS});
+    const refineReply = await HermesFetch.requestJSON("/api/work_refine", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({assignment, read_results:read.read_results}), timeoutMs:HermesFetch.LLM_TIMEOUT_MS});
     const refine = workflowPayload(HermesFetch.requireOK(refineReply));
     renderWork(read, refine); status.textContent = "READ and REFINE completed."; status.className = "status";
   } catch (error) {

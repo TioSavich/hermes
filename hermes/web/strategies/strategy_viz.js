@@ -219,7 +219,7 @@
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({strategy: cfg.strategy, input: {a: a, b: b}}),
-          timeoutMs: HermesFetch.WORKER_TIMEOUT_MS
+          timeoutMs: HermesFetch.HEAVY_PROLOG_TIMEOUT_MS
         });
         envelope = HermesFetch.requireOK(response);
       } catch (err) {

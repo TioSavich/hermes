@@ -481,7 +481,7 @@ let machineCurrent = null;
 async function machineApi(path, body) {
   const response = await HermesFetch.requestJSON(path, {
     method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body),
-    timeoutMs: HermesFetch.WORKER_TIMEOUT_MS
+    timeoutMs: HermesFetch.HEAVY_PROLOG_TIMEOUT_MS
   });
   const data = HermesFetch.requireOK(response);
   if (!data.ok) throw new Error(data.error || 'request failed');

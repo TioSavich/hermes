@@ -798,9 +798,11 @@ const WORKER_POST_PATHS = new Set([
   '/api/diagnose_error', '/api/monitoring_visuals',
   '/api/monitoring_chart_export', '/api/render',
 ]);
+const LLM_POST_PATHS = new Set(['/api/chat', '/api/pml_score', '/api/misconception_search']);
 async function postJSON(path, body) {
   const options = { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body || {}) };
-  if (WORKER_POST_PATHS.has(path)) options.timeoutMs = HermesFetch.WORKER_TIMEOUT_MS;
+  if (LLM_POST_PATHS.has(path)) options.timeoutMs = HermesFetch.LLM_TIMEOUT_MS;
+  else if (WORKER_POST_PATHS.has(path)) options.timeoutMs = HermesFetch.HEAVY_PROLOG_TIMEOUT_MS;
   const result = await HermesFetch.requestJSON(api(path), options);
   return { status: result.status, data: HermesFetch.requireOK(result) };
 }
@@ -1043,7 +1045,7 @@ function renderPmlScore(data) {
 async function runPmlScore() {
   const text = $("#pml-input").value.trim(); if (!text) return;
   const out = $("#pml-out"); out.hidden = false;
-  const stopElapsed = startElapsed(out, "Gemma is encoding the modal posture, swipl is scoring…");
+  const stopElapsed = startElapsed(out, "The model is still working: encoding the modal posture, then swipl is scoring…");
   let status, data;
   try { ({ status, data } = await postJSON('/api/pml_score', { text })); }
   catch (error) { setRequestFailure(out, error); return; }
@@ -1496,7 +1498,7 @@ async function sendAsk() {
     ans.textContent = "That looked like a discussion transcript — moved it to the Workspace analyzer (kept local, off the cloud).";
     return;
   }
-  const stopElapsed = startElapsed(ans, "retrieving symbolic facts, then thinking…");
+  const stopElapsed = startElapsed(ans, "The model is still working: retrieving symbolic facts, then responding…");
   let status, data;
   try { ({ status, data } = await postJSON('/api/chat', { message: msg })); }
   catch (error) { ans.classList.add('locked'); setRequestFailure(ans, error); return; }

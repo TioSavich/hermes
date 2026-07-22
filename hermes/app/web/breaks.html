@@ -336,7 +336,7 @@ neg(p)</textarea>
       const output = document.createElement("pre"); form.appendChild(output);
       form.onsubmit = async event => { event.preventDefault(); const payload = {op:item.name};
         Object.keys(FORMAL_DEFAULTS[item.name]).forEach(name => { const original=FORMAL_DEFAULTS[item.name][name], value=form.elements.namedItem(name).value; payload[name]=Array.isArray(original)?JSON.parse(value):typeof original==="number"?Number(value):value; });
-        HermesFetch.setState(output,"pending","Requesting recorded example…"); try { const result=await HermesFetch.requestJSON("/api/witness/formal",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}); const body=HermesFetch.requireOK(result); output.className=""; output.textContent=JSON.stringify(displayReply(body.result||body.error||body),null,2); } catch(error) { HermesFetch.setState(output,error.kind==="offline"||error.kind==="timeout"?"offline":"broken",error.message); }
+        HermesFetch.setState(output,"pending","Requesting recorded example…"); try { const result=await HermesFetch.requestJSON("/api/witness/formal",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload),timeoutMs:HermesFetch.HEAVY_PROLOG_TIMEOUT_MS}); const body=HermesFetch.requireOK(result); output.className=""; output.textContent=JSON.stringify(displayReply(body.result||body.error||body),null,2); } catch(error) { HermesFetch.setState(output,error.kind==="offline"||error.kind==="timeout"?"offline":"broken",error.message); }
       }; return form;
     }
 
@@ -370,7 +370,7 @@ neg(p)</textarea>
       const result = await HermesFetch.requestJSON(path, {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
-        timeoutMs: HermesFetch.WORKER_TIMEOUT_MS,
+        timeoutMs: HermesFetch.HEAVY_PROLOG_TIMEOUT_MS,
       });
       return HermesFetch.requireOK(result);
     }
@@ -596,7 +596,7 @@ neg(p)</textarea>
       try {
         const result = await HermesFetch.requestJSON("/api/grounding", {
           method: "POST", headers: { "Content-Type": "application/json" }, body: "{}",
-          timeoutMs: HermesFetch.WORKER_TIMEOUT_MS,
+          timeoutMs: HermesFetch.HEAVY_PROLOG_TIMEOUT_MS,
         });
         const data = HermesFetch.requireOK(result);
         if (!data.ok) throw new Error(data.error || "query failed");

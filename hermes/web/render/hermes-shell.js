@@ -589,7 +589,7 @@
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ question: question, page: ACTIVE }),
-          timeoutMs: 120000
+          timeoutMs: 300000
         }).then(function (result) { return { client: client, result: result }; });
       }).then(function (packet) {
         var result = packet.result;

@@ -66,7 +66,7 @@ def cosine_matches(index: EmbeddingIndex, query_vector: list[float], *, limit: i
 def _api_json(url: str, payload: dict[str, Any], *, api_key: str, ssl_ctx: Any) -> dict[str, Any]:
     request = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}, method="POST")
     try:
-        with urllib.request.urlopen(request, timeout=60, context=ssl_ctx) as response: data = json.loads(response.read().decode("utf-8"))
+        with urllib.request.urlopen(request, timeout=300, context=ssl_ctx) as response: data = json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as exc: raise RuntimeError(f"REALLMS embedding request failed (HTTP {exc.code})") from exc
     except (urllib.error.URLError, TimeoutError) as exc: raise RuntimeError(f"REALLMS embedding request could not reach the service: {exc}") from exc
     if not isinstance(data, dict): raise RuntimeError("REALLMS embedding request returned malformed JSON")
