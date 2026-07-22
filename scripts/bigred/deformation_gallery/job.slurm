@@ -21,12 +21,14 @@ if ! command -v module >/dev/null 2>&1 && [ -r /opt/cray/pe/lmod/lmod/init/bash 
   # shellcheck disable=SC1091
   source /opt/cray/pe/lmod/lmod/init/bash
 fi
+set +u  # lmod/conda setup scripts reference unset vars (PS1)
 module purge
 module load conda/25.3.0
 module load sqlite/3.50.3
 # shellcheck disable=SC1091
 source "$(conda info --base)/etc/profile.d/conda.sh"
 conda activate "${HERMES_ENV:-umedcta}"
+set -u
 
 echo "[$(date -Is)] host=$(hostname) python=$(command -v python3) swipl=$(command -v swipl) node=$(command -v node)"
 bash scripts/bigred/deformation_gallery/run.sh
