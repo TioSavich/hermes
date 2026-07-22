@@ -779,6 +779,50 @@ def write_arm_comparison(transcript_id: str, results: dict[str, dict[str, Any]],
         "\n".join(body) + "\n", encoding="utf-8")
 
 
+def rerender_representations(transcript_id: str, numbered: str, two_pass: Any,
+                             out_dir: Path) -> dict[str, int]:
+    """Rebuild one existing run's pictures without reading model replies.
+
+    The extraction JSON remains the sole input. Existing SVGs are retained in
+    ``representations/superseded`` so a reader can compare the former
+    kind-only projection to the current bound-or-abstained record.
+    """
+    extraction_path = out_dir / f"{transcript_id}_lesson_extractions.json"
+    if not extraction_path.is_file():
+        raise FileNotFoundError(f"missing existing lesson extraction: {extraction_path}")
+    extractions = json.loads(extraction_path.read_text(encoding="utf-8"))
+    pictures = out_dir / "representations"
+    old_svgs = sorted(pictures.glob("*.svg")) if pictures.is_dir() else []
+    if old_svgs:
+        superseded = pictures / "superseded"
+        superseded.mkdir(parents=True, exist_ok=True)
+        for old_svg in old_svgs:
+            target = superseded / old_svg.name
+            if target.exists():
+                target.unlink()
+            old_svg.replace(target)
+    renderer = load_module("hermes_representation_render_rerender",
+                           REPO_ROOT / "scripts/research/representation_render.py")
+    receipts = renderer.render_mentions(extractions, out_dir)
+    extraction_path.write_text(json.dumps(extractions, indent=2, sort_keys=True) + "\n",
+                               encoding="utf-8")
+    mask_path = out_dir / f"{transcript_id}_lesson_mask.json"
+    readings_path = out_dir / f"{transcript_id}_lesson_readings.json"
+    saved_readings = (json.loads(readings_path.read_text(encoding="utf-8"))
+                      if readings_path.is_file() else {})
+    result = {
+        "extractions": extractions,
+        "mask": json.loads(mask_path.read_text(encoding="utf-8")) if mask_path.is_file() else {},
+        "readings": (saved_readings.get("readings", [])
+                     if isinstance(saved_readings, dict) else saved_readings),
+    }
+    write_sous_rature(transcript_id, "lesson", numbered, result, two_pass, out_dir)
+    return {"bound": sum(row.get("status") == "drawable" for row in receipts),
+            "abstained": sum(row.get("status") == "undrawable_unbound" for row in receipts),
+            "other_undrawable": sum(row.get("status") == "undrawable" for row in receipts),
+            "superseded": len(old_svgs)}
+
+
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
@@ -799,6 +843,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
     parser.add_argument("--dry-run", action="store_true",
                         help="build requests; no network, no reports")
+    parser.add_argument("--rerender-representations", action="store_true",
+                        help="offline: rebuild an existing lesson extraction's bound SVGs")
     args = parser.parse_args(argv)
 
     transcript_id = args.transcript
@@ -815,16 +861,20 @@ def main(argv: list[str] | None = None) -> int:
     rerun = load_module("hermes_talkmoves_rerun_helpers",
                         REPO_ROOT / "scripts/research/talkmoves_rerun.py")
     scorer = two_pass._load_scorer()
+    raw = markdown_path.read_text(encoding="utf-8")
+    blinded, _aliases = two_pass.blind_transcript(raw)
+    numbered, _ = scorer.number_transcript(blinded)
+    if args.rerender_representations:
+        accounting = rerender_representations(transcript_id, numbered, two_pass, args.out)
+        print("offline representation rerender: " + ", ".join(
+            f"{name}={value}" for name, value in accounting.items()))
+        return 0
     scorer.load_dotenv(REPO_ROOT)
     previous_model = os.environ.get("REALLMS_MODEL")
     os.environ["REALLMS_MODEL"] = args.model
 
     out_dir = args.out
     out_dir.mkdir(parents=True, exist_ok=True)
-
-    raw = markdown_path.read_text(encoding="utf-8")
-    blinded, _aliases = two_pass.blind_transcript(raw)
-    numbered, _ = scorer.number_transcript(blinded)
 
     facts = json.loads(cached_text(
         out_dir / f"{lesson['lesson']}_facts.json",

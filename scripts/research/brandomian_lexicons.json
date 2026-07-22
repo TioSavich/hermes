@@ -1,0 +1,9 @@
+{
+  "deictic": ["this", "that", "here", "now", "these", "these pieces"],
+  "anaphoric": ["it", "they", "one"],
+  "alethic_modal": ["must", "cannot", "has to be"],
+  "normative_deontic": ["should", "allowed", "supposed to", "you have to", "have to"],
+  "observational": ["i see", "count", "measure", "got"],
+  "negation": ["not", "no", "never", "cannot", "can't", "don't", "doesn't", "isn't", "aren't", "won't", "wouldn't", "didn't"],
+  "substitution_frames": ["is the same as", "is equal to", "means", "is"]
+}

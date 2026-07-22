@@ -32,3 +32,4 @@ CLAUDE.md
 .bigred-output/
 .bigred-collected/
 scripts/research/articulation_out/
+.claude/worktrees/
