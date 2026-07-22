@@ -4,7 +4,10 @@
  * ok:true for its concrete JSON example.  The registry signature remains the
  * broad type declaration; these facts record runnable JSON at the boundary.
  */
-:- module(automaton_input_contracts, [automaton_input_contract/5]).
+:- module(automaton_input_contracts,
+          [ automaton_input_contract/5,
+            automaton_observed_input_contract/3
+          ]).
 
 automaton_input_contract(addition, base_ones_chunking, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
 automaton_input_contract(addition, column_addition_with_carrying, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
@@ -51,6 +54,7 @@ automaton_input_contract(fraction, reversible_measurement_division, '{\"kind\":\
 automaton_input_contract(fraction, set_model_fraction_comparison, '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_pair\",\"left\":{\"n\":3,\"d\":4},\"right\":{\"n\":2,\"d\":3}}', verified(strategy_trace_ok)).
 automaton_input_contract(fraction, set_model_subset_size_focus, '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_pair\",\"left\":{\"n\":3,\"d\":4},\"right\":{\"n\":2,\"d\":3}}', verified(strategy_trace_ok)).
 automaton_input_contract(fraction, unit_fraction_iteration, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
+automaton_input_contract(fraction, unit_fraction_partition, '{\"a\":\"integer\",\"b\":\"positive_integer\"}', '{\"a\":1,\"b\":4}', verified(strategy_trace_ok)).
 automaton_input_contract(geometry, area_as_perimeter_count, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
 automaton_input_contract(geometry, rectangle_area_unit_iteration, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
 automaton_input_contract(integer, signed_addition_with_sign_relation, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
@@ -74,3 +78,8 @@ automaton_input_contract(subtraction, count_up_missing_addend, '{\"a\":\"integer
 automaton_input_contract(subtraction, decompose_base_for_ones, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
 automaton_input_contract(subtraction, smaller_from_larger_in_column, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
 automaton_input_contract(subtraction, take_away_base_ones, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
+
+% A marked contract has a live strategy_trace witness represented in the
+% generated transition table. It does not change the public contract shape.
+automaton_observed_input_contract(fraction, unit_fraction_partition,
+                                  strategy_trace_ok).

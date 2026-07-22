@@ -34,6 +34,13 @@ ELABORATES = re.compile(r"elaborates\((smr_[a-z0-9_]+):(run_[a-z0-9_]+)/")
 HIST = re.compile(r"hist\((q_[a-z0-9_]+)\s*,\s*([a-z][a-z0-9_]*)")
 
 
+CONTRACTS = ROOT / "knowledge/strategies/automaton_input_contracts.pl"
+OBSERVED_CONTRACT = re.compile(
+    r"automaton_observed_input_contract\(([a-z][a-z0-9_]*),\s*"
+    r"([a-z][a-z0-9_]*),\s*([a-z][a-z0-9_]*)\)\."
+)
+
+
 @dataclass(frozen=True)
 class Table:
     operation: str
@@ -194,6 +201,25 @@ def render_transitions(table: Table) -> str:
     )
 
 
+def observed_contracts() -> set[tuple[str, str]]:
+    """Return explicitly marked contracts with a live strategy_trace witness."""
+    return {
+        (operation, kind)
+        for operation, kind, _verification in OBSERVED_CONTRACT.findall(
+            CONTRACTS.read_text(encoding="utf-8")
+        )
+    }
+
+
+def render_observed_transitions(table: Table) -> str:
+    """Render a live-verified path without replacing its static source."""
+    return "\n".join(
+        f"automaton_transition({table.operation}, {table.kind}, {before}, {action}, {after}, "
+        "provenance(observed(strategy_trace_ok)))."
+        for before, action, after, _source in table.transitions
+    )
+
+
 def build() -> tuple[list[Table], list[tuple[str, str, str]], Counter[str]]:
     signatures = SIGNATURE.findall(REGISTRY.read_text(encoding="utf-8"))
     clauses: dict[str, tuple[Path, str, int, str, str | None]] = {}
@@ -246,11 +272,17 @@ def write(tables: list[Table]) -> None:
             ":- multifile automaton_transition/6.\n\n"
         )
         ordered = sorted(rows, key=lambda row: row.kind)
+        observed = [row for row in ordered if (row.operation, row.kind) in observed_contracts()]
         content = (
             header
             + "\n".join(render_tuple(row) for row in ordered)
             + "\n\n"
             + "\n\n".join(render_transitions(row) for row in ordered)
+            + (
+                "\n\n% Live strategy_trace witnesses for explicitly marked contracts.\n"
+                + "\n\n".join(render_observed_transitions(row) for row in observed)
+                if observed else ""
+            )
             + "\n"
         )
         (OUT_DIR / f"{operation}.pl").write_text(content, encoding="utf-8")

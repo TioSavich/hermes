@@ -163,3 +163,10 @@ automaton_transition(fraction, unit_fraction_partition, q_step_1, partition_whol
 automaton_transition(fraction, unit_fraction_partition, q_step_2, select_one_partition_as_unit_fraction, q_step_3, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:110'))).
 automaton_transition(fraction, unit_fraction_partition, q_step_3, preserve_inside_and_iterable_status, q_step_4, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:110'))).
 automaton_transition(fraction, unit_fraction_partition, q_step_4, kernel_trace, q_accept, provenance(static('knowledge/strategies/math/fraction_action_pairs.pl:110'))).
+
+% Live strategy_trace witnesses for explicitly marked contracts.
+automaton_transition(fraction, unit_fraction_partition, q_start, establish_referent_whole, q_step_1, provenance(observed(strategy_trace_ok))).
+automaton_transition(fraction, unit_fraction_partition, q_step_1, partition_whole_into_equal_units, q_step_2, provenance(observed(strategy_trace_ok))).
+automaton_transition(fraction, unit_fraction_partition, q_step_2, select_one_partition_as_unit_fraction, q_step_3, provenance(observed(strategy_trace_ok))).
+automaton_transition(fraction, unit_fraction_partition, q_step_3, preserve_inside_and_iterable_status, q_step_4, provenance(observed(strategy_trace_ok))).
+automaton_transition(fraction, unit_fraction_partition, q_step_4, kernel_trace, q_accept, provenance(observed(strategy_trace_ok))).
