@@ -10,8 +10,11 @@ machines retain their authored q_-state labels from ``hist/2`` traces.
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import shutil
+import subprocess
+import tempfile
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
@@ -35,10 +38,13 @@ HIST = re.compile(r"hist\((q_[a-z0-9_]+)\s*,\s*([a-z][a-z0-9_]*)")
 
 
 CONTRACTS = ROOT / "knowledge/strategies/automaton_input_contracts.pl"
-OBSERVED_CONTRACT = re.compile(
-    r"automaton_observed_input_contract\(([a-z][a-z0-9_]*),\s*"
-    r"([a-z][a-z0-9_]*),\s*([a-z][a-z0-9_]*)\)\."
+CONTRACT = re.compile(
+    r"automaton_input_contract\(\s*([a-z][a-z0-9_]*)\s*,\s*"
+    r"([a-z][a-z0-9_]*)\s*,\s*'((?:\\.|[^'])*)'\s*,\s*"
+    r"'((?:\\.|[^'])*)'\s*,\s*verified\(([^)]*)\)\)\.",
+    re.MULTILINE,
 )
+OBSERVED_TIMEOUT_SECONDS = 2
 
 
 @dataclass(frozen=True)
@@ -49,6 +55,23 @@ class Table:
     actions: tuple[str, ...]
     transitions: tuple[tuple[str, str, str, str], ...]
     source: str
+
+
+@dataclass(frozen=True)
+class Contract:
+    operation: str
+    kind: str
+    example: dict[str, object]
+
+
+@dataclass(frozen=True)
+class Observation:
+    operation: str
+    kind: str
+    source: str
+    actions: tuple[str, ...]
+    status: str
+    reason: str = ""
 
 
 def line_at(text: str, offset: int) -> int:
@@ -201,22 +224,133 @@ def render_transitions(table: Table) -> str:
     )
 
 
-def observed_contracts() -> set[tuple[str, str]]:
-    """Return explicitly marked contracts with a live strategy_trace witness."""
-    return {
-        (operation, kind)
-        for operation, kind, _verification in OBSERVED_CONTRACT.findall(
-            CONTRACTS.read_text(encoding="utf-8")
+def contracts() -> list[Contract]:
+    """Read checked JSON examples without loading the contracts module."""
+    found: list[Contract] = []
+    for operation, kind, _schema, example, _verification in CONTRACT.findall(
+        CONTRACTS.read_text(encoding="utf-8")
+    ):
+        found.append(Contract(operation, kind, json.loads(example.replace(r'\"', '"'))))
+    return found
+
+
+def prolog_input(example: dict[str, object]) -> tuple[str, str]:
+    """Mirror hermes_encyclopedia:trace_inputs/3 for checked examples."""
+    if example.get("kind") == "fraction_pair":
+        left = example["left"]
+        right = example["right"]
+        assert isinstance(left, dict) and isinstance(right, dict)
+        return (
+            f"fraction_pair({left['n']},{left['d']},{right['n']},{right['d']})",
+            "unit(whole)",
         )
-    }
+    if example.get("kind") == "decimal_pair":
+        left = example["left"]
+        right = example["right"]
+        assert isinstance(left, dict) and isinstance(right, dict)
+        return (
+            f"decimal_pair({left['numeral']},{left['scale']},{right['numeral']},{right['scale']})",
+            "ignored",
+        )
+    return str(example["a"]), str(example["b"])
 
 
-def render_observed_transitions(table: Table) -> str:
-    """Render a live-verified path without replacing its static source."""
+def derived_example(example: dict[str, object]) -> dict[str, object]:
+    """Make a small second probe without changing a contract's input shape."""
+    result = json.loads(json.dumps(example))
+    if result.get("kind") in {"fraction_pair", "decimal_pair"}:
+        left = result["left"]
+        assert isinstance(left, dict)
+        key = "n" if result["kind"] == "fraction_pair" else "numeral"
+        left[key] = int(left[key]) + 1
+    else:
+        result["a"] = int(result["a"]) + 1
+    return result
+
+
+PROLOG_PROBE = r'''
+:- use_module(library(time)).
+
+trace_actions([], []).
+trace_actions([hist(_, Step) | Rest], Actions) :- !,
+    trace_actions_hist(Rest, Step, Actions).
+trace_actions([Step | Rest], [Action | Actions]) :-
+    functor(Step, Action, _),
+    trace_actions(Rest, Actions).
+
+trace_actions_hist([], _, []).
+trace_actions_hist([hist(_, Next) | Rest], Step, [Action | Actions]) :-
+    functor(Step, Action, _),
+    trace_actions_hist(Rest, Next, Actions).
+
+probe_one(Source, Operation, Kind, Left, Right) :-
+    catch(( call_with_time_limit(2,
+                                 once(action_automata_registry:run_action_automaton(
+                                     Operation, Kind, Left, Right, _Outcome, Trace)))
+          -> true ; Trace = failed ),
+          time_limit_exceeded, Trace = timeout),
+    ( Trace == timeout
+    -> Status = timeout, Actions = []
+    ; Trace == failed
+    -> Status = failed, Actions = []
+    ; nonvar(Trace)
+    -> Status = observed, trace_actions(Trace, Actions)
+    ; Status = failed, Actions = []
+    ),
+    format('~w|~w|~w|~w|', [Source, Operation, Kind, Status]),
+    write_canonical(Actions), nl.
+
+main :- forall(probe(Source, Operation, Kind, Left, Right),
+               probe_one(Source, Operation, Kind, Left, Right)).
+'''
+
+
+def observe(checked_contracts: list[Contract]) -> list[Observation]:
+    """Run every contract and a bounded derived probe in one SWI process."""
+    probes: list[str] = []
+    for contract in checked_contracts:
+        for source, example in (("contract_example", contract.example),
+                                ("derived_template", derived_example(contract.example))):
+            left, right = prolog_input(example)
+            probes.append(
+                f"probe({source}, {contract.operation}, {contract.kind}, {left}, {right})."
+            )
+    with tempfile.TemporaryDirectory(prefix="hermes-transition-observe-") as directory:
+        work = Path(directory)
+        probe_file = work / "probes.pl"
+        runner_file = work / "runner.pl"
+        probe_file.write_text("\n".join(probes) + "\n", encoding="utf-8")
+        runner_file.write_text(PROLOG_PROBE, encoding="utf-8")
+        result = subprocess.run(
+            ["swipl", "-q", "-l", "paths.pl", "-l",
+             "knowledge/strategies/math/action_automata_registry.pl", "-l",
+             str(probe_file), "-l", str(runner_file), "-g", "main", "-t", "halt"],
+            cwd=ROOT, text=True, capture_output=True, timeout=180, check=False,
+        )
+    if result.returncode:
+        raise RuntimeError(f"observed runner failed: {result.stderr.strip()}")
+    observations: list[Observation] = []
+    for line in (line for line in result.stdout.splitlines() if line.count("|") == 4):
+        source, operation, kind, status, encoded_actions = line.split("|", 4)
+        actions = tuple(re.findall(r"[a-z][a-z0-9_]*", encoded_actions))
+        reason = "bounded timeout" if status == "timeout" else "run failed" if status == "failed" else ""
+        observations.append(Observation(operation, kind, source, actions, status, reason))
+    if len(observations) != len(probes):
+        raise RuntimeError(
+            "observed runner did not return one result per probe: "
+            f"got {len(observations)} of {len(probes)}; stdout={result.stdout!r}; stderr={result.stderr!r}"
+        )
+    return observations
+
+
+def render_observed_transitions(table: Table, observation: Observation) -> str:
+    """Keep observed source separate from static extraction provenance."""
+    states = (table.states if observation.actions == table.actions else
+              tuple(["q_start", *(f"q_observed_{n}" for n in range(1, len(observation.actions))), "q_accept"]))
     return "\n".join(
-        f"automaton_transition({table.operation}, {table.kind}, {before}, {action}, {after}, "
-        "provenance(observed(strategy_trace_ok)))."
-        for before, action, after, _source in table.transitions
+        f"automaton_transition({table.operation}, {table.kind}, {states[index]}, {action}, {states[index + 1]}, "
+        f"provenance(observed({observation.source})))."
+        for index, action in enumerate(observation.actions)
     )
 
 
@@ -257,7 +391,7 @@ def build() -> tuple[list[Table], list[tuple[str, str, str]], Counter[str]]:
     return tables, skipped, routes
 
 
-def write(tables: list[Table]) -> None:
+def write(tables: list[Table], observations: list[Observation]) -> None:
     if OUT_DIR.exists():
         shutil.rmtree(OUT_DIR)
     OUT_DIR.mkdir(parents=True)
@@ -267,22 +401,29 @@ def write(tables: list[Table]) -> None:
     for operation, rows in sorted(by_operation.items()):
         header = (
             f"% Generated by scripts/research/build_transition_tables.py.\n"
-            f"% Static extraction only; each transition retains its source location.\n"
+            f"% Static extraction and bounded live observations; each transition retains its provenance.\n"
             ":- multifile automaton_tuple/6.\n"
             ":- multifile automaton_transition/6.\n\n"
         )
         ordered = sorted(rows, key=lambda row: row.kind)
-        observed = [row for row in ordered if (row.operation, row.kind) in observed_contracts()]
+        observed = {
+            (item.operation, item.kind, item.source): item
+            for item in observations if item.status == "observed"
+        }
+        observed_blocks = [
+            render_observed_transitions(row, observed[key])
+            for row in ordered
+            for key in ((row.operation, row.kind, "contract_example"),
+                        (row.operation, row.kind, "derived_template"))
+            if key in observed
+        ]
         content = (
             header
             + "\n".join(render_tuple(row) for row in ordered)
             + "\n\n"
             + "\n\n".join(render_transitions(row) for row in ordered)
-            + (
-                "\n\n% Live strategy_trace witnesses for explicitly marked contracts.\n"
-                + "\n\n".join(render_observed_transitions(row) for row in observed)
-                if observed else ""
-            )
+            + ("\n\n% Bounded live traces reconstructed from returned step labels.\n"
+               + "\n\n".join(observed_blocks) if observed_blocks else "")
             + "\n"
         )
         (OUT_DIR / f"{operation}.pl").write_text(content, encoding="utf-8")
@@ -291,23 +432,33 @@ def write(tables: list[Table]) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="fail if generated facts are not current")
+    parser.add_argument("--coverage", action="store_true", help="print every observed or skipped probe")
     args = parser.parse_args()
     tables, skipped, routes = build()
+    observations = observe(contracts())
     if args.check:
         before = {path.name: path.read_text(encoding="utf-8") for path in OUT_DIR.glob("*.pl")} if OUT_DIR.exists() else {}
-        write(tables)
+        write(tables, observations)
         after = {path.name: path.read_text(encoding="utf-8") for path in OUT_DIR.glob("*.pl")}
         if before != after:
             print("transition tables were regenerated; rerun without --check and inspect the diff")
             return 1
     else:
-        write(tables)
+        write(tables, observations)
     print(f"extracted={len(tables)} skipped={len(skipped)}")
     for operation in sorted(set(routes) | {operation for operation, _, _ in skipped}):
         total = sum(1 for op, _ in SIGNATURE.findall(REGISTRY.read_text(encoding='utf-8')) if op == operation)
         print(f"{operation}: {routes[operation]}/{total}")
     for operation, kind, reason in skipped:
         print(f"SKIPPED {operation}/{kind}: {reason}")
+    primary = [item for item in observations if item.source == "contract_example"]
+    secondary = [item for item in observations if item.source == "derived_template"]
+    print(f"contract-observed={sum(item.status == 'observed' for item in primary)}/{len(primary)} "
+          f"derived-observed={sum(item.status == 'observed' for item in secondary)}/{len(secondary)}")
+    if args.coverage:
+        for observation in observations:
+            detail = ",".join(observation.actions) if observation.status == "observed" else observation.reason
+            print(f"OBSERVED {observation.operation}/{observation.kind} {observation.source}: {observation.status} {detail}")
     return 0
 
 
