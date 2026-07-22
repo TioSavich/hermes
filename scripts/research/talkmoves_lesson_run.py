@@ -103,7 +103,7 @@ def load_module(name: str, path: Path) -> Any:
 _LESSON_FACTS_GOAL = """
 use_module(library(http/json)),
 Code = '{code}',
-lesson_monitoring:monitoring_chart(Code, monitoring_chart(Code, lesson(_, Title, grade(G), unit(U), lesson(L)), Standards, Strategies, _, _)),
+lesson_monitoring:monitoring_chart(Code, monitoring_chart(Code, lesson(_, Title, grade(G), unit(U), lesson(L)), Standards, Strategies, _, _, Resonant)),
 findall(_{{operation:OpA, kind:KindA, vocabulary:VocabA, cluster:ClusterA}},
         ( member(strategy(Op, Kind, Info), Strategies),
           term_to_atom(Op, OpA), term_to_atom(Kind, KindA),
@@ -113,12 +113,19 @@ findall(_{{operation:OpA, kind:KindA, vocabulary:VocabA, cluster:ClusterA}},
 findall(_{{a:A, b:B, position:PosA, pages:PagesS, excerpt:Ex}},
         ( compiled_task_instances:compiled_lesson_task_instance(Code, _-divide(A,B), task_evidence(_, source(e343_pdf(_, pages(PagesS))), position(Pos), excerpt(Ex))), term_to_atom(Pos, PosA) ),
         Tasks),
+findall(_{{code:SCA, statement:SS}},
+        ( member(standard(ccss, SC, SS), Standards), term_to_atom(SC, SCA) ),
+        CcssDicts),
+findall(_{{name:RNA, domain:RDA, citation:RC, score:RS}},
+        ( member(resonant_misconception(RN, RD, RC, RS), Resonant),
+          term_to_atom(RN, RNA), term_to_atom(RD, RDA) ),
+        ResonantDicts),
 Lp is L - 1, Ln is L + 1,
 format(string(PrevS), 'IM-G~w-U~w-L~w', [G,U,Lp]),
 format(string(NextS), 'IM-G~w-U~w-L~w', [G,U,Ln]),
 ( member(standard(im_lesson, PrevS, PrevT), Standards) -> true ; PrevT = '' ),
 ( member(standard(im_lesson, NextS, NextT), Standards) -> true ; NextT = '' ),
-json_write_dict(current_output, _{{code:Code, title:Title, grade:G, unit:U, lesson:L, strategies:StratDicts, tasks:Tasks, prev_title:PrevT, next_title:NextT}}), nl, halt.
+json_write_dict(current_output, _{{code:Code, title:Title, grade:G, unit:U, lesson:L, strategies:StratDicts, tasks:Tasks, ccss:CcssDicts, resonant:ResonantDicts, prev_title:PrevT, next_title:NextT}}), nl, halt.
 """
 
 
@@ -214,6 +221,12 @@ def monitoring_chart_text(facts: dict[str, Any], narrative: str,
          f"\"{facts['title']}\" (Open Up Resources). This chart assembles what "
          "the lesson anticipates so that what speakers are attempting is "
          "recognizable. The chart anticipates; the transcript decides."),
+        "",
+    ]
+    for standard in facts.get("ccss", []):
+        lines.append(f"STANDARD: {str(standard.get('code', '')).strip(chr(39))}"
+                     f" — {standard.get('statement')}")
+    lines += [
         "",
         "UNIT STORY (published scope and sequence; fraction notation was "
         "lost in text extraction, so gaps in the quoted questions stand "
@@ -782,15 +795,20 @@ def main(argv: list[str] | None = None) -> int:
         lambda: json.dumps(lesson_facts(lesson["lesson"]), indent=2,
                            sort_keys=True) + "\n"))
     narrative = unit_narrative(lesson["unit_heading"])
-    misconception_path = out_dir / f"{lesson['lesson']}_misconceptions.json"
-    if args.dry_run and not misconception_path.is_file():
-        misconceptions: list[dict[str, Any]] = []
-    else:
-        misconceptions = json.loads(cached_text(
-            misconception_path,
-            lambda: json.dumps(resonant_misconceptions(
-                lesson["retrieval_queries"], args.k), indent=2,
-                sort_keys=True) + "\n"))
+    # The committed resonance facts are the same rows the app's chart
+    # serves; live retrieval remains only as the fallback for lessons
+    # whose facts have not been built.
+    misconceptions: list[dict[str, Any]] = facts.get("resonant") or []
+    if not misconceptions:
+        misconception_path = out_dir / f"{lesson['lesson']}_misconceptions.json"
+        if args.dry_run and not misconception_path.is_file():
+            misconceptions = []
+        else:
+            misconceptions = json.loads(cached_text(
+                misconception_path,
+                lambda: json.dumps(resonant_misconceptions(
+                    lesson["retrieval_queries"], args.k), indent=2,
+                    sort_keys=True) + "\n"))
     chart = monitoring_chart_text(facts, narrative, misconceptions)
     (out_dir / f"{transcript_id}_lesson_context.md").write_text(
         chart + "\n", encoding="utf-8")
@@ -824,7 +842,17 @@ def main(argv: list[str] | None = None) -> int:
     write_alignment(transcript_id, primary_arm, primary, numbered, rerun,
                     out_dir)
     write_arm_comparison(transcript_id, results, rerun, out_dir)
+    try:
+        join = load_module("hermes_monitoring_join",
+                           REPO_ROOT / "scripts/research/monitoring_join.py")
+        join.main(["--run-dir", str(out_dir), "--transcript", transcript_id,
+                   "--lesson", lesson["lesson"]])
+        joined = True
+    except Exception as exc:
+        print(f"monitoring join did not run: {exc}")
+        joined = False
     (out_dir / "run_manifest.json").write_text(json.dumps({
+        "monitoring_join": joined,
         "transcript_id": transcript_id,
         "lesson": lesson["lesson"],
         "lesson_verified_by": lesson["verified_by"],
