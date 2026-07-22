@@ -30,3 +30,5 @@ build/
 scripts/research/talkmoves_rerun_out/
 CLAUDE.md
 .bigred-output/
+.bigred-collected/
+scripts/research/articulation_out/

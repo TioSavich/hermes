@@ -85,6 +85,25 @@ Loaded arithmetic rows: **1920**.
 
 ## `too_vague` retirement proposal
 
+**Owner's correction (2026-07-22, superseding the framing below):**
+`too_vague` was never only a naming placeholder. It marked rows whose
+source text was too vague to reconstruct what the child was doing as an
+automaton. A mechanical rename would dress the gap in a descriptive slug
+while the gap — no runnable account of the doing — remained. The rename
+mapping below stays as an inventory instrument, but the remedy of record
+is ARTICULATION: draw the vague row into contact with the accounts the
+repo already holds (case-model automata such as Steffe's Jason partitive
+scheme, named neighbors, domain state vocabulary) and either flesh it
+out into a runnable candidate with every inference marked, or decline
+with what the text underdetermines named (the articulation harness is
+task 85). The merge and false-friend analyses in this survey stand.
+
+The owner also holds the word "misconception" itself under erasure (the
+mediant lesson: a documented way of working can be contextually correct
+under its own referents); candidate prose says "documented error" for
+what a study recorded as error and avoids diagnostic language about
+children.
+
 The companion `misconception_rename_proposal.py` produces this same full dry-run mapping. Slugs use ASCII lowercase words from documented-error text, first 12 words, joined with hyphens; repeated slugs receive `-2`, `-3`, and so on in loaded-row order. Rows marked `BLOCKED` have no loaded gloss or domain-table row title and must not receive a fabricated descriptive name.
 
 | Row ID | Old name | Proposed name | Documented error | Citation |
