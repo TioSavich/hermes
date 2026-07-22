@@ -83,6 +83,10 @@ load_runtime :-
     use_module(pml(trace_adjudication), []),
     use_module(hermes(encyclopedia)),
     use_module(hermes(commitment_matcher), []),
+    use_module(misconceptions(literature_deontic_bridge),
+               [ lit_deontic_content_match/2,
+                 lit_deontic_content_match_witness/3 ]),
+    use_module(hermes(math_claim_checker), []),
     use_module(hermes(capability_registry), []),
     use_module(sequent(embodied_prover), []),
     use_module(sequent(sequent_engine), []),
@@ -180,6 +184,7 @@ load_runtime :-
     % reimplemented: the hyperedges op calls verified_emergent/1 on cached
     % discovery rows.
     use_module(incompat(find_emergent_hyperedges), []),
+    load_bigred_hyperedges(Root),
     % Lesson-vs-registry gap surface (flat Operation-Kind pairs) backing the
     % monitoring chart export's unanticipated_strategies key.
     use_module(lessons(lesson_gap), []).
@@ -197,6 +202,12 @@ load_axiom_pack_audit(Root) :-
 load_geometry_runtime(Root) :-
     directory_file_path(Root, 'knowledge/geometry/schema.pl', Schema),
     consult(Schema).
+
+load_bigred_hyperedges(Root) :-
+    directory_file_path(Root,
+                        'knowledge/hyperedges/bigred_emergent_hyperedges.pl',
+                        Facts),
+    ( exists_file(Facts) -> use_module(Facts, []) ; true ).
 
 worker_loop :-
     read_line_to_string(user_input, Line),
@@ -1172,17 +1183,17 @@ dispatch_request(lesson_deformation_chart, Id, Request, Response) :-
             "lesson_deformation_chart requires code (an IM lesson code)", Response)
     ).
 
-% The notation monitoring chart for one lesson code (519 lessons, GK-G6). Mirrors
-% lesson_deformation_chart: a missing chart for the code is a clear coverage
-% error rather than a silent failure.
+% The notation monitoring chart for one lesson code. A lesson with no registered
+% notation material returns its explicit no-material payload rather than another
+% lesson's representative equation.
 dispatch_request(notation_monitoring_chart, Id, Request, Response) :-
     (   get_dict(code, Request, Code0)
     ->  atom_string(Code, Code0),
         (   lesson_notation_chart:notation_monitoring_chart(Code, Chart)
         ->  json_safe(Chart, Safe),
             ok_response(Id, Safe, Response)
-        ;   error_response(Id, no_notation_chart,
-                "lesson_notation_chart found no notation chart for that code",
+        ;   error_response(Id, unknown_lesson_code,
+                "notation_monitoring_chart found no IM lesson for that code",
                 Response)
         )
     ;   error_response(Id, missing_code,
@@ -1484,6 +1495,7 @@ mult_div_family_dispatch_witness(A, B, Witness) :-
 
 commitment_match_dispatch_dict(Content, Dict) :-
     findall(_{ term: TermText,
+               matcher: strategy_misconception,
                source: SourceText,
                matched_tokens: TokenTexts },
             ( commitment_matcher:match_commitment_witness(Content, Term, W),
@@ -1493,7 +1505,21 @@ commitment_match_dispatch_dict(Content, Dict) :-
               get_dict(matched_tokens, W, Tokens),
               maplist(term_to_text, Tokens, TokenTexts)
             ),
-            Matches0),
+            StrategyMatches),
+    findall(_{ term: TermText,
+               matcher: literature_canonical,
+               source: SourceText,
+               matched_tokens: TokenTexts },
+            ( lit_deontic_content_match(Content, Terms),
+              member(Term, Terms),
+              once(lit_deontic_content_match_witness(
+                  Content, Term, witness(_Raw, Source, Tokens))),
+              term_to_text(Term, TermText),
+              term_to_text(Source, SourceText),
+              maplist(term_to_text, Tokens, TokenTexts)
+            ),
+            LiteratureMatches),
+    append(StrategyMatches, LiteratureMatches, Matches0),
     sort(Matches0, Matches),
     ( Matches == [] -> Abstained = true ; Abstained = false ),
     Dict = _{matches: Matches, abstained: Abstained}.
@@ -1585,14 +1611,17 @@ pair_graph_dispatch_dict(Events, Graph) :-
     hermes_pair_scoring:pair_graph(Pairs, Graph).
 
 inferential_strength_dispatch_dict(Code, Dict) :-
-    (   lesson_inferential_strength_for(Code, Report)
+    (   lesson_inferential_strength_for(Code, Report, Source)
     ->  Resolved = true
     ;   Report = none,
-        Resolved = false
+        Resolved = false,
+        Source = unavailable
     ),
     inferential_strength_export_dict(Report, Power),
     atom_string(Code, CodeString),
-    Dict = _{lesson: CodeString, resolved: Resolved, inferential_strength: Power}.
+    term_to_text(Source, SourceText),
+    Dict = _{lesson: CodeString, resolved: Resolved, source: SourceText,
+             inferential_strength: Power}.
 
 canonical_contract_dispatch_dict(Dict) :-
     findall(_{canonical: CS, module: MS, legacy: LS},
@@ -1672,6 +1701,7 @@ known_dispatch_converter(number).
 known_dispatch_converter(recollection).
 known_dispatch_converter(fraction).
 known_dispatch_converter(list).
+known_dispatch_converter(math_claim).
 
 read_dispatch_inputs([], _Request, []).
 read_dispatch_inputs([Key-default(Converter, Default)|Specs], Request,
@@ -1748,6 +1778,94 @@ convert_dispatch_input(fraction, JSON, Fraction) :-
 convert_dispatch_input(list, JSON, List) :-
     json_to_term(JSON, List),
     is_list(List).
+% Typed math claims arrive as source text, but this boundary only accepts the
+% finite grammar the checker registers.  It never turns a caller-provided term
+% into a goal: the resulting term is data passed to check_math_claim/2.
+convert_dispatch_input(math_claim, JSON, Claim) :-
+    string(JSON),
+    catch(term_string(Claim, JSON, [syntax_errors(fail)]), _, fail),
+    safe_math_claim(Claim).
+
+safe_math_claim(Claim) :-
+    ground(Claim),
+    acyclic_term(Claim),
+    safe_math_claim_shape(Claim).
+
+safe_math_claim_shape(equivalence(F1, F2)) :-
+    safe_fraction(F1), safe_fraction(F2).
+safe_math_claim_shape(n_over_n_is_one(Fraction)) :- safe_fraction(Fraction).
+safe_math_claim_shape(n_over_n_schema).
+safe_math_claim_shape(division_by_n_is_unit_fraction(N)) :- integer(N).
+safe_math_claim_shape(improper(Fraction)) :- safe_fraction(Fraction).
+safe_math_claim_shape(number_line_position(Fraction, between(0, 1))) :-
+    safe_fraction(Fraction).
+safe_math_claim_shape(midpoint(Fraction)) :- safe_fraction(Fraction).
+safe_math_claim_shape(multiplication(Left, Right, Result)) :-
+    safe_multiplication_factor(Left), safe_fraction(Right), safe_fraction(Result).
+safe_math_claim_shape(fraction_of(N, Fraction, Result)) :-
+    integer(N), safe_fraction(Fraction), integer(Result).
+safe_math_claim_shape(difference(F1, F2, Result)) :-
+    safe_fraction(F1), safe_fraction(F2), safe_fraction(Result).
+safe_math_claim_shape(iterate_to_whole(Fraction, times(N))) :-
+    safe_fraction(Fraction), integer(N).
+safe_math_claim_shape(sum(A, B, C)) :- integers([A, B, C]).
+safe_math_claim_shape(fraction_sum(F1, F2, Result)) :-
+    safe_fraction(F1), safe_fraction(F2), safe_fraction_sum_result(Result).
+safe_math_claim_shape(subtraction(A, B, C)) :- integers([A, B, C]).
+safe_math_claim_shape(comparison(Left, Relation, Right)) :-
+    safe_comparison_operand(Left), safe_comparison_relation(Relation),
+    safe_comparison_operand(Right).
+safe_math_claim_shape(ordering(Values, Direction)) :-
+    is_list(Values), integers(Values), safe_ordering_direction(Direction).
+safe_math_claim_shape(class_inclusion(Sub, Super)) :-
+    safe_quadrilateral_shape(Sub), safe_quadrilateral_shape(Super).
+safe_math_claim_shape(shape_property(Shape, Property)) :-
+    safe_quadrilateral_shape(Shape), safe_quadrilateral_property(Property).
+safe_math_claim_shape(arithmetic_equation(Left, Right)) :-
+    safe_arithmetic_expression(Left), safe_arithmetic_expression(Right).
+
+safe_fraction(fraction(N, D)) :- integers([N, D]).
+safe_multiplication_factor(N) :- integer(N).
+safe_multiplication_factor(Fraction) :- safe_fraction(Fraction).
+safe_fraction_sum_result(whole(N)) :- integer(N).
+safe_fraction_sum_result(Fraction) :- safe_fraction(Fraction).
+safe_comparison_operand(N) :- integer(N).
+safe_comparison_operand(Fraction) :- safe_fraction(Fraction).
+safe_comparison_relation(Relation) :-
+    memberchk(Relation, [greater_than, gt, >, greater,
+                         less_than, lt, <, smaller, less,
+                         equal_to, eq, =, equal]).
+safe_ordering_direction(Direction) :- memberchk(Direction, [ascending, descending]).
+safe_quadrilateral_shape(Shape) :-
+    memberchk(Shape, [square, rectangle, rhombus, parallelogram, trapezoid,
+                      quadrilateral]).
+safe_quadrilateral_property(Property) :-
+    memberchk(Property, [four_sides, four_right_angles, four_equal_sides,
+                         two_pairs_parallel_sides, opposite_sides_equal]).
+safe_arithmetic_expression(N) :- integer(N).
+safe_arithmetic_expression(Left + Right) :-
+    safe_arithmetic_expression(Left), safe_arithmetic_expression(Right).
+safe_arithmetic_expression(Left - Right) :-
+    safe_arithmetic_expression(Left), safe_arithmetic_expression(Right).
+safe_arithmetic_expression(-Value) :- safe_arithmetic_expression(Value).
+safe_arithmetic_expression(Left * Right) :-
+    safe_arithmetic_expression(Left), safe_arithmetic_expression(Right).
+safe_arithmetic_expression(Left / Right) :-
+    safe_arithmetic_expression(Left), safe_arithmetic_expression(Right).
+safe_arithmetic_expression(Left // Right) :-
+    safe_arithmetic_expression(Left), safe_arithmetic_expression(Right).
+safe_arithmetic_expression(Left mod Right) :-
+    safe_arithmetic_expression(Left), safe_arithmetic_expression(Right).
+safe_arithmetic_expression(Left ^ Right) :-
+    safe_arithmetic_expression(Left), safe_arithmetic_expression(Right).
+safe_arithmetic_expression(Left ** Right) :-
+    safe_arithmetic_expression(Left), safe_arithmetic_expression(Right).
+safe_arithmetic_expression(abs(Value)) :- safe_arithmetic_expression(Value).
+safe_arithmetic_expression(max(Left, Right)) :-
+    safe_arithmetic_expression(Left), safe_arithmetic_expression(Right).
+safe_arithmetic_expression(min(Left, Right)) :-
+    safe_arithmetic_expression(Left), safe_arithmetic_expression(Right).
+integers(Values) :- forall(member(Value, Values), integer(Value)).
 
 dispatch_default_input(_Converter, Default, Default) :-
     var(Default),
@@ -3621,6 +3739,29 @@ queried_entailment(Request, Result) :-
     ;   Result = null
     ).
 
+hyperedge_row(KindFilter, Row) :-
+    (   KindFilter == all
+    ->  true
+    ;   KindFilter == bigred_precomputed
+    ),
+    current_predicate(bigred_emergent_hyperedges:bigred_emergent_hyperedge/4),
+    bigred_emergent_hyperedges:bigred_emergent_hyperedge(RunDate, Scenario,
+                                                           Scope, Set),
+    maplist(term_to_text, Set, SetTexts),
+    term_to_text(RunDate, RunDateText),
+    term_to_text(Scenario, ScenarioText),
+    term_to_text(Scope, ScopeText),
+    format(string(Provenance), "Big Red collected run ~w; scenario ~w; scope ~w",
+           [RunDateText, ScenarioText, ScopeText]),
+    Row = _{ source: "bigred_2026_07_22_collected_facts",
+             provenance: Provenance,
+             context: "collected_emergent_hyperedge",
+             set: SetTexts,
+             kind: "bigred_precomputed",
+             emergent: true,
+             emergence_check: "served_from_collected_facts",
+             content_set: SetTexts,
+             catalogue_break: null }.
 hyperedge_row(KindFilter, Row) :-
     incompatibility_sets:discovered_set_kind(Context, Set, Kind0),
     hyperedge_kind_atom(Kind0, Kind),

@@ -552,6 +552,10 @@ dispatch_spec(commitment_match,
     [content-nonempty_text],
     call(user:commitment_match_dispatch_dict, [content, out(dict)]),
     raw_safe(missing_content)).
+dispatch_spec(check_math_claim,
+    [claim-math_claim],
+    call(math_claim_checker:check_math_claim, [claim, out(dict)]),
+    raw(malformed_math_claim)).
 dispatch_spec(corpus_grammar_summary,
     [],
     call(corpus_attested_grammar:corpus_grammar_summary, [out(witness)]),
@@ -915,6 +919,7 @@ dispatch_message(mua_kind_coherence_witness, no_witness, "mua_kind_coherence_wit
 dispatch_message(mua_kind_coherence_witness, malformed, "mua_kind_coherence_witness requires kind and row_text").
 dispatch_message(validate_reader_axioms, malformed, "validate_reader_axioms requires lesson_code and clauses (a list of strings)").
 dispatch_message(commitment_match, malformed, "commitment_match requires non-empty content").
+dispatch_message(check_math_claim, malformed, "check_math_claim requires a safely parsed typed claim term using a registered claim shape").
 dispatch_message(corpus_grammar_summary, no_witness, "corpus_grammar_summary produced no summary").
 dispatch_message(grounding_inference_witness, no_witness, "grounding_inference_witness found no grounding recorded example").
 dispatch_message(grounding_inference_witness, malformed, "grounding_inference_witness requires metaphor and inference").

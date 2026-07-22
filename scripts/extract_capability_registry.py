@@ -77,6 +77,57 @@ class Operation:
     module: str
     role: str
     inputs: tuple[str, ...]
+    parameters: tuple["Parameter", ...] = ()
+    description: str | None = None
+
+
+@dataclass(frozen=True)
+class Parameter:
+    name: str
+    json_type: str | None = None
+    required: bool | None = None
+    example: object | None = None
+
+
+# These examples are requests exercised through the worker seam.  The
+# extractor derives converter type and requiredness from dispatch_spec/4; this
+# table supplies examples for the MCP core's irregular legacy operations too.
+PARAMETER_EXAMPLES: dict[str, dict[str, object]] = {
+    "monitoring_chart_export": {"lesson_code": "IM-G3-U5-L2"},
+    "lesson_deformation_chart": {"code": "IM-G3-U5-L2"},
+    "deontic_scorecard": {"agent": "student", "commitments": [], "entitlements": []},
+    "deontic_consequences": {"agent": "student", "commitments": []},
+    "deontic_up_level": {"agent": "student", "commitments": []},
+    "commitment_match": {"content": "A square is a rectangle."},
+    "check_math_claim": {"claim": "equivalence(fraction(3,4), fraction(6,8))"},
+}
+
+OPERATION_DESCRIPTIONS = {
+    "check_math_claim": (
+        "Check one typed mathematical claim term: equivalence(fraction(A,B), "
+        "fraction(C,D)), multiplication, difference, sum, subtraction, "
+        "comparison, fraction_sum, fraction_of, iterate_to_whole, ordering, "
+        "quadrilateral claims, or arithmetic_equation; leaves are integers or "
+        "registered vocabulary atoms."
+    ),
+}
+
+# These legacy handlers are outside dispatch_spec/4.  Their contracts were
+# read from the handler guards before being recorded here; unlike spec-backed
+# rows, this metadata is deliberately limited to the MCP core surface.
+IRREGULAR_PARAMETER_METADATA: dict[str, dict[str, tuple[str, bool]]] = {
+    "lesson_deformation_chart": {"code": ("string", True)},
+    "deontic_scorecard": {
+        "agent": ("string", False), "commitments": ("array", False),
+        "entitlements": ("array", False),
+    },
+    "deontic_consequences": {
+        "agent": ("string", False), "commitments": ("array", False),
+    },
+    "deontic_up_level": {
+        "agent": ("string", False), "commitments": ("array", False),
+    },
+}
 
 
 ROLE_PREFIXES: tuple[tuple[str, str], ...] = (
@@ -166,11 +217,96 @@ def prolog_atom(value: str) -> str:
     return "'" + value.replace("'", "''") + "'"
 
 
+def prolog_json_value(value: object | None) -> str:
+    if value is None:
+        return "null"
+    if value is True:
+        return "true"
+    if value is False:
+        return "false"
+    if isinstance(value, int):
+        return str(value)
+    if isinstance(value, str):
+        return '"' + value.replace('"', '\\"') + '"'
+    if isinstance(value, list):
+        return "[" + ", ".join(prolog_json_value(item) for item in value) + "]"
+    raise TypeError(f"unsupported registry example value: {value!r}")
+
+
 def role_for_op(name: str) -> str:
     for prefix, role in ROLE_PREFIXES:
         if name.startswith(prefix):
             return role
     return "unclassified"
+
+
+def top_level_items(text: str) -> list[str]:
+    """Split a Prolog list body without mistaking converter arguments for rows."""
+    items: list[str] = []
+    start = 0
+    depth = 0
+    quote: str | None = None
+    for index, char in enumerate(text):
+        if quote:
+            if char == quote:
+                quote = None
+            continue
+        if char in {"'", '"'}:
+            quote = char
+        elif char in "([{":
+            depth += 1
+        elif char in ")]}":
+            depth -= 1
+        elif char == "," and depth == 0:
+            items.append(text[start:index].strip())
+            start = index + 1
+    final = text[start:].strip()
+    if final:
+        items.append(final)
+    return items
+
+
+def base_converter(converter: str) -> str:
+    converter = converter.strip()
+    for wrapper in ("default(", "fallback("):
+        if converter.startswith(wrapper):
+            return top_level_items(converter[len(wrapper):-1])[0]
+    return converter
+
+
+def converter_json_type(converter: str) -> str | None:
+    converter = base_converter(converter)
+    if converter in {"atom", "code", "string", "filter", "op_atom", "nonempty_text", "optional_code", "practice", "math_claim"}:
+        return "string"
+    if converter == "int" or converter.startswith("int("):
+        return "integer"
+    if converter == "dict":
+        return "object"
+    if converter in {"json_list", "list"}:
+        return "array"
+    return None
+
+
+def converter_required(converter: str) -> bool:
+    return not converter.strip().startswith(("default(", "fallback("))
+
+
+def spec_parameters(name: str, inputs_text: str) -> tuple[Parameter, ...]:
+    examples = PARAMETER_EXAMPLES.get(name, {})
+    parameters = []
+    for item in top_level_items(inputs_text):
+        key, converter = item.split("-", 1)
+        parameters.append(Parameter(
+            key.strip(), converter_json_type(converter), converter_required(converter),
+            examples.get(key.strip()),
+        ))
+    return tuple(parameters)
+
+
+def irregular_parameters(name: str, inputs: tuple[str, ...]) -> tuple[Parameter, ...]:
+    examples = PARAMETER_EXAMPLES.get(name, {})
+    metadata = IRREGULAR_PARAMETER_METADATA.get(name, {})
+    return tuple(Parameter(key, *(metadata.get(key, (None, None))), examples.get(key)) for key in inputs)
 
 
 def input_keys(body: str, request_name: str) -> tuple[str, ...]:
@@ -257,10 +393,14 @@ def extract_spec_operations() -> dict[str, Operation]:
     if len(rows) != len(re.findall(r"(?m)^dispatch_spec\(", text)):
         raise ValueError("unreadable dispatch_spec row")
     for name, inputs_text, module in rows:
-        inputs = tuple(sorted(re.findall(r"\b([a-z][A-Za-z0-9_]*)\s*-", inputs_text)))
+        parameters = spec_parameters(name, inputs_text)
+        inputs = tuple(sorted(parameter.name for parameter in parameters))
         if name in operations:
             raise ValueError(f"duplicate dispatch_spec row: {name}")
-        operations[name] = Operation(name, module, role_for_op(name), inputs)
+        operations[name] = Operation(
+            name, module, role_for_op(name), inputs, parameters,
+            OPERATION_DESCRIPTIONS.get(name),
+        )
     return operations
 
 
@@ -273,11 +413,15 @@ def extract_operations(text: str) -> list[Operation]:
             raise ValueError(f"spec-backed op still has bespoke dispatch clause: {match.group(1)}")
         body = code_without_comments(dispatch_body(text, match.end()))
         module_match = MODULE_CALL_RE.search(body)
+        name = match.group(1)
+        inputs = input_keys(body, match.group(2))
         operations.append(Operation(
-            name=match.group(1),
+            name=name,
             module=module_match.group(1) if module_match else "hermes_worker",
-            role=role_for_op(match.group(1)),
-            inputs=input_keys(body, match.group(2)),
+            role=role_for_op(name),
+            inputs=inputs,
+            parameters=irregular_parameters(name, inputs),
+            description=OPERATION_DESCRIPTIONS.get(name),
         ))
     operations.extend(spec_operations.values())
     return sorted(operations, key=lambda op: op.name)
@@ -615,6 +759,8 @@ def render_registry() -> str:
         "% Regenerate: python3 scripts/extract_capability_registry.py",
         ":- module(capability_registry,",
         "          [ capability/5,",
+        "            capability_parameter/5,",
+        "            capability_description/2,",
         "            capability_route/3,",
         "            capability_page/2,",
         "            capability_lazy_via/2",
@@ -638,6 +784,23 @@ def render_registry() -> str:
             f"capability({prolog_atom(rel)}, {prolog_atom(module)}, "
             f"{prolog_atom(role)}, [], {status})."
         )
+    lines.append("")
+    for op in operations:
+        for parameter in op.parameters:
+            if (parameter.json_type is None and parameter.required is None
+                    and parameter.example is None):
+                continue
+            json_type = prolog_atom(parameter.json_type) if parameter.json_type else "null"
+            required = ("true" if parameter.required else "false") if parameter.required is not None else "null"
+            lines.append(
+                f"capability_parameter({prolog_atom(op.name)}, {prolog_atom(parameter.name)}, "
+                f"{json_type}, {required}, {prolog_json_value(parameter.example)})."
+            )
+    for op in operations:
+        if op.description:
+            lines.append(
+                f"capability_description({prolog_atom(op.name)}, {prolog_json_value(op.description)})."
+            )
     lines.append("")
     for op in operations:
         for method, route in sorted(routes.get(op.name, set())):
