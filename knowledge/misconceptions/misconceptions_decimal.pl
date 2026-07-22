@@ -12,6 +12,7 @@
 :- module(misconceptions_decimal, []).
 
 :- multifile test_harness:arith_misconception/6.
+:- multifile test_harness:misconception_union/5.
 :- discontiguous test_harness:arith_misconception/6.
 :- dynamic test_harness:arith_misconception/6.
 
@@ -756,6 +757,12 @@ test_harness:arith_misconception(db_row(39645), decimal, too_vague,
 test_harness:arith_misconception(db_row(39667), decimal, too_vague,
     skip, none, none).
 
+
+% Task 89 union: equivalent documented error; names share one doing.
+test_harness:misconception_union(
+    db_row(39667), [too_vague], [db_row(39667), db_row(40299)],
+    ["Leicha Bragg (2007)", "LEICHA A. BRAGG (2012)"], "multiplying always makes a number bigger and dividing always makes it smaller").
+
 % === row 39676: only doubling divisors terminate ===
 test_harness:arith_misconception(db_row(39676), decimal, too_vague,
     skip, none, none).
@@ -919,9 +926,6 @@ test_harness:arith_misconception(db_row(40278), decimal, too_vague,
     skip, none, none).
 
 % === row 40299: MMB/DMS belief (no example) ===
-test_harness:arith_misconception(db_row(40299), decimal, too_vague,
-    skip, none, none).
-
 % === row 40321: miscount decimal digits from wrong ends ===
 % Task: 115.4 * 0.325
 % Correct: 37.505
@@ -1434,6 +1438,12 @@ misconceptions_decimal_batch_2:(more_places_is_larger(W1-D1 - W2-D2, Winner) :-
 test_harness:arith_misconception(db_row(38399), decimal, more_places_larger_rule,
     misconceptions_decimal_batch_2:more_places_is_larger,
     0-384 - 0-32, 0-384).
+
+
+% Task 89 union: equivalent documented error; names share one doing.
+test_harness:misconception_union(
+    db_row(38399), [more_places_larger_rule, whole_number_rule_order], [db_row(38399), db_row(39631)],
+    ["Mun Yee Lai, Jeffrey P. Wong (2017)", "Kevin Moloney and Kaye Stacey (1997)"], "the decimal with more digits after the point is the larger number").
 
 % === row 38401: decimals are negative — 0 > 0.5 ===
 % Task: compare 0 and 0.5, return larger
@@ -1965,10 +1975,6 @@ misconceptions_decimal_batch_2:(whole_number_rule_order(W1-D1 - W2-D2, Winner) :
     ; D1 > D2 -> Winner = W1-D1
     ; Winner = W2-D2
     )).
-
-test_harness:arith_misconception(db_row(39631), decimal, whole_number_rule_order,
-    misconceptions_decimal_batch_2:whole_number_rule_order,
-    4-125 - 4-7, 4-7).
 
 % === row 39633: zero rule — leading zero makes smaller (Moloney/Stacey) ===
 % Task: order 3.214, 3.09, 3.8 — smallest first, student's order

@@ -34,6 +34,18 @@
 %   adjudication. Always succeeds: an unrecognized claim shape returns
 %   status "not_covered".
 
+% Fraction checkers construct recollections, whose components are natural
+% counts. Reject an invalid fraction component before a clause reaches
+% ints_to_recs/2, whose head cut would otherwise turn that domain boundary
+% into silent failure.
+check_math_claim(Claim, Dict) :-
+    grounded_fraction_claim(Claim, ClaimName),
+    invalid_fraction_component(Claim),
+    !,
+    not_covered(ClaimName,
+                "fraction components must be non-negative integers; the grounded substrate carries non-negative recollections",
+                Dict).
+
 % --- fraction equivalence: a/b = c/d ---
 check_math_claim(equivalence(fraction(N1,D1), fraction(N2,D2)), Dict) :-
     !,
@@ -164,28 +176,45 @@ check_math_claim(fraction_of(N, fraction(Num,Den), Result), Dict) :-
 % --- fraction difference: a/b - c/d = p/q ---
 check_math_claim(difference(fraction(A,B), fraction(C,D), fraction(P,Q)), Dict) :-
     !,
-    ints_to_recs([A,B,C,D,P,Q], [RA,RB,RC,RD,RP,RQ]),
-    (   multiply_grounded(RA, RD, LeftNumerator),
-        multiply_grounded(RC, RB, RightNumerator),
-        multiply_grounded(RB, RD, CommonDenominator),
-        subtract_grounded(LeftNumerator, RightNumerator, DifferenceNumerator),
-        multiply_grounded(DifferenceNumerator, RQ, LeftScaled),
-        multiply_grounded(RP, CommonDenominator, RightScaled)
-    ->  verdict_of(equal_to(LeftScaled, RightScaled), V),
-        rec_int(LeftNumerator, LN), rec_int(RightNumerator, RN),
-        rec_int(DifferenceNumerator, DN), rec_int(CommonDenominator, CD),
-        rec_int(LeftScaled, LS), rec_int(RightScaled, RS),
-        format(string(T),
-               "common denominator ~w: ~w/~w - ~w/~w leaves ~w/~w; scaled comparison ~w vs ~w",
-               [CD,LN,CD,RN,CD,DN,CD,LS,RS]),
-        checked_dict("fraction_difference", "grounded_arithmetic:subtract_grounded", V, [T], Dict)
-    ;   checked_dict("fraction_difference", "grounded_arithmetic:subtract_grounded",
-                     "refuted", ["left-hand difference is negative or not groundable"], Dict)
+    (   B > 0, D > 0, Q > 0
+    ->  ints_to_recs([A,B,C,D,P,Q], [RA,RB,RC,RD,RP,RQ]),
+        (   multiply_grounded(RA, RD, LeftNumerator),
+            multiply_grounded(RC, RB, RightNumerator),
+            multiply_grounded(RB, RD, CommonDenominator),
+            subtract_grounded(LeftNumerator, RightNumerator, DifferenceNumerator),
+            multiply_grounded(DifferenceNumerator, RQ, LeftScaled),
+            multiply_grounded(RP, CommonDenominator, RightScaled)
+        ->  verdict_of(equal_to(LeftScaled, RightScaled), V),
+            rec_int(LeftNumerator, LN), rec_int(RightNumerator, RN),
+            rec_int(DifferenceNumerator, DN), rec_int(CommonDenominator, CD),
+            rec_int(LeftScaled, LS), rec_int(RightScaled, RS),
+            format(string(T),
+                   "common denominator ~w: ~w/~w - ~w/~w leaves ~w/~w; scaled comparison ~w vs ~w",
+                   [CD,LN,CD,RN,CD,DN,CD,LS,RS]),
+            checked_dict("fraction_difference", "grounded_arithmetic:subtract_grounded", V, [T], Dict)
+        ;   checked_dict("fraction_difference", "grounded_arithmetic:subtract_grounded",
+                         "refuted", ["left-hand difference is negative or not groundable"], Dict)
+        )
+    ;   not_covered("fraction_difference",
+                    "a zero denominator places this claim outside the grounded fraction domain",
+                    Dict)
     ).
 
 % --- iterate a part N/D, K times, to reconstitute the whole ---
 check_math_claim(iterate_to_whole(fraction(N,D), times(K)), Dict) :-
     !,
+    % The iteration count is the one non-fraction natural in the fraction
+    % family; the up-front component guard inspects only fraction/2
+    % sub-terms, so a negative count must be rejected here or ints_to_recs
+    % fails after the cut and the always-succeeds contract breaks.
+    (   \+ (integer(K), K >= 0)
+    ->  not_covered("iterate_to_whole",
+                    "iteration count must be a non-negative integer",
+                    Dict)
+    ;   check_iterate_to_whole(N, D, K, Dict)
+    ).
+
+check_iterate_to_whole(N, D, K, Dict) :-
     ints_to_recs([N,D,K], [RN,RD,RK]),
     (   multiply_grounded(RK, RN, Prod)
     ->  verdict_of(equal_to(Prod, RD), V),
@@ -416,6 +445,22 @@ not_covered(Claim, Reason, _{ status: "not_covered", claim: Claim,
                               verdict: "not_checked",
                               adjudication: "not_in_registered_domain",
                               reason: Reason }).
+
+grounded_fraction_claim(equivalence(_, _), "fraction_equivalence").
+grounded_fraction_claim(n_over_n_is_one(_), "n_over_n_is_one").
+grounded_fraction_claim(improper(_), "improper_fraction").
+grounded_fraction_claim(number_line_position(_, _), "number_line_position").
+grounded_fraction_claim(midpoint(_), "number_line_midpoint").
+grounded_fraction_claim(multiplication(_, _, _), "fraction_multiplication").
+grounded_fraction_claim(fraction_of(_, _, _), "fraction_of_quantity").
+grounded_fraction_claim(difference(_, _, _), "fraction_difference").
+grounded_fraction_claim(iterate_to_whole(_, _), "iterate_to_whole").
+grounded_fraction_claim(fraction_sum(_, _, _), "fraction_sum").
+grounded_fraction_claim(comparison(_, _, _), "fraction_comparison").
+
+invalid_fraction_component(Claim) :-
+    sub_term(fraction(N, D), Claim),
+    ( \+ integer(N) ; \+ integer(D) ; N < 0 ; D < 0 ).
 
 %!  fraction_equivalence(+N1,+D1,+N2,+D2, -Verdict, -Trace) is semidet.
 %

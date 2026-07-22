@@ -16,6 +16,7 @@
 :- use_module(library(yall)).
 
 :- multifile test_harness:arith_misconception/6.
+:- multifile test_harness:misconception_union/5.
 :- discontiguous test_harness:arith_misconception/6.
 :- dynamic test_harness:arith_misconception/6.
 
@@ -2562,11 +2563,6 @@ misconceptions_fraction_batch_3:(r39765_add_across(frac(N1,D1)-frac(N2,D2), frac
     N is N1 + N2,
     D is D1 + D2).
 
-test_harness:arith_misconception(db_row(39765), fraction, add_across_unlike,
-    misconceptions_fraction_batch_3:r39765_add_across,
-    frac(3,8)-frac(4,10),
-    frac(62,80)).
-
 % === row 39772: mismark number line for measurement division ===
 % Too vague — placement error without a concrete numeric arithmetic output.
 test_harness:arith_misconception(db_row(39772), fraction, too_vague,
@@ -2635,11 +2631,6 @@ test_harness:arith_misconception(db_row(39890), fraction, swap_notation_directio
 misconceptions_fraction_batch_3:(r39948_add_across(frac(N1,D1)-frac(N2,D2), frac(N,D)) :-
     N is N1 + N2,
     D is D1 + D2).
-
-test_harness:arith_misconception(db_row(39948), fraction, add_across_unlike,
-    misconceptions_fraction_batch_3:r39948_add_across,
-    frac(1,5)-frac(1,3),
-    frac(8,15)).
 
 % === row 40034: treat linear shaded half as area 1/8 ===
 % Too vague — perceptual misidentification; no clean numeric transformation.
@@ -3083,6 +3074,12 @@ test_harness:arith_misconception(db_row(37823), fraction, larger_denom_bigger,
     misconceptions_fraction_batch_4:larger_denom_larger_fraction,
     frac(1,8)-frac(1,3),
     second).
+
+
+% Task 89 union: equivalent documented error; names share one doing.
+test_harness:misconception_union(
+    db_row(37823), [larger_denom_bigger, unit_frac_bigger_denom_wins, too_vague], [db_row(37823), db_row(37829), db_row(39949)],
+    ["Eric Gutstein, Pauline Lipman, Patricia Hernandez, Rebeca de los Reyes (1997)", "Martin A. Simon, Nicora Placa, and Arnon Avitzur (2016)", "Hara Bouta & Fotini Paraskeva (2013)"], "the unit fraction with the bigger bottom number is the bigger fraction").
 
 % === row 37847: "two tenths" as 2 × 10 (process bug, result coincides) ===
 test_harness:arith_misconception(db_row(37847), fraction, too_vague,
@@ -3586,9 +3583,6 @@ test_harness:arith_misconception(db_row(39891), fraction, sort_by_gap,
     frac(1,2)).
 
 % === row 39949: unit fraction comparison reasoning ===
-test_harness:arith_misconception(db_row(39949), fraction, too_vague,
-    skip, none, none).
-
 % === row 40049: keyword-triggered procedure ===
 test_harness:arith_misconception(db_row(40049), fraction, too_vague,
     skip, none, none).
@@ -4470,11 +4464,6 @@ misconceptions_fraction_batch_5:(r39782_componentwise_add(frac(N1,D1)-frac(N2,D2
     Num is N1 + N2,
     Den is D1 + D2).
 
-test_harness:arith_misconception(db_row(39782), fraction, tops_and_bottoms_addition,
-    misconceptions_fraction_batch_5:r39782_componentwise_add,
-    frac(2,3)-frac(1,7),
-    frac(17,21)).
-
 % === row 39813: halving-fails for odd denominators ===
 % Strategy-selection issue, no numeric output.
 test_harness:arith_misconception(db_row(39813), fraction, too_vague,
@@ -4630,9 +4619,6 @@ test_harness:arith_misconception(db_row(40258), fraction, too_vague,
 % === row 40319: 18/19 > 15/16 because N+D larger ===
 % Student's comparison answer matches the correct comparison (18/19 > 15/16),
 % so this rule has no distinct wrong output on this example.
-test_harness:arith_misconception(db_row(40319), fraction, too_vague,
-    skip, none, none).
-
 % === row 40372: whole × improper fraction conflation ===
 % Complex unit-coordination described without a single wrong numeric output.
 test_harness:arith_misconception(db_row(40372), fraction, too_vague,
@@ -4891,11 +4877,6 @@ test_harness:arith_misconception(db_row(37810), fraction, too_vague,
 misconceptions_fraction_batch_6:(row_37829(frac(N1,D1)-frac(N2,D2), Larger) :-
     % student picks the one with the larger denominator
     (D1 > D2 -> Larger = frac(N1,D1) ; Larger = frac(N2,D2))).
-
-test_harness:arith_misconception(db_row(37829), fraction, unit_frac_bigger_denom_wins,
-    misconceptions_fraction_batch_6:row_37829,
-    frac(1,7)-frac(1,5),
-    frac(1,5)).
 
 % === row 37852: additive representation of multiplicative relationship ===
 test_harness:arith_misconception(db_row(37852), fraction, too_vague,
@@ -5198,11 +5179,6 @@ misconceptions_fraction_batch_6:(row_38946(frac(N1,D1)-frac(N2,D2), Got) :-
     N is N1 + N2,
     D is D1 + D2,
     Got is N / D).
-
-test_harness:arith_misconception(db_row(38946), fraction, add_across_common_denom,
-    misconceptions_fraction_batch_6:row_38946,
-    frac(3,8)-frac(2,8),
-    0.625).
 
 % === row 38977: "seven and a half" < "seven" (half as "a little bit") ===
 % Task: compare 7.5 and 7 — which is larger?
@@ -5746,6 +5722,12 @@ test_harness:arith_misconception(db_row(37857), fraction, same_numerator_by_deno
     frac(4,15)-frac(4,10),
     second).
 
+
+% Task 89 union: equivalent documented error; names share one doing.
+test_harness:misconception_union(
+    db_row(37857), [same_numerator_by_denominator, too_vague], [db_row(37857), db_row(40319)],
+    ["Kathleen A. Cramer, Thomas R. Post, and Robert C. delMas (2002)", "OTHMAN N. ALSAWAIE (2012)"], "the fraction with the bigger denominator is the bigger fraction").
+
 % === row 37872: sketch-based componentwise addition ===
 % Task: 2/5 + 1/3.
 % Correct: frac(11,15).
@@ -5761,6 +5743,12 @@ test_harness:arith_misconception(db_row(37872), fraction, sketch_count_addition,
     misconceptions_fraction_batch_7:sketch_count_addition,
     frac(2,5)-frac(1,3),
     frac(11,15)).
+
+
+% Task 89 union: equivalent documented error; names share one doing.
+test_harness:misconception_union(
+    db_row(37872), [sketch_count_addition, add_across_unlike, tops_and_bottoms_addition], [db_row(37872), db_row(39765), db_row(39782)],
+    ["Donald M. Peck and Stanley M. Jencks (1981)", "Omer Sahin, Burcin Gokkurt & Yasin Soylu (2016)", "Hui-Chuan Li (2014)"], "add the tops together and the bottoms together").
 
 % === row 37906: compare unit fractions by denominator as whole numbers ===
 % Task: compare frac(1,3) and frac(1,4).
@@ -5950,6 +5938,12 @@ test_harness:arith_misconception(db_row(38805), fraction, stefan_rule_componentw
     misconceptions_fraction_batch_7:stefan_rule_componentwise,
     frac(1,2)-frac(1,3),
     frac(5,6)).
+
+
+% Task 89 union: equivalent documented error; names share one doing.
+test_harness:misconception_union(
+    db_row(38805), [stefan_rule_componentwise, add_across_common_denom], [db_row(38805), db_row(38946)],
+    ["KLAUS HASEMANN AND HELEN MANSFIELD (1995)", "DIETMAR KÜCHEMANN (1981)"], "add fractions by summing numerators and summing denominators separately").
 
 % === row 38868: fractions with same missing-piece count judged equal ===
 % Task: compare frac(5,6) and frac(7,8).
@@ -6303,10 +6297,6 @@ test_harness:arith_misconception(db_row(40232), fraction, too_vague, skip, none,
 test_harness:arith_misconception(db_row(40374), fraction, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(40407), fraction, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(40457), fraction, too_vague, skip, none, none).
-test_harness:arith_misconception(db_row(40538), fraction, too_vague,
-    misconceptions_fraction_churn_2026_07_21:churn_40538_fraction_is_pair_of_independent_integers,
-    frac(3,4), 3/4).
-
 % === churn 2026-07-21: semantic-review admissions ===
 % Citation: George W. Bright, Merlyn J. Behr, Thomas R. Post and Ipke Wachsmuth (1988)
 % Documented error: take the entire drawn span (here 0 to 2) as the single reference unit
@@ -6472,6 +6462,12 @@ test_harness:arith_misconception(db_row(37833), fraction, add_common_denominator
     misconceptions_fraction_batch_7:r37833_add_common_denoms,
     frac(1,5)-frac(1,5),
     frac(2,5)).
+
+
+% Task 89 union: equivalent documented error; names share one doing.
+test_harness:misconception_union(
+    db_row(37833), [add_common_denominators, add_across_unlike], [db_row(37833), db_row(39948)],
+    ["Brent Davis (1997)", "Hara Bouta & Fotini Paraskeva (2013)"], "to add two fractions, add the numerators together and add the denominators together").
 
 % Digit-cancellation examples that happen to land on the correct numeric value.
 test_harness:arith_misconception(db_row(37947), fraction, too_vague, skip, none, none).
@@ -6852,6 +6848,12 @@ test_harness:arith_misconception(db_row(40027), fraction, denominator_pattern_or
     [frac(1,4), frac(3,8), frac(2,3)]).
 
 test_harness:arith_misconception(db_row(40028), fraction, too_vague, skip, none, none).
+
+% Task 89 union: equivalent documented error; names share one doing.
+test_harness:misconception_union(
+    db_row(40028), [too_vague], [db_row(40028), db_row(40538)],
+    ["Shuhua An, Gerald Kulm and Zhonghe Wu (2004)", "Anne Watson (2010)"], "read a fraction as two separate whole numbers rather than one quantity").
+
 test_harness:arith_misconception(db_row(40095), fraction, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(40153), fraction, too_vague, skip, none, none).
 

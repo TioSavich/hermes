@@ -322,9 +322,12 @@ def build_pass1_user_content(transcript_id: str, numbered_markdown: str,
 # Adjudication (Prolog disposes)
 # ---------------------------------------------------------------------------
 
-def _fraction_term(value: Any) -> str:
+def _fraction_term(value: Any) -> str | None:
     if isinstance(value, dict) and "num" in value and "den" in value:
-        return f"fraction({int(value['num'])},{int(value['den'])})"
+        num, den = int(value["num"]), int(value["den"])
+        if num < 0 or den < 0:
+            return None
+        return f"fraction({num},{den})"
     if isinstance(value, bool):
         raise ValueError("boolean is not a math value")
     if isinstance(value, int):
@@ -332,13 +335,15 @@ def _fraction_term(value: Any) -> str:
     raise ValueError(f"unsupported math value: {value!r}")
 
 
-def _forced_fraction_term(value: Any) -> str:
+def _forced_fraction_term(value: Any) -> str | None:
     """Like _fraction_term, but a whole number becomes fraction(N,1) so it
     lands in the checker's fraction clauses (which have no bare-integer
     variants in these argument positions)."""
     if isinstance(value, bool):
         raise ValueError("boolean is not a math value")
     if isinstance(value, int):
+        if value < 0:
+            return None
         return f"fraction({value},1)"
     return _fraction_term(value)
 
@@ -386,33 +391,34 @@ def claim_to_term(claim: dict[str, Any]) -> str | None:
     args = claim.get("args", {}) or {}
     try:
         if shape == "equivalence":
-            return (f"equivalence({_fraction_term(args['left'])},"
-                    f"{_fraction_term(args['right'])})")
+            left, right = _fraction_term(args["left"]), _fraction_term(args["right"])
+            return None if left is None or right is None else f"equivalence({left},{right})"
         if shape == "n_over_n_is_one":
-            return f"n_over_n_is_one({_fraction_term(args['frac'])})"
+            frac = _fraction_term(args["frac"])
+            return None if frac is None else f"n_over_n_is_one({frac})"
         if shape == "comparison":
             rel = _COMPARISON_RELS.get(str(args["rel"]).strip().lower())
             if rel is None:
                 return None
-            return (f"comparison({_fraction_term(args['left'])},{rel},"
-                    f"{_fraction_term(args['right'])})")
+            left, right = _fraction_term(args["left"]), _fraction_term(args["right"])
+            return None if left is None or right is None else f"comparison({left},{rel},{right})"
         if shape == "multiplication":
             # The checker takes fraction*fraction or integer*fraction; an
             # integer second factor or product must travel as N/1.
-            return (f"multiplication({_fraction_term(args['a'])},"
-                    f"{_forced_fraction_term(args['b'])},"
-                    f"{_forced_fraction_term(args['product'])})")
+            a = _fraction_term(args["a"])
+            b, product = _forced_fraction_term(args["b"]), _forced_fraction_term(args["product"])
+            return None if a is None or b is None or product is None else f"multiplication({a},{b},{product})"
         if shape == "fraction_sum":
             result = args["result"]
             if isinstance(result, dict):
                 target = _fraction_term(result)
             else:
                 target = f"whole({int(result)})"
-            return (f"fraction_sum({_fraction_term(args['a'])},"
-                    f"{_fraction_term(args['b'])},{target})")
+            a, b = _fraction_term(args["a"]), _fraction_term(args["b"])
+            return None if a is None or b is None or target is None else f"fraction_sum({a},{b},{target})"
         if shape == "fraction_of":
-            return (f"fraction_of({int(args['n'])},"
-                    f"{_fraction_term(args['frac'])},{int(args['result'])})")
+            frac = _fraction_term(args["frac"])
+            return None if frac is None else f"fraction_of({int(args['n'])},{frac},{int(args['result'])})"
         if shape == "sum":
             return f"sum({int(args['a'])},{int(args['b'])},{int(args['c'])})"
         if shape == "subtraction":
@@ -426,9 +432,10 @@ def claim_to_term(claim: dict[str, Any]) -> str | None:
                 # Whole-number difference is the subtraction checker's claim.
                 return (f"subtraction({int(args['a'])},{int(args['b'])},"
                         f"{int(result)})")
-            return (f"difference({_forced_fraction_term(args['a'])},"
-                    f"{_forced_fraction_term(args['b'])},"
-                    f"{_forced_fraction_term(result)})")
+            a, b, c = (_forced_fraction_term(args["a"]),
+                       _forced_fraction_term(args["b"]),
+                       _forced_fraction_term(result))
+            return None if a is None or b is None or c is None else f"difference({a},{b},{c})"
         if shape == "ordering":
             values = args["list"]
             if not isinstance(values, list) or not values:
@@ -450,17 +457,22 @@ def claim_to_term(claim: dict[str, Any]) -> str | None:
             return (f"shape_property({_atom(args['shape'])},"
                     f"{_atom(args['property'])})")
         if shape == "improper":
-            return f"improper({_fraction_term(args['frac'])})"
+            frac = _fraction_term(args["frac"])
+            return None if frac is None else f"improper({frac})"
         if shape == "midpoint":
-            return f"midpoint({_fraction_term(args['frac'])})"
+            frac = _fraction_term(args["frac"])
+            return None if frac is None else f"midpoint({frac})"
         if shape == "iterate_to_whole":
-            return (f"iterate_to_whole({_fraction_term(args['frac'])},"
-                    f"times({int(args['times'])}))")
+            frac = _fraction_term(args["frac"])
+            times = int(args["times"])
+            if frac is None or times < 0:
+                return None
+            return f"iterate_to_whole({frac},times({times}))"
         if shape == "division_by_n_is_unit_fraction":
             return f"division_by_n_is_unit_fraction({int(args['n'])})"
         if shape == "number_line_position":
-            return (f"number_line_position({_fraction_term(args['frac'])},"
-                    f"between(0,1))")
+            frac = _fraction_term(args["frac"])
+            return None if frac is None else f"number_line_position({frac},between(0,1))"
     except (KeyError, TypeError, ValueError):
         return None
     return None

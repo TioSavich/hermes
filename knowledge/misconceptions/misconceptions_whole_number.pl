@@ -12,6 +12,7 @@
 :- module(misconceptions_whole_number, []).
 
 :- multifile test_harness:arith_misconception/6.
+:- multifile test_harness:misconception_union/5.
 :- discontiguous test_harness:arith_misconception/6.
 :- dynamic test_harness:arith_misconception/6.
 
@@ -894,9 +895,6 @@ test_harness:arith_misconception(db_row(37670), whole_number, false_distribution
     322).
 
 % === row 37691: absurd subtraction result accepted (no single rule) ===
-test_harness:arith_misconception(db_row(37691), whole_number, too_vague,
-    skip, none, none).
-
 % === row 37746: correct algorithm, no understanding (no computational error) ===
 test_harness:arith_misconception(db_row(37746), whole_number, too_vague,
     skip, none, none).
@@ -3303,9 +3301,6 @@ test_harness:arith_misconception(db_row(38278), whole_number, too_vague,
 
 % === row 38377: idiosyncratic subtraction with added ten ===
 % Highly individual procedure; not a canonical systematic bug.
-test_harness:arith_misconception(db_row(38377), whole_number, too_vague,
-    skip, none, none).
-
 % === row 38393: omit zero in quotient ===
 % Task: 36064 / 8
 % Correct: 4508
@@ -3800,6 +3795,12 @@ test_harness:arith_misconception(db_row(149), whole_number, smaller_from_larger_
     940 - 586,
     354).
 
+
+% Task 89 union: equivalent documented error; names share one doing.
+test_harness:misconception_union(
+    db_row(149), [smaller_from_larger_columnwise, too_vague], [db_row(149), db_row(241)],
+    ["Laupa, M. (2000)", "Levin (1981)"], "in each column subtract the smaller digit from the larger regardless of which is on top").
+
 test_harness:arith_misconception(db_row(150), whole_number, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(151), whole_number, too_vague, skip, none, none).
 
@@ -3899,6 +3900,12 @@ test_harness:arith_misconception(db_row(189), whole_number, smaller_from_larger_
     73 - 39,
     34).
 
+
+% Task 89 union: equivalent documented error; names share one doing.
+test_harness:misconception_union(
+    db_row(189), [smaller_from_larger_standard_alg, top_from_bottom_subtraction], [db_row(189), db_row(210)],
+    ["Brown, Burton (1978)", "Fuson, Li (2009)"], "in each column take the smaller digit from the larger regardless of position").
+
 test_harness:arith_misconception(db_row(190), whole_number, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(191), whole_number, too_vague, skip, none, none).
 
@@ -3973,11 +3980,6 @@ test_harness:arith_misconception(db_row(209), whole_number, too_vague, skip, non
 % GROUNDED: TODO keep minuend/subtrahend roles fixed across columns.
 % CONNECTS TO: s(comp_nec(unlicensed(top_from_bottom_subtraction)))
 misconceptions_whole_number_batch_5:(r210_top_from_bottom(346 - 157, 211)).
-
-test_harness:arith_misconception(db_row(210), whole_number, top_from_bottom_subtraction,
-    misconceptions_whole_number_batch_5:r210_top_from_bottom,
-    346 - 157,
-    189).
 
 % === row 211: carrying bug writes 99 + 1 as 910 ===
 % Correct: 100.
@@ -4076,8 +4078,6 @@ test_harness:arith_misconception(db_row(237), whole_number, too_vague, skip, non
 test_harness:arith_misconception(db_row(238), whole_number, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(239), whole_number, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(240), whole_number, too_vague, skip, none, none).
-test_harness:arith_misconception(db_row(241), whole_number, too_vague, skip, none, none).
-
 % === row 242: order of operations grouped by following plus signs ===
 % Task: 50 - 10 + 10 + 10.
 % Correct: 60.
@@ -4143,6 +4143,12 @@ test_harness:arith_misconception(db_row(281), whole_number, smaller_from_larger_
     misconceptions_whole_number_batch_5:r40592_smaller_from_larger_2digit,
     32 - 17,
     15).
+
+
+% Task 89 union: equivalent documented error; names share one doing.
+test_harness:misconception_union(
+    db_row(281), [smaller_from_larger_standard_alg, too_vague], [db_row(281), db_row(37691), db_row(38377)],
+    ["Julie Ryan and Julian Williams (reviewed by Pessia Tsamir) (2007)", "Terezinha Nunes Carraher, David William Carraher and Analucia Dias Schliemann (1987)", "Caroline Brayer Ebby (2005)"], "in each column take the smaller digit from the larger regardless of which is on top").
 
 test_harness:arith_misconception(db_row(282), whole_number, too_vague, skip, none, none).
 test_harness:arith_misconception(db_row(283), whole_number, too_vague, skip, none, none).

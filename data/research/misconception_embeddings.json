@@ -1,8 +1,8 @@
 {
   "format": "misconception-embedding-index-v1",
   "model": "Qwen3-Embedding-8B",
-  "built_at": "2026-07-21T19:03:47.482151+00:00",
-  "count": 2071,
+  "built_at": "2026-07-22T09:48:27.998180+00:00",
+  "count": 2056,
   "dimensions": 4096,
   "vectors": "misconception_embeddings.npz",
   "entries": [
@@ -1234,12 +1234,6 @@
       "name": "too_vague",
       "domain": "decimal",
       "description": "too_vague",
-      "citation": "LEICHA A. BRAGG (2012): multiplying always makes a number bigger and dividing always makes it smaller (db row 40299)"
-    },
-    {
-      "name": "too_vague",
-      "domain": "decimal",
-      "description": "too_vague",
       "citation": "Leicha A. Bragg (2012): expect any product to be larger than its factor and any quotient to be smaller than its dividend (db row 39634)"
     },
     {
@@ -1427,12 +1421,6 @@
       "domain": "decimal",
       "description": "trailing_zeros_increase_value",
       "citation": "BARBARA M. MOSKAL and MARIA E. MAGONE (2000): zeros at the end make a number bigger while leading zeros do nothing (db row 39441)"
-    },
-    {
-      "name": "whole_number_rule_order",
-      "domain": "decimal",
-      "description": "whole_number_rule_order",
-      "citation": "Kevin Moloney and Kaye Stacey (1997): the decimal with more digits after the point is the larger number (db row 39631)"
     },
     {
       "name": "whole_number_string_compare",
@@ -1699,12 +1687,6 @@
       "citation": "Leslie P. Steffe (2003): combine fractions by adding the tops and adding the bottoms (db row 38666)"
     },
     {
-      "name": "add_across_common_denom",
-      "domain": "fraction",
-      "description": "add_across_common_denom",
-      "citation": "DIETMAR KÜCHEMANN (1981): add fractions by summing numerators and summing denominators separately (db row 38946)"
-    },
-    {
       "name": "add_across_from_whole_number",
       "domain": "fraction",
       "description": "add_across_from_whole_number",
@@ -1738,12 +1720,6 @@
       "name": "add_across_unlike",
       "domain": "fraction",
       "description": "add_across_unlike",
-      "citation": "Hara Bouta & Fotini Paraskeva (2013): to add two fractions, add the numerators together and add the denominators together (db row 39948)"
-    },
-    {
-      "name": "add_across_unlike",
-      "domain": "fraction",
-      "description": "add_across_unlike",
       "citation": "Jinfa Cai (1998): combine two fractions by summing tops and summing bottoms separately (db row 39694)"
     },
     {
@@ -1751,12 +1727,6 @@
       "domain": "fraction",
       "description": "add_across_unlike",
       "citation": "Nira Hativa (1992): add the tops together and the bottoms together to form the new fraction (db row 39710)"
-    },
-    {
-      "name": "add_across_unlike",
-      "domain": "fraction",
-      "description": "add_across_unlike",
-      "citation": "Omer Sahin, Burcin Gokkurt & Yasin Soylu (2016): add the tops together and the bottoms together (db row 39765)"
     },
     {
       "name": "add_across_unlike",
@@ -3934,12 +3904,6 @@
       "name": "too_vague",
       "domain": "fraction",
       "description": "too_vague",
-      "citation": "Anne Watson (2010): read a fraction as two separate whole numbers rather than one quantity (db row 40538)"
-    },
-    {
-      "name": "too_vague",
-      "domain": "fraction",
-      "description": "too_vague",
       "citation": "BARBARA J. REYS, ROBERT E. REYS, AND ALFINIO FLORES PEÑAFIEL (1991): to find an estimate, mentally run the standard exact computation procedure (db row 39339)"
     },
     {
@@ -4391,12 +4355,6 @@
       "domain": "fraction",
       "description": "too_vague",
       "citation": "Hara Bouta & Fotini Paraskeva (2013): fractions split into different numbers of parts have nothing to do with each other (db row 39950)"
-    },
-    {
-      "name": "too_vague",
-      "domain": "fraction",
-      "description": "too_vague",
-      "citation": "Hara Bouta & Fotini Paraskeva (2013): the unit fraction with the bigger bottom number is the bigger fraction (db row 39949)"
     },
     {
       "name": "too_vague",
@@ -5212,12 +5170,6 @@
       "name": "too_vague",
       "domain": "fraction",
       "description": "too_vague",
-      "citation": "OTHMAN N. ALSAWAIE (2012): the fraction with the bigger denominator is the bigger fraction (db row 40319)"
-    },
-    {
-      "name": "too_vague",
-      "domain": "fraction",
-      "description": "too_vague",
       "citation": "P. Holt Wilson, Paola Sztajn, Cyndi Edgington, Jere Confrey (2014): parts can only be the same size if they have matching side lengths or shapes (db row 40192)"
     },
     {
@@ -5803,12 +5755,6 @@
       "citation": "literature DB row 37812"
     },
     {
-      "name": "tops_and_bottoms_addition",
-      "domain": "fraction",
-      "description": "tops_and_bottoms_addition",
-      "citation": "Hui-Chuan Li (2014): add the tops together and the bottoms together (db row 39782)"
-    },
-    {
       "name": "total_count_as_denom",
       "domain": "fraction",
       "description": "total_count_as_denom",
@@ -5843,12 +5789,6 @@
       "domain": "fraction",
       "description": "unit_frac_as_subtract_denom",
       "citation": "Adalira Saenz-Ludlow (2003): find 1/b of a total by removing b items from it (db row 38556)"
-    },
-    {
-      "name": "unit_frac_bigger_denom_wins",
-      "domain": "fraction",
-      "description": "unit_frac_bigger_denom_wins",
-      "citation": "Martin A. Simon, Nicora Placa, and Arnon Avitzur (2016): the unit fraction with the bigger bottom number is the bigger fraction (db row 37829)"
     },
     {
       "name": "unit_frac_named_by_length",
@@ -7181,12 +7121,6 @@
       "domain": "integer",
       "description": "too_vague",
       "citation": "Heinz Steinbring (2015): negative numbers and their operations must correspond to concrete objects and actions (db row 38109)"
-    },
-    {
-      "name": "too_vague",
-      "domain": "integer",
-      "description": "too_vague",
-      "citation": "Ian Whitacre, Jessica Pierson Bishop, Lisa L.C. Lamb, Randolph A. Philipp, Bonnie P. Schappelle, Melinda L. Lewis (2012): adding always makes a number bigger and subtracting always makes it smaller (db row 38715)"
     },
     {
       "name": "too_vague",
@@ -10462,12 +10396,6 @@
       "name": "too_vague",
       "domain": "whole_number",
       "description": "too_vague",
-      "citation": "Caroline Brayer Ebby (2005): in each column take the smaller digit from the larger regardless of which is on top (db row 38377)"
-    },
-    {
-      "name": "too_vague",
-      "domain": "whole_number",
-      "description": "too_vague",
       "citation": "Caroline Brayer Ebby (2005): multiply each digit as its face value, treating the 8 in 81 as eight rather than eighty (db row 38378)"
     },
     {
@@ -11434,12 +11362,6 @@
       "name": "too_vague",
       "domain": "whole_number",
       "description": "too_vague",
-      "citation": "Levin (1981): in each column subtract the smaller digit from the larger regardless of which is on top (db row 241)"
-    },
-    {
-      "name": "too_vague",
-      "domain": "whole_number",
-      "description": "too_vague",
       "citation": "Lieven Verschaffel and Erik De Corte (1997): defend the computed answer by imagining special circumstances rather than revising it (db row 37783)"
     },
     {
@@ -12154,12 +12076,6 @@
       "name": "too_vague",
       "domain": "whole_number",
       "description": "too_vague",
-      "citation": "Terezinha Nunes Carraher, David William Carraher and Analucia Dias Schliemann (1987): in each column take the smaller digit from the larger regardless of which is on top (db row 37691)"
-    },
-    {
-      "name": "too_vague",
-      "domain": "whole_number",
-      "description": "too_vague",
       "citation": "Terezinha Nunes Carraher, David William Carraher and Analucia Dias Schliemann (1987): treat a written zero as a placeholder with no numeric value to operate on (db row 37692)"
     },
     {
@@ -12317,12 +12233,6 @@
       "domain": "whole_number",
       "description": "too_vague",
       "citation": "van den Heuvel-Panhuizen, M. (2008): add multidigit numbers by stringing, splitting, or varying rather than column ciphering (db row 263)"
-    },
-    {
-      "name": "top_from_bottom_subtraction",
-      "domain": "whole_number",
-      "description": "top_from_bottom_subtraction",
-      "citation": "Fuson, Li (2009): in each column take the smaller digit from the larger regardless of position (db row 210)"
     },
     {
       "name": "transaction_role_swap",

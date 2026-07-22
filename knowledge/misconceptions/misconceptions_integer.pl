@@ -12,6 +12,7 @@
 :- module(misconceptions_integer, []).
 
 :- multifile test_harness:arith_misconception/6.
+:- multifile test_harness:misconception_union/5.
 :- discontiguous test_harness:arith_misconception/6.
 :- dynamic test_harness:arith_misconception/6.
 
@@ -175,6 +176,12 @@ test_harness:arith_misconception(db_row(38012), integer, negative_order_by_absol
     false).
 
 test_harness:arith_misconception(db_row(38042), integer, too_vague, skip, none, none).
+
+% Task 89 union: equivalent documented error; names share one doing.
+test_harness:misconception_union(
+    db_row(38042), [too_vague], [db_row(38042), db_row(38715)],
+    ["David O. Tall (2007)", "Ian Whitacre, Jessica Pierson Bishop, Lisa L.C. Lamb, Randolph A. Philipp, Bonnie P. Schappelle, Melinda L. Lewis (2012)"], "adding always makes a number bigger and subtracting always makes it smaller").
+
 test_harness:arith_misconception(db_row(38109), integer, too_vague, skip, none, none).
 
 % === row 38244: change amount confused with endpoint ===
@@ -250,8 +257,6 @@ test_harness:arith_misconception(db_row(38684), integer, minus_as_label,
     -5).
 
 test_harness:arith_misconception(db_row(38714), integer, too_vague, skip, none, none).
-test_harness:arith_misconception(db_row(38715), integer, too_vague, skip, none, none).
-
 % === row 38863: addition cannot produce a smaller result ===
 % Task: 5 + [] = 3.
 % Correct: -2.
