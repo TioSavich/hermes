@@ -97,14 +97,21 @@ check_math_claim(midpoint(fraction(N,D)), Dict) :-
 check_math_claim(multiplication(fraction(A,B), fraction(C,D), fraction(P,Q)), Dict) :-
     !,
     ints_to_recs([A,B,C,D,P,Q], [RA,RB,RC,RD,RP,RQ]),
-    (   multiply_grounded(RA, RC, NumProd),
-        multiply_grounded(RB, RD, DenProd)
-    ->  verdict_of((equal_to(NumProd, RP), equal_to(DenProd, RQ)), V),
+    (   B > 0, D > 0, Q > 0,
+        multiply_grounded(RA, RC, NumProd),
+        multiply_grounded(RB, RD, DenProd),
+        multiply_grounded(NumProd, RQ, LeftScaled),
+        multiply_grounded(RP, DenProd, RightScaled)
+    ->  % Cross-scaled comparison, the same co-measure the difference
+        % clause uses: a claimed product stated in lowest terms (1/2 of
+        % 2/3 is 1/3) holds; componentwise comparison wrongly refuted
+        % every simplified product.
+        verdict_of(equal_to(LeftScaled, RightScaled), V),
         rec_int(NumProd, NP), rec_int(DenProd, DP),
-        format(string(T), "numerator product ~w*~w=~w; denominator product ~w*~w=~w; claimed ~w/~w",
+        format(string(T), "numerator product ~w*~w=~w; denominator product ~w*~w=~w; cross-scaled against claimed ~w/~w",
                [A,C,NP, B,D,DP, P,Q]),
         checked_dict("fraction_multiplication", "grounded_arithmetic:multiply_grounded", V, [T], Dict)
-    ;   not_covered("fraction_multiplication", "grounded multiplication could not be computed", Dict)
+    ;   not_covered("fraction_multiplication", "a zero denominator places this claim outside the grounded fraction domain", Dict)
     ).
 
 % --- scalar times fraction: N * c/d = p/q coerces through N/1 ---
