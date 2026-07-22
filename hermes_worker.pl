@@ -2084,7 +2084,8 @@ request_standards(Request, Standards) :-
 lesson_context_for_code(Code, lesson_context(GradeContext, StandardAliases)) :-
     lesson_monitoring:monitoring_chart(
         Code,
-        monitoring_chart(Code, Lesson, Standards, _Strategies, _Misconceptions, _PMLFacts)
+        monitoring_chart(Code, Lesson, Standards, _Strategies, _Misconceptions, _PMLFacts,
+                         _ResonantMisconceptions)
     ),
     lesson_grade_context(Lesson, GradeContext),
     lesson_standard_aliases(Standards, StandardAliases).
@@ -2668,7 +2669,8 @@ lesson_misconception_incompatibility_witness(Code, Operation, Name, Witness) :-
                          _Standards,
                          _Strategies,
                          Misconceptions,
-                         _PMLFacts)
+                         _PMLFacts,
+                         _ResonantMisconceptions)
     ),
     member(misconception(Operation, Name, Info), Misconceptions),
     member(incompatibility_witness(Witness), Info),
@@ -2683,11 +2685,14 @@ monitoring_chart_export_dict(Code, Dict) :-
                                 Strategies,
                                 Misconceptions,
                                 PMLFacts,
+                                ResonantMisconceptions,
                                 Clusters)
     ),
     productive_core(Clusters, ProductiveCore),
     maplist(strategy_export_dict, Strategies, StrategyDicts),
     maplist(misconception_export_dict, Misconceptions, MisconceptionDicts),
+    maplist(resonant_misconception_export_dict, ResonantMisconceptions,
+            ResonantMisconceptionDicts),
     lesson_inferential_strength_for(Code, InferentialStrengthReport),
     inferential_strength_export_dict(InferentialStrengthReport, InferentialStrengthDict),
     findall(PMLDict,
@@ -2717,6 +2722,7 @@ monitoring_chart_export_dict(Code, Dict) :-
         productive_core: ProductiveCore,
         anticipated_strategies: StrategyDicts,
         teacher_misconceptions: MisconceptionDicts,
+        resonant_misconceptions: ResonantMisconceptionDicts,
         licensed_but_unanticipated: OperationGapDicts,
         unanticipated_strategies: GapMoveDicts,
         figures: FigureDict,
@@ -2728,6 +2734,13 @@ monitoring_chart_export_dict(Code, Dict) :-
     ->  Dict = Dict0.put(GuideContext)
     ;   Dict = Dict0
     ).
+
+resonant_misconception_export_dict(
+        resonant_misconception(Name, Domain, Citation, Score),
+        _{name: NameText, domain: DomainText, citation: CitationText, score: Score}) :-
+    term_to_text(Name, NameText),
+    term_to_text(Domain, DomainText),
+    term_to_text(Citation, CitationText).
 
 %! state_vocabulary_dispatch_dict(+State, -Dict) is det.
 %
@@ -2773,7 +2786,7 @@ deformation_chart_scope_export(Code, Dict) :-
     ->  Dict = _{
             available: true,
             coverage: "covered",
-            scope: "grade_3_fraction_lessons",
+            scope: "hand_authored_lesson_deformation_charts",
             lesson_code: CodeString,
             request_op: "lesson_deformation_chart",
             covered_lesson_codes: CodeStrings
@@ -2781,11 +2794,11 @@ deformation_chart_scope_export(Code, Dict) :-
     ;   Dict = _{
             available: false,
             coverage: "scope_limited",
-            scope: "grade_3_fraction_lessons",
+            scope: "hand_authored_lesson_deformation_charts",
             lesson_code: CodeString,
             request_op: "lesson_deformation_chart",
             covered_lesson_codes: CodeStrings,
-            note: "Deformation charts are currently authored only for the covered grade-3 fraction lessons."
+            note: "Deformation charts are currently authored only for the listed lessons."
         }
     ).
 

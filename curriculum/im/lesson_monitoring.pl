@@ -12,6 +12,7 @@
             explicit_lesson_standard/4,
             lesson_strategy/4,
             lesson_misconception/4,
+            lesson_resonant_misconceptions/2,
             lesson_guide_context_dict/2,
             vision_lesson_strategy/4,
             cluster_lesson_strategy/4,
@@ -73,6 +74,8 @@
 :- discontiguous traditional_lesson/6, scope_sequence_only_lesson/1.
 :- discontiguous scope_sequence_mapped_lesson/1.
 :- dynamic cached_lesson_topics/2.
+:- multifile lesson_resonant_misconception/6.
+:- dynamic lesson_resonant_misconception/6.
 % Dynamic so tests can assert a fixture lesson under setup/cleanup (the
 % lesson_task_instance/3 pattern in formal/learner/activity_contract.pl).
 :- dynamic explicit_lesson_strategy/4.
@@ -93,10 +96,14 @@
 % closure): every scope_sequence_only lesson in G6-U4, G6-U5, G7-U5 that the
 % explicit mappings leave unmapped carries exactly one grind_boundary/2 reason.
 :- ensure_loaded(grind_boundary).
+:- if(exists_source('generated/lesson_resonance')).
+:- ensure_loaded('generated/lesson_resonance').
+:- endif.
 
 
 %!  monitoring_chart(+LessonCode, -Chart) is semidet.
-monitoring_chart(Code, monitoring_chart(Code, Lesson, Standards, Strategies, Misconceptions, PMLFacts)) :-
+monitoring_chart(Code, monitoring_chart(Code, Lesson, Standards, Strategies, Misconceptions,
+                                        PMLFacts, ResonantMisconceptions)) :-
     encoded_lesson(Code, ConceptId, Title, Grade, Unit, LessonNumber),
     Lesson = lesson(ConceptId, Title, Grade, Unit, LessonNumber),
     findall(standard(Framework, StandardCode, Statement),
@@ -111,7 +118,20 @@ monitoring_chart(Code, monitoring_chart(Code, Lesson, Standards, Strategies, Mis
             lesson_monitoring:lesson_misconception(Code, Operation, Name, Info),
             Misconceptions0),
     sort(Misconceptions0, Misconceptions),
-    lesson_pml_facts(Code, PMLFacts).
+    lesson_pml_facts(Code, PMLFacts),
+    lesson_resonant_misconceptions(Code, ResonantMisconceptions).
+
+
+%!  lesson_resonant_misconceptions(+LessonCode, -Rows) is det.
+%
+%   The rows are build-time embedding retrieval results.  Request-time chart
+%   assembly only reads generated facts, and returns [] until the optional
+%   generated source is present.
+lesson_resonant_misconceptions(Code, Rows) :-
+    findall(resonant_misconception(Name, Domain, Citation, Score),
+            lesson_resonant_misconception(Code, _Rank, Name, Domain, Citation, Score),
+            Rows0),
+    sort(Rows0, Rows).
 
 
 %!  monitoring_chart_export(+LessonCode, -Export) is semidet.
@@ -126,13 +146,15 @@ monitoring_chart_export(Code,
                                                 Strategies,
                                                 Misconceptions,
                                                 PMLFacts,
+                                                ResonantMisconceptions,
                                                 Clusters)) :-
     monitoring_chart(Code, monitoring_chart(Code,
                                             Lesson,
                                             Standards,
                                             Strategies,
                                             Misconceptions,
-                                            PMLFacts)),
+                                            PMLFacts,
+                                            ResonantMisconceptions)),
     findall(chart_cluster(Source, ClusterId, Info),
             monitoring_chart_cluster(Code, Source, ClusterId, Info),
             Clusters).
@@ -273,16 +295,19 @@ lesson_standard(Code, Framework, StandardCode, Statement) :-
 lesson_standard_source(Code, Framework, StandardCode, Statement) :-
     explicit_lesson_standard(Code, Framework, StandardCode, Statement).
 lesson_standard_source(Code, im_lesson, Code, Statement) :-
+    \+ explicit_lesson_standard(Code, _, _, _),
     im_lesson(Code, ConceptId, _, _, _, _),
     atom_string(Code, CodeString),
     loaded_standard_anchor(ConceptId, im_lesson, CodeString, Statement).
 lesson_standard_source(Code, im_lesson, UnitAnchor, Statement) :-
+    \+ explicit_lesson_standard(Code, _, _, _),
     im_lesson(Code, ConceptId, _, _, _, _),
     lesson_unit_anchor(Code, UnitAnchor),
     UnitAnchor \== Code,
     atom_string(UnitAnchor, UnitAnchorString),
     loaded_standard_anchor(ConceptId, im_lesson, UnitAnchorString, Statement).
 lesson_standard_source(Code, Framework, StandardCode, Statement) :-
+    \+ explicit_lesson_standard(Code, _, _, _),
     im_lesson(Code, ConceptId, _, _, _, _),
     Framework \== im_lesson,
     loaded_standard_anchor(ConceptId, Framework, StandardCode, Statement).

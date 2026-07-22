@@ -260,6 +260,8 @@ text_interpreter:explicit_lesson_text_source('IM-G6-U4-L5', Path) :-
     absolute_file_name(lessons('scope_and_sequence/grade6.md'), Path, [access(read)]).
 
 scope_sequence_mapped_lesson('IM-G6-U4-L6').
+explicit_lesson_standard('IM-G6-U4-L6', ccss, '6.NS.A.1',
+    "Interpret and compute quotients of fractions.").
 explicit_lesson_strategy('IM-G6-U4-L6', division, measure_groups_of_size, Info) :-
     strategy_info(division, measure_groups_of_size, Info).
 text_interpreter:explicit_lesson_text_source('IM-G6-U4-L6', Path) :-
@@ -284,6 +286,8 @@ text_interpreter:explicit_lesson_text_source('IM-G6-U4-L9', Path) :-
     absolute_file_name(lessons('scope_and_sequence/grade6.md'), Path, [access(read)]).
 
 scope_sequence_mapped_lesson('IM-G6-U4-L10').
+explicit_lesson_standard('IM-G6-U4-L10', ccss, '6.NS.A.1',
+    "Interpret and compute quotients of fractions.").
 explicit_lesson_strategy('IM-G6-U4-L10', fraction, measurement_division, Info) :-
     strategy_info(fraction, measurement_division, Info).
 text_interpreter:explicit_lesson_text_source('IM-G6-U4-L10', Path) :-
@@ -719,4 +723,3 @@ text_interpreter:explicit_lesson_text_source('IM-G6-U9-L10', Path) :-
 scope_sequence_only_lesson('IM-G6-U9-L11').
 text_interpreter:explicit_lesson_text_source('IM-G6-U9-L11', Path) :-
     absolute_file_name(lessons('scope_and_sequence/grade6.md'), Path, [access(read)]).
-

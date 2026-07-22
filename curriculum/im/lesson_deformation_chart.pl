@@ -54,6 +54,7 @@
             lesson_fraction_task/2,           % ?Code, ?frac(M,N)
             lesson_host_representation/2,      % ?Code, ?Host
             lesson_likely_deformation/4,       % ?Code, ?Host, ?frac(M,N), ?Deformation
+            lesson_division_deformation_chart/2, % +Code, -Chart
             gated_as_misconception/2,          % +Deformation, -Evidence
             productive_scene_for_lesson/4,     % +Code, +Host, +frac(M,N), -Dict
             deformation_scene_for_lesson/5,    % +Code, +Host, +frac(M,N), +Deformation, -Dict
@@ -294,6 +295,36 @@ deformation_scene_for_lesson(Code, Host, Frac, equipartition_failure(ErrorType),
 % chart is the artifact a teacher reads: "for this lesson's fractions, on these
 % representations, watch for these botches."
 
+% IM-G6-U4-L10 is a division lesson, not a fraction-partition lesson.  Its
+% teacher-guide tasks are therefore retained as division expressions rather
+% than forced through the grade-3 fraction-scene renderer.  The cited referent
+% shift is a likely deformation: its corpus row is not presently admitted by
+% misconception_registry_entry/5, so this chart does not label it a registered
+% misconception.
+lesson_division_deformation_chart('IM-G6-U4-L10', Chart) :-
+    Chart = _{
+        kind: lesson_deformation_chart,
+        lesson_code: 'IM-G6-U4-L10',
+        title: "Dividing by Unit and Non-Unit Fractions",
+        standards: ["6.NS.A.1"],
+        task_source: "teacher-guide-derived compiled task instances",
+        tasks: [
+            _{expression: "12 / 3", position: "warm_up", source_pages: "181-183"},
+            _{expression: "12 / 4", position: "warm_up", source_pages: "181-183"},
+            _{expression: "12 / 6", position: "warm_up", source_pages: "181-183"}
+        ],
+        likely_deformations: [
+            _{name: "referent_unit_shift",
+              status: "likely_deformation",
+              citation: "Mi Yeon Lee (2017), ESM_Lee_2017_Pre-service",
+              note: "The dividend bar is treated as the unit whole and repartitioned by the divisor."}
+        ],
+        provenance: hand_authored
+    }.
+
+monitoring_chart('IM-G6-U4-L10', Chart) :-
+    !,
+    lesson_division_deformation_chart('IM-G6-U4-L10', Chart).
 monitoring_chart(Code, Chart) :-
     lesson_chart_lesson(Code, Title, Standards, Hosts, Fractions),
     findall(CellDict,

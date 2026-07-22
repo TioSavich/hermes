@@ -36,6 +36,7 @@ field_context_dict(Code, Dict) :-
                                 Strategies0,
                                 Misconceptions0,
                                 PMLFacts,
+                                _ResonantMisconceptions,
                                 Clusters0)
     ),
     lesson_dict(Lesson, LessonDict),
