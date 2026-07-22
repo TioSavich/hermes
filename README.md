@@ -42,6 +42,13 @@ Node.js is a contributor-time dependency for regenerating and checking tracked
 SVG galleries. It is not required to run the server, the Docker image, or a
 flash-drive bundle with its galleries already present.
 
+## Use Hermes from an MCP client
+
+Hermes also offers a local, standard-input/output MCP server for tool-capable
+clients. It needs no Python package installation and does not open a network
+port. See [the MCP setup guide](hermes/mcp/SETUP.md) for the checked local
+setup, client registration, and the first three calls to try.
+
 **With Docker.**
 
 ```sh
