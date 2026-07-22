@@ -250,8 +250,15 @@ def claim_shape_catalog() -> str:
 
 
 def build_pass1_user_content(transcript_id: str, numbered_markdown: str,
-                             *, action_catalog: str = "") -> str:
-    """User message for pass 1. Math layer only; no modal vocabulary."""
+                             *, action_catalog: str = "",
+                             context_block: str = "") -> str:
+    """User message for pass 1. Math layer only; no modal vocabulary.
+
+    `context_block` is an optional caller-supplied section (a lesson
+    monitoring chart, window framing) inserted before the transcript. The
+    caller owns its wording, including any discipline the block must state
+    about how the model may use it.
+    """
     sections = [
         f"TRANSCRIPT_ID: {transcript_id}",
         "",
@@ -271,6 +278,8 @@ def build_pass1_user_content(transcript_id: str, numbered_markdown: str,
     ]
     if action_catalog:
         sections.extend(["", action_catalog])
+    if context_block:
+        sections.extend(["", context_block])
     sections.extend([
         "",
         "----- BLINDED TRANSCRIPT -----",
@@ -548,7 +557,10 @@ def blind_mask_result(mask_result: dict[str, Any]) -> dict[str, Any]:
 
 
 def build_pass2_user_content(transcript_id: str, mask_result: dict[str, Any],
-                             *, variant: str, label: str | None = None) -> str:
+                             *, variant: str, label: str | None = None,
+                             context_block: str = "") -> str:
+    """`context_block` as in build_pass1_user_content: an optional
+    caller-owned section (lesson chart, window framing) before the ledger."""
     if variant not in ("hard_mask", "ledger_relief"):
         raise ValueError(f"unknown variant: {variant}")
     ledger = "\n".join(mask_result.get("legend", [])) or "(no checked claims)"
@@ -567,11 +579,15 @@ def build_pass2_user_content(transcript_id: str, mask_result: dict[str, Any],
             "content. Code only what each utterance does: person, force,\n"
             "mode, operator, polarity."
         )
-    return "\n".join([
+    sections = [
         f"TRANSCRIPT_ID: {transcript_id}",
         f"VARIANT: {label or variant}",
         "",
         relief,
+    ]
+    if context_block:
+        sections.extend(["", context_block])
+    sections.extend([
         "",
         "CLAIM LEDGER (adjudicated by the calculator):",
         ledger,
@@ -579,6 +595,7 @@ def build_pass2_user_content(transcript_id: str, mask_result: dict[str, Any],
         "----- TRANSCRIPT -----",
         transcript,
     ])
+    return "\n".join(sections)
 
 
 # ---------------------------------------------------------------------------
