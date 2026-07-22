@@ -99,6 +99,12 @@
 :- if(exists_source('generated/lesson_resonance')).
 :- ensure_loaded('generated/lesson_resonance').
 :- endif.
+% Vision-digest standards are compiled at build time so request-time standard
+% lookup remains a fact read.  The source is optional while a fresh checkout
+% awaits its first curriculum build.
+:- if(exists_source('generated/lesson_standard_anchors')).
+:- ensure_loaded('generated/lesson_standard_anchors').
+:- endif.
 
 
 %!  monitoring_chart(+LessonCode, -Chart) is semidet.

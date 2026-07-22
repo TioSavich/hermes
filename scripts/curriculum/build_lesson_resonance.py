@@ -23,7 +23,7 @@ def lesson_rows(codes: list[str]) -> list[dict[str, object]]:
     import subprocess
 
     code_terms = ",".join(repr(code) for code in codes)
-    goal = f'''use_module(library(http/json)),Codes=[{code_terms}],findall(_{{code:CodeText,title:Title,strategies:Strategies}},(member(CodeText,Codes),atom_string(Code,CodeText),lesson_monitoring:encoded_lesson(Code,_,Title,_,_,_),findall(KindText,(lesson_monitoring:lesson_strategy(Code,_,Kind,_),atom_string(Kind,KindText)),Kinds0),sort(Kinds0,Strategies)),Rows),json_write_dict(current_output,Rows),nl,halt'''
+    goal = f'''use_module(library(http/json)),Codes=[{code_terms}],findall(_{{code:CodeText,title:Title,strategies:Strategies}},(member(CodeText,Codes),atom_string(Code,CodeText),once(lesson_monitoring:encoded_lesson(Code,_,Title,_,_,_)),findall(KindText,(lesson_monitoring:lesson_strategy(Code,_,Kind,_),atom_string(Kind,KindText)),Kinds0),sort(Kinds0,Strategies)),Rows0),sort(Rows0,Rows),json_write_dict(current_output,Rows),nl,halt'''
     result = subprocess.run(
         ["swipl", "-q", "-l", "paths.pl", "-l", "curriculum/im/lesson_monitoring.pl", "-g", goal],
         cwd=REPO_ROOT,
@@ -79,14 +79,39 @@ def generated_source(rows: list[tuple[str, list[dict[str, object]]]]) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("codes", nargs="+", help="encoded IM lesson codes")
+    parser.add_argument("codes", nargs="*", help="encoded IM lesson codes")
+    parser.add_argument("--mapped-lessons", action="store_true",
+                        help="build the plan for every scope_sequence_mapped lesson")
     parser.add_argument("--k", type=int, default=6, help="resonance rows per lesson (default: 6)")
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--dry-run", action="store_true", help="print lesson-derived queries without embedding or writing")
     args = parser.parse_args()
     if args.k < 1:
         parser.error("--k must be positive")
-    rows = lesson_rows(args.codes)
+    if args.codes and args.mapped_lessons:
+        parser.error("codes and --mapped-lessons are mutually exclusive")
+    if not args.codes and not args.mapped_lessons:
+        parser.error("provide lesson codes or --mapped-lessons")
+    codes = args.codes
+    if args.mapped_lessons:
+        import subprocess
+
+        result = subprocess.run(
+            ["swipl", "-q", "-l", "paths.pl", "-l", "curriculum/im/lesson_monitoring.pl",
+             "-g", "findall(CodeText,(lesson_monitoring:scope_sequence_mapped_lesson(Code),atom_string(Code,CodeText)),Codes0),sort(Codes0,Codes),use_module(library(http/json)),json_write_dict(current_output,Codes),nl,halt"],
+            cwd=REPO_ROOT,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+        )
+        if result.returncode:
+            raise RuntimeError(f"mapped-lesson query failed: {result.stderr.strip()}")
+        try:
+            codes = json.loads(result.stdout)
+        except json.JSONDecodeError as exc:
+            raise RuntimeError("mapped-lesson query did not produce JSON") from exc
+    rows = lesson_rows(codes)
     plan = [{"code": row["code"], "query": lesson_query(row)} for row in rows]
     if args.dry_run:
         print(json.dumps({"mode": "dry-run", "output": str(args.output), "k": args.k, "queries": plan}, indent=2))
