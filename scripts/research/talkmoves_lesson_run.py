@@ -376,6 +376,7 @@ def run_arm(*, arm: str, transcript_id: str, numbered: str, chart: str,
     # Pass 1, windowed without margins: claims are utterance-local.
     claims: list[dict[str, Any]] = []
     actions: list[dict[str, Any]] = []
+    representations: list[dict[str, Any]] = []
     pass1_errors: list[str] = []
     for k, span in enumerate(spans, start=1):
         note = (f"WINDOW: utterances U{span[0]:04d}-U{span[1]:04d} of a "
@@ -383,8 +384,9 @@ def run_arm(*, arm: str, transcript_id: str, numbered: str, chart: str,
                 "for these lines only.")
         block = note + ("\n\n" + context if context else "")
         text = "\n".join(lines[index[span[0]]:index[span[1]] + 1])
+        action_catalog = scorer.math_action_catalog_prompt(text, slice_bridge=True)
         request = two_pass.build_pass1_user_content(
-            transcript_id, text, context_block=block)
+            transcript_id, text, action_catalog=action_catalog, context_block=block)
         (out_dir / f"{transcript_id}_{arm}_pass1_w{k:02d}_request.txt"
          ).write_text(request, encoding="utf-8")
         if dry_run:
@@ -406,10 +408,20 @@ def run_arm(*, arm: str, transcript_id: str, numbered: str, chart: str,
             action["id"] = f"w{k}{str(action.get('id', 'a')).strip()}"
             action.setdefault("kind", "action")
             actions.append(action)
+        for representation in math.get("representations", []) or []:
+            representation["id"] = f"w{k}{str(representation.get('id', 'r')).strip()}"
+            representation["representation_kind"] = representation.get("kind", "")
+            representation["kind"] = "representation"
+            # Preserve the prompt-facing representation kind under a distinct
+            # field; extraction kind routes masking and deontic adaptation.
+            representations.append(representation)
     if dry_run:
         return None
 
-    extractions = two_pass.adjudicate_claims(claims) + actions
+    extractions = two_pass.adjudicate_claims(claims) + actions + representations
+    renderer = load_module("hermes_representation_render",
+                           REPO_ROOT / "scripts/research/representation_render.py")
+    renderer.render_mentions(extractions, out_dir)
     (out_dir / f"{transcript_id}_{arm}_extractions.json").write_text(
         json.dumps(extractions, indent=2, sort_keys=True) + "\n",
         encoding="utf-8")
@@ -522,6 +534,22 @@ def posture_note(reading: dict[str, Any]) -> str:
             + (f" — {content}" if content else "") + tail)
 
 
+def representation_notes(extractions: list[dict[str, Any]]) -> dict[int, list[str]]:
+    """Drawable material mentions, grouped for the reader-facing records."""
+    notes: dict[int, list[str]] = {}
+    for item in extractions:
+        if item.get("kind") != "representation":
+            continue
+        match = re.search(r"(\d+)", str(item.get("utterance_id", "")))
+        receipt = item.get("render") or {}
+        if not match or receipt.get("status") != "drawable" or not receipt.get("svg"):
+            continue
+        notes.setdefault(int(match.group(1)), []).append(
+            f"  - Representation: `{item.get('surface', '')}`\n"
+            f"\n    ![{item.get('representation_kind', 'representation')}]({receipt['svg']})")
+    return notes
+
+
 def write_sous_rature(transcript_id: str, arm: str, numbered: str,
                       result: dict[str, Any], two_pass: Any,
                       out_dir: Path) -> None:
@@ -538,6 +566,7 @@ def write_sous_rature(transcript_id: str, arm: str, numbered: str,
             if match:
                 readings_by_utterance.setdefault(int(match.group(1)),
                                                  []).append(reading)
+    pictures_by_utterance = representation_notes(result["extractions"])
     body = [f"# {transcript_id}: the conversation under erasure ({arm} arm)",
             "",
             "Struck text is the mathematical layer: kept legible, crossed "
@@ -553,6 +582,7 @@ def write_sous_rature(transcript_id: str, arm: str, numbered: str,
         rendered = strike_line(line, by_line.get(i, [])) if i in by_line else line
         body.append(rendered)
         if match:
+            body.extend(pictures_by_utterance.get(int(match.group(1)), []))
             for reading in readings_by_utterance.get(int(match.group(1)), []):
                 body.append(posture_note(reading))
     (out_dir / f"{transcript_id}_sous_rature.md").write_text(
@@ -609,6 +639,12 @@ def write_pml_report(transcript_id: str, arm: str, result: dict[str, Any],
     body.extend(rerun.markdown_table(
         ["Id", "Utterances", "Force", "Mode", "Operator", "Polarity",
          "Content", "Uptake"], rows))
+    pictures_by_utterance = representation_notes(result["extractions"])
+    if pictures_by_utterance:
+        body.extend(["", "## Material representations by utterance", ""])
+        for utterance in sorted(pictures_by_utterance):
+            body.append(f"### U{utterance:04d}")
+            body.extend(pictures_by_utterance[utterance])
     if result["window_errors"]:
         body.extend(["", "## Windows that returned no parseable reading", ""])
         body.extend(f"- {error}" for error in result["window_errors"])

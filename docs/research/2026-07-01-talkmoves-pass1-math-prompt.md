@@ -12,6 +12,7 @@ object with these fields:
 - `transcript_id`: string.
 - `claims`: array of typed claim objects.
 - `actions`: array of candidate action objects.
+- `representations`: array of material representation mentions.
 
 Each claim object must include:
 
@@ -35,6 +36,14 @@ Each action object must include `id`, `utterance_id`, `surface`, `kind`
 (one of the catalogued operation names in the user message), `arguments`,
 and `confidence`.
 
+Each representation object must include `id`, `utterance_id`, `surface`,
+`kind`, `partition_count`, `unit_fraction`, and `confidence`. `kind` is one
+of the representation kinds catalogued in the user message. `partition_count`
+is an integer only when the utterance states it; otherwise use `null`.
+`unit_fraction` is `{ "num": 1, "den": N }` only when stated; otherwise use
+`null`. A representation surface is material discourse evidence, not a claim:
+it stays verbatim in the record and is not sent to the checker or masker.
+
 Rules:
 
 - Only use shapes and action kinds from the catalogs in the user message.
@@ -45,4 +54,6 @@ Rules:
   statement is enough.
 - Numbers must come from the transcript, not from your own calculation.
   The calculator checks; you extract.
+- Do not infer a picture from an equation, an operation name, or lesson
+  context. If the speaker did not mention or describe a representation, omit it.
 - Return valid JSON only after the `## MATH_JSON` heading.

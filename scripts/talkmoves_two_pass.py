@@ -137,6 +137,11 @@ def mask_transcript(markdown: str, extractions: list[dict[str, Any]]) -> dict[st
         reverse=True,
     )
     for extraction in ordered:
+        # Representation surfaces are the material discourse layer.  They stay
+        # in the extraction record for the reader and renderer, never enter the
+        # claim masker or the pass-2 ledger.
+        if extraction.get("kind") == "representation":
+            continue
         utterance = str(extraction.get("utterance_id", "")).lower()
         raw_surface = str(extraction.get("surface", ""))
         trimmed = trim_frame(raw_surface)
@@ -249,6 +254,29 @@ def claim_shape_catalog() -> str:
     return "\n".join(lines)
 
 
+REPRESENTATION_KINDS = (
+    "tape_diagram", "number_line", "area_circle", "area_rectangle",
+    "equation_chain",
+)
+
+
+def representation_catalog() -> str:
+    """The only material representations pass 1 may name."""
+    return "\n".join([
+        "Representation mentions (not claims; use these kinds exactly):",
+        "- tape_diagram: a partitioned strip/tape; needs partition_count.",
+        "- number_line: a partitioned number line; needs partition_count.",
+        "- area_circle: a partitioned circle/pizza; needs partition_count.",
+        "- area_rectangle: a partitioned rectangle/area model; needs partition_count.",
+        "- equation_chain: a written chain of equations; needs no inferred numbers.",
+        "For each mention return id, utterance_id, surface, kind, partition_count",
+        "(integer or null), unit_fraction ({num,den} or null), and confidence.",
+        "The surface must be one exact contiguous substring. Mention only a",
+        "representation actually said or described; do not infer a diagram from",
+        "an equation or supply an absent partition count.",
+    ])
+
+
 def build_pass1_user_content(transcript_id: str, numbered_markdown: str,
                              *, action_catalog: str = "",
                              context_block: str = "") -> str:
@@ -263,11 +291,11 @@ def build_pass1_user_content(transcript_id: str, numbered_markdown: str,
         f"TRANSCRIPT_ID: {transcript_id}",
         "",
         "Extract the math layer of this blinded transcript. Return typed",
-        "claims and candidate actions only. Do not classify stance, tone,",
-        "or speech function; a second, separate pass handles those.",
+        "claims, candidate actions, and representation mentions only. Do not",
+        "classify stance, tone, or speech function; a separate pass handles those.",
         "",
         "Anchoring discipline:",
-        "- Every claim and action carries a `surface` field: the exact",
+        "- Every claim, action, and representation carries a `surface` field: the exact",
         "  verbatim substring of the named utterance that states the math",
         "  content. Copy it character for character; do not paraphrase.",
         "- Keep wrappers such as 'I think' or 'has to be' OUT of the",
@@ -275,6 +303,8 @@ def build_pass1_user_content(transcript_id: str, numbered_markdown: str,
         "- Use lowercase utterance ids such as u0007.",
         "",
         claim_shape_catalog(),
+        "",
+        representation_catalog(),
     ]
     if action_catalog:
         sections.extend(["", action_catalog])
