@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Compile verbatim activity prompts and synthesis sequences from IM guides.
 
-The teacher guides are fixed-width Markdown extracts of two-column PDFs.  This
-compiler only accepts the labelled ``Student Task Statement``, ``Activity
-Synthesis``, and ``Lesson Synthesis`` regions.  It emits nothing for a region
-whose labelled boundaries cannot be recovered conservatively.
+The K-5 teacher guides are fixed-width Markdown extracts of two-column PDFs.
+The grade 6-8 guides are linear Docling Markdown.  This compiler only accepts
+the labelled ``Student Task Statement``, ``Activity Synthesis``, and ``Lesson
+Synthesis`` regions.  It emits nothing for a region whose labelled boundaries
+cannot be recovered conservatively.
 """
 
 from __future__ import annotations
@@ -19,9 +20,28 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 GUIDES = ROOT / "curriculum/im_teacher_guides"
+MIDDLE_GUIDES = (
+    ROOT
+    / "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output"
+    / "TeacherLessonGuides"
+)
 OUTPUT = ROOT / "curriculum/im/generated/compiled_lesson_context.pl"
 
 ANCHOR_RE = re.compile(r"_Anchor ID: `([^`]+)`")
+MIDDLE_GUIDE_RE = re.compile(
+    r"Grade([678])-(\d+)-(\d+)-Lesson-teacher-guide-$"
+)
+MIDDLE_TASK_RE = re.compile(
+    r"^(?:## |- )Student Task Statement(?: \d+)?$"
+)
+MIDDLE_CUTOFF_RE = re.compile(
+    r"^## (?:Lesson \d+ (?:Summary|Practice Problems)|Glossary)$"
+)
+PICTURE_DESCRIPTION_RE = re.compile(
+    r"^!\[Picture \d+\]\([^\n]+\)\n\n(.*?)\n\nProvenance: `[^`]+`$",
+    re.MULTILINE | re.DOTALL,
+)
+IMAGE_RE = re.compile(r"^!\[Image\]\([^\n]+\)$")
 MAJOR_RE = re.compile(r"^\f?(Warm-up|Activity \d+|Lesson Synthesis|Cool-down)\b")
 STOP_RE = re.compile(
     r"^(?:Student Response|Advancing Student Thinking|Suggested Centers|"
@@ -53,6 +73,13 @@ class LessonContext:
     source: str
     prompts: tuple[Item, ...]
     sequences: tuple[Item, ...]
+
+
+@dataclass(frozen=True)
+class LessonAbsence:
+    code: str
+    source: str
+    reason: str
 
 
 def raw_extract(text: str) -> tuple[list[str], int] | None:
@@ -272,6 +299,135 @@ def parse_guide(path: Path) -> tuple[LessonContext | None, Counter[str]]:
     return LessonContext(anchor.group(1), source, tuple(prompts), tuple(sequences)), failures
 
 
+def middle_guide_code(path: Path) -> str | None:
+    match = MIDDLE_GUIDE_RE.fullmatch(path.parent.name)
+    if not match:
+        return None
+    grade, unit, lesson = match.groups()
+    return f"IM-G{grade}-U{int(unit)}-L{int(lesson)}"
+
+
+def picture_description_lines(path: Path, lines: list[str]) -> set[int] | None:
+    """Locate prior model annotations so none enter the verbatim artifact."""
+    descriptions_path = path.with_name("picture_descriptions.md")
+    if not descriptions_path.is_file():
+        return None
+    descriptions = PICTURE_DESCRIPTION_RE.findall(
+        descriptions_path.read_text(encoding="utf-8")
+    )
+    excluded = {index for index, line in enumerate(lines) if IMAGE_RE.fullmatch(line)}
+    for description in descriptions:
+        description_lines = description.splitlines()
+        found_at = None
+        for index in range(len(lines) - len(description_lines) + 1):
+            if any(
+                candidate in excluded
+                for candidate in range(index, index + len(description_lines))
+            ):
+                continue
+            if lines[index : index + len(description_lines)] == description_lines:
+                found_at = index
+                break
+        if found_at is None:
+            return None
+        excluded.update(range(found_at, found_at + len(description_lines)))
+    return excluded
+
+
+def middle_section_item(
+    lines: list[str],
+    start: int,
+    end: int,
+    excluded: set[int],
+) -> Item | None:
+    section_end = start + 1
+    while section_end < end and not lines[section_end].startswith("## "):
+        section_end += 1
+    parts = [
+        (index, line)
+        for index, line in enumerate(lines[start + 1 : section_end], start + 1)
+        if index not in excluded
+    ]
+    while parts and not parts[0][1].strip():
+        parts.pop(0)
+    while parts and not parts[-1][1].strip():
+        parts.pop()
+    if not parts:
+        return None
+    heading = lines[start].removeprefix("## ").removeprefix("- ").strip()
+    return Item(heading, "\n".join(line for _, line in parts), parts[0][0] + 1)
+
+
+def parse_middle_guide(
+    path: Path,
+) -> tuple[LessonContext | None, LessonAbsence | None, Counter[str]]:
+    failures: Counter[str] = Counter()
+    source = path.relative_to(ROOT).as_posix()
+    code = middle_guide_code(path)
+    if code is None:
+        failures["middle_school_unrecognized_guide_path"] += 1
+        return None, None, failures
+    lines = path.read_text(encoding="utf-8").splitlines()
+    excluded = picture_description_lines(path, lines)
+    if excluded is None:
+        failures["middle_school_unmatched_picture_annotations"] += 1
+        return (
+            None,
+            LessonAbsence(code, source, "unmatched_picture_annotations"),
+            failures,
+        )
+    body_start = next(
+        (index for index, line in enumerate(lines) if line == "## Activity Narrative"),
+        None,
+    )
+    if body_start is None:
+        failures["middle_school_missing_activity_narrative"] += 1
+        return (
+            None,
+            LessonAbsence(code, source, "missing_activity_narrative"),
+            failures,
+        )
+    body_end = next(
+        (
+            index
+            for index, line in enumerate(lines[body_start:], body_start)
+            if MIDDLE_CUTOFF_RE.fullmatch(line)
+        ),
+        len(lines),
+    )
+    prompts: list[Item] = []
+    sequences: list[Item] = []
+    for index in range(body_start, body_end):
+        line = lines[index]
+        if MIDDLE_TASK_RE.fullmatch(line):
+            item = middle_section_item(lines, index, body_end, excluded)
+            if item:
+                prompts.append(item)
+            else:
+                failures["middle_school_empty_or_model_only_task_statement"] += 1
+        elif line in {
+            "## Activity Synthesis",
+            "- Activity Synthesis",
+            "## Lesson Synthesis",
+            "- Lesson Synthesis",
+        }:
+            item = middle_section_item(lines, index, body_end, excluded)
+            if item:
+                sequences.append(item)
+            else:
+                failures["middle_school_empty_or_model_only_synthesis"] += 1
+    if not prompts:
+        failures["middle_school_no_recoverable_task_statement"] += 1
+        return (
+            None,
+            LessonAbsence(code, source, "no_recoverable_task_statement"),
+            failures,
+        )
+    if not sequences:
+        failures["middle_school_no_recoverable_synthesis"] += 1
+    return LessonContext(code, source, tuple(prompts), tuple(sequences)), None, failures
+
+
 def prolog_atom(value: str) -> str:
     return "'" + value.replace("\\", "\\\\").replace("'", "\\'") + "'"
 
@@ -293,7 +449,12 @@ def list_term(items: tuple[Item, ...]) -> str:
     return "[\n        " + ",\n        ".join(item_term(item) for item in items) + "\n    ]"
 
 
-def render(contexts: list[LessonContext], failures: Counter[str], guide_count: int) -> str:
+def render(
+    contexts: list[LessonContext],
+    absences: list[LessonAbsence],
+    failures: Counter[str],
+    guide_count: int,
+) -> str:
     prompt_count = sum(bool(context.prompts) for context in contexts)
     sequence_count = sum(bool(context.sequences) for context in contexts)
     lines = [
@@ -305,14 +466,24 @@ def render(contexts: list[LessonContext], failures: Counter[str], guide_count: i
         ":- module(compiled_lesson_context,",
         "          [ compiled_lesson_context/4,",
         "            compiled_lesson_context_summary/3,",
-        "            compiled_lesson_context_defeat/2",
+        "            compiled_lesson_context_defeat/2,",
+        "            compiled_lesson_context_absent/3",
         "          ]).",
+        "",
+        ":- dynamic compiled_lesson_context_absent/3.",
         "",
         f"compiled_lesson_context_summary({guide_count}, {prompt_count}, {sequence_count}).",
     ]
     for pattern, count in sorted(failures.items()):
         lines.append(
             f"compiled_lesson_context_defeat({prolog_atom(pattern)}, {count})."
+        )
+    for absence in sorted(absences, key=lambda item: item.code):
+        lines.append(
+            "compiled_lesson_context_absent("
+            f"{prolog_atom(absence.code)}, "
+            f"source({prolog_atom(absence.source)}), "
+            f"{prolog_atom(absence.reason)})."
         )
     lines.append("")
     for context in contexts:
@@ -330,17 +501,43 @@ def render(contexts: list[LessonContext], failures: Counter[str], guide_count: i
     return "\n".join(lines).rstrip() + "\n"
 
 
-def compile_cache() -> tuple[str, list[LessonContext], Counter[str]]:
+def compile_cache() -> tuple[
+    str,
+    list[LessonContext],
+    list[LessonAbsence],
+    Counter[str],
+    int,
+]:
     guides = sorted(GUIDES.rglob("*.md"))
+    middle_guides = [
+        path
+        for grade in ("Grade6", "Grade7", "Grade8")
+        for path in sorted((MIDDLE_GUIDES / grade).glob("*/document.md"))
+    ]
     contexts: list[LessonContext] = []
+    absences: list[LessonAbsence] = []
     failures: Counter[str] = Counter()
     for guide in guides:
         context, guide_failures = parse_guide(guide)
         failures.update(guide_failures)
         if context:
             contexts.append(context)
+    for guide in middle_guides:
+        context, absence, guide_failures = parse_middle_guide(guide)
+        failures.update(guide_failures)
+        if context:
+            contexts.append(context)
+        if absence:
+            absences.append(absence)
     contexts.sort(key=lambda context: context.code)
-    return render(contexts, failures, len(guides)), contexts, failures
+    source_count = len(guides) + len(middle_guides)
+    return (
+        render(contexts, absences, failures, source_count),
+        contexts,
+        absences,
+        failures,
+        source_count,
+    )
 
 
 def main() -> int:
@@ -348,7 +545,7 @@ def main() -> int:
     parser.add_argument("--check", action="store_true", help="fail if the cache is stale")
     parser.add_argument("--output", type=Path, default=OUTPUT)
     args = parser.parse_args()
-    rendered, contexts, failures = compile_cache()
+    rendered, contexts, absences, failures, source_count = compile_cache()
     output = args.output if args.output.is_absolute() else ROOT / args.output
     output_label = output.relative_to(ROOT) if output.is_relative_to(ROOT) else output
     if args.check:
@@ -362,10 +559,12 @@ def main() -> int:
         output.write_text(rendered, encoding="utf-8")
         print(f"wrote {output_label}")
     print(
-        "guides={guides} prompt_lessons={prompts} sequence_lessons={sequences}".format(
-            guides=len(list(GUIDES.rglob("*.md"))),
+        "guides={guides} prompt_lessons={prompts} "
+        "sequence_lessons={sequences} absent_lessons={absences}".format(
+            guides=source_count,
             prompts=sum(bool(context.prompts) for context in contexts),
             sequences=sum(bool(context.sequences) for context in contexts),
+            absences=len(absences),
         )
     )
     for pattern, count in sorted(failures.items()):
