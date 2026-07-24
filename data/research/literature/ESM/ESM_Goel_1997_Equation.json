@@ -1,0 +1,56 @@
+{
+  "bibliography": {
+    "bibliography_sources": [
+      "corpus",
+      "hermes"
+    ],
+    "components": {
+      "file": 1.0
+    },
+    "confidence": "high",
+    "entry": {
+      "author": "SUDHIR K. GOEL and MICHAEL S. ROBILLARD",
+      "journal": "ESM",
+      "title": "THE EQUATION: -2 = (-8)^1/3 = (-8)^2/6 = [(-8)^2]^1/6 = 2",
+      "year": "1997"
+    },
+    "key": "ESM_Goel_1997_Equation",
+    "method": "file_basename",
+    "score": 1.0,
+    "status": "matched"
+  },
+  "conversion": {
+    "engine": "docling",
+    "options": {
+      "figure_description_pass": "deferred",
+      "formula_engine": "transformers_cpu",
+      "formula_enrichment": true,
+      "ocr": true,
+      "ocr_engine": "rapidocr_onnxruntime",
+      "table_structure": true,
+      "table_structure_mode": "accurate"
+    },
+    "version": "2.112.0"
+  },
+  "converted_page_range": [
+    1,
+    2
+  ],
+  "document_counts": {
+    "figures": 0,
+    "tables": 0,
+    "texts": 29
+  },
+  "figures": [],
+  "page_count": 2,
+  "schema_version": 1,
+  "source": {
+    "corpus_relative_path": "pdfs/ESM/ESM_Goel_1997_Equation.pdf",
+    "filename": "ESM_Goel_1997_Equation.pdf",
+    "journal_dir": "ESM",
+    "mtime_ns": 1551812294000000000,
+    "sha256": "4cbf41b05e2edc736348701852c3534137a28fb956948aaa998dda3471a069a0",
+    "size_bytes": 26729
+  },
+  "status": "complete"
+}

@@ -1,0 +1,15 @@
+{
+  "failure_index_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "failures": 0,
+  "index_sha256": "24de86c2d7afe7390b015cc1f7095baebe1723c0310360ae965c9292380e0e66",
+  "matched": 3,
+  "per_journal": {
+    "BOOKS": 1,
+    "ESM": 1,
+    "FLM": 1,
+    "JMTE": 1
+  },
+  "records": 4,
+  "schema_version": 1,
+  "unkeyed": 1
+}

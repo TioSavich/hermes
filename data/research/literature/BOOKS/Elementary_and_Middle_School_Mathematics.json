@@ -1,0 +1,825 @@
+{
+  "bibliography": {
+    "candidate_key": "JMTE_An_2004_Pedagogical",
+    "confidence": "none",
+    "key": null,
+    "method": "no_reliable_match",
+    "score": 0.4668,
+    "status": "unkeyed"
+  },
+  "conversion": {
+    "engine": "docling",
+    "options": {
+      "figure_description_pass": "deferred",
+      "formula_engine": "transformers_cpu",
+      "formula_enrichment": true,
+      "ocr": true,
+      "ocr_engine": "rapidocr_onnxruntime",
+      "table_structure": true,
+      "table_structure_mode": "accurate"
+    },
+    "version": "2.112.0"
+  },
+  "converted_page_range": [
+    1,
+    15
+  ],
+  "document_counts": {
+    "figures": 30,
+    "tables": 1,
+    "texts": 679
+  },
+  "figures": [
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0001",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 693.455,
+            "l": 416.446,
+            "r": 580.099,
+            "t": 755.806
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 1
+        }
+      ],
+      "self_ref": "#/pictures/0"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0002",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 98.259,
+            "l": 0.0,
+            "r": 610.886,
+            "t": 457.462
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 1
+        }
+      ],
+      "self_ref": "#/pictures/1"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0003",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 74.806,
+            "l": 258.99,
+            "r": 350.936,
+            "t": 104.17
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 2
+        }
+      ],
+      "self_ref": "#/pictures/2"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0004",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 494.372,
+            "l": 70.586,
+            "r": 174.032,
+            "t": 640.46
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 4
+        }
+      ],
+      "self_ref": "#/pictures/3"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0005",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 297.001,
+            "l": 70.404,
+            "r": 180.037,
+            "t": 436.796
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 4
+        }
+      ],
+      "self_ref": "#/pictures/4"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0006",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 94.359,
+            "l": 70.368,
+            "r": 180.055,
+            "t": 234.333
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 4
+        }
+      ],
+      "self_ref": "#/pictures/5"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0007",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 533.467,
+            "l": 34.211,
+            "r": 144.138,
+            "t": 672.799
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 5
+        }
+      ],
+      "self_ref": "#/pictures/6"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0008",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 454.739,
+            "l": 72.195,
+            "r": 105.049,
+            "t": 488.253
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 8
+        }
+      ],
+      "self_ref": "#/pictures/7"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0009",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 196.787,
+            "l": 71.809,
+            "r": 105.322,
+            "t": 229.752
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 8
+        }
+      ],
+      "self_ref": "#/pictures/8"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0010",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 292.514,
+            "l": 333.719,
+            "r": 366.101,
+            "t": 325.321
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 8
+        }
+      ],
+      "self_ref": "#/pictures/9"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0011",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 583.228,
+            "l": 36.871,
+            "r": 68.958,
+            "t": 616.32
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 9
+        }
+      ],
+      "self_ref": "#/pictures/10"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0012",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 93.845,
+            "l": 35.289,
+            "r": 67.755,
+            "t": 127.202
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 9
+        }
+      ],
+      "self_ref": "#/pictures/11"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0013",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 436.98,
+            "l": 296.956,
+            "r": 329.788,
+            "t": 470.735
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 9
+        }
+      ],
+      "self_ref": "#/pictures/12"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0014",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 82.552,
+            "l": 297.041,
+            "r": 329.857,
+            "t": 116.017
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 9
+        }
+      ],
+      "self_ref": "#/pictures/13"
+    },
+    {
+      "caption": "ChAPter 8 Developing early number Concepts and number",
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0015",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 363.607,
+            "l": 71.952,
+            "r": 105.15,
+            "t": 396.547
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 10
+        }
+      ],
+      "self_ref": "#/pictures/14"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0016",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 365.275,
+            "l": 333.649,
+            "r": 366.657,
+            "t": 398.417
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 10
+        }
+      ],
+      "self_ref": "#/pictures/15"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0017",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 585.072,
+            "l": 36.378,
+            "r": 68.951,
+            "t": 618.246
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 11
+        }
+      ],
+      "self_ref": "#/pictures/16"
+    },
+    {
+      "caption": "ChAPter 11 Developing Whole-number Place-Value",
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0018",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 93.803,
+            "l": 36.765,
+            "r": 69.002,
+            "t": 126.418
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 11
+        }
+      ],
+      "self_ref": "#/pictures/17"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0019",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 300.927,
+            "l": 297.273,
+            "r": 329.992,
+            "t": 334.837
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 11
+        }
+      ],
+      "self_ref": "#/pictures/18"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0020",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 488.248,
+            "l": 72.664,
+            "r": 105.207,
+            "t": 521.708
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 12
+        }
+      ],
+      "self_ref": "#/pictures/19"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0021",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 130.303,
+            "l": 72.401,
+            "r": 105.92,
+            "t": 163.879
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 12
+        }
+      ],
+      "self_ref": "#/pictures/20"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0022",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 371.611,
+            "l": 333.319,
+            "r": 366.552,
+            "t": 404.922
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 12
+        }
+      ],
+      "self_ref": "#/pictures/21"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0023",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 614.219,
+            "l": 36.219,
+            "r": 69.036,
+            "t": 647.308
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 13
+        }
+      ],
+      "self_ref": "#/pictures/22"
+    },
+    {
+      "caption": "ChAPter 17 Developing Concepts of Decimals and Percents 427",
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0024",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 192.84,
+            "l": 36.885,
+            "r": 69.177,
+            "t": 226.071
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 13
+        }
+      ],
+      "self_ref": "#/pictures/23"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0025",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 475.931,
+            "l": 297.397,
+            "r": 330.275,
+            "t": 509.28
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 13
+        }
+      ],
+      "self_ref": "#/pictures/24"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0026",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 111.653,
+            "l": 297.49,
+            "r": 330.285,
+            "t": 145.2
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 13
+        }
+      ],
+      "self_ref": "#/pictures/25"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0027",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 177.15,
+            "l": 71.957,
+            "r": 104.911,
+            "t": 211.383
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 14
+        }
+      ],
+      "self_ref": "#/pictures/26"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0028",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 419.491,
+            "l": 333.068,
+            "r": 366.914,
+            "t": 452.852
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 14
+        }
+      ],
+      "self_ref": "#/pictures/27"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0029",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 624.656,
+            "l": 36.598,
+            "r": 69.124,
+            "t": 657.563
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 15
+        }
+      ],
+      "self_ref": "#/pictures/28"
+    },
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0030",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 681.826,
+            "l": 296.266,
+            "r": 328.535,
+            "t": 715.389
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 15
+        }
+      ],
+      "self_ref": "#/pictures/29"
+    }
+  ],
+  "page_count": 709,
+  "schema_version": 1,
+  "source": {
+    "corpus_relative_path": null,
+    "filename": "Elementary_and_Middle_School_Mathematics.pdf",
+    "journal_dir": "BOOKS",
+    "mtime_ns": 1766506896300768375,
+    "sha256": "13860da52efc4d14f1b2a07f94b33e4d23dffe9fb7e3ceafb483fa783c0d797a",
+    "size_bytes": 45565140
+  },
+  "status": "complete"
+}

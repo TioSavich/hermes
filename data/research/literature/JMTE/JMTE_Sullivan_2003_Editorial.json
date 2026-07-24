@@ -1,0 +1,83 @@
+{
+  "bibliography": {
+    "bibliography_sources": [
+      "corpus",
+      "hermes"
+    ],
+    "components": {
+      "file": 1.0
+    },
+    "confidence": "high",
+    "entry": {
+      "author": "PETER SULLIVAN",
+      "journal": "JMTE",
+      "title": "EDITORIAL INCORPORATING KNOWLEDGE OF, AND BELIEFS ABOUT, MATHEMATICS INTO TEACHER EDUCATION",
+      "year": "2003"
+    },
+    "key": "JMTE_Sullivan_2003_Editorial",
+    "method": "file_basename",
+    "score": 1.0,
+    "status": "matched"
+  },
+  "conversion": {
+    "engine": "docling",
+    "options": {
+      "figure_description_pass": "deferred",
+      "formula_engine": "transformers_cpu",
+      "formula_enrichment": true,
+      "ocr": true,
+      "ocr_engine": "rapidocr_onnxruntime",
+      "table_structure": true,
+      "table_structure_mode": "accurate"
+    },
+    "version": "2.112.0"
+  },
+  "converted_page_range": [
+    1,
+    4
+  ],
+  "document_counts": {
+    "figures": 1,
+    "tables": 0,
+    "texts": 20
+  },
+  "figures": [
+    {
+      "caption": null,
+      "description": {
+        "model": null,
+        "status": "pending",
+        "style": "granite_vision",
+        "text": null
+      },
+      "id": "figure-0001",
+      "provenance": [
+        {
+          "bbox": {
+            "b": 168.444,
+            "l": 135.569,
+            "r": 154.804,
+            "t": 189.656
+          },
+          "charspan": [
+            0,
+            0
+          ],
+          "page_no": 1
+        }
+      ],
+      "self_ref": "#/pictures/0"
+    }
+  ],
+  "page_count": 4,
+  "schema_version": 1,
+  "source": {
+    "corpus_relative_path": "pdfs/JMTE/JMTE_Sullivan_2003_Editorial.pdf",
+    "filename": "JMTE_Sullivan_2003_Editorial.pdf",
+    "journal_dir": "JMTE",
+    "mtime_ns": 1551817792000000000,
+    "sha256": "d65b2bf1dadf92183cf709e7b8a750d26243da9cd079bfa1f35d0c015e9dd92f",
+    "size_bytes": 29174
+  },
+  "status": "complete"
+}
