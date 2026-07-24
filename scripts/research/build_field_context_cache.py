@@ -9,9 +9,21 @@ Run this whenever the lesson, strategy, misconception, standards, literature,
 or inferential-strength knowledge base changes. The regular check suite compares
 one fixed lesson against the live worker and fails when the artifact drifts.
 The generator starts one SWI-Prolog process per invocation. That process applies
-a 120-second limit to each lesson, streams each completed result back to Python,
-and records failures instead of omitting entries. Python atomically writes one
-partial JSON file per lesson before a deterministic merge.
+a 120-second in-Prolog limit to each lesson, streams each completed result back
+to Python, and records failures instead of omitting entries. Python atomically
+writes one partial JSON file per lesson before a deterministic merge.
+
+The in-Prolog limit is call_with_time_limit/2, an asynchronous alarm delivered
+only at Prolog virtual-machine signal-check points. Some lessons spend their time
+inside native string and clause-scan builtins (topic evidence over the standard
+anchors in curriculum/im/lesson_monitoring.pl) that never poll for the alarm, so
+that limit cannot preempt them; a stuck lesson then holds a worker thread past
+any in-Prolog wall. Python therefore enforces its own wall from outside the
+process: a watchdog that measures the time since the last completed lesson, kills
+a wedged batch, resumes from the atomic partials, and — once no concurrency makes
+progress — isolates and records the single stalled lesson as an explicit error
+before continuing. A single pathological lesson can slow a band but can no longer
+stall it.
 """
 
 from __future__ import annotations
@@ -23,6 +35,7 @@ import re
 import signal
 import subprocess
 import sys
+import threading
 import time
 from pathlib import Path
 from typing import Any, Callable
@@ -43,6 +56,21 @@ GRADE_BANDS = {
     "6-8": frozenset({6, 7, 8}),
 }
 TIMEOUT_ERROR = "field_context_dict/2 exceeded 120 seconds"
+DEFAULT_LESSON_TIMEOUT = 600
+STALL_ERROR_TEMPLATE = (
+    "field_context builder external wall: no lesson completed within {seconds} "
+    "seconds; the batch was terminated and this stalled lesson recorded so the "
+    "band could proceed"
+)
+
+
+class StallTimeout(Exception):
+    """The external watchdog terminated a wedged SWI-Prolog batch.
+
+    Raised by compute_contexts when no lesson completes within the wall.
+    Completed lessons are already on disk as atomic partials, so the driver
+    resumes from them; nothing computed is lost.
+    """
 STREAM_GOAL = f"""
 with_output_to(user_error, load_runtime),
 field_context_batch:json_read_dict(user_input, Request),
@@ -152,8 +180,16 @@ def compute_contexts(
     *,
     jobs: int,
     on_context: Callable[[str, dict[str, Any]], None] | None = None,
+    lesson_timeout: float = 0,
 ) -> dict[str, dict[str, Any]]:
-    """Compute codes in one SWI process and consume each result as it completes."""
+    """Compute codes in one SWI process and consume each result as it completes.
+
+    When lesson_timeout is positive, a watchdog thread terminates the process if
+    no lesson completes within that many seconds and raises StallTimeout. The
+    in-Prolog call_with_time_limit/2 cannot preempt native builtin sections, so
+    this external wall is the guarantee that a wedged lesson cannot hold a worker
+    forever. Every lesson streamed before the kill is already checkpointed.
+    """
     command = [
         "swipl",
         "--on-error=status",
@@ -184,6 +220,33 @@ def compute_contexts(
         process.terminate()
         fail("cannot open pipes for the single-process SWI batch")
 
+    # The watchdog reads last_progress and stalled through this simple shared
+    # state; the reader loop updates last_progress on every completed lesson.
+    watchdog_state = {"last_progress": time.monotonic(), "stalled": False}
+    watchdog_stop = threading.Event()
+
+    def watchdog() -> None:
+        while not watchdog_stop.wait(1.0):
+            if process.poll() is not None:
+                return
+            idle = time.monotonic() - watchdog_state["last_progress"]
+            if idle > lesson_timeout:
+                watchdog_state["stalled"] = True
+                print(
+                    "build_field_context_cache.py: external wall reached "
+                    f"({lesson_timeout:.0f}s with no completed lesson); "
+                    "terminating the wedged batch; completed partials are preserved",
+                    file=sys.stderr,
+                    flush=True,
+                )
+                process.kill()
+                return
+
+    watchdog_thread: threading.Thread | None = None
+    if lesson_timeout and lesson_timeout > 0:
+        watchdog_thread = threading.Thread(target=watchdog, daemon=True)
+        watchdog_thread.start()
+
     contexts: dict[str, dict[str, Any]] = {}
     try:
         process.stdin.write(json.dumps({"lessons": codes, "jobs": jobs}))
@@ -194,6 +257,8 @@ def compute_contexts(
                 code = row["lesson_code"]
                 context = row["context"]
             except (json.JSONDecodeError, KeyError, TypeError) as exc:
+                if watchdog_state["stalled"]:
+                    break
                 process.terminate()
                 fail(f"SWI stream row {line_number} is invalid: {exc}")
             if (
@@ -207,9 +272,11 @@ def compute_contexts(
                 process.terminate()
                 fail(f"SWI stream returned duplicate lesson {code}")
             contexts[code] = context
+            watchdog_state["last_progress"] = time.monotonic()
             if on_context is not None:
                 on_context(code, context)
     except KeyboardInterrupt:
+        watchdog_stop.set()
         process.send_signal(signal.SIGINT)
         process.wait()
         print(
@@ -219,14 +286,20 @@ def compute_contexts(
         )
         raise SystemExit(130)
     except BaseException:
+        watchdog_stop.set()
         if process.poll() is None:
             process.terminate()
             process.wait()
         raise
     finally:
+        watchdog_stop.set()
         process.stdout.close()
+        if watchdog_thread is not None:
+            watchdog_thread.join(timeout=5)
 
     return_code = process.wait()
+    if watchdog_state["stalled"]:
+        raise StallTimeout()
     if return_code != 0:
         fail(f"single-process SWI batch failed with status {return_code}")
     if set(contexts) != set(codes):
@@ -275,6 +348,19 @@ def write_atomic(path: Path, data: bytes) -> None:
     temporary.replace(path)
 
 
+def write_error_partial(partials_dir: Path, code: str, message: str) -> dict[str, Any]:
+    """Record a stalled lesson as an explicit error partial and return its context.
+
+    The bytes match a Prolog-emitted error partial: the same
+    {"lesson_code", "context": {"error": ...}} shape serialized_partial writes for
+    every lesson. An error partial is preserved evidence of a failed computation,
+    never permission to omit the lesson.
+    """
+    context: dict[str, Any] = {"error": message}
+    write_atomic(partial_path(partials_dir, code), serialized_partial(code, context))
+    return context
+
+
 def read_partial(path: Path) -> tuple[str, dict[str, Any]]:
     try:
         row = json.loads(path.read_text(encoding="utf-8"))
@@ -298,36 +384,94 @@ def collect_partials(
     partials_dir: Path,
     resume: bool,
     jobs: int,
+    lesson_timeout: float = 0,
 ) -> dict[str, dict[str, Any]]:
+    """Compute the selected lessons, respawning around external-wall stalls.
+
+    Each completed lesson is checkpointed atomically, so a killed batch keeps its
+    work. On a stall the driver resumes from disk; when a full batch makes no
+    progress it drops to one worker to isolate the single wedged lesson, then
+    records that lesson as an explicit error and continues. The returned dict
+    reflects the partials on disk for the selected lessons.
+    """
     partials_dir.mkdir(parents=True, exist_ok=True)
-    existing: dict[str, dict[str, Any]] = {}
-    if resume:
-        for code in codes:
+
+    def existing_on_disk(subset: list[str]) -> dict[str, dict[str, Any]]:
+        found: dict[str, dict[str, Any]] = {}
+        for code in subset:
             path = partial_path(partials_dir, code)
             if path.is_file():
                 existing_code, context = read_partial(path)
                 if existing_code != code:
                     fail(f"partial {path} identifies lesson {existing_code}")
-                existing[code] = context
-    pending = [code for code in codes if code not in existing]
-    print(
-        f"checkpoint selection: lessons={len(codes)} resumed={len(existing)} "
-        f"pending={len(pending)} jobs={jobs} partials={partials_dir}",
-        flush=True,
-    )
-    if not pending:
-        return existing
+                found[code] = context
+        return found
+
+    # Resume honours pre-existing partials; a fresh (non-resume) run still never
+    # recomputes a lesson this invocation already checkpointed, so respawns make
+    # monotonic progress either way.
+    preexisting = existing_on_disk(codes) if resume else {}
+    initial_pending = [code for code in codes if code not in preexisting]
+    done: set[str] = set()
 
     def checkpoint(code: str, context: dict[str, Any]) -> None:
-        path = partial_path(partials_dir, code)
-        write_atomic(path, serialized_partial(code, context))
+        write_atomic(partial_path(partials_dir, code), serialized_partial(code, context))
+        done.add(code)
+        print(f"checkpointed {code}: {partial_path(partials_dir, code)}", flush=True)
+
+    # isolation splits one lesson into its own single-worker batch so a stall is
+    # attributable to exactly that lesson; the full batch runs otherwise.
+    isolation = False
+    while True:
+        pending = [code for code in initial_pending if code not in done]
+        if not pending:
+            break
+        batch = [pending[0]] if isolation else pending
+        run_jobs = 1 if isolation else jobs
         print(
-            f"checkpointed {code}: {path}",
+            f"checkpoint selection: lessons={len(codes)} "
+            f"resumed={len(preexisting)} done={len(done)} pending={len(pending)} "
+            f"batch={len(batch)} jobs={run_jobs} "
+            f"mode={'isolate' if isolation else 'full'} partials={partials_dir}",
             flush=True,
         )
+        before = len(done)
+        try:
+            compute_contexts(
+                batch,
+                jobs=run_jobs,
+                on_context=checkpoint,
+                lesson_timeout=lesson_timeout,
+            )
+            # The batch completed cleanly; leave isolation once its lesson lands.
+            isolation = False
+        except StallTimeout:
+            progressed = len(done) > before
+            if progressed:
+                # The band moved before it stalled; resume the full batch.
+                isolation = False
+            elif len(batch) == 1:
+                # A single-lesson batch stalled: batch[0] is unambiguously the
+                # culprit. Record it as an explicit error and return to full speed.
+                culprit = batch[0]
+                if culprit not in done:
+                    message = STALL_ERROR_TEMPLATE.format(seconds=int(lesson_timeout))
+                    context = write_error_partial(partials_dir, culprit, message)
+                    done.add(culprit)
+                    print(f"ERROR {culprit}: {context['error']}", flush=True)
+                isolation = False
+            else:
+                # No lesson completed at full concurrency: isolate the head lesson
+                # into its own worker so the next stall names the exact culprit.
+                isolation = True
+                print(
+                    "build_field_context_cache.py: batch stalled with no progress; "
+                    "isolating one lesson per worker to name the stalled lesson",
+                    file=sys.stderr,
+                    flush=True,
+                )
 
-    computed = compute_contexts(pending, jobs=jobs, on_context=checkpoint)
-    return {**existing, **computed}
+    return {code: context for code, context in existing_on_disk(codes).items()}
 
 
 def contexts_from_partials(partials_dir: Path) -> dict[str, dict[str, Any]]:
@@ -475,6 +619,16 @@ def main(argv: list[str] | None = None) -> int:
         help="SWI worker threads inside the single process (default: 8)",
     )
     parser.add_argument(
+        "--lesson-timeout",
+        type=float,
+        default=DEFAULT_LESSON_TIMEOUT,
+        help=(
+            "external wall in seconds: terminate the batch if no lesson completes "
+            "within this window, then resume and isolate the stalled lesson "
+            f"(default: {DEFAULT_LESSON_TIMEOUT}; 0 disables the wall)"
+        ),
+    )
+    parser.add_argument(
         "--retry-errors",
         action="store_true",
         help="recompute only explicit error entries in the existing artifact",
@@ -484,6 +638,8 @@ def main(argv: list[str] | None = None) -> int:
         parser.error("--limit must be nonnegative")
     if args.jobs < 1:
         parser.error("--jobs must be positive")
+    if args.lesson_timeout < 0:
+        parser.error("--lesson-timeout must be nonnegative")
     if args.merge_only and (
         args.resume
         or args.retry_errors
@@ -521,6 +677,7 @@ def main(argv: list[str] | None = None) -> int:
             partials_dir=args.partials_dir,
             resume=args.resume,
             jobs=args.jobs,
+            lesson_timeout=args.lesson_timeout,
         )
         contexts = {**existing, **replacements}
     else:
@@ -535,6 +692,7 @@ def main(argv: list[str] | None = None) -> int:
             partials_dir=args.partials_dir,
             resume=args.resume,
             jobs=args.jobs,
+            lesson_timeout=args.lesson_timeout,
         )
         if args.collect_only:
             return 0

@@ -46,8 +46,20 @@ sbatch --array=2 --time=18:00:00 scripts/bigred/field_context/job.slurm
 ```
 
 Rerun the same command after a timeout or cancellation. `--resume` skips valid
-partials and computes only missing lessons. The per-lesson 120-second bound and
-explicit error rows still apply.
+partials and computes only missing lessons.
+
+Two per-lesson bounds apply. The in-Prolog 120-second limit
+(`call_with_time_limit/2`) is an asynchronous alarm; it cannot preempt a lesson
+whose time is spent inside native string and clause-scan builtins (the topic
+evidence over `curriculum/im/lesson_monitoring.pl` standard anchors), which is
+how a wedged lesson previously held a worker past every in-Prolog wall. The
+builder therefore also enforces an external wall, `--lesson-timeout` (default 600
+seconds, overridable through `FIELD_CONTEXT_LESSON_TIMEOUT`). If a batch produces
+no completed lesson within that window, Python terminates it, resumes from the
+atomic partials, and — once no concurrency makes progress — drops to one worker
+to isolate the single stalled lesson and record it as an explicit error before
+continuing. Explicit error rows are preserved evidence of a failed computation,
+never permission to omit the lesson; recompute them later with `--retry-errors`.
 
 ## Collect and merge
 

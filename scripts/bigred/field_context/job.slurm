@@ -42,10 +42,16 @@ conda activate "${HERMES_ENV:-umedcta}"
 set -u
 
 echo "[$(date -Is)] band=$BAND host=$(hostname) python=$(command -v python3) swipl=$(command -v swipl)"
+# External wall: terminate and resume a batch that produces no completed lesson
+# within this many seconds, then isolate and record the single stalled lesson.
+# The in-Prolog 120s limit cannot preempt native builtin sections, so this outer
+# wall is what keeps one pathological lesson from stalling the whole band.
+LESSON_TIMEOUT="${FIELD_CONTEXT_LESSON_TIMEOUT:-600}"
 python3 scripts/research/build_field_context_cache.py \
   --partials-dir "$PARTIALS_DIR" \
   --grade-band "$BAND" \
   --jobs "${SLURM_CPUS_PER_TASK:-8}" \
+  --lesson-timeout "$LESSON_TIMEOUT" \
   --resume \
   --collect-only
 echo "[$(date -Is)] band=$BAND complete partials=$PARTIALS_DIR"
