@@ -1,0 +1,79 @@
+{
+  "yellow": {
+    "disfluency": [
+      "um",
+      "uh",
+      "hmm",
+      "hm",
+      "i don't know",
+      "i do not know",
+      "idk",
+      "i don't think",
+      "i do not think",
+      "not sure",
+      "maybe",
+      "i guess"
+    ],
+    "pause": [
+      "[pause]",
+      "(pause)",
+      "[silence]",
+      "(silence)"
+    ]
+  },
+  "violet": [
+    {
+      "family": "object_collection",
+      "phrases": [
+        "group",
+        "groups",
+        "piece",
+        "pieces",
+        "block",
+        "blocks",
+        "put together",
+        "take apart"
+      ],
+      "citation": "Lakoff and Nunez, Where Mathematics Comes From (2000), arithmetic as object collection"
+    },
+    {
+      "family": "measuring_stick",
+      "phrases": [
+        "number line",
+        "measure",
+        "length",
+        "distance",
+        "mark",
+        "tick"
+      ],
+      "citation": "Lakoff and Nunez, Where Mathematics Comes From (2000), arithmetic as measuring"
+    },
+    {
+      "family": "motion_along_path",
+      "phrases": [
+        "go into",
+        "goes into",
+        "move",
+        "left over",
+        "to the right",
+        "move right",
+        "forward",
+        "back"
+      ],
+      "citation": "Lakoff and Nunez, Where Mathematics Comes From (2000), arithmetic as motion along a path"
+    },
+    {
+      "family": "arithmetic_construction",
+      "phrases": [
+        "make",
+        "build",
+        "split",
+        "break apart",
+        "decompose",
+        "combine",
+        "common denominator"
+      ],
+      "citation": "Lakoff and Nunez, Where Mathematics Comes From (2000), arithmetic as construction"
+    }
+  ]
+}

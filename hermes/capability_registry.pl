@@ -192,6 +192,7 @@ capability('standard_k_ns_4_verify_subitizing_witness', 'standard_k_ns_4', 'stan
 capability('standard_k_ns_5_6_compare_groups_witness', 'standard_k_ns_5_6', 'standards', ['group_a', 'group_b'], routed_paged).
 capability('standard_k_ns_7_place_value_witness', 'standard_k_ns_7', 'standards', ['number'], routed_paged).
 capability('state_labels', 'user', 'unclassified', ['state'], unrouted).
+capability('strategy_recognize', 'strategy_recognizer', 'unclassified', ['content'], unrouted).
 capability('strategy_trace', 'hermes_encyclopedia', 'unclassified', ['input', 'strategy'], routed_paged).
 capability('target_inferential_strength_witness', 'user', 'unclassified', ['target'], routed_paged).
 capability('teacher_layer', 'teacher_layer', 'render', [], routed_paged).
@@ -492,6 +493,7 @@ capability_parameter('standard_k_ns_5_6_compare_groups_witness', 'group_a', null
 capability_parameter('standard_k_ns_5_6_compare_groups_witness', 'group_b', null, true, null).
 capability_parameter('standard_k_ns_7_place_value_witness', 'number', null, false, null).
 capability_parameter('state_labels', 'state', 'string', true, null).
+capability_parameter('strategy_recognize', 'content', 'string', true, null).
 capability_parameter('strategy_trace', 'strategy', 'string', true, null).
 capability_parameter('strategy_trace', 'input', 'object', false, null).
 capability_parameter('target_inferential_strength_witness', 'target', null, true, null).

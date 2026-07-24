@@ -344,9 +344,22 @@ def observe(checked_contracts: list[Contract]) -> list[Observation]:
 
 
 def render_observed_transitions(table: Table, observation: Observation) -> str:
-    """Keep observed source separate from static extraction provenance."""
+    """Keep observed source separate from static extraction provenance.
+
+    A reconstructed chain must still root at the signature's own declared
+    start and accepting states (``table.states[0]`` / ``table.states[-1]``)
+    rather than the literal atoms ``q_start``/``q_accept`` — those only
+    coincide with the declared boundary for kinds whose static trace begins
+    at ``q_start``. Kinds reconstructed from a comparison automaton's
+    ``hist/2`` trace (see ``table_from_history``) declare ``start(q_init)``,
+    and a hardcoded ``q_start`` here would silently root the observed rows
+    off the declared start, disconnecting them for any consumer that walks
+    the automaton from its tuple.
+    """
     states = (table.states if observation.actions == table.actions else
-              tuple(["q_start", *(f"q_observed_{n}" for n in range(1, len(observation.actions))), "q_accept"]))
+              tuple([table.states[0],
+                     *(f"q_observed_{n}" for n in range(1, len(observation.actions))),
+                     table.states[-1]]))
     return "\n".join(
         f"automaton_transition({table.operation}, {table.kind}, {states[index]}, {action}, {states[index + 1]}, "
         f"provenance(observed({observation.source})))."

@@ -59,6 +59,7 @@
 :- use_module(learner(action_semantic_context)).
 :- use_module(formalization(grounding_metaphors)).
 :- use_module(hermes(math_claim_checker), [ check_math_claim/2 ]).
+:- use_module(hermes(math_claim_language), [ math_readings_in_text/2 ]).
 :- use_module(hermes(math_context), [ math_context_for_claim/2 ]).
 :- use_module(pml(text_interpreter), [ interpret_lesson_text/2 ]).
 :- use_module(misconceptions(test_harness)).
@@ -943,39 +944,45 @@ ground_query_dict(Query0, _{
 
 %!  ground_math_claims(+QueryStr, -Claims) is det.
 %
-%   Fraction-equivalence claims written in the query text ("a/b = c/d"),
-%   adjudicated by the domain checker and joined to the registry context.
-%   Fields are flattened to strings so the dict is JSON-safe as built.
-%   Other claim shapes (sums, comparisons) are not parsed here yet; the
-%   checker's coverage is the boundary, and an unparsed claim simply does
-%   not appear rather than appearing wrongly.
+%   Explicit natural-language and symbolic claims are parsed by the
+%   quotation-aware DCG, adjudicated by the domain checker, and joined to the
+%   registry context.  Mathematical content remains separate from polarity,
+%   modality, reports, questions, and quotation; syntax alone never assigns
+%   entitlement.  Unparsed text abstains rather than receiving an inferred
+%   operation.
 ground_math_claims(QStr, Claims) :-
-    catch(re_foldl(ground_math_claim_,
-                   "(\\d+)\\s*/\\s*(\\d+)\\s*=\\s*(\\d+)\\s*/\\s*(\\d+)",
-                   QStr, [], Claims0, []),
-          _,
-          Claims0 = []),
-    reverse(Claims0, Claims).
+    catch(math_readings_in_text(QStr, Readings), _, Readings = []),
+    maplist(ground_math_reading, Readings, Claims).
 
-:- use_module(library(pcre), [re_foldl/6]).
-
-ground_math_claim_(Match, Acc, [Dict|Acc]) :-
-    number_string(N1, Match.1), number_string(D1, Match.2),
-    number_string(N2, Match.3), number_string(D2, Match.4),
-    D1 > 0, D2 > 0,
-    ClaimTerm = equivalence(fraction(N1,D1), fraction(N2,D2)),
+ground_math_reading(Reading, Dict) :-
+    ClaimTerm = Reading.claim,
     check_math_claim(ClaimTerm, Check),
     term_text_string(ClaimTerm, ClaimText),
     ( get_dict(status, Check, Status0) -> term_text_string(Status0, Status) ; Status = "" ),
-    ( get_dict(verdict, Check, Verdict0) -> term_text_string(Verdict0, Verdict) ; Verdict = "" ),
+    ( get_dict(verdict, Check, Verdict1) -> term_text_string(Verdict1, BaseVerdict) ; BaseVerdict = "" ),
     ( get_dict(checker, Check, Checker0) -> term_text_string(Checker0, Checker) ; Checker = "" ),
+    surface_verdict(Reading.polarity, BaseVerdict, Verdict),
+    term_text_string(Reading.mode, Mode),
+    term_text_string(Reading.polarity, Polarity),
+    term_text_string(Reading.commitment, Commitment),
+    maplist(term_text_string, Reading.embedding, Embedding),
     math_claim_context_texts(ClaimTerm, ContextTexts),
     Dict = _{ claim: ClaimText,
+              surface: Reading.normalized_surface,
               status: Status,
               verdict: Verdict,
+              base_verdict: BaseVerdict,
               checker: Checker,
+              mode: Mode,
+              polarity: Polarity,
+              embedding: Embedding,
+              commitment: Commitment,
               context: ContextTexts }.
-ground_math_claim_(_, Acc, Acc).
+
+surface_verdict(positive, Verdict, Verdict).
+surface_verdict(negative, "holds", "refuted") :- !.
+surface_verdict(negative, "refuted", "holds") :- !.
+surface_verdict(negative, Verdict, Verdict).
 
 %!  math_claim_context_texts(+ClaimTerm, -Texts) is det.
 %

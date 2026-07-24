@@ -1,0 +1,6010 @@
+{
+  "built_at": "2026-07-24T12:16:38.837142+00:00",
+  "count": 196,
+  "dimensions": 4096,
+  "domain": "registry_ops",
+  "entries": [
+    {
+      "description": null,
+      "inputs": [
+        "source",
+        "target"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "accommodation_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "target",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "base_ten_scene",
+      "op": "ace_of_bases_render",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/hermes/app/web/discussions.html",
+        "/more-zeeman/fraction-bars/calculator.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/unit-echo/index.html",
+        "/more-zeeman/visualizations.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/monitoring_visuals"
+        },
+        {
+          "method": "POST",
+          "path": "/api/render"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "cluster",
+        "kind",
+        "operation",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "action_cluster_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "operation",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "kind",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "cluster",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "canonical",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "algebra_claim_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "canonical",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "da",
+        "db",
+        "na",
+        "nb"
+      ],
+      "lazy_via": [],
+      "module": "area_model_scene",
+      "op": "area_compare",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/hermes/app/web/discussions.html",
+        "/more-zeeman/fraction-bars/calculator.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/unit-echo/index.html",
+        "/more-zeeman/visualizations.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/monitoring_visuals"
+        },
+        {
+          "method": "POST",
+          "path": "/api/render"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "area_model_scene",
+      "op": "area_render",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/hermes/app/web/discussions.html",
+        "/more-zeeman/fraction-bars/calculator.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/unit-echo/index.html",
+        "/more-zeeman/visualizations.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/chat"
+        },
+        {
+          "method": "POST",
+          "path": "/api/monitoring_visuals"
+        },
+        {
+          "method": "POST",
+          "path": "/api/render"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "canonical",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "arithmetic_property_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "canonical",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "kind"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "axiom_hierarchy_witness",
+      "pages": [
+        "/hermes/app/web/breaks.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "kind",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "sequent",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/formal"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "pack",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "axiom_pack_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "pack",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "sequent",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "action"
+      ],
+      "lazy_via": [],
+      "module": "hermes_worker",
+      "op": "axiom_toggle",
+      "pages": [
+        "/hermes/app/web/breaks.html"
+      ],
+      "parameters": [],
+      "role": "sequent",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/axiom_toggle"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "a",
+        "b",
+        "c"
+      ],
+      "lazy_via": [],
+      "module": "balance_scale_scene",
+      "op": "balance_compare",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/hermes/app/web/discussions.html",
+        "/more-zeeman/fraction-bars/calculator.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/unit-echo/index.html",
+        "/more-zeeman/visualizations.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/monitoring_visuals"
+        },
+        {
+          "method": "POST",
+          "path": "/api/render"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "a",
+        "b",
+        "c"
+      ],
+      "lazy_via": [],
+      "module": "balance_scale_scene",
+      "op": "balance_render",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/hermes/app/web/discussions.html",
+        "/more-zeeman/fraction-bars/calculator.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/unit-echo/index.html",
+        "/more-zeeman/visualizations.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/chat"
+        },
+        {
+          "method": "POST",
+          "path": "/api/monitoring_visuals"
+        },
+        {
+          "method": "POST",
+          "path": "/api/render"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "a",
+        "b",
+        "c"
+      ],
+      "lazy_via": [],
+      "module": "balance_scale_scene",
+      "op": "balance_solve_witness",
+      "pages": [
+        "/more-zeeman/visualizations.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/balance_solve"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "a",
+        "b",
+        "base"
+      ],
+      "lazy_via": [],
+      "module": "base_ten_scene",
+      "op": "base_ten_compare",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/hermes/app/web/discussions.html",
+        "/more-zeeman/fraction-bars/calculator.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/unit-echo/index.html",
+        "/more-zeeman/visualizations.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/monitoring_visuals"
+        },
+        {
+          "method": "POST",
+          "path": "/api/render"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "base_ten_scene",
+      "op": "base_ten_render",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/hermes/app/web/discussions.html",
+        "/more-zeeman/fraction-bars/calculator.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/unit-echo/index.html",
+        "/more-zeeman/visualizations.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/chat"
+        },
+        {
+          "method": "POST",
+          "path": "/api/monitoring_visuals"
+        },
+        {
+          "method": "POST",
+          "path": "/api/render"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "events"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "batch_event_score",
+      "pages": [
+        "/hermes/app/web/discussions.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "events",
+          "required": true,
+          "type": "array"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/event_score"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "misconceptions_benny_demo",
+      "op": "benny_demo",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/benny_demo"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "user",
+      "op": "brandom_backstop",
+      "pages": [
+        "/hermes/app/web/breaks.html"
+      ],
+      "parameters": [],
+      "role": "incompatibility",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/brandom_backstop"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "commitments"
+      ],
+      "lazy_via": [],
+      "module": "sequent_brandom_bridge",
+      "op": "brandomian_check",
+      "pages": [
+        "/hermes/app/web/breaks.html"
+      ],
+      "parameters": [],
+      "role": "incompatibility",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/brandomian_check"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "canonical",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "calculus_claim_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "canonical",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "terms"
+      ],
+      "lazy_via": [],
+      "module": "hermes_worker",
+      "op": "canonical_check",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [],
+      "role": "crosswalk",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/canonical_check"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "user",
+      "op": "canonical_contract",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [],
+      "role": "crosswalk",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/canonical_contract"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "hermes_worker",
+      "op": "capability_atlas",
+      "pages": [
+        "/hermes/app/web/breaks.html",
+        "/more-zeeman/atlas.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "infrastructure",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/capabilities"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "operation"
+      ],
+      "lazy_via": [],
+      "module": "carving_query",
+      "op": "carving_operation_summary",
+      "pages": [
+        "/more-zeeman/strategies.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "operation",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "role": "carving",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/carving_operation_summary"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "operation",
+        "x",
+        "y",
+        "z"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "carving_strategy_proof",
+      "pages": [
+        "/more-zeeman/strategies.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "operation",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "x",
+          "required": false,
+          "type": "integer"
+        },
+        {
+          "example": null,
+          "name": "y",
+          "required": false,
+          "type": "integer"
+        },
+        {
+          "example": null,
+          "name": "z",
+          "required": false,
+          "type": "integer"
+        }
+      ],
+      "role": "carving",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/carving_strategy_proof"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": "Check one typed mathematical claim term: equivalence(fraction(A,B), fraction(C,D)), multiplication, difference, sum, subtraction, comparison, fraction_sum, fraction_of, iterate_to_whole, ordering, quadrilateral claims, or arithmetic_equation; leaves are integers or registered vocabulary atoms.",
+      "inputs": [
+        "claim"
+      ],
+      "lazy_via": [],
+      "module": "math_claim_checker",
+      "op": "check_math_claim",
+      "pages": [],
+      "parameters": [
+        {
+          "example": "equivalence(fraction(3,4), fraction(6,8))",
+          "name": "claim",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [],
+      "status": "unrouted"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "content"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "commitment_match",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": "A square is a rectangle.",
+          "name": "content",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/grounding"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "hermes_worker",
+      "op": "compute",
+      "pages": [
+        "/more-zeeman/bridge.html"
+      ],
+      "parameters": [],
+      "role": "learner",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/compute"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "corpus_attested_grammar",
+      "op": "corpus_grammar_summary",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/grounding"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "canonical",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_counting_claim",
+      "op": "counting_claim_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "canonical",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "proof"
+      ],
+      "lazy_via": [],
+      "module": "critique",
+      "op": "critique_bad_infinite",
+      "pages": [
+        "/hermes/app/web/breaks.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "proof",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/formal"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "canonical",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "decimal_claim_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "canonical",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "defeater_set",
+        "inference_id"
+      ],
+      "lazy_via": [],
+      "module": "defeasible_inference",
+      "op": "defeasible_classify",
+      "pages": [
+        "/hermes/app/web/breaks.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "inference_id",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "defeater_set",
+          "required": true,
+          "type": "array"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/formal"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "agent",
+        "commitments"
+      ],
+      "lazy_via": [],
+      "module": "deontic_scorekeeper",
+      "op": "deontic_consequences",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [
+        {
+          "example": "student",
+          "name": "agent",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "example": [],
+          "name": "commitments",
+          "required": false,
+          "type": "array"
+        }
+      ],
+      "role": "sequent",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/deontic_consequences"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "agent",
+        "commitments",
+        "entitlements"
+      ],
+      "lazy_via": [],
+      "module": "deontic_scorekeeper",
+      "op": "deontic_crisis",
+      "pages": [
+        "/hermes/app/web/breaks.html"
+      ],
+      "parameters": [],
+      "role": "sequent",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/crisis"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "proposition"
+      ],
+      "lazy_via": [],
+      "module": "deontic_scorekeeper",
+      "op": "deontic_requires_entitlement",
+      "pages": [
+        "/hermes/app/web/breaks.html"
+      ],
+      "parameters": [],
+      "role": "sequent",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/deontic_requires_entitlement"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "agent",
+        "commitments",
+        "entitlements"
+      ],
+      "lazy_via": [],
+      "module": "deontic_scorekeeper",
+      "op": "deontic_scorecard",
+      "pages": [
+        "/hermes/app/web/breaks.html",
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [
+        {
+          "example": "student",
+          "name": "agent",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "example": [],
+          "name": "commitments",
+          "required": false,
+          "type": "array"
+        },
+        {
+          "example": [],
+          "name": "entitlements",
+          "required": false,
+          "type": "array"
+        }
+      ],
+      "role": "sequent",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/deontic_scorecard"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "agent",
+        "commitments"
+      ],
+      "lazy_via": [],
+      "module": "deontic_scorekeeper",
+      "op": "deontic_up_level",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [
+        {
+          "example": "student",
+          "name": "agent",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "example": [],
+          "name": "commitments",
+          "required": false,
+          "type": "array"
+        }
+      ],
+      "role": "sequent",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/deontic_up_level"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "domain",
+        "got",
+        "input"
+      ],
+      "lazy_via": [],
+      "module": "hermes_worker",
+      "op": "diagnose_error",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [],
+      "role": "misconceptions",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/diagnose_error"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "utterances"
+      ],
+      "lazy_via": [],
+      "module": "discourse_features",
+      "op": "discourse_features",
+      "pages": [
+        "/hermes/app/web/discussions.html"
+      ],
+      "parameters": [],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/discourse_features"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "utterances"
+      ],
+      "lazy_via": [],
+      "module": "discourse_pragmatics",
+      "op": "discourse_pragmatics",
+      "pages": [
+        "/hermes/app/web/discussions.html"
+      ],
+      "parameters": [],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/discourse_pragmatics"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "context",
+        "domain",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "domain_context_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "domain",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "context",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "user",
+      "op": "elaborations",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/grounding"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "resources",
+        "sequent"
+      ],
+      "lazy_via": [],
+      "module": "embodied_prover",
+      "op": "embodied_proof_witness",
+      "pages": [
+        "/hermes/app/web/breaks.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "sequent",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "resources",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/formal"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "event"
+      ],
+      "lazy_via": [],
+      "module": "hermes_event_scoring",
+      "op": "event_score",
+      "pages": [
+        "/hermes/app/web/discussions.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "event",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/event_score"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "source",
+        "variant"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "executable_practice_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "variant",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "field_context",
+      "op": "field_connectivity_audit",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [],
+      "role": "monitoring",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/field_connectivity_audit"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "lesson_code"
+      ],
+      "lazy_via": [],
+      "module": "field_context",
+      "op": "field_context",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/more-zeeman/monitoring_chart.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "lesson_code",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "monitoring",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/field_context"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "d",
+        "kind",
+        "na",
+        "nb"
+      ],
+      "lazy_via": [],
+      "module": "fraction_cgi_dispatch",
+      "op": "fraction_cgi_addition",
+      "pages": [
+        "/more-zeeman/visualizations.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/fraction_cgi_addition"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "canonical",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_fraction_claim",
+      "op": "fraction_claim_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "canonical",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "a",
+        "b",
+        "kind"
+      ],
+      "lazy_via": [],
+      "module": "fraction_bars_scene",
+      "op": "fraction_compare",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/hermes/app/web/discussions.html",
+        "/more-zeeman/fraction-bars/calculator.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/unit-echo/index.html",
+        "/more-zeeman/visualizations.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/fraction/compare"
+        },
+        {
+          "method": "GET",
+          "path": "/api/fraction/render"
+        },
+        {
+          "method": "POST",
+          "path": "/api/chat"
+        },
+        {
+          "method": "POST",
+          "path": "/api/render"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "canonical",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "fraction_extra_claim_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "canonical",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "kind"
+      ],
+      "lazy_via": [],
+      "module": "hermes_worker",
+      "op": "fraction_render",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/hermes/app/web/discussions.html",
+        "/more-zeeman/fraction-bars/calculator.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/unit-echo/index.html",
+        "/more-zeeman/visualizations.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/fraction/compare"
+        },
+        {
+          "method": "GET",
+          "path": "/api/fraction/render"
+        },
+        {
+          "method": "POST",
+          "path": "/api/monitoring_visuals"
+        },
+        {
+          "method": "POST",
+          "path": "/api/render"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "descriptor",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "fsm_engine_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "descriptor",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "args",
+        "predicate"
+      ],
+      "lazy_via": [],
+      "module": "hermes_worker",
+      "op": "geometry",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/hermes/app/web/discussions.html",
+        "/more-zeeman/fraction-bars/calculator.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/unit-echo/index.html",
+        "/more-zeeman/visualizations.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/geometry"
+        },
+        {
+          "method": "POST",
+          "path": "/api/render"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "claim_id"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_angle_material_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "claim_id",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "claim_id"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_area_perimeter_material_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "claim_id",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "claim_id"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_attribute_material_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "claim_id",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "code",
+        "concept"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_ccss_standard_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "concept",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "code",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "claim_id"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_classification_material_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "claim_id",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "claim_id"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_coordinate_material_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "claim_id",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "relation",
+        "source",
+        "status",
+        "target"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_cross_link_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "relation",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "target",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "status",
+          "required": false,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "arc_id"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_developmental_arc_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "arc_id",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "entailed",
+        "entailer"
+      ],
+      "lazy_via": [],
+      "module": "sequent_engine",
+      "op": "geometry_entailment_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "entailer",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "entailed",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "code",
+        "concept",
+        "framework"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_im_grade5_standard_anchor_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "concept",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "framework",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "code",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "code",
+        "concept"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_im_grade6_lesson_standard_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "concept",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "code",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "code",
+        "concept"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_im_grade7_lesson_standard_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "concept",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "code",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "code",
+        "concept"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_im_grade8_lesson_standard_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "concept",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "code",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "code",
+        "concept"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_indiana_standard_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "concept",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "code",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "concept",
+        "metaphor"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_lakoff_nunez_metaphor_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "concept",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "metaphor",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "concept"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_material_profile_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "concept",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "id_value"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_measurement_misconception_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "id_value",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "concept",
+        "metaphor"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_measuring_stick_metaphor_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "concept",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "metaphor",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "bootstrap_id"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_n103_bootstrap_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "bootstrap_id",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "concept"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_pck_classification_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "concept",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "claim_id"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_pythagorean_material_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "claim_id",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "entailed",
+        "entailer"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_quadrilateral_entailment_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "entailer",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "entailed",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "claim_id"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_shape_recognition_material_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "claim_id",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "claim_id"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_similarity_material_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "claim_id",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_strength_lift_coverage_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "claim_id"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_synthesizer_anchor_material_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "claim_id",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "concept"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_synthesizer_triangulation_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "concept",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "claim_id"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_transformation_material_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "claim_id",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "bootstrap_id"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_van_de_walle_bootstrap_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "bootstrap_id",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "claim_id"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_van_hiele_level_material_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "claim_id",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "concept",
+        "level"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_van_hiele_marker_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "concept",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "level",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "claim_id"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_van_hiele_material_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "claim_id",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "claim_id"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "geometry_volume_surface_area_material_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "claim_id",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "geometry_witness",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/geometry"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "observations",
+        "utterances"
+      ],
+      "lazy_via": [],
+      "module": "gesture_alignment",
+      "op": "gesture_alignment",
+      "pages": [
+        "/hermes/app/web/discussions.html"
+      ],
+      "parameters": [],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/gesture_alignment"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "cgi_base",
+      "op": "get_base",
+      "pages": [
+        "/more-zeeman/coordination.html"
+      ],
+      "parameters": [],
+      "role": "infrastructure",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/base"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "query",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "godel_primes_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "query",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "query"
+      ],
+      "lazy_via": [],
+      "module": "hermes_encyclopedia",
+      "op": "ground",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "query",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/chat"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "inputs",
+        "operation",
+        "output",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "grounded_arith_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "operation",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "inputs",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "output",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "operation"
+      ],
+      "lazy_via": [],
+      "module": "hermes_encyclopedia",
+      "op": "grounding_for",
+      "pages": [
+        "/hermes/app/web/breaks.html",
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "operation",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/grounding"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "inference",
+        "metaphor"
+      ],
+      "lazy_via": [],
+      "module": "grounding_metaphors",
+      "op": "grounding_inference_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "metaphor",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "inference",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/grounding"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "anchor",
+        "metaphor",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "grounding_metaphor_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "metaphor",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "anchor",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "hermes_encyclopedia",
+      "op": "grounding_metaphors",
+      "pages": [
+        "/hermes/app/web/breaks.html",
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/grounding"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "capability_registry",
+      "op": "health",
+      "pages": [
+        "/hermes/app/web/breaks.html",
+        "/more-zeeman/atlas.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "infrastructure",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/capabilities"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "hybridization_scene",
+      "op": "hybridization_render",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/hermes/app/web/discussions.html",
+        "/more-zeeman/fraction-bars/calculator.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/unit-echo/index.html",
+        "/more-zeeman/visualizations.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/monitoring_visuals"
+        },
+        {
+          "method": "POST",
+          "path": "/api/render"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "kind"
+      ],
+      "lazy_via": [],
+      "module": "hermes_worker",
+      "op": "hyperedges",
+      "pages": [
+        "/hermes/app/web/breaks.html"
+      ],
+      "parameters": [],
+      "role": "incompatibility",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/hyperedges"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "practice"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "image_schema",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "practice",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/grounding"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "context"
+      ],
+      "lazy_via": [],
+      "module": "sequent_engine",
+      "op": "incoherent_witness",
+      "pages": [
+        "/hermes/app/web/breaks.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "context",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/formal"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "context",
+        "set"
+      ],
+      "lazy_via": [],
+      "module": "incompatibility_discovery",
+      "op": "incompatibility_discovery_witness",
+      "pages": [
+        "/hermes/app/web/breaks.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "context",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "set",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "incompatibility",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/formal"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "replaced",
+        "replacement"
+      ],
+      "lazy_via": [],
+      "module": "incompatibility_sets",
+      "op": "incompatibility_entailment_witness",
+      "pages": [
+        "/hermes/app/web/breaks.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "replacement",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "replaced",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "incompatibility",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/formal"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "lesson"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "inferential_strength",
+      "pages": [
+        "/more-zeeman/scoreboard.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "lesson",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/inferential_strength"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "canonical",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "integer_signed_claim_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "canonical",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "from",
+        "to"
+      ],
+      "lazy_via": [],
+      "module": "intersubjective_praxis",
+      "op": "intersubjective_material_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "from",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "to",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/pml"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "hermes_worker",
+      "op": "knowledge",
+      "pages": [
+        "/more-zeeman/bridge.html"
+      ],
+      "parameters": [],
+      "role": "learner",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/knowledge"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "more_machine_learner",
+      "op": "learner_reset",
+      "pages": [
+        "/more-zeeman/bridge.html"
+      ],
+      "parameters": [],
+      "role": "learner",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/learner/reset"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "code"
+      ],
+      "lazy_via": [],
+      "module": "lesson_deformation_chart",
+      "op": "lesson_deformation_chart",
+      "pages": [
+        "/more-zeeman/monitoring_chart.html"
+      ],
+      "parameters": [
+        {
+          "example": "IM-G3-U5-L2",
+          "name": "code",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/lesson_deformation_chart"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "lesson_code",
+        "name",
+        "operation"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "lesson_misconception_incompatibility_witness",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "lesson_code",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "name",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "operation",
+          "required": false,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/misconception"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "domain"
+      ],
+      "lazy_via": [],
+      "module": "hermes_encyclopedia",
+      "op": "list_misconceptions",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "domain",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "role": "misconceptions",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/misconceptions"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "framework"
+      ],
+      "lazy_via": [],
+      "module": "hermes_encyclopedia",
+      "op": "list_standards",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "framework",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "hermes_encyclopedia",
+      "op": "list_strategies",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/more-zeeman/strategies.html",
+        "/more-zeeman/strategies/index.html"
+      ],
+      "parameters": [],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/strategies"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "query"
+      ],
+      "lazy_via": [],
+      "module": "hermes_encyclopedia",
+      "op": "lit_search",
+      "pages": [
+        "/hermes/app/web/no.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "query",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/literature"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "canonical",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "magnitude_equivalence_claim_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "canonical",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "conclusion",
+        "inference_id",
+        "premises",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "material_inference_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "inference_id",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "premises",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "conclusion",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "segments",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "media_alignment",
+      "op": "media_alignment",
+      "pages": [
+        "/hermes/app/web/discussions.html"
+      ],
+      "parameters": [],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/media_transcribe"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "detail",
+        "inference",
+        "metaphor",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "metaphor_break_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "metaphor",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "inference",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "detail",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "family",
+        "operation",
+        "outcome",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "misconception_hook_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "operation",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "outcome",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "family",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "misconceptions",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "conflict",
+        "move"
+      ],
+      "lazy_via": [],
+      "module": "misconception_registry",
+      "op": "misconception_incompatibility_witness",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "move",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "conflict",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "misconceptions",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/misconception"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "a",
+        "b",
+        "deformation",
+        "operation"
+      ],
+      "lazy_via": [],
+      "module": "visualization",
+      "op": "misconception_jumps_witness",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [],
+      "role": "misconceptions",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/misconception"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "misconception"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "misconception_pml_map",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "misconception",
+          "required": false,
+          "type": null
+        }
+      ],
+      "role": "misconceptions",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/misconception"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "context",
+        "source",
+        "term"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "modal_context_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "term",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "context",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "lesson_code"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "monitoring_chart_export",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/scoreboard.html"
+      ],
+      "parameters": [
+        {
+          "example": "IM-G3-U5-L2",
+          "name": "lesson_code",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "monitoring",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/monitoring_chart_export"
+        },
+        {
+          "method": "POST",
+          "path": "/api/monitoring_visuals"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "input",
+        "source",
+        "subject"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "mua_coherence_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "subject",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "input",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "kind",
+        "row_text"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "mua_kind_coherence_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "kind",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "row_text",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/pml"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "a",
+        "b"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "mult_div_family_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "a",
+          "required": false,
+          "type": "integer"
+        },
+        {
+          "example": null,
+          "name": "b",
+          "required": false,
+          "type": "integer"
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "canonical",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "multiplication_division_claim_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "canonical",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "cols",
+        "rows"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "multiply_array_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "rows",
+          "required": false,
+          "type": "integer"
+        },
+        {
+          "example": null,
+          "name": "cols",
+          "required": false,
+          "type": "integer"
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "context",
+        "goal",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "normative_crisis_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "context",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "goal",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "code"
+      ],
+      "lazy_via": [],
+      "module": "lesson_notation_chart",
+      "op": "notation_monitoring_chart",
+      "pages": [
+        "/more-zeeman/visualizations.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/notation_monitoring_chart"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "kind"
+      ],
+      "lazy_via": [],
+      "module": "hermes_worker",
+      "op": "notation_render",
+      "pages": [
+        "/more-zeeman/visualizations.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/notation_render"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "a",
+        "b",
+        "operation"
+      ],
+      "lazy_via": [],
+      "module": "number_line_scene",
+      "op": "number_line_compare",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/hermes/app/web/discussions.html",
+        "/more-zeeman/fraction-bars/calculator.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/unit-echo/index.html",
+        "/more-zeeman/visualizations.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/render"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "number_line_scene",
+      "op": "number_line_render",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/hermes/app/web/discussions.html",
+        "/more-zeeman/fraction-bars/calculator.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/unit-echo/index.html",
+        "/more-zeeman/visualizations.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/monitoring_visuals"
+        },
+        {
+          "method": "POST",
+          "path": "/api/render"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "list"
+      ],
+      "lazy_via": [],
+      "module": "sequent_engine",
+      "op": "number_theory_self_defeat_witness",
+      "pages": [
+        "/hermes/app/web/breaks.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "list",
+          "required": true,
+          "type": "array"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/formal"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "source",
+        "variant"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "orr_entry_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "variant",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "event_a",
+        "event_b"
+      ],
+      "lazy_via": [],
+      "module": "hermes_pair_scoring",
+      "op": "pair_candidate_witness",
+      "pages": [
+        "/hermes/app/web/discussions.html"
+      ],
+      "parameters": [],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/pair_candidate"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "events"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "pair_graph",
+      "pages": [
+        "/hermes/app/web/discussions.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "events",
+          "required": true,
+          "type": "array"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/pair_graph"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "events"
+      ],
+      "lazy_via": [],
+      "module": "hermes_pair_scoring",
+      "op": "pair_score",
+      "pages": [
+        "/hermes/app/web/discussions.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "events",
+          "required": true,
+          "type": "array"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/pair_graph"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "place_value_chart_scene",
+      "op": "place_value_chart_render",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/hermes/app/web/discussions.html",
+        "/more-zeeman/fraction-bars/calculator.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/unit-echo/index.html",
+        "/more-zeeman/visualizations.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/monitoring_visuals"
+        },
+        {
+          "method": "POST",
+          "path": "/api/render"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "canonical",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_place_value_number_claim",
+      "op": "place_value_number_claim_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "canonical",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "clauses"
+      ],
+      "lazy_via": [],
+      "module": "hermes_encyclopedia",
+      "op": "pml_score",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "clauses",
+          "required": true,
+          "type": "array"
+        }
+      ],
+      "role": "pml",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/pml_score"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "key",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "practice_vocabulary_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "key",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "practice"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "primitive_for_practice",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "practice",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/grounding"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "deformation",
+        "family",
+        "operation",
+        "productive",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "productive_deformation_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "operation",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "productive",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "deformation",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "family",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "description",
+        "domain",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "hermes_worker",
+      "op": "query_misconception",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [],
+      "role": "misconceptions",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/query_misconception"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "lesson_code"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "ranked_figures",
+      "pages": [
+        "/more-zeeman/scoreboard.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "lesson_code",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "monitoring",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/ranked_figures"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "canonical",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "ratio_proportion_claim_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "canonical",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "misconception_render_coverage",
+      "op": "render_coverage",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [],
+      "role": "monitoring",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/render_coverage"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "fraction_band_ladder",
+      "op": "reorganize",
+      "pages": [
+        "/more-zeeman/bridge.html"
+      ],
+      "parameters": [],
+      "role": "learner",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/reorganize"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "misconception",
+        "strategy"
+      ],
+      "lazy_via": [],
+      "module": "hermes_worker",
+      "op": "representation_candidates",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [],
+      "role": "crosswalk",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/monitoring_visuals"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "mode",
+        "representation"
+      ],
+      "lazy_via": [],
+      "module": "hermes_worker",
+      "op": "representation_check",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [],
+      "role": "crosswalk",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/monitoring_visuals"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "representation"
+      ],
+      "lazy_via": [],
+      "module": "hermes_worker",
+      "op": "representation_spec_check",
+      "pages": [
+        "/hermes/app/web/console.html"
+      ],
+      "parameters": [],
+      "role": "crosswalk",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/monitoring_visuals"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "concept"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "representation_spine_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "concept",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "role": "crosswalk",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/grounding"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "from",
+        "to"
+      ],
+      "lazy_via": [],
+      "module": "sequent_engine",
+      "op": "rhythm_transition_witness",
+      "pages": [
+        "/hermes/app/web/breaks.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "from",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "to",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/formal"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "axiom",
+        "claim"
+      ],
+      "lazy_via": [],
+      "module": "sequent_engine",
+      "op": "robinson_axiom_witness",
+      "pages": [
+        "/hermes/app/web/breaks.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "axiom",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "claim",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/formal"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "from",
+        "to"
+      ],
+      "lazy_via": [],
+      "module": "semantic_axioms",
+      "op": "semantic_material_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "from",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "to",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/pml"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "sequent",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "sequent_proof_witness",
+      "pages": [
+        "/hermes/app/web/breaks.html"
+      ],
+      "parameters": [],
+      "role": "sequent",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/sequent_proof"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "base"
+      ],
+      "lazy_via": [],
+      "module": "cgi_base",
+      "op": "set_base",
+      "pages": [
+        "/more-zeeman/coordination.html"
+      ],
+      "parameters": [],
+      "role": "infrastructure",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/base"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "a",
+        "b"
+      ],
+      "lazy_via": [],
+      "module": "set_grouping_scene",
+      "op": "set_grouping_compare",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/hermes/app/web/discussions.html",
+        "/more-zeeman/fraction-bars/calculator.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/unit-echo/index.html",
+        "/more-zeeman/visualizations.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/render"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "set_grouping_scene",
+      "op": "set_grouping_render",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/hermes/app/web/discussions.html",
+        "/more-zeeman/fraction-bars/calculator.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/unit-echo/index.html",
+        "/more-zeeman/visualizations.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/chat"
+        },
+        {
+          "method": "POST",
+          "path": "/api/monitoring_visuals"
+        },
+        {
+          "method": "POST",
+          "path": "/api/render"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "a",
+        "b"
+      ],
+      "lazy_via": [],
+      "module": "standard_1_ca_1",
+      "op": "standard_1_ca_1_making_ten_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "a",
+          "required": false,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "b",
+          "required": false,
+          "type": null
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "a",
+        "b"
+      ],
+      "lazy_via": [],
+      "module": "standard_1_ca_3",
+      "op": "standard_1_ca_3_add_by_place_value_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "a",
+          "required": false,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "b",
+          "required": false,
+          "type": null
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "from",
+        "to"
+      ],
+      "lazy_via": [],
+      "module": "standard_1_ns_1",
+      "op": "standard_1_ns_1_count_by_fives_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "from",
+          "required": false,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "to",
+          "required": false,
+          "type": null
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "number"
+      ],
+      "lazy_via": [],
+      "module": "standard_1_ns_2",
+      "op": "standard_1_ns_2_place_value_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "number",
+          "required": false,
+          "type": null
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "a",
+        "b"
+      ],
+      "lazy_via": [],
+      "module": "standard_2_ca_2",
+      "op": "standard_2_ca_2_add_three_digit_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "a",
+          "required": false,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "b",
+          "required": false,
+          "type": null
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "from",
+        "to"
+      ],
+      "lazy_via": [],
+      "module": "standard_2_ns_1",
+      "op": "standard_2_ns_1_count_by_twos_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "from",
+          "required": false,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "to",
+          "required": false,
+          "type": null
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "number"
+      ],
+      "lazy_via": [],
+      "module": "standard_2_ns_2_4",
+      "op": "standard_2_ns_2_4_place_value_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "number",
+          "required": false,
+          "type": null
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "number",
+        "result"
+      ],
+      "lazy_via": [],
+      "module": "standard_2_ns_3",
+      "op": "standard_2_ns_3_parity_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "number",
+          "required": false,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "result",
+          "required": false,
+          "type": null
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "left",
+        "right"
+      ],
+      "lazy_via": [],
+      "module": "standard_2_ns_5",
+      "op": "standard_2_ns_5_place_value_comparison_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "left",
+          "required": false,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "right",
+          "required": false,
+          "type": null
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "a",
+        "b"
+      ],
+      "lazy_via": [],
+      "module": "standard_3_ca_3_4",
+      "op": "standard_3_ca_3_4_fact_family_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "a",
+          "required": false,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "b",
+          "required": false,
+          "type": null
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "factor",
+        "times"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "standard_3_ca_5_mult_skip_count_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "factor",
+          "required": false,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "times",
+          "required": false,
+          "type": null
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "denominator"
+      ],
+      "lazy_via": [],
+      "module": "standard_3_ns_2",
+      "op": "standard_3_ns_2_unit_fraction_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "denominator",
+          "required": false,
+          "type": null
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "left",
+        "result",
+        "right"
+      ],
+      "lazy_via": [],
+      "module": "standard_3_ns_5",
+      "op": "standard_3_ns_5_fraction_comparison_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "left",
+          "required": false,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "right",
+          "required": false,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "result",
+          "required": false,
+          "type": null
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "given"
+      ],
+      "lazy_via": [],
+      "module": "standard_k_ca_1_3",
+      "op": "standard_k_ca_1_3_complement_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "given",
+          "required": false,
+          "type": null
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "from",
+        "to"
+      ],
+      "lazy_via": [],
+      "module": "standard_k_ns_1",
+      "op": "standard_k_ns_1_count_by_ones_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "from",
+          "required": false,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "to",
+          "required": false,
+          "type": null
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "object_count"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "standard_k_ns_2_represent_count_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "object_count",
+          "required": false,
+          "type": "integer"
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "objects"
+      ],
+      "lazy_via": [],
+      "module": "standard_k_ns_3",
+      "op": "standard_k_ns_3_order_independence_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "objects",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "pattern"
+      ],
+      "lazy_via": [],
+      "module": "standard_k_ns_4",
+      "op": "standard_k_ns_4_verify_subitizing_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "pattern",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "group_a",
+        "group_b"
+      ],
+      "lazy_via": [],
+      "module": "standard_k_ns_5_6",
+      "op": "standard_k_ns_5_6_compare_groups_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "group_a",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "group_b",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "number"
+      ],
+      "lazy_via": [],
+      "module": "standard_k_ns_7",
+      "op": "standard_k_ns_7_place_value_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "number",
+          "required": false,
+          "type": null
+        }
+      ],
+      "role": "standards",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/standards"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "state"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "state_labels",
+      "pages": [],
+      "parameters": [
+        {
+          "example": null,
+          "name": "state",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [],
+      "status": "unrouted"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "content"
+      ],
+      "lazy_via": [],
+      "module": "strategy_recognizer",
+      "op": "strategy_recognize",
+      "pages": [],
+      "parameters": [
+        {
+          "example": null,
+          "name": "content",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [],
+      "status": "unrouted"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "input",
+        "strategy"
+      ],
+      "lazy_via": [],
+      "module": "hermes_encyclopedia",
+      "op": "strategy_trace",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/hermes/app/web/discussions.html",
+        "/more-zeeman/fraction-bars/calculator.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/strategies.html",
+        "/more-zeeman/unit-echo/index.html",
+        "/more-zeeman/visualizations.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "strategy",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "input",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/render"
+        },
+        {
+          "method": "POST",
+          "path": "/api/strategy_trace"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "target"
+      ],
+      "lazy_via": [],
+      "module": "user",
+      "op": "target_inferential_strength_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "target",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/grounding"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "teacher_layer",
+      "op": "teacher_layer",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/hermes/app/web/discussions.html",
+        "/more-zeeman/fraction-bars/calculator.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/unit-echo/index.html",
+        "/more-zeeman/visualizations.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "render",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/render"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "ledger",
+        "utterances"
+      ],
+      "lazy_via": [],
+      "module": "trace_adjudication",
+      "op": "trace_adjudication",
+      "pages": [
+        "/hermes/app/web/discussions.html"
+      ],
+      "parameters": [],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/trace_adjudication"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "base",
+        "denominator",
+        "numerator",
+        "value_up"
+      ],
+      "lazy_via": [],
+      "module": "unit_coordination_viz",
+      "op": "unit_coordination_svg",
+      "pages": [
+        "/more-zeeman/coordination.html"
+      ],
+      "parameters": [],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/unit_coordination.svg"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "detail",
+        "key",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "unit_coordination_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "key",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "detail",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "base",
+        "iterations"
+      ],
+      "lazy_via": [],
+      "module": "unit_echo_scene",
+      "op": "unit_echo_render",
+      "pages": [
+        "/hermes/app/web/console.html",
+        "/hermes/app/web/discussions.html",
+        "/more-zeeman/fraction-bars/calculator.html",
+        "/more-zeeman/monitoring_chart.html",
+        "/more-zeeman/unit-echo/index.html",
+        "/more-zeeman/visualizations.html",
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/monitoring_visuals"
+        },
+        {
+          "method": "POST",
+          "path": "/api/render"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "clauses",
+        "lesson_code"
+      ],
+      "lazy_via": [],
+      "module": "hermes_encyclopedia",
+      "op": "validate_reader_axioms",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "clauses",
+          "required": true,
+          "type": "array"
+        },
+        {
+          "example": null,
+          "name": "lesson_code",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "pml",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/pml"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "cost",
+        "resources",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "viability_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "resources",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "cost",
+          "required": true,
+          "type": null
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": null
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [],
+      "lazy_via": [],
+      "module": "unit_coordination_viz",
+      "op": "visualize_coordination",
+      "pages": [
+        "/more-zeeman/coordination.html"
+      ],
+      "parameters": [],
+      "role": "learner",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/visualize/coordination"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "canonical",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_driver",
+      "op": "whole_number_addsub_claim_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "canonical",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    },
+    {
+      "description": null,
+      "inputs": [
+        "canonical",
+        "source"
+      ],
+      "lazy_via": [],
+      "module": "cw_whole_number_claim",
+      "op": "whole_number_claim_witness",
+      "pages": [
+        "/more-zeeman/witnesses.html"
+      ],
+      "parameters": [
+        {
+          "example": null,
+          "name": "canonical",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "example": null,
+          "name": "source",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "role": "unclassified",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/witness/crosswalk_claim"
+        }
+      ],
+      "status": "routed_paged"
+    }
+  ],
+  "format": "hermes-embedding-index-v1",
+  "identifier_field": "op",
+  "model": "Qwen3-Embedding-8B",
+  "source_hash": "a8790f57ba101cc8c5d7e4d4e3f56175d0228383a7db734f6ab086c1cce15a20",
+  "vectors": "registry_op_embeddings.npz"
+}

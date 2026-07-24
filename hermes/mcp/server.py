@@ -47,6 +47,7 @@ CORE_TO_WORKER = {
     "deontic_up_level": "deontic_up_level",
     "commitment_match": "commitment_match",
     "strategy_trace": "strategy_trace",
+    "strategy_recognize": "strategy_recognize",
     "misconception_lookup": "query_misconception",
 }
 
@@ -54,7 +55,7 @@ TOOL_BUNDLES = {
     "transcript-analysis": (
         "deontic_scorecard", "deontic_consequences", "deontic_up_level",
         "commitment_match", "strategy_trace", "misconception_lookup",
-        "misconception_search_rows", "resonance_neighbors",
+        "strategy_recognize", "misconception_search_rows", "resonance_neighbors",
     ),
     "curriculum-reading": (
         "monitoring_chart", "monitoring_chart_detail",
@@ -68,14 +69,15 @@ CORE_TOOLS = (
     ("monitoring_chart_detail", "Return one named section from a monitoring chart. Call monitoring_chart first to obtain the section inventory. Expected time: a few seconds.", ("code", "section")),
     ("lesson_deformation_chart", "Return a compact deformation-chart inventory for an IM lesson code. Use lesson_deformation_chart_detail for one scene or frame; set full to true only for renderer-oriented consumers. Expected time: a few seconds after worker startup.", ("code", "full")),
     ("lesson_deformation_chart_detail", "Return one identified scene or frame from a deformation chart. Call lesson_deformation_chart first to obtain its inventory. Expected time: a few seconds.", ("code", "id")),
-    ("check_math_claim", "Check a fraction-equivalence claim such as '3/4 = 6/8'. This worker seam currently parses that claim form only.", ("term",)),
+    ("check_math_claim", "Parse and check an explicit mathematical claim in symbolic or ordinary classroom language. The reader covers registered arithmetic, fraction, comparison, and same-unit total forms; it preserves modality, polarity, reports, questions, and quotation separately and abstains on implied operations.", ("term",)),
     ("deontic_scorecard", "Return the ephemeral scorecard for stated commitment and entitlement terms.", ("agent", "commitments", "entitlements")),
     ("deontic_consequences", "Return consequences licensed by stated commitment terms.", ("agent", "commitments")),
     ("deontic_up_level", "Return named up-level questions for unresolved commitment gaps.", ("agent", "commitments")),
     ("commitment_match", "Match reading content through the strategy/misconception and literature-canonical vocabularies. Each match labels its matcher; it abstains when neither complete-name gate admits a term.", ("content",)),
+    ("strategy_recognize", "Align ordinary classroom language to five execution-observed strategy traces. Results are candidates with token spans, missing evidence, trace frontier, order conflicts, and observed-transition provenance; an empty list is an abstention.", ("content",)),
     ("strategy_trace", "Run one registered strategy with an optional input object. The schema lists the registry-backed names, operation pairing, and worked inputs. Expected time: usually under two seconds after worker startup.", ("strategy", "input")),
     ("misconception_lookup", "Look up encoded misconceptions by optional domain, description, or source filters.", ("domain", "description", "source")),
-    ("misconception_search_rows", "Search stored misconception rows offline by substring or tokens in their name, domain, description, or citation. Use a returned name with resonance_neighbors.", ("query", "k")),
+    ("misconception_search_rows", "Search stored misconception rows offline by whole query words in their name, domain, description, or citation. All query words must be present. Use a returned name with resonance_neighbors.", ("query", "k")),
     ("resonance_neighbors", "Find neighbors of a named stored misconception vector. This uses only the stored row vector; it never makes a query-embedding network call.", ("name", "k")),
 )
 
@@ -178,6 +180,18 @@ def worker_error_kind(worker_type: str) -> str:
     if worker_type.startswith(("no_", "unknown_", "op_failed", "not_covered")):
         return "not_covered"
     return "worker_failure"
+
+
+def row_matches_query(query: str, entry: dict[str, str]) -> bool:
+    """Match query words without admitting empty or substring-only hits."""
+    tokens = re.findall(r"[^\W_]+", query.casefold())
+    if not tokens:
+        return False
+    haystack = " ".join(
+        entry[key] for key in ("name", "domain", "description", "citation")
+    ).casefold()
+    haystack_tokens = set(re.findall(r"[^\W_]+", haystack))
+    return all(token in haystack_tokens for token in tokens)
 
 
 class HermesMCPServer:
@@ -306,7 +320,7 @@ class HermesMCPServer:
             grounded = self._worker_request("ground", query=term)
             claims = grounded.get("math_claims", []) if isinstance(grounded, dict) else []
             if not claims:
-                raise ValueError("check_math_claim currently accepts a fraction-equivalence term such as '3/4 = 6/8'")
+                raise ValueError("check_math_claim found no complete explicit mathematical relation; include the stated operands, operation or relation, and claimed result")
             return {"term": term, "checks": claims}
         if name == "resonance_neighbors":
             return self.resonance_neighbors(arguments)
@@ -484,11 +498,7 @@ class HermesMCPServer:
                 f"Offline artifacts {', '.join(EMBEDDING_ARTIFACTS)} are unavailable or invalid; run {EMBEDDING_REBUILD}",
                 kind="worker_failure",
             )
-        tokens = [token for token in re.findall(r"[\\w]+", query.casefold()) if token]
-        def matches(entry: dict[str, str]) -> bool:
-            haystack = " ".join(entry[key] for key in ("name", "domain", "description", "citation")).casefold()
-            return query.casefold() in haystack or all(token in haystack for token in tokens)
-        rows = [entry for entry in index.entries if matches(entry)]
+        rows = [entry for entry in index.entries if row_matches_query(query, entry)]
         rows.sort(key=lambda entry: (entry["domain"], entry["name"]))
         return {"retrieval": "offline_row_search", "query": query, "count": len(rows), "rows": list(rows[:limit])}
 

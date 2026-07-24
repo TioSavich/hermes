@@ -40,7 +40,7 @@
 % already in user) and double-imports utilities. Loading via user:
 % keeps every inner directive in user context, matching the pattern
 % in formal/formalization/tests/test_geometry_entailment.pl.
-:- user:ensure_loaded('formal/load.pl').
+:- user:ensure_loaded(formal(load)).
 
 :- use_module(library(lists)).
 :- use_module(library(error)).  % yall lambdas call must_be/2 from here

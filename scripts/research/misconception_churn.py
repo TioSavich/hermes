@@ -391,7 +391,11 @@ def output_matches_documentation(entry: Entry, rule_name: str, got: str) -> tupl
     action_tokens = meaningful_tokens(entry.error_action)
     name_tokens = meaningful_tokens(rule_name)
     overlap = sorted(action_tokens & name_tokens)
-    if not overlap:
+    review_pending_articulation = (
+        rule_name == entry.candidate_name
+        and rule_name.startswith("articulation_")
+    )
+    if not overlap and not review_pending_articulation:
         return False, "predicate name does not match the documented error-action pattern"
     wrong_example_lines = "\n".join(
         line for line in (entry.worked_example or "").splitlines()
@@ -402,6 +406,8 @@ def output_matches_documentation(entry: Entry, rule_name: str, got: str) -> tupl
         got_tokens = set(re.findall(r"-?\d+(?:\.\d+)?|[a-z][a-z0-9_]*", got.lower()))
         if not any(claim in got_tokens for claim in claims):
             return False, f"output {got} does not match explicit documented claim(s) {claims}"
+    if review_pending_articulation:
+        return True, "review-pending articulation; semantic action-name fit deferred"
     return True, "matched error-action tokens: " + ", ".join(overlap)
 
 
@@ -419,15 +425,48 @@ def parse_candidate_registration(draft: str) -> tuple[list[str] | None, str | No
     return args, None
 
 
+def prolog_code_without_line_comments(text: str) -> str:
+    """Remove percent comments while preserving percent signs inside quotes."""
+    output: list[str] = []
+    quote = ""
+    escaped = False
+    index = 0
+    while index < len(text):
+        char = text[index]
+        if quote:
+            output.append(char)
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == quote:
+                quote = ""
+            index += 1
+            continue
+        if char in "'\"":
+            quote = char
+            output.append(char)
+            index += 1
+            continue
+        if char == "%":
+            while index < len(text) and text[index] not in "\r\n":
+                index += 1
+            continue
+        output.append(char)
+        index += 1
+    return "".join(output)
+
+
 def gate_draft(entry: Entry, draft: str, collisions: set[str]) -> GateResult:
     draft = clean_response(draft)
-    if re.search(r"(?m)^\s*:-", draft):
+    static_code = prolog_code_without_line_comments(draft)
+    if re.search(r"(?m)^\s*:-", static_code):
         return GateResult(False, "directives are not allowed", "static gate: directive found")
     forbidden = re.search(
         r"\b(?:abolish|asserta|assertz|call|consult|delete_file|halt|load_files|"
         r"nb_setval|open|process_create|retract|retractall|rename_file|see|seen|"
         r"set_prolog_flag|shell|tell|told|use_module|write_term_to_file)\s*\(",
-        draft,
+        static_code,
     )
     if forbidden:
         return GateResult(
@@ -438,7 +477,8 @@ def gate_draft(entry: Entry, draft: str, collisions: set[str]) -> GateResult:
     # Models sometimes copy a registry module's historical qualifier;
     # normalize those to the candidate module before judging.
     draft = re.sub(r"\b(?:misconceptions_[a-z0-9_]+|churn_(?!candidate\b)[a-z0-9_]+)\s*:", "churn_candidate:", draft)
-    external_module = re.search(r"\b(?!test_harness\b|churn_candidate\b)[a-z][a-zA-Z0-9_]*\s*:", draft)
+    static_code = prolog_code_without_line_comments(draft)
+    external_module = re.search(r"\b(?!test_harness\b|churn_candidate\b)[a-z][a-zA-Z0-9_]*\s*:", static_code)
     if external_module:
         return GateResult(
             False,

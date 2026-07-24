@@ -12,7 +12,8 @@
 
 :- prolog_load_context(directory, PrologRoot),
    forall(member(Alias-Relative,
-                 [ pml-'formal/pml',
+                 [ formal-'formal',
+                   pml-'formal/pml',
                    sequent-'formal/sequent',
                    incompat-'formal/incompatibility',
                    dialectic-'formal/dialectic',

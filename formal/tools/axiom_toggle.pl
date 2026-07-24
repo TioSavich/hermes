@@ -108,7 +108,7 @@
    ->  true
    ;   ensure_loaded('../../paths')
    ).
-:- user:ensure_loaded('formal/load.pl').
+:- user:ensure_loaded(formal(load)).
 
 :- use_module(library(prolog_wrap), [wrap_predicate/4, unwrap_predicate/2]).
 :- use_module(library(lists), [member/2]).

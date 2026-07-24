@@ -15,7 +15,7 @@
           ]).
 
 :- user:ensure_loaded('../../paths').
-:- user:ensure_loaded('formal/load.pl').
+:- user:ensure_loaded(formal(load)).
 
 :- use_module(library(lists), [subtract/3]).
 

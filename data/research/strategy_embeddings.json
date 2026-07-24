@@ -1,0 +1,2688 @@
+{
+  "built_at": "2026-07-24T12:16:34.124380+00:00",
+  "count": 172,
+  "dimensions": 4096,
+  "domain": "strategies",
+  "entries": [
+    {
+      "contract_description": "base_ones_chunking accepts inputs(nonnegative_integer_addend,nonnegative_integer_addend) for addition and returns nonnegative_integer_sum.",
+      "input_schema": "inputs(nonnegative_integer_addend,nonnegative_integer_addend)",
+      "operation": "addition",
+      "output_schema": "nonnegative_integer_sum",
+      "signature": "base_ones_chunking",
+      "state_action_labels": [
+        "addend",
+        "base_chunk",
+        "ones_chunk",
+        "running_sum",
+        "remainder"
+      ]
+    },
+    {
+      "contract_description": "column_addition_with_carrying accepts inputs(nonnegative_integer_addend,nonnegative_integer_addend) for addition and returns nonnegative_integer_sum.",
+      "input_schema": "inputs(nonnegative_integer_addend,nonnegative_integer_addend)",
+      "operation": "addition",
+      "output_schema": "nonnegative_integer_sum",
+      "signature": "column_addition_with_carrying",
+      "state_action_labels": [
+        "vertical_alignment",
+        "place_value_column",
+        "ones_digit",
+        "carry",
+        "regroup_ten_ones",
+        "next_column",
+        "base_ten_conservation"
+      ]
+    },
+    {
+      "contract_description": "count_all_instead_of_known_fact accepts inputs(nonnegative_integer_addend,nonnegative_integer_addend) for addition and returns nonnegative_integer_sum.",
+      "input_schema": "inputs(nonnegative_integer_addend,nonnegative_integer_addend)",
+      "operation": "addition",
+      "output_schema": "nonnegative_integer_sum",
+      "signature": "count_all_instead_of_known_fact",
+      "state_action_labels": [
+        "number_combination",
+        "known_fact",
+        "stored_sum",
+        "counting_all",
+        "working_memory_load"
+      ]
+    },
+    {
+      "contract_description": "count_all_when_count_on_available accepts inputs(nonnegative_integer_addend,nonnegative_integer_addend) for addition and returns nonnegative_integer_sum.",
+      "input_schema": "inputs(nonnegative_integer_addend,nonnegative_integer_addend)",
+      "operation": "addition",
+      "output_schema": "nonnegative_integer_sum",
+      "signature": "count_all_when_count_on_available",
+      "state_action_labels": [
+        "counted_collection",
+        "successor_tick",
+        "cardinal_sum",
+        "composite_start"
+      ]
+    },
+    {
+      "contract_description": "count_on_from_larger accepts inputs(nonnegative_integer_addend,nonnegative_integer_addend) for addition and returns nonnegative_integer_sum.",
+      "input_schema": "inputs(nonnegative_integer_addend,nonnegative_integer_addend)",
+      "operation": "addition",
+      "output_schema": "nonnegative_integer_sum",
+      "signature": "count_on_from_larger",
+      "state_action_labels": [
+        "start_number",
+        "counted_addend",
+        "successor_tick",
+        "cardinal_sum"
+      ]
+    },
+    {
+      "contract_description": "known_fact_retrieval accepts inputs(nonnegative_integer_addend,nonnegative_integer_addend) for addition and returns nonnegative_integer_sum.",
+      "input_schema": "inputs(nonnegative_integer_addend,nonnegative_integer_addend)",
+      "operation": "addition",
+      "output_schema": "nonnegative_integer_sum",
+      "signature": "known_fact_retrieval",
+      "state_action_labels": [
+        "number_combination",
+        "known_fact",
+        "stored_sum",
+        "fact_retrieval",
+        "automaticity"
+      ]
+    },
+    {
+      "contract_description": "make_base_transfer accepts inputs(nonnegative_integer_addend,nonnegative_integer_addend) for addition and returns nonnegative_integer_sum.",
+      "input_schema": "inputs(nonnegative_integer_addend,nonnegative_integer_addend)",
+      "operation": "addition",
+      "output_schema": "nonnegative_integer_sum",
+      "signature": "make_base_transfer",
+      "state_action_labels": [
+        "addend",
+        "base",
+        "distance_to_base",
+        "transfer",
+        "remainder",
+        "conservation"
+      ]
+    },
+    {
+      "contract_description": "make_ten_drop_leftover accepts inputs(nonnegative_integer_addend,nonnegative_integer_addend) for addition and returns incorrect_nonnegative_integer_sum.",
+      "input_schema": "inputs(nonnegative_integer_addend,nonnegative_integer_addend)",
+      "operation": "addition",
+      "output_schema": "incorrect_nonnegative_integer_sum",
+      "signature": "make_ten_drop_leftover",
+      "state_action_labels": [
+        "addend",
+        "ten",
+        "split",
+        "needed_part",
+        "leftover",
+        "conservation"
+      ]
+    },
+    {
+      "contract_description": "make_ten_split_leftover accepts inputs(nonnegative_integer_addend,nonnegative_integer_addend) for addition and returns nonnegative_integer_sum.",
+      "input_schema": "inputs(nonnegative_integer_addend,nonnegative_integer_addend)",
+      "operation": "addition",
+      "output_schema": "nonnegative_integer_sum",
+      "signature": "make_ten_split_leftover",
+      "state_action_labels": [
+        "addend",
+        "ten",
+        "split",
+        "needed_part",
+        "leftover",
+        "conservation"
+      ]
+    },
+    {
+      "contract_description": "round_then_adjust accepts inputs(nonnegative_integer_addend,nonnegative_integer_addend) for addition and returns nonnegative_integer_sum.",
+      "input_schema": "inputs(nonnegative_integer_addend,nonnegative_integer_addend)",
+      "operation": "addition",
+      "output_schema": "nonnegative_integer_sum",
+      "signature": "round_then_adjust",
+      "state_action_labels": [
+        "rounding_target",
+        "base",
+        "adjustment",
+        "temporary_sum",
+        "conservation"
+      ]
+    },
+    {
+      "contract_description": "round_without_adjusting accepts inputs(nonnegative_integer_addend,nonnegative_integer_addend) for addition and returns incorrect_nonnegative_integer_sum.",
+      "input_schema": "inputs(nonnegative_integer_addend,nonnegative_integer_addend)",
+      "operation": "addition",
+      "output_schema": "incorrect_nonnegative_integer_sum",
+      "signature": "round_without_adjusting",
+      "state_action_labels": [
+        "rounding_target",
+        "base",
+        "adjustment",
+        "temporary_sum",
+        "conservation"
+      ]
+    },
+    {
+      "contract_description": "balance_preserving_linear_solution accepts inputs(one_unknown_integer_linear_equation,nonnegative_integer_solution_domain) for algebraic and returns unknown_value.",
+      "input_schema": "inputs(one_unknown_integer_linear_equation,nonnegative_integer_solution_domain)",
+      "operation": "algebraic",
+      "output_schema": "unknown_value",
+      "signature": "balance_preserving_linear_solution",
+      "state_action_labels": [
+        "equation",
+        "equality_relation",
+        "unknown",
+        "balance",
+        "both_sides",
+        "inverse_operation",
+        "equivalent_equation",
+        "solution",
+        "substitution_check"
+      ]
+    },
+    {
+      "contract_description": "contextual_linear_equation_construction accepts inputs(linear_context_with_referent_roles,linear_equation_form) for algebraic and returns contextual_linear_equation.",
+      "input_schema": "inputs(linear_context_with_referent_roles,linear_equation_form)",
+      "operation": "algebraic",
+      "output_schema": "contextual_linear_equation",
+      "signature": "contextual_linear_equation_construction",
+      "state_action_labels": [
+        "context",
+        "unknown_quantity",
+        "variable",
+        "coefficient",
+        "constant",
+        "total",
+        "referent_role",
+        "equation",
+        "equality_relation",
+        "representation"
+      ]
+    },
+    {
+      "contract_description": "distributive_expression_rewrite accepts inputs(product_of_sum_expression,expansion_direction) for algebraic and returns equivalent_sum_of_products.",
+      "input_schema": "inputs(product_of_sum_expression,expansion_direction)",
+      "operation": "algebraic",
+      "output_schema": "equivalent_sum_of_products",
+      "signature": "distributive_expression_rewrite",
+      "state_action_labels": [
+        "equivalent_expression",
+        "distributive_property",
+        "factor",
+        "addend",
+        "area_as_product",
+        "area_as_sum",
+        "expand",
+        "rewrite",
+        "equality_preservation"
+      ]
+    },
+    {
+      "contract_description": "drop_distributed_term accepts inputs(product_of_sum_expression,expansion_direction) for algebraic and returns incomplete_symbolic_expansion.",
+      "input_schema": "inputs(product_of_sum_expression,expansion_direction)",
+      "operation": "algebraic",
+      "output_schema": "incomplete_symbolic_expansion",
+      "signature": "drop_distributed_term",
+      "state_action_labels": [
+        "distributive_property",
+        "dropped_term",
+        "partial_expansion",
+        "equality_loss"
+      ]
+    },
+    {
+      "contract_description": "equation_truth_by_substitution accepts inputs(equation_expression_pair,variable_bindings) for algebraic and returns equation_truth_value.",
+      "input_schema": "inputs(equation_expression_pair,variable_bindings)",
+      "operation": "algebraic",
+      "output_schema": "equation_truth_value",
+      "signature": "equation_truth_by_substitution",
+      "state_action_labels": [
+        "equation",
+        "variable_assignment",
+        "substitution",
+        "left_expression",
+        "right_expression",
+        "equality",
+        "true_equation",
+        "false_equation",
+        "solution"
+      ]
+    },
+    {
+      "contract_description": "exponent_as_multiplier accepts inputs(nonnegative_whole_number_power,expanded_product_notation) for algebraic and returns base_times_exponent_expression.",
+      "input_schema": "inputs(nonnegative_whole_number_power,expanded_product_notation)",
+      "operation": "algebraic",
+      "output_schema": "base_times_exponent_expression",
+      "signature": "exponent_as_multiplier",
+      "state_action_labels": [
+        "base",
+        "exponent",
+        "exponent_as_multiplier",
+        "repeated_factor_lost",
+        "notation_confusion"
+      ]
+    },
+    {
+      "contract_description": "exponent_as_repeated_factor accepts inputs(nonnegative_whole_number_power,expanded_product_notation) for algebraic and returns repeated_factor_expression.",
+      "input_schema": "inputs(nonnegative_whole_number_power,expanded_product_notation)",
+      "operation": "algebraic",
+      "output_schema": "repeated_factor_expression",
+      "signature": "exponent_as_repeated_factor",
+      "state_action_labels": [
+        "base",
+        "exponent",
+        "power",
+        "repeated_factor",
+        "multiplication",
+        "expanded_form",
+        "exponential_notation"
+      ]
+    },
+    {
+      "contract_description": "exponential_equivalence_by_expansion accepts inputs(exponential_expression_pair,repeated_factor_expansion_method) for algebraic and returns equivalence_verdict.",
+      "input_schema": "inputs(exponential_expression_pair,repeated_factor_expansion_method)",
+      "operation": "algebraic",
+      "output_schema": "equivalence_verdict",
+      "signature": "exponential_equivalence_by_expansion",
+      "state_action_labels": [
+        "equivalent_expression",
+        "exponent",
+        "power",
+        "repeated_factor",
+        "expanded_form",
+        "structural_equivalence"
+      ]
+    },
+    {
+      "contract_description": "guess_and_check_rule accepts inputs(linear_pattern,context) for algebraic and returns guessed_value.",
+      "input_schema": "inputs(linear_pattern,context)",
+      "operation": "algebraic",
+      "output_schema": "guessed_value",
+      "signature": "guess_and_check_rule",
+      "state_action_labels": [
+        "guess_and_check",
+        "empirical_validation",
+        "local_fit",
+        "checked_rows",
+        "formula_fitting",
+        "missing_contextual_relation",
+        "rate_of_change_loss"
+      ]
+    },
+    {
+      "contract_description": "linear_pattern_contextual_rule accepts inputs(linear_pattern,context) for algebraic and returns value.",
+      "input_schema": "inputs(linear_pattern,context)",
+      "operation": "algebraic",
+      "output_schema": "value",
+      "signature": "linear_pattern_contextual_rule",
+      "state_action_labels": [
+        "linear_pattern",
+        "first_value",
+        "row_number",
+        "constant_rate_of_change",
+        "accumulated_change",
+        "explicit_rule",
+        "contextual_generalization",
+        "initial_value",
+        "far_term_prediction"
+      ]
+    },
+    {
+      "contract_description": "one_sided_equation_operation accepts inputs(one_unknown_integer_linear_equation,nonnegative_integer_solution_domain) for algebraic and returns unbalanced_candidate_value.",
+      "input_schema": "inputs(one_unknown_integer_linear_equation,nonnegative_integer_solution_domain)",
+      "operation": "algebraic",
+      "output_schema": "unbalanced_candidate_value",
+      "signature": "one_sided_equation_operation",
+      "state_action_labels": [
+        "equation",
+        "operational_equals",
+        "one_sided_move",
+        "balance_lost",
+        "unknown",
+        "solution"
+      ]
+    },
+    {
+      "contract_description": "operational_equals_left_value accepts inputs(equation_expression_pair,variable_bindings) for algebraic and returns left_expression_value_as_answer.",
+      "input_schema": "inputs(equation_expression_pair,variable_bindings)",
+      "operation": "algebraic",
+      "output_schema": "left_expression_value_as_answer",
+      "signature": "operational_equals_left_value",
+      "state_action_labels": [
+        "equation",
+        "operational_equals",
+        "left_to_right",
+        "compute_answer",
+        "ignored_right_expression"
+      ]
+    },
+    {
+      "contract_description": "programming_expression_evaluation accepts inputs(expression_tree,variable_bindings) for algebraic and returns value.",
+      "input_schema": "inputs(expression_tree,variable_bindings)",
+      "operation": "algebraic",
+      "output_schema": "value",
+      "signature": "programming_expression_evaluation",
+      "state_action_labels": [
+        "algebraic_expression",
+        "variable_assignment",
+        "variable_substitution",
+        "expression_tree",
+        "sub_expression",
+        "evaluate_as_program",
+        "procedural_evaluation",
+        "integer_value"
+      ]
+    },
+    {
+      "contract_description": "symbolic_expression_construction accepts inputs(quantity_relation_with_referent_roles,declared_variable_scope) for algebraic and returns algebraic_expression_tree.",
+      "input_schema": "inputs(quantity_relation_with_referent_roles,declared_variable_scope)",
+      "operation": "algebraic",
+      "output_schema": "algebraic_expression_tree",
+      "signature": "symbolic_expression_construction",
+      "state_action_labels": [
+        "algebraic_expression",
+        "variable",
+        "coefficient",
+        "operation",
+        "quantity_role",
+        "expression_tree",
+        "notation",
+        "representation"
+      ]
+    },
+    {
+      "contract_description": "compare_cardinalities_one_to_one accepts inputs(two_collection_counts,two_spatial_extents) for counting and returns cardinality_relation.",
+      "input_schema": "inputs(two_collection_counts,two_spatial_extents)",
+      "operation": "counting",
+      "output_schema": "cardinality_relation",
+      "signature": "compare_cardinalities_one_to_one",
+      "state_action_labels": [
+        "collection",
+        "one_to_one",
+        "match",
+        "surplus",
+        "more",
+        "fewer",
+        "same_number",
+        "cardinality"
+      ]
+    },
+    {
+      "contract_description": "compare_ones_digits_only accepts inputs(two_nonnegative_cardinalities,common_inscription_base) for counting and returns incorrect_relation_from_ones_digits.",
+      "input_schema": "inputs(two_nonnegative_cardinalities,common_inscription_base)",
+      "operation": "counting",
+      "output_schema": "incorrect_relation_from_ones_digits",
+      "signature": "compare_ones_digits_only",
+      "state_action_labels": [
+        "number",
+        "digit",
+        "place_value",
+        "ones_digit",
+        "ignored_higher_place",
+        "compare",
+        "order"
+      ]
+    },
+    {
+      "contract_description": "enumerate_collection_one_to_one accepts inputs(collection_size_up_to_ten,inscription_base) for counting and returns cardinality_with_numeral.",
+      "input_schema": "inputs(collection_size_up_to_ten,inscription_base)",
+      "operation": "counting",
+      "output_schema": "cardinality_with_numeral",
+      "signature": "enumerate_collection_one_to_one",
+      "state_action_labels": [
+        "collection",
+        "object",
+        "one_to_one",
+        "stable_order",
+        "count_word",
+        "cardinality",
+        "last_word_principle",
+        "numeral"
+      ]
+    },
+    {
+      "contract_description": "inscribe_cardinality accepts inputs(cardinality_up_to_ten,inscription_base) for counting and returns positional_numeral.",
+      "input_schema": "inputs(cardinality_up_to_ten,inscription_base)",
+      "operation": "counting",
+      "output_schema": "positional_numeral",
+      "signature": "inscribe_cardinality",
+      "state_action_labels": [
+        "cardinality",
+        "number_name",
+        "written_number",
+        "numeral",
+        "digit",
+        "base",
+        "inscription"
+      ]
+    },
+    {
+      "contract_description": "omit_highest_place_regrouping accepts inputs(cardinality_at_least_one_base_cycle,inscription_base) for counting and returns deformed_cardinality_without_high_place_regrouping.",
+      "input_schema": "inputs(cardinality_at_least_one_base_cycle,inscription_base)",
+      "operation": "counting",
+      "output_schema": "deformed_cardinality_without_high_place_regrouping",
+      "signature": "omit_highest_place_regrouping",
+      "state_action_labels": [
+        "cardinality",
+        "base",
+        "digit",
+        "place_value",
+        "composite_unit",
+        "omitted_regrouping",
+        "positional_numeral"
+      ]
+    },
+    {
+      "contract_description": "place_value_comparison accepts inputs(two_nonnegative_cardinalities,common_inscription_base) for counting and returns cardinality_relation_by_highest_differing_place.",
+      "input_schema": "inputs(two_nonnegative_cardinalities,common_inscription_base)",
+      "operation": "counting",
+      "output_schema": "cardinality_relation_by_highest_differing_place",
+      "signature": "place_value_comparison",
+      "state_action_labels": [
+        "number",
+        "numeral",
+        "digit",
+        "place_value",
+        "base",
+        "compare",
+        "order",
+        "highest_differing_place",
+        "greater",
+        "less",
+        "equal"
+      ]
+    },
+    {
+      "contract_description": "recursive_place_value_inscription accepts inputs(nonnegative_cardinality,inscription_base) for counting and returns positional_numeral_with_recursive_unit_tree.",
+      "input_schema": "inputs(nonnegative_cardinality,inscription_base)",
+      "operation": "counting",
+      "output_schema": "positional_numeral_with_recursive_unit_tree",
+      "signature": "recursive_place_value_inscription",
+      "state_action_labels": [
+        "cardinality",
+        "base",
+        "digit",
+        "place_value",
+        "composite_unit",
+        "regroup",
+        "positional_numeral",
+        "inscription",
+        "unit_tree"
+      ]
+    },
+    {
+      "contract_description": "spatial_extent_as_cardinality accepts inputs(two_collection_counts,two_spatial_extents) for counting and returns incorrect_extent_relation.",
+      "input_schema": "inputs(two_collection_counts,two_spatial_extents)",
+      "operation": "counting",
+      "output_schema": "incorrect_extent_relation",
+      "signature": "spatial_extent_as_cardinality",
+      "state_action_labels": [
+        "collection",
+        "row_length",
+        "spatial_extent",
+        "more",
+        "fewer",
+        "same_number",
+        "cardinality"
+      ]
+    },
+    {
+      "contract_description": "change_decimal_place_name_without_regrouping accepts inputs(decimal_unit_conversion,ignored) for decimal and returns equivalent_decimal_units.",
+      "input_schema": "inputs(decimal_unit_conversion,ignored)",
+      "operation": "decimal",
+      "output_schema": "equivalent_decimal_units",
+      "signature": "change_decimal_place_name_without_regrouping",
+      "state_action_labels": [
+        "decimal_unit",
+        "place_name_change",
+        "unchanged_count",
+        "scale_unit_loss"
+      ]
+    },
+    {
+      "contract_description": "decimal_add_unaligned_numerals accepts inputs(decimal_pair,ignored) for decimal and returns decimal_sum.",
+      "input_schema": "inputs(decimal_pair,ignored)",
+      "operation": "decimal",
+      "output_schema": "decimal_sum",
+      "signature": "decimal_add_unaligned_numerals",
+      "state_action_labels": [
+        "written_numeral",
+        "unaligned_scale",
+        "integer_addition",
+        "scale_unit_loss"
+      ]
+    },
+    {
+      "contract_description": "decimal_addition_by_aligned_units accepts inputs(decimal_pair,ignored) for decimal and returns decimal_sum.",
+      "input_schema": "inputs(decimal_pair,ignored)",
+      "operation": "decimal",
+      "output_schema": "decimal_sum",
+      "signature": "decimal_addition_by_aligned_units",
+      "state_action_labels": [
+        "common_decimal_unit",
+        "scale_alignment",
+        "grounded_integer_addition",
+        "positional_reinscription"
+      ]
+    },
+    {
+      "contract_description": "decimal_comparison_by_aligned_units accepts inputs(decimal_pair,ignored) for decimal and returns decimal_magnitude_relation.",
+      "input_schema": "inputs(decimal_pair,ignored)",
+      "operation": "decimal",
+      "output_schema": "decimal_magnitude_relation",
+      "signature": "decimal_comparison_by_aligned_units",
+      "state_action_labels": [
+        "decimal_mark",
+        "common_decimal_unit",
+        "scale_alignment",
+        "equivalent_numeral",
+        "magnitude_comparison"
+      ]
+    },
+    {
+      "contract_description": "decimal_fraction_place_value_comparison accepts inputs(two_nonnegative_decimal_values,fraction_or_place_value_units) for decimal and returns decimal_magnitude_relation.",
+      "input_schema": "inputs(two_nonnegative_decimal_values,fraction_or_place_value_units)",
+      "operation": "decimal",
+      "output_schema": "decimal_magnitude_relation",
+      "signature": "decimal_fraction_place_value_comparison",
+      "state_action_labels": [
+        "q_identify_decimal_units",
+        "q_express_as_fraction",
+        "q_align_place_value_units",
+        "q_compare_decimal_magnitudes"
+      ]
+    },
+    {
+      "contract_description": "decimal_multiplication_rule accepts inputs(decimal_pair,ignored) for decimal and returns decimal_product.",
+      "input_schema": "inputs(decimal_pair,ignored)",
+      "operation": "decimal",
+      "output_schema": "decimal_product",
+      "signature": "decimal_multiplication_rule",
+      "state_action_labels": [
+        "decimal_mark",
+        "fractional_place_count",
+        "place_count_sum",
+        "integer_numeral_product",
+        "decimal_point_placement",
+        "scale_unit"
+      ]
+    },
+    {
+      "contract_description": "decimal_numeral_comparison_without_scale_alignment accepts inputs(decimal_pair,ignored) for decimal and returns decimal_magnitude_relation.",
+      "input_schema": "inputs(decimal_pair,ignored)",
+      "operation": "decimal",
+      "output_schema": "decimal_magnitude_relation",
+      "signature": "decimal_numeral_comparison_without_scale_alignment",
+      "state_action_labels": [
+        "decimal_mark",
+        "written_numeral",
+        "unaligned_scale",
+        "magnitude_comparison",
+        "scale_unit_loss"
+      ]
+    },
+    {
+      "contract_description": "decimal_place_unit_regrouping accepts inputs(decimal_unit_conversion,ignored) for decimal and returns equivalent_decimal_units.",
+      "input_schema": "inputs(decimal_unit_conversion,ignored)",
+      "operation": "decimal",
+      "output_schema": "equivalent_decimal_units",
+      "signature": "decimal_place_unit_regrouping",
+      "state_action_labels": [
+        "decimal_unit",
+        "nested_base_ten_unit",
+        "regrouping_factor",
+        "equivalent_quantity",
+        "tenths",
+        "hundredths",
+        "thousandths"
+      ]
+    },
+    {
+      "contract_description": "decimal_point_rule_misapplication accepts inputs(decimal_pair,ignored) for decimal and returns decimal_product.",
+      "input_schema": "inputs(decimal_pair,ignored)",
+      "operation": "decimal",
+      "output_schema": "decimal_product",
+      "signature": "decimal_point_rule_misapplication",
+      "state_action_labels": [
+        "decimal_mark",
+        "fractional_place_count",
+        "place_count_max",
+        "integer_numeral_product",
+        "decimal_point_placement",
+        "place_count_loss"
+      ]
+    },
+    {
+      "contract_description": "decimal_scale_loss_comparison accepts inputs(two_nonnegative_decimal_values,uncoordinated_written_numerals) for decimal and returns scale_insensitive_magnitude_relation.",
+      "input_schema": "inputs(two_nonnegative_decimal_values,uncoordinated_written_numerals)",
+      "operation": "decimal",
+      "output_schema": "scale_insensitive_magnitude_relation",
+      "signature": "decimal_scale_loss_comparison",
+      "state_action_labels": [
+        "q_identify_decimal_units",
+        "q_express_as_fraction",
+        "q_scale_loss",
+        "q_compare_decimal_magnitudes"
+      ]
+    },
+    {
+      "contract_description": "decimal_subtract_unaligned_numerals accepts inputs(decimal_pair,ignored) for decimal and returns decimal_difference.",
+      "input_schema": "inputs(decimal_pair,ignored)",
+      "operation": "decimal",
+      "output_schema": "decimal_difference",
+      "signature": "decimal_subtract_unaligned_numerals",
+      "state_action_labels": [
+        "written_numeral",
+        "unaligned_scale",
+        "integer_subtraction",
+        "scale_unit_loss"
+      ]
+    },
+    {
+      "contract_description": "decimal_subtraction_by_aligned_units accepts inputs(decimal_pair,ignored) for decimal and returns decimal_difference.",
+      "input_schema": "inputs(decimal_pair,ignored)",
+      "operation": "decimal",
+      "output_schema": "decimal_difference",
+      "signature": "decimal_subtraction_by_aligned_units",
+      "state_action_labels": [
+        "common_decimal_unit",
+        "scale_alignment",
+        "grounded_integer_subtraction",
+        "positional_reinscription"
+      ]
+    },
+    {
+      "contract_description": "decimal_whole_number_reading accepts inputs(integer_numeral,positive_power_of_ten_scale) for decimal and returns whole_number_value.",
+      "input_schema": "inputs(integer_numeral,positive_power_of_ten_scale)",
+      "operation": "decimal",
+      "output_schema": "whole_number_value",
+      "signature": "decimal_whole_number_reading",
+      "state_action_labels": [
+        "decimal_mark",
+        "whole_number_string",
+        "fractional_part",
+        "place_value",
+        "scale_unit",
+        "unit_loss"
+      ]
+    },
+    {
+      "contract_description": "ecuadorian_decimal_long_division accepts inputs(decimal_pair,ignored) for decimal and returns decimal_quotient.",
+      "input_schema": "inputs(decimal_pair,ignored)",
+      "operation": "decimal",
+      "output_schema": "decimal_quotient",
+      "signature": "ecuadorian_decimal_long_division",
+      "state_action_labels": [
+        "decimal_mark",
+        "fractional_place_count",
+        "shared_scale_factor",
+        "scaled_operand",
+        "integer_long_division",
+        "decimal_quotient"
+      ]
+    },
+    {
+      "contract_description": "positional_decimal_reading accepts inputs(integer_numeral,positive_power_of_ten_scale) for decimal and returns decimal_value.",
+      "input_schema": "inputs(integer_numeral,positive_power_of_ten_scale)",
+      "operation": "decimal",
+      "output_schema": "decimal_value",
+      "signature": "positional_decimal_reading",
+      "state_action_labels": [
+        "decimal_mark",
+        "whole_part",
+        "fractional_part",
+        "place_value",
+        "tenths",
+        "hundredths",
+        "scale_unit"
+      ]
+    },
+    {
+      "contract_description": "recalled_result_scaling accepts inputs(scaled_division_pair,recalled_quotient) for decimal and returns scaled_quotient.",
+      "input_schema": "inputs(scaled_division_pair,recalled_quotient)",
+      "operation": "decimal",
+      "output_schema": "scaled_quotient",
+      "signature": "recalled_result_scaling",
+      "state_action_labels": [
+        "recalled_division_fact",
+        "base_quotient",
+        "place_value_scale_factor",
+        "scaled_quotient",
+        "quotient_invariance_under_decimal_shift"
+      ]
+    },
+    {
+      "contract_description": "fair_share_equal_groups accepts inputs(nonnegative_integer_total,positive_integer_group_count) for division and returns equal_share_size.",
+      "input_schema": "inputs(nonnegative_integer_total,positive_integer_group_count)",
+      "operation": "division",
+      "output_schema": "equal_share_size",
+      "signature": "fair_share_equal_groups",
+      "state_action_labels": [
+        "total",
+        "number_of_groups",
+        "share_size",
+        "dealing_round",
+        "equality"
+      ]
+    },
+    {
+      "contract_description": "long_division accepts inputs(nonnegative_integer_dividend,positive_integer_divisor) for division and returns long_division_quotient_and_remainder.",
+      "input_schema": "inputs(nonnegative_integer_dividend,positive_integer_divisor)",
+      "operation": "division",
+      "output_schema": "long_division_quotient_and_remainder",
+      "signature": "long_division",
+      "state_action_labels": [
+        "dividend",
+        "divisor",
+        "partial_dividend",
+        "quotient_digit",
+        "bring_down",
+        "place_value_column"
+      ]
+    },
+    {
+      "contract_description": "measure_groups_of_size accepts inputs(nonnegative_integer_total,positive_integer_group_size) for division and returns integer_quotient_and_remainder.",
+      "input_schema": "inputs(nonnegative_integer_total,positive_integer_group_size)",
+      "operation": "division",
+      "output_schema": "integer_quotient_and_remainder",
+      "signature": "measure_groups_of_size",
+      "state_action_labels": [
+        "total",
+        "group_size",
+        "measured_group",
+        "quotient",
+        "remainder"
+      ]
+    },
+    {
+      "contract_description": "missing_factor_repeated_addition accepts inputs(nonnegative_integer_total,positive_integer_factor) for division and returns integer_quotient.",
+      "input_schema": "inputs(nonnegative_integer_total,positive_integer_factor)",
+      "operation": "division",
+      "output_schema": "integer_quotient",
+      "signature": "missing_factor_repeated_addition",
+      "state_action_labels": [
+        "total",
+        "factor",
+        "repeated_multiple",
+        "iteration_count",
+        "quotient"
+      ]
+    },
+    {
+      "contract_description": "name_group_count_as_share_size accepts inputs(nonnegative_integer_total,positive_integer_group_count) for division and returns group_count_as_incorrect_share_size.",
+      "input_schema": "inputs(nonnegative_integer_total,positive_integer_group_count)",
+      "operation": "division",
+      "output_schema": "group_count_as_incorrect_share_size",
+      "signature": "name_group_count_as_share_size",
+      "state_action_labels": [
+        "total",
+        "number_of_groups",
+        "share_size",
+        "dealing_round",
+        "equality"
+      ]
+    },
+    {
+      "contract_description": "name_reached_total_as_quotient accepts inputs(nonnegative_integer_total,positive_integer_factor) for division and returns reached_total_as_incorrect_quotient.",
+      "input_schema": "inputs(nonnegative_integer_total,positive_integer_factor)",
+      "operation": "division",
+      "output_schema": "reached_total_as_incorrect_quotient",
+      "signature": "name_reached_total_as_quotient",
+      "state_action_labels": [
+        "total",
+        "factor",
+        "repeated_multiple",
+        "iteration_count",
+        "quotient"
+      ]
+    },
+    {
+      "contract_description": "partial_quotient_chunking accepts inputs(nonnegative_integer_dividend,positive_integer_divisor) for division and returns integer_quotient_and_remainder.",
+      "input_schema": "inputs(nonnegative_integer_dividend,positive_integer_divisor)",
+      "operation": "division",
+      "output_schema": "integer_quotient_and_remainder",
+      "signature": "partial_quotient_chunking",
+      "state_action_labels": [
+        "partial_multiple",
+        "partial_quotient",
+        "remaining_total",
+        "quotient_recomposition"
+      ]
+    },
+    {
+      "contract_description": "share_into_divisor_groups accepts inputs(nonnegative_integer_total,positive_integer_divisor) for division and returns remainder_insensitive_share_size.",
+      "input_schema": "inputs(nonnegative_integer_total,positive_integer_divisor)",
+      "operation": "division",
+      "output_schema": "remainder_insensitive_share_size",
+      "signature": "share_into_divisor_groups",
+      "state_action_labels": [
+        "total",
+        "group_size",
+        "measured_group",
+        "quotient",
+        "remainder"
+      ]
+    },
+    {
+      "contract_description": "stop_after_first_partial_quotient accepts inputs(nonnegative_integer_dividend,positive_integer_divisor) for division and returns incomplete_integer_quotient_and_remainder.",
+      "input_schema": "inputs(nonnegative_integer_dividend,positive_integer_divisor)",
+      "operation": "division",
+      "output_schema": "incomplete_integer_quotient_and_remainder",
+      "signature": "stop_after_first_partial_quotient",
+      "state_action_labels": [
+        "partial_multiple",
+        "partial_quotient",
+        "remaining_total",
+        "quotient_recomposition"
+      ]
+    },
+    {
+      "contract_description": "add_numerator_denominator_comparison accepts inputs(two_nonnegative_fractions,unlike_units) for fraction and returns incorrect_additive_parts_relation.",
+      "input_schema": "inputs(two_nonnegative_fractions,unlike_units)",
+      "operation": "fraction",
+      "output_schema": "incorrect_additive_parts_relation",
+      "signature": "add_numerator_denominator_comparison",
+      "state_action_labels": [
+        "q_common_partition",
+        "q_add_numerator_denominator",
+        "q_measure_with_co_unit",
+        "q_compare_same_denominator"
+      ]
+    },
+    {
+      "contract_description": "area_model_fraction_comparison accepts inputs(two_positive_fractions,congruent_partitioned_regions) for fraction and returns fraction_order_relation.",
+      "input_schema": "inputs(two_positive_fractions,congruent_partitioned_regions)",
+      "operation": "fraction",
+      "output_schema": "fraction_order_relation",
+      "signature": "area_model_fraction_comparison",
+      "state_action_labels": [
+        "q_unitize_whole",
+        "q_verify_same_size_whole",
+        "q_partition",
+        "q_disembed",
+        "q_iterate_count_parts",
+        "q_compare_relative_size"
+      ]
+    },
+    {
+      "contract_description": "area_model_part_of_part accepts inputs(positive_fraction_pair,referent_whole) for fraction and returns fraction_product.",
+      "input_schema": "inputs(positive_fraction_pair,referent_whole)",
+      "operation": "fraction",
+      "output_schema": "fraction_product",
+      "signature": "area_model_part_of_part",
+      "state_action_labels": [
+        "referent_whole",
+        "unit_square",
+        "rectangle_model",
+        "vertical_partition",
+        "horizontal_partition",
+        "small_rectangle",
+        "denominator_product",
+        "numerator_product",
+        "part_of_part"
+      ]
+    },
+    {
+      "contract_description": "area_model_unequal_partition_piece_count accepts inputs(two_positive_fractions,partitioned_regions) for fraction and returns context_insensitive_piece_count_relation.",
+      "input_schema": "inputs(two_positive_fractions,partitioned_regions)",
+      "operation": "fraction",
+      "output_schema": "context_insensitive_piece_count_relation",
+      "signature": "area_model_unequal_partition_piece_count",
+      "state_action_labels": [
+        "q_unitize_whole",
+        "q_verify_same_size_whole",
+        "q_partition",
+        "q_disembed",
+        "q_iterate_count_parts",
+        "q_unequal_partition_piece_count",
+        "q_compare_relative_size"
+      ]
+    },
+    {
+      "contract_description": "benchmark_fraction_comparison accepts inputs(two_nonnegative_fractions,benchmarks_zero_one_half_one) for fraction and returns fraction_order_relation.",
+      "input_schema": "inputs(two_nonnegative_fractions,benchmarks_zero_one_half_one)",
+      "operation": "fraction",
+      "output_schema": "fraction_order_relation",
+      "signature": "benchmark_fraction_comparison",
+      "state_action_labels": [
+        "q_select_benchmark",
+        "q_benchmark_first",
+        "q_benchmark_second",
+        "q_transitive_compare",
+        "q_residual_compare"
+      ]
+    },
+    {
+      "contract_description": "co_denominator_count_on_from_larger accepts inputs(same_denominator_fraction_pair,referent_whole) for fraction and returns co_denominator_fraction_sum.",
+      "input_schema": "inputs(same_denominator_fraction_pair,referent_whole)",
+      "operation": "fraction",
+      "output_schema": "co_denominator_fraction_sum",
+      "signature": "co_denominator_count_on_from_larger",
+      "state_action_labels": [
+        "same_denominator",
+        "numerator_count_on",
+        "three_level_units_coordination",
+        "referent_whole",
+        "unit_fraction"
+      ]
+    },
+    {
+      "contract_description": "co_denominator_make_base_transfer accepts inputs(same_denominator_fraction_pair,referent_whole) for fraction and returns co_denominator_fraction_sum.",
+      "input_schema": "inputs(same_denominator_fraction_pair,referent_whole)",
+      "operation": "fraction",
+      "output_schema": "co_denominator_fraction_sum",
+      "signature": "co_denominator_make_base_transfer",
+      "state_action_labels": [
+        "same_denominator",
+        "numerator_make_base",
+        "transfer_units",
+        "three_level_units_coordination",
+        "referent_whole",
+        "unit_fraction"
+      ]
+    },
+    {
+      "contract_description": "common_unit_fraction_comparison accepts inputs(two_nonnegative_fractions,common_denominator_or_numerator) for fraction and returns fraction_order_relation.",
+      "input_schema": "inputs(two_nonnegative_fractions,common_denominator_or_numerator)",
+      "operation": "fraction",
+      "output_schema": "fraction_order_relation",
+      "signature": "common_unit_fraction_comparison",
+      "state_action_labels": [
+        "q_common_partition",
+        "q_common_numerator",
+        "q_transform_commensurate_1",
+        "q_transform_commensurate_2",
+        "q_measure_with_co_unit",
+        "q_compare_same_denominator",
+        "q_compare_same_numerator"
+      ]
+    },
+    {
+      "contract_description": "gap_thinking_fraction_comparison accepts inputs(two_nonnegative_fractions,numerator_denominator_gaps) for fraction and returns context_tagged_fraction_order_relation.",
+      "input_schema": "inputs(two_nonnegative_fractions,numerator_denominator_gaps)",
+      "operation": "fraction",
+      "output_schema": "context_tagged_fraction_order_relation",
+      "signature": "gap_thinking_fraction_comparison",
+      "state_action_labels": [
+        "q_select_benchmark",
+        "q_benchmark_first",
+        "q_benchmark_second",
+        "q_gap_thinking",
+        "q_transitive_compare",
+        "q_residual_compare"
+      ]
+    },
+    {
+      "contract_description": "improper_fraction_chain_loss accepts inputs(improper_fraction_iteration_count,positive_integer_denominator) for fraction and returns reset_fraction_with_lost_referent.",
+      "input_schema": "inputs(improper_fraction_iteration_count,positive_integer_denominator)",
+      "operation": "fraction",
+      "output_schema": "reset_fraction_with_lost_referent",
+      "signature": "improper_fraction_chain_loss",
+      "state_action_labels": [
+        "referent_whole",
+        "unit_fraction",
+        "iterate_past_whole",
+        "lose_referent_chain",
+        "reset_whole",
+        "improper_fraction_reset"
+      ]
+    },
+    {
+      "contract_description": "measurement_division accepts inputs(positive_fraction_dividend_divisor_pair,referent_whole) for fraction and returns fraction_quotient_and_remainder.",
+      "input_schema": "inputs(positive_fraction_dividend_divisor_pair,referent_whole)",
+      "operation": "fraction",
+      "output_schema": "fraction_quotient_and_remainder",
+      "signature": "measurement_division",
+      "state_action_labels": [
+        "dividend_fraction",
+        "divisor_fraction",
+        "shared_measurement_unit",
+        "measured_total",
+        "measured_group_size",
+        "group_size_count",
+        "quotient_remainder"
+      ]
+    },
+    {
+      "contract_description": "number_line_count_marks_not_intervals accepts inputs(two_nonnegative_fractions,unit_interval) for fraction and returns incorrect_fraction_order_relation.",
+      "input_schema": "inputs(two_nonnegative_fractions,unit_interval)",
+      "operation": "fraction",
+      "output_schema": "incorrect_fraction_order_relation",
+      "signature": "number_line_count_marks_not_intervals",
+      "state_action_labels": [
+        "q_identify_unit",
+        "q_partition_interval",
+        "q_count_marks_not_intervals",
+        "q_locate_endpoint",
+        "q_compare_positions"
+      ]
+    },
+    {
+      "contract_description": "number_line_fraction_comparison accepts inputs(two_nonnegative_fractions,unit_interval) for fraction and returns fraction_order_relation.",
+      "input_schema": "inputs(two_nonnegative_fractions,unit_interval)",
+      "operation": "fraction",
+      "output_schema": "fraction_order_relation",
+      "signature": "number_line_fraction_comparison",
+      "state_action_labels": [
+        "q_identify_unit",
+        "q_partition_interval",
+        "q_mark_off_lengths",
+        "q_locate_endpoint",
+        "q_measure_with_unit_fraction",
+        "q_compare_positions"
+      ]
+    },
+    {
+      "contract_description": "reversible_measurement_division accepts inputs(positive_fraction_dividend_divisor_pair,referent_whole) for fraction and returns fraction_quotient.",
+      "input_schema": "inputs(positive_fraction_dividend_divisor_pair,referent_whole)",
+      "operation": "fraction",
+      "output_schema": "fraction_quotient",
+      "signature": "reversible_measurement_division",
+      "state_action_labels": [
+        "dividend_fraction",
+        "divisor_fraction",
+        "recovered_generator",
+        "generator_scale",
+        "measured_total",
+        "group_size_in_generator_units",
+        "quotient_fraction"
+      ]
+    },
+    {
+      "contract_description": "set_model_fraction_comparison accepts inputs(two_positive_fractions,commensurable_discrete_collections) for fraction and returns fraction_order_relation.",
+      "input_schema": "inputs(two_positive_fractions,commensurable_discrete_collections)",
+      "operation": "fraction",
+      "output_schema": "fraction_order_relation",
+      "signature": "set_model_fraction_comparison",
+      "state_action_labels": [
+        "q_unitize_set",
+        "q_verify_same_whole",
+        "q_partition_set",
+        "q_count_equal_sets",
+        "q_disembed_subset",
+        "q_compare_relative_size"
+      ]
+    },
+    {
+      "contract_description": "set_model_subset_size_focus accepts inputs(two_positive_fractions,discrete_collections) for fraction and returns subset_count_relation.",
+      "input_schema": "inputs(two_positive_fractions,discrete_collections)",
+      "operation": "fraction",
+      "output_schema": "subset_count_relation",
+      "signature": "set_model_subset_size_focus",
+      "state_action_labels": [
+        "q_unitize_set",
+        "q_verify_same_whole",
+        "q_partition_set",
+        "q_count_equal_sets",
+        "q_disembed_subset",
+        "q_subset_size_focus",
+        "q_compare_relative_size"
+      ]
+    },
+    {
+      "contract_description": "unit_fraction_iteration accepts inputs(positive_integer_iteration_count,positive_integer_denominator) for fraction and returns fraction_value.",
+      "input_schema": "inputs(positive_integer_iteration_count,positive_integer_denominator)",
+      "operation": "fraction",
+      "output_schema": "fraction_value",
+      "signature": "unit_fraction_iteration",
+      "state_action_labels": [
+        "referent_whole",
+        "unit_fraction",
+        "iteration_count",
+        "denominator",
+        "completion_marker",
+        "beyond_whole"
+      ]
+    },
+    {
+      "contract_description": "unit_fraction_partition accepts inputs(unit_iteration_count_one,positive_integer_denominator) for fraction and returns unit_fraction.",
+      "input_schema": "inputs(unit_iteration_count_one,positive_integer_denominator)",
+      "operation": "fraction",
+      "output_schema": "unit_fraction",
+      "signature": "unit_fraction_partition",
+      "state_action_labels": [
+        "referent_whole",
+        "equal_partition",
+        "denominator",
+        "unit_fraction",
+        "inside_part",
+        "iterable_unit"
+      ]
+    },
+    {
+      "contract_description": "angle_additive_composition accepts inputs(list_of_angle_parts,whole_angle_measure) for geometry and returns angle_measure.",
+      "input_schema": "inputs(list_of_angle_parts,whole_angle_measure)",
+      "operation": "geometry",
+      "output_schema": "angle_measure",
+      "signature": "angle_additive_composition",
+      "state_action_labels": [
+        "angle",
+        "adjacent_angles",
+        "composition",
+        "decomposition",
+        "part",
+        "whole",
+        "unknown_angle",
+        "addition",
+        "subtraction"
+      ]
+    },
+    {
+      "contract_description": "angle_as_ray_length accepts inputs(whole_number_degrees,degree_unit) for geometry and returns angle_magnitude_misread.",
+      "input_schema": "inputs(whole_number_degrees,degree_unit)",
+      "operation": "geometry",
+      "output_schema": "angle_magnitude_misread",
+      "signature": "angle_as_ray_length",
+      "state_action_labels": [
+        "angle",
+        "ray_length",
+        "visual_extent",
+        "bigger",
+        "degree",
+        "turn"
+      ]
+    },
+    {
+      "contract_description": "angle_turn_measurement accepts inputs(whole_number_degrees,degree_unit) for geometry and returns angle_measure.",
+      "input_schema": "inputs(whole_number_degrees,degree_unit)",
+      "operation": "geometry",
+      "output_schema": "angle_measure",
+      "signature": "angle_turn_measurement",
+      "state_action_labels": [
+        "angle",
+        "vertex",
+        "initial_ray",
+        "terminal_ray",
+        "turn",
+        "degree",
+        "protractor",
+        "rotation"
+      ]
+    },
+    {
+      "contract_description": "area_as_perimeter_count accepts inputs(bounded_positive_integer_rows,bounded_positive_integer_columns) for geometry and returns boundary_units_as_area.",
+      "input_schema": "inputs(bounded_positive_integer_rows,bounded_positive_integer_columns)",
+      "operation": "geometry",
+      "output_schema": "boundary_units_as_area",
+      "signature": "area_as_perimeter_count",
+      "state_action_labels": [
+        "rectangle",
+        "area",
+        "perimeter",
+        "interior",
+        "boundary",
+        "square_unit",
+        "unit_segment",
+        "container_schema"
+      ]
+    },
+    {
+      "contract_description": "area_preserving_polygon_decomposition accepts inputs(lattice_polygon,certified_polygon_partition) for geometry and returns conserved_polygon_area.",
+      "input_schema": "inputs(lattice_polygon,certified_polygon_partition)",
+      "operation": "geometry",
+      "output_schema": "conserved_polygon_area",
+      "signature": "area_preserving_polygon_decomposition",
+      "state_action_labels": [
+        "polygon",
+        "area",
+        "decompose",
+        "compose",
+        "rearrange",
+        "nonoverlap",
+        "no_gap",
+        "part",
+        "whole",
+        "conservation"
+      ]
+    },
+    {
+      "contract_description": "area_unit_covering accepts inputs(distinct_nonnegative_grid_cells,measurement_unit) for geometry and returns covered_square_units.",
+      "input_schema": "inputs(distinct_nonnegative_grid_cells,measurement_unit)",
+      "operation": "geometry",
+      "output_schema": "covered_square_units",
+      "signature": "area_unit_covering",
+      "state_action_labels": [
+        "area",
+        "region",
+        "unit_square",
+        "cover",
+        "interior",
+        "no_gap",
+        "no_overlap",
+        "square_unit",
+        "spatial_extent"
+      ]
+    },
+    {
+      "contract_description": "area_unit_scale_selection accepts inputs(classified_area_referent_extent,candidate_square_units_with_scale_profiles) for geometry and returns suitable_square_unit.",
+      "input_schema": "inputs(classified_area_referent_extent,candidate_square_units_with_scale_profiles)",
+      "operation": "geometry",
+      "output_schema": "suitable_square_unit",
+      "signature": "area_unit_scale_selection",
+      "state_action_labels": [
+        "area",
+        "referent",
+        "spatial_extent",
+        "square_unit",
+        "centimeter",
+        "inch",
+        "foot",
+        "meter",
+        "unit_choice"
+      ]
+    },
+    {
+      "contract_description": "axis_aligned_coordinate_distance accepts inputs(two_axis_aligned_integer_points,measurement_unit) for geometry and returns nonnegative_coordinate_distance.",
+      "input_schema": "inputs(two_axis_aligned_integer_points,measurement_unit)",
+      "operation": "geometry",
+      "output_schema": "nonnegative_coordinate_distance",
+      "signature": "axis_aligned_coordinate_distance",
+      "state_action_labels": [
+        "coordinate_plane",
+        "ordered_pair",
+        "horizontal_axis",
+        "vertical_axis",
+        "aligned_points",
+        "directed_difference",
+        "absolute_value",
+        "distance",
+        "length_unit"
+      ]
+    },
+    {
+      "contract_description": "choose_first_area_unit_without_scale accepts inputs(classified_area_referent_extent,candidate_square_units_with_scale_profiles) for geometry and returns unsuitable_square_unit.",
+      "input_schema": "inputs(classified_area_referent_extent,candidate_square_units_with_scale_profiles)",
+      "operation": "geometry",
+      "output_schema": "unsuitable_square_unit",
+      "signature": "choose_first_area_unit_without_scale",
+      "state_action_labels": [
+        "area",
+        "referent",
+        "spatial_extent",
+        "square_unit",
+        "familiar_unit",
+        "uncoordinated_scale"
+      ]
+    },
+    {
+      "contract_description": "compare_solid_volume_by_cube_count accepts inputs(two_solid_cube_counts,two_visible_extent_measures) for geometry and returns solid_volume_relation.",
+      "input_schema": "inputs(two_solid_cube_counts,two_visible_extent_measures)",
+      "operation": "geometry",
+      "output_schema": "solid_volume_relation",
+      "signature": "compare_solid_volume_by_cube_count",
+      "state_action_labels": [
+        "solid_object",
+        "volume",
+        "unit_cube",
+        "cube_count",
+        "composition",
+        "conservation",
+        "visual_extent"
+      ]
+    },
+    {
+      "contract_description": "compare_solid_volume_by_visible_extent accepts inputs(two_solid_cube_counts,two_visible_extent_measures) for geometry and returns visible_extent_relation_as_volume.",
+      "input_schema": "inputs(two_solid_cube_counts,two_visible_extent_measures)",
+      "operation": "geometry",
+      "output_schema": "visible_extent_relation_as_volume",
+      "signature": "compare_solid_volume_by_visible_extent",
+      "state_action_labels": [
+        "solid_object",
+        "volume",
+        "visual_extent",
+        "height",
+        "spread",
+        "cube_count_ignored"
+      ]
+    },
+    {
+      "contract_description": "composite_prism_volume_sum accepts inputs(certified_disjoint_rectangular_prisms,measurement_unit) for geometry and returns composite_volume.",
+      "input_schema": "inputs(certified_disjoint_rectangular_prisms,measurement_unit)",
+      "operation": "geometry",
+      "output_schema": "composite_volume",
+      "signature": "composite_prism_volume_sum",
+      "state_action_labels": [
+        "composite_solid",
+        "rectangular_prism",
+        "unit_cube",
+        "disjoint_decomposition",
+        "component_volume",
+        "additive_volume",
+        "cubic_unit"
+      ]
+    },
+    {
+      "contract_description": "count_overlapping_area_tiles accepts inputs(grid_cell_placements_with_duplicates,measurement_unit) for geometry and returns double_counted_square_units.",
+      "input_schema": "inputs(grid_cell_placements_with_duplicates,measurement_unit)",
+      "operation": "geometry",
+      "output_schema": "double_counted_square_units",
+      "signature": "count_overlapping_area_tiles",
+      "state_action_labels": [
+        "area",
+        "region",
+        "unit_square",
+        "overlap",
+        "repeated_cell",
+        "double_count",
+        "square_unit"
+      ]
+    },
+    {
+      "contract_description": "decomposition_with_gap_or_overlap accepts inputs(lattice_polygon,unchecked_polygon_decomposition) for geometry and returns nonconserved_piece_area_sum.",
+      "input_schema": "inputs(lattice_polygon,unchecked_polygon_decomposition)",
+      "operation": "geometry",
+      "output_schema": "nonconserved_piece_area_sum",
+      "signature": "decomposition_with_gap_or_overlap",
+      "state_action_labels": [
+        "polygon",
+        "area",
+        "decomposition",
+        "gap",
+        "overlap",
+        "part",
+        "whole",
+        "conservation"
+      ]
+    },
+    {
+      "contract_description": "dimensional_measure_unit_coordination accepts inputs(dimension_and_measure,base_measurement_unit) for geometry and returns dimensioned_quantity.",
+      "input_schema": "inputs(dimension_and_measure,base_measurement_unit)",
+      "operation": "geometry",
+      "output_schema": "dimensioned_quantity",
+      "signature": "dimensional_measure_unit_coordination",
+      "state_action_labels": [
+        "length",
+        "area",
+        "volume",
+        "dimension",
+        "linear_unit",
+        "square_unit",
+        "cubic_unit",
+        "exponent",
+        "notation"
+      ]
+    },
+    {
+      "contract_description": "directed_difference_as_coordinate_distance accepts inputs(two_axis_aligned_integer_points,measurement_unit) for geometry and returns signed_change_as_distance.",
+      "input_schema": "inputs(two_axis_aligned_integer_points,measurement_unit)",
+      "operation": "geometry",
+      "output_schema": "signed_change_as_distance",
+      "signature": "directed_difference_as_coordinate_distance",
+      "state_action_labels": [
+        "coordinate_plane",
+        "aligned_points",
+        "directed_difference",
+        "absolute_value",
+        "distance",
+        "negative_length"
+      ]
+    },
+    {
+      "contract_description": "divide_volume_by_one_dimension accepts inputs(positive_integer_volume,two_known_base_dimensions) for geometry and returns partial_quotient_as_prism_dimension.",
+      "input_schema": "inputs(positive_integer_volume,two_known_base_dimensions)",
+      "operation": "geometry",
+      "output_schema": "partial_quotient_as_prism_dimension",
+      "signature": "divide_volume_by_one_dimension",
+      "state_action_labels": [
+        "rectangular_prism",
+        "volume",
+        "base_area",
+        "known_dimensions",
+        "dropped_dimension",
+        "partial_division",
+        "cubic_unit"
+      ]
+    },
+    {
+      "contract_description": "ignore_perimeter_rectangle_constraint accepts inputs(positive_integer_area_and_even_perimeter,exhaustive_constraint_scope) for geometry and returns area_pairs_without_perimeter_filter.",
+      "input_schema": "inputs(positive_integer_area_and_even_perimeter,exhaustive_constraint_scope)",
+      "operation": "geometry",
+      "output_schema": "area_pairs_without_perimeter_filter",
+      "signature": "ignore_perimeter_rectangle_constraint",
+      "state_action_labels": [
+        "rectangle",
+        "area",
+        "perimeter",
+        "constraint",
+        "factor_pair",
+        "ignored_constraint",
+        "design"
+      ]
+    },
+    {
+      "contract_description": "ignore_symmetry_multiplicity accepts inputs(side_equivalence_orbits,total_polygon_perimeter) for geometry and returns incorrect_unknown_side_length.",
+      "input_schema": "inputs(side_equivalence_orbits,total_polygon_perimeter)",
+      "operation": "geometry",
+      "output_schema": "incorrect_unknown_side_length",
+      "signature": "ignore_symmetry_multiplicity",
+      "state_action_labels": [
+        "line_symmetry",
+        "side_orbit",
+        "perimeter",
+        "unknown_side",
+        "ignored_multiplicity"
+      ]
+    },
+    {
+      "contract_description": "linear_unit_for_area_or_volume accepts inputs(higher_dimension_and_measure,base_measurement_unit) for geometry and returns higher_dimensional_quantity_with_linear_unit.",
+      "input_schema": "inputs(higher_dimension_and_measure,base_measurement_unit)",
+      "operation": "geometry",
+      "output_schema": "higher_dimensional_quantity_with_linear_unit",
+      "signature": "linear_unit_for_area_or_volume",
+      "state_action_labels": [
+        "area",
+        "volume",
+        "dimension",
+        "linear_unit",
+        "square_unit",
+        "cubic_unit",
+        "exponent",
+        "notation"
+      ]
+    },
+    {
+      "contract_description": "omit_half_in_triangle_area accepts inputs(triangle_base_and_perpendicular_height,measurement_unit) for geometry and returns parallelogram_area_as_triangle_area.",
+      "input_schema": "inputs(triangle_base_and_perpendicular_height,measurement_unit)",
+      "operation": "geometry",
+      "output_schema": "parallelogram_area_as_triangle_area",
+      "signature": "omit_half_in_triangle_area",
+      "state_action_labels": [
+        "triangle",
+        "base",
+        "height",
+        "parallelogram",
+        "half",
+        "area",
+        "omitted_halving"
+      ]
+    },
+    {
+      "contract_description": "omit_unlabeled_boundary_side accepts inputs(ordered_polygon_side_lengths,measurement_unit) for geometry and returns incomplete_polygon_perimeter_length.",
+      "input_schema": "inputs(ordered_polygon_side_lengths,measurement_unit)",
+      "operation": "geometry",
+      "output_schema": "incomplete_polygon_perimeter_length",
+      "signature": "omit_unlabeled_boundary_side",
+      "state_action_labels": [
+        "polygon",
+        "perimeter",
+        "boundary",
+        "side_length",
+        "unlabeled_side",
+        "incomplete_cycle"
+      ]
+    },
+    {
+      "contract_description": "ordered_pair_coordinate_plot accepts inputs(list_of_ordered_pairs,cartesian_axes) for geometry and returns plotted_points.",
+      "input_schema": "inputs(list_of_ordered_pairs,cartesian_axes)",
+      "operation": "geometry",
+      "output_schema": "plotted_points",
+      "signature": "ordered_pair_coordinate_plot",
+      "state_action_labels": [
+        "coordinate_plane",
+        "origin",
+        "horizontal_axis",
+        "vertical_axis",
+        "ordered_pair",
+        "first_coordinate",
+        "second_coordinate",
+        "directed_distance",
+        "point"
+      ]
+    },
+    {
+      "contract_description": "orientation_bound_shape_classification accepts inputs(shape_with_observed_attributes,nonzero_quarter_turn_orientation) for geometry and returns rejected_shape_name.",
+      "input_schema": "inputs(shape_with_observed_attributes,nonzero_quarter_turn_orientation)",
+      "operation": "geometry",
+      "output_schema": "rejected_shape_name",
+      "signature": "orientation_bound_shape_classification",
+      "state_action_labels": [
+        "shape",
+        "defining_attribute",
+        "prototype",
+        "orientation",
+        "rotation",
+        "category"
+      ]
+    },
+    {
+      "contract_description": "parallelogram_area_base_height accepts inputs(parallelogram_dimensions,measurement_unit) for geometry and returns parallelogram_area.",
+      "input_schema": "inputs(parallelogram_dimensions,measurement_unit)",
+      "operation": "geometry",
+      "output_schema": "parallelogram_area",
+      "signature": "parallelogram_area_base_height",
+      "state_action_labels": [
+        "parallelogram",
+        "base",
+        "perpendicular_height",
+        "slanted_side",
+        "cut",
+        "translate",
+        "rectangle",
+        "area",
+        "square_unit"
+      ]
+    },
+    {
+      "contract_description": "perimeter_two_sides_only accepts inputs(rectangle_dimensions,measurement_unit) for geometry and returns incomplete_perimeter_length.",
+      "input_schema": "inputs(rectangle_dimensions,measurement_unit)",
+      "operation": "geometry",
+      "output_schema": "incomplete_perimeter_length",
+      "signature": "perimeter_two_sides_only",
+      "state_action_labels": [
+        "rectangle",
+        "perimeter",
+        "boundary",
+        "side_length",
+        "incomplete_traversal",
+        "unit_segment"
+      ]
+    },
+    {
+      "contract_description": "perimeter_uses_area_formula accepts inputs(rectangle_dimensions,measurement_unit) for geometry and returns area_value_as_perimeter_length.",
+      "input_schema": "inputs(rectangle_dimensions,measurement_unit)",
+      "operation": "geometry",
+      "output_schema": "area_value_as_perimeter_length",
+      "signature": "perimeter_uses_area_formula",
+      "state_action_labels": [
+        "rectangle",
+        "perimeter",
+        "area",
+        "boundary",
+        "interior",
+        "formula_substitution",
+        "container_schema"
+      ]
+    },
+    {
+      "contract_description": "polygon_perimeter_boundary_accumulation accepts inputs(ordered_polygon_side_lengths,measurement_unit) for geometry and returns complete_polygon_perimeter_length.",
+      "input_schema": "inputs(ordered_polygon_side_lengths,measurement_unit)",
+      "operation": "geometry",
+      "output_schema": "complete_polygon_perimeter_length",
+      "signature": "polygon_perimeter_boundary_accumulation",
+      "state_action_labels": [
+        "polygon",
+        "perimeter",
+        "boundary",
+        "side_length",
+        "boundary_cycle",
+        "linear_unit",
+        "accumulation"
+      ]
+    },
+    {
+      "contract_description": "polyhedron_surface_area_from_net accepts inputs(supported_solid_with_all_face_areas,measurement_unit) for geometry and returns surface_area.",
+      "input_schema": "inputs(supported_solid_with_all_face_areas,measurement_unit)",
+      "operation": "geometry",
+      "output_schema": "surface_area",
+      "signature": "polyhedron_surface_area_from_net",
+      "state_action_labels": [
+        "polyhedron",
+        "face",
+        "net",
+        "unfold",
+        "surface_area",
+        "square_unit",
+        "prism",
+        "pyramid",
+        "all_faces"
+      ]
+    },
+    {
+      "contract_description": "rectangle_area_perimeter_constraint_search accepts inputs(positive_integer_area_and_even_perimeter,exhaustive_constraint_scope) for geometry and returns constrained_rectangle_side_pairs.",
+      "input_schema": "inputs(positive_integer_area_and_even_perimeter,exhaustive_constraint_scope)",
+      "operation": "geometry",
+      "output_schema": "constrained_rectangle_side_pairs",
+      "signature": "rectangle_area_perimeter_constraint_search",
+      "state_action_labels": [
+        "rectangle",
+        "area",
+        "perimeter",
+        "side_length",
+        "constraint",
+        "factor_pair",
+        "boundary",
+        "intersection",
+        "design"
+      ]
+    },
+    {
+      "contract_description": "rectangle_area_unit_iteration accepts inputs(positive_integer_rows,positive_integer_columns) for geometry and returns square_units.",
+      "input_schema": "inputs(positive_integer_rows,positive_integer_columns)",
+      "operation": "geometry",
+      "output_schema": "square_units",
+      "signature": "rectangle_area_unit_iteration",
+      "state_action_labels": [
+        "rectangle",
+        "row",
+        "column",
+        "unit_square",
+        "square_unit",
+        "tile_without_gaps_or_overlaps",
+        "area",
+        "composite_unit"
+      ]
+    },
+    {
+      "contract_description": "rectangle_factor_pair_search accepts inputs(positive_integer_area,factor_scope) for geometry and returns rectangle_factor_pairs.",
+      "input_schema": "inputs(positive_integer_area,factor_scope)",
+      "operation": "geometry",
+      "output_schema": "rectangle_factor_pairs",
+      "signature": "rectangle_factor_pair_search",
+      "state_action_labels": [
+        "rectangle",
+        "area",
+        "whole_number_side_length",
+        "factor",
+        "factor_pair",
+        "commutative_pair",
+        "exhaustive_search",
+        "square_unit"
+      ]
+    },
+    {
+      "contract_description": "rectangle_missing_side_from_area accepts inputs(positive_integer_area,known_side_length) for geometry and returns missing_side_length.",
+      "input_schema": "inputs(positive_integer_area,known_side_length)",
+      "operation": "geometry",
+      "output_schema": "missing_side_length",
+      "signature": "rectangle_missing_side_from_area",
+      "state_action_labels": [
+        "rectangle",
+        "area",
+        "known_side",
+        "unknown_side",
+        "inverse_multiplication",
+        "exact_division",
+        "factor",
+        "square_unit"
+      ]
+    },
+    {
+      "contract_description": "rectangle_missing_side_from_perimeter accepts inputs(even_positive_perimeter,known_side_length) for geometry and returns missing_side_length.",
+      "input_schema": "inputs(even_positive_perimeter,known_side_length)",
+      "operation": "geometry",
+      "output_schema": "missing_side_length",
+      "signature": "rectangle_missing_side_from_perimeter",
+      "state_action_labels": [
+        "rectangle",
+        "perimeter",
+        "known_side",
+        "unknown_side",
+        "opposite_sides_equal",
+        "inverse_operation",
+        "boundary"
+      ]
+    },
+    {
+      "contract_description": "rectangle_perimeter_boundary_traversal accepts inputs(rectangle_dimensions,measurement_unit) for geometry and returns perimeter_length.",
+      "input_schema": "inputs(rectangle_dimensions,measurement_unit)",
+      "operation": "geometry",
+      "output_schema": "perimeter_length",
+      "signature": "rectangle_perimeter_boundary_traversal",
+      "state_action_labels": [
+        "rectangle",
+        "perimeter",
+        "boundary",
+        "side_length",
+        "opposite_sides_equal",
+        "unit_segment",
+        "complete_traversal",
+        "container_schema"
+      ]
+    },
+    {
+      "contract_description": "rectangle_perimeter_side_pair_search accepts inputs(even_positive_perimeter,side_scope) for geometry and returns rectangle_side_pairs.",
+      "input_schema": "inputs(even_positive_perimeter,side_scope)",
+      "operation": "geometry",
+      "output_schema": "rectangle_side_pairs",
+      "signature": "rectangle_perimeter_side_pair_search",
+      "state_action_labels": [
+        "rectangle",
+        "perimeter",
+        "side_length",
+        "opposite_sides_equal",
+        "fixed_boundary",
+        "exhaustive_search",
+        "area_varies"
+      ]
+    },
+    {
+      "contract_description": "rectangular_prism_missing_dimension_from_volume accepts inputs(positive_integer_volume,two_known_base_dimensions) for geometry and returns missing_prism_dimension.",
+      "input_schema": "inputs(positive_integer_volume,two_known_base_dimensions)",
+      "operation": "geometry",
+      "output_schema": "missing_prism_dimension",
+      "signature": "rectangular_prism_missing_dimension_from_volume",
+      "state_action_labels": [
+        "rectangular_prism",
+        "volume",
+        "base_area",
+        "known_dimensions",
+        "unknown_dimension",
+        "inverse_multiplication",
+        "exact_division",
+        "cubic_unit"
+      ]
+    },
+    {
+      "contract_description": "rectangular_prism_volume_layer_iteration accepts inputs(rectangular_base,positive_integer_height) for geometry and returns cubic_units.",
+      "input_schema": "inputs(rectangular_base,positive_integer_height)",
+      "operation": "geometry",
+      "output_schema": "cubic_units",
+      "signature": "rectangular_prism_volume_layer_iteration",
+      "state_action_labels": [
+        "rectangular_prism",
+        "unit_cube",
+        "base",
+        "base_area",
+        "layer",
+        "height",
+        "cubic_unit",
+        "volume"
+      ]
+    },
+    {
+      "contract_description": "rigid_shape_composition accepts inputs(bounded_lattice_region,placed_rigid_parts) for geometry and returns composed_region.",
+      "input_schema": "inputs(bounded_lattice_region,placed_rigid_parts)",
+      "operation": "geometry",
+      "output_schema": "composed_region",
+      "signature": "rigid_shape_composition",
+      "state_action_labels": [
+        "shape",
+        "part",
+        "whole",
+        "compose",
+        "decompose",
+        "rigid_motion",
+        "rotate",
+        "translate",
+        "fit",
+        "boundary",
+        "no_gap",
+        "no_overlap"
+      ]
+    },
+    {
+      "contract_description": "shape_classification_by_defining_attributes accepts inputs(shape_with_observed_attributes,quarter_turn_orientation) for geometry and returns shape_categories.",
+      "input_schema": "inputs(shape_with_observed_attributes,quarter_turn_orientation)",
+      "operation": "geometry",
+      "output_schema": "shape_categories",
+      "signature": "shape_classification_by_defining_attributes",
+      "state_action_labels": [
+        "shape",
+        "defining_attribute",
+        "side",
+        "vertex",
+        "angle",
+        "parallel",
+        "equal_length",
+        "orientation",
+        "rotation",
+        "category",
+        "hierarchy"
+      ]
+    },
+    {
+      "contract_description": "slanted_side_as_parallelogram_height accepts inputs(parallelogram_dimensions,measurement_unit) for geometry and returns incorrect_parallelogram_area.",
+      "input_schema": "inputs(parallelogram_dimensions,measurement_unit)",
+      "operation": "geometry",
+      "output_schema": "incorrect_parallelogram_area",
+      "signature": "slanted_side_as_parallelogram_height",
+      "state_action_labels": [
+        "parallelogram",
+        "base",
+        "height",
+        "slanted_side",
+        "perpendicular",
+        "area"
+      ]
+    },
+    {
+      "contract_description": "subtract_side_from_area accepts inputs(positive_integer_area,known_side_length) for geometry and returns additive_remainder_as_side_length.",
+      "input_schema": "inputs(positive_integer_area,known_side_length)",
+      "operation": "geometry",
+      "output_schema": "additive_remainder_as_side_length",
+      "signature": "subtract_side_from_area",
+      "state_action_labels": [
+        "rectangle",
+        "area",
+        "known_side",
+        "unknown_side",
+        "subtraction",
+        "product_as_sum",
+        "operation_confusion"
+      ]
+    },
+    {
+      "contract_description": "sum_overlapping_prism_volumes accepts inputs(overlapping_rectangular_prisms_with_overlap,measurement_unit) for geometry and returns double_counted_volume.",
+      "input_schema": "inputs(overlapping_rectangular_prisms_with_overlap,measurement_unit)",
+      "operation": "geometry",
+      "output_schema": "double_counted_volume",
+      "signature": "sum_overlapping_prism_volumes",
+      "state_action_labels": [
+        "composite_solid",
+        "rectangular_prism",
+        "overlap",
+        "double_count",
+        "component_volume",
+        "cubic_unit"
+      ]
+    },
+    {
+      "contract_description": "symmetry_constrained_side_reconstruction accepts inputs(side_equivalence_orbits,total_polygon_perimeter) for geometry and returns unknown_side_length.",
+      "input_schema": "inputs(side_equivalence_orbits,total_polygon_perimeter)",
+      "operation": "geometry",
+      "output_schema": "unknown_side_length",
+      "signature": "symmetry_constrained_side_reconstruction",
+      "state_action_labels": [
+        "line_symmetry",
+        "reflection",
+        "side_orbit",
+        "equal_length",
+        "perimeter",
+        "unknown_side",
+        "inverse_operation"
+      ]
+    },
+    {
+      "contract_description": "triangle_area_half_base_height accepts inputs(triangle_base_and_perpendicular_height,measurement_unit) for geometry and returns triangle_area.",
+      "input_schema": "inputs(triangle_base_and_perpendicular_height,measurement_unit)",
+      "operation": "geometry",
+      "output_schema": "triangle_area",
+      "signature": "triangle_area_half_base_height",
+      "state_action_labels": [
+        "triangle",
+        "base",
+        "perpendicular_height",
+        "matching_copy",
+        "parallelogram",
+        "half",
+        "area",
+        "square_unit"
+      ]
+    },
+    {
+      "contract_description": "visible_faces_only_surface_area accepts inputs(supported_solid_with_all_face_areas,measurement_unit) for geometry and returns partial_surface_area.",
+      "input_schema": "inputs(supported_solid_with_all_face_areas,measurement_unit)",
+      "operation": "geometry",
+      "output_schema": "partial_surface_area",
+      "signature": "visible_faces_only_surface_area",
+      "state_action_labels": [
+        "polyhedron",
+        "face",
+        "net",
+        "visible_face",
+        "hidden_face",
+        "surface_area",
+        "incomplete_coverage"
+      ]
+    },
+    {
+      "contract_description": "drop_sign_use_magnitude_sum accepts inputs(signed_integer,signed_integer) for integer and returns unsigned_sum.",
+      "input_schema": "inputs(signed_integer,signed_integer)",
+      "operation": "integer",
+      "output_schema": "unsigned_sum",
+      "signature": "drop_sign_use_magnitude_sum",
+      "state_action_labels": [
+        "signed_addend",
+        "sign",
+        "magnitude",
+        "magnitude_only_combination",
+        "sign_loss",
+        "signed_sum"
+      ]
+    },
+    {
+      "contract_description": "inequality_as_boundary_point accepts inputs(one_variable_integer_inequality,number_line) for integer and returns boundary_as_single_solution.",
+      "input_schema": "inputs(one_variable_integer_inequality,number_line)",
+      "operation": "integer",
+      "output_schema": "boundary_as_single_solution",
+      "signature": "inequality_as_boundary_point",
+      "state_action_labels": [
+        "inequality",
+        "variable",
+        "boundary",
+        "single_value",
+        "solution_set",
+        "number_line"
+      ]
+    },
+    {
+      "contract_description": "inequality_solution_set_representation accepts inputs(one_variable_integer_inequality,number_line) for integer and returns inequality_solution_ray.",
+      "input_schema": "inputs(one_variable_integer_inequality,number_line)",
+      "operation": "integer",
+      "output_schema": "inequality_solution_ray",
+      "signature": "inequality_solution_set_representation",
+      "state_action_labels": [
+        "inequality",
+        "variable",
+        "boundary",
+        "less_than",
+        "greater_than",
+        "open_endpoint",
+        "closed_endpoint",
+        "solution_set",
+        "number_line",
+        "ray"
+      ]
+    },
+    {
+      "contract_description": "order_by_magnitude_ignore_sign accepts inputs(nonempty_signed_integer_list,number_line) for integer and returns magnitude_ordered_values.",
+      "input_schema": "inputs(nonempty_signed_integer_list,number_line)",
+      "operation": "integer",
+      "output_schema": "magnitude_ordered_values",
+      "signature": "order_by_magnitude_ignore_sign",
+      "state_action_labels": [
+        "sign",
+        "magnitude",
+        "absolute_value",
+        "number_line",
+        "numerical_order",
+        "sign_loss"
+      ]
+    },
+    {
+      "contract_description": "signed_addition_with_sign_relation accepts inputs(signed_integer,signed_integer) for integer and returns signed_sum.",
+      "input_schema": "inputs(signed_integer,signed_integer)",
+      "operation": "integer",
+      "output_schema": "signed_sum",
+      "signature": "signed_addition_with_sign_relation",
+      "state_action_labels": [
+        "signed_addend",
+        "sign",
+        "magnitude",
+        "sign_relation",
+        "same_sign_combination",
+        "opposite_sign_cancellation",
+        "signed_sum"
+      ]
+    },
+    {
+      "contract_description": "signed_number_location_and_order accepts inputs(nonempty_signed_integer_list,number_line) for integer and returns ordered_signed_values.",
+      "input_schema": "inputs(nonempty_signed_integer_list,number_line)",
+      "operation": "integer",
+      "output_schema": "ordered_signed_values",
+      "signature": "signed_number_location_and_order",
+      "state_action_labels": [
+        "positive_number",
+        "negative_number",
+        "zero",
+        "sign",
+        "magnitude",
+        "opposite",
+        "number_line",
+        "location",
+        "numerical_order"
+      ]
+    },
+    {
+      "contract_description": "change_unit_label_without_scaling accepts inputs(quantity_in_larger_unit,smaller_unit_and_integer_conversion_factor) for measurement and returns unchanged_numeral_with_smaller_unit_label.",
+      "input_schema": "inputs(quantity_in_larger_unit,smaller_unit_and_integer_conversion_factor)",
+      "operation": "measurement",
+      "output_schema": "unchanged_numeral_with_smaller_unit_label",
+      "signature": "change_unit_label_without_scaling",
+      "state_action_labels": [
+        "measurement",
+        "unit",
+        "conversion_factor",
+        "equivalent_quantity",
+        "relabel",
+        "unchanged_number"
+      ]
+    },
+    {
+      "contract_description": "count_marks_not_intervals accepts inputs(interval_count_and_subdivision,measurement_unit) for measurement and returns overcounted_length.",
+      "input_schema": "inputs(interval_count_and_subdivision,measurement_unit)",
+      "operation": "measurement",
+      "output_schema": "overcounted_length",
+      "signature": "count_marks_not_intervals",
+      "state_action_labels": [
+        "ruler",
+        "number_line",
+        "tick_mark",
+        "endpoint",
+        "interval",
+        "unit",
+        "overcount"
+      ]
+    },
+    {
+      "contract_description": "drop_unit_from_measured_quantity_change accepts inputs(measured_addition_or_subtraction,ignored) for measurement and returns bare_numeral.",
+      "input_schema": "inputs(measured_addition_or_subtraction,ignored)",
+      "operation": "measurement",
+      "output_schema": "bare_numeral",
+      "signature": "drop_unit_from_measured_quantity_change",
+      "state_action_labels": [
+        "measured_quantity",
+        "bare_number",
+        "unit_omission",
+        "quantity_change"
+      ]
+    },
+    {
+      "contract_description": "linear_unit_iteration accepts inputs(interval_count_and_subdivision,measurement_unit) for measurement and returns measured_length.",
+      "input_schema": "inputs(interval_count_and_subdivision,measurement_unit)",
+      "operation": "measurement",
+      "output_schema": "measured_length",
+      "signature": "linear_unit_iteration",
+      "state_action_labels": [
+        "measured_attribute",
+        "length",
+        "unit",
+        "equal_unit",
+        "subdivision",
+        "interval",
+        "endpoint",
+        "ruler",
+        "number_line",
+        "fraction",
+        "mixed_number"
+      ]
+    },
+    {
+      "contract_description": "liquid_volume_count_marks_not_intervals accepts inputs(volume_interval_count_and_subdivision,liquid_volume_unit) for measurement and returns overcounted_liquid_volume.",
+      "input_schema": "inputs(volume_interval_count_and_subdivision,liquid_volume_unit)",
+      "operation": "measurement",
+      "output_schema": "overcounted_liquid_volume",
+      "signature": "liquid_volume_count_marks_not_intervals",
+      "state_action_labels": [
+        "liquid_volume",
+        "container",
+        "liter",
+        "measurement_scale",
+        "tick_mark",
+        "interval",
+        "fill_level",
+        "overcount"
+      ]
+    },
+    {
+      "contract_description": "liquid_volume_scale_reading accepts inputs(volume_interval_count_and_subdivision,liquid_volume_unit) for measurement and returns liquid_volume.",
+      "input_schema": "inputs(volume_interval_count_and_subdivision,liquid_volume_unit)",
+      "operation": "measurement",
+      "output_schema": "liquid_volume",
+      "signature": "liquid_volume_scale_reading",
+      "state_action_labels": [
+        "liquid_volume",
+        "container",
+        "capacity",
+        "liter",
+        "equal_interval",
+        "measurement_scale",
+        "fill_level",
+        "estimate",
+        "draw_volume"
+      ]
+    },
+    {
+      "contract_description": "unit_conversion_by_iteration accepts inputs(quantity_in_larger_unit,smaller_unit_and_integer_conversion_factor) for measurement and returns equivalent_quantity_in_smaller_unit.",
+      "input_schema": "inputs(quantity_in_larger_unit,smaller_unit_and_integer_conversion_factor)",
+      "operation": "measurement",
+      "output_schema": "equivalent_quantity_in_smaller_unit",
+      "signature": "unit_conversion_by_iteration",
+      "state_action_labels": [
+        "measurement",
+        "unit",
+        "composite_unit",
+        "conversion_factor",
+        "equivalent_quantity",
+        "iterate",
+        "multiplicative_comparison"
+      ]
+    },
+    {
+      "contract_description": "unit_preserving_measured_quantity_change accepts inputs(measured_addition_or_subtraction,ignored) for measurement and returns unit_bearing_quantity.",
+      "input_schema": "inputs(measured_addition_or_subtraction,ignored)",
+      "operation": "measurement",
+      "output_schema": "unit_bearing_quantity",
+      "signature": "unit_preserving_measured_quantity_change",
+      "state_action_labels": [
+        "measured_quantity",
+        "measurement_unit",
+        "addition",
+        "subtraction",
+        "quantity_change",
+        "unit_preservation"
+      ]
+    },
+    {
+      "contract_description": "add_numbers_as_common_multiple accepts inputs(two_positive_integers,ignored) for multiplication and returns sum_as_candidate_common_multiple.",
+      "input_schema": "inputs(two_positive_integers,ignored)",
+      "operation": "multiplication",
+      "output_schema": "sum_as_candidate_common_multiple",
+      "signature": "add_numbers_as_common_multiple",
+      "state_action_labels": [
+        "multiple",
+        "common_multiple",
+        "addition",
+        "divisibility",
+        "operation_substitution"
+      ]
+    },
+    {
+      "contract_description": "common_factor_intersection accepts inputs(two_positive_integers,ignored) for multiplication and returns common_factors_and_greatest_common_factor.",
+      "input_schema": "inputs(two_positive_integers,ignored)",
+      "operation": "multiplication",
+      "output_schema": "common_factors_and_greatest_common_factor",
+      "signature": "common_factor_intersection",
+      "state_action_labels": [
+        "factor",
+        "divisor",
+        "factor_pair",
+        "divisibility",
+        "common_factor",
+        "intersection",
+        "greatest_common_factor"
+      ]
+    },
+    {
+      "contract_description": "common_multiple_sequence accepts inputs(two_positive_integers,ignored) for multiplication and returns generated_common_multiples_and_lcm.",
+      "input_schema": "inputs(two_positive_integers,ignored)",
+      "operation": "multiplication",
+      "output_schema": "generated_common_multiples_and_lcm",
+      "signature": "common_multiple_sequence",
+      "state_action_labels": [
+        "multiple",
+        "repeated_equal_group",
+        "divisibility",
+        "common_multiple",
+        "least_common_multiple",
+        "infinite_sequence",
+        "generator"
+      ]
+    },
+    {
+      "contract_description": "commute_factors_preserve_product accepts inputs(positive_integer_factor,positive_integer_factor) for multiplication and returns nonnegative_integer_product.",
+      "input_schema": "inputs(positive_integer_factor,positive_integer_factor)",
+      "operation": "multiplication",
+      "output_schema": "nonnegative_integer_product",
+      "signature": "commute_factors_preserve_product",
+      "state_action_labels": [
+        "factor_order",
+        "commutativity",
+        "equal_groups",
+        "product",
+        "equivalence"
+      ]
+    },
+    {
+      "contract_description": "coordinate_groups_items accepts inputs(positive_integer_group_count,positive_integer_group_size) for multiplication and returns nonnegative_integer_product.",
+      "input_schema": "inputs(positive_integer_group_count,positive_integer_group_size)",
+      "operation": "multiplication",
+      "output_schema": "nonnegative_integer_product",
+      "signature": "coordinate_groups_items",
+      "state_action_labels": [
+        "group_count",
+        "item_count",
+        "composite_unit",
+        "total_items"
+      ]
+    },
+    {
+      "contract_description": "distribute_group_size_split accepts inputs(positive_integer_group_count,positive_integer_group_size) for multiplication and returns nonnegative_integer_product.",
+      "input_schema": "inputs(positive_integer_group_count,positive_integer_group_size)",
+      "operation": "multiplication",
+      "output_schema": "nonnegative_integer_product",
+      "signature": "distribute_group_size_split",
+      "state_action_labels": [
+        "group_size_split",
+        "partial_product",
+        "recomposition",
+        "conservation"
+      ]
+    },
+    {
+      "contract_description": "factors_of_first_number_only accepts inputs(two_positive_integers,ignored) for multiplication and returns first_number_factors_as_common_factors.",
+      "input_schema": "inputs(two_positive_integers,ignored)",
+      "operation": "multiplication",
+      "output_schema": "first_number_factors_as_common_factors",
+      "signature": "factors_of_first_number_only",
+      "state_action_labels": [
+        "factor",
+        "divisor",
+        "common_factor",
+        "intersection",
+        "one_set_only"
+      ]
+    },
+    {
+      "contract_description": "multiplication_fact_retrieval accepts inputs(positive_integer_factor,positive_integer_factor) for multiplication and returns nonnegative_integer_product.",
+      "input_schema": "inputs(positive_integer_factor,positive_integer_factor)",
+      "operation": "multiplication",
+      "output_schema": "nonnegative_integer_product",
+      "signature": "multiplication_fact_retrieval",
+      "state_action_labels": [
+        "factor_pair",
+        "known_fact",
+        "product",
+        "fact_family",
+        "referent_units"
+      ]
+    },
+    {
+      "contract_description": "regroup_to_base_preserving_total accepts inputs(positive_integer_group_count,positive_integer_group_size) for multiplication and returns nonnegative_integer_product.",
+      "input_schema": "inputs(positive_integer_group_count,positive_integer_group_size)",
+      "operation": "multiplication",
+      "output_schema": "nonnegative_integer_product",
+      "signature": "regroup_to_base_preserving_total",
+      "state_action_labels": [
+        "equal_group",
+        "base_bundle",
+        "leftover",
+        "conservation"
+      ]
+    },
+    {
+      "contract_description": "repeat_equal_groups accepts inputs(positive_integer_group_count,positive_integer_group_size) for multiplication and returns nonnegative_integer_product.",
+      "input_schema": "inputs(positive_integer_group_count,positive_integer_group_size)",
+      "operation": "multiplication",
+      "output_schema": "nonnegative_integer_product",
+      "signature": "repeat_equal_groups",
+      "state_action_labels": [
+        "equal_group",
+        "repeated_addend",
+        "iteration_count",
+        "running_product"
+      ]
+    },
+    {
+      "contract_description": "repeat_group_size_by_itself accepts inputs(positive_integer_group_count,positive_integer_group_size) for multiplication and returns incorrect_nonnegative_integer_product.",
+      "input_schema": "inputs(positive_integer_group_count,positive_integer_group_size)",
+      "operation": "multiplication",
+      "output_schema": "incorrect_nonnegative_integer_product",
+      "signature": "repeat_group_size_by_itself",
+      "state_action_labels": [
+        "equal_group",
+        "repeated_addend",
+        "iteration_count",
+        "running_product"
+      ]
+    },
+    {
+      "contract_description": "additive_extension_of_ratio accepts inputs(ratio_pair_with_scale_factor,ignored) for ratio and returns non_equivalent_ratio_pair.",
+      "input_schema": "inputs(ratio_pair_with_scale_factor,ignored)",
+      "operation": "ratio",
+      "output_schema": "non_equivalent_ratio_pair",
+      "signature": "additive_extension_of_ratio",
+      "state_action_labels": [
+        "ratio_pair",
+        "unit_ratio",
+        "additive_comparison",
+        "first_term_increment",
+        "second_term_increment",
+        "ratio_loss"
+      ]
+    },
+    {
+      "contract_description": "construct_referent_ratio_diagram accepts inputs(two_named_positive_collections,ratio_diagram) for ratio and returns ordered_referent_ratio_statement.",
+      "input_schema": "inputs(two_named_positive_collections,ratio_diagram)",
+      "operation": "ratio",
+      "output_schema": "ordered_referent_ratio_statement",
+      "signature": "construct_referent_ratio_diagram",
+      "state_action_labels": [
+        "ratio",
+        "ratio_language",
+        "ratio_diagram",
+        "first_referent",
+        "second_referent",
+        "ordered_pair",
+        "for_every",
+        "tape_diagram"
+      ]
+    },
+    {
+      "contract_description": "reverse_ratio_referent_order accepts inputs(two_named_unequal_positive_collections,ratio_diagram) for ratio and returns referent_reversed_ratio_statement.",
+      "input_schema": "inputs(two_named_unequal_positive_collections,ratio_diagram)",
+      "operation": "ratio",
+      "output_schema": "referent_reversed_ratio_statement",
+      "signature": "reverse_ratio_referent_order",
+      "state_action_labels": [
+        "ratio",
+        "ratio_language",
+        "ratio_diagram",
+        "referent_order",
+        "reversed_terms",
+        "ratio_loss"
+      ]
+    },
+    {
+      "contract_description": "scale_ratio_unit accepts inputs(ratio_pair_with_scale_factor,ignored) for ratio and returns equivalent_ratio_pair.",
+      "input_schema": "inputs(ratio_pair_with_scale_factor,ignored)",
+      "operation": "ratio",
+      "output_schema": "equivalent_ratio_pair",
+      "signature": "scale_ratio_unit",
+      "state_action_labels": [
+        "ratio_pair",
+        "unit_ratio",
+        "scale_factor",
+        "multiplicative_scaling",
+        "equivalent_ratio",
+        "first_term",
+        "second_term"
+      ]
+    },
+    {
+      "contract_description": "box_plot_from_five_number_summary accepts inputs(data_set_with_at_least_two_values,box_plot_display) for statistics and returns box_plot.",
+      "input_schema": "inputs(data_set_with_at_least_two_values,box_plot_display)",
+      "operation": "statistics",
+      "output_schema": "box_plot",
+      "signature": "box_plot_from_five_number_summary",
+      "state_action_labels": [
+        "number_line",
+        "five_number_summary",
+        "quartile",
+        "median",
+        "interquartile_range",
+        "box_plot",
+        "whisker"
+      ]
+    },
+    {
+      "contract_description": "categorical_frequency_bar_representation accepts inputs(category_frequency_pairs,bar_chart_display) for statistics and returns frequency_representation.",
+      "input_schema": "inputs(category_frequency_pairs,bar_chart_display)",
+      "operation": "statistics",
+      "output_schema": "frequency_representation",
+      "signature": "categorical_frequency_bar_representation",
+      "state_action_labels": [
+        "categorical_data",
+        "category",
+        "frequency",
+        "bar_graph",
+        "scale",
+        "axis",
+        "bar_length",
+        "count"
+      ]
+    },
+    {
+      "contract_description": "distribution_summary_selection accepts inputs(data_set,declared_distribution_profile) for statistics and returns center_and_spread_pair.",
+      "input_schema": "inputs(data_set,declared_distribution_profile)",
+      "operation": "statistics",
+      "output_schema": "center_and_spread_pair",
+      "signature": "distribution_summary_selection",
+      "state_action_labels": [
+        "distribution_shape",
+        "symmetry",
+        "skew",
+        "outlier",
+        "center",
+        "variability",
+        "mean",
+        "median",
+        "mean_absolute_deviation",
+        "interquartile_range"
+      ]
+    },
+    {
+      "contract_description": "dot_plot_frequency_representation accepts inputs(measurement_values,dot_plot_display) for statistics and returns dot_plot.",
+      "input_schema": "inputs(measurement_values,dot_plot_display)",
+      "operation": "statistics",
+      "output_schema": "dot_plot",
+      "signature": "dot_plot_frequency_representation",
+      "state_action_labels": [
+        "measurement_data",
+        "number_line",
+        "value",
+        "frequency",
+        "dot_plot",
+        "line_plot",
+        "stacked_mark"
+      ]
+    },
+    {
+      "contract_description": "five_number_summary_and_iqr accepts inputs(data_set_with_at_least_two_values,measurement_unit) for statistics and returns five_number_summary_and_iqr.",
+      "input_schema": "inputs(data_set_with_at_least_two_values,measurement_unit)",
+      "operation": "statistics",
+      "output_schema": "five_number_summary_and_iqr",
+      "signature": "five_number_summary_and_iqr",
+      "state_action_labels": [
+        "ordered_data",
+        "minimum",
+        "first_quartile",
+        "median",
+        "third_quartile",
+        "maximum",
+        "interquartile_range",
+        "measurement_unit"
+      ]
+    },
+    {
+      "contract_description": "histogram_equal_interval_representation accepts inputs(nonnegative_integer_measurements,positive_integer_bin_width) for statistics and returns histogram.",
+      "input_schema": "inputs(nonnegative_integer_measurements,positive_integer_bin_width)",
+      "operation": "statistics",
+      "output_schema": "histogram",
+      "signature": "histogram_equal_interval_representation",
+      "state_action_labels": [
+        "measurement_data",
+        "distribution",
+        "interval",
+        "equal_width",
+        "frequency",
+        "histogram",
+        "scale"
+      ]
+    },
+    {
+      "contract_description": "mean_absolute_deviation accepts inputs(data_set,measurement_unit) for statistics and returns rational_mad.",
+      "input_schema": "inputs(data_set,measurement_unit)",
+      "operation": "statistics",
+      "output_schema": "rational_mad",
+      "signature": "mean_absolute_deviation",
+      "state_action_labels": [
+        "data_set",
+        "mean",
+        "deviation",
+        "absolute_value",
+        "distance",
+        "variability",
+        "mean_absolute_deviation",
+        "measurement_unit"
+      ]
+    },
+    {
+      "contract_description": "mean_as_balance_point accepts inputs(data_set,measurement_unit) for statistics and returns mean_with_balanced_signed_deviations.",
+      "input_schema": "inputs(data_set,measurement_unit)",
+      "operation": "statistics",
+      "output_schema": "mean_with_balanced_signed_deviations",
+      "signature": "mean_as_balance_point",
+      "state_action_labels": [
+        "data_set",
+        "number_line",
+        "signed_deviation",
+        "balance_point",
+        "mean",
+        "measurement_unit"
+      ]
+    },
+    {
+      "contract_description": "mean_as_fair_share accepts inputs(data_set,measurement_unit) for statistics and returns rational_mean.",
+      "input_schema": "inputs(data_set,measurement_unit)",
+      "operation": "statistics",
+      "output_schema": "rational_mean",
+      "signature": "mean_as_fair_share",
+      "state_action_labels": [
+        "data_set",
+        "total",
+        "count",
+        "fair_share",
+        "equal_distribution",
+        "mean",
+        "measurement_unit"
+      ]
+    },
+    {
+      "contract_description": "mean_deviation_without_absolute_value accepts inputs(data_set,measurement_unit) for statistics and returns cancelled_signed_deviation.",
+      "input_schema": "inputs(data_set,measurement_unit)",
+      "operation": "statistics",
+      "output_schema": "cancelled_signed_deviation",
+      "signature": "mean_deviation_without_absolute_value",
+      "state_action_labels": [
+        "mean",
+        "signed_deviation",
+        "distance",
+        "mean_absolute_deviation",
+        "measurement_unit"
+      ]
+    },
+    {
+      "contract_description": "median_as_ordered_middle accepts inputs(data_set,measurement_unit) for statistics and returns median_value.",
+      "input_schema": "inputs(data_set,measurement_unit)",
+      "operation": "statistics",
+      "output_schema": "median_value",
+      "signature": "median_as_ordered_middle",
+      "state_action_labels": [
+        "data_set",
+        "order",
+        "position",
+        "middle",
+        "median",
+        "two_middle_values",
+        "measurement_unit"
+      ]
+    },
+    {
+      "contract_description": "mode_as_maximal_frequency accepts inputs(data_set,measurement_unit) for statistics and returns modes.",
+      "input_schema": "inputs(data_set,measurement_unit)",
+      "operation": "statistics",
+      "output_schema": "modes",
+      "signature": "mode_as_maximal_frequency",
+      "state_action_labels": [
+        "data_set",
+        "equal_value",
+        "frequency",
+        "maximum",
+        "mode",
+        "multiple_modes",
+        "measurement_unit"
+      ]
+    },
+    {
+      "contract_description": "question_without_variability accepts inputs(question_with_anticipated_variability,named_population) for statistics and returns nonstatistical_question_misclassification.",
+      "input_schema": "inputs(question_with_anticipated_variability,named_population)",
+      "operation": "statistics",
+      "output_schema": "nonstatistical_question_misclassification",
+      "signature": "question_without_variability",
+      "state_action_labels": [
+        "question",
+        "answer",
+        "variable",
+        "variability"
+      ]
+    },
+    {
+      "contract_description": "statistical_question_variability_classification accepts inputs(question_with_anticipated_variability,named_population) for statistics and returns statistical_question.",
+      "input_schema": "inputs(question_with_anticipated_variability,named_population)",
+      "operation": "statistics",
+      "output_schema": "statistical_question",
+      "signature": "statistical_question_variability_classification",
+      "state_action_labels": [
+        "statistical_question",
+        "population",
+        "variable",
+        "observation",
+        "variability",
+        "anticipated_response"
+      ]
+    },
+    {
+      "contract_description": "add_instead_of_subtract_column accepts inputs(nonnegative_integer_minuend,nonnegative_integer_subtrahend) for subtraction and returns incorrect_nonnegative_integer_difference.",
+      "input_schema": "inputs(nonnegative_integer_minuend,nonnegative_integer_subtrahend)",
+      "operation": "subtraction",
+      "output_schema": "incorrect_nonnegative_integer_difference",
+      "signature": "add_instead_of_subtract_column",
+      "state_action_labels": [
+        "base_unit",
+        "ones",
+        "exchange",
+        "borrowed_base",
+        "recomposition"
+      ]
+    },
+    {
+      "contract_description": "answer_as_endpoint_count_up accepts inputs(nonnegative_integer_minuend,nonnegative_integer_subtrahend) for subtraction and returns endpoint_as_incorrect_difference.",
+      "input_schema": "inputs(nonnegative_integer_minuend,nonnegative_integer_subtrahend)",
+      "operation": "subtraction",
+      "output_schema": "endpoint_as_incorrect_difference",
+      "signature": "answer_as_endpoint_count_up",
+      "state_action_labels": [
+        "start_number",
+        "target_number",
+        "base_jump",
+        "one_jump",
+        "distance"
+      ]
+    },
+    {
+      "contract_description": "compare_by_matching_difference accepts inputs(nonnegative_cardinality,nonnegative_cardinality) for subtraction and returns nonnegative_cardinality_difference.",
+      "input_schema": "inputs(nonnegative_cardinality,nonnegative_cardinality)",
+      "operation": "subtraction",
+      "output_schema": "nonnegative_cardinality_difference",
+      "signature": "compare_by_matching_difference",
+      "state_action_labels": [
+        "set_a",
+        "set_b",
+        "one_to_one_matching",
+        "unmatched_objects",
+        "difference"
+      ]
+    },
+    {
+      "contract_description": "count_up_missing_addend accepts inputs(nonnegative_integer_minuend,nonnegative_integer_subtrahend) for subtraction and returns nonnegative_integer_difference.",
+      "input_schema": "inputs(nonnegative_integer_minuend,nonnegative_integer_subtrahend)",
+      "operation": "subtraction",
+      "output_schema": "nonnegative_integer_difference",
+      "signature": "count_up_missing_addend",
+      "state_action_labels": [
+        "start_number",
+        "target_number",
+        "base_jump",
+        "one_jump",
+        "distance"
+      ]
+    },
+    {
+      "contract_description": "decompose_base_for_ones accepts inputs(nonnegative_integer_minuend,nonnegative_integer_subtrahend) for subtraction and returns nonnegative_integer_difference.",
+      "input_schema": "inputs(nonnegative_integer_minuend,nonnegative_integer_subtrahend)",
+      "operation": "subtraction",
+      "output_schema": "nonnegative_integer_difference",
+      "signature": "decompose_base_for_ones",
+      "state_action_labels": [
+        "base_unit",
+        "ones",
+        "exchange",
+        "borrowed_base",
+        "recomposition"
+      ]
+    },
+    {
+      "contract_description": "smaller_from_larger_in_column accepts inputs(nonnegative_integer_minuend,nonnegative_integer_subtrahend) for subtraction and returns incorrect_nonnegative_integer_difference.",
+      "input_schema": "inputs(nonnegative_integer_minuend,nonnegative_integer_subtrahend)",
+      "operation": "subtraction",
+      "output_schema": "incorrect_nonnegative_integer_difference",
+      "signature": "smaller_from_larger_in_column",
+      "state_action_labels": [
+        "base_unit",
+        "ones",
+        "exchange",
+        "borrowed_base",
+        "recomposition"
+      ]
+    },
+    {
+      "contract_description": "take_away_base_ones accepts inputs(nonnegative_integer_minuend,nonnegative_integer_subtrahend) for subtraction and returns nonnegative_integer_difference.",
+      "input_schema": "inputs(nonnegative_integer_minuend,nonnegative_integer_subtrahend)",
+      "operation": "subtraction",
+      "output_schema": "nonnegative_integer_difference",
+      "signature": "take_away_base_ones",
+      "state_action_labels": [
+        "minuend",
+        "subtrahend",
+        "base_chunk",
+        "ones_chunk",
+        "running_difference"
+      ]
+    }
+  ],
+  "format": "hermes-embedding-index-v1",
+  "identifier_field": "signature",
+  "model": "Qwen3-Embedding-8B",
+  "source_hash": "e45c05df69487d2a5634d803b483e7d6946634500bd6bfdca044e742dcb912ca",
+  "vectors": "strategy_embeddings.npz"
+}

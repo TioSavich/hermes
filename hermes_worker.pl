@@ -87,6 +87,7 @@ load_runtime :-
                [ lit_deontic_content_match/2,
                  lit_deontic_content_match_witness/3 ]),
     use_module(hermes(math_claim_checker), []),
+    use_module(hermes(strategy_recognizer), []),
     use_module(hermes(capability_registry), []),
     use_module(sequent(embodied_prover), []),
     use_module(sequent(sequent_engine), []),

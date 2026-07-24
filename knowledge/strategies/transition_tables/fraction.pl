@@ -237,7 +237,7 @@ automaton_transition(fraction, area_model_unequal_partition_piece_count, q_itera
 automaton_transition(fraction, area_model_unequal_partition_piece_count, q_compare_relative_size, whole_number_dominance, q_emit, provenance(observed(derived_template))).
 automaton_transition(fraction, area_model_unequal_partition_piece_count, q_emit, emit, q_accept, provenance(observed(derived_template))).
 
-automaton_transition(fraction, benchmark_fraction_comparison, q_start, init, q_observed_1, provenance(observed(contract_example))).
+automaton_transition(fraction, benchmark_fraction_comparison, q_init, init, q_observed_1, provenance(observed(contract_example))).
 automaton_transition(fraction, benchmark_fraction_comparison, q_observed_1, selected, q_observed_2, provenance(observed(contract_example))).
 automaton_transition(fraction, benchmark_fraction_comparison, q_observed_2, judgment, q_observed_3, provenance(observed(contract_example))).
 automaton_transition(fraction, benchmark_fraction_comparison, q_observed_3, judgment, q_observed_4, provenance(observed(contract_example))).
@@ -245,7 +245,7 @@ automaton_transition(fraction, benchmark_fraction_comparison, q_observed_4, same
 automaton_transition(fraction, benchmark_fraction_comparison, q_observed_5, residual, q_observed_6, provenance(observed(contract_example))).
 automaton_transition(fraction, benchmark_fraction_comparison, q_observed_6, emit, q_accept, provenance(observed(contract_example))).
 
-automaton_transition(fraction, benchmark_fraction_comparison, q_start, init, q_observed_1, provenance(observed(derived_template))).
+automaton_transition(fraction, benchmark_fraction_comparison, q_init, init, q_observed_1, provenance(observed(derived_template))).
 automaton_transition(fraction, benchmark_fraction_comparison, q_observed_1, selected, q_observed_2, provenance(observed(derived_template))).
 automaton_transition(fraction, benchmark_fraction_comparison, q_observed_2, judgment, q_observed_3, provenance(observed(derived_template))).
 automaton_transition(fraction, benchmark_fraction_comparison, q_observed_3, judgment, q_observed_4, provenance(observed(derived_template))).
@@ -253,7 +253,7 @@ automaton_transition(fraction, benchmark_fraction_comparison, q_observed_4, oppo
 automaton_transition(fraction, benchmark_fraction_comparison, q_observed_5, residual, q_observed_6, provenance(observed(derived_template))).
 automaton_transition(fraction, benchmark_fraction_comparison, q_observed_6, emit, q_accept, provenance(observed(derived_template))).
 
-automaton_transition(fraction, common_unit_fraction_comparison, q_start, init, q_observed_1, provenance(observed(contract_example))).
+automaton_transition(fraction, common_unit_fraction_comparison, q_init, init, q_observed_1, provenance(observed(contract_example))).
 automaton_transition(fraction, common_unit_fraction_comparison, q_observed_1, common_denominator, q_observed_2, provenance(observed(contract_example))).
 automaton_transition(fraction, common_unit_fraction_comparison, q_observed_2, transformed, q_observed_3, provenance(observed(contract_example))).
 automaton_transition(fraction, common_unit_fraction_comparison, q_observed_3, transformed, q_observed_4, provenance(observed(contract_example))).
@@ -261,7 +261,7 @@ automaton_transition(fraction, common_unit_fraction_comparison, q_observed_4, co
 automaton_transition(fraction, common_unit_fraction_comparison, q_observed_5, compare_counts, q_observed_6, provenance(observed(contract_example))).
 automaton_transition(fraction, common_unit_fraction_comparison, q_observed_6, emit, q_accept, provenance(observed(contract_example))).
 
-automaton_transition(fraction, common_unit_fraction_comparison, q_start, init, q_observed_1, provenance(observed(derived_template))).
+automaton_transition(fraction, common_unit_fraction_comparison, q_init, init, q_observed_1, provenance(observed(derived_template))).
 automaton_transition(fraction, common_unit_fraction_comparison, q_observed_1, common_denominator, q_observed_2, provenance(observed(derived_template))).
 automaton_transition(fraction, common_unit_fraction_comparison, q_observed_2, transformed, q_observed_3, provenance(observed(derived_template))).
 automaton_transition(fraction, common_unit_fraction_comparison, q_observed_3, transformed, q_observed_4, provenance(observed(derived_template))).
@@ -269,7 +269,7 @@ automaton_transition(fraction, common_unit_fraction_comparison, q_observed_4, co
 automaton_transition(fraction, common_unit_fraction_comparison, q_observed_5, compare_counts, q_observed_6, provenance(observed(derived_template))).
 automaton_transition(fraction, common_unit_fraction_comparison, q_observed_6, emit, q_accept, provenance(observed(derived_template))).
 
-automaton_transition(fraction, gap_thinking_fraction_comparison, q_start, init, q_observed_1, provenance(observed(contract_example))).
+automaton_transition(fraction, gap_thinking_fraction_comparison, q_init, init, q_observed_1, provenance(observed(contract_example))).
 automaton_transition(fraction, gap_thinking_fraction_comparison, q_observed_1, selected, q_observed_2, provenance(observed(contract_example))).
 automaton_transition(fraction, gap_thinking_fraction_comparison, q_observed_2, numerator_denominator_gap, q_observed_3, provenance(observed(contract_example))).
 automaton_transition(fraction, gap_thinking_fraction_comparison, q_observed_3, numerator_denominator_gap, q_observed_4, provenance(observed(contract_example))).
@@ -279,7 +279,7 @@ automaton_transition(fraction, gap_thinking_fraction_comparison, q_observed_6, u
 automaton_transition(fraction, gap_thinking_fraction_comparison, q_observed_7, viability, q_observed_8, provenance(observed(contract_example))).
 automaton_transition(fraction, gap_thinking_fraction_comparison, q_observed_8, emit, q_accept, provenance(observed(contract_example))).
 
-automaton_transition(fraction, gap_thinking_fraction_comparison, q_start, init, q_observed_1, provenance(observed(derived_template))).
+automaton_transition(fraction, gap_thinking_fraction_comparison, q_init, init, q_observed_1, provenance(observed(derived_template))).
 automaton_transition(fraction, gap_thinking_fraction_comparison, q_observed_1, selected, q_observed_2, provenance(observed(derived_template))).
 automaton_transition(fraction, gap_thinking_fraction_comparison, q_observed_2, numerator_denominator_gap, q_observed_3, provenance(observed(derived_template))).
 automaton_transition(fraction, gap_thinking_fraction_comparison, q_observed_3, numerator_denominator_gap, q_observed_4, provenance(observed(derived_template))).

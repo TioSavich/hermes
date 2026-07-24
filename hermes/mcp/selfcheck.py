@@ -29,11 +29,11 @@ CHECKS = (
         fix="Confirm that this checkout includes the lesson corpus, then run the command again from the repository root.",
     ),
     Check(
-        label="check_math_claim for 3/4 = 6/8",
+        label="check_math_claim for ordinary-language addition",
         tool="check_math_claim",
-        arguments={"term": "3/4 = 6/8"},
+        arguments={"term": "I added 4 and 2 and got 6"},
         accepts=lambda value: isinstance(value, dict) and bool(value.get("checks")),
-        fix="Use the fraction-equivalence form exactly as shown; this MCP seam does not accept arbitrary claim syntax.",
+        fix="Supply a complete explicit relation with its operands and claimed result; the reader abstains on implied operations.",
     ),
     Check(
         label="strategy_trace for count_on_from_larger",

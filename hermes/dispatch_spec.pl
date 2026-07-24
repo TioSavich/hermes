@@ -659,6 +659,12 @@ dispatch_spec(strategy_trace,
     call(hermes_encyclopedia:strategy_trace_dict,
          [strategy, input, out(dict)]),
     raw(missing_strategy)).
+dispatch_spec(strategy_recognize,
+    [content-nonempty_text],
+    call(strategy_recognizer:recognize_strategies,
+         [content, out(witness)]),
+    witness(no_strategy_recognition,
+            malformed_strategy_recognition_request)).
 dispatch_spec(list_misconceptions,
     [domain-default(filter, all)],
     call(hermes_encyclopedia:misconception_catalog_dict,
