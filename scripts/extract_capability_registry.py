@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import ast
 import difflib
+import functools
 import re
 import sys
 import tempfile
@@ -131,6 +132,22 @@ IRREGULAR_PARAMETER_METADATA: dict[str, dict[str, tuple[str, bool]]] = {
 
 
 ROLE_PREFIXES: tuple[tuple[str, str], ...] = (
+    ("batch_event_score", "infrastructure"),
+    ("benny_demo", "misconceptions"),
+    ("check_math_claim", "misconceptions"),
+    ("commitment_match", "misconceptions"),
+    ("elaborations", "synthesis"),
+    ("image_schema", "render"),
+    ("inferential_strength", "synthesis"),
+    ("lesson_deformation_chart", "workflow"),
+    ("lesson_misconception_", "misconceptions"),
+    ("pair_", "infrastructure"),
+    ("primitive_for_practice", "render"),
+    ("state_labels", "synthesis"),
+    ("strategy_", "synthesis"),
+    ("target_inferential_strength", "synthesis"),
+    ("unit_coordination_svg", "render"),
+    ("unit_echo_", "render"),
     ("geometry", "geometry_witness"),
     ("standard_", "standards"),
     ("multiply_array_witness", "standards"),
@@ -177,7 +194,10 @@ ROLE_PREFIXES: tuple[tuple[str, str], ...] = (
 )
 
 DIRECTORY_ROLES = {
+    "curriculum": "workflow",
     "knowledge/crosswalk": "crosswalk",
+    "knowledge/discourse": "pml",
+    "knowledge/strategies/render": "render",
     "formal/sequent": "sequent",
     "formal/incompatibility": "incompatibility",
     "formal/dialectic": "dialectic",
@@ -233,11 +253,30 @@ def prolog_json_value(value: object | None) -> str:
     raise TypeError(f"unsupported registry example value: {value!r}")
 
 
-def role_for_op(name: str) -> str:
+@functools.lru_cache(maxsize=1)
+def module_directory_roles() -> dict[str, str]:
+    """Return unambiguous existing classes for shipped Prolog modules."""
+    candidates: dict[str, set[str]] = defaultdict(set)
+    for rel in build_manifest(with_figures=False):
+        if not rel.endswith(".pl"):
+            continue
+        role = directory_role(rel)
+        if role == "unclassified":
+            continue
+        path = ROOT / rel
+        candidates[module_name(path)].add(role)
+    return {
+        module: next(iter(roles))
+        for module, roles in candidates.items()
+        if len(roles) == 1
+    }
+
+
+def role_for_op(name: str, module: str) -> str:
     for prefix, role in ROLE_PREFIXES:
         if name.startswith(prefix):
             return role
-    return "unclassified"
+    return module_directory_roles().get(module, "unclassified")
 
 
 def top_level_items(text: str) -> list[str]:
@@ -398,7 +437,7 @@ def extract_spec_operations() -> dict[str, Operation]:
         if name in operations:
             raise ValueError(f"duplicate dispatch_spec row: {name}")
         operations[name] = Operation(
-            name, module, role_for_op(name), inputs, parameters,
+            name, module, role_for_op(name, module), inputs, parameters,
             OPERATION_DESCRIPTIONS.get(name),
         )
     return operations
@@ -418,7 +457,9 @@ def extract_operations(text: str) -> list[Operation]:
         operations.append(Operation(
             name=name,
             module=module_match.group(1) if module_match else "hermes_worker",
-            role=role_for_op(name),
+            role=role_for_op(
+                name, module_match.group(1) if module_match else "hermes_worker"
+            ),
             inputs=inputs,
             parameters=irregular_parameters(name, inputs),
             description=OPERATION_DESCRIPTIONS.get(name),

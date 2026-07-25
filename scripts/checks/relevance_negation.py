@@ -19,9 +19,28 @@ FIELD_CACHE = ROOT / "curriculum/im/generated/field_context_cache.json"
 LESSON_MONITORING = ROOT / "curriculum/im/lesson_monitoring.pl"
 
 OPERATION_TOPIC_RE = re.compile(r"(?m)^operation_topic\((\w+), (\w+)\)\.")
+KNOWN_TOPIC_RE = re.compile(r"(?m)^known_topic\(([^)]+)\)\.")
 LESSON_GRADE_RE = re.compile(r"(?m)^lesson_grade\(([^,]+), (\d+)\)\.")
 SOURCE_GAP_RE = re.compile(r"(?m)^source_gap\(cache_only_lesson, ([^)]+)\)\.")
 EXCLUDES_RE = re.compile(r"(?m)^excludes\(")
+
+# A topic may appear here only when the tree supports no machine subtraction.
+# Keep the explanation with the exemption so a zero-subtraction topic cannot
+# enter silently. There are no exemptions in the current generated layer.
+ZERO_MACHINE_SUBTRACTION_EXEMPTIONS: dict[str, str] = {}
+
+
+def _unquote_atom(raw: str) -> str:
+    value = raw.strip()
+    if len(value) >= 2 and value[0] == value[-1] == "'":
+        return value[1:-1].replace("\\'", "'").replace("\\\\", "\\")
+    return value
+
+
+def _pl_atom(value: str) -> str:
+    if re.fullmatch(r"[a-z][a-zA-Z0-9_]*", value):
+        return value
+    return "'" + value.replace("\\", "\\\\").replace("'", "\\'") + "'"
 
 
 def _run_builder(output: Path) -> subprocess.CompletedProcess[str]:
@@ -55,7 +74,7 @@ def _prolog_query(goal: str) -> subprocess.CompletedProcess[str]:
 
 def _slice_counts(topic: str) -> tuple[int, int, int, int, int, int]:
     goal = (
-        f"surviving_slices({topic},S,_),"
+        f"surviving_slices({_pl_atom(topic)},S,_),"
         "findall(K,member(slice(lesson,K),S),Ls),length(Ls,L),"
         "findall(K,slice(lesson,K),L0s),length(L0s,L0),"
         "findall(K,member(slice(standard,K),S),Ss),length(Ss,St),"
@@ -135,6 +154,46 @@ def main() -> int:
     if empty_topics:
         errors.append(f"topics with no surviving content slices: {empty_topics}")
 
+    generated = NEGATION.read_text(encoding="utf-8")
+    known_topics = sorted(
+        {_unquote_atom(raw) for raw in KNOWN_TOPIC_RE.findall(generated)}
+    )
+    unknown_exemptions = sorted(
+        set(ZERO_MACHINE_SUBTRACTION_EXEMPTIONS) - set(known_topics)
+    )
+    if unknown_exemptions:
+        errors.append(
+            "zero-machine-subtraction exemptions are not known topics: "
+            f"{unknown_exemptions}"
+        )
+    empty_explanations = sorted(
+        topic
+        for topic, reason in ZERO_MACHINE_SUBTRACTION_EXEMPTIONS.items()
+        if not reason.strip()
+    )
+    if empty_explanations:
+        errors.append(
+            "zero-machine-subtraction exemptions lack reasons: "
+            f"{empty_explanations}"
+        )
+    zero_machine_topics: list[str] = []
+    for topic in known_topics:
+        try:
+            *_other, machines, all_machines = _slice_counts(topic)
+        except RuntimeError as exc:
+            errors.append(str(exc))
+            continue
+        if machines == all_machines:
+            zero_machine_topics.append(topic)
+    unexplained_zero_topics = sorted(
+        set(zero_machine_topics) - set(ZERO_MACHINE_SUBTRACTION_EXEMPTIONS)
+    )
+    if unexplained_zero_topics:
+        errors.append(
+            "known topics subtract zero machines without an exemption: "
+            f"{unexplained_zero_topics}"
+        )
+
     owner = _prolog_query(
         "surviving_slices('fraction/thirds',S,E),"
         "findall(C,lesson_grade(C,0),K0),sort(K0,K),"
@@ -150,7 +209,6 @@ def main() -> int:
             f"{owner.stdout.strip()} {owner.stderr.strip()}"
         )
 
-    generated = NEGATION.read_text(encoding="utf-8")
     lesson_rows = {
         raw_code.strip("'"): int(grade)
         for raw_code, grade in LESSON_GRADE_RE.findall(generated)
@@ -186,6 +244,11 @@ def main() -> int:
     )
     print(
         f"PASS every operation topic leaves content slices: {len(topics)} topics"
+    )
+    print(
+        f"PASS every known topic subtracts machines or has a reasoned exemption: "
+        f"{len(known_topics)} topics; "
+        f"{len(ZERO_MACHINE_SUBTRACTION_EXEMPTIONS)} exemptions"
     )
     print(
         f"PASS owner case fraction/thirds: {excluded_k} kindergarten lessons excluded; "

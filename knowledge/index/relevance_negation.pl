@@ -3,12 +3,14 @@
 
 known_topic(addition).
 known_topic(algebraic).
+known_topic(calculus).
 known_topic(cardinality).
 known_topic(counting).
 known_topic(data).
 known_topic(decimal).
 known_topic(division).
 known_topic(fraction).
+known_topic('fraction/thirds').
 known_topic(geometry).
 known_topic(integer).
 known_topic(multiplication).
@@ -16,7 +18,6 @@ known_topic(probability).
 known_topic(proportional).
 known_topic(ratio).
 known_topic(subtraction).
-known_topic('fraction/thirds').
 
 query_keyword(addition, add).
 query_keyword(addition, sum).
@@ -4505,8 +4506,244 @@ family_topics(measurement, []).
 family_topics(multiplication, [multiplication]).
 family_topics(probability, [probability]).
 family_topics(ratio, [proportional, ratio]).
-family_topics(statistics, []).
+family_topics(statistics, [data]).
 family_topics(subtraction, [subtraction]).
+
+machine_genre(addition, append_column_sum_without_carrying, computational).
+machine_genre(addition, base_ones_chunking, computational).
+machine_genre(addition, column_addition_with_carrying, computational).
+machine_genre(addition, count_all_instead_of_known_fact, computational).
+machine_genre(addition, count_all_when_count_on_available, computational).
+machine_genre(addition, count_on_from_larger, computational).
+machine_genre(addition, derived_fact_adjustment, computational).
+machine_genre(addition, drop_carry_to_next_column, computational).
+machine_genre(addition, dropped_ones_chunk, computational).
+machine_genre(addition, known_fact_retrieval, computational).
+machine_genre(addition, make_base_transfer, computational).
+machine_genre(addition, make_ten_drop_leftover, computational).
+machine_genre(addition, make_ten_split_leftover, computational).
+machine_genre(addition, rote_derived_fact_rule_misfire, computational).
+machine_genre(addition, round_then_adjust, computational).
+machine_genre(addition, round_without_adjusting, computational).
+machine_genre(addition, unbalanced_make_base_compensation, computational).
+machine_genre(addition, wrong_carry_amount_to_next_column, computational).
+machine_genre(algebraic, balance_preserving_linear_solution, computational).
+machine_genre(algebraic, contextual_linear_equation_construction, computational).
+machine_genre(algebraic, distributive_expression_rewrite, computational).
+machine_genre(algebraic, drop_distributed_term, computational).
+machine_genre(algebraic, equation_truth_by_substitution, computational).
+machine_genre(algebraic, exponent_as_multiplier, computational).
+machine_genre(algebraic, exponent_as_repeated_factor, computational).
+machine_genre(algebraic, exponential_equivalence_by_expansion, computational).
+machine_genre(algebraic, guess_and_check_rule, computational).
+machine_genre(algebraic, linear_pattern_contextual_rule, computational).
+machine_genre(algebraic, one_sided_equation_operation, computational).
+machine_genre(algebraic, operational_equals_left_value, computational).
+machine_genre(algebraic, programming_expression_evaluation, computational).
+machine_genre(algebraic, symbolic_expression_construction, computational).
+machine_genre(calculus, factor_cancel_substitute, computational).
+machine_genre(calculus, factor_cancel_without_common_factor, computational).
+machine_genre(counting, compare_cardinalities_one_to_one, computational).
+machine_genre(counting, compare_ones_digits_only, computational).
+machine_genre(counting, inscribe_cardinality, computational).
+machine_genre(counting, omit_highest_place_regrouping, computational).
+machine_genre(counting, place_value_comparison, computational).
+machine_genre(counting, recursive_place_value_inscription, computational).
+machine_genre(counting, spatial_extent_as_cardinality, computational).
+machine_genre(decimal, change_decimal_place_name_without_regrouping, computational).
+machine_genre(decimal, decimal_add_unaligned_numerals, computational).
+machine_genre(decimal, decimal_addition_by_aligned_units, computational).
+machine_genre(decimal, decimal_comparison_by_aligned_units, computational).
+machine_genre(decimal, decimal_fraction_place_value_comparison, computational).
+machine_genre(decimal, decimal_multiplication_rule, computational).
+machine_genre(decimal, decimal_numeral_comparison_without_scale_alignment, computational).
+machine_genre(decimal, decimal_place_unit_regrouping, computational).
+machine_genre(decimal, decimal_point_rule_misapplication, computational).
+machine_genre(decimal, decimal_scale_loss_comparison, computational).
+machine_genre(decimal, decimal_subtract_unaligned_numerals, computational).
+machine_genre(decimal, decimal_subtraction_by_aligned_units, computational).
+machine_genre(decimal, decimal_whole_number_reading, computational).
+machine_genre(decimal, ecuadorian_decimal_long_division, computational).
+machine_genre(decimal, positional_decimal_reading, computational).
+machine_genre(decimal, recalled_result_scaling, computational).
+machine_genre(discourse, algorithmic_elaboration, discursive).
+machine_genre(discourse, assertion_without_vindication_task, discursive).
+machine_genre(discourse, assertional_commitment, discursive).
+machine_genre(discourse, attribution_and_acknowledgement_kept_apart, discursive).
+machine_genre(discourse, attribution_taken_as_acknowledgement, discursive).
+machine_genre(discourse, authority_where_inference_required, discursive).
+machine_genre(discourse, commitment_repair, discursive).
+machine_genre(discourse, deferral_regress, discursive).
+machine_genre(discourse, entitlement_by_authority, discursive).
+machine_genre(discourse, entitlement_by_deferral, discursive).
+machine_genre(discourse, entitlement_by_formal_schema, discursive).
+machine_genre(discourse, entitlement_by_inference, discursive).
+machine_genre(discourse, incompatibility_recognition, discursive).
+machine_genre(discourse, incompatible_commitments_held, discursive).
+machine_genre(discourse, pragmatic_metavocabulary_construction, discursive).
+machine_genre(discourse, tutorial_interruption_on_incompatible_token, discursive).
+machine_genre(discourse, universally_lx_loop, discursive).
+machine_genre(discourse, utterance_run_to_its_loss, discursive).
+machine_genre(division, fair_share_equal_groups, computational).
+machine_genre(division, inverse_fact_decomposition, computational).
+machine_genre(division, long_division, computational).
+machine_genre(division, measure_groups_of_size, computational).
+machine_genre(division, missing_factor_known_product_search, computational).
+machine_genre(division, missing_factor_repeated_addition, computational).
+machine_genre(division, name_group_count_as_share_size, computational).
+machine_genre(division, name_reached_total_as_quotient, computational).
+machine_genre(division, partial_quotient_chunking, computational).
+machine_genre(division, reject_known_product_match, computational).
+machine_genre(division, share_into_divisor_groups, computational).
+machine_genre(division, stop_after_first_partial_quotient, computational).
+machine_genre(division, stop_after_one_known_fact, computational).
+machine_genre(division, stop_at_nearby_product_in_search, computational).
+machine_genre(division, sum_dividend_and_divisor, computational).
+machine_genre(fraction, add_numerator_denominator_comparison, computational).
+machine_genre(fraction, area_model_fraction_comparison, computational).
+machine_genre(fraction, area_model_part_of_part, computational).
+machine_genre(fraction, area_model_unequal_partition_piece_count, computational).
+machine_genre(fraction, benchmark_fraction_comparison, computational).
+machine_genre(fraction, clear_inner_referent, computational).
+machine_genre(fraction, co_denominator_count_on_from_larger, computational).
+machine_genre(fraction, co_denominator_make_base_transfer, computational).
+machine_genre(fraction, common_unit_fraction_comparison, computational).
+machine_genre(fraction, cross_multiplication_rule_from_pattern, computational).
+machine_genre(fraction, cross_multiplication_rule_without_ground, computational).
+machine_genre(fraction, gap_thinking_fraction_comparison, computational).
+machine_genre(fraction, improper_fraction_chain_loss, computational).
+machine_genre(fraction, improper_fraction_iteration, computational).
+machine_genre(fraction, iterate_given_overshoot, computational).
+machine_genre(fraction, iterate_only_no_reverse, computational).
+machine_genre(fraction, measurement_division, computational).
+machine_genre(fraction, number_line_count_marks_not_intervals, computational).
+machine_genre(fraction, number_line_fraction_comparison, computational).
+machine_genre(fraction, recursive_partition, computational).
+machine_genre(fraction, reversible_measurement_division, computational).
+machine_genre(fraction, set_model_fraction_comparison, computational).
+machine_genre(fraction, set_model_subset_size_focus, computational).
+machine_genre(fraction, solve_for_unit, computational).
+machine_genre(fraction, splitting, computational).
+machine_genre(fraction, unit_fraction_iteration, computational).
+machine_genre(fraction, unit_fraction_partition, computational).
+machine_genre(fraction, whole_number_grab, computational).
+machine_genre(geometry, angle_additive_composition, computational).
+machine_genre(geometry, angle_as_ray_length, computational).
+machine_genre(geometry, angle_turn_measurement, computational).
+machine_genre(geometry, area_as_perimeter_count, computational).
+machine_genre(geometry, area_preserving_polygon_decomposition, computational).
+machine_genre(geometry, area_unit_covering, computational).
+machine_genre(geometry, area_unit_scale_selection, computational).
+machine_genre(geometry, axis_aligned_coordinate_distance, computational).
+machine_genre(geometry, choose_first_area_unit_without_scale, computational).
+machine_genre(geometry, compare_solid_volume_by_cube_count, computational).
+machine_genre(geometry, compare_solid_volume_by_visible_extent, computational).
+machine_genre(geometry, composite_prism_volume_sum, computational).
+machine_genre(geometry, count_overlapping_area_tiles, computational).
+machine_genre(geometry, decomposition_with_gap_or_overlap, computational).
+machine_genre(geometry, dimensional_measure_unit_coordination, computational).
+machine_genre(geometry, directed_difference_as_coordinate_distance, computational).
+machine_genre(geometry, divide_volume_by_one_dimension, computational).
+machine_genre(geometry, ignore_perimeter_rectangle_constraint, computational).
+machine_genre(geometry, ignore_symmetry_multiplicity, computational).
+machine_genre(geometry, linear_unit_for_area_or_volume, computational).
+machine_genre(geometry, omit_half_in_triangle_area, computational).
+machine_genre(geometry, omit_unlabeled_boundary_side, computational).
+machine_genre(geometry, ordered_pair_coordinate_plot, computational).
+machine_genre(geometry, orientation_bound_shape_classification, computational).
+machine_genre(geometry, parallelogram_area_base_height, computational).
+machine_genre(geometry, perimeter_two_sides_only, computational).
+machine_genre(geometry, perimeter_uses_area_formula, computational).
+machine_genre(geometry, polygon_perimeter_boundary_accumulation, computational).
+machine_genre(geometry, polyhedron_surface_area_from_net, computational).
+machine_genre(geometry, rectangle_area_perimeter_constraint_search, computational).
+machine_genre(geometry, rectangle_area_unit_iteration, computational).
+machine_genre(geometry, rectangle_factor_pair_search, computational).
+machine_genre(geometry, rectangle_missing_side_from_area, computational).
+machine_genre(geometry, rectangle_missing_side_from_perimeter, computational).
+machine_genre(geometry, rectangle_perimeter_boundary_traversal, computational).
+machine_genre(geometry, rectangle_perimeter_side_pair_search, computational).
+machine_genre(geometry, rectangular_prism_missing_dimension_from_volume, computational).
+machine_genre(geometry, rectangular_prism_volume_layer_iteration, computational).
+machine_genre(geometry, rigid_shape_composition, computational).
+machine_genre(geometry, shape_classification_by_defining_attributes, computational).
+machine_genre(geometry, slanted_side_as_parallelogram_height, computational).
+machine_genre(geometry, subtract_side_from_area, computational).
+machine_genre(geometry, sum_overlapping_prism_volumes, computational).
+machine_genre(geometry, symmetry_constrained_side_reconstruction, computational).
+machine_genre(geometry, triangle_area_half_base_height, computational).
+machine_genre(geometry, visible_faces_only_surface_area, computational).
+machine_genre(integer, drop_sign_use_magnitude_sum, computational).
+machine_genre(integer, inequality_as_boundary_point, computational).
+machine_genre(integer, inequality_solution_set_representation, computational).
+machine_genre(integer, order_by_magnitude_ignore_sign, computational).
+machine_genre(integer, signed_addition_with_sign_relation, computational).
+machine_genre(integer, signed_number_location_and_order, computational).
+machine_genre(measurement, change_unit_label_without_scaling, computational).
+machine_genre(measurement, count_marks_not_intervals, computational).
+machine_genre(measurement, drop_unit_from_measured_quantity_change, computational).
+machine_genre(measurement, linear_unit_iteration, computational).
+machine_genre(measurement, liquid_volume_count_marks_not_intervals, computational).
+machine_genre(measurement, liquid_volume_scale_reading, computational).
+machine_genre(measurement, unit_conversion_by_iteration, computational).
+machine_genre(measurement, unit_preserving_measured_quantity_change, computational).
+machine_genre(multiplication, add_counts_without_composite_unit, computational).
+machine_genre(multiplication, add_instead_of_multiply, computational).
+machine_genre(multiplication, add_numbers_as_common_multiple, computational).
+machine_genre(multiplication, common_factor_intersection, computational).
+machine_genre(multiplication, common_multiple_sequence, computational).
+machine_genre(multiplication, commute_factors_preserve_product, computational).
+machine_genre(multiplication, context_free_fact_family_guess, computational).
+machine_genre(multiplication, coordinate_groups_items, computational).
+machine_genre(multiplication, distribute_group_size_split, computational).
+machine_genre(multiplication, drop_regrouping_remainder, computational).
+machine_genre(multiplication, drop_second_partial_product, computational).
+machine_genre(multiplication, factors_of_first_number_only, computational).
+machine_genre(multiplication, known_product_adjustment, computational).
+machine_genre(multiplication, known_product_without_adjustment, computational).
+machine_genre(multiplication, multiplication_fact_retrieval, computational).
+machine_genre(multiplication, regroup_to_base_preserving_total, computational).
+machine_genre(multiplication, repeat_equal_groups, computational).
+machine_genre(multiplication, repeat_group_size_by_itself, computational).
+machine_genre(multiplication, rigid_factor_order_roles, computational).
+machine_genre(multiplication, sequential_recompute_commuted_products, computational).
+machine_genre(probability, equiprobable_endpoint_counting, computational).
+machine_genre(probability, terminal_tree_endpoint_probability_sum, computational).
+machine_genre(ratio, additive_extension_of_ratio, computational).
+machine_genre(ratio, construct_referent_ratio_diagram, computational).
+machine_genre(ratio, reverse_ratio_referent_order, computational).
+machine_genre(ratio, scale_ratio_unit, computational).
+machine_genre(statistics, box_plot_from_five_number_summary, computational).
+machine_genre(statistics, categorical_frequency_bar_representation, computational).
+machine_genre(statistics, distribution_summary_selection, computational).
+machine_genre(statistics, dot_plot_frequency_representation, computational).
+machine_genre(statistics, five_number_summary_and_iqr, computational).
+machine_genre(statistics, histogram_equal_interval_representation, computational).
+machine_genre(statistics, mean_absolute_deviation, computational).
+machine_genre(statistics, mean_as_balance_point, computational).
+machine_genre(statistics, mean_as_fair_share, computational).
+machine_genre(statistics, mean_deviation_without_absolute_value, computational).
+machine_genre(statistics, median_as_ordered_middle, computational).
+machine_genre(statistics, mode_as_maximal_frequency, computational).
+machine_genre(statistics, question_without_variability, computational).
+machine_genre(statistics, statistical_question_variability_classification, computational).
+machine_genre(subtraction, add_instead_of_subtract_column, computational).
+machine_genre(subtraction, answer_as_endpoint_count_up, computational).
+machine_genre(subtraction, borrow_across_zero_cascade, computational).
+machine_genre(subtraction, borrow_across_zero_no_cascade, computational).
+machine_genre(subtraction, borrow_without_reducing_bases, computational).
+machine_genre(subtraction, compare_by_matching_difference, computational).
+machine_genre(subtraction, compare_returns_larger_count, computational).
+machine_genre(subtraction, count_up_missing_addend, computational).
+machine_genre(subtraction, decompose_base_for_ones, computational).
+machine_genre(subtraction, drop_ones_after_base_takeaway, computational).
+machine_genre(subtraction, slide_subtrahend_only, computational).
+machine_genre(subtraction, sliding_constant_difference, computational).
+machine_genre(subtraction, smaller_from_larger_in_column, computational).
+machine_genre(subtraction, take_away_base_ones, computational).
+
+automaton_action_evidence(statistics, box_plot_from_five_number_summary, preserve_data_set).
+family_topic_source(statistics, data, automaton_action_evidence(statistics, box_plot_from_five_number_summary, preserve_data_set)).
 
 standard_grade(standard(ccss, '1.G.A.1'), 1).
 standard_grade(standard(ccss, '1.G.A.2'), 1).
@@ -4737,7 +4974,37 @@ standard_grade(standard(in_indiana, 'K.CA.2'), 0).
 standard_grade(standard(in_indiana, 'K.CA.3'), 0).
 standard_grade(standard(in_indiana, 'K.G.1'), 0).
 
+lesson_topic_grade_evidence('IM-GK-U4-L1', addition, 0).
+lesson_topic_grade_evidence('IM-GK-U4-L14', algebraic, 0).
+lesson_topic_grade_evidence('IM-GK-U1-L14', cardinality, 0).
+lesson_topic_grade_evidence('IM-GK-U1-L1', counting, 0).
+lesson_topic_grade_evidence('IM-GK-U1-L1', data, 0).
+lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4).
+lesson_topic_grade_evidence('IM-GK-U8-L11', division, 0).
+lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3).
+lesson_topic_grade_evidence('IM-GK-U1-L1', geometry, 0).
+lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6).
+lesson_topic_grade_evidence('IM-GK-U2-L15', multiplication, 0).
+lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7).
+lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7).
+lesson_topic_grade_evidence('IM-GK-U1-L11', ratio, 0).
+lesson_topic_grade_evidence('IM-GK-U4-L11', subtraction, 0).
 standard_anchor_evidence(im_grade2_u6_l7, ccss, '2.G.A.3').
+topic_grade_floor(addition, 0, lesson_topic_grade_evidence('IM-GK-U4-L1', addition, 0)).
+topic_grade_floor(algebraic, 0, lesson_topic_grade_evidence('IM-GK-U4-L14', algebraic, 0)).
+topic_grade_floor(cardinality, 0, lesson_topic_grade_evidence('IM-GK-U1-L14', cardinality, 0)).
+topic_grade_floor(counting, 0, lesson_topic_grade_evidence('IM-GK-U1-L1', counting, 0)).
+topic_grade_floor(data, 0, lesson_topic_grade_evidence('IM-GK-U1-L1', data, 0)).
+topic_grade_floor(decimal, 4, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4)).
+topic_grade_floor(division, 0, lesson_topic_grade_evidence('IM-GK-U8-L11', division, 0)).
+topic_grade_floor(fraction, 3, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3)).
+topic_grade_floor(geometry, 0, lesson_topic_grade_evidence('IM-GK-U1-L1', geometry, 0)).
+topic_grade_floor(integer, 6, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6)).
+topic_grade_floor(multiplication, 0, lesson_topic_grade_evidence('IM-GK-U2-L15', multiplication, 0)).
+topic_grade_floor(probability, 7, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7)).
+topic_grade_floor(proportional, 7, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7)).
+topic_grade_floor(ratio, 0, lesson_topic_grade_evidence('IM-GK-U1-L11', ratio, 0)).
+topic_grade_floor(subtraction, 0, lesson_topic_grade_evidence('IM-GK-U4-L11', subtraction, 0)).
 topic_grade_floor('fraction/thirds', 2, standard_anchor_evidence(im_grade2_u6_l7, ccss, '2.G.A.3')).
 source_gap(cache_only_lesson, 'IM-G6-U5-L16').
 source_gap(cache_only_lesson, 'IM-G7-U7-L21').
@@ -4788,6 +5055,24 @@ excludes(addition, family, machine(decimal, decimal_whole_number_reading), famil
 excludes(addition, family, machine(decimal, ecuadorian_decimal_long_division), family_mismatch(addition, decimal, [decimal])).
 excludes(addition, family, machine(decimal, positional_decimal_reading), family_mismatch(addition, decimal, [decimal])).
 excludes(addition, family, machine(decimal, recalled_result_scaling), family_mismatch(addition, decimal, [decimal])).
+excludes(addition, family, machine(discourse, algorithmic_elaboration), nonmathematical_genre(addition, discourse, discursive)).
+excludes(addition, family, machine(discourse, assertion_without_vindication_task), nonmathematical_genre(addition, discourse, discursive)).
+excludes(addition, family, machine(discourse, assertional_commitment), nonmathematical_genre(addition, discourse, discursive)).
+excludes(addition, family, machine(discourse, attribution_and_acknowledgement_kept_apart), nonmathematical_genre(addition, discourse, discursive)).
+excludes(addition, family, machine(discourse, attribution_taken_as_acknowledgement), nonmathematical_genre(addition, discourse, discursive)).
+excludes(addition, family, machine(discourse, authority_where_inference_required), nonmathematical_genre(addition, discourse, discursive)).
+excludes(addition, family, machine(discourse, commitment_repair), nonmathematical_genre(addition, discourse, discursive)).
+excludes(addition, family, machine(discourse, deferral_regress), nonmathematical_genre(addition, discourse, discursive)).
+excludes(addition, family, machine(discourse, entitlement_by_authority), nonmathematical_genre(addition, discourse, discursive)).
+excludes(addition, family, machine(discourse, entitlement_by_deferral), nonmathematical_genre(addition, discourse, discursive)).
+excludes(addition, family, machine(discourse, entitlement_by_formal_schema), nonmathematical_genre(addition, discourse, discursive)).
+excludes(addition, family, machine(discourse, entitlement_by_inference), nonmathematical_genre(addition, discourse, discursive)).
+excludes(addition, family, machine(discourse, incompatibility_recognition), nonmathematical_genre(addition, discourse, discursive)).
+excludes(addition, family, machine(discourse, incompatible_commitments_held), nonmathematical_genre(addition, discourse, discursive)).
+excludes(addition, family, machine(discourse, pragmatic_metavocabulary_construction), nonmathematical_genre(addition, discourse, discursive)).
+excludes(addition, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(addition, discourse, discursive)).
+excludes(addition, family, machine(discourse, universally_lx_loop), nonmathematical_genre(addition, discourse, discursive)).
+excludes(addition, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(addition, discourse, discursive)).
 excludes(addition, family, machine(division, fair_share_equal_groups), family_mismatch(addition, division, [division])).
 excludes(addition, family, machine(division, inverse_fact_decomposition), family_mismatch(addition, division, [division])).
 excludes(addition, family, machine(division, long_division), family_mismatch(addition, division, [division])).
@@ -4909,6 +5194,20 @@ excludes(addition, family, machine(ratio, additive_extension_of_ratio), family_m
 excludes(addition, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(addition, ratio, [proportional, ratio])).
 excludes(addition, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(addition, ratio, [proportional, ratio])).
 excludes(addition, family, machine(ratio, scale_ratio_unit), family_mismatch(addition, ratio, [proportional, ratio])).
+excludes(addition, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(addition, statistics, [data])).
+excludes(addition, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(addition, statistics, [data])).
+excludes(addition, family, machine(statistics, distribution_summary_selection), family_mismatch(addition, statistics, [data])).
+excludes(addition, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(addition, statistics, [data])).
+excludes(addition, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(addition, statistics, [data])).
+excludes(addition, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(addition, statistics, [data])).
+excludes(addition, family, machine(statistics, mean_absolute_deviation), family_mismatch(addition, statistics, [data])).
+excludes(addition, family, machine(statistics, mean_as_balance_point), family_mismatch(addition, statistics, [data])).
+excludes(addition, family, machine(statistics, mean_as_fair_share), family_mismatch(addition, statistics, [data])).
+excludes(addition, family, machine(statistics, mean_deviation_without_absolute_value), family_mismatch(addition, statistics, [data])).
+excludes(addition, family, machine(statistics, median_as_ordered_middle), family_mismatch(addition, statistics, [data])).
+excludes(addition, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(addition, statistics, [data])).
+excludes(addition, family, machine(statistics, question_without_variability), family_mismatch(addition, statistics, [data])).
+excludes(addition, family, machine(statistics, statistical_question_variability_classification), family_mismatch(addition, statistics, [data])).
 excludes(addition, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(addition, subtraction, [subtraction])).
 excludes(addition, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(addition, subtraction, [subtraction])).
 excludes(addition, family, machine(subtraction, borrow_across_zero_cascade), family_mismatch(addition, subtraction, [subtraction])).
@@ -5881,6 +6180,24 @@ excludes(algebraic, family, machine(decimal, decimal_whole_number_reading), fami
 excludes(algebraic, family, machine(decimal, ecuadorian_decimal_long_division), family_mismatch(algebraic, decimal, [decimal])).
 excludes(algebraic, family, machine(decimal, positional_decimal_reading), family_mismatch(algebraic, decimal, [decimal])).
 excludes(algebraic, family, machine(decimal, recalled_result_scaling), family_mismatch(algebraic, decimal, [decimal])).
+excludes(algebraic, family, machine(discourse, algorithmic_elaboration), nonmathematical_genre(algebraic, discourse, discursive)).
+excludes(algebraic, family, machine(discourse, assertion_without_vindication_task), nonmathematical_genre(algebraic, discourse, discursive)).
+excludes(algebraic, family, machine(discourse, assertional_commitment), nonmathematical_genre(algebraic, discourse, discursive)).
+excludes(algebraic, family, machine(discourse, attribution_and_acknowledgement_kept_apart), nonmathematical_genre(algebraic, discourse, discursive)).
+excludes(algebraic, family, machine(discourse, attribution_taken_as_acknowledgement), nonmathematical_genre(algebraic, discourse, discursive)).
+excludes(algebraic, family, machine(discourse, authority_where_inference_required), nonmathematical_genre(algebraic, discourse, discursive)).
+excludes(algebraic, family, machine(discourse, commitment_repair), nonmathematical_genre(algebraic, discourse, discursive)).
+excludes(algebraic, family, machine(discourse, deferral_regress), nonmathematical_genre(algebraic, discourse, discursive)).
+excludes(algebraic, family, machine(discourse, entitlement_by_authority), nonmathematical_genre(algebraic, discourse, discursive)).
+excludes(algebraic, family, machine(discourse, entitlement_by_deferral), nonmathematical_genre(algebraic, discourse, discursive)).
+excludes(algebraic, family, machine(discourse, entitlement_by_formal_schema), nonmathematical_genre(algebraic, discourse, discursive)).
+excludes(algebraic, family, machine(discourse, entitlement_by_inference), nonmathematical_genre(algebraic, discourse, discursive)).
+excludes(algebraic, family, machine(discourse, incompatibility_recognition), nonmathematical_genre(algebraic, discourse, discursive)).
+excludes(algebraic, family, machine(discourse, incompatible_commitments_held), nonmathematical_genre(algebraic, discourse, discursive)).
+excludes(algebraic, family, machine(discourse, pragmatic_metavocabulary_construction), nonmathematical_genre(algebraic, discourse, discursive)).
+excludes(algebraic, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(algebraic, discourse, discursive)).
+excludes(algebraic, family, machine(discourse, universally_lx_loop), nonmathematical_genre(algebraic, discourse, discursive)).
+excludes(algebraic, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(algebraic, discourse, discursive)).
 excludes(algebraic, family, machine(division, fair_share_equal_groups), family_mismatch(algebraic, division, [division])).
 excludes(algebraic, family, machine(division, inverse_fact_decomposition), family_mismatch(algebraic, division, [division])).
 excludes(algebraic, family, machine(division, long_division), family_mismatch(algebraic, division, [division])).
@@ -6002,6 +6319,20 @@ excludes(algebraic, family, machine(ratio, additive_extension_of_ratio), family_
 excludes(algebraic, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(algebraic, ratio, [proportional, ratio])).
 excludes(algebraic, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(algebraic, ratio, [proportional, ratio])).
 excludes(algebraic, family, machine(ratio, scale_ratio_unit), family_mismatch(algebraic, ratio, [proportional, ratio])).
+excludes(algebraic, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(algebraic, statistics, [data])).
+excludes(algebraic, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(algebraic, statistics, [data])).
+excludes(algebraic, family, machine(statistics, distribution_summary_selection), family_mismatch(algebraic, statistics, [data])).
+excludes(algebraic, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(algebraic, statistics, [data])).
+excludes(algebraic, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(algebraic, statistics, [data])).
+excludes(algebraic, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(algebraic, statistics, [data])).
+excludes(algebraic, family, machine(statistics, mean_absolute_deviation), family_mismatch(algebraic, statistics, [data])).
+excludes(algebraic, family, machine(statistics, mean_as_balance_point), family_mismatch(algebraic, statistics, [data])).
+excludes(algebraic, family, machine(statistics, mean_as_fair_share), family_mismatch(algebraic, statistics, [data])).
+excludes(algebraic, family, machine(statistics, mean_deviation_without_absolute_value), family_mismatch(algebraic, statistics, [data])).
+excludes(algebraic, family, machine(statistics, median_as_ordered_middle), family_mismatch(algebraic, statistics, [data])).
+excludes(algebraic, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(algebraic, statistics, [data])).
+excludes(algebraic, family, machine(statistics, question_without_variability), family_mismatch(algebraic, statistics, [data])).
+excludes(algebraic, family, machine(statistics, statistical_question_variability_classification), family_mismatch(algebraic, statistics, [data])).
 excludes(algebraic, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(algebraic, subtraction, [subtraction])).
 excludes(algebraic, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(algebraic, subtraction, [subtraction])).
 excludes(algebraic, family, machine(subtraction, borrow_across_zero_cascade), family_mismatch(algebraic, subtraction, [subtraction])).
@@ -6995,6 +7326,24 @@ excludes(calculus, family, machine(decimal, decimal_whole_number_reading), famil
 excludes(calculus, family, machine(decimal, ecuadorian_decimal_long_division), family_mismatch(calculus, decimal, [decimal])).
 excludes(calculus, family, machine(decimal, positional_decimal_reading), family_mismatch(calculus, decimal, [decimal])).
 excludes(calculus, family, machine(decimal, recalled_result_scaling), family_mismatch(calculus, decimal, [decimal])).
+excludes(calculus, family, machine(discourse, algorithmic_elaboration), nonmathematical_genre(calculus, discourse, discursive)).
+excludes(calculus, family, machine(discourse, assertion_without_vindication_task), nonmathematical_genre(calculus, discourse, discursive)).
+excludes(calculus, family, machine(discourse, assertional_commitment), nonmathematical_genre(calculus, discourse, discursive)).
+excludes(calculus, family, machine(discourse, attribution_and_acknowledgement_kept_apart), nonmathematical_genre(calculus, discourse, discursive)).
+excludes(calculus, family, machine(discourse, attribution_taken_as_acknowledgement), nonmathematical_genre(calculus, discourse, discursive)).
+excludes(calculus, family, machine(discourse, authority_where_inference_required), nonmathematical_genre(calculus, discourse, discursive)).
+excludes(calculus, family, machine(discourse, commitment_repair), nonmathematical_genre(calculus, discourse, discursive)).
+excludes(calculus, family, machine(discourse, deferral_regress), nonmathematical_genre(calculus, discourse, discursive)).
+excludes(calculus, family, machine(discourse, entitlement_by_authority), nonmathematical_genre(calculus, discourse, discursive)).
+excludes(calculus, family, machine(discourse, entitlement_by_deferral), nonmathematical_genre(calculus, discourse, discursive)).
+excludes(calculus, family, machine(discourse, entitlement_by_formal_schema), nonmathematical_genre(calculus, discourse, discursive)).
+excludes(calculus, family, machine(discourse, entitlement_by_inference), nonmathematical_genre(calculus, discourse, discursive)).
+excludes(calculus, family, machine(discourse, incompatibility_recognition), nonmathematical_genre(calculus, discourse, discursive)).
+excludes(calculus, family, machine(discourse, incompatible_commitments_held), nonmathematical_genre(calculus, discourse, discursive)).
+excludes(calculus, family, machine(discourse, pragmatic_metavocabulary_construction), nonmathematical_genre(calculus, discourse, discursive)).
+excludes(calculus, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(calculus, discourse, discursive)).
+excludes(calculus, family, machine(discourse, universally_lx_loop), nonmathematical_genre(calculus, discourse, discursive)).
+excludes(calculus, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(calculus, discourse, discursive)).
 excludes(calculus, family, machine(division, fair_share_equal_groups), family_mismatch(calculus, division, [division])).
 excludes(calculus, family, machine(division, inverse_fact_decomposition), family_mismatch(calculus, division, [division])).
 excludes(calculus, family, machine(division, long_division), family_mismatch(calculus, division, [division])).
@@ -7116,6 +7465,20 @@ excludes(calculus, family, machine(ratio, additive_extension_of_ratio), family_m
 excludes(calculus, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(calculus, ratio, [proportional, ratio])).
 excludes(calculus, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(calculus, ratio, [proportional, ratio])).
 excludes(calculus, family, machine(ratio, scale_ratio_unit), family_mismatch(calculus, ratio, [proportional, ratio])).
+excludes(calculus, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(calculus, statistics, [data])).
+excludes(calculus, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(calculus, statistics, [data])).
+excludes(calculus, family, machine(statistics, distribution_summary_selection), family_mismatch(calculus, statistics, [data])).
+excludes(calculus, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(calculus, statistics, [data])).
+excludes(calculus, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(calculus, statistics, [data])).
+excludes(calculus, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(calculus, statistics, [data])).
+excludes(calculus, family, machine(statistics, mean_absolute_deviation), family_mismatch(calculus, statistics, [data])).
+excludes(calculus, family, machine(statistics, mean_as_balance_point), family_mismatch(calculus, statistics, [data])).
+excludes(calculus, family, machine(statistics, mean_as_fair_share), family_mismatch(calculus, statistics, [data])).
+excludes(calculus, family, machine(statistics, mean_deviation_without_absolute_value), family_mismatch(calculus, statistics, [data])).
+excludes(calculus, family, machine(statistics, median_as_ordered_middle), family_mismatch(calculus, statistics, [data])).
+excludes(calculus, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(calculus, statistics, [data])).
+excludes(calculus, family, machine(statistics, question_without_variability), family_mismatch(calculus, statistics, [data])).
+excludes(calculus, family, machine(statistics, statistical_question_variability_classification), family_mismatch(calculus, statistics, [data])).
 excludes(calculus, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(calculus, subtraction, [subtraction])).
 excludes(calculus, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(calculus, subtraction, [subtraction])).
 excludes(calculus, family, machine(subtraction, borrow_across_zero_cascade), family_mismatch(calculus, subtraction, [subtraction])).
@@ -8392,6 +8755,24 @@ excludes(cardinality, family, machine(decimal, decimal_whole_number_reading), fa
 excludes(cardinality, family, machine(decimal, ecuadorian_decimal_long_division), family_mismatch(cardinality, decimal, [decimal])).
 excludes(cardinality, family, machine(decimal, positional_decimal_reading), family_mismatch(cardinality, decimal, [decimal])).
 excludes(cardinality, family, machine(decimal, recalled_result_scaling), family_mismatch(cardinality, decimal, [decimal])).
+excludes(cardinality, family, machine(discourse, algorithmic_elaboration), nonmathematical_genre(cardinality, discourse, discursive)).
+excludes(cardinality, family, machine(discourse, assertion_without_vindication_task), nonmathematical_genre(cardinality, discourse, discursive)).
+excludes(cardinality, family, machine(discourse, assertional_commitment), nonmathematical_genre(cardinality, discourse, discursive)).
+excludes(cardinality, family, machine(discourse, attribution_and_acknowledgement_kept_apart), nonmathematical_genre(cardinality, discourse, discursive)).
+excludes(cardinality, family, machine(discourse, attribution_taken_as_acknowledgement), nonmathematical_genre(cardinality, discourse, discursive)).
+excludes(cardinality, family, machine(discourse, authority_where_inference_required), nonmathematical_genre(cardinality, discourse, discursive)).
+excludes(cardinality, family, machine(discourse, commitment_repair), nonmathematical_genre(cardinality, discourse, discursive)).
+excludes(cardinality, family, machine(discourse, deferral_regress), nonmathematical_genre(cardinality, discourse, discursive)).
+excludes(cardinality, family, machine(discourse, entitlement_by_authority), nonmathematical_genre(cardinality, discourse, discursive)).
+excludes(cardinality, family, machine(discourse, entitlement_by_deferral), nonmathematical_genre(cardinality, discourse, discursive)).
+excludes(cardinality, family, machine(discourse, entitlement_by_formal_schema), nonmathematical_genre(cardinality, discourse, discursive)).
+excludes(cardinality, family, machine(discourse, entitlement_by_inference), nonmathematical_genre(cardinality, discourse, discursive)).
+excludes(cardinality, family, machine(discourse, incompatibility_recognition), nonmathematical_genre(cardinality, discourse, discursive)).
+excludes(cardinality, family, machine(discourse, incompatible_commitments_held), nonmathematical_genre(cardinality, discourse, discursive)).
+excludes(cardinality, family, machine(discourse, pragmatic_metavocabulary_construction), nonmathematical_genre(cardinality, discourse, discursive)).
+excludes(cardinality, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(cardinality, discourse, discursive)).
+excludes(cardinality, family, machine(discourse, universally_lx_loop), nonmathematical_genre(cardinality, discourse, discursive)).
+excludes(cardinality, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(cardinality, discourse, discursive)).
 excludes(cardinality, family, machine(division, fair_share_equal_groups), family_mismatch(cardinality, division, [division])).
 excludes(cardinality, family, machine(division, inverse_fact_decomposition), family_mismatch(cardinality, division, [division])).
 excludes(cardinality, family, machine(division, long_division), family_mismatch(cardinality, division, [division])).
@@ -8513,6 +8894,20 @@ excludes(cardinality, family, machine(ratio, additive_extension_of_ratio), famil
 excludes(cardinality, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(cardinality, ratio, [proportional, ratio])).
 excludes(cardinality, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(cardinality, ratio, [proportional, ratio])).
 excludes(cardinality, family, machine(ratio, scale_ratio_unit), family_mismatch(cardinality, ratio, [proportional, ratio])).
+excludes(cardinality, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(cardinality, statistics, [data])).
+excludes(cardinality, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(cardinality, statistics, [data])).
+excludes(cardinality, family, machine(statistics, distribution_summary_selection), family_mismatch(cardinality, statistics, [data])).
+excludes(cardinality, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(cardinality, statistics, [data])).
+excludes(cardinality, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(cardinality, statistics, [data])).
+excludes(cardinality, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(cardinality, statistics, [data])).
+excludes(cardinality, family, machine(statistics, mean_absolute_deviation), family_mismatch(cardinality, statistics, [data])).
+excludes(cardinality, family, machine(statistics, mean_as_balance_point), family_mismatch(cardinality, statistics, [data])).
+excludes(cardinality, family, machine(statistics, mean_as_fair_share), family_mismatch(cardinality, statistics, [data])).
+excludes(cardinality, family, machine(statistics, mean_deviation_without_absolute_value), family_mismatch(cardinality, statistics, [data])).
+excludes(cardinality, family, machine(statistics, median_as_ordered_middle), family_mismatch(cardinality, statistics, [data])).
+excludes(cardinality, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(cardinality, statistics, [data])).
+excludes(cardinality, family, machine(statistics, question_without_variability), family_mismatch(cardinality, statistics, [data])).
+excludes(cardinality, family, machine(statistics, statistical_question_variability_classification), family_mismatch(cardinality, statistics, [data])).
 excludes(cardinality, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(cardinality, subtraction, [subtraction])).
 excludes(cardinality, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(cardinality, subtraction, [subtraction])).
 excludes(cardinality, family, machine(subtraction, borrow_across_zero_cascade), family_mismatch(cardinality, subtraction, [subtraction])).
@@ -9781,6 +10176,24 @@ excludes(counting, family, machine(decimal, decimal_whole_number_reading), famil
 excludes(counting, family, machine(decimal, ecuadorian_decimal_long_division), family_mismatch(counting, decimal, [decimal])).
 excludes(counting, family, machine(decimal, positional_decimal_reading), family_mismatch(counting, decimal, [decimal])).
 excludes(counting, family, machine(decimal, recalled_result_scaling), family_mismatch(counting, decimal, [decimal])).
+excludes(counting, family, machine(discourse, algorithmic_elaboration), nonmathematical_genre(counting, discourse, discursive)).
+excludes(counting, family, machine(discourse, assertion_without_vindication_task), nonmathematical_genre(counting, discourse, discursive)).
+excludes(counting, family, machine(discourse, assertional_commitment), nonmathematical_genre(counting, discourse, discursive)).
+excludes(counting, family, machine(discourse, attribution_and_acknowledgement_kept_apart), nonmathematical_genre(counting, discourse, discursive)).
+excludes(counting, family, machine(discourse, attribution_taken_as_acknowledgement), nonmathematical_genre(counting, discourse, discursive)).
+excludes(counting, family, machine(discourse, authority_where_inference_required), nonmathematical_genre(counting, discourse, discursive)).
+excludes(counting, family, machine(discourse, commitment_repair), nonmathematical_genre(counting, discourse, discursive)).
+excludes(counting, family, machine(discourse, deferral_regress), nonmathematical_genre(counting, discourse, discursive)).
+excludes(counting, family, machine(discourse, entitlement_by_authority), nonmathematical_genre(counting, discourse, discursive)).
+excludes(counting, family, machine(discourse, entitlement_by_deferral), nonmathematical_genre(counting, discourse, discursive)).
+excludes(counting, family, machine(discourse, entitlement_by_formal_schema), nonmathematical_genre(counting, discourse, discursive)).
+excludes(counting, family, machine(discourse, entitlement_by_inference), nonmathematical_genre(counting, discourse, discursive)).
+excludes(counting, family, machine(discourse, incompatibility_recognition), nonmathematical_genre(counting, discourse, discursive)).
+excludes(counting, family, machine(discourse, incompatible_commitments_held), nonmathematical_genre(counting, discourse, discursive)).
+excludes(counting, family, machine(discourse, pragmatic_metavocabulary_construction), nonmathematical_genre(counting, discourse, discursive)).
+excludes(counting, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(counting, discourse, discursive)).
+excludes(counting, family, machine(discourse, universally_lx_loop), nonmathematical_genre(counting, discourse, discursive)).
+excludes(counting, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(counting, discourse, discursive)).
 excludes(counting, family, machine(division, fair_share_equal_groups), family_mismatch(counting, division, [division])).
 excludes(counting, family, machine(division, inverse_fact_decomposition), family_mismatch(counting, division, [division])).
 excludes(counting, family, machine(division, long_division), family_mismatch(counting, division, [division])).
@@ -9902,6 +10315,20 @@ excludes(counting, family, machine(ratio, additive_extension_of_ratio), family_m
 excludes(counting, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(counting, ratio, [proportional, ratio])).
 excludes(counting, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(counting, ratio, [proportional, ratio])).
 excludes(counting, family, machine(ratio, scale_ratio_unit), family_mismatch(counting, ratio, [proportional, ratio])).
+excludes(counting, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(counting, statistics, [data])).
+excludes(counting, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(counting, statistics, [data])).
+excludes(counting, family, machine(statistics, distribution_summary_selection), family_mismatch(counting, statistics, [data])).
+excludes(counting, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(counting, statistics, [data])).
+excludes(counting, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(counting, statistics, [data])).
+excludes(counting, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(counting, statistics, [data])).
+excludes(counting, family, machine(statistics, mean_absolute_deviation), family_mismatch(counting, statistics, [data])).
+excludes(counting, family, machine(statistics, mean_as_balance_point), family_mismatch(counting, statistics, [data])).
+excludes(counting, family, machine(statistics, mean_as_fair_share), family_mismatch(counting, statistics, [data])).
+excludes(counting, family, machine(statistics, mean_deviation_without_absolute_value), family_mismatch(counting, statistics, [data])).
+excludes(counting, family, machine(statistics, median_as_ordered_middle), family_mismatch(counting, statistics, [data])).
+excludes(counting, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(counting, statistics, [data])).
+excludes(counting, family, machine(statistics, question_without_variability), family_mismatch(counting, statistics, [data])).
+excludes(counting, family, machine(statistics, statistical_question_variability_classification), family_mismatch(counting, statistics, [data])).
 excludes(counting, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(counting, subtraction, [subtraction])).
 excludes(counting, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(counting, subtraction, [subtraction])).
 excludes(counting, family, machine(subtraction, borrow_across_zero_cascade), family_mismatch(counting, subtraction, [subtraction])).
@@ -11047,6 +11474,1335 @@ excludes(counting, lesson, 'IM-GK-U8-L19', lesson_topic_mismatch(counting, [addi
 excludes(counting, lesson, 'IM-GK-U8-L21', lesson_topic_mismatch(counting, [algebraic, ratio])).
 excludes(counting, lesson, 'IM-GK-U8-L7', lesson_topic_mismatch(counting, [addition, subtraction])).
 excludes(counting, lesson, 'IM-GK-U8-L8', lesson_topic_mismatch(counting, [geometry, subtraction])).
+excludes(data, family, machine(addition, append_column_sum_without_carrying), family_mismatch(data, addition, [addition])).
+excludes(data, family, machine(addition, base_ones_chunking), family_mismatch(data, addition, [addition])).
+excludes(data, family, machine(addition, column_addition_with_carrying), family_mismatch(data, addition, [addition])).
+excludes(data, family, machine(addition, count_all_instead_of_known_fact), family_mismatch(data, addition, [addition])).
+excludes(data, family, machine(addition, count_all_when_count_on_available), family_mismatch(data, addition, [addition])).
+excludes(data, family, machine(addition, count_on_from_larger), family_mismatch(data, addition, [addition])).
+excludes(data, family, machine(addition, derived_fact_adjustment), family_mismatch(data, addition, [addition])).
+excludes(data, family, machine(addition, drop_carry_to_next_column), family_mismatch(data, addition, [addition])).
+excludes(data, family, machine(addition, dropped_ones_chunk), family_mismatch(data, addition, [addition])).
+excludes(data, family, machine(addition, known_fact_retrieval), family_mismatch(data, addition, [addition])).
+excludes(data, family, machine(addition, make_base_transfer), family_mismatch(data, addition, [addition])).
+excludes(data, family, machine(addition, make_ten_drop_leftover), family_mismatch(data, addition, [addition])).
+excludes(data, family, machine(addition, make_ten_split_leftover), family_mismatch(data, addition, [addition])).
+excludes(data, family, machine(addition, rote_derived_fact_rule_misfire), family_mismatch(data, addition, [addition])).
+excludes(data, family, machine(addition, round_then_adjust), family_mismatch(data, addition, [addition])).
+excludes(data, family, machine(addition, round_without_adjusting), family_mismatch(data, addition, [addition])).
+excludes(data, family, machine(addition, unbalanced_make_base_compensation), family_mismatch(data, addition, [addition])).
+excludes(data, family, machine(addition, wrong_carry_amount_to_next_column), family_mismatch(data, addition, [addition])).
+excludes(data, family, machine(algebraic, balance_preserving_linear_solution), family_mismatch(data, algebraic, [algebraic])).
+excludes(data, family, machine(algebraic, contextual_linear_equation_construction), family_mismatch(data, algebraic, [algebraic])).
+excludes(data, family, machine(algebraic, distributive_expression_rewrite), family_mismatch(data, algebraic, [algebraic])).
+excludes(data, family, machine(algebraic, drop_distributed_term), family_mismatch(data, algebraic, [algebraic])).
+excludes(data, family, machine(algebraic, equation_truth_by_substitution), family_mismatch(data, algebraic, [algebraic])).
+excludes(data, family, machine(algebraic, exponent_as_multiplier), family_mismatch(data, algebraic, [algebraic])).
+excludes(data, family, machine(algebraic, exponent_as_repeated_factor), family_mismatch(data, algebraic, [algebraic])).
+excludes(data, family, machine(algebraic, exponential_equivalence_by_expansion), family_mismatch(data, algebraic, [algebraic])).
+excludes(data, family, machine(algebraic, guess_and_check_rule), family_mismatch(data, algebraic, [algebraic])).
+excludes(data, family, machine(algebraic, linear_pattern_contextual_rule), family_mismatch(data, algebraic, [algebraic])).
+excludes(data, family, machine(algebraic, one_sided_equation_operation), family_mismatch(data, algebraic, [algebraic])).
+excludes(data, family, machine(algebraic, operational_equals_left_value), family_mismatch(data, algebraic, [algebraic])).
+excludes(data, family, machine(algebraic, programming_expression_evaluation), family_mismatch(data, algebraic, [algebraic])).
+excludes(data, family, machine(algebraic, symbolic_expression_construction), family_mismatch(data, algebraic, [algebraic])).
+excludes(data, family, machine(calculus, factor_cancel_substitute), family_mismatch(data, calculus, [calculus])).
+excludes(data, family, machine(calculus, factor_cancel_without_common_factor), family_mismatch(data, calculus, [calculus])).
+excludes(data, family, machine(counting, compare_cardinalities_one_to_one), family_mismatch(data, counting, [counting])).
+excludes(data, family, machine(counting, compare_ones_digits_only), family_mismatch(data, counting, [counting])).
+excludes(data, family, machine(counting, inscribe_cardinality), family_mismatch(data, counting, [counting])).
+excludes(data, family, machine(counting, omit_highest_place_regrouping), family_mismatch(data, counting, [counting])).
+excludes(data, family, machine(counting, place_value_comparison), family_mismatch(data, counting, [counting])).
+excludes(data, family, machine(counting, recursive_place_value_inscription), family_mismatch(data, counting, [counting])).
+excludes(data, family, machine(counting, spatial_extent_as_cardinality), family_mismatch(data, counting, [counting])).
+excludes(data, family, machine(decimal, change_decimal_place_name_without_regrouping), family_mismatch(data, decimal, [decimal])).
+excludes(data, family, machine(decimal, decimal_add_unaligned_numerals), family_mismatch(data, decimal, [decimal])).
+excludes(data, family, machine(decimal, decimal_addition_by_aligned_units), family_mismatch(data, decimal, [decimal])).
+excludes(data, family, machine(decimal, decimal_comparison_by_aligned_units), family_mismatch(data, decimal, [decimal])).
+excludes(data, family, machine(decimal, decimal_fraction_place_value_comparison), family_mismatch(data, decimal, [decimal])).
+excludes(data, family, machine(decimal, decimal_multiplication_rule), family_mismatch(data, decimal, [decimal])).
+excludes(data, family, machine(decimal, decimal_numeral_comparison_without_scale_alignment), family_mismatch(data, decimal, [decimal])).
+excludes(data, family, machine(decimal, decimal_place_unit_regrouping), family_mismatch(data, decimal, [decimal])).
+excludes(data, family, machine(decimal, decimal_point_rule_misapplication), family_mismatch(data, decimal, [decimal])).
+excludes(data, family, machine(decimal, decimal_scale_loss_comparison), family_mismatch(data, decimal, [decimal])).
+excludes(data, family, machine(decimal, decimal_subtract_unaligned_numerals), family_mismatch(data, decimal, [decimal])).
+excludes(data, family, machine(decimal, decimal_subtraction_by_aligned_units), family_mismatch(data, decimal, [decimal])).
+excludes(data, family, machine(decimal, decimal_whole_number_reading), family_mismatch(data, decimal, [decimal])).
+excludes(data, family, machine(decimal, ecuadorian_decimal_long_division), family_mismatch(data, decimal, [decimal])).
+excludes(data, family, machine(decimal, positional_decimal_reading), family_mismatch(data, decimal, [decimal])).
+excludes(data, family, machine(decimal, recalled_result_scaling), family_mismatch(data, decimal, [decimal])).
+excludes(data, family, machine(discourse, algorithmic_elaboration), nonmathematical_genre(data, discourse, discursive)).
+excludes(data, family, machine(discourse, assertion_without_vindication_task), nonmathematical_genre(data, discourse, discursive)).
+excludes(data, family, machine(discourse, assertional_commitment), nonmathematical_genre(data, discourse, discursive)).
+excludes(data, family, machine(discourse, attribution_and_acknowledgement_kept_apart), nonmathematical_genre(data, discourse, discursive)).
+excludes(data, family, machine(discourse, attribution_taken_as_acknowledgement), nonmathematical_genre(data, discourse, discursive)).
+excludes(data, family, machine(discourse, authority_where_inference_required), nonmathematical_genre(data, discourse, discursive)).
+excludes(data, family, machine(discourse, commitment_repair), nonmathematical_genre(data, discourse, discursive)).
+excludes(data, family, machine(discourse, deferral_regress), nonmathematical_genre(data, discourse, discursive)).
+excludes(data, family, machine(discourse, entitlement_by_authority), nonmathematical_genre(data, discourse, discursive)).
+excludes(data, family, machine(discourse, entitlement_by_deferral), nonmathematical_genre(data, discourse, discursive)).
+excludes(data, family, machine(discourse, entitlement_by_formal_schema), nonmathematical_genre(data, discourse, discursive)).
+excludes(data, family, machine(discourse, entitlement_by_inference), nonmathematical_genre(data, discourse, discursive)).
+excludes(data, family, machine(discourse, incompatibility_recognition), nonmathematical_genre(data, discourse, discursive)).
+excludes(data, family, machine(discourse, incompatible_commitments_held), nonmathematical_genre(data, discourse, discursive)).
+excludes(data, family, machine(discourse, pragmatic_metavocabulary_construction), nonmathematical_genre(data, discourse, discursive)).
+excludes(data, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(data, discourse, discursive)).
+excludes(data, family, machine(discourse, universally_lx_loop), nonmathematical_genre(data, discourse, discursive)).
+excludes(data, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(data, discourse, discursive)).
+excludes(data, family, machine(division, fair_share_equal_groups), family_mismatch(data, division, [division])).
+excludes(data, family, machine(division, inverse_fact_decomposition), family_mismatch(data, division, [division])).
+excludes(data, family, machine(division, long_division), family_mismatch(data, division, [division])).
+excludes(data, family, machine(division, measure_groups_of_size), family_mismatch(data, division, [division])).
+excludes(data, family, machine(division, missing_factor_known_product_search), family_mismatch(data, division, [division])).
+excludes(data, family, machine(division, missing_factor_repeated_addition), family_mismatch(data, division, [division])).
+excludes(data, family, machine(division, name_group_count_as_share_size), family_mismatch(data, division, [division])).
+excludes(data, family, machine(division, name_reached_total_as_quotient), family_mismatch(data, division, [division])).
+excludes(data, family, machine(division, partial_quotient_chunking), family_mismatch(data, division, [division])).
+excludes(data, family, machine(division, reject_known_product_match), family_mismatch(data, division, [division])).
+excludes(data, family, machine(division, share_into_divisor_groups), family_mismatch(data, division, [division])).
+excludes(data, family, machine(division, stop_after_first_partial_quotient), family_mismatch(data, division, [division])).
+excludes(data, family, machine(division, stop_after_one_known_fact), family_mismatch(data, division, [division])).
+excludes(data, family, machine(division, stop_at_nearby_product_in_search), family_mismatch(data, division, [division])).
+excludes(data, family, machine(division, sum_dividend_and_divisor), family_mismatch(data, division, [division])).
+excludes(data, family, machine(fraction, add_numerator_denominator_comparison), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, area_model_fraction_comparison), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, area_model_part_of_part), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, area_model_unequal_partition_piece_count), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, benchmark_fraction_comparison), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, clear_inner_referent), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, co_denominator_count_on_from_larger), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, co_denominator_make_base_transfer), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, common_unit_fraction_comparison), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, cross_multiplication_rule_from_pattern), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, cross_multiplication_rule_without_ground), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, gap_thinking_fraction_comparison), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, improper_fraction_chain_loss), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, improper_fraction_iteration), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, iterate_given_overshoot), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, iterate_only_no_reverse), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, measurement_division), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, number_line_count_marks_not_intervals), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, number_line_fraction_comparison), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, recursive_partition), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, reversible_measurement_division), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, set_model_fraction_comparison), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, set_model_subset_size_focus), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, solve_for_unit), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, splitting), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, unit_fraction_iteration), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, unit_fraction_partition), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(fraction, whole_number_grab), family_mismatch(data, fraction, [fraction])).
+excludes(data, family, machine(geometry, angle_additive_composition), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, angle_as_ray_length), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, angle_turn_measurement), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, area_as_perimeter_count), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, area_preserving_polygon_decomposition), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, area_unit_covering), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, area_unit_scale_selection), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, axis_aligned_coordinate_distance), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, choose_first_area_unit_without_scale), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, compare_solid_volume_by_cube_count), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, compare_solid_volume_by_visible_extent), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, composite_prism_volume_sum), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, count_overlapping_area_tiles), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, decomposition_with_gap_or_overlap), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, dimensional_measure_unit_coordination), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, directed_difference_as_coordinate_distance), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, divide_volume_by_one_dimension), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, ignore_perimeter_rectangle_constraint), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, ignore_symmetry_multiplicity), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, linear_unit_for_area_or_volume), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, omit_half_in_triangle_area), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, omit_unlabeled_boundary_side), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, ordered_pair_coordinate_plot), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, orientation_bound_shape_classification), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, parallelogram_area_base_height), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, perimeter_two_sides_only), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, perimeter_uses_area_formula), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, polygon_perimeter_boundary_accumulation), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, polyhedron_surface_area_from_net), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, rectangle_area_perimeter_constraint_search), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, rectangle_area_unit_iteration), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, rectangle_factor_pair_search), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, rectangle_missing_side_from_area), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, rectangle_missing_side_from_perimeter), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, rectangle_perimeter_boundary_traversal), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, rectangle_perimeter_side_pair_search), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, rectangular_prism_missing_dimension_from_volume), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, rectangular_prism_volume_layer_iteration), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, rigid_shape_composition), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, shape_classification_by_defining_attributes), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, slanted_side_as_parallelogram_height), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, subtract_side_from_area), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, sum_overlapping_prism_volumes), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, symmetry_constrained_side_reconstruction), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, triangle_area_half_base_height), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(geometry, visible_faces_only_surface_area), family_mismatch(data, geometry, [geometry])).
+excludes(data, family, machine(integer, drop_sign_use_magnitude_sum), family_mismatch(data, integer, [integer])).
+excludes(data, family, machine(integer, inequality_as_boundary_point), family_mismatch(data, integer, [integer])).
+excludes(data, family, machine(integer, inequality_solution_set_representation), family_mismatch(data, integer, [integer])).
+excludes(data, family, machine(integer, order_by_magnitude_ignore_sign), family_mismatch(data, integer, [integer])).
+excludes(data, family, machine(integer, signed_addition_with_sign_relation), family_mismatch(data, integer, [integer])).
+excludes(data, family, machine(integer, signed_number_location_and_order), family_mismatch(data, integer, [integer])).
+excludes(data, family, machine(multiplication, add_counts_without_composite_unit), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(multiplication, add_instead_of_multiply), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(multiplication, add_numbers_as_common_multiple), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(multiplication, common_factor_intersection), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(multiplication, common_multiple_sequence), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(multiplication, commute_factors_preserve_product), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(multiplication, context_free_fact_family_guess), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(multiplication, coordinate_groups_items), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(multiplication, distribute_group_size_split), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(multiplication, drop_regrouping_remainder), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(multiplication, drop_second_partial_product), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(multiplication, factors_of_first_number_only), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(multiplication, known_product_adjustment), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(multiplication, known_product_without_adjustment), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(multiplication, multiplication_fact_retrieval), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(multiplication, regroup_to_base_preserving_total), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(multiplication, repeat_equal_groups), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(multiplication, repeat_group_size_by_itself), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(multiplication, rigid_factor_order_roles), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(multiplication, sequential_recompute_commuted_products), family_mismatch(data, multiplication, [multiplication])).
+excludes(data, family, machine(probability, equiprobable_endpoint_counting), family_mismatch(data, probability, [probability])).
+excludes(data, family, machine(probability, terminal_tree_endpoint_probability_sum), family_mismatch(data, probability, [probability])).
+excludes(data, family, machine(ratio, additive_extension_of_ratio), family_mismatch(data, ratio, [proportional, ratio])).
+excludes(data, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(data, ratio, [proportional, ratio])).
+excludes(data, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(data, ratio, [proportional, ratio])).
+excludes(data, family, machine(ratio, scale_ratio_unit), family_mismatch(data, ratio, [proportional, ratio])).
+excludes(data, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(data, subtraction, [subtraction])).
+excludes(data, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(data, subtraction, [subtraction])).
+excludes(data, family, machine(subtraction, borrow_across_zero_cascade), family_mismatch(data, subtraction, [subtraction])).
+excludes(data, family, machine(subtraction, borrow_across_zero_no_cascade), family_mismatch(data, subtraction, [subtraction])).
+excludes(data, family, machine(subtraction, borrow_without_reducing_bases), family_mismatch(data, subtraction, [subtraction])).
+excludes(data, family, machine(subtraction, compare_by_matching_difference), family_mismatch(data, subtraction, [subtraction])).
+excludes(data, family, machine(subtraction, compare_returns_larger_count), family_mismatch(data, subtraction, [subtraction])).
+excludes(data, family, machine(subtraction, count_up_missing_addend), family_mismatch(data, subtraction, [subtraction])).
+excludes(data, family, machine(subtraction, decompose_base_for_ones), family_mismatch(data, subtraction, [subtraction])).
+excludes(data, family, machine(subtraction, drop_ones_after_base_takeaway), family_mismatch(data, subtraction, [subtraction])).
+excludes(data, family, machine(subtraction, slide_subtrahend_only), family_mismatch(data, subtraction, [subtraction])).
+excludes(data, family, machine(subtraction, sliding_constant_difference), family_mismatch(data, subtraction, [subtraction])).
+excludes(data, family, machine(subtraction, smaller_from_larger_in_column), family_mismatch(data, subtraction, [subtraction])).
+excludes(data, family, machine(subtraction, take_away_base_ones), family_mismatch(data, subtraction, [subtraction])).
+excludes(data, lesson, 'IM-G1-U1-L1', lesson_topic_mismatch(data, [addition, counting, ratio])).
+excludes(data, lesson, 'IM-G1-U1-L10', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U1-L2', lesson_topic_mismatch(data, [addition, algebraic])).
+excludes(data, lesson, 'IM-G1-U1-L3', lesson_topic_mismatch(data, [addition])).
+excludes(data, lesson, 'IM-G1-U1-L4', lesson_topic_mismatch(data, [subtraction])).
+excludes(data, lesson, 'IM-G1-U1-L5', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-G1-U1-L6', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U1-L8', lesson_topic_mismatch(data, [counting, geometry])).
+excludes(data, lesson, 'IM-G1-U2-L1', lesson_topic_mismatch(data, [addition])).
+excludes(data, lesson, 'IM-G1-U2-L10', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U2-L11', lesson_topic_mismatch(data, [subtraction])).
+excludes(data, lesson, 'IM-G1-U2-L12', lesson_topic_mismatch(data, [subtraction])).
+excludes(data, lesson, 'IM-G1-U2-L14', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U2-L15', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G1-U2-L16', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U2-L17', lesson_topic_mismatch(data, [addition, algebraic])).
+excludes(data, lesson, 'IM-G1-U2-L18', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-G1-U2-L19', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G1-U2-L2', lesson_topic_mismatch(data, [addition, counting, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U2-L20', lesson_topic_mismatch(data, [addition, algebraic])).
+excludes(data, lesson, 'IM-G1-U2-L21', lesson_topic_mismatch(data, [algebraic, ratio])).
+excludes(data, lesson, 'IM-G1-U2-L22', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-G1-U2-L23', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-G1-U2-L3', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G1-U2-L4', lesson_topic_mismatch(data, [addition, algebraic, counting, ratio])).
+excludes(data, lesson, 'IM-G1-U2-L5', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G1-U2-L6', lesson_topic_mismatch(data, [addition, algebraic])).
+excludes(data, lesson, 'IM-G1-U2-L7', lesson_topic_mismatch(data, [addition, algebraic, ratio])).
+excludes(data, lesson, 'IM-G1-U2-L8', lesson_topic_mismatch(data, [addition])).
+excludes(data, lesson, 'IM-G1-U2-L9', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U3-L1', lesson_topic_mismatch(data, [addition, algebraic, ratio])).
+excludes(data, lesson, 'IM-G1-U3-L10', lesson_topic_mismatch(data, [addition, algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U3-L11', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G1-U3-L12', lesson_topic_mismatch(data, [addition, algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U3-L13', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G1-U3-L14', lesson_topic_mismatch(data, [addition, algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U3-L15', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G1-U3-L16', lesson_topic_mismatch(data, [addition, algebraic, ratio])).
+excludes(data, lesson, 'IM-G1-U3-L17', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G1-U3-L18', lesson_topic_mismatch(data, [addition, algebraic])).
+excludes(data, lesson, 'IM-G1-U3-L19', lesson_topic_mismatch(data, [addition, algebraic, ratio])).
+excludes(data, lesson, 'IM-G1-U3-L2', lesson_topic_mismatch(data, [addition, counting, ratio])).
+excludes(data, lesson, 'IM-G1-U3-L20', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G1-U3-L21', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G1-U3-L22', lesson_topic_mismatch(data, [ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U3-L23', lesson_topic_mismatch(data, [ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U3-L24', lesson_topic_mismatch(data, [addition, algebraic, counting, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U3-L25', lesson_topic_mismatch(data, [addition, algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U3-L26', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U3-L27', lesson_topic_mismatch(data, [addition, algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U3-L28', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G1-U3-L3', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G1-U3-L4', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G1-U3-L5', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U3-L6', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G1-U3-L7', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G1-U3-L9', lesson_topic_mismatch(data, [addition, algebraic])).
+excludes(data, lesson, 'IM-G1-U4-L1', lesson_topic_mismatch(data, [counting, ratio])).
+excludes(data, lesson, 'IM-G1-U4-L10', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G1-U4-L11', lesson_topic_mismatch(data, [addition, algebraic, ratio])).
+excludes(data, lesson, 'IM-G1-U4-L12', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G1-U4-L13', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U4-L14', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G1-U4-L15', lesson_topic_mismatch(data, [addition, algebraic, counting, subtraction])).
+excludes(data, lesson, 'IM-G1-U4-L18', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-G1-U4-L2', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-G1-U4-L21', lesson_topic_mismatch(data, [addition, counting, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U4-L23', lesson_topic_mismatch(data, [counting, ratio])).
+excludes(data, lesson, 'IM-G1-U4-L3', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G1-U4-L4', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U4-L5', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U4-L6', lesson_topic_mismatch(data, [counting, geometry, ratio])).
+excludes(data, lesson, 'IM-G1-U4-L7', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G1-U4-L8', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G1-U4-L9', lesson_topic_mismatch(data, [addition, algebraic, geometry])).
+excludes(data, lesson, 'IM-G1-U5-L1', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G1-U5-L10', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G1-U5-L11', lesson_topic_mismatch(data, [addition, algebraic, ratio])).
+excludes(data, lesson, 'IM-G1-U5-L12', lesson_topic_mismatch(data, [addition, algebraic, ratio])).
+excludes(data, lesson, 'IM-G1-U5-L13', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G1-U5-L14', lesson_topic_mismatch(data, [addition])).
+excludes(data, lesson, 'IM-G1-U5-L2', lesson_topic_mismatch(data, [addition, algebraic, ratio])).
+excludes(data, lesson, 'IM-G1-U5-L3', lesson_topic_mismatch(data, [addition, algebraic, ratio])).
+excludes(data, lesson, 'IM-G1-U5-L4', lesson_topic_mismatch(data, [addition, algebraic, ratio])).
+excludes(data, lesson, 'IM-G1-U5-L5', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G1-U5-L6', lesson_topic_mismatch(data, [addition, algebraic, ratio])).
+excludes(data, lesson, 'IM-G1-U5-L7', lesson_topic_mismatch(data, [addition, algebraic])).
+excludes(data, lesson, 'IM-G1-U5-L8', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G1-U5-L9', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G1-U6-L1', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G1-U6-L10', lesson_topic_mismatch(data, [addition])).
+excludes(data, lesson, 'IM-G1-U6-L11', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U6-L12', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G1-U6-L13', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G1-U6-L14', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-G1-U6-L15', lesson_topic_mismatch(data, [addition, algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U6-L16', lesson_topic_mismatch(data, [counting, ratio])).
+excludes(data, lesson, 'IM-G1-U6-L2', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U6-L4', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U6-L5', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G1-U6-L8', lesson_topic_mismatch(data, [counting, ratio])).
+excludes(data, lesson, 'IM-G1-U6-L9', lesson_topic_mismatch(data, [counting, ratio])).
+excludes(data, lesson, 'IM-G1-U7-L1', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G1-U7-L10', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G1-U7-L11', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G1-U7-L12', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G1-U7-L14', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U7-L15', lesson_topic_mismatch(data, [addition, algebraic, counting, subtraction])).
+excludes(data, lesson, 'IM-G1-U7-L16', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U7-L17', lesson_topic_mismatch(data, [addition, geometry, subtraction])).
+excludes(data, lesson, 'IM-G1-U7-L18', lesson_topic_mismatch(data, [division])).
+excludes(data, lesson, 'IM-G1-U7-L2', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G1-U7-L3', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G1-U7-L4', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G1-U7-L5', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G1-U7-L6', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G1-U7-L7', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G1-U7-L8', lesson_topic_mismatch(data, [addition, geometry, subtraction])).
+excludes(data, lesson, 'IM-G1-U7-L9', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G1-U8-L1', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G1-U8-L10', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U8-L2', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-G1-U8-L3', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U8-L4', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U8-L5', lesson_topic_mismatch(data, [addition, algebraic, ratio])).
+excludes(data, lesson, 'IM-G1-U8-L6', lesson_topic_mismatch(data, [ratio, subtraction])).
+excludes(data, lesson, 'IM-G1-U8-L7', lesson_topic_mismatch(data, [counting, ratio])).
+excludes(data, lesson, 'IM-G1-U8-L8', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G2-U1-L1', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U1-L15', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G2-U1-L16', lesson_topic_mismatch(data, [addition, algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U1-L2', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-G2-U1-L3', lesson_topic_mismatch(data, [addition, algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U1-L4', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U1-L5', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G2-U1-L6', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U2-L1', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U2-L10', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U2-L11', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G2-U2-L12', lesson_topic_mismatch(data, [addition, algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U2-L13', lesson_topic_mismatch(data, [addition, algebraic])).
+excludes(data, lesson, 'IM-G2-U2-L14', lesson_topic_mismatch(data, [addition])).
+excludes(data, lesson, 'IM-G2-U2-L15', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G2-U2-L16', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G2-U2-L17', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U2-L2', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U2-L3', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U2-L4', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U2-L5', lesson_topic_mismatch(data, [ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U2-L6', lesson_topic_mismatch(data, [algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U2-L7', lesson_topic_mismatch(data, [ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U2-L8', lesson_topic_mismatch(data, [ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U2-L9', lesson_topic_mismatch(data, [addition, algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U3-L10', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G2-U3-L11', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G2-U3-L12', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G2-U3-L13', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U3-L18', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U3-L2', lesson_topic_mismatch(data, [subtraction])).
+excludes(data, lesson, 'IM-G2-U3-L3', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U3-L5', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-G2-U3-L6', lesson_topic_mismatch(data, [addition, algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U3-L7', lesson_topic_mismatch(data, [addition, algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U4-L1', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G2-U4-L10', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U4-L11', lesson_topic_mismatch(data, [addition, counting, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U4-L12', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-G2-U4-L13', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-G2-U4-L14', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G2-U4-L15', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U4-L2', lesson_topic_mismatch(data, [addition, counting, subtraction])).
+excludes(data, lesson, 'IM-G2-U4-L3', lesson_topic_mismatch(data, [addition, counting, subtraction])).
+excludes(data, lesson, 'IM-G2-U4-L4', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U4-L5', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G2-U4-L6', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G2-U4-L7', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-G2-U4-L8', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-G2-U4-L9', lesson_topic_mismatch(data, [counting, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U5-L1', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G2-U5-L10', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G2-U5-L12', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G2-U5-L13', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G2-U5-L14', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G2-U5-L2', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-G2-U5-L3', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U5-L7', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G2-U5-L8', lesson_topic_mismatch(data, [addition, counting, subtraction])).
+excludes(data, lesson, 'IM-G2-U5-L9', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G2-U6-L1', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G2-U6-L10', lesson_topic_mismatch(data, [division, geometry])).
+excludes(data, lesson, 'IM-G2-U6-L12', lesson_topic_mismatch(data, [counting, ratio])).
+excludes(data, lesson, 'IM-G2-U6-L14', lesson_topic_mismatch(data, [addition, geometry, subtraction])).
+excludes(data, lesson, 'IM-G2-U6-L15', lesson_topic_mismatch(data, [addition])).
+excludes(data, lesson, 'IM-G2-U6-L16', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G2-U6-L17', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G2-U6-L18', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U6-L19', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U6-L2', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G2-U6-L20', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G2-U6-L21', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G2-U6-L22', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U6-L3', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G2-U6-L4', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G2-U6-L5', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G2-U6-L6', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G2-U6-L7', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G2-U6-L8', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G2-U6-L9', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G2-U7-L1', lesson_topic_mismatch(data, [addition, counting, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U7-L10', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G2-U7-L11', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G2-U7-L12', lesson_topic_mismatch(data, [ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U7-L13', lesson_topic_mismatch(data, [ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U7-L14', lesson_topic_mismatch(data, [algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U7-L15', lesson_topic_mismatch(data, [ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U7-L16', lesson_topic_mismatch(data, [ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U7-L17', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U7-L18', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U7-L19', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G2-U7-L2', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-G2-U7-L3', lesson_topic_mismatch(data, [addition, counting, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U7-L4', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U7-L5', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G2-U7-L6', lesson_topic_mismatch(data, [addition])).
+excludes(data, lesson, 'IM-G2-U7-L7', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G2-U7-L8', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G2-U7-L9', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G2-U8-L1', lesson_topic_mismatch(data, [division, multiplication])).
+excludes(data, lesson, 'IM-G2-U8-L10', lesson_topic_mismatch(data, [addition, algebraic, multiplication])).
+excludes(data, lesson, 'IM-G2-U8-L11', lesson_topic_mismatch(data, [addition, geometry, multiplication])).
+excludes(data, lesson, 'IM-G2-U8-L12', lesson_topic_mismatch(data, [geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G2-U8-L13', lesson_topic_mismatch(data, [addition, algebraic, counting, subtraction])).
+excludes(data, lesson, 'IM-G2-U8-L14', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G2-U8-L2', lesson_topic_mismatch(data, [division])).
+excludes(data, lesson, 'IM-G2-U8-L3', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G2-U8-L4', lesson_topic_mismatch(data, [addition, algebraic])).
+excludes(data, lesson, 'IM-G2-U8-L5', lesson_topic_mismatch(data, [addition, counting])).
+excludes(data, lesson, 'IM-G2-U8-L6', lesson_topic_mismatch(data, [addition, counting, subtraction])).
+excludes(data, lesson, 'IM-G2-U8-L7', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G2-U8-L8', lesson_topic_mismatch(data, [counting, multiplication])).
+excludes(data, lesson, 'IM-G2-U8-L9', lesson_topic_mismatch(data, [addition, algebraic, multiplication, ratio])).
+excludes(data, lesson, 'IM-G2-U9-L1', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U9-L10', lesson_topic_mismatch(data, [algebraic, ratio])).
+excludes(data, lesson, 'IM-G2-U9-L11', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G2-U9-L12', lesson_topic_mismatch(data, [addition, algebraic])).
+excludes(data, lesson, 'IM-G2-U9-L13', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G2-U9-L2', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U9-L3', lesson_topic_mismatch(data, [addition, algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U9-L5', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G2-U9-L6', lesson_topic_mismatch(data, [algebraic, ratio])).
+excludes(data, lesson, 'IM-G2-U9-L7', lesson_topic_mismatch(data, [addition, algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U9-L8', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G2-U9-L9', lesson_topic_mismatch(data, [addition, algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-G3-U1-L10', lesson_topic_mismatch(data, [addition, multiplication])).
+excludes(data, lesson, 'IM-G3-U1-L11', lesson_topic_mismatch(data, [algebraic, multiplication])).
+excludes(data, lesson, 'IM-G3-U1-L12', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G3-U1-L13', lesson_topic_mismatch(data, [algebraic, multiplication])).
+excludes(data, lesson, 'IM-G3-U1-L14', lesson_topic_mismatch(data, [algebraic, multiplication, ratio])).
+excludes(data, lesson, 'IM-G3-U1-L15', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G3-U1-L16', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G3-U1-L17', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G3-U1-L18', lesson_topic_mismatch(data, [algebraic, multiplication])).
+excludes(data, lesson, 'IM-G3-U1-L19', lesson_topic_mismatch(data, [algebraic, multiplication, ratio])).
+excludes(data, lesson, 'IM-G3-U1-L20', lesson_topic_mismatch(data, [algebraic, multiplication])).
+excludes(data, lesson, 'IM-G3-U2-L1', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G3-U2-L10', lesson_topic_mismatch(data, [geometry, ratio])).
+excludes(data, lesson, 'IM-G3-U2-L11', lesson_topic_mismatch(data, [geometry, multiplication])).
+excludes(data, lesson, 'IM-G3-U2-L12', lesson_topic_mismatch(data, [addition, geometry, ratio])).
+excludes(data, lesson, 'IM-G3-U2-L13', lesson_topic_mismatch(data, [addition, geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G3-U2-L14', lesson_topic_mismatch(data, [geometry, ratio])).
+excludes(data, lesson, 'IM-G3-U2-L15', lesson_topic_mismatch(data, [addition, geometry])).
+excludes(data, lesson, 'IM-G3-U2-L2', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G3-U2-L3', lesson_topic_mismatch(data, [counting, geometry])).
+excludes(data, lesson, 'IM-G3-U2-L4', lesson_topic_mismatch(data, [counting, geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G3-U2-L5', lesson_topic_mismatch(data, [algebraic, geometry, multiplication])).
+excludes(data, lesson, 'IM-G3-U2-L6', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G3-U2-L7', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G3-U2-L8', lesson_topic_mismatch(data, [geometry, ratio])).
+excludes(data, lesson, 'IM-G3-U2-L9', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G3-U3-L1', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G3-U3-L10', lesson_topic_mismatch(data, [subtraction])).
+excludes(data, lesson, 'IM-G3-U3-L11', lesson_topic_mismatch(data, [subtraction])).
+excludes(data, lesson, 'IM-G3-U3-L12', lesson_topic_mismatch(data, [algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-G3-U3-L16', lesson_topic_mismatch(data, [division, multiplication, ratio])).
+excludes(data, lesson, 'IM-G3-U3-L17', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G3-U3-L18', lesson_topic_mismatch(data, [algebraic, ratio])).
+excludes(data, lesson, 'IM-G3-U3-L19', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G3-U3-L2', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G3-U3-L20', lesson_topic_mismatch(data, [algebraic, division, multiplication, ratio])).
+excludes(data, lesson, 'IM-G3-U3-L21', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G3-U3-L3', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G3-U3-L4', lesson_topic_mismatch(data, [addition])).
+excludes(data, lesson, 'IM-G3-U3-L5', lesson_topic_mismatch(data, [addition])).
+excludes(data, lesson, 'IM-G3-U3-L6', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G3-U3-L7', lesson_topic_mismatch(data, [ratio, subtraction])).
+excludes(data, lesson, 'IM-G3-U3-L8', lesson_topic_mismatch(data, [ratio, subtraction])).
+excludes(data, lesson, 'IM-G3-U3-L9', lesson_topic_mismatch(data, [subtraction])).
+excludes(data, lesson, 'IM-G3-U4-L1', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G3-U4-L10', lesson_topic_mismatch(data, [algebraic, geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G3-U4-L11', lesson_topic_mismatch(data, [algebraic, geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G3-U4-L12', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G3-U4-L13', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G3-U4-L14', lesson_topic_mismatch(data, [algebraic, multiplication, ratio])).
+excludes(data, lesson, 'IM-G3-U4-L15', lesson_topic_mismatch(data, [geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G3-U4-L16', lesson_topic_mismatch(data, [geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G3-U4-L17', lesson_topic_mismatch(data, [algebraic, ratio])).
+excludes(data, lesson, 'IM-G3-U4-L18', lesson_topic_mismatch(data, [division, multiplication, ratio])).
+excludes(data, lesson, 'IM-G3-U4-L19', lesson_topic_mismatch(data, [algebraic, division, ratio])).
+excludes(data, lesson, 'IM-G3-U4-L2', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G3-U4-L20', lesson_topic_mismatch(data, [division, ratio])).
+excludes(data, lesson, 'IM-G3-U4-L21', lesson_topic_mismatch(data, [algebraic, ratio])).
+excludes(data, lesson, 'IM-G3-U4-L22', lesson_topic_mismatch(data, [algebraic, division, multiplication])).
+excludes(data, lesson, 'IM-G3-U4-L3', lesson_topic_mismatch(data, [division])).
+excludes(data, lesson, 'IM-G3-U4-L4', lesson_topic_mismatch(data, [algebraic, division])).
+excludes(data, lesson, 'IM-G3-U4-L5', lesson_topic_mismatch(data, [algebraic, division, ratio])).
+excludes(data, lesson, 'IM-G3-U4-L6', lesson_topic_mismatch(data, [algebraic, division, multiplication])).
+excludes(data, lesson, 'IM-G3-U4-L7', lesson_topic_mismatch(data, [algebraic, division, multiplication, ratio])).
+excludes(data, lesson, 'IM-G3-U4-L8', lesson_topic_mismatch(data, [algebraic, division, multiplication, ratio])).
+excludes(data, lesson, 'IM-G3-U4-L9', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G3-U5-L1', lesson_topic_mismatch(data, [fraction, geometry])).
+excludes(data, lesson, 'IM-G3-U5-L10', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G3-U5-L11', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G3-U5-L12', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G3-U5-L13', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G3-U5-L14', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G3-U5-L15', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G3-U5-L16', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G3-U5-L17', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G3-U5-L18', lesson_topic_mismatch(data, [addition, fraction])).
+excludes(data, lesson, 'IM-G3-U5-L2', lesson_topic_mismatch(data, [fraction, geometry])).
+excludes(data, lesson, 'IM-G3-U5-L3', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G3-U5-L4', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G3-U5-L5', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G3-U5-L6', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G3-U5-L7', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G3-U5-L8', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G3-U5-L9', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G3-U6-L1', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G3-U6-L10', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G3-U6-L11', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G3-U6-L12', lesson_topic_mismatch(data, [addition, division, geometry, multiplication, subtraction])).
+excludes(data, lesson, 'IM-G3-U6-L13', lesson_topic_mismatch(data, [addition, division, multiplication, subtraction])).
+excludes(data, lesson, 'IM-G3-U6-L14', lesson_topic_mismatch(data, [algebraic, geometry, ratio])).
+excludes(data, lesson, 'IM-G3-U6-L15', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G3-U6-L2', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G3-U6-L3', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G3-U6-L6', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G3-U6-L7', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G3-U6-L8', lesson_topic_mismatch(data, [geometry, ratio])).
+excludes(data, lesson, 'IM-G3-U6-L9', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G3-U7-L1', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G3-U7-L10', lesson_topic_mismatch(data, [geometry, subtraction])).
+excludes(data, lesson, 'IM-G3-U7-L11', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G3-U7-L12', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G3-U7-L13', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G3-U7-L14', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G3-U7-L15', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G3-U7-L2', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G3-U7-L3', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G3-U7-L4', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G3-U7-L5', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G3-U7-L6', lesson_topic_mismatch(data, [counting, geometry, ratio])).
+excludes(data, lesson, 'IM-G3-U7-L7', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G3-U7-L8', lesson_topic_mismatch(data, [geometry, ratio])).
+excludes(data, lesson, 'IM-G3-U7-L9', lesson_topic_mismatch(data, [geometry, ratio])).
+excludes(data, lesson, 'IM-G3-U8-L1', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G3-U8-L10', lesson_topic_mismatch(data, [algebraic, division, multiplication, ratio])).
+excludes(data, lesson, 'IM-G3-U8-L11', lesson_topic_mismatch(data, [algebraic, division, ratio])).
+excludes(data, lesson, 'IM-G3-U8-L12', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G3-U8-L13', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G3-U8-L14', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G3-U8-L15', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-G3-U8-L2', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G3-U8-L3', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G3-U8-L4', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G3-U8-L5', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G3-U8-L8', lesson_topic_mismatch(data, [algebraic, multiplication, ratio])).
+excludes(data, lesson, 'IM-G3-U8-L9', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U1-L1', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G4-U1-L2', lesson_topic_mismatch(data, [geometry, multiplication])).
+excludes(data, lesson, 'IM-G4-U1-L3', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U1-L4', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U1-L5', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U1-L6', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U1-L7', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G4-U1-L8', lesson_topic_mismatch(data, [geometry, multiplication])).
+excludes(data, lesson, 'IM-G4-U2-L1', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G4-U2-L10', lesson_topic_mismatch(data, [algebraic, fraction, ratio])).
+excludes(data, lesson, 'IM-G4-U2-L11', lesson_topic_mismatch(data, [algebraic, division, fraction, multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U2-L12', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G4-U2-L13', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G4-U2-L14', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G4-U2-L15', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G4-U2-L16', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G4-U2-L17', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G4-U2-L2', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G4-U2-L3', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G4-U2-L4', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G4-U2-L5', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G4-U2-L6', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G4-U2-L7', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G4-U2-L8', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G4-U2-L9', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G4-U3-L1', lesson_topic_mismatch(data, [algebraic, fraction, multiplication])).
+excludes(data, lesson, 'IM-G4-U3-L10', lesson_topic_mismatch(data, [fraction, ratio, subtraction])).
+excludes(data, lesson, 'IM-G4-U3-L11', lesson_topic_mismatch(data, [algebraic, fraction, ratio, subtraction])).
+excludes(data, lesson, 'IM-G4-U3-L12', lesson_topic_mismatch(data, [addition, fraction, ratio, subtraction])).
+excludes(data, lesson, 'IM-G4-U3-L15', lesson_topic_mismatch(data, [fraction, ratio])).
+excludes(data, lesson, 'IM-G4-U3-L16', lesson_topic_mismatch(data, [addition, fraction, ratio])).
+excludes(data, lesson, 'IM-G4-U3-L17', lesson_topic_mismatch(data, [addition, algebraic, fraction, ratio])).
+excludes(data, lesson, 'IM-G4-U3-L18', lesson_topic_mismatch(data, [addition, fraction])).
+excludes(data, lesson, 'IM-G4-U3-L19', lesson_topic_mismatch(data, [addition, fraction, multiplication, subtraction])).
+excludes(data, lesson, 'IM-G4-U3-L2', lesson_topic_mismatch(data, [algebraic, fraction, multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U3-L20', lesson_topic_mismatch(data, [fraction, multiplication])).
+excludes(data, lesson, 'IM-G4-U3-L3', lesson_topic_mismatch(data, [fraction, multiplication])).
+excludes(data, lesson, 'IM-G4-U3-L4', lesson_topic_mismatch(data, [fraction, multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U3-L5', lesson_topic_mismatch(data, [algebraic, fraction, multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U3-L6', lesson_topic_mismatch(data, [algebraic, fraction, multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U3-L7', lesson_topic_mismatch(data, [addition, algebraic, fraction, ratio])).
+excludes(data, lesson, 'IM-G4-U3-L8', lesson_topic_mismatch(data, [addition, fraction])).
+excludes(data, lesson, 'IM-G4-U3-L9', lesson_topic_mismatch(data, [fraction, ratio, subtraction])).
+excludes(data, lesson, 'IM-G4-U4-L1', lesson_topic_mismatch(data, [decimal])).
+excludes(data, lesson, 'IM-G4-U4-L10', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G4-U4-L11', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G4-U4-L12', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G4-U4-L13', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G4-U4-L16', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G4-U4-L17', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G4-U4-L18', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G4-U4-L19', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G4-U4-L2', lesson_topic_mismatch(data, [decimal])).
+excludes(data, lesson, 'IM-G4-U4-L20', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G4-U4-L21', lesson_topic_mismatch(data, [subtraction])).
+excludes(data, lesson, 'IM-G4-U4-L22', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G4-U4-L23', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G4-U4-L3', lesson_topic_mismatch(data, [decimal, ratio])).
+excludes(data, lesson, 'IM-G4-U4-L4', lesson_topic_mismatch(data, [decimal, ratio])).
+excludes(data, lesson, 'IM-G4-U4-L5', lesson_topic_mismatch(data, [decimal, fraction, ratio])).
+excludes(data, lesson, 'IM-G4-U4-L6', lesson_topic_mismatch(data, [division])).
+excludes(data, lesson, 'IM-G4-U4-L8', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G4-U4-L9', lesson_topic_mismatch(data, [division])).
+excludes(data, lesson, 'IM-G4-U5-L1', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G4-U5-L10', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U5-L11', lesson_topic_mismatch(data, [algebraic, decimal, fraction, geometry, ratio])).
+excludes(data, lesson, 'IM-G4-U5-L12', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G4-U5-L13', lesson_topic_mismatch(data, [fraction, multiplication])).
+excludes(data, lesson, 'IM-G4-U5-L14', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U5-L15', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U5-L16', lesson_topic_mismatch(data, [fraction, geometry, multiplication])).
+excludes(data, lesson, 'IM-G4-U5-L17', lesson_topic_mismatch(data, [addition, fraction, geometry, multiplication, ratio, subtraction])).
+excludes(data, lesson, 'IM-G4-U5-L18', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G4-U5-L2', lesson_topic_mismatch(data, [algebraic, multiplication])).
+excludes(data, lesson, 'IM-G4-U5-L3', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U5-L4', lesson_topic_mismatch(data, [algebraic, multiplication])).
+excludes(data, lesson, 'IM-G4-U5-L5', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U5-L6', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G4-U5-L7', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G4-U5-L8', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G4-U5-L9', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G4-U6-L1', lesson_topic_mismatch(data, [geometry, ratio])).
+excludes(data, lesson, 'IM-G4-U6-L10', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G4-U6-L11', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G4-U6-L12', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U6-L13', lesson_topic_mismatch(data, [algebraic, division, ratio])).
+excludes(data, lesson, 'IM-G4-U6-L14', lesson_topic_mismatch(data, [division, geometry, ratio])).
+excludes(data, lesson, 'IM-G4-U6-L15', lesson_topic_mismatch(data, [division])).
+excludes(data, lesson, 'IM-G4-U6-L16', lesson_topic_mismatch(data, [division])).
+excludes(data, lesson, 'IM-G4-U6-L17', lesson_topic_mismatch(data, [division, ratio])).
+excludes(data, lesson, 'IM-G4-U6-L18', lesson_topic_mismatch(data, [division])).
+excludes(data, lesson, 'IM-G4-U6-L19', lesson_topic_mismatch(data, [algebraic, division, ratio])).
+excludes(data, lesson, 'IM-G4-U6-L2', lesson_topic_mismatch(data, [geometry, ratio])).
+excludes(data, lesson, 'IM-G4-U6-L20', lesson_topic_mismatch(data, [division, ratio])).
+excludes(data, lesson, 'IM-G4-U6-L21', lesson_topic_mismatch(data, [division, multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U6-L22', lesson_topic_mismatch(data, [division, multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U6-L23', lesson_topic_mismatch(data, [division, geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U6-L24', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G4-U6-L26', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G4-U6-L3', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G4-U6-L4', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U6-L5', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U6-L6', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U6-L7', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U6-L8', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G4-U6-L9', lesson_topic_mismatch(data, [algebraic, multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U7-L1', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G4-U7-L10', lesson_topic_mismatch(data, [algebraic, division, geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U7-L11', lesson_topic_mismatch(data, [addition, algebraic, division, geometry, subtraction])).
+excludes(data, lesson, 'IM-G4-U7-L12', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G4-U7-L13', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G4-U7-L14', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G4-U7-L15', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G4-U7-L16', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G4-U7-L2', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G4-U7-L3', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G4-U7-L4', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G4-U7-L5', lesson_topic_mismatch(data, [division, geometry])).
+excludes(data, lesson, 'IM-G4-U7-L6', lesson_topic_mismatch(data, [division, geometry])).
+excludes(data, lesson, 'IM-G4-U7-L7', lesson_topic_mismatch(data, [division, geometry])).
+excludes(data, lesson, 'IM-G4-U7-L8', lesson_topic_mismatch(data, [addition, algebraic, division, geometry, subtraction])).
+excludes(data, lesson, 'IM-G4-U7-L9', lesson_topic_mismatch(data, [addition, algebraic, division, geometry, multiplication, ratio, subtraction])).
+excludes(data, lesson, 'IM-G4-U8-L1', lesson_topic_mismatch(data, [division, geometry])).
+excludes(data, lesson, 'IM-G4-U8-L10', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G4-U8-L2', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G4-U8-L3', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G4-U8-L5', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G4-U8-L6', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G4-U8-L7', lesson_topic_mismatch(data, [algebraic, geometry])).
+excludes(data, lesson, 'IM-G4-U8-L8', lesson_topic_mismatch(data, [geometry, ratio])).
+excludes(data, lesson, 'IM-G4-U8-L9', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G4-U9-L1', lesson_topic_mismatch(data, [addition, algebraic, fraction, multiplication, ratio, subtraction])).
+excludes(data, lesson, 'IM-G4-U9-L10', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U9-L11', lesson_topic_mismatch(data, [algebraic, division])).
+excludes(data, lesson, 'IM-G4-U9-L12', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G4-U9-L2', lesson_topic_mismatch(data, [addition, fraction, ratio, subtraction])).
+excludes(data, lesson, 'IM-G4-U9-L3', lesson_topic_mismatch(data, [addition, algebraic, decimal, fraction, ratio, subtraction])).
+excludes(data, lesson, 'IM-G4-U9-L4', lesson_topic_mismatch(data, [algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-G4-U9-L5', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U9-L6', lesson_topic_mismatch(data, [division, ratio])).
+excludes(data, lesson, 'IM-G4-U9-L7', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U9-L8', lesson_topic_mismatch(data, [division, multiplication, ratio])).
+excludes(data, lesson, 'IM-G4-U9-L9', lesson_topic_mismatch(data, [addition, algebraic, division, geometry, multiplication, ratio, subtraction])).
+excludes(data, lesson, 'IM-G5-U1-L1', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G5-U1-L10', lesson_topic_mismatch(data, [algebraic, geometry])).
+excludes(data, lesson, 'IM-G5-U1-L11', lesson_topic_mismatch(data, [geometry, ratio])).
+excludes(data, lesson, 'IM-G5-U1-L12', lesson_topic_mismatch(data, [geometry, ratio])).
+excludes(data, lesson, 'IM-G5-U1-L2', lesson_topic_mismatch(data, [geometry, ratio])).
+excludes(data, lesson, 'IM-G5-U1-L3', lesson_topic_mismatch(data, [geometry, ratio])).
+excludes(data, lesson, 'IM-G5-U1-L4', lesson_topic_mismatch(data, [addition, algebraic, geometry, multiplication])).
+excludes(data, lesson, 'IM-G5-U1-L5', lesson_topic_mismatch(data, [algebraic, geometry, multiplication])).
+excludes(data, lesson, 'IM-G5-U1-L6', lesson_topic_mismatch(data, [algebraic, geometry])).
+excludes(data, lesson, 'IM-G5-U1-L7', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G5-U1-L8', lesson_topic_mismatch(data, [addition, geometry, ratio])).
+excludes(data, lesson, 'IM-G5-U1-L9', lesson_topic_mismatch(data, [addition, algebraic, geometry, ratio])).
+excludes(data, lesson, 'IM-G5-U2-L1', lesson_topic_mismatch(data, [division, fraction, ratio])).
+excludes(data, lesson, 'IM-G5-U2-L10', lesson_topic_mismatch(data, [algebraic, fraction, geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U2-L11', lesson_topic_mismatch(data, [algebraic, fraction, geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U2-L12', lesson_topic_mismatch(data, [fraction, geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U2-L13', lesson_topic_mismatch(data, [algebraic, fraction, geometry, ratio])).
+excludes(data, lesson, 'IM-G5-U2-L14', lesson_topic_mismatch(data, [fraction, geometry, multiplication])).
+excludes(data, lesson, 'IM-G5-U2-L15', lesson_topic_mismatch(data, [algebraic, fraction, geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U2-L16', lesson_topic_mismatch(data, [fraction, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U2-L17', lesson_topic_mismatch(data, [fraction, geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U2-L2', lesson_topic_mismatch(data, [algebraic, division, fraction])).
+excludes(data, lesson, 'IM-G5-U2-L3', lesson_topic_mismatch(data, [algebraic, division, fraction])).
+excludes(data, lesson, 'IM-G5-U2-L4', lesson_topic_mismatch(data, [algebraic, division, fraction, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U2-L5', lesson_topic_mismatch(data, [algebraic, division, fraction])).
+excludes(data, lesson, 'IM-G5-U2-L6', lesson_topic_mismatch(data, [algebraic, division, fraction, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U2-L7', lesson_topic_mismatch(data, [algebraic, division, fraction, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U2-L8', lesson_topic_mismatch(data, [algebraic, division, fraction, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U2-L9', lesson_topic_mismatch(data, [fraction, geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U3-L1', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G5-U3-L10', lesson_topic_mismatch(data, [division])).
+excludes(data, lesson, 'IM-G5-U3-L11', lesson_topic_mismatch(data, [algebraic, division, fraction])).
+excludes(data, lesson, 'IM-G5-U3-L12', lesson_topic_mismatch(data, [algebraic, division, fraction, ratio])).
+excludes(data, lesson, 'IM-G5-U3-L13', lesson_topic_mismatch(data, [algebraic, division, fraction, ratio])).
+excludes(data, lesson, 'IM-G5-U3-L14', lesson_topic_mismatch(data, [algebraic, division, fraction])).
+excludes(data, lesson, 'IM-G5-U3-L15', lesson_topic_mismatch(data, [algebraic, division, fraction, ratio])).
+excludes(data, lesson, 'IM-G5-U3-L16', lesson_topic_mismatch(data, [division, fraction, ratio])).
+excludes(data, lesson, 'IM-G5-U3-L17', lesson_topic_mismatch(data, [division, fraction, multiplication])).
+excludes(data, lesson, 'IM-G5-U3-L18', lesson_topic_mismatch(data, [algebraic, division, fraction, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U3-L19', lesson_topic_mismatch(data, [algebraic, division, fraction, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U3-L2', lesson_topic_mismatch(data, [algebraic, fraction, multiplication])).
+excludes(data, lesson, 'IM-G5-U3-L20', lesson_topic_mismatch(data, [division, fraction, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U3-L3', lesson_topic_mismatch(data, [algebraic, fraction, multiplication])).
+excludes(data, lesson, 'IM-G5-U3-L4', lesson_topic_mismatch(data, [algebraic, fraction, multiplication])).
+excludes(data, lesson, 'IM-G5-U3-L5', lesson_topic_mismatch(data, [algebraic, fraction, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U3-L6', lesson_topic_mismatch(data, [algebraic, fraction, geometry, multiplication])).
+excludes(data, lesson, 'IM-G5-U3-L7', lesson_topic_mismatch(data, [fraction, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U3-L8', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U3-L9', lesson_topic_mismatch(data, [algebraic, fraction, geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U4-L1', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U4-L10', lesson_topic_mismatch(data, [algebraic, division, multiplication])).
+excludes(data, lesson, 'IM-G5-U4-L11', lesson_topic_mismatch(data, [division])).
+excludes(data, lesson, 'IM-G5-U4-L12', lesson_topic_mismatch(data, [division, ratio])).
+excludes(data, lesson, 'IM-G5-U4-L13', lesson_topic_mismatch(data, [division, ratio])).
+excludes(data, lesson, 'IM-G5-U4-L14', lesson_topic_mismatch(data, [division, geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U4-L15', lesson_topic_mismatch(data, [division, ratio])).
+excludes(data, lesson, 'IM-G5-U4-L16', lesson_topic_mismatch(data, [addition, division, fraction])).
+excludes(data, lesson, 'IM-G5-U4-L17', lesson_topic_mismatch(data, [division, geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U4-L18', lesson_topic_mismatch(data, [division, geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U4-L19', lesson_topic_mismatch(data, [division, geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U4-L2', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U4-L20', lesson_topic_mismatch(data, [addition, division, multiplication])).
+excludes(data, lesson, 'IM-G5-U4-L3', lesson_topic_mismatch(data, [algebraic, multiplication])).
+excludes(data, lesson, 'IM-G5-U4-L4', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G5-U4-L5', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G5-U4-L6', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G5-U4-L7', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G5-U4-L8', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U4-L9', lesson_topic_mismatch(data, [algebraic, division, ratio])).
+excludes(data, lesson, 'IM-G5-U5-L10', lesson_topic_mismatch(data, [decimal])).
+excludes(data, lesson, 'IM-G5-U5-L11', lesson_topic_mismatch(data, [addition, decimal, ratio])).
+excludes(data, lesson, 'IM-G5-U5-L12', lesson_topic_mismatch(data, [addition, algebraic, decimal, ratio])).
+excludes(data, lesson, 'IM-G5-U5-L13', lesson_topic_mismatch(data, [addition, decimal, ratio])).
+excludes(data, lesson, 'IM-G5-U5-L14', lesson_topic_mismatch(data, [decimal, ratio, subtraction])).
+excludes(data, lesson, 'IM-G5-U5-L15', lesson_topic_mismatch(data, [algebraic, decimal, ratio, subtraction])).
+excludes(data, lesson, 'IM-G5-U5-L16', lesson_topic_mismatch(data, [addition, decimal, ratio, subtraction])).
+excludes(data, lesson, 'IM-G5-U5-L17', lesson_topic_mismatch(data, [decimal, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U5-L18', lesson_topic_mismatch(data, [algebraic, decimal, multiplication])).
+excludes(data, lesson, 'IM-G5-U5-L19', lesson_topic_mismatch(data, [algebraic, decimal, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U5-L2', lesson_topic_mismatch(data, [decimal])).
+excludes(data, lesson, 'IM-G5-U5-L20', lesson_topic_mismatch(data, [decimal, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U5-L21', lesson_topic_mismatch(data, [decimal, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U5-L22', lesson_topic_mismatch(data, [division, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U5-L23', lesson_topic_mismatch(data, [algebraic, decimal, division, ratio])).
+excludes(data, lesson, 'IM-G5-U5-L24', lesson_topic_mismatch(data, [decimal, division, ratio])).
+excludes(data, lesson, 'IM-G5-U5-L25', lesson_topic_mismatch(data, [decimal, division, ratio])).
+excludes(data, lesson, 'IM-G5-U5-L26', lesson_topic_mismatch(data, [addition, decimal, ratio])).
+excludes(data, lesson, 'IM-G5-U5-L3', lesson_topic_mismatch(data, [decimal, fraction])).
+excludes(data, lesson, 'IM-G5-U5-L4', lesson_topic_mismatch(data, [decimal])).
+excludes(data, lesson, 'IM-G5-U5-L5', lesson_topic_mismatch(data, [decimal, ratio])).
+excludes(data, lesson, 'IM-G5-U5-L6', lesson_topic_mismatch(data, [decimal])).
+excludes(data, lesson, 'IM-G5-U5-L7', lesson_topic_mismatch(data, [decimal])).
+excludes(data, lesson, 'IM-G5-U5-L8', lesson_topic_mismatch(data, [decimal, ratio])).
+excludes(data, lesson, 'IM-G5-U5-L9', lesson_topic_mismatch(data, [decimal, ratio])).
+excludes(data, lesson, 'IM-G5-U6-L1', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G5-U6-L10', lesson_topic_mismatch(data, [addition, fraction, multiplication, ratio, subtraction])).
+excludes(data, lesson, 'IM-G5-U6-L11', lesson_topic_mismatch(data, [fraction, ratio, subtraction])).
+excludes(data, lesson, 'IM-G5-U6-L12', lesson_topic_mismatch(data, [addition, fraction, subtraction])).
+excludes(data, lesson, 'IM-G5-U6-L13', lesson_topic_mismatch(data, [addition, fraction, ratio, subtraction])).
+excludes(data, lesson, 'IM-G5-U6-L14', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G5-U6-L16', lesson_topic_mismatch(data, [fraction, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U6-L17', lesson_topic_mismatch(data, [fraction, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U6-L18', lesson_topic_mismatch(data, [fraction, multiplication])).
+excludes(data, lesson, 'IM-G5-U6-L19', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G5-U6-L2', lesson_topic_mismatch(data, [decimal, division, multiplication])).
+excludes(data, lesson, 'IM-G5-U6-L20', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U6-L3', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G5-U6-L4', lesson_topic_mismatch(data, [decimal, division])).
+excludes(data, lesson, 'IM-G5-U6-L5', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G5-U6-L6', lesson_topic_mismatch(data, [geometry, ratio])).
+excludes(data, lesson, 'IM-G5-U6-L7', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G5-U6-L8', lesson_topic_mismatch(data, [addition, fraction, ratio, subtraction])).
+excludes(data, lesson, 'IM-G5-U6-L9', lesson_topic_mismatch(data, [addition, algebraic, fraction, ratio, subtraction])).
+excludes(data, lesson, 'IM-G5-U7-L1', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G5-U7-L10', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G5-U7-L12', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G5-U7-L13', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G5-U7-L14', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G5-U7-L2', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G5-U7-L3', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G5-U7-L4', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G5-U7-L6', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G5-U7-L7', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G5-U7-L8', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G5-U7-L9', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-G5-U8-L1', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G5-U8-L10', lesson_topic_mismatch(data, [addition, fraction])).
+excludes(data, lesson, 'IM-G5-U8-L11', lesson_topic_mismatch(data, [fraction, subtraction])).
+excludes(data, lesson, 'IM-G5-U8-L12', lesson_topic_mismatch(data, [addition, decimal])).
+excludes(data, lesson, 'IM-G5-U8-L13', lesson_topic_mismatch(data, [fraction, multiplication])).
+excludes(data, lesson, 'IM-G5-U8-L14', lesson_topic_mismatch(data, [division, fraction])).
+excludes(data, lesson, 'IM-G5-U8-L15', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G5-U8-L16', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G5-U8-L17', lesson_topic_mismatch(data, [addition, algebraic, fraction, subtraction])).
+excludes(data, lesson, 'IM-G5-U8-L18', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G5-U8-L2', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G5-U8-L3', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U8-L4', lesson_topic_mismatch(data, [division, ratio])).
+excludes(data, lesson, 'IM-G5-U8-L5', lesson_topic_mismatch(data, [division, ratio])).
+excludes(data, lesson, 'IM-G5-U8-L6', lesson_topic_mismatch(data, [geometry, ratio])).
+excludes(data, lesson, 'IM-G5-U8-L7', lesson_topic_mismatch(data, [division, geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U8-L8', lesson_topic_mismatch(data, [division, geometry, multiplication, ratio])).
+excludes(data, lesson, 'IM-G5-U8-L9', lesson_topic_mismatch(data, [geometry, ratio])).
+excludes(data, lesson, 'IM-G6-U1-L1', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U1-L10', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U1-L11', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U1-L12', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U1-L13', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U1-L14', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U1-L15', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U1-L16', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U1-L17', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U1-L18', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U1-L19', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U1-L2', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U1-L3', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U1-L4', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U1-L5', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U1-L6', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U1-L7', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U1-L8', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U1-L9', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U2-L1', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U2-L10', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U2-L11', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U2-L12', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U2-L13', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U2-L14', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U2-L15', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U2-L16', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U2-L17', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U2-L2', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U2-L3', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U2-L4', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U2-L5', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U2-L6', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U2-L7', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U2-L8', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U2-L9', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U3-L1', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U3-L10', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U3-L11', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U3-L12', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U3-L13', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U3-L14', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U3-L15', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U3-L16', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U3-L17', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U3-L2', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U3-L3', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U3-L4', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U3-L5', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U3-L6', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U3-L7', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U3-L8', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U3-L9', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U4-L1', lesson_topic_mismatch(data, [division])).
+excludes(data, lesson, 'IM-G6-U4-L10', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G6-U4-L11', lesson_topic_mismatch(data, [division, fraction])).
+excludes(data, lesson, 'IM-G6-U4-L12', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G6-U4-L13', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G6-U4-L14', lesson_topic_mismatch(data, [fraction, geometry])).
+excludes(data, lesson, 'IM-G6-U4-L15', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U4-L16', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G6-U4-L17', lesson_topic_mismatch(data, [fraction, geometry, multiplication])).
+excludes(data, lesson, 'IM-G6-U4-L2', lesson_topic_mismatch(data, [division])).
+excludes(data, lesson, 'IM-G6-U4-L3', lesson_topic_mismatch(data, [division])).
+excludes(data, lesson, 'IM-G6-U4-L4', lesson_topic_mismatch(data, [fraction, geometry, multiplication])).
+excludes(data, lesson, 'IM-G6-U4-L5', lesson_topic_mismatch(data, [fraction, geometry, multiplication])).
+excludes(data, lesson, 'IM-G6-U4-L6', lesson_topic_mismatch(data, [fraction, geometry, multiplication])).
+excludes(data, lesson, 'IM-G6-U4-L7', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G6-U4-L8', lesson_topic_mismatch(data, [fraction, geometry, multiplication])).
+excludes(data, lesson, 'IM-G6-U4-L9', lesson_topic_mismatch(data, [fraction, geometry, multiplication])).
+excludes(data, lesson, 'IM-G6-U5-L1', lesson_topic_mismatch(data, [decimal])).
+excludes(data, lesson, 'IM-G6-U5-L10', lesson_topic_mismatch(data, [division])).
+excludes(data, lesson, 'IM-G6-U5-L11', lesson_topic_mismatch(data, [division])).
+excludes(data, lesson, 'IM-G6-U5-L12', lesson_topic_mismatch(data, [decimal])).
+excludes(data, lesson, 'IM-G6-U5-L13', lesson_topic_mismatch(data, [decimal])).
+excludes(data, lesson, 'IM-G6-U5-L14', lesson_topic_mismatch(data, [decimal])).
+excludes(data, lesson, 'IM-G6-U5-L2', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G6-U5-L3', lesson_topic_mismatch(data, [addition, decimal, subtraction])).
+excludes(data, lesson, 'IM-G6-U5-L4', lesson_topic_mismatch(data, [addition, decimal, subtraction])).
+excludes(data, lesson, 'IM-G6-U5-L5', lesson_topic_mismatch(data, [decimal, fraction, multiplication])).
+excludes(data, lesson, 'IM-G6-U5-L6', lesson_topic_mismatch(data, [decimal, multiplication])).
+excludes(data, lesson, 'IM-G6-U5-L7', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G6-U5-L8', lesson_topic_mismatch(data, [decimal, multiplication])).
+excludes(data, lesson, 'IM-G6-U5-L9', lesson_topic_mismatch(data, [division])).
+excludes(data, lesson, 'IM-G6-U6-L1', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G6-U6-L10', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G6-U6-L11', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G6-U6-L12', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G6-U6-L13', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G6-U6-L14', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G6-U6-L15', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G6-U6-L16', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G6-U6-L17', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G6-U6-L18', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G6-U6-L2', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G6-U6-L3', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G6-U6-L4', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G6-U6-L5', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G6-U6-L6', lesson_topic_mismatch(data, [algebraic, ratio])).
+excludes(data, lesson, 'IM-G6-U6-L7', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G6-U6-L8', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G6-U6-L9', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G6-U7-L1', lesson_topic_mismatch(data, [integer])).
+excludes(data, lesson, 'IM-G6-U7-L10', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U7-L11', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U7-L12', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U7-L13', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U7-L14', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U7-L15', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U7-L16', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G6-U7-L17', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U7-L18', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G6-U7-L19', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U7-L2', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U7-L3', lesson_topic_mismatch(data, [integer])).
+excludes(data, lesson, 'IM-G6-U7-L4', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G6-U7-L5', lesson_topic_mismatch(data, [integer])).
+excludes(data, lesson, 'IM-G6-U7-L6', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U7-L7', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U7-L9', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G6-U9-L11', lesson_topic_mismatch(data, [fraction])).
+excludes(data, lesson, 'IM-G7-U1-L1', lesson_topic_mismatch(data, [geometry, proportional])).
+excludes(data, lesson, 'IM-G7-U1-L10', lesson_topic_mismatch(data, [proportional])).
+excludes(data, lesson, 'IM-G7-U1-L11', lesson_topic_mismatch(data, [geometry, proportional])).
+excludes(data, lesson, 'IM-G7-U1-L12', lesson_topic_mismatch(data, [proportional])).
+excludes(data, lesson, 'IM-G7-U1-L13', lesson_topic_mismatch(data, [geometry, proportional])).
+excludes(data, lesson, 'IM-G7-U1-L2', lesson_topic_mismatch(data, [multiplication, proportional])).
+excludes(data, lesson, 'IM-G7-U1-L3', lesson_topic_mismatch(data, [geometry, proportional])).
+excludes(data, lesson, 'IM-G7-U1-L4', lesson_topic_mismatch(data, [geometry, proportional])).
+excludes(data, lesson, 'IM-G7-U1-L5', lesson_topic_mismatch(data, [multiplication, proportional])).
+excludes(data, lesson, 'IM-G7-U1-L6', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U1-L7', lesson_topic_mismatch(data, [proportional])).
+excludes(data, lesson, 'IM-G7-U1-L8', lesson_topic_mismatch(data, [proportional])).
+excludes(data, lesson, 'IM-G7-U1-L9', lesson_topic_mismatch(data, [proportional])).
+excludes(data, lesson, 'IM-G7-U2-L1', lesson_topic_mismatch(data, [proportional])).
+excludes(data, lesson, 'IM-G7-U2-L14', lesson_topic_mismatch(data, [proportional])).
+excludes(data, lesson, 'IM-G7-U2-L15', lesson_topic_mismatch(data, [proportional])).
+excludes(data, lesson, 'IM-G7-U2-L2', lesson_topic_mismatch(data, [proportional])).
+excludes(data, lesson, 'IM-G7-U2-L3', lesson_topic_mismatch(data, [proportional])).
+excludes(data, lesson, 'IM-G7-U2-L4', lesson_topic_mismatch(data, [algebraic, proportional])).
+excludes(data, lesson, 'IM-G7-U2-L5', lesson_topic_mismatch(data, [algebraic, proportional])).
+excludes(data, lesson, 'IM-G7-U2-L6', lesson_topic_mismatch(data, [algebraic, proportional])).
+excludes(data, lesson, 'IM-G7-U2-L7', lesson_topic_mismatch(data, [proportional])).
+excludes(data, lesson, 'IM-G7-U2-L8', lesson_topic_mismatch(data, [algebraic, proportional])).
+excludes(data, lesson, 'IM-G7-U2-L9', lesson_topic_mismatch(data, [proportional])).
+excludes(data, lesson, 'IM-G7-U3-L1', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U3-L10', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U3-L11', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U3-L2', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U3-L3', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U3-L4', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U3-L5', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U3-L6', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U3-L7', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U3-L8', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U3-L9', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U4-L1', lesson_topic_mismatch(data, [proportional, ratio])).
+excludes(data, lesson, 'IM-G7-U4-L10', lesson_topic_mismatch(data, [proportional, ratio])).
+excludes(data, lesson, 'IM-G7-U4-L11', lesson_topic_mismatch(data, [proportional, ratio])).
+excludes(data, lesson, 'IM-G7-U4-L12', lesson_topic_mismatch(data, [proportional, ratio])).
+excludes(data, lesson, 'IM-G7-U4-L13', lesson_topic_mismatch(data, [proportional, ratio])).
+excludes(data, lesson, 'IM-G7-U4-L14', lesson_topic_mismatch(data, [proportional, ratio])).
+excludes(data, lesson, 'IM-G7-U4-L15', lesson_topic_mismatch(data, [proportional, ratio])).
+excludes(data, lesson, 'IM-G7-U4-L16', lesson_topic_mismatch(data, [proportional, ratio])).
+excludes(data, lesson, 'IM-G7-U4-L2', lesson_topic_mismatch(data, [fraction, proportional, ratio])).
+excludes(data, lesson, 'IM-G7-U4-L3', lesson_topic_mismatch(data, [proportional, ratio])).
+excludes(data, lesson, 'IM-G7-U4-L4', lesson_topic_mismatch(data, [proportional, ratio])).
+excludes(data, lesson, 'IM-G7-U4-L5', lesson_topic_mismatch(data, [decimal, proportional, ratio])).
+excludes(data, lesson, 'IM-G7-U4-L6', lesson_topic_mismatch(data, [proportional, ratio])).
+excludes(data, lesson, 'IM-G7-U4-L7', lesson_topic_mismatch(data, [proportional, ratio])).
+excludes(data, lesson, 'IM-G7-U4-L8', lesson_topic_mismatch(data, [algebraic, proportional, ratio])).
+excludes(data, lesson, 'IM-G7-U4-L9', lesson_topic_mismatch(data, [proportional, ratio])).
+excludes(data, lesson, 'IM-G7-U5-L1', lesson_topic_mismatch(data, [integer, ratio])).
+excludes(data, lesson, 'IM-G7-U5-L10', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G7-U5-L11', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G7-U5-L12', lesson_topic_mismatch(data, [integer, ratio])).
+excludes(data, lesson, 'IM-G7-U5-L13', lesson_topic_mismatch(data, [algebraic, ratio])).
+excludes(data, lesson, 'IM-G7-U5-L14', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G7-U5-L15', lesson_topic_mismatch(data, [algebraic, ratio])).
+excludes(data, lesson, 'IM-G7-U5-L16', lesson_topic_mismatch(data, [algebraic, ratio])).
+excludes(data, lesson, 'IM-G7-U5-L17', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G7-U5-L2', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G7-U5-L3', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G7-U5-L4', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G7-U5-L5', lesson_topic_mismatch(data, [ratio, subtraction])).
+excludes(data, lesson, 'IM-G7-U5-L6', lesson_topic_mismatch(data, [ratio, subtraction])).
+excludes(data, lesson, 'IM-G7-U5-L7', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-G7-U5-L8', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G7-U5-L9', lesson_topic_mismatch(data, [multiplication, ratio])).
+excludes(data, lesson, 'IM-G7-U6-L1', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U6-L10', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U6-L11', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U6-L12', lesson_topic_mismatch(data, [algebraic, ratio])).
+excludes(data, lesson, 'IM-G7-U6-L13', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U6-L14', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U6-L15', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U6-L16', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U6-L17', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U6-L18', lesson_topic_mismatch(data, [algebraic, subtraction])).
+excludes(data, lesson, 'IM-G7-U6-L19', lesson_topic_mismatch(data, [algebraic, multiplication])).
+excludes(data, lesson, 'IM-G7-U6-L2', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U6-L20', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U6-L21', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U6-L22', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U6-L3', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U6-L4', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U6-L5', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U6-L6', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U6-L7', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U6-L8', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U6-L9', lesson_topic_mismatch(data, [algebraic, integer])).
+excludes(data, lesson, 'IM-G7-U7-L1', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U7-L10', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U7-L11', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U7-L12', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U7-L13', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U7-L14', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U7-L15', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U7-L16', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U7-L17', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U7-L2', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U7-L3', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U7-L4', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U7-L5', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G7-U7-L6', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U7-L7', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U7-L8', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U7-L9', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G7-U8-L1', lesson_topic_mismatch(data, [probability])).
+excludes(data, lesson, 'IM-G7-U8-L10', lesson_topic_mismatch(data, [probability])).
+excludes(data, lesson, 'IM-G7-U8-L11', lesson_topic_mismatch(data, [probability])).
+excludes(data, lesson, 'IM-G7-U8-L12', lesson_topic_mismatch(data, [probability])).
+excludes(data, lesson, 'IM-G7-U8-L13', lesson_topic_mismatch(data, [probability])).
+excludes(data, lesson, 'IM-G7-U8-L14', lesson_topic_mismatch(data, [probability])).
+excludes(data, lesson, 'IM-G7-U8-L15', lesson_topic_mismatch(data, [probability])).
+excludes(data, lesson, 'IM-G7-U8-L16', lesson_topic_mismatch(data, [probability, proportional])).
+excludes(data, lesson, 'IM-G7-U8-L17', lesson_topic_mismatch(data, [probability])).
+excludes(data, lesson, 'IM-G7-U8-L18', lesson_topic_mismatch(data, [probability])).
+excludes(data, lesson, 'IM-G7-U8-L19', lesson_topic_mismatch(data, [probability])).
+excludes(data, lesson, 'IM-G7-U8-L2', lesson_topic_mismatch(data, [probability])).
+excludes(data, lesson, 'IM-G7-U8-L20', lesson_topic_mismatch(data, [probability])).
+excludes(data, lesson, 'IM-G7-U8-L3', lesson_topic_mismatch(data, [probability])).
+excludes(data, lesson, 'IM-G7-U8-L4', lesson_topic_mismatch(data, [probability])).
+excludes(data, lesson, 'IM-G7-U8-L5', lesson_topic_mismatch(data, [probability])).
+excludes(data, lesson, 'IM-G7-U8-L6', lesson_topic_mismatch(data, [probability])).
+excludes(data, lesson, 'IM-G7-U8-L7', lesson_topic_mismatch(data, [probability])).
+excludes(data, lesson, 'IM-G7-U8-L8', lesson_topic_mismatch(data, [probability])).
+excludes(data, lesson, 'IM-G7-U8-L9', lesson_topic_mismatch(data, [probability])).
+excludes(data, lesson, 'IM-G7-U9-L6', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U1-L1', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U1-L10', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U1-L11', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U1-L12', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U1-L13', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U1-L14', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U1-L15', lesson_topic_mismatch(data, [addition, geometry])).
+excludes(data, lesson, 'IM-G8-U1-L16', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U1-L17', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U1-L2', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U1-L3', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U1-L4', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U1-L5', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U1-L6', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U1-L7', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U1-L8', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U1-L9', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U2-L1', lesson_topic_mismatch(data, [geometry, proportional])).
+excludes(data, lesson, 'IM-G8-U2-L10', lesson_topic_mismatch(data, [geometry, proportional])).
+excludes(data, lesson, 'IM-G8-U2-L11', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U2-L12', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U2-L13', lesson_topic_mismatch(data, [geometry, proportional])).
+excludes(data, lesson, 'IM-G8-U2-L2', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U2-L3', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U2-L4', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U2-L5', lesson_topic_mismatch(data, [geometry, proportional])).
+excludes(data, lesson, 'IM-G8-U2-L6', lesson_topic_mismatch(data, [proportional])).
+excludes(data, lesson, 'IM-G8-U2-L7', lesson_topic_mismatch(data, [geometry, proportional])).
+excludes(data, lesson, 'IM-G8-U2-L8', lesson_topic_mismatch(data, [geometry, proportional])).
+excludes(data, lesson, 'IM-G8-U2-L9', lesson_topic_mismatch(data, [division, geometry, proportional])).
+excludes(data, lesson, 'IM-G8-U3-L1', lesson_topic_mismatch(data, [proportional])).
+excludes(data, lesson, 'IM-G8-U3-L12', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U3-L13', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U3-L14', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U3-L3', lesson_topic_mismatch(data, [proportional])).
+excludes(data, lesson, 'IM-G8-U3-L4', lesson_topic_mismatch(data, [proportional])).
+excludes(data, lesson, 'IM-G8-U4-L1', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U4-L10', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U4-L11', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U4-L12', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U4-L13', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U4-L14', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U4-L15', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U4-L16', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U4-L2', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U4-L3', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U4-L4', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U4-L5', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U4-L6', lesson_topic_mismatch(data, [algebraic, ratio])).
+excludes(data, lesson, 'IM-G8-U4-L7', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U4-L8', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U4-L9', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U5-L1', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U5-L10', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U5-L11', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U5-L12', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U5-L13', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U5-L14', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U5-L15', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U5-L16', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U5-L17', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U5-L18', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U5-L19', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U5-L2', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U5-L20', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U5-L21', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U5-L22', lesson_topic_mismatch(data, [algebraic, geometry])).
+excludes(data, lesson, 'IM-G8-U5-L3', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U5-L7', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U5-L8', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-G8-U5-L9', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U7-L15', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-G8-U7-L2', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-G8-U7-L5', lesson_topic_mismatch(data, [integer])).
+excludes(data, lesson, 'IM-G8-U7-L7', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-G8-U8-L1', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U8-L10', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U8-L11', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U8-L12', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U8-L13', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U8-L14', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U8-L15', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U8-L16', lesson_topic_mismatch(data, [decimal, ratio])).
+excludes(data, lesson, 'IM-G8-U8-L17', lesson_topic_mismatch(data, [decimal])).
+excludes(data, lesson, 'IM-G8-U8-L18', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U8-L2', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U8-L3', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U8-L4', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U8-L5', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U8-L6', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U8-L7', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U8-L8', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U8-L9', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U9-L1', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-G8-U9-L3', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U1-L11', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-GK-U1-L12', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-GK-U1-L13', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-GK-U1-L14', lesson_topic_mismatch(data, [cardinality, counting])).
+excludes(data, lesson, 'IM-GK-U1-L15', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-GK-U1-L16', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-GK-U1-L6', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-GK-U1-L7', lesson_topic_mismatch(data, [counting, ratio])).
+excludes(data, lesson, 'IM-GK-U1-L8', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-GK-U1-L9', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-GK-U2-L11', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-GK-U2-L15', lesson_topic_mismatch(data, [multiplication])).
+excludes(data, lesson, 'IM-GK-U2-L16', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-GK-U2-L2', lesson_topic_mismatch(data, [counting, ratio])).
+excludes(data, lesson, 'IM-GK-U2-L21', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-GK-U2-L23', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-GK-U2-L4', lesson_topic_mismatch(data, [ratio])).
+excludes(data, lesson, 'IM-GK-U2-L9', lesson_topic_mismatch(data, [counting, ratio])).
+excludes(data, lesson, 'IM-GK-U3-L1', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U3-L10', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U3-L11', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U3-L12', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U3-L13', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U3-L14', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U3-L15', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U3-L2', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U3-L3', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U3-L4', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U3-L5', lesson_topic_mismatch(data, [geometry, ratio])).
+excludes(data, lesson, 'IM-GK-U3-L6', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U3-L7', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U3-L8', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U3-L9', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U4-L1', lesson_topic_mismatch(data, [addition, counting])).
+excludes(data, lesson, 'IM-GK-U4-L10', lesson_topic_mismatch(data, [addition])).
+excludes(data, lesson, 'IM-GK-U4-L11', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-GK-U4-L12', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-GK-U4-L13', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-GK-U4-L14', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-GK-U4-L15', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-GK-U4-L16', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-GK-U4-L17', lesson_topic_mismatch(data, [addition, counting])).
+excludes(data, lesson, 'IM-GK-U4-L18', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-GK-U4-L2', lesson_topic_mismatch(data, [addition, counting])).
+excludes(data, lesson, 'IM-GK-U4-L3', lesson_topic_mismatch(data, [addition, counting])).
+excludes(data, lesson, 'IM-GK-U4-L4', lesson_topic_mismatch(data, [addition, counting])).
+excludes(data, lesson, 'IM-GK-U4-L5', lesson_topic_mismatch(data, [subtraction])).
+excludes(data, lesson, 'IM-GK-U4-L6', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-GK-U4-L7', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-GK-U4-L8', lesson_topic_mismatch(data, [addition])).
+excludes(data, lesson, 'IM-GK-U4-L9', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-GK-U5-L1', lesson_topic_mismatch(data, [addition])).
+excludes(data, lesson, 'IM-GK-U5-L10', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-GK-U5-L11', lesson_topic_mismatch(data, [addition, algebraic])).
+excludes(data, lesson, 'IM-GK-U5-L12', lesson_topic_mismatch(data, [addition, algebraic, counting])).
+excludes(data, lesson, 'IM-GK-U5-L13', lesson_topic_mismatch(data, [addition, algebraic])).
+excludes(data, lesson, 'IM-GK-U5-L14', lesson_topic_mismatch(data, [addition, counting, geometry])).
+excludes(data, lesson, 'IM-GK-U5-L15', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-GK-U5-L2', lesson_topic_mismatch(data, [addition])).
+excludes(data, lesson, 'IM-GK-U5-L3', lesson_topic_mismatch(data, [addition, geometry])).
+excludes(data, lesson, 'IM-GK-U5-L4', lesson_topic_mismatch(data, [addition, algebraic])).
+excludes(data, lesson, 'IM-GK-U5-L5', lesson_topic_mismatch(data, [addition])).
+excludes(data, lesson, 'IM-GK-U5-L6', lesson_topic_mismatch(data, [addition])).
+excludes(data, lesson, 'IM-GK-U5-L7', lesson_topic_mismatch(data, [addition])).
+excludes(data, lesson, 'IM-GK-U5-L8', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-GK-U5-L9', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-GK-U6-L1', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-GK-U6-L10', lesson_topic_mismatch(data, [addition, algebraic])).
+excludes(data, lesson, 'IM-GK-U6-L11', lesson_topic_mismatch(data, [addition, counting])).
+excludes(data, lesson, 'IM-GK-U6-L12', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-GK-U6-L2', lesson_topic_mismatch(data, [counting, ratio])).
+excludes(data, lesson, 'IM-GK-U6-L3', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-GK-U6-L4', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-GK-U6-L5', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-GK-U6-L6', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-GK-U6-L7', lesson_topic_mismatch(data, [addition])).
+excludes(data, lesson, 'IM-GK-U6-L8', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-GK-U6-L9', lesson_topic_mismatch(data, [algebraic])).
+excludes(data, lesson, 'IM-GK-U7-L1', lesson_topic_mismatch(data, [counting, geometry])).
+excludes(data, lesson, 'IM-GK-U7-L10', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U7-L11', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U7-L12', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U7-L13', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U7-L14', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U7-L15', lesson_topic_mismatch(data, [counting, geometry])).
+excludes(data, lesson, 'IM-GK-U7-L16', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U7-L2', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U7-L3', lesson_topic_mismatch(data, [addition, geometry, subtraction])).
+excludes(data, lesson, 'IM-GK-U7-L4', lesson_topic_mismatch(data, [addition, algebraic, geometry])).
+excludes(data, lesson, 'IM-GK-U7-L5', lesson_topic_mismatch(data, [addition, algebraic, geometry, ratio])).
+excludes(data, lesson, 'IM-GK-U7-L6', lesson_topic_mismatch(data, [addition, algebraic, geometry, ratio])).
+excludes(data, lesson, 'IM-GK-U7-L7', lesson_topic_mismatch(data, [geometry])).
+excludes(data, lesson, 'IM-GK-U7-L8', lesson_topic_mismatch(data, [subtraction])).
+excludes(data, lesson, 'IM-GK-U7-L9', lesson_topic_mismatch(data, [subtraction])).
+excludes(data, lesson, 'IM-GK-U8-L1', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-GK-U8-L11', lesson_topic_mismatch(data, [division, ratio])).
+excludes(data, lesson, 'IM-GK-U8-L12', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-GK-U8-L13', lesson_topic_mismatch(data, [addition, algebraic, subtraction])).
+excludes(data, lesson, 'IM-GK-U8-L14', lesson_topic_mismatch(data, [addition, algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-GK-U8-L15', lesson_topic_mismatch(data, [addition, algebraic, ratio, subtraction])).
+excludes(data, lesson, 'IM-GK-U8-L16', lesson_topic_mismatch(data, [addition, ratio, subtraction])).
+excludes(data, lesson, 'IM-GK-U8-L17', lesson_topic_mismatch(data, [algebraic, ratio])).
+excludes(data, lesson, 'IM-GK-U8-L18', lesson_topic_mismatch(data, [addition, ratio])).
+excludes(data, lesson, 'IM-GK-U8-L19', lesson_topic_mismatch(data, [addition, algebraic, ratio])).
+excludes(data, lesson, 'IM-GK-U8-L2', lesson_topic_mismatch(data, [counting])).
+excludes(data, lesson, 'IM-GK-U8-L21', lesson_topic_mismatch(data, [algebraic, ratio])).
+excludes(data, lesson, 'IM-GK-U8-L3', lesson_topic_mismatch(data, [addition, counting, ratio, subtraction])).
+excludes(data, lesson, 'IM-GK-U8-L4', lesson_topic_mismatch(data, [addition, counting, ratio])).
+excludes(data, lesson, 'IM-GK-U8-L5', lesson_topic_mismatch(data, [counting, ratio])).
+excludes(data, lesson, 'IM-GK-U8-L7', lesson_topic_mismatch(data, [addition, subtraction])).
+excludes(data, lesson, 'IM-GK-U8-L8', lesson_topic_mismatch(data, [geometry, subtraction])).
 excludes(decimal, family, machine(addition, append_column_sum_without_carrying), family_mismatch(decimal, addition, [addition])).
 excludes(decimal, family, machine(addition, base_ones_chunking), family_mismatch(decimal, addition, [addition])).
 excludes(decimal, family, machine(addition, column_addition_with_carrying), family_mismatch(decimal, addition, [addition])).
@@ -11088,6 +12844,24 @@ excludes(decimal, family, machine(counting, omit_highest_place_regrouping), fami
 excludes(decimal, family, machine(counting, place_value_comparison), family_mismatch(decimal, counting, [counting])).
 excludes(decimal, family, machine(counting, recursive_place_value_inscription), family_mismatch(decimal, counting, [counting])).
 excludes(decimal, family, machine(counting, spatial_extent_as_cardinality), family_mismatch(decimal, counting, [counting])).
+excludes(decimal, family, machine(discourse, algorithmic_elaboration), nonmathematical_genre(decimal, discourse, discursive)).
+excludes(decimal, family, machine(discourse, assertion_without_vindication_task), nonmathematical_genre(decimal, discourse, discursive)).
+excludes(decimal, family, machine(discourse, assertional_commitment), nonmathematical_genre(decimal, discourse, discursive)).
+excludes(decimal, family, machine(discourse, attribution_and_acknowledgement_kept_apart), nonmathematical_genre(decimal, discourse, discursive)).
+excludes(decimal, family, machine(discourse, attribution_taken_as_acknowledgement), nonmathematical_genre(decimal, discourse, discursive)).
+excludes(decimal, family, machine(discourse, authority_where_inference_required), nonmathematical_genre(decimal, discourse, discursive)).
+excludes(decimal, family, machine(discourse, commitment_repair), nonmathematical_genre(decimal, discourse, discursive)).
+excludes(decimal, family, machine(discourse, deferral_regress), nonmathematical_genre(decimal, discourse, discursive)).
+excludes(decimal, family, machine(discourse, entitlement_by_authority), nonmathematical_genre(decimal, discourse, discursive)).
+excludes(decimal, family, machine(discourse, entitlement_by_deferral), nonmathematical_genre(decimal, discourse, discursive)).
+excludes(decimal, family, machine(discourse, entitlement_by_formal_schema), nonmathematical_genre(decimal, discourse, discursive)).
+excludes(decimal, family, machine(discourse, entitlement_by_inference), nonmathematical_genre(decimal, discourse, discursive)).
+excludes(decimal, family, machine(discourse, incompatibility_recognition), nonmathematical_genre(decimal, discourse, discursive)).
+excludes(decimal, family, machine(discourse, incompatible_commitments_held), nonmathematical_genre(decimal, discourse, discursive)).
+excludes(decimal, family, machine(discourse, pragmatic_metavocabulary_construction), nonmathematical_genre(decimal, discourse, discursive)).
+excludes(decimal, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(decimal, discourse, discursive)).
+excludes(decimal, family, machine(discourse, universally_lx_loop), nonmathematical_genre(decimal, discourse, discursive)).
+excludes(decimal, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(decimal, discourse, discursive)).
 excludes(decimal, family, machine(division, fair_share_equal_groups), family_mismatch(decimal, division, [division])).
 excludes(decimal, family, machine(division, inverse_fact_decomposition), family_mismatch(decimal, division, [division])).
 excludes(decimal, family, machine(division, long_division), family_mismatch(decimal, division, [division])).
@@ -11209,6 +12983,20 @@ excludes(decimal, family, machine(ratio, additive_extension_of_ratio), family_mi
 excludes(decimal, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(decimal, ratio, [proportional, ratio])).
 excludes(decimal, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(decimal, ratio, [proportional, ratio])).
 excludes(decimal, family, machine(ratio, scale_ratio_unit), family_mismatch(decimal, ratio, [proportional, ratio])).
+excludes(decimal, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(decimal, statistics, [data])).
+excludes(decimal, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(decimal, statistics, [data])).
+excludes(decimal, family, machine(statistics, distribution_summary_selection), family_mismatch(decimal, statistics, [data])).
+excludes(decimal, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(decimal, statistics, [data])).
+excludes(decimal, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(decimal, statistics, [data])).
+excludes(decimal, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(decimal, statistics, [data])).
+excludes(decimal, family, machine(statistics, mean_absolute_deviation), family_mismatch(decimal, statistics, [data])).
+excludes(decimal, family, machine(statistics, mean_as_balance_point), family_mismatch(decimal, statistics, [data])).
+excludes(decimal, family, machine(statistics, mean_as_fair_share), family_mismatch(decimal, statistics, [data])).
+excludes(decimal, family, machine(statistics, mean_deviation_without_absolute_value), family_mismatch(decimal, statistics, [data])).
+excludes(decimal, family, machine(statistics, median_as_ordered_middle), family_mismatch(decimal, statistics, [data])).
+excludes(decimal, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(decimal, statistics, [data])).
+excludes(decimal, family, machine(statistics, question_without_variability), family_mismatch(decimal, statistics, [data])).
+excludes(decimal, family, machine(statistics, statistical_question_variability_classification), family_mismatch(decimal, statistics, [data])).
 excludes(decimal, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(decimal, subtraction, [subtraction])).
 excludes(decimal, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(decimal, subtraction, [subtraction])).
 excludes(decimal, family, machine(subtraction, borrow_across_zero_cascade), family_mismatch(decimal, subtraction, [subtraction])).
@@ -12382,6 +14170,130 @@ excludes(decimal, lesson, 'IM-GK-U8-L4', lesson_topic_mismatch(decimal, [additio
 excludes(decimal, lesson, 'IM-GK-U8-L5', lesson_topic_mismatch(decimal, [counting, ratio])).
 excludes(decimal, lesson, 'IM-GK-U8-L7', lesson_topic_mismatch(decimal, [addition, subtraction])).
 excludes(decimal, lesson, 'IM-GK-U8-L8', lesson_topic_mismatch(decimal, [geometry, subtraction])).
+excludes(decimal, standard, standard(ccss, '1.G.A.1'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.G.A.2'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.G.A.3'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.MD.A.1'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.MD.A.2'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.MD.B.3'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.MD.C.4'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.NBT.A.1'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.NBT.B.2'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.NBT.B.3'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.NBT.C.4'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.NBT.C.5'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.NBT.C.6'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.OA.A.1'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.OA.A.2'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.OA.B.3'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.OA.B.4'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.OA.C.5'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.OA.C.6'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.OA.D.7'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '1.OA.D.8'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.G.A.1'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.G.A.2'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.G.A.3'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.MD.A.1'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.MD.A.2'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.MD.A.3'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.MD.A.4'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.MD.B.5'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.MD.B.6'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.MD.C.7'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.MD.C.8'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.MD.D.10'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.MD.D.9'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.NBT.A.1'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.NBT.A.2'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.NBT.A.3'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.NBT.A.4'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.NBT.B.5'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.NBT.B.6'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.NBT.B.7'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.NBT.B.8'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.NBT.B.9'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.OA.A.1'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.OA.B.2'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.OA.C.3'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '2.OA.C.4'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.G.A.1'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.G.A.2'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.MD.A.1'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.MD.A.2'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.MD.B.3'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.MD.B.4'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.MD.C.5'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.MD.C.6'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.MD.C.7'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.MD.D.8'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.NBT.A.1'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.NBT.A.2'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.NBT.A.3'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.NF.A.1'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.NF.A.2'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.NF.A.3'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.OA.A.1'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.OA.A.2'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.OA.A.3'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.OA.A.4'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.OA.B.5'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.OA.B.6'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.OA.C.7'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.OA.D.8'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, '3.OA.D.9'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.CC.A.1'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.CC.A.2'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.CC.A.3'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.CC.B.4'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.CC.B.5'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.CC.C.6'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.CC.C.7'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.G.A.1'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.G.A.2'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.G.A.3'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.G.B.4'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.G.B.5'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.G.B.6'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.MD.A.1'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.MD.A.2'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.MD.B.3'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.NBT.A.1'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.OA.A.1'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.OA.A.2'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.OA.A.3'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.OA.A.4'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(ccss, 'K.OA.A.5'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '1.CA.1'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '1.CA.2'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '1.CA.3'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '1.G.1'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '1.G.2'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '1.G.3'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '1.NS.1'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '1.NS.4'), standard_grade_below(4, 1, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '2.CA.1'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '2.CA.2'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '2.G.1'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '2.G.2'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '2.G.3'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '2.G.4'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '2.NS.3'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '2.NS.5'), standard_grade_below(4, 2, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '3.CA.1'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '3.CA.2'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '3.CA.5'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '3.CA.7'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '3.G.1'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '3.G.2'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '3.G.3'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '3.M.7'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '3.NS.2'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, '3.NS.6'), standard_grade_below(4, 3, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, 'K.CA.1'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, 'K.CA.2'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, 'K.CA.3'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
+excludes(decimal, standard, standard(in_indiana, 'K.G.1'), standard_grade_below(4, 0, lesson_topic_grade_evidence('IM-G4-U4-L1', decimal, 4))).
 excludes(division, family, machine(addition, append_column_sum_without_carrying), family_mismatch(division, addition, [addition])).
 excludes(division, family, machine(addition, base_ones_chunking), family_mismatch(division, addition, [addition])).
 excludes(division, family, machine(addition, column_addition_with_carrying), family_mismatch(division, addition, [addition])).
@@ -12439,6 +14351,24 @@ excludes(division, family, machine(decimal, decimal_whole_number_reading), famil
 excludes(division, family, machine(decimal, ecuadorian_decimal_long_division), family_mismatch(division, decimal, [decimal])).
 excludes(division, family, machine(decimal, positional_decimal_reading), family_mismatch(division, decimal, [decimal])).
 excludes(division, family, machine(decimal, recalled_result_scaling), family_mismatch(division, decimal, [decimal])).
+excludes(division, family, machine(discourse, algorithmic_elaboration), nonmathematical_genre(division, discourse, discursive)).
+excludes(division, family, machine(discourse, assertion_without_vindication_task), nonmathematical_genre(division, discourse, discursive)).
+excludes(division, family, machine(discourse, assertional_commitment), nonmathematical_genre(division, discourse, discursive)).
+excludes(division, family, machine(discourse, attribution_and_acknowledgement_kept_apart), nonmathematical_genre(division, discourse, discursive)).
+excludes(division, family, machine(discourse, attribution_taken_as_acknowledgement), nonmathematical_genre(division, discourse, discursive)).
+excludes(division, family, machine(discourse, authority_where_inference_required), nonmathematical_genre(division, discourse, discursive)).
+excludes(division, family, machine(discourse, commitment_repair), nonmathematical_genre(division, discourse, discursive)).
+excludes(division, family, machine(discourse, deferral_regress), nonmathematical_genre(division, discourse, discursive)).
+excludes(division, family, machine(discourse, entitlement_by_authority), nonmathematical_genre(division, discourse, discursive)).
+excludes(division, family, machine(discourse, entitlement_by_deferral), nonmathematical_genre(division, discourse, discursive)).
+excludes(division, family, machine(discourse, entitlement_by_formal_schema), nonmathematical_genre(division, discourse, discursive)).
+excludes(division, family, machine(discourse, entitlement_by_inference), nonmathematical_genre(division, discourse, discursive)).
+excludes(division, family, machine(discourse, incompatibility_recognition), nonmathematical_genre(division, discourse, discursive)).
+excludes(division, family, machine(discourse, incompatible_commitments_held), nonmathematical_genre(division, discourse, discursive)).
+excludes(division, family, machine(discourse, pragmatic_metavocabulary_construction), nonmathematical_genre(division, discourse, discursive)).
+excludes(division, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(division, discourse, discursive)).
+excludes(division, family, machine(discourse, universally_lx_loop), nonmathematical_genre(division, discourse, discursive)).
+excludes(division, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(division, discourse, discursive)).
 excludes(division, family, machine(fraction, add_numerator_denominator_comparison), family_mismatch(division, fraction, [fraction])).
 excludes(division, family, machine(fraction, area_model_fraction_comparison), family_mismatch(division, fraction, [fraction])).
 excludes(division, family, machine(fraction, area_model_part_of_part), family_mismatch(division, fraction, [fraction])).
@@ -12545,6 +14475,20 @@ excludes(division, family, machine(ratio, additive_extension_of_ratio), family_m
 excludes(division, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(division, ratio, [proportional, ratio])).
 excludes(division, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(division, ratio, [proportional, ratio])).
 excludes(division, family, machine(ratio, scale_ratio_unit), family_mismatch(division, ratio, [proportional, ratio])).
+excludes(division, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(division, statistics, [data])).
+excludes(division, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(division, statistics, [data])).
+excludes(division, family, machine(statistics, distribution_summary_selection), family_mismatch(division, statistics, [data])).
+excludes(division, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(division, statistics, [data])).
+excludes(division, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(division, statistics, [data])).
+excludes(division, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(division, statistics, [data])).
+excludes(division, family, machine(statistics, mean_absolute_deviation), family_mismatch(division, statistics, [data])).
+excludes(division, family, machine(statistics, mean_as_balance_point), family_mismatch(division, statistics, [data])).
+excludes(division, family, machine(statistics, mean_as_fair_share), family_mismatch(division, statistics, [data])).
+excludes(division, family, machine(statistics, mean_deviation_without_absolute_value), family_mismatch(division, statistics, [data])).
+excludes(division, family, machine(statistics, median_as_ordered_middle), family_mismatch(division, statistics, [data])).
+excludes(division, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(division, statistics, [data])).
+excludes(division, family, machine(statistics, question_without_variability), family_mismatch(division, statistics, [data])).
+excludes(division, family, machine(statistics, statistical_question_variability_classification), family_mismatch(division, statistics, [data])).
 excludes(division, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(division, subtraction, [subtraction])).
 excludes(division, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(division, subtraction, [subtraction])).
 excludes(division, family, machine(subtraction, borrow_across_zero_cascade), family_mismatch(division, subtraction, [subtraction])).
@@ -13724,6 +15668,24 @@ excludes(fraction, family, machine(decimal, decimal_whole_number_reading), famil
 excludes(fraction, family, machine(decimal, ecuadorian_decimal_long_division), family_mismatch(fraction, decimal, [decimal])).
 excludes(fraction, family, machine(decimal, positional_decimal_reading), family_mismatch(fraction, decimal, [decimal])).
 excludes(fraction, family, machine(decimal, recalled_result_scaling), family_mismatch(fraction, decimal, [decimal])).
+excludes(fraction, family, machine(discourse, algorithmic_elaboration), nonmathematical_genre(fraction, discourse, discursive)).
+excludes(fraction, family, machine(discourse, assertion_without_vindication_task), nonmathematical_genre(fraction, discourse, discursive)).
+excludes(fraction, family, machine(discourse, assertional_commitment), nonmathematical_genre(fraction, discourse, discursive)).
+excludes(fraction, family, machine(discourse, attribution_and_acknowledgement_kept_apart), nonmathematical_genre(fraction, discourse, discursive)).
+excludes(fraction, family, machine(discourse, attribution_taken_as_acknowledgement), nonmathematical_genre(fraction, discourse, discursive)).
+excludes(fraction, family, machine(discourse, authority_where_inference_required), nonmathematical_genre(fraction, discourse, discursive)).
+excludes(fraction, family, machine(discourse, commitment_repair), nonmathematical_genre(fraction, discourse, discursive)).
+excludes(fraction, family, machine(discourse, deferral_regress), nonmathematical_genre(fraction, discourse, discursive)).
+excludes(fraction, family, machine(discourse, entitlement_by_authority), nonmathematical_genre(fraction, discourse, discursive)).
+excludes(fraction, family, machine(discourse, entitlement_by_deferral), nonmathematical_genre(fraction, discourse, discursive)).
+excludes(fraction, family, machine(discourse, entitlement_by_formal_schema), nonmathematical_genre(fraction, discourse, discursive)).
+excludes(fraction, family, machine(discourse, entitlement_by_inference), nonmathematical_genre(fraction, discourse, discursive)).
+excludes(fraction, family, machine(discourse, incompatibility_recognition), nonmathematical_genre(fraction, discourse, discursive)).
+excludes(fraction, family, machine(discourse, incompatible_commitments_held), nonmathematical_genre(fraction, discourse, discursive)).
+excludes(fraction, family, machine(discourse, pragmatic_metavocabulary_construction), nonmathematical_genre(fraction, discourse, discursive)).
+excludes(fraction, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(fraction, discourse, discursive)).
+excludes(fraction, family, machine(discourse, universally_lx_loop), nonmathematical_genre(fraction, discourse, discursive)).
+excludes(fraction, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(fraction, discourse, discursive)).
 excludes(fraction, family, machine(division, fair_share_equal_groups), family_mismatch(fraction, division, [division])).
 excludes(fraction, family, machine(division, inverse_fact_decomposition), family_mismatch(fraction, division, [division])).
 excludes(fraction, family, machine(division, long_division), family_mismatch(fraction, division, [division])).
@@ -13817,6 +15779,20 @@ excludes(fraction, family, machine(ratio, additive_extension_of_ratio), family_m
 excludes(fraction, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(fraction, ratio, [proportional, ratio])).
 excludes(fraction, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(fraction, ratio, [proportional, ratio])).
 excludes(fraction, family, machine(ratio, scale_ratio_unit), family_mismatch(fraction, ratio, [proportional, ratio])).
+excludes(fraction, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(fraction, statistics, [data])).
+excludes(fraction, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(fraction, statistics, [data])).
+excludes(fraction, family, machine(statistics, distribution_summary_selection), family_mismatch(fraction, statistics, [data])).
+excludes(fraction, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(fraction, statistics, [data])).
+excludes(fraction, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(fraction, statistics, [data])).
+excludes(fraction, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(fraction, statistics, [data])).
+excludes(fraction, family, machine(statistics, mean_absolute_deviation), family_mismatch(fraction, statistics, [data])).
+excludes(fraction, family, machine(statistics, mean_as_balance_point), family_mismatch(fraction, statistics, [data])).
+excludes(fraction, family, machine(statistics, mean_as_fair_share), family_mismatch(fraction, statistics, [data])).
+excludes(fraction, family, machine(statistics, mean_deviation_without_absolute_value), family_mismatch(fraction, statistics, [data])).
+excludes(fraction, family, machine(statistics, median_as_ordered_middle), family_mismatch(fraction, statistics, [data])).
+excludes(fraction, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(fraction, statistics, [data])).
+excludes(fraction, family, machine(statistics, question_without_variability), family_mismatch(fraction, statistics, [data])).
+excludes(fraction, family, machine(statistics, statistical_question_variability_classification), family_mismatch(fraction, statistics, [data])).
 excludes(fraction, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(fraction, subtraction, [subtraction])).
 excludes(fraction, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(fraction, subtraction, [subtraction])).
 excludes(fraction, family, machine(subtraction, borrow_across_zero_cascade), family_mismatch(fraction, subtraction, [subtraction])).
@@ -14894,6 +16870,95 @@ excludes(fraction, lesson, 'IM-GK-U8-L4', lesson_topic_mismatch(fraction, [addit
 excludes(fraction, lesson, 'IM-GK-U8-L5', lesson_topic_mismatch(fraction, [counting, ratio])).
 excludes(fraction, lesson, 'IM-GK-U8-L7', lesson_topic_mismatch(fraction, [addition, subtraction])).
 excludes(fraction, lesson, 'IM-GK-U8-L8', lesson_topic_mismatch(fraction, [geometry, subtraction])).
+excludes(fraction, standard, standard(ccss, '1.G.A.1'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.G.A.2'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.G.A.3'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.MD.A.1'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.MD.A.2'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.MD.B.3'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.MD.C.4'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.NBT.A.1'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.NBT.B.2'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.NBT.B.3'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.NBT.C.4'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.NBT.C.5'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.NBT.C.6'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.OA.A.1'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.OA.A.2'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.OA.B.3'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.OA.B.4'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.OA.C.5'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.OA.C.6'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.OA.D.7'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '1.OA.D.8'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.G.A.1'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.G.A.2'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.G.A.3'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.MD.A.1'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.MD.A.2'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.MD.A.3'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.MD.A.4'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.MD.B.5'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.MD.B.6'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.MD.C.7'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.MD.C.8'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.MD.D.10'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.MD.D.9'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.NBT.A.1'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.NBT.A.2'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.NBT.A.3'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.NBT.A.4'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.NBT.B.5'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.NBT.B.6'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.NBT.B.7'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.NBT.B.8'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.NBT.B.9'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.OA.A.1'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.OA.B.2'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.OA.C.3'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, '2.OA.C.4'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.CC.A.1'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.CC.A.2'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.CC.A.3'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.CC.B.4'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.CC.B.5'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.CC.C.6'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.CC.C.7'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.G.A.1'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.G.A.2'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.G.A.3'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.G.B.4'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.G.B.5'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.G.B.6'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.MD.A.1'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.MD.A.2'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.MD.B.3'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.NBT.A.1'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.OA.A.1'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.OA.A.2'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.OA.A.3'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.OA.A.4'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(ccss, 'K.OA.A.5'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, '1.CA.1'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, '1.CA.2'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, '1.CA.3'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, '1.G.1'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, '1.G.2'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, '1.G.3'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, '1.NS.1'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, '1.NS.4'), standard_grade_below(3, 1, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, '2.CA.1'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, '2.CA.2'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, '2.G.1'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, '2.G.2'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, '2.G.3'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, '2.G.4'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, '2.NS.3'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, '2.NS.5'), standard_grade_below(3, 2, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, 'K.CA.1'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, 'K.CA.2'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, 'K.CA.3'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
+excludes(fraction, standard, standard(in_indiana, 'K.G.1'), standard_grade_below(3, 0, lesson_topic_grade_evidence('IM-G3-U5-L1', fraction, 3))).
 excludes('fraction/thirds', grade_band, 0, grade_band_below(2, standard_anchor_evidence(im_grade2_u6_l7, ccss, '2.G.A.3'))).
 excludes('fraction/thirds', grade_band, 1, grade_band_below(2, standard_anchor_evidence(im_grade2_u6_l7, ccss, '2.G.A.3'))).
 excludes('fraction/thirds', lesson, 'IM-G1-U1-L1', lesson_grade_below(2, 1, standard_anchor_evidence(im_grade2_u6_l7, ccss, '2.G.A.3'))).
@@ -15295,6 +17360,24 @@ excludes(geometry, family, machine(decimal, decimal_whole_number_reading), famil
 excludes(geometry, family, machine(decimal, ecuadorian_decimal_long_division), family_mismatch(geometry, decimal, [decimal])).
 excludes(geometry, family, machine(decimal, positional_decimal_reading), family_mismatch(geometry, decimal, [decimal])).
 excludes(geometry, family, machine(decimal, recalled_result_scaling), family_mismatch(geometry, decimal, [decimal])).
+excludes(geometry, family, machine(discourse, algorithmic_elaboration), nonmathematical_genre(geometry, discourse, discursive)).
+excludes(geometry, family, machine(discourse, assertion_without_vindication_task), nonmathematical_genre(geometry, discourse, discursive)).
+excludes(geometry, family, machine(discourse, assertional_commitment), nonmathematical_genre(geometry, discourse, discursive)).
+excludes(geometry, family, machine(discourse, attribution_and_acknowledgement_kept_apart), nonmathematical_genre(geometry, discourse, discursive)).
+excludes(geometry, family, machine(discourse, attribution_taken_as_acknowledgement), nonmathematical_genre(geometry, discourse, discursive)).
+excludes(geometry, family, machine(discourse, authority_where_inference_required), nonmathematical_genre(geometry, discourse, discursive)).
+excludes(geometry, family, machine(discourse, commitment_repair), nonmathematical_genre(geometry, discourse, discursive)).
+excludes(geometry, family, machine(discourse, deferral_regress), nonmathematical_genre(geometry, discourse, discursive)).
+excludes(geometry, family, machine(discourse, entitlement_by_authority), nonmathematical_genre(geometry, discourse, discursive)).
+excludes(geometry, family, machine(discourse, entitlement_by_deferral), nonmathematical_genre(geometry, discourse, discursive)).
+excludes(geometry, family, machine(discourse, entitlement_by_formal_schema), nonmathematical_genre(geometry, discourse, discursive)).
+excludes(geometry, family, machine(discourse, entitlement_by_inference), nonmathematical_genre(geometry, discourse, discursive)).
+excludes(geometry, family, machine(discourse, incompatibility_recognition), nonmathematical_genre(geometry, discourse, discursive)).
+excludes(geometry, family, machine(discourse, incompatible_commitments_held), nonmathematical_genre(geometry, discourse, discursive)).
+excludes(geometry, family, machine(discourse, pragmatic_metavocabulary_construction), nonmathematical_genre(geometry, discourse, discursive)).
+excludes(geometry, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(geometry, discourse, discursive)).
+excludes(geometry, family, machine(discourse, universally_lx_loop), nonmathematical_genre(geometry, discourse, discursive)).
+excludes(geometry, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(geometry, discourse, discursive)).
 excludes(geometry, family, machine(division, fair_share_equal_groups), family_mismatch(geometry, division, [division])).
 excludes(geometry, family, machine(division, inverse_fact_decomposition), family_mismatch(geometry, division, [division])).
 excludes(geometry, family, machine(division, long_division), family_mismatch(geometry, division, [division])).
@@ -15370,6 +17453,20 @@ excludes(geometry, family, machine(ratio, additive_extension_of_ratio), family_m
 excludes(geometry, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(geometry, ratio, [proportional, ratio])).
 excludes(geometry, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(geometry, ratio, [proportional, ratio])).
 excludes(geometry, family, machine(ratio, scale_ratio_unit), family_mismatch(geometry, ratio, [proportional, ratio])).
+excludes(geometry, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(geometry, statistics, [data])).
+excludes(geometry, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(geometry, statistics, [data])).
+excludes(geometry, family, machine(statistics, distribution_summary_selection), family_mismatch(geometry, statistics, [data])).
+excludes(geometry, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(geometry, statistics, [data])).
+excludes(geometry, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(geometry, statistics, [data])).
+excludes(geometry, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(geometry, statistics, [data])).
+excludes(geometry, family, machine(statistics, mean_absolute_deviation), family_mismatch(geometry, statistics, [data])).
+excludes(geometry, family, machine(statistics, mean_as_balance_point), family_mismatch(geometry, statistics, [data])).
+excludes(geometry, family, machine(statistics, mean_as_fair_share), family_mismatch(geometry, statistics, [data])).
+excludes(geometry, family, machine(statistics, mean_deviation_without_absolute_value), family_mismatch(geometry, statistics, [data])).
+excludes(geometry, family, machine(statistics, median_as_ordered_middle), family_mismatch(geometry, statistics, [data])).
+excludes(geometry, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(geometry, statistics, [data])).
+excludes(geometry, family, machine(statistics, question_without_variability), family_mismatch(geometry, statistics, [data])).
+excludes(geometry, family, machine(statistics, statistical_question_variability_classification), family_mismatch(geometry, statistics, [data])).
 excludes(geometry, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(geometry, subtraction, [subtraction])).
 excludes(geometry, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(geometry, subtraction, [subtraction])).
 excludes(geometry, family, machine(subtraction, borrow_across_zero_cascade), family_mismatch(geometry, subtraction, [subtraction])).
@@ -16341,6 +18438,24 @@ excludes(integer, family, machine(decimal, decimal_whole_number_reading), family
 excludes(integer, family, machine(decimal, ecuadorian_decimal_long_division), family_mismatch(integer, decimal, [decimal])).
 excludes(integer, family, machine(decimal, positional_decimal_reading), family_mismatch(integer, decimal, [decimal])).
 excludes(integer, family, machine(decimal, recalled_result_scaling), family_mismatch(integer, decimal, [decimal])).
+excludes(integer, family, machine(discourse, algorithmic_elaboration), nonmathematical_genre(integer, discourse, discursive)).
+excludes(integer, family, machine(discourse, assertion_without_vindication_task), nonmathematical_genre(integer, discourse, discursive)).
+excludes(integer, family, machine(discourse, assertional_commitment), nonmathematical_genre(integer, discourse, discursive)).
+excludes(integer, family, machine(discourse, attribution_and_acknowledgement_kept_apart), nonmathematical_genre(integer, discourse, discursive)).
+excludes(integer, family, machine(discourse, attribution_taken_as_acknowledgement), nonmathematical_genre(integer, discourse, discursive)).
+excludes(integer, family, machine(discourse, authority_where_inference_required), nonmathematical_genre(integer, discourse, discursive)).
+excludes(integer, family, machine(discourse, commitment_repair), nonmathematical_genre(integer, discourse, discursive)).
+excludes(integer, family, machine(discourse, deferral_regress), nonmathematical_genre(integer, discourse, discursive)).
+excludes(integer, family, machine(discourse, entitlement_by_authority), nonmathematical_genre(integer, discourse, discursive)).
+excludes(integer, family, machine(discourse, entitlement_by_deferral), nonmathematical_genre(integer, discourse, discursive)).
+excludes(integer, family, machine(discourse, entitlement_by_formal_schema), nonmathematical_genre(integer, discourse, discursive)).
+excludes(integer, family, machine(discourse, entitlement_by_inference), nonmathematical_genre(integer, discourse, discursive)).
+excludes(integer, family, machine(discourse, incompatibility_recognition), nonmathematical_genre(integer, discourse, discursive)).
+excludes(integer, family, machine(discourse, incompatible_commitments_held), nonmathematical_genre(integer, discourse, discursive)).
+excludes(integer, family, machine(discourse, pragmatic_metavocabulary_construction), nonmathematical_genre(integer, discourse, discursive)).
+excludes(integer, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(integer, discourse, discursive)).
+excludes(integer, family, machine(discourse, universally_lx_loop), nonmathematical_genre(integer, discourse, discursive)).
+excludes(integer, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(integer, discourse, discursive)).
 excludes(integer, family, machine(division, fair_share_equal_groups), family_mismatch(integer, division, [division])).
 excludes(integer, family, machine(division, inverse_fact_decomposition), family_mismatch(integer, division, [division])).
 excludes(integer, family, machine(division, long_division), family_mismatch(integer, division, [division])).
@@ -16456,6 +18571,20 @@ excludes(integer, family, machine(ratio, additive_extension_of_ratio), family_mi
 excludes(integer, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(integer, ratio, [proportional, ratio])).
 excludes(integer, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(integer, ratio, [proportional, ratio])).
 excludes(integer, family, machine(ratio, scale_ratio_unit), family_mismatch(integer, ratio, [proportional, ratio])).
+excludes(integer, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(integer, statistics, [data])).
+excludes(integer, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(integer, statistics, [data])).
+excludes(integer, family, machine(statistics, distribution_summary_selection), family_mismatch(integer, statistics, [data])).
+excludes(integer, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(integer, statistics, [data])).
+excludes(integer, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(integer, statistics, [data])).
+excludes(integer, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(integer, statistics, [data])).
+excludes(integer, family, machine(statistics, mean_absolute_deviation), family_mismatch(integer, statistics, [data])).
+excludes(integer, family, machine(statistics, mean_as_balance_point), family_mismatch(integer, statistics, [data])).
+excludes(integer, family, machine(statistics, mean_as_fair_share), family_mismatch(integer, statistics, [data])).
+excludes(integer, family, machine(statistics, mean_deviation_without_absolute_value), family_mismatch(integer, statistics, [data])).
+excludes(integer, family, machine(statistics, median_as_ordered_middle), family_mismatch(integer, statistics, [data])).
+excludes(integer, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(integer, statistics, [data])).
+excludes(integer, family, machine(statistics, question_without_variability), family_mismatch(integer, statistics, [data])).
+excludes(integer, family, machine(statistics, statistical_question_variability_classification), family_mismatch(integer, statistics, [data])).
 excludes(integer, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(integer, subtraction, [subtraction])).
 excludes(integer, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(integer, subtraction, [subtraction])).
 excludes(integer, family, machine(subtraction, borrow_across_zero_cascade), family_mismatch(integer, subtraction, [subtraction])).
@@ -17668,6 +19797,205 @@ excludes(integer, lesson, 'IM-GK-U8-L4', lesson_topic_mismatch(integer, [additio
 excludes(integer, lesson, 'IM-GK-U8-L5', lesson_topic_mismatch(integer, [counting, ratio])).
 excludes(integer, lesson, 'IM-GK-U8-L7', lesson_topic_mismatch(integer, [addition, subtraction])).
 excludes(integer, lesson, 'IM-GK-U8-L8', lesson_topic_mismatch(integer, [geometry, subtraction])).
+excludes(integer, standard, standard(ccss, '1.G.A.1'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.G.A.2'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.G.A.3'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.MD.A.1'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.MD.A.2'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.MD.B.3'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.MD.C.4'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.NBT.A.1'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.NBT.B.2'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.NBT.B.3'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.NBT.C.4'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.NBT.C.5'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.NBT.C.6'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.OA.A.1'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.OA.A.2'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.OA.B.3'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.OA.B.4'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.OA.C.5'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.OA.C.6'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.OA.D.7'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '1.OA.D.8'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.G.A.1'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.G.A.2'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.G.A.3'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.MD.A.1'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.MD.A.2'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.MD.A.3'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.MD.A.4'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.MD.B.5'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.MD.B.6'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.MD.C.7'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.MD.C.8'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.MD.D.10'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.MD.D.9'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.NBT.A.1'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.NBT.A.2'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.NBT.A.3'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.NBT.A.4'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.NBT.B.5'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.NBT.B.6'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.NBT.B.7'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.NBT.B.8'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.NBT.B.9'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.OA.A.1'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.OA.B.2'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.OA.C.3'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '2.OA.C.4'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.G.A.1'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.G.A.2'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.MD.A.1'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.MD.A.2'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.MD.B.3'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.MD.B.4'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.MD.C.5'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.MD.C.6'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.MD.C.7'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.MD.D.8'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.NBT.A.1'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.NBT.A.2'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.NBT.A.3'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.NF.A.1'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.NF.A.2'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.NF.A.3'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.OA.A.1'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.OA.A.2'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.OA.A.3'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.OA.A.4'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.OA.B.5'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.OA.B.6'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.OA.C.7'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.OA.D.8'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '3.OA.D.9'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.G.A.1'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.G.A.2'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.G.A.3'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.MD.A.1'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.MD.A.2'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.MD.A.3'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.MD.B.4'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.MD.C.5'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.MD.C.6'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.MD.C.7'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.NBT.A.1'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.NBT.A.2'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.NBT.A.3'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.NBT.B.4'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.NBT.B.5'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.NBT.B.6'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.NF.A.1'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.NF.A.2'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.NF.B.3'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.NF.B.4'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.NF.C.5'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.NF.C.6'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.NF.C.7'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.OA.A.1'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.OA.A.2'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.OA.A.3'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.OA.B.4'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '4.OA.C.5'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.G.A.1'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.G.A.2'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.G.B.3'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.G.B.4'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.MD.A.1'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.MD.B.2'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.MD.C.3'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.MD.C.4'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.MD.C.5'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.NBT.A.1'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.NBT.A.2'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.NBT.A.3'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.NBT.A.4'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.NBT.B.5'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.NBT.B.6'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.NBT.B.7'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.NF.A.1'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.NF.A.2'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.NF.B.3'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.NF.B.4'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.NF.B.5'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.NF.B.6'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.NF.B.7'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.OA.A.1'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.OA.A.2'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, '5.OA.B.3'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.CC.A.1'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.CC.A.2'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.CC.A.3'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.CC.B.4'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.CC.B.5'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.CC.C.6'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.CC.C.7'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.G.A.1'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.G.A.2'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.G.A.3'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.G.B.4'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.G.B.5'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.G.B.6'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.MD.A.1'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.MD.A.2'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.MD.B.3'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.NBT.A.1'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.OA.A.1'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.OA.A.2'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.OA.A.3'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.OA.A.4'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(ccss, 'K.OA.A.5'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '1.CA.1'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '1.CA.2'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '1.CA.3'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '1.G.1'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '1.G.2'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '1.G.3'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '1.NS.1'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '1.NS.4'), standard_grade_below(6, 1, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '2.CA.1'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '2.CA.2'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '2.G.1'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '2.G.2'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '2.G.3'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '2.G.4'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '2.NS.3'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '2.NS.5'), standard_grade_below(6, 2, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '3.CA.1'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '3.CA.2'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '3.CA.5'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '3.CA.7'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '3.G.1'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '3.G.2'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '3.G.3'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '3.M.7'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '3.NS.2'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '3.NS.6'), standard_grade_below(6, 3, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '4.CA.1'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '4.CA.2'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '4.CA.5'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '4.DA.2'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '4.G.1'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '4.G.2'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '4.G.3'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '4.NS.3'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '4.NS.4'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '4.NS.6'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '4.NS.7'), standard_grade_below(6, 4, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '5.CA.1'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '5.CA.11'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '5.CA.3'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '5.CA.4'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '5.CA.5'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '5.CA.7'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '5.CA.8'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '5.CA.9'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '5.G.1'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, '5.NS.3'), standard_grade_below(6, 5, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, 'K.CA.1'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, 'K.CA.2'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, 'K.CA.3'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
+excludes(integer, standard, standard(in_indiana, 'K.G.1'), standard_grade_below(6, 0, lesson_topic_grade_evidence('IM-G6-U7-L1', integer, 6))).
 excludes(multiplication, family, machine(addition, append_column_sum_without_carrying), family_mismatch(multiplication, addition, [addition])).
 excludes(multiplication, family, machine(addition, base_ones_chunking), family_mismatch(multiplication, addition, [addition])).
 excludes(multiplication, family, machine(addition, column_addition_with_carrying), family_mismatch(multiplication, addition, [addition])).
@@ -17725,6 +20053,24 @@ excludes(multiplication, family, machine(decimal, decimal_whole_number_reading),
 excludes(multiplication, family, machine(decimal, ecuadorian_decimal_long_division), family_mismatch(multiplication, decimal, [decimal])).
 excludes(multiplication, family, machine(decimal, positional_decimal_reading), family_mismatch(multiplication, decimal, [decimal])).
 excludes(multiplication, family, machine(decimal, recalled_result_scaling), family_mismatch(multiplication, decimal, [decimal])).
+excludes(multiplication, family, machine(discourse, algorithmic_elaboration), nonmathematical_genre(multiplication, discourse, discursive)).
+excludes(multiplication, family, machine(discourse, assertion_without_vindication_task), nonmathematical_genre(multiplication, discourse, discursive)).
+excludes(multiplication, family, machine(discourse, assertional_commitment), nonmathematical_genre(multiplication, discourse, discursive)).
+excludes(multiplication, family, machine(discourse, attribution_and_acknowledgement_kept_apart), nonmathematical_genre(multiplication, discourse, discursive)).
+excludes(multiplication, family, machine(discourse, attribution_taken_as_acknowledgement), nonmathematical_genre(multiplication, discourse, discursive)).
+excludes(multiplication, family, machine(discourse, authority_where_inference_required), nonmathematical_genre(multiplication, discourse, discursive)).
+excludes(multiplication, family, machine(discourse, commitment_repair), nonmathematical_genre(multiplication, discourse, discursive)).
+excludes(multiplication, family, machine(discourse, deferral_regress), nonmathematical_genre(multiplication, discourse, discursive)).
+excludes(multiplication, family, machine(discourse, entitlement_by_authority), nonmathematical_genre(multiplication, discourse, discursive)).
+excludes(multiplication, family, machine(discourse, entitlement_by_deferral), nonmathematical_genre(multiplication, discourse, discursive)).
+excludes(multiplication, family, machine(discourse, entitlement_by_formal_schema), nonmathematical_genre(multiplication, discourse, discursive)).
+excludes(multiplication, family, machine(discourse, entitlement_by_inference), nonmathematical_genre(multiplication, discourse, discursive)).
+excludes(multiplication, family, machine(discourse, incompatibility_recognition), nonmathematical_genre(multiplication, discourse, discursive)).
+excludes(multiplication, family, machine(discourse, incompatible_commitments_held), nonmathematical_genre(multiplication, discourse, discursive)).
+excludes(multiplication, family, machine(discourse, pragmatic_metavocabulary_construction), nonmathematical_genre(multiplication, discourse, discursive)).
+excludes(multiplication, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(multiplication, discourse, discursive)).
+excludes(multiplication, family, machine(discourse, universally_lx_loop), nonmathematical_genre(multiplication, discourse, discursive)).
+excludes(multiplication, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(multiplication, discourse, discursive)).
 excludes(multiplication, family, machine(division, fair_share_equal_groups), family_mismatch(multiplication, division, [division])).
 excludes(multiplication, family, machine(division, inverse_fact_decomposition), family_mismatch(multiplication, division, [division])).
 excludes(multiplication, family, machine(division, long_division), family_mismatch(multiplication, division, [division])).
@@ -17826,6 +20172,20 @@ excludes(multiplication, family, machine(ratio, additive_extension_of_ratio), fa
 excludes(multiplication, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(multiplication, ratio, [proportional, ratio])).
 excludes(multiplication, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(multiplication, ratio, [proportional, ratio])).
 excludes(multiplication, family, machine(ratio, scale_ratio_unit), family_mismatch(multiplication, ratio, [proportional, ratio])).
+excludes(multiplication, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(multiplication, statistics, [data])).
+excludes(multiplication, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(multiplication, statistics, [data])).
+excludes(multiplication, family, machine(statistics, distribution_summary_selection), family_mismatch(multiplication, statistics, [data])).
+excludes(multiplication, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(multiplication, statistics, [data])).
+excludes(multiplication, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(multiplication, statistics, [data])).
+excludes(multiplication, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(multiplication, statistics, [data])).
+excludes(multiplication, family, machine(statistics, mean_absolute_deviation), family_mismatch(multiplication, statistics, [data])).
+excludes(multiplication, family, machine(statistics, mean_as_balance_point), family_mismatch(multiplication, statistics, [data])).
+excludes(multiplication, family, machine(statistics, mean_as_fair_share), family_mismatch(multiplication, statistics, [data])).
+excludes(multiplication, family, machine(statistics, mean_deviation_without_absolute_value), family_mismatch(multiplication, statistics, [data])).
+excludes(multiplication, family, machine(statistics, median_as_ordered_middle), family_mismatch(multiplication, statistics, [data])).
+excludes(multiplication, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(multiplication, statistics, [data])).
+excludes(multiplication, family, machine(statistics, question_without_variability), family_mismatch(multiplication, statistics, [data])).
+excludes(multiplication, family, machine(statistics, statistical_question_variability_classification), family_mismatch(multiplication, statistics, [data])).
 excludes(multiplication, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(multiplication, subtraction, [subtraction])).
 excludes(multiplication, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(multiplication, subtraction, [subtraction])).
 excludes(multiplication, family, machine(subtraction, borrow_across_zero_cascade), family_mismatch(multiplication, subtraction, [subtraction])).
@@ -18921,6 +21281,24 @@ excludes(probability, family, machine(decimal, decimal_whole_number_reading), fa
 excludes(probability, family, machine(decimal, ecuadorian_decimal_long_division), family_mismatch(probability, decimal, [decimal])).
 excludes(probability, family, machine(decimal, positional_decimal_reading), family_mismatch(probability, decimal, [decimal])).
 excludes(probability, family, machine(decimal, recalled_result_scaling), family_mismatch(probability, decimal, [decimal])).
+excludes(probability, family, machine(discourse, algorithmic_elaboration), nonmathematical_genre(probability, discourse, discursive)).
+excludes(probability, family, machine(discourse, assertion_without_vindication_task), nonmathematical_genre(probability, discourse, discursive)).
+excludes(probability, family, machine(discourse, assertional_commitment), nonmathematical_genre(probability, discourse, discursive)).
+excludes(probability, family, machine(discourse, attribution_and_acknowledgement_kept_apart), nonmathematical_genre(probability, discourse, discursive)).
+excludes(probability, family, machine(discourse, attribution_taken_as_acknowledgement), nonmathematical_genre(probability, discourse, discursive)).
+excludes(probability, family, machine(discourse, authority_where_inference_required), nonmathematical_genre(probability, discourse, discursive)).
+excludes(probability, family, machine(discourse, commitment_repair), nonmathematical_genre(probability, discourse, discursive)).
+excludes(probability, family, machine(discourse, deferral_regress), nonmathematical_genre(probability, discourse, discursive)).
+excludes(probability, family, machine(discourse, entitlement_by_authority), nonmathematical_genre(probability, discourse, discursive)).
+excludes(probability, family, machine(discourse, entitlement_by_deferral), nonmathematical_genre(probability, discourse, discursive)).
+excludes(probability, family, machine(discourse, entitlement_by_formal_schema), nonmathematical_genre(probability, discourse, discursive)).
+excludes(probability, family, machine(discourse, entitlement_by_inference), nonmathematical_genre(probability, discourse, discursive)).
+excludes(probability, family, machine(discourse, incompatibility_recognition), nonmathematical_genre(probability, discourse, discursive)).
+excludes(probability, family, machine(discourse, incompatible_commitments_held), nonmathematical_genre(probability, discourse, discursive)).
+excludes(probability, family, machine(discourse, pragmatic_metavocabulary_construction), nonmathematical_genre(probability, discourse, discursive)).
+excludes(probability, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(probability, discourse, discursive)).
+excludes(probability, family, machine(discourse, universally_lx_loop), nonmathematical_genre(probability, discourse, discursive)).
+excludes(probability, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(probability, discourse, discursive)).
 excludes(probability, family, machine(division, fair_share_equal_groups), family_mismatch(probability, division, [division])).
 excludes(probability, family, machine(division, inverse_fact_decomposition), family_mismatch(probability, division, [division])).
 excludes(probability, family, machine(division, long_division), family_mismatch(probability, division, [division])).
@@ -19040,6 +21418,20 @@ excludes(probability, family, machine(ratio, additive_extension_of_ratio), famil
 excludes(probability, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(probability, ratio, [proportional, ratio])).
 excludes(probability, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(probability, ratio, [proportional, ratio])).
 excludes(probability, family, machine(ratio, scale_ratio_unit), family_mismatch(probability, ratio, [proportional, ratio])).
+excludes(probability, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(probability, statistics, [data])).
+excludes(probability, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(probability, statistics, [data])).
+excludes(probability, family, machine(statistics, distribution_summary_selection), family_mismatch(probability, statistics, [data])).
+excludes(probability, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(probability, statistics, [data])).
+excludes(probability, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(probability, statistics, [data])).
+excludes(probability, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(probability, statistics, [data])).
+excludes(probability, family, machine(statistics, mean_absolute_deviation), family_mismatch(probability, statistics, [data])).
+excludes(probability, family, machine(statistics, mean_as_balance_point), family_mismatch(probability, statistics, [data])).
+excludes(probability, family, machine(statistics, mean_as_fair_share), family_mismatch(probability, statistics, [data])).
+excludes(probability, family, machine(statistics, mean_deviation_without_absolute_value), family_mismatch(probability, statistics, [data])).
+excludes(probability, family, machine(statistics, median_as_ordered_middle), family_mismatch(probability, statistics, [data])).
+excludes(probability, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(probability, statistics, [data])).
+excludes(probability, family, machine(statistics, question_without_variability), family_mismatch(probability, statistics, [data])).
+excludes(probability, family, machine(statistics, statistical_question_variability_classification), family_mismatch(probability, statistics, [data])).
 excludes(probability, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(probability, subtraction, [subtraction])).
 excludes(probability, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(probability, subtraction, [subtraction])).
 excludes(probability, family, machine(subtraction, borrow_across_zero_cascade), family_mismatch(probability, subtraction, [subtraction])).
@@ -20239,6 +22631,213 @@ excludes(probability, lesson, 'IM-GK-U8-L4', lesson_topic_mismatch(probability, 
 excludes(probability, lesson, 'IM-GK-U8-L5', lesson_topic_mismatch(probability, [counting, ratio])).
 excludes(probability, lesson, 'IM-GK-U8-L7', lesson_topic_mismatch(probability, [addition, subtraction])).
 excludes(probability, lesson, 'IM-GK-U8-L8', lesson_topic_mismatch(probability, [geometry, subtraction])).
+excludes(probability, standard, standard(ccss, '1.G.A.1'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.G.A.2'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.G.A.3'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.MD.A.1'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.MD.A.2'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.MD.B.3'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.MD.C.4'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.NBT.A.1'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.NBT.B.2'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.NBT.B.3'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.NBT.C.4'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.NBT.C.5'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.NBT.C.6'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.OA.A.1'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.OA.A.2'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.OA.B.3'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.OA.B.4'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.OA.C.5'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.OA.C.6'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.OA.D.7'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '1.OA.D.8'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.G.A.1'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.G.A.2'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.G.A.3'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.MD.A.1'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.MD.A.2'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.MD.A.3'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.MD.A.4'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.MD.B.5'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.MD.B.6'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.MD.C.7'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.MD.C.8'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.MD.D.10'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.MD.D.9'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.NBT.A.1'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.NBT.A.2'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.NBT.A.3'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.NBT.A.4'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.NBT.B.5'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.NBT.B.6'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.NBT.B.7'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.NBT.B.8'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.NBT.B.9'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.OA.A.1'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.OA.B.2'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.OA.C.3'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '2.OA.C.4'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.G.A.1'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.G.A.2'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.MD.A.1'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.MD.A.2'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.MD.B.3'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.MD.B.4'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.MD.C.5'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.MD.C.6'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.MD.C.7'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.MD.D.8'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.NBT.A.1'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.NBT.A.2'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.NBT.A.3'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.NF.A.1'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.NF.A.2'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.NF.A.3'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.OA.A.1'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.OA.A.2'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.OA.A.3'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.OA.A.4'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.OA.B.5'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.OA.B.6'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.OA.C.7'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.OA.D.8'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '3.OA.D.9'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.G.A.1'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.G.A.2'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.G.A.3'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.MD.A.1'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.MD.A.2'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.MD.A.3'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.MD.B.4'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.MD.C.5'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.MD.C.6'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.MD.C.7'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.NBT.A.1'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.NBT.A.2'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.NBT.A.3'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.NBT.B.4'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.NBT.B.5'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.NBT.B.6'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.NF.A.1'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.NF.A.2'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.NF.B.3'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.NF.B.4'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.NF.C.5'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.NF.C.6'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.NF.C.7'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.OA.A.1'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.OA.A.2'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.OA.A.3'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.OA.B.4'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '4.OA.C.5'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.G.A.1'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.G.A.2'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.G.B.3'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.G.B.4'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.MD.A.1'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.MD.B.2'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.MD.C.3'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.MD.C.4'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.MD.C.5'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.NBT.A.1'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.NBT.A.2'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.NBT.A.3'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.NBT.A.4'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.NBT.B.5'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.NBT.B.6'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.NBT.B.7'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.NF.A.1'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.NF.A.2'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.NF.B.3'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.NF.B.4'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.NF.B.5'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.NF.B.6'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.NF.B.7'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.OA.A.1'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.OA.A.2'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '5.OA.B.3'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '6.G.A.1'), standard_grade_below(7, 6, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '6.G.A.2'), standard_grade_below(7, 6, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '6.G.A.3'), standard_grade_below(7, 6, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, '6.G.A.4'), standard_grade_below(7, 6, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.CC.A.1'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.CC.A.2'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.CC.A.3'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.CC.B.4'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.CC.B.5'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.CC.C.6'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.CC.C.7'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.G.A.1'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.G.A.2'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.G.A.3'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.G.B.4'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.G.B.5'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.G.B.6'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.MD.A.1'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.MD.A.2'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.MD.B.3'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.NBT.A.1'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.OA.A.1'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.OA.A.2'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.OA.A.3'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.OA.A.4'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(ccss, 'K.OA.A.5'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '1.CA.1'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '1.CA.2'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '1.CA.3'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '1.G.1'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '1.G.2'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '1.G.3'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '1.NS.1'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '1.NS.4'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '2.CA.1'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '2.CA.2'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '2.G.1'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '2.G.2'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '2.G.3'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '2.G.4'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '2.NS.3'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '2.NS.5'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '3.CA.1'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '3.CA.2'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '3.CA.5'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '3.CA.7'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '3.G.1'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '3.G.2'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '3.G.3'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '3.M.7'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '3.NS.2'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '3.NS.6'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '4.CA.1'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '4.CA.2'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '4.CA.5'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '4.DA.2'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '4.G.1'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '4.G.2'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '4.G.3'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '4.NS.3'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '4.NS.4'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '4.NS.6'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '4.NS.7'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '5.CA.1'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '5.CA.11'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '5.CA.3'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '5.CA.4'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '5.CA.5'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '5.CA.7'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '5.CA.8'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '5.CA.9'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '5.G.1'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '5.NS.3'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '6.GM.1'), standard_grade_below(7, 6, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '6.GM.2'), standard_grade_below(7, 6, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '6.GM.3'), standard_grade_below(7, 6, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, '6.GM.4'), standard_grade_below(7, 6, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, 'K.CA.1'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, 'K.CA.2'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, 'K.CA.3'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
+excludes(probability, standard, standard(in_indiana, 'K.G.1'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U8-L1', probability, 7))).
 excludes(proportional, family, machine(addition, append_column_sum_without_carrying), family_mismatch(proportional, addition, [addition])).
 excludes(proportional, family, machine(addition, base_ones_chunking), family_mismatch(proportional, addition, [addition])).
 excludes(proportional, family, machine(addition, column_addition_with_carrying), family_mismatch(proportional, addition, [addition])).
@@ -20296,6 +22895,24 @@ excludes(proportional, family, machine(decimal, decimal_whole_number_reading), f
 excludes(proportional, family, machine(decimal, ecuadorian_decimal_long_division), family_mismatch(proportional, decimal, [decimal])).
 excludes(proportional, family, machine(decimal, positional_decimal_reading), family_mismatch(proportional, decimal, [decimal])).
 excludes(proportional, family, machine(decimal, recalled_result_scaling), family_mismatch(proportional, decimal, [decimal])).
+excludes(proportional, family, machine(discourse, algorithmic_elaboration), nonmathematical_genre(proportional, discourse, discursive)).
+excludes(proportional, family, machine(discourse, assertion_without_vindication_task), nonmathematical_genre(proportional, discourse, discursive)).
+excludes(proportional, family, machine(discourse, assertional_commitment), nonmathematical_genre(proportional, discourse, discursive)).
+excludes(proportional, family, machine(discourse, attribution_and_acknowledgement_kept_apart), nonmathematical_genre(proportional, discourse, discursive)).
+excludes(proportional, family, machine(discourse, attribution_taken_as_acknowledgement), nonmathematical_genre(proportional, discourse, discursive)).
+excludes(proportional, family, machine(discourse, authority_where_inference_required), nonmathematical_genre(proportional, discourse, discursive)).
+excludes(proportional, family, machine(discourse, commitment_repair), nonmathematical_genre(proportional, discourse, discursive)).
+excludes(proportional, family, machine(discourse, deferral_regress), nonmathematical_genre(proportional, discourse, discursive)).
+excludes(proportional, family, machine(discourse, entitlement_by_authority), nonmathematical_genre(proportional, discourse, discursive)).
+excludes(proportional, family, machine(discourse, entitlement_by_deferral), nonmathematical_genre(proportional, discourse, discursive)).
+excludes(proportional, family, machine(discourse, entitlement_by_formal_schema), nonmathematical_genre(proportional, discourse, discursive)).
+excludes(proportional, family, machine(discourse, entitlement_by_inference), nonmathematical_genre(proportional, discourse, discursive)).
+excludes(proportional, family, machine(discourse, incompatibility_recognition), nonmathematical_genre(proportional, discourse, discursive)).
+excludes(proportional, family, machine(discourse, incompatible_commitments_held), nonmathematical_genre(proportional, discourse, discursive)).
+excludes(proportional, family, machine(discourse, pragmatic_metavocabulary_construction), nonmathematical_genre(proportional, discourse, discursive)).
+excludes(proportional, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(proportional, discourse, discursive)).
+excludes(proportional, family, machine(discourse, universally_lx_loop), nonmathematical_genre(proportional, discourse, discursive)).
+excludes(proportional, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(proportional, discourse, discursive)).
 excludes(proportional, family, machine(division, fair_share_equal_groups), family_mismatch(proportional, division, [division])).
 excludes(proportional, family, machine(division, inverse_fact_decomposition), family_mismatch(proportional, division, [division])).
 excludes(proportional, family, machine(division, long_division), family_mismatch(proportional, division, [division])).
@@ -20413,6 +23030,20 @@ excludes(proportional, family, machine(multiplication, rigid_factor_order_roles)
 excludes(proportional, family, machine(multiplication, sequential_recompute_commuted_products), family_mismatch(proportional, multiplication, [multiplication])).
 excludes(proportional, family, machine(probability, equiprobable_endpoint_counting), family_mismatch(proportional, probability, [probability])).
 excludes(proportional, family, machine(probability, terminal_tree_endpoint_probability_sum), family_mismatch(proportional, probability, [probability])).
+excludes(proportional, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(proportional, statistics, [data])).
+excludes(proportional, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(proportional, statistics, [data])).
+excludes(proportional, family, machine(statistics, distribution_summary_selection), family_mismatch(proportional, statistics, [data])).
+excludes(proportional, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(proportional, statistics, [data])).
+excludes(proportional, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(proportional, statistics, [data])).
+excludes(proportional, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(proportional, statistics, [data])).
+excludes(proportional, family, machine(statistics, mean_absolute_deviation), family_mismatch(proportional, statistics, [data])).
+excludes(proportional, family, machine(statistics, mean_as_balance_point), family_mismatch(proportional, statistics, [data])).
+excludes(proportional, family, machine(statistics, mean_as_fair_share), family_mismatch(proportional, statistics, [data])).
+excludes(proportional, family, machine(statistics, mean_deviation_without_absolute_value), family_mismatch(proportional, statistics, [data])).
+excludes(proportional, family, machine(statistics, median_as_ordered_middle), family_mismatch(proportional, statistics, [data])).
+excludes(proportional, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(proportional, statistics, [data])).
+excludes(proportional, family, machine(statistics, question_without_variability), family_mismatch(proportional, statistics, [data])).
+excludes(proportional, family, machine(statistics, statistical_question_variability_classification), family_mismatch(proportional, statistics, [data])).
 excludes(proportional, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(proportional, subtraction, [subtraction])).
 excludes(proportional, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(proportional, subtraction, [subtraction])).
 excludes(proportional, family, machine(subtraction, borrow_across_zero_cascade), family_mismatch(proportional, subtraction, [subtraction])).
@@ -21576,6 +24207,213 @@ excludes(proportional, lesson, 'IM-GK-U8-L4', lesson_topic_mismatch(proportional
 excludes(proportional, lesson, 'IM-GK-U8-L5', lesson_topic_mismatch(proportional, [counting, ratio])).
 excludes(proportional, lesson, 'IM-GK-U8-L7', lesson_topic_mismatch(proportional, [addition, subtraction])).
 excludes(proportional, lesson, 'IM-GK-U8-L8', lesson_topic_mismatch(proportional, [geometry, subtraction])).
+excludes(proportional, standard, standard(ccss, '1.G.A.1'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.G.A.2'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.G.A.3'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.MD.A.1'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.MD.A.2'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.MD.B.3'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.MD.C.4'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.NBT.A.1'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.NBT.B.2'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.NBT.B.3'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.NBT.C.4'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.NBT.C.5'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.NBT.C.6'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.OA.A.1'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.OA.A.2'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.OA.B.3'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.OA.B.4'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.OA.C.5'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.OA.C.6'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.OA.D.7'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '1.OA.D.8'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.G.A.1'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.G.A.2'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.G.A.3'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.MD.A.1'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.MD.A.2'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.MD.A.3'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.MD.A.4'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.MD.B.5'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.MD.B.6'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.MD.C.7'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.MD.C.8'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.MD.D.10'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.MD.D.9'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.NBT.A.1'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.NBT.A.2'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.NBT.A.3'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.NBT.A.4'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.NBT.B.5'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.NBT.B.6'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.NBT.B.7'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.NBT.B.8'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.NBT.B.9'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.OA.A.1'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.OA.B.2'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.OA.C.3'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '2.OA.C.4'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.G.A.1'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.G.A.2'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.MD.A.1'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.MD.A.2'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.MD.B.3'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.MD.B.4'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.MD.C.5'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.MD.C.6'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.MD.C.7'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.MD.D.8'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.NBT.A.1'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.NBT.A.2'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.NBT.A.3'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.NF.A.1'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.NF.A.2'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.NF.A.3'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.OA.A.1'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.OA.A.2'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.OA.A.3'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.OA.A.4'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.OA.B.5'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.OA.B.6'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.OA.C.7'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.OA.D.8'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '3.OA.D.9'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.G.A.1'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.G.A.2'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.G.A.3'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.MD.A.1'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.MD.A.2'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.MD.A.3'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.MD.B.4'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.MD.C.5'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.MD.C.6'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.MD.C.7'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.NBT.A.1'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.NBT.A.2'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.NBT.A.3'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.NBT.B.4'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.NBT.B.5'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.NBT.B.6'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.NF.A.1'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.NF.A.2'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.NF.B.3'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.NF.B.4'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.NF.C.5'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.NF.C.6'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.NF.C.7'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.OA.A.1'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.OA.A.2'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.OA.A.3'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.OA.B.4'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '4.OA.C.5'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.G.A.1'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.G.A.2'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.G.B.3'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.G.B.4'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.MD.A.1'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.MD.B.2'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.MD.C.3'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.MD.C.4'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.MD.C.5'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.NBT.A.1'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.NBT.A.2'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.NBT.A.3'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.NBT.A.4'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.NBT.B.5'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.NBT.B.6'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.NBT.B.7'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.NF.A.1'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.NF.A.2'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.NF.B.3'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.NF.B.4'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.NF.B.5'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.NF.B.6'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.NF.B.7'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.OA.A.1'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.OA.A.2'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '5.OA.B.3'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '6.G.A.1'), standard_grade_below(7, 6, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '6.G.A.2'), standard_grade_below(7, 6, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '6.G.A.3'), standard_grade_below(7, 6, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, '6.G.A.4'), standard_grade_below(7, 6, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.CC.A.1'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.CC.A.2'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.CC.A.3'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.CC.B.4'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.CC.B.5'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.CC.C.6'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.CC.C.7'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.G.A.1'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.G.A.2'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.G.A.3'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.G.B.4'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.G.B.5'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.G.B.6'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.MD.A.1'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.MD.A.2'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.MD.B.3'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.NBT.A.1'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.OA.A.1'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.OA.A.2'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.OA.A.3'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.OA.A.4'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(ccss, 'K.OA.A.5'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '1.CA.1'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '1.CA.2'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '1.CA.3'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '1.G.1'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '1.G.2'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '1.G.3'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '1.NS.1'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '1.NS.4'), standard_grade_below(7, 1, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '2.CA.1'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '2.CA.2'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '2.G.1'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '2.G.2'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '2.G.3'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '2.G.4'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '2.NS.3'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '2.NS.5'), standard_grade_below(7, 2, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '3.CA.1'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '3.CA.2'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '3.CA.5'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '3.CA.7'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '3.G.1'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '3.G.2'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '3.G.3'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '3.M.7'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '3.NS.2'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '3.NS.6'), standard_grade_below(7, 3, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '4.CA.1'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '4.CA.2'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '4.CA.5'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '4.DA.2'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '4.G.1'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '4.G.2'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '4.G.3'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '4.NS.3'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '4.NS.4'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '4.NS.6'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '4.NS.7'), standard_grade_below(7, 4, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '5.CA.1'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '5.CA.11'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '5.CA.3'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '5.CA.4'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '5.CA.5'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '5.CA.7'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '5.CA.8'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '5.CA.9'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '5.G.1'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '5.NS.3'), standard_grade_below(7, 5, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '6.GM.1'), standard_grade_below(7, 6, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '6.GM.2'), standard_grade_below(7, 6, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '6.GM.3'), standard_grade_below(7, 6, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, '6.GM.4'), standard_grade_below(7, 6, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, 'K.CA.1'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, 'K.CA.2'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, 'K.CA.3'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
+excludes(proportional, standard, standard(in_indiana, 'K.G.1'), standard_grade_below(7, 0, lesson_topic_grade_evidence('IM-G7-U1-L1', proportional, 7))).
 excludes(ratio, family, machine(addition, append_column_sum_without_carrying), family_mismatch(ratio, addition, [addition])).
 excludes(ratio, family, machine(addition, base_ones_chunking), family_mismatch(ratio, addition, [addition])).
 excludes(ratio, family, machine(addition, column_addition_with_carrying), family_mismatch(ratio, addition, [addition])).
@@ -21633,6 +24471,24 @@ excludes(ratio, family, machine(decimal, decimal_whole_number_reading), family_m
 excludes(ratio, family, machine(decimal, ecuadorian_decimal_long_division), family_mismatch(ratio, decimal, [decimal])).
 excludes(ratio, family, machine(decimal, positional_decimal_reading), family_mismatch(ratio, decimal, [decimal])).
 excludes(ratio, family, machine(decimal, recalled_result_scaling), family_mismatch(ratio, decimal, [decimal])).
+excludes(ratio, family, machine(discourse, algorithmic_elaboration), nonmathematical_genre(ratio, discourse, discursive)).
+excludes(ratio, family, machine(discourse, assertion_without_vindication_task), nonmathematical_genre(ratio, discourse, discursive)).
+excludes(ratio, family, machine(discourse, assertional_commitment), nonmathematical_genre(ratio, discourse, discursive)).
+excludes(ratio, family, machine(discourse, attribution_and_acknowledgement_kept_apart), nonmathematical_genre(ratio, discourse, discursive)).
+excludes(ratio, family, machine(discourse, attribution_taken_as_acknowledgement), nonmathematical_genre(ratio, discourse, discursive)).
+excludes(ratio, family, machine(discourse, authority_where_inference_required), nonmathematical_genre(ratio, discourse, discursive)).
+excludes(ratio, family, machine(discourse, commitment_repair), nonmathematical_genre(ratio, discourse, discursive)).
+excludes(ratio, family, machine(discourse, deferral_regress), nonmathematical_genre(ratio, discourse, discursive)).
+excludes(ratio, family, machine(discourse, entitlement_by_authority), nonmathematical_genre(ratio, discourse, discursive)).
+excludes(ratio, family, machine(discourse, entitlement_by_deferral), nonmathematical_genre(ratio, discourse, discursive)).
+excludes(ratio, family, machine(discourse, entitlement_by_formal_schema), nonmathematical_genre(ratio, discourse, discursive)).
+excludes(ratio, family, machine(discourse, entitlement_by_inference), nonmathematical_genre(ratio, discourse, discursive)).
+excludes(ratio, family, machine(discourse, incompatibility_recognition), nonmathematical_genre(ratio, discourse, discursive)).
+excludes(ratio, family, machine(discourse, incompatible_commitments_held), nonmathematical_genre(ratio, discourse, discursive)).
+excludes(ratio, family, machine(discourse, pragmatic_metavocabulary_construction), nonmathematical_genre(ratio, discourse, discursive)).
+excludes(ratio, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(ratio, discourse, discursive)).
+excludes(ratio, family, machine(discourse, universally_lx_loop), nonmathematical_genre(ratio, discourse, discursive)).
+excludes(ratio, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(ratio, discourse, discursive)).
 excludes(ratio, family, machine(division, fair_share_equal_groups), family_mismatch(ratio, division, [division])).
 excludes(ratio, family, machine(division, inverse_fact_decomposition), family_mismatch(ratio, division, [division])).
 excludes(ratio, family, machine(division, long_division), family_mismatch(ratio, division, [division])).
@@ -21750,6 +24606,20 @@ excludes(ratio, family, machine(multiplication, rigid_factor_order_roles), famil
 excludes(ratio, family, machine(multiplication, sequential_recompute_commuted_products), family_mismatch(ratio, multiplication, [multiplication])).
 excludes(ratio, family, machine(probability, equiprobable_endpoint_counting), family_mismatch(ratio, probability, [probability])).
 excludes(ratio, family, machine(probability, terminal_tree_endpoint_probability_sum), family_mismatch(ratio, probability, [probability])).
+excludes(ratio, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(ratio, statistics, [data])).
+excludes(ratio, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(ratio, statistics, [data])).
+excludes(ratio, family, machine(statistics, distribution_summary_selection), family_mismatch(ratio, statistics, [data])).
+excludes(ratio, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(ratio, statistics, [data])).
+excludes(ratio, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(ratio, statistics, [data])).
+excludes(ratio, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(ratio, statistics, [data])).
+excludes(ratio, family, machine(statistics, mean_absolute_deviation), family_mismatch(ratio, statistics, [data])).
+excludes(ratio, family, machine(statistics, mean_as_balance_point), family_mismatch(ratio, statistics, [data])).
+excludes(ratio, family, machine(statistics, mean_as_fair_share), family_mismatch(ratio, statistics, [data])).
+excludes(ratio, family, machine(statistics, mean_deviation_without_absolute_value), family_mismatch(ratio, statistics, [data])).
+excludes(ratio, family, machine(statistics, median_as_ordered_middle), family_mismatch(ratio, statistics, [data])).
+excludes(ratio, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(ratio, statistics, [data])).
+excludes(ratio, family, machine(statistics, question_without_variability), family_mismatch(ratio, statistics, [data])).
+excludes(ratio, family, machine(statistics, statistical_question_variability_classification), family_mismatch(ratio, statistics, [data])).
 excludes(ratio, family, machine(subtraction, add_instead_of_subtract_column), family_mismatch(ratio, subtraction, [subtraction])).
 excludes(ratio, family, machine(subtraction, answer_as_endpoint_count_up), family_mismatch(ratio, subtraction, [subtraction])).
 excludes(ratio, family, machine(subtraction, borrow_across_zero_cascade), family_mismatch(ratio, subtraction, [subtraction])).
@@ -22549,6 +25419,24 @@ excludes(subtraction, family, machine(decimal, decimal_whole_number_reading), fa
 excludes(subtraction, family, machine(decimal, ecuadorian_decimal_long_division), family_mismatch(subtraction, decimal, [decimal])).
 excludes(subtraction, family, machine(decimal, positional_decimal_reading), family_mismatch(subtraction, decimal, [decimal])).
 excludes(subtraction, family, machine(decimal, recalled_result_scaling), family_mismatch(subtraction, decimal, [decimal])).
+excludes(subtraction, family, machine(discourse, algorithmic_elaboration), nonmathematical_genre(subtraction, discourse, discursive)).
+excludes(subtraction, family, machine(discourse, assertion_without_vindication_task), nonmathematical_genre(subtraction, discourse, discursive)).
+excludes(subtraction, family, machine(discourse, assertional_commitment), nonmathematical_genre(subtraction, discourse, discursive)).
+excludes(subtraction, family, machine(discourse, attribution_and_acknowledgement_kept_apart), nonmathematical_genre(subtraction, discourse, discursive)).
+excludes(subtraction, family, machine(discourse, attribution_taken_as_acknowledgement), nonmathematical_genre(subtraction, discourse, discursive)).
+excludes(subtraction, family, machine(discourse, authority_where_inference_required), nonmathematical_genre(subtraction, discourse, discursive)).
+excludes(subtraction, family, machine(discourse, commitment_repair), nonmathematical_genre(subtraction, discourse, discursive)).
+excludes(subtraction, family, machine(discourse, deferral_regress), nonmathematical_genre(subtraction, discourse, discursive)).
+excludes(subtraction, family, machine(discourse, entitlement_by_authority), nonmathematical_genre(subtraction, discourse, discursive)).
+excludes(subtraction, family, machine(discourse, entitlement_by_deferral), nonmathematical_genre(subtraction, discourse, discursive)).
+excludes(subtraction, family, machine(discourse, entitlement_by_formal_schema), nonmathematical_genre(subtraction, discourse, discursive)).
+excludes(subtraction, family, machine(discourse, entitlement_by_inference), nonmathematical_genre(subtraction, discourse, discursive)).
+excludes(subtraction, family, machine(discourse, incompatibility_recognition), nonmathematical_genre(subtraction, discourse, discursive)).
+excludes(subtraction, family, machine(discourse, incompatible_commitments_held), nonmathematical_genre(subtraction, discourse, discursive)).
+excludes(subtraction, family, machine(discourse, pragmatic_metavocabulary_construction), nonmathematical_genre(subtraction, discourse, discursive)).
+excludes(subtraction, family, machine(discourse, tutorial_interruption_on_incompatible_token), nonmathematical_genre(subtraction, discourse, discursive)).
+excludes(subtraction, family, machine(discourse, universally_lx_loop), nonmathematical_genre(subtraction, discourse, discursive)).
+excludes(subtraction, family, machine(discourse, utterance_run_to_its_loss), nonmathematical_genre(subtraction, discourse, discursive)).
 excludes(subtraction, family, machine(division, fair_share_equal_groups), family_mismatch(subtraction, division, [division])).
 excludes(subtraction, family, machine(division, inverse_fact_decomposition), family_mismatch(subtraction, division, [division])).
 excludes(subtraction, family, machine(division, long_division), family_mismatch(subtraction, division, [division])).
@@ -22670,6 +25558,20 @@ excludes(subtraction, family, machine(ratio, additive_extension_of_ratio), famil
 excludes(subtraction, family, machine(ratio, construct_referent_ratio_diagram), family_mismatch(subtraction, ratio, [proportional, ratio])).
 excludes(subtraction, family, machine(ratio, reverse_ratio_referent_order), family_mismatch(subtraction, ratio, [proportional, ratio])).
 excludes(subtraction, family, machine(ratio, scale_ratio_unit), family_mismatch(subtraction, ratio, [proportional, ratio])).
+excludes(subtraction, family, machine(statistics, box_plot_from_five_number_summary), family_mismatch(subtraction, statistics, [data])).
+excludes(subtraction, family, machine(statistics, categorical_frequency_bar_representation), family_mismatch(subtraction, statistics, [data])).
+excludes(subtraction, family, machine(statistics, distribution_summary_selection), family_mismatch(subtraction, statistics, [data])).
+excludes(subtraction, family, machine(statistics, dot_plot_frequency_representation), family_mismatch(subtraction, statistics, [data])).
+excludes(subtraction, family, machine(statistics, five_number_summary_and_iqr), family_mismatch(subtraction, statistics, [data])).
+excludes(subtraction, family, machine(statistics, histogram_equal_interval_representation), family_mismatch(subtraction, statistics, [data])).
+excludes(subtraction, family, machine(statistics, mean_absolute_deviation), family_mismatch(subtraction, statistics, [data])).
+excludes(subtraction, family, machine(statistics, mean_as_balance_point), family_mismatch(subtraction, statistics, [data])).
+excludes(subtraction, family, machine(statistics, mean_as_fair_share), family_mismatch(subtraction, statistics, [data])).
+excludes(subtraction, family, machine(statistics, mean_deviation_without_absolute_value), family_mismatch(subtraction, statistics, [data])).
+excludes(subtraction, family, machine(statistics, median_as_ordered_middle), family_mismatch(subtraction, statistics, [data])).
+excludes(subtraction, family, machine(statistics, mode_as_maximal_frequency), family_mismatch(subtraction, statistics, [data])).
+excludes(subtraction, family, machine(statistics, question_without_variability), family_mismatch(subtraction, statistics, [data])).
+excludes(subtraction, family, machine(statistics, statistical_question_variability_classification), family_mismatch(subtraction, statistics, [data])).
 excludes(subtraction, lesson, 'IM-G1-U1-L1', lesson_topic_mismatch(subtraction, [addition, counting, ratio])).
 excludes(subtraction, lesson, 'IM-G1-U1-L11', lesson_topic_mismatch(subtraction, [data])).
 excludes(subtraction, lesson, 'IM-G1-U1-L12', lesson_topic_mismatch(subtraction, [data])).
@@ -23683,10 +26585,18 @@ applicable_exclusion_topic(Query, Topic) :-
     normalized_query(Query, Topic),
     Topic \== Query.
 
+applicable_exclusion(Query, Kind, Key, Reason) :-
+    excludes(Query, Kind, Key, Reason).
+applicable_exclusion(Query, Kind, Key, Reason) :-
+    normalized_query(Query, Topic),
+    Topic \== Query,
+    excludes(Topic, Kind, Key, Reason),
+    \+ ( Kind == standard,
+         Reason = standard_grade_below(_, _, _) ).
+
 surviving_slices(Topic, Survivors, Excluded) :-
     findall(excluded(Kind, Key, Reason),
-            ( applicable_exclusion_topic(Topic, EvidenceTopic),
-              excludes(EvidenceTopic, Kind, Key, Reason) ),
+            applicable_exclusion(Topic, Kind, Key, Reason),
             Excluded0),
     sort(Excluded0, Excluded),
     findall(slice(Kind, Key),
@@ -23700,6 +26610,11 @@ exclusion_reason_resolves(Topic, family, machine(Family, Signature),
     slice(family, machine(Family, Signature)),
     family_topics(Family, Topics),
     \+ memberchk(Topic, Topics).
+exclusion_reason_resolves(Topic, family, machine(Family, Signature),
+                          nonmathematical_genre(Topic, Family, Genre)) :-
+    known_topic(Topic),
+    machine_genre(Family, Signature, Genre),
+    Genre == discursive.
 exclusion_reason_resolves(Topic, lesson, Code,
                           lesson_topic_mismatch(Topic, Topics)) :-
     lesson_topics(Code, Topics),

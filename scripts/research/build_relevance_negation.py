@@ -17,6 +17,8 @@ LESSON_MONITORING = ROOT / "curriculum/im/lesson_monitoring.pl"
 FIELD_CACHE = ROOT / "curriculum/im/generated/field_context_cache.json"
 WINDOW = ROOT / "knowledge/index/corpus_window.pl"
 STANDARDS = ROOT / "knowledge/standards"
+ACTION_GRAMMAR = ROOT / "knowledge/strategies/action_grammar.pl"
+TRANSITION_TABLES = ROOT / "knowledge/strategies/transition_tables"
 
 OPERATION_TOPIC_RE = re.compile(r"(?m)^operation_topic\((\w+), (\w+)\)\.")
 # The keyword table is `topic_keyword(Keyword, Topic)` facts.  It was a wall of
@@ -28,6 +30,9 @@ TOPIC_KEYWORD_RE = re.compile(
     r"(?m)^topic_keyword\((\"[^\"]*\"|'[^']*'|\w+), (\w+)\)\."
 )
 WINDOW_ROW_RE = re.compile(r"(?m)^window_row\((\w+), (\w+),")
+MACHINE_GRAMMAR_RE = re.compile(
+    r"(?m)^machine_grammar\((\w+), (\w+), (\w+), arc\("
+)
 ATOM_RE = re.compile(r"^[a-z][a-zA-Z0-9_]*$")
 STANDARD_CODE_RE = re.compile(r"^(K|\d+)\.")
 
@@ -45,14 +50,17 @@ class StandardSlice:
 
 @dataclass(frozen=True)
 class BuildData:
+    known_topics: tuple[str, ...]
     lessons: tuple[tuple[str, int, tuple[str, ...]], ...]
     cache_only_lessons: tuple[str, ...]
     machines: tuple[tuple[str, str], ...]
+    machine_genres: tuple[tuple[str, str, str], ...]
     family_topics: tuple[tuple[str, tuple[str, ...]], ...]
+    family_topic_sources: tuple[tuple[str, str, str], ...]
     standards: tuple[StandardSlice, ...]
     query_keywords: tuple[tuple[str, str], ...]
     exclusions: tuple[tuple[str, str, str, str], ...]
-    floor_source: tuple[str, int, str]
+    floor_sources: tuple[tuple[str, int, str], ...]
 
 
 def _pl_atom(value: str) -> str:
@@ -240,6 +248,80 @@ def _read_standards() -> tuple[
     return standards, ("fraction/thirds", floor, source)
 
 
+def _read_machine_genres(
+    machines: tuple[tuple[str, str], ...],
+) -> tuple[tuple[str, str, str], ...]:
+    genres: dict[tuple[str, str], str] = {}
+    text = ACTION_GRAMMAR.read_text(encoding="utf-8")
+    for genre, family, signature in MACHINE_GRAMMAR_RE.findall(text):
+        key = (family, signature)
+        if key in genres and genres[key] != genre:
+            raise ValueError(f"machine {family}/{signature} has two genres")
+        genres[key] = genre
+    missing = sorted(set(machines) - set(genres))
+    if missing:
+        raise ValueError(f"machines have no machine_grammar/6 genre: {missing}")
+    return tuple(
+        (family, signature, genres[(family, signature)])
+        for family, signature in machines
+    )
+
+
+def _read_family_topic_sources(
+    known_topics: set[str],
+    machines: tuple[tuple[str, str], ...],
+) -> tuple[tuple[str, str, str], ...]:
+    """Read narrow family-topic links whose evidence is explicit in a table."""
+    if "data" not in known_topics:
+        return ()
+
+    statistics = (TRANSITION_TABLES / "statistics.pl").read_text(encoding="utf-8")
+    candidates: list[str] = []
+    for raw_fact in _iter_facts(statistics, "automaton_tuple"):
+        args = _split_top_level(raw_fact)
+        if len(args) != 6:
+            continue
+        family = _unquote(args[0])
+        signature = _unquote(args[1])
+        if (
+            family == "statistics"
+            and (family, signature) in machines
+            and re.search(r"\bpreserve_data_set\b", args[3])
+        ):
+            candidates.append(signature)
+    if not candidates:
+        raise ValueError(
+            "statistics has no automaton_tuple action that grounds the data topic"
+        )
+    signature = sorted(candidates)[0]
+    source = (
+        "automaton_action_evidence("
+        f"statistics, {signature}, preserve_data_set)"
+    )
+    return (("statistics", "data", source),)
+
+
+def _lesson_floor_sources(
+    topics: set[str],
+    lessons: tuple[tuple[str, int, tuple[str, ...]], ...],
+) -> tuple[tuple[str, int, str], ...]:
+    sources: list[tuple[str, int, str]] = []
+    for topic in sorted(topics):
+        witnesses = sorted(
+            (grade, code)
+            for code, grade, lesson_topics in lessons
+            if topic in lesson_topics
+        )
+        if not witnesses:
+            continue
+        floor, code = witnesses[0]
+        source = (
+            f"lesson_topic_grade_evidence({_pl_atom(code)}, {topic}, {floor})"
+        )
+        sources.append((topic, floor, source))
+    return tuple(sources)
+
+
 def build_data() -> BuildData:
     operation_topics, query_keywords, known_topics = _read_topics()
     lessons = _read_live_lessons()
@@ -259,22 +341,36 @@ def build_data() -> BuildData:
             }
         )
     )
+    machine_genres = _read_machine_genres(machines)
+    genre_by_machine = {
+        (family, signature): genre
+        for family, signature, genre in machine_genres
+    }
+    family_topic_sources = _read_family_topic_sources(known_topics, machines)
     families = sorted({family for family, _signature in machines})
     family_topic_rows: list[tuple[str, tuple[str, ...]]] = []
     for family in families:
         topics = set(operation_topics.get(family, set()))
         if family in known_topics:
             topics.add(family)
+        topics.update(
+            topic
+            for source_family, topic, _source in family_topic_sources
+            if source_family == family
+        )
         family_topic_rows.append((family, tuple(sorted(topics))))
 
-    standards, floor_source = _read_standards()
-    special_query, floor, source = floor_source
-    source_term = source
+    standards, special_floor_source = _read_standards()
+    special_query, special_floor, special_source = special_floor_source
+    subtraction_topics = set(known_topics)
+    floor_sources = (
+        _lesson_floor_sources(subtraction_topics, lessons)
+        + (special_floor_source,)
+    )
     family_topics = dict(family_topic_rows)
     exclusions: set[tuple[str, str, str, str]] = set()
 
-    operation_topic_values = sorted(set().union(*operation_topics.values()))
-    for topic in operation_topic_values:
+    for topic in sorted(subtraction_topics):
         for family, signature in machines:
             topics = family_topics[family]
             if topics and topic not in topics:
@@ -284,35 +380,43 @@ def build_data() -> BuildData:
                     f"[{', '.join(topics)}])"
                 )
                 exclusions.add((topic, "family", key, reason))
+            elif not topics and genre_by_machine[(family, signature)] == "discursive":
+                key = f"machine({family}, {signature})"
+                reason = f"nonmathematical_genre({topic}, {family}, discursive)"
+                exclusions.add((topic, "family", key, reason))
         for code, _grade, topics in lessons:
             if topics and topic not in topics:
                 reason = f"lesson_topic_mismatch({topic}, [{', '.join(topics)}])"
                 exclusions.add((topic, "lesson", _pl_atom(code), reason))
 
     for grade in sorted({grade for _code, grade, _topics in lessons}):
-        if grade < floor:
-            reason = f"grade_band_below({floor}, {source_term})"
+        if grade < special_floor:
+            reason = f"grade_band_below({special_floor}, {special_source})"
             exclusions.add((special_query, "grade_band", str(grade), reason))
     for code, grade, _topics in lessons:
-        if grade < floor:
-            reason = f"lesson_grade_below({floor}, {grade}, {source_term})"
-            exclusions.add((special_query, "lesson", _pl_atom(code), reason))
-    for standard in standards:
-        if standard.grade < floor:
+        if grade < special_floor:
             reason = (
-                f"standard_grade_below({floor}, {standard.grade}, {source_term})"
+                f"lesson_grade_below({special_floor}, {grade}, {special_source})"
             )
-            exclusions.add((special_query, "standard", standard.term, reason))
+            exclusions.add((special_query, "lesson", _pl_atom(code), reason))
+    for topic, floor, source in floor_sources:
+        for standard in standards:
+            if standard.grade < floor:
+                reason = f"standard_grade_below({floor}, {standard.grade}, {source})"
+                exclusions.add((topic, "standard", standard.term, reason))
 
     return BuildData(
+        known_topics=tuple(sorted(known_topics | {special_query})),
         lessons=lessons,
         cache_only_lessons=cache_only,
         machines=machines,
+        machine_genres=machine_genres,
         family_topics=tuple(family_topic_rows),
+        family_topic_sources=family_topic_sources,
         standards=standards,
         query_keywords=query_keywords,
         exclusions=tuple(sorted(exclusions)),
-        floor_source=floor_source,
+        floor_sources=floor_sources,
     )
 
 
@@ -321,17 +425,14 @@ def _atom_list(items: tuple[str, ...]) -> str:
 
 
 def render(data: BuildData) -> str:
-    special_query, floor, source = data.floor_source
-    topics = sorted({topic for topic, _keyword in data.query_keywords})
     grades = sorted({grade for _code, grade, _topics in data.lessons})
     lines = [
         "% Generated by build_relevance_negation.py. Hand edits will not survive the check.",
         "% Exclusions are data. Each reason resolves against evidence facts below.",
         "",
     ]
-    for topic in topics:
-        lines.append(f"known_topic({topic}).")
-    lines.append(f"known_topic({_pl_atom(special_query)}).")
+    for topic in data.known_topics:
+        lines.append(f"known_topic({_pl_atom(topic)}).")
     lines.append("")
     for topic, keyword in data.query_keywords:
         lines.append(f"query_keyword({topic}, {_pl_atom(keyword)}).")
@@ -356,13 +457,20 @@ def render(data: BuildData) -> str:
     for family, topics_for_family in data.family_topics:
         lines.append(f"family_topics({family}, {_atom_list(topics_for_family)}).")
     lines.append("")
+    for family, signature, genre in data.machine_genres:
+        lines.append(f"machine_genre({family}, {signature}, {genre}).")
+    lines.append("")
+    for family, topic, source in data.family_topic_sources:
+        lines.append(f"{source}.")
+        lines.append(f"family_topic_source({family}, {topic}, {source}).")
+    lines.append("")
     for standard in data.standards:
         lines.append(f"standard_grade({standard.term}, {standard.grade}).")
     lines.append("")
-    lines.append(f"{source}.")
-    lines.append(
-        f"topic_grade_floor({_pl_atom(special_query)}, {floor}, {source})."
-    )
+    for _topic, _floor, source in data.floor_sources:
+        lines.append(f"{source}.")
+    for topic, floor, source in data.floor_sources:
+        lines.append(f"topic_grade_floor({_pl_atom(topic)}, {floor}, {source}).")
     for code in data.cache_only_lessons:
         lines.append(f"source_gap(cache_only_lesson, {_pl_atom(code)}).")
     lines.append("")
@@ -388,10 +496,18 @@ def render(data: BuildData) -> str:
             "    normalized_query(Query, Topic),",
             "    Topic \\== Query.",
             "",
+            "applicable_exclusion(Query, Kind, Key, Reason) :-",
+            "    excludes(Query, Kind, Key, Reason).",
+            "applicable_exclusion(Query, Kind, Key, Reason) :-",
+            "    normalized_query(Query, Topic),",
+            "    Topic \\== Query,",
+            "    excludes(Topic, Kind, Key, Reason),",
+            "    \\+ ( Kind == standard,",
+            "         Reason = standard_grade_below(_, _, _) ).",
+            "",
             "surviving_slices(Topic, Survivors, Excluded) :-",
             "    findall(excluded(Kind, Key, Reason),",
-            "            ( applicable_exclusion_topic(Topic, EvidenceTopic),",
-            "              excludes(EvidenceTopic, Kind, Key, Reason) ),",
+            "            applicable_exclusion(Topic, Kind, Key, Reason),",
             "            Excluded0),",
             "    sort(Excluded0, Excluded),",
             "    findall(slice(Kind, Key),",
@@ -405,6 +521,11 @@ def render(data: BuildData) -> str:
             "    slice(family, machine(Family, Signature)),",
             "    family_topics(Family, Topics),",
             "    \\+ memberchk(Topic, Topics).",
+            "exclusion_reason_resolves(Topic, family, machine(Family, Signature),",
+            "                          nonmathematical_genre(Topic, Family, Genre)) :-",
+            "    known_topic(Topic),",
+            "    machine_genre(Family, Signature, Genre),",
+            "    Genre == discursive.",
             "exclusion_reason_resolves(Topic, lesson, Code,",
             "                          lesson_topic_mismatch(Topic, Topics)) :-",
             "    lesson_topics(Code, Topics),",

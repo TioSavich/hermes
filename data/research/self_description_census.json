@@ -1,0 +1,1539 @@
+{
+  "class_resolution": [
+    {
+      "current_class": "crosswalk",
+      "name": "accommodation_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "action_cluster_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "algebra_claim_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "arithmetic_property_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "infrastructure",
+      "name": "batch_event_score",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "misconceptions",
+      "name": "benny_demo",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "calculus_claim_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "misconceptions",
+      "name": "check_math_claim",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "misconceptions",
+      "name": "commitment_match",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "render",
+      "name": "corpus_grammar_summary",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "counting_claim_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "dialectic",
+      "name": "critique_bad_infinite",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "decimal_claim_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "incompatibility",
+      "name": "defeasible_classify",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "pml",
+      "name": "discourse_features",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "pml",
+      "name": "discourse_pragmatics",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "domain_context_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "synthesis",
+      "name": "elaborations",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "sequent",
+      "name": "embodied_proof_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "infrastructure",
+      "name": "event_score",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "executable_practice_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "fsm_engine_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "pml",
+      "name": "gesture_alignment",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "godel_primes_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "infrastructure",
+      "name": "ground",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "grounded_arith_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "infrastructure",
+      "name": "grounding_for",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "synthesis",
+      "name": "grounding_inference_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "grounding_metaphor_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "infrastructure",
+      "name": "grounding_metaphors",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "render",
+      "name": "image_schema",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "sequent",
+      "name": "incoherent_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "unclassified",
+      "name": "index_topic_subtraction",
+      "resolution": "proposed `indexing` class; no code class added"
+    },
+    {
+      "current_class": "synthesis",
+      "name": "inferential_strength",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "integer_signed_claim_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "pml",
+      "name": "intersubjective_material_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "workflow",
+      "name": "lesson_deformation_chart",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "misconceptions",
+      "name": "lesson_misconception_incompatibility_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "infrastructure",
+      "name": "list_standards",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "infrastructure",
+      "name": "list_strategies",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "infrastructure",
+      "name": "lit_search",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "magnitude_equivalence_claim_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "material_inference_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "pml",
+      "name": "media_alignment",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "metaphor_break_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "modal_context_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "mua_coherence_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "mua_kind_coherence_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "multiplication_division_claim_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "normative_crisis_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "sequent",
+      "name": "number_theory_self_defeat_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "orr_entry_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "infrastructure",
+      "name": "pair_candidate_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "infrastructure",
+      "name": "pair_graph",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "infrastructure",
+      "name": "pair_score",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "practice_vocabulary_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "render",
+      "name": "primitive_for_practice",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "productive_deformation_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "ratio_proportion_claim_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "sequent",
+      "name": "rhythm_transition_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "sequent",
+      "name": "robinson_axiom_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "pml",
+      "name": "semantic_material_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "synthesis",
+      "name": "state_labels",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "synthesis",
+      "name": "strategy_recognize",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "synthesis",
+      "name": "strategy_trace",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "synthesis",
+      "name": "target_inferential_strength_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "pml",
+      "name": "trace_adjudication",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "render",
+      "name": "unit_coordination_svg",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "unit_coordination_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "render",
+      "name": "unit_echo_render",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "viability_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "whole_number_addsub_claim_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "crosswalk",
+      "name": "whole_number_claim_witness",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "workflow",
+      "name": "curriculum/im/generated/vision_lesson_digest.pl",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "workflow",
+      "name": "curriculum/im/im_glossary.pl",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "workflow",
+      "name": "curriculum/im_harness.pl",
+      "resolution": "assigned to an existing class by extractor rules"
+    },
+    {
+      "current_class": "pml",
+      "name": "knowledge/discourse/commitment_automata.pl",
+      "resolution": "assigned to an existing class by extractor rules"
+    }
+  ],
+  "counts": {
+    "baseline_class_resolution": {
+      "crosswalk": 30,
+      "dialectic": 1,
+      "incompatibility": 1,
+      "infrastructure": 11,
+      "misconceptions": 4,
+      "pml": 8,
+      "render": 5,
+      "sequent": 5,
+      "synthesis": 7,
+      "unclassified": 1,
+      "workflow": 4
+    },
+    "baseline_unclassified": 77,
+    "by_class": {
+      "carving": 2,
+      "crosswalk": 38,
+      "dialectic": 1,
+      "geometry_witness": 35,
+      "incompatibility": 7,
+      "infrastructure": 16,
+      "juncture": 1,
+      "learner": 25,
+      "misconceptions": 12,
+      "monitoring": 5,
+      "pml": 15,
+      "render": 28,
+      "sequent": 14,
+      "standards": 22,
+      "synthesis": 34,
+      "unclassified": 1,
+      "workflow": 4,
+      "zeeman": 4
+    },
+    "by_status": {
+      "lazy_reachable": 9,
+      "orphan_module": 58,
+      "routed_paged": 193,
+      "unrouted": 4
+    },
+    "orphan_verdicts": {
+      "consumed_by_builder": 2,
+      "consumed_by_check": 5,
+      "deliberately_unloaded": 4,
+      "include_active": 21,
+      "stalled_input": 3,
+      "superseded": 0,
+      "undetermined": 23
+    },
+    "total": 264,
+    "unrouted": 4
+  },
+  "generated_by": "scripts/research/build_self_description_census.py",
+  "orphan_modules": [
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Teacher-facing lesson digest from the vision harvest of the",
+          "path": "curriculum/im/generated/vision_lesson_digest.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": "use_module(lessons('im/generated/vision_lesson_digest'))",
+          "path": "scripts/research/build_im_coverage.py",
+          "relation": "builder loader"
+        }
+      ],
+      "module": "vision_lesson_digest",
+      "note": "The IM coverage builder loads the digest and reads its lesson facts.",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl",
+      "verdict": "consumed_by_builder"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> im_glossary",
+          "path": "curriculum/im/im_glossary.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": "Illustrative Mathematics K-8 glossary terms as facts.",
+          "path": "curriculum/im/im_glossary.pl",
+          "relation": "authored data description"
+        }
+      ],
+      "module": "im_glossary",
+      "note": "No code reader was found. The file holds attributed K-8 glossary terms and lesson joins as generated facts.",
+      "path": "curriculum/im/im_glossary.pl",
+      "verdict": "stalled_input"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Illustrative Math execution harness (codebook refactor, Phase 2)",
+          "path": "curriculum/im_harness.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "im_harness",
+      "note": "The source names curriculum/tests/test_im_harness.pl, but that path does not exist. No consumer in an allowed verdict category was found.",
+      "path": "curriculum/im_harness.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% ===================================================================",
+          "path": "formal/formalization/axioms_geometry.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include(formalization(axioms_geometry)).",
+          "path": "formal/sequent/sequent_engine.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "axioms_geometry",
+      "note": "formal/sequent/sequent_engine.pl includes this source rather than importing it as a module.",
+      "path": "formal/formalization/axioms_geometry.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% ===================================================================",
+          "path": "formal/formalization/axioms_number_theory.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include(formalization(axioms_number_theory)).",
+          "path": "formal/sequent/sequent_engine.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "axioms_number_theory",
+      "note": "formal/sequent/sequent_engine.pl includes this source rather than importing it as a module.",
+      "path": "formal/formalization/axioms_number_theory.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% ===================================================================",
+          "path": "formal/formalization/axioms_robinson.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include(formalization(axioms_robinson)).",
+          "path": "formal/sequent/sequent_engine.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "axioms_robinson",
+      "note": "formal/sequent/sequent_engine.pl includes this source rather than importing it as a module.",
+      "path": "formal/formalization/axioms_robinson.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% Verify base-invariance for addition make-base targets.",
+          "path": "formal/formalization/synthesis/run_add.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "run_add",
+      "note": "This is a manual command entry point. No check or research builder invokes it.",
+      "path": "formal/formalization/synthesis/run_add.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% Verify base-invariance of cost-bounded synthesis.",
+          "path": "formal/formalization/synthesis/run_lazy.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "run_lazy",
+      "note": "This is a manual command entry point. No check or research builder invokes it.",
+      "path": "formal/formalization/synthesis/run_lazy.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% Run the synthesizer against each declared target, time the search, print",
+          "path": "formal/formalization/synthesis/run_synth.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "run_synth",
+      "note": "This is a manual command entry point. No check or research builder invokes it.",
+      "path": "formal/formalization/synthesis/run_synth.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "/** <module> Program synthesis from arithmetic primitives",
+          "path": "formal/formalization/synthesis/synth.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "synth",
+      "note": "Only the unconsumed run_synth.pl entry point imports this module. No stronger verdict is supported.",
+      "path": "formal/formalization/synthesis/synth.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "/** <module> Cost-aware program synthesis with structural (base-parametric) cost",
+          "path": "formal/formalization/synthesis/synth_lazy.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "synth_lazy",
+      "note": "Only the unconsumed run_add.pl and run_lazy.pl entry points import this module. No stronger verdict is supported.",
+      "path": "formal/formalization/synthesis/synth_lazy.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "juncture",
+      "evidence": [
+        {
+          "locator": "/** <module> The juncture — where two reconstructions of one outcome meet",
+          "path": "formal/juncture/differance_juncture.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": "derivation(half, outcome(equal_parts(2)),",
+          "path": "formal/juncture/differance_juncture.pl",
+          "relation": "authored fact"
+        }
+      ],
+      "module": "differance_juncture",
+      "note": "No code reader was found. The file holds authored derivation and juncture facts.",
+      "path": "formal/juncture/differance_juncture.pl",
+      "verdict": "stalled_input"
+    },
+    {
+      "capability_class": "learner",
+      "evidence": [
+        {
+          "locator": "/** <module> Typed bridge from IM lesson monitoring to learner action paths",
+          "path": "formal/learner/activity_contract.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "activity_contract",
+      "note": "task_transition.pl and scripts/curriculum/mini_atlas.pl load this module, but neither is a scripts/checks or scripts/research consumer.",
+      "path": "formal/learner/activity_contract.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "learner",
+      "evidence": [
+        {
+          "locator": "/** <module> Generated basis transitions of the curriculum dynamics.",
+          "path": "formal/learner/atlas/basis_transitions.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": "generated_module('learner/atlas/basis_transitions.pl').",
+          "path": "scripts/curriculum/mini_atlas.pl",
+          "relation": "table producer"
+        },
+        {
+          "locator": "basis_transition(",
+          "path": "formal/learner/atlas/basis_transitions.pl",
+          "relation": "generated data"
+        }
+      ],
+      "module": "basis_transitions",
+      "note": "The curriculum atlas builder writes this generated fact table, but no code reader was found for the checked-in table.",
+      "path": "formal/learner/atlas/basis_transitions.pl",
+      "verdict": "stalled_input"
+    },
+    {
+      "capability_class": "learner",
+      "evidence": [
+        {
+          "locator": "% ===================================================================",
+          "path": "formal/learner/axioms_domains.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include(learner(axioms_domains)).",
+          "path": "formal/sequent/sequent_engine.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "axioms_domains",
+      "note": "formal/sequent/sequent_engine.pl includes this source rather than importing it as a module.",
+      "path": "formal/learner/axioms_domains.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "learner",
+      "evidence": [
+        {
+          "locator": "/** <module> Crisis Processor",
+          "path": "formal/learner/crisis_processor.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "crisis_processor",
+      "note": "Only the deliberately unloaded learner server stack imports this module.",
+      "path": "formal/learner/crisis_processor.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "learner",
+      "evidence": [
+        {
+          "locator": "/** <module> Curriculum Processor",
+          "path": "formal/learner/curriculum_processor.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "curriculum_processor",
+      "note": "Only the deliberately unloaded learner server stack and its crisis processor import this module.",
+      "path": "formal/learner/curriculum_processor.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "learner",
+      "evidence": [
+        {
+          "locator": "/** <module> Interactive Command-Line UI for the More Machine Learner",
+          "path": "formal/learner/interactive_ui.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "interactive_ui",
+      "note": "This is a manual command-line interface. No check, research builder, include directive, or supersession record was found.",
+      "path": "formal/learner/interactive_ui.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "learner",
+      "evidence": [
+        {
+          "locator": "/** <module> Knowledge Management Utilities",
+          "path": "formal/learner/knowledge_manager.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "knowledge_manager",
+      "note": "Only the deliberately unloaded learner server stack imports this module.",
+      "path": "formal/learner/knowledge_manager.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "learner",
+      "evidence": [
+        {
+          "locator": "% Automatically generated knowledge base V2.",
+          "path": "formal/learner/learned_knowledge_v2.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "learned_knowledge_v2",
+      "note": "Only the deliberately unloaded learner server stack loads these generated proof-strategy facts.",
+      "path": "formal/learner/learned_knowledge_v2.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "learner",
+      "evidence": [
+        {
+          "locator": "/** <module> Main Entry Point for Command-Line Execution",
+          "path": "formal/learner/main.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "main",
+      "note": "This is a manual command entry point. It loads primordial_start.pl, but no check or research builder invokes it.",
+      "path": "formal/learner/main.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "learner",
+      "evidence": [
+        {
+          "locator": "/** <module> Primordial Machine Entry Point",
+          "path": "formal/learner/primordial_start.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "primordial_start",
+      "note": "Only the unconsumed learner main entry point loads this bootstrap script.",
+      "path": "formal/learner/primordial_start.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "learner",
+      "evidence": [
+        {
+          "locator": "/** <module> reorg_demo_server — a tiny live server for the reorganization demo",
+          "path": "formal/learner/reorg_demo_server.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": "http_server(http_dispatch, [port(Port)])",
+          "path": "formal/learner/reorg_demo_server.pl",
+          "relation": "port-binding demo entry point"
+        }
+      ],
+      "module": "reorg_demo_server",
+      "note": "This fourth server-side case owns HTTP handlers and a port-binding demo entry point. It stays outside the worker load closure.",
+      "path": "formal/learner/reorg_demo_server.pl",
+      "verdict": "deliberately_unloaded"
+    },
+    {
+      "capability_class": "learner",
+      "evidence": [
+        {
+          "locator": "/** <module> ORR Cycle HTTP Server",
+          "path": "formal/learner/server.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": "http_server(http_dispatch, [port(Port)])",
+          "path": "formal/learner/server.pl",
+          "relation": "port-binding entry point"
+        }
+      ],
+      "module": "server",
+      "note": "This is a separate HTTP server entry point with a port-binding start predicate. It stays outside the worker load closure.",
+      "path": "formal/learner/server.pl",
+      "verdict": "deliberately_unloaded"
+    },
+    {
+      "capability_class": "learner",
+      "evidence": [
+        {
+          "locator": ":- module(server_visualization,",
+          "path": "formal/learner/server_visualization.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- http_handler(root(api/cgi_dispatch), handle_cgi_dispatch, []).",
+          "path": "formal/learner/server_visualization.pl",
+          "relation": "load-time HTTP registration"
+        }
+      ],
+      "module": "server_visualization",
+      "note": "This server companion registers HTTP handlers at load time. Loading it into the worker would mutate the global HTTP route table.",
+      "path": "formal/learner/server_visualization.pl",
+      "verdict": "deliberately_unloaded"
+    },
+    {
+      "capability_class": "learner",
+      "evidence": [
+        {
+          "locator": "/** <module> f_{t,c}: the local task-transition function of the curriculum dynamics",
+          "path": "formal/learner/task_transition.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "task_transition",
+      "note": "scripts/curriculum/mini_atlas.pl loads this module, but that producer is not one of the consumer categories in the verdict table.",
+      "path": "formal/learner/task_transition.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "pml",
+      "evidence": [
+        {
+          "locator": "/** <module> Audit of cross-module Prolog connectors",
+          "path": "formal/pml/audit_connectors.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "audit_connectors",
+      "note": "This source describes a strict audit entry point, but run_all.sh and the scripts/checks directory do not invoke it.",
+      "path": "formal/pml/audit_connectors.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "pml",
+      "evidence": [
+        {
+          "locator": "/** <module> MUA conjecture register",
+          "path": "formal/pml/mua_conjectures.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "mua_conjectures",
+      "note": "The register is intentionally empty. It holds no authored relation row to classify as stalled input, and no consumer was found.",
+      "path": "formal/pml/mua_conjectures.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "pml",
+      "evidence": [
+        {
+          "locator": "/** <module> MUA codebook-health guard",
+          "path": "formal/pml/mua_health.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "mua_health",
+      "note": "Only the unconsumed audit_connectors.pl module imports this health query.",
+      "path": "formal/pml/mua_health.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "pml",
+      "evidence": [
+        {
+          "locator": "% ===================================================================",
+          "path": "formal/pml/rhythm_axioms.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include(pml(rhythm_axioms)).",
+          "path": "formal/sequent/sequent_engine.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "rhythm_axioms",
+      "note": "formal/sequent/sequent_engine.pl includes this source rather than importing it as a module.",
+      "path": "formal/pml/rhythm_axioms.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "pml",
+      "evidence": [
+        {
+          "locator": "/** <module> Deterministic TalkMoves packet adapter and review surface",
+          "path": "formal/pml/talkmoves_adapter.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "talkmoves_adapter",
+      "note": "No check, research builder, include directive, or explicit supersession record was found for this packet-review adapter.",
+      "path": "formal/pml/talkmoves_adapter.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "zeeman",
+      "evidence": [
+        {
+          "locator": "/** <module> Zeeman machine — bifurcation sweep",
+          "path": "hermes/web/prolog/zeeman_bifurcation.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": "\"$repo/hermes/web/bifurcation_verify.py\" --cross-check",
+          "path": "scripts/checks/zeeman_bifurcation.sh",
+          "relation": "named check"
+        },
+        {
+          "locator": "\"use_module(zeeman(zeeman_bifurcation)),\"",
+          "path": "hermes/web/bifurcation_verify.py",
+          "relation": "check loader"
+        }
+      ],
+      "module": "zeeman_bifurcation",
+      "note": "The zeeman_bifurcation check invokes the cross-verifier, which loads this module.",
+      "path": "hermes/web/prolog/zeeman_bifurcation.pl",
+      "verdict": "consumed_by_check"
+    },
+    {
+      "capability_class": "zeeman",
+      "evidence": [
+        {
+          "locator": "/** <module> Zeeman catastrophe machine — physics core",
+          "path": "hermes/web/prolog/zeeman_machine.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": "\"$repo/hermes/web/bifurcation_verify.py\" --cross-check",
+          "path": "scripts/checks/zeeman_bifurcation.sh",
+          "relation": "named check"
+        },
+        {
+          "locator": ":- use_module(zeeman(zeeman_machine)).",
+          "path": "hermes/web/prolog/zeeman_bifurcation.pl",
+          "relation": "check dependency"
+        }
+      ],
+      "module": "zeeman_machine",
+      "note": "The zeeman_bifurcation check loads this physics core through the bifurcation module.",
+      "path": "hermes/web/prolog/zeeman_machine.pl",
+      "verdict": "consumed_by_check"
+    },
+    {
+      "capability_class": "zeeman",
+      "evidence": [
+        {
+          "locator": "/** <module> Opt-in Zeeman and interactional-trace PML candidates",
+          "path": "hermes/web/prolog/zeeman_pml_bridge.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "zeeman_pml_bridge",
+      "note": "The source explicitly calls itself opt-in and records that canonical loaders do not load it. Opt-in status is not one of the specified positive verdicts.",
+      "path": "hermes/web/prolog/zeeman_pml_bridge.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "zeeman",
+      "evidence": [
+        {
+          "locator": "/** <module> Zeeman machine — consumable event tape",
+          "path": "hermes/web/prolog/zeeman_tape.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "zeeman_tape",
+      "note": "This module imports the checked Zeeman machine, but no check or builder consumes the tape itself.",
+      "path": "hermes/web/prolog/zeeman_tape.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "crosswalk",
+      "evidence": [
+        {
+          "locator": "/** <module> merge_evidence — required companion to every canonical_concept/2 assertion.",
+          "path": "knowledge/crosswalk/merge_evidence.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "merge_evidence",
+      "note": "The file describes a merge gate that is absent from scripts/. It contains no active merge_evidence row, so stalled_input and superseded are unsupported.",
+      "path": "knowledge/crosswalk/merge_evidence.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "crosswalk",
+      "evidence": [
+        {
+          "locator": "/** <module> vocabulary_licenses -- E343 cross-framework term substitution licenses",
+          "path": "knowledge/crosswalk/vocabulary_licenses.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": "MODULE_PATH = ROOT / \"knowledge/crosswalk/vocabulary_licenses.pl\"",
+          "path": "scripts/checks/vocabulary_licenses.py",
+          "relation": "check input"
+        }
+      ],
+      "module": "vocabulary_licenses",
+      "note": "The vocabulary_licenses check reads the source table directly.",
+      "path": "knowledge/crosswalk/vocabulary_licenses.pl",
+      "verdict": "consumed_by_check"
+    },
+    {
+      "capability_class": "pml",
+      "evidence": [
+        {
+          "locator": "% Authored by hand; not generated. Same fact shape as",
+          "path": "knowledge/discourse/commitment_automata.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": "DISCOURSE = ROOT / \"knowledge/discourse/commitment_automata.pl\"",
+          "path": "scripts/checks/action_grammar.py",
+          "relation": "check input"
+        }
+      ],
+      "module": "commitment_automata",
+      "note": "The action_grammar check reads the discourse automata.",
+      "path": "knowledge/discourse/commitment_automata.pl",
+      "verdict": "consumed_by_check"
+    },
+    {
+      "capability_class": "geometry_witness",
+      "evidence": [
+        {
+          "locator": "% PURPOSE: Portable in-repo loader for the geometry KB, resolving the repository root through paths.pl search paths instead of a hardcoded absolute path.",
+          "path": "knowledge/geometry/geometry_bridge.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": "/knowledge/geometry/geometry_bridge.pl",
+          "path": "scripts/checks/geometry_load.sh",
+          "relation": "comparison constraint"
+        }
+      ],
+      "module": "geometry_bridge",
+      "note": "The geometry gate excludes this bridge from the normal source set and loads it separately as a comparison point.",
+      "path": "knowledge/geometry/geometry_bridge.pl",
+      "verdict": "deliberately_unloaded"
+    },
+    {
+      "capability_class": "misconceptions",
+      "evidence": [
+        {
+          "locator": "/** <module> literature_canonical_mappings — generated commitment vocabulary completion",
+          "path": "knowledge/misconceptions/literature_canonical_mappings.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include('literature_canonical_mappings.pl').",
+          "path": "knowledge/misconceptions/literature_vocabulary.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "literature_canonical_mappings",
+      "note": "knowledge/misconceptions/literature_vocabulary.pl includes this source rather than importing it as a module.",
+      "path": "knowledge/misconceptions/literature_canonical_mappings.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% Generated by scripts/research/build_action_grammar.py.",
+          "path": "knowledge/strategies/action_grammar.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": "GRAMMAR = ROOT / \"knowledge/strategies/action_grammar.pl\"",
+          "path": "scripts/checks/action_grammar.py",
+          "relation": "check input"
+        }
+      ],
+      "module": "action_grammar",
+      "note": "The action_grammar check reads the generated grammar and compares a rebuild.",
+      "path": "knowledge/strategies/action_grammar.pl",
+      "verdict": "consumed_by_check"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "/** <module> Execution-verified JSON inputs for action automata",
+          "path": "knowledge/strategies/automaton_input_contracts.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": "CONTRACTS = ROOT / \"knowledge/strategies/automaton_input_contracts.pl\"",
+          "path": "scripts/research/build_transition_tables.py",
+          "relation": "builder input"
+        }
+      ],
+      "module": "automaton_input_contracts",
+      "note": "The transition-table builder reads the checked input contracts.",
+      "path": "knowledge/strategies/automaton_input_contracts.pl",
+      "verdict": "consumed_by_builder"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "/** <module> Comprehensive Mathematical Reasoning Benchmark",
+          "path": "knowledge/strategies/math_benchmark.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "math_benchmark",
+      "note": "This is a manual command-line benchmark. No check or research builder invokes it.",
+      "path": "knowledge/strategies/math_benchmark.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% Generated by scripts/research/build_transition_tables.py.",
+          "path": "knowledge/strategies/transition_tables/addition.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include('../knowledge/strategies/transition_tables/addition.pl').",
+          "path": "hermes/strategy_recognizer.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "addition",
+      "note": "hermes/strategy_recognizer.pl includes this source rather than importing it as a module.",
+      "path": "knowledge/strategies/transition_tables/addition.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% Generated by scripts/research/build_transition_tables.py.",
+          "path": "knowledge/strategies/transition_tables/algebraic.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include('../knowledge/strategies/transition_tables/algebraic.pl').",
+          "path": "hermes/strategy_recognizer.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "algebraic",
+      "note": "hermes/strategy_recognizer.pl includes this source rather than importing it as a module.",
+      "path": "knowledge/strategies/transition_tables/algebraic.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% Generated by scripts/research/build_transition_tables.py.",
+          "path": "knowledge/strategies/transition_tables/calculus.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include('../knowledge/strategies/transition_tables/calculus.pl').",
+          "path": "hermes/strategy_recognizer.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "calculus",
+      "note": "hermes/strategy_recognizer.pl includes this source rather than importing it as a module.",
+      "path": "knowledge/strategies/transition_tables/calculus.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% Generated by scripts/research/build_transition_tables.py.",
+          "path": "knowledge/strategies/transition_tables/counting.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include('../knowledge/strategies/transition_tables/counting.pl').",
+          "path": "hermes/strategy_recognizer.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "counting",
+      "note": "hermes/strategy_recognizer.pl includes this source rather than importing it as a module.",
+      "path": "knowledge/strategies/transition_tables/counting.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% Generated by scripts/research/build_transition_tables.py.",
+          "path": "knowledge/strategies/transition_tables/decimal.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include('../knowledge/strategies/transition_tables/decimal.pl').",
+          "path": "hermes/strategy_recognizer.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "decimal",
+      "note": "hermes/strategy_recognizer.pl includes this source rather than importing it as a module.",
+      "path": "knowledge/strategies/transition_tables/decimal.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% Generated by scripts/research/build_transition_tables.py.",
+          "path": "knowledge/strategies/transition_tables/division.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include('../knowledge/strategies/transition_tables/division.pl').",
+          "path": "hermes/strategy_recognizer.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "division",
+      "note": "hermes/strategy_recognizer.pl includes this source rather than importing it as a module.",
+      "path": "knowledge/strategies/transition_tables/division.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% Generated by scripts/research/build_transition_tables.py.",
+          "path": "knowledge/strategies/transition_tables/fraction.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include('../knowledge/strategies/transition_tables/fraction.pl').",
+          "path": "hermes/strategy_recognizer.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "fraction",
+      "note": "hermes/strategy_recognizer.pl includes this source rather than importing it as a module.",
+      "path": "knowledge/strategies/transition_tables/fraction.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% Generated by scripts/research/build_transition_tables.py.",
+          "path": "knowledge/strategies/transition_tables/geometry.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include('../knowledge/strategies/transition_tables/geometry.pl').",
+          "path": "hermes/strategy_recognizer.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "geometry",
+      "note": "hermes/strategy_recognizer.pl includes this source rather than importing it as a module.",
+      "path": "knowledge/strategies/transition_tables/geometry.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% Generated by scripts/research/build_transition_tables.py.",
+          "path": "knowledge/strategies/transition_tables/integer.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include('../knowledge/strategies/transition_tables/integer.pl').",
+          "path": "hermes/strategy_recognizer.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "integer",
+      "note": "hermes/strategy_recognizer.pl includes this source rather than importing it as a module.",
+      "path": "knowledge/strategies/transition_tables/integer.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% Generated by scripts/research/build_transition_tables.py.",
+          "path": "knowledge/strategies/transition_tables/measurement.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include('../knowledge/strategies/transition_tables/measurement.pl').",
+          "path": "hermes/strategy_recognizer.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "measurement",
+      "note": "hermes/strategy_recognizer.pl includes this source rather than importing it as a module.",
+      "path": "knowledge/strategies/transition_tables/measurement.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% Generated by scripts/research/build_transition_tables.py.",
+          "path": "knowledge/strategies/transition_tables/multiplication.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include('../knowledge/strategies/transition_tables/multiplication.pl').",
+          "path": "hermes/strategy_recognizer.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "multiplication",
+      "note": "hermes/strategy_recognizer.pl includes this source rather than importing it as a module.",
+      "path": "knowledge/strategies/transition_tables/multiplication.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% Generated by scripts/research/build_transition_tables.py.",
+          "path": "knowledge/strategies/transition_tables/probability.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include('../knowledge/strategies/transition_tables/probability.pl').",
+          "path": "hermes/strategy_recognizer.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "probability",
+      "note": "hermes/strategy_recognizer.pl includes this source rather than importing it as a module.",
+      "path": "knowledge/strategies/transition_tables/probability.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% Generated by scripts/research/build_transition_tables.py.",
+          "path": "knowledge/strategies/transition_tables/ratio.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include('../knowledge/strategies/transition_tables/ratio.pl').",
+          "path": "hermes/strategy_recognizer.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "ratio",
+      "note": "hermes/strategy_recognizer.pl includes this source rather than importing it as a module.",
+      "path": "knowledge/strategies/transition_tables/ratio.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% Generated by scripts/research/build_transition_tables.py.",
+          "path": "knowledge/strategies/transition_tables/statistics.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include('../knowledge/strategies/transition_tables/statistics.pl').",
+          "path": "hermes/strategy_recognizer.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "statistics",
+      "note": "hermes/strategy_recognizer.pl includes this source rather than importing it as a module.",
+      "path": "knowledge/strategies/transition_tables/statistics.pl",
+      "verdict": "include_active"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": "% Generated by scripts/research/build_transition_tables.py.",
+          "path": "knowledge/strategies/transition_tables/subtraction.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": ":- include('../knowledge/strategies/transition_tables/subtraction.pl').",
+          "path": "hermes/strategy_recognizer.pl",
+          "relation": "include directive"
+        }
+      ],
+      "module": "subtraction",
+      "note": "hermes/strategy_recognizer.pl includes this source rather than importing it as a module.",
+      "path": "knowledge/strategies/transition_tables/subtraction.pl",
+      "verdict": "include_active"
+    }
+  ],
+  "proposed_classes": [
+    {
+      "count": 1,
+      "evidence": [
+        {
+          "locator": ":- ensure_loaded(index('corpus_window')).",
+          "path": "knowledge/index/index_query.pl",
+          "relation": "query module"
+        },
+        {
+          "locator": "window_row(",
+          "path": "knowledge/index/corpus_window.pl",
+          "relation": "generated index data"
+        },
+        {
+          "locator": "known_topic(",
+          "path": "knowledge/index/relevance_negation.pl",
+          "relation": "generated exclusion data"
+        }
+      ],
+      "name": "indexing",
+      "rows": [
+        "index_topic_subtraction"
+      ]
+    }
+  ],
+  "registry": "hermes/capability_registry.pl",
+  "schema": "self_description_census_v1",
+  "unrouted": [
+    {
+      "does": "Checks a safely parsed typed mathematical claim and returns a verdict record.",
+      "evidence": [
+        {
+          "locator": "(\"check_math_claim\", \"Parse and check an explicit mathematical claim",
+          "path": "hermes/mcp/server.py",
+          "relation": "MCP exposure"
+        }
+      ],
+      "judgement": "Being unrouted from a web page is correct.",
+      "name": "check_math_claim",
+      "reason": "The MCP server exposes it as a tool, and research scripts call the checker. A page route is not required for those consumers."
+    },
+    {
+      "does": "Returns counts and evidence samples after topic exclusions remove index rows.",
+      "evidence": [
+        {
+          "locator": "index is reachable from the running application",
+          "path": "knowledge/index/index_query.pl",
+          "relation": "runtime intent"
+        },
+        {
+          "locator": "dispatch_spec(index_topic_subtraction,",
+          "path": "hermes/dispatch_spec.pl",
+          "relation": "worker dispatch"
+        }
+      ],
+      "judgement": "A page should route to it.",
+      "name": "index_topic_subtraction",
+      "reason": "The module states that the index is reachable from the running application, but the dispatch operation has no web route or MCP exposure."
+    },
+    {
+      "does": "Returns the default cited state label and its recorded alternatives.",
+      "evidence": [
+        {
+          "locator": "dispatch_spec(state_labels,",
+          "path": "hermes/dispatch_spec.pl",
+          "relation": "worker dispatch"
+        },
+        {
+          "locator": "state_display_label",
+          "path": "knowledge/strategies/math/state_vocabulary.pl",
+          "relation": "label source"
+        }
+      ],
+      "judgement": "A page should route to it.",
+      "name": "state_labels",
+      "reason": "The operation has no web or MCP consumer. A strategy or Atlas page can use the same cited vocabulary that the worker already returns."
+    },
+    {
+      "does": "Returns evidence-bearing candidate strategy traces for classroom language.",
+      "evidence": [
+        {
+          "locator": "\"strategy_recognize\": \"strategy_recognize\"",
+          "path": "hermes/mcp/server.py",
+          "relation": "MCP exposure"
+        }
+      ],
+      "judgement": "Being unrouted from a web page is correct.",
+      "name": "strategy_recognize",
+      "reason": "The MCP server exposes it as a tool. The lack of a page route does not make the operation unreachable to its current consumer."
+    }
+  ]
+}

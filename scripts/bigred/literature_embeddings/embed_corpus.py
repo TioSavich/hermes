@@ -5,10 +5,19 @@ The corpus is 2,183 markdown documents on scratch, converted from PDF by the
 docling pipeline and organised by journal.  Two pieces of work downstream need
 passage-level retrieval over it and neither can have it today:
 
-  * 1,170 `too_vague` rows in `curriculum/im/generated/lesson_resonance.pl` each
-    carry an author, a year and a database row, and no passage.  Naming those
-    misconceptions from case models rather than renaming them mechanically needs
-    the passage the citation points at.
+  * The `too_vague` rows.  `too_vague` is not a name awaiting a better name — it
+    is a verdict about evidence: an earlier mining run found a strategy or a
+    misconception in a text and could not build an automaton from it, because the
+    text it had did not carry enough detail.  The PDF-to-markdown conversion
+    exists to supply that detail, and this index exists so the detail can be
+    found.  What the retrieved passage then feeds is a test rather than a naming:
+    the existing automata are offered as the details the description might be
+    accounted for by, and a description that an existing automaton accounts for
+    **falls** — the article documents a way of working the corpus already models.
+    A description that no automaton accounts for is where an article may have
+    contributed something new, and only there is authoring a new automaton
+    licensed.  Citation mapping situates the article so that the novelty claim is
+    checkable against what it cites and what cites it.
   * `docs/research/2026-07-25-the-window-was-asked.md` names an embedding
     retriever over the same material as the comparison its keyword baseline could
     not stand in for.
@@ -185,7 +194,15 @@ def main() -> int:
             log(f"WARM-UP ONLY for {journal.name}; not written")
             continue
 
-        write_atomic(vectors_path, lambda p: numpy.save(p, matrix))
+        # numpy.save appends '.npy' to a PATH that lacks the suffix, which would
+        # write beside the temp file and leave the empty mkstemp file to be
+        # renamed into place — a zero-byte artifact under a job that exited 0.
+        # Handed an open file object it writes where it is told.
+        def save_matrix(target, data=matrix):
+            with open(target, "wb") as handle:
+                numpy.save(handle, data)
+
+        write_atomic(vectors_path, save_matrix)
         write_atomic(meta_path, lambda p: p.write_text(
             "\n".join(json.dumps(r, sort_keys=True) for r in records) + "\n",
             encoding="utf-8"))
