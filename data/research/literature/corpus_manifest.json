@@ -1,15 +1,23 @@
 {
-  "failure_index_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-  "failures": 0,
-  "index_sha256": "24de86c2d7afe7390b015cc1f7095baebe1723c0310360ae965c9292380e0e66",
-  "matched": 3,
+  "failure_index_sha256": "adc90f9b7b6b035940b511c0151b4ab9ca6ea7851978b8b5e0fdfca9448fe05f",
+  "failures": 8,
+  "index_sha256": "3a308d81009e8d2ef02ee3438c7a230aace68476bf152d177b8bd9b87fa2c693",
+  "matched": 2183,
   "per_journal": {
-    "BOOKS": 1,
-    "ESM": 1,
-    "FLM": 1,
-    "JMTE": 1
+    "ESM": 471,
+    "FLM": 24,
+    "IJEMST": 1,
+    "IJMEST": 296,
+    "IJSME": 120,
+    "JMB": 253,
+    "JMTE": 149,
+    "JRME": 289,
+    "MERJ": 156,
+    "MTL": 57,
+    "RME": 77,
+    "ZDM": 290
   },
-  "records": 4,
+  "records": 2183,
   "schema_version": 1,
-  "unkeyed": 1
+  "unkeyed": 0
 }
