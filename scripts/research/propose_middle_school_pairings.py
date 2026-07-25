@@ -134,7 +134,7 @@ def main() -> int:
     parser.add_argument("--limit", type=int, default=0, help="0 = all")
     parser.add_argument("--max-candidates", type=int, default=60)
     parser.add_argument("--output", type=Path,
-                        default=ROOT / "data/research/grade8_pairing_proposals.jsonl")
+                        default=ROOT / "data/research/grade78_pairing_proposals.jsonl")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 

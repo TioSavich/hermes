@@ -3,9 +3,22 @@
             dispatch_message/3
           ]).
 
+:- use_module(hermes(review_queue), []).
+
 % dispatch_spec(Op, Inputs, Call, Result).
 % Inputs are Key-Converter pairs. Call arguments name bound keys, mark ignored
 % outputs as drop, and name retained outputs with out(Name).
+
+dispatch_spec(review_queue,
+    [source-atom, offset-default(int(0, inf), 0)],
+    call(review_queue:review_queue_dict, [source, offset, out(dict)]),
+    raw(no_review_queue_item, malformed_review_queue_request)).
+dispatch_spec(review_decide,
+    [source-atom, item_id-string, verdict-atom,
+     note-default(string, ""), shown-dict],
+    call(review_queue:review_decide_dict,
+         [source, item_id, verdict, note, shown, out(dict)]),
+    raw(no_review_decision, malformed_review_decide_request)).
 
 % The index subtraction: which machines survive a topic, and evidence for a
 % sample of those removed. Fails for a topic no exclusion rule keys on, so a
@@ -945,3 +958,7 @@ dispatch_message(misconception_incompatibility_witness, no_witness, "misconcepti
 dispatch_message(misconception_incompatibility_witness, malformed, "misconception_incompatibility_witness requires move and conflict").
 dispatch_message(lesson_misconception_incompatibility_witness, no_witness, "lesson_misconception_incompatibility_witness found no lesson recorded example").
 dispatch_message(lesson_misconception_incompatibility_witness, malformed, "lesson_misconception_incompatibility_witness requires lesson_code and name").
+dispatch_message(review_queue, no_result, "review_queue found no valid proposal queue for the requested source").
+dispatch_message(review_queue, malformed, "review_queue requires source lesson_pairings or corpus_bindings and a non-negative offset").
+dispatch_message(review_decide, no_result, "review_decide could not record a first verdict for that queue item").
+dispatch_message(review_decide, malformed, "review_decide requires source, item_id, accept/reject/unsure verdict, shown item text, and an optional note").

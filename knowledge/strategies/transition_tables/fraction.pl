@@ -333,6 +333,18 @@ automaton_transition(fraction, benchmark_fraction_comparison, q_observed_4, oppo
 automaton_transition(fraction, benchmark_fraction_comparison, q_observed_5, residual, q_observed_6, provenance(observed(derived_template))).
 automaton_transition(fraction, benchmark_fraction_comparison, q_observed_6, emit, q_accept, provenance(observed(derived_template))).
 
+automaton_transition(fraction, clear_inner_referent, q_start, partition_whole_into_equal_units, q_step_1, provenance(observed(contract_example))).
+automaton_transition(fraction, clear_inner_referent, q_step_1, partition_that_part_again, q_step_2, provenance(observed(contract_example))).
+automaton_transition(fraction, clear_inner_referent, q_step_2, name_inner_part_relative_to_outer_part, q_step_3, provenance(observed(contract_example))).
+automaton_transition(fraction, clear_inner_referent, q_step_3, fail_to_relate_inner_part_to_original_whole, q_step_4, provenance(observed(contract_example))).
+automaton_transition(fraction, clear_inner_referent, q_step_4, lose_outer_referent, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(fraction, clear_inner_referent, q_start, partition_whole_into_equal_units, q_step_1, provenance(observed(derived_template))).
+automaton_transition(fraction, clear_inner_referent, q_step_1, partition_that_part_again, q_step_2, provenance(observed(derived_template))).
+automaton_transition(fraction, clear_inner_referent, q_step_2, name_inner_part_relative_to_outer_part, q_step_3, provenance(observed(derived_template))).
+automaton_transition(fraction, clear_inner_referent, q_step_3, fail_to_relate_inner_part_to_original_whole, q_step_4, provenance(observed(derived_template))).
+automaton_transition(fraction, clear_inner_referent, q_step_4, lose_outer_referent, q_accept, provenance(observed(derived_template))).
+
 automaton_transition(fraction, common_unit_fraction_comparison, q_init, init, q_observed_1, provenance(observed(contract_example))).
 automaton_transition(fraction, common_unit_fraction_comparison, q_observed_1, common_denominator, q_observed_2, provenance(observed(contract_example))).
 automaton_transition(fraction, common_unit_fraction_comparison, q_observed_2, transformed, q_observed_3, provenance(observed(contract_example))).
@@ -348,6 +360,38 @@ automaton_transition(fraction, common_unit_fraction_comparison, q_observed_3, tr
 automaton_transition(fraction, common_unit_fraction_comparison, q_observed_4, co_measure, q_observed_5, provenance(observed(derived_template))).
 automaton_transition(fraction, common_unit_fraction_comparison, q_observed_5, compare_counts, q_observed_6, provenance(observed(derived_template))).
 automaton_transition(fraction, common_unit_fraction_comparison, q_observed_6, emit, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_start, identify_rule_pattern, q_step_1, provenance(observed(contract_example))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_1, apply_cross_multiplication_pattern, q_step_2, provenance(observed(contract_example))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_2, compute_numerator_product, q_step_3, provenance(observed(contract_example))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_3, compute_denominator_product, q_step_4, provenance(observed(contract_example))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_4, propose_result, q_step_5, provenance(observed(contract_example))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_5, justify_via_area_model_part_of_part, q_step_6, provenance(observed(contract_example))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_6, identify_denominator_product_as_whole_rectangle_area, q_step_7, provenance(observed(contract_example))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_7, identify_numerator_product_as_selected_area, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_start, identify_rule_pattern, q_step_1, provenance(observed(derived_template))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_1, apply_cross_multiplication_pattern, q_step_2, provenance(observed(derived_template))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_2, compute_numerator_product, q_step_3, provenance(observed(derived_template))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_3, compute_denominator_product, q_step_4, provenance(observed(derived_template))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_4, propose_result, q_step_5, provenance(observed(derived_template))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_5, justify_via_area_model_part_of_part, q_step_6, provenance(observed(derived_template))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_6, identify_denominator_product_as_whole_rectangle_area, q_step_7, provenance(observed(derived_template))).
+automaton_transition(fraction, cross_multiplication_rule_from_pattern, q_step_7, identify_numerator_product_as_selected_area, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(fraction, cross_multiplication_rule_without_ground, q_start, recall_rule_pattern, q_step_1, provenance(observed(contract_example))).
+automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_1, apply_cross_multiplication_pattern, q_step_2, provenance(observed(contract_example))).
+automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_2, compute_numerator_product, q_step_3, provenance(observed(contract_example))).
+automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_3, compute_denominator_product, q_step_4, provenance(observed(contract_example))).
+automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_4, produce_result_without_area_model_ground, q_step_5, provenance(observed(contract_example))).
+automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_5, skip_area_model_justification, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(fraction, cross_multiplication_rule_without_ground, q_start, recall_rule_pattern, q_step_1, provenance(observed(derived_template))).
+automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_1, apply_cross_multiplication_pattern, q_step_2, provenance(observed(derived_template))).
+automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_2, compute_numerator_product, q_step_3, provenance(observed(derived_template))).
+automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_3, compute_denominator_product, q_step_4, provenance(observed(derived_template))).
+automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_4, produce_result_without_area_model_ground, q_step_5, provenance(observed(derived_template))).
+automaton_transition(fraction, cross_multiplication_rule_without_ground, q_step_5, skip_area_model_justification, q_accept, provenance(observed(derived_template))).
 
 automaton_transition(fraction, gap_thinking_fraction_comparison, q_init, init, q_observed_1, provenance(observed(contract_example))).
 automaton_transition(fraction, gap_thinking_fraction_comparison, q_observed_1, selected, q_observed_2, provenance(observed(contract_example))).
@@ -382,6 +426,30 @@ automaton_transition(fraction, improper_fraction_chain_loss, q_step_2, lose_orig
 automaton_transition(fraction, improper_fraction_chain_loss, q_step_3, reset_completion_norm, q_step_4, provenance(observed(derived_template))).
 automaton_transition(fraction, improper_fraction_chain_loss, q_step_4, rename_result_to_new_whole, q_step_5, provenance(observed(derived_template))).
 automaton_transition(fraction, improper_fraction_chain_loss, q_step_5, kernel_trace, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(fraction, improper_fraction_iteration, q_start, establish_referent_whole, q_step_1, provenance(observed(contract_example))).
+automaton_transition(fraction, improper_fraction_iteration, q_step_1, recover_unit_fraction, q_step_2, provenance(observed(contract_example))).
+automaton_transition(fraction, improper_fraction_iteration, q_step_2, iterate_unit_past_whole_keeping_referent, q_step_3, provenance(observed(contract_example))).
+automaton_transition(fraction, improper_fraction_iteration, q_step_3, hold_completion_marker, q_step_4, provenance(observed(contract_example))).
+automaton_transition(fraction, improper_fraction_iteration, q_step_4, name_improper_fraction_as_number, q_step_5, provenance(observed(contract_example))).
+automaton_transition(fraction, improper_fraction_iteration, q_step_5, kernel_trace, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(fraction, improper_fraction_iteration, q_start, establish_referent_whole, q_step_1, provenance(observed(derived_template))).
+automaton_transition(fraction, improper_fraction_iteration, q_step_1, recover_unit_fraction, q_step_2, provenance(observed(derived_template))).
+automaton_transition(fraction, improper_fraction_iteration, q_step_2, iterate_unit_past_whole_keeping_referent, q_step_3, provenance(observed(derived_template))).
+automaton_transition(fraction, improper_fraction_iteration, q_step_3, hold_completion_marker, q_step_4, provenance(observed(derived_template))).
+automaton_transition(fraction, improper_fraction_iteration, q_step_4, name_improper_fraction_as_number, q_step_5, provenance(observed(derived_template))).
+automaton_transition(fraction, improper_fraction_iteration, q_step_5, kernel_trace, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(fraction, iterate_given_overshoot, q_start, establish_referent_whole, q_step_1, provenance(observed(contract_example))).
+automaton_transition(fraction, iterate_given_overshoot, q_step_1, iterate_given_part_forward, q_step_2, provenance(observed(contract_example))).
+automaton_transition(fraction, iterate_given_overshoot, q_step_2, fail_to_recognize_partition_iterate_inverse, q_step_3, provenance(observed(contract_example))).
+automaton_transition(fraction, iterate_given_overshoot, q_step_3, overshoot_without_recovering_whole, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(fraction, iterate_given_overshoot, q_start, establish_referent_whole, q_step_1, provenance(observed(derived_template))).
+automaton_transition(fraction, iterate_given_overshoot, q_step_1, iterate_given_part_forward, q_step_2, provenance(observed(derived_template))).
+automaton_transition(fraction, iterate_given_overshoot, q_step_2, fail_to_recognize_partition_iterate_inverse, q_step_3, provenance(observed(derived_template))).
+automaton_transition(fraction, iterate_given_overshoot, q_step_3, overshoot_without_recovering_whole, q_accept, provenance(observed(derived_template))).
 
 automaton_transition(fraction, measurement_division, q_start, establish_dividend_and_divisor, q_step_1, provenance(observed(contract_example))).
 automaton_transition(fraction, measurement_division, q_step_1, co_measure_both_with_a_shared_fractional_unit, q_step_2, provenance(observed(contract_example))).
@@ -430,6 +498,20 @@ automaton_transition(fraction, number_line_fraction_comparison, q_locate_endpoin
 automaton_transition(fraction, number_line_fraction_comparison, q_measure_with_unit_fraction, co_measure, q_compare_positions, provenance(observed(derived_template))).
 automaton_transition(fraction, number_line_fraction_comparison, q_compare_positions, compare, q_emit, provenance(observed(derived_template))).
 automaton_transition(fraction, number_line_fraction_comparison, q_emit, emit, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(fraction, recursive_partition, q_start, partition_whole_into_equal_units, q_step_1, provenance(observed(contract_example))).
+automaton_transition(fraction, recursive_partition, q_step_1, disembed_unit_fraction, q_step_2, provenance(observed(contract_example))).
+automaton_transition(fraction, recursive_partition, q_step_2, partition_that_part_again, q_step_3, provenance(observed(contract_example))).
+automaton_transition(fraction, recursive_partition, q_step_3, name_part_of_part_relative_to_whole, q_step_4, provenance(observed(contract_example))).
+automaton_transition(fraction, recursive_partition, q_step_4, recognize_composite_base_as_product, q_step_5, provenance(observed(contract_example))).
+automaton_transition(fraction, recursive_partition, q_step_5, recursive_partition_trace, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(fraction, recursive_partition, q_start, partition_whole_into_equal_units, q_step_1, provenance(observed(derived_template))).
+automaton_transition(fraction, recursive_partition, q_step_1, disembed_unit_fraction, q_step_2, provenance(observed(derived_template))).
+automaton_transition(fraction, recursive_partition, q_step_2, partition_that_part_again, q_step_3, provenance(observed(derived_template))).
+automaton_transition(fraction, recursive_partition, q_step_3, name_part_of_part_relative_to_whole, q_step_4, provenance(observed(derived_template))).
+automaton_transition(fraction, recursive_partition, q_step_4, recognize_composite_base_as_product, q_step_5, provenance(observed(derived_template))).
+automaton_transition(fraction, recursive_partition, q_step_5, recursive_partition_trace, q_accept, provenance(observed(derived_template))).
 
 automaton_transition(fraction, reversible_measurement_division, q_start, establish_dividend_and_divisor, q_step_1, provenance(observed(contract_example))).
 automaton_transition(fraction, reversible_measurement_division, q_step_1, recover_the_unit_generator_of_the_divisor, q_step_2, provenance(observed(contract_example))).
@@ -481,6 +563,15 @@ automaton_transition(fraction, set_model_subset_size_focus, q_subset_size_focus,
 automaton_transition(fraction, set_model_subset_size_focus, q_compare_relative_size, compare_raw_subset_sizes, q_emit, provenance(observed(derived_template))).
 automaton_transition(fraction, set_model_subset_size_focus, q_emit, emit, q_accept, provenance(observed(derived_template))).
 
+automaton_transition(fraction, splitting, q_start, partition_whole_into_equal_units, q_step_1, provenance(observed(contract_example))).
+automaton_transition(fraction, splitting, q_step_1, disembed_unit_fraction, q_step_2, provenance(observed(contract_example))).
+automaton_transition(fraction, splitting, q_step_2, iterate_unit_fraction_back_to_whole, q_step_3, provenance(observed(contract_example))).
+automaton_transition(fraction, splitting, q_step_3, recognize_partition_iterate_as_mutual_inverse, q_step_4, provenance(observed(contract_example))).
+automaton_transition(fraction, splitting, q_step_4, recover_whole, q_step_5, provenance(observed(contract_example))).
+automaton_transition(fraction, splitting, q_step_5, open_improper_fraction_domain, q_step_6, provenance(observed(contract_example))).
+automaton_transition(fraction, splitting, q_step_6, partition_trace, q_step_7, provenance(observed(contract_example))).
+automaton_transition(fraction, splitting, q_step_7, iterate_trace, q_accept, provenance(observed(contract_example))).
+
 automaton_transition(fraction, unit_fraction_iteration, q_start, establish_referent_whole, q_step_1, provenance(observed(contract_example))).
 automaton_transition(fraction, unit_fraction_iteration, q_step_1, recover_unit_fraction, q_step_2, provenance(observed(contract_example))).
 automaton_transition(fraction, unit_fraction_iteration, q_step_2, iterate_unit_fraction, q_step_3, provenance(observed(contract_example))).
@@ -498,3 +589,15 @@ automaton_transition(fraction, unit_fraction_partition, q_step_1, partition_whol
 automaton_transition(fraction, unit_fraction_partition, q_step_2, select_one_partition_as_unit_fraction, q_step_3, provenance(observed(contract_example))).
 automaton_transition(fraction, unit_fraction_partition, q_step_3, preserve_inside_and_iterable_status, q_step_4, provenance(observed(contract_example))).
 automaton_transition(fraction, unit_fraction_partition, q_step_4, kernel_trace, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(fraction, whole_number_grab, q_start, establish_referent_whole, q_step_1, provenance(observed(contract_example))).
+automaton_transition(fraction, whole_number_grab, q_step_1, notice_visible_iteration_count, q_step_2, provenance(observed(contract_example))).
+automaton_transition(fraction, whole_number_grab, q_step_2, ignore_unit_fraction_denominator, q_step_3, provenance(observed(contract_example))).
+automaton_transition(fraction, whole_number_grab, q_step_3, name_count_as_whole_number, q_step_4, provenance(observed(contract_example))).
+automaton_transition(fraction, whole_number_grab, q_step_4, lose_referent_unit, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(fraction, whole_number_grab, q_start, establish_referent_whole, q_step_1, provenance(observed(derived_template))).
+automaton_transition(fraction, whole_number_grab, q_step_1, notice_visible_iteration_count, q_step_2, provenance(observed(derived_template))).
+automaton_transition(fraction, whole_number_grab, q_step_2, ignore_unit_fraction_denominator, q_step_3, provenance(observed(derived_template))).
+automaton_transition(fraction, whole_number_grab, q_step_3, name_count_as_whole_number, q_step_4, provenance(observed(derived_template))).
+automaton_transition(fraction, whole_number_grab, q_step_4, lose_referent_unit, q_accept, provenance(observed(derived_template))).

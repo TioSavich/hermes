@@ -202,6 +202,7 @@ def static_audit(tree: Path, report: Report) -> None:
     required = (
         "hermes/web/atlas.html",
         "hermes/web/witnesses.html",
+        "hermes/web/review.html",
         "hermes/capability_registry.pl",
         "scripts/extract_capability_registry.py",
     )
@@ -221,6 +222,10 @@ def static_audit(tree: Path, report: Report) -> None:
             "/api/witness/pml", "semantic_material_witness", "validate_reader_axioms",
             "formal/pml/mua_conjectures.pl", "knowledge/misconceptions/pml_wire.pl",
             "/api/witness/grounding", "image_schema", "target_inferential_strength_witness",
+        ),
+        "hermes/web/review.html": (
+            "/api/review_queue", "/api/review_decide", "Unsure (U)",
+            "No recorded source", "Promotion into either part of the repository",
         ),
         "hermes/web/bridge.html": (
             "formal/learner/activity_contract.pl",

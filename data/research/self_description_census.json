@@ -407,7 +407,7 @@
       "dialectic": 1,
       "geometry_witness": 35,
       "incompatibility": 7,
-      "infrastructure": 16,
+      "infrastructure": 18,
       "juncture": 1,
       "learner": 25,
       "misconceptions": 12,
@@ -424,7 +424,7 @@
     "by_status": {
       "lazy_reachable": 9,
       "orphan_module": 58,
-      "routed_paged": 193,
+      "routed_paged": 195,
       "unrouted": 4
     },
     "orphan_verdicts": {
@@ -436,7 +436,7 @@
       "superseded": 0,
       "undetermined": 23
     },
-    "total": 264,
+    "total": 266,
     "unrouted": 4
   },
   "generated_by": "scripts/research/build_self_description_census.py",

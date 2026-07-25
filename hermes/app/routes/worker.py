@@ -62,6 +62,8 @@ _HANDLERS = (
     ("/api/carving_operation_summary", "_handle_carving_operation_summary"),
     ("/api/balance_solve", "_handle_balance_solve"),
     ("/api/benny_demo", "_handle_benny_demo"),
+    ("/api/review_queue", "_handle_review_queue"),
+    ("/api/review_decide", "_handle_review_decide"),
 )
 
 _WITNESS_HANDLERS = (

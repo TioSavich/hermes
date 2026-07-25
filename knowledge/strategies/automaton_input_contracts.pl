@@ -79,6 +79,50 @@ automaton_input_contract(subtraction, decompose_base_for_ones, '{\"a\":\"integer
 automaton_input_contract(subtraction, smaller_from_larger_in_column, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
 automaton_input_contract(subtraction, take_away_base_ones, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
 
+automaton_input_contract(addition, append_column_sum_without_carrying, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
+automaton_input_contract(addition, derived_fact_adjustment, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":8,\"b\":6}', verified(strategy_trace_ok)).
+automaton_input_contract(addition, drop_carry_to_next_column, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
+automaton_input_contract(addition, dropped_ones_chunk, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
+automaton_input_contract(addition, rote_derived_fact_rule_misfire, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":8,\"b\":6}', verified(strategy_trace_ok)).
+automaton_input_contract(addition, unbalanced_make_base_compensation, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
+automaton_input_contract(addition, wrong_carry_amount_to_next_column, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":47,\"b\":28}', verified(strategy_trace_ok)).
+automaton_input_contract(subtraction, borrow_across_zero_cascade, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":102,\"b\":7}', verified(strategy_trace_ok)).
+automaton_input_contract(subtraction, borrow_across_zero_no_cascade, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":102,\"b\":7}', verified(strategy_trace_ok)).
+automaton_input_contract(subtraction, borrow_without_reducing_bases, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":53,\"b\":27}', verified(strategy_trace_ok)).
+automaton_input_contract(subtraction, compare_returns_larger_count, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":9,\"b\":5}', verified(strategy_trace_ok)).
+automaton_input_contract(subtraction, drop_ones_after_base_takeaway, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":53,\"b\":27}', verified(strategy_trace_ok)).
+automaton_input_contract(subtraction, slide_subtrahend_only, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":53,\"b\":27}', verified(strategy_trace_ok)).
+automaton_input_contract(subtraction, sliding_constant_difference, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":53,\"b\":27}', verified(strategy_trace_ok)).
+automaton_input_contract(multiplication, add_counts_without_composite_unit, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":7,\"b\":8}', verified(strategy_trace_ok)).
+automaton_input_contract(multiplication, add_instead_of_multiply, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":7,\"b\":8}', verified(strategy_trace_ok)).
+automaton_input_contract(multiplication, context_free_fact_family_guess, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":7,\"b\":8}', verified(strategy_trace_ok)).
+automaton_input_contract(multiplication, drop_regrouping_remainder, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":7,\"b\":8}', verified(strategy_trace_ok)).
+automaton_input_contract(multiplication, drop_second_partial_product, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":7,\"b\":8}', verified(strategy_trace_ok)).
+automaton_input_contract(multiplication, known_product_adjustment, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":7,\"b\":8}', verified(strategy_trace_ok)).
+automaton_input_contract(multiplication, known_product_without_adjustment, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":7,\"b\":8}', verified(strategy_trace_ok)).
+automaton_input_contract(multiplication, rigid_factor_order_roles, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":7,\"b\":8}', verified(strategy_trace_ok)).
+automaton_input_contract(multiplication, sequential_recompute_commuted_products, '{\"a\":\"integer\",\"b\":\"integer\"}', '{\"a\":7,\"b\":8}', verified(strategy_trace_ok)).
+automaton_input_contract(division, inverse_fact_decomposition, '{\"a\":\"integer\",\"b\":\"positive_integer\"}', '{\"a\":47,\"b\":3}', verified(strategy_trace_ok)).
+automaton_input_contract(division, missing_factor_known_product_search, '{\"a\":\"integer\",\"b\":\"positive_integer\"}', '{\"a\":48,\"b\":6}', verified(strategy_trace_ok)).
+automaton_input_contract(division, reject_known_product_match, '{\"a\":\"integer\",\"b\":\"positive_integer\"}', '{\"a\":48,\"b\":6}', verified(strategy_trace_ok)).
+automaton_input_contract(division, stop_after_one_known_fact, '{\"a\":\"integer\",\"b\":\"positive_integer\"}', '{\"a\":47,\"b\":3}', verified(strategy_trace_ok)).
+automaton_input_contract(division, stop_at_nearby_product_in_search, '{\"a\":\"integer\",\"b\":\"positive_integer\"}', '{\"a\":48,\"b\":6}', verified(strategy_trace_ok)).
+automaton_input_contract(division, sum_dividend_and_divisor, '{\"a\":\"integer\",\"b\":\"positive_integer\"}', '{\"a\":96,\"b\":4}', verified(strategy_trace_ok)).
+automaton_input_contract(fraction, clear_inner_referent, '{\"a\":\"positive_integer\",\"b\":\"positive_integer\"}', '{\"a\":3,\"b\":4}', verified(strategy_trace_ok)).
+automaton_input_contract(fraction, cross_multiplication_rule_from_pattern, '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_pair\",\"left\":{\"n\":3,\"d\":4},\"right\":{\"n\":2,\"d\":5}}', verified(strategy_trace_ok)).
+automaton_input_contract(fraction, cross_multiplication_rule_without_ground, '{\"kind\":\"fraction_pair\",\"left\":{\"n\":\"integer\",\"d\":\"positive_integer\"},\"right\":{\"n\":\"integer\",\"d\":\"positive_integer\"}}', '{\"kind\":\"fraction_pair\",\"left\":{\"n\":3,\"d\":4},\"right\":{\"n\":2,\"d\":5}}', verified(strategy_trace_ok)).
+automaton_input_contract(fraction, improper_fraction_iteration, '{\"a\":\"positive_integer\",\"b\":\"positive_integer\"}', '{\"a\":7,\"b\":4}', verified(strategy_trace_ok)).
+automaton_input_contract(fraction, iterate_given_overshoot, '{\"a\":\"positive_integer\",\"b\":\"positive_integer\"}', '{\"a\":7,\"b\":4}', verified(strategy_trace_ok)).
+automaton_input_contract(fraction, iterate_only_no_reverse, '{\"kind\":\"fraction_solve\",\"coefficient\":{\"n\":\"positive_integer\",\"d\":\"positive_integer\"},\"total\":\"positive_integer\"}', '{\"kind\":\"fraction_solve\",\"coefficient\":{\"n\":2,\"d\":3},\"total\":12}', verified(strategy_trace_ok)).
+automaton_input_contract(fraction, recursive_partition, '{\"a\":\"positive_integer\",\"b\":\"positive_integer\"}', '{\"a\":3,\"b\":4}', verified(strategy_trace_ok)).
+automaton_input_contract(fraction, solve_for_unit, '{\"kind\":\"fraction_solve\",\"coefficient\":{\"n\":\"positive_integer\",\"d\":\"positive_integer\"},\"total\":\"positive_integer\"}', '{\"kind\":\"fraction_solve\",\"coefficient\":{\"n\":2,\"d\":3},\"total\":12}', verified(strategy_trace_ok)).
+automaton_input_contract(fraction, splitting, '{\"a\":\"integer\",\"b\":\"positive_integer\"}', '{\"a\":1,\"b\":4}', verified(strategy_trace_ok)).
+automaton_input_contract(fraction, whole_number_grab, '{\"a\":\"positive_integer\",\"b\":\"positive_integer\"}', '{\"a\":3,\"b\":4}', verified(strategy_trace_ok)).
+automaton_input_contract(calculus, factor_cancel_substitute, '{\"kind\":\"rational_limit\",\"numerator\":{\"coefficients\":[\"integer\"]},\"denominator\":{\"coefficients\":[\"integer\"]},\"at\":\"integer\"}', '{\"kind\":\"rational_limit\",\"numerator\":{\"coefficients\":[-2,1,1]},\"denominator\":{\"coefficients\":[-1,1]},\"at\":1}', verified(strategy_trace_ok)).
+automaton_input_contract(calculus, factor_cancel_without_common_factor, '{\"kind\":\"rational_limit\",\"numerator\":{\"coefficients\":[\"integer\"]},\"denominator\":{\"coefficients\":[\"integer\"]},\"at\":\"integer\"}', '{\"kind\":\"rational_limit\",\"numerator\":{\"coefficients\":[1,1]},\"denominator\":{\"coefficients\":[2,1]},\"at\":1}', verified(strategy_trace_ok)).
+automaton_input_contract(probability, equiprobable_endpoint_counting, '{\"kind\":\"terminal_path_tree\",\"paths\":[{\"winner\":\"atom\",\"probability\":{\"n\":\"positive_integer\",\"d\":\"positive_integer\"},\"events\":[\"atom\"]}],\"stake\":\"positive_number\"}', '{\"kind\":\"terminal_path_tree\",\"paths\":[{\"winner\":\"alice\",\"probability\":{\"n\":1,\"d\":2},\"events\":[\"alice_wins_first\"]},{\"winner\":\"bob\",\"probability\":{\"n\":1,\"d\":4},\"events\":[\"alice_wins_then_bob\",\"bob_wins\"]},{\"winner\":\"bob\",\"probability\":{\"n\":1,\"d\":4},\"events\":[\"bob_wins_then_bob\",\"bob_wins\"]}],\"stake\":60}', verified(strategy_trace_ok)).
+automaton_input_contract(probability, terminal_tree_endpoint_probability_sum, '{\"kind\":\"terminal_path_tree\",\"paths\":[{\"winner\":\"atom\",\"probability\":{\"n\":\"positive_integer\",\"d\":\"positive_integer\"},\"events\":[\"atom\"]}],\"stake\":\"positive_number\"}', '{\"kind\":\"terminal_path_tree\",\"paths\":[{\"winner\":\"alice\",\"probability\":{\"n\":1,\"d\":2},\"events\":[\"alice_wins_first\"]},{\"winner\":\"bob\",\"probability\":{\"n\":1,\"d\":4},\"events\":[\"alice_wins_then_bob\",\"bob_wins\"]},{\"winner\":\"bob\",\"probability\":{\"n\":1,\"d\":4},\"events\":[\"bob_wins_then_bob\",\"bob_wins\"]}],\"stake\":60}', verified(strategy_trace_ok)).
+
 % A marked contract has a live strategy_trace witness represented in the
 % generated transition table. It does not change the public contract shape.
 automaton_observed_input_contract(fraction, unit_fraction_partition,

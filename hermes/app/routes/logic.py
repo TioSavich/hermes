@@ -10,6 +10,7 @@ import binascii
 import json
 import os
 import re
+import sqlite3
 import urllib.parse
 from typing import Any
 
@@ -168,6 +169,47 @@ WORKER_HINT = (
     "The local Prolog worker didn't respond as expected. If you just installed "
     "SWI-Prolog, restart Hermes. The terminal that launched Hermes has the full detail."
 )
+
+
+def _review_article_metadata(repo_root: Any, bibtex_key: str) -> dict[str, Any] | None:
+    """Return the corpus article named by a review proposal citation."""
+    database = repo_root / "data/research/research_shared.db"
+    connection = sqlite3.connect(f"file:{database}?mode=ro", uri=True)
+    connection.row_factory = sqlite3.Row
+    try:
+        row = connection.execute(
+            """
+            SELECT bibtex_key, authors, year, title, journal, doi
+              FROM articles
+             WHERE bibtex_key = ?
+            """,
+            (bibtex_key,),
+        ).fetchone()
+    finally:
+        connection.close()
+    return dict(row) if row is not None else None
+
+
+def _enrich_review_citation(repo_root: Any, result: Any) -> Any:
+    """Attach database article fields to a corpus-binding queue result."""
+    if not isinstance(result, dict) or not result.get("has_item"):
+        return result
+    item = result.get("item")
+    if not isinstance(item, dict) or item.get("item_type") != "corpus_binding":
+        return result
+    citation = item.get("citation")
+    if citation == "unattributed":
+        item["citation_status"] = "no_recorded_source"
+        item["citation_metadata"] = None
+        return result
+    if not isinstance(citation, str) or not citation:
+        raise LookupError("corpus binding has no citation key")
+    metadata = _review_article_metadata(repo_root, citation)
+    if metadata is None:
+        raise LookupError(f"corpus citation does not resolve in articles: {citation}")
+    item["citation_status"] = "resolved_in_database"
+    item["citation_metadata"] = metadata
+    return result
 
 
 class RouteLogic:
@@ -1185,6 +1227,68 @@ class RouteLogic:
 
     def _handle_strategies(self, _payload: dict) -> None:
         self._send_json({"ok": True, "result": self.ctx.worker_request("list_strategies")})
+
+    def _handle_review_queue(self, payload: dict) -> None:
+        source = str(payload.get("source") or "").strip()
+        if source not in {"lesson_pairings", "corpus_bindings"}:
+            self._send_json(
+                {"error": "source must be lesson_pairings or corpus_bindings"},
+                status=400,
+            )
+            return
+        offset = payload.get("offset", 0)
+        if isinstance(offset, bool) or not isinstance(offset, int) or offset < 0:
+            self._send_json({"error": "offset must be a non-negative integer"}, status=400)
+            return
+        result = self.ctx.worker_request("review_queue", source=source, offset=offset)
+        try:
+            result = _enrich_review_citation(self.ctx.repo_root, result)
+        except (LookupError, OSError, sqlite3.Error) as exc:
+            self._send_json({"error": str(exc)}, status=500)
+            return
+        self._send_json({"ok": True, "result": result})
+
+    def _handle_review_decide(self, payload: dict) -> None:
+        source = str(payload.get("source") or "").strip()
+        if source not in {"lesson_pairings", "corpus_bindings"}:
+            self._send_json(
+                {"error": "source must be lesson_pairings or corpus_bindings"},
+                status=400,
+            )
+            return
+        verdict = str(payload.get("verdict") or "").strip().lower()
+        if verdict not in {"accept", "reject", "unsure"}:
+            self._send_json(
+                {"error": "verdict must be accept, reject, or unsure"},
+                status=400,
+            )
+            return
+        item_id = str(payload.get("item_id") or "").strip()
+        if not item_id:
+            self._send_json({"error": "item_id is required"}, status=400)
+            return
+        shown = payload.get("shown")
+        if not isinstance(shown, dict):
+            self._send_json({"error": "shown must be the queue item object"}, status=400)
+            return
+        note_value = payload.get("note", "")
+        if note_value is None:
+            note_value = ""
+        if not isinstance(note_value, str):
+            self._send_json({"error": "note must be text"}, status=400)
+            return
+        if len(note_value) > 4000:
+            self._send_json({"error": "note must be 4000 characters or fewer"}, status=400)
+            return
+        result = self.ctx.worker_request(
+            "review_decide",
+            source=source,
+            item_id=item_id,
+            verdict=verdict,
+            note=note_value,
+            shown=shown,
+        )
+        self._send_json({"ok": True, "result": result})
 
     def _handle_fraction_frames(self, raw_path: str) -> None:
         """Lay out a fraction automaton as bars (v2 frames). Returns the frame

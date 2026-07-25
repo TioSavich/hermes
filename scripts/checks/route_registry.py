@@ -84,6 +84,8 @@ POST /api/carving_strategy_proof public worker
 POST /api/carving_operation_summary public worker
 POST /api/balance_solve public worker
 POST /api/benny_demo public worker
+POST /api/review_queue public worker
+POST /api/review_decide public worker
 POST /api/discourse_features verified worker
 POST /api/discourse_pragmatics verified worker
 POST /api/gesture_alignment verified worker

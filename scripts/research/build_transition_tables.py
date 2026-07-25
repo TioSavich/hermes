@@ -14,6 +14,7 @@ import json
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 from collections import Counter, defaultdict
 from dataclasses import dataclass
@@ -255,6 +256,24 @@ def prolog_input(example: dict[str, object]) -> tuple[str, str]:
     return str(example["a"]), str(example["b"])
 
 
+# Example shapes this extractor can encode as Prolog probe arguments.  Contracts
+# outside this set are skipped rather than guessed at: task 131 added
+# fraction_solve, rational_limit and terminal_path_tree, whose runners take
+# compound terms that hermes/encyclopedia.pl decodes and this file does not.
+# Skipping keeps the committed tables byte-identical; teaching the extractor these
+# forms is what would move their rows from static to observed provenance, and that
+# is a separate, consequential decision.
+ENCODABLE_KINDS = frozenset({"fraction_pair", "decimal_pair"})
+
+
+def encodable(example: dict[str, object]) -> bool:
+    """True when prolog_input/derived_example can handle this example."""
+    kind = example.get("kind")
+    if kind in ENCODABLE_KINDS:
+        return True
+    return kind is None and "a" in example and "b" in example
+
+
 def derived_example(example: dict[str, object]) -> dict[str, object]:
     """Make a small second probe without changing a contract's input shape."""
     result = json.loads(json.dumps(example))
@@ -308,7 +327,14 @@ main :- forall(probe(Source, Operation, Kind, Left, Right),
 def observe(checked_contracts: list[Contract]) -> list[Observation]:
     """Run every contract and a bounded derived probe in one SWI process."""
     probes: list[str] = []
+    skipped = [c for c in checked_contracts if not encodable(c.example)]
+    if skipped:
+        kinds = sorted({str(c.example.get("kind")) for c in skipped})
+        print(f"skipping {len(skipped)} contract(s) this extractor cannot encode "
+              f"as probe arguments; kinds: {', '.join(kinds)}", file=sys.stderr)
     for contract in checked_contracts:
+        if not encodable(contract.example):
+            continue
         for source, example in (("contract_example", contract.example),
                                 ("derived_template", derived_example(contract.example))):
             left, right = prolog_input(example)

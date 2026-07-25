@@ -127,6 +127,18 @@ automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_4, carr
 automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_5, lose_base_ten_regrouping, q_accept, provenance(static('knowledge/strategies/math/sar_add_action_pairs.pl:383'))).
 
 % Bounded live traces reconstructed from returned step labels.
+automaton_transition(addition, append_column_sum_without_carrying, q_start, align_addends_by_place_value, q_step_1, provenance(observed(contract_example))).
+automaton_transition(addition, append_column_sum_without_carrying, q_step_1, compute_raw_column_sums_without_regrouping, q_step_2, provenance(observed(contract_example))).
+automaton_transition(addition, append_column_sum_without_carrying, q_step_2, write_full_column_sums_in_place, q_step_3, provenance(observed(contract_example))).
+automaton_transition(addition, append_column_sum_without_carrying, q_step_3, concatenate_partial_sums, q_step_4, provenance(observed(contract_example))).
+automaton_transition(addition, append_column_sum_without_carrying, q_step_4, lose_base_ten_regrouping, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(addition, append_column_sum_without_carrying, q_start, align_addends_by_place_value, q_step_1, provenance(observed(derived_template))).
+automaton_transition(addition, append_column_sum_without_carrying, q_step_1, compute_raw_column_sums_without_regrouping, q_step_2, provenance(observed(derived_template))).
+automaton_transition(addition, append_column_sum_without_carrying, q_step_2, write_full_column_sums_in_place, q_step_3, provenance(observed(derived_template))).
+automaton_transition(addition, append_column_sum_without_carrying, q_step_3, concatenate_partial_sums, q_step_4, provenance(observed(derived_template))).
+automaton_transition(addition, append_column_sum_without_carrying, q_step_4, lose_base_ten_regrouping, q_accept, provenance(observed(derived_template))).
+
 automaton_transition(addition, base_ones_chunking, q_start, decompose_second_addend, q_step_1, provenance(observed(contract_example))).
 automaton_transition(addition, base_ones_chunking, q_step_1, add_base_chunk, q_step_2, provenance(observed(contract_example))).
 automaton_transition(addition, base_ones_chunking, q_step_2, add_ones_chunk, q_step_3, provenance(observed(contract_example))).
@@ -181,6 +193,40 @@ automaton_transition(addition, count_on_from_larger, q_step_1, hold_other_addend
 automaton_transition(addition, count_on_from_larger, q_step_2, iterate_successor_ticks, q_step_3, provenance(observed(derived_template))).
 automaton_transition(addition, count_on_from_larger, q_step_3, name_last_tick_as_sum, q_accept, provenance(observed(derived_template))).
 
+automaton_transition(addition, derived_fact_adjustment, q_start, recall_nearby_known_fact, q_step_1, provenance(observed(contract_example))).
+automaton_transition(addition, derived_fact_adjustment, q_step_1, compare_target_to_anchor, q_step_2, provenance(observed(contract_example))).
+automaton_transition(addition, derived_fact_adjustment, q_step_2, adjust_known_sum_by, q_step_3, provenance(observed(contract_example))).
+automaton_transition(addition, derived_fact_adjustment, q_step_3, preserve_problem_relation, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(addition, derived_fact_adjustment, q_start, recall_nearby_known_fact, q_step_1, provenance(observed(derived_template))).
+automaton_transition(addition, derived_fact_adjustment, q_step_1, compare_target_to_anchor, q_step_2, provenance(observed(derived_template))).
+automaton_transition(addition, derived_fact_adjustment, q_step_2, adjust_known_sum_by, q_step_3, provenance(observed(derived_template))).
+automaton_transition(addition, derived_fact_adjustment, q_step_3, preserve_problem_relation, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(addition, drop_carry_to_next_column, q_start, align_addends_by_place_value, q_step_1, provenance(observed(contract_example))).
+automaton_transition(addition, drop_carry_to_next_column, q_step_1, process_columns_right_to_left, q_step_2, provenance(observed(contract_example))).
+automaton_transition(addition, drop_carry_to_next_column, q_step_2, write_place_digits, q_step_3, provenance(observed(contract_example))).
+automaton_transition(addition, drop_carry_to_next_column, q_step_3, discard_generated_carries, q_step_4, provenance(observed(contract_example))).
+automaton_transition(addition, drop_carry_to_next_column, q_step_4, compose_column_sum_without_carry, q_step_5, provenance(observed(contract_example))).
+automaton_transition(addition, drop_carry_to_next_column, q_step_5, lose_base_ten_regrouping, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(addition, drop_carry_to_next_column, q_start, align_addends_by_place_value, q_step_1, provenance(observed(derived_template))).
+automaton_transition(addition, drop_carry_to_next_column, q_step_1, process_columns_right_to_left, q_step_2, provenance(observed(derived_template))).
+automaton_transition(addition, drop_carry_to_next_column, q_step_2, write_place_digits, q_step_3, provenance(observed(derived_template))).
+automaton_transition(addition, drop_carry_to_next_column, q_step_3, discard_generated_carries, q_step_4, provenance(observed(derived_template))).
+automaton_transition(addition, drop_carry_to_next_column, q_step_4, compose_column_sum_without_carry, q_step_5, provenance(observed(derived_template))).
+automaton_transition(addition, drop_carry_to_next_column, q_step_5, lose_base_ten_regrouping, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(addition, dropped_ones_chunk, q_start, decompose_second_addend, q_step_1, provenance(observed(contract_example))).
+automaton_transition(addition, dropped_ones_chunk, q_step_1, add_base_chunk, q_step_2, provenance(observed(contract_example))).
+automaton_transition(addition, dropped_ones_chunk, q_step_2, drop_ones_chunk, q_step_3, provenance(observed(contract_example))).
+automaton_transition(addition, dropped_ones_chunk, q_step_3, lose_decomposed_remainder, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(addition, dropped_ones_chunk, q_start, decompose_second_addend, q_step_1, provenance(observed(derived_template))).
+automaton_transition(addition, dropped_ones_chunk, q_step_1, add_base_chunk, q_step_2, provenance(observed(derived_template))).
+automaton_transition(addition, dropped_ones_chunk, q_step_2, drop_ones_chunk, q_step_3, provenance(observed(derived_template))).
+automaton_transition(addition, dropped_ones_chunk, q_step_3, lose_decomposed_remainder, q_accept, provenance(observed(derived_template))).
+
 automaton_transition(addition, known_fact_retrieval, q_start, recognize_number_combination, q_step_1, provenance(observed(contract_example))).
 automaton_transition(addition, known_fact_retrieval, q_step_1, retrieve_stored_sum, q_step_2, provenance(observed(contract_example))).
 automaton_transition(addition, known_fact_retrieval, q_step_2, state_memorized_sum, q_accept, provenance(observed(contract_example))).
@@ -225,6 +271,16 @@ automaton_transition(addition, make_ten_split_leftover, q_step_2, make_base, q_s
 automaton_transition(addition, make_ten_split_leftover, q_step_3, add_leftover_after_base, q_step_4, provenance(observed(derived_template))).
 automaton_transition(addition, make_ten_split_leftover, q_step_4, preserve_total_by_using_both_split_parts, q_accept, provenance(observed(derived_template))).
 
+automaton_transition(addition, rote_derived_fact_rule_misfire, q_start, recall_nearby_known_fact, q_step_1, provenance(observed(contract_example))).
+automaton_transition(addition, rote_derived_fact_rule_misfire, q_step_1, notice_that_numbers_are_near_but_not_how_near, q_step_2, provenance(observed(contract_example))).
+automaton_transition(addition, rote_derived_fact_rule_misfire, q_step_2, apply_verbal_rule_with_wrong_adjustment, q_step_3, provenance(observed(contract_example))).
+automaton_transition(addition, rote_derived_fact_rule_misfire, q_step_3, lose_problem_relation, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(addition, rote_derived_fact_rule_misfire, q_start, recall_nearby_known_fact, q_step_1, provenance(observed(derived_template))).
+automaton_transition(addition, rote_derived_fact_rule_misfire, q_step_1, notice_that_numbers_are_near_but_not_how_near, q_step_2, provenance(observed(derived_template))).
+automaton_transition(addition, rote_derived_fact_rule_misfire, q_step_2, apply_verbal_rule_with_wrong_adjustment, q_step_3, provenance(observed(derived_template))).
+automaton_transition(addition, rote_derived_fact_rule_misfire, q_step_3, lose_problem_relation, q_accept, provenance(observed(derived_template))).
+
 automaton_transition(addition, round_then_adjust, q_start, choose_rounding_target, q_step_1, provenance(observed(contract_example))).
 automaton_transition(addition, round_then_adjust, q_step_1, identify_target_base, q_step_2, provenance(observed(contract_example))).
 automaton_transition(addition, round_then_adjust, q_step_2, round_up_by, q_step_3, provenance(observed(contract_example))).
@@ -250,3 +306,31 @@ automaton_transition(addition, round_without_adjusting, q_step_2, round_up_by, q
 automaton_transition(addition, round_without_adjusting, q_step_3, add_with_rounded_number, q_step_4, provenance(observed(derived_template))).
 automaton_transition(addition, round_without_adjusting, q_step_4, omit_adjustment, q_step_5, provenance(observed(derived_template))).
 automaton_transition(addition, round_without_adjusting, q_step_5, lose_total_conservation, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(addition, unbalanced_make_base_compensation, q_start, order_addends, q_step_1, provenance(observed(contract_example))).
+automaton_transition(addition, unbalanced_make_base_compensation, q_step_1, identify_target_base, q_step_2, provenance(observed(contract_example))).
+automaton_transition(addition, unbalanced_make_base_compensation, q_step_2, count_distance_to_base, q_step_3, provenance(observed(contract_example))).
+automaton_transition(addition, unbalanced_make_base_compensation, q_step_3, add_compensation_to_larger, q_step_4, provenance(observed(contract_example))).
+automaton_transition(addition, unbalanced_make_base_compensation, q_step_4, leave_other_addend_unchanged, q_step_5, provenance(observed(contract_example))).
+automaton_transition(addition, unbalanced_make_base_compensation, q_step_5, lose_total_conservation, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(addition, unbalanced_make_base_compensation, q_start, order_addends, q_step_1, provenance(observed(derived_template))).
+automaton_transition(addition, unbalanced_make_base_compensation, q_step_1, identify_target_base, q_step_2, provenance(observed(derived_template))).
+automaton_transition(addition, unbalanced_make_base_compensation, q_step_2, count_distance_to_base, q_step_3, provenance(observed(derived_template))).
+automaton_transition(addition, unbalanced_make_base_compensation, q_step_3, add_compensation_to_larger, q_step_4, provenance(observed(derived_template))).
+automaton_transition(addition, unbalanced_make_base_compensation, q_step_4, leave_other_addend_unchanged, q_step_5, provenance(observed(derived_template))).
+automaton_transition(addition, unbalanced_make_base_compensation, q_step_5, lose_total_conservation, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(addition, wrong_carry_amount_to_next_column, q_start, align_addends_by_place_value, q_step_1, provenance(observed(contract_example))).
+automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_1, process_columns_right_to_left, q_step_2, provenance(observed(contract_example))).
+automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_2, misread_carry_amount, q_step_3, provenance(observed(contract_example))).
+automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_3, write_place_digits, q_step_4, provenance(observed(contract_example))).
+automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_4, carry_final_column_if_needed, q_step_5, provenance(observed(contract_example))).
+automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_5, lose_base_ten_regrouping, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(addition, wrong_carry_amount_to_next_column, q_start, align_addends_by_place_value, q_step_1, provenance(observed(derived_template))).
+automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_1, process_columns_right_to_left, q_step_2, provenance(observed(derived_template))).
+automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_2, misread_carry_amount, q_step_3, provenance(observed(derived_template))).
+automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_3, write_place_digits, q_step_4, provenance(observed(derived_template))).
+automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_4, carry_final_column_if_needed, q_step_5, provenance(observed(derived_template))).
+automaton_transition(addition, wrong_carry_amount_to_next_column, q_step_5, lose_base_ten_regrouping, q_accept, provenance(observed(derived_template))).

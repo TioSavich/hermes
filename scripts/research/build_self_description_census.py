@@ -596,9 +596,10 @@ def render_report(data: dict[str, object]) -> str:
         "A row remains `undetermined` when the specified verdicts do not fit the available "
         "evidence.",
         "",
-        "The registry contains 264 rows. Its reachability counts still match the task "
-        "baseline. Class assignment changes because the extractor now uses an operation's "
-        "defining module directory when no operation-name rule applies.",
+        f"The registry contains {data['counts']['total']} rows. The reachability counts "
+        "below are generated from the current tree. Class assignment changes because the "
+        "extractor now uses an operation's defining module directory when no operation-name "
+        "rule applies.",
         "",
         "## Registry counts",
         "",
@@ -772,8 +773,8 @@ def build() -> dict[str, object]:
     verdict_counts = Counter(row["verdict"] for row in orphan_records)
     resolution_counts = Counter(row["current_class"] for row in class_resolution)
 
-    if len(registry_rows) != 264:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 264")
+    if len(registry_rows) != 266:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 266")
     if len(orphan_records) != 58:
         raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 58")
     if len(unrouted) != 4:

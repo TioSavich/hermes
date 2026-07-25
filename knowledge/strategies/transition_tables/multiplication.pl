@@ -135,6 +135,28 @@ automaton_transition(multiplication, sequential_recompute_commuted_products, q_s
 automaton_transition(multiplication, sequential_recompute_commuted_products, q_step_5, lose_commutative_shortcut, q_accept, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:488'))).
 
 % Bounded live traces reconstructed from returned step labels.
+automaton_transition(multiplication, add_counts_without_composite_unit, q_start, see_groups_and_items, q_step_1, provenance(observed(contract_example))).
+automaton_transition(multiplication, add_counts_without_composite_unit, q_step_1, count_groups_as_items, q_step_2, provenance(observed(contract_example))).
+automaton_transition(multiplication, add_counts_without_composite_unit, q_step_2, count_items_as_items, q_step_3, provenance(observed(contract_example))).
+automaton_transition(multiplication, add_counts_without_composite_unit, q_step_3, add_uncoordinated_counts, q_step_4, provenance(observed(contract_example))).
+automaton_transition(multiplication, add_counts_without_composite_unit, q_step_4, lose_composite_unit, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(multiplication, add_counts_without_composite_unit, q_start, see_groups_and_items, q_step_1, provenance(observed(derived_template))).
+automaton_transition(multiplication, add_counts_without_composite_unit, q_step_1, count_groups_as_items, q_step_2, provenance(observed(derived_template))).
+automaton_transition(multiplication, add_counts_without_composite_unit, q_step_2, count_items_as_items, q_step_3, provenance(observed(derived_template))).
+automaton_transition(multiplication, add_counts_without_composite_unit, q_step_3, add_uncoordinated_counts, q_step_4, provenance(observed(derived_template))).
+automaton_transition(multiplication, add_counts_without_composite_unit, q_step_4, lose_composite_unit, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(multiplication, add_instead_of_multiply, q_start, read_equal_groups, q_step_1, provenance(observed(contract_example))).
+automaton_transition(multiplication, add_instead_of_multiply, q_step_1, treat_group_count_and_group_size_as_addends, q_step_2, provenance(observed(contract_example))).
+automaton_transition(multiplication, add_instead_of_multiply, q_step_2, add_uncoordinated_counts, q_step_3, provenance(observed(contract_example))).
+automaton_transition(multiplication, add_instead_of_multiply, q_step_3, lose_equal_group_iteration, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(multiplication, add_instead_of_multiply, q_start, read_equal_groups, q_step_1, provenance(observed(derived_template))).
+automaton_transition(multiplication, add_instead_of_multiply, q_step_1, treat_group_count_and_group_size_as_addends, q_step_2, provenance(observed(derived_template))).
+automaton_transition(multiplication, add_instead_of_multiply, q_step_2, add_uncoordinated_counts, q_step_3, provenance(observed(derived_template))).
+automaton_transition(multiplication, add_instead_of_multiply, q_step_3, lose_equal_group_iteration, q_accept, provenance(observed(derived_template))).
+
 automaton_transition(multiplication, add_numbers_as_common_multiple, q_start, read_two_numbers, q_step_1, provenance(observed(contract_example))).
 automaton_transition(multiplication, add_numbers_as_common_multiple, q_step_1, substitute_addition_for_multiple_generation, q_step_2, provenance(observed(contract_example))).
 automaton_transition(multiplication, add_numbers_as_common_multiple, q_step_2, add_inputs, q_step_3, provenance(observed(contract_example))).
@@ -177,6 +199,18 @@ automaton_transition(multiplication, commute_factors_preserve_product, q_step_2,
 automaton_transition(multiplication, commute_factors_preserve_product, q_step_3, compute_commuted_product, q_step_4, provenance(observed(derived_template))).
 automaton_transition(multiplication, commute_factors_preserve_product, q_step_4, preserve_product_under_commutation, q_accept, provenance(observed(derived_template))).
 
+automaton_transition(multiplication, context_free_fact_family_guess, q_start, recognize_target_factor_pair, q_step_1, provenance(observed(contract_example))).
+automaton_transition(multiplication, context_free_fact_family_guess, q_step_1, retrieve_product_without_referent_units, q_step_2, provenance(observed(contract_example))).
+automaton_transition(multiplication, context_free_fact_family_guess, q_step_2, substitute_alternate_factor_pair, q_step_3, provenance(observed(contract_example))).
+automaton_transition(multiplication, context_free_fact_family_guess, q_step_3, answer_from_context_free_fact_family, q_step_4, provenance(observed(contract_example))).
+automaton_transition(multiplication, context_free_fact_family_guess, q_step_4, lose_referent_units, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(multiplication, context_free_fact_family_guess, q_start, recognize_target_factor_pair, q_step_1, provenance(observed(derived_template))).
+automaton_transition(multiplication, context_free_fact_family_guess, q_step_1, retrieve_product_without_referent_units, q_step_2, provenance(observed(derived_template))).
+automaton_transition(multiplication, context_free_fact_family_guess, q_step_2, substitute_alternate_factor_pair, q_step_3, provenance(observed(derived_template))).
+automaton_transition(multiplication, context_free_fact_family_guess, q_step_3, answer_from_context_free_fact_family, q_step_4, provenance(observed(derived_template))).
+automaton_transition(multiplication, context_free_fact_family_guess, q_step_4, lose_referent_units, q_accept, provenance(observed(derived_template))).
+
 automaton_transition(multiplication, coordinate_groups_items, q_start, form_equal_groups, q_step_1, provenance(observed(contract_example))).
 automaton_transition(multiplication, coordinate_groups_items, q_step_1, coordinate_group_count_with_item_count, q_step_2, provenance(observed(contract_example))).
 automaton_transition(multiplication, coordinate_groups_items, q_step_2, iterate_composite_unit, q_step_3, provenance(observed(contract_example))).
@@ -199,6 +233,28 @@ automaton_transition(multiplication, distribute_group_size_split, q_step_2, comp
 automaton_transition(multiplication, distribute_group_size_split, q_step_3, recompose_partial_products, q_step_4, provenance(observed(derived_template))).
 automaton_transition(multiplication, distribute_group_size_split, q_step_4, preserve_distributed_groups, q_accept, provenance(observed(derived_template))).
 
+automaton_transition(multiplication, drop_regrouping_remainder, q_start, form_equal_groups, q_step_1, provenance(observed(contract_example))).
+automaton_transition(multiplication, drop_regrouping_remainder, q_step_1, regroup_total_as_base_bundles, q_step_2, provenance(observed(contract_example))).
+automaton_transition(multiplication, drop_regrouping_remainder, q_step_2, drop_regrouping_leftover, q_step_3, provenance(observed(contract_example))).
+automaton_transition(multiplication, drop_regrouping_remainder, q_step_3, name_only_full_base_bundles, q_step_4, provenance(observed(contract_example))).
+automaton_transition(multiplication, drop_regrouping_remainder, q_step_4, lose_regrouping_remainder, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(multiplication, drop_regrouping_remainder, q_start, form_equal_groups, q_step_1, provenance(observed(derived_template))).
+automaton_transition(multiplication, drop_regrouping_remainder, q_step_1, regroup_total_as_base_bundles, q_step_2, provenance(observed(derived_template))).
+automaton_transition(multiplication, drop_regrouping_remainder, q_step_2, drop_regrouping_leftover, q_step_3, provenance(observed(derived_template))).
+automaton_transition(multiplication, drop_regrouping_remainder, q_step_3, name_only_full_base_bundles, q_step_4, provenance(observed(derived_template))).
+automaton_transition(multiplication, drop_regrouping_remainder, q_step_4, lose_regrouping_remainder, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(multiplication, drop_second_partial_product, q_start, split_group_size, q_step_1, provenance(observed(contract_example))).
+automaton_transition(multiplication, drop_second_partial_product, q_step_1, compute_partial_product, q_step_2, provenance(observed(contract_example))).
+automaton_transition(multiplication, drop_second_partial_product, q_step_2, omit_partial_product, q_step_3, provenance(observed(contract_example))).
+automaton_transition(multiplication, drop_second_partial_product, q_step_3, lose_distributed_part, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(multiplication, drop_second_partial_product, q_start, split_group_size, q_step_1, provenance(observed(derived_template))).
+automaton_transition(multiplication, drop_second_partial_product, q_step_1, compute_partial_product, q_step_2, provenance(observed(derived_template))).
+automaton_transition(multiplication, drop_second_partial_product, q_step_2, omit_partial_product, q_step_3, provenance(observed(derived_template))).
+automaton_transition(multiplication, drop_second_partial_product, q_step_3, lose_distributed_part, q_accept, provenance(observed(derived_template))).
+
 automaton_transition(multiplication, factors_of_first_number_only, q_start, enumerate_positive_divisors, q_step_1, provenance(observed(contract_example))).
 automaton_transition(multiplication, factors_of_first_number_only, q_step_1, omit_divisor_search_for, q_step_2, provenance(observed(contract_example))).
 automaton_transition(multiplication, factors_of_first_number_only, q_step_2, omit_factor_set_intersection, q_step_3, provenance(observed(contract_example))).
@@ -208,6 +264,30 @@ automaton_transition(multiplication, factors_of_first_number_only, q_start, enum
 automaton_transition(multiplication, factors_of_first_number_only, q_step_1, omit_divisor_search_for, q_step_2, provenance(observed(derived_template))).
 automaton_transition(multiplication, factors_of_first_number_only, q_step_2, omit_factor_set_intersection, q_step_3, provenance(observed(derived_template))).
 automaton_transition(multiplication, factors_of_first_number_only, q_step_3, report_first_factor_set_as_common, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(multiplication, known_product_adjustment, q_start, recall_nearby_known_product, q_step_1, provenance(observed(contract_example))).
+automaton_transition(multiplication, known_product_adjustment, q_step_1, identify_missing_equal_groups, q_step_2, provenance(observed(contract_example))).
+automaton_transition(multiplication, known_product_adjustment, q_step_2, compute_extra_equal_group_product, q_step_3, provenance(observed(contract_example))).
+automaton_transition(multiplication, known_product_adjustment, q_step_3, adjust_known_product, q_step_4, provenance(observed(contract_example))).
+automaton_transition(multiplication, known_product_adjustment, q_step_4, preserve_equal_group_adjustment, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(multiplication, known_product_adjustment, q_start, recall_nearby_known_product, q_step_1, provenance(observed(derived_template))).
+automaton_transition(multiplication, known_product_adjustment, q_step_1, identify_missing_equal_groups, q_step_2, provenance(observed(derived_template))).
+automaton_transition(multiplication, known_product_adjustment, q_step_2, compute_extra_equal_group_product, q_step_3, provenance(observed(derived_template))).
+automaton_transition(multiplication, known_product_adjustment, q_step_3, adjust_known_product, q_step_4, provenance(observed(derived_template))).
+automaton_transition(multiplication, known_product_adjustment, q_step_4, preserve_equal_group_adjustment, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(multiplication, known_product_without_adjustment, q_start, recall_nearby_known_product, q_step_1, provenance(observed(contract_example))).
+automaton_transition(multiplication, known_product_without_adjustment, q_step_1, identify_missing_equal_groups, q_step_2, provenance(observed(contract_example))).
+automaton_transition(multiplication, known_product_without_adjustment, q_step_2, omit_extra_equal_group_product, q_step_3, provenance(observed(contract_example))).
+automaton_transition(multiplication, known_product_without_adjustment, q_step_3, answer_with_nearby_product, q_step_4, provenance(observed(contract_example))).
+automaton_transition(multiplication, known_product_without_adjustment, q_step_4, lose_equal_group_adjustment, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(multiplication, known_product_without_adjustment, q_start, recall_nearby_known_product, q_step_1, provenance(observed(derived_template))).
+automaton_transition(multiplication, known_product_without_adjustment, q_step_1, identify_missing_equal_groups, q_step_2, provenance(observed(derived_template))).
+automaton_transition(multiplication, known_product_without_adjustment, q_step_2, omit_extra_equal_group_product, q_step_3, provenance(observed(derived_template))).
+automaton_transition(multiplication, known_product_without_adjustment, q_step_3, answer_with_nearby_product, q_step_4, provenance(observed(derived_template))).
+automaton_transition(multiplication, known_product_without_adjustment, q_step_4, lose_equal_group_adjustment, q_accept, provenance(observed(derived_template))).
 
 automaton_transition(multiplication, multiplication_fact_retrieval, q_start, recognize_factor_pair, q_step_1, provenance(observed(contract_example))).
 automaton_transition(multiplication, multiplication_fact_retrieval, q_step_1, retrieve_known_multiplication_fact, q_step_2, provenance(observed(contract_example))).
@@ -248,3 +328,29 @@ automaton_transition(multiplication, repeat_group_size_by_itself, q_start, hold_
 automaton_transition(multiplication, repeat_group_size_by_itself, q_step_1, use_group_size_as_iteration_count, q_step_2, provenance(observed(derived_template))).
 automaton_transition(multiplication, repeat_group_size_by_itself, q_step_2, add_equal_group_repeatedly, q_step_3, provenance(observed(derived_template))).
 automaton_transition(multiplication, repeat_group_size_by_itself, q_step_3, lose_group_count_role, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(multiplication, rigid_factor_order_roles, q_start, compare_factor_orders, q_step_1, provenance(observed(contract_example))).
+automaton_transition(multiplication, rigid_factor_order_roles, q_step_1, keep_multiplier_multiplicand_roles_fixed, q_step_2, provenance(observed(contract_example))).
+automaton_transition(multiplication, rigid_factor_order_roles, q_step_2, reject_commuted_factor_order, q_step_3, provenance(observed(contract_example))).
+automaton_transition(multiplication, rigid_factor_order_roles, q_step_3, require_recomputation_in_original_order, q_step_4, provenance(observed(contract_example))).
+automaton_transition(multiplication, rigid_factor_order_roles, q_step_4, lose_factor_order_equivalence, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(multiplication, rigid_factor_order_roles, q_start, compare_factor_orders, q_step_1, provenance(observed(derived_template))).
+automaton_transition(multiplication, rigid_factor_order_roles, q_step_1, keep_multiplier_multiplicand_roles_fixed, q_step_2, provenance(observed(derived_template))).
+automaton_transition(multiplication, rigid_factor_order_roles, q_step_2, reject_commuted_factor_order, q_step_3, provenance(observed(derived_template))).
+automaton_transition(multiplication, rigid_factor_order_roles, q_step_3, require_recomputation_in_original_order, q_step_4, provenance(observed(derived_template))).
+automaton_transition(multiplication, rigid_factor_order_roles, q_step_4, lose_factor_order_equivalence, q_accept, provenance(observed(derived_template))).
+
+automaton_transition(multiplication, sequential_recompute_commuted_products, q_start, compare_factor_orders, q_step_1, provenance(observed(contract_example))).
+automaton_transition(multiplication, sequential_recompute_commuted_products, q_step_1, miss_structural_commutative_equivalence, q_step_2, provenance(observed(contract_example))).
+automaton_transition(multiplication, sequential_recompute_commuted_products, q_step_2, compute_original_product, q_step_3, provenance(observed(contract_example))).
+automaton_transition(multiplication, sequential_recompute_commuted_products, q_step_3, compute_commuted_product, q_step_4, provenance(observed(contract_example))).
+automaton_transition(multiplication, sequential_recompute_commuted_products, q_step_4, compare_final_products, q_step_5, provenance(observed(contract_example))).
+automaton_transition(multiplication, sequential_recompute_commuted_products, q_step_5, lose_commutative_shortcut, q_accept, provenance(observed(contract_example))).
+
+automaton_transition(multiplication, sequential_recompute_commuted_products, q_start, compare_factor_orders, q_step_1, provenance(observed(derived_template))).
+automaton_transition(multiplication, sequential_recompute_commuted_products, q_step_1, miss_structural_commutative_equivalence, q_step_2, provenance(observed(derived_template))).
+automaton_transition(multiplication, sequential_recompute_commuted_products, q_step_2, compute_original_product, q_step_3, provenance(observed(derived_template))).
+automaton_transition(multiplication, sequential_recompute_commuted_products, q_step_3, compute_commuted_product, q_step_4, provenance(observed(derived_template))).
+automaton_transition(multiplication, sequential_recompute_commuted_products, q_step_4, compare_final_products, q_step_5, provenance(observed(derived_template))).
+automaton_transition(multiplication, sequential_recompute_commuted_products, q_step_5, lose_commutative_shortcut, q_accept, provenance(observed(derived_template))).

@@ -67,6 +67,7 @@
     visualizations: { theme: "objects",      lede: "Run a representation filmstrip, then change its inputs when a worker is available." },
     witnesses:      { theme: "recollection", lede: "Query the finite witness families gathered from the loaded knowledge base." },
     monitoring:     { theme: "norms",        lede: "Assemble one lesson's standards, anticipated strategies, and recorded misconceptions." },
+    review:         { theme: "norms",        lede: "Judge one generated proposal at a time with its recorded warrant and machine actions." },
     gallery:        { theme: "objects",      lede: "Browse coded representation samples from the local asset manifest." },
     landing:        { theme: "recollection", lede: "Choose a door into Hermes or follow the theory journey from its shared entry." },
     no:             { theme: "negation",     lede: "Being wrong has structure: a rule, its domain, and the collision beyond that domain." },
@@ -103,6 +104,7 @@
       ["visualizations", "Visualizers",   mz("visualizations.html")],
       ["witnesses",   "Witnesses",        mz("witnesses.html")],
       ["monitoring",  "Monitoring chart", mz("monitoring_chart.html")],
+      ["review",      "Proposal review",  mz("review.html")],
       ["gallery",     "Gallery",          mz("gallery.html")],
     ]},
     { title: "Theory", kind: "theory", base: "dark", items: [
@@ -136,7 +138,7 @@
     var byFile = {
       "discussions.html": "discussions", "console.html": "console",
       "monitoring_chart.html": "monitoring", "visualizations.html": "visualizations",
-      "atlas.html": "atlas", "witnesses.html": "witnesses",
+      "atlas.html": "atlas", "witnesses.html": "witnesses", "review.html": "review",
       "gallery.html": "gallery",
       "landing.html": "landing", "index.html": "snap", "counting.html": "counting",
       "crisis.html": "crisis", "strategies.html": "strategies",

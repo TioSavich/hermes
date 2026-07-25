@@ -165,6 +165,8 @@ capability('representation_candidates', 'hermes_worker', 'crosswalk', ['misconce
 capability('representation_check', 'hermes_worker', 'crosswalk', ['mode', 'representation'], routed_paged).
 capability('representation_spec_check', 'hermes_worker', 'crosswalk', ['representation'], routed_paged).
 capability('representation_spine_witness', 'user', 'crosswalk', ['concept'], routed_paged).
+capability('review_decide', 'review_queue', 'infrastructure', ['item_id', 'note', 'shown', 'source', 'verdict'], routed_paged).
+capability('review_queue', 'review_queue', 'infrastructure', ['offset', 'source'], routed_paged).
 capability('rhythm_transition_witness', 'sequent_engine', 'sequent', ['from', 'to'], routed_paged).
 capability('robinson_axiom_witness', 'sequent_engine', 'sequent', ['axiom', 'claim'], routed_paged).
 capability('semantic_material_witness', 'semantic_axioms', 'pml', ['from', 'to'], routed_paged).
@@ -460,6 +462,13 @@ capability_parameter('ranked_figures', 'lesson_code', 'string', true, null).
 capability_parameter('ratio_proportion_claim_witness', 'canonical', 'string', true, null).
 capability_parameter('ratio_proportion_claim_witness', 'source', 'string', true, null).
 capability_parameter('representation_spine_witness', 'concept', 'string', false, null).
+capability_parameter('review_decide', 'source', 'string', true, null).
+capability_parameter('review_decide', 'item_id', 'string', true, null).
+capability_parameter('review_decide', 'verdict', 'string', true, null).
+capability_parameter('review_decide', 'note', 'string', false, null).
+capability_parameter('review_decide', 'shown', 'object', true, null).
+capability_parameter('review_queue', 'source', 'string', true, null).
+capability_parameter('review_queue', 'offset', 'integer', false, null).
 capability_parameter('rhythm_transition_witness', 'from', null, true, null).
 capability_parameter('rhythm_transition_witness', 'to', null, true, null).
 capability_parameter('robinson_axiom_witness', 'axiom', null, true, null).
@@ -693,6 +702,8 @@ capability_route('representation_candidates', 'POST', '/api/monitoring_visuals')
 capability_route('representation_check', 'POST', '/api/monitoring_visuals').
 capability_route('representation_spec_check', 'POST', '/api/monitoring_visuals').
 capability_route('representation_spine_witness', 'POST', '/api/witness/grounding').
+capability_route('review_decide', 'POST', '/api/review_decide').
+capability_route('review_queue', 'POST', '/api/review_queue').
 capability_route('rhythm_transition_witness', 'POST', '/api/witness/formal').
 capability_route('robinson_axiom_witness', 'POST', '/api/witness/formal').
 capability_route('semantic_material_witness', 'POST', '/api/witness/pml').
@@ -987,6 +998,8 @@ capability_page('representation_candidates', '/hermes/app/web/console.html').
 capability_page('representation_check', '/hermes/app/web/console.html').
 capability_page('representation_spec_check', '/hermes/app/web/console.html').
 capability_page('representation_spine_witness', '/more-zeeman/witnesses.html').
+capability_page('review_decide', '/more-zeeman/review.html').
+capability_page('review_queue', '/more-zeeman/review.html').
 capability_page('rhythm_transition_witness', '/hermes/app/web/breaks.html').
 capability_page('robinson_axiom_witness', '/hermes/app/web/breaks.html').
 capability_page('semantic_material_witness', '/more-zeeman/witnesses.html').

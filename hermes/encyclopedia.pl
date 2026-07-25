@@ -505,6 +505,24 @@ trace_inputs(Input, A, B) :-
         dict_num(Left, n, 0, N1), dict_num(Left, d, 0, D1),
         dict_num(Right, n, 0, N2), dict_num(Right, d, 0, D2)
     ->  A = fraction_pair(N1, D1, N2, D2), B = unit(whole)
+    ;   get_dict(kind, D, "fraction_solve"),
+        get_dict(coefficient, D, Coefficient),
+        dict_num(Coefficient, n, 0, N), dict_num(Coefficient, d, 0, Denominator),
+        dict_num(D, total, 0, Total)
+    ->  A = solve(N, Denominator), B = Total
+    ;   get_dict(kind, D, "rational_limit"),
+        get_dict(numerator, D, Numerator),
+        get_dict(denominator, D, Denominator),
+        dict_integer_list(Numerator, coefficients, NumCoefficients),
+        dict_integer_list(Denominator, coefficients, DenCoefficients),
+        dict_num(D, at, 0, LimitPoint)
+    ->  A = rational_expression(NumCoefficients, DenCoefficients),
+        B = limit_at(LimitPoint)
+    ;   get_dict(kind, D, "terminal_path_tree"),
+        get_dict(paths, D, JsonPaths),
+        maplist(json_terminal_path, JsonPaths, Paths),
+        dict_num(D, stake, 0, Stake)
+    ->  A = Paths, B = stake(Stake)
     ;   get_dict(kind, D, "decimal_pair"),
         get_dict(left, D, Left), get_dict(right, D, Right),
         dict_num(Left, numeral, 0, N1), dict_num(Left, scale, 1, S1),
@@ -516,6 +534,27 @@ trace_inputs(Input, A, B) :-
 
 dict_num(Dict, Key, Default, Value) :-
     ( get_dict(Key, Dict, V0), num_value(V0, V) -> Value = V ; Value = Default ).
+
+dict_integer_list(Dict, Key, Values) :-
+    get_dict(Key, Dict, RawValues),
+    is_list(RawValues),
+    maplist(json_integer, RawValues, Values).
+
+json_integer(Value, Integer) :-
+    num_value(Value, Integer),
+    integer(Integer).
+
+json_terminal_path(JsonPath,
+                   terminal(Winner, probability(Numerator, Denominator), Events)) :-
+    is_dict(JsonPath),
+    get_dict(winner, JsonPath, Winner0),
+    to_atom(Winner0, Winner),
+    get_dict(probability, JsonPath, Probability),
+    dict_num(Probability, n, 0, Numerator),
+    dict_num(Probability, d, 0, Denominator),
+    get_dict(events, JsonPath, JsonEvents),
+    is_list(JsonEvents),
+    maplist(to_atom, JsonEvents, Events).
 
 
 %% ======================================================================
