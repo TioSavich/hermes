@@ -4,6 +4,20 @@
 The script uses only Python's standard library and the extracted Prolog
 transition tables.  Full mode is intended for Big Red.  ``--smoke`` selects
 three signatures and is the only mode intended for a laptop check.
+
+``--mapping knowledge/strategies/action_vocabulary_map.pl`` projects every
+transition's action through that file's authored ``action_maps/7`` rows before
+minimization, so machines whose authors named the same doing differently can
+be compared.  Labels the map leaves out pass through untouched.  Without the
+flag nothing changes: the output is byte-identical to a run of this script
+before the flag existed, apart from the ``runtime`` block, which carries a
+wall-clock reading and a Python version and is nondeterministic by
+construction.
+
+Projection abstracts ACTIONS.  It never merges strategies.  Where projection
+makes two pedagogically distinct machines structurally coincident, that
+coincidence is reported with both signatures named, exactly as at exact-label
+grain.
 """
 
 from __future__ import annotations
@@ -33,6 +47,7 @@ SMOKE_SIGNATURES = (
     "fraction/number_line_count_marks_not_intervals",
     "fraction/number_line_fraction_comparison",
 )
+DEFAULT_MAPPING = ROOT / "knowledge/strategies/action_vocabulary_map.pl"
 
 
 @dataclass(frozen=True, order=True)
@@ -201,6 +216,95 @@ def read_observed_automata(directory: Path) -> list[Automaton]:
             )
         )
     return automata
+
+
+def read_action_mapping(path: Path) -> dict[tuple[str, str, str], str]:
+    """Read the authored ``action_maps/7`` rows as (operation, kind, label) keys.
+
+    Only the first four arguments are consulted here.  The confidence, evidence,
+    and review status stay in the Prolog file, which is where a reader argues
+    with a row; this function needs the projection alone.
+    """
+    text = path.read_text(encoding="utf-8")
+    mapping: dict[tuple[str, str, str], str] = {}
+    for body in iter_facts(text, "action_maps"):
+        fields = split_top_level(body)
+        if len(fields) != 7:
+            raise ValueError(f"{path}: expected action_maps/7, got /{len(fields)}")
+        key = (
+            label_name(fields[0]),
+            label_name(fields[1]),
+            label_name(fields[2]),
+        )
+        canonical = label_name(fields[3])
+        if key in mapping and mapping[key] != canonical:
+            raise ValueError(
+                f"{path}: {key[0]}/{key[1]} maps {key[2]} to both "
+                f"{mapping[key]} and {canonical}"
+            )
+        mapping[key] = canonical
+    if not mapping:
+        raise ValueError(f"{path}: no action_maps/7 facts found")
+    return mapping
+
+
+def project_actions(
+    automaton: Automaton, mapping: dict[tuple[str, str, str], str]
+) -> tuple[Automaton, dict[str, object]]:
+    """Rewrite every action through the map, leaving unmapped labels alone.
+
+    Returns the projected automaton and a record of what the projection did to
+    it, including whether the projection made the machine nondeterministic by
+    action -- which it can, when two edges out of one state carry labels the map
+    sends to the same canonical action but to different targets.  That is a
+    finding about the map's grain, not something to paper over, so the caller
+    keeps such a machine at exact-label grain and says so.
+    """
+    signature = automaton.signature
+    projected: set[Edge] = set()
+    used: set[str] = set()
+    passed: set[str] = set()
+    for edge in sorted(automaton.edges):
+        canonical = mapping.get((signature.operation, signature.kind, edge.action))
+        if canonical is None:
+            passed.add(edge.action)
+            canonical = edge.action
+        else:
+            used.add(edge.action)
+        projected.add(Edge(edge.source, canonical, edge.target))
+    actions = {edge.action for edge in projected}
+    candidate = Automaton(
+        signature,
+        set(automaton.states),
+        actions | {
+            mapping.get((signature.operation, signature.kind, action), action)
+            for action in automaton.actions
+        },
+        automaton.start,
+        set(automaton.accepting),
+        projected,
+    )
+    destinations: dict[tuple[str, str], set[str]] = defaultdict(set)
+    for edge in projected:
+        destinations[(edge.source, edge.action)].add(edge.target)
+    collisions = sorted(
+        f"{source} -{action}-> {sorted(targets)}"
+        for (source, action), targets in destinations.items()
+        if len(targets) > 1
+    )
+    record = {
+        "signature": signature.name,
+        "projected_label_count": len(used),
+        "passed_through_labels": sorted(passed),
+        "action_count_before": len({edge.action for edge in automaton.edges}),
+        "action_count_after": len(actions),
+        "transition_count_before": len(automaton.edges),
+        "transition_count_after": len(projected),
+        "nondeterminism_introduced": collisions,
+    }
+    if collisions:
+        return automaton, record
+    return candidate, record
 
 
 def outgoing(automaton: Automaton) -> dict[str, list[Edge]]:
@@ -520,6 +624,23 @@ def render_summary(result: dict[str, object]) -> str:
     scope = result["scope"]
     findings = result["findings"]
     assert isinstance(scope, dict) and isinstance(findings, dict)
+    # The grain lines appear only under --mapping, so that a run without the
+    # flag writes the same summary it wrote before the flag existed.
+    projection = scope.get("action_projection")
+    grain: list[str] = []
+    if isinstance(projection, dict):
+        grain = [
+            "- Action grain: projected through "
+            f"`{projection['source']}`",
+            "- Distinct actions across these signatures: "
+            f"{projection['distinct_action_count_before']} -> "
+            f"{projection['distinct_action_count_after']}",
+            "- Action slots summed over these signatures: "
+            f"{projection['action_count_before']} -> "
+            f"{projection['action_count_after']}",
+            "- Signatures held at exact-label grain: "
+            f"{len(projection['signatures_held_at_exact_label_grain'])}",
+        ]
     return "\n".join(
         [
             "# Strategy algebra analysis",
@@ -528,6 +649,7 @@ def render_summary(result: dict[str, object]) -> str:
             "",
             f"- Mode: `{scope['mode']}`",
             f"- Signatures: {scope['signature_count']}",
+            *grain,
             f"- Pairwise comparisons: {scope['pairwise_comparison_count']}",
             f"- Structural-coincidence classes: {findings['coincidence_class_count']}",
             f"- Candidate homomorphisms: {findings['candidate_homomorphism_count']}",
@@ -546,6 +668,19 @@ def parse_args() -> argparse.Namespace:
         "--smoke",
         action="store_true",
         help="analyze exactly three sorted execution-observed signatures",
+    )
+    parser.add_argument(
+        "--mapping",
+        type=Path,
+        nargs="?",
+        const=DEFAULT_MAPPING,
+        default=None,
+        help=(
+            "project every action through the authored action_maps/7 rows in this "
+            "file before minimization; bare --mapping uses "
+            "knowledge/strategies/action_vocabulary_map.pl. Omitting the flag "
+            "leaves the analysis at exact-label grain and the output unchanged."
+        ),
     )
     parser.add_argument("--max-subtrace", type=int, default=6)
     parser.add_argument("--max-shared-per-pair", type=int, default=20)
@@ -575,6 +710,46 @@ def main() -> int:
         selected = observed
     if args.smoke and len(selected) != 3:
         raise SystemExit("--smoke requires at least three observed signatures")
+    projection: dict[str, object] | None = None
+    if args.mapping is not None:
+        mapping_path = args.mapping.resolve()
+        mapping = read_action_mapping(mapping_path)
+        records = []
+        projected = []
+        for automaton in selected:
+            candidate, record = project_actions(automaton, mapping)
+            projected.append(candidate)
+            records.append(record)
+        held_back = sorted(
+            record["signature"]
+            for record in records
+            if record["nondeterminism_introduced"]
+        )
+        projection = {
+            "source": str(mapping_path),
+            "mapping_row_count": len(mapping),
+            "canonical_action_count": len(set(mapping.values())),
+            # Summed over the selected signatures: how many action slots each
+            # machine carries. Two machines using the same canonical action
+            # count twice here.
+            "action_count_before": sum(
+                record["action_count_before"] for record in records
+            ),
+            "action_count_after": sum(
+                record["action_count_after"] for record in records
+            ),
+            # The alphabet the selected machines draw on between them. This is
+            # the figure that says how much vocabulary the projection shares.
+            "distinct_action_count_before": len(
+                {edge.action for automaton in selected for edge in automaton.edges}
+            ),
+            "distinct_action_count_after": len(
+                {edge.action for automaton in projected for edge in automaton.edges}
+            ),
+            "signatures_held_at_exact_label_grain": held_back,
+            "per_signature": records,
+        }
+        selected = projected
     minimized = [minimize(automaton) for automaton in selected]
     coincidences = coincidence_classes(minimized)
     pairs, homomorphisms, products = pairwise_analysis(
@@ -599,6 +774,9 @@ def main() -> int:
                 "max_shared_per_pair": args.max_shared_per_pair,
                 "max_product_states": args.max_product_states,
             },
+            # Present only when --mapping is given, so that a run without the
+            # flag emits the same JSON it emitted before the flag existed.
+            **({"action_projection": projection} if projection is not None else {}),
         },
         "minimized_automata": [
             automaton_record(original, reduced)

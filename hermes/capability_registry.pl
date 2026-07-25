@@ -249,8 +249,12 @@ capability('hermes/web/prolog/zeeman_machine.pl', 'zeeman_machine', 'zeeman', []
 capability('hermes/web/prolog/zeeman_pml_bridge.pl', 'zeeman_pml_bridge', 'zeeman', [], orphan_module).
 capability('hermes/web/prolog/zeeman_tape.pl', 'zeeman_tape', 'zeeman', [], orphan_module).
 capability('knowledge/crosswalk/merge_evidence.pl', 'merge_evidence', 'crosswalk', [], orphan_module).
+capability('knowledge/crosswalk/vocabulary_licenses.pl', 'vocabulary_licenses', 'crosswalk', [], orphan_module).
+capability('knowledge/discourse/commitment_automata.pl', 'commitment_automata', 'unclassified', [], orphan_module).
 capability('knowledge/geometry/geometry_bridge.pl', 'geometry_bridge', 'geometry_witness', [], orphan_module).
 capability('knowledge/misconceptions/literature_canonical_mappings.pl', 'literature_canonical_mappings', 'misconceptions', [], orphan_module).
+capability('knowledge/strategies/action_grammar.pl', 'action_grammar', 'synthesis', [], orphan_module).
+capability('knowledge/strategies/action_vocabulary_map.pl', 'action_vocabulary_map', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/automaton_input_contracts.pl', 'automaton_input_contracts', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/math/unit_coordination_viz.pl', 'unit_coordination_viz', 'synthesis', [], lazy_reachable).
 capability('knowledge/strategies/math_benchmark.pl', 'math_benchmark', 'synthesis', [], orphan_module).
