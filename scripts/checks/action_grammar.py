@@ -29,9 +29,31 @@ claims.
   named phrases expanded back to their sequences, reproduces the machine's
   action word exactly.
 
-  Verdicts match the corpus.  Every ``stop`` row is checked against the machines
-  that carry that token: if any of them ends on a step that is not deforming,
-  the stop is wrong and the check fails.
+  The gap census is complete.  ``machine_conservation_gap/4`` names exactly the
+  machines whose every step is neutral -- no more, so it cannot overstate the
+  gap, and no fewer, so a machine cannot slip out of the work list by being
+  omitted.
+
+  The stances are audited against a source that did not author them.  The
+  productive/deformation pairing lives in
+  ``knowledge/strategies/math/*_action_pairs.pl``.  Over every pairing whose two
+  sides both have an extracted automaton, the check requires that the productive
+  side carry no deforming step and the deformation side carry one.  That is the
+  one thing an independent source can say about a stance assignment, and it says
+  it about 65 pairs without anyone reading the stance table.
+
+  Answerability is extraction, not authorship.  Every ``machine_answerability``
+  row names an ``invariant/1`` that an action-pair source declares verbatim, and
+  every ``incompatible_pair`` divergence step is recomputed from the two words.
+
+  The interruption model carries no verdicts.  It was replaced: the derived
+  stop / watch / continue verdicts would have fired on 59 of 189 machines, and the
+  practice they modelled is infrequent.  Two authored conditions stand in their
+  place, every ``contradiction_loop`` instance is re-tested for a cycle reachable
+  from the start, every cycle in the corpus has an instance, and the check fails
+  if a ``verdict(_)`` reappears anywhere -- because a verdict forecloses the
+  reading the owner reports being surprised by.  Every diverged pair has its
+  reading held open, and the token census is re-derived from the corpus.
 
   The unmodelled edges are counted, not hidden.  The discursive genre's
   provenance splits into edges a predicate here carries and edges only the
@@ -75,8 +97,24 @@ ARC_RE = re.compile(r"(?m)^normative_arc\((\w+), stances\(\[([^\]]*)\]\)")
 GRAMMAR_RE = re.compile(
     r"(?m)^machine_grammar\((\w+), (\w+), (\w+), arc\((\w+)\),\s*"
     r"phrases\(\[([^\]]*)\]\),\s*stances\(\[([^\]]*)\]\)\)")
-LICENSE_RE = re.compile(
-    r"(?m)^interruption_license\((\w+), (\w+), after\((\w+)\), verdict\((\w+)\)")
+PAIR_RE = re.compile(
+    r"(?m)^incompatible_pair\((\w+), (\w+), (\w+), deforms\((\w+)\),\s*"
+    r"divergence\((\d+), (\w+), (\w+)\),\s*class\((\w+)\)\)")
+ANSWER_RE = re.compile(
+    r"(?m)^machine_answerability\((\w+), (\w+), (\w+),\s*\n?\s*"
+    r"invariant\((\w+)\), source\('([^']+)'\)\)")
+GAP_REASON_RE = re.compile(
+    r'(?m)^machine_conservation_gap\(\w+, (\w+), (\w+),\s*\n?\s*reason\("(.*?)"\)\)\.',
+    re.S)
+GAP_RE = re.compile(
+    r"(?m)^machine_conservation_gap\((\w+), (\w+), (\w+),\s*reason\(")
+TRIGGER_RE = re.compile(r"(?m)^interruption_trigger\((\w+), condition\(")
+INSTANCE_RE = re.compile(
+    r"(?m)^trigger_instance\((\w+), (\w+), (\w+),\s*\n?\s*trigger\((\w+)\)")
+HELD_RE = re.compile(
+    r"(?m)^reading_held_open\((\w+), (\w+), (\w+), divergence\((\d+)\)")
+CENSUS_RE = re.compile(
+    r"(?m)^token_loss_rate\((\w+), (\w+), machines\((\d+)\), ending_deforming\((\d+)\)\)")
 
 
 def items(text: str) -> list[str]:
@@ -173,14 +211,13 @@ def check_discursive(declared, edges, starts, accepting, axes, canonical) -> lis
     return errors
 
 
-def check_grammar(alphabet, genre, words) -> tuple[list[str], dict]:
+def check_grammar(alphabet, genre, words, edges, starts) -> tuple[list[str], dict]:
     text = GRAMMAR.read_text(encoding="utf-8")
     axes = alphabet["axes"]
     phrases = {name: tuple(items(body)) for name, body in PHRASE_RE.findall(text)}
     arcs = {name: tuple(items(body)) for name, body in ARC_RE.findall(text)}
     rows = [(g, f, s, arc, items(ph), items(st))
             for g, f, s, arc, ph, st in GRAMMAR_RE.findall(text)]
-    licenses = LICENSE_RE.findall(text)
     errors: list[str] = []
 
     seen = collections.Counter((f, s) for _, f, s, _, _, _ in rows)
@@ -230,6 +267,94 @@ def check_grammar(alphabet, genre, words) -> tuple[list[str], dict]:
     for name in sorted(set(phrases) - set(phrase_use)):
         errors.append(f"phrase {name} is declared but carried by no machine")
 
+    # the conservation-gap census: exactly the machines whose every step is
+    # neutral, no more and no fewer
+    declared_gaps = {(f, s) for _, f, s in GAP_RE.findall(text)}
+    actual_gaps = {key for key, word in words.items()
+                   if word and all(axes[a][2] == "neutral" for a in word if a in axes)}
+    for key in sorted(actual_gaps - declared_gaps):
+        errors.append(
+            f"{key[0]}/{key[1]} has no conserving or deforming step and no "
+            "machine_conservation_gap/4 row; the gap census has to be complete "
+            "or it is not a work list")
+    for key in sorted(declared_gaps - actual_gaps):
+        errors.append(
+            f"{key[0]}/{key[1]} carries a machine_conservation_gap/4 row and "
+            "does have a conserving or deforming step")
+
+    # The cross-source stance audit.
+    #
+    # The productive/deformation pairing was authored in
+    # knowledge/strategies/math/*_action_pairs.pl and this alphabet's 121 stance
+    # assignments were authored here. The two are independent, and the pairing
+    # can test one thing about the stances: a productive strategy should carry no
+    # deforming step and a deformation should carry one. Nobody has to review the
+    # stance table by hand for that to be checked.
+    stance_of_machine = {}
+    for _, family, signature, _, _, stance_list in rows:
+        stance_of_machine[(family, signature)] = stance_list
+    pairs = PAIR_RE.findall(text)
+    if not pairs:
+        errors.append("no incompatible_pair/6 rows; the stance audit cannot run")
+    for family, productive, deformation, _, step, left, right, klass in pairs:
+        for signature, side in ((productive, "productive"), (deformation, "deformation")):
+            if (family, signature) not in stance_of_machine:
+                errors.append(f"{family}/{signature} is paired and has no grammar row")
+        pstances = stance_of_machine.get((family, productive), [])
+        dstances = stance_of_machine.get((family, deformation), [])
+        if "deforming" in pstances:
+            errors.append(
+                f"{family}/{productive} is the PRODUCTIVE side of a pairing "
+                f"authored in the action-pair sources and carries a deforming "
+                f"step ({pstances}); either a stance assignment here is wrong or "
+                "the pairing is")
+        if dstances and "deforming" not in dstances:
+            errors.append(
+                f"{family}/{deformation} is the DEFORMATION side of a pairing "
+                f"authored in the action-pair sources and carries no deforming "
+                f"step ({dstances}); either a stance assignment here is wrong or "
+                "the pairing is")
+        if klass not in ("substantive_break", "substantive_keep",
+                         "register_divergence", "same_register_neutral"):
+            errors.append(f"{family}/{productive}: divergence class {klass} is unknown")
+        word_left = words.get((family, productive), ())
+        word_right = words.get((family, deformation), ())
+        index = int(step) - 1
+        if not (0 <= index < min(len(word_left), len(word_right))):
+            errors.append(f"{family}/{productive}: divergence step {step} is out of range")
+        elif (word_left[index], word_right[index]) != (left, right):
+            errors.append(
+                f"{family}/{productive}: divergence names {left}/{right} and the "
+                f"words have {word_left[index]}/{word_right[index]} at step {step}")
+        elif any(word_left[i] != word_right[i] for i in range(index)):
+            errors.append(
+                f"{family}/{productive}: the two words already differ before "
+                f"step {step}, so that is not where they part")
+
+    # every answerability row has to be in the action-pair sources, verbatim
+    pair_text = "".join(
+        path.read_text(encoding="utf-8")
+        for path in sorted((ROOT / "knowledge/strategies/math").glob("*action_pairs*.pl")))
+    for _, _, signature, invariant, source in ANSWER_RE.findall(text):
+        if f"invariant({invariant})" not in pair_text:
+            errors.append(
+                f"machine_answerability names invariant({invariant}) for "
+                f"{signature}, which no action-pair source declares")
+
+    # the gap reasons have to classify correctly against the sources
+    declared_invariants = {
+        signature for _, _, signature, _, _ in ANSWER_RE.findall(text)}
+    for family, signature, reason in GAP_REASON_RE.findall(text):
+        has_invariant = signature in declared_invariants
+        if has_invariant and "EXTRACTION gap" not in reason:
+            errors.append(
+                f"{family}/{signature} declares an invariant and its gap reason "
+                "does not call it an extraction gap")
+        if not has_invariant and "AUTHORING gap" not in reason:
+            errors.append(
+                f"{family}/{signature} declares no invariant and its gap reason "
+                "does not call it an authoring gap")
+
     ends_deforming = {
         key: bool(word) and axes[word[-1]][2] == "deforming"
         for key, word in words.items() if all(a in axes for a in word)
@@ -238,36 +363,109 @@ def check_grammar(alphabet, genre, words) -> tuple[list[str], dict]:
     for key, word in words.items():
         for action in set(word):
             holders[action].append(key)
-    for g, action, context, verdict in licenses:
-        if verdict not in VERDICTS:
-            errors.append(f"{action}: verdict {verdict} is not one of {VERDICTS}")
-        if action not in axes:
-            errors.append(f"{action}: no action_register/4 row")
+
+    # The interruption model carries no verdicts, and the check enforces that.
+    # A verdict about which reading is running would foreclose the one the owner
+    # says he is sometimes surprised by, so its absence is a property to hold.
+    triggers = {name for name in TRIGGER_RE.findall(text)}
+    if "verdict(" in text:
+        errors.append(
+            "the grammar still emits a verdict(_); the interruption model was "
+            "replaced by interruption_trigger/4 precisely because a verdict "
+            "forecloses a reading that the owner reports sometimes lands well")
+    if triggers != {"contradiction_loop", "unmoored_utterance"}:
+        errors.append(
+            f"interruption_trigger names {sorted(triggers)}; the two conditions "
+            "the owner stated are contradiction_loop and unmoored_utterance")
+
+    instances = INSTANCE_RE.findall(text)
+    for _, family, signature, trigger in instances:
+        if trigger not in triggers:
+            errors.append(f"{family}/{signature}: trigger {trigger} is not declared")
+        if trigger != "contradiction_loop":
             continue
-        if axes[action][0] != g:
-            errors.append(f"{action}: license says genre {g}, alphabet says {axes[action][0]}")
-        if verdict != "stop":
-            continue
-        if context == "any_context":
-            carriers = holders[action]
-        else:
-            carriers = [k for k, w in words.items()
-                        if any(w[i] == context and w[i + 1] == action
-                               for i in range(len(w) - 1))]
-        survivors = sorted(f"{k[0]}/{k[1]}" for k in carriers if not ends_deforming.get(k, True))
-        if survivors:
+        key = (family, signature)
+        adjacency = collections.defaultdict(set)
+        for source, _, target in edges.get(key, ()):
+            adjacency[source].add(target)
+        stack, cyclic = [(starts[key], (starts[key],))], False
+        while stack and not cyclic:
+            state, path = stack.pop()
+            for target in sorted(adjacency.get(state, ())):
+                if target in path:
+                    cyclic = True
+                    break
+                stack.append((target, path + (target,)))
+        if not cyclic:
             errors.append(
-                f"{action} after {context} is a stop, but these machines carrying "
-                f"it do not end on a deforming step: {survivors}")
-        if not carriers:
-            errors.append(f"{action} after {context} is a stop with no carrier")
+                f"{family}/{signature} carries a contradiction_loop instance and "
+                "has no cycle reachable from its start")
+    looping = {
+        (f, s) for f, s in
+        [(m[1], m[2]) for m in instances if m[3] == "contradiction_loop"]}
+    for key in sorted(words):
+        adjacency = collections.defaultdict(set)
+        for source, _, target in edges.get(key, ()):
+            adjacency[source].add(target)
+        stack, cyclic = [(starts[key], (starts[key],))], False
+        while stack and not cyclic:
+            state, path = stack.pop()
+            for target in sorted(adjacency.get(state, ())):
+                if target in path:
+                    cyclic = True
+                    break
+                stack.append((target, path + (target,)))
+        if cyclic and key not in looping:
+            errors.append(
+                f"{key[0]}/{key[1]} has a cycle reachable from its start and no "
+                "contradiction_loop instance")
+
+    # every incompatible pair has to have its reading held open, and vice versa
+    held = {(f, p, d): int(step) for f, p, d, step in HELD_RE.findall(text)}
+    paired_keys = {(f, p, d): int(step) for f, p, d, _, step, _, _, _ in pairs}
+    for key in sorted(set(paired_keys) - set(held)):
+        errors.append(
+            f"{key[0]}/{key[1]} against {key[2]} is an incompatible pair with no "
+            "reading_held_open row; holding both readings open is the default and "
+            "has no exceptions")
+    for key in sorted(set(held) - set(paired_keys)):
+        errors.append(f"reading_held_open names {key}, which is not a pair")
+    for key, step in sorted(held.items()):
+        if paired_keys.get(key) != step:
+            errors.append(
+                f"{key[0]}/{key[1]}: reading_held_open says step {step} and the "
+                f"pair says {paired_keys.get(key)}")
+
+    # the census has to match the corpus it summarizes
+    for genre, action, total, losing in CENSUS_RE.findall(text):
+        carriers = holders.get(action, [])
+        if len(carriers) != int(total):
+            errors.append(
+                f"token_loss_rate({action}) says {total} machines and the corpus "
+                f"has {len(carriers)}")
+        actual = sum(1 for c in carriers if ends_deforming.get(c))
+        if actual != int(losing):
+            errors.append(
+                f"token_loss_rate({action}) says {losing} end deforming and the "
+                f"corpus has {actual}")
+        if len(carriers) < 4:
+            errors.append(
+                f"token_loss_rate({action}) reports on {len(carriers)} machines, "
+                "below the floor the builder sets")
 
     summary = {
+        "gaps": len(declared_gaps),
+        "pairs": len(pairs),
+        "answerability": len(ANSWER_RE.findall(text)),
+        "divergence_classes": dict(sorted(
+            collections.Counter(k for *_, k in pairs).items())),
         "phrases": len(phrases),
         "arcs": len(arcs),
         "rows": len(rows),
-        "licenses": len(licenses),
-        "verdicts": dict(sorted(collections.Counter(v for *_, v in licenses).items())),
+        "triggers": len(triggers),
+        "instances": len(instances),
+        "held": len(held),
+        "census": len(CENSUS_RE.findall(text)),
         "arc_use": arc_use,
         "phrase_use": phrase_use,
         "words": words,
@@ -332,7 +530,7 @@ def main() -> int:
         return 1
 
     errors += check_discursive(declared, edges, starts, accepting, alphabet["axes"], canonical)
-    grammar_errors, summary = check_grammar(alphabet, genre, words)
+    grammar_errors, summary = check_grammar(alphabet, genre, words, edges, starts)
     errors += grammar_errors
 
     for path in (BUILDER, Path(__file__)):
@@ -378,8 +576,19 @@ def main() -> int:
     print("PASS every stances row is its machine's word through action_register/4, "
           "and every arc is that row collapsed")
     print("PASS every phrases row rebuilds its machine's action word exactly")
-    print(f"PASS verdicts: every stop row survives its carriers "
-          f"({summary['verdicts']})")
+    print(f"PASS the conservation-gap census is exactly the machines with no "
+          f"conserving or deforming step ({summary['gaps']}), each reason "
+          "classified against the action-pair sources")
+    print(f"PASS cross-source stance audit: over {summary['pairs']} pairings "
+          "authored in the action-pair sources, no productive strategy carries a "
+          "deforming step and every deformation carries one")
+    print(f"PASS answerability: {summary['answerability']} invariant rows, each "
+          "declared in an action-pair source; every divergence step recomputed "
+          "from the two words")
+    print(f"PASS interruption model: {summary['triggers']} authored triggers, "
+          f"{summary['instances']} instance(s) in this corpus, no verdicts anywhere")
+    print(f"PASS both readings of every one of {summary['held']} diverged pairs "
+          "are held open, and each census row matches the corpus")
     print()
     print("Compression up the layers:")
     print(f"  machines, both genres            : {len(words)}")
@@ -395,6 +604,11 @@ def main() -> int:
     print("  most carried:")
     for name, count in summary["phrase_use"].most_common(6):
         print(f"      {count:3d}  {name}")
+    print()
+    print("Answerability and incompatibility, read from the action-pair sources:")
+    print(f"  invariant rows                   : {summary['answerability']}")
+    print(f"  incompatible pairs               : {summary['pairs']}")
+    print(f"  divergence classes               : {summary['divergence_classes']}")
     print()
     print("Discursive genre provenance:")
     print(f"  edges a predicate here carries   : {provenance['grounded']}")

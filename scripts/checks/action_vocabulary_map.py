@@ -103,6 +103,63 @@ PRE_FLAG_SCOPE_KEYS = frozenset(
     }
 )
 
+# Stance-consistency drift.
+#
+# A local label whose own words say preserve, retain, or confirm, sitting under a
+# canonical action whose stance is not conserving -- or a label saying lose, omit,
+# ignore, or drop under an action that is not deforming -- is usually a mistake in
+# the map, and it was one twice: retain_unchanged carried eleven rows and three
+# normative jobs until the retention split, and two machines that had looked like
+# they record nothing turned out to conserve something their deformation partners
+# lose. So the audit that found that runs on every check now.
+#
+# Some inversions are deliberate. Each one below has to say why, because "the
+# label says preserve and the stance is deforming" is exactly what a mistake
+# looks like, and the only thing separating the two is an argument.
+KEEP_WORDS = re.compile(r"^(preserve|retain|conserve|confirm|certify|verify)|_certified$")
+LOSE_WORDS = re.compile(
+    r"^(lose|lost|omit|omitted|ignore|drop|discard|skip|stop_before|fail|"
+    r"confuse|misread|double|overcount)|_not_checked$|_ignored$")
+
+STANCE_INVERSIONS = {
+    "set_aside_irrelevant_attribute":
+        "the labels all begin ignore_, and setting aside a property the "
+        "conclusion does not depend on is correct; treat_relevant_as_irrelevant "
+        "is the deforming counterpart, and keeping the two apart is the point",
+    "retain_where_change_was_due":
+        "the labels all say retain or preserve or unchanged, and the retention "
+        "is the deformation because the step obliged a change",
+    "record_loss":
+        "two labels say preserve_result_but_lose_X; the map takes the loss "
+        "clause because the machine is a deformation, and the kept-result "
+        "clause is a distinction the alphabet drops",
+    "exhaust_resource":
+        "the label says fail_to_retrieve, and a resource met at its limit is "
+        "the ORR crisis rather than a break in what the strategy had to keep",
+    "filter_by_constraint":
+        "the labels say retain_pairs_with_perimeter and the like; retaining is "
+        "set membership in a search -- which candidates passed the constraint -- "
+        "and not a quantity the strategy owed",
+    "name_result":
+        "the labels say certify_equivalent and retain_all_maximal_frequencies; "
+        "both are terminal edges whose keep-word describes the answer's content, "
+        "the equivalence verdict and the set of modes, rather than a conservation",
+    "register_givens":
+        "nine statistics machines open on preserve_data_set. The position rule "
+        "decides these: a label naming what is kept, on a machine's first edge, "
+        "is holding the givens rather than closing a conservation",
+    "retain_unchanged":
+        "the residue of the retention split. retain_known_side and "
+        "retain_one_known_dimension carry a quantity to the next step where the "
+        "strategy owes it nothing; the obligated retentions went to "
+        "retain_what_must_survive and the obliged-to-change ones to "
+        "retain_where_change_was_due",
+    "select_unit_scale":
+        "retain_lcm_as_composite_iteration_unit holds the least common multiple "
+        "as the unit the next edge iterates; choosing what to work in is not "
+        "keeping something owed",
+}
+
 # The two canonical actions vocabulary_licenses vl005 and vl006 oblige to stay
 # apart: the entries are HIGH risk precisely because students confuse sharing
 # with measuring, so a label may map to one or the other, never to both.
@@ -464,6 +521,49 @@ def check_structure(
                 "disambiguation obligation it carries"
             )
 
+    # stance-consistency audit
+    words_by_action = defaultdict(lambda: {"keep": [], "lose": []})
+    for row in rows:
+        label, canonical = row["label"], row["canonical"]
+        where = f"{row['family']}/{row['signature']}:{label}"
+        if KEEP_WORDS.search(label):
+            words_by_action[canonical]["keep"].append(where)
+        elif LOSE_WORDS.search(label):
+            words_by_action[canonical]["lose"].append(where)
+    for canonical, found in sorted(words_by_action.items()):
+        if canonical not in axes:
+            continue
+        stance = axes[canonical][2]
+        if canonical in STANCE_INVERSIONS:
+            continue
+        if found["keep"] and found["lose"]:
+            errors.append(
+                f"{canonical} [{stance}] carries both keep-words "
+                f"({found['keep'][0]}) and lose-words ({found['lose'][0]}); one "
+                "action cannot hold two normative bearings, so either split it "
+                "or record the inversion in STANCE_INVERSIONS with its reason")
+        elif found["keep"] and stance != "conserving":
+            errors.append(
+                f"{canonical} [{stance}] carries keep-words "
+                f"({', '.join(found['keep'][:3])}); either its stance is wrong, "
+                "or those rows belong under a conserving action, or the "
+                "inversion is deliberate and belongs in STANCE_INVERSIONS")
+        elif found["lose"] and stance != "deforming":
+            errors.append(
+                f"{canonical} [{stance}] carries lose-words "
+                f"({', '.join(found['lose'][:3])}); either its stance is wrong, "
+                "or those rows belong under a deforming action, or the "
+                "inversion is deliberate and belongs in STANCE_INVERSIONS")
+    for canonical in sorted(STANCE_INVERSIONS):
+        if canonical not in alphabet:
+            errors.append(
+                f"STANCE_INVERSIONS names {canonical}, which is not a declared "
+                "canonical action; a stale exemption hides real drift")
+        elif canonical not in words_by_action:
+            errors.append(
+                f"STANCE_INVERSIONS exempts {canonical}, which no longer carries "
+                "any keep-word or lose-word row; drop the exemption")
+
     for sense in DIVISION_SENSES:
         if sense not in alphabet:
             errors.append(
@@ -653,6 +753,10 @@ def main() -> int:
     )
     print(
         f"PASS kinship: {len(kinship)} pairs, every one crossing the genres"
+    )
+    print(
+        f"PASS stance consistency: no action holds two normative bearings; "
+        f"{len(STANCE_INVERSIONS)} deliberate inversions, each with its reason"
     )
     print("PASS evidence: every row names its signature and a state transition")
     print(

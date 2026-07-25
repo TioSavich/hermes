@@ -3,17 +3,37 @@
 :- multifile automaton_tuple/6.
 :- multifile automaton_transition/6.
 
+automaton_tuple(multiplication, add_counts_without_composite_unit, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([see_groups_and_items, count_groups_as_items, count_items_as_items, add_uncoordinated_counts, lose_composite_unit]), start(q_start), accepting([q_accept])).
+automaton_tuple(multiplication, add_instead_of_multiply, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([read_equal_groups, treat_group_count_and_group_size_as_addends, add_uncoordinated_counts, lose_equal_group_iteration]), start(q_start), accepting([q_accept])).
 automaton_tuple(multiplication, add_numbers_as_common_multiple, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([read_two_numbers, substitute_addition_for_multiple_generation, add_inputs, omit_divisibility_check]), start(q_start), accepting([q_accept])).
 automaton_tuple(multiplication, common_factor_intersection, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([enumerate_positive_divisors, enumerate_positive_divisors, intersect_factor_sets, select_greatest_common_factor]), start(q_start), accepting([q_accept])).
 automaton_tuple(multiplication, common_multiple_sequence, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([coordinate_multiples_of, locate_least_common_multiple, retain_lcm_as_composite_iteration_unit, iterate_common_multiple_generator]), start(q_start), accepting([q_accept])).
 automaton_tuple(multiplication, commute_factors_preserve_product, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([compare_factor_orders, compute_original_product, commute_factors, compute_commuted_product, preserve_product_under_commutation]), start(q_start), accepting([q_accept])).
+automaton_tuple(multiplication, context_free_fact_family_guess, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([recognize_target_factor_pair, retrieve_product_without_referent_units, substitute_alternate_factor_pair, answer_from_context_free_fact_family, lose_referent_units]), start(q_start), accepting([q_accept])).
 automaton_tuple(multiplication, coordinate_groups_items, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([form_equal_groups, coordinate_group_count_with_item_count, iterate_composite_unit, name_total_items]), start(q_start), accepting([q_accept])).
 automaton_tuple(multiplication, distribute_group_size_split, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([split_group_size, compute_partial_product, compute_partial_product, recompose_partial_products, preserve_distributed_groups]), start(q_start), accepting([q_accept])).
+automaton_tuple(multiplication, drop_regrouping_remainder, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([form_equal_groups, regroup_total_as_base_bundles, drop_regrouping_leftover, name_only_full_base_bundles, lose_regrouping_remainder]), start(q_start), accepting([q_accept])).
+automaton_tuple(multiplication, drop_second_partial_product, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([split_group_size, compute_partial_product, omit_partial_product, lose_distributed_part]), start(q_start), accepting([q_accept])).
 automaton_tuple(multiplication, factors_of_first_number_only, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([enumerate_positive_divisors, omit_divisor_search_for, omit_factor_set_intersection, report_first_factor_set_as_common]), start(q_start), accepting([q_accept])).
+automaton_tuple(multiplication, known_product_adjustment, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([recall_nearby_known_product, identify_missing_equal_groups, compute_extra_equal_group_product, adjust_known_product, preserve_equal_group_adjustment]), start(q_start), accepting([q_accept])).
+automaton_tuple(multiplication, known_product_without_adjustment, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([recall_nearby_known_product, identify_missing_equal_groups, omit_extra_equal_group_product, answer_with_nearby_product, lose_equal_group_adjustment]), start(q_start), accepting([q_accept])).
 automaton_tuple(multiplication, multiplication_fact_retrieval, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([recognize_factor_pair, retrieve_known_multiplication_fact, bind_product_to_factor_pair, preserve_referent_units_for_product]), start(q_start), accepting([q_accept])).
 automaton_tuple(multiplication, regroup_to_base_preserving_total, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([form_equal_groups, regroup_total_as_base_bundles, preserve_leftover_after_regrouping, name_total_from_bundles_and_leftover]), start(q_start), accepting([q_accept])).
 automaton_tuple(multiplication, repeat_equal_groups, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([hold_group_size_as_repeated_addend, hold_number_of_groups_as_iterations, add_equal_group_repeatedly, name_accumulated_total]), start(q_start), accepting([q_accept])).
 automaton_tuple(multiplication, repeat_group_size_by_itself, states([q_start, q_step_1, q_step_2, q_step_3, q_accept]), actions([hold_group_size_as_repeated_addend, use_group_size_as_iteration_count, add_equal_group_repeatedly, lose_group_count_role]), start(q_start), accepting([q_accept])).
+automaton_tuple(multiplication, rigid_factor_order_roles, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_accept]), actions([compare_factor_orders, keep_multiplier_multiplicand_roles_fixed, reject_commuted_factor_order, require_recomputation_in_original_order, lose_factor_order_equivalence]), start(q_start), accepting([q_accept])).
+automaton_tuple(multiplication, sequential_recompute_commuted_products, states([q_start, q_step_1, q_step_2, q_step_3, q_step_4, q_step_5, q_accept]), actions([compare_factor_orders, miss_structural_commutative_equivalence, compute_original_product, compute_commuted_product, compare_final_products, lose_commutative_shortcut]), start(q_start), accepting([q_accept])).
+
+automaton_transition(multiplication, add_counts_without_composite_unit, q_start, see_groups_and_items, q_step_1, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:83'))).
+automaton_transition(multiplication, add_counts_without_composite_unit, q_step_1, count_groups_as_items, q_step_2, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:83'))).
+automaton_transition(multiplication, add_counts_without_composite_unit, q_step_2, count_items_as_items, q_step_3, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:83'))).
+automaton_transition(multiplication, add_counts_without_composite_unit, q_step_3, add_uncoordinated_counts, q_step_4, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:83'))).
+automaton_transition(multiplication, add_counts_without_composite_unit, q_step_4, lose_composite_unit, q_accept, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:83'))).
+
+automaton_transition(multiplication, add_instead_of_multiply, q_start, read_equal_groups, q_step_1, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:106'))).
+automaton_transition(multiplication, add_instead_of_multiply, q_step_1, treat_group_count_and_group_size_as_addends, q_step_2, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:106'))).
+automaton_transition(multiplication, add_instead_of_multiply, q_step_2, add_uncoordinated_counts, q_step_3, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:106'))).
+automaton_transition(multiplication, add_instead_of_multiply, q_step_3, lose_equal_group_iteration, q_accept, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:106'))).
 
 automaton_transition(multiplication, add_numbers_as_common_multiple, q_start, read_two_numbers, q_step_1, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:260'))).
 automaton_transition(multiplication, add_numbers_as_common_multiple, q_step_1, substitute_addition_for_multiple_generation, q_step_2, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:260'))).
@@ -36,6 +56,12 @@ automaton_transition(multiplication, commute_factors_preserve_product, q_step_2,
 automaton_transition(multiplication, commute_factors_preserve_product, q_step_3, compute_commuted_product, q_step_4, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:441'))).
 automaton_transition(multiplication, commute_factors_preserve_product, q_step_4, preserve_product_under_commutation, q_accept, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:441'))).
 
+automaton_transition(multiplication, context_free_fact_family_guess, q_start, recognize_target_factor_pair, q_step_1, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:535'))).
+automaton_transition(multiplication, context_free_fact_family_guess, q_step_1, retrieve_product_without_referent_units, q_step_2, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:535'))).
+automaton_transition(multiplication, context_free_fact_family_guess, q_step_2, substitute_alternate_factor_pair, q_step_3, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:535'))).
+automaton_transition(multiplication, context_free_fact_family_guess, q_step_3, answer_from_context_free_fact_family, q_step_4, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:535'))).
+automaton_transition(multiplication, context_free_fact_family_guess, q_step_4, lose_referent_units, q_accept, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:535'))).
+
 automaton_transition(multiplication, coordinate_groups_items, q_start, form_equal_groups, q_step_1, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:61'))).
 automaton_transition(multiplication, coordinate_groups_items, q_step_1, coordinate_group_count_with_item_count, q_step_2, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:61'))).
 automaton_transition(multiplication, coordinate_groups_items, q_step_2, iterate_composite_unit, q_step_3, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:61'))).
@@ -47,10 +73,33 @@ automaton_transition(multiplication, distribute_group_size_split, q_step_2, comp
 automaton_transition(multiplication, distribute_group_size_split, q_step_3, recompose_partial_products, q_step_4, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:289'))).
 automaton_transition(multiplication, distribute_group_size_split, q_step_4, preserve_distributed_groups, q_accept, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:289'))).
 
+automaton_transition(multiplication, drop_regrouping_remainder, q_start, form_equal_groups, q_step_1, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:365'))).
+automaton_transition(multiplication, drop_regrouping_remainder, q_step_1, regroup_total_as_base_bundles, q_step_2, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:365'))).
+automaton_transition(multiplication, drop_regrouping_remainder, q_step_2, drop_regrouping_leftover, q_step_3, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:365'))).
+automaton_transition(multiplication, drop_regrouping_remainder, q_step_3, name_only_full_base_bundles, q_step_4, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:365'))).
+automaton_transition(multiplication, drop_regrouping_remainder, q_step_4, lose_regrouping_remainder, q_accept, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:365'))).
+
+automaton_transition(multiplication, drop_second_partial_product, q_start, split_group_size, q_step_1, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:314'))).
+automaton_transition(multiplication, drop_second_partial_product, q_step_1, compute_partial_product, q_step_2, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:314'))).
+automaton_transition(multiplication, drop_second_partial_product, q_step_2, omit_partial_product, q_step_3, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:314'))).
+automaton_transition(multiplication, drop_second_partial_product, q_step_3, lose_distributed_part, q_accept, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:314'))).
+
 automaton_transition(multiplication, factors_of_first_number_only, q_start, enumerate_positive_divisors, q_step_1, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:207'))).
 automaton_transition(multiplication, factors_of_first_number_only, q_step_1, omit_divisor_search_for, q_step_2, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:207'))).
 automaton_transition(multiplication, factors_of_first_number_only, q_step_2, omit_factor_set_intersection, q_step_3, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:207'))).
 automaton_transition(multiplication, factors_of_first_number_only, q_step_3, report_first_factor_set_as_common, q_accept, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:207'))).
+
+automaton_transition(multiplication, known_product_adjustment, q_start, recall_nearby_known_product, q_step_1, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:393'))).
+automaton_transition(multiplication, known_product_adjustment, q_step_1, identify_missing_equal_groups, q_step_2, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:393'))).
+automaton_transition(multiplication, known_product_adjustment, q_step_2, compute_extra_equal_group_product, q_step_3, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:393'))).
+automaton_transition(multiplication, known_product_adjustment, q_step_3, adjust_known_product, q_step_4, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:393'))).
+automaton_transition(multiplication, known_product_adjustment, q_step_4, preserve_equal_group_adjustment, q_accept, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:393'))).
+
+automaton_transition(multiplication, known_product_without_adjustment, q_start, recall_nearby_known_product, q_step_1, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:416'))).
+automaton_transition(multiplication, known_product_without_adjustment, q_step_1, identify_missing_equal_groups, q_step_2, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:416'))).
+automaton_transition(multiplication, known_product_without_adjustment, q_step_2, omit_extra_equal_group_product, q_step_3, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:416'))).
+automaton_transition(multiplication, known_product_without_adjustment, q_step_3, answer_with_nearby_product, q_step_4, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:416'))).
+automaton_transition(multiplication, known_product_without_adjustment, q_step_4, lose_equal_group_adjustment, q_accept, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:416'))).
 
 automaton_transition(multiplication, multiplication_fact_retrieval, q_start, recognize_factor_pair, q_step_1, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:514'))).
 automaton_transition(multiplication, multiplication_fact_retrieval, q_step_1, retrieve_known_multiplication_fact, q_step_2, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:514'))).
@@ -71,6 +120,19 @@ automaton_transition(multiplication, repeat_group_size_by_itself, q_start, hold_
 automaton_transition(multiplication, repeat_group_size_by_itself, q_step_1, use_group_size_as_iteration_count, q_step_2, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:154'))).
 automaton_transition(multiplication, repeat_group_size_by_itself, q_step_2, add_equal_group_repeatedly, q_step_3, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:154'))).
 automaton_transition(multiplication, repeat_group_size_by_itself, q_step_3, lose_group_count_role, q_accept, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:154'))).
+
+automaton_transition(multiplication, rigid_factor_order_roles, q_start, compare_factor_orders, q_step_1, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:464'))).
+automaton_transition(multiplication, rigid_factor_order_roles, q_step_1, keep_multiplier_multiplicand_roles_fixed, q_step_2, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:464'))).
+automaton_transition(multiplication, rigid_factor_order_roles, q_step_2, reject_commuted_factor_order, q_step_3, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:464'))).
+automaton_transition(multiplication, rigid_factor_order_roles, q_step_3, require_recomputation_in_original_order, q_step_4, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:464'))).
+automaton_transition(multiplication, rigid_factor_order_roles, q_step_4, lose_factor_order_equivalence, q_accept, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:464'))).
+
+automaton_transition(multiplication, sequential_recompute_commuted_products, q_start, compare_factor_orders, q_step_1, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:488'))).
+automaton_transition(multiplication, sequential_recompute_commuted_products, q_step_1, miss_structural_commutative_equivalence, q_step_2, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:488'))).
+automaton_transition(multiplication, sequential_recompute_commuted_products, q_step_2, compute_original_product, q_step_3, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:488'))).
+automaton_transition(multiplication, sequential_recompute_commuted_products, q_step_3, compute_commuted_product, q_step_4, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:488'))).
+automaton_transition(multiplication, sequential_recompute_commuted_products, q_step_4, compare_final_products, q_step_5, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:488'))).
+automaton_transition(multiplication, sequential_recompute_commuted_products, q_step_5, lose_commutative_shortcut, q_accept, provenance(static('knowledge/strategies/math/smr_mult_action_pairs.pl:488'))).
 
 % Bounded live traces reconstructed from returned step labels.
 automaton_transition(multiplication, add_numbers_as_common_multiple, q_start, read_two_numbers, q_step_1, provenance(observed(contract_example))).

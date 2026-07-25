@@ -34,3 +34,7 @@ CLAUDE.md
 scripts/research/articulation_out/
 .claude/worktrees/
 .claude/
+
+# SQLite write-ahead log and shared-memory files: process-local, never shipped
+data/research/*.db-wal
+data/research/*.db-shm

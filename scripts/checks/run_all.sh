@@ -6,6 +6,11 @@
 set -euo pipefail
 CHECKS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# The two Prolog checks need -g main -t halt. Loading a file whose entry point is
+# :- initialization(main, main) with -s does not run main: both checks sat in this
+# suite contributing exit 0 without asserting anything. Found 2026-07-25 while
+# checking whether a change to strategy_recognizer.pl had broken its round trips;
+# it had not, and neither had anything else, because the check was not running.
 run() {
     echo "== $1"
     "${@:2}"
@@ -18,13 +23,16 @@ run witness_defaults.py     python3 "$CHECKS_DIR/witness_defaults.py"
 run static_route_containment.py python3 "$CHECKS_DIR/static_route_containment.py"
 run required_system_prompts.py python3 "$CHECKS_DIR/required_system_prompts.py"
 run mcp_search_rows.py      python3 "$CHECKS_DIR/mcp_search_rows.py"
-run math_claim_language.pl  swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/math_claim_language.pl"
-run strategy_recognizer.pl  swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/strategy_recognizer.pl"
+run math_claim_language.pl  swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/math_claim_language.pl" -g main -t halt
+run strategy_recognizer.pl  swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/strategy_recognizer.pl" -g main -t halt
 run mobius_band_readers.py  python3 "$CHECKS_DIR/mobius_band_readers.py"
 run transition_tables.py    python3 "$CHECKS_DIR/transition_tables.py"
 run vocabulary_licenses.py  python3 "$CHECKS_DIR/vocabulary_licenses.py"
 run action_vocabulary_map.py python3 "$CHECKS_DIR/action_vocabulary_map.py"
 run action_grammar.py       python3 "$CHECKS_DIR/action_grammar.py"
+run canonical_phrases.py    python3 "$CHECKS_DIR/canonical_phrases.py"
+run utterance_layers.py     python3 "$CHECKS_DIR/utterance_layers.py"
+run attested_phrases.py     python3 "$CHECKS_DIR/attested_phrases.py"
 run extract_capability_registry python3 "$CHECKS_DIR/../extract_capability_registry.py" --check
 run render_contract.py      python3 "$CHECKS_DIR/render_contract.py"
 run strict_load.sh          bash "$CHECKS_DIR/strict_load.sh"

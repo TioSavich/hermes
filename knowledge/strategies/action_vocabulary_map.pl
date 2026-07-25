@@ -44,6 +44,17 @@
  * because students confuse them, so share_into_known_groups and
  * measure_out_group_size are two canonical actions and no label maps to both.
  *
+ * Forty-three more machines arrived on 2026-07-25, when
+ * knowledge/strategies/math/action_automata_registry.pl gained signature rows
+ * for automata that had been implemented in the action-pair modules all along
+ * and never declared, so the transition-table builder had never extracted
+ * them. Among them are the Steffe/Olive/Hackenberg fraction schemes
+ * splitting, solve_for_unit, recursive_partition and
+ * improper_fraction_iteration. They brought 164 new labels and needed exactly
+ * one new canonical action, misread_intermediate_value. That the other 163 fit
+ * an alphabet authored before these machines were extractable is the first
+ * evidence it generalizes past the corpus it was written on.
+ *
  * Two genres. The computational actions describe steps that do something
  * to a quantity; the discursive actions describe steps that do something to
  * a deontic score, and they answer to machinery this repository already
@@ -63,6 +74,19 @@
  * every one of them, five of those arcs spanning both genres.
  * knowledge/strategies/action_grammar.pl carries the arcs, the
  * factorization, and the token-in-context verdicts.
+ *
+ * Retention splits by what the retention owes. retain_unchanged carried
+ * eleven rows and three normative jobs: the strategy kept what it owed, or
+ * kept something it was obliged to change, or carried a value the strategy
+ * owed nothing to. Stance is a property of an action here, so an action whose
+ * members disagree about stance can carry neither reading. It is three
+ * actions now, and the inverting pair is the finding: retaining is conserving
+ * in retain_what_must_survive, where change was not due, and deforming in
+ * retain_where_change_was_due, where it was. Two machines that had looked
+ * like they record nothing turn out to record a conservation --
+ * division/measure_groups_of_size keeps the leftover its deformation partner
+ * loses, and measurement/unit_preserving_measured_quantity_change keeps the
+ * unit its partner discards.
  *
  * The overbroad action is gone. The first pass collected 27 labels under a
  * single substitute_available_relation, which the report that accompanied it
@@ -252,6 +276,8 @@ canonical_action(measure_quantity, gloss("Determine a quantity's measure with th
                  citation("fraction as a measure: Simon et al. 2018 (state_vocabulary q_measure_with_unit_fraction); measurement construct: vocabulary_licenses vl032, risk HIGH -- disambiguation obligation recorded")).
 canonical_action(misname_result, gloss("Name a value that answers a different question than the one asked."),
                  coined("house name; the tables carry these as name_X_as_answer and report_X_as_Y labels")).
+canonical_action(misread_intermediate_value, gloss("Read a value the computation itself produced as a different value."),
+                 coined("house name. Distinguished from misname_result, which is about the answer, and from the substitute_* family, which puts one relation in place of another: here a carry or a zero column is simply read wrong mid-computation, and the rest of the procedure runs correctly on it")).
 canonical_action(name_result, gloss("Say which quantity the answer is."),
                  coined("house name; the tables distinguish naming the answer from writing it and from releasing it")).
 canonical_action(name_the_incompatible_token, gloss("Name the word in the utterance whose use in this context is what will not go through."),
@@ -298,8 +324,12 @@ canonical_action(replicate_equal_groups, gloss("Build the total as so many group
                  citation("equal groups / array / area: vocabulary_licenses vl009, risk MEDIUM")).
 canonical_action(restore_adjustment, gloss("Undo the rounding or the compensation so the original total is recovered."),
                  coined("house name for the closing half of a compensation strategy; the frameworks name the strategy, not its two halves")).
-canonical_action(retain_unchanged, gloss("Carry a quantity or a notation forward untouched where the next step will re-describe it."),
-                 coined("house name; distinguished from record_conservation, which closes a machine, and from verify_invariant, which certifies rather than carries")).
+canonical_action(retain_unchanged, gloss("Carry a quantity forward untouched where the strategy owes it nothing: the retention is working, not a conservation and not an omission."),
+                 coined("house name, narrowed by the retention split. retain_what_must_survive carries what the strategy is obliged to keep and retain_where_change_was_due carries what it was obliged to change; this action is what is left when neither obligation is in play")).
+canonical_action(retain_what_must_survive, gloss("Carry forward, unchanged, the quantity or relation the strategy is obliged not to lose."),
+                 coined("house name. Distinguished from record_conservation, which closes a machine, and from retain_unchanged, which carries a value the strategy owes nothing to. Its members are the retentions whose deformation partners lose the same thing: measure_groups_of_size keeps the leftover where share_into_divisor_groups loses it, and unit_preserving_measured_quantity_change keeps the unit where drop_unit_from_measured_quantity_change discards it")).
+canonical_action(retain_where_change_was_due, gloss("Carry a quantity forward unchanged where the step required it to change."),
+                 coined("house name, and the inversion of retain_what_must_survive. The complement of rename_in_place_of_transforming: one keeps the value and changes the name, the other keeps both where the transformation was owed")).
 canonical_action(retrieve_known_fact, gloss("Recall a stored fact instead of reconstructing it."),
                  citation("mastery, know from memory: vocabulary_licenses vl007, risk HIGH -- disambiguation obligation recorded; derived fact strategies: vl051, risk MEDIUM")).
 canonical_action(round_to_landmark, gloss("Replace an operand with a nearby landmark value."),
@@ -445,6 +475,7 @@ action_register(match_one_to_one, genre(computational), register(comparison), st
 action_register(measure_out_group_size, genre(computational), register(operation), stance(neutral)).
 action_register(measure_quantity, genre(computational), register(iteration), stance(neutral)).
 action_register(misname_result, genre(computational), register(inscription), stance(deforming)).
+action_register(misread_intermediate_value, genre(computational), register(constitution), stance(deforming)).
 action_register(name_result, genre(computational), register(inscription), stance(neutral)).
 action_register(name_the_incompatible_token, genre(discursive), register(comparison), stance(neutral)).
 action_register(omit_required_step, genre(computational), register(normative), stance(deforming)).
@@ -469,6 +500,8 @@ action_register(repair_the_commitment, genre(discursive), register(transformatio
 action_register(replicate_equal_groups, genre(computational), register(operation), stance(neutral)).
 action_register(restore_adjustment, genre(computational), register(transformation), stance(conserving)).
 action_register(retain_unchanged, genre(computational), register(transformation), stance(neutral)).
+action_register(retain_what_must_survive, genre(computational), register(transformation), stance(conserving)).
+action_register(retain_where_change_was_due, genre(computational), register(transformation), stance(deforming)).
 action_register(retrieve_known_fact, genre(computational), register(operation), stance(neutral)).
 action_register(round_to_landmark, genre(computational), register(transformation), stance(neutral)).
 action_register(scale_multiplicatively, genre(computational), register(transformation), stance(neutral)).
@@ -542,6 +575,26 @@ action_kinship(verify_invariant, test_compatibility,
 %                       rule decided between two defensible canonicals.
 % confidence(low)    -- the canonical action is the closest of a poor fit; the
 %                       row is a candidate for extending the alphabet.
+action_maps(addition, append_column_sum_without_carrying, align_addends_by_place_value, align_to_common_unit,
+            confidence(high),
+            evidence("addition/append_column_sum_without_carrying, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static only. bring both quantities into a shared unit, denominator, or decimal scale so they can be measured against each other."),
+            status(review_pending)).
+action_maps(addition, append_column_sum_without_carrying, compute_raw_column_sums_without_regrouping, omit_required_step,
+            confidence(high),
+            evidence("addition/append_column_sum_without_carrying, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static only. sums each column with the regrouping the column algorithm requires never running"),
+            status(review_pending)).
+action_maps(addition, append_column_sum_without_carrying, concatenate_partial_sums, substitute_operation,
+            confidence(high),
+            evidence("addition/append_column_sum_without_carrying, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static only. juxtaposes the column sums as digits where the algorithm adds them at their places"),
+            status(review_pending)).
+action_maps(addition, append_column_sum_without_carrying, lose_base_ten_regrouping, record_loss,
+            confidence(high),
+            evidence("addition/append_column_sum_without_carrying, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(addition, append_column_sum_without_carrying, write_full_column_sums_in_place, inscribe_result,
+            confidence(high),
+            evidence("addition/append_column_sum_without_carrying, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. write the result in notation."),
+            status(review_pending)).
 action_maps(addition, base_ones_chunking, add_base_chunk, combine_quantities,
             confidence(high),
             evidence("addition/base_ones_chunking, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, witnessed. join two quantities into their sum."),
@@ -630,6 +683,62 @@ action_maps(addition, count_on_from_larger, name_last_tick_as_sum, name_result,
             confidence(high),
             evidence("addition/count_on_from_larger, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, witnessed. say which quantity the answer is."),
             status(review_pending)).
+action_maps(addition, derived_fact_adjustment, adjust_known_sum_by, combine_quantities,
+            confidence(high),
+            evidence("addition/derived_fact_adjustment, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static only. adds the target-to-anchor distance onto the recalled sum"),
+            status(review_pending)).
+action_maps(addition, derived_fact_adjustment, compare_target_to_anchor, compare_magnitudes,
+            confidence(high),
+            evidence("addition/derived_fact_adjustment, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static only. reads how far the target sits from the recalled anchor fact, which is the amount the next edge adjusts by"),
+            status(review_pending)).
+action_maps(addition, derived_fact_adjustment, preserve_problem_relation, record_conservation,
+            confidence(high),
+            evidence("addition/derived_fact_adjustment, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static only. record that the strategy kept the relation it was obliged to keep."),
+            status(review_pending)).
+action_maps(addition, derived_fact_adjustment, recall_nearby_known_fact, retrieve_known_fact,
+            confidence(high),
+            evidence("addition/derived_fact_adjustment, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static only. recall a stored fact instead of reconstructing it."),
+            status(review_pending)).
+action_maps(addition, drop_carry_to_next_column, align_addends_by_place_value, align_to_common_unit,
+            confidence(high),
+            evidence("addition/drop_carry_to_next_column, q_start -> q_step_1: 1 of the machine's 6 distinct edges, static only. bring both quantities into a shared unit, denominator, or decimal scale so they can be measured against each other."),
+            status(review_pending)).
+action_maps(addition, drop_carry_to_next_column, compose_column_sum_without_carry, accumulate_total,
+            confidence(medium),
+            evidence("addition/drop_carry_to_next_column, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, static only. accumulates the column results with the carries already discarded"),
+            status(review_pending)).
+action_maps(addition, drop_carry_to_next_column, discard_generated_carries, treat_relevant_as_irrelevant,
+            confidence(high),
+            evidence("addition/drop_carry_to_next_column, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, static only. treat a relation the result depends on as though it did not bear on the result."),
+            status(review_pending)).
+action_maps(addition, drop_carry_to_next_column, lose_base_ten_regrouping, record_loss,
+            confidence(high),
+            evidence("addition/drop_carry_to_next_column, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(addition, drop_carry_to_next_column, process_columns_right_to_left, apply_stored_rule,
+            confidence(high),
+            evidence("addition/drop_carry_to_next_column, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, static only. carry out a remembered formula, rule, or prescribed procedural step."),
+            status(review_pending)).
+action_maps(addition, drop_carry_to_next_column, write_place_digits, inscribe_result,
+            confidence(high),
+            evidence("addition/drop_carry_to_next_column, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static only. write the result in notation."),
+            status(review_pending)).
+action_maps(addition, dropped_ones_chunk, add_base_chunk, combine_quantities,
+            confidence(high),
+            evidence("addition/dropped_ones_chunk, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static only. join two quantities into their sum."),
+            status(review_pending)).
+action_maps(addition, dropped_ones_chunk, decompose_second_addend, decompose_operand,
+            confidence(high),
+            evidence("addition/dropped_ones_chunk, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static only. split one operand into pieces a later step can use, not along place boundaries."),
+            status(review_pending)).
+action_maps(addition, dropped_ones_chunk, drop_ones_chunk, halt_before_completion,
+            confidence(high),
+            evidence("addition/dropped_ones_chunk, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static only. stops after the base chunk, leaving the ones chunk of the decomposition unused"),
+            status(review_pending)).
+action_maps(addition, dropped_ones_chunk, lose_decomposed_remainder, record_loss,
+            confidence(high),
+            evidence("addition/dropped_ones_chunk, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
 action_maps(addition, known_fact_retrieval, recognize_number_combination, register_givens,
             confidence(high),
             evidence("addition/known_fact_retrieval, q_start -> q_step_1: 1 of the machine's 3 distinct edges, witnessed. hold the given quantities, figure, or data set as the operands the strategy will work on."),
@@ -702,6 +811,22 @@ action_maps(addition, make_ten_split_leftover, split_other_addend, decompose_ope
             confidence(high),
             evidence("addition/make_ten_split_leftover, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, witnessed. split one operand into pieces a later step can use, not along place boundaries."),
             status(review_pending)).
+action_maps(addition, rote_derived_fact_rule_misfire, apply_verbal_rule_with_wrong_adjustment, apply_stored_rule,
+            confidence(medium),
+            evidence("addition/rote_derived_fact_rule_misfire, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static only. carries out a remembered verbal rule; that its adjustment is wrong is recorded at the machine's last edge"),
+            status(review_pending)).
+action_maps(addition, rote_derived_fact_rule_misfire, lose_problem_relation, record_loss,
+            confidence(high),
+            evidence("addition/rote_derived_fact_rule_misfire, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(addition, rote_derived_fact_rule_misfire, notice_that_numbers_are_near_but_not_how_near, read_operand_attribute,
+            confidence(medium),
+            evidence("addition/rote_derived_fact_rule_misfire, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static only. reads that the target is near the anchor without reading the distance, which is what the misfired rule then guesses"),
+            status(review_pending)).
+action_maps(addition, rote_derived_fact_rule_misfire, recall_nearby_known_fact, retrieve_known_fact,
+            confidence(high),
+            evidence("addition/rote_derived_fact_rule_misfire, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static only. recall a stored fact instead of reconstructing it."),
+            status(review_pending)).
 action_maps(addition, round_then_adjust, add_with_rounded_number, combine_quantities,
             confidence(high),
             evidence("addition/round_then_adjust, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, witnessed. join two quantities into their sum."),
@@ -745,6 +870,54 @@ action_maps(addition, round_without_adjusting, omit_adjustment, omit_required_st
 action_maps(addition, round_without_adjusting, round_up_by, round_to_landmark,
             confidence(high),
             evidence("addition/round_without_adjusting, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, witnessed. replace an operand with a nearby landmark value."),
+            status(review_pending)).
+action_maps(addition, unbalanced_make_base_compensation, add_compensation_to_larger, combine_quantities,
+            confidence(high),
+            evidence("addition/unbalanced_make_base_compensation, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, static only. adds the compensation onto the larger addend; the balanced transfer would have taken it from the other, which the next edge declines to do"),
+            status(review_pending)).
+action_maps(addition, unbalanced_make_base_compensation, count_distance_to_base, count_up_to_target,
+            confidence(high),
+            evidence("addition/unbalanced_make_base_compensation, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static only. count forward until a named target is reached, holding the distance travelled."),
+            status(review_pending)).
+action_maps(addition, unbalanced_make_base_compensation, identify_target_base, select_unit_scale,
+            confidence(high),
+            evidence("addition/unbalanced_make_base_compensation, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, static only. choose which unit, base, or scale to work in from among the available ones."),
+            status(review_pending)).
+action_maps(addition, unbalanced_make_base_compensation, leave_other_addend_unchanged, retain_where_change_was_due,
+            confidence(high),
+            evidence("addition/unbalanced_make_base_compensation, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, static only. leaves the second addend untouched at the edge where a balanced transfer obliged it to give up what the first received"),
+            status(review_pending)).
+action_maps(addition, unbalanced_make_base_compensation, lose_total_conservation, record_loss,
+            confidence(high),
+            evidence("addition/unbalanced_make_base_compensation, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(addition, unbalanced_make_base_compensation, order_addends, assign_roles,
+            confidence(high),
+            evidence("addition/unbalanced_make_base_compensation, q_start -> q_step_1: 1 of the machine's 6 distinct edges, static only. orders the two addends so that the later transfer from smaller to larger is defined"),
+            status(review_pending)).
+action_maps(addition, wrong_carry_amount_to_next_column, align_addends_by_place_value, align_to_common_unit,
+            confidence(high),
+            evidence("addition/wrong_carry_amount_to_next_column, q_start -> q_step_1: 1 of the machine's 6 distinct edges, static only. bring both quantities into a shared unit, denominator, or decimal scale so they can be measured against each other."),
+            status(review_pending)).
+action_maps(addition, wrong_carry_amount_to_next_column, carry_final_column_if_needed, regroup_to_base,
+            confidence(high),
+            evidence("addition/wrong_carry_amount_to_next_column, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, static only. trade a completed group of the smaller unit up into one of the larger."),
+            status(review_pending)).
+action_maps(addition, wrong_carry_amount_to_next_column, lose_base_ten_regrouping, record_loss,
+            confidence(high),
+            evidence("addition/wrong_carry_amount_to_next_column, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(addition, wrong_carry_amount_to_next_column, misread_carry_amount, misread_intermediate_value,
+            confidence(high),
+            evidence("addition/wrong_carry_amount_to_next_column, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static only. reads the generated carry as a different amount; the columns are then processed correctly on the wrong figure"),
+            status(review_pending)).
+action_maps(addition, wrong_carry_amount_to_next_column, process_columns_right_to_left, apply_stored_rule,
+            confidence(high),
+            evidence("addition/wrong_carry_amount_to_next_column, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, static only. carry out a remembered formula, rule, or prescribed procedural step."),
+            status(review_pending)).
+action_maps(addition, wrong_carry_amount_to_next_column, write_place_digits, inscribe_result,
+            confidence(high),
+            evidence("addition/wrong_carry_amount_to_next_column, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, static only. write the result in notation."),
             status(review_pending)).
 action_maps(algebraic, balance_preserving_linear_solution, apply_balance_preserving_steps, re_express_equivalently,
             confidence(high),
@@ -922,9 +1095,9 @@ action_maps(algebraic, one_sided_equation_operation, divide_remaining_expression
             confidence(high),
             evidence("algebraic/one_sided_equation_operation, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static only. divide the operands as numerals."),
             status(review_pending)).
-action_maps(algebraic, one_sided_equation_operation, leave_right_side_unchanged, retain_unchanged,
+action_maps(algebraic, one_sided_equation_operation, leave_right_side_unchanged, retain_where_change_was_due,
             confidence(high),
-            evidence("algebraic/one_sided_equation_operation, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. carry a quantity or a notation forward untouched where the next step will re-describe it."),
+            evidence("algebraic/one_sided_equation_operation, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. leaves the right side untouched at the edge after the constant was removed from the left; the equation's balance obliged the same removal on both sides, so the retention is where the imbalance enters"),
             status(review_pending)).
 action_maps(algebraic, one_sided_equation_operation, read_equals_as_instruction, substitute_symbol_reading,
             confidence(high),
@@ -993,6 +1166,62 @@ action_maps(algebraic, symbolic_expression_construction, preserve_operand_struct
 action_maps(algebraic, symbolic_expression_construction, select_operation, compose_expression,
             confidence(medium),
             evidence("algebraic/symbolic_expression_construction, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. chooses the operation that will join the declared variables into one expression"),
+            status(review_pending)).
+action_maps(calculus, factor_cancel_substitute, detect_zero_over_zero, test_criteria,
+            confidence(high),
+            evidence("calculus/factor_cancel_substitute, q_step_2 -> q_step_3: 1 of the machine's 8 distinct edges, static only. tests the indeterminate form, which is the precondition the cancelling routine needs"),
+            status(review_pending)).
+action_maps(calculus, factor_cancel_substitute, evaluate_reduced_at_point, evaluate_expression,
+            confidence(high),
+            evidence("calculus/factor_cancel_substitute, q_step_5 -> q_step_6: 1 of the machine's 8 distinct edges, static only. compute the value of an expression from its parts."),
+            status(review_pending)).
+action_maps(calculus, factor_cancel_substitute, factor_common_factor_x_minus_a, decompose_operand,
+            confidence(high),
+            evidence("calculus/factor_cancel_substitute, q_step_3 -> q_step_4: 1 of the machine's 8 distinct edges, static only. splits numerator and denominator into a product carrying the common factor"),
+            status(review_pending)).
+action_maps(calculus, factor_cancel_substitute, identify_limit_target, read_operand_attribute,
+            confidence(high),
+            evidence("calculus/factor_cancel_substitute, q_start -> q_step_1: 1 of the machine's 8 distinct edges, static only. read one property of a given -- its sign, magnitude, scale, place count, dimension, or labelling -- without yet operating on it."),
+            status(review_pending)).
+action_maps(calculus, factor_cancel_substitute, kernel_trace, receive_kernel_outcome,
+            confidence(high),
+            evidence("calculus/factor_cancel_substitute, q_step_6 -> q_step_7: 1 of the machine's 8 distinct edges, static only. take the delegated automaton's outcome back as this machine's step."),
+            status(review_pending)).
+action_maps(calculus, factor_cancel_substitute, name_value_as_limit, name_result,
+            confidence(high),
+            evidence("calculus/factor_cancel_substitute, q_step_7 -> q_accept: 1 of the machine's 8 distinct edges, static only. say which quantity the answer is."),
+            status(review_pending)).
+action_maps(calculus, factor_cancel_substitute, substitute_target_into_expression, substitute_values,
+            confidence(high),
+            evidence("calculus/factor_cancel_substitute, q_step_1 -> q_step_2: 1 of the machine's 8 distinct edges, static only. replace the variables in an expression with their assigned values."),
+            status(review_pending)).
+action_maps(calculus, factor_cancel_substitute, substitute_target_into_reduced, substitute_values,
+            confidence(high),
+            evidence("calculus/factor_cancel_substitute, q_step_4 -> q_step_5: 1 of the machine's 8 distinct edges, static only. replace the variables in an expression with their assigned values."),
+            status(review_pending)).
+action_maps(calculus, factor_cancel_without_common_factor, apply_cancel_routine_anyway, apply_stored_rule,
+            confidence(high),
+            evidence("calculus/factor_cancel_without_common_factor, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, static only. carry out a remembered formula, rule, or prescribed procedural step."),
+            status(review_pending)).
+action_maps(calculus, factor_cancel_without_common_factor, fail_to_detect_zero_over_zero, omit_required_step,
+            confidence(high),
+            evidence("calculus/factor_cancel_without_common_factor, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static only. the indeterminate-form test never runs, so the cancelling routine fires without its precondition"),
+            status(review_pending)).
+action_maps(calculus, factor_cancel_without_common_factor, identify_limit_target, read_operand_attribute,
+            confidence(high),
+            evidence("calculus/factor_cancel_without_common_factor, q_start -> q_step_1: 1 of the machine's 6 distinct edges, static only. read one property of a given -- its sign, magnitude, scale, place count, dimension, or labelling -- without yet operating on it."),
+            status(review_pending)).
+action_maps(calculus, factor_cancel_without_common_factor, lose_precondition_check, record_loss,
+            confidence(high),
+            evidence("calculus/factor_cancel_without_common_factor, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(calculus, factor_cancel_without_common_factor, produce_misfire_result, misname_result,
+            confidence(medium),
+            evidence("calculus/factor_cancel_without_common_factor, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, static only. delivers a value the missing precondition does not license as the limit"),
+            status(review_pending)).
+action_maps(calculus, factor_cancel_without_common_factor, substitute_target_into_expression, substitute_values,
+            confidence(high),
+            evidence("calculus/factor_cancel_without_common_factor, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, static only. replace the variables in an expression with their assigned values."),
             status(review_pending)).
 action_maps(counting, compare_cardinalities_one_to_one, conclude_count_relation, name_result,
             confidence(high),
@@ -1110,9 +1339,9 @@ action_maps(decimal, change_decimal_place_name_without_regrouping, omit_regroupi
             confidence(high),
             evidence("decimal/change_decimal_place_name_without_regrouping, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static only. skip a step the viable strategy needs."),
             status(review_pending)).
-action_maps(decimal, change_decimal_place_name_without_regrouping, retain_original_count, retain_unchanged,
+action_maps(decimal, change_decimal_place_name_without_regrouping, retain_original_count, retain_where_change_was_due,
             confidence(high),
-            evidence("decimal/change_decimal_place_name_without_regrouping, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static only. carry a quantity or a notation forward untouched where the next step will re-describe it."),
+            evidence("decimal/change_decimal_place_name_without_regrouping, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static only. carries the count forward untouched at the edge where changing the decimal unit's name obliged regrouping by the ten-to-one factor; the omission of that factor is recorded at the next edge"),
             status(review_pending)).
 action_maps(decimal, decimal_add_unaligned_numerals, add_unaligned_numerals, combine_quantities,
             confidence(high),
@@ -1426,6 +1655,22 @@ action_maps(division, fair_share_equal_groups, set_number_of_groups, assign_role
             confidence(high),
             evidence("division/fair_share_equal_groups, q_start -> q_step_1: 1 of the machine's 4 distinct edges, witnessed. binds the divisor to the number-of-groups role, which is what makes this sharing rather than measuring"),
             status(review_pending)).
+action_maps(division, inverse_fact_decomposition, accumulate_partial_quotients, accumulate_total,
+            confidence(high),
+            evidence("division/inverse_fact_decomposition, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static only. add the counted or measured pieces into a running total."),
+            status(review_pending)).
+action_maps(division, inverse_fact_decomposition, apply_known_multiple_facts, measure_out_group_size,
+            confidence(high),
+            evidence("division/inverse_fact_decomposition, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static only. removes known multiples of the divisor from the total in turn"),
+            status(review_pending)).
+action_maps(division, inverse_fact_decomposition, load_known_multiples, retrieve_known_fact,
+            confidence(high),
+            evidence("division/inverse_fact_decomposition, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static only. brings the known multiples of the divisor to hand as the facts the decomposition will use"),
+            status(review_pending)).
+action_maps(division, inverse_fact_decomposition, name_fact_decomposition_result, name_result,
+            confidence(high),
+            evidence("division/inverse_fact_decomposition, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static only. say which quantity the answer is."),
+            status(review_pending)).
 action_maps(division, long_division, bring_down_dividend_digits_left_to_right, apply_stored_rule,
             confidence(high),
             evidence("division/long_division, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, witnessed. carry out a remembered formula, rule, or prescribed procedural step."),
@@ -1458,9 +1703,9 @@ action_maps(division, measure_groups_of_size, name_quotient_and_remainder, name_
             confidence(high),
             evidence("division/measure_groups_of_size, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, witnessed. say which quantity the answer is."),
             status(review_pending)).
-action_maps(division, measure_groups_of_size, preserve_leftover_as_remainder, retain_unchanged,
+action_maps(division, measure_groups_of_size, preserve_leftover_as_remainder, retain_what_must_survive,
             confidence(high),
-            evidence("division/measure_groups_of_size, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, witnessed. carries the leftover forward as the remainder the naming step then reports"),
+            evidence("division/measure_groups_of_size, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, witnessed. carries the leftover forward as the remainder, which is exactly what division/share_into_divisor_groups loses at its own last edge (lose_measurement_remainder)"),
             status(review_pending)).
 action_maps(division, measure_groups_of_size, repeatedly_remove_group_size, measure_out_group_size,
             confidence(high),
@@ -1469,6 +1714,22 @@ action_maps(division, measure_groups_of_size, repeatedly_remove_group_size, meas
 action_maps(division, measure_groups_of_size, set_group_size, assign_roles,
             confidence(high),
             evidence("division/measure_groups_of_size, q_start -> q_step_1: 1 of the machine's 5 distinct edges, witnessed. binds the divisor to the group-size role, which is what makes this measuring rather than sharing"),
+            status(review_pending)).
+action_maps(division, missing_factor_known_product_search, locate_matching_product, filter_by_constraint,
+            confidence(high),
+            evidence("division/missing_factor_known_product_search, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static only. keeps the candidate whose product matches the total"),
+            status(review_pending)).
+action_maps(division, missing_factor_known_product_search, name_missing_factor_as_quotient, name_result,
+            confidence(high),
+            evidence("division/missing_factor_known_product_search, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static only. say which quantity the answer is."),
+            status(review_pending)).
+action_maps(division, missing_factor_known_product_search, set_division_as_missing_factor, assign_roles,
+            confidence(high),
+            evidence("division/missing_factor_known_product_search, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static only. binds the division to the missing-factor role, so the search is for a factor rather than a share"),
+            status(review_pending)).
+action_maps(division, missing_factor_known_product_search, test_candidate_products, enumerate_candidates,
+            confidence(high),
+            evidence("division/missing_factor_known_product_search, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static only. generate the candidate set a later step will filter."),
             status(review_pending)).
 action_maps(division, missing_factor_repeated_addition, count_by_factor_until_total, count_up_to_target,
             confidence(high),
@@ -1538,6 +1799,26 @@ action_maps(division, partial_quotient_chunking, subtract_partial_multiples, rem
             confidence(high),
             evidence("division/partial_quotient_chunking, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, witnessed. take one quantity away from another."),
             status(review_pending)).
+action_maps(division, reject_known_product_match, locate_matching_product, filter_by_constraint,
+            confidence(high),
+            evidence("division/reject_known_product_match, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. keeps the candidate whose product matches the total"),
+            status(review_pending)).
+action_maps(division, reject_known_product_match, lose_known_product_context, record_loss,
+            confidence(high),
+            evidence("division/reject_known_product_match, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(division, reject_known_product_match, reject_product_match_as_not_contextualized, treat_relevant_as_irrelevant,
+            confidence(medium),
+            evidence("division/reject_known_product_match, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static only. treats a product that does match as not bearing, because it arrived without its context"),
+            status(review_pending)).
+action_maps(division, reject_known_product_match, set_division_as_missing_factor, assign_roles,
+            confidence(high),
+            evidence("division/reject_known_product_match, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static only. binds the division to the missing-factor role, so the search is for a factor rather than a share"),
+            status(review_pending)).
+action_maps(division, reject_known_product_match, test_candidate_products, enumerate_candidates,
+            confidence(high),
+            evidence("division/reject_known_product_match, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static only. generate the candidate set a later step will filter."),
+            status(review_pending)).
 action_maps(division, share_into_divisor_groups, deal_total_into_groups, share_into_known_groups,
             confidence(high),
             evidence("division/share_into_divisor_groups, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, witnessed. deals the total into groups, the divisor having been reinterpreted as a group count at the previous edge"),
@@ -1581,6 +1862,66 @@ action_maps(division, stop_after_first_partial_quotient, stop_before_recomposing
 action_maps(division, stop_after_first_partial_quotient, subtract_first_partial_multiple, remove_quantity,
             confidence(high),
             evidence("division/stop_after_first_partial_quotient, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, witnessed. take one quantity away from another."),
+            status(review_pending)).
+action_maps(division, stop_after_one_known_fact, apply_first_known_multiple_only, measure_out_group_size,
+            confidence(medium),
+            evidence("division/stop_after_one_known_fact, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static only. removes one known multiple where the decomposition iterates over several"),
+            status(review_pending)).
+action_maps(division, stop_after_one_known_fact, load_known_multiples, retrieve_known_fact,
+            confidence(high),
+            evidence("division/stop_after_one_known_fact, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static only. brings the known multiples of the divisor to hand as the facts the decomposition will use"),
+            status(review_pending)).
+action_maps(division, stop_after_one_known_fact, lose_iterative_fact_decomposition, record_loss,
+            confidence(high),
+            evidence("division/stop_after_one_known_fact, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(division, stop_after_one_known_fact, name_partial_quotient_and_remainder, misname_result,
+            confidence(high),
+            evidence("division/stop_after_one_known_fact, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static only. names the quotient reached after one fact, with the untouched remainder beside it, as the answer"),
+            status(review_pending)).
+action_maps(division, stop_after_one_known_fact, stop_with_remaining_total, halt_before_completion,
+            confidence(high),
+            evidence("division/stop_after_one_known_fact, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. stop a required traversal, iteration, or recomposition before it finishes."),
+            status(review_pending)).
+action_maps(division, stop_at_nearby_product_in_search, lose_exact_missing_factor, record_loss,
+            confidence(high),
+            evidence("division/stop_at_nearby_product_in_search, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(division, stop_at_nearby_product_in_search, name_nearby_factor_and_remainder, misname_result,
+            confidence(high),
+            evidence("division/stop_at_nearby_product_in_search, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static only. name a value that answers a different question than the one asked."),
+            status(review_pending)).
+action_maps(division, stop_at_nearby_product_in_search, set_division_as_missing_factor, assign_roles,
+            confidence(high),
+            evidence("division/stop_at_nearby_product_in_search, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static only. binds the division to the missing-factor role, so the search is for a factor rather than a share"),
+            status(review_pending)).
+action_maps(division, stop_at_nearby_product_in_search, stop_before_matching_product, halt_before_completion,
+            confidence(high),
+            evidence("division/stop_at_nearby_product_in_search, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. stop a required traversal, iteration, or recomposition before it finishes."),
+            status(review_pending)).
+action_maps(division, stop_at_nearby_product_in_search, test_candidate_products_until_nearby, enumerate_candidates,
+            confidence(medium),
+            evidence("division/stop_at_nearby_product_in_search, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static only. enumerates candidates only as far as one that comes close"),
+            status(review_pending)).
+action_maps(division, sum_dividend_and_divisor, collapse_the_bring_down_and_borrow_loop_to_one_step, omit_required_step,
+            confidence(high),
+            evidence("division/sum_dividend_and_divisor, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. the loop's steps do not run at all once the single addition has stood in for them"),
+            status(review_pending)).
+action_maps(division, sum_dividend_and_divisor, lose_quotient_recomposition, record_loss,
+            confidence(high),
+            evidence("division/sum_dividend_and_divisor, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(division, sum_dividend_and_divisor, name_digit_sum_as_answer, misname_result,
+            confidence(high),
+            evidence("division/sum_dividend_and_divisor, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static only. name a value that answers a different question than the one asked."),
+            status(review_pending)).
+action_maps(division, sum_dividend_and_divisor, read_dividend_and_divisor_as_numerals, register_givens,
+            confidence(high),
+            evidence("division/sum_dividend_and_divisor, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static only. hold the given quantities, figure, or data set as the operands the strategy will work on."),
+            status(review_pending)).
+action_maps(division, sum_dividend_and_divisor, replace_coordinated_division_with_a_single_addition, substitute_operation,
+            confidence(high),
+            evidence("division/sum_dividend_and_divisor, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static only. adds the two numerals where the division coordinates a divide, multiply and subtract loop"),
             status(review_pending)).
 action_maps(fraction, add_numerator_denominator_comparison, compare_unlike_sums, compare_magnitudes,
             confidence(high),
@@ -1738,6 +2079,26 @@ action_maps(fraction, benchmark_fraction_comparison, selected, establish_referen
             confidence(high),
             evidence("fraction/benchmark_fraction_comparison, q_select_benchmark -> q_benchmark_first; q_observed_1 -> q_observed_2: 2 of the machine's 14 distinct edges, witnessed. the benchmark has been selected: it becomes the reference point both later judgments are made against"),
             status(review_pending)).
+action_maps(fraction, clear_inner_referent, fail_to_relate_inner_part_to_original_whole, omit_required_step,
+            confidence(high),
+            evidence("fraction/clear_inner_referent, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static only. skip a step the viable strategy needs."),
+            status(review_pending)).
+action_maps(fraction, clear_inner_referent, lose_outer_referent, record_loss,
+            confidence(high),
+            evidence("fraction/clear_inner_referent, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(fraction, clear_inner_referent, name_inner_part_relative_to_outer_part, name_result,
+            confidence(medium),
+            evidence("fraction/clear_inner_referent, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. names the inner part against the outer part rather than against the whole, which is the referent the next edge fails to reach"),
+            status(review_pending)).
+action_maps(fraction, clear_inner_referent, partition_that_part_again, partition_into_equal_parts,
+            confidence(high),
+            evidence("fraction/clear_inner_referent, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static only. cut the referent into parts the strategy treats as equal."),
+            status(review_pending)).
+action_maps(fraction, clear_inner_referent, partition_whole_into_equal_units, partition_into_equal_parts,
+            confidence(high),
+            evidence("fraction/clear_inner_referent, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static only. cut the referent into parts the strategy treats as equal."),
+            status(review_pending)).
 action_maps(fraction, co_denominator_count_on_from_larger, attach_three_level_units_coordination, attach_units_coordination,
             confidence(high),
             evidence("fraction/co_denominator_count_on_from_larger, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, static only. attach to the result the level of units coordination it carries."),
@@ -1824,7 +2185,63 @@ action_maps(fraction, common_unit_fraction_comparison, transformed, re_express_e
             status(review_pending)).
 action_maps(fraction, common_unit_fraction_comparison, unchanged, retain_unchanged,
             confidence(high),
-            evidence("fraction/common_unit_fraction_comparison, q_transform_commensurate_1 -> q_transform_commensurate_2; q_transform_commensurate_2 -> q_measure_with_co_unit: 2 of the machine's 14 distinct edges, static only. carries the fraction through the commensurate-transformation slot untouched, the numerators already being shared"),
+            evidence("fraction/common_unit_fraction_comparison, q_transform_commensurate_1 -> q_transform_commensurate_2; q_transform_commensurate_2 -> q_measure_with_co_unit: 2 of the machine's 14 distinct edges, static only. carries the fraction through the commensurate-transformation slot untouched, the numerators already being shared, so the transformation has nothing to do"),
+            status(review_pending)).
+action_maps(fraction, cross_multiplication_rule_from_pattern, apply_cross_multiplication_pattern, apply_stored_rule,
+            confidence(high),
+            evidence("fraction/cross_multiplication_rule_from_pattern, q_step_1 -> q_step_2: 1 of the machine's 8 distinct edges, static only. carry out a remembered formula, rule, or prescribed procedural step."),
+            status(review_pending)).
+action_maps(fraction, cross_multiplication_rule_from_pattern, compute_denominator_product, compute_product,
+            confidence(high),
+            evidence("fraction/cross_multiplication_rule_from_pattern, q_step_3 -> q_step_4: 1 of the machine's 8 distinct edges, static only. multiply the operands as numerals."),
+            status(review_pending)).
+action_maps(fraction, cross_multiplication_rule_from_pattern, compute_numerator_product, compute_product,
+            confidence(high),
+            evidence("fraction/cross_multiplication_rule_from_pattern, q_step_2 -> q_step_3: 1 of the machine's 8 distinct edges, static only. multiply the operands as numerals."),
+            status(review_pending)).
+action_maps(fraction, cross_multiplication_rule_from_pattern, identify_denominator_product_as_whole_rectangle_area, assign_roles,
+            confidence(high),
+            evidence("fraction/cross_multiplication_rule_from_pattern, q_step_6 -> q_step_7: 1 of the machine's 8 distinct edges, static only. binds the denominator product to the whole rectangle's area in the returned area model"),
+            status(review_pending)).
+action_maps(fraction, cross_multiplication_rule_from_pattern, identify_numerator_product_as_selected_area, assign_roles,
+            confidence(high),
+            evidence("fraction/cross_multiplication_rule_from_pattern, q_step_7 -> q_accept: 1 of the machine's 8 distinct edges, static only. binds the numerator product to the selected region of that rectangle"),
+            status(review_pending)).
+action_maps(fraction, cross_multiplication_rule_from_pattern, identify_rule_pattern, read_operand_attribute,
+            confidence(medium),
+            evidence("fraction/cross_multiplication_rule_from_pattern, q_start -> q_step_1: 1 of the machine's 8 distinct edges, static only. reads the pattern in the two fractions that the cross-multiplication rule matches on"),
+            status(review_pending)).
+action_maps(fraction, cross_multiplication_rule_from_pattern, justify_via_area_model_part_of_part, dispatch_to_kernel,
+            confidence(high),
+            evidence("fraction/cross_multiplication_rule_from_pattern, q_step_5 -> q_step_6: 1 of the machine's 8 distinct edges, static only. hands the justification to fraction/area_model_part_of_part, which is a registered machine in its own right"),
+            status(review_pending)).
+action_maps(fraction, cross_multiplication_rule_from_pattern, propose_result, name_result,
+            confidence(medium),
+            evidence("fraction/cross_multiplication_rule_from_pattern, q_step_4 -> q_step_5: 1 of the machine's 8 distinct edges, static only. offers the product as the answer, before the area-model justification the next three edges supply"),
+            status(review_pending)).
+action_maps(fraction, cross_multiplication_rule_without_ground, apply_cross_multiplication_pattern, apply_stored_rule,
+            confidence(high),
+            evidence("fraction/cross_multiplication_rule_without_ground, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, static only. carry out a remembered formula, rule, or prescribed procedural step."),
+            status(review_pending)).
+action_maps(fraction, cross_multiplication_rule_without_ground, compute_denominator_product, compute_product,
+            confidence(high),
+            evidence("fraction/cross_multiplication_rule_without_ground, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, static only. multiply the operands as numerals."),
+            status(review_pending)).
+action_maps(fraction, cross_multiplication_rule_without_ground, compute_numerator_product, compute_product,
+            confidence(high),
+            evidence("fraction/cross_multiplication_rule_without_ground, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static only. multiply the operands as numerals."),
+            status(review_pending)).
+action_maps(fraction, cross_multiplication_rule_without_ground, produce_result_without_area_model_ground, name_result,
+            confidence(medium),
+            evidence("fraction/cross_multiplication_rule_without_ground, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, static only. offers the same product the grounded machine offers; what is missing is named at the next edge, and the outcome's own validity field records the answer as correct"),
+            status(review_pending)).
+action_maps(fraction, cross_multiplication_rule_without_ground, recall_rule_pattern, retrieve_known_fact,
+            confidence(high),
+            evidence("fraction/cross_multiplication_rule_without_ground, q_start -> q_step_1: 1 of the machine's 6 distinct edges, static only. recall a stored fact instead of reconstructing it."),
+            status(review_pending)).
+action_maps(fraction, cross_multiplication_rule_without_ground, skip_area_model_justification, omit_required_step,
+            confidence(high),
+            evidence("fraction/cross_multiplication_rule_without_ground, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, static only. the area-model justification never runs, which is the case formal/learner/deontic_scorekeeper.pl treats as commitment without entitlement"),
             status(review_pending)).
 action_maps(fraction, gap_thinking_fraction_comparison, compare_absolute_gaps, compare_additive_gaps,
             confidence(high),
@@ -1881,6 +2298,66 @@ action_maps(fraction, improper_fraction_chain_loss, rename_result_to_new_whole, 
 action_maps(fraction, improper_fraction_chain_loss, reset_completion_norm, rename_in_place_of_transforming,
             confidence(high),
             evidence("fraction/improper_fraction_chain_loss, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, witnessed. renames what counts as a completed whole so that the amount iterated past the whole reads as one"),
+            status(review_pending)).
+action_maps(fraction, improper_fraction_iteration, establish_referent_whole, unitize_referent,
+            confidence(high),
+            evidence("fraction/improper_fraction_iteration, q_start -> q_step_1: 1 of the machine's 6 distinct edges, static only. constitute the whole or unit that all later measurement refers to."),
+            status(review_pending)).
+action_maps(fraction, improper_fraction_iteration, hold_completion_marker, verify_invariant,
+            confidence(high),
+            evidence("fraction/improper_fraction_iteration, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, static only. holds the whole's completion marker against the iteration so the count past the whole stays answerable to it"),
+            status(review_pending)).
+action_maps(fraction, improper_fraction_iteration, iterate_unit_past_whole_keeping_referent, iterate_unit,
+            confidence(high),
+            evidence("fraction/improper_fraction_iteration, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static only. iterates the unit fraction beyond the whole while the original referent stays in force, which is exactly what fraction/improper_fraction_chain_loss drops"),
+            status(review_pending)).
+action_maps(fraction, improper_fraction_iteration, kernel_trace, receive_kernel_outcome,
+            confidence(high),
+            evidence("fraction/improper_fraction_iteration, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, static only. take the delegated automaton's outcome back as this machine's step."),
+            status(review_pending)).
+action_maps(fraction, improper_fraction_iteration, name_improper_fraction_as_number, name_result,
+            confidence(high),
+            evidence("fraction/improper_fraction_iteration, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, static only. say which quantity the answer is."),
+            status(review_pending)).
+action_maps(fraction, improper_fraction_iteration, recover_unit_fraction, disembed_part,
+            confidence(high),
+            evidence("fraction/improper_fraction_iteration, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, static only. takes the unit fraction back out of the whole while it stays inside the whole, which is what makes the next edge's iteration meaningful"),
+            status(review_pending)).
+action_maps(fraction, iterate_given_overshoot, establish_referent_whole, unitize_referent,
+            confidence(high),
+            evidence("fraction/iterate_given_overshoot, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static only. constitute the whole or unit that all later measurement refers to."),
+            status(review_pending)).
+action_maps(fraction, iterate_given_overshoot, fail_to_recognize_partition_iterate_inverse, omit_required_step,
+            confidence(high),
+            evidence("fraction/iterate_given_overshoot, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static only. the mutual inverse of partitioning and iterating is never taken up, so nothing recovers the whole"),
+            status(review_pending)).
+action_maps(fraction, iterate_given_overshoot, iterate_given_part_forward, iterate_unit,
+            confidence(high),
+            evidence("fraction/iterate_given_overshoot, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static only. repeat a unit to build or to measure a quantity."),
+            status(review_pending)).
+action_maps(fraction, iterate_given_overshoot, overshoot_without_recovering_whole, record_loss,
+            confidence(high),
+            evidence("fraction/iterate_given_overshoot, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(fraction, iterate_only_no_reverse, cannot_run_inverse_edge_to_recover_unknown, exhaust_resource,
+            confidence(high),
+            evidence("fraction/iterate_only_no_reverse, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static only. reaches for the inverse edge and finds none available. The ORR crisis step: a resource met at its limit, not a step skipped"),
+            status(review_pending)).
+action_maps(fraction, iterate_only_no_reverse, fail_to_solve, record_loss,
+            confidence(high),
+            evidence("fraction/iterate_only_no_reverse, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(fraction, iterate_only_no_reverse, iterate_forward_only_build_total_from_a_unit, iterate_unit,
+            confidence(medium),
+            evidence("fraction/iterate_only_no_reverse, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static only. iterates a unit up to the total and only in that direction"),
+            status(review_pending)).
+action_maps(fraction, iterate_only_no_reverse, partitioning_consumed_in_activity_no_disembedded_part, omit_required_step,
+            confidence(high),
+            evidence("fraction/iterate_only_no_reverse, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. the partitioning happens and leaves no disembedded part behind, so there is nothing for the inverse to act on"),
+            status(review_pending)).
+action_maps(fraction, iterate_only_no_reverse, read_equation, register_givens,
+            confidence(high),
+            evidence("fraction/iterate_only_no_reverse, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static only. hold the given quantities, figure, or data set as the operands the strategy will work on."),
             status(review_pending)).
 action_maps(fraction, measurement_division, co_measure_both_with_a_shared_fractional_unit, align_to_common_unit,
             confidence(high),
@@ -1965,6 +2442,30 @@ action_maps(fraction, number_line_fraction_comparison, partitions, partition_int
 action_maps(fraction, number_line_fraction_comparison, unit_interval, unitize_referent,
             confidence(high),
             evidence("fraction/number_line_fraction_comparison, q_identify_unit -> q_partition_interval: 1 of the machine's 8 distinct edges, witnessed. constitutes the unit interval as the whole the partition and the iteration both answer to"),
+            status(review_pending)).
+action_maps(fraction, recursive_partition, disembed_unit_fraction, disembed_part,
+            confidence(high),
+            evidence("fraction/recursive_partition, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, static only. take a part out of the whole while the part stays inside the whole."),
+            status(review_pending)).
+action_maps(fraction, recursive_partition, name_part_of_part_relative_to_whole, name_result,
+            confidence(high),
+            evidence("fraction/recursive_partition, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, static only. say which quantity the answer is."),
+            status(review_pending)).
+action_maps(fraction, recursive_partition, partition_that_part_again, partition_into_equal_parts,
+            confidence(high),
+            evidence("fraction/recursive_partition, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static only. cut the referent into parts the strategy treats as equal."),
+            status(review_pending)).
+action_maps(fraction, recursive_partition, partition_whole_into_equal_units, partition_into_equal_parts,
+            confidence(high),
+            evidence("fraction/recursive_partition, q_start -> q_step_1: 1 of the machine's 6 distinct edges, static only. cut the referent into parts the strategy treats as equal."),
+            status(review_pending)).
+action_maps(fraction, recursive_partition, recognize_composite_base_as_product, verify_invariant,
+            confidence(high),
+            evidence("fraction/recursive_partition, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, static only. certifies that the composite base is the product of the two partitions, which is the relation the recursive partition preserves"),
+            status(review_pending)).
+action_maps(fraction, recursive_partition, recursive_partition_trace, receive_kernel_outcome,
+            confidence(high),
+            evidence("fraction/recursive_partition, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, static only. take the delegated automaton's outcome back as this machine's step."),
             status(review_pending)).
 action_maps(fraction, reversible_measurement_division, establish_dividend_and_divisor, register_givens,
             confidence(high),
@@ -2054,6 +2555,66 @@ action_maps(fraction, set_model_subset_size_focus, subset_count_replaces_fractio
             confidence(high),
             evidence("fraction/set_model_subset_size_focus, q_subset_size_focus -> q_compare_relative_size: 1 of the machine's 9 distinct edges, witnessed. puts the subset count in place of the fractional share as what the comparison ranks"),
             status(review_pending)).
+action_maps(fraction, solve_for_unit, iterate_recovered_part_by_denominator, iterate_unit,
+            confidence(high),
+            evidence("fraction/solve_for_unit, q_step_3 -> q_step_4: 1 of the machine's 7 distinct edges, static only. repeat a unit to build or to measure a quantity."),
+            status(review_pending)).
+action_maps(fraction, solve_for_unit, partition_total_into_numerator_parts, partition_into_equal_parts,
+            confidence(high),
+            evidence("fraction/solve_for_unit, q_step_2 -> q_step_3: 1 of the machine's 7 distinct edges, static only. cut the referent into parts the strategy treats as equal."),
+            status(review_pending)).
+action_maps(fraction, solve_for_unit, read_equation, register_givens,
+            confidence(high),
+            evidence("fraction/solve_for_unit, q_start -> q_step_1: 1 of the machine's 7 distinct edges, static only. hold the given quantities, figure, or data set as the operands the strategy will work on."),
+            status(review_pending)).
+action_maps(fraction, solve_for_unit, recognize_partition_undoes_iteration_on_the_unknown, verify_invariant,
+            confidence(high),
+            evidence("fraction/solve_for_unit, q_step_5 -> q_step_6: 1 of the machine's 7 distinct edges, static only. check that the property the strategy must keep still holds."),
+            status(review_pending)).
+action_maps(fraction, solve_for_unit, recover_unknown, isolate_unknown,
+            confidence(high),
+            evidence("fraction/solve_for_unit, q_step_4 -> q_step_5: 1 of the machine's 7 distinct edges, static only. separate the unknown quantity from the known ones so that it stands alone."),
+            status(review_pending)).
+action_maps(fraction, solve_for_unit, solve_trace, receive_kernel_outcome,
+            confidence(high),
+            evidence("fraction/solve_for_unit, q_step_6 -> q_accept: 1 of the machine's 7 distinct edges, static only. take the delegated automaton's outcome back as this machine's step."),
+            status(review_pending)).
+action_maps(fraction, solve_for_unit, treat_unknown_as_iterable_partitionable_quantity, assign_roles,
+            confidence(high),
+            evidence("fraction/solve_for_unit, q_step_1 -> q_step_2: 1 of the machine's 7 distinct edges, static only. binds the unknown to a role that can be both partitioned and iterated, which is what makes it solvable by the inverse"),
+            status(review_pending)).
+action_maps(fraction, splitting, disembed_unit_fraction, disembed_part,
+            confidence(high),
+            evidence("fraction/splitting, q_step_1 -> q_step_2: 1 of the machine's 8 distinct edges, static only. take a part out of the whole while the part stays inside the whole."),
+            status(review_pending)).
+action_maps(fraction, splitting, iterate_trace, receive_kernel_outcome,
+            confidence(high),
+            evidence("fraction/splitting, q_step_7 -> q_accept: 1 of the machine's 8 distinct edges, static only. take the delegated automaton's outcome back as this machine's step."),
+            status(review_pending)).
+action_maps(fraction, splitting, iterate_unit_fraction_back_to_whole, iterate_unit,
+            confidence(high),
+            evidence("fraction/splitting, q_step_2 -> q_step_3: 1 of the machine's 8 distinct edges, static only. repeat a unit to build or to measure a quantity."),
+            status(review_pending)).
+action_maps(fraction, splitting, open_improper_fraction_domain, attach_units_coordination,
+            confidence(medium),
+            evidence("fraction/splitting, q_step_5 -> q_step_6: 1 of the machine's 8 distinct edges, static only. attaches to the result what the established inverse now licenses: counts past the whole. The canonical action names attaching a coordination level, and the level here is a domain rather than a units level"),
+            status(review_pending)).
+action_maps(fraction, splitting, partition_trace, receive_kernel_outcome,
+            confidence(high),
+            evidence("fraction/splitting, q_step_6 -> q_step_7: 1 of the machine's 8 distinct edges, static only. take the delegated automaton's outcome back as this machine's step."),
+            status(review_pending)).
+action_maps(fraction, splitting, partition_whole_into_equal_units, partition_into_equal_parts,
+            confidence(high),
+            evidence("fraction/splitting, q_start -> q_step_1: 1 of the machine's 8 distinct edges, static only. cut the referent into parts the strategy treats as equal."),
+            status(review_pending)).
+action_maps(fraction, splitting, recognize_partition_iterate_as_mutual_inverse, verify_invariant,
+            confidence(high),
+            evidence("fraction/splitting, q_step_3 -> q_step_4: 1 of the machine's 8 distinct edges, static only. certifies partitioning and iterating as mutual inverses, which is the splitting scheme's whole content"),
+            status(review_pending)).
+action_maps(fraction, splitting, recover_whole, recompose_total,
+            confidence(high),
+            evidence("fraction/splitting, q_step_4 -> q_step_5: 1 of the machine's 8 distinct edges, static only. rebuilds the whole from the iterated unit fractions"),
+            status(review_pending)).
 action_maps(fraction, unit_fraction_iteration, coordinate_iteration_with_completion_marker, verify_invariant,
             confidence(medium),
             evidence("fraction/unit_fraction_iteration, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, witnessed. checks the iteration against the whole's completion marker so that the count stops at the whole"),
@@ -2094,6 +2655,26 @@ action_maps(fraction, unit_fraction_partition, select_one_partition_as_unit_frac
             confidence(high),
             evidence("fraction/unit_fraction_partition, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, witnessed. take a part out of the whole while the part stays inside the whole."),
             status(review_pending)).
+action_maps(fraction, whole_number_grab, establish_referent_whole, unitize_referent,
+            confidence(high),
+            evidence("fraction/whole_number_grab, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static only. constitute the whole or unit that all later measurement refers to."),
+            status(review_pending)).
+action_maps(fraction, whole_number_grab, ignore_unit_fraction_denominator, treat_relevant_as_irrelevant,
+            confidence(high),
+            evidence("fraction/whole_number_grab, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. treat a relation the result depends on as though it did not bear on the result."),
+            status(review_pending)).
+action_maps(fraction, whole_number_grab, lose_referent_unit, record_loss,
+            confidence(high),
+            evidence("fraction/whole_number_grab, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(fraction, whole_number_grab, name_count_as_whole_number, misname_result,
+            confidence(high),
+            evidence("fraction/whole_number_grab, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static only. name a value that answers a different question than the one asked."),
+            status(review_pending)).
+action_maps(fraction, whole_number_grab, notice_visible_iteration_count, read_operand_attribute,
+            confidence(high),
+            evidence("fraction/whole_number_grab, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static only. read one property of a given -- its sign, magnitude, scale, place count, dimension, or labelling -- without yet operating on it."),
+            status(review_pending)).
 action_maps(geometry, angle_additive_composition, establish_shared_vertex, establish_reference_frame,
             confidence(high),
             evidence("geometry/angle_additive_composition, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static only. set up the frame against which locations or magnitudes will be read: axes, zero as origin, a vertex and initial ray, a value or frequency scale."),
@@ -2114,9 +2695,9 @@ action_maps(geometry, angle_as_ray_length, misread_visual_extent_as_angle_magnit
             confidence(high),
             evidence("geometry/angle_as_ray_length, q_step_2 -> q_accept: 1 of the machine's 3 distinct edges, static only. puts the ray's drawn length in place of the turn the angle measures"),
             status(review_pending)).
-action_maps(geometry, angle_as_ray_length, preserve_turn, register_givens,
-            confidence(medium),
-            evidence("geometry/angle_as_ray_length, q_start -> q_step_1: 1 of the machine's 3 distinct edges, static only. holds the angle's turn fixed as the given while the next edge stretches the ray"),
+action_maps(geometry, angle_as_ray_length, preserve_turn, retain_what_must_survive,
+            confidence(high),
+            evidence("geometry/angle_as_ray_length, q_start -> q_step_1: 1 of the machine's 3 distinct edges, static only. holds the angle's turn fixed while the next edge stretches the ray. The turn surviving unchanged is the whole reason the machine is a deformation: nothing about the angle changed, and the closing edge reads the changed extent as a changed magnitude"),
             status(review_pending)).
 action_maps(geometry, angle_as_ray_length, stretch_ray_length, scale_multiplicatively,
             confidence(medium),
@@ -2212,7 +2793,7 @@ action_maps(geometry, area_unit_scale_selection, select_matching_square_unit, se
             status(review_pending)).
 action_maps(geometry, axis_aligned_coordinate_distance, hold_other_coordinate_fixed, retain_unchanged,
             confidence(high),
-            evidence("geometry/axis_aligned_coordinate_distance, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. carry a quantity or a notation forward untouched where the next step will re-describe it."),
+            evidence("geometry/axis_aligned_coordinate_distance, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. holds one coordinate while the other varies, which is what makes the difference a length along one axis"),
             status(review_pending)).
 action_maps(geometry, axis_aligned_coordinate_distance, plot_endpoint, locate_position,
             confidence(high),
@@ -2364,7 +2945,7 @@ action_maps(geometry, divide_volume_by_one_dimension, report_partial_quotient_as
             status(review_pending)).
 action_maps(geometry, divide_volume_by_one_dimension, retain_one_known_dimension, retain_unchanged,
             confidence(high),
-            evidence("geometry/divide_volume_by_one_dimension, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static only. carry a quantity or a notation forward untouched where the next step will re-describe it."),
+            evidence("geometry/divide_volume_by_one_dimension, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static only. carries one base dimension forward; the deformation is at the next edge, where the second is dropped"),
             status(review_pending)).
 action_maps(geometry, ignore_perimeter_rectangle_constraint, establish_area_constraint, register_givens,
             confidence(high),
@@ -2378,9 +2959,9 @@ action_maps(geometry, ignore_perimeter_rectangle_constraint, report_unfiltered_r
             confidence(high),
             evidence("geometry/ignore_perimeter_rectangle_constraint, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static only. name a value that answers a different question than the one asked."),
             status(review_pending)).
-action_maps(geometry, ignore_perimeter_rectangle_constraint, retain_all_area_factor_pairs, retain_unchanged,
+action_maps(geometry, ignore_perimeter_rectangle_constraint, retain_all_area_factor_pairs, retain_where_change_was_due,
             confidence(high),
-            evidence("geometry/ignore_perimeter_rectangle_constraint, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static only. carries the whole candidate set forward unfiltered, where rectangle_area_perimeter_constraint_search filters at the same slot"),
+            evidence("geometry/ignore_perimeter_rectangle_constraint, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static only. carries the whole candidate set forward unfiltered at the slot where geometry/rectangle_area_perimeter_constraint_search filters by the perimeter constraint; keeping everything is the deformation, not a step before it"),
             status(review_pending)).
 action_maps(geometry, ignore_symmetry_multiplicity, count_each_orbit_once, count_units,
             confidence(high),
@@ -2454,9 +3035,9 @@ action_maps(geometry, ordered_pair_coordinate_plot, locate_first_then_second_for
             confidence(high),
             evidence("geometry/ordered_pair_coordinate_plot, q_step_2 -> q_accept: 1 of the machine's 3 distinct edges, static only. locate a value's position in the frame already established."),
             status(review_pending)).
-action_maps(geometry, ordered_pair_coordinate_plot, preserve_coordinate_order, assign_roles,
-            confidence(medium),
-            evidence("geometry/ordered_pair_coordinate_plot, q_step_1 -> q_step_2: 1 of the machine's 3 distinct edges, static only. binds the first and second numbers of each pair to their axes; the edge is intermediate, so it is a role binding rather than a closing conservation"),
+action_maps(geometry, ordered_pair_coordinate_plot, preserve_coordinate_order, retain_what_must_survive,
+            confidence(high),
+            evidence("geometry/ordered_pair_coordinate_plot, q_step_1 -> q_step_2: 1 of the machine's 3 distinct edges, static only. carries the pair's order forward from the axes to the plotting step. Ordered-pair plotting is answerable for exactly that order -- it is why (3,5) and (5,3) are two points -- so the retention is the conservation, and geometry/ordered_pair_coordinate_plot has no other edge that records one"),
             status(review_pending)).
 action_maps(geometry, orientation_bound_shape_classification, observe_attributes, read_operand_attribute,
             confidence(high),
@@ -2616,7 +3197,7 @@ action_maps(geometry, rectangle_missing_side_from_area, reconstruct_rectangle, v
             status(review_pending)).
 action_maps(geometry, rectangle_missing_side_from_area, retain_known_side, retain_unchanged,
             confidence(high),
-            evidence("geometry/rectangle_missing_side_from_area, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static only. carry a quantity or a notation forward untouched where the next step will re-describe it."),
+            evidence("geometry/rectangle_missing_side_from_area, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static only. carries the known side forward as the divisor of the area product"),
             status(review_pending)).
 action_maps(geometry, rectangle_missing_side_from_perimeter, coordinate_opposite_side_pairs, assign_roles,
             confidence(high),
@@ -2958,9 +3539,9 @@ action_maps(measurement, change_unit_label_without_scaling, omit_iteration_by_fa
             confidence(high),
             evidence("measurement/change_unit_label_without_scaling, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static only. skip a step the viable strategy needs."),
             status(review_pending)).
-action_maps(measurement, change_unit_label_without_scaling, preserve_numeral, retain_unchanged,
+action_maps(measurement, change_unit_label_without_scaling, preserve_numeral, retain_where_change_was_due,
             confidence(high),
-            evidence("measurement/change_unit_label_without_scaling, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static only. carries the numeral forward untouched while the next edge changes only its label"),
+            evidence("measurement/change_unit_label_without_scaling, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static only. carries the numeral forward untouched where the conversion factor obliged it to scale; the iteration by that factor was omitted two edges earlier"),
             status(review_pending)).
 action_maps(measurement, change_unit_label_without_scaling, read_conversion_factor, read_operand_attribute,
             confidence(high),
@@ -3074,9 +3655,45 @@ action_maps(measurement, unit_preserving_measured_quantity_change, report_unit_b
             confidence(high),
             evidence("measurement/unit_preserving_measured_quantity_change, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static only. say which quantity the answer is."),
             status(review_pending)).
-action_maps(measurement, unit_preserving_measured_quantity_change, retain_measurement_unit, retain_unchanged,
+action_maps(measurement, unit_preserving_measured_quantity_change, retain_measurement_unit, retain_what_must_survive,
             confidence(high),
-            evidence("measurement/unit_preserving_measured_quantity_change, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static only. carry a quantity or a notation forward untouched where the next step will re-describe it."),
+            evidence("measurement/unit_preserving_measured_quantity_change, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static only. carries the measurement unit through the quantity change, which is exactly what measurement/drop_unit_from_measured_quantity_change discards at the same position"),
+            status(review_pending)).
+action_maps(multiplication, add_counts_without_composite_unit, add_uncoordinated_counts, substitute_operation,
+            confidence(high),
+            evidence("multiplication/add_counts_without_composite_unit, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static only. adds the two counts where the equal-group structure calls for iterating one over the other"),
+            status(review_pending)).
+action_maps(multiplication, add_counts_without_composite_unit, count_groups_as_items, substitute_count_for_measure,
+            confidence(high),
+            evidence("multiplication/add_counts_without_composite_unit, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static only. counts the groups as though they were items, so the composite unit stops bearing"),
+            status(review_pending)).
+action_maps(multiplication, add_counts_without_composite_unit, count_items_as_items, count_units,
+            confidence(high),
+            evidence("multiplication/add_counts_without_composite_unit, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. count how many units the iteration or the partition produced."),
+            status(review_pending)).
+action_maps(multiplication, add_counts_without_composite_unit, lose_composite_unit, record_loss,
+            confidence(high),
+            evidence("multiplication/add_counts_without_composite_unit, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(multiplication, add_counts_without_composite_unit, see_groups_and_items, register_givens,
+            confidence(high),
+            evidence("multiplication/add_counts_without_composite_unit, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static only. hold the given quantities, figure, or data set as the operands the strategy will work on."),
+            status(review_pending)).
+action_maps(multiplication, add_instead_of_multiply, add_uncoordinated_counts, substitute_operation,
+            confidence(high),
+            evidence("multiplication/add_instead_of_multiply, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static only. adds the two counts where the equal-group structure calls for iterating one over the other"),
+            status(review_pending)).
+action_maps(multiplication, add_instead_of_multiply, lose_equal_group_iteration, record_loss,
+            confidence(high),
+            evidence("multiplication/add_instead_of_multiply, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(multiplication, add_instead_of_multiply, read_equal_groups, register_givens,
+            confidence(high),
+            evidence("multiplication/add_instead_of_multiply, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static only. hold the given quantities, figure, or data set as the operands the strategy will work on."),
+            status(review_pending)).
+action_maps(multiplication, add_instead_of_multiply, treat_group_count_and_group_size_as_addends, conflate_roles,
+            confidence(high),
+            evidence("multiplication/add_instead_of_multiply, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static only. collapse two structurally distinct roles into one."),
             status(review_pending)).
 action_maps(multiplication, add_numbers_as_common_multiple, add_inputs, combine_quantities,
             confidence(high),
@@ -3142,6 +3759,26 @@ action_maps(multiplication, commute_factors_preserve_product, preserve_product_u
             confidence(high),
             evidence("multiplication/commute_factors_preserve_product, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, witnessed. record that the strategy kept the relation it was obliged to keep."),
             status(review_pending)).
+action_maps(multiplication, context_free_fact_family_guess, answer_from_context_free_fact_family, misname_result,
+            confidence(medium),
+            evidence("multiplication/context_free_fact_family_guess, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static only. names a product from the fact family that answers no question the context asked"),
+            status(review_pending)).
+action_maps(multiplication, context_free_fact_family_guess, lose_referent_units, record_loss,
+            confidence(high),
+            evidence("multiplication/context_free_fact_family_guess, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(multiplication, context_free_fact_family_guess, recognize_target_factor_pair, register_givens,
+            confidence(high),
+            evidence("multiplication/context_free_fact_family_guess, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static only. hold the given quantities, figure, or data set as the operands the strategy will work on."),
+            status(review_pending)).
+action_maps(multiplication, context_free_fact_family_guess, retrieve_product_without_referent_units, retrieve_known_fact,
+            confidence(medium),
+            evidence("multiplication/context_free_fact_family_guess, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static only. recalls the product; that it arrives without its referent units is recorded at the machine's last edge"),
+            status(review_pending)).
+action_maps(multiplication, context_free_fact_family_guess, substitute_alternate_factor_pair, substitute_operation,
+            confidence(medium),
+            evidence("multiplication/context_free_fact_family_guess, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. answers from a different pair in the same fact family, a fact the learner has to hand in place of the one the task names"),
+            status(review_pending)).
 action_maps(multiplication, coordinate_groups_items, coordinate_group_count_with_item_count, assign_roles,
             confidence(high),
             evidence("multiplication/coordinate_groups_items, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, witnessed. binds the group count and the item count to their two levels before the composite unit is iterated"),
@@ -3174,6 +3811,42 @@ action_maps(multiplication, distribute_group_size_split, split_group_size, decom
             confidence(high),
             evidence("multiplication/distribute_group_size_split, q_start -> q_step_1: 1 of the machine's 5 distinct edges, witnessed. split one operand into pieces a later step can use, not along place boundaries."),
             status(review_pending)).
+action_maps(multiplication, drop_regrouping_remainder, drop_regrouping_leftover, halt_before_completion,
+            confidence(high),
+            evidence("multiplication/drop_regrouping_remainder, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. stop a required traversal, iteration, or recomposition before it finishes."),
+            status(review_pending)).
+action_maps(multiplication, drop_regrouping_remainder, form_equal_groups, replicate_equal_groups,
+            confidence(medium),
+            evidence("multiplication/drop_regrouping_remainder, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static only. forms the equal-group structure; the coordination of its two levels runs at the next edge"),
+            status(review_pending)).
+action_maps(multiplication, drop_regrouping_remainder, lose_regrouping_remainder, record_loss,
+            confidence(high),
+            evidence("multiplication/drop_regrouping_remainder, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(multiplication, drop_regrouping_remainder, name_only_full_base_bundles, misname_result,
+            confidence(high),
+            evidence("multiplication/drop_regrouping_remainder, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static only. name a value that answers a different question than the one asked."),
+            status(review_pending)).
+action_maps(multiplication, drop_regrouping_remainder, regroup_total_as_base_bundles, regroup_to_base,
+            confidence(high),
+            evidence("multiplication/drop_regrouping_remainder, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static only. trade a completed group of the smaller unit up into one of the larger."),
+            status(review_pending)).
+action_maps(multiplication, drop_second_partial_product, compute_partial_product, compute_product,
+            confidence(high),
+            evidence("multiplication/drop_second_partial_product, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static only. multiply the operands as numerals."),
+            status(review_pending)).
+action_maps(multiplication, drop_second_partial_product, lose_distributed_part, record_loss,
+            confidence(high),
+            evidence("multiplication/drop_second_partial_product, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(multiplication, drop_second_partial_product, omit_partial_product, omit_required_step,
+            confidence(high),
+            evidence("multiplication/drop_second_partial_product, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static only. skip a step the viable strategy needs."),
+            status(review_pending)).
+action_maps(multiplication, drop_second_partial_product, split_group_size, decompose_operand,
+            confidence(high),
+            evidence("multiplication/drop_second_partial_product, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static only. split one operand into pieces a later step can use, not along place boundaries."),
+            status(review_pending)).
 action_maps(multiplication, factors_of_first_number_only, enumerate_positive_divisors, enumerate_candidates,
             confidence(high),
             evidence("multiplication/factors_of_first_number_only, q_start -> q_step_1: 1 of the machine's 4 distinct edges, witnessed. generate the candidate set a later step will filter."),
@@ -3189,6 +3862,46 @@ action_maps(multiplication, factors_of_first_number_only, omit_factor_set_inters
 action_maps(multiplication, factors_of_first_number_only, report_first_factor_set_as_common, misname_result,
             confidence(high),
             evidence("multiplication/factors_of_first_number_only, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, witnessed. name a value that answers a different question than the one asked."),
+            status(review_pending)).
+action_maps(multiplication, known_product_adjustment, adjust_known_product, combine_quantities,
+            confidence(high),
+            evidence("multiplication/known_product_adjustment, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static only. join two quantities into their sum."),
+            status(review_pending)).
+action_maps(multiplication, known_product_adjustment, compute_extra_equal_group_product, compute_product,
+            confidence(high),
+            evidence("multiplication/known_product_adjustment, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. multiply the operands as numerals."),
+            status(review_pending)).
+action_maps(multiplication, known_product_adjustment, identify_missing_equal_groups, read_operand_attribute,
+            confidence(high),
+            evidence("multiplication/known_product_adjustment, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static only. reads how many equal groups separate the target from the recalled product"),
+            status(review_pending)).
+action_maps(multiplication, known_product_adjustment, preserve_equal_group_adjustment, record_conservation,
+            confidence(high),
+            evidence("multiplication/known_product_adjustment, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static only. record that the strategy kept the relation it was obliged to keep."),
+            status(review_pending)).
+action_maps(multiplication, known_product_adjustment, recall_nearby_known_product, retrieve_known_fact,
+            confidence(high),
+            evidence("multiplication/known_product_adjustment, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static only. recall a stored fact instead of reconstructing it."),
+            status(review_pending)).
+action_maps(multiplication, known_product_without_adjustment, answer_with_nearby_product, misname_result,
+            confidence(high),
+            evidence("multiplication/known_product_without_adjustment, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static only. name a value that answers a different question than the one asked."),
+            status(review_pending)).
+action_maps(multiplication, known_product_without_adjustment, identify_missing_equal_groups, read_operand_attribute,
+            confidence(high),
+            evidence("multiplication/known_product_without_adjustment, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static only. reads how many equal groups separate the target from the recalled product"),
+            status(review_pending)).
+action_maps(multiplication, known_product_without_adjustment, lose_equal_group_adjustment, record_loss,
+            confidence(high),
+            evidence("multiplication/known_product_without_adjustment, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(multiplication, known_product_without_adjustment, omit_extra_equal_group_product, omit_required_step,
+            confidence(high),
+            evidence("multiplication/known_product_without_adjustment, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. skip a step the viable strategy needs."),
+            status(review_pending)).
+action_maps(multiplication, known_product_without_adjustment, recall_nearby_known_product, retrieve_known_fact,
+            confidence(high),
+            evidence("multiplication/known_product_without_adjustment, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static only. recall a stored fact instead of reconstructing it."),
             status(review_pending)).
 action_maps(multiplication, multiplication_fact_retrieval, bind_product_to_factor_pair, assign_roles,
             confidence(high),
@@ -3214,9 +3927,9 @@ action_maps(multiplication, regroup_to_base_preserving_total, name_total_from_bu
             confidence(high),
             evidence("multiplication/regroup_to_base_preserving_total, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, witnessed. say which quantity the answer is."),
             status(review_pending)).
-action_maps(multiplication, regroup_to_base_preserving_total, preserve_leftover_after_regrouping, retain_unchanged,
+action_maps(multiplication, regroup_to_base_preserving_total, preserve_leftover_after_regrouping, retain_what_must_survive,
             confidence(high),
-            evidence("multiplication/regroup_to_base_preserving_total, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, witnessed. carries the leftover forward so the total can be named from bundles and leftover together"),
+            evidence("multiplication/regroup_to_base_preserving_total, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, witnessed. carries the leftover forward so that the total can be named from bundles and leftover together; the machine's own name records that the total is what is preserved"),
             status(review_pending)).
 action_maps(multiplication, regroup_to_base_preserving_total, regroup_total_as_base_bundles, regroup_to_base,
             confidence(high),
@@ -3253,6 +3966,86 @@ action_maps(multiplication, repeat_group_size_by_itself, lose_group_count_role, 
 action_maps(multiplication, repeat_group_size_by_itself, use_group_size_as_iteration_count, conflate_roles,
             confidence(high),
             evidence("multiplication/repeat_group_size_by_itself, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, witnessed. collapse two structurally distinct roles into one."),
+            status(review_pending)).
+action_maps(multiplication, rigid_factor_order_roles, compare_factor_orders, register_givens,
+            confidence(medium),
+            evidence("multiplication/rigid_factor_order_roles, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static only. holds the two factor orders as the pair whose products the next two edges compute"),
+            status(review_pending)).
+action_maps(multiplication, rigid_factor_order_roles, keep_multiplier_multiplicand_roles_fixed, retain_where_change_was_due,
+            confidence(high),
+            evidence("multiplication/rigid_factor_order_roles, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static only. holds the multiplier and multiplicand roles where commuting the factors obliged them to swap, which is why the machine then demands a recomputation"),
+            status(review_pending)).
+action_maps(multiplication, rigid_factor_order_roles, lose_factor_order_equivalence, record_loss,
+            confidence(high),
+            evidence("multiplication/rigid_factor_order_roles, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(multiplication, rigid_factor_order_roles, reject_commuted_factor_order, treat_relevant_as_irrelevant,
+            confidence(medium),
+            evidence("multiplication/rigid_factor_order_roles, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. treats the commuted order as not bearing on the product it in fact leaves unchanged"),
+            status(review_pending)).
+action_maps(multiplication, rigid_factor_order_roles, require_recomputation_in_original_order, omit_required_step,
+            confidence(medium),
+            evidence("multiplication/rigid_factor_order_roles, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static only. the shortcut the commutation licenses is never taken, so the product is computed twice"),
+            status(review_pending)).
+action_maps(multiplication, sequential_recompute_commuted_products, compare_factor_orders, register_givens,
+            confidence(medium),
+            evidence("multiplication/sequential_recompute_commuted_products, q_start -> q_step_1: 1 of the machine's 6 distinct edges, static only. holds the two factor orders as the pair whose products the next two edges compute"),
+            status(review_pending)).
+action_maps(multiplication, sequential_recompute_commuted_products, compare_final_products, compare_magnitudes,
+            confidence(high),
+            evidence("multiplication/sequential_recompute_commuted_products, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, static only. decide the order relation between two quantities."),
+            status(review_pending)).
+action_maps(multiplication, sequential_recompute_commuted_products, compute_commuted_product, compute_product,
+            confidence(high),
+            evidence("multiplication/sequential_recompute_commuted_products, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, static only. multiply the operands as numerals."),
+            status(review_pending)).
+action_maps(multiplication, sequential_recompute_commuted_products, compute_original_product, compute_product,
+            confidence(high),
+            evidence("multiplication/sequential_recompute_commuted_products, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static only. multiply the operands as numerals."),
+            status(review_pending)).
+action_maps(multiplication, sequential_recompute_commuted_products, lose_commutative_shortcut, record_loss,
+            confidence(high),
+            evidence("multiplication/sequential_recompute_commuted_products, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(multiplication, sequential_recompute_commuted_products, miss_structural_commutative_equivalence, omit_required_step,
+            confidence(high),
+            evidence("multiplication/sequential_recompute_commuted_products, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, static only. skip a step the viable strategy needs."),
+            status(review_pending)).
+action_maps(probability, equiprobable_endpoint_counting, compare_with_weighted_terminal_sum, compare_magnitudes,
+            confidence(high),
+            evidence("probability/equiprobable_endpoint_counting, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static only. decide the order relation between two quantities."),
+            status(review_pending)).
+action_maps(probability, equiprobable_endpoint_counting, count_terminal_endpoints, count_units,
+            confidence(high),
+            evidence("probability/equiprobable_endpoint_counting, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. count how many units the iteration or the partition produced."),
+            status(review_pending)).
+action_maps(probability, equiprobable_endpoint_counting, identify_terminal_winners, read_operand_attribute,
+            confidence(high),
+            evidence("probability/equiprobable_endpoint_counting, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static only. read one property of a given -- its sign, magnitude, scale, place count, dimension, or labelling -- without yet operating on it."),
+            status(review_pending)).
+action_maps(probability, equiprobable_endpoint_counting, read_terminal_paths, register_givens,
+            confidence(high),
+            evidence("probability/equiprobable_endpoint_counting, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static only. hold the given quantities, figure, or data set as the operands the strategy will work on."),
+            status(review_pending)).
+action_maps(probability, equiprobable_endpoint_counting, treat_endpoints_as_equiprobable, substitute_count_for_measure,
+            confidence(high),
+            evidence("probability/equiprobable_endpoint_counting, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static only. counts the terminal endpoints where the weighted probability mass was what the split turns on"),
+            status(review_pending)).
+action_maps(probability, terminal_tree_endpoint_probability_sum, allocate_stake, name_result,
+            confidence(high),
+            evidence("probability/terminal_tree_endpoint_probability_sum, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static only. terminal edge; delivers the stake split the summed probabilities determine"),
+            status(review_pending)).
+action_maps(probability, terminal_tree_endpoint_probability_sum, identify_terminal_winners, read_operand_attribute,
+            confidence(high),
+            evidence("probability/terminal_tree_endpoint_probability_sum, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static only. read one property of a given -- its sign, magnitude, scale, place count, dimension, or labelling -- without yet operating on it."),
+            status(review_pending)).
+action_maps(probability, terminal_tree_endpoint_probability_sum, read_terminal_paths, register_givens,
+            confidence(high),
+            evidence("probability/terminal_tree_endpoint_probability_sum, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static only. hold the given quantities, figure, or data set as the operands the strategy will work on."),
+            status(review_pending)).
+action_maps(probability, terminal_tree_endpoint_probability_sum, sum_terminal_probabilities, accumulate_total,
+            confidence(high),
+            evidence("probability/terminal_tree_endpoint_probability_sum, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static only. add the counted or measured pieces into a running total."),
             status(review_pending)).
 action_maps(ratio, additive_extension_of_ratio, add_first_term_increment_to_second_term, combine_quantities,
             confidence(high),
@@ -3590,6 +4383,86 @@ action_maps(subtraction, answer_as_endpoint_count_up, target_minuend, assign_rol
             confidence(high),
             evidence("subtraction/answer_as_endpoint_count_up, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, witnessed. bind each given to its structural role in the relation: which quantity is the whole and which the part, group count against group size, which term is the repeated factor, which coordinate comes first."),
             status(review_pending)).
+action_maps(subtraction, borrow_across_zero_cascade, borrow_into_ones_after_cascade, exchange_base_down,
+            confidence(high),
+            evidence("subtraction/borrow_across_zero_cascade, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, static only. the ones column receives its base, closing the cascade"),
+            status(review_pending)).
+action_maps(subtraction, borrow_across_zero_cascade, cascade_borrow_from_donor_column, exchange_base_down,
+            confidence(high),
+            evidence("subtraction/borrow_across_zero_cascade, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static only. takes one unit from the donor column, the first of the three edges this exchange runs over"),
+            status(review_pending)).
+action_maps(subtraction, borrow_across_zero_cascade, convert_zero_columns_to_nines, exchange_base_down,
+            confidence(high),
+            evidence("subtraction/borrow_across_zero_cascade, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, static only. the intervening zero columns each take a full base as the borrow passes, which is what makes them nines"),
+            status(review_pending)).
+action_maps(subtraction, borrow_across_zero_cascade, decompose_columns, decompose_by_place,
+            confidence(high),
+            evidence("subtraction/borrow_across_zero_cascade, q_start -> q_step_1: 1 of the machine's 6 distinct edges, static only. split a numeral into its base and ones components."),
+            status(review_pending)).
+action_maps(subtraction, borrow_across_zero_cascade, identify_zero_cascade, read_operand_attribute,
+            confidence(high),
+            evidence("subtraction/borrow_across_zero_cascade, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, static only. reads which columns are zero and which is the nearest nonzero donor"),
+            status(review_pending)).
+action_maps(subtraction, borrow_across_zero_cascade, subtract_after_zero_cascade, remove_quantity,
+            confidence(high),
+            evidence("subtraction/borrow_across_zero_cascade, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, static only. take one quantity away from another."),
+            status(review_pending)).
+action_maps(subtraction, borrow_across_zero_no_cascade, decompose_columns, decompose_by_place,
+            confidence(high),
+            evidence("subtraction/borrow_across_zero_no_cascade, q_start -> q_step_1: 1 of the machine's 8 distinct edges, static only. split a numeral into its base and ones components."),
+            status(review_pending)).
+action_maps(subtraction, borrow_across_zero_no_cascade, identify_zero_cascade, read_operand_attribute,
+            confidence(high),
+            evidence("subtraction/borrow_across_zero_no_cascade, q_step_1 -> q_step_2: 1 of the machine's 8 distinct edges, static only. reads which columns are zero and which is the nearest nonzero donor"),
+            status(review_pending)).
+action_maps(subtraction, borrow_across_zero_no_cascade, lose_hundreds_borrow, record_loss,
+            confidence(high),
+            evidence("subtraction/borrow_across_zero_no_cascade, q_step_7 -> q_accept: 1 of the machine's 8 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(subtraction, borrow_across_zero_no_cascade, note_zero_tens_column, read_operand_attribute,
+            confidence(high),
+            evidence("subtraction/borrow_across_zero_no_cascade, q_step_2 -> q_step_3: 1 of the machine's 8 distinct edges, static only. read one property of a given -- its sign, magnitude, scale, place count, dimension, or labelling -- without yet operating on it."),
+            status(review_pending)).
+action_maps(subtraction, borrow_across_zero_no_cascade, recompose_without_zero_cascade, recompose_total,
+            confidence(high),
+            evidence("subtraction/borrow_across_zero_no_cascade, q_step_6 -> q_step_7: 1 of the machine's 8 distinct edges, static only. put the parts of a decomposition back together into the whole."),
+            status(review_pending)).
+action_maps(subtraction, borrow_across_zero_no_cascade, skip_donor_decrement, omit_required_step,
+            confidence(high),
+            evidence("subtraction/borrow_across_zero_no_cascade, q_step_5 -> q_step_6: 1 of the machine's 8 distinct edges, static only. skip a step the viable strategy needs."),
+            status(review_pending)).
+action_maps(subtraction, borrow_across_zero_no_cascade, skip_hundreds_decrement, omit_required_step,
+            confidence(high),
+            evidence("subtraction/borrow_across_zero_no_cascade, q_step_4 -> q_step_5: 1 of the machine's 8 distinct edges, static only. skip a step the viable strategy needs."),
+            status(review_pending)).
+action_maps(subtraction, borrow_across_zero_no_cascade, treat_zero_as_full_base, misread_intermediate_value,
+            confidence(high),
+            evidence("subtraction/borrow_across_zero_no_cascade, q_step_3 -> q_step_4: 1 of the machine's 8 distinct edges, static only. reads the zero column as though it already held a full base, so no borrow is thought to be needed from it"),
+            status(review_pending)).
+action_maps(subtraction, borrow_without_reducing_bases, add_base_to_ones_without_removing_base, omit_required_step,
+            confidence(high),
+            evidence("subtraction/borrow_without_reducing_bases, q_step_2 -> q_step_3: 1 of the machine's 6 distinct edges, static only. the ones column receives a base and the base column is never decremented, so the exchange gives without taking"),
+            status(review_pending)).
+action_maps(subtraction, borrow_without_reducing_bases, decompose_numbers, decompose_by_place,
+            confidence(high),
+            evidence("subtraction/borrow_without_reducing_bases, q_start -> q_step_1: 1 of the machine's 6 distinct edges, static only. split a numeral into its base and ones components."),
+            status(review_pending)).
+action_maps(subtraction, borrow_without_reducing_bases, lose_exchange_conservation, record_loss,
+            confidence(high),
+            evidence("subtraction/borrow_without_reducing_bases, q_step_5 -> q_accept: 1 of the machine's 6 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(subtraction, borrow_without_reducing_bases, recompose_with_unreduced_bases, recompose_total,
+            confidence(high),
+            evidence("subtraction/borrow_without_reducing_bases, q_step_4 -> q_step_5: 1 of the machine's 6 distinct edges, static only. put the parts of a decomposition back together into the whole."),
+            status(review_pending)).
+action_maps(subtraction, borrow_without_reducing_bases, subtract_base_components, remove_quantity,
+            confidence(high),
+            evidence("subtraction/borrow_without_reducing_bases, q_step_1 -> q_step_2: 1 of the machine's 6 distinct edges, static only. take one quantity away from another."),
+            status(review_pending)).
+action_maps(subtraction, borrow_without_reducing_bases, subtract_ones, remove_quantity,
+            confidence(high),
+            evidence("subtraction/borrow_without_reducing_bases, q_step_3 -> q_step_4: 1 of the machine's 6 distinct edges, static only. take one quantity away from another."),
+            status(review_pending)).
 action_maps(subtraction, compare_by_matching_difference, count_unmatched_as_difference, count_units,
             confidence(high),
             evidence("subtraction/compare_by_matching_difference, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, witnessed. count how many units the iteration or the partition produced."),
@@ -3609,6 +4482,26 @@ action_maps(subtraction, compare_by_matching_difference, pair_objects_one_to_one
 action_maps(subtraction, compare_by_matching_difference, remove_matched_pairs, remove_quantity,
             confidence(high),
             evidence("subtraction/compare_by_matching_difference, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, witnessed. take one quantity away from another."),
+            status(review_pending)).
+action_maps(subtraction, compare_returns_larger_count, identify_larger_and_smaller, assign_roles,
+            confidence(high),
+            evidence("subtraction/compare_returns_larger_count, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static only. bind each given to its structural role in the relation: which quantity is the whole and which the part, group count against group size, which term is the repeated factor, which coordinate comes first."),
+            status(review_pending)).
+action_maps(subtraction, compare_returns_larger_count, ignore_matched_pairs, treat_relevant_as_irrelevant,
+            confidence(high),
+            evidence("subtraction/compare_returns_larger_count, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. treat a relation the result depends on as though it did not bear on the result."),
+            status(review_pending)).
+action_maps(subtraction, compare_returns_larger_count, lose_surplus_as_unmatched_remainder, record_loss,
+            confidence(high),
+            evidence("subtraction/compare_returns_larger_count, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(subtraction, compare_returns_larger_count, pair_objects_one_to_one, match_one_to_one,
+            confidence(high),
+            evidence("subtraction/compare_returns_larger_count, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static only. pair the members of two collections against each other."),
+            status(review_pending)).
+action_maps(subtraction, compare_returns_larger_count, report_larger_count_as_difference, misname_result,
+            confidence(high),
+            evidence("subtraction/compare_returns_larger_count, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static only. name a value that answers a different question than the one asked."),
             status(review_pending)).
 action_maps(subtraction, count_up_missing_addend, count_up_by_bases, count_up_to_target,
             confidence(high),
@@ -3649,6 +4542,62 @@ action_maps(subtraction, decompose_base_for_ones, subtract_base_components, remo
 action_maps(subtraction, decompose_base_for_ones, subtract_ones, remove_quantity,
             confidence(high),
             evidence("subtraction/decompose_base_for_ones, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, witnessed. take one quantity away from another."),
+            status(review_pending)).
+action_maps(subtraction, drop_ones_after_base_takeaway, count_back_by_base_chunk, count_back_from,
+            confidence(high),
+            evidence("subtraction/drop_ones_after_base_takeaway, q_step_1 -> q_step_2: 1 of the machine's 4 distinct edges, static only. count backward from the total by a held amount."),
+            status(review_pending)).
+action_maps(subtraction, drop_ones_after_base_takeaway, decompose_subtrahend, decompose_operand,
+            confidence(high),
+            evidence("subtraction/drop_ones_after_base_takeaway, q_start -> q_step_1: 1 of the machine's 4 distinct edges, static only. split one operand into pieces a later step can use, not along place boundaries."),
+            status(review_pending)).
+action_maps(subtraction, drop_ones_after_base_takeaway, drop_ones_chunk, halt_before_completion,
+            confidence(high),
+            evidence("subtraction/drop_ones_after_base_takeaway, q_step_2 -> q_step_3: 1 of the machine's 4 distinct edges, static only. stops after the base chunk, leaving the ones chunk of the decomposition unused"),
+            status(review_pending)).
+action_maps(subtraction, drop_ones_after_base_takeaway, lose_subtracted_remainder, record_loss,
+            confidence(high),
+            evidence("subtraction/drop_ones_after_base_takeaway, q_step_3 -> q_accept: 1 of the machine's 4 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(subtraction, slide_subtrahend_only, count_slide_amount, count_up_to_target,
+            confidence(high),
+            evidence("subtraction/slide_subtrahend_only, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static only. count forward until a named target is reached, holding the distance travelled."),
+            status(review_pending)).
+action_maps(subtraction, slide_subtrahend_only, identify_subtrahend_target_base, select_unit_scale,
+            confidence(high),
+            evidence("subtraction/slide_subtrahend_only, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static only. chooses the base the subtrahend will be slid to"),
+            status(review_pending)).
+action_maps(subtraction, slide_subtrahend_only, lose_constant_difference, record_loss,
+            confidence(high),
+            evidence("subtraction/slide_subtrahend_only, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static only. record which relation the strategy failed to keep."),
+            status(review_pending)).
+action_maps(subtraction, slide_subtrahend_only, slide_subtrahend_without_minuend, omit_required_step,
+            confidence(high),
+            evidence("subtraction/slide_subtrahend_only, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. slides the subtrahend and not the minuend, so the compensating move on the other operand never runs"),
+            status(review_pending)).
+action_maps(subtraction, slide_subtrahend_only, subtract_unbalanced_pair, remove_quantity,
+            confidence(high),
+            evidence("subtraction/slide_subtrahend_only, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static only. take one quantity away from another."),
+            status(review_pending)).
+action_maps(subtraction, sliding_constant_difference, count_slide_amount, count_up_to_target,
+            confidence(high),
+            evidence("subtraction/sliding_constant_difference, q_step_1 -> q_step_2: 1 of the machine's 5 distinct edges, static only. count forward until a named target is reached, holding the distance travelled."),
+            status(review_pending)).
+action_maps(subtraction, sliding_constant_difference, identify_subtrahend_target_base, select_unit_scale,
+            confidence(high),
+            evidence("subtraction/sliding_constant_difference, q_start -> q_step_1: 1 of the machine's 5 distinct edges, static only. chooses the base the subtrahend will be slid to"),
+            status(review_pending)).
+action_maps(subtraction, sliding_constant_difference, preserve_constant_difference, record_conservation,
+            confidence(high),
+            evidence("subtraction/sliding_constant_difference, q_step_4 -> q_accept: 1 of the machine's 5 distinct edges, static only. record that the strategy kept the relation it was obliged to keep."),
+            status(review_pending)).
+action_maps(subtraction, sliding_constant_difference, slide_both_numbers, transfer_between_operands,
+            confidence(high),
+            evidence("subtraction/sliding_constant_difference, q_step_2 -> q_step_3: 1 of the machine's 5 distinct edges, static only. moves both numbers by the same amount, which is what leaves the difference unchanged"),
+            status(review_pending)).
+action_maps(subtraction, sliding_constant_difference, subtract_adjusted_pair, remove_quantity,
+            confidence(high),
+            evidence("subtraction/sliding_constant_difference, q_step_3 -> q_step_4: 1 of the machine's 5 distinct edges, static only. take one quantity away from another."),
             status(review_pending)).
 action_maps(subtraction, smaller_from_larger_in_column, decompose_numbers, decompose_by_place,
             confidence(high),

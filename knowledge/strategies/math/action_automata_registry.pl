@@ -167,6 +167,15 @@ action_automaton_vocabulary(counting, Kind, Vocabulary) :-
 %   These are schemas, not concrete lesson instances: they tell a planner what
 %   information must be recovered from a task before run_action_automaton/6 can
 %   execute without pretending the curriculum source supplied that information.
+%   Registered 2026-07-25: forty-three automata that were implemented in the
+%   action-pair modules -- runner clause, action_outcome/2, and Trace list -- and
+%   never declared here, so build_transition_tables.py, which takes its signature
+%   list from this table, never extracted them. Among them are the
+%   Steffe/Olive/Hackenberg fraction schemes splitting, solve_for_unit,
+%   recursive_partition and improper_fraction_iteration. Registering a signature
+%   makes it extractable; it does not add an input contract, so these carry
+%   static transitions and no live-probe rows until
+%   knowledge/strategies/automaton_input_contracts.pl gains entries for them.
 action_automaton_signature(addition, base_ones_chunking,
                            inputs(nonnegative_integer_addend,
                                   nonnegative_integer_addend),
@@ -779,6 +788,185 @@ action_automaton_signature(counting, compare_cardinalities_one_to_one,
 action_automaton_signature(counting, spatial_extent_as_cardinality,
                            inputs(two_collection_counts, two_spatial_extents),
                            incorrect_extent_relation).
+
+action_automaton_signature(addition, derived_fact_adjustment,
+                           inputs(nonnegative_integer_addend,
+                                  nonnegative_integer_addend),
+                           nonnegative_integer_sum).
+action_automaton_signature(addition, append_column_sum_without_carrying,
+                           inputs(nonnegative_integer_addend,
+                                  nonnegative_integer_addend),
+                           column_sums_appended_without_carrying).
+action_automaton_signature(addition, drop_carry_to_next_column,
+                           inputs(nonnegative_integer_addend,
+                                  nonnegative_integer_addend),
+                           incorrect_nonnegative_integer_sum).
+action_automaton_signature(addition, wrong_carry_amount_to_next_column,
+                           inputs(nonnegative_integer_addend,
+                                  nonnegative_integer_addend),
+                           incorrect_nonnegative_integer_sum).
+action_automaton_signature(addition, dropped_ones_chunk,
+                           inputs(nonnegative_integer_addend,
+                                  nonnegative_integer_addend),
+                           incorrect_nonnegative_integer_sum).
+action_automaton_signature(addition, rote_derived_fact_rule_misfire,
+                           inputs(nonnegative_integer_addend,
+                                  nonnegative_integer_addend),
+                           incorrect_nonnegative_integer_sum).
+action_automaton_signature(addition, unbalanced_make_base_compensation,
+                           inputs(nonnegative_integer_addend,
+                                  nonnegative_integer_addend),
+                           incorrect_nonnegative_integer_sum).
+action_automaton_signature(subtraction, sliding_constant_difference,
+                           inputs(nonnegative_integer_minuend,
+                                  nonnegative_integer_subtrahend),
+                           nonnegative_integer_difference).
+action_automaton_signature(subtraction, borrow_across_zero_cascade,
+                           inputs(nonnegative_integer_minuend,
+                                  nonnegative_integer_subtrahend),
+                           nonnegative_integer_difference).
+action_automaton_signature(subtraction, borrow_across_zero_no_cascade,
+                           inputs(nonnegative_integer_minuend,
+                                  nonnegative_integer_subtrahend),
+                           incorrect_nonnegative_integer_difference).
+action_automaton_signature(subtraction, borrow_without_reducing_bases,
+                           inputs(nonnegative_integer_minuend,
+                                  nonnegative_integer_subtrahend),
+                           incorrect_nonnegative_integer_difference).
+action_automaton_signature(subtraction, drop_ones_after_base_takeaway,
+                           inputs(nonnegative_integer_minuend,
+                                  nonnegative_integer_subtrahend),
+                           incorrect_nonnegative_integer_difference).
+action_automaton_signature(subtraction, slide_subtrahend_only,
+                           inputs(nonnegative_integer_minuend,
+                                  nonnegative_integer_subtrahend),
+                           incorrect_nonnegative_integer_difference).
+action_automaton_signature(subtraction, compare_returns_larger_count,
+                           inputs(nonnegative_cardinality,
+                                  nonnegative_cardinality),
+                           larger_count_as_incorrect_difference).
+action_automaton_signature(multiplication, known_product_adjustment,
+                           inputs(positive_integer_group_count,
+                                  positive_integer_group_size),
+                           nonnegative_integer_product).
+action_automaton_signature(multiplication,
+                           known_product_without_adjustment,
+                           inputs(positive_integer_group_count,
+                                  positive_integer_group_size),
+                           incorrect_nonnegative_integer_product).
+action_automaton_signature(multiplication,
+                           add_counts_without_composite_unit,
+                           inputs(positive_integer_group_count,
+                                  positive_integer_group_size),
+                           incorrect_nonnegative_integer_product).
+action_automaton_signature(multiplication, add_instead_of_multiply,
+                           inputs(positive_integer_group_count,
+                                  positive_integer_group_size),
+                           incorrect_nonnegative_integer_product).
+action_automaton_signature(multiplication, drop_regrouping_remainder,
+                           inputs(positive_integer_group_count,
+                                  positive_integer_group_size),
+                           incorrect_nonnegative_integer_product).
+action_automaton_signature(multiplication, drop_second_partial_product,
+                           inputs(positive_integer_group_count,
+                                  positive_integer_group_size),
+                           incorrect_nonnegative_integer_product).
+action_automaton_signature(multiplication, context_free_fact_family_guess,
+                           inputs(positive_integer_group_count,
+                                  positive_integer_group_size),
+                           incorrect_nonnegative_integer_product).
+action_automaton_signature(multiplication, rigid_factor_order_roles,
+                           inputs(positive_integer_factor,
+                                  positive_integer_factor),
+                           product_without_commuted_roles).
+action_automaton_signature(multiplication,
+                           sequential_recompute_commuted_products,
+                           inputs(positive_integer_factor,
+                                  positive_integer_factor),
+                           product_recomputed_after_commuting).
+action_automaton_signature(division, inverse_fact_decomposition,
+                           inputs(nonnegative_integer_dividend,
+                                  positive_integer_divisor),
+                           integer_quotient_and_remainder).
+action_automaton_signature(division, missing_factor_known_product_search,
+                           inputs(nonnegative_integer_dividend,
+                                  positive_integer_divisor),
+                           integer_quotient).
+action_automaton_signature(division, reject_known_product_match,
+                           inputs(nonnegative_integer_dividend,
+                                  positive_integer_divisor),
+                           rejected_exact_quotient_match).
+action_automaton_signature(division, stop_after_one_known_fact,
+                           inputs(nonnegative_integer_dividend,
+                                  positive_integer_divisor),
+                           incomplete_integer_quotient_and_remainder).
+action_automaton_signature(division, stop_at_nearby_product_in_search,
+                           inputs(nonnegative_integer_dividend,
+                                  positive_integer_divisor),
+                           incomplete_integer_quotient_and_remainder).
+action_automaton_signature(division, sum_dividend_and_divisor,
+                           inputs(nonnegative_integer_dividend,
+                                  positive_integer_divisor),
+                           sum_as_incorrect_quotient).
+action_automaton_signature(fraction, splitting,
+                           inputs(unit_iteration_count_one,
+                                  positive_integer_denominator),
+                           unit_fraction_with_recovered_whole).
+action_automaton_signature(fraction, solve_for_unit,
+                           inputs(fraction_coefficient_and_total,
+                                  positive_integer_total),
+                           solved_unknown_unit).
+action_automaton_signature(fraction, iterate_only_no_reverse,
+                           inputs(fraction_coefficient_and_total,
+                                  positive_integer_total),
+                           unrecovered_unknown_unit).
+action_automaton_signature(fraction, recursive_partition,
+                           inputs(positive_integer_outer_partition,
+                                  positive_integer_inner_partition),
+                           nested_unit_fraction_of_original_whole).
+action_automaton_signature(fraction, clear_inner_referent,
+                           inputs(positive_integer_outer_partition,
+                                  positive_integer_inner_partition),
+                           nested_unit_fraction_of_inner_whole).
+action_automaton_signature(fraction, improper_fraction_iteration,
+                           inputs(improper_fraction_iteration_count,
+                                  positive_integer_denominator),
+                           improper_fraction_with_retained_referent).
+action_automaton_signature(fraction, iterate_given_overshoot,
+                           inputs(improper_fraction_iteration_count,
+                                  positive_integer_denominator),
+                           overshot_fraction_without_splitting).
+action_automaton_signature(fraction, whole_number_grab,
+                           inputs(positive_integer_iteration_count,
+                                  positive_integer_denominator),
+                           whole_number_count_as_fraction_value).
+action_automaton_signature(fraction,
+                           cross_multiplication_rule_from_pattern,
+                           inputs(positive_fraction_pair,
+                                  referent_whole),
+                           fraction_product).
+action_automaton_signature(fraction,
+                           cross_multiplication_rule_without_ground,
+                           inputs(positive_fraction_pair,
+                                  referent_whole),
+                           ungrounded_fraction_product).
+action_automaton_signature(calculus, factor_cancel_substitute,
+                           inputs(rational_expression_with_integer_coefficients,
+                                  integer_limit_point),
+                           limit_value).
+action_automaton_signature(calculus, factor_cancel_without_common_factor,
+                           inputs(rational_expression_with_integer_coefficients,
+                                  integer_limit_point),
+                           incorrect_limit_value).
+action_automaton_signature(probability,
+                           terminal_tree_endpoint_probability_sum,
+                           inputs(terminal_path_tree,
+                                  stake_value),
+                           weighted_stake_split).
+action_automaton_signature(probability, equiprobable_endpoint_counting,
+                           inputs(terminal_path_tree,
+                                  stake_value),
+                           equiprobable_stake_split).
 
 
 %!  action_automaton_pair(+Operation, +ProductiveKind, +DeformationKind, -Family) is semidet.

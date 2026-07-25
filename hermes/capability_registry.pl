@@ -254,12 +254,12 @@ capability('knowledge/discourse/commitment_automata.pl', 'commitment_automata', 
 capability('knowledge/geometry/geometry_bridge.pl', 'geometry_bridge', 'geometry_witness', [], orphan_module).
 capability('knowledge/misconceptions/literature_canonical_mappings.pl', 'literature_canonical_mappings', 'misconceptions', [], orphan_module).
 capability('knowledge/strategies/action_grammar.pl', 'action_grammar', 'synthesis', [], orphan_module).
-capability('knowledge/strategies/action_vocabulary_map.pl', 'action_vocabulary_map', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/automaton_input_contracts.pl', 'automaton_input_contracts', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/math/unit_coordination_viz.pl', 'unit_coordination_viz', 'synthesis', [], lazy_reachable).
 capability('knowledge/strategies/math_benchmark.pl', 'math_benchmark', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/transition_tables/addition.pl', 'addition', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/transition_tables/algebraic.pl', 'algebraic', 'synthesis', [], orphan_module).
+capability('knowledge/strategies/transition_tables/calculus.pl', 'calculus', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/transition_tables/counting.pl', 'counting', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/transition_tables/decimal.pl', 'decimal', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/transition_tables/division.pl', 'division', 'synthesis', [], orphan_module).
@@ -268,6 +268,7 @@ capability('knowledge/strategies/transition_tables/geometry.pl', 'geometry', 'sy
 capability('knowledge/strategies/transition_tables/integer.pl', 'integer', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/transition_tables/measurement.pl', 'measurement', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/transition_tables/multiplication.pl', 'multiplication', 'synthesis', [], orphan_module).
+capability('knowledge/strategies/transition_tables/probability.pl', 'probability', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/transition_tables/ratio.pl', 'ratio', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/transition_tables/statistics.pl', 'statistics', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/transition_tables/subtraction.pl', 'subtraction', 'synthesis', [], orphan_module).

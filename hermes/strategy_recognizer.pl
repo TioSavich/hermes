@@ -17,10 +17,17 @@
 :- use_module(library(apply), [include/3]).
 :- use_module(library(lists), [list_to_set/2]).
 :- use_module(library(porter_stem), [tokenize_atom/2]).
+:- use_module(library(solution_sequences), [distinct/2]).
+:- use_module(strategies(action_vocabulary_map), [action_maps/7]).
+:- use_module(strategies(canonical_phrases), [canonical_phrase/2]).
+:- use_module(strategies(utterance_layers), [denied_span/3, canonical_predicate/2]).
+:- use_module(strategies(attested_phrases), [attested_phrase/6]).
 
 :- include('../knowledge/strategies/transition_tables/addition.pl').
 :- include('../knowledge/strategies/transition_tables/algebraic.pl').
+:- include('../knowledge/strategies/transition_tables/calculus.pl').
 :- include('../knowledge/strategies/transition_tables/counting.pl').
+:- include('../knowledge/strategies/transition_tables/probability.pl').
 :- include('../knowledge/strategies/transition_tables/decimal.pl').
 :- include('../knowledge/strategies/transition_tables/division.pl').
 :- include('../knowledge/strategies/transition_tables/fraction.pl').
@@ -307,16 +314,54 @@ first_span_at_or_after([span(Start, End, Surface)|_], Cursor,
 first_span_at_or_after([_|Spans], Cursor, Span) :-
     first_span_at_or_after(Spans, Cursor, Span).
 
+% A span inside the reach of a denial is dropped rather than counted. Before
+% this guard the recognizer matched "made ten" inside "i did not make ten" and
+% returned make_ten_drop_leftover at 0.2 in favour of the strategy the sentence
+% denies. The denial's reach is stated in
+% knowledge/strategies/utterance_layers.pl and is deliberately crude; the
+% alternative in force was no reach at all.
 action_spans(Action, Tokens, Spans) :-
     findall(span(Start, End, Surface),
             ( action_surface(Action, Surface),
-              surface_span(Tokens, Surface, Start, End)
+              surface_span(Tokens, Surface, Start, End),
+              \+ denied_span(Tokens, Start, End)
             ),
             Spans0),
     sort(Spans0, Spans).
 
 action_surface(Action, Phrase) :-
     action_phrase(Action, Phrase).
+% Reviewed classroom phrasings authored once per canonical action, reaching
+% every local label the vocabulary map sends to that action. 24 labels carry a
+% hand-written phrase of their own above; this clause covers the other 784
+% without asking for 784 more authoring decisions. The map and the phrases are
+% both review-pending data, so this clause is the one place a recognition
+% surface depends on them, and removing it returns the recognizer to
+% identifier-derived phrasing alone.
+action_surface(Action, Phrase) :-
+    canonical_action_of(Action, Canonical),
+    canonical_phrase(Canonical, Phrase).
+% Cited surfaces from the research corpus. These are what a paper calls the
+% step, not what a student says, and knowledge/strategies/attested_phrases.pl
+% marks them register(analyst) for that reason. Before them, literature wording
+% such as "jump through ten" or "always subtracting the smaller digit" returned
+% no candidates at all.
+%
+% The widening this clause performs, stated: attested_phrase/6 cites a phrase for
+% one (family, signature, action), and action_spans/3 knows only the action, so a
+% phrase cited for one signature becomes a surface for the same-named action
+% wherever it occurs. 138 of the 808 labels occur in more than one signature, and
+% scripts/checks/attested_phrases.py counts how many rows the widening touches
+% rather than leaving it implied.
+action_surface(Action, Phrase) :-
+    attested_phrase(_Family, _Signature, Action, Phrase, _Source, _Attachment).
+% The person-free predicates. canonical_phrase/2's forms all begin "i", so they
+% read a student describing their own work and not a teacher revoicing it. A
+% predicate carries no person, so the person layer reads the person and the same
+% surface serves "i made ten", "you made ten" and "she made ten".
+action_surface(Action, Phrase) :-
+    canonical_action_of(Action, Canonical),
+    canonical_predicate(Canonical, Phrase).
 action_surface(Action, Phrase) :-
     action_tokens(Action, Phrase).
 action_surface(Action, Phrase) :-
@@ -325,6 +370,25 @@ action_surface(Action, Phrase) :-
 
 action_tokens(Action, Tokens) :-
     atomic_list_concat(Tokens, '_', Action).
+
+%!  canonical_action_of(+LocalLabel, -CanonicalAction) is nondet.
+%
+%   A local action label reaches its canonical action through any signature
+%   that uses the label. The map is per signature; a label used by several
+%   signatures under one canonical action yields that action once per
+%   signature, and action_surface/2 is called inside a findall that sorts, so
+%   duplicates do not multiply spans.
+%   distinct/2 matters here rather than being tidiness. action_maps/7 is per
+%   signature, so a label used by twelve signatures -- emit and init both are --
+%   would yield its canonical action twelve times and every one of that action's
+%   phrases twelve times with it. The spans are sorted downstream so the answer
+%   was right, and the work was multiplied by up to twelve for nothing. The one
+%   label that genuinely carries two canonical actions, establish_base, still
+%   yields both.
+canonical_action_of(Action, Canonical) :-
+    distinct(Canonical,
+             action_maps(_Family, _Signature, Action, Canonical,
+                         _Confidence, _Evidence, _Status)).
 
 synonym_tokens([Token|Tokens], [Synonym|Tokens]) :-
     controlled_synonym(Token, Synonym),
