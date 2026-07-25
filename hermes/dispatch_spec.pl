@@ -7,6 +7,13 @@
 % Inputs are Key-Converter pairs. Call arguments name bound keys, mark ignored
 % outputs as drop, and name retained outputs with out(Name).
 
+% The index subtraction: which machines survive a topic, and evidence for a
+% sample of those removed. Fails for a topic no exclusion rule keys on, so a
+% caller is told its query subtracted nothing rather than handed the whole corpus.
+dispatch_spec(index_topic_subtraction,
+    [topic-atom],
+    call(index_query:topic_subtraction_dict, [topic, out(dict)]),
+    raw(no_index_topic, malformed_index_topic_request)).
 dispatch_spec(axiom_pack_witness,
     [pack-atom, source-atom],
     call(cw_driver:family_witness,

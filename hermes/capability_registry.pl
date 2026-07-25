@@ -113,6 +113,7 @@ capability('image_schema', 'user', 'unclassified', ['practice'], routed_paged).
 capability('incoherent_witness', 'sequent_engine', 'unclassified', ['context'], routed_paged).
 capability('incompatibility_discovery_witness', 'incompatibility_discovery', 'incompatibility', ['context', 'set'], routed_paged).
 capability('incompatibility_entailment_witness', 'incompatibility_sets', 'incompatibility', ['replaced', 'replacement'], routed_paged).
+capability('index_topic_subtraction', 'index_query', 'unclassified', ['topic'], unrouted).
 capability('inferential_strength', 'user', 'unclassified', ['lesson'], routed_paged).
 capability('integer_signed_claim_witness', 'cw_driver', 'unclassified', ['canonical', 'source'], routed_paged).
 capability('intersubjective_material_witness', 'intersubjective_praxis', 'unclassified', ['from', 'to'], routed_paged).
@@ -252,8 +253,6 @@ capability('knowledge/crosswalk/merge_evidence.pl', 'merge_evidence', 'crosswalk
 capability('knowledge/crosswalk/vocabulary_licenses.pl', 'vocabulary_licenses', 'crosswalk', [], orphan_module).
 capability('knowledge/discourse/commitment_automata.pl', 'commitment_automata', 'unclassified', [], orphan_module).
 capability('knowledge/geometry/geometry_bridge.pl', 'geometry_bridge', 'geometry_witness', [], orphan_module).
-capability('knowledge/index/corpus_window.pl', 'corpus_window', 'unclassified', [], orphan_module).
-capability('knowledge/index/relevance_negation.pl', 'relevance_negation', 'unclassified', [], orphan_module).
 capability('knowledge/misconceptions/literature_canonical_mappings.pl', 'literature_canonical_mappings', 'misconceptions', [], orphan_module).
 capability('knowledge/strategies/action_grammar.pl', 'action_grammar', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/automaton_input_contracts.pl', 'automaton_input_contracts', 'synthesis', [], orphan_module).
@@ -393,6 +392,7 @@ capability_parameter('incompatibility_discovery_witness', 'context', null, true,
 capability_parameter('incompatibility_discovery_witness', 'set', null, true, null).
 capability_parameter('incompatibility_entailment_witness', 'replacement', null, true, null).
 capability_parameter('incompatibility_entailment_witness', 'replaced', null, true, null).
+capability_parameter('index_topic_subtraction', 'topic', 'string', true, null).
 capability_parameter('inferential_strength', 'lesson', 'string', true, null).
 capability_parameter('integer_signed_claim_witness', 'canonical', 'string', true, null).
 capability_parameter('integer_signed_claim_witness', 'source', 'string', true, null).

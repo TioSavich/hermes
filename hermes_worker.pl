@@ -60,6 +60,7 @@ load_runtime :-
     use_module(im_lessons(field_context)),
     use_module(strategies(inferential_strength)),
     use_module(strategies(visualization), []),
+    use_module(index(index_query), []),
     use_module(math(state_vocabulary), []),
     use_module(render(fraction_bars_scene)),
     use_module(render(balance_scale_scene)),
