@@ -174,10 +174,12 @@ already did the compressing — 232 machines spelling 24 arcs.
 - **Four characters to a token is an order-of-magnitude estimate**, not a
   measurement. A real tokenizer would move these numbers by tens of percent and not
   by factors.
-- **The ratio is between one thing you would not serve and one thing nobody has
-  used yet.** Nobody has asked an LLM a question with the window and checked whether
-  the answer was better than with a slice of the shards. Until that happens the
-  ratio is arithmetic, not evidence.
+- **The ratio was arithmetic when this was written, and has since been tested.**
+  `2026-07-25-the-window-was-asked.md` ran the comparison this line called for: at
+  identical token budget the index routed 9 of 30 cited phrases to their machine
+  against the raw slice's 1 (p = 0.0215). So the ratio now has one result behind
+  it — on 30 items, one model, and with a filter that handicaps the keyword
+  baseline, all stated there.
 - **28% of machines do not fit the shell/core shape**, and I have not diagnosed
   them. The 72% figure is the claim; the 64 exceptions are the work.
 - **The delegation count is 14 and the corpus is 232.** That the nesting concentrates

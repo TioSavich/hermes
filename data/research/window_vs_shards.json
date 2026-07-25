@@ -1,0 +1,864 @@
+{
+  "items": [
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "addition",
+            "drop_carry_to_next_column"
+          ],
+          "exact": false,
+          "family_right": true,
+          "machines_held": 36,
+          "prompt_bytes": 50959,
+          "reply": "addition/drop_carry_to_next_column"
+        },
+        "window": {
+          "answer": [
+            "addition",
+            "drop_carry_to_next_column"
+          ],
+          "exact": false,
+          "family_right": true,
+          "machines_held": 232,
+          "prompt_bytes": 52122,
+          "reply": "addition/drop_carry_to_next_column"
+        }
+      },
+      "family": "addition",
+      "phrase": "failing to carry the tens digit",
+      "signature": "append_column_sum_without_carrying"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "division",
+            "missing_factor_repeated_addition"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 26,
+          "prompt_bytes": 51830,
+          "reply": "division/missing_factor_repeated_addition"
+        },
+        "window": {
+          "answer": [
+            "multiplication",
+            "common_multiple_sequence"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 232,
+          "prompt_bytes": 52112,
+          "reply": "multiplication/common_multiple_sequence"
+        }
+      },
+      "family": "addition",
+      "phrase": "count forward by tens",
+      "signature": "base_ones_chunking"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "addition",
+            "column_addition_with_carrying"
+          ],
+          "exact": true,
+          "family_right": true,
+          "machines_held": 33,
+          "prompt_bytes": 51567,
+          "reply": "addition/column_addition_with_carrying"
+        },
+        "window": {
+          "answer": [
+            "discourse",
+            "algorithmic_elaboration"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 232,
+          "prompt_bytes": 52109,
+          "reply": "discourse/algorithmic_elaboration"
+        }
+      },
+      "family": "addition",
+      "phrase": "written algorithms",
+      "signature": "column_addition_with_carrying"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": null,
+          "exact": false,
+          "family_right": false,
+          "machines_held": 29,
+          "prompt_bytes": 50899,
+          "reply": "none"
+        },
+        "window": {
+          "answer": [
+            "addition",
+            "count_on_from_larger"
+          ],
+          "exact": true,
+          "family_right": true,
+          "machines_held": 232,
+          "prompt_bytes": 52113,
+          "reply": "addition/count_on_from_larger"
+        }
+      },
+      "family": "addition",
+      "phrase": "counting on from first",
+      "signature": "count_on_from_larger"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "addition",
+            "unbalanced_make_base_compensation"
+          ],
+          "exact": false,
+          "family_right": true,
+          "machines_held": 29,
+          "prompt_bytes": 51804,
+          "reply": "addition/unbalanced_make_base_compensation"
+        },
+        "window": {
+          "answer": [
+            "subtraction",
+            "sliding_constant_difference"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 232,
+          "prompt_bytes": 52120,
+          "reply": "subtraction/sliding_constant_difference"
+        }
+      },
+      "family": "addition",
+      "phrase": "transform one addend or total",
+      "signature": "derived_fact_adjustment"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "counting",
+            "compare_cardinalities_one_to_one"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 39,
+          "prompt_bytes": 51768,
+          "reply": "counting/compare_cardinalities_one_to_one"
+        },
+        "window": {
+          "answer": [
+            "addition",
+            "known_fact_retrieval"
+          ],
+          "exact": true,
+          "family_right": true,
+          "machines_held": 232,
+          "prompt_bytes": 52107,
+          "reply": "addition/known_fact_retrieval"
+        }
+      },
+      "family": "addition",
+      "phrase": "without counting",
+      "signature": "known_fact_retrieval"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "addition",
+            "base_ones_chunking"
+          ],
+          "exact": false,
+          "family_right": true,
+          "machines_held": 41,
+          "prompt_bytes": 51933,
+          "reply": "addition/base_ones_chunking"
+        },
+        "window": {
+          "answer": [
+            "addition",
+            "make_ten_split_leftover"
+          ],
+          "exact": true,
+          "family_right": true,
+          "machines_held": 232,
+          "prompt_bytes": 52106,
+          "reply": "addition/make_ten_split_leftover"
+        }
+      },
+      "family": "addition",
+      "phrase": "jump through 10",
+      "signature": "make_ten_split_leftover"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "fraction",
+            "area_model_unequal_partition_piece_count"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 29,
+          "prompt_bytes": 51657,
+          "reply": "fraction/area_model_unequal_partition_piece_count"
+        },
+        "window": {
+          "answer": [
+            "decimal",
+            "decimal_numeral_comparison_without_scale_alignment"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 232,
+          "prompt_bytes": 52129,
+          "reply": "decimal/decimal_numeral_comparison_without_scale_alignment"
+        }
+      },
+      "family": "addition",
+      "phrase": "without attending to the relative size",
+      "signature": "rote_derived_fact_rule_misfire"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": null,
+          "exact": false,
+          "family_right": false,
+          "machines_held": 41,
+          "prompt_bytes": 51808,
+          "reply": "none"
+        },
+        "window": {
+          "answer": null,
+          "exact": false,
+          "family_right": false,
+          "machines_held": 232,
+          "prompt_bytes": 52120,
+          "reply": "none"
+        }
+      },
+      "family": "addition",
+      "phrase": "procedural errors when adding",
+      "signature": "wrong_carry_amount_to_next_column"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": null,
+          "exact": false,
+          "family_right": false,
+          "machines_held": 35,
+          "prompt_bytes": 52020,
+          "reply": "none"
+        },
+        "window": {
+          "answer": [
+            "algebraic",
+            "distributive_expression_rewrite"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 232,
+          "prompt_bytes": 52135,
+          "reply": "algebraic/distributive_expression_rewrite"
+        }
+      },
+      "family": "calculus",
+      "phrase": "recognize x^2 - 9 as a difference of squares",
+      "signature": "factor_cancel_substitute"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "addition",
+            "dropped_ones_chunk"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 40,
+          "prompt_bytes": 51615,
+          "reply": "addition/dropped_ones_chunk"
+        },
+        "window": {
+          "answer": [
+            "decimal",
+            "decimal_numeral_comparison_without_scale_alignment"
+          ],
+          "exact": false,
+          "family_right": true,
+          "machines_held": 232,
+          "prompt_bytes": 52142,
+          "reply": "decimal/decimal_numeral_comparison_without_scale_alignment"
+        }
+      },
+      "family": "decimal",
+      "phrase": "incorrect placement when trailing zeros are dropped",
+      "signature": "decimal_point_rule_misapplication"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "multiplication",
+            "known_product_adjustment"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 32,
+          "prompt_bytes": 50860,
+          "reply": "multiplication/known_product_adjustment"
+        },
+        "window": {
+          "answer": [
+            "multiplication",
+            "known_product_adjustment"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 232,
+          "prompt_bytes": 52116,
+          "reply": "multiplication/known_product_adjustment"
+        }
+      },
+      "family": "decimal",
+      "phrase": "adjust the product to get",
+      "signature": "recalled_result_scaling"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "multiplication",
+            "commute_factors_preserve_product"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 30,
+          "prompt_bytes": 51367,
+          "reply": "multiplication/commute_factors_preserve_product"
+        },
+        "window": {
+          "answer": [
+            "division",
+            "inverse_fact_decomposition"
+          ],
+          "exact": true,
+          "family_right": true,
+          "machines_held": 232,
+          "prompt_bytes": 52114,
+          "reply": "division/inverse_fact_decomposition"
+        }
+      },
+      "family": "division",
+      "phrase": "reversed multiplication",
+      "signature": "inverse_fact_decomposition"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "fraction",
+            "set_model_fraction_comparison"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 22,
+          "prompt_bytes": 51649,
+          "reply": "fraction/set_model_fraction_comparison"
+        },
+        "window": {
+          "answer": [
+            "fraction",
+            "splitting"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 232,
+          "prompt_bytes": 52121,
+          "reply": "fraction/splitting"
+        }
+      },
+      "family": "division",
+      "phrase": "disembed equal composite units",
+      "signature": "measure_groups_of_size"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "division",
+            "long_division"
+          ],
+          "exact": false,
+          "family_right": true,
+          "machines_held": 32,
+          "prompt_bytes": 50067,
+          "reply": "division/long_division"
+        },
+        "window": {
+          "answer": [
+            "division",
+            "missing_factor_known_product_search"
+          ],
+          "exact": true,
+          "family_right": true,
+          "machines_held": 232,
+          "prompt_bytes": 52115,
+          "reply": "division/missing_factor_known_product_search"
+        }
+      },
+      "family": "division",
+      "phrase": "multiplication to divide",
+      "signature": "missing_factor_known_product_search"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": null,
+          "exact": false,
+          "family_right": false,
+          "machines_held": 33,
+          "prompt_bytes": 51256,
+          "reply": "none"
+        },
+        "window": {
+          "answer": [
+            "division",
+            "partial_quotient_chunking"
+          ],
+          "exact": true,
+          "family_right": true,
+          "machines_held": 232,
+          "prompt_bytes": 52125,
+          "reply": "division/partial_quotient_chunking"
+        }
+      },
+      "family": "division",
+      "phrase": "additive breakdown of the dividend",
+      "signature": "partial_quotient_chunking"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "algebraic",
+            "guess_and_check_rule"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 41,
+          "prompt_bytes": 51818,
+          "reply": "algebraic/guess_and_check_rule"
+        },
+        "window": {
+          "answer": [
+            "discourse",
+            "entitlement_by_formal_schema"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 232,
+          "prompt_bytes": 52130,
+          "reply": "discourse/entitlement_by_formal_schema"
+        }
+      },
+      "family": "division",
+      "phrase": "clash between computation and situation",
+      "signature": "reject_known_product_match"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "fraction",
+            "cross_multiplication_rule_from_pattern"
+          ],
+          "exact": false,
+          "family_right": true,
+          "machines_held": 29,
+          "prompt_bytes": 51442,
+          "reply": "fraction/cross_multiplication_rule_from_pattern"
+        },
+        "window": {
+          "answer": [
+            "fraction",
+            "area_model_fraction_comparison"
+          ],
+          "exact": false,
+          "family_right": true,
+          "machines_held": 232,
+          "prompt_bytes": 52117,
+          "reply": "fraction/area_model_fraction_comparison"
+        }
+      },
+      "family": "fraction",
+      "phrase": "both_denominator_rectangle",
+      "signature": "area_model_part_of_part"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "decimal",
+            "positional_decimal_reading"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 31,
+          "prompt_bytes": 51824,
+          "reply": "decimal/positional_decimal_reading"
+        },
+        "window": {
+          "answer": [
+            "fraction",
+            "splitting"
+          ],
+          "exact": false,
+          "family_right": true,
+          "machines_held": 232,
+          "prompt_bytes": 52121,
+          "reply": "fraction/splitting"
+        }
+      },
+      "family": "fraction",
+      "phrase": "fractional language production",
+      "signature": "unit_fraction_iteration"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": null,
+          "exact": false,
+          "family_right": false,
+          "machines_held": 31,
+          "prompt_bytes": 51821,
+          "reply": "none"
+        },
+        "window": {
+          "answer": [
+            "fraction",
+            "unit_fraction_partition"
+          ],
+          "exact": true,
+          "family_right": true,
+          "machines_held": 232,
+          "prompt_bytes": 52118,
+          "reply": "fraction/unit_fraction_partition"
+        }
+      },
+      "family": "fraction",
+      "phrase": "partitive fractional scheme",
+      "signature": "unit_fraction_partition"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "statistics",
+            "mean_absolute_deviation"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 38,
+          "prompt_bytes": 51412,
+          "reply": "statistics/mean_absolute_deviation"
+        },
+        "window": {
+          "answer": [
+            "integer",
+            "drop_sign_use_magnitude_sum"
+          ],
+          "exact": true,
+          "family_right": true,
+          "machines_held": 232,
+          "prompt_bytes": 52106,
+          "reply": "integer/drop_sign_use_magnitude_sum"
+        }
+      },
+      "family": "integer",
+      "phrase": "absolute values",
+      "signature": "drop_sign_use_magnitude_sum"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "fraction",
+            "number_line_fraction_comparison"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 27,
+          "prompt_bytes": 50768,
+          "reply": "fraction/number_line_fraction_comparison"
+        },
+        "window": {
+          "answer": [
+            "fraction",
+            "number_line_fraction_comparison"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 232,
+          "prompt_bytes": 52109,
+          "reply": "fraction/number_line_fraction_comparison"
+        }
+      },
+      "family": "integer",
+      "phrase": "number-line arrows",
+      "signature": "signed_addition_with_sign_relation"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "multiplication",
+            "sequential_recompute_commuted_products"
+          ],
+          "exact": false,
+          "family_right": true,
+          "machines_held": 40,
+          "prompt_bytes": 51896,
+          "reply": "multiplication/sequential_recompute_commuted_products"
+        },
+        "window": {
+          "answer": [
+            "multiplication",
+            "commute_factors_preserve_product"
+          ],
+          "exact": true,
+          "family_right": true,
+          "machines_held": 232,
+          "prompt_bytes": 52111,
+          "reply": "multiplication/commute_factors_preserve_product"
+        }
+      },
+      "family": "multiplication",
+      "phrase": "commutative property",
+      "signature": "commute_factors_preserve_product"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "counting",
+            "compare_cardinalities_one_to_one"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 38,
+          "prompt_bytes": 51825,
+          "reply": "counting/compare_cardinalities_one_to_one"
+        },
+        "window": {
+          "answer": [
+            "multiplication",
+            "repeat_equal_groups"
+          ],
+          "exact": false,
+          "family_right": true,
+          "machines_held": 232,
+          "prompt_bytes": 52106,
+          "reply": "multiplication/repeat_equal_groups"
+        }
+      },
+      "family": "multiplication",
+      "phrase": "grouped objects",
+      "signature": "coordinate_groups_items"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": null,
+          "exact": false,
+          "family_right": false,
+          "machines_held": 37,
+          "prompt_bytes": 51698,
+          "reply": "none"
+        },
+        "window": {
+          "answer": [
+            "algebraic",
+            "drop_distributed_term"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 232,
+          "prompt_bytes": 52118,
+          "reply": "algebraic/drop_distributed_term"
+        }
+      },
+      "family": "multiplication",
+      "phrase": "omitting the cross products",
+      "signature": "drop_second_partial_product"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "counting",
+            "recursive_place_value_inscription"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 41,
+          "prompt_bytes": 51552,
+          "reply": "counting/recursive_place_value_inscription"
+        },
+        "window": {
+          "answer": [
+            "multiplication",
+            "common_multiple_sequence"
+          ],
+          "exact": false,
+          "family_right": true,
+          "machines_held": 232,
+          "prompt_bytes": 52107,
+          "reply": "multiplication/common_multiple_sequence"
+        }
+      },
+      "family": "multiplication",
+      "phrase": "counting by tens",
+      "signature": "repeat_equal_groups"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "addition",
+            "unbalanced_make_base_compensation"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 41,
+          "prompt_bytes": 51796,
+          "reply": "addition/unbalanced_make_base_compensation"
+        },
+        "window": {
+          "answer": [
+            "fraction",
+            "area_model_unequal_partition_piece_count"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 232,
+          "prompt_bytes": 52108,
+          "reply": "fraction/area_model_unequal_partition_piece_count"
+        }
+      },
+      "family": "multiplication",
+      "phrase": "asymmetric models",
+      "signature": "rigid_factor_order_roles"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": null,
+          "exact": false,
+          "family_right": false,
+          "machines_held": 37,
+          "prompt_bytes": 50726,
+          "reply": "none"
+        },
+        "window": {
+          "answer": [
+            "fraction",
+            "solve_for_unit"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 232,
+          "prompt_bytes": 52115,
+          "reply": "fraction/solve_for_unit"
+        }
+      },
+      "family": "ratio",
+      "phrase": "missing-value proportion",
+      "signature": "scale_ratio_unit"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": null,
+          "exact": false,
+          "family_right": false,
+          "machines_held": 41,
+          "prompt_bytes": 51799,
+          "reply": "none"
+        },
+        "window": {
+          "answer": [
+            "subtraction",
+            "smaller_from_larger_in_column"
+          ],
+          "exact": false,
+          "family_right": true,
+          "machines_held": 232,
+          "prompt_bytes": 52111,
+          "reply": "subtraction/smaller_from_larger_in_column"
+        }
+      },
+      "family": "subtraction",
+      "phrase": "bypass the borrowing",
+      "signature": "borrow_without_reducing_bases"
+    },
+    {
+      "conditions": {
+        "shards": {
+          "answer": [
+            "algebraic",
+            "one_sided_equation_operation"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 41,
+          "prompt_bytes": 51818,
+          "reply": "algebraic/one_sided_equation_operation"
+        },
+        "window": {
+          "answer": [
+            "algebraic",
+            "one_sided_equation_operation"
+          ],
+          "exact": false,
+          "family_right": false,
+          "machines_held": 232,
+          "prompt_bytes": 52130,
+          "reply": "algebraic/one_sided_equation_operation"
+        }
+      },
+      "family": "subtraction",
+      "phrase": "incorrect rules for symbol manipulation",
+      "signature": "smaller_from_larger_in_column"
+    }
+  ],
+  "model": "gemma-4-31B-it",
+  "summary": {
+    "shards": {
+      "abstained": 8,
+      "exact": 1,
+      "family_right": 7,
+      "n": 30
+    },
+    "window": {
+      "abstained": 1,
+      "exact": 9,
+      "family_right": 16,
+      "n": 30
+    }
+  },
+  "total_machines": 232,
+  "window_budget_bytes": 51452
+}

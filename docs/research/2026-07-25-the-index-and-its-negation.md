@@ -145,8 +145,12 @@ grounded reason excludes them.
 
 ## Honest limits
 
-Nobody has yet asked a model a question with this index, so its value is
-untested. The `bytes/4` number is an estimate rather than a tokenizer result.
+Its value was untested when this was written. `2026-07-25-the-window-was-asked.md`
+tested it: routing 30 cited phrases to their machine at identical token budget,
+the index reached 9 exact against a raw slice's 1 (p = 0.0215), and the limits of
+that test — 30 items, one model, and a filter that handicaps the keyword baseline
+— are stated there. The `bytes/4` number remains an estimate rather than a
+tokenizer result.
 
 Lesson subtraction is relative to what `lesson_topics/2` records. It establishes
 that the query topic is absent from that bounded predicate result, not that the
