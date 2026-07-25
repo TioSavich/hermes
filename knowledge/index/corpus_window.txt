@@ -1,0 +1,613 @@
+LEGEND - actions (canonical, genre/register/stance)
+  accept_without_check  computational/normative/deforming
+  accumulate_total  computational/iteration/neutral
+  acknowledge_commitment  discursive/constitution/neutral
+  align_to_common_unit  computational/transformation/conserving
+  apply_quantity_change  computational/operation/neutral
+  apply_stored_rule  computational/operation/neutral
+  assign_roles  computational/constitution/neutral
+  assume_vindication_task  discursive/normative/conserving
+  attach_units_coordination  computational/inscription/conserving
+  attend_to_utterance  discursive/constitution/neutral
+  attribute_commitment  discursive/constitution/neutral
+  authorize_deferral  discursive/operation/conserving
+  certify_meaning_use_relation  discursive/normative/conserving
+  challenge_entitlement  discursive/comparison/neutral
+  combine_quantities  computational/operation/neutral
+  commute_operands  computational/transformation/conserving
+  compare_additive_gaps  computational/comparison/neutral
+  compare_magnitudes  computational/comparison/neutral
+  compare_residuals  computational/comparison/neutral
+  compose_expression  computational/transformation/neutral
+  compute_product  computational/operation/neutral
+  compute_quotient  computational/operation/neutral
+  conflate_attribution_with_acknowledgement  discursive/constitution/deforming
+  conflate_roles  computational/constitution/deforming
+  count_back_from  computational/iteration/neutral
+  count_on_from  computational/iteration/neutral
+  count_units  computational/iteration/neutral
+  count_up_to_target  computational/iteration/neutral
+  decompose_by_place  computational/partition/neutral
+  decompose_operand  computational/partition/neutral
+  decompose_region  computational/partition/neutral
+  defer_to_asserter  discursive/delegation/neutral
+  deploy_vocabulary_from_practice  discursive/transformation/neutral
+  derive_consequent  discursive/comparison/neutral
+  disembed_part  computational/partition/neutral
+  dispatch_to_kernel  computational/delegation/neutral
+  distribute_over_partition  computational/transformation/conserving
+  double_count  computational/iteration/deforming
+  elaborate_practice_algorithmically  discursive/transformation/neutral
+  emit_result  computational/inscription/neutral
+  enumerate_candidates  computational/search/neutral
+  establish_reference_frame  computational/constitution/neutral
+  evaluate_expression  computational/operation/neutral
+  exchange_base_down  computational/transformation/conserving
+  exhaust_resource  computational/operation/neutral
+  explicate_practice_in_elaborated_vocabulary  discursive/transformation/conserving
+  filter_by_constraint  computational/search/neutral
+  grant_entitlement  discursive/operation/conserving
+  grant_entitlement_without_grounding  discursive/normative/deforming
+  halt_before_completion  computational/iteration/deforming
+  hold_incompatible_commitments  discursive/normative/deforming
+  inherit_entitlement  discursive/delegation/neutral
+  initiate  computational/constitution/neutral
+  inscribe_result  computational/inscription/neutral
+  interrupt_before_completion  discursive/iteration/conserving
+  intersect_candidate_sets  computational/search/neutral
+  isolate_unknown  computational/comparison/neutral
+  iterate_composite_unit  computational/iteration/neutral
+  iterate_unit  computational/iteration/neutral
+  judge_against_benchmark  computational/comparison/neutral
+  let_the_utterance_run_on  discursive/iteration/deforming
+  locate_material_inference  discursive/comparison/neutral
+  locate_position  computational/comparison/neutral
+  match_one_to_one  computational/comparison/neutral
+  measure_out_group_size  computational/operation/neutral
+  measure_quantity  computational/iteration/neutral
+  misname_result  computational/inscription/deforming
+  misread_intermediate_value  computational/constitution/deforming
+  name_result  computational/inscription/neutral
+  name_the_incompatible_token  discursive/comparison/neutral
+  omit_required_step  computational/normative/deforming
+  omit_vindication_task  discursive/normative/deforming
+  order_by_magnitude  computational/comparison/neutral
+  partition_into_equal_parts  computational/partition/neutral
+  re_express_equivalently  computational/transformation/conserving
+  read_operand_attribute  computational/constitution/neutral
+  receive_kernel_outcome  computational/delegation/neutral
+  recompose_total  computational/transformation/conserving
+  record_conservation  computational/normative/conserving
+  record_deontic_incoherence  discursive/normative/deforming
+  record_deontic_score  discursive/normative/conserving
+  record_loss  computational/normative/deforming
+  record_viability  computational/normative/conserving
+  register_givens  computational/constitution/neutral
+  regress_deferral  discursive/delegation/deforming
+  regroup_to_base  computational/transformation/conserving
+  remove_quantity  computational/operation/neutral
+  rename_in_place_of_transforming  computational/transformation/deforming
+  repair_the_commitment  discursive/transformation/conserving
+  replicate_equal_groups  computational/operation/neutral
+  restore_adjustment  computational/transformation/conserving
+  retain_unchanged  computational/transformation/neutral
+  retain_what_must_survive  computational/transformation/conserving
+  retain_where_change_was_due  computational/transformation/deforming
+  retrieve_known_fact  computational/operation/neutral
+  round_to_landmark  computational/transformation/neutral
+  scale_multiplicatively  computational/transformation/neutral
+  select_extremal  computational/search/neutral
+  select_part  computational/partition/neutral
+  select_unit_scale  computational/constitution/neutral
+  set_aside_irrelevant_attribute  computational/normative/conserving
+  share_into_known_groups  computational/operation/neutral
+  specify_practice_in_vocabulary  discursive/transformation/neutral
+  substitute_additive_for_multiplicative  computational/comparison/deforming
+  substitute_appearance_for_measure  computational/comparison/deforming
+  substitute_authority_for_inference  discursive/operation/deforming
+  substitute_count_for_measure  computational/iteration/deforming
+  substitute_formal_schema_for_material_inference  discursive/comparison/deforming
+  substitute_operation  computational/operation/deforming
+  substitute_scalar_for_structured_quantity  computational/transformation/deforming
+  substitute_symbol_reading  computational/constitution/deforming
+  substitute_values  computational/transformation/neutral
+  test_compatibility  discursive/normative/conserving
+  test_criteria  computational/normative/conserving
+  transfer_between_operands  computational/transformation/conserving
+  traverse_boundary  computational/iteration/neutral
+  treat_relevant_as_irrelevant  computational/normative/deforming
+  undertake_commitment  discursive/operation/neutral
+  unitize_referent  computational/constitution/neutral
+  verify_by_substitution  computational/normative/conserving
+  verify_invariant  computational/normative/conserving
+  withdraw_commitment  discursive/operation/neutral
+LEGEND - arcs (name, machines)
+  break_first_work_break  4
+  break_keep_break  3
+  break_recover_break  22
+  break_recover_break_work_on  1
+  break_then_keep_then_break  1
+  break_then_keep_work_on  1
+  break_then_work_on  10
+  break_three_times  1
+  break_twice_then_keep_work_on  1
+  keep_first_break_keep_break  1
+  keep_first_break_recover_break  1
+  keep_first_break_recover_break_again  1
+  keep_first_break_work_on  1
+  keep_first_then_break  1
+  keep_first_then_work_on  2
+  keep_first_work_keep  3
+  keep_then_break  5
+  keep_then_work_on  29
+  keep_work_keep  8
+  keep_work_keep_work_keep  1
+  keep_work_keep_work_on  2
+  unrecorded_run  48
+  work_then_break  49
+  work_then_keep  36
+MACHINES - family/signature arc=NAME shell=... core=... closure=... other=...
+  addition/append_column_sum_without_carrying arc=keep_first_break_recover_break
+    shell=align_to_common_unit core=substitute_operation closure=omit_required_step+inscribe_result+record_loss other=none
+  addition/base_ones_chunking arc=work_then_keep
+    shell=decompose_operand core=combine_quantities+combine_quantities closure=record_conservation other=none
+  addition/column_addition_with_carrying arc=keep_work_keep_work_keep
+    shell=align_to_common_unit+regroup_to_base core=apply_stored_rule+accumulate_total closure=inscribe_result+record_conservation other=none
+  addition/count_all_instead_of_known_fact arc=work_then_break
+    shell=register_givens core=exhaust_resource+count_units closure=record_loss other=none
+  addition/count_all_when_count_on_available arc=break_first_work_break
+    shell=none core=substitute_operation+count_units+count_on_from closure=record_loss other=none
+  addition/count_on_from_larger arc=unrecorded_run
+    shell=assign_roles+assign_roles core=count_on_from closure=name_result other=none
+  addition/derived_fact_adjustment arc=work_then_keep
+    shell=compare_magnitudes core=retrieve_known_fact+combine_quantities closure=record_conservation other=none
+  addition/drop_carry_to_next_column arc=keep_first_break_recover_break_again
+    shell=align_to_common_unit core=apply_stored_rule+accumulate_total closure=inscribe_result+treat_relevant_as_irrelevant+record_loss other=none
+  addition/dropped_ones_chunk arc=work_then_break
+    shell=decompose_operand core=combine_quantities+halt_before_completion closure=record_loss other=none
+  addition/known_fact_retrieval arc=unrecorded_run
+    shell=register_givens core=retrieve_known_fact closure=name_result other=none
+  addition/make_base_transfer arc=work_then_keep
+    shell=assign_roles+select_unit_scale+transfer_between_operands core=count_up_to_target closure=record_conservation other=none
+  addition/make_ten_drop_leftover arc=keep_then_break
+    shell=assign_roles+decompose_operand+regroup_to_base core=halt_before_completion closure=record_loss other=none
+  addition/make_ten_split_leftover arc=keep_work_keep
+    shell=assign_roles+decompose_operand+regroup_to_base core=combine_quantities closure=record_conservation other=none
+  addition/rote_derived_fact_rule_misfire arc=work_then_break
+    shell=read_operand_attribute core=retrieve_known_fact+apply_stored_rule closure=record_loss other=none
+  addition/round_then_adjust arc=work_then_keep
+    shell=assign_roles+select_unit_scale+round_to_landmark+restore_adjustment core=combine_quantities closure=none other=none
+  addition/round_without_adjusting arc=work_then_break
+    shell=assign_roles+select_unit_scale+round_to_landmark core=combine_quantities closure=omit_required_step+record_loss other=none
+  addition/unbalanced_make_base_compensation arc=work_then_break
+    shell=assign_roles+select_unit_scale+retain_where_change_was_due core=count_up_to_target+combine_quantities closure=record_loss other=none
+  addition/wrong_carry_amount_to_next_column arc=keep_first_break_keep_break
+    shell=align_to_common_unit+misread_intermediate_value+regroup_to_base core=apply_stored_rule closure=inscribe_result+record_loss other=none
+  algebraic/balance_preserving_linear_solution arc=keep_work_keep
+    shell=register_givens+re_express_equivalently+isolate_unknown core=none closure=verify_by_substitution other=none
+  algebraic/contextual_linear_equation_construction arc=unrecorded_run
+    shell=assign_roles+assign_roles+compose_expression+compose_expression+compose_expression core=none closure=inscribe_result other=none
+  algebraic/distributive_expression_rewrite arc=work_then_keep
+    shell=read_operand_attribute+read_operand_attribute+distribute_over_partition+distribute_over_partition+recompose_total core=none closure=none other=none
+  algebraic/drop_distributed_term arc=keep_then_break
+    shell=read_operand_attribute+distribute_over_partition core=halt_before_completion closure=record_loss other=none
+  algebraic/equation_truth_by_substitution arc=work_then_keep
+    shell=substitute_values core=evaluate_expression+evaluate_expression closure=test_criteria other=none
+  algebraic/exponent_as_multiplier arc=break_first_work_break
+    shell=conflate_roles core=compute_product closure=omit_required_step other=none
+  algebraic/exponent_as_repeated_factor arc=unrecorded_run
+    shell=assign_roles+assign_roles core=iterate_unit closure=inscribe_result other=none
+  algebraic/exponential_equivalence_by_expansion arc=keep_first_then_work_on
+    shell=re_express_equivalently+re_express_equivalently core=none closure=test_criteria+name_result other=none
+  algebraic/guess_and_check_rule arc=keep_then_break
+    shell=register_givens core=apply_stored_rule closure=test_criteria+record_loss other=none
+  algebraic/linear_pattern_contextual_rule arc=work_then_keep
+    shell=read_operand_attribute+read_operand_attribute core=count_units+compute_product+combine_quantities closure=record_conservation other=none
+  algebraic/one_sided_equation_operation arc=break_three_times
+    shell=substitute_symbol_reading+retain_where_change_was_due core=remove_quantity+compute_quotient closure=misname_result other=none
+  algebraic/operational_equals_left_value arc=work_then_break
+    shell=substitute_values+substitute_symbol_reading core=evaluate_expression closure=treat_relevant_as_irrelevant other=none
+  algebraic/programming_expression_evaluation arc=unrecorded_run
+    shell=register_givens+register_givens core=evaluate_expression closure=name_result other=receive_kernel_outcome
+  algebraic/symbolic_expression_construction arc=keep_then_work_on
+    shell=assign_roles+assign_roles+compose_expression core=none closure=verify_invariant+inscribe_result other=none
+  calculus/factor_cancel_substitute arc=keep_then_work_on
+    shell=read_operand_attribute+substitute_values+decompose_operand+substitute_values core=evaluate_expression closure=test_criteria+name_result other=receive_kernel_outcome
+  calculus/factor_cancel_without_common_factor arc=break_recover_break
+    shell=read_operand_attribute+substitute_values core=apply_stored_rule closure=omit_required_step+misname_result+record_loss other=none
+  counting/compare_cardinalities_one_to_one arc=unrecorded_run
+    shell=register_givens+match_one_to_one+read_operand_attribute core=none closure=name_result other=none
+  counting/compare_ones_digits_only arc=keep_first_break_work_on
+    shell=align_to_common_unit+compare_magnitudes core=none closure=treat_relevant_as_irrelevant+name_result other=none
+  counting/inscribe_cardinality arc=unrecorded_run
+    shell=register_givens+select_unit_scale core=none closure=inscribe_result other=none
+  counting/omit_highest_place_regrouping arc=work_then_break
+    shell=register_givens+select_part core=none closure=omit_required_step+misname_result other=none
+  counting/place_value_comparison arc=keep_first_then_work_on
+    shell=align_to_common_unit+align_to_common_unit+locate_position+compare_magnitudes core=none closure=name_result other=none
+  counting/recursive_place_value_inscription arc=work_then_keep
+    shell=register_givens+select_unit_scale+regroup_to_base core=none closure=none other=none
+  counting/spatial_extent_as_cardinality arc=break_first_work_break
+    shell=compare_magnitudes+substitute_appearance_for_measure core=none closure=treat_relevant_as_irrelevant other=none
+  decimal/change_decimal_place_name_without_regrouping arc=work_then_break
+    shell=read_operand_attribute+rename_in_place_of_transforming+retain_where_change_was_due core=none closure=omit_required_step other=none
+  decimal/decimal_add_unaligned_numerals arc=break_recover_break
+    shell=register_givens core=combine_quantities closure=omit_required_step+inscribe_result+record_loss other=none
+  decimal/decimal_addition_by_aligned_units arc=keep_then_work_on
+    shell=read_operand_attribute+select_unit_scale+align_to_common_unit+align_to_common_unit core=combine_quantities closure=inscribe_result other=none
+  decimal/decimal_comparison_by_aligned_units arc=keep_then_work_on
+    shell=read_operand_attribute+select_unit_scale+align_to_common_unit+align_to_common_unit+compare_magnitudes core=none closure=none other=none
+  decimal/decimal_fraction_place_value_comparison arc=keep_then_work_on
+    shell=initiate+read_operand_attribute+re_express_equivalently+align_to_common_unit+compare_magnitudes core=none closure=emit_result other=none
+  decimal/decimal_multiplication_rule arc=keep_work_keep
+    shell=read_operand_attribute+recompose_total core=compute_product+accumulate_total closure=set_aside_irrelevant_attribute+inscribe_result other=none
+  decimal/decimal_numeral_comparison_without_scale_alignment arc=break_recover_break
+    shell=register_givens+compare_magnitudes core=none closure=omit_required_step+record_loss other=none
+  decimal/decimal_place_unit_regrouping arc=work_then_keep
+    shell=read_operand_attribute+read_operand_attribute core=iterate_unit closure=record_conservation other=none
+  decimal/decimal_point_rule_misapplication arc=break_recover_break
+    shell=read_operand_attribute core=compute_product+substitute_operation closure=inscribe_result+record_loss other=none
+  decimal/decimal_scale_loss_comparison arc=break_then_work_on
+    shell=initiate+compare_magnitudes+compare_magnitudes core=none closure=accept_without_check+omit_required_step+emit_result other=none
+  decimal/decimal_subtract_unaligned_numerals arc=break_recover_break
+    shell=register_givens core=remove_quantity closure=omit_required_step+inscribe_result+record_loss other=none
+  decimal/decimal_subtraction_by_aligned_units arc=keep_then_work_on
+    shell=read_operand_attribute+select_unit_scale+align_to_common_unit+align_to_common_unit core=remove_quantity closure=inscribe_result other=none
+  decimal/decimal_whole_number_reading arc=work_then_break
+    shell=register_givens core=none closure=treat_relevant_as_irrelevant+treat_relevant_as_irrelevant+misname_result+record_loss other=none
+  decimal/ecuadorian_decimal_long_division arc=unrecorded_run
+    shell=read_operand_attribute+select_unit_scale+scale_multiplicatively core=apply_stored_rule+compute_quotient closure=name_result other=none
+  decimal/positional_decimal_reading arc=work_then_keep
+    shell=read_operand_attribute+decompose_by_place+assign_roles+recompose_total core=none closure=none other=none
+  decimal/recalled_result_scaling arc=unrecorded_run
+    shell=read_operand_attribute+scale_multiplicatively core=retrieve_known_fact closure=name_result other=none
+  discourse/algorithmic_elaboration arc=work_then_keep
+    shell=register_givens+elaborate_practice_algorithmically core=none closure=certify_meaning_use_relation other=none
+  discourse/assertion_without_vindication_task arc=keep_then_break
+    shell=attend_to_utterance core=undertake_commitment+authorize_deferral closure=omit_vindication_task+record_deontic_incoherence other=none
+  discourse/assertional_commitment arc=work_then_keep
+    shell=attend_to_utterance core=undertake_commitment+authorize_deferral closure=assume_vindication_task+record_deontic_score other=none
+  discourse/attribution_and_acknowledgement_kept_apart arc=work_then_keep
+    shell=attend_to_utterance+attribute_commitment+acknowledge_commitment core=none closure=test_compatibility+record_deontic_score other=none
+  discourse/attribution_taken_as_acknowledgement arc=work_then_break
+    shell=attend_to_utterance+attribute_commitment+conflate_attribution_with_acknowledgement core=none closure=record_deontic_incoherence other=none
+  discourse/authority_where_inference_required arc=work_then_break
+    shell=attend_to_utterance+acknowledge_commitment core=substitute_authority_for_inference closure=grant_entitlement_without_grounding+record_deontic_incoherence other=none
+  discourse/commitment_repair arc=work_then_keep
+    shell=acknowledge_commitment+challenge_entitlement+repair_the_commitment core=withdraw_commitment closure=record_deontic_score other=none
+  discourse/deferral_regress arc=work_then_break
+    shell=attribute_commitment+challenge_entitlement core=none closure=record_deontic_incoherence other=defer_to_asserter+regress_deferral
+  discourse/entitlement_by_authority arc=work_then_keep
+    shell=attend_to_utterance+acknowledge_commitment core=grant_entitlement closure=assume_vindication_task+record_deontic_score other=none
+  discourse/entitlement_by_deferral arc=work_then_keep
+    shell=attribute_commitment+challenge_entitlement core=none closure=record_deontic_score other=defer_to_asserter+inherit_entitlement
+  discourse/entitlement_by_formal_schema arc=break_recover_break
+    shell=acknowledge_commitment+substitute_formal_schema_for_material_inference+derive_consequent core=none closure=grant_entitlement_without_grounding+record_deontic_incoherence other=none
+  discourse/entitlement_by_inference arc=work_then_keep
+    shell=acknowledge_commitment+locate_material_inference+derive_consequent core=grant_entitlement closure=record_deontic_score other=none
+  discourse/incompatibility_recognition arc=keep_work_keep
+    shell=acknowledge_commitment+acknowledge_commitment core=withdraw_commitment closure=test_compatibility+record_deontic_score other=none
+  discourse/incompatible_commitments_held arc=work_then_break
+    shell=acknowledge_commitment+acknowledge_commitment core=none closure=hold_incompatible_commitments+record_deontic_incoherence other=none
+  discourse/pragmatic_metavocabulary_construction arc=work_then_keep
+    shell=register_givens+specify_practice_in_vocabulary+deploy_vocabulary_from_practice core=none closure=certify_meaning_use_relation other=none
+  discourse/tutorial_interruption_on_incompatible_token arc=work_then_keep
+    shell=attend_to_utterance+name_the_incompatible_token+repair_the_commitment core=interrupt_before_completion closure=test_compatibility+record_deontic_score other=none
+  discourse/universally_lx_loop arc=work_then_keep
+    shell=register_givens+elaborate_practice_algorithmically+deploy_vocabulary_from_practice+explicate_practice_in_elaborated_vocabulary core=none closure=certify_meaning_use_relation other=none
+  discourse/utterance_run_to_its_loss arc=work_then_break
+    shell=attend_to_utterance+name_the_incompatible_token core=let_the_utterance_run_on closure=record_deontic_incoherence other=none
+  division/fair_share_equal_groups arc=keep_then_work_on
+    shell=assign_roles core=share_into_known_groups closure=verify_invariant+name_result other=none
+  division/inverse_fact_decomposition arc=unrecorded_run
+    shell=none core=retrieve_known_fact+measure_out_group_size+accumulate_total closure=name_result other=none
+  division/long_division arc=unrecorded_run
+    shell=register_givens core=apply_stored_rule+apply_stored_rule+apply_stored_rule closure=inscribe_result+name_result other=none
+  division/measure_groups_of_size arc=keep_then_work_on
+    shell=assign_roles+retain_what_must_survive core=measure_out_group_size+count_units closure=name_result other=none
+  division/missing_factor_known_product_search arc=unrecorded_run
+    shell=assign_roles+enumerate_candidates+filter_by_constraint core=none closure=name_result other=none
+  division/missing_factor_repeated_addition arc=work_then_keep
+    shell=register_givens core=count_up_to_target closure=name_result+record_conservation other=none
+  division/name_group_count_as_share_size arc=work_then_break
+    shell=assign_roles+conflate_roles core=none closure=misname_result+record_loss other=none
+  division/name_reached_total_as_quotient arc=work_then_break
+    shell=register_givens core=count_up_to_target closure=misname_result+record_loss other=none
+  division/partial_quotient_chunking arc=unrecorded_run
+    shell=select_unit_scale+select_unit_scale core=remove_quantity+accumulate_total closure=name_result other=none
+  division/reject_known_product_match arc=work_then_break
+    shell=assign_roles+enumerate_candidates+filter_by_constraint core=none closure=treat_relevant_as_irrelevant+record_loss other=none
+  division/share_into_divisor_groups arc=break_recover_break
+    shell=assign_roles+conflate_roles core=share_into_known_groups closure=misname_result+record_loss other=none
+  division/stop_after_first_partial_quotient arc=work_then_break
+    shell=select_unit_scale+select_unit_scale core=remove_quantity+halt_before_completion closure=misname_result+record_loss other=none
+  division/stop_after_one_known_fact arc=work_then_break
+    shell=none core=retrieve_known_fact+measure_out_group_size+halt_before_completion closure=misname_result+record_loss other=none
+  division/stop_at_nearby_product_in_search arc=work_then_break
+    shell=assign_roles+enumerate_candidates core=halt_before_completion closure=misname_result+record_loss other=none
+  division/sum_dividend_and_divisor arc=work_then_break
+    shell=register_givens core=substitute_operation closure=omit_required_step+misname_result+record_loss other=none
+  fraction/add_numerator_denominator_comparison arc=break_then_work_on
+    shell=initiate core=combine_quantities closure=omit_required_step other=none
+  fraction/area_model_fraction_comparison arc=keep_work_keep_work_on
+    shell=initiate+unitize_referent+partition_into_equal_parts+disembed_part+align_to_common_unit core=iterate_unit closure=verify_invariant+emit_result other=none
+  fraction/area_model_part_of_part arc=unrecorded_run
+    shell=unitize_referent+partition_into_equal_parts+select_part+partition_into_equal_parts+select_part core=count_units+count_units closure=name_result other=none
+  fraction/area_model_unequal_partition_piece_count arc=break_recover_break_work_on
+    shell=initiate core=substitute_count_for_measure+count_units+substitute_count_for_measure closure=accept_without_check+accept_without_check+accept_without_check+treat_relevant_as_irrelevant+emit_result other=none
+  fraction/benchmark_fraction_comparison arc=unrecorded_run
+    shell=initiate+establish_reference_frame+judge_against_benchmark+judge_against_benchmark+judge_against_benchmark+compare_residuals core=none closure=emit_result other=none
+  fraction/clear_inner_referent arc=work_then_break
+    shell=partition_into_equal_parts+partition_into_equal_parts core=none closure=name_result+omit_required_step+record_loss other=none
+  fraction/co_denominator_count_on_from_larger arc=keep_first_work_keep
+    shell=unitize_referent+select_unit_scale core=none closure=verify_invariant+attach_units_coordination other=dispatch_to_kernel+receive_kernel_outcome
+  fraction/co_denominator_make_base_transfer arc=keep_first_work_keep
+    shell=unitize_referent+select_unit_scale core=none closure=verify_invariant+attach_units_coordination other=dispatch_to_kernel+receive_kernel_outcome
+  fraction/common_unit_fraction_comparison arc=unrecorded_run
+    shell=initiate+read_operand_attribute+retain_unchanged+retain_unchanged+read_operand_attribute+compare_magnitudes core=none closure=emit_result other=none
+  fraction/cross_multiplication_rule_from_pattern arc=unrecorded_run
+    shell=read_operand_attribute+assign_roles+assign_roles core=apply_stored_rule+compute_product+compute_product closure=name_result other=dispatch_to_kernel
+  fraction/cross_multiplication_rule_without_ground arc=work_then_break
+    shell=none core=retrieve_known_fact+apply_stored_rule+compute_product+compute_product closure=name_result+omit_required_step other=none
+  fraction/gap_thinking_fraction_comparison arc=break_twice_then_keep_work_on
+    shell=initiate+establish_reference_frame+substitute_additive_for_multiplicative+substitute_additive_for_multiplicative+compare_additive_gaps+compare_residuals core=none closure=omit_required_step+record_viability+emit_result other=none
+  fraction/improper_fraction_chain_loss arc=break_then_work_on
+    shell=unitize_referent+rename_in_place_of_transforming core=iterate_unit closure=treat_relevant_as_irrelevant+misname_result other=receive_kernel_outcome
+  fraction/improper_fraction_iteration arc=keep_then_work_on
+    shell=unitize_referent+disembed_part core=iterate_unit closure=verify_invariant+name_result other=receive_kernel_outcome
+  fraction/iterate_given_overshoot arc=work_then_break
+    shell=unitize_referent core=iterate_unit closure=omit_required_step+record_loss other=none
+  fraction/iterate_only_no_reverse arc=break_recover_break
+    shell=register_givens core=iterate_unit+exhaust_resource closure=omit_required_step+record_loss other=none
+  fraction/measurement_division arc=keep_then_work_on
+    shell=register_givens+align_to_common_unit core=measure_out_group_size closure=name_result+name_result other=none
+  fraction/number_line_count_marks_not_intervals arc=break_then_keep_work_on
+    shell=initiate+unitize_referent+partition_into_equal_parts+locate_position+align_to_common_unit+compare_magnitudes core=substitute_count_for_measure closure=emit_result other=none
+  fraction/number_line_fraction_comparison arc=keep_then_work_on
+    shell=initiate+unitize_referent+partition_into_equal_parts+locate_position+align_to_common_unit+compare_magnitudes core=iterate_unit closure=emit_result other=none
+  fraction/recursive_partition arc=keep_then_work_on
+    shell=partition_into_equal_parts+disembed_part+partition_into_equal_parts core=none closure=name_result+verify_invariant other=receive_kernel_outcome
+  fraction/reversible_measurement_division arc=unrecorded_run
+    shell=register_givens+select_unit_scale core=measure_quantity+replicate_equal_groups closure=name_result other=none
+  fraction/set_model_fraction_comparison arc=keep_work_keep_work_on
+    shell=initiate+unitize_referent+partition_into_equal_parts+disembed_part+align_to_common_unit core=count_units closure=verify_invariant+emit_result other=none
+  fraction/set_model_subset_size_focus arc=break_then_work_on
+    shell=initiate+unitize_referent+conflate_roles+compare_magnitudes core=substitute_count_for_measure+substitute_count_for_measure closure=accept_without_check+omit_required_step+emit_result other=none
+  fraction/solve_for_unit arc=keep_then_work_on
+    shell=register_givens+assign_roles+partition_into_equal_parts+isolate_unknown core=iterate_unit closure=verify_invariant other=receive_kernel_outcome
+  fraction/splitting arc=keep_then_work_on
+    shell=partition_into_equal_parts+disembed_part+recompose_total core=iterate_unit closure=verify_invariant+attach_units_coordination other=receive_kernel_outcome+receive_kernel_outcome
+  fraction/unit_fraction_iteration arc=keep_then_work_on
+    shell=unitize_referent+disembed_part core=iterate_unit closure=verify_invariant other=receive_kernel_outcome
+  fraction/unit_fraction_partition arc=keep_then_work_on
+    shell=unitize_referent+partition_into_equal_parts+disembed_part core=none closure=verify_invariant other=receive_kernel_outcome
+  fraction/whole_number_grab arc=work_then_break
+    shell=unitize_referent+read_operand_attribute core=none closure=treat_relevant_as_irrelevant+misname_result+record_loss other=none
+  geometry/angle_additive_composition arc=keep_work_keep
+    shell=establish_reference_frame core=accumulate_total closure=verify_invariant+verify_invariant other=none
+  geometry/angle_as_ray_length arc=keep_first_then_break
+    shell=retain_what_must_survive+scale_multiplicatively+substitute_appearance_for_measure core=none closure=none other=none
+  geometry/angle_turn_measurement arc=unrecorded_run
+    shell=establish_reference_frame+establish_reference_frame+locate_position core=iterate_unit closure=name_result other=none
+  geometry/area_as_perimeter_count arc=break_recover_break
+    shell=register_givens+substitute_appearance_for_measure core=traverse_boundary closure=treat_relevant_as_irrelevant other=none
+  geometry/area_preserving_polygon_decomposition arc=work_then_keep
+    shell=register_givens+decompose_region core=measure_quantity+accumulate_total closure=record_conservation other=none
+  geometry/area_unit_covering arc=keep_then_work_on
+    shell=unitize_referent core=iterate_unit+count_units closure=verify_invariant+name_result other=none
+  geometry/area_unit_scale_selection arc=unrecorded_run
+    shell=read_operand_attribute+compare_magnitudes+select_unit_scale core=none closure=none other=none
+  geometry/axis_aligned_coordinate_distance arc=unrecorded_run
+    shell=locate_position+locate_position+retain_unchanged core=remove_quantity+apply_stored_rule closure=none other=none
+  geometry/choose_first_area_unit_without_scale arc=break_first_work_break
+    shell=select_unit_scale core=none closure=treat_relevant_as_irrelevant+omit_required_step other=none
+  geometry/compare_solid_volume_by_cube_count arc=keep_then_work_on
+    shell=unitize_referent+compare_magnitudes core=count_units+count_units closure=set_aside_irrelevant_attribute other=none
+  geometry/compare_solid_volume_by_visible_extent arc=break_then_work_on
+    shell=read_operand_attribute+compare_magnitudes core=none closure=treat_relevant_as_irrelevant other=none
+  geometry/composite_prism_volume_sum arc=keep_first_work_keep
+    shell=none core=measure_quantity+accumulate_total closure=verify_invariant+record_conservation other=none
+  geometry/count_overlapping_area_tiles arc=break_recover_break
+    shell=none core=iterate_unit+count_units+double_count closure=omit_required_step other=none
+  geometry/decomposition_with_gap_or_overlap arc=break_recover_break
+    shell=register_givens core=accumulate_total closure=accept_without_check+omit_required_step+record_loss other=none
+  geometry/dimensional_measure_unit_coordination arc=unrecorded_run
+    shell=read_operand_attribute+read_operand_attribute+assign_roles core=none closure=inscribe_result other=none
+  geometry/directed_difference_as_coordinate_distance arc=work_then_break
+    shell=locate_position+locate_position core=remove_quantity closure=omit_required_step+misname_result other=none
+  geometry/divide_volume_by_one_dimension arc=break_recover_break
+    shell=retain_unchanged core=compute_quotient closure=treat_relevant_as_irrelevant+misname_result other=none
+  geometry/ignore_perimeter_rectangle_constraint arc=work_then_break
+    shell=register_givens+retain_where_change_was_due core=none closure=treat_relevant_as_irrelevant+misname_result other=none
+  geometry/ignore_symmetry_multiplicity arc=break_then_work_on
+    shell=register_givens core=count_units+remove_quantity closure=treat_relevant_as_irrelevant other=none
+  geometry/linear_unit_for_area_or_volume arc=break_recover_break
+    shell=read_operand_attribute core=none closure=treat_relevant_as_irrelevant+inscribe_result+record_loss other=none
+  geometry/omit_half_in_triangle_area arc=work_then_break
+    shell=none core=compute_product closure=omit_required_step+omit_required_step+misname_result other=none
+  geometry/omit_unlabeled_boundary_side arc=work_then_break
+    shell=register_givens core=halt_before_completion closure=omit_required_step+misname_result other=none
+  geometry/ordered_pair_coordinate_plot arc=keep_then_work_on
+    shell=establish_reference_frame+retain_what_must_survive+locate_position core=none closure=none other=none
+  geometry/orientation_bound_shape_classification arc=work_then_break
+    shell=read_operand_attribute+substitute_appearance_for_measure core=none closure=misname_result other=none
+  geometry/parallelogram_area_base_height arc=keep_then_work_on
+    shell=assign_roles+decompose_region core=compute_product closure=test_criteria other=none
+  geometry/perimeter_two_sides_only arc=work_then_break
+    shell=none core=traverse_boundary+traverse_boundary+halt_before_completion closure=misname_result other=none
+  geometry/perimeter_uses_area_formula arc=break_recover_break
+    shell=read_operand_attribute+substitute_appearance_for_measure core=compute_product closure=misname_result other=none
+  geometry/polygon_perimeter_boundary_accumulation arc=unrecorded_run
+    shell=register_givens core=traverse_boundary+accumulate_total closure=none other=none
+  geometry/polyhedron_surface_area_from_net arc=unrecorded_run
+    shell=register_givens+decompose_region core=measure_quantity+accumulate_total closure=none other=none
+  geometry/rectangle_area_perimeter_constraint_search arc=unrecorded_run
+    shell=register_givens+register_givens+enumerate_candidates+filter_by_constraint core=none closure=name_result other=none
+  geometry/rectangle_area_unit_iteration arc=unrecorded_run
+    shell=register_givens core=iterate_unit+iterate_unit+iterate_composite_unit+count_units closure=none other=none
+  geometry/rectangle_factor_pair_search arc=work_then_keep
+    shell=register_givens+enumerate_candidates+filter_by_constraint+commute_operands core=none closure=verify_invariant other=none
+  geometry/rectangle_missing_side_from_area arc=work_then_keep
+    shell=register_givens+retain_unchanged core=compute_quotient closure=verify_invariant other=none
+  geometry/rectangle_missing_side_from_perimeter arc=work_then_keep
+    shell=register_givens+assign_roles core=compute_quotient+remove_quantity closure=verify_invariant other=none
+  geometry/rectangle_perimeter_boundary_traversal arc=unrecorded_run
+    shell=register_givens core=traverse_boundary+traverse_boundary+traverse_boundary+traverse_boundary+accumulate_total closure=none other=none
+  geometry/rectangle_perimeter_side_pair_search arc=work_then_keep
+    shell=register_givens+enumerate_candidates+filter_by_constraint core=compute_quotient closure=verify_invariant other=none
+  geometry/rectangular_prism_missing_dimension_from_volume arc=work_then_keep
+    shell=register_givens core=compute_quotient closure=verify_invariant other=none
+  geometry/rectangular_prism_volume_layer_iteration arc=unrecorded_run
+    shell=unitize_referent+unitize_referent core=iterate_composite_unit+count_units closure=none other=none
+  geometry/rigid_shape_composition arc=work_then_keep
+    shell=unitize_referent+recompose_total core=none closure=verify_invariant+verify_invariant other=none
+  geometry/shape_classification_by_defining_attributes arc=work_then_keep
+    shell=read_operand_attribute core=none closure=test_criteria+set_aside_irrelevant_attribute+record_conservation other=none
+  geometry/slanted_side_as_parallelogram_height arc=break_then_work_on
+    shell=assign_roles+conflate_roles core=compute_product closure=omit_required_step other=none
+  geometry/subtract_side_from_area arc=work_then_break
+    shell=register_givens core=remove_quantity closure=omit_required_step+misname_result other=none
+  geometry/sum_overlapping_prism_volumes arc=work_then_break
+    shell=none core=measure_quantity+double_count closure=omit_required_step+misname_result other=none
+  geometry/symmetry_constrained_side_reconstruction arc=unrecorded_run
+    shell=register_givens+assign_roles+isolate_unknown core=accumulate_total+share_into_known_groups closure=none other=none
+  geometry/triangle_area_half_base_height arc=keep_then_work_on
+    shell=assign_roles+assign_roles+recompose_total+select_part core=compute_product closure=none other=none
+  geometry/visible_faces_only_surface_area arc=work_then_break
+    shell=register_givens+enumerate_candidates core=none closure=omit_required_step+misname_result other=none
+  integer/drop_sign_use_magnitude_sum arc=break_recover_break
+    shell=read_operand_attribute+read_operand_attribute core=combine_quantities closure=treat_relevant_as_irrelevant+misname_result+record_loss other=none
+  integer/inequality_as_boundary_point arc=work_then_break
+    shell=read_operand_attribute core=none closure=treat_relevant_as_irrelevant+omit_required_step+misname_result other=none
+  integer/inequality_solution_set_representation arc=keep_then_work_on
+    shell=read_operand_attribute+read_operand_attribute core=none closure=test_criteria+inscribe_result other=none
+  integer/order_by_magnitude_ignore_sign arc=break_recover_break
+    shell=establish_reference_frame+substitute_scalar_for_structured_quantity+order_by_magnitude core=none closure=record_loss other=none
+  integer/signed_addition_with_sign_relation arc=work_then_keep
+    shell=read_operand_attribute+read_operand_attribute+read_operand_attribute+assign_roles core=combine_quantities closure=record_conservation other=none
+  integer/signed_number_location_and_order arc=keep_then_work_on
+    shell=establish_reference_frame+locate_position+order_by_magnitude core=none closure=verify_invariant other=none
+  measurement/change_unit_label_without_scaling arc=work_then_break
+    shell=read_operand_attribute+retain_where_change_was_due+rename_in_place_of_transforming core=none closure=omit_required_step other=none
+  measurement/count_marks_not_intervals arc=work_then_break
+    shell=register_givens core=substitute_count_for_measure closure=record_loss other=none
+  measurement/drop_unit_from_measured_quantity_change arc=work_then_break
+    shell=register_givens core=apply_quantity_change closure=treat_relevant_as_irrelevant+misname_result other=none
+  measurement/linear_unit_iteration arc=unrecorded_run
+    shell=read_operand_attribute+unitize_referent+partition_into_equal_parts core=iterate_unit closure=name_result other=none
+  measurement/liquid_volume_count_marks_not_intervals arc=work_then_break
+    shell=register_givens core=substitute_count_for_measure closure=record_loss other=none
+  measurement/liquid_volume_scale_reading arc=unrecorded_run
+    shell=read_operand_attribute+unitize_referent+partition_into_equal_parts+locate_position core=none closure=name_result other=none
+  measurement/unit_conversion_by_iteration arc=unrecorded_run
+    shell=register_givens core=iterate_composite_unit+compute_product closure=name_result other=none
+  measurement/unit_preserving_measured_quantity_change arc=keep_then_work_on
+    shell=select_unit_scale+retain_what_must_survive core=apply_quantity_change closure=name_result other=none
+  multiplication/add_counts_without_composite_unit arc=break_recover_break
+    shell=register_givens core=substitute_count_for_measure+count_units+substitute_operation closure=record_loss other=none
+  multiplication/add_instead_of_multiply arc=work_then_break
+    shell=register_givens+conflate_roles core=substitute_operation closure=record_loss other=none
+  multiplication/add_numbers_as_common_multiple arc=break_recover_break
+    shell=register_givens core=substitute_operation+combine_quantities closure=omit_required_step other=none
+  multiplication/common_factor_intersection arc=unrecorded_run
+    shell=enumerate_candidates+enumerate_candidates+intersect_candidate_sets+select_extremal core=none closure=none other=none
+  multiplication/common_multiple_sequence arc=unrecorded_run
+    shell=enumerate_candidates+select_extremal+select_unit_scale core=iterate_composite_unit closure=none other=none
+  multiplication/commute_factors_preserve_product arc=keep_work_keep
+    shell=register_givens+commute_operands core=compute_product+compute_product closure=record_conservation other=none
+  multiplication/context_free_fact_family_guess arc=work_then_break
+    shell=register_givens core=retrieve_known_fact+substitute_operation closure=misname_result+record_loss other=none
+  multiplication/coordinate_groups_items arc=unrecorded_run
+    shell=assign_roles core=replicate_equal_groups+iterate_composite_unit closure=name_result other=none
+  multiplication/distribute_group_size_split arc=work_then_keep
+    shell=decompose_operand+recompose_total core=compute_product+compute_product closure=record_conservation other=none
+  multiplication/drop_regrouping_remainder arc=keep_then_break
+    shell=regroup_to_base core=replicate_equal_groups+halt_before_completion closure=misname_result+record_loss other=none
+  multiplication/drop_second_partial_product arc=work_then_break
+    shell=decompose_operand core=compute_product closure=omit_required_step+record_loss other=none
+  multiplication/factors_of_first_number_only arc=work_then_break
+    shell=enumerate_candidates core=none closure=omit_required_step+omit_required_step+misname_result other=none
+  multiplication/known_product_adjustment arc=work_then_keep
+    shell=read_operand_attribute core=retrieve_known_fact+compute_product+combine_quantities closure=record_conservation other=none
+  multiplication/known_product_without_adjustment arc=work_then_break
+    shell=read_operand_attribute core=retrieve_known_fact closure=omit_required_step+misname_result+record_loss other=none
+  multiplication/multiplication_fact_retrieval arc=work_then_keep
+    shell=register_givens+assign_roles core=retrieve_known_fact closure=record_conservation other=none
+  multiplication/regroup_to_base_preserving_total arc=keep_then_work_on
+    shell=regroup_to_base+retain_what_must_survive core=replicate_equal_groups closure=name_result other=none
+  multiplication/repeat_equal_groups arc=unrecorded_run
+    shell=assign_roles+assign_roles core=replicate_equal_groups closure=name_result other=none
+  multiplication/repeat_group_size_by_itself arc=break_recover_break
+    shell=assign_roles+conflate_roles core=replicate_equal_groups closure=record_loss other=none
+  multiplication/rigid_factor_order_roles arc=work_then_break
+    shell=register_givens+retain_where_change_was_due core=none closure=treat_relevant_as_irrelevant+omit_required_step+record_loss other=none
+  multiplication/sequential_recompute_commuted_products arc=break_recover_break
+    shell=register_givens+compare_magnitudes core=compute_product+compute_product closure=omit_required_step+record_loss other=none
+  probability/equiprobable_endpoint_counting arc=break_then_work_on
+    shell=register_givens+read_operand_attribute+compare_magnitudes core=count_units+substitute_count_for_measure closure=none other=none
+  probability/terminal_tree_endpoint_probability_sum arc=unrecorded_run
+    shell=register_givens+read_operand_attribute core=accumulate_total closure=name_result other=none
+  ratio/additive_extension_of_ratio arc=work_then_break
+    shell=register_givens+compose_expression core=remove_quantity+combine_quantities closure=record_loss other=none
+  ratio/construct_referent_ratio_diagram arc=unrecorded_run
+    shell=assign_roles+assign_roles+assign_roles+compose_expression core=none closure=inscribe_result other=none
+  ratio/reverse_ratio_referent_order arc=break_recover_break
+    shell=register_givens+conflate_roles core=none closure=inscribe_result+record_loss other=none
+  ratio/scale_ratio_unit arc=work_then_keep
+    shell=register_givens+read_operand_attribute+scale_multiplicatively+scale_multiplicatively+compose_expression core=none closure=record_conservation other=none
+  statistics/box_plot_from_five_number_summary arc=keep_then_work_on
+    shell=register_givens+order_by_magnitude+compose_expression+align_to_common_unit core=none closure=inscribe_result other=none
+  statistics/categorical_frequency_bar_representation arc=unrecorded_run
+    shell=assign_roles+establish_reference_frame core=count_units closure=inscribe_result other=none
+  statistics/distribution_summary_selection arc=unrecorded_run
+    shell=register_givens+read_operand_attribute core=none closure=none other=none
+  statistics/dot_plot_frequency_representation arc=keep_then_work_on
+    shell=establish_reference_frame core=none closure=verify_invariant+inscribe_result other=none
+  statistics/five_number_summary_and_iqr arc=unrecorded_run
+    shell=register_givens+order_by_magnitude+partition_into_equal_parts+locate_position core=remove_quantity closure=none other=none
+  statistics/histogram_equal_interval_representation arc=unrecorded_run
+    shell=register_givens+select_unit_scale+partition_into_equal_parts core=count_units closure=inscribe_result other=none
+  statistics/mean_absolute_deviation arc=unrecorded_run
+    shell=register_givens+locate_position core=measure_quantity+apply_stored_rule+compute_quotient closure=none other=none
+  statistics/mean_as_balance_point arc=work_then_keep
+    shell=register_givens+locate_position core=measure_quantity closure=verify_invariant other=none
+  statistics/mean_as_fair_share arc=unrecorded_run
+    shell=register_givens core=accumulate_total+count_units+share_into_known_groups closure=none other=none
+  statistics/mean_deviation_without_absolute_value arc=break_then_work_on
+    shell=locate_position core=measure_quantity+compute_quotient closure=omit_required_step other=none
+  statistics/median_as_ordered_middle arc=unrecorded_run
+    shell=register_givens+order_by_magnitude core=none closure=none other=none
+  statistics/mode_as_maximal_frequency arc=unrecorded_run
+    shell=register_givens core=count_units closure=name_result other=none
+  statistics/question_without_variability arc=break_then_work_on
+    shell=read_operand_attribute+substitute_scalar_for_structured_quantity core=none closure=name_result other=none
+  statistics/statistical_question_variability_classification arc=keep_then_work_on
+    shell=register_givens+read_operand_attribute core=none closure=test_criteria+name_result other=none
+  subtraction/add_instead_of_subtract_column arc=break_keep_break
+    shell=decompose_by_place+recompose_total core=substitute_operation+substitute_operation closure=record_loss other=none
+  subtraction/answer_as_endpoint_count_up arc=work_then_break
+    shell=assign_roles+assign_roles core=count_up_to_target+count_up_to_target closure=misname_result+record_loss other=none
+  subtraction/borrow_across_zero_cascade arc=keep_then_work_on
+    shell=decompose_by_place+read_operand_attribute+exchange_base_down+exchange_base_down+exchange_base_down core=remove_quantity closure=none other=none
+  subtraction/borrow_across_zero_no_cascade arc=break_keep_break
+    shell=decompose_by_place+read_operand_attribute+read_operand_attribute+misread_intermediate_value+recompose_total core=none closure=omit_required_step+omit_required_step+record_loss other=none
+  subtraction/borrow_without_reducing_bases arc=break_then_keep_then_break
+    shell=decompose_by_place+recompose_total core=remove_quantity+remove_quantity closure=omit_required_step+record_loss other=none
+  subtraction/compare_by_matching_difference arc=unrecorded_run
+    shell=assign_roles+match_one_to_one core=remove_quantity+count_units closure=name_result other=none
+  subtraction/compare_returns_larger_count arc=work_then_break
+    shell=assign_roles+match_one_to_one core=none closure=treat_relevant_as_irrelevant+misname_result+record_loss other=none
+  subtraction/count_up_missing_addend arc=unrecorded_run
+    shell=assign_roles+assign_roles core=count_up_to_target+count_up_to_target closure=name_result other=none
+  subtraction/decompose_base_for_ones arc=keep_work_keep
+    shell=decompose_by_place+exchange_base_down+recompose_total core=remove_quantity+remove_quantity closure=none other=none
+  subtraction/drop_ones_after_base_takeaway arc=work_then_break
+    shell=decompose_operand core=count_back_from+halt_before_completion closure=record_loss other=none
+  subtraction/slide_subtrahend_only arc=break_recover_break
+    shell=select_unit_scale core=count_up_to_target+remove_quantity closure=omit_required_step+record_loss other=none
+  subtraction/sliding_constant_difference arc=keep_work_keep
+    shell=select_unit_scale+transfer_between_operands core=count_up_to_target+remove_quantity closure=record_conservation other=none
+  subtraction/smaller_from_larger_in_column arc=break_keep_break
+    shell=decompose_by_place+recompose_total core=substitute_operation+substitute_operation closure=omit_required_step+record_loss other=none
+  subtraction/take_away_base_ones arc=work_then_keep
+    shell=decompose_operand core=count_back_from+count_back_from closure=record_conservation other=none

@@ -92,6 +92,9 @@
 :- ensure_loaded(grade_7_vision).
 :- ensure_loaded(grade_8).
 :- ensure_loaded(lessons('traditional/rays_new_practical')).
+:- if(exists_source(lesson_topics_cache)).
+:- ensure_loaded(lesson_topics_cache).
+:- endif.
 % Reason-tagged residue of the grade 6-7 arithmetic units (Phase 5 boundary
 % closure): every scope_sequence_only lesson in G6-U4, G6-U5, G7-U5 that the
 % explicit mappings leave unmapped carries exactly one grind_boundary/2 reason.
@@ -491,9 +494,21 @@ lesson_topic(Code, Topic) :-
 
 lesson_topics(Code, Topics) :-
     nonvar(Code),
+    lesson_topics_cached(Code, Topics),
+    !.
+lesson_topics(Code, Topics) :-
+    nonvar(Code),
     cached_lesson_topics(Code, Topics),
     !.
 lesson_topics(Code, Topics) :-
+    compute_lesson_topics(Code, Topics),
+    (   nonvar(Code)
+    ->  assertz(cached_lesson_topics(Code, Topics))
+    ;   true
+    ).
+
+
+compute_lesson_topics(Code, Topics) :-
     findall(Topic, lesson_primary_topic_evidence(Code, Topic), Primary0),
     sort(Primary0, Primary),
     (   Primary \== []
@@ -505,10 +520,6 @@ lesson_topics(Code, Topics) :-
         ;   findall(Topic, lesson_concept_topic_evidence(Code, Topic), Topics0),
             sort(Topics0, Topics)
         )
-    ),
-    (   nonvar(Code)
-    ->  assertz(cached_lesson_topics(Code, Topics))
-    ;   true
     ).
 
 
@@ -567,110 +578,96 @@ topic_from_text(Text, Topic) :-
     text_topic(Lower, Topic).
 
 
-text_topic(Text, data) :-
-    ( sub_atom(Text, _, _, _, data)
-    ; sub_atom(Text, _, _, _, graph)
-    ; sub_atom(Text, _, _, _, histogram)
-    ; sub_atom(Text, _, _, _, "dot plot")
-    ; sub_atom(Text, _, _, _, "box plot")
-    ; sub_atom(Text, _, _, _, statistical)
-    ).
-text_topic(Text, probability) :-
-    ( sub_atom(Text, _, _, _, probability)
-    ; sub_atom(Text, _, _, _, chance)
-    ; sub_atom(Text, _, _, _, likelihood)
-    ).
-text_topic(Text, geometry) :-
-    ( sub_atom(Text, _, _, _, geometry)
-    ; sub_atom(Text, _, _, _, shape)
-    ; sub_atom(Text, _, _, _, polygon)
-    ; sub_atom(Text, _, _, _, triangle)
-    ; sub_atom(Text, _, _, _, square)
-    ; sub_atom(Text, _, _, _, area)
-    ; sub_atom(Text, _, _, _, perimeter)
-    ; sub_atom(Text, _, _, _, plane)
-    ; sub_atom(Text, _, _, _, coordinate)
-    ; sub_atom(Text, _, _, _, grid)
-    ; sub_atom(Text, _, _, _, transformation)
-    ; sub_atom(Text, _, _, _, rotation)
-    ; sub_atom(Text, _, _, _, reflection)
-    ; sub_atom(Text, _, _, _, translation)
-    ; sub_atom(Text, _, _, _, volume)
-    ; sub_atom(Text, _, _, _, surface)
-    ; sub_atom(Text, _, _, _, prism)
-    ; sub_atom(Text, _, _, _, cube)
-    ; sub_atom(Text, _, _, _, tiling)
-    ).
-text_topic(Text, ratio) :-
-    ( sub_atom(Text, _, _, _, " ratio")
-    ; sub_atom(Text, _, _, _, ratios)
-    ; sub_atom(Text, _, _, _, rate)
-    ; sub_atom(Text, _, _, _, percent)
-    ).
-text_topic(Text, proportional) :-
-    ( sub_atom(Text, _, _, _, proportion)
-    ; sub_atom(Text, _, _, _, "scale drawing")
-    ; sub_atom(Text, _, _, _, "scale factor")
-    ; sub_atom(Text, _, _, _, "scaled drawing")
-    ; sub_atom(Text, _, _, _, similar)
-    ).
-text_topic(Text, fraction) :-
-    ( sub_atom(Text, _, _, _, fraction)
-    ; sub_atom(Text, _, _, _, numerator)
-    ; sub_atom(Text, _, _, _, denominator)
-    ).
-text_topic(Text, decimal) :-
-    sub_atom(Text, _, _, _, decimal).
-text_topic(Text, algebraic) :-
-    ( sub_atom(Text, _, _, _, equation)
-    ; sub_atom(Text, _, _, _, expression)
-    ; sub_atom(Text, _, _, _, variable)
-    ; sub_atom(Text, _, _, _, algebra)
-    ; sub_atom(Text, _, _, _, distributive)
-    ; sub_atom(Text, _, _, _, input)
-    ; sub_atom(Text, _, _, _, output)
-    ; sub_atom(Text, _, _, _, function)
-    ).
-text_topic(Text, integer) :-
-    ( sub_atom(Text, _, _, _, integer)
-    ; sub_atom(Text, _, _, _, negative)
-    ; sub_atom(Text, _, _, _, signed)
-    ).
-text_topic(Text, counting) :-
-    ( sub_atom(Text, _, _, _, count)
-    ; sub_atom(Text, _, _, _, counting)
-    ).
-text_topic(Text, cardinality) :-
-    sub_atom(Text, _, _, _, cardinality).
-text_topic(Text, addition) :-
-    ( sub_atom(Text, _, _, _, add)
-    ; sub_atom(Text, _, _, _, sum)
-    ; sub_atom(Text, _, _, _, total)
-    ).
-text_topic(Text, subtraction) :-
-    ( sub_atom(Text, _, _, _, subtract)
-    ; sub_atom(Text, _, _, _, difference)
-    ; sub_atom(Text, _, _, _, "how many more")
-    ; sub_atom(Text, _, _, _, "how many less")
-    ).
-text_topic(Text, multiplication) :-
-    ( sub_atom(Text, _, _, _, multiply)
-    ; sub_atom(Text, _, _, _, multiplication)
-    ; sub_atom(Text, _, _, _, multiplicative)
-    ; sub_atom(Text, _, _, _, product)
-    ; sub_atom(Text, _, _, _, factor)
-    ; sub_atom(Text, _, _, _, array)
-    ; sub_atom(Text, _, _, _, "times as many")
-    ; sub_atom(Text, _, _, _, "equal group")
-    ).
-text_topic(Text, division) :-
-    ( sub_atom(Text, _, _, _, divide)
-    ; sub_atom(Text, _, _, _, division)
-    ; sub_atom(Text, _, _, _, divisor)
-    ; sub_atom(Text, _, _, _, quotient)
-    ; sub_atom(Text, _, _, _, share)
-    ; sub_atom(Text, _, _, _, "left over")
-    ).
+text_topic(Text, Topic) :-
+    topic_keyword(Keyword, Topic),
+    sub_atom(Text, _, _, _, Keyword).
+
+
+%!  topic_keyword(?Keyword, ?Topic) is nondet.
+%
+%   The keyword table this scan reads, one fact per (keyword, topic) pair the
+%   clause wall it replaced held as a disjunction.  Multi-word keywords and the
+%   space-prefixed ' ratio' are ordinary substrings and need no separate
+%   treatment.  A topic named by several keywords yields several times; every
+%   caller sorts.
+topic_keyword(data, data).
+topic_keyword(graph, data).
+topic_keyword(histogram, data).
+topic_keyword(statistical, data).
+topic_keyword('dot plot', data).
+topic_keyword('box plot', data).
+topic_keyword(probability, probability).
+topic_keyword(chance, probability).
+topic_keyword(likelihood, probability).
+topic_keyword(geometry, geometry).
+topic_keyword(shape, geometry).
+topic_keyword(polygon, geometry).
+topic_keyword(triangle, geometry).
+topic_keyword(square, geometry).
+topic_keyword(area, geometry).
+topic_keyword(perimeter, geometry).
+topic_keyword(plane, geometry).
+topic_keyword(coordinate, geometry).
+topic_keyword(grid, geometry).
+topic_keyword(transformation, geometry).
+topic_keyword(rotation, geometry).
+topic_keyword(reflection, geometry).
+topic_keyword(translation, geometry).
+topic_keyword(volume, geometry).
+topic_keyword(surface, geometry).
+topic_keyword(prism, geometry).
+topic_keyword(cube, geometry).
+topic_keyword(tiling, geometry).
+topic_keyword(ratios, ratio).
+topic_keyword(rate, ratio).
+topic_keyword(percent, ratio).
+topic_keyword(' ratio', ratio).
+topic_keyword(proportion, proportional).
+topic_keyword(similar, proportional).
+topic_keyword('scale drawing', proportional).
+topic_keyword('scale factor', proportional).
+topic_keyword('scaled drawing', proportional).
+topic_keyword(fraction, fraction).
+topic_keyword(numerator, fraction).
+topic_keyword(denominator, fraction).
+topic_keyword(decimal, decimal).
+topic_keyword(equation, algebraic).
+topic_keyword(expression, algebraic).
+topic_keyword(variable, algebraic).
+topic_keyword(algebra, algebraic).
+topic_keyword(distributive, algebraic).
+topic_keyword(input, algebraic).
+topic_keyword(output, algebraic).
+topic_keyword(function, algebraic).
+topic_keyword(integer, integer).
+topic_keyword(negative, integer).
+topic_keyword(signed, integer).
+topic_keyword(count, counting).
+topic_keyword(counting, counting).
+topic_keyword(cardinality, cardinality).
+topic_keyword(add, addition).
+topic_keyword(sum, addition).
+topic_keyword(total, addition).
+topic_keyword(subtract, subtraction).
+topic_keyword(difference, subtraction).
+topic_keyword('how many more', subtraction).
+topic_keyword('how many less', subtraction).
+topic_keyword(multiply, multiplication).
+topic_keyword(multiplication, multiplication).
+topic_keyword(multiplicative, multiplication).
+topic_keyword(product, multiplication).
+topic_keyword(factor, multiplication).
+topic_keyword(array, multiplication).
+topic_keyword('times as many', multiplication).
+topic_keyword('equal group', multiplication).
+topic_keyword(divide, division).
+topic_keyword(division, division).
+topic_keyword(divisor, division).
+topic_keyword(quotient, division).
+topic_keyword(share, division).
+topic_keyword('left over', division).
+
+
 
 
 text_lower_atom(Value, Lower) :-

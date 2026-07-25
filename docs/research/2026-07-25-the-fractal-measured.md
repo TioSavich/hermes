@@ -141,17 +141,27 @@ addition/append_column_sum_without_carrying arc=keep_first_break_recover_break s
 | 232 machine lines | 7,500 |
 | the legend: 122 actions with register and stance | 1,300 |
 | the legend: 24 arc names | 130 |
-| **window + legend** | **~8,900** |
+| **window + legend** | **~8,900 estimated; 12,863 measured when built** |
 
-**81× smaller, and self-describing** — the legend is what an LLM needs to read the
+**Estimated 81× smaller, and self-describing** — the legend is what an LLM needs to read the
 window, and both fit in it.
 
 ### What the window actually is
 
 It is an index, not a replacement, and the difference matters. The window drops
 which local label an edge carried, the citations, the evidence text, the confidence,
-the corpus excerpt — everything the reports have been careful to keep. What it
-preserves is enough to *choose*: given a question, an LLM can read 8,900 tokens,
+the corpus excerpt — everything the reports have been careful to keep.
+
+Two corrections from building it (`2026-07-25-the-index-and-its-negation.md`).
+The window **preserves** step order within each of shell, core and closure, and
+loses the *interleaving between* them; an earlier version of this section had that
+backwards. And the built artifact measures **12,863 tokens rather than the 8,900
+estimated below**, because the served form carries the closure and delegation
+lists and a two-line layout meant for reading. The estimates in the table are left
+as they stood, marked, so the size of the error stays on the record: it was 44%
+optimistic, and the direction of a compression estimate made before building is
+worth knowing. What it
+preserves is enough to *choose*: given a question, an LLM can read the window,
 name the machine or the arc it wants, and then be served that machine's shards.
 
 That is the honest form of the owner's image. You see the whole window, and then you
@@ -164,7 +174,7 @@ already did the compressing — 232 machines spelling 24 arcs.
 - **Four characters to a token is an order-of-magnitude estimate**, not a
   measurement. A real tokenizer would move these numbers by tens of percent and not
   by factors.
-- **81× is a ratio between one thing you would not serve and one thing nobody has
+- **The ratio is between one thing you would not serve and one thing nobody has
   used yet.** Nobody has asked an LLM a question with the window and checked whether
   the answer was better than with a slice of the shards. Until that happens the
   ratio is arithmetic, not evidence.
@@ -190,6 +200,6 @@ already did the compressing — 232 machines spelling 24 arcs.
 - **14 of 232 machines invoke a subroutine**, 12 of them fraction, `splitting`
   invoking two; **168 of 232 (72%)** parse shell → core → closure; the schema
   crosses the two genres through a kinship pair recorded before the claim was tested.
-- **~727,000 tokens of shards against ~8,900 of window and legend, 81×** — and the
+- **~727,000 tokens of shards against ~8,900 of window and legend as estimated here, 81×** — and the
   window is a retrieval surface rather than a summary, which is what makes the
   number honest.
