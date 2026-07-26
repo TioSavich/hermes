@@ -224,8 +224,8 @@ def static_audit(tree: Path, report: Report) -> None:
             "/api/witness/grounding", "image_schema", "target_inferential_strength_witness",
         ),
         "hermes/web/review.html": (
-            "/api/review_queue", "/api/review_decide", "Unsure (U)",
-            "No recorded source", "Promotion into either part of the repository",
+            "/api/review_queue", "/api/review_decide", "Unit recognition sets",
+            "None of these rows", "explicit_lesson_strategy/4",
         ),
         "hermes/web/bridge.html": (
             "formal/learner/activity_contract.pl",

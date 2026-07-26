@@ -959,6 +959,6 @@ dispatch_message(misconception_incompatibility_witness, malformed, "misconceptio
 dispatch_message(lesson_misconception_incompatibility_witness, no_witness, "lesson_misconception_incompatibility_witness found no lesson recorded example").
 dispatch_message(lesson_misconception_incompatibility_witness, malformed, "lesson_misconception_incompatibility_witness requires lesson_code and name").
 dispatch_message(review_queue, no_result, "review_queue found no valid proposal queue for the requested source").
-dispatch_message(review_queue, malformed, "review_queue requires source lesson_pairings or corpus_bindings and a non-negative offset").
+dispatch_message(review_queue, malformed, "review_queue requires source unit_recognition_set or signature_anchor and a non-negative offset").
 dispatch_message(review_decide, no_result, "review_decide could not record a first verdict for that queue item").
-dispatch_message(review_decide, malformed, "review_decide requires source, item_id, accept/reject/unsure verdict, shown item text, and an optional note").
+dispatch_message(review_decide, malformed, "review_decide requires source, item_id, a verdict valid for that review mode, shown item text, and an optional note").

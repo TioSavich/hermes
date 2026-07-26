@@ -3,9 +3,11 @@
             review_decide_dict/6
           ]).
 
-/** <module> Human review queue for generated lesson and corpus proposals
+/** <module> Answerable review queues for generated research proposals
 
-The proposal files remain inputs.  A verdict appends one record to
+The lesson proposals are grouped into one recognition-set decision per IM
+unit.  Corpus proposals are grouped into one anchor decision per signature
+after mechanical triage.  A verdict appends one record to
 data/research/review_decisions.jsonl and changes no knowledge or curriculum
 file.  Promotion from that log is a separate operation.
 */
@@ -13,6 +15,7 @@ file.  Promotion from that log is a separate operation.
 :- use_module(library(apply)).
 :- use_module(library(http/json)).
 :- use_module(library(lists)).
+:- use_module(library(pairs)).
 :- use_module(library(readutil)).
 
 :- use_module(index(index_query), []).
@@ -28,24 +31,20 @@ file.  Promotion from that log is a separate operation.
    asserta(repo_root(Root)).
 
 
-review_source(lesson_pairings).
-review_source(corpus_bindings).
-
-review_verdict(accept).
-review_verdict(reject).
-review_verdict(unsure).
+review_source(unit_recognition_set).
+review_source(signature_anchor).
 
 review_file('data/research/grade78_pairing_proposals.jsonl').
 review_file('data/research/corpus_binding_proposals.json').
+review_file('data/research/corpus_binding_diagnostics.json').
 review_file('data/research/review_decisions.jsonl').
 review_file('curriculum/im/generated/field_context_cache.json').
 
 
 %!  review_queue_dict(+Source, +Offset, -Dict) is semidet.
 %
-%   Return one ranked, undecided item and progress through the current source.
-%   Offset is applied to the ranked undecided queue, which lets a reviewer move
-%   past an item without recording a verdict.
+%   Return one ranked, undecided aggregate decision.  Offset is applied to the
+%   ranked undecided queue, which lets a reviewer move without recording.
 review_queue_dict(Source, Offset, Dict) :-
     review_source(Source),
     integer(Offset),
@@ -77,12 +76,11 @@ review_queue_dict(Source, Offset, Dict) :-
 
 %!  review_decide_dict(+Source, +ItemId, +Verdict, +Note, +Shown, -Dict) is semidet.
 %
-%   Append a first verdict for an existing item.  Shown is the structured text
-%   the page received for that item; keeping it in the log preserves what the
-%   reviewer judged if a proposal file changes later.
+%   Append a first verdict for an existing aggregate decision.  Shown preserves
+%   the evidence and structured amendment or exception fields submitted by the
+%   page.  Promotion remains a separate operation.
 review_decide_dict(Source, ItemId, Verdict, Note, Shown, Dict) :-
     review_source(Source),
-    review_verdict(Verdict),
     string(ItemId),
     string(Note),
     is_dict(Shown),
@@ -90,10 +88,42 @@ review_decide_dict(Source, ItemId, Verdict, Note, Shown, Dict) :-
     get_dict(source, Shown, ShownSource),
     atom_string(Source, ShownSource),
     review_source_items(Source, Items),
-    item_with_identity(Items, ItemId, _),
+    item_with_identity(Items, ItemId, Item),
+    valid_review_verdict(Source, Verdict, Item, Shown),
     with_mutex(review_decision_log,
                append_review_decision(Source, ItemId, Verdict, Note,
                                       Shown, Items, Dict)).
+
+
+valid_review_verdict(unit_recognition_set, Verdict, _, Shown) :-
+    memberchk(Verdict, ['accept-set', 'reject-set', amend]),
+    valid_unit_decision_detail(Verdict, Shown).
+valid_review_verdict(signature_anchor, none, _, _).
+valid_review_verdict(signature_anchor, Verdict, Item, _) :-
+    atom_string(Verdict, VerdictText),
+    get_dict(candidates, Item, Candidates),
+    member(Candidate, Candidates),
+    get_dict(anchor_verdict, Candidate, VerdictText),
+    !.
+
+valid_unit_decision_detail(Verdict, Shown) :-
+    (   get_dict(decision_detail, Shown, Detail)
+    ->  is_dict(Detail),
+        get_dict(drop_machines, Detail, Drops),
+        is_list(Drops),
+        maplist(string, Drops),
+        get_dict(add_machines, Detail, Adds),
+        is_list(Adds),
+        maplist(string, Adds),
+        get_dict(lesson_exceptions, Detail, Exceptions),
+        string(Exceptions),
+        (   Verdict == amend
+        ->  ( Drops \== [] ; Adds \== [] )
+        ;   Drops == [],
+            Adds == []
+        )
+    ;   Verdict \== amend
+    ).
 
 
 append_review_decision(Source, ItemId, Verdict, Note, Shown, Items, Dict) :-
@@ -104,7 +134,7 @@ append_review_decision(Source, ItemId, Verdict, Note, Shown, Items, Dict) :-
     atom_string(Source, SourceText),
     atom_string(Verdict, VerdictText),
     Record = _{
-        schema_version: 1,
+        schema_version: 2,
         source: SourceText,
         item_id: ItemId,
         verdict: VerdictText,
@@ -137,115 +167,177 @@ append_review_decision(Source, ItemId, Verdict, Note, Shown, Items, Dict) :-
     }.
 
 
-review_source_items(lesson_pairings, Items) :-
+review_source_items(unit_recognition_set, Items) :-
     read_jsonl_file('data/research/grade78_pairing_proposals.jsonl', Rows),
     read_json_file('curriculum/im/generated/field_context_cache.json',
                    ContextData),
     get_dict(field_contexts, ContextData, Contexts),
-    maplist(lesson_row_items(Contexts), Rows, Nested),
-    append(Nested, Keyed),
+    findall(UnitId-Row,
+            ( member(Row, Rows),
+              get_dict(lesson, Row, Lesson),
+              lesson_unit_id(Lesson, UnitId)
+            ),
+            UnitRows0),
+    keysort(UnitRows0, UnitRows),
+    group_pairs_by_key(UnitRows, Grouped),
+    maplist(unit_recognition_item(Contexts), Grouped, Keyed),
     keysort(Keyed, Ranked),
     pairs_values(Ranked, Items).
-review_source_items(corpus_bindings, Items) :-
+review_source_items(signature_anchor, Items) :-
     read_json_file('data/research/corpus_binding_proposals.json', Data),
     get_dict(proposals, Data, Proposals),
-    numbered(Proposals, Numbered),
-    maplist(corpus_review_item, Numbered, Keyed),
+    read_json_file('data/research/corpus_binding_diagnostics.json',
+                   DiagnosticData),
+    get_dict(diagnostics, DiagnosticData, Diagnostics),
+    maplist(proposal_with_diagnostic(Diagnostics), Proposals, Joined),
+    include(signature_has_clean_candidate, Joined, Reviewable),
+    findall(Machine-Entry,
+            ( member(Entry, Reviewable),
+              get_dict(proposal, Entry, Proposal),
+              proposal_machine(Proposal, Machine)
+            ),
+            MachineRows0),
+    keysort(MachineRows0, MachineRows),
+    group_pairs_by_key(MachineRows, Grouped),
+    maplist(signature_anchor_item, Grouped, Keyed),
     keysort(Keyed, Ranked),
     pairs_values(Ranked, Items).
 
 
-lesson_row_items(Contexts, Row, KeyedItems) :-
-    get_dict(lesson, Row, Lesson),
-    standards_for_lesson(Contexts, Lesson, Standards),
-    get_dict(pairings, Row, Pairings),
-    family_disagreement(Pairings, FamilyDisagreement),
-    (   Pairings == []
-    ->  get_dict(gap, Row, Gap),
-        Gap \== "",
-        lesson_gap_item(Row, Standards, Gap, Item),
-        KeyedItems = [0-Lesson-0-Item]
-    ;   numbered(Pairings, Numbered),
-        maplist(lesson_pairing_item(Row, Standards, FamilyDisagreement),
-                Numbered, PairItems),
-        KeyedItems = PairItems
-    ).
+lesson_unit_id(Lesson, UnitId) :-
+    split_string(Lesson, "-", "", [Program, Grade, Unit, _Lesson]),
+    atomics_to_string([Program, Grade, Unit], "-", UnitId).
 
 
-lesson_gap_item(Row, Standards, Gap, Item) :-
-    get_dict(lesson, Row, Lesson),
-    get_dict(title, Row, Title),
-    get_dict(unit, Row, Unit),
-    get_dict(topics, Row, Topics),
-    format(string(Identity), 'lesson_gap:~s', [Lesson]),
+unit_recognition_item(Contexts, UnitId-Rows,
+                      UnitId-Item) :-
+    maplist(unit_lesson_dict(Contexts), Rows, Lessons),
+    findall(Machine-Motivation,
+            ( member(Row, Rows),
+              get_dict(pairings, Row, Pairings),
+              member(Pairing, Pairings),
+              get_dict(machine, Pairing, Machine),
+              pairing_motivation(Row, Pairing, Motivation)
+            ),
+            MachineMotivations0),
+    keysort(MachineMotivations0, MachineMotivations),
+    group_pairs_by_key(MachineMotivations, GroupedMachines),
+    maplist(unit_machine_dict, GroupedMachines, Machines),
+    findall(Gap,
+            ( member(Lesson, Lessons),
+              get_dict(gap, Lesson, Gap),
+              Gap \== ""
+            ),
+            Gaps),
+    format(string(Identity), 'unit_recognition_set:~s', [UnitId]),
     Item = _{
-        source: "lesson_pairings",
+        source: "unit_recognition_set",
         identity: Identity,
-        item_type: "authoring_gap",
-        lesson: Lesson,
-        title: Title,
-        unit: Unit,
-        standards: Standards,
-        topics: Topics,
-        gap: Gap,
-        machine: null,
-        machine_steps: null,
-        was_candidate: false,
-        family_disagreement: false,
+        item_type: "unit_recognition_set",
+        unit: UnitId,
+        question: "When Hermes reads student work from this unit, should these machines be in the set it tries first?",
+        lessons: Lessons,
+        proposed_machines: Machines,
+        stated_gaps: Gaps,
         ranking_tier: 0,
-        ranking_reason: "No pairing was proposed; this item asks whether the stated authoring gap is accurate."
+        ranking_reason: "One recognition-set decision covers this unit; lesson-level exceptions stay with the unit decision."
     }.
 
 
-lesson_pairing_item(Row, Standards, FamilyDisagreement,
-                    PairIndex-Pairing, Rank-Lesson-PairIndex-Item) :-
+unit_lesson_dict(Contexts, Row, LessonDict) :-
     get_dict(lesson, Row, Lesson),
     get_dict(title, Row, Title),
-    get_dict(unit, Row, Unit),
     get_dict(topics, Row, Topics),
     get_dict(gap, Row, Gap),
-    get_dict(machine, Pairing, Machine),
+    get_dict(candidates_offered, Row, CandidatesOffered),
+    get_dict(machines_surviving, Row, MachinesSurviving),
+    standards_for_lesson(Contexts, Lesson, Standards),
+    LessonDict = _{
+        lesson: Lesson,
+        title: Title,
+        topics: Topics,
+        standards: Standards,
+        gap: Gap,
+        candidates_offered: CandidatesOffered,
+        machines_surviving: MachinesSurviving
+    }.
+
+
+pairing_motivation(Row, Pairing, Motivation) :-
+    get_dict(lesson, Row, Lesson),
+    get_dict(title, Row, Title),
     get_dict(reason, Pairing, Reason),
     get_dict(confidence, Pairing, Confidence),
     get_dict(was_candidate, Pairing, WasCandidate),
-    machine_review_dict(Machine, MachineSteps),
-    lesson_pairing_rank(WasCandidate, FamilyDisagreement, Rank, RankReason),
-    format(string(Identity), 'lesson_pairing:~s:~s', [Lesson, Machine]),
-    Item = _{
-        source: "lesson_pairings",
-        identity: Identity,
-        item_type: "lesson_pairing",
+    Motivation = _{
         lesson: Lesson,
         title: Title,
-        unit: Unit,
-        standards: Standards,
-        topics: Topics,
-        gap: Gap,
-        machine: Machine,
-        machine_steps: MachineSteps,
         reason: Reason,
         confidence: Confidence,
-        was_candidate: WasCandidate,
-        family_disagreement: FamilyDisagreement,
+        was_candidate: WasCandidate
+    }.
+
+
+unit_machine_dict(Machine-Motivations,
+                  _{machine: Machine,
+                    machine_steps: MachineSteps,
+                    motivated_by: Motivations}) :-
+    machine_review_dict(Machine, MachineSteps).
+
+
+proposal_with_diagnostic(Diagnostics, Proposal,
+                         _{proposal: Proposal, diagnostic: Diagnostic}) :-
+    proposal_candidate_identity(Proposal, Identity),
+    member(Diagnostic, Diagnostics),
+    get_dict(identity, Diagnostic, Identity),
+    !.
+
+signature_has_clean_candidate(Entry) :-
+    get_dict(diagnostic, Entry, Diagnostic),
+    get_dict(signature_has_clean_candidate, Diagnostic, true).
+
+proposal_machine(Proposal, Machine) :-
+    get_dict(family, Proposal, Family),
+    get_dict(signature, Proposal, Signature),
+    format(string(Machine), '~s/~s', [Family, Signature]).
+
+proposal_candidate_identity(Proposal, Identity) :-
+    get_dict(row_type, Proposal, RowType),
+    get_dict(row_id, Proposal, RowId),
+    proposal_machine(Proposal, Machine),
+    format(string(Identity), 'corpus_candidate:~s:~d:~s',
+           [RowType, RowId, Machine]).
+
+
+signature_anchor_item(Machine-Entries, RankKey-Item) :-
+    machine_review_dict(Machine, MachineSteps),
+    numbered(Entries, Numbered),
+    maplist(corpus_candidate, Numbered, CandidatePairs),
+    keysort(CandidatePairs, RankedCandidates),
+    pairs_values(RankedCandidates, Candidates),
+    signature_rank(Candidates, Rank, RankReason, ScoreBand),
+    format(string(Identity), 'signature_anchor:~s', [Machine]),
+    RankKey = Rank-Machine,
+    Item = _{
+        source: "signature_anchor",
+        identity: Identity,
+        item_type: "signature_anchor",
+        machine: Machine,
+        machine_steps: MachineSteps,
+        question: "Is any candidate row an instance of this machine's run?",
+        candidates: Candidates,
+        none_is_first_class: true,
+        score_band: ScoreBand,
         ranking_tier: Rank,
         ranking_reason: RankReason
     }.
 
 
-lesson_pairing_rank(false, _, 1,
-        "The index did not retain this machine in the lesson's pruned candidate set.") :-
-    !.
-lesson_pairing_rank(_, true, 2,
-        "This lesson's proposals span machine families, so the family assignment needs review.") :-
-    !.
-lesson_pairing_rank(_, _, 3,
-        "This proposal was inside the pruned candidate set and stays within one machine family.").
-
-
-corpus_review_item(Index-Proposal, Rank-Index-Item) :-
+corpus_candidate(Index-Entry, RankKey-Candidate) :-
+    get_dict(proposal, Entry, Proposal),
+    get_dict(diagnostic, Entry, Diagnostic),
     get_dict(row_id, Proposal, RowId),
-    get_dict(family, Proposal, Family),
-    get_dict(signature, Proposal, Signature),
+    get_dict(row_type, Proposal, RowType),
     get_dict(bibtex_key, Proposal, Citation),
     get_dict(evidence, Proposal, Evidence),
     get_dict(excerpt, Proposal, Excerpt),
@@ -253,29 +345,22 @@ corpus_review_item(Index-Proposal, Rank-Index-Item) :-
     get_dict(score, Proposal, Score),
     get_dict(runner_up_score, Proposal, RunnerUpScore),
     get_dict(domain, Proposal, Domain),
-    get_dict(kind, Proposal, Kind),
-    get_dict(operation, Proposal, Operation),
     get_dict(role, Proposal, Role),
-    get_dict(row_type, Proposal, RowType),
-    format(string(Machine), '~s/~s', [Family, Signature]),
-    machine_review_dict(Machine, MachineSteps),
-    corpus_rank(Citation, Confidence, Score, RunnerUpScore,
-                Rank, RankReason, CitationStatus, CitationNote),
-    format(string(Identity), 'corpus_binding:~d:~s', [RowId, Machine]),
-    Item = _{
-        source: "corpus_bindings",
-        identity: Identity,
-        item_type: "corpus_binding",
+    get_dict(defects, Diagnostic, Defects),
+    get_dict(reviewable, Diagnostic, Reviewable),
+    score_band(Score, ScoreBand),
+    proposal_candidate_identity(Proposal, CandidateIdentity),
+    format(string(AnchorVerdict), 'anchor:~s:~d', [RowType, RowId]),
+    NegScore is -Score,
+    RankKey = NegScore-Index,
+    citation_status(Citation, CitationStatus, CitationNote),
+    Candidate = _{
+        identity: CandidateIdentity,
+        anchor_verdict: AnchorVerdict,
         row_id: RowId,
         row_type: RowType,
         domain: Domain,
-        operation: Operation,
-        kind: Kind,
         role: Role,
-        family: Family,
-        signature: Signature,
-        machine: Machine,
-        machine_steps: MachineSteps,
         evidence: Evidence,
         excerpt: Excerpt,
         citation: Citation,
@@ -283,29 +368,75 @@ corpus_review_item(Index-Proposal, Rank-Index-Item) :-
         citation_note: CitationNote,
         confidence: Confidence,
         score: Score,
+        score_band: ScoreBand,
         runner_up_score: RunnerUpScore,
-        ranking_tier: Rank,
-        ranking_reason: RankReason
+        defects: Defects,
+        mechanically_clear: Reviewable
     }.
 
 
-corpus_rank("unattributed", _, _, _, 0,
-        "No source was recorded, so the evidence wording carries the full warrant for this proposal.",
-        "no_recorded_source",
-        "No recorded source. Judge this binding from the evidence wording and excerpt alone.") :-
+signature_rank(Candidates, 0,
+        "One or more candidates were displaced by a higher-scoring already-bound signature.",
+        BestBand) :-
+    candidates_have_defect(Candidates, "displacement"),
+    best_candidate_band(Candidates, BestBand),
     !.
-corpus_rank(_, _, Score, RunnerUpScore, 1,
-        "The proposed signature tied the runner-up score.",
-        "recorded_key", "") :-
-    Score =:= RunnerUpScore,
+signature_rank(Candidates, 1,
+        "One or more candidates have a tied score or reuse a row proposed for another signature.",
+        BestBand) :-
+    ( candidates_have_defect(Candidates, "score_tie")
+    ; candidates_have_defect(Candidates, "fan_surplus")
+    ),
+    best_candidate_band(Candidates, BestBand),
     !.
-corpus_rank(_, "tentative", _, _, 2,
-        "The generator marked this binding tentative.",
-        "recorded_key", "") :-
+signature_rank(Candidates, 2,
+        "The best mechanically clear candidate is in the low sampled score band.",
+        "low_sampled_band") :-
+    best_clear_score(Candidates, Score),
+    Score =< 3.5,
     !.
-corpus_rank(_, _, _, _, 3,
-        "The generator assigned this binding its strongest confidence.",
-        "recorded_key", "").
+signature_rank(Candidates, 3,
+        "The best mechanically clear candidate falls between the sampled score bands.",
+        "between_sampled_bands") :-
+    best_clear_score(Candidates, Score),
+    Score < 4.5,
+    !.
+signature_rank(_, 4,
+        "The best mechanically clear candidate is in the strong sampled score band.",
+        "strong_sampled_band").
+
+candidates_have_defect(Candidates, Kind) :-
+    member(Candidate, Candidates),
+    get_dict(defects, Candidate, Defects),
+    member(Defect, Defects),
+    get_dict(kind, Defect, Kind).
+
+best_candidate_band(Candidates, Band) :-
+    best_clear_score(Candidates, Score),
+    score_band(Score, Band).
+
+best_clear_score(Candidates, Score) :-
+    findall(CandidateScore,
+            ( member(Candidate, Candidates),
+              get_dict(mechanically_clear, Candidate, true),
+              get_dict(score, Candidate, CandidateScore)
+            ),
+            Scores),
+    max_list(Scores, Score).
+
+score_band(Score, "strong_sampled_band") :-
+    Score >= 4.5,
+    !.
+score_band(Score, "low_sampled_band") :-
+    Score =< 3.5,
+    !.
+score_band(_, "between_sampled_bands").
+
+
+citation_status("unattributed", "no_recorded_source",
+        "No source is recorded for this corpus row.") :-
+    !.
+citation_status(_, "recorded_key", "").
 
 
 machine_review_dict(Machine, Dict) :-
@@ -323,18 +454,6 @@ machine_review_dict(Machine, Dict) :-
         closure: Closure,
         other: Other
     }.
-
-
-family_disagreement(Pairings, Disagreement) :-
-    findall(Family,
-            ( member(Pairing, Pairings),
-              get_dict(machine, Pairing, Machine),
-              split_string(Machine, "/", "", [Family|_])
-            ),
-            Families0),
-    sort(Families0, Families),
-    length(Families, Count),
-    ( Count > 1 -> Disagreement = true ; Disagreement = false ).
 
 
 standards_for_lesson(Contexts, Lesson, Standards) :-
@@ -418,7 +537,3 @@ numbered([], _, []).
 numbered([Item|Items], Index, [Index-Item|Numbered]) :-
     Next is Index + 1,
     numbered(Items, Next, Numbered).
-
-pairs_values([], []).
-pairs_values([_-Value|Pairs], [Value|Values]) :-
-    pairs_values(Pairs, Values).

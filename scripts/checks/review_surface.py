@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check the proposal review queue, append log, routes, and shipped page."""
+"""Check the aggregate review queues, evidence, diagnostics, and append log."""
 from __future__ import annotations
 
 import json
@@ -15,6 +15,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[2]
 LESSON_PROPOSALS = ROOT / "data/research/grade78_pairing_proposals.jsonl"
 CORPUS_PROPOSALS = ROOT / "data/research/corpus_binding_proposals.json"
+CORPUS_DIAGNOSTICS = ROOT / "data/research/corpus_binding_diagnostics.json"
 FIELD_CONTEXT = ROOT / "curriculum/im/generated/field_context_cache.json"
 CORPUS_WINDOW = ROOT / "knowledge/index/corpus_window.pl"
 RESEARCH_DB = ROOT / "data/research/research_shared.db"
@@ -41,8 +42,9 @@ def read_jsonl(path: Path) -> list[dict[str, Any]]:
 
 def proposal_integrity() -> tuple[int, int]:
     lesson_rows = read_jsonl(LESSON_PROPOSALS)
-    corpus_data = json.loads(CORPUS_PROPOSALS.read_text(encoding="utf-8"))
-    corpus_rows = corpus_data.get("proposals")
+    corpus_rows = json.loads(CORPUS_PROPOSALS.read_text(encoding="utf-8")).get(
+        "proposals"
+    )
     if not isinstance(corpus_rows, list):
         fail("corpus_binding_proposals.json has no proposals list")
     contexts = json.loads(FIELD_CONTEXT.read_text(encoding="utf-8")).get(
@@ -54,48 +56,36 @@ def proposal_integrity() -> tuple[int, int]:
             CORPUS_WINDOW.read_text(encoding="utf-8")
         )
     }
+
+    units: set[str] = set()
+    for row in lesson_rows:
+        lesson = row.get("lesson")
+        if lesson not in contexts:
+            fail(f"lesson proposal does not resolve in field context: {lesson}")
+        unit = "-".join(str(lesson).split("-")[:3])
+        if len(unit.split("-")) != 3:
+            fail(f"lesson proposal has no unit identity: {lesson}")
+        units.add(unit)
+        pairings = row.get("pairings")
+        if not isinstance(pairings, list):
+            fail(f"lesson proposal has no pairings list: {lesson}")
+        for pairing in pairings:
+            machine = pairing.get("machine")
+            if machine not in machines:
+                fail(f"lesson proposal machine does not resolve: {lesson} -> {machine}")
+
     connection = sqlite3.connect(f"file:{RESEARCH_DB}?mode=ro", uri=True)
-    connection.row_factory = sqlite3.Row
     try:
-        articles = {
-            row["bibtex_key"]: dict(row)
+        article_keys = {
+            row[0]
             for row in connection.execute(
-                """
-                SELECT bibtex_key, authors, year, title, journal, doi
-                  FROM articles
-                 WHERE bibtex_key IS NOT NULL
-                """
+                "SELECT bibtex_key FROM articles WHERE bibtex_key IS NOT NULL"
             )
         }
     finally:
         connection.close()
 
-    pairing_count = 0
-    gap_count = 0
-    lesson_ids: set[str] = set()
-    for row in lesson_rows:
-        lesson = row.get("lesson")
-        if lesson not in contexts:
-            fail(f"lesson proposal does not resolve in field context: {lesson}")
-        pairings = row.get("pairings")
-        if not isinstance(pairings, list):
-            fail(f"lesson proposal has no pairings list: {lesson}")
-        if not pairings and row.get("gap"):
-            gap_count += 1
-        for pairing in pairings:
-            machine = pairing.get("machine")
-            if machine not in machines:
-                fail(f"lesson proposal machine does not resolve: {lesson} -> {machine}")
-            identity = f"{lesson}:{machine}"
-            if identity in lesson_ids:
-                fail(f"duplicate lesson pairing identity: {identity}")
-            lesson_ids.add(identity)
-            pairing_count += 1
-
-    sentinel_count = 0
-    resolved_count = 0
-    unresolved_count = 0
-    corpus_ids: set[str] = set()
+    identities: set[str] = set()
     for proposal in corpus_rows:
         machine = f"{proposal.get('family')}/{proposal.get('signature')}"
         if machine not in machines:
@@ -104,50 +94,56 @@ def proposal_integrity() -> tuple[int, int]:
                 f"row {proposal.get('row_id')} -> {machine}"
             )
         citation = proposal.get("bibtex_key")
-        if citation == "unattributed":
-            sentinel_count += 1
-        elif citation in articles:
-            resolved_count += 1
-            article = articles[citation]
-            if not article.get("authors") or not article.get("title"):
-                fail(
-                    "resolved corpus article lacks reviewer metadata: "
-                    f"row {proposal.get('row_id')} -> {citation}"
-                )
-        else:
-            unresolved_count += 1
-        identity = f"{proposal.get('row_id')}:{machine}"
-        if identity in corpus_ids:
-            fail(f"duplicate corpus binding identity: {identity}")
-        corpus_ids.add(identity)
+        if citation != "unattributed" and citation not in article_keys:
+            fail(f"corpus proposal citation does not resolve: {citation}")
+        identity = (
+            f"{proposal.get('row_type')}:{proposal.get('row_id')}:{machine}"
+        )
+        if identity in identities:
+            fail(f"duplicate corpus proposal identity: {identity}")
+        identities.add(identity)
 
-    expected = {
-        "lesson rows": (len(lesson_rows), 271),
-        "lesson pairings": (pairing_count, 733),
-        "stated gaps": (gap_count, 9),
-        "corpus bindings": (len(corpus_rows), 268),
-        "resolved database citations": (resolved_count, 262),
-        "unattributed sentinels": (sentinel_count, 6),
-        "unresolved citations": (unresolved_count, 0),
-    }
-    wrong = [
-        f"{label}: {actual} != {wanted}"
-        for label, (actual, wanted) in expected.items()
-        if actual != wanted
-    ]
-    if wrong:
-        fail("; ".join(wrong))
     print(
         "proposal resolution: "
-        f"{len(lesson_rows)} lessons, {pairing_count} pairings, "
-        f"{gap_count} stated gaps, {len(corpus_rows)} corpus bindings PASS"
+        f"{len(lesson_rows)} lessons in {len(units)} units; "
+        f"{len(corpus_rows)} corpus proposals; all evidence keys resolve PASS"
     )
+    return len(units), len(corpus_rows)
+
+
+def diagnostics_integrity(corpus_total: int) -> tuple[dict[str, int], int]:
+    sys.path.insert(0, str(ROOT / "scripts/research"))
+    import build_review_diagnostics as diagnostics  # noqa: PLC0415
+
+    derived = diagnostics.derive()
+    recorded = json.loads(CORPUS_DIAGNOSTICS.read_text(encoding="utf-8"))
+    if recorded != derived:
+        fail(
+            "corpus_binding_diagnostics.json differs from the live proposal, "
+            "database, or scoring sources"
+        )
+    counts = derived["counts"]
+    if counts["proposals"] != corpus_total:
+        fail(f"diagnostic proposal count is wrong: {counts}")
+    if (
+        counts["clean_proposals"] + counts["affected_union"]
+        != counts["proposals"]
+    ):
+        fail(f"diagnostic union does not partition proposals: {counts}")
+    defect_counts = {
+        "score_tie": counts["score_ties"],
+        "displacement": counts["displacements"],
+        "fan_surplus": counts["fan_surplus"],
+    }
     print(
-        "citation resolution: "
-        f"resolved-in-database={resolved_count}, sentinel={sentinel_count}, "
-        f"unresolved-anywhere={unresolved_count} PASS"
+        "binding defects recomputed: "
+        f"score-ties={defect_counts['score_tie']}, "
+        f"displacements={defect_counts['displacement']}, "
+        f"fan-surplus={defect_counts['fan_surplus']}, "
+        f"union={counts['affected_union']}, "
+        f"clean={counts['clean_proposals']} PASS"
     )
-    return pairing_count + gap_count, len(corpus_rows)
+    return defect_counts, counts["reviewable_signatures"]
 
 
 def copy_runtime_inputs(tree: Path) -> None:
@@ -155,6 +151,7 @@ def copy_runtime_inputs(tree: Path) -> None:
         "hermes/review_queue.pl",
         "data/research/grade78_pairing_proposals.jsonl",
         "data/research/corpus_binding_proposals.json",
+        "data/research/corpus_binding_diagnostics.json",
         "curriculum/im/generated/field_context_cache.json",
         "knowledge/index/corpus_window.pl",
         "knowledge/index/index_query.pl",
@@ -187,16 +184,16 @@ def run_prolog(tree: Path, goal: str) -> dict[str, Any]:
     if completed.returncode:
         fail(
             f"review queue Prolog failed ({completed.returncode}): "
-            f"{completed.stderr[-1200:]}"
+            f"{completed.stderr[-1600:]}"
         )
     try:
         return json.loads(completed.stdout)
     except json.JSONDecodeError as exc:
-        fail(f"review queue Prolog returned non-JSON: {completed.stdout[-1200:]}")
+        fail(f"review queue Prolog returned non-JSON: {completed.stdout[-1600:]}")
         raise exc
 
 
-def queue_and_append_behavior(lesson_total: int, corpus_total: int) -> None:
+def queue_and_append_behavior(unit_total: int, signature_total: int) -> None:
     with tempfile.TemporaryDirectory(prefix="hermes-review-check-") as raw:
         tree = Path(raw)
         copy_runtime_inputs(tree)
@@ -208,82 +205,123 @@ def queue_and_append_behavior(lesson_total: int, corpus_total: int) -> None:
         first = run_prolog(
             tree,
             common
-            + "review_queue:review_source_items(lesson_pairings,LItems),"
-            + "findall(LT,(member(LI,LItems),get_dict(ranking_tier,LI,LT)),LTiers),"
-            + "msort(LTiers,LTiers),"
-            + "review_queue:review_source_items(corpus_bindings,CItems),"
-            + "findall(CT,(member(CI,CItems),get_dict(ranking_tier,CI,CT)),CTiers),"
-            + "msort(CTiers,CTiers),"
-            + "review_queue:review_queue_dict(lesson_pairings,0,Q0),"
+            + "review_queue:review_source_items(unit_recognition_set,UItems),"
+            + "maplist([I,T]>>get_dict(item_type,I,T),UItems,UTypes),"
+            + "review_queue:review_source_items(signature_anchor,SItems),"
+            + "maplist([I,T]>>get_dict(item_type,I,T),SItems,STypes),"
+            + "review_queue:review_queue_dict(unit_recognition_set,0,Q0),"
             + "get_dict(item,Q0,I0),get_dict(identity,I0,Id0),"
-            + "review_queue:review_decide_dict(lesson_pairings,Id0,unsure,"
-            + '"first append check",I0,D1),'
-            + "json_write_dict(current_output,_{queue:Q0,decision:D1},[width(0)])",
-        )
-        queue0 = first["queue"]
-        decision1 = first["decision"]
-        if queue0["progress"] != {
-            "decided": 0,
-            "remaining": lesson_total,
-            "total": lesson_total,
-        }:
-            fail(f"unexpected initial lesson progress: {queue0['progress']}")
-        if (
-            queue0["item"]["item_type"] != "authoring_gap"
-            or queue0["item"]["ranking_tier"] != 0
-        ):
-            fail("lesson queue does not start with a ranked authoring gap")
-        if decision1["progress"]["decided"] != 1:
-            fail("first decision did not move decided count to one")
-
-        decisions_path = tree / "data/research/review_decisions.jsonl"
-        after_first = decisions_path.read_text(encoding="utf-8").splitlines()
-        if len(after_first) != 1:
-            fail(f"first append produced {len(after_first)} decision lines")
-        first_line = after_first[0]
-
-        second = run_prolog(
-            tree,
-            common
-            + "review_queue:review_queue_dict(lesson_pairings,0,Q1),"
-            + "get_dict(item,Q1,I1),get_dict(identity,I1,Id1),"
-            + "review_queue:review_decide_dict(lesson_pairings,Id1,accept,"
-            + '"second append check",I1,D2),'
-            + "review_queue:review_queue_dict(lesson_pairings,0,Q2),"
-            + "review_queue:review_queue_dict(corpus_bindings,0,CQ),"
+            + "put_dict(decision_detail,I0,"
+            + '_{drop_machines:["ratio/example"],add_machines:[],'
+            + 'lesson_exceptions:"IM-G7-U1-L1: retain as an exception"},Shown),'
+            + "review_queue:review_decide_dict(unit_recognition_set,Id0,amend,"
+            + '"structured exception check",Shown,D1),'
+            + "review_queue:review_queue_dict(signature_anchor,0,SQ0),"
+            + "get_dict(item,SQ0,SI0),get_dict(identity,SI0,SId0),"
+            + "review_queue:review_decide_dict(signature_anchor,SId0,none,"
+            + '"none check",SI0,SD1),'
             + "json_write_dict(current_output,"
-            + "_{before:Q1,decision:D2,after:Q2,corpus:CQ},[width(0)])",
+            + "_{units:UItems,unit_types:UTypes,signatures:SItems,"
+            + "signature_types:STypes,unit_queue:Q0,unit_decision:D1,"
+            + "signature_queue:SQ0,signature_decision:SD1},[width(0)])",
         )
-        before = second["before"]
-        after = second["after"]
-        if before["progress"]["decided"] != 1:
-            fail("decided item remained in the lesson queue")
-        if before["item"]["identity"] == queue0["item"]["identity"]:
-            fail("the decided lesson item was returned again")
-        if second["decision"]["progress"]["decided"] != 2:
-            fail("second decision did not move decided count by exactly one")
-        if after["progress"]["decided"] != 2:
-            fail("queue progress did not retain both decisions")
-        if second["corpus"]["progress"]["total"] != corpus_total:
-            fail(f"unexpected corpus queue total: {second['corpus']['progress']}")
-        if second["corpus"]["item"]["citation_status"] != "no_recorded_source":
-            fail("corpus queue does not prioritize an unattributed proposal")
 
-        final_lines = decisions_path.read_text(encoding="utf-8").splitlines()
-        if len(final_lines) != 2:
-            fail(f"second append produced {len(final_lines)} decision lines")
-        if final_lines[0] != first_line:
-            fail("the second append changed the first decision line")
-        records = [json.loads(line) for line in final_lines]
-        if records[0]["reviewer_text"] != queue0["item"]:
-            fail("decision log did not preserve the reviewer-facing item")
+        units = first["units"]
+        signatures = first["signatures"]
+        if len(units) != unit_total:
+            fail(f"unit queue total {len(units)} != live unit count {unit_total}")
+        if len(signatures) != signature_total:
+            fail(
+                f"signature queue total {len(signatures)} "
+                f"!= recomputed clean-signature count {signature_total}"
+            )
+        if set(first["unit_types"]) != {"unit_recognition_set"}:
+            fail("unit queue contains a per-pairing or other item")
+        if set(first["signature_types"]) != {"signature_anchor"}:
+            fail("signature queue contains a per-row or other item")
+        for item in units:
+            if not item["proposed_machines"] or not item["lessons"]:
+                fail(f"unit decision lacks its set evidence: {item['identity']}")
+            for proposed in item["proposed_machines"]:
+                if not proposed.get("machine_steps") or not proposed.get(
+                    "motivated_by"
+                ):
+                    fail(f"unit machine lacks steps or motivations: {proposed}")
+        for item in signatures:
+            if not item.get("none_is_first_class"):
+                fail(f"none is not first-class on {item['identity']}")
+            if not item.get("machine_steps") or not item.get("candidates"):
+                fail(f"signature decision lacks machine or candidates: {item}")
+            if not any(c["mechanically_clear"] for c in item["candidates"]):
+                fail(f"signature has no clear candidate after triage: {item}")
+
+        if first["unit_decision"]["verdict"] != "amend":
+            fail("unit amendment verdict was not recorded")
+        if first["signature_decision"]["verdict"] != "none":
+            fail("signature none verdict was not recorded")
+
+        decision_lines = (
+            tree / "data/research/review_decisions.jsonl"
+        ).read_text(encoding="utf-8").splitlines()
+        records = [json.loads(line) for line in decision_lines]
+        if len(records) != 2:
+            fail(f"append log has {len(records)} records instead of two")
+        detail = records[0]["reviewer_text"].get("decision_detail", {})
+        if not detail.get("lesson_exceptions"):
+            fail("unit decision did not preserve its lesson exception")
         print(
-            "queue behavior: ranked lesson and corpus queues; "
-            "deciding removes one item and moves progress by one PASS"
+            "queue behavior: aggregate unit and signature items only; "
+            f"totals={len(units)}+{len(signatures)}; "
+            "unit amendment and signature none append PASS"
         )
-        print(
-            "append behavior: two JSONL decisions; first line survived verbatim PASS"
+
+
+def full_text_and_route_metadata() -> None:
+    common = (
+        "use_module(library(http/json)),"
+        "asserta(user:file_search_path(index,'knowledge/index')),"
+        "use_module('hermes/review_queue.pl'),"
+        "review_queue:review_source_items(signature_anchor,Items),"
+        "member(Item,Items),"
+        'get_dict(machine,Item,"addition/drop_carry_to_next_column"),!,'
+        "json_write_dict(current_output,_{has_item:true,item:Item},[width(0)])"
+    )
+    result = run_prolog(ROOT, common)
+
+    sys.path.insert(0, str(ROOT))
+    from hermes.app.routes.logic import _enrich_review_citation  # noqa: PLC0415
+
+    enriched = _enrich_review_citation(ROOT, result)
+    candidates = enriched["item"]["candidates"]
+    if not candidates:
+        fail("known signature anchor has no candidates")
+    for candidate in candidates:
+        if not candidate.get("full_text"):
+            fail(f"candidate has no full database row: {candidate}")
+        if candidate["citation"] != "unattributed":
+            article = candidate.get("citation_metadata") or {}
+            if not article.get("authors") or not article.get("title"):
+                fail(f"candidate lacks database citation metadata: {candidate}")
+    known = next(
+        (
+            candidate
+            for candidate in candidates
+            if candidate["row_type"] == "misconception"
+            and candidate["row_id"] == 46701
+        ),
+        None,
+    )
+    if known is None:
+        fail("known truncated row 46701 is absent from its signature decision")
+    if len(known["full_text"]) <= len(known["excerpt"]):
+        fail(
+            "served row 46701 is not longer than its proposal excerpt: "
+            f"{len(known['full_text'])} <= {len(known['excerpt'])}"
         )
+    print(
+        "display evidence: full database row exceeds the 240-character proposal "
+        "field; article metadata resolves for every candidate in the known item PASS"
+    )
 
 
 def write_confinement() -> None:
@@ -312,8 +350,8 @@ def write_confinement() -> None:
     if forbidden:
         fail("write path reaches a held tree: " + " | ".join(forbidden))
     print(
-        "write confinement: data/research/review_decisions.jsonl is the sole "
-        "write target; knowledge/ and curriculum/ are held read-only PASS"
+        "write confinement: review decisions are the sole runtime write; "
+        "knowledge/ and curriculum/ remain held PASS"
     )
 
 
@@ -323,20 +361,33 @@ def page_and_smoke() -> None:
         'data-active="review"',
         "/api/review_queue",
         "/api/review_decide",
-        'data-verdict="accept"',
-        'data-verdict="reject"',
-        'data-verdict="unsure"',
-        "No recorded source",
-        "citation_metadata",
-        "article.authors",
-        "article.year",
-        "article.title",
-        "changes no knowledge or",
+        'data-source="unit_recognition_set"',
+        'data-source="signature_anchor"',
+        '"accept-set"',
+        '"reject-set"',
+        '"amend"',
+        '"none"',
+        "None of these rows",
+        "Full corpus row",
+        "explicit_lesson_strategy/4",
+        "score tie",
+        "already-bound signature",
+        "several signatures",
         "MathJax",
     )
     missing = [marker for marker in required if marker not in page]
     if missing:
         fail("review page is missing: " + ", ".join(missing))
+    forbidden = (
+        'data-source="lesson_pairings"',
+        'data-source="corpus_bindings"',
+        'data-verdict="accept"',
+        'data-verdict="reject"',
+        'data-verdict="unsure"',
+    )
+    present = [marker for marker in forbidden if marker in page]
+    if present:
+        fail("review page retains per-item controls: " + ", ".join(present))
 
     smoke = (ROOT / "scripts/bundle/smoke_bundle.py").read_text(encoding="utf-8")
     if smoke.count('"hermes/web/review.html"') < 2:
@@ -355,81 +406,20 @@ def page_and_smoke() -> None:
     if page_url_for("hermes/web/review.html") != "/more-zeeman/review.html":
         fail("smoke bundle does not map review.html to its public page URL")
     print(
-        "review page: shell, three equal verdict controls, API routes, "
-        "database author/year/title fields, MathJax, and smoke-bundle assertion PASS"
-    )
-
-
-def route_citation_metadata() -> None:
-    sys.path.insert(0, str(ROOT))
-    from hermes.app.routes.logic import _enrich_review_citation  # noqa: PLC0415
-
-    resolved = _enrich_review_citation(
-        ROOT,
-        {
-            "has_item": True,
-            "item": {
-                "item_type": "corpus_binding",
-                "citation": "ISI:000355686800006",
-            },
-        },
-    )
-    item = resolved["item"]
-    if item["citation_status"] != "resolved_in_database":
-        fail("API route did not mark a database citation resolved")
-    article = item.get("citation_metadata") or {}
-    if (
-        article.get("authors") != "Tunc-Pekkan, Zelha"
-        or article.get("year") != 2015
-        or not str(article.get("title") or "").startswith("An analysis of")
-    ):
-        fail(f"API route returned the wrong database citation fields: {article}")
-
-    sentinel = _enrich_review_citation(
-        ROOT,
-        {
-            "has_item": True,
-            "item": {
-                "item_type": "corpus_binding",
-                "citation": "unattributed",
-            },
-        },
-    )
-    if (
-        sentinel["item"]["citation_status"] != "no_recorded_source"
-        or sentinel["item"]["citation_metadata"] is not None
-    ):
-        fail("API route did not preserve the unattributed sentinel")
-
-    try:
-        _enrich_review_citation(
-            ROOT,
-            {
-                "has_item": True,
-                "item": {
-                    "item_type": "corpus_binding",
-                    "citation": "missing-review-citation",
-                },
-            },
-        )
-    except LookupError:
-        pass
-    else:
-        fail("API route accepted a citation absent from articles")
-    print(
-        "route citation metadata: database author, year, and title attached; "
-        "sentinel preserved; unresolved key refused PASS"
+        "review page: aggregate modes, mode-specific verdicts, full-row copy, "
+        "score calibration, API routes, MathJax, and smoke assertion PASS"
     )
 
 
 def main() -> int:
     try:
-        lesson_total, corpus_total = proposal_integrity()
-        queue_and_append_behavior(lesson_total, corpus_total)
+        unit_total, corpus_total = proposal_integrity()
+        _defect_counts, signature_total = diagnostics_integrity(corpus_total)
+        queue_and_append_behavior(unit_total, signature_total)
+        full_text_and_route_metadata()
         write_confinement()
-        route_citation_metadata()
         page_and_smoke()
-    except (AssertionError, OSError, subprocess.SubprocessError) as exc:
+    except (AssertionError, OSError, subprocess.SubprocessError, sqlite3.Error) as exc:
         print(f"review surface: FAIL: {exc}", file=sys.stderr)
         return 1
     print("review surface: PASS")

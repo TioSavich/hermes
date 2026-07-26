@@ -22,15 +22,17 @@
       color: var(--ink, #0d0c08);
       font: 16px/1.5 var(--serif, Georgia, serif);
     }
-    button, textarea { font: inherit; }
+    button, textarea, input { font: inherit; }
     button { cursor: pointer; }
     button:disabled { cursor: wait; opacity: .55; }
-    .wrap { max-width: 1040px; margin: 0 auto; padding: 2.2rem 1.4rem 4rem; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 2.2rem 1.4rem 4rem; }
     h1 { margin: 0 0 .35rem; font-size: 1.8rem; }
     h2 { margin: 0; font-size: 1.3rem; }
     h3 { margin: 0 0 .45rem; font-size: 1rem; }
+    h4 { margin: .7rem 0 .25rem; font-size: .9rem; }
+    p { overflow-wrap: anywhere; }
     .lede, .muted { color: var(--muted, #665f4f); }
-    .lede { max-width: 76ch; margin: 0 0 1rem; }
+    .lede { max-width: 80ch; margin: 0 0 1rem; }
     .policy, .ranking {
       margin: .8rem 0;
       padding: .85rem 1rem;
@@ -40,7 +42,7 @@
     }
     .policy strong { color: var(--gold-deep, #7a5a12); }
     .ranking summary { cursor: pointer; font-weight: 700; }
-    .ranking p { margin: .55rem 0 0; max-width: 82ch; }
+    .ranking p { margin: .55rem 0 0; max-width: 88ch; }
     .queue-bar {
       display: flex;
       flex-wrap: wrap;
@@ -51,7 +53,7 @@
     .source-button, .queue-button {
       border: 1px solid var(--line, #b8aa8b);
       border-radius: 6px;
-      padding: .45rem .72rem;
+      padding: .48rem .75rem;
       background: #fffdf7;
       color: var(--ink, #0d0c08);
     }
@@ -115,19 +117,15 @@
     }
     .card.wide { grid-column: 1 / -1; }
     .card p { margin: .3rem 0; }
+    .candidate { border-left: 4px solid var(--gold, #a97c24); }
+    .candidate.affected { border-left-color: #a13b2b; }
     .code, code {
       font-family: var(--mono, ui-monospace, Menlo, monospace);
       overflow-wrap: anywhere;
     }
-    .standards, .steps { margin: .35rem 0 0; padding-left: 1.15rem; }
-    .standards li, .steps li { margin: .35rem 0; }
-    .standard-code { font-weight: 700; }
-    .evidence {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .35rem;
-      margin-top: .55rem;
-    }
+    .compact-list { margin: .35rem 0 0; padding-left: 1.15rem; }
+    .compact-list li { margin: .35rem 0; }
+    .evidence { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .55rem; }
     .evidence code {
       padding: .18rem .42rem;
       border: 1px solid var(--line, #b8aa8b);
@@ -147,44 +145,44 @@
     }
     .step-group h4 { margin: 0; font-size: .85rem; }
     .step-group p { margin: .25rem 0 0; }
-    .no-source {
-      border-color: #a13b2b;
-      background: #fff1ed;
-      color: #5f251c;
-    }
     .decision {
       margin-top: 1rem;
       padding-top: 1rem;
       border-top: 1px solid var(--line, #c9b994);
     }
-    .decision label { display: block; font-weight: 700; }
-    textarea {
+    .decision label { display: block; margin-top: .7rem; font-weight: 700; }
+    textarea, input[type="text"] {
       width: 100%;
-      min-height: 5.2rem;
       margin-top: .35rem;
       padding: .65rem;
-      resize: vertical;
       border: 1px solid var(--line, #b8aa8b);
       border-radius: 6px;
       background: #fffdf7;
       color: var(--ink, #0d0c08);
     }
+    textarea { min-height: 4.8rem; resize: vertical; }
+    .amendment-fields {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .75rem;
+      margin-top: .5rem;
+    }
+    .amendment-fields .wide { grid-column: 1 / -1; }
     .verdicts {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: .65rem;
-      margin-top: .75rem;
+      margin-top: .9rem;
     }
     .verdict {
-      min-height: 2.8rem;
-      border: 1px solid currentColor;
+      min-height: 3rem;
+      border: 1px solid var(--gold-deep, #7a5a12);
       border-radius: 7px;
       background: #fffdf7;
+      color: var(--ink, #0d0c08);
       font-weight: 700;
     }
-    .accept { color: #31733b; }
-    .reject { color: #a13b2b; }
-    .unsure { color: #6d551d; }
+    .verdict.none { border-color: #6d551d; }
     .queue-nav { display: flex; gap: .55rem; margin-top: 1rem; }
     .empty {
       padding: 2rem 1rem;
@@ -194,41 +192,45 @@
       color: var(--muted, #665f4f);
     }
     @media (max-width: 720px) {
-      .grid, .step-grid { grid-template-columns: 1fr; }
+      .grid, .step-grid, .amendment-fields, .verdicts { grid-template-columns: 1fr; }
+      .amendment-fields .wide { grid-column: auto; }
       .progress { width: 100%; margin-left: 0; }
-      .verdicts { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body data-hshell-doc="1">
   <main class="wrap">
     <h1>Proposal review</h1>
-    <p class="lede">Work through one generated proposal at a time. Each card carries
-      the recorded reason, standards or evidence, and the machine actions needed
-      to judge the proposed connection.</p>
+    <p class="lede">Review recognition sets by instructional unit and literature
+      anchors by machine signature. Each decision is posed at the grain used by
+      the later promotion step.</p>
 
     <div class="policy">
       <strong>A verdict records a judgment.</strong>
-      Accepting, rejecting, or marking a proposal unsure changes no knowledge or
-      curriculum file. Promotion into either part of the repository is a separate,
-      deliberate act.
+      It changes no knowledge or curriculum file. Accepting a unit set does not
+      promote it into <code>explicit_lesson_strategy/4</code>; promotion is a
+      separate act.
     </div>
 
     <details class="ranking">
-      <summary>How the queue is ranked</summary>
-      <p>Lesson review starts with stated authoring gaps. It then presents pairings
-        outside the pruned candidate set, lessons whose proposals span machine
-        families, and routine in-candidate pairings. Corpus review starts with
-        proposals marked <strong>No recorded source</strong>, followed by tied signature scores,
-        tentative bindings, and the strongest-confidence bindings. Within a tier,
-        source order is preserved.</p>
+      <summary>How the queues are formed and ranked</summary>
+      <p>Unit review combines the machines proposed across a unit and keeps the
+        motivating lessons with each machine. Signature review retains signatures
+        with at least one mechanically clear candidate. It labels score ties,
+        along with displacement by an already-bound signature. Reuse of one row
+        across several signatures has its own label. Defect labels set the first
+        ranking tiers; score band ranks the remaining signatures.</p>
+      <p>Score is a lexical match produced by the proposal generator. In the
+        assessment sample, every proposal at 4.5 or above was correct. Every
+        proposal at 3.5 or below was wrong or could not be settled from the
+        proposal. Treat these as sample bounds rather than acceptance rules.</p>
     </details>
 
-    <div class="queue-bar" aria-label="Review source and progress">
-      <button class="source-button" type="button" data-source="lesson_pairings"
-              aria-pressed="true">Lesson pairings</button>
-      <button class="source-button" type="button" data-source="corpus_bindings"
-              aria-pressed="false">Corpus bindings</button>
+    <div class="queue-bar" aria-label="Review mode and progress">
+      <button class="source-button" type="button" data-source="unit_recognition_set"
+              aria-pressed="true">Unit recognition sets</button>
+      <button class="source-button" type="button" data-source="signature_anchor"
+              aria-pressed="false">Signature anchors</button>
       <span id="progress" class="progress">0 / 0 decided</span>
     </div>
 
@@ -248,14 +250,11 @@
       <div id="item-content" class="grid"></div>
 
       <section class="decision">
-        <label for="note">Optional note</label>
+        <div id="mode-fields"></div>
+        <label for="note">Optional reason for the recorded judgment</label>
         <textarea id="note" maxlength="4000"
           placeholder="Record the reason another reviewer would need."></textarea>
-        <div class="verdicts" aria-label="Record a verdict">
-          <button class="verdict accept" type="button" data-verdict="accept">Accept (A)</button>
-          <button class="verdict reject" type="button" data-verdict="reject">Reject (R)</button>
-          <button class="verdict unsure" type="button" data-verdict="unsure">Unsure (U)</button>
-        </div>
+        <div id="verdicts" class="verdicts" aria-label="Record a verdict"></div>
         <div class="queue-nav">
           <button id="previous" class="queue-button" type="button">Previous undecided</button>
           <button id="next" class="queue-button" type="button">Next undecided</button>
@@ -268,7 +267,7 @@
     (function () {
       "use strict";
 
-      var source = "lesson_pairings";
+      var source = "unit_recognition_set";
       var offset = 0;
       var current = null;
       var progress = { decided: 0, total: 0, remaining: 0 };
@@ -314,7 +313,7 @@
       function setBusy(value) {
         busy = value;
         Array.prototype.forEach.call(
-          document.querySelectorAll("button, textarea"),
+          document.querySelectorAll("button, textarea, input"),
           function (node) { node.disabled = value; }
         );
         if (!value) updateNavigation();
@@ -324,59 +323,15 @@
         return String(value || "").replace(/_/g, " ");
       }
 
-      function addFlags(item) {
-        var box = el("flags");
-        box.replaceChildren();
-        if (item.item_type === "authoring_gap") {
-          box.appendChild(text("span", "authoring gap", "flag caution"));
-        }
-        if (item.was_candidate === false && item.item_type === "lesson_pairing") {
-          box.appendChild(text("span", "outside pruned candidates", "flag caution"));
-        }
-        if (item.family_disagreement) {
-          box.appendChild(text("span", "families disagree", "flag caution"));
-        }
-        if (item.confidence) {
-          box.appendChild(text("span", item.confidence + " confidence", "flag"));
-        }
-      }
-
-      function standardsCard(item) {
-        var box = card("Recorded standards and lesson anchors", "wide");
-        var standards = Array.isArray(item.standards) ? item.standards : [];
-        if (!standards.length) {
-          box.appendChild(text("p", "No standards are recorded for this lesson.", "muted"));
-          return box;
-        }
-        var list = document.createElement("ul");
-        list.className = "standards";
-        standards.forEach(function (standard) {
-          var row = document.createElement("li");
-          row.appendChild(text("span",
-            String(standard.framework || "") + " " + String(standard.code || ""),
-            "standard-code"));
-          row.appendChild(document.createTextNode(" — " + String(standard.statement || "")));
-          list.appendChild(row);
-        });
-        box.appendChild(list);
-        return box;
-      }
-
       function actionsLine(actions) {
         if (!Array.isArray(actions) || !actions.length) return "No actions recorded.";
         return actions.map(humanAction).join(" → ");
       }
 
-      function machineCard(item) {
-        var machine = item.machine_steps;
-        var box = card("Machine and actual steps", "wide");
-        if (!machine) {
-          box.appendChild(text("p", "No machine was proposed. Judge the stated authoring gap."));
-          return box;
-        }
-        var name = text("p", "", "code");
-        name.textContent = item.machine + " · arc " + String(machine.arc || "");
-        box.appendChild(name);
+      function machineSteps(machine, machineName) {
+        var box = document.createElement("div");
+        box.appendChild(text("p",
+          machineName + " · arc " + String(machine.arc || ""), "code"));
         var groups = [
           ["Shell", machine.shell],
           ["Core", machine.core],
@@ -396,65 +351,192 @@
         return box;
       }
 
-      function lessonCards(item, content) {
-        var lesson = card("Lesson");
-        lesson.appendChild(text("p", item.lesson, "code"));
-        lesson.appendChild(text("p", item.title || "Untitled lesson"));
-        lesson.appendChild(text("p", "Unit " + String(item.unit), "muted"));
-        content.appendChild(lesson);
-
-        var proposal = card(item.item_type === "authoring_gap" ? "Stated gap" : "Proposed connection");
-        proposal.appendChild(text("p",
-          item.item_type === "authoring_gap" ? item.gap : item.reason));
-        if (item.topics && item.topics.length) {
-          proposal.appendChild(text("p", "Topics: " + item.topics.join(", "), "muted"));
-        }
-        content.appendChild(proposal);
-        content.appendChild(standardsCard(item));
-        content.appendChild(machineCard(item));
+      function list(values, formatter) {
+        var node = document.createElement("ul");
+        node.className = "compact-list";
+        values.forEach(function (value) {
+          var row = document.createElement("li");
+          formatter(row, value);
+          node.appendChild(row);
+        });
+        return node;
       }
 
-      function corpusCards(item, content) {
-        var binding = card("Proposed binding");
-        binding.appendChild(text("p", item.signature, "code"));
-        binding.appendChild(text("p",
-          String(item.role || "") + " · " + String(item.domain || "") + " · " +
-          String(item.row_type || ""), "muted"));
-        binding.appendChild(text("p",
-          "Score " + String(item.score) + "; runner-up " + String(item.runner_up_score),
-          "muted"));
-        content.appendChild(binding);
-
-        var citationClass = item.citation_status === "no_recorded_source" ? "no-source" : "";
-        var citation = card("Citation", citationClass);
-        if (item.citation_status === "no_recorded_source") {
-          citation.appendChild(text("p",
-            item.citation_note || "No recorded source. Judge this binding from the evidence wording and excerpt alone."));
-        } else {
-          var article = item.citation_metadata || {};
-          citation.appendChild(text("p",
-            article.authors || "Authors not recorded in corpus."));
-          citation.appendChild(text("p",
-            (article.year == null ? "Year not recorded in corpus" : String(article.year)) +
-            " · " + (article.title || "Title not recorded in corpus.")));
-          if (article.journal) citation.appendChild(text("p", article.journal, "muted"));
-          if (article.doi) citation.appendChild(text("p", "DOI " + article.doi, "code"));
+      function addFlags(item) {
+        var box = el("flags");
+        box.replaceChildren();
+        if (item.item_type === "signature_anchor") {
+          box.appendChild(text("span", item.score_band.replace(/_/g, " "), "flag"));
+          var kinds = {};
+          (item.candidates || []).forEach(function (candidate) {
+            (candidate.defects || []).forEach(function (defect) {
+              kinds[defect.kind] = true;
+            });
+          });
+          Object.keys(kinds).sort().forEach(function (kind) {
+            box.appendChild(text("span", kind.replace(/_/g, " "), "flag caution"));
+          });
         }
-        content.appendChild(citation);
+      }
 
-        var evidence = card("Evidence phrases", "wide");
+      function renderUnit(item, content) {
+        var question = card("Recognition-set question", "wide");
+        question.appendChild(text("p", item.question));
+        content.appendChild(question);
+
+        (item.proposed_machines || []).forEach(function (machine) {
+          var box = card(machine.machine, "wide");
+          box.appendChild(machineSteps(machine.machine_steps, machine.machine));
+          box.appendChild(text("h4", "Lessons that motivated this machine"));
+          box.appendChild(list(machine.motivated_by || [], function (row, motivation) {
+            row.appendChild(text("span",
+              motivation.lesson + " · " + motivation.title, "code"));
+            row.appendChild(document.createTextNode(" — " + motivation.reason));
+            row.appendChild(text("span",
+              " (" + motivation.confidence + " confidence)", "muted"));
+          }));
+          content.appendChild(box);
+        });
+
+        var lessons = card("Lessons and recorded anchors", "wide");
+        lessons.appendChild(list(item.lessons || [], function (row, lesson) {
+          row.appendChild(text("span", lesson.lesson + " · " + lesson.title, "code"));
+          var anchors = [];
+          if (lesson.topics && lesson.topics.length) {
+            anchors.push("topics: " + lesson.topics.join(", "));
+          }
+          if (lesson.standards && lesson.standards.length) {
+            anchors.push("standards: " + lesson.standards.map(function (standard) {
+              return String(standard.framework || "") + " " + String(standard.code || "");
+            }).join(", "));
+          }
+          if (anchors.length) row.appendChild(text("p", anchors.join("; "), "muted"));
+          if (lesson.gap) row.appendChild(text("p", "Stated gap: " + lesson.gap));
+          if (lesson.machines_surviving > lesson.candidates_offered) {
+            row.appendChild(text("p",
+              String(lesson.machines_surviving - lesson.candidates_offered) +
+              " surviving candidates were omitted by the recorded cap.",
+              "muted"));
+          }
+        }));
+        content.appendChild(lessons);
+      }
+
+      function citationText(candidate) {
+        if (candidate.citation_status === "no_recorded_source") {
+          return candidate.citation_note || "No source is recorded for this corpus row.";
+        }
+        var article = candidate.citation_metadata || {};
+        return (article.authors || "Authors not recorded") + " · " +
+          (article.year == null ? "year not recorded" : String(article.year)) +
+          " · " + (article.title || "title not recorded");
+      }
+
+      function renderCandidate(candidate, index, content) {
+        var affected = candidate.defects && candidate.defects.length;
+        var box = card(
+          "Candidate " + String(index + 1) + " · " +
+          candidate.row_type + " row " + String(candidate.row_id),
+          "wide candidate" + (affected ? " affected" : "")
+        );
+        box.appendChild(text("p",
+          "Score " + String(candidate.score) + "; runner-up " +
+          String(candidate.runner_up_score) + " · " +
+          candidate.score_band.replace(/_/g, " "), "code"));
+        box.appendChild(text("p", citationText(candidate), "muted"));
+        if (affected) {
+          box.appendChild(text("h4", "Mechanical defect labels"));
+          box.appendChild(list(candidate.defects, function (row, defect) {
+            row.appendChild(text("strong", defect.kind.replace(/_/g, " ")));
+            row.appendChild(document.createTextNode(" — " + defect.reason));
+            if (defect.better_bound_candidates) {
+              row.appendChild(text("p",
+                "Higher-scoring bound candidates: " +
+                defect.better_bound_candidates.map(function (better) {
+                  return better.machine + " (" + String(better.score) + ")";
+                }).join(", "), "code"));
+            }
+          }));
+        }
+        box.appendChild(text("h4", "Full corpus row"));
+        box.appendChild(text("p", candidate.full_text));
+        box.appendChild(text("h4", "Matched evidence terms"));
         var chips = document.createElement("div");
         chips.className = "evidence";
-        (item.evidence || []).forEach(function (phrase) {
+        (candidate.evidence || []).forEach(function (phrase) {
           chips.appendChild(text("code", phrase));
         });
-        evidence.appendChild(chips);
-        content.appendChild(evidence);
+        box.appendChild(chips);
+        content.appendChild(box);
+      }
 
-        var excerpt = card("Corpus excerpt", "wide");
-        excerpt.appendChild(text("p", item.excerpt));
-        content.appendChild(excerpt);
-        content.appendChild(machineCard(item));
+      function renderSignature(item, content) {
+        var question = card("Signature-anchor question", "wide");
+        question.appendChild(text("p", item.question + " “None” records that no " +
+          "candidate is an anchor and leaves the signature unreached."));
+        content.appendChild(question);
+
+        var machine = card("Machine and actual steps", "wide");
+        machine.appendChild(machineSteps(item.machine_steps, item.machine));
+        content.appendChild(machine);
+
+        (item.candidates || []).forEach(function (candidate, index) {
+          renderCandidate(candidate, index, content);
+        });
+      }
+
+      function inputField(parent, id, label, placeholder, wide, textarea) {
+        var wrap = document.createElement("div");
+        if (wide) wrap.className = "wide";
+        var fieldLabel = text("label", label);
+        fieldLabel.setAttribute("for", id);
+        wrap.appendChild(fieldLabel);
+        var field = document.createElement(textarea ? "textarea" : "input");
+        field.id = id;
+        if (!textarea) field.type = "text";
+        field.placeholder = placeholder;
+        wrap.appendChild(field);
+        parent.appendChild(wrap);
+      }
+
+      function verdictButton(label, verdict, className) {
+        var button = text("button", label, "verdict" + (className ? " " + className : ""));
+        button.type = "button";
+        button.setAttribute("data-verdict", verdict);
+        button.addEventListener("click", function () { decide(verdict); });
+        return button;
+      }
+
+      function renderDecisionControls(item) {
+        var fields = el("mode-fields");
+        var verdicts = el("verdicts");
+        fields.replaceChildren();
+        verdicts.replaceChildren();
+        if (item.item_type === "unit_recognition_set") {
+          fields.appendChild(text("p",
+            "Record machine changes or lesson-level exceptions with this unit decision.",
+            "muted"));
+          var amendment = document.createElement("div");
+          amendment.className = "amendment-fields";
+          inputField(amendment, "drop-machines", "Machines to drop",
+            "One machine per line", false, true);
+          inputField(amendment, "add-machines", "Machines to add",
+            "One machine per line", false, true);
+          inputField(amendment, "lesson-exceptions", "Lesson-level exceptions",
+            "Name the lesson and the exception.", true, true);
+          fields.appendChild(amendment);
+          verdicts.appendChild(verdictButton("Accept set", "accept-set"));
+          verdicts.appendChild(verdictButton("Reject set", "reject-set"));
+          verdicts.appendChild(verdictButton("Record amendment", "amend"));
+        } else {
+          (item.candidates || []).forEach(function (candidate, index) {
+            verdicts.appendChild(verdictButton(
+              "Choose candidate " + String(index + 1),
+              candidate.anchor_verdict
+            ));
+          });
+          verdicts.appendChild(verdictButton("None of these rows", "none", "none"));
+        }
       }
 
       function renderItem(item) {
@@ -463,22 +545,22 @@
         el("empty").hidden = true;
         el("note").value = "";
         el("eyebrow").textContent = item.item_type.replace(/_/g, " ");
-        el("item-title").textContent = item.item_type === "corpus_binding"
-          ? item.machine
-          : item.lesson + " · " + (item.title || "Untitled lesson");
+        el("item-title").textContent =
+          item.item_type === "signature_anchor" ? item.machine : item.unit;
         el("rank").textContent = "priority " + String(item.ranking_tier);
         el("rank").title = item.ranking_reason || "";
         addFlags(item);
         var content = el("item-content");
         content.replaceChildren();
-        var why = card("Why this item is here", "wide");
+        var why = card("Why this decision is here", "wide");
         why.appendChild(text("p", item.ranking_reason));
         content.appendChild(why);
-        if (item.item_type === "corpus_binding") {
-          corpusCards(item, content);
+        if (item.item_type === "signature_anchor") {
+          renderSignature(item, content);
         } else {
-          lessonCards(item, content);
+          renderUnit(item, content);
         }
+        renderDecisionControls(item);
         updateNavigation();
       }
 
@@ -496,11 +578,11 @@
           current = null;
           el("item").hidden = true;
           el("empty").hidden = false;
-          setStatus(progress.remaining ? "No undecided item at this offset." : "Queue complete.", false);
+          setStatus(progress.remaining ? "No undecided decision at this offset." : "Queue complete.", false);
           return;
         }
         renderItem(result.item);
-        setStatus("Ready. Use A, R, or U to record a verdict.", false);
+        setStatus("Ready.", false);
       }
 
       function loadQueue() {
@@ -517,23 +599,54 @@
           .finally(function () { setBusy(false); });
       }
 
+      function splitLines(id) {
+        return el(id).value.split(/\r?\n/)
+          .map(function (value) { return value.trim(); })
+          .filter(Boolean);
+      }
+
+      function shownForDecision() {
+        var shown = JSON.parse(JSON.stringify(current));
+        if (current.item_type === "unit_recognition_set") {
+          shown.decision_detail = {
+            drop_machines: splitLines("drop-machines"),
+            add_machines: splitLines("add-machines"),
+            lesson_exceptions: el("lesson-exceptions").value.trim()
+          };
+        }
+        return shown;
+      }
+
       function decide(verdict) {
         if (busy || !current) return;
-        var itemId = current.identity;
+        var shown = shownForDecision();
+        if (verdict === "amend" &&
+            !shown.decision_detail.drop_machines.length &&
+            !shown.decision_detail.add_machines.length) {
+          setStatus("An amendment needs at least one machine to drop or add.", true);
+          return;
+        }
+        if (current.item_type === "unit_recognition_set" &&
+            verdict !== "amend" &&
+            (shown.decision_detail.drop_machines.length ||
+             shown.decision_detail.add_machines.length)) {
+          setStatus("Use Record amendment when the machine set changes.", true);
+          return;
+        }
         setBusy(true);
-        setStatus("Recording " + verdict + "…", false);
+        setStatus("Recording the judgment…", false);
         api("/api/review_decide", {
           source: source,
-          item_id: itemId,
+          item_id: current.identity,
           verdict: verdict,
           note: el("note").value,
-          shown: current
+          shown: shown
         }).then(function (result) {
           progress = result.progress || progress;
           if (offset >= progress.remaining && offset > 0) offset -= 1;
           return loadQueue();
         }).catch(function (error) {
-          setStatus("The verdict was not recorded: " + error.message, true);
+          setStatus("The judgment was not recorded: " + error.message, true);
           setBusy(false);
         });
       }
@@ -559,15 +672,6 @@
         }
       );
 
-      Array.prototype.forEach.call(
-        document.querySelectorAll(".verdict"),
-        function (button) {
-          button.addEventListener("click", function () {
-            decide(button.getAttribute("data-verdict"));
-          });
-        }
-      );
-
       el("previous").addEventListener("click", function () {
         if (busy || offset === 0) return;
         offset -= 1;
@@ -577,16 +681,6 @@
         if (busy || offset >= progress.remaining - 1) return;
         offset += 1;
         loadQueue();
-      });
-
-      document.addEventListener("keydown", function (event) {
-        if (busy || !current || event.altKey || event.ctrlKey || event.metaKey) return;
-        var target = event.target;
-        if (target && /^(INPUT|TEXTAREA|SELECT|BUTTON)$/.test(target.tagName)) return;
-        var key = event.key.toLowerCase();
-        if (key === "a") decide("accept");
-        if (key === "r") decide("reject");
-        if (key === "u") decide("unsure");
       });
 
       loadQueue();

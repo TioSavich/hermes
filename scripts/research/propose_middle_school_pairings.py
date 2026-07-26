@@ -132,7 +132,13 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--grades", default="8", help="comma-separated, e.g. 7,8")
     parser.add_argument("--limit", type=int, default=0, help="0 = all")
-    parser.add_argument("--max-candidates", type=int, default=60)
+    parser.add_argument("--max-candidates", type=int, default=0,
+                        help="0 = offer every surviving machine. A positive cap "
+                             "truncates an ALPHABETICALLY sorted list, which "
+                             "silently removed 5,665 candidate slots across 114 "
+                             "lessons on the 2026-07-25 run and cut real answers "
+                             "(IM-G7-U1-L1's declared gap named ratio/scale_ratio_unit, "
+                             "which exists and survives pruning). Use only for smoke runs.")
     parser.add_argument("--output", type=Path,
                         default=ROOT / "data/research/grade78_pairing_proposals.jsonl")
     parser.add_argument("--dry-run", action="store_true")
@@ -184,8 +190,13 @@ def main() -> int:
             context = contexts.get(code, {})
             lesson = context.get("lesson", {})
             info = pruned.get(code, {"topics": [], "machines": []})
+            # An empty surviving set means the lesson has no recorded topic, not
+            # that no machine applies. Offering an alphabetical prefix of the
+            # corpus in that case is worse than offering all of it: it excluded
+            # geometry, ratio and statistics from every empty-topic lesson.
             candidates = info["machines"] or sorted(rows)
-            candidates = candidates[:args.max_candidates]
+            if args.max_candidates:
+                candidates = candidates[:args.max_candidates]
             block = "\n".join(rows[key] for key in candidates if key in rows)
             standards = context.get("standards", []) or []
             standard_text = "\n".join(

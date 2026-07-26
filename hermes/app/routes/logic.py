@@ -190,25 +190,112 @@ def _review_article_metadata(repo_root: Any, bibtex_key: str) -> dict[str, Any] 
     return dict(row) if row is not None else None
 
 
+def _review_candidate_evidence(
+    connection: sqlite3.Connection, row_type: str, row_id: int
+) -> tuple[str, dict[str, Any] | None]:
+    """Return the complete scored row text and its article metadata."""
+    if row_type == "strategy":
+        row = connection.execute(
+            """
+            SELECT s.strategy_description AS part_one,
+                   s.example AS part_two,
+                   s.key_moves_summary AS part_three,
+                   a.bibtex_key, a.authors, a.year, a.title, a.journal, a.doi
+              FROM strategy_instances s
+              LEFT JOIN articles a ON a.id = s.article_id
+             WHERE s.id = ?
+            """,
+            (row_id,),
+        ).fetchone()
+    elif row_type == "misconception":
+        row = connection.execute(
+            """
+            SELECT e.error_description AS part_one,
+                   e.example AS part_two,
+                   e.student_rule AS part_three,
+                   a.bibtex_key, a.authors, a.year, a.title, a.journal, a.doi
+              FROM error_instances e
+              LEFT JOIN articles a ON a.id = e.article_id
+             WHERE e.id = ?
+            """,
+            (row_id,),
+        ).fetchone()
+    else:
+        raise LookupError(f"unknown corpus review row type: {row_type}")
+    if row is None:
+        raise LookupError(f"corpus review row does not resolve: {row_type} {row_id}")
+    full_text = " ".join(
+        str(row[field])
+        for field in ("part_one", "part_two", "part_three")
+        if row[field]
+    )
+    metadata = (
+        {
+            field: row[field]
+            for field in ("bibtex_key", "authors", "year", "title", "journal", "doi")
+        }
+        if row["bibtex_key"]
+        else None
+    )
+    return full_text, metadata
+
+
 def _enrich_review_citation(repo_root: Any, result: Any) -> Any:
-    """Attach database article fields to a corpus-binding queue result."""
+    """Attach complete database rows and article fields to a review result."""
     if not isinstance(result, dict) or not result.get("has_item"):
         return result
     item = result.get("item")
-    if not isinstance(item, dict) or item.get("item_type") != "corpus_binding":
+    if not isinstance(item, dict):
         return result
-    citation = item.get("citation")
-    if citation == "unattributed":
-        item["citation_status"] = "no_recorded_source"
-        item["citation_metadata"] = None
+    if item.get("item_type") == "unit_recognition_set":
         return result
-    if not isinstance(citation, str) or not citation:
-        raise LookupError("corpus binding has no citation key")
-    metadata = _review_article_metadata(repo_root, citation)
-    if metadata is None:
-        raise LookupError(f"corpus citation does not resolve in articles: {citation}")
-    item["citation_status"] = "resolved_in_database"
-    item["citation_metadata"] = metadata
+    if item.get("item_type") == "corpus_binding":
+        citation = item.get("citation")
+        if citation == "unattributed":
+            item["citation_status"] = "no_recorded_source"
+            item["citation_metadata"] = None
+            return result
+        if not isinstance(citation, str) or not citation:
+            raise LookupError("corpus binding has no citation key")
+        metadata = _review_article_metadata(repo_root, citation)
+        if metadata is None:
+            raise LookupError(f"corpus citation does not resolve in articles: {citation}")
+        item["citation_status"] = "resolved_in_database"
+        item["citation_metadata"] = metadata
+        return result
+    if item.get("item_type") != "signature_anchor":
+        return result
+
+    database = repo_root / "data/research/research_shared.db"
+    connection = sqlite3.connect(f"file:{database}?mode=ro", uri=True)
+    connection.row_factory = sqlite3.Row
+    try:
+        for candidate in item.get("candidates", []):
+            row_type = candidate.get("row_type")
+            row_id = candidate.get("row_id")
+            if (
+                not isinstance(row_type, str)
+                or isinstance(row_id, bool)
+                or not isinstance(row_id, int)
+            ):
+                raise LookupError("signature anchor candidate lacks a valid corpus row")
+            full_text, metadata = _review_candidate_evidence(
+                connection, row_type, row_id
+            )
+            candidate["full_text"] = full_text
+            citation = candidate.get("citation")
+            if citation == "unattributed":
+                candidate["citation_status"] = "no_recorded_source"
+                candidate["citation_metadata"] = None
+            elif metadata is None or metadata.get("bibtex_key") != citation:
+                raise LookupError(
+                    f"corpus citation does not match row {row_type} {row_id}: {citation}"
+                )
+            else:
+                candidate["citation_status"] = "resolved_in_database"
+                candidate["citation_metadata"] = metadata
+    finally:
+        connection.close()
     return result
 
 
@@ -1230,9 +1317,13 @@ class RouteLogic:
 
     def _handle_review_queue(self, payload: dict) -> None:
         source = str(payload.get("source") or "").strip()
-        if source not in {"lesson_pairings", "corpus_bindings"}:
+        if source not in {"unit_recognition_set", "signature_anchor"}:
             self._send_json(
-                {"error": "source must be lesson_pairings or corpus_bindings"},
+                {
+                    "error": (
+                        "source must be unit_recognition_set or signature_anchor"
+                    )
+                },
                 status=400,
             )
             return
@@ -1250,16 +1341,30 @@ class RouteLogic:
 
     def _handle_review_decide(self, payload: dict) -> None:
         source = str(payload.get("source") or "").strip()
-        if source not in {"lesson_pairings", "corpus_bindings"}:
+        if source not in {"unit_recognition_set", "signature_anchor"}:
             self._send_json(
-                {"error": "source must be lesson_pairings or corpus_bindings"},
+                {
+                    "error": (
+                        "source must be unit_recognition_set or signature_anchor"
+                    )
+                },
                 status=400,
             )
             return
         verdict = str(payload.get("verdict") or "").strip().lower()
-        if verdict not in {"accept", "reject", "unsure"}:
+        unit_verdict = verdict in {"accept-set", "reject-set", "amend"}
+        anchor_verdict = verdict == "none" or bool(
+            re.fullmatch(r"anchor:(?:strategy|misconception):\d+", verdict)
+        )
+        if (
+            source == "unit_recognition_set"
+            and not unit_verdict
+        ) or (
+            source == "signature_anchor"
+            and not anchor_verdict
+        ):
             self._send_json(
-                {"error": "verdict must be accept, reject, or unsure"},
+                {"error": "verdict is not valid for this review mode"},
                 status=400,
             )
             return

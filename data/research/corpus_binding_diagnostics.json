@@ -1,0 +1,3443 @@
+{
+ "counts": {
+  "affected_union": 163,
+  "clean_proposals": 105,
+  "displacements": 38,
+  "fan_surplus": 73,
+  "proposals": 268,
+  "reviewable_signatures": 57,
+  "score_ties": 116
+ },
+ "diagnostics": [
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44168:addition/drop_carry_to_next_column",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "place value column",
+        "column",
+        "digit",
+        "place",
+        "value"
+       ],
+       "machine": "addition/column_addition_with_carrying",
+       "score": 4.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:46701:addition/drop_carry_to_next_column",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "place value column",
+        "column",
+        "digit",
+        "place",
+        "value"
+       ],
+       "machine": "addition/column_addition_with_carrying",
+       "score": 4.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:47123:addition/drop_carry_to_next_column",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:167:addition/drop_carry_to_next_column",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "alignment",
+        "digit",
+        "digits",
+        "left",
+        "needed",
+        "place",
+        "value"
+       ],
+       "machine": "addition/column_addition_with_carrying",
+       "score": 3.5
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44458:addition/drop_carry_to_next_column",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:44936:addition/drop_carry_to_next_column",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:1441:algebraic/balance_preserving_linear_solution",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:397:algebraic/balance_preserving_linear_solution",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1302:algebraic/balance_preserving_linear_solution",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:73:algebraic/balance_preserving_linear_solution",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:75:algebraic/balance_preserving_linear_solution",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:120:algebraic/balance_preserving_linear_solution",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:1436:algebraic/distributive_expression_rewrite",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:120:algebraic/equation_truth_by_substitution",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:374:algebraic/equation_truth_by_substitution",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1063:algebraic/equation_truth_by_substitution",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1302:algebraic/equation_truth_by_substitution",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1998:algebraic/equation_truth_by_substitution",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:47203:algebraic/guess_and_check_rule",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:2030:algebraic/linear_pattern_contextual_rule",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1109:algebraic/linear_pattern_contextual_rule",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1112:algebraic/linear_pattern_contextual_rule",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2028:algebraic/linear_pattern_contextual_rule",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:163:algebraic/linear_pattern_contextual_rule",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:44484:algebraic/one_sided_equation_operation",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:46614:algebraic/one_sided_equation_operation",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:46520:algebraic/operational_equals_left_value",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:46743:algebraic/operational_equals_left_value",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44484:algebraic/operational_equals_left_value",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:44882:algebraic/operational_equals_left_value",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:46475:algebraic/operational_equals_left_value",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "function value",
+        "discontinuity",
+        "function",
+        "limit",
+        "point",
+        "value",
+        "zero"
+       ],
+       "machine": "calculus/factor_cancel_substitute",
+       "score": 4.5
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:46173:calculus/factor_cancel_without_common_factor",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44999:calculus/factor_cancel_without_common_factor",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:44167:counting/compare_ones_digits_only",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:278:counting/compare_ones_digits_only",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44056:counting/compare_ones_digits_only",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44103:counting/compare_ones_digits_only",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:45361:counting/compare_ones_digits_only",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:46702:counting/compare_ones_digits_only",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:227:counting/omit_highest_place_regrouping",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44788:counting/omit_highest_place_regrouping",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44167:counting/omit_highest_place_regrouping",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:45696:counting/omit_highest_place_regrouping",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:46769:counting/omit_highest_place_regrouping",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:149:counting/omit_highest_place_regrouping",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:771:counting/place_value_comparison",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1754:counting/place_value_comparison",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1902:counting/place_value_comparison",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:690:counting/place_value_comparison",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "addends",
+        "align",
+        "carry",
+        "columns",
+        "needed",
+        "place",
+        "sum",
+        "value"
+       ],
+       "machine": "addition/column_addition_with_carrying",
+       "score": 4.0
+      },
+      {
+       "evidence": [
+        "addends",
+        "align",
+        "carry",
+        "columns",
+        "needed",
+        "place",
+        "value"
+       ],
+       "machine": "addition/wrong_carry_amount_to_next_column",
+       "score": 3.5
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1752:counting/place_value_comparison",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:1902:counting/recursive_place_value_inscription",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "place value column",
+        "column",
+        "partial",
+        "place",
+        "ten",
+        "value",
+        "without"
+       ],
+       "machine": "addition/append_column_sum_without_carrying",
+       "score": 5.0
+      },
+      {
+       "evidence": [
+        "place value column",
+        "column",
+        "place",
+        "ten",
+        "value"
+       ],
+       "machine": "addition/column_addition_with_carrying",
+       "score": 4.0
+      },
+      {
+       "evidence": [
+        "place value column",
+        "column",
+        "place",
+        "ten",
+        "value"
+       ],
+       "machine": "addition/wrong_carry_amount_to_next_column",
+       "score": 4.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:192:counting/recursive_place_value_inscription",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:251:counting/recursive_place_value_inscription",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "composite unit",
+        "composite",
+        "coordinate",
+        "form",
+        "total",
+        "unit"
+       ],
+       "machine": "multiplication/coordinate_groups_items",
+       "score": 4.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:284:counting/recursive_place_value_inscription",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:287:counting/recursive_place_value_inscription",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "composite unit",
+        "composite",
+        "count",
+        "equal",
+        "group",
+        "groups",
+        "total",
+        "unit"
+       ],
+       "machine": "multiplication/coordinate_groups_items",
+       "score": 5.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:663:counting/recursive_place_value_inscription",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:45156:counting/spatial_extent_as_cardinality",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:44891:decimal/decimal_numeral_comparison_without_scale_alignment",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:47087:decimal/decimal_whole_number_reading",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:46083:decimal/decimal_whole_number_reading",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:44375:decimal/decimal_whole_number_reading",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:45943:decimal/decimal_whole_number_reading",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:46191:decimal/decimal_whole_number_reading",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:46670:decimal/decimal_whole_number_reading",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:851:decimal/positional_decimal_reading",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1688:decimal/positional_decimal_reading",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1755:decimal/positional_decimal_reading",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2230:decimal/positional_decimal_reading",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "decimal quotient",
+        "decimal",
+        "division",
+        "place",
+        "quotient",
+        "scale"
+       ],
+       "machine": "decimal/ecuadorian_decimal_long_division",
+       "score": 4.0
+      },
+      {
+       "evidence": [
+        "decimal",
+        "division",
+        "place",
+        "quotient",
+        "recall",
+        "recalled",
+        "scale",
+        "value"
+       ],
+       "machine": "decimal/recalled_result_scaling",
+       "score": 4.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:440:decimal/positional_decimal_reading",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:1585:decimal/positional_decimal_reading",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:192:division/long_division",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:245:division/long_division",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:443:division/long_division",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:561:division/long_division",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "missing factor",
+        "dividend",
+        "division",
+        "divisor",
+        "factor",
+        "known",
+        "missing",
+        "product",
+        "products",
+        "quotient"
+       ],
+       "machine": "division/reject_known_product_match",
+       "score": 6.0
+      },
+      {
+       "evidence": [
+        "missing factor",
+        "dividend",
+        "division",
+        "divisor",
+        "factor",
+        "missing",
+        "product",
+        "products",
+        "quotient"
+       ],
+       "machine": "division/missing_factor_known_product_search",
+       "score": 5.5
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:634:division/long_division",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:1734:division/long_division",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:45936:division/sum_dividend_and_divisor",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:46701:division/sum_dividend_and_divisor",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:47123:division/sum_dividend_and_divisor",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44788:division/sum_dividend_and_divisor",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:44801:division/sum_dividend_and_divisor",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:45221:fraction/clear_inner_referent",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44423:fraction/clear_inner_referent",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44962:fraction/clear_inner_referent",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "unit fraction",
+        "equal",
+        "fraction",
+        "one",
+        "part",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 4.5
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:45401:fraction/clear_inner_referent",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:44002:fraction/clear_inner_referent",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:44328:fraction/clear_inner_referent",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:1739:fraction/co_denominator_count_on_from_larger",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "referent whole",
+        "unit fraction",
+        "equal",
+        "fraction",
+        "one",
+        "referent",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 6.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1165:fraction/co_denominator_count_on_from_larger",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "iterable unit",
+        "unit fraction",
+        "equal",
+        "fraction",
+        "iterable",
+        "one",
+        "partition",
+        "referent",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 7.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:82:fraction/co_denominator_count_on_from_larger",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:256:fraction/co_denominator_count_on_from_larger",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "unit fraction",
+        "denominator",
+        "equal",
+        "fraction",
+        "one",
+        "part",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 5.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1077:fraction/co_denominator_count_on_from_larger",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:2157:fraction/co_denominator_count_on_from_larger",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "referent whole",
+        "unit fraction",
+        "equal",
+        "fraction",
+        "one",
+        "referent",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 6.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1165:fraction/co_denominator_make_base_transfer",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "unit fraction",
+        "denominator",
+        "equal",
+        "fraction",
+        "one",
+        "part",
+        "partition",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 5.5
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2214:fraction/co_denominator_make_base_transfer",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "iterable unit",
+        "unit fraction",
+        "equal",
+        "fraction",
+        "iterable",
+        "one",
+        "partition",
+        "referent",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 7.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:82:fraction/co_denominator_make_base_transfer",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:85:fraction/co_denominator_make_base_transfer",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:256:fraction/co_denominator_make_base_transfer",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "unit fraction",
+        "denominator",
+        "equal",
+        "fraction",
+        "one",
+        "part",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 5.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1077:fraction/co_denominator_make_base_transfer",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:47004:fraction/cross_multiplication_rule_without_ground",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "cross multiplication",
+        "apply",
+        "cross",
+        "denominator",
+        "multiplication",
+        "numerator",
+        "whole"
+       ],
+       "machine": "fraction/cross_multiplication_rule_from_pattern",
+       "score": 4.5
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44417:fraction/cross_multiplication_rule_without_ground",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:44012:fraction/cross_multiplication_rule_without_ground",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:46967:fraction/cross_multiplication_rule_without_ground",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:47017:fraction/cross_multiplication_rule_without_ground",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:44962:fraction/improper_fraction_chain_loss",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44079:fraction/improper_fraction_chain_loss",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44423:fraction/improper_fraction_chain_loss",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:43995:fraction/improper_fraction_chain_loss",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44841:fraction/improper_fraction_chain_loss",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "referent whole",
+        "denominator",
+        "fraction",
+        "partition",
+        "referent",
+        "small",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/area_model_part_of_part",
+       "score": 5.0
+      },
+      {
+       "evidence": [
+        "referent whole",
+        "denominator",
+        "fraction",
+        "partition",
+        "referent",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 4.5
+      },
+      {
+       "evidence": [
+        "referent whole",
+        "denominator",
+        "fraction",
+        "referent",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_iteration",
+       "score": 4.0
+      },
+      {
+       "evidence": [
+        "referent whole",
+        "denominator",
+        "fraction",
+        "referent",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/whole_number_grab",
+       "score": 4.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:45218:fraction/improper_fraction_chain_loss",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "referent whole",
+        "unit fraction",
+        "equal",
+        "fraction",
+        "one",
+        "referent",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 6.0
+      },
+      {
+       "evidence": [
+        "referent whole",
+        "unit fraction",
+        "count",
+        "fraction",
+        "referent",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_iteration",
+       "score": 5.5
+      },
+      {
+       "evidence": [
+        "referent whole",
+        "unit fraction",
+        "count",
+        "fraction",
+        "referent",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/whole_number_grab",
+       "score": 5.5
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1165:fraction/improper_fraction_iteration",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "unit fraction",
+        "count",
+        "fraction",
+        "iteration",
+        "name",
+        "number",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/whole_number_grab",
+       "score": 5.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1230:fraction/improper_fraction_iteration",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1656:fraction/improper_fraction_iteration",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "iterable unit",
+        "unit fraction",
+        "equal",
+        "fraction",
+        "iterable",
+        "one",
+        "partition",
+        "referent",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 7.0
+      },
+      {
+       "evidence": [
+        "unit fraction",
+        "count",
+        "fraction",
+        "iterate",
+        "referent",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_iteration",
+       "score": 4.5
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:82:fraction/improper_fraction_iteration",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "referent whole",
+        "equal",
+        "one",
+        "partition",
+        "referent",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 4.5
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:85:fraction/improper_fraction_iteration",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "iterate unit fraction",
+        "unit fraction",
+        "fraction",
+        "iterate",
+        "unit"
+       ],
+       "machine": "fraction/unit_fraction_iteration",
+       "score": 5.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:261:fraction/improper_fraction_iteration",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44841:fraction/iterate_given_overshoot",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "referent whole",
+        "denominator",
+        "fraction",
+        "partition",
+        "referent",
+        "small",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/area_model_part_of_part",
+       "score": 5.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:45218:fraction/iterate_given_overshoot",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:44001:fraction/iterate_given_overshoot",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:45221:fraction/iterate_given_overshoot",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:45402:fraction/iterate_given_overshoot",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:46738:fraction/iterate_given_overshoot",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1480:fraction/measurement_division",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2194:fraction/measurement_division",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2198:fraction/measurement_division",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:1456:fraction/measurement_division",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:1730:fraction/measurement_division",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:1767:fraction/measurement_division",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:45717:fraction/number_line_count_marks_not_intervals",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:47008:fraction/number_line_count_marks_not_intervals",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:45399:fraction/number_line_count_marks_not_intervals",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:289:fraction/number_line_fraction_comparison",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:82:fraction/recursive_partition",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:85:fraction/recursive_partition",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:83:fraction/recursive_partition",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "referent whole",
+        "unit fraction",
+        "equal",
+        "fraction",
+        "one",
+        "referent",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 6.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1165:fraction/recursive_partition",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:295:fraction/recursive_partition",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:321:fraction/recursive_partition",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:103:fraction/reversible_measurement_division",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1730:fraction/reversible_measurement_division",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "unit fraction",
+        "fraction",
+        "one",
+        "partition",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 4.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2256:fraction/reversible_measurement_division",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:87:fraction/reversible_measurement_division",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1480:fraction/reversible_measurement_division",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1767:fraction/reversible_measurement_division",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "unit fraction",
+        "denominator",
+        "equal",
+        "fraction",
+        "one",
+        "part",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 5.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1720:fraction/solve_for_unit",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "unit fraction",
+        "denominator",
+        "equal",
+        "fraction",
+        "one",
+        "part",
+        "partition",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 5.5
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2214:fraction/solve_for_unit",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2244:fraction/solve_for_unit",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:103:fraction/solve_for_unit",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:1334:fraction/solve_for_unit",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:36:fraction/solve_for_unit",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "referent whole",
+        "unit fraction",
+        "equal",
+        "fraction",
+        "one",
+        "referent",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 6.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1165:fraction/splitting",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "iterable unit",
+        "unit fraction",
+        "equal",
+        "fraction",
+        "iterable",
+        "one",
+        "partition",
+        "referent",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 7.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:82:fraction/splitting",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "unit fraction",
+        "denominator",
+        "equal",
+        "fraction",
+        "one",
+        "part",
+        "partition",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 5.5
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2214:fraction/splitting",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:299:fraction/splitting",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "unit fraction",
+        "denominator",
+        "equal",
+        "fraction",
+        "one",
+        "part",
+        "partition",
+        "unit",
+        "whole"
+       ],
+       "machine": "fraction/unit_fraction_partition",
+       "score": 5.5
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1741:fraction/splitting",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:2256:fraction/splitting",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:47288:geometry/area_as_perimeter_count",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:2016:geometry/area_unit_covering",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1315:geometry/area_unit_covering",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1388:geometry/area_unit_covering",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1583:geometry/area_unit_covering",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2273:geometry/area_unit_covering",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2275:geometry/area_unit_covering",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1380:geometry/axis_aligned_coordinate_distance",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:402:geometry/compare_solid_volume_by_cube_count",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:46216:geometry/count_overlapping_area_tiles",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:45078:geometry/count_overlapping_area_tiles",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:47163:geometry/count_overlapping_area_tiles",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:828:geometry/dimensional_measure_unit_coordination",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:46483:geometry/divide_volume_by_one_dimension",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:46821:geometry/omit_half_in_triangle_area",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:1380:geometry/ordered_pair_coordinate_plot",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:828:geometry/parallelogram_area_base_height",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1582:geometry/parallelogram_area_base_height",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2273:geometry/parallelogram_area_base_height",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:827:geometry/polygon_perimeter_boundary_accumulation",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1081:geometry/polygon_perimeter_boundary_accumulation",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1699:geometry/polygon_perimeter_boundary_accumulation",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2003:geometry/polygon_perimeter_boundary_accumulation",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:1959:geometry/polyhedron_surface_area_from_net",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1950:geometry/rectangle_area_perimeter_constraint_search",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:827:geometry/rectangle_area_perimeter_constraint_search",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1582:geometry/rectangle_area_perimeter_constraint_search",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:1699:geometry/rectangle_area_perimeter_constraint_search",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:2003:geometry/rectangle_area_perimeter_constraint_search",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:2010:geometry/rectangle_area_perimeter_constraint_search",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:2273:geometry/rectangle_area_unit_iteration",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "composite unit",
+        "composite",
+        "coordinate",
+        "form",
+        "total",
+        "unit"
+       ],
+       "machine": "multiplication/coordinate_groups_items",
+       "score": 4.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:284:geometry/rectangle_area_unit_iteration",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:287:geometry/rectangle_area_unit_iteration",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1311:geometry/rectangle_area_unit_iteration",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2016:geometry/rectangle_area_unit_iteration",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:283:geometry/rectangle_area_unit_iteration",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:1950:geometry/rectangle_factor_pair_search",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2273:geometry/rectangle_factor_pair_search",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:353:geometry/rectangle_factor_pair_search",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1582:geometry/rectangle_factor_pair_search",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:352:geometry/rectangle_factor_pair_search",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:828:geometry/rectangle_factor_pair_search",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:1580:geometry/rectangle_missing_side_from_area",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2273:geometry/rectangle_missing_side_from_area",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2054:geometry/rectangle_perimeter_boundary_traversal",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2056:geometry/rectangle_perimeter_boundary_traversal",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:219:geometry/rectangle_perimeter_boundary_traversal",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:827:geometry/rectangle_perimeter_boundary_traversal",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1081:geometry/rectangle_perimeter_boundary_traversal",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1582:geometry/rectangle_perimeter_boundary_traversal",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:2056:geometry/rectangle_perimeter_side_pair_search",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:827:geometry/rectangle_perimeter_side_pair_search",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1582:geometry/rectangle_perimeter_side_pair_search",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1699:geometry/rectangle_perimeter_side_pair_search",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2054:geometry/rectangle_perimeter_side_pair_search",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2003:geometry/rectangle_perimeter_side_pair_search",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:828:geometry/rectangular_prism_missing_dimension_from_volume",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:102:geometry/rectangular_prism_volume_layer_iteration",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:47163:geometry/sum_overlapping_prism_volumes",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:150:geometry/triangle_area_half_base_height",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:814:geometry/triangle_area_half_base_height",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:2273:geometry/triangle_area_half_base_height",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:46529:integer/inequality_as_boundary_point",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:368:integer/inequality_solution_set_representation",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:369:integer/inequality_solution_set_representation",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44444:integer/order_by_magnitude_ignore_sign",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44862:integer/order_by_magnitude_ignore_sign",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:44151:integer/order_by_magnitude_ignore_sign",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:44571:integer/order_by_magnitude_ignore_sign",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:45460:integer/order_by_magnitude_ignore_sign",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:46529:integer/order_by_magnitude_ignore_sign",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:500:integer/signed_number_location_and_order",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:76:integer/signed_number_location_and_order",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:369:integer/signed_number_location_and_order",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:1460:integer/signed_number_location_and_order",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:368:integer/signed_number_location_and_order",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:370:integer/signed_number_location_and_order",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:52:measurement/count_marks_not_intervals",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44744:measurement/count_marks_not_intervals",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:287:measurement/unit_conversion_by_iteration",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:283:measurement/unit_conversion_by_iteration",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "composite unit",
+        "composite",
+        "coordinate",
+        "form",
+        "total",
+        "unit"
+       ],
+       "machine": "multiplication/coordinate_groups_items",
+       "score": 4.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:284:measurement/unit_conversion_by_iteration",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1311:measurement/unit_conversion_by_iteration",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:227:multiplication/add_counts_without_composite_unit",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:44998:multiplication/add_counts_without_composite_unit",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:46278:multiplication/add_counts_without_composite_unit",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:44772:multiplication/add_instead_of_multiply",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:158:multiplication/add_instead_of_multiply",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    },
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "equal groups",
+        "commutativity",
+        "equal",
+        "fixed",
+        "groups",
+        "multiplicand",
+        "multiplier",
+        "roles"
+       ],
+       "machine": "multiplication/rigid_factor_order_roles",
+       "score": 5.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:45158:multiplication/add_instead_of_multiply",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:45117:multiplication/add_instead_of_multiply",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:46803:multiplication/add_instead_of_multiply",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:45766:multiplication/add_numbers_as_common_multiple",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "better_bound_candidates": [
+      {
+       "evidence": [
+        "share size",
+        "each",
+        "equal",
+        "number",
+        "share",
+        "size",
+        "total"
+       ],
+       "machine": "division/fair_share_equal_groups",
+       "score": 4.5
+      },
+      {
+       "evidence": [
+        "share size",
+        "count",
+        "number",
+        "share",
+        "size",
+        "total"
+       ],
+       "machine": "division/name_group_count_as_share_size",
+       "score": 4.0
+      }
+     ],
+     "kind": "displacement",
+     "reason": "An already-bound signature scores higher for this row. The proposal generator did not compare against it."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1566:multiplication/common_factor_intersection",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1595:multiplication/common_factor_intersection",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:46287:multiplication/factors_of_first_number_only",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:45497:probability/equiprobable_endpoint_counting",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:45499:probability/equiprobable_endpoint_counting",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:412:probability/terminal_tree_endpoint_probability_sum",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:390:probability/terminal_tree_endpoint_probability_sum",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:44391:ratio/additive_extension_of_ratio",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:42:ratio/additive_extension_of_ratio",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:46442:ratio/additive_extension_of_ratio",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:misconception:47223:ratio/additive_extension_of_ratio",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:1139:statistics/categorical_frequency_bar_representation",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1137:statistics/categorical_frequency_bar_representation",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "score_tie",
+     "reason": "The proposal tied the runner-up score, so the scoring evidence did not prefer this signature."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1140:statistics/categorical_frequency_bar_representation",
+   "reviewable": false,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:1139:statistics/histogram_equal_interval_representation",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:68:statistics/mean_absolute_deviation",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:68:statistics/mean_as_balance_point",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:strategy:68:statistics/mean_as_fair_share",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  },
+  {
+   "defects": [
+    {
+     "kind": "fan_surplus",
+     "reason": "This corpus row was proposed for several signatures; a higher-ranked proposal already uses the same row."
+    }
+   ],
+   "identity": "corpus_candidate:strategy:68:statistics/mode_as_maximal_frequency",
+   "reviewable": false,
+   "signature_has_clean_candidate": false
+  },
+  {
+   "defects": [],
+   "identity": "corpus_candidate:misconception:46711:subtraction/slide_subtrahend_only",
+   "reviewable": true,
+   "signature_has_clean_candidate": true
+  }
+ ],
+ "method": "score ties from proposal scores; displacement by rescoring each row against every domain-compatible already-bound signature; fan surplus by retaining the highest-scoring proposal for each corpus row",
+ "schema_version": 1,
+ "source": "data/research/corpus_binding_proposals.json"
+}
