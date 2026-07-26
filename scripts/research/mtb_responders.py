@@ -125,6 +125,7 @@ def build(name: str, *, model: str, **options: str) -> Responder:
         # this file never learns what any of them do.
         try:
             import mtb_hermes_responder  # noqa: F401
+            import mtb_tutor_responder  # noqa: F401
         except ImportError:
             pass
     if name not in BUILDERS:

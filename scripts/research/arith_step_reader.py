@@ -62,7 +62,17 @@ def _normalize_number(token: str) -> str:
 
 
 def _render_expression(surface: str) -> str | None:
-    """Render a complete numeric expression as an explicitly left fold."""
+    """Render a complete numeric expression for Prolog to evaluate.
+
+    The operators are written in their source order and left unparenthesized,
+    because Prolog already reads them under the usual precedence — the same
+    precedence the writer of the line meant. An earlier version folded them
+    left to right and bracketed each step, which is right for a chain of one
+    precedence (`24 - 1 - 3`) and wrong the moment two appear: `7*10+5*25`
+    became `((7 * 10) + 5) * 25`, and a true line was refuted. Falsely telling
+    a student their sound arithmetic is broken is the worst thing this reader
+    can do, so it now changes nothing but notation.
+    """
     parts = _TOKEN_SPLIT.split(surface.strip())
     if not parts or len(parts) % 2 == 0:
         return None
@@ -74,12 +84,20 @@ def _render_expression(surface: str) -> str | None:
         for index in range(1, len(parts), 2)
     ]
     rendered = operands[0]
-    for position, (operator, operand) in enumerate(zip(operators, operands[1:])):
-        if position:
-            rendered = f"({rendered}) {operator} {operand}"
-        else:
-            rendered = f"{rendered} {operator} {operand}"
+    for operator, operand in zip(operators, operands[1:]):
+        rendered = f"{rendered} {operator} {operand}"
     return rendered
+
+
+# A match that begins directly after a digit or an arithmetic operator has cut
+# an operand off its own expression: `2 students * 3 - 1= 5` yields `3 - 1= 5`,
+# and `158 * 1 1/2 = 237` yields `1/2 = 237`. Both then refute a true line.
+# The surrounding words cannot be resolved here, so the reader abstains.
+_TRUNCATED_LEFT = re.compile(r"[\d+\-*/xX]\s*\Z")
+
+
+def _is_truncated(text: str, start: int) -> bool:
+    return bool(_TRUNCATED_LEFT.search(text[max(0, start - 24):start]))
 
 
 def _has_approximate_prefix(text: str, start: int) -> bool:
@@ -125,6 +143,8 @@ def _equations_from_text(text: str) -> list[Equation]:
 
     for match in _SYMBOLIC_EQUATION.finditer(text):
         if not available(*match.span()):
+            continue
+        if _is_truncated(text, match.start("left")):
             continue
         left = _render_expression(match.group("left"))
         right = _render_expression(match.group("right"))

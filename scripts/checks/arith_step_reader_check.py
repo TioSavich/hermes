@@ -47,7 +47,13 @@ def check_surface_forms() -> None:
         ("3 x 8 = 24", "3 * 8", "24"),
         ("2 * 4 = 8", "2 * 4", "8"),
         ("48 + 24 = 72", "48 + 24", "72"),
-        ("24-1-3 = 20", "(24 - 1) - 3", "20"),
+        ("24-1-3 = 20", "24 - 1 - 3", "20"),
+        # Two precedences in one line. Bracketing the operators left to right
+        # renders this ((7 * 10) + 5) * 25 and refutes a true statement, so the
+        # reader leaves precedence to Prolog, which reads it as the writer did.
+        ("7*10+5*25=195", "7 * 10 + 5 * 25", "195"),
+        ("200 + 200/2 = 300", "200 + 200 / 2", "300"),
+        ("100 - 20/4 = 95", "100 - 20 / 4", "95"),
         ("20 / 2 = 10", "20 / 2", "10"),
         ("$2 * 13 = $26", "2 * 13", "26"),
         ("1,200 + 300 = 1500", "1200 + 300", "1500"),
@@ -80,6 +86,13 @@ def check_abstentions() -> None:
         "two specialists each looked at Dakota for 15 minutes",
         "x + 3 = 7",
         "about 20 + 30 = 50ish",
+        # An operand cut off from its own expression by the words between.
+        # Reading `3 - 1= 5` out of this refutes a true line, which is worse
+        # than saying nothing about it.
+        "First find the absent students: 2 students * 3 - 1= 5 students",
+        # A mixed number the reader cannot represent; `1/2 = 237` is not what
+        # the line says.
+        "the colony was catching 158 * 1 1/2 = 237 fish per day",
     )
     for surface in fixtures:
         steps = READER.read_steps(surface)
