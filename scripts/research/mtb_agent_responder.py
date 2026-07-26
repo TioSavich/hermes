@@ -102,6 +102,20 @@ not state or confirm the answer. Do not mention functions, tools, retrieval,
 internal reasoning, or hidden processes. Avoid generic praise. Return only the
 tutor turn."""
 
+# Offering the functions is not enough. Over six items, with the functions
+# identical and only the wording changed: a plain tutoring prompt called them
+# 0/6, "two tools are available, use them when they would help" also called
+# them 0/6, and "before replying, check the arithmetic and look up what a
+# teacher asks; do not rely on memory" called them 6/6. The checkpoint can
+# call a function and will not decide that it needs one — it has the capacity
+# without the disposition. So the consultation is either mandated or it does
+# not happen, and `agent_tutor_mandated` is the arm that mandates it.
+MANDATED_CONSULT = """
+Before you reply, do both of these. Check any explicit arithmetic the student
+wrote with check_math_claim, and look up what a teacher asks about this
+mathematics with pedagogical_questions. Do not rely on memory for either. If a
+function abstains, say nothing that pretends it answered."""
+
 SCAFFOLDING_FRAME = (
     "Respond as an experienced teacher who is useful and caring while keeping "
     "the mathematical work with the student."
@@ -198,6 +212,8 @@ class AgentTutorResponder:
         self.num_predict = int(options.get("num_predict", "1024"))
         self.ollama_timeout = float(options.get("ollama_timeout", "600"))
         self.worker_timeout = float(options.get("worker_timeout", "120"))
+        self.mandate_consultation = options.get(
+            "mandate_consultation", "0") not in {"0", "", "false", "False"}
         self.worker: PersistentPrologWorker | None = None
         self.stats: Counter[str] = Counter()
         self.item_records: list[dict[str, Any]] = []
@@ -397,8 +413,11 @@ class AgentTutorResponder:
                 if task_name.startswith("pedagogy_following")
                 else SCAFFOLDING_FRAME
             )
+            system = BASE_SYSTEM + "\n\n" + framing
+            if self.mandate_consultation:
+                system += "\n" + MANDATED_CONSULT
             messages: list[dict[str, Any]] = [
-                {"role": "system", "content": BASE_SYSTEM + "\n\n" + framing},
+                {"role": "system", "content": system},
                 {
                     "role": "user",
                     "content": (
@@ -527,4 +546,11 @@ def _builder(model: str, **options: str) -> mtb_responders.Responder:
     return responder.respond
 
 
+def _mandated_builder(model: str, **options: str) -> mtb_responders.Responder:
+    responder = AgentTutorResponder(model, mandate_consultation="1", **options)
+    atexit.register(responder.close)
+    return responder.respond
+
+
 mtb_responders.register("agent_tutor", _builder)
+mtb_responders.register("agent_tutor_mandated", _mandated_builder)
