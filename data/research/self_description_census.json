@@ -1495,9 +1495,9 @@
           "relation": "worker dispatch"
         },
         {
-          "locator": "or decide whether an equation holds",
-          "path": "scripts/research/arith_step_reader.py",
-          "relation": "reader defers adjudication"
+          "locator": "Conservative natural-language reader for mathematical claims",
+          "path": "hermes/math_claim_language.pl",
+          "relation": "the DCG that reads its steps"
         }
       ],
       "judgement": "Being unrouted from a web page is correct, for now.",

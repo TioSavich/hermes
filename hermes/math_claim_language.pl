@@ -74,13 +74,73 @@ claim_candidate(Tokens,
                 candidate(Start, End, Rank, Payload, Polarity, SurfaceTokens)) :-
     append(Prefix, Suffix, Tokens),
     Suffix \== [],
+    candidate_left_boundary(Prefix),
     length(Prefix, Start),
     phrase(claim_payload(Payload, Polarity), Suffix, Rest),
     append(SurfaceTokens, Rest, Suffix),
     SurfaceTokens \== [],
+    candidate_right_boundary(Rest),
     length(SurfaceTokens, Length),
     End is Start + Length,
     payload_rank(Payload, Rank).
+
+% A scan may start inside a larger expression after prose has interrupted it.
+% If the token immediately before that scan point is numeric or arithmetic,
+% the reader cannot recover the missing operand relation and abstains. Exact
+% claims introduced as approximations also remain outside adjudication.
+candidate_left_boundary([]).
+candidate_left_boundary(Prefix) :-
+    \+ truncated_left_context(Prefix),
+    last(Prefix, Previous),
+    \+ approximation_token(Previous).
+
+truncated_left_context(Prefix) :-
+    last(Prefix, Previous),
+    truncated_expression_token(Previous),
+    !.
+truncated_left_context(Prefix) :-
+    append(_, [Previous, Separator], Prefix),
+    number(Previous),
+    numeric_continuation_separator(Separator),
+    !.
+truncated_left_context(Prefix) :-
+    last(Prefix, '.'),
+    !.
+truncated_left_context(Prefix) :-
+    last(Prefix, ')').
+
+candidate_right_boundary(Rest) :-
+    \+ truncated_right_context(Rest).
+
+truncated_right_context([Next|_]) :-
+    ( arithmetic_operator_token(Next)
+    ; relation_continuation_token(Next)
+    ),
+    !.
+truncated_right_context([Separator, Next|_]) :-
+    numeric_continuation_separator(Separator),
+    number(Next).
+
+truncated_expression_token(Token) :-
+    number(Token),
+    !.
+truncated_expression_token(Token) :-
+    arithmetic_operator_token(Token).
+
+arithmetic_operator_token(Token) :-
+    memberchk(Token,
+              ['+', '-', '*', '/', x, plus, minus, times, divided]).
+
+relation_continuation_token(Token) :-
+    memberchk(Token, [is, equals, equal, '=']).
+
+numeric_continuation_separator(',').
+numeric_continuation_separator(':').
+
+approximation_token(about).
+approximation_token(approximately).
+approximation_token(roughly).
+approximation_token(nearly).
 
 claim_payload(equation_chain(Sides, Links), positive) -->
     equation_chain(Sides, Links).
@@ -523,9 +583,17 @@ normalize_tokens([Word, '\'', s|Rest], [Contracted|Tokens]) :-
     downcase_atom(Word, Lower),
     atom_concat(Lower, s, Contracted),
     normalize_tokens(Rest, Tokens).
+normalize_tokens([Token|Rest], Tokens) :-
+    currency_token(Token),
+    !,
+    normalize_tokens(Rest, Tokens).
 normalize_tokens([Token0|Rest], [Token|Tokens]) :-
     ( atom(Token0) -> downcase_atom(Token0, Token) ; Token = Token0 ),
     normalize_tokens(Rest, Tokens).
+
+currency_token('$').
+currency_token('£').
+currency_token('€').
 
 
 % ---------------------------------------------------------------------------
@@ -584,11 +652,14 @@ same_unit_total(arithmetic_equation(Expression, Total)) -->
     { sum_expression(Values, Expression) }.
 
 percentage_of_claim(arithmetic_equation(Percentage/100*Quantity, Result)) -->
-    value(PercentageValue), [percent,of], value(QuantityValue),
+    value(PercentageValue), percentage_marker, [of], value(QuantityValue),
     result_link, value(ResultValue),
     { value_expression(PercentageValue, Percentage),
       value_expression(QuantityValue, Quantity),
       value_expression(ResultValue, Result) }.
+
+percentage_marker --> [percent].
+percentage_marker --> ['%'].
 
 fraction_of_claim(fraction_of(N, fraction(A,B), Result)) -->
     fraction_value(fraction(A,B)), [of], integer_value(N),
@@ -758,6 +829,7 @@ value(scalar(N)) -->
 
 fraction_value(fraction(N,D)) -->
     integer_value(N), ['/'], integer_value(D), { D > 0 }.
+fraction_value(fraction(1,2)) --> [half].
 fraction_value(fraction(N,D)) -->
     integer_value(N), [DenominatorWord],
     { denominator_word(DenominatorWord, D) }.

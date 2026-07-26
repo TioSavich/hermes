@@ -17,8 +17,6 @@ import sys
 import time
 from typing import Any, Callable
 
-from arith_step_reader import read_steps
-
 REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
@@ -127,7 +125,6 @@ SUPPORTED_TASKS = {
     "pedagogy_following",
     "pedagogy_following_hard",
 }
-_SAFE_EXPRESSION = re.compile(r"[0-9().+\-*/ ]+\Z")
 _SPEAKER = re.compile(r"(?m)^(Teacher|Tutor|Student):\s*")
 _INTERNAL = re.compile(
     r"\b(?:analysis|ledger|prolog|retrieval|tool(?:s| call)?)\b",
@@ -153,29 +150,6 @@ def _last_student(dialogue: str) -> str:
         end = matches[position + 1].start() if position + 1 < len(matches) else len(dialogue)
         return dialogue[match.end():end].strip()
     return ""
-
-
-def _prolog_string(value: str) -> str:
-    return json.dumps(value, ensure_ascii=True)
-
-
-def _worker_step_terms(student_turn: str) -> list[str]:
-    terms: list[str] = []
-    for step in read_steps(student_turn):
-        equations: list[str] = []
-        for equation in step["equations"]:
-            left = equation["left"]
-            right = equation["right"]
-            if not (_SAFE_EXPRESSION.fullmatch(left)
-                    and _SAFE_EXPRESSION.fullmatch(right)):
-                continue
-            equations.append(
-                "equation("
-                f"{_prolog_string(equation['span'])},{left},{right}"
-                ")"
-            )
-        terms.append(f"step({step['index']},[{','.join(equations)}])")
-    return terms
 
 
 def _checked_ledger(report: dict[str, Any]) -> list[dict[str, Any]]:
@@ -269,8 +243,8 @@ class TutorResponder:
         self.stats["prolog_requests"] += 1
         if self.worker is None:
             self.worker = PersistentPrologWorker(timeout=self.worker_timeout)
-        terms = _worker_step_terms(student_turn)
-        report = self.worker.request("check_solution_steps", steps=terms)
+        report = self.worker.request(
+            "check_solution_steps", text=student_turn)
         if not isinstance(report, dict):
             raise PersistentPrologError(
                 "check_solution_steps returned no report")

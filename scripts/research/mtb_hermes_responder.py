@@ -17,8 +17,6 @@ import re
 import sys
 from typing import Any, Callable, TypedDict
 
-from arith_step_reader import read_steps
-
 REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
@@ -91,7 +89,6 @@ _FINAL_ANSWER = re.compile(
 )
 _ANY_NUMBER = re.compile(rf"(?<![\w.])(?:[$£€]\s*)?(?P<number>{_NUMBER_CORE})")
 _STEP_NUMBER = re.compile(r"\bstep\s+(\d+)\b", re.IGNORECASE)
-_SAFE_EXPRESSION = re.compile(r"[0-9().+\-*/ ]+\Z")
 
 
 class SolveResult(TypedDict):
@@ -118,29 +115,6 @@ def _answers_agree(left: str, right: str) -> bool:
         return left.strip() == right.strip()
 
 
-def _prolog_string(value: str) -> str:
-    return json.dumps(value, ensure_ascii=True)
-
-
-def _worker_step_terms(chain: str) -> list[str]:
-    terms: list[str] = []
-    for step in read_steps(chain):
-        equations: list[str] = []
-        for equation in step["equations"]:
-            left = equation["left"]
-            right = equation["right"]
-            if not (_SAFE_EXPRESSION.fullmatch(left)
-                    and _SAFE_EXPRESSION.fullmatch(right)):
-                continue
-            equations.append(
-                "equation("
-                f"{_prolog_string(equation['span'])},{left},{right}"
-                ")"
-            )
-        terms.append(f"step({step['index']},[{','.join(equations)}])")
-    return terms
-
-
 def _refutation_text(report: dict[str, Any]) -> str:
     first = report.get("first_refuted_step")
     details: list[dict[str, Any]] = []
@@ -165,7 +139,8 @@ def _student_step_numbers(text: str) -> set[int]:
     explicit = {int(value) for value in _STEP_NUMBER.findall(normalized)}
     if explicit:
         return explicit
-    return {step["index"] for step in read_steps(normalized)}
+    lines = [line for line in normalized.splitlines() if line.strip()]
+    return set(range(1, len(lines) + 1))
 
 
 def _without_final_answer(chain: str) -> str:
@@ -208,9 +183,8 @@ class HermesResponder:
     def _adjudicate(self, chain: str) -> dict[str, Any]:
         if self.worker is None:
             self.worker = PersistentPrologWorker(timeout=self.worker_timeout)
-        terms = _worker_step_terms(chain)
         self.stats["prolog_reports"] += 1
-        report = self.worker.request("check_solution_steps", steps=terms)
+        report = self.worker.request("check_solution_steps", text=chain)
         if not isinstance(report, dict):
             raise PersistentPrologError(
                 "check_solution_steps returned no report")

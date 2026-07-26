@@ -534,9 +534,9 @@ UNROUTED = {
                 "worker dispatch",
             ),
             evidence(
-                "scripts/research/arith_step_reader.py",
-                "or decide whether an equation holds",
-                "reader defers adjudication",
+                "hermes/math_claim_language.pl",
+                "Conservative natural-language reader for mathematical claims",
+                "the DCG that reads its steps",
             ),
         ],
     },

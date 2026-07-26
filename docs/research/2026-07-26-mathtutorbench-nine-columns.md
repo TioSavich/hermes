@@ -1,9 +1,15 @@
 # MathTutorBench, nine columns: what a laptop-scale checkpoint reaches, and what the symbolic core adds
 
-Measured 2026-07-26. Model `gemma4:e2b` (7.2 GB, Q4_K_M) through Ollama on
-one laptop, beside SWI-Prolog 9.2.9. Every number below comes from the
-benchmark's own task objects — its configs, its response parsers, its metric
-functions — through `scripts/research/mtb_official_runner.py`.
+Measured 2026-07-26. Model `gemma4:e2b` through Ollama on one laptop, beside
+SWI-Prolog 9.2.9. Every number below comes from the benchmark's own task
+objects — its configs, its response parsers, its metric functions — through
+`scripts/research/mtb_official_runner.py`.
+
+The checkpoint should be named accurately, because the headline depends on
+it. Ollama reports **5.1B parameters** at Q4_K_M, 7.2 GB on disk. `E2B` is an
+*effective* 2B budget in the Gemma-3n sense, not a dense 2B network, and the
+checkpoint reasons before answering. "Runs on a teacher's laptop" is the
+supportable claim; "a 2B model" is not.
 
 ## What was wrong before any of this could be measured
 
@@ -77,6 +83,38 @@ on two of the four columns** and within 0.015 of it on a third. That is a 2B
 model on a laptop against LearnLM-1.5-Pro and GPT-4o. On `mistake_correction`
 it trails the frontier badly (0.60 against 0.84) while sitting far above every
 published open model (0.09 to 0.49).
+
+## Is the core under-covered, or badly interfaced, or aimed elsewhere?
+
+Asked directly, and measured three ways over 200 items in each half.
+
+**Coverage is not the problem.** Prolog adjudicates **99%** of every equation
+the reader hands it — 471 of 478 from incorrect student solutions, 462 of 466
+from reference solutions. The `arithmetic_equation` clause routes through SWI
+`=:=`, so any ground arithmetic is in scope. Probed directly, it returns
+`holds` for `7*10+5*25 = 195`, `200+200/2 = 200+100`, and `2*3-1 = 5`. More
+claim families would change nothing.
+
+**The interface had one real defect, and it was the costly kind.**
+`_render_expression` folded a chain left to right and bracketed each step.
+That is correct for one precedence — `24-1-3` — and wrong the moment two
+appear: `7*10+5*25` became `((7 * 10) + 5) * 25` and a true line was refuted.
+Two truncations did the same from the other side, reading `3 - 1= 5` out of
+`2 students * 3 - 1= 5` and `1/2 = 237` out of `158 * 1 1/2 = 237`. Each of
+those tells a student their sound arithmetic is broken, which is the worst
+thing this component can do. Precedence now belongs to Prolog and the reader
+abstains when an operand has been cut off. Refutations in reference solutions
+fell from 8 to 3 of about 465, 1.7% to 0.6%, with extraction unchanged.
+
+**What remains is aimed elsewhere.** After the fix, inside solutions labelled
+incorrect, 4.0% of adjudicated equations are refuted against that 0.6% floor
+of genuine dataset typos — about 3.4% of real signal. Roughly half of student
+steps assert a derived quantity without showing any computation, so there is
+nothing for an equation checker to read there at all, and that is exactly
+where the modelling errors live. `45/(5+3) = 5.625` is exact and
+pedagogically wrong because 45 counts only the red candles. Reaching that
+needs a representation of the problem's quantity structure, not a wider
+arithmetic vocabulary.
 
 ## What the symbolic core actually did
 

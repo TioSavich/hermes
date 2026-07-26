@@ -96,16 +96,78 @@ def ollama_complete(prompt: str, *, model: str, stop: list[str] | None = None,
     raise RuntimeError(f"ollama call failed after {attempts} attempts: {last_error}")
 
 
+def llama_chat_complete(prompt: str, *, model: str, stop: list[str] | None = None,
+                        endpoint: str, temperature: float = DEFAULT_TEMPERATURE,
+                        num_predict: int = DEFAULT_NUM_PREDICT,
+                        attempts: int = 3, timeout: float = 900.0,
+                        stop_mode: str = "post") -> str:
+    """The same call against a llama.cpp server's chat-completions route.
+
+    The laptop reaches the checkpoint through Ollama's `/api/generate`, which
+    applies the model's chat template. On the cluster the equivalent is
+    `llama-server --jinja` on `/v1/chat/completions` with the rendered prompt
+    as one user message. Both apply the template, and the template is not
+    optional: without it this checkpoint continues text rather than answering,
+    and scores 0.050 against 0.875 on problem_solving.
+
+    The two routes are not assumed equivalent. `mtb_scale_check.py` re-runs a
+    slice already measured on the laptop and compares, because a number from
+    one route may not be set beside a number from the other until they have
+    been shown to agree.
+    """
+    payload = json.dumps({
+        "model": model,
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": temperature,
+        "max_tokens": num_predict,
+        "stop": (stop or []) if stop_mode == "decode" else [],
+        "stream": False,
+    }).encode("utf-8")
+
+    last_error: Exception | None = None
+    for attempt in range(attempts):
+        request = urllib.request.Request(
+            endpoint, data=payload,
+            headers={"Content-Type": "application/json"})
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                body = json.loads(response.read().decode("utf-8"))
+            text = body["choices"][0]["message"]["content"] or ""
+            return (text.strip() if stop_mode == "decode"
+                    else truncate_at_stop(text, stop))
+        except (urllib.error.URLError, TimeoutError, KeyError, IndexError,
+                json.JSONDecodeError, OSError) as exc:
+            last_error = exc
+            if attempt + 1 < attempts:
+                time.sleep(2 ** attempt)
+    raise RuntimeError(
+        f"llama.cpp call failed after {attempts} attempts: {last_error}")
+
+
+def complete(prompt: str, *, model: str, backend: str = "ollama",
+             endpoint: str | None = None, **options: Any) -> str:
+    """One call, whichever backend is serving the checkpoint."""
+    if backend == "ollama":
+        return ollama_complete(prompt, model=model,
+                               endpoint=endpoint or DEFAULT_ENDPOINT, **options)
+    if backend == "llama":
+        if not endpoint:
+            raise SystemExit("the llama backend needs --responder-arg endpoint=...")
+        return llama_chat_complete(prompt, model=model, endpoint=endpoint,
+                                   **options)
+    raise SystemExit(f"unknown backend {backend!r}; have: ollama, llama")
+
+
 def _unassisted(model: str, **options: str) -> Responder:
-    endpoint = options.get("endpoint", DEFAULT_ENDPOINT)
+    backend = options.get("backend", "ollama")
+    endpoint = options.get("endpoint")
     num_predict = int(options.get("num_predict", DEFAULT_NUM_PREDICT))
     stop_mode = options.get("stop_mode", "decode")
 
     def respond(*, prompt: str, stop: list[str] | None, example: dict[str, Any],
                 task_name: str) -> str:
-        return ollama_complete(prompt, model=model, stop=stop,
-                               endpoint=endpoint, num_predict=num_predict,
-                               stop_mode=stop_mode)
+        return complete(prompt, model=model, backend=backend, endpoint=endpoint,
+                        stop=stop, num_predict=num_predict, stop_mode=stop_mode)
 
     return respond
 
