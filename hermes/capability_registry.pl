@@ -151,6 +151,7 @@ capability('orr_entry_witness', 'cw_driver', 'crosswalk', ['source', 'variant'],
 capability('pair_candidate_witness', 'hermes_pair_scoring', 'infrastructure', ['event_a', 'event_b'], routed_paged).
 capability('pair_graph', 'user', 'infrastructure', ['events'], routed_paged).
 capability('pair_score', 'hermes_pair_scoring', 'infrastructure', ['events'], routed_paged).
+capability('pedagogical_questions', 'lesson_monitoring', 'workflow', ['kind', 'query'], unrouted).
 capability('place_value_chart_render', 'place_value_chart_scene', 'render', [], routed_paged).
 capability('place_value_number_claim_witness', 'cw_place_value_number_claim', 'render', ['canonical', 'source'], routed_paged).
 capability('pml_score', 'hermes_encyclopedia', 'pml', ['clauses'], routed_paged).
@@ -449,6 +450,8 @@ capability_parameter('orr_entry_witness', 'variant', null, true, null).
 capability_parameter('orr_entry_witness', 'source', null, true, null).
 capability_parameter('pair_graph', 'events', 'array', true, null).
 capability_parameter('pair_score', 'events', 'array', true, null).
+capability_parameter('pedagogical_questions', 'query', 'string', true, null).
+capability_parameter('pedagogical_questions', 'kind', 'string', false, null).
 capability_parameter('place_value_number_claim_witness', 'canonical', 'string', true, null).
 capability_parameter('place_value_number_claim_witness', 'source', 'string', true, null).
 capability_parameter('pml_score', 'clauses', 'array', true, null).

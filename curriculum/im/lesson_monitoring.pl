@@ -4,6 +4,7 @@
             monitoring_chart_export/2,
             licensed_but_unanticipated/2,
             monitoring_chart_cluster/4,
+            pedagogical_question_clusters/3,
             encoded_lesson/6,
             encoded_im_lesson/6,
             im_lesson/6,
@@ -260,6 +261,172 @@ monitoring_chart_cluster(Code, Source, ClusterId, Info) :-
     dict_value(Cluster, id, ClusterId),
     cluster_matches_lesson_topic(Code, Source, ClusterId),
     cluster_info(Cluster, Info).
+
+
+%!  pedagogical_question_clusters(+Kind, +Query, -Result) is det.
+%
+%   Find authored monitoring-chart questions without requiring an IM lesson
+%   code. Kind is topic, automaton_state, or standard. State and standard
+%   queries use exact normalized token sequences. Topic queries are admitted
+%   only when every substantive whole-word token occurs in the cluster's
+%   authored source, id, title, or productive core. The result carries the
+%   match basis and returns status=abstained with [] when no row is admitted;
+%   no similarity score or nearest row is manufactured.
+pedagogical_question_clusters(Kind0, Query0, Result) :-
+    lookup_kind(Kind0, Kind),
+    text_string(Query0, Query),
+    lookup_query_parts(Kind, Query, QueryParts),
+    findall(ClusterId-Match,
+            pedagogical_question_cluster_match(
+                Kind, Query, QueryParts, ClusterId, Match),
+            Matches0),
+    sort(Matches0, Matches1),
+    findall(Match, member(_-Match, Matches1), Matches),
+    length(Matches, MatchCount),
+    ( Matches == [] -> Status = abstained ; Status = matched ),
+    Result = _{
+        status: Status,
+        query: _{kind: Kind, text: Query},
+        match_count: MatchCount,
+        matches: Matches
+    }.
+
+lookup_kind(Kind0, Kind) :-
+    text_string(Kind0, KindText),
+    string_lower(KindText, Lower),
+    atom_string(Normalized, Lower),
+    ( memberchk(Normalized, [topic, automaton_state, standard])
+    -> Kind = Normalized
+    ;  Kind = invalid
+    ).
+
+lookup_query_parts(topic, Query, Parts) :-
+    !,
+    lookup_raw_words(Query, RawParts),
+    exclude(topic_stop_word, RawParts, Parts).
+lookup_query_parts(_Kind, Query, Parts) :-
+    lookup_raw_words(Query, Parts).
+
+pedagogical_question_cluster_match(
+        Kind, Query, QueryParts, ClusterId, Match) :-
+    QueryParts \== [],
+    monitoring_cluster_source(Source, RelativePath),
+    monitoring_cluster_dict(RelativePath, Cluster),
+    cluster_lookup_match(Kind, QueryParts, Source, Cluster, MatchBasis),
+    cluster_question_lookup_row(
+        Source, Cluster, Query, MatchBasis, ClusterId, Match).
+
+cluster_lookup_match(automaton_state, QueryParts, _Source, Cluster,
+                     automaton_state_exact) :-
+    dict_value(Cluster, automaton_states, States),
+    member(State, States),
+    lookup_raw_words(State, QueryParts),
+    !.
+cluster_lookup_match(standard, QueryParts, _Source, Cluster, standard_exact) :-
+    dict_value(Cluster, standards, Standards),
+    member(Standard, Standards),
+    lookup_raw_words(Standard, QueryParts),
+    !.
+cluster_lookup_match(topic, QueryParts, Source, Cluster,
+                     topic_phrase_all_tokens_present) :-
+    cluster_topic_words(Source, Cluster, SurfaceWords),
+    forall(member(QueryPart, QueryParts),
+           lookup_part_present(QueryPart, SurfaceWords)).
+
+cluster_topic_words(Source, Cluster, Words) :-
+    dict_value(Cluster, id, Id),
+    dict_value(Cluster, title, Title),
+    dict_value(Cluster, productive_core, ProductiveCore),
+    maplist(text_string,
+            [Source, Id, Title, ProductiveCore],
+            SearchTexts),
+    atomics_to_string(SearchTexts, " ", SearchText),
+    lookup_raw_words(SearchText, RawWords),
+    findall(Word,
+            ( member(RawWord, RawWords),
+              normalized_lookup_word(RawWord, Word)
+            ),
+            Words0),
+    sort(Words0, Words).
+
+lookup_part_present(QueryPart, SurfaceWords) :-
+    normalized_lookup_word(QueryPart, Candidate),
+    memberchk(Candidate, SurfaceWords),
+    !.
+
+lookup_raw_words(Text0, Words) :-
+    text_string(Text0, Text),
+    string_lower(Text, Lower),
+    split_string(Lower,
+                 " \t\n.,;:!?()[]{}\"'/+*=_-",
+                 "",
+                 Parts),
+    exclude(==(""), Parts, Nonempty),
+    maplist(atom_string, Words, Nonempty).
+
+normalized_lookup_word(Word, Word).
+normalized_lookup_word(Word, Singular) :-
+    atom_length(Word, Length),
+    Length > 4,
+    atom_concat(Stem, s, Word),
+    Stem \== '',
+    Singular = Stem.
+
+topic_stop_word(a).
+topic_stop_word(an).
+topic_stop_word(and).
+topic_stop_word(as).
+topic_stop_word(at).
+topic_stop_word(by).
+topic_stop_word(for).
+topic_stop_word(from).
+topic_stop_word(how).
+topic_stop_word(in).
+topic_stop_word(is).
+topic_stop_word(of).
+topic_stop_word(on).
+topic_stop_word(or).
+topic_stop_word(the).
+topic_stop_word(to).
+topic_stop_word(what).
+topic_stop_word(with).
+topic_stop_word(without).
+
+cluster_question_lookup_row(
+        Source, Cluster, Query, MatchBasis, ClusterId, Row) :-
+    dict_value(Cluster, id, ClusterId0),
+    dict_value(Cluster, title, Title0),
+    dict_value(Cluster, productive_core, ProductiveCore0),
+    dict_value(Cluster, deformation, Deformation0),
+    dict_value(Cluster, assessing_questions, Assessing0),
+    dict_value(Cluster, advancing_questions, Advancing0),
+    dict_value(Cluster, standards, Standards0),
+    dict_value(Cluster, im_anchors, IMAnchors0),
+    dict_value(Cluster, automaton_states, AutomatonStates0),
+    text_string(Source, SourceText),
+    text_string(ClusterId0, ClusterId),
+    text_string(Title0, Title),
+    text_string(ProductiveCore0, ProductiveCore),
+    text_string(Deformation0, Deformation),
+    maplist(text_string, Assessing0, Assessing),
+    maplist(text_string, Advancing0, Advancing),
+    maplist(text_string, Standards0, Standards),
+    maplist(text_string, IMAnchors0, IMAnchors),
+    maplist(text_string, AutomatonStates0, AutomatonStates),
+    Row = _{
+        cluster_id: ClusterId,
+        source: SourceText,
+        title: Title,
+        productive_core: ProductiveCore,
+        deformation: Deformation,
+        assessing_questions: Assessing,
+        advancing_questions: Advancing,
+        standards: Standards,
+        im_anchors: IMAnchors,
+        automaton_states: AutomatonStates,
+        match_basis: MatchBasis,
+        matched_query: Query
+    }.
 
 
 %!  im_lesson(+Code, -ConceptId, -Title, -Grade, -Unit, -LessonNumber) is semidet.

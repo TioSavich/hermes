@@ -42,6 +42,15 @@ from tasks.base import TaskConfig  # noqa: E402
 SPLIT_SEED = 20260726
 DEV_FRACTION = 0.30
 
+# The Hub moved these under a namespace after the benchmark was written. The
+# bare name still resolves online by redirect, and cannot resolve at all
+# offline: current `huggingface_hub` refuses to cache an id that is not
+# `namespace/name`, so a compute node with no network fails on the redirect
+# rather than on the data. Same dataset, same revision, same rows — only the
+# identifier moved. The rewrite lives here rather than in the vendored config
+# so the shipped benchmark stays untouched and the substitution stays visible.
+HUB_RENAMES = {"gsm8k": "openai/gsm8k"}
+
 CONFIG_FOR_TASK = {
     "problem_solving": "problem_solving.yaml",
     "socratic_questioning": "socratic_questioning.yaml",
@@ -130,6 +139,7 @@ def load_task(task_name: str):
     """
     config_path = VENDOR / "configs" / CONFIG_FOR_TASK[task_name]
     config = TaskConfig(**yaml.safe_load(config_path.read_text(encoding="utf-8")))
+    config.dataset_path = HUB_RENAMES.get(config.dataset_path, config.dataset_path)
     previous = os.getcwd()
     os.chdir(VENDOR)
     try:

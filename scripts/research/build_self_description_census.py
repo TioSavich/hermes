@@ -540,6 +540,27 @@ UNROUTED = {
             ),
         ],
     },
+    "pedagogical_questions": {
+        "does": "Finds the authored monitoring clusters for a topic, automaton state, or "
+        "standard, and returns their assessing and advancing questions with the "
+        "productive core and deformation that license them.",
+        "judgement": "A page should route to it.",
+        "reason": "126 assessing and 85 advancing questions were reachable only through a "
+        "lesson code before this operation, so a teacher who knew the mathematics but not "
+        "the IM code could not reach them. A page could now ask from the mathematics.",
+        "evidence": [
+            evidence(
+                "curriculum/im/lesson_monitoring.pl",
+                "pedagogical_question_clusters",
+                "cluster lookup",
+            ),
+            evidence(
+                "hermes/dispatch_spec.pl",
+                "dispatch_spec(pedagogical_questions,",
+                "worker dispatch",
+            ),
+        ],
+    },
     "index_topic_subtraction": {
         "does": "Returns counts and evidence samples after topic exclusions remove index rows.",
         "judgement": "A page should route to it.",
@@ -793,12 +814,12 @@ def build() -> dict[str, object]:
     verdict_counts = Counter(row["verdict"] for row in orphan_records)
     resolution_counts = Counter(row["current_class"] for row in class_resolution)
 
-    if len(registry_rows) != 267:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 267")
+    if len(registry_rows) != 268:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 268")
     if len(orphan_records) != 58:
         raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 58")
-    if len(unrouted) != 5:
-        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 5")
+    if len(unrouted) != 6:
+        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 6")
 
     return {
         "schema": "self_description_census_v1",

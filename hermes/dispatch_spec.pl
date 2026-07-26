@@ -581,6 +581,11 @@ dispatch_spec(check_solution_steps,
     [text-nonempty_text],
     call(solution_step_check:check_solution_steps, [text, out(dict)]),
     raw(malformed_solution_steps)).
+dispatch_spec(pedagogical_questions,
+    [query-nonempty_text, kind-default(filter, topic)],
+    call(lesson_monitoring:pedagogical_question_clusters,
+         [kind, query, out(dict)]),
+    raw(malformed_pedagogical_questions)).
 dispatch_spec(corpus_grammar_summary,
     [],
     call(corpus_attested_grammar:corpus_grammar_summary, [out(witness)]),
@@ -952,6 +957,7 @@ dispatch_message(validate_reader_axioms, malformed, "validate_reader_axioms requ
 dispatch_message(commitment_match, malformed, "commitment_match requires non-empty content").
 dispatch_message(check_math_claim, malformed, "check_math_claim requires a safely parsed typed claim term using a registered claim shape").
 dispatch_message(check_solution_steps, malformed, "check_solution_steps requires non-empty numbered solution text").
+dispatch_message(pedagogical_questions, malformed, "pedagogical_questions requires a non-empty query and accepts kind topic, automaton_state, or standard").
 dispatch_message(corpus_grammar_summary, no_witness, "corpus_grammar_summary produced no summary").
 dispatch_message(grounding_inference_witness, no_witness, "grounding_inference_witness found no grounding recorded example").
 dispatch_message(grounding_inference_witness, malformed, "grounding_inference_witness requires metaphor and inference").

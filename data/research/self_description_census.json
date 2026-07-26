@@ -418,14 +418,14 @@
       "standards": 22,
       "synthesis": 34,
       "unclassified": 1,
-      "workflow": 4,
+      "workflow": 5,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 9,
       "orphan_module": 58,
       "routed_paged": 195,
-      "unrouted": 5
+      "unrouted": 6
     },
     "orphan_verdicts": {
       "consumed_by_builder": 2,
@@ -436,8 +436,8 @@
       "superseded": 0,
       "undetermined": 23
     },
-    "total": 267,
-    "unrouted": 5
+    "total": 268,
+    "unrouted": 6
   },
   "generated_by": "scripts/research/build_self_description_census.py",
   "orphan_modules": [
@@ -1521,6 +1521,24 @@
       "judgement": "A page should route to it.",
       "name": "index_topic_subtraction",
       "reason": "The module states that the index is reachable from the running application, but the dispatch operation has no web route or MCP exposure."
+    },
+    {
+      "does": "Finds the authored monitoring clusters for a topic, automaton state, or standard, and returns their assessing and advancing questions with the productive core and deformation that license them.",
+      "evidence": [
+        {
+          "locator": "pedagogical_question_clusters",
+          "path": "curriculum/im/lesson_monitoring.pl",
+          "relation": "cluster lookup"
+        },
+        {
+          "locator": "dispatch_spec(pedagogical_questions,",
+          "path": "hermes/dispatch_spec.pl",
+          "relation": "worker dispatch"
+        }
+      ],
+      "judgement": "A page should route to it.",
+      "name": "pedagogical_questions",
+      "reason": "126 assessing and 85 advancing questions were reachable only through a lesson code before this operation, so a teacher who knew the mathematics but not the IM code could not reach them. A page could now ask from the mathematics."
     },
     {
       "does": "Returns the default cited state label and its recorded alternatives.",

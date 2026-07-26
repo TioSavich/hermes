@@ -44,7 +44,11 @@ echo "run dir:   $RUN_DIR"
 
 module purge
 module load llamacpp/gpu/06182026
-export PATH="/N/u/tmsavich/BigRed200/.conda/envs/umedcta/bin:$PATH"
+# An overlay venv over the umedcta conda env. The conda env is left untouched;
+# it lacks datasets, scikit-learn, and sacrebleu, which the benchmark's own
+# task objects import at module load.
+export PATH="/N/scratch/tmsavich/mtb-venv/bin:/N/u/tmsavich/BigRed200/.conda/envs/umedcta/bin:$PATH"
+PY=/N/scratch/tmsavich/mtb-venv/bin/python
 
 llama-server \
   -m "$MODEL" \
@@ -75,7 +79,7 @@ export HF_HUB_OFFLINE=1
 LIMIT_ARG=()
 [ -n "$LIMIT" ] && LIMIT_ARG=(--limit "$LIMIT")
 
-python3 "$REPO_ROOT/scripts/research/mtb_official_runner.py" \
+"$PY" "$REPO_ROOT/scripts/research/mtb_official_runner.py" \
   --tasks "$TASKS" \
   --split "$SPLIT" \
   --responder "$RESPONDER" \
@@ -94,7 +98,7 @@ trap - EXIT
 # heuristic, so they need the reward model. It runs after the GPU work.
 if compgen -G "$RUN_DIR/generations-*.json" >/dev/null; then
   module purge
-  export PATH="/N/u/tmsavich/BigRed200/.conda/envs/umedcta/bin:$PATH"
+  export PATH="/N/scratch/tmsavich/mtb-venv/bin:/N/u/tmsavich/BigRed200/.conda/envs/umedcta/bin:$PATH"
   REWARD_CACHE="${REWARD_MODEL_CACHE_SOURCE:-/N/scratch/tmsavich/.cache/huggingface/hub/models--eth-nlped--Qwen2.5-1.5B-pedagogical-rewardmodel}"
   if [ -d "$REWARD_CACHE" ]; then
     NODE_HF_HOME="${TMPDIR:?}/hf-${SLURM_JOB_ID}"
@@ -102,7 +106,7 @@ if compgen -G "$RUN_DIR/generations-*.json" >/dev/null; then
     cp -a "$REWARD_CACHE" "$NODE_HF_HOME/hub/"
     export HF_HOME="$NODE_HF_HOME"
     export HF_HUB_OFFLINE=1
-    python3 "$REPO_ROOT/scripts/research/mtb_reward_score.py" --runs "$RUN_DIR"
+    "$PY" "$REPO_ROOT/scripts/research/mtb_reward_score.py" --runs "$RUN_DIR"
   else
     echo "reward-model cache absent at $REWARD_CACHE; generation columns unscored" >&2
   fi
