@@ -159,6 +159,66 @@ That is worth naming as a limit of the benchmark rather than a result. The
 task as constructed never asks whether a *correct but different* route is
 sound, which is the judgement a tutor actually makes.
 
+## The four generation columns, where the headroom is
+
+Reward-model win rate over the human teacher's turn, which is the published
+metric; the question-mark rate the shipped `compute_metrics` returns is not it.
+40 dev items, unassisted:
+
+| column | unassisted | published best |
+|---|---:|---:|
+| scaffolding_generation | 0.325 | 0.64 |
+| scaffolding_generation_hard | 0.325 | 0.66 LearnLM |
+| pedagogy_following | 0.350 | 0.82 GPT-4o |
+| pedagogy_following_hard | 0.500 | 0.70 GPT-4o |
+
+The mirror image of the assessment columns. There the checkpoint needed no
+help; here it is far below the board.
+
+Four arms on the same 20 scaffolding dev items, scored together in one
+reward-model process:
+
+| arm | win rate | calls/item | tool calls |
+|---|---:|---:|---:|
+| unassisted | 0.45 | 1.0 | — |
+| `tutor_ledger`, evidence injected | **0.70** | 2.1 | n/a |
+| `agent_tutor`, tools offered | 0.65 | 1.6 | **0** |
+| `agent_tutor_mandated`, tools required | 0.50 | 2.2 | 9 |
+
+n=20 and the intervals overlap heavily; none of these differences is
+established. What is established is the tool-call count.
+
+## Capacity without disposition
+
+The checkpoint emits well-formed tool calls. Asked to check `5+3=9` with a
+function available, it calls the function and does not answer from memory.
+
+It nevertheless never asked. Six items, functions identical, wording varied:
+
+| framing | items calling a tool |
+|---|---|
+| plain tutoring prompt | 0/6 |
+| "two tools are available … use them when they would help" | 0/6 |
+| "before replying, check … do not rely on memory" | 6/6 |
+
+Telling it the tools exist and are useful changes nothing. It uses a function
+when told to and never decides that it needs one.
+
+Requiring the consultation produced calls and cost 0.15 of win rate. The
+reason is not missing data. Asked in mathematical terms the lookup answers —
+division 2 clusters, fractions 14, measurement 6, area 6, place value 3,
+subtraction 4, **13 of 15 topics matched**. Asked as the model asked it,
+nothing: it sent the story back — `ignatius friend different`, `located beside
+river`, `drought household gallons` — and **0 of 12 matched**. The lookup
+abstained correctly every time.
+
+The checkpoint reads the narrative and not the mathematics, and a lookup keyed
+to mathematics receives a story. So injection beat asking here, not because
+being asked is worse in principle but because this checkpoint cannot form the
+query. Deriving the topic from the operations already adjudicated would serve
+the same rows without the model guessing — which is injection again, aimed
+better, and should be described that way rather than as an agent.
+
 ## Not yet measured
 
 The four generation columns — `scaffolding_generation`, its hard split,
