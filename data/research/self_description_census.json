@@ -407,7 +407,7 @@
       "dialectic": 1,
       "geometry_witness": 35,
       "incompatibility": 7,
-      "infrastructure": 18,
+      "infrastructure": 19,
       "juncture": 1,
       "learner": 25,
       "misconceptions": 12,
@@ -425,7 +425,7 @@
       "lazy_reachable": 9,
       "orphan_module": 58,
       "routed_paged": 195,
-      "unrouted": 4
+      "unrouted": 5
     },
     "orphan_verdicts": {
       "consumed_by_builder": 2,
@@ -436,8 +436,8 @@
       "superseded": 0,
       "undetermined": 23
     },
-    "total": 266,
-    "unrouted": 4
+    "total": 267,
+    "unrouted": 5
   },
   "generated_by": "scripts/research/build_self_description_census.py",
   "orphan_modules": [
@@ -1485,6 +1485,24 @@
       "judgement": "Being unrouted from a web page is correct.",
       "name": "check_math_claim",
       "reason": "The MCP server exposes it as a tool, and research scripts call the checker. A page route is not required for those consumers."
+    },
+    {
+      "does": "Adjudicates the explicit arithmetic of a numbered solution, step by step, and names the first refuted step or reports that none was refuted.",
+      "evidence": [
+        {
+          "locator": "dispatch_spec(check_solution_steps,",
+          "path": "hermes/dispatch_spec.pl",
+          "relation": "worker dispatch"
+        },
+        {
+          "locator": "or decide whether an equation holds",
+          "path": "scripts/research/arith_step_reader.py",
+          "relation": "reader defers adjudication"
+        }
+      ],
+      "judgement": "Being unrouted from a web page is correct, for now.",
+      "name": "check_solution_steps",
+      "reason": "Its consumer is the MathTutorBench measurement path, which calls the worker directly. A tutor-facing page would want the narrated trace rather than the step table, and no such page has been designed."
     },
     {
       "does": "Returns counts and evidence samples after topic exclusions remove index rows.",

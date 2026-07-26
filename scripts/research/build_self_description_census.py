@@ -520,6 +520,26 @@ UNROUTED = {
             )
         ],
     },
+    "check_solution_steps": {
+        "does": "Adjudicates the explicit arithmetic of a numbered solution, step by step, "
+        "and names the first refuted step or reports that none was refuted.",
+        "judgement": "Being unrouted from a web page is correct, for now.",
+        "reason": "Its consumer is the MathTutorBench measurement path, which calls the "
+        "worker directly. A tutor-facing page would want the narrated trace rather than "
+        "the step table, and no such page has been designed.",
+        "evidence": [
+            evidence(
+                "hermes/dispatch_spec.pl",
+                "dispatch_spec(check_solution_steps,",
+                "worker dispatch",
+            ),
+            evidence(
+                "scripts/research/arith_step_reader.py",
+                "or decide whether an equation holds",
+                "reader defers adjudication",
+            ),
+        ],
+    },
     "index_topic_subtraction": {
         "does": "Returns counts and evidence samples after topic exclusions remove index rows.",
         "judgement": "A page should route to it.",
@@ -773,12 +793,12 @@ def build() -> dict[str, object]:
     verdict_counts = Counter(row["verdict"] for row in orphan_records)
     resolution_counts = Counter(row["current_class"] for row in class_resolution)
 
-    if len(registry_rows) != 266:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 266")
+    if len(registry_rows) != 267:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 267")
     if len(orphan_records) != 58:
         raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 58")
-    if len(unrouted) != 4:
-        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 4")
+    if len(unrouted) != 5:
+        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 5")
 
     return {
         "schema": "self_description_census_v1",

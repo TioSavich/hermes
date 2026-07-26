@@ -35,6 +35,7 @@ capability('capability_atlas', 'hermes_worker', 'infrastructure', [], routed_pag
 capability('carving_operation_summary', 'carving_query', 'carving', ['operation'], routed_paged).
 capability('carving_strategy_proof', 'user', 'carving', ['operation', 'x', 'y', 'z'], routed_paged).
 capability('check_math_claim', 'math_claim_checker', 'misconceptions', ['claim'], unrouted).
+capability('check_solution_steps', 'solution_step_check', 'infrastructure', ['steps'], unrouted).
 capability('commitment_match', 'user', 'misconceptions', ['content'], routed_paged).
 capability('compute', 'hermes_worker', 'learner', [], routed_paged).
 capability('corpus_grammar_summary', 'corpus_attested_grammar', 'render', [], routed_paged).
@@ -298,6 +299,7 @@ capability_parameter('carving_strategy_proof', 'x', 'integer', false, null).
 capability_parameter('carving_strategy_proof', 'y', 'integer', false, null).
 capability_parameter('carving_strategy_proof', 'z', 'integer', false, null).
 capability_parameter('check_math_claim', 'claim', 'string', true, "equivalence(fraction(3,4), fraction(6,8))").
+capability_parameter('check_solution_steps', 'steps', 'array', true, null).
 capability_parameter('commitment_match', 'content', 'string', true, "A square is a rectangle.").
 capability_parameter('counting_claim_witness', 'canonical', 'string', true, null).
 capability_parameter('counting_claim_witness', 'source', 'string', true, null).
