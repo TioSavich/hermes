@@ -10,6 +10,7 @@ main :-
     forall(member(Operation-Kind, Signatures),
            expect_round_trips(Operation, Kind)),
     expect_reviewed_language,
+    expect_episode_alignment,
     strategy_recognizer:recognize_strategies(
         "I do not know what to do next.", Empty),
     expect_equal([], Empty, honest_abstention),
@@ -139,6 +140,67 @@ expect_candidate(Text, Operation, Kind) :-
     ; throw(error(assertion_failed(
                 no_observed_transition(Operation, Kind)), _))
     ).
+
+expect_episode_alignment :-
+    Utterances = [
+        "close to ten",
+        "split the other number",
+        "made ten",
+        "added the leftover",
+        "used both parts"
+    ],
+    forall(member(Utterance, Utterances),
+           expect_not_accepting_single(
+               Utterance, addition, make_ten_split_leftover)),
+    strategy_recognizer:recognize_strategy_episode(Utterances, Candidates),
+    ( member(Candidate, Candidates),
+      Candidate.operation == addition,
+      Candidate.kind == make_ten_split_leftover
+    -> true
+    ; throw(error(assertion_failed(
+                missing_episode_candidate(
+                    addition, make_ten_split_leftover)), _))
+    ),
+    expect_equal(clean_run, Candidate.support_level,
+                 episode_clean_support),
+    expect_equal(5, Candidate.ordered_action_count,
+                 episode_ordered_action_count),
+    expect_equal(accepting, Candidate.current_frontier.status,
+                 episode_accepting_frontier),
+    maplist(provenance_utterance_index,
+            Candidate.ordered_step_provenance, UtteranceIndexes),
+    expect_equal([0,1,2,3,4], UtteranceIndexes,
+                 episode_utterance_provenance),
+    reverse(Utterances, Reversed),
+    expect_not_accepting_episode(
+        Reversed, addition, make_ten_split_leftover).
+
+expect_not_accepting_single(Text, Operation, Kind) :-
+    strategy_recognizer:recognize_strategies(Text, Candidates),
+    ( member(Candidate, Candidates),
+      Candidate.operation == Operation,
+      Candidate.kind == Kind,
+      Candidate.current_frontier.status == accepting
+    -> throw(error(assertion_failed(
+                 single_utterance_reached_accepting(
+                     Operation, Kind, Text)), _))
+    ; true
+    ).
+
+expect_not_accepting_episode(Utterances, Operation, Kind) :-
+    strategy_recognizer:recognize_strategy_episode(Utterances, Candidates),
+    ( member(Candidate, Candidates),
+      Candidate.operation == Operation,
+      Candidate.kind == Kind,
+      Candidate.current_frontier.status == accepting
+    -> throw(error(assertion_failed(
+                 reversed_episode_reached_accepting(
+                     Operation, Kind)), _))
+    ; true
+    ).
+
+provenance_utterance_index(Provenance, Index) :-
+    Index = Provenance.utterance_index.
 
 expect_equal(Expected, Actual, Label) :-
     ( Actual == Expected

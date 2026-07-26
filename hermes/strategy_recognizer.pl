@@ -8,6 +8,7 @@
  */
 :- module(strategy_recognizer,
           [ recognize_strategies/2,          % +Text, -Candidates
+            recognize_strategy_episode/2,   % +Utterances, -Candidates
             generate_strategy_language/3,   % +Operation, +Kind, -Text
             generate_strategy_variant/4,    % +Operation, +Kind, +Variant, -Text
             observed_strategy/3             % ?Operation, ?Kind, -Actions
@@ -269,6 +270,242 @@ strategy_candidate(Operation, Kind, Steps, Tokens, Candidate) :-
         provenance: [execution_observed(contract_example),
                      controlled_action_language]
     }.
+
+%!  recognize_strategy_episode(+Utterances, -Candidates) is det.
+%
+%   Align an ordered list of utterance strings with each execution-observed
+%   trace.  The frontier advances only when an utterance supplies the next
+%   expected action.  Token offsets remain local to an utterance, and
+%   utterance_index is zero-based.  ordered_step_provenance records which
+%   utterance supplied every action that advanced the frontier.
+recognize_strategy_episode(Utterances, Candidates) :-
+    must_be(list, Utterances),
+    maplist(must_be(text), Utterances),
+    episode_tokens(Utterances, EpisodeTokens),
+    length(Utterances, UtteranceCount),
+    findall(Candidate,
+            ( observed_steps(Operation, Kind, Steps),
+              episode_strategy_candidate(
+                  Operation, Kind, Steps, EpisodeTokens, UtteranceCount,
+                  Candidate),
+              Candidate.matched_count > 0
+            ),
+            Candidates0),
+    predsort(compare_episode_candidates, Candidates0, Candidates).
+
+episode_tokens(Utterances, EpisodeTokens) :-
+    episode_tokens_(Utterances, 0, EpisodeTokens).
+
+episode_tokens_([], _, []).
+episode_tokens_([Utterance|Utterances], Index,
+                [utterance(Index, Tokens)|EpisodeTokens]) :-
+    tokenize_atom(Utterance, RawTokens),
+    maplist(normalize_token, RawTokens, Tokens),
+    NextIndex is Index + 1,
+    episode_tokens_(Utterances, NextIndex, EpisodeTokens).
+
+episode_strategy_candidate(
+    Operation, Kind, Steps, EpisodeTokens, UtteranceCount, Candidate) :-
+    annotate_steps(Steps, Annotated),
+    episode_step_matches(Annotated, EpisodeTokens, Matches),
+    length(Matches, MatchedCount),
+    length(Annotated, ExpectedCount),
+    Confidence is MatchedCount / ExpectedCount,
+    ordered_episode_prefix(Annotated, Matches, PrefixMatches),
+    length(PrefixMatches, PrefixCount),
+    OrderedConfidence is PrefixCount / ExpectedCount,
+    frontier(Annotated, PrefixCount, Frontier),
+    episode_missing_evidence(Annotated, Matches, Missing),
+    episode_incompatible_transitions(
+        Matches, PrefixMatches, Frontier.state, Incompatible),
+    support_level(ExpectedCount, MatchedCount, PrefixCount,
+                  Missing, Incompatible, Support),
+    maplist(episode_match_span_dict, Matches, MatchSpanDicts0),
+    predsort(compare_episode_span_dict, MatchSpanDicts0, MatchSpanDicts),
+    maplist(episode_match_transition_dict, Matches, TransitionDicts),
+    maplist(episode_match_action, Matches, RecoveredActions),
+    maplist(episode_match_action, PrefixMatches, OrderedActions),
+    maplist(episode_match_provenance_dict,
+            PrefixMatches, OrderedStepProvenance),
+    first_step_state(Annotated, ObservedStart),
+    last_step_state(Annotated, ObservedAccepting),
+    Candidate = _{
+        candidate_strategy: _{operation:Operation, kind:Kind},
+        operation: Operation,
+        kind: Kind,
+        recognition_unit: episode,
+        utterance_count: UtteranceCount,
+        support_level: Support,
+        confidence: Confidence,
+        ordered_confidence: OrderedConfidence,
+        matched_count: MatchedCount,
+        ordered_action_count: PrefixCount,
+        expected_actions: ExpectedCount,
+        matched_spans: MatchSpanDicts,
+        matched_transitions: TransitionDicts,
+        recovered_action_order: RecoveredActions,
+        ordered_action_order: OrderedActions,
+        ordered_step_provenance: OrderedStepProvenance,
+        current_frontier: Frontier,
+        frontier: Frontier,
+        missing_evidence: Missing,
+        incompatible_transitions: Incompatible,
+        automaton_start: ObservedStart,
+        automaton_accepting: [ObservedAccepting],
+        provenance: [execution_observed(contract_example),
+                     controlled_action_language,
+                     ordered_episode_alignment]
+    }.
+
+episode_step_matches(Annotated, EpisodeTokens, Matches) :-
+    episode_step_matches_(
+        Annotated, EpisodeTokens, episode_cursor(0, 0), Matches).
+
+episode_step_matches_([], _, _, []).
+episode_step_matches_(
+    [expected(Index, Before, Action, After, _)|Expected],
+    EpisodeTokens, Cursor, Matches) :-
+    episode_action_spans(Action, EpisodeTokens, Spans),
+    ( first_episode_span_at_or_after(
+          Spans, Cursor, episode_span(Utterance, Start, End, Surface))
+    -> Matches =
+           [episode_match(Index, Before, Action, After,
+                          Utterance, Start, End, Surface)|Rest],
+       NextCursor = episode_cursor(Utterance, End)
+    ; Spans = [episode_span(Utterance, Start, End, Surface)|_]
+    -> Matches =
+           [episode_match(Index, Before, Action, After,
+                          Utterance, Start, End, Surface)|Rest],
+       NextCursor = Cursor
+    ; Matches = Rest,
+      NextCursor = Cursor
+    ),
+    episode_step_matches_(Expected, EpisodeTokens, NextCursor, Rest).
+
+episode_action_spans(Action, EpisodeTokens, Spans) :-
+    findall(episode_span(Utterance, Start, End, Surface),
+            ( member(utterance(Utterance, Tokens), EpisodeTokens),
+              action_surface(Action, Surface),
+              surface_span(Tokens, Surface, Start, End),
+              \+ denied_span(Tokens, Start, End)
+            ),
+            Spans0),
+    sort(Spans0, Spans).
+
+first_episode_span_at_or_after(
+    [episode_span(Utterance, Start, End, Surface)|_], Cursor,
+    episode_span(Utterance, Start, End, Surface)) :-
+    episode_position_at_or_after(Utterance, Start, Cursor),
+    !.
+first_episode_span_at_or_after([_|Spans], Cursor, Span) :-
+    first_episode_span_at_or_after(Spans, Cursor, Span).
+
+episode_position_at_or_after(
+    Utterance, Start, episode_cursor(CursorUtterance, CursorToken)) :-
+    ( Utterance > CursorUtterance
+    ; Utterance =:= CursorUtterance,
+      Start >= CursorToken
+    ).
+
+ordered_episode_prefix(Annotated, Matches, PrefixMatches) :-
+    ordered_episode_prefix_(
+        Annotated, Matches, episode_cursor(0, 0), PrefixMatches).
+
+ordered_episode_prefix_([], _, _, []).
+ordered_episode_prefix_(
+    [expected(Index, Before, Action, After, _)|Expected],
+    Matches, Cursor, PrefixMatches) :-
+    ( member(episode_match(Index, Before, Action, After,
+                           Utterance, Start, End, Surface),
+             Matches),
+      episode_position_at_or_after(Utterance, Start, Cursor)
+    -> PrefixMatches =
+           [episode_match(Index, Before, Action, After,
+                          Utterance, Start, End, Surface)|Rest],
+       ordered_episode_prefix_(
+           Expected, Matches, episode_cursor(Utterance, End), Rest)
+    ; PrefixMatches = []
+    ).
+
+episode_missing_evidence(Annotated, Matches, Missing) :-
+    findall(_{step_index:Index, action:Action,
+              transition:_{from:Before, to:After}},
+            ( member(expected(Index, Before, Action, After, _), Annotated),
+              \+ memberchk(
+                     episode_match(Index, Before, Action, After,
+                                   _, _, _, _),
+                     Matches)
+            ),
+            Missing).
+
+episode_incompatible_transitions(
+    Matches, PrefixMatches, FrontierState, Incompatible) :-
+    findall(_{step_index:Index, action:Action, from:Before, to:After,
+              utterance_index:Utterance,
+              token_start:Start, token_end:End,
+              reason:not_reachable_from_current_frontier,
+              current_frontier:FrontierState},
+            ( member(episode_match(Index, Before, Action, After,
+                                   Utterance, Start, End, _),
+                     Matches),
+              \+ memberchk(
+                     episode_match(Index, Before, Action, After,
+                                   Utterance, Start, End, _),
+                     PrefixMatches)
+            ),
+            Incompatible).
+
+episode_match_span_dict(
+    episode_match(Index, _, Action, _, Utterance, Start, End, Surface),
+    _{step_index:Index, action:Action, utterance_index:Utterance,
+      token_start:Start, token_end:End, normalized_surface:Text}) :-
+    atomic_list_concat(Surface, ' ', Text).
+
+episode_match_transition_dict(
+    episode_match(Index, Before, Action, After,
+                  Utterance, Start, End, _),
+    _{step_index:Index, action:Action, from:Before, to:After,
+      utterance_index:Utterance, token_start:Start, token_end:End,
+      provenance:execution_observed(contract_example)}).
+
+episode_match_provenance_dict(
+    episode_match(Index, _, Action, _, Utterance, Start, End, Surface),
+    _{step_index:Index, action:Action, utterance_index:Utterance,
+      token_start:Start, token_end:End, normalized_surface:Text}) :-
+    atomic_list_concat(Surface, ' ', Text).
+
+episode_match_action(
+    episode_match(_, _, Action, _, _, _, _, _), Action).
+
+compare_episode_span_dict(Order, Left, Right) :-
+    compare(UtteranceOrder,
+            Left.utterance_index, Right.utterance_index),
+    ( UtteranceOrder \== (=)
+    -> Order = UtteranceOrder
+    ; compare(StartOrder, Left.token_start, Right.token_start),
+      ( StartOrder \== (=)
+      -> Order = StartOrder
+      ; compare(IndexOrder, Left.step_index, Right.step_index),
+        ( IndexOrder \== (=)
+        -> Order = IndexOrder
+        ; compare(Order, Left.action, Right.action)
+        )
+      )
+    ).
+
+compare_episode_candidates(Order, Left, Right) :-
+    support_rank(Left.support_level, LeftRank),
+    support_rank(Right.support_level, RightRank),
+    compare(RankOrder, RightRank, LeftRank),
+    ( RankOrder \== (=)
+    -> Order = RankOrder
+    ; compare(OrderedConfidenceOrder,
+              Right.ordered_confidence, Left.ordered_confidence),
+      ( OrderedConfidenceOrder \== (=)
+      -> Order = OrderedConfidenceOrder
+      ; compare_candidates(Order, Left, Right)
+      )
+    ).
 
 annotate_steps(Steps, Annotated) :-
     findall(expected(Index, Before, Action, After, Occurrence),

@@ -2,9 +2,9 @@
   "arms": {
     "authored": {
       "comparable_to_machine_arms": false,
-      "distinct_normalized_text_count": 185,
+      "distinct_normalized_text_count": 199,
       "distinct_texts_with_multiple_machine_labels": 0,
-      "item_count": 185,
+      "item_count": 199,
       "items": [
         {
           "arm": "authored",
@@ -470,9 +470,39 @@
           "arm": "authored",
           "citation": null,
           "gold": {
-            "action": "count_units"
+            "action": "iterate_composite_unit"
           },
           "id": "authored-0047",
+          "source": "knowledge/strategies/canonical_phrases.pl",
+          "text": "count by"
+        },
+        {
+          "arm": "authored",
+          "citation": null,
+          "gold": {
+            "action": "iterate_composite_unit"
+          },
+          "id": "authored-0048",
+          "source": "knowledge/strategies/canonical_phrases.pl",
+          "text": "counted by"
+        },
+        {
+          "arm": "authored",
+          "citation": null,
+          "gold": {
+            "action": "iterate_composite_unit"
+          },
+          "id": "authored-0049",
+          "source": "knowledge/strategies/canonical_phrases.pl",
+          "text": "counting by"
+        },
+        {
+          "arm": "authored",
+          "citation": null,
+          "gold": {
+            "action": "count_units"
+          },
+          "id": "authored-0050",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i counted them"
         },
@@ -482,7 +512,7 @@
           "gold": {
             "action": "count_units"
           },
-          "id": "authored-0048",
+          "id": "authored-0051",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i counted how many"
         },
@@ -492,7 +522,7 @@
           "gold": {
             "action": "count_on_from"
           },
-          "id": "authored-0049",
+          "id": "authored-0052",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i started from the bigger number and counted on"
         },
@@ -502,7 +532,7 @@
           "gold": {
             "action": "count_on_from"
           },
-          "id": "authored-0050",
+          "id": "authored-0053",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i counted on from there"
         },
@@ -512,7 +542,7 @@
           "gold": {
             "action": "count_on_from"
           },
-          "id": "authored-0051",
+          "id": "authored-0054",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i kept going from that number"
         },
@@ -522,7 +552,7 @@
           "gold": {
             "action": "count_back_from"
           },
-          "id": "authored-0052",
+          "id": "authored-0055",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i counted backwards"
         },
@@ -532,7 +562,7 @@
           "gold": {
             "action": "count_back_from"
           },
-          "id": "authored-0053",
+          "id": "authored-0056",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i counted back from it"
         },
@@ -542,7 +572,7 @@
           "gold": {
             "action": "count_up_to_target"
           },
-          "id": "authored-0054",
+          "id": "authored-0057",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i counted up until i got there"
         },
@@ -552,7 +582,7 @@
           "gold": {
             "action": "count_up_to_target"
           },
-          "id": "authored-0055",
+          "id": "authored-0058",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i counted how far it was"
         },
@@ -562,7 +592,7 @@
           "gold": {
             "action": "count_up_to_target"
           },
-          "id": "authored-0056",
+          "id": "authored-0059",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i worked out the distance"
         },
@@ -572,7 +602,7 @@
           "gold": {
             "action": "accumulate_total"
           },
-          "id": "authored-0057",
+          "id": "authored-0060",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i added them all up"
         },
@@ -582,7 +612,7 @@
           "gold": {
             "action": "accumulate_total"
           },
-          "id": "authored-0058",
+          "id": "authored-0061",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i kept a running total"
         },
@@ -590,9 +620,29 @@
           "arm": "authored",
           "citation": null,
           "gold": {
+            "action": "accumulate_total"
+          },
+          "id": "authored-0062",
+          "source": "knowledge/strategies/canonical_phrases.pl",
+          "text": "in all"
+        },
+        {
+          "arm": "authored",
+          "citation": null,
+          "gold": {
+            "action": "accumulate_total"
+          },
+          "id": "authored-0063",
+          "source": "knowledge/strategies/canonical_phrases.pl",
+          "text": "all together"
+        },
+        {
+          "arm": "authored",
+          "citation": null,
+          "gold": {
             "action": "traverse_boundary"
           },
-          "id": "authored-0059",
+          "id": "authored-0064",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i went round the outside"
         },
@@ -602,7 +652,7 @@
           "gold": {
             "action": "traverse_boundary"
           },
-          "id": "authored-0060",
+          "id": "authored-0065",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i walked along each side"
         },
@@ -612,7 +662,7 @@
           "gold": {
             "action": "measure_quantity"
           },
-          "id": "authored-0061",
+          "id": "authored-0066",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i measured each one"
         },
@@ -622,7 +672,7 @@
           "gold": {
             "action": "measure_quantity"
           },
-          "id": "authored-0062",
+          "id": "authored-0067",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i worked out how much each was"
         },
@@ -632,7 +682,7 @@
           "gold": {
             "action": "halt_before_completion"
           },
-          "id": "authored-0063",
+          "id": "authored-0068",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i stopped there"
         },
@@ -642,7 +692,7 @@
           "gold": {
             "action": "halt_before_completion"
           },
-          "id": "authored-0064",
+          "id": "authored-0069",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i did not finish going round"
         },
@@ -652,7 +702,7 @@
           "gold": {
             "action": "double_count"
           },
-          "id": "authored-0065",
+          "id": "authored-0070",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i counted some of them twice"
         },
@@ -662,7 +712,7 @@
           "gold": {
             "action": "align_to_common_unit"
           },
-          "id": "authored-0066",
+          "id": "authored-0071",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i gave them the same denominator"
         },
@@ -672,7 +722,7 @@
           "gold": {
             "action": "align_to_common_unit"
           },
-          "id": "authored-0067",
+          "id": "authored-0072",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i put them in the same units"
         },
@@ -682,7 +732,7 @@
           "gold": {
             "action": "align_to_common_unit"
           },
-          "id": "authored-0068",
+          "id": "authored-0073",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i made the bottoms match"
         },
@@ -692,7 +742,7 @@
           "gold": {
             "action": "re_express_equivalently"
           },
-          "id": "authored-0069",
+          "id": "authored-0074",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i rewrote it the same amount"
         },
@@ -702,7 +752,7 @@
           "gold": {
             "action": "re_express_equivalently"
           },
-          "id": "authored-0070",
+          "id": "authored-0075",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i wrote it a different way"
         },
@@ -712,7 +762,7 @@
           "gold": {
             "action": "regroup_to_base"
           },
-          "id": "authored-0071",
+          "id": "authored-0076",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i made a ten out of them"
         },
@@ -722,7 +772,7 @@
           "gold": {
             "action": "regroup_to_base"
           },
-          "id": "authored-0072",
+          "id": "authored-0077",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i traded ten ones for a ten"
         },
@@ -732,7 +782,7 @@
           "gold": {
             "action": "regroup_to_base"
           },
-          "id": "authored-0073",
+          "id": "authored-0078",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i carried the ten"
         },
@@ -742,7 +792,7 @@
           "gold": {
             "action": "exchange_base_down"
           },
-          "id": "authored-0074",
+          "id": "authored-0079",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i broke a ten into ones"
         },
@@ -752,7 +802,7 @@
           "gold": {
             "action": "exchange_base_down"
           },
-          "id": "authored-0075",
+          "id": "authored-0080",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i borrowed from the next column"
         },
@@ -762,7 +812,7 @@
           "gold": {
             "action": "scale_multiplicatively"
           },
-          "id": "authored-0076",
+          "id": "authored-0081",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i scaled them both up"
         },
@@ -772,7 +822,7 @@
           "gold": {
             "action": "scale_multiplicatively"
           },
-          "id": "authored-0077",
+          "id": "authored-0082",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i multiplied them by the same thing"
         },
@@ -782,7 +832,7 @@
           "gold": {
             "action": "transfer_between_operands"
           },
-          "id": "authored-0078",
+          "id": "authored-0083",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i took some from one and gave it to the other"
         },
@@ -792,7 +842,7 @@
           "gold": {
             "action": "transfer_between_operands"
           },
-          "id": "authored-0079",
+          "id": "authored-0084",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i moved both numbers the same amount"
         },
@@ -802,7 +852,7 @@
           "gold": {
             "action": "round_to_landmark"
           },
-          "id": "authored-0080",
+          "id": "authored-0085",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i rounded it to a friendly number"
         },
@@ -812,7 +862,7 @@
           "gold": {
             "action": "round_to_landmark"
           },
-          "id": "authored-0081",
+          "id": "authored-0086",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i made it up to the nearest ten"
         },
@@ -822,7 +872,7 @@
           "gold": {
             "action": "restore_adjustment"
           },
-          "id": "authored-0082",
+          "id": "authored-0087",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i took the extra back off"
         },
@@ -832,7 +882,7 @@
           "gold": {
             "action": "restore_adjustment"
           },
-          "id": "authored-0083",
+          "id": "authored-0088",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i adjusted at the end"
         },
@@ -842,7 +892,7 @@
           "gold": {
             "action": "commute_operands"
           },
-          "id": "authored-0084",
+          "id": "authored-0089",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i swapped them round"
         },
@@ -852,7 +902,7 @@
           "gold": {
             "action": "commute_operands"
           },
-          "id": "authored-0085",
+          "id": "authored-0090",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i did it the other way round"
         },
@@ -862,7 +912,7 @@
           "gold": {
             "action": "distribute_over_partition"
           },
-          "id": "authored-0086",
+          "id": "authored-0091",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i gave each part the same factor"
         },
@@ -872,7 +922,7 @@
           "gold": {
             "action": "distribute_over_partition"
           },
-          "id": "authored-0087",
+          "id": "authored-0092",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i broke it apart and multiplied each bit"
         },
@@ -882,7 +932,7 @@
           "gold": {
             "action": "substitute_values"
           },
-          "id": "authored-0088",
+          "id": "authored-0093",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i put the numbers in"
         },
@@ -892,7 +942,7 @@
           "gold": {
             "action": "substitute_values"
           },
-          "id": "authored-0089",
+          "id": "authored-0094",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i swapped the letters for numbers"
         },
@@ -902,7 +952,7 @@
           "gold": {
             "action": "recompose_total"
           },
-          "id": "authored-0090",
+          "id": "authored-0095",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i put the parts back together"
         },
@@ -912,7 +962,7 @@
           "gold": {
             "action": "recompose_total"
           },
-          "id": "authored-0091",
+          "id": "authored-0096",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i joined them back up"
         },
@@ -922,7 +972,7 @@
           "gold": {
             "action": "compose_expression"
           },
-          "id": "authored-0092",
+          "id": "authored-0097",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i wrote it as an equation"
         },
@@ -932,7 +982,7 @@
           "gold": {
             "action": "compose_expression"
           },
-          "id": "authored-0093",
+          "id": "authored-0098",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i built the expression"
         },
@@ -942,7 +992,7 @@
           "gold": {
             "action": "retain_unchanged"
           },
-          "id": "authored-0094",
+          "id": "authored-0099",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i left that one alone"
         },
@@ -952,7 +1002,7 @@
           "gold": {
             "action": "retain_unchanged"
           },
-          "id": "authored-0095",
+          "id": "authored-0100",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i kept it as it was"
         },
@@ -962,7 +1012,7 @@
           "gold": {
             "action": "retain_what_must_survive"
           },
-          "id": "authored-0096",
+          "id": "authored-0101",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i kept the leftover"
         },
@@ -972,7 +1022,7 @@
           "gold": {
             "action": "retain_what_must_survive"
           },
-          "id": "authored-0097",
+          "id": "authored-0102",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i held onto the unit"
         },
@@ -982,7 +1032,7 @@
           "gold": {
             "action": "retain_where_change_was_due"
           },
-          "id": "authored-0098",
+          "id": "authored-0103",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i left the other one the same"
         },
@@ -992,7 +1042,7 @@
           "gold": {
             "action": "retain_where_change_was_due"
           },
-          "id": "authored-0099",
+          "id": "authored-0104",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i did not change the other side"
         },
@@ -1002,7 +1052,7 @@
           "gold": {
             "action": "rename_in_place_of_transforming"
           },
-          "id": "authored-0100",
+          "id": "authored-0105",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i just changed what i called it"
         },
@@ -1012,7 +1062,7 @@
           "gold": {
             "action": "rename_in_place_of_transforming"
           },
-          "id": "authored-0101",
+          "id": "authored-0106",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i kept the number and changed the unit"
         },
@@ -1022,7 +1072,7 @@
           "gold": {
             "action": "combine_quantities"
           },
-          "id": "authored-0102",
+          "id": "authored-0107",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i added them"
         },
@@ -1032,7 +1082,7 @@
           "gold": {
             "action": "combine_quantities"
           },
-          "id": "authored-0103",
+          "id": "authored-0108",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i put them together"
         },
@@ -1040,9 +1090,39 @@
           "arm": "authored",
           "citation": null,
           "gold": {
+            "action": "combine_quantities"
+          },
+          "id": "authored-0109",
+          "source": "knowledge/strategies/canonical_phrases.pl",
+          "text": "add it"
+        },
+        {
+          "arm": "authored",
+          "citation": null,
+          "gold": {
+            "action": "combine_quantities"
+          },
+          "id": "authored-0110",
+          "source": "knowledge/strategies/canonical_phrases.pl",
+          "text": "added it"
+        },
+        {
+          "arm": "authored",
+          "citation": null,
+          "gold": {
+            "action": "combine_quantities"
+          },
+          "id": "authored-0111",
+          "source": "knowledge/strategies/canonical_phrases.pl",
+          "text": "adding it"
+        },
+        {
+          "arm": "authored",
+          "citation": null,
+          "gold": {
             "action": "remove_quantity"
           },
-          "id": "authored-0104",
+          "id": "authored-0112",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i took it away"
         },
@@ -1052,7 +1132,7 @@
           "gold": {
             "action": "remove_quantity"
           },
-          "id": "authored-0105",
+          "id": "authored-0113",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i subtracted it"
         },
@@ -1060,9 +1140,39 @@
           "arm": "authored",
           "citation": null,
           "gold": {
+            "action": "remove_quantity"
+          },
+          "id": "authored-0114",
+          "source": "knowledge/strategies/canonical_phrases.pl",
+          "text": "take away"
+        },
+        {
+          "arm": "authored",
+          "citation": null,
+          "gold": {
+            "action": "remove_quantity"
+          },
+          "id": "authored-0115",
+          "source": "knowledge/strategies/canonical_phrases.pl",
+          "text": "took away"
+        },
+        {
+          "arm": "authored",
+          "citation": null,
+          "gold": {
+            "action": "remove_quantity"
+          },
+          "id": "authored-0116",
+          "source": "knowledge/strategies/canonical_phrases.pl",
+          "text": "taking away"
+        },
+        {
+          "arm": "authored",
+          "citation": null,
+          "gold": {
             "action": "replicate_equal_groups"
           },
-          "id": "authored-0106",
+          "id": "authored-0117",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i made equal groups"
         },
@@ -1072,7 +1182,7 @@
           "gold": {
             "action": "replicate_equal_groups"
           },
-          "id": "authored-0107",
+          "id": "authored-0118",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i did that many groups of that many"
         },
@@ -1082,7 +1192,7 @@
           "gold": {
             "action": "share_into_known_groups"
           },
-          "id": "authored-0108",
+          "id": "authored-0119",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i dealt them out one each"
         },
@@ -1092,7 +1202,7 @@
           "gold": {
             "action": "share_into_known_groups"
           },
-          "id": "authored-0109",
+          "id": "authored-0120",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i shared them between the groups"
         },
@@ -1102,7 +1212,7 @@
           "gold": {
             "action": "measure_out_group_size"
           },
-          "id": "authored-0110",
+          "id": "authored-0121",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i kept taking that many away"
         },
@@ -1112,7 +1222,7 @@
           "gold": {
             "action": "measure_out_group_size"
           },
-          "id": "authored-0111",
+          "id": "authored-0122",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i counted how many groups fit"
         },
@@ -1122,7 +1232,7 @@
           "gold": {
             "action": "compute_product"
           },
-          "id": "authored-0112",
+          "id": "authored-0123",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i multiplied them"
         },
@@ -1132,7 +1242,7 @@
           "gold": {
             "action": "compute_product"
           },
-          "id": "authored-0113",
+          "id": "authored-0124",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i timesed them"
         },
@@ -1140,9 +1250,39 @@
           "arm": "authored",
           "citation": null,
           "gold": {
+            "action": "compute_product"
+          },
+          "id": "authored-0125",
+          "source": "knowledge/strategies/canonical_phrases.pl",
+          "text": "multiply by"
+        },
+        {
+          "arm": "authored",
+          "citation": null,
+          "gold": {
+            "action": "compute_product"
+          },
+          "id": "authored-0126",
+          "source": "knowledge/strategies/canonical_phrases.pl",
+          "text": "multiplied by"
+        },
+        {
+          "arm": "authored",
+          "citation": null,
+          "gold": {
+            "action": "compute_product"
+          },
+          "id": "authored-0127",
+          "source": "knowledge/strategies/canonical_phrases.pl",
+          "text": "multiplying by"
+        },
+        {
+          "arm": "authored",
+          "citation": null,
+          "gold": {
             "action": "compute_quotient"
           },
-          "id": "authored-0114",
+          "id": "authored-0128",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i divided them"
         },
@@ -1152,7 +1292,7 @@
           "gold": {
             "action": "compute_quotient"
           },
-          "id": "authored-0115",
+          "id": "authored-0129",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i halved it"
         },
@@ -1162,7 +1302,7 @@
           "gold": {
             "action": "apply_stored_rule"
           },
-          "id": "authored-0116",
+          "id": "authored-0130",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i used the rule"
         },
@@ -1172,7 +1312,7 @@
           "gold": {
             "action": "apply_stored_rule"
           },
-          "id": "authored-0117",
+          "id": "authored-0131",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i did the steps i was taught"
         },
@@ -1182,7 +1322,7 @@
           "gold": {
             "action": "apply_quantity_change"
           },
-          "id": "authored-0118",
+          "id": "authored-0132",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i changed the amount"
         },
@@ -1192,7 +1332,7 @@
           "gold": {
             "action": "retrieve_known_fact"
           },
-          "id": "authored-0119",
+          "id": "authored-0133",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i just knew it"
         },
@@ -1202,7 +1342,7 @@
           "gold": {
             "action": "retrieve_known_fact"
           },
-          "id": "authored-0120",
+          "id": "authored-0134",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i remembered that one"
         },
@@ -1212,7 +1352,7 @@
           "gold": {
             "action": "retrieve_known_fact"
           },
-          "id": "authored-0121",
+          "id": "authored-0135",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i knew a near one"
         },
@@ -1222,7 +1362,7 @@
           "gold": {
             "action": "exhaust_resource"
           },
-          "id": "authored-0122",
+          "id": "authored-0136",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i could not remember it"
         },
@@ -1232,7 +1372,7 @@
           "gold": {
             "action": "exhaust_resource"
           },
-          "id": "authored-0123",
+          "id": "authored-0137",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "there was no way back"
         },
@@ -1242,7 +1382,7 @@
           "gold": {
             "action": "evaluate_expression"
           },
-          "id": "authored-0124",
+          "id": "authored-0138",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i worked out what it came to"
         },
@@ -1252,7 +1392,7 @@
           "gold": {
             "action": "substitute_operation"
           },
-          "id": "authored-0125",
+          "id": "authored-0139",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i added them instead"
         },
@@ -1262,7 +1402,7 @@
           "gold": {
             "action": "substitute_operation"
           },
-          "id": "authored-0126",
+          "id": "authored-0140",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i did the other operation"
         },
@@ -1272,7 +1412,7 @@
           "gold": {
             "action": "compare_magnitudes"
           },
-          "id": "authored-0127",
+          "id": "authored-0141",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i worked out which was bigger"
         },
@@ -1282,7 +1422,7 @@
           "gold": {
             "action": "compare_magnitudes"
           },
-          "id": "authored-0128",
+          "id": "authored-0142",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i compared them"
         },
@@ -1292,7 +1432,7 @@
           "gold": {
             "action": "match_one_to_one"
           },
-          "id": "authored-0129",
+          "id": "authored-0143",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i matched them up one to one"
         },
@@ -1302,7 +1442,7 @@
           "gold": {
             "action": "match_one_to_one"
           },
-          "id": "authored-0130",
+          "id": "authored-0144",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i paired them off"
         },
@@ -1312,7 +1452,7 @@
           "gold": {
             "action": "judge_against_benchmark"
           },
-          "id": "authored-0131",
+          "id": "authored-0145",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i checked each against a half"
         },
@@ -1322,7 +1462,7 @@
           "gold": {
             "action": "judge_against_benchmark"
           },
-          "id": "authored-0132",
+          "id": "authored-0146",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i saw which side of a half they were"
         },
@@ -1332,7 +1472,7 @@
           "gold": {
             "action": "compare_residuals"
           },
-          "id": "authored-0133",
+          "id": "authored-0147",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i looked at how much was left over in each"
         },
@@ -1342,7 +1482,7 @@
           "gold": {
             "action": "compare_additive_gaps"
           },
-          "id": "authored-0134",
+          "id": "authored-0148",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i looked at the gap between top and bottom"
         },
@@ -1352,7 +1492,7 @@
           "gold": {
             "action": "order_by_magnitude"
           },
-          "id": "authored-0135",
+          "id": "authored-0149",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i put them in order"
         },
@@ -1362,7 +1502,7 @@
           "gold": {
             "action": "order_by_magnitude"
           },
-          "id": "authored-0136",
+          "id": "authored-0150",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i lined them up smallest first"
         },
@@ -1372,7 +1512,7 @@
           "gold": {
             "action": "locate_position"
           },
-          "id": "authored-0137",
+          "id": "authored-0151",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i found where it goes"
         },
@@ -1382,7 +1522,7 @@
           "gold": {
             "action": "locate_position"
           },
-          "id": "authored-0138",
+          "id": "authored-0152",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i marked it on the line"
         },
@@ -1392,7 +1532,7 @@
           "gold": {
             "action": "test_criteria"
           },
-          "id": "authored-0139",
+          "id": "authored-0153",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i checked whether it fit"
         },
@@ -1402,7 +1542,7 @@
           "gold": {
             "action": "test_criteria"
           },
-          "id": "authored-0140",
+          "id": "authored-0154",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i tested if that was true"
         },
@@ -1412,7 +1552,7 @@
           "gold": {
             "action": "enumerate_candidates"
           },
-          "id": "authored-0141",
+          "id": "authored-0155",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i listed all the ones i could find"
         },
@@ -1422,7 +1562,7 @@
           "gold": {
             "action": "enumerate_candidates"
           },
-          "id": "authored-0142",
+          "id": "authored-0156",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i tried them all"
         },
@@ -1432,7 +1572,7 @@
           "gold": {
             "action": "filter_by_constraint"
           },
-          "id": "authored-0143",
+          "id": "authored-0157",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i kept the ones that worked"
         },
@@ -1442,7 +1582,7 @@
           "gold": {
             "action": "filter_by_constraint"
           },
-          "id": "authored-0144",
+          "id": "authored-0158",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i threw out the ones that did not fit"
         },
@@ -1452,7 +1592,7 @@
           "gold": {
             "action": "intersect_candidate_sets"
           },
-          "id": "authored-0145",
+          "id": "authored-0159",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i found the ones in both lists"
         },
@@ -1462,7 +1602,7 @@
           "gold": {
             "action": "select_extremal"
           },
-          "id": "authored-0146",
+          "id": "authored-0160",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i took the biggest one"
         },
@@ -1472,7 +1612,7 @@
           "gold": {
             "action": "select_extremal"
           },
-          "id": "authored-0147",
+          "id": "authored-0161",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i picked the smallest that worked"
         },
@@ -1482,7 +1622,7 @@
           "gold": {
             "action": "isolate_unknown"
           },
-          "id": "authored-0148",
+          "id": "authored-0162",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i got the unknown on its own"
         },
@@ -1492,7 +1632,7 @@
           "gold": {
             "action": "isolate_unknown"
           },
-          "id": "authored-0149",
+          "id": "authored-0163",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i worked out what the missing one was"
         },
@@ -1502,7 +1642,7 @@
           "gold": {
             "action": "set_aside_irrelevant_attribute"
           },
-          "id": "authored-0150",
+          "id": "authored-0164",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "it does not matter which way round it is"
         },
@@ -1512,7 +1652,7 @@
           "gold": {
             "action": "set_aside_irrelevant_attribute"
           },
-          "id": "authored-0151",
+          "id": "authored-0165",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i ignored that because it does not change it"
         },
@@ -1522,7 +1662,7 @@
           "gold": {
             "action": "substitute_appearance_for_measure"
           },
-          "id": "authored-0152",
+          "id": "authored-0166",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "it looked bigger"
         },
@@ -1532,7 +1672,7 @@
           "gold": {
             "action": "substitute_appearance_for_measure"
           },
-          "id": "authored-0153",
+          "id": "authored-0167",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i went by how it looked"
         },
@@ -1542,7 +1682,7 @@
           "gold": {
             "action": "substitute_count_for_measure"
           },
-          "id": "authored-0154",
+          "id": "authored-0168",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i counted the pieces"
         },
@@ -1552,7 +1692,7 @@
           "gold": {
             "action": "substitute_count_for_measure"
           },
-          "id": "authored-0155",
+          "id": "authored-0169",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i counted the marks"
         },
@@ -1562,7 +1702,7 @@
           "gold": {
             "action": "substitute_additive_for_multiplicative"
           },
-          "id": "authored-0156",
+          "id": "authored-0170",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i looked at the difference instead"
         },
@@ -1572,7 +1712,7 @@
           "gold": {
             "action": "substitute_scalar_for_structured_quantity"
           },
-          "id": "authored-0157",
+          "id": "authored-0171",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i ignored the minus sign"
         },
@@ -1582,7 +1722,7 @@
           "gold": {
             "action": "substitute_scalar_for_structured_quantity"
           },
-          "id": "authored-0158",
+          "id": "authored-0172",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i just used how far it was"
         },
@@ -1592,7 +1732,7 @@
           "gold": {
             "action": "dispatch_to_kernel"
           },
-          "id": "authored-0159",
+          "id": "authored-0173",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i checked it with a drawing"
         },
@@ -1602,7 +1742,7 @@
           "gold": {
             "action": "dispatch_to_kernel"
           },
-          "id": "authored-0160",
+          "id": "authored-0174",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i worked that bit out separately"
         },
@@ -1612,7 +1752,7 @@
           "gold": {
             "action": "receive_kernel_outcome"
           },
-          "id": "authored-0161",
+          "id": "authored-0175",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "that gave me the answer to use"
         },
@@ -1622,7 +1762,7 @@
           "gold": {
             "action": "verify_invariant"
           },
-          "id": "authored-0162",
+          "id": "authored-0176",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i checked it still held"
         },
@@ -1632,7 +1772,7 @@
           "gold": {
             "action": "verify_invariant"
           },
-          "id": "authored-0163",
+          "id": "authored-0177",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i made sure they were the same size"
         },
@@ -1642,7 +1782,7 @@
           "gold": {
             "action": "verify_by_substitution"
           },
-          "id": "authored-0164",
+          "id": "authored-0178",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i put it back in to check"
         },
@@ -1652,7 +1792,7 @@
           "gold": {
             "action": "name_result"
           },
-          "id": "authored-0165",
+          "id": "authored-0179",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "so the answer is"
         },
@@ -1662,7 +1802,7 @@
           "gold": {
             "action": "name_result"
           },
-          "id": "authored-0166",
+          "id": "authored-0180",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "that gives"
         },
@@ -1672,7 +1812,7 @@
           "gold": {
             "action": "name_result"
           },
-          "id": "authored-0167",
+          "id": "authored-0181",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i got"
         },
@@ -1682,7 +1822,7 @@
           "gold": {
             "action": "inscribe_result"
           },
-          "id": "authored-0168",
+          "id": "authored-0182",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i wrote it down"
         },
@@ -1692,7 +1832,7 @@
           "gold": {
             "action": "inscribe_result"
           },
-          "id": "authored-0169",
+          "id": "authored-0183",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i put the digits in"
         },
@@ -1702,7 +1842,7 @@
           "gold": {
             "action": "emit_result"
           },
-          "id": "authored-0170",
+          "id": "authored-0184",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "so that one is bigger"
         },
@@ -1712,7 +1852,7 @@
           "gold": {
             "action": "emit_result"
           },
-          "id": "authored-0171",
+          "id": "authored-0185",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "that is my answer"
         },
@@ -1722,7 +1862,7 @@
           "gold": {
             "action": "record_conservation"
           },
-          "id": "authored-0172",
+          "id": "authored-0186",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "it is still the same amount"
         },
@@ -1732,7 +1872,7 @@
           "gold": {
             "action": "record_conservation"
           },
-          "id": "authored-0173",
+          "id": "authored-0187",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "nothing got lost"
         },
@@ -1742,7 +1882,7 @@
           "gold": {
             "action": "record_loss"
           },
-          "id": "authored-0174",
+          "id": "authored-0188",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i lost track of something"
         },
@@ -1752,7 +1892,7 @@
           "gold": {
             "action": "record_loss"
           },
-          "id": "authored-0175",
+          "id": "authored-0189",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "that is not the same amount any more"
         },
@@ -1762,7 +1902,7 @@
           "gold": {
             "action": "record_viability"
           },
-          "id": "authored-0176",
+          "id": "authored-0190",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "it depends on the numbers"
         },
@@ -1772,7 +1912,7 @@
           "gold": {
             "action": "attach_units_coordination"
           },
-          "id": "authored-0177",
+          "id": "authored-0191",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i can count past the whole now"
         },
@@ -1782,7 +1922,7 @@
           "gold": {
             "action": "misname_result"
           },
-          "id": "authored-0178",
+          "id": "authored-0192",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i gave the wrong thing as the answer"
         },
@@ -1792,7 +1932,7 @@
           "gold": {
             "action": "misname_result"
           },
-          "id": "authored-0179",
+          "id": "authored-0193",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i answered a different question"
         },
@@ -1802,7 +1942,7 @@
           "gold": {
             "action": "omit_required_step"
           },
-          "id": "authored-0180",
+          "id": "authored-0194",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i skipped that step"
         },
@@ -1812,7 +1952,7 @@
           "gold": {
             "action": "omit_required_step"
           },
-          "id": "authored-0181",
+          "id": "authored-0195",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i did not do that part"
         },
@@ -1822,7 +1962,7 @@
           "gold": {
             "action": "treat_relevant_as_irrelevant"
           },
-          "id": "authored-0182",
+          "id": "authored-0196",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i ignored that bit"
         },
@@ -1832,7 +1972,7 @@
           "gold": {
             "action": "treat_relevant_as_irrelevant"
           },
-          "id": "authored-0183",
+          "id": "authored-0197",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i did not think it mattered"
         },
@@ -1842,7 +1982,7 @@
           "gold": {
             "action": "accept_without_check"
           },
-          "id": "authored-0184",
+          "id": "authored-0198",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i did not check they were equal"
         },
@@ -1852,14 +1992,14 @@
           "gold": {
             "action": "accept_without_check"
           },
-          "id": "authored-0185",
+          "id": "authored-0199",
           "source": "knowledge/strategies/canonical_phrases.pl",
           "text": "i just took it as given"
         }
       ],
       "scoring_grain": "action",
       "source": "knowledge/strategies/canonical_phrases.pl",
-      "source_row_count": 185
+      "source_row_count": 199
     },
     "literature": {
       "distinct_normalized_text_count": 193,

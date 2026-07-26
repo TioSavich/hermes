@@ -94,6 +94,10 @@ canonical_phrase(iterate_unit, [i,laid,it,down,again,and,again]).
 canonical_phrase(iterate_composite_unit, [i,counted,by,groups]).
 canonical_phrase(iterate_composite_unit, [i,skip,counted]).
 canonical_phrase(iterate_composite_unit, [i,counted,each,group,as,one]).
+% TalkMoves full corpus: recurring band (10-24 student sentences per form).
+canonical_phrase(iterate_composite_unit, [count,by]).
+canonical_phrase(iterate_composite_unit, [counted,by]).
+canonical_phrase(iterate_composite_unit, [counting,by]).
 canonical_phrase(count_units, [i,counted,them]).
 canonical_phrase(count_units, [i,counted,how,many]).
 canonical_phrase(count_on_from, [i,started,from,the,bigger,number,and,counted,on]).
@@ -106,6 +110,9 @@ canonical_phrase(count_up_to_target, [i,counted,how,far,it,was]).
 canonical_phrase(count_up_to_target, [i,worked,out,the,distance]).
 canonical_phrase(accumulate_total, [i,added,them,all,up]).
 canonical_phrase(accumulate_total, [i,kept,a,running,total]).
+% TalkMoves full corpus: common/recurring bands (28 and 15 student sentences).
+canonical_phrase(accumulate_total, [in,all]).
+canonical_phrase(accumulate_total, [all,together]).
 canonical_phrase(traverse_boundary, [i,went,round,the,outside]).
 canonical_phrase(traverse_boundary, [i,walked,along,each,side]).
 canonical_phrase(measure_quantity, [i,measured,each,one]).
@@ -155,8 +162,16 @@ canonical_phrase(rename_in_place_of_transforming, [i,kept,the,number,and,changed
 % -- grounded operation --------------------------------------------------
 canonical_phrase(combine_quantities, [i,added,them]).
 canonical_phrase(combine_quantities, [i,put,them,together]).
+% TalkMoves full corpus: common/recurring bands (39, 10, and 6 sentences).
+canonical_phrase(combine_quantities, [add,it]).
+canonical_phrase(combine_quantities, [added,it]).
+canonical_phrase(combine_quantities, [adding,it]).
 canonical_phrase(remove_quantity, [i,took,it,away]).
 canonical_phrase(remove_quantity, [i,subtracted,it]).
+% TalkMoves full corpus: very common/sparse bands (50, 6, and 8 sentences).
+canonical_phrase(remove_quantity, [take,away]).
+canonical_phrase(remove_quantity, [took,away]).
+canonical_phrase(remove_quantity, [taking,away]).
 canonical_phrase(replicate_equal_groups, [i,made,equal,groups]).
 canonical_phrase(replicate_equal_groups, [i,did,that,many,groups,of,that,many]).
 canonical_phrase(share_into_known_groups, [i,dealt,them,out,one,each]).
@@ -165,6 +180,10 @@ canonical_phrase(measure_out_group_size, [i,kept,taking,that,many,away]).
 canonical_phrase(measure_out_group_size, [i,counted,how,many,groups,fit]).
 canonical_phrase(compute_product, [i,multiplied,them]).
 canonical_phrase(compute_product, [i,timesed,them]).
+% TalkMoves full corpus: common/recurring bands (44, 26, and 10 sentences).
+canonical_phrase(compute_product, [multiply,by]).
+canonical_phrase(compute_product, [multiplied,by]).
+canonical_phrase(compute_product, [multiplying,by]).
 canonical_phrase(compute_quotient, [i,divided,them]).
 canonical_phrase(compute_quotient, [i,halved,it]).
 canonical_phrase(apply_stored_rule, [i,used,the,rule]).
