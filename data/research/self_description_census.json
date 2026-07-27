@@ -417,13 +417,13 @@
       "sequent": 14,
       "standards": 22,
       "synthesis": 34,
-      "unclassified": 3,
+      "unclassified": 4,
       "workflow": 5,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 9,
-      "orphan_module": 61,
+      "orphan_module": 62,
       "routed_paged": 195,
       "unrouted": 6
     },
@@ -434,9 +434,9 @@
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
-      "undetermined": 25
+      "undetermined": 26
     },
-    "total": 271,
+    "total": 272,
     "unrouted": 6
   },
   "generated_by": "scripts/research/build_self_description_census.py",
@@ -1132,6 +1132,20 @@
       "module": "im_lesson_identity",
       "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
       "path": "knowledge/index/im_lesson_identity.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "unclassified",
+      "evidence": [
+        {
+          "locator": "/** <module> Generated student-task-span absence registry",
+          "path": "knowledge/index/task_span_absence_registry.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "task_span_absence_registry",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/index/task_span_absence_registry.pl",
       "verdict": "undetermined"
     },
     {

@@ -832,18 +832,20 @@ def build() -> dict[str, object]:
     # is orphan_module and unclassified, which is accurate: the relation is
     # queryable from Prolog and no worker op routes to it yet.
     #
-    # knowledge/index/im_lesson_identity.pl is the 271st, on the same grounds.
-    # It landed in 7ce0a20 without a registry regeneration, so this baseline and
-    # hermes/capability_registry.pl both described a tree that no longer existed
-    # and the gate was red from that commit until 2026-07-27. Regenerating the
-    # registry is what a new module under knowledge/ costs.
-    if len(registry_rows) != 271:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 271")
+    # knowledge/index/im_lesson_identity.pl is the 271st and
+    # knowledge/index/task_span_absence_registry.pl the 272nd, on the same
+    # grounds. The lesson-identity index landed in 7ce0a20 without a registry
+    # regeneration, so this baseline and hermes/capability_registry.pl both
+    # described a tree that no longer existed and the gate was red from that
+    # commit until 2026-07-27. Regenerating the registry is what a new module
+    # under knowledge/ costs.
+    if len(registry_rows) != 272:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 272")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
-    # module and the lesson-identity index the 61st, for the same reason each is
-    # a capability.
-    if len(orphan_records) != 61:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 61")
+    # module, the lesson-identity index the 61st, and the task-span absence
+    # registry the 62nd, for the same reason each is a capability.
+    if len(orphan_records) != 62:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 62")
     if len(unrouted) != 6:
         raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 6")
 
