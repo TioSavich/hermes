@@ -417,13 +417,13 @@
       "sequent": 14,
       "standards": 22,
       "synthesis": 34,
-      "unclassified": 4,
+      "unclassified": 5,
       "workflow": 5,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 9,
-      "orphan_module": 62,
+      "orphan_module": 63,
       "routed_paged": 195,
       "unrouted": 6
     },
@@ -434,9 +434,9 @@
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
-      "undetermined": 26
+      "undetermined": 27
     },
-    "total": 272,
+    "total": 273,
     "unrouted": 6
   },
   "generated_by": "scripts/research/build_self_description_census.py",
@@ -1132,6 +1132,20 @@
       "module": "im_lesson_identity",
       "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
       "path": "knowledge/index/im_lesson_identity.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "unclassified",
+      "evidence": [
+        {
+          "locator": "/** <module> Generated research-measurement provenance registry",
+          "path": "knowledge/index/research_measurement_registry.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "research_measurement_registry",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/index/research_measurement_registry.pl",
       "verdict": "undetermined"
     },
     {

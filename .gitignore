@@ -34,6 +34,7 @@ CLAUDE.md
 scripts/research/articulation_out/
 scripts/research/quantity_binding_out/
 scripts/research/negative_receipts_out/
+scripts/research/vision_excerpt_verification_out/
 .claude/worktrees/
 .claude/
 

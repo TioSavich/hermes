@@ -45,6 +45,10 @@ run extract_im_lesson_identity python3 "$CHECKS_DIR/../extract_im_lesson_identit
 run extract_coverage_absence_registry python3 "$CHECKS_DIR/../extract_coverage_absence_registry.py" --check
 run extract_task_span_absence_registry python3 "$CHECKS_DIR/../extract_task_span_absence_registry.py" --check
 run self_description_census.py python3 "$CHECKS_DIR/self_description_census.py"
+# After the census: the census writes a docs/research report, and the measurement
+# registry indexes every report. Checking the registry first reports a staleness
+# whose cause is one line further down.
+run extract_research_measurement_registry python3 "$CHECKS_DIR/../extract_research_measurement_registry.py" --check
 run render_contract.py      python3 "$CHECKS_DIR/render_contract.py"
 run strict_load.sh          bash "$CHECKS_DIR/strict_load.sh"
 run field_context_cache.py  python3 "$CHECKS_DIR/field_context_cache.py"
