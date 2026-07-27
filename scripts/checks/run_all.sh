@@ -41,6 +41,7 @@ run utterance_layers.py     python3 "$CHECKS_DIR/utterance_layers.py"
 run attested_phrases.py     python3 "$CHECKS_DIR/attested_phrases.py"
 run recognition_benchmark.py python3 "$CHECKS_DIR/recognition_benchmark.py"
 run extract_capability_registry python3 "$CHECKS_DIR/../extract_capability_registry.py" --check
+run extract_coverage_absence_registry python3 "$CHECKS_DIR/../extract_coverage_absence_registry.py" --check
 run self_description_census.py python3 "$CHECKS_DIR/self_description_census.py"
 run render_contract.py      python3 "$CHECKS_DIR/render_contract.py"
 run strict_load.sh          bash "$CHECKS_DIR/strict_load.sh"
