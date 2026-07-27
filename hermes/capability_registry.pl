@@ -258,6 +258,7 @@ capability('knowledge/crosswalk/merge_evidence.pl', 'merge_evidence', 'crosswalk
 capability('knowledge/crosswalk/vocabulary_licenses.pl', 'vocabulary_licenses', 'crosswalk', [], orphan_module).
 capability('knowledge/discourse/commitment_automata.pl', 'commitment_automata', 'pml', [], orphan_module).
 capability('knowledge/geometry/geometry_bridge.pl', 'geometry_bridge', 'geometry_witness', [], orphan_module).
+capability('knowledge/index/coverage_absence_registry.pl', 'coverage_absence_registry', 'unclassified', [], orphan_module).
 capability('knowledge/misconceptions/literature_canonical_mappings.pl', 'literature_canonical_mappings', 'misconceptions', [], orphan_module).
 capability('knowledge/strategies/action_grammar.pl', 'action_grammar', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/automaton_input_contracts.pl', 'automaton_input_contracts', 'synthesis', [], orphan_module).

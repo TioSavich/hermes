@@ -1,12 +1,17 @@
 /** <module> Generated coverage and absence registry
  *
  * This bounded relation records receipt status for three live source sets:
- * Lakoff--Nunez metaphor families, IM lessons with compiled productive
- * tasks, and the lesson-evidence pipeline inputs.  It does not claim a
- * complete curriculum inventory.
+ * the joined geometry/formal/MUA metaphor vocabulary, IM lessons with
+ * compiled productive tasks, and the lesson-evidence pipeline inputs.
+ * It does not claim a complete curriculum inventory.
+ *
+ * Metaphor status keeps live scene renderers separate from source-domain
+ * card art. A present(...) metaphor receipt names its live route kinds;
+ * source_domain_art_only remains a coverage gap for student representations.
+ * The generator reads drawer.js DISPATCH keys before accepting a live route.
  *
  * Statuses preserve distinctions found in the current tree:
- *   - present: a named source fact or parsed source record supports the receipt.
+ *   - present: a named source fact or live render route supports the receipt.
  *   - coverage_gap: the relevant machinery loads, but no receipt joins this subject.
  *   - broken_pipeline: a required upstream input is absent from this checkout.
  *   - path_drift: the reader names an old path while the source is present elsewhere.
@@ -21,22 +26,32 @@
           [ coverage_receipt/4,
             receipt_denominator/2,
             receipt_status_count/3,
+            metaphor_render_status_count/2,
+            metaphor_route_count/2,
+            drawer_dispatch_count/1,
             metaphor_without_renderer/2,
             lesson_without_structured_negative/2
           ]).
 
-coverage_receipt(metaphor(bmi_circle_polygon), renderer, coverage_gap(no_primitive_mapping), [source_fact(geometry_schema, lakoff_nunez_metaphor_family)]).
-coverage_receipt(metaphor(bmi_projective), renderer, coverage_gap(no_primitive_mapping), [source_fact(geometry_schema, lakoff_nunez_metaphor_family)]).
-coverage_receipt(metaphor(bmi_via_set_blend), renderer, coverage_gap(no_primitive_mapping), [source_fact(geometry_schema, lakoff_nunez_metaphor_family)]).
-coverage_receipt(metaphor(categories_are_containers), renderer, coverage_gap(no_primitive_renderer_join), [source_fact(grounding_to_primitive, primitive_renders_metaphor), source_table(representation_asset_manifest, representation_concepts)]).
-coverage_receipt(metaphor(container_schema), renderer, present, [source_fact(grounding_to_primitive, primitive_renders_metaphor, 'P2', container_schema, secondary), source_table(representation_asset_manifest, representation_concepts), source_fact(representation_grammar, representation_render_status, fraction_bars, fraction_render)]).
-coverage_receipt(metaphor(fictive_motion), renderer, coverage_gap(no_primitive_mapping), [source_fact(geometry_schema, lakoff_nunez_metaphor_family)]).
-coverage_receipt(metaphor(motion_along_a_path), renderer, coverage_gap(no_primitive_mapping), [source_fact(geometry_schema, lakoff_nunez_metaphor_family)]).
-coverage_receipt(metaphor(rotation_plane_blend), renderer, coverage_gap(no_primitive_mapping), [source_fact(geometry_schema, lakoff_nunez_metaphor_family)]).
-coverage_receipt(metaphor(source_path_goal), renderer, present, [source_fact(grounding_to_primitive, primitive_renders_metaphor, 'P1', source_path_goal, primary), source_table(representation_asset_manifest, representation_concepts), source_fact(representation_grammar, representation_render_status, number_line, number_line_render)]).
-coverage_receipt(metaphor(space_set_blend), renderer, coverage_gap(no_primitive_mapping), [source_fact(geometry_schema, lakoff_nunez_metaphor_family)]).
-coverage_receipt(metaphor(spaces_are_sets_of_points), renderer, coverage_gap(no_primitive_mapping), [source_fact(geometry_schema, lakoff_nunez_metaphor_family)]).
-coverage_receipt(metaphor(unit_circle_blend), renderer, coverage_gap(no_primitive_mapping), [source_fact(geometry_schema, lakoff_nunez_metaphor_family)]).
+coverage_receipt(metaphor(arithmetic_is_measuring_stick), renderer, present(live_scene_renderer([primitive_to_dispatch, representation_grammar]), source_domain_art), [source_name(formal_definitions, arithmetic_is_measuring_stick), source_name(mua_relations, measuring_stick), live_scene_route(primitive_to_dispatch, 'P1', measuring_stick, primary, number_line, 'number-line'), live_scene_route(primitive_to_dispatch, 'P2', measuring_stick, secondary, fraction_bars, 'fraction-bars'), live_scene_route(representation_grammar, area_model, measuring_stick, area_render, 'area-model'), live_scene_route(representation_grammar, coordinate_plane, measuring_stick, coordinate_plane_render, 'coordinate-plane'), live_scene_route(representation_grammar, data_display, measuring_stick, data_display_render, 'data-display'), live_scene_route(representation_grammar, fraction_bars, measuring_stick, fraction_render, 'fraction-bars'), live_scene_route(representation_grammar, number_line, measuring_stick, number_line_render, 'number-line'), source_domain_art('hermes/web/metaphor-art.js', arithmetic_is_measuring_stick)]).
+coverage_receipt(metaphor(arithmetic_is_motion_along_a_path), renderer, present(live_scene_renderer([primitive_to_dispatch]), source_domain_art), [source_name(formal_definitions, arithmetic_is_motion_along_a_path), source_name(geometry_inventory, motion_along_a_path), source_name(mua_relations, motion_along_path), live_scene_route(primitive_to_dispatch, 'P1', motion_along_path, primary, number_line, 'number-line'), source_domain_art('hermes/web/metaphor-art.js', arithmetic_is_motion_along_a_path)]).
+coverage_receipt(metaphor(arithmetic_is_object_collection), renderer, present(live_scene_renderer([primitive_to_dispatch, representation_grammar]), source_domain_art), [source_name(formal_definitions, arithmetic_is_object_collection), source_name(mua_relations, object_collection), live_scene_route(primitive_to_dispatch, 'P3', object_collection, secondary, area_model, 'area-model'), live_scene_route(primitive_to_dispatch, 'P5', object_collection, primary, set_grouping, 'set-grouping'), live_scene_route(representation_grammar, base_ten_blocks, object_collection, base_ten_render, 'base-ten-columns'), live_scene_route(representation_grammar, data_display, object_collection, data_display_render, 'data-display'), live_scene_route(representation_grammar, set_grouping, object_collection, set_grouping_render, 'set-grouping'), source_domain_art('hermes/web/metaphor-art.js', arithmetic_is_object_collection)]).
+coverage_receipt(metaphor(arithmetic_is_object_construction), renderer, present(live_scene_renderer([primitive_to_dispatch, representation_grammar]), source_domain_art), [source_name(formal_definitions, arithmetic_is_object_construction), source_name(mua_relations, object_construction), live_scene_route(primitive_to_dispatch, 'P2', object_construction, primary, fraction_bars, 'fraction-bars'), live_scene_route(primitive_to_dispatch, 'P3', object_construction, secondary, area_model, 'area-model'), live_scene_route(primitive_to_dispatch, 'P4', object_construction, primary, base_ten_blocks, 'base-ten-columns'), live_scene_route(primitive_to_dispatch, 'P4', object_construction, primary, place_value_chart, 'place-value-chart'), live_scene_route(representation_grammar, polyform_tiling, object_construction, polyform_tiling_render, 'polyform-tiling'), live_scene_route(representation_grammar, set_grouping, object_construction, set_grouping_render, 'set-grouping'), live_scene_route(representation_grammar, solid_net, object_construction, solid_net_render, 'solid-net'), source_domain_art('hermes/web/metaphor-art.js', arithmetic_is_object_construction)]).
+coverage_receipt(metaphor(balance_preservation_schema), renderer, present(live_scene_renderer([primitive_to_dispatch])), [source_name(formal_definitions, balance_preservation_schema), source_name(mua_relations, balance_preservation_schema), live_scene_route(primitive_to_dispatch, 'PB', balance_preservation_schema, primary, balance_scale, 'balance-scale')]).
+coverage_receipt(metaphor(bmi_circle_polygon), renderer, coverage_gap(no_live_renderer), [source_name(geometry_inventory, bmi_circle_polygon)]).
+coverage_receipt(metaphor(bmi_projective), renderer, coverage_gap(no_live_renderer), [source_name(geometry_inventory, bmi_projective)]).
+coverage_receipt(metaphor(bmi_via_set_blend), renderer, coverage_gap(no_live_renderer), [source_name(geometry_inventory, bmi_via_set_blend)]).
+coverage_receipt(metaphor(categories_are_containers), renderer, coverage_gap(no_live_renderer), [source_name(geometry_inventory, categories_are_containers)]).
+coverage_receipt(metaphor(container_schema), renderer, present(live_scene_renderer([primitive_to_dispatch])), [source_name(geometry_inventory, container_schema), live_scene_route(primitive_to_dispatch, 'P2', container_schema, secondary, fraction_bars, 'fraction-bars')]).
+coverage_receipt(metaphor(fictive_motion), renderer, present(live_scene_renderer([representation_grammar])), [source_name(geometry_inventory, fictive_motion), live_scene_route(representation_grammar, rigid_motion, fictive_motion, rigid_motion_render, 'rigid-motion')]).
+coverage_receipt(metaphor(multiplication_by_minus_one_is_rotation_by_180_degrees), renderer, present(live_scene_renderer([primitive_to_dispatch]), source_domain_art), [source_name(formal_definitions, multiplication_by_minus_one_is_rotation_by_180_degrees), live_scene_route(primitive_to_dispatch, 'P1', multiplication_by_minus_one_is_rotation_by_180_degrees, secondary, number_line, 'number-line'), source_domain_art('hermes/web/metaphor-art.js', multiplication_by_minus_one_is_rotation_by_180_degrees)]).
+coverage_receipt(metaphor(rotation_plane_blend), renderer, coverage_gap(no_live_renderer), [source_name(geometry_inventory, rotation_plane_blend)]).
+coverage_receipt(metaphor(source_path_goal), renderer, present(live_scene_renderer([primitive_to_dispatch, representation_grammar])), [source_name(geometry_inventory, source_path_goal), live_scene_route(primitive_to_dispatch, 'P1', source_path_goal, primary, number_line, 'number-line'), live_scene_route(representation_grammar, angle_circular, source_path_goal, angle_circular_render, 'angle-circular'), live_scene_route(representation_grammar, number_line, source_path_goal, number_line_render, 'number-line')]).
+coverage_receipt(metaphor(space_set_blend), renderer, coverage_gap(no_live_renderer), [source_name(geometry_inventory, space_set_blend)]).
+coverage_receipt(metaphor(spaces_are_sets_of_points), renderer, present(live_scene_renderer([representation_grammar])), [source_name(geometry_inventory, spaces_are_sets_of_points), live_scene_route(representation_grammar, coordinate_plane, spaces_are_sets_of_points, coordinate_plane_render, 'coordinate-plane'), live_scene_route(representation_grammar, geoboard, spaces_are_sets_of_points, geoboard_render, geoboard)]).
+coverage_receipt(metaphor(unit_circle_blend), renderer, coverage_gap(no_live_renderer), [source_name(geometry_inventory, unit_circle_blend)]).
+coverage_receipt(metaphor(zero_collection_metaphor), renderer, present(live_scene_renderer([primitive_to_dispatch]), source_domain_art), [source_name(formal_definitions, zero_collection_metaphor), live_scene_route(primitive_to_dispatch, 'P5', zero_collection_metaphor, secondary, set_grouping, 'set-grouping'), source_domain_art('hermes/web/metaphor-art.js', zero_collection_metaphor)]).
+coverage_receipt(metaphor(zero_object_metaphor), renderer, present(live_scene_renderer([primitive_to_dispatch]), source_domain_art), [source_name(formal_definitions, zero_object_metaphor), live_scene_route(primitive_to_dispatch, 'P2', zero_object_metaphor, secondary, fraction_bars, 'fraction-bars'), source_domain_art('hermes/web/metaphor-art.js', zero_object_metaphor)]).
 coverage_receipt(lesson('IM-G1-U2-L1'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G1-U2-L12'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-G1-U2-L14'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
@@ -59,11 +74,11 @@ coverage_receipt(lesson('IM-G1-U6-L14'), structured_negative, coverage_gap(no_st
 coverage_receipt(lesson('IM-G1-U6-L15'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-G1-U8-L4'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-G1-U8-L6'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
-coverage_receipt(lesson('IM-G2-U1-L16'), structured_negative, path_drift('geometry/corpus/im_teacher_guides/grade2/unit1/lesson16.md', 'curriculum/im_teacher_guides/grade2/unit1/lesson16.md'), [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
+coverage_receipt(lesson('IM-G2-U1-L16'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
 coverage_receipt(lesson('IM-G2-U2-L1'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G2-U2-L11'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G2-U2-L13'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
-coverage_receipt(lesson('IM-G2-U2-L14'), structured_negative, path_drift('geometry/corpus/im_teacher_guides/grade2/unit2/lesson14.md', 'curriculum/im_teacher_guides/grade2/unit2/lesson14.md'), [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
+coverage_receipt(lesson('IM-G2-U2-L14'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
 coverage_receipt(lesson('IM-G2-U2-L3'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-G2-U3-L10'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G2-U3-L11'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
@@ -73,32 +88,32 @@ coverage_receipt(lesson('IM-G3-U1-L12'), structured_negative, present, [source_f
 coverage_receipt(lesson('IM-G3-U1-L13'), structured_negative, present, [source_fact(compiled_task_instances, compiled_lesson_task_instance)]).
 coverage_receipt(lesson('IM-G3-U1-L14'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G3-U1-L15'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
-coverage_receipt(lesson('IM-G3-U1-L18'), structured_negative, path_drift('geometry/corpus/im_teacher_guides/grade3/unit1/lesson18.md', 'curriculum/im_teacher_guides/grade3/unit1/lesson18.md'), [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
+coverage_receipt(lesson('IM-G3-U1-L18'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
 coverage_receipt(lesson('IM-G3-U1-L19'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
-coverage_receipt(lesson('IM-G3-U1-L9'), structured_negative, path_drift('geometry/corpus/im_teacher_guides/grade3/unit1/lesson9.md', 'curriculum/im_teacher_guides/grade3/unit1/lesson9.md'), [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
+coverage_receipt(lesson('IM-G3-U1-L9'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
 coverage_receipt(lesson('IM-G3-U2-L10'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-G3-U2-L3'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-G3-U3-L2'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G3-U3-L9'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
-coverage_receipt(lesson('IM-G3-U4-L1'), structured_negative, path_drift('geometry/corpus/im_teacher_guides/grade3/unit4/lesson1.md', 'curriculum/im_teacher_guides/grade3/unit4/lesson1.md'), [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
+coverage_receipt(lesson('IM-G3-U4-L1'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
 coverage_receipt(lesson('IM-G3-U4-L15'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-G3-U4-L3'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
-coverage_receipt(lesson('IM-G3-U4-L6'), structured_negative, path_drift('geometry/corpus/im_teacher_guides/grade3/unit4/lesson6.md', 'curriculum/im_teacher_guides/grade3/unit4/lesson6.md'), [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
+coverage_receipt(lesson('IM-G3-U4-L6'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
 coverage_receipt(lesson('IM-G3-U4-L7'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-G3-U6-L8'), structured_negative, present, [source_fact(compiled_task_instances, compiled_lesson_task_instance)]).
 coverage_receipt(lesson('IM-G3-U7-L13'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-G3-U7-L14'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
-coverage_receipt(lesson('IM-G3-U7-L9'), structured_negative, path_drift('geometry/corpus/im_teacher_guides/grade3/unit7/lesson9.md', 'curriculum/im_teacher_guides/grade3/unit7/lesson9.md'), [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
+coverage_receipt(lesson('IM-G3-U7-L9'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
 coverage_receipt(lesson('IM-G4-U1-L2'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-G4-U3-L1'), structured_negative, present, [source_fact(compiled_task_instances, compiled_lesson_task_instance)]).
 coverage_receipt(lesson('IM-G4-U3-L8'), structured_negative, present, [source_fact(compiled_task_instances, compiled_lesson_task_instance)]).
 coverage_receipt(lesson('IM-G4-U5-L16'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-G4-U5-L3'), structured_negative, present, [source_fact(compiled_task_instances, compiled_lesson_task_instance)]).
-coverage_receipt(lesson('IM-G4-U5-L7'), structured_negative, path_drift('geometry/corpus/im_teacher_guides/grade4/unit5/lesson7.md', 'curriculum/im_teacher_guides/grade4/unit5/lesson7.md'), [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
+coverage_receipt(lesson('IM-G4-U5-L7'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
 coverage_receipt(lesson('IM-G4-U6-L14'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G4-U6-L5'), structured_negative, present, [source_fact(lesson_monitoring, explicit_lesson_misconception)]).
 coverage_receipt(lesson('IM-G5-U1-L11'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
-coverage_receipt(lesson('IM-G5-U2-L1'), structured_negative, path_drift('geometry/corpus/im_teacher_guides/grade5/unit2/lesson1.md', 'curriculum/im_teacher_guides/grade5/unit2/lesson1.md'), [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
+coverage_receipt(lesson('IM-G5-U2-L1'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
 coverage_receipt(lesson('IM-G5-U4-L19'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-G5-U4-L9'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-G5-U5-L11'), structured_negative, present, [source_fact(compiled_task_instances, compiled_lesson_task_instance)]).
@@ -186,42 +201,50 @@ coverage_receipt(lesson('IM-G7-U5-L7'), structured_negative, present, [source_fa
 coverage_receipt(lesson('IM-G7-U5-L8'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
 coverage_receipt(lesson('IM-GK-U5-L7'), structured_negative, present, [source_fact(compiled_task_instances, compiled_lesson_task_instance)]).
 coverage_receipt(lesson('IM-GK-U7-L10'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
-coverage_receipt(lesson('IM-GK-U8-L18'), structured_negative, path_drift('geometry/corpus/im_teacher_guides/kindergarten/unit8/lesson18.md', 'curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md'), [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
+coverage_receipt(lesson('IM-GK-U8-L18'), structured_negative, present, [source_fact(lesson_negative_receipts, reviewed_source_fragment)]).
 coverage_receipt(lesson('IM-GK-U8-L3'), structured_negative, coverage_gap(no_structured_negative_receipt), [machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]).
-coverage_receipt(pipeline(build_lesson_evidence), input(spine), broken_pipeline('data/learningcommons/derived/im_k8_spine.json'), [reader_path, absent_source_file]).
-coverage_receipt(pipeline(build_lesson_evidence), input(standard_action_catalog), broken_pipeline('data/learningcommons/derived/im_ccss_action_catalog.json'), [reader_path, absent_source_file]).
-coverage_receipt(pipeline(build_lesson_evidence), input(productive_deformation_catalog), broken_pipeline('data/learningcommons/derived/im_productive_deformation_catalog.json'), [reader_path, absent_source_file]).
+coverage_receipt(pipeline(build_lesson_evidence), input(spine), present, [source_file]).
+coverage_receipt(pipeline(build_lesson_evidence), input(standard_action_catalog), present, [source_file]).
+coverage_receipt(pipeline(build_lesson_evidence), input(productive_deformation_catalog), present, [source_file]).
 coverage_receipt(pipeline(build_lesson_evidence), input(negative_receipts), present, [parsed_receipt_records(10)]).
-coverage_receipt(pipeline(build_lesson_evidence), input(compiled_action_mappings), path_drift('lessons/im/generated/compiled_action_mappings.pl', 'curriculum/im/generated/compiled_action_mappings.pl'), [reader_path, relocated_source_file]).
-coverage_receipt(pipeline(build_lesson_evidence), input(compiled_task_instances), path_drift('lessons/im/generated/compiled_task_instances.pl', 'curriculum/im/generated/compiled_task_instances.pl'), [reader_path, relocated_source_file]).
-coverage_receipt(pipeline(build_lesson_evidence), input(atlas_landscape), broken_pipeline('scripts/bigred/iteration15/work/atlas/atlas_landscape.jsonl'), [reader_path, absent_source_file]).
+coverage_receipt(pipeline(build_lesson_evidence), input(compiled_action_mappings), present, [source_file]).
+coverage_receipt(pipeline(build_lesson_evidence), input(compiled_task_instances), present, [source_file]).
+coverage_receipt(pipeline(build_lesson_evidence), input(atlas_landscape), present, [source_file]).
 coverage_receipt(pipeline(build_lesson_evidence), input(refresh_catalog_nodes), not_applicable(refresh_catalog_only), [reader_path('data/learningcommons/nodes.jsonl')]).
 
-receipt_denominator(metaphor_renderer, 12).
+receipt_denominator(metaphor_renderer, 19).
 receipt_denominator(productive_lesson_structured_negative, 151).
 receipt_denominator(lesson_evidence_pipeline, 8).
 
-receipt_status_count(metaphor_renderer, present, 2).
-receipt_status_count(metaphor_renderer, coverage_gap, 10).
+receipt_status_count(metaphor_renderer, present, 12).
+receipt_status_count(metaphor_renderer, coverage_gap, 7).
 receipt_status_count(metaphor_renderer, broken_pipeline, 0).
 receipt_status_count(metaphor_renderer, path_drift, 0).
 receipt_status_count(metaphor_renderer, not_applicable, 0).
 receipt_status_count(metaphor_renderer, unknown, 0).
-receipt_status_count(productive_lesson_structured_negative, present, 39).
+receipt_status_count(productive_lesson_structured_negative, present, 49).
 receipt_status_count(productive_lesson_structured_negative, coverage_gap, 102).
 receipt_status_count(productive_lesson_structured_negative, broken_pipeline, 0).
-receipt_status_count(productive_lesson_structured_negative, path_drift, 10).
+receipt_status_count(productive_lesson_structured_negative, path_drift, 0).
 receipt_status_count(productive_lesson_structured_negative, not_applicable, 0).
 receipt_status_count(productive_lesson_structured_negative, unknown, 0).
-receipt_status_count(lesson_evidence_pipeline, present, 1).
+receipt_status_count(lesson_evidence_pipeline, present, 7).
 receipt_status_count(lesson_evidence_pipeline, coverage_gap, 0).
-receipt_status_count(lesson_evidence_pipeline, broken_pipeline, 4).
-receipt_status_count(lesson_evidence_pipeline, path_drift, 2).
+receipt_status_count(lesson_evidence_pipeline, broken_pipeline, 0).
+receipt_status_count(lesson_evidence_pipeline, path_drift, 0).
 receipt_status_count(lesson_evidence_pipeline, not_applicable, 1).
 receipt_status_count(lesson_evidence_pipeline, unknown, 0).
 
-metaphor_without_renderer(Family, Status) :-
-    coverage_receipt(metaphor(Family), renderer, Status, _),
+metaphor_render_status_count(live_scene_renderer, 12).
+metaphor_render_status_count(source_domain_art_only, 0).
+metaphor_render_status_count(no_live_renderer, 7).
+metaphor_route_count(primitive_to_dispatch, 10).
+metaphor_route_count(representation_grammar, 6).
+metaphor_route_count(source_domain_art, 7).
+drawer_dispatch_count(16).
+
+metaphor_without_renderer(Metaphor, Status) :-
+    coverage_receipt(metaphor(Metaphor), renderer, Status, _),
     Status = coverage_gap(_).
 
 lesson_without_structured_negative(Lesson, Status) :-

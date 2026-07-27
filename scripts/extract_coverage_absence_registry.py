@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Generate the bounded Hermes coverage-and-absence registry.
 
-The registry records three live, finite subject sets: Lakoff--Nunez metaphor
-families, IM lessons with a compiled productive task, and the lesson-evidence
-pipeline inputs.  It records the receipt status rather than reducing every
+The registry records three live, finite subject sets: the joined metaphor
+vocabulary, IM lessons with a compiled productive task, and the lesson-evidence
+pipeline inputs. It records the receipt status rather than reducing every
 absence to a boolean.
 """
 from __future__ import annotations
@@ -23,6 +23,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "knowledge" / "index" / "coverage_absence_registry.pl"
 ASSET_MANIFEST = ROOT / "hermes" / "representation" / "build_asset_manifest.py"
+DRAWER = ROOT / "hermes" / "web" / "render" / "drawer.js"
+METAPHOR_ART = ROOT / "hermes" / "web" / "metaphor-art.js"
+MONITORING_VISUAL_CHECK = ROOT / "hermes" / "app" / "scripts" / "verify_monitoring_visuals.py"
 NEGATIVE_RECEIPTS = ROOT / "scripts" / "curriculum" / "lesson_negative_receipts.json"
 
 PIPELINE_INPUTS = (
@@ -30,8 +33,8 @@ PIPELINE_INPUTS = (
     ("standard_action_catalog", "data/learningcommons/derived/im_ccss_action_catalog.json", None),
     ("productive_deformation_catalog", "data/learningcommons/derived/im_productive_deformation_catalog.json", None),
     ("negative_receipts", "scripts/curriculum/lesson_negative_receipts.json", None),
-    ("compiled_action_mappings", "lessons/im/generated/compiled_action_mappings.pl", "curriculum/im/generated/compiled_action_mappings.pl"),
-    ("compiled_task_instances", "lessons/im/generated/compiled_task_instances.pl", "curriculum/im/generated/compiled_task_instances.pl"),
+    ("compiled_action_mappings", "curriculum/im/generated/compiled_action_mappings.pl", None),
+    ("compiled_task_instances", "curriculum/im/generated/compiled_task_instances.pl", None),
     ("atlas_landscape", "scripts/bigred/iteration15/work/atlas/atlas_landscape.jsonl", None),
 )
 REFRESH_ONLY_INPUT = "data/learningcommons/nodes.jsonl"
@@ -58,13 +61,20 @@ def run_prolog_inventory() -> dict[str, set[tuple[str, ...]]]:
     """Read each source relation through its supported Hermes loader."""
     goal = r"""
 ensure_loaded(geometry(schema)),
+use_module(formalization(grounding_metaphors)),
+use_module(pml(mua_relations)),
 use_module(render(grounding_to_primitive)),
 use_module(render(representation_grammar)),
 use_module(lessons('im/lesson_monitoring')),
 use_module(lessons('im/generated/compiled_task_instances')),
 forall(lakoff_nunez_metaphor_family(F), format('family\t~w~n', [F])),
+forall(grounding_metaphors:base_grounding_metaphor_definition(F, _, _, _), format('formal_metaphor\t~w~n', [F])),
+forall(mua_relations:grounding_metaphor(_, M), format('mua_metaphor\t~w~n', [M])),
+forall(grounding_to_primitive:metaphor_vocabulary_alias(C, S, N, Citation), format('alias\t~w\t~w\t~w\t~q~n', [C, S, N, Citation])),
+forall(grounding_to_primitive:metaphor_vocabulary_noncorrespondence(S, N, Compared, Reason), format('noncorrespondence\t~w\t~w\t~q\t~w~n', [S, N, Compared, Reason])),
 forall(grounding_to_primitive:primitive_renders_metaphor(P, M, Role), format('primitive\t~w\t~w\t~w~n', [P, M, Role])),
 forall(representation_grammar:representation_render_status(R, renderable(Op)), format('renderer\t~w\t~w~n', [R, Op])),
+forall((representation_grammar:representation_grounding(R, Grounding), sub_term(M, Grounding), atom(M)), format('grammar_grounding\t~w\t~w~n', [R, M])),
 forall(compiled_task_instances:compiled_lesson_task_instance(L, productive-_, _), format('productive\t~w~n', [L])),
 forall(compiled_task_instances:compiled_lesson_task_instance(L, deformation(_)-_, _), format('deformation\t~w~n', [L])),
 forall(lesson_monitoring:explicit_lesson_misconception(L, _, _, _), format('explicit\t~w~n', [L])),
@@ -85,7 +95,19 @@ halt
         fields = tuple(line.split("\t"))
         if fields:
             rows[fields[0]].add(fields[1:])
-    required = {"family", "primitive", "renderer", "productive", "deformation", "explicit"}
+    required = {
+        "family",
+        "formal_metaphor",
+        "mua_metaphor",
+        "alias",
+        "noncorrespondence",
+        "primitive",
+        "renderer",
+        "grammar_grounding",
+        "productive",
+        "deformation",
+        "explicit",
+    }
     missing = required - rows.keys()
     if missing:
         raise RuntimeError(f"Prolog inventory returned no rows for: {', '.join(sorted(missing))}")
@@ -116,6 +138,70 @@ def primitive_renderer_join() -> dict[str, set[str]]:
     if not by_primitive:
         raise RuntimeError("representation asset manifest has no primitive renderer joins")
     return by_primitive
+
+
+def python_assignment(path: Path, name: str) -> object:
+    """Read one literal Python assignment without importing the module."""
+    tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+    mapping_node = next(
+        (
+            node.value
+            for node in tree.body
+            if isinstance(node, ast.Assign)
+            and any(
+                isinstance(target, ast.Name) and target.id == name
+                for target in node.targets
+            )
+        ),
+        None,
+    )
+    if mapping_node is None:
+        raise RuntimeError(f"{name} is missing from {path.relative_to(ROOT)}")
+    return ast.literal_eval(mapping_node)
+
+
+def drawer_dispatch_formats() -> set[str]:
+    """Parse the live drawer DISPATCH keys instead of carrying another list."""
+    source = DRAWER.read_text(encoding="utf-8")
+    match = re.search(r"\bvar\s+DISPATCH\s*=\s*\{(.*?)\n\s*\};", source, re.S)
+    if match is None:
+        raise RuntimeError("drawer.js has no parseable DISPATCH table")
+    formats = set(re.findall(r"^\s*'([^']+)'\s*:", match.group(1), re.M))
+    if not formats:
+        raise RuntimeError("drawer.js DISPATCH table has no formats")
+    return formats
+
+
+def metaphor_art_keys() -> set[str]:
+    """Read authored source-domain illustration methods from metaphor-art.js."""
+    source = METAPHOR_ART.read_text(encoding="utf-8")
+    keys = set(re.findall(r"^\s{2}([a-z][a-z0-9_]*)\(\)\s*\{", source, re.M))
+    keys.discard("_fallback")
+    if not keys:
+        raise RuntimeError("metaphor-art.js has no illustration methods")
+    return keys
+
+
+def representation_scene_formats(dispatch_formats: set[str]) -> dict[str, set[str]]:
+    """Join grammar names to scene formats, then require a live DISPATCH key."""
+    declared = python_assignment(
+        MONITORING_VISUAL_CHECK, "REPRESENTATION_SCENE_FORMATS"
+    )
+    if not isinstance(declared, dict):
+        raise RuntimeError("REPRESENTATION_SCENE_FORMATS is not a dict")
+    by_representation: dict[str, set[str]] = {}
+    for representation, formats in declared.items():
+        by_representation[str(representation)] = {
+            str(scene_format)
+            for scene_format in formats
+            if str(scene_format) in dispatch_formats
+        }
+    # The seven spatial representations use the underscore-to-hyphen spelling
+    # of their grammar id. This rule is checked against DISPATCH, not trusted.
+    for scene_format in dispatch_formats:
+        representation = scene_format.replace("-", "_")
+        by_representation.setdefault(representation, set()).add(scene_format)
+    return by_representation
 
 
 def validate_receipt_path(receipt: dict) -> tuple[str, str | None]:
@@ -174,40 +260,160 @@ def receipt_row(subject: str, receipt: str, status: str, evidence: str) -> str:
 def render_registry() -> str:
     inventory = run_prolog_inventory()
     primitive_to_representations = primitive_renderer_join()
+    dispatch_formats = drawer_dispatch_formats()
+    scene_formats = representation_scene_formats(dispatch_formats)
+    art_keys = metaphor_art_keys()
     reviewed_receipts = load_negative_receipts()
 
     families = sorted(family[0] for family in inventory["family"])
+    formal_metaphors = sorted(row[0] for row in inventory["formal_metaphor"])
+    mua_values = sorted(row[0] for row in inventory["mua_metaphor"])
+    source_names = {
+        "geometry_inventory": set(families),
+        "formal_definitions": set(formal_metaphors),
+        "mua_relations": set(mua_values),
+    }
+    aliases = sorted(inventory["alias"])
+    noncorrespondences = sorted(inventory["noncorrespondence"])
+    alias_pairs = {(source, name) for _canonical, source, name, _citation in aliases}
+    noncorrespondence_pairs = {
+        (source, name)
+        for source, name, _compared_sources, _reason in noncorrespondences
+    }
+    known_pairs = {
+        (source, name)
+        for source, names in source_names.items()
+        for name in names
+    }
+    unknown_aliases = alias_pairs - known_pairs
+    if unknown_aliases:
+        raise RuntimeError(
+            "metaphor aliases cite names absent from their source: "
+            + ", ".join(f"{source}:{name}" for source, name in sorted(unknown_aliases))
+        )
+    overlap = alias_pairs & noncorrespondence_pairs
+    if overlap:
+        raise RuntimeError(
+            "metaphor names are both aliased and non-corresponding: "
+            + ", ".join(f"{source}:{name}" for source, name in sorted(overlap))
+        )
+    unexamined = known_pairs - alias_pairs - noncorrespondence_pairs
+    if unexamined:
+        raise RuntimeError(
+            "metaphor names lack an alias or explicit non-correspondence: "
+            + ", ".join(f"{source}:{name}" for source, name in sorted(unexamined))
+        )
+
+    canonical_for_pair = {
+        (source, name): canonical
+        for canonical, source, name, _citation in aliases
+    }
+    canonical_by_raw: dict[str, str] = {}
+    for (_source, name), canonical in canonical_for_pair.items():
+        prior = canonical_by_raw.setdefault(name, canonical)
+        if prior != canonical:
+            raise RuntimeError(
+                f"metaphor name {name} maps to both {prior} and {canonical}"
+            )
+
+    metaphor_members: dict[str, list[tuple[str, str]]] = defaultdict(list)
+    for source, names in source_names.items():
+        for name in names:
+            if name == "no_metaphor_grounding":
+                continue
+            canonical = canonical_for_pair.get((source, name), name)
+            metaphor_members[canonical].append((source, name))
+
+    def canonical_name(name: str) -> str:
+        return canonical_by_raw.get(name, name)
+
     primitive_rows = sorted(inventory["primitive"])
     renderers = {representation: operation for representation, operation in inventory["renderer"]}
-    primitive_by_metaphor: dict[str, list[tuple[str, str]]] = defaultdict(list)
+    primitive_routes: dict[str, list[str]] = defaultdict(list)
     for primitive, metaphor, role in primitive_rows:
-        primitive_by_metaphor[metaphor].append((primitive, role))
+        canonical = canonical_name(metaphor)
+        if canonical not in metaphor_members:
+            continue
+        for representation in sorted(primitive_to_representations.get(primitive, ())):
+            for scene_format in sorted(scene_formats.get(representation, ())):
+                primitive_routes[canonical].append(
+                    "live_scene_route(primitive_to_dispatch, "
+                    f"{prolog_atom(primitive)}, {prolog_atom(metaphor)}, "
+                    f"{prolog_atom(role)}, {prolog_atom(representation)}, "
+                    f"{prolog_atom(scene_format)})"
+                )
+
+    grammar_routes: dict[str, list[str]] = defaultdict(list)
+    for representation, metaphor in sorted(inventory["grammar_grounding"]):
+        canonical = canonical_name(metaphor)
+        operation = renderers.get(representation)
+        if canonical not in metaphor_members or operation is None:
+            continue
+        for scene_format in sorted(scene_formats.get(representation, ())):
+            grammar_routes[canonical].append(
+                "live_scene_route(representation_grammar, "
+                f"{prolog_atom(representation)}, {prolog_atom(metaphor)}, "
+                f"{prolog_atom(operation)}, {prolog_atom(scene_format)})"
+            )
+
+    art_by_metaphor = {canonical_name(name) for name in art_keys}
+    unknown_art = art_by_metaphor - metaphor_members.keys()
+    if unknown_art:
+        raise RuntimeError(
+            "metaphor-art.js keys are outside the joined vocabulary: "
+            + ", ".join(sorted(unknown_art))
+        )
 
     rows: list[tuple[str, str, str]] = []
-    for family in families:
-        candidates = []
-        for primitive, role in primitive_by_metaphor.get(family, []):
-            for representation in sorted(primitive_to_representations.get(primitive, ())):
-                operation = renderers.get(representation)
-                if operation:
-                    candidates.append((primitive, role, representation, operation))
-        subject = f"metaphor({prolog_atom(family)})"
-        if candidates:
-            primitive, role, representation, operation = candidates[0]
-            status = "present"
-            evidence = (
-                "[source_fact(grounding_to_primitive, primitive_renders_metaphor, "
-                f"{prolog_atom(primitive)}, {prolog_atom(family)}, {prolog_atom(role)}), "
-                "source_table(representation_asset_manifest, representation_concepts), "
-                f"source_fact(representation_grammar, representation_render_status, {prolog_atom(representation)}, {prolog_atom(operation)})]"
+    metaphor_status_counts: Counter[str] = Counter()
+    metaphor_route_subjects: dict[str, set[str]] = defaultdict(set)
+    for metaphor in sorted(metaphor_members):
+        primitive_evidence = sorted(set(primitive_routes.get(metaphor, ())))
+        grammar_evidence = sorted(set(grammar_routes.get(metaphor, ())))
+        has_art = metaphor in art_by_metaphor
+        route_kinds = []
+        if primitive_evidence:
+            route_kinds.append("primitive_to_dispatch")
+            metaphor_route_subjects["primitive_to_dispatch"].add(metaphor)
+        if grammar_evidence:
+            route_kinds.append("representation_grammar")
+            metaphor_route_subjects["representation_grammar"].add(metaphor)
+        if has_art:
+            metaphor_route_subjects["source_domain_art"].add(metaphor)
+
+        membership_evidence = [
+            f"source_name({prolog_atom(source)}, {prolog_atom(name)})"
+            for source, name in sorted(metaphor_members[metaphor])
+        ]
+        evidence_items = membership_evidence + primitive_evidence + grammar_evidence
+        if has_art:
+            evidence_items.append(
+                "source_domain_art('hermes/web/metaphor-art.js', "
+                f"{prolog_atom(metaphor)})"
             )
-        elif family not in primitive_by_metaphor:
-            status = status_term("coverage_gap", "no_primitive_mapping")
-            evidence = "[source_fact(geometry_schema, lakoff_nunez_metaphor_family)]"
+        subject = f"metaphor({prolog_atom(metaphor)})"
+        if route_kinds:
+            route_list = "[" + ", ".join(route_kinds) + "]"
+            if has_art:
+                status = (
+                    f"present(live_scene_renderer({route_list}), "
+                    "source_domain_art)"
+                )
+            else:
+                status = f"present(live_scene_renderer({route_list}))"
+            metaphor_status_counts["live_scene_renderer"] += 1
+        elif has_art:
+            status = "coverage_gap(source_domain_art_only)"
+            metaphor_status_counts["source_domain_art_only"] += 1
         else:
-            status = status_term("coverage_gap", "no_primitive_renderer_join")
-            evidence = "[source_fact(grounding_to_primitive, primitive_renders_metaphor), source_table(representation_asset_manifest, representation_concepts)]"
-        rows.append(("metaphor_renderer", status.split("(", 1)[0], receipt_row(subject, "renderer", status, evidence)))
+            status = "coverage_gap(no_live_renderer)"
+            metaphor_status_counts["no_live_renderer"] += 1
+        evidence = "[" + ", ".join(evidence_items) + "]"
+        rows.append((
+            "metaphor_renderer",
+            status.split("(", 1)[0],
+            receipt_row(subject, "renderer", status, evidence),
+        ))
 
     productive_lessons = {lesson[0] for lesson in inventory["productive"]}
     deformation_lessons = {lesson[0] for lesson in inventory["deformation"]}
@@ -271,7 +477,7 @@ def render_registry() -> str:
     ))
 
     scopes = {
-        "metaphor_renderer": len(families),
+        "metaphor_renderer": len(metaphor_members),
         "productive_lesson_structured_negative": len(productive_lessons),
         "lesson_evidence_pipeline": len(PIPELINE_INPUTS) + 1,
     }
@@ -283,12 +489,17 @@ def render_registry() -> str:
         "/** <module> Generated coverage and absence registry",
         " *",
         " * This bounded relation records receipt status for three live source sets:",
-        " * Lakoff--Nunez metaphor families, IM lessons with compiled productive", 
-        " * tasks, and the lesson-evidence pipeline inputs.  It does not claim a", 
-        " * complete curriculum inventory.",
+        " * the joined geometry/formal/MUA metaphor vocabulary, IM lessons with",
+        " * compiled productive tasks, and the lesson-evidence pipeline inputs.",
+        " * It does not claim a complete curriculum inventory.",
+        " *",
+        " * Metaphor status keeps live scene renderers separate from source-domain",
+        " * card art. A present(...) metaphor receipt names its live route kinds;",
+        " * source_domain_art_only remains a coverage gap for student representations.",
+        " * The generator reads drawer.js DISPATCH keys before accepting a live route.",
         " *",
         " * Statuses preserve distinctions found in the current tree:",
-        " *   - present: a named source fact or parsed source record supports the receipt.",
+        " *   - present: a named source fact or live render route supports the receipt.",
         " *   - coverage_gap: the relevant machinery loads, but no receipt joins this subject.",
         " *   - broken_pipeline: a required upstream input is absent from this checkout.",
         " *   - path_drift: the reader names an old path while the source is present elsewhere.",
@@ -303,6 +514,9 @@ def render_registry() -> str:
         "          [ coverage_receipt/4,",
         "            receipt_denominator/2,",
         "            receipt_status_count/3,",
+        "            metaphor_render_status_count/2,",
+        "            metaphor_route_count/2,",
+        "            drawer_dispatch_count/1,",
         "            metaphor_without_renderer/2,",
         "            lesson_without_structured_negative/2",
         "          ]).",
@@ -316,10 +530,30 @@ def render_registry() -> str:
     for scope in scopes:
         for status in STATUS_KINDS:
             lines.append(f"receipt_status_count({scope}, {status}, {scope_counts[scope][status]}).")
+    lines.append("")
+    for status in (
+        "live_scene_renderer",
+        "source_domain_art_only",
+        "no_live_renderer",
+    ):
+        lines.append(
+            f"metaphor_render_status_count({status}, "
+            f"{metaphor_status_counts[status]})."
+        )
+    for route in (
+        "primitive_to_dispatch",
+        "representation_grammar",
+        "source_domain_art",
+    ):
+        lines.append(
+            f"metaphor_route_count({route}, "
+            f"{len(metaphor_route_subjects[route])})."
+        )
+    lines.append(f"drawer_dispatch_count({len(dispatch_formats)}).")
     lines.extend([
         "",
-        "metaphor_without_renderer(Family, Status) :-",
-        "    coverage_receipt(metaphor(Family), renderer, Status, _),",
+        "metaphor_without_renderer(Metaphor, Status) :-",
+        "    coverage_receipt(metaphor(Metaphor), renderer, Status, _),",
         "    Status = coverage_gap(_).",
         "",
         "lesson_without_structured_negative(Lesson, Status) :-",

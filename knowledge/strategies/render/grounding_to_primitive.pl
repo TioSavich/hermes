@@ -14,11 +14,11 @@
  * which visual primitive renders which metaphor/schema -- so a content claim
  * routes to its visual through its grounding, not by ad-hoc topic match.
  *
- * The drawer.js DISPATCH table ships nine renderers today: fraction-bars,
- * number-line, area-model, base-ten-columns, place-value-chart, set-grouping,
- * balance-scale, hybridization-model, and notation. The facts here record a
- * grounding relation (which primitive renders which metaphor/schema); they are
- * not themselves a claim that a renderer exists for every mapped primitive.
+ * The drawer.js DISPATCH table ships 16 renderers today. The generated coverage
+ * registry reads that table directly before treating a primitive as rendered.
+ * The facts here record a grounding relation (which primitive renders which
+ * metaphor/schema); they are not themselves a claim that a renderer exists for
+ * every mapped primitive.
  *
  * Sources:
  *   - formal/formalization/grounding_metaphors.pl (the four metaphors + repairs)
@@ -32,12 +32,164 @@
           [ primitive_renders_metaphor/3,      % ?Primitive, ?MetaphorLabel, ?Role
             primitive_for_practice/3,           % ?Practice, ?Primitive, ?Role
             primitive_for_practice_witness/4,   % ?Practice, ?Primitive, ?Role, -Witness
+            metaphor_vocabulary_alias/4,        % ?Canonical, ?Source, ?Name, ?Citation
+            metaphor_vocabulary_noncorrespondence/4,
             metaphor_label_gloss/2,             % ?MetaphorLabel, ?Gloss
             metaphor_image_schema/2,            % ?MetaphorLabel, ?Schema
             image_schema_for_practice/2         % ?Practice, ?Schema
           ]).
 
 :- use_module(pml(mua_relations)).
+
+%!  metaphor_vocabulary_alias(?Canonical, ?Source, ?Name, ?Citation) is nondet.
+%
+%   Citation-bearing names that denote the same metaphor across the geometry
+%   inventory, the formal definition table, and the MUA assignment table.
+%   Canonical is an identifier for this join, not a claim that one source owns
+%   the other sources' vocabulary. Each row cites a concrete fact in its source.
+metaphor_vocabulary_alias(
+    arithmetic_is_object_collection,
+    formal_definitions,
+    arithmetic_is_object_collection,
+    source_fact('formal/formalization/grounding_metaphors.pl',
+                base_grounding_metaphor_definition/4,
+                arithmetic_is_object_collection)).
+metaphor_vocabulary_alias(
+    arithmetic_is_object_collection,
+    mua_relations,
+    object_collection,
+    source_fact('formal/pml/mua_relations.pl',
+                grounding_metaphor/2,
+                grounding_metaphor(p_count_on_from_larger, object_collection))).
+
+metaphor_vocabulary_alias(
+    arithmetic_is_object_construction,
+    formal_definitions,
+    arithmetic_is_object_construction,
+    source_fact('formal/formalization/grounding_metaphors.pl',
+                base_grounding_metaphor_definition/4,
+                arithmetic_is_object_construction)).
+metaphor_vocabulary_alias(
+    arithmetic_is_object_construction,
+    mua_relations,
+    object_construction,
+    source_fact('formal/pml/mua_relations.pl',
+                grounding_metaphor/2,
+                grounding_metaphor(p_make_ten_split_leftover,
+                                   object_construction))).
+
+metaphor_vocabulary_alias(
+    arithmetic_is_measuring_stick,
+    formal_definitions,
+    arithmetic_is_measuring_stick,
+    source_fact('formal/formalization/grounding_metaphors.pl',
+                base_grounding_metaphor_definition/4,
+                arithmetic_is_measuring_stick)).
+metaphor_vocabulary_alias(
+    arithmetic_is_measuring_stick,
+    mua_relations,
+    measuring_stick,
+    source_fact('formal/pml/mua_relations.pl',
+                grounding_metaphor/2,
+                grounding_metaphor(p_unit_fraction_iteration,
+                                   measuring_stick))).
+
+metaphor_vocabulary_alias(
+    arithmetic_is_motion_along_a_path,
+    geometry_inventory,
+    motion_along_a_path,
+    source_fact('knowledge/geometry/metaphors/lakoff_nunez_inventory.pl',
+                lakoff_nunez_metaphor_family/1,
+                lakoff_nunez_metaphor_family(motion_along_a_path))).
+metaphor_vocabulary_alias(
+    arithmetic_is_motion_along_a_path,
+    formal_definitions,
+    arithmetic_is_motion_along_a_path,
+    source_fact('formal/formalization/grounding_metaphors.pl',
+                base_grounding_metaphor_definition/4,
+                arithmetic_is_motion_along_a_path)).
+metaphor_vocabulary_alias(
+    arithmetic_is_motion_along_a_path,
+    mua_relations,
+    motion_along_path,
+    source_fact('formal/pml/mua_relations.pl',
+                grounding_metaphor/2,
+                grounding_metaphor(p_count_on_from_larger,
+                                   motion_along_path))).
+
+metaphor_vocabulary_alias(
+    balance_preservation_schema,
+    formal_definitions,
+    balance_preservation_schema,
+    source_fact('formal/formalization/grounding_metaphors.pl',
+                base_grounding_metaphor_definition/4,
+                balance_preservation_schema)).
+metaphor_vocabulary_alias(
+    balance_preservation_schema,
+    mua_relations,
+    balance_preservation_schema,
+    source_fact('formal/pml/mua_relations.pl',
+                grounding_metaphor/2,
+                grounding_metaphor(
+                    p_relational_equals_balance_preservation,
+                    balance_preservation_schema))).
+
+%!  metaphor_vocabulary_noncorrespondence(
+%!      ?Source, ?Name, ?ComparedSources, ?Reason) is nondet.
+%
+%   Names examined for this join that do not denote a metaphor in the compared
+%   sources. This makes a checked distinction queryable instead of leaving an
+%   absent alias ambiguous. The rotation-plane blend remains separate from the
+%   narrower multiplication-by-minus-one repair.
+metaphor_vocabulary_noncorrespondence(
+    geometry_inventory, source_path_goal,
+    [formal_definitions, mua_relations], source_image_schema_not_arithmetic_metaphor).
+metaphor_vocabulary_noncorrespondence(
+    geometry_inventory, fictive_motion,
+    [formal_definitions, mua_relations], geometry_specific_metaphor).
+metaphor_vocabulary_noncorrespondence(
+    geometry_inventory, spaces_are_sets_of_points,
+    [formal_definitions, mua_relations], geometry_specific_metaphor).
+metaphor_vocabulary_noncorrespondence(
+    geometry_inventory, space_set_blend,
+    [formal_definitions, mua_relations], geometry_specific_blend).
+metaphor_vocabulary_noncorrespondence(
+    geometry_inventory, unit_circle_blend,
+    [formal_definitions, mua_relations], geometry_specific_blend).
+metaphor_vocabulary_noncorrespondence(
+    geometry_inventory, rotation_plane_blend,
+    [formal_definitions, mua_relations],
+    broader_complex_plane_blend_not_specific_minus_one_repair).
+metaphor_vocabulary_noncorrespondence(
+    geometry_inventory, bmi_projective,
+    [formal_definitions, mua_relations], geometry_specific_bmi_specialization).
+metaphor_vocabulary_noncorrespondence(
+    geometry_inventory, bmi_circle_polygon,
+    [formal_definitions, mua_relations], geometry_specific_bmi_specialization).
+metaphor_vocabulary_noncorrespondence(
+    geometry_inventory, bmi_via_set_blend,
+    [formal_definitions, mua_relations], geometry_specific_bmi_specialization).
+metaphor_vocabulary_noncorrespondence(
+    geometry_inventory, container_schema,
+    [formal_definitions, mua_relations],
+    source_schema_not_object_construction_metaphor).
+metaphor_vocabulary_noncorrespondence(
+    geometry_inventory, categories_are_containers,
+    [formal_definitions, mua_relations], geometry_specific_metaphor).
+metaphor_vocabulary_noncorrespondence(
+    formal_definitions,
+    multiplication_by_minus_one_is_rotation_by_180_degrees,
+    [geometry_inventory, mua_relations],
+    specific_signed_arithmetic_repair_not_full_rotation_plane_blend).
+metaphor_vocabulary_noncorrespondence(
+    formal_definitions, zero_collection_metaphor,
+    [geometry_inventory, mua_relations], arithmetic_zero_repair).
+metaphor_vocabulary_noncorrespondence(
+    formal_definitions, zero_object_metaphor,
+    [geometry_inventory, mua_relations], arithmetic_zero_repair).
+metaphor_vocabulary_noncorrespondence(
+    mua_relations, no_metaphor_grounding,
+    [geometry_inventory, formal_definitions], sentinel_not_a_metaphor).
 
 %!  primitive_renders_metaphor(?Primitive, ?MetaphorLabel, ?Role) is nondet.
 %

@@ -825,10 +825,18 @@ def build() -> dict[str, object]:
     verdict_counts = Counter(row["verdict"] for row in orphan_records)
     resolution_counts = Counter(row["current_class"] for row in class_resolution)
 
-    if len(registry_rows) != 269:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 269")
-    if len(orphan_records) != 59:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 59")
+    # 269 until 2026-07-27, when knowledge/index/coverage_absence_registry.pl
+    # added the 270th. It is counted because it declares a module and exports
+    # query predicates; knowledge/index/relevance_negation.pl, a generated
+    # index beside it, is a bare fact file and so is not a capability. The row
+    # is orphan_module and unclassified, which is accurate: the relation is
+    # queryable from Prolog and no worker op routes to it yet.
+    if len(registry_rows) != 270:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 270")
+    # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
+    # module, for the same reason it is the 270th capability.
+    if len(orphan_records) != 60:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 60")
     if len(unrouted) != 6:
         raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 6")
 
