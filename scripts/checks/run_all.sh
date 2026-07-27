@@ -53,5 +53,6 @@ run drawer_parity.sh        bash "$CHECKS_DIR/drawer_parity.sh"
 run zeeman_bifurcation.sh   bash "$CHECKS_DIR/zeeman_bifurcation.sh"
 run route_behavior.py       python3 "$CHECKS_DIR/route_behavior.py"
 run math_claim_language_check.py python3 "$CHECKS_DIR/math_claim_language_check.py"
+run quantity_claim_check.py python3 "$CHECKS_DIR/quantity_claim_check.py"
 
 echo "all checks passed"
