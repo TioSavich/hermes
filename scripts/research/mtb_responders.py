@@ -189,6 +189,7 @@ def build(name: str, *, model: str, **options: str) -> Responder:
             import mtb_hermes_responder  # noqa: F401
             import mtb_tutor_responder  # noqa: F401
             import mtb_agent_responder  # noqa: F401
+            import mtb_prolog_responder  # noqa: F401
         except ImportError:
             pass
     if name not in BUILDERS:
