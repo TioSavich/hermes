@@ -296,6 +296,34 @@ def _vision_fact_index() -> dict[str, dict[str, list[str]]]:
     return index
 
 
+FRAGMENT_LINE_WINDOW = 2
+
+
+def _normalize_quoted(text: str) -> str:
+    """Collapse whitespace so a quotation may cross a hard line wrap."""
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def _fragment_present(fragment_text: str, lines: list[str], line_number: int) -> bool:
+    """Whether the fragment occurs verbatim at or across the cited line.
+
+    The teacher guides are hard-wrapped, so a sentence a reader quotes as one
+    span is stored across two physical lines. Checking only the cited line
+    refused true quotations: a live batch returned 0 of 3, and both refusals
+    were real IM prose whose first clause sat on the preceding line. The
+    window is small and anchored on the cited line, so a citation still has to
+    point at the text; whitespace is normalized because the wrap is the only
+    difference. Fabricated text is absent from every line and still fails.
+    """
+    wanted = _normalize_quoted(fragment_text)
+    if not wanted:
+        return False
+    low = max(0, line_number - 1 - FRAGMENT_LINE_WINDOW)
+    high = min(len(lines), line_number + FRAGMENT_LINE_WINDOW)
+    window = _normalize_quoted(" ".join(lines[low:high]))
+    return wanted in window
+
+
 def _validated_negative_receipts(
     lesson_ids: set[str],
     strategy_mappings: dict,
@@ -378,7 +406,7 @@ def _validated_negative_receipts(
                     or not isinstance(fragment_text, str)
                     or line_number < 1
                     or line_number > len(lines)
-                    or fragment_text not in lines[line_number - 1]
+                    or not _fragment_present(fragment_text, lines, line_number)
                 ):
                     faults.append(
                         f"negative receipt excerpt drifted at {source}:{line_number}: "
