@@ -407,7 +407,7 @@
       "dialectic": 1,
       "geometry_witness": 35,
       "incompatibility": 7,
-      "infrastructure": 19,
+      "infrastructure": 20,
       "juncture": 1,
       "learner": 25,
       "misconceptions": 12,
@@ -423,20 +423,20 @@
     },
     "by_status": {
       "lazy_reachable": 9,
-      "orphan_module": 58,
+      "orphan_module": 59,
       "routed_paged": 195,
       "unrouted": 6
     },
     "orphan_verdicts": {
       "consumed_by_builder": 2,
-      "consumed_by_check": 5,
+      "consumed_by_check": 6,
       "deliberately_unloaded": 4,
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
       "undetermined": 23
     },
-    "total": 268,
+    "total": 269,
     "unrouted": 6
   },
   "generated_by": "scripts/research/build_self_description_census.py",
@@ -939,6 +939,25 @@
       "note": "No check, research builder, include directive, or explicit supersession record was found for this packet-review adapter.",
       "path": "formal/pml/talkmoves_adapter.pl",
       "verdict": "undetermined"
+    },
+    {
+      "capability_class": "infrastructure",
+      "evidence": [
+        {
+          "locator": "/** <module> Quantity claims bound to measured kinds",
+          "path": "hermes/quantity_claim.pl",
+          "relation": "source inspected"
+        },
+        {
+          "locator": "quantity_claim:check_quantity_claim({claim}, D)",
+          "path": "scripts/checks/quantity_claim_check.py",
+          "relation": "check input"
+        }
+      ],
+      "module": "quantity_claim",
+      "note": "The quantity_claim check adjudicates single claims and expression trees against this module; the quantity binding probe reads it as well.",
+      "path": "hermes/quantity_claim.pl",
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "zeeman",

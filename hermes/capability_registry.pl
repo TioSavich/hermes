@@ -249,6 +249,7 @@ capability('formal/pml/mua_health.pl', 'mua_health', 'pml', [], orphan_module).
 capability('formal/pml/rhythm_axioms.pl', 'rhythm_axioms', 'pml', [], orphan_module).
 capability('formal/pml/talkmoves_adapter.pl', 'talkmoves_adapter', 'pml', [], orphan_module).
 capability('formal/tools/axiom_toggle.pl', 'axiom_toggle', 'infrastructure', [], lazy_reachable).
+capability('hermes/quantity_claim.pl', 'quantity_claim', 'infrastructure', [], orphan_module).
 capability('hermes/web/prolog/zeeman_bifurcation.pl', 'zeeman_bifurcation', 'zeeman', [], orphan_module).
 capability('hermes/web/prolog/zeeman_machine.pl', 'zeeman_machine', 'zeeman', [], orphan_module).
 capability('hermes/web/prolog/zeeman_pml_bridge.pl', 'zeeman_pml_bridge', 'zeeman', [], orphan_module).

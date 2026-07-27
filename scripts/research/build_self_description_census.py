@@ -216,6 +216,17 @@ def orphan_findings(orphan_rows: list[Capability]) -> list[dict[str, object]]:
     )
 
     set_finding(
+        "hermes/quantity_claim.pl",
+        "consumed_by_check",
+        "The quantity_claim check adjudicates single claims and expression trees "
+        "against this module; the quantity binding probe reads it as well.",
+        evidence(
+            "scripts/checks/quantity_claim_check.py",
+            "quantity_claim:check_quantity_claim({claim}, D)",
+            "check input",
+        ),
+    )
+    set_finding(
         "knowledge/crosswalk/vocabulary_licenses.pl",
         "consumed_by_check",
         "The vocabulary_licenses check reads the source table directly.",
@@ -814,10 +825,10 @@ def build() -> dict[str, object]:
     verdict_counts = Counter(row["verdict"] for row in orphan_records)
     resolution_counts = Counter(row["current_class"] for row in class_resolution)
 
-    if len(registry_rows) != 268:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 268")
-    if len(orphan_records) != 58:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 58")
+    if len(registry_rows) != 269:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 269")
+    if len(orphan_records) != 59:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 59")
     if len(unrouted) != 6:
         raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 6")
 

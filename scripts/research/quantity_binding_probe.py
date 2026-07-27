@@ -32,7 +32,13 @@ from datasets import load_dataset  # noqa: E402
 MODEL = "gemma4:e2b"
 TASK = "mistake_location"
 DEFAULT_LIMIT = 60
-QUANTITY_MODULE = REPO_ROOT / "hermes/quantity_claim.pl"
+PATHS = REPO_ROOT / "paths.pl"
+
+# The kind an operation yields is decided once, in hermes/quantity_claim.pl.
+# This side renders the parsed equation as a term and asks; it does not carry a
+# second account of how kinds compose.
+OPERATIONS = {ast.Add: "sum", ast.Sub: "difference",
+              ast.Mult: "product", ast.Div: "quotient"}
 
 # This map was written from the problem and labelled first-wrong step for the
 # selected 60 raw StepVerify rows.  Keys are raw dataset indexes, then source
@@ -193,13 +199,14 @@ def quantity_term(value: float, binding: Binding) -> str:
     return f"quantity({value_text},{prolog_atom(binding.kind)},{prolog_string(binding.span)})"
 
 
-def run_quantity_claim(claim: str) -> str:
+def run_quantity_expression(expression: str, claimed: str) -> str:
     goal = (
-        f"quantity_claim:check_quantity_claim({claim}, D),"
+        "use_module(hermes(quantity_claim)),"
+        f"quantity_claim:check_quantity_expression({expression},{claimed},D),"
         "get_dict(verdict,D,V),writeln(V)"
     )
     result = subprocess.run(
-        ["swipl", "-q", "-s", str(QUANTITY_MODULE), "-g", goal, "-t", "halt"],
+        ["swipl", "-q", "-l", str(PATHS), "-g", goal, "-t", "halt"],
         cwd=REPO_ROOT,
         text=True,
         capture_output=True,
@@ -220,54 +227,37 @@ def expression_tree(text: str) -> ast.AST | None:
         return None
 
 
-def typed_expression(node: ast.AST, bindings: list[Binding], root_result: Binding | None,
-                     root: bool = False) -> tuple[float, str, str, str] | None:
+def prolog_expression(node: ast.AST, bindings: list[Binding]) -> str | None:
+    """Render the parsed left-hand side as a term over quantity/3 leaves."""
     if isinstance(node, ast.Constant) and isinstance(node.value, (int, float)):
         value = float(node.value)
-        binding = binding_for(value, bindings, str(node.value))
-        return value, binding.kind, binding.span, "not_checked"
+        return quantity_term(value, binding_for(value, bindings, str(node.value)))
     if not isinstance(node, ast.BinOp):
         return None
-    left = typed_expression(node.left, bindings, None)
-    right = typed_expression(node.right, bindings, None)
+    operation = OPERATIONS.get(type(node.op))
+    if operation is None:
+        return None
+    left = prolog_expression(node.left, bindings)
+    right = prolog_expression(node.right, bindings)
     if left is None or right is None:
         return None
-    left_value, left_kind, left_span, _ = left
-    right_value, right_kind, right_span, _ = right
-    if isinstance(node.op, ast.Add):
-        op, result_value = "sum", left_value + right_value
-        expected = left_kind
-    elif isinstance(node.op, ast.Sub):
-        op, result_value = "difference", left_value - right_value
-        expected = left_kind
-    elif isinstance(node.op, ast.Mult):
-        op, result_value = "product", left_value * right_value
-        expected = (right_kind if left_kind == "dimensionless" else left_kind
-                    if right_kind == "dimensionless" else f"{left_kind}_times_{right_kind}")
-    elif isinstance(node.op, ast.Div):
-        if right_value == 0:
-            return None
-        op, result_value = "quotient", left_value / right_value
-        expected = ("dimensionless" if left_kind == right_kind else f"{left_kind}_per_{right_kind}")
-    else:
-        return None
-    result_binding = root_result if root and root_result else Binding(
-        normalize_magnitude(str(result_value)), expected, "derived expression")
-    claim = f"{op}({quantity_term(left_value, Binding(str(left_value), left_kind, left_span))},{quantity_term(right_value, Binding(str(right_value), right_kind, right_span))},{quantity_term(result_value, result_binding)})"
-    verdict = run_quantity_claim(claim)
-    return result_value, result_binding.kind, result_binding.span, verdict
+    return f"{operation}({left},{right})"
 
 
 def quantity_step_verdict(step: str, bindings: list[Binding]) -> str:
     for match in EQUATION.finditer(step):
         tree = expression_tree(match.group("left"))
-        if tree is None:
+        # A bare magnitude is not a claim about how quantities compose.
+        if not isinstance(tree, ast.BinOp):
+            continue
+        expression = prolog_expression(tree, bindings)
+        if expression is None:
             continue
         right_value = float(normalize_magnitude(match.group("right")))
-        root_binding = binding_for(right_value, bindings, match.group("right"))
-        result = typed_expression(tree, bindings, root_binding, root=True)
-        if result and result[-1] in {"refuted", "incommensurable"}:
-            return result[-1]
+        claimed = quantity_term(right_value, binding_for(right_value, bindings, match.group("right")))
+        verdict = run_quantity_expression(expression, claimed)
+        if verdict in {"refuted", "incommensurable"}:
+            return verdict
     return "not_checked"
 
 

@@ -32,6 +32,7 @@ CLAUDE.md
 .bigred-output/
 .bigred-collected/
 scripts/research/articulation_out/
+scripts/research/quantity_binding_out/
 .claude/worktrees/
 .claude/
 
