@@ -13,6 +13,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "scripts" / "research"))
+from build_corpus_window import REGISTER_BLOCK_ROLES
+
 BUILDER = ROOT / "scripts/research/build_corpus_window.py"
 WINDOW = ROOT / "knowledge/index/corpus_window.pl"
 WINDOW_TEXT = ROOT / "knowledge/index/corpus_window.txt"
@@ -46,11 +49,16 @@ LEGEND_ACTION_RE = re.compile(
     r"(?m)^window_legend_action\((\w+), (\w+), (\w+), (\w+)\)\."
 )
 LEGEND_ARC_RE = re.compile(r"(?m)^window_legend_arc\((\w+), (\d+)\)\.")
+REGISTER_GROUP_RE = re.compile(r"(?m)^window_register_group\((\w+), (\w+)\)\.")
 SHELL_REGISTERS = frozenset(
-    {"constitution", "partition", "transformation", "search", "comparison"}
+    register for register, role in REGISTER_BLOCK_ROLES.items() if role == "shell"
 )
-CORE_REGISTERS = frozenset({"iteration", "operation"})
-CLOSURE_REGISTERS = frozenset({"inscription", "normative"})
+CORE_REGISTERS = frozenset(
+    register for register, role in REGISTER_BLOCK_ROLES.items() if role == "core"
+)
+CLOSURE_REGISTERS = frozenset(
+    register for register, role in REGISTER_BLOCK_ROLES.items() if role == "closure"
+)
 
 
 def _items(raw: str) -> tuple[str, ...]:
@@ -79,6 +87,7 @@ def _parse_rows() -> tuple[
     list[tuple[str, str, str, tuple[str, ...], tuple[str, ...], tuple[str, ...], tuple[str, ...]]],
     dict[str, tuple[str, str, str]],
     dict[str, int],
+    dict[str, str],
 ]:
     text = WINDOW.read_text(encoding="ascii")
     rows = [
@@ -90,7 +99,8 @@ def _parse_rows() -> tuple[
         for action, genre, register, stance in LEGEND_ACTION_RE.findall(text)
     }
     arcs = {arc: int(count) for arc, count in LEGEND_ARC_RE.findall(text)}
-    return rows, actions, arcs
+    groups = {register: role for register, role in REGISTER_GROUP_RE.findall(text)}
+    return rows, actions, arcs, groups
 
 
 def main() -> int:
@@ -136,10 +146,13 @@ def main() -> int:
         shutil.rmtree(workdir, ignore_errors=True)
 
     try:
-        rows, legend_actions, legend_arcs = _parse_rows()
+        rows, legend_actions, legend_arcs, register_groups = _parse_rows()
     except (OSError, RuntimeError, ValueError) as exc:
         errors.append(str(exc))
-        rows, legend_actions, legend_arcs = [], {}, {}
+        rows, legend_actions, legend_arcs, register_groups = [], {}, {}, {}
+
+    if register_groups != REGISTER_BLOCK_ROLES:
+        errors.append("window register grouping differs from the authored block roles")
 
     transition_text = "".join(
         path.read_text(encoding="utf-8")
@@ -273,7 +286,9 @@ def main() -> int:
             "-g",
             f"consult('{WINDOW.relative_to(ROOT)}'), "
             f"findall([F,S],window_row(F,S,_,_,_,_),Rows), "
-            f"length(Rows,{len(source_machines)}), halt.",
+            f"length(Rows,{len(source_machines)}), "
+            f"findall([R,G],window_register_group(R,G),Groups), "
+            f"length(Groups,{len(REGISTER_BLOCK_ROLES)}), halt.",
         ],
         cwd=ROOT,
         capture_output=True,
@@ -308,6 +323,7 @@ def main() -> int:
         f"normative_arc/3 ({len(legend_arcs)} arcs)"
     )
     print("PASS every partition reproduces its machine's canonical action word")
+    print("PASS every authored register group is queryable from corpus_window.pl")
     print(
         f"PASS token budget report: {len(text_bytes)} bytes; "
         f"bytes/4 estimate {estimate:.1f} tokens"

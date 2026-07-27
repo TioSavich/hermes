@@ -842,14 +842,17 @@ def build() -> dict[str, object]:
     # knowledge/index/research_measurement_registry.pl is the 273rd, on the same
     # grounds. It indexes what the reports claim and which of those claims join
     # to a method that still runs here.
-    if len(registry_rows) != 273:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 273")
+    if len(registry_rows) != 274:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 274")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
     # reason each is a capability.
-    if len(orphan_records) != 63:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 63")
+    # 63 until machine_block_decomposition.pl, the 64th: a generated index
+    # declaring a module, queryable from Prolog, with no worker op routing to
+    # it. Same reason as the coverage-absence and lesson-identity indexes.
+    if len(orphan_records) != 64:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 64")
     if len(unrouted) != 6:
         raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 6")
 

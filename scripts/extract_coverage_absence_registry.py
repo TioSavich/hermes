@@ -483,9 +483,15 @@ def render_registry() -> str:
     productive_lessons = {lesson[0] for lesson in inventory["productive"]}
     deformation_lessons = {lesson[0] for lesson in inventory["deformation"]}
     explicit_lessons = {lesson[0] for lesson in inventory["explicit"]}
-    unknown_receipt_lessons = set(reviewed_receipts) - productive_lessons
+    # A receipt may name any lesson the inventory knows, not only one carrying
+    # a compiled productive task. IM-G1-U2-L18 is diagnostic-ready on all five
+    # receipts and sits outside the productive set, so the narrower test
+    # crashed the build on correct data. The error is kept for a receipt naming
+    # a lesson no inventory records, which is still worth refusing.
+    known_lessons = productive_lessons | deformation_lessons | explicit_lessons
+    unknown_receipt_lessons = set(reviewed_receipts) - known_lessons
     if unknown_receipt_lessons:
-        raise RuntimeError("reviewed negative receipts are outside the productive lesson cohort: " + ", ".join(sorted(unknown_receipt_lessons)))
+        raise RuntimeError("reviewed negative receipts name lessons no inventory records: " + ", ".join(sorted(unknown_receipt_lessons)))
     for lesson in sorted(productive_lessons):
         subject = f"lesson({prolog_atom(lesson)})"
         if lesson in explicit_lessons:

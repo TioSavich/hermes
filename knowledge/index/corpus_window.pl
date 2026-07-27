@@ -3,6 +3,20 @@
 % window_row/7 retains actions whose registers fall outside shell, core,
 % and closure. window_row/6 is the projection used by callers that need
 % the three named groups.
+% window_register_group/2 is the authored register grouping used by
+% the shell-core-closure census. outside is retained rather than
+% silently included in one of the three phases.
+
+window_register_group(comparison, shell).
+window_register_group(constitution, shell).
+window_register_group(delegation, outside).
+window_register_group(inscription, closure).
+window_register_group(iteration, core).
+window_register_group(normative, closure).
+window_register_group(operation, core).
+window_register_group(partition, shell).
+window_register_group(search, shell).
+window_register_group(transformation, shell).
 
 window_legend_action(accept_without_check, computational, normative, deforming).
 window_legend_action(accumulate_total, computational, iteration, neutral).

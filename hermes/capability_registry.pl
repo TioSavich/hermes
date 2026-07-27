@@ -260,6 +260,7 @@ capability('knowledge/discourse/commitment_automata.pl', 'commitment_automata', 
 capability('knowledge/geometry/geometry_bridge.pl', 'geometry_bridge', 'geometry_witness', [], orphan_module).
 capability('knowledge/index/coverage_absence_registry.pl', 'coverage_absence_registry', 'unclassified', [], orphan_module).
 capability('knowledge/index/im_lesson_identity.pl', 'im_lesson_identity', 'unclassified', [], orphan_module).
+capability('knowledge/index/machine_block_decomposition.pl', 'machine_block_decomposition', 'unclassified', [], orphan_module).
 capability('knowledge/index/research_measurement_registry.pl', 'research_measurement_registry', 'unclassified', [], orphan_module).
 capability('knowledge/index/task_span_absence_registry.pl', 'task_span_absence_registry', 'unclassified', [], orphan_module).
 capability('knowledge/misconceptions/literature_canonical_mappings.pl', 'literature_canonical_mappings', 'misconceptions', [], orphan_module).

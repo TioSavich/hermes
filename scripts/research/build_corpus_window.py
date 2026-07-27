@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import collections
 import re
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -17,11 +18,30 @@ GRAMMAR = ROOT / "knowledge/strategies/action_grammar.pl"
 DEFAULT_OUTPUT = ROOT / "knowledge/index/corpus_window.pl"
 DEFAULT_TEXT_OUTPUT = ROOT / "knowledge/index/corpus_window.txt"
 
+# This is the authored source of truth for the structural block grouping.
+# Generated Prolog makes the same assignment queryable; checks import this
+# mapping rather than keeping another copy.
+REGISTER_BLOCK_ROLES = {
+    "comparison": "shell",
+    "constitution": "shell",
+    "delegation": "outside",
+    "inscription": "closure",
+    "iteration": "core",
+    "normative": "closure",
+    "operation": "core",
+    "partition": "shell",
+    "search": "shell",
+    "transformation": "shell",
+}
 SHELL_REGISTERS = frozenset(
-    {"constitution", "partition", "transformation", "search", "comparison"}
+    register for register, role in REGISTER_BLOCK_ROLES.items() if role == "shell"
 )
-CORE_REGISTERS = frozenset({"iteration", "operation"})
-CLOSURE_REGISTERS = frozenset({"inscription", "normative"})
+CORE_REGISTERS = frozenset(
+    register for register, role in REGISTER_BLOCK_ROLES.items() if role == "core"
+)
+CLOSURE_REGISTERS = frozenset(
+    register for register, role in REGISTER_BLOCK_ROLES.items() if role == "closure"
+)
 
 TUPLE_RE = re.compile(
     r"(?m)^automaton_tuple\((\w+),\s*(\w+),\s*states\(\[[^\]]*\]\),\s*"
@@ -57,7 +77,7 @@ def _items(raw: str) -> tuple[str, ...]:
     return tuple(part.strip() for part in raw.split(",") if part.strip())
 
 
-def _read_machine_words(
+def read_machine_words(
     projection: dict[tuple[str, str, str], str],
     registers: dict[str, tuple[str, str, str]],
 ) -> dict[tuple[str, str], tuple[str, ...]]:
@@ -152,7 +172,7 @@ def build_data() -> tuple[
             raise ValueError(f"{family}/{signature} names undeclared arc {arc}")
         machine_arcs[key] = arc
 
-    words = _read_machine_words(projection, registers)
+    words = read_machine_words(projection, registers)
     if set(words) != set(machine_arcs):
         missing_arcs = sorted(set(words) - set(machine_arcs))
         invented_arcs = sorted(set(machine_arcs) - set(words))
@@ -211,8 +231,14 @@ def render_prolog(
         "% window_row/7 retains actions whose registers fall outside shell, core,",
         "% and closure. window_row/6 is the projection used by callers that need",
         "% the three named groups.",
+        "% window_register_group/2 is the authored register grouping used by",
+        "% the shell-core-closure census. outside is retained rather than",
+        "% silently included in one of the three phases.",
         "",
     ]
+    for register, role in sorted(REGISTER_BLOCK_ROLES.items()):
+        lines.append(f"window_register_group({register}, {role}).")
+    lines.append("")
     for action in sorted(registers):
         genre, register, stance = registers[action]
         lines.append(
@@ -277,6 +303,11 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--output-text", type=Path, default=DEFAULT_TEXT_OUTPUT)
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="fail when the generated outputs differ from the checked-in files",
+    )
     return parser.parse_args()
 
 
@@ -285,6 +316,22 @@ def main() -> int:
     rows, registers, arc_counts = build_data()
     prolog = render_prolog(rows, registers, arc_counts)
     text = render_text(rows, registers, arc_counts)
+    if args.check:
+        stale = [
+            path
+            for path, expected in ((args.output, prolog), (args.output_text, text))
+            if not path.is_file() or path.read_text(encoding="ascii") != expected
+        ]
+        if stale:
+            for path in stale:
+                print(
+                    f"corpus window is stale: {path}; run "
+                    "python3 scripts/research/build_corpus_window.py",
+                    file=sys.stderr,
+                )
+            return 1
+        print(f"corpus window current: {args.output}; {args.output_text}")
+        return 0
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output_text.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(prolog, encoding="ascii", newline="\n")

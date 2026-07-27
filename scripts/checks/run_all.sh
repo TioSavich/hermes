@@ -42,6 +42,7 @@ run attested_phrases.py     python3 "$CHECKS_DIR/attested_phrases.py"
 run recognition_benchmark.py python3 "$CHECKS_DIR/recognition_benchmark.py"
 run extract_capability_registry python3 "$CHECKS_DIR/../extract_capability_registry.py" --check
 run extract_im_lesson_identity python3 "$CHECKS_DIR/../extract_im_lesson_identity.py" --check
+run extract_machine_block_decomposition python3 "$CHECKS_DIR/../extract_machine_block_decomposition.py" --check
 run extract_coverage_absence_registry python3 "$CHECKS_DIR/../extract_coverage_absence_registry.py" --check
 run extract_task_span_absence_registry python3 "$CHECKS_DIR/../extract_task_span_absence_registry.py" --check
 run self_description_census.py python3 "$CHECKS_DIR/self_description_census.py"
