@@ -1,0 +1,643 @@
+{
+ "pairs": [
+  {
+   "deformation": "dropped_ones_chunk",
+   "family": "dropped_remainder_chunk",
+   "operation": "addition",
+   "productive": "base_ones_chunking",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "append_column_sum_without_carrying",
+   "family": "append_partial_sums_without_carrying",
+   "operation": "addition",
+   "productive": "column_addition_with_carrying",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "drop_carry_to_next_column",
+   "family": "omitted_carry_to_next_column",
+   "operation": "addition",
+   "productive": "column_addition_with_carrying",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "wrong_carry_amount_to_next_column",
+   "family": "incorrect_carry_amount",
+   "operation": "addition",
+   "productive": "column_addition_with_carrying",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "count_all_when_count_on_available",
+   "family": "count_all_when_count_on_available",
+   "operation": "addition",
+   "productive": "count_on_from_larger",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "rote_derived_fact_rule_misfire",
+   "family": "rote_derived_fact_rule_misfire",
+   "operation": "addition",
+   "productive": "derived_fact_adjustment",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "count_all_instead_of_known_fact",
+   "family": "procedural_count_when_fact_available",
+   "operation": "addition",
+   "productive": "known_fact_retrieval",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "unbalanced_make_base_compensation",
+   "family": "compensation_without_conservation",
+   "operation": "addition",
+   "productive": "make_base_transfer",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "make_ten_drop_leftover",
+   "family": "dropped_leftover_after_make_ten",
+   "operation": "addition",
+   "productive": "make_ten_split_leftover",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "round_without_adjusting",
+   "family": "rounding_without_compensation",
+   "operation": "addition",
+   "productive": "round_then_adjust",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "one_sided_equation_operation",
+   "family": "one_sided_equation_operation",
+   "operation": "algebraic",
+   "productive": "balance_preserving_linear_solution",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "drop_distributed_term",
+   "family": "dropped_term_in_symbolic_distribution",
+   "operation": "algebraic",
+   "productive": "distributive_expression_rewrite",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "operational_equals_left_value",
+   "family": "operational_equals_left_value",
+   "operation": "algebraic",
+   "productive": "equation_truth_by_substitution",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "exponent_as_multiplier",
+   "family": "exponent_as_multiplier",
+   "operation": "algebraic",
+   "productive": "exponent_as_repeated_factor",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "guess_and_check_rule",
+   "family": "empirical_rule_without_contextual_generalization",
+   "operation": "algebraic",
+   "productive": "linear_pattern_contextual_rule",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "factor_cancel_without_common_factor",
+   "family": "rule_misfire_cancel_without_common_factor",
+   "operation": "calculus",
+   "productive": "factor_cancel_substitute",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "spatial_extent_as_cardinality",
+   "family": "spatial_extent_substituted_for_cardinality",
+   "operation": "counting",
+   "productive": "compare_cardinalities_one_to_one",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "compare_ones_digits_only",
+   "family": "ones_digit_substituted_for_place_value_comparison",
+   "operation": "counting",
+   "productive": "place_value_comparison",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "omit_highest_place_regrouping",
+   "family": "omitted_place_value_regrouping",
+   "operation": "counting",
+   "productive": "recursive_place_value_inscription",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "decimal_add_unaligned_numerals",
+   "family": "decimal_add_unaligned_numerals",
+   "operation": "decimal",
+   "productive": "decimal_addition_by_aligned_units",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "decimal_numeral_comparison_without_scale_alignment",
+   "family": "decimal_numeral_comparison_without_scale_alignment",
+   "operation": "decimal",
+   "productive": "decimal_comparison_by_aligned_units",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "decimal_point_rule_misapplication",
+   "family": "decimal_point_rule_misapplication",
+   "operation": "decimal",
+   "productive": "decimal_multiplication_rule",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "change_decimal_place_name_without_regrouping",
+   "family": "change_decimal_place_name_without_regrouping",
+   "operation": "decimal",
+   "productive": "decimal_place_unit_regrouping",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "decimal_subtract_unaligned_numerals",
+   "family": "decimal_subtract_unaligned_numerals",
+   "operation": "decimal",
+   "productive": "decimal_subtraction_by_aligned_units",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "decimal_whole_number_reading",
+   "family": "decimal_whole_number_reading",
+   "operation": "decimal",
+   "productive": "positional_decimal_reading",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "name_group_count_as_share_size",
+   "family": "group_count_as_share_size",
+   "operation": "division",
+   "productive": "fair_share_equal_groups",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "stop_after_one_known_fact",
+   "family": "stops_after_single_inverse_fact",
+   "operation": "division",
+   "productive": "inverse_fact_decomposition",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "sum_dividend_and_divisor",
+   "family": "division_replaced_by_digit_sum",
+   "operation": "division",
+   "productive": "long_division",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "share_into_divisor_groups",
+   "family": "divisor_as_number_of_groups",
+   "operation": "division",
+   "productive": "measure_groups_of_size",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "reject_known_product_match",
+   "family": "rejects_contextualized_known_product",
+   "operation": "division",
+   "productive": "missing_factor_known_product_search",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "stop_at_nearby_product_in_search",
+   "family": "stops_at_nearby_missing_factor_product",
+   "operation": "division",
+   "productive": "missing_factor_known_product_search",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "name_reached_total_as_quotient",
+   "family": "total_as_missing_factor",
+   "operation": "division",
+   "productive": "missing_factor_repeated_addition",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "stop_after_first_partial_quotient",
+   "family": "stops_after_first_partial_quotient",
+   "operation": "division",
+   "productive": "partial_quotient_chunking",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "cross_multiplication_rule_without_ground",
+   "family": "rule_without_grounding",
+   "operation": "fraction",
+   "productive": "cross_multiplication_rule_from_pattern",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "improper_fraction_chain_loss",
+   "family": "improper_fraction_reset",
+   "operation": "fraction",
+   "productive": "improper_fraction_iteration",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "clear_inner_referent",
+   "family": "referent_to_inner_whole_not_original",
+   "operation": "fraction",
+   "productive": "recursive_partition",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "iterate_only_no_reverse",
+   "family": "mc1_no_reversibility",
+   "operation": "fraction",
+   "productive": "solve_for_unit",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "iterate_given_overshoot",
+   "family": "no_splitting_iterate_overshoot",
+   "operation": "fraction",
+   "productive": "splitting",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "whole_number_grab",
+   "family": "whole_number_grab",
+   "operation": "fraction",
+   "productive": "unit_fraction_iteration",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "angle_as_ray_length",
+   "family": "angle_confused_with_ray_length",
+   "operation": "geometry",
+   "productive": "angle_turn_measurement",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "decomposition_with_gap_or_overlap",
+   "family": "polygon_decomposition_gap_or_overlap",
+   "operation": "geometry",
+   "productive": "area_preserving_polygon_decomposition",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "count_overlapping_area_tiles",
+   "family": "overlapping_area_tiles_double_counted",
+   "operation": "geometry",
+   "productive": "area_unit_covering",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "choose_first_area_unit_without_scale",
+   "family": "area_unit_selected_without_extent_coordination",
+   "operation": "geometry",
+   "productive": "area_unit_scale_selection",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "directed_difference_as_coordinate_distance",
+   "family": "directed_change_reported_as_distance",
+   "operation": "geometry",
+   "productive": "axis_aligned_coordinate_distance",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "compare_solid_volume_by_visible_extent",
+   "family": "solid_volume_compared_by_visible_extent",
+   "operation": "geometry",
+   "productive": "compare_solid_volume_by_cube_count",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "sum_overlapping_prism_volumes",
+   "family": "overlapping_component_volume_double_count",
+   "operation": "geometry",
+   "productive": "composite_prism_volume_sum",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "linear_unit_for_area_or_volume",
+   "family": "dimension_unit_exponent_confusion",
+   "operation": "geometry",
+   "productive": "dimensional_measure_unit_coordination",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "slanted_side_as_parallelogram_height",
+   "family": "slanted_side_used_as_height",
+   "operation": "geometry",
+   "productive": "parallelogram_area_base_height",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "omit_unlabeled_boundary_side",
+   "family": "incomplete_polygon_boundary_cycle",
+   "operation": "geometry",
+   "productive": "polygon_perimeter_boundary_accumulation",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "visible_faces_only_surface_area",
+   "family": "hidden_faces_omitted_from_surface_area",
+   "operation": "geometry",
+   "productive": "polyhedron_surface_area_from_net",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "ignore_perimeter_rectangle_constraint",
+   "family": "perimeter_constraint_ignored_in_rectangle_design",
+   "operation": "geometry",
+   "productive": "rectangle_area_perimeter_constraint_search",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "area_as_perimeter_count",
+   "family": "area_as_perimeter",
+   "operation": "geometry",
+   "productive": "rectangle_area_unit_iteration",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "subtract_side_from_area",
+   "family": "area_product_treated_as_additive_total",
+   "operation": "geometry",
+   "productive": "rectangle_missing_side_from_area",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "perimeter_two_sides_only",
+   "family": "perimeter_two_sides",
+   "operation": "geometry",
+   "productive": "rectangle_perimeter_boundary_traversal",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "perimeter_uses_area_formula",
+   "family": "perimeter_uses_area_formula",
+   "operation": "geometry",
+   "productive": "rectangle_perimeter_boundary_traversal",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "divide_volume_by_one_dimension",
+   "family": "one_base_dimension_omitted_from_volume_inverse",
+   "operation": "geometry",
+   "productive": "rectangular_prism_missing_dimension_from_volume",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "orientation_bound_shape_classification",
+   "family": "shape_classification_bound_to_prototype_orientation",
+   "operation": "geometry",
+   "productive": "shape_classification_by_defining_attributes",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "ignore_symmetry_multiplicity",
+   "family": "symmetry_side_orbit_multiplicity_ignored",
+   "operation": "geometry",
+   "productive": "symmetry_constrained_side_reconstruction",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "omit_half_in_triangle_area",
+   "family": "triangle_area_omits_half",
+   "operation": "geometry",
+   "productive": "triangle_area_half_base_height",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "inequality_as_boundary_point",
+   "family": "inequality_reduced_to_boundary_point",
+   "operation": "integer",
+   "productive": "inequality_solution_set_representation",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "drop_sign_use_magnitude_sum",
+   "family": "magnitude_only_combination",
+   "operation": "integer",
+   "productive": "signed_addition_with_sign_relation",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "order_by_magnitude_ignore_sign",
+   "family": "magnitude_only_signed_order",
+   "operation": "integer",
+   "productive": "signed_number_location_and_order",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "count_marks_not_intervals",
+   "family": "count_marks_not_intervals",
+   "operation": "measurement",
+   "productive": "linear_unit_iteration",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "liquid_volume_count_marks_not_intervals",
+   "family": "liquid_volume_count_marks_not_intervals",
+   "operation": "measurement",
+   "productive": "liquid_volume_scale_reading",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "change_unit_label_without_scaling",
+   "family": "change_unit_label_without_scaling",
+   "operation": "measurement",
+   "productive": "unit_conversion_by_iteration",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "drop_unit_from_measured_quantity_change",
+   "family": "drop_unit_from_measured_quantity_change",
+   "operation": "measurement",
+   "productive": "unit_preserving_measured_quantity_change",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "factors_of_first_number_only",
+   "family": "common_factors_from_one_number_only",
+   "operation": "multiplication",
+   "productive": "common_factor_intersection",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "add_numbers_as_common_multiple",
+   "family": "sum_as_common_multiple",
+   "operation": "multiplication",
+   "productive": "common_multiple_sequence",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "rigid_factor_order_roles",
+   "family": "fixed_multiplier_multiplicand_roles",
+   "operation": "multiplication",
+   "productive": "commute_factors_preserve_product",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "sequential_recompute_commuted_products",
+   "family": "procedural_recompute_when_commutation_available",
+   "operation": "multiplication",
+   "productive": "commute_factors_preserve_product",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "add_counts_without_composite_unit",
+   "family": "additive_count_for_multiplicative_structure",
+   "operation": "multiplication",
+   "productive": "coordinate_groups_items",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "drop_second_partial_product",
+   "family": "dropped_partial_product",
+   "operation": "multiplication",
+   "productive": "distribute_group_size_split",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "known_product_without_adjustment",
+   "family": "omitted_known_product_adjustment",
+   "operation": "multiplication",
+   "productive": "known_product_adjustment",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "context_free_fact_family_guess",
+   "family": "unbound_fact_family_guess",
+   "operation": "multiplication",
+   "productive": "multiplication_fact_retrieval",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "drop_regrouping_remainder",
+   "family": "dropped_leftover_after_regrouping",
+   "operation": "multiplication",
+   "productive": "regroup_to_base_preserving_total",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "add_instead_of_multiply",
+   "family": "addition_instead_of_multiplication",
+   "operation": "multiplication",
+   "productive": "repeat_equal_groups",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "repeat_group_size_by_itself",
+   "family": "role_confusion_repeats_size_by_itself",
+   "operation": "multiplication",
+   "productive": "repeat_equal_groups",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "equiprobable_endpoint_counting",
+   "family": "equiprobability_bias_over_terminal_paths",
+   "operation": "probability",
+   "productive": "terminal_tree_endpoint_probability_sum",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "reverse_ratio_referent_order",
+   "family": "reversed_ratio_referent_order",
+   "operation": "ratio",
+   "productive": "construct_referent_ratio_diagram",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "additive_extension_of_ratio",
+   "family": "additive_comparison_in_proportion",
+   "operation": "ratio",
+   "productive": "scale_ratio_unit",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "mean_deviation_without_absolute_value",
+   "family": "signed_deviation_cancellation",
+   "operation": "statistics",
+   "productive": "mean_absolute_deviation",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "question_without_variability",
+   "family": "statistical_question_without_anticipated_variability",
+   "operation": "statistics",
+   "productive": "statistical_question_variability_classification",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "borrow_across_zero_no_cascade",
+   "family": "borrow_across_zero",
+   "operation": "subtraction",
+   "productive": "borrow_across_zero_cascade",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "compare_returns_larger_count",
+   "family": "larger_count_as_difference",
+   "operation": "subtraction",
+   "productive": "compare_by_matching_difference",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "answer_as_endpoint_count_up",
+   "family": "endpoint_as_difference",
+   "operation": "subtraction",
+   "productive": "count_up_missing_addend",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "add_instead_of_subtract_column",
+   "family": "operation_direction_reversal",
+   "operation": "subtraction",
+   "productive": "decompose_base_for_ones",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "borrow_across_zero_no_cascade",
+   "family": "borrow_across_zero",
+   "operation": "subtraction",
+   "productive": "decompose_base_for_ones",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "borrow_without_reducing_bases",
+   "family": "unbalanced_decomposition_exchange",
+   "operation": "subtraction",
+   "productive": "decompose_base_for_ones",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "smaller_from_larger_in_column",
+   "family": "smaller_from_larger_column",
+   "operation": "subtraction",
+   "productive": "decompose_base_for_ones",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "slide_subtrahend_only",
+   "family": "nonconstant_difference_shift",
+   "operation": "subtraction",
+   "productive": "sliding_constant_difference",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  },
+  {
+   "deformation": "drop_ones_after_base_takeaway",
+   "family": "dropped_subtrahend_remainder",
+   "operation": "subtraction",
+   "productive": "take_away_base_ones",
+   "source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4"
+  }
+ ],
+ "register": "Registry pairs nominate counterpossibilities for source-backed lesson actions; they are not lesson-specific negative receipts.",
+ "schema": "im_productive_deformation_catalog_v1"
+}

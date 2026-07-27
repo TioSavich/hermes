@@ -30,8 +30,8 @@ PAIR_CATALOG = DERIVED / "im_productive_deformation_catalog.json"
 OUTPUT = DERIVED / "im_lesson_evidence.json"
 NEGATIVE_RECEIPTS = ROOT / "scripts" / "curriculum" / "lesson_negative_receipts.json"
 NODES = ROOT / "data" / "learningcommons" / "nodes.jsonl"
-COMPILED_MAPPINGS = ROOT / "lessons" / "im" / "generated" / "compiled_action_mappings.pl"
-COMPILED_TASKS = ROOT / "lessons" / "im" / "generated" / "compiled_task_instances.pl"
+COMPILED_MAPPINGS = ROOT / "curriculum" / "im" / "generated" / "compiled_action_mappings.pl"
+COMPILED_TASKS = ROOT / "curriculum" / "im" / "generated" / "compiled_task_instances.pl"
 ATLAS = ROOT / "scripts" / "bigred" / "iteration15" / "work" / "atlas" / "atlas_landscape.jsonl"
 
 LESSON_ID_RE = re.compile(r"IM-G(K|[1-8])-U\d+-L\d+")
@@ -255,13 +255,14 @@ def _validated_negative_receipts(
     payload = json.loads(NEGATIVE_RECEIPTS.read_text(encoding="utf-8"))
     by_lesson: dict[str, list[dict]] = {}
     seen = set()
+    faults: list[str] = []
     for receipt in payload["receipts"]:
         lesson = receipt["lesson"]
         if lesson not in lesson_ids:
-            raise SystemExit(f"negative receipt names unknown lesson: {lesson}")
+            faults.append(f"negative receipt names unknown lesson: {lesson}")
         key = (lesson, receipt["alternative"])
         if key in seen:
-            raise SystemExit(f"duplicate negative receipt: {key}")
+            faults.append(f"duplicate negative receipt: {key}")
         seen.add(key)
         intended = receipt["intended_action"]
         mapped = {
@@ -270,22 +271,35 @@ def _validated_negative_receipts(
         }
         intended_key = (intended["operation"], intended["kind"])
         if intended_key not in mapped:
-            raise SystemExit(
+            faults.append(
                 f"negative receipt intended action is not mapped for {lesson}: {intended_key}"
             )
         source = ROOT / receipt["source"]["path"]
+        if not source.is_file():
+            faults.append(f"negative receipt source is missing for {lesson}: {source}")
+            by_lesson.setdefault(lesson, []).append(receipt)
+            continue
         # Preserve the file's physical line numbering. ``splitlines()`` also
         # treats form-feed page markers as line breaks, which would drift from
         # the line numbers shown by editors and the existing compiler.
         lines = source.read_text(encoding="utf-8", errors="replace").split("\n")
         for fragment in receipt["source"]["fragments"]:
             line_number = fragment["line"]
-            if fragment["text"] not in lines[line_number - 1]:
-                raise SystemExit(
+            if (
+                line_number < 1
+                or line_number > len(lines)
+                or fragment["text"] not in lines[line_number - 1]
+            ):
+                faults.append(
                     f"negative receipt excerpt drifted at {source}:{line_number}: "
                     f"{fragment['text']!r}"
                 )
         by_lesson.setdefault(lesson, []).append(receipt)
+    if faults:
+        raise SystemExit(
+            "negative receipt validation failed:\n"
+            + "\n".join(f"- {fault}" for fault in faults)
+        )
     return by_lesson
 
 
@@ -312,7 +326,7 @@ def _measured_lessons() -> set[str]:
 
 
 def build(spine: list[dict], catalog: dict, pair_catalog: dict) -> dict:
-    grade_sources = sorted((ROOT / "lessons" / "im").glob("grade_*.pl"))
+    grade_sources = sorted((ROOT / "curriculum" / "im").glob("grade_*.pl"))
     direct_strategy = _lesson_ids(grade_sources, DIRECT_STRATEGY_RE)
     compiled_strategy = _lesson_ids([COMPILED_MAPPINGS], COMPILED_STRATEGY_RE)
     explicit_negative = _lesson_ids(grade_sources, EXPLICIT_NEGATIVE_RE)
