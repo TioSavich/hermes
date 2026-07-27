@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Generate the bounded Hermes coverage-and-absence registry.
 
-The registry records three live, finite subject sets: the joined metaphor
-vocabulary, IM lessons with a compiled productive task, and the lesson-evidence
-pipeline inputs. It records the receipt status rather than reducing every
-absence to a boolean.
+The registry records four live, finite subject sets: the joined metaphor
+vocabulary, IM lessons with a compiled productive task, published IM lessons
+with a native standard anchor, and the lesson-evidence pipeline inputs. It
+records the receipt status rather than reducing every absence to a boolean.
 """
 from __future__ import annotations
 
@@ -67,6 +67,7 @@ use_module(render(grounding_to_primitive)),
 use_module(render(representation_grammar)),
 use_module(lessons('im/lesson_monitoring')),
 use_module(lessons('im/generated/compiled_task_instances')),
+use_module(index(im_lesson_identity)),
 forall(lakoff_nunez_metaphor_family(F), format('family\t~w~n', [F])),
 forall(grounding_metaphors:base_grounding_metaphor_definition(F, _, _, _), format('formal_metaphor\t~w~n', [F])),
 forall(mua_relations:grounding_metaphor(_, M), format('mua_metaphor\t~w~n', [M])),
@@ -78,6 +79,7 @@ forall((representation_grammar:representation_grounding(R, Grounding), sub_term(
 forall(compiled_task_instances:compiled_lesson_task_instance(L, productive-_, _), format('productive\t~w~n', [L])),
 forall(compiled_task_instances:compiled_lesson_task_instance(L, deformation(_)-_, _), format('deformation\t~w~n', [L])),
 forall(lesson_monitoring:explicit_lesson_misconception(L, _, _, _), format('explicit\t~w~n', [L])),
+forall(im_lesson_identity:lesson_standard_reachability(L, Status, Evidence), format('standard_anchor\t~w\t~q\t~q~n', [L, Status, Evidence])),
 halt
 """
     result = subprocess.run(
@@ -107,6 +109,7 @@ halt
         "productive",
         "deformation",
         "explicit",
+        "standard_anchor",
     }
     missing = required - rows.keys()
     if missing:
@@ -448,6 +451,36 @@ def render_registry() -> str:
             evidence = "[machinery(lesson_monitoring), machinery(compiled_task_instances), machinery(lesson_negative_receipts)]"
         rows.append(("productive_lesson_structured_negative", status.split("(", 1)[0], receipt_row(subject, "structured_negative", status, evidence)))
 
+    standard_anchor_detail_counts: Counter[str] = Counter()
+    standard_anchor_lessons: set[str] = set()
+    for lesson, status, evidence in sorted(inventory["standard_anchor"]):
+        if lesson in standard_anchor_lessons:
+            raise RuntimeError(f"duplicate standard-anchor reachability row for {lesson}")
+        standard_anchor_lessons.add(lesson)
+        if status == "present(atom_spelling)":
+            detail = "atom_spelling"
+        elif status == "present(dash_spelling)":
+            detail = "dash_spelling"
+        elif status == "present(both_spellings)":
+            detail = "both_spellings"
+        elif status == "coverage_gap(no_standard_anchor)":
+            detail = "no_standard_anchor"
+        else:
+            raise RuntimeError(
+                f"unknown standard-anchor reachability status for {lesson}: {status}"
+            )
+        standard_anchor_detail_counts[detail] += 1
+        rows.append((
+            "im_lesson_standard_anchor",
+            status.split("(", 1)[0],
+            receipt_row(
+                f"lesson({prolog_atom(lesson)})",
+                "standard_anchor",
+                status,
+                evidence,
+            ),
+        ))
+
     for name, expected, relocated in PIPELINE_INPUTS:
         subject = "pipeline(build_lesson_evidence)"
         if (ROOT / expected).is_file():
@@ -479,6 +512,7 @@ def render_registry() -> str:
     scopes = {
         "metaphor_renderer": len(metaphor_members),
         "productive_lesson_structured_negative": len(productive_lessons),
+        "im_lesson_standard_anchor": len(standard_anchor_lessons),
         "lesson_evidence_pipeline": len(PIPELINE_INPUTS) + 1,
     }
     scope_counts: dict[str, Counter[str]] = {scope: Counter() for scope in scopes}
@@ -488,10 +522,10 @@ def render_registry() -> str:
     lines = [
         "/** <module> Generated coverage and absence registry",
         " *",
-        " * This bounded relation records receipt status for three live source sets:",
+        " * This bounded relation records receipt status for four live source sets:",
         " * the joined geometry/formal/MUA metaphor vocabulary, IM lessons with",
-        " * compiled productive tasks, and the lesson-evidence pipeline inputs.",
-        " * It does not claim a complete curriculum inventory.",
+        " * compiled productive tasks, the published K-8 lesson spine, and the",
+        " * lesson-evidence pipeline inputs.",
         " *",
         " * Metaphor status keeps live scene renderers separate from source-domain",
         " * card art. A present(...) metaphor receipt names its live route kinds;",
@@ -516,8 +550,10 @@ def render_registry() -> str:
         "            receipt_status_count/3,",
         "            metaphor_render_status_count/2,",
         "            metaphor_route_count/2,",
+        "            standard_anchor_reachability_count/2,",
         "            drawer_dispatch_count/1,",
         "            metaphor_without_renderer/2,",
+        "            lesson_without_standard_anchor/2,",
         "            lesson_without_structured_negative/2",
         "          ]).",
         "",
@@ -549,11 +585,25 @@ def render_registry() -> str:
             f"metaphor_route_count({route}, "
             f"{len(metaphor_route_subjects[route])})."
         )
+    for detail in (
+        "atom_spelling",
+        "dash_spelling",
+        "both_spellings",
+        "no_standard_anchor",
+    ):
+        lines.append(
+            f"standard_anchor_reachability_count({detail}, "
+            f"{standard_anchor_detail_counts[detail]})."
+        )
     lines.append(f"drawer_dispatch_count({len(dispatch_formats)}).")
     lines.extend([
         "",
         "metaphor_without_renderer(Metaphor, Status) :-",
         "    coverage_receipt(metaphor(Metaphor), renderer, Status, _),",
+        "    Status = coverage_gap(_).",
+        "",
+        "lesson_without_standard_anchor(Lesson, Status) :-",
+        "    coverage_receipt(lesson(Lesson), standard_anchor, Status, _),",
         "    Status = coverage_gap(_).",
         "",
         "lesson_without_structured_negative(Lesson, Status) :-",
