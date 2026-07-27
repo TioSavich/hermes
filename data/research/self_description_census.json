@@ -417,13 +417,13 @@
       "sequent": 14,
       "standards": 22,
       "synthesis": 34,
-      "unclassified": 2,
+      "unclassified": 3,
       "workflow": 5,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 9,
-      "orphan_module": 60,
+      "orphan_module": 61,
       "routed_paged": 195,
       "unrouted": 6
     },
@@ -434,9 +434,9 @@
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
-      "undetermined": 24
+      "undetermined": 25
     },
-    "total": 270,
+    "total": 271,
     "unrouted": 6
   },
   "generated_by": "scripts/research/build_self_description_census.py",
@@ -662,7 +662,7 @@
           "relation": "source inspected"
         },
         {
-          "locator": "generated_module('learner/atlas/basis_transitions.pl').",
+          "locator": "generated_module('formal/learner/atlas/basis_transitions.pl').",
           "path": "scripts/curriculum/mini_atlas.pl",
           "relation": "table producer"
         },
@@ -1118,6 +1118,20 @@
       "module": "coverage_absence_registry",
       "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
       "path": "knowledge/index/coverage_absence_registry.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "unclassified",
+      "evidence": [
+        {
+          "locator": "/** <module> Checked Illustrative Mathematics lesson identity",
+          "path": "knowledge/index/im_lesson_identity.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "im_lesson_identity",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/index/im_lesson_identity.pl",
       "verdict": "undetermined"
     },
     {

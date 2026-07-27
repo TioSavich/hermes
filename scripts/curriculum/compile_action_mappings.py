@@ -19,9 +19,21 @@ from collections import Counter, defaultdict
 from dataclasses import dataclass
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
+
+# Every corpus this compiler reads and every artifact it writes is named once,
+# here. The generated files already carried these Hermes paths as their recorded
+# provenance while the compiler still addressed the pre-vendoring checkout, so a
+# path stated in two vocabularies was the whole of what kept this script from
+# running. Rerouting a corpus means editing one line below, and the byte
+# comparison in ``--check`` is what says the reroute was faithful.
+GUIDE_ROOT = ROOT / "curriculum/im_teacher_guides"
+SCOPE_ROOT = ROOT / "curriculum/scope_and_sequence"
+LESSON_FACT_ROOT = ROOT / "curriculum/im"
+GENERATED_ROOT = LESSON_FACT_ROOT / "generated"
+
 DEFAULT_RULES = ROOT / "scripts/curriculum/action_mapping_rules.json"
-DEFAULT_OUTPUT = ROOT / "lessons/im/generated/compiled_action_mappings.pl"
-DEFAULT_TASK_OUTPUT = ROOT / "lessons/im/generated/compiled_task_instances.pl"
+DEFAULT_OUTPUT = GENERATED_ROOT / "compiled_action_mappings.pl"
+DEFAULT_TASK_OUTPUT = GENERATED_ROOT / "compiled_task_instances.pl"
 
 CODE_RE = re.compile(r"IM-G([K0-8])-U(\d+)-L(\d+)")
 EXPLICIT_RE = re.compile(
@@ -141,7 +153,7 @@ def _section(lines: list[str], heading: str) -> list[tuple[int, str]]:
 
 def read_teacher_guides(root: pathlib.Path = ROOT) -> list[LessonDoc]:
     docs = []
-    guide_root = root / "geometry/corpus/im_teacher_guides"
+    guide_root = root / GUIDE_ROOT.relative_to(ROOT)
     for path in sorted(guide_root.glob("*/unit*/lesson*.md")):
         grade_dir = path.parents[1].name
         if not (grade_dir.startswith("grade") or grade_dir == "kindergarten"):
@@ -1200,7 +1212,7 @@ def promote_task_candidates(
 
 def read_explicit_mappings(root: pathlib.Path = ROOT) -> dict[str, set[tuple[str, str]]]:
     mappings: dict[str, set[tuple[str, str]]] = defaultdict(set)
-    for path in sorted((root / "lessons/im").glob("grade_*.pl")):
+    for path in sorted((root / LESSON_FACT_ROOT.relative_to(ROOT)).glob("grade_*.pl")):
         text = path.read_text(encoding="utf-8")
         for regex in (EXPLICIT_RE, VISION_RE):
             for code, operation, kind in regex.findall(text):
@@ -1295,7 +1307,7 @@ def compile_rule_mappings(
 def read_scope_titles(root: pathlib.Path = ROOT) -> dict[str, tuple[pathlib.Path, int, str]]:
     titles = {}
     for grade in (6, 7, 8):
-        path = root / f"geometry/corpus/im_scope_and_sequence/grade{grade}.md"
+        path = root / SCOPE_ROOT.relative_to(ROOT) / f"grade{grade}.md"
         for line_no, line in enumerate(path.read_text(encoding="utf-8").split("\n"), 1):
             match = re.search(r"\*\*Lesson (\d+):\*\* (.*?)  `(IM-G\d+-U\d+-L\d+)`", line)
             if match:

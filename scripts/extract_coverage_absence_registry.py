@@ -21,6 +21,14 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+# The receipt register has two readers. The ledger owns the rule for what counts
+# as a fragment occurring in its source; this registry asks the ledger rather
+# than keeping a second copy that can fall behind it.
+from scripts.curriculum import build_lesson_evidence as evidence_ledger  # noqa: E402
+
 OUTPUT = ROOT / "knowledge" / "index" / "coverage_absence_registry.pl"
 ASSET_MANIFEST = ROOT / "hermes" / "representation" / "build_asset_manifest.py"
 DRAWER = ROOT / "hermes" / "web" / "render" / "drawer.js"
@@ -208,8 +216,19 @@ def representation_scene_formats(dispatch_formats: set[str]) -> dict[str, set[st
 
 
 def validate_receipt_path(receipt: dict) -> tuple[str, str | None]:
-    """Classify a reviewed receipt's source path without repairing its record."""
-    expected = receipt["source"]["path"]
+    """Classify a reviewed receipt's source path without repairing its record.
+
+    Fragment verification is delegated, never restated. This reader once carried
+    its own copy of the rule and fell behind the register twice: it knew only
+    file-backed fragments after the v3 schema admitted fact-backed ones, and it
+    still demanded a quotation sit on one physical line after the guides' hard
+    wrapping was accounted for. Both faults were the same fault, so the two
+    readers of one register now share one loader.
+    """
+    source = receipt["source"]
+    expected = source["path"]
+    if source.get("kind", "file") == "fact":
+        return validate_receipt_facts(receipt)
     expected_path = ROOT / expected
     actual_path: Path | None = None
     if expected_path.is_file():
@@ -225,11 +244,54 @@ def validate_receipt_path(receipt: dict) -> tuple[str, str | None]:
     else:
         return "broken_pipeline", None
     lines = actual_path.read_text(encoding="utf-8", errors="replace").split("\n")
-    for fragment in receipt["source"]["fragments"]:
-        line_number = fragment["line"]
-        if line_number < 1 or line_number > len(lines) or fragment["text"] not in lines[line_number - 1]:
+    for fragment in source["fragments"]:
+        line_number = fragment.get("line")
+        if (
+            not isinstance(line_number, int)
+            or line_number < 1
+            or line_number > len(lines)
+            or not evidence_ledger._fragment_present(
+                fragment.get("text", ""), lines, line_number
+            )
+        ):
             return "unknown", str(actual_path.relative_to(ROOT))
     return status, str(actual_path.relative_to(ROOT))
+
+
+def validate_receipt_facts(receipt: dict) -> tuple[str, str | None]:
+    """Classify a fact-backed receipt against the generated vision digest.
+
+    A fact-backed fragment names an allowlisted generated predicate and quotes
+    that fact's value. The digest is the source file, so a missing digest is a
+    broken pipeline and a quotation absent from the named predicate is unknown.
+    """
+    digest_relative = str(evidence_ledger.VISION_DIGEST.relative_to(ROOT))
+    if receipt["source"]["path"] != digest_relative:
+        return "broken_pipeline", None
+    if not evidence_ledger.VISION_DIGEST.is_file():
+        return "broken_pipeline", None
+    lesson_facts = _vision_facts().get(receipt["lesson"])
+    if not lesson_facts:
+        return "unknown", digest_relative
+    for fragment in receipt["source"]["fragments"]:
+        predicate = fragment.get("predicate")
+        text = fragment.get("text")
+        if predicate not in evidence_ledger.VISION_FACT_PREDICATES:
+            return "unknown", digest_relative
+        values = lesson_facts.get(predicate) or []
+        if not isinstance(text, str) or not any(text in value for value in values):
+            return "unknown", digest_relative
+    return "present", digest_relative
+
+
+_VISION_FACT_CACHE: dict[str, dict[str, list[str]]] | None = None
+
+
+def _vision_facts() -> dict[str, dict[str, list[str]]]:
+    global _VISION_FACT_CACHE
+    if _VISION_FACT_CACHE is None:
+        _VISION_FACT_CACHE = evidence_ledger._vision_fact_index()
+    return _VISION_FACT_CACHE
 
 
 def load_negative_receipts() -> dict[str, tuple[str, str, str | None]]:

@@ -8,7 +8,7 @@
             compiled_mapping_summary/2
           ]).
 
-compiled_mapping_summary(426, 468).
+compiled_mapping_summary(425, 467).
 
 compiled_lesson_strategy('IM-G1-U2-L1', addition, count_on_from_larger,
                          mapping_evidence(rule(add_to_result_unknown_story), source('curriculum/im_teacher_guides/grade1/unit2/lesson1.md', line(5)), confidence(high), input_domain(whole_number), excerpt("Represent the actions of Add To and Take From, Result Unknown problems in different ways."))).
@@ -320,8 +320,6 @@ compiled_lesson_strategy('IM-G3-U7-L4', geometry, shape_classification_by_defini
                          mapping_evidence(rule(shape_classification_by_defining_attributes), source('curriculum/im_teacher_guides/grade3/unit7/lesson4.md', line(6)), confidence(high), input_domain(spatial_measurement), excerpt("Describe (orally and in writing) and identify rhombuses, squares, and rectangles based on their defining attributes."))).
 compiled_lesson_strategy('IM-G3-U7-L5', geometry, shape_classification_by_defining_attributes,
                          mapping_evidence(rule(shape_classification_by_defining_attributes), source('curriculum/im_teacher_guides/grade3/unit7/lesson5.md', line(12)), confidence(high), input_domain(spatial_measurement), excerpt("The purpose of this lesson is for students to use their knowledge of geometric attributes to name quadrilaterals in different ways and to draw quadrilaterals that are not rhombuses, rectangles, or squares."))).
-compiled_lesson_strategy('IM-G3-U7-L6', geometry, polygon_perimeter_boundary_accumulation,
-                         mapping_evidence(rule(polygon_perimeter_boundary_accumulation), source('curriculum/im_teacher_guides/grade3/unit7/lesson6.md', line(12)), confidence(high), input_domain(spatial_measurement), excerpt("The purpose of this lesson is for students to understand perimeter and find the perimeter of shapes by counting to determine the side lengths."))).
 compiled_lesson_strategy('IM-G3-U7-L7', geometry, polygon_perimeter_boundary_accumulation,
                          mapping_evidence(rule(polygon_perimeter_boundary_accumulation), source('curriculum/im_teacher_guides/grade3/unit7/lesson7.md', line(1)), confidence(high), input_domain(spatial_measurement), excerpt("Same Perimeter, Different Shapes"))).
 compiled_lesson_strategy('IM-G3-U7-L8', geometry, polygon_perimeter_boundary_accumulation,

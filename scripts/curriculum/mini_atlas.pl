@@ -4,8 +4,9 @@
  * PURPOSE: this is the local, deterministic "Atlas" of the curriculum dynamics
  * program. It reads the declared basis (scripts/curriculum/basis_set.json), takes
  * each basis lesson's productive and deformation events, and runs each through
- * f_{t,c} (learner/task_transition.pl) from every starting stage in STAGES. It
- * generates a checked-in fact module (learner/atlas/basis_transitions.pl) of the
+ * f_{t,c} (formal/learner/task_transition.pl) from every starting stage in
+ * STAGES. It generates a checked-in fact module
+ * (formal/learner/atlas/basis_transitions.pl) of the
  * resulting basis_transition/6 facts and atlas_sufficiency_finding/4 facts, and
  * emits one JSON line per transition on stdout.
  *
@@ -27,7 +28,13 @@
 :- use_module(library(apply)).
 
 stages([1, 2]).
-generated_module('learner/atlas/basis_transitions.pl').
+
+% The manifest this builder reads and the module it writes are named once,
+% here, relative to the repository root. The learner tree moved under formal/
+% after this builder was written, so the output path was stated in one
+% vocabulary and the checked-in cache in another; --check is what says the
+% two now agree byte for byte.
+generated_module('formal/learner/atlas/basis_transitions.pl').
 basis_manifest('scripts/curriculum/basis_set.json').
 
 main :-

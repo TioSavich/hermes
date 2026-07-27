@@ -13954,7 +13954,7 @@
       "lesson_number": 6,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "both",
+      "strategy": "hand",
       "strategy_atoms": [
         "polygon_perimeter_boundary_accumulation"
       ],

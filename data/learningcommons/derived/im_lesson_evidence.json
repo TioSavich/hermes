@@ -1,34 +1,34 @@
 {
  "by_grade": {
   "1": {
-   "diagnostic_ready": 14,
+   "diagnostic_ready": 18,
    "executable_task": 22,
    "measured_transition": 22,
    "negative_candidate": 125,
    "published": 148,
    "standard_action_candidate": 148,
    "strategy_evidence": 129,
-   "structured_negative": 62
+   "structured_negative": 66
   },
   "2": {
-   "diagnostic_ready": 8,
+   "diagnostic_ready": 9,
    "executable_task": 9,
    "measured_transition": 9,
    "negative_candidate": 122,
    "published": 150,
    "standard_action_candidate": 149,
    "strategy_evidence": 130,
-   "structured_negative": 37
+   "structured_negative": 38
   },
   "3": {
-   "diagnostic_ready": 13,
+   "diagnostic_ready": 17,
    "executable_task": 21,
    "measured_transition": 21,
    "negative_candidate": 109,
    "published": 143,
    "standard_action_candidate": 139,
    "strategy_evidence": 123,
-   "structured_negative": 46
+   "structured_negative": 50
   },
   "4": {
    "diagnostic_ready": 8,
@@ -41,34 +41,34 @@
    "structured_negative": 58
   },
   "5": {
-   "diagnostic_ready": 4,
+   "diagnostic_ready": 7,
    "executable_task": 8,
    "measured_transition": 8,
    "negative_candidate": 104,
    "published": 148,
    "standard_action_candidate": 145,
    "strategy_evidence": 125,
-   "structured_negative": 53
+   "structured_negative": 56
   },
   "6": {
-   "diagnostic_ready": 3,
+   "diagnostic_ready": 26,
    "executable_task": 51,
    "measured_transition": 51,
    "negative_candidate": 107,
    "published": 152,
    "standard_action_candidate": 143,
    "strategy_evidence": 134,
-   "structured_negative": 4
+   "structured_negative": 27
   },
   "7": {
-   "diagnostic_ready": 6,
+   "diagnostic_ready": 10,
    "executable_task": 28,
    "measured_transition": 28,
    "negative_candidate": 28,
    "published": 143,
    "standard_action_candidate": 140,
    "strategy_evidence": 28,
-   "structured_negative": 6
+   "structured_negative": 10
   },
   "8": {
    "published": 134,
@@ -2341,13 +2341,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "2",
    "lesson": "IM-G2-U2-L13",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Story Problems and Equations",
    "negative_candidates": [
     {
@@ -2399,8 +2397,28 @@
      "productive": "decompose_base_for_ones"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "count_all_when_count_on_available",
+     "intended_action": {
+      "kind": "count_on_from_larger",
+      "operation": "addition"
+     },
+     "lesson": "IM-G2-U2-L13",
+     "material_incompatibility": "The sample response describes the process of \"adding on... to 3 tens and 2 ones,\" which identifies the known quantity as the starting point for counting; counting all from one would ignore this provided starting value.",
+     "source": {
+      "fragments": [
+       {
+        "line": 378,
+        "text": "adding on 2 more tens and 5 more ones to 3 tens and 2 ones"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade2/unit2/lesson13.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "2.NBT.B.5": [
      "add",
@@ -11437,13 +11455,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "3",
    "lesson": "IM-G3-U1-L19",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Solve Problems Involving Arrays",
    "negative_candidates": [
     {
@@ -11471,8 +11487,28 @@
      "productive": "repeat_equal_groups"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "add_instead_of_multiply",
+     "intended_action": {
+      "kind": "repeat_equal_groups",
+      "operation": "multiplication"
+     },
+     "lesson": "IM-G3-U1-L19",
+     "material_incompatibility": "The task supplies 7 rows with 5 crayons in each and asks for the total number of crayons, so the 7 counts rows and the 5 counts crayons inside one row. Adding the two numbers treats a row count as a crayon count, and the printed response reaches 35 by skip-counting 5 across the seven rows.",
+     "source": {
+      "fragments": [
+       {
+        "line": 141,
+        "text": "There are 7 rows. Each row has 5 crayons."
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade3/unit1/lesson19.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "3.OA.A.1": [
      "describe",
@@ -11787,13 +11823,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "3",
    "lesson": "IM-G3-U2-L3",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Tile Rectangles",
    "negative_candidates": [
     {
@@ -11805,8 +11839,28 @@
      "productive": "rectangle_area_unit_iteration"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "area_as_perimeter_count",
+     "intended_action": {
+      "kind": "rectangle_area_unit_iteration",
+      "operation": "geometry"
+     },
+     "lesson": "IM-G3-U2-L3",
+     "material_incompatibility": "The lesson defines area as the number of square units that 'cover a flat figure', which is incompatible with counting only the perimeter (the boundary) of the shape.",
+     "source": {
+      "fragments": [
+       {
+        "line": 5,
+        "text": "the number of square units that cover a flat figure with no gaps or overlaps"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade3/unit2/lesson3.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "3.MD.C.5.b": [
      "cover"
@@ -17862,14 +17916,6 @@
     {
      "deformation": "omit_unlabeled_boundary_side",
      "family": "incomplete_polygon_boundary_cycle",
-     "mapping_origin": "compiled_source_mapping",
-     "operation": "geometry",
-     "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
-     "productive": "polygon_perimeter_boundary_accumulation"
-    },
-    {
-     "deformation": "omit_unlabeled_boundary_side",
-     "family": "incomplete_polygon_boundary_cycle",
      "mapping_origin": "direct_lesson_fact",
      "operation": "geometry",
      "pair_source": "strategies/math/action_automata_registry.pl:action_automaton_pair/4",
@@ -18241,13 +18287,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "3",
    "lesson": "IM-G3-U7-L13",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Shapes and Play",
    "negative_candidates": [
     {
@@ -18267,8 +18311,28 @@
      "productive": "rectangle_perimeter_boundary_traversal"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "perimeter_two_sides_only",
+     "intended_action": {
+      "kind": "rectangle_perimeter_boundary_traversal",
+      "operation": "geometry"
+     },
+     "lesson": "IM-G3-U7-L13",
+     "material_incompatibility": "The Activity Synthesis asks students to explain the perimeter of a rectangle, and the printed reasoning doubles the short sides and the long sides before adding them, so all four sides enter the total. Summing one short side and one long side leaves the second pair of sides out of the measure.",
+     "source": {
+      "fragments": [
+       {
+        "line": 282,
+        "text": "I doubled the short sides, then"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade3/unit7/lesson13.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "3.MD.D.8": [
      "find",
@@ -18291,13 +18355,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "3",
    "lesson": "IM-G3-U7-L14",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Wax Prints",
    "negative_candidates": [
     {
@@ -18317,8 +18379,28 @@
      "productive": "rectangle_perimeter_boundary_traversal"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "perimeter_two_sides_only",
+     "intended_action": {
+      "kind": "rectangle_perimeter_boundary_traversal",
+      "operation": "geometry"
+     },
+     "lesson": "IM-G3-U7-L14",
+     "material_incompatibility": "The sample response for the cool-down justifies multiplying the sum of two sides by 2 by noting that there is 'another set of sides,' which contradicts the mistake of calculating perimeter using only two sides.",
+     "source": {
+      "fragments": [
+       {
+        "line": 371,
+        "text": "multiplied by 2 since there would be another set of sides that were 9 inches and 6 inches"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade3/unit7/lesson14.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "3.G.A.1": [
      "draw",
@@ -29244,13 +29326,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U2-L2",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Representing Ratios with Diagrams",
    "negative_candidates": [
     {
@@ -29270,8 +29350,29 @@
      "productive": "construct_referent_ratio_diagram"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "reverse_ratio_referent_order",
+     "intended_action": {
+      "kind": "construct_referent_ratio_diagram",
+      "operation": "ratio"
+     },
+     "lesson": "IM-G6-U2-L2",
+     "material_incompatibility": "The lesson has students read and write ratio sentences on the frame \"The ratio of these to those is a : b. For every a of these, there are b of those,\" which binds the first referent to a and the second to b. Naming the referents in reverse order while keeping a : b attaches b to the quantity the sentence counts a of.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_goal",
+        "text": "The ratio of these to those is a : b. The ratio of these to those is a to b. For every a of these, there are b of those."
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.RP.A.1": [
      "describe",
@@ -29418,13 +29519,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U2-L5",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Defining Equivalent Ratios",
    "negative_candidates": [
     {
@@ -29444,8 +29543,29 @@
      "productive": "scale_ratio_unit"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "additive_extension_of_ratio",
+     "intended_action": {
+      "kind": "scale_ratio_unit",
+      "operation": "ratio"
+     },
+     "lesson": "IM-G6-U2-L5",
+     "material_incompatibility": "The lesson purpose specifies that equivalent ratios are generated by \"multiplying both a and b by the same number,\" which is mathematically incompatible with an additive extension of the ratio.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_purpose",
+        "text": "all ratios that are equivalent to a : b can be generated by multiplying both a and b by the same number"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.RP.A.1": [
      "describe",
@@ -29567,13 +29687,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U2-L8",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "How Much for One?",
    "negative_candidates": [
     {
@@ -29633,8 +29751,29 @@
      "productive": "scale_ratio_unit"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "stop_at_nearby_product_in_search",
+     "intended_action": {
+      "kind": "missing_factor_known_product_search",
+      "operation": "division"
+     },
+     "lesson": "IM-G6-U2-L8",
+     "material_incompatibility": "The warm-up is a mental Math Talk closing on 246 divided by 12, and its printed reasoning names 20.5 x 12 = 246. A search that halts at 20 x 12 = 240 leaves 6 of the 246 outside the quotient, where the material requires that remainder to become half a group of 12.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "the warm-up is a mental Math Talk whose sample reasoning is 20½·12=246 (missing_factor_known_product_search, matching the other three warm-up items)"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.RP.A.3.b": [
      "solve"
@@ -29776,13 +29915,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U2-L11",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Representing Ratios with Tables",
    "negative_candidates": [
     {
@@ -29826,8 +29963,29 @@
      "productive": "scale_ratio_unit"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "additive_extension_of_ratio",
+     "intended_action": {
+      "kind": "scale_ratio_unit",
+      "operation": "ratio"
+     },
+     "lesson": "IM-G6-U2-L11",
+     "material_incompatibility": "The lesson builds each new row of a table by multiplying both entries of an equivalent ratio by a single factor, and the factors it supplies include 0.5 and 0.25 alongside whole numbers. Adding a fixed amount to each entry instead produces a pair the lesson's own rule for filling rows does not admit.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "multiplying both parts of an equivalent ratio by a whole-number, unit-fraction, or decimal factor to produce a table or double-number-line entry"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.RP.A.3": [
      "reason",
@@ -29856,13 +30014,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U2-L12",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Navigating a Table of Equivalent Ratios",
    "negative_candidates": [
     {
@@ -29882,8 +30038,29 @@
      "productive": "scale_ratio_unit"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "name_group_count_as_share_size",
+     "intended_action": {
+      "kind": "fair_share_equal_groups",
+      "operation": "division"
+     },
+     "lesson": "IM-G6-U2-L12",
+     "material_incompatibility": "Practice 4 shares 3,600 seconds across 72 quarter-dollars and requires the 50 seconds that fall to each quarter. The 72 counts how many shares the total breaks into, so it cannot also name the size of one share.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "the extracted functor divide(3600,72)=50 is a partitive fair-share division (3,600 seconds shared across 72 quarter-dollars = 50 seconds each)"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.RP.A.3": [
      "reason",
@@ -30040,13 +30217,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U2-L15",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Part-Part-Whole Ratios",
    "negative_candidates": [
     {
@@ -30098,8 +30273,29 @@
      "productive": "scale_ratio_unit"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "add_instead_of_multiply",
+     "intended_action": {
+      "kind": "repeat_equal_groups",
+      "operation": "multiplication"
+     },
+     "lesson": "IM-G6-U2-L15",
+     "material_incompatibility": "The lesson requires calculating 'N parts x value-per-part' products using repeat_equal_groups; adding the number of parts and the value per part instead of multiplying them is mathematically incompatible with finding the total quantity.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "repeat_equal_groups for the \"N parts x value-per-part\" products"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.RP.A.3": [
      "reason",
@@ -30124,13 +30320,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U2-L16",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Solving More Ratio Problems",
    "negative_candidates": [
     {
@@ -30182,8 +30376,29 @@
      "productive": "scale_ratio_unit"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "share_into_divisor_groups",
+     "intended_action": {
+      "kind": "measure_groups_of_size",
+      "operation": "division"
+     },
+     "lesson": "IM-G6-U2-L16",
+     "material_incompatibility": "Each of these divisions counts how many equal groups a total holds, 91 in groups of 7 and 72 in groups of 9, and the divisor names the size of one group. Reading that divisor as a count of groups returns a share size where the task requires a group count.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "finding either the number of equal groups (measure_groups_of_size: 72/9, 8/2, 91/7, 12/3)"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.RP.A.3": [
      "reason",
@@ -30315,13 +30530,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U3-L2",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Measuring with Different-Size Units",
    "negative_candidates": [
     {
@@ -30357,8 +30570,29 @@
      "productive": "repeat_equal_groups"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "share_into_divisor_groups",
+     "intended_action": {
+      "kind": "measure_groups_of_size",
+      "operation": "division"
+     },
+     "lesson": "IM-G6-U3-L2",
+     "material_incompatibility": "The lesson employs \"measurement division to count teaspoons for a target volume\", which identifies how many units of a specific size fit into a total, whereas the alternative incorrectly interprets the divisor as the number of groups to be filled.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "measurement division to count teaspoons for a target volume"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.RP.A.3.d": [
      "convert",
@@ -30456,13 +30690,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U3-L4",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Comparing Speeds and Prices",
    "negative_candidates": [
     {
@@ -30490,8 +30722,29 @@
      "productive": "scale_ratio_unit"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "additive_extension_of_ratio",
+     "intended_action": {
+      "kind": "scale_ratio_unit",
+      "operation": "ratio"
+     },
+     "lesson": "IM-G6-U3-L4",
+     "material_incompatibility": "The lesson decides which speed or price is better by dividing one quantity in a ratio by the other and comparing the value per 1: 4,200 meters in 30 minutes and 6,300 meters in 45 minutes both give 140 meters per minute. Adding the same amount to each term of a ratio changes that quotient, so it cannot produce the pairs this lesson counts as equivalent.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_purpose",
+        "text": "dividing one quantity in a ratio by the other is an efficient way to find a rate per 1"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.RP.A.2": [
      "understand",
@@ -30586,13 +30839,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U3-L6",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Equivalent Ratios Have the Same Unit Rates",
    "negative_candidates": [
     {
@@ -30628,8 +30879,29 @@
      "productive": "scale_ratio_unit"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "name_group_count_as_share_size",
+     "intended_action": {
+      "kind": "fair_share_equal_groups",
+      "operation": "division"
+     },
+     "lesson": "IM-G6-U3-L6",
+     "material_incompatibility": "The lesson's rate divisions share a total over a count of units and require the amount one unit carries: 14 over 2 yields the 7 that then multiplies to 28 and 70 in the same table. Naming the count of units as that amount leaves the remaining entries without the factor they are built from.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "partitive rate-finding (total shared over N units to get a per-unit rate: $/binder, tomatoes/onion, $/oz, m/s speed, lb/kg) reads as fair_share_equal_groups"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.RP.A.2": [
      "understand",
@@ -30708,13 +30980,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U3-L8",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Solving Rate Problems",
    "negative_candidates": [
     {
@@ -30758,8 +31028,29 @@
      "productive": "scale_ratio_unit"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "name_group_count_as_share_size",
+     "intended_action": {
+      "kind": "fair_share_equal_groups",
+      "operation": "division"
+     },
+     "lesson": "IM-G6-U3-L8",
+     "material_incompatibility": "The lesson requires partitioning a total into equal parts to find unit rates (classified as fair_share_equal_groups), such as determining meters per third of a climb; the error name_group_count_as_share_size occurs when a student mistakenly identifies the number of parts as the size of the resulting share.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "Divisions that find a rate per 1 (or per equal part of a whole) are partitive and classified fair_share_equal_groups"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.RP.A.2": [
      "understand",
@@ -31685,13 +31976,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U4-L6",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Using Diagrams to Find the Number of Groups",
    "negative_candidates": [
     {
@@ -31703,8 +31992,29 @@
      "productive": "measure_groups_of_size"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "share_into_divisor_groups",
+     "intended_action": {
+      "kind": "measure_groups_of_size",
+      "operation": "division"
+     },
+     "lesson": "IM-G6-U4-L6",
+     "material_incompatibility": "The lesson is strictly limited to quotitive division, where the goal is to determine how many groups of a specific size fit in a total, which is incompatible with the partitive action of sharing into a set number of groups.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "Every task event is quotitive (\"how many groups of a given size fit in a total\") division"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.NS.A.1": [
      "compute",
@@ -31873,13 +32183,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U4-L10",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Dividing by Unit and Non-Unit Fractions",
    "negative_candidates": [
     {
@@ -31891,8 +32199,29 @@
      "productive": "measure_groups_of_size"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "share_into_divisor_groups",
+     "intended_action": {
+      "kind": "measure_groups_of_size",
+      "operation": "division"
+     },
+     "lesson": "IM-G6-U4-L10",
+     "material_incompatibility": "The divisor in each non-unit-fraction division names the size of one group, so 6 divided by 3/4 asks how many three-quarters fit in 6. Sharing a total into a number of groups needs a count in that position, and the lesson supplies a fraction there instead.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "how many a/b fit in n"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.NS.A.1": [
      "compute",
@@ -32175,13 +32504,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U4-L17",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Fitting Boxes into Boxes",
    "negative_candidates": [
     {
@@ -32193,8 +32520,29 @@
      "productive": "measure_groups_of_size"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "share_into_divisor_groups",
+     "intended_action": {
+      "kind": "measure_groups_of_size",
+      "operation": "division"
+     },
+     "lesson": "IM-G6-U4-L17",
+     "material_incompatibility": "The lesson tasks involve determining the number of shipping boxes required to hold a set number of necklaces, which the facts explicitly identify as 'quotitive measurement division (measure_groups_of_size)', a process incompatible with sharing a total into a fixed number of divisor groups.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "The four \"shipping boxes needed\" events are quotitive measurement division (measure_groups_of_size)"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.G.A.2": [
      "apply",
@@ -32545,13 +32893,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U5-L7",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Using Diagrams to Represent Multiplication",
    "negative_candidates": [
     {
@@ -32571,8 +32917,29 @@
      "productive": "distribute_group_size_split"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "drop_second_partial_product",
+     "intended_action": {
+      "kind": "distribute_group_size_split",
+      "operation": "multiplication"
+     },
+     "lesson": "IM-G6-U5-L7",
+     "material_incompatibility": "The lesson requires students to calculate products by decomposing factors and finding all partial products; omitting the second partial product is a direct failure of this decomposition process.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_goal",
+        "text": "Calculate the product of two decimals by decomposing each factor by place value and finding partial products."
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.NS.B.3": [
      "add",
@@ -32661,13 +33028,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U5-L9",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Using Base-Ten Diagrams to Divide",
    "negative_candidates": [
     {
@@ -32679,8 +33044,29 @@
      "productive": "fair_share_equal_groups"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "name_group_count_as_share_size",
+     "intended_action": {
+      "kind": "fair_share_equal_groups",
+      "operation": "division"
+     },
+     "lesson": "IM-G6-U5-L9",
+     "material_incompatibility": "The lesson boundary specifies that tasks are 'partitive fair-share division' where 'an amount is split into a stated number of equal-size groups,' establishing that the divisor is the number of groups, which is incompatible with misidentifying the group count as the share size.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "All six retained tasks are partitive fair-share division: an amount is split into a stated number of equal-size groups"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.NS.B.2": [
      "divide",
@@ -33929,13 +34315,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U7-L1",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Positive and Negative Numbers",
    "negative_candidates": [
     {
@@ -33955,8 +34339,29 @@
      "productive": "signed_number_location_and_order"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "order_by_magnitude_ignore_sign",
+     "intended_action": {
+      "kind": "signed_number_location_and_order",
+      "operation": "integer"
+     },
+     "lesson": "IM-G6-U7-L1",
+     "material_incompatibility": "The lesson's focus on number-line location requires students to understand how negative signs determine a number's value and position relative to zero, which is incompatible with the deformation of ordering numbers by magnitude while ignoring the sign.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "This lesson's on-target demand is number-line location"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.NS.C.5": [
      "describe",
@@ -34162,13 +34567,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U7-L5",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Using Negative Numbers to Make Sense of Contexts",
    "negative_candidates": [
     {
@@ -34212,8 +34615,29 @@
      "productive": "take_away_base_ones"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "order_by_magnitude_ignore_sign",
+     "intended_action": {
+      "kind": "signed_number_location_and_order",
+      "operation": "integer"
+     },
+     "lesson": "IM-G6-U7-L5",
+     "material_incompatibility": "The lesson requires students to 'represent changes in a quantity in opposite directions' (such as money received vs. paid), a task that is incompatible with the deformation of ignoring the sign and ordering or interpreting based only on magnitude, which would treat opposite directions as identical.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_goal",
+        "text": "Recognize that signed numbers can be useful to represent changes in a quantity in opposite directions, e.g., money received and money paid, inventory bought and inventory sold, etc."
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.NS.C.5": [
      "describe",
@@ -34236,13 +34660,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U7-L6",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Absolute Value of Numbers",
    "negative_candidates": [
     {
@@ -34262,8 +34684,29 @@
      "productive": "signed_number_location_and_order"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "order_by_magnitude_ignore_sign",
+     "intended_action": {
+      "kind": "signed_number_location_and_order",
+      "operation": "integer"
+     },
+     "lesson": "IM-G6-U7-L6",
+     "material_incompatibility": "The lesson requires students to 'Compare rational numbers and their absolute values', which necessitates distinguishing between a number's actual value (location/order) and its distance from zero; ordering by magnitude while ignoring the sign incorrectly treats the signed number as its absolute value.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_goal",
+        "text": "Compare rational numbers and their absolute values, and explain (orally and in writing) the reasoning."
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.NS.C.7": [
      "order",
@@ -34651,13 +35094,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U7-L13",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Interpreting Points in a Coordinate Plane",
    "negative_candidates": [
     {
@@ -34669,8 +35110,29 @@
      "productive": "compare_by_matching_difference"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "compare_returns_larger_count",
+     "intended_action": {
+      "kind": "compare_by_matching_difference",
+      "operation": "subtraction"
+     },
+     "lesson": "IM-G6-U7-L13",
+     "material_incompatibility": "The lesson asks for the vertical distance between two plotted points and states those distances: 28 and 26 give 2, and 21 and 11 give 10. An answer that returns the larger coordinate names a position on the axis rather than the gap between the points.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "its own activities demand only subtraction, which the vocabulary covers via compare_by_matching_difference"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.NS.C.6.c": [
      "find"
@@ -34709,13 +35171,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U7-L14",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Distances in the Coordinate Plane",
    "negative_candidates": [
     {
@@ -34735,8 +35195,29 @@
      "productive": "axis_aligned_coordinate_distance"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "directed_difference_as_coordinate_distance",
+     "intended_action": {
+      "kind": "axis_aligned_coordinate_distance",
+      "operation": "geometry"
+     },
+     "lesson": "IM-G6-U7-L14",
+     "material_incompatibility": "Practice problem 2 asks for distances between points that share an x-coordinate, two of the pairs at negative y-values, and the lesson records the lengths as 1, 3, and 2. Subtracting those coordinates in one of the two orders returns a negative change, which the recorded lengths rule out as a distance.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "returns abs(DirectedDifference)"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.NS.C.6": [
      "extend",
@@ -34769,13 +35250,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U7-L15",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Shapes in the Coordinate Plane",
    "negative_candidates": [
     {
@@ -34803,8 +35282,29 @@
      "productive": "repeat_equal_groups"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "name_group_count_as_share_size",
+     "intended_action": {
+      "kind": "fair_share_equal_groups",
+      "operation": "division"
+     },
+     "lesson": "IM-G6-U7-L15",
+     "material_incompatibility": "The practice set asks for a square's side length from its perimeter and records 20 divided by 4 as 5. Naming the four sides as the length reports how many parts the perimeter splits into instead of the size of one part.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "square-side-from-perimeter as fair_share_equal_groups division"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.G.A.3": [
      "apply",
@@ -34846,13 +35346,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "6",
    "lesson": "IM-G6-U7-L16",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Common Factors",
    "negative_candidates": [
     {
@@ -34872,8 +35370,29 @@
      "productive": "common_factor_intersection"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "factors_of_first_number_only",
+     "intended_action": {
+      "kind": "common_factor_intersection",
+      "operation": "multiplication"
+     },
+     "lesson": "IM-G6-U7-L16",
+     "material_incompatibility": "The lesson defines common factors as those that 'both numbers share', which is incompatible with only identifying the factors of the first number.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_purpose",
+        "text": "common factors of two whole numbers as factors that both numbers share"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "6.NS.B.4": [
      "find",
@@ -36908,13 +37427,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "7",
    "lesson": "IM-G7-U2-L4",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Proportional Relationships and Equations",
    "negative_candidates": [
     {
@@ -36950,8 +37467,29 @@
      "productive": "missing_factor_known_product_search"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "stop_after_one_known_fact",
+     "intended_action": {
+      "kind": "inverse_fact_decomposition",
+      "operation": "division"
+     },
+     "lesson": "IM-G7-U2-L4",
+     "material_incompatibility": "The table for y = 16/x records the completions 16, 8, 4, and 2, each an exact quotient with nothing left over. A decomposition halted after its first known multiple names a partial count and leaves part of the 16 undivided, which the recorded completions rule out.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "The y = 16 divided by x completions (page 139 part a: 16, 8, 4, 2) were reclassified from long_division to inverse_fact_decomposition"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "7.RP.A.2": [
      "recognize",
@@ -38252,13 +38790,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "7",
    "lesson": "IM-G7-U4-L4",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "More than That, Less than That",
    "negative_candidates": [
     {
@@ -38270,8 +38806,29 @@
      "productive": "long_division"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "sum_dividend_and_divisor",
+     "intended_action": {
+      "kind": "long_division",
+      "operation": "division"
+     },
+     "lesson": "IM-G7-U4-L4",
+     "material_incompatibility": "The lesson's one task divides 5 by 12 and records 0.41666..., a repeating decimal below 1. Adding the dividend to the divisor returns 17 and no decimal expansion, which the recorded quotient rules out.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_goal",
+        "text": "Use long division to generate a decimal representation of a fraction."
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "7.EE.A.2": [
      "multiply",
@@ -38304,13 +38861,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "7",
    "lesson": "IM-G7-U4-L5",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Say It with Decimals",
    "negative_candidates": [
     {
@@ -38330,8 +38885,29 @@
      "productive": "multiplication_fact_retrieval"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "sum_dividend_and_divisor",
+     "intended_action": {
+      "kind": "long_division",
+      "operation": "division"
+     },
+     "lesson": "IM-G7-U4-L5",
+     "material_incompatibility": "The lesson purpose describes the iterative process of finding a quotient, stating that 'Long division finds the quotient one digit at a time, from left to right,' which is incompatible with an operation that simply sums the dividend and divisor.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_purpose",
+        "text": "Long division finds the quotient one digit at a time, from left to right."
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "7.NS.A.2.d": [
      "convert",
@@ -38840,13 +39416,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "7",
    "lesson": "IM-G7-U5-L1",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Interpreting Negative Numbers",
    "negative_candidates": [
     {
@@ -38858,8 +39432,29 @@
      "productive": "compare_by_matching_difference"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "compare_returns_larger_count",
+     "intended_action": {
+      "kind": "compare_by_matching_difference",
+      "operation": "subtraction"
+     },
+     "lesson": "IM-G7-U5-L1",
+     "material_incompatibility": "The lesson requires students to determine 'how far apart' signed integers are using a 'difference-by-comparison', which is incompatible with simply returning the larger count of the two values.",
+     "source": {
+      "fragments": [
+       {
+        "predicate": "vision_lesson_boundary",
+        "text": "each item asks \"how far apart\" or \"how does X compare to Y,\" which is a difference-by-comparison"
+       }
+      ],
+      "kind": "fact",
+      "path": "curriculum/im/generated/vision_lesson_digest.pl"
+     },
+     "source_kind": "vision_digest"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "7.NS.A.1": [
      "add",
@@ -56974,13 +57569,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "1",
    "lesson": "IM-G1-U2-L12",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "How Many More? How Many Fewer?",
    "negative_candidates": [
     {
@@ -57008,8 +57601,28 @@
      "productive": "count_up_missing_addend"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "compare_returns_larger_count",
+     "intended_action": {
+      "kind": "compare_by_matching_difference",
+      "operation": "subtraction"
+     },
+     "lesson": "IM-G1-U2-L12",
+     "material_incompatibility": "This activity's Compare, Difference Unknown problems ask how many more or how many fewer, and the guide names matching the two sets and counting the items left without a partner. The unpaired count answers the question; the size of the larger set is a quantity the problem already supplies.",
+     "source": {
+      "fragments": [
+       {
+        "line": 271,
+        "text": "Match the sets and then count how many don’t have a partner."
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade1/unit2/lesson12.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "1.OA.A.1": [
      "add",
@@ -57385,13 +57998,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "1",
    "lesson": "IM-G1-U2-L18",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Addition and Subtraction Equations",
    "negative_candidates": [
     {
@@ -57435,8 +58046,28 @@
      "productive": "count_up_missing_addend"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "answer_as_endpoint_count_up",
+     "intended_action": {
+      "kind": "count_up_missing_addend",
+      "operation": "subtraction"
+     },
+     "lesson": "IM-G1-U2-L18",
+     "material_incompatibility": "The teacher guide suggests counting on from 6 to 9 to determine the missing addend (the difference), which is incompatible with the error of identifying the endpoint (9) as the final answer.",
+     "source": {
+      "fragments": [
+       {
+        "line": 318,
+        "text": "We could count on from 6 to 9"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade1/unit2/lesson18.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "1.OA.A.1": [
      "add",
@@ -63557,13 +64188,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "1",
    "lesson": "IM-G1-U6-L14",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Which Equation Matches?",
    "negative_candidates": [
     {
@@ -63591,8 +64220,28 @@
      "productive": "compare_by_matching_difference"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "compare_returns_larger_count",
+     "intended_action": {
+      "kind": "compare_by_matching_difference",
+      "operation": "subtraction"
+     },
+     "lesson": "IM-G1-U6-L14",
+     "material_incompatibility": "The problem supplies both quantities, Noah's 6 stamps and Tyler's 16, and asks how many fewer Noah has. The answer is the 10 that separates them, so reporting Tyler's 16 returns a count the problem already states.",
+     "source": {
+      "fragments": [
+       {
+        "line": 304,
+        "text": "How many fewer stamps does Noah have than"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade1/unit6/lesson14.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "1.OA.A.1": [
      "add",
@@ -64994,13 +65643,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "1",
    "lesson": "IM-G1-U8-L6",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Compare Story Problems",
    "negative_candidates": [
     {
@@ -65012,8 +65659,28 @@
      "productive": "compare_by_matching_difference"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "compare_returns_larger_count",
+     "intended_action": {
+      "kind": "compare_by_matching_difference",
+      "operation": "subtraction"
+     },
+     "lesson": "IM-G1-U8-L6",
+     "material_incompatibility": "The lesson's purpose is to solve 'Difference Unknown' problems, meaning the required answer is the difference between two quantities; answering with the larger count fails to identify this difference.",
+     "source": {
+      "fragments": [
+       {
+        "line": 34,
+        "text": "The purpose of this lesson is for students to solve Compare, Difference Unknown story problems."
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade1/unit8/lesson6.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "1.OA.A.1": [
      "add",
@@ -65845,13 +66512,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "5",
    "lesson": "IM-G5-U1-L11",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "All Kinds of Prisms",
    "negative_candidates": [
     {
@@ -65863,8 +66528,28 @@
      "productive": "composite_prism_volume_sum"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "sum_overlapping_prism_volumes",
+     "intended_action": {
+      "kind": "composite_prism_volume_sum",
+      "operation": "geometry"
+     },
+     "lesson": "IM-G5-U1-L11",
+     "material_incompatibility": "The lesson specifies calculating the volume of composite figures by summing the volumes of 'non-overlapping' parts, which is incompatible with the alternative of summing volumes of 'overlapping' prisms that would result in double-counting.",
+     "source": {
+      "fragments": [
+       {
+        "line": 41,
+        "text": "non-overlapping right rectangular prisms"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade5/unit1/lesson11.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "5.MD.C.3": [
      "recognize",
@@ -68979,13 +69664,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "5",
    "lesson": "IM-G5-U4-L19",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Shipping Trash",
    "negative_candidates": [
     {
@@ -69013,8 +69696,28 @@
      "productive": "measure_groups_of_size"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "share_into_divisor_groups",
+     "intended_action": {
+      "kind": "measure_groups_of_size",
+      "operation": "division"
+     },
+     "lesson": "IM-G5-U4-L19",
+     "material_incompatibility": "The question asks for the number of days required to fill a cargo container, which requires determining how many groups of a specific size (daily production) fit into a total volume, making it incompatible with the action of sharing a total into a fixed number of groups.",
+     "source": {
+      "fragments": [
+       {
+        "line": 262,
+        "text": "does it take for a school to fill one cargo"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade5/unit4/lesson19.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "5.MD.C.5": [
      "relate",
@@ -69361,13 +70064,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "5",
    "lesson": "IM-G5-U5-L6",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Compare Decimals on the Number Line",
    "negative_candidates": [
     {
@@ -69395,8 +70096,28 @@
      "productive": "positional_decimal_reading"
     }
    ],
-   "negative_receipts": [],
-   "readiness": "event_ready",
+   "negative_receipts": [
+    {
+     "alternative": "decimal_numeral_comparison_without_scale_alignment",
+     "intended_action": {
+      "kind": "decimal_comparison_by_aligned_units",
+      "operation": "decimal"
+     },
+     "lesson": "IM-G5-U5-L6",
+     "material_incompatibility": "The lesson requires students to determine the relative magnitude of decimals by identifying which number is 'farther to the right' on a scale with specific tick marks, which is incompatible with comparing the numerals without utilizing a scale alignment.",
+     "source": {
+      "fragments": [
+       {
+        "line": 265,
+        "text": "see which number is farther to the right.)"
+       }
+      ],
+      "path": "curriculum/im_teacher_guides/grade5/unit5/lesson6.md"
+     },
+     "source_kind": "activity_guidance"
+    }
+   ],
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "5.NBT.A": [
      "understand"
@@ -73363,13 +74084,13 @@
   "task_events": "curriculum/im/generated/compiled_task_instances.pl"
  },
  "summary": {
-  "diagnostic_ready": 59,
+  "diagnostic_ready": 98,
   "executable_task": 151,
   "measured_transition": 151,
   "negative_candidate": 781,
   "published": 1308,
   "standard_action_candidate": 1272,
   "strategy_evidence": 891,
-  "structured_negative": 311
+  "structured_negative": 350
  }
 }
